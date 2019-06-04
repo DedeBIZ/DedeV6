@@ -2,7 +2,7 @@
 /**
  * @version        $Id: common.inc.php 3 17:44 2010-11-23 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2010, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

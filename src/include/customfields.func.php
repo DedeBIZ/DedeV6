@@ -3,7 +3,7 @@
  * 系统核心函数存放文件
  * @version        $Id: customfields.func.php 2 20:50 2010年7月7日Z tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2010, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

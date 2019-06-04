@@ -9,7 +9,7 @@
  *
  * @version        $Id: splitword.class.php 2 11:45 2011-2-14 itplato $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2010, itplato.
+ * @copyright      Copyright (c) 2007 - 2019, itplato.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

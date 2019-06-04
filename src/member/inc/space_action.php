@@ -4,7 +4,7 @@
  * 
  * @version        $Id: space_action.php 1 15:18 2010年7月9日Z tianya $
  * @package        DedeCMS.Member
- * @copyright      Copyright (c) 2007 - 2010, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

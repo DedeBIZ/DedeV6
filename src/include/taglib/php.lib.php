@@ -6,7 +6,7 @@ if (!defined('DEDEINC'))
  *
  * @version        $Id: php.lib.php1 9:29 2010年7月6日Z tianya $
  * @package        DedeCMS.Taglib
- * @copyright      Copyright (c) 2007 - 2010, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

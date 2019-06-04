@@ -6,7 +6,7 @@ require_once(DEDEINC.'/channelunit.func.php');
  *
  * @version        $Id: plus_ask.php 1 13:58 2010年7月5日Z tianya $
  * @package        DedeCMS.Tpllib
- * @copyright      Copyright (c) 2007 - 2010, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
