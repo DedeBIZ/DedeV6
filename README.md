@@ -47,7 +47,9 @@ MySQL扩展库
 ## 程序安装使用
 
 1.下载程序解压到本地目录;
+
 2.上传程序目录中的/uploads到网站根目录
+
 3.运行http://www.yourname.com/install/index.php(yourname表示你的域名),按照安装提速说明进行程序安装
 
 ## 版权信息
