@@ -1,4 +1,4 @@
-# DedeCMSv5
+# DedeCMS v5
 
 国内专业的PHP网站内容管理系统-织梦内容管理系统
 
@@ -6,14 +6,14 @@
 
 1.Windows 平台
 
-IIS/Apache/Nginx + PHP4/PHP5.2+/PHP5.3+ + MySQL4/5
+IIS/Apache/Nginx + PHP5/PHP7 + MySQL4/5
 如果在windows环境中使用，建议用DedeCMS提供的DedeAMPZ套件以达到最佳使用性能。
 
 2.Linux/Unix 平台
 
-Apache + PHP4/PHP5 + MySQL3/4/5 (PHP必须在非安全模式下运行)
+Apache/Nginx + PHP5/PHP7 + MySQL4/5 (PHP必须在非安全模式下运行)
 
-建议使用平台：Linux + Apache2.2 + PHP5.2/PHP5.3 + MySQL5.0
+建议使用平台：Linux + Apache2.2 + PHP7.1 + MySQL5.0
 
 3.PHP必须环境或启用的系统函数
 
@@ -57,12 +57,14 @@ MySQL扩展库
 详细参考：DedeCMS [最终用户授权协议](./docs/license.txt)
 
 ## 相关资源
-DedeCMS官方主站       www.dedecms.com
+- [DedeCMS官方主站](http://www.dedecms.com)
 
-织梦维基              docs.dedecms.com
+- [DedeCMS Github](https://github.com/dedetech/)
 
-客服中心              service.dedecms.com
+- [织梦维基](http://docs.dedecms.com)
 
-技术支持论坛          bbs.dedecms.com
+- [客服中心](http://service.dedecms.com)
 
-上海卓卓网络科技      www.desdev.cn
+- [技术支持论坛](http://bbs.dedecms.com)
+
+- [上海卓卓网络科技](http://www.desdev.cn)
