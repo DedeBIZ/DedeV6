@@ -1,1 +1,11 @@
 .DS_Store
+src/data/tplcache/
+src/data/sessions*
+src/data/cache/
+src/data/common.inc.php
+src/data/config.cache.bak.php
+src/data/config.cache.inc.php
+src/install/install_lock.txt
+src/install/index.php.bak
+src/install/index.html
+src/install/module-install.php.bak

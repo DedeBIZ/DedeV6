@@ -22,11 +22,11 @@ if($dopost=='save')
         ShowMsg('验证码不正确!','-1');
         exit();
     }
-    $msg = dede_htmlspecialchars($msg);
-    $email = dede_htmlspecialchars($email);
-    $webname = dede_htmlspecialchars($webname);
-    $url = dede_htmlspecialchars($url);
-    $logo = dede_htmlspecialchars($logo);
+    $msg = RemoveXSS(dede_htmlspecialchars($msg));
+    $email = RemoveXSS(dede_htmlspecialchars($email));
+    $webname = RemoveXSS(dede_htmlspecialchars($webname));
+    $url = RemoveXSS(dede_htmlspecialchars($url));
+    $logo = RemoveXSS(dede_htmlspecialchars($logo));
     $typeid = intval($typeid);
     $dtime = time();
     $query = "INSERT INTO `#@__flink`(sortrank,url,webname,logo,msg,email,typeid,dtime,ischeck)
