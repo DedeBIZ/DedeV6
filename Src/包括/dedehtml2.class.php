@@ -30,6 +30,7 @@ class DedeHtml2
     var $CharSet;
     var $BaseUrl;
     var $BaseUrlPath;
+    var $Scheme;
     var $HomeUrl;
     var $IsHead;
     var $ImgHeight;
@@ -47,6 +48,7 @@ class DedeHtml2
         $this->Links = Array();
         $this->BaseUrl = '';
         $this->BaseUrlPath = '';
+	$this->Scheme = 'http://';
         $this->HomeUrl = '';
         $this->IsHead = false;
         $this->ImgHeight = 30;
@@ -77,6 +79,7 @@ class DedeHtml2
         $this->BaseUrl = $url;
         //判断文档相对于当前的路径
         $urls = @parse_url($url);
+	$this->Scheme = $urls['scheme'] . '://';
         $this->HomeUrl = $urls['host'];
         $this->BaseUrlPath = $this->HomeUrl.$urls['path'];
         $this->BaseUrlPath = preg_replace("/\/([^\/]*)\.(.*)$/","/",$this->BaseUrlPath);
@@ -399,13 +402,17 @@ class DedeHtml2
             {
                 $okurl = preg_replace('/^http:\/\//i', '', $surl);
             }
+	    else if( strtolower(substr($surl,0,8))=='https://' )
+            {
+                $okurl = preg_replace('/^https:\/\//i', '', $surl);
+            }
             else
             {
                 $okurl = $this->BaseUrlPath.'/'.$surl;
             }
         }
         $okurl = preg_replace('/\/{1,}/i', '/', $okurl);
-        return 'http://'.$okurl;
+        return $this->Scheme . $okurl;
     }
 
     /**
