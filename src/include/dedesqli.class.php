@@ -116,7 +116,7 @@ class DedeSqli
 
             $this->linkID = mysqli_init();
             mysqli_real_connect($this->linkID, $dbhost, $this->dbUser, $this->dbPwd, false, $dbport);
-            mysqli_errno($this->linkID) != 0 && $this->DisplayError('DedeCms错误警告： 链接('.$this->pconnect.') 到MySQL发生错误');
+            mysqli_errno($this->linkID) != 0 && $this->DisplayError('DedeCMS错误警告： 链接('.$this->pconnect.') 到MySQL发生错误');
 
 
             //复制一个对象副本
@@ -126,7 +126,7 @@ class DedeSqli
         //处理错误，成功连接则选择数据库
         if(!$this->linkID)
         {
-            $this->DisplayError("DedeCms错误警告：<font color='red'>连接数据库失败，可能数据库密码不对或数据库服务器出错！</font>");
+            $this->DisplayError("DedeCMS错误警告：<font color='red'>连接数据库失败，可能数据库密码不对或数据库服务器出错！</font>");
             exit();
         }
 		$this->isInit = TRUE;

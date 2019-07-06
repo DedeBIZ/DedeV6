@@ -20,7 +20,7 @@ require(DEDEADMIN.'/inc/inc_menu_func.php');
 ?>
 <html>
 <head>
-<title>DedeCms menu</title>
+<title>DedeCMS menu</title>
 <link rel="stylesheet" href="images/base.css" type="text/css" />
 <link rel="stylesheet" href="images/menuold.css" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />

@@ -175,7 +175,7 @@ color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywo
     {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCms官方。".str_replace('"','',$gerr),"javascript:;");
+        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"','',$gerr),"javascript:;");
         exit();
     }
 
@@ -191,7 +191,7 @@ color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywo
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCms官方。".str_replace('"','',$gerr),"javascript:;");
+            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"','',$gerr),"javascript:;");
             exit();
         }
     }
