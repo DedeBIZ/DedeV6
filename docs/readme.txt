@@ -4,13 +4,13 @@
 
 一、平台需求
 1.Windows 平台：
-IIS/Apache/Nginx + PHP4/PHP5.2+/PHP5.3+ + MySQL4/5
+IIS/Apache/Nginx + PHP5/PHP7 + MySQL4/5
 如果在windows环境中使用，建议用DedeCMS提供的DedeAMPZ套件以达到最佳使用性能。
 
 2.Linux/Unix 平台
-Apache + PHP4/PHP5 + MySQL3/4/5 (PHP必须在非安全模式下运行)
+Apache/Nginx + PHP5/PHP7 + MySQL4/5 (PHP必须在非安全模式下运行)
 
-建议使用平台：Linux + Apache2.2 + PHP5.2/PHP5.3 + MySQL5.0
+建议使用平台：Linux + Apache2.2 + PHP7.1 + MySQL5.0
 
 3.PHP必须环境或启用的系统函数：
 allow_url_fopen
