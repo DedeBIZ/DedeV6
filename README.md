@@ -57,6 +57,7 @@ MySQL扩展库
 详细参考：DedeCMS [最终用户授权协议](./docs/license.txt)
 
 ## 相关资源
+
 - [DedeCMS官方主站](http://www.dedecms.com)
 
 - [DedeCMS Github](https://github.com/dedetech/)
