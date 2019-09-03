@@ -67,6 +67,12 @@ function dede_random_bytes($length)
     {
         return FALSE;
     }
+
+    if (function_exists('openssl_random_pseudo_bytes'))
+    {
+        return openssl_random_pseudo_bytes($length);
+    }
+
     if (function_exists('random_bytes'))
     {
         try
@@ -91,11 +97,6 @@ function dede_random_bytes($length)
         {
             return $output;
         }
-    }
-
-    if (function_exists('openssl_random_pseudo_bytes'))
-    {
-        return openssl_random_pseudo_bytes($length);
     }
 
     return FALSE;
