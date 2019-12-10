@@ -339,7 +339,7 @@ class TypeUnit
     function DelType($id, $isDelFile)
     {
         $this->idCounter = 0;
-        $this->idArray = "";
+        $this->idArray = array();
         $this->GetSunTypes($id);
         $query = "
         SELECT #@__arctype.*,#@__channeltype.typename AS ctypename,
