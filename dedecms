@@ -5,7 +5,7 @@
  *
  * @version        2019年6月5日 tianya $
  * @package        DedeCMS.Command
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  */
 // 切换工作目录到./src
 $workDir = dirname(__FILE__)."/src";

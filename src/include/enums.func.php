@@ -4,7 +4,7 @@
  *
  * @version        $Id: enums.func.php 2 13:19 2011-3-24 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

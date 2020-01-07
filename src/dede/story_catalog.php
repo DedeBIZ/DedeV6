@@ -2,7 +2,7 @@
 /**
  * @version        $Id: story_catalog.php 1 9:02 2010年9月25日Z 蓝色随想 $
  * @package        DedeCMS.Module.Book
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

@@ -5,7 +5,7 @@
  *
  * @version        $Id: feedback.php 2 15:56 2012年10月30日Z tianya $
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

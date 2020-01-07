@@ -7,7 +7,7 @@
  *
  * @version        $Id: request.class.php 1 12:03 2010-10-28 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

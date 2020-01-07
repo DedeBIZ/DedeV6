@@ -5,7 +5,7 @@
  *
  * @version        $Id: testenv.php 13:57 2011/11/10 tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
