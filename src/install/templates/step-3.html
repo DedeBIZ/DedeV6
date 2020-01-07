@@ -46,6 +46,11 @@
         //$o('postloader').style.display = 'block';
         document.form1.submit();
     }
+
+    function randpwd() {
+        // >= IE8
+        document.querySelector("input[name='adminpwd']").value = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+    }
 -->
 </script>
 <link href="style.css" rel="stylesheet" type="text/css" />
@@ -178,7 +183,7 @@
             </tr>
             <tr>
                 <td class="onetd"><strong>密　码：</strong></td>
-                <td><input name="adminpwd" type="text" value="admin" class="input-txt" /></td>
+                <td><input name="adminpwd" type="text" value="admin" class="input-txt" /><small>默认密码：admin，建议 <a href="javascript:randpwd();">手动生成</a></small></td>
             </tr>
             <tr>
                 <td class="onetd"><strong>Cookie加密码：</strong></td>
