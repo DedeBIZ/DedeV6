@@ -8,7 +8,7 @@
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
-require_once (dirname(__FILE__).'/common.inc.php');
+require_once (dirname(__FILE__).'/../include/common.inc.php');
 require_once (DEDEDATA.'/safe/inc_safe_config.php');
 require_once (DEDEDATA.'/config.cache.inc.php');
 $config = array(
@@ -17,8 +17,8 @@ $config = array(
     'word_type'  => (int)$safe_codetype,   // 1:数字  2:英文   3:单词
     'img_width'   => $safe_wwidth,
     'use_boder'   => TRUE,
-    'font_file'   => dirname(__FILE__).'/data/fonts/'.mt_rand(1,3).'.ttf',
-    'wordlist_file'   => dirname(__FILE__).'/data/words/words.txt',
+    'font_file'   => DEDEINC.'/data/fonts/'.mt_rand(1,3).'.ttf',
+    'wordlist_file'   => DEDEINC.'/data/words/words.txt',
     'filter_type' => 5);
 
 $enkey = substr(md5(substr($cfg_cookie_encode,0,5)),0,10);

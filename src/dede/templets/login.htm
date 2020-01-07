@@ -14,7 +14,7 @@ function changeAuthCode() {
 	num = num + rand;
 	$('#ver_code').css('visibility','visible');
 	if ($("#vdimgck")[0]) {
-		$("#vdimgck")[0].src = "../include/vdimgck.php?tag=" + num;
+		$("#vdimgck")[0].src = "../plus/vdimgck.php?tag=" + num;
 	}
 	return false;	
 }
@@ -39,7 +39,7 @@ function changeAuthCode() {
         	{
         ?>
 	   <dt>验证码：</dt>
-	   <dd><input id="vdcode" type="text" name="validate" style="text-transform:uppercase;"/><img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="../include/vdimgck.php"/>
+	   <dd><input id="vdcode" type="text" name="validate" style="text-transform:uppercase;"/><img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="../plus/vdimgck.php"/>
            <a href="#" onClick="changeAuthCode();">看不清？ </a></dd>
 		<?php
        		}
