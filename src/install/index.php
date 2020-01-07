@@ -10,9 +10,9 @@
 //error_reporting(E_ALL);
 error_reporting(E_ALL || ~E_NOTICE);
 
-$verMsg = ' V5.7 UTF8SP2';
+$verMsg = ' V5.8 UTF8';
 $s_lang = 'utf-8';
-$dfDbname = 'dedecmsv57utf8sp2';
+$dfDbname = 'dedecmsv58utf8';
 $errmsg = '';
 define('INSTALL_DEMO_NAME', 'dedev57demo.txt');
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');

@@ -16,3 +16,4 @@ src/data/enums/
 src/index.html
 src/data/admin/
 src/data/module/
+src/uploads/*.php
