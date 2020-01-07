@@ -12,3 +12,5 @@ src/install/module-install.php.bak
 src/a/*
 src/uploads/allimg/*
 src/.txt
+src/data/enums/
+src/index.html
