@@ -82,7 +82,7 @@ MySQL扩展库
 
 2.上传程序目录中的/uploads到网站根目录
 
-3.运行http://www.yourname.com/install/index.php(yourname表示你的域名),按照安装提速说明进行程序安装
+3.运行`http://www.yourname.com/install/index.php`(yourname表示你的域名),按照安装提速说明进行程序安装
 
 ## 版权信息
 
