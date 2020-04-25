@@ -33,6 +33,7 @@ if(empty($f))
 {
     $f = 'form1.picname';
 }
+$f = RemoveXSS($f);
 if(empty($v))
 {
     $v = 'picview';

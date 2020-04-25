@@ -12,6 +12,8 @@ require_once(dirname(__FILE__).'/../include/common.inc.php');
 require_once(DEDEINC.'/userlogin.class.php');
 if(empty($dopost)) $dopost = '';
 
+$gotopage = RemoveXSS($gotopage);
+
 //检测安装目录安全性
 if( is_dir(dirname(__FILE__).'/../install') )
 {

@@ -12,7 +12,7 @@
 require_once(dirname(__FILE__)."/../include/common.inc.php");
 require_once(DEDEINC."/channelunit.class.php");
 if(!isset($action)) $action = '';
-
+unset($_FILES);
 if(isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid) ? $aid : 0);
 $type = (!isset($type) ? "" : $type);
