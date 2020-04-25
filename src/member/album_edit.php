@@ -221,7 +221,7 @@ else if($dopost=='save')
             exit();
         }
     }
-	$description = HtmlReplace($description, -1);//2011.06.30 增加html过滤 （by:织梦的鱼）
+	$description = HtmlReplace($description, -1);
     //处理图片文档的自定义属性
     if($litpic!='') $flag = 'p';
 

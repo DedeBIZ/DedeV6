@@ -114,7 +114,6 @@ if ($GLOBALS['cfg_html_editor']=='ckeditor' && $CKUpload)
 
 
 if(!empty($noeditor)){
-	//（2011.08.25 根据用户反馈修正图片上传回调 by:织梦的鱼）
 	ShowMsg("成功上传一幅图片！","select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&noeditor=yes&activepath=".urlencode($activepath)."/$mdir&d=".time());
 }else{
 	ShowMsg("成功上传一幅图片！","select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."/$mdir&d=".time());

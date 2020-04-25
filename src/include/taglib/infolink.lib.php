@@ -81,7 +81,7 @@ function lib_infolink(&$ctag,&$refObj)
     {
         $sontype = ( ($nativeplace % 500 != 0) ? $nativeplace : 0 );
         $toptype = ( ($nativeplace % 500 == 0) ? $nativeplace : ( $nativeplace-($nativeplace%500) ) );
-		//2011-6-21 修改地区列表的一个小空格 论坛http://bbs.dedecms.com/371492.html(by：织梦的鱼)
+		
         $fields['nativeplace'] = "<a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> <b>{$em_nativeplaces[$toptype]}</b></a> &gt;&gt; ";
         foreach($em_nativeplaces as $eid=>$em)
         {

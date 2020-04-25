@@ -45,7 +45,6 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
     global $dsql, $cfg_phpurl;
     $phppath = $cfg_phpurl;
     $islinktype = false;
-    //$link_type = trim($ctag->GetAtt('type')); (2011.6.29 修正下载链接列表 by：织梦的鱼)
     if(!empty($link_type)) $islinktype = true;
     $dtp = new DedeTagParse();
     $dtp->LoadSource($fvalue);

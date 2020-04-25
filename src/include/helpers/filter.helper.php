@@ -27,7 +27,7 @@ if ( ! function_exists('HtmlReplace'))
     function HtmlReplace($str,$rptype=0)
     {
         $str = stripslashes($str);
-		$str = preg_replace("/<[\/]{0,1}style([^>]*)>(.*)<\/style>/i", '', $str);//2011-06-30 禁止会员投稿添加css样式 (by:织梦的鱼)
+        $str = preg_replace("/<[\/]{0,1}style([^>]*)>(.*)<\/style>/i", '', $str);
         if($rptype==0)
         {
             $str = dede_htmlspecialchars($str);

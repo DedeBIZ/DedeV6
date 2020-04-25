@@ -204,8 +204,8 @@ $cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
 $cfg_plus_dir = $cfg_cmspath.'/plus';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
 
-$cfg_images_dir = $cfg_cmspath.'/images';
-$cfg_imagesurl = $cfg_mainsite.$cfg_images_dir;
+$cfg_static_dir = $cfg_cmspath.'/static';
+$cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
 
 $cfg_mobile_dir = $cfg_cmspath.'/m';
 $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;

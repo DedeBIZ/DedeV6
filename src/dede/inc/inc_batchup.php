@@ -100,7 +100,7 @@ function DelArc($aid, $type='ON', $onlyfile=FALSE,$recycle=0)
                 $dsql->ExecuteNoneQuery("Delete From `#@__erradd` where aid='$aid' ");
                 if($addtable != '')
                 {
-                    $dsql->ExecuteNoneQuery("Delete From `$addtable` where aid='$aid'");//2011.7.3 根据论坛反馈，修复删除文章时无法清除附加表中对应的数据 (by：织梦的鱼)
+                    $dsql->ExecuteNoneQuery("Delete From `$addtable` where aid='$aid'");
                 }
                 if($issystem != -1)
                 {

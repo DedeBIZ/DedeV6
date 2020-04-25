@@ -217,7 +217,7 @@ else if($dopost=='save')
         ShowMsg("无法获得主键，因此无法进行后续操作！","-1");
         exit();
     }
-	$description = HtmlReplace($description, -1);//2011.06.30 增加html过滤 （by:织梦的鱼）
+	$description = HtmlReplace($description, -1);
     //保存到主表
     $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
 color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)

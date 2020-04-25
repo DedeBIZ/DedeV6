@@ -250,7 +250,7 @@ $dh->close();
 
 <table width='100%'>
 <form action='select_images_post.php' method='POST' enctype="multipart/form-data" name='myform'>
-<?php $noeditor = !empty($noeditor)?"<input type='hidden' name='noeditor' value='yes'>":''; echo $noeditor;//（2011.08.25 根据用户反馈修正图片上传回调 by:织梦的鱼）?>
+<?php $noeditor = !empty($noeditor)?"<input type='hidden' name='noeditor' value='yes'>":''; echo $noeditor;?>
 <input type='hidden' name='activepath' value='<?php echo $activepath?>'>
 <input type='hidden' name='f' value='<?php echo $f?>'>
 <input type='hidden' name='v' value='<?php echo $v?>'>
