@@ -35,7 +35,7 @@ require_once(DEDEINC.'/dedevote.class.php');
 function lib_loop(&$ctag,&$refObj)
 {
     global $dsql;
-    $attlist="table|,tablename|,row|8,sort|,if|,ifcase|,orderway|desc";//(2011.7.22 增加loop标签orderway属性 by:织梦的鱼)
+    $attlist="table|,tablename|,row|8,sort|,if|,ifcase|,orderway|desc";
     FillAttsDefault($ctag->CAttribute->Items,$attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
 

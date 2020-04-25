@@ -38,7 +38,6 @@ function lib_hotwords(&$ctag,&$refObj)
     if(empty($maxlength)) $maxlength = 20;
     $maxlength = $maxlength+1;
     $mintime = $nowtime - ($subday * 24 * 3600);
-	// 2011-6-28 根据论坛反馈(http://bbs.dedecms.com/371416.html)，修正SQL大小写问题(by:织梦的鱼)
     $dsql->SetQuery("SELECT keyword FROM `#@__search_keywords` WHERE lasttime>$mintime AND length(keyword)<$maxlength ORDER BY count DESC LIMIT 0,$num");
     $dsql->Execute('hw');
     $hotword = '';

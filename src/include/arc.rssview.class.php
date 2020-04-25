@@ -187,7 +187,6 @@ class RssView
             $row["stime"] = GetDateMK($row["pubdate"]);
             $row["image"] = "<img src='".$row["picname"]."' border='0'>";
             $row["fullurl"] = $GLOBALS["cfg_basehost"].$row["arcurl"];
-            // 2011-6-20 启用多站点RSS输出存在的路径问题(by:织梦的鱼)
             if($GLOBALS['cfg_multi_site'] == 'Y') $row["fullurl"] = $row["arcurl"];
             $row["phpurl"] = $GLOBALS["cfg_plus_dir"];
             $row["templeturl"] = $GLOBALS["cfg_templets_dir"];

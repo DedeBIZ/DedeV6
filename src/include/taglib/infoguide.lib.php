@@ -58,7 +58,7 @@ function lib_infoguide(&$ctag,&$refObj)
     
     if($hasSetEnumJs !='has' )
     {
-        $revalue .= '<script language="javascript" type="text/javascript" src="'.$cfg_mainsite.$cmspath.'images/enums.js"></script>'."\r\n";
+        $revalue .= '<script language="javascript" type="text/javascript" src="'.$cfg_mainsite.$cmspath.'static/enums.js"></script>'."\r\n";
         $GLOBALS['hasSetEnumJs'] = 'hasset';
     }
     

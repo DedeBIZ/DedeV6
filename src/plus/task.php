@@ -43,7 +43,7 @@ while($arr = $dsql->GetArray())
 {
     $starttime = $arr['starttime'];
     $endtime = $arr['endtime'];
-	$ntime = strtotime("now");//(计划任务时间比较修正，2011.6.24 by：织梦的鱼)
+	$ntime = strtotime("now");
     //跳过一次性运行，并且已经运行的任务
     if($arr['lastrun'] > $starttime && $arr['runtype']==1) continue;
     //超过了设定的任务结束时间

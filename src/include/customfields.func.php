@@ -46,7 +46,7 @@ function GetFormItem($ctag, $admintype='admin')
     else if($fieldType=='stepselect')
     {
             global $hasSetEnumJs,$cfg_cmspath;
-            $cmspath = ( (empty($cfg_cmspath) || !preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath );//2011.08.04 根据论坛反馈修正联动模型 （by：织梦的鱼）
+            $cmspath = ( (empty($cfg_cmspath) || !preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath );
             $myformItem = '';
             $myformItem .= "<input type='hidden' id='hidden_{$fieldname}' name='{$fieldname}' value='0' />\r\n";
             $myformItem .= "<span id='span_{$fieldname}'></span>\r\n";
@@ -54,7 +54,7 @@ function GetFormItem($ctag, $admintype='admin')
             $myformItem .= "<span id='span_{$fieldname}_sec'></span>\r\n";
             if($hasSetEnumJs != 'hasset')
             {
-                $myformItem .= '<script language="javascript" type="text/javascript" src="'.$cmspath.'images/enums.js"></script>'."\r\n";
+                $myformItem .= '<script language="javascript" type="text/javascript" src="'.$cmspath.'static/enums.js"></script>'."\r\n";
                 $GLOBALS['hasSetEnumJs'] = 'hasset';
             }
             $myformItem .= "<script language='javascript' type='text/javascript' src='{$cmspath}data/enums/{$fieldname}.js'></script>\r\n";
@@ -421,7 +421,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype='admin', $fieldname='')
         $myformItem .= "<span id='span_{$fieldname}_sec'></span>\r\n";
         if($hasSetEnumJs != 'hasset')
         {
-            $myformItem .= '<script language="javascript" type="text/javascript" src="'.$cmspath.'images/enums.js"></script>'."\r\n";
+            $myformItem .= '<script language="javascript" type="text/javascript" src="'.$cmspath.'static/enums.js"></script>'."\r\n";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
         $myformItem .= "<script language='javascript' type='text/javascript' src='{$cmspath}data/enums/{$fieldname}.js'></script>\r\n";

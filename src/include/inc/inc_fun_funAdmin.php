@@ -185,7 +185,7 @@ function SpGetEditor($fname,$fvalue,$nheight="350",$etype="Basic",$gtype="print"
     else if($GLOBALS['cfg_html_editor']=='ckeditor')
     {
         $code = <<<EOT
-<script src="{$GLOBALS['cfg_images_dir']}/ckeditor/ckeditor.js"></script>
+<script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
 <textarea id="{$fname}" name="{$fname}" rows="8" cols="60">{$fvalue}</textarea>
 <script>
 var editor = CKEDITOR.replace('{$fname}');
