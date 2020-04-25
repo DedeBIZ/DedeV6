@@ -184,37 +184,13 @@ function SpGetEditor($fname,$fvalue,$nheight="350",$etype="Basic",$gtype="print"
     }
     else if($GLOBALS['cfg_html_editor']=='ckeditor')
     {
-        require_once(DEDEINC.'/ckeditor/ckeditor.php');
-        $CKEditor = new CKEditor();
-        $CKEditor->basePath = $GLOBALS['cfg_cmspath'].'/include/ckeditor/' ;
-        $config = $events = array();
-        $config['extraPlugins'] = 'dedepage,multipic,addon';
-		if($bbcode)
-		{
-			$CKEditor->initialized = true;
-			$config['extraPlugins'] .= ',bbcode';
-			$config['fontSize_sizes'] = '30/30%;50/50%;100/100%;120/120%;150/150%;200/200%;300/300%';
-			$config['disableObjectResizing'] = 'true';
-			$config['smiley_path'] = $GLOBALS['cfg_cmspath'].'/images/smiley/';
-			// 获取表情信息
-			require_once(DEDEDATA.'/smiley.data.php');
-			$jsscript = array();
-			foreach($GLOBALS['cfg_smileys'] as $key=>$val)
-			{
-				$config['smiley_images'][] = $val[0];
-				$config['smiley_descriptions'][] = $val[3];
-				$jsscript[] = '"'.$val[3].'":"'.$key.'"';
-			}
-			$jsscript = implode(',', $jsscript);
-			echo jsScript('CKEDITOR.config.ubb_smiley = {'.$jsscript.'}');
-		}
-
-        $GLOBALS['tools'] = empty($toolbar[$etype])? $GLOBALS['tools'] : $toolbar[$etype] ;
-        $config['toolbar'] = $GLOBALS['tools'];
-        $config['height'] = $nheight;
-        $config['skin'] = 'kama';
-        $CKEditor->returnOutput = TRUE;
-        $code = $CKEditor->editor($fname, $fvalue, $config, $events);
+        $code = <<<EOT
+<script src="{$GLOBALS['cfg_images_dir']}/ckeditor/ckeditor.js"></script>
+<textarea id="{$fname}" name="{$fname}" rows="8" cols="60">{$fvalue}</textarea>
+<script>
+var editor = CKEDITOR.replace('{$fname}');
+</script>
+EOT;
         if($gtype=="print")
         {
             echo $code;
@@ -223,8 +199,7 @@ function SpGetEditor($fname,$fvalue,$nheight="350",$etype="Basic",$gtype="print"
         {
             return $code;
         }
-    }
-    else { 
+    } else { 
         /*
         // ------------------------------------------------------------------------
         // 当前版本,暂时取消dedehtml编辑器的支持

@@ -7,7 +7,9 @@ if(isset($_FILES['GLOBALS'])) exit('Request not allow!');
 //这里强制限定的某些文件类型禁止上传
 $cfg_not_allowall = "php|pl|cgi|asp|aspx|jsp|php3|shtm|shtml";
 $keyarr = array('name', 'type', 'tmp_name', 'size');
-if ($GLOBALS['cfg_html_editor']=='ckeditor' && isset($_FILES['upload']))
+if ($GLOBALS['cfg_html_editor']=='ckeditor' && isset($_FILES['upload']) || 
+$GLOBALS['cfg_html_editor']=='ckeditor4' && isset($_FILES['upload'])
+)
 {
     $_FILES['imgfile'] = $_FILES['upload'];
     $CKUpload = TRUE;

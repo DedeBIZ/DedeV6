@@ -23,6 +23,7 @@ if(empty($activepath))
     }
 }
 
+
 if(empty($imgfile))
 {
     $imgfile='';
@@ -106,11 +107,11 @@ $CKUpload = isset($CKUpload)? $CKUpload : FALSE;
 if ($GLOBALS['cfg_html_editor']=='ckeditor' && $CKUpload)
 {
     $fileurl = $activepath.'/'.$filename;
-    $message = '';
-    
-    $str='<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction('.$CKEditorFuncNum.', \''.$fileurl.'\', \''.$message.'\');</script>';
-    exit($str);
+    $result = array('url' => $fileurl,"uploaded"=>1,'fileName'=>$filename);
+    echo json_encode($result);
+    exit;
 }
+
 
 if(!empty($noeditor)){
 	//（2011.08.25 根据用户反馈修正图片上传回调 by:织梦的鱼）
