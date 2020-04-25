@@ -13,6 +13,7 @@ CheckPurview('pic_view');
 if(empty($activepath)) $activepath=$cfg_medias_dir;
 
 $activepath = preg_replace("#\/{1,}#", "/", $activepath);
+$activepath = RemoveXSS($activepath);
 $truePath = $cfg_basedir.$activepath;
 $listSize=5;
 include DedeInclude('templets/file_pic_view.htm');

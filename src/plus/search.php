@@ -17,6 +17,7 @@ $typeid = (isset($typeid) && is_numeric($typeid)) ? $typeid : 0;
 $channeltype = (isset($channeltype) && is_numeric($channeltype)) ? $channeltype : 0;
 $kwtype = (isset($kwtype) && is_numeric($kwtype)) ? $kwtype : 0;
 $mid = (isset($mid) && is_numeric($mid)) ? $mid : 0;
+unset($typeArr);
 
 if(!isset($orderby)) $orderby='';
 else $orderby = preg_replace("#[^a-z]#i", '', $orderby);

@@ -57,6 +57,7 @@ else if($open==1)
     //更新下载次数
     $id = isset($id) && is_numeric($id) ? $id : 0;
     $link = base64_decode(urldecode($link));
+    $linkinfo = parse_url($link);
     if ( !$link )
     {
         ShowMsg('无效地址','javascript:;');
@@ -77,9 +78,11 @@ else if($open==1)
     {
         $site = explode('|', $site);
         $domain = parse_url(trim($site[0]));
-        $allowed[] = $domain['host'];
+        if ($domain['host'] ) {
+            $allowed[] = $domain['host'];
+        }
     }
-    
+
     if ( !in_array($linkinfo['host'], $allowed) )
     {
         ShowMsg('非下载地址，禁止访问','javascript:;');

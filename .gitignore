@@ -17,3 +17,5 @@ src/index.html
 src/data/admin/
 src/data/module/
 src/uploads/*.php
+src/data/time.lock.inc
+src/m/index.html

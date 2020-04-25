@@ -24,6 +24,8 @@ if(!isset($flag)) $flag = '';
 if(!isset($arcrank)) $arcrank = '';
 if(!isset($dopost)) $dopost = '';
 
+$arcrank = RemoveXSS($arcrank);
+
 //检查权限许可，总权限
 CheckPurview('a_List,a_AccList,a_MyList');
 
