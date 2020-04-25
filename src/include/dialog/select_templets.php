@@ -40,7 +40,7 @@ if(empty($comeback))
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=<?php echo $cfg_soft_lang; ?>'>
 <title>模板管理器</title>
-<link href='../../plus/img/base.css' rel='stylesheet' type='text/css'>
+<link href='../../images/img/base.css' rel='stylesheet' type='text/css'>
 <style>
 .linerow {border-bottom: 1px solid #CBD8AC;}
 </style>

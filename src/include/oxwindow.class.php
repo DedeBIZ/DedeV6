@@ -134,7 +134,7 @@ class OxWindow
      */
     function AddTitle($title, $col="2")
     {
-        global $cfg_plus_dir;
+        global $cfg_images_dir;
         if($col!=""&&$col!="0")
         {
             $colspan="colspan='$col'";
@@ -144,7 +144,7 @@ class OxWindow
             $colspan="";
         }
         $this->myWinItem .= "<tr bgcolor='#DADADA'>\r\n";
-        $this->myWinItem .= "<td $colspan background='{$cfg_plus_dir}/img/wbg.gif' height='26'><font color='#666600'><b>$title</b></font></td>\r\n";
+        $this->myWinItem .= "<td $colspan background='{$cfg_images_dir}/img/wbg.gif' height='26'><font color='#666600'><b>$title</b></font></td>\r\n";
         $this->myWinItem .= "</tr>\r\n";
     }
 
@@ -191,7 +191,7 @@ class OxWindow
      */
     function GetWindow($wintype="save", $msg="", $isform=true)
     {
-        global $cfg_plus_dir;
+        global $cfg_images_dir;
         $this->StartWin();
         $this->myWin .= $this->myWinItem;
         if($wintype!="")
@@ -203,9 +203,9 @@ class OxWindow
 <td colspan='2' bgcolor='#F9FCEF'>
 <table width='270' border='0' cellpadding='0' cellspacing='0'>
 <tr align='center' height='28'>
-<td width='90'><input name='imageField1' type='image' class='np' src='{$cfg_plus_dir}/img/button_".$wintype.".gif' width='60' height='22' border='0' /></td>
-<td width='90'><a href='#'><img class='np' src='{$cfg_plus_dir}/img/button_reset.gif' width='60' height='22' border='0' onClick='this.form.reset();return false;' /></a></td>
-<td><a href='#'><img src='{$cfg_plus_dir}/img/button_back.gif' width='60' height='22' border='0' onClick='history.go(-1);' /></a></td>
+<td width='90'><input name='imageField1' type='image' class='np' src='{$cfg_images_dir}/img/button_".$wintype.".gif' width='60' height='22' border='0' /></td>
+<td width='90'><a href='#'><img class='np' src='{$cfg_images_dir}/img/button_reset.gif' width='60' height='22' border='0' onClick='this.form.reset();return false;' /></a></td>
+<td><a href='#'><img src='{$cfg_images_dir}/img/button_back.gif' width='60' height='22' border='0' onClick='history.go(-1);' /></a></td>
 </tr>
 </table>
 </td>

@@ -14,7 +14,7 @@
 			{
 				var addonUrl = this.getValueOf( 'Link', 'txtUrl' );
 				var addonTitle = this.getValueOf( 'Link', 'txtTitle');
-				var tempvar='<table width="450">\r    <tbody>\r        <tr>\r            <td width="20" height="30"><a target="_blank" href="'+addonUrl+'"><img border="0" align="middle" src="/plus/img/addon.gif" alt="" /></a></td>\r            <td><a target="_blank" href="'+addonUrl+'"><u>'+addonTitle+'</u></a></td>\r        </tr>\r    </tbody>\r</table>';
+				var tempvar='<table width="450">\r    <tbody>\r        <tr>\r            <td width="20" height="30"><a target="_blank" href="'+addonUrl+'"><img border="0" align="middle" src="/images/img/addon.gif" alt="" /></a></td>\r            <td><a target="_blank" href="'+addonUrl+'"><u>'+addonTitle+'</u></a></td>\r        </tr>\r    </tbody>\r</table>';
 				editor.insertHtml(tempvar);
 				
 			},
