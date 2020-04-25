@@ -2,7 +2,7 @@
 /**
  * @version        $Id: common.inc.php 3 17:44 2010-11-23 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -204,6 +204,9 @@ $cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
 $cfg_plus_dir = $cfg_cmspath.'/plus';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
 
+$cfg_images_dir = $cfg_cmspath.'/images';
+$cfg_imagesurl = $cfg_mainsite.$cfg_images_dir;
+
 $cfg_mobile_dir = $cfg_cmspath.'/m';
 $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
 
@@ -238,7 +241,7 @@ $cfg_soft_dir = $cfg_medias_dir.'/soft';
 $cfg_other_medias = $cfg_medias_dir.'/media';
 
 //软件摘要信息，****请不要删除本项**** 否则系统无法正确接收系统漏洞或升级信息
-$cfg_version = 'V57_UTF8_SP2';
+$cfg_version = 'V58_UTF8';
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 

@@ -375,12 +375,12 @@ echo <<<EOT
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset={$cfg_soft_lang}">
 <title>德得广告</title>
-<link rel="stylesheet" type="text/css" href="{$cfg_plus_dir}/img/base.css">
+<link rel="stylesheet" type="text/css" href="{$cfg_images_dir}/img/base.css">
 </head>
-<body background='{$cfg_plus_dir}/img/allbg.gif' leftmargin="8" topmargin='8'>
+<body background='{$cfg_images_dir}/img/allbg.gif' leftmargin="8" topmargin='8'>
 <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#DFF9AA">
   <tr>
-    <td height="28" style="border:1px solid #DADADA" background='{$cfg_plus_dir}/img/wbg.gif'>&nbsp;<b><a href="?">德得广告 </a> &gt;&gt; 配置德得广告</b></td>
+    <td height="28" style="border:1px solid #DADADA" background='{$cfg_images_dir}/img/wbg.gif'>&nbsp;<b><a href="?">德得广告 </a> &gt;&gt; 配置德得广告</b></td>
   </tr>
   <tr>
   <td width="100%" height="80" style="padding-top:5px" bgcolor='#ffffff'>
@@ -388,7 +388,7 @@ echo <<<EOT
   <input type='hidden' name='dopost' value='bind_user'>
   <table width='100%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#DADADA'>
     <tr bgcolor='#DADADA'>
-      <td colspan='2' background='{$cfg_plus_dir}/img/wbg.gif' height='26'><font color='#666600'><b>德得广告</b></font></td>
+      <td colspan='2' background='{$cfg_images_dir}/img/wbg.gif' height='26'><font color='#666600'><b>德得广告</b></font></td>
     </tr>
     <tr bgcolor='#FFFFFF'>
       <td colspan='2'  height='100'>

@@ -13,7 +13,7 @@ function changeAuthCode() {
 	num = num + rand;
 	$('#ver_code').css('visibility','visible');
 	if ($("#vdimgck")[0]) {
-		$("#vdimgck")[0].src = "../include/vdimgck.php?tag=" + num;
+		$("#vdimgck")[0].src = "../plus/vdimgck.php?tag=" + num;
 	}
 	return false;
 }
@@ -66,7 +66,7 @@ document.write("午夜好，");
         </li>
         <li> <span>验证码：</span>
           <input id="vdcode" class="text login_from3" type="text" style="width: 50px; text-transform: uppercase;" name="vdcode"/>
-          <img id="vdimgck" align="absmiddle" onclick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="../include/vdimgck.php"/>
+          <img id="vdimgck" align="absmiddle" onclick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="../plus/vdimgck.php"/>
            看不清？ <a href="#" onclick="changeAuthCode();">点击更换</a> </li>
         <li> <span>有效期：</span>
           <input type="radio" value="2592000" name="keeptime" id="ra1"/>

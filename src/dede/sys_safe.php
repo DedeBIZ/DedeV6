@@ -4,7 +4,7 @@
  *
  * @version        $Id: sys_safe.php 1 22:28 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

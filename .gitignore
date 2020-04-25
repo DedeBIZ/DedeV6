@@ -11,3 +11,9 @@ src/install/index.html
 src/install/module-install.php.bak
 src/a/*
 src/uploads/allimg/*
+src/.txt
+src/data/enums/
+src/index.html
+src/data/admin/
+src/data/module/
+src/uploads/*.php

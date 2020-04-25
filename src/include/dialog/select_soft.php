@@ -4,7 +4,7 @@
  *
  * @version        $Id: select_soft.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeCMS.Dialog
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -51,7 +51,7 @@ if (!empty($noeditor))
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=<?php echo $cfg_soft_lang; ?>'>
 <title>软件管理器</title>
-<link href='../../plus/img/base.css' rel='stylesheet' type='text/css'>
+<link href='../../images/img/base.css' rel='stylesheet' type='text/css'>
 <style>
 .linerow {border-bottom: 1px solid #CBD8AC;}
 </style>

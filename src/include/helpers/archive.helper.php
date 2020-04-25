@@ -4,7 +4,7 @@
  *
  * @version        $Id: archive.helper.php 2 23:00 2010年7月5日Z tianya $
  * @package        DedeCMS.Helpers
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

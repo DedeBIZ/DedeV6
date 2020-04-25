@@ -2,7 +2,7 @@
 /**
  * @version        $Id: edit_space_info.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeCMS.Member
- * @copyright      Copyright (c) 2007 - 2019, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -21,10 +21,17 @@ if($dopost=='save')
     $spacename =(empty($spacename))? "" : $spacename;
     $maxlength = $cfg_max_face * 1024;
     $userdir = $cfg_user_dir.'/'.$cfg_ml->M_ID;
+
+    if (strpos($oldspacelogo,"..") > 0) 
+    {
+        die("not support!");
+    }
+
     if(!preg_match('#^'.$userdir."#", $oldspacelogo))
     {
         $oldspacelogo = '';
     }
+
     if(is_uploaded_file($spacelogo))
     {
         if(@filesize($_FILES['spacelogo']['tmp_name']) > $maxlength)
