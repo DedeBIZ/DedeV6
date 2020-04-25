@@ -76,6 +76,8 @@ MySQL扩展库
 
 - [DedeCMS官方主站](http://www.dedecms.com)
 
+- [DedeCMS问题反馈](https://github.com/dedetech/issues)
+
 - [DedeCMS Github](https://github.com/dedetech/)
 
 - [织梦维基](http://docs.dedecms.com)
