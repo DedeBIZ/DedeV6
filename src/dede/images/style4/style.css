@@ -1,7 +1,7 @@
 .top {
 	height:37px;
 	width:100%;
-	background:#d4dcdf url(admin_top_bg.gif) no-repeat right top;
+	background:rgb(231, 236, 239);
 	overflow:hidden;
 	clear:both;
 }
@@ -16,8 +16,11 @@
     padding-right: 11px;
     text-decoration: none;
 }
+.top_version{
+    color: #333 !important;
+}
 .dbox dt.lside {
-    background: url(dlgtitle.gif) repeat-x scroll 0 0 transparent;
+    background: rgb(231, 236, 239);
     border-bottom: 1px solid #D3DBDE;
 }
 .dbox {
