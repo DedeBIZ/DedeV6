@@ -168,7 +168,7 @@
             <td width="180" class="td1">验证码</td>
             <td><a name="mate_vdimgck" />
               <input name="vdcode" id="vdcode" type="text" class="ipt-txt" size="10" style="text-transform:uppercase;" />
-              <a href="#mate_vdimgck"><img id="vdimgck_img" src="../include/vdimgck.php" hspace="6" align="absmiddle" onClick="vdimgck();" title="看不清换一张" /></a> <a href="#mate_vdimgck" onClick="vdimgck();">看不清换一张</a></td>
+              <a href="#mate_vdimgck"><img id="vdimgck_img" src="../plus/vdimgck.php" hspace="6" align="absmiddle" onClick="vdimgck();" title="看不清换一张" /></a> <a href="#mate_vdimgck" onClick="vdimgck();">看不清换一张</a></td>
           </tr>
         </tbody>
         <tfoot>
@@ -183,7 +183,7 @@
 <script language="JavaScript" type="text/javascript">
 function vdimgck()
 {
-	document.getElementById("vdimgck_img").src = '../include/vdimgck.php?'+Math.random();
+	document.getElementById("vdimgck_img").src = '../plus/vdimgck.php?'+Math.random();
 }
 </script>
 {dede:include filename="../default/footer.htm"/}
