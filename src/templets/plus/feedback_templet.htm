@@ -63,7 +63,7 @@ function ajaxFeedback(aid, fid, type)
 		eval(formname);
 		if(f.validate)
 		{
-			if($DE('vdimg_'+fid)) $DE('vdimg_'+fid).src = "{dede:global.cfg_cmsurl/}/include/vdimgck.php?"+f.validate.value;
+			if($DE('vdimg_'+fid)) $DE('vdimg_'+fid).src = "{dede:global.cfg_cmsurl/}/plus/vdimgck.php?"+f.validate.value;
 			f.validate.value = '';
 		}
 		
@@ -230,7 +230,6 @@ function ajaxQuotePost(fid)
 					window.CKEDITOR_BASEPATH='{dede:global.cfg_cmsurl/}/include/ckeditor/';
 					//]]>
                     </script>
-            <script type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/ckeditor/ckeditor.js?t=B8DJ5M3"></script>
             {dede:php}
             GetEditor('msg','',100,'Feedback','print','false',true);
             {/dede:php}
@@ -250,7 +249,7 @@ function ajaxQuotePost(fid)
                 <?php if(preg_match("/4/",$safe_gdopen)){ ?>
                 验证码：
                 <input name="validate" type="text" id="validate" size="10" style="height:18px;width:60px;margin-right:6px;text-transform:uppercase;" class="nb" />
-                <img src='../include/vdimgck.php' width='60' height='24' style="cursor:pointer" onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片" />
+                <img src='../plus/vdimgck.php' width='60' height='24' style="cursor:pointer" onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片" />
                 <?php } ?>
                 <button type="submit" class="btn-2">发表评论</button>
               </div>
