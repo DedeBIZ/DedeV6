@@ -110,7 +110,7 @@ ContextMenu.fixPos=function(x,y){
 }
 
 ContextMenu.fixSize=function(){
-	WebFX_PopUpcss.style.height = ItemHeight * ItemNember + "px";
+	WebFX_PopUpcss.style.height = (ItemHeight * ItemNember + 20) + "px";
 	WebFX_PopUpcss.style.width =  MenuWidth + "px";
 	ItemNember = 0;
 }
