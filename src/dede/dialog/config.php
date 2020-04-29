@@ -8,8 +8,8 @@
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
-require_once(dirname(__FILE__)."/../common.inc.php");
-require_once(dirname(__FILE__)."/../userlogin.class.php");
+require_once(dirname(__FILE__)."/../../include/common.inc.php");
+require_once(DEDEINC."/userlogin.class.php");
 
 //获得当前脚本名称，如果你的系统被禁用了$_SERVER变量，请自行更改这个选项
 $dedeNowurl   =  '';

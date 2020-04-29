@@ -46,6 +46,7 @@ input,select,button{
 	width:960px;
 	/*position:relative;*/
 }
+
 .pright .infos_userinfo {
 	margin-bottom: 0px;
 }
@@ -736,4 +737,27 @@ input,select,button{
   position:fixed;
   top:0;
   margin:60px 0 0
+}
+@media only screen and (max-width: 768px) {
+	.w960, .w963{
+		width:100% !important;
+		/*position:relative;*/
+	}
+	.header {
+	    width: 100% !important;
+	}
+	#navMenu,.index .listbox dl,.index .bignews ul.c2 {
+		width: 100% !important;
+	}
+	.pleft,.pright,.listbox,.index .latestnews,.index .bignews,.flashnews,.index .userinfo .welcome {
+		width: 100% !important;
+	}
+	.index .latestlogin ul {
+		width: auto !important;
+	}
+	.sp-title .more {
+	    float: right;
+	    margin:auto;
+	    line-height: 27px;
+	}
 }

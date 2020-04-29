@@ -9,7 +9,7 @@
  * @link           http://www.dedecms.com
  */
 require_once(dirname(__FILE__)."/config.php");
-require_once(dirname(__FILE__)."/../image.func.php");
+require_once(DEDEINC."/image.func.php");
 
 
 if(empty($activepath))
