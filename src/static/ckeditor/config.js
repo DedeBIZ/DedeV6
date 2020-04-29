@@ -22,5 +22,5 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.removeButtons = 'About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
 
-	config.filebrowserImageUploadUrl = "/include/dialog/select_images_post.php";
+	config.filebrowserImageUploadUrl = "./dialog/select_images_post.php";
 };
