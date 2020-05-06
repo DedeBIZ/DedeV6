@@ -9,7 +9,7 @@
 require_once(dirname(__FILE__).'/../include/common.inc.php');
 @set_time_limit(0);
 
-$verMsg = ' V5.7 GBK';
+$verMsg = ' V5.8 UTF-8';
 $errmsg = '';
 $insLockfile = dirname(__FILE__).'/install_lock.txt';
 $moduleCacheFile = dirname(__FILE__).'/modules.tmp.inc';
