@@ -20,6 +20,8 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'tools', groups: [ 'tools' ] }
 	];
 
+	config.extraPlugins = 'dedepagebreak';
+
 	config.removeButtons = 'About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
 
 	config.filebrowserImageUploadUrl = "./dialog/select_images_post.php";
