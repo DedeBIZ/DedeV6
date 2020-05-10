@@ -18,7 +18,7 @@ else
     if($cfg_feedback_ck=='Y')
     {
         echo "验证码：<input name=\"validate\" type=\"text\" id=\"validate\" size=\"10\" style=\"height:18px;width:60px;margin-right:6px;text-transform: uppercase;\" class=\"nb\" />";
-        echo "<img src='{$cfg_cmsurl}/include/vdimgck.php' style='cursor:pointer' id='validateimg' onclick=\"this.src=this.src+'?'\"  title='点击我更换图片' alt='点击我更换图片' />\r\n";
+        echo "<img src='{$cfg_cmsurl}/plus/vdimgck.php' style='cursor:pointer' id='validateimg' onclick=\"this.src=this.src+'?'\"  title='点击我更换图片' alt='点击我更换图片' />\r\n";
     }
 }
 
