@@ -62,7 +62,7 @@ if (!empty($noeditor))
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=<?php echo $cfg_soft_lang; ?>'>
 <title>图片浏览器</title>
-<link href='../../images/img/base.css' rel='stylesheet' type='text/css'>
+<link href='../../static/img/base.css' rel='stylesheet' type='text/css'>
 <style>
 .linerow {border-bottom: 1px solid #CBD8AC;}
 .napisdiv {left:40;top:3;width:150px;height:100px;position:absolute;z-index:3;display:none;}
@@ -76,7 +76,7 @@ function ChangeImage(surl){ document.getElementById('picview').src = surl; }
 <div id="floater" class="napisdiv">
 <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src='img/picviewnone.gif' id='picview' border='0' alt='单击关闭预览'></a>
 </div>
-<SCRIPT language=JavaScript src="js/float.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../js/float.js"></SCRIPT>
 <SCRIPT language=JavaScript>
 function nullLink(){ return; }
 function ChangeImage(surl){ document.getElementById('floater').style.display='block';document.getElementById('picview').src = surl; }
@@ -191,7 +191,7 @@ while($file = $dh->read()) {
    </tr>";
         echo "$line";
     }
-    else if(preg_match("#\.(gif|png)#i", $file))
+    else if(preg_match("#\.(".$cfg_imgtype.")#i", $file))
     {
         $reurl = "$activeurl/$file";
         $reurl = preg_replace("#^\.\.#", "", $reurl);
