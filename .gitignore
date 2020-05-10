@@ -20,3 +20,4 @@ src/uploads/*.php
 src/data/time.lock.inc
 src/m/index.html
 src/uploads/userup
+src/uploads/20*
