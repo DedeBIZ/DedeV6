@@ -200,7 +200,7 @@ class DedeAttParse
                     switch($d)
                     {
                         case ' ':
-                            continue;
+                            // continue;
                             break;
                         case '\'':
                             $ddtag='\'';

@@ -144,7 +144,7 @@ if($channelid < -1 )
 
 
 // 栏目大于800则需要缓存数据
-$optHash = md5($cid.$admin_catalogs.$channelid);
+$optHash = md5($cid. serialize($admin_catalogs).$channelid);
 $optCache = DEDEDATA."/tplcache/inc_option_$optHash.inc";
 
 $typeCount = 0;

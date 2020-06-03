@@ -192,9 +192,8 @@ class DataListCP
     {
         if (is_array($val))
         {
-            while (list($key) = each($val))
-            {
-                $val[$key] = $this->XSSClean($val[$key]);
+            foreach ($val as $key => $v) {
+                $val[$key] = $this->XSSClean($v);
             }
             return $val;
         }
