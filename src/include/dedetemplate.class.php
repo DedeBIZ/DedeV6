@@ -1258,7 +1258,7 @@ class DedeTemplate
 class TagAttribute
 {
     var $count = -1;
-    var $items = ""; //属性元素的集合
+    var $items = array(); //属性元素的集合
 
     /**
      *  获得某个属性
