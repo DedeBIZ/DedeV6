@@ -16,7 +16,6 @@ body {
 <script type="text/javascript" src="js/calendar/calendar.js"></script>
 <script language="javascript" src="js/main.js"></script>
 <script type="text/javascript"src="js/handlers.js"></script>
-<script type="text/javascript" src="../static/swfupload/swfupload.js"></script>
 <script language="javascript" src="../static/js/jquery/jquery.js"></script>
 <script language="javascript" src="../static/js/jquery/ui.core.js"></script>
 <script language="javascript" src="../static/js/jquery/ui.draggable.js"></script>
@@ -58,111 +57,7 @@ function viewVote()
 }
 window.onload = function ()
 {
-	swfu = new SWFUpload(
-	{
-		// Backend Settings
-		upload_url: "swfupload.php",
-		post_params: {"PHPSESSID": "<?php echo session_id(); ?>", "dopost" : "", "arctype" : arctype,
-		"arcid":<?php echo $arcRow['id']?>},
-
-		// File Upload Settings
-		file_size_limit : "2 MB",	// 2MB
-		file_types : "*.jpg; *.gif; *.png",
-		file_types_description : "选择 JPEG/GIF/PNG 格式图片",
-		file_upload_limit : "0",
-
-		file_queue_error_handler : fileQueueError,
-		file_dialog_complete_handler : fileDialogComplete,
-		upload_progress_handler : uploadProgress,
-		upload_error_handler : uploadError,
-		upload_success_handler : uploadSuccess,
-		upload_complete_handler : uploadComplete,
-
-		button_image_url : "../static/SmallSpyGlassWithTransperancy_17x18.png",
-		button_placeholder_id : "spanButtonPlaceholder",
-		button_width: '100%',
-		button_height: 26,
-		button_text : '<div class="button" style="background-color:#E5F1CF; height:26px; text-align:center; line-height:26px">上传图片(可多选)</div>',
-		button_text_style : '',
-		button_text_top_padding: 0,
-		button_text_left_padding: 10,
-		button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
-		button_cursor: SWFUpload.CURSOR.HAND,
-		
-		// Flash Settings
-		flash_url : "../static/swfupload/swfupload.swf",
-
-		custom_settings : {
-			upload_target : "divFileProgressContainer"
-		},
-		
-		// Debug Settings
-		debug: false
-	});
 };
-
-function addtoEditOld(picurl,pid)
-{
-	var picTitle = jQuery('input[name="picinfook'+pid+'"]').val();
-	var picHTML = '<img src="'+picurl+'" alt="'+picTitle+'"/>';
-	CKEDITOR.instances.body.insertHtml(picHTML);
-}
-
-//删除已经上传的图片
-function delAlbPic(pid){
-	// 同步删除编辑器中插入的图片
-	jQuery("#__tmpbody").html();
-	jQuery.get('swfupload.php?dopost=addtoedit&id=' + pid, function(data)
-	{
-		var iptbody = CKEDITOR.instances.body.getData();
-		jQuery("#__tmpbody").html(iptbody);
-		jQuery("#__tmpbody").find('img').each(function()
-		{
-			if(jQuery(this).attr('src') == data)
-			{
-				//alert(data);
-				jQuery(this).remove();
-			}
-		});
-		CKEDITOR.instances.body.setData(jQuery("#__tmpbody").html()); 
-		jQuery("#__tmpbody").html();
-		var tgobj = $Obj('albCtok'+pid);
-		var myajax = new DedeAjax(tgobj);
-		myajax.SendGet2('swfupload.php?dopost=del&id='+pid);
-		$Obj('thumbnails').removeChild(tgobj);
-	});
-}
-
-function addtoEdit(pid)
-{
-	jQuery.get('swfupload.php?dopost=addtoedit&id=' + pid, function(data)
-	{
-		var picTitle = jQuery('input[name="picinfook'+pid+'"]').val();
-		var picHTML = '<img src="'+data+'" alt="'+picTitle+'"/>';
-		CKEDITOR.instances.body.insertHtml(picHTML);
-	});
-}
-
-//删除已经上传的图片(编辑时用)
-function delAlbPicOld(picfile, pid){
-	var iptbody = CKEDITOR.instances.body.getData();
-	jQuery("#__tmpbody").html(iptbody);
-	jQuery("#__tmpbody").find('img').each(function()
-	{
-		if(jQuery(this).attr('src') == picfile)
-		{
-			//alert(data);
-			jQuery(this).remove();
-		}
-	});
-	CKEDITOR.instances.body.setData(jQuery("#__tmpbody").html()); 
-	jQuery("#__tmpbody").html();
-	
-	var tgobj = $Obj('albold'+pid);
-	var myajax = new DedeAjax(tgobj);
-	myajax.SendGet2('swfupload.php?dopost=delold&picfile='+picfile);
-	$Obj('thumbnailsEdit').removeChild(tgobj);
-}
 -->
 </script>
 </head>
@@ -345,31 +240,7 @@ if($cfg_need_typeid2=='Y') {
     </tr>
     <tr>
       <td width="100%"><?php GetEditor("body",stripcslashes($addRow['body']),450); ?></td>
-      <td width="255" align="center" valign="top" bgcolor="#FFFFCC" id="mPic" style="display:none"><div class="multipic">
-          <div style="display: block;background-color:#E5F1CF; height:26px"> <span id="spanButtonPlaceholder"></span> </div>
-          <div id="divFileProgressContainer"></div>
-          
-          
-          <div id="thumbnailsEdit" style="width: 254px; height: 535px; background-color: rgb(255, 255, 255); overflow-y: scroll;">
-          <?php
-           //var_dump("SELECT * FROM `#@__uploads` WHERE arcid = {$addRow['aid']}");
-            $dsql->SetQuery("SELECT * FROM `#@__uploads` WHERE arcid = {$addRow['aid']}");
-            $dsql->Execute();
-            while($trow = $dsql->GetArray())
-            {
-          ?>
-            <div class="albCt" id="albold<?php echo $trow['aid'];?>"><img width="120" onclick="addtoEditOld('<?php echo $trow['url'];?>',<?php echo $trow['aid'];?>)" src="<?php echo $trow['url'];?>" style="cursor:pointer"><a href="javascript:delAlbPicOld('<?php echo $trow['url'];?>', <?php echo $trow['aid'];?>)">[删除]</a>
-              <div style="margin-top:10px">注释：
-                <input type="text" style="width:100px;" value="<?php echo $trow['title'];?>" name="picinfook<?php echo $trow['aid'];?>">
-              </div>
-            </div>
-            <?php
-            }
-            ?>
-            <div id="thumbnails"></div>
-          </div>
-          
-        </div></td>
+      <td width="255" align="center" valign="top" bgcolor="#FFFFCC" id="mPic" style="display:none"></td>
     </tr>
   </table>
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="votehead" style="margin-top:10px;">

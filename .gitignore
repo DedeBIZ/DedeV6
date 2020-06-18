@@ -9,7 +9,7 @@ src/install/install_lock.txt
 src/install/index.php.bak
 src/install/index.html
 src/install/module-install.php.bak
-src/a/*
+src/a/*/
 src/uploads/allimg/*
 src/.txt
 src/data/enums/
