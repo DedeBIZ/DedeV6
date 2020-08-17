@@ -77,6 +77,7 @@ else if($dopost=='save')
     if(empty($flags)) $flag = '';
     else $flag = join(',', $flags);
     $senddate = time();
+    if(empty($litpic_b64)) $litpic_b64 = '';
     $title = cn_substrR($title,$cfg_title_maxlen);
     $isremote  = (empty($isremote)? 0  : $isremote);
     $serviterm=empty($serviterm)? "" : $serviterm;
@@ -88,7 +89,21 @@ else if($dopost=='save')
     if(empty($ddisremote)) $ddisremote = 0;
 
     $litpic = GetDDImage('none', $picname, $ddisremote);
+    // 处理新的缩略图上传
+    if ($litpic_b64 != "") {
+        $data = explode( ',', $litpic_b64 );
+        $ntime = time();
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
+        CreateDir($savepath);
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
+        
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode( $data[ 1 ] ));
 
+        // 加水印
+        WaterImg($cfg_basedir.$fullUrl, 'up');
+        $litpic = $fullUrl;
+    }
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $senddate, $channelid, $senddate, $adminid);
 

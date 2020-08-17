@@ -114,11 +114,17 @@ function ReturnImg(reimg)
 			 window.opener.document.getElementById('div<?php echo $v?>').style.height = '100px';
 		 }
 		 else
-			 window.opener.document.getElementById('div<?php echo $v?>').style.backgroundImage = "url("+reimg+")";
+             window.opener.document.getElementById('div<?php echo $v?>').style.backgroundImage = "url("+reimg+")";
+             
 	  }
 		else if(window.opener.document.getElementById('<?php echo $v?>')){
 			window.opener.document.getElementById('<?php echo $v?>').src = reimg;
-		}
+        }
+        // 适配新的缩略图
+        if (window.opener.document.getElementById('litPic')) 
+        {
+            window.opener.document.getElementById('litPic').src = reimg;
+        }
 		if(document.all) window.opener=true;
 	}
 	

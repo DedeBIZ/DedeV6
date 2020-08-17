@@ -63,6 +63,7 @@ else if($dopost=='save')
     if(!isset($formhtml)) $formhtml = 0;
     if(!isset($formzip)) $formzip = 0;
     if(!isset($ddisfirst)) $ddisfirst = 0;
+    if(!isset($albums)) $albums = "";
     if(!isset($delzip)) $delzip = 0;
     if(empty($click)) $click = ($cfg_arc_click=='-1' ? mt_rand(50, 200) : $cfg_arc_click);
 
@@ -117,7 +118,21 @@ else if($dopost=='save')
         $ddisremote = 0;
     }
     $litpic = GetDDImage('none',$picname,$ddisremote);
+    // 处理新的缩略图上传
+    if ($litpic_b64 != "") {
+        $data = explode( ',', $litpic_b64 );
+        $ntime = time();
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
+        CreateDir($savepath);
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
+        
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode( $data[ 1 ] ));
 
+        // 加水印
+        WaterImg($cfg_basedir.$fullUrl, 'up');
+        $litpic = $fullUrl;
+    }
     //使用第一张图作为缩略图
     if($ddisfirst==1 && $litpic=='')
     {
@@ -126,7 +141,21 @@ else if($dopost=='save')
             $litpic = GetDDImage('ddfirst', $imgurl1, $isrm);
         }
     }
-    
+    // 处理新的缩略图上传
+    if ($litpic_b64 != "") {
+        $data = explode( ',', $litpic_b64 );
+        $ntime = time();
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
+        CreateDir($savepath);
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
+        
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode( $data[ 1 ] ));
+
+        // 加水印
+        WaterImg($cfg_basedir.$fullUrl, 'up');
+        $litpic = $fullUrl;
+    }
 
     //生成文档ID
     $arcID = GetIndexKey($arcrank,$typeid,$sortrank,$channelid,$senddate,$adminid);
@@ -248,6 +277,28 @@ else if($dopost=='save')
             $imginfo =  !empty(${'picinfook'.$k}) ? ${'picinfook'.$k} : '';
             $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $v {/dede:img}\r\n";
         }
+    }
+
+    if ($albums !== "") {
+        $albumsArr  = json_decode(stripslashes( $albums), true);
+
+        for ($i=0; $i <= count($albumsArr) - 1; $i++) { 
+            $album = $albumsArr[$i];
+            $data = explode( ',', $album['img'] );
+            $ntime = time();
+            $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
+            CreateDir($savepath);
+            $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+            $fullUrl = $fullUrl.".png";
+            
+            file_put_contents($cfg_basedir.$fullUrl, base64_decode( $data[ 1 ] ));
+            $info = '';
+            $imginfos = GetImageSize($cfg_basedir.$fullUrl, $info);
+            $v = $fullUrl;
+            $imginfo =  !empty($album['txt']) ? $album['txt'] : '';
+            $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $v {/dede:img}\r\n";
+        }
+
     }
 
     $imgurls = addslashes($imgurls);
