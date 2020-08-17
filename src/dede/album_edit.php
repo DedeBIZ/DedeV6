@@ -328,23 +328,6 @@ else if($dopost=='save')
             $fm->RmDirFiles($tmpzipdir);
         }
     }
-    /*---------------------
-    function _swfupload()
-    通过swfupload上传的新图片
-    ---------------------*/
-    if(is_array($_SESSION['bigfile_info']))
-    {
-        foreach($_SESSION['bigfile_info'] as $k=>$v)
-        {
-            $truefile = $cfg_basedir.$v;
-            if(strlen($v)<2 || !file_exists($truefile)) continue;
-            $info = '';
-            $imginfos = GetImageSize($truefile, $info);
-            $litpicname = $pagestyle > 2 ? GetImageMapDD($v, $cfg_ddimg_width) : $v;
-            $imginfo =  !empty(${'picinfook'.$k}) ? ${'picinfook'.$k} : '';
-            $imgurls .= "{dede:img ddimg='$litpicname' text='$imginfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $v {/dede:img}\r\n";
-        }
-    }
 
     if ($albums !== "") {
         $albumsArr  = json_decode(stripslashes( $albums), true);
