@@ -12,7 +12,6 @@
 // 生产环境使用production
 define('DEDE_ENVIRONMENT', 'production');
 
-
 if ( DEDE_ENVIRONMENT == 'production' )
 {
     error_reporting(E_ALL || ~E_NOTICE);
@@ -133,6 +132,11 @@ if( preg_match('/windows/i', @getenv('OS')) )
 require_once(DEDEDATA."/config.cache.inc.php");
 
 //Session保存路径
+$sessSaveHandler = @ini_get("session.save_handler");
+if ($sessSaveHandler !== "files") {
+    @ini_set("session.save_handler", "files");
+}
+
 $enkey = substr(md5(substr($cfg_cookie_encode,0,5)),0,10);
 $sessSavePath = DEDEDATA."/sessions_{$enkey}";
 if ( !is_dir($sessSavePath) ) mkdir($sessSavePath);
