@@ -16,7 +16,9 @@
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script language="javascript" src="../static/js/dedeajax2.js"></script>
   <script language='javascript' src="js/main.js"></script>
-  <script type="text/javascript" src="js/calendar/calendar.js"></script>
+  <link href="../static/css/daterangepicker.css" rel="stylesheet">
+  <script type="text/javascript" src="../static/js/moment.min.js"></script>
+  <script type="text/javascript" src="../static/js/daterangepicker.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
   <link rel="stylesheet" href="../static/css/jquery.fileupload.css">
   <link href="../static/css/cropper.min.css" rel="stylesheet">
@@ -372,7 +374,7 @@
               <td width="90">&nbsp;发布时间：</td>
               <td width="241"><?php
 			$nowtime = GetDateTimeMk(time());
-			echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" style=\"width:200\">";
+			echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" class='datepicker' style=\"width:200\">";
 			?> </td>
               <td width="90">消费金币：</td>
               <td width="379"><input name="money" type="text" id="money" value="0" size="10"> </td>

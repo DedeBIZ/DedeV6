@@ -124,15 +124,7 @@ function GetFormItem($ctag, $admintype='admin')
     else if($fieldType=="datetime")
     {
         $nowtime = GetDateTimeMk(time());
-        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:250px\" class=\"intxt\"  />";
-        $innertext .= "   <script language=\"javascript\" type=\"text/javascript\">
-                    Calendar.setup({
-                        inputField     :    \"$fieldname\",
-                        ifFormat       :    \"%Y-%m-%d %H:%M\",
-                        showsTime      :    true,
-                        timeFormat     :    \"24\"
-                    });
-                 </script>";
+        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:250px\" class=\"intxt datepicker\"/>";
     }
     else if($fieldType=='img'||$fieldType=='imgfile')
     {
@@ -514,15 +506,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype='admin', $fieldname='')
     else if($ftype=="datetime")
     {
         $nowtime = GetDateTimeMk($fvalue);
-        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:250px\" class=\"intxt\" />";
-        $innertext .= "   <script language=\"javascript\" type=\"text/javascript\">
-                    Calendar.setup({
-                        inputField     :    \"$fieldname\",
-                        ifFormat       :    \"%Y-%m-%d %H:%M\",
-                        showsTime      :    true,
-                        timeFormat     :    \"24\"
-                    });
-                 </script>";
+        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:250px\" class=\"intxt datepicker\" />";
     }
     else if($ftype=="img")
     {

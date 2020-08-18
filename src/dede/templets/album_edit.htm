@@ -14,7 +14,9 @@ body {
 <link href="css/albumupload.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="../static/js/jquery.js"></script>
 <script type="text/javascript" src="../static/js/dedeajax2.js"></script>
-<script type="text/javascript" src="js/calendar/calendar.js"></script>
+<link href="../static/css/daterangepicker.css" rel="stylesheet">
+<script type="text/javascript" src="../static/js/moment.min.js"></script>
+<script type="text/javascript" src="../static/js/daterangepicker.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/album.js"></script>
 <script type="text/javascript" src="js/handlers.js"></script>
@@ -306,33 +308,9 @@ if($cfg_need_typeid2=='Y') {
             <td width="90">&nbsp;发布时间：</td>
             <td width="250"><?php
 			$nowtime = GetDateTimeMk(time());
-			echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" style=\"width:200\">";
+			echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" style=\"width:200\" class='datepicker'>";
 			?>
-               <script language="javascript" type="text/javascript">
-				    var showX = getElementLeft($Obj("pubdate")) - 130;
-					var showY = (window.navigator.userAgent.indexOf("MSIE") >=1 )? getElementTop($Obj("pubdate")) + 465 :  getElementTop($Obj("pubdate")) + 435;
-					if((window.navigator.userAgent.indexOf("MSIE 7.0") >=1 )) {
-						showX = getElementLeft($Obj("pubdate"))+105;
-						showY = getElementTop($Obj("pubdate"))+1000;
-					}
-					if(window.navigator.userAgent.indexOf("MSIE 6.0")>=1)
-					{
-						Calendar.setup({
-							inputField     :    "pubdate",
-							ifFormat       :    "%Y-%m-%d %H:%M:%S",
-							showsTime      :    true,
-							timeFormat     :    "24"
-						});
-					} else {
-						Calendar.setup({
-							inputField     :    "pubdate",
-							ifFormat       :    "%Y-%m-%d %H:%M:%S",
-							showsTime      :    true,
-							position       :    [showX, showY],
-							timeFormat     :    "24"
-						});
-					}
-				 </script> </td>
+             </td>
             <td width="92">消费金币：</td>
             <td width="368"><input name="money" type="text" id="money" value="<?php echo $arcRow["money"]?>" size="10"></td>
           </tr>

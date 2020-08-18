@@ -603,10 +603,10 @@ function getElementTop(element) {
 
 // 生成一个随机ID
 function guid() {
-    function S4() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    }
-    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+	function S4() {
+		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+	}
+	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
 
 // 显示对话框，动态创建modal并显示，退出自动销毁窗体
@@ -622,57 +622,57 @@ args = {
 // 这里用到了一个展开语法
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
-    title = "DedeCMS";
-    if (typeof content == "undefined") content = "";
-    modalID = guid();
-    var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
-    var noClose = false;
+	title = "DedeCMS";
+	if (typeof content == "undefined") content = "";
+	modalID = guid();
+	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
+	var noClose = false;
 
-    if (args.length == 1) {
-        // 存在args参数
-        if (typeof args[0].title !== 'undefined' && args[0].title != "") {
-            title = args[0].title;
-        }
-        if (typeof args[0].footer !== 'undefined' && args[0].footer != "") {
-            footer = args[0].footer;
-        }
-        if (typeof args[0].noClose !== 'undefined' && args[0].noClose == true) {
-            noClose = true;
-        }
-    }
+	if (args.length == 1) {
+		// 存在args参数
+		if (typeof args[0].title !== 'undefined' && args[0].title != "") {
+			title = args[0].title;
+		}
+		if (typeof args[0].footer !== 'undefined' && args[0].footer != "") {
+			footer = args[0].footer;
+		}
+		if (typeof args[0].noClose !== 'undefined' && args[0].noClose == true) {
+			noClose = true;
+		}
+	}
 
-    footer = footer.replace("~modalID~", modalID);
-    content = content.replace("~modalID~", modalID);
+	footer = footer.replace("~modalID~", modalID);
+	content = content.replace("~modalID~", modalID);
 
-    var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}" aria-hidden="true">
+	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}" aria-hidden="true">
 <div class="modal-dialog" role="document">
 <div class="modal-content"><div class="modal-header">
 <h5 class="modal-title" id="GKModalLabel${modalID}">${title}</h5>`;
-    if (!noClose) {
-        modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	if (!noClose) {
+		modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 		</button>`;
-    }
-    modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
-    $("body").append(modal)
-    $("#GKModal" + modalID).modal({
-        backdrop: 'static',
-        show: true
-    });
-    $("#GKModal" + modalID).on('hidden.bs.modal', function (e) {
-        $("#GKModal" + modalID).remove();
-    })
-    return modalID;
+	}
+	modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;
+	$("body").append(modal)
+	$("#GKModal" + modalID).modal({
+		backdrop: 'static',
+		show: true
+	});
+	$("#GKModal" + modalID).on('hidden.bs.modal', function (e) {
+		$("#GKModal" + modalID).remove();
+	})
+	return modalID;
 }
 
 // 隐藏并销毁modal
 function CloseModal(modalID) {
-    $("#" + modalID).modal('hide');
-    $("#" + modalID).on('hidden.bs.modal', function (e) {
-        if ($("#" + modalID).length > 0) {
-            $("#" + modalID).remove();
-        }
-    })
+	$("#" + modalID).modal('hide');
+	$("#" + modalID).on('hidden.bs.modal', function (e) {
+		if ($("#" + modalID).length > 0) {
+			$("#" + modalID).remove();
+		}
+	})
 }
 
 // 获取缩略图
@@ -682,84 +682,84 @@ var currentCID = 0;
 var mdlCropperID = "";
 var pubAt = 0;
 var optCropper = {
-  preview: ".pv",
-  crop: function (e) {
-	$("#cropWidth").text(Math.round(e.detail.height));
-	$("#cropHeight").text(Math.round(e.detail.width));
-	var dataUrl = $(this).cropper("getCroppedCanvas")
-	  .toDataURL();
-	litpicImg = dataUrl;
-	$("#litPic").attr("src", litpicImg);
-	$("#litpic_b64").val(litpicImg);
-  },
-  aspectRatio: 4 / 3,
-  // 拖动截取缩略图后，截取的缩略图更新到imageItems中
-  cropend: function (data) {
-	// 这里的ID要单独取出来
-	var dataUrl = $(this).cropper("getCroppedCanvas")
-	  .toDataURL();
-	litpicImg = dataUrl;
-	$("#litPic").attr("src", litpicImg);
-	$("#litpic_b64").val(litpicImg);
-  }
+	preview: ".pv",
+	crop: function (e) {
+		$("#cropWidth").text(Math.round(e.detail.height));
+		$("#cropHeight").text(Math.round(e.detail.width));
+		var dataUrl = $(this).cropper("getCroppedCanvas")
+			.toDataURL();
+		litpicImg = dataUrl;
+		$("#litPic").attr("src", litpicImg);
+		$("#litpic_b64").val(litpicImg);
+	},
+	aspectRatio: 4 / 3,
+	// 拖动截取缩略图后，截取的缩略图更新到imageItems中
+	cropend: function (data) {
+		// 这里的ID要单独取出来
+		var dataUrl = $(this).cropper("getCroppedCanvas")
+			.toDataURL();
+		litpicImg = dataUrl;
+		$("#litPic").attr("src", litpicImg);
+		$("#litpic_b64").val(litpicImg);
+	}
 }
 
 var cropperAspectRatio = {
-  0: 16 / 9,
-  1: 4 / 3,
-  2: 1 / 1,
-  3: 2 / 3,
-  4: NaN,
+	0: 16 / 9,
+	1: 4 / 3,
+	2: 1 / 1,
+	3: 2 / 3,
+	4: NaN,
 }
 
 function setAspectRatio(ar) {
-  var opts = optCropper;
-  opts.aspectRatio = cropperAspectRatio[ar];
-  $("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
+	var opts = optCropper;
+	opts.aspectRatio = cropperAspectRatio[ar];
+	$("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
 }
 
 function useDefault(modalID) {
-  $("#litpic_b64").val(litpicImgSrc);
-  $("#litPic").attr("src", litpicImgSrc);
-  CloseModal('GKModal' + modalID);
+	$("#litpic_b64").val(litpicImgSrc);
+	$("#litPic").attr("src", litpicImgSrc);
+	CloseModal('GKModal' + modalID);
 }
 
 $(document).ready(function () {
 
-  $("#btnClearAll").click(function (event) {
-	litpicImgSrc = "";
-	litpicImg = "";
-	$("#litpic_b64").val(litpicImg);
-	$("#litPic").attr("src", "../static/defaultpic.gif");
-  })
+	$("#btnClearAll").click(function (event) {
+		litpicImgSrc = "";
+		litpicImg = "";
+		$("#litpic_b64").val(litpicImg);
+		$("#litPic").attr("src", "../static/defaultpic.gif");
+	})
 
-  // 添加图片
-  $("#iptAddImages").change(function (event) {
-	var files = event.target.files;
-	for (var i = 0, f; f = files[i]; i++) {
-	  // 如果不是图片忽略
-	  if (!f.type.match('image.*')) {
-		continue;
-	  }
+	// 添加图片
+	$("#iptAddImages").change(function (event) {
+		var files = event.target.files;
+		for (var i = 0, f; f = files[i]; i++) {
+			// 如果不是图片忽略
+			if (!f.type.match('image.*')) {
+				continue;
+			}
 
-	  // 将图片渲染到浏览器
-	  var reader = new FileReader();
-	  reader.onload = (function (theFile) {
-		return function (e) {
-		  litpicImgSrc = e.target.result;
-		  SetThumb(litpicImgSrc);
-		};
-	  })(f);
-	  reader.readAsDataURL(f);
-	}
-	$("#iptAddImages").val("");
-  });
+			// 将图片渲染到浏览器
+			var reader = new FileReader();
+			reader.onload = (function (theFile) {
+				return function (e) {
+					litpicImgSrc = e.target.result;
+					SetThumb(litpicImgSrc);
+				};
+			})(f);
+			reader.readAsDataURL(f);
+		}
+		$("#iptAddImages").val("");
+	});
 
-  // 截取缩略图
-  function SetThumb(srcURL) {
-	var footer =
-	  "<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-outline-primary'>使用原图</a> <a href='?' class='btn btn-outline-primary' data-dismiss='modal' aria-label='Close'>确定</a></p>";
-	var optButton = `<p><div class="form-group">
+	// 截取缩略图
+	function SetThumb(srcURL) {
+		var footer =
+			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-outline-primary'>使用原图</a> <a href='?' class='btn btn-outline-primary' data-dismiss='modal' aria-label='Close'>确定</a></p>";
+		var optButton = `<p><div class="form-group">
 			  <label for="aspectRatio">比例</label>
 			  <select class="form-control" id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)">
 				<option>16:9</option>
@@ -769,17 +769,46 @@ $(document).ready(function () {
 				<option>自定义</option>
 			  </select>
 			</div></p>`;
-	mdlCropperID = ShowMsg(
-	  '<div><div class="float-left" style="width:300px;"><img id="cropImg~modalID~" src="' +
-	  srcURL +
-	  '" width=200><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:150px;height:100px;overflow:hidden;"></div></div>', {
-	  footer: footer,
-	  noClose: false,
-	  title: 'DedeCMS缩略图裁剪',
+		mdlCropperID = ShowMsg(
+			'<div><div class="float-left" style="width:300px;"><img id="cropImg~modalID~" src="' +
+			srcURL +
+			'" width=200><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:150px;height:100px;overflow:hidden;"></div></div>', {
+			footer: footer,
+			noClose: false,
+			title: 'DedeCMS缩略图裁剪',
+		});
+
+		setTimeout(function () {
+			$("#cropImg" + mdlCropperID).cropper(optCropper);
+		}, 500);
+	}
+
+	$('.datepicker').daterangepicker({
+		"singleDatePicker": true,
+		"autoApply": true,
+		"showDropdowns": true,
+		"linkedCalendars": false,
+		"timePicker": true,
+		"timePicker24Hour": true,
+		"timePickerSeconds": true,
+		"showCustomRangeLabel": false,
+		ranges: {
+			'今日': [moment(), moment()],
+			'昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+			'本月': [moment().startOf('month'), moment().startOf('month')],
+			'上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+		},
+		"locale": {
+			format: 'YYYY-MM-DD HH:mm:ss',
+			applyLabel: '确定',
+			cancelLabel: '取消',
+			daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+			monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+				'七月', '八月', '九月', '十月', '十一月', '十二月'],
+			firstDay: 1
+		}
+	}, function (start) {
+		$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
 	});
 
-	setTimeout(function () {
-	  $("#cropImg" + mdlCropperID).cropper(optCropper);
-	}, 500);
-  }
 })

@@ -15,7 +15,9 @@
   <link href="css/base.css" rel="stylesheet" type="text/css">
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script language="javascript" src="../static/js/dedeajax2.js"></script>
-  <script type="text/javascript" src="js/calendar/calendar.js"></script>
+  <link href="../static/css/daterangepicker.css" rel="stylesheet">
+  <script type="text/javascript" src="../static/js/moment.min.js"></script>
+  <script type="text/javascript" src="../static/js/daterangepicker.js"></script>
   <script language="javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/handlers.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
@@ -365,17 +367,9 @@ if($cfg_need_typeid2=='Y') {
             <tr>
               <td width="110">&nbsp;更新时间：</td>
               <td width="250"><?php
-          $nowtime = GetDateTimeMk(time());
-          echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" style=\"width:120px;\">";
-			?>
-                <script language="javascript" type="text/javascript">
-                  Calendar.setup({
-                    inputField: "pubdate",
-                    ifFormat: "%Y-%m-%d %H:%M:%S",
-                    showsTime: true,
-                    timeFormat: "24"
-                  });
-                </script>
+              $nowtime = GetDateTimeMk(time());
+              echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" style=\"width:120px;\" class='datepicker'>";
+              ?>
               </td>
               <td width="92">消费金币：</td>
               <td width="368"><input name="money" type="text" id="money" value="<?php echo $arcRow["money"]?>"
