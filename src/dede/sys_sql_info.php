@@ -103,11 +103,14 @@ class MakeDBDocument
     //列出数据库的所有表
     function show( $type='' )
     {
+        global $cfg_soft_lang;
         $namehtml = $tablehtml = '';
         $this->dsql->Execute('me', ' SHOW TABLES; ');
+        if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
+            define("MYSQL_NUM", MYSQLI_NUM);
+        }
         while( $row = $this->dsql->GetArray('me', MYSQL_NUM) )
         {
-            // print_r($row);exit;
             $this->dsql->Execute('dd', " Show CREATE TABLE `{$row[0]}` ");
             $row2 = $this->dsql->GetArray('dd', MYSQL_NUM);
             
