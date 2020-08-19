@@ -64,7 +64,7 @@ if(function_exists('iconv_substr')) $cfg_is_iconv = TRUE;
 
 function _RunMagicQuotes(&$svar)
 {
-    if(!get_magic_quotes_gpc())
+    if(!@get_magic_quotes_gpc())
     {
         if( is_array($svar) )
         {

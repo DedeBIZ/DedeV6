@@ -190,7 +190,7 @@ class Caicai extends DataListCP
             $arr['typeurl'] = GetTypeUrl($arr['typeid'], MfTypedir($arr['typedir']), $arr['isdefault'], $arr['defaultname'],
             $arr['ispart'], $arr['namerule2'], $arr['moresite'], $arr['siteurl'], $arr['sitepath']);
 
-            if($arr['litpic']=='') $arr['litpic'] = '/images/defaultpic.gif';
+            if($arr['litpic']=='') $arr['litpic'] = '/static/defaultpic.gif';
 
             if(!preg_match("#^http:\/\/#", $arr['litpic']))
             {

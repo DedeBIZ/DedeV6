@@ -44,7 +44,7 @@ function plus_spacenewart(&$atts,&$refObj,&$fields)
 
         if($row['litpic']=='')
         {
-            $row['litpic'] = '/images/defaultpic.gif';
+            $row['litpic'] = '/static/defaultpic.gif';
         }
         if(!preg_match("#^http:\/\/#i", $row['litpic']))
         {

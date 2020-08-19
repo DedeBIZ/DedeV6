@@ -1,4 +1,13 @@
 <?php
+/**
+ * 文件上传安全校验方法
+ *
+ * @version        $Id: uploadsafe.inc.php 1 15:59 2020年8月19日Z tianya $
+ * @package        DedeCMS.Libraries
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @license        http://help.dedecms.com/usersguide/license.html
+ * @link           http://www.dedecms.com
+ */
 if(!defined('DEDEINC')) exit('Request Error!');
 
 if(isset($_FILES['GLOBALS'])) exit('Request not allow!');
@@ -32,13 +41,29 @@ foreach($_FILES as $_key=>$_value)
     ${$_key.'_name'} = $_FILES[$_key]['name'];
     ${$_key.'_type'} = $_FILES[$_key]['type'] = preg_replace('#[^0-9a-z\./]#i', '', $_FILES[$_key]['type']);
     ${$_key.'_size'} = $_FILES[$_key]['size'] = preg_replace('#[^0-9]#','',$_FILES[$_key]['size']);
-    if(!empty(${$_key.'_name'}) && (preg_match("#\.(".$cfg_not_allowall.")$#i",${$_key.'_name'}) || !preg_match("#\.#", ${$_key.'_name'})) )
-    {
-        if(!defined('DEDEADMIN'))
+
+    if (is_array(${$_key.'_name'})) {
+        if (count(${$_key.'_name'}) > 0) {
+            foreach (${$_key.'_name'} as $key => $value) {
+                if (!empty($value) && (preg_match("#\.(".$cfg_not_allowall.")$#i", $value) || !preg_match("#\.#", $value))) {
+                    if(!defined('DEDEADMIN'))
+                    {
+                        exit('Not Admin Upload filetype not allow !');
+                    }
+                }
+            }
+        }
+    } else {
+        if(!empty(${$_key.'_name'}) && (preg_match("#\.(".$cfg_not_allowall.")$#i",${$_key.'_name'}) || !preg_match("#\.#", ${$_key.'_name'})) )
         {
-            exit('Not Admin Upload filetype not allow !');
+            if(!defined('DEDEADMIN'))
+            {
+                exit('Not Admin Upload filetype not allow !');
+            }
         }
     }
+    
+
     if(empty(${$_key.'_size'}))
     {
         ${$_key.'_size'} = @filesize($$_key);
@@ -50,13 +75,30 @@ foreach($_FILES as $_key=>$_value)
         "image/xpng", "image/wbmp", "image/bmp"
     );
 
-    if(in_array(strtolower(trim(${$_key.'_type'})), $imtypes))
-    {
-        $image_dd = @getimagesize($$_key);
-        if (!is_array($image_dd))
+    if (is_array(${$_key.'_type'})) {
+        if (count(${$_key.'_type'}) > 0) {
+            foreach (${$_key.'_type'} as $key => $value) {
+                if(in_array(strtolower(trim($value)), $imtypes))
+                {
+                    $image_dd = @getimagesize($$_key);
+                    if (!is_array($image_dd))
+                    {
+                        exit('Upload filetype not allow !');
+                    }
+                }
+            }
+        }
+    } else {
+        if(in_array(strtolower(trim(${$_key.'_type'})), $imtypes))
         {
-            exit('Upload filetype not allow !');
+            $image_dd = @getimagesize($$_key);
+            if (!is_array($image_dd))
+            {
+                exit('Upload filetype not allow !');
+            }
         }
     }
+
+
 }
 ?>

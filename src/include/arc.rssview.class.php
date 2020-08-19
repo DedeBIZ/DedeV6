@@ -171,7 +171,7 @@ class RssView
             //处理一些特殊字段
             if($row['litpic'] == '-' || $row['litpic'] == '')
             {
-                $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/defaultpic.gif';
+                $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
             }
             if(!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y')
             {

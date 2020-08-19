@@ -282,7 +282,7 @@ class Archives
         {
             if($this->Fields['litpic'] == '-' || $this->Fields['litpic'] == '')
             {
-                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/images/defaultpic.gif';
+                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
             }
             if(!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y')
             {

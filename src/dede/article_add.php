@@ -207,7 +207,7 @@ else if($dopost=='save')
     color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywords,filename,dutyadmin,weight)
     VALUES ('$arcID','$typeid','$typeid2','$sortrank','$flag','$ismake','$channelid','$arcrank','$click','$money',
     '$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate',
-    '$adminid','$voteid','$notpost','$description','$keywords','$filename','$adminid','$weight');";
+    '$adminid','0','$notpost','$description','$keywords','$filename','$adminid','$weight');";
 
     if(!$dsql->ExecuteNoneQuery($query))
     {
