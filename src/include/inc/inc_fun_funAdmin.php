@@ -28,7 +28,7 @@ function SpGetPinyin($str, $ishead=0, $isclose=1)
     {
         return $str;
     }
-    if(count($pinyins) == 0)
+    if(@count($pinyins) == 0)
     {
         $fp = fopen(DEDEINC.'/data/pinyin.dat', 'r');
         while(!feof($fp))
