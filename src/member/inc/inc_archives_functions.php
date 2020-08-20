@@ -4,7 +4,7 @@
  * 
  * @version        $Id: inc_archives_functions.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeCMS.Member
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2010, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -236,7 +236,7 @@ function PrintAutoFieldsAdd(&$fieldset, $loadtype='all', $isprint=TRUE)
         }
     }
     if ($isprint) echo "<input type='hidden' name='dede_addonfields' value=\"".$dede_addonfields."\">\r\n";
-    echo "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"".md5($dede_addonfields.$cfg_cookie_encode)."\" />";
+	echo "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"".md5($dede_addonfields . 'anythingelse' .$cfg_cookie_encode) ."\" />";
     // 增加一个返回
     return $addonfieldsname;
 }

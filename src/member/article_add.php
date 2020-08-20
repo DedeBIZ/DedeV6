@@ -4,7 +4,7 @@
  * 
  * @version        $Id: article_add.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeCMS.Member
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2010, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -80,7 +80,7 @@ else if($dopost=='save')
         }
     }
 
-    if (empty($dede_fieldshash) || $dede_fieldshash != md5($dede_addonfields.$cfg_cookie_encode))
+    if (empty($dede_fieldshash) || ( $dede_fieldshash != md5($dede_addonfields . $cfg_cookie_encode) && $dede_fieldshash != md5($dede_addonfields . 'anythingelse' . $cfg_cookie_encode)) ) 
     {
         showMsg('数据校验不对，程序返回', '-1');
         exit();

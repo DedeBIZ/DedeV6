@@ -52,6 +52,10 @@ else if($job=='editok')
         }
     }
 	$msg = HtmlReplace($msg, -1);
+	/*
+	漏洞描述：dedecms留言板注入漏洞。
+	*/
+	$msg = addslashes($msg);
     $dsql->ExecuteNoneQuery("UPDATE `#@__guestbook` SET `msg`='$msg', `posttime`='".time()."' WHERE id='$id' ");
     ShowMsg("成功更改或回复一条留言！", $GUEST_BOOK_POS);
     exit();
