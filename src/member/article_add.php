@@ -155,25 +155,6 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE);
     if($artUrl=='') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
-
-    
-    #api{{
-    if(defined('UC_API') && @include_once DEDEROOT.'/api/uc.func.php')
-    {
-        //推送事件
-        $feed['icon'] = 'thread';
-        $feed['title_template'] = '<b>{username} 在网站发布了一篇文章</b>';
-        $feed['title_data'] = array('username' => $cfg_ml->M_UserName);
-        $feed['body_template'] = '<b>{subject}</b><br>{message}';
-        $url = !strstr($artUrl,'http://') ? ($cfg_basehost.$artUrl) : $artUrl;
-        $feed['body_data'] = array('subject' => "<a href=\"".$url."\">$title</a>", 'message' => cn_substr(strip_tags(preg_replace("/\[.+?\]/is", '', $description)), 150));        
-        $feed['images'][] = array('url' => $cfg_basehost.'/images/scores.gif', 'link'=> $cfg_basehost);
-        uc_feed_note($cfg_ml->M_LoginID,$feed);
-
-        $row = $dsql->GetOne("SELECT `scores`,`userid` FROM `#@__member` WHERE `mid`='".$cfg_ml->M_ID."' AND `matt`<>10");
-        uc_credit_note($row['userid'], $cfg_sendarc_scores);
-    }
-    #/aip}}
     
     //会员动态记录
     $cfg_ml->RecordFeeds('add', $title, $description, $arcID);
