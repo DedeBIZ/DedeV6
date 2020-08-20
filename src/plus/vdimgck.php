@@ -67,7 +67,7 @@ function echo_validate_image( $config = array() )
     $font_size   = isset($config['font_size']) ? $config['font_size'] : 14;
     $img_height  = isset($config['img_height']) ? $config['img_height'] : 24;
     $img_width   = isset($config['img_width']) ? $config['img_width'] : 68;
-    $font_file   = isset($config['font_file']) ? $config['font_file'] : PATH_DATA.'/data/font/'.mt_rand(1,3).'.ttf';
+    $font_file   = isset($config['font_file']) ? $config['font_file'] : DEDEINC.'/data/font/'.mt_rand(1,3).'.ttf';
     $use_boder   = isset($config['use_boder']) ? $config['use_boder'] : TRUE;
     $filter_type = isset($config['filter_type']) ? $config['filter_type'] : 0;
 

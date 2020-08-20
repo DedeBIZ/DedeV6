@@ -40,6 +40,7 @@ function update()
 else if($action == 'update')
 {
     $tid = (empty($tid) ? 0 : intval($tid) );
+    $count = (empty($count) ? 0 : intval($count) );
     if(empty($tid))
     {
         ShowMsg('没有选择要删除的tag!','-1');
@@ -91,7 +92,7 @@ else if($action == 'fetch')
     $where = array();
     if(isset($startaid) && is_numeric($startaid) && $startaid > 0)
     {
-        $where[] = " id>$startaid ";
+        $where[] = " id>=$startaid ";
     }
     else
     {
@@ -99,7 +100,7 @@ else if($action == 'fetch')
     }
     if(isset($endaid) && is_numeric($endaid) && $endaid > 0)
     {
-        $where[] = " id<$endaid ";
+        $where[] = " id<=$endaid ";
     }
     else
     {
@@ -113,6 +114,7 @@ else if($action == 'fetch')
     $dsql->SetQuery($query);
     $dsql->Execute();
     $complete = true;
+    $now = time();
     while($row = $dsql->GetArray())
     {
         $aid = $row['aid'];
@@ -133,16 +135,20 @@ else if($action == 'fetch')
             if($keyword != '' && strlen($keyword)<13 )
             {
                 $keyword = addslashes($keyword);
-                $row = $dsql->GetOne("SELECT id FROM `#@__tagindex` WHERE tag LIKE '$keyword'");
+                $row = $dsql->GetOne("SELECT id,total FROM `#@__tagindex` WHERE tag LIKE '$keyword'");
                 if(is_array($row))
                 {
                     $tid = $row['id'];
-                    $query = "UPDATE `#@__tagindex` SET `total`=`total`+1 WHERE id='$tid' ";
-                    $dsql->ExecuteNoneQuery($query);
+                    $trow = $dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__taglist` WHERE tag LIKE '$keyword'");
+                    if (intval($trow['dd']) != $row['total'] ) {
+                        
+                        $query = "UPDATE `#@__tagindex` SET `total`=".$trow['dd'].",uptime=$now WHERE id='$tid' ";
+                        $dsql->ExecuteNoneQuery($query);
+                    }
                 }
                 else
                 {
-                    $query = " INSERT INTO `#@__tagindex`(`tag`,`count`,`total`,`weekcc`,`monthcc`,`weekup`,`monthup`,`addtime`) VALUES('$keyword','0','1','0','0','$timestamp','$timestamp','$timestamp');";
+                    $query = " INSERT INTO `#@__tagindex`(`tag`,`count`,`total`,`weekcc`,`monthcc`,`weekup`,`monthup`,`addtime`,`uptime`) VALUES('$keyword','0','1','0','0','$timestamp','$timestamp','$timestamp','$now');";
                     $dsql->ExecuteNoneQuery($query);
                     $tid = $dsql->GetLastID();
                 }

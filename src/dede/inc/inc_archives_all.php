@@ -155,7 +155,7 @@ function GetFormItem($ctag)
  */
 function GetFieldValue($dvalue,$dtype,$aid=0,$job='add',$addvar='')
 {
-    global $cfg_cookie_encode,$cfg_dir_purview;
+    global $cfg_cookie_encode,$cfg_dir_purview,$isUrlOpen;
     if($dtype=="int")
     {
         $dvalue = trim(preg_replace("#[^0-9]#", "", $dvalue));
@@ -242,7 +242,7 @@ function GetFieldValue($dvalue,$dtype,$aid=0,$job='add',$addvar='')
             $imgfile = $GLOBALS['cfg_basedir'].$iurl;
             if(is_file($imgfile))
             {
-                $imginfos = GetImageSize($imgfile,&$info);
+                $imginfos = GetImageSize($imgfile);
                 $imgurl = "{dede:img text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}";
             }
         }
