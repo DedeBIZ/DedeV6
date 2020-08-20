@@ -18,6 +18,11 @@
 @set_time_limit(0);
 // 在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作
 // 为了防止错误，操作完后不必关闭数据库
+if (!function_exists("mysqli_init") ) {
+    echo "DedeCMS提示：尚未发现开启mysqli模块，请在php.ini中启用`extension=mysqli`。";
+    exit;
+}
+
 $dsql = $dsqli = $db = new DedeSqli(FALSE);
 /**
  * Dede MySQLi数据库类
@@ -28,6 +33,10 @@ $dsql = $dsqli = $db = new DedeSqli(FALSE);
  */
 if (!defined('MYSQL_BOTH')) {
      define('MYSQL_BOTH',MYSQLI_BOTH);
+}
+
+if (!defined('MYSQL_ASSOC')) {
+    define('MYSQL_ASSOC', MYSQLI_ASSOC);
 }
 class DedeSqli
 {
@@ -90,7 +99,7 @@ class DedeSqli
     }
     function SelectDB($dbname)
     {
-        mysql_select_db($dbname);
+        mysqli_select_db($this->linkID, $dbname);
     }
 
     //设置SQL里的参数

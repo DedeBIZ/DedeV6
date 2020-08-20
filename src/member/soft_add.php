@@ -1,4 +1,13 @@
 <?php
+/**
+ * 软件添加
+ * 
+ * @version        $Id: soft_add.php 2 14:16 2010-11-11 tianya $
+ * @package        DedeCMS.Member
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @license        http://help.dedecms.com/usersguide/license.html
+ * @link           http://www.dedecms.com
+ */
 require_once(dirname(__FILE__)."/config.php");
 //考虑安全原因不管是否开启游客投稿功能，都不允许用户投稿
 CheckRank(0, 0);
@@ -196,7 +205,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         echo $inQuery;
         exit();
-        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCms官方。".str_replace('"','',$gerr),"javascript:;");
+        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"','',$gerr),"javascript:;");
         exit();
     }
 
