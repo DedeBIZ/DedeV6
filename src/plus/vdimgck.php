@@ -35,12 +35,23 @@ if (!echo_validate_image($config))
     // 如果不成功则初始化一个默认验证码
     @session_start();
     $_SESSION['securimage_code_value'] = strtolower('abcd');
-    $im = @imagecreatefromjpeg(DEDEINC.'/data/vdcode.jpg');
-    header("Pragma:no-cache\r\n");
-    header("Cache-Control:no-cache\r\n");
-    header("Expires:0\r\n");
-    imagejpeg($im);
-    imagedestroy($im);
+    if (function_exists('imagecreatefromjpeg')) {
+        $im = @imagecreatefromjpeg(DEDEINC.'/data/vdcode.jpg');
+        header("Pragma:no-cache\r\n");
+        header("Cache-Control:no-cache\r\n");
+        header("Expires:0\r\n");
+        imagejpeg($im);
+        imagedestroy($im);
+    } else {
+        header("Pragma:no-cache\r\n");
+        header("Cache-Control:no-cache\r\n");
+        header("Expires:0\r\n");
+        $c = file_get_contents(DEDEINC.'/data/vdcode.jpg',true);
+        $size = filesize(DEDEINC.'/data/vdcode.jpg');
+        header ('Content-Type: image/x-icon');
+        header ("Content-length: $size");
+        echo $c;
+    }
 }
 
 function echo_validate_image( $config = array() )
