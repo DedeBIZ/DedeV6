@@ -635,7 +635,7 @@ class DedeTemplate
         $t = 0;
         $preTag = '';
         $tswLen = strlen($tagStartWord);
-        $cAtt->cAttributes->items = array();
+        @$cAtt->cAttributes->items = array();
         for($i=0; $i<$sourceLen; $i++)
         {
             $ttagName = '';

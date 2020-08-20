@@ -169,7 +169,7 @@ else if($dopost=='save')
     }
 
     //专题节点列表
-    $arcids = '';
+    $arcids = array();
     $notelist = '';
     for($i=1;$i<=$cfg_specnote;$i++)
     {
