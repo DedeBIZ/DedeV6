@@ -72,11 +72,9 @@ function csrf_check()
 
 function XSSClean($val)
 {
-
     if (is_array($val))
     {
-        while (list($key) = each($val))
-        {
+        foreach ($val as $key => $v) {
             if(in_array($key,array('tags','body','dede_fields','dede_addonfields','dopost','introduce'))) continue;
             $val[$key] = XSSClean($val[$key]);
         }

@@ -42,7 +42,7 @@ if (version_compare(PHP_VERSION, '7.0.0', '>='))
     if (!function_exists('mysql_close') AND function_exists('mysqli_close')) {
         function mysql_close($link)
         {
-            return mysqli_close($result);
+            return mysqli_close($link);
         }
     }
     if (!function_exists('split')) {
