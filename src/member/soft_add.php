@@ -148,11 +148,10 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     //软件链接列表
     $softurl1 = stripslashes($softurl1);
     $softurl1 = str_replace(array("{dede:","{/dede:","}"), "#", $softurl1);
-    $servermsg1 = str_replace(array("{dede:","{/dede:","}"), "#", $servermsg1);
     $urls = '';
     if($softurl1!='')
     {
-        $urls .= "{dede:link islocal='1' text='{$servermsg1}'} $softurl1 {/dede:link}\r\n";
+         if (preg_match("#}(.*?){/dede:link}{dede:#sim", $servermsg1) != 1) { $urls .= "{dede:link islocal='1' text='{$servermsg1}'} $softurl1 {/dede:link}\r\n"; }
     }
     for($i=2; $i<=12; $i++)
     {
@@ -161,7 +160,6 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
             $servermsg = str_replace("'","",stripslashes(${'servermsg'.$i}));
             $softurl = stripslashes(${'softurl'.$i});
 			$softurl = str_replace(array("{dede:","{/dede:","}"), "#", $softurl);
-			$servermsg = str_replace(array("{dede:","{/dede:","}"), "#", $servermsg);
             if($servermsg=='')
             {
                 $servermsg = '下载地址'.$i;
@@ -198,7 +196,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         echo $inQuery;
         exit();
-        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"','',$gerr),"javascript:;");
+        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCms官方。".str_replace('"','',$gerr),"javascript:;");
         exit();
     }
 

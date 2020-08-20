@@ -4,7 +4,7 @@
  * 
  * @version        $Id: album_add.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeCMS.Member
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2010, DesDev, Inc.
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -217,7 +217,8 @@ else if($dopost=='save')
         ShowMsg("无法获得主键，因此无法进行后续操作！","-1");
         exit();
     }
-	$description = HtmlReplace($description, -1);
+	$description = HtmlReplace($description, -1);//2011.06.30 增加html过滤 （by:织梦的鱼）
+	$mtypesid = intval($mtypesid);	             //对输入参数mtypesid未进行int整型转义，导致SQL注入的发生。
     //保存到主表
     $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
 color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
