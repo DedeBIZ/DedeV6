@@ -4,7 +4,7 @@
 
 ## 版本说明
 
-DedeCMS v5.x是一个LTS版本，支持将到2022年6月截止，目前最新版本为v5.7SP2，开发版本为v5.8
+DedeCMS v5.x是一个LTS版本，支持将到2022年10月截止，目前最新版本为v5.7SP2，开发版本为v5.8
 
 ## v5.8 Roadmap
 
@@ -24,13 +24,15 @@ DedeCMS v5.x是一个LTS版本，支持将到2022年6月截止，目前最新版
 
 - ✅ 后台界面样式调整；
 
+- ✅ 支持TAG标签静态化，增加内容呈现维度，更利于SEO；
+
 - 🔨 会员中心移除对文件上传的支持，增加系统安全性；
 
 - ✅ 移除对Flash的依赖支持，今后版本采用HTML5相关特性；
 
 - ❌ 调整v5.8版本程序升级相关功能；
 
-- 🔨 兼容PHP7.4，DedeCMS未来的版本以PHP7.X为主；
+- 🔨 兼容PHP7.4，DedeCMS未来的版本以PHP7.X为主，实验性支持PHP8.X；
 
 - ✅ 系统支持HTTPS；
 
@@ -42,14 +44,14 @@ DedeCMS v5.x是一个LTS版本，支持将到2022年6月截止，目前最新版
 
 1.Windows 平台
 
-IIS/Apache/Nginx + PHP5/PHP7 + MySQL4/5
+IIS/Apache/Nginx + PHP5/PHP7/PHP8 + MySQL4/5/8
 如果在windows环境中使用，建议用DedeCMS提供的DedeAMPZ套件以达到最佳使用性能。
 
 2.Linux/Unix 平台
 
 Apache/Nginx + PHP5/PHP7 + MySQL4/5 (PHP必须在非安全模式下运行)
 
-建议使用平台：Linux + Apache2.2 + PHP7.1 + MySQL5.0
+建议使用平台：Linux + Apache2.2 + PHP7.4 + MySQL5.0
 
 3.PHP必须环境或启用的系统函数
 
