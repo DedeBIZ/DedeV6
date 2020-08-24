@@ -546,10 +546,13 @@ class DedeHttpDown
      */
     function Close()
     {
-        if (function_exists('curl_init') && function_exists('curl_exec')) {
+        if (function_exists('curl_init') && function_exists('curl_exec') && $this->m_ch) {
             @curl_close($this->m_ch);
         }
-        @fclose($this->m_fp);
+        if ($this->m_fp) {
+            @fclose($this->m_fp);
+        }
+        
     }
 
     /**
