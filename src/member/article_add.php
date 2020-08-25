@@ -79,13 +79,6 @@ else if($dopost=='save')
             }
         }
     }
-
-    if (empty($dede_fieldshash) || ( $dede_fieldshash != md5($dede_addonfields . $cfg_cookie_encode) && $dede_fieldshash != md5($dede_addonfields . 'anythingelse' . $cfg_cookie_encode)) ) 
-    {
-        showMsg('数据校验不对，程序返回', '-1');
-        exit();
-    }
-    
     
     // 这里对前台提交的附加数据进行一次校验
     $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'],'autofield', FALSE);
@@ -95,11 +88,6 @@ else if($dopost=='save')
         exit();
     }
 
-    //处理图片文档的自定义属性
-    if($litpic!='')
-    {
-        $flag = 'p';
-    }
     $body = AnalyseHtmlBody($body, $description);
     $body = HtmlReplace($body, -1);
 
@@ -115,7 +103,7 @@ else if($dopost=='save')
     $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
 color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
 VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle',
-'$color','$writer','$source','$litpic','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
+'$color','$writer','$source','','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
     if(!$dsql->ExecuteNoneQuery($inQuery))
     {
         $gerr = $dsql->GetError();

@@ -21,34 +21,8 @@ if($dopost=='save')
     $spacename =(empty($spacename))? "" : $spacename;
     $maxlength = $cfg_max_face * 1024;
     $userdir = $cfg_user_dir.'/'.$cfg_ml->M_ID;
-
-    if (strpos($oldspacelogo,"..") > 0) 
-    {
-        die("not support!");
-    }
-
-    if(!preg_match('#^'.$userdir."#", $oldspacelogo))
-    {
-        $oldspacelogo = '';
-    }
-
-    if(is_uploaded_file($spacelogo))
-    {
-        if(@filesize($_FILES['spacelogo']['tmp_name']) > $maxlength)
-        {
-            ShowMsg("你上传的Logo文件超过了系统限制大小：{$cfg_max_face} K！", '-1');
-            exit();
-        }
-        //删除旧图片（防止文件扩展名不同，如：原来的是gif，后来的是jpg）
-        if(preg_match("#\.(jpg|gif|png)$#i", $oldspacelogo) && file_exists($cfg_basedir.$oldspacelogo))
-        {
-            @unlink($cfg_basedir.$oldspacelogo);
-        }
-        //上传新工图片
-        $spacelogo = MemberUploads('spacelogo','',$cfg_ml->M_ID,'image','mylogo', 200, 50);
-    } else {
-        $spacelogo = $oldspacelogo;
-    }
+    
+    $spacelogo = HtmlReplace($spacelogo, -1) ;
     $pagesize = intval($pagesize);
     if($pagesize<=0)
     {

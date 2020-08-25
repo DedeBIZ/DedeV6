@@ -92,7 +92,7 @@ else if($dopost=='save')
             }
         }
         
-        if (empty($dede_fieldshash) || $dede_fieldshash != md5($dede_addonfields.$cfg_cookie_encode))
+        if (empty($dede_fieldshash) || $dede_fieldshash !== md5($dede_addonfields . 'anythingelse' . $cfg_cookie_encode))
         {
             showMsg('数据校验不对，程序返回', '-1');
             exit();

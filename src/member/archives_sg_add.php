@@ -80,6 +80,9 @@ else if($dopost=='save')
         }
     }
 
+    // 校验CSRF
+    CheckCSRF();
+
     $flag = '';
     $autokey = $remote = $dellink = $autolitpic = 0;
     $userip = GetIP();
@@ -135,10 +138,6 @@ else if($dopost=='save')
     $mid = $cfg_ml->M_ID;
     $description=empty($description)? "" : $description;
 
-    //处理上传的缩略图
-    $litpic = MemberUploads('litpic','',$cfg_ml->M_ID,'image','',$cfg_ddimg_width,$cfg_ddimg_height,false);
-    if($litpic!='') SaveUploadInfo($title,$litpic,1);
-
     //分析处理附加表数据
     $inadd_f = $inadd_v = '';
     if(!empty($dede_addonfields))
@@ -173,12 +172,6 @@ else if($dopost=='save')
             }
         }
         
-        if (empty($dede_fieldshash) || $dede_fieldshash != md5($dede_addonfields.$cfg_cookie_encode))
-        {
-            showMsg('数据校验不对，程序返回', '-1');
-            exit();
-        }
-        
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'],'autofield', FALSE);
         if ($fontiterm != str_replace('`', '', $inadd_f))
@@ -206,7 +199,7 @@ else if($dopost=='save')
     }
     else
     {
-        $inquery = "INSERT INTO `{$addtable}`(aid,typeid,arcrank,mid,channel,title,senddate,litpic,userip{$inadd_f}) Values('$arcID','$typeid','$arcrank','$mid','$channelid','$title','$senddate','$litpic','$userip'{$inadd_v})";
+        $inquery = "INSERT INTO `{$addtable}`(aid,typeid,arcrank,mid,channel,title,senddate,litpic,userip{$inadd_f}) Values('$arcID','$typeid','$arcrank','$mid','$channelid','$title','$senddate','','$userip'{$inadd_v})";
         if(!$dsql->ExecuteNoneQuery($inquery))
         {
             $gerr = $dsql->GetError();

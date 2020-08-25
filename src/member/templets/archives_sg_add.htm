@@ -51,10 +51,6 @@
 		?>
             (只允许并且必须选择白色背景的项目<span style="color:#F00">*</span>) 
           </p>
-          <p class="cellBg" style='<?php if($cInfos['needpic']==0) echo 'display:none'; ?>'>
-            <label>缩略图：</label>
-            <input name="litpic" type="file" id="litpic" onchange="SeePicNew('divpicview',this);"  maxlength="100" class="intxt"/>
-          </p>
       <?php
         if($safe_faq_send == '1'){
       	$faqkey = array_rand($safefaqs);

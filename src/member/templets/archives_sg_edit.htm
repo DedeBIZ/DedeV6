@@ -27,7 +27,7 @@
       <form name="addcontent" action="archives_sg_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
       <input type="hidden" name="dopost" value="save" />
       <input type="hidden" name="aid" value="<?php echo $addRow['aid']; ?>" />
-      <input type="hidden" name="idhash" value="<?php echo md5($addRow['aid'].$cfg_cookie_encode); ?>" />
+      <input type="hidden" name="idhash" value="<?php echo hash('sha256', $addRow['aid'].$cfg_cookie_encode); ?>" />
       <input type="hidden" name="channelid" value="<?php echo $addRow['channel']; ?>" />
       <input type="hidden" name="sortrank" value="<?php echo $addRow['senddate']; ?>" />
       <input type="hidden" name="oldlitpic" value="<?php echo (isset($row['litpic']) ? $row['litpic'] : ''); ?>" />
@@ -52,10 +52,6 @@
     			echo "</select>";
 		?>
 (只允许并且必须选择白色背景的项目<span style="color:#F00">*</span>) 
-          </p>
-          <p class="cellBg" style='<?php if($cInfos['needpic']==0) echo 'display:none'; ?>'>
-            <label>缩略图：</label>
-            <input name="litpic" type="file" id="litpic" onchange="SeePicNew('divpicview',this);"  maxlength="100" class="intxt"/>
           </p>
         <?php
       	}
