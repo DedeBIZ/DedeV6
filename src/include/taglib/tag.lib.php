@@ -43,6 +43,7 @@ function lib_tag(&$ctag, &$refObj)
     $num = $row;
 
     $addsql = '';
+    $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); // 取一个平均
 
     if ($getall == 0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid'])) {
         $dsql->SetQuery("SELECT tid FROM `#@__taglist` WHERE aid = '{$refObj->Fields['aid']}' ");
@@ -52,12 +53,12 @@ function lib_tag(&$ctag, &$refObj)
             $ids .= ($ids == '' ? $row['tid'] : ',' . $row['tid']);
         }
         if ($ids != '') {
-            $addsql = " WHERE id IN($ids) ";
+            $addsql = " WHERE id IN($ids) AND total >= {$dd['tt']}";
         }
         if ($addsql == '') return '';
     } else {
         if (!empty($typeid)) {
-            $addsql = " WHERE typeid='$typeid' ";
+            $addsql = " WHERE typeid='$typeid' AND total >= {$dd['tt']}";
         }
     }
 
@@ -67,6 +68,7 @@ function lib_tag(&$ctag, &$refObj)
     else if ($ltype == 'hot') $orderby = ' count DESC ';
     else if ($ltype == 'total') $orderby = ' total DESC ';
     else $orderby = 'addtime DESC  ';
+
 
     $dsql->SetQuery("SELECT * FROM `#@__tagindex` $addsql ORDER BY $orderby LIMIT 0,$num");
     $dsql->Execute();
@@ -83,14 +85,7 @@ function lib_tag(&$ctag, &$refObj)
             $row['link'] = $cfg_cmsurl . "/tags.php?/" . urlencode($row['keyword']) . "/";
         }
 
-        $row['highlight'] = 0;
-        if ($row['monthcc'] > 1000 || $row['weekcc'] > 300) {
-            $row['highlight'] = mt_rand(3, 4);
-        } else if ($row['count'] > 3000) {
-            $row['highlight'] = mt_rand(5, 6);
-        } else {
-            $row['highlight'] = mt_rand(1, 2);
-        }
+        $row['highlight'] = mt_rand(1, 10);
         foreach ($ctp->CTags as $tagid => $ctag) {
             if (isset($row[$ctag->GetName()])) {
                 $ctp->Assign($tagid, $row[$ctag->GetName()]);

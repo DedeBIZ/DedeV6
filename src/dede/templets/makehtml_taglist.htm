@@ -25,7 +25,8 @@
         <td width="300" valign="top" bgcolor="#FFFFFF">选择TAG：</td>
         <td width="377" valign="top" bgcolor="#FFFFFF">
           <?php
-       $sql="select * from #@__tagindex order by tag asc"; 
+       $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); // 取一个平均
+       $sql="select * from #@__tagindex where total > {$dd['tt']} order by tag asc"; 
        $dsql->Execute('al',$sql);
      echo "<select name='tagid' style='width:300px'>\r\n";
       if($tid == 0) echo "<option value='0' selected='1'>更新所有TAG...</option>\r\n";
@@ -47,6 +48,7 @@
       <tr>
         <td height="20" valign="top" bgcolor="#FFFFFF">说明：</td>
         <td height="20" valign="top" bgcolor="#FFFFFF">
+          仅更新文档数多于<?php echo $dd['tt'];?>的关键词<br>
           更新所有TAG将会智能更新在[TAG标签管理]中重新获取更新的内容<br>
           TAG首页模板文件：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm<br>
           TAG列表页模板文件：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/taglist.htm<br>

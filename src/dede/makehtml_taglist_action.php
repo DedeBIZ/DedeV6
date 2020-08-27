@@ -28,13 +28,14 @@ if ($tagid > 0) {
 }
 $allfinish = false; // 是否全部完成
 
+$dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); // 取一个平均
+
 if ($upall == 1 && $ctagid == 0) {
-    $rr = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE mktime <> uptime LIMIT 1");
+    $rr = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE mktime <> uptime AND total > {$dd['tt']} LIMIT 1");
     if (!empty($rr) && count($rr) > 0) {
         $ctagid = $rr['id'];
     } else {
         $allfinish = true;
-
     }
 }
 
