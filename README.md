@@ -26,6 +26,8 @@ DedeCMS v5.x是一个LTS版本，支持将到2022年10月截止，目前最新�
 
 - ✅ 支持TAG标签静态化，增加内容呈现维度，更利于SEO；
 
+- 🔨 优化内置的模块插件，增强用户体验；
+
 - 🔨 会员中心移除对文件上传的支持，增加系统安全性；
 
 - ✅ 移除对Flash的依赖支持，今后版本采用HTML5相关特性；
@@ -45,6 +47,7 @@ DedeCMS v5.x是一个LTS版本，支持将到2022年10月截止，目前最新�
 1.Windows 平台
 
 IIS/Apache/Nginx + PHP5/PHP7/PHP8 + MySQL4/5/8
+
 如果在windows环境中使用，建议用DedeCMS提供的DedeAMPZ套件以达到最佳使用性能。
 
 2.Linux/Unix 平台
