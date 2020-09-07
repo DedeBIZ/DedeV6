@@ -25,3 +25,4 @@ src/data/mysqli_error_trace.inc
 src/uploads/litimg/*
 src/special/
 *.bat
+src/data/backupdata/*

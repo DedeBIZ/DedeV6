@@ -138,13 +138,15 @@ if($dopost=='bak')
     else
     {
         $j = 0;
-        $fs = $bakStr = '';
+        $fs = array();
+        $bakStr = '';
 
         //分析表里的字段信息
         $dsql->GetTableFields($nowtable);
         $intable = "INSERT INTO `$nowtable` VALUES(";
         while($r = $dsql->GetFieldObject())
         {
+            
             $fs[$j] = trim($r->name);
             $j++;
         }
@@ -184,6 +186,7 @@ if($dopost=='bak')
 
             //正常情况
             $line = $intable;
+            
             for($j=0; $j<=$fsd; $j++)
             {
                 if($j < $fsd)
