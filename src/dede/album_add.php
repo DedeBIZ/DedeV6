@@ -359,7 +359,7 @@ else if($dopost=='save')
         exit();
     }
     $useip = GetIP();
-    $query = "INSERT INTO `$addtable`(aid,typeid,redirecturl,userip,pagestyle,maxwidth,imgurls,row,col,isrm,ddmaxwidth,pagepicnum,body{$inadd_f})
+    $query = "INSERT INTO `$addtable`(aid,typeid,redirecturl,userip,pagestyle,maxwidth,imgurls,`row`,col,isrm,ddmaxwidth,pagepicnum,body{$inadd_f})
          Values('$arcID','$typeid','$redirecturl','$useip','$pagestyle','$maxwidth','$imgurls','$row','$col','$isrm','$ddmaxwidth','$pagepicnum','$body'{$inadd_v}); ";
     if(!$dsql->ExecuteNoneQuery($query))
     {

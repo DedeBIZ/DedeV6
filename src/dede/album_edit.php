@@ -401,7 +401,7 @@ else if($dopost=='save')
           ddmaxwidth = '$ddmaxwidth',
           pagepicnum = '$pagepicnum',
           imgurls='$imgurls',
-          row='$row',
+          `row`='$row',
           col='$col',
           isrm='$isrm'{$inadd_f},
           redirecturl='$redirecturl',
