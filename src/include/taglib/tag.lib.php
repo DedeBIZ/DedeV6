@@ -42,8 +42,8 @@ function lib_tag(&$ctag, &$refObj)
     $ltype = $sort;
     $num = $row;
 
-    $addsql = '';
     $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); // 取一个平均
+    $addsql = "WHERE 1=1 AND total >= {$dd['tt']}";
 
     if ($getall == 0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid'])) {
         $dsql->SetQuery("SELECT tid FROM `#@__taglist` WHERE aid = '{$refObj->Fields['aid']}' ");
@@ -53,12 +53,12 @@ function lib_tag(&$ctag, &$refObj)
             $ids .= ($ids == '' ? $row['tid'] : ',' . $row['tid']);
         }
         if ($ids != '') {
-            $addsql = " WHERE id IN($ids) AND total >= {$dd['tt']}";
+            $addsql .= " AND id IN($ids) AND";
         }
         if ($addsql == '') return '';
     } else {
         if (!empty($typeid)) {
-            $addsql = " WHERE typeid='$typeid' AND total >= {$dd['tt']}";
+            $addsql .= " AND typeid='$typeid'";
         }
     }
 

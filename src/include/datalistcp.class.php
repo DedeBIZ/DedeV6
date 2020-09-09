@@ -294,13 +294,13 @@ class DataListCP
         //无结果或只有一页的情况
         if($totalpage<=1 && $this->totalResult > 0)
         {
-            return "<span>{$lang_total} 1 {$lang_page}/".$this->totalResult.$lang_record_number."</span>";
+            return "<ul class='pagination justify-content-center'>\n<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">{$lang_total} 1 {$lang_page}/".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
         if($this->totalResult == 0)
         {
-            return "<span>{$lang_total} 0 {$lang_page}/".$this->totalResult.$lang_record_number."</span>";
+            return "<ul class='pagination justify-content-center'>\n<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">{$lang_total} 0 {$lang_page}/".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
-        $infos = "<span>{$lang_total} {$totalpage} {$lang_page}/{$this->totalResult}{$lang_record_number} </span>";
+        $infos = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">{$lang_total} {$totalpage} {$lang_page}/{$this->totalResult}{$lang_record_number} </span></li>";
         if($this->totalResult!=0)
         {
             $this->getValues['totalresult'] = $this->totalResult;
@@ -319,21 +319,21 @@ class DataListCP
         //获得上一页和下一页的链接
         if($this->pageNO != 1)
         {
-            $prepage .= "<a class='prePage' href='".$purl."pageno=$prepagenum'>$lang_pre_page</a> \n";
-            $indexpage = "<a class='indexPage' href='".$purl."pageno=1'>$lang_index_page</a> \n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."pageno=$prepagenum'>$lang_pre_page</a></li> \n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."pageno=1'>$lang_index_page</a></li> \n";
         }
         else
         {
-            $indexpage = "<span class='indexPage'>"."$lang_index_page \n"."</span>";
+            $indexpage = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">"."$lang_index_page \n"."</span></li>";
         }
         if($this->pageNO != $totalpage && $totalpage > 1)
         {
-            $nextpage.="<a class='nextPage' href='".$purl."pageno=$nextpagenum'>$lang_next_page</a> \n";
-            $endpage="<a class='endPage' href='".$purl."pageno=$totalpage'>$lang_end_page</a> \n";
+            $nextpage.="<li class='page-item'><a class='page-link' href='".$purl."pageno=$nextpagenum'>$lang_next_page</a></li> \n";
+            $endpage="<li class='page-item'><a class='page-link' href='".$purl."pageno=$totalpage'>$lang_end_page</a></li> \n";
         }
         else
         {
-            $endpage=" <strong>$lang_end_page</strong> \n";
+            $endpage=" <li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">$lang_end_page</span></li> \n";
         }
 
         //获得数字链接
@@ -358,10 +358,10 @@ class DataListCP
         }
         for($j; $j<=$total_list; $j++)
         {
-            $listdd .= $j==$this->pageNO ? "<strong>$j</strong>\n" : "<a href='".$purl."pageno=$j'>".$j."</a>\n";
+            $listdd .= $j==$this->pageNO ? "<li class='page-item'><span class='page-link'>$j</span></li>\r\n" : "<li class='page-item'><a class='page-link' href='".$purl."pageno=$j'>".$j."</a></li>\n";
         }
 
-        $plist = "<div class=\"pagelistbox\">\n";
+        $plist = "<ul class='pagination justify-content-center'>\n";
 
         //info,index,end,pre,next,pageno,form
         if(preg_match("#info#i",$atts['listitem']))
@@ -398,7 +398,7 @@ class DataListCP
             }
             $plist .= "</form>\n";
         }
-        $plist .= "</div>\n";
+        $plist .= "</ul>\n";
         return $plist;
     }
 

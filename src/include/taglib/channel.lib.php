@@ -66,10 +66,13 @@ function lib_channel(&$ctag,&$refObj)
     else
     {
         $row2 = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$typeid' ");
-        $typeid = $row2['id'];
-        $reid = $row2['reid'];
-        $topid = $row2['topid'];
-        $issetInfos = true;
+
+        if (is_array($row2)) {
+            $typeid = $row2['id'];
+            $reid = $row2['reid'];
+            $topid = $row2['topid'];
+            $issetInfos = true;
+        }
     }
     
     if($type=='' || $type=='sun') $type='son';

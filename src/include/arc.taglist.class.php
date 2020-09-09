@@ -172,7 +172,11 @@ class TagList
 
         if (file_exists($makeDir)) {
             header('HTTP/1.1 301 Moved Permanently');
-            header('Location:a/tags/' . GetPinyin($this->Tag) . "/");
+            if (!empty($this->Tag)) {
+                header('Location:a/tags/' . GetPinyin($this->Tag) . "/");
+            } else {
+                header('Location:a/tags/');
+            }
             exit;
         }
 
@@ -440,27 +444,27 @@ class TagList
         }
         $totalpage = $this->TotalPage;
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<span class=\"pageinfo\">共1页/" . $this->TotalResult . "条</span>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/" . $this->TotalResult . "条</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class=\"pageinfo\">共0页/" . $this->TotalResult . "条</span>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/" . $this->TotalResult . "条</span></li>";
         }
-        $maininfo = "<span class=\"pageinfo\">共{$totalpage}页/" . $this->TotalResult . "条</span>\r\n";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/" . $this->TotalResult . "条</span></li>\r\n";
         $purl = $this->GetCurUrl();
         $purl .= "?/" . urlencode($this->Tag);
 
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li><a href='" . $purl . "/$prepagenum/'>上一页</a></li>\r\n";
-            $indexpage = "<li><a href='" . $purl . "/1/'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='" . $purl . "/$prepagenum/'>上一页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='" . $purl . "/1/'>首页</a></li>\r\n";
         } else {
-            $indexpage = "<li><a>首页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li><a href='" . $purl . "/$nextpagenum/'>下一页</a></li>\r\n";
-            $endpage = "<li><a href='" . $purl . "/$totalpage/'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='" . $purl . "/$nextpagenum/'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link' href='" . $purl . "/$totalpage/'>末页</a></li>\r\n";
         } else {
-            $endpage = "<li><a>末页</a></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
 
         //获得数字链接
@@ -480,9 +484,9 @@ class TagList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class=\"thisclass\"><a>$j</a></li>\r\n";
+                $listdd .= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
             } else {
-                $listdd .= "<li><a href='" . $purl . "/$j/'>" . $j . "</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='" . $purl . "/$j/'>" . $j . "</a></li>\r\n";
             }
         }
         $plist  =  '';
@@ -518,12 +522,12 @@ class TagList
         }
         $totalpage = $this->TotalPage;
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<span class=\"pageinfo\">共1页/" . $this->TotalResult . "条</span>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/" . $this->TotalResult . "条</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class=\"pageinfo\">共0页/" . $this->TotalResult . "条</span>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/" . $this->TotalResult . "条</span></li>";
         }
-        $maininfo = "<span class=\"pageinfo\">共{$totalpage}页/" . $this->TotalResult . "条</span>\r\n";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/" . $this->TotalResult . "条</span></li>\r\n";
         // $purl = $this->GetCurUrl();
         $purl = "/a/tags/" . GetPinyin($this->Tag);
 
@@ -531,16 +535,16 @@ class TagList
 
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li><a href='" . $purl . "/$prepagenum/'>上一页</a></li>\r\n";
-            $indexpage = "<li><a href='" . $purl . "/1/'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='" . $purl . "/$prepagenum/'>上一页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='" . $purl . "/1/'>首页</a></li>\r\n";
         } else {
-            $indexpage = "<li><a>首页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li><a href='" . $purl . "/$nextpagenum/'>下一页</a></li>\r\n";
-            $endpage = "<li><a href='" . $purl . "/$totalpage/'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='" . $purl . "/$nextpagenum/'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link' href='" . $purl . "/$totalpage/'>末页</a></li>\r\n";
         } else {
-            $endpage = "<li><a>末页</a></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
 
         //获得数字链接
@@ -560,9 +564,9 @@ class TagList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class=\"thisclass\"><a>$j</a></li>\r\n";
+                $listdd .= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
             } else {
-                $listdd .= "<li><a href='" . $purl . "/$j/'>" . $j . "</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='" . $purl . "/$j/'>" . $j . "</a></li>\r\n";
             }
         }
         $plist  =  '';

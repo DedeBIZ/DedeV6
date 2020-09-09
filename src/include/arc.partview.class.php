@@ -64,10 +64,10 @@ class PartView
                 }
             }
             $_sys_globals['curfile'] = 'partview';
-            $_sys_globals['typename'] = $this->Fields['typename'];
+            @$_sys_globals['typename'] = $this->Fields['typename'];
 
             //设置环境变量
-            SetSysEnv($this->TypeID,$this->Fields['typename'],0,'','partview');
+            @SetSysEnv($this->TypeID,$this->Fields['typename'],0,'','partview');
         }
         SetSysEnv($this->TypeID,'',0,'','partview');
         $this->Fields['typeid'] = $this->TypeID;

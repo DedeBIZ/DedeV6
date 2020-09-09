@@ -41,7 +41,15 @@ function _FilterAll($fk, &$svar)
         }
     }
     if (!$magic_quotes_gpc) {
-        $svar = addslashes($svar);
+        // var_dump($svar);
+        if (is_array($svar)) {
+            foreach ($svar as $key => $value) {
+                $svar[$key] = addslashes($svar[$key]);
+            }
+        } else {
+            $svar = addslashes($svar);
+        }
+        
     }
     return $svar;
 }

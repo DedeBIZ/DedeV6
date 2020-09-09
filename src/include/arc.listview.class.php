@@ -891,7 +891,7 @@ class ListView
                     $row['ispart'],$row['namerule2'],$row['moresite'],$row['siteurl'],$row['sitepath']);
                     if($row['litpic'] == '-' || $row['litpic'] == '')
                     {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.jpg';
                     }
                     if(!preg_match("/^http:\/\//i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y')
                     {
@@ -991,37 +991,36 @@ class ListView
         if($totalpage<=1 && $this->TotalResult>0)
         {
 
-            return "<li><span class=\"pageinfo\">共 <strong>1</strong>页<strong>".$this->TotalResult."</strong>条记录</span></li>\r\n";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>1</strong>页<strong>".$this->TotalResult."</strong>条记录</span></li>\r\n";
         }
         if($this->TotalResult == 0)
         {
-            return "<li><span class=\"pageinfo\">共 <strong>0</strong>页<strong>".$this->TotalResult."</strong>条记录</span></li>\r\n";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>0</strong>页<strong>".$this->TotalResult."</strong>条记录</span></li>\r\n";
         }
         $purl = $this->GetCurUrl();
-        $maininfo = "<li><span class=\"pageinfo\">共 <strong>{$totalpage}</strong>页<strong>".$this->TotalResult."</strong>条</span></li>\r\n";
-        $tnamerule = $this->GetMakeFileRule($this->Fields['id'],"list",$this->Fields['typedir'],$this->Fields['defaultname'],$this->Fields['namerule2']);
-        $tnamerule = preg_replace("/^(.*)\//", '', $tnamerule);
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>{$totalpage}</strong>页<strong>".$this->TotalResult."</strong>条</span></li>\r\n";
+        $tnamerule = $this->GetMakeFileRule($this->Fields['id'],"list",$this->Fields['typedir'],$this->Fields['defaultname'],$this->Fields['namerule2']);        
 
         //获得上一页和主页的链接
         if($this->PageNo != 1)
         {
-            $prepage.="<li><a href='".str_replace("{page}",$prepagenum,$tnamerule)."'>上一页</a></li>\r\n";
-            $indexpage="<li><a href='".str_replace("{page}",1,$tnamerule)."'>首页</a></li>\r\n";
+            $prepage.="<li class='page-item'><a class='page-link' href='".str_replace("{page}",$prepagenum,$tnamerule)."'>上一页</a></li>\r\n";
+            $indexpage="<li class='page-item'><a class='page-link' href='".str_replace("{page}",1,$tnamerule)."'>首页</a></li>\r\n";
         }
         else
         {
-            $indexpage="<li>首页</li>\r\n";
+            $indexpage="<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
 
         //下一页,未页的链接
         if($this->PageNo!=$totalpage && $totalpage>1)
         {
-            $nextpage.="<li><a href='".str_replace("{page}",$nextpagenum,$tnamerule)."'>下一页</a></li>\r\n";
-            $endpage="<li><a href='".str_replace("{page}",$totalpage,$tnamerule)."'>末页</a></li>\r\n";
+            $nextpage.="<li class='page-item'><a class='page-link' href='".str_replace("{page}",$nextpagenum,$tnamerule)."'>下一页</a></li>\r\n";
+            $endpage="<li class='page-item'><a class='page-link' href='".str_replace("{page}",$totalpage,$tnamerule)."'>末页</a></li>\r\n";
         }
         else
         {
-            $endpage="<li>末页</li>\r\n";
+            $endpage="<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
 
         //option链接
@@ -1069,11 +1068,11 @@ class ListView
         {
             if($j==$this->PageNo)
             {
-                $listdd.= "<li class=\"thisclass\">$j</li>\r\n";
+                $listdd.= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
             }
             else
             {
-                $listdd.="<li><a href='".str_replace("{page}",$j,$tnamerule)."'>".$j."</a></li>\r\n";
+                $listdd.="<li class='page-item'><a class='page-link' href='".str_replace("{page}",$j,$tnamerule)."'>".$j."</a></li>\r\n";
             }
         }
         $plist = '';
@@ -1109,13 +1108,13 @@ class ListView
         $totalpage = ceil($this->TotalResult/$this->PageSize);
         if($totalpage<=1 && $this->TotalResult>0)
         {
-            return "<li><span class=\"pageinfo\">共 1 页/".$this->TotalResult." 条记录</span></li>\r\n";
+            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>共 1 页/".$this->TotalResult." 条记录</span></li>\r\n";
         }
         if($this->TotalResult == 0)
         {
-            return "<li><span class=\"pageinfo\">共 0 页/".$this->TotalResult." 条记录</span></li>\r\n";
+            return "<li class='d-none d-sm-block page-item disabled'><span class=\"page-link\">共 0 页/".$this->TotalResult." 条记录</span></li>\r\n";
         }
-        $maininfo = "<li><span class=\"pageinfo\">共 <strong>{$totalpage}</strong>页<strong>".$this->TotalResult."</strong>条</span></li>\r\n";
+        $maininfo = "<li class='d-none d-sm-block page-item disabled'><span class=\"page-link\">共 <strong>{$totalpage}</strong>页<strong>".$this->TotalResult."</strong>条</span></li>\r\n";
         
         $purl = $this->GetCurUrl();
         // 如果开启为静态,则对规则进行替换
@@ -1136,21 +1135,21 @@ class ListView
         //获得上一页和下一页的链接
         if($this->PageNo != 1)
         {
-            $prepage.="<li><a href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
-            $indexpage="<li><a href='".$purl."PageNo=1'>首页</a></li>\r\n";
+            $prepage.="<li class='page-item'><a href='".$purl."PageNo=$prepagenum' class='page-link'>上一页</a></li>\r\n";
+            $indexpage="<li class='page-item'><a href='".$purl."PageNo=1' class='page-link'>首页</a></li>\r\n";
         }
         else
         {
-            $indexpage="<li><a>首页</a></li>\r\n";
+            $indexpage="<li class='page-item'><a class='page-link'>首页</a></li>\r\n";
         }
         if($this->PageNo!=$totalpage && $totalpage>1)
         {
-            $nextpage.="<li><a href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
-            $endpage="<li><a href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
+            $nextpage.="<li class='page-item'><a href='".$purl."PageNo=$nextpagenum' class='page-link'>下一页</a></li>\r\n";
+            $endpage="<li class='page-item'><a href='".$purl."PageNo=$totalpage' class='page-link'>末页</a></li>\r\n";
         }
         else
         {
-            $endpage="<li><a>末页</a></li>\r\n";
+            $endpage="<li class='page-item'><a class='page-link'>末页</a></li>\r\n";
         }
 
 
@@ -1178,11 +1177,11 @@ class ListView
         {
             if($j==$this->PageNo)
             {
-                $listdd.= "<li class=\"thisclass\"><a>$j</a></li>\r\n";
+                $listdd.= "<li class=\"page-item active\"><a class='page-link'>$j</a></li>\r\n";
             }
             else
             {
-                $listdd.="<li><a href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
+                $listdd.="<li class=\"page-item\"><a href='".$purl."PageNo=$j' class='page-link'>".$j."</a></li>\r\n";
             }
         }
 

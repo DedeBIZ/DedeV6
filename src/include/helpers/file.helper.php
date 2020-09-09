@@ -76,7 +76,7 @@ if ( ! function_exists('OpenFtp'))
             }
             if(!ftp_login($g_ftpLink,$cfg_ftp_user,$cfg_ftp_pwd))
             {
-                echo "登陆FTP失败！";
+                echo "登录FTP失败！";
                 exit();
             }
         }

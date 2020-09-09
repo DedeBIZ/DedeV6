@@ -282,7 +282,7 @@ class Archives
         {
             if($this->Fields['litpic'] == '-' || $this->Fields['litpic'] == '')
             {
-                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
+                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.jpg';
             }
             if(!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y')
             {
@@ -350,7 +350,8 @@ class Archives
      */
     function MakeHtml($isremote=0)
     {
-        global $cfg_remote_site,$fileFirst;
+        global $cfg_remote_site,$fileFirst,$baidu_seo,$cfg_basehost;
+
         if($this->IsError)
         {
             return '';
@@ -404,6 +405,7 @@ class Archives
         //循环生成HTML文件
         else
         {
+            $seoUrls = array();
             for($i=1;$i<=$this->TotalPage;$i++)
             {
                 if($this->TotalPage > 1) {
@@ -413,11 +415,14 @@ class Archives
                 if($i>1)
                 {
                     $TRUEfilename = $this->GetTruePath().$fileFirst."_".$i.".".$this->ShortName;
+                    $URLFilename = $fileFirst."_".$i.".".$this->ShortName;
                 }
                 else
                 {
                     $TRUEfilename = $this->GetTruePath().$filename;
+                    $URLFilename = $filename;
                 }
+                $seoUrls = array_merge($seoUrls, array($cfg_basehost.$URLFilename));
                 $this->ParseDMFields($i,1);
                 $this->dtp->SaveTo($TRUEfilename);
                 //如果启用远程发布则需要进行判断
@@ -431,6 +436,25 @@ class Archives
                     $remotedir = preg_replace("#[^\/]*\.html#", '', $remotefile);
                     $this->ftp->rmkdir($remotedir);
                     $this->ftp->upload($localfile, $remotefile, 'ascii');
+                }
+            }
+
+            if ($baidu_seo == true) {
+                $api = 'http://data.zz.baidu.com/urls?site=https://www.zixue.cn&token=vXkBb4Ot0yhOFcmP';
+                $ch = curl_init();
+                $options =  array(
+                    CURLOPT_URL => $api,
+                    CURLOPT_POST => true,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_POSTFIELDS => implode("\n", $seoUrls),
+                    CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+                );
+                curl_setopt_array($ch, $options);
+                $result = curl_exec($ch);
+                $rs = json_decode($result,true);
+
+                if ($rs["success"]==1) {
+                    echo "百度搜索引擎提交成功，剩余次数：".$rs["remain"]."<br/>\r\n";
                 }
             }
         }
@@ -890,18 +914,18 @@ class Archives
         {
             return "";
         }
-        $PageList = "<li><a>共".$totalPage."页: </a></li>";
+        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共".$totalPage."页: </span></li>";
         $nPage = $nowPage-1;
         $lPage = $nowPage+1;
         if($nowPage==1)
         {
-            $PageList.="<li><a href='#'>上一页</a></li>";
+            $PageList.="<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='#'>上一页</a></li>";
         }
         else
         {
             if($nPage==1)
             {
-                $PageList.="<li><a href='view.php?aid=$aid'>上一页</a></li>";
+                $PageList.="<li class='page-item'><a class='page-link' href='view.php?aid=$aid'>上一页</a></li>";
                 if($cfg_rewrite == 'Y')
                 {
                     $PageList = preg_replace("#.php\?aid=(\d+)#i", '-\\1-1.html', $PageList);
@@ -909,7 +933,7 @@ class Archives
             }
             else
             {
-                $PageList.="<li><a href='view.php?aid=$aid&pageno=$nPage'>上一页</a></li>";
+                $PageList.="<li class='page-item'><a class='page-link' href='view.php?aid=$aid&pageno=$nPage'>上一页</a></li>";
                 if($cfg_rewrite == 'Y')
                 {
                     $PageList = str_replace(".php?aid=", "-", $PageList);
@@ -923,7 +947,7 @@ class Archives
             {
                 if($nowPage!=1)
                 {
-                    $PageList.="<li><a href='view.php?aid=$aid'>1</a></li>";
+                    $PageList.="<li class='page-item'><a class='page-link' href='view.php?aid=$aid'>1</a></li>";
                     if($cfg_rewrite == 'Y')
                     {
                         $PageList = preg_replace("#.php\?aid=(\d+)#i", '-\\1-1.html', $PageList);
@@ -931,7 +955,7 @@ class Archives
                 }
                 else
                 {
-                    $PageList.="<li class=\"thisclass\"><a>1</a></li>";
+                    $PageList.="<li class=\"page-item active\"><a class='page-link'>1</a></li>";
                 }
             }
             else
@@ -939,7 +963,7 @@ class Archives
                 $n = $i;
                 if($nowPage!=$i)
                 {
-                    $PageList.="<li><a href='view.php?aid=$aid&pageno=$i'>".$n."</a></li>";
+                    $PageList.="<li class='page-item'><a class='page-link' href='view.php?aid=$aid&pageno=$i'>".$n."</a></li>";
                     if($cfg_rewrite == 'Y')
                     {
                         $PageList = str_replace(".php?aid=", "-", $PageList);
@@ -948,13 +972,13 @@ class Archives
                 }
                 else
                 {
-                    $PageList.="<li class=\"thisclass\"><a href='#'>{$n}</a></li>";
+                    $PageList.="<li class=\"page-item active\"><span class='page-link'>{$n}</span></li>";
                 }
             }
         }
         if($lPage <= $totalPage)
         {
-            $PageList.="<li><a href='view.php?aid=$aid&pageno=$lPage'>下一页</a></li>";
+            $PageList.="<li class='page-item'><a class='page-link' href='view.php?aid=$aid&pageno=$lPage'>下一页</a></li>";
             if($cfg_rewrite == 'Y')
             {
                 $PageList = str_replace(".php?aid=", "-", $PageList);
@@ -963,7 +987,7 @@ class Archives
         }
         else
         {
-            $PageList.= "<li><a href='#'>下一页</a></li>";
+            $PageList.= "<li class='page-item'><span class='page-link'>下一页</span></li>";
         }
         return $PageList;
     }
@@ -983,22 +1007,22 @@ class Archives
         {
             return "";
         }
-        $PageList = "<li><a>共".$totalPage."页: </a></li>";
+        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共".$totalPage."页: </span></li>";
         $nPage = $nowPage-1;
         $lPage = $nowPage+1;
         if($nowPage==1)
         {
-            $PageList.="<li><a href='#'>上一页</a></li>";
+            $PageList.="<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='#'>上一页</a></li>";
         }
         else
         {
             if($nPage==1)
             {
-                $PageList.="<li><a href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
+                $PageList.="<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
             }
             else
             {
-                $PageList.="<li><a href='".$this->NameFirst."_".$nPage.".".$this->ShortName."'>上一页</a></li>";
+                $PageList.="<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$nPage.".".$this->ShortName."'>上一页</a></li>";
             }
         }
         for($i=1;$i<=$totalPage;$i++)
@@ -1007,11 +1031,11 @@ class Archives
             {
                 if($nowPage!=1)
                 {
-                    $PageList.="<li><a href='".$this->NameFirst.".".$this->ShortName."'>1</a></li>";
+                    $PageList.="<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>1</a></li>";
                 }
                 else
                 {
-                    $PageList.="<li class=\"thisclass\"><a href='#'>1</a></li>";
+                    $PageList.="<li class=\"page-item active\"><span class='page-link'>1</span></li>";
                 }
             }
             else
@@ -1019,21 +1043,21 @@ class Archives
                 $n = $i;
                 if($nowPage!=$i)
                 {
-                    $PageList.="<li><a href='".$this->NameFirst."_".$i.".".$this->ShortName."'>".$n."</a></li>";
+                    $PageList.="<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$i.".".$this->ShortName."'>".$n."</a></li>";
                 }
                 else
                 {
-                    $PageList.="<li class=\"thisclass\"><a href='#'>{$n}</a></li>";
+                    $PageList.="<li class=\"page-item active\"><span class='page-link'>{$n}</span></li>";
                 }
             }
         }
         if($lPage <= $totalPage)
         {
-            $PageList.="<li><a href='".$this->NameFirst."_".$lPage.".".$this->ShortName."'>下一页</a></li>";
+            $PageList.="<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$lPage.".".$this->ShortName."'>下一页</a></li>";
         }
         else
         {
-            $PageList.= "<li><a href='#'>下一页</a></li>";
+            $PageList.= "<li class='page-item'><span class='page-link'>下一页</span></li>";
         }
         return $PageList;
     }
@@ -1230,12 +1254,7 @@ class Archives
         // 这里可能会有错误
         if (version_compare(PHP_VERSION, '5.5.0', '>='))
         {
-            if (version_compare(PHP_VERSION, '8', '>=')) {
-                $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight8", $body);
-            } else {
-                $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
-            }
-            
+            $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
         } else {
             $body = @preg_replace("#(^|>)([^<]+)(?=<|$)#sUe", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
         }
@@ -1247,10 +1266,6 @@ class Archives
 
 
 }//End Archives
-
-function _highlight8($matches) {
-    // TODO
-}
 
 //高亮专用, 替换多次是可能不能达到最多次
 function _highlight($string, $words, $result, $pre)

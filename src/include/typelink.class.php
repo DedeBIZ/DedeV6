@@ -40,7 +40,7 @@ class TypeLink
         $this->indexName = $GLOBALS['cfg_indexname'];
         $this->baseDir = $GLOBALS['cfg_basedir'];
         $this->modDir = $GLOBALS['cfg_templets_dir'];
-        $this->SplitSymbol = $GLOBALS['cfg_list_symbol'];
+        $this->SplitSymbol = $GLOBALS['cfg_list_symbol'] === " > "? "" : $GLOBALS['cfg_list_symbol'];
         $this->dsql = $GLOBALS['dsql'];
         $this->TypeID = $typeid;
         $this->valuePosition = '';
@@ -112,9 +112,9 @@ class TypeLink
     {
         if ( defined('DEDEMOB') )
         {
-            $indexpage = "<a href='index.php'>".$this->indexName."</a>";
+            $indexpage = "<li class='breadcrumb-item'><a href='index.php'>".$this->indexName."</a></li>";
         } else{
-            $indexpage = "<a href='".$this->indexUrl."'>".$this->indexName."</a>";
+            $indexpage = "<li class='breadcrumb-item'><a href='".$this->indexUrl."'>".$this->indexName."</a></li>";
         }
         
         if($this->valuePosition!="" && $islink)
@@ -196,7 +196,7 @@ class TypeLink
     function GetOneTypeLink($typeinfos)
     {
         $typepage = $this->GetOneTypeUrl($typeinfos);
-        $typelink = "<a href='".$typepage."'>".$typeinfos['typename']."</a>";
+        $typelink = "<li class='breadcrumb-item'><a href='".$typepage."'>".$typeinfos['typename']."</a></a>";
         return $typelink;
     }
 

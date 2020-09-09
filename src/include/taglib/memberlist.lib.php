@@ -27,7 +27,7 @@ if(!defined('DEDEINC'))
 <attributes>
     <iterm>row:调用数目</iterm> 
     <iterm>iscommend:是否为推荐会员</iterm>
-    <iterm>orderby:按登陆时间排序 money 按金钱排序 scores 按积分排序</iterm>
+    <iterm>orderby:按登录时间排序 money 按金钱排序 scores 按积分排序</iterm>
 </attributes> 
 >>dede>>*/
  
