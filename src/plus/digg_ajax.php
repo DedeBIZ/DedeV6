@@ -11,7 +11,8 @@
  */
 require_once(dirname(__FILE__)."/../include/common.inc.php");
 $action = isset($action) ? trim($action) : '';
-$id = empty($id)? 0 : intval(preg_replace("/[^\d]/",'', $id));
+$format = isset($format)? $format : '';
+$id = empty($id)? 0 : intval($id);
 
 helper('cache');
 
@@ -91,23 +92,39 @@ if($formurl=='caicai')
 else
 {
     $row['goodper'] = trim(sprintf("%4.2f", $row['goodper']));
-    $row['badper'] = trim(sprintf("%4.2f", $row['badper']));
-    $digg = '<div class="diggbox digg_good" onmousemove="this.style.backgroundPosition=\'left bottom\';" onmouseout="this.style.backgroundPosition=\'left top\';" onclick="postDigg(\'good\','.$id.')">
-            <div class="digg_act">顶一下</div>
-            <div class="digg_num">('.$row['goodpost'].')</div>
-            <div class="digg_percent">
-                <div class="digg_percent_bar"><span style="width:'.$row['goodper'].'%"></span></div>
-                <div class="digg_percent_num">'.$row['goodper'].'%</div>
-            </div>
-        </div>
-        <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition=\'right bottom\';" onmouseout="this.style.backgroundPosition=\'right top\';" onclick="postDigg(\'bad\','.$id.')">
-            <div class="digg_act">踩一下</div>
-            <div class="digg_num">('.$row['badpost'].')</div>
-            <div class="digg_percent">
-                <div class="digg_percent_bar"><span style="width:'.$row['badper'].'%"></span></div>
-                <div class="digg_percent_num">'.$row['badper'].'%</div>
-            </div>
-        </div>';
+	$row['badper'] = trim(sprintf("%4.2f", $row['badper']));
+	
+	if (!empty($format)) {
+		// 输出JSON API的方式
+		$result = array(
+			"code" => 200,
+			"data" => array(
+				'goodpost' => $row['goodpost'],
+				'goodper' => $row['goodper'],
+				'badpost' => $row['badpost'],
+				'badper' => $row['badper'],
+			),
+		);
+		$digg = json_encode($result);
+	} else {
+		// 兼容之前的老版本
+		$digg = '<div class="diggbox digg_good" onmousemove="this.style.backgroundPosition=\'left bottom\';" onmouseout="this.style.backgroundPosition=\'left top\';" onclick="postDigg(\'good\','.$id.')">
+		<div class="digg_act">顶一下</div>
+		<div class="digg_num">('.$row['goodpost'].')</div>
+		<div class="digg_percent">
+			<div class="digg_percent_bar"><span style="width:'.$row['goodper'].'%"></span></div>
+			<div class="digg_percent_num">'.$row['goodper'].'%</div>
+		</div>
+	</div>
+	<div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition=\'right bottom\';" onmouseout="this.style.backgroundPosition=\'right top\';" onclick="postDigg(\'bad\','.$id.')">
+		<div class="digg_act">踩一下</div>
+		<div class="digg_num">('.$row['badpost'].')</div>
+		<div class="digg_percent">
+			<div class="digg_percent_bar"><span style="width:'.$row['badper'].'%"></span></div>
+			<div class="digg_percent_num">'.$row['badper'].'%</div>
+		</div>
+	</div>';
+	}
 }
 AjaxHead();
 echo $digg;
