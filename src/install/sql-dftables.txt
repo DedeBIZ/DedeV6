@@ -442,6 +442,15 @@ CREATE TABLE `#@__feedback` (
   KEY `aid` (`aid`,`ischeck`,`mid`)
 ) TYPE=MyISAM;
 
+DROP TABLE IF EXISTS `#@__feedback_goodbad`;
+CREATE TABLE `#@__feedback_goodbad` (
+	`fgid` INT(11) NOT NULL AUTO_INCREMENT,
+	`mid` INT(11) NOT NULL DEFAULT '0',
+	`fid` INT(11) NOT NULL DEFAULT '0',
+	`fgtype` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '0:good 1:bad',
+	PRIMARY KEY (`fgid`)
+) TYPE=MyISAM;
+
 DROP TABLE IF EXISTS `#@__flink`;
 CREATE TABLE `#@__flink` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
@@ -587,30 +596,6 @@ CREATE TABLE `#@__member_flink` (
   PRIMARY KEY  (`aid`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__member_friends`;
-CREATE TABLE `#@__member_friends` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `fid` mediumint(8) unsigned NOT NULL default '0',
-  `floginid` char(20) NOT NULL default '',
-  `funame` char(36) NOT NULL default '',
-  `mid` mediumint(8) NOT NULL default '0',
-  `addtime` int(10) unsigned NOT NULL default '0',
-  `ftype` tinyint(4) NOT NULL default '0',
-  `groupid` int(8) NOT NULL default '1',
-  `description` varchar(200) default NULL,
-  PRIMARY KEY  (`id`),
-  KEY `fid` (`fid`,`mid`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__member_group`;
-CREATE TABLE `#@__member_group` (
-  `id` int(10) NOT NULL auto_increment,
-  `groupname` varchar(50) NOT NULL,
-  `mid` int(8) NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `id` (`id`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__member_guestbook`;
 CREATE TABLE `#@__member_guestbook` (
   `aid` int(10) unsigned NOT NULL auto_increment,
@@ -638,19 +623,6 @@ CREATE TABLE `#@__member_model` (
   `issystem` int(2) NOT NULL default '0',
   `info` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__member_msg`;
-CREATE TABLE `#@__member_msg` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `mid` mediumint(8) unsigned NOT NULL default '0',
-  `userid` char(20) NOT NULL default '',
-  `ip` char(15) NOT NULL default '',
-  `ischeck` smallint(6) NOT NULL default '0',
-  `dtime` int(10) unsigned NOT NULL default '0',
-  `msg` text,
-  PRIMARY KEY  (`id`),
-  KEY `id` (`ischeck`,`mid`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__member_operation`;
@@ -789,21 +761,6 @@ CREATE TABLE `#@__member_type` (
   `money` int(11) NOT NULL default '0',
   `exptime` int(11) NOT NULL default '30',
   PRIMARY KEY  (`aid`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__member_vhistory`;
-CREATE TABLE `#@__member_vhistory` (
-  `id` int(10) NOT NULL auto_increment,
-  `mid` mediumint(8) unsigned NOT NULL default '0',
-  `loginid` char(20) NOT NULL default '',
-  `vid` mediumint(8) unsigned NOT NULL default '0',
-  `vloginid` char(20) NOT NULL default '',
-  `count` smallint(5) unsigned NOT NULL default '0',
-  `vip` char(15) NOT NULL default '',
-  `vtime` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id`),
-  KEY `vtime` (`vtime`),
-  KEY `mid` (`mid`,`vid`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__moneycard_record`;
@@ -967,6 +924,13 @@ CREATE TABLE `#@__search_keywords` (
   `channelid` smallint(5) unsigned NOT NULL default '0',
   `typeid` smallint(5) unsigned NOT NULL default '0',
   PRIMARY KEY  (`aid`)
+) TYPE=MyISAM;
+
+DROP TABLE IF EXISTS `#@__search_limits`;
+CREATE TABLE `#@__search_limits` (
+	`ip` VARCHAR(200) NOT NULL,
+	`searchtime` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`ip`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__sgpage`;

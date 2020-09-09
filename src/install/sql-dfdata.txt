@@ -593,7 +593,6 @@ INSERT INTO `#@__store_groups` VALUES('1','交友','0','0','2'),
 INSERT INTO `#@__sys_set` VALUES('1','nature','性格外向,性格内向,活泼开朗,沉默寡言,幽默,稳重,轻浮,冲动,坚强,脆弱,幼稚,成熟,能说会道,自私,真诚,独立,依赖,任性,自负,自卑,温柔体贴,神经质,拜金,小心翼翼,暴躁,倔强,逆来顺受,不拘小节,婆婆妈妈,交际广泛,豪爽,害羞,狡猾善变,耿直,虚伪,乐观向上,悲观消极,郁郁寡欢,孤僻,难以琢磨,胆小怕事,敢做敢当,助人为乐,老实,守旧,敏感,迟钝,武断,果断,优柔寡断,暴力倾向,刻薄,损人利己,附庸风雅,时喜时悲,患得患失,快言快语,豪放不羁,多愁善感,循规蹈矩'),
 ('2','language','普通话,上海话,广东话,英语,日语,韩语,法语,意大利语,德语,西班牙语,俄语,阿拉伯语');
 
-INSERT INTO `#@__member_group` VALUES('1','朋友','0');
 
 INSERT INTO `#@__vote` VALUES('1','你是从哪儿得知本站的？','1266336000','1584547200','0','0','1','1','0','0','<v:note id="1" count="1">朋友介绍</v:note>rn<v:note id="2" count="0">门户网站的搜索引擎</v:note>rn<v:note id="3" count="2">Google或百度搜索</v:note>rn<v:note id="4" count="2">别的网站上的链接</v:note>rn<v:note id="5" count="1">其它途径</v:note>rn');
 
@@ -3950,7 +3949,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('3','cfg_cookie_encode','cookie加密码','2','string',''),
 ('4','cfg_indexurl','网页主页链接','1','string','/'),
 ('5','cfg_backup_dir','数据备份目录（在data目录内）','2','string','backupdata'),
-('6','cfg_indexname','主页链接名','1','string','主页'),
+('6','cfg_indexname','主页链接名','1','string','首页'),
 ('7','cfg_webname','网站名称','1','string','我的网站'),
 ('8','cfg_adminemail','网站发信EMAIL','2','string','admin@dedecms.com'),
 ('9','cfg_html_editor','Html编辑器（ckeditor,需要fck的用户可以去官网下载）','2','string','ckeditor'),
@@ -3965,7 +3964,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('18','cfg_specnote','专题的最大节点数','2','number','6'),
 ('19','cfg_list_symbol','栏目位置的间隔符号','2','string',' > '),
 ('20','cfg_notallowstr','禁用词语（系统将直接停止用户动作）<br/>用|分开，但不要在结尾加|','5','bstring','非典|艾滋病|阳痿'),
-('21','cfg_feedbackcheck','评论及留言(是/否)需审核','5','bool','N'),
+('21','cfg_feedbackcheck','评论及留言(是/否)需审核','5','bool','Y'),
 ('22','cfg_keyword_replace','关键字替换(是/否)使用本功能会影响HTML生成速度','2','bool','Y'),
 ('23','cfg_fck_xhtml','编辑器(是/否)使用XHTML','1','bool','N'),
 ('24','cfg_df_style','模板默认风格','1','string','default'),
@@ -3985,7 +3984,6 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('36','cfg_ftp_pwd','FTP密码','2','string',''),
 ('37','cfg_ftp_root','网站根在FTP中的目录','2','string','/'),
 ('38','cfg_ftp_mkdir','是否强制用FTP创建目录','2','bool','N'),
-('39','cfg_feedback_ck','评论加验证码重确认','5','bool','Y'),
 ('40','cfg_list_son','上级列表是否包含子类内容','6','bool','Y'),
 ('41','cfg_mb_open','是否开启会员功能','4','bool','N'),
 ('42','cfg_mb_album','是否开启会员图集功能','4','bool','Y'),
@@ -4036,7 +4034,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('730','cfg_sendfb_scores','参与评论可获积分','5','number','3'),
 ('92','cfg_search_max','最大搜索检查文档数','6','number','50000'),
 ('93','cfg_search_maxrc','最大返回搜索结果数','6','number','300'),
-('94','cfg_search_time','搜索间隔时间(秒/对网站所有用户)','6','number','3'),
+('94','cfg_search_time','搜索间隔时间(秒/IP限制)','6','number','3'),
 ('95','cfg_baidunews_limit','百度新闻xml更新新闻数量 最大100','8','string','100'),
 ('223','cfg_smtp_port','smtp服务器端口','2','string','25'),
 ('221','cfg_sendmail_bysmtp','是否启用smtp方式发送邮件','2','bool','Y'),
@@ -4097,7 +4095,8 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('758','cfg_memcache_mc_oth','附加memcache缓存服务器地址',6,'string',''),
 ('759', 'cfg_cross_sectypeid', '支持交叉栏目显示副栏目内容', '7', 'bool', 'N'),
 ('760', 'cfg_digg_update', '顶踩缓存异步更新间隔（0为不缓存）', '6', 'number', '0'),
-('761', 'cfg_feedback_guest', '是否允许匿名评论', '5', 'bool', 'N')
+('761', 'cfg_feedback_guest', '是否允许匿名评论', '5', 'bool', 'N'),
+('762', 'cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200')
 ;
 
 INSERT INTO `#@__sys_module` VALUES (1, '0cce60bc0238aa03804682c801584991', '百度新闻', '', '', 0, ''),

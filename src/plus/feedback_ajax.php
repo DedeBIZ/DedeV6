@@ -121,7 +121,7 @@ else if($dopost=='send')
     $dtime = time();
     if(!empty($cfg_feedback_time))
     {
-        //检查最后发表评论时间，如果未登陆判断当前IP最后评论时间
+        //检查最后发表评论时间，如果未登录判断当前IP最后评论时间
         $where = ($cfg_ml->M_ID > 0 ? "WHERE `mid` = '$cfg_ml->M_ID' " : "WHERE `ip` = '$ip' ");
         $row = $dsql->GetOne("SELECT dtime FROM `#@__feedback` $where ORDER BY `id` DESC ");
         if(is_array($row) && $dtime - $row['dtime'] < $cfg_feedback_time)
