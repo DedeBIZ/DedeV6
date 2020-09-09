@@ -10,7 +10,7 @@ require_once(dirname(__FILE__)."/config.php");
 $gourl = RemoveXSS($gourl);
 if($cfg_ml->IsLogin())
 {
-    ShowMsg('你已经登陆系统，无需重新注册！', 'index.php');
+    ShowMsg('你已经登录系统，无需重新注册！', 'index.php');
     exit();
 }
 require_once(dirname(__FILE__)."/templets/login.htm");
