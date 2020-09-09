@@ -1,0 +1,238 @@
+{dede:comment text="内容评论模块"/}
+<div class="comment mt-3">
+	<h4>发表评论</h4>
+	<div id="feedback-alert">
+	</div>
+	<div class="content">
+		<textarea cols="60" id="iptMsg" name="msg" rows="5" class="form-control"
+			placeholder="说点什么吧，请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论"></textarea>
+	</div>
+	<div class="post">
+		<div class="dcmp-userinfo" id="_ajax_feedback">
+			<div class="form-row">
+				<div class="col-md-6 mb-3">
+					<label for="iptUsername">用户名</label>
+					<input type="text" class="form-control" id="iptUsername">
+				</div>
+				<div class="col-md-6 mb-3 areaValidate" style="display: none;">
+					<label for="iptValidate">验证码</label>
+					<div class="input-group">
+						<input type="text" class="form-control" id="iptValidate" style="text-transform:uppercase;">
+						<img src="{dede:global.cfg_cmspath/}/plus/vdimgck.php" id="validateimg" style="cursor:pointer;"
+							onclick="this.src='{dede:global.cfg_cmspath/}/plus/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)"
+							title="点击我更换图片" alt="点击我更换图片" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="form-check">
+					<input type="checkbox" value="1" name="notuser" id="iptAny" class="form-check-input" />
+					<label class="form-check-label" for="iptAny">
+						匿名评论？
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="dcmp-submit">
+			<button class="btn btn-success" type="button" onClick='SendFeedback()'>发表评论</button>
+		</div>
+	</div>
+
+	<div class="feedbacks">
+		{dede:feedback}
+		<div class="media">
+			<img class="face" src="[field:face/]" class="mr-3">
+			<div class="media-body">
+				<div class="feedback-content">[field:msg /]</div>
+				<div class="feedback-infos">
+					<span class="feedback-basic">
+						[field:username function="(@me=='guest' ? '游客' : @me)"/] 
+						<small>[field:dtime function="MyDate('Y-m-d',@me)"/]</small>
+						<a href="javascript:ReplyFeedback([field:id/])">[回复]</a> <a href="javascript:LoadReplyFeedbacks([field:id/])">[field:replycount /]条回复</a>
+					</span>
+					<div class="feedback-action">
+						<a href="javascript:GoodFeedback([field:id/], [field:good/])"><span id="feedbackGood[field:id/]">[field:good/]</span> <i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+					</div>
+				</div>
+				<div class="_feedback_reply mt-1" for="[field:id/]">
+				</div>
+				<div class="feedback_replies" for="[field:id/]">
+				</div>
+			</div>
+		</div>
+		{/dede:feedback}
+	</div>
+</div>
+<style>
+	.feedbacks .face {
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		border: solid 1px #DDD;
+	}
+
+	.feedbacks .media {
+		border-bottom: solid 1px #DDD;
+		padding-top: 10px;
+	}
+
+	.feedbacks .feedback_replies .media {
+		border-top: solid 1px #DDD;
+		border-bottom:none;
+	}
+
+	.feedbacks .media-body {
+		padding: 0 1em .5em 1em;
+	}
+
+	.feedbacks .media-body small{
+		color: #999;
+	}
+	.feedbacks .feedback-action {
+		float: right;
+	}
+	.feedbacks .feedback-basic a,.feedbacks .feedback-action a {
+		color: #F1813F;
+		font-size: 14px;
+	}
+
+	.feedbacks ._feedback_reply .alert {
+		margin-bottom: 0;
+	}
+	@media only screen and (max-width: 576px) {
+		.feedbacks .feedback-action {
+			float: none;
+		}
+	}
+</style>
+<script async>
+
+
+	// 发表评论
+	function SendFeedback() {
+		let feedback = {
+			action: "send",
+			comtype: "comments",
+			aid: "{dede:field name='id'/}",
+			msg: $("#iptMsg").val(),
+			username: $("#iptUsername").val(),
+			validate: $("#iptValidate").val(),
+			notuser: $("#iptAny").is(":checked") ? "1" : "",
+		};
+
+		$.post("{dede:field name='phpurl'/}/feedback.php", feedback, function (data) {
+			let result = JSON.parse(data);
+			if (result.code === 200) {
+				ShowAlert("#feedback-alert", result.msg, "success");
+				$("#iptMsg").val("");
+				$("#iptValidate").val("");
+				($("#iptUsername").attr("disabled") !== "disabled") && $("#iptUsername").val("");
+				$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/plus/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+			} else {
+				ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
+				$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/plus/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+			}
+		});
+	}
+
+	// 进行回复，回复必须登录
+	function SendReplyFeedback(fid) {
+		let content = $(`._feedback_reply[for="${fid}"]`).find(".iptReplyContent").val();
+		let reply = {
+			action : "send",
+			comtype : "reply",
+			fid : fid,
+			msg : content,
+		}
+		$.post("{dede:field name='phpurl'/}/feedback.php", reply, function (data) {
+			let result = JSON.parse(data);
+			if (result.code === 200) {
+				ShowAlert(`._feedback_reply[for="${fid}"]`, result.msg, "success");
+			} else {
+				ShowAlert(`._feedback_reply[for="${fid}"]`, `评论失败：${result.msg}`, "danger");
+			}
+		})
+		$(`._feedback_reply[for="${fid}"]`).find(".btnSend").attr("disabled", "disabled");
+	}
+
+	// 回复某个评论
+	function ReplyFeedback(fid) {
+		let replyPannel = `<div class="form-group mt-2">
+			<div class="input-group">
+				<input type="text" class="form-control iptReplyContent">
+				<button class="btn btn-success btnSend" type="button" onClick='SendReplyFeedback(${fid})'>回复</button>
+			</div>
+		</div>`;
+        $.get("{dede:global.cfg_cmsurl/}/member/ajax_loginsta.php?format=json", function(data) {
+            let result = JSON.parse(data);
+            if (result.code !== 200) {
+				$(`._feedback_reply`).html("");
+				ShowAlert(`._feedback_reply[for="${fid}"]`, 
+				'回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/member/login.php">[点击登录]</a>后再来回复。', 'warning', 5000);
+            } else {
+				$(`._feedback_reply`).html("");
+				$(`._feedback_reply[for="${fid}"]`).html(replyPannel);
+            }
+		});
+		
+		$(`._feedback_reply[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
+
+	}
+
+	// 加载回复评论
+	function LoadReplyFeedbacks(fid) {
+		$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
+
+		$.get("{dede:field name='phpurl'/}/feedback.php", {
+			"aid" : "{dede:field name='id'/}",
+			"fid" : fid,
+		}, function (data) {
+			let result = JSON.parse(data);
+			let tpl = `
+<div class="media">
+	<img class="face" src="~face~">
+	<div class="media-body">
+		<div class="feedback-content">~msg~</div>
+		<div class="feedback-infos">
+			<span class="feedback-basic">
+				~username~
+				<small>~dtimestr~</small>
+			</span>
+			<div class="feedback-action">
+				<a href="javascript:GoodFeedback(~id~, ~good~)"><span id="feedbackGood~id~">~good~</span> <i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
+`;
+			if (result.code === 200) {
+				$(`.feedback_replies[for="${fid}"]`).html("");
+				for (let i = 0; i < result.data.length; i++) {
+					const feedback = result.data[i];
+					let rs = tpl;
+					for (const key in feedback) {
+						if (feedback.hasOwnProperty(key)) {
+							rs = rs.replace(new RegExp(`~${key}~`,"gm"), feedback[key])
+						}
+					}
+					$(`.feedback_replies[for="${fid}"]`).append(rs);
+				}
+			}
+		})
+	}
+
+	// 赞
+	function GoodFeedback(fid, g) {
+		let good = {
+			action : "send",
+			feedbacktype : "good",
+			good : g,
+			fid : fid,
+		}
+		$.post("{dede:field name='phpurl'/}/feedback.php", good, function (data) {
+			let result = JSON.parse(data);
+			$(`#feedbackGood${fid}`).html(result.data);
+			console.log(result);
+		})
+	}
+</script>

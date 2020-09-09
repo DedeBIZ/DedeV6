@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-success zixue">
+    <div class="container">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars"
+            aria-controls="navbars" aria-expanded="false" aria-label="展开导航">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbars">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{dede:global.cfg_cmsurl/}/">首页</a>
+                </li>
+                {dede:channel type='top' row='10' currentstyle="<li class='nav-item'><a class='nav-link active' href='~typelink~' ~rel~><span>~typename~</span></a></li>"}
+                <li class="nav-item">
+                    <a class="nav-link" href="[field:typeurl/]" typeid=[field:id/]>[field:typename/]</a>
+                </li>
+                {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--/.navbar-->

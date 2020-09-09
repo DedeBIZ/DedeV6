@@ -19,6 +19,7 @@ if(isset($aid)) $arcID = $aid;
 
 $cid = empty($cid)? 1 : intval(preg_replace("/[^-\d]+[^\d]/",'', $cid));
 $arcID = $aid = empty($arcID)? 0 : intval(preg_replace("/[^\d]/",'', $arcID));
+$format = isset($format)? $format : "";
 
 $maintable = '#@__archives';$idtype='id';
 if($aid==0) exit();
@@ -46,7 +47,18 @@ if(!empty($view))
     $row = $dsql->GetOne(" SELECT click FROM `{$maintable}` WHERE {$idtype}='$aid' ");
     if(is_array($row))
     {
-        echo "document.write('".$row['click']."');\r\n";
+        if (!empty($format)) {
+            $result = array(
+                "code" => 200,
+                "data" => array(
+                    'click' => $row['click'],
+                ),
+            );
+            echo json_encode($result);
+        } else {
+            echo "document.write('".$row['click']."');\r\n";
+        }
+        
     }
 }
 exit();

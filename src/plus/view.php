@@ -102,14 +102,6 @@ if($needMoney>0 || $needRank>1)
                             showmsg('购买失败, 请返回', -1);
                             exit;
                         }
-                        #api{{
-                        if(defined('UC_APPID'))
-                        {
-                            include_once DEDEROOT.'/api/uc.func.php';
-                            $row = $dsql->GetOne("SELECT `scores`,`userid` FROM `#@__member` WHERE `mid`='".$cfg_ml->M_ID."'");
-                            uc_credit_note($row['userid'],-$needMoney,'money');
-                        }
-                        #/aip}}
     
                         showmsg('购买成功，购买扣点不会重扣金币，谢谢！', '/plus/view.php?aid='.$aid);
                         exit;

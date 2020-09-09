@@ -1,0 +1,13 @@
+<div class="card ddcard">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-12 caption"><span>栏目列表</span></div>
+        </div>
+    </div>
+    <ul class="list-group list-group-flush">
+        {dede:channel type='son' currentstyle="<li><a href='~typelink~' class='active'>~typename~</a></li>"}
+        <li><a href="[field:typeurl/]" title="[field:typename/]">[field:typename/]</a></li>
+        {/dede:channel}
+    </ul>
+</div>
+<!-- /.ddcard -->
