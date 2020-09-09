@@ -349,7 +349,7 @@ function GetCurContent(&$body)
     $htd = new DedeHttpDown();
     $basehost = "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
-    preg_match_all("/(src|SRC)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|png))/isU",$body,$img_array);
+    preg_match_all("/(src|SRC)=[\"|'| ]{0,}(http[s]?:\/\/([^>]*)\.(gif|jpg|png))/isU",$body,$img_array);
     $img_array = array_unique($img_array[2]);
     $imgUrl = $cfg_user_dir."/".$cfg_ml->M_ID;
     $imgPath = $cfg_basedir.$imgUrl;

@@ -90,96 +90,18 @@ else if($dopost=='save')
     $hasone = false;
     $ddisfirst=1;
 
-    //处理并保存所指定的图片从网上复制
-    if($formhtml==1)
-    {
-        $imagebody = stripslashes($imagebody);
-        $imgurls .= GetCurContentAlbum($imagebody,$copysource,$litpicname);
-        if($ddisfirst==1 && $litpic=='' && !empty($litpicname))
-        {
-            $litpic = $litpicname;
-            $hasone = true;
-        }
-    }
-    $info = '';
-
-    //检查已上传或直接上传的图片
+    //只支持填写地址
     for($i=1;$i<=120;$i++)
     {
-        //含有图片的条件
-        if(isset(${'imgurl'.$i}) || (isset($_FILES['imgfile'.$i]['tmp_name']) && is_uploaded_file($_FILES['imgfile'.$i]['tmp_name'])))
-        {
-            $iinfo = str_replace("'","`",stripslashes(${'imgmsg'.$i}));
-            if(!is_uploaded_file($_FILES['imgfile'.$i]['tmp_name']))
-            {
-                $iurl = stripslashes(${'imgurl'.$i});
-
-                //如果有旧图
-                if(isset(${'imgurl'.$i}))
-                {
-                    $litpicname = $iurl;
-                    $filename = $iurl;
-
-                    //缩图
-                    if($pagestyle > 2)
-                    {
-                        $litpicname = GetImageMapDD($filename,$ddmaxwidth);
-                        if($litpicname != '')
-                        {
-                            SaveUploadInfo($title.' 小图',$litpicname,1);
-                        }
-                    }
-                }
-                else
-                {
-                    continue;
-                }
-            }
-            else
-            {
-                $sparr = Array("image/pjpeg","image/jpeg","image/gif","image/png","image/xpng","image/wbmp");
-                if(!in_array($_FILES['imgfile'.$i]['type'],$sparr))
-                {
-                    continue;
-                }
-                if(isset(${'imgurl'.$i}))
-                {
-                    $filename = ${'imgurl'.$i};
-                }
-                else
-                {
-                    $filename = '';
-                }
-                $filename = MemberUploads('imgfile'.$i,$filename,$cfg_ml->M_ID,'image','',0,0,false);
-                if($filename!='')
-                {
-                    SaveUploadInfo($title,$filename,1);
-                }
-                $litpicname = $filename;
-
-                //缩图
-                if($pagestyle > 2)
-                {
-                    $litpicname = GetImageMapDD($filename,$ddmaxwidth);
-                    if($litpicname != '')
-                    {
-                        SaveUploadInfo($title.' 小图',$litpicname,1);
-                    }
-                }
-            }
-            $imgfile = $cfg_basedir.$filename;
-            if(is_file($imgfile))
-            {
-                $iurl = $filename;
-                $info = '';
-                $imginfos = @getimagesize($imgfile,$info);
-                $imgurls .= "{dede:img ddimg='$litpicname' text='$iinfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
-            }
-            if(!$hasone && $litpic=='' && !empty($litpicname))
-            {
-                $litpic = $litpicname;
-                $hasone = true;
-            }
+        if (!isset(${'imgfile'.$i})) {
+            continue;
+        }
+        $f = ${'imgfile'.$i};
+        $msg = isset(${'imgmsg'.$i})? ${'imgmsg'.$i} : "";
+        if (!empty($f) && filter_var($f, FILTER_VALIDATE_URL)) {
+            $u = str_replace(array("\"","'"), "`", $f);
+            $info = str_replace(array("\"","'"), "`", $msg);
+            $imgurls .= "{dede:img ddimg='' text='$info'} $u {/dede:img}\r\n";
         }
     }//循环结束
     $imgurls = addslashes($imgurls);
@@ -222,8 +144,6 @@ else if($dopost=='save')
         }
     }
 	$description = HtmlReplace($description, -1);
-    //处理图片文档的自定义属性
-    if($litpic!='') $flag = 'p';
 
     //更新数据库的SQL语句
     //更新数据库的SQL语句
@@ -232,7 +152,6 @@ else if($dopost=='save')
              arcrank='$arcrank',
              typeid='$typeid',
              title='$title',
-             litpic='$litpic',
              description='$description',
              keywords='$keywords',
              mtype='$mtypesid',            

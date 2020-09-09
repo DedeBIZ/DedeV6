@@ -19,20 +19,13 @@ if($cfg_mb_lit=='Y')
     exit();
 }
 
-#api{{
-if(defined('UC_API') && @include_once DEDEROOT.'/uc_client/client.php')
-{
-    if($data = uc_get_user($cfg_ml->M_LoginID)) uc_pm_location($data[0]);
-}
-#/aip}}
-
 if(!isset($dopost))
 {
     $dopost = '';
 }
 //检查用户是否被禁言
 CheckNotAllow();
-$state=(empty($state))? "" : $state;
+$state=(empty($state))? 0 : intval($state);
 /*--------------------
 function __send(){  }
 ----------------------*/
@@ -200,10 +193,10 @@ else
                 $dsql->ExecuteNoneQuery($row3);
             }
         }
-        if($state=="1"){
+        if($state===1){
             $wsql= " toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!='' and hasview=1";
             $tname = "收件箱";
-        } else if ($state=="-1")
+        } else if ($state===-1)
         {
             $wsql = "toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!='' and hasview=0";
             $tname = "收件箱";
@@ -217,6 +210,7 @@ else
         $wsql = " `fromid` ='{$cfg_ml->M_ID}' AND folder LIKE 'outbox'";
         $tname = "已发信息";
     }
+
     $query = "SELECT * FROM `#@__member_pms` WHERE $wsql ORDER BY sendtime DESC";
     $dlist = new DataListCP();
     $dlist->pageSize = 20;

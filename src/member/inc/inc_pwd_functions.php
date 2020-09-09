@@ -1,4 +1,4 @@
-<?php   if(!defined('DEDEMEMBER')) exit("dedecms");
+<?php if(!defined('DEDEMEMBER')) exit("dedecms");
 /**
  * 密码函数
  * 
@@ -78,7 +78,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
     $mailtitle = $cfg_webname.":密码修改";
     $mailto = $mailto;
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: $cfg_adminemail";
-    $mailbody = "亲爱的".$userid."：\r\n您好！感谢您使用".$cfg_webname."网。\r\n".$cfg_webname."应您的要求，重新设置密码：（注：如果您没有提出申请，请检查您的信息是否泄漏。）\r\n本次临时登陆密码为：".$randval." 请于三天内登陆下面网址确认修改。\r\n".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
+    $mailbody = "亲爱的".$userid."：\r\n您好！感谢您使用".$cfg_webname."网。\r\n".$cfg_webname."应您的要求，重新设置密码：（注：如果您没有提出申请，请检查您的信息是否泄漏。）\r\n本次临时登录密码为：".$randval." 请于三天内登录下面网址确认修改。\r\n".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
     if($type == 'INSERT')
     {
         $key = md5($randval);

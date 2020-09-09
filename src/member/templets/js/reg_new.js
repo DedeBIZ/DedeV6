@@ -26,7 +26,7 @@ $(document).ready(function()
 		if($('#txtPassword').val()=="")
 		{
 			$('#txtPassword').focus();
-			alert("登陆密码不能为空！");
+			alert("登录密码不能为空！");
 			return false;
 		}
 		if($('#userpwdok').val()!=$('#txtPassword').val())

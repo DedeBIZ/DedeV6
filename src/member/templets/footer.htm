@@ -1,0 +1,45 @@
+<footer class="bg-success">
+    <div class="copyright py-5">
+        <p class="text-center">
+            Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCMS)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_<?php echo $cfg_version;?></strong></a> &copy; 2004-2020 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc. <a href="https://www.dedebiz.com" target="_blank" title="DedeBiz商业技术支持，提供更专业强大的站点应用开发技术">DedeBiz技术支持</a><br />
+            <?php echo $cfg_powerby;?>&nbsp;&nbsp;<?php echo $cfg_beian;?>
+        </p>
+    </div>
+</footer>
+<!-- /footer -->
+<div class="scroll-top">
+    <button onclick="gotop()" id="btnScrollTop" title="返回顶部">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    </button>
+</div>
+<!-- /.scroll-top -->
+
+
+<script src="<?php echo $cfg_cmsurl;?>/static/js/popper.min.js"></script>
+<script src="<?php echo $cfg_cmsurl;?>/static/js/bootstrap.bundle.js"></script>
+<script src="<?php echo $cfg_cmsurl;?>/static/js/dede.js"></script>
+
+<script>
+    // 校验是否登录
+    function CheckLogin() {
+        $.get("<?php echo $cfg_cmsurl;?>/member/ajax_loginsta.php?format=json",function(data) {
+            let result = JSON.parse(data);
+            if (result.code === 200) {
+                $("#_login").html(`
+                    欢迎，${result.data.username}
+                    <a class="ml-2" href="<?php echo $cfg_cmsurl;?>/member/">[会员中心]</a>
+                    <a class="ml-2" href="<?php echo $cfg_cmsurl;?>/member/index_do.php?fmdo=login&dopost=exit">[退出]</a>
+                `);
+                $("#iptUsername").val(result.data.username);
+                $("#iptUsername").attr("disabled", "disabled");
+                $(".areaValidate").hide();
+            } else {
+                $(".areaValidate").show();
+            }
+        });
+    }
+    // 页面加载触发
+    $(document).ready(function () {
+        CheckLogin();
+    });
+</script>

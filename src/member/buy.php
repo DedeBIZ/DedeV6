@@ -13,7 +13,7 @@ $menutype_son = 'op';
 $myurl = $cfg_basehost.$cfg_member_dir.'/index.php?uid='.$cfg_ml->M_LoginID;
 $moneycards = '';
 $membertypes = '';
-$dsql->SetQuery("SELECT * FROM #@__moneycard_type ");
+$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
 $dsql->Execute();
 while($row = $dsql->GetObject())
 {
@@ -26,7 +26,7 @@ while($row = $dsql->GetObject())
     </tr>
     ";
 }
-$dsql->SetQuery("SELECT #@__member_type.*,#@__arcrank.membername,#@__arcrank.money as cm From #@__member_type LEFT JOIN #@__arcrank on #@__arcrank.rank = #@__member_type.rank ");
+$dsql->SetQuery("SELECT `#@__member_type`.*,`#@__arcrank`.membername,`#@__arcrank`.money as cm From `#@__member_type` LEFT JOIN `#@__arcrank` on `#@__arcrank`.rank = `#@__member_type`.rank ");
 $dsql->Execute();
 while($row = $dsql->GetObject())
 {

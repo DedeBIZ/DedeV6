@@ -1,0 +1,123 @@
+/* Copyright 2020 The MuEMS Authors. All rights reserved.
+license that can be found in the LICENSE file. */
+
+main.login-from {
+    background-image: url('../img/member_bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    height: 620px;
+    padding-top: 5em;
+}
+
+
+.login-area {
+    background-color: white;
+    max-width: 500px;
+    padding: 1em;
+    float: right;
+}
+
+.login-area .btnLogin {
+    width: 100%;
+    padding: .5em;
+}
+
+.login-area small.des {
+    color: #B5B5B5;
+}
+
+.login-area .licence {
+    font-size: 14px;
+}
+
+.login-area .licence a {
+    color: #008E38;
+}
+
+.copyright.light {
+    background-color: white;
+}
+
+.flink,
+.flink a,
+.copyright.light,
+.copyright.light a {
+    color: #666666;
+}
+
+
+.member a {
+    color: #008E38;
+}
+.member .member-actions {
+    font-size: 16px;
+}
+
+.member .member-logo {
+    border-radius: 50%;
+}
+
+.member-actions a {
+    color: #868686;
+    margin-left: 1em;
+    line-height: 64px;
+}
+
+main.member {
+    background: url("../img/member_home_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.member .member-rank a {
+    color: white;
+}
+
+.member .member-info {
+    padding-top: 12em;
+}
+
+.member .member-type span {
+    padding: .6em;
+    position: relative;
+    top: -12px;
+}
+
+.member .pannel {
+    background-color: #F3F3F3;
+}
+
+.member .pannel .dropdown {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+}
+
+.member .pannel .pannel-main .pannel-main-container {
+    background-color: white;
+    padding: 1em;
+}
+
+.member .list-group-item.active a {
+    color: white;
+}
+
+.member .member-menu .list-group-flush>.list-group-item {
+    cursor: pointer;
+}
+
+.member .pannel-main .nav-link.active {
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 576px) {
+    .login-area {
+        float: none;
+        margin: auto;
+    }
+}

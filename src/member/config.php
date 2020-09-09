@@ -143,6 +143,10 @@ if($cfg_ml->IsLogin())
     if(!preg_match("#^http:#i", $myurl)) $myurl = $cfg_basehost.$myurl;
 }
 
+/** 有没新短信 **/
+$pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__member_pms WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");    
+
+
 /**
  *  检查用户是否有权限进行某个操作
  *

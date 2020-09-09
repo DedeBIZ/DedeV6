@@ -82,17 +82,14 @@ else {
     <ul id="appIterm">
       <li <?php echo ($menutype == 'content')? 'class="thisApp"' : "" ;?>><a href="../member/content_list.php?channelid=1">内容中心</a></li>
       <li <?php echo ($menutype == 'mydede')? 'class="thisApp"' : "" ;?>><a href="../member/" title="我的织梦">我的织梦</a></li>
-      <li <?php echo ($menutype == 'config')? 'class="thisApp"' : "" ;?>><a href="../member/edit_space_info.php" title="系统设置">系统设置</a></li>
+      <li <?php echo ($menutype == 'config')? 'class="thisApp"' : "" ;?>><a href="../member/edit_baseinfo.php" title="系统设置">系统设置</a></li>
     </ul>
     <!--程序导航列表 -->
     <div id="channel">
       <ul>
-        <li><a href="<?php echo $myurl; ?>" title="个人空间" target="_blank"><span>个人空间</span></a></li>
-        <li <?php echo ($menutype_son == 'mf')? 'class="thisApp"' : "" ;?>><a href="../member/myfriend.php" title="我的好友"><span>我的好友</span></a></li>
         <li <?php echo ($menutype_son == 'pm')? 'class="thisApp"' : "" ;?>><a href="../member/pm.php" title="短消息"><span>短消息</span></a></li>
         <li <?php echo ($menutype_son == 'gu')? 'class="thisApp"' : "" ;?>><a href="../member/guestbook_admin.php" title="留言板"><span>留言板</span></a></li>
         <li <?php echo ($menutype_son == 'op')? 'class="thisApp"' : "" ;?>><a href="../member/operation.php" title="消费中心"><span>消费中心</span></a></li>
-        <li <?php echo ($menutype_son == 'cc')? 'class="thisApp"' : "" ;?>><a href="../member/caicai.php" title="随便踩踩"><span>随便踩踩</span></a></li>
       </ul>
     </div>
     <!--导航栏目项 -->

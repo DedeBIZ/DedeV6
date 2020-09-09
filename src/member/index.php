@@ -83,15 +83,6 @@ if($uid=='')
         while ($row = $dsql->GetArray()) {
             $newfriends[] = $row;
         }
-
-        /** 好友记录 **/
-        $sql = "SELECT F.*,M.face,M.sex FROM `#@__member` AS M LEFT JOIN #@__member_friends AS F ON F.fid=M.mid WHERE F.mid='{$cfg_ml->M_ID}' ORDER BY F.addtime desc LIMIT 6";
-        $friends = array();
-        $dsql->SetQuery($sql);
-        $dsql->Execute();
-        while ($row = $dsql->GetArray()) {
-            $friends[] = $row;
-        }
         
         /** 有没新短信 **/
         $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__member_pms WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");    
@@ -112,80 +103,5 @@ if($uid=='')
         $tpl = dirname(__FILE__)."/templets/index.htm";
         $dpl->LoadTemplate($tpl);
         $dpl->display();
-    }
-}
-
-/*-----------------------------
-//会员空间主页
-function space_index(){  }
-------------------------------*/
-else
-{
-    require_once(DEDEMEMBER.'/inc/config_space.php');
-    if($action == '')
-    {
-        include_once(DEDEINC."/channelunit.func.php");
-        $dpl = new DedeTemplate();
-        $tplfile = DEDEMEMBER."/space/{$_vars['spacestyle']}/index.htm";
-
-        //更新最近访客记录及站点统计记录
-        $vtime = time();
-        $last_vtime = GetCookie('last_vtime');
-        $last_vid = GetCookie('last_vid');
-        if(empty($last_vtime))
-        {
-            $last_vtime = 0;
-        }
-        if($vtime - $last_vtime > 3600 || !preg_match('#,'.$uid.',#i', ','.$last_vid.',') )
-        {
-            if($last_vid!='')
-            {
-                $last_vids = explode(',',$last_vid);
-                $i = 0;
-                $last_vid = $uid;
-                foreach($last_vids as $lsid)
-                {
-                    if($i>10)
-                    {
-                        break;
-                    }
-                    else if($lsid != $uid)
-                    {
-                        $i++;
-                        $last_vid .= ','.$last_vid;
-                    }
-                }
-            }
-            else
-            {
-                $last_vid = $uid;
-            }
-            PutCookie('last_vtime', $vtime, 3600*24, '/');
-            PutCookie('last_vid', $last_vid, 3600*24, '/');
-            if($cfg_ml->IsLogin() && $cfg_ml->M_LoginID != $uid)
-            {
-                $vip = GetIP();
-                $arr = $dsql->GetOne("SELECT * FROM `#@__member_vhistory` WHERE mid='{$_vars['mid']}' AND vid='{$cfg_ml->M_ID}' ");
-                if(is_array($arr))
-                {
-                    $dsql->ExecuteNoneQuery("UPDATE `#@__member_vhistory` SET vip='$vip',vtime='$vtime',count=count+1 WHERE mid='{$_vars['mid']}' AND vid='{$cfg_ml->M_ID}' ");
-                }
-                else
-                {
-                    $query = "INSERT INTO `#@__member_vhistory`(mid,loginid,vid,vloginid,count,vip,vtime)
-                             VALUES('{$_vars['mid']}','{$_vars['userid']}','{$cfg_ml->M_ID}','{$cfg_ml->M_LoginID}','1','$vip','$vtime'); ";
-                    $dsql->ExecuteNoneQuery($query);
-                }
-            }
-            $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET homecount=homecount+1 WHERE mid='{$_vars['mid']}' ");
-        }
-        $dpl->LoadTemplate($tplfile);
-        $dpl->display();
-        exit();
-    }
-    else
-    {
-        require_once(DEDEMEMBER.'/inc/space_action.php');
-        exit();
     }
 }
