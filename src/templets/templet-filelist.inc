@@ -23,8 +23,6 @@ index_default_sg.htm,默认单表模型频道封面
 index_image.htm,默认图片模型封面
 index_shop.htm,默认网店模型封面
 index_soft.htm,默认软件模型封面
-infosw9_index.htm,默认图文资讯封面
-infosw9_list.htm,默认图文资讯列表页
 index_infos.htm,分类信息封面模板
 list_article.htm,默认文章列表模板
 list_default.htm,默认自定义模型列表模板

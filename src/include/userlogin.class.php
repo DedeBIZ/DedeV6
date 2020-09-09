@@ -1,6 +1,6 @@
 <?php   if(!defined('DEDEINC')) exit('Request Error!');
 /**
- * 管理员登陆类
+ * 管理员登录类
  *
  * @version        $Id: userlogin.class.php 1 15:59 2010年7月5日Z tianya $
  * @package        DedeCMS.Libraries
