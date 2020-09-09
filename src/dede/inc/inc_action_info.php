@@ -418,7 +418,7 @@ $actionSearch[10] = array(
         ),
         3  =>  array(
             'title' =>'系统日志管理',
-            'description' =>'对每个登陆后台的管理员进行的操作进行记录',
+            'description' =>'对每个登录后台的管理员进行的操作进行记录',
             'purview' =>'sys_Log',
             'linkurl' =>'log_list.php'
         ),

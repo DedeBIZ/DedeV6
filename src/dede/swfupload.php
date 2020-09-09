@@ -197,13 +197,13 @@ else if($dopost=='ddimg')
 {
     //生成缩略图
     ob_start();
-    if(!preg_match("/^(http:\/\/)?([^\/]+)/i", $img)) $img = $cfg_basedir.$img;
+    if(!preg_match("/^(http[s]?:\/\/)?([^\/]+)/i", $img)) $img = $cfg_basedir.$img;
     ImageResizeNew($img, $cfg_ddimg_width, $cfg_ddimg_height, '', false);
     $imagevariable = ob_get_contents();
     ob_end_clean();
     header('Content-type: image/jpeg');
     header('Content-Length: '.strlen($imagevariable));
-    echo $imagevariable;
+    echo $imagevariable; 
     exit();
 }
 /************************

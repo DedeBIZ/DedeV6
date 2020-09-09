@@ -49,8 +49,6 @@ if($dopost=="ok")
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
         echo "\n成功更新arclist调用缓存，准备清理过期会员访问历史...<hr />";
         $oldtime = time() - (90 * 24 * 3600);
-        $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_vhistory` WHERE vtime<'$oldtime' ");
-        echo "成功清理过期会员访问历史，准备清理过期短信...<hr />";
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_pms` WHERE sendtime<'$oldtime' ");
         echo "成功清理过期短信，准备修正错误文档，这可能要占较长的时间...";
         if($uparc == 1)

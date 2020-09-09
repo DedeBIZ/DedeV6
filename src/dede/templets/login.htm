@@ -1,56 +1,108 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-<title><?php echo $cfg_softname." ".$cfg_version; ?></title>
-<link href="css/base.css" rel="stylesheet" type="text/css" />
-<link href="css/login.css" rel="stylesheet" type="text/css" />
-<script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
-<script type="text/javascript">
-$ = jQuery;
-function changeAuthCode() {
-	var num = 	new Date().getTime();
-	var rand = Math.round(Math.random() * 10000);
-	num = num + rand;
-	$('#ver_code').css('visibility','visible');
-	if ($("#vdimgck")[0]) {
-		$("#vdimgck")[0].src = "../plus/vdimgck.php?tag=" + num;
-	}
-	return false;	
-}
-</script>
+	<meta charset="<?php echo $cfg_soft_lang; ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../static/css/dede.css">
+	<title><?php echo $cfg_softname." ".$cfg_version; ?></title>
+	<style>
+		body {
+			background-color: #F5F5F5;
+		}
+
+		header {
+			background-color: white;
+		}
+
+		header .logo {
+			width: 260px;
+			padding: 1em 0;
+		}
+
+		.login-from {
+			max-width: 680px;
+			width: 100%;
+		}
+
+		.login-area {
+			background-color: white;
+			padding: 1em;
+		}
+
+		.login-area .btnLogin {
+			width: 100%;
+		}
+
+		.login-power {
+			padding: 1em 0;
+		}
+
+		.login-power a ,.goindex a{
+			color: #3DB058;
+		}
+		.goindex {
+			line-height: 65px;
+		}
+	</style>
 </head>
+
 <body>
-<div id="login-box">
-   <div class="login-top"><a href="../index.php" target="_blank" title="返回网站主页">返回网站主页</a></div>
-   <?php echo $redmsg; ?>
-   <div class="login-main">
-    <form name="form1" method="post" action="login.php">
-      <input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage);?>" />
-      <input type="hidden" name="dopost" value="login" />
-      <input name='adminstyle' type='hidden' value='newdedecms' />
-      <dl>
-	   <dt>用户名：</dt>
-	   <dd><input type="text" name="userid"/></dd>
-	   <dt>密&nbsp;&nbsp;码：</dt>
-	   <dd><input type="password" class="alltxt" name="pwd"/></dd>
-	   <?php
-        	if(preg_match("/6/",$safe_gdopen))
-        	{
-        ?>
-	   <dt>验证码：</dt>
-	   <dd><input id="vdcode" type="text" name="validate" style="text-transform:uppercase;"/><img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="../plus/vdimgck.php"/>
-           <a href="#" onClick="changeAuthCode();">看不清？ </a></dd>
-		<?php
-       		}
-		?>
-		<dt>&nbsp;</dt>
-		<dd><button type="submit" name="sm1" class="login-btn" onclick="this.form.submit();">登录</button></dd>
-	 </dl>
-	</form>
-   </div>
-   <div class="login-power">Powered by<a href="http://www.dedecms.com" title="DedeCMS官网"><strong>DedeCMS<?php echo $cfg_version; ?></strong></a>&copy; 2004-2020 <a href="http://www.desdev.cn" target="_blank">DesDev</a> Inc.</div>
-</div>
-<div class="dede-iframe"><iframe name="loginad" src="login.php?dopost=showad" frameborder="0" id="loginad" scrolling="no" marginwidth="0" marginheight="0" width="100%"></iframe></div>
+	<header>
+		<div class="container top">
+			<div class="row">
+				<div class="col-6"><a href="."><img class="logo" src="../static/img/admin-logo.png" alt=""></a></div>
+				<div class="col-6 d-flex justify-content-end goindex">
+					<a href="../index.php"><i class="fa fa-home" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<main class="container login-from mt-3">
+		<div class="alert alert-warning" role="alert">
+			<?php echo $redmsg; ?>
+		</div>
+
+		<div class="login-area">
+			<h2 class="text-center">管理目录</h2>
+			<form name="form1" method="post" action="login.php">
+				<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage);?>" />
+				<input type="hidden" name="dopost" value="login" />
+				<input name='adminstyle' type='hidden' value='newdedecms' />
+				<div class="form-group">
+					<label for="iptUserid">用户名</label>
+					<input type="text" name="userid" class="form-control" id="iptUserid">
+				</div>
+				<div class="form-group">
+					<label for="iptPassword">密码</label>
+					<input type="password" name="pwd" class="form-control" id="iptPassword">
+				</div>
+				<div class="form-group">
+					<label for="iptValidate">验证码</label>
+					<div class="input-group">
+						<input type="text" name="validate" class="form-control" id="iptValidate"
+							style="text-transform:uppercase;">
+						<img src="../plus/vdimgck.php" id="validateimg" style="cursor:pointer;"
+							onclick="this.src='../plus/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)"
+							title="点击我更换图片" alt="点击我更换图片" />
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success btnLogin">登录</button>
+				<div class="login-power"> Powered by<a href="http://www.dedecms.com"
+						title="DedeCMS官网"><strong> DedeCMS<?php echo $cfg_version; ?></strong></a>&copy; 2004-2020 <a
+						href="http://www.desdev.cn" target="_blank">DesDev</a> Inc. <a href="https://www.dedebiz.com"
+						target="_blank" title="DedeBiz商业技术支持，提供更专业强大的站点应用开发技术">DedeBiz技术支持</a></div>
+			</form>
+		</div>
+	</main>
+
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/popper.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/bootstrap.bundle.js"></script>
 </body>
+
 </html>

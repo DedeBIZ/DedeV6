@@ -88,11 +88,13 @@ if($action=='')
     $dm = new DedeModule($mdir);
     if(empty($moduletype)) $moduletype = '';
 	
-	$modules_remote = $dm->GetModuleUrlList($moduletype,$mdurl);
-	$modules = array();
-	$modules = $dm->GetModuleList($moduletype);
-	is_array($modules) || $modules = array();
-	$modules = array_merge($modules,$modules_remote);
+    $modules_remote = $dm->GetModuleUrlList($moduletype,$mdurl);
+    $modules = array();
+    $modules = $dm->GetModuleList($moduletype);
+    is_array($modules) || $modules = array();
+    if (is_array($modules_remote) && count($modules_remote) > 0) {
+      $modules = array_merge($modules, $modules_remote);
+    }
     require_once(dirname(__FILE__)."/templets/module_main.htm");
     $dm->Clear();
     exit();

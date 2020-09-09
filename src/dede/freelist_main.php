@@ -66,7 +66,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
 {
     global $cfg_phpurl,$addsql;
     $start = ($pageno-1) * $pagesize;
-    $printhead ="<table width='98%' border='0' cellpadding='1' cellspacing='1' align='center'  class='tbtitle' style='background:#cfcfcf;margin-bottom:5px;'>
+    $printhead ="<table width='98%' border='0' cellpadding='1' cellspacing='1' align='center'  class='table maintable table-bordered' style='background:#cfcfcf;margin-bottom:5px;'>
         <tr align='center' bgcolor='#FBFCE2'>
           <td width='5%' class='tbsname'><a href='#' onclick=\"ReloadPage('aid')\"><u>ID</u></a></td>
           <td width='20%' class='tbsname'>列表名称</td>

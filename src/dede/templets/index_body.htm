@@ -6,12 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
     <title>DedeCMS Home</title>
     <base target="_self">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/base.css" />
     <link rel="stylesheet" type="text/css" href="css/indexbody.css" />
     <link href="images/style<?php echo $cfg_admin_skin;?>/style.css" rel="stylesheet" type="text/css" />
     <script language="javascript" src="../static/js/jquery.js"></script>
     <script language="javascript" src="../static/js/dedeajax2.js"></script>
-    <script language="javascript" src="js/jquery.json-2.2.min.js"></script>
     <script language="javascript" src="js/indexbody.js"></script>
     <script type="text/javascript">
         function showMore() {
@@ -32,84 +33,98 @@
             });
         });
     </script>
+    <style>
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .row>[class*='col-'] {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 
-<body leftmargin="8" topmargin='8' bgcolor="#FFFFFF">
-    <div style="min-width:780px">
-        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
-            <tr>
-                <td>
-                    <div style='float:left'>
-                        欢迎使用专业的PHP网站管理系统，轻松建站的首选利器 -- <?php echo $cfg_softname; ?>
+<body>
+    <div class="container-fluid">
+        <div>
+            欢迎使用专业的PHP网站管理系统，轻松建站的首选利器 -- <?php echo $cfg_softname; ?>
+        </div>
+        <div class="row">
+            <div id="__testEvn" class="col-md-12"></div>
+            <!--/#__testEvn-->
+            <div class="col-md-6 mt-3 updatenews">
+                <div class="card">
+                    <div class="card-header">
+                        <?php echo $cfg_soft_enname; ?> 更新消息
                     </div>
-                    <div id='' style='float:right;padding-right:8px;'>
-                        <!--  //保留位置（顶右）  -->
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td height="1" background="images/sp_bg.gif" style='padding:0px'></td>
-            </tr>
-        </table>
-        <div id="__testEvn"></div>
-        <div id='mainmsg'>
-            <div class="column" id="column1">
-                <!--左侧开始-->
-                <dl class="dbox" id="item1">
-                    <dt class='lside'><span class='l'><?php echo $cfg_soft_enname; ?> 更新消息</span></dt>
-                    <dd>
-                        <div id='updatetest'>
-                            <div id='updateinfos'>
-                                <?php
+                    <!--/.card-header-->
+                    <div class="card-body">
+                        <?php
                             echo "<div class='updatedvt'><b>您系统版本最后更新时间为：{$oktime} </b><br/>";
                             echo " <a href='javascript:LoadUpdateInfos();' class='np coolbg'>进行在线更新</a> &nbsp; \r\n";
                             echo " <a href='sys_repair.php' class='np coolbg'>系统错误修复</a></div>\r\n";
                             echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' width='98%' height='50'></iframe>";
                         ?>
-                            </div>
-                        </div>
-                    </dd>
-                </dl>
-                <!--更新消息结束-->
-                <dl class='dbox' id="item2">
-                    <dt class='lside'><span class='l'>商业授权查询</span></dt>
-                    <dd>
+                    </div>
+                    <!--/.card-body-->
+                </div>
+                <!--/.card-->
+            </div>
+
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        商业授权查询
+                    </div>
+                    <!--/.card-header-->
+                    <div class="card-body">
                         <iframe name="showauth" src="index_body.php?dopost=showauth" width="100%" frameborder="0"
                             scrolling="no" marginwidth="10" marginheight="10" id="showauth"></iframe>
-                    </dd>
-                </dl>
-                <!--更新消息结束-->
-                <dl class='dbox' id="item3">
-                    <dt class='lside'>
-                        <div class='l'>快捷操作</div>
-                        <div class='r'><a href='#' onClick="AddNew()"><b>【新增】</b></a><a href='#'
-                                onClick="ListAll()"><b>【管理】</b></a></div>
-                    </dt>
-                    <dd>
-                        <div id='quickmenu'>
-                            <?php
-                        $dtp = new DedeTagparse();
-                        $dtp->SetNameSpace('menu','<','>');
-                        $dtp->LoadTemplet($myIcoFile);
-                        if(is_array($dtp->CTags)){
-                            foreach($dtp->CTags as $ctag){
-                                $title = $ctag->GetAtt('title');
-                                $ico = $ctag->GetAtt('ico');
-                                $link = $ctag->GetAtt('link');
-                                echo "<div class='icoitem' style='background:url($ico) 10px 3px no-repeat;'><a href='{$link}'>{$title}</a></div>\r\n";
-                            }
-                        }
-                    ?>
-                        </div>
-                    </dd>
+                    </div>
+                    <!--/.card-body-->
+                </div>
+                <!--/.card-->
+            </div>
 
-                </dl>
-                <!--快捷操作结束-->
-                <dl class="dbox" id="item4">
-                    <dt class='lside'>
-                        <div class='l'>系统基本信息</div>
-                    </dt>
-                    <dd class='intable'>
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        快捷操作
+                        <a href='javascript:AddNew()'><b>【新增】</b></a>
+                        <a href='javascript:ListAll()'><b>【管理】</b></a>
+                    </div>
+                    <!--/.card-header-->
+                    <div class="card-body">
+                        <ul class="nav">
+                            <?php
+                            $dtp = new DedeTagparse();
+                            $dtp->SetNameSpace('menu','<','>');
+                            $dtp->LoadTemplet($myIcoFile);
+                            if(is_array($dtp->CTags)){
+                                foreach($dtp->CTags as $ctag){
+                                    $title = $ctag->GetAtt('title');
+                                    $ico = $ctag->GetAtt('ico');
+                                    $link = $ctag->GetAtt('link');
+                                    echo "<li class='nav-item'><a class='nav-link' href='{$link}'><img src='{$ico}'> {$title}</a></li>\r\n";
+                                }
+                            }
+                        ?>
+                        </ul>
+                    </div>
+                    <!--/.card-body-->
+                </div>
+                <!--/.card-->
+            </div>
+
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        系统基本信息
+                    </div>
+                    <!--/.card-header-->
+                    <div class="card-body">
                         <table width="98%" class="dboxtable">
                             <tr>
                                 <td width="25%" class='nline' style="text-align:right">您的级别：</td>
@@ -194,14 +209,19 @@
                                 </td>
                             </tr>
                         </table>
-                    </dd>
-                </dl>
-                <!--系统基本信息结束-->
-                <dl class='dbox' id="item5">
-                    <dt class='lside'>
-                        <div class='l'>程序团队</div>
-                    </dt>
-                    <dd class='intable'>
+                    </div>
+                    <!--/.card-body-->
+                </div>
+                <!--/.card-->
+            </div>
+
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        程序团队
+                    </div>
+                    <!--/.card-header-->
+                    <div class="card-body">
                         <table width="98%" class="dboxtable">
                             <tr>
                                 <td width='25%' height='36' class='nline' style="text-align:right"> 主程序研发： </td>
@@ -212,100 +232,111 @@
                                 <td height='36' class='nline' style="text-align:right">鸣谢：</td>
                                 <td class='nline' style="text-align:left"><a
                                         href="https://github.com/dedetech/DedeCMSv5/graphs/contributors" target="_blank"
-                                        style="color:blue">热心用户</a>、<a href="http://www.dedecms.com/thanks.html"
-                                        target="_blank" style="color:blue">赞助商</a></td>
+                                        style="color:blue">热心用户</a></td>
                             </tr>
                         </table>
-                    </dd>
-                </dl>
-                <!--开发团队结束-->
+                    </div>
+                    <!--/.card-body-->
+                </div>
+                <!--/.card-->
             </div>
-            <!--左侧结束-->
-            <div class="column" id="column2">
-                <!-- //右边的快捷消息开始 -->
-                <dl class='dbox' id="item8">
-                    <dt class='lside'>
-                        <div class='l'>赞助商链接(<a href="http://ad.dedecms.com/ad/" target="_blank">说明</a>)</div>
-                    </dt>
-                    <dd>
-                        <iframe name="showad" src="index_body.php?dopost=showad" frameborder="0" width="100%"
-                            id="showad" frameborder="0" scrolling="no" marginheight="5"></iframe>
-                    </dd>
-                </dl>
-                <!--赞助商链接结束-->
-                <dl class='dbox' id="item6">
-                    <dt class='lside'>
-                        <div class='l'>信息统计</div>
-                    </dt>
-                    <dd id='listCount'>
-                        正在载入中...
-                    </dd>
-                </dl>
-                <!--信息统计结束-->
-                <dl class='dbox' id="item7">
-                    <dt class='lside'>
-                        <div class='l'>SEO信息</div>
-                    </dt>
-                    <dd id='SEOInfo'>
-                        正在载入中……
-                    </dd>
-                </dl>
-                <dl class='dbox' id="item7">
-                    <dt class='lside'>
-                        <div class='l'>最新文档</div>
-                    </dt>
-                    <dd id='listNews'>
+
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        SEO信息
+                    </div>
+                    <!--/.card-header-->
+                    <div class="card-body">
+                        <dd id='SEOInfo'>
+                            正在载入中……
+                        </dd>
+                    </div>
+                    <!--/.card-body-->
+                </div>
+                <!--/.card-->
+            </div>
+
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        信息统计
+                    </div>
+                    <!--/.card-header-->
+                    <div class="card-body">
+                        <dd id='listCount'>
+                            正在载入中...
+                        </dd>
+                    </div>
+                    <!--/.card-body-->
+                </div>
+                <!--/.card-->
+            </div>
+
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        最新文档
+                    </div>
+                    <!--/.card-header-->
+                    <div class="card-body">
                         <?php
-    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.channel, ch.editcon  FROM `#@__archives` arc
-            LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel
-             WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0, 6 ";
-    $arcArr = array();
-    $dsql->Execute('m', $query);
-    while($row = $dsql->GetArray('m'))
-    {
-        $arcArr[] = $row;
-    }
-?>
+                        $query = "SELECT arc.id, arc.arcrank, arc.title, arc.channel, ch.editcon  FROM `#@__archives` arc
+                                LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel
+                                 WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0, 6 ";
+                        $arcArr = array();
+                        $dsql->Execute('m', $query);
+                        while($row = $dsql->GetArray('m'))
+                        {
+                            $arcArr[] = $row;
+                        }
+                    ?>
                         <table width="100%" class="dboxtable">
                             <?php
-    if(count($arcArr) > 1)
-    {
-        foreach($arcArr as $row)
-        {
-            if(trim($row['editcon'])=='') {
-                $row['editcon'] = 'archives_edit.php';
-            }
-            $linkstr = "·<a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>";
-            if($row['arcrank']==-1) $linkstr .= "<font color='red'>(未审核)</font>";
-        ?>
+                        if(count($arcArr) > 1)
+                        {
+                            foreach($arcArr as $row)
+                            {
+                                if(trim($row['editcon'])=='') {
+                                    $row['editcon'] = 'archives_edit.php';
+                                }
+                                $linkstr = "·<a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>";
+                                if($row['arcrank']==-1) $linkstr .= "<font color='red'>(未审核)</font>";
+                            ?>
                             <tr>
                                 <td class='nline' style="text-align:left">
                                     <?php echo $linkstr; ?>
                                 </td>
                             </tr>
                             <?php
-        }
-    } else {
-    ?>
+                            }
+                        } else {
+                        ?>
                             <tr>
                                 <td class='nline' style="text-align:left">
                                     暂无新增内容
                                 </td>
                             </tr>
                             <?php
-    }
-    ?>
+                        }
+                        ?>
                         </table>
-                    </dd>
-                </dl>
-                <!--最新文档结束-->
-
+                    </div>
+                    <!--/.card-body-->
+                </div>
+                <!--/.card-->
             </div>
         </div>
+    </div>
+
+
+    <div class="footer">
+
         <br style='clear:both' />
         <!-- //底部 -->
         <div align="center" class="footer">
-            Copyright &copy; 2004-2020 <a href='http://www.dedecms.com' target='_blank'><u>DedeCMS</u></a>. 织梦科技 版权所有
+            Copyright &copy; 2004-2020 <a href='http://www.dedecms.com' target='_blank'><u>DedeCMS</u></a>. 织梦科技 版权所有 <a
+                href="https://www.dedebiz.com" target="_blank" title="DedeBiz商业技术支持，提供更专业强大的站点应用开发技术">DedeBiz技术支持</a>
         </div>
 
         <!--  下面是隐藏的项目  -->

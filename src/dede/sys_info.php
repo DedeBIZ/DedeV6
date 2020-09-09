@@ -140,12 +140,13 @@ EOT;
     if ($keywords)
     {
 
-        $dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE info LIKE '%$keywords%' order by aid asc");
+        $dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE info LIKE '%$keywords%' OR varname LIKE '%$keywords%' order by aid asc");
         $dsql->Execute();
        
         while ($row = $dsql->GetArray()) {
             $bgcolor = ($i++%2==0)? "#F9FCEF" : "#ffffff";
             $row['info'] = preg_replace("#{$keywords}#", '<font color="red">'.$keywords.'</font>', $row['info']);
+            $row['varname'] = preg_replace("#{$keywords}#", '<font color="red">'.$keywords.'</font>', $row['varname']);
 ?>
       <tr align="center" height="25" bgcolor="<?php echo $bgcolor?>">
        <td width="300"><?php echo $row['info']; ?>： </td>
