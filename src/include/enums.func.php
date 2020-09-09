@@ -95,7 +95,7 @@ function GetEnumsForm($egroup, $evalue=0, $formid='', $seltitle='')
     {
         $formid = $egroup;
     }
-    $forms = "<select name='$formid' id='$formid' class='enumselect'>\r\n";
+    $forms = "<select name='$formid' id='$formid' class='enumselect form-control'>\r\n";
     $forms .= "\t<option value='0' selected='selected'>--请选择--{$seltitle}</option>\r\n";
     foreach(${'em_'.$egroup.'s'} as $v=>$n)
     {

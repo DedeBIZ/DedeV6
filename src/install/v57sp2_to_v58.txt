@@ -1,3 +1,25 @@
 ALTER TABLE `#@__tagindex`
 	ADD COLUMN `uptime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `addtime`,
 	ADD COLUMN `mktime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `uptime`;
+
+ALTER TABLE `#@__feedback`
+	ADD COLUMN `fid` INT UNSIGNED NOT NULL DEFAULT 0 AFTER `aid`;
+
+ALTER TABLE `#@__feedback`
+	ADD COLUMN `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `dtime`;
+
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200');
+
+CREATE TABLE `#@__feedback_goodbad` (
+	`fgid` INT(11) NOT NULL AUTO_INCREMENT,
+	`mid` INT(11) NOT NULL DEFAULT '0',
+	`fid` INT(11) NOT NULL DEFAULT '0',
+	`fgtype` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '0:good 1:bad',
+	PRIMARY KEY (`fgid`)
+) TYPE=MyISAM;
+
+CREATE TABLE `#@__search_limits` (
+	`ip` VARCHAR(200) NOT NULL,
+	`searchtime` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`ip`)
+) TYPE=MyISAM;

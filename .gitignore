@@ -26,3 +26,5 @@ src/uploads/litimg/*
 src/special/
 *.bat
 src/data/backupdata/*
+src/a/*.html
+src/data/mkall_cache_*.php
