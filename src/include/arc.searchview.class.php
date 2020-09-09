@@ -1,4 +1,4 @@
-<?php   if(!defined('DEDEINC')) exit("Request Error!");
+<?php  if(!defined('DEDEINC')) exit("Request Error!");
 /**
  * 搜索视图类
  *
@@ -737,7 +737,7 @@ class SearchView
                     $row["id"] =  $row["id"];
                     if($row['litpic'] == '-' || $row['litpic'] == '')
                     {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/defaultpic.gif';
                     }
                     if(!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y')
                     {
@@ -823,11 +823,11 @@ class SearchView
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if($totalpage<=1 && $this->TotalResult>0)
         {
-            return "共1页/".$this->TotalResult."条记录";
+            return "<ul class=\"pagination justify-content-center pt-3\"><li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li></ul>";
         }
         if($this->TotalResult == 0)
         {
-            return "共0页/".$this->TotalResult."条记录";
+            return "<ul class=\"pagination justify-content-center pt-3\"><li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li></ul>";
         }
         $purl = $this->GetCurUrl();
         
@@ -838,7 +838,7 @@ class SearchView
         {
             $totalpage = ceil($this->SearchMaxRc/$this->PageSize);
         }
-        $infos = "<td>共找到<b>".$this->TotalResult."</b>条记录/最大显示<b>{$totalpage}</b>页 </td>\r\n";
+        $infos = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共找到<b>".$this->TotalResult."</b>条记录/最大显示<b>{$totalpage}</b>页</span></li>\r\n";
         $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
         $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>\r\n";
         $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
@@ -855,21 +855,21 @@ class SearchView
         //获得上一页和下一页的链接
         if($this->PageNo != 1)
         {
-            $prepage.="<td width='50'><a href='".$purl."PageNo=$prepagenum'>上一页</a></td>\r\n";
-            $indexpage="<td width='30'><a href='".$purl."PageNo=1'>首页</a></td>\r\n";
+            $prepage.="<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
+            $indexpage="<li class='page-item'><a class='page-link' href='".$purl."PageNo=1'>首页</a></li>\r\n";
         }
         else
         {
-            $indexpage="<td width='30'>首页</td>\r\n";
+            $indexpage="<li class='page-item disabled'><a class='page-link'>首页</a></li>\r\n";
         }
         if($this->PageNo!=$totalpage && $totalpage>1)
         {
-            $nextpage.="<td width='50'><a href='".$purl."PageNo=$nextpagenum'>下一页</a></td>\r\n";
-            $endpage="<td width='30'><a href='".$purl."PageNo=$totalpage'>末页</a></td>\r\n";
+            $nextpage.="<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
+            $endpage="<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
         }
         else
         {
-            $endpage="<td width='30'>末页</td>\r\n";
+            $endpage="<li class='page-item'><a class='page-link'>末页</a></li>\r\n";
         }
 
         //获得数字链接
@@ -896,28 +896,30 @@ class SearchView
         {
             if($j == $this->PageNo)
             {
-                $listdd.= "<td>$j&nbsp;</td>\r\n";
+                $listdd.= "<li class='page-item active'><a class='page-link'>$j&nbsp;</a></li>\r\n";
             }
             else
             {
-                $listdd.="<td><a href='".$purl."PageNo=$j'>[".$j."]</a>&nbsp;</td>\r\n";
+                $listdd.="<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a>&nbsp;</li>\r\n";
             }
         }
-        $plist  =  "<table border='0' cellpadding='0' cellspacing='0'>\r\n";
-        $plist .= "<tr align='center' style='font-size:10pt'>\r\n";
+        $plist = "";
+        // $plist  =  "<table border='0' cellpadding='0' cellspacing='0'>\r\n";
+        // $plist .= "<tr align='center' style='font-size:10pt'>\r\n";
         $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
+        $plist .= "<ul class=\"pagination justify-content-center pt-3\">";
         $plist .= $infos;
         $plist .= $indexpage;
         $plist .= $prepage;
         $plist .= $listdd;
         $plist .= $nextpage;
         $plist .= $endpage;
-        if($totalpage>$total_list)
-        {
-            $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
-            $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
-        }
-        $plist .= "</form>\r\n</tr>\r\n</table>\r\n";
+        // if($totalpage>$total_list)
+        // {
+        //     $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
+        //     $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
+        // }
+        $plist .= "</ul></form>\r\n";
         return $plist;
     }
 

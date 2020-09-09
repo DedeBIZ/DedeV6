@@ -84,12 +84,20 @@ if(($keyword=='' || strlen($keyword)<2) && empty($typeid))
 }
 
 //检查搜索间隔时间
-$lockfile = DEDEDATA.'/time.lock.inc';
-$lasttime = file_get_contents($lockfile);
-if(!empty($lasttime) && ($lasttime + $cfg_search_time) > time())
-{
-    ShowMsg('管理员设定搜索时间间隔为'.$cfg_search_time.'秒，请稍后再试！','-1');
-    exit();
+
+$ip = GetIP();
+$now = time();
+
+$row = $dsql->GetOne("SELECT * FROM `#@__search_limits` WHERE ip='{$ip}'");
+
+if (is_array($row)) {
+    if (($now - $row['searchtime']) < $cfg_search_time) {
+        ShowMsg('管理员设定搜索时间间隔为'.$cfg_search_time.'秒，请稍后再试！','-1');
+        exit;
+    }
+    $dsql->ExecuteNoneQuery("UPDATE `#@__search_limits` SET `searchtime`='{$now}' WHERE  `ip`='{$ip}';");
+} else {
+    $dsql->ExecuteNoneQuery("INSERT INTO `#@__search_limits` (`ip`, `searchtime`) VALUES ('{$ip}', '{$now}');");
 }
 
 //开始时间
@@ -109,8 +117,4 @@ $t1 = ExecTime();
 $sp = new SearchView($typeid,$keyword,$orderby,$channeltype,$searchtype,$starttime,$pagesize,$kwtype,$mid);
 $keyword = $oldkeyword;
 $sp->Display();
-
-
-PutFile($lockfile, time());
-
 //echo ExecTime() - $t1;
