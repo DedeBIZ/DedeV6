@@ -201,12 +201,6 @@ $actionSearch[5] = array(
             'purview' =>'member_Type',
             'linkurl' =>'member_scores.php'
         ),
-        3  =>  array(
-            'title' =>'会员模型管理',
-            'description' =>'为会员制定不同的会员分类,默认有个人,企业两种用户类型,并且同时可以为用户模型添加不同的字段',
-            'purview' =>'member_Type',
-            'linkurl' =>'member_model_main.php'
-        ),
         4  =>  array(
             'title' =>'会员短信管理',
             'description' =>'会员之间发送的短消息管理,其中包含群发短消息和对单个会员发送短消息两种',

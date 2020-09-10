@@ -181,18 +181,6 @@ class PartView
      */
     function SaveToHtml($filename,$isremote=0)
     {
-        global $cfg_remote_site;
-        //如果启用远程发布则需要进行判断
-        if($cfg_remote_site=='Y' && $isremote == 1)
-        {
-            //分析远程文件路径
-            $remotefile = str_replace(DEDEROOT, '', $filename);
-            $localfile = '..'.$remotefile;
-            //创建远程文件夹
-            $remotedir = preg_replace('/[^\/]*\.js/', '', $remotefile);
-            $this->ftp->rmkdir($remotedir);
-            $this->ftp->upload($localfile, $remotefile, 'ascii');
-        }
         $this->dtp->SaveTo($filename);
     }
 

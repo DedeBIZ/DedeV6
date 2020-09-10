@@ -350,7 +350,7 @@ class Archives
      */
     function MakeHtml($isremote=0)
     {
-        global $cfg_remote_site,$fileFirst,$baidu_seo,$cfg_basehost;
+        global $fileFirst,$baidu_seo,$cfg_basehost;
 
         if($this->IsError)
         {
@@ -425,18 +425,6 @@ class Archives
                 $seoUrls = array_merge($seoUrls, array($cfg_basehost.$URLFilename));
                 $this->ParseDMFields($i,1);
                 $this->dtp->SaveTo($TRUEfilename);
-                //如果启用远程发布则需要进行判断
-                if($cfg_remote_site=='Y' && $isremote == 1)
-                {
-
-                    //分析远程文件路径
-                    $remotefile = str_replace(DEDEROOT, '', $TRUEfilename);
-                    $localfile = '..'.$remotefile;
-                    //创建远程文件夹
-                    $remotedir = preg_replace("#[^\/]*\.html#", '', $remotefile);
-                    $this->ftp->rmkdir($remotedir);
-                    $this->ftp->upload($localfile, $remotefile, 'ascii');
-                }
             }
 
             if ($baidu_seo == true) {

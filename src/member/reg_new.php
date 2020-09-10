@@ -8,7 +8,7 @@
  * @link           http://www.dedecms.com
  */
 require_once(dirname(__FILE__) . "/config.php");
-require_once DEDEINC . '/membermodel.cls.php';
+
 if ($cfg_mb_allowreg == 'N') {
     ShowMsg('系统关闭了新用户注册！', 'index.php');
     exit();
@@ -162,18 +162,6 @@ if ($step == 1) {
             //写入其它默认数据
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES('$mid','织梦内容管理系统','http://www.dedecms.com'); ");
 
-            $membermodel = new membermodel($mtype);
-            $modid = $membermodel->modid;
-            $modid = empty($modid) ? 0 : intval($modid);
-            $modelform = $dsql->getOne("SELECT * FROM `#@__member_model` WHERE id='$modid' ");
-
-            if (!is_array($modelform)) {
-                showmsg('模型表单不存在', '-1');
-                exit();
-            } else {
-                $dsql->ExecuteNoneQuery("INSERT INTO `{$membermodel->table}` (`mid`) VALUES ('{$mid}');");
-            }
-
             //----------------------------------------------
             //模拟登录
             //---------------------------
@@ -234,8 +222,7 @@ if ($step == 1) {
             exit;
         }
     }
-    $membermodel = new membermodel($cfg_ml->M_MbType);
-    $postform = $membermodel->getForm(true);
+
     if ($dopost == 'reginfo') {
         //这里完成详细内容填写
         $dede_fields = empty($dede_fields) ? '' : trim($dede_fields);
@@ -273,7 +260,6 @@ if ($step == 1) {
             }
         }
 
-        $query = "UPDATE `{$membermodel->table}` SET `mid`='{$cfg_ml->M_ID}' $inadd_f WHERE `mid`='{$cfg_ml->M_ID}'; ";
         if ($dsql->executenonequery($query)) {
             $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `spacesta`='2' WHERE `mid`='{$cfg_ml->M_ID}'");
             // 清除缓存
