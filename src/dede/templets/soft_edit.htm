@@ -9,6 +9,7 @@
   <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
   <script language="javascript" src="../static/js/jquery.js"></script>
+  <script src="../static/js/bootstrap.bundle.js"></script>
   <script language="javascript" src="../static/js/dedeajax2.js"></script>
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/jquery.fileupload.css">
@@ -17,11 +18,11 @@
   <script language="javascript" src="js/main.js"></script>
   <link href="../static/css/cropper.min.css" rel="stylesheet">
   <script src="../static/js/cropper.min.js"></script>
-  <script src="../static/js/bootstrap.bundle.js"></script>
+  
   <script language="javascript">
     function checkSubmit() {
       if (document.form1.title.value == '') {
-        alert('软件名称不能为空！');
+        ShowMsg('软件名称不能为空！');
         document.form1.title.focus();
         return false;
       }

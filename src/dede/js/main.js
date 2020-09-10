@@ -192,7 +192,6 @@ function InitPage() {
 	if (selsource) { selsource.onmousedown = function (e) { SelectSource(e); } }
 	if (selwriter) { selwriter.onmousedown = function (e) { SelectWriter(e); } }
 	if (titlechange) { titlechange.onchange = function (e) { TestHasTitle(e); } }
-	if (colorbt) { colorbt.onmousedown = function (e) { ShowColor2(e); } }
 }
 
 function OpenMyWin(surl) {
@@ -783,7 +782,7 @@ $(document).ready(function () {
 		}, 500);
 	}
 
-	if (typeof $.daterangepicker !== "undefined") {
+	if ($.fn.daterangepicker) {
 		$('.datepicker').daterangepicker({
 			"singleDatePicker": true,
 			"autoApply": true,

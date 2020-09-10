@@ -29,7 +29,7 @@
     var arctype = 'article';
     function checkSubmit() {
       if (document.form1.title.value == '') {
-        alert('文章标题不能为空！');
+        ShowMsg('文章标题不能为空！');
         document.form1.title.focus();
         return false;
       }

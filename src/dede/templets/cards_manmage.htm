@@ -41,26 +41,26 @@
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3"
-    style="	background:#cfcfcf;">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center"
+    class="table maintable table-bordered mt-3" style="	background:#cfcfcf;">
     <tr>
       <td height="20" colspan="7" bgcolor="#EDF9D5" background='images/tbg.gif'>
         <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr>
             <td width="30%" style="padding-left:10px;"><strong>点卡业务管理：</strong> </td>
-            <td width="45%" align="right" style="padding-top:4px;"> <input type="button" class='np coolbg' name="ss13"
-                value="未使用" style="width:50px;margin-right:6px" onClick="location='cards_manage.php?isexp=0';">
-              <input type="button" class='np coolbg inputbut' name="ss14" value="已售出"
-                style="width:50px;margin-right:6px" onClick="location='cards_manage.php?isexp=1';">
-              <input type="button" class='np coolbg inputbut' name="ss15" value="已使用"
-                style="width:50px;margin-right:6px" onClick="location='cards_manage.php?isexp=-1';">
-              <input type="button" class='np coolbg inputbut' name="ss16" value="全部" style="width:40px;margin-right:6px"
-                onClick="location='cards_manage.php';">
+            <td width="45%" align="right" style="padding-top:4px;">
+              <button type="button" onClick="location='cards_manage.php?isexp=0';"
+                class="btn btn-secondary btn-sm">未使用</button>
+              <button type="button" onClick="location='cards_manage.php?isexp=1';"
+                class="btn btn-secondary btn-sm">已售出</button>
+              <button type="button" onClick="location='cards_manage.php?isexp=-1';"
+                class="btn btn-secondary btn-sm">已使用</button>
+              <button type="button" onClick="location='cards_manage.php';" class="btn btn-secondary btn-sm">全部</button>
             </td>
-            <td width="25%" align="right" style="padding-top:4px;"> <input type="button" class='np coolbg inputbut'
-                name="ss1" value="生成点卡" style="width:70px;margin-right:6px" onClick="location='cards_make.php';">
-              <input type="button" class='np coolbg inputbut' name="ss12" value="点卡产品分类"
-                style="width:90px;margin-right:6px" onClick="location='cards_type.php';">
+            <td width="25%" align="right" style="padding-top:4px;">
+              <button type="button" onClick="location='cards_make.php';" class="btn btn-secondary btn-sm">生成点卡</button>
+              <button type="button" onClick="location='cards_type.php';"
+                class="btn btn-secondary btn-sm">点卡产品分类</button>
             </td>
           </tr>
         </table>
@@ -91,8 +91,8 @@
     </form>
     <tr>
       <td height="30" colspan="7" bgcolor="#ffffff">&nbsp;
-        <input type="button" class='np coolbg inputbut' name="b7" value="反选" style="width:40" onClick="ReSel();">
-        <input type="button" class='np coolbg inputbut' name="b7" value="删除" style="width:40" onClick="DelSel();">
+        <button type="button" onClick="ReSel();" class="btn btn-secondary btn-sm">反选</button>
+        <button type="button" onClick="DelSel();" class="btn btn-secondary btn-sm">删除</button>
         　　　　 </td>
     </tr>
     <tr>

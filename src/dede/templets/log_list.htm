@@ -62,7 +62,7 @@
     </tr>
     <tr align="center" bgcolor="#ffffff">
       <td colspan="7">
-        <table width="90%" border="0" cellspacing="0" cellpadding="0">
+        <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
           <form name='formsearch'>
             <tr>
               <td>
@@ -82,7 +82,7 @@
                   <option value="60">60天以内</option>
                 </select>
                 &nbsp;
-                <input type="submit" name="Submit" value="搜索" />
+                <button type="submit" class="btn btn-secondary btn-sm">搜索</button>
               </td>
             </tr>
           </form>
@@ -128,10 +128,9 @@
     </form>
     <tr>
       <td height="30" colspan="7" bgcolor="#FCFDF7">
-        &nbsp; <input type="button" name="b5" value="反选" style="width:40px" class="coolbg np" onClick="ReSel();" />
-        &nbsp; <input type="button" name="b6" value="删除所选" style="width:80px" class="coolbg np" onClick="DelSel();" />
-        &nbsp; <input type="button" name="b7" value="清空所有日志" style="width:100px" class="coolbg np"
-          onClick="ClearLog();" />
+        &nbsp; <button type="button" onClick="ReSel();" class="btn btn-secondary btn-sm">反选</button>
+        &nbsp; <button type="button" onClick="DelSel();" class="btn btn-secondary btn-sm">删除所选</button>
+        &nbsp; <button type="button" onClick="ClearLog();" class="btn btn-secondary btn-sm">清空所有日志</button>
       </td>
     </tr>
     <tr bgcolor="#F9FCEF">

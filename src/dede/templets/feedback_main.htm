@@ -66,7 +66,7 @@
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-	<table width="98%" border="0" cellpadding="3" align="center" cellspacing="1" bgcolor="#D6D6D6" class="table table-borderless maintable mt-3">
+	<table width="98%" border="0" cellpadding="3" align="center" cellspacing="1" bgcolor="#D6D6D6" class="table table-bordered maintable mt-3">
 		<tr>
 			<td height="28" background='images/tbg.gif' style="padding-left:10px;">
 				<div style="float:left;">
@@ -80,7 +80,7 @@
 							<option value="0">--请选择--</option>
 							{dede:global.openarray /}
 						</select>
-						<input type='submit' name='sb' value=' 搜索 ' class='coolbt' />
+						<button type="submit" class="btn btn-secondary">搜索</button>
 					</form>
 				</div>
 			</td>
@@ -88,7 +88,7 @@
 		<form name='feedback'>
 			<tr>
 				<td height="215" bgcolor="#FFFFFF" valign="top">
-					<table width='100%' border='0' cellpadding='0' cellspacing='0'>
+					<table width='100%' border='0' cellpadding='0' cellspacing='0'  class="table table-borderless">
 						{dede:datalist}
 						<tr height='25'>
 							<td>
@@ -115,9 +115,7 @@
 											时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}
 										</td>
 										<td width="10%" align="center">
-											<a href='feedback_edit.php?id={dede:field.id/}'><img
-													src="images/feedback-edit.gif" border="0" width="45"
-													height="18"></a>
+											<a href='feedback_edit.php?id={dede:field.id/}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
 										</td>
 									</tr>
 									<tr align="center" bgcolor="#FFFFFF">
@@ -146,20 +144,20 @@
 								<table width="98%">
 									<tr>
 										<td width="30%">
-											<input type='button' name='kk1' value='全选' onClick="selAll()"
-												class="coolbg np" />
-											<input type='button' name='kk2' value='取消' onClick="selNone()"
-												class="coolbg np" />
-											<input type='button' name='kk3' value='反选' onClick="selNor()"
-												class="coolbg np" />
+											<button type='button' name='kk1' onClick="selAll()"
+												class="btn btn-secondary btn-sm">全选</button>
+											<button type='button' name='kk2' onClick="selNone()"
+												class="btn btn-secondary btn-sm">取消</button>
+											<button type='button' name='kk3' onClick="selNor()"
+												class="btn btn-secondary btn-sm">反选</button>
 										</td>
 										<td align="right">
-											<input type='button' name='db' value=' 删除相同IP的所有评论 '
-												onClick="delFeedbackIP()" class="coolbg np" />
-											<input type='button' name='db' value=' 删除评论 ' onClick="delFeedback()"
-												class="coolbg np" />
-											<input type='button' name='db2' value=' 审核评论 ' onClick="checkFeedback()"
-												class="coolbg np" />
+											<button type='button' name='db'
+												onClick="delFeedbackIP()" class="btn btn-secondary btn-sm">删除相同IP的所有评论</button>
+											<button type='button' name='db' onClick="delFeedback()"
+												class="btn btn-secondary btn-sm">删除评论</button>
+											<button type='button' name='db2' onClick="checkFeedback()"
+												class="btn btn-secondary btn-sm">审核评论</button>
 										</td>
 									</tr>
 								</table>

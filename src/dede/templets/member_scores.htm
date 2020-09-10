@@ -6,7 +6,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>会员管理--积分头衔设置</title>
   <script language="javascript" src="../static/js/jquery.js"></script>
-  <script language="javascript" src="../static/js/jquery.js"></script>
   <script language="javascript" src="js/main.js"></script>
   <script type="text/javascript">
     function CheckAll(form, prefix, checkall) {
@@ -19,23 +18,12 @@
       }
     }
   </script>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css" />
-  <style type="text/css">
-    .rb {
-      border-right: 1px solid #98CAEF
-    }
-
-    .tb {
-      border-top: 1px solid #98CAEF
-    }
-
-    td {
-      padding-left: 10px
-    }
-  </style>
-
+</head>
 <body background="images/allbg.gif">
-  <div class="bodytitle">
+  <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
     <div class="bodytitletxt" style="padding-left:10px;">积分头衔设置</div>
   </div>
@@ -49,34 +37,35 @@
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellpadding="1" cellspacing="1" bgcolor="#CFCFCF" align="center">
+    <table width="98%" border="0" cellpadding="1" cellspacing="1" bgcolor="#CFCFCF" align="center"
+      class="table maintable table-bordered">
       <tr>
-        <td width="6%" height="30" align="center" valign="middle" bgcolor="#FBFCE2">
+        <td width="6%" align="center" valign="middle" bgcolor="#FBFCE2">
           <input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)" class='np' />
           删?</td>
-        <td width="23%" height="30" align="center" bgcolor="#FEFCEF">积分大于</td>
-        <td width="24%" height="30" align="center" bgcolor="#FEFCEF">星星数</td>
-        <td width="23%" height="30" align="center" bgcolor="#FEFCEF">级别头衔</td>
-        <td width="24%" height="30" align="center" bgcolor="#FEFCEF">是否默认</td>
+        <td width="23%" align="center" bgcolor="#FEFCEF">积分大于</td>
+        <td width="24%" align="center" bgcolor="#FEFCEF">星星数</td>
+        <td width="23%" align="center" bgcolor="#FEFCEF">级别头衔</td>
+        <td width="24%" align="center" bgcolor="#FEFCEF">是否默认</td>
       </tr>
       <?php
 		foreach($Scores as $v){	
 		?>
-      <tr height="28" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+      <tr bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
         onMouseOut="javascript:this.bgColor='#FFFFFF';">
-        <td height="28" align="center">
+        <td align="center">
           <input name="Ids-<?php echo $v['id']?>" type="checkbox" id="Ids-<?php echo $v['id']?>" value="1" class='np' />
         </td>
-        <td height="28" align="left" style="padding:5px;">
+        <td align="left" style="padding:5px;">
           <input name="integral-<?php echo $v['id']?>" type="text" id="integral-<?php echo $v['id']?>"
             value="<?php echo $v['integral']?>" size="10" /></td>
-        <td height="28" align="left" style="padding:5px;">
+        <td align="left" style="padding:5px;">
           <input name="icon-<?php echo $v['id']?>" type="text" id="icon-<?php echo $v['id']?>"
             value="<?php echo $v['icon']?>" size="3" /></td>
-        <td height="28" align="left" style="padding:5px;">
+        <td align="left" style="padding:5px;">
           <input name="titles-<?php echo $v['id']?>" type="text" id="titles-<?php echo $v['id']?>"
             value="<?php echo $v['titles']?>" size="20" /></td>
-        <td height="28" align="left" style="padding:5px;">
+        <td align="left" style="padding:5px;">
           <select name="isdefault-<?php echo $v['id']?>" id="isdefault-<?php echo $v['id']?>">
             <option value="1" <?php if($v['isdefault']) echo " selected='selected'";?>>是</option>
             <option value="0" <?php if(!$v['isdefault']) echo " selected='selected'";?>>否</option>
@@ -87,22 +76,21 @@
 		}
 		?>
       <tr bgcolor="#F9FCEF">
-        <td height="28">&nbsp;&nbsp;新增：</td>
-        <td height="28" style="padding:5px;"><input name="add_integral" type="text" id="add_integral" size="10" /></td>
-        <td height="28" style="padding:5px;"><input name="add_icon" type="text" id="add_icon" size="3" /></td>
-        <td height="28" style="padding:5px;"><input name="add_titles" type="text" id="add_titles" size="20" /></td>
-        <td height="28" style="padding:5px;">
+        <td >新增：</td>
+        <td style="padding:5px;"><input name="add_integral" type="text" id="add_integral" size="10" /></td>
+        <td style="padding:5px;"><input name="add_icon" type="text" id="add_icon" size="3" /></td>
+        <td style="padding:5px;"><input name="add_titles" type="text" id="add_titles" size="20" /></td>
+        <td style="padding:5px;">
           <select name="add_isdefault" id="add_isdefault">
             <option value="1">是</option>
             <option value="0">否</option>
           </select></td>
       </tr>
     </table>
-    <br />
-    <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0" class="mb-3">
       <tr>
         <td height="40" align="center">
-          <input name="imageField" type="submit" class="np coolbg" value="提交" id="imageField" />
+          <button type="submit" class="btn btn-secondary">提交</button>
         </td>
       </tr>
     </table>

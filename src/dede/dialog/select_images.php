@@ -62,7 +62,7 @@ if (!empty($noeditor))
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=<?php echo $cfg_soft_lang; ?>'>
 <title>图片浏览器</title>
-<link href='../../static/img/base.css' rel='stylesheet' type='text/css'>
+<link href='../css/base.css' rel='stylesheet' type='text/css'>
 <style>
 .linerow {border-bottom: 1px solid #CBD8AC;}
 .napisdiv {left:40;top:3;width:150px;height:100px;position:absolute;z-index:3;display:none;}

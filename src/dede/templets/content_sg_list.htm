@@ -134,26 +134,26 @@
 	<table width="98%" align="center" border="0" cellspacing="0" cellpadding="0" class="table table-bordered maintable mt-3">
 		<tr>
 			<td align="center">
-				<input type='button' class="coolbg np"
+				<button type='button' class="btn btn-secondary btn-sm"
 					onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';"
-					value='添加文档' />
+					>添加文档</button>
 				{dede:if $adminid==$mid }
-				<input type='button' class="coolbg np"
+				<button type='button' class="btn btn-secondary btn-sm"
 					onClick="location='content_list.php?cid={dede:global.cid/}&mid=0';"
-					value='全部文档' />
+					>全部文档</button>
 				{else}
-				<input type='button' class="coolbg np"
+				<button type='button' class="btn btn-secondary btn-sm"
 					onClick="location='content_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID(); ?>';"
-					value='我的文档' />
+				>我的文档</button>
 				{/dede:if}
-				<input type='button' class="coolbg np" onClick="location='catalog_main.php';"
-					value='栏目管理' />
-				<input type='button' class="coolbg np" name='bb1'
+				<button type='button' class="btn btn-secondary btn-sm" onClick="location='catalog_main.php';"
+				>栏目管理</button>
+				<button type='button' class="btn btn-secondary btn-sm" name='bb1'
 					onClick="location='makehtml_list.php?cid={dede:global.cid/}';"
-					value='更新列表' />
-				<input type='button' class="coolbg np" name='bb2'
+				>更新列表</button>
+				<button type='button' class="btn btn-secondary btn-sm" name='bb2'
 					onClick="location='makehtml_archives.php?cid={dede:global.cid/}';"
-					value='更新文档' />
+				>更新文档</button>
 				<?php echo $CheckUserSend; ?>
 			</td>
 		</tr>
@@ -213,15 +213,15 @@
 						<tr bgcolor="#ffffff">
 							<td height="24" colspan="9">
 								&nbsp;
-								<a href="javascript:selAll()" class="coolbg">全选</a>
-								<a href="javascript:noSelAll()" class="coolbg">取消</a>
-								<a href="javascript:updateArc(0)" class="coolbg">&nbsp;更新&nbsp;</a>
-								<a href="javascript:checkArc(0)" class="coolbg">&nbsp;审核&nbsp;</a>
-								<a href="javascript:adArc(0)" class="coolbg">&nbsp;推荐&nbsp;</a>
-								<a href="javascript:;"
+								<a class="btn btn-secondary btn-sm" href="javascript:selAll()" class="coolbg">全选</a>
+								<a class="btn btn-secondary btn-sm" href="javascript:noSelAll()" class="coolbg">取消</a>
+								<a class="btn btn-secondary btn-sm" href="javascript:updateArc(0)" class="coolbg">&nbsp;更新&nbsp;</a>
+								<a class="btn btn-secondary btn-sm" href="javascript:checkArc(0)" class="coolbg">&nbsp;审核&nbsp;</a>
+								<a class="btn btn-secondary btn-sm" href="javascript:adArc(0)" class="coolbg">&nbsp;推荐&nbsp;</a>
+								<a class="btn btn-secondary btn-sm" href="javascript:;"
 									onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid); ?>)"
 									class="coolbg">&nbsp;移动&nbsp;</a>
-								<a href="javascript:delArc(0)" class="coolbg">&nbsp;删除&nbsp;</a>
+								<a class="btn btn-secondary btn-sm" href="javascript:delArc(0)" class="coolbg">&nbsp;删除&nbsp;</a>
 							</td>
 						</tr>
 					</form>
@@ -259,9 +259,7 @@
 															style='width:150'>
 													</td>
 													<td>
-														<input name="imageField" type="image"
-															src="images/button_search.gif" width="60" height="22"
-															border="0" class="np">
+														<button type="submit" class="btn btn-secondary">搜索</button>
 													</td>
 												</tr>
 											</table>

@@ -76,11 +76,11 @@ if($cid!=0) $whereSql .= " AND arc.typeid in (".GetSonIds($cid).")";
 if($arcrank!='')
 {
     $whereSql .= " AND arc.arcrank = '$arcrank' ";
-    $CheckUserSend = "<input type='button' class='coolbg np' onClick=\"location='content_sg_list.php?cid={$cid}&channelid={$channelid}&dopost=listArchives';\" value='所有文档' />";
+    $CheckUserSend = "<button type='button' class='btn btn-secondary btn-sm' onClick=\"location='content_sg_list.php?cid={$cid}&channelid={$channelid}&dopost=listArchives';\">所有文档</button>";
 }
 else
 {
-    $CheckUserSend = "<input type='button' class='coolbg np' onClick=\"location='content_sg_list.php?cid={$cid}&channelid={$channelid}&dopost=listArchives&arcrank=-1';\" value='稿件审核' />";
+    $CheckUserSend = "<button type='button' class='btn btn-secondary btn-sm' onClick=\"location='content_sg_list.php?cid={$cid}&channelid={$channelid}&dopost=listArchives&arcrank=-1';\">稿件审核</button>";
 }
 
 $query = "SELECT arc.aid,arc.aid as id,arc.typeid,arc.arcrank,arc.flag,arc.senddate,arc.channel,arc.title,arc.mid,arc.click,tp.typename,ch.typename as channelname

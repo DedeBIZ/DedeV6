@@ -62,12 +62,12 @@
     <tr>
       <td height="30" align="center" bgcolor="#FAFCEF">
         <form name="form2" method="get" action="member_operations.php">
-          <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
+          <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless" style="width: 400px;">
             <tr>
               <td>输入订单号：</td>
               <td>
                 <input name="buyid" type="text" id="buyid"></td>
-              <td width="100" align="center"> <input name="imageField" type="submit" value="搜索" class='np coolbg' />
+              <td width="100" align="center"> <button type="submit" class="btn btn-secondary btn-sm">搜索</button>
               </td>
             </tr>
           </table>
@@ -83,18 +83,13 @@
           <tr>
             <td width="30%" style="padding-left:10px;"><strong>会员消费管理：</strong> </td>
             <td width="45%" align="right" style="padding-top:4px;">
-              <input type="button" name="ss13" value="未付款" style="width:50px;margin-right:6px"
-                onClick="location='member_operations.php?sta=0';" class='np coolbg' />
-              <input type="button" name="ss14" value="已付款" style="width:50px;margin-right:6px"
-                onClick="location='member_operations.php?sta=1';" class='np coolbg' />
-              <input type="button" name="ss142" value="已完成" style="width:50px;margin-right:6px"
-                onClick="location='member_operations.php?sta=2';" class='np coolbg' />
-              <input type="button" name="ss16" value="全部" style="width:40px;margin-right:6px"
-                onClick="location='member_operations.php';" class='np coolbg' />
+              <button type="button" onClick="location='member_operations.php?sta=0';" class="btn btn-secondary btn-sm">未付款</button>
+              <button type="button" onClick="location='member_operations.php?sta=1';" class="btn btn-secondary btn-sm">已付款</button>
+              <button type="button" onClick="location='member_operations.php?sta=2';" class="btn btn-secondary btn-sm">已完成</button>
+              <button type="button" onClick="location='member_operations.php';" class="btn btn-secondary btn-sm">全部</button>
             </td>
             <td width="25%" align="right" style="padding-top:4px;">
-              <input type="button" name="ss12" value="会员管理" style="width:90px;margin-right:6px"
-                onClick="location='member_main.php';" class='np coolbg' />
+              <button type="button" onClick="location='member_main.php';" class="btn btn-secondary btn-sm">会员管理</button>
             </td>
           </tr>
         </table>
@@ -146,10 +141,11 @@
     <tr>
       <td height="28" colspan="8" bgcolor="#FCFDF7" style="padding-top:4px;">
         &nbsp;
-        <input type="button" name="b7" value="反选" style="width:40" onClick="ReSel();" class='np coolbg' />
-        <input type="button" name="b" value="删除" style="width:40" onClick="DelSel();" class='np coolbg' />
-        <input type="button" name="b5" value="设为已付款状态" style="width:100" onClick="UpSel();" class='np coolbg' />
-        <input type="button" name="b9" value="设为已完成状态" style="width:100" onClick="OkSel();" class='np coolbg' /></td>
+        <button type="button" onClick="ReSel();" class="btn btn-secondary btn-sm">反选</button>
+        <button type="button" onClick="DelSel();" class="btn btn-secondary btn-sm">删除</button>
+        <button type="button" onClick="UpSel();" class="btn btn-secondary btn-sm">设为已付款状态</button>
+        <button type="button" onClick="OkSel();" class="btn btn-secondary btn-sm">设为已完成状态</button>
+      </td>
     </tr>
     <tr>
       <td height="36" colspan="8" bgcolor="#F9FCEF" align="center">

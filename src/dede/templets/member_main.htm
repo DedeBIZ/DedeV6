@@ -27,7 +27,7 @@
     <tr>
       <td height="30" align="center" bgcolor="#F9FCEF">
         <form action="member_main.php" name="form1" method="get">
-          <table border="0" cellspacing="0" cellpadding="3" class="table table-borderless">
+          <table border="0" cellspacing="0" cellpadding="3" class="table table-borderless" style="width: 790px;">
             <tr>
               <td>关键字：</td>
               <td><input name="keyword" type="text" id="keyword" size="12" style="width:120px"
@@ -52,17 +52,6 @@
                 </select>
               </td>
               <td>
-                <select name="mtype" id="mtype" style="width:60px">
-                  {dede:global name='mtypeform'/}
-                  <?php
-           		foreach($MemberModels as $row)
-           		{
-           			echo "<option value=".$row['name'].">".$row['name']."</option>\r\n";
-           		}
-           	   ?>
-                </select>
-              </td>
-              <td>
                 <select name="spacesta" id="spacesta" style="width:150px">
                   <option value='-10'>--会员状态--</option>
                   <?php
@@ -74,8 +63,7 @@
            	  ?>
                 </select></td>
               <td>
-                <input name="imageField" class="np" type="image" src="images/button_search.gif" width="60" height="22"
-                  border="0" />
+                <button type="submit" class="btn btn-secondary btn-sm">搜索</button>
               </td>
             </tr>
           </table>
@@ -158,9 +146,9 @@
       <tr bgcolor="#ffffff">
         <td height="36" colspan="9">
           &nbsp;
-          <a href="javascript:selAll()" class="coolbg">全选</a>
-          <a href="javascript:noSelAll()" class="coolbg">取消</a>
-          <a href="javascript:delArc(0)" class="coolbg">&nbsp;删除&nbsp;</a>
+          <button type="button" onClick="selAll();" class="btn btn-secondary btn-sm">全选</button>
+          <button type="button" onClick="noSelAll();" class="btn btn-secondary btn-sm">取消</button>
+          <button type="button" onClick="delArc(0);" class="btn btn-secondary btn-sm">删除</button>
           （如果已经整合了论坛的用户请不要使用批量删除功能）</td>
       </tr>
       <tr bgcolor="#F9FCEF">
