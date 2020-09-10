@@ -172,13 +172,7 @@ function checkSubmit()
             echo "</select>";
 			     ?>
 			     <img src='images/menusearch.gif' style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid', '<?php echo $addRow['typeid']; ?>')" alt='快捷选择' title='快捷选择' />
-			     <?php 
-     			 if($cfg_remote_site=='Y')
-     			 {
-   				 ?> 　 
-     				 <input name="isremote" type="checkbox" id="isremote" value="1" <?php if($cfg_title_site=='Y') echo "checked";?>>是否同步远程发布  <?php GetFtp();?>     <?php
-     			 }
-    		?>  </td>
+			     </td>
           </tr>
       </table></td>
     </tr>

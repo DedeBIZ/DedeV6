@@ -77,7 +77,7 @@ else if($dopost=='save')
     if(empty($flags)) $flag = '';
     else $flag = join(',', $flags);
     $title = cn_substrR($title, $cfg_title_maxlen);
-    $isremote  = (empty($isremote)? 0  : $isremote);
+    $isremote  = 0;
     $serviterm=empty($serviterm)? "" : $serviterm;
     if(empty($litpic_b64)) $litpic_b64 = '';
     if(!TestPurview('a_Check,a_AccCheck,a_MyCheck')) $arcrank = -1;

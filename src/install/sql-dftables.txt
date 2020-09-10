@@ -766,15 +766,6 @@ CREATE TABLE `#@__mtypes` (
   PRIMARY KEY  (`mtypeid`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__multiserv_config`;
-CREATE TABLE `#@__multiserv_config` (
-  `remoteuploads` smallint(6) NOT NULL default '0',
-  `remoteupUrl` text NOT NULL,
-  `rminfo` text,
-  `servinfo` mediumtext,
-  PRIMARY KEY  (`remoteuploads`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__myad`;
 CREATE TABLE `#@__myad` (
   `aid` mediumint(8) unsigned NOT NULL auto_increment,

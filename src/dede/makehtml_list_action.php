@@ -22,9 +22,6 @@ if(!isset($uppage)) $uppage = 0;
 if(empty($maxpagesize)) $maxpagesize = 50;
 $adminID = $cuserLogin->getUserID();
 
-$isremote = (empty($isremote)  ? 0 : $isremote);
-$serviterm = empty($serviterm)? "" : $serviterm;
-
 //检测获取所有栏目ID
 //普通生成或一键更新时更新所有栏目
 if($gotype=='' || $gotype=='mkallct')
@@ -102,27 +99,15 @@ if(!empty($tid))
     $lv->CountRecord();
     if($lv->TypeLink->TypeInfos['ispart']==0 && $lv->TypeLink->TypeInfos['isdefault']!=-1) $ntotalpage = $lv->TotalPage;
     else $ntotalpage = 1;
-    if($cfg_remote_site=='Y' && $isremote=="1")
-    {
-        if($serviterm!="")
-        {
-            list($servurl, $servuser, $servpwd) = explode(',',$serviterm);
-            $config = array( 'hostname' => $servurl, 'username' => $servuser, 
-                             'password' => $servpwd,'debug' => 'TRUE');
-        } else {
-            $config=array();
-        }
-        if(!$ftp->connect($config)) exit('Error:None FTP Connection!');
-    }
     //如果栏目的文档太多，分多批次更新
     if($ntotalpage <= $maxpagesize || $lv->TypeLink->TypeInfos['ispart']!=0 || $lv->TypeLink->TypeInfos['isdefault']==-1)
     {
-        $reurl = $lv->MakeHtml('', '', $isremote);
+        $reurl = $lv->MakeHtml('', '', 0);
         $finishType = TRUE;
     }
     else
     {
-        $reurl = $lv->MakeHtml($mkpage, $maxpagesize, $isremote);
+        $reurl = $lv->MakeHtml($mkpage, $maxpagesize, 0);
         $finishType = FALSE;
         $mkpage = $mkpage + $maxpagesize;
         if( $mkpage >= ($ntotalpage+1) ) $finishType = TRUE;
@@ -146,11 +131,11 @@ if($nextpage >= $totalpage && $finishType)
 } else {
     if($finishType)
     {
-        $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage&isremote={$isremote}&serviterm={$serviterm}";
+        $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage";
         ShowMsg("成功创建栏目：".$tid."，继续进行操作！",$gourl,0,100);
         exit();
     } else {
-        $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno&isremote={$isremote}&serviterm={$serviterm}";
+        $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
         ShowMsg("栏目：".$tid."，继续进行操作...",$gourl,0,100);
         exit();
     }

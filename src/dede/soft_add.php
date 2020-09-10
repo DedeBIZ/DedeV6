@@ -101,7 +101,7 @@ else if($dopost=='save')
     $keywords = cn_substrR($keywords, 60);
     $filename = trim(cn_substrR($filename, 40));
     $userip = GetIP();
-    $isremote  = (empty($isremote)? 0  : $isremote);
+    $isremote  = 0;
     $serviterm=empty($serviterm)? "" : $serviterm;
     if(!TestPurview('a_Check,a_AccCheck,a_MyCheck'))
     {
@@ -110,7 +110,10 @@ else if($dopost=='save')
     $adminid = $cuserLogin->getUserID();
 
     //处理上传的缩略图
-    if(empty($ddisremote)) $ddisremote = 0;
+    if(empty($ddisremote))
+    {
+        $ddisremote = 0;
+    }
     $litpic = GetDDImage('none', $picname, $ddisremote);
     // 处理新的缩略图上传
     if ($litpic_b64 != "") {
@@ -286,20 +289,7 @@ else if($dopost=='save')
 
     //生成HTML
     InsertTags($tags, $arcID);
-    if($cfg_remote_site=='Y' && $isremote=="1")
-    { 
-        if($serviterm!="")
-        {
-            list($servurl, $servuser, $servpwd) = explode(',',$serviterm);
-            $config = array( 'hostname' => $servurl, 'username' => $servuser, 
-                           'password' => $servpwd,'debug' => 'TRUE');
-        } else {
-            $config = array();
-        }
-        if(!$ftp->connect($config)) exit('Error:None FTP Connection!');
-    }
-
-    $arcUrl = MakeArt($arcID, TRUE, TRUE, $isremote);
+    $arcUrl = MakeArt($arcID, TRUE, TRUE, 0);
     if($arcUrl=='')
     {
         $arcUrl = $cfg_phpurl."/view.php?aid=$arcID";

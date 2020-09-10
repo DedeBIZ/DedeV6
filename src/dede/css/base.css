@@ -644,3 +644,6 @@ height: auto !important;
 .maintable {
 	width: 98%!important;
 }
+a.btn {
+	color: white!important;
+}

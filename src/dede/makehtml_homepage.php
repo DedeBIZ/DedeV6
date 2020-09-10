@@ -24,7 +24,6 @@ if($dopost=="view")
 else if($dopost=="make")
 {
     $remotepos = empty($remotepos)? '/index.html' : $remotepos;
-    $isremote = empty($isremote)? 0 : $isremote;
     $serviterm = empty($serviterm)? "" : $serviterm;
     $homeFile = DEDEADMIN."/".$position;
     $homeFile = str_replace("\\","/",$homeFile);
@@ -62,14 +61,6 @@ else if($dopost=="make")
         list($servurl, $servuser, $servpwd) = explode(',',$serviterm);
         $config=array( 'hostname' => $servurl, 'username' => $servuser, 
                        'password' => $servpwd,'debug' => 'TRUE');
-    }
-    //如果启用远程站点则上传
-    if($cfg_remote_site=='Y' && $showmod==1)
-    {
-        if($ftp->connect($config) && $isremote == 1)
-        {
-            if($ftp->upload($position, $remotepos, 'ascii')) echo "远程发布成功!"."<br />";
-        }
     }
     exit();
 }

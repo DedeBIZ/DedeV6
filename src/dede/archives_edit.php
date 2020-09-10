@@ -107,7 +107,7 @@ else if($dopost=='save')
     $description = cn_substrR($description, $cfg_auot_description);
     $keywords = trim(cn_substrR($keywords, 60));
     $filename = trim(cn_substrR($filename, 40));
-    $isremote  = (empty($isremote)? 0  : $isremote);
+    $isremote  = 0;
     $serviterm=empty($serviterm)? "" : $serviterm;
     if(!TestPurview('a_Check,a_AccCheck,a_MyCheck')) $arcrank = -1;
 

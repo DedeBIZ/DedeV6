@@ -182,13 +182,6 @@ function checkSubmit()
 			<img src='images/menusearch.gif' style='cursor:pointer;' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid')" alt='快捷选择' title='快捷选择' />
 			&nbsp;<a href='catalog_main.php'>【<u>栏目管理</u>】</a>
 			&nbsp;<a href='catalog_add.php?listtype=all'>【<u>增加大栏目</u>】</a>	
-            <?php 
-     			 if($cfg_remote_site=='Y')
-     			 {
-   				 ?> 　 
-     				 <input name="isremote" type="checkbox" id="isremote" value="1" <?php if($cfg_title_site=='Y') echo "checked";?>>是否同步远程发布  <?php GetFtp();?>     <?php
-     			 }
-    		?>  
             </td>
         </tr>
       </table></td>

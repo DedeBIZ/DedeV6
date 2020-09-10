@@ -108,7 +108,7 @@ else if($dopost=='save')
     $keywords = cn_substrR($keywords,60);
     $filename = trim(cn_substrR($filename,40));
     $userip = GetIP();
-    $isremote  = (empty($isremote)? 0  : $isremote);
+    $isremote  = 0;
     $serviterm=empty($serviterm)? "" : $serviterm;
 
     if(!TestPurview('a_Check,a_AccCheck,a_MyCheck'))

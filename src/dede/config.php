@@ -223,31 +223,6 @@ function ClearOptCache()
 }
 
 /**
- *  更新会员模型缓存
- *
- * @access    public
- * @return    void
- */
-function UpDateMemberModCache()
-{
-    global $dsql;
-    $cachefile = DEDEDATA.'/cache/member_model.inc';
-
-    $dsql->SetQuery("SELECT * FROM `#@__member_model` WHERE state='1'");
-    $dsql->Execute();
-    $fp1 = fopen($cachefile,'w');
-    $phph = '?';
-    $fp1Header = "<{$phph}php\r\nglobal \$_MemberMod;\r\n\$_MemberMod=array();\r\n";
-    fwrite($fp1,$fp1Header);
-    while($row=$dsql->GetObject())
-    {
-        fwrite($fp1,"\$_MemberMod[{$row->id}]=array('{$row->name}','{$row->table}');\r\n");
-    }
-    fwrite($fp1,"{$phph}>");
-    fclose($fp1);
-}
-
-/**
  *  引入模板文件
  *
  * @access    public
@@ -260,45 +235,6 @@ function DedeInclude($filename, $isabs=FALSE)
     return $isabs ? $filename : DEDEADMIN.'/'.$filename;
 }
 
-/**
- *  获取当前用户的ftp站点
- *
- * @access    public
- * @param     string  $current  当前站点
- * @param     string  $formname  表单名称
- * @return    string
- */
-function GetFtp($current='', $formname='')
-{
-    global $dsql;
-    $formname = empty($formname)? 'serviterm' : $formname;
-    $cuserLogin = new userLogin();
-    $row=$dsql->GetOne("SELECT servinfo FROM `#@__multiserv_config`");
-    $row['servinfo']=trim($row['servinfo']);
-    if(!empty($row['servinfo'])){
-        $servinfos = explode("\n", $row['servinfo']);
-        $select="";
-        echo '<select name="'.$formname.'" size="1" id="serviterm">';
-        $i=0;
-        foreach($servinfos as $servinfo){
-            $servinfo = trim($servinfo);
-            list($servname,$servurl,$servport,$servuser,$servpwd,$userlist) = explode('|',$servinfo);
-            $servname = trim($servname);
-            $servurl = trim($servurl);
-            $servport = trim($servport);
-            $servuser = trim($servuser);
-            $servpwd = trim($servpwd);
-            $userlist = trim($userlist);   
-            $checked = ($current == $i)? '  selected="selected"' : '';
-            if(strstr($userlist,$cuserLogin->getUserName()))
-            {
-                $select.="<option value='".$servurl.",".$servuser.",".$servpwd."'{$checked}>".$servname."</option>";  
-            }
-            $i++;
-        }
-        echo  $select."</select>";
-    }
-}
 helper('cache');
 /**
  *  根据用户mid获取用户名称
