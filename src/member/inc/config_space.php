@@ -127,7 +127,6 @@ function GetUserSpaceInfos()
                   LEFT JOIN `#@__member_space` s on s.mid=m.mid
                   LEFT JOIN `#@__member_tj` t on t.mid=m.mid
                   LEFT JOIN `#@__arcrank` r on r.rank=m.rank
-                  LEFT JOIN `#@__member_msg` g on g.mid=m.mid
                   where m.userid like '$uid' ORDER BY g.dtime DESC ";
     $_vars = $dsql->GetOne($query);
     if(!is_array($_vars))

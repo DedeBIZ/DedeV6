@@ -207,9 +207,6 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     $artUrl = MakeArt($arcID,true);
     if($artUrl=='') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
 
-    //会员动态记录
-    $cfg_ml->RecordFeeds('add', $title, $description, $arcID);
-    
     ClearMyAddon($arcID, $title);
     
     //返回成功信息

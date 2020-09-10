@@ -87,18 +87,6 @@ if($uid=='')
         /** 有没新短信 **/
         $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__member_pms WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");    
         
-        /** 查询会员状态 **/
-        $moodmsg = $dsql->GetOne("SELECT * FROM #@__member_msg WHERE mid='{$cfg_ml->M_ID}' ORDER BY dtime desc");    
-
-        /** 会员操作日志 **/
-        $sql = "SELECT * From `#@__member_feed` where ischeck=1 order by fid desc limit 8";
-        $feeds = array();
-        $dsql->SetQuery($sql);
-        $dsql->Execute();
-        while ($row = $dsql->GetArray()) {
-            $feeds[] = $row;
-        }
-
         $dpl = new DedeTemplate();
         $tpl = dirname(__FILE__)."/templets/index.htm";
         $dpl->LoadTemplate($tpl);

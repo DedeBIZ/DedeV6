@@ -564,46 +564,4 @@ class MemberLogin
         $sta .= " 拥有金币：{$this->M_Money} 个， 积分：{$this->M_Scores} 分。";
         return $sta;
     }
-    
-    /**
-     *  记录会员操作日志
-     *
-     * @access    public
-     * @param     string  $type 记录类型
-     * @param     string  $title 记录标题
-     * @param     string  $note记录描述
-     * @param     string  $aid涉及到的内容的id
-     * @return    string
-     */
-    function RecordFeeds($type, $title, $note, $aid)
-    {
-        global $dsql,$cfg_mb_feedcheck;
-        //确定是否需要记录
-        if (in_array($type,array('add','addsoft','feedback','addfriends','stow'))){
-            $ntime = time();
-            $title = dede_htmlspecialchars(cn_substrR($title,255));
-            if(in_array($type,array('add','addsoft','feedback','stow')))
-            {
-                $rcdtype = array('add'=>' 成功发布了', 'addsoft'=>' 成功发布了软件',
-                                 'feedback'=>' 评论了文章','stow'=>' 收藏了');
-                //内容发布处理
-                $arcrul = " <a href='/plus/view.php?aid=".$aid."'>".$title."</a>";
-                $title = dede_htmlspecialchars($rcdtype[$type].$arcrul, ENT_QUOTES);
-            } else if ($type == 'addfriends')
-            {
-                //添加好友处理
-                $arcrul = " <a href='/member/index.php?uid=".$aid."'>".$aid."</a>";
-                $title = dede_htmlspecialchars(' 与'. $arcrul."成为好友", ENT_QUOTES);
-            }
-            $note = Html2Text($note);
-            $aid = (isset($aid) && is_numeric($aid) ? $aid : 0);
-            $ischeck = ($cfg_mb_feedcheck == 'Y')? 0 : 1;
-            $query = "INSERT INTO `#@__member_feed` (`mid`, `userid`, `uname`, `type`, `aid`, `dtime`,`title`, `note`, `ischeck`) 
-                        Values('$this->M_ID', '$this->M_LoginID', '$this->M_UserName', '$type', '$aid', '$ntime', '$title', '$note', '$ischeck'); ";
-            $rs = $dsql->ExecuteNoneQuery($query);
-            return $rs;
-        } else {
-            return FALSE;
-        }
-    }
 }//End Class
