@@ -640,3 +640,7 @@ input,
 	  select {
 height: auto !important;
 }
+
+.maintable {
+	width: 98%!important;
+}

@@ -572,21 +572,6 @@ CREATE TABLE `#@__member_company` (
   PRIMARY KEY  (`mid`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__member_feed`;
-CREATE TABLE `#@__member_feed` (
-  `fid` mediumint(8) unsigned NOT NULL auto_increment,
-  `mid` smallint(8) unsigned NOT NULL default '0',
-  `userid` char(20) NOT NULL default '',
-  `uname` char(36) NOT NULL default '',
-  `type` char(20) character set gb2312 NOT NULL default '0',
-  `aid` mediumint(8) NOT NULL default '0',
-  `dtime` int(10) unsigned NOT NULL default '0',
-  `title` char(253) NOT NULL,
-  `note` char(200) NOT NULL default '',
-  `ischeck` smallint(6) NOT NULL,
-  PRIMARY KEY  (`fid`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__member_flink`;
 CREATE TABLE `#@__member_flink` (
   `aid` mediumint(8) unsigned NOT NULL auto_increment,
@@ -594,23 +579,6 @@ CREATE TABLE `#@__member_flink` (
   `title` varchar(30) NOT NULL default '',
   `url` varchar(100) NOT NULL default '',
   PRIMARY KEY  (`aid`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__member_guestbook`;
-CREATE TABLE `#@__member_guestbook` (
-  `aid` int(10) unsigned NOT NULL auto_increment,
-  `mid` mediumint(8) unsigned NOT NULL default '0',
-  `gid` varchar(20) NOT NULL default '0',
-  `title` varchar(60) NOT NULL default '',
-  `uname` varchar(50) NOT NULL default '',
-  `email` varchar(50) NOT NULL default '',
-  `qq` varchar(50) NOT NULL default '',
-  `tel` varchar(50) NOT NULL default '',
-  `ip` varchar(20) NOT NULL default '',
-  `dtime` int(10) unsigned NOT NULL default '0',
-  `msg` text,
-  PRIMARY KEY  (`aid`),
-  KEY `mid` (`mid`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__member_model`;
