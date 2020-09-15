@@ -5,6 +5,7 @@
  * @version        $Id: soft_edit.php 1 16:09 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -64,7 +65,7 @@ if($dopost!='save')
                 {
                     $islocal = $ctag->GetAtt('islocal');
                     if($islocal != 1) $needmsg = "<input type='checkbox' name='del{$newRowStart}' value='1' />删除";
-                    else $needmsg = '<input name="sel1" type="button" id="sel1" value="选取" onClick="SelectSoft(\'form1.softurl'.$newRowStart.'\')" />';
+                    else $needmsg = '<button name="sel1"  class="btn btn-secondary btn-sm" type="button" id="sel1" onClick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选取</button>';
                     $nForm .= "<div style='line-height:36px'>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' style='width:280px' value='".trim($ctag->GetInnerText())."' />
             服务器名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' style='width:150px' />
             <input type='hidden' name='islocal{$newRowStart}' value='{$islocal}' />
@@ -322,15 +323,15 @@ else if($dopost=='save')
     //返回成功信息
     $msg = "
     　　请选择你的后续操作：
-    <a href='soft_add.php?cid=$typeid'><u>发布新软件</u></a>
+    <a href='soft_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新软件</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=".$id."&dopost=editArchives'><u>继续修改</u></a>
+    <a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-secondary btn-sm'>继续修改</a>
     &nbsp;&nbsp;
-    <a href='$arcUrl' target='_blank'><u>查看软件</u></a>
+    <a href='$arcUrl' target='_blank' class='btn btn-secondary btn-sm'>查看软件</a>
     &nbsp;&nbsp;
-    <a href='catalog_do.php?cid=$typeid&dopost=listArchives'><u>已发布软件管理</u></a>
+    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-secondary btn-sm'>已发布软件管理</a>
     &nbsp;&nbsp;
-    <a href='catalog_main.php'><u>网站栏目管理</u></a>
+    <a href='catalog_main.php' class='btn btn-secondary btn-sm'>网站栏目管理</a>
     ";
     $wintitle = "成功修改一个软件！";
     $wecome_info = "文章管理::修改软件";

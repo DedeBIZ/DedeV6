@@ -184,8 +184,8 @@ if($row['type']=='bool')
 	$c1='';
 	$c2 = '';
 	$row['value']=='Y' ? $c1=" checked" : $c2=" checked";
-	echo "<input type='radio' class='np' name='edit___{$row['varname']}' value='Y'$c1>是 ";
-	echo "<input type='radio' class='np' name='edit___{$row['varname']}' value='N'$c2>否 ";
+	echo "<label><input type='radio' class='np' name='edit___{$row['varname']}' value='Y'$c1> 是 </label> ";
+	echo "<label><input type='radio' class='np' name='edit___{$row['varname']}' value='N'$c2> 否 </label> ";
 }else if($row['type']=='bstring')
 {
 	echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
@@ -196,7 +196,7 @@ if($row['type']=='bool')
 {
 	$addstr='';
 	if ($row['varname']=='cfg_cookie_encode') {
-	  $addstr=' <a href="javascript:resetCookieEncode();" style="color:blue">[重新生成]</a>';
+	  $addstr=' <a href="javascript:resetCookieEncode();" class="btn btn-secondary btn-sm">重新生成</a>';
 	}
 	echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'>{$addstr}";
 }
@@ -222,7 +222,7 @@ if($row['type']=='bool')
                       <td width="11%">
                         <button type="submit" class="btn btn-secondary">确定</button>
                         </td>
-                      <td width="78%"><button type="submit" onClick="document.form1.reset()" class="btn btn-secondary">重置</button></td>
+                      <td width="78%"><button type="button" onClick="document.form1.reset()" class="btn btn-secondary">重置</button></td>
                     </tr>
                   </table>
                 </td>

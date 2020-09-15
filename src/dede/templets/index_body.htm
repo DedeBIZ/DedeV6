@@ -65,7 +65,7 @@
                             echo "<div class='updatedvt'><b>您系统版本最后更新时间为：{$oktime} </b><br/>";
                             echo " <a href='javascript:LoadUpdateInfos();' class='np coolbg'>进行在线更新</a> &nbsp; \r\n";
                             echo " <a href='sys_repair.php' class='np coolbg'>系统错误修复</a></div>\r\n";
-                            echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' width='98%' height='50'></iframe>";
+                            echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' width='98%' height='80'></iframe>";
                         ?>
                     </div>
                     <!--/.card-body-->
@@ -125,7 +125,7 @@
                     </div>
                     <!--/.card-header-->
                     <div class="card-body">
-                        <table width="98%" class="dboxtable">
+                        <table width="98%" class="table table-borderless">
                             <tr>
                                 <td width="25%" class='nline' style="text-align:right">您的级别：</td>
                                 <td class='nline'>
@@ -138,7 +138,7 @@
                                 echo "信息采集员或其它管理员";
                             }
                         ?>
-                                    [<a href="javascript:showMore()">查看更多</a>]</td>
+                                <a href="javascript:showMore()" class="btn btn-secondary btn-sm">查看更多</a></td>
                             </tr>
                             <tr>
                                 <td colspan="2" class='nline' id="allInfoTD" style="display:none">

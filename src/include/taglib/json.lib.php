@@ -3,7 +3,7 @@ if(!defined('DEDEINC'))
 {
     exit("Request Error!");
 }
-require_once(dirname(__file__).'/../json.class.php');
+require_once(DEDEINC.'/json.class.php');
 
  /*>>dede>>
 <name>JSON数据调用类</name>

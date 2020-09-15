@@ -3,7 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>更改字段</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
+<script language='javascript' src="js/main.js"></script>
 <script language="javascript">
 function GetFields()
 {
@@ -20,14 +25,14 @@ function GetFields()
 	
 	if(itemname=="")
 	{
-		alert("表单提示名称不能为空！");
+		ShowMsg("表单提示名称不能为空！");
 		theform.itemname.focus();
 		return false;
 	}
 	
 	if((dtype=="radio"||dtype=="select"||dtype=="checkbox") && vdefault=="")
 	{
-		alert("你选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）！");
+		ShowMsg("你选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）！");
 		return false;
 	}
 	
@@ -43,17 +48,15 @@ function GetFields()
 }
 </script>
 <style type="text/css">
-<!--
 td{ padding:2px; padding-left:6px; }
 .STYLE1 {color: #FF3300}
 .STYLE2 {color: #666666}
 .nw { float:left; width:150px; }
 .cls { clear:both; }
--->
 </style>
 </head>
 <body topmargin=8 background='images/allbg.gif'>
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="	background:#CFCFCF;">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="	background:#CFCFCF;">
   <form name="form1" action="diy_field_edit.php" method="post" onSubmit="return GetFields();">
   	<input type='hidden' name='action' value='save'>
   	<input type='hidden' name='diyid' value='<?php echo $diyid?>'>
@@ -62,11 +65,11 @@ td{ padding:2px; padding-left:6px; }
 	  <input type='hidden' name='fieldstring' value=''>
     <tr> 
       <td height="20" colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif"> 
-        <table width="98%" border="0" cellspacing="0" cellpadding="0">
+        <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
             <td width="30%" style="padding-left:10px;"><b><a href="diy_main.php">自定义表单管理</a> &gt;&gt; 修改字段：</b>            </td>
             <td align="right" style="padding-top:6px;">
-			        <input type="button" name="ss1" value="当前表单信息" onClick="location='diy_edit.php?diyid=<?php echo $diyid; ?>&dopost=edit';" class="nbt"/>
+			        <button type="button" name="ss1" onClick="location='diy_edit.php?diyid=<?php echo $diyid; ?>&dopost=edit';" class="btn btn-secondary btn-sm">当前表单信息</button>
             </td>
           </tr>
         </table> </td>
@@ -132,10 +135,10 @@ td{ padding:2px; padding-left:6px; }
         <span class="STYLE2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td bgcolor="#FFFFFF">
       	<input name="isnull" type="hidden" value="1" />
-        <input name="spage" type="radio"  value="split"<?php  if($ctag->GetAtt('page')=='split') echo " checked='1' "; ?> class='np' />
-        是 &nbsp; 
-        <input name="spage" type="radio"  value="no"<?php  if($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo " checked='1' "; ?> class='np' />
-        否	  </td>
+        <label><input name="spage" type="radio"  value="split"<?php  if($ctag->GetAtt('page')=='split') echo " checked='1' "; ?> class='np' />
+        是 &nbsp; </label>
+        <label><input name="spage" type="radio"  value="no"<?php  if($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo " checked='1' "; ?> class='np' />
+        否</label></td>
       </tr>
     <tr> 
       <td bgcolor="#FFFFFF"><strong>默认值：</strong><br>
@@ -158,12 +161,15 @@ td{ padding:2px; padding-left:6px; }
       <td bgcolor="#FFFFFF"><textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%; height:120px;"><?php echo $ctag->GetInnerText(); ?></textarea></td>
     </tr>
     <tr>
-      <td height="28" colspan="2" bgcolor="#F9FCEF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <td height="28" colspan="2" bgcolor="#F9FCEF">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless mb-3">
           <tr>
             <td width="26%" height="45">&nbsp;</td>
-            <td width="10%"><input type="submit" name="button1" id="button1" value="确定" class="coolbg np" />
+            <td width="10%" class="py-3">
+              <button type="submit" class="btn btn-secondary">确定</button>
             </td>
-            <td><input type="reset" name="button3" id="button3" value="重置" class="coolbg np" />
+            <td class="py-3">
+              <button type="reset" class="btn btn-secondary">重置</button>
             </td>
           </tr>
       </table></td>

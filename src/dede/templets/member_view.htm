@@ -3,28 +3,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>查看会员</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="../static/js/jquery.js"></script>
+<script language="javascript" src="../static/js/bootstrap.bundle.js"></script>
 <script language='javascript'src='../data/enums/area.js'></script>
+<script language="javascript" src="js/main.js"></script>
 <script>
 function checkSubmit()
 {
   if(document.form2.email.value=="")
   {
     document.form2.email.focus();
-    alert("Email不能为空！");
+    ShowMsg("Email不能为空！");
     return false;
   }
   if(document.form2.uname.value=="")
   {
     document.form2.uname.focus();
-    alert("用户昵称不能为空！");
+    ShowMsg("用户昵称不能为空！");
     return false;
   }
 }
 </script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6">
+<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
   <tr>
     <td height="19" background="images/tbg.gif" style="padding-left:10px;"><a href='<?php echo $ENV_GOBACK_URL; ?>'><b>会员管理</b></a> &gt;&gt; 查看会员</td>
 </tr>
@@ -33,7 +38,7 @@ function checkSubmit()
 	<?php
 	if($row['matt']==10) echo "<font color='red'>当前用户是网站管理员关连的帐号，请小心操作！</font>";
 	?>
-	<table width="98%" border="0" cellspacing="0" cellpadding="6" >
+	<table width="98%" border="0" cellspacing="0" cellpadding="6" class="table table-borderless">
         <tr> 
           <td colspan="2" height="10" ></td>
         </tr>
@@ -95,12 +100,12 @@ function checkSubmit()
           <tr> 
             <td align="right" class='bline'>性　别：</td>
             <td class='bline' style="text-align:left;">
-            <input type="radio" name="sex" class="np" value="男"<?php if($row['sex']=="男" ) echo" checked='1'" ;?> />
-              男 &nbsp; 
-             <input type="radio" name="sex" class="np" value="女"<?php if($row['sex']=="女" ) echo" checked='1'" ;?> />
-              女
-             <input type="radio" name="sex" class="np" value=""<?php if($row['sex']=="" ) echo" checked='1'" ;?> />
-              保密
+              <label><input type="radio" name="sex" class="np" value="男"<?php if($row['sex']=="男" ) echo" checked='1'" ;?> />
+              男</label> &nbsp; 
+              <label><input type="radio" name="sex" class="np" value="女"<?php if($row['sex']=="女" ) echo" checked='1'" ;?> />
+              女</label>
+              <label><input type="radio" name="sex" class="np" value=""<?php if($row['sex']=="" ) echo" checked='1'" ;?> />
+              保密</label>
              </td>
           </tr>
           <tr> 
@@ -119,7 +124,7 @@ function checkSubmit()
              while($nrow = $dsql->GetObject('n')){
 	              $MemberTypes[$nrow->rank] = $nrow->membername;
              }
-             $options = "<select name='rank' style='width:80px'>\r\n";
+             $options = "<select name='rank' style='width:120px'>\r\n";
              foreach($MemberTypes as $k=>$v)
              {
   	            if($k!=$row['rank']) $options .= "<option value='$k'>$v</option>\r\n";
@@ -192,9 +197,9 @@ function checkSubmit()
           <tr> 
             <td height="67" align="right" >&nbsp;</td>
             <td height="67" align="left">
-            <input type="submit" name="Submit" value="确定修改" class='coolbg' /> 
+            <button type="submit" name="Submit" class='btn btn-secondary'>确定修改</button> 
               &nbsp;&nbsp;
-            <input type="reset" name="Submit22" value="重置表单" class='coolbg' />
+            <button type="reset" name="Submit22" class='btn btn-secondary'>重置表单</button>
             </td>
           </tr>
         </form>

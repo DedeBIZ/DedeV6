@@ -47,7 +47,16 @@ background: url(../images/input.png) repeat-x scroll 0px 0px;
 }
 
 select {
-padding: 3px;
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+font-size: 1rem;
+font-weight: 400;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 input[type="button"],input[type="submit"],input[type="reset"] {
@@ -62,11 +71,16 @@ cursor: pointer;
 }
 
 input[type="text"],input[type="password"] {
-border-width: 1px;
-border-style: solid;
-border-color: #707070 #CECECE #CECECE #707070;
-padding: 2px 4px;
-height: 18px;
+font-size: 1rem;
+font-weight: 400;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+height: calc(1.5em + .75rem + 2px);
+padding: .375rem .75rem;
+transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 line-height: 18px;
 vertical-align: middle;
 }
@@ -80,6 +94,11 @@ box-shadow: 0 0 3px #A5C760;
 outline: none;
 }
 
+label {
+    display: inline-block;
+    margin: .5rem 0;
+}
+
 .alltxt {
 height: 18px;
 line-height: 18px;
@@ -91,14 +110,19 @@ border-color: #707070 #CECECE #CECECE #707070;
 }
 
 textarea {
-background: url(../images/input.png) #fff repeat-x scroll 0px 0px;
-border-width: 1px;
-border-style: solid;
-border-color: #707070 #CECECE #CECECE #707070;
+font-size: 1rem;
+font-weight: 400;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 padding: 2px 4px;
 vertical-align: middle;
 line-height: 16px;
 overflow: auto;
+resize: vertical;
 }
 
 textarea:focus {
@@ -232,7 +256,7 @@ background-color: #E6E6E6
 
 .bline {
 border-bottom: 1px dotted #BCBCBC;
-height: 28px;
+height: 36px;
 background-color: #FFFFFF;
 }
 
@@ -368,7 +392,7 @@ filter: Alpha(opacity=50);
 opacity: 0.5;
 position: absolute;
 width: 100%;
-height: 2500px;
+height: 120%;
 }
 
 .quicksel {
@@ -612,7 +636,7 @@ padding-left: 23px;
 }
 
 #title {
-background: url(../images/ruler.gif) repeat-x 0px 5px;
+background: url(../images/ruler.gif) repeat-x 0px 10px;
 }
 
 .spec {
@@ -636,10 +660,6 @@ img {
 vertical-align: baseline;
 }
 
-input,
-	  select {
-height: auto !important;
-}
 
 .maintable {
 	width: 98%!important;

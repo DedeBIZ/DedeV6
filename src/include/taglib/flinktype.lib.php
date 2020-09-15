@@ -10,6 +10,7 @@ require_once(DEDEINC."/taglib/flink.lib.php");
  * @version        $Id: flinktype.lib.php 1 15:57 2011年2月18日Z niap $
  * @package        DedeCMS.Taglib
  * @copyright      Copyright (c) 2007 - 2011, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -55,7 +56,7 @@ function lib_flinktype(&$ctag,&$refObj)
     {
         $row[] = $dbrow;
     }
-	$dedecms = false;
+	$dedecms = new stdClass;
 	$dedecms->id = 999;
 	$dedecms->typename = '织梦链';
 	if($type == 'dedecms') $row[] = $dedecms;

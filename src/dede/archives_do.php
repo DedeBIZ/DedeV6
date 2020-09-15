@@ -5,6 +5,7 @@
  * @version        $Id: archives_do.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -619,9 +620,9 @@ else if($dopost=='quickEdit')
     {
         if($trow->att=='j' || $trow->att=='p') continue;
                   if(preg_match("#".$trow->att."#", $arcRow['flag']))
-                  echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked' />{$trow->attname}.{$trow->att}";
+                  echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked' /> {$trow->attname}.{$trow->att}</label> ";
         else
-                  echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' />{$trow->attname}.{$trow->att}";
+                  echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' /> {$trow->attname}.{$trow->att}</label> ";
     }
     ?>
     </td>
@@ -664,10 +665,10 @@ else if($dopost=='quickEdit')
     </td>
 </tr>
 <tr height='32'>
-    <td colspan='2' align='center' style='padding-top:12px'>
-        <input name="imageField" type="image" src="images/button_ok.gif" width="60" height="22" class="np" border="0" style="cursor:pointer" />
+    <td colspan='2' align='center' style='padding-top:12px' class='py-3'>
+    <button type="submit" class="btn btn-secondary">保存</button>
         &nbsp;&nbsp;
-        <img src="images/button_back.gif" width="60" height="22" border="0" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' style="cursor:pointer" />
+        <button type="button"  onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class="btn btn-secondary">关闭</button>
     </td>
 </td>
 </tr>

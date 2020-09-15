@@ -46,8 +46,7 @@
      }
      echo "</select>\r\n";
   ?></li>
-                  <li><input name="imageField" type="image" src="images/button_search.gif" width="60" height="22"
-                        border="0" class="np" /></li>
+                  <li><button type="submit" name="button1" id="button1" class="btn btn-secondary btn-sm">搜索</button></li>
                </ul>
             </form>
          </td>
@@ -59,9 +58,9 @@
                <b>◆单独页面管理</b>
             </div>
             <div style="float:right">
-               [<a href="templets_one_add.php"><u>增加一个页面</u></a>]
-               &nbsp;[<a href="#" onClick="document.form1.submit();"><u>更新选中页面</u></a>]
-               &nbsp;[<a href="templets_one_edit.php?dopost=mkall"><u>更新所有页面</u></a>]
+               <a href="templets_one_add.php" class="btn btn-secondary btn-sm">增加一个页面</a>
+               &nbsp;<a href="#" onClick="document.form1.submit();" class="btn btn-secondary btn-sm">更新选中页面</a>
+               &nbsp;<a href="templets_one_edit.php?dopost=mkall" class="btn btn-secondary btn-sm">更新所有页面</a>
                &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
          </td>
@@ -87,10 +86,10 @@
             <td>{dede:field.likeid /}</td>
             <td>{dede:field.uptime function='GetDateMk(@me)'/}</td>
             <td>
-               <a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=edit'>[更改]</a>
-               <a href="templets_one_edit.php?aid={dede:field.aid /}&dopost=view" target='_blank'>[预览]</a>
+               <a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=edit' class="btn btn-secondary btn-sm"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 更改</a>
+               <a href="templets_one_edit.php?aid={dede:field.aid /}&dopost=view" target='_blank' class="btn btn-secondary btn-sm"> <i class="fa fa-globe" aria-hidden="true"></i> 预览</a>
                &nbsp;|&nbsp;
-               <a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=delete'>[删除]</a>
+               <a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=delete' class="btn btn-secondary btn-sm"> <i class="fa fa-trash" aria-hidden="true"></i>  删除</a>
             </td>
          </tr>
          {/dede:datalist}

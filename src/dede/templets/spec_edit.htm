@@ -48,7 +48,7 @@
     }
     function checkSubmit() {
       if (document.form1.title.value == "") {
-        alert("专题名称不能为空！");
+        ShowMsg("专题名称不能为空！");
         return false;
       }
       for (i = 1; i <= 6; i++) {
@@ -65,7 +65,7 @@
       if (arcid.value != "") {
         if (notename.value == "") {
           $DE('notename' + id).focus();
-          alert('你的节点' + id + '名称不能为空');
+          ShowMsg('你的节点' + id + '名称不能为空');
           return false;
         }
       }
@@ -75,7 +75,7 @@
     img {
       vertical-align: baseline;
     }
-  
+
     input,
     select {
       height: auto !important;
@@ -92,13 +92,13 @@
     <input type="hidden" name="source" value="本站" />
     <input type="hidden" name="dopost" value="save" />
     <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
         <td width="85%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
             href="content_s_list.php"><u>专题列表</u></a><a
             href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"></a>
           &gt;&gt; 修改专题</td>
-        <td width="10%" align="right"><a href="makehtml_spec.php">[<u>更新HTML</u>]</a>&nbsp; </td>
+        <td width="10%" align="right"><a href="makehtml_spec.php" class="btn btn-secondary btn-sm">更新HTML</a>&nbsp; </td>
       </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -160,9 +160,9 @@
         {
             if($trow->att=='j') continue;
 					  if(preg_match("#".$trow->att."#", $arcRow['flag']))
-            		  echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked' />{$trow->attname}[{$trow->att}]";
+            		  echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked' /> {$trow->attname}[{$trow->att}]</label> ";
             else
-            		  echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' />{$trow->attname}[{$trow->att}]";
+            		  echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' /> {$trow->attname}[{$trow->att}]</label> ";
          }
           ?>
               </td>
@@ -179,24 +179,24 @@
               </td>
               <td width="560">
                 <input name="picname" type="text" id="picname" style="width:300px"
-              value="<?php echo $arcRow["litpic"]?>"><input type="button" name="Submit" value="浏览..."
-              style="width:70px" onClick="SelectImage('form1.picname','');">
-            <input type='checkbox' class='np' name='ddisremote' value='1'>
-            远程
-            <span class="btn btn-success fileinput-button">
-              <i class="glyphicon glyphicon-plus"></i>
-              选择图片
-              <input type="file" name="files[]" id="iptAddImages">
-            </span>
-            <button id="btnClearAll" type="button" class="btn btn-danger delete">
-              <i class="fa fa-trash-o"></i>
-              <span>清空</span>
-            </button>
+                  value="<?php echo $arcRow["litpic"]?>"> <button type="button" name="Submit" class="btn btn-secondary"
+                  onClick="SelectImage('form1.picname','');">浏览...</button>
+                <label><input type='checkbox' class='np' name='ddisremote' value='1'> 
+                远程 </label>
+                <span class="btn btn-secondary fileinput-button">
+                  <i class="glyphicon glyphicon-plus"></i>
+                  选择图片
+                  <input type="file" name="files[]" id="iptAddImages">
+                </span>
+                <button id="btnClearAll" type="button" class="btn btn-secondary delete">
+                  <i class="fa fa-trash-o"></i>
+                  <span>清空</span>
+                </button>
               </td>
               <td align="center">
                 <img id="litPic"
-              src="<?php if($arcRow["litpic"]!="") echo $arcRow["litpic"]; else echo "../static/defaultpic.gif";?>"
-              style="height: 80px">
+                  src="<?php if($arcRow["litpic"]!="") echo $arcRow["litpic"]; else echo "../static/defaultpic.gif";?>"
+                  style="height: 80px">
               </td>
             </tr>
           </table>
@@ -210,8 +210,8 @@
               <td>
                 <input name="templet" type="text" id="templet" style="width:250px"
                   value="<?php echo $addRow["templet"]?>" />
-                <input type="button" name="set3" value="浏览..." style="width:60px"
-                  onClick="SelectTemplets('form1.templet');" />
+                <button type="button" name="set3" class="btn btn-secondary btn-sm"
+                  onClick="SelectTemplets('form1.templet');">浏览...</button>
               </td>
             </tr>
           </table>
@@ -226,12 +226,13 @@
                 <input name="writer" type="text" id="writer" value="<?php echo $arcRow["writer"]?>" />
               </td>
               <td width="75">发布选项：</td>
-              <td width="421"> <input name="ishtml" type="radio" class="np" value="1"
-                  <?php if($arcRow["ismake"]!=-1) echo " checked='1'";?> />
-                生成HTML
-                <input type="radio" name="ishtml" class="np" value="0"
-                  <?php if($arcRow["ismake"]==-1) echo " checked='1'";?> />
-                仅动态浏览 </td>
+              <td width="421">
+                <label><input name="ishtml" type="radio" class="np" value="1"
+                  <?php if($arcRow["ismake"]!=-1) echo " checked='1'";?> /> 
+                生成HTML </label>
+                <label><input type="radio" name="ishtml" class="np" value="0"
+                  <?php if($arcRow["ismake"]==-1) echo " checked='1'";?> /> 
+                仅动态浏览 </label></td>
             </tr>
           </table>
         </td>
@@ -259,7 +260,7 @@
                 <input name="color" type="text" id="color" style="width:120px" value="<?php echo $arcRow["color"]?>" />
               </td>
               <td width="293">
-                <input name="modcolor" type="button" id="modcolor" value="选取" onClick="ShowColor(event,this)" />
+                <button name="modcolor" type="button" id="modcolor" value="" onClick="ShowColor(event,this)" class="btn btn-secondary btn-sm">选取</button>
               </td>
             </tr>
           </table>
@@ -280,7 +281,7 @@
 			      ?>
                 <img src='images/menusearch.gif' style='cursor:pointer;' onClick="ShowCatMap(event, this, 0, 'typeid')"
                   alt='快捷选择' title='快捷选择' />
-                </td>
+              </td>
               <td width="100" align="center">&nbsp; </td>
             </tr>
           </table>
@@ -316,11 +317,11 @@
             <tr>
               <td width="90" height="22" width="240">&nbsp;评论选项：</td>
               <td width="250">
-                <input type='radio' name='notpost' class='np' value='0'
-                  <?php if($arcRow['notpost']==0) echo " checked='1' "; ?> />允许评论
+                <label><input type='radio' name='notpost' class='np' value='0'
+                  <?php if($arcRow['notpost']==0) echo " checked='1' "; ?> /> 允许评论 </label>
                 &nbsp;
-                <input type='radio' name='notpost' class='np' value='1'
-                  <?php if($arcRow['notpost']==1) echo " checked='1' "; ?> />禁止评论
+                <label><input type='radio' name='notpost' class='np' value='1'
+                  <?php if($arcRow['notpost']==1) echo " checked='1' "; ?> /> 禁止评论 </label>
               </td>
               <td width="90">浏览次数：</td>
               <td>
@@ -442,25 +443,25 @@
               <td>节点文章列表：</td>
               <td><textarea name="arcid<?php echo $i?>" rows="3" onblur='CheckVal(<?php echo $i ?>)'
                   id="arcid<?php echo $i?>" style="width:90%"><?php echo $idlist?></textarea></td>
-              <td align="center"><input name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2"
-                  value="选择节点文章" style="width:100" onClick="SelectArcList('form1.arcid<?php echo $i?>');"></td>
+              <td align="center"><button class="btn btn-secondary btn-sm"  name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2"
+                  onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文章</button></td>
             </tr>
             <tr>
               <td>文档来源：</td>
               <td colspan="2">
-                <input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="0" class="np"
-                  <?php if($isauto==0) echo " checked";?>>
-                按文章列表
-                <input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1" class="np"
-                  <?php if($isauto==1) echo " checked";?>>
-                自动获取文档
+                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="0" class="np"
+                  <?php if($isauto==0) echo " checked";?>> 
+                按文章列表 </label>
+                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1" class="np"
+                  <?php if($isauto==1) echo " checked";?>> 
+                自动获取文档 </label>
                 &nbsp;
-                关键字：
+                <label>关键字：
                 <input name="keywords<?php echo $i?>" type="text" value="<?php echo $keywords?>"
-                  id="keywords<?php echo $i?>" value="" size="16">(逗号分开)
-                栏目ID：
+                  id="keywords<?php echo $i?>" value="" size="16">(逗号分开)</label>
+                <label>栏目ID：
                 <input name="typeid<?php echo $i?>" type="text" value="<?php echo $typeid?>" id="typeid<?php echo $i?>"
-                  value="0" size="4">
+                  value="0" size="4"></label>
               </td>
             </tr>
             <tr>
@@ -515,22 +516,22 @@
               <td>节点文章列表：</td>
               <td><textarea name="arcid<?php echo $i?>" rows="3" onblur='CheckVal(<?php echo $i ?>)'
                   id="arcid<?php echo $i?>" style="width:90%"></textarea></td>
-              <td align="center"><input name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2"
-                  value="选择节点文章" style="width:100" onClick="SelectArcList('form1.arcid<?php echo $i?>');"></td>
+              <td align="center"><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2"
+                class="btn btn-secondary btn-sm" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文章</button></td>
             </tr>
             <tr>
               <td>文档来源：</td>
               <td colspan="2">
-                <input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="0" class="np"
+                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="0" class="np"
                   checked>
-                按文章列表
-                <input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1" class="np">
-                自动获取文档
+                按文章列表</label>
+                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1" class="np">
+                自动获取文档</label>
                 &nbsp;
-                关键字：
-                <input name="keywords<?php echo $i?>" type="text" id="keywords<?php echo $i?>" value="" size="16">(空格分开)
-                栏目ID：
-                <input name="typeid<?php echo $i?>" type="text" id="typeid<?php echo $i?>" value="0" size="4">
+                <label>关键字：
+                <input name="keywords<?php echo $i?>" type="text" id="keywords<?php echo $i?>" value="" size="16">(空格分开)</label>
+                <label>栏目ID：
+                <input name="typeid<?php echo $i?>" type="text" id="_typeid<?php echo $i?>" value="0" size="4"></label>
               </td>
             </tr>
             <tr>
@@ -561,7 +562,7 @@
       </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#F9FCEF"
-      style="border:1px solid #cfcfcf;border-top:none;">
+      style="border:1px solid #cfcfcf;border-top:none;" class="mb-3">
       <tr>
         <td height="35">
           <table width="100%" border="0" cellspacing="1" cellpadding="1">
@@ -570,10 +571,8 @@
               <td width="83%">
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="115"><input name="imageField" type="image" class='np' src="images/button_ok.gif"
-                        width="60" height="22" border="0"></td>
-                    <td width="99"><img src="images/button_reset.gif" width="60" height="22" border="0"
-                        onClick="location.reload();" style="cursor:pointer"></td>
+                    <td width="115" class="py-3"><button type="submit" class="btn btn-secondary">保存</button></td>
+                    <td width="99" class="py-3"><button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button></td>
                   </tr>
                 </table>
               </td>

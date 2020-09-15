@@ -6,8 +6,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
     <title>联动枚举管理</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/base.css" rel="stylesheet" type="text/css">
     <style>
         li {
@@ -38,6 +38,9 @@
         }
     </style>
     <SCRIPT LANGUAGE="JavaScript" src="../static/js/dedeajax2.js"></SCRIPT>
+    <script language="javascript" src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap.bundle.js"></script>
+    <script language='javascript' src='js/main.js'></script>
     <SCRIPT LANGUAGE="JavaScript">
         var loadhtml = "<center><img src='../static/loadinglit.gif' style='padding:30px' /></center>";
         function updateItem(aid) {
@@ -62,7 +65,7 @@
         function AddEnum() {
             var id = GetSelType();
             if (id == 0) {
-                alert("必须选择一个类别！");
+                ShowMsg("必须选择一个类别！");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
@@ -73,7 +76,7 @@
         function EditType() {
             var id = GetSelType();
             if (id == 0) {
-                alert("必须选择一个类别！");
+                ShowMsg("必须选择一个类别！");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
@@ -84,7 +87,7 @@
         function ViewType() {
             var id = GetSelType();
             if (id == 0) {
-                alert("必须选择一个类别！");
+                ShowMsg("必须选择一个类别！");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
@@ -96,7 +99,7 @@
             if (window.confirm("你确实要删除这个分类吗？") == false) return false;
             var id = GetSelType();
             if (id == 0) {
-                alert("必须选择一个类别！");
+                ShowMsg("必须选择一个类别！");
                 return false;
             }
             location.href = 'stepselect_main.php?action=del&id=' + id;
@@ -147,17 +150,17 @@
         <center><img src='../static/loadinglit.gif' /></center>
     </div>
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf"
-        style="margin-bottom:6px" class="table maintable ">
+        style="margin-bottom:6px" class="table maintable mt-3">
         <tr>
             <td height="28" background="images/wbg.gif" colspan="6" style="padding-left:10px;">
                 <div style="float:left"><b>·联动枚举组管理</b></div>
-                <div style="float:right"><a href='stepselect_main.php?action=upallcache'>[<u>更新所有枚举缓存</u>]</a>&nbsp;
+                <div style="float:right"><a href='stepselect_main.php?action=upallcache' class="btn btn-secondary btn-sm">更新所有枚举缓存</a>&nbsp;
                 </div>
             </td>
         </tr>
         <tr>
             <td height="30" bgcolor="#ffffff" style="padding:6px;">
-                <table width="800" border="0" cellspacing="0" cellpadding="0" class="table maintable">
+                <table width="800" border="0" cellspacing="0" cellpadding="0" class="table maintable table-borderless">
                     <tr>
                         <td width="85"><strong>请选择组别：</strong></td>
                         <td width="264">
@@ -181,16 +184,16 @@
                             </select>
                         </td>
                         <td width="350">
-                            <input type="button" name="gedit" id="gedit" value="修改" class="np coolbg"
-                                onClick="EditType()" />
-                            <input type="button" name="gdel" id="gdel" value="删除" class="np coolbg"
-                                onClick="DelType()" />
-                            <input type="button" name="gview" id="gview" value="预览" class="np coolbg"
-                                onClick="ViewType()" />
+                            <button type="button" name="gedit" id="gedit" class="btn btn-secondary btn-sm"
+                                onClick="EditType()">修改</button>
+                            <button type="button" name="gdel" id="gdel" class="btn btn-secondary btn-sm"
+                                onClick="DelType()">删除</button>
+                            <button type="button" name="gview" id="gview" class="btn btn-secondary btn-sm"
+                                onClick="ViewType()">预览</button>
                         </td>
                         <td align="right">
-                            <input type="button" name="addnew" id="addnew" value="新增类别组" class="np coolbg"
-                                onClick="AddType()" />
+                            <button type="button" name="addnew" id="addnew" class="btn btn-secondary btn-sm"
+                                onClick="AddType()">新增类别组</button>
                         </td>
                     </tr>
                     <tr>
@@ -256,7 +259,7 @@ if(!empty($egroup))
                         <b>&nbsp;分类名称：</b><INPUT TYPE="text" NAME="ename" class="iptxt" style='width:350px' />
                     </div>
                     <div style='float:left;padding-left:6px'>
-                        <INPUT TYPE="submit" name='sb2' value="增加分类" class="np coolbg" />
+                        <button TYPE="submit" name='sb2' class="btn btn-secondary btn-sm">增加分类</button>
                     </div>
                     <div style='clear:both;color:#333333;line-height:24px;'>
                         &nbsp;<img src='images/help.gif' /> 如果没选择隶属分类则表示增加的是顶级分类，用半角逗号","分开可以一次增加多个分类。
@@ -265,7 +268,8 @@ if(!empty($egroup))
             </td>
         </tr>
     </table>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered">
+    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6"
+        class="table maintable table-bordered">
         <tr>
             <td height="28" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
@@ -329,8 +333,8 @@ if(!empty($egroup))
                 if(!empty($egroup))
         {
         ?>
-                    <a href='javascript:updateItem({dede:field.id/});'>[更新]</a>
-                    <a href='stepselect_main.php?action=delenum&id={dede:field.id/}'>[删除]</a>
+                    <a href='javascript:updateItem({dede:field.id/});' class="btn btn-secondary btn-sm"> <i class="fa fa-refresh" aria-hidden="true"></i> 更新</a>
+                    <a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class="btn btn-secondary btn-sm"> <i class="fa fa-trash" aria-hidden="true"></i> 删除</a>
                     <?php
          }
          else
@@ -345,9 +349,9 @@ if(!empty($egroup))
         <tr height="24">
             <td colspan="8" bgcolor="#ffffff">
                 &nbsp;
-                <a href='javascript:TogSel();' class='np coolbg'>全选/反选</a>
+                <a href='javascript:TogSel();' class='btn btn-secondary btn-sm'>全选/反选</a>
                 &nbsp;
-                <a href='javascript:DelSel();' class='np coolbg'>删除所选</a>
+                <a href='javascript:DelSel();' class='btn btn-secondary btn-sm'>删除所选</a>
             </td>
         </tr>
         <tr align="center" bgcolor="#F9FCEF" height="28">
@@ -361,7 +365,8 @@ if(!empty($egroup))
 else
 {
 ?>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered">
+    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6"
+        class="table maintable table-bordered">
         <tr>
             <td height="28" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
@@ -403,8 +408,8 @@ else
             <td> {dede:field.issystem function="@me==1 ? '是' : '否'" /} </td>
             <td>{dede:field.egroup /}</td>
             <td>
-                <a href='stepselect_main.php?action=upallcache&egroup={dede:field.egroup /}'>[更新缓存]</a>
-                <a href='stepselect_main.php?egroup={dede:field.egroup /}'>[查看子分类]</a>
+                <a href='stepselect_main.php?action=upallcache&egroup={dede:field.egroup /}' class="btn btn-secondary btn-sm"> <i class="fa fa-refresh" aria-hidden="true"></i> 更新缓存</a>
+                <a href='stepselect_main.php?egroup={dede:field.egroup /}' class="btn btn-secondary btn-sm"> <i class="fa fa-list-ul" aria-hidden="true"></i> 查看子分类</a>
             </td>
         </tr>
         {/dede:datalist}

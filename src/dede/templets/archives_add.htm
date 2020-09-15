@@ -26,11 +26,11 @@
   <script language="javascript">
     function checkSubmit() {
       if (document.form1.title.value == "") {
-        alert("<?php echo $cInfos['titlename']; ?>不能为空！");
+        ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空！");
         return false;
       }
       if (document.form1.typeid.value == 0) {
-        alert("请选择档案的主栏目！");
+        ShowMsg("请选择档案的主栏目！");
         return false;
       }
     }
@@ -48,12 +48,12 @@
 </head>
 
 <body topmargin="8">
-  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
       <td width="65%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
           href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>文档列表</u></a>
         &gt;&gt; 发布文档</td>
-      <td width="30%" align='right'><?php echo $backurl; ?><a href="catalog_main.php">[<u>栏目管理</u>]</a>&nbsp;</td>
+      <td width="30%" align='right'><?php echo $backurl; ?><a href="catalog_main.php" class="btn btn-secondary btn-sm">栏目管理</a>&nbsp;</td>
     </tr>
   </table>
 
@@ -122,9 +122,9 @@
             	while($trow = $dsql->GetObject())
             	{
             		if($trow->att=='j')
-            		  echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'>{$trow->attname}[{$trow->att}]";
+            		  echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label>";
             		else
-            		  echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'>{$trow->attname}[{$trow->att}]";
+            		  echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
             	}
             	?>
               </td>
@@ -169,15 +169,15 @@
                   <tr>
                     <td height="30">
                       <input name="picname" type="text" id="picname" style="width:240px" />
-                      <input type="button" name="Submit2" value="站内选择" style="margin-left:8px;"
-                        onClick="SelectImage('form1.picname','small');" class='np coolbg' />
-                      <input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' />远程
-                      <span class="btn btn-success fileinput-button">
+                      <button type="button" name="Submit2" class="btn btn-secondary"
+                        onClick="SelectImage('form1.picname','small');" class='np coolbg'>站内选择</button>
+                      <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' /> 远程 </label>
+                      <span class="btn btn-secondary fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
                         选择图片
                         <input type="file" name="files[]" id="iptAddImages">
                       </span>
-                      <button id="btnClearAll" type="button" class="btn btn-danger delete">
+                      <button id="btnClearAll" type="button" class="btn btn-secondary delete">
                         <i class="fa fa-trash-o"></i>
                         <span>清空</span>
                       </button>
@@ -221,7 +221,7 @@
                 <?php
 			if($cfg_need_typeid2=='Y')
 			{
-				echo "<a href='javascript:AddTypeid2();'>【<u>选择副栏目</u>】</a>";
+				echo "<a href='javascript:AddTypeid2();' class='btn btn-secondary btn-sm'>选择副栏目</a>";
 			}
 			?>
               </td>
@@ -254,18 +254,18 @@
             <tr>
               <td width="90">&nbsp;附加选项：</td>
               <td>
-                <input name="remote" type="checkbox" class="np" id="remote" value="1"
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1"
                   <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?> />
-                下载远程图片和资源
-                <input name="dellink" type="checkbox" class="np" id="dellink" value="1"
+                下载远程图片和资源</label>
+                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1"
                   <?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?> />
-                删除非站内链接
-                <input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"
+                删除非站内链接</label>
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"
                   <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?> />
-                提取第一个图片为缩略图
-                <input type='checkbox' name='needwatermark' value='1' class='np'
+                提取第一个图片为缩略图</label>
+                <label><input type='checkbox' name='needwatermark' value='1' class='np'
                   <?php if($photo_markup=='1') echo ' checked="1" '; ?> />
-                图片是否加水印
+                图片是否加水印</label>
               </td>
             </tr>
           </table>
@@ -281,11 +281,11 @@
             <tr>
               <td width="90" height="22" width="240">&nbsp;评论选项：</td>
               <td width="250">
-                <input type='radio' name='notpost' class='np' value='0'
-                  <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> />允许评论
+                <label><input type='radio' name='notpost' class='np' value='0'
+                  <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> /> 允许评论</label>
                 &nbsp;
-                <input type='radio' name='notpost' class='np' value='1'
-                  <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> />禁止评论
+                <label><input type='radio' name='notpost' class='np' value='1'
+                  <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> /> 禁止评论</label>
               </td>
               <td width="90">浏览次数：</td>
               <td>
@@ -303,10 +303,10 @@
             <tr>
               <td width="90">&nbsp;文档来源：</td>
               <td width="240"><input name="source" type="text" id="source" style="width:160px" value="" size="16">
-                <input name="selsource" type="button" id="selsource" value="选择"></td>
+                <button name="selsource" type="button" id="selsource" class="btn btn-secondary btn-sm">选择</button></td>
               <td width="90">作　者：</td>
               <td> <input name="writer" type="text" id="writer" style="width:120px" value="">
-                <input name="selwriter" type="button" id="selwriter" value="选择"> </td>
+                <button name="selwriter" type="button" id="selwriter" class="btn btn-secondary btn-sm">选择</button> </td>
             </tr>
           </table>
           <script language='javascript'>InitPage();</script>
@@ -328,7 +328,7 @@
               <td width="90">标题颜色：</td>
               <td>
                 <input name="color" type="text" id="color" style="width:120px">
-                <input name="modcolor" type="button" id="modcolor" value="选取" onClick="ShowColor(event,this)"> </td>
+                <button name="modcolor" type="button" id="modcolor" onClick="ShowColor(event,this)" class="btn btn-secondary btn-sm">选取</button> </td>
             </tr>
           </table>
         </td>
@@ -351,10 +351,10 @@
                 </select> </td>
               <td width="90">发布选项：</td>
               <td>
-                <input name="ishtml" type="radio" class="np" value="1" checked>
-                生成HTML
-                <input type="radio" name="ishtml" class="np" value="0">
-                仅动态浏览 </td>
+                <label><input name="ishtml" type="radio" class="np" value="1" checked> 
+                生成HTML</label>
+                <label><input type="radio" name="ishtml" class="np" value="0"> 
+                仅动态浏览</label> </td>
             </tr>
           </table>
         </td>
@@ -381,11 +381,12 @@
             <tr>
               <td width="90">&nbsp;关键字：</td>
               <td width="448"><input type='text' name="keywords" id="keywords" style="width:80%" value="" /></td>
-              <td width="262"><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np"
+              <td width="262"><label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np"
                   id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>
-                自动获取，手动填写用","分开<br />
-                <input type="button" name="Submit" value="浏览..." style="width:56;height:20"
-                  onClick="SelectKeywords('form1.keywords');"></td>
+                自动获取，手动填写用","分开</label><br />
+                <button type="button" name="Submit" value=""  class="btn btn-secondary btn-sm"
+                  onClick="SelectKeywords('form1.keywords');">浏览...</button>
+                </td>
             </tr>
           </table>
         </td>
@@ -405,7 +406,7 @@
         <td height="24" colspan="4">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义文件名：</td>
+              <td width="120">&nbsp;自定义文件名：</td>
               <td width="449"><input type="text" name="filename" id="filename" />（不包括后缀名如.html等）</td>
               <td width="261">&nbsp;</td>
             </tr>
@@ -425,12 +426,10 @@
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="115">
-                      <input name="imageField" type="image" src="images/button_ok.gif" width="60" height="22" class="np"
-                        border="0" style="cursor:pointer; ">
+                      <button type="submit" class="btn btn-secondary">保存</button>
                     </td>
                     <td width="99">
-                      <img src="images/button_reset.gif" width="60" height="22" border="0" onClick="location.reload();"
-                        style="cursor:pointer; ">
+                      <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
                     </td>
                   </tr>
                 </table>

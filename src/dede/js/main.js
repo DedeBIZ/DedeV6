@@ -47,24 +47,24 @@ function ShowColor(e, o) {
 function ShowHide(objname) {
 	var obj = $Obj(objname);
 	if (obj.style.display != "none") obj.style.display = "none";
-	else obj.style.display = "block";
+	else obj.style.display = "inline-block";
 }
 
 function ShowHideT(objname) {
 	var obj = $Obj(objname);
 	if (obj.style.display != "none") obj.style.display = "none";
-	else obj.style.display = ($Nav() == "IE" ? "block" : "table");
+	else obj.style.display = ($Nav() == "IE" ? "inline-block" : "table");
 }
 
 function ShowObj(objname) {
 	var obj = $Obj(objname);
 	if (obj == null) return false;
-	obj.style.display = ($Nav() == "IE" ? "block" : "table");
+	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table");
 }
 
 function ShowObjRow(objname) {
 	var obj = $Obj(objname);
-	obj.style.display = ($Nav() == "IE" ? "block" : "table-row");
+	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
 }
 
 function AddTypeid2() {
@@ -244,7 +244,7 @@ function ChangeFullDiv(showhide, screenheigt) {
 			newobj.id = 'fullpagediv';
 			newobj.style.position = 'absolute';
 			newobj.className = 'fullpagediv';
-			newobj.style.height = screenheigt + 'px';
+			newobj.style.height = document.body.clientHeight + 50 + 'px';
 			document.body.appendChild(newobj);
 		}
 		else {
@@ -354,6 +354,7 @@ function CkRemote() {
 
 //载入指定宽高的AJAX窗体
 function LoadQuickDiv(e, surl, oname, w, h) {
+	console.log(e);
 	if ($Nav() == 'IE') {
 		if (window.event) {
 			var posLeft = window.event.clientX - 20;
@@ -381,11 +382,12 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 		newobj.style.position = 'absolute';
 		newobj.className = 'pubdlg';
 		newobj.style.width = w;
-		newobj.style.height = h;
+		newobj.style.height = h+30;
 		document.body.appendChild(newobj);
 	}
 	if (posTop > 500) posTop = 500;
 	if (posLeft < 50) posLeft = 50;
+	newobj.style.minWidth = "450px";
 	newobj.style.top = posTop + "px";
 	newobj.style.left = posLeft + "px";
 	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="images/loadinglit.gif" /> Loading...</div>';
@@ -621,7 +623,7 @@ args = {
 // 这里用到了一个展开语法
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
-	title = "DedeCMS";
+	title = "DedeCMS信息提示";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
@@ -792,6 +794,7 @@ $(document).ready(function () {
 			"timePicker24Hour": true,
 			"timePickerSeconds": true,
 			"showCustomRangeLabel": false,
+			"drops": "up",
 			ranges: {
 				'今日': [moment(), moment()],
 				'昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -810,6 +813,14 @@ $(document).ready(function () {
 		}, function (start) {
 			$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
 		});
+		$('.datepicker').on('show.daterangepicker', function(ev, picker) {
+			if (picker.element.offset().top - $(window).scrollTop() + picker.container.outerHeight() > $(window).height()) {
+				picker.drops = 'up';
+			} else {
+				picker.drops = 'down';
+			}
+			picker.move();
+		})
 	}
 
 

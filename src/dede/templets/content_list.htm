@@ -91,13 +91,9 @@
 				<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
 				<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 				<td>
-					<img src='images/trun.gif' title="编辑属性" alt="编辑属性"
-						onClick="QuickEdit({dede:field.id/}, event, this);" style='cursor:pointer' border='0' width='16'
-						height='16' />
-					<img src='images/gtk-edit.png' title="编辑" alt="编辑" onClick="editArc({dede:field.id/});"
-						style='cursor:pointer' border='0' width='16' height='16' />
-					<img src='images/part-list.gif' title="预览" alt="预览" onClick="viewArc({dede:field.id/});"
-						style='cursor:pointer' border='0' width='16' height='16' />
+					<a href="javascript:;" title="编辑属性" class="btn btn-secondary btn-sm" onClick="QuickEdit('{dede:field.id/}', event, this);"> <i class="fa fa-cogs" aria-hidden="true"></i></a>
+					<a href="javascript:;" title="编辑" class="btn btn-secondary btn-sm" onClick="editArc({dede:field.id/});"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+					<a href="javascript:;" title="预览" class="btn btn-secondary btn-sm" onClick="viewArc({dede:field.id/});"> <i class="fa fa-globe" aria-hidden="true"></i></a>
 				</td>
 			</tr>
 			{/dede:datalist}

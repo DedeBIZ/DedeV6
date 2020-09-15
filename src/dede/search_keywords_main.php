@@ -5,6 +5,7 @@
  * @version        $Id: search_keywords_main.php 1 15:46 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -74,7 +75,7 @@ function GetKeywordList($dsql,$pageno,$pagesize,$orderby='aid')
       <td width='5%'>选择</td>
       <td width='6%' height='23'><a href='#' onclick=\"ReloadPage('aid')\"><u>ID</u></a></td>
       <td width='20%'>关键字</td>
-      <td width='35%'>分词结果</td>
+      <td width='30%'>分词结果</td>
       <td width='6%'><a href='#' onclick=\"ReloadPage('count')\"><u>频率</u></a></td>
       <td width='6%'><a href='#' onclick=\"ReloadPage('result')\"><u>结果</u></a></td>
       <td width='15%'><a href='#' onclick=\"ReloadPage('lasttime')\"><u>最后搜索时间</u></a></td>
@@ -98,8 +99,8 @@ function GetKeywordList($dsql,$pageno,$pagesize,$orderby='aid')
       <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'><u>{$row['result']}</u></a></td>
       <td>".MyDate("Y-m-d H:i:s",$row['lasttime'])."</td>
       <td>
-      <a href='#' onclick='UpdateNote({$row['aid']})'>更新</a> |
-      <a href='#' onclick='DelNote({$row['aid']})'>删除</a>
+      <a href='#' onclick='UpdateNote({$row['aid']})' class='btn btn-secondary btn-sm'>更新</a> |
+      <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-secondary btn-sm'>删除</a>
       </td>
     </tr>
     ";
@@ -107,9 +108,9 @@ function GetKeywordList($dsql,$pageno,$pagesize,$orderby='aid')
     }
     echo "  <tr align='left' bgcolor='#ffffff' height='30'>
             <td colspan='8' style='padding-left:10px;'>
-            <a href='javascript:selAll()' class='coolbg np'>反选</a>
-            <a href='javascript:noselAll()' class='coolbg np'>取消</a>
-            <a href='javascript:delall()' class='coolbg np'>删除</a>
+            <a href='javascript:selAll()' class='btn btn-secondary btn-sm'>反选</a>
+            <a href='javascript:noselAll()' class='btn btn-secondary btn-sm'>取消</a>
+            <a href='javascript:delall()' class='btn btn-secondary btn-sm'>删除</a>
            </td>
            </tr>\r\n";
     echo "</table></form>\r\n";

@@ -5,6 +5,7 @@
  * @version        $Id: spec_add.php 1 16:22 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -230,11 +231,11 @@ else if($dopost=='save')
     //返回成功信息
     $msg = "
     　　请选择你的后续操作：
-    <a href='spec_add.php?cid=$typeid'><u>创建新专题</u></a>
+    <a href='spec_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>创建新专题</a>
     &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank'><u>查看专题</u></a>
+    <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看专题</a>
     &nbsp;&nbsp;
-    <a href='content_s_list.php'><u>已发布专题管理</u></a>
+    <a href='content_s_list.php' class='btn btn-secondary btn-sm'>已发布专题管理</a>
     ";
     $wintitle = "成功创建专题！";
     $wecome_info = "文章管理::发布专题";

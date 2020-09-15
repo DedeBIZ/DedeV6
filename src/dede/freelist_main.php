@@ -5,6 +5,7 @@
  * @version        $Id: freelist_main.php 1 8:48 2010年7月13日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -40,7 +41,7 @@ if($dopost=='getlist')
 else if($dopost=='del')
 {
     $aid = preg_replace("#[^0-9]#", "", $aid);
-    $dsql->ExecuteNoneQuery("DELETE FROM #@__freelist WHERE aid='$aid'; ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__freelist` WHERE aid='$aid'; ");
     AjaxHead();
     GetTagList($dsql,$pageno,$pagesize,$orderby);
     exit();
@@ -49,7 +50,7 @@ else if($dopost=='del')
 //第一次进入这个页面
 if($dopost=='')
 {
-    $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM #@__freelist $addsql ");
+    $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__freelist` $addsql ");
     $totalRow = $row['dd'];
     include(DEDEADMIN."/templets/freelist_main.htm");
 }
@@ -88,9 +89,9 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
         <td> {$row['templet']} </td>
         <td> {$row['click']} </td>
         <td>".MyDate("y-m-d",$row['edtime'])."</td>
-        <td> <a href='#' onclick='EditNote({$row['aid']})'>更改</a> |
-        <a href='#' onclick='CreateNote({$row['aid']})'>更新</a> |
-         <a href='#' onclick='DelNote({$row['aid']})'>删除</a>
+        <td> <a href='#' onclick='EditNote({$row['aid']})' class='btn btn-secondary btn-sm'> <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> 更改</a> |
+        <a href='#' onclick='CreateNote({$row['aid']})' class='btn btn-secondary btn-sm'> <i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> 更新</a> |
+         <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-secondary btn-sm'> <i class=\"fa fa-trash\" aria-hidden=\"true\"></i> 删除</a>
     </td>
   </tr>";
         echo $line;

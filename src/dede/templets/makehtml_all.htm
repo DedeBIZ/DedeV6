@@ -3,7 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>一键更新</title>
-<!-- <link rel="stylesheet" href="../static/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet" type="text/css" />
 <link href="../static/css/daterangepicker.css" rel="stylesheet">
 <script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
@@ -60,7 +61,7 @@ function SelUp(){
 </script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-<table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center">
+<table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
   <form name="form1" action="makehtml_all.php" target="stafrm" method="post">
   <input type="hidden" name="action" value="make" />
    <tr>
@@ -71,12 +72,12 @@ function SelUp(){
     <tr>
       <td width="30%" height="30"  bgcolor="#FFFFFF">&nbsp;&nbsp;更新选项：</td>
       <td valign="top" bgcolor="#FFFFFF">
-	   <input name="uptype" id="uptype1" type="radio" class="np" value="time" onClick="SelUp()" checked="checked" />
-	   指定时间的所有更新
-	   <input name="uptype" id="uptype2" type="radio" class="np" onClick="SelUp()" value="id" />
-	   指定ID文档的所有更新
-	   <input name="uptype" id="uptype3" type="radio" class="np" onClick="SelUp()" value="mkall" />
-	   更新所有
+	   <label><input name="uptype" id="uptype1" type="radio" class="btn btn-secondary btn-sm" value="time" onClick="SelUp()" checked="checked" />
+	   指定时间的所有更新</label>
+	   <label><input name="uptype" id="uptype2" type="radio" class="btn btn-secondary btn-sm" onClick="SelUp()" value="id" />
+	   指定ID文档的所有更新</label>
+	   <label><input name="uptype" id="uptype3" type="radio" class="btn btn-secondary btn-sm" onClick="SelUp()" value="mkall" />
+	   更新所有</label>
 	   </td>
     </tr>
     <tr id='seltime'>
@@ -93,13 +94,13 @@ function SelUp(){
     </tr>
 	<tr>
       <td height="31" colspan="2" bgcolor="#ffffff" align="center" style="padding-top:6px">
-       <input type="submit" name="Submit" value="开始更新" class="coolbg" />
+       <button type="submit" name="Submit" class="btn btn-secondary">开始更新</button>
       </td>
     </tr>
   </form>
   <tr bgcolor="#F9FCEF">
     <td height="20" colspan="2">
-    <table width="100%">
+    <table width="100%" class="table table-borderless">
      <tr>
       <td width="74%">进行状态： </td>
        <td width="26%" align="right">

@@ -1,4 +1,14 @@
 <?php
+/**
+ * 文档发布
+ *
+ * @version        $Id: article_add.php 2020年9月14日 tianya $
+ * @package        DedeCMS.Administrator
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        http://help.dedecms.com/usersguide/license.html
+ * @link           http://www.dedecms.com
+ */
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('a_New,a_AccNew');
 require_once(DEDEINC.'/customfields.func.php');
@@ -241,7 +251,7 @@ else if($dopost=='save')
     //生成HTML
     InsertTags($tags,$arcID);
     if($cfg_remote_site=='Y' && $isremote=="1")
-    {    
+    {
         if($serviterm!=""){
             list($servurl,$servuser,$servpwd) = explode(',',$serviterm);
             $config=array( 'hostname' => $servurl, 'username' => $servuser, 'password' => $servpwd,'debug' => 'TRUE');
@@ -278,13 +288,13 @@ else if($dopost=='save')
 
     //返回成功信息
     $msg = "    　　请选择你的后续操作：
-    <a href='article_add.php?cid=$typeid'><u>继续发布文章</u></a>
+    <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布文章</a>
     &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank'><u>查看文章</u></a>
+    <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=".$arcID."&dopost=editArchives'><u>更改文章</u></a>
+    <a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-secondary btn-sm'>更改文章</a>
     &nbsp;&nbsp;
-    <a href='catalog_do.php?cid=$typeid&dopost=listArchives'><u>已发布文章管理</u></a>
+    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-secondary btn-sm'>已发布文章管理</a>
     &nbsp;&nbsp;
     $backurl
   ";

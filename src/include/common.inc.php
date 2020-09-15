@@ -10,7 +10,7 @@
 
 
 // 生产环境使用production
-define('DEDE_ENVIRONMENT', 'production');
+define('DEDE_ENVIRONMENT', 'dev');
 
 if ( DEDE_ENVIRONMENT == 'production' )
 {
@@ -31,7 +31,7 @@ define('DEDEAPPTPL', './templates');
 
 define('DEBUG_LEVEL', FALSE);
 
-if (version_compare(PHP_VERSION, '5.3.0', '<'))
+if (version_compare(PHP_VERSION, '5.3.0', '<') && function_exists("get_magic_quotes_gpc"))
 {
     set_magic_quotes_runtime(0);
 }
@@ -64,7 +64,7 @@ if(function_exists('iconv_substr')) $cfg_is_iconv = TRUE;
 
 function _RunMagicQuotes(&$svar)
 {
-    if(!@get_magic_quotes_gpc())
+    if(function_exists("get_magic_quotes_gpc") && !@get_magic_quotes_gpc())
     {
         if( is_array($svar) )
         {

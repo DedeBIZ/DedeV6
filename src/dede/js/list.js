@@ -69,7 +69,7 @@ function delArc(aid){
 
 function QuickEdit(aid, e, obj)
 {
-	LoadQuickDiv(e, 'archives_do.php?dopost=quickEdit&aid='+aid+'&rnd='+Math.random(), 'quickEdit', '450px', '300px');
+	LoadQuickDiv(e, 'archives_do.php?dopost=quickEdit&aid='+aid+'&rnd='+Math.random(), 'quickEdit', 'auto', '300px');
 	ChangeFullDiv('show');
 }
 //上下文菜单

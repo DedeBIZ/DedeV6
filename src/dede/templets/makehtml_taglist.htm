@@ -3,33 +3,35 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>更新TAG HTML</title>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center" class="table maintable table-bordered mt-3">
     <form name="form1" action="makehtml_tag_action_list.php" method="get" target='stafrm'>
       <tr>
         <td height="28" colspan="2" background='images/tbg.gif'>
-          <table width="98%" border="0" cellpadding="0" cellspacing="0">
+          <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18"><strong>更新TAG HTML</strong> </td>
+              <td width="30%" height="18"><strong>更新Tag HTML</strong> </td>
               <td width="70%" align="right">
-                <a href="tags_main.php" class="coolbg np">TAG标签管理</a>
+                <a href="tags_main.php" class="btn btn-secondary btn-sm">Tag标签管理</a>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td width="300" valign="top" bgcolor="#FFFFFF">选择TAG：</td>
+        <td width="300" valign="top" bgcolor="#FFFFFF">选择Tag：</td>
         <td width="377" valign="top" bgcolor="#FFFFFF">
           <?php
        $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); // 取一个平均
        $sql="select * from #@__tagindex where total > {$dd['tt']} order by tag asc"; 
        $dsql->Execute('al',$sql);
      echo "<select name='tagid' style='width:300px'>\r\n";
-      if($tid == 0) echo "<option value='0' selected='1'>更新所有TAG...</option>\r\n";
+      if($tid == 0) echo "<option value='0' selected='1'>更新所有Tag...</option>\r\n";
 
        while($row=$dsql->GetObject('al')){     
         if($tid > 0 && $tid == $row->id) echo "<option value='".$row->id."' selected='1'>".$row->tag."</option>";
@@ -57,15 +59,15 @@
       </tr>
       <tr>
         <td height="20" colspan="2" bgcolor="#FAFAF1" align="center">
-          
-          <input name="b112" type="button" class="coolbg np" value="生成TAG HTML"
-            onClick="document.form1.action='makehtml_taglist_action.php';document.form1.submit();" style="width:120px">
+
+          <button name="b112" type="button" class="btn btn-secondary btn-sm"
+            onClick="document.form1.action='makehtml_taglist_action.php';document.form1.submit();">生成Tag HTML</button>
         </td>
       </tr>
     </form>
     <tr bgcolor="#F9FCEF">
       <td height="20" colspan="2">
-        <table width="100%">
+        <table width="100%" class="table table-borderless">
           <tr>
             <td width="74%">进行状态： </td>
             <td width="26%" align="right">

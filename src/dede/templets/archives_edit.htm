@@ -24,11 +24,11 @@
   <link href="css/base.css" rel="stylesheet" type="text/css">
   <script src="../static/js/jquery.js"></script>
   <script language="javascript" src="../static/js/dedeajax2.js"></script>
+  <script src="../static/js/bootstrap.bundle.js"></script>
   <script language="javascript" src="js/main.js"></script>
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
   <script type="text/javascript" src="../static/js/moment.min.js"></script>
   <script type="text/javascript" src="../static/js/daterangepicker.js"></script>
-  <script src="../static/js/bootstrap.bundle.js"></script>
   <link rel="stylesheet" href="../static/css/jquery.fileupload.css">
   <link href="../static/css/cropper.min.css" rel="stylesheet">
   <script src="../static/js/cropper.min.js"></script>
@@ -417,11 +417,9 @@ if($cfg_need_typeid2=='Y') {
               <td width="83%">
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="115"><input name="imageField" type="image" src="images/button_ok.gif" width="60"
-                        height="22" class="np" border="0" style="cursor:pointer"></td>
+                    <td width="115"><button type="submit" class="btn btn-secondary">保存</button></td>
                     <td width="99">
-                      <img src="images/button_reset.gif" width="60" height="22" border="0" onClick="location.reload();"
-                        style="cursor:pointer">
+                      <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
                     </td>
                   </tr>
                 </table>

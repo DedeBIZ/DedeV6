@@ -5,6 +5,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 	<title>评论管理</title>
+	<script language="javascript" src="../static/js/jquery.js"></script>
+	<script src="../static/js/bootstrap.bundle.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 	<script language='javascript'>
 		//获得选中文件的文件名
 		function getCheckboxItem() {
@@ -41,22 +44,22 @@
 		}
 		function delFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") alert("你没选中任何内容！");
+			if (qstr == "") ShowMsg("你没选中任何内容！");
 			else if (window.confirm('你确定要删除这些评论吗?')) location.href = "feedback_main.php?job=del&fid=" + qstr;
 		}
 		function delFeedbackIP() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") alert("你没选中任何内容！");
+			if (qstr == "") ShowMsg("你没选中任何内容！");
 			else if (window.confirm('你确定要删除这些评论吗?')) location.href = "feedback_main.php?job=delall&fid=" + qstr;
 		}
 		function checkFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") alert("您没选中任何内容！");
+			if (qstr == "") ShowMsg("您没选中任何内容！");
 			else location.href = "feedback_main.php?job=check&fid=" + qstr;
 		}
 		function editFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") alert("您没选中任何内容！");
+			if (qstr == "") ShowMsg("您没选中任何内容！");
 			else location.href = "feedback_edit.php?job=edit&fid=" + qstr;
 		}
 	</script>
@@ -66,7 +69,8 @@
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-	<table width="98%" border="0" cellpadding="3" align="center" cellspacing="1" bgcolor="#D6D6D6" class="table table-bordered maintable mt-3">
+	<table width="98%" border="0" cellpadding="3" align="center" cellspacing="1" bgcolor="#D6D6D6"
+		class="table table-bordered maintable mt-3">
 		<tr>
 			<td height="28" background='images/tbg.gif' style="padding-left:10px;">
 				<div style="float:left;">
@@ -88,11 +92,12 @@
 		<form name='feedback'>
 			<tr>
 				<td height="215" bgcolor="#FFFFFF" valign="top">
-					<table width='100%' border='0' cellpadding='0' cellspacing='0'  class="table table-borderless">
+					<table width='100%' border='0' cellpadding='0' cellspacing='0' class="table table-borderless">
 						{dede:datalist}
 						<tr height='25'>
 							<td>
-								<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#EEF7D2" class="table table-borderless">
+								<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#EEF7D2"
+									class="table table-borderless">
 									<tr bgcolor="#F4FAE4">
 										<td width="9%">
 											&nbsp;选择 <input name="fid" type="checkbox" class="np" id="fid"
@@ -105,7 +110,10 @@
 											文档：<a href='feedback_main.php?aid={dede:field.aid/}'><u>{dede:field.arctitle
 													function="RemoveXSS(@me)"/}</u></a> (<a
 												href="{dede:global.cfg_phpurl /}/view.php?aid={dede:field.aid/}"
-												target="_blank"><u>浏览</u></a>) <?php if($fields['replycount'] > 0) { ?><a href='feedback_main.php?fid={dede:field.id/}'>（{dede:field.replycount/}条回复）</a> <?php } ?>
+												target="_blank"><u>浏览</u></a>)
+											<?php if($fields['replycount'] > 0) { ?><a
+												href='feedback_main.php?fid={dede:field.id/}'>（{dede:field.replycount/}条回复）</a>
+											<?php } ?>
 										</td>
 										<td width="18%" align="center">
 											IP地址：<a
@@ -115,7 +123,9 @@
 											时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}
 										</td>
 										<td width="10%" align="center">
-											<a href='feedback_edit.php?id={dede:field.id/}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
+											<a class="btn btn-secondary btn-sm"
+												href='feedback_edit.php?id={dede:field.id/}'><i
+													class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
 										</td>
 									</tr>
 									<tr align="center" bgcolor="#FFFFFF">
@@ -152,8 +162,8 @@
 												class="btn btn-secondary btn-sm">反选</button>
 										</td>
 										<td align="right">
-											<button type='button' name='db'
-												onClick="delFeedbackIP()" class="btn btn-secondary btn-sm">删除相同IP的所有评论</button>
+											<button type='button' name='db' onClick="delFeedbackIP()"
+												class="btn btn-secondary btn-sm">删除相同IP的所有评论</button>
 											<button type='button' name='db' onClick="delFeedback()"
 												class="btn btn-secondary btn-sm">删除评论</button>
 											<button type='button' name='db2' onClick="checkFeedback()"

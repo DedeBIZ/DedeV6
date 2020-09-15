@@ -54,11 +54,6 @@
     img {
       vertical-align: baseline;
     }
-
-    input,
-    select {
-      height: auto !important;
-    }
   </style>
 </head>
 
@@ -72,12 +67,12 @@
     <input name="maxwidth" type="hidden" id="maxwidth" size="10" value="<?php echo $cfg_album_width; ?>" />
     <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
     <input type="hidden" id="albums" name="albums" value="">
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
         <td width="65%" height="30"><img height=14 src="images/book1.gif" width="20" />&nbsp;<a
             href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>图集列表</u></a>
           &gt;&gt; 发布新图集</td>
-        <td width="30%" align='right'><?php echo $backurl; ?><a href="catalog_main.php">[<u>栏目管理</u>]</a>&nbsp;</td>
+        <td width="30%" align='right'><?php echo $backurl; ?><a class="btn btn-secondary btn-sm" href="catalog_main.php">栏目管理</a>&nbsp;</td>
       </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -131,9 +126,9 @@
           while($trow = $dsql->GetObject())
           {
           	if($trow->att=='j')
-          	echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'>{$trow->attname}[{$trow->att}]";
+          	echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label> ";
           	else
-          	echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'>{$trow->attname}[{$trow->att}]";
+          	echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
           }
             	?>
               </td>
@@ -178,21 +173,20 @@
                   <tr>
                     <td height="30">
                       <input name="picname" type="text" id="picname" style="width:240px" />
-                      <input type="button" name="Submit2" value="站内选择" style="margin-left:8px;"
-                        onClick="SelectImage('form1.picname','small');" class='np coolbg' />
-                      <input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' />远程
-                      <span class="btn btn-success fileinput-button">
+                      <button type="button"
+                        onClick="SelectImage('form1.picname','small');" class='btn btn-secondary btn-sm'>站内选择</button>
+                      <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' /> 远程</label>
+                      <span class="btn btn-secondary btn-sm fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
                         选择图片
                         <input type="file" name="files[]" id="iptAddImages">
                       </span>
-                      <button id="btnClearAll" type="button" class="btn btn-danger delete">
+                      <button id="btnClearAll" type="button" class="btn btn-sm btn-secondary delete">
                         <i class="fa fa-trash-o"></i>
                         <span>清空</span>
                       </button>
                       <br />
-                      <input type='checkbox' class='np' name='ddisfirst' value='1' />使用图集的第一幅图
-
+                      <label><input type='checkbox' class='np' name='ddisfirst' value='1' /> 使用图集的第一幅图</label>
                     </td>
                   </tr>
                 </table>
@@ -224,7 +218,7 @@
                 <?php
 			if($cfg_need_typeid2=='Y')
 			{
-				echo "<a href='javascript:AddTypeid2();'>【<u>选择副栏目</u>】</a>";
+				echo "<a href='javascript:AddTypeid2();' class='btn btn-secondary btn-sm'>选择副栏目</a>";
 			}
 			?>
       </td>
@@ -317,11 +311,11 @@
               <td width="90">&nbsp;<b>上传方式：</b></td>
               <td>
                 <input name="isrm" class="np" type="hidden" id="isrm" value="1" />
-                <input name="byhand" class="np" type="checkbox" id="byhand" value="1" disabled="ture" checked />
-                手工上传
-                <input name="formzip" class="np" type="checkbox" id="formzip" value="1"
+                <label><input name="byhand" class="np" type="checkbox" id="byhand" value="1" disabled="ture" checked />
+                手工上传</label>
+                <label><input name="formzip" class="np" type="checkbox" id="formzip" value="1"
                   onClick="showZipField(this,'zipff','htmlfield');" />
-                从ZIP压缩包中解压图片
+                从ZIP压缩包中解压图片</label>
               </td>
             </tr>
           </table>
@@ -333,8 +327,8 @@
             <tr>
               <td width="90">&nbsp;压缩包文件：</td>
               <td><input type='text' name='zipfile' id='zipfile' style='width:300px'>
-                <input name='addon_bt' type='button' class='inputbut' value='浏览...'
-                  onClick="SelectSoft('form1.zipfile')">
+                <button name='addon_bt' type='button' 
+                  onClick="SelectSoft('form1.zipfile')" class="btn btn-secondary btn-sm">浏览...</button>
                 <input name="delzip" type="checkbox" id="delzip" value="1" checked="checked" />
                 处理后删除压缩文件 </td>
             </tr>
@@ -366,7 +360,7 @@
             <tr>
               <td width="80" height="40">&nbsp;<b>手工上传：</b></td>
               <td>
-                <span class="btn btn-success fileinput-button">
+                <span class="btn btn-secondary btn-sm fileinput-button">
                   <i class="glyphicon glyphicon-plus"></i>
                   选择本地图片（支持多选）
                   <input type="file" name="files[]" id="iptAlbumImages" multiple>
@@ -408,11 +402,11 @@
             <tr>
               <td width="90">&nbsp;图集来源：</td>
               <td width="240"><input name="source" type="text" id="source" style="width:160px" value="" size="16">
-                <input name="selsource" type="button" id="selsource" value="选择"></td>
+                <button name="selsource" type="button" id="selsource" class="btn btn-secondary btn-sm">选择</button></td>
               <td width="90">作　者：</td>
               <td>
                 <input name="writer" type="text" id="writer" style="width:120px" value="">
-                <input name="selwriter" type="button" id="selwriter" value="选择">
+                <button name="selwriter" type="button" id="selwriter" class="btn btn-secondary btn-sm">选择</button>
               </td>
             </tr>
           </table>
@@ -424,11 +418,11 @@
             <tr>
               <td width="90" height="22" width="240">&nbsp;评论选项：</td>
               <td width="240">
-                <input type='radio' name='notpost' class='np' value='0'
-                  <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> />允许评论
+                <label><input type='radio' name='notpost' class='np' value='0'
+                  <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> /> 允许评论</label>
                 &nbsp;
-                <input type='radio' name='notpost' class='np' value='1'
-                  <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> />禁止评论
+                <label><input type='radio' name='notpost' class='np' value='1'
+                  <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> /> 禁止评论</label>
               </td>
               <td width="90">浏览次数：</td>
               <td>
@@ -456,7 +450,7 @@
               <td width="90">标题颜色：</td>
               <td>
                 <input name="color" type="text" id="color" style="width:120px">
-                <input name="modcolor" type="button" id="modcolor" value="选取" onClick="ShowColor(event,this)"> </td>
+                <button class="btn btn-secondary btn-sm" name="modcolor" type="button" id="modcolor" onClick="ShowColor(event,this)">选取</button></td>
             </tr>
           </table>
         </td>
@@ -479,10 +473,10 @@
                 </select> </td>
               <td width="90">发布选项：</td>
               <td>
-                <input name="ishtml" type="radio" class="np" value="1" checked>
-                生成HTML
-                <input type="radio" name="ishtml" class="np" value="0">
-                仅动态浏览
+                <label><input name="ishtml" type="radio" class="np" value="1" checked>
+                生成HTML</label>
+                <label><input type="radio" name="ishtml" class="np" value="0">
+                仅动态浏览</label>
               </td>
             </tr>
           </table>
@@ -510,9 +504,9 @@
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键字：</td>
-              <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value="" /><input
-                  type="button" name="Submit" value="浏览..." style="width:56;height:20"
-                  onClick="SelectKeywords('form1.keywords');"></td>
+              <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value="" /> <button
+                  type="button" name="Submit"
+                  onClick="SelectKeywords('form1.keywords');" class="btn btn-secondary btn-sm">浏览...</button></td>
             </tr>
           </table>
         </td>
@@ -521,7 +515,7 @@
         <td height="24" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;图集内容摘要：</td>
+              <td width="120">&nbsp;图集内容摘要：</td>
               <td width="449"><textarea name="description" rows="3" id="description" style="width:80%"></textarea></td>
               <td width="261">&nbsp;</td>
             </tr>
@@ -532,7 +526,7 @@
         <td height="24" colspan="4">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义文件名：</td>
+              <td width="120">&nbsp;自定义文件名：</td>
               <td width="449"><input type="text" name="filename" id="filename" />（不包括后缀名如.html等）</td>
               <td width="261">&nbsp;</td>
             </tr>
@@ -541,7 +535,7 @@
       </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#F9FCEF"
-      style="border:1px solid #cfcfcf;border-top:none;">
+      style="border:1px solid #cfcfcf;border-top:none;" class="mb-3">
       <tr>
         <td height="35">
           <table width="100%" border="0" cellspacing="1" cellpadding="1">
@@ -550,13 +544,11 @@
               <td width="83%">
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="115">
-                      <input name="imageField" type="image" src="images/button_ok.gif" width="60" height="22" border="0"
-                        class="np" />
+                    <td width="115" class="py-3">
+                      <button type="submit" class="btn btn-secondary">保存</button>
                     </td>
-                    <td width="99">
-                      <img src="images/button_reset.gif" width="60" height="22" border="0" onClick="location.reload();"
-                        style="cursor:pointer;" />
+                    <td width="99" class="py-3">
+                      <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
                     </td>
                   </tr>
                 </table>

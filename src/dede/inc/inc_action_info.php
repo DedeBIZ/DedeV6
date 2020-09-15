@@ -5,6 +5,7 @@
  * @version        $Id: inc_action_info.php 2 14:55 2010-11-11 tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -397,12 +398,6 @@ $actionSearch[10] = array(
             'description' =>'对每个登录后台的管理员进行的操作进行记录',
             'purview' =>'sys_Log',
             'linkurl' =>'log_list.php'
-        ),
-        4  =>  array(
-            'title' =>'验证安全设置',
-            'description' =>'对验证码和验证问题进行设置',
-            'purview' =>'sys_safe.php',
-            'linkurl' =>'sys_verify'
         ),
         5  =>  array(
             'title' =>'图片水印设置',

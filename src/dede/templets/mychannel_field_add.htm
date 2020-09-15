@@ -3,7 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>增加字段</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
+<script language="javascript" src="js/main.js"></script>
 <script language="javascript">
 var notAllow = " <?php echo $f; ?> ";
 function GetFields()
@@ -29,27 +34,27 @@ function GetFields()
 	
 	if(itemname=="")
 	{
-		alert("表单提示名称不能为空！");
+		ShowMsg("表单提示名称不能为空！");
 		theform.itemname.focus();
 		return false;
 	}
 	
 	if(fieldname=="") 
 	{
-		alert("字段名称不能为空！");
+		ShowMsg("字段名称不能为空！");
 		theform.fieldname.focus();
 		return false;
 	}
 	
 	if(notAllow.indexOf(" "+fieldname+" ") >-1 ) 
 	{
-		alert("字段名称不合法，如下字段名已经存在，建议在名称后加上数字以区分：\n"+notAllow);
+		ShowMsg("字段名称不合法，如下字段名已经存在，建议在名称后加上数字以区分：\n"+notAllow);
 		return false;
 	}
 	
 	if((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
 	{
-		alert("你选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）！");
+		ShowMsg("你选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）！");
 		return false;
 	}
 	
@@ -65,13 +70,11 @@ function GetFields()
 }
 </script>
 <style type="text/css">
-<!--
 td{ padding:2px; padding-left:6px; line-height:150%; }
 .STYLE1 {color: #FF3300}
 .STYLE2 {color: #666666}
 .nw { float:left; width:150px; }
 .cls { clear:both; }
--->
 </style>
 </head>
 <body topmargin=8>
@@ -79,24 +82,29 @@ td{ padding:2px; padding-left:6px; line-height:150%; }
 <input type='hidden' name='action' value='save' />
 <input type='hidden' name='id' value='<?php echo $id?>' />
 <input type='hidden' name='fieldstring' value='' />
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="background:#CFCFCF;">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" style="background:#CFCFCF;" 
+class="table maintable table-bordered mt-3">
     <tr> 
       <td colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif"> 
-        <table width="98%" border="0" cellspacing="0" cellpadding="0">
+        <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
             <td width="30%" style="padding-left:10px;">
             	<a href="mychannel_main.php"><b>频道管理</b></a> <b> &gt;&gt; 增加新字段：</b>
             </td>
             <td align="right">
-							<input type="button" name="ss1" value="当前模型信息" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';" class="nbt"/>
-							<input type="button" name="ss12" value="内容模型管理" onClick="location='mychannel_main.php';" class="nbt"/>
+							<button type="button" name="ss1" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';" class="btn btn-secondary btn-sm">当前模型信息</button>
+							<button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-secondary btn-sm">内容模型管理</button>
 						</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td colspan="2" bgcolor="#FFFFFF"><span class="STYLE1">所有填写的内容不允许包含双引号[<strong>&quot;</strong>]，否则配置将无法写入。</span></td>
+      <td colspan="2" bgcolor="#FFFFFF">
+        <div class="alert alert-danger" role="alert">
+          所有填写的内容不允许包含双引号[<strong>&quot;</strong>]，否则配置将无法写入。
+        </div>
+      </td>
     </tr>
     <tr> 
       <td bgcolor="#FFFFFF"><strong>表单提示文字：</strong><br>
@@ -119,10 +127,10 @@ td{ padding:2px; padding-left:6px; line-height:150%; }
     <tr>
       <td bgcolor="#FFFFFF"><strong>字段类型：</strong></td>
       <td bgcolor="#FFFFFF">
-	  <input name="autofield" type="radio" value="1" class="np" checked="checked" />
-        系统自动生成表单字段
-      <input type="radio" name="autofield" class="np" value="0" />
-        已经固化在发布表单中字段
+	    <label><input name="autofield" type="radio" value="1" class="np" checked="checked" />
+        系统自动生成表单字段</label>
+      <label><input type="radio" name="autofield" class="np" value="0" />
+        已经固化在发布表单中字段</label>
        </td>
     </tr>
     <tr>
@@ -130,10 +138,10 @@ td{ padding:2px; padding-left:6px; line-height:150%; }
       <strong>前台参数：</strong>
       </td>
       <td bgcolor="#FFFFFF">
-	  <input name="islist" type="checkbox" class="np" id="islist" value="1" />
-      使字段可以在列表的底层模板中获得(自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择)<br />
-      <input name="notsend" type="checkbox" class="np" id="notsend" value="1" />
-       前台投稿及采集规则禁用本字段
+      <label><input name="islist" type="checkbox" class="np" id="islist" value="1" />
+      使字段可以在列表的底层模板中获得(自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择)</label><br />
+      <label><input name="notsend" type="checkbox" class="np" id="notsend" value="1" />
+       前台投稿及采集规则禁用本字段</label>
      </td>
     </tr>
     <tr> 
@@ -143,11 +151,11 @@ td{ padding:2px; padding-left:6px; line-height:150%; }
       </td>
       <td bgcolor="#FFFFFF">
       	<input name="isnull" type="hidden" value="1" />
-        <input name="spage" type="radio"  value="split" class='np' />
-         是
+        <label><input name="spage" type="radio"  value="split" class='np' />
+         是</label>
          &nbsp; 
-        <input name="spage" type="radio"  value="no" class='np' checked='1' />
-         否
+        <label><input name="spage" type="radio"  value="no" class='np' checked='1' />
+         否</label>
      </td>
     </tr>
     <tr> 
@@ -155,25 +163,25 @@ td{ padding:2px; padding-left:6px; line-height:150%; }
       <strong>数据类型：</strong>
       </td>
       <td bgcolor="#FFFFFF">
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype1' value="text" checked='1'>单行文本(varchar)</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype2' value="textchar">单行文本(char)</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype3' value="multitext">多行文本</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype4' value="htmltext">HTML文本</div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype1' value="text" checked='1'> 单行文本(varchar) </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype2' value="textchar"> 单行文本(char) </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype3' value="multitext"> 多行文本 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype4' value="htmltext"> HTML文本 </label></div>
 <br class='cls' />
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype5' value="textdata">文本保存HTML数据</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype6' value="int">整数类型</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype7' value="float">小数类型</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype8' value="datetime">时间类型</div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype5' value="textdata"> 文本保存HTML数据 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype6' value="int"> 整数类型 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype7' value="float"> 小数类型 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype8' value="datetime"> 时间类型 </label></div>
 <br class='cls' />
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype9' value="img">图片</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype10' value="imgfile">图片(仅网址)</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype11' value="media">多媒体文件</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype12' value="addon">附件类型</div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype9' value="img"> 图片 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype10' value="imgfile"> 图片(仅网址) </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype11' value="media"> 多媒体文件 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype12' value="addon"> 附件类型 </label></div>
 <br class='cls' />
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype13' value="select">使用option下拉框</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype14' value="radio">使用radio选项卡</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype15' value="checkbox">Checkbox多选框</div>
-<div class='nw'><input type='radio' class='np' name='dtype' id='dtype16' value="stepselect">联动类型</div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype13' value="select"> 使用option下拉框 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype14' value="radio"> 使用radio选项卡 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype15' value="checkbox"> Checkbox多选框 </label></div>
+<div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype16' value="stepselect"> 联动类型 </label></div>
        </td>
     </tr>
     <tr> 
@@ -210,14 +218,14 @@ td{ padding:2px; padding-left:6px; line-height:150%; }
     </tr>
     <tr> 
       <td height="28" colspan="2" bgcolor="#F9FCEF">
-	     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
             <td width="26%" height="45">&nbsp;</td>
             <td width="10%">
-            <input type="submit" name="button1" id="button1" value="确定" class="coolbg np" />
+            <button type="submit" name="button1" id="button1" class="btn btn-secondary btn-sm">确定</button>
             </td>
             <td>
-            <input type="reset" name="button2" id="button2" value="重置" class="coolbg np" />
+            <button type="reset" name="button2" id="button2" class="btn btn-secondary btn-sm">重置</button>
             </td>
           </tr>
         </table>

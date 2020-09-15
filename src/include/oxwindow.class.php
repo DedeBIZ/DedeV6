@@ -101,7 +101,7 @@ class OxWindow
      * @param     string  $col  显示列数
      * @return    void
      */
-    function AddMsgItem($ivalue, $height="100", $col="2")
+    function AddMsgItem($ivalue, $height="auto", $col="2")
     {
         if($height!=""&&$height!="0")
         {
@@ -194,6 +194,24 @@ class OxWindow
         global $cfg_static_dir;
         $this->StartWin();
         $this->myWin .= $this->myWinItem;
+        $tt = "";
+        switch ($wintype) {
+            case 'back':
+                $tt = "返回";
+                break;
+            case 'ok':
+                $tt = "确定";
+                break;
+            case 'reset':
+                $tt = "重置";
+                break;
+            case 'search':
+                $tt = "搜索";
+                break;
+            default:
+                $tt = "保存";
+                break;
+        }
         if($wintype!="")
         {
             if($wintype!="hand")
@@ -203,9 +221,9 @@ class OxWindow
 <td colspan='2' bgcolor='#F9FCEF'>
 <table width='270' border='0' cellpadding='0' cellspacing='0'>
 <tr align='center' height='28'>
-<td width='90'><input name='imageField1' type='image' class='np' src='{$cfg_static_dir}/img/button_".$wintype.".gif' width='60' height='22' border='0' /></td>
-<td width='90'><a href='#'><img class='np' src='{$cfg_static_dir}/img/button_reset.gif' width='60' height='22' border='0' onClick='this.form.reset();return false;' /></a></td>
-<td><a href='#'><img src='{$cfg_static_dir}/img/button_back.gif' width='60' height='22' border='0' onClick='history.go(-1);' /></a></td>
+<td width='90'><button type='submit' class='btn btn-secondary'>$tt</button></td>
+<td width='90'><button onClick='this.form.reset();return false;' type='button' class='btn btn-secondary'>重置</button></td>
+<td><button onClick='history.go(-1);' type='button' class='btn btn-secondary'>返回</button></td>
 </tr>
 </table>
 </td>
@@ -275,7 +293,7 @@ function ShowMsgWin($msg, $title)
 {
     $win = new OxWindow();
     $win->Init();
-    $win->mainTitle = "DeDeCMS系统提示：";
+    $win->mainTitle = "DedeCMS系统提示：";
     $win->AddTitle($title);
     $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
     $winform = $win->GetWindow("hand");

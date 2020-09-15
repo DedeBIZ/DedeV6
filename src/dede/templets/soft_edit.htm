@@ -53,13 +53,13 @@
     <input type="hidden" name="channelid" value="<?php echo $channelid?>" />
     <input type="hidden" name="id" value="<?php echo $aid?>" />
     <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
         <td width="85%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
             href="catalog_do.php?cid=<?php echo $arcRow["typeid"]?>&dopost=listArchives"></a><a
             href="catalog_do.php?cid=<?php echo $arcRow["typeid"]?>&dopost=listArchives"><u>软件列表</u></a>&gt;&gt;更改软件
         </td>
-        <td align="right">&nbsp; <a href="catalog_main.php">[<u>栏目管理</u>]</a>&nbsp;</td>
+        <td align="right">&nbsp; <a href="catalog_main.php" class="btn btn-secondary btn-sm">栏目管理</a>&nbsp;</td>
       </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -118,9 +118,9 @@
 		    	if($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
 		    	else $jumpclick = '';
 		    	if(preg_match("#".$trow->att."#",$arcRow['flag']))
-		    	echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked' />{$trow->attname}[{$trow->att}]";
+		    	echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked' /> {$trow->attname}[{$trow->att}]</label> ";
 		    	else
-		    	echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} />{$trow->attname}[{$trow->att}]";
+		    	echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label> ";
 		    }
           ?> </td>
             </tr>
@@ -165,16 +165,16 @@
               </td>
               <td width="560">
                 <input name="picname" type="text" id="picname" style="width:300px"
-                  value="<?php echo $arcRow["litpic"]?>"><input type="button" name="Submit" value="浏览..."
-                  style="width:70px" onClick="SelectImage('form1.picname','');">
-                <input type='checkbox' class='np' name='ddisremote' value='1'>
-                远程
-                <span class="btn btn-success fileinput-button">
+                  value="<?php echo $arcRow["litpic"]?>"> <button type="button" name="Submit" class="btn btn-secondary btn-sm"
+                  onClick="SelectImage('form1.picname','');">浏览...</button>
+                <label><input type='checkbox' class='np' name='ddisremote' value='1'>
+                 远程 </label>
+                <span class="btn btn-secondary btn-sm fileinput-button">
                   <i class="glyphicon glyphicon-plus"></i>
                   选择图片
                   <input type="file" name="files[]" id="iptAddImages">
                 </span>
-                <button id="btnClearAll" type="button" class="btn btn-danger delete">
+                <button id="btnClearAll" type="button" class="btn btn-secondary btn-sm delete">
                   <i class="fa fa-trash-o"></i>
                   <span>清空</span>
                 </button>
@@ -400,9 +400,9 @@ if($cfg_need_typeid2=='Y') {
               <td width="72">&nbsp;其它地址：</td>
               <td>
                 <input name="picnum" type="text" id="picnum" size="8" value="5" />
-                <input name='kkkup' type='button' id='kkkup2' value='增加数量' onClick="MakeUpload();" />
+                <button class='btn btn-secondary btn-sm' name='kkkup' type='button' id='kkkup2' onClick="MakeUpload();">增加数量</button>
                 &nbsp;
-                <input type="button" name="Submit3" id="btsh3" value="隐藏地址" onClick="ShowHideAddr();" />
+                <button class='btn btn-secondary btn-sm' type="button" name="Submit3" id="btsh3" onClick="ShowHideAddr();">隐藏地址</button>
                 (最多为30个链接)
               </td>
             </tr>
@@ -428,10 +428,10 @@ if($cfg_need_typeid2=='Y') {
             <tr>
               <td width="90">&nbsp;附加选项：</td>
               <td>
-                <input name="remote" type="checkbox" class="np" id="remote" value="1" checked>
-                下载远程图片和资源
-                <input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" checked>
-                提取第一个图片为缩略图 </td>
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" checked>
+                下载远程图片和资源 </label>
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" checked>
+                提取第一个图片为缩略图 </label></td>
             </tr>
           </table>
         </td>
@@ -453,11 +453,11 @@ if($cfg_need_typeid2=='Y') {
             <tr>
               <td width="90" height="22" width="240">&nbsp;评论选项：</td>
               <td width="250">
-                <input type='radio' name='notpost' class='np' value='0'
-                  <?php if($arcRow['notpost']==0) echo " checked='1' "; ?> />允许评论
+                <label><input type='radio' name='notpost' class='np' value='0'
+                  <?php if($arcRow['notpost']==0) echo " checked='1' "; ?> /> 允许评论 </label>
                 &nbsp;
-                <input type='radio' name='notpost' class='np' value='1'
-                  <?php if($arcRow['notpost']==1) echo " checked='1' "; ?> />禁止评论
+                <label><input type='radio' name='notpost' class='np' value='1'
+                  <?php if($arcRow['notpost']==1) echo " checked='1' "; ?> /> 禁止评论 </label>
               </td>
               <td width="90">浏览次数：</td>
               <td>
@@ -486,8 +486,8 @@ if($cfg_need_typeid2=='Y') {
                 </select> </td>
               <td width="90">标题颜色：</td>
               <td><input name="color" type="text" id="color" style="width:120"
-                  value="<?php echo $arcRow["color"]?>"><input name="modcolor" type="button" id="modcolor" value="选取"
-                  onClick="ShowColor(event,this)"></td>
+                  value="<?php echo $arcRow["color"]?>"> <button class='btn btn-secondary btn-sm' name="modcolor" type="button" id="modcolor"
+                  onClick="ShowColor(event,this)">选取</button></td>
             </tr>
           </table>
         </td>
@@ -506,12 +506,12 @@ if($cfg_need_typeid2=='Y') {
                 </select>
               </td>
               <td width="90">发布选项：</td>
-              <td> <input name="ishtml" type="radio" class="np" value="1"
-                  <?php if($arcRow["ismake"]!=-1) echo " checked";?>>
-                生成HTML
-                <input type="radio" name="ishtml" class="np" value="0"
-                  <?php if($arcRow["ismake"]==-1) echo " checked";?>>
-                仅动态浏览 </td>
+              <td> <label><input name="ishtml" type="radio" class="np" value="1"
+                  <?php if($arcRow["ismake"]!=-1) echo " checked";?>> 
+                生成HTML </label>
+                <label><input type="radio" name="ishtml" class="np" value="0"
+                  <?php if($arcRow["ismake"]==-1) echo " checked";?>> 
+                仅动态浏览</label> </td>
             </tr>
           </table>
         </td>
@@ -564,7 +564,7 @@ if($cfg_need_typeid2=='Y') {
       <td height="24" colspan="4">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;自定义文件名：</td>
+            <td width="120">&nbsp;自定义文件名：</td>
             <td width="449"><input type="text" name="filename" id="filename"
                 value="<?php echo $arcRow["filename"]?>" />（不包括后缀名如.html等）</td>
             <td width="261">&nbsp;</td>
@@ -574,7 +574,7 @@ if($cfg_need_typeid2=='Y') {
     </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#F9FCEF"
-      style="border:1px solid #cfcfcf;border-top:none;">
+      style="border:1px solid #cfcfcf;border-top:none;mb-3">
       <tr>
         <td height="35">
           <table width="100%" border="0" cellspacing="1" cellpadding="1">
@@ -583,13 +583,11 @@ if($cfg_need_typeid2=='Y') {
               <td width="83%">
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="115">
-                      <input name="imageField" type="image" src="images/button_ok.gif" width="60" height="22" border="0"
-                        class="np" />
+                    <td width="115" class="py-3">
+                      <button type="submit" class="btn btn-secondary">保存</button>
                     </td>
-                    <td width="99">
-                      <img src="images/button_reset.gif" width="60" height="22" border="0" onClick="location.reload();"
-                        style="cursor:pointer" />
+                    <td width="99" class="py-3">
+                      <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
                     </td>
                   </tr>
                 </table>

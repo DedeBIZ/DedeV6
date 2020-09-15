@@ -2,9 +2,10 @@
 /**
  * 快捷发布菜单
  *
- * @version        $Id: file_pic_view.php 1 23:44 2011/2/16 tianya $
+ * @version        $Id: index_memnu_module.php 1 23:44 2011/2/16 tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

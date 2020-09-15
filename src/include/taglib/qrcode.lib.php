@@ -1,4 +1,16 @@
 <?php   if(!defined('DEDEINC')) exit('Request Error!');
+/**
+ * 自定义宏标记调用标签
+ *
+ * @version        $Id: qrcode.lib.php 1 9:29 2020年9月14日 tianya $
+ * @package        DedeCMS.Taglib
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        http://help.dedecms.com/usersguide/license.html
+ * @link           http://www.dedecms.com
+ */
+
+
 $GLOBALS['qrcode_id'] = isset($GLOBALS['qrcode_id'])? $GLOBALS['qrcode_id'] : 1;
 function lib_qrcode(&$ctag,&$refObj)
 {

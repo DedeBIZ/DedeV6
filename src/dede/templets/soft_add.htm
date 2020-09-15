@@ -63,13 +63,13 @@
     <input type="hidden" name="channelid" value="<?php echo $channelid?>" />
     <input type="hidden" name="cid" value="<?php echo $cid; ?>" />
     <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
         <td width="64%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
             href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>软件列表</u></a>&gt;&gt;发布新软件
         </td>
-        <td align="right">&nbsp; <a href="catalog_main.php">[<u>栏目管理</u>]</a>
-          [<a href="soft_config.php"><u>下载频道参数设定</u></a>]&nbsp;</td>
+        <td align="right">&nbsp; <a href="catalog_main.php" class="btn btn-secondary btn-sm">栏目管理</a>
+          <a href="soft_config.php" class="btn btn-secondary btn-sm">下载频道参数设定</a>&nbsp;</td>
       </tr>
     </table>
 
@@ -128,9 +128,9 @@
           while($trow = $dsql->GetObject())
           {
           	if($trow->att=='j')
-          	echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'>{$trow->attname}[{$trow->att}]";
+          	echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label> ";
           	else
-          	echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'>{$trow->attname}[{$trow->att}]";
+          	echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
           }
             	?> </td>
             </tr>
@@ -173,15 +173,15 @@
                   <tr>
                     <td height="30">
                       <input name="picname" type="text" id="picname" style="width:240px" />
-                      <input type="button" name="Submit2" value="站内选择" style="margin-left:8px;"
-                        onClick="SelectImage('form1.picname','small');" class='np coolbg' />
-                      <input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' />远程
-                      <span class="btn btn-success fileinput-button">
+                      <button type="button" name="Submit2"
+                        onClick="SelectImage('form1.picname','small');" class='btn btn-secondary btn-sm'>站内选择</button>
+                      <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' /> 远程 </label>
+                      <span class="btn btn-secondary fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
                         选择图片
                         <input type="file" name="files[]" id="iptAddImages">
                       </span>
-                      <button id="btnClearAll" type="button" class="btn btn-danger delete">
+                      <button id="btnClearAll" type="button" class="btn btn-secondary delete">
                         <i class="fa fa-trash-o"></i>
                         <span>清空</span>
                       </button>
@@ -231,7 +231,7 @@
                 <?php
 			if($cfg_need_typeid2=='Y')
 			{
-				echo "<a href='javascript:AddTypeid2();'>【<u>选择副栏目</u>】</a>";
+				echo "<a href='javascript:AddTypeid2();' class='btn btn-secondary btn-sm'>选择副栏目</a>";
 			}
 			?>
               </td>
@@ -349,8 +349,8 @@
                   <option value="KB">KB</option>
                   <option value="GB">GB</option>
                 </select>
-                <input name="autosize" type="checkbox" class="np" id="autosize" value="1" checked>
-                自动获得 (必须包含一个本地软件) </td>
+                <label><input name="autosize" type="checkbox" class="np" id="autosize" value="1" checked>
+                自动获得 (必须包含一个本地软件)</label> </td>
             </tr>
           </table>
         </td>
@@ -386,8 +386,8 @@
             </tr>
             <tr>
               <td height="26" colspan="4" style="border-top:1px dashed #8EAF61">&nbsp; <span
-                  class="STYLE1">（如果设定了下载限制，[<a href="soft_config.php"
-                    target="_blank"><u>软件频道设置</u></a>]中“附件下载方式：”必须选择“链接到跳转页面”） </span></td>
+                  class="STYLE1">（如果设定了下载限制，<a class='btn btn-secondary btn-sm' href="soft_config.php"
+                    target="_blank">软件频道设置</a>中“附件下载方式：”必须选择“链接到跳转页面”） </span></td>
             </tr>
           </table>
         </td>
@@ -402,7 +402,7 @@
               <td width="90" height="30">&nbsp;本地地址：</td>
               <td>
                 <input name="softurl1" type="text" id="softurl1" size="35" />
-                <input name="sel1" type="button" id="sel1" value="选取" onClick="SelectSoft('form1.softurl1')" />
+                <button class='btn btn-secondary btn-sm' name="sel1" type="button" id="sel1" onClick="SelectSoft('form1.softurl1')">选取</button>
                 服务器名称：
                 <input name="servermsg1" type="text" id="servermsg1" value="本地下载" style="width:150px" />
               </td>
@@ -438,7 +438,7 @@
           <input type='text' name='softurl<?php echo $startNum; ?>' style='width:120px' value='' />
           <input type='text' name='servermsg<?php echo $startNum; ?>' style='width:150px'
             value='<?php echo $sitename; ?>' />
-          <input type='checkbox' name='need<?php echo $startNum; ?>' class='np' value='1' checked />启用
+          <label><input type='checkbox' name='need<?php echo $startNum; ?>' class='np' value='1' checked /> 启用 </label>
           <br />
           <?php
 		$startNum++;
@@ -460,9 +460,9 @@
               <td width="90">其它地址：</td>
               <td>
                 <input name="picnum" type="text" id="picnum" size="8" value="5" />
-                <input name='kkkup' type='button' id='kkkup2' value='增加地址' onClick="MakeUpload();" />
+                <button name='kkkup' class='btn btn-secondary btn-sm' type='button' id='kkkup2' onClick="MakeUpload();">增加地址</button>
                 &nbsp;
-                <input type="button" name="Submit3" id="btsh3" value="隐藏地址" onClick="ShowHideAddr();" />
+                <button type="button" class='btn btn-secondary btn-sm' name="Submit3" id="btsh3" onClick="ShowHideAddr();">隐藏地址</button>
                 (最多为30个链接)
               </td>
             </tr>
@@ -480,15 +480,17 @@
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;附加选项：</td>
-              <td><input name="remote" type="checkbox" class="np" id="remote" value="1"
+              <td>
+                
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1"
                   <?php if($cfg_rm_remote=='Y') echo ' checked'; ?>>
-                下载远程图片和资源
-                <input name="dellink" type="checkbox" class="np" id="dellink" value="1"
+                下载远程图片和资源</label>
+                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1"
                   <?php if($cfg_arc_dellink=='Y') echo ' checked'; ?>>
-                删除非站内链接 <a href="javascript:OpenMyWin('article_allowurl_edit.php');">[设置]</a>
-                <input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"
+                删除非站内链接</label> <a  class='btn btn-secondary btn-sm' href="javascript:OpenMyWin('article_allowurl_edit.php');">设置</a>
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"
                   <?php if($cfg_arc_autopic=='Y') echo ' checked'; ?>>
-                提取第一个图片为缩略图 </td>
+                提取第一个图片为缩略图</label> </td>
             </tr>
           </table>
         </td>
@@ -510,11 +512,11 @@
             <tr>
               <td width="90" height="22" width="240">&nbsp;评论选项：</td>
               <td width="240">
-                <input type='radio' name='notpost' class='np' value='0'
-                  <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> />允许评论
+                <label><input type='radio' name='notpost' class='np' value='0'
+                  <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> /> 允许评论 </label>
                 &nbsp;
-                <input type='radio' name='notpost' class='np' value='1'
-                  <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> />禁止评论
+                <label><input type='radio' name='notpost' class='np' value='1'
+                  <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> /> 禁止评论 </label>
               </td>
               <td width="90">浏览次数：</td>
               <td>
@@ -542,7 +544,7 @@
               <td width="90">标题颜色：</td>
               <td>
                 <input name="color" type="text" id="color" style="width:120px">
-                <input name="modcolor" type="button" id="modcolor" value="选取" onClick="ShowColor(event,this)"> </td>
+                <button name="modcolor" type="button" id="modcolor" class='btn btn-secondary btn-sm' onClick="ShowColor(event,this)">选取</button> </td>
             </tr>
           </table>
         </td>
@@ -560,10 +562,10 @@
               </td>
               <td width="90">发布选项：</td>
               <td>
-                <input name="ishtml" type="radio" class="np" value="1" checked>
-                生成HTML
-                <input type="radio" name="ishtml" class="np" value="0">
-                仅动态浏览
+                <label><input name="ishtml" type="radio" class="np" value="1" checked>
+                生成HTML</label>
+                <label><input type="radio" name="ishtml" class="np" value="0">
+                仅动态浏览</label>
               </td>
             </tr>
           </table>
@@ -593,11 +595,11 @@
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键字：</td>
-              <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value="" /><input
+              <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value="" />
+                <button type="button" name="Submit" class='btn btn-secondary btn-sm'
+                  onClick="SelectKeywords('form1.keywords');">浏览...</button>&nbsp;&nbsp; <label><input
                   name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1"
-                  <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>
-                <input type="button" name="Submit" value="浏览..." style="width:56;height:20"
-                  onClick="SelectKeywords('form1.keywords');">&nbsp;&nbsp;自动获取，手动填写用","分开</td>
+                  <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>> 自动获取，手动填写用","分开</label></td>
             </tr>
           </table>
         </td>
@@ -606,7 +608,7 @@
         <td height="24" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;内容摘要：</td>
+              <td width="120">&nbsp;内容摘要：</td>
               <td width="449"><textarea name="description" rows="3" id="description" style="width:80%"></textarea></td>
               <td width="261">&nbsp;</td>
             </tr>
@@ -617,7 +619,7 @@
         <td height="24" colspan="4">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义文件名：</td>
+              <td width="120">&nbsp;自定义文件名：</td>
               <td width="449"><input type="text" name="filename" id="filename" />（不包括后缀名如.html等）</td>
               <td width="261">&nbsp;</td>
             </tr>
@@ -627,7 +629,7 @@
     </table>
 
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#F9FCEF"
-      style="border:1px solid #cfcfcf;border-top:none;">
+      style="border:1px solid #cfcfcf;border-top:none;" class="mb-3">
       <tr>
         <td height="35">
           <table width="100%" border="0" cellspacing="1" cellpadding="1">
@@ -636,10 +638,8 @@
               <td width="83%">
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="115"><input name="imageField" type="image" src="images/button_ok.gif" width="60"
-                        height="22" class="np" border="0"></td>
-                    <td width="99"><img src="images/button_reset.gif" width="60" height="22" border="0"
-                        onClick="location.reload();" style="cursor:pointer;"></td>
+                    <td width="115" class="py-3"><button type="submit" class="btn btn-secondary">保存</button></td>
+                    <td width="99" class="py-3"><button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button></td>
                   </tr>
                 </table>
               </td>

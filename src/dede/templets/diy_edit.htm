@@ -5,14 +5,17 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>修改自定义表单</title>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css" />
   <script language="javascript" src="../static/js/jquery.js"></script>
+  <script src="../static/js/bootstrap.bundle.js"></script>
   <script language="javascript" src="js/main.js"></script>
   <script language="javascript" src="js/diy.js"></script>
   <script language="javascript">
     function checkSubmit() {
       if (document.form1.typename.value == '') {
-        alert("自定义表单名称不能为空！");
+        ShowMsg("自定义表单名称不能为空！");
         return false;
       }
       return true;
@@ -42,11 +45,11 @@
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <div class="bodytitle">
+  <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
     <div class="bodytitletxt" style="padding-left:10px;">自定义表单管理</div>
   </div>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle"
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3"
     style="background:#CFCFCF;">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
       <input type='hidden' name='diyid' value='<?php echo $diyid;?>'>
@@ -90,9 +93,9 @@
           信息索引类字段系统已经加入，<br />
           您只需要增加其它个性化字段即可。</td>
         <td bgcolor="#F9FCEF">
-          <input name="fset" type="button" id="fset" value="添加新字段"
-            onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid; ?>'" class="np coolbg"
-            style="margin-top:5px" />
+          <button name="fset" type="button" id="fset"
+            onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid; ?>'" class="btn btn-secondary btn-sm"
+           >添加新字段</button>
         </td>
       </tr>
       <tr>
@@ -145,9 +148,9 @@ foreach($dtp->CTags as $ctag)
 		 ?>
               </td>
               <td>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&fname=<?php echo $ctag->GetTagName()?>">[修改]</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-secondary btn-sm"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</a>
                 <a
-                  href="diy_field_edit.php?diyid=<?php echo $diyid;?>&action=delete&fname=<?php echo $ctag->GetTagName()?>">[删除]</a>
+                  href="diy_field_edit.php?diyid=<?php echo $diyid;?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-secondary btn-sm"> <i class="fa fa-globe" aria-hidden="true"></i> 删除</a>
               </td>
             </tr>
             <?php 
@@ -182,24 +185,24 @@ foreach($dtp->CTags as $ctag)
         <td height="28" align="left" bgcolor="#FFFFFF">前台列表和内容页公开？：</td>
         <td bgcolor="#FFFFFF">
           <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>
-              class='np' />完全公开</label>
+              class='np' /> 完全公开 </label>
           <label><input name="public" type="radio" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>
-              class='np' />公开审核过的</label>
+              class='np' /> 公开审核过的 </label>
           <label><input name="public" type="radio" value="0" <?php echo $row['public'] == 0 ? 'checked' : '';?>
-              class='np' />不公开</label>
+              class='np' /> 不公开 </label>
         </td>
       </tr>
       <tr bgcolor="#F9FCEF">
         <td height="28" colspan="2">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
             <tr>
               <td width="26%" height="45">&nbsp;</td>
               <td width="15%">
-                <input type="submit" name="button" id="button" value="确定" class='np coolbg' />
+                <button type="submit" name="button" id="button" class='btn btn-secondary'>确定</button>
               </td>
               <td width="59%">
-                <input name="按钮" type="button" class='np coolbg' id="button2" onclick="location='diy_main.php';"
-                  value="返回" />
+                <button type="button" class='btn btn-secondary' id="button2" onclick="location='diy_main.php';"
+                  value="">返回</button>
               </td>
             </tr>
           </table>

@@ -86,13 +86,13 @@
 				<?php echo $filetime; ?>
 			</td>
 			<td align='center'>
-				<a href='tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>' title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+				<a class="btn btn-secondary btn-sm" href='tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>' title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 				<?php
 			if(!isset($fileinfos[$filename]))
 			{
 			?>
 				|
-				<a href='#' onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
+				<a href='#' class="btn btn-secondary btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
 				<?php
 		   }
 			?>

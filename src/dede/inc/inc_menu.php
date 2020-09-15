@@ -62,7 +62,6 @@ $adminMenu2 = "<m:top item='7_' name='模板管理' display='none' rank='temp_On
   <m:item name='系统用户管理' link='sys_admin_user.php' rank='sys_User' target='main' />
   <m:item name='用户组设定' link='sys_group.php' rank='sys_Group' target='main' />
   <m:item name='系统日志管理' link='log_list.php' rank='sys_Log' target='main' />
-  <m:item name='验证安全设置' link='sys_safe.php' rank='sys_verify' target='main' />
   <m:item name='图片水印设置' link='sys_info_mark.php' rank='sys_Edit' target='main' />
   <m:item name='自定义文档属性' link='content_att.php' rank='sys_Att' target='main' />
   <m:item name='软件频道设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />

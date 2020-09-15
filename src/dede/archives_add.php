@@ -5,6 +5,7 @@
  * @version        $Id: archives_add.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -234,13 +235,13 @@ color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywo
     ClearMyAddon($arcID, $title);
     //返回成功信息
     $msg = "    　　请选择你的后续操作：
-    <a href='archives_add.php?cid=$typeid'><u>继续发布文档</u></a>
+    <a href='archives_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布文档</a>
     &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank'><u>查看文档</u></a>
+    <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文档</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=".$arcID."&dopost=editArchives'><u>更改文档</u></a>
+    <a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-secondary btn-sm'>更改文档</a>
     &nbsp;&nbsp;
-    <a href='catalog_do.php?cid=$typeid&dopost=listArchives'><u>已发布文档管理</u></a>
+    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-secondary btn-sm'>已发布文档管理</a>
     &nbsp;&nbsp;
     $backurl
   ";

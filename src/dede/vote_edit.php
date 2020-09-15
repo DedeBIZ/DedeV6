@@ -5,6 +5,7 @@
  * @version        $Id: vote_edit.php 1 23:54 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -18,9 +19,9 @@ $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "vote_main.php" : $_COOKIE
 
 if($dopost=="delete")
 {
-    if($dsql->ExecuteNoneQuery("DELETE FROM #@__vote WHERE aid='$aid'"))
+    if($dsql->ExecuteNoneQuery("DELETE FROM `#@__vote` WHERE aid='$aid'"))
     {
-        if($dsql->ExecuteNoneQuery("DELETE FROM #@__vote_member WHERE voteid='$aid'"))
+        if($dsql->ExecuteNoneQuery("DELETE FROM `#@__vote_member` WHERE voteid='$aid'"))
         {
             ShowMsg('成功删除一组投票!', $ENV_GOBACK_URL);
             exit;
@@ -36,7 +37,7 @@ else if($dopost=="saveedit")
 {
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
-    $query = "UPDATE #@__vote SET votename='$votename',
+    $query = "UPDATE `#@__vote` SET votename='$votename',
         starttime='$starttime',
         endtime='$endtime',
         totalcount='$totalcount',

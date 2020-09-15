@@ -9,6 +9,7 @@
 	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<script language="javascript" src="../static/js/jquery.js"></script>
+	<script src="../static/js/bootstrap.bundle.js"></script>
 	<script language="javascript" src="../static/js/dedeajax2.js"></script>
 	<script language="javascript" src="js/ieemu.js"></script>
 	<script language="javascript" src="js/context_menu.js"></script>
@@ -44,6 +45,10 @@
 		}
 		function delArc(aid) {
 			var qstr = getCheckboxItem();
+			if (qstr == '') {
+				ShowMsg('必须选择一个或多个文档！');
+				return;
+			}
 			if (aid == 0) aid = getOneItem();
 			location = "archives_do.php?qstr=" + qstr + "&aid=" + aid + "&dopost=delArchives";
 		}
@@ -55,7 +60,7 @@
 		function moveArc(e, obj, cid) {
 			var qstr = getCheckboxItem();
 			if (qstr == '') {
-				alert('必须选择一个或多个文档！');
+				ShowMsg('必须选择一个或多个文档！');
 				return;
 			}
 			LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr=' + qstr + '&channelid=' + cid + '&rnd=' + Math.random(), 'moveArchives', '450px', '180px');
@@ -205,8 +210,8 @@
 							<td>{dede:field.click/}</td>
 							<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 							<td>
-								<a href="javascript:editArc({dede:field.aid/})">编辑</a> |
-								<a href="javascript:viewArc({dede:field.aid/})">预览</a>
+								<a href="javascript:editArc({dede:field.aid/})" class="btn btn-secondary btn-sm" title="编辑">  <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a> |
+								<a href="javascript:viewArc({dede:field.aid/})" class="btn btn-secondary btn-sm" title="预览">  <i class="fa fa-globe" aria-hidden="true"></i></a>
 							</td>
 						</tr>
 						{/dede:datalist}

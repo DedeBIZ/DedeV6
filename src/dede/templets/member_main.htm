@@ -6,8 +6,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>网站会员管理</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
   <script language="javascript" src="js/member.js"></script>
   <style type="text/css">
@@ -72,7 +72,8 @@
     </tr>
   </table>
   <form name="form2">
-    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#cfcfcf" class="table table-bordered maintable">
+    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#cfcfcf"
+      class="table table-bordered maintable">
       <tr>
         <td height="28" colspan="9" background="images/tbg.gif">
           <table width="99%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
@@ -95,7 +96,7 @@
         <td width="16%">email/昵称</td>
         <td width="5%">性别</td>
         <td width="8%">会员等级</td>
-        <td width="20%">会员属性</td>
+        <td width="15%">会员属性</td>
         <td width="14%">最后登录</td>
         <td>操作</td>
       </tr>
@@ -136,10 +137,10 @@
           【{dede:field.loginip /}】
         </td>
         <td align="center">
-          <a href="member_view.php?id={dede:field.mid/}">修改</a> |
-          <a href="member_do.php?id={dede:field.mid/}&dopost=delmember">删除</a> |
-          <a href="content_list.php?mid={dede:field.mid/}" target="_blank">文档</a> |
-          <a href="member_toadmin.php?id={dede:field.mid/}" target="_self">提升</a>
+          <a href="member_view.php?id={dede:field.mid/}" class="btn btn-secondary btn-sm">修改</a>
+          <a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-secondary btn-sm">删除</a>
+          <a href="content_list.php?mid={dede:field.mid/}" target="_blank" class="btn btn-secondary btn-sm">文档</a>
+          <a href="member_toadmin.php?id={dede:field.mid/}" target="_self" class="btn btn-secondary btn-sm">提升</a>
         </td>
       </tr>
       {/dede:datalist}

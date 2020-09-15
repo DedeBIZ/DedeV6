@@ -5,6 +5,7 @@
  * @version        $Id: inc_archives_functions.php 1 9:56 2010年7月21日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -13,7 +14,7 @@ require_once(DEDEINC.'/image.func.php');
 require_once(DEDEINC.'/archives.func.php');
 require_once(DEDEINC.'/arc.partview.class.php');
 $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '';
-$backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl'>[<u>记忆的列表页</u>]</a> &nbsp;" : '';
+$backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn btn-secondary btn-sm'>记忆的列表页</a> &nbsp;" : '';
 if(!isset($_NOT_ARCHIVES))
 {
     require_once(DEDEINC.'/customfields.func.php');
