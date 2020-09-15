@@ -3,6 +3,7 @@
  * @version        $Id: tags.php 1 2010-06-30 11:43:09Z tianya $
  * @package        DedeCMS.Site
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */

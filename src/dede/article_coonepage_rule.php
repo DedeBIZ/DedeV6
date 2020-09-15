@@ -68,15 +68,15 @@ else if($action == 'editload')
   <tr>
     <td width="102" height="30">网站名称：</td>
     <td width="302"><input name="title" type="text" id="title" style="width:200px" value="<?php echo $row['title']; ?>" /></td>
-    <td width="26" align="center"><a href="javascript:CloseEditNode()"><img src="images/close.gif" width="12" height="12" border="0" /></a></td>
+    <td width="26" align="center"><a href="javascript:CloseEditNode()" class="mr-3"><img src="images/close.gif" width="12" height="12" border="0" /></a></td>
   </tr>
   <tr>
     <td height="30">原内容编码：</td>
     <td colspan="2">
-      <input type="radio" name="lang" value="gb2312" <?php echo ($row['lang']=='gb2312' ? ' checked="checked" ' : ''); ?> />
-      GB2312/GBK
-      <input type="radio" name="lang" value="utf-8" <?php echo ($row['lang']=='utf-8' ? ' checked="checked" ' : ''); ?> />
-      UTF-8
+      <label><input type="radio" name="lang" value="utf-8" <?php echo ($row['lang']=='utf-8' ? ' checked="checked" ' : ''); ?> />
+      UTF-8</label>
+      <label><input type="radio" name="lang" value="gb2312" <?php echo ($row['lang']=='gb2312' ? ' checked="checked" ' : ''); ?> />
+      GB2312/GBK</label>
     </td>
   </tr>
   <tr>
@@ -111,8 +111,8 @@ else if($action == 'editload')
   </tr>
   <tr>
     <td height="32">&nbsp;</td>
-    <td colspan="2"><input class="nbt" type="submit" name="Submit" value="保存规则" />　
-    <input type="reset" class="nbt" name="Submit2" value="重置" /></td>
+    <td colspan="2"><button class="btn btn-secondary btn-sm" type="submit" name="Submit" value="">保存规则</button>
+    <button type="reset" class="btn btn-secondary btn-sm" name="Submit2">重置</button></td>
   </tr>
 </table>
 </form>
