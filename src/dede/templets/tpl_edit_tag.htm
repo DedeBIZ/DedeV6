@@ -3,8 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>标签源码碎片管理</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/base.css">
 <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+<script language="javascript" src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
+<script language="javascript" src="js/main.js"></script>
 <style type="text/css">
 .selbt {
 	width:80px;
@@ -21,12 +26,12 @@
 	position:absolute;
 }
 </style>
-<script  language="javascript">
+<script language="javascript">
 function Post()
 {
 	if (document.form1.filename.value=="")
 	{
-		alert("文件名不能为空。");
+		ShowMsg("文件名不能为空。");
 		document.form1.filename.focus();
 		return false;
 	}
@@ -41,7 +46,7 @@ function Post()
 <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
 <body bgcolor="#F2F4F3" leftmargin="8" topmargin="8">
-<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ECFAD3" style="margin-bottom:8px;">
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ECFAD3" style="margin-bottom:8px;" class="mt-3">
   <tr> 
     <td height="28" style="border:1px dotted #BFD67C" background="images/wbg.gif" >&nbsp;&nbsp;◇<a href='templets_tagsource.php'><b>标签源码碎片管理</b></a> &gt;&gt; <b><?php echo $title; ?></b>
 	  </td>
@@ -51,7 +56,7 @@ function Post()
 <input type="hidden" name="actiondo" value="<?php echo $action; ?>" />
 <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
 <input type="hidden" name="action" value="savetagfile" />
-	<table width='98%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf' align="center">
+	<table width='98%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf' align="center" class="table maintable table-bordered mt-3">
 		<tr bgcolor='#EEF4EA'>
 			<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px;">
 					<font color='#666600'><b><?php echo $title; ?></b>(修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份)</font>
@@ -60,7 +65,7 @@ function Post()
 		<tr bgcolor='#FFFFFF'>
   		<td>文件名称</td>
   		<td>
-  			<input name=filename size=40 value="<?php echo $filename; ?>" class="alltxt"/>
+  			<input name=filename size=40 value="<?php echo $filename; ?>"/>
     		（不允许用 “..” 形式的路径）
   		</td>
 		</tr>
@@ -79,11 +84,11 @@ function Post()
     </tr>
     <tr>
       <td height="42" colspan='2'  bgcolor="#F9FCEF">
-          <input type="submit" value="  保 存  " name='B1' class="coolbg np" />
+          <button type="submit" name='B1' class="btn btn-secondary">  保 存  </button>
           &nbsp;
-          <input type="reset" value="取消修改" name='B2' class="coolbg np" />
+          <button type="reset" name='B2' class="btn btn-secondary">取消修改</button>
           &nbsp;
-          <input type="button" value="不理返回" name='B4' class="coolbg np" onClick="javascript:history.go(-1);" />
+          <button type="button" name='B4' class="btn btn-secondary" onClick="javascript:history.go(-1);">不理返回</button>
       </td>
     </tr>
 </table> 

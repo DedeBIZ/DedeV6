@@ -7,6 +7,8 @@
   <title>修改频道</title>
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script language="javascript" src="js/main.js"></script>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
   <style type="text/css">
     .STYLE1 {
@@ -26,11 +28,11 @@
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <div class="bodytitle">
+  <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
     <div class="bodytitletxt" style="padding-left:10px;">自定义搜索管理</div>
   </div>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle"
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3"
     style="background:#CFCFCF;">
     <form name="form1" action="mychannel_edit.php" method="post" target="stafrm">
       <input type='hidden' name='mid' value='<?php echo $mid?>'>
@@ -43,7 +45,7 @@
           <div style="width:100px; float:right"><a
               href="mychannel_edit.php?dopost=del&mid=<?php echo $mid;?>">删除自定义搜索</a></div>
           <b><a href="mychannel_main.php"><u>内容模型管理</u></a> &gt; 自定义搜索管理：</b>
-          (自定义搜索再方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索)
+          (自定义搜索在方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索)
         </td>
       </tr>
       <tr>
@@ -87,15 +89,14 @@
       </tr>
       <tr bgcolor="#ffffff">
         <td height="28" colspan="2">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td width="26%" height="45">&nbsp;</td>
               <td width="15%">
-                <input type="submit" name="button" id="button" value="确定" class='np coolbg' />
+                <button type="submit" class="btn btn-secondary btn-sm">确定</button>
               </td>
               <td width="59%">
-                <input name="bt" type="button" id="button2" onclick="location='mychannel_main.php';" value="返回"
-                  class='np coolbg' />
+                <button type="button" onclick="location='mychannel_main.php';" class="btn btn-secondary btn-sm">返回</button>
               </td>
             </tr>
           </table>
@@ -104,7 +105,7 @@
     </form>
     <tr bgcolor="bgcolor=" #F9FCEF">
       <td height="20" colspan="2" bgcolor="#F9FCEF">
-        <table width="100%">
+        <table width="100%" class="table table-borderless">
           <tr>
             <td width="74%"><strong>&nbsp;&nbsp;</strong>进行状态： </td>
             <td width="26%" align="right">

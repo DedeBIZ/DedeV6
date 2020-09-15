@@ -60,7 +60,7 @@
     <tr height="26" bgcolor='#FFFFFF' onMouseMove="javascript:this.bgColor='#FCFDEE';"
       onMouseOut="javascript:this.bgColor='#FFFFFF';">
       <td>
-        <img src='images/htm.gif' border='0' align='absmiddle' /><?php echo $filename; ?>
+        <img src='images/htm.gif' border='0' align='absmiddle' /> <?php echo $filename; ?>
       </td>
       <td>
         <?php echo $fileinfo; ?>
@@ -69,7 +69,7 @@
         <?php echo $filetime; ?>
       </td>
       <td align='center'>
-        <a href='tpl.php?action=edittag&filename=<?php echo $filename; ?>'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
+        <a href='tpl.php?action=edittag&filename=<?php echo $filename; ?>' class="btn btn-secondary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
       </td>
     </tr>
     <?php } ?>

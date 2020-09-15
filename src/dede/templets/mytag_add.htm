@@ -10,12 +10,14 @@
   <link href='css/base.css' rel='stylesheet' type='text/css'>
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
   <script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
+  <script src="../static/js/bootstrap.bundle.js"></script>
   <script type="text/javascript" src="../static/js/moment.min.js"></script>
   <script type="text/javascript" src="../static/js/daterangepicker.js"></script>
+  <script language="javascript" src="js/main.js"></script>
   <script language="javascript">
     function checkSubmit() {
       if (document.form1.tagname.value == "") {
-        alert("标记名称不能为空！");
+        ShowMsg("标记名称不能为空！");
         document.form1.tagname.focus();
         return false;
       }
@@ -94,10 +96,12 @@
             </tr>
             <tr>
               <td height="25" align="center">时间限制：</td>
-              <td colspan="2"><input name="timeset" type="radio" value="0" checked='1' />
-                永不过期
-                <input type="radio" name="timeset" value="1" />
-                在设内时间内有效</td>
+              <td colspan="2">
+                <label><input name="timeset" type="radio" value="0" checked='1' />
+                永不过期</label>
+                <label><input type="radio" name="timeset" value="1" />
+                在设内时间内有效</label>
+              </td>
             </tr>
             <tr>
               <td height="25" align="center">开始时间：</td>

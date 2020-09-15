@@ -101,12 +101,12 @@
           </td>
           <td>
             <input type='hidden' name='staold_{dede:field.aid/}' value='{dede:field.sta/}' />
-            <input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta
+            <label><input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta
               function="GetSta(@me)" /} />
-            禁用
+            禁用</label>
             &nbsp;
-            <input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1' />
-            删除
+            <label><input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1' />
+            删除</label>
           </td>
         </tr>
         {/dede:datalist}

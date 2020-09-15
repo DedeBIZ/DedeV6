@@ -18,7 +18,7 @@ function LoadSuns(ctid,tid)
 }
 function showHide(objname)
 {
-   if($DE(objname).style.display=="none") $DE(objname).style.display = "block";
+   if($DE(objname).style.display=="none") $DE(objname).style.display = "revert";
 	 else $DE(objname).style.display="none";
 	 return false;
 }
@@ -190,7 +190,7 @@ body
     <td width="80%" background='images/mtbg1.gif'  style='border-right: 1px solid #74c63f;'>站点目录树</td>
   </tr>
   <tr> 
-    <td colspan='2' id='items1' align='center' style="background:#ffffff url(images/mmenubg2.gif) no-repeat;padding-left:8px;"> 
+    <td colspan='2' id='items1' align='center'> 
 <?php 
 $tu = new TypeUnit($userChannel);
 $tu->ListAllType($userChannel,$opendir);

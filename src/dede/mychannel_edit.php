@@ -510,10 +510,11 @@ else if($dopost == 'modifysearch')
     {
         $step = 1;
         $mid = intval($mid);
-        $query = "SELECT mainfields, addonfields, template FROM #@__advancedsearch WHERE mid='$mid'";
+        $query = "SELECT mainfields, addonfields, template FROM `#@__advancedsearch` WHERE mid='$mid'";
         $searchinfo = $dsql->GetOne($query);
         if(!is_array($searchinfo))
         {
+            $searchinfo = array();
             $searchinfo['mainfields'] = $searchinfo['addonfields'] = $searchinfo['template'] = '';
         }
         $searchinfo['mainfields'] = explode(',', $searchinfo['mainfields']);
@@ -531,12 +532,12 @@ else if($dopost == 'modifysearch')
         $c4 = in_array('source', $searchinfo['mainfields']) ? 'checked' : '';
         $c5 = in_array('senddate', $searchinfo['mainfields']) ? 'checked' : '';
 
-        $mainfields = '<label><input type="checkbox" name="mainfields[]" '.$c1.' value="iscommend" class="np" />是否推荐</label>';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c2.' value="typeid" class="np" />栏目</label>';
+        $mainfields = '<label><input type="checkbox" name="mainfields[]" '.$c1.' value="iscommend" class="np" /> 是否推荐</label> ';
+        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c2.' value="typeid" class="np" /> 栏目</label> ';
 
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c3.' value="writer" class="np" />作者</label>';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c4.' value="source" class="np" />来源</label>';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c5.' value="senddate" class="np" />发布时间</label>';
+        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c3.' value="writer" class="np" /> 作者</label> ';
+        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c4.' value="source" class="np" /> 来源</label> ';
+        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c5.' value="senddate" class="np" /> 发布时间</label> ';
         /*
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="description" />摘要</label>';
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="keywords" />关键词</label>';
@@ -555,9 +556,9 @@ else if($dopost == 'modifysearch')
         if($channel['issystem'] < 0)
         {
             $checked = in_array('typeid', $addonfieldsarr) ? 'checked' : '';
-            $addonfields .= '<label><input type="checkbox" name="addonfields[]" '.$checked.' value="typeid" class="np" />栏目</label>';
+            $addonfields .= '<label><input type="checkbox" name="addonfields[]" '.$checked.' value="typeid" class="np" /> 栏目</label> ';
             $checked = in_array('senddate', $addonfieldsarr) ? 'checked' : '';
-            $addonfields .= '<label><input type="checkbox" name="addonfields[]" '.$checked.' value="senddate" class="np" />发布时间</label>';
+            $addonfields .= '<label><input type="checkbox" name="addonfields[]" '.$checked.' value="senddate" class="np" /> 发布时间</label> ';
         }
         if(is_array($dtp->CTags) && !empty($dtp->CTags))
         {
@@ -574,7 +575,7 @@ else if($dopost == 'modifysearch')
                 $label = $ctag->GetAtt('itemname');
                 if(in_array($datatype, $searchtype)){
                     $checked = in_array($value, $addonfieldsarr) ? 'checked' : '';
-                    $addonfields .= "<label><input type=\"checkbox\" name=\"addonfields[]\" $checked value=\"$value\" class='np' />$label</label>";
+                    $addonfields .= "<label><input type=\"checkbox\" name=\"addonfields[]\" $checked value=\"$value\" class='np' /> $label</label> ";
                 }
             }
         }

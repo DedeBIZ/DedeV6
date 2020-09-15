@@ -160,8 +160,8 @@ $adminMenu2
 <m:top item='1_10_7_' name='系统帮助' display='none'>
   <m:item name='参考文档' link='http://help.dedecms.com' rank='' target='_blank' />
   <m:item name='意见建议反馈' link='https://github.com/dedetech/issues' rank='' target='_blank' />
+  <m:item name='代码托管' link='https://git.dedebiz.com/' rank='' target='_blank' />
   <m:item name='官方交流论坛' link='http://bbs.dedecms.com' rank='' target='_blank' />
-  <m:item name='Github' link='https://github.com/dedetech/' rank='' target='_blank' />
 </m:top>
 
 -----------------------------------------------

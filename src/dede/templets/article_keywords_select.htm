@@ -40,16 +40,18 @@ function AddNewKw()
 	showHide("addnew");
 }
 </script>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/allbg.gif" leftmargin="1" topmargin="1">
 <div class="main">
-  <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#D6D6D6">
+  <table width="100%" align="center" border="0" cellpadding="1" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
    <form name='form1' action="article_keywords_main.php">
    <input type='hidden' name='dopost' value='add' />
     <tr id="addnew" style="display:none">
         <td width="100%" height="24" colspan="2" align="center" bgcolor="#009900">
-          <table border="0" cellspacing="0" cellpadding="0">
+          <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td width="60" align="center">关键字：</td>
               <td width="140"><input name="keyword" type="text" id="keyword" style="width:130px" /></td>
@@ -66,12 +68,12 @@ function AddNewKw()
 	<form name='form2'>
       <tr>
         <td width="100%" height="26" colspan="2" background="images/tbg.gif">
-		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="31%"><strong>选择关键字</strong></td>
               <td width="69%" align="right">
-                <input type="button" name="kwa" value="新增关键字" onClick="AddNewKw()">
-                <input type="button" name="kwm" value="关键字管理" onClick="location='article_keywords_main.php';">
+                <button class="btn btn-secondary btn-sm" type="button" name="kwa" onClick="AddNewKw()">新增关键字</button>
+                <button class="btn btn-secondary btn-sm" type="button" name="kwm" onClick="location='article_keywords_main.php';">关键字管理</button>
                 </td>
             </tr>
           </table></td>
@@ -85,11 +87,11 @@ function AddNewKw()
       </tr>
       <tr>
         <td height="24" bgcolor="#E4FAC7" style="line-height:180%">
-        <table border="0" cellspacing="0" cellpadding="0">
+        <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td width="120">已选的关键字：</td>
               <td width="320"><input name="keywords" type="text" id="keywords" style="width:300" value="<?php echo $keywords?>"></td>
-              <td width="93"><input type="button" name="Submit" value="选用" onClick="ReturnValue()"></td>
+              <td width="93"><button type="button" class="btn btn-secondary btn-sm" name="Submit" onClick="ReturnValue()"> 选用 </button></td>
             </tr>
           </table>
         </td>

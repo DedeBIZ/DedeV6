@@ -3,7 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>内容发布向导</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet" type="text/css" />
+<script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
+<script language="javascript" src="js/main.js"></script>
 <style>
 .np { border:0px }
 </style>
@@ -24,7 +29,7 @@
 	function SetDefault()
 	{
 		if(selCheckbox==''){
-			alert("你没有选中需要设置为默认的栏目！");
+			ShowMsg("你没有选中需要设置为默认的栏目！");
 		}else{
 			var selobj = document.getElementById(selCheckbox);
 			location="public_guide.php?action=setdefault&cid="+selobj.value;
@@ -36,12 +41,12 @@
 </script>
 </head>
 <body leftmargin="8" topmargin="8" background='images/allbg.gif'>
-<table width="98%" height="31" border="0" align="center" cellpadding="1" cellspacing="1" class="tbtitle" style="border:1px solid #CFCFCF;margin-top:6px;border-bottom:none;">
+<table width="98%" height="31" border="0" align="center" cellpadding="1" cellspacing="1" class="table maintable table-bordered mt-3" style="border:1px solid #CFCFCF;margin-top:6px;border-bottom:none;">
   <tr>
     <td class="tbtitletxt" background='images/tbg.gif'><strong>&nbsp;内容发布向导：</strong></td>
   </tr>
 </table>
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" style="border:1px solid #CFCFCF;">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" style="border:1px solid #CFCFCF;" class="table maintable table-borderless mt-3">
   <tr align="center">
     <td height="120" align="left" valign="top" bgcolor="#FFFFFF" style="padding:6px;padding-bottom:20px">
 	<table width="100%" border="0" cellspacing="0" cellpadding="6">
@@ -50,8 +55,8 @@
           1、必须先建立与频道内容模型关连的栏目才能发布内容（<a href="catalog_main.php"><u>栏目管理</u></a>）；<br />
           2、如果您设置了某频道为默认发布表单，以后将不再显示此向导，而是直接显示您所选的频道的发布表单，如果想要发布其它频道的内容，可以从左边的目录树中选择，如果以后您想要修改默认发布表单，请点击目录树上方的“发布向导”图标；</td>
       </tr>
-    </table>
-	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" >
+  </table>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf"  class="table table-bordered">
     <tr height="22" align="center" bgcolor="#FBFCE2">
         <td width="8%" ><strong>选择</strong></td>
 		<td width="8%"><strong>频道ID</strong></td>
@@ -78,14 +83,12 @@
         <td><?php echo $row['addtable']; ?></td>
         <td><?php echo $catnum; ?></td>
         <td>
-        <a href="catalog_main.php">管理栏目</a>
+        <a href="catalog_main.php" class="btn btn-secondary btn-sm">管理栏目</a>
         <?php
         if($catnum>0){
         ?>
-        	 | 
-        <a href="<?php echo $row['mancon']; ?>">管理内容</a>
-        	 | 
-        <a href="catalog_do.php?channelid=<?php echo $row['id'];?>&cid=0&dopost=addArchives">发布内容</a>
+        <a href="<?php echo $row['mancon']; ?>" class="btn btn-secondary btn-sm">管理内容</a>
+        <a href="catalog_do.php?channelid=<?php echo $row['id'];?>&cid=0&dopost=addArchives" class="btn btn-secondary btn-sm">发布内容</a>
        <?php }else{ ?>
        		 | 
         <font color='#cccccc'>管理内容</font>
@@ -100,13 +103,10 @@
     </table>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
         <td>
-        	<input name="b1" type="button" id="b1" value="把所选的频道表单设为默认表单" onClick="SetDefault()" class="coolbg" />
+        	<button name="b1" type="button" id="b1" onClick="SetDefault()" class="btn btn-secondary btn-sm">把所选的频道表单设为默认表单</button>
         	&nbsp;&nbsp;
-        	<input name="b2" type="button" id="b2" value="取消默认表单" onClick="ResetDefault()" class="coolbg" />
+        	<button name="b2" type="button" id="b2" onClick="ResetDefault()" class="btn btn-secondary btn-sm">取消默认表单</button>
         </td>
       </tr>
     </table></td>
