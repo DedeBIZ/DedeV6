@@ -142,6 +142,7 @@
 			action : "send",
 			comtype : "reply",
 			fid : fid,
+			aid : "{dede:field name='id'/}",
 			msg : content,
 		}
 		$.post("{dede:field name='phpurl'/}/feedback.php", reply, function (data) {

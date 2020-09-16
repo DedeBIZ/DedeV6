@@ -55,6 +55,7 @@ main.login-from {
 
 .member .member-logo {
     border-radius: 50%;
+    max-width: 72px;
 }
 
 .member-actions a {

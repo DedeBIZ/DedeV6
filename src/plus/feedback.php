@@ -27,6 +27,7 @@ if (!isset($action)) {
 }
 
 $msg = isset($msg) ? $msg : "";
+$feedbacktype = isset($feedbacktype) ? $feedbacktype : "";
 $validate = isset($validate) ? $validate : "";
 $pwd = isset($pwd) ? $pwd : "";
 $comtype = isset($comtype) ? $comtype : "";
@@ -34,8 +35,8 @@ $good = isset($good) ? intval($good) : 0;
 
 $cfg_formmember = isset($cfg_formmember) ? true : false;
 $ischeck = $cfg_feedbackcheck == 'Y' ? 0 : 1;
-$aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
-$fid = (isset($fid) && is_numeric($fid)) ? $fid : 0; // 用来标记回复评论的变量
+$aid = isset($aid) ? intval($aid) : 0;
+$fid = isset($fid) ? intval($fid) : 0; // 用来标记回复评论的变量
 
 if (empty($aid) && empty($fid)) {
     echo json_encode(array(
@@ -96,23 +97,6 @@ if ($action == '' || $action == 'show') {
         "data" => $data,
     ));
     exit;
-}
-
-//引用评论
-//------------------------------------
-/*
-function __Quote(){ }
-*/ else if ($action == 'quote') {
-    AjaxHead();
-
-    $row = $dsql->GetOne("SELECT * FROM `#@__feedback` WHERE id ='$fid'");
-    require_once(DEDEINC . '/dedetemplate.class.php');
-    $dtp = new DedeTemplate();
-    $tplfile = $type == '' ? DEDETEMPLATE . '/plus/feedback_quote.htm' : DEDETEMPLATE . '/plus/feedback_quote_ajax.htm';
-
-    $dtp->LoadTemplate($tplfile);
-    $dtp->Display();
-    exit();
 }
 //发表评论
 //------------------------------------
@@ -223,18 +207,20 @@ function __SendFeedback(){ }
     extract($arcRow, EXTR_SKIP);
     $msg = cn_substrR(TrimMsg($msg), $cfg_feedback_msglen);
     $username = cn_substrR(HtmlReplace($username, 2), 20);
-    if (empty($feedbacktype) || ($feedbacktype != 'good' && $feedbacktype != 'bad')) {
+
+    if (empty($feedbacktype) || !in_array($feedbacktype, array('good', 'bad'))) {
         $feedbacktype = 'feedback';
     }
+
     //保存评论内容
-    if ($comtype == 'comments') {
-        $arctitle = addslashes($title);
+    if ($comtype == 'comments' || $comtype == 'reply') {
+        $arctitle = empty($title)? "" : addslashes($title);
         $typeid = intval($typeid);
         $ischeck = intval($ischeck);
         $feedbacktype = preg_replace("#[^0-9a-z]#i", "", $feedbacktype);
         if ($msg != '') {
-            $inquery = "INSERT INTO `#@__feedback`(`aid`,`typeid`,`username`,`arctitle`,`ip`,`ischeck`,`dtime`, `mid`,`bad`,`good`,`ftype`,`face`,`msg`)
-                   VALUES ('$aid','$typeid','$username','$arctitle','$ip','$ischeck','$dtime', '{$cfg_ml->M_ID}','0','0','$feedbacktype','$face','$msg'); ";
+            $inquery = "INSERT INTO `#@__feedback`(`aid`,`typeid`,`fid`, `username`,`arctitle`,`ip`,`ischeck`,`dtime`, `mid`,`bad`,`good`,`ftype`,`face`,`msg`)
+                   VALUES ('$aid','$typeid','$fid','$username','$arctitle','$ip','$ischeck','$dtime', '{$cfg_ml->M_ID}','0','0','$feedbacktype','$face','$msg'); ";
             $rs = $dsql->ExecuteNoneQuery($inquery);
             if (!$rs) {
                 echo json_encode(array(

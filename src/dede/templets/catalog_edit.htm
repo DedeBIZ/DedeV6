@@ -5,6 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>栏目管理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
@@ -328,7 +329,7 @@ $i = 0;
             <tr id='smclass' style='<?php echo ($channelid<0 ? '' : 'display:none'); ?>'>
               <td class='bline' style="padding-left:10px;">绑定小分类： <br />仅适用[分类信息模型]</td>
               <td class='bline' style="padding:3px 0px 3px 0px">
-                <select name='smalltype[]' size='5' style='width:120px' multiple='yes'>
+                <select name='smalltype[]' size='5' style='width:120px;height: auto;' multiple='yes'>
                   <?php
                     $smtypes = explode(',',trim($myrow['smalltypes']));
                     $sql = "Select * From `#@__sys_enum` where egroup like 'infotype' order by disorder asc, id desc ";

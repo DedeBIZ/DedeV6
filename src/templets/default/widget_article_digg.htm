@@ -54,7 +54,7 @@
                     if (j == 19 && !hasid) break;
                 }
             }
-            if (hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+            if (hasid) { ShowMsg("您已经顶过该帖，请不要重复顶帖 ！"); return; }
             else saveid += ',' + aid;
             SetCookie('diggid', saveid, 1);
         }

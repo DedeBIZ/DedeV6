@@ -13,7 +13,7 @@ require_once(DEDEINC.'/datalistcp.class.php');
 CheckPurview('sys_Data');
 
 $dopost = (empty($dopost))? '' : $dopost;
-$pid = (empty($pid))? 0 : preg_replace('/[^0-9]/','',$pid);
+$pid = (empty($pid))? 0 : intval($pid);
 /*
 下面数数组格式的例子:
 */

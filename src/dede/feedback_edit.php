@@ -31,6 +31,13 @@ if($dopost=='edit')
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("成功回复一则留言！",$ENV_GOBACK_URL);
     exit();
+} elseif ($dopost === 'makehtml') {
+    require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
+    $query = "SELECT * FROM `#@__feedback` WHERE id=$id";
+    $row = $dsql->GetOne($query);
+    MakeArt($row['aid']);
+    ShowMsg("成功更新评论所在的文档内容",$ENV_GOBACK_URL);
+    exit();
 }
 $query = "SELECT * FROM `#@__feedback` WHERE id=$id";
 $row = $dsql->GetOne($query);
