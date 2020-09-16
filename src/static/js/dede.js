@@ -71,9 +71,12 @@ function ShowMsg(content, ...args) {
             noClose = true;
         }
     }
-
-    footer = footer.replace("~modalID~", modalID);
-    content = content.replace("~modalID~", modalID);
+    
+    String.prototype.replaceAll = function (s1, s2) {
+        return this.replace(new RegExp(s1, "gm"), s2);
+    }
+    footer = footer.replaceAll("~modalID~", modalID);
+    content = content.replaceAll("~modalID~", modalID);
 
     var modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -138,8 +141,17 @@ function ErrAddSaveDo(modalID) {
         erradd: erradd,
     };
     $("#btnSubmit").attr("disabled", "disabled");
-    $.post("{dede:field name='phpurl'/}/erraddsave.php", parms, function () {
-        CloseModal(modalID);
+    if (typeof PHPURL === "undefined") {
+        const PHPURL = "/plus";
+    }
+    $.post(PHPURL + "/erraddsave.php", parms, function (data) {
+        let result = JSON.parse(data);
+        if (result.code === 200) {
+            CloseModal(modalID);
+        } else {
+            ShowAlert("#error-add-alert", `提交失败：${result.msg}`, "danger");
+        }
+        $("#btnSubmit").removeAttr("disabled");
     });
 }
 
@@ -148,6 +160,8 @@ function ErrorAddSave(id, title) {
     let content = `
     <input type="hidden" value="${id}" class="form-control" id="iptID">
     <div class="form-group">
+	<div id="error-add-alert">
+	</div>
     <label for="iptTitle" class="col-form-label">标题：</label>
     <input type="text" disabled=true value="${title}" class="form-control" id="iptTitle">
     </div>

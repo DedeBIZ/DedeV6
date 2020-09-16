@@ -15,8 +15,14 @@ require_once(DEDEINC.'/memberlogin.class.php');
 $dopost = isset($dopost)? $dopost : "";
 $aid = isset($aid)? intval($aid) : 0;
 if (empty($aid)) {
-    die(" Request Error! ");
+    echo json_encode(array(
+        "code" => -1,
+        "data" => null,
+        "msg" => "请求错误",
+    ));
+    exit;
 }
+
 if($dopost == "saveedit")
 {
     $cfg_ml = new MemberLogin();
@@ -26,6 +32,15 @@ if($dopost == "saveedit")
     $mid = isset($cfg_ml->M_ID) ? $cfg_ml->M_ID : 0;
     $err = trimMsg(cn_substr(RemoveXSS($err),2000),1);
     $oktxt = trimMsg(cn_substr(RemoveXSS($erradd),2000),1);
+    if (empty($err) || empty($oktxt)) {
+        echo json_encode(array(
+            "code" => -1,
+            "data" => null,
+            "msg" => "错误内容或建议不能为空",
+        ));
+        exit;
+    }
+
     $time = time();
     $query = "INSERT INTO `#@__erradd`(aid,mid,title,type,errtxt,oktxt,sendtime)
                   VALUES ('$aid','$mid','$title','$type','$err','$oktxt','$time'); ";
@@ -41,5 +56,10 @@ if($dopost == "saveedit")
     
     exit();
 } else {
-    die(" Request undefined ");
+    echo json_encode(array(
+        "code" => -1,
+        "data" => null,
+        "msg" => "未知方法",
+    ));
+    exit;
 }

@@ -34,13 +34,6 @@ li,dd {
 	padding: 0px;
 }
 
-input {
-	border: 1px solid #ababab;
-	zoom: expression(function(ele){(ele.type=='button'||ele.type=='submit'||ele.type=='reset') ?	ele.className='coolbg':(ele.type=='text' ?	ele.className='alltxt':'');
-	(ele.type=='radio'||ele.type=='checkbox') ?	ele.className='np': '';
-	ele.style.zoom = '1';
-}(this));
-}
 
 input {
 background: url(../images/input.png) repeat-x scroll 0px 0px;
