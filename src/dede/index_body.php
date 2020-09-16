@@ -35,7 +35,8 @@ if (empty($dopost)) {
 /*-----------------------
 增加新项
 function _AddNew() {   }
--------------------------*/ else if ($dopost == 'addnew') {
+-------------------------*/ 
+else if ($dopost == 'addnew') {
     if (empty($link) || empty($title)) {
         ShowMsg("链接网址或标题不能为空！", "-1");
         exit();
@@ -61,7 +62,8 @@ function _AddNew() {   }
 /*---------------------------
 保存修改的项
 function _EditSave() {   }
-----------------------------*/ else if ($dopost == 'editsave') {
+----------------------------*/ 
+else if ($dopost == 'editsave') {
     $quickmenu = stripslashes($quickmenu);
 
     $myIcoFileTrue = DEDEDATA . '/admin/quickmenu-' . $cuserLogin->getUserID() . '.txt';
@@ -75,7 +77,8 @@ function _EditSave() {   }
 /*---------------------------
 保存修改的项
 function _EditSave() {   }
-----------------------------*/ else if ($dopost == 'movesave') {
+----------------------------*/ 
+else if ($dopost == 'movesave') {
     $movedata = str_replace('\\', "", $sortorder);
     $movedata = json_decode($movedata, TRUE);
     $movedata = serialize($movedata);
@@ -87,7 +90,8 @@ function _EditSave() {   }
 /*-----------------------------
 显示修改表单
 function _EditShow() {   }
------------------------------*/ else if ($dopost == 'editshow') {
+-----------------------------*/ 
+else if ($dopost == 'editshow') {
     $fp = fopen($myIcoFile, 'r');
     $oldct = trim(fread($fp, filesize($myIcoFile)));
     fclose($fp);
@@ -131,7 +135,8 @@ function _EditShow() {   }
 /*---------------------------------
 载入右边内容
 function _getRightSide() {   }
----------------------------------*/ else if ($dopost == 'getRightSide') {
+---------------------------------*/ 
+else if ($dopost == 'getRightSide') {
     $query = " SELECT COUNT(*) AS dd FROM `#@__member` ";
     $row1 = $dsql->GetOne($query);
     $query = " SELECT COUNT(*) AS dd FROM `#@__feedback` ";
@@ -225,5 +230,15 @@ function _getRightSide() {   }
 } elseif ($dopost == 'get_seo') {
     // 直接采用DedeBIZ重写方法
     exit;
+} elseif ($dopost == "system_info") {
+    $client = new DedeBizClient('127.0.0.1', 8181);
+    $client->appid = "1008665";
+    $client->key = "I04NcaYUCmRukRDE";
+    $rs = $client->SystemInfo();
+    if ($rs->code === 200) {
+        echo $rs->data;
+        exit;
+    }
+    $client->Close();
 }
 ?>

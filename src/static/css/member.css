@@ -88,6 +88,10 @@ main.member {
     background-color: #F3F3F3;
 }
 
+.member a.btn-success {
+    color: white;
+}
+
 .member .pannel .dropdown {
     display: inline-block;
     margin-left: .255em;

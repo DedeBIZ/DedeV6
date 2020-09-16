@@ -338,6 +338,9 @@ require_once(DEDEINC.'/common.func.php');
 require_once(DEDEINC.'/control.class.php');
 require_once(DEDEINC.'/model.class.php');
 
+//全局常用函数
+require_once(DEDEINC.'/dedebiz.class.php');
+
 //载入小助手配置,并对其进行默认初始化
 if(file_exists(DEDEDATA.'/helper.inc.php'))
 {

@@ -80,12 +80,11 @@
             <div class="col-md-6 mt-3">
                 <div class="card">
                     <div class="card-header">
-                        商业授权查询
+                        Dede商业服务
                     </div>
                     <!--/.card-header-->
-                    <div class="card-body">
-                        <iframe name="showauth" src="index_body.php?dopost=showauth" width="100%" frameborder="0"
-                            scrolling="no" marginwidth="10" marginheight="10" id="showauth"></iframe>
+                    <div class="card-body" id="_systeminfo">
+                    正在载入中...
                     </div>
                     <!--/.card-body-->
                 </div>
@@ -339,7 +338,7 @@
         <br style='clear:both' />
         <!-- //底部 -->
         <div align="center" class="footer">
-            Copyright &copy; 2004-2020 <a href='http://www.dedecms.com' target='_blank'><u>DedeCMS</u></a>. 织梦科技 版权所有 <a
+            Copyright &copy; 2004-2020 <a href='http://www.dedecms.com' target='_blank'><u>DedeCMS</u></a>. 版权所有 <a
                 href="https://www.dedebiz.com" target="_blank" title="DedeBiz商业技术支持，提供更专业强大的站点应用开发技术">DedeBiz技术支持</a>
         </div>
 
@@ -395,6 +394,59 @@
             </form>
         </div>
     </div>
+
+<?php
+if (defined('DEDEBIZ')) {
+?>
+<script>
+    $(document).ready(function () {
+        setInterval(function(){
+            $.get("index_body.php?dopost=system_info", function (data) {
+                let rsp = JSON.parse(data);
+                if (rsp.code === 200) {
+                    $("#_systeminfo").html(`
+                <table width="100%" class="table table-borderless">
+        <tbody><tr>
+            <td width="50%" class="nline" style="text-align:left"> 会员数： </td>
+            <td class="nline" style="text-align:left"> 5 </td>
+        </tr>
+        <tr>
+            <td class="nline" style="text-align:left"> 运行时间： </td>
+            <td class="nline" style="text-align:left"> ${rsp.result.server_run_time} </td>
+        </tr>
+                    <tr>
+                <td class="nline" style="text-align:left"> 系统： </td>
+                <td class="nline" style="text-align:left"> ${rsp.result.server_goos} </td>
+            </tr>
+                    <tr>
+                <td class="nline" style="text-align:left"> 环境： </td>
+                <td class="nline" style="text-align:left"> ${rsp.result.server_goarch} </td>
+            </tr>
+                    <tr>
+                <td class="nline" style="text-align:left"> 版本号： </td>
+                <td class="nline" style="text-align:left"> v${rsp.result.server_version} </td>
+            </tr>
+                    <tr>
+                <td class="nline" style="text-align:left"> 内存使用： </td>
+                <td class="nline" style="text-align:left"> 
+                <div class="progress-bar bg-success" role="progressbar" style="width: ${rsp.result.server_memory_usage}%;" aria-valuenow="${rsp.result.server_memory_usage}" aria-valuemin="0" aria-valuemax="100">${rsp.result.server_memory_usage}%</div>
+                </td>
+            </tr>
+    </tbody></table>
+                `);
+                } else {
+                    $("#_systeminfo").html(`尚未启动Dede商业站点服务，<a class="btn btn-danger">去开启</a>`);
+                }
+                
+            })
+        }, 5000)
+
+
+    });
+</script>
+<?php
+}
+?>
 </body>
 
 </html>
