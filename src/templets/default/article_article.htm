@@ -44,9 +44,6 @@
                 </div>
 
                 <div class="body py-2">
-                    {dede:arccontent aid=84}
-                    [field:body/]
-                    {/dede:arccontent}
                     {dede:field.body/} (责任编辑：{dede:adminname/})
                 </div>
                 <!-- /.body -->
@@ -105,78 +102,15 @@
 
     {dede:include filename="footer.htm"/}
     <script>
-        //-------------------------------------------------------------------------------------------
-        // 纠错扩展
-        //-------------------------------------------------------------------------------------------
-        // 提交纠错信息
-        function ErrAddSaveDo(modalID) {
-            let aid = $("#iptID").val();
-            let title = $("#iptTitle").val();
-            let type = $("#selType").val();
-            let err = $("#iptErr").val();
-            let erradd = $("#iptErradd").val();
-            let parms = {
-                format: "json",
-                dopost: "saveedit",
-                aid: aid,
-                title: title,
-                type: type,
-                err: err,
-                erradd: erradd,
-            };
-            $("#btnSubmit").attr("disabled", "disabled");
-            $.post("{dede:field name='phpurl'/}/erraddsave.php", parms, function () {
-                CloseModal(modalID);
-            });
-        }
 
-        // 错误提示
-        function ErrorAddSave(id, title) {
-            let content = `
-    <input type="hidden" value="${id}" class="form-control" id="iptID">
-    <div class="form-group">
-    <label for="iptTitle" class="col-form-label">标题：</label>
-    <input type="text" disabled=true value="${title}" class="form-control" id="iptTitle">
-    </div>
-    <div class="form-group">
-    <label for="message-text" class="col-form-label">错误类型：</label>
-    <select id="selType" class="form-control">
-            <option value="1">错别字(除的、地、得)</option>
-            <option value="2">成语运用不当</option>
-            <option value="3">专业术语写法不规则</option>
-            <option value="4">产品与图片不符</option>
-            <option value="5">事实年代以及内容错误</option>
-            <option value="6">技术参数错误</option>
-            <option value="7">其他</option>
-    </select>
-    </div>
-    <div class="form-group">
-    <label for="message-text" class="col-form-label">错误内容：</label>
-    <textarea name="iptErr" class="form-control" id="iptErr"></textarea>
-    </div>
-    <div class="form-group">
-    <label for="message-text" class="col-form-label">修正建议：</label>
-    <textarea name="optErradd" class="form-control" id="iptErradd"></textarea>
-    </div>
-        `;
-            let footer = `
-        <button type="button" id="btnSubmit" class="btn btn-success" onClick="ErrAddSaveDo('DedeModal~modalID~')">提交</button>
-        <button type="button" class="btn btn-outline-success" onClick="CloseModal('DedeModal~modalID~')">确定</button>
-        `;
-            ShowMsg(content, {
-                'footer': footer,
-            });
-        }
 
         // 页面加载触发
         $(document).ready(function () {
-
             // 获取文档点击数统计
             $.get("{dede:field name='phpurl'/}/count.php?format=json&view=yes&aid={dede:field.id/}&mid=1", function (data) {
                 let result = JSON.parse(data);
                 $("#_count").html(result.data.click);
             })
-
         });
     </script>
 </body>

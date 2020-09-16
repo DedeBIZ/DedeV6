@@ -7,8 +7,6 @@
  * @link           http://www.dedecms.com
  */
 
-
-
 // 生产环境使用production
 define('DEDE_ENVIRONMENT', 'dev');
 

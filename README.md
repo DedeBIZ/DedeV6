@@ -1,12 +1,12 @@
-# DedeCMS v5
+# DedeCMS v6
 
 国内专业的PHP网站内容管理系统-织梦内容管理系统
 
 ## 版本说明
 
-DedeCMS v5.x是一个LTS版本，支持将到2022年10月截止，目前最新版本为v5.7SP2，开发版本为v5.8
+DedeCMS v6.x是一个LTS版本，支持将到2022年10月截止
 
-## v5.8 Roadmap
+## v6 Roadmap
 
 状态 ✅ 已完成 🔨 进行中 ❌ 未完成
 
@@ -18,13 +18,13 @@ DedeCMS v5.x是一个LTS版本，支持将到2022年10月截止，目前最新�
 
 - ✅ 升级内置编辑器ckeditor4为最新版本；
 
-- ✅ v5.8以后仅发布UTF-8版本的程序，不再提供GBK编码的版本；
+- ✅ v6以后仅发布UTF-8版本的程序，不再提供GBK编码的版本；
 
 - ✅ jQuery升级到3.5.X，并逐步淘汰过于陈旧的浏览器支持；
 
 - ✅ 后台界面样式调整；
 
-- ✅ 支持TAG标签静态化，增加内容呈现维度，更利于SEO；
+- ✅ 支持Tag标签静态化，增加内容呈现维度，更利于SEO；
 
 - 🔨 优化内置的模块插件，增强用户体验；
 
@@ -32,7 +32,7 @@ DedeCMS v5.x是一个LTS版本，支持将到2022年10月截止，目前最新�
 
 - ✅ 移除对Flash的依赖支持，今后版本采用HTML5相关特性；
 
-- ❌ 调整v5.8版本程序升级相关功能；
+- ❌ 调整v6版本程序升级相关功能；
 
 - 🔨 兼容PHP7.4，DedeCMS未来的版本以PHP7.X为主，实验性支持PHP8.X；
 
@@ -41,6 +41,8 @@ DedeCMS v5.x是一个LTS版本，支持将到2022年10月截止，目前最新�
 - 🔨 默认模板重新设计制作，采用响应式布局；
 
 - ❌ 官方网站页面调整，调整部分内容以适应未来的版本更新；
+
+- 🔨 增加DedeBIZ商业支持，构建更安全、稳定的DedeCMS生态；
 
 ## 平台需求
 
@@ -107,14 +109,6 @@ MySQL扩展库
 
 - [DedeCMS官方主站](http://www.dedecms.com)
 
-- [DedeCMS问题反馈](https://github.com/dedetech/issues)
+- [DedeBIZ商业支持](https://www.dedebiz.com)
 
-- [DedeCMS Github](https://github.com/dedetech/)
-
-- [织梦维基](http://docs.dedecms.com)
-
-- [客服中心](http://service.dedecms.com)
-
-- [技术支持论坛](http://bbs.dedecms.com)
-
-- [上海卓卓网络科技](http://www.desdev.cn)
+- [代码托管](https://git.dedebiz.com/)

@@ -42,7 +42,7 @@ function ch_softlinks($fvalue, &$ctag, &$refObj, $fname='', $downloadpage=false)
 //读取所有链接地址
 function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
 {
-    global $dsql, $cfg_phpurl;
+    global $cfg_phpurl;
     $phppath = $cfg_phpurl;
     $islinktype = false;
     if(!empty($link_type)) $islinktype = true;
@@ -62,7 +62,8 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
         foreach($sites as $site)
         {
             if(trim($site)=='') continue;
-            list($link,$serverName,$serverType) = explode('|', $site);
+            
+            @list($link,$serverName,$serverType) = explode('|', $site);
             $sertype_arr[trim($serverName)] = trim($serverType);
         }
     }

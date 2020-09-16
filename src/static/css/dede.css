@@ -82,7 +82,7 @@ ul.items > li .title,ul.items > li .caption a {
     color: #212529;
 }
 
-ul.items > li .description, ul.items > li .description a {
+ul.items > li .description, ul.items > li .description a, ul.items > li .addinfo {
     color: #868686;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -92,8 +92,16 @@ ul.items > li .description, ul.items > li .description a {
     word-break:break-all;
 }
 
+ul.items > li .addinfo {
+    font-size: 14px;
+}
+
 ul.items .border-bottom-dashed {
     border-bottom: dashed 1px #929292;
+}
+
+ul.items img {
+    max-width: 100px;
 }
 
 ul.items > li .label {
