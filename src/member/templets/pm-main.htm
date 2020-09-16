@@ -9,7 +9,25 @@
   <link href="<?php echo $cfg_cmsurl;?>/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/dede.css">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/member.css">
+  <script src="<?php echo $cfg_cmsurl;?>/static/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo $cfg_cmsurl;?>/static/js/dede.js"></script>
   <title>消息管理 - 会员中心 - <?php echo $cfg_webname; ?></title>
+  <script>
+    // 阅读消息
+    function ReadMsg(id) {
+      $.get(`<?php echo $cfg_memberurl?>/pm.php?dopost=read&id=${id}`, function (data) {
+        let result = JSON.parse(data);
+        if (result.code === 200) {
+          ShowMsg(`<b>标题：</b><p>${result.data.subject}</p>
+          <b>时间：</b><p>${result.data.sendtime}</p>
+          <b>内容</b><p>${result.data.subject}</p>`);
+          $(`.pm-read-status[for='${id}']`).html("已阅读");
+        } else {
+          ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
+        }
+      })
+    }
+  </script>
 </head>
 
 <body>
@@ -45,6 +63,8 @@
               <div class="table-responsive">
                 <form action="pm.php" method="post" name="form1">
                   <input type='hidden' name='dopost' value='del' />
+                  <div id="feedback-alert">
+                  </div>
                   <table class="table">
                     <thead>
                       <tr>
@@ -64,8 +84,8 @@
                         <td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}"
                             style=" margin-left:5px" /></td>
                         <td><?php
-                        if($fields['hasview']==0) echo "<a href='pm.php?dopost=read&id={$fields['id']}'>{$fields['subject']}</a>";
-                        else echo "<a href='pm.php?dopost=read&id={$fields['id']}'>{$fields['subject']}</a>";
+                        if($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
+                        else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
                         ?></td>
                         <td><?php 
                         if($folder == "inbox") { 
@@ -75,13 +95,15 @@
                         }?>
                         </td>
                         <td>
-                          <?php
-                          $readmsg = ($fields['hasview']==0 ? "<span style='color:red'>未阅读</span>" : '已阅读');
-                          echo $readmsg;
-                        ?>
+                          <div class="pm-read-status" for="<?php echo $fields['id'];?>">
+                            <?php
+                            $readmsg = ($fields['hasview']==0 ? "<span style='color:red'>未阅读</span>" : '已阅读');
+                            echo $readmsg;
+                            ?>
+                          </div>
                         </td>
                         <td><?php
-                        echo MyDate('y-m-d H:i:s',$fields['sendtime']);
+                        echo MyDate('Y-m-d H:i:s',$fields['sendtime']);
                         ?></td>
                       </tr>
                       {/dede:datalist}
@@ -120,13 +142,15 @@
     function DoSubmit(myfolder) {
       var selid = GetCheckfolderItem();
       if (selid == '') {
-        alert("你没选中任何信息！");
+        ShowMsg("你没选中任何信息！");
         return false;
       }
       if (window.confirm("你确定要删除这些消息么？")) {
         location = "pm.php?dopost=del&ids=" + selid + "&folder=" + myfolder;
       }
     }
+
+
   </script>
 </body>
 

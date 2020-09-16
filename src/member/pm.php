@@ -26,29 +26,10 @@ if(!isset($dopost))
 //检查用户是否被禁言
 CheckNotAllow();
 $state=(empty($state))? 0 : intval($state);
-/*--------------------
-function __send(){  }
-----------------------*/
-if($dopost=='send')
-{
-    /** 好友记录 **/
-    $sql = "SELECT * FROM `#@__member_friends` WHERE  mid='{$cfg_ml->M_ID}' AND ftype!='-1'  ORDER BY addtime DESC LIMIT 20";
-    $friends = array();
-    $dsql->SetQuery($sql);
-    $dsql->Execute();
-    while ($row = $dsql->GetArray()) {
-        $friends[] = $row;
-    }
 
-    include_once(dirname(__FILE__).'/templets/pm-send.htm');
-    exit();
-}
-/*-----------------------
-function __read(){  }
-----------------------*/
-else if($dopost=='read')
+if($dopost=='read')
 {
-    $sql = "SELECT * FROM `#@__member_friends` WHERE  mid='{$cfg_ml->M_ID}' AND ftype!='-1'  ORDER BY addtime DESC LIMIT 20";
+    $sql = "SELECT * FROM `#@__member_friends` WHERE  mid='{$cfg_ml->M_ID}' AND ftype!='-1' ORDER BY addtime DESC LIMIT 20";
     $friends = array();
     $dsql->SetQuery($sql);
     $dsql->Execute();
@@ -59,12 +40,26 @@ else if($dopost=='read')
     $row = $dsql->GetOne("SELECT * FROM `#@__member_pms` WHERE id='$id' AND (fromid='{$cfg_ml->M_ID}' OR toid='{$cfg_ml->M_ID}')");
     if(!is_array($row))
     {
-        ShowMsg('对不起，你指定的消息不存在或你没权限查看！','-1');
+        $result = array(
+            "code" => -1,
+            "data" => null,
+            "msg" => "对不起，你指定的消息不存在或你没权限查看",
+        );
+        echo json_encode($result);
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__member_pms` SET hasview=1 WHERE id='$id' AND folder='inbox' AND toid='{$cfg_ml->M_ID}'");
     $dsql->ExecuteNoneQuery("UPDATE `#@__member_pms` SET hasview=1 WHERE folder='outbox' AND toid='{$cfg_ml->M_ID}'");
-    include_once(dirname(__FILE__).'/templets/pm-read.htm');
+    $result = array(
+        "code" => 200,
+        "data" => array(
+            "subject" => $row['subject'],
+            "message" => $row['message'],
+            "sendtime" => MyDate("Y-m-d H:i", $row['sendtime']),
+        ),
+        "msg" => "",
+    );
+    echo json_encode($result);
     exit();
 }
 /*-----------------------
