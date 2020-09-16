@@ -40,12 +40,8 @@
                   <tbody>
                     {dede:datalist}
                     <tr>
-                      <td colspan="5" class="tabTitle"><?php if($fields["stowname"]!='sys') {?>
-                        <a href='{dede:field.indexurl/}={dede:field.aid/}' target='_blank'>{dede:field.title/}</a>
-                        <?php }else{ ?>
-                        <a href='archives_do.php?dopost=viewArchives&aid={dede:field.aid/}'
-                          target='_blank'>{dede:field.title/}</a>
-                        <?php }?></td>
+                      <td colspan="5" class="tabTitle"><a href='archives_do.php?dopost=viewArchives&aid={dede:field.aid/}'
+                        target='_blank'>{dede:field.title/}</a></td>
                       <td width="25%" align="center" class="doPost"><span class="itemDigg">
                           <a class="text_button"
                             href="../plus/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}"

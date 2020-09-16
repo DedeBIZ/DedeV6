@@ -140,12 +140,14 @@ $myurl = '';
 if($cfg_ml->IsLogin())
 {
     $myurl = $cfg_memberurl."/index.php?uid=".urlencode($cfg_ml->M_LoginID);
-    if(!preg_match("#^http:#i", $myurl)) $myurl = $cfg_basehost.$myurl;
+    if(!preg_match("#^http[s]?:#i", $myurl)) $myurl = $cfg_basehost.$myurl;
+    if ($cfg_ml->fields['face'] =="") {
+        $cfg_ml->fields['face'] = $cfg_cmsurl."/static/img/avatar.png";
+    }
 }
 
 /** 有没新短信 **/
 $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__member_pms WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");    
-
 
 /**
  *  检查用户是否有权限进行某个操作
