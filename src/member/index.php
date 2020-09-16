@@ -13,14 +13,7 @@ if(empty($action)) $action = '';
 if(empty($aid)) $aid = '';
 
 $menutype = 'mydede';
-if ( preg_match("#PHP (.*) Development Server#",$_SERVER['SERVER_SOFTWARE']) )
-{
-    if ( $_SERVER['REQUEST_URI'] == dirname($_SERVER['SCRIPT_NAME']) )
-    {
-        header('HTTP/1.1 301 Moved Permanently');
-        header('Location:'.$_SERVER['REQUEST_URI'].'/');
-    }
-}
+
 //会员后台
 if($uid=='')
 {
@@ -46,9 +39,9 @@ if($uid=='')
         /* 最新文档8条 */
         $archives = array();
         $sql = "SELECT arc.*, category.namerule, category.typedir, category.moresite, category.siteurl, category.sitepath, mem.userid
-        FROM #@__archives arc
-        LEFT JOIN #@__arctype category ON category.id=arc.typeid
-        LEFT JOIN #@__member mem ON mem.mid=arc.mid
+        FROM `#@__archives` arc
+        LEFT JOIN `#@__arctype` category ON category.id=arc.typeid
+        LEFT JOIN `#@__member` mem ON mem.mid=arc.mid
         WHERE arc.arcrank > -1
         ORDER BY arc.sortrank DESC LIMIT 8";
         $dsql->SetQuery($sql);
@@ -85,7 +78,7 @@ if($uid=='')
         }
         
         /** 有没新短信 **/
-        $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__member_pms WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");    
+        $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_pms` WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");    
         
         $dpl = new DedeTemplate();
         $tpl = dirname(__FILE__)."/templets/index.htm";

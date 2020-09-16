@@ -58,8 +58,15 @@ if($cid!=0)
 {
     $whereSql .= " AND arc.typeid in (".GetSonIds($cid).")";
 }
+if ($arcrank == '1') {
+    $whereSql .= " And arc.arcrank >= 0";
+} else if ($arcrank == '-1') {
+    $whereSql .= " And arc.arcrank = -1";
+} else if ($arcrank == '-2') {
+    $whereSql .= " And arc.arcrank = -2";
+}
 
-$query = "SELECT arc.aid,arc.aid as id,arc.typeid,arc.senddate,arc.channel,arc.click,arc.title,arc.mid,tp.typename
+$query = "SELECT arc.aid,arc.aid as id,arc.typeid,arc.senddate,arc.channel,arc.click,arc.title,arc.mid,tp.typename,arc.arcrank
         FROM `{$cInfos['addtable']}` arc
         LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
         $whereSql
