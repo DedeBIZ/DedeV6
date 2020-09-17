@@ -100,35 +100,6 @@ if($cfg_dede_log=='Y')
     }
 }
 
-//启用远程站点则创建FTP类
-if($cfg_remote_site=='Y')
-{
-    require_once(DEDEINC.'/ftp.class.php');
-    if(file_exists(DEDEDATA."/cache/inc_remote_config.php"))
-    {
-        require_once DEDEDATA."/cache/inc_remote_config.php";
-    }
-    if(empty($remoteuploads)) $remoteuploads = 0;
-    if(empty($remoteupUrl)) $remoteupUrl = '';
-    $config = array(
-      'hostname' => $GLOBALS['cfg_ftp_host'],
-      'username' => $GLOBALS['cfg_ftp_user'],
-      'password' => $GLOBALS['cfg_ftp_pwd'],
-      'debug' => 'TRUE'
-    );
-    $ftp = new FTP($config); 
-
-    //初始化FTP配置
-    if($remoteuploads==1){
-        $ftpconfig = array(
-            'hostname'=>$rmhost, 
-            'port'=>$rmport,
-            'username'=>$rmname,
-            'password'=>$rmpwd
-        );
-    }
-}
-
 //管理缓存、管理员频道缓存
 $cache1 = DEDEDATA.'/cache/inc_catalog_base.inc';
 if(!file_exists($cache1)) UpDateCatCache();
