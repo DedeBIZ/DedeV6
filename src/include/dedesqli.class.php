@@ -240,8 +240,12 @@ class DedeSqli
         if($this->recordLog) {
 			$queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
-            //echo $this->queryString."--{$queryTime}<hr />\r\n";
         }
+        if (DEBUG_LEVEL===TRUE) {
+            $queryTime = ExecTime() - $t1;
+            echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：".$this->queryString."，执行时间：<b>{$queryTime}</b></div>\r\n";
+        }
+
         return $rs;
     }
 
@@ -279,6 +283,10 @@ class DedeSqli
 			$queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
             //echo $this->queryString."--{$queryTime}<hr />\r\n";
+        }
+        if (DEBUG_LEVEL===TRUE) {
+            $queryTime = ExecTime() - $t1;
+            echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：".$this->queryString."，执行时间：<b>{$queryTime}</b></div>\r\n";
         }
 
         return mysqli_affected_rows($this->linkID);
@@ -333,6 +341,10 @@ class DedeSqli
             $this->RecordLog($queryTime);
             //echo $this->queryString."--{$queryTime}<hr />\r\n";
         }
+        if (DEBUG_LEVEL===TRUE) {
+            $queryTime = ExecTime() - $t1;
+            echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：".$this->queryString."，执行时间：<b>{$queryTime}</b></div>\r\n";
+        }
 
         if($this->result[$id]===FALSE)
         {
@@ -349,15 +361,18 @@ class DedeSqli
     function GetOne($sql='',$acctype=MYSQLI_ASSOC)
     {
         global $dsqli;
+        // $t1 = ExecTime();
 		if(!$dsqli->isInit)
 		{
 			$this->Init($this->pconnect);
-		}
+        }
+        // echo ExecTime() - $t1;
         if($dsqli->isClose)
         {
             $this->Open(FALSE);
             $dsqli->isClose = FALSE;
         }
+        
         if(!empty($sql))
         {
             if(!preg_match("/LIMIT/i",$sql)) $this->SetQuery(preg_replace("/[,;]$/i", '', trim($sql))." LIMIT 0,1;");

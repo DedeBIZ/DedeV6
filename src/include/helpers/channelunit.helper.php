@@ -5,6 +5,7 @@
  * @version        $Id: channelunit.helper.php 1 16:49 2010年7月6日Z tianya $
  * @package        DedeCMS.Helpers
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -558,7 +559,7 @@ function MakeOneTag(&$dtp, &$refObj, $parfield='Y')
             $dtp->Assign($tagid,$funcname($ctag,$refObj));
             if (DEBUG_LEVEL==TRUE) {
                 $queryTime = ExecTime() - $ttt1;
-                echo '标签：'.$tagname.'载入花费时间：'.$queryTime."<br />\r\n";
+                echo '<div style="color: #856404;background-color: #fff3cd;border-color: #ffeeba;position: relative;padding: .75rem 1.25rem;margin-bottom: 1rem;border: 1px solid transparent;border-radius: .25rem;" class="alert alert-warning" role="alert">标签：'.$tagname.'载入花费时间：'.$queryTime."</div>\r\n";
             }
         }
     }

@@ -86,7 +86,7 @@ class DedeSql
     }
     function SelectDB($dbname)
     {
-        mysql_select_db($dbname);
+        mysql_select_db($dbname, $this->linkID);
     }
 
     //设置SQL里的参数
@@ -134,7 +134,7 @@ class DedeSql
             exit();
         }
 		$this->isInit = TRUE;
-        @mysql_select_db($this->dbName);
+        @mysql_select_db($this->dbName, $this->linkID);
         $mysqlver = explode('.',$this->GetVersion());
         $mysqlver = $mysqlver[0].'.'.$mysqlver[1];
 		
