@@ -11,7 +11,7 @@
  */
 require_once(dirname(__FILE__)."/../include/common.inc.php");
 
-//$t1 = ExecTime();
+$t1 = ExecTime();
 
 $tid = (isset($tid) && is_numeric($tid) ? $tid : 0);
 
@@ -24,6 +24,7 @@ if(isset($TotalResult)) $TotalResult = intval(preg_replace("/[^\d]/", '', $Total
 //如果指定了内容模型ID但没有指定栏目ID，那么自动获得为这个内容模型的第一个顶级栏目作为频道默认栏目
 if(!empty($channelid) && empty($tid))
 {
+    
     $tinfos = $dsql->GetOne("SELECT tp.id,ch.issystem FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.channeltype='$channelid' And tp.reid=0 order by sortrank asc");
     if(!is_array($tinfos)) die(" No catalogs in the channel! ");
     $tid = $tinfos['id'];
@@ -71,3 +72,7 @@ if($tinfos['issystem']==-1)
 if($lv->IsError) ParamError();
 
 $lv->Display();
+if (DEBUG_LEVEL===TRUE) {
+    $queryTime = ExecTime() - $t1;
+    echo "<div style='width:98%;margin:1rem auto;color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>页面加载总消耗时间：<b>{$queryTime}</b></div>\r\n";
+}

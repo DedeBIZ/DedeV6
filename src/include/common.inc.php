@@ -3,11 +3,12 @@
  * @version        $Id: common.inc.php 3 17:44 2010-11-23 tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
 
-// 生产环境使用production
+// 生产环境使用production，如果采用dev模式，会有一些php的报错信息提示，便于开发调试
 define('DEDE_ENVIRONMENT', 'dev');
 
 if ( DEDE_ENVIRONMENT == 'production' )
@@ -16,6 +17,9 @@ if ( DEDE_ENVIRONMENT == 'production' )
 } else {
     error_reporting(E_ALL);
 }
+
+define('DEBUG_LEVEL', FALSE); // 如果设置为TRUE则会打印执行SQL的时间和标签加载时间方便调试
+
 define('DEDEINC', str_replace("\\", '/', dirname(__FILE__) ) );
 define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC,0,-8) ) );
 define('DEDEDATA', DEDEROOT.'/data');
@@ -26,8 +30,6 @@ define('DEDETEMPLATE', DEDEROOT.'/templets');
 define('DEDEMODEL', './model');
 define('DEDECONTROL', './control');
 define('DEDEAPPTPL', './templates');
-
-define('DEBUG_LEVEL', FALSE);
 
 if (version_compare(PHP_VERSION, '5.3.0', '<') && function_exists("get_magic_quotes_gpc"))
 {

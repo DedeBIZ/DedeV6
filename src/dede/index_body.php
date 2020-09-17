@@ -235,10 +235,12 @@ else if ($dopost == 'getRightSide') {
     $client->appid = "1008665";
     $client->key = "I04NcaYUCmRukRDE";
     $rs = $client->SystemInfo();
+
     if ($rs->code === 200) {
         echo $rs->data;
+        $client->Close();
         exit;
     }
-    $client->Close();
+    
 }
 ?>

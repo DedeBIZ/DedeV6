@@ -334,8 +334,6 @@
 
 
     <div class="footer">
-
-        <br style='clear:both' />
         <!-- //底部 -->
         <div align="center" class="footer">
             Copyright &copy; 2004-2020 <a href='http://www.dedecms.com' target='_blank'><u>DedeCMS</u></a>. 版权所有 <a
@@ -406,21 +404,14 @@ if (defined('DEDEBIZ')) {
                 if (rsp.code === 200) {
                     $("#_systeminfo").html(`
                 <table width="100%" class="table table-borderless">
-        <tbody><tr>
-            <td width="50%" class="nline" style="text-align:left"> 会员数： </td>
-            <td class="nline" style="text-align:left"> 5 </td>
-        </tr>
+        <tbody>
         <tr>
             <td class="nline" style="text-align:left"> 运行时间： </td>
             <td class="nline" style="text-align:left"> ${rsp.result.server_run_time} </td>
         </tr>
                     <tr>
                 <td class="nline" style="text-align:left"> 系统： </td>
-                <td class="nline" style="text-align:left"> ${rsp.result.server_goos} </td>
-            </tr>
-                    <tr>
-                <td class="nline" style="text-align:left"> 环境： </td>
-                <td class="nline" style="text-align:left"> ${rsp.result.server_goarch} </td>
+                <td class="nline" style="text-align:left"> ${rsp.result.server_goos}（${rsp.result.server_goarch}）</td>
             </tr>
                     <tr>
                 <td class="nline" style="text-align:left"> 版本号： </td>

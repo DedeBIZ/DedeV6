@@ -3,6 +3,7 @@
  * @version        $Id: actionsearch_class.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -11,11 +12,16 @@ class ActionSearch
     var $keyword;
     var $asarray = array();
     var $result    = array();
+
+    function __construct($keyword)
+    {
+        $this->asarray = $this->GetSearchstr();
+        $this->keyword = $keyword;
+    }
     
     //初始化系统
     function ActionSearch($keyword){
-        $this->asarray = $this->GetSearchstr();
-        $this->keyword = $keyword;
+        $this->__construct($keyword);
     }
     
     function GetSearchstr()
