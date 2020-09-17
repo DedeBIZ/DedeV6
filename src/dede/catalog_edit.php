@@ -197,9 +197,11 @@ if($dopost == 'time')
           </tr>
          <tr> 
             <td width="150" class='bline' height="26" align="center">是否支持投稿：</td>
-            <td class='bline'> <input type='radio' name='issend' value='0' class='np' <?php if($myrow['issend']=="0") echo " checked='1' ";?> />
-              不支持&nbsp; <input type='radio' name='issend' value='1' class='np' <?php if($myrow['issend']=="1") echo " checked='1' ";?> />
-              支持 </td>
+            <td class='bline'> 
+              <label><input type='radio' name='issend' value='0' class='np' <?php if($myrow['issend']=="0") echo " checked='1' ";?> />
+              不支持</label>&nbsp; 
+              <label><input type='radio' name='issend' value='1' class='np' <?php if($myrow['issend']=="1") echo " checked='1' ";?> />
+              支持</label></td>
           </tr>
           <!-- 在快速修改更改内容模型后，因为模板没改变，会导致错误，因此去除些选择框。 -->
           <tr> 
@@ -246,12 +248,13 @@ if($dopost == 'time')
           </tr>
           <tr> 
             <td height="26" align="center" class='bline'>栏目列表选项：</td>
-            <td class='bline'> <input type='radio' name='isdefault' value='1' class='np'<?php if($myrow['isdefault']==1) echo " checked='1' ";?>/>
-              链接到默认页 
-              <input type='radio' name='isdefault' value='0' class='np'<?php if($myrow['isdefault']==0) echo " checked='1' ";?>/>
-              链接到列表第一页 
-              <input type='radio' name='isdefault' value='-1' class='np'<?php if($myrow['isdefault']==-1) echo " checked='1' ";?>/>
-              使用动态页 </td>
+            <td class='bline'> 
+              <label><input type='radio' name='isdefault' value='1' class='np'<?php if($myrow['isdefault']==1) echo " checked='1' ";?>/>
+              链接到默认页</label>
+              <label><input type='radio' name='isdefault' value='0' class='np'<?php if($myrow['isdefault']==0) echo " checked='1' ";?>/>
+              链接到列表第一页</label>
+              <label><input type='radio' name='isdefault' value='-1' class='np'<?php if($myrow['isdefault']==-1) echo " checked='1' ";?>/>
+              使用动态页</label> </td>
           </tr>
           <tr> 
             <td class='bline' height="26" align="center">默认页的名称： </td>
@@ -260,13 +263,13 @@ if($dopost == 'time')
           <tr> 
             <td height="26" class='bline' align="center">栏目属性：</td>
             <td class='bline'>
-                <input name="ispart" type="radio" id="radio" value="0" class='np'<?php if($myrow['ispart']==0) echo " checked='1' ";?>/>
-              最终列表栏目（允许在本栏目发布文档，并生成文档列表）<br>
-              <input name="ispart" type="radio" id="radio2" value="1" class='np'<?php if($myrow['ispart']==1) echo " checked='1' ";?>/>
+            <label><input name="ispart" type="radio" id="radio" value="0" class='np'<?php if($myrow['ispart']==0) echo " checked='1' ";?>/>
+              最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+              <label><input name="ispart" type="radio" id="radio2" value="1" class='np'<?php if($myrow['ispart']==1) echo " checked='1' ";?>/>
 
-              频道封面（栏目本身不允许发布文档）<br>
-              <input name="ispart" type="radio" id="radio3" value="2" class='np'<?php if($myrow['ispart']==2) echo " checked='1' ";?>/>
-              外部连接（在"文件保存目录"处填写网址）              </td>
+              频道封面（栏目本身不允许发布文档）</label><br>
+              <label><input name="ispart" type="radio" id="radio3" value="2" class='np'<?php if($myrow['ispart']==2) echo " checked='1' ";?>/>
+              外部连接（在"文件保存目录"处填写网址） </label>             </td>
           </tr>
           <tr>              
             <td align="center" colspan="2" height="54" bgcolor='#FAFEE0'>

@@ -142,15 +142,15 @@
                 <div class="form-group row">
                   <label for="iptEmail" class="col-sm-2 col-form-label">性别</label>
                   <div class="col-sm-10">
-                    <input type="radio" name="sex" value="男"
+                    <label><input type="radio" name="sex" value="男"
                       <?php if($row['sex']=='男') echo " checked='checked' "; ?> />
-                    男 &nbsp;
-                    <input type="radio" name="sex" value="女"
+                    男</label> &nbsp;
+                    <label><input type="radio" name="sex" value="女"
                       <?php if($row['sex']=='女') echo " checked='checked' "; ?> />
-                    女 &nbsp;
-                    <input type="radio" name="sex" value="保密'"
+                    女</label> &nbsp;
+                    <label><input type="radio" name="sex" value="保密'"
                       <?php if($row['sex']=='保密') echo " checked='checked' "; ?> />
-                    保密
+                    保密</label>
                   </div>
                 </div>
 

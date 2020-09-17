@@ -84,7 +84,7 @@ $wintitle = "随机模板防采集设置";
 $wecome_info = "随机模板防采集设置";
 make_hash();
 $msg = "
-<link href='images/base.css' rel='stylesheet' type='text/css' />
+<link href='css/base.css' rel='stylesheet' type='text/css' />
 <script language='javascript' src='js/main.js'></script>
 <script language='javascript' src='../static/js/dedeajax2.js'></script>
 <script language='javascript'>
@@ -105,8 +105,8 @@ function DoRand(jobname)
 <tr>
     <td height='28'>
     如果你想对旧的文章应用随机模板设置，请点击此对旧文章进行处理(必须设置好模板项)！
-    &nbsp; <a href='#' onclick='DoRand(\"makeold\")'>[<u>设置全部</u>]</a>
-    &nbsp; <a href='#' onclick='DoRand(\"clearold\")'>[<u>取消全部</u>]</a>
+    &nbsp; <a href='#' onclick='DoRand(\"makeold\")' class='btn btn-secondary btn-sm'>设置全部</a>
+    &nbsp; <a href='#' onclick='DoRand(\"clearold\")' class='btn btn-secondary btn-sm'>取消全部</a>
     &nbsp; <span id='tmpct' style='color:red;font-weight:bold'>$okmsg</span>
     </td>
 </tr>

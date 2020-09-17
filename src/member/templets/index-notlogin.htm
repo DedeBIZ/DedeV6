@@ -20,7 +20,7 @@
     <div class="container">
       <div class="login-area">
         <h4 class="text-center py-2">欢迎登录</h4>
-        <form name='form1' method='POST' action='index_do.php'>
+        <form name='form1' method='POST' action='<?php echo $cfg_memberurl;?>/index_do.php'>
           <input type="hidden" name="fmdo" value="login">
           <input type="hidden" name="dopost" value="login">
           <input type="hidden" name="keeptime" value="604800">
