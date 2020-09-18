@@ -47,8 +47,8 @@
           <?php echo $row->typename?>
         </td>
         <td>
-          <a href='sys_group_edit.php?rank=<?php echo $row->rank?>'>[权限设定]</a>
-          <a href='sys_admin_user.php?rank=<?php echo $row->rank?>'>[组用户]</a>
+          <a href='sys_group_edit.php?rank=<?php echo $row->rank?>' class="btn btn-secondary btn-sm">权限设定</a>
+          <a href='sys_admin_user.php?rank=<?php echo $row->rank?>' class="btn btn-secondary btn-sm">组用户</a>
           <?php if($row->system==0){ ?><a
             href='sys_group_edit.php?dopost=del&rank=<?php echo $row->rank; ?>'>[删除组]</a><?php } ?>
         </td>

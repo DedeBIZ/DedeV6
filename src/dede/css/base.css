@@ -34,11 +34,6 @@ li,dd {
 	padding: 0px;
 }
 
-
-input {
-background: url(../images/input.png) repeat-x scroll 0px 0px;
-}
-
 select {
 	height: calc(1.5em + .75rem + 2px);
 	padding: .375rem .75rem;
@@ -93,7 +88,6 @@ label {
 }
 
 .alltxt {
-height: 18px;
 line-height: 18px;
 padding: 3px 3px 2px 3px;
 vertical-align: middle;

@@ -32,8 +32,8 @@ if($fmdo=="rename")
     $win->AddHidden("activepath",$activepath);
     $win->AddHidden("filename",$filename);
     $win->AddTitle("更改文件名，当前路径：$ndirstring");
-    $win->AddItem("旧名称：","<input name='oldfilename' type='input' class='alltxt' id='oldfilename' size='40' value='$filename'>");
-    $win->AddItem("新名称：","<input name='newfilename' type='input' class='alltxt' size='40' id='newfilename'>");
+    $win->AddItem("旧名称：","<input name='oldfilename' type='input' id='oldfilename' size='40' value='$filename'>");
+    $win->AddItem("新名称：","<input name='newfilename' type='input' size='40' id='newfilename'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
@@ -170,7 +170,8 @@ else if($fmdo=="newfile")
 {
     $content = "";
     $GLOBALS['filename'] = "newfile.txt";
-    $contentView = "<textarea name='str' style='width:99%;height:400'></textarea>\r\n";
+    $GLOBALS['extension'] = 'text/html';
+    $contentView = "<textarea id='str' name='str' style='width:99%;height:400'></textarea>\r\n";
     $GLOBALS['token'] = make_hash();
     $ctp = new DedeTagParse();
     $ctp->LoadTemplate(DEDEADMIN."/templets/file_edit.htm");
