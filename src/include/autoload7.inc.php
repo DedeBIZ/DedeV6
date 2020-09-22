@@ -1,9 +1,16 @@
 <?php
 if(!defined('DEDEINC')) exit("Request Error!");
+/**
+ * @version        $Id: autoload7.inc.php 1 17:44 2020-09-22 tianya $
+ * @package        DedeCMS.Libraries
+ * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        http://help.dedecms.com/usersguide/license.html
+ * @link           http://www.dedecms.com
+ */
 
 function dede_autoloader($classname)
 {
-    global $cfg_soft_lang;
     $classname = preg_replace("/[^0-9a-z_]/i", '', $classname);
     if( class_exists ( $classname ) )
     {

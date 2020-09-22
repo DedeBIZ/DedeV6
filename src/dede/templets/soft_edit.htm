@@ -108,7 +108,7 @@
         <td width="400%" height="24" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义属性：</td>
+              <td width="100">&nbsp;自定义属性：</td>
               <td>
                 <?php
 		    $dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
@@ -144,7 +144,7 @@
         <td width="400%" height="24" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;TAG标签：</td>
+              <td width="90">&nbsp;Tag标签：</td>
               <td>
                 <input name="tags" type="text" id="tags" value="<?php echo $tags; ?>"
                   style="width:300px" />(','号分开，单个标签小于12字节) </td>
@@ -207,7 +207,7 @@
         <td height="24" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;文章主栏目：</td>
+              <td width="100">&nbsp;文章主栏目：</td>
               <td>
                 <?php
           $typeOptions = GetOptionList($arcRow["typeid"],$cuserLogin->getUserChannel(),$channelid);
@@ -231,7 +231,7 @@ if($cfg_need_typeid2=='Y') {
         <td height="24" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;软件副栏目：</td>
+              <td width="100">&nbsp;软件副栏目：</td>
               <td>
                 <span id='typeid2ct'></span>
                 <input type='text' name='typeid2' id='typeid2'
@@ -362,9 +362,9 @@ if($cfg_need_typeid2=='Y') {
         <td height="24" class="bline">
           <table width="800" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="90" height="30">&nbsp;需会员权限：</td>
+              <td width="100" height="30">&nbsp;需会员权限：</td>
               <td width="179" align="center">
-                <select name="daccess" id="daccess" style="width:90px">
+                <select name="daccess" id="daccess" style="width:100px">
                   <?php
                 $dsql->SetQuery("Select * from `#@__arcrank` where rank>=0 ");
                 $dsql->Execute();
@@ -384,7 +384,7 @@ if($cfg_need_typeid2=='Y') {
             </tr>
             <tr>
               <td height="26" colspan="4" style="border-top:1px dashed #8EAF61">&nbsp; <span
-                  class="STYLE1">（如果设定了下载限制，<a href="soft_config.php"
+                  class="STYLE1 py-3">（如果设定了下载限制，<a href="soft_config.php"
                     target="_blank"><u>软件频道设置</u></a>中“附件下载方式：”必须选择“链接到跳转页面”） </span></td>
             </tr>
           </table>
@@ -397,7 +397,7 @@ if($cfg_need_typeid2=='Y') {
         <td height="24" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="72">&nbsp;其它地址：</td>
+              <td width="90">&nbsp;其它地址：</td>
               <td>
                 <input name="picnum" type="text" id="picnum" size="8" value="5" />
                 <button class='btn btn-secondary btn-sm' name='kkkup' type='button' id='kkkup2' onClick="MakeUpload();">增加数量</button>

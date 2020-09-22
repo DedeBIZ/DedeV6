@@ -108,7 +108,7 @@
         <td width="400%" height="24" colspan="2" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义属性：</td>
+              <td width="100">&nbsp;自定义属性：</td>
               <td><?php
          $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
          $dsql->Execute();
@@ -153,7 +153,7 @@
         <td width="400%" height="24" colspan="2" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;TAG标签：</td>
+              <td width="90">&nbsp;Tag标签：</td>
               <td><input name="tags" type="text" id="tags" value="<?php echo $tags; ?>" style="width:300px" />
                 (','号分开，单个标签小于12字节)</td>
               <td width="40">权重：</td>
@@ -213,7 +213,7 @@
         <td height="24" colspan="2" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;文章主栏目：</td>
+              <td width="100">&nbsp;文章主栏目：</td>
               <td><?php
             $typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
             echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
@@ -236,7 +236,7 @@ if($cfg_need_typeid2=='Y') {
         <td height="24" colspan="2" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;文章副栏目：</td>
+              <td width="100">&nbsp;文章副栏目：</td>
               <td><span id='typeid2ct'></span>
                 <input type='text' name='typeid2' id='typeid2'
                   value='<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>' style='width:200px;' />
@@ -264,7 +264,7 @@ if($cfg_need_typeid2=='Y') {
               <td>
                 <label><input name="remote" type="checkbox" class="np" id="remote" value="1" checked>
                 下载远程图片和资源</label>
-                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" checked>
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>>
                 提取第一个图片为缩略图</label> </td>
             </tr>
           </table>

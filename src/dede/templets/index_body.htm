@@ -44,6 +44,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .footer {
             padding: 10px;
         }
@@ -84,7 +85,7 @@
                     </div>
                     <!--/.card-header-->
                     <div class="card-body" id="_systeminfo">
-                    正在载入中...
+                        正在载入中...
                     </div>
                     <!--/.card-body-->
                 </div>
@@ -141,7 +142,7 @@
                                 echo "信息采集员或其它管理员";
                             }
                         ?>
-                                <a href="javascript:showMore()" class="btn btn-secondary btn-sm">查看更多</a></td>
+                                    <a href="javascript:showMore()" class="btn btn-secondary btn-sm">查看更多</a></td>
                             </tr>
                             <tr>
                                 <td colspan="2" class='nline' id="allInfoTD" style="display:none">
@@ -393,12 +394,10 @@
         </div>
     </div>
 
-<?php
-if (defined('DEDEBIZ')) {
-?>
-<script>
-    $(document).ready(function () {
-        setInterval(function(){
+    <script>
+
+        // 加载服务信息
+        function LoadServer() {
             $.get("index_body.php?dopost=system_info", function (data) {
                 let rsp = JSON.parse(data);
                 if (rsp.code === 200) {
@@ -428,16 +427,17 @@ if (defined('DEDEBIZ')) {
                 } else {
                     $("#_systeminfo").html(`尚未启动Dede商业站点服务，<a class="btn btn-danger">去开启</a>`);
                 }
-                
-            })
-        }, 5000)
 
+            });
+        }
 
-    });
-</script>
-<?php
-}
-?>
+        $(document).ready(function () {
+            LoadServer();
+            setInterval(function () {
+                LoadServer();
+            }, 1000)
+        });
+    </script>
 </body>
 
 </html>

@@ -119,7 +119,7 @@
         <td width="400%" height="24" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义属性：</td>
+              <td width="100">&nbsp;自定义属性：</td>
               <td><?php
           $dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
           $dsql->Execute();
@@ -152,7 +152,7 @@
         <td width="400%" height="24" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;TAG标签：</td>
+              <td width="90">&nbsp;Tag标签：</td>
               <td>
                 <input name="tags" type="text" id="tags" value="" style="width:300px" />(','号分开，单个标签小于12字节)
               </td>
@@ -202,7 +202,7 @@
         <td height="24" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;图集主栏目：</td>
+              <td width="100">&nbsp;图集主栏目：</td>
               <td>
                 <span id='typeidct'>
                   <?php
@@ -252,7 +252,7 @@
         <td height="24" colspan="4" class="bline" style="padding-top:6px">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="80">&nbsp;<b>表现方式：</b></td>
+              <td width="90">&nbsp;<b>表现方式：</b></td>
               <td>
                 <input name="pagestyle" class="np" type="radio" id="pagestyle1" onClick="checkMuList()" value="1"
                   <?php if($cfg_album_style==1) echo " checked='checked'"; ?> />
@@ -325,12 +325,12 @@
         <td colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0" height="100">
             <tr>
-              <td width="90">&nbsp;压缩包文件：</td>
+              <td width="100">&nbsp;压缩包文件：</td>
               <td><input type='text' name='zipfile' id='zipfile' style='width:300px'>
                 <button name='addon_bt' type='button' 
                   onClick="SelectSoft('form1.zipfile')" class="btn btn-secondary btn-sm">浏览...</button>
-                <input name="delzip" type="checkbox" id="delzip" value="1" checked="checked" />
-                处理后删除压缩文件 </td>
+                <label><input name="delzip" type="checkbox" id="delzip" value="1" checked="checked" />
+                处理后删除压缩文件</label> </td>
             </tr>
           </table>
         </td>
@@ -358,7 +358,7 @@
         <td width="100%" height="24" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="80" height="40">&nbsp;<b>手工上传：</b></td>
+              <td width="90" height="40">&nbsp;<b>手工上传：</b></td>
               <td>
                 <span class="btn btn-secondary btn-sm fileinput-button">
                   <i class="glyphicon glyphicon-plus"></i>

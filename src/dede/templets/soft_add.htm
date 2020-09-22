@@ -121,7 +121,7 @@
         <td width="400%" height="24" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义属性：</td>
+              <td width="100">&nbsp;自定义属性：</td>
               <td><?php
           $dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
           $dsql->Execute();
@@ -152,11 +152,11 @@
         <td width="400%" height="24" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="89">&nbsp;TAG标签：</td>
-              <td width="516">
+              <td width="89">&nbsp;Tag标签：</td>
+              <td width="540">
                 <input name="tags" type="text" id="tags" value="" style="width:300px" />
-                (','号分开，单个标签小于12字节</td>
-              <td width="37">权重：</td>
+                (','号分开，单个标签小于12字节)</td>
+              <td width="50">权重：</td>
               <td width="158"><input name="weight" type="text" id="weight" style="width:50px"
                   value="<?php echo $maxWright['cc'];?>" />(越小越靠前)</td>
             </tr>
@@ -215,7 +215,7 @@
         <td height="24" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;软件主栏目：</td>
+              <td width="100">&nbsp;软件主栏目：</td>
               <td>
                 <span id='typeidct'>
                   <?php
@@ -365,7 +365,7 @@
         <td height="24" class="bline">
           <table width="800" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="90" height="30">&nbsp;需会员权限：</td>
+              <td width="100" height="30">&nbsp;需会员权限：</td>
               <td width="179" align="left">
                 <select name="daccess" id="daccess" style="width:90px">
                   <?php
@@ -385,7 +385,7 @@
                   size="8" />个 </td>
             </tr>
             <tr>
-              <td height="26" colspan="4" style="border-top:1px dashed #8EAF61">&nbsp; <span
+              <td height="26" colspan="4" style="border-top:1px dashed #8EAF61" class="py-3">&nbsp; <span
                   class="STYLE1">（如果设定了下载限制，<a class='btn btn-secondary btn-sm' href="soft_config.php"
                     target="_blank">软件频道设置</a>中“附件下载方式：”必须选择“链接到跳转页面”） </span></td>
             </tr>

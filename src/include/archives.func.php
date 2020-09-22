@@ -5,16 +5,3 @@
 // 在开发过程中直接使用helper('archive');即可
 
 helper('archive');
-
-function IndexSub($idx, $num) {
-    return intval($idx - $num) == 0? '0 ' : intval($idx - $num);
-}
-
-// 用来返回index的active
-function IndexActive($idx){
-    if ($idx == 1) {
-        return ' active';
-    } else {
-        return '';
-    }
-}

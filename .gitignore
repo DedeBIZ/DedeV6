@@ -28,3 +28,4 @@ src/special/
 src/data/backupdata/*
 src/a/*.html
 src/data/mkall_cache_*.php
+src/data/payment/cod.php

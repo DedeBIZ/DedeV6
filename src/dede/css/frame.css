@@ -11,7 +11,7 @@ body {
 
 body {
 	height: 100%;
-	font-size: 12px;
+	font-size: 13px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	overflow: hidden;
 	z-index: 1;
@@ -36,16 +36,16 @@ form {
 
 .head {
 	width: 100%;
-	height: 66px;
+	height: 76px;
 	overflow: hidden;
 	z-index: 8;
 	position: relative;
 }
 
 .top {
-	height: 37px;
+	height: 47px;
 	width: 100%;
-	background-color: rgb(94, 149, 0);
+	background-image: linear-gradient(135deg, #008E38 0%, #639709 100%);
 	overflow: hidden;
 	clear: both;
 }
@@ -53,12 +53,13 @@ form {
 .top .top_logo {
 	width: 170px;
 	height: 37px;
+	margin-top: 5px;
 	float: left;
 }
 
 .top .top_link {
 	float: right;
-	padding: 5px 10px 0px 0px;
+	padding: 10px 10px 0px 0px;
 }
 
 .top .top_link ul {
@@ -283,7 +284,7 @@ body.hidemenu .right {
 
 .left {
 	position: absolute;
-	top: 66px;
+	top: 76px;
 	width: 212px;
 	left: 0px;
 	bottom: 0px;
@@ -303,6 +304,10 @@ body.hidemenu .right {
 	height: 100%;
 }
 
+.top_link {
+	font-size: 13px;
+}
+
 .menu iframe {
 	height: 100%;
 	width: 99.99%;
@@ -312,7 +317,7 @@ body.hidemenu .right {
 .right {
 	position: absolute;
 	right: 0;
-	top: 66px;
+	top: 76px;
 	bottom: 0px;
 	z-index: 7;
 }

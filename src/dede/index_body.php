@@ -216,12 +216,6 @@ else if ($dopost == 'getRightSide') {
     </table>
 <?php
     exit;
-} else if ($dopost == 'showauth') {
-    include('templets/index_body_showauth.htm');
-    exit;
-} else if ($dopost == 'showad') {
-    include('templets/index_body_showad.htm');
-    exit;
 } else if ($dopost == 'setskin') {
     $cskin = empty($cskin) ? 1 : $cskin;
     $skin = !in_array($cskin, array(1, 2, 3, 4)) ? 1 : $cskin;

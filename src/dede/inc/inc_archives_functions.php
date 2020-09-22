@@ -734,7 +734,7 @@ function Replace_Links( &$body, $allow_urls=array()  )
     $host_rule = preg_replace("#[\n\r]#", '', $host_rule);
     $host_rule = str_replace('.', "\\.", $host_rule);
     $host_rule = str_replace('/', "\\/", $host_rule);
-    $arr = '';
+    $arr = array();
     preg_match_all("#<a([^>]*)>(.*)<\/a>#iU", $body, $arr);
     if( is_array($arr[0]) )
     {
@@ -857,7 +857,7 @@ function UploadOneImage($upname,$handurl='',$isremote=1,$ntitle='')
         $filename = $fullUrl;
 
         //水印
-        @WaterImg($imgfile, 'up');
+        @WaterImg($cfg_basedir.$fullUrl, 'up');
         $isrm_up = TRUE;
     }
 
@@ -870,7 +870,7 @@ function UploadOneImage($upname,$handurl='',$isremote=1,$ntitle='')
         }
 
         //远程图片并要求本地化
-        if($isremote==1 && preg_match("#^http:\/\/#i", $handurl))
+        if($isremote==1 && preg_match("#^http[s]?:\/\/#i", $handurl))
         {
             $ddinfos = GetRemoteImage($handurl, $cuserLogin->getUserID());
             if(!is_array($ddinfos))
@@ -898,7 +898,7 @@ function UploadOneImage($upname,$handurl='',$isremote=1,$ntitle='')
 
         //把新上传的图片信息保存到媒体文档管理档案中
         $inquery = "
-        INSERT INTO #@__uploads(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
+        INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
         VALUES ('$title','$filename','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".time()."','".$cuserLogin->getUserID()."');
     ";
         $dsql->ExecuteNoneQuery($inquery);

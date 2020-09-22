@@ -81,7 +81,7 @@ function checkSubmit()
       <td width="400%" height="24" class="bline">
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="90">&nbsp;自定义属性：</td>
+          <td width="100">&nbsp;自定义属性：</td>
           <td>
             <?php
                 $dsql->SetQuery("SELECT * FROM `#@__arcatt` WHERE att<>'j' AND att<>'p' ORDER BY sortid ASC");
@@ -162,7 +162,7 @@ function checkSubmit()
     <tr>
       <td height="24" class="bline"> <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;文档主栏目：</td>
+            <td width="100">&nbsp;文档主栏目：</td>
             <td>
             <?php
             $typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);

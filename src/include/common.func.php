@@ -364,6 +364,18 @@ function ResetVdValue()
     $_SESSION['securimage_code_value'] = '';
 }
 
+function IndexSub($idx, $num) {
+    return intval($idx - $num) == 0? '0 ' : intval($idx - $num);
+}
+
+// 用来返回index的active
+function IndexActive($idx){
+    if ($idx == 1) {
+        return ' active';
+    } else {
+        return '';
+    }
+}
 
 // 自定义函数接口
 // 这里主要兼容早期的用户扩展,v5.7之后我们建议使用小助手helper进行扩展

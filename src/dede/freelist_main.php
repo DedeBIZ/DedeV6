@@ -89,8 +89,8 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
         <td> {$row['templet']} </td>
         <td> {$row['click']} </td>
         <td>".MyDate("y-m-d",$row['edtime'])."</td>
-        <td> <a href='#' onclick='EditNote({$row['aid']})' class='btn btn-secondary btn-sm'> <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> 更改</a> |
-        <a href='#' onclick='CreateNote({$row['aid']})' class='btn btn-secondary btn-sm'> <i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> 更新</a> |
+        <td> <a href='#' onclick='EditNote({$row['aid']})' class='btn btn-secondary btn-sm'> <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> 更改</a>
+        <a href='#' onclick='CreateNote({$row['aid']})' class='btn btn-secondary btn-sm'> <i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> 更新</a>
          <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-secondary btn-sm'> <i class=\"fa fa-trash\" aria-hidden=\"true\"></i> 删除</a>
     </td>
   </tr>";

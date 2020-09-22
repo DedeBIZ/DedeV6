@@ -112,7 +112,7 @@ body {
     <tr>
       <td width="400%" height="24" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;自定义属性：</td>
+            <td width="100">&nbsp;自定义属性：</td>
             <td><?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
@@ -140,7 +140,7 @@ body {
     <tr>
       <td width="400%" height="24" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;TAG标签：</td>
+            <td width="90">&nbsp;Tag标签：</td>
             <td width="536"><input name="tags" type="text" id="tags" value="<?php echo $tags; ?>" style="width:300px" />
               (','号分开，单个标签小于12字节) </td>
             <td width="40">权重：</td>
@@ -186,7 +186,7 @@ body {
     <tr>
       <td height="24" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;图集主栏目：</td>
+            <td width="100">&nbsp;图集主栏目：</td>
             <td><?php
            	$typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
            	echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
@@ -205,7 +205,7 @@ if($cfg_need_typeid2=='Y') {
     <tr>
       <td height="24" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;图集副栏目：</td>
+            <td width="100">&nbsp;图集副栏目：</td>
             <td><span id='typeid2ct'></span>
               <input type='text' name='typeid2' id='typeid2' value='<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>' style='width:200px;' />
               <img src='images/menusearch2.gif' style='cursor:pointer;' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2', '<?php echo $arcRow['typeid2']; ?>')" alt='选择副栏目' title='选择副栏目' /></td>
@@ -404,7 +404,7 @@ if($cfg_need_typeid2=='Y') {
     <tr id="zipff" style="display:none">
       <td height="24" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0" height="100">
           <tr>
-            <td width="90">&nbsp;压缩包文件：</td>
+            <td width="100">&nbsp;压缩包文件：</td>
             <td><input type='text' name='zipfile' id='zipfile' style='width:300px'>
               <button name='addon_bt' type='button' class='btn btn-secondary btn-sm' onClick="SelectSoft('form1.zipfile')">浏览...</button>
               <label><input name="delzip" type="checkbox" id="delzip" value="1" checked="checked" />
@@ -477,7 +477,7 @@ if($cfg_need_typeid2=='Y') {
     <tr>
       <td height="24" colspan="4" class="bline" style="background:#F9FCEF;"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;<b>增加新图片：</b></td>
+            <td width="100">&nbsp;<b>增加新图片：</b></td>
             <td>
               <span class="btn btn-secondary btn-sm fileinput-button">
                 <i class="glyphicon glyphicon-plus"></i>
