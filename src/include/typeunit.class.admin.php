@@ -150,7 +150,7 @@ class TypeUnit
                 echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
                 echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-secondary btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
                 echo " <a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-secondary btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
-                echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:25px;height:20px'></td></tr></table></td></tr>\r\n";
+                echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
             }
             //带封面的频道
             else if($ispart==1)
@@ -165,7 +165,7 @@ class TypeUnit
                 echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
                 echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-secondary btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
                 echo " <a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-secondary btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
-                echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:25px;height:20px'></td></tr></table></td></tr>\r\n";
+                echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
             }
             //独立页面
             else if($ispart==2)
@@ -178,7 +178,7 @@ class TypeUnit
                 echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
                 echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-secondary btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
                 echo " <a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-secondary btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
-                echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:25px;height:20px'></td></tr></table></td></tr>\r\n";
+                echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
             }
             echo "  <tr><td colspan='2' id='suns".$id."'>";
             $lastid = GetCookie('lastCid');
@@ -252,7 +252,7 @@ class TypeUnit
                     echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
                     echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-secondary btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
                     echo " <a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除' class='btn btn-secondary btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
-                    echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:25px;height:20px'></td></tr></table></td></tr>\r\n";
+                    echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
                 }
 
                 //封面频道
@@ -268,7 +268,7 @@ class TypeUnit
                     echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
                     echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-secondary btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
                     echo " <a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除' class='btn btn-secondary btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
-                    echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:25px;height:20px'></td></tr></table></td></tr>\r\n";
+                    echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
                 }
 
                 //独立页面
@@ -283,7 +283,7 @@ class TypeUnit
                     echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
                     echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-secondary btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
                     echo " <a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除' class='btn btn-secondary btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
-                    echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:25px;height:20px'></td></tr></table></td></tr>\r\n";
+                    echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
                 }
                 echo "  <tr><td id='suns".$id."' style='display:none'><table width='100%' border='0' cellspacing='0' cellpadding='0'>";
                 $this->LogicListAllSunType($id,$step."　");

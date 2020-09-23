@@ -60,6 +60,12 @@ function GetFieldMake($dtype, $fieldname, $dfvalue, $mxlen)
         $fields[0] = " `$fieldname` varchar(100) NOT NULL default '';";
         $fields[1] = "varchar(100)";
     }
+    else if($dtype=="relation") {
+        if(empty($dfvalue)) $dfvalue = '';
+        
+        $fields[0] = " `$fieldname` TEXT NOT NULL default '$dfvalue';";
+        $fields[1] = "TEXT";
+    }
     else if($dtype=="textchar")
     {
         if(empty($dfvalue)) $dfvalue = '';

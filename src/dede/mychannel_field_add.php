@@ -5,6 +5,7 @@
  * @version        $Id: mychannel_field_add.php 1 15:07 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -25,6 +26,7 @@ if($action=='save')
     $dfvalue = trim($vdefault);
     $isnull = ($isnull==1 ? "true" : "false");
     $mxlen = $maxlength;
+
     
     if(preg_match("#^(select|radio|checkbox)$#i", $dtype))
     {
@@ -55,9 +57,10 @@ if($action=='save')
 
     //检测被修改的字段类型
     $fieldinfos = GetFieldMake($dtype, $fieldname, $dfvalue, $mxlen);
+
     $ntabsql = $fieldinfos[0];
     $buideType = $fieldinfos[1];
-    $rs = $dsql->ExecuteNoneQuery(" ALTER TABLE `$trueTable` ADD  $ntabsql ");
+    $rs = $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` ADD $ntabsql ");
     if(!$rs)
     {
         $gerr = $dsql->GetError();
@@ -153,6 +156,15 @@ $f = '';
 foreach($fields as $k=>$v)
 {
     $f .= ($f=='' ? $k : ' '.$k);
+}
+
+// 获取频道模型
+$dsql->SetQuery("SELECT id,typename,nid FROM `#@__channeltype` WHERE id<>-1 AND isshow=1 ORDER BY id");
+$dsql->Execute();
+while($row=$dsql->GetObject())
+{
+    $channelArray[$row->id]['typename'] = $row->typename;
+    $channelArray[$row->id]['nid'] = $row->nid;
 }
 
 require_once(DEDEADMIN."/templets/mychannel_field_add.htm");

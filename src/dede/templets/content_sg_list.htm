@@ -105,6 +105,20 @@
 			return allSel;
 		}
 
+		function getCheckboxItem2() {
+			var allSel = "";
+			if (document.form2.arcID.value) return document.form2.arcID.value;
+			for (i = 0; i < document.form2.arcID.length; i++) {
+				if (document.form2.arcID[i].checked) {
+					if (allSel == "")
+						allSel = document.form2.arcID[i].value;
+					else
+						allSel = allSel + "," + document.form2.arcID[i].value;
+				}
+			}
+			return allSel;
+		}
+
 		//获得选中其中一个的id
 		function getOneItem() {
 			var allSel = "";
@@ -125,12 +139,23 @@
 				}
 			}
 		}
+		
 		function noSelAll() {
 			for (i = 0; i < document.form2.arcID.length; i++) {
 				if (document.form2.arcID[i].checked) {
 					document.form2.arcID[i].checked = false;
 				}
 			}
+		}
+
+		function ReturnValue() {
+			if (window.opener.document.<?php echo $f ?>.value == "") {
+				window.opener.document.<?php echo $f ?>.value = getCheckboxItem2();
+			} else {
+				window.opener.document.<?php echo $f ?>.value += "," + getCheckboxItem2();
+			}
+			window.opener = null;
+			window.close();
 		}
 	</script>
 </head>
@@ -227,6 +252,13 @@
 									onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid); ?>)"
 									class="coolbg">&nbsp;移动&nbsp;</a>
 								<a class="btn btn-secondary btn-sm" href="javascript:delArc(0)" class="coolbg">&nbsp;删除&nbsp;</a>
+								<?php
+								if(!empty($f)) {
+								?>
+								<a href="javascript:ReturnValue()" class="btn btn-secondary btn-sm">把选定值加到列表</a>
+								<?php
+								}
+								?>
 							</td>
 						</tr>
 					</form>
@@ -249,22 +281,22 @@
 										<td>
 											<table width='600' border='0' cellpadding='0' cellspacing='0' class="table-borderless">
 												<tr>
-													<td width='90' align='center'>请选择类目：</td>
+													<td width='160' align='center'>请选择类目：</td>
 													<td width='160'>
 														<select name='cid' style='width:150'>
 															<option value='0'>选择分类...</option>
 															{dede:global.optionarr/}
 														</select>
 													</td>
-													<td width='70'>
+													<td width='100'>
 														关键字：
 													</td>
 													<td width='160'>
 														<input type='text' name='keyword' value='{dede:global.keyword/}'
 															style='width:150'>
 													</td>
-													<td>
-														<button type="submit" class="btn btn-secondary">搜索</button>
+													<td width='100'>
+														<button type="submit" class="btn btn-secondary btn-sm">搜索</button>
 													</td>
 												</tr>
 											</table>

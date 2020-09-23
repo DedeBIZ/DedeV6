@@ -233,6 +233,19 @@ color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywo
         $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
     ClearMyAddon($arcID, $title);
+
+    // 自动更新关联内容
+    if (is_array($automake)) {
+        foreach ($automake as $key => $value) {
+            if (isset(${$key}) && !empty(${$key})) {
+                $ids = explode(",", ${$key});
+                foreach ($ids as $id) {
+                    MakeArt($id,true,true,$isremote);
+                }
+            }
+        }
+    }
+
     //返回成功信息
     $msg = "    　　请选择你的后续操作：
     <a href='archives_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布文档</a>

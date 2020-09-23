@@ -5,6 +5,7 @@
  * @version        $Id: mychannel_field_edit.php 1 15:22 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -37,6 +38,16 @@ foreach($ds as $d)
     $dds = explode(',', trim($d));
     $fieldtypes[$dds[0]] = $dds[1];
 }
+
+// 获取频道模型
+$dsql->SetQuery("SELECT id,typename,nid FROM `#@__channeltype` WHERE id<>-1 AND isshow=1 ORDER BY id");
+$dsql->Execute();
+while($crow=$dsql->GetObject())
+{
+    $channelArray[$crow->id]['typename'] = $crow->typename;
+    $channelArray[$crow->id]['nid'] = $crow->nid;
+}
+
 //保存更改
 /*--------------------
 function _SAVE()

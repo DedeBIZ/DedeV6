@@ -21,6 +21,7 @@ $mid = isset($mid) ? intval($mid) : 0;
 
 if(!isset($keyword)) $keyword = '';
 if(!isset($flag)) $flag = '';
+if(!isset($f)) $f = '';
 if(!isset($arcrank)) $arcrank = '';
 if(!isset($dopost)) $dopost = '';
 
@@ -132,7 +133,7 @@ if(empty($channelid)
 }
 if($channelid < -1 )
 {
-    header("location:content_sg_list.php?cid=$cid&channelid=$channelid&keyword=$keyword");
+    header("location:content_sg_list.php?f=$f&cid=$cid&channelid=$channelid&keyword=$keyword");
     exit();
 }
 

@@ -132,6 +132,9 @@ function getOneItem()
 
 function selAll()
 {
+	if (typeof document.form2.arcID.length === "undefined") {
+		document.form2.arcID.checked = true;
+	}
 	for(i=0;i<document.form2.arcID.length;i++)
 	{
 		if(!document.form2.arcID[i].checked)
@@ -142,6 +145,9 @@ function selAll()
 }
 function noSelAll()
 {
+	if (typeof document.form2.arcID.length === "undefined") {
+		document.form2.arcID.checked = false;
+	}
 	for(i=0;i<document.form2.arcID.length;i++)
 	{
 		if(document.form2.arcID[i].checked)

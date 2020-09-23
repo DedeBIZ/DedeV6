@@ -320,6 +320,19 @@ else if($dopost=='save')
         $arcUrl = $cfg_phpurl."/view.php?aid=$id";
     }
     ClearMyAddon($id, $title);
+    
+    // 自动更新关联内容
+    if (is_array($automake)) {
+        foreach ($automake as $key => $value) {
+            if (isset(${$key}) && !empty(${$key})) {
+                $ids = explode(",", ${$key});
+                foreach ($ids as $id) {
+                    MakeArt($id,true,true,$isremote);
+                }
+            }
+        }
+    }
+
     //返回成功信息
     $msg = "
     　　请选择你的后续操作：

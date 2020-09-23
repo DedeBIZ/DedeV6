@@ -40,14 +40,30 @@
 
       if (spage == "no") spage = "";
 
+      relstr = "";
+
+      if (dtype==="relation") {
+        relstr = " automake=\""+automake+"\" channel=\""+$("#channeltype").val()+"\"";
+      }
+
       revalue = "<field:" + fieldname + " itemname=\"" + itemname + "\" autofield=\"" + autofield + "\" notsend=\"" + notsend + "\" type=\"" + dtype + "\"";
-      revalue += " isnull=\"" + sisnull + "\" islist=\"" + islist + "\" default=\"" + vdefault + "\" ";
+      revalue += relstr + " isnull=\"" + sisnull + "\" islist=\"" + islist + "\" default=\"" + vdefault + "\" ";
       revalue += " maxlength=\"" + maxlength + "\" page=\"" + spage + "\">\r\n" + vinnertext + "</field:" + fieldname + ">\r\n";
       document.form1.fieldstring.value = revalue;
 
       return true;
 
     }
+
+    $(document).ready(function () {
+      $("#type").change(function (ele) {
+        if ($(ele.currentTarget).val() === "relation") {
+          $("#_relation").show();
+        } else {
+          $("#_relation").hide();
+        }
+      })
+    });
   </script>
   <style type="text/css">
     td {
@@ -175,10 +191,39 @@
             <option value="radio">使用radio选项卡</option>
             <option value="checkbox">Checkbox多选框</option>
             <option value="stepselect">联动类型</option>
+            <option value="relation">关联内容</option>
             <?php
            }
           ?>
           </select> </td>
+      </tr>
+      <tr id="_relation" <?php echo $dtype=="relation"? '' : 'style="display: none;"';?>> 
+        <td bgcolor="#FFFFFF"><strong>内容模型：</strong><br>
+        <span class="STYLE2">
+        选择关联内容对应的内容模型
+        </span>
+        </td>
+        <td bgcolor="#FFFFFF"> 
+          <select name="channeltype" id="channeltype" style="width:200px">
+            <?php
+              $channelid = $ctag->GetAtt('channel') == "" ? 1 : $ctag->GetAtt('channel');
+              
+              foreach($channelArray as $k=>$arr)
+              {
+                if($k==$channelid) {
+                    $nid = $arr['nid'];
+                    echo "    <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                }
+                else
+                {
+                    echo "    <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                }
+              }
+            ?>
+          </select>
+          <label><input name="relation_automake" type="checkbox" class="np" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>>
+            发布时候自动更新关联内容HTML</label>
+        </td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><strong>内容是否需要分页符：</strong><br />

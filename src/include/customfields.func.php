@@ -18,7 +18,6 @@
  */
 function GetFormItem($ctag, $admintype='admin')
 {
-    global $dsql;
     $fieldname = $ctag->GetName();
     $fieldType =     $ctag->GetAtt('type');
     $formitem = $formitem = GetSysTemplets("custom_fields_{$admintype}.htm");
@@ -161,11 +160,32 @@ function GetFormItem($ctag, $admintype='admin')
     {
         $dfvalue = ($ctag->GetAtt('default')!='' ? $ctag->GetAtt('default') : '0');
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:100px'  class='intxt' value='$dfvalue' /> (填写数值)\r\n";
+    } else if($fieldType=='relation') {
+        $dfvalue = ($ctag->GetAtt('default')!='' ? $ctag->GetAtt('default') : '');
+        $channel = ($ctag->GetAtt('channel') == "")? "1" : $ctag->GetAtt('channel');
+        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:90%;height:80px'>$dfvalue</textarea><br>
+        <button type='button' class='btn btn-secondary btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
+        if ($ctag->GetAtt('automake') == 1) {
+            $innertext .= "<input type='hidden' name='automake[$fieldname]' value=1>";
+        }
+        
+        $innertext .= <<<EOT
+<script>
+if(typeof SelectArcList === "undefined") {
+    function SelectArcList(fname,cid) {
+    var posLeft = 10;
+    var posTop = 10;
+    window.open("content_select_list.php?f=" + fname+"&channelid="+cid, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=500,left=" + posLeft + ", top=" + posTop);
+    }
+}
+</script>
+EOT;
     }
     else
     {
         $dfvalue = ($ctag->GetAtt('default')!='' ? $ctag->GetAtt('default') : '');
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:250px'  class='intxt' value='$dfvalue' />\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:250px'  class='intxt' value='$dfvalue' />
+        \r\n";
     }
     $formitem = str_replace("~name~",$ctag->GetAtt('itemname'),$formitem);
     $formitem = str_replace("~form~",$innertext,$formitem);
@@ -370,7 +390,7 @@ function GetFieldValue($dvalue, $dtype, $aid=0, $job='add', $addvar='', $adminty
  */
 function GetFormItemValue($ctag, $fvalue, $admintype='admin', $fieldname='')
 {
-    global $cfg_basedir,$dsql;
+    global $cfg_basedir;
     $fieldname = $ctag->GetName();
     $formitem = $formitem = GetSysTemplets("custom_fields_{$admintype}.htm");
     $innertext = trim($ctag->GetInnerText());
@@ -539,6 +559,25 @@ function GetFormItemValue($ctag, $fvalue, $admintype='admin', $fieldname='')
     else if($ftype=="int"||$ftype=="float")
     {
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:100px'  class='intxt' value='$fvalue' /> (填写数值)\r\n";
+    }
+    else if($ftype=="relation") {
+        $channel = ($ctag->GetAtt('channel') == "")? "1" : $ctag->GetAtt('channel');
+        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:90%;height:80px'>$fvalue</textarea><br>
+        <button type='button' class='btn btn-secondary btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
+        if ($ctag->GetAtt('automake') == 1) {
+            $innertext .= "<input type='hidden' name='automake[$fieldname]' value=1>";
+        }
+        $innertext .= <<<EOT
+<script>
+if(typeof SelectArcList === "undefined") {
+    function SelectArcList(fname,cid) {
+    var posLeft = 10;
+    var posTop = 10;
+    window.open("content_select_list.php?f=" + fname+"&channelid="+cid, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=500,left=" + posLeft + ", top=" + posTop);
+    }
+}
+</script>
+EOT;
     }
     else
     {

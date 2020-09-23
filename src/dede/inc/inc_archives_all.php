@@ -131,6 +131,12 @@ function GetFormItem($ctag)
         $formitem = str_replace("~form~",$innertext,$formitem);
         return $formitem;
     }
+    else if ($ctag->GetAtt("type")=="relation") {
+        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:100%;height:80'></textarea>\r\n";
+        $formitem = str_replace("~name~",$ctag->GetAtt('itemname'),$formitem);
+        $formitem = str_replace("~form~",$innertext,$formitem);
+        return $formitem;
+    }
     else
     {
         if($ctag->GetAtt('default')!="") $dfvalue = $ctag->GetAtt('default');
