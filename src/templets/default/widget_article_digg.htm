@@ -24,8 +24,8 @@
 
 <script>
     // 获取顶踩数据
-    function GetDigg(aid) {
-        let url = `{dede:global.cfg_phpurl/}/digg_ajax.php?id=${aid}&format=json`;
+    function GetDigg(aid,cid) {
+        let url = `{dede:global.cfg_phpurl/}/digg_ajax.php?id=${aid}&cid=${cid}&format=json`;
         $.get(url, function (data) {
             let reval = JSON.parse(data);
             if (reval.code === 200) {
@@ -61,7 +61,7 @@
         else {
             SetCookie('diggid', aid, 1);
         }
-        let url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action=" + ftype + "&id=" + aid + "&format=json";
+        let url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action=" + ftype + "&id=" + aid + "&format=json&cid={dede:field.channel/}";
         $.get(url, function (data) {
             let reval = JSON.parse(data);
             if (reval.code === 200) {
@@ -73,6 +73,6 @@
         });
     }
 
-    GetDigg("{dede:field.id/}");
+    GetDigg("{dede:field.id/}", "{dede:field.channel/}");
 
 </script>

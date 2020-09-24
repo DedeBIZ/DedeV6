@@ -11,17 +11,19 @@
  * @version        $Id: count.php 1 20:43 2010年7月8日Z tianya $
  * @package        DedeCMS.Site
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
 require_once(dirname(__FILE__)."/../include/common.inc.php");
 if(isset($aid)) $arcID = $aid;
 
-$cid = empty($cid)? 1 : intval(preg_replace("/[^-\d]+[^\d]/",'', $cid));
-$arcID = $aid = empty($arcID)? 0 : intval(preg_replace("/[^\d]/",'', $arcID));
+$cid = empty($cid)? 1 : intval($cid);
+$arcID = $aid = empty($arcID)? 0 : intval($arcID);
 $format = isset($format)? $format : "";
 
-$maintable = '#@__archives';$idtype='id';
+$maintable = '#@__archives';
+$idtype='id';
 if($aid==0) exit();
 
 //获得频道模型ID
