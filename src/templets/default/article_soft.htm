@@ -118,7 +118,7 @@
 		// 页面加载触发
 		$(document).ready(function () {
 			// 获取文档点击数统计
-			$.get("{dede:field name='phpurl'/}/count.php?format=json&view=yes&aid={dede:field.id/}&mid=1", function (data) {
+			$.get("{dede:field name='phpurl'/}/count.php?format=json&view=yes&aid={dede:field.id/}&mid=1&cid={dede:field.channel/}", function (data) {
 				let result = JSON.parse(data);
 				$("#_count").html(result.data.click);
 			})

@@ -620,6 +620,10 @@ nav.location .dede li.active .nav-link {
     max-width: 40%!important;
 }
 
+.image-item img{
+    height: 160px;
+}
+
 @media only screen and (max-width: 1199px) {
     .ddcard > .card-header .caption span {
         font-size: 14px;

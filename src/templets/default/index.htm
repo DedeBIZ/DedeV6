@@ -7,52 +7,12 @@
     <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/bootstrap.min.css">
     <link href="{dede:global.cfg_cmsurl/}/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/dede.css">
+    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/index.css">
     <link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/img/favicon.png">
     <script src="{dede:global.cfg_cmsurl/}/static/js/jquery.min.js"></script>
     <title>{dede:global.cfg_webname/}</title>
     <meta name="keywords" content="{dede:global.cfg_keywords/}">
     <meta name="description" content="{dede:global.cfg_description/}">
-    <style>
-        .hot-news {
-            overflow-x: hidden;
-            overflow-y: scroll;
-            height: 370px;
-            -webkit-overflow-scrolling: touch;
-            overflow: -moz-scrollbars-none;
-        }
-
-        .hot-news::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hot-news li {
-            overflow: unset!important;
-        }
-
-        .quick img {
-            width: 100%;
-        }
-
-        .spec .card {
-            text-align: center;
-        }
-
-        .spec .card img {
-            max-width: 200px;
-            margin: 0 auto;
-        }
-
-        .spec .card-body {
-            padding: .25em;
-        }
-
-        .carousel-item img {
-            width: 100% !important;
-        }
-    </style>
-    <script>
-        const currentNavTypeID = '-1';
-    </script>
 </head>
 
 <body>
@@ -150,10 +110,10 @@
                     </div>
                 </div>
                 <div class="col-md-12 mt-3">
-                    <div class="row row-cols-2 row-cols-md-5">
-                      {dede:arclist row=5 orderby=pubdate type='image.'}
+                    <div class="row row-cols-2 row-cols-md-4">
+                      {dede:arclist row=4 orderby=pubdate type='image.'}
                         <div class="col">
-                            <div class="card border-0">
+                            <div class="card border-0 image-item">
                                 <a href="[field:arcurl/]" title="[field:fulltitle/]" class="text-body stretched-link"><img
                                         src="[field:litpic/]" class="card-img-top" alt="[field:fulltitle/]">
                                     <div class="card-body">

@@ -131,14 +131,7 @@ else if($dopost=='save')
         WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
-    //使用第一张图作为缩略图
-    if($ddisfirst==1 && $litpic=='')
-    {
-        if(isset($imgurl1))
-        {
-            $litpic = GetDDImage('ddfirst', $imgurl1, $isrm);
-        }
-    }
+
     // 处理新的缩略图上传
     if ($litpic_b64 != "") {
         $data = explode( ',', $litpic_b64 );
@@ -153,6 +146,15 @@ else if($dopost=='save')
         // 加水印
         WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
+    }
+
+    //使用第一张图作为缩略图
+    if($ddisfirst==1 && $litpic=='')
+    {
+        if(isset($imgurl1))
+        {
+            $litpic = GetDDImage('ddfirst', $imgurl1, $isrm);
+        }
     }
 
     //生成文档ID

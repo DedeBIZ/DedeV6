@@ -1,0 +1,36 @@
+.hot-news {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 370px;
+    -webkit-overflow-scrolling: touch;
+    overflow: -moz-scrollbars-none;
+}
+
+.hot-news::-webkit-scrollbar {
+    display: none;
+}
+
+.hot-news li {
+    overflow: unset!important;
+}
+
+.quick img {
+    width: 100%;
+}
+
+.spec .card {
+    text-align: center;
+}
+
+.spec .card img {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.spec .card-body {
+    padding: .25em;
+}
+
+.carousel-item img {
+    width: 100% !important;
+}
