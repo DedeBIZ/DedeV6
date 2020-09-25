@@ -794,13 +794,13 @@ class FreeList
         $totalpage = ceil($this->TotalResult/$this->PageSize);
         if($totalpage <= 1 && $this->TotalResult > 0)
         {
-            return "共1页/".$this->TotalResult."条记录";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li>";
         }
         if($this->TotalResult == 0)
         {
-            return "共0页/".$this->TotalResult."条记录";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li>";
         }
-        $maininfo = " 共{$totalpage}页/".$this->TotalResult."条记录 ";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条记录</span></li>";
         $purl = $this->GetCurUrl();
         $tnamerule = $this->GetMakeFileRule();
         $tnamerule = preg_replace("#^(.*)\/#", '', $tnamerule);
@@ -809,12 +809,12 @@ class FreeList
         //获得上一页和主页的链接
         if($this->PageNo != 1)
         {
-            $prepage.="<a href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a>\r\n";
-            $indexpage="<a href='".str_replace("{page}", 1, $tnamerule)."'>首页</a>\r\n";
+            $prepage.="<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
+            $indexpage="<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>\r\n";
         }
         else
         {
-            $indexpage="<a href='#'>首页</a>\r\n";
+            $indexpage="<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
 
         //下一页,未页的链接
@@ -825,7 +825,7 @@ class FreeList
         }
         else
         {
-            $endpage="<a href='#'>末页</a>\r\n";
+            $endpage="<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
 
         //option链接
@@ -870,11 +870,11 @@ class FreeList
         {
             if($j==$this->PageNo)
             {
-                $listdd.= "<strong>{$j}</strong>\r\n";
+                $listdd.= "<li class=\"page-item active\"><span class='page-link'>{$j}</span></li>\r\n";
             }
             else
             {
-                $listdd.="<a href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a>\r\n";
+                $listdd.="<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
             }
         }
         $plist = "";
@@ -930,13 +930,13 @@ class FreeList
         $totalpage = ceil($this->TotalResult/$this->PageSize);
         if($totalpage<=1 && $this->TotalResult>0)
         {
-            return "共1页/".$this->TotalResult."条记录";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li>";
         }
         if($this->TotalResult == 0)
         {
-            return "共0页/".$this->TotalResult."条记录";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li>";
         }
-        $maininfo = "共{$totalpage}页/".$this->TotalResult."条记录";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条记录</span></li>";
         $purl = $this->GetCurUrl();
         $geturl = "lid=".$this->FreeID."&TotalResult=".$this->TotalResult."&";
         $hidenform = "<input type='hidden' name='lid' value='".$this->FreeID."' />\r\n";
@@ -946,21 +946,21 @@ class FreeList
         //获得上一页和下一页的链接
         if($this->PageNo != 1)
         {
-            $prepage.="<a href='".$purl."PageNo=$prepagenum'>上一页</a>\r\n";
-            $indexpage="<a href='".$purl."PageNo=1'>首页</a>\r\n";
+            $prepage.="<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a>\r\n";
+            $indexpage="<li class='page-item'><a class='page-link' href='".$purl."PageNo=1'>首页</a>\r\n";
         }
         else
         {
-            $indexpage="<a href='#'>首页</a>\r\n";
+            $indexpage="<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
         if($this->PageNo!=$totalpage && $totalpage>1)
         {
-            $nextpage.="<a href='".$purl."PageNo=$nextpagenum'>下一页</a>\r\n";
-            $endpage="<a href='".$purl."PageNo=$totalpage'>末页</a>\r\n";
+            $nextpage.="<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a>\r\n";
+            $endpage="<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a>\r\n";
         }
         else
         {
-            $endpage="<a href='#'>末页</a>\r\n";
+            $endpage="<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
 
         //获得数字链接
@@ -981,11 +981,11 @@ class FreeList
         {
             if($j==$this->PageNo)
             {
-                $listdd.= "<a href='#'>.$j.</a>\r\n";
+                $listdd.= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
             }
             else
             {
-                $listdd.="<a href='".$purl."PageNo=$j'>".$j."</a>\r\n";
+                $listdd.="<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
             }
         }
         $plist  = "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
