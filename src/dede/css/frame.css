@@ -404,7 +404,7 @@ body.hidemenu .right {
 }
 
 .allmenu {
-	width: 700px;
+	width: 726px;
 	background: #FFF;
 	border: 4px solid #333;
 	z-index: 999;
@@ -419,7 +419,7 @@ body.hidemenu .right {
 }
 
 .allmenu .allmenu-box {
-	width: 686px;
+	width: 720px;
 	margin: 0px auto;
 	text-align: left;
 	overflow: hidden;
@@ -428,7 +428,7 @@ body.hidemenu .right {
 
 .maptop {
 	float: left;
-	width: 107px;
+	width: 113px;
 	overflow: hidden;
 	padding-right: 3px;
 	padding-left: 3px;
@@ -462,7 +462,7 @@ body.hidemenu .right {
 
 .mapitem ul li {
 	text-indent: 13px;
-	line-height: 19px;
+	line-height: 22px;
 	background: url(../images/arrr.gif) 4px 6px no-repeat;
 }
 
