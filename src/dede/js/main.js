@@ -759,7 +759,7 @@ $(document).ready(function () {
 	// 截取缩略图
 	function SetThumb(srcURL) {
 		var footer =
-			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-outline-primary'>使用原图</a> <a href='?' class='btn btn-outline-primary' data-dismiss='modal' aria-label='Close'>确定</a></p>";
+			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-secondary'>使用原图</a> <a href='?' class='btn btn-secondary' data-dismiss='modal' aria-label='Close'>确定</a></p>";
 		var optButton = `<p><div class="form-group">
 			  <label for="aspectRatio">比例</label>
 			  <select class="form-control" id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)">

@@ -8,27 +8,12 @@
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
 	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
-  <script language="JavaScript">
-    function ChangeListStyle() {
-      var itxt = document.getElementById("myinnertext");
-      var myems = document.getElementsByName("liststyle");
-      if (myems[0].checked) itxt.value = document.getElementById("list1").innerHTML;
-      else if (myems[1].checked) itxt.value = document.getElementById("list2").innerHTML;
-      else if (myems[2].checked) itxt.value = document.getElementById("list3").innerHTML;
-      else if (myems[3].checked) itxt.value = document.getElementById("list4").innerHTML;
-      itxt.value = itxt.value.replace("<BR>", "<BR/>");
-      itxt.value = itxt.value.toLowerCase();
-    }
-    function DoSubmit(j) {
-      document.form1.dopost.value = j;
-      document.form1.submit();
-    }
-    function SelectArcList(fname) {
-      var posLeft = 10;
-      var posTop = 10;
-      window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=700,height=500,left=" + posLeft + ", top=" + posTop);
-    }
-  </script>
+  <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+  <script type="text/javascript" src="js/codemirror.js"></script>
+  <script type="text/javascript" src="js/mode/xml/xml.js"></script>
+  <script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
+  <script type="text/javascript" src="js/mode/css/css.js"></script>
+  <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
@@ -78,18 +63,18 @@
                   <table width="99%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%" height="126">
-                        <img src="images/g_t2.gif" width="130" height="100" />
+                        <label><img src="images/g_t2.jpg" width="130" height="100" />
                         <input name="liststyle" class="np" type="radio" onClick="ChangeListStyle()" value="1"
-                          checked='1' /> </td>
+                          checked='1' /></label> </td>
                       <td width="25%">
-                        <img src="images/g_t1.gif" width="130" height="110" />
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2" /> </td>
+                        <label><img src="images/g_t1.jpg" width="130" height="110" />
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2" /></label></td>
                       <td width="25%">
-                        <img src="images/g_t3.gif" width="130" height="110" />
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="3" /> </td>
+                        <label><img src="images/g_t3.jpg" width="130" height="110" />
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="3" /></label></td>
                       <td>
-                        <img src="images/g_t4.gif" width="130" height="110" />
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="4" /> </td>
+                        <label><img src="images/g_t4.jpg" width="130" height="110" />
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="4" /></label></td>
                     </tr>
                   </table>
                 </td>
@@ -222,6 +207,32 @@
       </tr>
     </table>
   </center>
+  <script language="JavaScript">
+    var editor = CodeMirror.fromTextArea(document.getElementById('myinnertext'), {
+      lineNumbers: true,
+      lineWrapping: true,
+      mode: 'text/html'
+    });
+    function ChangeListStyle() {
+      var itxt = document.getElementById("myinnertext");
+      var myems = document.getElementsByName("liststyle");
+      if (myems[0].checked) editor.setValue(document.getElementById("list1").innerHTML);
+      else if (myems[1].checked) editor.setValue(document.getElementById("list2").innerHTML);
+      else if (myems[2].checked) editor.setValue(document.getElementById("list3").innerHTML);
+      else if (myems[3].checked) editor.setValue(document.getElementById("list4").innerHTML);
+      itxt.value = itxt.value.replace("<BR>", "<BR/>");
+      itxt.value = itxt.value.toLowerCase();
+    }
+    function DoSubmit(j) {
+      document.form1.dopost.value = j;
+      document.form1.submit();
+    }
+    function SelectArcList(fname) {
+      var posLeft = 10;
+      var posTop = 10;
+      window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=700,height=500,left=" + posLeft + ", top=" + posTop);
+    }
+  </script>
 </body>
 
 </html>

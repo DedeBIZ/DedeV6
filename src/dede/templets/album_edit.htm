@@ -344,12 +344,13 @@ if($cfg_need_typeid2=='Y') {
       <td height="24" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;表现方式：</td>
-            <td><input name="pagestyle" class="np" type="radio" id="pagestyle1" onClick="checkMuList()" value="1"<?php if($pagestyle==1) echo " checked='checked'"; ?> />
-              <img src='images/alb2.gif' alt='单页多图样式' title='单页多图样式' /> &nbsp;&nbsp;
-              <input name="pagestyle" class="np" type="radio" id="pagestyle2" onClick="checkMuList()" value="2"<?php if($pagestyle==2) echo " checked='checked'"; ?> />
-              <img src='images/alb1.gif' alt='幻灯片样式' title='幻灯片样式' /> &nbsp;&nbsp;
-              <input name="pagestyle" class="np" type="radio" id="pagestyle3" onClick="checkMuList()" value="3"<?php if($pagestyle==3) echo " checked='checked'"; ?>/>
-              <img src='images/alb3.gif' alt='多缩略图样式' title='多缩略图样式' /></td>
+            <td>
+              <label><input name="pagestyle" class="np" type="radio" id="pagestyle1" onClick="checkMuList()" value="1"<?php if($pagestyle==1) echo " checked='checked'"; ?> />
+              <img src='images/alb2.jpg' alt='单页多图样式' title='单页多图样式' /></label>&nbsp;&nbsp;
+              <label><input name="pagestyle" class="np" type="radio" id="pagestyle2" onClick="checkMuList()" value="2"<?php if($pagestyle==2) echo " checked='checked'"; ?> />
+              <img src='images/alb1.jpg' alt='幻灯片样式' title='幻灯片样式' /></label> &nbsp;&nbsp;
+              <label><input name="pagestyle" class="np" type="radio" id="pagestyle3" onClick="checkMuList()" value="3"<?php if($pagestyle==3) echo " checked='checked'"; ?>/>
+              <img src='images/alb3.jpg' alt='多缩略图样式' title='多缩略图样式' /></label></td>
           </tr>
         </table></td>
     </tr>

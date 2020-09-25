@@ -364,12 +364,12 @@ $i = 0;
             style="border:1px solid #cfcfcf;background:#ffffff;display:none;text-align:left;" id="adset" class="table">
             <tr>
               <td class='bline' width="150" height="24" style="padding-left:10px;">多站点支持：</td>
-              <td class='bline'> <input name="moresite" type="radio" class="np" value="0"
+              <td class='bline'> <label><input name="moresite" type="radio" class="np" value="0"
                   <?php if($myrow['moresite']==0) echo " checked='1' ";?> />
-                不启用
-                <input type="radio" name="moresite" class="np" value="1"
+                不启用</label>
+                <label><input type="radio" name="moresite" class="np" value="1"
                   <?php if($myrow['moresite']==1) echo " checked='1' ";?> />
-                启用 </td>
+                启用</label> </td>
             </tr>
             <tr>
               <td height="24" bgcolor="#F9FCEF" style="padding-left:10px;">说明：</td>
