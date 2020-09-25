@@ -29,3 +29,7 @@ src/data/backupdata/*
 src/a/*.html
 src/data/mkall_cache_*.php
 src/data/payment/cod.php
+src/freelist/
+src/data/rss/*
+src/data/rssmap.html
+src/data/sitemap.html

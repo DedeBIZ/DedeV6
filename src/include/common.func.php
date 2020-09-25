@@ -282,7 +282,7 @@ function ShowMsg($msg, $gourl, $onlymsg=0, $limittime=0)
     if(empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
 
     $htmlhead  = "<html>\r\n<head>\r\n<title>DedeCMS提示信息</title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset={$cfg_soft_lang}\" />\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">";
-    $htmlhead .= "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><link href=\"{$cfg_cmsurl}/static/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\">";
+    $htmlhead .= "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style><link href=\"{$cfg_cmsurl}/static/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\">";
     $htmlhead .= "<base target='_self'/></head>\r\n<body leftmargin='0' topmargin='0' bgcolor='#FFFFFF'>".(isset($GLOBALS['ucsynlogin']) ? $GLOBALS['ucsynlogin'] : '')."\r\n<center>\r\n<script>\r\n";
     $htmlfoot  = "</script>\r\n</center>\r\n</body>\r\n</html>\r\n";
 

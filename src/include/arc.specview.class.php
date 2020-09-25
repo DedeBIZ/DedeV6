@@ -166,8 +166,8 @@ class SpecView
      */
     function Display()
     {
-        if($this->TypeLink->TypeInfos['ispart']==1
-        ||$this->TypeLink->TypeInfos['ispart']==2)
+        if(isset($this->TypeLink->TypeInfos) && ($this->TypeLink->TypeInfos['ispart']==1
+        ||$this->TypeLink->TypeInfos['ispart']==2))
         {
             $this->DisplayPartTemplets();
         }

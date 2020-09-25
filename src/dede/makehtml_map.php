@@ -5,6 +5,7 @@
  * @version        $Id: makehtml_map.php 1 11:17 2010年7月19日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -35,5 +36,6 @@ $dtp = new DedeTagParse();
 $dtp->LoadTemplet($tmpfile);
 $dtp->SaveTo($cfg_basedir.$murl);
 $dtp->Clear();
-echo "<a href='$murl' target='_blank'>成功更新文件: $murl 浏览...</a>";
+echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+echo "<div class=\"alert alert-success\" role=\"alert\">成功更新文件: $murl <a href='$murl' target='_blank' class='btn btn-secondary'>浏览...</a></div>";
 exit();

@@ -5,6 +5,7 @@
  * @version        $Id: makehtml_freelist_action.php 1 9:11 2010年7月19日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -18,7 +19,7 @@ if(!empty($endid) && $endid>=$startid)
     $ci .= " And aid <= $endid ";
 }
 header("Content-Type: text/html; charset={$cfg_soft_lang}");
-$dsql->SetQuery("Select aid From #@__freelist where $ci");
+$dsql->SetQuery("SELECT aid FROM `#@__freelist` WHERE $ci");
 $dsql->Execute();
 while($row=$dsql->GetArray())
 {

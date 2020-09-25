@@ -11,44 +11,6 @@
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
   <script src="js/main.js" language="javascript"></script>
-  <script language="JavaScript">
-    function ChangeListStyle() {
-      var itxt = document.getElementById("myinnertext");
-      var myems = document.getElementsByName("liststyle");
-      if (myems[0].checked) itxt.value = document.getElementById("list1").innerHTML;
-      else if (myems[1].checked) itxt.value = document.getElementById("list2").innerHTML;
-      else if (myems[2].checked) itxt.value = document.getElementById("list3").innerHTML;
-      else if (myems[3].checked) itxt.value = document.getElementById("list4").innerHTML;
-      itxt.value = itxt.value.replace("<BR>", "<BR/>");
-      itxt.value = itxt.value.toLowerCase();
-    }
-    function ShowHide(objname) {
-      var obj = document.getElementById(objname);
-      if (obj.style.display == "block" || obj.style.display == "")
-        obj.style.display = "none";
-      else
-        obj.style.display = "block";
-    }
-    function SelectTemplets(fname) {
-      if (document.all) {
-        var posLeft = window.event.clientY - 200;
-        var posTop = window.event.clientX - 300;
-      }
-      else {
-        var posLeft = 100;
-        var posTop = 100;
-      }
-      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
-    }
-    function CheckSubmit() {
-      if (document.form1.title.value == "") {
-        ShowMsg("自由列表标题标题不能为空！");
-        document.form1.title.focus();
-        return false;
-      }
-      return true;
-    }
-  </script>
   <link rel="stylesheet" type="text/css" href="css/codemirror.css">
   <script type="text/javascript" src="js/codemirror.js"></script>
   <script type="text/javascript" src="js/mode/xml/xml.js"></script>
@@ -64,11 +26,27 @@
   </div>
   <center>
     <div style="display:none" id="list1">
-      <li>[field:textlink/]</li>
+      <li class="media border-bottom-dashed mt-2 py-2">
+          <div class="media-body row">
+              <div class="col-12 title">
+                  <a href="[field:arcurl/]">
+                      <h4 class="mt-0 mb-3">[field:title/]</h4>
+                  </a>
+              </div>
+          </div>
+      </li>
     </div>
 
     <div style="display:none" id="list2">
-      <li>[[field:typelink/]][field:textlink/]</li>
+      <li class="media border-bottom-dashed mt-2 py-2">
+          <div class="media-body row">
+              <div class="col-12 title">
+                [[field:typelink/]] <a href="[field:arcurl/]">
+                      <h4 class="mt-0 mb-3">[field:title/]</h4>
+                  </a>
+              </div>
+          </div>
+      </li>
     </div>
 
     <div style="display:none" id="list3">
@@ -83,15 +61,23 @@
     </div>
 
     <div style="display:none" id="list4">
-      <li>
-        [field:imglink/]
-        [field:textlink/]
-        <span class="info">
-          <small>日期：</small>[field:pubdate function="GetDateMK(@me)"/]
-          <small>点击：</small>[field:click/]
-          <small>好评：</small>[field:scores/]
-        </span>
-        <p class="intro"> [field:description/]...</p>
+      <li class="media border-bottom-dashed mt-2 py-2">
+          <a href="[field:arcurl/]"><img src="[field:litpic/]" class="mr-3" alt="[field:title/]"></a>
+          <div class="media-body row">
+              <div class="col-12 title">
+                  <a href="[field:arcurl/]">
+                      <h4 class="mt-0 mb-3">[field:title/]</h4>
+                  </a>
+              </div>
+              <div class="col-12 description py-2">
+                  <a href="[field:arcurl/]">
+                      [field:description/]...
+                  </a>
+              </div>
+              <div class="col-12 addinfo">
+              日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 点击：[field:click/] 好评：[field:scores/]
+              </div>
+          </div>
       </li>
     </div>
     <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center"
@@ -321,6 +307,42 @@
       lineWrapping: true,
       mode: 'text/html'
     });
+    function ChangeListStyle() {
+      var itxt = document.getElementById("myinnertext");
+      var myems = document.getElementsByName("liststyle");
+      if (myems[0].checked) editor.setValue(document.getElementById("list1").innerHTML);
+      else if (myems[1].checked) editor.setValue(document.getElementById("list2").innerHTML);
+      else if (myems[2].checked) editor.setValue(document.getElementById("list3").innerHTML);
+      else if (myems[3].checked) editor.setValue(document.getElementById("list4").innerHTML);
+      editor.setValue(editor.getValue().replace("<BR>", "<BR/>"));
+      editor.setValue(editor.getValue().toLowerCase());
+    }
+    function ShowHide(objname) {
+      var obj = document.getElementById(objname);
+      if (obj.style.display == "block" || obj.style.display == "")
+        obj.style.display = "none";
+      else
+        obj.style.display = "block";
+    }
+    function SelectTemplets(fname) {
+      if (document.all) {
+        var posLeft = window.event.clientY - 200;
+        var posTop = window.event.clientX - 300;
+      }
+      else {
+        var posLeft = 100;
+        var posTop = 100;
+      }
+      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
+    }
+    function CheckSubmit() {
+      if (document.form1.title.value == "") {
+        ShowMsg("自由列表标题标题不能为空！");
+        document.form1.title.focus();
+        return false;
+      }
+      return true;
+    }
   </script>
 </body>
 

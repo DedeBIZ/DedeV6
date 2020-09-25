@@ -5,6 +5,7 @@
  * @version        $Id: makehtml_rss.php 1 11:17 2010年7月19日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -18,7 +19,8 @@ if(empty($maxrecord)) $maxrecord = 50;
 $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE id>'$tid' AND ispart<>2 ORDER BY id ASC LIMIT 0,1;");
 if(!is_array($row))
 {
-    echo "完成所有文件更新！";
+    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+    echo "<div class=\"alert alert-success\" role=\"alert\">完成所有文件更新！</div>";
 } else {
     $rv = new RssView($row['id'],$maxrecord);
     $rssurl = $rv->MakeRss(0);

@@ -5,6 +5,7 @@
  * @version        $Id: makehtml_homepage.php 2 9:30 2010-11-11 tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
@@ -44,11 +45,13 @@ else if($dopost=="make")
         $GLOBALS['_arclistEnv'] = 'index';
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
-        echo "成功更新主页HTML：".$homeFile."<br /><a href='{$position}' target='_blank'>浏览...</a><br />";
+        echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+        echo "<div class=\"alert alert-success\" role=\"alert\">成功更新主页HTML：".$homeFile."<br /><a href='{$position}' target='_blank' class='btn btn-secondary'>浏览...</a></div><br />";
     } else { 
         // 动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);
-        echo "采用动态浏览模式：<a href='../index.php' target='_blank'>浏览...</a><br />";
+        echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+        echo "<div class=\"alert alert-success\" role=\"alert\">采用动态浏览模式：<a href='../index.php' target='_blank' class='btn btn-secondary'>浏览...</a></div><br />";
     }
     
     $iquery = "UPDATE `#@__homepageset` SET showmod='$showmod'";
