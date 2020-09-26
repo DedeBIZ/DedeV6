@@ -3,6 +3,7 @@
 *{
 	padding:0px;
 	margin:0px;
+	font-size: 13px;
 }
 body{
 	font-family:Verdana, Arial, Helvetica, sans-serif;
@@ -22,6 +23,44 @@ a:hover{
 }
 input,button,select{
 	vertical-align:middle;
+}
+
+select {
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	font-weight: 400;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+input[type="button"],input[type="submit"],input[type="reset"] {
+	border: none;
+	border-right: 1px solid #ACACAC;
+	border-bottom: 1px solid #ACACAC;
+	background-color: #F1F8B4;
+	padding: 2px;
+	padding-right: 5px;
+	padding-left: 5px;
+	cursor: pointer;
+}
+
+input[type="text"],input[type="password"] {
+	font-size: 1rem;
+	font-weight: 400;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	line-height: 18px;
+	vertical-align: middle;
 }
 .fc-690{
 	color:#690;
@@ -49,7 +88,7 @@ input,button,select{
 	line-height:1000%;
 }
 .top .top-link{
-	height:15px;
+	height:25px;
 	padding:12px 12px 0px 0px;
 	overflow:hidden;
 }
@@ -73,11 +112,11 @@ input,button,select{
 .top .top-version{
 	height:40px;
 	float:right;
-	padding:7px 12px 0px 0px;
+	padding:13px 13px 0px 0px;
 }
 .top .top-version h2{
-	color:#E8F5E3;
-	font-size:26px;
+	color:#c0d4b8;
+	font-size:22px;
 	font-style:italic;
 	cursor:default;
 }
@@ -233,36 +272,6 @@ input,button,select{
 	overflow:hidden;
 	clear:both;
 }
-.over-link a{
-	line-height:14px;
-	padding:6px 20px;
-	border-style:solid;
-	border-width:1px;
-	border-color:#EEE #CCC #CCC #EEE;
-	background:#FAFAFA;
-	color:#333;
-	display:block;
-	float:left;
-	margin-right:20px;
-	text-decoration:none;
-}
-
-.olink a{
-	line-height:14px;
-	padding:2px 20px;
-	border-style:solid;
-	border-width:1px;
-	border-color:#EEE #CCC #CCC #EEE;
-	background:#EAF4DD;
-	color:#333;
-	display:block;
-	margin-left:8px;
-	float:left;
-	width:55px;
-	margin-right:20px;
-	text-decoration:none;
-}
-
 .waitpage {
   top:0;
   left:0;

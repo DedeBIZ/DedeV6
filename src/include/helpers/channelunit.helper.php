@@ -392,7 +392,7 @@ function GetSonIds($id,$channel=0,$addthis=true)
 {
     global $cfg_Cs;
     $GLOBALS['idArray'] = array();
-    if( !is_array($cfg_Cs) )
+    if( !is_array($cfg_Cs) && file_exists(DEDEDATA."/cache/inc_catalog_base.inc") )
     {
         require_once(DEDEDATA."/cache/inc_catalog_base.inc");
     }

@@ -5,7 +5,6 @@
 <title>安装程序 - 织梦内容管理系统<?php echo $verMsg; ?></title>
 <script src="../static/js/dedeajax2.js" language="javascript" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
-<!--
     function $o(tid){
         return document.getElementById(tid);
     }
@@ -42,8 +41,9 @@
         // >= IE8
         document.querySelector("input[name='adminpwd']").value = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
     }
--->
 </script>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -56,10 +56,10 @@
     </div>
     <div class="top-link">
         <ul>
+            <li><a href="https://www.dedebiz.com" target="_blank">商业支持</a></li>
+            <li><a href="https://www.dedebiz.com/git" target="_blank">代码托管</a></li>
+            <li><a href="http://www.dedebiz.com/help" target="_blank">帮助中心</a></li>
             <li><a href="http://www.dedecms.com" target="_blank">官方网站</a></li>
-            <li><a href="http://bbs.dedecms.com" target="_blank">技术论坛</a></li>
-            <li><a href="https://www.zhelixie.com/DesDev" target="_blank">代码</a></li>
-            <li><a href="http://help.dedecms.com" target="_blank">帮助</a></li>
         </ul>
     </div>
     <div class="top-version">
@@ -84,25 +84,6 @@
         </dl>
     </div>
     <div class="pright">
-        <div class="pr-title"><h3>模块选择</h3></div>
-        <table width="726" border="0" align="center" cellpadding="0" cellspacing="0" class="twbox">
-            <tr>
-                <td style='line-height:180%'>
-                    <b>默认已安装模块(不需要可在后台卸载)：</b><br />
-                    百度新闻、文件管理器、挑错管理、投票模块、友情链接<br />
-                    <b>已下载并可选安装的：（不能选中的为未下载）</b><br />
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'0a7bea5dbe571d35def883cbec796437')){?>disabled = 'true'<?php }?> value='0a7bea5dbe571d35def883cbec796437' /> 留言簿模块</div>
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'59155be87ea60c5c65ec1f7a46a0fc9d')){?>disabled = 'true'<?php }?> value='59155be87ea60c5c65ec1f7a46a0fc9d' /> 手机WAP浏览</div>
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'7badb72a3ff79af2a7112beee60cb970')){?>disabled = 'true'<?php }?> value='7badb72a3ff79af2a7112beee60cb970' /> 小说模块</div>
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'867af26e9c1ccf22a1cf67e756cf5acc')){?>disabled = 'true'<?php }?> value='867af26e9c1ccf22a1cf67e756cf5acc' /> 黄页模块</div>
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'8964eda9013d1df0afea08ed63243436')){?>disabled = 'true'<?php }?> value='8964eda9013d1df0afea08ed63243436' /> 站内新闻</div>
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'be722dbfa3cb3cb5628aab2d767ff62e')){?>disabled = 'true'<?php }?> value='be722dbfa3cb3cb5628aab2d767ff62e' /> 问答模块</div>
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'dfcb5cd4d7bc0e3f7eb655e62dd6bc64')){?>disabled = 'true'<?php }?> value='dfcb5cd4d7bc0e3f7eb655e62dd6bc64' /> 圈子模块</div>
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'c10bb6ac52082ab3e669b4814b44a6f1')){?>disabled = 'true'<?php }?> value='c10bb6ac52082ab3e669b4814b44a6f1' /> 邮件订阅</div>
-                    <div class='modulesel'><input type='checkbox' name='modules[]' <?php if(!IsDownLoad($module_local.'8a4773468b800900dcfefbc5988833ed')){?>disabled = 'true'<?php }?> value='8a4773468b800900dcfefbc5988833ed' /> UCenter模块</div>
-                </td>
-            </tr>
-        </table>    
         <div class="pr-title"><h3>数据库设定</h3></div>
         <table width="726" border="0" align="center" cellpadding="0" cellspacing="0" class="twbox">
 <tr>
@@ -175,7 +156,7 @@
             </tr>
             <tr>
                 <td class="onetd"><strong>密　码：</strong></td>
-                <td><input name="adminpwd" type="text" value="admin" class="input-txt" /><small>默认密码：admin，建议 <a href="javascript:randpwd();">手动生成</a></small></td>
+                <td><input name="adminpwd" type="text" value="admin" class="input-txt" /><small>默认密码：admin，建议 <a class="btn btn-success btn-sm" href="javascript:randpwd();">手动生成</a></small></td>
             </tr>
             <tr>
                 <td class="onetd"><strong>Cookie加密码：</strong></td>
@@ -206,8 +187,8 @@
         </table>
         
         <div class="btn-box">
-    <input type="button" class="btn-back" value="后退" onclick="window.location.href='index.php?step=2';" />
-            <input type="button" class="btn-next" value="开始安装" onclick="DoInstall();" />
+            <button type="button" class="btn btn-success" onclick="window.location.href='index.php?step=2';">后退</button>
+            <button type="button" class="btn btn-success" onclick="DoInstall();">开始安装</button>
       </div>
     </div>
 </div>
