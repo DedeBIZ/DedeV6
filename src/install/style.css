@@ -63,7 +63,7 @@ input[type="text"],input[type="password"] {
 	vertical-align: middle;
 }
 .fc-690{
-	color:#690;
+	color:#FF760A;
 }
 .fs-14{
 	font-size:14px;
@@ -115,7 +115,7 @@ input[type="text"],input[type="password"] {
 	padding:13px 13px 0px 0px;
 }
 .top .top-version h2{
-	color:#c0d4b8;
+	color:#FF760A;
 	font-size:22px;
 	font-style:italic;
 	cursor:default;
@@ -156,7 +156,7 @@ input[type="text"],input[type="password"] {
 	text-indent:10px;
 	background:url(images/boxtitle_bg.gif) 0px -2px no-repeat;
 	letter-spacing:2px;
-	color:#6D8A4F;
+	color:#FF760A;
 	font-weight:bold;
 }
 
@@ -169,14 +169,14 @@ input[type="text"],input[type="password"] {
 	line-height:25px;
 	background:url(images/leftbox-tbg.png) no-repeat;
 	font-weight:bold;
-	color:#7D9F5C;
+	color:#FF760A;
 	text-indent:10px;
 	letter-spacing:2px;
 }
 .t1 dd{
 	width:160px;
-	background-color:#FAFDF9;
-	border:1px solid #E0ECD4;
+	background-color:#FFFAF7;
+	border:1px solid #FFCABF;
 }
 .t1 dd ul{
 	width:158px;
@@ -194,7 +194,7 @@ input[type="text"],input[type="password"] {
 	font-size:14px;
 }
 .t1 dd ul li.succeed{
-	color:#690;
+	color:#FF760A;
 	background:url(images/ico-step-succeed.png) 23px 14px no-repeat;
 }
 .t1 dd ul li.now{

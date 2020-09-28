@@ -2,9 +2,10 @@
 /**
  * @version        $Id: module-install.php 1 13:41 2010年7月26日Z tianya $
  * @package        DedeCMS.Install
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/../include/common.inc.php');
 @set_time_limit(0);

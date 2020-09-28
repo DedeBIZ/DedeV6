@@ -3,8 +3,9 @@
  * @version        $Id: install.inc.php 1 13:41 2010年7月26日Z tianya $
  * @package        DedeCMS.Install
  * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 function RunMagicQuotes(&$str)
 {

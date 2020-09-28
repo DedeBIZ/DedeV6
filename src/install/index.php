@@ -2,19 +2,20 @@
 /**
  * @version        $Id: index.php 1 13:41 2010年7月26日Z tianya $
  * @package        DedeCMS.Install
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
 //error_reporting(E_ALL);
 error_reporting(E_ALL || ~E_NOTICE);
 
-$verMsg = ' V5.8 UTF8';
+$verMsg = ' V6 UTF8';
 $s_lang = 'utf-8';
-$dfDbname = 'dedecmsv58utf8';
+$dfDbname = 'dedecmsv6utf8';
 $errmsg = '';
-define('INSTALL_DEMO_NAME', 'dedev57demo.txt');
+
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
 
 $moduleCacheFile = dirname(__FILE__).'/modules.tmp.inc';
@@ -115,8 +116,6 @@ else if($step==3)
     for($i = 0; $i < $length; $i++) {
         $rnd_cookieEncode .= $chars[mt_rand(0, $max)];
     }
-    $isdemosign = 0;
-    if(file_exists(INSTALL_DEMO_NAME) && file_get_contents(INSTALL_DEMO_NAME)) $isdemosign = 1;
     $module_local = DEDEDATA.'/module/';
     include('./templates/step-3.html');
     exit();
@@ -320,30 +319,6 @@ else if($step==4)
     $adminquery = "Insert Into `{$dbprefix}member_space`(`mid` ,`pagesize` ,`matt` ,`spacename` ,`spacelogo` ,`spacestyle`, `sign` ,`spacenews`)
                 Values('1','10','0','{$adminuser}的空间','','person','',''); ";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
-
-	//安装体验数据
-    if($installdemo == 1)
-    {
-        if($setupsql = file_get_contents(INSTALL_DEMO_NAME))
-		{
-			$setupsql = preg_replace("#ENGINE=MyISAM#i", 'TYPE=MyISAM', $setupsql);
-			$sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET='.$cfg_db_language;
-			if($mysql_version >= 4.1) {
-				$setupsql = preg_replace("#TYPE=MyISAM#i", $sql41tmp, $setupsql);
-			}
-			$setupsql = preg_replace("#_ROOTURL_#i", $rooturl, $setupsql);
-			$setupsql = preg_replace("#[\r\n]{1,}#", "\n", $setupsql);
-			$setupsql = preg_replace('/#@__/i',$dbprefix,$setupsql);
-			$sqls = preg_split("#;[ \t]{0,}\n#", $setupsql);
-			foreach($sqls as $sql) {
-				if(trim($sql)!='') mysql_query($sql,$conn);
-			}
-			// 更新栏目缓存
-			UpDateCatCache();
-		} else {
-			die("没有体验数据包文件,请检查是否下载.");
-		}
-    }
 
     //不安装任何可选模块
     if(!isset($modules) || !is_array($modules))

@@ -31,7 +31,7 @@ hr{
 	line-height:1px;
 	overflow:hidden;
 	border-width:1px 0px 0px 0px ;
-	border-top:1px solid #E6E6E6;/*兼容Opera*/
+	border-top:1px solid #FFCABF;/*兼容Opera*/
  }
 hr:empty {
 	margin:8px 0px 7px 0px !important;
@@ -43,12 +43,12 @@ small{
 }
 
 .moncolor td{
-	background:#FFC;
+	background:#FFCABF;
 }
 
 .twbox{
 	width:706px;
-	border:1px solid #CFDCC9;
+	border:1px solid #FFCABF;
 	font-size:12px;
 	overflow:hidden;
 	margin:8px auto;
@@ -101,13 +101,13 @@ small{
 }
 
 .twbox tbody tr th{
-	background:#F9FCEF;
-	color:#6D8A4F;
+	background:#FFFAF7;
+	color:#FF760A;
 	line-height:21px;
 	height:21px;
 	text-indent:30px;
 	font-weight:normal;
-	border-bottom:1px solid #EFF7D8;
+	border-bottom:1px solid #FFCABF;
 	letter-spacing:2px;
 }
 
