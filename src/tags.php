@@ -2,10 +2,10 @@
 /**
  * @version        $Id: tags.php 1 2010-06-30 11:43:09Z tianya $
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once (dirname(__FILE__) . "/include/common.inc.php");
 require_once (DEDEINC . "/arc.taglist.class.php");

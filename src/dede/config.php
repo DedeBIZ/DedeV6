@@ -4,9 +4,10 @@
  *
  * @version        $Id: config.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__) ) );
 require_once(DEDEADMIN.'/../include/common.inc.php');
@@ -21,21 +22,39 @@ if(file_exists(DEDEDATA.'/admin/skin.txt'))
 	$skin = file_get_contents(DEDEDATA.'/admin/skin.txt');
 	$cfg_admin_skin = !in_array($skin, array(1,2,3,4))? 1 : $skin;
 }
-$_csrf_name = '_csrf_name_'.substr(md5(md5($cfg_cookie_encode)),0,8);
-$_csrf_hash =  GetCookie($_csrf_name);
-if ( empty($_csrf_hash) )
+
+// 检查CSRF
+function CheckCSRF()
 {
-    $_csrf_hash = md5(uniqid(mt_rand(), TRUE));
-    if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST')
-    {
-        PutCookie($_csrf_name, $_csrf_hash, 7200, '/');
+    $cc_csrf_token_check = GetCookie("dede_csrf_token");
+    if (
+        !(isset($_POST['_csrf_token'], $cc_csrf_token_check)
+    && is_string($_POST['_csrf_token']) && is_string($cc_csrf_token_check)
+    && hash_equals($_POST['_csrf_token'], $cc_csrf_token_check))
+    ) {
+        ShowMsg('CSRF校验失败，请刷新页面重新提交', '-1');
+        exit();
+    }
+    
+    DropCookie("dede_csrf_token");
+}
+
+// 生成CSRF校验token，在比较重要的表单中应该要加上这个token校验
+$cc_csrf_token = GetCookie("dede_csrf_token");
+if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
+    if (isset($cc_csrf_token) && is_string($cc_csrf_token)
+    && preg_match('#^[0-9a-f]{32}$#iS',$cc_csrf_token) === 1
+    ) {
+        $GLOBALS['csrf_token'] = $cc_csrf_token;
+    } else {
+        $GLOBALS['csrf_token'] = md5(uniqid(mt_rand(), TRUE));
     }
 }
 
-$_csrf =  array(
-    'name'  =>'_dede'.$_csrf_name,
-    'hash'  => $_csrf_hash,
-);
+if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
+    PutCookie('dede_csrf_token', $GLOBALS['csrf_token'], 7200, '/');
+}
+
 
 //获得当前脚本名称，如果你的系统被禁用了$_SERVER变量，请自行更改这个选项
 $dedeNowurl = $s_scriptName = '';
@@ -58,16 +77,6 @@ if($cuserLogin->getUserID()==-1)
         header("location:login.php?gotopage=".urlencode($dedeNowurl));
     }
     exit();
-}
-
-function csrf_check()
-{
-    global $token;
-
-    if(!isset($token) || strcasecmp($token, $_SESSION['token']) !== 0){
-        echo '<a href="http://bbs.dedecms.com/907721.html">DedeCMS:CSRF Token Check Failed!</a>';
-        exit;
-    }
 }
 
 function XSSClean($val)

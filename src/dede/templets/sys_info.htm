@@ -83,7 +83,7 @@ foreach($ds as $dl)
         <td height="24" bgcolor="#ffffff" align="center">
           <form name="fadd" action="sys_info.php" method="post">
             <input type='hidden' name='dopost' value='add'>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
             <table width="98%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="12%" height="26">变量名称：</td>
@@ -133,13 +133,13 @@ foreach($ds as $dl)
         <td height="28" align="right" background="images/tbg.gif" style="border:1px solid #cfcfcf;border-bottom:none;">
           &nbsp;&nbsp;&nbsp;配置搜索：
           <input type="text" name="keywds" id="keywds" />
-          <button type="button" onclick="getSearch()" class="btn btn-secondary btn-sm">保存变量</button>
+          <button type="button" onclick="getSearch()" class="btn btn-secondary btn-sm">搜索</button>
           &nbsp;<span id="_searchback"></span></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF" width="100%">
           <form action="sys_info.php" method="post" name="form1">
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
             <input type="hidden" name="dopost" value="save">
             <div id="_search"></div>
             <div id="_mainsearch">

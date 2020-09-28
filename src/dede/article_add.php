@@ -4,10 +4,10 @@
  *
  * @version        $Id: article_add.php 2020年9月14日 tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('a_New,a_AccNew');

@@ -4,10 +4,9 @@
  *
  * @version        $Id: relation.lib.php 1 9:29 2020年9月23日 tianya $
  * @package        DedeCMS.Taglib
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
  
 // 关联内容

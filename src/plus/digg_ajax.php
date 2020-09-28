@@ -3,12 +3,12 @@
  *
  * 文档digg处理ajax文件
  *
- * @version        $Id: digg_ajax.php 2 13:00 2011/11/25 tianya $
+ * @version        $Id: digg_ajax.php$
  * @package        DedeCMS.Plus
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../include/common.inc.php");
 $action = isset($action) ? trim($action) : '';

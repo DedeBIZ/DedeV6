@@ -3,11 +3,12 @@
  *
  * 留言板
  *
- * @version        $Id: guestbook.php 1 10:09 2010-11-10 tianya $
+ * @version        $Id: guestbook.php$
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/guestbook/guestbook.inc.php');
 require_once(DEDEINC.'/datalistcp.class.php');

@@ -4,11 +4,12 @@
  *
  * 评论
  *
- * @version        $Id: feedback.php 2 15:56 2012年10月30日Z tianya $
+ * @version        $Id: feedback.php$
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__) . "/../include/common.inc.php");
 

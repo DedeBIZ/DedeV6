@@ -1,4 +1,3 @@
-<!--
 if(moz == null) 
 {
 	var ie = document.all != null;
@@ -70,4 +69,3 @@ function noSelAll()
 		}
 	}
 }
--->

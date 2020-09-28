@@ -1,4 +1,15 @@
 <?php
+/**
+ *
+ * 二维码生成
+ *
+ * @version        $Id: qrcode.php$
+ * @package        DedeCMS.Site
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
+ */
 $cfg_NotPrintHead='Y';
 
 require_once(dirname(__FILE__).'/../include/common.inc.php');

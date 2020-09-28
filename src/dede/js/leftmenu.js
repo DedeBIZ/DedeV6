@@ -1,4 +1,3 @@
-<!--
 
 function showHide(objname)
 {
@@ -140,4 +139,3 @@ function ShowMainMenu(n)
 	// bindClick();
 }
 
--->

@@ -3,11 +3,12 @@
  *
  * 投票
  *
- * @version        $Id: vote.php 1 20:54 2010年7月8日Z tianya $
+ * @version        $Id: vote.php$
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/../include/common.inc.php");
 require(DEDEINC."/dedevote.class.php");

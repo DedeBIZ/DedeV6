@@ -4,10 +4,10 @@
  *
  * @version        $Id: index_memnu_module.php 1 23:44 2011/2/16 tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
 if($cuserLogin->adminStyle!='dedecms')

@@ -4,9 +4,10 @@
  *
  * @version        $Id: sys_admin_user_add.php 1 16:22 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_User');
@@ -15,7 +16,7 @@ if(empty($dopost)) $dopost='';
 
 if($dopost=='add')
 {
-    csrf_check();
+    CheckCSRF();
     if(preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd) || preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid))
     {
         ShowMsg('密码或或用户名不合法，<br />请使用[0-9a-zA-Z_@!.-]内的字符！', '-1', 0, 3000);

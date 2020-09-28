@@ -4,9 +4,10 @@
  *
  * @version        $Id: file.helper.php 1 2010-07-05 11:43:09Z tianya $
  * @package        DedeCMS.Helpers
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 
 $g_ftpLink = false;

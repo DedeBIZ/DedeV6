@@ -4,9 +4,10 @@
  *
  * @version        $Id: sys_sql_query.php 1 22:28 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Data');
@@ -15,7 +16,7 @@ if(empty($dopost)) $dopost = "";
 //查看表结构
 if($dopost=="viewinfo")
 {
-    csrf_check();
+    CheckCSRF();
     if(empty($tablename))
     {
         echo "没有指定表名！";
@@ -33,7 +34,7 @@ if($dopost=="viewinfo")
 //优化表
 else if($dopost=="opimize")
 {
-    csrf_check();
+    CheckCSRF();
     if(empty($tablename))
     {
         echo "没有指定表名！";
@@ -49,7 +50,7 @@ else if($dopost=="opimize")
 //优化全部表
 else if($dopost=="opimizeAll")
 {
-    csrf_check();
+    CheckCSRF();
     $dsql->SetQuery("SHOW TABLES");
     $dsql->Execute('t');
     while($row = $dsql->GetArray('t',MYSQL_BOTH))
@@ -67,7 +68,7 @@ else if($dopost=="opimizeAll")
 //修复表
 else if($dopost=="repair")
 {
-    csrf_check();
+    CheckCSRF();
     if(empty($tablename))
     {
         echo "没有指定表名！";
@@ -83,7 +84,7 @@ else if($dopost=="repair")
 //修复全部表
 else if($dopost=="repairAll")
 {
-    csrf_check();
+    CheckCSRF();
     $dsql->SetQuery("Show Tables");
     $dsql->Execute('t');
     while($row = $dsql->GetArray('t',MYSQL_BOTH))
@@ -101,7 +102,7 @@ else if($dopost=="repairAll")
 //执行SQL语句
 else if($dopost=="query")
 {
-    csrf_check();
+    CheckCSRF();
     $sqlquery = trim(stripslashes($sqlquery));
     if(preg_match("#drop(.*)table#i", $sqlquery) || preg_match("#drop(.*)database#", $sqlquery))
     {

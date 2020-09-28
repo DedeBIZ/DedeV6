@@ -11,9 +11,10 @@ function ch_stepselect($fvalue,&$arcTag,&$refObj,$fname='')
  *
  * @version        $Id: stepselect.lib.php 16:24 2010年7月26日Z tianya $
  * @package        DedeCMS.Taglib
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 function GetEnumsValue2($egroup,$evalue=0)
 {

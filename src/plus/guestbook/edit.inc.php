@@ -2,9 +2,10 @@
 /**
  * @version        $Id: edit.inc.php 1 10:06 2010-11-10 tianya $
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 if(!defined('DEDEINC')) exit('Request Error!');
 

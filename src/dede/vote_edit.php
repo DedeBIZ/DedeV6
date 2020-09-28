@@ -4,10 +4,10 @@
  *
  * @version        $Id: vote_edit.php 1 23:54 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_投票模块');

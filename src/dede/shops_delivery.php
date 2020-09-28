@@ -4,9 +4,10 @@
  *
  * @version        $Id: shops_delivery.php 1 15:46 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('shops_Delivery');
@@ -20,7 +21,7 @@ if($do=='add')
         ShowMsg("请填写配送方式名称!","-1");
         exit();
     }
-    $price     = preg_replace("#[^.0-9]#", "", $price);
+    $price = preg_replace("#[^.0-9]#", "", $price);
     if($price < 0.01)
     {
         $price = '0.00';

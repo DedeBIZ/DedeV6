@@ -9,11 +9,12 @@
  * ·JS触发方式：在所有文档页面中用JS调用/plus/task.php?client=js（必须禁用计划任务的密码，系统配置参数->其它选项）；
  * ·自行定制客户端：直接访问“http://网址/plus/task.php?clientpwd=管理密码”，会返回其中一个可执行任务的网址（没有可用任务则返回串：notask)，然后客户端运行这个网址即可。 
  *
- * @version        $Id: task.php 1 21:40 2010年7月8日Z tianya $
+ * @version        $Id: task.php$
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/../include/common.inc.php');
 require_once(DEDEINC.'/dedetag.class.php');

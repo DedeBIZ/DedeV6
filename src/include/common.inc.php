@@ -2,10 +2,10 @@
 /**
  * @version        $Id: common.inc.php 3 17:44 2010-11-23 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 
 // 生产环境使用production，如果采用dev模式，会有一些php的报错信息提示，便于开发调试

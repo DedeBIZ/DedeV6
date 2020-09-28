@@ -3,10 +3,10 @@ if(!defined('DEDEINC')) exit("Request Error!");
 /**
  * @version        $Id: autoload7.inc.php 1 17:44 2020-09-22 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 
 function dede_autoloader($classname)

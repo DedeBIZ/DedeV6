@@ -1,4 +1,15 @@
 <?php
+/**
+ *
+ * 收藏
+ *
+ * @version        $Id: stow.php$
+ * @package        DedeCMS.Site
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
+ */
 require_once(dirname(__FILE__) . "/../include/common.inc.php");
 
 $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;

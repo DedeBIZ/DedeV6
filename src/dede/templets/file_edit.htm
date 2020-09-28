@@ -43,7 +43,7 @@
 	<form method="POST" action="file_manage_control.php" name=form1 onSubmit="return Post()">
 		<input type="hidden" name="fmdo" value="edit" />
 		<input type="hidden" name="backurl" value="{dede:global name='backurl' function='urlencode(@me)'/}" />
-		<input type="hidden" name="token" value="{dede:global name='token'/}" />
+		<input type="hidden" name="_csrf_token" value="{dede:global name='csrf_token'/}" />
 
 		<table width='100%' border='0' align="center" cellpadding='3' cellspacing='1' bgcolor='#cfcfcf'  class="table maintable table-borderless">
 			<tr bgcolor='#EEF4EA'>

@@ -4,9 +4,10 @@
  * 
  * @version        $Id: article_edit.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeCMS.Member
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckRank(0,0);

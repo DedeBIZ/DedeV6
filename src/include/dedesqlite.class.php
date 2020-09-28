@@ -11,9 +11,10 @@
  *
  * @version        $Id: dedesqli.class.php 1 15:00 2011-1-21 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
 // 在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作

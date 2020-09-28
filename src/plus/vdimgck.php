@@ -3,11 +3,12 @@
 /**
  * 验证图片
  *
- * @version        $Id: vdimgck.php 1 15:21 2010年7月5日 tianya $
+ * @version        $Id: vdimgck.php$
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__) . '/../include/common.inc.php');
 require_once(DEDEDATA . '/safe/inc_safe_config.php');

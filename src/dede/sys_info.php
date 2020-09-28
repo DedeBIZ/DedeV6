@@ -4,9 +4,10 @@
  *
  * @version        $Id: sys_info.php 1 22:28 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
@@ -47,15 +48,7 @@ function ReWriteConfig()
 //保存配置的改动
 if($dopost=="save")
 {
-    if(!isset($token)){
-        echo 'No token found!';
-        exit;
-    }
-
-    if(strcasecmp($token, $_SESSION['token']) != 0){
-        echo 'Token mismatch!';
-        exit;
-    }
+    CheckCSRF();
     foreach($_POST as $k=>$v)
     {
         if(preg_match("#^edit___#", $k))
@@ -76,15 +69,7 @@ if($dopost=="save")
 //增加新变量
 else if($dopost=='add')
 {
-    if(!isset($token)){
-        echo 'No token found!';
-        exit;
-    }
-
-    if(strcasecmp($token, $_SESSION['token']) != 0){
-        echo 'Token mismatch!';
-        exit;
-    }
+    CheckCSRF();
     if($vartype=='bool' && ($nvarvalue!='Y' && $nvarvalue!='N'))
     {
         ShowMsg("布尔变量值必须为'Y'或'N'!","-1");
@@ -199,5 +184,4 @@ EOT;
     echo $hash;
     exit();
 }
-make_hash();
 include DedeInclude('templets/sys_info.htm');

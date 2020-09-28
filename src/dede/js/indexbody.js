@@ -1,5 +1,3 @@
-<!--
-
 function AddNew()
 {
     $DE('addTab').style.display = 'block';
@@ -42,5 +40,3 @@ window.onload = function()
     var myajax = new DedeAjax($DE('listCount'));
     myajax.SendGet('index_body.php?dopost=getRightSide');
 };
-
--->

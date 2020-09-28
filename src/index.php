@@ -2,10 +2,10 @@
 /**
  * @version        $Id: index.php 1 9:23 2010-11-11 tianya $
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 if(!file_exists(dirname(__FILE__).'/data/common.inc.php'))
 {

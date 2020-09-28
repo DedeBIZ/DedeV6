@@ -1,4 +1,3 @@
-<!--
 function selAll()
 {
 	var celements = document.getElementsByName('aids[]');
@@ -65,7 +64,7 @@ function rankey()
 			document.form3.submit();
 		}
 	}
-<!--批量删除搜多关键字-->
+// 批量删除搜多关键字
 function delall()
 	{
 		if(window.confirm("你确实要删除选定的关键字么？"))
@@ -75,5 +74,3 @@ function delall()
 		}
 	}
 	
-
--->

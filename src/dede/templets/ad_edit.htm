@@ -58,7 +58,7 @@
           <form action="ad_edit.php" method="post" enctype="multipart/form-data" name="form1">
             <input type='hidden' name='aid' value='<?php echo $aid?>'>
             <input type='hidden' name='dopost' value='saveedit'>
-            <input type="hidden" name="token" value="<?php echo make_hash();?>" />
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
             <tr>
               <td height="25" align="center">广告位标识：</td>
               <td colspan="2"><?php echo $row['tagname']; ?></td>

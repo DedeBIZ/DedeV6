@@ -164,30 +164,19 @@ if ($rs < 0) {
 <?php
 if (count($safeMsg) > 0) {
 ?>
-	<!--安全检测提示 -->
-	<div class="card">
-		<div class="card-header">
-			DedeCMS安全提示
-		</div>
-		<div class="card-body">
-			<table width="98%" border="0" cellspacing="1" cellpadding="0" style="color:red">
-				<?php
-				$i = 1;
-				foreach ($safeMsg as $key => $val) {
-				?>
-					<tr>
-						<td>
-							<font color="black"><?php echo $i; ?>.</font><?php echo $val; ?>
-						</td>
-					</tr>
-				<?php
-					$i++;
-				}
-				?>
-			</table>
-		</div>
-	</div>
-
+<div class="alert alert-danger" role="alert">
+<?php
+$i = 1;
+foreach ($safeMsg as $key => $val) {
+?>
+<div class="py-1">
+<font color="black"><?php echo $i; ?>.</font><?php echo $val; ?>
+</div>
+<?php
+	$i++;
+}
+?>
+</div>
 <?php
 }
 ?>

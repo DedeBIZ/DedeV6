@@ -4,10 +4,10 @@
  *
  * @version        $Id: file_manage_control.php 1 8:48 2010年7月13日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_文件管理器');
@@ -38,7 +38,7 @@ function __newdir();
 ----------------*/
 else if($fmdo=="newdir")
 {
-    csrf_check();
+    CheckCSRF();
     $fmm->NewDir($newpath);
 }
 
@@ -69,7 +69,7 @@ function __saveEdit();
 ----------------*/
 else if($fmdo=="edit")
 {
-    csrf_check();
+    CheckCSRF();
     $filename = str_replace("..", "", $filename);
     $file = "$cfg_basedir$activepath/$filename";
     $str = stripslashes($str);

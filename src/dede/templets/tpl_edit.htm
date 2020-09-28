@@ -76,7 +76,7 @@
 	<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
 		<input type="hidden" name="action" value="saveedit" />
 		<input type="hidden" name="acdir" value="<?php echo $acdir; ?>" />
-		<input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
 		<table width='98%' border='0' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf' align="center" class="table maintable table-bordered mt-3">
 			<tr bgcolor='#EEF4EA'>
 				<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px;">
