@@ -64,7 +64,7 @@
 			</tr>
 			<tr>
 					<td><strong>PHP版本</strong></td>
-					<td><?php echo $phpv; ?></td>
+					<td><?php echo $phpv; ?><small>（建议使用PHP7.0以上版本）</small></td>
 			</tr>
 			<tr>
 					<td><strong>系统安装目录</strong></td>
@@ -80,6 +80,11 @@
 				<th width="200" align="center"><strong>需开启的变量或函数</strong></th>
 				<th width="80"><strong>要求</strong></th>
 				<th width="400"><strong>实际状态及建议</strong></th>
+			</tr>
+			<tr>
+				<td>OpenSSL</td>
+				<td align="center">On </td>
+				<td><?php echo $sp_openssl; ?> <small>(不符合将无法完成<a href="https://www.dedebiz.com" target="_blank">Dede商业支持</a>)</small></td>
 			</tr>
 			<tr>
 					<td>allow_url_fopen</td>

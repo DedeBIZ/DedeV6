@@ -66,6 +66,7 @@ else if($step==2)
     $sp_host = (empty($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_HOST'] : $_SERVER['REMOTE_ADDR']);
     $sp_name = $_SERVER['SERVER_NAME'];
     $sp_max_execution_time = ini_get('max_execution_time');
+    $sp_openssl = (extension_loaded("openssl") ? '<font color=green>[√]On</font>' : '<font color=red>[×]Off</font>');
     $sp_allow_reference = (ini_get('allow_call_time_pass_reference') ? '<font color=green>[√]On</font>' : '<font color=red>[×]Off</font>');
     $sp_allow_url_fopen = (ini_get('allow_url_fopen') ? '<font color=green>[√]On</font>' : '<font color=red>[×]Off</font>');
     $sp_safe_mode = (ini_get('safe_mode') ? '<font color=red>[×]On</font>' : '<font color=green>[√]Off</font>');
