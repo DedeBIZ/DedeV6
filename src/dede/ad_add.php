@@ -4,9 +4,10 @@
  *
  * @version        $Id: ad_add.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
  
 require(dirname(__FILE__)."/config.php");
@@ -16,7 +17,7 @@ if(empty($dopost)) $dopost = "";
 
 if($dopost=="save")
 {
-    csrf_check();
+    CheckCSRF();
     //timeset tagname typeid normbody expbody
     $tagname = trim($tagname);
     $row = $dsql->GetOne("SELECT typeid FROM #@__myad WHERE typeid='$typeid' AND tagname LIKE '$tagname'");

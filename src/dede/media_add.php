@@ -5,9 +5,10 @@
  *
  * @version        $Id: media_add.php 2 15:25 2011-6-2 tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__) . "/config.php");
 
@@ -16,7 +17,7 @@ if (empty($dopost)) $dopost = "";
 
 //上传
 if ($dopost == "upload") {
-    csrf_check();
+    CheckCSRF();
     require_once(DEDEINC . "/image.func.php");
     $sparr_image = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/x-png", "image/wbmp");
     $sparr_flash = array("application/xshockwaveflash");

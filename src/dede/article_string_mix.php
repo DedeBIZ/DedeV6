@@ -4,9 +4,10 @@
  *
  * @version        $Id: article_string_mix.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/oxwindow.class.php');
@@ -21,7 +22,7 @@ $m_file = DEDEDATA."/downmix.data.php";
 //保存
 if($dopost=="save")
 {
-	csrf_check();
+	CheckCSRF();
     $fp = fopen($m_file,'w');
     flock($fp,3);
     fwrite($fp,$allsource);

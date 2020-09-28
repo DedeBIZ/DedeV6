@@ -4,9 +4,10 @@
  *
  * @version        $Id: article_template_rand.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/oxwindow.class.php');
@@ -20,7 +21,7 @@ $okmsg = '';
 //保存配置
 if($dopost=='save')
 {
-    csrf_check();
+    CheckCSRF();
     $fp = fopen($m_file,'w');
     flock($fp,3);
     fwrite($fp,$templates);
@@ -30,7 +31,7 @@ if($dopost=='save')
 //对旧文档进行随机模板处理
 else if($dopost=='makeold')
 {
-    csrf_check();
+    CheckCSRF();
     set_time_limit(3600);
     if(!file_exists($m_file))
     {
@@ -64,7 +65,7 @@ else if($dopost=='makeold')
 //清除全部的指定模板
 else if($dopost=='clearold')
 {
-    csrf_check();
+    CheckCSRF();
     $dsql->ExecuteNoneQuery(" Update `#@__addonarticle` set templet='' ");
     $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `#@__addonarticle` ");
     AjaxHead();

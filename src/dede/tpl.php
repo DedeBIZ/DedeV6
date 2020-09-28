@@ -4,9 +4,10 @@
  *
  * @version        $Id: tpl.php 1 23:44 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('plus_文件管理器');
@@ -89,7 +90,7 @@ function save_tpl() { }
 --------------------------*/
 else if($action == 'saveedit')
 {
-    csrf_check();
+    CheckCSRF();
     if($filename == '')
     {
         ShowMsg('未指定要编辑的文件或文件名不合法', '-1');
@@ -168,7 +169,7 @@ function _upload() {}
 -----------------------*/
 else if ($action == 'uploadok')
 {
-    csrf_check();
+    CheckCSRF();
     if( !is_uploaded_file($upfile) )
     {
         ShowMsg("貌似你什么都没有上传哦！","javascript:;");
@@ -250,7 +251,7 @@ function savetagfile() { }
 --------------------------*/
 else if($action=='savetagfile')
 {
-    csrf_check();
+    CheckCSRF();
     if(!preg_match("#^[a-z0-9_-]{1,}\.lib\.php$#i", $filename))
     {
         ShowMsg('文件名不合法，不允许进行操作！', '-1');

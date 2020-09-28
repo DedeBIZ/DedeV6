@@ -4,9 +4,10 @@
  *
  * @version        $Id: mytag_edit.php 1 15:37 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_Other');
@@ -18,14 +19,13 @@ $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'mytag_main.php' : $_COOKI
 
 if($dopost=='delete')
 {
-    csrf_check();
-    $dsql->ExecuteNoneQuery("DELETE FROM #@__mytag WHERE aid='$aid'");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__mytag` WHERE aid='$aid'");
     ShowMsg("成功删除一个自定义标记！",$ENV_GOBACK_URL);
     exit();
 }
 else if($dopost=="saveedit")
 {
-    csrf_check();
+    CheckCSRF();
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
     $query = "UPDATE `#@__mytag`

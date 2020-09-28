@@ -4,9 +4,10 @@
  *
  * @version        $Id: mytag_add.php 1 15:35 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
- * @license        http://help.dedecms.com/usersguide/license.html
- * @link           http://www.dedecms.com
+ * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license/v6
+ * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_Other');
@@ -15,9 +16,9 @@ if(empty($dopost)) $dopost = "";
 
 if($dopost=="save")
 {
-    csrf_check();
+    CheckCSRF();
     $tagname = trim($tagname);
-    $row = $dsql->GetOne("SELECT typeid FROM #@__mytag WHERE typeid='$typeid' AND tagname LIKE '$tagname'");
+    $row = $dsql->GetOne("SELECT typeid FROM `#@__mytag` WHERE typeid='$typeid' AND tagname LIKE '$tagname'");
     if(is_array($row))
     {
         ShowMsg("在相同栏目下已经存在同名的标记！","-1");
@@ -25,7 +26,7 @@ if($dopost=="save")
     }
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
-    $inQuery = "INSERT INTO #@__mytag(typeid,tagname,timeset,starttime,endtime,normbody,expbody)
+    $inQuery = "INSERT INTO `#@__mytag`(typeid,tagname,timeset,starttime,endtime,normbody,expbody)
      VALUES('$typeid','$tagname','$timeset','$starttime','$endtime','$normbody','$expbody'); ";
     $dsql->ExecuteNoneQuery($inQuery);
     ShowMsg("成功增加一个自定义标记！","mytag_main.php");
