@@ -226,16 +226,62 @@ else if ($dopost == 'getRightSide') {
     // 直接采用DedeBIZ重写方法
     exit;
 } elseif ($dopost == "system_info") {
-    $client = new DedeBizClient('127.0.0.1', 8181);
-    $client->appid = "1008665";
-    $client->key = "I04NcaYUCmRukRDE";
-    $rs = $client->SystemInfo();
-
-    if ($rs->code === 200) {
-        echo $rs->data;
-        $client->Close();
+    if (!extension_loaded("openssl")) {
+        echo json_encode(array(
+            "code" => -1001,
+            "msg"=>"PHP不支持OpenSSL，无法完成Dede商业授权",
+            "result"=>null, 
+        ));
         exit;
     }
+
+    if (empty($cfg_auth_code)) {
+        echo json_encode(array(
+            "code" => -1002,
+            "msg"=>"当前站点尚未购买Dede商业授权",
+            "result"=>null, 
+        ));
+        exit;
+    }
+
+    openssl_public_decrypt(base64_decode($cfg_auth_code), $decotent, DEDEPUB);
+
+    if (!empty($decotent)) {
+        $res = json_decode($decotent);
+        if (isset($res->sid)) {
+            echo json_encode(array(
+                "code" => 200,
+                "msg"=>"",
+                "result"=>array(
+                    "domain" => $res->domain,
+                    "title" => $res->title,
+                    "stype" => $res->stype == 1? "企业单位" : "个人",
+                    "auth_version" => $res->auth_version,
+                    "auth_at" => date("Y-m-d", $res->auth_at),
+                ), 
+            ));
+        }
+
+        
+    }
+
+    
+
+
+
+    // openssl_public_decrypt(base64_decode($cfg_auth_code), $decotent, DEDEPUB);
+    // var_dump($decotent);
+
+    // $client = new DedeBizClient('127.0.0.1', 8181);
+    // $client->appid = "1008665";
+    // $client->key = "I04NcaYUCmRukRDE";
+    // $rs = $client->SystemInfo();
+
+    // if ($rs->code === 200) {
+    //     echo $rs->data;
+    //     $client->Close();
+    //     exit;
+    // }
     
 }
 ?>
