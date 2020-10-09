@@ -30,12 +30,6 @@ if ($typeid == 0) {
     exit();
 }
 
-if (empty($idhash) || $idhash != hash("sha256", $aid.$cfg_cookie_encode))
-{
-    showMsg('数据校验不对，程序返回', '-1');
-    exit();
-}
-
 // 校验CSRF
 CheckCSRF();
 

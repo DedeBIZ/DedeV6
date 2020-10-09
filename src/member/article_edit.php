@@ -77,12 +77,14 @@ else if($dopost=='save')
                 }
                 ${$vs[0]} = GetFieldValueA(${$vs[0]},$vs[1],$aid);
                 $inadd_f .= ','.$vs[0]." ='".${$vs[0]}."' ";
+                $inadd_m .= ','.$vs[0];
             }
         }
         
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'],'autofield', FALSE);
-        if ($fontiterm != $inadd_f)
+
+        if ($fontiterm != $inadd_m)
         {
             ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
             exit();
@@ -126,13 +128,13 @@ else if($dopost=='save')
 
     //返回成功信息
     $msg = "　　请选择你的后续操作：
-        <a href='article_add.php?cid=$typeid'><u>发布新文章</u></a>
+        <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新文章</a>
         &nbsp;&nbsp;
-        <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit'><u>查看更改</u></a>
+        <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>
         &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank'><u>查看文章</u></a>
+        <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>
         &nbsp;&nbsp;
-        <a href='content_list.php?channelid=$channelid'><u>管理文章</u></a>
+        <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理文章</a>
         ";
     $wintitle = "成功更改文章！";
     $wecome_info = "文章管理::更改文章";

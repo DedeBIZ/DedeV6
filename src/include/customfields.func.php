@@ -224,6 +224,9 @@ function GetFieldValue($dvalue, $dtype, $aid=0, $job='add', $addvar='', $adminty
             return 0;
         }
         return GetAlabNum($dvalue);
+    } else if ($dtype=='relation') {
+        $dvalue = trim(preg_replace("#[^0-9,]#", "", $dvalue));
+        return $dvalue;
     }
     else if($dtype=='stepselect')
     {

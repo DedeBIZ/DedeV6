@@ -32,7 +32,7 @@ function GetCurContentAlbum($body,$rfurl,&$firstdd)
     $rsimg = '';
     $basehost = "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
-    preg_match_all("/(src|SRC)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
+    preg_match_all("/(src)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
     $img_array = array_unique($img_array[2]);
     $imgUrl = $cfg_user_dir."/".$cfg_ml->M_ID;
     $imgPath = $cfg_basedir.$imgUrl;
@@ -52,7 +52,7 @@ function GetCurContentAlbum($body,$rfurl,&$firstdd)
         {
             continue;
         }
-        if(!preg_match("#^http:\/\/#i", $value))
+        if(!preg_match("#^http[s]?:\/\/#i", $value))
         {
             continue;
         }
@@ -235,6 +235,7 @@ function PrintAutoFieldsAdd(&$fieldset, $loadtype='all', $isprint=TRUE)
         }
     }
 
+	echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"".$dede_addonfields."\" />";
 	echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"".$GLOBALS['csrf_token']."\" />";
     // 增加一个返回
     return $addonfieldsname;
@@ -266,6 +267,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype='all')
             }
         }
     }
+    echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"".$dede_addonfields."\" />";
     echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"".$GLOBALS['csrf_token']."\" />";
 }
 

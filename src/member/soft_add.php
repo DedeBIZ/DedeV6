@@ -120,12 +120,6 @@ else if($dopost=='save')
             }
         }
         
-        if (empty($dede_fieldshash) || $dede_fieldshash != md5($dede_addonfields.$cfg_cookie_encode))
-        {
-            showMsg('数据校验不对，程序返回', '-1');
-            exit();
-        }
-        
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'],'autofield', FALSE);
         if ($fontiterm != $inadd_f)
@@ -150,7 +144,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     if(!$dsql->ExecuteNoneQuery($inQuery))
     {
         $gerr = $dsql->GetError();
-        $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID' ");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
         ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请联系管理员。","javascript:;");
         exit();
     }
@@ -212,7 +206,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
 
     //增加积分
     $cfg_sendarc_scores = intval($cfg_sendarc_scores);
-    $dsql->ExecuteNoneQuery("UPDATE `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
     
@@ -229,13 +223,13 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     //返回成功信息
     $msg = "
         请选择你的后续操作：
-        <a href='soft_add.php?cid=$typeid'><u>继续发布软件</u></a>
+        <a href='soft_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布软件</a>
         &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank'><u>查看软件</u></a>
+        <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看软件</a>
         &nbsp;&nbsp;
-        <a href='soft_edit.php?channelid=$channelid&aid=$arcID'><u>更改软件</u></a>
+        <a href='soft_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>更改软件</a>
         &nbsp;&nbsp;
-        <a href='content_list.php?channelid={$channelid}'><u>已发布软件管理</u></a>
+        <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布软件管理</a>
         ";
     $wintitle = "成功发布文章！";
     $wecome_info = "软件管理::发布软件";

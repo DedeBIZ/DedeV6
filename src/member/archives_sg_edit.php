@@ -145,6 +145,7 @@ else if($dopost=='save')
         }
     }
 
+
     if($addtable!='')
     {
         $upQuery = "UPDATE `$addtable` SET `title`='$title',`typeid`='$typeid',`arcrank`='$arcrank',userip='$userip'{$inadd_f} WHERE aid='$aid' ";
@@ -161,14 +162,14 @@ else if($dopost=='save')
     if($artUrl=='') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
 
     //返回成功信息
-    $msg = "　　请选择你的后续操作：
-        <a href='archives_sg_add.php?cid=$typeid'><u>发布新内容</u></a>
+    $msg = "请选择你的后续操作：
+        <a href='archives_sg_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新内容</a>
         &nbsp;&nbsp;
-        <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit'><u>查看更改</u></a>
+        <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>
         &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank'><u>查看内容</u></a>
+        <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a>
         &nbsp;&nbsp;
-        <a href='content_sg_list.php?channelid=$channelid'><u>管理内容</u></a>
+        <a href='content_sg_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理内容</a>
         ";
     $wintitle = "成功更改内容！";
     $wecome_info = "内容管理::更改内容";

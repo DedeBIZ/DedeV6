@@ -127,18 +127,13 @@ else if($dopost=='save')
                 }
                 ${$vs[0]} = GetFieldValueA(${$vs[0]},$vs[1],$aid);
                 $inadd_f .= ','.$vs[0]." ='".${$vs[0]}."' ";
+                $inadd_m .= ','.$vs[0];
             }
-        }
-        
-        if (empty($dede_fieldshash) || $dede_fieldshash != md5($dede_addonfields.$cfg_cookie_encode))
-        {
-            showMsg('数据校验不对，程序返回', '-1');
-            exit();
         }
         
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'],'autofield', FALSE);
-        if ($fontiterm != $inadd_f)
+        if ($fontiterm != $inadd_m)
         {
             ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
             exit();
@@ -195,13 +190,13 @@ else if($dopost=='save')
     //返回成功信息
     //----------------------------------
     $msg = "　　请选择你的后续操作：
-<a href='album_add.php?cid=$typeid'><u>发布新图集</u></a>
+<a href='album_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新图集</a>
 &nbsp;&nbsp;
-<a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit'><u>查看更改</u></a>
+<a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>
 &nbsp;&nbsp;
-<a href='$artUrl' target='_blank'><u>查看图集</u></a>
+<a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看图集</a>
 &nbsp;&nbsp;
-<a href='content_list.php?channelid=$channelid'><u>管理图集</u></a> ";
+<a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理图集</a> ";
 
     $wintitle = "成功更改图集！";
     $wecome_info = "图集管理::更改图集";

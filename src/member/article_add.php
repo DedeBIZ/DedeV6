@@ -150,13 +150,13 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     //返回成功信息
     $msg =
     "请选择你的后续操作：
-    <a href='article_add.php?cid=$typeid'><u>继续发布文章</u></a>
+    <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布文章</a>
     &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank'><u>查看文章</u></a>
+    <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>
     &nbsp;&nbsp;
-    <a href='article_edit.php?channelid=$channelid&aid=$arcID'><u>更改文章</u></a>
+    <a href='article_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>更改文章</a>
     &nbsp;&nbsp;
-    <a href='content_list.php?channelid={$channelid}'><u>已发布文章管理</u></a>";
+    <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布文章管理</a>";
     $wintitle = "成功发布文章！";
     $wecome_info = "文章管理::发布文章";
     $win = new OxWindow();

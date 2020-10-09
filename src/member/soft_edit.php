@@ -73,8 +73,8 @@ if(empty($dopost))
             {
                 if($ctag->GetName()=='link')
                 {
-                    $nForm .= "软件地址".$newRowStart."：<input class='text' type='text' name='softurl".$newRowStart."'  value='".trim($ctag->GetInnerText())."' />
-            服务器名称：<input class='text' type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."'  />
+                    $nForm .= "软件地址".$newRowStart."：<input class='form-control' type='text' name='softurl".$newRowStart."'  value='".trim($ctag->GetInnerText())."' />
+            服务器名称：<input class='form-control' type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."'  />
             <br />";
                     $newRowStart++;
                 }
@@ -160,12 +160,6 @@ else if($dopost=='save')
             }
         }
         
-        if (empty($dede_fieldshash) || $dede_fieldshash != md5($dede_addonfields.$cfg_cookie_encode))
-        {
-            showMsg('数据校验不对，程序返回', '-1');
-            exit();
-        }
-        
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'],'autofield', FALSE);
         if ($fontiterm != $inadd_f)
@@ -216,11 +210,11 @@ else if($dopost=='save')
     //更新附加表
     $needmoney = @intval($needmoney);
     if($needmoney > 100) $needmoney = 100;
-    $cts = $dsql->GetOne("Select addtable From `#@__channeltype` where id='$channelid' ");
+    $cts = $dsql->GetOne("SELECT addtable From `#@__channeltype` where id='$channelid' ");
     $addtable = trim($cts['addtable']);
     if($addtable!='')
     {
-        $inQuery = "update `$addtable`
+        $inQuery = "UPDATE `$addtable`
             set typeid ='$typeid',
             filetype ='$filetype',
             language ='$language',
@@ -235,7 +229,7 @@ else if($dopost=='save')
             userip='$userip',
             needmoney='$needmoney',
             introduce='$body'{$inadd_f}
-            where aid='$aid'; ";
+            WHERE aid='$aid'; ";
         if(!$dsql->ExecuteNoneQuery($inQuery))
         {
             ShowMsg("更新数据库附加表 addonsoft 时出错，请检查原因！","-1");
@@ -251,13 +245,13 @@ else if($dopost=='save')
 
     //返回成功信息
     $msg = "　　请选择你的后续操作：
-        <a href='soft_add.php?cid=$typeid'><u>发布新软件</u></a>
+        <a href='soft_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新软件</a>
         &nbsp;&nbsp;
-        <a href='soft_edit.php?channelid=$channelid&aid=".$aid."'><u>查看更改</u></a>
+        <a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看更改</a>
         &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank'><u>查看软件</u></a>
+        <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看软件</a>
         &nbsp;&nbsp;
-        <a href='content_list.php?channelid=$channelid'><u>管理软件</u></a>
+        <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理软件</a>
         ";
     $wintitle = "成功更改软件！";
     $wecome_info = "软件管理::更改软件";

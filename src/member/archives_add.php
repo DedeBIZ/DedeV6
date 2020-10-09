@@ -93,12 +93,6 @@ else if($dopost=='save')
             }
         }
         
-        if (empty($dede_fieldshash) || $dede_fieldshash !== md5($dede_addonfields . 'anythingelse' . $cfg_cookie_encode))
-        {
-            showMsg('数据校验不对，程序返回', '-1');
-            exit();
-        }
-        
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'],'autofield', FALSE);
         if ($fontiterm != $inadd_f)
@@ -172,13 +166,13 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     //返回成功信息
     $msg = "
     　　请选择你的后续操作：
-        <a href='archives_add.php?cid=$typeid&channelid=$channelid'><u>继续发布内容</u></a>
+        <a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-secondary btn-sm'>继续发布内容</a>
         &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank'><u>查看内容</u></a>
+        <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a>
         &nbsp;&nbsp;
-        <a href='archives_edit.php?channelid=$channelid&aid=$arcID'><u>更改内容</u></a>
+        <a href='archives_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>更改内容</a>
         &nbsp;&nbsp;
-        <a href='content_list.php?channelid={$channelid}'><u>已发布内容管理</u></a>
+        <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布内容管理</a>
         ";
     $wintitle = "成功发布内容！";
     $wecome_info = "内容管理::发布内容";

@@ -194,7 +194,7 @@ else if($dopost=='save')
     $addtable = trim($cInfos['addtable']);
     if(empty($addtable))
     {
-        $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID'");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作。","javascript:;");
         exit();
     }
@@ -204,14 +204,14 @@ else if($dopost=='save')
         if(!$dsql->ExecuteNoneQuery($inquery))
         {
             $gerr = $dsql->GetError();
-            $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID'");
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
             ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员！","javascript:;");
             exit();
         }
     }
 
     //增加积分
-    $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} where mid='".$cfg_ml->M_ID."' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
 
     //生成HTML
     $artUrl = MakeArt($arcID,true);
@@ -222,13 +222,13 @@ else if($dopost=='save')
     //返回成功信息
     $msg = "
     　　请选择你的后续操作：
-        <a href='archives_sg_add.php?channelid=$channelid'><u>继续发布内容</u></a>
+        <a href='archives_sg_add.php?channelid=$channelid' class='btn btn-secondary btn-sm'>继续发布内容</a>
         &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank'><u>查看内容</u></a>
+        <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a>
         &nbsp;&nbsp;
-        <a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID'><u>更改内容</u></a>
+        <a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>更改内容</a>
         &nbsp;&nbsp;
-        <a href='content_sg_list.php?channelid={$channelid}'><u>已发布内容管理</u></a>
+        <a href='content_sg_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布内容管理</a>
         ";
     $wintitle = "成功发布内容！";
     $wecome_info = "内容管理::发布内容";

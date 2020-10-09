@@ -88,12 +88,6 @@ else if($dopost=='save')
                 $inadd_f .= ','.$vs[0]." ='".${$vs[0]}."' ";
             }
         }
-
-        if (empty($idhash) || $idhash != hash("sha256", $aid.$cfg_cookie_encode))
-        {
-            showMsg('数据校验不对，程序返回', '-1');
-            exit();
-        }
         
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'],'autofield', FALSE);
@@ -144,13 +138,13 @@ else if($dopost=='save')
 
     //返回成功信息
     $msg = "　　请选择你的后续操作：
-        <a href='archives_add.php?cid=$typeid&channelid=$channelid'><u>发布新内容</u></a>
+        <a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-secondary btn-sm'>发布新内容</a>
         &nbsp;&nbsp;
-        <a href='archives_edit.php?channelid=$channelid&aid=".$aid."'><u>查看更改</u></a>
+        <a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看更改</a>
         &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank'><u>查看内容</u></a>
+        <a href='$artUrl' target='_blank'>查看内容</a>
         &nbsp;&nbsp;
-        <a href='content_list.php?channelid=$channelid'><u>管理内容</u></a>
+        <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理内容</a>
         ";
     $wintitle = "成功更改内容！";
     $wecome_info = "内容管理::更改内容";

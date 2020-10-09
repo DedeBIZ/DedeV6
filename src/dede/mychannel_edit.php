@@ -91,9 +91,9 @@ else if($dopost=="copystart")
         <tr>
         <td height='24' align='center'>复制模板：</td>
         <td>
-        <input name='copytemplet' type='radio' id='copytemplet' value='1' class='np' checked='checked' /> 复制
+        <label><input name='copytemplet' type='radio' id='copytemplet' value='1' class='np' checked='checked' /> 复制</label>
         &nbsp;
-        <input name='copytemplet' type='radio' id='copytemplet' class='np' value='0' /> 不复制
+        <label><input name='copytemplet' type='radio' id='copytemplet' class='np' value='0' /> 不复制</label>
         </td>
         </tr>
         </table>
@@ -127,7 +127,7 @@ else if($dopost=="export")
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，你可以共享给你的朋友：");
-    $winform = $win->GetWindow("hand","<textarea name='config' style='width:99%;height:450px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea>");
+    $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:99%;height:450px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
 }

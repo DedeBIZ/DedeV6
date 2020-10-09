@@ -267,7 +267,7 @@ class userLogin
             $this->userPurview = $row->purviews;
             $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='".time()."' WHERE id='".$row->id."'";
             $dsql->ExecuteNoneQuery($inquery);
-            $sql = "UPDATE #@__member SET logintime=".time().", loginip='$loginip' WHERE mid=".$row->id;
+            $sql = "UPDATE `#@__member` SET logintime=".time().", loginip='$loginip' WHERE mid=".$row->id;
             $dsql->ExecuteNoneQuery($sql);
             return 1;
         }
@@ -498,7 +498,7 @@ function GetSonIdsUL($id, $channel=0, $addthis=TRUE)
  *
  * @access    public
  * @param     int  $id  栏目ID
- * @param     int  $sArr  缓存数组
+ * @param     array  $sArr  缓存数组
  * @param     int   $channel  频道ID
  * @param     int   $addthis  是否加入当前这个栏目
  * @return    string
