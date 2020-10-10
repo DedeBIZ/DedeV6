@@ -8,21 +8,7 @@
           <a href="<?php echo $cfg_memberurl;?>/pm.php" title="消息管理" class="message">
             消息 <span class="badge badge-danger"><?php echo $pms['nums'];?></span>
           </a>
-          <a>
-            <script type="text/javascript">
-              var now = (new Date()).getHours();
-              if (now > 0 && now <= 6) {
-                  document.write("午夜好，");
-              } else if (now > 6 && now <= 11) {
-                  document.write("早上好，");
-              } else if (now > 11 && now <= 14) {
-                  document.write("中午好，");
-              } else if (now > 14 && now <= 18) {
-                  document.write("下午好，");
-              } else {
-                  document.write("晚上好，");
-              }
-          </script><?php echo $cfg_ml->M_LoginID; ?>
+          <a><?php echo $cfg_ml->M_LoginID; ?>
           </a>
           <a href="<?php echo $cfg_cmsurl;?>/member/index_do.php?fmdo=login&dopost=exit#" title="退出">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
