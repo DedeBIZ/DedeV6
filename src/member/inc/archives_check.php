@@ -15,12 +15,10 @@ include_once(DEDEINC . '/image.func.php');
 include_once(DEDEINC . '/oxwindow.class.php');
 
 $svali = GetCkVdValue();
-if (preg_match("/3/", $safe_gdopen)) {
-    if (strtolower($vdcode) != $svali || $svali == '') {
-        ResetVdValue();
-        ShowMsg('验证码错误！', '-1');
-        exit();
-    }
+if (strtolower($vdcode) != $svali || $svali == '') {
+    ResetVdValue();
+    ShowMsg('验证码错误！', '-1');
+    exit();
 }
 
 // 校验CSRF

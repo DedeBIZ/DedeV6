@@ -20,7 +20,9 @@
         if (result.code === 200) {
           ShowMsg(`<b>标题：</b><p>${result.data.subject}</p>
           <b>时间：</b><p>${result.data.sendtime}</p>
-          <b>内容</b><p>${result.data.subject}</p>`);
+          <b>内容</b><p>${result.data.subject}</p>`,{
+            title : "查看短消息",
+          });
           $(`.pm-read-status[for='${id}']`).html("已阅读");
         } else {
           ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
