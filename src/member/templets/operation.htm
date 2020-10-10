@@ -18,7 +18,6 @@
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
 
   <main class="member">
-    <?php include(DEDEMEMBER."/templets/info.htm"); ?>
 
     <div class="container-fluid pannel">
       <div class="container">
@@ -55,7 +54,9 @@
                     </tr>
                     {/dede:datalist}
                     <tr>
-                    <td colspan="6"><button id="checkedClick" type="button" class="greenBtn1">全选</button><button type="button" onclick="DoSubmit()" class="greenBtn3">删除选中</button></td></tr>
+                    <td colspan="6">
+                      <button id="checkedClick" type="button" class="btn btn-success btn-sm">全选</button>
+                      <button type="button" onclick="DoSubmit()" class="btn btn-success btn-sm">删除选中</button></td></tr>
                     </form>
                     </tbody>
                 </table>

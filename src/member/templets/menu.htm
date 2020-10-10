@@ -8,6 +8,9 @@ while ($channel = $dsql->GetArray('addmod')) {
 ?>
 <div class="member-menu col-md-3">
     <ul class="list-group list-group-flush mt-3 mb-3">
+        <li class="list-group-item justify-content-between align-items-center<?php echo (isset($_menu_home) && $_menu_home===true)? ' active' : '';?>">
+            <a href="<?php echo $cfg_memberurl;?>/">会员中心</a>
+        </li>
         <li class="list-group-item justify-content-between align-items-center">
             <div data-toggle="collapse" data-target="#collapseArchives">我的内容 <span class="dropdown"></span>
             </div>
