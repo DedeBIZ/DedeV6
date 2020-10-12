@@ -181,7 +181,7 @@ function ClearMyAddon($aid=0, $title='')
  *
  * @package          userLogin
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class userLogin
 {

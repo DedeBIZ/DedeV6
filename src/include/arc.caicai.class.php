@@ -17,7 +17,7 @@ require_once(DEDEINC."/channelunit.func.php");
  *
  * @package          Caicai
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class Caicai extends DataListCP
 {

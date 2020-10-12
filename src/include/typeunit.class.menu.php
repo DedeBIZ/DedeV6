@@ -15,7 +15,7 @@ require_once(DEDEDATA."/cache/inc_catalog_base.inc");
  *
  * @package          TypeUnit
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class TypeUnit
 {

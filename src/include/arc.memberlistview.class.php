@@ -23,7 +23,7 @@ $lang_total = '共';
  *
  * @package          FreeList
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class MemberListview
 {

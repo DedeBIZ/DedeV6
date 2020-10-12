@@ -16,7 +16,7 @@ require_once(DEDEINC."/channelunit.func.php");
  *
  * @package          TypeLink
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class SiteMap
 {

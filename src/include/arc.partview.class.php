@@ -17,7 +17,7 @@ require_once(DEDEINC.'/ftp.class.php');
  *
  * @package          PartView
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class PartView
 {

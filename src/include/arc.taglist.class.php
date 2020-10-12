@@ -18,7 +18,7 @@ require_once(DEDEINC . '/typelink.class.php');
  *
  * @package          TagList
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class TagList
 {

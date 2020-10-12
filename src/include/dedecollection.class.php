@@ -19,7 +19,7 @@ require_once(DEDEINC."/dedehtml2.class.php");
  *
  * @package          DedeCollection
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class DedeCollection
 {

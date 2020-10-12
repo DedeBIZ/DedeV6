@@ -22,7 +22,7 @@ require_once(DEDEINC."/taglib/channel.lib.php");
  *
  * @package          SearchView
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class SearchView
 {

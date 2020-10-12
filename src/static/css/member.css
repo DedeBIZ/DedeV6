@@ -121,6 +121,10 @@ main.member {
     font-weight: bold;
 }
 
+option.option2 {
+    background-color: #DDD;
+}
+
 @media only screen and (max-width: 576px) {
     .login-area {
         float: none;

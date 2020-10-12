@@ -15,7 +15,7 @@
  *
  * @package          DedeAtt
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class DedeAtt
 {
@@ -92,7 +92,7 @@ class DedeAtt
  *
  * @package          DedeAtt
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class DedeAttParse
 {

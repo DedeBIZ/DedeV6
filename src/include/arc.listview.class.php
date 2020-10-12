@@ -19,7 +19,7 @@ helper('cache');
  *
  * @package          ListView
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class ListView
 {

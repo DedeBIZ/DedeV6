@@ -17,7 +17,7 @@ require_once DEDEINC.'/arc.partview.class.php';
  *
  * @package          FreeList
  * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @link             https://www.dedebiz.com
  */
 class FreeList
 {
