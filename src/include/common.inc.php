@@ -2,7 +2,6 @@
 /**
  * @version        $Id: common.inc.php 3 17:44 2010-11-23 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

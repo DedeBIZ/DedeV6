@@ -4,7 +4,6 @@
  *
  * @version        $Id: validate.helper.php 2 13:56 2010年7月5日 tianya $
  * @package        DedeCMS.Helpers
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

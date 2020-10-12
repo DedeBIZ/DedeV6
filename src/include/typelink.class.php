@@ -4,7 +4,6 @@
  *
  * @version        $Id: typelink.class.php 1 15:21 2010年7月5日Z tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

@@ -2,7 +2,6 @@
 /**
  * @version        $Id: index.php 1 2010-06-30 11:43:09Z tianya $
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

@@ -4,7 +4,6 @@
  *
  * @version        $Id: co_gather_start_action.php$
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

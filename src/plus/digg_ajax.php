@@ -5,7 +5,6 @@
  *
  * @version        $Id: digg_ajax.php$
  * @package        DedeCMS.Plus
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

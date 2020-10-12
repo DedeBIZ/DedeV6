@@ -2,7 +2,6 @@
 /**
  * @version        $Id: guestbook.inc.php 1 10:06 2010-11-10 tianya $
  * @package        DedeCMS.Site
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

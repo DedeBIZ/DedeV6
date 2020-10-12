@@ -4,7 +4,6 @@
  * 
  * @version        $Id: soft_add.php 2 14:16 2010-11-11 tianya $
  * @package        DedeCMS.Member
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

@@ -4,7 +4,6 @@
  *
  * @version        $Id: oxwindow.class.php 2 13:53 2010-11-11 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

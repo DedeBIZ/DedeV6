@@ -4,7 +4,6 @@
  *
  * @version        $Id: model.class.php 1 13:46 2010-12-1 tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

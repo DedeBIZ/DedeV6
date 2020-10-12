@@ -18,7 +18,6 @@
  *
  * @version        $Id: lurd.class.php 7 14:07 2011/11/8 IT柏拉图,tianya $
  * @package        DedeCMS.Libraries
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

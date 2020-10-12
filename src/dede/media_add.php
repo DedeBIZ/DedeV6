@@ -5,7 +5,6 @@
  *
  * @version        $Id: media_add.php 2 15:25 2011-6-2 tianya $
  * @package        DedeCMS.Administrator
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com

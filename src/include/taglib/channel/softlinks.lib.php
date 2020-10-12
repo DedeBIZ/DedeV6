@@ -5,7 +5,6 @@ if(!defined('DEDEINC')) exit('Request Error!');
  *
  * @version        $Id:softlinks.lib.php 1 9:33 2010年7月8日Z tianya $
  * @package        DedeCMS.Taglib
- * @copyright      Copyright (c) 2007 - 2018, DesDev, Inc.
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license/v6
  * @link           https://www.dedebiz.com
