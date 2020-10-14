@@ -5,7 +5,7 @@
  * @version        $Id: util.helper.php 4 19:20 2010年7月6日Z tianya $
  * @package        DedeCMS.Helpers
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
  

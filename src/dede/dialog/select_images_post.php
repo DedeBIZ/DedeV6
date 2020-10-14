@@ -5,7 +5,7 @@
  * @version        $Id: select_images_post.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeCMS.Dialog
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");

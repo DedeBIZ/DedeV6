@@ -6,7 +6,7 @@ define("DE_ItemEcode",'Shop_De_');//识别购物车Cookie前缀,非开发人员�
  * @version        $Id: shopcar.class.php 2 20:58 2010年7月7日Z tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
  // ------------------------------------------------------------------------

@@ -5,7 +5,7 @@
  * @version        $Id: soft_add.php 2 14:16 2010-11-11 tianya $
  * @package        DedeCMS.Member
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");

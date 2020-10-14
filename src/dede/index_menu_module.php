@@ -5,7 +5,7 @@
  * @version        $Id: index_memnu_module.php 1 23:44 2011/2/16 tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");

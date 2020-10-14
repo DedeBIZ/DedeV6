@@ -6,7 +6,7 @@
  * @version        $Id: plus_memberlist.php 1 13:58 2010年7月5日Z tianya $
  * @package        DedeCMS.Tpllib
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 function plus_memberlist(&$atts,&$refObj,&$fields)

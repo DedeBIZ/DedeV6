@@ -3,7 +3,7 @@
  * @version        $Id: article_select_sw.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require(dirname(__FILE__)."/config.php");

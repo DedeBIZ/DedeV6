@@ -3,7 +3,7 @@
  * @version        $Id: index.php 1 13:41 2010年7月26日Z tianya $
  * @package        DedeCMS.Install
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);

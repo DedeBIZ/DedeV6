@@ -6,7 +6,7 @@
  * @version        $Id: qrcode.php$
  * @package        DedeCMS.Site
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 $cfg_NotPrintHead='Y';

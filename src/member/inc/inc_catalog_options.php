@@ -5,7 +5,7 @@
  * @version        $Id: archives_sg_add.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeCMS.Member
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 if(!defined('DEDEMEMBER')) exit("dedecms");

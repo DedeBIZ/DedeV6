@@ -5,7 +5,7 @@
  * @version        $Id: control.class.php 1 10:33 2010年7月6日Z tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC . "/dedetemplate.class.php");

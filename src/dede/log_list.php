@@ -5,7 +5,7 @@
  * @version        $Id: log_list.php 1 8:48 2010年7月13日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");

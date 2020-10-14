@@ -6,7 +6,7 @@
  * @version        $Id: testenv.php 13:57 2011/11/10 tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");

@@ -6,7 +6,7 @@
  * @version        $Id: uploadsafe.inc.php 1 15:59 2020年8月19日Z tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 if (!defined('DEDEINC')) exit('Request Error!');

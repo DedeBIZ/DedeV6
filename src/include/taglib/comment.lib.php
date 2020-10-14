@@ -5,7 +5,7 @@
  * @version        $Id: comment.lib.php 1 9:29 2020年9月2日Z tianya $
  * @package        DedeCMS.Taglib
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
  

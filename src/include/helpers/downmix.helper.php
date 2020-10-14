@@ -5,7 +5,7 @@
  * @version        $Id: downmix.inc.php 1 9:14 2010年7月6日Z tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 

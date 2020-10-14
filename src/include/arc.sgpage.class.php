@@ -5,7 +5,7 @@
  * @version        $Id: arc.sgpage.class.php 1 15:48 2010年7月7日Z tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/arc.partview.class.php");

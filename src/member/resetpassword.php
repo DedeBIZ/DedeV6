@@ -5,7 +5,7 @@
  * @version        $Id: resetpassword.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeCMS.Member
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
@@ -75,7 +75,7 @@ elseif($dopost == "getpwd")
 else if($dopost == "safequestion")
 {
     $mid = preg_replace("#[^0-9]#", "", $id);
-    $sql = "SELECT safequestion,safeanswer,userid,email FROM #@__member WHERE mid = '$mid'";
+    $sql = "SELECT safequestion,safeanswer,userid,email FROM `#@__member` WHERE mid = '$mid'";
     $row = $db->GetOne($sql);
     if(empty($safequestion)) $safequestion = '';
 
@@ -102,7 +102,7 @@ else if($dopost == "getpasswd")
         exit();
     }
     $mid = preg_replace("#[^0-9]#", "", $id);
-    $row = $db->GetOne("SELECT * FROM #@__pwd_tmp WHERE mid = '$mid'");
+    $row = $db->GetOne("SELECT * FROM `#@__pwd_tmp` WHERE mid = '$mid'");
     if(empty($row))
     {
         ShowMsg("对不起，请不要非法提交","login.php");

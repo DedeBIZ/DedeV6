@@ -5,7 +5,7 @@
  * @version        $Id: dedehttpdown.class.php 1 11:42 2010年7月6日Z tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);

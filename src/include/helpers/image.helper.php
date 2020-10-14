@@ -5,7 +5,7 @@
  * @version        $Id: image.func.php 1 15:59 2010年7月5日Z tianya $
  * @package        DedeCMS.Helpers
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 // ------------------------------------------------------------------------

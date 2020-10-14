@@ -5,7 +5,7 @@
  * @version        $Id: adminname.lib.php 2 8:48 2010年7月8日Z tianya $
  * @package        DedeCMS.Taglib
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 

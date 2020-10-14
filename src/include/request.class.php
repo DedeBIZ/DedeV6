@@ -8,7 +8,7 @@
  * @version        $Id: request.class.php 1 12:03 2010-10-28 tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 // REQUEST常量,用于判断是否启用REQUEST类

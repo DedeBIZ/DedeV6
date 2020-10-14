@@ -12,7 +12,7 @@
  * @version        $Id: dedesqli.class.php 1 15:00 2011-1-21 tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);

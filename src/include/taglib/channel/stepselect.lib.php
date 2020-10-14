@@ -12,7 +12,7 @@ function ch_stepselect($fvalue,&$arcTag,&$refObj,$fname='')
  * @version        $Id: stepselect.lib.php 16:24 2010年7月26日Z tianya $
  * @package        DedeCMS.Taglib
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 function GetEnumsValue2($egroup,$evalue=0)

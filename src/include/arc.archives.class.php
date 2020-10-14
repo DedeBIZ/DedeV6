@@ -6,7 +6,7 @@ if(!defined('DEDEINC')) exit("Request Error!");
  * @version        $Id: arc.archives.class.php 4 15:13 2010年7月7日Z tianya $
  * @package        DedeCMS.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/typelink.class.php");

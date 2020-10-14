@@ -6,7 +6,7 @@
  * @version        $Id: digg_ajax.php$
  * @package        DedeCMS.Plus
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license/v6
+ * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../include/common.inc.php");
