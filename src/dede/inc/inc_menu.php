@@ -37,7 +37,9 @@ while($row = $dsql->GetObject('mm'))
     $addset .= "  <m:item name='{$row->typename}' ischannel='1' link='{$row->mancon}?channelid={$row->id}' linkadd='{$row->addcon}?channelid={$row->id}' channelid='{$row->id}' rank='' target='main' />\r\n";
 }
 //////////////////////////
-
+$helpUrl = DEDEBIZURL."/help";
+$gitUrl = DEDEBIZURL."/git";
+$dedebizUrl = DEDEBIZURL;
 $adminMenu1 = $adminMenu2 = '';
 if($cuserLogin->getUserType() >= 10)
 {
@@ -158,9 +160,9 @@ $adminMenu1
 $adminMenu2
 
 <m:top item='1_10_7_' name='系统帮助' display='none'>
-  <m:item name='参考文档' link='https://www.dedebiz.com/help' rank='' target='_blank' />
-  <m:item name='代码托管' link='https://www.dedebiz.com/git' rank='' target='_blank' />
-  <m:item name='商业支持' link='https://www.dedebiz.com' rank='' target='_blank' />
+  <m:item name='参考文档' link='$cfg_biz_helpUrl' rank='' target='_blank' />
+  <m:item name='代码托管' link='$cfg_biz_gitUrl' rank='' target='_blank' />
+  <m:item name='商业支持' link='$cfg_biz_dedebizUrl' rank='' target='_blank' />
 </m:top>
 
 -----------------------------------------------

@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <script language="javascript" src="../static/js/dedeajax2.js"></script>
 <script language="javascript">
 function LoadHashCode()
@@ -66,7 +68,7 @@ td{padding-left:8px}
 	<div class="bodytitleleft"></div>
 	<div class="bodytitletxt" style="padding-left:10px;"><b>模块管理</b></div>
 </div>
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="background:#CFCFCF;">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable" style="background:#CFCFCF;">
   <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
    <input type='hidden' name='action' value='make'>
     <tr>
@@ -89,24 +91,17 @@ td{padding-left:8px}
     <tr>
       <td align="center" bgcolor="#FFFFFF"><b>封装类型：</b></td>
       <td bgcolor="#FFFFFF">
-      	<input name="moduletype" type="radio" id="moduletype1" class='np' value='soft' checked='1' /> 模块
-      	<input name="moduletype" type="radio" id="moduletype2" class='np' value='templets' /> 模板
-      	<input name="moduletype" type="radio" id="moduletype3" class='np' value='plus' /> 小插件
-      	<input name="moduletype" type="radio" id="moduletype3" class='np' value='patch' /> 补丁
+      	<label><input name="moduletype" type="radio" id="moduletype1" class='np' value='soft' checked='1' /> 模块</label>
+      	<label><input name="moduletype" type="radio" id="moduletype2" class='np' value='templets' /> 模板</label>
+      	<label><input name="moduletype" type="radio" id="moduletype3" class='np' value='plus' /> 小插件</label>
+      	<label><input name="moduletype" type="radio" id="moduletype3" class='np' value='patch' /> 补丁</label>
       </td>
     </tr>
     <tr>
-      <td align="center" bgcolor="#FFFFFF"><b>联系Email：</b></td>
-      <td bgcolor="#FFFFFF"><input name="email" type="text" id="email" style="width:180px" onchange="LoadHashCode()" class='alltxt'/> </td>
-    </tr>
-    <tr>
-      <td align="center" bgcolor="#FFFFFF"><b>模块识别码：</b></td>
+      <td align="center" bgcolor="#FFFFFF"><b>开发者ID：</b></td>
       <td bgcolor="#FFFFFF">
-      <span id='modulcode'>由模块名称和Email生成</span>[<a href='javascript:LoadHashCode();'>更新</a>]      </td>
-    </tr>
-    <tr>
-      <td align="center" bgcolor="#FFFFFF"><b>开发团队：</b></td>
-      <td bgcolor="#FFFFFF"><input name="team" type="text" id="team" style="width:180px" class='alltxt' /> </td>
+        <input name="dev_id" type="text" id="dev_id" style="width:180px" class='alltxt'/> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者ID？</a>
+      </td>
     </tr>
     <tr>
       <td align="center" bgcolor="#FFFFFF"><b>发布时间：</b></td>
@@ -114,16 +109,11 @@ td{padding-left:8px}
       	<input name="mtime" type="text" id="mtime" style="width:180px" value="<?php echo GetDateMk(time()); ?>" class='alltxt'/>      </td>
     </tr>
     <tr>
-      <td align="center" bgcolor="#FFFFFF"><b>官方网址：</b></td>
-      <td bgcolor="#FFFFFF"><input name="url" type="text" id="url"  style="width:250px" class='alltxt' /> </td>
-    </tr>
-    <tr>
       <td align="center" bgcolor="#FFFFFF"><b>是否涉及会员系统：</b></td>
       <td bgcolor="#FFFFFF">
-
-      	<input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked" />
-不涉及
-<input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class='np' /> 涉及
+      	<label><input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked" />
+        不涉及</label>
+        <label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class='np' /> 涉及</label>
 <div id='rboxct' style='display:none'>
    	  导航使用名称：
       <input name="indexname" type="text" id="indexname" style="width:180px" value=""/>
@@ -146,8 +136,8 @@ td{padding-left:8px}
     <tr>
       <td align="center" bgcolor="#FFFFFF"><b>使用说明文件：</b></td>
       <td bgcolor="#FFFFFF">
-      	<input type="checkbox" name="autoreadme" value='1' id="autoreadme" class="np" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')" />
-      	直接填写
+      	<label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" class="np" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')" />
+      	直接填写</label>
       	<br />
       	<div style='display:block' id='autoreadmeinput'>
       		<input name="readme" type="file" id="readme"  style="width:350px" />
@@ -172,9 +162,8 @@ td{padding-left:8px}
     <tr>
       <td align="center" bgcolor="#FFFFFF"><b>安装程序：</b></td>
       <td bgcolor="#FFFFFF">
-
-      	<input type="checkbox" name="autosetup" value='1' id="autosetup" class="np" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" />
-      	自动生成(由系统自动处理安装)
+      	<label><input type="checkbox" name="autosetup" value='1' id="autosetup" class="np" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" />
+      	自动生成(由系统自动处理安装)</label>
       	<br />
      <div style='display:block' id='autosetupinput'>
       	<input name="setup" type="file" id="setup" style="width:350px" />
@@ -203,9 +192,8 @@ td{padding-left:8px}
     <tr>
       <td align="center" bgcolor="#FFFFFF"><b>删除程序：</b></td>
       <td bgcolor="#FFFFFF">
-
-      	<input type="checkbox" name="autodel" value='1' id="autodel" class="np" onclick="ShowHideField('autodel','autodelinput','autodelct')" />
-      	自动生成(由系统自动处理卸载)
+        <label><input type="checkbox" name="autodel" value='1' id="autodel" class="np" onclick="ShowHideField('autodel','autodelinput','autodelct')" />
+      	自动生成(由系统自动处理卸载)</label>
       	<br />
       	<div style='display:block' id='autodelinput'>
       	  <input name="uninstall" type="file" id="uninstall" style="width:350px" />
@@ -241,16 +229,28 @@ td{padding-left:8px}
          </p>
        </td>
     </tr>
+
+    <tr>
+      <td align="center" bgcolor="#FFFFFF"><b>开发者私钥：</b></td>
+      <td bgcolor="#FFFFFF">
+      	<p>
+         开发者认证后获取的私钥
+         <br />
+          <textarea name="filelist" rows="8" id="filelist" style="width:80%"></textarea>
+         </p>
+       </td>
+    </tr>
+
     <tr bgcolor="#F9FDF0">
       <td height="28" colspan="2" bgcolor="#F9FCEF">
       	<table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="26%">&nbsp;</td>
             <td width="15%">
-            	<input name="imageField" type="submit" class="np coolbg" value="提交" />
+            	<button name="imageField" type="submit" class="btn btn-secondary">提交</button>
             </td>
             <td width="59%">
-            	<input type="button" name="button" id="button" value="返回" onClick="location='plus_main.php';" class="np coolbg" />
+            	<button type="button" name="button" id="button" onClick="location='plus_main.php';" class="btn btn-secondary">返回</button>
             </td>
           </tr>
        </table>

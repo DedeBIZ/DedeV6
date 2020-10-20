@@ -245,6 +245,17 @@ else if ($dopost == 'getRightSide') {
 
     openssl_public_decrypt(base64_decode($cfg_auth_code), $decotent, DEDEPUB);
 
+    $core_info = new stdClass;
+    if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+        $client->appid = $cfg_bizcore_appid;
+        $client->key = $cfg_bizcore_key;
+        $core_info = $client->SystemInfo();
+        if ($core_info->code === 200) {
+            $client->Close();
+        }
+    }
+
     if (!empty($decotent)) {
         $res = json_decode($decotent);
         if (isset($res->sid)) {
@@ -257,30 +268,10 @@ else if ($dopost == 'getRightSide') {
                     "stype" => $res->stype == 1? "企业单位" : "个人",
                     "auth_version" => $res->auth_version,
                     "auth_at" => date("Y-m-d", $res->auth_at),
+                    "core" => $core_info,
                 ), 
             ));
         }
-
-        
     }
-
-    
-
-
-
-    // openssl_public_decrypt(base64_decode($cfg_auth_code), $decotent, DEDEPUB);
-    // var_dump($decotent);
-
-    // $client = new DedeBizClient('127.0.0.1', 8181);
-    // $client->appid = "1008665";
-    // $client->key = "I04NcaYUCmRukRDE";
-    // $rs = $client->SystemInfo();
-
-    // if ($rs->code === 200) {
-    //     echo $rs->data;
-    //     $client->Close();
-    //     exit;
-    // }
-    
 }
 ?>

@@ -31,6 +31,7 @@ define('DEDECONTROL', './control');
 define('DEDEAPPTPL', './templates');
 
 // ------------------------------------------------------------------------
+define('DEDEBIZURL', "http://127.0.0.1:8898"); // Dede商业支持
 define('DEDEVER', 6); // 当前系统大版本
 define('DEDEPUB', <<<EOT
 -----BEGIN PUBLIC KEY-----
@@ -332,6 +333,10 @@ if (version_compare(PHP_VERSION, '7.2.0', '>='))
 } else {
     require_once(DEDEINC.'/autoload.inc.php');
 }
+
+$cfg_biz_helpUrl = DEDEBIZURL."/help";
+$cfg_biz_gitUrl = DEDEBIZURL."/git";
+$cfg_biz_dedebizUrl = DEDEBIZURL;
 
 
 //引入数据库类

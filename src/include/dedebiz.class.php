@@ -2,6 +2,10 @@
 // Copyright 2020 The DedeBiz Authors. All rights reserved.
 // license that can be found in the LICENSE file.
 
+// @copyright      Copyright (c) 2020, DedeBIZ.COM
+// @license        https://www.dedebiz.com/license
+// @link           https://www.dedebiz.com
+
 // 本文件为DedeCMS商业组件(www.dedebiz.com)PHP SDK
 // 目的是弥补织梦内容管理系统（DedeCMS）性能和安全方面的不足，提供更多功能
 
@@ -13,26 +17,28 @@ class DedeBizClient
     var $socket;
     var $appid;
     var $key;
+    var $err;
 
     function __construct($ipaddr, $port)
     {
+        $this->err = "";
         if (!function_exists("socket_create")) {
-            echo json_encode(array(
+            $this->err = (object)array(
                 "code" => -1,
                 "data" => null,
                 "msg" => "请在php.ini开启extension=sockets",
-            ));
-            exit;
+            );
+            return;
         }
         $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
         $rs = @socket_connect($this->socket, $ipaddr, $port);
         if (!$rs) {
-            echo json_encode(array(
+            $this->err = (object)array(
                 "code" => -1,
                 "data" => null,
                 "msg" => "连接DedeBiz商业组件服务失败\r\n",
-            ));
-            exit;
+            );
+            return;
         }
     }
 
@@ -41,15 +47,18 @@ class DedeBizClient
         $this->MakeSign($req);
         $str = json_encode($req);
         $length = strlen($str);
-        $s = socket_write($this->socket, $str, $length);
+        $s = @socket_write($this->socket, $str, $length);
 
         if (!$s) {
-            echo json_encode(array(
+            return (object)array(
                 "code" => -1,
                 "data" => null,
                 "msg" => "连接DedeBiz商业组件服务失败\r\n",
-            ));
-            exit;
+            );
+        }
+
+        if (!empty($this->err)) {
+            return $this->err;
         }
 
         $msg = "";

@@ -13,8 +13,10 @@
     <link rel="stylesheet" type="text/css" href="css/indexbody.css" />
     <link href="images/style<?php echo $cfg_admin_skin;?>/style.css" rel="stylesheet" type="text/css" />
     <script language="javascript" src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap.bundle.js"></script>
     <script language="javascript" src="../static/js/dedeajax2.js"></script>
     <script language="javascript" src="js/indexbody.js"></script>
+    <script language="javascript" src="js/main.js"></script>
     <script type="text/javascript">
         function showMore() {
             $("#allInfo").toggle();
@@ -337,7 +339,7 @@
     <div class="footer">
         <!-- //底部 -->
         <div align="center" class="footer">
-            Copyright &copy; 2020 <a href='https://www.dedebiz.com' target='_blank'><u>DedeCMSv6</u></a>. 版权所有 <a
+            Copyright &copy; 2020 <a href='https://www.dedebiz.com' target='_blank'><u>DedeCMSV6</u></a>. 版权所有 <a
                 href="https://www.dedebiz.com" target="_blank" title="DedeBiz商业技术支持，提供更专业强大的站点应用开发技术">DedeBIZ技术支持</a>
         </div>
 
@@ -396,6 +398,36 @@
 
     <script>
 
+        var dedebizInfo;
+
+        function ViewDedeBIZ() {
+            console.log(dedebizInfo);
+            ShowMsg(`
+            <table width="100%" class="table table-borderless"><tbody>
+                        <tr>
+                            <td class="nline" style="text-align:left"> 版本号： </td>
+                            <td class="nline" style="text-align:left"> v${dedebizInfo.result.server_version} </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="nline" style="text-align:left"> 运行时间： </td>
+                            <td class="nline" style="text-align:left"> ${dedebizInfo.result.server_run_time} </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="nline" style="text-align:left"> 服务器系统： </td>
+                            <td class="nline" style="text-align:left"> ${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}） </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="nline" style="text-align:left"> 内存占用： </td>
+                            <td class="nline" style="text-align:left"> ${dedebizInfo.result.server_memory_usage}% </td>
+                        </tr>
+                        </tbody></table>
+            
+            `);
+        }
+
         // 加载服务信息
         function LoadServer() {
             $.get("index_body.php?dopost=system_info", function (data) {
@@ -406,7 +438,7 @@
                         infoStr += `
                         <tr>
                             <td class="nline" style="text-align:left"> 授权域名： </td>
-                            <td class="nline" style="text-align:left"> ${rsp.result.domain} <a href="https://www.dedebiz.com/auth/?domain=${rsp.result.domain}"><b>【查看】</b></a> </td>
+                            <td class="nline" style="text-align:left"> ${rsp.result.domain} <a href="<?php echo $cfg_biz_dedebizUrl;?>/auth/?domain=${rsp.result.domain}"><b>【查看】</b></a> </td>
                         </tr>
                         `;
                     }
@@ -443,26 +475,22 @@
                         `;
                     }
 
-                    if (typeof rsp.result.server_run_time === "undefined") {
+                    if (rsp.result.core.code != 200) {
                         // 下面是DedeBIZ Core组件信息
                         infoStr += `
                         <tr>
                             <td class="nline" style="text-align:left"> Dede商业组件： </td>
-                            <td class="nline" style="text-align:left"> <a class="btn btn-danger btn-sm" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a> </td>
+                            <td class="nline" style="text-align:left"> <a class="btn btn-danger btn-sm" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008">如何启动组件</a> </td>
                         </tr>
                         `;
                     } else {
-                        // 下面是DedeBIZ Core组件信息
-                        if (typeof rsp.result.server_run_time !== "undefined") {
-                            infoStr += `
-                            <tr>
-                                <td class="nline" style="text-align:left"> 运行时间： </td>
-                                <td class="nline" style="text-align:left"> ${rsp.result.server_run_time} </td>
-                            </tr>
-                            `;
-                        } else {
-                            // 商业组件信息
-                        }
+                        dedebizInfo = JSON.parse(rsp.result.core.data);
+                        infoStr += `
+                        <tr>
+                            <td class="nline" style="text-align:left"> Dede商业组件： </td>
+                            <td class="nline" style="text-align:left"> <a class="btn btn-success btn-sm" href="javascript:ViewDedeBIZ()">查看组件信息</a> </td>
+                        </tr>
+                        `;
                     }
                     infoStr += "</tbody></table>";
 
@@ -471,7 +499,7 @@
                     $("#_systeminfo").html(`
                     <div class="py-1">尚未启动Dede商业站点服务，原因：<b>${rsp.msg}</b></div>
                     <div class="py-1">Dede商业服务可以提升性能、增强安全、支持开源。</div>
-                    <div class="py-1"><a class="btn btn-danger" target="_blank" href="https://www.dedebiz.com/start?code=${rsp.code}">开启商业服务</a></div>
+                    <div class="py-1"><a class="btn btn-danger" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}">开启商业服务</a></div>
                     `);
                 }
             });
