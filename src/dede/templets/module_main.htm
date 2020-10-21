@@ -3,6 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>模块打包</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet" type="text/css" />
 <script src="../static/js/dedeajax2.js" language="javascript" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
@@ -17,11 +19,11 @@ function getmodule(action,hash)
 </script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-<div class="bodytitle">
+<div class="bodytitle mt-3">
 	<div class="bodytitleleft"></div>
 	<div class="bodytitletxt" style="padding-left:10px;">模块管理</div>
 </div>
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="background:#CFCFCF;">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable" style="background:#CFCFCF;">
   <form name="form1" action="plus_add.php" method="post">
    <input type='hidden' name='dopost' value='save'>
     <tr> 
@@ -39,7 +41,6 @@ function getmodule(action,hash)
     <tr bgcolor="#FBFCE2" >
       <td align="center" width="16%">模块名称</td>
       <td align="center" width="12%">发布时间</td>
-      <td align="center" width="14%">开发团队</td>
       <td align="center" width="10%">编码</td>
       <td align="center" width="10%">类型</td>
       <td align="center" width="12%">模块状态</td>
@@ -53,7 +54,6 @@ foreach($modules as $k=>$v)
     <tr bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';"> 
       <td><?php echo $v['name']; ?></td>
       <td><?php echo $v['time']; ?></td>
-      <td><?php echo $v['team']; ?></td>
       <td>
       <?php
       	if($cfg_soft_lang != $v['lang']) echo "<font color='red'>".$v['lang']."</font>";
@@ -80,13 +80,11 @@ foreach($modules as $k=>$v)
       <td>
 	  
 	  <div id = 'manager_<?php echo $v['hash']; ?>' <?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none;"'?>>
-      <a href='module_main.php?action=showreadme&hash=<?php echo $v['hash']; ?>'>使用说明</a>
-       |
-      <a href='module_main.php?action=view&hash=<?php echo $v['hash']; ?>'>详细</a>
-       |
-      <a href='module_main.php?action=edit&hash=<?php echo $v['hash']; ?>'>修改</a>
-       | 
-      <a href='module_main.php?action=del&hash=<?php echo $v['hash']; ?>'>删除</a>
+      <a class="btn btn-secondary btn-sm" href='module_main.php?action=showreadme&hash=<?php echo $v['hash']; ?>'>开发者</a>
+      <a class="btn btn-secondary btn-sm" href='module_main.php?action=showreadme&hash=<?php echo $v['hash']; ?>'>说明</a>
+      <a class="btn btn-secondary btn-sm" href='module_main.php?action=view&hash=<?php echo $v['hash']; ?>'>详细</a>
+      <a class="btn btn-secondary btn-sm" href='module_main.php?action=edit&hash=<?php echo $v['hash']; ?>'>修改</a>
+      <a class="btn btn-secondary btn-sm" href='module_main.php?action=del&hash=<?php echo $v['hash']; ?>'>删除</a>
 	  </div>
       </td>
     </tr>

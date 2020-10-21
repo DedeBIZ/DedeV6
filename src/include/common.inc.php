@@ -44,7 +44,7 @@ NQabUzX9JoYtXqPcpZRT7ymHrppU0KFdUSEJiW0utTWJo0HrDOBIT5qWlM0MP9p/
 PwIDAQAB
 -----END PUBLIC KEY-----
 EOT); // DedeBIZ系统公钥
-
+define('DEDECDNURL', 'https://cdn.dedebiz.com'); // 默认静态资源地址
 
 if (version_compare(PHP_VERSION, '5.3.0', '<') && function_exists("get_magic_quotes_gpc"))
 {

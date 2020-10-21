@@ -82,6 +82,11 @@ box-shadow: 0 0 3px #A5C760;
 outline: none;
 }
 
+input:disabled, input[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
 label {
     display: inline-block;
     margin: .5rem 0;

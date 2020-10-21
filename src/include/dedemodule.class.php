@@ -12,6 +12,16 @@ require_once(DEDEINC . '/charset.func.php');
 require_once(DEDEINC . '/dedeatt.class.php');
 require_once(DEDEINC . '/dedehttpdown.class.php');
 
+function base64url_encode($data)
+{
+    return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+}
+
+function base64url_decode($data)
+{
+    return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));
+}
+
 class DedeModule
 {
     var $modulesPath;
@@ -160,7 +170,7 @@ class DedeModule
         } else $filename = $this->modulesPath . '/' . $this->GetHashFile($hash);
         $start = 0;
         $minfos = array();
-        $minfos['name'] = $minfos['team'] = $minfos['time'] = $minfos['email'] = $minfos['url'] = '';
+        $minfos['name'] = $minfos['info'] = $minfos['time'] = '';
         $minfos['hash'] = $minfos['indexname'] = $minfos['indexurl'] = '';
         $minfos['ismember'] = $minfos['autosetup'] = $minfos['autodel'] = 0;
         //$minfos['filename'] = $filename;
@@ -173,19 +183,23 @@ class DedeModule
         while (!feof($fp)) {
             $n++;
             if ($n > 30) break;
-            $line = fgets($fp, 256);
+            $line = fgets($fp, 1024);
             if ($start == 0) {
                 if (preg_match("/<baseinfo/is", $line)) $start = 1;
             } else {
                 if (preg_match("/<\/baseinfo/is", $line)) break;
                 $line = trim($line);
                 list($skey, $svalue) = explode('=', $line);
+
                 $skey = trim($skey);
                 $minfos[$skey] = $svalue;
             }
         }
         fclose($fp);
 
+        if (empty($minfos['lang'])) {
+            $minfos['lang'] = "utf-8";
+        }
         if (isset($minfos['lang'])) $this->moduleLang = trim($minfos['lang']);
         else $this->moduleLang = 'gbk';
 

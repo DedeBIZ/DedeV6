@@ -97,15 +97,15 @@ else
   <tr>
     <td height='30'>文件格式：</td>
     <td>
-    <input name='filetype' type='radio' value='0' checked='checked' />
-      正常的模块包
-      <input type='radio' name='filetype' value='1' />
-    经过 zip 压缩的模块包 </td>
+    <label><input name='filetype' type='radio' value='0' checked='checked' />
+      正常的模块包</label>
+      <label><input type='radio' name='filetype' value='1' />
+    经过 zip 压缩的模块包</label> </td>
   </tr>
   <tr>
     <td height='30'>已有模块：</td>
     <td>
-      <input name='delhas' type='checkbox' id='delhas' value='1' /> 强制删除同名模块(这可能导致已经安装的模块无法卸载)
+      <label><input name='delhas' type='checkbox' id='delhas' value='1' /> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label>
      </td>
   </tr>
   <tr>

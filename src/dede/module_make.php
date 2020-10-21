@@ -20,26 +20,61 @@ if($action=='')
     require_once(dirname(__FILE__)."/templets/module_make.htm");
     exit();
 }
-/*---------
-//获得Hash码
-function GetHash()
-----------*/
-else if($action=='gethash')
-{
-    echo md5($modulname.$email);
-    exit();
-}
 /*-------------
 //生成项目
 function Makemodule()
 --------------*/
 else if($action=='make')
 {
+    require_once(DEDEINC.'/dedehttpdown.class.php');
+
+    // 校验私钥,确定开发者身份
+    $devURL = DEDECDNURL."/developers/$dev_id.json";
+    $dhd = new DedeHttpDown();
+    $dhd->OpenUrl($devURL);
+    $devContent = $dhd->GetHtml();
+    $devInfo = (array)json_decode($devContent);
+    if (($devInfo['auth_at']+60*60*24*365) < time()) {
+        ShowMsg("您的开发者账号已经过期,请登录www.dedebiz.com重新申请!","-1");
+        exit();
+    }
+
     $filelist = str_replace("\r", "\n", trim($filelist));
     $filelist = trim(preg_replace("#[\n]{1,}#", "\n", $filelist));
     if($filelist=='')
     {
         ShowMsg("对不起，你没有指定模块的文件列表，因此不能创建项目！","-1");
+        exit();
+    }
+    if (empty($dev_id)) {
+        ShowMsg("开发者ID不能为空！","-1");
+        exit();
+    }
+    if (empty($priv)) {
+        ShowMsg("请填写开发者私钥信息","-1");
+        exit();
+    }
+    if (strlen($modulname) > 150) {
+        ShowMsg("模块名称过长","-1");
+        exit();
+    }
+
+    // 校验私钥合法性
+    $enstr = json_encode(array(
+        "module_name" => $modulname,
+        "dev_id" => $devInfo['dev_id'],
+    ));
+    // 私钥加密模块信息
+    openssl_private_encrypt($enstr,$encotent,$priv);
+
+    $moduleInfo = base64url_encode($encotent);
+
+    openssl_public_decrypt($encotent,$decontent,$devInfo['pub_key']);
+    
+    $minfo = (array)json_decode($decontent);
+
+    if ($minfo['module_name'] != $modulname || $minfo['dev_id'] != $devInfo['dev_id']) {
+        ShowMsg("开发者私钥校验失败，请确保填写正确的开发者私钥","-1");
         exit();
     }
 
@@ -49,7 +84,7 @@ else if($action=='make')
     if(!isset($autosetup)) $autosetup = 0;
     if(!isset($autodel)) $autodel = 0;
     $mdir = DEDEDATA.'/module';
-    $hashcode = md5($modulname.$email);
+    $hashcode = md5($modulname.$devInfo['dev_id']);
     $moduleFilename = $mdir.'/'.$hashcode.'.xml';
     $menustring = base64_encode($menustring);
     $indexurl = str_replace('=', '**', $indexurl);
@@ -101,17 +136,16 @@ else if($action=='make')
     $modulinfo = "<module>
 <baseinfo>
 name={$modulname}
-team={$team}
+dev_id={$devInfo['dev_id']}
+info={$moduleInfo}
 time={$mtime}
-email={$email}
-url={$url}
 hash={$hashcode}
 indexname={$indexname}
 indexurl={$indexurl}
 ismember={$ismember}
 autosetup={$autosetup}
 autodel={$autodel}
-lang={$lang}
+lang=utf-8
 moduletype={$moduletype}
 </baseinfo>
 <systemfile>
@@ -173,6 +207,48 @@ else if($action=='edit')
         ShowMsg("对不起，你没有指定模块的文件列表，因此不能创建项目！","-1");
         exit();
     }
+    if (empty($dev_id)) {
+        ShowMsg("开发者ID不能为空！","-1");
+        exit();
+    }
+    if (empty($priv)) {
+        ShowMsg("请填写开发者私钥信息","-1");
+        exit();
+    }
+
+    // 校验私钥,确定开发者身份
+    $devURL = DEDECDNURL."/developers/$dev_id.json";
+    $dhd = new DedeHttpDown();
+    $dhd->OpenUrl($devURL);
+    $devContent = $dhd->GetHtml();
+    $devInfo = (array)json_decode($devContent);
+    if (($devInfo['auth_at']+60*60*24*365) < time()) {
+        ShowMsg("您的开发者账号已经过期,请登录www.dedebiz.com重新申请!","-1");
+        exit();
+    }
+    if (strlen($modulname) > 150) {
+        ShowMsg("模块名称过长","-1");
+        exit();
+    }
+
+    // 校验私钥合法性
+    $enstr = json_encode(array(
+        "module_name" => $modulname,
+        "dev_id" => $devInfo['dev_id'],
+    ));
+    // 私钥加密模块信息
+    openssl_private_encrypt($enstr,$encotent,$priv);
+
+    $moduleInfo = base64url_encode($encotent);
+
+    openssl_public_decrypt($encotent,$decontent,$devInfo['pub_key']);
+    
+    $minfo = (array)json_decode($decontent);
+
+    if ($minfo['module_name'] != $modulname || $minfo['dev_id'] != $devInfo['dev_id']) {
+        ShowMsg("开发者私钥校验失败，请确保填写正确的开发者私钥","-1");
+        exit();
+    }
 
     //已经去除转义
     foreach($_POST as $k=>$v) $$k = stripslashes($v);
@@ -182,8 +258,6 @@ else if($action=='edit')
     $hashcode = $hash;
     $moduleFilename = $mdir.'/'.$hashcode.'.xml';
     $modulname = str_replace('=', '', $modulname);
-    $email = str_replace('=', '', $email);
-    $team = str_replace('=', '', $team);
     $indexurl = str_replace('=', '**', $indexurl);
     $menustring = base64_encode($menustring);
     $dm = new DedeModule($mdir);
@@ -219,17 +293,16 @@ else if($action=='edit')
     $modulinfo = "<module>
 <baseinfo>
 name={$modulname}
-team={$team}
+dev_id={$devInfo['dev_id']}
+info={$moduleInfo}
 time={$mtime}
-email={$email}
-url={$url}
 hash={$hashcode}
 indexname={$indexname}
 indexurl={$indexurl}
 ismember={$ismember}
 autosetup={$autosetup}
 autodel={$autodel}
-lang={$lang}
+lang=utf-8
 moduletype={$moduletype}
 </baseinfo>
 <systemfile>
