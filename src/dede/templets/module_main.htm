@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
 <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet" type="text/css" />
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
 <script src="../static/js/dedeajax2.js" language="javascript" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
 function getmodule(action,hash)
@@ -68,23 +71,31 @@ foreach($modules as $k=>$v)
 		if(file_exists($file)) {
 			if(file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
 				echo "<font color='green'>已安装</font> <a style='color:green' href='module_main.php?action=uninstall&hash={$v['hash']}'><u>卸载</u></a>";
-			}else{
-				echo "未安装 <a href='module_main.php?action=setup&hash={$v['hash']}'><u>安装</u></a>";
+			} else {
+				echo "未安装 <a class='btn btn-secondary btn-sm' href='module_main.php?action=setup&hash={$v['hash']}'>安装</a>";
 			}
-		}else{
+		} else {
 			echo "<div id=\"status_{$v['hash']}\"><font color='red'>未下载</font> <a style='color:red' href=\"javascript:getmodule('download','{$v['hash']}')\"><u>下载</u></a></div>";
 		}
-      	?>
+    ?>
 		
       </td>
       <td>
 	  
 	  <div id = 'manager_<?php echo $v['hash']; ?>' <?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none;"'?>>
-      <a class="btn btn-secondary btn-sm" href='module_main.php?action=showreadme&hash=<?php echo $v['hash']; ?>'>开发者</a>
-      <a class="btn btn-secondary btn-sm" href='module_main.php?action=showreadme&hash=<?php echo $v['hash']; ?>'>说明</a>
-      <a class="btn btn-secondary btn-sm" href='module_main.php?action=view&hash=<?php echo $v['hash']; ?>'>详细</a>
-      <a class="btn btn-secondary btn-sm" href='module_main.php?action=edit&hash=<?php echo $v['hash']; ?>'>修改</a>
-      <a class="btn btn-secondary btn-sm" href='module_main.php?action=del&hash=<?php echo $v['hash']; ?>'>删除</a>
+      <a class="btn btn-secondary" href='module_main.php?action=view_developoer&hash=<?php echo $v['hash']; ?>'>开发者信息</a>
+      
+      <div class="btn-group" role="group">
+        <button id="btnAction" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          操作
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnAction">
+          <a class="dropdown-item" href="module_main.php?action=showreadme&hash=<?php echo $v['hash']; ?>">说明</a>
+          <a class="dropdown-item" href="module_main.php?action=view&hash=<?php echo $v['hash']; ?>">详细</a>
+          <a class="dropdown-item" href="module_main.php?action=edit&hash=<?php echo $v['hash']; ?>">修改</a>
+          <a class="dropdown-item" href="module_main.php?action=del&hash=<?php echo $v['hash']; ?>">删除</a>
+        </div>
+    </div>
 	  </div>
       </td>
     </tr>

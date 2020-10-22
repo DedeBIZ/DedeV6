@@ -63,6 +63,9 @@ class DedeModule
         while ($filename = $dh->read()) {
             if (preg_match("/\.xml$/i", $filename)) {
                 $minfos = $this->GetModuleInfo(str_replace('.xml', '', $filename));
+                if ($minfos==null) {
+                    continue;
+                }
                 if (isset($minfos['moduletype']) && $moduletype != '' && $moduletype != $minfos['moduletype']) {
                     continue;
                 }
@@ -208,6 +211,17 @@ class DedeModule
 
         if ($this->sysLang != $this->moduleLang) {
             foreach ($minfos as $k => $v) $minfos[$k] = $this->AppCode($v);
+        }
+
+        // 验证模块信息
+        $pubKey = @base64url_decode($minfos['pubkey']);
+        @openssl_public_decrypt(base64url_decode($minfos['info']), $decontent, $pubKey);
+        $enInfo = (array)json_decode($decontent);
+        if (count($enInfo)==0) {
+            return null;
+        }
+        if ($enInfo['module_name'] != $minfos['name'] || $enInfo['dev_id'] != $minfos['dev_id']) {
+            return null;
         }
 
         return $minfos;

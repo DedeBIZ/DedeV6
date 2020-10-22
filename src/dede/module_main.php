@@ -100,14 +100,45 @@ if($action=='')
     exit();
 }
 /*--------------
+function ViewDevelopoer();
+--------------*/
+else if($action=='view_developoer')
+{
+  // 检验开发者信息
+  $dm = new DedeModule($mdir);
+  $info = $dm->GetModuleInfo($hash);
+  if ($info==null) {
+    ShowMsg("获取模块信息错误，模块文件可能被篡改", -1);
+    exit;
+  }
+
+  $dev_id = $info['dev_id'];
+  $devURL = DEDECDNURL . "/developers/$dev_id.json";
+  $dhd = new DedeHttpDown();
+  $dhd->OpenUrl($devURL);
+  $devContent = $dhd->GetHtml();
+  $devInfo = (array)json_decode($devContent);
+  $offUrl = "";
+  if ($devInfo['dev_type'] == 1) {
+    $offUrl = "<p>官方网址：<code>{$devInfo['offurl']}</code> <small>(复制在浏览器中打开)</small></p>";
+  }
+  $authAt = date("Y-m-d", $devInfo['auth_at']);
+
+  ShowMsg("<div class='text-left'><p>开发者名称：{$devInfo['dev_name']}</p><p>开发者全称：{$devInfo['realname']}</p><p>开发者ID：{$devInfo['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$devInfo['dev_id']}'>查看详情</a></p>$offUrl<p>认证于：{$authAt}</p></a>","javascript:;");
+exit;
+}
+/*--------------
 function Setup();
 --------------*/
 else if($action=='setup')
 {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
+    if ($infos==null) {
+      ShowMsg("获取模块信息错误，模块文件可能被篡改", -1);
+      exit;
+    }
 
-    if($infos['url']=='') $infos['url'] = '&nbsp;';
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与你系统的编码不一致，请向开发者确认它的兼容性)</font>');
 
     $filelists = $dm->GetFileLists($hash);
@@ -165,9 +196,9 @@ else if($action=='setup')
     $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt;&gt; 安装模块： {$infos['name']}");
     $win->AddHidden("hash",$hash);
     $win->AddHidden("action",'setupstart');
-    if(trim($infos['url'])=='') $infos['url'] = '无';
+
     $msg = "<style>.dtb{border-bottom:1px dotted #cccccc}</style>
-    <table width='98%' border='0' cellspacing='0' cellpadding='0'>
+    <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
   <tr>
     <td width='20%' height='28' class='dtb'>模块名称：</td>
     <td width='80%' class='dtb'>{$infos['name']}</td>
@@ -181,29 +212,23 @@ else if($action=='setup')
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>团队名称：</td>
-    <td class='dtb'>{$infos['team']}</td>
+    <td height='28' class='dtb'>开发者ID：</td>
+    <td class='dtb'>{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
   </tr>
   <tr>
     <td height='28' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>电子邮箱：</td>
-    <td class='dtb'>{$infos['email']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>官方网址：</td>
-    <td class='dtb'>{$infos['url']}</td>
-  </tr>
-  <tr>
     <td height='28' class='dtb'>使用协议：</td>
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank'>点击浏览...</a></td>
   </tr>
   <tr>
-    <td height='30' class='dtb' bgcolor='#F9FCEF' colspan='2'>
+    <td height='30' class='dtb' colspan='2'>
+    <div class='alert alert-danger'>
     <b>注意事项：</b>
     安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限。
+    </div>
     </td>
   </tr>
   <tr>
@@ -224,12 +249,12 @@ else if($action=='setup')
   <tr>
     <td height='28'>对于已存在文件处理方法：</td>
     <td>
-   <input name='isreplace' type='radio' value='1' checked='checked' />
-    覆盖
-   <input name='isreplace' type='radio' value='3' />
-   覆盖，保留副本
-   <input type='radio' name='isreplace' value='0' />
-   保留旧文件
+   <label><input name='isreplace' type='radio' value='1' checked='checked' />
+    覆盖</label>
+    <label><input name='isreplace' type='radio' value='3' />
+   覆盖，保留副本</label>
+   <label><input type='radio' name='isreplace' value='0' />
+   保留旧文件</label>
    </td>
   </tr>
 </table>
