@@ -5,6 +5,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>木马自检程序</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" type="text/css" href="css/indexbody.css" />
   <style type="text/css">
@@ -42,11 +44,11 @@
     <p align='center' style='padding-top:200px'><img src='images/loadinglit.gif' /> 请稍后，正在操作中...</p>
   </div>
 
-  <div class="bodytitle">
+  <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
     <div class="bodytitletxt" style="padding-left:10px;">用户安全中心</div>
   </div>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle"
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable"
     style="background:#CFCFCF;">
     <tr>
       <td width="100%" height="24" colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px;">
@@ -74,9 +76,9 @@
     </tr>
     <tr>
       <td height="50" colspan="2" bgcolor="#FFFFFF">
-        <input type="button" name="bt1" value="开始检测" class="coolbg np" onclick="LoadCtTest();" />
+        <button type="button" name="bt1" class="btn btn-secondary" onclick="LoadCtTest();">开始检测</button>
         &nbsp;
-        <input type="button" name="bt2" value="清空模板缓存" class="coolbg np" onclick="LoadCtClear();" />
+        <button type="button" name="bt2" class="btn btn-secondary" onclick="LoadCtClear();">清空模板缓存</button>
       </td>
     </tr>
     <tr>
