@@ -143,7 +143,7 @@ if (IsWritable(DEDEDATA . '/common.inc.php')) {
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
-	$linkurl = "<a href='sys_admin_user.php' style='color:blue;text-decoration:underline;'>马上修改</a>";
+	$linkurl = "<a href='sys_admin_user.php' class='btn btn-secondary btn-sm'>马上修改</a>";
 	switch ($rs) {
 		case -1:
 			$msg = "没有更改默认管理员名称admin，建议您修改为其他管理账号！{$linkurl}";
