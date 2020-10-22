@@ -76,8 +76,7 @@
 <body background="images/allbg.gif" leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="28" background="images/tbg.gif" style="padding-left:10px;"><b>投票管理</b>&gt;&gt;增加投票&nbsp;&nbsp;<a
-          href="vote_main.php" class="btn btn-secondary btn-sm">管理以往投票内容记录</a></td>
+      <td height="28" background="images/tbg.gif" style="padding-left:10px;"><a href='vote_main.php'>投票管理</a>&gt;&gt;增加投票&nbsp;&nbsp;</td>
     </tr>
     <tr>
       <td height="200" bgcolor="#FFFFFF" valign="top">
@@ -85,6 +84,7 @@
           <form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
             <input type='hidden' name='dopost' value='save'>
             <input type="hidden" name="isarc" value="<?php echo $isarc; ?>" />
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
             <tr>
               <td width="15%" align="center">投票名称：</td>
               <td width="85%"> <input name="votename" type="text" id="votename"> </td>
@@ -154,7 +154,10 @@
             </tr>
             <tr>
               <td height="47">&nbsp;</td>
-              <td><button type="submit" name="Submit" class="btn btn-secondary">保存投票数据</button></td>
+              <td>
+                <button type="submit" name="Submit" class="btn btn-secondary">保存投票数据</button>
+                <button type="button" onclick="history.back()" name="Submit" class="btn btn-secondary">返回</button>
+              </td>
             </tr>
             <tr>
 

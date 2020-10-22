@@ -34,6 +34,7 @@ if($dopost=="delete")
 }
 else if($dopost=="saveedit")
 {
+    CheckCSRF();
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
     $query = "UPDATE `#@__vote` SET votename='$votename',

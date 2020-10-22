@@ -133,7 +133,7 @@ class DedeVote
         {
             $itembgcolor="#FFFFFF";
         }
-        $items = "<table width='$tablewidth' border='0' cellspacing='1' cellpadding='1' id='voteitem'>\r\n";
+        $items = "<table width='$tablewidth' border='0' cellspacing='1' class='table' cellpadding='1' id='voteitem'>\r\n";
         $items .= "<form name='voteform' method='post' action='".$GLOBALS['cfg_phpurl']."/vote.php' target='_blank'>\r\n";
         $items .= "<input type='hidden' name='dopost' value='send' />\r\n";
         $items .= "<input type='hidden' name='aid' value='".$this->VoteID."' />\r\n";
@@ -146,16 +146,16 @@ class DedeVote
             {
                 if($this->VoteInfos['ismore']==0)
                 {
-                    $items.="<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><input type='radio' name='voteitem' value='$k' />".$arr['name']."</td></tr>\r\n";
+                    $items.="<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><label><input type='radio' name='voteitem' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
                 }
                 else
                 {
-                    $items.="<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><input type=checkbox name='voteitem[]' value='$k' />".$arr['name']."</td></tr>\r\n";
+                    $items.="<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><label><input type=checkbox name='voteitem[]' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
                 }
             }
             $items .= "<tr><td height='$lineheight'>\r\n";
-            $items .= "<input type='submit' class='btn-1' name='vbt1' value='投票' />\r\n";
-            $items .= "<input type='button' class='btn-1' name='vbt2' ";
+            $items .= "<input type='submit' class='btn btn-success btn-sm' name='vbt1' value='投票' />\r\n";
+            $items .= "<input type='button' class='btn  btn-success btn-sm' name='vbt2' ";
             $items .= "value='查看结果' onClick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."'); /></td></tr>\r\n";
         }
         $items.="</form>\r\n</table>\r\n";
@@ -285,16 +285,14 @@ class DedeVote
         {
             $totalcount=1;
         }
-        $res = "<table width='$tablewidth' border='0' cellspacing='1' cellpadding='1'>\r\n";
+        $res = "<table width='$tablewidth' border='0' class='table' cellspacing='1' cellpadding='1'>\r\n";
         $res .= "<tr height='8'><td width='$tablesplit'></td><td></td></tr>\r\n";
         $i=1;
         foreach($this->VoteNotes as $k=>$arr)
         {
             $res .= "<tr height='$lineheight'><td style='border-bottom:1px solid'>".$i."、".$arr['name']."</td>";
             $c = $arr['count'];
-            $res .= "<td style='border-bottom:1px solid'>
-            <table border='0' cellspacing='0' cellpadding='2' width='".(($c/$totalcount)*100)."%'><tr><td height='16' background='/static/img/votebg.gif' style='border:1px solid #666666;font-size:9pt;line-height:110%'>".$arr['count']."</td></tr></table>
-            </td></tr>\r\n";
+            $res .= "<td style='border-bottom:1px solid'><div class='progress'><div class='progress-bar' role='progressbar' style='width: ".(($c/$totalcount)*100)."%' aria-valuenow='".(($c/$totalcount)*100)."' aria-valuemin='0' aria-valuemax='100'></div></div></td></tr>\r\n";
             $i++;
         }
         $res .= "<tr><td></td><td></td></tr>\r\n";

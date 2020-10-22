@@ -1,0 +1,23 @@
+<div class="container header">
+    <header class="pt-3">
+        <div class="row">
+            <div class="col-12 col-sm-6 logo"><a href="<?php echo $cfg_cmsurl;?>/"><img src="<?php echo $cfg_cmsurl;?>/static/img/logo.gif"
+                        alt="<?php echo $cfg_webname;?>" srcset=""></a></div>
+            <div class="col-12 col-sm-6 d-flex justify-content-end">
+                <div class="input-group py-3">
+                    <form class="search" name="formsearch" action="<?php echo $cfg_cmsurl;?>/plus/search.php">
+                        <input type="hidden" name="kwtype" value="0" />
+                        <input name="q" type="text" class="form-control" placeholder="输入搜索关键词">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </header>
+</div>
+<!-- /.header -->

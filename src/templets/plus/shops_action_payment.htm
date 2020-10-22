@@ -3,40 +3,17 @@
 <head>
 <title>下单购买 - {dede:var.carts.orders_id/}</title>
 <meta http-equiv="Content-Type" content="text/html; charset={dede:global.cfg_soft_lang/}" />
-<meta name="generator" content="DedeCMS V5.3" />
-<meta name="author" content="desdev.cn" />
-<link href="{dede:global.cfg_templets_skin/}/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
-<link href="{dede:global.cfg_templets_skin/}/style/table.css" rel="stylesheet" media="screen" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/bootstrap.min.css">
+<link href="{dede:global.cfg_cmsurl/}/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/dede.css">
+<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/index.css">
+<script src="{dede:global.cfg_cmsurl/}/static/js/jquery.min.js"></script>
 </head>
 <body class="buycarpage">
-
-<div class="header">
-	<div class="top w960 center">
-		<div class="title">
-			<h1><a href="{dede:global.cfg_basehost/}" title="{dede:global.cfg_webname/}"><img src="{dede:global.cfg_templets_skin/}/images/logo.gif" width="216" height="54"  alt="{dede:global.cfg_webname/}"/></a> </h1>
-		</div><!-- /title -->
-		<div class="welcome">
-            <?php
-            if(!$cfg_ml->IsLogin()){
-            ?>
-            您好,欢迎来到本网站, 请 <a href="../member/login.php?gourl=<?php echo urlencode(GetCurUrl());?>">登录</a> 或 <a href="../member/index_do.php?fmdo=user&dopost=regnew">注册</a>
-            <?php
-            }else{
-            ?>
-            <b><?php echo $cfg_ml->M_UserName; ?></b>,欢迎您的登录。 <a href="<?php echo $cfg_memberurl; ?>/index.php">会员中心</a> |
-                <a href="<?php echo $cfg_memberurl; ?>/edit_fullinfo.php">我的资料</a> |
-                <a href="<?php echo $cfg_memberurl; ?>/index.php?uid=<?php echo urlencode($cfg_ml->M_LoginID);?>">我的空间</a> |
-                <a href="<?php echo $cfg_memberurl; ?>/index_do.php?fmdo=login&dopost=exit">退出登录</a>
-            <?php
-            }
-            ?>
-		</div><!-- /banner -->
-	</div><!-- /top -->
-</div><!-- /header -->
-
-
-<div class="w960 clear center mt1 cmt-box">
-	<div class="sp-title"><h2>商品购买</h2></div>
+<?php include(DEDETEMPLATE."/plus/plus_header.htm") ;?>
+<div class="container">
+	<div class="sp-title"><h3>商品购买</h3></div>
 	<div class="buycar">
         <table cellpadding="0" cellspacing="0" class="flow">
 			<tr>
@@ -46,7 +23,7 @@
 				<td>交易结束 </td>
 			</tr>
 		</table>
-		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="dede_table">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
 			<thead>
 				<tr>
 					<td colspan="6">确认订单并付款</td>
@@ -89,6 +66,6 @@
 	</div>
 	
 </div>
-{dede:include filename="../default/footer.htm"/}
+<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
 </body>
 </html>

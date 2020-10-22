@@ -37,9 +37,9 @@ $vo = new DedeVote($aid);
 $rsmsg = '';
 
 
-$row = $dsql->GetOne("SELECT * FROM #@__vote WHERE aid='$aid'");
+$row = $dsql->GetOne("SELECT * FROM `#@__vote` WHERE aid='$aid'");
 //判断是否允许游客进行投票
-if($row['range'] == 1)
+if($row['isallow'] == 1)
 {
     if(!$member->IsLogin())
     {
@@ -72,9 +72,6 @@ $totalcount = $vo->VoteInfos['totalcount'];
 $starttime = GetDateMk($vo->VoteInfos['starttime']);
 $endtime = GetDateMk($vo->VoteInfos['endtime']);
 $votelist = $vo->GetVoteResult("98%",30,"30%");
-
-
-
 
 
 //判断是否允许被查看

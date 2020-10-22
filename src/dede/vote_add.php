@@ -16,6 +16,7 @@ if(empty($dopost)) $dopost = "";
 if(empty($isarc))  $isarc = 0; 
 if($dopost=="save" && $isarc == 0)
 {
+    CheckCSRF();
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
     $voteitems = "";

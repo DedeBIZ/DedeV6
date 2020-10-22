@@ -43,9 +43,8 @@
         <?php if($fields['isenable'] == 1){echo "<font color=red>未启用</font>";}else{echo "<font color=green>启用</font>";} ?>
       </td>
       <td>
-        <a href='vote_getcode.php?aid={dede:field.aid /}' class="btn btn-secondary btn-sm">获取代码</a>
+        <a title="获取代码" href='vote_getcode.php?aid={dede:field.aid /}' class="btn btn-secondary btn-sm">代码</a>
         <a href='vote_edit.php?aid={dede:field.aid /}&dopost=edit' class="btn btn-secondary btn-sm">更改</a>
-        &nbsp;
         <a href='vote_edit.php?aid={dede:field.aid /}&dopost=delete' class="btn btn-secondary btn-sm">删除</a>
       </td>
     </tr>
