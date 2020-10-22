@@ -34,3 +34,5 @@ src/data/rss/*
 src/data/rssmap.html
 src/data/sitemap.html
 src/data/js/
+src/data/vote/*.js
+src/data/module/*.xml

@@ -4,16 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>编辑评论</title>
 <style type="text/css">
-<!--
 body {
 	background-image: url(images/allbg.gif);
 }
--->
 </style>
-<link href="css/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
 </head>
 <body>
-<table width="98%"  border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#D6D6D6">
+<table class="table maintable mt-3" width="98%"  border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#D6D6D6">
   <tr>
     <td width="100%" height="24" colspan="2" background="images/tbg.gif">
     	&nbsp;<strong><a href="<?php echo $ENV_GOBACK_URL; ?>"><u>表单管理</u></a> &gt;&gt; 编辑评论：</strong>    </td>
@@ -56,10 +58,10 @@ body {
 		 
             <td height="40" width='600' colspan="2" align="center">
 			   
-               <input type="submit" name="Submit1" class='coolbg np' value="保存更改"  />
-              <input type="button" name="Submit2" class='coolbg np' value="不理返回" onClick="location='<?php echo $ENV_GOBACK_URL; ?>';" />
+               <button type="submit" name="Submit1" class='btn btn-secondary'>保存更改</button>
+               <button type="button" name="Submit2" class='btn btn-secondary' onClick="location='<?php echo $ENV_GOBACK_URL; ?>';">不理返回</button>
 			 
-			              </td>
+			 </td>
           </tr>
         </table>
 	  </form>
