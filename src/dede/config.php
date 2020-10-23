@@ -162,7 +162,7 @@ if(strlen($cfg_cookie_encode)<=10)
  */
 function UpDateCatCache()
 {
-    global $dsql, $cfg_multi_site, $cache1, $cacheFile, $cuserLogin;
+    global $dsql, $cache1, $cuserLogin;
     $cache2 = DEDEDATA.'/cache/channelsonlist.inc';
     $cache3 = DEDEDATA.'/cache/channeltoplist.inc';
     $dsql->SetQuery("SELECT id,reid,channeltype,issend,typename FROM `#@__arctype`");
@@ -214,7 +214,6 @@ function DedeInclude($filename, $isabs=FALSE)
     return $isabs ? $filename : DEDEADMIN.'/'.$filename;
 }
 
-helper('cache');
 /**
  *  根据用户mid获取用户名称
  *
@@ -225,13 +224,11 @@ helper('cache');
 if(!function_exists('GetMemberName')){
 	function GetMemberName($mid=0)
 	{
-		global $dsql;
-		$rs = GetCache('memberlogin', $mid);
-		if( empty($rs) )
-		{
-			$rs = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}' ");
-			SetCache('memberlogin', $mid, $rs, 1800);
-		}
+        global $dsql;
+        if (empty($mid)) {
+            return "管理员";
+        }
+        $rs = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}' ");
 		return $rs['uname'];
 	}
 }

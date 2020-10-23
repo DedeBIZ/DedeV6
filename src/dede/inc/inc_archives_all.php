@@ -59,11 +59,11 @@ function GetFormItem($ctag)
                 {
                     if($i==0)
                     {
-                        $myformItem .= "<input type='radio' name='$fieldname' class='np' value='$v' checked>$v\r\n";
+                        $myformItem .= "<label><input type='radio' name='$fieldname' class='np' value='$v' checked> $v</label>\r\n";
                     }
                     else
                     {
-                        $myformItem .= "<input type='radio' name='$fieldname' class='np' value='$v'>$v\r\n";
+                        $myformItem .= "<label><input type='radio' name='$fieldname' class='np' value='$v'> $v</label>\r\n";
                     }
                 }
             }
@@ -318,11 +318,11 @@ function GetFormItemValue($ctag, $fvalue)
                 {
                     if($fvalue==$v)
                     {
-                        $myformItem.= "<input type='radio' name='$fieldname' class='np' value='$v' checked>$v\r\n";
+                        $myformItem.= "<label><input type='radio' name='$fieldname' class='np' value='$v' checked> $v</label>\r\n";
                     }
                     else
                     {
-                        $myformItem.= "<input type='radio' name='$fieldname' class='np' value='$v'>$v\r\n";
+                        $myformItem.= "<label><input type='radio' name='$fieldname' class='np' value='$v'> $v</label>\r\n";
                     }
                 }
             }

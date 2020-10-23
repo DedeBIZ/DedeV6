@@ -992,7 +992,7 @@ else if($dopost=='attsDlg')
     while($trow = $dsql->GetObject())
     {
         if($trow->att=='j' || $trow->att=='p') continue;
-        echo "<input class='np' type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}' />{$trow->attname}.{$trow->att}";
+        echo "<label><input class='np' type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}' /> {$trow->attname}.{$trow->att}</label>";
     }
     ?>
     </td>

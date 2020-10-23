@@ -82,10 +82,10 @@ else if($action == 'editload')
   <tr>
     <td height="30">用作文章来源：</td>
     <td colspan="2">
-        <input type="radio" name="issource" value="0" <?php echo ($row['issource']==0 ? ' checked="checked" ' : ''); ?> />
-      否
-      <input name="issource" type="radio" value="1" <?php echo ($row['issource']==1 ? ' checked="checked" ' : ''); ?> />
-      是
+      <label><input type="radio" name="issource" value="0" <?php echo ($row['issource']==0 ? ' checked="checked" ' : ''); ?> />
+      否</label>
+      <label><input name="issource" type="radio" value="1" <?php echo ($row['issource']==1 ? ' checked="checked" ' : ''); ?> />
+      是</label>
     </td>
   </tr>
   <tr>
