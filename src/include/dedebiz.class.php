@@ -103,6 +103,60 @@ class DedeBizClient
         return $this->request($req);
     }
 
+    // 缓存
+    // $key:键 $val:值 $d:缓存时间
+    function CacheSet($key,$val,$duration)
+    {
+        $req = array(
+            "method" => "cache_set",
+            "parms" => array(
+                "k" => $key,
+                "v" => $val,
+                "d" => $duration,
+            )
+        );
+        return $this->request($req);
+    }
+
+    // 获取缓存内容
+    // $key:键
+    function CacheGet($key)
+    {
+        $req = array(
+            "method" => "cache_get",
+            "parms" => array(
+                "k" => $key,
+            )
+        );
+        return $this->request($req);
+    }
+
+    // 删除缓存内容
+    // $key:键
+    function CacheDel($key)
+    {
+        $req = array(
+            "method" => "cache_del",
+            "parms" => array(
+                "k" => $key,
+            )
+        );
+        return $this->request($req);
+    }
+
+    // 获取分词结果
+    // $key:键
+    function Spliteword($body)
+    {
+        $req = array(
+            "method" => "spliteword",
+            "parms" => array(
+                "body" => $body,
+            )
+        );
+        return $this->request($req);
+    }
+
     // 拼接规则就是method+
     function MakeSign(&$req)
     {

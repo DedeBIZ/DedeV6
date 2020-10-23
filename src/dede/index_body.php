@@ -251,9 +251,7 @@ else if ($dopost == 'getRightSide') {
         $client->appid = $cfg_bizcore_appid;
         $client->key = $cfg_bizcore_key;
         $core_info = $client->SystemInfo();
-        if ($core_info->code === 200) {
-            $client->Close();
-        }
+        $client->Close();
     }
 
     if (!empty($decotent)) {

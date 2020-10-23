@@ -175,29 +175,47 @@ class SearchView
     function GetKeywords($keyword)
     {
         global $cfg_soft_lang;
+        global $cfg_bizcore_appid,$cfg_bizcore_key,$cfg_bizcore_hostname,$cfg_bizcore_port;
         $keyword = cn_substr($keyword, 50);
         $row = $this->dsql->GetOne("SELECT spwords FROM `#@__search_keywords` WHERE keyword='".addslashes($keyword)."'; ");
         if(!is_array($row))
         {
             if(strlen($keyword)>7)
             {
-                $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
-                $sp->SetSource($keyword, $cfg_soft_lang, $cfg_soft_lang);
-                $sp->SetResultType(2);
-                $sp->StartAnalysis(TRUE);
-                $keywords = $sp->GetFinallyResult();
-                $idx_keywords = $sp->GetFinallyIndex();
-                ksort($idx_keywords);
-                $keywords = $keyword.' ';
-                foreach ($idx_keywords as $key => $value) {
-                    if (strlen($key) <= 3) {
-                        continue;
+                if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+                    $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+                    $client->appid = $cfg_bizcore_appid;
+                    $client->key = $cfg_bizcore_key;
+                    $data = $client->Spliteword($keyword);
+                    $kvs = explode(",", $data->data);
+                    $keywords = $keyword." ";
+                    foreach ($kvs as $key => $value) {
+                        $keywords .= ' '.$value;
                     }
-                    $keywords .= ' '.$key;
+                    $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
+                    $client->Close();
+                    // var_dump($keywords);exit;
+                } else {
+                    $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
+                    $sp->SetSource($keyword, $cfg_soft_lang, $cfg_soft_lang);
+                    $sp->SetResultType(2);
+                    $sp->StartAnalysis(TRUE);
+                    $keywords = $sp->GetFinallyResult();
+                    $idx_keywords = $sp->GetFinallyIndex();
+                    ksort($idx_keywords);
+                    $keywords = $keyword.' ';
+                    foreach ($idx_keywords as $key => $value) {
+                        if (strlen($key) <= 3) {
+                            continue;
+                        }
+                        $keywords .= ' '.$key;
+                    }
+                    $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
+                    // var_dump($keywords);exit();
+                    unset($sp);
                 }
-                $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
-                //var_dump($idx_keywords);exit();
-                unset($sp);
+
+
             }
             else
             {

@@ -751,7 +751,6 @@ function makekw(){ }
 --------------------------*/
 else if($dopost=="makekw")
 {
-    include_once(DEDEINC.'/splitword.class.php');
     CheckPurview('a_Commend,sys_ArcBatch');
     if( !empty($aid) && empty($qstr) ) $qstr = $aid;
 
@@ -760,66 +759,98 @@ else if($dopost=="makekw")
         ShowMsg("参数无效！", $ENV_GOBACK_URL);
         exit();
     }
-    $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
+
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
     $query = "SELECT arc.*, addt.* From `#@__archives` arc LEFT JOIN `#@__addonarticle` addt ON addt.aid=arc.id  WHERE arc.id in($arcids) AND arc.channel=1 ";
     $dsql->SetQuery($query);
     $dsql->Execute();
-    while($row = $dsql->GetArray())
-    {
-        //跳过已经有关键字的内容
-        if(trim($row['keywords']) !='' ) continue;
-        
-        $aid = $row['id'];
-        $keywords = '';
-        $title = $row['title'];
-        $description = $row['description'];
-        $body = cn_substr($row['body'], 5000);
-        $sp->SetSource($title, $cfg_soft_lang, $cfg_soft_lang);
-        $sp->StartAnalysis();
-        $titleindexs = preg_replace("/#p#|#e#/",'',$sp->GetFinallyIndex());
-        $sp->SetSource(Html2Text($body), $cfg_soft_lang, $cfg_soft_lang);
-        $sp->StartAnalysis();
-        $allindexs = preg_replace("/#p#|#e#/",'',$sp->GetFinallyIndex());
-        
-        if(is_array($allindexs) && is_array($titleindexs))
-        {
-            foreach($titleindexs as $k => $v)
-            {
-                if(strlen($keywords.$k)>=60)
-                {
-                    break;
-                }
-                else
-                {
-                    if(strlen($k) <= 2) continue;
-                    $keywords .= $k.',';
-                }
-            }
-            foreach($allindexs as $k => $v)
-            {
-                if(strlen($keywords.$k)>=60)
-                {
-                    break;
-                }
-                else if(!in_array($k,$titleindexs))
-                {
-                    if(strlen($k) <= 2) continue;
-                    $keywords .= $k.',';
-                }
-            }
-        }
 
-        $description = str_replace('　', ' ', trim($description));
-        $description = str_replace('［', ' ', $description);
-        $description = str_replace('］', ' ', $description);
-        $description = preg_replace("#[ \r\n\t]{1,}#is", ' ', $description);
-        $description = str_replace('关键字', '', $description);
-        $description = str_replace('关键词', '', $description);
-        $description = addslashes($description);
-        $dsql->ExecuteNoneQuery(" UPDATE `#@__archives` SET `keywords`='$keywords',`description`='$description'  WHERE id='{$aid}' ");
+    if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+        $client->appid = $cfg_bizcore_appid;
+        $client->key = $cfg_bizcore_key;
+        while($row = $dsql->GetArray())
+        {
+            //跳过已经有关键字的内容
+            if(trim($row['keywords']) !='' ) continue;
+            $aid = $row['id'];
+            $keywords = '';
+            $title = $row['title'];
+            $description = $row['description'];
+            $body = cn_substr($row['body'], 5000);
+            $data = $client->Spliteword($title.Html2Text($body));
+            $keywords = $data->data;
+            $description = str_replace('　', ' ', trim($description));
+            $description = str_replace('［', ' ', $description);
+            $description = str_replace('］', ' ', $description);
+            $description = preg_replace("#[ \r\n\t]{1,}#is", ' ', $description);
+            $description = str_replace('关键字', '', $description);
+            $description = str_replace('关键词', '', $description);
+            $description = addslashes($description);
+            $dsql->ExecuteNoneQuery(" UPDATE `#@__archives` SET `keywords`='$keywords',`description`='$description'  WHERE id='{$aid}' ");
+        }
+        $client->Close();
+    } else {
+        include_once(DEDEINC.'/splitword.class.php');
+        $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
+        while($row = $dsql->GetArray())
+        {
+            //跳过已经有关键字的内容
+            if(trim($row['keywords']) !='' ) continue;
+            
+            $aid = $row['id'];
+            $keywords = '';
+            $title = $row['title'];
+            $description = $row['description'];
+            $body = cn_substr($row['body'], 5000);
+            $sp->SetSource($title, $cfg_soft_lang, $cfg_soft_lang);
+            $sp->StartAnalysis();
+            $titleindexs = preg_replace("/#p#|#e#/",'',$sp->GetFinallyIndex());
+            $sp->SetSource(Html2Text($body), $cfg_soft_lang, $cfg_soft_lang);
+            $sp->StartAnalysis();
+            $allindexs = preg_replace("/#p#|#e#/",'',$sp->GetFinallyIndex());
+            
+            if(is_array($allindexs) && is_array($titleindexs))
+            {
+                foreach($titleindexs as $k => $v)
+                {
+                    if(strlen($keywords.$k)>=60)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if(strlen($k) <= 2) continue;
+                        $keywords .= $k.',';
+                    }
+                }
+                foreach($allindexs as $k => $v)
+                {
+                    if(strlen($keywords.$k)>=60)
+                    {
+                        break;
+                    }
+                    else if(!in_array($k,$titleindexs))
+                    {
+                        if(strlen($k) <= 2) continue;
+                        $keywords .= $k.',';
+                    }
+                }
+            }
+    
+            $description = str_replace('　', ' ', trim($description));
+            $description = str_replace('［', ' ', $description);
+            $description = str_replace('］', ' ', $description);
+            $description = preg_replace("#[ \r\n\t]{1,}#is", ' ', $description);
+            $description = str_replace('关键字', '', $description);
+            $description = str_replace('关键词', '', $description);
+            $description = addslashes($description);
+            $dsql->ExecuteNoneQuery(" UPDATE `#@__archives` SET `keywords`='$keywords',`description`='$description'  WHERE id='{$aid}' ");
+        }
+        $sp = null;
     }
-    $sp = null;
+
+
     ShowMsg("成功分析指定文档的关键词！", $ENV_GOBACK_URL);
     exit();
 }

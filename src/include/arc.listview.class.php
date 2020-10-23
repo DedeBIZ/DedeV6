@@ -825,16 +825,6 @@ class ListView
                     //处理一些特殊字段
                     $row['infos'] = cn_substr($row['description'],$infolen);
                     $row['id'] =  $row['id'];
-					if($cfg_digg_update > 0)
-					{
-						$prefix = 'diggCache';
-						$key = 'aid-'.$row['id'];
-						$cacherow = GetCache($prefix, $key);
-						$row['goodpost'] = $cacherow['goodpost'];
-						$row['badpost'] = $cacherow['badpost'];
-						$row['scores'] = $cacherow['scores'];
-					}
-
                     if($row['corank'] > 0 && $row['arcrank']==0)
                     {
                         $row['arcrank'] = $row['corank'];

@@ -415,52 +415,6 @@ function lib_arclistDone(&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen
           WHERE arc.id in($idlist) $ordersql ";
     }
 	
-	// 好评差评缓存更新
-	if($cfg_digg_update > 0)
-	{
-		if($orderby == 'goodpost' || $orderby == 'badpost')
-		{
-			$t1 = ExecTime();
-			$postsql = "SELECT arc.id,arc.goodpost,arc.badpost,arc.scores
-				FROM `$maintable` arc
-				$orwhere $ordersql $limitsql";
-				
-			if($idlist != '')
-			{
-				$postsql = "SELECT arc.id,arc.goodpost,arc.badpost,arc.scores
-					 FROM `$maintable` arc 
-				  WHERE arc.id in($idlist) $ordersql ";
-			}
-			$dsql->SetQuery($query);
-			$dsql->Execute('lit');
-			while ($row = $dsql->GetArray('lit')) {
-				$prefix = 'diggCache';
-				$key = 'aid-'.$row['id'];
-				$cacherow = GetCache($prefix, $key);
-				$setsql = array();
-				if(!empty($cacherow['scores']) && $cacherow['scores'] != $row['scores'])
-				{
-					$setsql[] = "scores = {$cacherow['scores']}";
-				}
-				if(!empty($cacherow['goodpost']) && $cacherow['goodpost'] != $row['goodpost'])
-				{
-					$setsql[] = "goodpost = {$cacherow['goodpost']}";
-				}
-				if(!empty($cacherow['badpost']) && $cacherow['badpost'] != $row['badpost'])
-				{
-					$setsql[] = "badpost = {$cacherow['badpost']}";
-				}
-				$setsql = implode(',', $setsql);
-				$sql = "UPDATE `$maintable` SET {$setsql} WHERE id='{$row['id']}'";
-				if(!empty($setsql))
-				{
-					$dsql->ExecuteNoneQuery($sql);
-				}
-			}
-			//echo ExecTime()-$t1;
-		}
-	}
-	
     $dsql->SetQuery($query);
     $dsql->Execute('al');
     //$row = $dsql->GetArray("al");

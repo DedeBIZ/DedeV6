@@ -635,6 +635,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype='all')
 function AnalyseHtmlBody($body,&$description,&$litpic,&$keywords,$dtype='')
 {
     global $autolitpic,$remote,$dellink,$autokey,$cfg_basehost,$cfg_auot_description,$id,$title,$cfg_soft_lang;
+    global $cfg_bizcore_appid,$cfg_bizcore_key,$cfg_bizcore_hostname,$cfg_bizcore_port;
     $autolitpic = (empty($autolitpic) ? '' : $autolitpic);
     $body = stripslashes($body);
 
@@ -675,44 +676,55 @@ function AnalyseHtmlBody($body,&$description,&$litpic,&$keywords,$dtype='')
     {
         $subject = $title;
         $message = $body;
-        include_once(DEDEINC.'/splitword.class.php');
-        $keywords = '';
-        $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
-        $sp->SetSource($subject, $cfg_soft_lang, $cfg_soft_lang);
-        $sp->StartAnalysis();
-        $titleindexs = preg_replace("/#p#|#e#/",'',$sp->GetFinallyIndex());
-        $sp->SetSource(Html2Text($message), $cfg_soft_lang, $cfg_soft_lang);
-        $sp->StartAnalysis();
-        $allindexs = preg_replace("/#p#|#e#/",'',$sp->GetFinallyIndex());
-        
-        if(is_array($allindexs) && is_array($titleindexs))
-        {
-            foreach($titleindexs as $k => $v)
+        // 采用DedeBIZ Core分词组件分词
+        if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+            $keywords = '';
+            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+            $client->appid = $cfg_bizcore_appid;
+            $client->key = $cfg_bizcore_key;
+            $data = $client->Spliteword($subject.Html2Text($message));
+            $keywords = $data->data;
+            $client->Close();
+        } else {
+            include_once(DEDEINC.'/splitword.class.php');
+            $keywords = '';
+            $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
+            $sp->SetSource($subject, $cfg_soft_lang, $cfg_soft_lang);
+            $sp->StartAnalysis();
+            $titleindexs = preg_replace("/#p#|#e#/",'',$sp->GetFinallyIndex());
+            $sp->SetSource(Html2Text($message), $cfg_soft_lang, $cfg_soft_lang);
+            $sp->StartAnalysis();
+            $allindexs = preg_replace("/#p#|#e#/",'',$sp->GetFinallyIndex());
+            
+            if(is_array($allindexs) && is_array($titleindexs))
             {
-                if(strlen($keywords.$k)>=60)
+                foreach($titleindexs as $k => $v)
                 {
-                    break;
+                    if(strlen($keywords.$k)>=60)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if(strlen($k) <= 2) continue;
+                        $keywords .= $k.',';
+                    }
                 }
-                else
+                foreach($allindexs as $k => $v)
                 {
-                    if(strlen($k) <= 2) continue;
-                    $keywords .= $k.',';
+                    if(strlen($keywords.$k)>=60)
+                    {
+                        break;
+                    }
+                    else if(!in_array($k,$titleindexs))
+                    {
+                        if(strlen($k) <= 2) continue;
+                        $keywords .= $k.',';
+                    }
                 }
             }
-            foreach($allindexs as $k => $v)
-            {
-                if(strlen($keywords.$k)>=60)
-                {
-                    break;
-                }
-                else if(!in_array($k,$titleindexs))
-                {
-                    if(strlen($k) <= 2) continue;
-                    $keywords .= $k.',';
-                }
-            }
+            $sp = null;
         }
-        $sp = null;
     }
     $body = GetFieldValueA($body,$dtype,$id);
     $body = addslashes($body);

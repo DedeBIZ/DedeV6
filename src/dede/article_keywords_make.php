@@ -143,63 +143,92 @@ else if($dopost=='fetch')
               LEFT JOIN `#@__addonarticle` addon ON addon.aid=arc.id WHERE arc.channel='1' $limitSql ";
         $dsql->SetQuery($fquery);
         $dsql->Execute();
-        $sp = new SplitWord($cfg_soft_lang , $cfg_soft_lang );
-        while($row=$dsql->GetObject())
-        {
-            if($row->keywords!='')
-            {
-                continue;
-            }
-            $tjnum++;
-            $id = $row->id;
-            $keywords = "";
-            
-            $sp->SetSource($row->title, $cfg_soft_lang , $cfg_soft_lang );
-            $sp->SetResultType(2);
-            $sp->StartAnalysis(TRUE);
 
-            $titleindexs = $sp->GetFinallyIndex();
-            
-            $sp->SetSource(Html2Text($row->body), $cfg_soft_lang , $cfg_soft_lang );
-            $sp->SetResultType(2);
-            $sp->StartAnalysis(TRUE);
-            $allindexs = $sp->GetFinallyIndex();
-            if(is_array($allindexs) && is_array($titleindexs))
+        if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+            $client->appid = $cfg_bizcore_appid;
+            $client->key = $cfg_bizcore_key;
+            while($row=$dsql->GetObject())
             {
-                foreach($titleindexs as $k => $v)
+                if($row->keywords!='')
                 {
-                    if(strlen($keywords)>=30)
+                    continue;
+                }
+                $tjnum++;
+                $id = $row->id;
+                $keywords = "";
+                $data = $client->Spliteword($row->title.Html2Text($row->body));
+                $keywords = $data->data;
+                $keywords = addslashes($keywords);
+                if($keywords=='')
+                {
+                    $keywords = ',';
+                }
+                $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET keywords='$keywords' WHERE id='$id'");
+            }
+            $client->Close();
+        } else {
+            $sp = new SplitWord($cfg_soft_lang , $cfg_soft_lang );
+            while($row=$dsql->GetObject())
+            {
+                if($row->keywords!='')
+                {
+                    continue;
+                }
+                $tjnum++;
+                $id = $row->id;
+                $keywords = "";
+                
+                $sp->SetSource($row->title, $cfg_soft_lang , $cfg_soft_lang );
+                $sp->SetResultType(2);
+                $sp->StartAnalysis(TRUE);
+    
+                $titleindexs = $sp->GetFinallyIndex();
+                
+                $sp->SetSource(Html2Text($row->body), $cfg_soft_lang , $cfg_soft_lang );
+                $sp->SetResultType(2);
+                $sp->StartAnalysis(TRUE);
+                $allindexs = $sp->GetFinallyIndex();
+                if(is_array($allindexs) && is_array($titleindexs))
+                {
+                    foreach($titleindexs as $k => $v)
                     {
-                        break;
+                        if(strlen($keywords)>=30)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            if(strlen($k) <= 2) continue;
+                            $keywords .= $k.",";
+                        }
                     }
-                    else
+                    foreach($allindexs as $k => $v)
                     {
-                        if(strlen($k) <= 2) continue;
-                        $keywords .= $k.",";
+                        if(strlen($keywords)>=30)
+                        {
+                            break;
+                        }
+                        else if(!in_array($k,$titleindexs))
+                        {
+                            if(strlen($k) <= 2) continue;
+                            $keywords .= $k.",";
+                        }
                     }
                 }
-                foreach($allindexs as $k => $v)
+                $keywords = addslashes($keywords);
+                if($keywords=='')
                 {
-                    if(strlen($keywords)>=30)
-                    {
-                        break;
-                    }
-                    else if(!in_array($k,$titleindexs))
-                    {
-                        if(strlen($k) <= 2) continue;
-                        $keywords .= $k.",";
-                    }
+                    $keywords = ',';
                 }
+                $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET keywords='$keywords' WHERE id='$id'");
             }
-            $keywords = addslashes($keywords);
-            if($keywords=='')
-            {
-                $keywords = ',';
-            }
-            $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET keywords='$keywords' WHERE id='$id'");
+            unset($sp);
         }
-        unset($sp);
+
+
     }//end if limit
+
 
     //返回提示信息
     if($totalnum>0) $tjlen = ceil( ($tjnum/$totalnum) * 100 );

@@ -15,8 +15,6 @@ $format = isset($format)? $format : '';
 $id = empty($id)? 0 : intval($id);
 $cid = empty($cid)? 1 : intval($cid);
 
-
-
 helper('cache');
 
 if($id < 1)
