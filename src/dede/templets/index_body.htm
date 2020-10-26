@@ -416,19 +416,11 @@
                         </tr>
                         `;
                     }
-                    if (typeof rsp.result.auth_version !== "undefined") {
+                    if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined") {
                         infoStr += `
                         <tr>
                             <td class="nline" style="text-align:left"> 授权版本： </td>
-                            <td class="nline" style="text-align:left"> v${rsp.result.auth_version}.x.x </td>
-                        </tr>
-                        `;
-                    }
-                    if (typeof rsp.result.auth_at !== "undefined") {
-                        infoStr += `
-                        <tr>
-                            <td class="nline" style="text-align:left"> 授权时间： </td>
-                            <td class="nline" style="text-align:left"> ${rsp.result.auth_at} </td>
+                            <td class="nline" style="text-align:left"> v${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
                         </tr>
                         `;
                     }
