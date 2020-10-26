@@ -48,12 +48,12 @@ class DedeBizClient
         $str = json_encode($req);
         $length = strlen($str);
         $s = @socket_write($this->socket, $str, $length);
-
+        
         if (!$s) {
             return (object)array(
                 "code" => -1,
                 "data" => null,
-                "msg" => "连接DedeBiz商业组件服务失败\r\n",
+                "msg" => "请求DedeBiz商业组件服务失败\r\n",
             );
         }
 
@@ -152,6 +152,20 @@ class DedeBizClient
             "method" => "spliteword",
             "parms" => array(
                 "body" => $body,
+            )
+        );
+        return $this->request($req);
+    }
+
+    // 获取分词结果
+    // $body:内容 $sep:分隔符
+    function Pinyin($body,$sep)
+    {
+        $req = array(
+            "method" => "pinyin",
+            "parms" => array(
+                "body" => $body,
+                "sep" => $sep,
             )
         );
         return $this->request($req);

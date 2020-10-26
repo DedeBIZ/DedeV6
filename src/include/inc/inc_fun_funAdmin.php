@@ -21,56 +21,71 @@
 function SpGetPinyin($str, $ishead=0, $isclose=1)
 {
     global $pinyins;
+    global $cfg_bizcore_appid,$cfg_bizcore_key,$cfg_bizcore_hostname,$cfg_bizcore_port;
+    global $cfg_soft_lang;
     $restr = '';
-    $str = trim($str);
-    $slen = strlen($str);
-    if($slen < 2)
-    {
-        return $str;
-    }
-    if(@count($pinyins) == 0)
-    {
-        $fp = fopen(DEDEINC.'/data/pinyin.dat', 'r');
-        while(!feof($fp))
-        {
-            $line = trim(fgets($fp));
-            $pinyins[$line[0].$line[1]] = substr($line, 3, strlen($line)-3);
+    if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+        if ($cfg_soft_lang == "utf-8") {
+            $str = gb2utf8($str);
         }
-        fclose($fp);
-    }
-    for($i=0; $i<$slen; $i++)
-    {
-        if(ord($str[$i])>0x80)
+        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+        $client->appid = $cfg_bizcore_appid;
+        $client->key = $cfg_bizcore_key;
+        $data = $client->Pinyin($str,"");
+        $restr = $data->data;
+        $client->Close();
+    } else {
+        $str = trim($str);
+        $slen = strlen($str);
+        if($slen < 2)
         {
-            $c = $str[$i].$str[$i+1];
-            $i++;
-            if(isset($pinyins[$c]))
+            return $str;
+        }
+        if(@count($pinyins) == 0)
+        {
+            $fp = fopen(DEDEINC.'/data/pinyin.dat', 'r');
+            while(!feof($fp))
             {
-                if($ishead==0)
+                $line = trim(fgets($fp));
+                $pinyins[$line[0].$line[1]] = substr($line, 3, strlen($line)-3);
+            }
+            fclose($fp);
+        }
+        for($i=0; $i<$slen; $i++)
+        {
+            if(ord($str[$i])>0x80)
+            {
+                $c = $str[$i].$str[$i+1];
+                $i++;
+                if(isset($pinyins[$c]))
                 {
-                    $restr .= $pinyins[$c];
-                }
-                else
+                    if($ishead==0)
+                    {
+                        $restr .= $pinyins[$c];
+                    }
+                    else
+                    {
+                        $restr .= $pinyins[$c][0];
+                    }
+                }else
                 {
-                    $restr .= $pinyins[$c][0];
+                    $restr .= "_";
                 }
-            }else
+            }else if( preg_match("/[a-z0-9]/i", $str[$i]) )
+            {
+                $restr .= $str[$i];
+            }
+            else
             {
                 $restr .= "_";
             }
-        }else if( preg_match("/[a-z0-9]/i", $str[$i]) )
-        {
-            $restr .= $str[$i];
         }
-        else
+        if($isclose==0)
         {
-            $restr .= "_";
+            unset($pinyins);
         }
     }
-    if($isclose==0)
-    {
-        unset($pinyins);
-    }
+
     return $restr;
 }
 
@@ -234,7 +249,7 @@ EOT;
  */
 function SpGetNewInfo()
 {
-    global $cfg_version,$dsql;
+    global $cfg_version_detail,$dsql;
     $nurl = $_SERVER['HTTP_HOST'];
     if( preg_match("#[a-z\-]{1,}\.[a-z]{2,}#i",$nurl) ) {
         $nurl = urlencode($nurl);
@@ -245,20 +260,15 @@ function SpGetNewInfo()
     $phpv = phpversion();
     $sp_os = PHP_OS;
     $mysql_ver = $dsql->GetVersion();
-    $seo_info = $dsql->GetOne("SELECT * FROM `#@__plus_seoinfo` ORDER BY id DESC");
     $add_query = '';
-    if ( $seo_info )
-    {
-        $add_query .= "&alexa_num={$seo_info['alexa_num']}&alexa_area_num={$seo_info['alexa_area_num']}&baidu_count={$seo_info['baidu_count']}&sogou_count={$seo_info['sogou_count']}&haosou360_count={$seo_info['haosou360_count']}";
-    }
-    $query = " SELECT COUNT(*) AS dd FROM `#@__member` ";
+    $query = "SELECT COUNT(*) AS dd FROM `#@__member` ";
     $row1 = $dsql->GetOne($query);
     if ( $row1 ) $add_query .= "&mcount={$row1['dd']}";
-    $query = " SELECT COUNT(*) AS dd FROM `#@__arctiny` ";
+    $query = "SELECT COUNT(*) AS dd FROM `#@__arctiny` ";
     $row2 = $dsql->GetOne($query);
     if ( $row2 ) $add_query .= "&acount={$row2['dd']}";
     
-    $offUrl = "http://new"."ver.a"."pi.de"."decms.com/index.php?c=info57&version={$cfg_version}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}";
+    $offUrl = DEDEBIZURL."/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}";
     return $offUrl;
 }
 
