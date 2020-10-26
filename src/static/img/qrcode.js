@@ -6,6 +6,6 @@ var __dedeqrcode_src = "\""+__dedeqrcode_dir+"/qrcode.php?id="+__dedeqrcode_aid+
 
 document.writeln("<ins style=\"display:inline-table;border:none;margin:0;padding:0;position:relative;visibility:visible;width:100%\">");
 document.writeln("  <ins id=\"__bfzInc_"+randNum+"\" style=\"display:block;border:none;margin:0;padding:0;position:relative;visibility:visible;width:100%\">");
-document.writeln("<iframe id=\"dede_qrcode_frame\" name=\"dede_qrcode_frame\" width=\"260\" height=\"280\" frameborder=\"0\" src="+__dedeqrcode_src+" marginwidth=\"0\" marginheight=\"0\" vspace=\"0\" hspace=\"0\" allowtransparency=\"true\" scrolling=\"no\" allowfullscreen=\"true\"></iframe>");
+document.writeln("<iframe id=\"dede_qrcode_frame\" name=\"dede_qrcode_frame\" width=\"260\" height=\"300\" style='display:block;margin:0 auto;' frameborder=\"0\" src="+__dedeqrcode_src+" marginwidth=\"0\" marginheight=\"0\" vspace=\"0\" hspace=\"0\" allowtransparency=\"true\" scrolling=\"no\" allowfullscreen=\"true\"></iframe>");
 document.writeln("  </ins>");
 document.writeln("</ins>");

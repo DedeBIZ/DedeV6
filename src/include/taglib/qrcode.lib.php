@@ -1,6 +1,6 @@
 <?php   if(!defined('DEDEINC')) exit('Request Error!');
 /**
- * 自定义宏标记调用标签
+ * QRCode
  *
  * @version        $Id: qrcode.lib.php 1 9:29 2020年9月14日 tianya $
  * @package        DedeCMS.Taglib
@@ -13,7 +13,6 @@
 $GLOBALS['qrcode_id'] = isset($GLOBALS['qrcode_id'])? $GLOBALS['qrcode_id'] : 1;
 function lib_qrcode(&$ctag,&$refObj)
 {
-    global $dsql, $envs;
     //属性处理
     $attlist="type|,id|";
     FillAttsDefault($ctag->CAttribute->Items,$attlist);
@@ -43,7 +42,7 @@ function lib_qrcode(&$ctag,&$refObj)
     }
     
     $reval=<<<EOT
-  <a href='http://2v.dedecms.com/' id='__dedeqrcode_{$GLOBALS['qrcode_id']}'>织梦二维码生成器</a>
+  <a href='https://www.dedebiz.com/' id='__dedeqrcode_{$GLOBALS['qrcode_id']}'>二维码、二维码生成</a>
   <script type="text/javascript">
   	var __dedeqrcode_id={$GLOBALS['qrcode_id']};
   	var __dedeqrcode_aid={$id};
