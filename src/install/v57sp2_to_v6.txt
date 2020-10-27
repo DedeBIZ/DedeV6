@@ -9,6 +9,11 @@ ALTER TABLE `#@__feedback`
 	ADD COLUMN `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `dtime`;
 
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_auth_code', '授权码(登录www.dedebiz.com进行商业授权)', 1, 'bstring', '');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_hostname', 'DedeBIZ Core地址', 1, 'string', '127.0.0.1');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_port', 'DedeBIZ Core端口', 1, 'number', '8181');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_appid', 'DedeBIZ Core应用ID', 1, 'string', '');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_key', 'DedeBIZ Core通信密钥', 1, 'string', '');
 
 CREATE TABLE `#@__feedback_goodbad` (
 	`fgid` INT(11) NOT NULL AUTO_INCREMENT,

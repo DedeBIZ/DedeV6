@@ -19,7 +19,6 @@
  * @param     object  $refObj  引用对象
  * @return    string  成功后返回解析后的标签内容
  */
- 
 
 function lib_arclist( &$ctag, &$refObj )
 {
@@ -509,14 +508,13 @@ function lib_arclistDone(&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen
     if($pagesize > 0)
     {
         $artlist .= "    </div>\r\n";
-      $row = $dsql->GetOne("SELECT tagid FROM #@__arcmulti WHERE tagid='$tagid'");
+      $row = $dsql->GetOne("SELECT tagid FROM `#@__arcmulti` WHERE tagid='$tagid'");
       $uptime = time();
       $attstr = addslashes(serialize($attarray));
       $innertext = addslashes($innertext);
       if(!is_array($row))
       {
-        $query = "
-          INSERT INTO #@__arcmulti(tagid,uptime,innertext,pagesize,arcids,ordersql,addfieldsSql,addfieldsSqlJoin,attstr)
+        $query = "INSERT INTO `#@__arcmulti`(tagid,uptime,innertext,pagesize,arcids,ordersql,addfieldsSql,addfieldsSqlJoin,attstr)
           VALUES('$tagid','$uptime','$innertext','$pagesize','$idsstr','$ordersql','$addfieldsSql','$addfieldsSqlJoin','$attstr');
         ";
         $dsql->ExecuteNoneQuery($query);
@@ -589,7 +587,7 @@ function lib_GetAutoChannelID($sortid, $topid)
     global $dsql;
     if(empty($sortid)) $sortid = 1;
     $getstart = $sortid - 1;
-    $row = $dsql->GetOne("SELECT id,typename FROM #@__arctype WHERE reid='{$topid}' And ispart<2 And ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
+    $row = $dsql->GetOne("SELECT id,typename FROM `#@__arctype` WHERE reid='{$topid}' And ispart<2 And ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
     if(!is_array($row)) return 0;
     else return $row['id'];
 }

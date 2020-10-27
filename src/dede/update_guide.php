@@ -3,7 +3,7 @@
  * 本文件用于从镜像服务器获取升级信息与文件
  * 并由用户自行控制升级
  *
- * @version        $Id: vote_main.php 1 23:54 2010年7月20日Z tianya $
+ * @version        $Id: update_guide.php 1 23:54 2010年7月20日Z tianya $
  * @package        DedeCMS.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -95,45 +95,15 @@ if($dopost=='test')
     AjaxHead();
     //下载远程数据
     $dhd = new DedeHttpDown();
-    $dhd->OpenUrl(UPDATEHOST.'/verinfo.txt');
-    $verlist = trim($dhd->GetHtml());
+    $dhd->OpenUrl(DEDECDNURL.'/release/latest.txt');
+    $verlatest = trim($dhd->GetHtml());
     $dhd->Close();
-    if($cfg_soft_lang=='utf-8') 
-    {
-        $verlist = gb2utf8($verlist);
-    }
-    $verlist = preg_replace("#[\r\n]{1,}#", "\n", $verlist);
-    $verlists = explode("\n", $verlist);
-    
-    //分析数据
-    $updateVers = array();
-    $upitems = $lastTime = '';
-    $n = 0;
-    foreach($verlists as $verstr)
-    {
-        if( empty($verstr) || preg_match("#^\/\/#", $verstr) ) 
-        {
-            continue ;
-        }
-        list($vtime, $vlang, $issafe, $vmsg) = explode(',', $verstr);
-        $vtime = trim($vtime);
-        $vlang = trim($vlang);
-        $issafe = trim($issafe);
-        $vmsg = trim($vmsg);
-        if($vtime > $upTime && $vlang==$cfg_soft_lang)
-        {
-            $updateVers[$n]['issafe'] = $issafe;
-            $updateVers[$n]['vmsg'] = $vmsg;
-            $upitems .= ($upitems=='' ? $vtime : ','.$vtime);
-            $lastTime = $vtime;
-            $updateVers[$n]['vtime'] = substr($vtime,0,4).'-'.substr($vtime,4,2).'-'.substr($vtime,6,2);
-            $n++;
-        }
-    }
-        
+
+   
     //echo "<xmp>";
     //判断是否需要更新，并返回适合的结果
-    if($n==0)
+
+    if(version_compare($verlatest, $cfg_version_detail,"<="))
     {
         $offUrl = SpGetNewInfo();
         echo "<div class='updatedvt'><b>你系统版本最后更新时间为：{$oktime}，当前没有可用的更新</b></div>\r\n";
@@ -143,21 +113,9 @@ if($dopost=='test')
     {
         echo "<div style='width:98%'><form name='fup' action='update_guide.php' method='post' onsubmit='ShowWaitDiv()'>\r\n";
         echo "<input type='hidden' name='dopost' value='getlist' />\r\n";
-        echo "<input type='hidden' name='vtime' value='$lastTime' />\r\n";
-        echo "<input type='hidden' name='upitems' value='$upitems' />\r\n";
-        echo "<div class='upinfotitle'>你系统版本最后更新时间为：{$oktime}，当前可用的更新有：</div>\r\n";
-        foreach($updateVers as $vers)
-        {
-            $style = '';
-            if($vers['issafe']==1) 
-            {
-                $style = "color:red;";
-            }
-            echo "<div style='{$style}' class='verline'>【".($vers['issafe']==1 ? "安全更新" : "普通更新")."】";
-            echo $vers['vtime']."，更新说明：{$vers['vmsg']}</div>\r\n";
-        }
-        echo "<div style='line-height:32px'><input type='submit' name='sb1' value=' 点击此获取所有更新文件，然后选择安装 ' class='np coolbg' style='cursor:pointer' />\r\n";
-        echo " &nbsp; <input type='button' name='sb2' value=' 忽略这些更新 ' onclick='SkipReload({$lastTime})' class='np coolbg'  style='cursor:pointer' /></div>\r\n";
+        echo "<div class='upinfotitle'>当前有可用的更新，可以通过<a href='$cfg_biz_gitUrl' target='_blank'>代码托管</a>查看更新记录：</div>\r\n";
+        echo "<div style='line-height:32px'><button type='submit' name='sb1' class='btn btn-success btn-sm' style='cursor:pointer'>获取并安装</button>\r\n";
+        echo " &nbsp;</div>\r\n";
         echo "</form></div>";
     }
     //echo "</xmp>";

@@ -426,12 +426,14 @@ DROP TABLE IF EXISTS `#@__feedback`;
 CREATE TABLE `#@__feedback` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `aid` mediumint(8) unsigned NOT NULL default '0',
+  `fid` INT(10) UNSIGNED NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL default '0',
   `username` char(20) NOT NULL default '',
   `arctitle` varchar(60) NOT NULL default '',
   `ip` char(15) NOT NULL default '',
   `ischeck` smallint(6) NOT NULL default '0',
   `dtime` int(10) unsigned NOT NULL default '0',
+  `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0',
   `mid` mediumint(8) unsigned NOT NULL default '0',
   `bad` mediumint(8) unsigned NOT NULL default '0',
   `good` mediumint(8) unsigned NOT NULL default '0',
@@ -892,6 +894,13 @@ CREATE TABLE `#@__search_limits` (
 	PRIMARY KEY (`ip`)
 ) TYPE=MyISAM;
 
+DROP TABLE IF EXISTS `#@__search_limits`;
+CREATE TABLE `#@__search_limits` (
+	`ip` VARCHAR(200) NOT NULL,
+	`searchtime` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`ip`)
+) TYPE=MyISAM;
+
 DROP TABLE IF EXISTS `#@__sgpage`;
 CREATE TABLE `#@__sgpage` (
   `aid` smallint(5) unsigned NOT NULL auto_increment,
@@ -1059,16 +1068,16 @@ CREATE TABLE `#@__sysconfig` (
 
 DROP TABLE IF EXISTS `#@__tagindex`;
 CREATE TABLE `#@__tagindex` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `tag` char(12) NOT NULL default '',
-  `typeid` smallint(5) unsigned NOT NULL default '0',
-  `count` int(10) unsigned NOT NULL default '0',
-  `total` int(10) unsigned NOT NULL default '0',
-  `weekcc` int(10) unsigned NOT NULL default '0',
-  `monthcc` int(10) unsigned NOT NULL default '0',
-  `weekup` int(10) unsigned NOT NULL default '0',
-  `monthup` int(10) unsigned NOT NULL default '0',
-  `addtime` int(10) unsigned NOT NULL default '0',
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`tag` CHAR(12) NOT NULL DEFAULT '',
+	`typeid` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+	`count` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`total` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`weekcc` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`monthcc` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`weekup` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`monthup` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	`addtime` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 	`uptime` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 	`mktime` INT(10) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY  (`id`)

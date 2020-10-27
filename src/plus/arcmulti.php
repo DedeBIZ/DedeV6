@@ -11,7 +11,7 @@ if($tagid=='' || $pnum==0) die(" Request Error! ");
 
 if($tagid !='')
 {
-    $row = $dsql->GetOne("SELECT * FROM #@__arcmulti WHERE tagid='$tagid'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__arcmulti` WHERE tagid='$tagid'");
     $ids = explode(',', $row['arcids']);
     $totalnum = $line = count($ids);
     //取出属性并解析为变量

@@ -4,7 +4,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-    <title>DedeCMS Home</title>
+    <title>DedeCMSV6系统概况</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base target="_self">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
@@ -68,12 +68,14 @@
                     </div>
                     <!--/.card-header-->
                     <div class="card-body">
-                        <?php
-                            echo "<div class='updatedvt py-3'><b>您系统版本最后更新时间为：{$oktime} </b><br/>";
-                            echo " <a href='javascript:LoadUpdateInfos();' class='btn btn-success btn-sm'>进行在线更新</a> &nbsp; \r\n";
-                            echo " <a href='sys_repair.php' class='btn btn-success btn-sm'>系统错误修复</a></div>\r\n";
-                            echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' width='98%' height='80'></iframe>";
-                        ?>
+                        <div id="updateinfos">
+                            <?php
+                                echo "<div class='updatedvt py-3'><b>您系统版本最后更新时间为：{$oktime} </b><br/>";
+                                echo " <a href='javascript:LoadUpdateInfos();' class='btn btn-success btn-sm'>进行在线更新</a> &nbsp; \r\n";
+                                echo " <a href='sys_repair.php' class='btn btn-success btn-sm'>系统错误修复</a></div>\r\n";
+                                echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' width='98%' height='80'></iframe>";
+                            ?>
+                        </div>
                     </div>
                     <!--/.card-body-->
                 </div>

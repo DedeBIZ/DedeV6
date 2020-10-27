@@ -16,7 +16,7 @@ function lib_arcpagelist(&$ctag, &$refObj)
     FillAttsDefault($ctag->CAttribute->Items,$attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     
-    $row = $dsql->GetOne("SELECT * FROM #@__arcmulti WHERE tagid='$tagid'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__arcmulti` WHERE tagid='$tagid'");
     if(is_array($row))
     {
       $ids = explode(',', $row['arcids']);
