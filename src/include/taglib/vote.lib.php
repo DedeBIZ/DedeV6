@@ -13,25 +13,6 @@ if(!defined('DEDEINC'))
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>投票标签</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>用于获取一组投票表单</description>
-<demo>
-{dede:vote id='' lineheight='22' tablewidth='100%' titlebgcolor='#EDEDE2' titlebackground='' tablebgcolor='#FFFFFF'/}
-{/dede}
-</demo>
-<attributes>
-    <iterm>id:数字，当前投票ID</iterm>
-    <iterm>lineheight:表格高度</iterm>
-    <iterm>tablewidth:表格宽度</iterm>
-    <iterm>titlebgcolor:投票标题背景色</iterm>
-    <iterm>titlebackground:标题背景图</iterm>
-    <iterm>tablebg:投票表格背景色</iterm>
-</attributes>
->>dede>>*/
- 
 require_once(DEDEINC.'/dedevote.class.php');
 function lib_vote(&$ctag,&$refObj)
 {

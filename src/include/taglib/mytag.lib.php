@@ -9,21 +9,6 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>自定义宏标记</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>用于获取自定义宏标记的内容</description>
-<demo>
-{dede:mytag typeid='0' name=''/}
-</demo>
-<attributes>
-    <iterm>name:标记名称，该项是必须的属性，以下 2、3是可选属性</iterm> 
-    <iterm>ismake:默认是 no 表示设定的纯HTML代码， yes 表示含板块标记的代码</iterm>
-    <iterm>typeid:表示所属栏目的ID，默认为 0 ，表示所有栏目通用的显示内容，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目ＩＤ</iterm>
-</attributes> 
->>dede>>*/
- 
 function lib_mytag(&$ctag, &$refObj)
 {
     $attlist = "typeid|0,name|,ismake|no";

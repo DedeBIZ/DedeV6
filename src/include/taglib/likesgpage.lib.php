@@ -9,19 +9,6 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>单页文档调用标签</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>单页文档调用标签</description>
-<demo>
-{dede:likespage row=''/}
-</demo>
-<attributes>
-    <iterm>row:调用条数</iterm> 
-</attributes> 
->>dede>>*/
- 
 function lib_likesgpage(&$ctag,&$refObj)
 {
     global $dsql;

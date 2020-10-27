@@ -9,21 +9,6 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>指定栏目</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>表示指定的单个栏目的链接</description>
-<demo>
-{dede:type}
-<a href="[field:typelink /]">[field:typename /]</a>
-{/dede:type}
-</demo>
-<attributes>
-    <iterm>typeid:指定栏目ID</iterm> 
-</attributes> 
->>dede>>*/
- 
 function lib_type(&$ctag,&$refObj)
 {
     global $dsql,$envs;

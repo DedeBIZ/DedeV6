@@ -14,20 +14,6 @@ require_once(DEDEINC."/taglib/flink.lib.php");
  * @link           https://www.dedebiz.com
  */
 
-/*>>dede>>
-<name>友情链接类型</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>用于获取友情链接类型</description>
-<demo>
-{dede:flink row='24'/}
-</demo>
-<attributes>
-    <iterm>row:链接类型数量</iterm>
-    <iterm>titlelen:链接文字的长度</iterm>
-</attributes> 
->>dede>>*/
- 
 function lib_flinktype(&$ctag,&$refObj)
 {
     global $dsql;
@@ -38,7 +24,7 @@ function lib_flinktype(&$ctag,&$refObj)
     $totalrow = $row;
     $revalue = '';
   
-    $equery = "SELECT * FROM #@__flinktype order by id asc limit 0,$totalrow";
+    $equery = "SELECT * FROM `#@__flinktype` order by id asc limit 0,$totalrow";
 
     if(trim($ctag->GetInnerText())=='') $innertext = "<li>[field:typename /]</li>";
     else $innertext = $ctag->GetInnerText();

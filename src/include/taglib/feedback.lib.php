@@ -12,26 +12,6 @@ if (!defined('DEDEINC')) {
  * @link           https://www.dedebiz.com
  */
 
-/*>>dede>>
-<name>会员评论内容</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>用于调用最新评论</description>
-<demo>
-{dede:feedback}
- <ul>
-  <li class='fbtitle'>[field:username function="(@me=='guest' ? '游客' : @me)"/] 对 [field:title/] 的评论：</li>
-  <li class='fbmsg'> <a href="plus/feedback.php?aid=[field:aid/]" class='fbmsg'>[field:msg /]</a></li>
- </ul>
-{/dede:feedback}
-</demo>
-<attributes>
-    <iterm>row:调用评论条数</iterm> 
-    <iterm>titlelen:标题长度</iterm>
-    <iterm>infolen:评论长度</iterm>
-</attributes> 
->>dede>>*/
-
 function lib_feedback(&$ctag, &$refObj)
 {
     global $dsql;

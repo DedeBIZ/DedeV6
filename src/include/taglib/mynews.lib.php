@@ -9,20 +9,7 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>站内新闻</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>站内新闻调用标签</description>
-<demo>
-{dede:mynews row='' titlelen=''/}
-</demo>
-<attributes>
-    <iterm>row:调用站内新闻数</iterm> 
-    <iterm>titlelen:新闻标题长度</iterm>
-</attributes> 
->>dede>>*/
- 
+
 function lib_mynews(&$ctag,&$refObj)
 {
     global $dsql,$envs;

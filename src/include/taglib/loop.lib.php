@@ -13,24 +13,6 @@ if(!defined('DEDEINC'))
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>万能循环</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>调用任意表的数据标签</description>
-<demo>
-{dede:loop table='dede_archives' sort='' row='4' if=''}
-<a href='[field:arcurl/]'>[field:title/]</a>
-{/dede:loop}
-</demo>
-<attributes>
-    <iterm>table:查询表名</iterm> 
-    <iterm>sort:用于排序的字段</iterm>
-    <iterm>row:返回结果的条数</iterm>
-    <iterm>if:查询的条件</iterm>
-</attributes> 
->>dede>>*/
- 
 require_once(DEDEINC.'/dedevote.class.php');
 function lib_loop(&$ctag,&$refObj)
 {

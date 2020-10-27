@@ -9,18 +9,7 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>分类信息地区与类型快捷链接</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>调用分类信息地区与类型快捷链接</description>
-<demo>
-{dede:infolink /}
-</demo>
-<attributes>
-</attributes> 
->>dede>>*/
- 
+
 require_once(DEDEINC.'/enums.func.php');
 require_once(DEDEDATA.'/enums/nativeplace.php');
 require_once(DEDEDATA.'/enums/infotype.php');

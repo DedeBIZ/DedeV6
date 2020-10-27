@@ -17,32 +17,6 @@
  * @param     object  $refObj  引用对象
  * @return    string  成功后返回解析后的标签内容
  */
- 
-/*>>dede>>
-<name>独立单表模型列表</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>单表独立模型的文档列表调用标记</description>
-<demo>
-{dede:arclistsg  flag='h' typeid='' row='' col='' titlelen='' orderway='' keyword='' limit='0,1'} 
-<a href='[field:arcurl/]'>[field:title/]</a> 
-{/dede:arclistsg}
-</demo>
-<attributes>
-    <iterm>row:返回文档列表总数</iterm> 
-    <iterm>typeid:栏目ID,在列表模板和档案模板中一般不需要指定，在封面模板中允许用","分开表示多个栏目</iterm>
-    <iterm>titlelen:标题长度 等同于titlelength</iterm>
-    <iterm>orderwey:排序方向</iterm>
-    <iterm>keyword:含有指定关键字的文档列表，多个关键字用","分</iterm>
-    <iterm>innertext:单条记录样式(innertext是放在标签之间的代码)</iterm>
-    <iterm>arcid:指定文档ID</iterm>
-    <iterm>idlist:提取特定文档（文档ID）</iterm>
-    <iterm>channelid: 频道ID</iterm>
-    <iterm>limit:表示限定的记录范围</iterm>
-    <iterm>flag:自定义属性值：头条[h]推荐[c]图片[p]幻灯[f]滚动[s]跳转[j]图文[a]加粗[b]</iterm>
-    <iterm>subday:表示在多少天以内的文档</iterm>
-</attributes> 
->>dede>>*/
 
 function lib_arclistsg(&$ctag,&$refObj)
 {

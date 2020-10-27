@@ -10,23 +10,6 @@
  * @link           https://www.dedebiz.com
  */
 
-/*>>dede>>
-<name>TAG调用</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>TAG调用标签</description>
-<demo>
-{dede:tag sort='new' getall='0'}
-<a href='[field:link/]'>[field:tag /]</a>
-{/dede:tag}
-</demo>
-<attributes>
-    <iterm>row:调用条数</iterm> 
-    <iterm>sort:排序方式 month，rand，week</iterm>
-    <iterm>getall:获取类型 0 为当前内容页TAG标记，1为获取全部TAG标记</iterm>
-</attributes> 
->>dede>>*/
-
 function lib_tag(&$ctag, &$refObj)
 {
     global $dsql, $envs, $cfg_cmsurl;

@@ -20,39 +20,6 @@
  * @return    string  成功后返回解析后的标签内容
  */
  
-/*>>dede>>
-<name>文档列表</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>获取指定文档列表</description>
-<demo>
-{dede:arclist  flag='h' typeid='' row='' col='' titlelen='' infolen='' imgwidth='' imgheight='' listtype='' orderby='' keyword='' limit='0,1'}
-<a href='[field:arcurl/]'>[field:title/]</a>
-{/dede:arclist}
-</demo>
-<attributes>
-    <iterm>col:分多少列显示（默认为单列），5.3版中本属性可以通过多种方式进行多行显示</iterm>
-    <iterm>row:返回文档列表总数</iterm> 
-    <iterm>typeid:栏目ID,在列表模板和档案模板中一般不需要指定，在首页模板中允许用","分开表示多个栏目</iterm>
-    <iterm>getall:在没有指定这属性的情况下,在栏目页、文章页模板,不会获取以","分开的多个栏目的下级子类</iterm>
-    <iterm>titlelen:标题长度 等同于titlelength</iterm>
-    <iterm>infolen:表示内容简介长度 等同于infolength</iterm>
-    <iterm>imgwidth:缩略图宽度</iterm>
-    <iterm>imgheight:缩略图高度</iterm>
-    <iterm>listtype: 栏目类型 image含有缩略图 commend推荐</iterm>
-    <iterm>orderby:文档排序方式</iterm>
-    <iterm>keyword:含有指定关键字的文档列表，多个关键字用","分</iterm>
-    <iterm>innertext:单条记录样式</iterm>
-    <iterm>aid:指定文档ID</iterm>
-    <iterm>idlist:提取特定文档（文档ID</iterm>
-    <iterm>channelid:频道ID</iterm>
-    <iterm>limit:（起始ID从0开始）表示限定的记录范围（如：limit='1,2'  表示从ID为1的记录开始，取2条记录</iterm>
-    <iterm>flag:自定义属性值：头条[h]推荐[c]图片[p]幻灯[f]滚动[s]跳转[j]图文[a]加粗[b]</iterm>
-    <iterm>noflag:同flag，但这里是表示不包含这些属性</iterm>
-    <iterm>orderway:值为 desc 或 asc ，指定排序方式是降序还是顺向排序，默认为降序</iterm>
-    <iterm>subday:表示在多少天以内的文档</iterm>
-</attributes> 
->>dede>>*/
 
 function lib_arclist( &$ctag, &$refObj )
 {

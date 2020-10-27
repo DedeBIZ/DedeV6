@@ -13,24 +13,6 @@ if(!defined('DEDEINC'))
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>会员信息列表</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>会员信息调用标签</description>
-<demo>
-{dede:memberlist orderby='scores' row='20'}
-<a href="../member/index.php?uid={dede:field.userid /}">{dede:field.userid /}</a>
-<span>{dede:field.scores /}</span>
-{/dede:memberlist}
-</demo>
-<attributes>
-    <iterm>row:调用数目</iterm> 
-    <iterm>iscommend:是否为推荐会员</iterm>
-    <iterm>orderby:按登录时间排序 money 按金钱排序 scores 按积分排序</iterm>
-</attributes> 
->>dede>>*/
- 
 //orderby = logintime(login new) or mid(register new)
 function lib_memberlist(&$ctag, &$refObj)
 {

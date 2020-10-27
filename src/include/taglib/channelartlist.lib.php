@@ -8,30 +8,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-/*>>dede>>
-<name>频道文档</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>获取当前频道的下级栏目的内容列表标签</description>
-<demo>
-{dede:channelartlist row=6}
-<dl>
- <dt><a href='{dede:field name='typeurl'/}'>{dede:field name='typename'/}</a></dt>
- <dd>
- {dede:arclist titlelen='42' row='10'}    <ul class='autod'> 
-     <li><a href="[field:arcurl /]">[field:title /]</a></li>
-      <li>([field:pubdate function="MyDate('m-d',@me)"/])</li>
-    </ul>
-{/dede:arclist}
-</dl>
-{/dede:channelartlist}
-</demo>
-<attributes>
-    <iterm>typeid:频道ID</iterm> 
-    <iterm>row:获取的栏目返回值</iterm>
-</attributes> 
->>dede>>*/
  
 require_once(DEDEINC.'/arc.partview.class.php');
 

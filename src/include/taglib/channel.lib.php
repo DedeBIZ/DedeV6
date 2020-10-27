@@ -9,26 +9,7 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>频道标签</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>用于获取栏目列表</description>
-<demo>
-{dede:channel type='top' row='8' currentstyle="<li><a href='~typelink~' class='thisclass'>~typename~</a> </li>"} 
- <li><a href='[field:typelink/]'>[field:typename/]</a> </li> 
-{/dede:channel}
-</demo>
-<attributes>
-    <iterm>typeid:栏目ID</iterm> 
-    <iterm>reid:上级栏目ID</iterm>
-    <iterm>row:调用栏目数</iterm>
-    <iterm>col:分多少列显示（默认为单列）</iterm>
-    <iterm>type:son表示下级栏目,self表示同级栏目,top顶级栏目</iterm>
-    <iterm>currentstyle:应用样式</iterm>
-</attributes> 
->>dede>>*/
- 
+
 function lib_channel(&$ctag,&$refObj)
 {
     global $dsql;

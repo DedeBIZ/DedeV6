@@ -8,21 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
- 
-/*>>dede>>
-<name>广告标签</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>获取广告代码</description>
-<demo>
-{dede:myad name=''/}
-</demo>
-<attributes>
-    <iterm>typeid:投放范围,0为全站</iterm> 
-    <iterm>name:广告标识</iterm>
-</attributes> 
->>dede>>*/
- 
+
 require_once(DEDEINC.'/taglib/mytag.lib.php');
 
 function lib_myad(&$ctag, &$refObj)

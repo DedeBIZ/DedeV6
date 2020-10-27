@@ -9,18 +9,6 @@
  * @link           https://www.dedebiz.com
  */
  
- /*>>dede>>
-<name>分类信息搜索</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>分类信息的地区与小分类搜索</description>
-<demo>
-{dede:infoguide /}
-</demo>
-<attributes>
-</attributes> 
->>dede>>*/
- 
 function lib_infoguide(&$ctag,&$refObj)
 {
     global $dsql,$nativeplace,$infotype,$hasSetEnumJs,$cfg_cmspath,$cfg_mainsite;

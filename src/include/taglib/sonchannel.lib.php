@@ -9,23 +9,7 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>子栏目标签</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>子栏目调用标签</description>
-<demo>
-{dede:sonchannel}
-<a href='[field:typeurl/]'>[field:typename/]</a>
-{/dede:sonchannel}
-</demo>
-<attributes>
-    <iterm>row:返回数目</iterm> 
-    <iterm>col:默认单列显示</iterm>
-    <iterm>nosonmsg:没有指定ID子栏目显示的信息内容</iterm>
-</attributes> 
->>dede>>*/
- 
+
 function lib_sonchannel(&$ctag,&$refObj)
 {
     global $_sys_globals,$dsql;

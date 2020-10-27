@@ -13,22 +13,6 @@ if(!defined('DEDEINC'))
  * @link           https://www.dedebiz.com
  */
 
-/*>>dede>>
-<name>SQL标签</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>用于获取MySQL数据库内容的标签</description>
-<demo>
-{dede:sql sql='' db='default'}
-[field:title/]
-{/dede}
-</demo>
-<attributes>
-    <iterm>sql:需要查询的sql语句</iterm>
-    <iterm>appname: 默认为default,即当前dedecms的数据库,如果需要自定义,可以在data/tag/sql.inc.php中扩展,具体扩展方法查看配置文件头部说明</iterm>
-</attributes>
->>dede>>*/
-
 function lib_sql(&$ctag,&$refObj)
 {
     global $dsql,$sqlCt,$cfg_soft_lang;

@@ -12,19 +12,7 @@ if(!defined('DEDEINC'))
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
- 
-/*>>dede>>
-<name>下载说明</name>
-<type>软件内容模板</type>
-<for>V55,V56,V57</for>
-<description>下载说明标签</description>
-<demo>
-{dede:softmsg /}
-</demo>
-<attributes>
-</attributes> 
->>dede>>*/
- 
+
 function lib_softmsg(&$ctag,&$refObj)
 {
     global $dsql;

@@ -5,21 +5,6 @@ if(!defined('DEDEINC'))
 }
 require_once(DEDEINC.'/json.class.php');
 
- /*>>dede>>
-<name>JSON数据调用类</name>
-<type>全局标记</type>
-<for>V57</for>
-<description>调用某个远程连接的json数据库</description>
-<demo>
-{dede:json url='http://yoursite/json.php' cache=300}
-    [field:id/]-[field:title/]<br/>
-{/dede:json}
-</demo>
-<attributes>
-    <iterm>url:json数据地址</iterm> 
-    <iterm>cache:缓冲时间</iterm>
-</attributes> 
->>dede>>*/
 
 function lib_json(&$ctag,&$refObj)
 {

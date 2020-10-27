@@ -9,26 +9,7 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>相关文档</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>自动关连文档标签</description>
-<demo>
-{dede:likearticle row='' col='' titlelen='' infolen=''}
-<a href='[field:arcurl/]'>[field:title/]</a>
-{/dede:likearticle}
-</demo>
-<attributes>
-    <iterm>col:分多少列显示（默认为单列）</iterm> 
-    <iterm>row:返回文档列表总数</iterm>
-    <iterm>titlelen:标题长度 等同于titlelength</iterm>
-    <iterm>infolen:表示内容简介长度 等同于infolength</iterm>
-    <iterm>mytypeid:手工指定要限定的栏目id，用,分开表示多个</iterm>
-    <iterm>innertext:单条记录样式(指标签中间的内容)</iterm>
-</attributes> 
->>dede>>*/
- 
+
 function lib_likearticle(&$ctag,&$refObj)
 {
     global $dsql;

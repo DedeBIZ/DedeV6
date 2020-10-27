@@ -17,18 +17,6 @@
  * @param     object  $refObj  引用对象
  * @return    string  成功后返回解析后的标签内容
  */
- 
- /*>>dede>>
-<name>责任编辑</name> 
-<type>仅内容模板</type> 
-<for>V55,V56,V57</for>
-<description>获得责任编辑名称</description>
-<demo>
-{dede:adminname /}	
-</demo>
-<attributes>
-</attributes> 
->>dede>>*/
 
 function lib_adminname(&$ctag, &$refObj)
 {

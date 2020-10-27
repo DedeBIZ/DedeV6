@@ -629,6 +629,14 @@ nav.location .dede li.active .nav-link {
     max-width: 130px!important;
 }
 
+.flink {
+    background-color: #008e38!important;
+}
+
+.flink,.flink a,.copyright,.copyright a {
+    color: white;
+}
+
 @media only screen and (max-width: 1199px) {
     .ddcard > .card-header .caption span {
         font-size: 14px;

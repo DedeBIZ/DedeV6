@@ -8,22 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
- 
- /*>>dede>>
-<name>树形类目标签</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>调用树形类目</description>
-<demo>
-{dede:cattree typeid='' catid='' showall=''/}
-</demo>
-<attributes>
-    <iterm>typeid:顶级树id</iterm> 
-    <iterm>catid:上级栏目id</iterm>
-    <iterm>showall:在空或不存在时，强制用产品模型id；如果是 yes 刚显示整个语言区栏目树；为其它数字则是这个数字的模型的id</iterm>
-</attributes> 
->>dede>>*/
- 
+
 function lib_cattree(&$ctag, &$refObj)
 {
     global $dsql;

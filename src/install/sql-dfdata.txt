@@ -4094,7 +4094,12 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('759', 'cfg_cross_sectypeid', '支持交叉栏目显示副栏目内容', '7', 'bool', 'N'),
 ('760', 'cfg_digg_update', '顶踩缓存异步更新间隔（0为不缓存）', '6', 'number', '0'),
 ('761', 'cfg_feedback_guest', '是否允许匿名评论', '5', 'bool', 'N'),
-('762', 'cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200')
+('762', 'cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200'),
+('763', 'cfg_auth_code', '授权码(登录www.dedebiz.com进行商业授权)', 1, 'bstring', ''),
+('764', 'cfg_bizcore_hostname', 'DedeBIZ Core地址', 1, 'string', '127.0.0.1'),
+('765', 'cfg_bizcore_port', 'DedeBIZ Core端口', 1, 'number', '8181'),
+('766', 'cfg_bizcore_appid', 'DedeBIZ Core应用ID', 1, 'string', ''),
+('767', 'cfg_bizcore_key', 'DedeBIZ Core通信密钥', 1, 'string', '')
 ;
 
 INSERT INTO `#@__sys_module` VALUES (1, '0cce60bc0238aa03804682c801584991', '百度新闻', '', '', 0, ''),
@@ -4102,8 +4107,6 @@ INSERT INTO `#@__sys_module` VALUES (1, '0cce60bc0238aa03804682c801584991', '百
 (4, 'b437d85a7a7bc778c9c79b5ec36ab9aa', '友情链接', '', '', 0, ''),
 (5, 'acb8b88eb4a6d4bfc375c18534f9439e', '投票模块', '', '', 0, ''),
 (6, '572606600345b1a4bb8c810bbae434cc', '挑错管理', '', '', 0, '');
-
-INSERT INTO `#@__sys_module` (`hashcode`, `modname`, `indexname`, `indexurl`, `ismember`, `menustring`) VALUES ('533c5b843ded8752b9857cc7c8e5b455', '得德广告模块', '', '', 0, '<m:top name=\'德得广告\' display=\'block\'>\r\n<m:item name=\'德得模块\' link=\'mda_main.php\' rank=\'plus_广告管理\' target=\'main\'/>\r\n<m:item name=\'广告管理\' link=\'mda_main.php?dopost=place\' rank=\'plus_广告管理\' target=\'main\'/>\r\n<m:item name=\'查看报表\' link=\'mda_main.php?dopost=report\' rank=\'plus_广告管理\' target=\'main\'/>\r\n<m:item name=\'结算中心\' link=\'mda_main.php?dopost=account\' rank=\'plus_广告管理\' target=\'main\'/>\r\n<m:item name=\'德得设置\' link=\'mda_main.php?dopost=setting\' rank=\'plus_广告管理\' target=\'main\'/>\r\n</m:top>');
 
 
 INSERT INTO `#@__plus` VALUES (27, '友情链接模块', '<m:item name=''友情链接'' link=''friendlink_main.php'' rank=''plus_友情链接'' target=''main'' />', '', 'Dede商业', 1, ''),
@@ -4116,8 +4119,3 @@ INSERT INTO `#@__plus` VALUES (27, '友情链接模块', '<m:item name=''友情�
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_disable_funs', '模板引擎禁用PHP函数', 7, 'bstring', 'phpinfo,eval,exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,file_put_contents');
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_disable_tags', '模板引擎禁用标签', 7, 'bstring', 'php');
 ALTER TABLE `#@__arctiny` ADD INDEX `idx_typeid_arcrank_sortrank` (`typeid`, `arcrank`, `sortrank`);
-
-INSERT INTO `#@__plus_mda_setting` (`skey`, `svalue`, `stime`) VALUES ('version', '0.0.1', 0);
-INSERT INTO `#@__plus_mda_setting` (`skey`, `svalue`, `stime`) VALUES ('channel_uuid', '', 0);
-INSERT INTO `#@__plus_mda_setting` (`skey`, `svalue`, `stime`) VALUES ('channel_secret', '', 0);
-INSERT INTO `#@__plus_mda_setting` (`skey`, `svalue`, `stime`) VALUES ('email', '', 0);

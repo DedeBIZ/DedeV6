@@ -12,18 +12,7 @@ if(!defined('DEDEINC')){
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>演示标签</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>这仅是一个演示标签</description>
-<demo>
-{dede:demotag /}
-</demo>
-<attributes>
-</attributes> 
->>dede>>*/
- 
+
 function lib_demotag(&$ctag,&$refObj)
 {
     global $dsql,$envs;

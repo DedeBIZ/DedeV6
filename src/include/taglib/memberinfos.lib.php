@@ -13,19 +13,7 @@ if(!defined('DEDEINC'))
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>用户信息</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>文档关连的用户信息</description>
-<demo>
-{dede:memberinfos mid = '' /}
-</demo>
-<attributes>
-    <iterm>mid:用户ID</iterm> 
-</attributes> 
->>dede>>*/
- 
+
 function lib_memberinfos(&$ctag,&$refObj)
 {
     global $dsql,$sqlCt;

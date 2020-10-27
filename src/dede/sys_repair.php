@@ -33,7 +33,7 @@ if(empty($dopost))
     4、检测微表与主表数据一致性。<br />
     <br />
     <br />
-    <a href='sys_repair.php?dopost=1' style='font-size:18px;color:red'><b>点击此开始进行常规检测&gt;&gt;</b></a>
+    <a href='sys_repair.php?dopost=1' class='btn btn-danger'><b>点击此开始进行常规检测&gt;&gt;</b></a>
     <br /><br /><br />
     </td>
   </tr>
@@ -67,7 +67,7 @@ else if($dopost==1)
     2、更新数据库archives表时出错<br />
     3、列表显示数据目与实际文档数不一致<br />
     <br />
-    <a href='sys_repair.php?dopost=2' style='font-size:18px;'><b>点击此检测微表正确性&gt;&gt;</b></a>
+    <a href='sys_repair.php?dopost=2' class='btn btn-danger'><b>点击此检测微表正确性&gt;&gt;</b></a>
     <br /><br /><br />
     </td>
   </tr>
@@ -144,7 +144,7 @@ else if($dopost==2)
         else
         {
             $msg .= "<p style='color:red;font-size:16px'><b>修正记录失败，建议进行高级综合检测！</b></p><br />";
-            $errall = " <a href='sys_repair.php?dopost=3' style='font-size:14px;'><b>进行高级结合性检测&gt;&gt;</b></a> ";
+            $errall = " <a href='sys_repair.php?dopost=3' class='btn btn-danger'><b>进行高级结合性检测&gt;&gt;</b></a> ";
         }
     }
     UpDateCatCache();
@@ -228,7 +228,7 @@ else if($dopost==3)
     完成所有修复操作，移除错误记录 {$errnum} 条！
     <hr />
     <br />
-    <a href='index_body.php' style='font-size:14px;'><b>完成修正或无错误返回&gt;&gt;</b></a>
+    <a href='index_body.php' class='btn btn-success'><b>完成修正或无错误返回&gt;&gt;</b></a>
     </td>
   </tr>
  </table>

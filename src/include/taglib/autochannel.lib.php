@@ -8,21 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
- 
- /*>>dede>>
-<name>指定栏目</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>指定排序位置的单个栏目的链接</description>
-<demo>
-{dede:autochannel partsort='' typeid=’’}{/dede:autochannel}
-</demo>
-<attributes>
-    <iterm>partsort:栏目所在的排序位置</iterm> 
-    <iterm>typeid:获取单个栏目的顶级栏目</iterm>
-</attributes> 
->>dede>>*/
- 
+
 function lib_autochannel(&$ctag,&$refObj)
 {
     global $dsql;

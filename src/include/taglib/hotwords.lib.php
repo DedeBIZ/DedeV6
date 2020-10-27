@@ -9,21 +9,7 @@
  * @link           https://www.dedebiz.com
  */
  
-/*>>dede>>
-<name>热门关键词</name>
-<type>全局标记</type>
-<for>V55,V56,V57</for>
-<description>获取网站搜索的热门关键字</description>
-<demo>
-{dede:hotwords /}
-</demo>
-<attributes>
-    <iterm>num:关键词数目</iterm> 
-    <iterm>subday:天数</iterm>
-    <iterm>maxlength:关键词最大长度</iterm>
-</attributes> 
->>dede>>*/
- 
+
 function lib_hotwords(&$ctag,&$refObj)
 {
     global $cfg_phpurl,$dsql;
