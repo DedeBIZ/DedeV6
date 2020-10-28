@@ -42,12 +42,6 @@ if( is_dir(dirname(__FILE__).'/../install') )
 //更新服务器
 require_once (DEDEDATA.'/admin/config_update.php');
 
-if ($dopost=='showad')
-{
-    include('templets/login_ad.htm');
-    exit;
-}
-
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if(preg_match('/dede\/login/i',$cururl))

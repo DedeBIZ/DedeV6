@@ -15,7 +15,7 @@ require_once(dirname(__FILE__)."/../include/oxwindow.class.php");
 if(empty($action)) $action = '';
 require_once(DEDEDATA."/admin/config_update.php");
 $mdir = DEDEDATA.'/module';
-$mdurl = UPDATEHOST.'dedecms/module_'.$cfg_soft_lang.'/modulelist.txt';
+$mdurl = "";
 
 function TestWriteAble($d)
 {
@@ -358,7 +358,6 @@ else if($action=='del')
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
 
-    if($infos['url']=='') $infos['url'] = '&nbsp;';
     $alertMsg = ($infos['lang']==$cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与你系统的编码不一致，请向开发者确认它的兼容性)</font>');
 
     $win = new OxWindow();
@@ -369,43 +368,35 @@ else if($action=='del')
     $win->AddHidden('action', 'delok');
     $msg = "<style>.dtb{border-bottom:1px dotted #cccccc}</style>
     <table width='750' border='0' cellspacing='0' cellpadding='0'>
-  <tr>
-    <td width='200' height='28' class='dtb'>模块名称：</td>
-    <td width='550' class='dtb'>{$infos['name']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>语言：</td>
-    <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
-  </tr>
-  <tr>
-    <td width='200' height='28' class='dtb'>文件大小：</td>
-    <td width='550' class='dtb'>{$infos['filesize']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>团队名称：</td>
-    <td class='dtb'>{$infos['team']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>发布时间：</td>
-    <td class='dtb'>{$infos['time']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>电子邮箱：</td>
-    <td class='dtb'>{$infos['email']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>官方网址：</td>
-    <td class='dtb'>{$infos['url']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>使用协议：</td>
-    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank'>点击浏览...</a></td>
-  </tr>
-  <tr>
-    <td height='28' colspan='2'>
-    删除模块仅删除这个模块的安装包文件，如果你已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'><u>卸载程序</u></a>来删除！
-   </td>
-  </tr>
+    <tr>
+      <td width='20%' height='28' class='dtb'>模块名称：</td>
+      <td width='80%' class='dtb'>{$infos['name']}</td>
+    </tr>
+    <tr>
+      <td height='28' class='dtb'>语言：</td>
+      <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
+    </tr>
+    <tr>
+      <td height='28' class='dtb'>文件大小：</td>
+      <td class='dtb'>{$infos['filesize']}</td>
+    </tr>
+    <tr>
+      <td height='28' class='dtb'>开发者ID：</td>
+      <td class='dtb'>{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
+    </tr>
+    <tr>
+      <td height='28' class='dtb'>发布时间：</td>
+      <td class='dtb'>{$infos['time']}</td>
+    </tr>
+    <tr>
+      <td height='28' class='dtb'>使用协议：</td>
+      <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank'>点击浏览...</a></td>
+    </tr>
+    <tr>
+      <td height='28' colspan='2'>
+      删除模块仅删除这个模块的安装包文件，如果你已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'><u>卸载程序</u></a>来删除！
+    </td>
+    </tr>
 </table>
     ";
     $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
@@ -459,24 +450,16 @@ else if($action=='uninstall')
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td width='200' height='28' class='dtb'>文件大小：</td>
-    <td width='550' class='dtb'>{$infos['filesize']}</td>
+    <td height='28' class='dtb'>文件大小：</td>
+    <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>团队名称：</td>
-    <td class='dtb'>{$infos['team']}</td>
+    <td height='28' class='dtb'>开发者ID：</td>
+    <td class='dtb'>{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
   </tr>
   <tr>
     <td height='28' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>电子邮箱：</td>
-    <td class='dtb'>{$infos['email']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>官方网址：</td>
-    <td class='dtb'>{$infos['url']}</td>
   </tr>
   <tr>
     <td height='28' class='dtb'>使用协议：</td>
@@ -621,24 +604,12 @@ else if($action=='view')
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>是否已安装：</td>
-    <td class='dtb'>{$setupinfo}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>团队名称：</td>
-    <td class='dtb'>{$infos['team']}</td>
+    <td height='28' class='dtb'>开发者ID：</td>
+    <td class='dtb'>{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
   </tr>
   <tr>
     <td height='28' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>电子邮箱：</td>
-    <td class='dtb'>{$infos['email']}</td>
-  </tr>
-  <tr>
-    <td height='28' class='dtb'>官方网址：</td>
-    <td class='dtb'>{$infos['url']}</td>
   </tr>
   <tr>
     <td height='28' class='dtb'>使用协议：</td>
@@ -689,8 +660,5 @@ function Download();
 --------------*/
 else if($action=='download')
 {
-	$model_remote_url = UPDATEHOST.'dedecms/module_'.$cfg_soft_lang.'/'.$hash.'.xml';
-	$model_remote = file_get_contents($model_remote_url);
-	file_put_contents($mdir.'/'.$hash.'.xml',$model_remote);
-	echo "未安装 <a href='module_main.php?action=setup&hash={$hash}'><u>安装</u></a>";
+  ShowMsg("暂不支持模块下载功能", "javascript:;");
 }
