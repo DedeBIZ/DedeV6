@@ -84,7 +84,7 @@ function GetKeywordList($dsql,$pageno,$pagesize,$orderby='aid')
     echo $printhead;
     if($orderby=='result') $orderby = $orderby." ASC";
     else $orderby = $orderby." DESC";
-    $dsql->SetQuery("SELECT * FROM #@__search_keywords ORDER BY $orderby LIMIT $start,$pagesize ");
+    $dsql->SetQuery("SELECT * FROM `#@__search_keywords` ORDER BY $orderby LIMIT $start,$pagesize ");
     $dsql->Execute();
     while($row = $dsql->GetArray())
     {

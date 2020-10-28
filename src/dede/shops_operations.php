@@ -24,7 +24,7 @@ if(isset($dopost))
             if($wh=='') $wh = " WHERE oid='$n' ";
             else $wh .= " OR oid='$n' ";
         }
-        $sql="UPDATE #@__shops_orders SET `state`='1' $wh ";
+        $sql="UPDATE `#@__shops_orders` SET `state`='1' $wh ";
         $dsql->ExecuteNoneQuery($sql);
     }
     else if ($dopost == 'push')
@@ -36,7 +36,7 @@ if(isset($dopost))
             if($wh=='') $wh = " WHERE oid='$n' ";
             else $wh .= " OR oid='$n' ";
         }
-        $sql="UPDATE #@__shops_orders SET `state`='2' $wh ";
+        $sql="UPDATE `#@__shops_orders` SET `state`='2' $wh ";
         $dsql->ExecuteNoneQuery($sql);
     }
     else if ($dopost == 'ok')
@@ -48,7 +48,7 @@ if(isset($dopost))
             if($wh=='') $wh = " WHERE oid='$n' ";
             else $wh .= " OR oid='$n' ";
         }
-        $sql="UPDATE #@__shops_orders SET `state`='4' $wh ";
+        $sql="UPDATE `#@__shops_orders` SET `state`='4' $wh ";
         $dsql->ExecuteNoneQuery($sql);
     }
     else if ($dopost == 'delete')
@@ -87,7 +87,7 @@ if(isset($sta))
 {
     $addsql = "WHERE s.`state`='$sta'";
 }
-$sql = "SELECT s.`oid`,s.`cartcount`,s.`price`,s.`state`,s.`stime`,s.priceCount,s.dprice,s.paytype,u.`consignee`,u.`tel`,s.`userid` FROM #@__shops_orders AS s LEFT JOIN #@__shops_userinfo AS u ON s.oid=u.oid $addsql ORDER BY `stime` DESC";
+$sql = "SELECT s.`oid`,s.`cartcount`,s.`price`,s.`state`,s.`stime`,s.priceCount,s.dprice,s.paytype,u.`consignee`,u.`tel`,s.`userid` FROM `#@__shops_orders` AS s LEFT JOIN `#@__shops_userinfo` AS u ON s.oid=u.oid $addsql ORDER BY `stime` DESC";
 
 $dlist = new DataListCP();
 $dlist->SetParameter("oid",$oid);
@@ -127,7 +127,7 @@ function GetsType($pid)
 {
     global $dsql;
     $pid = intval($pid);
-    $row = $dsql->GetOne("SELECT name FROM #@__payment WHERE id='$pid'");
+    $row = $dsql->GetOne("SELECT name FROM `#@__payment` WHERE id='$pid'");
     if(is_array($row))
     {
         return $row['name'];
@@ -142,7 +142,7 @@ function GetMemberID($mid)
 {
     global $dsql;
     if($mid==0) return '0';
-    $row = $dsql->GetOne("SELECT userid FROM #@__member WHERE mid='$mid' ");
+    $row = $dsql->GetOne("SELECT userid FROM `#@__member` WHERE mid='$mid' ");
     if(is_array($row))
     {
         return "<a href='member_view.php?id={$mid}'>".$row['userid']."</a>";

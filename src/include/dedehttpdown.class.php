@@ -283,6 +283,24 @@ class DedeHttpDown
         return $this->m_html;
     }
 
+    function GetJSON()
+    {
+        if ($this->m_html != '') {
+            return json_decode($this->m_html);
+        }
+        if (!$this->IsText()) {
+            return '';
+        }
+        if (!$this->m_fp || @feof($this->m_fp)) {
+            return '';
+        }
+        while (!feof($this->m_fp)) {
+            $this->m_html .= fgets($this->m_fp, 256);
+        }
+        @fclose($this->m_fp);
+        return json_decode($this->m_html);
+    }
+
     /**
      *  开始HTTP会话
      *

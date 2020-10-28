@@ -45,13 +45,12 @@ if($dopost=='savetag')
 {
     $fulltag = addslashes($fulltag);
     $tagname = "auto";
-    $inQuery = "
-     INSERT INTO #@__mytag(typeid,tagname,timeset,starttime,endtime,normbody,expbody)
+    $inQuery = "INSERT INTO `#@__mytag`(typeid,tagname,timeset,starttime,endtime,normbody,expbody)
      VALUES('0','$tagname','0','0','0','$fulltag','');
     ";
     $dsql->ExecuteNoneQuery($inQuery);
     $id = $dsql->GetLastID();
-    $dsql->ExecuteNoneQuery("UPDATE #@__mytag SET tagname='{$tagname}_{$id}' WHERE aid='$id'");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__mytag` SET tagname='{$tagname}_{$id}' WHERE aid='$id'");
     $fulltag = "{dede:mytag name='{$tagname}_{$id}' ismake='yes'/}";
 }
 include DedeInclude('templets/mytag_tag_guide_ok.htm');

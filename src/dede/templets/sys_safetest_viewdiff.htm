@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>查看差异</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/diffview.css" />
+    <script type="text/javascript" src="../static/js/jquery.js"></script>
+    <script type="text/javascript" src="../static/js/diffview.js"></script>
+    <script type="text/javascript" src="../static/js/difflib.js"></script>
+    <style type="text/css">
+        body {
+            font-size: 12px;
+            font-family: Sans-Serif;
+        }
+
+        h2 {
+            margin: 0.5em 0 0.1em;
+            text-align: center;
+        }
+
+        .top {
+            text-align: center;
+        }
+
+        .textInput {
+            display: block;
+            width: 49%;
+            float: left;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+        }
+
+        label:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .spacer {
+            margin-left: 10px;
+        }
+
+        .viewType {
+            font-size: 16px;
+            clear: both;
+            text-align: center;
+            padding: 1em;
+        }
+
+        #diffoutput {
+            width: 100%;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        function diffUsingJS(viewType) {
+            "use strict";
+            var base = difflib.stringAsLines($("#baseText").val()),
+                newtxt = difflib.stringAsLines($("#newText").val()),
+                sm = new difflib.SequenceMatcher(base, newtxt),
+                opcodes = sm.get_opcodes(),
+                diffoutputdiv = $("#diffoutput");
+
+            diffoutputdiv.html("")
+
+            diffoutputdiv.html(diffview.buildView({
+                baseTextLines: base,
+                newTextLines: newtxt,
+                opcodes: opcodes,
+                baseTextName: "官方服务器文件",
+                newTextName: "本地文件",
+                viewType: 0
+            }));
+        }
+
+    </script>
+</head>
+
+<body>
+    <textarea id="baseText" style="display: none;"><?php echo $base ;?></textarea>
+    <textarea id="newText" style="display: none;"><?php echo $new ;?></textarea>
+    <div id="diffoutput"> </div>
+    <script>
+        $(document).ready(function () {
+            diffUsingJS(1);
+        });
+    </script>
+</body>
+
+</html>

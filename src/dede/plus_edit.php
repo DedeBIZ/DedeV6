@@ -13,13 +13,13 @@ CheckPurview('sys_plus');
 $aid = preg_replace("#[^0-9]#", "", $aid);
 if($dopost=="show")
 {
-    $dsql->ExecuteNoneQuery("UPDATE #@__plus SET isshow=1 WHERE aid='$aid';");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=1 WHERE aid='$aid';");
     ShowMsg("成功启用一个插件,请刷新导航菜单!","plus_main.php");
     exit();
 }
 else if($dopost=="hide")
 {
-    $dsql->ExecuteNoneQuery("UPDATE #@__plus SET isshow=0 WHERE aid='$aid';");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=0 WHERE aid='$aid';");
     ShowMsg("成功禁用一个插件,请刷新导航菜单!","plus_main.php");
     exit();
 }
@@ -44,17 +44,17 @@ else if($dopost=="delete")
     }
     else if($job=="yes") //操作
     {
-        $dsql->ExecuteNoneQuery("DELETE FROM #@__plus WHERE aid='$aid';");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__plus` WHERE aid='$aid';");
         ShowMsg("成功删除一个插件,请刷新导航菜单!","plus_main.php");
         exit();
     }
 }
 else if($dopost=="saveedit") //保存更改
 {
-    $inquery = "UPDATE #@__plus SET plusname='$plusname',menustring='$menustring',filelist='$filelist' WHERE aid='$aid';";
+    $inquery = "UPDATE `#@__plus` SET plusname='$plusname',menustring='$menustring',filelist='$filelist' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg("成功更改插件的配置!","plus_main.php");
     exit();
 }
-$row = $dsql->GetOne("SELECT * FROM #@__plus WHERE aid='$aid'");
+$row = $dsql->GetOne("SELECT * FROM `#@__plus` WHERE aid='$aid'");
 include DedeInclude('templets/plus_edit.htm');

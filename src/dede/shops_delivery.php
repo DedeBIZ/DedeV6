@@ -26,7 +26,7 @@ if($do=='add')
         $price = '0.00';
     }
     $des = cn_substrR($des,255);
-    $InQuery = "INSERT INTO #@__shops_delivery(`dname`,`price`,`des`) VALUES ('$dname','$price','$des');";
+    $InQuery = "INSERT INTO `#@__shops_delivery`(`dname`,`price`,`des`) VALUES ('$dname','$price','$des');";
     $result = $dsql->ExecuteNoneQuery($InQuery);
     if($result)
     {
@@ -40,7 +40,7 @@ if($do=='add')
 } else if ($do == 'del')
 {
     $id = intval($id);
-    $dsql->ExecuteNoneQuery("DELETE FROM #@__shops_delivery WHERE pid='$id'");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__shops_delivery` WHERE pid='$id'");
     ShowMsg("已删除当前配送方式!","shops_delivery.php");
     exit();
 } else if ($do == 'edit')
@@ -48,7 +48,7 @@ if($do=='add')
     foreach($pid as $id)
     {
         $id = intval($id);
-        $row = $dsql->GetOne("SELECT pid,dname,price,des FROM #@__shops_delivery WHERE pid='$id' LIMIT 0,1");
+        $row = $dsql->GetOne("SELECT pid,dname,price,des FROM `#@__shops_delivery` WHERE pid='$id' LIMIT 0,1");
         if(!is_array($row))
         {
             continue;
@@ -73,22 +73,22 @@ if($do=='add')
         {
             $des = cn_substrR($des,255);
         }
-        $dsql->ExecuteNoneQuery("UPDATE #@__shops_delivery SET dname='$dname',price='$price',des='$des' WHERE pid='$id'");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__shops_delivery` SET dname='$dname',price='$price',des='$des' WHERE pid='$id'");
     }
     ShowMsg("成功修改配送方式!","shops_delivery.php");
     exit();
 }
 $deliveryarr = array();
-$dsql->SetQuery("SELECT pid,dname,price,des FROM #@__shops_delivery ORDER BY orders ASC");
+$dsql->SetQuery("SELECT pid,dname,price,des FROM `#@__shops_delivery` ORDER BY orders ASC");
 $dsql->Execute();
 while($row = $dsql->GetArray())
 {
     $deliveryarr[] = $row;
 }
 $dlist = new DataListCP();
-$dlist->pageSize = 25;              //设定每页显示记录数（默认25条）
+$dlist->pageSize = 25; //设定每页显示记录数（默认25条）
 
 //这两句的顺序不能更换
 $dlist->SetTemplate(DEDEADMIN."/templets/shops_delivery.htm");      //载入模板
-$dlist->SetSource("SELECT `pid`,`dname`,`price`,`des` FROM #@__shops_delivery ORDER BY `orders` ASC");            //设定查询SQL
-$dlist->Display();                  //显示
+$dlist->SetSource("SELECT `pid`,`dname`,`price`,`des` FROM `#@__shops_delivery` ORDER BY `orders` ASC"); // 设定查询SQL
+$dlist->Display(); //显示

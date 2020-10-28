@@ -5,8 +5,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>木马自检程序</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" type="text/css" href="css/indexbody.css" />
   <style type="text/css">
@@ -48,6 +48,7 @@
     <div class="bodytitleleft"></div>
     <div class="bodytitletxt" style="padding-left:10px;">用户安全中心</div>
   </div>
+  <?php echo $alter;?>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable"
     style="background:#CFCFCF;">
     <tr>
@@ -70,7 +71,7 @@
           <input name="filetype" type="text" id="filetype" value="php|inc" style="width:420px" />
           &nbsp;要检查的文件类型</p>
         <p>代码特征：
-          <input name="info" type="text" id="info" value="eval|cmd|system|exec|_GET|_POST" style="width:420px" />
+          <input name="info" type="text" id="info" value="eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode" style="width:420px" />
           &nbsp;特征代码</p>
       </td>
     </tr>
