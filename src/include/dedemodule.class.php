@@ -90,31 +90,7 @@ class DedeModule
      */
     function GetModuleUrlList($moduletype = '', $url = '')
     {
-        $dh = dir($this->modulesPath) or die("没找到模块目录：({$this->modulesPath})！");
-        $fp = @fopen($this->modulesPath . '/modulescache.php', 'w') or die('读取文件权限出错,目录文件' . $this->modulesPath . '/modulescache.php不可写!');
-        $cachefile = DEDEDATA . '/module/moduleurllist.txt';
-        $remotelist = '';
-        if (file_exists($cachefile) && (filemtime($cachefile) + 60 * 30) > time()) {
-            // 30分钟本地缓存一次
-            $remotelist = file_get_contents($cachefile);
-        } else {
-            $del = new DedeHttpDown();
-            $del->OpenUrl($url);
-            $remotelist = $del->GetHtml();
-            PutFile($cachefile, $remotelist);
-        }
-        if (empty($remotelist)) return false;
-
-        $modules = unserialize($remotelist);
-        if (empty($moduletype)) {
-            return $modules;
-        }
-        $return = array();
-        foreach ($modules as $arrow => $data) {
-            if ($data['moduletype'] == $moduletype)
-                $return[] =  $data;
-        }
-        return $return;
+        return false;
     }
     /**
      *  转换编码
