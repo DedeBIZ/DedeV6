@@ -261,13 +261,13 @@ $cfg_other_medias = $cfg_medias_dir.'/media';
 
 //软件摘要信息，****请不要删除本项**** 否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6_UTF8';
-$cfg_version_detail = '6.0.1'; // 详细版本号
+$cfg_version_detail = '6.0.0'; // 详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 
 $cfg_softname = '织梦内容管理系统';
 $cfg_soft_enname = 'DedeCMS';
-$cfg_soft_devteam = 'DedeCMS官方团队';
+$cfg_soft_devteam = 'DedeBIZ';
 
 //文档的默认命名规则
 $art_shortname = $cfg_df_ext = '.html';

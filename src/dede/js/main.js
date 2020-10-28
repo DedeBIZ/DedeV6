@@ -199,7 +199,7 @@ function OpenMyWin(surl) {
 }
 
 function OpenMyWinCoOne(surl) {
-	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=700,height=450,left=100,top=50");
+	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=450,left=100,top=50");
 }
 
 function PutSource(str) {
