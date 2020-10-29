@@ -69,16 +69,6 @@ else if($dopost=='save')
         }
         
     }
-    
-    $faqkey = isset($faqkey) && is_numeric($faqkey) ? $faqkey : 0;
-    if($safe_faq_send == '1')
-    {
-        if($safefaqs[$faqkey]['answer'] != $safeanswer || $safeanswer=='')
-        {
-            ShowMsg('验证问题答案错误', '-1');
-            exit();
-        }
-    }
 
     // 校验CSRF
     CheckCSRF();

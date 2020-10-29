@@ -24,15 +24,6 @@ if (strtolower($vdcode) != $svali || $svali == '') {
 // 校验CSRF
 CheckCSRF();
 
-$faqkey = isset($faqkey) && is_numeric($faqkey) ? $faqkey : 0;
-$safe_faq_send = isset($safe_faq_send) && is_numeric($safe_faq_send) ? $safe_faq_send : 0;
-if ($safe_faq_send == '1') {
-    if ($safefaqs[$faqkey]['answer'] != $safeanswer || $safeanswer == '') {
-        ShowMsg('验证问题答案错误', '-1');
-        exit();
-    }
-}
-
 $flag = '';
 $autokey = $remote = $dellink = $autolitpic = 0;
 $userip = GetIP();

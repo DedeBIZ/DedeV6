@@ -19,13 +19,6 @@ $step = empty($step) ? 1 : intval($step);
 
 if ($step == 1) {
     if ($cfg_ml->IsLogin()) {
-        if ($cfg_mb_reginfo == 'Y') {
-            //如果启用注册详细信息
-            if ($cfg_ml->fields['spacesta'] == 0 || $cfg_ml->fields['spacesta'] == 1) {
-                ShowMsg("尚未完成详细资料，请完善...", "index_do.php?fmdo=user&dopost=regnew&step=2", 0, 1000);
-                exit;
-            }
-        }
         ShowMsg('你已经登录系统，无需重新注册！', 'index.php');
         exit();
     }
@@ -198,14 +191,8 @@ if ($step == 1) {
             //         @mail($email, $mailtitle, $mailbody, $headers);
             //     }
             // }//End 邮件验证
-
-            if ($cfg_mb_reginfo == 'Y' && $spaceSta >= 0) {
-                ShowMsg("完成基本信息的注册，接下来完善详细资料...", "index_do.php?fmdo=user&dopost=regnew&step=2", 0, 1000);
-                exit();
-            } else {
-                require_once(DEDEMEMBER . "/templets/reg-new3.htm");
-                exit;
-            }
+            ShowMsg('你已经登录系统，无需重新注册！', 'index.php');
+            exit;
         } else {
             ShowMsg("注册失败，请检查资料是否有误或与管理员联系！", "-1");
             exit();
@@ -217,56 +204,7 @@ if ($step == 1) {
         ShowMsg("尚未完成基本信息的注册,请返回重新填写！", "index_do.php?fmdo=user&dopost=regnew");
         exit;
     } else {
-        if ($cfg_ml->fields['spacesta'] == 2) {
-            ShowMsg('你已经登录系统，无需重新注册！', 'index.php');
-            exit;
-        }
+        ShowMsg('你已经登录系统，无需重新注册！', 'index.php');
+        exit;
     }
-
-    if ($dopost == 'reginfo') {
-        //这里完成详细内容填写
-        $dede_fields = empty($dede_fields) ? '' : trim($dede_fields);
-        $dede_fieldshash = empty($dede_fieldshash) ? '' : trim($dede_fieldshash);
-        $modid = empty($modid) ? 0 : intval($modid);
-
-        if (!empty($dede_fields)) {
-            if ($dede_fieldshash != md5($dede_fields . $cfg_cookie_encode)) {
-                showMsg('数据校验不对，程序返回', '-1');
-                exit();
-            }
-        }
-        $modelform = $dsql->GetOne("SELECT * FROM `#@__member_model` WHERE id='$modid' ");
-        if (!is_array($modelform)) {
-            showmsg('模型表单不存在', '-1');
-            exit();
-        }
-        $inadd_f = '';
-        if (!empty($dede_fields)) {
-            $fieldarr = explode(';', $dede_fields);
-            if (is_array($fieldarr)) {
-                foreach ($fieldarr as $field) {
-                    if ($field == '') continue;
-                    $fieldinfo = explode(',', $field);
-                    if ($fieldinfo[1] == 'textdata') {
-                        ${$fieldinfo[0]} = FilterSearch(stripslashes(${$fieldinfo[0]}));
-                        ${$fieldinfo[0]} = addslashes(${$fieldinfo[0]});
-                    } else {
-                        if (empty(${$fieldinfo[0]})) ${$fieldinfo[0]} = '';
-                        ${$fieldinfo[0]} = GetFieldValue(${$fieldinfo[0]}, $fieldinfo[1], 0, 'add', '', 'diy', $fieldinfo[0]);
-                    }
-                    if ($fieldinfo[0] == "birthday") ${$fieldinfo[0]} = GetDateMk(${$fieldinfo[0]});
-                    $inadd_f .= ',' . $fieldinfo[0] . " ='" . ${$fieldinfo[0]} . "' ";
-                }
-            }
-        }
-
-        if ($dsql->executenonequery($query)) {
-            $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `spacesta`='2' WHERE `mid`='{$cfg_ml->M_ID}'");
-            // 清除缓存
-            $cfg_ml->DelCache($cfg_ml->M_ID);
-            require_once(DEDEMEMBER . "/templets/reg-new3.htm");
-            exit;
-        }
-    }
-    require_once(DEDEMEMBER . "/templets/reg-new2.htm");
 }
