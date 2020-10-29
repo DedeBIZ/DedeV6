@@ -301,6 +301,9 @@ if($cfg_sendmail_bysmtp=='Y' && !empty($cfg_smtp_usermail))
     $cfg_adminemail = $cfg_smtp_usermail;
 }
 
+// DedeBIZ商业化组件
+require_once(DEDEINC.'/dedebiz.class.php');
+
 //对全局分页传递参数进行过滤
 if (isset($GLOBALS['PageNo'])) {
     $GLOBALS['PageNo'] = intval($GLOBALS['PageNo']);
@@ -321,7 +324,6 @@ if ($cfg_memcache_enable == 'Y')
     );
     $cache_helper_config['memcache']['mc_cache_time'] = $GLOBALS["cfg_puccache_time"];
 }
-
 
 if(!isset($cfg_NotPrintHead)) {
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
@@ -353,25 +355,26 @@ if ( $GLOBALS['cfg_dbtype'] =='mysql' )
     require_once(DEDEINC.'/dedesqlite.class.php');
 }
 
+
 //全局常用函数
 require_once(DEDEINC.'/common.func.php');
 
-// 模块MVC框架需要的控制器和模型基类
-require_once(DEDEINC.'/control.class.php');
-require_once(DEDEINC.'/model.class.php');
-
-//全局常用函数
-require_once(DEDEINC.'/dedebiz.class.php');
-
 //载入小助手配置,并对其进行默认初始化
-if(file_exists(DEDEDATA.'/helper.inc.php'))
-{
-    require_once(DEDEDATA.'/helper.inc.php');
-    // 若没有载入配置,则初始化一个默认小助手配置
-    if (!isset($cfg_helper_autoload))
-    {
-        $cfg_helper_autoload = array('util', 'charset', 'string', 'time', 'cookie');
-    }
-    // 初始化小助手
-    helper($cfg_helper_autoload);
-}
+$cfg_helper_autoload = array
+(
+        'charset',    /* 编码小助手 */
+        'channelunit',/* 模型单元小助手 */ 
+        'string',     /* 字符串小助手 */
+        'time',       /* 日期小助手 */
+        'file',       /* 文件小助手 */
+        'util',       /* 单元小助手 */
+        'validate',   /* 数据验证小助手 */
+        'filter',     /* 过滤器小助手 */
+        'cookie',     /* cookies小助手 */
+        'debug',      /* 调试小助手 */
+        'archive',    /* 文档小助手 */
+        'upload',     /* 上传小助手 */
+        'extend',     /* 扩展小助手 */
+);
+// 初始化小助手
+helper($cfg_helper_autoload);

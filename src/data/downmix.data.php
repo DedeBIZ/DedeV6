@@ -6,8 +6,8 @@
 #,织梦好，好织梦
 #,本文来自织梦
 #,织梦内容管理系统
-#,dedecms.com
-#,copyright dedecms
-#,内容来自dedecms
+#,dedebiz.com
+#,copyright dedebiz
+#,内容来自dedebiz
 #end#
 ?>
