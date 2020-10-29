@@ -8,7 +8,7 @@
  */
 
 // 生产环境使用production，如果采用dev模式，会有一些php的报错信息提示，便于开发调试
-define('DEDE_ENVIRONMENT', 'dev');
+define('DEDE_ENVIRONMENT', 'production');
 
 if ( DEDE_ENVIRONMENT == 'production' )
 {
@@ -31,7 +31,7 @@ define('DEDECONTROL', './control');
 define('DEDEAPPTPL', './templates');
 
 // ------------------------------------------------------------------------
-define('DEDEBIZURL', "http://127.0.0.1:8898"); // Dede商业支持
+define('DEDEBIZURL', "https://www.dedebiz.com"); // Dede商业支持
 define('DEDEVER', 6); // 当前系统大版本
 define('DEDEPUB', <<<EOT
 -----BEGIN PUBLIC KEY-----

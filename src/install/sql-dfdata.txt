@@ -515,7 +515,7 @@ INSERT INTO `#@__co_onepage` VALUES('5','www.dedecms.com','织梦网络','1','gb
 
 INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com', 'DedeCMSV6', '', '', '', 1226375403, 1, 2);
 INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com/help', '帮助中心', '', '', '', 1227772717, 1, 2);
-INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com', 'DedeBIZ', '', '', '', 1227772703, 1, 2);
+INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com/auth', '授权中心', '', '', '', 1227772703, 1, 2);
 INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (3, 'https://www.dedebiz.com/git', '代码托管', '', '', '', 1603767210, 1, 1);
 
 
