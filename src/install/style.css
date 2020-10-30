@@ -294,3 +294,8 @@ input[type="text"],input[type="password"] {
   margin-right:8px;
   float:left;
 }
+
+.pr-agreement h2 {
+	font-size: 14px;
+	font-weight: bolder;
+}

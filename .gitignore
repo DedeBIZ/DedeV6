@@ -23,7 +23,7 @@ src/uploads/userup
 src/uploads/20*
 src/data/mysqli_error_trace.inc
 src/uploads/litimg/*
-src/special/
+src/special/*.html
 *.bat
 src/data/backupdata/*
 src/a/*.html
