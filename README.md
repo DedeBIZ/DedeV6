@@ -94,6 +94,7 @@ Sockets：支持接入DedeBIZ商业组件模块
 - [代码托管](https://www.dedebiz.com/git)
 
 - 微信公众号：穆云智能
+
 ![微信公众号：穆云智能](docs/muyun_wechat_qr.png)
 
 - 邮箱：support#dedebiz.com
