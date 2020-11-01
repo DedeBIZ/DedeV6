@@ -33,8 +33,7 @@ define('DEDEAPPTPL', './templates');
 // ------------------------------------------------------------------------
 define('DEDEBIZURL', "https://www.dedebiz.com"); // Dede商业支持
 define('DEDEVER', 6); // 当前系统大版本
-define('DEDEPUB', <<<EOT
------BEGIN PUBLIC KEY-----
+define('DEDEPUB', '-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvupO2Lixns34bBqwTzK0
 9wA9sfGBdgc03zh1sUacieJBikx08e7xmkJbMF81jb/YfNGW/+iJ3qHULdc9Dtd3
 +FsnHG+tUDnzjkPnVVmnrjucQqfHRRVKKAgXOWxtuRKUVF3NDjiJtDAf5Y2BMAhw
@@ -42,8 +41,7 @@ oqzeepye5I4mWyO4A8/V2ougO+xDK426MIf1dq+W59NVZj8k+zeZrbPh7+fPFw4u
 PwAMpkTJJ9nwNOO6saH2eMGaQ3oxZIQ+SmminDB8miI/+hwIn2hNmaHFuur0OGlB
 NQabUzX9JoYtXqPcpZRT7ymHrppU0KFdUSEJiW0utTWJo0HrDOBIT5qWlM0MP9p/
 PwIDAQAB
------END PUBLIC KEY-----
-EOT); // DedeBIZ系统公钥
+-----END PUBLIC KEY-----'); // DedeBIZ系统公钥
 define('DEDECDNURL', 'https://cdn.dedebiz.com'); // 默认静态资源地址
 
 if (version_compare(PHP_VERSION, '5.3.0', '<') && function_exists("get_magic_quotes_gpc"))
