@@ -6,45 +6,17 @@
 
 ## 版本说明
 
-DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止
+DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止，目前DedeCMSV6.0.0已经发布，可以[点击下载](https://www.dedebiz.com/download)获取。
 
-## v6 Roadmap
+## v6.1 Roadmap
 
-状态 ✅ 已完成 🔨 进行中 ❌ 未完成
+我们将会收集、整理新的功能需求制定新的Roadmap。
 
-问题反馈讨论可以到[工单管理](https://www.zhelixie.com/DedeBiz/DedeCMSV6/issues)中进行交流反馈。
+[开发者](https://www.dedebiz.com/developer)可以到[工单管理](https://www.zhelixie.com/DedeBiz/DedeCMSV6/issues)中进行交流反馈。
 
-- ✅ 调整DedeCMS目录结构，将原有include中外部访问的内容迁移出去；
+普通用户可以通过微信公众号或者邮件的方式进行反馈，详见本页底部资源。
 
-- ✅ 修正已知存在的安全问题；
-
-- ✅ 升级内置编辑器ckeditor4为最新版本；
-
-- ✅ v6以后仅发布UTF-8版本的程序，不再提供GBK编码的版本；
-
-- ✅ jQuery升级到3.5.X，并逐步淘汰过于陈旧的浏览器支持；
-
-- ✅ 后台界面样式调整；
-
-- ✅ 支持Tag标签静态化，增加内容呈现维度，更利于SEO；
-
-- ✅ 优化内置的模块插件，增强用户体验；
-
-- ✅ 调整会员中心UI，移除对文件上传的支持，增加系统安全性；
-
-- ✅ 移除对Flash的依赖支持，今后版本采用HTML5相关特性；
-
-- ✅ 调整v6版本程序升级相关功能；
-
-- ✅ 兼容PHP7.4，DedeCMS未来的版本以PHP7.X为主，实验性支持PHP8.X；
-
-- ✅ 系统支持HTTPS；
-
-- ✅ 默认模板重新设计制作，采用响应式布局；
-
-- ✅ 官方网站页面调整，调整部分内容以适应未来的版本更新；
-
-- ✅ 增加DedeBIZ商业支持，构建更安全、稳定的DedeCMS生态；
+在这里，可以查看版本[更新记录](docs/changelog.md)
 
 ## 平台需求
 
@@ -120,3 +92,8 @@ Sockets：支持接入DedeBIZ商业组件模块
 - [DedeBIZ商业支持](https://www.dedebiz.com)
 
 - [代码托管](https://www.dedebiz.com/git)
+
+- 微信公众号：穆云智能
+![微信公众号：穆云智能](docs/muyun_wechat_qr.png)
+
+- 邮箱：support#dedebiz.com
