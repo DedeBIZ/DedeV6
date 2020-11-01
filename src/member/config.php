@@ -125,7 +125,16 @@ if($cfg_mb_open=='N')
 {
     if ( defined( 'AJAXLOGIN' ) )
     {
-        die('');
+        if ($format === 'json') {
+            echo json_encode(array(
+                "code" => -1,
+                "msg" => "系统关闭了会员功能，因此你无法访问此页面",
+                "data" => null,
+            ));
+            exit;
+        } else {
+            die('');
+        }
     } else {
         ShowMsg("系统关闭了会员功能，因此你无法访问此页面！","javascript:;");
         exit();
