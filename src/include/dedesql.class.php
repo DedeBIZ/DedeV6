@@ -137,10 +137,9 @@ class DedeSql
         @mysql_select_db($this->dbName, $this->linkID);
         $mysqlver = explode('.',$this->GetVersion());
         $mysqlver = $mysqlver[0].'.'.$mysqlver[1];
-		
-        if($mysqlver>4.0)
+        if (version_compare($mysqlver,'4.0',">=") && $GLOBALS['cfg_db_language'])
         {
-            @mysql_query("SET NAMES '".$GLOBALS['cfg_db_language']."', character_set_client=binary, sql_mode='', interactive_timeout=3600 ;", $this->linkID);
+            @mysql_query($this->linkID, "SET character_set_connection=" . $GLOBALS['cfg_db_language'] . ",character_set_results=" . $GLOBALS['cfg_db_language'] . ",character_set_client=binary");
         }
 
         return TRUE;

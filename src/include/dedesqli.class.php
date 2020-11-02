@@ -140,7 +140,7 @@ class DedeSqli
         }
 		$this->isInit = TRUE;
         $serverinfo = mysqli_get_server_info($this->linkID);
-        if ($serverinfo > '4.1' && $GLOBALS['cfg_db_language'])
+        if (version_compare($serverinfo,'4.1',">=") && $GLOBALS['cfg_db_language'])
         {
             mysqli_query($this->linkID, "SET character_set_connection=" . $GLOBALS['cfg_db_language'] . ",character_set_results=" . $GLOBALS['cfg_db_language'] . ",character_set_client=binary");
         }
