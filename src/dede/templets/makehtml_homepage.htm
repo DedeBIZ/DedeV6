@@ -5,6 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>主页更新向导</title>
+  <script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
@@ -14,11 +15,18 @@
       var posTop = 300;
       window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
     }
+
+    function htmlSubmit() {
+      form1.submit();
+      $("#dedebiz_admin").val("");
+    }
+
   </script>
 </head>
 
 <body background="images/allbg.gif" leftmargin="8" topmargin="8">
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center"
+    class="table maintable table-bordered mt-3">
     <form name="form1" action="makehtml_homepage.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="make">
       <tr>
@@ -35,7 +43,8 @@
         <td width="177" valign="top" bgcolor="#FFFFFF">选择主页模板：</td>
         <td width="791" valign="top" bgcolor="#FFFFFF">
           <input name="templet" type="text" id="templet" style="width:300" value="<?php echo $row['templet']?>">
-          <button class="btn btn-secondary btn-sm" type="button" name="set4" value="" onClick="SelectTemplets('form1.templet');">浏览...</button>
+          <button class="btn btn-secondary btn-sm" type="button" name="set4" value=""
+            onClick="SelectTemplets('form1.templet');">浏览...</button>
         </td>
       </tr>
       <tr>
@@ -47,36 +56,82 @@
       </tr>
       <tr>
         <td height="20" valign="top" bgcolor="#FFFFFF">主页位置：</td>
-        <td height="20" valign="top" bgcolor="#FFFFFF"><input name="position" type="text" id="position"
-            value="<?php echo $row['position']?>" size="30">
+        <td height="20" valign="top" bgcolor="#FFFFFF">
+          <input name="position" type="text" id="position" value="<?php echo $row['position']?>" size="30">
         </td>
       </tr>
       <tr>
         <td height="20" valign="top" bgcolor="#FFFFFF">相关选项：</td>
         <td height="20" valign="top" bgcolor="#FFFFFF">
           <label><input name="saveset" type="radio" value="0" class="np">
-          不保存当前选项</label>
+            不保存当前选项</label>
           <label><input name="saveset" type="radio" class="np" value="1" checked>
-          保存当前选项</label>
+            保存当前选项</label>
         </td>
       </tr>
       <tr>
         <td height="20" valign="top" bgcolor="#FFFFFF">首页模式:</td>
         <td height="20" valign="top" bgcolor="#FFFFFF">
           <label><input name="showmod" type="radio" value="0" class="np"
-            <?php echo ($row['showmod']==0)? "checked='checked'" : "";?> />
-          动态浏览</label>
+              <?php echo ($row['showmod']==0)? "checked='checked'" : "";?> />
+            动态浏览</label>
           <label><input name="showmod" type="radio" class="np" value="1"
-            <?php echo ($row['showmod']==1)? "checked='checked'" : "";?> />
-          生成静态 (或者手动删除根目录下index.html文件)</label></td>
+              <?php echo ($row['showmod']==1)? "checked='checked'" : "";?> />
+            生成静态 (或者手动删除根目录下index.html文件)</label></td>
       </tr>
+      <tr>
+        <td height="20" colspan="2" valign="top" bgcolor="#dee2e6">
+        首页防篡改（主页位置更改请重新启动DedeBIZ商业组件）
+        </td>
+      </tr>
+      <?php
+      if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+        $client->appid = $cfg_bizcore_appid;
+        $client->key = $cfg_bizcore_key;
+        $data = $client->AdminPWDExists();
+        $rs = (array)json_decode($data->data);
 
-
+        if($rs["admin_pwd_exists"] == "false") {?>
+      <tr>
+        <td height="20" valign="top" bgcolor="#FFFFFF">设置DedeBIZ操作密码:</td>
+        <td height="20" valign="top" bgcolor="#FFFFFF">
+          <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30"> 
+          设定后所有的DedeBIZ涉及安全操作输入当前操作密码
+        </td>
+      </tr>
+      <tr>
+        <td height="20" valign="top" bgcolor="#FFFFFF">重复DedeBIZ操作密码:</td>
+        <td height="20" valign="top" bgcolor="#FFFFFF">
+          <input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" size="30">
+        </td>
+      </tr>
+      <?php }else{ ?>
+        <tr>
+          <td height="20" valign="top" bgcolor="#FFFFFF">DedeBIZ操作密码:</td>
+          <td height="20" valign="top" bgcolor="#FFFFFF">
+            <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30"> 
+          </td>
+        </tr>
+      <?php
+      }
+      }?>
+      <tr>
+        <td height="20" valign="top" bgcolor="#FFFFFF">首页状态:</td>
+        <td height="20" valign="top" bgcolor="#FFFFFF">
+          <label><input name="lockindex" type="radio" class="np" value="unlock"
+            <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?> />
+          解锁</label>
+          <label><input name="lockindex" type="radio" value="lock" class="np"
+            <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?> />
+          锁定</label>
+        </td>
+      </tr>
       <tr>
         <td height="31" colspan="2" bgcolor="#ffffff" align="center">&nbsp;&nbsp;
           <button name="view" class='btn btn-secondary' type="button" id="view"
             onClick="window.open('makehtml_homepage.php?dopost=view&templet='+form1.templet.value);">预览主页</button>
-          <button type="submit" class='btn btn-secondary' name="Submit">更新主页HTML</button>
+          <button type="button" onclick="htmlSubmit()" class='btn btn-secondary' name="Submit">更新主页HTML</button>
           &nbsp;
         </td>
       </tr>

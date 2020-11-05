@@ -339,20 +339,13 @@ $cfg_biz_helpUrl = DEDEBIZURL."/help";
 $cfg_biz_gitUrl = DEDEBIZURL."/git";
 $cfg_biz_dedebizUrl = DEDEBIZURL;
 
-
 //引入数据库类
 if ( $GLOBALS['cfg_dbtype'] =='mysql' )
 {
-    if ($GLOBALS['cfg_mysql_type'] == 'mysqli' && function_exists("mysqli_init") || !function_exists('mysql_connect'))
-    {
-        require_once(DEDEINC.'/dedesqli.class.php');
-    } else {
-        require_once(DEDEINC.'/dedesql.class.php');
-    }
+    require_once(DEDEINC.'/dedesqli.class.php');
 } else {
     require_once(DEDEINC.'/dedesqlite.class.php');
 }
-
 
 //全局常用函数
 require_once(DEDEINC.'/common.func.php');

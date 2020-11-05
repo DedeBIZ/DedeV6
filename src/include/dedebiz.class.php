@@ -103,6 +103,43 @@ class DedeBizClient
         return $this->request($req);
     }
 
+    // 检查管理员密码是否存在
+    function AdminPWDExists()
+    {
+        $req = array(
+            "method" => "admin_pwd_exists",
+            "parms" => array(
+                "name" => "admin",
+            )
+        );
+        return $this->request($req);
+    }
+
+    // 创建DedeBIZ授权密码
+    function AdminPWDCreate($pwd)
+    {
+        $req = array(
+            "method" => "admin_pwd_create",
+            "parms" => array(
+                "pwd" => $pwd,
+            )
+        );
+        return $this->request($req);
+    }
+
+    // 设置首页锁定状态
+    function AdminSetIndexLockState($pwd,$state)
+    {
+        $req = array(
+            "method" => "admin_set_index_lock_state",
+            "parms" => array(
+                "pwd" => $pwd,
+                "lock_state" => $state,
+            )
+        );
+        return $this->request($req);
+    }
+
     // 缓存
     // $key:键 $val:值 $d:缓存时间
     function CacheSet($key,$val,$duration)
