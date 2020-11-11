@@ -340,7 +340,7 @@ $cfg_biz_gitUrl = DEDEBIZURL."/git";
 $cfg_biz_dedebizUrl = DEDEBIZURL;
 
 //引入数据库类
-if ( $GLOBALS['cfg_dbtype'] =='mysql' )
+if ( $GLOBALS['cfg_dbtype'] =='mysql' || $GLOBALS['cfg_dbtype'] =='mysqli' )
 {
     require_once(DEDEINC.'/dedesqli.class.php');
 } else {

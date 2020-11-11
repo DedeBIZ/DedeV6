@@ -546,7 +546,7 @@ function MakeOneTag(&$dtp, &$refObj, $parfield='Y')
         {
             if(in_array($tagname, $disable_tags))
             {
-                if(DEBUG_LEVEL) echo 'DedeCMS Error:Tag disabled:"'.$tagname.'" <a href="http://help.dedecms.com/install-use/apply/2013/0711/2324.html" target="_blank">more...</a>!';
+                if(DEBUG_LEVEL) echo 'DedeCMS Error:Tag disabled:"'.$tagname.'" <a href="https://www.dedebiz.com/help/" target="_blank">more...</a>!';
                 continue;
             }
             if (DEBUG_LEVEL==TRUE) {
@@ -671,7 +671,7 @@ function GetFreeListUrl($lid,$namerule,$listdir,$defaultpage,$nodefault){
 /**
  *  获取网站搜索的热门关键字
  *
- * @param     string  $dsql
+ * @param     object  $dsql
  * @param     string  $num  获取数目
  * @param     string  $nday  天数
  * @param     string  $klen 关键词字数
@@ -680,7 +680,7 @@ function GetFreeListUrl($lid,$namerule,$listdir,$defaultpage,$nodefault){
  */
 function GetHotKeywords(&$dsql,$num=8,$nday=365,$klen=16,$orderby='count')
 {
-    global $cfg_phpurl,$cfg_cmspath;
+    global $cfg_phpurl;
     $nowtime = time();
     $num = @intval($num);
     $nday = @intval($nday);
@@ -703,7 +703,7 @@ function GetHotKeywords(&$dsql,$num=8,$nday=365,$klen=16,$orderby='count')
     {
         $orderby = 'count';
     }
-    $dsql->SetQuery("SELECT keyword FROM #@__search_keywords WHERE lasttime>$mintime AND length(keyword)<$klen ORDER BY $orderby DESC LIMIT 0,$num");
+    $dsql->SetQuery("SELECT keyword FROM `#@__search_keywords` WHERE lasttime>$mintime AND length(keyword)<$klen ORDER BY $orderby DESC LIMIT 0,$num");
     $dsql->Execute('hw');
     $hotword = "";
     while($row=$dsql->GetArray('hw'))
@@ -721,7 +721,7 @@ function GetHotKeywords(&$dsql,$num=8,$nday=365,$klen=16,$orderby='count')
  */
 function Gmapurl($gurl)
 {
-    return preg_replace("/http:\/\//i", $gurl) ? $gurl : $GLOBALS['cfg_basehost'].$gurl;
+    return preg_match("/http[s]?:\/\//i", $gurl) ? $gurl : $GLOBALS['cfg_basehost'].$gurl;
 }
 
 /**
