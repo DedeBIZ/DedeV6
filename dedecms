@@ -5,14 +5,15 @@
  *
  * @version        2019年6月5日 tianya $
  * @package        DedeCMS.Command
- * @copyright      Copyright (c) 2007 - 2020, DesDev, Inc.
+ * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license
+ * @link           https://www.dedebiz.com
  */
 // 切换工作目录到./src
-$workDir = dirname(__FILE__)."/src";
+$workDir = dirname(__FILE__) . "/src";
 chdir($workDir);
 
-if (substr(php_sapi_name(), 0, 3) === 'cgi')
-{
+if (substr(php_sapi_name(), 0, 3) === 'cgi') {
 	die("DedeCMS:needs php-cli to run\n\n");
 }
 
@@ -24,5 +25,5 @@ if (count($argv) > 1 && $argv[1] == "serv") {
 	}
 	echo "Start Dev Server For DedeCMS\n\r";
 	echo "Open http://localhost:8088\n\r";
-	passthru(PHP_BINARY . ' -S localhost:8088 -t'.escapeshellarg('./'));
+	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 }
