@@ -6,7 +6,11 @@
 
 ## 版本说明
 
-DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止，目前DedeCMSV6.0.0已经发布，可以[点击下载](https://www.dedebiz.com/download)获取。
+DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止，目前DedeCMSV6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取。
+
+## 参与开源
+
+访问[代码托管](https://www.dedebiz.com/git)，可以看到我们已经将代码托管在几个知名代码托管平台，可以通过提交Pull requests的方式来贡献您的力量。
 
 ## v6.1 Roadmap
 
@@ -82,6 +86,8 @@ Sockets：支持接入DedeBIZ商业组件模块
 ## 版权信息
 
 详细参考：[DedeCMSV6站点授权协议](https://www.dedebiz.com/license)
+
+我们对DedeCMSV6系统授权的态度是“鼓励但不强制”，购买授权是对知识产权的尊重，是对我们技术服务的认可。
 
 ## 相关资源
 
