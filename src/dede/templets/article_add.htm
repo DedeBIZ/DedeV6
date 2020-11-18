@@ -69,7 +69,8 @@
       <td width="60%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
           href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>文章列表</u></a>
         &gt;&gt; 发布文章</td>
-      <td width="30%" align='right'>&nbsp; <?php echo $backurl; ?><a class="btn btn-secondary btn-sm" href="catalog_main.php">栏目管理</a> </td>
+      <td width="30%" align='right'>&nbsp; <?php echo $backurl; ?><a class="btn btn-secondary btn-sm"
+          href="catalog_main.php">栏目管理</a> </td>
     </tr>
   </table>
 
@@ -85,8 +86,8 @@
       </td>
     </tr>
   </table>
-  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FBFCE2" id="getone" class="table table-borderless"
-    style="<?php if(empty($geturl)) echo 'display:none'; ?>;margin:0;">
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FBFCE2" id="getone"
+    class="table table-borderless" style="<?php if(empty($geturl)) echo 'display:none'; ?>;margin:0;">
     <form name="getonepage" action="article_add.php" method="get">
       <input type="hidden" name="channelid" value="<?php echo $channelid; ?>" />
       <input type="hidden" name="cid" value="<?php echo $cid; ?>" />
@@ -191,7 +192,7 @@
                       <input name="picname" type="text" id="picname" style="width:240px" />
                       <button type="button" name="Submit2" style="margin-left:8px;"
                         onClick="SelectImage('form1.picname','small');" class='btn btn-secondary btn-sm'>站内选择</button>
-                      <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' /> 远程</label> 
+                      <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' /> 远程</label>
                       <span class="btn btn-secondary btn-sm fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
                         选择图片
@@ -279,11 +280,11 @@
             <tr>
               <td width="90">&nbsp;关键字：</td>
               <td width="448"><input type='text' name="keywords" id="keywords" style="width:80%"
-                  value="<?php echo $keywords; ?>" /> <button type="button" name="Submit"
-                  style="width:56;height:20" onClick="SelectKeywords('form1.keywords');" class='btn btn-secondary btn-sm'>浏览...</button></td>
+                  value="<?php echo $keywords; ?>" /> <button type="button" name="Submit" style="width:56;height:20"
+                  onClick="SelectKeywords('form1.keywords');" class='btn btn-secondary btn-sm'>浏览...</button></td>
               <td><label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey"
-                  value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />
-                自动获取，手动填写用","分开</label><br />
+                    value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />
+                  自动获取，手动填写用","分开</label><br />
               </td>
             </tr>
           </table>
@@ -308,7 +309,7 @@
         <td height="28" colspan="2" bgcolor="#F9FCEF" class="bline2">
           <div style='float:left;line-height:28px;'>&nbsp;<strong>文章内容：</strong></div>
           <div style='float:right;;padding-right:8px'>
-              <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
+            <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
           </div>
           <div style='float:right;padding-right:8px'>
             <button type="submit" class="btn btn-secondary">保存</button>
@@ -322,17 +323,17 @@
               <td width="90">&nbsp;附加选项：</td>
               <td>
                 <label><input name="remote" type="checkbox" class="np" id="remote" value="1"
-                  <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?> />
-                下载远程图片和资源</label>
+                    <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?> />
+                  下载远程图片和资源</label>
                 <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1"
-                  <?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?> />
-                删除非站内链接 </label><a href="javascript:OpenMyWin('article_allowurl_edit.php');">[设置]</a>
+                    <?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?> />
+                  删除非站内链接 </label><a href="javascript:OpenMyWin('article_allowurl_edit.php');">[设置]</a>
                 <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"
-                  <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?> />
-                提取第一个图片为缩略图</label>
+                    <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?> />
+                  提取第一个图片为缩略图</label>
                 <label><input type='checkbox' name='needwatermark' value='1' class='np'
-                  <?php if($photo_markup=='1') echo "checked"; ?> />
-                图片是否加水印</label>
+                    <?php if($photo_markup=='1') echo "checked"; ?> />
+                  图片是否加水印</label>
               </td>
             </tr>
           </table>
@@ -345,11 +346,11 @@
               <td width="90">&nbsp;分页方式：</td>
               <td>
                 <label><input name="sptype" type="radio" class="np" value="hand"
-                  <?php if($cfg_arcautosp=='N') echo " checked='1' "?> />
-                手动</label>
+                    <?php if($cfg_arcautosp=='N') echo " checked='1' "?> />
+                  手动</label>
                 <label><input type="radio" name="sptype" value="auto" class="np"
-                  <?php if($cfg_arcautosp=='Y') echo " checked='1' "?> />
-                自动</label>　大小：
+                    <?php if($cfg_arcautosp=='Y') echo " checked='1' "?> />
+                  自动</label>　大小：
                 <input name="spsize" type="text" id="spsize" value="<?php echo $cfg_arcautosp_size?>" size="6" /> K
                 (分页符为： <font color="#FF0000">#p#分页标题#e# </font>)
               </td>
@@ -388,10 +389,10 @@
               <td width="90" height="22">&nbsp;评论选项：</td>
               <td width="240">
                 <label><input type='radio' name='notpost' class='np' value='0'
-                  <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> /> 允许评论 </label>
+                    <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> /> 允许评论 </label>
                 &nbsp;
                 <label><input type='radio' name='notpost' class='np' value='1'
-                  <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> /> 禁止评论 </label>
+                    <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> /> 禁止评论 </label>
               </td>
               <td width="90">浏览次数：</td>
               <td>
@@ -420,7 +421,8 @@
               <td width="90">标题颜色：</td>
               <td>
                 <input name="color" type="text" id="color" style="width:120px" />
-                <button class="btn btn-secondary btn-sm" name="modcolor" type="button" id="modcolor" onClick="ShowColor(event, this)">选取</button>
+                <button class="btn btn-secondary btn-sm" name="modcolor" type="button" id="modcolor"
+                  onClick="ShowColor(event, this)">选取</button>
               </td>
             </tr>
           </table>
@@ -464,9 +466,9 @@
               <td width="90">发布选项：</td>
               <td width="379">
                 <label><input name="ishtml" type="radio" class="np" value="1" checked="1" />
-                 生成HTML</label> 
-                <label><input type="radio" name="ishtml" class="np" value="0" /> 
-                仅动态浏览</label> </td>
+                  生成HTML</label>
+                <label><input type="radio" name="ishtml" class="np" value="0" />
+                  仅动态浏览</label> </td>
             </tr>
           </table>
         </td>

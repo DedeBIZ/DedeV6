@@ -5,8 +5,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>数据库维护</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href='css/base.css' rel='stylesheet' type='text/css'>
   <script language="javascript" src="../static/js/dedeajax2.js"></script>
   <script language="javascript">
@@ -87,7 +87,8 @@
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="99%" align="center" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
+  <table width="99%" align="center" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6"
+    class="table maintable table-bordered mt-3">
     <tr>
       <td height="19" colspan="8" background="images/tbg.gif" bgcolor="#E7E7E7">
         <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
@@ -132,9 +133,12 @@
         <?php echo TjCount($t,$dsql); ?>
       </td>
       <td>
-        <a href="#" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">优化</a>
-        <a href="#" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">修复</a>
-        <a href="#" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">结构</a>
+        <a href="#" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">优化</a>
+        <a href="#" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">修复</a>
+        <a href="#" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">结构</a>
       </td>
       <?php
    $i++;
@@ -151,9 +155,12 @@
         <?php echo TjCount($t,$dsql); ?>
       </td>
       <td>
-        <a href="#" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">优化</a>
-        <a href="#" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">修复</a>
-        <a href="#" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">结构</a>
+        <a href="#" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">优化</a>
+        <a href="#" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">修复</a>
+        <a href="#" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">结构</a>
       </td>
       <?php
    }
@@ -193,9 +200,12 @@
         <?php echo TjCount($t,$dsql); ?>
       </td>
       <td>
-        <a href="#" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">优化</a>
-        <a href="#" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">修复</a>
-        <a href="#" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">结构</a>
+        <a href="#" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">优化</a>
+        <a href="#" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">修复</a>
+        <a href="#" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">结构</a>
       </td>
       <?php
    $i++;
@@ -212,9 +222,12 @@
         <?php echo TjCount($t,$dsql); ?>
       </td>
       <td>
-        <a href="#" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">优化</a>
-        <a href="#" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">修复</a>
-        <a href="#" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-secondary btn-sm">结构</a>
+        <a href="#" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">优化</a>
+        <a href="#" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">修复</a>
+        <a href="#" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');"
+          class="btn btn-secondary btn-sm">结构</a>
       </td>
       <?php
    }else{
@@ -244,22 +257,11 @@
             </tr>
             <tr>
               <td height="30">
-                指定备份数据格式：
-                <label><input name="datatype" type="radio" class="np" value="4.0"
-                  <?php if($mysql_version<4.1) echo " checked='1'";?> />
-                MySQL3.x/4.0.x 版本</label>
-                <label><input type="radio" name="datatype" value="4.1" class="np"
-                  <?php if($mysql_version>=4.1) echo " checked='1'";?> />
-                MySQL4.1.x/5.x 版本</label>
-              </td>
-            </tr>
-            <tr>
-              <td height="30">
                 分卷大小：
                 <input name="fsize" type="text" id="fsize" value="2048" size="6" />
                 K&nbsp;，
                 <label><input name="isstruct" type="checkbox" class="np" id="isstruct" value="1" checked='1' />
-                备份表结构信息</label>
+                  备份表结构信息</label>
                 <?php  if(@function_exists('gzcompress') && false) {  ?>
                 <input name="iszip" type="checkbox" class="np" id="iszip" value="1" checked='1' />
                 完成后压缩成ZIP
