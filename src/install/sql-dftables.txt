@@ -988,13 +988,6 @@ CREATE TABLE `#@__softconfig` (
   PRIMARY KEY  (`downtype`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__sphinx`;
-CREATE TABLE `#@__sphinx` (
-  `countid` int(11) unsigned NOT NULL,
-  `maxaid` int(11) unsigned NOT NULL,
-  PRIMARY KEY  (`countid`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__stepselect`;
 CREATE TABLE `#@__stepselect` (
   `id` mediumint(8) unsigned NOT NULL auto_increment,
