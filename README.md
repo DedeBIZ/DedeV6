@@ -26,13 +26,13 @@ DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止，目前DedeCMSV6
 
 1.Windows 平台
 
-IIS/Apache/Nginx + PHP5/PHP7/PHP8 + MySQL4/5/8
+IIS/Apache/Nginx + PHP5/PHP7/PHP8 + MySQL5/8/10
 
 如果在windows环境中使用，建议用DedeCMS提供的DedeAMPZ套件以达到最佳使用性能。
 
 2.Linux/Unix 平台
 
-Apache/Nginx + PHP5/PHP7 + MySQL4/5 (PHP必须在非安全模式下运行)
+Apache/Nginx + PHP5/PHP7 + MySQL5/8/10 (PHP必须在非安全模式下运行)
 
 建议使用平台：Linux + Apache2.2 + PHP7.4 + MySQL5.0
 
