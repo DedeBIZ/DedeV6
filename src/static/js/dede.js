@@ -44,16 +44,16 @@ function guid() {
 // args是以下结构体
 /*
 args = {
-	title : "",         // 标题，默认是MuEMS
-	footer : "",        // 底部按钮，可以自定义按钮
-	noClose : false,    // 是否显示右上角关闭按钮，默认显示
+    title : "",         // 标题，默认是MuEMS
+    footer : "",        // 底部按钮，可以自定义按钮
+    noClose : false,    // 是否显示右上角关闭按钮，默认显示
 }
 */
 // 函数会返回一个modalID，通过这个ID可自已定义一些方法
 // 这里用到了一个展开语法
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
-    title = "DedeCMS信息提示";
+    title = "DedeBIZ信息提示";
     if (typeof content == "undefined") content = "";
     modalID = guid();
     var footer = `<button type="button" class="btn btn-outline-success" onClick="CloseModal(\'DedeModal${modalID}\')">确定</button>`;
@@ -71,7 +71,7 @@ function ShowMsg(content, ...args) {
             noClose = true;
         }
     }
-    
+
     String.prototype.replaceAll = function (s1, s2) {
         return this.replace(new RegExp(s1, "gm"), s2);
     }

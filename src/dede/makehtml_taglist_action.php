@@ -76,8 +76,12 @@ if (is_array($tag) && count($tag) > 0) {
         } else {
             $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
             $dsql->ExecuteNoneQuery($query);
-            
-            $reurl .= GetPinyin($tag['tag']);
+
+            if (empty($tag['tag_pinyin'])) {
+                $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
+            }
+
+            $reurl .= $tag['tag_pinyin'];
             ShowMsg("完成TAG更新：[" . $tag['tag'] . "]！<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
         }
         exit();

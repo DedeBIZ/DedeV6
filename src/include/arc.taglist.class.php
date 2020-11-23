@@ -78,6 +78,15 @@ class TagList
                 ShowMsg($msg, "-1");
                 exit();
             }
+            // 确定是否存在tag_pinyin
+            if (empty($this->TagInfos['tag_pinyin'])) {
+                $this->TagInfos['tag_pinyin'] = $this->TagPinyinExists($this->Tag) ? GetPinyin($this->Tag) . $this->TagInfos['id'] : GetPinyin($this->Tag);
+                $this->dsql->ExecNoneQuery("UPDATE `#@__tagindex` SET tag_pinyin = '{$this->TagInfos['tag_pinyin']}' WHERE tag LIKE '{$this->Tag}'");
+            }
+
+            $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->Fields['title'] : $this->TagInfos['title'];
+            $this->Fields['keywords'] = empty($this->TagInfos['keywords']) ? $this->Fields['keywords'] : $this->TagInfos['keywords'];
+            $this->Fields['description'] = empty($this->TagInfos['description']) ? $this->Fields['description'] : $this->TagInfos['description'];
         }
 
         //初始化模板
@@ -88,6 +97,13 @@ class TagList
         }
         $this->dtp->LoadTemplate($tempfile);
         $this->TempletsFile = preg_replace("#^" . $GLOBALS['cfg_basedir'] . "#", '', $tempfile);
+    }
+
+    function TagPinyinExists($tag)
+    {
+        $tag_py = GetPinyin($tag);
+        $row = $this->dsql->GetOne("Select count(*) as dd From `#@__tagindex` where tag_pinyin like '{$tag_py}' ");
+        return $row['dd'] > 0;
     }
 
     //php4构造函数
@@ -627,7 +643,8 @@ class TagList
             if ($endpage == 1) {
                 $endpage = 2;
             }
-            $makeDir = $this->GetTruePath() . "/a/tags/" . GetPinyin($this->Tag) . "/";
+
+            $makeDir = $this->GetTruePath() . "/a/tags/" . $this->TagInfos['tag_pinyin'] . "/";
             MkdirAll($makeDir, $cfg_dir_purview);
             for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
                 $this->ParseDMFields($this->PageNo, 1);

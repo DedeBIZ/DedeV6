@@ -9,7 +9,8 @@
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center"
+    class="table maintable table-bordered mt-3">
     <form name="form1" action="makehtml_tag_action_list.php" method="get" target='stafrm'>
       <tr>
         <td height="28" colspan="2" background='images/tbg.gif'>
@@ -28,6 +29,7 @@
         <td width="377" valign="top" bgcolor="#FFFFFF">
           <?php
        $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); // 取一个平均
+       $dd['tt'] = ($dd['tt'] > 5)? $dd['tt'] : 0;
        $sql="select * from #@__tagindex where total > {$dd['tt']} order by tag asc"; 
        $dsql->Execute('al',$sql);
      echo "<select name='tagid' style='width:300px'>\r\n";

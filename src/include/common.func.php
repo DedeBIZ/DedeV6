@@ -209,7 +209,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
     global $cfg_soft_lang, $cfg_cmsurl;
     if (empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
 
-    $htmlhead  = "<html>\r\n<head>\r\n<title>DedeCMS提示信息</title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset={$cfg_soft_lang}\" />\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">";
+    $htmlhead  = "<html>\r\n<head>\r\n<title>DedeBIZ提示信息</title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset={$cfg_soft_lang}\" />\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">";
     $htmlhead .= "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style><link href=\"{$cfg_cmsurl}/static/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\">";
     $htmlhead .= "<base target='_self'/></head>\r\n<body leftmargin='0' topmargin='0' bgcolor='#FFFFFF'>" . (isset($GLOBALS['ucsynlogin']) ? $GLOBALS['ucsynlogin'] : '') . "\r\n<center>\r\n<script>\r\n";
     $htmlfoot  = "</script>\r\n</center>\r\n</body>\r\n</html>\r\n";
@@ -238,7 +238,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
       }\r\n";
         $rmsg = $func;
         $rmsg .= "document.write(\"<main class='container'><div class='modal' tabindex='-1' role='dialog' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>";
-        $rmsg .= "DedeCMS 提示信息！</h6></div><div class='modal-body'>\");\r\n";
+        $rmsg .= "DedeBIZ 提示信息！</h6></div><div class='modal-body'>\");\r\n";
         $rmsg .= "document.write(\"" . str_replace("\"", "“", $msg) . "\");\r\n";
         $rmsg .= "document.write(\"";
 
