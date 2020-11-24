@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!defined('DEDEMEMBER')) exit("dedecms");
+if (!defined('DEDEMEMBER')) exit("dedebiz");
 
 /**
  *  获取选项列表
