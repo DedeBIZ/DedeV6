@@ -4,7 +4,7 @@
  * 验证图片
  *
  * @version        $Id: vdimgck.php$
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -125,21 +125,21 @@ function echo_validate_image($config = array())
     // }
 
     // 增加一些噪线
-    for ($i=0; $i < 5; $i++) { 
+    for ($i = 0; $i < 5; $i++) {
         $red = mt_rand(50, 255);
         $green = mt_rand(50, 255);
         $blue = mt_rand(50, 255);
         $tcol = imagecolorallocate($im, $red, $green, $blue);
         if (mt_rand(0, 1)) { // Horizontal
-            $Xa   = mt_rand(0, $img_width/2);
+            $Xa   = mt_rand(0, $img_width / 2);
             $Ya   = mt_rand(0, $img_height);
-            $Xb   = mt_rand($img_width/2, $img_width);
+            $Xb   = mt_rand($img_width / 2, $img_width);
             $Yb   = mt_rand(0, $img_height);
         } else { // Vertical
             $Xa   = mt_rand(0, $img_width);
-            $Ya   = mt_rand(0, $img_height/2);
+            $Ya   = mt_rand(0, $img_height / 2);
             $Xb   = mt_rand(0, $img_width);
-            $Yb   = mt_rand($img_height/2, $img_height);
+            $Yb   = mt_rand($img_height / 2, $img_height);
         }
         imagesetthickness($im, mt_rand(1, 3));
         imageline($im, $Xa, $Ya, $Xb, $Yb, $tcol);

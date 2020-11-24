@@ -1,16 +1,16 @@
 <?php
+
 /**
  * 列表对应函数
  *
  * @version        $Id: inc_list_functions.php 1 10:32 2010年7月21日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if(!isset($registerGlobals))
-{
-    require_once(dirname(__FILE__)."/../../include/common.inc.php");
+if (!isset($registerGlobals)) {
+    require_once(dirname(__FILE__) . "/../../include/common.inc.php");
 }
 
 // 获取栏目名称
@@ -18,19 +18,17 @@ function GetTypename($tid)
 {
     global $dsql;
     if (empty($tid)) return '';
-    if (file_exists(DEDEDATA.'/cache/inc_catalog_base.inc'))
-    {
-        require_once(DEDEDATA.'/cache/inc_catalog_base.inc');
+    if (file_exists(DEDEDATA . '/cache/inc_catalog_base.inc')) {
+        require_once(DEDEDATA . '/cache/inc_catalog_base.inc');
         global $cfg_Cs;
-        if (isset($cfg_Cs[$tid]))
-        {
+        if (isset($cfg_Cs[$tid])) {
             return base64_decode($cfg_Cs[$tid][3]);
         }
-    } else { 
+    } else {
         $row = $dsql->GetOne("SELECT typename FROM #@__arctype WHERE id = '{$tid}'");
         unset($dsql);
         unset($cfg_Cs);
-        return isset($row['typename'])? $row['typename'] : '';
+        return isset($row['typename']) ? $row['typename'] : '';
     }
     return '';
 }
@@ -38,8 +36,7 @@ function GetTypename($tid)
 //获得是否推荐的表述
 $arcatts = array();
 $dsql->Execute('n', 'SELECT * FROM `#@__arcatt` ');
-while($arr = $dsql->GetArray('n'))
-{
+while ($arr = $dsql->GetArray('n')) {
     $arcatts[$arr['att']] = $arr['attname'];
 }
 
@@ -47,18 +44,17 @@ function IsCommendArchives($iscommend)
 {
     global $arcatts;
     $sn = '';
-    foreach($arcatts as $k=>$v)
-    {
+    foreach ($arcatts as $k => $v) {
         $v = cn_substr($v, 2);
-        $sn .= (preg_match("#".$k."#", $iscommend) ? ' '.$v : '');
+        $sn .= (preg_match("#" . $k . "#", $iscommend) ? ' ' . $v : '');
     }
     $sn = trim($sn);
-    if($sn=='') return '';
+    if ($sn == '') return '';
     else return "[<font color='red'>$sn</font>]";
 }
 
 //获得推荐的标题
-function GetCommendTitle($title,$iscommend)
+function GetCommendTitle($title, $iscommend)
 {
     /*if(preg_match('#c#i',$iscommend))
     {
@@ -69,15 +65,12 @@ function GetCommendTitle($title,$iscommend)
 
 //更换颜色
 $GLOBALS['RndTrunID'] = 1;
-function GetColor($color1,$color2)
+function GetColor($color1, $color2)
 {
     $GLOBALS['RndTrunID']++;
-    if($GLOBALS['RndTrunID']%2==0)
-    {
+    if ($GLOBALS['RndTrunID'] % 2 == 0) {
         return $color1;
-    }
-    else
-    {
+    } else {
         return $color2;
     }
 }
@@ -85,12 +78,9 @@ function GetColor($color1,$color2)
 //检查图片是否存在
 function CheckPic($picname)
 {
-    if($picname!="")
-    {
+    if ($picname != "") {
         return $picname;
-    }
-    else
-    {
+    } else {
         return "images/dfpic.gif";
     }
 }
@@ -98,16 +88,11 @@ function CheckPic($picname)
 //判断内容是否生成HTML
 function IsHtmlArchives($ismake)
 {
-    if($ismake==1)
-    {
+    if ($ismake == 1) {
         return "已生成";
-    }
-    else if($ismake==-1)
-    {
+    } else if ($ismake == -1) {
         return "仅动态";
-    }
-    else
-    {
+    } else {
         return "<font color='red'>未生成</font>";
     }
 }
@@ -115,22 +100,17 @@ function IsHtmlArchives($ismake)
 //获得内容的限定级别名称
 function GetRankName($arcrank)
 {
-    global $arcArray,$dsql;
-    if(!is_array($arcArray))
-    {
+    global $arcArray, $dsql;
+    if (!is_array($arcArray)) {
         $dsql->SetQuery("SELECT * FROM `#@__arcrank` ");
         $dsql->Execute();
-        while($row = $dsql->GetObject())
-        {
-            $arcArray[$row->rank]=$row->membername;
+        while ($row = $dsql->GetObject()) {
+            $arcArray[$row->rank] = $row->membername;
         }
     }
-    if(isset($arcArray[$arcrank]))
-    {
+    if (isset($arcArray[$arcrank])) {
         return $arcArray[$arcrank];
-    }
-    else
-    {
+    } else {
         return "不限";
     }
 }
@@ -138,12 +118,9 @@ function GetRankName($arcrank)
 //判断内容是否为图片文章
 function IsPicArchives($picname)
 {
-    if($picname != '')
-    {
+    if ($picname != '') {
         return '<font color=\'red\'>(图)</font>';
-    }
-    else
-    {
+    } else {
         return '';
     }
 }

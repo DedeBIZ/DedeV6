@@ -3,7 +3,7 @@
  * 织梦HTTP下载类
  *
  * @version        $Id: dedehttpdown.class.php 1 11:42 2010年7月6日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -570,7 +570,6 @@ class DedeHttpDown
         if ($this->m_fp) {
             @fclose($this->m_fp);
         }
-        
     }
 
     /**

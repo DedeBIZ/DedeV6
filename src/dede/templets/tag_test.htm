@@ -5,8 +5,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>主页更新向导</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" media="all" href="../static/js/calendar/calendar-win2k-1.css"
     title="win2k-1" />
@@ -34,7 +34,8 @@
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" align="center" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" align="center"
+    class="table maintable table-bordered mt-3">
     <form name="form1" action="tag_test_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="make" />
       <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
@@ -51,8 +52,7 @@
       <tr>
         <td colspan="2" valign="top" bgcolor="#FFFFFF">
           　　全局标记指的是应用在网站主页、单独页面、频道封面使用的单独的模板标记，在列表或文章模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文章或列表所在的栏目，如果您要测试的标记是在列表或文章中使用，请指定环境变量（栏目ＩＤ）。<br />
-          　　各标记的具体含义和用途，请在<a href="http://www.dedecms.com/archives/templethelp/help/index.htm"
-            target="_blank"><u>模板标记参考</u></a>一章查阅。
+          　　各标记的具体含义和用途，请在<a href="https://www.dedebiz.com/help" target="_blank"><u>模板标记参考</u></a>一章查阅。
         </td>
       </tr>
       <tr>
@@ -79,8 +79,7 @@
       </tr>
       <tr>
         <td height="31" colspan="2" bgcolor="#FAFAF1" align="center">
-          <button type="submit" class="btn btn-secondary" onClick="DoSubmit('gettag')"
-                    class="coolbg np">提交测试</button>
+          <button type="submit" class="btn btn-secondary" onClick="DoSubmit('gettag')" class="coolbg np">提交测试</button>
         </td>
       </tr>
     </form>

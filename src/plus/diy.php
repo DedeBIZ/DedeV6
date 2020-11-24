@@ -5,7 +5,7 @@
  * 自定义表单
  *
  * @version        $Id: diy.php$
- * @package        DedeCMS.Site
+ * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com

@@ -8,7 +8,7 @@
  *  4、对主词典使用特殊格式进行编码, 不需要载入词典到内存操作
  *
  * @version        $Id: splitword.class.php 2 11:45 2011-2-14 itplato $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -1131,5 +1131,3 @@ class SplitWord
      	return true;
      }
 }
-
-?> 

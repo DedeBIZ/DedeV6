@@ -1,21 +1,21 @@
 <?php
+
 /**
  * 软件配置
  *
  * @version        $Id: soft_config.php 1 16:09 2010年7月20日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__) . "/config.php");
 CheckPurview('sys_SoftConfig');
-if(empty($dopost)) $dopost = '';
+if (empty($dopost)) $dopost = '';
 
 //保存
-if($dopost=="save")
-{
-    if($dfrank>0 || $dfywboy>0) $gotojump = 1;
+if ($dopost == "save") {
+    if ($dfrank > 0 || $dfywboy > 0) $gotojump = 1;
     $query = "UPDATE `#@__softconfig` SET
            `downtype` = '$downtype' ,
            `gotojump` ='$gotojump' ,
@@ -33,8 +33,7 @@ if($dopost=="save")
 }
 //读取参数
 $row = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
-if(!is_array($row))
-{
+if (!is_array($row)) {
     $dsql->ExecuteNoneQuery("INSERT INTO `#@__softconfig`(`downtype`,`ismoresite`,`islocal`,`gotojump`,`sites`,`downmsg`,`moresitedo`,`dfrank`,`dfywboy`, `argrange`)
     VALUES ('1', '0','1', '0', '' ,'$downmsg','1', '0', '0', '0'); ");
     $row['downtype']   = 1;

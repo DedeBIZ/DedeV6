@@ -1,7 +1,7 @@
 <?php
 /**
  * @version        $Id: module-install.php 1 13:41 2010年7月26日Z tianya $
- * @package        DedeCMS.Install
+ * @package        DedeBIZ.Install
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com

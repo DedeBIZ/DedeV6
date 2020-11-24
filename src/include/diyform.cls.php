@@ -1,23 +1,23 @@
-<?php   if(!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("Request Error!");
 /**
  * 自定义表单解析类
  *
  * @version        $Id: diyform.cls.php 1 10:31 2010年7月6日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
- 
-require_once DEDEINC.'/dedetag.class.php';
-require_once DEDEINC.'/customfields.func.php';
+
+require_once DEDEINC . '/dedetag.class.php';
+require_once DEDEINC . '/customfields.func.php';
 
 /**
  * diyform
  *
  * @package          diyform
- * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @subpackage       DedeBIZ.Libraries
+ * @link             https://www.dedebiz.com
  */
 class diyform
 {
@@ -31,7 +31,8 @@ class diyform
     var $viewTemplate;
     var $postTemplate;
 
-    function diyform($diyid){
+    function diyform($diyid)
+    {
         $this->__construct($diyid);
     }
     /**
@@ -41,23 +42,23 @@ class diyform
      * @param     string  $diyid  自定义表单ID
      * @return    string
      */
-    function __construct($diyid){
+    function __construct($diyid)
+    {
         $this->diyid = $diyid;
         $this->db = $GLOBALS['dsql'];
         $query = "SELECT * FROM #@__diyforms WHERE diyid='{$diyid}'";
         $diyinfo = $this->db->GetOne($query);
-        if(!is_array($diyinfo))
-        {
-            showMsg('参数不正确，该自定义表单不存在','javascript:;');
+        if (!is_array($diyinfo)) {
+            showMsg('参数不正确，该自定义表单不存在', 'javascript:;');
             exit();
         }
         $this->info = $diyinfo['info'];
         $this->name = $diyinfo['name'];
         $this->table = $diyinfo['table'];
         $this->public = $diyinfo['public'];
-        $this->listTemplate = $diyinfo['listtemplate'] != '' && file_exists(DEDETEMPLATE.'/plus/'.$diyinfo['listtemplate']) ? $diyinfo['listtemplate'] : 'list_diyform.htm';
-        $this->viewTemplate = $diyinfo['viewtemplate'] != '' && file_exists(DEDETEMPLATE.'/plus/'.$diyinfo['viewtemplate']) ? $diyinfo['viewtemplate'] : 'view_diyform.htm';;
-        $this->postTemplate = $diyinfo['posttemplate'] != '' && file_exists(DEDETEMPLATE.'/plus/'.$diyinfo['posttemplate']) ? $diyinfo['posttemplate'] : 'post_diyform.htm';;
+        $this->listTemplate = $diyinfo['listtemplate'] != '' && file_exists(DEDETEMPLATE . '/plus/' . $diyinfo['listtemplate']) ? $diyinfo['listtemplate'] : 'list_diyform.htm';
+        $this->viewTemplate = $diyinfo['viewtemplate'] != '' && file_exists(DEDETEMPLATE . '/plus/' . $diyinfo['viewtemplate']) ? $diyinfo['viewtemplate'] : 'view_diyform.htm';;
+        $this->postTemplate = $diyinfo['posttemplate'] != '' && file_exists(DEDETEMPLATE . '/plus/' . $diyinfo['posttemplate']) ? $diyinfo['posttemplate'] : 'post_diyform.htm';;
     }
 
     /**
@@ -69,36 +70,30 @@ class diyform
      * @param     string  $admintype  管理类型
      * @return    string
      */
-    function getForm($type = 'post', $value = '', $admintype='diy')
+    function getForm($type = 'post', $value = '', $admintype = 'diy')
     {
         global $cfg_cookie_encode;
         $dtp = new DedeTagParse();
-        $dtp->SetNameSpace("field","<",">");
+        $dtp->SetNameSpace("field", "<", ">");
         $dtp->LoadSource($this->info);
         $formstring = '';
         $formfields = '';
         $func = $type == 'post' ? 'GetFormItem' : 'GetFormItemValue';
-        if(is_array($dtp->CTags))
-        {
-            foreach($dtp->CTags as $tagid=>$tag)
-            {
-                if($tag->GetAtt('autofield'))
-                {
-                    if($type == 'post')
-                    {
-                        $formstring .= $func($tag,$admintype);
+        if (is_array($dtp->CTags)) {
+            foreach ($dtp->CTags as $tagid => $tag) {
+                if ($tag->GetAtt('autofield')) {
+                    if ($type == 'post') {
+                        $formstring .= $func($tag, $admintype);
+                    } else {
+                        $formstring .= $func($tag, dede_htmlspecialchars($value[$tag->GetName()], ENT_QUOTES), $admintype);
                     }
-                    else
-                    {
-                        $formstring .= $func($tag,dede_htmlspecialchars($value[$tag->GetName()],ENT_QUOTES),$admintype);
-                    }
-                    $formfields .= $formfields == '' ? $tag->GetName().','.$tag->GetAtt('type') : ';'.$tag->GetName().','.$tag->GetAtt('type');
+                    $formfields .= $formfields == '' ? $tag->GetName() . ',' . $tag->GetAtt('type') : ';' . $tag->GetName() . ',' . $tag->GetAtt('type');
                 }
             }
         }
 
-        $formstring .= "<input type=\"hidden\" name=\"dede_fields\" value=\"".$formfields."\" />\n";
-        $formstring .= "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"".md5($formfields.$cfg_cookie_encode)."\" />";
+        $formstring .= "<input type=\"hidden\" name=\"dede_fields\" value=\"" . $formfields . "\" />\n";
+        $formstring .= "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"" . md5($formfields . $cfg_cookie_encode) . "\" />";
         return $formstring;
     }
 
@@ -111,17 +106,14 @@ class diyform
     function getFieldList()
     {
         $dtp = new DedeTagParse();
-        $dtp->SetNameSpace("field","<",">");
+        $dtp->SetNameSpace("field", "<", ">");
         $dtp->LoadSource($this->info);
         $fields = array();
-        if(is_array($dtp->CTags))
-        {
-            foreach($dtp->CTags as $tagid=>$tag)
-            {
+        if (is_array($dtp->CTags)) {
+            foreach ($dtp->CTags as $tagid => $tag) {
                 $fields[$tag->GetName()] = array($tag->GetAtt('itemname'), $tag->GetAtt('type'));
             }
         }
         return $fields;
     }
-
 }//End Class

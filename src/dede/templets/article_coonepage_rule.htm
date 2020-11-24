@@ -96,11 +96,13 @@
 </head>
 
 <body leftmargin="8" topmargin="8" background='images/allbg.gif'>
-	<table width="100%" border="0" cellpadding="2" align="center" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
+	<table width="100%" border="0" cellpadding="2" align="center" cellspacing="1" bgcolor="#D6D6D6"
+		class="table maintable table-bordered mt-3">
 		<tr bgcolor="#F3FAD3">
 			<td height="26" colspan="6">
 				<div style="float:left;padding-left:6px"><b>单页采集规则管理：</b></div>
-				<div style="float:right;padding-right:10px"><a href='javascript:ShowAddNode();' class="btn btn-secondary btn-sm">增加新网址</a>
+				<div style="float:right;padding-right:10px"><a href='javascript:ShowAddNode();'
+						class="btn btn-secondary btn-sm">增加新网址</a>
 				</div>
 			</td>
 		</tr>
@@ -117,8 +119,7 @@
 			<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
 				onMouseOut="javascript:this.bgColor='#FFFFFF';" height="24">
 				<td><?php echo $fields['id']?></td>
-				<td><input name="ids" type="checkbox" id="ids" value="<?php echo $fields['id']?>"
-						class="np"></td>
+				<td><input name="ids" type="checkbox" id="ids" value="<?php echo $fields['id']?>" class="np"></td>
 				<td align='left'>
 					<?php echo $fields['url']; ?>
 				</td>
@@ -157,26 +158,26 @@
 				<tr>
 					<td width="102" height="30">网站名称：</td>
 					<td width="302"><input name="title" type="text" id="title" style="width:200px" /></td>
-					<td width="26" align="center"><a href="javascript:CloseAddNode()" class="mr-3"><img src="images/close.gif"
-								width="12" height="12" border="0" /></a></td>
+					<td width="26" align="center"><a href="javascript:CloseAddNode()" class="mr-3"><img
+								src="images/close.gif" width="12" height="12" border="0" /></a></td>
 				</tr>
 				<tr>
 					<td height="30">原内容编码：</td>
 					<td colspan="2">
-						<label><input type="radio" name="lang" value="utf-8"  checked="checked"/>
-						UTF-8</label>
+						<label><input type="radio" name="lang" value="utf-8" checked="checked" />
+							UTF-8</label>
 						<label>
-						<input type="radio" name="lang" value="gb2312" />
-						GB2312/GBK</label>
+							<input type="radio" name="lang" value="gb2312" />
+							GB2312/GBK</label>
 					</td>
 				</tr>
 				<tr>
 					<td height="30">用作文章来源：</td>
 					<td colspan="2">
 						<label><input type="radio" name="issource" value="0" />
-						否</label>
+							否</label>
 						<label><input name="issource" type="radio" value="1" checked="checked" />
-						是</label></td>
+							是</label></td>
 				</tr>
 				<tr>
 					<td height="30">网站网址：</td>
@@ -185,7 +186,7 @@
 				<tr>
 					<td height="30">&nbsp;</td>
 					<td colspan="2">使用不带http及任何附加目录的网址<br />
-						如：news.dedecms.com</td>
+						如：news.dedebiz.com</td>
 				</tr>
 				<tr>
 					<td height="30">采集规则：</td>
@@ -197,7 +198,8 @@
 				</tr>
 				<tr>
 					<td height="32">&nbsp;</td>
-					<td colspan="2"><button class="btn btn-secondary btn-sm" type="submit" name="Submit" value="">保存规则</button>
+					<td colspan="2"><button class="btn btn-secondary btn-sm" type="submit" name="Submit"
+							value="">保存规则</button>
 						<button type="reset" class="btn btn-secondary btn-sm" name="Submit2">重置</button></td>
 				</tr>
 			</table>

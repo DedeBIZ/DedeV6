@@ -1,21 +1,21 @@
-<?php    if(!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("Request Error!");
 /**
  * 网站地图(sitemap类)
  *
  * @version        $Id: sitemap.class.php 1 15:21 2010年7月5日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
- 
-require_once(DEDEINC."/channelunit.func.php");
+
+require_once(DEDEINC . "/channelunit.func.php");
 
 /**
  * 网站地图(sitemap类)
  *
  * @package          TypeLink
- * @subpackage       DedeCMS.Libraries
+ * @subpackage       DedeBIZ.Libraries
  * @link             https://www.dedebiz.com
  */
 class SiteMap
@@ -29,7 +29,7 @@ class SiteMap
     {
         $this->idCounter = 0;
         $this->artDir = $GLOBALS['cfg_arcdir'];
-        $this->baseDir = $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_basedir'];
+        $this->baseDir = $GLOBALS['cfg_cmspath'] . $GLOBALS['cfg_basedir'];
         $this->idArrary = "";
         $this->dsql = $GLOBALS['dsql'];
     }
@@ -51,30 +51,23 @@ class SiteMap
      * @param     string  $maptype  地图类型  site:站点  rss:rss
      * @return    string
      */
-    function GetSiteMap($maptype="site")
+    function GetSiteMap($maptype = "site")
     {
         $mapString = "";
-        if($maptype=="rss")
-        {
+        if ($maptype == "rss") {
             $this->dsql->SetQuery("SELECT id,typedir,isdefault,defaultname,typename,ispart,namerule2,moresite,siteurl,sitepath FROM #@__arctype WHERE ishidden<>1 AND reid=0 AND ispart<>2 ORDER BY sortrank");
-        }
-        else
-        {
+        } else {
             $this->dsql->SetQuery("SELECT id,typedir,isdefault,defaultname,typename,ispart,namerule2,siteurl,sitepath,moresite,siteurl,sitepath FROM #@__arctype WHERE reid=0 AND ishidden<>1 ORDER BY sortrank");
         }
         $this->dsql->Execute(0);
-        while($row=$this->dsql->GetObject(0))
-        {
-            if($maptype=="site")
-            {
-                $typelink = GetTypeUrl($row->id,MfTypedir($row->typedir),$row->isdefault,$row->defaultname,$row->ispart,$row->namerule2,$row->moresite,$row->siteurl,$row->sitepath);
+        while ($row = $this->dsql->GetObject(0)) {
+            if ($maptype == "site") {
+                $typelink = GetTypeUrl($row->id, MfTypedir($row->typedir), $row->isdefault, $row->defaultname, $row->ispart, $row->namerule2, $row->moresite, $row->siteurl, $row->sitepath);
+            } else {
+                $typelink = $GLOBALS['cfg_cmsurl'] . "/data/rss/" . $row->id . ".xml";
             }
-            else
-            {
-                $typelink = $GLOBALS['cfg_cmsurl']."/data/rss/".$row->id.".xml";
-            }
-            $mapString .= "<div class=\"linkbox\">\r\n<h3><a href='$typelink'>".$row->typename."</a></h3>";
-            $mapString .= "\t<ul class=\"f6\">\t\t\r".$this->LogicListAllSunType($row->id,$maptype)."\t\n</ul></div>\r\n";
+            $mapString .= "<div class=\"linkbox\">\r\n<h3><a href='$typelink'>" . $row->typename . "</a></h3>";
+            $mapString .= "\t<ul class=\"f6\">\t\t\r" . $this->LogicListAllSunType($row->id, $maptype) . "\t\n</ul></div>\r\n";
             /*
             $mapString .= "<tr><td width='17%' align='center' bgcolor='#FAFEF1'>";
             $mapString .= "<a href='$typelink'><b>".$row->typename."</b></a>";
@@ -98,27 +91,20 @@ class SiteMap
     {
         $fid = $id;
         $mapString = "";
-        if($maptype=="rss")
-        {
-            $this->dsql->SetQuery("SELECT id,typedir,isdefault,defaultname,typename,ispart,namerule2,moresite,siteurl,sitepath FROM #@__arctype WHERE reid='".$id."' AND ishidden<>1 AND ispart<>2 ORDER BY sortrank");
-        }
-        else
-        {
-            $this->dsql->SetQuery("SELECT id,typedir,isdefault,defaultname,typename,ispart,namerule2,moresite,siteurl,sitepath FROM #@__arctype WHERE reid='".$id."' AND ishidden<>1 ORDER BY sortrank");
+        if ($maptype == "rss") {
+            $this->dsql->SetQuery("SELECT id,typedir,isdefault,defaultname,typename,ispart,namerule2,moresite,siteurl,sitepath FROM #@__arctype WHERE reid='" . $id . "' AND ishidden<>1 AND ispart<>2 ORDER BY sortrank");
+        } else {
+            $this->dsql->SetQuery("SELECT id,typedir,isdefault,defaultname,typename,ispart,namerule2,moresite,siteurl,sitepath FROM #@__arctype WHERE reid='" . $id . "' AND ishidden<>1 ORDER BY sortrank");
         }
         $this->dsql->Execute($fid);
-        while($row=$this->dsql->GetObject($fid))
-        {
-            if($maptype=="site")
-            {
-                $typelink = GetTypeUrl($row->id,MfTypedir($row->typedir),$row->isdefault,$row->defaultname,$row->ispart,$row->namerule2,$row->moresite,$row->siteurl,$row->sitepath);
+        while ($row = $this->dsql->GetObject($fid)) {
+            if ($maptype == "site") {
+                $typelink = GetTypeUrl($row->id, MfTypedir($row->typedir), $row->isdefault, $row->defaultname, $row->ispart, $row->namerule2, $row->moresite, $row->siteurl, $row->sitepath);
+            } else {
+                $typelink = $GLOBALS['cfg_cmsurl'] . "/data/rss/" . $row->id . ".xml";
             }
-            else
-            {
-                $typelink = $GLOBALS['cfg_cmsurl']."/data/rss/".$row->id.".xml";
-            }
-            $mapString .= "<li><a href='$typelink'>".$row->typename."</a></li>\n\t\t";
-            $mapString .= $this->LogicListAllSunType($row->id,$maptype);
+            $mapString .= "<li><a href='$typelink'>" . $row->typename . "</a></li>\n\t\t";
+            $mapString .= $this->LogicListAllSunType($row->id, $maptype);
         }
         return $mapString;
     }

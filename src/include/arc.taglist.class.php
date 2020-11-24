@@ -3,7 +3,7 @@
  * Tag列表类
  *
  * @version        $Id: arc.taglist.class.php 1 18:17 2010年7月7日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -17,7 +17,7 @@ require_once(DEDEINC . '/typelink.class.php');
  * Tag列表类
  *
  * @package          TagList
- * @subpackage       DedeCMS.Libraries
+ * @subpackage       DedeBIZ.Libraries
  * @link             https://www.dedebiz.com
  */
 class TagList

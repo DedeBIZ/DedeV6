@@ -1,23 +1,23 @@
 <?php
+
 /**
  * 生成点卡
  *
  * @version        $Id: cards_make.php 1 14:31 2010年7月12日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__) . "/config.php");
 CheckPurview('member_Card');
-if(empty($dopost)) $dopost = '';
-if($dopost == '') include(DEDEADMIN."/templets/cards_make.htm");
+if (empty($dopost)) $dopost = '';
+if ($dopost == '') include(DEDEADMIN . "/templets/cards_make.htm");
 
 //生成点卡
-elseif($dopost == 'make')
-{
+elseif ($dopost == 'make') {
     $row = $dsql->GetOne("SELECT * FROM #@__moneycard_record ORDER BY aid DESC");
-    !is_array($row) ? $startid=100000 : $startid=$row['aid']+100000;
+    !is_array($row) ? $startid = 100000 : $startid = $row['aid'] + 100000;
     $row = $dsql->GetOne("SELECT * FROM #@__moneycard_type WHERE tid='$cardtype'");
     $money = $row['money'];
     $num = $row['num'];
@@ -29,33 +29,24 @@ elseif($dopost == 'make')
 
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
 
-    for(;$startid<$endid;$startid++)
-    {
-        $cardid = $snprefix.$startid.'-';
-        for($p=0;$p<$pwdgr;$p++)
-        {
-            for($i=0; $i < $pwdlen; $i++)
-            {
-                if($ctype==1)
-                {
-                    $c = mt_rand(49,57); $c = chr($c);
-                }
-                else
-                {
-                    $c = mt_rand(65,90);
-                    if($c==79)
-                    {
+    for (; $startid < $endid; $startid++) {
+        $cardid = $snprefix . $startid . '-';
+        for ($p = 0; $p < $pwdgr; $p++) {
+            for ($i = 0; $i < $pwdlen; $i++) {
+                if ($ctype == 1) {
+                    $c = mt_rand(49, 57);
+                    $c = chr($c);
+                } else {
+                    $c = mt_rand(65, 90);
+                    if ($c == 79) {
                         $c = 'M';
-                    }
-                    else
-                    {
+                    } else {
                         $c = chr($c);
                     }
                 }
                 $cardid .= $c;
             }
-            if($p<$pwdgr-1)
-            {
+            if ($p < $pwdgr - 1) {
                 $cardid .= '-';
             }
         }

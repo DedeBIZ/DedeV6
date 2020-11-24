@@ -1,9 +1,10 @@
 <?php
+
 /**
  * 防采集混淆字符串
  *
  * @version        $Id: downmix.inc.php 1 9:14 2010年7月6日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com

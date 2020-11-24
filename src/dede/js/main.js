@@ -382,7 +382,7 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 		newobj.style.position = 'absolute';
 		newobj.className = 'pubdlg';
 		newobj.style.width = w;
-		newobj.style.height = h+30;
+		newobj.style.height = h + 30;
 		document.body.appendChild(newobj);
 	}
 	if (posTop > 500) posTop = 500;
@@ -623,7 +623,7 @@ args = {
 // 这里用到了一个展开语法
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
-	title = "DedeCMS信息提示";
+	title = "DedeBIZ信息提示";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
@@ -776,7 +776,7 @@ $(document).ready(function () {
 			'" width=200><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:150px;height:100px;overflow:hidden;"></div></div>', {
 			footer: footer,
 			noClose: false,
-			title: 'DedeCMS缩略图裁剪',
+			title: 'DedeBIZ缩略图裁剪',
 		});
 
 		setTimeout(function () {
@@ -813,7 +813,7 @@ $(document).ready(function () {
 		}, function (start) {
 			$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
 		});
-		$('.datepicker').on('show.daterangepicker', function(ev, picker) {
+		$('.datepicker').on('show.daterangepicker', function (ev, picker) {
 			if (picker.element.offset().top - $(window).scrollTop() + picker.container.outerHeight() > $(window).height()) {
 				picker.drops = 'up';
 			} else {

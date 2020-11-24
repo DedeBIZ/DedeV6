@@ -4,7 +4,7 @@
  * 图片选择框
  *
  * @version        $Id: select_images.php 1 9:43 2010年7月8日Z tianya $
- * @package        DedeCMS.Dialog
+ * @package        DedeBIZ.Dialog
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -141,77 +141,77 @@ if (!empty($noeditor)) {
             window.close();
         }
     </SCRIPT>
-        <table width='100%' border='0' cellpadding='0' cellspacing='1' bgcolor='#CBD8AC' class="table maintable table-borderless" style="margin:0 auto">
-            <tr bgcolor='#FFFFFF'>
-                <td colspan='4'>
-                    <table width='100%' border='0' cellspacing='0' cellpadding='2'>
-                        <tr bgcolor="#CCCCCC">
-                            <td width="8%" align="center" class='linerow' bgcolor='#EEF4EA'><strong>预览</strong></td>
-                            <td width="47%" align="center" background="img/wbg.gif" class='linerow'><strong>点击名称选择图片</strong></td>
-                            <td width="15%" align="center" bgcolor='#EEF4EA' class='linerow'><strong>文件大小</strong></td>
-                            <td width="30%" align="center" background="img/wbg.gif" class='linerow'><strong>最后修改时间</strong></td>
-                        </tr>
-                        <tr>
-                            <td class='linerow' colspan='4' bgcolor='#F9FBF0'>
-                                点击“V”预览图片，点击图片名选择图片，显示图片后点击该图片关闭预览。
-                            </td>
-                        </tr>
-                        <?php
-                        $dh = dir($inpath);
-                        $ty1 = "";
-                        $ty2 = "";
-                        while ($file = $dh->read()) {
+    <table width='100%' border='0' cellpadding='0' cellspacing='1' bgcolor='#CBD8AC' class="table maintable table-borderless" style="margin:0 auto">
+        <tr bgcolor='#FFFFFF'>
+            <td colspan='4'>
+                <table width='100%' border='0' cellspacing='0' cellpadding='2'>
+                    <tr bgcolor="#CCCCCC">
+                        <td width="8%" align="center" class='linerow' bgcolor='#EEF4EA'><strong>预览</strong></td>
+                        <td width="47%" align="center" background="img/wbg.gif" class='linerow'><strong>点击名称选择图片</strong></td>
+                        <td width="15%" align="center" bgcolor='#EEF4EA' class='linerow'><strong>文件大小</strong></td>
+                        <td width="30%" align="center" background="img/wbg.gif" class='linerow'><strong>最后修改时间</strong></td>
+                    </tr>
+                    <tr>
+                        <td class='linerow' colspan='4' bgcolor='#F9FBF0'>
+                            点击“V”预览图片，点击图片名选择图片，显示图片后点击该图片关闭预览。
+                        </td>
+                    </tr>
+                    <?php
+                    $dh = dir($inpath);
+                    $ty1 = "";
+                    $ty2 = "";
+                    while ($file = $dh->read()) {
 
-                            //-----计算文件大小和创建时间
-                            if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
-                                $filesize = filesize("$inpath/$file");
-                                $filesize = $filesize / 1024;
-                                if ($filesize != "")
-                                    if ($filesize < 0.1) {
-                                        @list($ty1, $ty2) = split("\.", $filesize);
-                                        $filesize = $ty1 . "." . substr($ty2, 0, 2);
-                                    } else {
-                                        @list($ty1, $ty2) = split("\.", $filesize);
-                                        $filesize = $ty1 . "." . substr($ty2, 0, 1);
-                                    }
-                                $filetime = filemtime("$inpath/$file");
-                                $filetime = MyDate("Y-m-d H:i:s", $filetime);
-                            }
+                        //-----计算文件大小和创建时间
+                        if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
+                            $filesize = filesize("$inpath/$file");
+                            $filesize = $filesize / 1024;
+                            if ($filesize != "")
+                                if ($filesize < 0.1) {
+                                    @list($ty1, $ty2) = split("\.", $filesize);
+                                    $filesize = $ty1 . "." . substr($ty2, 0, 2);
+                                } else {
+                                    @list($ty1, $ty2) = split("\.", $filesize);
+                                    $filesize = $ty1 . "." . substr($ty2, 0, 1);
+                                }
+                            $filetime = filemtime("$inpath/$file");
+                            $filetime = MyDate("Y-m-d H:i:s", $filetime);
+                        }
 
-                            if ($file == ".") continue;
-                            else if ($file == "..") {
-                                if ($activepath == "") continue;
-                                $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                                $line = "\n<tr>
+                        if ($file == ".") continue;
+                        else if ($file == "..") {
+                            if ($activepath == "") continue;
+                            $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
+                            $line = "\n<tr>
     <td class='linerow' colspan='2'>
     <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=" . urlencode($tmp) . $addparm . "'><img src=img/dir2.gif border=0 width=16 height=16 align=absmiddle>上级目录</a></td>
     <td colspan='2' class='linerow'> 当前目录:$activepath</td>
     </tr>
     ";
-                                echo $line;
-                            } else if (is_dir("$inpath/$file")) {
-                                if (preg_match("#^_(.*)$#i", $file)) continue; #屏蔽FrontPage扩展目录和linux隐蔽目录
-                                if (preg_match("#^\.(.*)$#i", $file)) continue;
-                                $line = "\n<tr>
+                            echo $line;
+                        } else if (is_dir("$inpath/$file")) {
+                            if (preg_match("#^_(.*)$#i", $file)) continue; #屏蔽FrontPage扩展目录和linux隐蔽目录
+                            if (preg_match("#^\.(.*)$#i", $file)) continue;
+                            $line = "\n<tr>
     <td bgcolor='#F9FBF0' class='linerow' colspan='2'>
     <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=" . urlencode("$activepath/$file") . $addparm . "'><img src=img/dir.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
     <td class='linerow'>　</td>
     <td bgcolor='#F9FBF0' class='linerow'>　</td>
     </tr>";
-                                echo "$line";
-                            } else if (preg_match("#\.(" . $cfg_imgtype . ")#i", $file)) {
-                                $reurl = "$activeurl/$file";
-                                $reurl = preg_replace("#^\.\.#", "", $reurl);
-                                if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                                    $reurl  = $remoteupUrl . $reurl;
-                                } else {
-                                    $reurl = $reurl;
-                                }
+                            echo "$line";
+                        } else if (preg_match("#\.(" . $cfg_imgtype . ")#i", $file)) {
+                            $reurl = "$activeurl/$file";
+                            $reurl = preg_replace("#^\.\.#", "", $reurl);
+                            if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
+                                $reurl  = $remoteupUrl . $reurl;
+                            } else {
+                                $reurl = $reurl;
+                            }
 
-                                if ($file == $comeback) $lstyle = " style='color:red' ";
-                                else  $lstyle = "";
+                            if ($file == $comeback) $lstyle = " style='color:red' ";
+                            else  $lstyle = "";
 
-                                $line = "\n<tr>
+                            $line = "\n<tr>
     <td align='center' class='linerow' bgcolor='#F9FBF0'>
     <a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='img/picviewnone.gif' width='16' height='16' border='0' align=absmiddle></a>
     </td>
@@ -220,20 +220,20 @@ if (!empty($noeditor)) {
     <td class='linerow'>$filesize KB</td>
     <td align='center' class='linerow' bgcolor='#F9FBF0'>$filetime</td>
     </tr>";
-                                echo "$line";
-                            } else if (preg_match("#\.(jpg)#i", $file)) {
-                                $reurl = "$activeurl/$file";
-                                $reurl = preg_replace("#^\.\.#", "", $reurl);
-                                if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                                    $reurl  = $remoteupUrl . $reurl;
-                                } else {
-                                    $reurl = $reurl;
-                                }
+                            echo "$line";
+                        } else if (preg_match("#\.(jpg)#i", $file)) {
+                            $reurl = "$activeurl/$file";
+                            $reurl = preg_replace("#^\.\.#", "", $reurl);
+                            if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
+                                $reurl  = $remoteupUrl . $reurl;
+                            } else {
+                                $reurl = $reurl;
+                            }
 
-                                if ($file == $comeback) $lstyle = " style='color:red' ";
-                                else  $lstyle = "";
+                            if ($file == $comeback) $lstyle = " style='color:red' ";
+                            else  $lstyle = "";
 
-                                $line = "\n<tr>
+                            $line = "\n<tr>
     <td align='center' class='linerow' bgcolor='#F9FBF0'>
     <a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='img/picviewnone.gif' width='16' height='16' border='0' align=absmiddle></a>
     </td>
@@ -243,42 +243,42 @@ if (!empty($noeditor)) {
     <td class='linerow'>$filesize KB</td>
     <td align='center' class='linerow' bgcolor='#F9FBF0'>$filetime</td>
     </tr>";
-                                echo "$line";
-                            }
-                        } //End Loop
-                        $dh->close();
-                        ?>
-                        <tr>
-                            <td colspan='4' bgcolor='#E8F1DE'>
-                                <table width='100%'>
-                                    <form action='select_images_post.php' method='POST' enctype="multipart/form-data" name='myform'>
-                                        <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : '';
-                                        echo $noeditor; ?>
-                                        <input type='hidden' name='activepath' value='<?php echo $activepath ?>'>
-                                        <input type='hidden' name='f' value='<?php echo $f ?>'>
-                                        <input type='hidden' name='v' value='<?php echo $v ?>'>
-                                        <input type='hidden' name='imgstick' value='<?php echo $imgstick ?>'>
-                                        <input type='hidden' name='CKEditorFuncNum' value='<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>'>
-                                        <input type='hidden' name='job' value='upload'>
-                                        <tr>
-                                            <td background="img/tbg.gif" bgcolor="#99CC00">
-                                                &nbsp;上　传： <input type='file' name='imgfile' style='width:200px' />
-                                                <label><input type='checkbox' name='needwatermark' value='1' class='np' <?php if ($photo_markup == '1') echo "checked"; ?> /> 水印 </label>
-                                                <label><input type='checkbox' name='resize' value='1' class='np' /> 缩小 </label>
-                                                宽：<input type='text' style='width:46px' name='iwidth' value='<?php echo $cfg_ddimg_width ?>' />
-                                                高：<input type='text' style='width:46px' name='iheight' value='<?php echo $cfg_ddimg_height ?>' />
-                                                <button type='submit' name='sb1' class="btn btn-secondary btn-sm">确定</button>
-                                            </td>
-                                        </tr>
-                                    </form>
-                                </table>
+                            echo "$line";
+                        }
+                    } //End Loop
+                    $dh->close();
+                    ?>
+                    <tr>
+                        <td colspan='4' bgcolor='#E8F1DE'>
+                            <table width='100%'>
+                                <form action='select_images_post.php' method='POST' enctype="multipart/form-data" name='myform'>
+                                    <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : '';
+                                    echo $noeditor; ?>
+                                    <input type='hidden' name='activepath' value='<?php echo $activepath ?>'>
+                                    <input type='hidden' name='f' value='<?php echo $f ?>'>
+                                    <input type='hidden' name='v' value='<?php echo $v ?>'>
+                                    <input type='hidden' name='imgstick' value='<?php echo $imgstick ?>'>
+                                    <input type='hidden' name='CKEditorFuncNum' value='<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>'>
+                                    <input type='hidden' name='job' value='upload'>
+                                    <tr>
+                                        <td background="img/tbg.gif" bgcolor="#99CC00">
+                                            &nbsp;上　传： <input type='file' name='imgfile' style='width:200px' />
+                                            <label><input type='checkbox' name='needwatermark' value='1' class='np' <?php if ($photo_markup == '1') echo "checked"; ?> /> 水印 </label>
+                                            <label><input type='checkbox' name='resize' value='1' class='np' /> 缩小 </label>
+                                            宽：<input type='text' style='width:46px' name='iwidth' value='<?php echo $cfg_ddimg_width ?>' />
+                                            高：<input type='text' style='width:46px' name='iheight' value='<?php echo $cfg_ddimg_height ?>' />
+                                            <button type='submit' name='sb1' class="btn btn-secondary btn-sm">确定</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                            </table>
 
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>

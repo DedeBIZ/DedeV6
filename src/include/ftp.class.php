@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit('dedecms');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * FTP 操作类
  * 不支持 SFTP 和 SSL FTP 协议, 仅支持标准 FTP 协议.
@@ -10,7 +10,7 @@
  * $config['debug'] = TRUE;
  *
  * @version        $Id: ftp.class.php 1 2010-07-05 11:43:09Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -577,8 +577,8 @@ class FTP
     {
         $errorTrackFile = dirname(__FILE__) . '/../data/ftp_error_trace.inc';
         $emsg = '';
-        $emsg .= "<div><h3>DedeCMS Error Warning!</h3>\r\n";
-        $emsg .= "<div><a href='http://bbs.dedecms.com' target='_blank' style='color:red'>Technical Support: http://bbs.dedecms.com</a></div>";
+        $emsg .= "<div><h3>DedeBIZ Error Warning!</h3>\r\n";
+        $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:red'>Technical Support: https://www.dedebiz.com</a></div>";
         $emsg .= "<div style='line-helght:160%;font-size:14px;color:green'>\r\n";
         $emsg .= "<div style='color:blue'><br />Error page: <font color='red'>" . $this->GetCurUrl() . "</font></div>\r\n";
         $emsg .= "<div>Error infos: {$msg}</div>\r\n";

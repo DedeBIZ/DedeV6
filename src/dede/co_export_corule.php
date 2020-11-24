@@ -4,7 +4,7 @@
  * 统一转换为unicode编码然后再base64加密
  *
  * @version        $Id: co_export_corule.php 1 14:31 2010年7月12日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -32,5 +32,3 @@ $win->Init();
 $win->AddTitle("以下为规则 [{$row['notename']}] 的文本配置，你可以共享给你的朋友：");
 $winform = $win->GetWindow("hand","<textarea name='config' style='width:100%;height:450px;word-wrap: break-word;word-break:break-all;'>".$noteconfig."</textarea>");
 $win->Display();
-
-?>

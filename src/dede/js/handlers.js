@@ -1,16 +1,16 @@
 /**
  * 
  * @version        $Id: handlers.js 1 22:28 2010年7月20日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
 //---事件句并------------------------------
-function fileQueueError(file, errorCode, message){
-    try {
-        var imageName = "error.gif";
+function fileQueueError(file, errorCode, message) {
+	try {
+		var imageName = "error.gif";
 		var errorName = "";
 		if (errorCode === SWFUpload.errorCode_QUEUE_LIMIT_EXCEEDED) {
 			errorName = "你添加的文件超过了限制！";
@@ -22,17 +22,17 @@ function fileQueueError(file, errorCode, message){
 		}
 
 		switch (errorCode) {
-		case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
-			imageName = "zerobyte.gif";
-			break;
-		case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-			imageName = "toobig.gif";
-			break;
-		case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
-		case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-		default:
-			alert(message);
-			break;
+			case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+				imageName = "zerobyte.gif";
+				break;
+			case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+				imageName = "toobig.gif";
+				break;
+			case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+			case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
+			default:
+				alert(message);
+				break;
 		}
 		addImage("images/" + imageName, 0);
 	} catch (ex) {
@@ -54,7 +54,7 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
 function uploadProgress(file, bytesLoaded) {
 	try {
 		var percent = Math.ceil((bytesLoaded / file.size) * 100);
-		var progress = new FileProgress(file,  this.customSettings.upload_target);
+		var progress = new FileProgress(file, this.customSettings.upload_target);
 		progress.setProgress(percent);
 		if (percent === 100) {
 			progress.setStatus("创建缩略图...");
@@ -70,7 +70,7 @@ function uploadProgress(file, bytesLoaded) {
 
 function uploadSuccess(file, serverData) {
 	try {
-		var progress = new FileProgress(file,  this.customSettings.upload_target);
+		var progress = new FileProgress(file, this.customSettings.upload_target);
 
 		if (serverData.substring(0, 7) === "FILEID:") {
 			addImage("swfupload.php?dopost=thumbnail&id=" + serverData.substring(7), serverData.substring(7));
@@ -95,7 +95,7 @@ function uploadComplete(file) {
 		if (this.getStats().files_queued > 0) {
 			this.startUpload();
 		} else {
-			var progress = new FileProgress(file,  this.customSettings.upload_target);
+			var progress = new FileProgress(file, this.customSettings.upload_target);
 			progress.setComplete();
 			progress.setStatus("所有图片上传完成...");
 			progress.toggleCancel(false);
@@ -106,37 +106,37 @@ function uploadComplete(file) {
 }
 
 function uploadError(file, errorCode, message) {
-	var imageName =  "error.gif";
+	var imageName = "error.gif";
 	var progress;
 	try {
 		switch (errorCode) {
-		case SWFUpload.UPLOAD_ERROR.FILE_CANCELLED:
-			try {
-				progress = new FileProgress(file,  this.customSettings.upload_target);
-				progress.setCancelled();
-				progress.setStatus("Cancelled");
-				progress.toggleCancel(false);
-			}
-			catch (ex1) {
-				this.debug(ex1);
-			}
-			break;
-		case SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED:
-			try {
-				progress = new FileProgress(file,  this.customSettings.upload_target);
-				progress.setCancelled();
-				progress.setStatus("Stopped");
-				progress.toggleCancel(true);
-			}
-			catch (ex2) {
-				this.debug(ex2);
-			}
-		case SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED:
-			imageName = "uploadlimit.gif";
-			break;
-		default:
-			alert(message);
-			break;
+			case SWFUpload.UPLOAD_ERROR.FILE_CANCELLED:
+				try {
+					progress = new FileProgress(file, this.customSettings.upload_target);
+					progress.setCancelled();
+					progress.setStatus("Cancelled");
+					progress.toggleCancel(false);
+				}
+				catch (ex1) {
+					this.debug(ex1);
+				}
+				break;
+			case SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED:
+				try {
+					progress = new FileProgress(file, this.customSettings.upload_target);
+					progress.setCancelled();
+					progress.setStatus("Stopped");
+					progress.toggleCancel(true);
+				}
+				catch (ex2) {
+					this.debug(ex2);
+				}
+			case SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED:
+				imageName = "uploadlimit.gif";
+				break;
+			default:
+				alert(message);
+				break;
 		}
 
 		addImage("images/" + imageName, 0);
@@ -148,29 +148,28 @@ function uploadError(file, errorCode, message) {
 }
 
 var albImg = 0;
-function addImage(src, pid){
+function addImage(src, pid) {
 	var newImgDiv = document.createElement("div");
 	var delstr = '';
 	var iptwidth = 190;
 	albImg++;
-	if(pid != 0) {
+	if (pid != 0) {
 		albImg = 'ok' + pid;
-		delstr = '<a href="javascript:delAlbPic('+pid+')">[删除]</a>';
+		delstr = '<a href="javascript:delAlbPic(' + pid + ')">[删除]</a>';
 	} else {
 		albImg = 'err' + albImg;
 	}
 	newImgDiv.className = 'albCt';
-	newImgDiv.id = 'albCt'+albImg;
+	newImgDiv.id = 'albCt' + albImg;
 	document.getElementById("thumbnails").appendChild(newImgDiv);
-	newImgDiv.innerHTML = '<img src="'+src+'" width="120" />'+delstr;
-	if(typeof arctype != 'undefined' && arctype ==  'article' )
-	{ 
+	newImgDiv.innerHTML = '<img src="' + src + '" width="120" />' + delstr;
+	if (typeof arctype != 'undefined' && arctype == 'article') {
 		iptwidth = 100;
-		if(pid != 0) {
-			newImgDiv.innerHTML = '<img src="'+src+'" width="120" onClick="addtoEdit('+pid+')"/>'+delstr;
+		if (pid != 0) {
+			newImgDiv.innerHTML = '<img src="' + src + '" width="120" onClick="addtoEdit(' + pid + ')"/>' + delstr;
 		}
 	}
-	newImgDiv.innerHTML += '<div style="margin-top:10px">注释：<input type="text" name="picinfo'+albImg+'" value="" style="width:'+iptwidth+'px;" /></div>';
+	newImgDiv.innerHTML += '<div style="margin-top:10px">注释：<input type="text" name="picinfo' + albImg + '" value="" style="width:' + iptwidth + 'px;" /></div>';
 }
 
 

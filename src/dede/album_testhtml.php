@@ -1,15 +1,16 @@
 <?php
+
 /**
  * 图集测试
  *
  * @version        $Id: album_testhtml.php 1 8:26 2010年7月12日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
-require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__) . "/config.php");
 AjaxHead();
 $myhtml = UnicodeUrl2Gbk(stripslashes($myhtml));
 echo "<div class='coolbg61'>[<a href='#' onclick='javascript:HideObj(\"_myhtml\")'>关闭</a>]</div>\r\n";

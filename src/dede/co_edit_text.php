@@ -1,20 +1,20 @@
 <?php
+
 /**
  * 采集规则编辑-专家更改模式
  *
  * @version        $Id: co_edit_text.php 1 14:31 2010年7月12日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__)."/config.php");
+require(dirname(__FILE__) . "/config.php");
 CheckPurview('co_EditNote');
-if(empty($job)) $job='';
+if (empty($job)) $job = '';
 
-if($job=='')
-{
-    require_once(DEDEINC."/oxwindow.class.php");
+if ($job == '') {
+    require_once(DEDEINC . "/oxwindow.class.php");
     $wintitle = "更改采集规则";
     $wecome_info = "<a href='co_main.php'><u>采集点管理</u></a>::更改采集规则 - 专家更改模式";
     $win = new OxWindow();
@@ -29,12 +29,10 @@ if($job=='')
     $winform = $win->GetWindow("ok");
     $win->Display();
     exit();
-}
-else
-{
+} else {
     CheckPurview('co_EditNote');
     $query = "UPDATE `#@__co_note` SET listconfig='$listconfig',itemconfig='$itemconfig' WHERE nid='$nid' ";
     $rs = $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功修改一个规则!","co_main.php");
+    ShowMsg("成功修改一个规则!", "co_main.php");
     exit();
 }

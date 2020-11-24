@@ -5,7 +5,7 @@
  * 评论
  *
  * @version        $Id: feedback.php$
- * @package        DedeCMS.Site
+ * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -214,7 +214,7 @@ function __SendFeedback(){ }
 
     //保存评论内容
     if ($comtype == 'comments' || $comtype == 'reply') {
-        $arctitle = empty($title)? "" : addslashes($title);
+        $arctitle = empty($title) ? "" : addslashes($title);
         $typeid = intval($typeid);
         $ischeck = intval($ischeck);
         $feedbacktype = preg_replace("#[^0-9a-z]#i", "", $feedbacktype);

@@ -1,28 +1,26 @@
 <?php
+
 /**
  * @version        $Id: edit_face.php 1 8:38 2010年7月9日Z tianya $
- * @package        DedeCMS.Member
+ * @package        DedeBIZ.Member
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__)."/config.php");
-CheckRank(0,0);
+require_once(dirname(__FILE__) . "/config.php");
+CheckRank(0, 0);
 $menutype = 'config';
-if(!isset($dopost))
-{
+if (!isset($dopost)) {
     $dopost = '';
 }
-if(!isset($backurl))
-{
+if (!isset($backurl)) {
     $backurl = 'edit_face.php';
 }
-if($dopost=='save')
-{
+if ($dopost == 'save') {
     // 校验CSRF
     CheckCSRF();
-    $face = HtmlReplace($faceurl,-1);
-    
+    $face = HtmlReplace($faceurl, -1);
+
     $query = "UPDATE `#@__member` SET `face` = '$face' WHERE mid='{$cfg_ml->M_ID}' ";
     $dsql->ExecuteNoneQuery($query);
     // 清除缓存
@@ -31,5 +29,5 @@ if($dopost=='save')
     exit();
 }
 $face = $cfg_ml->fields['face'];
-include(DEDEMEMBER."/templets/edit_face.htm");
+include(DEDEMEMBER . "/templets/edit_face.htm");
 exit();

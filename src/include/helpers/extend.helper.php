@@ -1,9 +1,9 @@
-<?php  if(!defined('DEDEINC')) exit('dedecms');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 扩展小助手
  *
  * @version        $Id: extend.helper.php 1 13:58 2010年7月5日Z tianya $
- * @package        DedeCMS.Helpers
+ * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -15,8 +15,7 @@
  * @param     string  $n  字符ID
  * @return    string
  */
-if ( ! function_exists('ParCv'))
-{
+if (!function_exists('ParCv')) {
     function ParCv($n)
     {
         return chr($n);
@@ -29,11 +28,10 @@ if ( ! function_exists('ParCv'))
  *
  * @return    void
  */
-if ( ! function_exists('ParamError'))
-{
+if (!function_exists('ParamError')) {
     function ParamError()
     {
-        ShowMsg('对不起，你输入的参数有误！','javascript:;');
+        ShowMsg('对不起，你输入的参数有误！', 'javascript:;');
         exit();
     }
 }
@@ -45,8 +43,7 @@ if ( ! function_exists('ParamError'))
  * @param     string  $nv      新值
  * @return    string
  */
-if ( ! function_exists('AttDef'))
-{
+if (!function_exists('AttDef')) {
     function AttDef($oldvar, $nv)
     {
         return empty($oldvar) ? $nv : $oldvar;
@@ -59,8 +56,7 @@ if ( ! function_exists('AttDef'))
  *
  * @return     void
  */
-if ( ! function_exists('AjaxHead'))
-{
+if (!function_exists('AjaxHead')) {
     function AjaxHead()
     {
         @header("Pragma:no-cache\r\n");
@@ -74,19 +70,17 @@ if ( ! function_exists('AjaxHead'))
  *
  * @return     string
  */
-if ( ! function_exists('dede_strip_tags'))
-{
-	function dede_strip_tags($str) { 
-	    $strs=explode('<',$str); 
-	    $res=$strs[0]; 
-	    for($i=1;$i<count($strs);$i++) 
-	    { 
-	        if(!strpos($strs[$i],'>')) 
-	            $res = $res.'&lt;'.$strs[$i]; 
-	        else 
-	            $res = $res.'<'.$strs[$i]; 
-	    } 
-	    return strip_tags($res);    
-	} 
+if (!function_exists('dede_strip_tags')) {
+    function dede_strip_tags($str)
+    {
+        $strs = explode('<', $str);
+        $res = $strs[0];
+        for ($i = 1; $i < count($strs); $i++) {
+            if (!strpos($strs[$i], '>'))
+                $res = $res . '&lt;' . $strs[$i];
+            else
+                $res = $res . '<' . $strs[$i];
+        }
+        return strip_tags($res);
+    }
 }
-

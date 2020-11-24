@@ -1,27 +1,26 @@
 <?php
+
 /**
  * 内容属性
  *
  * @version        $Id: content_att.php 1 14:31 2010年7月12日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__) . "/config.php");
 CheckPurview('sys_Att');
-if(empty($dopost)) $dopost = '';
+if (empty($dopost)) $dopost = '';
 
 //保存更改
-if($dopost=="save")
-{
+if ($dopost == "save") {
     $startID = 1;
     $endID = $idend;
-    for(; $startID<=$endID; $startID++)
-    {
-        $att = ${'att_'.$startID};
-        $attname = ${'attname_'.$startID};
-        $sortid = ${'sortid_'.$startID};
+    for (; $startID <= $endID; $startID++) {
+        $att = ${'att_' . $startID};
+        $attname = ${'attname_' . $startID};
+        $sortid = ${'sortid_' . $startID};
         $query = "UPDATE `#@__arcatt` SET `attname`='$attname',`sortid`='$sortid' WHERE att='$att' ";
         $dsql->ExecuteNoneQuery($query);
     }

@@ -1,7 +1,7 @@
 /**
  * 
  * @version        $Id: ieemu.js 1 22:28 2010年7月20日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -15,14 +15,14 @@ var moz = !ie && document.getElementById != null && document.layers == null;
  * fromElement and toElement
  */
 function extendEventObject() {
-    Event.prototype.__defineSetter__("returnValue", function (b) {
+	Event.prototype.__defineSetter__("returnValue", function (b) {
 		if (!b) this.preventDefault();
 	});
-	
+
 	Event.prototype.__defineSetter__("cancelBubble", function (b) {
 		if (b) this.stopPropagation();
 	});
-	
+
 	Event.prototype.__defineGetter__("srcElement", function () {
 		var node = this.target;
 		while (node.nodeType != 1) node = node.parentNode;
@@ -50,7 +50,7 @@ function extendEventObject() {
 		while (node.nodeType != 1) node = node.parentNode;
 		return node;
 	});
-	
+
 	Event.prototype.__defineGetter__("offsetX", function () {
 		return this.layerX;
 	});
@@ -63,24 +63,24 @@ function extendEventObject() {
  * Emulates element.attachEvent as well as detachEvent
  */
 function emulateAttachEvent() {
-	HTMLDocument.prototype.attachEvent = 
-	HTMLElement.prototype.attachEvent = function (sType, fHandler) {
-		var shortTypeName = sType.replace(/on/, "");
-		fHandler._ieEmuEventHandler = function (e) {
-			window.event = e;
-			return fHandler();
+	HTMLDocument.prototype.attachEvent =
+		HTMLElement.prototype.attachEvent = function (sType, fHandler) {
+			var shortTypeName = sType.replace(/on/, "");
+			fHandler._ieEmuEventHandler = function (e) {
+				window.event = e;
+				return fHandler();
+			};
+			this.addEventListener(shortTypeName, fHandler._ieEmuEventHandler, false);
 		};
-		this.addEventListener(shortTypeName, fHandler._ieEmuEventHandler, false);
-	};
 
-	HTMLDocument.prototype.detachEvent = 
-	HTMLElement.prototype.detachEvent = function (sType, fHandler) {
-		var shortTypeName = sType.replace(/on/, "");
-		if (typeof fHandler._ieEmuEventHandler == "function")
-			this.removeEventListener(shortTypeName, fHandler._ieEmuEventHandler, false);
-		else
-			this.removeEventListener(shortTypeName, fHandler, true);
-	};
+	HTMLDocument.prototype.detachEvent =
+		HTMLElement.prototype.detachEvent = function (sType, fHandler) {
+			var shortTypeName = sType.replace(/on/, "");
+			if (typeof fHandler._ieEmuEventHandler == "function")
+				this.removeEventListener(shortTypeName, fHandler._ieEmuEventHandler, false);
+			else
+				this.removeEventListener(shortTypeName, fHandler, true);
+		};
 }
 
 /*
@@ -88,7 +88,7 @@ function emulateAttachEvent() {
  * event to window.event
  */
 function emulateEventHandlers(eventNames) {
-	for (var i = 0; i < eventNames.length; i++) {	
+	for (var i = 0; i < eventNames.length; i++) {
 		document.addEventListener(eventNames[i], function (e) {
 			window.event = e;
 		}, true);	// using capture
@@ -99,7 +99,7 @@ function emulateEventHandlers(eventNames) {
  * Simple emulation of document.all
  * this one is far from complete. Be cautious
  */
- 
+
 function emulateAllModel() {
 	var allGetter = function () {
 		var a = this.getElementsByTagName("*");
@@ -118,7 +118,7 @@ function extendElementModel() {
 		if (this.parentNode == this.ownerDocument) return null;
 		return this.parentNode;
 	});
-	
+
 	HTMLElement.prototype.__defineGetter__("children", function () {
 		var tmp = [];
 		var j = 0;
@@ -138,11 +138,11 @@ function extendElementModel() {
 		}
 		return tmp;
 	});
-	
+
 	HTMLElement.prototype.contains = function (oEl) {
 		if (oEl == this) return true;
 		if (oEl == null) return false;
-		return this.contains(oEl.parentNode);		
+		return this.contains(oEl.parentNode);
 	};
 }
 
@@ -187,43 +187,43 @@ function emulateHTMLModel() {
 	HTMLElement.prototype.insertAdjacentHTML = function (sWhere, sHTML) {
 		var df;	// : DocumentFragment
 		var r = this.ownerDocument.createRange();
-		
+
 		switch (String(sWhere).toLowerCase()) {
 			case "beforebegin":
 				r.setStartBefore(this);
 				df = r.createContextualFragment(sHTML);
 				this.parentNode.insertBefore(df, this);
 				break;
-				
+
 			case "afterbegin":
 				r.selectNodeContents(this);
 				r.collapse(true);
 				df = r.createContextualFragment(sHTML);
 				this.insertBefore(df, this.firstChild);
 				break;
-				
+
 			case "beforeend":
 				r.selectNodeContents(this);
 				r.collapse(false);
 				df = r.createContextualFragment(sHTML);
 				this.appendChild(df);
 				break;
-				
+
 			case "afterend":
 				r.setStartAfter(this);
 				df = r.createContextualFragment(sHTML);
 				this.parentNode.insertBefore(df, this.nextSibling);
 				break;
-		}	
+		}
 	};
 
 	HTMLElement.prototype.__defineSetter__("outerHTML", function (sHTML) {
-	   var r = this.ownerDocument.createRange();
-	   r.setStartBefore(this);
-	   var df = r.createContextualFragment(sHTML);
-	   this.parentNode.replaceChild(df, this);
-	   
-	   return sHTML;
+		var r = this.ownerDocument.createRange();
+		r.setStartBefore(this);
+		var df = r.createContextualFragment(sHTML);
+		this.parentNode.replaceChild(df, this);
+
+		return sHTML;
 	});
 
 	HTMLElement.prototype.__defineGetter__("canHaveChildren", function () {
@@ -256,14 +256,14 @@ function emulateHTMLModel() {
 		}
 		if (!this.canHaveChildren)
 			return str + ">";
-		
+
 		return str + ">" + this.innerHTML + "</" + this.tagName + ">";
 	});
 
 
 	HTMLElement.prototype.__defineSetter__("innerText", function (sText) {
 		this.innerHTML = convertTextToHTML(sText);
-		return sText;		
+		return sText;
 	});
 
 	var tmpGet;

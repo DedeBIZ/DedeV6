@@ -2,7 +2,7 @@
  * 图集
  *
  * @version        $Id: album.js 1 22:28 2010年7月20日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -22,10 +22,10 @@ function checkSubmitAlb() {
 
 	if ($("#thumbnails .albCt").length > 0) {
 		// 这里从thumbnails中取出图片元素信息
-		$("#thumbnails .albCt").each(function(){
+		$("#thumbnails .albCt").each(function () {
 			albums.push({
-			"img" : $(this).find("img").attr("src"),
-			"txt" : $(this).find("input").val()
+				"img": $(this).find("img").attr("src"),
+				"txt": $(this).find("input").val()
 			})
 		})
 	}
@@ -35,27 +35,27 @@ function checkSubmitAlb() {
 	return true;
 }
 
-function testGet(){
-    LoadTestDiv();
+function testGet() {
+	LoadTestDiv();
 }
 
-function checkMuList(psid,cmid){
-    if($Obj('pagestyle3').checked){
-	    $Obj('cfgmulist').style.display = 'block';
+function checkMuList(psid, cmid) {
+	if ($Obj('pagestyle3').checked) {
+		$Obj('cfgmulist').style.display = 'block';
 		$Obj('spagelist').style.display = 'none';
-	} else if($Obj('pagestyle1').checked) {
+	} else if ($Obj('pagestyle1').checked) {
 		$Obj('cfgmulist').style.display = 'none';
 		$Obj('spagelist').style.display = 'block';
-	} else	{
+	} else {
 		$Obj('cfgmulist').style.display = 'none';
 		$Obj('spagelist').style.display = 'none';
 	}
 }
 
 //图集，显示与隐藏zip文件选项
-function showZipField(formitem,zipid,upid){
-    if(formitem.checked){
-	    $Obj(zipid).style.display = 'block';
+function showZipField(formitem, zipid, upid) {
+	if (formitem.checked) {
+		$Obj(zipid).style.display = 'block';
 		$Obj(upid).style.display = 'none';
 		//$Obj('handfield').style.display = 'none';
 		// $Obj('formhtml').checked = false;
@@ -67,42 +67,42 @@ function showZipField(formitem,zipid,upid){
 }
 
 //图集，显示与隐藏Html编辑框
-function showHtmlField(formitem,htmlid,upid){
-    if($Nav()!="IE"){
+function showHtmlField(formitem, htmlid, upid) {
+	if ($Nav() != "IE") {
 		alert("该方法不适用于非IE浏览器！");
-		return ;
+		return;
 	}
-	if(formitem.checked){
+	if (formitem.checked) {
 		$Obj(htmlid).style.display = 'block';
 		$Obj(upid).style.display = 'none';
 		//$Obj('handfield').style.display = 'none';
 		$Obj('formzip').checked = false;
-	} else 	{
+	} else {
 		$Obj(htmlid).style.display = 'none';
 		//$Obj('handfield').style.display = 'block';
 		$Obj('copyhtml').innerHTML = '';
 	}
 }
 
-function seePicNewAlb(f, imgdid, frname, hpos, acname){
-    var newobj = null;
-	if(f.value=='') return ;
+function seePicNewAlb(f, imgdid, frname, hpos, acname) {
+	var newobj = null;
+	if (f.value == '') return;
 	vImg = $Obj(imgdid);
 	picnameObj = document.getElementById('picname');
-	nFrame = $Nav()=='IE' ? eval('document.frames.'+frname) : $Obj(frname);
+	nFrame = $Nav() == 'IE' ? eval('document.frames.' + frname) : $Obj(frname);
 	nForm = f.form;
 	//修改form的action等参数
-	if(nForm.detachEvent) nForm.detachEvent("onsubmit", checkSubmitAlb);
-    else nForm.removeEventListener("submit", checkSubmitAlb, false);
+	if (nForm.detachEvent) nForm.detachEvent("onsubmit", checkSubmitAlb);
+	else nForm.removeEventListener("submit", checkSubmitAlb, false);
 	nForm.action = 'archives_do.php';
 	nForm.target = frname;
 	nForm.dopost.value = 'uploadLitpic';
 	nForm.submit();
-	
+
 	picnameObj.value = '';
 	newobj = $Obj('uploadwait');
-	if(!newobj){
-        newobj = document.createElement("DIV");
+	if (!newobj) {
+		newobj = document.createElement("DIV");
 		newobj.id = 'uploadwait';
 		newobj.style.position = 'absolute';
 		newobj.className = 'uploadwait';
@@ -121,21 +121,21 @@ function seePicNewAlb(f, imgdid, frname, hpos, acname){
 	nForm.litpic.disabled = true;
 	//nForm.litpic = null;
 	//if(nForm.attachEvent) nForm.attachEvent("onsubmit", checkSubmit);
-    //else nForm.addEventListener("submit", checkSubmit, true);
+	//else nForm.addEventListener("submit", checkSubmit, true);
 }
 
 //删除已经上传的图片
-function delAlbPic(pid){
-	var tgobj = $Obj('albCtok'+pid);
+function delAlbPic(pid) {
+	var tgobj = $Obj('albCtok' + pid);
 	var myajax = new DedeAjax(tgobj);
-	myajax.SendGet2('swfupload.php?dopost=del&id='+pid);
+	myajax.SendGet2('swfupload.php?dopost=del&id=' + pid);
 	$Obj('thumbnails').removeChild(tgobj);
 }
 
 //删除已经上传的图片(编辑时用)
-function delAlbPicOld(picfile, pid){
-	var tgobj = $Obj('albold'+pid);
+function delAlbPicOld(picfile, pid) {
+	var tgobj = $Obj('albold' + pid);
 	var myajax = new DedeAjax(tgobj);
-	myajax.SendGet2('swfupload.php?dopost=delold&picfile='+picfile);
+	myajax.SendGet2('swfupload.php?dopost=delold&picfile=' + picfile);
 	$Obj('thumbnailsEdit').removeChild(tgobj);
 }

@@ -1,10 +1,11 @@
 <?php
+
 /**
  *
  * 二维码生成
  *
  * @version        $Id: qrcode.php$
- * @package        DedeCMS.Site
+ * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com

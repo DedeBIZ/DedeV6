@@ -3,7 +3,7 @@
  * 搜索视图类
  *
  * @version        $Id: arc.searchview.class.php 1 15:26 2010年7月7日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -21,7 +21,7 @@ require_once(DEDEINC . "/taglib/channel.lib.php");
  * 搜索视图类
  *
  * @package          SearchView
- * @subpackage       DedeCMS.Libraries
+ * @subpackage       DedeBIZ.Libraries
  * @link             https://www.dedebiz.com
  */
 class SearchView

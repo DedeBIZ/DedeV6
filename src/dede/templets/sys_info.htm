@@ -37,6 +37,7 @@
     }
     function getSearch() {
       var searchKeywords = $Obj('keywds').value;
+      searchKeywords = searchKeywords.replace(/^cfg_/, "");
       var myajax = new DedeAjax($Obj('_search'));
       myajax.SendGet('sys_info.php?dopost=search&keywords=' + searchKeywords)
       $Obj('_searchback').innerHTML = '<input name="searchbackBtn" type="button" value="返回" id="searchbackBtn" onclick="backSearch()"/>'
@@ -49,16 +50,17 @@
       });
     }
   </script>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
 </head>
 
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <div style="min-width:780px">
-    <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
+    <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center"
+      class="table maintable table-bordered mt-3">
       <tr>
-        <td height="28" background="images/tbg.gif" style="padding-left:10px;"><b>DedeCMS系统配置参数：</b></td>
+        <td height="28" background="images/tbg.gif" style="padding-left:10px;"><b>DedeCMSV6系统配置参数：</b></td>
       </tr>
       <tr>
         <td height="24" bgcolor="#ffffff" align="center"><?php
@@ -120,7 +122,7 @@ foreach($ds as $dl)
                 echo "</select>\r\n";
         ?>
                   <button type="submit" class="btn btn-secondary btn-sm">保存变量</button>
-                  </td>
+                </td>
               </tr>
             </table>
           </form>
@@ -155,7 +157,7 @@ foreach($ds as $dl)
 ?>
               <table width="100%" style='<?php if($n!=$gp) echo "display:none"; ?>' id="td<?php echo $n?>" border="0"
                 cellspacing="1" cellpadding="1" bgcolor="#cfcfcf">
-                <tr align="center" bgcolor="#FBFCE2" >
+                <tr align="center" bgcolor="#FBFCE2">
                   <td width="300">参数说明</td>
                   <td>参数值</td>
                   <td width="220">变量名</td>
@@ -221,8 +223,9 @@ if($row['type']=='bool')
                       <td width="11%">&nbsp;</td>
                       <td width="11%">
                         <button type="submit" class="btn btn-secondary">确定</button>
-                        </td>
-                      <td width="78%"><button type="button" onClick="document.form1.reset()" class="btn btn-secondary">重置</button></td>
+                      </td>
+                      <td width="78%"><button type="button" onClick="document.form1.reset()"
+                          class="btn btn-secondary">重置</button></td>
                     </tr>
                   </table>
                 </td>

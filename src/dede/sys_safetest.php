@@ -4,7 +4,7 @@
  * 安全检测
  *
  * @version        $Id: sys_safetest.php 2 9:25 2010-11-12 tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -37,7 +37,7 @@ EOT;;
 
 function TestOneFile($f)
 {
-    global $message, $info,$offFiles;
+    global $message, $info, $offFiles;
     $str = '';
 
     //排除safefile和data/tplcache目录
@@ -48,14 +48,14 @@ function TestOneFile($f)
         $str .= fgets($fp, 1024);
     }
     fclose($fp);
-    
+
     if (preg_match("#(" . $info . ")[ \r\n\t]{0,}([\[\(])#i", $str)) {
-        $trfile = preg_replace("#^" . DEDEROOT . "#", '', $f );
+        $trfile = preg_replace("#^" . DEDEROOT . "#", '', $f);
         $oldTrfile = $trfile;
-        $trfile = substr(str_replace("/","\\",$trfile) ,1);
+        $trfile = substr(str_replace("/", "\\", $trfile), 1);
 
         $localFilehash = md5_file($f);
-        $remoteFilehash = isset($offFiles[$trfile])? $offFiles[$trfile] : '';
+        $remoteFilehash = isset($offFiles[$trfile]) ? $offFiles[$trfile] : '';
         if ($localFilehash === $remoteFilehash) {
             return 0;
         }
@@ -95,9 +95,8 @@ if ($action == 'test') {
     if ($message == '') $message = "<font color='green' style='font-size:14px'>没发现可疑文件！</font>";
     echo $message;
     exit();
-}
-else if($action =='viewdiff'){
-    $filename = isset($filename)? $filename : "";
+} else if ($action == 'viewdiff') {
+    $filename = isset($filename) ? $filename : "";
     if (empty($filename)) {
         ShowMsg("没有选择对应的文件", "-1");
         exit;
@@ -110,10 +109,9 @@ else if($action =='viewdiff'){
 
     $file = "$cfg_basedir/$filename";
     $new = "";
-    if(is_file($file))
-    {
-        $fp = fopen($file,"r");
-        $new = fread($fp,filesize($file));
+    if (is_file($file)) {
+        $fp = fopen($file, "r");
+        $new = fread($fp, filesize($file));
         fclose($fp);
     }
 

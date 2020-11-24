@@ -1,20 +1,20 @@
-<?php   if(!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("Request Error!");
 /**
  * 单表模型视图类
  *
  * @version        $Id: arc.sgpage.class.php 1 15:48 2010年7月7日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC."/arc.partview.class.php");
+require_once(DEDEINC . "/arc.partview.class.php");
 
 /**
  * 单表模型列表视图类
  *
  * @package          SgListView
- * @subpackage       DedeCMS.Libraries
+ * @subpackage       DedeBIZ.Libraries
  * @link             https://www.dedebiz.com
  */
 class sgpage
@@ -35,27 +35,25 @@ class sgpage
      */
     function __construct($aid)
     {
-        global $cfg_basedir,$cfg_templets_dir,$cfg_df_style,$envs;
+        global $cfg_basedir, $cfg_templets_dir, $cfg_df_style, $envs;
 
         $this->dsql = $GLOBALS['dsql'];
         $this->dtp = new DedeTagParse();
         $this->dtp->refObj = $this;
-        $this->dtp->SetNameSpace("dede","{","}");
+        $this->dtp->SetNameSpace("dede", "{", "}");
         $this->Fields = $this->dsql->GetOne("SELECT * FROM `#@__sgpage` WHERE aid='$aid' ");
         $envs['aid'] = $this->Fields['aid'];
 
         //设置一些全局参数的值
-        foreach($GLOBALS['PubFields'] as $k=>$v)
-        {
+        foreach ($GLOBALS['PubFields'] as $k => $v) {
             $this->Fields[$k] = $v;
         }
-        if($this->Fields['ismake']==1)
-        {
+        if ($this->Fields['ismake'] == 1) {
             $pv = new PartView();
-            $pv->SetTemplet($this->Fields['body'],'string');
+            $pv->SetTemplet($this->Fields['body'], 'string');
             $this->Fields['body'] = $pv->GetResult();
         }
-        $tplfile = $cfg_basedir.str_replace('{style}',$cfg_templets_dir.'/'.$cfg_df_style,$this->Fields['template']);
+        $tplfile = $cfg_basedir . str_replace('{style}', $cfg_templets_dir . '/' . $cfg_df_style, $this->Fields['template']);
         $this->dtp->LoadTemplate($tplfile);
         $this->ParseTemplet();
     }
@@ -96,7 +94,7 @@ class sgpage
      */
     function SaveToHtml()
     {
-        $filename = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_cmspath'].'/'.$this->Fields['filename'];
+        $filename = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_cmspath'] . '/' . $this->Fields['filename'];
         $filename = preg_replace("/\/{1,}/", '/', $filename);
         $this->dtp->SaveTo($filename);
     }
@@ -110,7 +108,7 @@ class sgpage
     function ParseTemplet()
     {
         $GLOBALS['envs']['likeid'] = $this->Fields['likeid'];
-        MakeOneTag($this->dtp,$this);
+        MakeOneTag($this->dtp, $this);
     }
 
     //关闭所占用的资源

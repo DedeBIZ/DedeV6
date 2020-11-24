@@ -3,7 +3,7 @@
  * 导入采集规则
  *
  * @version        $Id: co_get_corule.php 1 17:13 2010年7月12日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -97,5 +97,3 @@ else
     ShowMsg("成功导入一个规则!","co_main.php");
     exit();
 }
-
-?>

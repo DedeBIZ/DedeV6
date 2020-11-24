@@ -3,12 +3,12 @@
 /**
  * 系统核心函数存放文件
  * @version        $Id: common.func.php 4 16:39 2010年7月6日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!defined('DEDEINC')) exit('dedecms');
+if (!defined('DEDEINC')) exit('dedebiz');
 
 if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
     if (!function_exists('mysql_connect') and function_exists('mysqli_connect')) {

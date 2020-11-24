@@ -4,7 +4,7 @@
  * 评论管理
  *
  * @version        $Id: feedback_main.php 1 19:09 2010年7月12日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -44,7 +44,8 @@ if (!empty($job)) {
 }
 
 // 更新回复统计
-function UpdateReplycount($id){
+function UpdateReplycount($id)
+{
     global $dsql;
     $row = $dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__feedback` WHERE fid = $id AND ischeck=1");
     $dsql->ExecNoneQuery("UPDATE `#@__feedback` SET `replycount`='{$row['dd']}' WHERE `id`=$id;");
@@ -74,7 +75,7 @@ else if ($job == 'delall') {
 }
 //审核评论
 else if ($job == 'check') {
-    
+
     $query = "UPDATE `#@__feedback` SET ischeck=1 WHERE id IN($ids) ";
     $dsql->ExecuteNoneQuery($query);
 

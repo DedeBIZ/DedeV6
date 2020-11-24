@@ -1,28 +1,25 @@
 <?php
+
 /**
  * 采集指定节点
  *
  * @version        $Id: co_gather_start.php$
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__)."/config.php");
-require_once(DEDEINC."/dedecollection.class.php");
-if(!empty($nid))
-{
+require_once(dirname(__FILE__) . "/config.php");
+require_once(DEDEINC . "/dedecollection.class.php");
+if (!empty($nid)) {
     $ntitle = '采集指定节点：';
     $nid = intval($nid);
     $co = new DedeCollection();
     $co->LoadNote($nid);
     $row = $dsql->GetOne("SELECT COUNT(aid) AS dd FROM `#@__co_htmls` WHERE nid='$nid'; ");
-    if($row['dd']==0)
-    {
+    if ($row['dd'] == 0) {
         $unum = "没有记录或从来没有采集过这个节点！";
-    }
-    else
-    {
+    } else {
         $unum = "共有 {$row['dd']} 个历史种子网址！<a href='javascript:SubmitNew();'>[<u>更新种子网址，并采集</u>]</a>";
     }
 } else {

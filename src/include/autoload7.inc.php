@@ -2,7 +2,7 @@
 if(!defined('DEDEINC')) exit("Request Error!");
 /**
  * @version        $Id: autoload7.inc.php 1 17:44 2020-09-22 tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -42,4 +42,3 @@ function dede_autoloader($classname)
     }
 }
 spl_autoload_register('dede_autoloader');
-?>

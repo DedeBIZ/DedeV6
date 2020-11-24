@@ -3,7 +3,7 @@
  * 自由列表管理
  *
  * @version        $Id: freelist_main.php 1 8:48 2010年7月13日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -97,5 +97,3 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     }
     echo "</table>\r\n";
 }
-
-?>

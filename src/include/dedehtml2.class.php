@@ -6,7 +6,7 @@
  * 
  *
  * @version        $Id: dedehtml2.class.php 1 14:44 2010年7月6日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -16,7 +16,7 @@
  * 织梦HTML解析类V1.6 PHP版
  *
  * @package          DedeHtml2
- * @subpackage       DedeCMS.Libraries
+ * @subpackage       DedeBIZ.Libraries
  * @link             https://www.dedebiz.com
  */
 class DedeHtml2
@@ -670,5 +670,3 @@ class DedeAttribute2
     }//End Function PrivateAttParse
 
 }//End Class DedeAttribute2
-
-?>

@@ -4,12 +4,12 @@
  * 文档编辑验证
  * 
  * @version        $Id: archives_check_edit.php 1 13:52 2010年7月9日Z tianya $
- * @package        DedeCMS.Member
+ * @package        DedeBIZ.Member
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!defined('DEDEMEMBER')) exit('dedecms');
+if (!defined('DEDEMEMBER')) exit('dedebiz');
 
 require_once(DEDEINC . "/image.func.php");
 require_once(DEDEINC . "/oxwindow.class.php");

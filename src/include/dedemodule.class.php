@@ -3,7 +3,7 @@
  * 织梦模块类
  *
  * @version        $Id: dedemodule.class.php 1 10:31 2010年7月6日Z tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -63,7 +63,7 @@ class DedeModule
         while ($filename = $dh->read()) {
             if (preg_match("/\.xml$/i", $filename)) {
                 $minfos = $this->GetModuleInfo(str_replace('.xml', '', $filename));
-                if ($minfos==null) {
+                if ($minfos == null) {
                     continue;
                 }
                 if (isset($minfos['moduletype']) && $moduletype != '' && $moduletype != $minfos['moduletype']) {
@@ -193,7 +193,7 @@ class DedeModule
         $pubKey = @base64url_decode($minfos['pubkey']);
         @openssl_public_decrypt(base64url_decode($minfos['info']), $decontent, $pubKey);
         $enInfo = (array)json_decode($decontent);
-        if (count($enInfo)==0) {
+        if (count($enInfo) == 0) {
             return null;
         }
         if ($enInfo['module_name'] != $minfos['name'] || $enInfo['dev_id'] != $minfos['dev_id']) {

@@ -4,7 +4,7 @@
  * 管理后台首页主体
  *
  * @version        $Id: index_body.php 1 11:06 2010年7月13日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -35,8 +35,7 @@ if (empty($dopost)) {
 /*-----------------------
 增加新项
 function _AddNew() {   }
--------------------------*/ 
-else if ($dopost == 'addnew') {
+-------------------------*/ else if ($dopost == 'addnew') {
     if (empty($link) || empty($title)) {
         ShowMsg("链接网址或标题不能为空！", "-1");
         exit();
@@ -62,8 +61,7 @@ else if ($dopost == 'addnew') {
 /*---------------------------
 保存修改的项
 function _EditSave() {   }
-----------------------------*/ 
-else if ($dopost == 'editsave') {
+----------------------------*/ else if ($dopost == 'editsave') {
     $quickmenu = stripslashes($quickmenu);
 
     $myIcoFileTrue = DEDEDATA . '/admin/quickmenu-' . $cuserLogin->getUserID() . '.txt';
@@ -77,8 +75,7 @@ else if ($dopost == 'editsave') {
 /*---------------------------
 保存修改的项
 function _EditSave() {   }
-----------------------------*/ 
-else if ($dopost == 'movesave') {
+----------------------------*/ else if ($dopost == 'movesave') {
     $movedata = str_replace('\\', "", $sortorder);
     $movedata = json_decode($movedata, TRUE);
     $movedata = serialize($movedata);
@@ -90,8 +87,7 @@ else if ($dopost == 'movesave') {
 /*-----------------------------
 显示修改表单
 function _EditShow() {   }
------------------------------*/ 
-else if ($dopost == 'editshow') {
+-----------------------------*/ else if ($dopost == 'editshow') {
     $fp = fopen($myIcoFile, 'r');
     $oldct = trim(fread($fp, filesize($myIcoFile)));
     fclose($fp);
@@ -135,8 +131,7 @@ else if ($dopost == 'editshow') {
 /*---------------------------------
 载入右边内容
 function _getRightSide() {   }
----------------------------------*/ 
-else if ($dopost == 'getRightSide') {
+---------------------------------*/ else if ($dopost == 'getRightSide') {
     $query = " SELECT COUNT(*) AS dd FROM `#@__member` ";
     $row1 = $dsql->GetOne($query);
     $query = " SELECT COUNT(*) AS dd FROM `#@__feedback` ";
@@ -228,8 +223,8 @@ else if ($dopost == 'getRightSide') {
     if (!extension_loaded("openssl")) {
         echo json_encode(array(
             "code" => -1001,
-            "msg"=>"PHP不支持OpenSSL，无法完成Dede商业授权",
-            "result"=>null, 
+            "msg" => "PHP不支持OpenSSL，无法完成Dede商业授权",
+            "result" => null,
         ));
         exit;
     }
@@ -237,8 +232,8 @@ else if ($dopost == 'getRightSide') {
     if (empty($cfg_auth_code)) {
         echo json_encode(array(
             "code" => -1002,
-            "msg"=>"当前站点尚未购买Dede商业授权",
-            "result"=>null, 
+            "msg" => "当前站点尚未购买Dede商业授权",
+            "result" => null,
         ));
         exit;
     }
@@ -259,15 +254,15 @@ else if ($dopost == 'getRightSide') {
         if (isset($res->sid)) {
             echo json_encode(array(
                 "code" => 200,
-                "msg"=>"",
-                "result"=>array(
+                "msg" => "",
+                "result" => array(
                     "domain" => $res->domain,
                     "title" => $res->title,
-                    "stype" => $res->stype == 1? "企业单位" : "个人",
+                    "stype" => $res->stype == 1 ? "企业单位" : "个人",
                     "auth_version" => $res->auth_version,
                     "auth_at" => date("Y-m-d", $res->auth_at),
                     "core" => $core_info,
-                ), 
+                ),
             ));
         }
     }

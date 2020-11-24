@@ -1,7 +1,7 @@
 /**
  * 
  * @version        $Id: context_menu.js 1 22:28 2010年7月20日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -100,11 +100,11 @@ ContextMenu.fixPos = function (x, y) {
 	if(dw>0){
 		WebFX_PopUpcss.style.left = (x - dw) + ContextMenu.getScrollLeft() + "px"; 
 	}else { 
-	    WebFX_PopUpcss.style.left = x + ContextMenu.getScrollLeft(); 
+		WebFX_PopUpcss.style.left = x + ContextMenu.getScrollLeft(); 
 	} if(dh>0)	{ 
-	    WebFX_PopUpcss.style.top = (y - dh) + ContextMenu.getScrollTop() + "px" 
+		WebFX_PopUpcss.style.top = (y - dh) + ContextMenu.getScrollTop() + "px" 
 	}else{
-	    WebFX_PopUpcss.style.top  = y + ContextMenu.getScrollTop(); }*/
+		WebFX_PopUpcss.style.top  = y + ContextMenu.getScrollTop(); }*/
 	WebFX_PopUpcss.style.top = y + "px";
 	WebFX_PopUpcss.style.left = x + "px";
 }

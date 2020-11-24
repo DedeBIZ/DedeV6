@@ -1,19 +1,20 @@
 <?php
+
 /**
  *
  * 错误提交
  *
  * @version        $Id: erraddsave.php$
- * @package        DedeCMS.Site
+ * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__)."/../include/common.inc.php");
-require_once(DEDEINC.'/memberlogin.class.php');
+require_once(dirname(__FILE__) . "/../include/common.inc.php");
+require_once(DEDEINC . '/memberlogin.class.php');
 
-$dopost = isset($dopost)? $dopost : "";
-$aid = isset($aid)? intval($aid) : 0;
+$dopost = isset($dopost) ? $dopost : "";
+$aid = isset($aid) ? intval($aid) : 0;
 if (empty($aid)) {
     echo json_encode(array(
         "code" => -1,
@@ -23,15 +24,14 @@ if (empty($aid)) {
     exit;
 }
 
-if($dopost == "saveedit")
-{
+if ($dopost == "saveedit") {
     $cfg_ml = new MemberLogin();
     $title = HtmlReplace($title);
-    $format = isset($format)? $format : "";
+    $format = isset($format) ? $format : "";
     $type = isset($type) && is_numeric($type) ? $type : 0;
     $mid = isset($cfg_ml->M_ID) ? $cfg_ml->M_ID : 0;
-    $err = trimMsg(cn_substr(RemoveXSS($err),2000),1);
-    $oktxt = trimMsg(cn_substr(RemoveXSS($erradd),2000),1);
+    $err = trimMsg(cn_substr(RemoveXSS($err), 2000), 1);
+    $oktxt = trimMsg(cn_substr(RemoveXSS($erradd), 2000), 1);
     if (empty($err) || empty($oktxt)) {
         echo json_encode(array(
             "code" => -1,
@@ -51,9 +51,9 @@ if($dopost == "saveedit")
             "data" => "ok",
         ));
     } else {
-        ShowMsg("谢谢您对本网站的支持，我们会尽快处理您的建议！","javascript:window.close();");
+        ShowMsg("谢谢您对本网站的支持，我们会尽快处理您的建议！", "javascript:window.close();");
     }
-    
+
     exit();
 } else {
     echo json_encode(array(

@@ -4,7 +4,7 @@
  * 获取TAGS管理
  *
  * @version        $Id: tag_test_action.php 1 23:07 2010年7月20日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com

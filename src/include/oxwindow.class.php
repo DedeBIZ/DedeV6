@@ -1,21 +1,21 @@
-<?php   if(!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("Request Error!");
 /**
  * 提示窗口对话框类
  *
  * @version        $Id: oxwindow.class.php 2 13:53 2010-11-11 tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC . "/dedetag.class.php");
 
 /**
  * 提示窗口对话框类
  *
  * @package          OxWindow
- * @subpackage       DedeCMS.Libraries
- * @link             http://www.dedecms.com
+ * @subpackage       DedeBIZ.Libraries
+ * @link             https://www.dedebiz.com
  */
 class OxWindow
 {
@@ -35,17 +35,14 @@ class OxWindow
      * @param     string  $formname  表单名称
      * @return    void
      */
-    function Init($formaction="", $checkScript="js/blank.js", $formmethod="POST", $formname="myform")
+    function Init($formaction = "", $checkScript = "js/blank.js", $formmethod = "POST", $formname = "myform")
     {
         $this->myWin .= "<script language='javascript'>\r\n";
-        if($checkScript!="" && file_exists($checkScript))
-        {
-            $fp = fopen($checkScript,"r");
-            $this->myWin .= fread($fp,filesize($checkScript));
+        if ($checkScript != "" && file_exists($checkScript)) {
+            $fp = fopen($checkScript, "r");
+            $this->myWin .= fread($fp, filesize($checkScript));
             fclose($fp);
-        }
-        else
-        {
+        } else {
             $this->myWin .= "<!-- function CheckSubmit()\r\n{ return true; } -->";
         }
         $this->myWin .= "</script>\r\n";
@@ -61,7 +58,7 @@ class OxWindow
      * @param     string  $ivalue  隐藏域值
      * @return    void
      */
-    function AddHidden($iname,$ivalue)
+    function AddHidden($iname, $ivalue)
     {
         $this->myWin .= "<input type='hidden' name='$iname' value='$ivalue'>\r\n";
     }
@@ -101,23 +98,17 @@ class OxWindow
      * @param     string  $col  显示列数
      * @return    void
      */
-    function AddMsgItem($ivalue, $height="auto", $col="2")
+    function AddMsgItem($ivalue, $height = "auto", $col = "2")
     {
-        if($height!=""&&$height!="0")
-        {
+        if ($height != "" && $height != "0") {
             $height = " height='$height'";
+        } else {
+            $height = "";
         }
-        else
-        {
-            $height="";
-        }
-        if($col!=""&&$col!=0)
-        {
-            $colspan="colspan='$col'";
-        }
-        else
-        {
-            $colspan="";
+        if ($col != "" && $col != 0) {
+            $colspan = "colspan='$col'";
+        } else {
+            $colspan = "";
         }
         $this->myWinItem .= "<tr bgcolor='#FFFFFF'>\r\n";
         $this->myWinItem .= "<td $colspan $height> $ivalue </td>\r\n";
@@ -132,16 +123,13 @@ class OxWindow
      * @param     string  $col  列
      * @return    string
      */
-    function AddTitle($title, $col="2")
+    function AddTitle($title, $col = "2")
     {
         global $cfg_static_dir;
-        if($col!=""&&$col!="0")
-        {
-            $colspan="colspan='$col'";
-        }
-        else
-        {
-            $colspan="";
+        if ($col != "" && $col != "0") {
+            $colspan = "colspan='$col'";
+        } else {
+            $colspan = "";
         }
         $this->myWinItem .= "<tr bgcolor='#DADADA'>\r\n";
         $this->myWinItem .= "<td $colspan background='{$cfg_static_dir}/img/wbg.gif' height='26'><font color='#666600'><b>$title</b></font></td>\r\n";
@@ -154,14 +142,11 @@ class OxWindow
      * @param     bool   $isform
      * @return    void
      */
-    function CloseWin($isform=true)
+    function CloseWin($isform = true)
     {
-        if(!$isform)
-        {
+        if (!$isform) {
             $this->myWin .= "</table>\r\n";
-        }
-        else
-        {
+        } else {
             $this->myWin .= "</table></form>\r\n";
         }
     }
@@ -174,10 +159,9 @@ class OxWindow
      */
     function SetCheckScript($scripts)
     {
-        $pos = strpos($this->myWin,$this->tmpCode);
-        if($pos > 0)
-        {
-            $this->myWin = substr_replace($this->myWin,$scripts,$pos,strlen($this->tmpCode));
+        $pos = strpos($this->myWin, $this->tmpCode);
+        if ($pos > 0) {
+            $this->myWin = substr_replace($this->myWin, $scripts, $pos, strlen($this->tmpCode));
         }
     }
 
@@ -189,7 +173,7 @@ class OxWindow
      * @param     bool  $isform  是否是表单
      * @return    string
      */
-    function GetWindow($wintype="save", $msg="", $isform=true)
+    function GetWindow($wintype = "save", $msg = "", $isform = true)
     {
         global $cfg_static_dir;
         $this->StartWin();
@@ -212,10 +196,8 @@ class OxWindow
                 $tt = "保存";
                 break;
         }
-        if($wintype!="")
-        {
-            if($wintype!="hand")
-            {
+        if ($wintype != "") {
+            if ($wintype != "hand") {
                 $this->myWin .= "
 <tr>
 <td colspan='2' bgcolor='#F9FCEF'>
@@ -228,15 +210,10 @@ class OxWindow
 </table>
 </td>
 </tr>";
-            }
-            else
-            {
-                if($msg!='')
-                {
+            } else {
+                if ($msg != '') {
                     $this->myWin .= "<tr><td bgcolor='#F5F5F5'>$msg</td></tr>";
-                }
-                else
-                {
+                } else {
                     $this->myWin .= '';
                 }
             }
@@ -252,28 +229,22 @@ class OxWindow
      * @param     string  $modfile  模型模板
      * @return    string
      */
-    function Display($modfile="")
+    function Display($modfile = "")
     {
-        global $cfg_templets_dir,$wecome_info,$cfg_basedir;
-        if(empty($wecome_info))
-        {
-            $wecome_info = "DedeCMS OX 通用对话框：";
+        global $cfg_templets_dir, $wecome_info, $cfg_basedir;
+        if (empty($wecome_info)) {
+            $wecome_info = "DedeBIZ OX 通用对话框：";
         }
         $ctp = new DedeTagParse();
-        if($modfile=='')
-        {
-            $ctp->LoadTemplate($cfg_basedir.$cfg_templets_dir.'/plus/win_templet.htm');
-        }
-        else
-        {
+        if ($modfile == '') {
+            $ctp->LoadTemplate($cfg_basedir . $cfg_templets_dir . '/plus/win_templet.htm');
+        } else {
             $ctp->LoadTemplate($modfile);
         }
         $emnum = $ctp->Count;
-        for($i=0;$i<=$emnum;$i++)
-        {
-            if(isset($GLOBALS[$ctp->CTags[$i]->GetTagName()]))
-            {
-                $ctp->Assign($i,$GLOBALS[$ctp->CTags[$i]->GetTagName()]);
+        for ($i = 0; $i <= $emnum; $i++) {
+            if (isset($GLOBALS[$ctp->CTags[$i]->GetTagName()])) {
+                $ctp->Assign($i, $GLOBALS[$ctp->CTags[$i]->GetTagName()]);
             }
         }
         $ctp->Display();
@@ -293,7 +264,7 @@ function ShowMsgWin($msg, $title)
 {
     $win = new OxWindow();
     $win->Init();
-    $win->mainTitle = "DedeCMS系统提示：";
+    $win->mainTitle = "DedeBIZ系统提示：";
     $win->AddTitle($title);
     $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
     $winform = $win->GetWindow("hand");

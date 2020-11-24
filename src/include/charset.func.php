@@ -1,8 +1,8 @@
 <?php
-if(!defined('DEDEINC')) exit('dedecms');
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * @version        $Id: charset.func.php 1 17:44 2020-09-22 tianya $
- * @package        DedeCMS.Libraries
+ * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com

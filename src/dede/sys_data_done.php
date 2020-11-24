@@ -4,7 +4,7 @@
  * 数据库操作
  *
  * @version        $Id: sys_data_done.php 1 17:19 2010年7月20日Z tianya $
- * @package        DedeCMS.Administrator
+ * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -276,8 +276,8 @@ function PutInfo($msg1, $msg2)
         <meta http-equiv='Content-Type' content='text/html; charset={$cfg_soft_lang}' />
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
         <link rel='stylesheet' href='../static/css/bootstrap.min.css'>
-        <title>DedeCMS 提示信息</title>
-        <base target='_self'/>\n</head>\n<body leftmargin='0' topmargin='0'>\n<main class='container'><div class='modal' tabindex='-1' role='dialog' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>DedeCMS 提示信息！</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
+        <title>DedeBIZ 提示信息</title>
+        <base target='_self'/>\n</head>\n<body leftmargin='0' topmargin='0'>\n<main class='container'><div class='modal' tabindex='-1' role='dialog' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>DedeBIZ 提示信息！</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
     echo $msginfo . "\n</body>\n</html>";
 }
 
