@@ -426,7 +426,7 @@
                         `;
                     }
 
-                    if (rsp.result.core.code != 200) {
+                    if (rsp.result.core === null || rsp.result.core.code != 200) {
                         // 下面是DedeBIZ Core组件信息
                         infoStr += `
                         <tr>

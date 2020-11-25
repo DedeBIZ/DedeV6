@@ -26,7 +26,10 @@ if ($dopost == "view") {
         $client->appid = $cfg_bizcore_appid;
         $client->key = $cfg_bizcore_key;
         $data = $client->AdminPWDExists();
-        if ($data->data == "false") {
+        $data = json_decode($data->data);
+        $rs = (array)($data->result);
+
+        if ($rs["admin_pwd_exists"] == "false") {
             // 设定dedebiz admin密码
             if ($dedebiz_admin == "" || $dedebiz_admin !== $re_dedebiz_admin) {
                 echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";

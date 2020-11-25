@@ -81,7 +81,7 @@
       </tr>
       <tr>
         <td height="20" colspan="2" valign="top" bgcolor="#dee2e6">
-        首页防篡改（主页位置更改请重新启动DedeBIZ商业组件）
+          首页防篡改（主页位置更改请重新启动DedeBIZ商业组件）
         </td>
       </tr>
       <?php
@@ -90,13 +90,14 @@
         $client->appid = $cfg_bizcore_appid;
         $client->key = $cfg_bizcore_key;
         $data = $client->AdminPWDExists();
-        $rs = (array)json_decode($data->data);
+        $data = json_decode($data->data);
+        $rs = (array)($data->result);
 
         if($rs["admin_pwd_exists"] == "false") {?>
       <tr>
         <td height="20" valign="top" bgcolor="#FFFFFF">设置DedeBIZ操作密码:</td>
         <td height="20" valign="top" bgcolor="#FFFFFF">
-          <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30"> 
+          <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">
           设定后所有的DedeBIZ涉及安全操作输入当前操作密码
         </td>
       </tr>
@@ -107,12 +108,12 @@
         </td>
       </tr>
       <?php }else{ ?>
-        <tr>
-          <td height="20" valign="top" bgcolor="#FFFFFF">DedeBIZ操作密码:</td>
-          <td height="20" valign="top" bgcolor="#FFFFFF">
-            <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30"> 
-          </td>
-        </tr>
+      <tr>
+        <td height="20" valign="top" bgcolor="#FFFFFF">DedeBIZ操作密码:</td>
+        <td height="20" valign="top" bgcolor="#FFFFFF">
+          <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">
+        </td>
+      </tr>
       <?php
       }
       }?>
@@ -120,11 +121,11 @@
         <td height="20" valign="top" bgcolor="#FFFFFF">首页状态:</td>
         <td height="20" valign="top" bgcolor="#FFFFFF">
           <label><input name="lockindex" type="radio" class="np" value="unlock"
-            <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?> />
-          解锁</label>
+              <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?> />
+            解锁</label>
           <label><input name="lockindex" type="radio" value="lock" class="np"
-            <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?> />
-          锁定</label>
+              <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?> />
+            锁定</label>
         </td>
       </tr>
       <tr>
