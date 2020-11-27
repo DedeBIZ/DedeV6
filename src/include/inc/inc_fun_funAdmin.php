@@ -21,6 +21,9 @@
 function SpGetPinyin($str, $ishead = 0, $isclose = 1)
 {
     global $pinyins;
+    if ($pinyins==null) {
+        $pinyins = array();
+    }
     global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
     global $cfg_soft_lang;
     $restr = '';

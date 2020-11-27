@@ -1066,8 +1066,14 @@ class Archives
             $kaarr[] = "<a href='$key_url' target='_blank'><u>$key</u></a>";
         }
 
+        $GLOBALS['_dd_karr'] = $karr;
+        $GLOBALS['_dd_kaarr'] = $kaarr;
+
         // 这里可能会有错误
-        if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
+        if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
+            $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight8", $body);
+        } else if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
+
             $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
         } else {
             $body = @preg_replace("#(^|>)([^<]+)(?=<|$)#sUe", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
@@ -1079,11 +1085,15 @@ class Archives
     }
 } //End Archives
 
+function _highlight8($matches){
+    return _highlight($matches[2], $GLOBALS['_dd_karr'], $GLOBALS['_dd_kaarr'], $matches[1]);
+}
+
 //高亮专用, 替换多次是可能不能达到最多次
 function _highlight($string, $words, $result, $pre)
 {
     global $cfg_replace_num;
-    if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
+    if (version_compare(PHP_VERSION, '5.5.0', '>=') && version_compare(PHP_VERSION, '8.0.0', '<')) {
         $string = $string[0];
         $pre = $pre[0];
     }
