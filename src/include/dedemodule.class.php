@@ -189,15 +189,17 @@ class DedeModule
             foreach ($minfos as $k => $v) $minfos[$k] = $this->AppCode($v);
         }
 
-        // 验证模块信息
-        $pubKey = @base64url_decode($minfos['pubkey']);
-        @openssl_public_decrypt(base64url_decode($minfos['info']), $decontent, $pubKey);
-        $enInfo = (array)json_decode($decontent);
-        if (count($enInfo) == 0) {
-            return null;
-        }
-        if ($enInfo['module_name'] != $minfos['name'] || $enInfo['dev_id'] != $minfos['dev_id']) {
-            return null;
+        if (isset($minfos['pubkey'])) {
+            // 验证模块信息
+            $pubKey = @base64url_decode($minfos['pubkey']);
+            @openssl_public_decrypt(base64url_decode($minfos['info']), $decontent, $pubKey);
+            $enInfo = (array)json_decode($decontent);
+            if (count($enInfo) == 0) {
+                return null;
+            }
+            if ($enInfo['module_name'] != $minfos['name'] || $enInfo['dev_id'] != $minfos['dev_id']) {
+                return null;
+            }
         }
 
         return $minfos;

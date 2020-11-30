@@ -21,7 +21,7 @@
 class DedeAtt
 {
     var $Count = -1;
-    var $Items = ""; //属性元素的集合
+    var $Items = array(); //属性元素的集合
 
     /**
      *  //获得某个属性
@@ -95,7 +95,7 @@ class DedeAttParse
 {
     var $SourceString = "";
     var $SourceMaxSize = 1024;
-    var $CAtt = ""; //属性的数据描述类
+    var $CAtt; //属性的数据描述类
     var $CharToLow = TRUE;
 
     /**

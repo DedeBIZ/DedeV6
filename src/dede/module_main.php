@@ -79,6 +79,7 @@ function ViewDevelopoer();
   // 检验开发者信息
   $dm = new DedeModule($mdir);
   $info = $dm->GetModuleInfo($hash);
+
   if ($info == null) {
     ShowMsg("获取模块信息错误，模块文件可能被篡改", -1);
     exit;
@@ -95,6 +96,11 @@ function ViewDevelopoer();
     $offUrl = "<p>官方网址：<code>{$devInfo['offurl']}</code> <small>(复制在浏览器中打开)</small></p>";
   }
   $authAt = date("Y-m-d", $devInfo['auth_at']);
+
+  if (!isset($info['dev_id'])) {
+    $devInfo['realname'] = $devInfo['dev_name'] = $info['team']." <font color=red>未认证</font>";
+    $authAt = "0000-00-00";
+  }
 
   ShowMsg("<div class='text-left'><p>开发者名称：{$devInfo['dev_name']}</p><p>开发者全称：{$devInfo['realname']}</p><p>开发者ID：{$devInfo['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$devInfo['dev_id']}'>查看详情</a></p>$offUrl<p>认证于：{$authAt}</p></a>", "javascript:;");
   exit;
@@ -309,7 +315,7 @@ function DelModule();
   $infos = $dm->GetModuleInfo($hash);
 
   $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与你系统的编码不一致，请向开发者确认它的兼容性)</font>');
-
+  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
@@ -332,7 +338,7 @@ function DelModule();
     </tr>
     <tr>
       <td height='28' class='dtb'>开发者ID：</td>
-      <td class='dtb'>{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
+      <td class='dtb'>{$dev_id}</td>
     </tr>
     <tr>
       <td height='28' class='dtb'>发布时间：</td>
@@ -378,6 +384,7 @@ function UnInstall();
     else $v['type'] = '文件';
     $filelist .= "{$v['type']}|{$v['name']}\r\n";
   }
+  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
@@ -400,7 +407,7 @@ function UnInstall();
   </tr>
   <tr>
     <td height='28' class='dtb'>开发者ID：</td>
-    <td class='dtb'>{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
+    <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
     <td height='28' class='dtb'>发布时间：</td>
@@ -421,10 +428,10 @@ function UnInstall();
   <tr>
     <td height='28'>对于模块的文件处理方法：</td>
     <td>
-    <input type='radio' name='isreplace' value='0' checked='checked' />
-    手工删除文件，仅运行卸载程序
-   <input name='isreplace' type='radio' value='2' />
-    删除模块的所有文件
+    <label><input type='radio' name='isreplace' value='0' checked='checked' />
+    手工删除文件，仅运行卸载程序</label>
+    <label><input name='isreplace' type='radio' value='2' />
+    删除模块的所有文件</label>
    </td>
   </tr>
 </table>
@@ -515,6 +522,7 @@ function ViewOne();
   } else {
     $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
   }
+  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
   $win = new OxWindow();
   $win->Init("", "js/blank.js", "");
   $wecome_info = "模块管理";
@@ -535,7 +543,7 @@ function ViewOne();
   </tr>
   <tr>
     <td height='28' class='dtb'>开发者ID：</td>
-    <td class='dtb'>{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
+    <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
     <td height='28' class='dtb'>发布时间：</td>
