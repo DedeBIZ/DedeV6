@@ -6,9 +6,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
- 
-< !--
-	self.onError=null;
+self.onError=null;
 currentX = currentY = 0;
 whichIt = null;
 lastScrollX = 0; lastScrollY = 0;
@@ -108,4 +106,3 @@ if (IE) {
 	document.onmouseup = dropIt;
 }
 if (NS || IE) action = window.setInterval("heartBeat()", 1);
--->

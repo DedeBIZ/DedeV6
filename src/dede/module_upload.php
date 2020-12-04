@@ -59,6 +59,10 @@ if ($action == 'upload') {
             ShowMsg("对不起，你上传的文件可能不是织梦模块的标准格式文件！<br /><br /><a href='javascript:history.go(-1);'>&gt;&gt;返回重新上传&gt;&gt;</a>", "javascript:;");
             exit();
         }
+        if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
+            exit("hash check failed!");
+        }
+        
         $okfile = $mdir . '/' . $infos['hash'] . '.xml';
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);

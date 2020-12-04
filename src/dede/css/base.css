@@ -659,3 +659,7 @@ vertical-align: baseline;
 a.btn {
 	color: white!important;
 }
+
+span.page-link {
+	background-color: #DDD;
+}

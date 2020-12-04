@@ -110,7 +110,7 @@ class Tag
     var $innerText = "";       //标记之间的文本
     var $startPos = 0;         //标记起始位置
     var $endPos = 0;           //标记结束位置
-    var $cAtt = "";            //标记属性描述,即是class TagAttribute
+    var $cAtt;            //标记属性描述,即是class TagAttribute
     var $tagValue = "";        //标记的值
     var $tagID = 0;
 
@@ -596,7 +596,6 @@ class DedeTemplate
         $t = 0;
         $preTag = '';
         $tswLen = strlen($tagStartWord);
-        @$cAtt->cAttributes->items = array();
         for ($i = 0; $i < $sourceLen; $i++) {
             $ttagName = '';
 
@@ -774,7 +773,7 @@ class DedeTemplate
      *  编译单个标记
      *
      * @access    public
-     * @param     string  $cTag  标签
+     * @param     object  $cTag  标签
      * @return    string
      */
     function CompilerOneTag(&$cTag)
@@ -1183,7 +1182,7 @@ class TagAttributeParse
 {
     var $sourceString = "";
     var $sourceMaxSize = 1024;
-    var $cAttributes = array();
+    var $cAttributes;
     var $charToLow = TRUE;
     function SetSource($str = "")
     {

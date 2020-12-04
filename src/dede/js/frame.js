@@ -1,4 +1,3 @@
-< !--
 var $ = jQuery;
 var thespeed = 5;
 var navIE = document.all && navigator.userAgent.indexOf("Firefox") == -1;
@@ -145,8 +144,6 @@ function initializeIT() {
 	})
 })(jQuery);
 */
-
--->
 
 
 

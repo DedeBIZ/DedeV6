@@ -1,4 +1,3 @@
-<!--
 var BROWSER = {};
 var USERAGENT = navigator.userAgent.toLowerCase();
 browserVersion({'ie':'msie','firefox':'','chrome':'','opera':'','safari':'','maxthon':'','mozilla':'','webkit':''});
@@ -22,5 +21,3 @@ function browserVersion(types) {
 	}
 	BROWSER.other = other;
 }
-
--->

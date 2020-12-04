@@ -40,7 +40,7 @@
       searchKeywords = searchKeywords.replace(/^cfg_/, "");
       var myajax = new DedeAjax($Obj('_search'));
       myajax.SendGet('sys_info.php?dopost=search&keywords=' + searchKeywords)
-      $Obj('_searchback').innerHTML = '<input name="searchbackBtn" type="button" value="返回" id="searchbackBtn" onclick="backSearch()"/>'
+      $Obj('_searchback').innerHTML = '<button class="btn btn-secondary btn-sm" name="searchbackBtn" type="button" id="searchbackBtn" onclick="backSearch()">返回</button>'
       $Obj('_mainsearch').innerHTML = '';
       searchconfig = true;
     }
