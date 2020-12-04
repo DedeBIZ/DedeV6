@@ -50,6 +50,7 @@
 <div id='postloader' class='waitpage'></div>
 <form action="index.php" method="post" name="form1">
 <input type="hidden" name="step" value="4" />
+<input type="hidden" name="dblang" value="utf8" />
 <div class="top">
     <div class="top-logo">
         
@@ -120,27 +121,6 @@
                 <td>
                     <div style='float:left;margin-right:3px;'><input name="dbname" id="dbname" type="text" value="<?php echo $dfDbname; ?>" class="input-txt" onChange="HaveDB()" /></div>
 					<div style='float:left' id='havedbsta'></div>
-                </td>
-            </tr>
-            <tr>
-                <td class="onetd"><strong>数据库编码：</strong></td>
-                <td>
-                        <?php
-                        if($s_lang=='utf-8')
-                        {
-                        ?>
-                        <input type="radio" name="dblang" id="dblang_utf8" value="utf8" checked="checked" /><label for="dblang_latin1">UTF8</label>
-                        <?php
-                        }
-                        else
-                        {
-                        ?>
-                        <input type="radio" name="dblang" id="dblang_gbk" value="gbk" checked="checked" /><label for="dblang_gbk">GBK</label>
-                        <input type="radio" name="dblang" id="dblang_latin1" value="latin1" /><label for="dblang_latin1">LATIN1</label>
-                        <?php
-                        }
-                        ?>
-                        <small>仅对4.1+以上版本的MySql选择</small>
                 </td>
             </tr>
         </table>

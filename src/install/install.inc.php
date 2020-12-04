@@ -9,12 +9,10 @@
  */
 function RunMagicQuotes(&$str)
 {
-    if (!get_magic_quotes_gpc()) {
-        if (is_array($str))
-            foreach ($str as $key => $val) $str[$key] = RunMagicQuotes($val);
-        else
-            $str = addslashes($str);
-    }
+    if (is_array($str))
+    foreach ($str as $key => $val) $str[$key] = RunMagicQuotes($val);
+    else
+    $str = addslashes($str);
     return $str;
 }
 

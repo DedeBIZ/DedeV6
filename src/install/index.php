@@ -10,8 +10,7 @@
 //error_reporting(E_ALL);
 error_reporting(E_ALL || ~E_NOTICE);
 
-$verMsg = 'V6 UTF8';
-$s_lang = 'utf-8';
+$verMsg = 'V6';
 $dfDbname = 'dedecmsv6utf8';
 $errmsg = '';
 
@@ -22,7 +21,7 @@ $moduleCacheFile = dirname(__FILE__).'/modules.tmp.inc';
 define('DEDEINC',dirname(__FILE__).'/../include');
 define('DEDEDATA',dirname(__FILE__).'/../data');
 define('DEDEROOT',preg_replace("#[\\\\\/]install#", '', dirname(__FILE__)));
-header("Content-Type: text/html; charset={$s_lang}");
+header("Content-Type: text/html; charset=utf-8");
 
 require_once(DEDEROOT.'/install/install.inc.php');
 require_once(DEDEINC.'/zip.class.php');
