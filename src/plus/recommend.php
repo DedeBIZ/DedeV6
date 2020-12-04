@@ -25,36 +25,26 @@ if (empty($aid)) {
 
 //读取文档信息
 if ($action == '') {
-    if ($type == 'sys') {
-        //读取文档信息
-        $arcRow = GetOneArchive($aid);
-        if ($arcRow['aid'] == '') {
-            ShowMsg("无法把未知文档推荐给好友!", "-1");
-            exit();
-        }
-        extract($arcRow, EXTR_OVERWRITE);
-    } else {
-        $arcRow = $dsql->GetOne("SELECT s.*,t.* FROM `#@__member_stow` AS s LEFT JOIN `#@__member_stowtype` AS t ON s.type=t.stowname WHERE s.aid='$aid' AND s.type='$type'");
-        if (!is_array($arcRow)) {
-            ShowMsg("无法把未知文档推荐给好友!", "-1");
-            exit();
-        }
-        $arcRow['arcurl'] = $arcRow['indexurl'] . "=" . $arcRow['aid'];
-        extract($arcRow, EXTR_OVERWRITE);
+    //读取文档信息
+    $arcRow = GetOneArchive($aid);
+    if ($arcRow['aid'] == '') {
+        ShowMsg("无法把未知文档推荐给好友!", "-1");
+        exit();
     }
+    extract($arcRow, EXTR_OVERWRITE);
 }
 
 //发送推荐信息
 else if ($action == 'send') {
     if (!CheckEmail($email)) {
-        echo "<script>alert('Email格式不正确!');history.go(-1);</script>";
+        ShowMsg("Email格式不正确", -1);
         exit();
     }
     $mailbody = '';
-    $msg = dede_htmlspecialchars($msg);
+    $msg = RemoveXSS(dede_htmlspecialchars($msg));
     $mailtitle = "你的好友给你推荐了一篇文章";
     $mailbody .= "$msg \r\n\r\n";
-    $mailbody .= "Power by https://www.dedebiz.com DedeCMSV6内容管理系统！";
+    $mailbody .= "Powered by https://www.dedebiz.com DedeCMSV6内容管理系统！";
 
     $headers = "From: " . $cfg_adminemail . "\r\nReply-To: " . $cfg_adminemail;
 

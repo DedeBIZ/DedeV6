@@ -354,7 +354,6 @@ function CkRemote() {
 
 //载入指定宽高的AJAX窗体
 function LoadQuickDiv(e, surl, oname, w, h) {
-	console.log(e);
 	if ($Nav() == 'IE') {
 		if (window.event) {
 			var posLeft = window.event.clientX - 20;

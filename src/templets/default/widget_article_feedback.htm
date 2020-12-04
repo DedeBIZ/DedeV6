@@ -233,7 +233,6 @@
 		$.post("{dede:field name='phpurl'/}/feedback.php", good, function (data) {
 			let result = JSON.parse(data);
 			$(`#feedbackGood${fid}`).html(result.data);
-			console.log(result);
 		})
 	}
 </script>
