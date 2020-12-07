@@ -105,21 +105,6 @@ function __save(){  }
     //处理上传的缩略图
     if (empty($ddisremote)) $ddisremote = 0;
     $litpic = GetDDImage('none', $picname, $ddisremote);
-    // 处理新的缩略图上传
-    if ($litpic_b64 != "") {
-        $data = explode(',', $litpic_b64);
-        $ntime = time();
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
-        CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-        $fullUrl = $fullUrl . ".png";
-
-        file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
-
-        // 加水印
-        WaterImg($cfg_basedir . $fullUrl, 'up');
-        $litpic = $fullUrl;
-    }
 
     // 处理新的缩略图上传
     if ($litpic_b64 != "") {
@@ -135,13 +120,6 @@ function __save(){  }
         // 加水印
         WaterImg($cfg_basedir . $fullUrl, 'up');
         $litpic = $fullUrl;
-    }
-
-    //使用第一张图作为缩略图
-    if ($ddisfirst == 1 && $litpic == '') {
-        if (isset($imgurl1)) {
-            $litpic = GetDDImage('ddfirst', $imgurl1, $isrm);
-        }
     }
 
     //生成文档ID
@@ -251,6 +229,9 @@ function __save(){  }
             $v = $fullUrl;
             $imginfo =  !empty($album['txt']) ? $album['txt'] : '';
             $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $v {/dede:img}\r\n";
+            if ($ddisfirst == 1 && $litpic == '' && !empty($fullUrl)) {
+                $litpic = $fullUrl;
+            }
         }
     }
 
