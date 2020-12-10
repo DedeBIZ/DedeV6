@@ -428,9 +428,9 @@ if($cfg_need_typeid2=='Y') {
             <tr>
               <td width="90">&nbsp;附加选项：</td>
               <td>
-                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" checked>
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?>>
                 下载远程图片和资源 </label>
-                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" checked>
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>>
                 提取第一个图片为缩略图 </label></td>
             </tr>
           </table>
