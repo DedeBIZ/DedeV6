@@ -72,6 +72,10 @@ if (!empty($noeditor)) {
                 window.opener.CKEDITOR.tools.callFunction(funcNum, reimg);
 
             }
+            if (window.opener.CKEDITOR.instances.<?php echo $f ?>) {
+                let addonHTML = `<a href='${reimg}' target='_blank'><img src='<?php echo $cfg_cmspath ?>/static/img/addon.gif' border='0' />附件：${reimg}</a>`;
+                window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
+            }
             window.close();
         }
     </SCRIPT>
