@@ -11,19 +11,20 @@ if(!defined('DEDEINC')) exit("Request Error!");
 function dede_autoloader($classname)
 {
     $classname = preg_replace("/[^0-9a-z_]/i", '', $classname);
+    $classname = strtolower($classname);
     if( class_exists ( $classname ) )
     {
         return TRUE;
     }
-    $classfile = $classname.'.php';
+    if (in_array($classname, array("archives","freelist","listview","partview","rssview",
+    "searchview","sglistview","sgpage","specview","taglist"))) {
+        $classname = "arc.".$classname;
+    }
+    
     $libclassfile = $classname.'.class.php';
     if ( is_file ( DEDEINC.'/'.$libclassfile ) )
     {
         require DEDEINC.'/'.$libclassfile;
-    }
-    else if( is_file ( DEDEMODEL.'/'.$classfile ) )
-    {
-        require DEDEMODEL.'/'.$classfile;
     }
     else
     {

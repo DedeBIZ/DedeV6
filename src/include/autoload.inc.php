@@ -15,15 +15,10 @@ function __autoload($classname)
     {
         return TRUE;
     }
-    $classfile = $classname.'.php';
     $libclassfile = $classname.'.class.php';
     if ( is_file ( DEDEINC.'/'.$libclassfile ) )
     {
         require DEDEINC.'/'.$libclassfile;
-    }
-    else if( is_file ( DEDEMODEL.'/'.$classfile ) )
-    {
-        require DEDEMODEL.'/'.$classfile;
     }
     else
     {

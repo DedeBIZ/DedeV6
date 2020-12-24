@@ -99,7 +99,7 @@ class PartView
      *  指定typelink对象给当前类实例
      *
      * @access    public
-     * @param     string  $typelink  栏目链接
+     * @param     object  $typelink  栏目链接
      * @return    string
      */
     function SetTypeLink(&$typelink)

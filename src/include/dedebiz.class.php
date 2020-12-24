@@ -93,6 +93,24 @@ class DedeBizClient
         return $this->request($req);
     }
 
+    // 发送邮件
+    function MailSend($to, $subject, $title, $content="", $quote="", $link_url="", $link_title="")
+    {
+        $req = array(
+            "method" => "main_send",
+            "parms" => array(
+                "to" => $to,
+                "subject" => $subject,
+                "title" => $title,
+                "content" => $content,
+                "quote" => $quote,
+                "link_url" => $link_url,
+                "link_title" => $link_title,
+            )
+        );
+        return $this->request($req);
+    }
+
     // 获取一个管理员信息
     function AdminGetOne()
     {
@@ -250,6 +268,14 @@ class DedeBizClient
     // ！！！一次页面操作后一定记得要关闭连接，否则会占用系统资源
     function Close()
     {
-        socket_close($this->socket);
+        // 这里避免重复释放
+        if (strtolower(get_resource_type($this->socket)) === "socket") {
+            socket_close($this->socket);
+        }
+    }
+
+    function __destruct()
+    {
+        $this->Close();
     }
 }

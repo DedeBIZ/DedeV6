@@ -21,18 +21,18 @@ if ($dopost == '') {
     $addsql = '';
     if (!empty($oid)) {
         if ($do == 'ok') {
-            $dsql->ExecuteNoneQuery("UPDATE #@__shops_orders SET `state`='4' WHERE oid='$oid'");
+            $dsql->ExecuteNoneQuery("UPDATE `#@__shops_orders` SET `state`='4' WHERE oid='$oid'");
             ShowMsg("已确认订单！", 'shops_products.php?oid=' . $oid);
             exit();
         }
 
-        $row = $dsql->GetOne("SELECT * FROM #@__shops_userinfo WHERE userid='" . $cfg_ml->M_ID . "' AND oid='$oid'");
+        $row = $dsql->GetOne("SELECT * FROM `#@__shops_userinfo` WHERE userid='" . $cfg_ml->M_ID . "' AND oid='$oid'");
         if (!isset($row['oid'])) {
             ShowMsg("订单不存在！", -1);
             exit();
         }
         $row['des'] = stripslashes($row['des']);
-        $rs = $dsql->GetOne("SELECT * FROM #@__shops_orders WHERE userid='" . $cfg_ml->M_ID . "' AND oid='$oid'");
+        $rs = $dsql->GetOne("SELECT * FROM `#@__shops_orders` WHERE userid='" . $cfg_ml->M_ID . "' AND oid='$oid'");
         $row['state'] = $rs['state'];
         $row['stime'] = $rs['stime'];
         $row['cartcount'] = $rs['cartcount'];
@@ -40,13 +40,13 @@ if ($dopost == '') {
         $row['uprice'] = $rs['price'] / $rs['cartcount'];
         $row['dprice'] = $rs['dprice'];
         $row['priceCount'] = $rs['priceCount'];
-        $rs = $dsql->GetOne("SELECT `dname` FROM #@__shops_delivery WHERE pid='$rs[pid]' LIMIT 0,1");
+        $rs = $dsql->GetOne("SELECT `dname` FROM `#@__shops_delivery` WHERE pid='$rs[pid]' LIMIT 0,1");
         $row['dname'] = $rs['dname'];
         unset($rs);
         $addsql = " AND oid='" . $oid . "'";
     }
 
-    $sql = "SELECT * FROM #@__shops_products WHERE userid='" . $cfg_ml->M_ID . "' $addsql ORDER BY aid ASC";
+    $sql = "SELECT * FROM `#@__shops_products` WHERE userid='" . $cfg_ml->M_ID . "' $addsql ORDER BY aid ASC";
     $dl = new DataListCP();
     $dl->pageSize = 20;
     if (!empty($oid)) $dl->SetParameter('oid', $oid);
@@ -81,8 +81,8 @@ if ($dopost == '') {
 function GetSta($sta, $oid)
 {
     global $dsql;
-    $row = $dsql->GetOne("SELECT paytype FROM #@__shops_orders WHERE oid='$oid'");
-    $payname = $dsql->GetOne("SELECT name,fee FROM #@__payment WHERE id='{$row['paytype']}'");
+    $row = $dsql->GetOne("SELECT paytype FROM `#@__shops_orders` WHERE oid='$oid'");
+    $payname = $dsql->GetOne("SELECT name,fee FROM `#@__payment` WHERE id='{$row['paytype']}'");
     if ($sta == 0) {
         return $payname['name'] . " 手续费:" . $payname['fee'] . "元";
     } elseif ($sta == 1) {
@@ -103,6 +103,6 @@ function GetSta($sta, $oid)
 function carTime($oid)
 {
     global $dsql;
-    $row = $dsql->GetOne("SELECT stime FROM #@__shops_orders WHERE oid='$oid'");
+    $row = $dsql->GetOne("SELECT stime FROM `#@__shops_orders` WHERE oid='$oid'");
     return Mydate('Y-m-d h:i:s', $row['stime']);
 }

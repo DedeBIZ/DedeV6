@@ -283,7 +283,7 @@ function ResetVdValue()
 
 function IndexSub($idx, $num)
 {
-    return intval($idx - $num) == 0 ? '0 ' : intval($idx - $num);
+    return intval($idx) - intval($num) == 0 ? '0 ' : intval($idx) - intval($num);
 }
 
 // 用来返回index的active

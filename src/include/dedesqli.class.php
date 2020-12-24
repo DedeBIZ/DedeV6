@@ -229,7 +229,11 @@ class DedeSqli
         }
         if (DEBUG_LEVEL === TRUE) {
             $queryTime = ExecTime() - $t1;
-            echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：" . $this->queryString . "，执行时间：<b>{$queryTime}</b></div>\r\n";
+            if (PHP_SAPI === 'cli') {
+                echo "执行SQL：" . $this->queryString . "，执行时间：{$queryTime}\r\n";
+            } else {
+                echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：" . $this->queryString . "，执行时间：<b>{$queryTime}</b></div>\r\n";
+            }
         }
 
         return $rs;
@@ -267,7 +271,11 @@ class DedeSqli
         }
         if (DEBUG_LEVEL === TRUE) {
             $queryTime = ExecTime() - $t1;
-            echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：" . $this->queryString . "，执行时间：<b>{$queryTime}</b></div>\r\n";
+            if (PHP_SAPI === 'cli') {
+                echo "执行SQL：" . $this->queryString . "，执行时间：{$queryTime}\r\n";
+            } else {
+                echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：" . $this->queryString . "，执行时间：<b>{$queryTime}</b></div>\r\n";
+            }
         }
 
         return mysqli_affected_rows($this->linkID);
@@ -320,7 +328,11 @@ class DedeSqli
         }
         if (DEBUG_LEVEL === TRUE) {
             $queryTime = ExecTime() - $t1;
-            echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：" . $this->queryString . "，执行时间：<b>{$queryTime}</b></div>\r\n";
+            if (PHP_SAPI === 'cli') {
+                echo "执行SQL：" . $this->queryString . "，执行时间：{$queryTime}\r\n";
+            } else {
+                echo "<div style='width:98%;margin:1rem auto;color: #155724;background-color: #d4edda;border-color: #c3e6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>执行SQL：" . $this->queryString . "，执行时间：<b>{$queryTime}</b></div>\r\n";
+            }
         }
 
         if ($this->result[$id] === FALSE) {

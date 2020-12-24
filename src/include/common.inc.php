@@ -26,11 +26,6 @@ define('DEDEMEMBER', DEDEROOT . '/member');
 define('DEDETEMPLATE', DEDEROOT . '/templets');
 
 // ------------------------------------------------------------------------
-define('DEDEMODEL', './model');
-define('DEDECONTROL', './control');
-define('DEDEAPPTPL', './templates');
-
-// ------------------------------------------------------------------------
 define('DEDEBIZURL', "https://www.dedebiz.com"); // Dede商业支持
 define('DEDEVER', 6); // 当前系统大版本
 define('DEDEPUB', '-----BEGIN PUBLIC KEY-----
@@ -177,7 +172,12 @@ if (PHP_VERSION > '5.1') {
 $cfg_isUrlOpen = @ini_get("allow_url_fopen");
 
 //用户访问的网站host
-$cfg_clihost = 'http://' . $_SERVER['HTTP_HOST'];
+if (PHP_SAPI === 'cli') {
+    $cfg_clihost = 'https://www.dedebiz.com';
+} else {
+    $cfg_clihost = 'http://' . $_SERVER['HTTP_HOST'];
+}
+
 
 //站点根目录
 $cfg_basedir = preg_replace('#' . $cfg_cmspath . '\/include$#i', '', DEDEINC);
@@ -237,7 +237,7 @@ $cfg_other_medias = $cfg_medias_dir . '/media';
 
 //软件摘要信息，****请不要删除本项**** 否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
-$cfg_version_detail = '6.0.2'; // 详细版本号
+$cfg_version_detail = '6.0.1'; // 详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 
@@ -296,7 +296,10 @@ if ($cfg_memcache_enable == 'Y') {
 }
 
 if (!isset($cfg_NotPrintHead)) {
-    header("Content-Type: text/html; charset={$cfg_soft_lang}");
+    if (PHP_SAPI != 'cli') {
+        header("Content-Type: text/html; charset={$cfg_soft_lang}");
+    }
+    
 }
 
 //自动加载类库处理

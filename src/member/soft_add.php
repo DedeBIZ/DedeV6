@@ -139,6 +139,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     for ($i = 2; $i <= 12; $i++) {
         if (!empty(${'softurl' . $i})) {
             $servermsg = str_replace("'", "", stripslashes(${'servermsg' . $i}));
+            $servermsg = str_replace(array("{dede:", "{/dede:", "}"), "#", $servermsg);
             $softurl = stripslashes(${'softurl' . $i});
             $softurl = str_replace(array("{dede:", "{/dede:", "}"), "#", $softurl);
             if ($servermsg == '') {

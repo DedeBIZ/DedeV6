@@ -26,7 +26,7 @@ if (!isset($dopost)) $dopost = '';
 function GetSta($sta, $oid)
 {
     global $dsql;
-    $row = $dsql->GetOne("SELECT p.name FROM #@__shops_orders AS s LEFT JOIN #@__payment AS p ON s.paytype=p.id WHERE s.oid='$oid'");
+    $row = $dsql->GetOne("SELECT p.name FROM `#@__shops_orders` AS s LEFT JOIN `#@__payment` AS p ON s.paytype=p.id WHERE s.oid='$oid'");
     if ($sta == 0) {
         return  '未付款(' . $row['name'] . ') < <a href="../plus/carbuyaction.php?dopost=memclickout&oid=' . $oid . '" target="_blank">去付款</a>';
     } else if ($sta == 1) {
@@ -38,7 +38,7 @@ function GetSta($sta, $oid)
     }
 }
 if ($dopost == '') {
-    $sql = "SELECT * FROM #@__shops_orders WHERE userid='" . $cfg_ml->M_ID . "' ORDER BY stime DESC";
+    $sql = "SELECT * FROM `#@__shops_orders` WHERE userid='" . $cfg_ml->M_ID . "' ORDER BY stime DESC";
     $dl = new DataListCP();
     $dl->pageSize = 20;
     //这两句的顺序不能更换

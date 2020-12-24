@@ -24,7 +24,7 @@ if (!isset($dopost)) {
 }
 //检查用户是否被禁言
 CheckNotAllow();
-$state = (empty($state)) ? 0 : intval($state);
+$state = empty($state) ? 0 : intval($state);
 
 if ($dopost == 'read') {
     $sql = "SELECT * FROM `#@__member_friends` WHERE  mid='{$cfg_ml->M_ID}' AND ftype!='-1' ORDER BY addtime DESC LIMIT 20";
@@ -60,82 +60,9 @@ if ($dopost == 'read') {
     exit();
 }
 /*-----------------------
-function __savesend(){  }
-----------------------*/ else if ($dopost == 'savesend') {
-    $svali = GetCkVdValue();
-    if (preg_match("/5/", $safe_gdopen)) {
-        if (strtolower($vdcode) != $svali || $svali == '') {
-            ResetVdValue();
-            ShowMsg('验证码错误！', '-1');
-            exit();
-        }
-    }
-    $faqkey = isset($faqkey) && is_numeric($faqkey) ? $faqkey : 0;
-    if ($safe_faq_msg == 1) {
-        if ($safefaqs[$faqkey]['answer'] != $safeanswer || $safeanswer == '') {
-            ShowMsg('验证问题答案错误', '-1');
-            exit();
-        }
-    }
-    if ($subject == '') {
-        ShowMsg("请填写信息标题!", "-1");
-        exit();
-    }
-    $msg = CheckUserID($msgtoid, "用户名", false);
-    if ($msg != 'ok') {
-        ShowMsg($msg, "-1");
-        exit();
-    }
-    $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE userid LIKE '$msgtoid' ");
-    if (!is_array($row)) {
-        ShowMsg("你指定的用户不存在,不能发送信息!", "-1");
-        exit();
-    }
-    $subject = cn_substrR(HtmlReplace($subject, 1), 60);
-    $message = cn_substrR(HtmlReplace($message, 0), 1024);
-    $sendtime = $writetime = time();
-
-    //发给收件人(收件人可管理)
-    $inquery1 = "INSERT INTO `#@__member_pms` (`floginid`,`fromid`,`toid`,`tologinid`,`folder`,`subject`,`sendtime`,`writetime`,`hasview`,`isadmin`,`message`)
-      VALUES ('{$cfg_ml->M_LoginID}','{$cfg_ml->M_ID}','{$row['mid']}','{$row['userid']}','inbox','$subject','$sendtime','$writetime','0','0','$message'); ";
-
-    //保留到自己的发件箱(自己可管理)
-    $inquery2 = "INSERT INTO `#@__member_pms` (`floginid`,`fromid`,`toid`,`tologinid`,`folder`,`subject`,`sendtime`,`writetime`,`hasview`,`isadmin`,`message`)
-      VALUES ('{$cfg_ml->M_LoginID}','{$cfg_ml->M_ID}','{$row['mid']}','{$row['userid']}','outbox','$subject','$sendtime','$writetime','0','0','$message'); ";
-    $dsql->ExecuteNoneQuery($inquery1);
-    $dsql->ExecuteNoneQuery($inquery2);
-    ShowMsg("成功发送一条信息!", "pm.php?dopost=outbox");
-    exit();
-}
-/*-----------------------
-function __del(){  }
-----------------------*/ else if ($dopost == 'del') {
-    $ids = preg_replace("#[^0-9,]#", "", $ids);
-    if ($folder == 'inbox') {
-        $boxsql = "SELECT * FROM `#@__member_pms` WHERE id IN($ids) AND folder LIKE 'inbox' AND toid='{$cfg_ml->M_ID}'";
-        $dsql->SetQuery($boxsql);
-        $dsql->Execute();
-        $query = '';
-        while ($row = $dsql->GetArray()) {
-            if ($row && $row['isadmin'] == 1) {
-                $query = "Update `#@__member_pms` set writetime='0' WHERE id='{$row['id']}' AND folder='inbox' AND toid='{$cfg_ml->M_ID}' AND isadmin='1';";
-                $dsql->ExecuteNoneQuery($query);
-            } else {
-                $query = "DELETE FROM `#@__member_pms` WHERE id in($ids) AND toid='{$cfg_ml->M_ID}' AND folder LIKE 'inbox'";
-            }
-        }
-    } else if ($folder == 'outbox') {
-        $query = "Delete From `#@__member_pms` WHERE id in($ids) AND fromid='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' ";
-    } else {
-        $query = "Delete From `#@__member_pms` WHERE id in($ids) AND fromid='{$cfg_ml->M_ID}' Or toid='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' Or (folder LIKE 'inbox' AND hasview='0')";
-    }
-    $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功删除指定的消息!", "pm.php?folder=" . $folder);
-    exit();
-}
-/*-----------------------
 function __man(){  }
-----------------------*/ else {
+----------------------*/ 
+else {
     if (!isset($folder)) {
         $folder = 'inbox';
     }

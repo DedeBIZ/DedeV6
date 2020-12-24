@@ -287,6 +287,9 @@ class ListView
             $makeFile = preg_replace("/\/{1,}/", "/", $makeFile);
             $murl = $this->GetTrueUrl($murl);
             $this->dtp->SaveTo($makeFile);
+            if (PHP_SAPI === 'cli') {
+                DedeCli::showProgress(ceil(($this->PageNo / ($endpage-1)) * 100), 100);
+            }
         }
         if ($startpage == 1) {
             //如果列表启用封面文件，复制这个文件第一页

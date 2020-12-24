@@ -47,15 +47,22 @@ else if ($action == 'send') {
     $mailbody .= "Powered by https://www.dedebiz.com DedeCMSV6内容管理系统！";
 
     $headers = "From: " . $cfg_adminemail . "\r\nReply-To: " . $cfg_adminemail;
-
-    if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server)) {
-        $mailtype = 'TXT';
-        require_once(DEDEINC . '/mail.class.php');
-        $smtp = new smtp($cfg_smtp_server, $cfg_smtp_port, true, $cfg_smtp_usermail, $cfg_smtp_password);
-        $smtp->debug = false;
-        $smtp->sendmail($email, $cfg_webname, $cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
+    if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+        $client->appid = $cfg_bizcore_appid;
+        $client->key = $cfg_bizcore_key;
+        $client->MailSend($email,$mailtitle,$mailtitle,$mailbody);
+        $client->Close();
     } else {
-        @mail($email, $mailtitle, $mailbody, $headers);
+        if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server)) {
+            $mailtype = 'TXT';
+            require_once(DEDEINC . '/mail.class.php');
+            $smtp = new smtp($cfg_smtp_server, $cfg_smtp_port, true, $cfg_smtp_usermail, $cfg_smtp_password);
+            $smtp->debug = false;
+            $smtp->sendmail($email, $cfg_webname, $cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
+        } else {
+            @mail($email, $mailtitle, $mailbody, $headers);
+        }
     }
 
     ShowMsg("成功推荐一篇文章!", $arcurl);

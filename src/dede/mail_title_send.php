@@ -7,20 +7,29 @@ if($dopost=="send"){
 	//邮件发送函数
 	function sendmail($email, $mailtitle, $mailbody)
 	{
-		global $cfg_sendmail_bysmtp, $cfg_smtp_server, $cfg_smtp_port, $cfg_smtp_usermail, $cfg_smtp_user, $cfg_smtp_password, $cfg_adminemail,$cfg_webname;
-		if($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server))
-		{
-			$mailtype = 'HTML';
-			require_once(DEDEINC.'/mail.class.php');
-			$smtp = new smtp($cfg_smtp_server,$cfg_smtp_port,true,$cfg_smtp_usermail,$cfg_smtp_password);
-			$smtp->debug = false;
-			if(!$smtp->smtp_sockopen($cfg_smtp_server)){
-			  ShowMsg('邮件发送失败,请联系管理员','-1');
-		    exit();
-		  }
-			$smtp->sendmail($email,$cfg_webname,$cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
-		}else{
-			@mail($email, $mailtitle, $mailbody, $headers);
+		global $cfg_sendmail_bysmtp, $cfg_smtp_server, $cfg_smtp_port, $cfg_smtp_usermail,  $cfg_smtp_password, $cfg_webname;
+		global $cfg_bizcore_appid,$cfg_bizcore_key,$cfg_bizcore_hostname,$cfg_bizcore_port;
+		if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+			$client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+			$client->appid = $cfg_bizcore_appid;
+			$client->key = $cfg_bizcore_key;
+			$client->MailSend($email,$mailtitle,$mailtitle,$mailbody);
+			$client->Close();
+		} else {
+			if($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server))
+			{
+				$mailtype = 'HTML';
+				require_once(DEDEINC.'/mail.class.php');
+				$smtp = new smtp($cfg_smtp_server,$cfg_smtp_port,true,$cfg_smtp_usermail,$cfg_smtp_password);
+				$smtp->debug = false;
+				if(!$smtp->smtp_sockopen($cfg_smtp_server)){
+					ShowMsg('邮件发送失败,请联系管理员','-1');
+					exit();
+				}
+				$smtp->sendmail($email,$cfg_webname,$cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
+			}else{
+				@mail($email, $mailtitle, $mailbody, $headers);
+			}
 		}
 	}
 	
@@ -44,7 +53,7 @@ if($dopost=="send"){
 	
 	$sendtime = time();
 	$inquery = "UPDATE `#@__mail_title` SET count=count+1,sendtime='$sendtime',state='1' WHERE id=$id";
-  if($dsql->ExecuteNoneQuery($inquery)){
+  	if($dsql->ExecuteNoneQuery($inquery)){
 		ShowMsg('邮件已成功发送','mail_title_send.php');
 		exit();
 	}
@@ -72,5 +81,3 @@ if($dopost=="send"){
 	$dlist->SetSource($sql);
 	$dlist->display();
 }
-
-?>

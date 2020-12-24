@@ -165,6 +165,7 @@ function _SaveArticle(){  }
     for ($i = 1; $i <= 9; $i++) {
         if (!empty(${'softurl' . $i})) {
             $servermsg = str_replace("'", '', stripslashes(${'servermsg' . $i}));
+            $servermsg = str_replace(array("{dede:", "{/dede:", "}"), "#", $servermsg);
             $softurl = stripslashes(${'softurl' . $i});
             $softurl = str_replace(array("{dede:", "{/dede:", "}"), "#", $softurl);
             if ($servermsg == '') {

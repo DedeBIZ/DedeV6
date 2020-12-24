@@ -78,6 +78,9 @@ while ($channel = $dsql->GetArray('addmod')) {
                     <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_edtitem) && $_menu_edtitem === 'face') echo ' active';?>">
                         <a href="edit_face.php">头像设置</a>
                     </li>
+                    <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_edtitem) && $_menu_edtitem === 'email') echo ' active';?>">
+                        <a href="edit_email.php">验证邮箱</a>
+                    </li>
                 </ul>
             </div>
         </li>

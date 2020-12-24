@@ -64,31 +64,7 @@ if ($step == 1) {
         }
 
         $uname = HtmlReplace($uname, 1);
-        // //用户笔名重复检测
-        // if($cfg_mb_wnameone=='N')
-        // {
-        //     $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE uname LIKE '$uname' ");
-        //     if(is_array($row))
-        //     {
-        //         ShowMsg('用户笔名或公司名称不能重复！', '-1');
-        //         exit();
-        //     }
-        // }
-        // if(!CheckEmail($email))
-        // {
-        //     ShowMsg('Email格式不正确！', '-1');
-        //     exit();
-        // }
-
-        // if($cfg_md_mailtest=='Y')
-        // {
-        //     $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE email LIKE '$email' ");
-        //     if(is_array($row))
-        //     {
-        //         ShowMsg('你使用的Email已经被另一帐号注册，请使其它帐号！', '-1');
-        //         exit();
-        //     }
-        // }
+        $userid = HtmlReplace($userid, 1);
 
         //检测用户名是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
@@ -96,18 +72,6 @@ if ($step == 1) {
             ShowMsg("你指定的用户名 {$userid} 已存在，请使用别的用户名！", "-1");
             exit();
         }
-        // if($safequestion==0)
-        // {
-        //     $safeanswer = '';
-        // }
-        // else
-        // {
-        //     if(strlen($safeanswer)>30)
-        //     {
-        //         ShowMsg('你的新安全问题的答案太长了，请控制在30字节以内！', '-1');
-        //         exit();
-        //     }
-        // }
 
         //会员的默认金币
         $dfscores = 0;
@@ -153,7 +117,7 @@ if ($step == 1) {
             $dsql->ExecuteNoneQuery($spacequery);
 
             //写入其它默认数据
-            $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES('$mid','织梦内容管理系统','https://www.dedebiz.com'); ");
+            $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES('$mid','DedeBIZ','https://www.dedebiz.com'); ");
 
             //----------------------------------------------
             //模拟登录

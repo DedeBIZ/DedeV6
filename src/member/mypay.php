@@ -18,7 +18,7 @@ setcookie('ENV_GOBACK_URL', GetCurUrl(), time() + 3600, '/');
 if (!isset($dopost)) $dopost = '';
 
 if ($dopost == '') {
-    $query = "Select * From `#@__member_operation` where mid='" . $cfg_ml->M_ID . "' And product='archive' order by aid desc";
+    $query = "SELECT * FROM `#@__member_operation` WHERE mid='" . $cfg_ml->M_ID . "' And product='archive' order by aid desc";
     $dlist = new DataListCP();
     $dlist->pageSize = 20;
     $dlist->SetTemplate(DEDEMEMBER . '/templets/mypay.htm');
@@ -26,7 +26,7 @@ if ($dopost == '') {
     $dlist->Display();
 } elseif ($dopost == 'del') {
     $ids = preg_replace("#[^0-9,]#", "", $ids);
-    $query = "Delete From `#@__member_operation` where aid in($ids) And mid='{$cfg_ml->M_ID}' And product='archive'";
+    $query = "DELETE FROM `#@__member_operation` WHERE aid in($ids) And mid='{$cfg_ml->M_ID}' And product='archive'";
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("成功删除指定的交易记录!", "mypay.php");
     exit();

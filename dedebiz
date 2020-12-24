@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
 /**
- * 一个开发工具
+ * 命令行工具
  *
- * @version        2019年6月5日 tianya $
+ * @version        2020年12月11日 tianya $
  * @package        DedeBIZ.Command
  * @copyright      Copyright (c) 2020, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -16,8 +16,48 @@ chdir($workDir);
 if (substr(php_sapi_name(), 0, 3) === 'cgi') {
 	die("DedeCMSV6:needs php-cli to run\n\n");
 }
+$helpStr = "
+NAME:
+	DedeBIZ Cli Tools
+USAGE:
+	php ./dedebiz command [arguments...]
+COMMANDS:
+	serv,s Run cli web server for DedeCMSV6
+	make,m Make DedeCMSV6 HTML
+	update,u Update to latest system
+	help,h Shows a list of commands or help
+WEBSITE:
+	https://www.dedebiz.com/help/
+";
 
-if (count($argv) > 1 && $argv[1] == "serv") {
+// 将选项转化为SQL IN参数
+function Option2SQLin($str = "")
+{
+	$str = preg_replace("#[^0-9-,]#", "", $str);
+	$strs = explode(",", $str);
+	foreach ($strs as $key => $si) {
+		if (preg_match("#-#", $si)) {
+			$tstart = 0;
+			$tend = 0;
+			$tss = explode("-", $si);
+			if (intval($tss[0]) > intval($tss[1])) {
+				$tstart = intval($tss[1]);
+				$tend = intval($tss[0]);
+			} else {
+				$tstart = intval($tss[0]);
+				$tend = intval($tss[1]);
+			}
+			$tmpArr = array();
+			for ($i = $tstart; $i <= $tend; $i++) {
+				$tmpArr[] = $i;
+			}
+			$strs[$key] = implode(",", $tmpArr);
+		}
+	}
+	return implode(",", $strs);
+}
+
+if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	// PHP5.4以下不支持内建服务器
 	// 用于开发调试
 	if (phpversion() < "5.4") {
@@ -26,4 +66,223 @@ if (count($argv) > 1 && $argv[1] == "serv") {
 	echo "Start Dev Server For DedeCMSV6\n\r";
 	echo "Open http://localhost:8088\n\r";
 	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
+} else if (count($argv) > 1 && $argv[1] == "make") {
+	if (!file_exists($workDir . "/include/common.inc.php")) {
+		DedeCli::error("Check your root path is right");
+		exit;
+	}
+
+	require_once($workDir . "/include/common.inc.php");
+	require_once(DEDEINC . "/cli.class.php");
+
+	// 一个命令行的生成工具
+	if (count($argv) > 2 && ($argv[2] == "arc" || $argv[2] == "a")) {
+		// 生成文档
+		// make arc typeid=1
+		$t1 = ExecTime();
+		$addsql = "1=1";
+		$typeid = Option2SQLin(DedeCli::getOption("typeid"));
+		if (!empty($typeid)) {
+			$addsql .= " AND typeid IN(" . $typeid . ")";
+		}
+		$aid = Option2SQLin(DedeCli::getOption("aid"));
+		if (!empty($aid)) {
+			$addsql .= " AND id IN(" . $typeid . ")";
+		}
+
+		$tt = $dsql->GetOne("SELECT COUNT(id) as dd FROM `#@__arctiny` WHERE " . $addsql);
+		$total = intval($tt['dd']);
+		$dsql->Execute('out', "SELECT id FROM `#@__arctiny` WHERE " . $addsql . " ORDER BY typeid ASC");
+		$i = 0;
+		while ($row = $dsql->GetObject('out')) {
+			$id = $row->id;
+			$ac = new Archives($id);
+			$rurl = $ac->MakeHtml(0);
+			DedeCli::showProgress(ceil(($i / $total) * 100), 100);
+			$i++;
+		}
+		DedeCli::write("Make archive html successfull");
+		$queryTime = ExecTime() - $t1;
+		DedeCli::write($queryTime);
+		exit;
+	} else if (count($argv) > 2 && ($argv[2] == "list" || $argv[2] == "l")) {
+		// 生成栏目
+		$addsql = "1=1";
+		$typeid = Option2SQLin(DedeCli::getOption("typeid"));
+		if (!empty($typeid)) {
+			$addsql .= " AND id IN(" . $typeid . ")";
+		}
+		$dsql->Execute('out', "SELECT id,channeltype FROM `#@__arctype` WHERE " . $addsql);
+		$i = 0;
+		while ($row = $dsql->GetObject('out')) {
+			if ($row->channeltype > 0) {
+				$lv = new ListView($row->id);
+			} else {
+				$lv = new SgListView($row->id);
+			}
+			$lv->CountRecord();
+			DedeCli::write("Start make list html[id:{$row->id}]");
+			$lv->MakeHtml('', '', 0);
+		}
+		exit;
+	} else if (count($argv) > 2 && ($argv[2] == "index" || $argv[2] == "i")) {
+		// 生成首页
+		$position = DedeCli::getOption("position");
+		if (empty($position)) {
+			$position = "../index.html";
+		}
+		if (!preg_match("#\.html$#", $position)) {
+			DedeCli::error("position must end with .html");
+			exit;
+		}
+		$homeFile = DEDEINC . "/" . $position;
+		$homeFile = str_replace("\\", "/", $homeFile);
+		$homeFile = str_replace("//", "/", $homeFile);
+		$row = $dsql->GetOne("SELECT * FROM `#@__homepageset`");
+		$templet = $row['templet'];
+		$templet = str_replace("{style}", $cfg_df_style, $templet);
+        $pv = new PartView();
+        $GLOBALS['_arclistEnv'] = 'index';
+        $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . "/" . $templet);
+        $pv->SaveToHtml($homeFile);
+		DedeCli::write("Make index html successfull");
+	} else if (count($argv) > 2 && ($argv[2] == "auto" || $argv[2] == "o")) {
+		// 自动生成
+		function OptimizeData($dsql)
+		{
+			global $cfg_dbprefix;
+			$tptables = array("{$cfg_dbprefix}archives", "{$cfg_dbprefix}arctiny");
+			$dsql->SetQuery("SELECT maintable,addtable FROM `#@__channeltype` ");
+			$dsql->Execute();
+			while ($row = $dsql->GetObject()) {
+				$addtable = str_replace('#@__', $cfg_dbprefix, $row->addtable);
+				if ($addtable != '' && !in_array($addtable, $tptables)) $tptables[] = $addtable;
+			}
+			$tptable = '';
+			foreach ($tptables as $t) $tptable .= ($tptable == '' ? "`{$t}`" : ",`{$t}`");
+			$dsql->ExecuteNoneQuery(" OPTIMIZE TABLE $tptable; ");
+		}
+		$start = empty(DedeCli::getOption("start"))? "-1 day" : DedeCli::getOption("start");
+		$start = strtotime($start);
+		if (!$start) {
+			DedeCli::error("start is empty");
+			exit;
+		}
+
+		// 1.生成首页
+        $pv = new PartView();
+        $row = $pv->dsql->GetOne("SELECT * FROM `#@__homepageset` ");
+        $templet = str_replace("{style}", $cfg_df_style, $row['templet']);
+        $homeFile = DEDEINC . '/' . $row['position'];
+        $homeFile = str_replace("\\", '/', $homeFile);
+        $homeFile = preg_replace("#\/{1,}#", '/', $homeFile);
+        if ($row['showmod'] == 1) {
+            $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . '/' . $templet);
+            $pv->SaveToHtml($homeFile);
+            $pv->Close();
+        } else {
+            if (file_exists($homeFile)) @unlink($homeFile);
+		}
+		DedeCli::write("Make index html successfull");
+		// 2.生成栏目
+		$query = "SELECT DISTINCT typeid From `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1";
+		$dsql->SetQuery($query);
+		$dsql->Execute();
+		$typeids = array();
+		while ($row = $dsql->GetArray()) {
+			$typeids[$row['typeid']] = 1;
+		}
+		if (count($typeids) > 0) {
+			foreach ($typeids as $k => $v) {
+				$vs = array();
+				$vs = GetParentIds($k);
+				if (!isset($typeidsok[$k])) {
+					$typeidsok[$k] = 1;
+				}
+				foreach ($vs as $k => $v) {
+					if (!isset($typeidsok[$v])) {
+						$typeidsok[$v] = 1;
+					}
+				}
+			}
+			foreach ($typeidsok as $tt=> $k) {
+				$row = $dsql->GetOne("SELECT id,channeltype FROM `#@__arctype` WHERE id=".$tt);
+				if ($row['channeltype'] > 0) {
+					$lv = new ListView($tt);
+				} else {
+					$lv = new SgListView($tt);
+				}
+				$lv->CountRecord();
+				DedeCli::write("Start make list html[id:{$tt}]");
+				$lv->MakeHtml('', '', 0);
+			}
+			DedeCli::write("Make list html successfull");
+		}
+
+		// 生成文档
+		$tt = $dsql->GetOne("SELECT COUNT(id) as dd FROM `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1");
+		$total = intval($tt['dd']);
+		$dsql->Execute('out', "SELECT id FROM `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1 ORDER BY typeid ASC");
+		$i = 0;
+		while ($row = $dsql->GetObject('out')) {
+			$id = $row->id;
+			$ac = new Archives($id);
+			$rurl = $ac->MakeHtml(0);
+			DedeCli::showProgress(ceil(($i / $total) * 100), 100);
+			$i++;
+		}
+		DedeCli::write("Make archives html successfull");
+		
+		// 优化数据
+		OptimizeData($dsql);
+		DedeCli::write("Optimize data successfull");
+	} else {
+		$helpStr = "
+		USAGE:
+			php ./dedebiz make action [arguments...]
+		ACTIONS:
+			index,i Make Index html
+				--position index html position,default: ../index.html(relative include dir)
+			arc,a Make Archive htmls 
+				--typeid type id
+				--aid    archive id
+			list,l Make List htmls
+				--typeid type id
+			auto,o Auto Make htmls
+				--start start time(format:2012-03-12)
+		WEBSITE:
+			https://www.dedebiz.com/help/";
+		DedeCli::write($helpStr);
+		exit;
+	}
+} else if (count($argv) > 1 && ($argv[1] == "update" || $argv[1] == "u")) {
+	define("DEDEINC", $workDir."/include");
+	require_once(DEDEINC."/dedehttpdown.class.php");
+	require_once(DEDEINC . "/cli.class.php");
+	// 更新系统
+	$latestURL = "https://cdn.dedebiz.com/release/latest.txt";
+	$del = new DedeHttpDown();
+	$del->OpenUrl($latestURL);
+	$remoteVerStr = $del->GetHtml();
+	$commStr = file_get_contents(DEDEINC."/common.inc.php");
+	preg_match("#_version_detail = '([\d\.]+)'#", $commStr, $matchs);
+	$cfg_version_detail = $localVerStr = $matchs[1];
+	if (version_compare($localVerStr, $remoteVerStr, '>=')) {
+		DedeCli::error("latest version,don't need to update");
+		exit;
+	}
+
+	$fileHashURL = "https://cdn.dedebiz.com/release/{$cfg_version_detail}.json";
+	$del = new DedeHttpDown();
+	$del->OpenUrl($fileHashURL);
+	$filelist = $del->GetJSON();
+	$offFiles = array();
+	// foreach ($filelist as $key => $ff) {
+	// 	$offFiles[$ff->filename] = $ff->hash;
+	// }
+
+
+	var_dump($filelist);
+} else {
+	echo $helpStr;
 }

@@ -62,7 +62,7 @@ if (isset($idArray[$pageno])) {
 
 if ($pageno == 0 && $mkpage == 1) //清空缓存
 {
-    $dsql->ExecuteNoneQuery("Delete From `#@__arccache` ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` ");
 }
 
 $reurl = '';

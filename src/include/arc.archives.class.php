@@ -298,7 +298,7 @@ class Archives
      */
     function MakeHtml($isremote = 0)
     {
-        global $fileFirst, $baidu_seo, $cfg_basehost;
+        global $fileFirst, $cfg_basehost;
 
         if ($this->IsError) {
             return '';
@@ -384,25 +384,6 @@ class Archives
                 $this->ParseDMFields($i, 1);
                 $this->dtp->SaveTo($TRUEfilename);
             }
-
-            if ($baidu_seo == true) {
-                $api = 'http://data.zz.baidu.com/urls?site=https://www.zixue.cn&token=vXkBb4Ot0yhOFcmP';
-                $ch = curl_init();
-                $options =  array(
-                    CURLOPT_URL => $api,
-                    CURLOPT_POST => true,
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_POSTFIELDS => implode("\n", $seoUrls),
-                    CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
-                );
-                curl_setopt_array($ch, $options);
-                $result = curl_exec($ch);
-                $rs = json_decode($result, true);
-
-                if ($rs["success"] == 1) {
-                    echo "百度搜索引擎提交成功，剩余次数：" . $rs["remain"] . "<br/>\r\n";
-                }
-            }
         }
         $this->dsql->ExecuteNoneQuery("Update `#@__archives` SET ismake=1 WHERE id='" . $this->ArcID . "'");
         return $this->GetTrueUrl($filename);
@@ -451,7 +432,7 @@ class Archives
      *
      * @access    public
      * @param     string  $fname  键名称
-     * @param     string  $ctag  标记
+     * @param     object  $ctag  标记
      * @return    string
      */
     function GetField($fname, $ctag)
@@ -677,8 +658,10 @@ class Archives
                                 } else if ($ctag2->GetName() == 'tagname') {
                                     $dtp2->Assign($tid, $k);
                                 } else if ($ctag2->GetName() == 'value') {
-                                    $this->Fields[$k] = $this->ChannelUnit->MakeField($k, $this->Fields[$k], $ctag2);
-                                    @$dtp2->Assign($tid, $this->Fields[$k]);
+                                    if (isset($this->Fields[$k])) {
+                                        $this->Fields[$k] = $this->ChannelUnit->MakeField($k, $this->Fields[$k], $ctag2);
+                                        @$dtp2->Assign($tid, $this->Fields[$k]);
+                                    }
                                 }
                             }
                             $res .= $dtp2->GetResult();

@@ -86,48 +86,58 @@
       </tr>
       <?php
       if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-        $client->appid = $cfg_bizcore_appid;
-        $client->key = $cfg_bizcore_key;
-        $data = $client->AdminPWDExists();
-        $data = json_decode($data->data);
-        $rs = (array)($data->result);
+          $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+          $client->appid = $cfg_bizcore_appid;
+          $client->key = $cfg_bizcore_key;
+          $data = $client->AdminPWDExists();
+          $data = json_decode($data->data);
+          $rs = (array)($data->result);
 
-        if($rs["admin_pwd_exists"] == "false") {?>
+          if($rs["admin_pwd_exists"] == "false") {?>
+        <tr>
+          <td height="20" valign="top" bgcolor="#FFFFFF">设置DedeBIZ操作密码:</td>
+          <td height="20" valign="top" bgcolor="#FFFFFF">
+            <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">
+            设定后所有的DedeBIZ涉及安全操作输入当前操作密码
+          </td>
+        </tr>
+        <tr>
+          <td height="20" valign="top" bgcolor="#FFFFFF">重复DedeBIZ操作密码:</td>
+          <td height="20" valign="top" bgcolor="#FFFFFF">
+            <input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" size="30">
+          </td>
+        </tr>
+        <?php }else{ ?>
+        <tr>
+          <td height="20" valign="top" bgcolor="#FFFFFF">DedeBIZ操作密码:</td>
+          <td height="20" valign="top" bgcolor="#FFFFFF">
+            <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">
+          </td>
+        </tr>
+        <tr>
+          <td height="20" valign="top" bgcolor="#FFFFFF">首页状态:</td>
+          <td height="20" valign="top" bgcolor="#FFFFFF">
+            <label><input name="lockindex" type="radio" class="np" value="unlock"
+                <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?> />
+              解锁</label>
+            <label><input name="lockindex" type="radio" value="lock" class="np"
+                <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?> />
+              锁定</label>
+          </td>
+        </tr>
+        <?php
+        }
+      } else {
+      ?>
       <tr>
-        <td height="20" valign="top" bgcolor="#FFFFFF">设置DedeBIZ操作密码:</td>
-        <td height="20" valign="top" bgcolor="#FFFFFF">
-          <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">
-          设定后所有的DedeBIZ涉及安全操作输入当前操作密码
-        </td>
-      </tr>
-      <tr>
-        <td height="20" valign="top" bgcolor="#FFFFFF">重复DedeBIZ操作密码:</td>
-        <td height="20" valign="top" bgcolor="#FFFFFF">
-          <input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" size="30">
-        </td>
-      </tr>
-      <?php }else{ ?>
-      <tr>
-        <td height="20" valign="top" bgcolor="#FFFFFF">DedeBIZ操作密码:</td>
-        <td height="20" valign="top" bgcolor="#FFFFFF">
-          <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">
+        <td height="20" colspan="2" valign="top" bgcolor="#FFFFFF">
+          尚未开启DedeBIZ商业组件 <a class="btn btn-danger btn-sm" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a>
         </td>
       </tr>
       <?php
       }
-      }?>
-      <tr>
-        <td height="20" valign="top" bgcolor="#FFFFFF">首页状态:</td>
-        <td height="20" valign="top" bgcolor="#FFFFFF">
-          <label><input name="lockindex" type="radio" class="np" value="unlock"
-              <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?> />
-            解锁</label>
-          <label><input name="lockindex" type="radio" value="lock" class="np"
-              <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?> />
-            锁定</label>
-        </td>
-      </tr>
+      ?>
+
       <tr>
         <td height="31" colspan="2" bgcolor="#ffffff" align="center">&nbsp;&nbsp;
           <button name="view" class='btn btn-secondary' type="button" id="view"

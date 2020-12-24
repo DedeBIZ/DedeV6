@@ -153,27 +153,31 @@ if ($cfg_ml->IsLogin()) {
 }
 
 /** 有没新短信 **/
-$pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__member_pms WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");
+$pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_pms` WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");
 
 /**
  *  检查用户是否有权限进行某个操作
  *
  * @param     int  $rank  权限值
  * @param     int  $money  金币
- * @param     bool  $needinfo  是否需要填写详细信息
  * @return    void
  */
-function CheckRank($rank = 0, $money = 0, $needinfo = TRUE)
+function CheckRank($rank = 0, $money = 0)
 {
-    global $cfg_ml, $cfg_memberurl, $cfg_mb_spacesta;
+    global $cfg_ml, $cfg_memberurl, $cfg_mb_spacesta,$dsql;
     if (!$cfg_ml->IsLogin()) {
         header("Location:{$cfg_memberurl}/login.php?gourl=" . urlencode(GetCurUrl()));
         exit();
     } else {
         if ($cfg_mb_spacesta == '-10') {
+            // var_dump($cfg_ml->fields);
             //如果启用注册邮件验证
             if ($cfg_ml->fields['spacesta'] == '-10') {
-                $msg = "您尚未进行邮件验证，请到邮箱查阅...</br>重新发送邮件验证 <a href='/member/index_do.php?fmdo=sendMail'><font color='red'>点击此处</font></a>";
+                if (empty($cfg_ml->fields['email'])) {
+                    ShowMsg("邮箱地址为空，请设置一个可用的邮箱地址", "edit_email.php", 0, 5000);
+                    exit;
+                }
+                $msg = "您尚未进行邮件验证，请到邮箱查阅...</br>重新发送邮件验证 <a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail'><font color='red'>点击此处</font></a>";
                 ShowMsg($msg, "-1", 0, 5000);
                 exit;
             }
@@ -181,11 +185,11 @@ function CheckRank($rank = 0, $money = 0, $needinfo = TRUE)
         if ($cfg_ml->M_Rank < $rank) {
             $needname = "";
             if ($cfg_ml->M_Rank == 0) {
-                $row = $dsql->GetOne("SELECT membername FROM #@__arcrank WHERE rank='$rank'");
+                $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='$rank'");
                 $myname = "普通会员";
                 $needname = $row['membername'];
             } else {
-                $dsql->SetQuery("SELECT membername From #@__arcrank WHERE rank='$rank' OR rank='" . $cfg_ml->M_Rank . "' ORDER BY rank DESC");
+                $dsql->SetQuery("SELECT membername From `#@__arcrank` WHERE rank='$rank' OR rank='" . $cfg_ml->M_Rank . "' ORDER BY rank DESC");
                 $dsql->Execute();
                 $row = $dsql->GetObject();
                 $needname = $row->membername;

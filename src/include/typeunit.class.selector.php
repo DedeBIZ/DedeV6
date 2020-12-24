@@ -90,7 +90,7 @@ class TypeUnitSelector
             $this->LogicListAllSunType($id, $channel, $soncat);
             if ($chackRadio == '' && $soncat == '') continue;
             echo "<div class='quickselItem'>\r\n";
-            echo "    <div class='topcat'>{$chackRadio}{$typeName}</div>\r\n";
+            echo "    <div class='topcat'><label>{$chackRadio} {$typeName}</label></div>\r\n";
             if ($soncat != '') echo "    <div class='soncat'>{$soncat}</div>\r\n";
             echo "</div>\r\n";
         }
@@ -105,7 +105,7 @@ class TypeUnitSelector
      * @param     int   $soncat  子级分类
      * @return    string
      */
-    function LogicListAllSunType($id, $channel = 0, &$soncat)
+    function LogicListAllSunType($id, $channel = 0, &$soncat=0)
     {
         global $cfg_admin_channel, $admin_catalogs, $targetid, $oldvalue;
         $fid = $id;
@@ -133,7 +133,7 @@ class TypeUnitSelector
                 continue;
             }
             if ($chackRadio != '') {
-                $soncat .= "  <div class='item'>" . $chackRadio . $typeName . "</div>\r\n";
+                $soncat .= "  <div class='item'><label>" . $chackRadio .' '. $typeName . "</label></div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
             } else {
                 $soncat .= "  <br style='clear:both' /><div class='item'><b>" . $typeName . "：</b></div>\r\n";
