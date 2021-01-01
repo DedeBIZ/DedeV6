@@ -513,6 +513,7 @@ class DedeSqlite
         //var_dump($this->queryString);
         $this->queryString = preg_replace("/Show Tables/i", "SELECT name FROM sqlite_master WHERE type = \"table\"", $this->queryString);
         $this->queryString = str_replace("\'", "\"", $this->queryString);
+        $this->queryString = str_replace('\t\n', "", $this->queryString);
         //var_dump($this->queryString);
     }
 

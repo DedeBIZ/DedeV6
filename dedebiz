@@ -16,6 +16,7 @@ chdir($workDir);
 if (substr(php_sapi_name(), 0, 3) === 'cgi') {
 	die("DedeCMSV6:needs php-cli to run\n\n");
 }
+
 $helpStr = "
 NAME:
 	DedeBIZ Cli Tools
@@ -26,6 +27,7 @@ COMMANDS:
 	make,m Make DedeCMSV6 HTML
 	update,u Update to latest system
 	help,h Shows a list of commands or help
+	quick,q Quick start a development environment
 WEBSITE:
 	https://www.dedebiz.com/help/
 ";
@@ -57,6 +59,18 @@ function Option2SQLin($str = "")
 	return implode(",", $strs);
 }
 
+function RandEncode($length=26)
+{
+    $chars='abcdefghigklmnopqrstuvwxwyABCDEFGHIGKLMNOPQRSTUVWXWY0123456789';
+    $rnd_cookieEncode='';
+    $length = rand(28,32);
+    $max = strlen($chars) - 1;
+    for($i = 0; $i < $length; $i++) {
+        $rnd_cookieEncode .= $chars[mt_rand(0, $max)];
+    }
+    return $rnd_cookieEncode;
+}
+
 if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	// PHP5.4以下不支持内建服务器
 	// 用于开发调试
@@ -66,7 +80,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	echo "Start Dev Server For DedeCMSV6\n\r";
 	echo "Open http://localhost:8088\n\r";
 	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
-} else if (count($argv) > 1 && $argv[1] == "make") {
+} else if (count($argv) > 1 && ($argv[1] == "make" || $argv[1] == "m")) {
 	if (!file_exists($workDir . "/include/common.inc.php")) {
 		DedeCli::error("Check your root path is right");
 		exit;
@@ -283,6 +297,175 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 
 
 	var_dump($filelist);
+} else if (count($argv) > 1 && ($argv[1] == "quick" || $argv[1] == "q")){
+	define("DEDEINC", $workDir."/include");
+	require_once(DEDEINC . "/cli.class.php");
+	// 快速开始一个用于开发的DedeCMSV6环境，基于SQLite无其他依赖
+	if (file_exists($workDir."/data/dedecmsv6.db")) {
+		DedeCli::write("development environment has inited");
+		exit;
+	}
+	// 初始化安装一个开发环境
+	$db = new SQLite3($workDir.'/data/dedecmsv6.db');
+	$fp = fopen($workDir."/install/common.inc.php","r");
+    $configStr1 = fread($fp,filesize($workDir."/install/common.inc.php"));
+    fclose($fp);
+    @chmod($workDir."/data",0777);
+    $dbtype = "sqlite";
+    $dbhost = "";
+    $dbname = "dedecmsv6";
+    $dbuser = "";
+    $dbpwd = "";
+    $dbprefix = "dede_";
+    $dblang = "utf8";
+
+    //common.inc.php
+    $configStr1 = str_replace("~dbtype~",$dbtype,$configStr1);
+    $configStr1 = str_replace("~dbhost~",$dbhost,$configStr1);
+    $configStr1 = str_replace("~dbname~",$dbname,$configStr1);
+    $configStr1 = str_replace("~dbuser~",$dbuser,$configStr1);
+    $configStr1 = str_replace("~dbpwd~",$dbpwd,$configStr1);
+    $configStr1 = str_replace("~dbprefix~",$dbprefix,$configStr1);
+    $configStr1 = str_replace("~dblang~",$dblang,$configStr1);
+    $fp = fopen($workDir."/data/common.inc.php","w") or die("error,check ../data writeable");
+    fwrite($fp,$configStr1);
+    fclose($fp);
+
+    $cookieencode = RandEncode(26);
+    $baseurl = "http://127.0.0.1:8088";
+    $indexUrl = "/";
+    $cmspath = "";
+    $webname = "DedeCMSV6本地测试开发站点";
+    $adminmail = "admin@dedebiz.com";
+
+    $fp = fopen($workDir."/install/config.cache.inc.php","r");
+    $configStr2 = fread($fp,filesize($workDir."/install/config.cache.inc.php"));
+    fclose($fp);
+    $configStr2 = str_replace("~baseurl~",$baseurl,$configStr2);
+    $configStr2 = str_replace("~basepath~",$cmspath,$configStr2);
+    $configStr2 = str_replace("~indexurl~",$indexUrl,$configStr2);
+    $configStr2 = str_replace("~cookieEncode~",$cookieencode,$configStr2);
+    $configStr2 = str_replace("~webname~",$webname,$configStr2);
+    $configStr2 = str_replace("~adminmail~",$adminmail,$configStr2);
+
+    $fp = fopen($workDir.'/data/config.cache.inc.php','w');
+    fwrite($fp,$configStr2);
+    fclose($fp);
+
+    $fp = fopen($workDir.'/data/config.cache.bak.php','w');
+    fwrite($fp,$configStr2);
+    fclose($fp);
+
+    $query = '';
+    $fp = fopen($workDir.'/install/sql-dftables.txt','r');
+    while(!feof($fp))
+    {
+        $line = rtrim(fgets($fp,1024));
+        if(preg_match("#;$#", $line))
+        {
+            $query .= $line."\n";
+            $query = str_replace('#@__',$dbprefix,$query);
+			$query = preg_replace('/character set (.*?) /i','',$query);
+			$query = str_replace('unsigned','',$query);
+			$query = str_replace('TYPE=MyISAM','',$query);
+
+			$query = preg_replace ('/TINYINT\(([\d]+)\)/i','INTEGER',$query);
+			$query = preg_replace ('/mediumint\(([\d]+)\)/i','INTEGER',$query);
+			$query = preg_replace ('/smallint\(([\d]+)\)/i','INTEGER',$query);
+			$query = preg_replace('/int\(([\d]+)\)/i','INTEGER',$query);
+			$query = preg_replace('/auto_increment/i','PRIMARY KEY AUTOINCREMENT',$query);
+			$query = preg_replace('/,  KEY(.*?)MyISAM;/','',$query);
+			$query = preg_replace('/,  KEY(.*?);/',');',$query);
+			$query = preg_replace('/,  UNIQUE KEY(.*?);/',');',$query);
+			$query = preg_replace('/set\(([^\)]*?)\)/','varchar',$query);
+			$query = preg_replace('/enum\(([^\)]*?)\)/','varchar',$query);
+			if ( preg_match("/PRIMARY KEY AUTOINCREMENT/",$query) )
+			{
+			$query = preg_replace('/,([\t\s ]+)PRIMARY KEY  \(`([0-9a-zA-Z]+)`\)/i','',$query);
+			$query = str_replace(',	PRIMARY KEY (`id`)','',$query);
+			}
+			@$db->exec($query);
+    
+            $query='';
+        } else if(!preg_match("#^(\/\/|--)#", $line))
+        {
+            $query .= $line;
+        }
+    }
+    fclose($fp);
+
+    //导入默认数据
+    $query = '';
+    $fp = fopen($workDir.'/install/sql-dfdata.txt','r');
+    while(!feof($fp))
+    {
+        $line = rtrim(fgets($fp, 1024));
+        if(preg_match("#;$#", $line))
+        {
+            $query .= $line;
+            $query = str_replace('#@__',$dbprefix,$query);
+            $query = str_replace("\'","\"",$query);
+            $query = str_replace('\t\n\n',"",$query);
+            $query = str_replace('\t\n',"",$query);
+            @$db->exec($query);
+    
+            $query='';
+        } else if(!preg_match("#^(\/\/|--)#", $line))
+        {
+            $query .= $line;
+        }
+    }
+    fclose($fp);
+
+    //更新配置
+    $cquery = "Update `{$dbprefix}sysconfig` set value='{$baseurl}' where varname='cfg_basehost';";
+    $db->exec($cquery);
+    $cquery = "Update `{$dbprefix}sysconfig` set value='{$cmspath}' where varname='cfg_cmspath';";
+    $db->exec($cquery);
+    $cquery = "Update `{$dbprefix}sysconfig` set value='{$indexUrl}' where varname='cfg_indexurl';";
+    $db->exec($cquery);
+    $cquery = "Update `{$dbprefix}sysconfig` set value='{$cookieencode}' where varname='cfg_cookie_encode';";
+    $db->exec($cquery);
+    $cquery = "Update `{$dbprefix}sysconfig` set value='{$webname}' where varname='cfg_webname';";
+    $db->exec($cquery);
+    $cquery = "Update `{$dbprefix}sysconfig` set value='{$adminmail}' where varname='cfg_adminemail';";
+    $db->exec($cquery);
+
+    $adminuser = "admin";
+    $adminpwd = "admin";
+
+    //增加管理员帐号
+    $adminquery = "INSERT INTO `{$dbprefix}admin` VALUES (1, 10, '$adminuser', '".substr(md5($adminpwd),5,20)."', 'admin', '', '', 0, '".time()."', '127.0.0.1');";
+    $db->exec($adminquery);
+
+    DedeCli::write("admin user:admin");
+    DedeCli::write("admin password:admin");
+
+    //关连前台会员帐号
+    $adminquery = "INSERT INTO `{$dbprefix}member` (`mid`,`mtype`,`userid`,`pwd`,`uname`,`sex`,`rank`,`money`,`email`,
+                   `scores` ,`matt` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
+               VALUES ('1','个人','$adminuser','".md5($adminpwd)."','$adminuser','男','100','0','','10000','10','','0','','".time()."','','0',''); ";
+    $db->exec($adminquery);
+
+    $adminquery = "INSERT INTO `{$dbprefix}member_person` (`mid`,`onlynet`,`sex`,`uname`,`qq`,`msn`,`tel`,`mobile`,`place`,`oldplace`,`birthday`,`star`,
+                   `income` , `education` , `height` , `bodytype` , `blood` , `vocation` , `smoke` , `marital` , `house` ,`drink` , `datingtype` , `language` , `nature` , `lovemsg` , `address`,`uptime`)
+                VALUES ('1', '1', '男', '{$adminuser}', '', '', '', '', '0', '0','1980-01-01', '1', '0', '0', '160', '0', '0', '0', '0', '0', '0','0', '0', '', '', '', '','0'); ";
+    $db->exec($adminquery);
+
+    $adminquery = "INSERT INTO `{$dbprefix}member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`)
+                     VALUES ('1','0','0','0','0','0','0','0','0'); ";
+    $db->exec($adminquery);
+
+    $adminquery = "Insert Into `{$dbprefix}member_space`(`mid` ,`pagesize` ,`matt` ,`spacename` ,`spacelogo` ,`spacestyle`, `sign` ,`spacenews`)
+                Values('1','10','0','{$adminuser}的空间','','person','',''); ";
+    $db->exec($adminquery);
+	if (phpversion() < "5.4") {
+		die("DedeCMSV6:command web server not support\n\n");
+	}
+	echo "Start Dev Server For DedeCMSV6\n\r";
+	echo "Open http://localhost:8088\n\r";
+	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
+	exit;
 } else {
 	echo $helpStr;
 }
