@@ -8,7 +8,7 @@
  *
  * @version        $Id: request.class.php 1 12:03 2010-10-28 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

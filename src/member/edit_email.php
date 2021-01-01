@@ -3,7 +3,7 @@
 /**
  * @version        $Id: edit_email.php 2020/12/18 tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

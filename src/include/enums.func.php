@@ -4,7 +4,7 @@
  *
  * @version        $Id: enums.func.php 2 13:19 2011-3-24 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

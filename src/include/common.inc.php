@@ -3,7 +3,7 @@
 /**
  * @version        $Id: common.inc.php 3 17:44 2010-11-23 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

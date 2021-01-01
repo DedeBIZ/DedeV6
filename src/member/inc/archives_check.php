@@ -5,7 +5,7 @@
  * 
  * @version        $Id: archives_check.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

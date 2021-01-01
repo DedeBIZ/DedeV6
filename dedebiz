@@ -5,7 +5,7 @@
  *
  * @version        2020年12月11日 tianya $
  * @package        DedeBIZ.Command
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -303,6 +303,9 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	// 快速开始一个用于开发的DedeCMSV6环境，基于SQLite无其他依赖
 	if (file_exists($workDir."/data/dedecmsv6.db")) {
 		DedeCli::write("development environment has inited");
+		echo "Start Dev Server For DedeCMSV6\n\r";
+		echo "Open http://localhost:8088\n\r";
+		passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 		exit;
 	}
 	// 初始化安装一个开发环境

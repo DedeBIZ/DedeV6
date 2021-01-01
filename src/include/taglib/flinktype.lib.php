@@ -8,7 +8,7 @@ require_once(DEDEINC . "/taglib/flink.lib.php");
  *
  * @version        $Id: flinktype.lib.php 1 15:57 2011年2月18日Z niap $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

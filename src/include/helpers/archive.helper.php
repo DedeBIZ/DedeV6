@@ -4,7 +4,7 @@
  *
  * @version        $Id: archive.helper.php 2 23:00 2010年7月5日Z tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

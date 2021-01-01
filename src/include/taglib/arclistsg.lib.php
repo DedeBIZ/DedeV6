@@ -5,7 +5,7 @@
  *
  * @version        $Id: arclistsg.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

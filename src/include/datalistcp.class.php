@@ -13,7 +13,7 @@
  *
  * @version        $Id: datalistcp.class.php 3 17:02 2010年7月9日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -4,7 +4,7 @@
  *
  * @version        $Id: relation.lib.php 1 9:29 2020年9月23日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

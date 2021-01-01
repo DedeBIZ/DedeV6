@@ -5,7 +5,7 @@
  *
  * @version        $Id: stepselect_main.php 2 13:23 2011-3-24 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

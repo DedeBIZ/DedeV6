@@ -5,7 +5,7 @@
  *
  * @version        $Id: article_add.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

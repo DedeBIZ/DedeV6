@@ -5,7 +5,7 @@
  *
  * @version        $Id: uploadsafe.inc.php 1 15:59 2020年8月19日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

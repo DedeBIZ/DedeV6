@@ -5,7 +5,7 @@
  *
  * @version        $Id: select_media.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeBIZ.Dialog
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

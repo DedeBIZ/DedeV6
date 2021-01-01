@@ -4,7 +4,7 @@
  *
  * @version        $Id: channelunit.func.php 2 16:46 2010年7月6日Z tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -5,7 +5,7 @@
  *
  * @version        $Id: plus_memberlist.php 1 13:58 2010年7月5日Z tianya $
  * @package        DedeBIZ.Tpllib
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

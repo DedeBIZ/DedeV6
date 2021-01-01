@@ -3,7 +3,7 @@
 /**
  * @version        $Id: tags.php 1 2010-06-30 11:43:09Z tianya $
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2020, DedeBIZ.COM
+ * @copyright      Copyright (c) 2021, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
