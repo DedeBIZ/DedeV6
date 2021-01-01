@@ -108,14 +108,6 @@ $menusMain = "
 
 $adminMenu1
 
-<m:top item='3_' name='采集管理' display='none' rank='co_NewRule,co_ListNote,co_ViewNote,co_Switch,co_GetOut'>
-  <m:item name='采集节点管理' link='co_main.php' rank='co_ListNote' target='main' />
-  <m:item name='临时内容管理' link='co_url.php' rank='co_ViewNote' target='main' />
-  <m:item name='导入采集规则' link='co_get_corule.php' rank='co_GetOut' target='main'/>
-  <m:item name='监控采集模式' link='co_gather_start.php' rank='co_GetOut' target='main'/>
-  <m:item name='采集未下载内容' link='co_do.php?dopost=coall' rank='co_GetOut' target='main'/>
-</m:top>
-
 <m:top item='1_3_3' name='批量维护' display='block'>
   <m:item name='更新系统缓存' link='sys_cache_up.php' rank='sys_ArcBatch' target='main' />
   <m:item name='文档批量维护' link='content_batch_up.php' rank='sys_ArcBatch' target='main' />

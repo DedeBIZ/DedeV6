@@ -42,19 +42,6 @@
 >a_MyCheck>审核我发布的文档
 >a_Recycling>管理回收站
 
->>采集管理
-
->co_NewRule>管理数据规则模型
->co_Switch>导入外部数据
->co_AddNote>增加采集节点
->co_EditNote>修改采集节点
->co_PlayNote>采集数据
->co_ListNote>列出采集节点
->co_ViewNote>管理已下载内容
->co_Export>采集内容入库
->co_Del>删除采集节点
->co_GetOut>导入离线数据
-
 >>模板管理
 
 >temp_All>管理所有模板
