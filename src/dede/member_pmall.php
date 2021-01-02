@@ -30,15 +30,7 @@ if ($action == "post") {
         exit();
     }
 
-    #api{{
-    if (defined('UC_API') && @include_once DEDEROOT . '/uc_client/client.php') {
-        uc_pm_send(0, '', $subject, $message);
-        ShowMsg('短信已成功发送', '-1');
-        exit;
-    }
-    #/aip}}
-
-    $rs = $dsql->ExecuteNoneQuery("INSERT INTO #@__member_pms(floginid,fromid,toid,tologinid,folder,hasview,subject,sendtime,writetime,message,isadmin) VALUES('$floginid','$fromid','$toid','$tologinid','outbox','0','$subject','$sendtime','$writetime','$message','1');");
+    $rs = $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_pms`(floginid,fromid,toid,tologinid,folder,hasview,subject,sendtime,writetime,message,isadmin) VALUES('$floginid','$fromid','$toid','$tologinid','outbox','0','$subject','$sendtime','$writetime','$message','1');");
     ShowMsg('短信已成功发送', '-1');
     exit();
 }

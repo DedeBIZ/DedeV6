@@ -326,48 +326,6 @@ CREATE TABLE `#@__channeltype` (
   KEY `nid` (`nid`,`isshow`,`arcsta`,`sendrank`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__co_htmls`;
-CREATE TABLE `#@__co_htmls` (
-  `aid` mediumint(8) unsigned NOT NULL auto_increment,
-  `nid` mediumint(8) unsigned NOT NULL default '0',
-  `typeid` smallint(5) unsigned NOT NULL default '0',
-  `title` varchar(60) NOT NULL default '',
-  `litpic` varchar(100) NOT NULL default '',
-  `url` varchar(100) NOT NULL default '',
-  `dtime` int(10) unsigned NOT NULL default '0',
-  `isdown` tinyint(1) unsigned NOT NULL default '0',
-  `isexport` tinyint(1) NOT NULL default '0',
-  `result` mediumtext,
-  PRIMARY KEY  (`aid`),
-  KEY `nid` (`nid`),
-  KEY `typeid` (`typeid`,`title`,`url`,`dtime`,`isdown`,`isexport`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__co_mediaurls`;
-CREATE TABLE `#@__co_mediaurls` (
-  `nid` mediumint(8) unsigned NOT NULL default '0',
-  `hash` char(32) NOT NULL default '',
-  `tofile` char(60) NOT NULL default '',
-  KEY `hash` (`hash`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__co_note`;
-CREATE TABLE `#@__co_note` (
-  `nid` mediumint(8) unsigned NOT NULL auto_increment,
-  `channelid` smallint(5) unsigned NOT NULL default '0',
-  `notename` varchar(50) NOT NULL default '',
-  `sourcelang` varchar(10) NOT NULL default 'gb2312',
-  `uptime` int(10) unsigned NOT NULL default '0',
-  `cotime` int(10) unsigned NOT NULL default '0',
-  `pnum` smallint(5) unsigned NOT NULL default '0',
-  `isok` tinyint(1) unsigned NOT NULL default '0',
-  `usemore` tinyint(1) unsigned NOT NULL default '0',
-  `listconfig` text,
-  `itemconfig` text,
-  PRIMARY KEY  (`nid`),
-  KEY `isok` (`isok`,`channelid`,`cotime`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__co_onepage`;
 CREATE TABLE `#@__co_onepage` (
   `id` int(11) NOT NULL auto_increment,
@@ -378,14 +336,6 @@ CREATE TABLE `#@__co_onepage` (
   `rule` text,
   PRIMARY KEY  (`id`),
   KEY `url` (`url`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__co_urls`;
-CREATE TABLE `#@__co_urls` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `hash` varchar(32) NOT NULL default '',
-  `nid` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__diyforms`;
@@ -661,16 +611,6 @@ CREATE TABLE `#@__member_pms` (
   `message` text,
   PRIMARY KEY  (`id`),
   KEY `sendtime` (`sendtime`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__member_snsmsg`;
-CREATE TABLE `#@__member_snsmsg` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `mid` mediumint(8) unsigned NOT NULL default '0',
-  `userid` varchar(20) NOT NULL,
-  `sendtime` int(10) unsigned NOT NULL default '0',
-  `msg` varchar(250) NOT NULL,
-  PRIMARY KEY  (`id`)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS `#@__member_space`;

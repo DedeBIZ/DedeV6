@@ -60,24 +60,6 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
 }
 
 /**
- *  保存一则消息记录
- *
- * @access    public
- * @param     string  $mid  用户MID
- * @param     string  $mid  用户ID
- * @param     string  $msg  保存消息
- * @return    string
- */
-function PutSnsMsg($mid, $userid, $msg)
-{
-    global $dsql;
-    $msg = addslashes($msg);
-    $query = "INSERT INTO `#@__member_snsmsg`(`mid`, `userid`, `sendtime`, `msg`) VALUES('$mid', '$userid', '" . time() . "', '$msg'); ";
-    $rs = $dsql->ExecuteNoneQuery($query);
-    return $rs;
-}
-
-/**
  *  检查用户是否被禁言
  *
  * @return    void
@@ -160,26 +142,15 @@ class MemberLogin
             if ($cache) {
                 $this->fields = GetCache($this->memberCache, $this->M_ID);
                 if (empty($this->fields)) {
-                    $this->fields = $dsql->GetOne("Select * From `#@__member` where mid='{$this->M_ID}' ");
+                    $this->fields = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$this->M_ID}' ");
                 } else {
                     $formcache = TRUE;
                 }
             } else {
-                $this->fields = $dsql->GetOne("Select * From `#@__member` where mid='{$this->M_ID}' ");
+                $this->fields = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$this->M_ID}' ");
             }
 
             if (is_array($this->fields)) {
-                #api{{
-                if (defined('UC_API') && @include_once DEDEROOT . '/uc_client/client.php') {
-                    if ($data = uc_get_user($this->fields['userid'])) {
-                        if (uc_check_avatar($data[0]) && !strstr($this->fields['face'], UC_API)) {
-                            $this->fields['face'] = UC_API . '/avatar.php?uid=' . $data[0] . '&size=middle';
-                            $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `face`='" . $this->fields['face'] . "' WHERE `mid`='{$this->M_ID}'");
-                        }
-                    }
-                }
-                #/aip}}
-
                 //间隔一小时更新一次用户登录时间
                 if (time() - $this->M_LoginTime > 3600) {
                     $dsql->ExecuteNoneQuery("update `#@__member` set logintime='" . time() . "',loginip='" . GetIP() . "' where mid='" . $this->fields['mid'] . "';");
@@ -193,7 +164,7 @@ class MemberLogin
                 $this->M_Face = $this->fields['face'];
                 $this->M_Rank = $this->fields['rank'];
                 $this->M_Spacesta = $this->fields['spacesta'];
-                $sql = "Select titles From #@__scores where integral<={$this->fields['scores']} order by integral desc";
+                $sql = "SELECT titles From `#@__scores` WHERE integral<={$this->fields['scores']} ORDER BY integral DESC";
                 $scrow = $dsql->GetOne($sql);
                 $this->fields['honor'] = $scrow['titles'];
                 $this->M_Honor = $this->fields['honor'];

@@ -186,14 +186,6 @@ function __EditUser()
         $rs = $dsql->ExecuteNoneQuery2($query);
     }
 
-    #api{{
-    if (defined('UC_API') && @include_once DEDEROOT . '/api/uc.func.php') {
-        $row = $dsql->GetOne("SELECT `scores`,`userid` FROM `#@__member` WHERE `mid`='$id' AND `matt`<>10");
-        $amount = $scores - $row['scores'];
-        uc_credit_note($row['userid'], $amount);
-    }
-    #/aip}}
-
     ShowMsg('成功更改会员资料！', 'member_view.php?id=' . $id);
     exit();
 }
