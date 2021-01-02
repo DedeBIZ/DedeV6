@@ -28,11 +28,10 @@ foreach ($filelist as $key => $ff) {
 $alter = "";
 
 if (count($offFiles) == 0) {
-    $alter = <<<EOT
+    $alter = 'EOT
     <div class="alert alert-danger maintable mb-2" style="margin:0 auto;" role="alert">
     无法同官方网站文件服务器通信，校验时候无法保证本地文件是否同官方服务器文件是否一致。
-    </div>
-EOT;;
+    </div>';
 }
 
 function TestOneFile($f)
@@ -139,3 +138,4 @@ else if ($action == 'clear') {
 }
 
 include(dirname(__FILE__) . '/templets/sys_safetest.htm');
+?>
