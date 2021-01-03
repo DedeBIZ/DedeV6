@@ -1,107 +1,124 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>安装程序 - 织梦内容管理系统<?php echo $verMsg; ?></title>
-<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="style.css" rel="stylesheet" type="text/css" />
-<script src="../static/js/jquery.min.js"></script>
-<script src="../static/js/popper.min.js"></script>
-<script src="../static/js/bootstrap.bundle.js"></script>
-<script src="../static/js/dede.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>安装程序 - DedeCMSV6 - DedeBIZ技术支持
+	</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/popper.min.js"></script>
+	<script src="../static/js/bootstrap.bundle.js"></script>
+	<script src="../static/js/dede.js"></script>
 </head>
 
 <body>
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h5 class="my-0 mr-md-auto font-weight-normal text-success">DedeCMSV6安装程序</h5>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="https://www.dedebiz.com/git" target="_blank">代码托管</a>
+			<a class="p-2 text-dark" href="https://www.dedebiz.com/help" target="_blank">帮助中心</a>
+			<a class="p-2 text-dark" href="https://www.dedebiz.com/service" target="_blank">技术服务</a>
+		</nav>
+	</div>
 
-<div class="top">
-	<div class="top-logo">
-	</div>
-	<div class="top-link">
-		<ul>
-			<li><a href="https://www.dedebiz.com" target="_blank">DedeCMSV6</a></li>
-			<li><a href="https://www.dedebiz.com/git" target="_blank">代码托管</a></li>
-			<li><a href="https://www.dedebiz.com/help" target="_blank">帮助中心</a></li>
-			<li><a href="https://www.dedebiz.com/auth" target="_blank">授权中心</a></li>
-		</ul>
-	</div>
-	<div class="top-version">
-		<!-- 版本信息 -->
-		<h2>DedeCMS<?php echo $verMsg; ?></h2>
-	</div>
-</div>
+	<main class="container">
+		<?php
+		if(count($arrMsg) > 0){
+			foreach($arrMsg as $msg){
+		?>
 
-<div class="main">
-	<div class="pleft">
-		<dl class="setpbox t1">
-			<dt>安装步骤</dt>
-			<dd>
-				<ul>
-					<li class="now">许可协议</li>
-					<li>环境检测</li>
-					<li>参数配置</li>
-					<li>正在安装</li>
-					<li>安装完成</li>
-				</ul>
-			</dd>
-		</dl>
-	</div>
-	<div class="pright">
-		<div class="pr-title"><h3>阅读许可协议</h3></div>
-		<div class="pr-agreement">
-			<p>感谢您选择由上海穆云智能科技有限公司开发的DedeCMSV6内容管理系统（著作登记号：2020SR1514155），DedeBIZ商业站点管理（以下简称“DedeBIZ”）为该系统唯一商业授权管理平台，域名为：www.dedebiz.com，DedeBIZ致力于为DedeCMSV6系统客户提供更丰富完善的技术支持，让建站变得更高效、安全、便捷。</p>
-			<p>电子文本形式的许可协议如同双方书面签署的协议一样，具有完全的和等同的法律效力。您一旦开始确认本协议并安装、使用、修改或分发本软件（或任何基于本软件的衍生著作），则表示您已经完全接受本许可协议的所有的条件和条款。如果您有任何违反本许可协议的行为，上海穆云智能科技有限公司有权收回对您的许可授权，责令停止损害，并追究您的相关法律及经济责任。</p>
-			<p>当前协议仅限于DedeCMSV6系统及基于DedeCMSV6系统升级的相应版本。</p>
-			<p>如果您不同意本协议中的条款，请勿复制、下载、安装或以其他方式使用DedeCMSV6。</p>
-			<h2 id="heading">一、软件名称</h2>
-			<p>本软件名称为DedeCMSV6，软件服务商为DedeBIZ，由上海穆云智能科技有限公司统一开发、管理、运行的软件产品，软件著作权登记号：2020SR1514155。</p>
-			<h2 id="heading-1">二、协议许可的权利</h2>
-			<p>1、“个人非商业用途”定义：指个人在非团体机构中使用本“软件”并用于非商业目的。</p>
-			<p>2、“商业用途”定义：指个人用于任何商业目的或者团体机构（例如公司、政府、学校、军队、社会团体等各类组织）出于任何目的使用本“软件”（任何目的包括商业目的或非盈利目的）。</p>
-			<p>本软件未授权情况下仅供给个人用户非商业使用。如果您是个人用户，那么您可以在完全遵守本用户许可协议的基础上，将本软件应用于非商业用途，而不必支付软件授权许可费用。</p>
-			<p>您可以在本协议规定的约束和限制范围内修改本软件的源代码和界面风格以适应您的网站要求。</p>
-			<p>您可以在本协议规定的约束和限制范围内通过任何的媒介和渠道复制与分发本软件的源代码的副本（要求是逐字拷贝的副本）。</p>
-			<p>您拥有使用本软件构建的网站全部内容所有权，并独立承担与这些内容的相关法律义务。</p>
-			<p>用户必须了解使用本软件的风险，在尚未购买产品技术服务之前，我们不承诺提供任何形式的技术支持、使用担保，也不承担任何因使用本软件而产生问题的相关责任。</p>
-			<h2 id="heading-2">三、免费用户许可协议</h2>
-			<p>未经授权之前，不得将本软件用于商业用途，不得用于任何非个人所有的项目之中，例如属于企业、政府单位所有的网站。</p>
-			<p>未经授权之前，不得以任何形式提供与本软件相关的收费服务，包括但不限于以下行为：为用户提供本软件的相关咨询或培训服务并收费一定费用；用本软件为他人建站并收取一定费用；用本软件提供SaaS（软件作为服务）服务。</p>
-			<p>任何人不得以DedeCMSV6名义对本软件或与之关联的商业授权进行出租、出售、抵押或发放子许可证。</p>
-			<p>未经授权用于商业用途者，我们将有权要求网站方停止使用并追究网站方及制作方的法律责任。</p>
-			<p>禁止任何以获利为目的的分发本软件的行为。</p>
-			<p>禁止在本软件的整体或任何部分基础上以发展任何派生版本、修改版本或第三方版本用于重新分发。</p>
-			<h2 id="heading-3">四、授权用户许可协议</h2>
-			<p>用户在按本协议条款支付费用后方可将本软件源代码应用于商业用途。</p>
-			<p>DedeCMSV6商业站点授权分为个人用户及团体机构两类，均需提供相应的资质证明（包括但不限于个人用户身份证信息、团体机构营业执照信息等）。购买商业授权的个人用户，若发现实际使用人为团体机构，上海穆云智能科技有限公司将告知用户以团体机构名义重新购买商业授权，并保留收回授权的权利以及追究相关人员的法律责任。</p>
-			<p>对于源代码使用过程中出现的错误或技术问题，我们提供远程或电话技术咨询支持。</p>
-			<p>用户可以对DedeCMSV6源代码进行任何修改（包括其网站界面风格）以适应甲方网站的需要。</p>
-			<p>用户拥有使用本软件构建的网站全部内容所有权，并独立承担与这些内容的相关法律义务。</p>
-			<p>用户禁止在各类电商（B2B、B2C）网站出售DedeCMSV6任何程序，但不包括自已制作的模板页面和插件。</p>
-			<p>用户不得再以DedeCMSV6任何名义直接转手出售、抵押、免费开源下载或发放子许可证。</p>
-			<p>购买商业授权的团体机构用户可对DedeCMSV6进行二次开发或包装成自己的产品，仅限于出售给自己直接客户使用，所销售对象需承诺不再转手出售。</p>
-			<p>技术服务期限过期后，如不再进行续费，您的网站授权版本将会停留在服务有效时间最后的升级版本号，不再享受升级服务。</p>
-			<p>自购买时刻起，在技术支持期限内拥有通过指定的方式获得指定范围内的技术支持服务。购买商业授权的用户均可反映并提出意见建议，相关意见将被考虑，但没有一定被采纳的承诺或保证。</p>
-			<p>如甲方未能遵守本协议的条款，所被许可的权利将被收回，并承担相应法律责任。</p>
-			<h2 id="heading-4">五、无担保及免责声明</h2>
-			<p>用户出于自愿而使用本软件，您必须了解使用本软件的风险，且同意自己承担使用本软件的风险。</p>
-			<p>用户利用本软件构建的网站的任何信息内容以及导致的任何版权纠纷和法律争议及后果与上海穆云智能科技有限公司无关，上海穆云智能科技有限公司对此不承担任何责任。</p>
-			<p>在任何情况下，对于因使用或无法使用本软件而导致的任何损失（包括但不仅限于商业利润损失、业务中断或业务信息丢失），上海穆云智能科技有限公司概不承担任何责任，即使上海穆云智能科技有限公司已被告知可能会造成此类损失。</p>
-			<p>有关本软件最终用户授权协议、商业授权与技术服务的详细内容，均由DedeBIZ官方网站<code>https://www.dedebiz.com</code>提供唯一的解释和官方价目表。上海穆云智能科技有限公司拥有在不提前通知的情况下，修改授权协议和授权服务价格的权利，修改后的协议或价目表对自改变之日起的新授权用户生效。</p>
-			<h2 id="heading-5">六、协议终止</h2>
-			<p>您一旦开始安装本软件，即被视为完全理解并接受本协议的各项条款，在享有上述条款授予的许可权利同时，也受到相关的约束和限制，本协议许可范围以外的行为，将直接违反本授权协议并构成侵权。一旦您违反本协议的条款，上海穆云智能科技有限公司随时可能终止本“协议”、收回授权，并要求您承担相应法律责任。</p>
-			<p>上海穆云智能科技有限公司</p>
-			<p>2020年10月1日</p>
+		<div class="alert alert-warning" role="alert">
+			<?php echo $msg ?>
 		</div>
-		<div class="btn-box">
-			<input name="readpact" type="checkbox" id="readpact" value="" /><label for="readpact"><strong class="fc-690 fs-14">我已经阅读并同意此协议</strong></label>
-			<button type="button" class="btn btn-danger" onclick="document.getElementById('readpact').checked ?window.location.href='index.php?step=2' : ShowMsg('您必须同意软件许可协议才能安装！');">继续</button>
+		<?php
+			}
+		}
+		?>
+
+		<div class="card mb-4 shadow-sm">
+			<div class="card-header">
+				<h4 class="my-0 fw-normal text-center">首次运行安装包</h4>
+			</div>
+			<div class="card-body">
+				<form>
+					<input type="hidden" name="cookieencode" value="<?php echo $rnd_cookieEncode; ?>">
+					<input type="hidden" name="adminmail" value="admin@dedebiz.com">
+					<legend>数据库设置</legend>
+					<hr>
+					<div class="mb-3">
+						<label for="dbtype" class="form-label">数据库类型</label>
+						<select id="dbtype" name="dbtype" class="form-control form-select">
+							<option value="mysql" selected>MySQL</option>
+							<option value="sqlite">SQLite</option>
+						</select>
+						<div class="form-text text-muted">一般为MySQL，SQLite仅用于开发调试不建议生产中使用</div>
+					</div>
+					<div class="mb-3">
+						<label for="dbhost" class="form-label">数据库主机</label>
+						<input id="dbhost" name="dbhost" type="text" class="form-control" placeholder="localhost">
+					</div>
+					<div class="mb-3">
+						<label for="dbuser" class="form-label">数据库用户</label>
+						<input name="dbuser" id="dbuser" type="text" class="form-control" placeholder="root">
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputPassword1" class="form-label">数据库密码</label>
+						<input name="dbpwd" type="text" class="form-control" id="dbpwd" placeholder="">
+					</div>
+					<div class="mb-3">
+						<label for="dbprefix" class="form-label">数据表前缀</label>
+						<input name="dbprefix" type="text" class="form-control" id="dbprefix" placeholder="dede_">
+					</div>
+					<div class="mb-3">
+						<label for="dbname" class="form-label">数据库名称</label>
+						<input name="dbname" type="text" class="form-control" id="dbname" placeholder="dedecmsv6">
+					</div>
+					<legend>站点设置</legend>
+					<hr>
+					<div class="mb-3">
+						<label for="adminuser" class="form-label">用户名</label>
+						<input name="adminuser" type="text" class="form-control" id="adminuser" placeholder="admin">
+						<div class="form-text text-muted">只能用'0-9'、'a-z'、'A-Z'、'.'、'@'、'_'、'-'、'!'以内范围的字符</div>
+					</div>
+					<div class="mb-3">
+						<label for="adminpwd" class="form-label">密码</label>
+						<input name="adminpwd" type="text" class="form-control" id="adminpwd" placeholder="admin">
+						
+					</div>
+					<div class="mb-3">
+						<label for="webname" class="form-label">网站名称</label>
+						<input name="webname" type="text" class="form-control" id="webname" placeholder="我的网站">
+					</div>
+					<div class="mb-3">
+						<label for="baseurl" class="form-label">网站网址</label>
+						<input name="baseurl" type="text" class="form-control" id="baseurl" placeholder="<?php echo $baseurl; ?>">
+					</div>
+					<div class="mb-3">
+						<label for="cmspath" class="form-label">安装目录</label>
+						<input name="cmspath" type="text" class="form-control" id="cmspath" placeholder="<?php echo $basepath; ?>">
+						<div class="form-text text-muted">在根目录安装时不必理会</div>
+					</div>
+					<button type="submit" class="btn btn-success">立即安装</button>  <span class="ml-2">安装即表示你同意<a href="https://www.dedebiz.com/license" target="_blank">站点授权协议</a></span>
+				</form>
+			</div>
 		</div>
-	</div>
-</div>
 
-<div class="foot">
+		<footer>
+			<div class="row">
+				<div class="col-12 col-md">
+					<p class="d-block mb-3 text-muted">© 2021 <a href="https://www.dedebiz.com" target="_blank" title="DedeBIZ商业技术支持，提供更专业强大的站点应用开发技术">DedeBIZ技术支持</a></p>
+				</div>
+			</div>
+		</footer>
 
-</div>
+	</main>
+
+
+
 
 </body>
+
 </html>
