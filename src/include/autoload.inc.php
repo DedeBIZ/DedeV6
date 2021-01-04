@@ -11,9 +11,14 @@ if(!defined('DEDEINC')) exit("Request Error!");
 function __autoload($classname)
 {
     $classname = preg_replace("/[^0-9a-z_]/i", '', $classname);
+    $classname = strtolower($classname);
     if( class_exists ( $classname ) )
     {
         return TRUE;
+    }
+    if (in_array($classname, array("archives","freelist","listview","partview","rssview",
+    "searchview","sglistview","sgpage","specview","taglist"))) {
+        $classname = "arc.".$classname;
     }
     $libclassfile = $classname.'.class.php';
     if ( is_file ( DEDEINC.'/'.$libclassfile ) )

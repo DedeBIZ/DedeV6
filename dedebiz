@@ -156,7 +156,8 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		$templet = $row['templet'];
 		$templet = str_replace("{style}", $cfg_df_style, $templet);
         $pv = new PartView();
-        $GLOBALS['_arclistEnv'] = 'index';
+		$GLOBALS['_arclistEnv'] = 'index';
+		
         $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . "/" . $templet);
         $pv->SaveToHtml($homeFile);
 		DedeCli::write("Make index html successfull");

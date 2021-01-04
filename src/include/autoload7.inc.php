@@ -20,7 +20,6 @@ function dede_autoloader($classname)
     "searchview","sglistview","sgpage","specview","taglist"))) {
         $classname = "arc.".$classname;
     }
-    
     $libclassfile = $classname.'.class.php';
     if ( is_file ( DEDEINC.'/'.$libclassfile ) )
     {
