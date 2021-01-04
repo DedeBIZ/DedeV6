@@ -12,6 +12,7 @@ error_reporting(E_ALL || ~E_NOTICE);
 
 $verMsg = 'V6';
 $dfDbname = 'dedecmsv6';
+$cfg_version_detail = '6.0.3'; // 详细版本号
 $errmsg = '';
 
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
@@ -92,6 +93,28 @@ function _2_Setup()
 ------------------------*/
 else if($step==2)
 {
+    $dbtype = empty($dbtype)? "mysql" : $dbtype;
+    $dblang = "utf8";
+    if (!in_array($dbtype,array("mysql", "sqlite"))) {
+        die("当前数据库类型不支持");
+    }
+    if(!empty($_SERVER['HTTP_HOST']))
+        $dfbaseurl = 'http://'.$_SERVER['HTTP_HOST'];
+    else
+        $dfbaseurl = "http://".$_SERVER['SERVER_NAME'];
+    $dfbasepath = preg_replace("#\/install(.*)$#i", '', $scriptName);
+
+    $dbhost = empty($dbhost)? "localhost" : $dbhost;
+    $dbuser = empty($dbuser)? "root" : $dbuser;
+    $dbuser = empty($dbuser)? "root" : $dbuser;
+    $dbprefix = empty($dbprefix)? "dede_" : $dbprefix;
+    $dbname = empty($dbname)? $dfDbname : $dbname;
+    $adminuser = empty($adminuser)? "admin" : $adminuser;
+    $adminpwd = empty($adminpwd)? "admin" : $adminpwd;
+    $webname = empty($webname)? "我的网站" : $webname;
+    $baseurl = empty($baseurl)? $dfbaseurl : $baseurl;
+    $cmspath = empty($cmspath)? $dfbasepath : $cmspath;
+
     if ( $dbtype == 'sqlite' )
     {
         $db = new SQLite3(DEDEDATA.'/'.$dbname.'.db');
@@ -288,7 +311,7 @@ else if($step==2)
     $fp = fopen($insLockfile,'w');
     fwrite($fp,'ok');
     fclose($fp);
-    header('Location:dede/index.php');
+    header('Location:../dede/index.php');
     exit();
 }
 /*------------------------
@@ -301,18 +324,27 @@ else if($step==10)
     header("Cache-Control:no-cache\r\n");
     header("Expires:0\r\n");
     $conn = @mysql_connect($dbhost,$dbuser,$dbpwd);
+    $info = "";
     if($conn)
     {
 		if(empty($dbname)){
-			echo "<font color='green'>信息正确</font>";
+			$info = "信息正确";
 		}else{
-			$info = mysql_select_db($dbname,$conn)?"<font color='red'>数据库已经存在，系统将覆盖数据库</font>":"<font color='green'>数据库不存在,系统将自动创建</font>";
-			echo $info;
-		}
+			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统将覆盖数据库": "数据库不存在,系统将自动创建";
+        }
+        $result = array(
+            "code" => 200,
+            "data" => $info,
+        );
+        echo json_encode($result);
     }
     else
     {
-        echo "<font color='red'>数据库连接失败！</font>";
+        $result = array(
+            "code" => -1,
+            "data" => "数据库连接失败！",
+        );
+        echo json_encode($result);
     }
     @mysql_close($conn);
     exit();

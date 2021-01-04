@@ -39,11 +39,12 @@
 		?>
 
 		<div class="card mb-4 shadow-sm">
-			<div class="card-header">
-				<h4 class="my-0 fw-normal text-center">首次运行安装包</h4>
+			<div class="card-header bg-success text-white">
+				<h5 class="my-0 fw-normal text-center">首次运行安装程序（v<?php echo $cfg_version_detail;?>）</h5>
 			</div>
 			<div class="card-body">
-				<form>
+				<form action="index.php" method="post" name="form1">
+					<input type="hidden" name="step" value="2" />
 					<input type="hidden" name="cookieencode" value="<?php echo $rnd_cookieEncode; ?>">
 					<input type="hidden" name="adminmail" value="admin@dedebiz.com">
 					<legend>数据库设置</legend>
@@ -74,8 +75,14 @@
 					</div>
 					<div class="mb-3">
 						<label for="dbname" class="form-label">数据库名称</label>
-						<input name="dbname" type="text" class="form-control" id="dbname" placeholder="dedecmsv6">
+						<div class="input-group mb-3">
+							<input id="dbname" name="dbname" type="text" class="form-control" placeholder="dedecmsv6">
+							<div class="input-group-append">
+								<button class="btn btn-outline-success" type="button" id="btnCheckConnect">检查连接</button>
+							</div>
+						</div>
 					</div>
+					<div id="alertConnect"></div>
 					<legend>站点设置</legend>
 					<hr>
 					<div class="mb-3">
@@ -86,7 +93,6 @@
 					<div class="mb-3">
 						<label for="adminpwd" class="form-label">密码</label>
 						<input name="adminpwd" type="text" class="form-control" id="adminpwd" placeholder="admin">
-						
 					</div>
 					<div class="mb-3">
 						<label for="webname" class="form-label">网站名称</label>
@@ -117,7 +123,28 @@
 	</main>
 
 
+<script>
+	$("#btnCheckConnect").click(function() {
+		let dbhost = $('#dbhost').val();
+		let dbuser = $('#dbuser').val();
+		let dbpwd = $('#dbpwd').val();
+		if (!dbhost) dbhost = "localhost";
+		if (!dbuser) dbuser = "root";
+		$.get('index.php?step=10&dbhost=' + dbhost + '&dbuser=' + dbuser + '&dbpwd=' + dbpwd,function(rs){
+			console.log(rs);
+			let result = JSON.parse(rs);
+			if (result.code === 200) {
+				ShowAlert("#alertConnect", result.data, "success", 5000);
+			} else {
+				ShowAlert("#alertConnect", result.data, "danger", 5000);
+			}
+		})
 
+		console.log(dbhost);
+		console.log(dbuser);
+		console.log(dbpwd);
+	})
+</script>
 
 </body>
 

@@ -1,4 +1,3 @@
-start,系统默认模板文件说明
 head.htm,列表页头部模板
 head_nocatalog.htm,内容页\主页等无子栏目页面头部模板
 index.htm,主页模板
