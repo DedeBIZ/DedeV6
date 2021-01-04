@@ -102,7 +102,7 @@ function ViewDevelopoer();
     $authAt = "0000-00-00";
   }
 
-  ShowMsg("<div class='text-left'><p>开发者名称：{$devInfo['dev_name']}</p><p>开发者全称：{$devInfo['realname']}</p><p>开发者ID：{$devInfo['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$devInfo['dev_id']}'>查看详情</a></p>$offUrl<p>认证于：{$authAt}</p></a>", "javascript:;");
+  ShowMsg("<div class='text-left'><p>开发者名称：{$devInfo['dev_name']}</p><p>开发者全称：{$devInfo['realname']}</p><p>开发者ID：{$devInfo['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$devInfo['dev_id']}'>查看详情</a></p>$offUrl<p>认证于：{$authAt}</p></a>", "javascript:;");
   exit;
 }
 /*--------------
@@ -180,7 +180,7 @@ function Setup();
   </tr>
   <tr>
     <td height='28' class='dtb'>开发者ID：</td>
-    <td class='dtb'>{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
+    <td class='dtb'>{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
   </tr>
   <tr>
     <td height='28' class='dtb'>发布时间：</td>
@@ -315,7 +315,7 @@ function DelModule();
   $infos = $dm->GetModuleInfo($hash);
 
   $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与你系统的编码不一致，请向开发者确认它的兼容性)</font>');
-  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
+  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
@@ -384,7 +384,7 @@ function UnInstall();
     else $v['type'] = '文件';
     $filelist .= "{$v['type']}|{$v['name']}\r\n";
   }
-  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
+  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
@@ -522,7 +522,7 @@ function ViewOne();
   } else {
     $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
   }
-  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-secondary btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
+  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
   $win = new OxWindow();
   $win->Init("", "js/blank.js", "");
   $wecome_info = "模块管理";

@@ -69,7 +69,7 @@
       <td width="60%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
           href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>文章列表</u></a>
         &gt;&gt; 发布文章</td>
-      <td width="30%" align='right'>&nbsp; <?php echo $backurl; ?><a class="btn btn-secondary btn-sm"
+      <td width="30%" align='right'>&nbsp; <?php echo $backurl; ?><a class="btn btn-success btn-sm"
           href="catalog_main.php">栏目管理</a> </td>
     </tr>
   </table>
@@ -80,7 +80,7 @@
         <table width="800" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="84" height="24" align="center" background="images/itemnote1.gif">&nbsp;常规信息&nbsp;</td>
-            <td><a href="#" class="btn btn-secondary btn-sm" onClick="ShowHide('getone')">单页采集...</a></td>
+            <td><a href="#" class="btn btn-success btn-sm" onClick="ShowHide('getone')">单页采集...</a></td>
           </tr>
         </table>
       </td>
@@ -99,9 +99,9 @@
               <td width="360" align="center"><input name="geturl" type="text" id="geturl" style="width:290px"
                   value="<?php echo $geturl; ?>" /></td>
               <td>
-                <button type="submit" class='btn btn-secondary btn-sm' name="Submit3">抓取</button>
+                <button type="submit" class='btn btn-success btn-sm' name="Submit3">抓取</button>
                 &nbsp;
-                <button type="button" class='btn btn-secondary btn-sm' name="setrule"
+                <button type="button" class='btn btn-success btn-sm' name="setrule"
                   onClick="OpenMyWinCoOne('article_coonepage_rule.php')">规则管理</button></td>
             </tr>
           </table>
@@ -191,14 +191,14 @@
                     <td height="30">
                       <input name="picname" type="text" id="picname" style="width:240px" />
                       <button type="button" name="Submit2" style="margin-left:8px;"
-                        onClick="SelectImage('form1.picname','small');" class='btn btn-secondary btn-sm'>站内选择</button>
+                        onClick="SelectImage('form1.picname','small');" class='btn btn-success btn-sm'>站内选择</button>
                       <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' /> 远程</label>
-                      <span class="btn btn-secondary btn-sm fileinput-button">
+                      <span class="btn btn-success btn-sm fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
                         选择图片
                         <input type="file" name="files[]" id="iptAddImages">
                       </span>
-                      <button id="btnClearAll" type="button" class="btn btn-secondary btn-sm delete">
+                      <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">
                         <i class="fa fa-trash-o"></i>
                         <span>清空</span>
                       </button>
@@ -221,11 +221,11 @@
               <td width="240">
                 <input name="source" type="text" id="source" style="width:160px" value="<?php echo $source; ?>"
                   size="16" />
-                <button name="selsource" type="button" id="selsource" class="btn btn-secondary btn-sm">选择</button></td>
+                <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button></td>
               <td width="90">作　者：</td>
               <td>
                 <input name="writer" type="text" id="writer" style="width:120px" value="<?php echo $writer; ?>" />
-                <button name="selwriter" type="button" id="selwriter" class="btn btn-secondary btn-sm">选择</button>
+                <button name="selwriter" type="button" id="selwriter" class="btn btn-success btn-sm">选择</button>
               </td>
             </tr>
           </table>
@@ -251,7 +251,7 @@
                 <?php
 			if($cfg_need_typeid2=='Y')
 			{
-				echo "<a href='javascript:AddTypeid2();' class='btn btn-secondary btn-sm'>选择副栏目</a>";
+				echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
 			}
 			?>
               </td>
@@ -281,7 +281,7 @@
               <td width="90">&nbsp;关键字：</td>
               <td width="448"><input type='text' name="keywords" id="keywords" style="width:80%"
                   value="<?php echo $keywords; ?>" /> <button type="button" name="Submit" style="width:56;height:20"
-                  onClick="SelectKeywords('form1.keywords');" class='btn btn-secondary btn-sm'>浏览...</button></td>
+                  onClick="SelectKeywords('form1.keywords');" class='btn btn-success btn-sm'>浏览...</button></td>
               <td><label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey"
                     value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />
                   自动获取，手动填写用","分开</label><br />
@@ -309,10 +309,10 @@
         <td height="28" colspan="2" bgcolor="#F9FCEF" class="bline2">
           <div style='float:left;line-height:28px;'>&nbsp;<strong>文章内容：</strong></div>
           <div style='float:right;;padding-right:8px'>
-            <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
+            <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
           </div>
           <div style='float:right;padding-right:8px'>
-            <button type="submit" class="btn btn-secondary">保存</button>
+            <button type="submit" class="btn btn-success">保存</button>
           </div>
         </td>
       </tr>
@@ -421,7 +421,7 @@
               <td width="90">标题颜色：</td>
               <td>
                 <input name="color" type="text" id="color" style="width:120px" />
-                <button class="btn btn-secondary btn-sm" name="modcolor" type="button" id="modcolor"
+                <button class="btn btn-success btn-sm" name="modcolor" type="button" id="modcolor"
                   onClick="ShowColor(event, this)">选取</button>
               </td>
             </tr>
@@ -512,8 +512,8 @@
       <tr height="35">
         <td width="17%">&nbsp;</td>
         <td width="83%" class="py-3">
-          <button type="submit" class="btn btn-secondary">保存</button>
-          <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
+          <button type="submit" class="btn btn-success">保存</button>
+          <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
         </td>
       </tr>
     </table>

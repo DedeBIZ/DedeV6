@@ -129,11 +129,7 @@ if (!empty($noeditor)) {
             } else if (preg_match("#\.(swf|fly|fla|flv)#i", $file)) {
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
-                if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                    $reurl  = $remoteupUrl . $reurl;
-                } else {
-                    $reurl = $reurl;
-                }
+                $reurl = $reurl;
 
                 if ($file == $comeback) $lstyle = " style='color:red' ";
                 else  $lstyle = "";
@@ -150,11 +146,7 @@ if (!empty($noeditor)) {
 
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
-                if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                    $reurl  = $remoteupUrl . $reurl;
-                } else {
-                    $reurl = $reurl;
-                }
+                $reurl = $reurl;
 
                 if ($file == $comeback) $lstyle = " style='color:red' ";
                 else  $lstyle = "";
@@ -170,11 +162,7 @@ if (!empty($noeditor)) {
             } else if (preg_match("#\.(rm|rmvb)#i", $file)) {
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
-                if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                    $reurl  = $remoteupUrl . $reurl;
-                } else {
-                    $reurl = $reurl;
-                }
+                $reurl = $reurl;
 
                 if ($file == $comeback) $lstyle = " style='color:red' ";
                 else  $lstyle = "";
@@ -191,11 +179,7 @@ if (!empty($noeditor)) {
 
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
-                if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                    $reurl  = $remoteupUrl . $reurl;
-                } else {
-                    $reurl = $reurl;
-                }
+                $reurl = $reurl;
 
                 if ($file == $comeback) $lstyle = " style='color:red' ";
                 else  $lstyle = "";
@@ -224,7 +208,7 @@ if (!empty($noeditor)) {
                         <input type='hidden' name='CKEditorFuncNum' value='<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>'>
                         <tr>
                             <td background="img/tbg.gif" bgcolor="#99CC00">
-                                &nbsp;上　传： <input type='file' name='uploadfile' style='width:320px'>&nbsp;<button class="btn btn-secondary btn-sm" type='submit' name='sb1'>确定</button>
+                                &nbsp;上　传： <input type='file' name='uploadfile' style='width:320px'>&nbsp;<button class="btn btn-success btn-sm" type='submit' name='sb1'>确定</button>
                             </td>
                         </tr>
                     </form>

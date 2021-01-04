@@ -10,7 +10,6 @@
  */
 require_once(DEDEINC . '/channelunit.class.php');
 require_once(DEDEINC . '/typelink.class.php');
-require_once(DEDEINC . '/ftp.class.php');
 
 /**
  * 视图类
@@ -28,7 +27,6 @@ class PartView
     var $TypeLink;
     var $pvCopy;
     var $refObj;
-    var $ftp;
     var $remoteDir;
 
     /**
@@ -41,13 +39,12 @@ class PartView
      */
     function __construct($typeid = 0, $needtypelink = TRUE)
     {
-        global $_sys_globals, $ftp;
+        global $_sys_globals;
         $this->TypeID = $typeid;
         $this->dsql = $GLOBALS['dsql'];
         $this->dtp = new DedeTagParse();
         $this->dtp->SetNameSpace("dede", "{", "}");
         $this->dtp->SetRefObj($this);
-        $this->ftp = &$ftp;
         $this->remoteDir = '';
 
         if ($needtypelink) {

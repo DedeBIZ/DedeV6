@@ -72,7 +72,7 @@
           <tr>
             <td width='30%'><b>附件数据管理</b></td>
             <td align='right'>
-              <a href="media_add.php" class="btn btn-secondary btn-sm">上传新文件</a>
+              <a href="media_add.php" class="btn btn-success btn-sm">上传新文件</a>
             </td>
           </tr>
         </table>
@@ -104,7 +104,7 @@
                 </select>
               </td>
               <td>
-                  <button type="submit" class="btn btn-secondary">搜索</button>
+                  <button type="submit" class="btn btn-success">搜索</button>
               </td>
             </tr>
           </form>
@@ -137,16 +137,16 @@
         <td>{dede:field.uptime function="MyDate('Y-m-d H:i',@me)"/}</td>
         <td>{dede:field.mediatype function="MediaType(@me,$fields['url'])"/}</td>
         <td>
-          <a href='media_edit.php?aid={dede:field.aid/}&dopost=edit' class="btn btn-secondary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 更改</a>
-          <a href='media_edit.php?aid={dede:field.aid/}&dopost=del' class="btn btn-secondary btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> 删除</a>
+          <a href='media_edit.php?aid={dede:field.aid/}&dopost=edit' class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 更改</a>
+          <a href='media_edit.php?aid={dede:field.aid/}&dopost=del' class="btn btn-success btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> 删除</a>
         </td>
       </tr>
       {/dede:datalist}
       <tr bgcolor="#ffffff" height="28">
         <td colspan="7">
-          &nbsp; <button type="button" name="b4" class="btn btn-secondary btn-sm" onClick="AllSel();">全选</button>
-          &nbsp; <button type="button" name="b5" class="btn btn-secondary btn-sm" onClick="NoneSel();">取消</button>
-          &nbsp; <button type="button" name="b6" class="btn btn-secondary btn-sm" onClick="DelSel();">删除所选</button>
+          &nbsp; <button type="button" name="b4" class="btn btn-success btn-sm" onClick="AllSel();">全选</button>
+          &nbsp; <button type="button" name="b5" class="btn btn-success btn-sm" onClick="NoneSel();">取消</button>
+          &nbsp; <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除所选</button>
         </td>
       </tr>
       <tr bgcolor="#F9FCEF" height="36">

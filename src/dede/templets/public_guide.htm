@@ -83,12 +83,12 @@
         <td><?php echo $row['addtable']; ?></td>
         <td><?php echo $catnum; ?></td>
         <td>
-        <a href="catalog_main.php" class="btn btn-secondary btn-sm">管理栏目</a>
+        <a href="catalog_main.php" class="btn btn-success btn-sm">管理栏目</a>
         <?php
         if($catnum>0){
         ?>
-        <a href="<?php echo $row['mancon']; ?>" class="btn btn-secondary btn-sm">管理内容</a>
-        <a href="catalog_do.php?channelid=<?php echo $row['id'];?>&cid=0&dopost=addArchives" class="btn btn-secondary btn-sm">发布内容</a>
+        <a href="<?php echo $row['mancon']; ?>" class="btn btn-success btn-sm">管理内容</a>
+        <a href="catalog_do.php?channelid=<?php echo $row['id'];?>&cid=0&dopost=addArchives" class="btn btn-success btn-sm">发布内容</a>
        <?php }else{ ?>
        		 | 
         <font color='#cccccc'>管理内容</font>
@@ -104,9 +104,9 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td>
-        	<button name="b1" type="button" id="b1" onClick="SetDefault()" class="btn btn-secondary btn-sm">把所选的频道表单设为默认表单</button>
+        	<button name="b1" type="button" id="b1" onClick="SetDefault()" class="btn btn-success btn-sm">把所选的频道表单设为默认表单</button>
         	&nbsp;&nbsp;
-        	<button name="b2" type="button" id="b2" onClick="ResetDefault()" class="btn btn-secondary btn-sm">取消默认表单</button>
+        	<button name="b2" type="button" id="b2" onClick="ResetDefault()" class="btn btn-success btn-sm">取消默认表单</button>
         </td>
       </tr>
     </table></td>

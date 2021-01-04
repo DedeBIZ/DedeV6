@@ -108,7 +108,6 @@ $menusMain = "
   <m:item name='软件频道设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
   <m:item name='防采集串混淆' link='article_string_mix.php' rank='sys_StringMix' target='main' />
   <m:item name='随机模板设置' link='article_template_rand.php' rank='sys_StringMix' target='main' />
-  <m:item name='计划任务管理' link='sys_task.php' rank='sys_Task' target='main' />
   <m:item name='数据库备份/还原' link='sys_data.php' rank='sys_Data' target='main' />
   <m:item name='SQL命令行工具' link='sys_sql_query.php' rank='sys_Data' target='main' />
   <m:item name='病毒扫描[S]' link='sys_safetest.php' rank='sys_verify' target='main' />

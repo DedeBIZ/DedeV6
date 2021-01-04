@@ -202,11 +202,7 @@ if (!empty($noeditor)) {
                         } else if (preg_match("#\.(" . $cfg_imgtype . ")#i", $file)) {
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
-                            if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                                $reurl  = $remoteupUrl . $reurl;
-                            } else {
-                                $reurl = $reurl;
-                            }
+                            $reurl = $reurl;
 
                             if ($file == $comeback) $lstyle = " style='color:red' ";
                             else  $lstyle = "";
@@ -224,11 +220,7 @@ if (!empty($noeditor)) {
                         } else if (preg_match("#\.(jpg)#i", $file)) {
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
-                            if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                                $reurl  = $remoteupUrl . $reurl;
-                            } else {
-                                $reurl = $reurl;
-                            }
+                            $reurl = $reurl;
 
                             if ($file == $comeback) $lstyle = " style='color:red' ";
                             else  $lstyle = "";
@@ -267,7 +259,7 @@ if (!empty($noeditor)) {
                                             <label><input type='checkbox' name='resize' value='1' class='np' /> 缩小 </label>
                                             宽：<input type='text' style='width:46px' name='iwidth' value='<?php echo $cfg_ddimg_width ?>' />
                                             高：<input type='text' style='width:46px' name='iheight' value='<?php echo $cfg_ddimg_height ?>' />
-                                            <button type='submit' name='sb1' class="btn btn-secondary btn-sm">确定</button>
+                                            <button type='submit' name='sb1' class="btn btn-success btn-sm">确定</button>
                                         </td>
                                     </tr>
                                 </form>

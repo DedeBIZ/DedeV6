@@ -90,7 +90,7 @@ if (!empty($noeditor)) {
                     &nbsp;
                     改 名：<input type='test' name='newname' style='width:90px' />
                     &nbsp;
-                    <button type='submit' name='sb1' class="btn btn-secondary btn-sm">确定</button>
+                    <button type='submit' name='sb1' class="btn btn-success btn-sm">确定</button>
                 </form>
             </td>
         </tr>
@@ -150,11 +150,7 @@ if (!empty($noeditor)) {
                             $reurl = "$activeurl/$file";
 
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
-                            if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                                $reurl  = $remoteupUrl . $reurl;
-                            } else {
-                                $reurl = $reurl;
-                            }
+                            $reurl = $reurl;
 
                             $line = "\n<tr height='24'>
    <td class='linerow' bgcolor='#F9FBF0'>
@@ -172,11 +168,7 @@ if (!empty($noeditor)) {
                             $reurl = "$activeurl/$file";
 
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
-                            if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                                $reurl  = $remoteupUrl . $reurl;
-                            } else {
-                                $reurl = $reurl;
-                            }
+                            $reurl = $reurl;
 
                             $line = "\n<tr height='24'>
    <td class='linerow' bgcolor='#F9FBF0'>

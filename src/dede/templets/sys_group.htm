@@ -20,8 +20,8 @@
             <tr>
               <td width="24%" style="padding-left:10px;"><b>系统用户组管理</b> </td>
               <td width="76%" align="right"><b>
-                  <a href="sys_group_add.php" class="btn btn-secondary">增加一个用户组</a>
-                  <a href="sys_admin_user.php" class="btn btn-secondary">管理系统用户</a>
+                  <a href="sys_group_add.php" class="btn btn-success">增加一个用户组</a>
+                  <a href="sys_admin_user.php" class="btn btn-success">管理系统用户</a>
                 </b>
               </td>
             </tr>
@@ -47,8 +47,8 @@
           <?php echo $row->typename?>
         </td>
         <td>
-          <a href='sys_group_edit.php?rank=<?php echo $row->rank?>' class="btn btn-secondary btn-sm">权限设定</a>
-          <a href='sys_admin_user.php?rank=<?php echo $row->rank?>' class="btn btn-secondary btn-sm">组用户</a>
+          <a href='sys_group_edit.php?rank=<?php echo $row->rank?>' class="btn btn-success btn-sm">权限设定</a>
+          <a href='sys_admin_user.php?rank=<?php echo $row->rank?>' class="btn btn-success btn-sm">组用户</a>
           <?php if($row->system==0){ ?><a
             href='sys_group_edit.php?dopost=del&rank=<?php echo $row->rank; ?>'>[删除组]</a><?php } ?>
         </td>

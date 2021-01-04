@@ -11,7 +11,6 @@
 require_once(DEDEINC . "/dedetag.class.php");
 require_once(DEDEINC . "/typelink.class.php");
 require_once(DEDEINC . "/channelunit.func.php");
-require_once(DEDEINC . '/ftp.class.php');
 
 @set_time_limit(0);
 /**
@@ -29,7 +28,6 @@ class RssView
     var $TypeFields;
     var $MaxRow;
     var $dtp;
-    var $ftp;
     var $remoteDir;
 
     /**
@@ -42,7 +40,6 @@ class RssView
      */
     function __construct($typeid, $max_row = 50)
     {
-        global $ftp;
         $this->TypeID = $typeid;
         $this->dtp = new DedeTagParse();
         $this->dtp->refObj = $this;
@@ -57,7 +54,6 @@ class RssView
         $this->TypeFields['typelink'] = $GLOBALS['cfg_basehost'] . $this->TypeLink->GetOneTypeUrl($this->TypeFields);
         $this->TypeFields['powerby'] = $GLOBALS['cfg_powerby'];
         $this->TypeFields['adminemail'] = $GLOBALS['cfg_adminemail'];
-        $this->ftp = &$ftp;
         $this->remoteDir = '';
         foreach ($this->TypeFields as $k => $v) {
             $this->TypeFields[$k] = dede_htmlspecialchars($v);

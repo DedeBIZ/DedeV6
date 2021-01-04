@@ -429,12 +429,6 @@ $actionSearch[10] = array(
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_template_rand.php'
         ),
-        10  =>  array(
-            'title' => '计划任务管理',
-            'description' => '可以添加一个指定时间运行的程序',
-            'purview' => 'sys_task',
-            'linkurl' => 'sys_task.php'
-        ),
         11  =>  array(
             'title' => '数据库备份/还原',
             'description' => '对数据库进行备份和还原',

@@ -61,9 +61,9 @@ function TestOneFile($f)
 
         $message .= "<div style='clear:both;'>
         <div style='width:350px;float:left'>可疑文件：{$trfile}</div>
-        <a class='btn btn-secondary btn-sm' href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank'>更改记录</a>
-        <a class='btn btn-secondary btn-sm' href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank'>删除</a>
-        <a class='btn btn-secondary btn-sm' href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank'>查看源码</a>
+        <a class='btn btn-success btn-sm' href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank'>更改记录</a>
+        <a class='btn btn-success btn-sm' href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank'>删除</a>
+        <a class='btn btn-success btn-sm' href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank'>查看源码</a>
         </div></div><hr>\r\n";
         return 1;
     }

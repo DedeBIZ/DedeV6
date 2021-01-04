@@ -150,15 +150,6 @@ function __save(){  }
     }
 
     //生成HTML
-    if ($cfg_remote_site == 'Y' && $isremote == "1") {
-        if ($serviterm != "") {
-            list($servurl, $servuser, $servpwd) = explode(',', $serviterm);
-            $config = array('hostname' => $servurl, 'username' => $servuser, 'password' => $servpwd, 'debug' => 'TRUE');
-        } else {
-            $config = array();
-        }
-        if (!$ftp->connect($config)) exit('Error:None FTP Connection!');
-    }
     $artUrl = MakeArt($arcID, TRUE, TRUE, $isremote);
     if ($artUrl == '') {
         $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
@@ -167,15 +158,15 @@ function __save(){  }
     //返回成功信息
     $msg = "
     　　请选择你的后续操作：
-    <a href='archives_sg_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布文档</a>
+    <a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文档</a>
     &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文档</a>
+    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $arcID . "&dopost=editArchives' class='btn btn-secondary btn-sm'>更改文档</a>
+    <a href='archives_do.php?aid=" . $arcID . "&dopost=editArchives' class='btn btn-success btn-sm'>更改文档</a>
     &nbsp;&nbsp;
-    <a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-secondary btn-sm'>已发布文档管理</a>
+    <a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>已发布文档管理</a>
     &nbsp;&nbsp;
-    <a href='catalog_main.php' class='btn btn-secondary btn-sm'>网站栏目管理</a>
+    <a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>
     ";
 
     $wintitle = "成功发布文档！";

@@ -83,7 +83,7 @@ foreach($modules as $k=>$v)
 			if(file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
 				echo "<font color='green'>已安装</font> <a style='color:green' href='module_main.php?action=uninstall&hash={$v['hash']}'><u>卸载</u></a>";
 			} else {
-				echo "未安装 <a class='btn btn-secondary btn-sm' href='module_main.php?action=setup&hash={$v['hash']}'>安装</a>";
+				echo "未安装 <a class='btn btn-success btn-sm' href='module_main.php?action=setup&hash={$v['hash']}'>安装</a>";
 			}
 		} else {
 			echo "<div id=\"status_{$v['hash']}\"><font color='red'>未下载</font> <a style='color:red' href=\"javascript:getmodule('download','{$v['hash']}')\"><u>下载</u></a></div>";
@@ -95,11 +95,11 @@ foreach($modules as $k=>$v)
 
           <div id='manager_<?php echo $v['hash']; ?>'
             <?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none;"'?>>
-            <a class="btn btn-secondary"
+            <a class="btn btn-success"
               href='module_main.php?action=view_developoer&hash=<?php echo $v['hash']; ?>'>开发者信息</a>
 
             <div class="btn-group" role="group">
-              <button id="btnAction" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+              <button id="btnAction" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 操作
               </button>

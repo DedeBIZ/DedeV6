@@ -11,7 +11,6 @@
 
 require_once(DEDEINC . "/typelink.class.php");
 require_once(DEDEINC . "/channelunit.class.php");
-require_once(DEDEINC . '/ftp.class.php');
 
 @set_time_limit(0);
 /**
@@ -37,7 +36,6 @@ class SpecView
     var $TempInfos;
     var $Fields;
     var $StartTime;
-    var $ftp;
     var $remoteDir;
 
     /**
@@ -49,7 +47,6 @@ class SpecView
      */
     function __construct($starttime = 0)
     {
-        global $ftp;
         $this->TypeID = 0;
         $this->dsql = $GLOBALS['dsql'];
         $this->dtp = new DedeTagParse();
@@ -59,7 +56,6 @@ class SpecView
         $this->dtp2->SetNameSpace("field", "[", "]");
         $this->TypeLink = new TypeLink(0);
         $this->ChannelUnit = new ChannelUnit(-1);
-        $this->ftp = &$ftp;
         $this->remoteDir = '';
 
         //设置一些全局参数的值

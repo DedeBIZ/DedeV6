@@ -91,7 +91,7 @@
             href="content_s_list.php"><u>专题列表</u></a><a
             href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"></a>
           &gt;&gt; 发布专题</td>
-        <td width="10%" align="right"> <a href="makehtml_spec.php" class="btn btn-secondary btn-sm">更新HTML</a>&nbsp;</td>
+        <td width="10%" align="right"> <a href="makehtml_spec.php" class="btn btn-success btn-sm">更新HTML</a>&nbsp;</td>
       </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -163,15 +163,15 @@
                 <table width="100%" border="0" cellspacing="1" cellpadding="1">
                   <tr>
                     <td height="30"><input name="picname" type="text" id="picname" style="width:240px" />
-                      <button type="button" name="Submit2" class="btn btn-secondary"
+                      <button type="button" name="Submit2" class="btn btn-success"
                         onClick="SelectImage('form1.picname','small');" >站内选择</button>
                       <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' /> 远程 </label>
-                      <span class="btn btn-secondary fileinput-button">
+                      <span class="btn btn-success fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
                         选择图片
                         <input type="file" name="files[]" id="iptAddImages">
                       </span>
-                      <button id="btnClearAll" type="button" class="btn btn-secondary delete">
+                      <button id="btnClearAll" type="button" class="btn btn-success delete">
                         <i class="fa fa-trash-o"></i>
                         <span>清空</span>
                       </button>
@@ -215,7 +215,7 @@
                 </select></td>
               <td width="90">标题颜色：</td>
               <td width="159"><input name="color" type="text" id="color" style="width:120px" /></td>
-              <td><button name="modcolor" type="button" id="modcolor" class="btn btn-secondary btn-sm" onClick="ShowColor(event,this)">选取</button></td>
+              <td><button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button></td>
             </tr>
           </table>
         </td>
@@ -248,7 +248,7 @@
               <td width="202"><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np"
                   id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />
                 自动获取，手动填写用","分开<br />
-                <button type="button" name="Submit" class="btn btn-secondary btn-sm"
+                <button type="button" name="Submit" class="btn btn-success btn-sm"
                   onClick="SelectKeywords('form1.keywords');">浏览...</button></td>
             </tr>
           </table>
@@ -314,7 +314,7 @@
               <td width="90">&nbsp;专题模板：</td>
               <td><input name="templet" type="text" id="templet" style="width:250px"
                   value="<?php echo $cfg_df_style?>/article_spec.htm" />
-                <button type="button" name="set3" class="btn btn-secondary btn-sm"
+                <button type="button" name="set3" class="btn btn-success btn-sm"
                   onClick="SelectTemplets('form1.templet');">浏览...</button></td>
             </tr>
           </table>
@@ -381,7 +381,7 @@
               <td width="479"><textarea name="arcid<?php echo $i?>" onblur='CheckVal(<?php echo $i ?>)' rows="3"
                   id="arcid<?php echo $i?>" style="width:90%"></textarea></td>
               <td width="188">
-                <button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-secondary btn-sm"
+                <button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm"
                   onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文章</button>
                 </td>
             </tr>
@@ -425,7 +425,7 @@
               <td>节点容器模板：</td>
               <td colspan="2"><input name="notetemplet<?php echo $i?>" type="text" id="notetemplet<?php echo $i?>"
                   value="system/channel_spec_note.htm" style="width:300">
-                <button type="button" name="selno<?php echo $i?>" class="btn btn-secondary btn-sm"
+                <button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm"
                   onClick="SelectTemplets('form1.notetemplet<?php echo $i?>');">浏览...</button></td>
             </tr>
             <?php
@@ -445,8 +445,8 @@
               <td width="83%">
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="115" class="py-3"><button type="submit" class="btn btn-secondary">保存</button></td>
-                    <td width="99" class="py-3"><button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button></td>
+                    <td width="115" class="py-3"><button type="submit" class="btn btn-success">保存</button></td>
+                    <td width="99" class="py-3"><button type="button" onClick="location.reload();" class="btn btn-success">重置</button></td>
                   </tr>
                 </table>
               </td>

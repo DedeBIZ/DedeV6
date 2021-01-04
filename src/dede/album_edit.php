@@ -378,15 +378,6 @@ function __save(){  }
 
     //生成HTML
     UpIndexKey($id, $arcrank, $typeid, $sortrank, $tags);
-    if ($cfg_remote_site == 'Y' && $isremote == "1") {
-        if ($serviterm != "") {
-            list($servurl, $servuser, $servpwd) = explode(',', $serviterm);
-            $config = array('hostname' => $servurl, 'username' => $servuser, 'password' => $servpwd, 'debug' => 'TRUE');
-        } else {
-            $config = array();
-        }
-        if (!$ftp->connect($config)) exit('Error:None FTP Connection!');
-    }
     $arcUrl = MakeArt($id, true, true, $isremote);
     if ($arcUrl == '') {
         $arcUrl = $cfg_phpurl . "/view.php?aid=$id";
@@ -408,13 +399,13 @@ function __save(){  }
     //返回成功信息
     $msg =
         " 　　请选择你的后续操作：
-    <a href='album_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布图片</a>
+    <a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $id . "&dopost=editArchives' class='btn btn-secondary btn-sm'>查看更改</a>
+    <a href='archives_do.php?aid=" . $id . "&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
     &nbsp;&nbsp;
-    <a href='$arcUrl' target='_blank' class='btn btn-secondary btn-sm'>预览文档</a>
+    <a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>预览文档</a>
     &nbsp;&nbsp;
-    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-secondary btn-sm'>管理已发布图片</a>
+    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理已发布图片</a>
     &nbsp;&nbsp;
     $backurl
     ";

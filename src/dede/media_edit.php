@@ -25,24 +25,17 @@ if ($dopost == 'del') {
         $ids = "";
     }
     if ($ids == "") {
-        $myrow = $dsql->GetOne("SELECT url FROM #@__uploads WHERE aid='" . $aid . "'");
+        $myrow = $dsql->GetOne("SELECT url FROM `#@__uploads` WHERE aid='" . $aid . "'");
         $truefile = $cfg_basedir . $myrow['url'];
         $rs = 0;
         if (!file_exists($truefile) || $myrow['url'] == "") {
             $rs = 1;
         } else {
             $rs = @unlink($truefile);
-            //如果开启远程附件则需要同步删除文件
-            if ($cfg_remote_site == 'Y') {
-                if ($ftp->connect($ftpconfig) && $remoteuploads == 1) {
-                    $remotefile = str_replace(DEDEROOT, '', $truefile);
-                    $ftp->delete_file($remotefile);
-                }
-            }
         }
         if ($rs == 1) {
             $msg = "成功删除一个附件！";
-            $dsql->ExecuteNoneQuery("DELETE FROM #@__uploads WHERE aid='" . $aid . "'");
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE aid='" . $aid . "'");
         }
         ShowMsg($msg, $backurl);
         exit();
@@ -56,13 +49,9 @@ if ($dopost == 'del') {
                 $idquery .= " OR aid='$aid' ";
             }
         }
-        $dsql->SetQuery("SELECT aid,url FROM #@__uploads $idquery ");
+        $dsql->SetQuery("SELECT aid,url FROM `#@__uploads` $idquery ");
         $dsql->Execute();
 
-        //如果开启远程附件则需要同步删除文件
-        if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-            $ftp->connect($ftpconfig);
-        }
         while ($myrow = $dsql->GetArray()) {
             $truefile = $cfg_basedir . $myrow['url'];
             $rs = 0;
@@ -70,13 +59,9 @@ if ($dopost == 'del') {
                 $rs = 1;
             } else {
                 $rs = @unlink($truefile);
-                if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-                    $remotefile = str_replace(DEDEROOT, '', $truefile);
-                    $ftp->delete_file($remotefile);
-                }
             }
             if ($rs == 1) {
-                $dsql->ExecuteNoneQuery("DELETE FROM #@__uploads WHERE aid='" . $myrow['aid'] . "'");
+                $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE aid='" . $myrow['aid'] . "'");
             }
         }
         ShowMsg('成功删除选定的文件！', $backurl);
@@ -89,7 +74,7 @@ function __save_edit() //保存更改
     if ($aid == "") exit();
     CheckCSRF();
     //检查是否有修改权限
-    $myrow = $dsql->GetOne("SELECT * FROM #@__uploads WHERE aid='" . $aid . "'");
+    $myrow = $dsql->GetOne("SELECT * FROM `#@__uploads` WHERE aid='" . $aid . "'");
     if ($myrow['mid'] != $cuserLogin->getUserID()) {
         CheckPurview('sys_Upload');
     }

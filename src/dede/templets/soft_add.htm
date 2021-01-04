@@ -68,8 +68,8 @@
         <td width="64%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
             href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>软件列表</u></a>&gt;&gt;发布新软件
         </td>
-        <td align="right">&nbsp; <a href="catalog_main.php" class="btn btn-secondary btn-sm">栏目管理</a>
-          <a href="soft_config.php" class="btn btn-secondary btn-sm">下载频道参数设定</a>&nbsp;</td>
+        <td align="right">&nbsp; <a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a>
+          <a href="soft_config.php" class="btn btn-success btn-sm">下载频道参数设定</a>&nbsp;</td>
       </tr>
     </table>
 
@@ -174,14 +174,14 @@
                     <td height="30">
                       <input name="picname" type="text" id="picname" style="width:240px" />
                       <button type="button" name="Submit2"
-                        onClick="SelectImage('form1.picname','small');" class='btn btn-secondary btn-sm'>站内选择</button>
+                        onClick="SelectImage('form1.picname','small');" class='btn btn-success btn-sm'>站内选择</button>
                       <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' /> 远程 </label>
-                      <span class="btn btn-secondary fileinput-button">
+                      <span class="btn btn-success fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
                         选择图片
                         <input type="file" name="files[]" id="iptAddImages">
                       </span>
-                      <button id="btnClearAll" type="button" class="btn btn-secondary delete">
+                      <button id="btnClearAll" type="button" class="btn btn-success delete">
                         <i class="fa fa-trash-o"></i>
                         <span>清空</span>
                       </button>
@@ -231,7 +231,7 @@
                 <?php
 			if($cfg_need_typeid2=='Y')
 			{
-				echo "<a href='javascript:AddTypeid2();' class='btn btn-secondary btn-sm'>选择副栏目</a>";
+				echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
 			}
 			?>
               </td>
@@ -386,7 +386,7 @@
             </tr>
             <tr>
               <td height="26" colspan="4" style="border-top:1px dashed #8EAF61" class="py-3">&nbsp; <span
-                  class="STYLE1">（如果设定了下载限制，<a class='btn btn-secondary btn-sm' href="soft_config.php"
+                  class="STYLE1">（如果设定了下载限制，<a class='btn btn-success btn-sm' href="soft_config.php"
                     target="_blank">软件频道设置</a>中“附件下载方式：”必须选择“链接到跳转页面”） </span></td>
             </tr>
           </table>
@@ -402,7 +402,7 @@
               <td width="90" height="30">&nbsp;本地地址：</td>
               <td>
                 <input name="softurl1" type="text" id="softurl1" size="35" />
-                <button class='btn btn-secondary btn-sm' name="sel1" type="button" id="sel1" onClick="SelectSoft('form1.softurl1')">选取</button>
+                <button class='btn btn-success btn-sm' name="sel1" type="button" id="sel1" onClick="SelectSoft('form1.softurl1')">选取</button>
                 服务器名称：
                 <input name="servermsg1" type="text" id="servermsg1" value="本地下载" style="width:150px" />
               </td>
@@ -460,9 +460,9 @@
               <td width="90">其它地址：</td>
               <td>
                 <input name="picnum" type="text" id="picnum" size="8" value="5" />
-                <button name='kkkup' class='btn btn-secondary btn-sm' type='button' id='kkkup2' onClick="MakeUpload();">增加地址</button>
+                <button name='kkkup' class='btn btn-success btn-sm' type='button' id='kkkup2' onClick="MakeUpload();">增加地址</button>
                 &nbsp;
-                <button type="button" class='btn btn-secondary btn-sm' name="Submit3" id="btsh3" onClick="ShowHideAddr();">隐藏地址</button>
+                <button type="button" class='btn btn-success btn-sm' name="Submit3" id="btsh3" onClick="ShowHideAddr();">隐藏地址</button>
                 (最多为30个链接)
               </td>
             </tr>
@@ -487,7 +487,7 @@
                 下载远程图片和资源</label>
                 <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1"
                   <?php if($cfg_arc_dellink=='Y') echo ' checked'; ?>>
-                删除非站内链接</label> <a  class='btn btn-secondary btn-sm' href="javascript:OpenMyWin('article_allowurl_edit.php');">设置</a>
+                删除非站内链接</label> <a  class='btn btn-success btn-sm' href="javascript:OpenMyWin('article_allowurl_edit.php');">设置</a>
                 <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"
                   <?php if($cfg_arc_autopic=='Y') echo ' checked'; ?>>
                 提取第一个图片为缩略图</label> </td>
@@ -544,7 +544,7 @@
               <td width="90">标题颜色：</td>
               <td>
                 <input name="color" type="text" id="color" style="width:120px">
-                <button name="modcolor" type="button" id="modcolor" class='btn btn-secondary btn-sm' onClick="ShowColor(event,this)">选取</button> </td>
+                <button name="modcolor" type="button" id="modcolor" class='btn btn-success btn-sm' onClick="ShowColor(event,this)">选取</button> </td>
             </tr>
           </table>
         </td>
@@ -596,7 +596,7 @@
             <tr>
               <td width="90">&nbsp;关键字：</td>
               <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value="" />
-                <button type="button" name="Submit" class='btn btn-secondary btn-sm'
+                <button type="button" name="Submit" class='btn btn-success btn-sm'
                   onClick="SelectKeywords('form1.keywords');">浏览...</button>&nbsp;&nbsp; <label><input
                   name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1"
                   <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>> 自动获取，手动填写用","分开</label></td>
@@ -638,8 +638,8 @@
               <td width="83%">
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="115" class="py-3"><button type="submit" class="btn btn-secondary">保存</button></td>
-                    <td width="99" class="py-3"><button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button></td>
+                    <td width="115" class="py-3"><button type="submit" class="btn btn-success">保存</button></td>
+                    <td width="99" class="py-3"><button type="button" onClick="location.reload();" class="btn btn-success">重置</button></td>
                   </tr>
                 </table>
               </td>

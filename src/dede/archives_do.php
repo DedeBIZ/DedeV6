@@ -594,9 +594,9 @@ function quickEdit(){ }
     </tr>
     <tr height='32'>
         <td colspan='2' align='center' style='padding-top:12px' class='py-3'>
-            <button type="submit" class="btn btn-secondary">保存</button>
+            <button type="submit" class="btn btn-success">保存</button>
             &nbsp;&nbsp;
-            <button type="button" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class="btn btn-secondary">关闭</button>
+            <button type="button" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class="btn btn-success">关闭</button>
         </td>
         </td>
     </tr>

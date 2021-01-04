@@ -70,15 +70,6 @@ $fullfilename = $cfg_basedir . $activepath . '/' . $filename;
 $fullfileurl = $activepath . '/' . $filename;
 move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到 $fullfilename 失败！");
 @unlink($uploadfile);
-if ($cfg_remote_site == 'Y' && $remoteuploads == 1) {
-    //分析远程文件路径
-    $remotefile = str_replace(DEDEROOT, '', $fullfilename);
-    $localfile = '../..' . $remotefile;
-    //创建远程文件夹
-    $remotedir = preg_replace('/[^\/]*\.(' . $cfg_softtype . ')/', '', $remotefile);
-    $ftp->rmkdir($remotedir);
-    $ftp->upload($localfile, $remotefile);
-}
 
 if ($uploadfile_type == 'application/x-shockwave-flash') {
     $mediatype = 2;

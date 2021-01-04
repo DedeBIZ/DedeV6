@@ -154,7 +154,7 @@
         <tr>
             <td height="28" background="images/wbg.gif" colspan="6" style="padding-left:10px;">
                 <div style="float:left"><b>·联动枚举组管理</b></div>
-                <div style="float:right"><a href='stepselect_main.php?action=upallcache' class="btn btn-secondary btn-sm">更新所有枚举缓存</a>&nbsp;
+                <div style="float:right"><a href='stepselect_main.php?action=upallcache' class="btn btn-success btn-sm">更新所有枚举缓存</a>&nbsp;
                 </div>
             </td>
         </tr>
@@ -184,15 +184,15 @@
                             </select>
                         </td>
                         <td width="350">
-                            <button type="button" name="gedit" id="gedit" class="btn btn-secondary btn-sm"
+                            <button type="button" name="gedit" id="gedit" class="btn btn-success btn-sm"
                                 onClick="EditType()">修改</button>
-                            <button type="button" name="gdel" id="gdel" class="btn btn-secondary btn-sm"
+                            <button type="button" name="gdel" id="gdel" class="btn btn-success btn-sm"
                                 onClick="DelType()">删除</button>
-                            <button type="button" name="gview" id="gview" class="btn btn-secondary btn-sm"
+                            <button type="button" name="gview" id="gview" class="btn btn-success btn-sm"
                                 onClick="ViewType()">预览</button>
                         </td>
                         <td align="right">
-                            <button type="button" name="addnew" id="addnew" class="btn btn-secondary btn-sm"
+                            <button type="button" name="addnew" id="addnew" class="btn btn-success btn-sm"
                                 onClick="AddType()">新增类别组</button>
                         </td>
                     </tr>
@@ -259,7 +259,7 @@ if(!empty($egroup))
                         <b>&nbsp;分类名称：</b><INPUT TYPE="text" NAME="ename" class="iptxt" style='width:350px' />
                     </div>
                     <div style='float:left;padding-left:6px'>
-                        <button TYPE="submit" name='sb2' class="btn btn-secondary btn-sm">增加分类</button>
+                        <button TYPE="submit" name='sb2' class="btn btn-success btn-sm">增加分类</button>
                     </div>
                     <div style='clear:both;color:#333333;line-height:24px;'>
                         &nbsp;<img src='images/help.gif' /> 如果没选择隶属分类则表示增加的是顶级分类，用半角逗号","分开可以一次增加多个分类。
@@ -333,8 +333,8 @@ if(!empty($egroup))
                 if(!empty($egroup))
         {
         ?>
-                    <a href='javascript:updateItem({dede:field.id/});' class="btn btn-secondary btn-sm"> <i class="fa fa-refresh" aria-hidden="true"></i> 更新</a>
-                    <a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class="btn btn-secondary btn-sm"> <i class="fa fa-trash" aria-hidden="true"></i> 删除</a>
+                    <a href='javascript:updateItem({dede:field.id/});' class="btn btn-success btn-sm"> <i class="fa fa-refresh" aria-hidden="true"></i> 更新</a>
+                    <a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class="btn btn-success btn-sm"> <i class="fa fa-trash" aria-hidden="true"></i> 删除</a>
                     <?php
          }
          else
@@ -349,9 +349,9 @@ if(!empty($egroup))
         <tr height="24">
             <td colspan="8" bgcolor="#ffffff">
                 &nbsp;
-                <a href='javascript:TogSel();' class='btn btn-secondary btn-sm'>全选/反选</a>
+                <a href='javascript:TogSel();' class='btn btn-success btn-sm'>全选/反选</a>
                 &nbsp;
-                <a href='javascript:DelSel();' class='btn btn-secondary btn-sm'>删除所选</a>
+                <a href='javascript:DelSel();' class='btn btn-success btn-sm'>删除所选</a>
             </td>
         </tr>
         <tr align="center" bgcolor="#F9FCEF" height="28">
@@ -408,8 +408,8 @@ else
             <td> {dede:field.issystem function="@me==1 ? '是' : '否'" /} </td>
             <td>{dede:field.egroup /}</td>
             <td>
-                <a href='stepselect_main.php?action=upallcache&egroup={dede:field.egroup /}' class="btn btn-secondary btn-sm"> <i class="fa fa-refresh" aria-hidden="true"></i> 更新缓存</a>
-                <a href='stepselect_main.php?egroup={dede:field.egroup /}' class="btn btn-secondary btn-sm"> <i class="fa fa-list-ul" aria-hidden="true"></i> 查看子分类</a>
+                <a href='stepselect_main.php?action=upallcache&egroup={dede:field.egroup /}' class="btn btn-success btn-sm"> <i class="fa fa-refresh" aria-hidden="true"></i> 更新缓存</a>
+                <a href='stepselect_main.php?egroup={dede:field.egroup /}' class="btn btn-success btn-sm"> <i class="fa fa-list-ul" aria-hidden="true"></i> 查看子分类</a>
             </td>
         </tr>
         {/dede:datalist}

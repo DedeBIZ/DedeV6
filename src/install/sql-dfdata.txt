@@ -4082,7 +4082,6 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('746','cfg_album_mark','图集是否使用水印(小图也会受影响)','3','bool','N'),
 ('747','cfg_mb_feedcheck','会员动态是否需要审核','4','bool','N'),
 ('748','cfg_mb_msgischeck','会员状态是否需要审核','4','bool','N'),
-('750','cfg_remote_site','是否启用远程站点','2','bool','N'),
 ('751','cfg_title_site','是否发布和编辑文档时远程发布(启用远程站点的前提下)','2','bool','N'),
 ('752','cfg_mysql_type','数据库类型（支持mysql和mysqli）','2','string','mysql'),
 ('14', 'cfg_domain_cookie', '跨域共享cookie的域名(例如: .dedebiz.com)', 2, 'string', ''),

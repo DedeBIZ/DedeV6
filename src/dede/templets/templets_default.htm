@@ -58,8 +58,8 @@
 					</b>
 				</div>
 				<div style='float:right;padding-right:10px'>
-					<a class="btn btn-secondary btn-sm" href='templets_main.php'>默认模板目录</a>
-					<a class="btn btn-secondary btn-sm" href='templets_main.php?acdir=plus'>插件模板目录</a>
+					<a class="btn btn-success btn-sm" href='templets_main.php'>默认模板目录</a>
+					<a class="btn btn-success btn-sm" href='templets_main.php?acdir=plus'>插件模板目录</a>
 				</div>
 			</td>
 		</tr>
@@ -86,13 +86,13 @@
 				<?php echo $filetime; ?>
 			</td>
 			<td align='center'>
-				<a class="btn btn-secondary btn-sm" href='tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>' title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+				<a class="btn btn-success btn-sm" href='tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>' title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 				<?php
 			if(!isset($fileinfos[$filename]))
 			{
 			?>
 				|
-				<a href='#' class="btn btn-secondary btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
+				<a href='#' class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
 				<?php
 		   }
 			?>
@@ -102,9 +102,9 @@
 		<tr>
 			<td colspan="4" height='32' bgcolor="#F9FCEF">
 				&nbsp;
-				<a class="btn btn-secondary" href='tpl.php?action=newfile&acdir=<?php echo $acdir; ?>'>新建模板</a>
+				<a class="btn btn-success" href='tpl.php?action=newfile&acdir=<?php echo $acdir; ?>'>新建模板</a>
 				&nbsp;
-				<a class="btn btn-secondary" href='tpl.php?action=upload&acdir=<?php echo $acdir; ?>'>上传模板</a>
+				<a class="btn btn-success" href='tpl.php?action=upload&acdir=<?php echo $acdir; ?>'>上传模板</a>
 			</td>
 		</tr>
 	</table>

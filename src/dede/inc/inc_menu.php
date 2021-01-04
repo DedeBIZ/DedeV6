@@ -64,7 +64,6 @@ if ($cuserLogin->getUserType() >= 10) {
   <m:item name='软件频道设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
   <m:item name='防采集串混淆' link='article_string_mix.php' rank='sys_StringMix' target='main' />
   <m:item name='随机模板设置' link='article_template_rand.php' rank='sys_StringMix' target='main' />
-  <m:item name='计划任务管理' link='sys_task.php' rank='sys_Task' target='main' />
   <m:item name='数据库备份/还原' link='sys_data.php' rank='sys_Data' target='main' />
   <m:item name='SQL命令行工具' link='sys_sql_query.php' rank='sys_Data' target='main' />
   <m:item name='病毒扫描[S]' link='sys_safetest.php' rank='sys_verify' target='main' />
@@ -82,7 +81,6 @@ if ($cuserLogin->getUserType() >= 10) {
 </m:top>
     ";
 }
-$remoteMenu = ($cfg_remote_site == 'Y') ? "<m:item name='远程服务器同步' link='makeremote_all.php' rank='sys_ArcBatch' target='main' />" : "";
 $menusMain = "
 -----------------------------------------------
 
@@ -122,7 +120,6 @@ $adminMenu1
 <m:top item='5_' name='自动任务' notshowall='1'  display='block' rank='sys_MakeHtml'>
   <m:item name='一键更新网站' link='makehtml_all.php' rank='sys_MakeHtml' target='main' />
   <m:item name='更新系统缓存' link='sys_cache_up.php' rank='sys_ArcBatch' target='main' />
-  {$remoteMenu}
 </m:top>
 
 <m:top item='5_' name='HTML更新' notshowall='1' display='none' rank='sys_MakeHtml'>

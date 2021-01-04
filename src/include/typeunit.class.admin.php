@@ -129,12 +129,12 @@ class TypeUnit
                 echo "  <td style='background-color:#FBFCE2;' width='2%' class='bline'><img style='cursor:pointer' id='img" . $id . "' onClick=\"LoadSuns('suns" . $id . "',$id);\" src='images/dedeexplode.gif' width='11' height='11'></td>\r\n";
                 echo "  <td style='background-color:#FBFCE2;' class='bline'><table width='98%' border='0' cellspacing='0' cellpadding='0'><tr><td width='50%'><input class='np' type='checkbox' name='tids[]' value='{$id}'><a href='catalog_do.php?cid=" . $id . "&dopost=listArchives' oncontextmenu=\"CommonMenu(event,this,$id,'" . urlencode($typeName) . "')\"> {$nss}" . $typeName . "[ID:" . $id . "]</a>(文档：" . $this->GetTotalArc($id) . ")  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><img src='images/write2.gif'/></a>";
                 echo "    </td><td align='right'>";
-                echo " <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-secondary btn-sm' title='预览'><i class='fa fa-globe' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-secondary btn-sm' title='内容'><i class='fa fa-list' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_add.php?id={$id}' class='btn btn-secondary btn-sm' title='增加子类'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-secondary btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' class='btn btn-secondary btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+                echo " <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-success btn-sm' title='预览'><i class='fa fa-globe' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-success btn-sm' title='内容'><i class='fa fa-list' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_add.php?id={$id}' class='btn btn-success btn-sm' title='增加子类'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_edit.php?id={$id}' class='btn btn-success btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-success btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' class='btn btn-success btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
                 echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
             }
             //带封面的频道
@@ -143,12 +143,12 @@ class TypeUnit
                 echo "  <td style='background-color:#FBFCE2;'  width='2%' class='bline'><img style='cursor:pointer' id='img" . $id . "' onClick=\"LoadSuns('suns" . $id . "',$id);\" src='images/dedeexplode.gif' width='11' height='11'></td>\r\n";
                 echo "  <td style='background-color:#FBFCE2;' class='bline'><table width='98%' border='0' cellspacing='0' cellpadding='0'><tr><td width='50%'><input class='np' type='checkbox' name='tids[]' value='{$id}'><a href='catalog_do.php?cid=" . $id . "&dopost=listArchives' oncontextmenu=\"CommonMenuPart(event,this,$id,'" . urlencode($typeName) . "')\"> {$nss}" . $typeName . "[ID:" . $id . "]</a>  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"> <img src='images/write2.gif'/> </a>";
                 echo "    </td><td align='right'>";
-                echo " <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-secondary btn-sm' title='预览'><i class='fa fa-globe' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-secondary btn-sm' title='内容'><i class='fa fa-list' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_add.php?id={$id}' class='btn btn-secondary btn-sm' title='增加子类'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-secondary btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' class='btn btn-secondary btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+                echo " <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' class='btn btn-success btn-sm' title='预览'><i class='fa fa-globe' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-success btn-sm' title='内容'><i class='fa fa-list' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_add.php?id={$id}' class='btn btn-success btn-sm' title='增加子类'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_edit.php?id={$id}' class='btn btn-success btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-success btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' class='btn btn-success btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
                 echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
             }
             //独立页面
@@ -157,10 +157,10 @@ class TypeUnit
                 echo "  <td width='2%' class='bline2'><img style='cursor:pointer' id='img" . $id . "' onClick=\"LoadSuns('suns" . $id . "',$id);\" src='images/dedeexplode.gif' width='11' height='11'></td>\r\n";
                 echo "  <td class='bline2'><table width='98%' border='0' cellspacing='0' cellpadding='0'><tr><td width='50%'><input class='np' type='checkbox' name='tids[]' value='{$id}'><a href='catalog_edit.php?id=" . $id . "' oncontextmenu=\"SingleMenu(event,this,$id,'" . urlencode($typeName) . "')\"> {$nss}" . $typeName . "[ID:" . $id . "]</a>  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><img src='images/write2.gif'/></a>";
                 echo "    </td><td align='right'>";
-                echo " <a href='{$typeDir}' target='_blank' class='btn btn-secondary btn-sm' title='预览'><i class='fa fa-globe' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-secondary btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
-                echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' class='btn btn-secondary btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+                echo " <a href='{$typeDir}' target='_blank' class='btn btn-success btn-sm' title='预览'><i class='fa fa-globe' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_edit.php?id={$id}' class='btn btn-success btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-success btn-sm' title='移动'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
+                echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' class='btn btn-success btn-sm' title='删除'><i class='fa fa-trash' aria-hidden='true'></i></a>";
                 echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
             }
             echo "  <tr><td colspan='2' id='suns" . $id . "'>";
@@ -218,12 +218,12 @@ class TypeUnit
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#FAFCE0';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\"><td width='50%'>";
                     echo "<input class='np' type='checkbox' name='tids[]' value='{$id}'>$step <img style='cursor:pointer' id='img" . $id . "' onClick=\"LoadSuns('suns" . $id . "',$id);\" src='images/dedeexplode.gif' width='11' height='11'> <a href='catalog_do.php?cid=" . $id . "&dopost=listArchives'>{$nss}" . $typeName . "[ID:" . $id . "]</a>(文档：" . $this->GetTotalArc($id) . ")  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><img src='images/write2.gif'/></a>";
                     echo "</td><td align='right'>";
-                    echo " <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-secondary btn-sm'><i class='fa fa-globe' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-secondary btn-sm' title='内容'><i class='fa fa-list' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_add.php?id={$id}' class='btn btn-secondary btn-sm' title='增加子类'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-secondary btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' title='删除' class='btn btn-secondary btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+                    echo " <a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-success btn-sm'><i class='fa fa-globe' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-success btn-sm' title='内容'><i class='fa fa-list' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_add.php?id={$id}' class='btn btn-success btn-sm' title='增加子类'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_edit.php?id={$id}' class='btn btn-success btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-success btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' title='删除' class='btn btn-success btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
                     echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
                 }
 
@@ -233,12 +233,12 @@ class TypeUnit
                     echo "<td class='nbline'><table width='98%' border='0' cellspacing='0' cellpadding='0'><tr onMouseMove=\"javascript:this.bgColor='#FAFCE0';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\"><td width='50%'>";
                     echo "<input class='np' type='checkbox' name='tids[]' value='{$id}'>$step <img style='cursor:pointer' id='img" . $id . "' onClick=\"LoadSuns('suns" . $id . "',$id);\" src='images/dedeexplode.gif' width='11' height='11'> <a href='catalog_do.php?cid=" . $id . "&dopost=listArchives'>{$nss}" . $typeName . "[ID:" . $id . "]</a>  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><img src='images/write2.gif'/></a>";
                     echo "</td><td align='right'>";
-                    echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-secondary btn-sm'><i class='fa fa-globe' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-secondary btn-sm' title='内容'><i class='fa fa-list' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_add.php?id={$id}' class='btn btn-secondary btn-sm' title='增加子类'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-secondary btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' title='删除' class='btn btn-secondary btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+                    echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览' class='btn btn-success btn-sm'><i class='fa fa-globe' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_do.php?cid={$id}&dopost=listArchives' class='btn btn-success btn-sm' title='内容'><i class='fa fa-list' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_add.php?id={$id}' class='btn btn-success btn-sm' title='增加子类'><i class='fa fa-plus-circle' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_edit.php?id={$id}' class='btn btn-success btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-success btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' title='删除' class='btn btn-success btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
                     echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
                 }
 
@@ -249,10 +249,10 @@ class TypeUnit
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#FAFCE0';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\"><td width='50%'>";
                     echo "<input class='np' type='checkbox' name='tids[]' value='{$id}'>$step <img style='cursor:pointer' id='img" . $id . "' onClick=\"LoadSuns('suns" . $id . "',$id);\" src='images/dedeexplode.gif' width='11' height='11'> <a href='catalog_do.php?cid=" . $id . "&dopost=listArchives'>{$nss}" . $typeName . "[ID:" . $id . "]</a>  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><img src='images/write2.gif'/></a>";
                     echo "</td><td align='right'>";
-                    echo " <a href='{$typeDir}' target='_blank' title='预览' class='btn btn-secondary btn-sm'><i class='fa fa-globe' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_edit.php?id={$id}' class='btn btn-secondary btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-secondary btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
-                    echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' title='删除' class='btn btn-secondary btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+                    echo " <a href='{$typeDir}' target='_blank' title='预览' class='btn btn-success btn-sm'><i class='fa fa-globe' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_edit.php?id={$id}' class='btn btn-success btn-sm' title='更改'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动' class='btn btn-success btn-sm'><i class='fa fa-share-square' aria-hidden='true'></i></a>";
+                    echo " <a href='catalog_del.php?id={$id}&typeoldname=" . urlencode($typeName) . "' title='删除' class='btn btn-success btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>";
                     echo "&nbsp; <input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:20px'></td></tr></table></td></tr>\r\n";
                 }
                 echo "  <tr><td id='suns" . $id . "' style='display:none'><table width='100%' border='0' cellspacing='0' cellpadding='0'>";

@@ -12,7 +12,6 @@ if (!defined('DEDEINC')) exit("Request Error!");
 require_once(DEDEINC . "/typelink.class.php");
 require_once(DEDEINC . "/channelunit.class.php");
 require_once(DEDEINC . "/downmix.inc.php");
-require_once(DEDEINC . '/ftp.class.php');
 
 @set_time_limit(0);
 /**
@@ -42,7 +41,6 @@ class Archives
     var $SplitTitles;
     var $PreNext;
     var $addTableRow;
-    var $ftp;
     var $remoteDir;
 
     /**
@@ -54,7 +52,7 @@ class Archives
      */
     function __construct($aid)
     {
-        global $dsql, $ftp;
+        global $dsql;
         $this->IsError = FALSE;
         $this->ArcID = $aid;
         $this->PreNext = array();
@@ -98,7 +96,6 @@ class Archives
             $this->ShortName = 'html';
             $this->FixedValues = '';
             $this->TempSource = '';
-            $this->ftp = &$ftp;
             $this->remoteDir = '';
             if (empty($GLOBALS['pageno'])) {
                 $this->NowPage = 1;

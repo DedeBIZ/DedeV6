@@ -116,7 +116,7 @@
 						结束id:
 						<input type="text" name="endaid" />
 						&nbsp;
-						<button name="submit" type="submit" class="btn btn-secondary">获取Tags</button>
+						<button name="submit" type="submit" class="btn btn-success">获取Tags</button>
 						<small>(tag以文档关键词为准)</small>
 					</td>
 				</tr>
@@ -134,9 +134,9 @@
 								<td width="40%" align="right">
 									搜索：
 									<input type='text' name='tag' size='10' value="<?php echo $tag;?>">
-									<button type='submit' name='sb' class="btn btn-secondary btn-sm">确定</button>
+									<button type='submit' name='sb' class="btn btn-success btn-sm">确定</button>
 									&nbsp; <a href="makehtml_taglist.php" name='sb'
-										class="btn btn-secondary btn-sm">更新Tag HTML</a>
+										class="btn btn-success btn-sm">更新Tag HTML</a>
 								</td>
 							</form>
 
@@ -191,13 +191,13 @@
 					</td>
 					<td>
 						<a href='javascript:UpdateKwDes(<?php echo $fields['id']; ?>, "<?php echo $fields['tag']; ?>");'
-							class="btn btn-secondary btn-sm">关键词描述</a>
+							class="btn btn-success btn-sm">关键词描述</a>
 						<a href='javascript:UpdateOne(<?php echo $fields['id']; ?>);'
-							class="btn btn-secondary btn-sm">更新</a>
+							class="btn btn-success btn-sm">更新</a>
 						<a href='makehtml_taglist.php?tid=<?php echo $fields['id'];?>'
-							class="btn btn-secondary btn-sm">生成HTML</a>
+							class="btn btn-success btn-sm">生成HTML</a>
 						<a href='javascript:DeleteOne(<?php echo $fields['id']; ?>);'
-							class="btn btn-secondary btn-sm">删</a>
+							class="btn btn-success btn-sm">删</a>
 					</td>
 				</tr>
 				{/dede:datalist}
@@ -215,7 +215,7 @@
 			</form>
 			<tr align="center" bgcolor="#FAFDF0">
 				<td height="40" colspan="8">
-					<button type='button' onclick="document.form3.submit()" class="btn btn-secondary">删除所选</button>
+					<button type='button' onclick="document.form3.submit()" class="btn btn-success">删除所选</button>
 				</td>
 			</tr>
 		</table>

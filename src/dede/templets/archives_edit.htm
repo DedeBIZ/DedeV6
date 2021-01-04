@@ -49,7 +49,7 @@
       <td width="65%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
           href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>文档列表</u></a>
         &gt;&gt; 更改文档</td>
-      <td width="30%" align='right'><?php echo $backurl; ?><a href="catalog_main.php" class="btn btn-secondary btn-sm">栏目管理</a>&nbsp;</td>
+      <td width="30%" align='right'><?php echo $backurl; ?><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a>&nbsp;</td>
     </tr>
   </table>
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -164,16 +164,16 @@
                 &nbsp; </td>
               <td width="600">
                 <input name="picname" type="text" id="picname" style="width:300px"
-                  value="<?php echo $arcRow["litpic"]?>"> <button class="btn btn-secondary" type="button" name="Submit"
+                  value="<?php echo $arcRow["litpic"]?>"> <button class="btn btn-success" type="button" name="Submit"
                   style="width:70px" onClick="SelectImage('form1.picname','');">浏览...</button>
                 <label><input type='checkbox' class='np' name='ddisremote' value='1'>
                 远程</label>
-                <span class="btn btn-secondary fileinput-button">
+                <span class="btn btn-success fileinput-button">
                   <i class="glyphicon glyphicon-plus"></i>
                   选择图片
                   <input type="file" name="files[]" id="iptAddImages">
                 </span>
-                <button id="btnClearAll" type="button" class="btn btn-secondary delete">
+                <button id="btnClearAll" type="button" class="btn btn-success delete">
                   <i class="fa fa-trash-o"></i>
                   <span>清空</span>
                 </button>
@@ -288,11 +288,11 @@ if($cfg_need_typeid2=='Y') {
               <td width="90">&nbsp;文档来源：</td>
               <td width="250">
                 <input name="source" type="text" id="source" style="width:160" value="<?php echo $arcRow["source"]?>"
-                  size="16"> <button name="selsource" type="button" id="selsource" class="btn btn-secondary btn-sm">选择</button> </td>
+                  size="16"> <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button> </td>
               <td width="90">作　者：</td>
               <td>
                 <input name="writer" type="text" id="writer" style="width:120px"
-                  value="<?php echo $arcRow["writer"]?>"> <button class="btn btn-secondary btn-sm" name="selwriter" type="button" id="selwriter"
+                  value="<?php echo $arcRow["writer"]?>"> <button class="btn btn-success btn-sm" name="selwriter" type="button" id="selwriter"
                   >选择</button> </td>
             </tr>
           </table>
@@ -319,7 +319,7 @@ if($cfg_need_typeid2=='Y') {
               <td width="90">标题颜色：</td>
               <td><input name="color" type="text" id="color" style="width:120"
                   value="<?php echo $arcRow["color"]?>">
-                  <button name="modcolor" type="button" id="modcolor" class="btn btn-secondary btn-sm"
+                  <button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm"
                   onClick="ShowColor(event,this)">选取</button></td>
             </tr>
           </table>
@@ -418,9 +418,9 @@ if($cfg_need_typeid2=='Y') {
               <td width="83%">
                 <table width="214" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="115" class="py-3"><button type="submit" class="btn btn-secondary">保存</button></td>
+                    <td width="115" class="py-3"><button type="submit" class="btn btn-success">保存</button></td>
                     <td width="99" class="py-3">
-                      <button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button>
+                      <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
                     </td>
                   </tr>
                 </table>

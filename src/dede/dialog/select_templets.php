@@ -230,7 +230,7 @@ if (empty($comeback)) {
               <td background="img/tbg.gif" bgcolor="#99CC00">
                 &nbsp;上　传： <input type='file' name='uploadfile' style='width:320px'>
                 改名：<input type='text' name='filename' value='' style='width:100px'>
-                <button type='submit' name='sb1' class="btn btn-secondary btn-sm">确定</button>
+                <button type='submit' name='sb1' class="btn btn-success btn-sm">确定</button>
               </td>
             </tr>
           </form>

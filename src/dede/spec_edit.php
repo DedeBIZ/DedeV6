@@ -248,13 +248,13 @@ function __save(){  }
 
     //返回成功信息
     $msg = "　　请选择你的后续操作：
-    <a href='spec_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新专题</a>
+    <a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新专题</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $id . "&dopost=editArchives' class='btn btn-secondary btn-sm'>查看更改</a>
+    <a href='archives_do.php?aid=" . $id . "&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
     &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看专题</a>
+    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a>
     &nbsp;&nbsp;
-    <a href='content_s_list.php' class='btn btn-secondary btn-sm'>已发布专题管理</a> ";
+    <a href='content_s_list.php' class='btn btn-success btn-sm'>已发布专题管理</a> ";
     $wintitle = "成功更改一个专题！";
     $wecome_info = "专题管理::更改专题";
     $win = new OxWindow();

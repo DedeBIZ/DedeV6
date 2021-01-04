@@ -101,8 +101,8 @@ function _EditNoteLoad(){ }
       </tr>
       <tr>
         <td height="32">&nbsp;</td>
-        <td colspan="2"><button class="btn btn-secondary btn-sm" type="submit" name="Submit" value="">保存规则</button>
-          <button type="reset" class="btn btn-secondary btn-sm" name="Submit2">重置</button></td>
+        <td colspan="2"><button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存规则</button>
+          <button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button></td>
       </tr>
     </table>
   </form>

@@ -84,7 +84,7 @@
 							<option value="0">--请选择--</option>
 							{dede:global.openarray /}
 						</select>
-						<button type="submit" class="btn btn-secondary">搜索</button>
+						<button type="submit" class="btn btn-success">搜索</button>
 					</form>
 				</div>
 			</td>
@@ -123,10 +123,10 @@
 											时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}
 										</td>
 										<td width="20%" align="center">
-											<a class="btn btn-secondary btn-sm"
+											<a class="btn btn-success btn-sm"
 												href='feedback_edit.php?id={dede:field.id/}'><i
 													class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
-											<a class="btn btn-secondary btn-sm"
+											<a class="btn btn-success btn-sm"
 											href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新文档</a>
 										</td>
 									</tr>
@@ -157,19 +157,19 @@
 									<tr>
 										<td width="30%">
 											<button type='button' name='kk1' onClick="selAll()"
-												class="btn btn-secondary btn-sm">全选</button>
+												class="btn btn-success btn-sm">全选</button>
 											<button type='button' name='kk2' onClick="selNone()"
-												class="btn btn-secondary btn-sm">取消</button>
+												class="btn btn-success btn-sm">取消</button>
 											<button type='button' name='kk3' onClick="selNor()"
-												class="btn btn-secondary btn-sm">反选</button>
+												class="btn btn-success btn-sm">反选</button>
 										</td>
 										<td align="right">
 											<button type='button' name='db' onClick="delFeedbackIP()"
-												class="btn btn-secondary btn-sm">删除相同IP的所有评论</button>
+												class="btn btn-success btn-sm">删除相同IP的所有评论</button>
 											<button type='button' name='db' onClick="delFeedback()"
-												class="btn btn-secondary btn-sm">删除评论</button>
+												class="btn btn-success btn-sm">删除评论</button>
 											<button type='button' name='db2' onClick="checkFeedback()"
-												class="btn btn-secondary btn-sm">审核评论</button>
+												class="btn btn-success btn-sm">审核评论</button>
 										</td>
 									</tr>
 								</table>

@@ -98,8 +98,8 @@ function DoRand(jobname)
 <tr>
     <td height='28'>
     如果你想对旧的文章应用随机模板设置，请点击此对旧文章进行处理(必须设置好模板项)！
-    &nbsp; <a href='#' onclick='DoRand(\"makeold\")' class='btn btn-secondary btn-sm'>设置全部</a>
-    &nbsp; <a href='#' onclick='DoRand(\"clearold\")' class='btn btn-secondary btn-sm'>取消全部</a>
+    &nbsp; <a href='#' onclick='DoRand(\"makeold\")' class='btn btn-success btn-sm'>设置全部</a>
+    &nbsp; <a href='#' onclick='DoRand(\"clearold\")' class='btn btn-success btn-sm'>取消全部</a>
     &nbsp; <span id='tmpct' style='color:red;font-weight:bold'>$okmsg</span>
     </td>
 </tr>

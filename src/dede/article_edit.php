@@ -214,18 +214,6 @@ function __save(){  }
 
     //生成HTML
     UpIndexKey($id, $arcrank, $typeid, $sortrank, $tags);
-    if ($cfg_remote_site == 'Y' && $isremote == "1") {
-        if ($serviterm != "") {
-            list($servurl, $servuser, $servpwd) = explode(',', $serviterm);
-            $config = array(
-                'hostname' => $servurl, 'username' => $servuser,
-                'password' => $servpwd, 'debug' => 'TRUE'
-            );
-        } else {
-            $config = array();
-        }
-        if (!$ftp->connect($config)) exit('Error:None FTP Connection!');
-    }
     $artUrl = MakeArt($id, true, true, $isremote);
     if ($artUrl == '') {
         $artUrl = $cfg_phpurl . "/view.php?aid=$id";
@@ -247,13 +235,13 @@ function __save(){  }
     //返回成功信息
     $msg = "
     　　请选择你的后续操作：
-    <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新文章</a>
+    <a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新文章</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $id . "&dopost=editArchives' class='btn btn-secondary btn-sm'>查看更改</a>
+    <a href='archives_do.php?aid=" . $id . "&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
     &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>
+    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文章</a>
     &nbsp;&nbsp;
-    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-secondary btn-sm'>管理文章</a>
+    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理文章</a>
     &nbsp;&nbsp;
     $backurl
     ";

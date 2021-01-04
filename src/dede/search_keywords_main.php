@@ -92,8 +92,8 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
       <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=" . urlencode($row['keyword']) . "&searchtype=titlekeyword' target='_blank'><u>{$row['result']}</u></a></td>
       <td>" . MyDate("Y-m-d H:i:s", $row['lasttime']) . "</td>
       <td>
-      <a href='#' onclick='UpdateNote({$row['aid']})' class='btn btn-secondary btn-sm'>更新</a> |
-      <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-secondary btn-sm'>删除</a>
+      <a href='#' onclick='UpdateNote({$row['aid']})' class='btn btn-success btn-sm'>更新</a> |
+      <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'>删除</a>
       </td>
     </tr>
     ";
@@ -101,9 +101,9 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     }
     echo "  <tr align='left' bgcolor='#ffffff' height='30'>
             <td colspan='8' style='padding-left:10px;'>
-            <a href='javascript:selAll()' class='btn btn-secondary btn-sm'>反选</a>
-            <a href='javascript:noselAll()' class='btn btn-secondary btn-sm'>取消</a>
-            <a href='javascript:delall()' class='btn btn-secondary btn-sm'>删除</a>
+            <a href='javascript:selAll()' class='btn btn-success btn-sm'>反选</a>
+            <a href='javascript:noselAll()' class='btn btn-success btn-sm'>取消</a>
+            <a href='javascript:delall()' class='btn btn-success btn-sm'>删除</a>
            </td>
            </tr>\r\n";
     echo "</table></form>\r\n";

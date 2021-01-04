@@ -220,11 +220,11 @@ function __save(){  }
     //返回成功信息
     $msg = "
     　　请选择你的后续操作：
-    <a href='spec_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>创建新专题</a>
+    <a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>创建新专题</a>
     &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看专题</a>
+    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a>
     &nbsp;&nbsp;
-    <a href='content_s_list.php' class='btn btn-secondary btn-sm'>已发布专题管理</a>
+    <a href='content_s_list.php' class='btn btn-success btn-sm'>已发布专题管理</a>
     ";
     $wintitle = "成功创建专题！";
     $wecome_info = "文章管理::发布专题";

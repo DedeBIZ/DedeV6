@@ -203,9 +203,9 @@ class OxWindow
 <td colspan='2' bgcolor='#F9FCEF'>
 <table width='270' border='0' cellpadding='0' cellspacing='0'>
 <tr align='center' height='28'>
-<td width='90'><button type='submit' class='btn btn-secondary'>$tt</button></td>
-<td width='90'><button onClick='this.form.reset();return false;' type='button' class='btn btn-secondary'>重置</button></td>
-<td><button onClick='history.go(-1);' type='button' class='btn btn-secondary'>返回</button></td>
+<td width='90'><button type='submit' class='btn btn-success'>$tt</button></td>
+<td width='90'><button onClick='this.form.reset();return false;' type='button' class='btn btn-success'>重置</button></td>
+<td><button onClick='history.go(-1);' type='button' class='btn btn-success'>返回</button></td>
 </tr>
 </table>
 </td>

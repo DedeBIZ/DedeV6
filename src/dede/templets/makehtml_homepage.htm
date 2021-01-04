@@ -43,7 +43,7 @@
         <td width="177" valign="top" bgcolor="#FFFFFF">选择主页模板：</td>
         <td width="791" valign="top" bgcolor="#FFFFFF">
           <input name="templet" type="text" id="templet" style="width:300" value="<?php echo $row['templet']?>">
-          <button class="btn btn-secondary btn-sm" type="button" name="set4" value=""
+          <button class="btn btn-success btn-sm" type="button" name="set4" value=""
             onClick="SelectTemplets('form1.templet');">浏览...</button>
         </td>
       </tr>
@@ -140,9 +140,9 @@
 
       <tr>
         <td height="31" colspan="2" bgcolor="#ffffff" align="center">&nbsp;&nbsp;
-          <button name="view" class='btn btn-secondary' type="button" id="view"
+          <button name="view" class='btn btn-success' type="button" id="view"
             onClick="window.open('makehtml_homepage.php?dopost=view&templet='+form1.templet.value);">预览主页</button>
-          <button type="button" onclick="htmlSubmit()" class='btn btn-secondary' name="Submit">更新主页HTML</button>
+          <button type="button" onclick="htmlSubmit()" class='btn btn-success' name="Submit">更新主页HTML</button>
           &nbsp;
         </td>
       </tr>

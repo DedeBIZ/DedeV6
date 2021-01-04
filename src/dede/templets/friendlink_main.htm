@@ -47,9 +47,9 @@
           <b>友情链接管理</b>
         </div>
         <div style="float:right;padding-right:6px;">
-          <a href="friendlink_add.php" class="btn btn-secondary btn-sm">增加链接</a>
-          <a href="friendlink_type.php" class="btn btn-secondary btn-sm">网站类型管理</a>
-          <a href='{dede:global name=' cfg_phpurl' /}/flink.php' target='_blank' class="btn btn-secondary btn-sm">友情链接预览</a>
+          <a href="friendlink_add.php" class="btn btn-success btn-sm">增加链接</a>
+          <a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
+          <a href='{dede:global name=' cfg_phpurl' /}/flink.php' target='_blank' class="btn btn-success btn-sm">友情链接预览</a>
         </div>
       </td>
     </tr>
@@ -73,7 +73,7 @@
                 </select>
               </td>
               <td>
-                <button type="submit" class="btn btn-secondary">搜索</button>
+                <button type="submit" class="btn btn-success">搜索</button>
               </td>
             </tr>
           </table>
@@ -104,8 +104,8 @@
         <td>{dede:field.ischeck function="GetSta(@me)"/}</td>
         <td>{dede:field.sortrank/}</td>
         <td>
-          <a href='friendlink_edit.php?id={dede:field.id/}&dopost=getedit' class="btn btn-secondary btn-sm">更改</a>
-          <a href='friendlink_edit.php?id={dede:field.id/}&dopost=delete' class="btn btn-secondary btn-sm">删除</a>
+          <a href='friendlink_edit.php?id={dede:field.id/}&dopost=getedit' class="btn btn-success btn-sm">更改</a>
+          <a href='friendlink_edit.php?id={dede:field.id/}&dopost=delete' class="btn btn-success btn-sm">删除</a>
         </td>
       </tr>
       {/dede:datalist}
@@ -113,9 +113,9 @@
     <tr bgcolor="#ffffff" height="28">
       <td colspan="8">
         　
-        <a href='#' onclick='Sel("all")' class="btn btn-secondary btn-sm">全选</a>
-        <a href='#' onclick='Sel("none")' class="btn btn-secondary btn-sm">取消</a>
-        <a href='#' onclick='checkSubmit()' class="btn btn-secondary btn-sm">批量删除</a>
+        <a href='#' onclick='Sel("all")' class="btn btn-success btn-sm">全选</a>
+        <a href='#' onclick='Sel("none")' class="btn btn-success btn-sm">取消</a>
+        <a href='#' onclick='checkSubmit()' class="btn btn-success btn-sm">批量删除</a>
 
       </td>
     </tr>

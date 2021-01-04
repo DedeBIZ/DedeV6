@@ -9,7 +9,6 @@
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC . '/arc.partview.class.php');
-require_once(DEDEINC . '/ftp.class.php');
 
 helper('cache');
 @set_time_limit(0);
@@ -41,7 +40,6 @@ class ListView
     var $IsError;
     var $CrossID;
     var $IsReplace;
-    var $ftp;
     var $remoteDir;
 
     /**
@@ -54,7 +52,7 @@ class ListView
      */
     function __construct($typeid, $uppage = 1)
     {
-        global $dsql, $ftp;
+        global $dsql;
         $this->TypeID = $typeid;
         $this->dsql = &$dsql;
         $this->CrossID = '';
@@ -67,7 +65,6 @@ class ListView
         $this->dtp2->SetNameSpace("field", "[", "]");
         $this->TypeLink = new TypeLink($typeid);
         $this->upPageType = $uppage;
-        $this->ftp = &$ftp;
         $this->remoteDir = '';
         $this->TotalResult = is_numeric($this->TotalResult) ? $this->TotalResult : "";
 

@@ -122,7 +122,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '');
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
         $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:90%;height:80px'>$dfvalue</textarea><br>
-        <button type='button' class='btn btn-secondary btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
+        <button type='button' class='btn btn-success btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
         if ($ctag->GetAtt('automake') == 1) {
             $innertext .= "<input type='hidden' name='automake[$fieldname]' value=1>";
         }
@@ -421,7 +421,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
     } else if ($ftype == "relation") {
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
         $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:90%;height:80px'>$fvalue</textarea><br>
-        <button type='button' class='btn btn-secondary btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
+        <button type='button' class='btn btn-success btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
         if ($ctag->GetAtt('automake') == 1) {
             $innertext .= "<input type='hidden' name='automake[$fieldname]' value=1>";
         }

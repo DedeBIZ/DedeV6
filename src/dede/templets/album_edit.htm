@@ -75,7 +75,7 @@ body {
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
       <td width="65%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a href="catalog_do.php?cid=<?php echo $arcRow["typeid"]?>&dopost=listArchives"><u>图集列表</u></a> &gt;&gt; 更改图集</td>
-      <td width="30%" align='right'><?php echo $backurl; ?><a class="btn btn-secondary btn-sm" href="catalog_main.php">栏目管理</a>&nbsp;</td>
+      <td width="30%" align='right'><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a>&nbsp;</td>
     </tr>
   </table>
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -155,15 +155,15 @@ body {
             <td width="90" height="81">&nbsp;缩 略 图：<br/></td>
             <td><input name="picname" type="text" id="picname" style="width:300px"
               value="<?php echo $arcRow["litpic"]?>"> <button type="button" name="Submit"
-              class="btn btn-secondary btn-sm" onClick="SelectImage('form1.picname','');">浏览...</button>
+              class="btn btn-success btn-sm" onClick="SelectImage('form1.picname','');">浏览...</button>
               <label><input type='checkbox' class='np' name='ddisremote' value='1'>
             远程</label>
-            <span class="btn btn-secondary btn-sm fileinput-button">
+            <span class="btn btn-success btn-sm fileinput-button">
               <i class="glyphicon glyphicon-plus"></i>
               选择图片
               <input type="file" name="files[]" id="iptAddImages">
             </span>
-            <button id="btnClearAll" type="button" class="btn btn-secondary btn-sm delete">
+            <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">
               <i class="fa fa-trash-o"></i>
               <span>清空</span>
             </button> </td>
@@ -266,7 +266,7 @@ if($cfg_need_typeid2=='Y') {
               </select></td>
             <td width="90">标题颜色：</td>
             <td><input name="color" type="text" id="color" style="width:120" value="<?php echo $arcRow["color"]?>">
-              <button name="modcolor" type="button" id="modcolor" class="btn btn-secondary btn-sm" onClick="ShowColor(event,this)">选取</button></td>
+              <button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button></td>
           </tr>
         </table></td>
     </tr>
@@ -407,7 +407,7 @@ if($cfg_need_typeid2=='Y') {
           <tr>
             <td width="100">&nbsp;压缩包文件：</td>
             <td><input type='text' name='zipfile' id='zipfile' style='width:300px'>
-              <button name='addon_bt' type='button' class='btn btn-secondary btn-sm' onClick="SelectSoft('form1.zipfile')">浏览...</button>
+              <button name='addon_bt' type='button' class='btn btn-success btn-sm' onClick="SelectSoft('form1.zipfile')">浏览...</button>
               <label><input name="delzip" type="checkbox" id="delzip" value="1" checked="checked" />
               处理后删除压缩文件</label> </td>
           </tr>
@@ -480,7 +480,7 @@ if($cfg_need_typeid2=='Y') {
           <tr>
             <td width="100">&nbsp;<b>增加新图片：</b></td>
             <td>
-              <span class="btn btn-secondary btn-sm fileinput-button">
+              <span class="btn btn-success btn-sm fileinput-button">
                 <i class="glyphicon glyphicon-plus"></i>
                 选择本地图片（支持多选）
                 <input type="file" name="files[]" id="iptAlbumImages" multiple>
@@ -506,8 +506,8 @@ if($cfg_need_typeid2=='Y') {
             <td width="10%">&nbsp;</td>
             <td><table width="214" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td width="115" class="py-3"><button type="submit" class="btn btn-secondary">保存</button></td>
-                  <td width="99" class="py-3"><button type="button" onClick="location.reload();" class="btn btn-secondary">重置</button></td>
+                  <td width="115" class="py-3"><button type="submit" class="btn btn-success">保存</button></td>
+                  <td width="99" class="py-3"><button type="button" onClick="location.reload();" class="btn btn-success">重置</button></td>
                 </tr>
               </table></td>
           </tr>

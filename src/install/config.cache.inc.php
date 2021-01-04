@@ -140,7 +140,6 @@ $cfg_album_mark = 'N';
 $cfg_mb_feedcheck = 'N';
 $cfg_mb_msgischeck = 'N';
 $cfg_mb_reginfo = 'Y';
-$cfg_remote_site = 'N';
 $cfg_title_site = 'N';
 $cfg_mysql_type = 'mysqli';
 $cfg_memcache_enable = 'N';

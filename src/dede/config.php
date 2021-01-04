@@ -62,7 +62,6 @@ $isUrlOpen = @ini_get('allow_url_fopen');
 $dedeNowurl = GetCurUrl();
 $dedeNowurls = explode('?', $dedeNowurl);
 $s_scriptName = $dedeNowurls[0];
-$cfg_remote_site = empty($cfg_remote_site) ? 'N' : $cfg_remote_site;
 
 //检验用户登录状态
 $cuserLogin = new userLogin();
