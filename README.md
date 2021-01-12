@@ -2,8 +2,6 @@
 
 国内流行的内容管理系统（CMS）多端全媒体解决方案，DedeCMSV6系统基于PHP7.X开发，具有很强的可扩展性，并且完全开放源代码。DedeBIZ商业支持采用现流行的Go语言设计开发，让DedeCMS系统拥有简单易用、灵活扩展特性之外更安全、高效。模板设计制作简单一直是系统的一大特点，全新的版本延续了之前标签引擎，同时采用响应式模板引擎Bootstrap作为系统模板渲染引擎，让搭建跨终端（移动、PC）全媒体站点更简单。
 
-目前，基于DedeCMS衍生出来的系统也丰富多样，得到业界广泛肯定。继DedeCMSV6之后，由DedeCMS系统核心开发成员牵头组建的DedeBIZ（Dede商业支持团队），将继续承担DedeCMS系统后续的设计、开发和维护工作，为DedeCMS生态提供更有力、更全面、更系统化的保障。DedeBIZ将会联合[开发者](https://www.dedebiz.com/developer)共同开创一个新生态，助力中国互联网攀升新高度、共享新未来。
-
 ## 版本说明
 
 DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止，目前DedeCMSV6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取。
@@ -83,6 +81,35 @@ Sockets：支持接入DedeBIZ商业组件模块
 
 详细安装步骤可以查看[帮助文档](https://www.dedebiz.com/help)
 
+## DedeBIZ命令行工具
+
+在程序包中，我们增加了一个命令行工具`dedebiz`，通过这个命令行工具，我们可以完成例如：静态文件生成、快速搭建开发环境、更新系统等功能。
+
+保证我们系统PATH目录中含有`php`命令，如果是Linux系统，我们可以赋予`dedebiz`文件可执行的权限。
+
+运行`php dedebiz`命令（如果系统中有bash命令行，直接可以执行`./dedebiz`）我们可以看到如下信息：
+
+```
+NAME:
+	DedeBIZ Cli Tools
+USAGE:
+	php ./dedebiz command [arguments...]
+COMMANDS:
+	serv,s Run cli web server for DedeCMSV6
+	make,m Make DedeCMSV6 HTML
+	update,u Update to latest system
+	help,h Shows a list of commands or help
+	quick,q Quick start a development environment
+WEBSITE:
+	https://www.dedebiz.com/help/
+```
+
+如果我们想要生成静态文件，可以执行`./dedebiz m o`，便可以自动生成。
+
+除了上面的“程序安装使用”中的步骤，我们也可以通过命令行工具快速开始一个本地开发的站点，执行脚本`./dedebiz q`，就可以快速初始化一个本地开发的站点，非常方便。
+
+![DedeBIZ命令行工具](docs/dedebiz_cli.gif)
+
 ## 版权信息
 
 详细参考：[DedeCMSV6站点授权协议](https://www.dedebiz.com/license)
@@ -99,8 +126,8 @@ Sockets：支持接入DedeBIZ商业组件模块
 
 - [代码托管](https://www.dedebiz.com/git)
 
-- 微信公众号：穆云智能
+- 微信公众号：dedebiz
 
-![微信公众号：穆云智能](docs/muyun_wechat_qr.png)
+![微信公众号：dedebiz](docs/dedebiz_wechat_qr.jpg)
 
 - 邮箱：support#dedebiz.com

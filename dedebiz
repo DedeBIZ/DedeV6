@@ -292,12 +292,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	$del->OpenUrl($fileHashURL);
 	$filelist = $del->GetJSON();
 	$offFiles = array();
-	// foreach ($filelist as $key => $ff) {
-	// 	$offFiles[$ff->filename] = $ff->hash;
-	// }
-
-
-	var_dump($filelist);
+	// TODO 命令行自动更新
 } else if (count($argv) > 1 && ($argv[1] == "quick" || $argv[1] == "q")){
 	define("DEDEINC", $workDir."/include");
 	require_once(DEDEINC . "/cli.class.php");
@@ -422,17 +417,17 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     fclose($fp);
 
     //更新配置
-    $cquery = "Update `{$dbprefix}sysconfig` set value='{$baseurl}' where varname='cfg_basehost';";
+    $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$baseurl}' WHERE varname='cfg_basehost';";
     $db->exec($cquery);
-    $cquery = "Update `{$dbprefix}sysconfig` set value='{$cmspath}' where varname='cfg_cmspath';";
+    $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$cmspath}' WHERE varname='cfg_cmspath';";
     $db->exec($cquery);
-    $cquery = "Update `{$dbprefix}sysconfig` set value='{$indexUrl}' where varname='cfg_indexurl';";
+    $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$indexUrl}' WHERE varname='cfg_indexurl';";
     $db->exec($cquery);
-    $cquery = "Update `{$dbprefix}sysconfig` set value='{$cookieencode}' where varname='cfg_cookie_encode';";
+    $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$cookieencode}' WHERE varname='cfg_cookie_encode';";
     $db->exec($cquery);
-    $cquery = "Update `{$dbprefix}sysconfig` set value='{$webname}' where varname='cfg_webname';";
+    $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$webname}' WHERE varname='cfg_webname';";
     $db->exec($cquery);
-    $cquery = "Update `{$dbprefix}sysconfig` set value='{$adminmail}' where varname='cfg_adminemail';";
+    $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$adminmail}' WHERE varname='cfg_adminemail';";
     $db->exec($cquery);
 
     $adminuser = "admin";
