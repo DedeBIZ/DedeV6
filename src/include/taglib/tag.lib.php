@@ -36,7 +36,7 @@ function lib_tag(&$ctag, &$refObj)
             $ids .= ($ids == '' ? $row['tid'] : ',' . $row['tid']);
         }
         if ($ids != '') {
-            $addsql .= " AND id IN($ids) AND";
+            $addsql .= " AND id IN($ids)";
         }
         if ($addsql == '') return '';
     } else {
