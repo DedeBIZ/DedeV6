@@ -198,7 +198,6 @@ CREATE TABLE `#@__archives` (
   `description` varchar(255) NOT NULL default '',
   `filename` varchar(40) NOT NULL default '',
   `dutyadmin` mediumint(8) unsigned NOT NULL default '0',
-  `tackid` int(10) NOT NULL default '0',
   `mtype` mediumint(8) unsigned NOT NULL default '0',
   `weight` int(10) NOT NULL default '0',
   PRIMARY KEY  (`id`),

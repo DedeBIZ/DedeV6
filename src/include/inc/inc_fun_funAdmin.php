@@ -173,7 +173,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
     } else if ($GLOBALS['cfg_html_editor'] == 'ckeditor') {
         $addConfig = "";
         if (defined("DEDEADMIN")) {
-            $addConfig = ",{filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,dedepagebreak,ddfilebrowser'}";
+            $addConfig = ",{allowedContent:true,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,dedepagebreak,ddfilebrowser'}";
             // $addConfig = ",{filebrowserImageUploadUrl:'./dialog/select_images_post.php'}";
         }
         $code = <<<EOT
