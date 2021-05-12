@@ -11,7 +11,7 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'forms', groups: ['forms'] },
 		'/',
 		{ name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
-		{ name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+		{ name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph','textindent'] },
 		{ name: 'links', groups: ['links'] },
 		{ name: 'insert', groups: ['insert'] },
 		'/',
@@ -20,7 +20,7 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'tools', groups: ['tools'] }
 	];
 
-	config.extraPlugins = 'html5video,dedepagebreak';
+	config.extraPlugins = 'html5video,dedepagebreak,textindent';
 
 	config.removeButtons = 'About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
 
