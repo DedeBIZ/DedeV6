@@ -55,7 +55,7 @@ if ($action == '') {
             $pv->SaveToHtml($homeFile);
             $pv->Close();
         } else {
-            if (file_exists($homeFile)) @unlink($homeFile);
+            if (file_exists($homeFile)) echo "启用静态生成，建议删除"+$homeFile;
         }
         ShowMsg("完成更新所有文档，现在开始更新栏目页！", "makehtml_all.php?action=make&step=4&uptype=$uptype&mkvalue=$mkvalue");
         exit();

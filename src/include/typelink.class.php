@@ -150,7 +150,7 @@ class TypeLink
     //获得某类目的链接列表，递归逻辑部分
     function LogicGetPosition($id, $islink)
     {
-        $this->dsql->SetQuery("SELECT id,reid,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM #@__arctype WHERE id='" . $id . "'");
+        $this->dsql->SetQuery("SELECT id,reid,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE id='" . $id . "'");
         $tinfos = $this->dsql->GetOne();
         if ($islink) {
             $this->valuePosition = $this->GetOneTypeLink($tinfos) . $this->SplitSymbol . $this->valuePosition;
@@ -168,7 +168,7 @@ class TypeLink
     function GetOneTypeLink($typeinfos)
     {
         $typepage = $this->GetOneTypeUrl($typeinfos);
-        $typelink = "<li class='breadcrumb-item'><a href='" . $typepage . "'>" . $typeinfos['typename'] . "</a></a>";
+        $typelink = "<li class='breadcrumb-item'><a href='" . $typepage . "'>" . $typeinfos['typename'] . "</a></li>";
         return $typelink;
     }
 
@@ -210,7 +210,7 @@ class TypeLink
         $this->OptionArrayList = '';
 
         if ($hid > 0) {
-            $row = $this->dsql->GetOne("SELECT id,typename,ispart,channeltype FROM #@__arctype WHERE id='$hid'");
+            $row = $this->dsql->GetOne("SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE id='$hid'");
             $channeltype = $row['channeltype'];
             if ($row['ispart'] == 1) {
                 $this->OptionArrayList .= "<option value='" . $row['id'] . "' style='background-color:#DFDFDB;color:#888888' selected>" . $row['typename'] . "</option>\r\n";
@@ -275,7 +275,7 @@ class TypeLink
         global $cfg_admin_channel;
         if (empty($cfg_admin_channel)) $cfg_admin_channel = 'all';
 
-        $this->dsql->SetQuery("SELECT id,typename,ispart FROM #@__arctype WHERE reid='" . $id . "' AND ispart<>2 ORDER BY sortrank ASC");
+        $this->dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid='" . $id . "' AND ispart<>2 ORDER BY sortrank ASC");
         $this->dsql->Execute($id);
         while ($row = $this->dsql->GetObject($id)) {
             if (is_array($oper) && $cfg_admin_channel != 'all') {
@@ -332,7 +332,7 @@ class TypeLink
         if ($innertext == "") $innertext = GetSysTemplets("channel_list.htm");
 
         if ($reid == 0 && $typeid > 0) {
-            $dbrow = $this->dsql->GetOne("SELECT reid FROM #@__arctype WHERE id='$typeid' ");
+            $dbrow = $this->dsql->GetOne("SELECT reid FROM `#@__arctype` WHERE id='$typeid' ");
             if (is_array($dbrow)) {
                 $reid = $dbrow['reid'];
             }
@@ -340,13 +340,13 @@ class TypeLink
         $likeType = "";
         if ($typetype == "top") {
             $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl
-          FROM #@__arctype WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
+          FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         } else if ($typetype == "sun" || $typetype == "son") {
             $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl
-          FROM #@__arctype WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
+          FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         } else if ($typetype == "self") {
             $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl
-            FROM #@__arctype WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
+            FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         }
 
         //AND ID<>'$typeid'

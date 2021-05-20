@@ -11,6 +11,7 @@
  */
 @ob_start();
 @set_time_limit(0);
+ini_set('memory_limit', '-1');
 require_once(dirname(__FILE__) . '/config.php');
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
@@ -198,7 +199,8 @@ if ($dopost == 'bak') {
 /*-------------------------
 还原数据
 function __re_data();
--------------------------*/ else if ($dopost == 'redat') {
+-------------------------*/ 
+else if ($dopost == 'redat') {
     if ($bakfiles == '') {
         ShowMsg('没指定任何要还原的文件!', 'javascript:;');
         exit();
@@ -222,9 +224,9 @@ function __re_data();
         }
         fclose($fp);
         $querys = explode(';', $tbdata);
-
         foreach ($querys as $q) {
-            $dsql->ExecuteNoneQuery(trim($q) . ';');
+            $q = preg_replace("#TYPE=MyISAM#i","ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language, $q);
+            $rs = $dsql->ExecuteNoneQuery(trim($q) . ';');
         }
         if ($delfile == 1) {
             @unlink("$bkdir/$structfile");
