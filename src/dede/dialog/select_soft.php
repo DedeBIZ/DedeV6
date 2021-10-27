@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 软件选择框
  *
@@ -41,73 +40,69 @@ if (!empty($noeditor)) {
 }
 ?>
 <html>
-
 <head>
-    <meta http-equiv='Content-Type' content='text/html; charset=<?php echo $cfg_soft_lang; ?>'>
+    <meta charset="<?php echo $cfg_soft_lang; ?>">
     <title>软件管理器</title>
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
-    <link href="../../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href='../css/base.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/base.css">
     <style>
-        .linerow {
-            border-bottom: 1px solid #CBD8AC;
-        }
+html{background:#f2f2f2}
+body{margin:0;line-height:22px;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
+a{text-decoration:none!important}
+table{background:#fff}
+.bg{margin:10px;border-radius:2px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+.linerow{border-bottom:1px solid #eee!important}
     </style>
 </head>
-
-<body background='img/allbg.gif' leftmargin='5' topmargin='0'>
-    <SCRIPT language='JavaScript'>
-        function nullLink() {
-            return;
+<body class="bg">
+    <script>
+    function nullLink() {
+        return;
+    }
+    function ReturnValue(reimg) {
+        if (window.opener.document.<?php echo $f ?> != null) {
+            window.opener.document.<?php echo $f ?>.value = reimg;
         }
-
-        function ReturnValue(reimg) {
-            if (window.opener.document.<?php echo $f ?> != null) {
-                window.opener.document.<?php echo $f ?>.value = reimg;
-            }
-
-            var funcNum = <?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>;
-            if (window.opener.CKEDITOR != null && funcNum != 1) {
-
-                window.opener.CKEDITOR.tools.callFunction(funcNum, reimg);
-
-            }
-            if (window.opener.CKEDITOR.instances.<?php echo $f ?>) {
-                let addonHTML = `<a href='${reimg}' target='_blank'><img src='<?php echo $cfg_cmspath ?>/static/img/addon.gif' border='0' />附件：${reimg}</a>`;
-                window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
-            }
-            window.close();
+        var funcNum = <?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>;
+        if (window.opener.CKEDITOR != null && funcNum != 1) {
+            window.opener.CKEDITOR.tools.callFunction(funcNum, reimg);
         }
-    </SCRIPT>
-    <table width='100%' border='0' cellpadding='0' cellspacing='1' bgcolor='#CBD8AC' align="center" class="table maintable table-borderless">
+        if (window.opener.CKEDITOR.instances.<?php echo $f ?>) {
+            let addonHTML = `<a href='${reimg}' target='_blank'><img src='<?php echo $cfg_cmspath ?>/static/img/addon.gif'>附件：${reimg}</a>`;
+            window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
+        }
+        window.close();
+    }
+    </script>
+    <table width="100%" border="0" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
         <tr>
-            <td colspan='3' bgcolor='#E8F1DE' background="img/tbg.gif" height='28'>
-                <form action='select_soft_post.php' method='POST' enctype="multipart/form-data" name='myform'>
-                    <input type='hidden' name='activepath' value='<?php echo $activepath ?>' />
-                    <input type='hidden' name='f' value='<?php echo $f ?>' />
-                    <input type='hidden' name='job' value='upload' />
-                    &nbsp;上　传： <input type='file' name='uploadfile' size='25' />
+            <td colspan="3" height="30">
+                <form action="select_soft_post.php" method="POST" enctype="multipart/form-data" name='myform'>
+                    <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
+                    <input type="hidden" name="f" value="<?php echo $f ?>">
+                    <input type="hidden" name="job" value="upload">
+                    &nbsp;上传：<input type="file" name="uploadfile" size="24">
                     &nbsp;
-                    改 名：<input type='test' name='newname' style='width:90px' />
+                    改名：<input type="text" name="newname" style="width:160px">
                     &nbsp;
-                    <button type='submit' name='sb1' class="btn btn-success btn-sm">确定</button>
+                    <button type="submit" name="sb1" class="btn btn-success btn-sm">确定</button>
                 </form>
             </td>
         </tr>
-        <tr bgcolor='#FFFFFF'>
-            <td colspan='3'>
-                <!-- 开始文件列表  -->
-                <table width='100%' border='0' cellspacing='0' cellpadding='2'>
-                    <tr bgcolor="#CCCCCC" height="24">
-                        <td width="55%" align="center" background="img/wbg.gif" class='linerow'><strong>点击名称选择文件</strong></td>
-                        <td width="15%" align="center" bgcolor='#EEF4EA' class='linerow'><strong>文件大小</strong></td>
-                        <td width="30%" align="center" background="img/wbg.gif" class='linerow'><strong>最后修改时间</strong></td>
+        <tr>
+            <td colspan="3">
+                <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                    <tr height="28">
+                        <td width="50%" class="linerow">选择文件</td>
+                        <td width="20%" class="linerow">文件大小</td>
+                        <td width="30%" class="linerow">修改时间</td>
                     </tr>
                     <?php
                     $dh = dir($inpath);
                     $ty1 = $ty2 = '';
                     while ($file = $dh->read()) {
-                        //-----计算文件大小和创建时间
+                        //计算文件大小和创建时间
                         if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
                             $filesize = filesize("$inpath/$file");
                             $filesize = $filesize / 1024;
@@ -120,76 +115,61 @@ if (!empty($noeditor)) {
                                     $filesize = $ty1 . "." . substr($ty2, 0, 1);
                                 }
                             $filetime = filemtime("$inpath/$file");
-                            $filetime = MyDate("Y-m-d H:i:s", $filetime);
+                            $filetime = MyDate("Y-m-d H:i", $filetime);
                         }
-                        //------判断文件类型并作处理
+                        //判断文件类型并作处理
                         if ($file == ".") continue;
                         else if ($file == "..") {
                             if ($activepath == "") continue;
                             $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                            $line = "\n<tr height='24'>
-    <td class='linerow'> <a href='select_soft.php?f=$f&activepath=" . urlencode($tmp) . $addparm . "'><img src=img/dir2.gif border=0 width=16 height=16 align=absmiddle>上级目录</a></td>
-    <td colspan='2' class='linerow'> 当前目录:$activepath</td>
-    </tr>\r\n";
+                            $line = "\n<tr height='28'>
+                            <td class='linerow'><a href='select_soft.php?f=$f&activepath=" . urlencode($tmp) . $addparm . "'><img src='img/dir2.gif'>上级目录</a></td>
+                            <td colspan='2' class='linerow'>当前目录:$activepath</td>
+                            </tr>\r\n";
                             echo $line;
                         } else if (is_dir("$inpath/$file")) {
                             if (preg_match("#^_(.*)$#i", $file)) continue; #屏蔽FrontPage扩展目录和linux隐蔽目录
                             if (preg_match("#^\.(.*)$#i", $file)) continue;
-                            $line = "\n<tr height='24'>
-   <td bgcolor='#F9FBF0' class='linerow'>
-    <a href=select_soft.php?f=$f&activepath=" . urlencode("$activepath/$file") . $addparm . "><img src=img/dir.gif border=0 width=16 height=16 align=absmiddle>$file</a>
-   </td>
-   <td class='linerow'>-</td>
-   <td bgcolor='#F9FBF0' class='linerow'>-</td>
-   </tr>";
+                            $line = "\n<tr height='28'>
+                            <td class='linerow'><a href=select_soft.php?f=$f&activepath=" . urlencode("$activepath/$file") . $addparm . "><img src='img/dir.gif'>$file</a></td>
+                            <td class='linerow'></td>
+                            <td class='linerow'></td>
+                            </tr>";
                             echo "$line";
                         } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
                             if ($file == $comeback) $lstyle = " style='color:red' ";
                             else  $lstyle = "";
-
                             $reurl = "$activeurl/$file";
-
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;
-
-                            $line = "\n<tr height='24'>
-   <td class='linerow' bgcolor='#F9FBF0'>
-
-     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src=img/zip.gif border=0 width=16 height=16 align=absmiddle>$file</a>
-   </td>
-   <td class='linerow'>$filesize KB</td>
-   <td align='center' class='linerow' bgcolor='#F9FBF0'>$filetime</td>
-   </tr>";
+                            $line = "\n<tr height='28'>
+                            <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='img/zip.gif'>$file</a></td>
+                            <td class='linerow'>$filesize KB</td>
+                            <td class='linerow'>$filetime</td>
+                            </tr>";
                             echo "$line";
                         } else {
                             if ($file == $comeback) $lstyle = " style='color:red' ";
                             else  $lstyle = '';
-
                             $reurl = "$activeurl/$file";
-
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;
-
-                            $line = "\n<tr height='24'>
-   <td class='linerow' bgcolor='#F9FBF0'>
-     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src=img/exe.gif border=0 width=16 height=16 align=absmiddle>$file</a>
-   </td>
-   <td class='linerow'>$filesize KB</td>
-   <td align='center' class='linerow' bgcolor='#F9FBF0'>$filetime</td>
-   </tr>";
+                            $line = "\n<tr height='28'>
+                            <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='img/exe.gif'>$file</a></td>
+                            <td class='linerow'>$filesize KB</td>
+                            <td class='linerow'>$filetime</td>
+                            </tr>";
                             echo "$line";
                         }
-                    } //End Loop
+                    }//End Loop
                     $dh->close();
                     ?>
-                    <!-- 文件列表完 -->
                 </table>
             </td>
         </tr>
         <tr>
-            <td colspan='3' bgcolor='#E8F1DE' height='26'>&nbsp;请点击要选择的文件，红色字样的为刚上传的文件。</td>
+            <td colspan="3" height="30">请点击要选择的文件，红色字样的为刚上传的文件</td>
         </tr>
     </table>
 </body>
-
 </html>
