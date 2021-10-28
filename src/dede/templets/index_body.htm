@@ -243,17 +243,17 @@
                     <div class="card-body">
                         <?php
                         $query = "SELECT arc.id, arc.arcrank, arc.title, arc.channel, ch.editcon  FROM `#@__archives` arc
-                                LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel
-                                 WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0, 6 ";
+                            LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel
+                            WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0, 5";
                         $arcArr = array();
                         $dsql->Execute('m', $query);
                         while($row = $dsql->GetArray('m'))
                         {
                             $arcArr[] = $row;
                         }
-                    ?>
+                        ?>
                         <table width="100%" class="table table-borderless">
-                            <?php
+                        <?php
                         if(count($arcArr) > 1)
                         {
                             foreach($arcArr as $row)
@@ -297,7 +297,7 @@
 
         <!--  下面是隐藏的项目  -->
         <div id='loaddiv' style='display:none'>
-            <p align='center' style='padding-top:200px'><img src='images/loadinglit.gif' /> 请稍后，正在下载更新文件列表...</p>
+            <p align='center' style='padding-top:200px'><img src='images/loadinglit.gif'> 请稍后，正在下载更新文件列表...</p>
         </div>
         <div id="editTab">
             <span id='editTabBody'>请稍候，正在载入...</span>
@@ -309,7 +309,7 @@
                     <tr>
                         <td height='28' colspan='3' background="images/tbg.gif">
                             <div style='float:left'><b>增加快捷操作项</b></div>
-                            <div style='float:right;padding:3px 10px 0 0;'>
+                            <div style='float:right;padding:4px 10px 0 0'>
                                 <a href="javascript:CloseTab('addTab')"><img src="images/close.gif" width="12"
                                         height="12" border="0" /></a>
                             </div>
