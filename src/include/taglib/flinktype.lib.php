@@ -39,10 +39,10 @@ function lib_flinktype(&$ctag, &$refObj)
     while ($dbrow = $dsql->GetObject()) {
         $row[] = $dbrow;
     }
-    $dedecms = new stdClass;
-    $dedecms->id = 999;
-    $dedecms->typename = '织梦链';
-    if ($type == 'dedecms') $row[] = $dedecms;
+    $DedeBIZ = new stdClass;
+    $DedeBIZ->id = 999;
+    $DedeBIZ->typename = '织梦链';
+    if ($type == 'DedeBIZ') $row[] = $DedeBIZ;
 
     foreach ($row as $key => $value) {
         if (is_array($dtp->CTags)) {

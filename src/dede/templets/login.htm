@@ -75,7 +75,7 @@
 			<form name="form1" method="post" action="login.php">
 				<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage);?>" />
 				<input type="hidden" name="dopost" value="login" />
-				<input name='adminstyle' type='hidden' value='newdedecms' />
+				<input name='adminstyle' type='hidden' value='newDedeBIZ' />
 				<div class="form-group">
 					<label for="iptUserid">用户名</label>
 					<input type="text" name="userid" class="form-control" id="iptUserid">
@@ -96,7 +96,7 @@
 				</div>
 				<button type="submit" class="btn btn-success btnLogin">登录</button>
 				<div class="login-power"> Powered by<a href="http://www.dedebiz.com" title="DedeBIZ官网"><strong>
-							DedeCMS<?php echo $cfg_version; ?></strong></a>&copy; 2021 <a href="https://www.dedebiz.com"
+							DedeBIZ<?php echo $cfg_version; ?></strong></a>&copy; 2021 <a href="https://www.dedebiz.com"
 						target="_blank" title="DedeBiz商业技术支持，提供更专业强大的站点应用开发技术">DedeBiz技术支持</a></div>
 			</form>
 		</div>

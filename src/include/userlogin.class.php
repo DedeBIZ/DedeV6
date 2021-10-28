@@ -182,7 +182,7 @@ class userLogin
     var $keepUserNameTag = 'dede_admin_name';
     var $keepUserPurviewTag = 'dede_admin_purview';
     var $keepAdminStyleTag = 'dede_admin_style';
-    var $adminStyle = 'dedecms';
+    var $adminStyle = 'DedeBIZ';
 
     //php5构造函数
     function __construct($admindir = '')
@@ -257,7 +257,7 @@ class userLogin
     {
         if ($this->userID != '' && $this->userType != '') {
             global $admincachefile, $adminstyle;
-            if (empty($adminstyle)) $adminstyle = 'dedecms';
+            if (empty($adminstyle)) $adminstyle = 'DedeBIZ';
 
             @session_register($this->keepUserIDTag);
             $_SESSION[$this->keepUserIDTag] = $this->userID;
