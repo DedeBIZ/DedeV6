@@ -261,8 +261,8 @@
                                 if(trim($row['editcon'])=='') {
                                     $row['editcon'] = 'archives_edit.php';
                                 }
-                                $linkstr = "·<a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>";
-                                if($row['arcrank']==-1) $linkstr .= "<font color='red'>(未审核)</font>";
+                                $linkstr = "<a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>";
+                                if($row['arcrank']==-1) $linkstr .= "<span class='btn btn-success btn-sm'>未审核</span>";
                             ?>
                             <tr>
                                 <td class='nline' style="text-align:left">
