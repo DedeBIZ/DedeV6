@@ -242,7 +242,7 @@ $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 
 $cfg_softname = '织梦内容管理系统';
-$cfg_soft_enname = 'DedeCMSV6';
+$cfg_soft_enname = 'DedeBIZ';
 $cfg_soft_devteam = 'DedeBIZ';
 
 //文档的默认命名规则
