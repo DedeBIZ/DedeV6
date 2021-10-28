@@ -3,7 +3,7 @@
 }
 body {
 	font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
-	color:#666;
+	color:#444;
 	background:#fff;
 	line-height:24px;
 	letter-spacing:0.4px
@@ -44,7 +44,7 @@ input,input[type=text],input[type=password] {
 	padding:2px 6px;
 	height:24px!important;
 	line-height:24px!important;
-	color:#666;
+	color:#444;
 	border:1px solid #eee
 }
 input[type=checkbox],input[type=radio] {
@@ -55,7 +55,7 @@ input[type=checkbox],input[type=radio] {
 textarea {
 	padding:2px 6px;
 	font-family:Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
-	color:#666;
+	color:#444;
 	border:1px solid #eee;
 	border-radius:2px;
 	vertical-align:bottom
@@ -64,7 +64,7 @@ select {
 	padding:2px;
 	border:1px solid #eee;
 	border-radius:2px;
-	color:#666
+	color:#444
 }
 input[type=text]:focus,input[type=password]:focus,textarea:focus,select:focus {
 	border:1px solid #d2d2d2;
@@ -75,7 +75,7 @@ img {
 }
 h1,h2,h3 {
 	font-size:18px;
-	color:#666
+	color:#444
 }
 a:link {
 	color:#444;
@@ -89,7 +89,7 @@ a:visited {
 }
 .alltxt {
 	padding:2px 6px;
-	color:#666;
+	color:#444;
 	border:1px solid #eee;
 	vertical-align:bottom
 }
@@ -232,7 +232,7 @@ a:visited {
 	float:left;
 	padding-left:10px;
 	line-height:28px;
-	color:#666
+	color:#444
 }
 .pubdlg .titRight {
 	float:right;
@@ -446,7 +446,7 @@ span.page-link {
 	border-color:#28a745
 }
 .table {
-	color:#666
+	color:#444
 }
 .table td,.table th {
 	padding:6px 12px
