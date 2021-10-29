@@ -1,10 +1,10 @@
-# DedeCMSV6
+# DedeBIZ
 
-国内流行的内容管理系统（CMS）多端全媒体解决方案，DedeCMSV6系统基于PHP7.X开发，具有很强的可扩展性，并且完全开放源代码。DedeBIZ商业支持采用现流行的Go语言设计开发，让DedeCMS系统拥有简单易用、灵活扩展特性之外更安全、高效。模板设计制作简单一直是系统的一大特点，全新的版本延续了之前标签引擎，同时采用响应式模板引擎Bootstrap作为系统模板渲染引擎，让搭建跨终端（移动、PC）全媒体站点更简单。
+国内流行的内容管理系统（CMS）多端全媒体解决方案，DedeBIZ系统基于PHP7.X开发，具有很强的可扩展性，并且完全开放源代码。DedeBIZ商业支持采用现流行的Go语言设计开发，让DedeCMS系统拥有简单易用、灵活扩展特性之外更安全、高效。模板设计制作简单一直是系统的一大特点，全新的版本延续了之前标签引擎，同时采用响应式模板引擎Bootstrap作为系统模板渲染引擎，让搭建跨终端（移动、PC）全媒体站点更简单。
 
 ## 版本说明
 
-DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止，目前DedeCMSV6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取。
+DedeBIZ.x是一个LTS版本，支持将到2022年10月截止，目前DedeBIZ已经发布，可以[点击下载](https://www.dedebiz.com/download)获取。
 
 ## 参与开源
 
@@ -14,7 +14,7 @@ DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止，目前DedeCMSV6
 
 我们将会收集、整理新的功能需求制定新的Roadmap。
 
-[开发者](https://www.dedebiz.com/developer)可以到[工单管理](https://www.zhelixie.com/DedeBiz/DedeCMSV6/issues)中进行交流反馈。
+[开发者](https://www.dedebiz.com/developer)可以到[工单管理](https://www.zhelixie.com/DedeBiz/DedeBIZ/issues)中进行交流反馈。
 
 普通用户可以通过微信公众号或者邮件的方式进行反馈，详见本页底部资源。
 
@@ -95,8 +95,8 @@ NAME:
 USAGE:
 	php ./dedebiz command [arguments...]
 COMMANDS:
-	serv,s Run cli web server for DedeCMSV6
-	make,m Make DedeCMSV6 HTML
+	serv,s Run cli web server for DedeBIZ
+	make,m Make DedeBIZ HTML
 	update,u Update to latest system
 	help,h Shows a list of commands or help
 	quick,q Quick start a development environment
@@ -112,13 +112,13 @@ WEBSITE:
 
 ## 版权信息
 
-详细参考：[DedeCMSV6站点授权协议](https://www.dedebiz.com/license)
+详细参考：[DedeBIZ站点授权协议](https://www.dedebiz.com/license)
 
-我们对DedeCMSV6系统授权的态度是“鼓励但不强制”，购买授权是对知识产权的尊重，是对我们技术服务的认可。
+我们对DedeBIZ系统授权的态度是“鼓励但不强制”，购买授权是对知识产权的尊重，是对我们技术服务的认可。
 
 ## 相关资源
 
-- [DedeCMSV6](https://www.dedebiz.com)
+- [DedeBIZ](https://www.dedebiz.com)
 
 - [帮助中心](https://www.dedebiz.com/help)
 

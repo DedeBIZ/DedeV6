@@ -45,7 +45,7 @@ form {
 	margin-left:10px;
 	height:46px;
 	line-height:46px;
-	font-size:24px;
+	font-size:18px;
 	font-weight:600;
 	color:#fff
 }
@@ -63,10 +63,12 @@ form {
 	line-height:46px;
 	overflow:hidden
 }
-.top .top_link ul li.welcome {
-	border-right:none;
-	color:#fff;
-	padding-right:10px
+.top .top_link ul li.welcome img {
+	margin-top:-2px;
+	margin-right:10px;
+	width:30px;
+	height:30px;
+	vertical-align:middle
 }
 .top .top_link ul li {
 	float:left;
@@ -79,8 +81,7 @@ form {
 	text-decoration:none
 }
 .top .top_link ul li a:hover {
-	color:#fff;
-	text-decoration:underline
+	color:#ccc
 }
 .top .top_link .quick {
 	padding:3px 0px 0px 0px;
@@ -313,19 +314,18 @@ body.hidemenu .right {
 	display:none
 }
 .allmenu {
-	width:720px;
+	width:800px;
 	background:#fff;
 	border:2px solid #999;
 	z-index:999;
 	position:absolute;
 	left:50%;
-	top:38px;
-	margin-left:-350px;
+	top:76px;
+	margin-left:-400px;
 	display:none;
 	padding:10px
 }
 .allmenu .allmenu-box {
-	width:720px;
 	margin:0 auto;
 	text-align:left;
 	overflow:hidden;
@@ -333,7 +333,7 @@ body.hidemenu .right {
 }
 .maptop {
 	float:left;
-	width:108px;
+	width:130px;
 	overflow:hidden;
 	padding-right:6px;
 	padding-left:6px;

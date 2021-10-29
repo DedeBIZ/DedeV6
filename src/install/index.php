@@ -11,7 +11,7 @@
 error_reporting(E_ALL || ~E_NOTICE);
 
 $verMsg = 'V6';
-$dfDbname = 'dedecmsv6';
+$dfDbname = 'DedeBIZ';
 $cfg_version_detail = '6.0.3'; // 详细版本号
 $errmsg = '';
 

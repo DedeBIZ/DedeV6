@@ -82,7 +82,7 @@ table{background:#fff}
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="job" value="upload">
-                    &nbsp;上传：<input type="file" name="uploadfile" size="24">
+                    &nbsp;上传：<input type="file" name="uploadfile" size="24" style="border:none">
                     &nbsp;
                     改名：<input type="text" name="newname" style="width:160px">
                     &nbsp;

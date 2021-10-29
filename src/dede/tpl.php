@@ -152,7 +152,7 @@ function _upload() {}
         exit();
     } else {
         if (!preg_match("#\.(htm|html)$#", $upfile_name)) {
-            ShowMsg("DedeCMSV6模板只能用 .htm 或 .html扩展名！", "-1");
+            ShowMsg("DedeBIZ模板只能用 .htm 或 .html扩展名！", "-1");
             exit();
         }
         if (preg_match("#[\\\\\/]#", $upfile_name)) {

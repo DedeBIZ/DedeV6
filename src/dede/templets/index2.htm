@@ -1,84 +1,68 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title><?php echo $cfg_webname; ?>-<?php echo $cfg_softname." ".$cfg_version; ?></title>
-  <link href="css/frame.css" rel="stylesheet" type="text/css" />
-  <script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
-  <script src="js/frame.js" language="javascript" type="text/javascript"></script>
-  <link href="images/style<?php echo $cfg_admin_skin;?>/style.css" rel="stylesheet" type="text/css" />
-  <style type="text/css">
-    #skinlist {
-      display: block;
-      height: 11px;
-      margin-top: 10px;
-      overflow: hidden;
-      width: 86px;
-    }
-
-    #skin div {
-      float: left;
-    }
-
-    #skin li {
-      cursor: pointer;
-      float: left;
-      height: 11px;
-      width: 14px;
-    }
-
-    #def div,
-    #s1 div,
-    #s2 div,
-    #s3 div,
-    #s4 div {
-      background-image: url("images/skinbutton.png");
-      background-repeat: no-repeat;
-    }
-
-    #s1 div {
-      background-position: 0 0px;
-    }
-
-    #s2 div {
-      background-position: 0 -11px;
-    }
-
-    #s3 div {
-      background-position: 0 -22px;
-    }
-
-    #s4 div {
-      background-position: 0 -33px;
-    }
-
-    #s1 div.sel {
-      background: url("images/skinbutton.png") no-repeat scroll -14px top transparent;
-    }
-
-    #s2 div.sel {
-      background: url("images/skinbutton.png") no-repeat scroll -14px -11px transparent;
-    }
-
-    #s3 div.sel {
-      background: url("images/skinbutton.png") no-repeat scroll -14px -22px transparent;
-    }
-
-    #s4 div.sel {
-      background: url("images/skinbutton.png") no-repeat scroll -14px -33px transparent;
-    }
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <title><?php echo $cfg_webname; ?>-<?php echo $cfg_soft_enname; ?> <?php echo $cfg_version_detail; ?></title>
+  <link rel="stylesheet" href="css/frame.css">
+  <link rel="stylesheet" href="images/style<?php echo $cfg_admin_skin;?>/style.css">
+  <script src="../static/js/jquery.js"></script>
+  <script src="js/frame.js"></script>
+  <style>
+#skinlist {
+  display:block;
+  height:11px;
+  margin-top:10px;
+  overflow:hidden;
+  width:86px
+}
+#skin div {
+  float:left
+}
+#skin li {
+  cursor:pointer;
+  float:left;
+  height:11px;
+  width:14px
+}
+#def div,#s1 div,#s2 div,#s3 div,#s4 div {
+  background-image:url("images/skinbutton.png");
+  background-repeat:no-repeat
+}
+#s1 div {
+  background-position:0 0px
+}
+#s2 div {
+  background-position:0 -11px
+}
+#s3 div {
+  background-position:0 -22px
+}
+#s4 div {
+  background-position:0 -33px
+}
+#s1 div.sel {
+  background:url("images/skinbutton.png") no-repeat scroll -14px top transparent
+}
+#s2 div.sel {
+  background:url("images/skinbutton.png") no-repeat scroll -14px -11px transparent
+}
+#s3 div.sel {
+  background:url("images/skinbutton.png") no-repeat scroll -14px -22px transparent
+}
+#s4 div.sel {
+  background:url("images/skinbutton.png") no-repeat scroll -14px -33px transparent
+}
   </style>
 </head>
-
 <body class="showmenu">
   <div class="pagemask"></div>
   <iframe class="iframemask"></iframe>
   <div class="allmenu">
     <div class="allmenu-box">
       <?php
-	echo $mapstring;
-?>
-      <br style='clear:both' />
+	     echo $mapstring;
+      ?>
+      <br style="clear:both">
     </div>
   </div>
   <div class="head">
@@ -87,36 +71,30 @@
       <div class="top_version"><?php echo $cfg_version_detail; ?></div>
       <div class="top_link">
         <ul>
-          <li class="welcome">您好：<?php echo $cuserLogin->getUserName(); ?> ，欢迎使用DedeBIZV6！</li>
-          <li><a href="index_menu.php" target="menu">主菜单</a></li>
-          <li><a href="#" onclick="JumpFrame('index_menu.php','index_body.php');">系统主页</a></li>
+          <li class="welcome"><img src="/static/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><a href="exit.php" target="_top">注销</a></li>
+          <li><a href="#" onclick="JumpFrame('index_menu.php','index_body.php');">后台主页</a></li>
           <li><a href="#" onclick="JumpFrame('catalog_menu.php','public_guide.php');">内容发布</a></li>
           <li><a href="#" onclick="JumpFrame('index_menu.php','content_list.php');">内容维护</a></li>
-          <li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
           <li><a href="../member" target="_blank">会员中心</a></li>
-          <li><a href="exit.php" target="_top">注销</a></li>
+          <li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
         </ul>
       </div>
     </div>
     <div class="topnav">
-      <div class="menuact"> <a href="#" id="togglemenu">隐藏菜单</a>
-        <?php
+      <div class="menuact"><a href="#" id="togglemenu">隐藏菜单</a>
+      <?php
 			if($cuserLogin->getUserType() >= 10) echo '<a href="#" id="allmenu">功能地图</a>';
 			?>
       </div>
-      <div id="skin">
-        <div>
-          
+      <div id="skin"><div>
   </div>
-
   </div>
-  <div class="nav" id="nav"> </div>
+  <div class="nav" id="nav"></div>
   <div class="sysmsg">
     <h3>滚动消息:</h3>
     <div class="scroll">
       <form action="action_search.php" target="main" method="post">
-        <input name="keyword" type="text" value="功能搜索" onfocus="if(this.value=='功能搜索'){this.value='';}"
-          onblur="if(this.value==''){this.value='功能搜索';}" class="allsearch" style="width:150px;" />
+        <input name="keyword" type="text" value="功能搜索" onfocus="if(this.value=='功能搜索'){this.value='';}" onblur="if(this.value==''){this.value='功能搜索';}" class="allsearch">
         <input name="" type="submit" value="搜索" class="np" />
         <a href='<?php echo $cfg_biz_gitUrl;?>' target='_blank'>代码托管</a> <a href='<?php echo $cfg_biz_helpUrl;?>'
           target='_blank'>帮助中心</a>
@@ -187,5 +165,4 @@
     })(jQuery);
   </script>
 </body>
-
 </html>

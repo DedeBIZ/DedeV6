@@ -44,7 +44,7 @@ else if ($action == 'send') {
     $msg = RemoveXSS(dede_htmlspecialchars($msg));
     $mailtitle = "你的好友给你推荐了一篇文章";
     $mailbody .= "$msg \r\n\r\n";
-    $mailbody .= "Powered by https://www.dedebiz.com DedeCMSV6内容管理系统！";
+    $mailbody .= "Powered by https://www.dedebiz.com DedeBIZ内容管理系统！";
 
     $headers = "From: " . $cfg_adminemail . "\r\nReply-To: " . $cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {

@@ -443,7 +443,7 @@ $actionSearch[10] = array(
         ),
         14  =>  array(
             'title' => '病毒扫描[S]',
-            'description' => '以DedeCMSV6开发模式为标准对现有的文件进行扫描并进行判断',
+            'description' => '以DedeBIZ开发模式为标准对现有的文件进行扫描并进行判断',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_safetest.php'
         ),

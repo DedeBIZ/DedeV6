@@ -48,8 +48,6 @@ input,input[type=text],input[type=password] {
 	border:1px solid #eee
 }
 input[type=checkbox],input[type=radio] {
-	width:14px;
-	height:14px;
 	vertical-align:bottom
 }
 textarea {
@@ -433,10 +431,10 @@ option.stype {
 	cursor:pointer
 }
 .maintable {
-	width:98% !important
+	width:98%!important
 }
 a.btn {
-	color:white !important
+	color:white!important
 }
 span.page-link {
 	background-color:#ddd
