@@ -58,11 +58,11 @@ header .logo {
 			<?php echo $redmsg; ?>
 		</div>
 		<div class="login-area">
-			<h2 class="text-center">管理目录</h2>
+			<h3 class="text-center">后台登录</h3>
 			<form name="form1" method="post" action="login.php">
-				<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage);?>" />
-				<input type="hidden" name="dopost" value="login" />
-				<input name='adminstyle' type='hidden' value='newDedeBIZ' />
+				<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage); ?>">
+				<input type="hidden" name="dopost" value="login">
+				<input type="hidden" name="adminstyle" value="newDedeBIZ">
 				<div class="form-group">
 					<label for="iptUserid">用户名</label>
 					<input type="text" name="userid" class="form-control" id="iptUserid">
@@ -74,11 +74,8 @@ header .logo {
 				<div class="form-group">
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
-						<input type="text" name="validate" class="form-control" id="iptValidate"
-							style="text-transform:uppercase;">
-						<img src="../plus/vdimgck.php" id="validateimg" style="cursor:pointer;"
-							onclick="this.src='../plus/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)"
-							title="点击我更换图片" alt="点击我更换图片" />
+						<input type="text" name="validate" class="form-control" id="iptValidate" style="text-transform:uppercase">
+						<img src="../plus/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='../plus/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 					</div>
 				</div>
 				<button type="submit" class="btn btn-success btnLogin">登录</button>
