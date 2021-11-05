@@ -57,13 +57,13 @@ div.items {
 }
 .flrct {
 	float:left;
-	padding-top:5px
+	padding-top:4px
 }
 .sitemu li {
 	padding:0 0 0 18px;
-	height:28px;
-	line-height:28px;
-	background:url(images/arr4.gif) no-repeat 6px 11px
+	height:26px;
+	line-height:26px;
+	background:url(images/arr4.gif) no-repeat 6px 10px
 }
 a.mmac div {
 	padding:8px 4px 4px 10px;
@@ -114,23 +114,23 @@ a.mm:hover div {
 					<div onClick="ShowMainMenu(6)">会员</div>
 				</a>
 				<?php
-  	if($cuserLogin->getUserType() >= 10) {
-  	?>
+				if($cuserLogin->getUserType() >= 10) {
+				?>
 				<a id='link7' class='mm'>
 					<div onClick="ShowMainMenu(7)">模板</div>
 				</a> <a id='link10' class='mm'>
 					<div onClick="ShowMainMenu(10)">系统</div>
 				</a>
 				<?php
-  	}
-  	?>
+				}
+				?>
 				<div class='mmf'></div>
 			</td>
 			<td width='160' id='mainct' valign="top">
 				<div id='ct1'>
-					<?php
-GetMenus($cuserLogin->getUserRank(), 'main');
-?>
+				<?php
+				GetMenus($cuserLogin->getUserRank(), 'main');
+				?>
 				</div>
 				<div id='ct100'></div>
 				<div id='ct3'></div>
@@ -147,20 +147,19 @@ GetMenus($cuserLogin->getUserRank(), 'main');
 		</tr>
 	</table>
 	<?php
-if(!empty($openitem) && $openitem!=1)
-{
-?>
+	if(!empty($openitem) && $openitem!=1)
+	{
+	?>
 	<script language='javascript'>
 		ShowMainMenu(100);
 	</script>
 	<?php
-}
-?>
+	}
+	?>
 	<script language="javascript">
 		function myAlert() {
 			alert('dede');
 		}
 	</script>
 </body>
-
 </html>
