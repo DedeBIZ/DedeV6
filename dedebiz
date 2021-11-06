@@ -14,7 +14,7 @@ $workDir = dirname(__FILE__) . "/src";
 chdir($workDir);
 
 if (substr(php_sapi_name(), 0, 3) === 'cgi') {
-	die("DedeCMSV6:needs php-cli to run\n\n");
+	die("DedeBIZ:needs php-cli to run\n\n");
 }
 
 $helpStr = "
@@ -23,8 +23,8 @@ NAME:
 USAGE:
 	php ./dedebiz command [arguments...]
 COMMANDS:
-	serv,s Run cli web server for DedeCMSV6
-	make,m Make DedeCMSV6 HTML
+	serv,s Run cli web server for DedeBIZ
+	make,m Make DedeBIZ HTML
 	update,u Update to latest system
 	help,h Shows a list of commands or help
 	quick,q Quick start a development environment
@@ -75,9 +75,9 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	// PHP5.4以下不支持内建服务器
 	// 用于开发调试
 	if (phpversion() < "5.4") {
-		die("DedeCMSV6:command web server not support\n\n");
+		die("DedeBIZ:command web server not support\n\n");
 	}
-	echo "Start Dev Server For DedeCMSV6\n\r";
+	echo "Start Dev Server For DedeBIZ\n\r";
 	echo "Open http://localhost:8088\n\r";
 	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 } else if (count($argv) > 1 && ($argv[1] == "make" || $argv[1] == "m")) {
@@ -296,23 +296,23 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 } else if (count($argv) > 1 && ($argv[1] == "quick" || $argv[1] == "q")){
 	define("DEDEINC", $workDir."/include");
 	require_once(DEDEINC . "/cli.class.php");
-	// 快速开始一个用于开发的DedeCMSV6环境，基于SQLite无其他依赖
-	if (file_exists($workDir."/data/dedecmsv6.db")) {
+	// 快速开始一个用于开发的DedeBIZ环境，基于SQLite无其他依赖
+	if (file_exists($workDir."/data/DedeBIZ.db")) {
 		DedeCli::write("development environment has inited");
-		echo "Start Dev Server For DedeCMSV6\n\r";
+		echo "Start Dev Server For DedeBIZ\n\r";
 		echo "Open http://localhost:8088\n\r";
 		passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 		exit;
 	}
 	// 初始化安装一个开发环境
-	$db = new SQLite3($workDir.'/data/dedecmsv6.db');
+	$db = new SQLite3($workDir.'/data/DedeBIZ.db');
 	$fp = fopen($workDir."/install/common.inc.php","r");
     $configStr1 = fread($fp,filesize($workDir."/install/common.inc.php"));
     fclose($fp);
     @chmod($workDir."/data",0777);
     $dbtype = "sqlite";
     $dbhost = "";
-    $dbname = "dedecmsv6";
+    $dbname = "DedeBIZ";
     $dbuser = "";
     $dbpwd = "";
     $dbprefix = "dede_";
@@ -334,7 +334,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     $baseurl = "http://127.0.0.1:8088";
     $indexUrl = "/";
     $cmspath = "";
-    $webname = "DedeCMSV6本地测试开发站点";
+    $webname = "DedeBIZ本地测试开发站点";
     $adminmail = "admin@dedebiz.com";
 
     $fp = fopen($workDir."/install/config.cache.inc.php","r");
@@ -459,9 +459,9 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
                 Values('1','10','0','{$adminuser}的空间','','person','',''); ";
     $db->exec($adminquery);
 	if (phpversion() < "5.4") {
-		die("DedeCMSV6:command web server not support\n\n");
+		die("DedeBIZ:command web server not support\n\n");
 	}
-	echo "Start Dev Server For DedeCMSV6\n\r";
+	echo "Start Dev Server For DedeBIZ\n\r";
 	echo "Open http://localhost:8088\n\r";
 	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 	exit;

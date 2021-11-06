@@ -187,7 +187,7 @@ table{background:#fff}
                         <input type="hidden" name="job" value="upload">
                             <tr>
                                 <td>
-                                    &nbsp;上传：<input type="file" name="uploadfile" style="width:260px">
+                                    上传：<input type="file" name="uploadfile" style="width:260px;border:none">
                                     改名：<input type="text" name="filename" style="width:160px">
                                     <button type="submit" name="sb1" class="btn btn-success btn-sm">确定</button>
                                 </td>

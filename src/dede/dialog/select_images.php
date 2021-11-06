@@ -73,7 +73,7 @@ table{background:#fff}
 </head>
 <body class="bg">
     <div id="floater" class="napisdiv">
-        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src='img/picviewnone.gif' id='picview' border='0' alt='关闭预览'></a>
+        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="img/picviewnone.gif" id='picview' alt="关闭预览"></a>
     </div>
     <script src="../js/float.js"></script>
     <script>
@@ -221,7 +221,7 @@ table{background:#fff}
                                     <input type="hidden" name="job" value="upload">
                                     <tr>
                                         <td>
-                                            上传：<input type="file" name="imgfile" style="width:160px">
+                                            上传：<input type="file" name="imgfile" style="width:160px;border:none">
                                             <label><input type="checkbox" name="needwatermark" value="1" class="np" <?php if ($photo_markup == '1') echo "checked"; ?> /> 水印 </label>
                                             <label><input type="checkbox" name="resize" value="1" class="np"> 缩小 </label>
                                             宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:46px">
