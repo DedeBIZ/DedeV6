@@ -1,29 +1,19 @@
-<!DOCTYPE html
-	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 	<title>模板管理器</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
 	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/base.css" rel="stylesheet" type="text/css" />
-	<style type="text/css">
-		.linerow {
-			border-bottom: 1px solid #CBD8AC;
-		}
-
-		td {
-			padding-left: 5px;
-		}
-
-		a.btn {
-			color: white!important;
-		}
+	<style>
+.linerow{border-bottom:1px solid #CBD8AC}
+td{padding-left:6px}
+a.btn{color:white!important}
 	</style>
 	<script language="javascript">
 		function DelTpl(filename) {
-			if (window.confirm('你确定要删除这篇文档吗?')) location = 'tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=' + filename;
+			if (window.confirm('你确定要删除这篇文档吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=' + filename;
 			else return false;
 		}
 	</script>
@@ -48,14 +38,12 @@
 		<tr>
 			<td colspan='4' height="28" bgcolor="#F9FCEF">
 				<div style='float:left'>
-					<b>
-						当前位置：
-						<?php
-      		if($acdir=='plus') echo '插件模板';
-      		else if($acdir=='system') echo '底层模板';
-      		else echo '核心模板 &gt; '.$acdir;
-      		?>
-					</b>
+					当前位置：
+					<?php
+      			if($acdir=='plus') echo '插件模板';
+      			else if($acdir=='system') echo '底层模板';
+      			else echo '核心模板 &gt; '.$acdir;
+      			?>
 				</div>
 				<div style='float:right;padding-right:10px'>
 					<a class="btn btn-success btn-sm" href='templets_main.php'>默认模板目录</a>
@@ -64,51 +52,39 @@
 			</td>
 		</tr>
 		<?php
-   $dh = dir($templetdird);
-   while($filename=$dh->read())
-   {
-   	  if(!preg_match("#\.htm#", $filename)) continue;
-   	  $filetime = filemtime($templetdird.'/'.$filename);
-      $filetime = MyDate("Y-m-d H:i",$filetime);
-      $fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename] : '未知模板');
-   ?>
-		<tr height="26" bgcolor='#FFFFFF' onMouseMove="javascript:this.bgColor='#FCFDEE';"
-			onMouseOut="javascript:this.bgColor='#FFFFFF';">
+		$files = scandir($templetdird);
+		foreach ($files as $filename){
+			if(!preg_match("#\.htm#", $filename))
+			continue;
+			$filetime = filemtime($templetdird.'/'.$filename);
+			$filetime = MyDate("Y-m-d H:i",$filetime);
+			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename] : '未知模板');
+		?>
+		<tr height="26" bgcolor='#FFFFFF' onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
 			<td>
-				<a href='<?php echo $templeturld.'/'.$filename; ?>' target='_blank'>
-					<img src='images/htm.gif' border='0' align='absmiddle' /> <?php echo $filename; ?>
-				</a>
+				<a href='<?php echo $templeturld.'/'.$filename; ?>' target='_blank'><img src='images/htm.gif' border='0' align='absmiddle' /> <?php echo $filename; ?></a>
 			</td>
-			<td>
-				<?php echo $fileinfo; ?>
-			</td>
-			<td align='center'>
-				<?php echo $filetime; ?>
-			</td>
+			<td><?php echo $fileinfo; ?></td>
+			<td align='center'><?php echo $filetime; ?></td>
 			<td align='center'>
 				<a class="btn btn-success btn-sm" href='tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>' title="编辑"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 				<?php
-			if(!isset($fileinfos[$filename]))
-			{
-			?>
+				if(!isset($fileinfos[$filename]))
+				{
+				?>
 				|
 				<a href='#' class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
 				<?php
-		   }
-			?>
+		   	}
+				?>
 			</td>
 		</tr>
-		<?php } ?>
+		<?php
+		}
+		?>
 		<tr>
-			<td colspan="4" height='32' bgcolor="#F9FCEF">
-				&nbsp;
-				<a class="btn btn-success" href='tpl.php?action=newfile&acdir=<?php echo $acdir; ?>'>新建模板</a>
-				&nbsp;
-				<a class="btn btn-success" href='tpl.php?action=upload&acdir=<?php echo $acdir; ?>'>上传模板</a>
-			</td>
+			<td colspan="4" height='36' bgcolor="#F9FCEF"><a class="btn btn-success" href='tpl.php?action=newfile&acdir=<?php echo $acdir; ?>'>新建模板</a>&nbsp;<a class="btn btn-success" href='tpl.php?action=upload&acdir=<?php echo $acdir; ?>'>上传模板</a></td>
 		</tr>
 	</table>
-
 </body>
-
 </html>
