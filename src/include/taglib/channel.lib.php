@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 获取栏目列表标签
  *
@@ -9,18 +8,14 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-
 function lib_channel(&$ctag, &$refObj)
 {
     global $dsql;
-
     $attlist = "typeid|0,reid|0,row|100,col|1,type|son,currentstyle|,cacheid|";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = $ctag->GetInnerText();
     $line = empty($row) ? 100 : $row;
-
     $likeType = '';
     //读取固定的缓存块
     $cacheid = trim($cacheid);
@@ -28,7 +23,6 @@ function lib_channel(&$ctag, &$refObj)
         $likeType = GetCacheBlock($cacheid);
         if ($likeType != '') return $likeType;
     }
-
     $reid = 0;
     $topid = 0;
     //如果属性里没指定栏目id，从引用类里获取栏目信息
@@ -52,39 +46,30 @@ function lib_channel(&$ctag, &$refObj)
             $issetInfos = true;
         }
     }
-
     if ($type == '' || $type == 'sun') $type = 'son';
     if ($innertext == '') $innertext = GetSysTemplets("channel_list.htm");
-
     if ($type == 'top') {
-        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-          From `#@__arctype` WHERE reid=0 And ishidden<>1 order by sortrank asc limit 0, $line ";
+        $sql = "SELECT * From `#@__arctype` WHERE reid=0 And ishidden<>1 order by sortrank asc limit 0, $line ";
     } else if ($type == 'son') {
         if ($typeid == 0) return '';
-        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-          From `#@__arctype` WHERE reid='$typeid' And ishidden<>1 order by sortrank asc limit 0, $line ";
+        $sql = "SELECT * From `#@__arctype` WHERE reid='$typeid' And ishidden<>1 order by sortrank asc limit 0, $line ";
     } else if ($type == 'self') {
         if ($reid == 0) return '';
-        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-            FROM `#@__arctype` WHERE reid='$reid' And ishidden<>1 order by sortrank asc limit 0, $line ";
+        $sql = "SELECT * FROM `#@__arctype` WHERE reid='$reid' And ishidden<>1 order by sortrank asc limit 0, $line ";
     }
-    //And id<>'$typeid'
     $needRel = false;
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');
     $dtp2->LoadSource($innertext);
     //检查是否有子栏目，并返回rel提示（用于二级菜单）
     if (preg_match('#:rel#', $innertext)) $needRel = true;
-
     if (empty($sql)) return '';
     $dsql->SetQuery($sql);
     $dsql->Execute();
-
     $totalRow = $dsql->GetTotalRow();
     //如果用子栏目模式，当没有子栏目时显示同级栏目
     if ($type == 'son' && $reid != 0 && $totalRow == 0) {
-        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-            FROM `#@__arctype` WHERE reid='$reid' And ishidden<>1 order by sortrank asc limit 0, $line ";
+        $sql = "SELECT * FROM `#@__arctype` WHERE reid='$reid' And ishidden<>1 order by sortrank asc limit 0, $line ";
         $dsql->SetQuery($sql);
         $dsql->Execute();
     }
@@ -121,14 +106,12 @@ function lib_channel(&$ctag, &$refObj)
             }
             if ($col > 1) $likeType .= "</dd>\r\n";
             $GLOBALS['autoindex']++;
-        }
-        //Loop Col
+        }//Loop Col
         if ($col > 1) {
             $i += $col - 1;
             $likeType .= "    </dl>\r\n";
         }
-    }
-    //Loop for $i
+    }//Loop for $i
     $dsql->FreeResult();
     if ($cacheid != '') {
         WriteCacheBlock($cacheid, $likeType);
