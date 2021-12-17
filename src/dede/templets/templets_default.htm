@@ -4,18 +4,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 	<title>模板管理器</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/base.css">
 	<style>
 .linerow{border-bottom:1px solid #CBD8AC}
 td{padding-left:6px}
 a.btn{color:white!important}
 	</style>
 	<script language="javascript">
-		function DelTpl(filename) {
-			if (window.confirm('你确定要删除这篇文档吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=' + filename;
-			else return false;
-		}
+	function DelTpl(filename) {
+		if (window.confirm('你确定要删除这篇文档吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=' + filename;
+		else return false;
+	}
 	</script>
 </head>
 

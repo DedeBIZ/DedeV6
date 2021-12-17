@@ -46,31 +46,27 @@
                     <li><a href="#" onclick="JumpFrame('index_menu.php','file_manage_main.php');">文件管理</a></li>
                     <li><a href="#" onclick="JumpFrame('index_menu.php','templets_main.php');">模板管理</a></li>
                     <?php echo ($cfg_mb_open == 'Y')?'<li><a href="../member" target="_blank">会员中心</a></li>':''; ?>
-                    <li><a href="#" onclick="JumpFrame('index_menu.php','makehtml_all.php');">更新网站</a></li>
                     <li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
                 </ul>
             </div>
         </div>
         <div class="topnav">
-            <div class="menuact"> <a href="#" id="togglemenu">隐藏菜单</a>
+            <div class="menuact"><a href="#" id="togglemenu">隐藏菜单</a>
             <?php
             if($cuserLogin->getUserType() >= 10) echo '<a href="#" id="allmenu">功能地图</a>';
             ?>
             </div>
-            <div id="skin">
-                <div></div>
-            </div>
-            <div class="nav" id="nav"></div>
-            <div class="sysmsg">
-                <h3>滚动消息:</h3>
-                <div class="scroll">
-                    <form action="action_search.php" target="main" method="post">
-                        <input name="keyword" type="text" value="功能搜索" onfocus="if(this.value=='功能搜索'){this.value='';}" onblur="if(this.value==''){this.value='功能搜索';}" class="allsearch" style="width:160px;">
-                        <input type="submit" class="np">
-                        <a href="<?php echo $cfg_biz_gitUrl; ?>" target="_blank">代码托管</a>
-                        <a href="<?php echo $cfg_biz_helpUrl; ?>" target="_blank">帮助中心</a>
-                    </form>
-                </div>
+            <div id="skin"></div>
+        </div>
+        <div class="nav" id="nav"></div>
+        <div class="sysmsg">
+            <h3>滚动消息:</h3>
+            <div class="scroll">
+                <form action="action_search.php" target="main" method="post">
+                    <input name="keyword" type="text" value="功能搜索" onfocus="if(this.value=='功能搜索'){this.value='';}" onblur="if(this.value==''){this.value='功能搜索';}" class="allsearch">
+                    <input name="" type="submit" value="搜索" class="np">
+                    <a href='<?php echo $cfg_biz_gitUrl;?>' target='_blank'>代码托管</a> <a href='<?php echo $cfg_biz_helpUrl;?>' target='_blank'>帮助中心</a>
+                </form>
             </div>
         </div>
     </div>
@@ -108,31 +104,31 @@
         jQuery('#menufra').get(0).src = url1;
         jQuery('#main').get(0).src = url2;
     }
-    /*(function ($) {
+    (function ($) {
         $("#skinlist>li").click(function () {
-            var adminskin = $(this).index() + 1;
-            var csshref = "images/style" + adminskin + "/style.css";
-            $("#skinlist>li").each(function () { $(this).children('div').attr('class', '') });
-            $("#topdedelogo").attr('src', 'images/style' + adminskin + '/admin_top_logo.gif')
-            $('link').each(function () {
-                if ($(this).attr('href').match(/style.css$/)) {
-                    $(this).attr('href', csshref);
-                }
-            });
-            $(this).children('div').attr('class', 'sel');
-            $(window.frames["menu"].document).find("link").each(function () {
-                if ($(this).attr('href').match(/style.css$/)) {
-                    $(this).attr('href', csshref);
-                }
-            });
-            $(window.frames["main"].document).find("link").each(function () {
-                if ($(this).attr('href').match(/style.css$/)) {
-                    $(this).attr('href', csshref);
-                }
-            });
-            $.get('index_body.php?dopost=setskin&cskin=' + adminskin);
-        });
-    })(jQuery);*/
+          var adminskin = $(this).index() + 1;
+          var csshref = "images/style" + adminskin + "/style.css";
+          $("#skinlist>li").each(function () { $(this).children('div').attr('class', '') });
+          $("#topdedelogo").attr('src', 'images/style' + adminskin + '/admin_top_logo.gif')
+          $('link').each(function () {
+              if ($(this).attr('href').match(/style.css$/)) {
+                  $(this).attr('href', csshref);
+              }
+          });
+          $(this).children('div').attr('class', 'sel');
+          $(window.frames["menu"].document).find("link").each(function () {
+              if ($(this).attr('href').match(/style.css$/)) {
+                  $(this).attr('href', csshref);
+              }
+          });
+          $(window.frames["main"].document).find("link").each(function () {
+              if ($(this).attr('href').match(/style.css$/)) {
+                  $(this).attr('href', csshref);
+              }
+          });
+          $.get('index_body.php?dopost=setskin&cskin=' + adminskin);
+      });
+    })(jQuery);
     </script>
 </body>
 </html>
