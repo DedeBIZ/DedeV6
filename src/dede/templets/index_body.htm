@@ -40,7 +40,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="mt-3 mb-3">欢迎使用国内流行的内容管理系统（CMS）多端全媒体解决方案 -- <?php echo $cfg_softname; ?></div>
+        <div class="mt-3 mb-3">欢迎使用国内流行的内容管理系统多端全媒体解决方案 -- <?php echo $cfg_softname; ?></div>
         <div class="row">
             <div id="__testEvn" class="col-md-12"></div>
             <div class="col-md-6 mt-3 updatenews">
@@ -50,7 +50,7 @@
                         <div id="updateinfos">
                             <?php
                             echo "<div class='updatedvt py-3'>";
-                            echo "安全操作：<a href='sys_data.php' class='btn btn-success btn-sm'>数据备份/还原</a><a href='sys_safetest.php' class='btn btn-success btn-sm'>病毒扫描</a><a href='sys_repair.php' class='btn btn-success btn-sm'>错误修复</a></div>";
+                            echo "安全操作：<a href='sys_data.php' class='btn btn-success btn-sm'>备份还原</a><a href='sys_safetest.php' class='btn btn-success btn-sm'>病毒扫描</a><a href='sys_repair.php' class='btn btn-success btn-sm'>错误修复</a></div>";
                             echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' width='98%' height='100'></iframe>";
                             ?>
                         </div>
@@ -67,10 +67,7 @@
 
             <div class="col-md-6 mt-3">
                 <div class="card">
-                    <div class="card-header">
-                        快捷操作
-                        <span class="float-right"><a href="javascript:AddNew()" class="btn btn-success btn-sm">新增</a><a href="javascript:ListAll()" class="btn btn-success btn-sm">管理</a></span>
-                    </div>
+                    <div class="card-header">快捷操作<span class="float-right"><a href="javascript:AddNew()" class="btn btn-success btn-sm">新增</a><a href="javascript:ListAll()" class="btn btn-success btn-sm">管理</a></span></div>
                     <div class="card-body">
                         <ul class="nav">
                             <?php
@@ -96,52 +93,54 @@
                     <div class="card-body">
                         <table width="98%" class="table table-borderless">
                             <tr>
-                                <td width="25%" class='nline' style="text-align:right">您的级别：</td>
-                                <td class='nline'>
-                                <?php
-                                if($cuserLogin->getUserType()==10) {
-                                    echo "总管理员";
-                                } else if($cuserLogin->getUserType()==5) {
-                                    echo "频道总编";
-                                } else {
-                                echo "信息采集员或其它管理员";
-                                }
-                                ?>
-                                <a href="javascript:showMore()" class="btn btn-success btn-sm">查看更多</a></td>
+                                <td width="25%" class="nline" style="text-align:right">您的级别：</td>
+                                <td class="nline">
+                                    <?php
+                                    if($cuserLogin->getUserType()==10) {
+                                        echo "总管理员";
+                                    } else if($cuserLogin->getUserType()==5) {
+                                        echo "频道总编";
+                                    } else {
+                                    echo "信息采集员或其它管理员";
+                                    }
+                                    ?>
+                                    <a href="javascript:showMore()" class="btn btn-success btn-sm">查看更多</a>
+                                </td>
                             </tr>
                             <tr>
-                                <td colspan="2" class='nline' id="allInfoTD" style="display:none">
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="allInfo"
-                                        style="display:none">
+                                <td colspan="2" class="nline" id="allInfoTD" style="display:none">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="allInfo" style="display:none">
                                         <tr>
-                                            <td rowspan="5" class='nline' style="text-align:right">PHP环境摘要：</td>
-                                            <td class='nline' style="text-align:left">PHP版本：<?php echo @phpversion(); ?>&nbsp;GD版本：<?php echo @gdversion(); ?></td>
+                                            <td class="nline" style="text-align:right" rowspan="5">PHP环境摘要：</td>
+                                            <td class="nline" style="text-align:left">
+                                                <span style="margin-right:10px">PHP版本：<?php echo @phpversion(); ?></span>
+                                                <span>GD版本：<?php echo @gdversion(); ?></span>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td class='nline' style="text-align:left">是否安全模式：<font color='red'>
-                                                <?php echo ($isSafeMode ? 'On' : 'Off')?></font>
+                                            <td class="nline" style="text-align:left">是否安全模式：<?php echo ($isSafeMode ? 'On' : 'Off')?>
                                                 <?php
                                                 if($isSafeMode) {
-                                                echo "由于您的系统以安全模式运行，为了确保程序兼容性，第一次进入本系统时请更改“ <a href='sys_info.php' class='btn btn-success btn-smm'>更改系统参数</a> ”里的FTP选项，并选择用FTP形式创建目录";
+                                                echo "由于您的系统以安全模式运行，为了确保程序兼容性，第一次进入本系统时请更改 <a href='sys_info.php' class='btn btn-success btn-smm'>更改系统参数</a> 里的FTP选项，并选择用FTP形式创建目录";
                                                 }
                                                 ?>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class='nline' style="text-align:left">
+                                            <td class="nline" style="text-align:left">
                                                 <span style="margin-right:10px">Register_Globals：<?php echo ini_get("register_globals") ? 'On' : 'Off'?></span>
                                                 <span>Magic_Quotes_Gpc：<?php echo ini_get("magic_quotes_gpc") ? 'On' : 'Off'?></span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class='nline' style="text-align:left">支持上传的最大文件：<?php echo ini_get("post_max_size")?></td>
+                                            <td class="nline" style="text-align:left">支持上传的最大文件：<?php echo ini_get("post_max_size")?></td>
                                         </tr>
                                         <tr>
-                                            <td class='nline' style="text-align:left">是否允许打开远程连接：<?php echo ini_get("allow_url_fopen") ? '支持' : '不支持'; ?></td>
+                                            <td class="nline" style="text-align:left">是否允许打开远程连接：<?php echo ini_get("allow_url_fopen") ? '支持' : '不支持'; ?></td>
                                         </tr>
                                         <tr>
-                                            <td class='nline' style="text-align:right"> 其它必须函数检测：</td>
-                                            <td class='nline' style="text-align:left">
+                                            <td class="nline" style="text-align:right">其它必须函数检测：</td>
+                                            <td class="nline" style="text-align:left">
                                                 <?php
                                                 $needfunc = array('dir','phpinfo');
                                                 $n = 0;
@@ -154,14 +153,16 @@
                                                 if($n==0) {
                                                     echo "符合要求";
                                                 } else {
-                                                echo "被禁用的函数可能导致部份功能无法使用！";
-                                                    }
+                                                    echo "被禁用的函数可能导致部份功能无法使用";
+                                                }
                                                 ?>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class='nline' style="text-align:right"> 软件版本信息： </td>
-                                            <td class='nline' style="text-align:left">版本名称：<?php echo $cfg_soft_enname; ?>&nbsp;版本号：<?php echo $cfg_version; ?>
+                                            <td class="nline" style="text-align:right">软件版本信息：</td>
+                                            <td class="nline" style="text-align:left">
+                                                <span style="margin-right:10px">版本名称：<?php echo $cfg_soft_enname; ?></span>
+                                                <span>版本号：<?php echo $cfg_version; ?></span>
                                             </td>
                                         </tr>
                                     </table>
@@ -176,9 +177,7 @@
                 <div class="card">
                     <div class="card-header">信息统计</div>
                     <div class="card-body">
-                        <dd id='listCount'>
-                            正在载入中...
-                        </dd>
+                        <dd id='listCount'>正在载入中...</dd>
                     </div>
                 </div>
             </div>
@@ -208,21 +207,19 @@
                                     $row['editcon'] = 'archives_edit.php';
                                 }
                                 $linkstr = "<a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>";
-                                if($row['arcrank']==-1) $linkstr .= "<span class='btn btn-success btn-sm'>未审核</span>";
+                                if($row['arcrank']==-1) $linkstr .= " <span class='btn btn-success btn-sm'>未审核</span>";
                             ?>
                             <tr>
-                                <td class='nline' style="text-align:left">
-                                    <?php echo $linkstr; ?>
-                                </td>
+                                <td class="nline" style="text-align:left"><?php echo $linkstr; ?></td>
                             </tr>
                             <?php
                             }
                             } else {
                             ?>
                             <tr>
-                                <td class='nline' style="text-align:left">暂无新增内容</td>
+                                <td class="nline" style="text-align:left">暂无新增内容</td>
                             </tr>
-                            <?php
+                        <?php
                         }
                         ?>
                         </table>
@@ -234,44 +231,38 @@
 
     <div class="footer">
         <!--下面是隐藏的项目-->
-        <div id='loaddiv' style='display:none'>
-            <p align='center' style='padding-top:200px'><img src='images/loadinglit.gif'> 请稍后，正在下载更新文件列表...</p>
+        <div id="loaddiv" style="display:none">
+            <p align="center" style="padding-top:200px"><img src="images/loadinglit.gif">请稍后，正在下载更新文件列表...</p>
         </div>
         <div id="editTab">
-            <span id='editTabBody'>请稍候，正在载入...</span>
+            <span id="editTabBody">请稍候，正在载入...</span>
         </div>
         <div id="addTab">
-            <form name='addform' action='index_body.php'>
-                <input type='hidden' name='dopost' value='addnew' />
+            <form name="addform" action="index_body.php">
+                <input type="hidden" name="dopost" value="addnew">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td height='28' colspan='3' background="images/tbg.gif">
-                            <div style='float:left'>增加快捷操作项</div>
-                            <div style='float:right;padding:4px 10px 0 0'>
+                        <td height="28" colspan="3" background="images/tbg.gif">
+                            <div style="float:left">增加快捷操作项</div>
+                            <div style="float:right;padding:4px 10px 0 0">
                                 <a href="javascript:CloseTab('addTab')"><img src="images/close.gif" width="12" height="12" border="0"></a>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td style="height:6px;font-size:1px;border-top:1px solid #8DA659" colspan="2">&nbsp;</td>
+                        <td style="height:6px;font-size:1px;border-top:1px solid #8DA659" colspan="2"></td>
                     </tr>
                     <tr>
                         <td width="20%" height="28" align="right">链接标题：</td>
-                        <td width="70%">
-                            <input name="title" type="text" id="title" class='pubinputs' style="width:255px;">
-                        </td>
+                        <td width="70%"><input name="title" type="text" id="title" class="pubinputs" style="width:255px"></td>
                     </tr>
                     <tr>
                         <td height="28" width="20%" align="right">链接网址：</td>
-                        <td width="70%">
-                            <input name="link" type="text" id="link" class='pubinputs' style="width:255px;">
-                        </td>
+                        <td width="70%"><input name="link" type="text" id="link" class="pubinputs" style="width:255px"></td>
                     </tr>
                     <tr>
-                        <td height="45">&nbsp;</td>
-                        <td>
-                            <input type="submit" name="Submit" value="保存项目" class="np coolbg" style="width:80px;cursor:pointer">
-                        </td>
+                        <td height="36"></td>
+                        <td><input type="submit" name="Submit" value="保存项目" class="np coolbg" style="width:80px;cursor:pointer"></td>
                     </tr>
                 </table>
             </form>
@@ -286,20 +277,20 @@
             <table width="100%" class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td class="nline" style="text-align:left"> 版本号： </td>
-                        <td class="nline" style="text-align:left"> v${dedebizInfo.result.server_version} </td>
+                        <td class="nline" style="text-align:left">版本号：</td>
+                        <td class="nline" style="text-align:left">v${dedebizInfo.result.server_version} </td>
                     </tr>
                     <tr>
-                        <td class="nline" style="text-align:left"> 运行时间： </td>
-                        <td class="nline" style="text-align:left"> ${dedebizInfo.result.server_run_time} </td>
+                        <td class="nline" style="text-align:left">运行时间：</td>
+                        <td class="nline" style="text-align:left">${dedebizInfo.result.server_run_time} </td>
                     </tr>
                     <tr>
-                        <td class="nline" style="text-align:left"> 服务器系统： </td>
-                        <td class="nline" style="text-align:left"> ${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}） </td>
+                        <td class="nline" style="text-align:left">服务器系统：</td>
+                        <td class="nline" style="text-align:left">${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}） </td>
                     </tr>
                     <tr>
-                        <td class="nline" style="text-align:left"> 内存占用： </td>
-                        <td class="nline" style="text-align:left"> ${dedebizInfo.result.server_memory_usage}% </td>
+                        <td class="nline" style="text-align:left">内存占用：</td>
+                        <td class="nline" style="text-align:left">${dedebizInfo.result.server_memory_usage}% </td>
                     </tr>
                 </tbody>
             </table>
@@ -314,32 +305,32 @@
                     if (typeof rsp.result.domain !== "undefined") {
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left"> 授权域名： </td>
-                            <td class="nline" style="text-align:left"> ${rsp.result.domain} <a href="<?php echo $cfg_biz_dedebizUrl;?>/auth/?domain=${rsp.result.domain}"><b>【查看】</b></a></td>
+                            <td class="nline" style="text-align:left">授权域名：</td>
+                            <td class="nline" style="text-align:left">${rsp.result.domain} <a href="<?php echo $cfg_biz_dedebizUrl;?>/auth/?domain=${rsp.result.domain}"><b>【查看】</b></a></td>
                         </tr>
                         `;
                     }
                     if (typeof rsp.result.title !== "undefined") {
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left"> 站点名称： </td>
-                            <td class="nline" style="text-align:left"> ${rsp.result.title} </td>
+                            <td class="nline" style="text-align:left">站点名称：</td>
+                            <td class="nline" style="text-align:left">${rsp.result.title} </td>
                         </tr>
                         `;
                     }
                     if (typeof rsp.result.stype !== "undefined") {
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left"> 站点类型： </td>
-                            <td class="nline" style="text-align:left"> ${rsp.result.stype} </td>
+                            <td class="nline" style="text-align:left">站点类型：</td>
+                            <td class="nline" style="text-align:left">${rsp.result.stype} </td>
                         </tr>
                         `;
                     }
                     if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined") {
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left"> 授权版本： </td>
-                            <td class="nline" style="text-align:left"> v${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
+                            <td class="nline" style="text-align:left">授权版本：</td>
+                            <td class="nline" style="text-align:left">v${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
                         </tr>
                         `;
                     }
@@ -347,16 +338,16 @@
                         //下面是DedeBIZ Core组件信息
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left"> 商业组件： </td>
-                            <td class="nline" style="text-align:left"> <a class="btn btn-danger btn-sm" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008">如何启动组件</a> </td>
+                            <td class="nline" style="text-align:left">商业组件：</td>
+                            <td class="nline" style="text-align:left"><a class="btn btn-danger btn-sm" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008">如何启动组件</a> </td>
                         </tr>
                         `;
                     } else {
                         dedebizInfo = JSON.parse(rsp.result.core.data);
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left"> 商业组件： </td>
-                            <td class="nline" style="text-align:left"> <a class="btn btn-success btn-sm" href="javascript:ViewDedeBIZ()">查看组件信息</a> </td>
+                            <td class="nline" style="text-align:left">商业组件：</td>
+                            <td class="nline" style="text-align:left"><a class="btn btn-success btn-sm" href="javascript:ViewDedeBIZ()">查看组件信息</a> </td>
                         </tr>
                         `;
                     }

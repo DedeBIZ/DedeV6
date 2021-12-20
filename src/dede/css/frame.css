@@ -9,11 +9,11 @@ form{margin:0;padding:0}
 .head{width:100%;height:76px;overflow:hidden;z-index:8;position:relative}
 .top{height:46px;width:100%;background-image:linear-gradient(135deg,#008E38 0%,#639709 100%);overflow:hidden;clear:both}
 .top .top_logo{float:left;margin-left:30px;height:46px;line-height:46px}
-.top .top_logo a{font-size:18px;font-weight:600;color:#fff}
+.top .top_logo a{font-size:20px;font-weight:600;color:#fff}
 .top .top_version{display:inline-block;margin-top:10px;margin-left:10px;color:#fff}
 .top .top_link{float:right;margin-right:30px}
 .top .top_link ul{float:left;line-height:46px;overflow:hidden}
-.top .top_link ul li.welcome img{margin-top:-2px;margin-right:10px;width:30px;height:30px;vertical-align:middle}
+.top .top_link ul li.welcome img{margin-top:-4px;margin-right:10px;width:30px;height:30px;vertical-align:middle}
 .top .top_link ul li{float:left;color:#fff}
 .top .top_link ul li a{color:#fff;padding-left:20px}
 .top .top_link ul li a:hover{color:#ccc}
@@ -33,10 +33,9 @@ form{margin:0;padding:0}
 .nav ul li a:hover{color:#fff}
 .nav ul li a.thisclass,.nav ul li a.thisclass:hover{color:#4E8100;display:block;font-weight:bold;background:#fff;line-height:23px;border-top:2px solid #FFDE59;margin-top:4px;padding:0 10px 0px 10px}
 .sysmsg{height:30px;overflow:hidden;line-height:30px;padding-right:30px;float:right;color:#999;width:500px}
-.sysmsg h3{font-size:12px;float:left;padding-right:6px;font-weight:normal;color:#FC0;display:none}
 .scroll{float:right;overflow:hidden;height:30px}
-.scroll ul li,.sysmsg ul li a{color:#BBB}
-.scroll ul li{height:26px;overflow:hidden;line-height:26px;float:right;clear:both;padding-left:19px;background:url(../images/ico-sysmsg.png) 5px 8px no-repeat}
+.scroll ul li,.sysmsg ul li a{color:#bbb}
+.scroll ul li{height:26px;overflow:hidden;line-height:26px;float:right;clear:both;padding-left:20px;background:url(../images/ico-sysmsg.png) 5px 8px no-repeat}
 .scroll ul li a:hover{text-decoration:underline}
 .scroll a{padding-left:10px;color:#fff}
 body.showmenu .left{display:block}
@@ -53,11 +52,11 @@ body.hidemenu .right{left:0}
 .qucikmenu{position:absolute;right:10px;top:32px;z-index:9;display:none}
 .qucikmenu ul{width:110px;list-style:none;border:1px solid #E7E7E7;background:#fff}
 .qucikmenu ul li{display:block;text-align:left}
-.qucikmenu ul li a{height:30px;line-height:30px;display:block;color:#666666;padding-left:10px;padding-right:10px}
+.qucikmenu ul li a{height:30px;line-height:30px;display:block;color:#666;padding-left:10px;padding-right:10px}
 .qucikmenu ul li a:hover{background:#F7F7F7}
-.pagemask{width:100%;height:100%;background:#000;position:absolute;z-index:100;filter:alpha(opacity=70);-moz-opacity:0.7;opacity:0.7;display:none}
+.pagemask{width:100%;height:100%;background:#000;position:absolute;z-index:100;filter:alpha(opacity=70);-moz-opacity:.7;opacity:.7;display:none}
 .iframemask{position:absolute;z-index:80;top:0;left:0;background-color:#fff;border:none;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;height:100%;width:100%;display:none}
-.allmenu{width:800px;background:#fff;border:2px solid #999;z-index:999;position:absolute;left:50%;top:76px;margin-left:-400px;display:none;padding:10px}
+.allmenu{width:800px;background:#fff;z-index:999;position:absolute;left:50%;top:76px;margin-left:-400px;display:none;padding:10px}
 .allmenu .allmenu-box{margin:0 auto;text-align:left;overflow:hidden;padding-left:2px}
 .maptop{float:left;width:130px;overflow:hidden;padding-right:6px;padding-left:6px;margin-left:-1px}
 .maptop dt.bigitem{padding:5px 10px;background:#333;color:#fff;line-height:18px;font-weight:600}
@@ -68,13 +67,12 @@ body.hidemenu .right{left:0}
 .allmenu a:hover{color:#F63}
 #login .theme{clear:both;padding:10px;width:70%;margin-top:20px}
 #login .theme li{margin-bottom:15px;margin-top:5px;overflow:hidden}
-#login .theme span{color:#000000;width:150px;display:inline-block;float:left;text-align:right;height:22px;line-height:22px}
-input{color:#000;font-size:12px}
-input[type="text"],input[type="password"]{width:160px;border-width:1px;border-style:solid;border-color:#fff;padding:2px 4px;height:18px;line-height:18px;vertical-align:middle;background:#fff}
+#login .theme span{color:#000;width:150px;display:inline-block;float:left;text-align:right;height:22px;line-height:22px}
+input[type="text"],input[type="password"]{width:140px;border-width:1px;border-style:solid;border-color:#fff;padding:2px 4px;height:18px;line-height:18px;vertical-align:middle;background:#fff}
 input[type="text"]:focus,input[type="password"]:focus{border-color:#6FB1DF;color:#333;-moz-box-shadow:0 0 3px #A5C760;-webkit-border-shadow:0 0 3px #A5C760;box-shadow:0 0 3px #A5C760}
-* html input.text{width:223px;border:1px solid #a7a6aa;background:#fff url(../images/input.gif) 0 0 no-repeat;margin-top:-1px;margin-right:5px;margin-bottom:0;margin-left:2px;padding:3px;line-height:12px}
+* html input.text{width:220px;border:1px solid #a7a6aa;background:#fff url(../images/input.gif) 0 0 no-repeat;margin-top:-1px;margin-right:5px;margin-bottom:0;margin-left:2px;padding:3px;line-height:12px}
 * html input.radio{margin:-1px 0 0 -2px}
-.allsearch{float:left;margin-top:7px!important;border:1px solid #fff;border-radius:2px}
-.np{width:40px;height:18px;line-height:18px;border:none;color:#fff;background:#57960f;cursor:pointer;margin-left:10px;border-radius:2px}
+.allsearch{float:left;margin-top:7px!important;font-size:12px;border:1px solid #fff;border-radius:.2rem}
+.np{margin-left:10px;width:40px;height:18px;line-height:18px;font-size:12px;color:#fff;cursor:pointer;background:#57960f;border:none;border-radius:.2rem}
 #help{background:url(../images/dlgtitle.gif) repeat-x scroll 0 0 transparent;bottom:0;left:0;position:absolute;width:100%;height:28px;border-top:1px solid #390;line-height:28px;text-align:right;padding-top:0;padding-bottom:0}
 #help #content{padding-right:12px;background:url(../images/gtk-edit.png) no-repeat scroll 0px -1px;padding-left:20px}

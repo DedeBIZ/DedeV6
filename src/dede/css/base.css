@@ -26,7 +26,7 @@ a:visited{color:#666}
 .np{border:none}
 .linerow{border-bottom:1px solid #ACACAC}
 .coolbg{padding:.25rem .5rem;border:none;border-right:1px solid #ccc;border-bottom:1px solid #ccc;background:#f2f2f2;cursor:pointer}
-.coolbg2{border:1px solid #000000;background-color:#DFDDD2;height:18px}
+.coolbg2{border:1px solid #000;background-color:#DFDDD2;height:18px}
 .ll{border-right:2px solid #ACACAC;border-bottom:2px solid #ACACAC;background-color:#E6E6E6}
 .bline{height:36px;background-color:#fff}
 #uploadfield{float:left}
