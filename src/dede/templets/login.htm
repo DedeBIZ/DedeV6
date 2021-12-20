@@ -1,54 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
 	<meta charset="<?php echo $cfg_soft_lang; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../static/css/dede.css">
-	<title><?php echo $cfg_webname; ?>后台登录-<?php echo $cfg_soft_enname; ?> <?php echo $cfg_version_detail; ?></title>
+	<title><?php echo $cfg_webname; ?>后台登录</title>
 	<style>
-body {
-	font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
-	background-color:#f2f2f2
-}
-header {
-	background-color:#fff
-}
-header .logo {
-	width:260px;
-	padding:1em 0
-}
-.login-from {
-	max-width:620px;
-	width:100%
-}
-.login-area {
-	background-color:#fff;
-	padding:1em
-}
-.login-area .btnLogin {
-	width:100%
-}
-.login-power {
-	padding:1em 0
-}
-.login-power a,.goindex a {
-	color:#3DB058
-}
-.goindex {
-	line-height:60px
-}
+body{font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;background-color:#f2f2f2}
+header{background:#fff}
+header .logo{width:260px;padding:1em 0}
+.login-from{max-width:580px;width:100%}
+.login-area{background-color:#fff;padding:2em}
+.login-area .btnLogin{width:100%}
+.login-power{padding-top:1em}
+.login-power a,.goindex a{color:#3DB058}
+.goindex{line-height:60px}
 	</style>
 </head>
 <body>
 	<header>
 		<div class="container top">
 			<div class="row">
-				<div class="col-6"><a href="."><img class="logo" src="../static/img/admin-logo.png" alt="<?php echo $cfg_soft_enname; ?>"></a></div>
+				<div class="col-6">
+					<a href="."><img class="logo" src="../static/img/admin-logo.png" title="<?php echo $cfg_soft_enname; ?>"></a>
+				</div>
 				<div class="col-6 d-flex justify-content-end goindex">
-					<a href="../index.php"><i class="fa fa-home" aria-hidden="true"></i></a>
+					<a href="../index.php" target="_blank"><i class="fa fa-home" aria-hidden="true"></i></a>
 				</div>
 			</div>
 		</div>
@@ -71,16 +50,22 @@ header .logo {
 					<label for="iptPassword">密码</label>
 					<input type="password" name="pwd" class="form-control" id="iptPassword">
 				</div>
+	   			<?php
+        		if(preg_match("/6/",$safe_gdopen))
+        		{
+        		?>
 				<div class="form-group">
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
 						<input type="text" name="validate" class="form-control" id="iptValidate" style="text-transform:uppercase">
-						<img src="../plus/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='../plus/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
+						<img src="../plus/vdimgck.php" onclick="this.src='../plus/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg" style="cursor:pointer">
 					</div>
 				</div>
+				<?php
+       			}
+				?>
 				<button type="submit" class="btn btn-success btnLogin">登录</button>
-				<div class="login-power"><?php echo $cfg_powerby; ?> Powered by <a href="http://www.dedebiz.com" title="DedeBiz商业技术支持，提供更专业强大的站点应用开发技术">DedeBIZ <?php echo $cfg_version; ?></a>
-				</div>
+				<div class="login-power"><?php echo $cfg_powerby; ?></div>
 			</form>
 		</div>
 	</main>
