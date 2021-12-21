@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
 	<meta charset="<?php echo $cfg_soft_lang; ?>">
+	<meta name="robots" content="noindex,nofollow">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
@@ -12,7 +13,7 @@ body{font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;back
 header{background:#fff}
 header .logo{width:260px;padding:1em 0}
 .login-from{max-width:580px;width:100%}
-.login-area{background-color:#fff;padding:2em}
+.login-area{background:#fff;padding:2em;border-radius:.25rem}
 .login-area .btnLogin{width:100%}
 .login-power{padding-top:1em}
 .login-power a,.goindex a{color:#3DB058}
@@ -32,10 +33,8 @@ header .logo{width:260px;padding:1em 0}
 			</div>
 		</div>
 	</header>
-	<main class="container login-from mt-3">
-		<div class="alert alert-warning" role="alert">
-			<?php echo $redmsg; ?>
-		</div>
+	<main class="container login-from mt-4">
+		<div class="alert alert-warning" role="alert"><?php echo $redmsg; ?></div>
 		<div class="login-area">
 			<h3 class="text-center">后台登录</h3>
 			<form name="form1" method="post" action="login.php">
