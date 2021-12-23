@@ -91,7 +91,7 @@
 				<td width="10%">操作</td>
 			</tr>
 			{dede:datalist}
-			<tr align="center" bgcolor="#fff" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#fff';">
+			<tr align="center" bgcolor="#ffffff" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
 				<td align="left">
@@ -114,17 +114,17 @@
 			</tr>
 			{/dede:datalist}
 			<tr>
-				<td height="36" colspan="10" style="margin-left:10px;background:#fff">
+				<td height="36" colspan="10" style="margin-left:10px;background:#ffffff">
 					<a class="btn btn-success btn-sm" href="javascript:selAll()">全选</a>
 					<a class="btn btn-success btn-sm" href="javascript:noSelAll()">取消</a>
 					<a class="btn btn-success btn-sm" href="javascript:updateArc(0)">更新</a>
 					<a class="btn btn-success btn-sm" href="javascript:checkArc(0)">审核</a>
 					<a class="btn btn-success btn-sm" href="javascript:adArc(0)">推荐</a>
-					<a class="btn btn-success btn-sm" href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid)?0:$channelid); ?>)" class="coolbg">移动</a>
-					<a class="btn btn-success btn-sm" href="javascript:delArc(0)">删除</a>
+					<a class="btn btn-success btn-sm" href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid)?0:$channelid); ?>)">移动</a>
+					<a class="btn btn-danger btn-sm" href="javascript:delArc(0)">删除</a>
 					<?php if($channelid==1) echo "<a class='btn btn-success btn-sm' href='javascript:kwArc(0)'>自动关键字</a>"; ?>
 					<a class="btn btn-success btn-sm" href="javascript:;" onClick="cAtts('attsAdd',event,this)">增加属性</a>
-					<a class="btn btn-success btn-sm" href="javascript:;" onClick="cAtts('attsDel',event,this)">删除属性</a>
+					<a class="btn btn-danger btn-sm" href="javascript:;" onClick="cAtts('attsDel',event,this)">删除属性</a>
 				</td>
 			</tr>
 			<tr>

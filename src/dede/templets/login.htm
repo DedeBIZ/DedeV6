@@ -10,10 +10,10 @@
 	<title><?php echo $cfg_webname; ?>后台登录</title>
 	<style>
 body{font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;background:#f2f2f2}
-header{background:#fff}
+header{background:#ffffff}
 header .logo{width:260px;padding:1em 0}
 .login-from{max-width:580px;width:100%}
-.login-area{background:#fff;padding:2em;border-radius:.25rem}
+.login-area{background:#ffffff;padding:2em;border-radius:.25rem}
 .login-area .btnLogin{width:100%}
 .login-power{padding-top:1em}
 .login-power a,.goindex a{color:#3DB058}
@@ -36,7 +36,7 @@ header .logo{width:260px;padding:1em 0}
 	<main class="container login-from mt-5">
 		<?php echo $redmsg; ?>
 		<div class="login-area">
-			<h3 class="text-center">后台登录</h3>
+			<h3 class="mb-3 text-center">后台登录</h3>
 			<form name="form1" method="post" action="login.php">
 				<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage); ?>">
 				<input type="hidden" name="dopost" value="login">
