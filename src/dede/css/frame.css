@@ -55,7 +55,7 @@ body.hidemenu .right{left:0}
 .qucikmenu ul li a{height:30px;line-height:30px;display:block;color:#666;padding-left:10px;padding-right:10px}
 .qucikmenu ul li a:hover{background:#F7F7F7}
 .pagemask{width:100%;height:100%;background:#000;position:absolute;z-index:100;filter:alpha(opacity=70);-moz-opacity:.7;opacity:.7;display:none}
-.iframemask{position:absolute;z-index:80;top:0;left:0;background-color:#fff;border:none;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;height:100%;width:100%;display:none}
+.iframemask{position:absolute;z-index:80;top:0;left:0;background:#fff;border:none;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;height:100%;width:100%;display:none}
 .allmenu{width:800px;background:#fff;z-index:999;position:absolute;left:50%;top:76px;margin-left:-400px;display:none;padding:10px}
 .allmenu .allmenu-box{margin:0 auto;text-align:left;overflow:hidden;padding-left:2px}
 .maptop{float:left;width:130px;overflow:hidden;padding-right:6px;padding-left:6px;margin-left:-1px}
