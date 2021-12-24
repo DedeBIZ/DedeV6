@@ -69,7 +69,7 @@ body.hidemenu .right{left:0}
 #login .theme li{margin-bottom:15px;margin-top:5px;overflow:hidden}
 #login .theme span{color:#000000;width:150px;display:inline-block;float:left;text-align:right;height:22px;line-height:22px}
 input[type="text"],input[type="password"]{width:140px;border-width:1px;border-style:solid;border-color:#ffffff;padding:2px 4px;height:18px;line-height:18px;vertical-align:middle;background:#ffffff}
-input[type="text"]:focus,input[type="password"]:focus{border-color:#6FB1DF;color:#333333;-moz-box-shadow:0 0 3px #A5C760;-webkit-border-shadow:0 0 3px #A5C760;box-shadow:0 0 3px #A5C760}
+input[type="text"]:focus,input[type="password"]:focus{border-color:#6FB1DF;color:#333333;-moz-box-shadow:0 0 2px #A5C760;-webkit-border-shadow:0 0 2px #A5C760;box-shadow:0 0 2px #A5C760}
 * html input.text{width:220px;border:1px solid #a7a6aa;background:#ffffff url(../images/input.gif) 0 0 no-repeat;margin-top:-1px;margin-right:5px;margin-bottom:0;margin-left:2px;padding:3px;line-height:12px}
 * html input.radio{margin:-1px 0 0 -2px}
 .allsearch{float:left;margin-top:7px!important;font-size:12px;border:1px solid #ffffff;border-radius:.2rem}
