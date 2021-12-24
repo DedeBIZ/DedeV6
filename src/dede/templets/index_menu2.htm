@@ -1,0 +1,84 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+	<title>DedeBIZ menu</title>
+	<link rel="stylesheet" href="css/base.css">
+	<script src="../static/js/dedeajax2.js"></script>
+	<script src="../static/js/jquery.js"></script>
+	<?php
+	echo "<script>var curopenItem = '$openitem';</script>";
+	?>
+	<script src="js/leftmenu.js"></script>
+	<style>
+body{margin:0;background:#f2f2f2;padding-left:8px;overflow:scroll;overflow-x:hidden}
+img{margin-right:0}
+div{margin:0;padding:0}
+dl.bitem{margin:0 0 0 10px;width:140px;background:url(images/menunewbg.gif)repeat-x;clear:both}
+dl.bitem2{margin:0 0 0 10px;width:140px;background:url(images/menunewbg2.gif)repeat-x;clear:both}
+dl.bitem dt,dl.bitem2 dt{padding-left:30px;height:26px;line-height:26px;cursor:pointer}
+dl.bitem dt b,dl.bitem2 dt b{color:#4D6C2F}
+dl.bitem dd,dl.bitem2 dd{padding:10px;background-color:#ffffff}
+div.items{clear:both;padding:0;height:0}
+.fllct{float:left;width:80px}
+.flrct{float:left;padding-top:4px}
+.sitemu li{padding:0 0 0 20px;height:26px;line-height:26px;background:url(images/arr4.gif)no-repeat 6px 10px}
+a.mmac div{padding:8px 4px 4px 10px;height:38px!important;font-weight:600;color:#325304;background:url(images/leftbg2.gif)no-repeat;word-wrap:break-word;word-break:break-all}
+a.mm div{padding:8px 4px 4px 10px;height:38px!important;font-weight:600;color:#475645;cursor:pointer;background:url(images/leftmbg1.gif) no-repeat;word-wrap:break-word;word-break:break-all}
+a.mm:hover div{color:#4f7632;background:url(images/leftbg2.gif)no-repeat}
+.mmf{padding:6px;height:1px}
+#mainct{padding-top:12px;background:url(images/idnbg1.gif)repeat-y}
+	</style>
+	<link rel="stylesheet" href="images/style<?php echo $cfg_admin_skin;?>/style.css">
+	<base target="main">
+</head>
+
+<body target="main" onLoad="CheckOpenMenu();">
+	<table width="180" align="left" cellspacing="0" cellpadding="0">
+		<tr>
+			<td valign="top" style="padding-top:10" width="20">
+				<a id="link1" class="mmac"><div onClick="ShowMainMenu(1)">核心</div></a>
+				<a id="link100" class="mm"><div onClick="ShowMainMenu(100)">模块</div></a>
+				<a id="link5" class="mm"><div onClick="ShowMainMenu(5)">生成</div></a>
+				<a id="link6" class="mm"><div onClick="ShowMainMenu(6)">会员</div></a>
+				<?php
+				if($cuserLogin->getUserType()>=10){
+				?>
+				<a id="link7" class="mm"><div onClick="ShowMainMenu(7)">模板</div></a>
+				<a id="link10" class="mm"><div onClick="ShowMainMenu(10)">系统</div></a>
+				<?php
+				}
+				?>
+				<div class="mmf"></div>
+			</td>
+			<td width="160" id="mainct" valign="top">
+				<div id="ct1">
+				<?php
+				GetMenus($cuserLogin->getUserRank(),'main');
+				?>
+				</div>
+				<div id="ct100"></div>
+				<div id="ct3"></div>
+				<div id="ct5"></div>
+				<div id="ct6"></div>
+				<div id="ct7"></div>
+				<div id="ct20"></div>
+				<div id="ct10"></div>
+			</td>
+		</tr>
+		<tr>
+			<td width="26"></td>
+			<td width="160" valign="top"><img src='images/idnbgfoot.gif'></td>
+		</tr>
+	</table>
+	<?php
+	if(!empty($openitem) && $openitem!=1)
+	{
+	?>
+	<script>
+	ShowMainMenu(100);
+	</script>
+	<?php
+	}
+	?>
+</body>
+</html>
