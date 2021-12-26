@@ -48,10 +48,10 @@ if (!empty($noeditor)) {
     <link rel="stylesheet" href="../css/base.css">
     <style>
 html{background:#f2f2f2}
-body{margin:0;line-height:22px;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
+body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
 a{text-decoration:none!important}
 table{background:#fff}
-.bg{margin:10px;border-radius:2px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+.bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
 .linerow{border-bottom:1px solid #eee!important}
     </style>
 </head>
@@ -128,7 +128,7 @@ table{background:#fff}
                             </tr>\r\n";
                             echo $line;
                         } else if (is_dir("$inpath/$file")) {
-                            if (preg_match("#^_(.*)$#i", $file)) continue; #屏蔽FrontPage扩展目录和linux隐蔽目录
+                            if (preg_match("#^_(.*)$#i", $file)) continue;
                             if (preg_match("#^\.(.*)$#i", $file)) continue;
                             $line = "\n<tr height='28'>
                             <td class='linerow'><a href=select_soft.php?f=$f&activepath=" . urlencode("$activepath/$file") . $addparm . "><img src='img/dir.gif'>$file</a></td>
@@ -168,7 +168,7 @@ table{background:#fff}
             </td>
         </tr>
         <tr>
-            <td colspan="3" height="30">请点击要选择的文件，红色字样的为刚上传的文件</td>
+            <td colspan="3" height="30">点击选择的文件，红色字样的为刚上传的文件</td>
         </tr>
     </table>
 </body>

@@ -55,10 +55,10 @@ if (!empty($noeditor)) {
     <link rel="stylesheet" href="../css/base.css">
     <style>
 html{background:#f2f2f2}
-body{margin:0;line-height:22px;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
+body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
 a{text-decoration:none!important}
 table{background:#fff}
-.bg{margin:10px;border-radius:2px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+.bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
 .linerow{border-bottom:1px solid #eee!important}
 .napisdiv{left:40;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}
     </style>
