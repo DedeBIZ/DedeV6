@@ -20,6 +20,8 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'tools', groups: ['tools'] }
 	];
 
+	config.height = 500;
+
 	config.extraPlugins = 'html5video,dedepagebreak,textindent';
 
 	config.removeButtons = 'About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
