@@ -92,6 +92,6 @@ div.CodeMirror-dragcursors{visibility:visible}
 .CodeMirror-line::-moz-selection,.CodeMirror-line > span::-moz-selection,.CodeMirror-line > span > span::-moz-selection{background:#d7d4f0}
 .cm-searching{background:#ffa;background:rgba(255,255,0,.4)}
 .cm-force-border{padding-right:.1px}
-@media print{.CodeMirror div.CodeMirror-cursors{visibility:hidden}
-}.cm-tab-wrap-hack:after{content:''}
+@media print{.CodeMirror div.CodeMirror-cursors{visibility:hidden}}
+.cm-tab-wrap-hack:after{content:''}
 span.CodeMirror-selectedtext{background:none}
