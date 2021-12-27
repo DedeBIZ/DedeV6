@@ -103,9 +103,9 @@ img{vertical-align:baseline}
                   }
                   if(preg_match("#".$trow->att."#", $arcRow['flag']))
                   {
-                    echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
+                    echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'>&nbsp;{$trow->attname}[{$trow->att}]</label>&nbsp;";
                   } else {
-                    echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick}> {$trow->attname}[{$trow->att}]</label> ";
+                    echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick}>&nbsp;{$trow->attname}[{$trow->att}]</label>&nbsp;";
                   }
                 }
                 ?>
@@ -143,7 +143,7 @@ img{vertical-align:baseline}
               <td width="90" height="80" style="padding-left:10px">缩略图：</td>
               <td>
                 <input name="picname" type="text" id="picname" style="width:300px" value="<?php echo $arcRow['litpic']?>">
-                <label><input type='checkbox' class='np' name='ddisremote' value='1'>远程</label>
+                <label><input type='checkbox' class='np' name='ddisremote' value='1'>&nbsp;远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">
                   <i class="glyphicon glyphicon-plus"></i>
                   选择图片

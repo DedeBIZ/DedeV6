@@ -1,39 +1,31 @@
-{dede:page pagesize="50"/}
-<!DOCTYPE html
-	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{dede:page pagesize='40'/}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 	<title>自定义表单管理</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/base.css">
 </head>
-
-<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+<body background="images/allbg.gif" leftmargin="8" topmargin="8">
 	<div class="bodytitle mt-3">
 		<div class="bodytitleleft"></div>
-		<div class="bodytitletxt" style="padding-left:10px;">自定义表单管理</div>
+		<div class="bodytitletxt" style="padding-left:10px">自定义表单管理</div>
 	</div>
-
-	<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="maintable"
-		style="border:1px solid #CFCFCF;border-bottom:none;">
+	<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="maintable" style="margin-top:10px;border:1px solid #CFCFCF;border-bottom:none">
 		<tr>
 			<td bgcolor="#EDF9D5" class="tbtitletxt" background="images/tbg.gif">
-				<table width='96%' border="0" cellpadding='0' cellspacing='0'>
+				<table width="96%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width='30%' class="py-3"><a href="diy_add.php" class="btn btn-success btn-sm ml-3">增加新的自定义表单</a></td>
-						<td align='right'>
-						</td>
+						<td width="30%" class="py-3"><a href="diy_add.php" class="btn btn-success btn-sm ml-3">增加新的自定义表单</a></td>
+						<td align="right"></td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 	</table>
-
-	<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class='table maintable table-bordered'
-		style='background:#CFCFCF;margin-bottom:5px;'>
+	<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered" style="margin-bottom:10px;background:#CFCFCF">
 		<tr align="center" bgcolor="#FBFCE2" height="26">
 			<td>diyid</td>
 			<td>名称</td>
@@ -41,28 +33,23 @@
 			<td>管理</td>
 		</tr>
 		{dede:datalist}
-		<tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-			onMouseOut="javascript:this.bgColor='#FFFFFF';">
+		<tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
 			<td>{dede:field.diyid/}</td>
-			<td><a href="diy_list.php?action=list&diyid={dede:field.diyid/}"><u>{dede:field.name/}</u></a></td>
+			<td><a href="diy_list.php?action=list&diyid={dede:field.diyid/}">{dede:field.name/}</a></td>
 			<td>{dede:field.table/}</td>
 			<td>
-				<a href='diy_edit.php?diyid={dede:field.diyid/}&dopost=edit' class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 更改</a>
-				<a href='diy_edit.php?diyid={dede:field.diyid/}&dopost=delete' class="btn btn-success btn-sm"> <i class="fa fa-trash" aria-hidden="true"></i> 删除 </a>
-				<a href="../plus/diy.php?action=list&diyid={dede:field.diyid/}" class="btn btn-success btn-sm" target="_blank"> <i class="fa fa-globe" aria-hidden="true"></i> 前台预览</a>
+				<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 更改</a>
+				<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> 删除 </a>
+				<a href="diy_list.php?action=excel&diyid={dede:field.diyid/}" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-share-square" aria-hidden="true"></i> 导出 </a>
+				<a href="../plus/diy.php?action=list&diyid={dede:field.diyid/}" class="btn btn-success btn-sm" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i> 预览</a>
 			</td>
 		</tr>
 		{/dede:datalist}
 	</table>
-
-
-	<table class="mb-3" width="98%" border="0" cellpadding="5" cellspacing="1" align="center"
-		style=" border:1px solid #CFCFCF;line-height:31px;margin:auto;">
+	<table class="mb-3" width="98%" border="0" cellpadding="5" cellspacing="1" align="center" style="margin:auto;border:1px solid #CFCFCF">
 		<tr>
-			<td height="35" align="center" style="background:#F9FCEF;padding:7px 6px 6px 10px;">{dede:pagelist
-				listsize=6/}</td>
+			<td height="36" align="center" style="background:#F9FCEF">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 </body>
-
 </html>

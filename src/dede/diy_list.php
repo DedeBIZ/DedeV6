@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 自定义表单列表
  *
@@ -12,7 +11,7 @@
 require_once(dirname(__FILE__) . "/config.php");
 CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
-$action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete')) ? $action : '';
+$action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete','excel')) ? $action : '';
 if (empty($diyid)) {
     showMsg("非法操作!", 'javascript:;');
     exit();
@@ -171,6 +170,35 @@ if ($action == 'post') {
             showmsg('文件不存在', '-1');
         }
     }
+} 
+elseif($action == 'excel') {
+    ob_end_clean();//清除缓冲区,避免乱码
+    header("Content-type:application/vnd.ms-excel");
+    header("Content-Disposition:attachment;filename={$diy->name}_".date("Y-m-d").".xls");
+    print(chr(0xEF).chr(0xBB).chr(0xBF));//清除bom
+    $fieldlist = $diy->getFieldList();
+    echo "<table><tr>";
+    foreach($fieldlist as $field=>$fielddata)
+    {
+        echo "<th>{$fielddata[0]}</th>";
+    }
+    echo "<th>状态</th>";
+    echo "</tr>";
+    $sql = "SELECT * FROM {$diy->table} ORDER BY id DESC";
+    $dsql->SetQuery($sql);
+    $dsql->Execute('t');
+    while($arr = $dsql->GetArray('t'))
+    {
+        echo "<tr>";
+        foreach($fieldlist as $key => $field)
+        {
+            echo "<td>".$arr[$key]."</td>";
+        }
+    $status = $arr['ifcheck'] == 1 ? '已审核' : '未审核';
+    echo "<td>".$status."</td>";
+    echo "</tr>";
+    }
+    echo "</table>";
 } else {
     showmsg('未定义操作', "-1");
 }

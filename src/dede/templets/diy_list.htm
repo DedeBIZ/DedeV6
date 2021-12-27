@@ -14,9 +14,9 @@
 	</div>
 	<form action="diy_list.php" method="post">
 		<input type="hidden" name="diyid" value="<?php echo $diyid; ?>">
-		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable" style="background:#CFCFCF">
+		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable" style="margin-top:10px;background:#CFCFCF">
 			<tr>
-				<td colspan="3" height="28" background="images/tbg.gif">
+				<td colspan="3" height="26" background="images/tbg.gif">
 					<div style="float:left"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name; ?></div>
 					<div style="float:right;padding-right:10px"><a href="/plus/diy.php?action=list&diyid=<?php echo $diy->diyid; ?>" target="_blank"><img src="images/gtk-tmp.png" align="left" title="前台预览">前台预览</a></div>
 				</td>
@@ -27,7 +27,7 @@
 			{
 				$allowhtml = array('htmltext');
 				$fields['sta'] = $fields['ifcheck'] == 1 ?'已审核':'未审核';
-				echo '<tr bgcolor="#F8FDE3" height="28"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><img src="images/feedback-edit.gif" border="0" width="46" height="18"></a></td></tr>';
+				echo '<tr bgcolor="#F8FDE3" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><img src="images/feedback-edit.gif" border="0" width="46" height="18"></a></td></tr>';
 				foreach($fieldlist as $field=>$fielddata)
 				{
 					if($fields[$field]=='') continue;
@@ -41,22 +41,22 @@
 							$fields[$field] = dede_htmlspecialchars($fields[$field]);
 						}
 					}
-					echo '<tr height="28"><td bgcolor="#fff">'.$fielddata[0].'</td><td bgcolor="#fff" colspan="2">'.$fields[$field].'</td></tr>';
+					echo '<tr height="26"><td bgcolor="#fff">'.$fielddata[0].'</td><td bgcolor="#fff" colspan="2">'.$fields[$field].'</td></tr>';
 				}
 			} else {
-				echo '<tr height="28"><td bgcolor="#fff">暂无记录</td></tr>';
+				echo '<tr height="26"><td bgcolor="#fff">暂无记录</td></tr>';
 			}
 			?>
 			{/dede:datalist}
 			<tr>
-				<td colspan="3" bgcolor="#fff">{dede:pagelist listsize='8'/}</td>
+				<td colspan="3" bgcolor="#fff">{dede:pagelist listsize='6'/}</td>
 			</tr>
 			<tr>
 				<td colspan="3" height="36" bgcolor="#F8FCF1">
 					<label><input type="button" name="select" onClick="selAll()" value="全选"></label>
 					<label><input type="button" name="select" onClick="noSelAll()" value="取消"></label>
-					<label><input type="radio" name="action" class="btn btn-success btn-sm" value="check">审核</label>
-					<label><input type="radio" name="action" class="btn btn-success btn-sm" value="delete">删除</label>
+					<label><input type="radio" name="action" class="btn btn-success btn-sm" value="check">&nbsp;审核</label>
+					<label><input type="radio" name="action" class="btn btn-success btn-sm" value="delete">&nbsp;删除</label>
 					<label><input type="submit" name="submit" class="btn btn-success btn-sm" value="提交"></label>
 				</td>
 			</tr>
