@@ -36,16 +36,16 @@
     </div>
     <div class="head">
         <div class="top">
-            <div class="top_logo"><a href="#" onclick="JumpFrame('index_menu.php','index_body.php');"><?php echo $cfg_webname; ?>系统</a></div>
+            <div class="top_logo"><a href="javascript:;" onclick="JumpFrame('index_menu.php','index_body.php');"><?php echo $cfg_webname; ?>系统</a></div>
             <div class="top_version"><?php echo $cfg_version_detail; ?></div>
             <div class="top_link">
                 <ul>
                     <li class="welcome"><img src="/static/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><a href="exit.php" target="_top">注销</a></li>
-                    <li><a href="#" onclick="JumpFrame('catalog_menu.php','public_guide.php');">发布文档</a></li>
-                    <li><a href="#" onclick="JumpFrame('index_menu.php','content_list.php');">所有文档</a></li>
-                    <li><a href="#" onclick="JumpFrame('index_menu.php','catalog_main.php');">栏目管理</a></li>
-                    <li><a href="#" onclick="JumpFrame('index_menu.php','file_manage_main.php');">文件管理</a></li>
-                    <li><a href="#" onclick="JumpFrame('index_menu.php','templets_main.php');">模板管理</a></li>
+                    <li><a href="javascript:;" onclick="JumpFrame('catalog_menu.php','public_guide.php');">发布文档</a></li>
+                    <li><a href="javascript:;" onclick="JumpFrame('index_menu.php','content_list.php');">所有文档</a></li>
+                    <li><a href="javascript:;" onclick="JumpFrame('index_menu.php','catalog_main.php');">栏目管理</a></li>
+                    <li><a href="javascript:;" onclick="JumpFrame('index_menu.php','file_manage_main.php');">文件管理</a></li>
+                    <li><a href="javascript:;" onclick="JumpFrame('index_menu.php','templets_main.php');">模板管理</a></li>
                     <?php echo ($cfg_mb_open == 'Y')?'<li><a href="../member" target="_blank">会员中心</a></li>':''; ?>
                     <li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
                 </ul>
@@ -53,9 +53,9 @@
         </div>
         <div class="topnav">
             <div class="menuact">
-                <a href="#" id="togglemenu">隐藏菜单</a>
+                <a href="javascript:;" id="togglemenu">隐藏菜单</a>
                 <?php
-                if($cuserLogin->getUserType()>=10) echo'<a href="#" id="allmenu">功能地图</a>';
+                if($cuserLogin->getUserType()>=10) echo'<a href="javascript:;" id="allmenu">功能地图</a>';
                 ?>
             </div>
             <div id="skin">
