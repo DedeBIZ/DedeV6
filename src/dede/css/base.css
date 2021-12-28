@@ -14,7 +14,7 @@ label{display:inline-block;margin:.5rem 0}
 .alltxt{padding:.25rem .5rem;line-height:18px;vertical-align:middle;border-width:1px;border-style:solid;border-color:#707070 #CECECE #CECECE #707070}
 textarea{padding:.25rem .5rem;font-size:1rem;font-weight:400;color:#495057;background:#ffffff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;vertical-align:middle;line-height:16px;overflow:auto;resize:vertical}
 textarea:focus{border-color:#28a745;color:#333333;-moz-box-shadow:0 0 2px #28a745;-webkit-box-shadow:0 0 2px #28a745;box-shadow:0 0 2px #28a745}
-img{margin-right:6px;vertical-align:baseline}
+img{margin-right:6px;border-radius:.2rem;vertical-align:baseline}
 h1,h2,h3{font-size:18px;color:#424b51}
 a:link{color:#424b51;text-decoration:none}
 a:hover{opacity:.8}
@@ -28,7 +28,7 @@ a:visited{color:#666666}
 .coolbg{padding:.25rem .5rem;border:none;border-right:1px solid #cccccc;border-bottom:1px solid #cccccc;background:#f2f2f2;border-radius:.2rem;cursor:pointer}
 .coolbg2{border:1px solid #000000;background:#DFDDD2;height:18px}
 .ll{border-right:2px solid #ACACAC;border-bottom:2px solid #ACACAC;background:#E6E6E6}
-.bline{height:36px;background:#ffffff;border-bottom: 1px solid #eeeeee;}
+.bline{height:36px;background:#ffffff;border-bottom:1px solid #eeeeee}
 #uploadfield{float:left}
 .bline2{border-bottom:1px solid #eeeeee}
 .coolbt{border-left:1px solid #EFEFEF;border-top:1px solid #EFEFEF;border-right:1px solid #ACACAC;border-bottom:1px solid #ACACAC;background:#E4F7D7;cursor:pointer}
