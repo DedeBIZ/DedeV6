@@ -100,7 +100,7 @@ input,select{height:auto !important}
         <td height="26" colspan="5" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="100" style="padding-left:10px">自定义属性：</td>
+              <td width="90" style="padding-left:10px">自定义属性：</td>
               <td align="left">
               <?php
             	$dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
@@ -192,18 +192,18 @@ input,select{height:auto !important}
         <td height="26" colspan="5" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="100" style="padding-left:10px">文章主栏目：</td>
+              <td width="90" style="padding-left:10px">文章主栏目：</td>
               <td>
-                <span id='typeidct'>
+                <span id="typeidct">
                   <?php
                   $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
-                  echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
-                  echo "<option value='0'>请选择栏目...</option>\r\n";
+                  echo "<select name='typeid' id='typeid' style='width:240px'>";
+                  echo "<option value='0'>请选择栏目</option>";
                   echo $typeOptions;
                   echo "</select>";
                   ?>
                 </span>
-                <img src='images/menusearch.gif' style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid')" alt='快捷选择' title='快捷选择'>
+                <img src="images/menusearch.gif" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" alt="快捷选择" title="快捷选择">
                 <?php
                 if($cfg_need_typeid2=='Y')
                 {
@@ -370,7 +370,7 @@ input,select{height:auto !important}
                 $dsql->Execute();
                 while($row = $dsql->GetObject())
                 {
-                	echo "<option value='".$row->rank."'>".$row->membername."</option>\r\n";
+                	echo "<option value='".$row->rank."'>".$row->membername."</option>";
                 }
                 ?>
                 </select> </td>
@@ -417,7 +417,7 @@ input,select{height:auto !important}
                   foreach($cfg_tamplate_arr as $k=>$v)
                   {
                     $v = trim($v);
-                    echo ($k==$rndsel ? "<option value='$v' selected>$v</option>\r\n" : "<option value='$v'>$v</option>\r\n");
+                    echo ($k==$rndsel ? "<option value='$v' selected>$v</option>" : "<option value='$v'>$v</option>");
                   }
                   ?>
                 </select>
