@@ -1,4 +1,4 @@
-body{font-family:sans-serif,Arial,Verdana,"Trebuchet MS","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:12px;color:#333;background-color:#fff;margin:20px}
+body{margin:20px;line-height:1.5;font-family:sans-serif,Arial,Verdana,"Trebuchet MS","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:14px;color:#333;background-color:#fff}
 blockquote{font-style:italic;font-family:Georgia,Times,"Times New Roman",serif;padding:2px 0;border-style:solid;border-color:#ccc;border-width:0}
 a{color:#0782C1}
 ol,ul,dl{padding:0 40px}
@@ -13,7 +13,7 @@ a > img{padding:1px;margin:1px;border:none;outline:1px solid #0782C1}
 img.right{border:1px solid #ccc;float:right;margin-left:15px;padding:5px}
 img.left{border:1px solid #ccc;float:left;margin-right:15px;padding:5px}
 .marker{background-color:Yellow}
-.cke_editable{font-size:12px;line-height:1.5;word-wrap:break-word}
+.cke_editable{font-size:14px;word-wrap:break-word}
 .cke_contents_ltr blockquote{padding-left:20px;padding-right:8px;border-left-width:5px}
 .cke_contents_rtl blockquote{padding-left:8px;padding-right:20px;border-right-width:5px}
 .code-featured{border:5px solid red}
