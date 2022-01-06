@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Log');
 if (empty($dopost)) {
     ShowMsg("你没指定任何参数！", "javascript:;");
@@ -32,7 +32,7 @@ if ($dopost == "clear") {
             $dquery .= " Or lid='$id' ";
         }
     }
-    if ($dquery != "") $dquery = " where " . $dquery;
+    if ($dquery != "") $dquery = " where ".$dquery;
     $dsql->ExecuteNoneQuery("DELETE FROM #@__log $dquery");
     ShowMsg("成功删除指定的日志！", $bkurl);
     exit();

@@ -24,8 +24,8 @@ if (!function_exists('FtpMkdir')) {
     {
         global $cfg_basedir, $cfg_ftp_root, $g_ftpLink;
         OpenFtp();
-        $ftproot = preg_replace('/' . $cfg_ftp_root . '$/', '', $cfg_basedir);
-        $mdir = preg_replace('/^' . $ftproot . '/', '', $truepath);
+        $ftproot = preg_replace('/'.$cfg_ftp_root.'$/', '', $cfg_basedir);
+        $mdir = preg_replace('/^'.$ftproot.'/', '', $truepath);
         if ($isMkdir) {
             ftp_mkdir($g_ftpLink, $mdir);
         }
@@ -132,7 +132,7 @@ if (!function_exists('ChmodAll')) {
         if ($isSafeMode || $cfg_ftp_mkdir == 'Y') {
             return FtpChmod($truepath, $mmode);
         } else {
-            return chmod($truepath, '0' . $mmode);
+            return chmod($truepath, '0'.$mmode);
         }
     }
 }
@@ -148,7 +148,7 @@ if (!function_exists('CreateDir')) {
     function CreateDir($spath)
     {
         if (!function_exists('SpCreateDir')) {
-            require_once(DEDEINC . '/inc/inc_fun_funAdmin.php');
+            require_once(DEDEINC.'/inc/inc_fun_funAdmin.php');
         }
         return SpCreateDir($spath);
     }
@@ -193,7 +193,7 @@ if (!function_exists('RmRecurse')) {
     function RmRecurse($file)
     {
         if (is_dir($file) && !is_link($file)) {
-            foreach (glob($file . '/*') as $sf) {
+            foreach (glob($file.'/*') as $sf) {
                 if (!RmRecurse($sf)) {
                     return false;
                 }

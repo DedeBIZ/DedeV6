@@ -77,9 +77,9 @@ if (!function_exists('dede_strip_tags')) {
         $res = $strs[0];
         for ($i = 1; $i < count($strs); $i++) {
             if (!strpos($strs[$i], '>'))
-                $res = $res . '&lt;' . $strs[$i];
+                $res = $res.'&lt;'.$strs[$i];
             else
-                $res = $res . '<' . $strs[$i];
+                $res = $res.'<'.$strs[$i];
         }
         return strip_tags($res);
     }

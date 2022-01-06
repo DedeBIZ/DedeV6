@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) {
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . '/dedevote.class.php');
+require_once(DEDEINC.'/dedevote.class.php');
 function lib_loop(&$ctag, &$refObj)
 {
     global $dsql;

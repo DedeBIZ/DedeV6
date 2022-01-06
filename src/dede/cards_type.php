@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckPurview('member_Type');
 if (empty($dopost)) $dopost = "";
 
@@ -19,11 +19,11 @@ if ($dopost == "save") {
     $endID = $idend;
     for (; $startID <= $endID; $startID++) {
         $query = '';
-        $tid = ${'ID_' . $startID};
-        $pname =   ${'pname_' . $startID};
-        $money =    ${'money_' . $startID};
-        $num =   ${'num_' . $startID};
-        if (isset(${'check_' . $startID})) {
+        $tid = ${'ID_'.$startID};
+        $pname =   ${'pname_'.$startID};
+        $money =    ${'money_'.$startID};
+        $num =   ${'num_'.$startID};
+        if (isset(${'check_'.$startID})) {
             if ($pname != '') {
                 $query = "UPDATE #@__moneycard_type SET pname='$pname',money='$money',num='$num' WHERE tid='$tid'";
                 $dsql->ExecuteNoneQuery($query);
@@ -46,4 +46,4 @@ if ($dopost == "save") {
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
     echo "<script> alert('成功更新点卡产品分类表！'); </script>";
 }
-require_once(DEDEADMIN . "/templets/cards_type.htm");
+require_once(DEDEADMIN."/templets/cards_type.htm");

@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('plus_友情链接模块');
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'friendlink_main.php' : $_COOKIE['ENV_GOBACK_URL'];
 if (empty($dopost)) $dopost = "";
@@ -40,15 +40,15 @@ if ($dopost == "delete") {
         exit();
     }
 } else if ($dopost == "saveedit") {
-    require_once DEDEINC . '/request.class.php';
+    require_once DEDEINC.'/request.class.php';
     $request = new Request();
     $request->Init();
     $id = preg_replace("#[^0-9]#", "", $request->Item('id', 0));
     $logo = $request->Item('logo', '');
     $logoimg = $request->Upfile('logoimg', '');
     if (!empty($logoimg)) {
-        $request->MoveUploadFile('logoimg', DEDEROOT . '/uploads/flink/' . $request->GetFileInfo('logoimg', 'name'));
-        $logo = $cfg_cmspath . '/uploads/flink/' . $request->GetFileInfo('logoimg', 'name');
+        $request->MoveUploadFile('logoimg', DEDEROOT.'/uploads/flink/'.$request->GetFileInfo('logoimg', 'name'));
+        $logo = $cfg_cmspath.'/uploads/flink/'.$request->GetFileInfo('logoimg', 'name');
     }
     $sortrank = $request->Item('sortrank', 1);
     $url = $request->Item('url', '');

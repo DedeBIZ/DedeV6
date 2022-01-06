@@ -63,13 +63,13 @@ if ($_vars['spacestyle'] == '') {
     }
 }
 //找不到指定样式文件夹的时候使用person为默认
-if (!is_dir(DEDEMEMBER . '/space/' . $_vars['spacestyle'])) {
+if (!is_dir(DEDEMEMBER.'/space/'.$_vars['spacestyle'])) {
     $_vars['spacestyle'] = 'person';
 }
 
 //获取分类数据
 $mtypearr = array();
-$dsql->Execute('mty', "select * from `#@__mtypes` where mid='" . $_vars['mid'] . "'");
+$dsql->Execute('mty', "select * from `#@__mtypes` where mid='".$_vars['mid']."'");
 while ($row = $dsql->GetArray('mty')) {
     $mtypearr[] = $row;
 }
@@ -87,8 +87,8 @@ while ($row = $dsql->GetArray('ctc')) {
 
 //获取企业用户私有数据
 if ($_vars['mtype'] == '企业') {
-    require_once(DEDEINC . '/enums.func.php');
-    $query = "SELECT * FROM `#@__member_company` WHERE mid='" . $_vars['mid'] . "'";
+    require_once(DEDEINC.'/enums.func.php');
+    $query = "SELECT * FROM `#@__member_company` WHERE mid='".$_vars['mid']."'";
     $company = $db->GetOne($query);
     $company['vocation'] = GetEnumsValue('vocation', $company['vocation']);
     $company['cosize'] = GetEnumsValue('cosize', $company['cosize']);
@@ -96,7 +96,7 @@ if ($_vars['mtype'] == '企业') {
     $provinceid = $tmpplace['top'];
     $provincename = (isset($em_nativeplaces[$provinceid]) ?  $em_nativeplaces[$provinceid] : '');
     $cityname = (isset($em_nativeplaces[$tmpplace['son']]) ? $em_nativeplaces[$tmpplace['son']] : '');
-    $company['place'] = $provincename . ' - ' . $cityname;
+    $company['place'] = $provincename.' - '.$cityname;
     $_vars = array_merge($company, $_vars);
     if ($action == 'infos') $action = 'introduce';
     $_vars['comface'] = empty($_vars['comface']) ? 'images/comface.png' : $_vars['comface'];
@@ -129,7 +129,7 @@ function GetUserSpaceInfos()
         $_vars['face'] = ($_vars['sex'] == '女') ? 'templets/images/dfgirl.png' : 'templets/images/dfboy.png';
     }
     $_vars['userid_e'] = urlencode($_vars['userid']);
-    $_vars['userurl'] = $cfg_memberurl . "/index.php?uid=" . $_vars['userid_e'];
+    $_vars['userurl'] = $cfg_memberurl."/index.php?uid=".$_vars['userid_e'];
     if ($_vars['membername'] == '开放浏览') $_vars['membername'] = '限制会员';
     return $_vars;
 }

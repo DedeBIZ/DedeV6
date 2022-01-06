@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
 
 //保存更改
@@ -18,9 +18,9 @@ if ($dopost == "save") {
     $endID = $idend;
     for (; $startID <= $endID; $startID++) {
         $query = '';
-        $tid = ${'ID_' . $startID};
-        $pname =   ${'pname_' . $startID};
-        if (isset(${'check_' . $startID})) {
+        $tid = ${'ID_'.$startID};
+        $pname =   ${'pname_'.$startID};
+        if (isset(${'check_'.$startID})) {
             if ($pname != '') {
                 $query = "UPDATE `#@__myadtypee` SET typename='$pname' WHERE id='$tid' ";
                 $dsql->ExecuteNoneQuery($query);

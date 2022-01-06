@@ -12,16 +12,16 @@
 @ob_start();
 @set_time_limit(0);
 ini_set('memory_limit', '-1');
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
 
-$bkdir = DEDEDATA . '/' . $cfg_backup_dir;
+$bkdir = DEDEDATA.'/'.$cfg_backup_dir;
 
 //跳转到一下页的JS
 $gotojs = "function GotoNextPage(){
-    document.gonext." . "submit();
-}" . "\r\nset" . "Timeout('GotoNextPage()',500);";
+    document.gonext."."submit();
+}"."\r\nset"."Timeout('GotoNextPage()',500);";
 
 $dojs = "<script language='javascript'>$gotojs</script>";
 
@@ -66,7 +66,7 @@ if ($dopost == 'bak') {
             if (!preg_match("#txt$#", $filename)) {
                 continue;
             }
-            $filename = $bkdir . "/$filename";
+            $filename = $bkdir."/$filename";
             if (!is_dir($filename)) {
                 unlink($filename);
             }
@@ -75,22 +75,22 @@ if ($dopost == 'bak') {
         $tmsg .= "清除备份目录旧数据完成...<br />";
 
         if ($isstruct == 1) {
-            $bkfile = $bkdir . "/tables_struct_" . substr(md5(time() . mt_rand(1000, 5000) . $cfg_cookie_encode), 0, 16) . ".txt";
+            $bkfile = $bkdir."/tables_struct_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
             $mysql_version = $dsql->GetVersion();
             $fp = fopen($bkfile, "w");
             foreach ($tables as $t) {
                 fwrite($fp, "DROP TABLE IF EXISTS `$t`;\r\n\r\n");
-                $dsql->SetQuery("SHOW CREATE TABLE " . $dsql->dbName . "." . $t);
+                $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$t);
                 $dsql->Execute('me');
                 $row = $dsql->GetArray('me', MYSQL_BOTH);
 
                 // 去除AUTO_INCREMENT
                 $row[1] = preg_replace("#AUTO_INCREMENT=([0-9]{1,})[ \r\n\t]{1,}#i", "", $row[1]);
 
-                $eng1 = "#ENGINE=MyISAM[ \r\n\t]{1,}DEFAULT[ \r\n\t]{1,}CHARSET=" . $cfg_db_language . "#i";
+                $eng1 = "#ENGINE=MyISAM[ \r\n\t]{1,}DEFAULT[ \r\n\t]{1,}CHARSET=".$cfg_db_language."#i";
                 $tableStruct = preg_replace($eng1, "TYPE=MyISAM", $row[1]);
 
-                fwrite($fp, '' . $tableStruct . ";\r\n\r\n");
+                fwrite($fp, ''.$tableStruct.";\r\n\r\n");
             }
             fclose($fp);
             $tmsg .= "备份数据表结构信息完成...<br />";
@@ -127,7 +127,7 @@ if ($dopost == 'bak') {
         $dsql->SetQuery("SELECT * FROM `$nowtable` ");
         $dsql->Execute();
         $m = 0;
-        $bakfilename = "$bkdir/{$nowtable}_{$startpos}_" . substr(md5(time() . mt_rand(1000, 5000) . $cfg_cookie_encode), 0, 16) . ".txt";
+        $bakfilename = "$bkdir/{$nowtable}_{$startpos}_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
         while ($row2 = $dsql->GetArray()) {
             if ($m < $startpos) {
                 $m++;
@@ -157,9 +157,9 @@ if ($dopost == 'bak') {
 
             for ($j = 0; $j <= $fsd; $j++) {
                 if ($j < $fsd) {
-                    $line .= "'" . RpLine(addslashes($row2[$fs[$j]])) . "',";
+                    $line .= "'".RpLine(addslashes($row2[$fs[$j]]))."',";
                 } else {
-                    $line .= "'" . RpLine(addslashes($row2[$fs[$j]])) . "');\r\n";
+                    $line .= "'".RpLine(addslashes($row2[$fs[$j]]))."');\r\n";
                 }
             }
             $m++;
@@ -226,7 +226,7 @@ else if ($dopost == 'redat') {
         $querys = explode(';', $tbdata);
         foreach ($querys as $q) {
             $q = preg_replace("#TYPE=MyISAM#i","ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language, $q);
-            $rs = $dsql->ExecuteNoneQuery(trim($q) . ';');
+            $rs = $dsql->ExecuteNoneQuery(trim($q).';');
         }
         if ($delfile == 1) {
             @unlink("$bkdir/$structfile");
@@ -241,7 +241,7 @@ else if ($dopost == 'redat') {
         exit();
     } else {
         $nowfile = $bakfiles[0];
-        $bakfilesTmp = preg_replace("#" . $nowfile . "[,]{0,1}#", "", $bakfilesTmp);
+        $bakfilesTmp = preg_replace("#".$nowfile."[,]{0,1}#", "", $bakfilesTmp);
         $oknum = 0;
         if (filesize("$bkdir/$nowfile") > 0) {
             $fp = fopen("$bkdir/$nowfile", 'r');
@@ -280,7 +280,7 @@ function PutInfo($msg1, $msg2)
         <link rel='stylesheet' href='../static/css/bootstrap.min.css'>
         <title>DedeBIZ 提示信息</title>
         <base target='_self'/>\n</head>\n<body leftmargin='0' topmargin='0'>\n<main class='container'><div class='modal' tabindex='-1' role='dialog' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>DedeBIZ 提示信息！</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
-    echo $msginfo . "\n</body>\n</html>";
+    echo $msginfo."\n</body>\n</html>";
 }
 
 function RpLine($str)

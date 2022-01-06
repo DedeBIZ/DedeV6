@@ -9,9 +9,9 @@
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . "/dedehttpdown.class.php");
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/charset.func.php");
+require_once(DEDEINC."/dedehttpdown.class.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/charset.func.php");
 
 /**
  *  下载图片
@@ -42,7 +42,7 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
     $sessionQuery .= "Accept: */*\r\n";
     $sessionQuery .= "User-Agent: Mozilla/4.0 (compatible; MSIE 5.00; Windows 98)\r\n";
     if ($gcookie != "" && !preg_match("/[\r\n]/", $gcookie)) {
-        $sessionQuery .= $gcookie . "\r\n";
+        $sessionQuery .= $gcookie."\r\n";
     }
     $sessionQuery .= "Connection: Keep-Alive\r\n\r\n";
     $errno = "";
@@ -159,7 +159,7 @@ function RefurlCookie($gurl)
     $sessionQuery .= "Connection: Close\r\n\r\n";
     $errno = "";
     $errstr = "";
-    $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10) or die($ghost . '<br />');
+    $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10) or die($ghost.'<br />');
     fwrite($m_fp, $sessionQuery);
     $lnum = 0;
 
@@ -191,7 +191,7 @@ function GetHostInfo($gurl)
 {
     $gurl = preg_replace("/^http:\/\//i", "", trim($gurl));
     $garr['host'] = preg_replace("/\/(.*)$/i", "", $gurl);
-    $garr['query'] = "/" . preg_replace("/^([^\/]*)\//i", "", $gurl);
+    $garr['query'] = "/".preg_replace("/^([^\/]*)\//i", "", $gurl);
     return $garr;
 }
 
@@ -217,12 +217,12 @@ function TurnImageTag(&$body)
     $returnArray2 = $images[3];
     foreach ($returnArray1 as $key => $value) {
         if ($value) {
-            $ttx .= "{dede:img ddimg='$litpicname' text='图 " . ($key + 1) . "'}" . $value . "{/dede:img}" . "\r\n";
+            $ttx .= "{dede:img ddimg='$litpicname' text='图 ".($key + 1)."'}".$value."{/dede:img}"."\r\n";
         } else {
-            $ttx .= "{dede:img ddimg='$litpicname' text='图 " . ($key + 1) . "'}" . $returnArray2[$key] . "{/dede:img}" . "\r\n";
+            $ttx .= "{dede:img ddimg='$litpicname' text='图 ".($key + 1)."'}".$returnArray2[$key]."{/dede:img}"."\r\n";
         }
     }
-    $ttx = "\r\n{dede:pagestyle maxwidth='{$cfg_album_width}' ddmaxwidth='{$cfg_ddimg_width}' row='3' col='3' value='2'/}\r\n{dede:comments}图集类型会采集时生成此配置是正常的，不过如果后面没有跟着img标记则表示规则无效{/dede:comments}\r\n" . $ttx;
+    $ttx = "\r\n{dede:pagestyle maxwidth='{$cfg_album_width}' ddmaxwidth='{$cfg_ddimg_width}' row='3' col='3' value='2'/}\r\n{dede:comments}图集类型会采集时生成此配置是正常的，不过如果后面没有跟着img标记则表示规则无效{/dede:comments}\r\n".$ttx;
     return $ttx;
 }
 
@@ -240,9 +240,9 @@ function TurnLinkTag(&$body)
     preg_match_all("/<a href=['\"](.+?)['\"]([^>]+?)>(.+?)<\/a>/is", $body, $match);
     if (is_array($match[1]) && count($match[1]) > 0) {
         for ($i = 0; isset($match[1][$i]); $i++) {
-            $servername = (isset($match[3][$i]) ? str_replace("'", "`", $match[3][$i]) : $handid . ($i + 1));
+            $servername = (isset($match[3][$i]) ? str_replace("'", "`", $match[3][$i]) : $handid.($i + 1));
             if (preg_match("/[<>]/", $servername) || strlen($servername) > 40) {
-                $servername = $handid . ($i + 1);
+                $servername = $handid.($i + 1);
             }
             $ttx .= "{dede:link text='$servername'} {$match[1][$i]} {/dede:link}\r\n";
         }
@@ -360,7 +360,7 @@ function FillUrl($refurl, $surl)
     $refurl = trim($refurl);
     $surl = trim($surl);
     $urls = @parse_url($refurl);
-    $basehost = ((!isset($urls['port']) || $urls['port'] == '80') ? $urls['host'] : $urls['host'] . ':' . $urls['port']);
+    $basehost = ((!isset($urls['port']) || $urls['port'] == '80') ? $urls['host'] : $urls['host'].':'.$urls['port']);
 
     //$basepath = $basehost.(!isset($urls['path']) ? '' : '/'.$urls['path']);
     //由于直接获得的path在处理 http://xxxx/nnn/aaa?fdsafd 这种情况时会有错误，因此用其它方式处理
@@ -368,10 +368,10 @@ function FillUrl($refurl, $surl)
     $paths = explode('/', preg_replace("/^http:\/\//i", "", $refurl));
     $n = count($paths);
     for ($i = 1; $i < ($n - 1); $i++) {
-        if (!preg_match("/[\?]/", $paths[$i])) $basepath .= '/' . $paths[$i];
+        if (!preg_match("/[\?]/", $paths[$i])) $basepath .= '/'.$paths[$i];
     }
     if (!preg_match("/[\?\.]/", $paths[$n - 1])) {
-        $basepath .= '/' . $paths[$n - 1];
+        $basepath .= '/'.$paths[$n - 1];
     }
     if ($surl == '') {
         return $basepath;
@@ -383,26 +383,26 @@ function FillUrl($refurl, $surl)
 
     //用 '/' 表示网站根的网址
     if ($surl[0] == '/') {
-        $okurl = $basehost . $surl;
+        $okurl = $basehost.$surl;
     } else if ($surl[0] == '.') {
         if (strlen($surl) <= 2) {
             return '';
         } else if ($surl[1] == '/') {
-            $okurl = $basepath . preg_replace('/^./', '', $surl);
+            $okurl = $basepath.preg_replace('/^./', '', $surl);
         } else {
-            $okurl = $basepath . '/' . $surl;
+            $okurl = $basepath.'/'.$surl;
         }
     } else {
         if (strlen($surl) < 7) {
-            $okurl = $basepath . '/' . $surl;
+            $okurl = $basepath.'/'.$surl;
         } else if (preg_match("/^http:\/\//i", $surl)) {
             $okurl = $surl;
         } else {
-            $okurl = $basepath . '/' . $surl;
+            $okurl = $basepath.'/'.$surl;
         }
     }
     $okurl = preg_replace("/^http:\/\//i", '', $okurl);
-    $okurl = 'http://' . preg_replace("/\/{1,}/", '/', $okurl);
+    $okurl = 'http://'.preg_replace("/\/{1,}/", '/', $okurl);
     return $okurl;
 }
 
@@ -454,9 +454,9 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
             //没指定多栏目匹配规则
             if ($usemore == 0) {
                 while ($startid <= $endid) {
-                    $lists[$n][0] = str_replace("(*)", sprintf('%0' . strlen($startid) . 'd', $startid), $regxurl);
+                    $lists[$n][0] = str_replace("(*)", sprintf('%0'.strlen($startid).'d', $startid), $regxurl);
                     $lists[$n][1] = 0;
-                    $startid = sprintf('%0' . strlen($startid) . 'd', $startid + $addv);
+                    $startid = sprintf('%0'.strlen($startid).'d', $startid + $addv);
                     $n++;
                     if ($n > 2000 || $islisten == 1) {
                         break;
@@ -529,9 +529,9 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                         //匹配规则里的网址，注：(#)的网址是是允许使用(*)的
                         while ($startid <= $endid) {
                             $lists[$n][0] = str_replace("(#)", $brtag, $regxurl);
-                            $lists[$n][0] = str_replace("(*)", sprintf('%0' . strlen($startid) . 'd', $startid), $lists[$n][0]);
+                            $lists[$n][0] = str_replace("(*)", sprintf('%0'.strlen($startid).'d', $startid), $lists[$n][0]);
                             $lists[$n][1] = $typeid;
-                            $startid = sprintf('%0' . strlen($startid) . 'd', $startid + $addv);
+                            $startid = sprintf('%0'.strlen($startid).'d', $startid + $addv);
                             $n++;
                             if ($islisten == 1) {
                                 break;

@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Edit');
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
@@ -26,7 +26,7 @@ if ($dopost == "toadmin") {
         ShowMsg('密码不合法，请使用[0-9a-zA-Z_@!.-]内的字符！', '-1', 0, 3000);
         exit();
     }
-    $safecodeok = substr(md5($cfg_cookie_encode . $randcode), 0, 24);
+    $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
         ShowMsg("请填写正确的安全验证串！", "member_toadmin.php?id={$id}");
         exit();
@@ -34,15 +34,15 @@ if ($dopost == "toadmin") {
     $pwdm = '';
     if ($pwd != '') {
         $inputpwd = ",pwd";
-        $inputpwdv = ",'" . substr(md5($pwd), 5, 20) . "'";
-        $pwdm = ",pwd='" . md5($pwd) . "'";
+        $inputpwdv = ",'".substr(md5($pwd), 5, 20)."'";
+        $pwdm = ",pwd='".md5($pwd)."'";
     } else {
         $row = $dsql->GetOne("SELECT * FROM #@__member WHERE mid='$id'");
         $password = $row['pwd'];
         $inputpwd = ",pwd";
         $pwd = substr($password, 5, 20);
-        $inputpwdv = ",'" . $pwd . "'";
-        $pwdm = ",pwd='" . $password . "'";
+        $inputpwdv = ",'".$pwd."'";
+        $pwdm = ",pwd='".$password."'";
     }
     $typeids = (empty($typeids)) ? "" : $typeids;
     if ($typeids == '') {
@@ -77,18 +77,18 @@ $id = preg_replace("#[^0-9]#", "", $id);
 
 //显示用户信息
 $randcode = mt_rand(10000, 99999);
-$safecode = substr(md5($cfg_cookie_encode . $randcode), 0, 24);
+$safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
 $typeOptions = '';
 $typeid = (empty($typeid)) ? '' : $typeid;
 $typeids = explode(',', $typeid);
 $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart=0 OR ispart=1)");
 $dsql->Execute('op');
 while ($nrow = $dsql->GetObject('op')) {
-    $typeOptions .= "<option value='{$nrow->id}' class='btype'" . (in_array($nrow->id, $typeids) ? ' selected' : '') . ">{$nrow->typename}</option>\r\n";
+    $typeOptions .= "<option value='{$nrow->id}' class='btype'".(in_array($nrow->id, $typeids) ? ' selected' : '').">{$nrow->typename}</option>\r\n";
     $dsql->SetQuery("SELECT id,typename FROM #@__arctype WHERE reid={$nrow->id} AND (ispart=0 OR ispart=1)");
     $dsql->Execute('s');
     while ($nrow = $dsql->GetObject('s')) {
-        $typeOptions .= "<option value='{$nrow->id}' class='stype'" . (in_array($nrow->id, $typeids) ? ' selected' : '') . ">—{$nrow->typename}</option>\r\n";
+        $typeOptions .= "<option value='{$nrow->id}' class='stype'".(in_array($nrow->id, $typeids) ? ' selected' : '').">—{$nrow->typename}</option>\r\n";
     }
 }
 $row = $dsql->GetOne("SELECT * FROM #@__member WHERE mid='$id'");

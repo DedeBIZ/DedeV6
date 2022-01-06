@@ -10,7 +10,7 @@
  */
 
 // 弱不存在缓存文件则写入缓存
-if (!file_exists(DEDEDATA . '/enums/system.php')) WriteEnumsCache();
+if (!file_exists(DEDEDATA.'/enums/system.php')) WriteEnumsCache();
 
 /**
  *  更新枚举缓存
@@ -33,9 +33,9 @@ function WriteEnumsCache($egroup = '')
         $egroups[] = $nrow['egroup'];
     }
     foreach ($egroups as $egroup) {
-        $cachefile = DEDEDATA . '/enums/' . $egroup . '.php';
+        $cachefile = DEDEDATA.'/enums/'.$egroup.'.php';
         $fp = fopen($cachefile, 'w');
-        fwrite($fp, '<' . "?php\r\nglobal \$em_{$egroup}s;\r\n\$em_{$egroup}s = array();\r\n");
+        fwrite($fp, '<'."?php\r\nglobal \$em_{$egroup}s;\r\n\$em_{$egroup}s = array();\r\n");
         $dsql->SetQuery("SELECT ename,evalue,issign FROM `#@__sys_enum` WHERE egroup='$egroup' ORDER BY disorder ASC, evalue ASC ");
         $dsql->Execute('enum');
         $issign = -1;
@@ -46,7 +46,7 @@ function WriteEnumsCache($egroup = '')
             if ($nrow['issign'] == 2) $tenum = true;
         }
         if ($tenum) $dsql->ExecuteNoneQuery("UPDATE `#@__stepselect` SET `issign`=2 WHERE egroup='$egroup'; ");
-        fwrite($fp, '?' . '>');
+        fwrite($fp, '?'.'>');
         fclose($fp);
         if (empty($issign)) WriteEnumsJs($egroup);
     }
@@ -85,14 +85,14 @@ function GetEnumsTypes($v)
  */
 function GetEnumsForm($egroup, $evalue = 0, $formid = '', $seltitle = '')
 {
-    $cachefile = DEDEDATA . '/enums/' . $egroup . '.php';
+    $cachefile = DEDEDATA.'/enums/'.$egroup.'.php';
     include($cachefile);
     if ($formid == '') {
         $formid = $egroup;
     }
     $forms = "<select name='$formid' id='$formid' class='enumselect form-control'>\r\n";
     $forms .= "\t<option value='0' selected='selected'>--请选择--{$seltitle}</option>\r\n";
-    foreach (${'em_' . $egroup . 's'} as $v => $n) {
+    foreach (${'em_'.$egroup.'s'} as $v => $n) {
         $prefix = ($v > 500 && $v % 500 != 0) ? '└─ ' : '';
         if (preg_match("#\.#", $v)) $prefix = ' &nbsp;&nbsp;└── ';
 
@@ -116,9 +116,9 @@ function GetEnumsForm($egroup, $evalue = 0, $formid = '', $seltitle = '')
 function getTopData($egroup)
 {
     $data = array();
-    $cachefile = DEDEDATA . '/enums/' . $egroup . '.php';
+    $cachefile = DEDEDATA.'/enums/'.$egroup.'.php';
     include($cachefile);
-    foreach (${'em_' . $egroup . 's'} as $k => $v) {
+    foreach (${'em_'.$egroup.'s'} as $k => $v) {
         if ($k >= 500 && $k % 500 == 0) {
             $data[$k] = $v;
         }
@@ -136,11 +136,11 @@ function getTopData($egroup)
  */
 function GetEnumsJs($egroup)
 {
-    global ${'em_' . $egroup . 's'};
-    include_once(DEDEDATA . '/enums/' . $egroup . '.php');
+    global ${'em_'.$egroup.'s'};
+    include_once(DEDEDATA.'/enums/'.$egroup.'.php');
     $jsCode = "<!--\r\n";
     $jsCode .= "em_{$egroup}s=new Array();\r\n";
-    foreach (${'em_' . $egroup . 's'} as $k => $v) {
+    foreach (${'em_'.$egroup.'s'} as $k => $v) {
         // JS中将3级类目存放到第二个key中去
         if (preg_match("#([0-9]{1,})\.([0-9]{1,})#", $k, $matchs)) {
             $valKey = $matchs[1] + $matchs[2] / 1000;
@@ -162,7 +162,7 @@ function GetEnumsJs($egroup)
  */
 function WriteEnumsJs($egroup)
 {
-    $jsfile = DEDEDATA . '/enums/' . $egroup . '.js';
+    $jsfile = DEDEDATA.'/enums/'.$egroup.'.js';
     $fp = fopen($jsfile, 'w');
     fwrite($fp, GetEnumsJs($egroup));
     fclose($fp);
@@ -179,9 +179,9 @@ function WriteEnumsJs($egroup)
  */
 function GetEnumsValue($egroup, $evalue = 0)
 {
-    include_once(DEDEDATA . '/enums/' . $egroup . '.php');
-    if (isset(${'em_' . $egroup . 's'}[$evalue])) {
-        return ${'em_' . $egroup . 's'}[$evalue];
+    include_once(DEDEDATA.'/enums/'.$egroup.'.php');
+    if (isset(${'em_'.$egroup.'s'}[$evalue])) {
+        return ${'em_'.$egroup.'s'}[$evalue];
     } else {
         return "保密";
     }

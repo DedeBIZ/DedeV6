@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 
 if (empty($pagesize)) $pagesize = 30;
@@ -54,7 +54,7 @@ else if ($dopost == 'delall') {
 if ($dopost == '') {
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__search_keywords` ");
     $totalRow = $row['dd'];
-    include(DEDEADMIN . "/templets/search_keywords_main.htm");
+    include(DEDEADMIN."/templets/search_keywords_main.htm");
 }
 
 //获得特定的关键字列表
@@ -77,8 +77,8 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     </tr>\r\n
     ";
     echo $printhead;
-    if ($orderby == 'result') $orderby = $orderby . " ASC";
-    else $orderby = $orderby . " DESC";
+    if ($orderby == 'result') $orderby = $orderby." ASC";
+    else $orderby = $orderby." DESC";
     $dsql->SetQuery("SELECT * FROM `#@__search_keywords` ORDER BY $orderby LIMIT $start,$pagesize ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
@@ -89,8 +89,8 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
       <td style='padding:5px;'><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
       <td style='padding:5px;'><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:95%;'></td>
       <td style='padding:5px;'><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
-      <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=" . urlencode($row['keyword']) . "&searchtype=titlekeyword' target='_blank'><u>{$row['result']}</u></a></td>
-      <td>" . MyDate("Y-m-d H:i:s", $row['lasttime']) . "</td>
+      <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'><u>{$row['result']}</u></a></td>
+      <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
       <td>
       <a href='#' onclick='UpdateNote({$row['aid']})' class='btn btn-success btn-sm'>更新</a> |
       <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'>删除</a>

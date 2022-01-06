@@ -63,8 +63,8 @@ if (!function_exists('RemoveXSS')) {
         $search .= '1234567890!@#$%^&*()';
         $search .= '~`";:?+/={}[]-_|\'\\';
         for ($i = 0; $i < strlen($search); $i++) {
-            $val = preg_replace('/(&#[xX]0{0,8}' . dechex(ord($search[$i])) . ';?)/i', $search[$i], $val); // with a ;
-            $val = preg_replace('/(&#0{0,8}' . ord($search[$i]) . ';?)/', $search[$i], $val); // with a ;
+            $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); // with a ;
+            $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); // with a ;
         }
 
         $ra1 = array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 'style', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base');
@@ -87,7 +87,7 @@ if (!function_exists('RemoveXSS')) {
                     $pattern .= $ra[$i][$j];
                 }
                 $pattern .= '/i';
-                $replacement = substr($ra[$i], 0, 2) . '<x>' . substr($ra[$i], 2);
+                $replacement = substr($ra[$i], 0, 2).'<x>'.substr($ra[$i], 2);
                 $val = preg_replace($pattern, $replacement, $val);
                 if ($val_before == $val) {
                     $found = false;
@@ -137,7 +137,7 @@ if (!function_exists('FilterSearch')) {
             for ($i = 0; isset($keyword[$i]); $i++) {
                 if (ord($keyword[$i]) > 0x80) {
                     if (isset($keyword[$i + 1]) && ord($keyword[$i + 1]) > 0x40) {
-                        $restr .= $keyword[$i] . $keyword[$i + 1];
+                        $restr .= $keyword[$i].$keyword[$i + 1];
                         $i++;
                     } else {
                         $restr .= ' ';

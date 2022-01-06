@@ -10,7 +10,7 @@
  * @link           https://www.dedebiz.com
  */
 
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 AjaxHead();
 $myhtml = UnicodeUrl2Gbk(stripslashes($myhtml));
 echo "<div class='coolbg61'>[<a href='#' onclick='javascript:HideObj(\"_myhtml\")'>关闭</a>]</div>\r\n";

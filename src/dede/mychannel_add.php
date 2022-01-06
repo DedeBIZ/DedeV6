@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_New');
-require_once(DEDEINC . "/dedetag.class.php");
+require_once(DEDEINC."/dedetag.class.php");
 if (empty($ismake)) $ismake = 0;
 if (empty($isdel)) $isdel = 0;
 if (empty($action)) $action = '';
@@ -78,11 +78,11 @@ if ($action == 'add') {
             if ($mysql_version < 4.1) {
                 $tabsql .= "    PRIMARY KEY  (`aid`), KEY `typeid` (`typeid`)\r\n) TYPE=MyISAM; ";
             } else {
-                $tabsql .= "    PRIMARY KEY  (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=" . $cfg_db_language . "; ";
+                $tabsql .= "    PRIMARY KEY  (`aid`), KEY `typeid` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
             }
             $rs = $dsql->ExecuteNoneQuery($tabsql);
             if (!$rs) {
-                ShowMsg("创建附加表失败!" . $dsql->GetError(), "javascript:;");
+                ShowMsg("创建附加表失败!".$dsql->GetError(), "javascript:;");
                 exit();
             }
         }
@@ -109,11 +109,11 @@ if ($action == 'add') {
     $inQuery = "INSERT INTO `#@__channeltype`(id,nid,typename,addtable,addcon,mancon,editcon,useraddcon,usermancon,usereditcon,fieldset,listfields,issystem,issend,arcsta,usertype,sendrank,needdes,needpic,titlename,onlyone,dfcid)
     VALUES ('$id','$nid','$typename','$addtable','$addcon','$mancon','$editcon','$useraddcon','$usermancon','$usereditcon','$fieldset','$listfields','$issystem','$issend','$arcsta','$usertype','$sendrank','$needdes','$needpic','$titlename','$onlyone','$dfcid');";
     $dsql->ExecuteNoneQuery($inQuery);
-    ShowMsg("成功增加一个频道模型！", "mychannel_edit.php?id=" . $id);
+    ShowMsg("成功增加一个频道模型！", "mychannel_edit.php?id=".$id);
     exit();
 }
 $row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id DESC LIMIT 0,1 ");
 $newid = $row['id'] + 1;
 if ($newid < 10) $newid = $newid + 10;
 
-require_once(DEDEADMIN . "/templets/mychannel_add.htm");
+require_once(DEDEADMIN."/templets/mychannel_add.htm");

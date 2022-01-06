@@ -9,10 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Group');
 if (!empty($dopost)) {
-    $row = $dsql->GetOne("SELECT * FROM #@__admintype WHERE rank='" . $rankid . "'");
+    $row = $dsql->GetOne("SELECT * FROM #@__admintype WHERE rank='".$rankid."'");
     if (is_array($row)) {
         ShowMsg('你所创建的组别的级别值已存在，不允许重复!', '-1');
         exit();
@@ -24,7 +24,7 @@ if (!empty($dopost)) {
     $AllPurviews = '';
     if (is_array($purviews)) {
         foreach ($purviews as $pur) {
-            $AllPurviews = $pur . ' ';
+            $AllPurviews = $pur.' ';
         }
         $AllPurviews = trim($AllPurviews);
     }

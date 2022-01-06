@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_ArcBatch');
 if (empty($dopost)) $dopost = '';
 if (empty($step)) $step = 1;
@@ -32,7 +32,7 @@ if ($dopost == "ok") {
 
     //更新枚举缓存
     else if ($step == 2) {
-        include_once(DEDEINC . "/enums.func.php");
+        include_once(DEDEINC."/enums.func.php");
         WriteEnumsCache();
         //WriteAreaCache(); 已过期
         ShowMsg("成功更新枚举缓存，准备更新调用缓存...", "sys_cache_up.php?dopost=ok&step=3&uparc=$uparc");
@@ -41,7 +41,7 @@ if ($dopost == "ok") {
 
     //清理arclist调用缓存、过期会员访问历史、过期短信
     else if ($step == 3) {
-        echo '<meta http-equiv="Content-Type" content="text/html; charset=' . $cfg_soft_lang . '">';
+        echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
         echo "\n成功更新arclist调用缓存，准备清理过期会员访问历史...<hr />";
         $oldtime = time() - (90 * 24 * 3600);

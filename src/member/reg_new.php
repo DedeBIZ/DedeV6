@@ -7,7 +7,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 if ($cfg_mb_allowreg == 'N') {
     ShowMsg('系统关闭了新用户注册！', 'index.php');
@@ -132,7 +132,7 @@ if ($step == 1) {
             exit();
         }
     }
-    require_once(DEDEMEMBER . "/templets/reg-new.htm");
+    require_once(DEDEMEMBER."/templets/reg-new.htm");
 } else {
     if (!$cfg_ml->IsLogin()) {
         ShowMsg("尚未完成基本信息的注册,请返回重新填写！", "index_do.php?fmdo=user&dopost=regnew");

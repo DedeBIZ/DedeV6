@@ -9,12 +9,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/userlogin.class.php");
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEMEMBER . "/inc/inc_catalog_options.php");
-require_once(DEDEMEMBER . "/inc/inc_archives_functions.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/userlogin.class.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
+require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
@@ -37,21 +37,21 @@ if (empty($dopost)) {
 
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-        $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='" . $cInfos['sendrank'] . "' ");
-        ShowMsg("对不起，需要[" . $row['membername'] . "]才能在这个频道发布文档！", "-1", "0", 5000);
+        $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$cInfos['sendrank']."' ");
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[" . $cInfos['usertype'] . "帐号]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档！", "-1", "0", 5000);
         exit();
     }
-    include(DEDEMEMBER . "/templets/archives_add.htm");
+    include(DEDEMEMBER."/templets/archives_add.htm");
     exit();
 }
 /*------------------------------
 function _SaveArticle(){  }
 ------------------------------*/ else if ($dopost == 'save') {
-    include(dirname(__FILE__) . '/inc/archives_check.php');
+    include(dirname(__FILE__).'/inc/archives_check.php');
     //分析处理附加表数据
     $inadd_f = $inadd_v = '';
     if (!empty($dede_addonfields)) {
@@ -75,8 +75,8 @@ function _SaveArticle(){  }
 
                 ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], 0);
 
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
 
@@ -129,7 +129,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     }
 
     //增加积分
-    $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} where mid='" . $cfg_ml->M_ID . "' ; ");
+    $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} where mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
 
@@ -137,7 +137,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, true);
     if ($artUrl == '') {
-        $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+        $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
 
     ClearMyAddon($arcID, $title);

@@ -9,10 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_New');
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(dirname(__FILE__) . "/inc/inc_admin_channel.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(dirname(__FILE__)."/inc/inc_admin_channel.php");
 
 if (empty($action)) $action = '';
 $id = isset($id) && is_numeric($id) ? $id : 0;
@@ -31,7 +31,7 @@ foreach ($dtp->CTags as $ctag) {
 }
 
 //字段类型信息
-$ds = file(dirname(__FILE__) . "/inc/fieldtype.txt");
+$ds = file(dirname(__FILE__)."/inc/fieldtype.txt");
 foreach ($ds as $d) {
     $dds = explode(',', trim($d));
     $fieldtypes[$dds[0]] = $dds[1];
@@ -74,9 +74,9 @@ if ($action == 'save') {
     //检测数据库是否存在附加表，不存在则新建一个
     $tabsql = "CREATE TABLE IF NOT EXISTS  `{$row['addtable']}`( `aid` int(11) NOT NULL default '0',\r\n `typeid` int(11) NOT NULL default '0',\r\n ";
     if ($mysql_version < 4.1) {
-        $tabsql .= " PRIMARY KEY  (`aid`), KEY `" . $trueTable . "_index` (`typeid`)\r\n) TYPE=MyISAM; ";
+        $tabsql .= " PRIMARY KEY  (`aid`), KEY `".$trueTable."_index` (`typeid`)\r\n) TYPE=MyISAM; ";
     } else {
-        $tabsql .= " PRIMARY KEY  (`aid`), KEY `" . $trueTable . "_index` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=" . $cfg_db_language . "; ";
+        $tabsql .= " PRIMARY KEY  (`aid`), KEY `".$trueTable."_index` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
     }
     $dsql->ExecuteNoneQuery($tabsql);
 
@@ -103,10 +103,10 @@ if ($action == 'save') {
     foreach ($dtp->CTags as $tagid => $ctag) {
         if ($fieldname == strtolower($ctag->GetName())) {
             if (isset($fields[$fieldname]) && $fields[$fieldname] != $buideType) {
-                $tabsql = "ALTER TABLE `$trueTable` CHANGE `$fieldname` " . $ntabsql;
+                $tabsql = "ALTER TABLE `$trueTable` CHANGE `$fieldname` ".$ntabsql;
                 $dsql->ExecuteNoneQuery($tabsql);
             } else if (!isset($fields[$fieldname])) {
-                $tabsql = "ALTER TABLE `$trueTable` ADD " . $ntabsql;
+                $tabsql = "ALTER TABLE `$trueTable` ADD ".$ntabsql;
                 $dsql->ExecuteNoneQuery($tabsql);
             } else {
                 $tabsql = '';
@@ -147,4 +147,4 @@ function _DELETE()
     exit();
 }
 
-require_once(DEDEADMIN . "/templets/mychannel_field_edit.htm");
+require_once(DEDEADMIN."/templets/mychannel_field_edit.htm");

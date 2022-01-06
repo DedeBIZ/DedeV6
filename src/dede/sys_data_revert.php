@@ -7,9 +7,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Data');
-$bkdir = DEDEDATA . "/" . $cfg_backup_dir;
+$bkdir = DEDEDATA."/".$cfg_backup_dir;
 $filelists = array();
 $dh = dir($bkdir);
 $structfile = "没找到数据结构文件";

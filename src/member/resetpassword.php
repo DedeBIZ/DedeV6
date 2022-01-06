@@ -9,13 +9,13 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEMEMBER . "/inc/inc_pwd_functions.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEMEMBER."/inc/inc_pwd_functions.php");
 if (empty($dopost)) $dopost = "";
 $id = isset($id) ? intval($id) : 0;
 
 if ($dopost == "") {
-    include(dirname(__FILE__) . "/templets/resetpassword.htm");
+    include(dirname(__FILE__)."/templets/resetpassword.htm");
 } elseif ($dopost == "getpwd") {
 
     //验证验证码
@@ -57,7 +57,7 @@ if ($dopost == "") {
             showmsg('对不起您尚未设置安全密码，请通过邮件方式重设密码', 'login.php');
             exit;
         }
-        require_once(dirname(__FILE__) . "/templets/resetpassword3.htm");
+        require_once(dirname(__FILE__)."/templets/resetpassword3.htm");
     }
     exit();
 } else if ($dopost == "safequestion") {
@@ -95,7 +95,7 @@ if ($dopost == "") {
             ShowMsg("对不起，临时密码修改期限已过期", "login.php");
             exit();
         }
-        require_once(dirname(__FILE__) . "/templets/resetpassword2.htm");
+        require_once(dirname(__FILE__)."/templets/resetpassword2.htm");
     } elseif ($setp == 2) {
         if (isset($key)) $pwdtmp = $key;
 

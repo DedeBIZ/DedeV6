@@ -9,12 +9,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 if (empty($do)) {
-    include DEDEADMIN . '/templets/baidunews.htm';
+    include DEDEADMIN.'/templets/baidunews.htm';
 } else {
-    $baidunews = "<?xml version=\"1.0\" encoding=\"" . $cfg_soft_lang . "\" ?>\n";
+    $baidunews = "<?xml version=\"1.0\" encoding=\"".$cfg_soft_lang."\" ?>\n";
     $baidunews .= "<document>\n";
     $baidunews .= "<webSite>$cfg_webname </webSite>\n";
     $baidunews .= "<webMaster>$cfg_adminemail </webMaster>\n";
@@ -37,7 +37,7 @@ if (empty($do)) {
         $title = dede_htmlspecialchars($row['title']);
         $row1 = GetOneArchive($row['id']);
         if (strpos($row1['arcurl'], 'http://') === false) {
-            $link = ($cfg_basehost == '' ? 'http://' . $_SERVER["HTTP_HOST"] . $cfg_cmspath : $cfg_basehost) . $row1['arcurl'];
+            $link = ($cfg_basehost == '' ? 'http://'.$_SERVER["HTTP_HOST"].$cfg_cmspath : $cfg_basehost).$row1['arcurl'];
         } else {
             $link = $row1['arcurl'];
         }
@@ -46,7 +46,7 @@ if (empty($do)) {
         $text = dede_htmlspecialchars(strip_tags($row['body']));
         $image = $row['litpic'] == '' ? '' : $row['litpic'];
         if ($image != '' && strpos($image, 'http://') === false) {
-            $image = ($cfg_basehost == '' ? 'http://' . $_SERVER["HTTP_HOST"] . $cfg_cmspath : $cfg_basehost) . $image;
+            $image = ($cfg_basehost == '' ? 'http://'.$_SERVER["HTTP_HOST"].$cfg_cmspath : $cfg_basehost).$image;
         }
         //$headlineimg = '';
         $keywords = dede_htmlspecialchars($row['keywords']);
@@ -71,7 +71,7 @@ if (empty($do)) {
     }
     $baidunews .= "</document>\n";
 
-    $fp = fopen(dirname(__FILE__) . '/' . $filename, 'w');
+    $fp = fopen(dirname(__FILE__).'/'.$filename, 'w');
     fwrite($fp, $baidunews);
     fclose($fp);
     showmsg("<a href='{$filename}' target=\"_blank\">{$filename} make success</a>", 'javascript:;');

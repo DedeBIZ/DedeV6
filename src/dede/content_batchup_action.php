@@ -9,10 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_ArcBatch');
-require_once(DEDEINC . "/typelink.class.php");
-require_once(DEDEADMIN . "/inc/inc_batchup.php");
+require_once(DEDEINC."/typelink.class.php");
+require_once(DEDEADMIN."/inc/inc_batchup.php");
 @set_time_limit(0);
 
 //typeid,startid,endid,seltime,starttime,endtime,action,newtypeid
@@ -29,7 +29,7 @@ if (empty($userid)) $userid = '';
 if ($action == "makehtml") {
     $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
     $jumpurl .= "&typeid=$typeid&pagesize=20&seltime=$seltime";
-    $jumpurl .= "&stime=" . urlencode($starttime) . "&etime=" . urlencode($endtime);
+    $jumpurl .= "&stime=".urlencode($starttime)."&etime=".urlencode($endtime);
     header("Location: $jumpurl");
     exit();
 }
@@ -65,7 +65,7 @@ if ($action == 'check') {
     }
     $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
     $jumpurl .= "&typeid=$typeid&pagesize=20&seltime=$seltime";
-    $jumpurl .= "&stime=" . urlencode($starttime) . "&etime=" . urlencode($endtime);
+    $jumpurl .= "&stime=".urlencode($starttime)."&etime=".urlencode($endtime);
     $dsql->SetQuery("SELECT id,arcrank FROM `#@__arctiny` $gwhere");
     $dsql->Execute('c');
     while ($row = $dsql->GetObject('c')) {
@@ -140,7 +140,7 @@ else if ($action == 'move') {
         ShowMsg("不能把数据移动到内容类型不同的栏目！", "javascript:;");
         exit();
     }
-    $gwhere .= " And channel='" . $typenew['channeltype'] . "' And title like '%$keyword%'";
+    $gwhere .= " And channel='".$typenew['channeltype']."' And title like '%$keyword%'";
 
     $ch = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id={$typenew['channeltype']} ");
     $addtable = $ch['addtable'];
@@ -161,7 +161,7 @@ else if ($action == 'move') {
     if ($tdd > 0) {
         $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
         $jumpurl .= "&typeid=$newtypeid&pagesize=20&seltime=$seltime";
-        $jumpurl .= "&stime=" . urlencode($starttime) . "&etime=" . urlencode($endtime);
+        $jumpurl .= "&stime=".urlencode($starttime)."&etime=".urlencode($endtime);
         ShowMsg("成功移动 $tdd 条记录，准备重新生成HTML...", $jumpurl);
     } else {
         ShowMsg("完成操作，没移动任何数据...", "javascript:;");

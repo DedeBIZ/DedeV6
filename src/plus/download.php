@@ -10,8 +10,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-require_once(DEDEINC . "/channelunit.class.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+require_once(DEDEINC."/channelunit.class.php");
 if (!isset($open)) $open = 0;
 
 //读取链接列表
@@ -39,13 +39,13 @@ if ($open == 0) {
             break;
         }
     }
-    $row = $dsql->GetOne("SELECT $vname FROM `" . $cu->ChannelInfos['addtable'] . "` WHERE aid='$aid'");
+    $row = $dsql->GetOne("SELECT $vname FROM `".$cu->ChannelInfos['addtable']."` WHERE aid='$aid'");
 
-    include_once(DEDEINC . '/taglib/channel/softlinks.lib.php');
+    include_once(DEDEINC.'/taglib/channel/softlinks.lib.php');
     $ctag = '';
     $downlinks = ch_softlinks($row[$vname], $ctag, $cu, '', TRUE);
 
-    require_once(DEDETEMPLATE . '/plus/download_links_templet.htm');
+    require_once(DEDETEMPLATE.'/plus/download_links_templet.htm');
     exit();
 }
 /*------------------------
@@ -114,7 +114,7 @@ function getSoft_new()
     }
 
     //分析连接列表
-    require_once(DEDEINC . '/dedetag.class.php');
+    require_once(DEDEINC.'/dedetag.class.php');
     $softUrl = '';
     $islocal = 0;
     $dtp = new DedeTagParse();
@@ -134,7 +134,7 @@ function getSoft_new()
 
             //支持http,迅雷下载,ftp,flashget
             if (!preg_match("#^http:\/\/|^thunder:\/\/|^ftp:\/\/|^flashget:\/\/#i", $link)) {
-                $link = $cfg_mainsite . $link;
+                $link = $cfg_mainsite.$link;
             }
             $dbhash = substr(md5($link), 0, 24);
             if ($uhash == $dbhash) $softUrl = $link;
@@ -151,7 +151,7 @@ function getSoft_new()
         foreach ($sites as $site) {
             if (trim($site) == '') continue;
             list($link, $serverName) = explode('|', $site);
-            $link = trim(preg_replace("#\/$#", "", $link)) . $firstLink;
+            $link = trim(preg_replace("#\/$#", "", $link)).$firstLink;
             $dbhash = substr(md5($link), 0, 24);
             if ($uhash == $dbhash) $softUrl = $link;
         }
@@ -172,11 +172,11 @@ function getSoft_new()
 
     //处理需要下载权限的软件
     if ($needRank > 0 || $needMoney > 0) {
-        require_once(DEDEINC . '/memberlogin.class.php');
+        require_once(DEDEINC.'/memberlogin.class.php');
         $cfg_ml = new MemberLogin();
         $arclink = $arcurl;
         $arctitle = $title;
-        $arcLinktitle = "<a href=\"{$arcurl}\"><u>" . $arctitle . "</u></a>";
+        $arcLinktitle = "<a href=\"{$arcurl}\"><u>".$arctitle."</u></a>";
         $pubdate = GetDateTimeMk($pubdate);
 
         //会员级别不足
@@ -187,35 +187,35 @@ function getSoft_new()
             }
             $memberTypes[0] = "游客";
             $msgtitle = "你没有权限下载软件：{$arctitle}！";
-            $moremsg = "这个软件需要 <font color='red'>" . $memberTypes[$needRank] . "</font> 才能下载，你目前是：<font color='red'>" . $memberTypes[$cfg_ml->M_Rank] . "</font> ！";
-            include_once(DEDETEMPLATE . '/plus/view_msg.htm');
+            $moremsg = "这个软件需要 <font color='red'>".$memberTypes[$needRank]."</font> 才能下载，你目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ！";
+            include_once(DEDETEMPLATE.'/plus/view_msg.htm');
             exit();
         }
 
         //以下为正常情况，自动扣点数
         //如果文章需要金币，检查用户是否浏览过本文档
         if ($needMoney > 0  && $mid != $cfg_ml->M_ID) {
-            $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE" . $id . "' AND mid='" . $cfg_ml->M_ID . "'";
+            $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE".$id."' AND mid='".$cfg_ml->M_ID."'";
             $row = $dsql->GetOne($sql);
             //未购买过此文章
             if (!is_array($row)) {
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {
                     $msgtitle = "你没有权限下载软件：{$arctitle}！";
-                    $moremsg = "这个软件需要 <font color='red'>" . $needMoney . " 金币</font> 才能下载，你目前拥有金币：<font color='red'>" . $cfg_ml->M_Money . " 个</font> ！";
-                    include_once(DEDETEMPLATE . '/plus/view_msg.htm');
+                    $moremsg = "这个软件需要 <font color='red'>".$needMoney." 金币</font> 才能下载，你目前拥有金币：<font color='red'>".$cfg_ml->M_Money." 个</font> ！";
+                    include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                     exit(0);
                 }
                 //有足够金币，记录用户信息
                 $inquery = "INSERT INTO `#@__member_operation`(mid,oldinfo,money,mtime,buyid,product,pname,sta)
-                  VALUES ('" . $cfg_ml->M_ID . "','$arctitle','$needMoney','" . time() . "', 'ARCHIVE" . $id . "', 'archive','下载软件', 2); ";
+                  VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."', 'ARCHIVE".$id."', 'archive','下载软件', 2); ";
                 //记录定单
                 if (!$dsql->ExecuteNoneQuery($inquery)) {
                     ShowMsg('记录定单失败, 请返回', '-1');
                     exit(0);
                 }
                 //扣除金币
-                $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET money = money - $needMoney WHERE mid='" . $cfg_ml->M_ID . "'");
+                $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET money = money - $needMoney WHERE mid='".$cfg_ml->M_ID."'");
             }
         }
     }

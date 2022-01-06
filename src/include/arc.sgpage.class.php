@@ -8,7 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . "/arc.partview.class.php");
+require_once(DEDEINC."/arc.partview.class.php");
 
 /**
  * 单表模型列表视图类
@@ -53,7 +53,7 @@ class sgpage
             $pv->SetTemplet($this->Fields['body'], 'string');
             $this->Fields['body'] = $pv->GetResult();
         }
-        $tplfile = $cfg_basedir . str_replace('{style}', $cfg_templets_dir . '/' . $cfg_df_style, $this->Fields['template']);
+        $tplfile = $cfg_basedir.str_replace('{style}', $cfg_templets_dir.'/'.$cfg_df_style, $this->Fields['template']);
         $this->dtp->LoadTemplate($tplfile);
         $this->ParseTemplet();
     }
@@ -94,7 +94,7 @@ class sgpage
      */
     function SaveToHtml()
     {
-        $filename = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_cmspath'] . '/' . $this->Fields['filename'];
+        $filename = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_cmspath'].'/'.$this->Fields['filename'];
         $filename = preg_replace("/\/{1,}/", '/', $filename);
         $this->dtp->SaveTo($filename);
     }

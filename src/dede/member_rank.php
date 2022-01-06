@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Type');
 if (empty($dopost)) $dopost = '';
 
@@ -19,12 +19,12 @@ if ($dopost == 'save') {
     $endID = $idend;
     for (; $startID <= $endID; $startID++) {
         $query = '';
-        $id = ${"ID_" . $startID};
-        $name = ${"name_" . $startID};
-        $rank = ${"rank_" . $startID};
-        $money = ${"money_" . $startID};
-        $scores = ${"scores_" . $startID};
-        if (isset(${"check_" . $startID})) {
+        $id = ${"ID_".$startID};
+        $name = ${"name_".$startID};
+        $rank = ${"rank_".$startID};
+        $money = ${"money_".$startID};
+        $scores = ${"scores_".$startID};
+        if (isset(${"check_".$startID})) {
             if ($rank > 0) {
                 $query = "UPDATE `#@__arcrank` SET membername='$name',money='$money',rank='$rank',scores='$scores' WHERE id='$id' ";
             }

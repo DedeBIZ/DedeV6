@@ -8,7 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . "/channelunit.func.php");
+require_once(DEDEINC."/channelunit.func.php");
 
 /**
  *  删除文档
@@ -60,15 +60,15 @@ function DelArc($aid)
                     break;
             }
             if ($nid != "") {
-                $row = $dsql->GetOne("SELECT $nid FROM " . $arcRow['addtable'] . " WHERE aid = '$aid'");
+                $row = $dsql->GetOne("SELECT $nid FROM ".$arcRow['addtable']." WHERE aid = '$aid'");
                 $licp = $dsql->GetOne("SELECT litpic FROM `#@__archives` WHERE id = '$aid'");
                 if ($licp['litpic'] != "") {
-                    $litpic = DEDEROOT . $licp['litpic'];
+                    $litpic = DEDEROOT.$licp['litpic'];
                     if (file_exists($litpic) && !is_dir($litpic)) {
                         @unlink($litpic);
                     }
                 }
-                $tmpname = '/(\\' . $cfg_medias_dir . '.+?)(\"| )/';
+                $tmpname = '/(\\'.$cfg_medias_dir.'.+?)(\"| )/';
 
                 //取出文章附件；
                 preg_match_all("$tmpname", $row["$nid"], $delname);
@@ -77,12 +77,12 @@ function DelArc($aid)
                 $delname = array_unique($delname['1']);
                 foreach ($delname as $var) {
                     $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url='$var' AND mid = '$cfg_ml->M_ID'");
-                    $upname = DEDEROOT . $var;
+                    $upname = DEDEROOT.$var;
                     if (file_exists($upname) && !is_dir($upname)) @unlink($upname);
                 }
             }
         }
-        $dsql->ExecuteNoneQuery("DELETE FROM `" . $arcRow['addtable'] . "` where aid='$aid' ");
+        $dsql->ExecuteNoneQuery("DELETE FROM `".$arcRow['addtable']."` where aid='$aid' ");
     }
     $dsql->ExecuteNoneQuery(" DELETE FROM `#@__archives` where id='$aid' ");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` where aid='$aid'");
@@ -106,14 +106,14 @@ function DelArc($aid)
         $arcRow['filename']
     );
     if (!preg_match("#\?#", $arcurl)) {
-        $htmlfile = GetTruePath() . str_replace($GLOBALS['cfg_basehost'], '', $arcurl);
+        $htmlfile = GetTruePath().str_replace($GLOBALS['cfg_basehost'], '', $arcurl);
         if (file_exists($htmlfile) && !is_dir($htmlfile)) {
             @unlink($htmlfile);
             $arcurls = explode(".", $htmlfile);
             $sname = $arcurls[count($arcurls) - 1];
             $fname = preg_replace("#(\.$sname)$#", "", $htmlfile);
             for ($i = 2; $i <= 100; $i++) {
-                $htmlfile = $fname . "_$i" . "." . $sname;
+                $htmlfile = $fname."_$i".".".$sname;
                 if (file_exists($htmlfile) && !is_dir($htmlfile)) @unlink($htmlfile);
                 else break;
             }
@@ -121,7 +121,7 @@ function DelArc($aid)
     }
 
     //删除文本文件
-    $filenameh = DEDEDATA . "/textdata/" . (ceil($aid / 5000)) . "/{$aid}-" . substr(md5($cfg_cookie_encode), 0, 16) . ".txt";
+    $filenameh = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
     if (is_file($filename)) @unlink($filename);
     return TRUE;
 }
@@ -156,7 +156,7 @@ function DelArcSg($aid)
 
     //删除数据库的内容
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` where id='$aid' ");
-    $dsql->ExecuteNoneQuery("DELETE FROM `" . $arcRow['addtable'] . "` where aid='$aid' ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `".$arcRow['addtable']."` where aid='$aid' ");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` where aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` where aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` where aid='$aid'");
@@ -178,21 +178,21 @@ function DelArcSg($aid)
         ''
     );
     if (!preg_match("#\?#", $arcurl)) {
-        $htmlfile = GetTruePath() . str_replace($GLOBALS['cfg_basehost'], '', $arcurl);
+        $htmlfile = GetTruePath().str_replace($GLOBALS['cfg_basehost'], '', $arcurl);
         if (file_exists($htmlfile) && !is_dir($htmlfile)) {
             @unlink($htmlfile);
             $arcurls = explode(".", $htmlfile);
             $sname = $arcurls[count($arcurls) - 1];
             $fname = preg_replace("#(\.$sname)$#", "", $htmlfile);
             for ($i = 2; $i <= 100; $i++) {
-                $htmlfile = $fname . "_$i" . "." . $sname;
+                $htmlfile = $fname."_$i".".".$sname;
                 if (file_exists($htmlfile) && !is_dir($htmlfile)) @unlink($htmlfile);
                 else break;
             }
         }
     }
     //删除文本文件
-    $filenameh = DEDEDATA . "/textdata/" . (ceil($aid / 5000)) . "/{$aid}-" . substr(md5($cfg_cookie_encode), 0, 16) . ".txt";
+    $filenameh = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
     return TRUE;
 }
 

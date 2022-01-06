@@ -9,10 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Log');
-require_once(DEDEINC . "/datalistcp.class.php");
-require_once(DEDEINC . "/common.func.php");
+require_once(DEDEINC."/datalistcp.class.php");
+require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $sql = $where = "";
 
@@ -41,6 +41,6 @@ $dlist->pageSize = 20;
 $dlist->SetParameter("adminid", $adminid);
 $dlist->SetParameter("cip", $cip);
 $dlist->SetParameter("dtime", $dtime);
-$dlist->SetTemplate(DEDEADMIN . "/templets/log_list.htm");
+$dlist->SetTemplate(DEDEADMIN."/templets/log_list.htm");
 $dlist->SetSource($sql);
 $dlist->Display();

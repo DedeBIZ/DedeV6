@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 $cid = isset($cid) ? intval($cid) : 0;
 $channelid = isset($channelid) ? intval($channelid) : 0;
 $mid = isset($mid) ? intval($mid) : 0;
@@ -36,9 +36,9 @@ if (TestPurview('a_List')) {
 
 $adminid = $cuserLogin->getUserID();
 $maintable = '#@__archives';
-require_once(DEDEINC . "/typelink.class.php");
-require_once(DEDEINC . "/datalistcp.class.php");
-require_once(DEDEADMIN . "/inc/inc_list_functions.php");
+require_once(DEDEINC."/typelink.class.php");
+require_once(DEDEINC."/datalistcp.class.php");
+require_once(DEDEADMIN."/inc/inc_list_functions.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $tl = new TypeLink($cid);
 $listtable = @trim($tl->TypeInfos['addtable']);
@@ -49,10 +49,10 @@ if (!empty($channelid) && !empty($ucid) && $tl->TypeInfos['channeltype'] != $cha
 
 if ($cid == 0) {
     $row = $tl->dsql->GetOne("SELECT typename,addtable FROM `#@__channeltype` WHERE id='$channelid'");
-    $positionname = $row['typename'] . " &gt; ";
+    $positionname = $row['typename']." &gt; ";
     $listtable = $row['addtable'];
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName()) . " &gt; ";
+    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
 }
 
 $optionarr = $tl->GetOptionArray($cid, $admin_catalogs, $channelid);
@@ -60,7 +60,7 @@ $whereSql = $channelid == 0 ? " WHERE arc.channel < -1 " : " WHERE arc.channel =
 
 if (!empty($mid)) $whereSql .= " AND arc.mid = '$mid' ";
 if ($keyword != '') $whereSql .= " AND (arc.title like '%$keyword%') ";
-if ($cid != 0) $whereSql .= " AND arc.typeid in (" . GetSonIds($cid) . ")";
+if ($cid != 0) $whereSql .= " AND arc.typeid in (".GetSonIds($cid).")";
 
 if ($arcrank != '') {
     $whereSql .= " AND arc.arcrank = '$arcrank' ";
@@ -81,7 +81,7 @@ $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);
 $dlist->SetParameter("channelid", $channelid);
-$dlist->SetTemplate(DEDEADMIN . "/templets/content_sg_list.htm");
+$dlist->SetTemplate(DEDEADMIN."/templets/content_sg_list.htm");
 $dlist->SetSource($query);
 $dlist->Display();
 $dlist->Close();

@@ -9,12 +9,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 
 //检查权限许可
 CheckPurview('t_Del,t_AccDel');
-require_once(DEDEINC . '/typeunit.class.admin.php');
-require_once(DEDEINC . '/oxwindow.class.php');
+require_once(DEDEINC.'/typeunit.class.admin.php');
+require_once(DEDEINC.'/oxwindow.class.php');
 $id = trim(preg_replace("#[^0-9]#", '', $id));
 
 //检查栏目操作许可
@@ -27,7 +27,7 @@ if ($dopost == 'ok') {
     ShowMsg("成功删除一个栏目！", "catalog_main.php");
     exit();
 }
-$dsql->SetQuery("SELECT typename,typedir FROM #@__arctype WHERE id=" . $id);
+$dsql->SetQuery("SELECT typename,typedir FROM #@__arctype WHERE id=".$id);
 $row = $dsql->GetOne();
 $wintitle = "删除栏目确认";
 $wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt;&gt; 删除栏目确认";

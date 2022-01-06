@@ -68,10 +68,10 @@ class DedeHttpDown
             $this->m_urlpath = $this->m_path;
             if (!empty($urls["query"])) {
                 $this->m_query = $urls["query"];
-                $this->m_urlpath .= "?" . $this->m_query;
+                $this->m_urlpath .= "?".$this->m_query;
             }
             $this->HomeUrl = $urls["host"];
-            $this->BaseUrlPath = $this->HomeUrl . $urls["path"];
+            $this->BaseUrlPath = $this->HomeUrl.$urls["path"];
             $this->BaseUrlPath = preg_replace("/\/([^\/]*)\.(.*)$/", "/", $this->BaseUrlPath);
             $this->BaseUrlPath = preg_replace("/\/$/", "", $this->BaseUrlPath);
         }
@@ -149,7 +149,7 @@ class DedeHttpDown
      */
     function printError()
     {
-        echo "错误信息：" . $this->m_error;
+        echo "错误信息：".$this->m_error;
         echo "<br/>具体返回头：<br/>";
         foreach ($this->m_httphead as $k => $v) {
             echo "$k => $v <br/>\r\n";
@@ -167,7 +167,7 @@ class DedeHttpDown
         if (preg_match("/^2/", $this->GetHead("http-state"))) {
             return TRUE;
         } else {
-            $this->m_error .= $this->GetHead("http-state") . " - " . $this->GetHead("http-describe") . "<br/>";
+            $this->m_error .= $this->GetHead("http-state")." - ".$this->GetHead("http-describe")."<br/>";
             return FALSE;
         }
     }
@@ -203,7 +203,7 @@ class DedeHttpDown
         ) {
             return TRUE;
         } else {
-            $this->m_error .= "类型不对 " . $this->GetHead("content-type") . "<br/>";
+            $this->m_error .= "类型不对 ".$this->GetHead("content-type")."<br/>";
             return FALSE;
         }
     }
@@ -315,7 +315,7 @@ class DedeHttpDown
         }
         if (function_exists('curl_init') && function_exists('curl_exec')) {
             $this->m_ch = curl_init();
-            curl_setopt($this->m_ch, CURLOPT_URL, $this->m_scheme . '://' . $this->m_host . ':' . $this->m_port . $this->m_path);
+            curl_setopt($this->m_ch, CURLOPT_URL, $this->m_scheme.'://'.$this->m_host.':'.$this->m_port.$this->m_path);
             curl_setopt($this->m_ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($this->m_ch, CURLOPT_FOLLOWLOCATION, 1);
             if ($requestType == "POST") {
@@ -342,7 +342,7 @@ class DedeHttpDown
                 $this->m_puthead["User-Agent"] = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2)";
             }
             if (!isset($this->m_puthead["Refer"])) {
-                $this->m_puthead["Refer"] = "http://" . $this->m_puthead["Host"];
+                $this->m_puthead["Refer"] = "http://".$this->m_puthead["Host"];
             }
             $headers = array();
             foreach ($this->m_puthead as $k => $v) {
@@ -390,9 +390,9 @@ class DedeHttpDown
 
         //发送固定的起始请求头GET、Host信息
         if ($requestType == "GET") {
-            $headString .= "GET " . $this->m_urlpath . " $httpv\r\n";
+            $headString .= "GET ".$this->m_urlpath." $httpv\r\n";
         } else {
-            $headString .= "POST " . $ps[0] . " $httpv\r\n";
+            $headString .= "POST ".$ps[0]." $httpv\r\n";
         }
         $this->m_puthead["Host"] = $this->m_host;
 
@@ -404,7 +404,7 @@ class DedeHttpDown
             $this->m_puthead["User-Agent"] = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2)";
         }
         if (!isset($this->m_puthead["Refer"])) {
-            $this->m_puthead["Refer"] = "http://" . $this->m_puthead["Host"];
+            $this->m_puthead["Refer"] = "http://".$this->m_puthead["Host"];
         }
 
         foreach ($this->m_puthead as $k => $v) {
@@ -446,7 +446,7 @@ class DedeHttpDown
         $this->m_httphead["http-state"] = trim($httpstas[1]);
         $this->m_httphead["http-describe"] = "";
         for ($i = 2; $i < count($httpstas); $i++) {
-            $this->m_httphead["http-describe"] .= " " . trim($httpstas[$i]);
+            $this->m_httphead["http-describe"] .= " ".trim($httpstas[$i]);
         }
 
         //获取详细应答头
@@ -595,19 +595,19 @@ class DedeHttpDown
             $surl = substr($surl, 0, $pos);
         }
         if ($surl[0] == "/") {
-            $okurl = "http://" . $this->HomeUrl . $surl;
+            $okurl = "http://".$this->HomeUrl.$surl;
         } else if ($surl[0] == ".") {
             if (strlen($surl) <= 1) {
                 return "";
             } else if ($surl[1] == "/") {
-                $okurl = "http://" . $this->BaseUrlPath . "/" . substr($surl, 2, strlen($surl) - 2);
+                $okurl = "http://".$this->BaseUrlPath."/".substr($surl, 2, strlen($surl) - 2);
             } else {
                 $urls = explode("/", $surl);
                 foreach ($urls as $u) {
                     if ($u == "..") {
                         $pathStep++;
                     } else if ($i < count($urls) - 1) {
-                        $dstr .= $urls[$i] . "/";
+                        $dstr .= $urls[$i]."/";
                     } else {
                         $dstr .= $urls[$i];
                     }
@@ -619,22 +619,22 @@ class DedeHttpDown
                 } else {
                     $pstr = "http://";
                     for ($i = 0; $i < count($urls) - $pathStep; $i++) {
-                        $pstr .= $urls[$i] . "/";
+                        $pstr .= $urls[$i]."/";
                     }
-                    $okurl = $pstr . $dstr;
+                    $okurl = $pstr.$dstr;
                 }
             }
         } else {
             if (strlen($surl) < 7) {
-                $okurl = "http://" . $this->BaseUrlPath . "/" . $surl;
+                $okurl = "http://".$this->BaseUrlPath."/".$surl;
             } else if (strtolower(substr($surl, 0, 7)) == "http://") {
                 $okurl = $surl;
             } else {
-                $okurl = "http://" . $this->BaseUrlPath . "/" . $surl;
+                $okurl = "http://".$this->BaseUrlPath."/".$surl;
             }
         }
         $okurl = preg_replace("/^(http:\/\/)/i", "", $okurl);
         $okurl = preg_replace("/\/{1,}/", "/", $okurl);
-        return "http://" . $okurl;
+        return "http://".$okurl;
     }
 }//End Class

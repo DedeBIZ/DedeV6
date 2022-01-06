@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_Other');
-require_once(DEDEINC . "/typelink.class.php");
+require_once(DEDEINC."/typelink.class.php");
 
 if (empty($dopost)) $dopost = '';
 $aid = intval($aid);
@@ -38,7 +38,7 @@ if ($dopost == 'delete') {
     ShowMsg("成功更改一个自定义标记！", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "getjs") {
-    require_once(DEDEINC . "/oxwindow.class.php");
+    require_once(DEDEINC."/oxwindow.class.php");
     $jscode = "<script src='{$cfg_phpurl}/mytag_js.php?aid=$aid' language='javascript'></script>";
     $showhtml = "<xmp style='color:#333333;background-color:#ffffff'>\r\n\r\n$jscode\r\n\r\n</xmp>";
     $showhtml .= "<b>预览：</b><iframe name='testfrm' frameborder='0' src='mytag_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='250'></iframe>";

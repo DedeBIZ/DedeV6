@@ -42,7 +42,7 @@ class MemberShops
      */
     function MakeOrders()
     {
-        $this->OrdersId = 'S-P' . time() . 'RN' . mt_rand(100, 999);
+        $this->OrdersId = 'S-P'.time().'RN'.mt_rand(100, 999);
         $this->deCrypt($this->saveCookie("OrdersId", $this->OrdersId));
         return $this->OrdersId;
     }
@@ -56,7 +56,7 @@ class MemberShops
      */
     function addItem($id, $value)
     {
-        $this->productsId = DE_ItemEcode . $id;
+        $this->productsId = DE_ItemEcode.$id;
         $this->saveCookie($this->productsId, $value);
     }
 
@@ -68,7 +68,7 @@ class MemberShops
      */
     function delItem($id)
     {
-        $this->productsId = DE_ItemEcode . $id;
+        $this->productsId = DE_ItemEcode.$id;
         setcookie($this->productsId, "", time() - 3600000, "/");
     }
 
@@ -80,7 +80,7 @@ class MemberShops
     function clearItem()
     {
         foreach ($_COOKIE as $key => $vals) {
-            if (preg_match('/' . DE_ItemEcode . '/', $key)) {
+            if (preg_match('/'.DE_ItemEcode.'/', $key)) {
                 setcookie($key, "", time() - 3600000, "/");
             }
         }
@@ -96,7 +96,7 @@ class MemberShops
     {
         $Products = array();
         foreach ($_COOKIE as $key => $vals) {
-            if (preg_match("#" . DE_ItemEcode . "#", $key) && preg_match("#[^_0-9a-z]#", $key)) {
+            if (preg_match("#".DE_ItemEcode."#", $key) && preg_match("#[^_0-9a-z]#", $key)) {
                 parse_str($this->deCrypt($vals), $arrays);
                 $values = @array_values($arrays);
                 if (!empty($values)) {
@@ -120,7 +120,7 @@ class MemberShops
      */
     function getOneItem($id)
     {
-        $key = DE_ItemEcode . $id;
+        $key = DE_ItemEcode.$id;
         if (!isset($_COOKIE[$key]) && empty($_COOKIE[$key])) {
             return '';
         }
@@ -158,7 +158,7 @@ class MemberShops
     {
         $price = 0.00;
         foreach ($_COOKIE as $key => $vals) {
-            if (preg_match("/" . DE_ItemEcode . "/", $key)) {
+            if (preg_match("/".DE_ItemEcode."/", $key)) {
                 $Products = $this->getOneItem(str_replace(DE_ItemEcode, "", $key));
                 if ($Products['buynum'] > 0 && $Products['price'] > 0) {
                     $price = $price + ($Products['price'] * $Products['buynum']);
@@ -189,8 +189,8 @@ class MemberShops
         $fixedkey = md5($key);
         $egiskeys = md5(substr($fixedkey, 16, 16));
         $runtokey = $key_length ? ($operation == 'ENCODE' ? substr(md5(microtime(true)), -$key_length) : substr($string, 0, $key_length)) : '';
-        $keys = md5(substr($runtokey, 0, 16) . substr($fixedkey, 0, 16) . substr($runtokey, 16) . substr($fixedkey, 16));
-        $string = $operation == 'ENCODE' ? sprintf('%010d', $expiry ? $expiry + time() : 0) . substr(md5($string . $egiskeys), 0, 16) . $string : base64_decode(substr($string, $key_length));
+        $keys = md5(substr($runtokey, 0, 16).substr($fixedkey, 0, 16).substr($runtokey, 16).substr($fixedkey, 16));
+        $string = $operation == 'ENCODE' ? sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$egiskeys), 0, 16).$string : base64_decode(substr($string, $key_length));
 
         $i = 0;
         $result = '';
@@ -199,9 +199,9 @@ class MemberShops
             $result .= chr(ord($string[$i]) ^ ord($keys[$i % 32]));
         }
         if ($operation == 'ENCODE') {
-            return $runtokey . str_replace('=', '', base64_encode($result));
+            return $runtokey.str_replace('=', '', base64_encode($result));
         } else {
-            if ((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26) . $egiskeys), 0, 16)) {
+            if ((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$egiskeys), 0, 16)) {
                 return substr($result, 26);
             } else {
                 return '';
@@ -214,7 +214,7 @@ class MemberShops
     {
         $arrayenc = array();
         foreach ($array as $key => $val) {
-            $arrayenc[] = $key . '=' . urlencode($val);
+            $arrayenc[] = $key.'='.urlencode($val);
         }
         return implode('&', $arrayenc);
     }

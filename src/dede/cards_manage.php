@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC.'/datalistcp.class.php');
 $dopost = empty($dopost) ? "" : $dopost;
 if ($dopost == "delete") {
     $ids = explode('`', $aids);
@@ -19,7 +19,7 @@ if ($dopost == "delete") {
         if ($dquery == "") $dquery .= "aid='$id' ";
         else $dquery .= " OR aid='$id' ";
     }
-    if ($dquery != "") $dquery = " WHERE " . $dquery;
+    if ($dquery != "") $dquery = " WHERE ".$dquery;
     $dsql->ExecuteNoneQuery("DELETE FROM #@__moneycard_record $dquery");
     ShowMsg("成功删除指定的记录！", "cards_manage.php");
     exit();
@@ -37,7 +37,7 @@ if ($dopost == "delete") {
     while ($rw = $dlist->dsql->GetArray('ts')) {
         $TypeNames[$rw['tid']] = $rw['pname'];
     }
-    $tplfile = DEDEADMIN . "/templets/cards_manmage.htm";
+    $tplfile = DEDEADMIN."/templets/cards_manmage.htm";
 
     //这两句的顺序不能更换
     $dlist->SetTemplate($tplfile);      //载入模板
@@ -50,7 +50,7 @@ function GetMemberID($mid)
     global $dsql;
     if ($mid == 0) return '0';
     $row = $dsql->GetOne("SELECT userid FROM #@__member WHERE mid='$mid' ");
-    if (is_array($row)) return "<a href='member_view.php?mid={$mid}'>" . $row['userid'] . "</a>";
+    if (is_array($row)) return "<a href='member_view.php?mid={$mid}'>".$row['userid']."</a>";
     else return '0';
 }
 

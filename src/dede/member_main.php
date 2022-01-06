@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_List');
-require_once(DEDEINC . "/datalistcp.class.php");
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 
 if (!isset($sex)) $sex = '';
@@ -67,7 +67,7 @@ if ($matt != 10) {
 
 $whereSql = join(' AND ', $wheres);
 if ($whereSql != '') {
-    $whereSql = ' WHERE ' . $whereSql;
+    $whereSql = ' WHERE '.$whereSql;
 }
 
 $sql  = "SELECT * FROM `#@__member` $whereSql ORDER BY $sortkey DESC ";
@@ -78,7 +78,7 @@ $dlist->SetParameter('matt', $matt);
 $dlist->SetParameter('mtype', $mtype);
 $dlist->SetParameter('sortkey', $sortkey);
 $dlist->SetParameter('keyword', $keyword);
-$dlist->SetTemplet(DEDEADMIN . "/templets/member_main.htm");
+$dlist->SetTemplet(DEDEADMIN."/templets/member_main.htm");
 $dlist->SetSource($sql);
 $dlist->display();
 
@@ -86,7 +86,7 @@ function GetMemberName($rank, $mt)
 {
     global $MemberTypes;
     if (isset($MemberTypes[$rank])) {
-        if ($mt == 'ut') return " <font color='red'>待升级：" . $MemberTypes[$rank] . "</font>";
+        if ($mt == 'ut') return " <font color='red'>待升级：".$MemberTypes[$rank]."</font>";
         else return $MemberTypes[$rank];
     } else {
         if ($mt == 'ut') return '';

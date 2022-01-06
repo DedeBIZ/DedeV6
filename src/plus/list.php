@@ -10,7 +10,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
 
 $t1 = ExecTime();
 
@@ -40,14 +40,14 @@ if ($tinfos['issystem'] == -1) {
     if (!empty($nativeplace)) $cArr['nativeplace'] = $nativeplace;
     if (!empty($infotype)) $cArr['infotype'] = $infotype;
     if (!empty($keyword)) $cArr['keyword'] = $keyword;
-    include(DEDEINC . "/arc.sglistview.class.php");
+    include(DEDEINC."/arc.sglistview.class.php");
     $lv = new SgListView($tid, $cArr);
 } else {
-    include(DEDEINC . "/arc.listview.class.php");
+    include(DEDEINC."/arc.listview.class.php");
     $lv = new ListView($tid);
     //对设置了会员级别的栏目进行处理
     if (isset($lv->Fields['corank']) && $lv->Fields['corank'] > 0) {
-        require_once(DEDEINC . '/memberlogin.class.php');
+        require_once(DEDEINC.'/memberlogin.class.php');
         $cfg_ml = new MemberLogin();
         if ($cfg_ml->M_Rank < $lv->Fields['corank']) {
             $dsql->Execute('me', "SELECT * FROM `#@__arcrank` ");
@@ -56,8 +56,8 @@ if ($tinfos['issystem'] == -1) {
             }
             $memberTypes[0] = "游客或没权限会员";
             $msgtitle = "你没有权限浏览栏目：{$lv->Fields['typename']} ！";
-            $moremsg = "这个栏目需要 <font color='red'>" . $memberTypes[$lv->Fields['corank']] . "</font> 才能访问，你目前是：<font color='red'>" . $memberTypes[$cfg_ml->M_Rank] . "</font> ！";
-            include_once(DEDETEMPLATE . '/plus/view_msg_catalog.htm');
+            $moremsg = "这个栏目需要 <font color='red'>".$memberTypes[$lv->Fields['corank']]."</font> 才能访问，你目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ！";
+            include_once(DEDETEMPLATE.'/plus/view_msg_catalog.htm');
             exit();
         }
     }

@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . '/datalistcp.class.php');
-require_once(DEDEINC . '/common.func.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/datalistcp.class.php');
+require_once(DEDEINC.'/common.func.php');
 
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
@@ -77,7 +77,7 @@ if ($dopost == "delete") {
         ShowMsg("成功删除指定的文档！", "erraddsave.php");
         exit();
     } else {
-        require_once(DEDEINC . "/oxwindow.class.php");
+        require_once(DEDEINC."/oxwindow.class.php");
         $wintitle = "删除";
         $wecome_info = "<a href='erraddsave.php'>错误管理</a>::删除错误";
         $win = new OxWindow();
@@ -95,6 +95,6 @@ if ($dopost == "delete") {
 
 $sql = "SELECT * FROM `#@__erradd` ORDER BY id desc";
 $dlist = new DataListCP();
-$dlist->SetTemplet(DEDEADMIN . "/templets/erradd.htm");
+$dlist->SetTemplet(DEDEADMIN."/templets/erradd.htm");
 $dlist->SetSource($sql);
 $dlist->display();

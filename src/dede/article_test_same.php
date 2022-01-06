@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 @set_time_limit(0);
 CheckPurview('sys_ArcBatch');
 if (empty($dopost)) $dopost = '';
@@ -29,8 +29,8 @@ if ($dopost == 'analyse') {
 }
 //删除选中的内容（只保留一条）
 else if ($dopost == 'delsel') {
-    require_once(dirname(__FILE__) . "/../include/typelink.class.php");
-    require_once(dirname(__FILE__) . "/inc/inc_batchup.php");
+    require_once(dirname(__FILE__)."/../include/typelink.class.php");
+    require_once(dirname(__FILE__)."/inc/inc_batchup.php");
 
     if (empty($titles)) {
         header("Content-Type: text/html; charset={$cfg_ver_lang}");

@@ -42,7 +42,7 @@ function GetBackAlert($msg, $isstop = 0)
     $msg = str_replace('"', '`', $msg);
     if ($isstop == 1) $msg = "<script>\r\n<!--\r\n alert(\"{$msg}\");\r\n-->\r\n</script>\r\n";
     else $msg = "<script>\r\n<!--\r\n alert(\"{$msg}\");history.go(-1);\r\n-->\r\n</script>\r\n";
-    $msg = "<meta http-equiv=content-type content='text/html; charset={$s_lang}'>\r\n" . $msg;
+    $msg = "<meta http-equiv=content-type content='text/html; charset={$s_lang}'>\r\n".$msg;
     return $msg;
 }
 
@@ -51,11 +51,11 @@ function TestWrite($d)
 {
     $tfile = '_dedet.txt';
     $d = preg_replace("#\/$#", '', $d);
-    $fp = @fopen($d . '/' . $tfile, 'w');
+    $fp = @fopen($d.'/'.$tfile, 'w');
     if (!$fp) return false;
     else {
         fclose($fp);
-        $rs = @unlink($d . '/' . $tfile);
+        $rs = @unlink($d.'/'.$tfile);
         if ($rs) return true;
         else return false;
     }
@@ -64,7 +64,7 @@ function TestWrite($d)
 function ReWriteConfigAuto()
 {
     global $dsql;
-    $configfile = DEDEDATA . '/config.cache.inc.php';
+    $configfile = DEDEDATA.'/config.cache.inc.php';
     if (!is_writeable($configfile)) {
         echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数！";
         //ClearAllLink();
@@ -72,14 +72,14 @@ function ReWriteConfigAuto()
     }
     $fp = fopen($configfile, 'w');
     flock($fp, 3);
-    fwrite($fp, "<" . "?php\r\n");
+    fwrite($fp, "<"."?php\r\n");
     $dsql->SetQuery("Select `varname`,`type`,`value`,`groupid` From `#@__sysconfig` order by aid asc ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
-        if ($row['type'] == 'number') fwrite($fp, "\${$row['varname']} = " . $row['value'] . ";\r\n");
-        else fwrite($fp, "\${$row['varname']} = '" . str_replace("'", '', $row['value']) . "';\r\n");
+        if ($row['type'] == 'number') fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
+        else fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
     }
-    fwrite($fp, "?" . ">");
+    fwrite($fp, "?".">");
     fclose($fp);
 }
 
@@ -87,8 +87,8 @@ function ReWriteConfigAuto()
 function UpDateCatCache()
 {
     global $conn, $cfg_multi_site, $dbprefix;
-    $cache1 = DEDEDATA . "/cache/inc_catalog_base.inc";
-    $rs = mysql_query("Select id,reid,channeltype,issend,typename From `" . $dbprefix . "arctype`", $conn);
+    $cache1 = DEDEDATA."/cache/inc_catalog_base.inc";
+    $rs = mysql_query("Select id,reid,channeltype,issend,typename From `".$dbprefix."arctype`", $conn);
 
     $fp1 = fopen($cache1, 'w');
     $phph = '?';
@@ -104,7 +104,7 @@ function UpDateCatCache()
 
 function IsDownLoad($url)
 {
-    if (file_exists($url . '.xml')) {
+    if (file_exists($url.'.xml')) {
         return true;
     } else {
         return false;

@@ -9,9 +9,9 @@ if (!defined('DEDEINC')) exit("Request Error!");
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . "/typelink.class.php");
-require_once(DEDEINC . "/channelunit.class.php");
-require_once(DEDEINC . "/downmix.inc.php");
+require_once(DEDEINC."/typelink.class.php");
+require_once(DEDEINC."/channelunit.class.php");
+require_once(DEDEINC."/downmix.inc.php");
 @set_time_limit(0);
 /**
  * 主文档类(Archives类)
@@ -168,11 +168,11 @@ class Archives
                                 if ($ctag->GetTagName() == 'field' && $ctag->GetAtt('name') == $k) {
                                     //带标识的专题节点
                                     if ($ctag->GetAtt('noteid') != '') {
-                                        $this->Fields[$k . '_' . $ctag->GetAtt('noteid')] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
+                                        $this->Fields[$k.'_'.$ctag->GetAtt('noteid')] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
                                     }
                                     //带类型的字段节点
                                     else if ($ctag->GetAtt('type') != '') {
-                                        $this->Fields[$k . '_' . $ctag->GetAtt('type')] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
+                                        $this->Fields[$k.'_'.$ctag->GetAtt('type')] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
                                     }
                                     //其它字段
                                     else {
@@ -235,10 +235,10 @@ class Archives
         //处理默认缩略图等
         if (isset($this->Fields['litpic'])) {
             if ($this->Fields['litpic'] == '-' || $this->Fields['litpic'] == '') {
-                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.jpg';
+                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.jpg';
             }
             if (!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                $this->Fields['litpic'] = $GLOBALS['cfg_mainsite'] . $this->Fields['litpic'];
+                $this->Fields['litpic'] = $GLOBALS['cfg_mainsite'].$this->Fields['litpic'];
             }
             $this->Fields['picname'] = $this->Fields['litpic'];
             //模板里直接使用{dede:field name='image'/}获取缩略图
@@ -319,10 +319,10 @@ class Archives
         $filenames  = explode(".", $filename);
         $this->ShortName = $filenames[count($filenames) - 1];
         if ($this->ShortName == '') $this->ShortName = 'html';
-        $fileFirst = preg_replace("/\." . $this->ShortName . "$/i", "", $filename);
+        $fileFirst = preg_replace("/\.".$this->ShortName."$/i", "", $filename);
         $this->Fields['namehand'] = basename($fileFirst);
         $filenames  = explode("/", $filename);
-        $this->NameFirst = preg_replace("/\." . $this->ShortName . "$/i", "", $filenames[count($filenames) - 1]);
+        $this->NameFirst = preg_replace("/\.".$this->ShortName."$/i", "", $filenames[count($filenames) - 1]);
         if ($this->NameFirst == '') {
             $this->NameFirst = $this->arcID;
         }
@@ -354,21 +354,21 @@ class Archives
             for ($i = 1; $i <= $this->TotalPage; $i++) {
                 if ($this->TotalPage > 1) {
                     $this->Fields['tmptitle'] = (empty($this->Fields['tmptitle']) ? $this->Fields['title'] : $this->Fields['tmptitle']);
-                    if ($i > 1) $this->Fields['title'] = $this->Fields['tmptitle'] . "($i)";
+                    if ($i > 1) $this->Fields['title'] = $this->Fields['tmptitle']."($i)";
                 }
                 if ($i > 1) {
-                    $TRUEfilename = $this->GetTruePath() . $fileFirst . "_" . $i . "." . $this->ShortName;
-                    $URLFilename = $fileFirst . "_" . $i . "." . $this->ShortName;
+                    $TRUEfilename = $this->GetTruePath().$fileFirst."_".$i.".".$this->ShortName;
+                    $URLFilename = $fileFirst."_".$i.".".$this->ShortName;
                 } else {
-                    $TRUEfilename = $this->GetTruePath() . $filename;
+                    $TRUEfilename = $this->GetTruePath().$filename;
                     $URLFilename = $filename;
                 }
-                $seoUrls = array_merge($seoUrls, array($cfg_basehost . $URLFilename));
+                $seoUrls = array_merge($seoUrls, array($cfg_basehost.$URLFilename));
                 $this->ParseDMFields($i, 1);
                 $this->dtp->SaveTo($TRUEfilename);
             }
         }
-        $this->dsql->ExecuteNoneQuery("Update `#@__archives` SET ismake=1 WHERE id='" . $this->ArcID . "'");
+        $this->dsql->ExecuteNoneQuery("Update `#@__archives` SET ismake=1 WHERE id='".$this->ArcID."'");
         return $this->GetTrueUrl($filename);
     }
     /**
@@ -423,14 +423,14 @@ class Archives
         }
         //指定了ID的节点
         else if ($ctag->GetAtt('noteid') != '') {
-            if (isset($this->Fields[$fname . '_' . $ctag->GetAtt('noteid')])) {
-                return $this->Fields[$fname . '_' . $ctag->GetAtt('noteid')];
+            if (isset($this->Fields[$fname.'_'.$ctag->GetAtt('noteid')])) {
+                return $this->Fields[$fname.'_'.$ctag->GetAtt('noteid')];
             }
         }
         //指定了type的节点
         else if ($ctag->GetAtt('type') != '') {
-            if (isset($this->Fields[$fname . '_' . $ctag->GetAtt('type')])) {
-                return $this->Fields[$fname . '_' . $ctag->GetAtt('type')];
+            if (isset($this->Fields[$fname.'_'.$ctag->GetAtt('type')])) {
+                return $this->Fields[$fname.'_'.$ctag->GetAtt('type')];
             }
         } else if (isset($this->Fields[$fname])) {
             return $this->Fields[$fname];
@@ -449,26 +449,26 @@ class Archives
         $cid = $this->ChannelUnit->ChannelInfos['nid'];
         if (!empty($this->Fields['templet'])) {
             $filetag = MfTemplet($this->Fields['templet']);
-            if (!preg_match("#\/#", $filetag)) $filetag = $GLOBALS['cfg_df_style'] . '/' . $filetag;
+            if (!preg_match("#\/#", $filetag)) $filetag = $GLOBALS['cfg_df_style'].'/'.$filetag;
         } else {
             $filetag = MfTemplet($this->TypeLink->TypeInfos["temparticle"]);
         }
         $tid = $this->Fields['typeid'];
         $filetag = str_replace('{cid}', $cid, $filetag);
         $filetag = str_replace('{tid}', $tid, $filetag);
-        $tmpfile = $cfg_basedir . $cfg_templets_dir . '/' . $filetag;
+        $tmpfile = $cfg_basedir.$cfg_templets_dir.'/'.$filetag;
         if ($cid == 'spec') {
             if (!empty($this->Fields['templet'])) {
-                $tmpfile = $cfg_basedir . $cfg_templets_dir . '/' . $filetag;
+                $tmpfile = $cfg_basedir.$cfg_templets_dir.'/'.$filetag;
             } else {
-                $tmpfile = $cfg_basedir . $cfg_templets_dir . "/{$cfg_df_style}/article_spec.htm";
+                $tmpfile = $cfg_basedir.$cfg_templets_dir."/{$cfg_df_style}/article_spec.htm";
             }
         }
         if (defined('DEDEMOB')) {
             $tmpfile = str_replace('.htm', '_m.htm', $tmpfile);
         }
         if (!file_exists($tmpfile)) {
-            $tmpfile = $cfg_basedir . $cfg_templets_dir . "/{$cfg_df_style}/" . ($cid == 'spec' ? 'article_spec.htm' : 'article_default.htm');
+            $tmpfile = $cfg_basedir.$cfg_templets_dir."/{$cfg_df_style}/".($cid == 'spec' ? 'article_spec.htm' : 'article_default.htm');
             if (defined('DEDEMOB')) {
                 $tmpfile = str_replace('.htm', '_m.htm', $tmpfile);
             }
@@ -489,7 +489,7 @@ class Archives
             return '';
         }
         $this->Fields["displaytype"] = "dm";
-        if ($this->NowPage > 1) $this->Fields["title"] = $this->Fields["title"] . "({$this->NowPage})";
+        if ($this->NowPage > 1) $this->Fields["title"] = $this->Fields["title"]."({$this->NowPage})";
         //预编译
         $this->LoadTemplet();
         $this->ParAddTable();
@@ -498,9 +498,9 @@ class Archives
         $this->Fields['flag'] = empty($this->Fields['flag']) ? "" : $this->Fields['flag'];
         if (preg_match("#j#", $this->Fields['flag']) && $this->Fields['redirecturl'] != '') {
             if ($GLOBALS['cfg_jump_once'] == 'N') {
-                $pageHtml = "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=" . $GLOBALS['cfg_soft_lang'] . "\">\r\n<title>" . $this->Fields['title'] . "</title>\r\n";
-                $pageHtml .= "<meta http-equiv=\"refresh\" content=\"3;URL=" . $this->Fields['redirecturl'] . "\">\r\n</head>\r\n<body>\r\n";
-                $pageHtml .= "现在正在转向：" . $this->Fields['title'] . "，请稍候...<br/><br/>\r\n转向内容简介：" . $this->Fields['description'] . "\r\n</body>\r\n</html>\r\n";
+                $pageHtml = "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$GLOBALS['cfg_soft_lang']."\">\r\n<title>".$this->Fields['title']."</title>\r\n";
+                $pageHtml .= "<meta http-equiv=\"refresh\" content=\"3;URL=".$this->Fields['redirecturl']."\">\r\n</head>\r\n<body>\r\n";
+                $pageHtml .= "现在正在转向：".$this->Fields['title']."，请稍候...<br/><br/>\r\n转向内容简介：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
                 echo $pageHtml;
             } else {
                 header("location:{$this->Fields['redirecturl']}");
@@ -693,11 +693,11 @@ class Archives
             $query = "Select arc.id,arc.title,arc.shorttitle,arc.typeid,arc.ismake,arc.senddate,arc.arcrank,arc.money,arc.filename,arc.litpic,
                 t.typedir,t.typename,t.namerule,t.namerule2,t.ispart,t.moresite,t.siteurl,t.sitepath
                 from `#@__archives` arc left join #@__arctype t on arc.typeid=t.id  ";
-            $nextRow = $this->dsql->GetOne($query . $next);
-            $preRow = $this->dsql->GetOne($query . $pre);
+            $nextRow = $this->dsql->GetOne($query.$next);
+            $preRow = $this->dsql->GetOne($query.$pre);
             if (is_array($preRow)) {
                 if (defined('DEDEMOB')) {
-                    $mlink = 'view.php?aid=' . $preRow['id'];
+                    $mlink = 'view.php?aid='.$preRow['id'];
                 } else {
                     $mlink = GetFileUrl(
                         $preRow['id'],
@@ -730,7 +730,7 @@ class Archives
             }
             if (is_array($nextRow)) {
                 if (defined('DEDEMOB')) {
-                    $mlink = 'view.php?aid=' . $preRow['id'];
+                    $mlink = 'view.php?aid='.$preRow['id'];
                 } else {
                     $mlink = GetFileUrl(
                         $nextRow['id'],
@@ -777,7 +777,7 @@ class Archives
         } else if ($gtype == 'nextimg') {
             $rs =  $this->PreNext['nextimg'];
         } else {
-            $rs =  $this->PreNext['pre'] . " &nbsp; " . $this->PreNext['next'];
+            $rs =  $this->PreNext['pre']." &nbsp; ".$this->PreNext['next'];
         }
         return $rs;
     }
@@ -796,7 +796,7 @@ class Archives
         if ($totalPage == 1) {
             return "";
         }
-        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共" . $totalPage . "页: </span></li>";
+        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共".$totalPage."页: </span></li>";
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
@@ -828,7 +828,7 @@ class Archives
             } else {
                 $n = $i;
                 if ($nowPage != $i) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid&pageno=$i'>" . $n . "</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid&pageno=$i'>".$n."</a></li>";
                     if ($cfg_rewrite == 'Y') {
                         $PageList = str_replace(".php?aid=", "-", $PageList);
                         $PageList =  preg_replace("#&pageno=(\d+)#i", '-\\1.html', $PageList);
@@ -863,36 +863,36 @@ class Archives
         if ($totalPage == 1) {
             return "";
         }
-        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共" . $totalPage . "页: </span></li>";
+        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共".$totalPage."页: </span></li>";
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
             $PageList .= "<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='#'>上一页</a></li>";
         } else {
             if ($nPage == 1) {
-                $PageList .= "<li class='page-item'><a class='page-link' href='" . $this->NameFirst . "." . $this->ShortName . "'>上一页</a></li>";
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
             } else {
-                $PageList .= "<li class='page-item'><a class='page-link' href='" . $this->NameFirst . "_" . $nPage . "." . $this->ShortName . "'>上一页</a></li>";
+                $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$nPage.".".$this->ShortName."'>上一页</a></li>";
             }
         }
         for ($i = 1; $i <= $totalPage; $i++) {
             if ($i == 1) {
                 if ($nowPage != 1) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='" . $this->NameFirst . "." . $this->ShortName . "'>1</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>1</a></li>";
                 } else {
                     $PageList .= "<li class=\"page-item active\"><span class='page-link'>1</span></li>";
                 }
             } else {
                 $n = $i;
                 if ($nowPage != $i) {
-                    $PageList .= "<li class='page-item'><a class='page-link' href='" . $this->NameFirst . "_" . $i . "." . $this->ShortName . "'>" . $n . "</a></li>";
+                    $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$i.".".$this->ShortName."'>".$n."</a></li>";
                 } else {
                     $PageList .= "<li class=\"page-item active\"><span class='page-link'>{$n}</span></li>";
                 }
             }
         }
         if ($lPage <= $totalPage) {
-            $PageList .= "<li class='page-item'><a class='page-link' href='" . $this->NameFirst . "_" . $lPage . "." . $this->ShortName . "'>下一页</a></li>";
+            $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst."_".$lPage.".".$this->ShortName."'>下一页</a></li>";
         } else {
             $PageList .= "<li class='page-item'><span class='page-link'>下一页</span></li>";
         }
@@ -934,12 +934,12 @@ class Archives
             $revalue = "<select id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<option value='" . $this->Fields['phpurl'] . "/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
+                    $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
                 } else {
                     if ($pageNo == $i) {
-                        $revalue .= "<option value='" . $this->Fields['phpurl'] . "/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i' selected>{$i}、{$v}</option>\r\n";
                     } else {
-                        $revalue .= "<option value='" . $this->Fields['phpurl'] . "/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->Fields['phpurl']."/view.php?aid=$aid&pageno=$i'>{$i}、{$v}</option>\r\n";
                     }
                 }
                 $i++;
@@ -969,12 +969,12 @@ class Archives
             $revalue = "";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<a href='" . $this->NameFirst . "." . $this->ShortName . "'>$v</a> \r\n";
+                    $revalue .= "<a href='".$this->NameFirst.".".$this->ShortName."'>$v</a> \r\n";
                 } else {
                     if ($pageNo == $i) {
                         $revalue .= " $v \r\n";
                     } else {
-                        $revalue .= "<a href='" . $this->NameFirst . "_" . $i . "." . $this->ShortName . "'>$v</a> \r\n";
+                        $revalue .= "<a href='".$this->NameFirst."_".$i.".".$this->ShortName."'>$v</a> \r\n";
                     }
                 }
                 $i++;
@@ -983,12 +983,12 @@ class Archives
             $revalue = "<select id='dedepagetitles' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
             foreach ($this->SplitTitles as $k => $v) {
                 if ($i == 1) {
-                    $revalue .= "<option value='" . $this->NameFirst . "." . $this->ShortName . "'>{$i}、{$v}</option>\r\n";
+                    $revalue .= "<option value='".$this->NameFirst.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
                 } else {
                     if ($pageNo == $i) {
-                        $revalue .= "<option value='" . $this->NameFirst . "_" . $i . "." . $this->ShortName . "' selected>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->NameFirst."_".$i.".".$this->ShortName."' selected>{$i}、{$v}</option>\r\n";
                     } else {
-                        $revalue .= "<option value='" . $this->NameFirst . "_" . $i . "." . $this->ShortName . "'>{$i}、{$v}</option>\r\n";
+                        $revalue .= "<option value='".$this->NameFirst."_".$i.".".$this->ShortName."'>{$i}、{$v}</option>\r\n";
                     }
                 }
                 $i++;
@@ -1096,7 +1096,7 @@ function _highlight($string, $words, $result, $pre)
             if ($GLOBALS['replaced'][$word] == 1) {
                 continue;
             }
-            $string = preg_replace("#" . preg_quote($word) . "#", $result[$key], $string, $cfg_replace_num);
+            $string = preg_replace("#".preg_quote($word)."#", $result[$key], $string, $cfg_replace_num);
             if (strpos($string, $word) !== FALSE) {
                 $GLOBALS['replaced'][$word] = 1;
             }
@@ -1104,5 +1104,5 @@ function _highlight($string, $words, $result, $pre)
     } else {
         $string = str_replace($words, $result, $string);
     }
-    return $pre . $string;
+    return $pre.$string;
 }

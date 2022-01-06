@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 
-require_once DEDEINC . '/arc.partview.class.php';
+require_once DEDEINC.'/arc.partview.class.php';
 @set_time_limit(0);
 
 /**
@@ -150,7 +150,7 @@ class FreeList
                 if ($cfg_list_son == 'N') {
                     $addSql .= " AND (typeid='$typeid') ";
                 } else {
-                    $addSql .= " AND typeid in (" . GetSonIds($typeid, 0, TRUE) . ") ";
+                    $addSql .= " AND typeid in (".GetSonIds($typeid, 0, TRUE).") ";
                 }
             }
 
@@ -206,14 +206,14 @@ class FreeList
      */
     function LoadTemplet()
     {
-        $tmpdir = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'];
+        $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
         $tempfile = str_replace("{style}", $GLOBALS['cfg_df_style'], $this->FLInfos['templet']);
-        $tempfile = $tmpdir . "/" . $tempfile;
+        $tempfile = $tmpdir."/".$tempfile;
         if (!file_exists($tempfile)) {
-            $tempfile = $tmpdir . "/" . $GLOBALS['cfg_df_style'] . "/list_free.htm";
+            $tempfile = $tmpdir."/".$GLOBALS['cfg_df_style']."/list_free.htm";
         }
         $this->dtp->LoadTemplate($tempfile);
-        $this->TempletsFile = preg_replace("#^" . $GLOBALS['cfg_basedir'] . "#", '', $tempfile);
+        $this->TempletsFile = preg_replace("#^".$GLOBALS['cfg_basedir']."#", '', $tempfile);
     }
 
     /**
@@ -251,11 +251,11 @@ class FreeList
             //文件名
             $makeFile = $this->GetMakeFileRule();
             if (!preg_match("#^\/#", $makeFile)) {
-                $makeFile = "/" . $makeFile;
+                $makeFile = "/".$makeFile;
             }
             $makeFile = str_replace('{page}', $this->PageNo, $makeFile);
             $murl = $makeFile;
-            $makeFile = $GLOBALS['cfg_basedir'] . $makeFile;
+            $makeFile = $GLOBALS['cfg_basedir'].$makeFile;
             $makeFile = preg_replace("#\/{1,}#", "/", $makeFile);
             if ($this->PageNo == 1) {
                 $firstFile = $makeFile;
@@ -263,14 +263,14 @@ class FreeList
 
             //保存文件
             $this->dtp->SaveTo($makeFile);
-            echo "<div class=\"alert alert-success\" role=\"alert\">成功创建：<a href='" . preg_replace("#\/{1,}#", "/", $murl) . "' target='_blank'>" . preg_replace("#\/{1,}#", "/", $murl) . "</a></div><br/>";
+            echo "<div class=\"alert alert-success\" role=\"alert\">成功创建：<a href='".preg_replace("#\/{1,}#", "/", $murl)."' target='_blank'>".preg_replace("#\/{1,}#", "/", $murl)."</a></div><br/>";
         }
         if ($this->FLInfos['nodefault'] == 0) {
-            $murl = '/' . str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $this->FLInfos['listdir']);
-            $murl .= '/' . $this->FLInfos['defaultpage'];
-            $indexfile = $GLOBALS['cfg_basedir'] . $murl;
+            $murl = '/'.str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $this->FLInfos['listdir']);
+            $murl .= '/'.$this->FLInfos['defaultpage'];
+            $indexfile = $GLOBALS['cfg_basedir'].$murl;
             $murl = preg_replace("#\/{1,}#", "/", $murl);
-            echo "<div class=\"alert alert-success\" role=\"alert\">复制：$firstFile 为 " . $this->FLInfos['defaultpage'] . "</div><br/>";
+            echo "<div class=\"alert alert-success\" role=\"alert\">复制：$firstFile 为 ".$this->FLInfos['defaultpage']."</div><br/>";
             copy($firstFile, $indexfile);
         }
         $this->Close();
@@ -300,20 +300,20 @@ class FreeList
     function DisplayPartTemplets()
     {
         $nmfa = 0;
-        $tmpdir = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'];
+        $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
         if ($this->Fields['ispart'] == 1) {
             $tempfile = str_replace("{tid}", $this->FreeID, $this->Fields['tempindex']);
             $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
-            $tempfile = $tmpdir . "/" . $tempfile;
+            $tempfile = $tmpdir."/".$tempfile;
             if (!file_exists($tempfile)) {
-                $tempfile = $tmpdir . "/" . $GLOBALS['cfg_df_style'] . "/index_default.htm";
+                $tempfile = $tmpdir."/".$GLOBALS['cfg_df_style']."/index_default.htm";
             }
             $this->PartView->SetTemplet($tempfile);
         } else if ($this->Fields['ispart'] == 2) {
             $tempfile = str_replace("{tid}", $this->FreeID, $this->Fields['tempone']);
             $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
-            if (is_file($tmpdir . "/" . $tempfile)) {
-                $this->PartView->SetTemplet($tmpdir . "/" . $tempfile);
+            if (is_file($tmpdir."/".$tempfile)) {
+                $this->PartView->SetTemplet($tmpdir."/".$tempfile);
             } else {
                 $this->PartView->SetTemplet("这是没有使用模板的单独页！", "string");
                 $nmfa = 1;
@@ -321,7 +321,7 @@ class FreeList
         }
         CreateDir($this->Fields['typedir']);
         $makeUrl = $this->GetMakeFileRule($this->Fields['id'], "index", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
-        $makeFile = $this->GetTruePath() . $makeUrl;
+        $makeFile = $this->GetTruePath().$makeUrl;
         if ($nmfa == 0) {
             $this->PartView->Display();
         } else {
@@ -429,8 +429,8 @@ class FreeList
         $tablewidth = 100;
         if ($col == "") $col = 1;
         $colWidth = ceil(100 / $col);
-        $tablewidth = $tablewidth . "%";
-        $colWidth = $colWidth . "%";
+        $tablewidth = $tablewidth."%";
+        $colWidth = $colWidth."%";
 
         //按不同情况设定SQL条件
         $orwhere = " arc.arcrank > -1 AND channel>-1 ";
@@ -446,7 +446,7 @@ class FreeList
             if ($cfg_list_son == 'N') {
                 $orwhere .= " AND (arc.typeid='$typeid') ";
             } else {
-                $orwhere .= " AND arc.typeid IN (" . GetSonIds($typeid, 0, TRUE) . ") ";
+                $orwhere .= " AND arc.typeid IN (".GetSonIds($typeid, 0, TRUE).") ";
             }
         }
 
@@ -507,7 +507,7 @@ class FreeList
         if (is_object($this->ChannelUnit)) {
             $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
             if ($addtable != "") {
-                $addJoin = " LEFT JOIN $addtable ON arc.id = " . $addtable . ".aid ";
+                $addJoin = " LEFT JOIN $addtable ON arc.id = ".$addtable.".aid ";
                 $addField = "";
                 $fields = explode(",", $this->ChannelUnit->ChannelInfos['listfields']);
                 foreach ($fields as $k => $v) {
@@ -516,9 +516,9 @@ class FreeList
                 foreach ($this->ChannelUnit->ChannelFields as $k => $arr) {
                     if (isset($nfields[$k])) {
                         if (!empty($arr['rename'])) {
-                            $addField .= "," . $addtable . "." . $k . " as " . $arr['rename'];
+                            $addField .= ",".$addtable.".".$k." as ".$arr['rename'];
                         } else {
-                            $addField .= "," . $addtable . "." . $k;
+                            $addField .= ",".$addtable.".".$k;
                         }
                     }
                 }
@@ -531,7 +531,7 @@ class FreeList
         FROM {$this->maintable} arc
         LEFT JOIN #@__arctype tp ON arc.typeid=tp.id
         $addJoin
-        WHERE $orwhere $ordersql LIMIT $limitstart," . $this->PageSize;
+        WHERE $orwhere $ordersql LIMIT $limitstart,".$this->PageSize;
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
         $artlist = "";
@@ -589,28 +589,28 @@ class FreeList
                     $row['description'] = cn_substr($row['description'], $infolen);
 
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.gif';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
                     }
                     if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                        $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                        $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                     }
                     $row['picname'] = $row['litpic'];
                     $row['info'] = $row['description'];
                     $row['filename'] = $row['arcurl'];
                     $row['stime'] = GetDateMK($row['pubdate']);
-                    $row['textlink'] = "<a href='" . $row['filename'] . "' title='" . str_replace("'", "", $row['title']) . "'>" . $row['title'] . "</a>";
-                    $row['typelink'] = "<a href='" . $row['typeurl'] . "'>[" . $row['typename'] . "]</a>";
-                    $row['imglink'] = "<a href='" . $row['filename'] . "'><img src='" . $row['picname'] . "' border='0' width='$imgwidth' height='$imgheight' alt='" . str_replace("'", "", $row['title']) . "'></a>";
-                    $row['image'] = "<img src='" . $row['picname'] . "' border='0' width='$imgwidth' height='$imgheight' alt='" . str_replace("'", "", $row['title']) . "'>";
+                    $row['textlink'] = "<a href='".$row['filename']."' title='".str_replace("'", "", $row['title'])."'>".$row['title']."</a>";
+                    $row['typelink'] = "<a href='".$row['typeurl']."'>[".$row['typename']."]</a>";
+                    $row['imglink'] = "<a href='".$row['filename']."'><img src='".$row['picname']."' border='0' width='$imgwidth' height='$imgheight' alt='".str_replace("'", "", $row['title'])."'></a>";
+                    $row['image'] = "<img src='".$row['picname']."' border='0' width='$imgwidth' height='$imgheight' alt='".str_replace("'", "", $row['title'])."'>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
                     $row['title'] = cn_substr($row['title'], $titlelen);
                     if ($row['color'] != "") {
-                        $row['title'] = "<font color='" . $row['color'] . "'>" . $row['title'] . "</font>";
+                        $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
                     }
                     if (preg_match("#c#", $row['flag'])) {
-                        $row['title'] = "<b>" . $row['title'] . "</b>";
+                        $row['title'] = "<b>".$row['title']."</b>";
                     }
 
                     //编译附加表里的数据
@@ -688,12 +688,12 @@ class FreeList
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/" . $this->TotalResult . "条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/" . $this->TotalResult . "条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li>";
         }
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/" . $this->TotalResult . "条记录</span></li>";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条记录</span></li>";
         $purl = $this->GetCurUrl();
         $tnamerule = $this->GetMakeFileRule();
         $tnamerule = preg_replace("#^(.*)\/#", '', $tnamerule);
@@ -701,16 +701,16 @@ class FreeList
 
         //获得上一页和主页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='" . str_replace("{page}", $prepagenum, $tnamerule) . "'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='" . str_replace("{page}", 1, $tnamerule) . "'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
 
         //下一页,未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<a href='" . str_replace("{page}", $nextpagenum, $tnamerule) . "'>下一页</a>\r\n";
-            $endpage = "<a href='" . str_replace("{page}", $totalpage, $tnamerule) . "'>末页</a>\r\n";
+            $nextpage .= "<a href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a>\r\n";
+            $endpage = "<a href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a>\r\n";
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
@@ -723,9 +723,9 @@ class FreeList
         $optionlist = "<select name='sldd' style='width:$optionlen' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
         for ($fl = 1; $fl <= $totalpage; $fl++) {
             if ($fl == $this->PageNo) {
-                $optionlist .= "<option value='" . str_replace("{page}", $fl, $tnamerule) . "' selected>$fl</option>\r\n";
+                $optionlist .= "<option value='".str_replace("{page}", $fl, $tnamerule)."' selected>$fl</option>\r\n";
             } else {
-                $optionlist .= "<option value='" . str_replace("{page}", $fl, $tnamerule) . "'>$fl</option>\r\n";
+                $optionlist .= "<option value='".str_replace("{page}", $fl, $tnamerule)."'>$fl</option>\r\n";
             }
         }
         $optionlist .= "</select>";
@@ -750,27 +750,27 @@ class FreeList
             if ($j == $this->PageNo) {
                 $listdd .= "<li class=\"page-item active\"><span class='page-link'>{$j}</span></li>\r\n";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='" . str_replace("{page}", $j, $tnamerule) . "'>" . $j . "</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
             }
         }
         $plist = "";
         if (preg_match('#info#i', $listitem)) {
-            $plist .= $maininfo . ' ';
+            $plist .= $maininfo.' ';
         }
         if (preg_match('#index#i', $listitem)) {
-            $plist .= $indexpage . ' ';
+            $plist .= $indexpage.' ';
         }
         if (preg_match('#pre#i', $listitem)) {
-            $plist .= $prepage . ' ';
+            $plist .= $prepage.' ';
         }
         if (preg_match('#pageno#i', $listitem)) {
-            $plist .= $listdd . ' ';
+            $plist .= $listdd.' ';
         }
         if (preg_match('#next#i', $listitem)) {
-            $plist .= $nextpage . ' ';
+            $plist .= $nextpage.' ';
         }
         if (preg_match('#end#i', $listitem)) {
-            $plist .= $endpage . ' ';
+            $plist .= $endpage.' ';
         }
         if (preg_match('#option#i', $listitem)) {
             $plist .= $optionlist;
@@ -797,28 +797,28 @@ class FreeList
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/" . $this->TotalResult . "条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/" . $this->TotalResult . "条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li>";
         }
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/" . $this->TotalResult . "条记录</span></li>";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条记录</span></li>";
         $purl = $this->GetCurUrl();
-        $geturl = "lid=" . $this->FreeID . "&TotalResult=" . $this->TotalResult . "&";
-        $hidenform = "<input type='hidden' name='lid' value='" . $this->FreeID . "' />\r\n";
-        $hidenform .= "<input type='hidden' name='TotalResult' value='" . $this->TotalResult . "' />\r\n";
-        $purl .= "?" . $geturl;
+        $geturl = "lid=".$this->FreeID."&TotalResult=".$this->TotalResult."&";
+        $hidenform = "<input type='hidden' name='lid' value='".$this->FreeID."' />\r\n";
+        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."' />\r\n";
+        $purl .= "?".$geturl;
 
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=$prepagenum'>上一页</a>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=1'>首页</a>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a>\r\n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1'>首页</a>\r\n";
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=$nextpagenum'>下一页</a>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=$totalpage'>末页</a>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a>\r\n";
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
@@ -838,13 +838,13 @@ class FreeList
             if ($j == $this->PageNo) {
                 $listdd .= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=$j'>" . $j . "</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
             }
         }
-        $plist  = "<form name='pagelist' action='" . $this->GetCurUrl() . "'>$hidenform";
-        $plist .= $maininfo . $indexpage . $prepage . $listdd . $nextpage . $endpage;
+        $plist  = "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
+        $plist .= $maininfo.$indexpage.$prepage.$listdd.$nextpage.$endpage;
         if ($totalpage > $total_list) {
-            $plist .= "<input type='text' name='PageNo'  value='" . $this->PageNo . "' style='width:30px' />\r\n";
+            $plist .= "<input type='text' name='PageNo'  value='".$this->PageNo."' style='width:30px' />\r\n";
             $plist .= "<input type='submit' name='plistgo' value='GO' />\r\n";
         }
         $plist .= "</form>\r\n";

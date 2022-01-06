@@ -9,18 +9,18 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 //考虑安全原因不管是否开启游客投稿功能，都不允许用户投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
     ShowMsg("由于系统开启了精简版会员空间，你访问的功能不可用！", "-1");
     exit();
 }
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/userlogin.class.php");
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEMEMBER . "/inc/inc_catalog_options.php");
-require_once(DEDEMEMBER . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/userlogin.class.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
+require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 3;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $menutype = 'content';
@@ -42,15 +42,15 @@ if (empty($dopost)) {
 
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-        $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='" . $cInfos['sendrank'] . "' ");
-        ShowMsg("对不起，需要[" . $row['membername'] . "]才能在这个频道发布文档！", "-1", "0", 5000);
+        $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$cInfos['sendrank']."' ");
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[" . $cInfos['usertype'] . "帐号]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档！", "-1", "0", 5000);
         exit();
     }
-    include(DEDEMEMBER . "/templets/soft_add.htm");
+    include(DEDEMEMBER."/templets/soft_add.htm");
     exit();
 }
 
@@ -58,7 +58,7 @@ if (empty($dopost)) {
 function _SaveArticle(){  }
 ------------------------------*/ else if ($dopost == 'save') {
     $description = '';
-    include(DEDEMEMBER . '/inc/archives_check.php');
+    include(DEDEMEMBER.'/inc/archives_check.php');
 
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
@@ -96,8 +96,8 @@ function _SaveArticle(){  }
                     }
                     ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $arcID);
                 }
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
 
@@ -137,13 +137,13 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         }
     }
     for ($i = 2; $i <= 12; $i++) {
-        if (!empty(${'softurl' . $i})) {
-            $servermsg = str_replace("'", "", stripslashes(${'servermsg' . $i}));
+        if (!empty(${'softurl'.$i})) {
+            $servermsg = str_replace("'", "", stripslashes(${'servermsg'.$i}));
             $servermsg = str_replace(array("{dede:", "{/dede:", "}"), "#", $servermsg);
-            $softurl = stripslashes(${'softurl' . $i});
+            $softurl = stripslashes(${'softurl'.$i});
             $softurl = str_replace(array("{dede:", "{/dede:", "}"), "#", $softurl);
             if ($servermsg == '') {
-                $servermsg = '下载地址' . $i;
+                $servermsg = '下载地址'.$i;
             }
             if ($softurl != '' && $softurl != 'http://') {
                 $urls .= "{dede:link text='$servermsg'} $softurl {/dede:link}\r\n";
@@ -151,7 +151,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         }
     }
     $urls = addslashes($urls);
-    $softsize = $softsize . $unit;
+    $softsize = $softsize.$unit;
 
     //保存到附加表
     $needmoney = @intval($needmoney);
@@ -174,13 +174,13 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         echo $inQuery;
         exit();
-        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。" . str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
 
     //增加积分
     $cfg_sendarc_scores = intval($cfg_sendarc_scores);
-    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='" . $cfg_ml->M_ID . "' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
 
@@ -188,7 +188,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE);
     if ($artUrl == '') {
-        $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+        $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
 
     ClearMyAddon($arcID, $title);

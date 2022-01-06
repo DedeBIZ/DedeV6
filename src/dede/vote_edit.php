@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_投票模块');
-require_once(DEDEINC . "/dedetag.class.php");
+require_once(DEDEINC."/dedetag.class.php");
 if (empty($dopost)) $dopost = "";
 
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
@@ -45,10 +45,10 @@ if ($dopost == "delete") {
         ";
     if ($dsql->ExecuteNoneQuery($query)) {
         $vt = new DedeVote($aid);
-        $vote_file = DEDEDATA . "/vote/vote_" . $aid . ".js";
+        $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
         $vote_content = $vt->GetVoteForm();
         $vote_content = preg_replace(array("#/#", "#([\r\n])[\s]+#"), array("\/", " "), $vote_content);        //取出内容中的空白字符并进行转义
-        $vote_content = 'document.write("' . $vote_content . '");';
+        $vote_content = 'document.write("'.$vote_content.'");';
         file_put_contents($vote_file, $vote_content);
         ShowMsg('成功更改一组投票!', $ENV_GOBACK_URL);
     } else {

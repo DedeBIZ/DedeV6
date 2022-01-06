@@ -10,8 +10,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-require_once DEDEINC . '/shopcar.class.php';
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+require_once DEDEINC.'/shopcar.class.php';
 $cart = new MemberShops();
 
 $do = isset($do) ? trim($do) : 'add';
@@ -77,7 +77,7 @@ if ($do == 'add') {
             $cts = GetChannelTable($rs['channel']);
             $rows = $dsql->GetOne("SELECT aid as id,trueprice as price,units FROM `$cts[addtable]` WHERE aid='$id'");
             if (!is_array($rows)) continue;
-            $rows['buynum'] = intval(${'buynum' . $id});
+            $rows['buynum'] = intval(${'buynum'.$id});
             if ($rows['buynum'] < 1) {
                 //如果设单位数量小于1个时更新,则移出购物车
                 $cart->delItem($id);

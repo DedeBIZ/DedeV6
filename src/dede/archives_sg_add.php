@@ -9,16 +9,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('a_New,a_AccNew');
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 
 if (empty($dopost)) $dopost = '';
 
 if ($dopost != 'save') {
-    require_once(DEDEINC . "/dedetag.class.php");
-    require_once(DEDEADMIN . "/inc/inc_catalog_options.php");
+    require_once(DEDEINC."/dedetag.class.php");
+    require_once(DEDEADMIN."/inc/inc_catalog_options.php");
     ClearMyAddon();
     $channelid = empty($channelid) ? 0 : intval($channelid);
     $cid = empty($cid) ? 0 : intval($cid);
@@ -43,8 +43,8 @@ if ($dopost != 'save') {
 /*--------------------------------
 function __save(){  }
 -------------------------------*/ else if ($dopost == 'save') {
-    require_once(DEDEINC . '/image.func.php');
-    require_once(DEDEINC . '/oxwindow.class.php');
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
 
     if ($typeid == 0) {
         ShowMsg("请指定文档的栏目！", "-1");
@@ -83,15 +83,15 @@ function __save(){  }
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-        $fullUrl = $fullUrl . ".png";
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
 
-        file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
 
         // 加水印
-        WaterImg($cfg_basedir . $fullUrl, 'up');
+        WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
     //生成文档ID
@@ -124,15 +124,15 @@ function __save(){  }
                     }
                     ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $arcID);
                 }
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
     }
 
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match("#p#", $flag)) {
-        $flag = ($flag == '' ? 'p' : $flag . ',p');
+        $flag = ($flag == '' ? 'p' : $flag.',p');
     }
 
     //保存到附加表
@@ -144,7 +144,7 @@ function __save(){  }
         if (!$dsql->ExecuteNoneQuery($query)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。" . str_replace('"', '', $gerr), "javascript:;");
+            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"', '', $gerr), "javascript:;");
             exit();
         }
     }
@@ -152,7 +152,7 @@ function __save(){  }
     //生成HTML
     $artUrl = MakeArt($arcID, TRUE, TRUE, $isremote);
     if ($artUrl == '') {
-        $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+        $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
     ClearMyAddon($arcID, $title);
     //返回成功信息
@@ -162,7 +162,7 @@ function __save(){  }
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $arcID . "&dopost=editArchives' class='btn btn-success btn-sm'>更改文档</a>
+    <a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>更改文档</a>
     &nbsp;&nbsp;
     <a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>已发布文档管理</a>
     &nbsp;&nbsp;

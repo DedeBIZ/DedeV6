@@ -8,7 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($activepath)) {
     $activepath = '';
 }
@@ -17,8 +17,8 @@ $activepath = preg_replace("#\/{1,}#", '/', $activepath);
 if (strlen($activepath) < strlen($cfg_soft_dir)) {
     $activepath = $cfg_soft_dir;
 }
-$inpath = $cfg_basedir . $activepath;
-$activeurl = '..' . $activepath;
+$inpath = $cfg_basedir.$activepath;
+$activeurl = '..'.$activepath;
 if (empty($f)) {
     $f = 'form1.enclosure';
 }
@@ -30,10 +30,10 @@ if (empty($comeback)) {
 }
 $addparm = '';
 if (!empty($CKEditor)) {
-    $addparm = '&CKEditor=' . $CKEditor;
+    $addparm = '&CKEditor='.$CKEditor;
 }
 if (!empty($CKEditorFuncNum)) {
-    $addparm .= '&CKEditorFuncNum=' . $CKEditorFuncNum;
+    $addparm .= '&CKEditorFuncNum='.$CKEditorFuncNum;
 }
 if (!empty($noeditor)) {
     $addparm .= '&noeditor=yes';
@@ -109,10 +109,10 @@ table{background:#fff}
                             if ($filesize != "")
                                 if ($filesize < 0.1) {
                                     @list($ty1, $ty2) = split("\.", $filesize);
-                                    $filesize = $ty1 . "." . substr($ty2, 0, 2);
+                                    $filesize = $ty1.".".substr($ty2, 0, 2);
                                 } else {
                                     @list($ty1, $ty2) = split("\.", $filesize);
-                                    $filesize = $ty1 . "." . substr($ty2, 0, 1);
+                                    $filesize = $ty1.".".substr($ty2, 0, 1);
                                 }
                             $filetime = filemtime("$inpath/$file");
                             $filetime = MyDate("Y-m-d H:i", $filetime);
@@ -123,7 +123,7 @@ table{background:#fff}
                             if ($activepath == "") continue;
                             $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                             $line = "\n<tr height='28'>
-                            <td class='linerow'><a href='select_soft.php?f=$f&activepath=" . urlencode($tmp) . $addparm . "'><img src='img/dir2.gif'>上级目录</a></td>
+                            <td class='linerow'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='img/dir2.gif'>上级目录</a></td>
                             <td colspan='2' class='linerow'>当前目录:$activepath</td>
                             </tr>\r\n";
                             echo $line;
@@ -131,7 +131,7 @@ table{background:#fff}
                             if (preg_match("#^_(.*)$#i", $file)) continue;
                             if (preg_match("#^\.(.*)$#i", $file)) continue;
                             $line = "\n<tr height='28'>
-                            <td class='linerow'><a href=select_soft.php?f=$f&activepath=" . urlencode("$activepath/$file") . $addparm . "><img src='img/dir.gif'>$file</a></td>
+                            <td class='linerow'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='img/dir.gif'>$file</a></td>
                             <td class='linerow'></td>
                             <td class='linerow'></td>
                             </tr>";

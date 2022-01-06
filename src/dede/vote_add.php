@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/dedevote.class.php");
-require_once(DEDEINC . "/helpers/filter.helper.php");
+require(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/dedevote.class.php");
+require_once(DEDEINC."/helpers/filter.helper.php");
 CheckPurview('plus_投票模块');
 if (empty($dopost)) $dopost = "";
 if (empty($isarc))  $isarc = 0;
@@ -23,9 +23,9 @@ if ($dopost == "save" && $isarc == 0) {
 
     $j = 0;
     for ($i = 1; $i <= 15; $i++) {
-        if (!empty(${"voteitem" . $i})) {
+        if (!empty(${"voteitem".$i})) {
             $j++;
-            $voteitems .= "<v:note id=\\'$j\\' count=\\'0\\'>" . ${"voteitem" . $i} . "</v:note>\r\n";
+            $voteitems .= "<v:note id=\\'$j\\' count=\\'0\\'>".${"voteitem".$i}."</v:note>\r\n";
         }
     }
     $inQuery = "INSERT INTO `#@__vote`(votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable)
@@ -38,9 +38,9 @@ if ($dopost == "save" && $isarc == 0) {
     $vt = new DedeVote($aid);
     $vote_content = $vt->GetVoteForm();
     $vote_content = preg_replace(array("#/#", "#([\r\n])[\s]+#"), array("\/", " "), $vote_content); //取出内容中的空白字符并进行转义
-    $vote_content = 'document.write("' . $vote_content . '");';
+    $vote_content = 'document.write("'.$vote_content.'");';
 
-    $vote_file = DEDEDATA . "/vote/vote_" . $aid . ".js";
+    $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
     file_put_contents($vote_file, $vote_content);
     ShowMsg("成功增加一组投票！", "vote_main.php");
     exit();
@@ -51,9 +51,9 @@ if ($dopost == "save" && $isarc == 0) {
 
     $j = 0;
     for ($i = 1; $i <= 15; $i++) {
-        if (!empty(${"voteitem" . $i})) {
+        if (!empty(${"voteitem".$i})) {
             $j++;
-            $voteitems .= "<v:note id=\\'$j\\' count=\\'0\\'>" . ${"voteitem" . $i} . "</v:note>\r\n";
+            $voteitems .= "<v:note id=\\'$j\\' count=\\'0\\'>".${"voteitem".$i}."</v:note>\r\n";
         }
     }
     $inQuery = "INSERT INTO `#@__vote`(votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable)
@@ -66,11 +66,11 @@ if ($dopost == "save" && $isarc == 0) {
     $vt = new DedeVote($aid);
     $vote_content = $vt->GetVoteForm();
     $vote_content = preg_replace(array("#/#", "#([\r\n])[\s]+#"), array("\/", " "), $vote_content); //取出内容中的空白字符并进行转义
-    $vote_content = 'document.write("' . $vote_content . '");';
+    $vote_content = 'document.write("'.$vote_content.'");';
 
-    $vote_file = DEDEDATA . "/vote/vote_" . $aid . ".js";
+    $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
     file_put_contents($vote_file, $vote_content);
-    ShowMsg("成功增加一组投票！", "vote_main.php?issel=1&aid=" . $aid);
+    ShowMsg("成功增加一组投票！", "vote_main.php?issel=1&aid=".$aid);
     exit();
 }
 $startDay = time();

@@ -10,9 +10,9 @@
  */
 
 
-require_once(DEDEINC . '/enums.func.php');
-require_once(DEDEDATA . '/enums/nativeplace.php');
-require_once(DEDEDATA . '/enums/infotype.php');
+require_once(DEDEINC.'/enums.func.php');
+require_once(DEDEDATA.'/enums/nativeplace.php');
+require_once(DEDEDATA.'/enums/infotype.php');
 
 function lib_infolink(&$ctag, &$refObj)
 {
@@ -24,8 +24,8 @@ function lib_infolink(&$ctag, &$refObj)
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
 
-    $cmspath = ((empty($cfg_cmspath) || !preg_match("#\/$#", $cfg_cmspath)) ? $cfg_cmspath . '/' : $cfg_cmspath);
-    $baseurl = preg_replace("#\/$#", '', $cfg_mainsite) . $cmspath;
+    $cmspath = ((empty($cfg_cmspath) || !preg_match("#\/$#", $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
+    $baseurl = preg_replace("#\/$#", '', $cfg_mainsite).$cmspath;
 
     $smalltypes = '';
     if (!empty($refObj->TypeLink->TypeInfos['smalltypes'])) {

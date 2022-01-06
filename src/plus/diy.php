@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'view')) ? $action : 'post';
 $id = isset($id) && is_numeric($id) ? $id : 0;
@@ -17,7 +17,7 @@ if (empty($diyid)) {
     showMsg('非法操作!', 'javascript:;');
     exit();
 }
-require_once DEDEINC . '/diyform.cls.php';
+require_once DEDEINC.'/diyform.cls.php';
 $diy = new diyform($diyid);
 /*----------------------------
 function Post(){ }
@@ -25,13 +25,13 @@ function Post(){ }
 if ($action == 'post') {
     if (empty($do)) {
         $postform = $diy->getForm(true);
-        include DEDEROOT . "/templets/plus/{$diy->postTemplate}";
+        include DEDEROOT."/templets/plus/{$diy->postTemplate}";
         exit();
     } elseif ($do == 2) {
         $dede_fields = empty($dede_fields) ? '' : trim($dede_fields);
         $dede_fieldshash = empty($dede_fieldshash) ? '' : trim($dede_fieldshash);
         if (!empty($dede_fields)) {
-            if ($dede_fieldshash != md5($dede_fields . $cfg_cookie_encode)) {
+            if ($dede_fieldshash != md5($dede_fields.$cfg_cookie_encode)) {
                 showMsg('数据校验不对，程序返回', '-1');
                 exit();
             }
@@ -64,8 +64,8 @@ if ($action == 'post') {
                     } else {
                         ${$fieldinfo[0]} = GetFieldValue(${$fieldinfo[0]}, $fieldinfo[1],0,'add','','diy', $fieldinfo[0]);
                     }
-                    $addvar .= ', `' . $fieldinfo[0] . '`';
-                    $addvalue .= ", '" . ${$fieldinfo[0]} . "'";
+                    $addvar .= ', `'.$fieldinfo[0].'`';
+                    $addvalue .= ", '".${$fieldinfo[0]}."'";
                 }
             }
         }
@@ -94,7 +94,7 @@ else if ($action == 'list') {
         ShowMsg('后台关闭前台浏览', 'javascript:;');
         exit();
     }
-    include_once DEDEINC . '/datalistcp.class.php';
+    include_once DEDEINC.'/datalistcp.class.php';
     if ($diy->public == 2)
         $query = "SELECT * FROM `{$diy->table}` ORDER BY id DESC";
     else
@@ -103,7 +103,7 @@ else if ($action == 'list') {
     $datalist->pageSize = 10;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
-    $datalist->SetTemplate(DEDEINC . "/../templets/plus/{$diy->listTemplate}");
+    $datalist->SetTemplate(DEDEINC."/../templets/plus/{$diy->listTemplate}");
     $datalist->SetSource($query);
     $fieldlist = $diy->getFieldList();
     $datalist->Display();
@@ -128,5 +128,5 @@ else if ($action == 'list') {
         exit();
     }
     $fieldlist = $diy->getFieldList();
-    include DEDEROOT . "/templets/plus/{$diy->viewTemplate}";
+    include DEDEROOT."/templets/plus/{$diy->viewTemplate}";
 }

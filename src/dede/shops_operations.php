@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('shops_Operations');
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 
 if (isset($dopost)) {
     CheckPurview('shops_Operations_cpanel');
@@ -67,7 +67,7 @@ if (empty($oid)) $oid = 0;
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (isset($buyid)) {
     $buyid  = preg_replace("#[^-0-9A-Z]#", "", $buyid);
-    $addsql = "WHERE s.oid='" . $buyid . "'";
+    $addsql = "WHERE s.oid='".$buyid."'";
 }
 if (isset($sta)) {
     $addsql = "WHERE s.`state`='$sta'";
@@ -77,7 +77,7 @@ $sql = "SELECT s.`oid`,s.`cartcount`,s.`price`,s.`state`,s.`stime`,s.priceCount,
 $dlist = new DataListCP();
 $dlist->SetParameter("oid", $oid);
 if (isset($sta)) $dlist->SetParameter("sta", $sta);
-$tplfile = DEDEADMIN . "/templets/shops_operations.htm";
+$tplfile = DEDEADMIN."/templets/shops_operations.htm";
 
 //这两句的顺序不能更换
 $dlist->SetTemplate($tplfile);      //载入模板
@@ -117,7 +117,7 @@ function GetMemberID($mid)
     if ($mid == 0) return '0';
     $row = $dsql->GetOne("SELECT userid FROM `#@__member` WHERE mid='$mid' ");
     if (is_array($row)) {
-        return "<a href='member_view.php?id={$mid}'>" . $row['userid'] . "</a>";
+        return "<a href='member_view.php?id={$mid}'>".$row['userid']."</a>";
     } else {
         return '0';
     }

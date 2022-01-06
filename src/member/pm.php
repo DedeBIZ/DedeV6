@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'pm';
@@ -66,7 +66,7 @@ else {
     if (!isset($folder)) {
         $folder = 'inbox';
     }
-    require_once(DEDEINC . "/datalistcp.class.php");
+    require_once(DEDEINC."/datalistcp.class.php");
     $wsql = '';
     if ($folder == 'outbox') {
         $wsql = " `fromid`='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' ";
@@ -103,7 +103,7 @@ else {
     $dlist = new DataListCP();
     $dlist->pageSize = 20;
     $dlist->SetParameter("dopost", $dopost);
-    $dlist->SetTemplate(DEDEMEMBER . '/templets/pm-main.htm');
+    $dlist->SetTemplate(DEDEMEMBER.'/templets/pm-main.htm');
     $dlist->SetSource($query);
     $dlist->Display();
 }

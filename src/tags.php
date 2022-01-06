@@ -7,8 +7,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/include/common.inc.php");
-require_once(DEDEINC . "/arc.taglist.class.php");
+require_once(dirname(__FILE__)."/include/common.inc.php");
+require_once(DEDEINC."/arc.taglist.class.php");
 $PageNo = 1;
 
 if (isset($_SERVER['QUERY_STRING'])) {

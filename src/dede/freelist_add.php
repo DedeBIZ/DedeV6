@@ -9,10 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_FreeList');
 if (empty($dopost)) {
-    require_once DEDEINC . '/typelink.class.php';
+    require_once DEDEINC.'/typelink.class.php';
     include DedeInclude('templets/freelist_add.htm');
     exit();
 } else if ($dopost == 'save') {
@@ -26,10 +26,10 @@ if (empty($dopost)) {
         exit();
     }
     if (is_array($types)) {
-        foreach ($types as $v) $ntype .= $v . ' ';
+        foreach ($types as $v) $ntype .= $v.' ';
     }
 
-    if ($ntype != '') $atts .= " type='" . trim($ntype) . "' ";
+    if ($ntype != '') $atts .= " type='".trim($ntype)."' ";
     if (!empty($typeid)) $atts .= " typeid='$typeid' ";
     if (!empty($channel)) $atts .= " channel='$channel' ";
     if (!empty($subday)) $atts .= " subday='$subday' ";

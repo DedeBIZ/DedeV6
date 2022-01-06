@@ -75,10 +75,10 @@ if (!function_exists('GetFileUrl')) {
                 $siteurl = $GLOBALS['cfg_basehost'];
             }
             if ($moresite == 1) {
-                $articleUrl = preg_replace("#^" . $sitepath . '#', '', $articleUrl);
+                $articleUrl = preg_replace("#^".$sitepath.'#', '', $articleUrl);
             }
             if (!preg_match("/http:/", $articleUrl)) {
-                $articleUrl = $siteurl . $articleUrl;
+                $articleUrl = $siteurl.$articleUrl;
             }
         }
 
@@ -112,7 +112,7 @@ if (!function_exists('GetFileNewName')) {
         }
 
         if ($cfg_arc_dirname == 'Y' && preg_match("/\/$/", $articlename)) {
-            $articlename = $articlename . "index.html";
+            $articlename = $articlename."index.html";
         }
 
         $slen = strlen($articlename) - 1;
@@ -151,15 +151,15 @@ if (!function_exists('GetFileName')) {
         global $cfg_rewrite, $cfg_cmspath, $cfg_arcdir, $cfg_special, $cfg_arc_dirname;
         //没指定栏目时用固定规则（专题）
         if (empty($namerule)) {
-            $namerule = $cfg_special . '/arc-{aid}.html';
+            $namerule = $cfg_special.'/arc-{aid}.html';
             $typeid = -1;
         }
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
             //动态文章
             if ($cfg_rewrite == 'Y') {
-                return $GLOBALS["cfg_plus_dir"] . "/view-" . $aid . '-1.html';
+                return $GLOBALS["cfg_plus_dir"]."/view-".$aid.'-1.html';
             } else {
-                return $GLOBALS['cfg_phpurl'] . "/view.php?aid=$aid";
+                return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
             }
         } else {
             $articleDir = MfTypedir($typedir);
@@ -168,21 +168,21 @@ if (!function_exists('GetFileName')) {
                 $articleRule = strtolower($GLOBALS['cfg_df_namerule']);
             }
             if ($typedir == '') {
-                $articleDir  = $GLOBALS['cfg_cmspath'] . $GLOBALS['cfg_arcdir'];
+                $articleDir  = $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
             }
             $dtime = GetDateMk($timetag);
             list($y, $m, $d) = explode('-', $dtime);
             $arr_rpsource = array('{typedir}', '{y}', '{m}', '{d}', '{timestamp}', '{aid}', '{cc}');
-            $arr_rpvalues = array($articleDir, $y, $m, $d, $timetag, $aid, dd2char($m . $d . $aid . $y));
+            $arr_rpvalues = array($articleDir, $y, $m, $d, $timetag, $aid, dd2char($m.$d.$aid.$y));
             if ($filename != '') {
-                $articleRule = dirname($articleRule) . '/' . $filename . $GLOBALS['cfg_df_ext'];
+                $articleRule = dirname($articleRule).'/'.$filename.$GLOBALS['cfg_df_ext'];
             }
             $articleRule = str_replace($arr_rpsource, $arr_rpvalues, $articleRule);
             if (preg_match("/\{p/", $articleRule)) {
-                $articleRule = str_replace('{pinyin}', GetPinyin($title) . '_' . $aid, $articleRule);
-                $articleRule = str_replace('{py}', GetPinyin($title, 1) . '_' . $aid, $articleRule);
+                $articleRule = str_replace('{pinyin}', GetPinyin($title).'_'.$aid, $articleRule);
+                $articleRule = str_replace('{py}', GetPinyin($title, 1).'_'.$aid, $articleRule);
             }
-            $articleUrl = '/' . preg_replace("/^\//", '', $articleRule);
+            $articleUrl = '/'.preg_replace("/^\//", '', $articleRule);
             if (preg_match("/index\.html/", $articleUrl) && $cfg_arc_dirname == 'Y') {
                 $articleUrl = str_replace('index.html', '', $articleUrl);
             }
@@ -215,7 +215,7 @@ if (!function_exists('GetTypeUrl')) {
         $sitepath = MfTypedir($sitepath);
         if ($isdefault == -1) {
             //动态
-            $reurl = $GLOBALS['cfg_phpurl'] . "/list.php?tid=" . $typeid;
+            $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
         } else if ($ispart == 2) {
             //跳转网址
             $reurl = $typedir;
@@ -226,8 +226,8 @@ if (!function_exists('GetTypeUrl')) {
                 $reurl = str_replace("{tid}", $typeid, $reurl);
                 $reurl = str_replace("{typedir}", $typedir, $reurl);
             } else {
-                if ($cfg_typedir_df == 'N' || $isdefault == 0) $reurl = $typedir . '/' . $defaultname;
-                else $reurl = $typedir . '/';
+                if ($cfg_typedir_df == 'N' || $isdefault == 0) $reurl = $typedir.'/'.$defaultname;
+                else $reurl = $typedir.'/';
             }
         }
 
@@ -240,10 +240,10 @@ if (!function_exists('GetTypeUrl')) {
                 $siteurl = $GLOBALS['cfg_basehost'];
             }
             if ($moresite == 1) {
-                $reurl = preg_replace("#^" . $sitepath . "#", '', $reurl);
+                $reurl = preg_replace("#^".$sitepath."#", '', $reurl);
             }
             if (!preg_match("/^http:\/\//", $reurl)) {
-                $reurl = $siteurl . $reurl;
+                $reurl = $siteurl.$reurl;
             }
         }
         return $reurl;
@@ -293,7 +293,7 @@ if (!function_exists('GetParentIds')) {
         global $cfg_Cs;
         $GLOBALS['pTypeArrays'][] = $tid;
         if (!is_array($cfg_Cs)) {
-            require_once(DEDEDATA . "/cache/inc_catalog_base.inc");
+            require_once(DEDEDATA."/cache/inc_catalog_base.inc");
         }
         if (!isset($cfg_Cs[$tid]) || $cfg_Cs[$tid][0] == 0) {
             return $GLOBALS['pTypeArrays'];
@@ -332,7 +332,7 @@ if (!function_exists('GetTopid')) {
     {
         global $cfg_Cs;
         if (!is_array($cfg_Cs)) {
-            require_once(DEDEDATA . "/cache/inc_catalog_base.inc");
+            require_once(DEDEDATA."/cache/inc_catalog_base.inc");
         }
         if (!isset($cfg_Cs[$tid][0]) || $cfg_Cs[$tid][0] == 0) {
             return $tid;
@@ -355,8 +355,8 @@ function GetSonIds($id, $channel = 0, $addthis = true)
 {
     global $cfg_Cs;
     $GLOBALS['idArray'] = array();
-    if (!is_array($cfg_Cs) && file_exists(DEDEDATA . "/cache/inc_catalog_base.inc")) {
-        require_once(DEDEDATA . "/cache/inc_catalog_base.inc");
+    if (!is_array($cfg_Cs) && file_exists(DEDEDATA."/cache/inc_catalog_base.inc")) {
+        require_once(DEDEDATA."/cache/inc_catalog_base.inc");
     }
     GetSonIdsLogic($id, $cfg_Cs, $channel, $addthis);
     $rquery = join(',', $GLOBALS['idArray']);
@@ -451,7 +451,7 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
     $alltags = array();
     $dtp->setRefObj($refObj);
     //读取自由调用tag列表
-    $dh = dir(DEDEINC . '/taglib');
+    $dh = dir(DEDEINC.'/taglib');
     while ($filename = $dh->read()) {
         if (preg_match("/\.lib\./", $filename)) {
             $alltags[] = str_replace('.lib.php', '', $filename);
@@ -472,8 +472,8 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
             } else if (isset($refObj->Fields[$vname])) {
                 $dtp->Assign($tagid, $refObj->Fields[$vname]);
             } else if ($ctag->GetAtt('noteid') != '') {
-                if (isset($refObj->Fields[$vname . '_' . $ctag->GetAtt('noteid')])) {
-                    $dtp->Assign($tagid, $refObj->Fields[$vname . '_' . $ctag->GetAtt('noteid')]);
+                if (isset($refObj->Fields[$vname.'_'.$ctag->GetAtt('noteid')])) {
+                    $dtp->Assign($tagid, $refObj->Fields[$vname.'_'.$ctag->GetAtt('noteid')]);
                 }
             }
             continue;
@@ -488,22 +488,22 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
         }
         if (in_array($tagname, $alltags)) {
             if (in_array($tagname, $disable_tags)) {
-                if (DEBUG_LEVEL) echo 'DedeBIZ Error:Tag disabled:"' . $tagname . '" <a href="https://www.dedebiz.com/help/" target="_blank">more...</a>!';
+                if (DEBUG_LEVEL) echo 'DedeBIZ Error:Tag disabled:"'.$tagname.'" <a href="https://www.dedebiz.com/help/" target="_blank">more...</a>!';
                 continue;
             }
             if (DEBUG_LEVEL == TRUE) {
                 $ttt1 = ExecTime();
             }
-            $filename = DEDEINC . '/taglib/' . $tagname . '.lib.php';
+            $filename = DEDEINC.'/taglib/'.$tagname.'.lib.php';
             include_once($filename);
-            $funcname = 'lib_' . $tagname;
+            $funcname = 'lib_'.$tagname;
             $dtp->Assign($tagid, $funcname($ctag, $refObj));
             if (DEBUG_LEVEL == TRUE) {
                 $queryTime = ExecTime() - $ttt1;
                 if (PHP_SAPI === 'cli') {
-                    echo '标签：' . $tagname . '载入花费时间：' . $queryTime . "\r\n";
+                    echo '标签：'.$tagname.'载入花费时间：'.$queryTime."\r\n";
                 } else {
-                    echo '<div style="color: #856404;background-color: #fff3cd;border-color: #ffeeba;position: relative;padding: .75rem 1.25rem;margin-bottom: 1rem;border: 1px solid transparent;border-radius: .25rem;" class="alert alert-warning" role="alert">标签：' . $tagname . '载入花费时间：' . $queryTime . "</div>\r\n";
+                    echo '<div style="color: #856404;background-color: #fff3cd;border-color: #ffeeba;position: relative;padding: .75rem 1.25rem;margin-bottom: 1rem;border: 1px solid transparent;border-radius: .25rem;" class="alert alert-warning" role="alert">标签：'.$tagname.'载入花费时间：'.$queryTime."</div>\r\n";
                 }
                 
             }
@@ -571,7 +571,7 @@ function GetBookUrl($bid, $title, $gdir = 0)
 {
     global $cfg_cmspath;
     $bookurl = $gdir == 1 ?
-        "{$cfg_cmspath}/book/" . DedeID2Dir($bid) : "{$cfg_cmspath}/book/" . DedeID2Dir($bid) . '/' . GetPinyin($title) . '-' . $bid . '.html';
+        "{$cfg_cmspath}/book/".DedeID2Dir($bid) : "{$cfg_cmspath}/book/".DedeID2Dir($bid).'/'.GetPinyin($title).'-'.$bid.'.html';
     return $bookurl;
 }
 
@@ -605,14 +605,14 @@ function GetFreeListUrl($lid, $namerule, $listdir, $defaultpage, $nodefault)
         $okfile = str_replace('{listid}', $lid, $okfile);
         $okfile = str_replace('{listdir}', $listdir, $okfile);
     } else {
-        $okfile = $GLOBALS['cfg_phpurl'] . "/freelist.php?lid=$lid";
+        $okfile = $GLOBALS['cfg_phpurl']."/freelist.php?lid=$lid";
         return $okfile;
     }
     $okfile = str_replace("\\", "/", $okfile);
     $okfile = str_replace("//", "/", $okfile);
-    $trueFile = $GLOBALS['cfg_basedir'] . $okfile;
+    $trueFile = $GLOBALS['cfg_basedir'].$okfile;
     if (!@file_exists($trueFile)) {
-        $okfile = $GLOBALS['cfg_phpurl'] . "/freelist.php?lid=$lid";
+        $okfile = $GLOBALS['cfg_phpurl']."/freelist.php?lid=$lid";
     }
     return $okfile;
 }
@@ -652,7 +652,7 @@ function GetHotKeywords(&$dsql, $num = 8, $nday = 365, $klen = 16, $orderby = 'c
     $dsql->Execute('hw');
     $hotword = "";
     while ($row = $dsql->GetArray('hw')) {
-        $hotword .= "　<a href='" . $cfg_phpurl . "/search.php?keyword=" . urlencode($row['keyword']) . "&searchtype=titlekeyword'>" . $row['keyword'] . "</a> ";
+        $hotword .= "　<a href='".$cfg_phpurl."/search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'>".$row['keyword']."</a> ";
     }
     return $hotword;
 }
@@ -665,7 +665,7 @@ function GetHotKeywords(&$dsql, $num = 8, $nday = 365, $klen = 16, $orderby = 'c
  */
 function Gmapurl($gurl)
 {
-    return preg_match("/http[s]?:\/\//i", $gurl) ? $gurl : $GLOBALS['cfg_basehost'] . $gurl;
+    return preg_match("/http[s]?:\/\//i", $gurl) ? $gurl : $GLOBALS['cfg_basehost'].$gurl;
 }
 
 /**
@@ -697,7 +697,7 @@ function Quote_replace($quote)
 function GetCacheBlock($cacheid)
 {
     global $cfg_puccache_time;
-    $cachefile = DEDEDATA . '/cache/' . $cacheid . '.inc';
+    $cachefile = DEDEDATA.'/cache/'.$cacheid.'.inc';
     if (
         !file_exists($cachefile) || filesize($cachefile) == 0 ||
         $cfg_puccache_time == 0 || time() - filemtime($cachefile) > $cfg_puccache_time
@@ -719,7 +719,7 @@ function GetCacheBlock($cacheid)
  */
 function WriteCacheBlock($cacheid, $str)
 {
-    $cachefile = DEDEDATA . '/cache/' . $cacheid . '.inc';
+    $cachefile = DEDEDATA.'/cache/'.$cacheid.'.inc';
     $fp = fopen($cachefile, 'w');
     $str = fwrite($fp, $str);
     fclose($fp);

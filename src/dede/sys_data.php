@@ -9,12 +9,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
 
 if ($cfg_dbtype == 'sqlite') {
-    showMsg('备份系统根目录下/data/' . $cfg_dbname . '.db文件即可', 'javascript:;');
+    showMsg('备份系统根目录下/data/'.$cfg_dbname.'.db文件即可', 'javascript:;');
     exit();
 }
 
@@ -24,7 +24,7 @@ if ($dopost == "viewinfo") //查看表结构
     if (empty($tablename)) {
         echo "没有指定表名！";
     } else {
-        $dsql->SetQuery("SHOW CREATE TABLE " . $dsql->dbName . "." . $tablename);
+        $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$tablename);
         $dsql->Execute('me');
         $row2 = $dsql->GetArray('me', MYSQL_BOTH);
         $ctinfo = $row2[1];
@@ -42,7 +42,7 @@ if ($dopost == "viewinfo") //查看表结构
         if ($rs) {
             echo "执行优化表： $tablename  OK！";
         } else {
-            echo "执行优化表： $tablename  失败，原因是：" . $dsql->GetError();
+            echo "执行优化表： $tablename  失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';
@@ -57,7 +57,7 @@ if ($dopost == "viewinfo") //查看表结构
         if ($rs) {
             echo "修复表： $tablename  OK！";
         } else {
-            echo "修复表： $tablename  失败，原因是：" . $dsql->GetError();
+            echo "修复表： $tablename  失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';

@@ -11,7 +11,7 @@
 
 function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname = '')
 {
-    require_once(DEDEINC . '/taglib/arclist.lib.php');
+    require_once(DEDEINC.'/taglib/arclist.lib.php');
     if ($noteinfo == '') return '';
     $noteid = $arcTag->GetAtt('noteid');
     $rvalue = '';

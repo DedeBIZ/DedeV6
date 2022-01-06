@@ -117,13 +117,13 @@ function helper($helpers)
     if (isset($_helpers[$helpers])) {
         return;
     }
-    if (file_exists(DEDEINC . '/helpers/' . $helpers . '.helper.php')) {
-        include_once(DEDEINC . '/helpers/' . $helpers . '.helper.php');
+    if (file_exists(DEDEINC.'/helpers/'.$helpers.'.helper.php')) {
+        include_once(DEDEINC.'/helpers/'.$helpers.'.helper.php');
         $_helpers[$helpers] = TRUE;
     }
     //无法载入小助手
     if (!isset($_helpers[$helpers])) {
-        exit('Unable to load the requested file: helpers/' . $helpers . '.helper.php');
+        exit('Unable to load the requested file: helpers/'.$helpers.'.helper.php');
     }
 }
 function dede_htmlspecialchars($str)
@@ -165,7 +165,7 @@ if (!function_exists('file_put_contents')) {
  */
 function UpdateStat()
 {
-    include_once(DEDEINC . "/inc/inc_stat.php");
+    include_once(DEDEINC."/inc/inc_stat.php");
     return SpUpdateStat();
 }
 $arrs1 = array();
@@ -193,7 +193,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         $gourl = "javascript:history.go(-1);";
     }
     if ($gourl == '' || $onlymsg == 1) {
-        $msg = "<script>alert(\"" . str_replace("\"", "“", $msg) . "\");</script>";
+        $msg = "<script>alert(\"".str_replace("\"", "“", $msg)."\");</script>";
     } else {
         //当网址为:close::objname 时, 关闭父框架的id=objname元素
         if (preg_match('/close::/', $gourl)) {
@@ -261,6 +261,6 @@ function IndexActive($idx)
 }
 // 自定义函数接口
 // 这里主要兼容早期的用户扩展,v5.7之后我们建议使用小助手helper进行扩展
-if (file_exists(DEDEINC . '/extend.func.php')) {
-    require_once(DEDEINC . '/extend.func.php');
+if (file_exists(DEDEINC.'/extend.func.php')) {
+    require_once(DEDEINC.'/extend.func.php');
 }

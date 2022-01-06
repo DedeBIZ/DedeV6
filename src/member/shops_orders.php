@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-include_once DEDEINC . '/datalistcp.class.php';
+require_once(dirname(__FILE__)."/config.php");
+include_once DEDEINC.'/datalistcp.class.php';
 $menutype = 'mydede';
 $menutype_son = 'op';
 if (!isset($dopost)) $dopost = '';
@@ -28,21 +28,21 @@ function GetSta($sta, $oid)
     global $dsql;
     $row = $dsql->GetOne("SELECT p.name FROM `#@__shops_orders` AS s LEFT JOIN `#@__payment` AS p ON s.paytype=p.id WHERE s.oid='$oid'");
     if ($sta == 0) {
-        return  '未付款(' . $row['name'] . ') < <a href="../plus/carbuyaction.php?dopost=memclickout&oid=' . $oid . '" target="_blank">去付款</a>';
+        return  '未付款('.$row['name'].') < <a href="../plus/carbuyaction.php?dopost=memclickout&oid='.$oid.'" target="_blank">去付款</a>';
     } else if ($sta == 1) {
         return '已付款,等发货';
     } else if ($sta == 2) {
-        return '<a href="shops_products.php?do=ok&oid=' . $oid . '">确认</a>';
+        return '<a href="shops_products.php?do=ok&oid='.$oid.'">确认</a>';
     } else {
         return '已完成';
     }
 }
 if ($dopost == '') {
-    $sql = "SELECT * FROM `#@__shops_orders` WHERE userid='" . $cfg_ml->M_ID . "' ORDER BY stime DESC";
+    $sql = "SELECT * FROM `#@__shops_orders` WHERE userid='".$cfg_ml->M_ID."' ORDER BY stime DESC";
     $dl = new DataListCP();
     $dl->pageSize = 20;
     //这两句的顺序不能更换
-    $dl->SetTemplate(dirname(__FILE__) . "/templets/shops_orders.htm");      //载入模板
+    $dl->SetTemplate(dirname(__FILE__)."/templets/shops_orders.htm");      //载入模板
     $dl->SetSource($sql);            //设定查询SQL
     $dl->Display();                  //显示
 } else if ($dopost == 'del') {

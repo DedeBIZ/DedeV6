@@ -111,10 +111,10 @@ function CheckCatalog($cid, $msg)
  */
 function AddMyAddon($fid, $filename)
 {
-    $cacheFile = DEDEDATA . '/cache/addon-' . session_id() . '.inc';
+    $cacheFile = DEDEDATA.'/cache/addon-'.session_id().'.inc';
     if (!file_exists($cacheFile)) {
         $fp = fopen($cacheFile, 'w');
-        fwrite($fp, '<' . '?php' . "\r\n");
+        fwrite($fp, '<'.'?php'."\r\n");
         fwrite($fp, "\$myaddons = array();\r\n");
         fwrite($fp, "\$maNum = 0;\r\n");
         fclose($fp);
@@ -139,7 +139,7 @@ function AddMyAddon($fid, $filename)
 function ClearMyAddon($aid = 0, $title = '')
 {
     global $dsql;
-    $cacheFile = DEDEDATA . '/cache/addon-' . session_id() . '.inc';
+    $cacheFile = DEDEDATA.'/cache/addon-'.session_id().'.inc';
     $_SESSION['bigfile_info'] = array();
     $_SESSION['file_info'] = array();
     if (!file_exists($cacheFile)) {
@@ -225,7 +225,7 @@ class userLogin
         $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
         $this->userPwd = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userpwd);
         $pwd = substr(md5($this->userPwd), 5, 20);
-        $dsql->SetQuery("SELECT admin.*,atype.purviews FROM `#@__admin` admin LEFT JOIN `#@__admintype` atype ON atype.rank=admin.usertype WHERE admin.userid LIKE '" . $this->userName . "' LIMIT 0,1");
+        $dsql->SetQuery("SELECT admin.*,atype.purviews FROM `#@__admin` admin LEFT JOIN `#@__admintype` atype ON atype.rank=admin.usertype WHERE admin.userid LIKE '".$this->userName."' LIMIT 0,1");
         $dsql->Execute();
         $row = $dsql->GetObject();
         if (!isset($row->pwd)) {
@@ -239,9 +239,9 @@ class userLogin
             $this->userChannel = $row->typeid;
             $this->userName = $row->uname;
             $this->userPurview = $row->purviews;
-            $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='" . time() . "' WHERE id='" . $row->id . "'";
+            $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='".time()."' WHERE id='".$row->id."'";
             $dsql->ExecuteNoneQuery($inquery);
-            $sql = "UPDATE `#@__member` SET logintime=" . time() . ", loginip='$loginip' WHERE mid=" . $row->id;
+            $sql = "UPDATE `#@__member` SET logintime=".time().", loginip='$loginip' WHERE mid=".$row->id;
             $dsql->ExecuteNoneQuery($sql);
             return 1;
         }
@@ -297,7 +297,7 @@ class userLogin
     function ReWriteAdminChannel()
     {
         //$this->userChannel
-        $cacheFile = DEDEDATA . '/cache/admincat_' . $this->userID . '.inc';
+        $cacheFile = DEDEDATA.'/cache/admincat_'.$this->userID.'.inc';
         //管理员管理的频道列表
         $typeid = trim($this->userChannel);
         if (empty($typeid) || $this->getUserType() >= 10) {
@@ -306,20 +306,20 @@ class userLogin
             $firstConfig = "\$cfg_admin_channel = 'array';\r\n";
         }
         $fp = fopen($cacheFile, 'w');
-        fwrite($fp, '<' . '?php' . "\r\n");
+        fwrite($fp, '<'.'?php'."\r\n");
         fwrite($fp, $firstConfig);
         if (!empty($typeid)) {
             $typeids = explode(',', $typeid);
             $typeid = '';
             foreach ($typeids as $tid) {
-                $typeid .= ($typeid == '' ? GetSonIdsUL($tid) : ',' . GetSonIdsUL($tid));
+                $typeid .= ($typeid == '' ? GetSonIdsUL($tid) : ','.GetSonIdsUL($tid));
             }
             $typeids = explode(',', $typeid);
             $typeidsnew = array_unique($typeids);
             $typeid = join(',', $typeidsnew);
             fwrite($fp, "\$admin_catalogs = array($typeid);\r\n");
         }
-        fwrite($fp, '?' . '>');
+        fwrite($fp, '?'.'>');
         fclose($fp);
     }
 
@@ -441,7 +441,7 @@ function GetSonIdsUL($id, $channel = 0, $addthis = TRUE)
     global $cfg_Cs;
     $GLOBALS['idArray'] = array();
     if (!is_array($cfg_Cs)) {
-        require_once(DEDEDATA . "/cache/inc_catalog_base.inc");
+        require_once(DEDEDATA."/cache/inc_catalog_base.inc");
     }
     GetSonIdsLogicUL($id, $cfg_Cs, $channel, $addthis);
     $rquery = join(',', $GLOBALS['idArray']);

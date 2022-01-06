@@ -10,8 +10,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-require_once(DEDEINC . "/channelunit.class.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+require_once(DEDEINC."/channelunit.class.php");
 
 if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
@@ -63,21 +63,21 @@ foreach ($dtp->CTags as $ctag) {
 }
 unset($dtp);
 if ($cfg_multi_site == 'Y') {
-    if (!preg_match("/^http:/i", $preSrc) && !empty($preSrc)) $preSrc = $cfg_basehost . $preSrc;
-    if (!preg_match("/^http:/i", $nextSrc) && !empty($nextSrc)) $nextSrc = $cfg_basehost . $nextSrc;
+    if (!preg_match("/^http:/i", $preSrc) && !empty($preSrc)) $preSrc = $cfg_basehost.$preSrc;
+    if (!preg_match("/^http:/i", $nextSrc) && !empty($nextSrc)) $nextSrc = $cfg_basehost.$nextSrc;
 }
 if ($preSrc != '') {
-    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=" . urlencode($preSrc) . "&npos=" . ($npos - 1) . "'>&lt;&lt;上一幅图片</a> ";
+    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($preSrc)."&npos=".($npos - 1)."'>&lt;&lt;上一幅图片</a> ";
 } else {
     $pageGuide .= "这是开始";
 }
 $nextlink = 'javascript:;';
 if ($nextSrc != '') {
-    $nextlink = "showphoto.php?aid={$aid}&src=" . urlencode($nextSrc) . "&npos=" . ($npos + 1);
+    $nextlink = "showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1);
     if ($pageGuide != "") $pageGuide .= " | ";
-    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=" . urlencode($nextSrc) . "&npos=" . ($npos + 1) . "'>下一幅图片&gt;&gt;</a>";
+    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1)."'>下一幅图片&gt;&gt;</a>";
 } else {
     $pageGuide .= " | 没有了";
 }
-require_once(DEDETEMPLATE . '/plus/showphoto.htm');
+require_once(DEDETEMPLATE.'/plus/showphoto.htm');
 exit();

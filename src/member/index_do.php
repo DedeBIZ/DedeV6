@@ -7,7 +7,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
 
@@ -23,10 +23,10 @@ if ($fmdo == 'sendMail') {
         ShowMsg('你的帐号不在邮件验证状态，本操作无效！', '-1');
         exit();
     }
-    $userhash = md5($cfg_cookie_encode . '--' . $cfg_ml->fields['mid'] . '--' . $cfg_ml->fields['email']);
-    $url = $cfg_basehost . (empty($cfg_cmspath) ? '/' : $cfg_cmspath) . "/member/index_do.php?fmdo=checkMail&mid={$cfg_ml->fields['mid']}&userhash={$userhash}&do=1";
+    $userhash = md5($cfg_cookie_encode.'--'.$cfg_ml->fields['mid'].'--'.$cfg_ml->fields['email']);
+    $url = $cfg_basehost.(empty($cfg_cmspath) ? '/' : $cfg_cmspath)."/member/index_do.php?fmdo=checkMail&mid={$cfg_ml->fields['mid']}&userhash={$userhash}&do=1";
     $url = preg_replace("#http:\/\/#i", '', $url);
-    $url = 'http://' . preg_replace("#\/\/#i", '/', $url);
+    $url = 'http://'.preg_replace("#\/\/#i", '/', $url);
     $mailtitle = "{$cfg_webname}--会员邮件验证通知";
     $mailbody = '';
     $mailbody .= "尊敬的用户[{$cfg_ml->fields['uname']}]，您好：\r\n";
@@ -35,7 +35,7 @@ if ($fmdo == 'sendMail') {
     $mailbody .= "{$url}\r\n\r\n";
     $mailbody .= "Power by https://www.dedebiz.com DedeBIZ内容管理系统\r\n";
 
-    $headers = "From: " . $cfg_adminemail . "\r\nReply-To: " . $cfg_adminemail;
+    $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
 
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
@@ -46,7 +46,7 @@ if ($fmdo == 'sendMail') {
     } else {
         if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server)) {
             $mailtype = 'TXT';
-            require_once(DEDEINC . '/mail.class.php');
+            require_once(DEDEINC.'/mail.class.php');
             $smtp = new smtp($cfg_smtp_server, $cfg_smtp_port, true, $cfg_smtp_usermail, $cfg_smtp_password);
             $smtp->debug = false;
             $smtp->sendmail($cfg_ml->fields['email'], $cfg_webname, $cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
@@ -64,7 +64,7 @@ if ($fmdo == 'sendMail') {
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}' ");
-    $needUserhash = md5($cfg_cookie_encode . '--' . $mid . '--' . $row['email']);
+    $needUserhash = md5($cfg_cookie_encode.'--'.$mid.'--'.$row['email']);
     if ($needUserhash != $userhash) {
         ShowMsg('你的效验串不合法！', '-1');
         exit();
@@ -133,7 +133,7 @@ else if ($fmdo == 'user') {
     //引入注册页面
     else if ($dopost == "regnew") {
         $step = empty($step) ? 1 : intval(preg_replace("/[^\d]/", '', $step));
-        require_once(dirname(__FILE__) . "/reg_new.php");
+        require_once(dirname(__FILE__)."/reg_new.php");
         exit();
     }
     /***************************
@@ -165,7 +165,7 @@ else if ($fmdo == 'user') {
            VALUES ('ScoresToMoney', '积分换金币操作', 'stc' , '0' , '$mtime' , '0' , '{$cfg_ml->M_ID}' , '0' , '用 {$needscores} 积分兑了换金币：{$money} 个'); ";
         $dsql->ExecuteNoneQuery($inquery);
         //修改积分与金币值
-        $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=$litmitscores, money= money + $money  WHERE mid='" . $cfg_ml->M_ID . "' ");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=$litmitscores, money= money + $money  WHERE mid='".$cfg_ml->M_ID."' ");
 
         // 清除会员缓存
         $cfg_ml->DelCache($cfg_ml->M_ID);

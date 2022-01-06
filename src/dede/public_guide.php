@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/oxwindow.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/oxwindow.class.php");
 if (empty($action)) $action = '';
 
 /*--------------------
@@ -60,7 +60,7 @@ if (is_array($row) && $action != 'edit') {
     }
     $channelid = $row['id'];
     $cid = 0;
-    require_once(DEDEADMIN . '/' . $addcon);
+    require_once(DEDEADMIN.'/'.$addcon);
     exit();
 }
 

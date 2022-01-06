@@ -10,8 +10,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-require_once(DEDEINC . '/memberlogin.class.php');
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+require_once(DEDEINC.'/memberlogin.class.php');
 
 $dopost = isset($dopost) ? $dopost : "";
 $aid = isset($aid) ? intval($aid) : 0;

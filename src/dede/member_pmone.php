@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Pm');
 //检查用户名的合法性
 function CheckUserID($uid, $msgtitle = '用户名', $ckhas = true)
@@ -18,11 +18,11 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = true)
     if ($cfg_mb_notallow != '') {
         $nas = explode(',', $cfg_mb_notallow);
         if (in_array($uid, $nas)) {
-            return $msgtitle . '为系统禁止的标识！';
+            return $msgtitle.'为系统禁止的标识！';
         }
     }
     if ($cfg_md_idurl == 'Y' && preg_match("#[^a-z0-9]#i", $uid)) {
-        return $msgtitle . '必须由英文字母或数字组成！';
+        return $msgtitle.'必须由英文字母或数字组成！';
     }
 
     if ($cfg_soft_lang == 'utf-8') $ck_uid = utf82gb($uid);
@@ -33,17 +33,17 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = true)
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
                 $i++;
             } else {
-                return $msgtitle . '可能含有乱码，建议你改用英文字母和数字组合！';
+                return $msgtitle.'可能含有乱码，建议你改用英文字母和数字组合！';
             }
         } else {
             if (preg_match("#[^0-9a-z@\.-]i#", $ck_uid[$i])) {
-                return $msgtitle . '不能含有 [@]、[.]、[-]以外的特殊符号！';
+                return $msgtitle.'不能含有 [@]、[.]、[-]以外的特殊符号！';
             }
         }
     }
     if ($ckhas) {
         $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE userid LIKE '$uid' ");
-        if (is_array($row)) return $msgtitle . "已经存在！";
+        if (is_array($row)) return $msgtitle."已经存在！";
     }
     return 'ok';
 }
@@ -78,4 +78,4 @@ if ($action == "post") {
     ShowMsg('短信已成功发送', 'member_pmone.php');
     exit();
 }
-require_once(DEDEADMIN . "/templets/member_pmone.htm");
+require_once(DEDEADMIN."/templets/member_pmone.htm");

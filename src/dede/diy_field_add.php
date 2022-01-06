@@ -9,15 +9,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 //增加权限检查
-require_once(DEDEADMIN . '/inc/inc_admin_channel.php');
+require_once(DEDEADMIN.'/inc/inc_admin_channel.php');
 if (empty($action)) $action = '';
 
 $mysql_version = $dsql->GetVersion();
 $mysql_versions = explode(".", trim($mysql_version));
-$mysql_version = $mysql_versions[0] . "." . $mysql_versions[1];
+$mysql_version = $mysql_versions[0].".".$mysql_versions[1];
 /*----------------------
 function Save()
 ---------------------*/
@@ -26,7 +26,7 @@ if ($action == 'save') {
     $fieldname = strtolower($fieldname);
     $row = $dsql->GetOne("SELECT `table`,`info` FROM #@__diyforms WHERE diyid='$diyid'");
     $fieldset = $row['info'];
-    require_once(DEDEINC . "/dedetag.class.php");
+    require_once(DEDEINC."/dedetag.class.php");
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($fieldset);
@@ -46,7 +46,7 @@ if ($action == 'save') {
 
     if (!$rs) {
         $gerr = $dsql->GetError();
-        ShowMsg("增加字段失败，错误提示为：" . $gerr, "javascript:;");
+        ShowMsg("增加字段失败，错误提示为：".$gerr, "javascript:;");
         exit();
     }
     $ok = FALSE;
@@ -61,17 +61,17 @@ if ($action == 'save') {
                 break;
             }
         }
-        $oksetting = $ok ? $dtp->GetResultNP() : $fieldset . "\n" . stripslashes($fieldstring);
+        $oksetting = $ok ? $dtp->GetResultNP() : $fieldset."\n".stripslashes($fieldstring);
     } else {
         //原来的配置为空
-        $oksetting = $fieldset . "\n" . stripslashes($fieldstring);
+        $oksetting = $fieldset."\n".stripslashes($fieldstring);
     }
     $addlist = GetAddFieldList($dtp, $oksetting);
     $oksetting = addslashes($oksetting);
     $rs = $dsql->ExecuteNoneQuery("Update #@__diyforms set `info`='$oksetting' where diyid='$diyid' ");
     if (!$rs) {
         $grr = $dsql->GetError();
-        ShowMsg("保存节点配置出错！" . $grr, "javascript:;");
+        ShowMsg("保存节点配置出错！".$grr, "javascript:;");
         exit();
     }
     ShowMsg("成功增加一个字段！", "diy_edit.php?diyid=$diyid");
@@ -91,7 +91,7 @@ $tabsql = "CREATE TABLE IF NOT EXISTS  `$trueTable`(
 if ($mysql_version < 4.1) {
     $tabsql .= " PRIMARY KEY  (`id`)\r\n) TYPE=MyISAM; ";
 } else {
-    $tabsql .= " PRIMARY KEY  (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=" . $cfg_db_language . "; ";
+    $tabsql .= " PRIMARY KEY  (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
 }
 $dsql->ExecuteNoneQuery($tabsql);
 
@@ -104,6 +104,6 @@ while ($nrow = $dsql->GetArray('a', MYSQL_ASSOC)) {
 }
 $f = '';
 foreach ($fields as $k => $v) {
-    $f .= ($f == '' ? $k : ' ' . $k);
+    $f .= ($f == '' ? $k : ' '.$k);
 }
-require_once(DEDEADMIN . "/templets/diy_field_add.htm");
+require_once(DEDEADMIN."/templets/diy_field_add.htm");

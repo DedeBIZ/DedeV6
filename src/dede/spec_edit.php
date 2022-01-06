@@ -9,14 +9,14 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 if (empty($dopost)) $dopost = '';
 if ($dopost != 'save') {
-    require_once(DEDEADMIN . "/inc/inc_catalog_options.php");
-    require_once(DEDEINC . "/dedetag.class.php");
+    require_once(DEDEADMIN."/inc/inc_catalog_options.php");
+    require_once(DEDEINC."/dedetag.class.php");
     ClearMyAddon();
     $aid = intval($aid);
     $channelid = -1;
@@ -44,8 +44,8 @@ if ($dopost != 'save') {
 /*--------------------------------
 function __save(){  }
 -------------------------------*/ else if ($dopost == 'save') {
-    require_once(DEDEINC . '/image.func.php');
-    require_once(DEDEINC . '/oxwindow.class.php');
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
 
@@ -88,15 +88,15 @@ function __save(){  }
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-        $fullUrl = $fullUrl . ".png";
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
 
-        file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
 
         // 加水印
-        WaterImg($cfg_basedir . $fullUrl, 'up');
+        WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
 
@@ -122,14 +122,14 @@ function __save(){  }
                     }
                     ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $arcID);
                 }
-                $inadd_f .= ",`{$vs[0]}` = '" . ${$vs[0]} . "'";
+                $inadd_f .= ",`{$vs[0]}` = '".${$vs[0]}."'";
             }
         }
     }
 
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match('#p#', $flag)) {
-        $flag = ($flag == '' ? 'p' : $flag . ',p');
+        $flag = ($flag == '' ? 'p' : $flag.',p');
     }
     $inQuery = "UPDATE `#@__archives` SET
             typeid='$typeid',
@@ -159,37 +159,37 @@ function __save(){  }
     $arcids = array();
     $notelist = '';
     for ($i = 1; $i <= $cfg_specnote; $i++) {
-        if (!empty(${'notename' . $i})) {
-            $notename = str_replace("'", "", trim(${'notename' . $i}));
-            $arcid = trim(${'arcid' . $i});
-            $col = trim(${'col' . $i});
-            $imgwidth = trim(${'imgwidth' . $i});
-            $imgheight = trim(${'imgheight' . $i});
-            $titlelen = trim(${'titlelen' . $i});
-            $infolen = trim(${'infolen' . $i});
-            $listtmp = trim(${'listtmp' . $i});
-            if (isset(${'noteid' . $i})) {
-                $noteid = trim(${'noteid' . $i});
+        if (!empty(${'notename'.$i})) {
+            $notename = str_replace("'", "", trim(${'notename'.$i}));
+            $arcid = trim(${'arcid'.$i});
+            $col = trim(${'col'.$i});
+            $imgwidth = trim(${'imgwidth'.$i});
+            $imgheight = trim(${'imgheight'.$i});
+            $titlelen = trim(${'titlelen'.$i});
+            $infolen = trim(${'infolen'.$i});
+            $listtmp = trim(${'listtmp'.$i});
+            if (isset(${'noteid'.$i})) {
+                $noteid = trim(${'noteid'.$i});
             } else {
                 $noteid = $i;
             }
-            if (isset(${'isauto' . $i})) {
-                $isauto = trim(${'isauto' . $i});
+            if (isset(${'isauto'.$i})) {
+                $isauto = trim(${'isauto'.$i});
             } else {
                 $isauto = 0;
             }
-            if (isset(${'keywords' . $i})) {
-                $keywords = str_replace("'", "", trim(${'keywords' . $i}));
+            if (isset(${'keywords'.$i})) {
+                $keywords = str_replace("'", "", trim(${'keywords'.$i}));
             } else {
                 $keywords = "";
             }
-            if (!empty(${'typeid' . $i})) {
-                $ttypeid = trim(${'typeid' . $i});
+            if (!empty(${'typeid'.$i})) {
+                $ttypeid = trim(${'typeid'.$i});
             } else {
                 $ttypeid = 0;
             }
-            if (!empty(${'rownum' . $i})) {
-                $rownum = trim(${'rownum' . $i});
+            if (!empty(${'rownum'.$i})) {
+                $rownum = trim(${'rownum'.$i});
             } else {
                 $rownum = 0;
             }
@@ -204,7 +204,7 @@ function __save(){  }
                         if ($okids == "") {
                             $okids .= $mid;
                         } else {
-                            $okids .= "," . $mid;
+                            $okids .= ",".$mid;
                         }
                         $arcids[$mid] = 1;
                     }
@@ -230,7 +230,7 @@ function __save(){  }
     UpIndexKey($id, $arcrank, $typeid, $sortrank, $tags);
     $artUrl = MakeArt($id, TRUE, TRUE, $isremote);
     if ($artUrl == '') {
-        $artUrl = $cfg_phpurl . "/view.php?aid=$id";
+        $artUrl = $cfg_phpurl."/view.php?aid=$id";
     }
     ClearMyAddon($id, $title);
 
@@ -250,7 +250,7 @@ function __save(){  }
     $msg = "　　请选择你的后续操作：
     <a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新专题</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $id . "&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
+    <a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a>
     &nbsp;&nbsp;

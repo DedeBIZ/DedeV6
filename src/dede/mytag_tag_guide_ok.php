@@ -9,26 +9,26 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('temp_Other');
 
 //根据条件生成标记
 $attlist = "";
-$attlist .= " row='" . $row . "'";
-$attlist .= " titlelen='" . $titlelen . "'";
-if ($orderby != 'senddate') $attlist .= " orderby='" . $orderby . "'";
-if ($order != 'desc') $attlist .= " order='" . $order . "'";
-if ($typeid > 0) $attlist .= " typeid='" . $typeid . "'";
-if (isset($arcid)) $attlist .= " idlist='" . $arcid . "'";
-if ($channel > 0) $attlist .= " channelid='" . $channel . "'";
-if ($att > 0) $attlist .= " att='" . $att . "'";
-if ($col > 1) $attlist .= " col='" . $col . "'";
-if ($subday > 0) $attlist .= " subday='" . $subday . "'";
+$attlist .= " row='".$row."'";
+$attlist .= " titlelen='".$titlelen."'";
+if ($orderby != 'senddate') $attlist .= " orderby='".$orderby."'";
+if ($order != 'desc') $attlist .= " order='".$order."'";
+if ($typeid > 0) $attlist .= " typeid='".$typeid."'";
+if (isset($arcid)) $attlist .= " idlist='".$arcid."'";
+if ($channel > 0) $attlist .= " channelid='".$channel."'";
+if ($att > 0) $attlist .= " att='".$att."'";
+if ($col > 1) $attlist .= " col='".$col."'";
+if ($subday > 0) $attlist .= " subday='".$subday."'";
 
 if (!empty($types)) {
     $attlist .= " type='";
     foreach ($types as $v) {
-        $attlist .= $v . '.';
+        $attlist .= $v.'.';
     }
     $attlist .= "'";
 }

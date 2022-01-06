@@ -10,8 +10,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-require_once(DEDEINC . "/datalistcp.class.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+require_once(DEDEINC."/datalistcp.class.php");
 $timestamp = time();
 @session_start();
 
@@ -48,7 +48,7 @@ if (empty($sql)) {
     //主表字段处理
     $q = stripslashes($q);
     $q = preg_replace("#[\|\"\r\n\t%\*\?\(\)\$;,'%<>]#", " ", trim($q));
-    if (($cfg_notallowstr != '' && preg_match("#" . $cfg_notallowstr . "#i", $q)) || ($cfg_replacestr != '' && preg_match("#" . $cfg_replacestr . "#i", $q))) {
+    if (($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $q)) || ($cfg_replacestr != '' && preg_match("#".$cfg_replacestr."#i", $q))) {
         echo "你的信息中存在非法内容，被系统禁止！<a href='javascript:history.go(-1)'>[返回]</a>";
         exit();
     }
@@ -109,14 +109,14 @@ if (empty($sql)) {
         $var = $addonfieldarr[0];
         $type = $addonfieldarr[1];
         if (in_array($type, $intarr)) {
-            if (isset(${'start' . $var}) && trim(${'start' . $var}) != '') {
-                ${'start' . $var} = trim(${'start' . $var});
-                ${'start' . $var} = intval(${'start' . $var});
+            if (isset(${'start'.$var}) && trim(${'start'.$var}) != '') {
+                ${'start'.$var} = trim(${'start'.$var});
+                ${'start'.$var} = intval(${'start'.$var});
                 $where .= " AND addon.$var>${'start' .$var} ";
             }
-            if (isset(${'end' . $var}) && trim(${'end' . $var}) != '') {
-                ${'end' . $var} = trim(${'end' . $var});
-                ${'end' . $var} = intval(${'end' . $var});
+            if (isset(${'end'.$var}) && trim(${'end'.$var}) != '') {
+                ${'end'.$var} = trim(${'end'.$var});
+                ${'end'.$var} = intval(${'end'.$var});
                 $where .= " AND addon.$var<${'end' .$var} ";
             }
         } elseif (in_array($type, $textarr)) {
@@ -153,17 +153,17 @@ if (empty($sql)) {
                 }
             }
         } elseif ($type == 'datetime') {
-            ${'start' . $var} = trim(${'start' . $var});
-            if (${'start' . $var} != '') {
-                ${'start' . $var} = strtotime(${'start' . $var});
+            ${'start'.$var} = trim(${'start'.$var});
+            if (${'start'.$var} != '') {
+                ${'start'.$var} = strtotime(${'start'.$var});
             } else {
-                ${'start' . $var} = 0;
+                ${'start'.$var} = 0;
             }
-            ${'end' . $var} = trim(${'end' . $var});
-            if (${'end' . $var} != '') {
-                ${'end' . $var} = strtotime(${'end' . $var});
+            ${'end'.$var} = trim(${'end'.$var});
+            if (${'end'.$var} != '') {
+                ${'end'.$var} = strtotime(${'end'.$var});
             } else {
-                ${'end' . $var} = 0;
+                ${'end'.$var} = 0;
             }
         }
     }
@@ -196,14 +196,14 @@ $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetParameter("hash", $sqlhash);
 $dlist->SetParameter("mid", $mid);
-if (file_exists(DEDEROOT . "/templets/default/$template")) {
-    $templatefile = DEDEROOT . "/templets/default/$template";
+if (file_exists(DEDEROOT."/templets/default/$template")) {
+    $templatefile = DEDEROOT."/templets/default/$template";
 } else {
-    $templatefile = DEDEROOT . "/templets/default/advancedsearch.htm";
+    $templatefile = DEDEROOT."/templets/default/advancedsearch.htm";
 }
 $dlist->SetTemplate($templatefile);
 $dlist->SetSource($query);
-require_once(DEDEINC . "/channelunit.class.php");
+require_once(DEDEINC."/channelunit.class.php");
 
 //获得一个指定档案的链接
 function GetArcUrl($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $artdir = '', $money = 0)

@@ -33,13 +33,13 @@ function lib_likesgpage(&$ctag, &$refObj)
     $ctp->LoadSource($innertext);
     while ($row = $dsql->GetArray()) {
         if ($aid != $row['aid']) {
-            $row['url'] = $GLOBALS['cfg_cmsurl'] . '/' . $row['filename'];
+            $row['url'] = $GLOBALS['cfg_cmsurl'].'/'.$row['filename'];
             foreach ($ctp->CTags as $tagid => $ctag) {
                 if (!empty($row[$ctag->GetName()])) $ctp->Assign($tagid, $row[$ctag->GetName()]);
             }
             $revalue .= $ctp->GetResult();
         } else {
-            $revalue .= '<dd class="cur"><span>' . $row['title'] . '</span></dd>';
+            $revalue .= '<dd class="cur"><span>'.$row['title'].'</span></dd>';
         }
     }
     return $revalue;

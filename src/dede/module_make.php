@@ -10,24 +10,24 @@
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
-require_once(dirname(__FILE__) . "/config.php");
-require_once(dirname(__FILE__) . "/../include/dedemodule.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__)."/../include/dedemodule.class.php");
 CheckPurview('sys_module');
 if (empty($action)) $action = '';
 
 if ($action == '') {
     $modules = array();
-    require_once(dirname(__FILE__) . "/templets/module_make.htm");
+    require_once(dirname(__FILE__)."/templets/module_make.htm");
     exit();
 }
 /*-------------
 //生成项目
 function Makemodule()
 --------------*/ else if ($action == 'make') {
-    require_once(DEDEINC . '/dedehttpdown.class.php');
+    require_once(DEDEINC.'/dedehttpdown.class.php');
 
     // 校验私钥,确定开发者身份
-    $devURL = DEDECDNURL . "/developers/$dev_id.json";
+    $devURL = DEDECDNURL."/developers/$dev_id.json";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($devURL);
     $devContent = $dhd->GetHtml();
@@ -80,9 +80,9 @@ function Makemodule()
 
     if (!isset($autosetup)) $autosetup = 0;
     if (!isset($autodel)) $autodel = 0;
-    $mdir = DEDEDATA . '/module';
-    $hashcode = md5($modulname . $devInfo['dev_id']);
-    $moduleFilename = $mdir . '/' . $hashcode . '.xml';
+    $mdir = DEDEDATA.'/module';
+    $hashcode = md5($modulname.$devInfo['dev_id']);
+    $moduleFilename = $mdir.'/'.$hashcode.'.xml';
     $menustring = base64_encode($menustring);
     $indexurl = str_replace('=', '**', $indexurl);
     $dm = new DedeModule($mdir);
@@ -96,23 +96,23 @@ function Makemodule()
     $readmef = $setupf = $uninstallf = '';
 
     if (empty($readmetxt)) {
-        move_uploaded_file($readme, $mdir . "/{$hashcode}-r.html") or die("你没填写说明或上传说明文件！");
-        $readmef = $dm->GetEncodeFile($mdir . "/{$hashcode}-r.html", TRUE);
+        move_uploaded_file($readme, $mdir."/{$hashcode}-r.html") or die("你没填写说明或上传说明文件！");
+        $readmef = $dm->GetEncodeFile($mdir."/{$hashcode}-r.html", TRUE);
     } else {
-        $readmetxt = "<p style='line-height:150%'>" . $readmetxt;
+        $readmetxt = "<p style='line-height:150%'>".$readmetxt;
         $readmetxt = preg_replace("#[\r\n]{1,}#", "<br />\r\n", $readmetxt);
         $readmetxt .= "</p>";
         $readmef = base64_encode(trim($readmetxt));
     }
 
     if ($autosetup == 0) {
-        move_uploaded_file($setup, $mdir . "/{$hashcode}-s.php") or die("你没上传，或系统无法把setup文件移动到 module 目录！");
-        $setupf = $dm->GetEncodeFile($mdir . "/{$hashcode}-s.php", TRUE);
+        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("你没上传，或系统无法把setup文件移动到 module 目录！");
+        $setupf = $dm->GetEncodeFile($mdir."/{$hashcode}-s.php", TRUE);
     }
 
     if ($autodel == 0) {
-        move_uploaded_file($uninstall, $mdir . "/{$hashcode}-u.php") or die("你没上传，或系统无法把uninstall文件移动到 module 目录！");
-        $uninstallf = $dm->GetEncodeFile($mdir . "/{$hashcode}-u.php", TRUE);
+        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("你没上传，或系统无法把uninstall文件移动到 module 目录！");
+        $uninstallf = $dm->GetEncodeFile($mdir."/{$hashcode}-u.php", TRUE);
     }
 
     if (trim($setupsql40) == '') $setupsql40 = '';
@@ -205,7 +205,7 @@ function editModule()
     }
 
     // 校验私钥,确定开发者身份
-    $devURL = DEDECDNURL . "/developers/$dev_id.json";
+    $devURL = DEDECDNURL."/developers/$dev_id.json";
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($devURL);
     $devContent = $dhd->GetHtml();
@@ -242,9 +242,9 @@ function editModule()
     foreach ($_POST as $k => $v) $$k = stripslashes($v);
     if (!isset($autosetup)) $autosetup = 0;
     if (!isset($autodel)) $autodel = 0;
-    $mdir = DEDEDATA . '/module';
+    $mdir = DEDEDATA.'/module';
     $hashcode = $hash;
-    $moduleFilename = $mdir . '/' . $hashcode . '.xml';
+    $moduleFilename = $mdir.'/'.$hashcode.'.xml';
     $modulname = str_replace('=', '', $modulname);
     $indexurl = str_replace('=', '**', $indexurl);
     $menustring = base64_encode($menustring);
@@ -254,16 +254,16 @@ function editModule()
 
     //编译setup文件
     if (is_uploaded_file($setup)) {
-        move_uploaded_file($setup, $mdir . "/{$hashcode}-s.php") or die("你没上传，或系统无法把setup文件移动到 module 目录！");
-        $setupf = $dm->GetEncodeFile($mdir . "/{$hashcode}-s.php", TRUE);
+        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("你没上传，或系统无法把setup文件移动到 module 目录！");
+        $setupf = $dm->GetEncodeFile($mdir."/{$hashcode}-s.php", TRUE);
     } else {
         if ($autosetup == 0) $setupf = base64_encode($dm->GetSystemFile($hashcode, 'setup'));
     }
 
     //编译uninstall文件
     if (is_uploaded_file($uninstall)) {
-        move_uploaded_file($uninstall, $mdir . "/{$hashcode}-u.php") or die("你没上传，或系统无法把uninstall文件移动到 module 目录！");
-        $uninstallf = $dm->GetEncodeFile($mdir . "/{$hashcode}-u.php", true);
+        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("你没上传，或系统无法把uninstall文件移动到 module 目录！");
+        $uninstallf = $dm->GetEncodeFile($mdir."/{$hashcode}-u.php", true);
     } else {
         if ($autodel == 0) $uninstallf = base64_encode($dm->GetSystemFile($hashcode, 'uninstall'));
     }
@@ -325,7 +325,7 @@ $filelist
         }
         //测试无误后编译安装包
         $fp = fopen($moduleFilename, 'w');
-        fwrite($fp, $modulinfo . "\r\n");
+        fwrite($fp, $modulinfo."\r\n");
         fwrite($fp, "<modulefiles>\r\n");
         foreach ($filelists as $v) {
             $v = trim($v);
@@ -337,7 +337,7 @@ $filelist
     } else {
         $fxml = $dm->GetFileXml($hashcode);
         $fp = fopen($moduleFilename, 'w');
-        fwrite($fp, $modulinfo . "\r\n");
+        fwrite($fp, $modulinfo."\r\n");
         fwrite($fp, $fxml);
         fclose($fp);
     }

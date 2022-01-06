@@ -9,10 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Edit');
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/oxwindow.class.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/oxwindow.class.php");
 
 if (empty($dopost)) $dopost = "";
 $diyid = (empty($diyid) ? 0 : intval($diyid));
@@ -45,7 +45,7 @@ function __Delete()
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("diyid", $diyid);
-        $win->AddTitle("！将删除所有与该自定义表单相关的文件和数据<br />你确实要删除 \"" . $row['name'] . "\" 这个自定义表单？");
+        $win->AddTitle("！将删除所有与该自定义表单相关的文件和数据<br />你确实要删除 \"".$row['name']."\" 这个自定义表单？");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -73,4 +73,4 @@ function __Delete()
 function edit()
 -----------------*/
 $row = $dsql->GetOne("Select * From #@__diyforms where diyid='$diyid'");
-include DEDEADMIN . "/templets/diy_edit.htm";
+include DEDEADMIN."/templets/diy_edit.htm";

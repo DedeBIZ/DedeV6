@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/datalistcp.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/datalistcp.class.php");
 CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'op';
@@ -31,10 +31,10 @@ function GetSta($sta)
 }
 
 if ($dopost == '') {
-    $sql = "SELECT * FROM `#@__member_operation` WHERE mid='" . $cfg_ml->M_ID . "' AND product<>'archive' ORDER BY aid DESC";
+    $sql = "SELECT * FROM `#@__member_operation` WHERE mid='".$cfg_ml->M_ID."' AND product<>'archive' ORDER BY aid DESC";
     $dlist = new DataListCP();
     $dlist->pageSize = 20;
-    $dlist->SetTemplate(DEDEMEMBER . "/templets/operation.htm");
+    $dlist->SetTemplate(DEDEMEMBER."/templets/operation.htm");
     $dlist->SetSource($sql);
     $dlist->Display();
 } else if ($dopost == 'del') {

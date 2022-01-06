@@ -9,14 +9,14 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_List');
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 
 $sql = "SELECT id,nid,typename,addtable,isshow,issystem FROM `#@__channeltype` ORDER BY id DESC";
 $dlist = new DataListCP();
-$dlist->SetTemplet(DEDEADMIN . "/templets/mychannel_main.htm");
+$dlist->SetTemplet(DEDEADMIN."/templets/mychannel_main.htm");
 $dlist->SetSource($sql);
 $dlist->display();
 

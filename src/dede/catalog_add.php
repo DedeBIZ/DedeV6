@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/typelink.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/typelink.class.php");
 
 if (empty($listtype)) $listtype = '';
 if (empty($dopost)) $dopost = '';
@@ -67,11 +67,11 @@ function action_savequick(){ }
             } else {
                 continue;
             }
-            $rank = ${'rank' . $k};
-            $toptypename = trim(${'toptype' . $k});
-            $sontype = trim(${'sontype' . $k});
+            $rank = ${'rank'.$k};
+            $toptypename = trim(${'toptype'.$k});
+            $sontype = trim(${'sontype'.$k});
             $toptypedir = GetPinyin(stripslashes($toptypename));
-            $toptypedir = $referpath == 'parent' ? $nextdir . '/' . $toptypedir : '/' . $toptypedir;
+            $toptypedir = $referpath == 'parent' ? $nextdir.'/'.$toptypedir : '/'.$toptypedir;
             if (empty($toptypename)) {
                 continue;
             }
@@ -89,7 +89,7 @@ function action_savequick(){ }
                     if ($v == '') {
                         continue;
                     }
-                    $typedir = $toptypedir . '/' . GetPinyin(stripslashes($v));
+                    $typedir = $toptypedir.'/'.GetPinyin(stripslashes($v));
                     $sql = str_replace('~reid~', $tid, $queryTemplate);
                     $sql = str_replace('~topid~', $tid, $sql);
                     $sql = str_replace('~rank~', $k, $sql);
@@ -109,18 +109,18 @@ function action_savequick(){ }
             } else {
                 continue;
             }
-            $rank = ${'rank' . $k};
-            $toptypename = trim(${'reltype' . $k});
+            $rank = ${'rank'.$k};
+            $toptypename = trim(${'reltype'.$k});
             $toptypedir = GetPinyin(stripslashes($toptypename));
             switch ($referpath) {
                 case 'parent':
-                    $toptypedir = $nextdir . '/' . $toptypedir;
+                    $toptypedir = $nextdir.'/'.$toptypedir;
                     break;
                 case 'typepath':
-                    $toptypedir = isset($row['typedir']) ? $row['typedir'] . '/' . $toptypedir : '/' . $toptypedir;
+                    $toptypedir = isset($row['typedir']) ? $row['typedir'].'/'.$toptypedir : '/'.$toptypedir;
                     break;
                 default:
-                    $toptypedir = '/' . $toptypedir;
+                    $toptypedir = '/'.$toptypedir;
                     break;
             }
 
@@ -161,7 +161,7 @@ function action_save(){ }
         if ($upinyin == 1 || $typedir == '') {
             $typedir = GetPinyin(stripslashes($typename));
         }
-        $typedir = $nextdir . '/' . $typedir;
+        $typedir = $nextdir.'/'.$typedir;
         $typedir = preg_replace("#\/{1,}#", "/", $typedir);
     }
 
@@ -176,7 +176,7 @@ function action_save(){ }
                 ShowMsg("你绑定的二级域名无效，请用(http://host)的形式！", "-1");
                 exit();
             }
-            if (preg_match("#" . $cfg_basehost . "#i", $siteurl)) {
+            if (preg_match("#".$cfg_basehost."#i", $siteurl)) {
                 ShowMsg("你绑定的二级域名与当前站点是同一个域，不需要绑定！", "-1");
                 exit();
             }

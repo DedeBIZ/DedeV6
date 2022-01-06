@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . '/charset.func.php');
+require_once(DEDEINC.'/charset.func.php');
 
 /**
  *  获取一个页面
@@ -24,7 +24,7 @@ function CoOnePage($gurl)
     $redatas = array('title' => '', 'body' => '', 'source' => '', 'writer' => '', 'description' => '', 'keywords' => '');
     $redatas['source'] = preg_replace("/http:\/\//i", "", $gurl);
     $redatas['source'] = preg_replace("/\/(.*)$/i", "", $redatas['source']);
-    $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '" . $redatas['source'] . "' ");
+    $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '".$redatas['source']."' ");
     $s = $e = '';
     if (is_array($row)) {
         list($s, $e) = explode('{@body}', $row['rule']);

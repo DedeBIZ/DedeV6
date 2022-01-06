@@ -9,14 +9,14 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . '/dedehttpdown.class.php');
-require_once(DEDEINC . '/image.func.php');
-require_once(DEDEINC . '/archives.func.php');
-require_once(DEDEINC . '/arc.partview.class.php');
+require_once(DEDEINC.'/dedehttpdown.class.php');
+require_once(DEDEINC.'/image.func.php');
+require_once(DEDEINC.'/archives.func.php');
+require_once(DEDEINC.'/arc.partview.class.php');
 $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '';
 $backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn btn-success btn-sm'>记忆的列表页</a> &nbsp;" : '';
 if (!isset($_NOT_ARCHIVES)) {
-    require_once(DEDEINC . '/customfields.func.php');
+    require_once(DEDEINC.'/customfields.func.php');
 }
 
 /**
@@ -32,35 +32,35 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
 {
     global $dsql, $cfg_multi_site, $cfg_basehost, $cfg_ddimg_width;
     global $cfg_basedir, $pagestyle, $cuserLogin, $cfg_addon_savetype;
-    require_once(DEDEINC . '/dedecollection.func.php');
+    require_once(DEDEINC.'/dedecollection.func.php');
     if (empty($cfg_ddimg_width))    $cfg_ddimg_width = 320;
     $rsimg = '';
     $cfg_uploaddir = $GLOBALS['cfg_image_dir'];
     $cfg_basedir = $GLOBALS['cfg_basedir'];
-    $basehost = 'http://' . $_SERVER['HTTP_HOST'];
+    $basehost = 'http://'.$_SERVER['HTTP_HOST'];
     $img_array = array();
     preg_match_all("/(src)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
     $img_array = array_unique($img_array[2]);
-    $imgUrl = $cfg_uploaddir . '/' . MyDate($cfg_addon_savetype, time());
-    $imgPath = $cfg_basedir . $imgUrl;
-    if (!is_dir($imgPath . '/')) {
+    $imgUrl = $cfg_uploaddir.'/'.MyDate($cfg_addon_savetype, time());
+    $imgPath = $cfg_basedir.$imgUrl;
+    if (!is_dir($imgPath.'/')) {
         MkdirAll($imgPath, $GLOBALS['cfg_dir_purview']);
         CloseFtp();
     }
-    $milliSecond = 'co' . dd2char(MyDate('ymdHis', time()));
+    $milliSecond = 'co'.dd2char(MyDate('ymdHis', time()));
     foreach ($img_array as $key => $value) {
         $value = trim($value);
         if (
-            preg_match("#" . $basehost . "#i", $value) || !preg_match("#^http:\/\/#i", $value)
-            || ($cfg_basehost != $basehost && preg_match("#" . $cfg_basehost . "#i", $value))
+            preg_match("#".$basehost."#i", $value) || !preg_match("#^http:\/\/#i", $value)
+            || ($cfg_basehost != $basehost && preg_match("#".$cfg_basehost."#i", $value))
         ) {
             continue;
         }
         $itype =  substr($value, -4, 4);
         if (!preg_match("#\.(gif|jpg|png)#", $itype)) $itype = ".jpg";
 
-        $rndFileName = $imgPath . '/' . $milliSecond . '-' . $key . $itype;
-        $iurl = $imgUrl . '/' . $milliSecond . '-' . $key . $itype;
+        $rndFileName = $imgPath.'/'.$milliSecond.'-'.$key.$itype;
+        $iurl = $imgUrl.'/'.$milliSecond.'-'.$key.$itype;
 
         //下载并保存文件
         $rs = DownImageKeep($value, $rfurl, $rndFileName, '', 0, 30);
@@ -68,10 +68,10 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
             $info = '';
             $imginfos = GetImageSize($rndFileName, $info);
             $fsize = filesize($rndFileName);
-            $filename = $milliSecond . '-' . $key . $itype;
+            $filename = $milliSecond.'-'.$key.$itype;
             //保存图片附件信息
             $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-            VALUES ('0','$filename','$iurl','1','{$imginfos[0]}','$imginfos[1]','0','$fsize','" . time() . "','" . $cuserLogin->getUserID() . "'); ";
+            VALUES ('0','$filename','$iurl','1','{$imginfos[0]}','$imginfos[1]','0','$fsize','".time()."','".$cuserLogin->getUserID()."'); ";
             $dsql->ExecuteNoneQuery($inquery);
             $fid = $dsql->GetLastID();
             AddMyAddon($fid, $iurl);
@@ -82,12 +82,12 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
             }
             if (empty($firstdd) && !empty($litpicname)) {
                 $firstdd = $litpicname;
-                if (!file_exists($cfg_basedir . $firstdd)) {
+                if (!file_exists($cfg_basedir.$firstdd)) {
                     $firstdd = $iurl;
                 }
             }
             @WaterImg($rndFileName, 'down');
-            $rsimg .= "{dede:img ddimg='$litpicname' text='' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $iurl {/dede:img}\r\n";
+            $rsimg .= "{dede:img ddimg='$litpicname' text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
         }
     }
     return $rsimg;
@@ -105,23 +105,23 @@ function GetCurContent($body)
     global $cfg_multi_site, $cfg_basehost, $cfg_basedir, $cfg_image_dir, $arcID, $cuserLogin, $dsql;
     $cfg_uploaddir = $cfg_image_dir;
     $htd = new DedeHttpDown();
-    $basehost = "http://" . $_SERVER["HTTP_HOST"];
+    $basehost = "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
     preg_match_all("/src=[\"|'|\s]([^\"|^\'|^\s]*?)/isU", $body, $img_array);
 
     $img_array = array_unique($img_array[1]);
-    $imgUrl = $cfg_uploaddir . '/' . MyDate("ymd", time());
-    $imgPath = $cfg_basedir . $imgUrl;
-    if (!is_dir($imgPath . '/')) {
+    $imgUrl = $cfg_uploaddir.'/'.MyDate("ymd", time());
+    $imgPath = $cfg_basedir.$imgUrl;
+    if (!is_dir($imgPath.'/')) {
         MkdirAll($imgPath, $GLOBALS['cfg_dir_purview']);
         CloseFtp();
     }
     $milliSecond = MyDate('His', time());
     foreach ($img_array as $key => $value) {
-        if (preg_match("#" . $basehost . "#i", $value)) {
+        if (preg_match("#".$basehost."#i", $value)) {
             continue;
         }
-        if ($cfg_basehost != $basehost && preg_match("#" . $cfg_basehost . "#i", $value)) {
+        if ($cfg_basehost != $basehost && preg_match("#".$cfg_basehost."#i", $value)) {
             continue;
         }
         if (!preg_match("#^(http|https):\/\/#i", $value)) {
@@ -140,10 +140,10 @@ function GetCurContent($body)
                 $itype = '.jpg';
             }
         }
-        $milliSecondN = dd2char($milliSecond . mt_rand(1000, 8000));
+        $milliSecondN = dd2char($milliSecond.mt_rand(1000, 8000));
         $value = trim($value);
-        $rndFileName = $imgPath . '/' . $milliSecondN . '-' . $key . $itype;
-        $fileurl = $imgUrl . '/' . $milliSecondN . '-' . $key . $itype;
+        $rndFileName = $imgPath.'/'.$milliSecondN.'-'.$key.$itype;
+        $fileurl = $imgUrl.'/'.$milliSecondN.'-'.$key.$itype;
 
         $rs = $htd->SaveToBin($rndFileName);
         if ($rs) {
@@ -152,12 +152,12 @@ function GetCurContent($body)
             $fsize = filesize($rndFileName);
             //保存图片附件信息
             $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-			VALUES ('{$arcID}','$rndFileName','$fileurl','1','{$imginfos[0]}','$imginfos[1]','0','$fsize','" . time() . "','" . $cuserLogin->getUserID() . "'); ";
+			VALUES ('{$arcID}','$rndFileName','$fileurl','1','{$imginfos[0]}','$imginfos[1]','0','$fsize','".time()."','".$cuserLogin->getUserID()."'); ";
             $dsql->ExecuteNoneQuery($inquery);
             $fid = $dsql->GetLastID();
             AddMyAddon($fid, $fileurl);
             if ($cfg_multi_site == 'Y') {
-                $fileurl = $cfg_basehost . $fileurl;
+                $fileurl = $cfg_basehost.$fileurl;
             }
             $body = str_replace($value, $fileurl, $body);
             @WaterImg($rndFileName, 'down');
@@ -187,8 +187,8 @@ function GetRemoteImage($url, $uid = 0)
     if (!in_array($htd->GetHead("content-type"), $sparr)) {
         return '';
     } else {
-        $imgUrl = $cfg_uploaddir . '/' . MyDate($cfg_addon_savetype, time());
-        $imgPath = $cfg_basedir . $imgUrl;
+        $imgUrl = $cfg_uploaddir.'/'.MyDate($cfg_addon_savetype, time());
+        $imgPath = $cfg_basedir.$imgUrl;
         CreateDir($imgUrl);
         $itype = $htd->GetHead("content-type");
         if ($itype == "image/gif") {
@@ -200,9 +200,9 @@ function GetRemoteImage($url, $uid = 0)
         } else {
             $itype = '.jpg';
         }
-        $rndname = dd2char($uid . '_' . MyDate('mdHis', time()) . mt_rand(1000, 9999));
-        $rndtrueName = $imgPath . '/' . $rndname . $itype;
-        $fileurl = $imgUrl . '/' . $rndname . $itype;
+        $rndname = dd2char($uid.'_'.MyDate('mdHis', time()).mt_rand(1000, 9999));
+        $rndtrueName = $imgPath.'/'.$rndname.$itype;
+        $fileurl = $imgUrl.'/'.$rndname.$itype;
         $ok = $htd->SaveToBin($rndtrueName);
         @WaterImg($rndtrueName, 'down');
         if ($ok) {
@@ -235,13 +235,13 @@ function GetRemoteFlash($url, $uid = 0)
     if ($htd->GetHead("content-type") != $sparr) {
         return '';
     } else {
-        $imgUrl = $cfg_uploaddir . '/' . MyDate($cfg_addon_savetype, time());
-        $imgPath = $cfg_basedir . $imgUrl;
+        $imgUrl = $cfg_uploaddir.'/'.MyDate($cfg_addon_savetype, time());
+        $imgPath = $cfg_basedir.$imgUrl;
         CreateDir($imgUrl);
         $itype = '.swf';
-        $milliSecond = $uid . '_' . MyDate('mdHis', time());
-        $rndFileName = $imgPath . '/' . $milliSecond . $itype;
-        $fileurl = $imgUrl . '/' . $milliSecond . $itype;
+        $milliSecond = $uid.'_'.MyDate('mdHis', time());
+        $rndFileName = $imgPath.'/'.$milliSecond.$itype;
+        $fileurl = $imgUrl.'/'.$milliSecond.$itype;
         $ok = $htd->SaveToBin($rndFileName);
         if ($ok) {
             $revalues = $fileurl;
@@ -309,7 +309,7 @@ function SpLongBody($mybody, $spsize, $sptag)
             $npageBody .= $bds[$i];
             continue;
         }
-        $bds[$i] = "<" . $bds[$i];
+        $bds[$i] = "<".$bds[$i];
         if (strlen($bds[$i]) > 6) {
             $tname = substr($bds[$i], 1, 5);
             if (strtolower($tname) == 'table') {
@@ -327,7 +327,7 @@ function SpLongBody($mybody, $spsize, $sptag)
             $npageBody .= $bds[$i];
         }
         if (strlen($npageBody) > $spsize) {
-            $mybody .= $npageBody . $sptag;
+            $mybody .= $npageBody.$sptag;
             $npageBody = '';
         }
     }
@@ -349,7 +349,7 @@ function SpLongBody($mybody, $spsize, $sptag)
 function MakeArt($aid, $mkindex = FALSE, $ismakesign = FALSE, $isremote = 0)
 {
     global $envs, $typeid;
-    require_once(DEDEINC . '/arc.archives.class.php');
+    require_once(DEDEINC.'/arc.archives.class.php');
     if ($ismakesign) $envs['makesign'] = 'yes';
     $arc = new Archives($aid);
     $reurl = $arc->MakeHtml($isremote);
@@ -400,25 +400,25 @@ function GetDDImage($litpic, $picname, $isremote)
             ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种！", "-1");
             exit();
         }
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
 
         CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         if (strtolower($_FILES[$litpic]['type']) == "image/gif") {
-            $fullUrl = $fullUrl . ".gif";
+            $fullUrl = $fullUrl.".gif";
         } else if (strtolower($_FILES[$litpic]['type']) == "image/png") {
-            $fullUrl = $fullUrl . ".png";
+            $fullUrl = $fullUrl.".png";
         } else {
-            $fullUrl = $fullUrl . ".jpg";
+            $fullUrl = $fullUrl.".jpg";
         }
 
-        @move_uploaded_file($_FILES[$litpic]['tmp_name'], $cfg_basedir . $fullUrl);
+        @move_uploaded_file($_FILES[$litpic]['tmp_name'], $cfg_basedir.$fullUrl);
         $litpic = $fullUrl;
 
-        if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($cfg_basedir . $fullUrl, $cfg_ddimg_width, $cfg_ddimg_height);
-        else @ImageResize($cfg_basedir . $fullUrl, $cfg_ddimg_width, $cfg_ddimg_height);
+        if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($cfg_basedir.$fullUrl, $cfg_ddimg_width, $cfg_ddimg_height);
+        else @ImageResize($cfg_basedir.$fullUrl, $cfg_ddimg_width, $cfg_ddimg_height);
 
-        $img = $cfg_basedir . $litpic;
+        $img = $cfg_basedir.$litpic;
     } else {
 
         $picname = trim($picname);
@@ -431,17 +431,17 @@ function GetDDImage($litpic, $picname, $isremote)
             } else {
                 $litpic = $ddinfos[0];
                 if ($ddinfos[1] > $cfg_ddimg_width || $ddinfos[2] > $cfg_ddimg_height) {
-                    if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($cfg_basedir . $litpic, $cfg_ddimg_width, $cfg_ddimg_height);
-                    else @ImageResize($cfg_basedir . $litpic, $cfg_ddimg_width, $cfg_ddimg_height);
+                    if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($cfg_basedir.$litpic, $cfg_ddimg_width, $cfg_ddimg_height);
+                    else @ImageResize($cfg_basedir.$litpic, $cfg_ddimg_width, $cfg_ddimg_height);
                 }
             }
         } else {
             if ($litpic == 'ddfirst' && !preg_match("#^http:\/\/#i", $picname)) {
-                $oldpic = $cfg_basedir . $picname;
+                $oldpic = $cfg_basedir.$picname;
                 $litpic = str_replace('.', '-lp.', $picname);
-                if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir . $litpic);
-                else @ImageResize($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir . $litpic);
-                if (!is_file($cfg_basedir . $litpic)) $litpic = '';
+                if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
+                else @ImageResize($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
+                if (!is_file($cfg_basedir.$litpic)) $litpic = '';
             } else {
                 $litpic = $picname;
                 return $litpic;
@@ -513,12 +513,12 @@ function PrintAutoFieldsAdd($fieldset, $loadtype = 'all')
                 $loadtype != 'autofield'
                 || ($loadtype == 'autofield' && $ctag->GetAtt('autofield') == 1)
             ) {
-                $dede_addonfields .= ($dede_addonfields == "" ? $ctag->GetName() . "," . $ctag->GetAtt('type') : ";" . $ctag->GetName() . "," . $ctag->GetAtt('type'));
+                $dede_addonfields .= ($dede_addonfields == "" ? $ctag->GetName().",".$ctag->GetAtt('type') : ";".$ctag->GetName().",".$ctag->GetAtt('type'));
                 echo  GetFormItemA($ctag);
             }
         }
     }
-    echo "<input type='hidden' name='dede_addonfields' value=\"" . $dede_addonfields . "\">\r\n";
+    echo "<input type='hidden' name='dede_addonfields' value=\"".$dede_addonfields."\">\r\n";
 }
 
 /**
@@ -542,12 +542,12 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
                 $loadtype != 'autofield'
                 || ($loadtype == 'autofield' && $ctag->GetAtt('autofield') == 1)
             ) {
-                $dede_addonfields .= ($dede_addonfields == '' ? $ctag->GetName() . "," . $ctag->GetAtt('type') : ";" . $ctag->GetName() . "," . $ctag->GetAtt('type'));
+                $dede_addonfields .= ($dede_addonfields == '' ? $ctag->GetName().",".$ctag->GetAtt('type') : ";".$ctag->GetName().",".$ctag->GetAtt('type'));
                 echo GetFormItemValueA($ctag, $fieldValues[$ctag->GetName()]);
             }
         }
     }
-    echo "<input type='hidden' name='dede_addonfields' value=\"" . $dede_addonfields . "\">\r\n";
+    echo "<input type='hidden' name='dede_addonfields' value=\"".$dede_addonfields."\">\r\n";
 }
 
 
@@ -579,8 +579,8 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
     if ($dellink == 1) {
         $allow_urls = array($_SERVER['HTTP_HOST']);
         // 读取允许的超链接设置
-        if (file_exists(DEDEDATA . "/admin/allowurl.txt")) {
-            $allow_urls = array_merge($allow_urls, file(DEDEDATA . "/admin/allowurl.txt"));
+        if (file_exists(DEDEDATA."/admin/allowurl.txt")) {
+            $allow_urls = array_merge($allow_urls, file(DEDEDATA."/admin/allowurl.txt"));
         }
         $body = Replace_Links($body, $allow_urls);
     }
@@ -607,11 +607,11 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
             $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
             $client->appid = $cfg_bizcore_appid;
             $client->key = $cfg_bizcore_key;
-            $data = $client->Spliteword($subject . Html2Text($message));
+            $data = $client->Spliteword($subject.Html2Text($message));
             $keywords = $data->data;
             $client->Close();
         } else {
-            include_once(DEDEINC . '/splitword.class.php');
+            include_once(DEDEINC.'/splitword.class.php');
             $keywords = '';
             $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
             $sp->SetSource($subject, $cfg_soft_lang, $cfg_soft_lang);
@@ -623,19 +623,19 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
 
             if (is_array($allindexs) && is_array($titleindexs)) {
                 foreach ($titleindexs as $k => $v) {
-                    if (strlen($keywords . $k) >= 60) {
+                    if (strlen($keywords.$k) >= 60) {
                         break;
                     } else {
                         if (strlen($k) <= 2) continue;
-                        $keywords .= $k . ',';
+                        $keywords .= $k.',';
                     }
                 }
                 foreach ($allindexs as $k => $v) {
-                    if (strlen($keywords . $k) >= 60) {
+                    if (strlen($keywords.$k) >= 60) {
                         break;
                     } else if (!in_array($k, $titleindexs)) {
                         if (strlen($k) <= 2) continue;
-                        $keywords .= $k . ',';
+                        $keywords .= $k.',';
                     }
                 }
             }
@@ -667,7 +667,7 @@ function Replace_Links(&$body, $allow_urls = array())
         $rparr = array();
         $tgarr = array();
         foreach ($arr[0] as $i => $v) {
-            if ($host_rule != '' && preg_match('#' . $host_rule . '#i', $arr[1][$i])) {
+            if ($host_rule != '' && preg_match('#'.$host_rule.'#i', $arr[1][$i])) {
                 continue;
             } else {
                 $rparr[] = $v;
@@ -694,18 +694,18 @@ function GetImageMapDD($filename, $maxwidth)
 {
     global $cuserLogin, $dsql, $cfg_ddimg_height, $cfg_ddimg_full;
     $ddn = substr($filename, -3);
-    $ddpicok = preg_replace("#\." . $ddn . "$#", "-lp." . $ddn, $filename);
-    $toFile = $GLOBALS['cfg_basedir'] . $ddpicok;
+    $ddpicok = preg_replace("#\.".$ddn."$#", "-lp.".$ddn, $filename);
+    $toFile = $GLOBALS['cfg_basedir'].$ddpicok;
 
-    if ($cfg_ddimg_full == 'Y') ImageResizeNew($GLOBALS['cfg_basedir'] . $filename, $maxwidth, $cfg_ddimg_height, $toFile);
-    else ImageResize($GLOBALS['cfg_basedir'] . $filename, $maxwidth, $cfg_ddimg_height, $toFile);
+    if ($cfg_ddimg_full == 'Y') ImageResizeNew($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);
+    else ImageResize($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);
 
     //保存图片附件信息
     $fsize = filesize($toFile);
     $ddpicoks = explode('/', $ddpicok);
     $filename = $ddpicoks[count($ddpicoks) - 1];
     $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-                    VALUES ('0','$filename','$ddpicok','1','0','0','0','$fsize','" . time() . "','" . $cuserLogin->getUserID() . "'); ";
+                    VALUES ('0','$filename','$ddpicok','1','0','0','0','$fsize','".time()."','".$cuserLogin->getUserID()."'); ";
     $dsql->ExecuteNoneQuery($inquery);
     $fid = $dsql->GetLastID();
     AddMyAddon($fid, $ddpicok);
@@ -744,31 +744,31 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
             ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种！", "-1");
             exit();
         }
-        if (!empty($handurl) && !preg_match("#^http:\/\/#i", $handurl) && file_exists($cfg_basedir . $handurl)) {
+        if (!empty($handurl) && !preg_match("#^http:\/\/#i", $handurl) && file_exists($cfg_basedir.$handurl)) {
             if (!is_object($dsql)) {
                 $dsql = new DedeSql();
             }
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '$handurl' ");
             $fullUrl = preg_replace("#\.([a-z]*)$#i", "", $handurl);
         } else {
-            $savepath = $cfg_image_dir . '/' . strftime("%Y-%m", $ntime);
+            $savepath = $cfg_image_dir.'/'.strftime("%Y-%m", $ntime);
             CreateDir($savepath);
-            $fullUrl = $savepath . '/' . strftime("%d", $ntime) . dd2char(strftime("%H%M%S", $ntime) . '0' . $cuserLogin->getUserID() . '0' . mt_rand(1000, 9999));
+            $fullUrl = $savepath.'/'.strftime("%d", $ntime).dd2char(strftime("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000, 9999));
         }
         if (strtolower($_FILES[$upname]['type']) == "image/gif") {
-            $fullUrl = $fullUrl . ".gif";
+            $fullUrl = $fullUrl.".gif";
         } else if (strtolower($_FILES[$upname]['type']) == "image/png") {
-            $fullUrl = $fullUrl . ".png";
+            $fullUrl = $fullUrl.".png";
         } else {
-            $fullUrl = $fullUrl . ".jpg";
+            $fullUrl = $fullUrl.".jpg";
         }
 
         //保存
-        @move_uploaded_file($_FILES[$upname]['tmp_name'], $cfg_basedir . $fullUrl);
+        @move_uploaded_file($_FILES[$upname]['tmp_name'], $cfg_basedir.$fullUrl);
         $filename = $fullUrl;
 
         //水印
-        @WaterImg($cfg_basedir . $fullUrl, 'up');
+        @WaterImg($cfg_basedir.$fullUrl, 'up');
         $isrm_up = TRUE;
     }
 
@@ -793,7 +793,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
             $filename = $handurl;
         }
     }
-    $imgfile = $cfg_basedir . $filename;
+    $imgfile = $cfg_basedir.$filename;
     if (is_file($imgfile) && $isrm_up && $filename != '') {
         $info = "";
         $imginfos = GetImageSize($imgfile, $info);
@@ -801,7 +801,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         //把新上传的图片信息保存到媒体文档管理档案中
         $inquery = "
         INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-        VALUES ('$title','$filename','1','" . $imginfos[0] . "','" . $imginfos[1] . "','0','" . filesize($imgfile) . "','" . time() . "','" . $cuserLogin->getUserID() . "');
+        VALUES ('$title','$filename','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".time()."','".$cuserLogin->getUserID()."');
     ";
         $dsql->ExecuteNoneQuery($inquery);
     }
@@ -823,7 +823,7 @@ function GetUpdateTest()
         if ($cfg_makeindex == 'Y') $dolist .= empty($dolist) ? 'makeindex' : ',makeindex';
         if ($cfg_make_andcat == 'Y') $dolist .= empty($dolist) ? 'makeparenttype' : ',makeparenttype';
         $dolists = explode(',', $dolist);
-        $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=" . preg_replace("#" . $dolists[0] . "[,]{0,1}#", '', $dolist);
+        $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=".preg_replace("#".$dolists[0]."[,]{0,1}#", '', $dolist);
         $revalue = "<table width='80%' style='border:1px dashed #cdcdcd;margin-left:20px;margin-bottom:15px' id='tgtable' align='left'><tr><td bgcolor='#EBF5C9'>&nbsp;<strong>正在进行相关内容更新，请完成前不要进行其它操作：</strong>\r\n</td></tr>\r\n";
         $revalue .= "<tr><td>\r\n<iframe name='stafrm' frameborder='0' id='stafrm' width='100%' height='200px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
         $revalue .= "</table>";

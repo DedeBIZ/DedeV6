@@ -81,10 +81,10 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
             if ($cfg_multi_site == 'Y') {
                 //$cfg_basehost)
                 if (!preg_match('#^http:#i', $fields['imgsrc'])) {
-                    $fields['imgsrc'] = $cfg_basehost . $fields['imgsrc'];
+                    $fields['imgsrc'] = $cfg_basehost.$fields['imgsrc'];
                 }
                 if (!preg_match('#^http:#i', $fields['ddimg'])) {
-                    $fields['ddimg'] = $cfg_basehost . $fields['ddimg'];
+                    $fields['ddimg'] = $cfg_basehost.$fields['ddimg'];
                 }
             }
             if (empty($fields['width'])) {
@@ -122,7 +122,7 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
                 $fields['text'] = $fields['textlink'] = '';
                 $fields['imgsrc'] = $fields['ddimg'];
                 $fields['imgwidth'] = " width='$ddmaxwidth' ";
-                $fields['linkurl'] = "{$GLOBALS['cfg_phpurl']}/showphoto.php?aid={$refObj->ArcID}&src=" . urlencode($fields['imgsrctrue']) . "&npos={$GLOBAL['photoid']}";
+                $fields['linkurl'] = "{$GLOBALS['cfg_phpurl']}/showphoto.php?aid={$refObj->ArcID}&src=".urlencode($fields['imgsrctrue'])."&npos={$GLOBAL['photoid']}";
             }
             if (is_array($dtp2->CTags)) {
                 foreach ($dtp2->CTags as $tagid => $ctag) {

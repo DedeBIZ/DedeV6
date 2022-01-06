@@ -9,7 +9,7 @@ if (!defined('DEDEINC')) exit('Request Error!');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . '/arc.partview.class.php');
+require_once(DEDEINC.'/arc.partview.class.php');
 function lib_channelartlist(&$ctag, &$refObj)
 {
     global $dsql, $envs, $_sys_globals;

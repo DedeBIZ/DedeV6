@@ -75,7 +75,7 @@ if (!function_exists('GetCurUrl')) {
             if (empty($_SERVER["QUERY_STRING"])) {
                 $nowurl = $scriptName;
             } else {
-                $nowurl = $scriptName . "?" . $_SERVER["QUERY_STRING"];
+                $nowurl = $scriptName."?".$_SERVER["QUERY_STRING"];
             }
         }
         return $nowurl;
@@ -144,7 +144,7 @@ if (!function_exists('GetEditor')) {
     function GetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype = "print", $isfullpage = "FALSE", $bbcode = false)
     {
         if (!function_exists('SpGetEditor')) {
-            require_once(DEDEINC . "/inc/inc_fun_funAdmin.php");
+            require_once(DEDEINC."/inc/inc_fun_funAdmin.php");
         }
         return SpGetEditor($fname, $fvalue, $nheight, $etype, $gtype, $isfullpage, $bbcode);
     }
@@ -179,7 +179,7 @@ if (!function_exists('GetTemplets')) {
 if (!function_exists('GetSysTemplets')) {
     function GetSysTemplets($filename)
     {
-        return GetTemplets($GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'] . '/system/' . $filename);
+        return GetTemplets($GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'].'/system/'.$filename);
     }
 }
 
@@ -192,7 +192,7 @@ if (!function_exists('GetNewInfo')) {
     function GetNewInfo()
     {
         if (!function_exists('SpGetNewInfo')) {
-            require_once(DEDEINC . "/inc/inc_fun_funAdmin.php");
+            require_once(DEDEINC."/inc/inc_fun_funAdmin.php");
         }
         return SpGetNewInfo();
     }
@@ -214,7 +214,7 @@ if (!function_exists('dd2char')) {
         $nn = '';
         for ($i = 0; $i < $slen; $i++) {
             if (isset($ddnum[$i + 1])) {
-                $n = $ddnum[$i] . $ddnum[$i + 1];
+                $n = $ddnum[$i].$ddnum[$i + 1];
                 if (($n > 96 && $n < 123) || ($n > 64 && $n < 91)) {
                     $okdd .= chr($n);
                     $i++;
@@ -248,7 +248,7 @@ if (!function_exists('json_encode')) {
         } else if (defined($value) && $value === NULL) {
             $value = strval(constant($value));
         } else if (is_string($value)) {
-            $value = '"' . addslashes($value) . '"';
+            $value = '"'.addslashes($value).'"';
         }
         return $value;
     }
@@ -273,9 +273,9 @@ if (!function_exists('json_encode')) {
         foreach ($data as $key => $val) {
             if (!is_NULL($val)) {
                 if ($assoc) {
-                    $json .= "\"$key\":" . json_encode($val) . ",";
+                    $json .= "\"$key\":".json_encode($val).",";
                 } else {
-                    $json .= json_encode($val) . ",";
+                    $json .= json_encode($val).",";
                 }
             }
         }

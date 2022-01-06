@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . "/oxwindow.class.php");
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC."/oxwindow.class.php");
 
 helper('mda');
 
@@ -40,7 +40,7 @@ if (!$dsql->IsTable('#@__plus_mda_setting')) {
 
   foreach ($install_sqls as $install_sql) {
     $sql = preg_replace("#ENGINE=MyISAM#i", 'TYPE=MyISAM', $install_sql);
-    $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET=' . $cfg_db_language;
+    $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET='.$cfg_db_language;
 
     if ($mysql_version >= 4.1) {
       $sql = preg_replace("#TYPE=MyISAM#i", $sql41tmp, $sql);
@@ -64,7 +64,7 @@ if (version_compare($version, MDA_VER, '<')) {
     }
     foreach ($sqls as $sql) {
       $sql = preg_replace("#ENGINE=MyISAM#i", 'TYPE=MyISAM', $sql);
-      $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET=' . $cfg_db_language;
+      $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET='.$cfg_db_language;
 
       if ($mysql_version >= 4.1) {
         $sql = preg_replace("#TYPE=MyISAM#i", $sql41tmp, $sql);
@@ -90,16 +90,16 @@ if ($dopost == 'place' or $dopost == 'report' or $dopost == 'account' or $dopost
 
   if ($dopost == 'place') {
     $channel_uuid = mda_get_setting('channel_uuid');
-    $manage_url = MDA_APIHOST . "/place?from=dedecms&uuid={$channel_uuid}";
+    $manage_url = MDA_APIHOST."/place?from=dedecms&uuid={$channel_uuid}";
     $ptitle = '广告管理';
   } elseif ($dopost == 'report') {
-    $manage_url = MDA_APIHOST . "/report";
+    $manage_url = MDA_APIHOST."/report";
     $ptitle = '报表管理';
   } elseif ($dopost == 'account') {
-    $manage_url = MDA_APIHOST . "/account";
+    $manage_url = MDA_APIHOST."/account";
     $ptitle = '结算中心';
   } elseif ($dopost == 'setting') {
-    $manage_url = MDA_APIHOST . "/setting";
+    $manage_url = MDA_APIHOST."/setting";
     $ptitle = '德得设置';
   }
 
@@ -145,11 +145,11 @@ EOT;
 /*--------------------------------
 function __clearcache(){  }
 -------------------------------*/ else if ($dopost == 'clearcache') {
-  if (!is_dir(DEDEDATA . "/cache/mda/") or  RmRecurse(DEDEDATA . "/cache/mda/")) {
+  if (!is_dir(DEDEDATA."/cache/mda/") or  RmRecurse(DEDEDATA."/cache/mda/")) {
     ShowMsg("成功清除缓存信息", -1);
     exit();
   } else {
-    ShowMsg("清除缓存失败，请尝试手工删除" . DEDEDATA . "/cache/mda/", 'javascript:;');
+    ShowMsg("清除缓存失败，请尝试手工删除".DEDEDATA."/cache/mda/", 'javascript:;');
     exit();
   }
 }
@@ -205,7 +205,7 @@ function __login(){  }
     'channel_secret' => $channel_secret,
     'email' => $email,
     'ts' => $ts,
-    'crc' => md5($channel_uuid . $channel_secret . $ts),
+    'crc' => md5($channel_uuid.$channel_secret.$ts),
   );
   $jquery_file = MDA_JQUERY;
   $api_login = MDA_API_LOGIN;
@@ -324,7 +324,7 @@ EOT;
     'channel_secret' => $channel_secret,
     'email' => $email,
     'ts' => $ts,
-    'crc' => md5($channel_uuid . $channel_secret . $ts),
+    'crc' => md5($channel_uuid.$channel_secret.$ts),
   );
   $rs = json_decode(mda_http_send(MDA_API_LOGIN, 0, $paramsArr), TRUE);
   if (!$rs) {
@@ -352,7 +352,7 @@ function __index(){  }
   $mda_reg_url = MDA_REG_URL;
   $mda_forget_pwd_url = MDA_FORGOT_PASSWORD_URL;
   $domain = !empty($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];
-  $mda_update_url = MDA_APIHOST . "/help/dedecms_module_download";
+  $mda_update_url = MDA_APIHOST."/help/dedecms_module_download";
 
   echo <<<EOT
 <html>

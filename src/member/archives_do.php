@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
 
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
@@ -23,10 +23,10 @@ if ($dopost == "delStow") {
     CheckRank(0, 0);
     $type = empty($type) ? 'sys' : trim($type);
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "mystow.php" : $_COOKIE['ENV_GOBACK_URL'];
-    $dsql->ExecuteNoneQuery("DELETE FROM #@__member_stow WHERE aid='$aid' AND mid='" . $cfg_ml->M_ID . "' AND type='$type';");
+    $dsql->ExecuteNoneQuery("DELETE FROM #@__member_stow WHERE aid='$aid' AND mid='".$cfg_ml->M_ID."' AND type='$type';");
     //更新用户统计
-    $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='" . $cfg_ml->M_ID . "' ");
-    $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET `stow`='$row[nums]' WHERE `mid`='" . $cfg_ml->M_ID . "'");
+    $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='".$cfg_ml->M_ID."' ");
+    $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET `stow`='$row[nums]' WHERE `mid`='".$cfg_ml->M_ID."'");
 
     ShowMsg("成功删除一条收藏记录！", $ENV_GOBACK_URL);
     exit();
@@ -37,11 +37,11 @@ function addArchives()
 添加投稿
 ------------------*/ else if ($dopost == "addArc") {
     if ($channelid == 1) {
-        $addcon = 'article_add.php?channelid=' . $channelid;
+        $addcon = 'article_add.php?channelid='.$channelid;
     } else if ($channelid == 2) {
-        $addcon = 'album_add.php?channelid=' . $channelid;
+        $addcon = 'album_add.php?channelid='.$channelid;
     } else if ($channelid == 3) {
-        $addcon = 'soft_add.php?channelid=' . $channelid;
+        $addcon = 'soft_add.php?channelid='.$channelid;
     } else {
         $row = $dsql->GetOne("SELECT useraddcon FROM `#@__channeltype` WHERE id='$channelid' ");
         if (!is_array($row)) {
@@ -52,7 +52,7 @@ function addArchives()
         if (trim($addcon) == '') {
             $addcon = 'archives_add.php';
         }
-        $addcon = $addcon . "?channelid=$channelid";
+        $addcon = $addcon."?channelid=$channelid";
     }
     header("Location:$addcon");
     exit();
@@ -64,11 +64,11 @@ function editArchives()
 ------------------*/ else if ($dopost == "edit") {
     CheckRank(0, 0);
     if ($channelid == 1) {
-        $edit = 'article_edit.php?channelid=' . $channelid;
+        $edit = 'article_edit.php?channelid='.$channelid;
     } else if ($channelid == 2) {
-        $edit = 'album_edit.php?channelid=' . $channelid;
+        $edit = 'album_edit.php?channelid='.$channelid;
     } else if ($channelid == 3) {
-        $edit = 'soft_edit.php?channelid=' . $channelid;
+        $edit = 'soft_edit.php?channelid='.$channelid;
     } else {
         $row = $dsql->GetOne("SELECT usereditcon FROM `#@__channeltype` WHERE id='$channelid' ");
         if (!is_array($row)) {
@@ -79,9 +79,9 @@ function editArchives()
         if (trim($edit) == '') {
             $edit = 'archives_edit.php';
         }
-        $edit = $edit . "?channelid=$channelid";
+        $edit = $edit."?channelid=$channelid";
     }
-    header("Location:$edit" . "&aid=$aid");
+    header("Location:$edit"."&aid=$aid");
     exit();
 }
 
@@ -90,7 +90,7 @@ function delArchives()
 删除文章
 --------------------*/ else if ($dopost == "delArc") {
     CheckRank(0, 0);
-    include_once(DEDEMEMBER . "/inc/inc_batchup.php");
+    include_once(DEDEMEMBER."/inc/inc_batchup.php");
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'content_list.php?channelid=' : $_COOKIE['ENV_GOBACK_URL'];
 
 
@@ -104,9 +104,9 @@ function delArchives()
     }
     if (trim($row['maintable']) == '') $row['maintable'] = '#@__archives';
     if ($row['issystem'] == -1) {
-        $equery = "SELECT mid FROM `{$row['addtable']}` WHERE aid='$aid' AND mid='" . $cfg_ml->M_ID . "' ";
+        $equery = "SELECT mid FROM `{$row['addtable']}` WHERE aid='$aid' AND mid='".$cfg_ml->M_ID."' ";
     } else {
-        $equery = "SELECT mid,litpic from `{$row['maintable']}` WHERE id='$aid' AND mid='" . $cfg_ml->M_ID . "' ";
+        $equery = "SELECT mid,litpic from `{$row['maintable']}` WHERE id='$aid' AND mid='".$cfg_ml->M_ID."' ";
     }
     $arr = $dsql->GetOne($equery);
     if (!is_array($arr)) {
@@ -131,19 +131,19 @@ function delArchives()
     else $rs = DelArcSg($aid);
 
     //删除缩略图
-    if (trim($row['litpic']) != '' && preg_match("#^" . $cfg_user_dir . "/{$cfg_ml->M_ID}#", $row['litpic'])) {
+    if (trim($row['litpic']) != '' && preg_match("#^".$cfg_user_dir."/{$cfg_ml->M_ID}#", $row['litpic'])) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$row['litpic']}' AND mid='{$cfg_ml->M_ID}' ");
-        @unlink($cfg_basedir . $row['litpic']);
+        @unlink($cfg_basedir.$row['litpic']);
     }
 
     if ($ENV_GOBACK_URL == 'content_list.php?channelid=') {
-        $ENV_GOBACK_URL = $ENV_GOBACK_URL . $channelid;
+        $ENV_GOBACK_URL = $ENV_GOBACK_URL.$channelid;
     }
     if ($rs) {
         //更新用户记录
         countArchives($channelid);
         //扣除积分
-        $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores-{$cfg_sendarc_scores} where mid='" . $cfg_ml->M_ID . "' And (scores-{$cfg_sendarc_scores}) > 0; ");
+        $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores-{$cfg_sendarc_scores} where mid='".$cfg_ml->M_ID."' And (scores-{$cfg_sendarc_scores}) > 0; ");
         ShowMsg("成功删除一篇文档！", $ENV_GOBACK_URL);
         exit();
     } else {
@@ -159,8 +159,8 @@ function viewArchives()
 ------------------*/ else if ($dopost == "viewArchives") {
     CheckRank(0, 0);
     if ($type == "") {
-        header("location:" . $cfg_phpurl . "/view.php?aid=" . $aid);
+        header("location:".$cfg_phpurl."/view.php?aid=".$aid);
     } else {
-        header("location:/book/book.php?bid=" . $aid);
+        header("location:/book/book.php?bid=".$aid);
     }
 }

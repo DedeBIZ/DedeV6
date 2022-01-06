@@ -11,8 +11,8 @@
  */
 if (!defined('DEDEMEMBER'))    exit('dedebiz');
 
-include_once(DEDEINC . '/image.func.php');
-include_once(DEDEINC . '/oxwindow.class.php');
+include_once(DEDEINC.'/image.func.php');
+include_once(DEDEINC.'/oxwindow.class.php');
 
 $svali = GetCkVdValue();
 if (strtolower($vdcode) != $svali || $svali == '') {
@@ -45,13 +45,13 @@ if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] 
 
 //检查频道设定的投稿许可权限
 if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-    $row = $dsql->GetOne("Select membername From #@__arcrank where rank='" . $cInfos['sendrank'] . "' ");
-    ShowMsg("对不起，需要[" . $row['membername'] . "]才能在这个频道发布文档！", "-1", "0", 5000);
+    $row = $dsql->GetOne("Select membername From #@__arcrank where rank='".$cInfos['sendrank']."' ");
+    ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
     exit();
 }
 
 if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-    ShowMsg("对不起，需要[" . $cInfos['usertype'] . "]才能在这个频道发布文档！", "-1", "0", 5000);
+    ShowMsg("对不起，需要[".$cInfos['usertype']."]才能在这个频道发布文档！", "-1", "0", 5000);
     exit();
 }
 

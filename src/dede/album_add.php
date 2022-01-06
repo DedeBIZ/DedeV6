@@ -9,16 +9,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('a_New,a_AccNew');
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 
 if (empty($dopost)) $dopost = '';
 
 if ($dopost != 'save') {
-    require_once(DEDEINC . "/dedetag.class.php");
-    require_once(DEDEADMIN . "/inc/inc_catalog_options.php");
+    require_once(DEDEINC."/dedetag.class.php");
+    require_once(DEDEADMIN."/inc/inc_catalog_options.php");
     ClearMyAddon();
     $channelid = empty($channelid) ? 0 : intval($channelid);
     $cid = empty($cid) ? 0 : intval($cid);
@@ -43,8 +43,8 @@ if ($dopost != 'save') {
 /*--------------------------------
 function __save(){  }
 -------------------------------*/ else if ($dopost == 'save') {
-    require_once(DEDEINC . '/image.func.php');
-    require_once(DEDEINC . '/oxwindow.class.php');
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
 
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
@@ -110,15 +110,15 @@ function __save(){  }
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-        $fullUrl = $fullUrl . ".png";
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
 
-        file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
 
         // 加水印
-        WaterImg($cfg_basedir . $fullUrl, 'up');
+        WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
 
@@ -149,10 +149,10 @@ function __save(){  }
     处理从ZIP中解压的图片
     ---------------------*/
     if ($formzip == 1) {
-        include_once(DEDEINC . "/zip.class.php");
-        include_once(DEDEADMIN . "/file_class.php");
-        $zipfile = $cfg_basedir . str_replace($cfg_mainsite, '', $zipfile);
-        $tmpzipdir = DEDEDATA . '/ziptmp/' . cn_substr(md5(ExecTime()), 16);
+        include_once(DEDEINC."/zip.class.php");
+        include_once(DEDEADMIN."/file_class.php");
+        $zipfile = $cfg_basedir.str_replace($cfg_mainsite, '', $zipfile);
+        $tmpzipdir = DEDEDATA.'/ziptmp/'.cn_substr(md5(ExecTime()), 16);
         $ntime = time();
         if (file_exists($zipfile)) {
             @mkdir($tmpzipdir, $GLOBALS['cfg_dir_purview']);
@@ -165,11 +165,11 @@ function __save(){  }
             $i = 0;
             foreach ($imgs as $imgold) {
                 $i++;
-                $savepath = $cfg_image_dir . "/" . MyDate("Y-m", $ntime);
+                $savepath = $cfg_image_dir."/".MyDate("Y-m", $ntime);
                 CreateDir($savepath);
-                $iurl = $savepath . "/" . MyDate("d", $ntime) . dd2char(MyDate("His", $ntime) . '-' . $adminid . "-{$i}" . mt_rand(1000, 9999));
-                $iurl = $iurl . substr($imgold, -4, 4);
-                $imgfile = $cfg_basedir . $iurl;
+                $iurl = $savepath."/".MyDate("d", $ntime).dd2char(MyDate("His", $ntime).'-'.$adminid."-{$i}".mt_rand(1000, 9999));
+                $iurl = $iurl.substr($imgold, -4, 4);
+                $imgfile = $cfg_basedir.$iurl;
                 copy($imgold, $imgfile);
                 unlink($imgold);
 
@@ -183,12 +183,12 @@ function __save(){  }
                     }
                     $info = '';
                     $imginfos = GetImageSize($imgfile, $info);
-                    $imgurls .= "{dede:img ddimg='$litpicname' text='' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $iurl {/dede:img}\r\n";
+                    $imgurls .= "{dede:img ddimg='$litpicname' text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
 
                     //把图片信息保存到媒体文档管理档案中
                     $inquery = "
                    INSERT INTO #@__uploads(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-                    VALUES ('{$title}','{$iurl}','1','" . $imginfos[0] . "','" . $imginfos[1] . "','0','" . filesize($imgfile) . "','" . $ntime . "','$adminid');
+                    VALUES ('{$title}','{$iurl}','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".$ntime."','$adminid');
                  ";
                     $dsql->ExecuteNoneQuery($inquery);
                     $fid = $dsql->GetLastID();
@@ -218,17 +218,17 @@ function __save(){  }
             $album = $albumsArr[$i];
             $data = explode(',', $album['img']);
             $ntime = time();
-            $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+            $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
             CreateDir($savepath);
-            $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-            $fullUrl = $fullUrl . ".png";
+            $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+            $fullUrl = $fullUrl.".png";
 
-            file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
+            file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
             $info = '';
-            $imginfos = GetImageSize($cfg_basedir . $fullUrl, $info);
+            $imginfos = GetImageSize($cfg_basedir.$fullUrl, $info);
             $v = $fullUrl;
             $imginfo =  !empty($album['txt']) ? $album['txt'] : '';
-            $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $v {/dede:img}\r\n";
+            $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $v {/dede:img}\r\n";
             if ($ddisfirst == 1 && $litpic == '' && !empty($fullUrl)) {
                 $litpic = $fullUrl;
             }
@@ -264,18 +264,18 @@ function __save(){  }
                     }
                     ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $arcID);
                 }
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
     }
 
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match("#p#", $flag)) {
-        $flag = ($flag == '' ? 'p' : $flag . ',p');
+        $flag = ($flag == '' ? 'p' : $flag.',p');
     }
     if ($redirecturl != '' && !preg_match("#j#", $flag)) {
-        $flag = ($flag == '' ? 'j' : $flag . ',j');
+        $flag = ($flag == '' ? 'j' : $flag.',j');
     }
 
     //跳转网址的文档强制为动态
@@ -288,7 +288,7 @@ function __save(){  }
     if (!$dsql->ExecuteNoneQuery($query)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery(" DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
-        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCMS官方。" . str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
 
@@ -308,7 +308,7 @@ function __save(){  }
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。" . str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
 
@@ -316,7 +316,7 @@ function __save(){  }
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE, TRUE, $isremote);
     if ($artUrl == '') {
-        $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+        $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
     ClearMyAddon($arcID, $title);
 
@@ -337,7 +337,7 @@ function __save(){  }
     　　请选择你的后续操作：
     <a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $arcID . "&dopost=editArchives' class='btn btn-success btn-sm'>更改图集</a>
+    <a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>更改图集</a>
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>预览文档</a>
     &nbsp;&nbsp;
@@ -345,7 +345,7 @@ function __save(){  }
     &nbsp;&nbsp;
     $backurl
    ";
-    $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>" . GetUpdateTest();
+    $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>".GetUpdateTest();
 
     $wintitle = "成功发布一个图集！";
     $wecome_info = "文章管理::发布图集";

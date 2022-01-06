@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_友情链接模块');
 if (empty($dopost)) $dopost = "";
 
@@ -17,18 +17,18 @@ if ($dopost == "add") {
     $dtime = time();
     if (is_uploaded_file($logoimg)) {
         $names = split("\.", $logoimg_name);
-        $shortname = "." . $names[count($names) - 1];
+        $shortname = ".".$names[count($names) - 1];
         if (!preg_match("#(jpg|gif|png)$#", $shortname)) {
             $shortname = '.gif';
         }
-        $filename = MyDate("ymdHis", time()) . mt_rand(1000, 9999) . $shortname;
-        $imgurl = $cfg_medias_dir . "/flink";
-        if (!is_dir($cfg_basedir . $imgurl)) {
-            MkdirAll($cfg_basedir . $imgurl, $cfg_dir_purview);
+        $filename = MyDate("ymdHis", time()).mt_rand(1000, 9999).$shortname;
+        $imgurl = $cfg_medias_dir."/flink";
+        if (!is_dir($cfg_basedir.$imgurl)) {
+            MkdirAll($cfg_basedir.$imgurl, $cfg_dir_purview);
             CloseFtp();
         }
-        $imgurl = $imgurl . "/" . $filename;
-        move_uploaded_file($logoimg, $cfg_basedir . $imgurl) or die("复制文件到:" . $cfg_basedir . $imgurl . "失败");
+        $imgurl = $imgurl."/".$filename;
+        move_uploaded_file($logoimg, $cfg_basedir.$imgurl) or die("复制文件到:".$cfg_basedir.$imgurl."失败");
         @unlink($logoimg);
     } else {
         $imgurl = $logo;
@@ -48,7 +48,7 @@ if ($dopost == "add") {
         ShowMsg("成功增加一个链接!", $burl, 0, 500);
         exit();
     } else {
-        ShowMsg("增加链接时出错，请向官方反馈，原因：" . $dsql->GetError(), "javascript:;");
+        ShowMsg("增加链接时出错，请向官方反馈，原因：".$dsql->GetError(), "javascript:;");
         exit();
     }
 }

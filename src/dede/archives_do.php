@@ -8,11 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEADMIN . '/inc/inc_batchup.php');
-require_once(DEDEADMIN . '/inc/inc_archives_functions.php');
-require_once(DEDEINC . '/typelink.class.php');
-require_once(DEDEINC . '/arc.archives.class.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEADMIN.'/inc/inc_batchup.php');
+require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
+require_once(DEDEINC.'/typelink.class.php');
+require_once(DEDEINC.'/arc.archives.class.php');
 $ENV_GOBACK_URL = (empty($_COOKIE['ENV_GOBACK_URL']) ? 'content_list.php' : $_COOKIE['ENV_GOBACK_URL']);
 if (empty($dopost)) {
     ShowMsg('对不起，你没指定运行参数', '-1');
@@ -106,11 +106,11 @@ else if ($dopost == "viewArchives") {
     if (preg_match("#^http:#", $arcfile)) {
         $arcfile = preg_replace("#^http:\/\/([^\/]*)\/#i", '/', $arcfile);
     }
-    $truefile = GetTruePath() . $arcfile;
+    $truefile = GetTruePath().$arcfile;
     if (!file_exists($truefile)) {
         MakeArt($aid, TRUE);
     }
-    echo "<script>location.href='$arcurl" . "?" . time() . "';</script>";
+    echo "<script>location.href='$arcurl"."?".time()."';</script>";
     exit();
 }
 /*--------------------------
@@ -180,12 +180,12 @@ else if ($dopost == "commendArchives") {
         if ($row['issystem'] != -1) {
             $maintable = (trim($row['maintable']) == '' ? '#@__archives' : trim($row['maintable']));
             $arr = $dsql->GetOne("SELECT flag FROM `{$maintable}` WHERE id='$aid' ");
-            $flag = ($arr['flag'] == '' ? 'c' : $arr['flag'] . ',c');
+            $flag = ($arr['flag'] == '' ? 'c' : $arr['flag'].',c');
             $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET `flag`='$flag' WHERE id='{$aid}' ");
         } else {
             $maintable = trim($row['addtable']);
             $arr = $dsql->GetOne("SELECT flag From `{$maintable}` where aid='$aid' ");
-            $flag = ($arr['flag'] == '' ? 'c' : $arr['flag'] . ',c');
+            $flag = ($arr['flag'] == '' ? 'c' : $arr['flag'].',c');
             $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
@@ -203,7 +203,7 @@ else if ($dopost == "makeArchives") {
         ShowMsg('参数无效', $ENV_GOBACK_URL);
         exit();
     }
-    require_once(DEDEADMIN . '/inc/inc_archives_functions.php');
+    require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
     $qstrs = explode('`', $qstr);
     $i = 0;
     foreach ($qstrs as $aid) {
@@ -219,7 +219,7 @@ function checkArchives() {   }
 ---------------------------*/
 else if ($dopost == "checkArchives") {
     CheckPurview('a_Check,a_AccCheck,sys_ArcBatch');
-    require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
+    require_once(DEDEADMIN."/inc/inc_archives_functions.php");
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
         ShowMsg("参数无效", $ENV_GOBACK_URL);
@@ -237,9 +237,9 @@ else if ($dopost == "checkArchives") {
         $maintable = (trim($row['maintable']) == '' ? '#@__archives' : trim($row['maintable']));
         $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET arcrank='0' WHERE id='$aid' ");
         if ($row['issystem'] == -1) {
-            $dsql->ExecuteNoneQuery("UPDATE `" . trim($row['addtable']) . "` SET arcrank='0' WHERE aid='$aid' ");
+            $dsql->ExecuteNoneQuery("UPDATE `".trim($row['addtable'])."` SET arcrank='0' WHERE aid='$aid' ");
         } else {
-            $dsql->ExecuteNoneQuery("UPDATE `$maintable` SET arcrank='0', dutyadmin='" . $cuserLogin->getUserID() . "' WHERE id='$aid' ");
+            $dsql->ExecuteNoneQuery("UPDATE `$maintable` SET arcrank='0', dutyadmin='".$cuserLogin->getUserID()."' WHERE id='$aid' ");
         }
         $dsql->ExecuteNoneQuery("UPDATE `#@__taglist` SET arcrank='0' WHERE aid='$aid' ");
         $pageurl = MakeArt($aid, false);
@@ -253,7 +253,7 @@ function delArchives(){ }
 ---------------------------*/
 else if ($dopost == "delArchives") {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC . "/oxwindow.class.php");
+    require_once(DEDEINC."/oxwindow.class.php");
     if (empty($fmdo)) $fmdo = '';
 
     if ($fmdo == 'yes') {
@@ -277,7 +277,7 @@ else if ($dopost == "delArchives") {
         exit();
     } else {
         $wintitle = "文档管理-删除文档";
-        $wecome_info = "<a href='" . $ENV_GOBACK_URL . "'>文档管理</a>::删除文档";
+        $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a>::删除文档";
         $win = new OxWindow();
         $win->Init("archives_do.php", "js/blank.js", "POST");
         $win->AddHidden("fmdo", "yes");
@@ -295,7 +295,7 @@ function moveArchives(){ }
 else if ($dopost == 'moveArchives') {
     CheckPurview('sys_ArcBatch');
     if (empty($totype)) {
-        require_once(DEDEINC . '/typelink.class.php');
+        require_once(DEDEINC.'/typelink.class.php');
         if (!empty($aid) && empty($qstr)) $qstr = $aid;
         AjaxHead();
         $channelid = empty($channelid) ? 0 : $channelid;
@@ -391,7 +391,7 @@ function RbReturnArchives(){ }
 ------------------------------*/
 else if ($dopost == 'return') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC . "/oxwindow.class.php");
+    require_once(DEDEINC."/oxwindow.class.php");
 
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
 
@@ -413,7 +413,7 @@ function RbClearArchives(){ }
 ------------------------------*/
 else if ($dopost == 'clear') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC . "/oxwindow.class.php");
+    require_once(DEDEINC."/oxwindow.class.php");
     if (empty($fmdo)) $fmdo = '';
     $recycle = empty($recycle) ? "" : $recycle;
 
@@ -440,7 +440,7 @@ else if ($dopost == 'clear') {
         $dsql->Execute();
         $qstr = '';
         while ($row = $dsql->GetArray()) {
-            $qstr .= $row['id'] . ",";
+            $qstr .= $row['id'].",";
             $aid = $row['id'];
         }
         $num = $dsql->GetTotalRow();
@@ -468,7 +468,7 @@ function RbDelArchives(){ }
 ------------------------------*/
 else if ($dopost == 'del') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC . "/oxwindow.class.php");
+    require_once(DEDEINC."/oxwindow.class.php");
     if (empty($fmdo)) $fmdo = '';
     $recycle = empty($recycle) ? "" : $recycle;
     if ($fmdo == 'yes') {
@@ -508,7 +508,7 @@ else if ($dopost == 'del') {
 function quickEdit(){ }
 ------------------------------*/
 else if ($dopost == 'quickEdit') {
-    require_once(DEDEADMIN . "/inc/inc_catalog_options.php");
+    require_once(DEDEADMIN."/inc/inc_catalog_options.php");
     AjaxHead();
     $query = "SELECT ch.typename as channelname,ch.addtable,ar.membername as rankname,arc.*
     FROM `#@__archives` arc
@@ -546,7 +546,7 @@ else if ($dopost == 'quickEdit') {
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
-                if (preg_match("#" . $trow->att . "#", $arcRow['flag']))
+                if (preg_match("#".$trow->att."#", $arcRow['flag']))
                 echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'>&nbsp;{$trow->attname}{$trow->att}[{$trow->att}]</label>&nbsp;";
                 else
                 echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'>&nbsp;{$trow->attname}[{$trow->att}]</label>&nbsp;";
@@ -608,7 +608,7 @@ else if ($dopost == 'quickEdit') {
 function quickEditSave(){ }
 ------------------------------*/
 else if ($dopost == 'quickEditSave') {
-    require_once(DEDEADMIN . '/inc/inc_archives_functions.php');
+    require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
     //权限检测
     if (!TestPurview('a_Edit')) {
         if (TestPurview('a_AccEdit')) {
@@ -682,7 +682,7 @@ else if ($dopost == "makekw") {
             $title = $row['title'];
             $description = $row['description'];
             $body = cn_substr($row['body'], 5000);
-            $data = $client->Spliteword($title . Html2Text($body));
+            $data = $client->Spliteword($title.Html2Text($body));
             $keywords = $data->data;
             $description = str_replace('　', ' ', trim($description));
             $description = str_replace('［', ' ', $description);
@@ -695,7 +695,7 @@ else if ($dopost == "makekw") {
         }
         $client->Close();
     } else {
-        include_once(DEDEINC . '/splitword.class.php');
+        include_once(DEDEINC.'/splitword.class.php');
         $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
         while ($row = $dsql->GetArray()) {
             //跳过已经有关键字的内容
@@ -713,19 +713,19 @@ else if ($dopost == "makekw") {
             $allindexs = preg_replace("/#p#|#e#/", '', $sp->GetFinallyIndex());
             if (is_array($allindexs) && is_array($titleindexs)) {
                 foreach ($titleindexs as $k => $v) {
-                    if (strlen($keywords . $k) >= 60) {
+                    if (strlen($keywords.$k) >= 60) {
                         break;
                     } else {
                         if (strlen($k) <= 2) continue;
-                        $keywords .= $k . ',';
+                        $keywords .= $k.',';
                     }
                 }
                 foreach ($allindexs as $k => $v) {
-                    if (strlen($keywords . $k) >= 60) {
+                    if (strlen($keywords.$k) >= 60) {
                         break;
                     } else if (!in_array($k, $titleindexs)) {
                         if (strlen($k) <= 2) continue;
-                        $keywords .= $k . ',';
+                        $keywords .= $k.',';
                     }
                 }
             }
@@ -770,12 +770,12 @@ else if ($dopost == 'attsAdd') {
         if ($row['issystem'] != -1) {
             $maintable = (trim($row['maintable']) == '' ? '#@__archives' : trim($row['maintable']));
             $arr = $dsql->GetOne("SELECT flag FROM `{$maintable}` WHERE id='$aid' ");
-            $flag = ($arr['flag'] == '' ? $flagname : $arr['flag'] . ',' . $flagname);
+            $flag = ($arr['flag'] == '' ? $flagname : $arr['flag'].','.$flagname);
             $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET `flag`='$flag' WHERE id='{$aid}' ");
         } else {
             $maintable = trim($row['addtable']);
             $arr = $dsql->GetOne("SELECT flag FROM `{$maintable}` WHERE aid='$aid' ");
-            $flag = ($arr['flag'] == '' ? $flagname : $arr['flag'] . ',' . $flagname);
+            $flag = ($arr['flag'] == '' ? $flagname : $arr['flag'].','.$flagname);
             $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
@@ -815,7 +815,7 @@ function attsDel(){ }
             $arr = $dsql->GetOne("SELECT flag FROM `{$maintable}` WHERE aid='$aid' ");
         }
         $flag = $arr['flag'];
-        if (trim($flag) == '' || !preg_match("#" . $flagname . "#", $flag)) {
+        if (trim($flag) == '' || !preg_match("#".$flagname."#", $flag)) {
             continue;
         } else {
             $flags  = explode(',', $flag);

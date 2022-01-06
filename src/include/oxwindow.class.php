@@ -9,7 +9,7 @@ if (!defined('DEDEINC')) exit("Request Error!");
  * @license        https://www..com/license
  * @link           https://www..com
  */
-require_once(DEDEINC . "/dedetag.class.php");
+require_once(DEDEINC."/dedetag.class.php");
 /**
  * 提示窗口对话框类
  *
@@ -222,7 +222,7 @@ class OxWindow
         }
         $ctp = new DedeTagParse();
         if ($modfile == '') {
-            $ctp->LoadTemplate($cfg_basedir . $cfg_templets_dir . '/plus/win_templet.htm');
+            $ctp->LoadTemplate($cfg_basedir.$cfg_templets_dir.'/plus/win_templet.htm');
         } else {
             $ctp->LoadTemplate($modfile);
         }

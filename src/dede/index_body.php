@@ -9,23 +9,23 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . '/config.php');
-require(DEDEINC . '/image.func.php');
-require(DEDEINC . '/dedetag.class.php');
-$defaultIcoFile = DEDEDATA . '/admin/quickmenu.txt';
-$myIcoFile = DEDEDATA . '/admin/quickmenu-' . $cuserLogin->getUserID() . '.txt';
+require(dirname(__FILE__).'/config.php');
+require(DEDEINC.'/image.func.php');
+require(DEDEINC.'/dedetag.class.php');
+$defaultIcoFile = DEDEDATA.'/admin/quickmenu.txt';
+$myIcoFile = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
 if (!file_exists($myIcoFile)) $myIcoFile = $defaultIcoFile;
 
 //默认主页
 if (empty($dopost)) {
-    require(DEDEINC . '/inc/inc_fun_funAdmin.php');
-    $verLockFile = DEDEDATA . '/admin/ver.txt';
+    require(DEDEINC.'/inc/inc_fun_funAdmin.php');
+    $verLockFile = DEDEDATA.'/admin/ver.txt';
     $fp = fopen($verLockFile, 'r');
     $upTime = trim(fread($fp, 64));
     fclose($fp);
-    $oktime = substr($upTime, 0, 4) . '-' . substr($upTime, 4, 2) . '-' . substr($upTime, 6, 2);
+    $oktime = substr($upTime, 0, 4).'-'.substr($upTime, 4, 2).'-'.substr($upTime, 6, 2);
     $offUrl = SpGetNewInfo();
-    $dedecmsidc = DEDEDATA . '/admin/idc.txt';
+    $dedecmsidc = DEDEDATA.'/admin/idc.txt';
     $fp = fopen($dedecmsidc, 'r');
     $dedeIDC = fread($fp, filesize($dedecmsidc));
     fclose($fp);
@@ -50,12 +50,12 @@ function _AddNew() {   }
     $ico = preg_replace("#['\"]#", '`', $ico);
     $oldct .= "\r\n<menu:item ico=\"{$ico}\" link=\"{$link}\" title=\"{$title}\" />";
 
-    $myIcoFileTrue = DEDEDATA . '/admin/quickmenu-' . $cuserLogin->getUserID() . '.txt';
+    $myIcoFileTrue = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
     $fp = fopen($myIcoFileTrue, 'w');
     fwrite($fp, $oldct);
     fclose($fp);
 
-    ShowMsg("成功增加一个项目！", "index_body.php?" . time());
+    ShowMsg("成功增加一个项目！", "index_body.php?".time());
     exit();
 }
 /*---------------------------
@@ -64,12 +64,12 @@ function _EditSave() {   }
 ----------------------------*/ else if ($dopost == 'editsave') {
     $quickmenu = stripslashes($quickmenu);
 
-    $myIcoFileTrue = DEDEDATA . '/admin/quickmenu-' . $cuserLogin->getUserID() . '.txt';
+    $myIcoFileTrue = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
     $fp = fopen($myIcoFileTrue, 'w');
     fwrite($fp, $quickmenu);
     fclose($fp);
 
-    ShowMsg("成功修改快捷操作项目！", "index_body.php?" . time());
+    ShowMsg("成功修改快捷操作项目！", "index_body.php?".time());
     exit();
 }
 /*---------------------------
@@ -79,7 +79,7 @@ function _EditSave() {   }
     $movedata = str_replace('\\', "", $sortorder);
     $movedata = json_decode($movedata, TRUE);
     $movedata = serialize($movedata);
-    $myIcoFileTrue = DEDEDATA . '/admin/move-' . $cuserLogin->getUserID() . '.txt';
+    $myIcoFileTrue = DEDEDATA.'/admin/move-'.$cuserLogin->getUserID().'.txt';
     $fp = fopen($myIcoFileTrue, 'w');
     fwrite($fp, $movedata);
     fclose($fp);
@@ -214,7 +214,7 @@ function _getRightSide() {   }
 } else if ($dopost == 'setskin') {
     $cskin = empty($cskin) ? 1 : $cskin;
     $skin = !in_array($cskin, array(1, 2, 3, 4)) ? 1 : $cskin;
-    $skinconfig = DEDEDATA . '/admin/skin.txt';
+    $skinconfig = DEDEDATA.'/admin/skin.txt';
     PutFile($skinconfig, $skin);
 } elseif ($dopost == 'get_seo') {
     // 直接采用DedeBIZ重写方法

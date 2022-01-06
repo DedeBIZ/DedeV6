@@ -21,9 +21,9 @@ define('DEBUG_LEVEL', FALSE); // 如果设置为TRUE则会打印执行SQL的时�
 
 define('DEDEINC', str_replace("\\", '/', dirname(__FILE__)));
 define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -8)));
-define('DEDEDATA', DEDEROOT . '/data');
-define('DEDEMEMBER', DEDEROOT . '/member');
-define('DEDETEMPLATE', DEDEROOT . '/templets');
+define('DEDEDATA', DEDEROOT.'/data');
+define('DEDEMEMBER', DEDEROOT.'/member');
+define('DEDETEMPLATE', DEDEROOT.'/templets');
 
 // ------------------------------------------------------------------------
 define('DEDEBIZURL', "https://www.dedebiz.com"); // Dede商业支持
@@ -124,7 +124,7 @@ if (preg_match('/windows/i', @getenv('OS'))) {
 }
 
 //系统配置参数
-require_once(DEDEDATA . "/config.cache.inc.php");
+require_once(DEDEDATA."/config.cache.inc.php");
 
 //Session保存路径
 $sessSaveHandler = @ini_get("session.save_handler");
@@ -133,7 +133,7 @@ if ($sessSaveHandler !== "files") {
 }
 
 $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
-$sessSavePath = DEDEDATA . "/sessions_{$enkey}";
+$sessSavePath = DEDEDATA."/sessions_{$enkey}";
 if (!is_dir($sessSavePath)) mkdir($sessSavePath);
 
 if (is_writeable($sessSavePath) && is_readable($sessSavePath)) {
@@ -142,19 +142,19 @@ if (is_writeable($sessSavePath) && is_readable($sessSavePath)) {
 
 //转换上传的文件相关的变量及安全处理、并引用前台通用的上传函数
 if ($_FILES) {
-    require_once(DEDEINC . '/uploadsafe.inc.php');
+    require_once(DEDEINC.'/uploadsafe.inc.php');
 }
 
 //数据库配置文件
-require_once(DEDEDATA . '/common.inc.php');
+require_once(DEDEDATA.'/common.inc.php');
 
 if (!isset($cfg_dbtype)) {
     $cfg_dbtype = 'mysql';
 }
 
 //载入系统验证安全配置
-if (file_exists(DEDEDATA . '/safe/inc_safe_config.php')) {
-    require_once(DEDEDATA . '/safe/inc_safe_config.php');
+if (file_exists(DEDEDATA.'/safe/inc_safe_config.php')) {
+    require_once(DEDEDATA.'/safe/inc_safe_config.php');
     if (!empty($safe_faqs)) $safefaqs = unserialize($safe_faqs);
 }
 
@@ -167,7 +167,7 @@ if (!empty($cfg_domain_cookie)) {
 //由于这个函数对于是php5.1以下版本并无意义，因此实际上的时间调用，应该用MyDate函数调用
 if (PHP_VERSION > '5.1') {
     $time51 = $cfg_cli_time * -1;
-    @date_default_timezone_set('Etc/GMT' . $time51);
+    @date_default_timezone_set('Etc/GMT'.$time51);
 }
 $cfg_isUrlOpen = @ini_get("allow_url_fopen");
 
@@ -175,12 +175,12 @@ $cfg_isUrlOpen = @ini_get("allow_url_fopen");
 if (PHP_SAPI === 'cli') {
     $cfg_clihost = 'https://www.dedebiz.com';
 } else {
-    $cfg_clihost = 'http://' . $_SERVER['HTTP_HOST'];
+    $cfg_clihost = 'http://'.$_SERVER['HTTP_HOST'];
 }
 
 
 //站点根目录
-$cfg_basedir = preg_replace('#' . $cfg_cmspath . '\/include$#i', '', DEDEINC);
+$cfg_basedir = preg_replace('#'.$cfg_cmspath.'\/include$#i', '', DEDEINC);
 if ($cfg_multi_site == 'Y') {
     $cfg_mainsite = $cfg_basehost;
 } else {
@@ -188,52 +188,52 @@ if ($cfg_multi_site == 'Y') {
 }
 
 //模板的存放目录
-$cfg_templets_dir = $cfg_cmspath . '/templets';
-$cfg_templeturl = $cfg_mainsite . $cfg_templets_dir;
-$cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite . $cfg_templets_dir . "/default" : $cfg_mainsite . $cfg_templets_dir . "/$cfg_df_style";
+$cfg_templets_dir = $cfg_cmspath.'/templets';
+$cfg_templeturl = $cfg_mainsite.$cfg_templets_dir;
+$cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/default" : $cfg_mainsite.$cfg_templets_dir."/$cfg_df_style";
 
 //cms安装目录的网址
-$cfg_cmsurl = $cfg_mainsite . $cfg_cmspath;
+$cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
 
 //插件目录，这个目录是用于存放计数器、投票、评论等程序的必要动态程序
-$cfg_plus_dir = $cfg_cmspath . '/plus';
-$cfg_phpurl = $cfg_mainsite . $cfg_plus_dir;
+$cfg_plus_dir = $cfg_cmspath.'/plus';
+$cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
 
-$cfg_static_dir = $cfg_cmspath . '/static';
-$cfg_staticurl = $cfg_mainsite . $cfg_static_dir;
+$cfg_static_dir = $cfg_cmspath.'/static';
+$cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
 
-$cfg_mobile_dir = $cfg_cmspath . '/m';
-$cfg_mobileurl = $cfg_mainsite . $cfg_mobile_dir;
+$cfg_mobile_dir = $cfg_cmspath.'/m';
+$cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
 
-$cfg_data_dir = $cfg_cmspath . '/data';
-$cfg_dataurl = $cfg_mainsite . $cfg_data_dir;
+$cfg_data_dir = $cfg_cmspath.'/data';
+$cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
 
 //会员目录
-$cfg_member_dir = $cfg_cmspath . '/member';
-$cfg_memberurl = $cfg_mainsite . $cfg_member_dir;
+$cfg_member_dir = $cfg_cmspath.'/member';
+$cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
 
 //专题列表的存放路径
-$cfg_special = $cfg_cmspath . '/special';
-$cfg_specialurl = $cfg_mainsite . $cfg_special;
+$cfg_special = $cfg_cmspath.'/special';
+$cfg_specialurl = $cfg_mainsite.$cfg_special;
 
 //附件目录
-$cfg_medias_dir = $cfg_cmspath . $cfg_medias_dir;
-$cfg_mediasurl = $cfg_mainsite . $cfg_medias_dir;
+$cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;
+$cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
 
 //上传的普通图片的路径,建议按默认
-$cfg_image_dir = $cfg_medias_dir . '/allimg';
+$cfg_image_dir = $cfg_medias_dir.'/allimg';
 
 //上传的缩略图
-$ddcfg_image_dir = $cfg_medias_dir . '/litimg';
+$ddcfg_image_dir = $cfg_medias_dir.'/litimg';
 
 //用户投稿图片存放目录
-$cfg_user_dir = $cfg_medias_dir . '/userup';
+$cfg_user_dir = $cfg_medias_dir.'/userup';
 
 //上传的软件目录
-$cfg_soft_dir = $cfg_medias_dir . '/soft';
+$cfg_soft_dir = $cfg_medias_dir.'/soft';
 
 //上传的多媒体文件目录
-$cfg_other_medias = $cfg_medias_dir . '/media';
+$cfg_other_medias = $cfg_medias_dir.'/media';
 
 //软件摘要信息，****请不要删除本项**** 否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
@@ -247,7 +247,7 @@ $cfg_soft_devteam = 'DedeBIZ';
 
 //文档的默认命名规则
 $art_shortname = $cfg_df_ext = '.html';
-$cfg_df_namerule = '{typedir}/{Y}/{M}{D}/{aid}' . $cfg_df_ext;
+$cfg_df_namerule = '{typedir}/{Y}/{M}{D}/{aid}'.$cfg_df_ext;
 
 //新建目录的权限，如果你使用别的属性，本程不保证程序能顺利在Linux或Unix系统运行
 if (isset($cfg_ftp_mkdir) && $cfg_ftp_mkdir == 'Y') {
@@ -273,7 +273,7 @@ if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_usermail)) {
 }
 
 // DedeBIZ商业化组件
-require_once(DEDEINC . '/dedebiz.class.php');
+require_once(DEDEINC.'/dedebiz.class.php');
 
 //对全局分页传递参数进行过滤
 if (isset($GLOBALS['PageNo'])) {
@@ -304,24 +304,24 @@ if (!isset($cfg_NotPrintHead)) {
 
 //自动加载类库处理
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
-    require_once(DEDEINC . '/autoload7.inc.php');
+    require_once(DEDEINC.'/autoload7.inc.php');
 } else {
-    require_once(DEDEINC . '/autoload.inc.php');
+    require_once(DEDEINC.'/autoload.inc.php');
 }
 
-$cfg_biz_helpUrl = DEDEBIZURL . "/help";
-$cfg_biz_gitUrl = DEDEBIZURL . "/git";
+$cfg_biz_helpUrl = DEDEBIZURL."/help";
+$cfg_biz_gitUrl = DEDEBIZURL."/git";
 $cfg_biz_dedebizUrl = DEDEBIZURL;
 
 //引入数据库类
 if ($GLOBALS['cfg_dbtype'] == 'mysql' || $GLOBALS['cfg_dbtype'] == 'mysqli') {
-    require_once(DEDEINC . '/dedesqli.class.php');
+    require_once(DEDEINC.'/dedesqli.class.php');
 } else {
-    require_once(DEDEINC . '/dedesqlite.class.php');
+    require_once(DEDEINC.'/dedesqlite.class.php');
 }
 
 //全局常用函数
-require_once(DEDEINC . '/common.func.php');
+require_once(DEDEINC.'/common.func.php');
 
 //载入小助手配置,并对其进行默认初始化
 $cfg_helper_autoload = array(

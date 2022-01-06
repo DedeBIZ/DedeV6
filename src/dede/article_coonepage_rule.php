@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/datalistcp.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($action)) $action = '';
 
@@ -115,6 +115,6 @@ function _ShowLoad(){ }
 $sql = "";
 $sql = "SELECT id,url,title,lang,issource FROM `#@__co_onepage` ORDER BY id DESC";
 $dlist = new DataListCP();
-$dlist->SetTemplate(DEDEADMIN . "/templets/article_coonepage_rule.htm");
+$dlist->SetTemplate(DEDEADMIN."/templets/article_coonepage_rule.htm");
 $dlist->SetSource($sql);
 $dlist->Display();

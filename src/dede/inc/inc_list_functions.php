@@ -10,7 +10,7 @@
  * @link           https://www.dedebiz.com
  */
 if (!isset($registerGlobals)) {
-    require_once(dirname(__FILE__) . "/../../include/common.inc.php");
+    require_once(dirname(__FILE__)."/../../include/common.inc.php");
 }
 
 // 获取栏目名称
@@ -18,8 +18,8 @@ function GetTypename($tid)
 {
     global $dsql;
     if (empty($tid)) return '';
-    if (file_exists(DEDEDATA . '/cache/inc_catalog_base.inc')) {
-        require_once(DEDEDATA . '/cache/inc_catalog_base.inc');
+    if (file_exists(DEDEDATA.'/cache/inc_catalog_base.inc')) {
+        require_once(DEDEDATA.'/cache/inc_catalog_base.inc');
         global $cfg_Cs;
         if (isset($cfg_Cs[$tid])) {
             return base64_decode($cfg_Cs[$tid][3]);
@@ -46,7 +46,7 @@ function IsCommendArchives($iscommend)
     $sn = '';
     foreach ($arcatts as $k => $v) {
         $v = cn_substr($v, 2);
-        $sn .= (preg_match("#" . $k . "#", $iscommend) ? ' ' . $v : '');
+        $sn .= (preg_match("#".$k."#", $iscommend) ? ' '.$v : '');
     }
     $sn = trim($sn);
     if ($sn == '') return '';

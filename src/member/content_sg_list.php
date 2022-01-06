@@ -9,11 +9,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
-require_once(DEDEINC . "/typelink.class.php");
-require_once(DEDEINC . "/datalistcp.class.php");
-require_once(DEDEMEMBER . "/inc/inc_list_functions.php");
+require_once(DEDEINC."/typelink.class.php");
+require_once(DEDEINC."/datalistcp.class.php");
+require_once(DEDEMEMBER."/inc/inc_list_functions.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $cid = isset($cid) && is_numeric($cid) ? $cid : 0;
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 0;
@@ -39,9 +39,9 @@ if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
 }
 
 if ($cid == 0) {
-    $positionname = $cInfos['typename'] . " &gt;&gt; ";
+    $positionname = $cInfos['typename']." &gt;&gt; ";
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt;&gt; ", $tl->GetPositionName()) . " &gt;&gt; ";
+    $positionname = str_replace($cfg_list_symbol, " &gt;&gt; ", $tl->GetPositionName())." &gt;&gt; ";
 }
 $whereSql = " WHERE arc.channel = '$channelid' AND arc.mid='$mid' ";
 if ($keyword != '') {
@@ -50,7 +50,7 @@ if ($keyword != '') {
     $whereSql .= " AND (arc.title like '%$keyword%') ";
 }
 if ($cid != 0) {
-    $whereSql .= " AND arc.typeid in (" . GetSonIds($cid) . ")";
+    $whereSql .= " AND arc.typeid in (".GetSonIds($cid).")";
 }
 if ($arcrank == '1') {
     $whereSql .= " And arc.arcrank >= 0";
@@ -71,6 +71,6 @@ $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);
 $dlist->SetParameter("channelid", $channelid);
-$dlist->SetTemplate(DEDEMEMBER . "/templets/content_sg_list.htm");
+$dlist->SetTemplate(DEDEMEMBER."/templets/content_sg_list.htm");
 $dlist->SetSource($query);
 $dlist->Display();
