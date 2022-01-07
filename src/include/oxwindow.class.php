@@ -36,17 +36,17 @@ class OxWindow
      */
     function Init($formaction = "", $checkScript = "js/blank.js", $formmethod = "POST", $formname = "myform")
     {
-        $this->myWin .= "<script language='javascript'>\r\n";
+        $this->myWin .= "<script>";
         if ($checkScript != "" && file_exists($checkScript)) {
             $fp = fopen($checkScript, "r");
             $this->myWin .= fread($fp, filesize($checkScript));
             fclose($fp);
         } else {
-            $this->myWin .= "<!-- function CheckSubmit()\r\n{ return true; } -->";
+            $this->myWin .= "<!--function CheckSubmit(){return true;}-->";
         }
-        $this->myWin .= "</script>\r\n";
+        $this->myWin .= "</script>";
         $this->formName = $formname;
-        $this->myWin .= "<form name='$formname' method='$formmethod' onSubmit='return CheckSubmit();' action='$formaction'>\r\n";
+        $this->myWin .= "<form name='$formname' method='$formmethod' onSubmit='return CheckSubmit();' action='$formaction'>";
     }
     /**
      *  增加隐藏域
@@ -57,7 +57,7 @@ class OxWindow
      */
     function AddHidden($iname, $ivalue)
     {
-        $this->myWin .= "<input type='hidden' name='$iname' value='$ivalue'>\r\n";
+        $this->myWin .= "<input type='hidden' name='$iname' value='$ivalue'>";
     }
     /**
      *  开始创建窗口
@@ -66,7 +66,7 @@ class OxWindow
      */
     function StartWin()
     {
-        $this->myWin .= "<table width='100%'  border='0' cellpadding='3' cellspacing='1'>\r\n";
+        $this->myWin .= "<table width='100%' border='0' cellpadding='3' cellspacing='1'>";
     }
     /**
      *  增加一个两列的行
@@ -78,10 +78,10 @@ class OxWindow
      */
     function AddItem($iname, $ivalue)
     {
-        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>\r\n";
-        $this->myWinItem .= "<td width='25%'>$iname</td>\r\n";
-        $this->myWinItem .= "<td width='75%'>$ivalue</td>\r\n";
-        $this->myWinItem .= "</tr>\r\n";
+        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>";
+        $this->myWinItem .= "<td width='30%'>$iname</td>";
+        $this->myWinItem .= "<td width='70%'>$ivalue</td>";
+        $this->myWinItem .= "</tr>";
     }
     /**
      *  增加一个单列的消息行
@@ -104,9 +104,9 @@ class OxWindow
         } else {
             $colspan = "";
         }
-        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>\r\n";
-        $this->myWinItem .= "<td $colspan $height> $ivalue </td>\r\n";
-        $this->myWinItem .= "</tr>\r\n";
+        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>";
+        $this->myWinItem .= "<td $colspan $height>$ivalue</td>";
+        $this->myWinItem .= "</tr>";
     }
     /**
      *  增加单列的标题行
@@ -124,9 +124,9 @@ class OxWindow
         } else {
             $colspan = "";
         }
-        $this->myWinItem .= "<tr>\r\n";
-        $this->myWinItem .= "<td $colspan height='26'>$title</td>\r\n";
-        $this->myWinItem .= "</tr>\r\n";
+        $this->myWinItem .= "<tr>";
+        $this->myWinItem .= "<td $colspan style='height:26px;color:#424b51'>$title</td>";
+        $this->myWinItem .= "</tr>";
     }
     /**
      *  结束Window
@@ -137,9 +137,9 @@ class OxWindow
     function CloseWin($isform = true)
     {
         if (!$isform) {
-            $this->myWin .= "</table>\r\n";
+            $this->myWin .= "</table>";
         } else {
-            $this->myWin .= "</table></form>\r\n";
+            $this->myWin .= "</table></form>";
         }
     }
     /**
