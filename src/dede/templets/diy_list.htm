@@ -26,7 +26,7 @@
 			if(!empty($fields))
 			{
 				$allowhtml = array('htmltext');
-				$fields['sta'] = $fields['ifcheck'] == 1 ?'已审核':'未审核';
+				$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
 				echo '<tr bgcolor="#F8FDE3" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><img src="images/feedback-edit.gif" border="0" width="46" height="18"></a></td></tr>';
 				foreach($fieldlist as $field=>$fielddata)
 				{
@@ -52,7 +52,7 @@
 				<td colspan="3" bgcolor="#fff">{dede:pagelist listsize='6'/}</td>
 			</tr>
 			<tr>
-				<td colspan="3" height="36" bgcolor="#F8FCF1">
+				<td colspan="3" height="36" bgcolor="#f2f2f2">
 					<label><input type="button" name="select" onClick="selAll()" value="全选"></label>
 					<label><input type="button" name="select" onClick="noSelAll()" value="取消"></label>
 					<label><input type="radio" name="action" class="btn btn-success btn-sm" value="check">&nbsp;审核</label>

@@ -17,16 +17,15 @@ function DelTpl(filename) {
 }
 </script>
 </head>
-<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-	<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6"
-		class="table maintable table-bordered mt-3">
+<body background="images/allbg.gif" leftmargin="8" topmargin="8">
+	<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
 		<tr>
 			<td height="30" background="images/tbg.gif" colspan="7">
 				<b>模板管理</b>
 			</td>
 		</tr>
 	</table>
-	<table width='98%' border='0' cellspacing='1' cellpadding='0' align="center" bgcolor="#cfcfcf" class="table maintable table-bordered">
+	<table width="98%" border="0" cellspacing="1" cellpadding="0" align="center" bgcolor="#cfcfcf" class="table maintable table-bordered">
 		<tr height="30" align="center">
 			<td width="25%" background="images/wbg.gif"><strong>文件名</strong></td>
 			<td width="30%" background="images/wbg.gif"><strong>文件描述</strong></td>
@@ -35,18 +34,18 @@ function DelTpl(filename) {
 		</tr>
 		<tr>
 			<td colspan="4" height="30" bgcolor="#F9FCEF">
-				<div style="float:left;line-height:30px">
+				<span style="float:left;line-height:30px">
 				当前位置：
 				<?php
       			if($acdir=='plus') echo '插件模板';
       			else if($acdir=='system') echo '底层模板';
       			else echo '核心模板 &gt; '.$acdir;
       			?>
-				</div>
-				<div style="float:right;padding-right:10px">
+				</span>
+				<span style="float:right;padding-right:10px">
 					<a class="btn btn-success btn-sm" href="templets_main.php">默认模板目录</a>
 					<a class="btn btn-success btn-sm" href="templets_main.php?acdir=plus">插件模板目录</a>
-				</div>
+				</span>
 			</td>
 		</tr>
 		<?php
@@ -56,7 +55,7 @@ function DelTpl(filename) {
 			continue;
 			$filetime = filemtime($templetdird.'/'.$filename);
 			$filetime = MyDate("Y-m-d H:i",$filetime);
-			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename] : '未知模板');
+			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 		?>
 		<tr height="26" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
 			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="images/htm.gif"><?php echo $filename; ?></a></td>
@@ -65,8 +64,7 @@ function DelTpl(filename) {
 			<td align="center">
 				<a href="tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;
 				<?php
-				if(!isset($fileinfos[$filename]))
-				{
+				if(!isset($fileinfos[$filename])){
 				?>
 				<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
 				<?php
@@ -78,7 +76,7 @@ function DelTpl(filename) {
 		}
 		?>
 		<tr>
-			<td colspan="4" height="36" bgcolor="#F9FCEF">
+			<td colspan="4" height="36" bgcolor="#f2f2f2">
 				<a class="btn btn-success" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>&nbsp;
 				<a class="btn btn-success" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
 			</td>
