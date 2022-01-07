@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
-  <title>更改文章</title>
-  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/base.css" type="text/css">
-  <link rel="stylesheet" href="../static/css/daterangepicker.css">
-  <link rel="stylesheet" href="../static/css/jquery.fileupload.css">
-  <link rel="stylesheet" href="../static/css/cropper.min.css">
-  <script src="../static/js/jquery.js"></script>
-  <script src="../static/js/dedeajax2.js"></script>
-  <script src="../static/js/moment.min.js"></script>
-  <script src="../static/js/daterangepicker.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/handlers.js"></script>
-  <script src="../static/js/bootstrap.bundle.js"></script>
-  <script src="../static/js/cropper.min.js"></script>
-  <script>
-    var swfu = null;
-    var arctype = 'article';
-    function checkSubmit() {
-      if (document.form1.title.value == '') {
-        ShowMsg('文章标题不能为空');
-        document.form1.title.focus();
-        return false;
-      }
-    }
-  </script>
-  <style>
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>更改文章</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<link rel="stylesheet" href="../static/css/daterangepicker.css">
+<link rel="stylesheet" href="../static/css/jquery.fileupload.css">
+<link rel="stylesheet" href="../static/css/cropper.min.css">
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/dedeajax2.js"></script>
+<script src="../static/js/moment.min.js"></script>
+<script src="../static/js/daterangepicker.js"></script>
+<script src="js/main.js"></script>
+<script src="js/handlers.js"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
+<script src="../static/js/cropper.min.js"></script>
+<script>
+var swfu = null;
+var arctype = 'article';
+function checkSubmit() {
+  if (document.form1.title.value == '') {
+    ShowMsg('文章标题不能为空');
+    document.form1.title.focus();
+    return false;
+  }
+}
+</script>
+<style>
 body{background:#ffffff}
-table{border-collapse:separate}
 img{vertical-align:baseline}
+table{border-collapse:separate}
 .albCt img{cursor:pointer}
-  </style>
+.btn+.btn{margin-left:10px}
+</style>
 </head>
 <body topmargin="8">
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
@@ -71,7 +72,7 @@ img{vertical-align:baseline}
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
     <input type="hidden" name="id" value="<?php echo $aid?>">
     <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
-    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #cfcfcf;background:#ffffff;">
+    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #cfcfcf;background:#ffffff">
       <tr>
         <td height="26" colspan="2" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
@@ -311,7 +312,8 @@ img{vertical-align:baseline}
               <td width="90">发布选项：</td>
               <td>
                 <label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked";?>>&nbsp;生成HTML&nbsp;</label>
-                <label><input type="radio" name="ishtml" class="np" value="0" <?php if($arcRow["ismake"]==-1) echo " checked";?>>&nbsp;仅动态浏览</label></td>
+                <label><input type="radio" name="ishtml" class="np" value="0" <?php if($arcRow["ismake"]==-1) echo " checked";?>>&nbsp;仅动态浏览</label>
+              </td>
             </tr>
           </table>
         </td>
@@ -384,18 +386,11 @@ img{vertical-align:baseline}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#F9FCEF" style="border:1px solid #cfcfcf;border-top:none" class="mb-3">
-      <tr>
-        <td height="36">
-          <table width="100%" border="0" cellspacing="1" cellpadding="1">
-            <tr>
-              <td width="4%"></td>
-              <td width="96%">
-                <button type="submit" class="btn btn-success">保存</button>&nbsp;
-                <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
-              </td>
-            </tr>
-          </table>
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #cfcfcf;border-top:none" class="mb-3">
+      <tr height="36">
+        <td style="padding:.6rem">
+          <button type="submit" class="btn btn-success">保存</button>
+          <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
         </td>
       </tr>
     </table>
