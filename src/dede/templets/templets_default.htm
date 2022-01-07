@@ -1,14 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<meta charset="<?php echo $cfg_soft_lang; ?>">
 <title>模板管理器</title>
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
 <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/base.css">
 <style>
 .linerow{border-bottom:1px solid #CBD8AC}
-td{padding-left:6px}
 a.btn{color:white!important}
 </style>
 <script>
@@ -60,7 +59,7 @@ function DelTpl(filename) {
 			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename] : '未知模板');
 		?>
 		<tr height="26" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target='_blank'><img src="images/htm.gif"><?php echo $filename; ?></a></td>
+			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="images/htm.gif"><?php echo $filename; ?></a></td>
 			<td><?php echo $fileinfo; ?></td>
 			<td align="center"><?php echo $filetime; ?></td>
 			<td align="center">
@@ -79,7 +78,10 @@ function DelTpl(filename) {
 		}
 		?>
 		<tr>
-			<td colspan="4" height="36" bgcolor="#F9FCEF"><a class="btn btn-success" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>&nbsp;<a class="btn btn-success" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a></td>
+			<td colspan="4" height="36" bgcolor="#F9FCEF">
+				<a class="btn btn-success" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>&nbsp;
+				<a class="btn btn-success" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
+			</td>
 		</tr>
 	</table>
 </body>

@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<meta charset="<?php echo $cfg_soft_lang; ?>">
 <title>一键更新</title>
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
 <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
@@ -67,42 +67,38 @@ function SelUp(){
                 </td>
             </tr>
             <tr>
-                <td width="30%" height="30"  bgcolor="#FFFFFF">&nbsp;&nbsp;更新选项：</td>
+                <td width="30%" height="30"  bgcolor="#FFFFFF">&nbsp;更新选项：</td>
                 <td valign="top" bgcolor="#FFFFFF">
-                  <label><input name="uptype" id="uptype1" type="radio" value="time" onClick="SelUp()" checked="checked">指定时间的所有更新</label>
-                  <label><input name="uptype" id="uptype2" type="radio" onClick="SelUp()" value="id">指定ID文档的所有更新</label>
-                  <label><input name="uptype" id="uptype3" type="radio" onClick="SelUp()" value="mkall">更新所有</label>
+                  <label><input name="uptype" id="uptype1" type="radio" value="time" onClick="SelUp()" checked="checked">&nbsp;指定时间的所有更新</label>
+                  <label><input name="uptype" id="uptype2" type="radio" onClick="SelUp()" value="id">&nbsp;指定ID文档的所有更新</label>
+                  <label><input name="uptype" id="uptype3" type="radio" onClick="SelUp()" value="mkall">&nbsp;更新所有</label>
                 </td>
             </tr>
             <tr id="seltime">
-                <td height="26"  bgcolor="#FFFFFF">&nbsp;&nbsp;起始时间：</td>
+                <td height="26"  bgcolor="#FFFFFF">&nbsp;起始时间：</td>
                 <td height="26"  bgcolor="#FFFFFF"><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time()); ?>" style="width:200px" class="datepicker"></td>
             </tr>
-            <tr bgcolor="#FFFFFF" id="selid" style="display:none;">
-                <td height="26">&nbsp;&nbsp;起始ID：</td>
+            <tr bgcolor="#FFFFFF" id="selid" style="display:none">
+                <td height="26">&nbsp;起始ID：</td>
                 <td height="26"><input name="startid" type="text" id="startid" value="0" size="4"></td>
             </tr>
             <tr>
-                <td height="30" colspan="2" bgcolor="#ffffff" align="center" style="padding-top:6px"><button type="submit" name="Submit" class="btn btn-success">开始更新</button></td>
+                <td height="30" colspan="2" bgcolor="#ffffff" align="center"><button type="submit" name="Submit" class="btn btn-success">开始更新</button></td>
             </tr>
         </form>
         <tr bgcolor="#F9FCEF">
-            <td height="26" colspan="2">
-                <table width="100%" class="table table-borderless">
-                    <tr>
-                        <td width="74%">进行状态：</td>
-                        <td width="26%" align="right">
-                        <script>
-                        function ResizeDiv(obj,ty)
-                        {
-                            if(ty=="+") document.all[obj].style.pixelHeight += 50;
-                            else if(document.all[obj].style.pixelHeight>80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-                        }
-                        </script>
-                        [<a href='javascript:;' onClick="ResizeDiv('mdv','+');">增大</a>]&nbsp;[<a href='javascript:;' onClick="ResizeDiv('mdv','-');">缩小</a>]
-                        </td>
-                    </tr>
-                </table>
+            <td colspan="2" style="line-height:30px">&nbsp;进行状态：
+                <script>
+                function ResizeDiv(obj,ty)
+                {
+                    if(ty=="+") document.all[obj].style.pixelHeight += 50;
+                    else if(document.all[obj].style.pixelHeight>80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+                }
+                </script>
+                <span style="float:right">
+                    <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>&nbsp;
+                    <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
+                </span>
             </td>
         </tr>
         <tr bgcolor="#FFFFFF">
