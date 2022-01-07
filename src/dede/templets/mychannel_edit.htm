@@ -368,7 +368,7 @@ if($ft==1)
                   href='mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&issystem=<?php echo $row['issystem']; ?>'><img
                     src='images/gtk-edit.png' alt='更改' title='更改' /></a>
                 <?php if($row['issystem']!=1){ ?>
-                | <a href='#'
+                | <a href='javascript:;'
                   onClick='javascript:DelNote("mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&action=delete");'><img
                     src='images/gtk-del.png' alt='删除' title='删除' /></a>
                 <?php } ?>
