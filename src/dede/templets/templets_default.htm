@@ -9,6 +9,7 @@
 <style>
 .linerow{border-bottom:1px solid #CBD8AC}
 a.btn{color:white!important}
+.btn+.btn{margin-left:10px}
 </style>
 <script>
 function DelTpl(filename) {
@@ -34,7 +35,7 @@ function DelTpl(filename) {
 		</tr>
 		<tr>
 			<td colspan="4" height="30" bgcolor="#F9FCEF">
-				<span style="float:left;line-height:30px">
+				<span style="float:left;line-height:26px">
 				当前位置：
 				<?php
       			if($acdir=='plus') echo '插件模板';
@@ -62,7 +63,7 @@ function DelTpl(filename) {
 			<td><?php echo $fileinfo; ?></td>
 			<td align="center"><?php echo $filetime; ?></td>
 			<td align="center">
-				<a href="tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;
+				<a href="tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 				<?php
 				if(!isset($fileinfos[$filename])){
 				?>
@@ -76,8 +77,8 @@ function DelTpl(filename) {
 		}
 		?>
 		<tr>
-			<td colspan="4" height="36" bgcolor="#f2f2f2">
-				<a class="btn btn-success" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>&nbsp;
+			<td colspan="4" height="36" bgcolor="#f8f8f8">
+				<a class="btn btn-success" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>
 				<a class="btn btn-success" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
 			</td>
 		</tr>

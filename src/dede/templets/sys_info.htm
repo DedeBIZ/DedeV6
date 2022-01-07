@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
-  <title>系统配置参数</title>
-  <script src="../static/js/dedeajax2.js"></script>
-  <script src="../static/js/jquery.js"></script>
-  <script>
-    var searchconfig = false;
-    function Nav() {
-      if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-      else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-      else return "OT";
-    }
-    function $Obj(objname) {
-      return document.getElementById(objname);
-    }
-    function ShowConfig(em, allgr) {
-      if (searchconfig) location.reload();
-      for (var i = 1; i <= allgr; i++) {
-        if (i == em) $Obj('td' + i).style.display = (Nav() == 'IE' ? 'block' : 'table');
-        else $Obj('td' + i).style.display = 'none';
-      }
-      $Obj('addvar').style.display = 'none';
-    }
-    function ShowHide(objname) {
-      var obj = $Obj(objname);
-      if (obj.style.display != "none") obj.style.display = "none";
-      else obj.style.display = (Nav() == 'IE' ? 'block' : 'table-row');
-    }
-    function backSearch() {
-      location.reload();
-    }
-    function getSearch() {
-      var searchKeywords = $Obj('keywds').value;
-      searchKeywords = searchKeywords.replace(/^cfg_/, "");
-      var myajax = new DedeAjax($Obj('_search'));
-      myajax.SendGet('sys_info.php?dopost=search&keywords=' + searchKeywords)
-      $Obj('_searchback').innerHTML = '<button class="btn btn-success btn-sm" name="searchbackBtn" type="button" id="searchbackBtn" onclick="backSearch()">返回</button>'
-      $Obj('_mainsearch').innerHTML = '';
-      searchconfig = true;
-    }
-    function resetCookieEncode() {
-      jQuery.get("sys_info.php?dopost=make_encode", function (data) {
-        jQuery("#edit___cfg_cookie_encode").val(data);
-      });
-    }
-  </script>
-  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/base.css">
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>系统配置参数</title>
+<script src="../static/js/dedeajax2.js"></script>
+<script src="../static/js/jquery.js"></script>
+<script>
+var searchconfig = false;
+function Nav() {
+  if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
+  else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+  else return "OT";
+}
+function $Obj(objname) {
+  return document.getElementById(objname);
+}
+function ShowConfig(em, allgr) {
+  if (searchconfig) location.reload();
+  for (var i = 1; i <= allgr; i++) {
+    if (i == em) $Obj('td' + i).style.display = (Nav() == 'IE' ? 'block' : 'table');
+    else $Obj('td' + i).style.display = 'none';
+  }
+  $Obj('addvar').style.display = 'none';
+}
+function ShowHide(objname) {
+  var obj = $Obj(objname);
+  if (obj.style.display != "none") obj.style.display = "none";
+  else obj.style.display = (Nav() == 'IE' ? 'block' : 'table-row');
+}
+function backSearch() {
+  location.reload();
+}
+function getSearch() {
+  var searchKeywords = $Obj('keywds').value;
+  searchKeywords = searchKeywords.replace(/^cfg_/, "");
+  var myajax = new DedeAjax($Obj('_search'));
+  myajax.SendGet('sys_info.php?dopost=search&keywords=' + searchKeywords)
+  $Obj('_searchback').innerHTML = '<button class="btn btn-success btn-sm" name="searchbackBtn" type="button" id="searchbackBtn" onclick="backSearch()">返回</button>'
+  $Obj('_mainsearch').innerHTML = '';
+  searchconfig = true;
+}
+function resetCookieEncode() {
+  jQuery.get("sys_info.php?dopost=make_encode", function (data) {
+    jQuery("#edit___cfg_cookie_encode").val(data);
+  });
+}
+</script>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css">
 <style>
 .table{margin-bottom:0}
 .btn+.btn{margin-left:10px}
@@ -129,8 +129,9 @@
     </table>
     <table width="98%" border="0" cellpadding="0" cellspacing="0" style="margin-top:10px" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
       <tr>
-        <td height="28" align="right" background="images/tbg.gif" style="border:1px solid #cfcfcf;border-bottom:none">
-          配置搜索：<input type="text" name="keywds" id="keywds">
+        <td height="26" align="right" background="images/tbg.gif" style="border:1px solid #cfcfcf;border-bottom:none">
+          <span style="line-height:26px">配置搜索：</span>
+          <input type="text" name="keywds" id="keywds">
           <button type="button" onclick="getSearch()" class="btn btn-success btn-sm">搜索</button>
           <span id="_searchback"></span>
         </td>
@@ -206,11 +207,10 @@
             }
             ?>
             </div>
-            <table width="100%" border="0" cellspacing="1" cellpadding="1" style="border:1px solid #cfcfcf;border-top:none" class="table table-borderless">
-              <tr bgcolor="#f2f2f2">
-                <td width="4%"></td>
-                <td width="96%">
-                  <button type="submit" class="btn btn-success">确定</button>&nbsp;
+            <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#f8f8f8" style="border:1px solid #cfcfcf;border-top:none" class="table table-borderless">
+              <tr height="36">
+                <td>
+                  <button type="submit" class="btn btn-success">确定</button>
                   <button type="button" onClick="document.form1.reset()" class="btn btn-success">重置</button>
                 </td>
               </tr>
