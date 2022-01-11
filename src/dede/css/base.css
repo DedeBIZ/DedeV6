@@ -93,4 +93,4 @@ a.btn{color:white!important}
 .btn-success{background:#28a745;border-color:#28a745}
 .table{color:#424b51}
 .table td,.table th{padding:.6rem;vertical-align:middle}
-.table th img,.table td img{vertical-align:text-bottom}
+.table th img,.table td img,input[type=checkbox],input[type=radio]{vertical-align:text-bottom}
