@@ -59,7 +59,7 @@ $(function () {
             </div>
             <div class="col-md-6 mt-3">
                 <div class="card">
-                    <div class="card-header">商业授权</div>
+                    <div class="card-header">版本授权</div>
                     <div class="card-body" id="_systeminfo">正在载入中...</div>
                 </div>
             </div>
@@ -307,7 +307,7 @@ $(function () {
                         infoStr += `
                         <tr>
                             <td class="nline" style="text-align:left">站点名称：</td>
-                            <td class="nline" style="text-align:left">${rsp.result.title} </td>
+                            <td class="nline" style="text-align:left">${rsp.result.title}</td>
                         </tr>
                         `;
                     }
@@ -315,7 +315,7 @@ $(function () {
                         infoStr += `
                         <tr>
                             <td class="nline" style="text-align:left">站点类型：</td>
-                            <td class="nline" style="text-align:left">${rsp.result.stype} </td>
+                            <td class="nline" style="text-align:left">${rsp.result.stype}</td>
                         </tr>
                         `;
                     }
@@ -331,16 +331,16 @@ $(function () {
                         //下面是DedeBIZ Core组件信息
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left">商业组件：</td>
-                            <td class="nline" style="text-align:left"><a class="btn btn-danger btn-sm" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008">如何启动组件</a> </td>
+                            <td class="nline" style="text-align:left">版本组件：</td>
+                            <td class="nline" style="text-align:left"><a class="btn btn-danger btn-sm" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008">如何启动组件</a></td>
                         </tr>
                         `;
                     } else {
                         dedebizInfo = JSON.parse(rsp.result.core.data);
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left">商业组件：</td>
-                            <td class="nline" style="text-align:left"><a class="btn btn-success btn-sm" href="javascript:ViewDedeBIZ()">查看组件信息</a> </td>
+                            <td class="nline" style="text-align:left">版本组件：</td>
+                            <td class="nline" style="text-align:left"><a class="btn btn-success btn-sm" href="javascript:ViewDedeBIZ()">查看组件信息</a></td>
                         </tr>
                         `;
                     }
@@ -348,9 +348,9 @@ $(function () {
                     $("#_systeminfo").html(infoStr);
                 } else {
                     $("#_systeminfo").html(`
-                    <div class="py-1">尚未启动商业站点服务，原因：<b>${rsp.msg}</b></div>
-                    <div class="py-1">商业服务可以提升性能、增强安全、支持开源。</div>
-                    <div class="py-1"><a class="btn btn-danger" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}">开启商业服务</a></div>
+                    <div class="py-1">尚未启动商业版服务，原因：${rsp.msg}</div>
+                    <div class="py-1">目前是社区版开源免费，但商业版可以优化性能，数据分离，在线支付，小程序，APP等等。</div>
+                    <div class="py-1"><a class="btn btn-danger" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}">开启商业版</a></div>
                     `);
                 }
             });
