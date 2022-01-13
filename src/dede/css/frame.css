@@ -10,7 +10,7 @@ form{margin:0;padding:0}
 .top{height:46px;width:100%;background-image:linear-gradient(135deg,#008E38 0%,#639709 100%);overflow:hidden;clear:both}
 .top .top_logo{float:left;margin-left:30px;height:46px;line-height:46px}
 .top .top_logo a{font-size:22px;color:#fff}
-.top .top_version{display:inline-block;margin-top:18px;margin-left:10px;color:#fff}
+.top .top_version{display:inline-block;margin-top:10px;margin-left:10px;color:#fff}
 .top .top_link{float:right;margin-right:30px}
 .top .top_link ul{float:left;line-height:46px;overflow:hidden}
 .top .top_link ul li.welcome img{margin-top:-4px;margin-right:10px;width:30px;height:30px;vertical-align:middle}
