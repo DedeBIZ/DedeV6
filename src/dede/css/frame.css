@@ -9,8 +9,8 @@ form{margin:0;padding:0}
 .head{width:100%;height:76px;overflow:hidden;z-index:8;position:relative}
 .top{height:46px;width:100%;background-image:linear-gradient(135deg,#008E38 0%,#639709 100%);overflow:hidden;clear:both}
 .top .top_logo{float:left;margin-left:30px;height:46px;line-height:46px}
-.top .top_logo a{font-size:20px;font-weight:600;color:#fff}
-.top .top_version{display:inline-block;margin-top:10px;margin-left:10px;color:#fff}
+.top .top_logo a{font-size:22px;color:#fff}
+.top .top_version{display:inline-block;margin-top:18px;margin-left:10px;color:#fff}
 .top .top_link{float:right;margin-right:30px}
 .top .top_link ul{float:left;line-height:46px;overflow:hidden}
 .top .top_link ul li.welcome img{margin-top:-4px;margin-right:10px;width:30px;height:30px;vertical-align:middle}
@@ -56,7 +56,7 @@ body.hidemenu .right{left:0}
 .qucikmenu ul li a:hover{background:#F7F7F7}
 .pagemask{width:100%;height:100%;background:#000;position:absolute;z-index:100;filter:alpha(opacity=70);-moz-opacity:.7;opacity:.7;display:none}
 .iframemask{position:absolute;z-index:80;top:0;left:0;background:#fff;border:none;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;height:100%;width:100%;display:none}
-.allmenu{width:800px;background:#fff;z-index:999;position:absolute;left:50%;top:76px;margin-left:-400px;display:none;padding:10px}
+.allmenu{margin-left:-400px;padding:10px;display:none;width:800px;position:absolute;top:76px;left:50%;z-index:999;background:#fff;border-radius:.2rem}
 .allmenu .allmenu-box{margin:0 auto;text-align:left;overflow:hidden;padding-left:2px}
 .maptop{float:left;width:130px;overflow:hidden;padding-right:6px;padding-left:6px;margin-left:-1px}
 .maptop dt.bigitem{padding:5px 10px;background:#333;color:#fff;line-height:18px;font-weight:600}

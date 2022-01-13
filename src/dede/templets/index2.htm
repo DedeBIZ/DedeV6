@@ -40,13 +40,13 @@
             <div class="top_version"><?php echo $cfg_version_detail; ?></div>
             <div class="top_link">
                 <ul>
-                    <li class="welcome"><img src="/static/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><a href="exit.php" target="_top">注销</a></li>
-                    <li><a href="javascript:;" onclick="JumpFrame('catalog_menu.php','public_guide.php');">发布文档</a></li>
-                    <li><a href="javascript:;" onclick="JumpFrame('index_menu.php','content_list.php');">所有文档</a></li>
-                    <li><a href="javascript:;" onclick="JumpFrame('index_menu.php','catalog_main.php');">栏目管理</a></li>
-                    <li><a href="javascript:;" onclick="JumpFrame('index_menu.php','file_manage_main.php');">文件管理</a></li>
-                    <li><a href="javascript:;" onclick="JumpFrame('index_menu.php','templets_main.php');">模板管理</a></li>
-                    <?php echo ($cfg_mb_open == 'Y')?'<li><a href="../member" target="_blank">会员中心</a></li>':''; ?>
+                    <li class="welcome"><img src="/static/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><a href="exit.php">注销</a></li>
+                    <li><a href="public_guide.php" target="main">发布文档</a></li>
+                    <li><a href="content_list.php" target="main">所有文档</a></li>
+                    <li><a href="catalog_main.php" target="main">栏目管理</a></li>
+                    <li><a href="file_manage_main.php" target="main">文件管理</a></li>
+                    <li><a href="templets_main.php" target="main">模板管理</a></li>
+                    <?php echo ($cfg_mb_open=='Y')?'<li><a href="../member" target="_blank">会员中心</a></li>':''; ?>
                     <li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
                 </ul>
             </div>
@@ -66,7 +66,7 @@
                 <div class="scroll">
                     <form action="action_search.php" target="main" method="post">
                         <input name="keyword" type="text" placeholder="功能搜索" class="allsearch">
-                        <input name="" type="submit" value="搜索" class="np">
+                        <input type="submit" value="搜索" class="np">
                         <a href="<?php echo $cfg_biz_gitUrl;?>" target="_blank">代码托管</a>
                         <a href="<?php echo $cfg_biz_helpUrl;?>" target="_blank">帮助中心</a>
                     </form>
@@ -81,7 +81,7 @@
     </div>
     <div class="right">
         <div class="main">
-            <iframe id="main" name="main" frameborder="0" src="index_body.php"></iframe>
+            <iframe src="index_body.php" id="main" name="main" frameborder="0"></iframe>
         </div>
     </div>
     <div class="qucikmenu" id="qucikmenu">
