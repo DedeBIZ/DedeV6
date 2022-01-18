@@ -113,7 +113,7 @@ $adminMenu1
     <m:item name='更新订阅' link='makehtml_rss.php' rank='sys_MakeHtml' target='main' />
     <m:item name='获取脚本' link='makehtml_js.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新专题' link='makehtml_spec.php' rank='sys_MakeHtml' target='main' />
-    <m:item name='更新标签' link='makehtml_taglist.php' rank='sys_MakeHtml' target='main' />
+    <m:item name='更新Tag标签' link='makehtml_taglist.php' rank='sys_MakeHtml' target='main' />
 </m:top>
 <m:top item='6_' name='会员管理' display='none' rank='member_List,member_Type'>
     <m:item name='注册会员列表' link='member_main.php' rank='member_List' target='main' />
