@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . '/taglib/mytag.lib.php');
+require_once(DEDEINC.'/taglib/mytag.lib.php');
 
 function lib_myad(&$ctag, &$refObj)
 {

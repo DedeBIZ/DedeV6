@@ -7,7 +7,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 $uid = empty($uid) ? "" : RemoveXSS($uid);
 if (empty($action)) $action = '';
@@ -19,9 +19,9 @@ $menutype = 'mydede';
 if ($uid == '') {
     $iscontrol = 'yes';
     if (!$cfg_ml->IsLogin()) {
-        include_once(dirname(__FILE__) . "/templets/index-notlogin.htm");
+        include_once(dirname(__FILE__)."/templets/index-notlogin.htm");
     } else {
-        $minfos = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='" . $cfg_ml->M_ID . "'; ");
+        $minfos = $dsql->GetOne("SELECT * FROM `#@__member_tj` WHERE mid='".$cfg_ml->M_ID."'; ");
         $minfos['totaluse'] = $cfg_ml->GetUserSpace();
         $minfos['totaluse'] = number_format($minfos['totaluse'] / 1024 / 1024, 2);
         if ($cfg_mb_max > 0) {
@@ -30,7 +30,7 @@ if ($uid == '') {
             $ddsize = 0;
         }
 
-        require_once(DEDEINC . '/channelunit.func.php');
+        require_once(DEDEINC.'/channelunit.func.php');
 
         /* 最新文档8条 */
         $archives = array();
@@ -65,7 +65,7 @@ if ($uid == '') {
         $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_pms` WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");
 
         $dpl = new DedeTemplate();
-        $tpl = dirname(__FILE__) . "/templets/index.htm";
+        $tpl = dirname(__FILE__)."/templets/index.htm";
         $dpl->LoadTemplate($tpl);
         $dpl->display();
     }

@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 if (empty($dopost)) {
     ShowMsg("对不起，请指定栏目参数！", "catalog_main.php");
     exit();
@@ -83,14 +83,14 @@ function listArchives();
 //浏览通用模板目录
 function viewTempletDir();
 ---------------------------*/ else if ($dopost == "viewTemplet") {
-    header("location:tpl.php?path=/" . $cfg_df_style);
+    header("location:tpl.php?path=/".$cfg_df_style);
     exit();
 }
 /*------------------------
 浏览单个页面的栏目
 function ViewSgPage()
 ------------------------*/ else if ($dopost == "viewSgPage") {
-    require_once(DEDEINC . "/arc.listview.class.php");
+    require_once(DEDEINC."/arc.listview.class.php");
     $lv = new ListView($cid);
     $pageurl = $lv->MakeHtml();
     ShowMsg("更新缓冲，请稍后...", $pageurl);
@@ -123,8 +123,8 @@ function upRank()
     if (is_array($row)) {
         $maxID = $row['id'];
         for ($i = 1; $i <= $maxID; $i++) {
-            if (isset(${'sortrank' . $i})) {
-                $dsql->ExecuteNoneQuery("UPDATE #@__arctype SET sortrank='" . (${'sortrank' . $i}) . "' WHERE id='{$i}';");
+            if (isset(${'sortrank'.$i})) {
+                $dsql->ExecuteNoneQuery("UPDATE #@__arctype SET sortrank='".(${'sortrank'.$i})."' WHERE id='{$i}';");
             }
         }
     }
@@ -175,7 +175,7 @@ function GetJs
 function GetSunListsMenu();
 -----------*/ else if ($dopost == "GetSunListsMenu") {
     $userChannel = $cuserLogin->getUserChannel();
-    require_once(DEDEINC . "/typeunit.class.menu.php");
+    require_once(DEDEINC."/typeunit.class.menu.php");
     AjaxHead();
     PutCookie('lastCidMenu', $cid, 3600 * 24, "/");
     $tu = new TypeUnit($userChannel);
@@ -185,7 +185,7 @@ function GetSunListsMenu();
 获得子类的内容
 function GetSunLists();
 -----------*/ else if ($dopost == "GetSunLists") {
-    require_once(DEDEINC . "/typeunit.class.admin.php");
+    require_once(DEDEINC."/typeunit.class.admin.php");
     AjaxHead();
     PutCookie('lastCid', $cid, 3600 * 24, "/");
     $tu = new TypeUnit();
@@ -200,9 +200,9 @@ function GetSunLists();
 function unitCatalog() { }
 -----------------*/ else if ($dopost == 'unitCatalog') {
     CheckPurview('t_Move');
-    require_once(DEDEINC . '/oxwindow.class.php');
-    require_once(DEDEINC . '/typelink.class.php');
-    require_once(DEDEINC . '/channelunit.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/typelink.class.php');
+    require_once(DEDEINC.'/channelunit.func.php');
     if (empty($nextjob)) {
         $typeid = isset($typeid) ? intval($typeid) : 0;
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctype` WHERE reid='$typeid' ");
@@ -258,9 +258,9 @@ function unitCatalog() { }
 function moveCatalog() { }
 -----------------*/ else if ($dopost == 'moveCatalog') {
     CheckPurview('t_Move');
-    require_once(DEDEINC . '/oxwindow.class.php');
-    require_once(DEDEINC . '/typelink.class.php');
-    require_once(DEDEINC . '/channelunit.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/typelink.class.php');
+    require_once(DEDEINC.'/channelunit.func.php');
     if (empty($nextjob)) {
         $tl = new TypeLink($typeid);
         $typename = $tl->TypeInfos['typename'];

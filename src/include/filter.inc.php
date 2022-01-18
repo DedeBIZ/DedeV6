@@ -26,12 +26,12 @@ function _FilterAll($fk, &$svar)
             $svar[$_k] = _FilterAll($fk, $_v);
         }
     } else {
-        if ($cfg_notallowstr != '' && preg_match("#" . $cfg_notallowstr . "#i", $svar)) {
+        if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $svar)) {
             ShowMsg(" $fk has not allow words!", '-1');
             exit();
         }
         if ($cfg_replacestr != '') {
-            $svar = preg_replace('/' . $cfg_replacestr . '/i', "***", $svar);
+            $svar = preg_replace('/'.$cfg_replacestr.'/i', "***", $svar);
         }
     }
     if (!$magic_quotes_gpc) {

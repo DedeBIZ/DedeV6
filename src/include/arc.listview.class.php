@@ -8,7 +8,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . '/arc.partview.class.php');
+require_once(DEDEINC.'/arc.partview.class.php');
 
 helper('cache');
 @set_time_limit(0);
@@ -80,7 +80,7 @@ class ListView
 
             //设置一些全局参数的值
             foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
-            $this->Fields['rsslink'] = $GLOBALS['cfg_cmsurl'] . "/data/rss/" . $this->TypeID . ".xml";
+            $this->Fields['rsslink'] = $GLOBALS['cfg_cmsurl']."/data/rss/".$this->TypeID.".xml";
 
             //设置环境变量
             SetSysEnv($this->TypeID, $this->Fields['typename'], 0, '', 'list');
@@ -101,7 +101,7 @@ class ListView
                     $this->dsql->SetQuery($selquery);
                     $this->dsql->Execute();
                     while ($arr = $this->dsql->GetArray()) {
-                        $this->CrossID .= ($this->CrossID == '' ? $arr['id'] : ',' . $arr['id']);
+                        $this->CrossID .= ($this->CrossID == '' ? $arr['id'] : ','.$arr['id']);
                     }
                 }
             }
@@ -143,11 +143,11 @@ class ListView
         if ($cfg_list_son == 'N') {
 
             if ($cfg_need_typeid2 == 'N') {
-                if ($this->CrossID == '') $this->addSql .= " AND (arc.typeid='" . $this->TypeID . "') ";
+                if ($this->CrossID == '') $this->addSql .= " AND (arc.typeid='".$this->TypeID."') ";
                 else $this->addSql .= " AND (arc.typeid in({$this->CrossID},{$this->TypeID})) ";
             } else {
                 if ($this->CrossID == '') {
-                    $this->addSql .= " AND ( (arc.typeid='" . $this->TypeID . "') OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like) ";
+                    $this->addSql .= " AND ( (arc.typeid='".$this->TypeID."') OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like) ";
                 } else {
                     if ($cfg_cross_sectypeid == 'Y') {
                         $typeid2Clike = " '%,{$this->CrossID},%' ";
@@ -181,7 +181,7 @@ class ListView
             }
         }
         if ($this->TotalResult == -1) {
-            $cquery = "SELECT COUNT(*) AS dd FROM `#@__arctiny` arc WHERE " . $this->addSql;
+            $cquery = "SELECT COUNT(*) AS dd FROM `#@__arctiny` arc WHERE ".$this->addSql;
             $row = $this->dsql->GetOne($cquery);
             if (is_array($row)) {
                 $this->TotalResult = $row['dd'];
@@ -191,14 +191,14 @@ class ListView
         }
 
         //初始化列表模板，并统计页面总数
-        $tempfile = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'] . "/" . $this->TypeLink->TypeInfos['templist'];
+        $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$this->TypeLink->TypeInfos['templist'];
         $tempfile = str_replace("{tid}", $this->TypeID, $tempfile);
         $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
         if (defined('DEDEMOB')) {
             $tempfile = str_replace('.htm', '_m.htm', $tempfile);
         }
         if (!file_exists($tempfile)) {
-            $tempfile = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'] . "/" . $GLOBALS['cfg_df_style'] . "/list_default.htm";
+            $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/list_default.htm";
             if (defined('DEDEMOB')) {
                 $tempfile = str_replace('.htm', '_m.htm', $tempfile);
             }
@@ -243,7 +243,7 @@ class ListView
         //创建封面模板文件
         if ($this->TypeLink->TypeInfos['isdefault'] == -1) {
             echo '这个类目是动态类目！';
-            return '../plus/list.php?tid=' . $this->TypeLink->TypeInfos['id'];
+            return '../plus/list.php?tid='.$this->TypeLink->TypeInfos['id'];
         }
 
         //单独页面
@@ -278,9 +278,9 @@ class ListView
             $makeFile = str_replace("{page}", $this->PageNo, $makeFile);
             $murl = $makeFile;
             if (!preg_match("/^\//", $makeFile)) {
-                $makeFile = "/" . $makeFile;
+                $makeFile = "/".$makeFile;
             }
-            $makeFile = $this->GetTruePath() . $makeFile;
+            $makeFile = $this->GetTruePath().$makeFile;
             $makeFile = preg_replace("/\/{1,}/", "/", $makeFile);
             $murl = $this->GetTrueUrl($murl);
             $this->dtp->SaveTo($makeFile);
@@ -296,9 +296,9 @@ class ListView
             ) {
                 $onlyrule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], '', $this->Fields['namerule2']);
                 $onlyrule = str_replace("{page}", "1", $onlyrule);
-                $list_1 = $this->GetTruePath() . $onlyrule;
-                $murl = MfTypedir($this->Fields['typedir']) . '/' . $this->Fields['defaultname'];
-                $indexname = $this->GetTruePath() . $murl;
+                $list_1 = $this->GetTruePath().$onlyrule;
+                $murl = MfTypedir($this->Fields['typedir']).'/'.$this->Fields['defaultname'];
+                $indexname = $this->GetTruePath().$murl;
                 copy($list_1, $indexname);
             }
         }
@@ -321,15 +321,15 @@ class ListView
         if ((empty($this->PageNo) || $this->PageNo == 1)
             && $this->TypeLink->TypeInfos['ispart'] == 1
         ) {
-            $tmpdir = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'];
+            $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
             $tempfile = str_replace("{tid}", $this->TypeID, $this->Fields['tempindex']);
             $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
-            $tempfile = $tmpdir . "/" . $tempfile;
+            $tempfile = $tmpdir."/".$tempfile;
             if (defined('DEDEMOB')) {
                 $tempfile = str_replace('.htm', '_m.htm', $tempfile);
             }
             if (!file_exists($tempfile)) {
-                $tempfile = $tmpdir . "/" . $GLOBALS['cfg_df_style'] . "/index_default.htm";
+                $tempfile = $tmpdir."/".$GLOBALS['cfg_df_style']."/index_default.htm";
                 if (defined('DEDEMOB')) {
                     $tempfile = str_replace('.htm', '_m.htm', $tempfile);
                 }
@@ -352,16 +352,16 @@ class ListView
         $this->PartView = new PartView($this->TypeID, false);
         $this->PartView->SetTypeLink($this->TypeLink);
         $nmfa = 0;
-        $tmpdir = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'];
+        $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
         if ($this->Fields['ispart'] == 1) {
             $tempfile = str_replace("{tid}", $this->TypeID, $this->Fields['tempindex']);
             $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
-            $tempfile = $tmpdir . "/" . $tempfile;
+            $tempfile = $tmpdir."/".$tempfile;
             if (defined('DEDEMOB')) {
                 $tempfile = str_replace('.htm', '_m.htm', $tempfile);
             }
             if (!file_exists($tempfile)) {
-                $tempfile = $tmpdir . "/" . $GLOBALS['cfg_df_style'] . "/index_default.htm";
+                $tempfile = $tmpdir."/".$GLOBALS['cfg_df_style']."/index_default.htm";
                 if (defined('DEDEMOB')) {
                     $tempfile = str_replace('.htm', '_m.htm', $tempfile);
                 }
@@ -374,7 +374,7 @@ class ListView
         CreateDir(MfTypedir($this->Fields['typedir']));
         $makeUrl = $this->GetMakeFileRule($this->Fields['id'], "index", MfTypedir($this->Fields['typedir']), $this->Fields['defaultname'], $this->Fields['namerule2']);
         $makeUrl = preg_replace("/\/{1,}/", "/", $makeUrl);
-        $makeFile = $this->GetTruePath() . $makeUrl;
+        $makeFile = $this->GetTruePath().$makeUrl;
         if ($nmfa == 0) {
             $this->PartView->SaveToHtml($makeFile);
         } else {
@@ -397,17 +397,17 @@ class ListView
         $this->PartView = new PartView($this->TypeID, false);
         $this->PartView->SetTypeLink($this->TypeLink);
         $nmfa = 0;
-        $tmpdir = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'];
+        $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
         if ($this->Fields['ispart'] == 1) {
             //封面模板
             $tempfile = str_replace("{tid}", $this->TypeID, $this->Fields['tempindex']);
             $tempfile = str_replace("{cid}", $this->ChannelUnit->ChannelInfos['nid'], $tempfile);
-            $tempfile = $tmpdir . "/" . $tempfile;
+            $tempfile = $tmpdir."/".$tempfile;
             if (defined('DEDEMOB')) {
                 $tempfile = str_replace('.htm', '_m.htm', $tempfile);
             }
             if (!file_exists($tempfile)) {
-                $tempfile = $tmpdir . "/" . $GLOBALS['cfg_df_style'] . "/index_default.htm";
+                $tempfile = $tmpdir."/".$GLOBALS['cfg_df_style']."/index_default.htm";
                 if (defined('DEDEMOB')) {
                     $tempfile = str_replace('.htm', '_m.htm', $tempfile);
                 }
@@ -421,7 +421,7 @@ class ListView
         }
         CreateDir(MfTypedir($this->Fields['typedir']));
         $makeUrl = $this->GetMakeFileRule($this->Fields['id'], "index", MfTypedir($this->Fields['typedir']), $this->Fields['defaultname'], $this->Fields['namerule2']);
-        $makeFile = $this->GetTruePath() . $makeUrl;
+        $makeFile = $this->GetTruePath().$makeUrl;
         if ($nmfa == 0) {
             $this->PartView->Display();
         } else {
@@ -456,9 +456,9 @@ class ListView
     {
         if ($this->Fields['moresite'] == 1) {
             if ($this->Fields['sitepath'] != '') {
-                $nurl = preg_replace("/^" . $this->Fields['sitepath'] . "/", '', $nurl);
+                $nurl = preg_replace("/^".$this->Fields['sitepath']."/", '', $nurl);
             }
-            $nurl = $this->Fields['siteurl'] . $nurl;
+            $nurl = $this->Fields['siteurl'].$nurl;
         }
         return $nurl;
     }
@@ -554,7 +554,7 @@ class ListView
     {
         $typedir = MfTypedir($typedir);
         if ($wname == 'index') {
-            return $typedir . '/' . $defaultname;
+            return $typedir.'/'.$defaultname;
         } else {
             $namerule2 = str_replace('{tid}', $typeid, $namerule2);
             $namerule2 = str_replace('{typedir}', $typedir, $namerule2);
@@ -619,8 +619,8 @@ class ListView
         if ($tablewidth == '') $tablewidth = 100;
         if ($col == '') $col = 1;
         $colWidth = ceil(100 / $col);
-        $tablewidth = $tablewidth . '%';
-        $colWidth = $colWidth . '%';
+        $tablewidth = $tablewidth.'%';
+        $colWidth = $colWidth.'%';
 
         $innertext = trim($innertext);
         if ($innertext == '') {
@@ -642,7 +642,7 @@ class ListView
         //获得附加表的相关信息
         $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
         if ($addtable != "") {
-            $addJoin = " LEFT JOIN `$addtable` ON arc.id = " . $addtable . '.aid ';
+            $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
             $addField = '';
             $fields = explode(',', $this->ChannelUnit->ChannelInfos['listfields']);
             foreach ($fields as $k => $v) {
@@ -652,9 +652,9 @@ class ListView
                 foreach ($this->ChannelUnit->ChannelFields as $k => $arr) {
                     if (isset($nfields[$k])) {
                         if (!empty($arr['rename'])) {
-                            $addField .= ',' . $addtable . '.' . $k . ' as ' . $arr['rename'];
+                            $addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
                         } else {
-                            $addField .= ',' . $addtable . '.' . $k;
+                            $addField .= ','.$addtable.'.'.$k;
                         }
                     }
                 }
@@ -750,25 +750,25 @@ class ListView
                         $row['sitepath']
                     );
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.jpg';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.jpg';
                     }
                     if (!preg_match("/^http:\/\//i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                        $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                        $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                     }
                     $row['picname'] = $row['litpic'];
                     $row['stime'] = GetDateMK($row['pubdate']);
-                    $row['typelink'] = "<a href='" . $row['typeurl'] . "'>" . $row['typename'] . "</a>";
-                    $row['image'] = "<img src='" . $row['picname'] . "' border='0' width='$imgwidth' height='$imgheight' alt='" . preg_replace("/['><]/", "", $row['title']) . "'>";
-                    $row['imglink'] = "<a href='" . $row['filename'] . "'>" . $row['image'] . "</a>";
+                    $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
+                    $row['image'] = "<img src='".$row['picname']."' border='0' width='$imgwidth' height='$imgheight' alt='".preg_replace("/['><]/", "", $row['title'])."'>";
+                    $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                     $row['fulltitle'] = $row['title'];
                     $row['title'] = cn_substr($row['title'], $titlelen);
                     if ($row['color'] != '') {
-                        $row['title'] = "<font color='" . $row['color'] . "'>" . $row['title'] . "</font>";
+                        $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
                     }
                     if (preg_match('/c/', $row['flag'])) {
-                        $row['title'] = "<b>" . $row['title'] . "</b>";
+                        $row['title'] = "<b>".$row['title']."</b>";
                     }
-                    $row['textlink'] = "<a href='" . $row['filename'] . "'>" . $row['title'] . "</a>";
+                    $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
@@ -833,27 +833,27 @@ class ListView
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
 
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>1</strong>页<strong>" . $this->TotalResult . "</strong>条记录</span></li>\r\n";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>1</strong>页<strong>".$this->TotalResult."</strong>条记录</span></li>\r\n";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>0</strong>页<strong>" . $this->TotalResult . "</strong>条记录</span></li>\r\n";
+            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>0</strong>页<strong>".$this->TotalResult."</strong>条记录</span></li>\r\n";
         }
         $purl = $this->GetCurUrl();
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>{$totalpage}</strong>页<strong>" . $this->TotalResult . "</strong>条</span></li>\r\n";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 <strong>{$totalpage}</strong>页<strong>".$this->TotalResult."</strong>条</span></li>\r\n";
         $tnamerule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
 
         //获得上一页和主页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='" . str_replace("{page}", $prepagenum, $tnamerule) . "'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='" . str_replace("{page}", 1, $tnamerule) . "'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", 1, $tnamerule)."'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
 
         //下一页,未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='" . str_replace("{page}", $nextpagenum, $tnamerule) . "'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='" . str_replace("{page}", $totalpage, $tnamerule) . "'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>\r\n";
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
@@ -868,9 +868,9 @@ class ListView
         $optionlist = "<li><select name='sldd' style='width:{$optionlen}px' onchange='location.href=this.options[this.selectedIndex].value;'>\r\n";
         for ($mjj = 1; $mjj <= $totalpage; $mjj++) {
             if ($mjj == $this->PageNo) {
-                $optionlist .= "<option value='" . str_replace("{page}", $mjj, $tnamerule) . "' selected>$mjj</option>\r\n";
+                $optionlist .= "<option value='".str_replace("{page}", $mjj, $tnamerule)."' selected>$mjj</option>\r\n";
             } else {
-                $optionlist .= "<option value='" . str_replace("{page}", $mjj, $tnamerule) . "'>$mjj</option>\r\n";
+                $optionlist .= "<option value='".str_replace("{page}", $mjj, $tnamerule)."'>$mjj</option>\r\n";
             }
         }
         $optionlist .= "</select></li>\r\n";
@@ -894,7 +894,7 @@ class ListView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='" . str_replace("{page}", $j, $tnamerule) . "'>" . $j . "</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
             }
         }
         $plist = '';
@@ -928,12 +928,12 @@ class ListView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>共 1 页/" . $this->TotalResult . " 条记录</span></li>\r\n";
+            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>共 1 页/".$this->TotalResult." 条记录</span></li>\r\n";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='d-none d-sm-block page-item disabled'><span class=\"page-link\">共 0 页/" . $this->TotalResult . " 条记录</span></li>\r\n";
+            return "<li class='d-none d-sm-block page-item disabled'><span class=\"page-link\">共 0 页/".$this->TotalResult." 条记录</span></li>\r\n";
         }
-        $maininfo = "<li class='d-none d-sm-block page-item disabled'><span class=\"page-link\">共 <strong>{$totalpage}</strong>页<strong>" . $this->TotalResult . "</strong>条</span></li>\r\n";
+        $maininfo = "<li class='d-none d-sm-block page-item disabled'><span class=\"page-link\">共 <strong>{$totalpage}</strong>页<strong>".$this->TotalResult."</strong>条</span></li>\r\n";
 
         $purl = $this->GetCurUrl();
         // 如果开启为静态,则对规则进行替换
@@ -943,8 +943,8 @@ class ListView
             $purl = $nowurls[0];
         }
 
-        $geturl = "tid=" . $this->TypeID . "&TotalResult=" . $this->TotalResult . "&";
-        $purl .= '?' . $geturl;
+        $geturl = "tid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
+        $purl .= '?'.$geturl;
 
         $optionlist = '';
         //$hidenform = "<input type='hidden' name='tid' value='".$this->TypeID."'>\r\n";
@@ -952,14 +952,14 @@ class ListView
 
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a href='" . $purl . "PageNo=$prepagenum' class='page-link'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a href='" . $purl . "PageNo=1' class='page-link'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum' class='page-link'>上一页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1' class='page-link'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li class='page-item'><a class='page-link'>首页</a></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a href='" . $purl . "PageNo=$nextpagenum' class='page-link'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a href='" . $purl . "PageNo=$totalpage' class='page-link'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum' class='page-link'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a href='".$purl."PageNo=$totalpage' class='page-link'>末页</a></li>\r\n";
         } else {
             $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>\r\n";
         }
@@ -984,7 +984,7 @@ class ListView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class=\"page-item active\"><a class='page-link'>$j</a></li>\r\n";
             } else {
-                $listdd .= "<li class=\"page-item\"><a href='" . $purl . "PageNo=$j' class='page-link'>" . $j . "</a></li>\r\n";
+                $listdd .= "<li class=\"page-item\"><a href='".$purl."PageNo=$j' class='page-link'>".$j."</a></li>\r\n";
             }
         }
 

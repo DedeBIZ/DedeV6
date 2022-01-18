@@ -10,7 +10,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
 
 if ($cfg_feedback_forbid == 'Y') {
     echo json_encode(array(
@@ -21,7 +21,7 @@ if ($cfg_feedback_forbid == 'Y') {
     exit();
 }
 
-require_once(DEDEINC . "/filter.inc.php");
+require_once(DEDEINC."/filter.inc.php");
 if (!isset($action)) {
     $action = '';
 }
@@ -47,7 +47,7 @@ if (empty($aid) && empty($fid)) {
     exit();
 }
 
-include_once(DEDEINC . "/memberlogin.class.php");
+include_once(DEDEINC."/memberlogin.class.php");
 $cfg_ml = new MemberLogin();
 
 
@@ -80,12 +80,12 @@ if ($action == '' || $action == 'show') {
     $querystring = "SELECT fb.*,mb.userid,mb.face as mface,mb.spacesta,mb.scores,mb.sex FROM `#@__feedback` fb
     LEFT JOIN `#@__member` mb on mb.mid = fb.mid $where_sql AND fb.ischeck='1' ORDER BY fb.good DESC";
 
-    $dsql->Execute('fb', $querystring . " LIMIT 20 ");
+    $dsql->Execute('fb', $querystring." LIMIT 20 ");
 
     $data = array();
 
     while ($row = $dsql->GetArray('fb')) {
-        $row['face'] = empty($row['mface']) ? $GLOBALS['cfg_cmspath'] . '/static/img/avatar.png' : $row['mface'];
+        $row['face'] = empty($row['mface']) ? $GLOBALS['cfg_cmspath'].'/static/img/avatar.png' : $row['mface'];
         $row['dtimestr'] = MyDate('Y-m-d', $row['dtime']);
         unset($row['ip']);
         $data[] = $row;
@@ -168,7 +168,7 @@ function __SendFeedback(){ }
         if ($username != '' && $pwd != '') {
             $rs = $cfg_ml->CheckUser($username, $pwd);
             if ($rs == 1) {
-                $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET logintime='" . time() . "',loginip='" . GetIP() . "' WHERE mid='{$cfg_ml->M_ID}'; ");
+                $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET logintime='".time()."',loginip='".GetIP()."' WHERE mid='{$cfg_ml->M_ID}'; ");
             } else {
                 $username = '游客';
             }
@@ -263,8 +263,8 @@ function __SendFeedback(){ }
     }
     //统计用户发出的评论
     if ($cfg_ml->M_ID > 0) {
-        $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__feedback` WHERE `mid`='" . $cfg_ml->M_ID . "'");
-        $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `feedback`='$row[nums]' WHERE `mid`='" . $cfg_ml->M_ID . "'");
+        $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__feedback` WHERE `mid`='".$cfg_ml->M_ID."'");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `feedback`='$row[nums]' WHERE `mid`='".$cfg_ml->M_ID."'");
     }
 
     $_SESSION['sedtime'] = time();

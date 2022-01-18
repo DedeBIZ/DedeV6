@@ -8,8 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-include(DEDEDATA . '/mark/inc_photowatermark_config.php');
+require_once(dirname(__FILE__)."/config.php");
+include(DEDEDATA.'/mark/inc_photowatermark_config.php');
 if (empty($activepath)) {
     $activepath = '';
 }
@@ -22,8 +22,8 @@ $activepath = preg_replace("#\/{1,}#", '/', $activepath);
 if (strlen($activepath) < strlen($cfg_medias_dir)) {
     $activepath = $cfg_medias_dir;
 }
-$inpath = $cfg_basedir . $activepath;
-$activeurl = '..' . $activepath;
+$inpath = $cfg_basedir.$activepath;
+$activeurl = '..'.$activepath;
 if (empty($f)) {
     $f = 'form1.picname';
 }
@@ -36,11 +36,11 @@ if (empty($comeback)) {
 }
 $addparm = '';
 if (!empty($CKEditor)) {
-    $addparm = '&CKEditor=' . $CKEditor;
+    $addparm = '&CKEditor='.$CKEditor;
     $f = $CKEditor;
 }
 if (!empty($CKEditorFuncNum)) {
-    $addparm .= '&CKEditorFuncNum=' . $CKEditorFuncNum;
+    $addparm .= '&CKEditorFuncNum='.$CKEditorFuncNum;
 }
 if (!empty($noeditor)) {
     $addparm .= '&noeditor=yes';
@@ -148,10 +148,10 @@ table{background:#fff}
                             if ($filesize != "")
                                 if ($filesize < 0.1) {
                                     @list($ty1, $ty2) = split("\.", $filesize);
-                                    $filesize = $ty1 . "." . substr($ty2, 0, 2);
+                                    $filesize = $ty1.".".substr($ty2, 0, 2);
                                 } else {
                                     @list($ty1, $ty2) = split("\.", $filesize);
-                                    $filesize = $ty1 . "." . substr($ty2, 0, 1);
+                                    $filesize = $ty1.".".substr($ty2, 0, 1);
                                 }
                             $filetime = filemtime("$inpath/$file");
                             $filetime = MyDate("Y-m-d H:i", $filetime);
@@ -162,7 +162,7 @@ table{background:#fff}
                             $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                             $line = "\n<tr>
                             <td class='linerow' colspan='2'>
-                            <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=" . urlencode($tmp) . $addparm . "'><img src='img/dir2.gif'>上级目录</a></td>
+                            <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='img/dir2.gif'>上级目录</a></td>
                             <td colspan='2' class='linerow'>当前目录:$activepath</td>
                             </tr>";
                             echo $line;
@@ -171,12 +171,12 @@ table{background:#fff}
                             if (preg_match("#^\.(.*)$#i", $file)) continue;
                             $line = "\n<tr>
                             <td class='linerow' colspan='2'>
-                            <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=" . urlencode("$activepath/$file") . $addparm . "'><img src='img/dir.gif'>$file</a></td>
+                            <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='img/dir.gif'>$file</a></td>
                             <td class='linerow'></td>
                             <td class='linerow'></td>
                             </tr>";
                             echo "$line";
-                        } else if (preg_match("#\.(" . $cfg_imgtype . ")#i", $file)) {
+                        } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;

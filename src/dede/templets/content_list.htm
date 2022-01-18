@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="<?php echo $cfg_soft_lang; ?>">
-	<title>文档管理</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/base.css">
-	<script src="../static/js/jquery.js"></script>
-	<script src="../static/js/bootstrap.bundle.js"></script>
-	<script src="../static/js/dedeajax2.js"></script>
-	<script src="js/ieemu.js"></script>
-	<script src="js/context_menu.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/list.js"></script>
-	<style>
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>文档管理</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css">
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
+<script src="../static/js/dedeajax2.js"></script>
+<script src="js/ieemu.js"></script>
+<script src="js/context_menu.js"></script>
+<script src="js/main.js"></script>
+<script src="js/list.js"></script>
+<style>
 .btn+.btn{margin-left:10px}
-	</style>
+</style>
 </head>
 <body leftmargin="8" topmargin="8" background="images/allbg.gif" onLoad="ContextMenu.intializeContextMenu()">
 	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable table-bordered mt-3">
@@ -39,7 +39,7 @@
 		<input type="hidden" name="dopost" value="listArchives">
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="mb-3" style="margin-top:10px;border:1px solid #dee2e6">
 			<tr>
-				<td style="background:#f2f2f2">
+				<td style="background:#f8f8f8">
 					<table cellpadding="0" cellspacing="0" height="36">
 						<tr>
 							<td>
@@ -76,7 +76,7 @@
 	<form name="form2">
 		<table width="98%" cellpadding="2" cellspacing="1" bgcolor="#CFCFCF" align="center" class="table table-bordered maintable" style="margin-top:10px">
 			<tr>
-				<td height="30" colspan="10" style="margin-left:10px;background:#f2f2f2">{dede:global.positionname/}文档列表（使用鼠标右键弹出菜单）</td>
+				<td height="30" colspan="10" style="margin-left:10px;background:#f8f8f8">{dede:global.positionname/}文档列表（使用鼠标右键弹出菜单）</td>
 			</tr>
 			<tr align="center" bgcolor="#FBFCE2" height="26">
 				<td width="6%">ID</td>
@@ -128,7 +128,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td height="36" colspan="10" align="center" style="background:#f2f2f2">{dede:pagelist listsize=6/}</td>
+				<td height="36" colspan="10" align="center" style="background:#f8f8f8">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</form>

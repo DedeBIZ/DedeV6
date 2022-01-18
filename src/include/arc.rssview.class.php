@@ -8,9 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/typelink.class.php");
-require_once(DEDEINC . "/channelunit.func.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/typelink.class.php");
+require_once(DEDEINC."/channelunit.func.php");
 
 @set_time_limit(0);
 /**
@@ -43,7 +43,7 @@ class RssView
         $this->TypeID = $typeid;
         $this->dtp = new DedeTagParse();
         $this->dtp->refObj = $this;
-        $templetfiles = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'] . "/plus/rss.htm";
+        $templetfiles = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/plus/rss.htm";
         $this->dtp->LoadTemplate($templetfiles);
         $this->dsql = $GLOBALS['dsql'];
         $this->TypeLink = new TypeLink($typeid);
@@ -51,7 +51,7 @@ class RssView
         $this->MaxRow = $max_row;
         $this->TypeFields['title'] = $this->TypeLink->GetPositionLink(false);
         $this->TypeFields['title'] = preg_replace("/[<>]/", " / ", $this->TypeFields['title']);
-        $this->TypeFields['typelink'] = $GLOBALS['cfg_basehost'] . $this->TypeLink->GetOneTypeUrl($this->TypeFields);
+        $this->TypeFields['typelink'] = $GLOBALS['cfg_basehost'].$this->TypeLink->GetOneTypeUrl($this->TypeFields);
         $this->TypeFields['powerby'] = $GLOBALS['cfg_powerby'];
         $this->TypeFields['adminemail'] = $GLOBALS['cfg_adminemail'];
         $this->remoteDir = '';
@@ -92,8 +92,8 @@ class RssView
      */
     function MakeRss($isremote = 0)
     {
-        $murl = $GLOBALS['cfg_cmspath'] . "/data/rss/" . $this->TypeID . ".xml";
-        $mfile = $GLOBALS['cfg_basedir'] . $murl;
+        $murl = $GLOBALS['cfg_cmspath']."/data/rss/".$this->TypeID.".xml";
+        $mfile = $GLOBALS['cfg_basedir'].$murl;
         $this->dtp->SaveTo($mfile);
         return $murl;
     }
@@ -133,12 +133,12 @@ class RssView
             $innertext = GetSysTemplets("rss.htm");
         }
         $orwhere = " arc.arcrank > -1 ";
-        $orwhere .= " AND (arc.typeid in (" . GetSonIds($this->TypeID, $this->TypeFields['channeltype']) . ") ) ";
+        $orwhere .= " AND (arc.typeid in (".GetSonIds($this->TypeID, $this->TypeFields['channeltype']).") ) ";
         $ordersql = " ORDER BY arc.id desc";
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,
         tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
         FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-        WHERE $orwhere $ordersql LIMIT 0," . $this->MaxRow;
+        WHERE $orwhere $ordersql LIMIT 0,".$this->MaxRow;
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $artlist = '';
@@ -148,10 +148,10 @@ class RssView
         while ($row = $this->dsql->GetArray('al')) {
             //处理一些特殊字段
             if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.gif';
+                $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
             }
             if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
             }
             $row['picname'] = $row['litpic'];
             $row["arcurl"] = GetFileUrl(
@@ -183,8 +183,8 @@ class RssView
             $row["info"] = $row["description"];
             $row["filename"] = $row["arcurl"];
             $row["stime"] = GetDateMK($row["pubdate"]);
-            $row["image"] = "<img src='" . $row["picname"] . "' border='0'>";
-            $row["fullurl"] = $GLOBALS["cfg_basehost"] . $row["arcurl"];
+            $row["image"] = "<img src='".$row["picname"]."' border='0'>";
+            $row["fullurl"] = $GLOBALS["cfg_basehost"].$row["arcurl"];
             if ($GLOBALS['cfg_multi_site'] == 'Y') $row["fullurl"] = $row["arcurl"];
             $row["phpurl"] = $GLOBALS["cfg_plus_dir"];
             $row["templeturl"] = $GLOBALS["cfg_templets_dir"];
@@ -212,7 +212,7 @@ class RssView
                     }
                 }
             }
-            $artlist .= $dtp2->GetResult() . "\r\n";
+            $artlist .= $dtp2->GetResult()."\r\n";
         }
         $this->dsql->FreeResult('al');
         return $artlist;

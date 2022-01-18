@@ -2,7 +2,7 @@
 if (!defined('DEDEINC')) {
     exit("Request Error!");
 }
-require_once(DEDEINC . "/taglib/flink.lib.php");
+require_once(DEDEINC."/taglib/flink.lib.php");
 /**
  * 友情链接
  *

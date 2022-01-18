@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('Request Error!');
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . "/channelunit.class.php");
+require_once(DEDEINC."/channelunit.class.php");
 // 这是一个用来调用文档内容的标签，只是提供一种方法，不建议太多地方调用，毕竟比较损耗性能
 /*
 用法：

@@ -9,19 +9,19 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('plus_文件管理器');
 
 $action = isset($action) ? trim($action) : '';
 
 if (empty($acdir)) $acdir = $cfg_df_style;
-$templetdir = $cfg_basedir . $cfg_templets_dir;
-$templetdird = $templetdir . '/' . $acdir;
-$templeturld = $cfg_templeturl . '/' . $acdir;
+$templetdir = $cfg_basedir.$cfg_templets_dir;
+$templetdird = $templetdir.'/'.$acdir;
+$templeturld = $cfg_templeturl.'/'.$acdir;
 if (empty($filename))    $filename = '';
 $filename = preg_replace("#[\/\\\\]#", '', $filename);
 if (preg_match("#\.#", $acdir)) {
-    ShowMsg('Not Allow dir ' . $acdir . '!', '-1');
+    ShowMsg('Not Allow dir '.$acdir.'!', '-1');
     exit();
 }
 /*
@@ -33,15 +33,15 @@ if ($action == 'edit' || $action == 'newfile') {
         ShowMsg('未指定要编辑的文件', '-1');
         exit();
     }
-    if (!file_exists($templetdird . '/' . $filename)  && $action == 'edit') {
+    if (!file_exists($templetdird.'/'.$filename)  && $action == 'edit') {
         $action = 'newfile';
     }
 
     //读取文件内容
     //$content = dede_htmlspecialchars(trim(file_get_contents($truePath.$filename)));
     if ($action == 'edit') {
-        $fp = fopen($templetdird . '/' . $filename, 'r');
-        $content = fread($fp, filesize($templetdird . '/' . $filename));
+        $fp = fopen($templetdird.'/'.$filename, 'r');
+        $content = fread($fp, filesize($templetdird.'/'.$filename));
         fclose($fp);
         $content = preg_replace("#<textarea#i", "##textarea", $content);
         $content = preg_replace("#</textarea#i", "##/textarea", $content);
@@ -54,24 +54,24 @@ if ($action == 'edit' || $action == 'newfile') {
 
     //获取标签帮助信息
     $helps = $dtags = array();
-    $tagHelpDir = DEDEINC . '/taglib/help/';
+    $tagHelpDir = DEDEINC.'/taglib/help/';
     $dir = dir($tagHelpDir);
     while (false !== ($entry = $dir->read())) {
-        if ($entry != '.' && $entry != '..' && !is_dir($tagHelpDir . $entry)) {
+        if ($entry != '.' && $entry != '..' && !is_dir($tagHelpDir.$entry)) {
             $dtags[] = str_replace('.txt', '', $entry);
         }
     }
     $dir->close();
     foreach ($dtags as $tag) {
         //$helpContent = file_get_contents($tagHelpDir.$tag.'.txt');
-        $fp = fopen($tagHelpDir . $tag . '.txt', 'r');
-        $helpContent = fread($fp, filesize($tagHelpDir . $tag . '.txt'));
+        $fp = fopen($tagHelpDir.$tag.'.txt', 'r');
+        $helpContent = fread($fp, filesize($tagHelpDir.$tag.'.txt'));
         fclose($fp);
         $helps[$tag] = explode('>>dede>>', $helpContent);
     }
 
     make_hash();
-    include DEDEADMIN . '/templets/tpl_edit.htm';
+    include DEDEADMIN.'/templets/tpl_edit.htm';
     exit();
 }
 /*---------------------------
@@ -92,20 +92,20 @@ function save_tpl() { }
     $content = preg_replace("/##\/textarea/i", "</textarea", $content);
     $content = preg_replace("/##form/i", "<form", $content);
     $content = preg_replace("/##\/form/i", "</form", $content);
-    $truefile = $templetdird . '/' . $filename;
+    $truefile = $templetdird.'/'.$filename;
     $fp = fopen($truefile, 'w');
     fwrite($fp, $content);
     fclose($fp);
-    ShowMsg('成功修改或新建文件', 'templets_main.php?acdir=' . $acdir);
+    ShowMsg('成功修改或新建文件', 'templets_main.php?acdir='.$acdir);
     exit();
 }
 /*---------------------------
 function del_tpl() { }
 删除模板
 --------------------------*/ else if ($action == 'del') {
-    $truefile = $templetdird . '/' . $filename;
+    $truefile = $templetdird.'/'.$filename;
     if (unlink($truefile)) {
-        ShowMsg('删除文件成功', 'templets_main.php?acdir=' . $acdir);
+        ShowMsg('删除文件成功', 'templets_main.php?acdir='.$acdir);
         exit();
     } else {
         ShowMsg('删除文件失败', '-1');
@@ -116,7 +116,7 @@ function del_tpl() { }
 function _upload() {}
 上传新模板
 -----------------------*/ else if ($action == 'upload') {
-    require_once(dirname(__FILE__) . '/../include/oxwindow.class.php');
+    require_once(dirname(__FILE__).'/../include/oxwindow.class.php');
     $acdir = str_replace('.', '', $acdir);
     $win = new OxWindow();
     make_hash();
@@ -159,7 +159,7 @@ function _upload() {}
             ShowMsg("模板文件名有非法字符，禁止上传！", "-1");
             exit();
         }
-        move_uploaded_file($upfile, $templetdird . '/' . $upfile_name);
+        move_uploaded_file($upfile, $templetdird.'/'.$upfile_name);
         @unlink($upfile);
         ShowMsg("成功上传一个模板！", "templets_main.php?acdir=$acdir");
         exit();
@@ -171,7 +171,7 @@ function edittag() { }
 修改标签碎片
 --------------------------*/ else if ($action == 'edittag' || $action == 'addnewtag') {
     if ($action == 'addnewtag') {
-        $democode = '<' . "?php
+        $democode = '<'."?php
 if(!defined('DEDEINC'))
 {
     exit(\"Request Error!\");
@@ -194,7 +194,7 @@ function lib_demotag(&\$ctag,&\$refObj)
     //------------------------------------------------------
     return \$revalue;
 }
-?" . '>';
+?".'>';
         $filename = "demotag.lib.php";
         $title = "新建标签";
     } else {
@@ -202,13 +202,13 @@ function lib_demotag(&\$ctag,&\$refObj)
             ShowMsg('文件不是标准的标签碎片文件，不允许在此编辑！', '-1');
             exit();
         }
-        $fp = fopen(DEDEINC . '/taglib/' . $filename, 'r');
-        $democode = fread($fp, filesize(DEDEINC . '/taglib/' . $filename));
+        $fp = fopen(DEDEINC.'/taglib/'.$filename, 'r');
+        $democode = fread($fp, filesize(DEDEINC.'/taglib/'.$filename));
         fclose($fp);
         $title = "修改标签";
     }
     make_hash();
-    include DEDEADMIN . '/templets/tpl_edit_tag.htm';
+    include DEDEADMIN.'/templets/tpl_edit_tag.htm';
     exit();
 }
 /*---------------------------
@@ -220,10 +220,10 @@ function savetagfile() { }
         ShowMsg('文件名不合法，不允许进行操作！', '-1');
         exit();
     }
-    require_once(DEDEINC . '/oxwindow.class.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
     $tagname = preg_replace("#\.lib\.php$#i", "", $filename);
     $content = stripslashes($content);
-    $truefile = DEDEINC . '/taglib/' . $filename;
+    $truefile = DEDEINC.'/taglib/'.$filename;
     $fp = fopen($truefile, 'w');
     fwrite($fp, $content);
     fclose($fp);

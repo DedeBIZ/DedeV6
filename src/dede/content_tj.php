@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_ArcTj');
 $row1 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
 $row2 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__feedback` ");
@@ -40,12 +40,12 @@ function GetArchives($dsql, $ordertype)
     $dsql->Execute('ga');
     while ($row = $dsql->GetObject('ga')) {
         if (preg_match("#feedback#i", $ordertype)) {
-            $moreinfo = "[<a target='_blank' href='" . $GLOBALS['cfg_phpurl'] . "/feedback.php?aid={$row->id}'><u>评论：{$row->scores}</u></a>]";
+            $moreinfo = "[<a target='_blank' href='".$GLOBALS['cfg_phpurl']."/feedback.php?aid={$row->id}'><u>评论：{$row->scores}</u></a>]";
         } else {
             $moreinfo = "[点击：{$row->click}]";
         }
         echo "·<a href='archives_do.php?aid={$row->id}&dopost=viewArchives' target='_blank'>";
-        echo cn_substr($row->title, 30) . "</a>{$moreinfo}<br/>\r\n";
+        echo cn_substr($row->title, 30)."</a>{$moreinfo}<br/>\r\n";
     }
 }
 include DedeInclude('templets/content_tj.htm');

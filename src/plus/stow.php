@@ -10,7 +10,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
 
 $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 $type = empty($type) ? "" : HtmlReplace($type, 1);
@@ -19,7 +19,7 @@ if ($aid == 0) {
     exit();
 }
 
-require_once(DEDEINC . "/memberlogin.class.php");
+require_once(DEDEINC."/memberlogin.class.php");
 $ml = new MemberLogin();
 
 if ($ml->M_ID == 0) {
@@ -41,17 +41,17 @@ if ($type == '') {
     $row = $dsql->GetOne("SELECT * FROM `#@__member_stow` WHERE aid='$aid' And mid='{$ml->M_ID}' AND type IS NULL ");
 
     if (!is_array($row)) {
-        $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_stow`(mid,aid,title,addtime) VALUES ('" . $ml->M_ID . "','$aid','" . addslashes($arctitle) . "','$addtime'); ");
+        $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_stow`(mid,aid,title,addtime) VALUES ('".$ml->M_ID."','$aid','".addslashes($arctitle)."','$addtime'); ");
     }
 } else {
     $row = $dsql->GetOne("SELECT * FROM `#@__member_stow` WHERE type='$type' AND (aid='$aid' AND mid='{$ml->M_ID}')");
     if (!is_array($row)) {
-        $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_stow`(mid,aid,title,addtime,type) VALUES ('" . $ml->M_ID . "','$aid','$title','$addtime','$type'); ");
+        $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_stow`(mid,aid,title,addtime,type) VALUES ('".$ml->M_ID."','$aid','$title','$addtime','$type'); ");
     }
 }
 
 //更新用户统计
 $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='{$ml->M_ID}' ");
-$dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `stow`='{$row['nums']}' WHERE `mid`='" . $ml->M_ID . "'");
+$dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `stow`='{$row['nums']}' WHERE `mid`='".$ml->M_ID."'");
 
 ShowMsg('成功收藏一篇文档！', 'javascript:window.close();');

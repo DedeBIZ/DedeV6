@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(dirname(__FILE__) . "/actionsearch_class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__)."/actionsearch_class.php");
 
 //增加权限检查
 if (empty($dopost)) $dopost = "";

@@ -23,8 +23,8 @@ function lib_likearticle(&$ctag, &$refObj)
     if (empty($tablewidth)) $tablewidth = 100;
     if (empty($col)) $col = 1;
     $colWidth = ceil(100 / $col);
-    $tablewidth = $tablewidth . "%";
-    $colWidth = $colWidth . "%";
+    $tablewidth = $tablewidth."%";
+    $colWidth = $colWidth."%";
 
     $ids = array();
     $tids = array();
@@ -68,7 +68,7 @@ function lib_likearticle(&$ctag, &$refObj)
     if (empty($arcid) || $byabs == 0) {
         $orderquery = " ORDER BY arc.id desc ";
     } else {
-        $orderquery = " ORDER BY ABS(arc.id - " . $arcid . ") ";
+        $orderquery = " ORDER BY ABS(arc.id - ".$arcid.") ";
     }
     if ($keyword != '') {
         if (!empty($typeid)) {
@@ -145,21 +145,21 @@ function lib_likearticle(&$ctag, &$refObj)
                 );
 
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.gif';
+                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
                 }
                 if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                    $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                    $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                 }
                 $row['picname'] = $row['litpic'];
                 $row['stime'] = GetDateMK($row['pubdate']);
-                $row['typelink'] = "<a href='" . $row['typeurl'] . "'>" . $row['typename'] . "</a>";
-                $row['image'] = "<img src='" . $row['picname'] . "' border='0' width='$imgwidth' height='$imgheight' alt='" . preg_replace("#['><]#", "", $row['title']) . "'>";
-                $row['imglink'] = "<a href='" . $row['filename'] . "'>" . $row['image'] . "</a>";
+                $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
+                $row['image'] = "<img src='".$row['picname']."' border='0' width='$imgwidth' height='$imgheight' alt='".preg_replace("#['><]#", "", $row['title'])."'>";
+                $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
-                if ($row['color'] != '') $row['title'] = "<font color='" . $row['color'] . "'>" . $row['title'] . "</font>";
-                if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>" . $row['title'] . "</strong>";
-                $row['textlink'] = "<a href='" . $row['filename'] . "'>" . $row['title'] . "</a>";
+                if ($row['color'] != '') $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
+                if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>".$row['title']."</strong>";
+                $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
@@ -176,7 +176,7 @@ function lib_likearticle(&$ctag, &$refObj)
                     $GLOBALS['autoindex']++;
                 }
 
-                $artlist .= $dtp2->GetResult() . "\r\n";
+                $artlist .= $dtp2->GetResult()."\r\n";
             }
             //if hasRow
             else {

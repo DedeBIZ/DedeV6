@@ -9,11 +9,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
 if (empty($dopost)) $dopost = "";
 
-$configfile = DEDEDATA . '/config.cache.inc.php';
+$configfile = DEDEDATA.'/config.cache.inc.php';
 
 //更新配置函数
 function ReWriteConfig()
@@ -25,18 +25,18 @@ function ReWriteConfig()
     }
     $fp = fopen($configfile, 'w');
     flock($fp, 3);
-    fwrite($fp, "<" . "?php\r\n");
+    fwrite($fp, "<"."?php\r\n");
     $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         if ($row['type'] == 'number') {
             if ($row['value'] == '') $row['value'] = 0;
-            fwrite($fp, "\${$row['varname']} = " . $row['value'] . ";\r\n");
+            fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         } else {
-            fwrite($fp, "\${$row['varname']} = '" . str_replace("'", '', $row['value']) . "';\r\n");
+            fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
         }
     }
-    fwrite($fp, "?" . ">");
+    fwrite($fp, "?".">");
     fclose($fp);
 }
 
@@ -111,8 +111,8 @@ EOT;
 
         while ($row = $dsql->GetArray()) {
             $bgcolor = ($i++ % 2 == 0) ? "#F9FCEF" : "#ffffff";
-            $row['info'] = preg_replace("#{$keywords}#", '<font color="red">' . $keywords . '</font>', $row['info']);
-            $row['varname'] = preg_replace("#{$keywords}#", '<font color="red">' . $keywords . '</font>', $row['varname']);
+            $row['info'] = preg_replace("#{$keywords}#", '<font color="red">'.$keywords.'</font>', $row['info']);
+            $row['varname'] = preg_replace("#{$keywords}#", '<font color="red">'.$keywords.'</font>', $row['varname']);
 ?>
             <tr align="center" height="25" bgcolor="<?php echo $bgcolor ?>">
                 <td width="300"><?php echo $row['info']; ?>： </td>
@@ -125,11 +125,11 @@ EOT;
                         echo "<label><input type='radio' class='np' name='edit___{$row['varname']}' value='Y'$c1> 是</label>";
                         echo "<label><input type='radio' class='np' name='edit___{$row['varname']}' value='N'$c2> 否</label>";
                     } else if ($row['type'] == 'bstring') {
-                        echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>" . dede_htmlspecialchars($row['value']) . "</textarea>";
+                        echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
                     } else if ($row['type'] == 'number') {
                         echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
                     } else {
-                        echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"" . dede_htmlspecialchars($row['value']) . "\" style='width:80%'>";
+                        echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'>";
                     }
                     ?>
                 </td>

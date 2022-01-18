@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 列表对应函数
  *
@@ -10,16 +9,15 @@
  * @link           https://www.dedebiz.com
  */
 if (!isset($registerGlobals)) {
-    require_once(dirname(__FILE__) . "/../../include/common.inc.php");
+    require_once(dirname(__FILE__)."/../../include/common.inc.php");
 }
-
 // 获取栏目名称
 function GetTypename($tid)
 {
     global $dsql;
     if (empty($tid)) return '';
-    if (file_exists(DEDEDATA . '/cache/inc_catalog_base.inc')) {
-        require_once(DEDEDATA . '/cache/inc_catalog_base.inc');
+    if (file_exists(DEDEDATA.'/cache/inc_catalog_base.inc')) {
+        require_once(DEDEDATA.'/cache/inc_catalog_base.inc');
         global $cfg_Cs;
         if (isset($cfg_Cs[$tid])) {
             return base64_decode($cfg_Cs[$tid][3]);
@@ -32,37 +30,29 @@ function GetTypename($tid)
     }
     return '';
 }
-
 //获得是否推荐的表述
 $arcatts = array();
 $dsql->Execute('n', 'SELECT * FROM `#@__arcatt` ');
 while ($arr = $dsql->GetArray('n')) {
     $arcatts[$arr['att']] = $arr['attname'];
 }
-
 function IsCommendArchives($iscommend)
 {
     global $arcatts;
     $sn = '';
     foreach ($arcatts as $k => $v) {
         $v = cn_substr($v, 2);
-        $sn .= (preg_match("#" . $k . "#", $iscommend) ? ' ' . $v : '');
+        $sn .= (preg_match("#".$k."#", $iscommend) ? ' '.$v : '');
     }
     $sn = trim($sn);
     if ($sn == '') return '';
-    else return "[<font color='red'>$sn</font>]";
+    else return "<span style='color:#dc3545'>[$sn]</span>";
 }
-
 //获得推荐的标题
 function GetCommendTitle($title, $iscommend)
 {
-    /*if(preg_match('#c#i',$iscommend))
-    {
-        $title = "$title<font color='red'>(推荐)</font>";
-    }*/
     return $title;
 }
-
 //更换颜色
 $GLOBALS['RndTrunID'] = 1;
 function GetColor($color1, $color2)
@@ -74,7 +64,6 @@ function GetColor($color1, $color2)
         return $color2;
     }
 }
-
 //检查图片是否存在
 function CheckPic($picname)
 {
@@ -84,7 +73,6 @@ function CheckPic($picname)
         return "images/dfpic.gif";
     }
 }
-
 //判断内容是否生成HTML
 function IsHtmlArchives($ismake)
 {
@@ -93,10 +81,9 @@ function IsHtmlArchives($ismake)
     } else if ($ismake == -1) {
         return "仅动态";
     } else {
-        return "<font color='red'>未生成</font>";
+        return "<span style='color:#dc3545'>未生成</span>";
     }
 }
-
 //获得内容的限定级别名称
 function GetRankName($arcrank)
 {
@@ -114,12 +101,11 @@ function GetRankName($arcrank)
         return "不限";
     }
 }
-
 //判断内容是否为图片文章
 function IsPicArchives($picname)
 {
     if ($picname != '') {
-        return '<font color=\'red\'>(图)</font>';
+        return "<span style='color:#dc3545'>[图]</span>";
     } else {
         return '';
     }

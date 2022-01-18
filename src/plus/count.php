@@ -15,7 +15,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
 if (isset($aid)) $arcID = $aid;
 
 $cid = empty($cid) ? 1 : intval($cid);
@@ -53,7 +53,7 @@ if (!empty($view)) {
             );
             echo json_encode($result);
         } else {
-            echo "document.write('" . $row['click'] . "');\r\n";
+            echo "document.write('".$row['click']."');\r\n";
         }
     }
 }

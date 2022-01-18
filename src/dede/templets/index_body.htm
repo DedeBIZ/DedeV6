@@ -1,42 +1,42 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-    <title>系统概况</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <base target="_self">
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/indexbody.css">
-    <script src="../static/js/jquery.js"></script>
-    <script src="../static/js/bootstrap.bundle.js"></script>
-    <script src="../static/js/dedeajax2.js"></script>
-    <script src="js/indexbody.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-    function showMore() {
-        $("#allInfo").toggle();
-        $("#allInfoTD").toggle();
-    }
-    $(function () {
-        $.get("index_testenv.php", function (data) {
-            if (data !== '') {
-                $("#__testEvn").html(data);
-            }
-        });
-        $.get("index_body.php?dopost=get_seo", function (data) {
-            if (data !== '') {
-                $("#SEOInfo").html(data);
-            }
-        });
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>系统概况</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<base target="_self">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/indexbody.css">
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.bundle.js"></script>
+<script src="../static/js/dedeajax2.js"></script>
+<script src="js/indexbody.js"></script>
+<script src="js/main.js"></script>
+<script>
+function showMore() {
+    $("#allInfo").toggle();
+    $("#allInfoTD").toggle();
+}
+$(function () {
+    $.get("index_testenv.php", function (data) {
+        if (data !== '') {
+            $("#__testEvn").html(data);
+        }
     });
-    </script>
-    <style>
+    $.get("index_body.php?dopost=get_seo", function (data) {
+        if (data !== '') {
+            $("#SEOInfo").html(data);
+        }
+    });
+});
+</script>
+<style>
 .row{display:flex;flex-wrap:wrap}
 .row>[class*='col-']{display:flex;flex-direction:column}
 .btn+.btn{margin-left:10px}
-    </style>
+</style>
 </head>
 <body>
     <div class="container-fluid">
@@ -57,14 +57,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 mt-3">
                 <div class="card">
-                    <div class="card-header">商业授权</div>
+                    <div class="card-header">版本授权</div>
                     <div class="card-body" id="_systeminfo">正在载入中...</div>
                 </div>
             </div>
-
             <div class="col-md-6 mt-3">
                 <div class="card">
                     <div class="card-header">快捷操作<span class="float-right"><a href="javascript:AddNew()" class="btn btn-success btn-sm">新增</a><a href="javascript:ListAll()" class="btn btn-success btn-sm">管理</a></span></div>
@@ -81,12 +79,11 @@
                                     echo "<a href='{$link}' class='btn btn-success btn-sm'>{$title}</a>";
                                 }
                             }
-                        ?>
+                            ?>
                         </ul>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 mt-3">
                 <div class="card">
                     <div class="card-header">基本信息</div>
@@ -172,7 +169,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 mt-3">
                 <div class="card">
                     <div class="card-header">信息统计</div>
@@ -181,7 +177,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 mt-3">
                 <div class="card">
                     <div class="card-header">最新文档</div>
@@ -228,7 +223,6 @@
             </div>
         </div>
     </div>
-
     <div class="footer">
         <!--下面是隐藏的项目-->
         <div id="loaddiv" style="display:none">
@@ -243,22 +237,22 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td height="28" colspan="3" background="images/tbg.gif">
-                            <div style="float:left">增加快捷操作项</div>
+                            <div style="float:left;padding-left:10px">增加快捷操作项</div>
                             <div style="float:right;padding:4px 10px 0 0">
                                 <a href="javascript:CloseTab('addTab')"><img src="images/close.gif" width="12" height="12" border="0"></a>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td style="height:6px;font-size:1px;border-top:1px solid #8DA659" colspan="2"></td>
+                        <td colspan="2" style="height:10px;border-top:1px solid #8DA659"></td>
                     </tr>
                     <tr>
-                        <td width="20%" height="28" align="right">链接标题：</td>
-                        <td width="70%"><input name="title" type="text" id="title" class="pubinputs" style="width:255px"></td>
+                        <td width="20%" height="26" align="right">链接标题：</td>
+                        <td width="70%"><input name="title" type="text" id="title" class="pubinputs" style="margin-bottom:10px;width:260px"></td>
                     </tr>
                     <tr>
-                        <td height="28" width="20%" align="right">链接网址：</td>
-                        <td width="70%"><input name="link" type="text" id="link" class="pubinputs" style="width:255px"></td>
+                        <td width="20%" height="26" align="right">链接网址：</td>
+                        <td width="70%"><input name="link" type="text" id="link" class="pubinputs" style="width:260px"></td>
                     </tr>
                     <tr>
                         <td height="36"></td>
@@ -268,7 +262,6 @@
             </form>
         </div>
     </div>
-
     <script>
         var dedebizInfo;
         function ViewDedeBIZ() {
@@ -314,7 +307,7 @@
                         infoStr += `
                         <tr>
                             <td class="nline" style="text-align:left">站点名称：</td>
-                            <td class="nline" style="text-align:left">${rsp.result.title} </td>
+                            <td class="nline" style="text-align:left">${rsp.result.title}</td>
                         </tr>
                         `;
                     }
@@ -322,7 +315,7 @@
                         infoStr += `
                         <tr>
                             <td class="nline" style="text-align:left">站点类型：</td>
-                            <td class="nline" style="text-align:left">${rsp.result.stype} </td>
+                            <td class="nline" style="text-align:left">${rsp.result.stype}</td>
                         </tr>
                         `;
                     }
@@ -338,16 +331,16 @@
                         //下面是DedeBIZ Core组件信息
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left">商业组件：</td>
-                            <td class="nline" style="text-align:left"><a class="btn btn-danger btn-sm" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008">如何启动组件</a> </td>
+                            <td class="nline" style="text-align:left">版本组件：</td>
+                            <td class="nline" style="text-align:left"><a class="btn btn-danger btn-sm" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008">如何启动组件</a></td>
                         </tr>
                         `;
                     } else {
                         dedebizInfo = JSON.parse(rsp.result.core.data);
                         infoStr += `
                         <tr>
-                            <td class="nline" style="text-align:left">商业组件：</td>
-                            <td class="nline" style="text-align:left"><a class="btn btn-success btn-sm" href="javascript:ViewDedeBIZ()">查看组件信息</a> </td>
+                            <td class="nline" style="text-align:left">版本组件：</td>
+                            <td class="nline" style="text-align:left"><a class="btn btn-success btn-sm" href="javascript:ViewDedeBIZ()">查看组件信息</a></td>
                         </tr>
                         `;
                     }
@@ -355,9 +348,9 @@
                     $("#_systeminfo").html(infoStr);
                 } else {
                     $("#_systeminfo").html(`
-                    <div class="py-1">尚未启动商业站点服务，原因：<b>${rsp.msg}</b></div>
-                    <div class="py-1">商业服务可以提升性能、增强安全、支持开源。</div>
-                    <div class="py-1"><a class="btn btn-danger" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}">开启商业服务</a></div>
+                    <div class="py-1">尚未启动商业版服务，原因：${rsp.msg}</div>
+                    <div class="py-1">目前是社区版开源免费，但商业版可以优化性能，数据分离，在线支付，小程序，APP等等。</div>
+                    <div class="py-1"><a class="btn btn-danger" target="_blank" href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}">开启商业版</a></div>
                     `);
                 }
             });

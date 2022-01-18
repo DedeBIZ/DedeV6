@@ -8,15 +8,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/../include/common.inc.php');
-require_once(DEDEINC . '/userlogin.class.php');
+require_once(dirname(__FILE__).'/../include/common.inc.php');
+require_once(DEDEINC.'/userlogin.class.php');
 if (empty($dopost)) $dopost = '';
 if (empty($gotopage)) $gotopage = '';
 $gotopage = RemoveXSS($gotopage);
 //检测安装目录安全性
-if (is_dir(dirname(__FILE__) . '/../install')) {
-    if (!file_exists(dirname(__FILE__) . '/../install/install_lock.txt')) {
-        $fp = fopen(dirname(__FILE__) . '/../install/install_lock.txt', 'w') or die('安装目录无写入权限，无法进行写入锁定文件，请安装完毕删除安装目录！');
+if (is_dir(dirname(__FILE__).'/../install')) {
+    if (!file_exists(dirname(__FILE__).'/../install/install_lock.txt')) {
+        $fp = fopen(dirname(__FILE__).'/../install/install_lock.txt', 'w') or die('安装目录无写入权限，无法进行写入锁定文件，请安装完毕删除安装目录！');
         fwrite($fp, 'ok');
         fclose($fp);
     }
@@ -35,7 +35,7 @@ if (is_dir(dirname(__FILE__) . '/../install')) {
     }
 }
 //更新服务器
-require_once(DEDEDATA . '/admin/config_update.php');
+require_once(DEDEDATA.'/admin/config_update.php');
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if (preg_match('/dede\/login/i', $cururl)) {

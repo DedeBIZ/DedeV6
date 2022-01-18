@@ -9,15 +9,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-require_once(DEDEINC . "/arc.partview.class.php");
+require_once(DEDEINC."/arc.partview.class.php");
 if (empty($dopost)) $dopost = '';
 
 if ($dopost == "view") {
     $pv = new PartView();
     $templet = str_replace("{style}", $cfg_df_style, $templet);
-    $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . "/" . $templet);
+    $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
     $pv->Display();
     exit();
 } else if ($dopost == "make") {
@@ -63,7 +63,7 @@ if ($dopost == "view") {
     }
     $remotepos = empty($remotepos) ? '/index.html' : $remotepos;
     $serviterm = empty($serviterm) ? "" : $serviterm;
-    $homeFile = DEDEADMIN . "/" . $position;
+    $homeFile = DEDEADMIN."/".$position;
     $homeFile = str_replace("\\", "/", $homeFile);
     $homeFile = str_replace("//", "/", $homeFile);
     $fp = fopen($homeFile, "w") or die("你指定的文件名有问题，无法创建文件");
@@ -78,10 +78,10 @@ if ($dopost == "view") {
         $templet = str_replace("{style}", $cfg_df_style, $templet);
         $pv = new PartView();
         $GLOBALS['_arclistEnv'] = 'index';
-        $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . "/" . $templet);
+        $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-        echo "<div class=\"alert alert-success\" role=\"alert\">成功更新主页HTML：" . $homeFile . "<br /><a href='{$position}' target='_blank' class='btn btn-success'>浏览...</a></div><br />";
+        echo "<div class=\"alert alert-success\" role=\"alert\">成功更新主页HTML：".$homeFile."<br /><a href='{$position}' target='_blank' class='btn btn-success'>浏览...</a></div><br />";
     } else {
         // 动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);

@@ -11,10 +11,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . '/typelink.class.php');
-require_once(DEDEINC . '/datalistcp.class.php');
-require_once(DEDEADMIN . '/inc/inc_list_functions.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/typelink.class.php');
+require_once(DEDEINC.'/datalistcp.class.php');
+require_once(DEDEADMIN.'/inc/inc_list_functions.php');
 
 $cid = isset($cid) ? intval($cid) : 0;
 $channelid = isset($channelid) ? intval($channelid) : 0;
@@ -76,11 +76,11 @@ if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
     }
 
     if (!empty($cid)) {
-        $tinyQuerys[] = " typeid in(" . GetSonIds($cid) . ") ";
+        $tinyQuerys[] = " typeid in(".GetSonIds($cid).") ";
     }
 
     if (count($tinyQuerys) > 0) {
-        $tinyQuery = "WHERE " . join(' AND ', $tinyQuerys);
+        $tinyQuery = "WHERE ".join(' AND ', $tinyQuerys);
     }
     // 缓存处理
     $sql = "SELECT COUNT(*) AS dd FROM `#@__arctiny` $tinyQuery ";
@@ -93,12 +93,12 @@ if ($cid == 0) {
         $positionname = '所有栏目&gt;';
     } else {
         $row = $tl->dsql->GetOne("SELECT id,typename,maintable FROM `#@__channeltype` WHERE id='$channelid'");
-        $positionname = $row['typename'] . " &gt; ";
+        $positionname = $row['typename']." &gt; ";
         $maintable = $row['maintable'];
         $channelid = $row['id'];
     }
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName()) . " &gt; ";
+    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
 }
 
 //当选择的是单表模型栏目时，直接跳转到单表模型管理区
@@ -115,8 +115,8 @@ if ($channelid < -1) {
 
 
 // 栏目大于800则需要缓存数据
-$optHash = md5($cid . serialize($admin_catalogs) . $channelid);
-$optCache = DEDEDATA . "/tplcache/inc_option_$optHash.inc";
+$optHash = md5($cid.serialize($admin_catalogs).$channelid);
+$optCache = DEDEDATA."/tplcache/inc_option_$optHash.inc";
 
 $typeCount = 0;
 if (file_exists($cache1)) require_once($cache1);
@@ -143,7 +143,7 @@ while ($frow = $dsql->GetArray('f')) {
 
 
 if (!empty($userCatalogSql)) {
-    $whereSql .= " AND " . $userCatalogSql;
+    $whereSql .= " AND ".$userCatalogSql;
 }
 if (!empty($mid)) {
     $whereSql .= " AND arc.mid = '$mid' ";
@@ -155,17 +155,17 @@ if ($flag != '') {
     $whereSql .= " AND FIND_IN_SET('$flag', arc.flag) ";
 }
 if ($cid != 0) {
-    $whereSql .= ' AND arc.typeid IN (' . GetSonIds($cid) . ')';
+    $whereSql .= ' AND arc.typeid IN ('.GetSonIds($cid).')';
 }
 if ($arcrank != '') {
     $whereSql .= " AND arc.arcrank = '$arcrank' ";
-    $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='catalog_do.php?cid=" . $cid . "&dopost=listArchives&gurl=content_list.php';\">所有文档</button>";
+    $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='catalog_do.php?cid=".$cid."&dopost=listArchives&gurl=content_list.php';\">所有文档</button>";
 } else {
-    $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='catalog_do.php?cid=" . $cid . "&dopost=listArchives&arcrank=-1&gurl=content_list.php';\">稿件审核</button>";
+    $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='catalog_do.php?cid=".$cid."&dopost=listArchives&arcrank=-1&gurl=content_list.php';\">稿件审核</button>";
 }
 
 $orderby = empty($orderby) ? 'id' : preg_replace("#[^a-z0-9]#", "", $orderby);
-$orderbyField = 'arc.' . $orderby;
+$orderbyField = 'arc.'.$orderby;
 
 $query = "SELECT arc.id,arc.typeid,arc.senddate,arc.flag,arc.ismake,
 arc.channel,arc.arcrank,arc.click,arc.title,arc.color,arc.litpic,arc.pubdate,arc.mid
@@ -192,7 +192,7 @@ $dlist->SetParameter('f', $f);
 
 //模板
 if (empty($s_tmplets)) $s_tmplets = 'templets/content_list.htm';
-$dlist->SetTemplate(DEDEADMIN . '/' . $s_tmplets);
+$dlist->SetTemplate(DEDEADMIN.'/'.$s_tmplets);
 
 //查询
 $dlist->SetSource($query);

@@ -10,11 +10,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-define('_PLUS_TPL_', DEDEROOT . '/templets/plus');
-require_once(DEDEINC . '/dedetemplate.class.php');
-require_once DEDEINC . '/shopcar.class.php';
-require_once DEDEINC . '/memberlogin.class.php';
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+define('_PLUS_TPL_', DEDEROOT.'/templets/plus');
+require_once(DEDEINC.'/dedetemplate.class.php');
+require_once DEDEINC.'/shopcar.class.php';
+require_once DEDEINC.'/memberlogin.class.php';
 $cart = new MemberShops();
 
 if (isset($dopost) && $dopost == 'makeid') {
@@ -40,6 +40,6 @@ $carts = array(
 
 $dtp = new DedeTemplate();
 $dtp->Assign('carts', $carts);
-$dtp->LoadTemplate(_PLUS_TPL_ . '/car.htm');
+$dtp->LoadTemplate(_PLUS_TPL_.'/car.htm');
 $dtp->Display();
 exit;

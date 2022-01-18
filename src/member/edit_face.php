@@ -7,7 +7,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
 $menutype = 'config';
 if (!isset($dopost)) {
@@ -29,5 +29,5 @@ if ($dopost == 'save') {
     exit();
 }
 $face = $cfg_ml->fields['face'];
-include(DEDEMEMBER . "/templets/edit_face.htm");
+include(DEDEMEMBER."/templets/edit_face.htm");
 exit();

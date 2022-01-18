@@ -1,7 +1,7 @@
 <?php
 @set_time_limit(0);
 
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 AjaxHead();
 if (!function_exists('TestWriteable')) {
 	// 检测是否可写
@@ -9,7 +9,7 @@ if (!function_exists('TestWriteable')) {
 	{
 		$tfile = '_write_able.txt';
 		$d = preg_replace("/\/$/", '', $d);
-		$fp = @fopen($d . '/' . $tfile, 'w');
+		$fp = @fopen($d.'/'.$tfile, 'w');
 		if (!$fp) {
 			if ($c == false) {
 				@chmod($d, 0777);
@@ -17,7 +17,7 @@ if (!function_exists('TestWriteable')) {
 			} else return TestWriteable($d, true);
 		} else {
 			fclose($fp);
-			return @unlink($d . '/' . $tfile) ? true : false;
+			return @unlink($d.'/'.$tfile) ? true : false;
 		}
 	}
 }
@@ -26,18 +26,18 @@ if (!function_exists('TestExecuteable')) {
 	// 检查是否具目录可执行
 	function TestExecuteable($d = '.', $siteuRL = '', $rootDir = '')
 	{
-		$testStr = '<' . chr(0x3F) . 'p' . chr(hexdec(68)) . chr(112) . "\n\r";
-		$filename = md5($d) . '.php';
-		$testStr .= 'function test(){ echo md5(\'' . $d . '\');}' . "\n\rtest();\n\r";
-		$testStr .= chr(0x3F) . '>';
+		$testStr = '<'.chr(0x3F).'p'.chr(hexdec(68)).chr(112)."\n\r";
+		$filename = md5($d).'.php';
+		$testStr .= 'function test(){ echo md5(\''.$d.'\');}'."\n\rtest();\n\r";
+		$testStr .= chr(0x3F).'>';
 		$reval = false;
 		if (empty($rootDir)) $rootDir = DEDEROOT;
 		if (TestWriteable($d)) {
-			@file_put_contents($d . '/' . $filename, $testStr);
-			$remoteUrl = $siteuRL . '/' . str_replace($rootDir, '', str_replace("\\", '/', realpath($d))) . '/' . $filename;
+			@file_put_contents($d.'/'.$filename, $testStr);
+			$remoteUrl = $siteuRL.'/'.str_replace($rootDir, '', str_replace("\\", '/', realpath($d))).'/'.$filename;
 			$tempStr = @PostHost($remoteUrl);
 			$reval = (md5($d) == trim($tempStr)) ? true : false;
-			unlink($d . '/' . $filename);
+			unlink($d.'/'.$filename);
 			return $reval;
 		} else {
 			return -1;
@@ -55,19 +55,19 @@ if (!function_exists('PostHost')) {
 		} elseif (!@$parse['port']) {
 			$parse['port'] = '80';
 		}
-		$parse['host'] = str_replace(array('http://', 'https://'), array('', 'ssl://'), "$parse[scheme]://") . $parse['host'];
+		$parse['host'] = str_replace(array('http://', 'https://'), array('', 'ssl://'), "$parse[scheme]://").$parse['host'];
 		if (!$fp = @fsockopen($parse['host'], $parse['port'], $errnum, $errstr, $timeout)) {
 			return false;
 		}
 		$method = strtoupper($method);
 		$wlength = $wdata = $responseText = '';
-		$parse['path'] = str_replace(array('\\', '//'), '/', @$parse['path']) . "?" . @$parse['query'];
+		$parse['path'] = str_replace(array('\\', '//'), '/', @$parse['path'])."?".@$parse['query'];
 		if ($method == 'GET') {
 			$separator = @$parse['query'] ? '&' : '';
 			substr($data, 0, 1) == '&' && $data = substr($data, 1);
-			$parse['path'] .= $separator . $data;
+			$parse['path'] .= $separator.$data;
 		} elseif ($method == 'POST') {
-			$wlength = "Content-length: " . strlen($data) . "\r\n";
+			$wlength = "Content-length: ".strlen($data)."\r\n";
 			$wdata = $data;
 		}
 		$write = "$method $parse[path] HTTP/1.0\r\nHost: $parse[host]\r\nContent-type: application/x-www-form-urlencoded\r\n{$wlength}Connection: close\r\n\r\n$wdata";
@@ -109,7 +109,7 @@ if (!function_exists('IsWritable')) {
 		if ($isDir) {
 			if (is_dir($pathfile)) {
 				mt_srand((float)microtime() * 1000000);
-				$pathfile = $pathfile . 'dede_' . uniqid(mt_rand()) . '.tmp';
+				$pathfile = $pathfile.'dede_'.uniqid(mt_rand()).'.tmp';
 			} elseif (@mkdir($pathfile)) {
 				return IsWritable($pathfile);
 			} else {
@@ -132,7 +132,7 @@ $dirname = str_replace('index_body.php', '', strtolower($_SERVER['PHP_SELF']));
 if (preg_match("#[\\|/]dede[\\|/]#", $dirname)) {
 	$safeMsg[] = '默认管理目录为dede，需要立即将它更名；';
 }
-if (IsWritable(DEDEDATA . '/common.inc.php')) {
+if (IsWritable(DEDEDATA.'/common.inc.php')) {
 	$safeMsg[] = '强烈建议data/common.inc.php文件属性设置为644（Linux/Unix）或只读（NT）；';
 }
 $rs = TestAdminPWD();

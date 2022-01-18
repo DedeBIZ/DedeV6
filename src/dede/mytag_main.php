@@ -9,15 +9,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckPurview('temp_Other');
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, '/');
 make_hash();
 $sql = "SELECT myt.aid,myt.tagname,tp.typename,myt.timeset,myt.endtime
         FROM `#@__mytag` myt LEFT JOIN `#@__arctype` tp ON tp.id=myt.typeid ORDER BY myt.aid DESC ";
 $dlist = new DataListCP();
-$dlist->SetTemplet(DEDEADMIN . '/templets/mytag_main.htm');
+$dlist->SetTemplet(DEDEADMIN.'/templets/mytag_main.htm');
 $dlist->SetSource($sql);
 $dlist->display();
 

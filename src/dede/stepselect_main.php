@@ -9,10 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Stepselect');
-require_once(DEDEINC . "/datalistcp.class.php");
-require_once(DEDEINC . '/enums.func.php');
+require_once(DEDEINC."/datalistcp.class.php");
+require_once(DEDEINC.'/enums.func.php');
 /*-----------------
 前台视图
 function __show() { }
@@ -35,7 +35,7 @@ if (empty($action)) {
         if (!empty($topvalue)) {
             // 判断是否为1级联动
             if ($topvalue % 500 == 0) {
-                $egroupsql = " WHERE egroup LIKE '$egroup' AND evalue>=$topvalue AND evalue < " . ($topvalue + 500);
+                $egroupsql = " WHERE egroup LIKE '$egroup' AND evalue>=$topvalue AND evalue < ".($topvalue + 500);
             } else {
                 $egroupsql = " WHERE (evalue LIKE '$topvalue.%%%' OR evalue=$topvalue) AND egroup LIKE '$egroup'";
             }
@@ -51,7 +51,7 @@ if (empty($action)) {
     $dlist = new DataListCP();
     $dlist->SetParameter('egroup', $egroup);
     $dlist->SetParameter('topvalue', $topvalue);
-    $dlist->SetTemplet(DEDEADMIN . "/templets/stepselect_main.htm");
+    $dlist->SetTemplet(DEDEADMIN."/templets/stepselect_main.htm");
     $dlist->SetSource($sql);
     $dlist->display();
     exit();
@@ -66,16 +66,16 @@ function __del() { }
 ------------------*/ else if ($action == 'del') {
     $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
     if (!is_array($arr)) {
-        ShowMsg("无法获取分类信息，不允许后续操作！", "stepselect_main.php?" . ExecTime());
+        ShowMsg("无法获取分类信息，不允许后续操作！", "stepselect_main.php?".ExecTime());
         exit();
     }
     if ($arr['issystem'] == 1) {
-        ShowMsg("系统内置的枚举分类不能删除！", "stepselect_main.php?" . ExecTime());
+        ShowMsg("系统内置的枚举分类不能删除！", "stepselect_main.php?".ExecTime());
         exit();
     }
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__stepselect` WHERE id='$id'; ");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}'; ");
-    ShowMsg("成功删除一个分类！", "stepselect_main.php?" . ExecTime());
+    ShowMsg("成功删除一个分类！", "stepselect_main.php?".ExecTime());
     exit();
 } else if ($action == 'delenumAllSel') {
     if (isset($ids) && is_array($ids)) {
@@ -115,7 +115,7 @@ function __edit_save() { }
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__stepselect` SET `itemname`='$itemname',`egroup`='$egroup' WHERE id='$id'; ");
-    ShowMsg("成功修改一个分类！", "stepselect_main.php?" . ExecTime());
+    ShowMsg("成功修改一个分类！", "stepselect_main.php?".ExecTime());
     exit();
 }
 /*-----------------
@@ -194,7 +194,7 @@ function __addenum_save() { }
                                     VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ");
         }
         WriteEnumsCache($egroup);
-        ShowMsg("成功添加枚举分类！" . $dsql->GetError(), $ENV_GOBACK_URL);
+        ShowMsg("成功添加枚举分类！".$dsql->GetError(), $ENV_GOBACK_URL);
         exit();
     } else if ($issign == 2 && $topvalue != 0) {
         $minid = $topvalue;
@@ -204,13 +204,13 @@ function __addenum_save() { }
             $arr = $dsql->GetOne("SELECT * FROM `#@__sys_enum` WHERE egroup='$egroup' AND evalue LIKE '$topvalue.%%%' ORDER BY evalue DESC ");
             if (!is_array($arr)) {
                 $disorder = $minid;
-                $evalue = $minid . '.001';
+                $evalue = $minid.'.001';
             } else {
                 $disorder = $minid;
                 preg_match("#([0-9]{1,})\.([0-9]{1,})#", $arr['evalue'], $matchs);
                 $addvalue = $matchs[2] + 1;
                 $addvalue = sprintf("%03d", $addvalue);
-                $evalue = $matchs[1] . '.' . $addvalue;
+                $evalue = $matchs[1].'.'.$addvalue;
             }
             $sql = "INSERT INTO `#@__sys_enum`(`ename`,`evalue`,`egroup`,`disorder`,`issign`) 
                                     VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ";

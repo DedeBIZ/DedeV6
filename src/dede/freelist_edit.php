@@ -9,15 +9,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) {
-    require_once DEDEINC . '/typelink.class.php';
-    require_once DEDEINC . '/dedetag.class.php';
+    require_once DEDEINC.'/typelink.class.php';
+    require_once DEDEINC.'/dedetag.class.php';
     $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
     $row = $dsql->GetOne("Select * From `#@__freelist` where aid='$aid' ");
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("dede", "{", "}");
-    $dtp->LoadSource("--" . $row['listtag'] . "--");
+    $dtp->LoadSource("--".$row['listtag']."--");
     $ctag = $dtp->GetTag('list');
     include DedeInclude('templets/freelist_edit.htm');
     exit();
@@ -28,10 +28,10 @@ if (empty($dopost)) {
     $ntype = '';
     $edtime = time();
     if (is_array($types)) {
-        foreach ($types as $v) $ntype .= $v . ' ';
+        foreach ($types as $v) $ntype .= $v.' ';
     }
 
-    if ($ntype != '') $atts .= " type='" . trim($ntype) . "' ";
+    if ($ntype != '') $atts .= " type='".trim($ntype)."' ";
     if (!empty($typeid)) $atts .= " typeid='$typeid' ";
     if (!empty($channel)) $atts .= " channel='$channel' ";
     if (!empty($subday)) $atts .= " subday='$subday' ";

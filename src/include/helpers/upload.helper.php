@@ -27,7 +27,7 @@ if (!function_exists('AdminUpload')) {
         global $dsql, $cuserLogin, $cfg_addon_savetype, $cfg_dir_purview;
         global $cfg_basedir, $cfg_image_dir, $cfg_soft_dir, $cfg_other_medias;
         global $cfg_imgtype, $cfg_softtype, $cfg_mediatype;
-        if ($watermark) include_once(DEDEINC . '/image.func.php');
+        if ($watermark) include_once(DEDEINC.'/image.func.php');
 
         $file_tmp = isset($GLOBALS[$uploadname]) ? $GLOBALS[$uploadname] : '';
         if ($file_tmp == '' || !is_uploaded_file($file_tmp)) {
@@ -36,9 +36,9 @@ if (!function_exists('AdminUpload')) {
 
         $file_tmp = $GLOBALS[$uploadname];
         $file_size = filesize($file_tmp);
-        $file_type = $filetype == '' ? strtolower(trim($GLOBALS[$uploadname . '_type'])) : $filetype;
+        $file_type = $filetype == '' ? strtolower(trim($GLOBALS[$uploadname.'_type'])) : $filetype;
 
-        $file_name = isset($GLOBALS[$uploadname . '_name']) ? $GLOBALS[$uploadname . '_name'] : '';
+        $file_name = isset($GLOBALS[$uploadname.'_name']) ? $GLOBALS[$uploadname.'_name'] : '';
         $file_snames = explode('.', $file_name);
         $file_sname = strtolower(trim($file_snames[count($file_snames) - 1]));
 
@@ -52,43 +52,43 @@ if (!function_exists('AdminUpload')) {
                 else if ($file_type == 'image/wbmp') $file_sname = 'bmp';
                 else $file_sname = 'jpg';
             }
-            $filedir = $cfg_image_dir . '/' . MyDate($cfg_addon_savetype, time());
+            $filedir = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, time());
         } else if ($ftype == 'media') {
             $filetype = '3';
-            if (!preg_match('/' . $cfg_mediatype . '/', $file_sname)) return 0;
-            $filedir = $cfg_other_medias . '/' . MyDate($cfg_addon_savetype, time());
+            if (!preg_match('/'.$cfg_mediatype.'/', $file_sname)) return 0;
+            $filedir = $cfg_other_medias.'/'.MyDate($cfg_addon_savetype, time());
         } else {
             $filetype = '4';
-            $cfg_softtype .= '|' . $cfg_mediatype . '|' . $cfg_imgtype;
+            $cfg_softtype .= '|'.$cfg_mediatype.'|'.$cfg_imgtype;
             $cfg_softtype = str_replace('||', '|', $cfg_softtype);
-            if (!preg_match('/' . $cfg_softtype . '/', $file_sname)) return 0;
-            $filedir = $cfg_soft_dir . '/' . MyDate($cfg_addon_savetype, time());
+            if (!preg_match('/'.$cfg_softtype.'/', $file_sname)) return 0;
+            $filedir = $cfg_soft_dir.'/'.MyDate($cfg_addon_savetype, time());
         }
-        if (!is_dir(DEDEROOT . $filedir)) {
-            MkdirAll($cfg_basedir . $filedir, $cfg_dir_purview);
+        if (!is_dir(DEDEROOT.$filedir)) {
+            MkdirAll($cfg_basedir.$filedir, $cfg_dir_purview);
             CloseFtp();
         }
-        $filename = $cuserLogin->getUserID() . '-' . dd2char(MyDate('ymdHis', time())) . $rnddd;
+        $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', time())).$rnddd;
         if ($ftype == 'imagelit') $filename .= '-L';
-        if (file_exists($cfg_basedir . $filedir . '/' . $filename . '.' . $file_sname)) {
+        if (file_exists($cfg_basedir.$filedir.'/'.$filename.'.'.$file_sname)) {
             for ($i = 50; $i <= 5000; $i++) {
-                if (!file_exists($cfg_basedir . $filedir . '/' . $filename . '-' . $i . '.' . $file_sname)) {
-                    $filename = $filename . '-' . $i;
+                if (!file_exists($cfg_basedir.$filedir.'/'.$filename.'-'.$i.'.'.$file_sname)) {
+                    $filename = $filename.'-'.$i;
                     break;
                 }
             }
         }
-        $fileurl = $filedir . '/' . $filename . '.' . $file_sname;
-        $rs = move_uploaded_file($file_tmp, $cfg_basedir . $fileurl);
+        $fileurl = $filedir.'/'.$filename.'.'.$file_sname;
+        $rs = move_uploaded_file($file_tmp, $cfg_basedir.$fileurl);
         if (!$rs) return -2;
         if ($ftype == 'image' && $watermark) {
-            WaterImg($cfg_basedir . $fileurl, 'up');
+            WaterImg($cfg_basedir.$fileurl, 'up');
         }
 
         //保存信息到数据库
-        $title = $filename . '.' . $file_sname;
+        $title = $filename.'.'.$file_sname;
         $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-            VALUES ('$title','$fileurl','$filetype','0','0','0','" . filesize($cfg_basedir . $fileurl) . "','" . time() . "','" . $cuserLogin->getUserID() . "'); ";
+            VALUES ('$title','$fileurl','$filetype','0','0','0','".filesize($cfg_basedir.$fileurl)."','".time()."','".$cuserLogin->getUserID()."'); ";
         $dsql->ExecuteNoneQuery($inquery);
         $fid = $dsql->GetLastID();
         AddMyAddon($fid, $fileurl);
@@ -107,40 +107,40 @@ if (!function_exists('MemberUploads')) {
 
         //当为游客投稿的情况下，这个 id 为 0
         if (empty($userid)) $userid = 0;
-        if (!is_dir($cfg_basedir . $cfg_user_dir . "/$userid")) {
-            MkdirAll($cfg_basedir . $cfg_user_dir . "/$userid", $cfg_dir_purview);
+        if (!is_dir($cfg_basedir.$cfg_user_dir."/$userid")) {
+            MkdirAll($cfg_basedir.$cfg_user_dir."/$userid", $cfg_dir_purview);
             CloseFtp();
         }
         //有上传文件
-        $allAllowType = str_replace('||', '|', $cfg_imgtype . '|' . $cfg_mediatype . '|' . $cfg_mb_addontype);
+        $allAllowType = str_replace('||', '|', $cfg_imgtype.'|'.$cfg_mediatype.'|'.$cfg_mb_addontype);
         if (!empty($GLOBALS[$upname]) && is_uploaded_file($GLOBALS[$upname])) {
             $nowtme = time();
 
-            $GLOBALS[$upname . '_name'] = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $GLOBALS[$upname . '_name']));
+            $GLOBALS[$upname.'_name'] = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $GLOBALS[$upname.'_name']));
             //源文件类型检查
             if ($utype == 'image') {
-                if (!preg_match("/\.(" . $cfg_imgtype . ")$/", $GLOBALS[$upname . '_name'])) {
+                if (!preg_match("/\.(".$cfg_imgtype.")$/", $GLOBALS[$upname.'_name'])) {
                     ShowMsg("你所上传的图片类型不在许可列表，请上传{$cfg_imgtype}类型！", '-1');
                     exit();
                 }
                 $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
-                $imgfile_type = strtolower(trim($GLOBALS[$upname . '_type']));
+                $imgfile_type = strtolower(trim($GLOBALS[$upname.'_type']));
                 if (!in_array($imgfile_type, $sparr)) {
                     ShowMsg('上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种！', '-1');
                     exit();
                 }
-            } else if ($utype == 'flash' && !preg_match("/\.swf$/", $GLOBALS[$upname . '_name'])) {
+            } else if ($utype == 'flash' && !preg_match("/\.swf$/", $GLOBALS[$upname.'_name'])) {
                 ShowMsg('上传的文件必须为flash文件！', '-1');
                 exit();
-            } else if ($utype == 'media' && !preg_match("/\.(" . $cfg_mediatype . ")$/", $GLOBALS[$upname . '_name'])) {
-                ShowMsg('你所上传的文件类型必须为：' . $cfg_mediatype, '-1');
+            } else if ($utype == 'media' && !preg_match("/\.(".$cfg_mediatype.")$/", $GLOBALS[$upname.'_name'])) {
+                ShowMsg('你所上传的文件类型必须为：'.$cfg_mediatype, '-1');
                 exit();
-            } else if (!preg_match("/\.(" . $allAllowType . ")$/", $GLOBALS[$upname . '_name'])) {
+            } else if (!preg_match("/\.(".$allAllowType.")$/", $GLOBALS[$upname.'_name'])) {
                 ShowMsg("你所上传的文件类型不被允许！", '-1');
                 exit();
             }
             //再次严格检测文件扩展名是否符合系统定义的类型
-            $fs = explode('.', $GLOBALS[$upname . '_name']);
+            $fs = explode('.', $GLOBALS[$upname.'_name']);
             $sname = $fs[count($fs) - 1];
             $alltypes = explode('|', $allAllowType);
             if (!in_array(strtolower($sname), $alltypes)) {
@@ -153,26 +153,26 @@ if (!function_exists('MemberUploads')) {
                 exit();
             }
             if ($exname == '') {
-                $filename = $cfg_user_dir . "/$userid/" . dd2char($nowtme . '-' . mt_rand(1000, 9999)) . '.' . $sname;
+                $filename = $cfg_user_dir."/$userid/".dd2char($nowtme.'-'.mt_rand(1000, 9999)).'.'.$sname;
             } else {
-                $filename = $cfg_user_dir . "/{$userid}/{$exname}." . $sname;
+                $filename = $cfg_user_dir."/{$userid}/{$exname}.".$sname;
             }
-            move_uploaded_file($GLOBALS[$upname], $cfg_basedir . $filename) or die("上传文件到 {$filename} 失败！");
+            move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到 {$filename} 失败！");
             @unlink($GLOBALS[$upname]);
 
-            if (@filesize($cfg_basedir . $filename) > $GLOBALS['cfg_mb_upload_size'] * 1024) {
-                @unlink($cfg_basedir . $filename);
+            if (@filesize($cfg_basedir.$filename) > $GLOBALS['cfg_mb_upload_size'] * 1024) {
+                @unlink($cfg_basedir.$filename);
                 ShowMsg('你上传的文件超出系统大小限制！', '-1');
                 exit();
             }
 
             //加水印或缩小图片
             if ($utype == 'image') {
-                include_once(DEDEINC . '/image.func.php');
+                include_once(DEDEINC.'/image.func.php');
                 if ($maxwidth > 0 || $maxheight > 0) {
-                    ImageResize($cfg_basedir . $filename, $maxwidth, $maxheight);
+                    ImageResize($cfg_basedir.$filename, $maxwidth, $maxheight);
                 } else if ($water) {
-                    WaterImg($cfg_basedir . $filename);
+                    WaterImg($cfg_basedir.$filename);
                 }
             }
             return $filename;
@@ -184,11 +184,11 @@ if (!function_exists('MemberUploads')) {
                 return $handname;
             } else if (preg_match("/\.(asp|php|pl|cgi|shtm|js)$/", $handname)) {
                 exit('Not allow filename for not safe!');
-            } else if (!preg_match("/\.(" . $allAllowType . ")$/", $handname)) {
+            } else if (!preg_match("/\.(".$allAllowType.")$/", $handname)) {
                 exit('Not allow filename for filetype!');
             }
             // 2011-4-10 修复会员中心修改相册时候错误(by:jason123j)
-            else if (!preg_match('#^http:#', $handname) && !preg_match('#^' . $cfg_user_dir . '/' . $userid . "#", $handname) && !$isadmin) {
+            else if (!preg_match('#^http:#', $handname) && !preg_match('#^'.$cfg_user_dir.'/'.$userid."#", $handname) && !$isadmin) {
                 exit('Not allow filename for not userdir!');
             }
             return $handname;

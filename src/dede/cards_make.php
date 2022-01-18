@@ -9,10 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Card');
 if (empty($dopost)) $dopost = '';
-if ($dopost == '') include(DEDEADMIN . "/templets/cards_make.htm");
+if ($dopost == '') include(DEDEADMIN."/templets/cards_make.htm");
 
 //生成点卡
 elseif ($dopost == 'make') {
@@ -30,7 +30,7 @@ elseif ($dopost == 'make') {
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
 
     for (; $startid < $endid; $startid++) {
-        $cardid = $snprefix . $startid . '-';
+        $cardid = $snprefix.$startid.'-';
         for ($p = 0; $p < $pwdgr; $p++) {
             for ($i = 0; $i < $pwdlen; $i++) {
                 if ($ctype == 1) {

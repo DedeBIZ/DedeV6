@@ -9,11 +9,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_Data');
 if (empty($action)) $action = '';
 if (empty($action)) {
-    require_once(DEDEADMIN . "/templets/sys_data_replace.htm");
+    require_once(DEDEADMIN."/templets/sys_data_replace.htm");
     exit();
 }
 
@@ -24,9 +24,9 @@ function __getfields()
     AjaxHead();
     $dsql->GetTableFields($exptable);
     echo "<div style='border:1px solid #ababab;background-color:#FEFFF0;margin-top:6px;padding:3px;line-height:160%'>";
-    echo "表(" . $exptable . ")含有的字段：<br>";
+    echo "表(".$exptable.")含有的字段：<br>";
     while ($row = $dsql->GetFieldObject()) {
-        echo "<a href=\"javascript:pf('{$row->name}')\"><u>" . $row->name . "</u></a>\r\n";
+        echo "<a href=\"javascript:pf('{$row->name}')\"><u>".$row->name."</u></a>\r\n";
     }
     echo "</div>";
     exit();
@@ -75,7 +75,7 @@ function __Apply()
         $oo = 0;
         while ($row = $dsql->GetArray()) {
             $kid = $row[$keyfield];
-            $rpf = preg_replace("#" . $rpstring . "#i", $tostring, $row[$rpfield]);
+            $rpf = preg_replace("#".$rpstring."#i", $tostring, $row[$rpfield]);
             $rs = $dsql->ExecuteNoneQuery("UPDATE $exptable SET $rpfield='$rpf' WHERE $keyfield='$kid' ");
             if ($rs) {
                 $oo++;

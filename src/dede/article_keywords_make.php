@@ -11,7 +11,7 @@
  */
 @ob_start();
 @set_time_limit(3600);
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_Keyword');
 if (empty($dopost)) $dopost = '';
 
@@ -43,14 +43,14 @@ if ($dopost == 'analyse') {
                     continue;
                 }
                 if (isset($ws[$v])) {
-                    $mykey .= $v . " ";
+                    $mykey .= $v." ";
                 } else if (isset($wsnew[$v])) {
-                    $mykey .= $v . ' ';
+                    $mykey .= $v.' ';
                     $wsnew[$v]++;
                 } else if (isset($wserr[$v])) {
                     $nerr = true;
                 } else {
-                    $mykey .= $v . " ";
+                    $mykey .= $v." ";
                     $wsnew[$v] = 1;
                 }
             }
@@ -68,7 +68,7 @@ if ($dopost == 'analyse') {
             if (strlen($k) > 20) {
                 continue;
             }
-            $dsql->SetQuery("INSERT INTO `#@__keywords`(keyword,rank,sta,rpurl) VALUES('" . addslashes($k) . "','$v','1','')");
+            $dsql->SetQuery("INSERT INTO `#@__keywords`(keyword,rank,sta,rpurl) VALUES('".addslashes($k)."','$v','1','')");
             $dsql->Execute();
         }
         echo "完成关键字的导入！<br/>\r\n";
@@ -84,7 +84,7 @@ if ($dopost == 'analyse') {
 }
 //自动获取关键字（适用于默认的文章模型）
 else if ($dopost == 'fetch') {
-    require_once(DEDEINC . "/splitword.class.php");
+    require_once(DEDEINC."/splitword.class.php");
     if (empty($startdd)) {
         $startdd = 0;
     }
@@ -105,7 +105,7 @@ else if ($dopost == 'fetch') {
     if ($totalnum > $startdd + $pagesize) {
         $limitSql = " LIMIT $startdd,$pagesize";
     } else if (($totalnum - $startdd) > 0) {
-        $limitSql = " LIMIT $startdd," . ($totalnum - $startdd);
+        $limitSql = " LIMIT $startdd,".($totalnum - $startdd);
     } else {
         $limitSql = '';
     }
@@ -127,7 +127,7 @@ else if ($dopost == 'fetch') {
                 $tjnum++;
                 $id = $row->id;
                 $keywords = "";
-                $data = $client->Spliteword($row->title . Html2Text($row->body));
+                $data = $client->Spliteword($row->title.Html2Text($row->body));
                 $keywords = $data->data;
                 $keywords = addslashes($keywords);
                 if ($keywords == '') {
@@ -162,7 +162,7 @@ else if ($dopost == 'fetch') {
                             break;
                         } else {
                             if (strlen($k) <= 2) continue;
-                            $keywords .= $k . ",";
+                            $keywords .= $k.",";
                         }
                     }
                     foreach ($allindexs as $k => $v) {
@@ -170,7 +170,7 @@ else if ($dopost == 'fetch') {
                             break;
                         } else if (!in_array($k, $titleindexs)) {
                             if (strlen($k) <= 2) continue;
-                            $keywords .= $k . ",";
+                            $keywords .= $k.",";
                         }
                     }
                 }
@@ -194,7 +194,7 @@ else if ($dopost == 'fetch') {
     $tjsta .= "<br/>完成处理文档总数的：$tjlen %，位置：{$startdd}，继续执行任务...";
 
     if ($tjnum < $totalnum) {
-        $nurl = "article_keywords_make.php?dopost=fetch&totalnum=$totalnum&startdd=" . ($startdd + $pagesize) . "&pagesize=$pagesize";
+        $nurl = "article_keywords_make.php?dopost=fetch&totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize";
         ShowMsg($tjsta, $nurl, 0, 500);
     } else {
         ShowMsg("完成所有任务！", "javascript:;");

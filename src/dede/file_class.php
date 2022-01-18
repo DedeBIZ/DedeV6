@@ -28,12 +28,12 @@ class FileManagement
     //更改文件名
     function RenameFile($oldname, $newname)
     {
-        $oldname = $this->baseDir . $this->activeDir . "/" . $oldname;
-        $newname = $this->baseDir . $this->activeDir . "/" . $newname;
+        $oldname = $this->baseDir.$this->activeDir."/".$oldname;
+        $newname = $this->baseDir.$this->activeDir."/".$newname;
         if (($newname != $oldname) && is_writable($oldname)) {
             rename($oldname, $newname);
         }
-        ShowMsg("成功更改一个文件名！", "file_manage_main.php?activepath=" . $this->activeDir);
+        ShowMsg("成功更改一个文件名！", "file_manage_main.php?activepath=".$this->activeDir);
         return 0;
     }
 
@@ -41,14 +41,14 @@ class FileManagement
     function NewDir($dirname)
     {
         $newdir = $dirname;
-        $dirname = $this->baseDir . $this->activeDir . "/" . $dirname;
-        if (is_writable($this->baseDir . $this->activeDir)) {
+        $dirname = $this->baseDir.$this->activeDir."/".$dirname;
+        if (is_writable($this->baseDir.$this->activeDir)) {
             MkdirAll($dirname, $GLOBALS['cfg_dir_purview']);
             CloseFtp();
-            ShowMsg("成功创建一个新目录！", "file_manage_main.php?activepath=" . $this->activeDir . "/" . $newdir);
+            ShowMsg("成功创建一个新目录！", "file_manage_main.php?activepath=".$this->activeDir."/".$newdir);
             return 1;
         } else {
-            ShowMsg("创建新目录失败，因为这个位置不允许写入！", "file_manage_main.php?activepath=" . $this->activeDir);
+            ShowMsg("创建新目录失败，因为这个位置不允许写入！", "file_manage_main.php?activepath=".$this->activeDir);
             return 0;
         }
     }
@@ -64,20 +64,20 @@ class FileManagement
     function MoveFile($mfile, $mpath)
     {
         if ($mpath != "" && !preg_match("#\.\.#", $mpath)) {
-            $oldfile = $this->baseDir . $this->activeDir . "/$mfile";
+            $oldfile = $this->baseDir.$this->activeDir."/$mfile";
             $mpath = str_replace("\\", "/", $mpath);
             $mpath = preg_replace("#\/{1,}#", "/", $mpath);
             if (!preg_match("#^/#", $mpath)) {
-                $mpath = $this->activeDir . "/" . $mpath;
+                $mpath = $this->activeDir."/".$mpath;
             }
-            $truepath = $this->baseDir . $mpath;
+            $truepath = $this->baseDir.$mpath;
             if (is_readable($oldfile) && is_readable($truepath) && is_writable($truepath)) {
                 if (is_dir($truepath)) {
-                    copy($oldfile, $truepath . "/$mfile");
+                    copy($oldfile, $truepath."/$mfile");
                 } else {
                     MkdirAll($truepath, $GLOBALS['cfg_dir_purview']);
                     CloseFtp();
-                    copy($oldfile, $truepath . "/$mfile");
+                    copy($oldfile, $truepath."/$mfile");
                 }
                 unlink($oldfile);
                 ShowMsg("成功移动文件！", "file_manage_main.php?activepath=$mpath", 0, 1000);
@@ -127,7 +127,7 @@ class FileManagement
     {
         $dh = dir($indir);
         while ($filename = $dh->read()) {
-            $truefile = $indir . '/' . $filename;
+            $truefile = $indir.'/'.$filename;
             if ($filename == "." || $filename == "..") {
                 continue;
             } else if (is_dir($truefile)) {
@@ -147,7 +147,7 @@ class FileManagement
      */
     function DeleteFile($filename)
     {
-        $filename = $this->baseDir . $this->activeDir . "/$filename";
+        $filename = $this->baseDir.$this->activeDir."/$filename";
         if (is_file($filename)) {
             @unlink($filename);
             $t = "文件";
@@ -157,11 +157,11 @@ class FileManagement
                 $this->RmDirFiles($filename);
             } else {
                 // 完善用户体验，by:sumic
-                ShowMsg("系统禁止删除" . $t . "！", "file_manage_main.php?activepath=" . $this->activeDir);
+                ShowMsg("系统禁止删除".$t."！", "file_manage_main.php?activepath=".$this->activeDir);
                 exit;
             }
         }
-        ShowMsg("成功删除一个" . $t . "！", "file_manage_main.php?activepath=" . $this->activeDir);
+        ShowMsg("成功删除一个".$t."！", "file_manage_main.php?activepath=".$this->activeDir);
         return 0;
     }
 }
@@ -191,7 +191,7 @@ class SpaceUse
 
         if ($size > 0) {
             list($t1, $t2) = explode(".", $size);
-            $size = $t1 . "." . substr($t2, 0, 1);
+            $size = $t1.".".substr($t2, 0, 1);
         }
         return $size;
     }
@@ -201,7 +201,7 @@ class SpaceUse
         $size = $size / 1024 / 1024;
         if ($size > 0) {
             list($t1, $t2) = explode(".", $size);
-            $size = $t1 . "." . substr($t2, 0, 2);
+            $size = $t1.".".substr($t2, 0, 2);
         }
         return $size;
     }

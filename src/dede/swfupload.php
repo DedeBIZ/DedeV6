@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . '/image.func.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/image.func.php');
 /************************
 //上传
 function Upload(){  }
@@ -23,7 +23,7 @@ if (empty($dopost)) {
     }
 
     //把文件移动到临时目录
-    $tmpdir = DEDEDATA . '/uploadtmp';
+    $tmpdir = DEDEDATA.'/uploadtmp';
     if (!is_dir($tmpdir)) {
         MkdirAll($tmpdir, $cfg_dir_purview);
         CloseFtp();
@@ -34,7 +34,7 @@ if (empty($dopost)) {
     }
 
     $FiledataNew = str_replace("\\", '/', $Filedata);
-    $FiledataNew = $tmpdir . '/' . preg_replace("/(.*)[\/]/isU", "", $FiledataNew);
+    $FiledataNew = $tmpdir.'/'.preg_replace("/(.*)[\/]/isU", "", $FiledataNew);
     move_uploaded_file($Filedata, $FiledataNew);
 
     $info = $ftype = $sname = '';
@@ -71,35 +71,35 @@ if (empty($dopost)) {
     }
 
     //保存原图
-    $filedir = $cfg_image_dir . '/' . MyDate($cfg_addon_savetype, time());
-    if (!is_dir(DEDEROOT . $filedir)) {
-        MkdirAll($cfg_basedir . $filedir, $cfg_dir_purview);
+    $filedir = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, time());
+    if (!is_dir(DEDEROOT.$filedir)) {
+        MkdirAll($cfg_basedir.$filedir, $cfg_dir_purview);
         CloseFtp();
     }
-    $filename = $cuserLogin->getUserID() . '-' . dd2char(MyDate('ymdHis', time()));
-    if (file_exists($cfg_basedir . $filedir . '/' . $filename . $sname)) {
+    $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', time()));
+    if (file_exists($cfg_basedir.$filedir.'/'.$filename.$sname)) {
         for ($i = 50; $i <= 5000; $i++) {
-            if (!file_exists($cfg_basedir . $filedir . '/' . $filename . '-' . $i . $sname)) {
-                $filename = $filename . '-' . $i;
+            if (!file_exists($cfg_basedir.$filedir.'/'.$filename.'-'.$i.$sname)) {
+                $filename = $filename.'-'.$i;
                 break;
             }
         }
     }
-    $fileurl = $filedir . '/' . $filename . $sname;
-    $rs = copy($FiledataNew, $cfg_basedir . $fileurl);
+    $fileurl = $filedir.'/'.$filename.$sname;
+    $rs = copy($FiledataNew, $cfg_basedir.$fileurl);
     unlink($FiledataNew);
     if (!$rs) {
         echo "ERROR: Copy Uploadfile Error! ";
         exit(0);
     }
     //WaterImg($cfg_basedir.$fileurl, 'up');
-    $title = $filename . $sname;
+    $title = $filename.$sname;
 
     $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-        VALUES ('$title','$fileurl','$ftype','0','0','0','" . filesize($cfg_basedir . $fileurl) . "','" . time() . "','" . $cuserLogin->getUserID() . "'); ";
+        VALUES ('$title','$fileurl','$ftype','0','0','0','".filesize($cfg_basedir.$fileurl)."','".time()."','".$cuserLogin->getUserID()."'); ";
     if (!empty($arcid)) {
         $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-        VALUES ('$arcid','$title','$fileurl','$ftype','0','0','0','" . filesize($cfg_basedir . $fileurl) . "','" . time() . "','" . $cuserLogin->getUserID() . "'); ";
+        VALUES ('$arcid','$title','$fileurl','$ftype','0','0','0','".filesize($cfg_basedir.$fileurl)."','".time()."','".$cuserLogin->getUserID()."'); ";
     }
 
     $dsql->ExecuteNoneQuery($inquery);
@@ -108,7 +108,7 @@ if (empty($dopost)) {
 
     //生成缩略图
     ob_start();
-    ImageResizeNew($cfg_basedir . $fileurl, $cfg_ddimg_width, $cfg_ddimg_height, '', false);
+    ImageResizeNew($cfg_basedir.$fileurl, $cfg_ddimg_width, $cfg_ddimg_height, '', false);
     $imagevariable = ob_get_contents();
     ob_end_clean();
 
@@ -120,7 +120,7 @@ if (empty($dopost)) {
 
     $_SESSION['bigfile_info'][$_SESSION['fileid']] = $fileurl;
     $_SESSION['file_info'][$_SESSION['fileid']] = $imagevariable;
-    echo "FILEID:" . $_SESSION['fileid'];
+    echo "FILEID:".$_SESSION['fileid'];
     exit(0);
 }
 /************************
@@ -138,7 +138,7 @@ else if ($dopost == 'thumbnail') {
         exit(0);
     }
     header('Content-type: image/jpeg');
-    header('Content-Length: ' . strlen($_SESSION['file_info'][$id]));
+    header('Content-Length: '.strlen($_SESSION['file_info'][$id]));
     echo $_SESSION['file_info'][$id];
     exit(0);
 }
@@ -151,7 +151,7 @@ else if ($dopost == 'del') {
         exit();
     }
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$_SESSION['bigfile_info'][$id]}'; ");
-    @unlink($cfg_basedir . $_SESSION['bigfile_info'][$id]);
+    @unlink($cfg_basedir.$_SESSION['bigfile_info'][$id]);
     $_SESSION['file_info'][$id] = '';
     $_SESSION['bigfile_info'][$id] = '';
     echo "<b>已删除！</b>";
@@ -175,12 +175,12 @@ function GetddImg(){  }
 else if ($dopost == 'ddimg') {
     //生成缩略图
     ob_start();
-    if (!preg_match("/^(http[s]?:\/\/)?([^\/]+)/i", $img)) $img = $cfg_basedir . $img;
+    if (!preg_match("/^(http[s]?:\/\/)?([^\/]+)/i", $img)) $img = $cfg_basedir.$img;
     ImageResizeNew($img, $cfg_ddimg_width, $cfg_ddimg_height, '', false);
     $imagevariable = ob_get_contents();
     ob_end_clean();
     header('Content-type: image/jpeg');
-    header('Content-Length: ' . strlen($imagevariable));
+    header('Content-Length: '.strlen($imagevariable));
     echo $imagevariable;
     exit();
 }
@@ -188,8 +188,8 @@ else if ($dopost == 'ddimg') {
 //删除指定的图片(编辑图集时用)
 *************************/
 else if ($dopost == 'delold') {
-    $imgfile = $cfg_basedir . $picfile;
-    if (!file_exists($imgfile) && !is_dir($imgfile) && preg_match("#^" . $cfg_medias_dir . "#", $imgfile)) {
+    $imgfile = $cfg_basedir.$picfile;
+    if (!file_exists($imgfile) && !is_dir($imgfile) && preg_match("#^".$cfg_medias_dir."#", $imgfile)) {
         @unlink($imgfile);
     }
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$picfile}'; ");

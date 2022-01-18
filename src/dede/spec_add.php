@@ -9,15 +9,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('a_New,a_AccNew');
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 if (empty($dopost)) $dopost = '';
 
 if ($dopost != 'save') {
-    require_once(DEDEINC . '/dedetag.class.php');
-    require_once(DEDEADMIN . '/inc/inc_catalog_options.php');
+    require_once(DEDEINC.'/dedetag.class.php');
+    require_once(DEDEADMIN.'/inc/inc_catalog_options.php');
     ClearMyAddon();
     $channelid = -1;
     $cid = isset($cid) && is_numeric($cid) ? $cid : 0;
@@ -30,8 +30,8 @@ if ($dopost != 'save') {
 /*--------------------------------
 function __save(){  }
 -------------------------------*/ else if ($dopost == 'save') {
-    require_once(DEDEINC . '/image.func.php');
-    require_once(DEDEINC . '/oxwindow.class.php');
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(50, 200) : $cfg_arc_click);
@@ -78,15 +78,15 @@ function __save(){  }
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-        $fullUrl = $fullUrl . ".png";
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
 
-        file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
 
         // 加水印
-        WaterImg($cfg_basedir . $fullUrl, 'up');
+        WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
 
@@ -106,7 +106,7 @@ function __save(){  }
         echo $inQuery;
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCMS官方。" . str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
 
@@ -114,20 +114,20 @@ function __save(){  }
     $arcids = array();
     $notelist = '';
     for ($i = 1; $i <= $cfg_specnote; $i++) {
-        if (!empty(${'notename' . $i})) {
-            $notename = str_replace("'", "", trim(${'notename' . $i}));
-            $arcid = trim(${'arcid' . $i});
-            $col = trim(${'col' . $i});
-            $imgwidth = trim(${'imgwidth' . $i});
-            $imgheight = trim(${'imgheight' . $i});
-            $titlelen = trim(${'titlelen' . $i});
-            $infolen = trim(${'infolen' . $i});
-            $listtmp = trim(${'listtmp' . $i});
-            $noteid = trim(${'noteid' . $i});
-            $isauto = trim(${'isauto' . $i});
-            $keywords = str_replace("'", "", trim(${'keywords' . $i}));
-            $typeid = trim(${'typeid' . $i});
-            if (!empty(${'rownum' . $i}))  $rownum = trim(${'rownum' . $i});
+        if (!empty(${'notename'.$i})) {
+            $notename = str_replace("'", "", trim(${'notename'.$i}));
+            $arcid = trim(${'arcid'.$i});
+            $col = trim(${'col'.$i});
+            $imgwidth = trim(${'imgwidth'.$i});
+            $imgheight = trim(${'imgheight'.$i});
+            $titlelen = trim(${'titlelen'.$i});
+            $infolen = trim(${'infolen'.$i});
+            $listtmp = trim(${'listtmp'.$i});
+            $noteid = trim(${'noteid'.$i});
+            $isauto = trim(${'isauto'.$i});
+            $keywords = str_replace("'", "", trim(${'keywords'.$i}));
+            $typeid = trim(${'typeid'.$i});
+            if (!empty(${'rownum'.$i}))  $rownum = trim(${'rownum'.$i});
             else $rownum = 0;
             $arcid = preg_replace("#[^0-9,]#", "", $arcid);
             $ids = explode(",", $arcid);
@@ -140,7 +140,7 @@ function __save(){  }
                         if ($okids == "") {
                             $okids .= $mid;
                         } else {
-                            $okids .= "," . $mid;
+                            $okids .= ",".$mid;
                         }
                         $arcids[$mid] = 1;
                     }
@@ -177,15 +177,15 @@ function __save(){  }
                     }
                     ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $arcID);
                 }
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
     }
 
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match('#p#', $flag)) {
-        $flag = ($flag == '' ? 'p' : $flag . ',p');
+        $flag = ($flag == '' ? 'p' : $flag.',p');
     }
     $useip = GetIP();
     //加入附加表
@@ -201,7 +201,7 @@ function __save(){  }
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE, TRUE, $isremote);
     if ($artUrl == '') {
-        $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+        $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
     ClearMyAddon($arcID, $title);
 

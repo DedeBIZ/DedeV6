@@ -32,7 +32,7 @@ if (!function_exists('utf82gb')) {
             return $utfstr;
         }
         if (empty($UC2GBTABLE)) {
-            $filename = DEDEINC . "/data/gb2312-utf8.dat";
+            $filename = DEDEINC."/data/gb2312-utf8.dat";
             $fp = fopen($filename, "r");
             while ($l = fgets($fp, 15)) {
                 $UC2GBTABLE[hexdec(substr($l, 7, 6))] = hexdec(substr($l, 0, 6));
@@ -53,9 +53,9 @@ if (!function_exists('utf82gb')) {
                 $c = utf82u($c);
                 if (isset($UC2GBTABLE[$c])) {
                     $c = dechex($UC2GBTABLE[$c] + 0x8080);
-                    $okstr .= chr(hexdec($c[0] . $c[1])) . chr(hexdec($c[2] . $c[3]));
+                    $okstr .= chr(hexdec($c[0].$c[1])).chr(hexdec($c[2].$c[3]));
                 } else {
-                    $okstr .= "&#" . $c . ";";
+                    $okstr .= "&#".$c.";";
                 }
             } else {
                 $okstr .= $c;
@@ -84,7 +84,7 @@ if (!function_exists('gb2utf8')) {
             return $gbstr;
         }
         if (empty($CODETABLE)) {
-            $filename = DEDEINC . "/data/gb2312-utf8.dat";
+            $filename = DEDEINC."/data/gb2312-utf8.dat";
             $fp = fopen($filename, "r");
             while ($l = fgets($fp, 15)) {
                 $CODETABLE[hexdec(substr($l, 0, 6))] = substr($l, 7, 6);
@@ -191,7 +191,7 @@ if (!function_exists('big52gb')) {
         }
         global $BIG5_DATA;
         if (empty($BIG5_DATA)) {
-            $filename = DEDEINC . "/data/big5-gb.dat";
+            $filename = DEDEINC."/data/big5-gb.dat";
             $fp = fopen($filename, "rb");
             $BIG5_DATA = fread($fp, filesize($filename));
             fclose($fp);
@@ -205,7 +205,7 @@ if (!function_exists('big52gb')) {
                     $gbstr = "　";
                 } else {
                     $p = ($h - 160) * 510 + ($l - 1) * 2;
-                    $gbstr = $BIG5_DATA[$p] . $BIG5_DATA[$p + 1];
+                    $gbstr = $BIG5_DATA[$p].$BIG5_DATA[$p + 1];
                 }
                 $Text[$i] = $gbstr[0];
                 $Text[$i + 1] = $gbstr[1];
@@ -231,7 +231,7 @@ if (!function_exists('gb2big5')) {
         }
         global $GB_DATA;
         if (empty($GB_DATA)) {
-            $filename = DEDEINC . "/data/gb-big5.dat";
+            $filename = DEDEINC."/data/gb-big5.dat";
             $fp = fopen($filename, "rb");
             $gb = fread($fp, filesize($filename));
             fclose($fp);
@@ -245,7 +245,7 @@ if (!function_exists('gb2big5')) {
                     $big = "　";
                 } else {
                     $p = ($h - 160) * 510 + ($l - 1) * 2;
-                    $big = $GB_DATA[$p] . $GB_DATA[$p + 1];
+                    $big = $GB_DATA[$p].$GB_DATA[$p + 1];
                 }
                 $Text[$i] = $big[0];
                 $Text[$i + 1] = $big[1];
@@ -268,7 +268,7 @@ if (!function_exists('UnicodeUrl2Gbk')) {
     {
         //载入对照词典
         if (!isset($GLOBALS['GbkUniDic'])) {
-            $fp = fopen(DEDEINC . '/data/gbk-unicode.dat', 'rb');
+            $fp = fopen(DEDEINC.'/data/gbk-unicode.dat', 'rb');
             while (!feof($fp)) {
                 $GLOBALS['GbkUniDic'][bin2hex(fread($fp, 2))] = fread($fp, 2);
             }
@@ -287,7 +287,7 @@ if (!function_exists('UnicodeUrl2Gbk')) {
                     if (isset($GLOBALS['GbkUniDic'][$uni])) {
                         $okstr .= $GLOBALS['GbkUniDic'][$uni];
                     } else {
-                        $okstr .= "&#" . hexdec('0x' . $uni) . ";";
+                        $okstr .= "&#".hexdec('0x'.$uni).";";
                     }
                 } else {
                     $okstr .= $str[$i];

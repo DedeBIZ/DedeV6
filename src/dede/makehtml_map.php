@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/sitemap.class.php");
-require_once(DEDEINC . "/dedetag.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/sitemap.class.php");
+require_once(DEDEINC."/dedetag.class.php");
 
 if (empty($dopost)) {
     ShowMsg("参数错误!", "-1");
@@ -22,15 +22,15 @@ $serviterm = empty($serviterm) ? "" : $serviterm;
 $sm = new SiteMap();
 $maplist = $sm->GetSiteMap($dopost);
 if ($dopost == "site") {
-    $murl = $cfg_cmspath . "/data/sitemap.html";
-    $tmpfile = $cfg_basedir . $cfg_templets_dir . "/plus/sitemap.htm";
+    $murl = $cfg_cmspath."/data/sitemap.html";
+    $tmpfile = $cfg_basedir.$cfg_templets_dir."/plus/sitemap.htm";
 } else {
-    $murl = $cfg_cmspath . "/data/rssmap.html";
-    $tmpfile = $cfg_basedir . $cfg_templets_dir . "/plus/rssmap.htm";
+    $murl = $cfg_cmspath."/data/rssmap.html";
+    $tmpfile = $cfg_basedir.$cfg_templets_dir."/plus/rssmap.htm";
 }
 $dtp = new DedeTagParse();
 $dtp->LoadTemplet($tmpfile);
-$dtp->SaveTo($cfg_basedir . $murl);
+$dtp->SaveTo($cfg_basedir.$murl);
 $dtp->Clear();
 echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
 echo "<div class=\"alert alert-success\" role=\"alert\">成功更新文件: $murl <a href='$murl' target='_blank' class='btn btn-success'>浏览...</a></div>";

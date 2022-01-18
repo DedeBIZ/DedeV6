@@ -34,8 +34,8 @@ function lib_relation(&$ctag, &$refObj)
     if (empty($tablewidth)) $tablewidth = 100;
     if (empty($col)) $col = 1;
     $colWidth = ceil(100 / $col);
-    $tablewidth = $tablewidth . "%";
-    $colWidth = $colWidth . "%";
+    $tablewidth = $tablewidth."%";
+    $colWidth = $colWidth."%";
 
     $ids = array();
     $channelid = $refObj->ChannelUnit->ChannelFields[$name]["channel"];
@@ -54,7 +54,7 @@ function lib_relation(&$ctag, &$refObj)
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,
     tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
     FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-    where arc.arcrank>-1 AND arc.id IN (" . $refObj->Fields[$name] . ") $odb";
+    where arc.arcrank>-1 AND arc.id IN (".$refObj->Fields[$name].") $odb";
     } else {
         $gquery = "SELECT addtable,listfields FROM `#@__channeltype` WHERE id='$channelid' ";
         $grow = $dsql->GetOne($gquery);
@@ -62,7 +62,7 @@ function lib_relation(&$ctag, &$refObj)
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,
     tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
     FROM `{$maintable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-    where arc.arcrank>-1 AND arc.aid IN (" . $refObj->Fields[$name] . ") $odb";
+    where arc.arcrank>-1 AND arc.aid IN (".$refObj->Fields[$name].") $odb";
     }
 
     $innertext = trim($ctag->GetInnerText());
@@ -130,22 +130,22 @@ function lib_relation(&$ctag, &$refObj)
                 );
 
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/images/defaultpic.gif';
+                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/defaultpic.gif';
                 }
                 if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                    $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                    $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                 }
                 $row['picname'] = $row['litpic'];
                 $row['pubdate'] = isset($row['pubdate']) ? $row['pubdate'] : $row['senddate'];
                 $row['stime'] = GetDateMK($row['pubdate']);
-                $row['typelink'] = "<a href='" . $row['typeurl'] . "'>" . $row['typename'] . "</a>";
-                $row['image'] = "<img src='" . $row['picname'] . "' border='0' alt='" . preg_replace("#['><]#", "", $row['title']) . "'>";
-                $row['imglink'] = "<a href='" . $row['filename'] . "'>" . $row['image'] . "</a>";
+                $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
+                $row['image'] = "<img src='".$row['picname']."' border='0' alt='".preg_replace("#['><]#", "", $row['title'])."'>";
+                $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
-                if (isset($row['color']) && $row['color'] != '') $row['title'] = "<font color='" . $row['color'] . "'>" . $row['title'] . "</font>";
-                if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>" . $row['title'] . "</strong>";
-                $row['textlink'] = "<a href='" . $row['filename'] . "'>" . $row['title'] . "</a>";
+                if (isset($row['color']) && $row['color'] != '') $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
+                if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>".$row['title']."</strong>";
+                $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
@@ -162,7 +162,7 @@ function lib_relation(&$ctag, &$refObj)
                     $GLOBALS['autoindex']++;
                 }
 
-                $artlist .= $dtp2->GetResult() . "\r\n";
+                $artlist .= $dtp2->GetResult()."\r\n";
             }
             //if hasRow
             else {

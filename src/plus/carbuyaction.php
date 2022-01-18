@@ -10,11 +10,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-define('_PLUS_TPL_', DEDEROOT . '/templets/plus');
-require_once DEDEINC . '/dedetemplate.class.php';
-require_once DEDEINC . '/shopcar.class.php';
-require_once DEDEINC . '/memberlogin.class.php';
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+define('_PLUS_TPL_', DEDEROOT.'/templets/plus');
+require_once DEDEINC.'/dedetemplate.class.php';
+require_once DEDEINC.'/shopcar.class.php';
+require_once DEDEINC.'/memberlogin.class.php';
 
 if ($cfg_mb_open == 'N') {
     ShowMsg("系统关闭了会员功能，因此你无法访问此页面！", "javascript:;");
@@ -71,7 +71,7 @@ if (!isset($dopost) || empty($dopost)) {
             'price_count' => $cart->priceCount()
         );
         $dtp->Assign('carts', $carts);
-        $dtp->LoadTemplate(_PLUS_TPL_ . '/carbuyaction.htm');
+        $dtp->LoadTemplate(_PLUS_TPL_.'/carbuyaction.htm');
         $dtp->Display();
         exit();
     } else if ($do == 'clickout') {
@@ -168,7 +168,7 @@ if (!isset($dopost) || empty($dopost)) {
                 ";
                 $dsql->ExecuteNoneQuery($sql);
             } else {
-                ShowMsg("更新订单时出现错误！" . $dsql->GetError(), "-1");
+                ShowMsg("更新订单时出现错误！".$dsql->GetError(), "-1");
                 exit();
             }
         } else {
@@ -189,12 +189,12 @@ if (!isset($dopost) || empty($dopost)) {
         //最后结算价格 = 最后统计价格
         $priceCount = sprintf("%01.2f", $lastpriceCount);
         //更新用户商品统计    
-        $countOrders = $dsql->GetOne("SELECT SUM(cartcount) AS nums FROM #@__shops_orders WHERE userid='" . $cfg_ml->M_ID . "'");
-        $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET `shop`='" . $countOrders['nums'] . "' WHERE mid='" . $cfg_ml->M_ID . "'");
+        $countOrders = $dsql->GetOne("SELECT SUM(cartcount) AS nums FROM #@__shops_orders WHERE userid='".$cfg_ml->M_ID."'");
+        $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET `shop`='".$countOrders['nums']."' WHERE mid='".$cfg_ml->M_ID."'");
 
         $rs = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$paytype' ");
 
-        require_once DEDEINC . '/payment/' . $rs['code'] . '.php';
+        require_once DEDEINC.'/payment/'.$rs['code'].'.php';
         $pay = new $rs['code'];
         if ($rs['code'] == "cod" || $rs['code'] == "bank") {
             $order = $OrdersId;
@@ -203,7 +203,7 @@ if (!isset($dopost) || empty($dopost)) {
                 'out_trade_no' => $cart->OrdersId,
                 'price' => $priceCount
             );
-            require_once DEDEDATA . '/payment/' . $rs['code'] . '.php';
+            require_once DEDEDATA.'/payment/'.$rs['code'].'.php';
         }
         $button = $pay->GetCode($order, $payment);
         $dtp = new DedeTemplate();
@@ -219,7 +219,7 @@ if (!isset($dopost) || empty($dopost)) {
         $dtp->SetVar('description', $rs['description']);
         $dtp->SetVar('button', $button);
         $dtp->Assign('carts', $carts);
-        $dtp->LoadTemplate(_PLUS_TPL_ . '/shops_action_payment.htm');
+        $dtp->LoadTemplate(_PLUS_TPL_.'/shops_action_payment.htm');
         $dtp->Display();
         exit();
     }
@@ -265,11 +265,11 @@ if (!isset($dopost) || empty($dopost)) {
         $rs = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='{$row['paytype']}' ");
     }
     $rs['code'] = isset($rs['code']) ? preg_replace("#[^0-9a-z_\-]+#i", "", $rs['code']) : "";
-    if (empty($rs['code']) or !file_exists(DEDEINC . '/payment/' . $rs['code'] . '.php')) {
+    if (empty($rs['code']) or !file_exists(DEDEINC.'/payment/'.$rs['code'].'.php')) {
         exit("Error:payment is not exsits!");
     }
 
-    require_once DEDEINC . '/payment/' . $rs['code'] . '.php';
+    require_once DEDEINC.'/payment/'.$rs['code'].'.php';
     $pay = new $rs['code'];
     $payment = "";
     if ($rs['code'] == "cod" || $rs['code'] == "bank") $order = $OrdersId;
@@ -278,7 +278,7 @@ if (!isset($dopost) || empty($dopost)) {
             'out_trade_no' => $OrdersId,
             'price' => $priceCount
         );
-        require_once DEDEDATA . '/payment/' . $rs['code'] . '.php';
+        require_once DEDEDATA.'/payment/'.$rs['code'].'.php';
     }
     $button = $pay->GetCode($order, $payment);
     $dtp = new DedeTemplate();
@@ -294,13 +294,13 @@ if (!isset($dopost) || empty($dopost)) {
     $dtp->SetVar('description', $rs['description']);
     $dtp->SetVar('button', $button);
     $dtp->Assign('carts', $carts);
-    $dtp->LoadTemplate(_PLUS_TPL_ . '/shops_action_payment.htm');
+    $dtp->LoadTemplate(_PLUS_TPL_.'/shops_action_payment.htm');
     $dtp->Display();
     exit();
 } else if ($dopost == 'return') {
     $write_list = array('alipay', 'bank', 'cod', 'yeepay');
     if (in_array($code, $write_list)) {
-        require_once DEDEINC . '/payment/' . $code . '.php';
+        require_once DEDEINC.'/payment/'.$code.'.php';
         $pay = new $code;
         $msg = $pay->respond();
         ShowMsg($msg, "javascript:;", 0, 3000);

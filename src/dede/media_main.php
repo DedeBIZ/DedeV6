@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/datalistcp.class.php");
-require_once(DEDEINC . "/common.func.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/datalistcp.class.php");
+require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($dopost)) $dopost = '';
 
@@ -55,7 +55,7 @@ $dlist->pageSize = 20;
 $dlist->SetParameter("mediatype", $mediatype);
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("membertype", $membertype);
-$dlist->SetTemplate(DEDEADMIN . "/templets/media_main.htm");
+$dlist->SetTemplate(DEDEADMIN."/templets/media_main.htm");
 $dlist->SetSource($sql);
 $dlist->Display();
 
@@ -75,7 +75,7 @@ function MediaType($tid, $nurl)
 function GetFileSize($fs)
 {
     $fs = $fs / 1024;
-    return trim(sprintf("%10.1f", $fs) . " K");
+    return trim(sprintf("%10.1f", $fs)." K");
 }
 
 function UploadAdmin($adminid, $mid)

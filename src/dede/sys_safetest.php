@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_Edit');
 if (empty($action)) $action = '';
 if (empty($message)) $message = '尚未进行检测……';
@@ -48,8 +48,8 @@ function TestOneFile($f)
     }
     fclose($fp);
 
-    if (preg_match("#(" . $info . ")[ \r\n\t]{0,}([\[\(])#i", $str)) {
-        $trfile = preg_replace("#^" . DEDEROOT . "#", '', $f);
+    if (preg_match("#(".$info.")[ \r\n\t]{0,}([\[\(])#i", $str)) {
+        $trfile = preg_replace("#^".DEDEROOT."#", '', $f);
         $oldTrfile = $trfile;
         $trfile = substr(str_replace("/", "\\", $trfile), 1);
 
@@ -75,11 +75,11 @@ function TestSafe($tdir)
     global $filetype;
     $dh = dir($tdir);
     while ($fname = $dh->read()) {
-        $fnamef = $tdir . '/' . $fname;
+        $fnamef = $tdir.'/'.$fname;
         if (@is_dir($fnamef) && $fname != '.' && $fname != '..') {
             TestSafe($fnamef);
         }
-        if (preg_match("#\.(" . $filetype . ")#i", $fnamef)) {
+        if (preg_match("#\.(".$filetype.")#i", $fnamef)) {
             TestOneFile($fnamef);
         }
     }
@@ -114,7 +114,7 @@ if ($action == 'test') {
         fclose($fp);
     }
 
-    include(dirname(__FILE__) . '/templets/sys_safetest_viewdiff.htm');
+    include(dirname(__FILE__).'/templets/sys_safetest_viewdiff.htm');
 
     exit();
 }
@@ -122,14 +122,14 @@ if ($action == 'test') {
 else if ($action == 'clear') {
     global $cfg_tplcache_dir;
     $message = '';
-    $d = DEDEROOT . $cfg_tplcache_dir;
+    $d = DEDEROOT.$cfg_tplcache_dir;
     AjaxHead();
     sleep(1);
     if (preg_match("#data\/#", $cfg_tplcache_dir) && file_exists($d) && is_dir($d)) {
         $dh = dir($d);
         while ($filename = $dh->read()) {
             if ($filename == '.' || $filename == '..' || $filename == 'index.html') continue;
-            @unlink($d . '/' . $filename);
+            @unlink($d.'/'.$filename);
         }
     }
     $message = "<font color='green' style='font-size:14px'>成功清空模板缓存！</font>";
@@ -137,5 +137,5 @@ else if ($action == 'clear') {
     exit();
 }
 
-include(dirname(__FILE__) . '/templets/sys_safetest.htm');
+include(dirname(__FILE__).'/templets/sys_safetest.htm');
 ?>

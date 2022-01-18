@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('plus_站内新闻发布');
 if (empty($dopost)) $dopost = "";
 
@@ -19,7 +19,7 @@ if ($dopost == "del") {
     ShowMsg("成功删除一条站内新闻！", "mynews_main.php");
     exit();
 } else if ($dopost == "editsave") {
-    $inquery = "UPDATE #@__mynews SET title='$title',typeid='$typeid',writer='$writer',senddate='" . GetMKTime($sdate) . "',body='$body' WHERE aid='$aid';";
+    $inquery = "UPDATE #@__mynews SET title='$title',typeid='$typeid',writer='$writer',senddate='".GetMKTime($sdate)."',body='$body' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg("成功更改一条站内新闻！", "mynews_main.php");
     exit();

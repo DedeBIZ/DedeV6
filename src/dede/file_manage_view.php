@@ -9,14 +9,14 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('plus_文件管理器');
-require_once(DEDEINC . "/oxwindow.class.php");
+require_once(DEDEINC."/oxwindow.class.php");
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = "";
 if ($activepath == "") $inpath = $cfg_basedir;
-else $inpath = $cfg_basedir . $activepath;
+else $inpath = $cfg_basedir.$activepath;
 
 //显示控制层
 //更改文件名
@@ -80,7 +80,7 @@ else if ($fmdo == "del") {
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
-    if (@is_dir($cfg_basedir . $activepath . "/$filename")) {
+    if (@is_dir($cfg_basedir.$activepath."/$filename")) {
         $wmsg = "你确信要删除目录：$filename 吗？";
     } else {
         $wmsg = "你确信要删除文件：$filename 吗？";
@@ -120,7 +120,7 @@ else if ($fmdo == "edit") {
         $GLOBALS['extension'] = 'text/html';
     }
     $ctp = new DedeTagParse();
-    $ctp->LoadTemplate(DEDEADMIN . "/templets/file_edit.htm");
+    $ctp->LoadTemplate(DEDEADMIN."/templets/file_edit.htm");
     $ctp->display();
 }
 /*编辑文件，可视化模式
@@ -162,13 +162,13 @@ else if ($fmdo == "newfile") {
     $contentView = "<textarea id='str' name='str' style='width:99%;height:400'></textarea>\r\n";
     $GLOBALS['token'] = make_hash();
     $ctp = new DedeTagParse();
-    $ctp->LoadTemplate(DEDEADMIN . "/templets/file_edit.htm");
+    $ctp->LoadTemplate(DEDEADMIN."/templets/file_edit.htm");
     $ctp->display();
 }
 
 //上传文件
 else if ($fmdo == "upload") {
     $ctp = new DedeTagParse();
-    $ctp->LoadTemplate(DEDEADMIN . "/templets/file_upload.htm");
+    $ctp->LoadTemplate(DEDEADMIN."/templets/file_upload.htm");
     $ctp->display();
 }

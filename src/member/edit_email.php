@@ -7,7 +7,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 $dopost = isset($dopost) ? $dopost : "";
 if (!isset($backurl)) {
@@ -34,5 +34,5 @@ if ($dopost == 'save') {
     exit();
 }
 $email = $cfg_ml->fields['email'];
-include(DEDEMEMBER . "/templets/edit_email.htm");
+include(DEDEMEMBER."/templets/edit_email.htm");
 exit();

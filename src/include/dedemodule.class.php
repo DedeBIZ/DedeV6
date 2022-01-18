@@ -8,9 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . '/charset.func.php');
-require_once(DEDEINC . '/dedeatt.class.php');
-require_once(DEDEINC . '/dedehttpdown.class.php');
+require_once(DEDEINC.'/charset.func.php');
+require_once(DEDEINC.'/dedeatt.class.php');
+require_once(DEDEINC.'/dedehttpdown.class.php');
 
 function base64url_encode($data)
 {
@@ -56,9 +56,9 @@ class DedeModule
 
         $dh = dir($this->modulesPath) or die("没找到模块目录：({$this->modulesPath})！");
 
-        $fp = @fopen($this->modulesPath . '/modulescache.php', 'w') or die('读取文件权限出错,目录文件' . $this->modulesPath . '/modulescache.php不可写!');
+        $fp = @fopen($this->modulesPath.'/modulescache.php', 'w') or die('读取文件权限出错,目录文件'.$this->modulesPath.'/modulescache.php不可写!');
 
-        fwrite($fp, "<" . "?php\r\n");
+        fwrite($fp, "<"."?php\r\n");
         fwrite($fp, "global \$allmodules;\r\n");
         while ($filename = $dh->read()) {
             if (preg_match("/\.xml$/i", $filename)) {
@@ -71,11 +71,11 @@ class DedeModule
                 }
                 if ($minfos['hash'] != '') {
                     $this->modules[$minfos['hash']] = $minfos;
-                    fwrite($fp, '$' . "GLOBALS['allmodules']['{$minfos['hash']}']='{$filename}';\r\n");
+                    fwrite($fp, '$'."GLOBALS['allmodules']['{$minfos['hash']}']='{$filename}';\r\n");
                 }
             }
         }
-        fwrite($fp, '?' . '>');
+        fwrite($fp, '?'.'>');
         fclose($fp);
         $dh->Close();
         return $this->modules;
@@ -128,9 +128,9 @@ class DedeModule
      */
     function GetHashFile($hash)
     {
-        include_once($this->modulesPath . '/modulescache.php');
+        include_once($this->modulesPath.'/modulescache.php');
         if (isset($GLOBALS['allmodules'][$hash])) return $GLOBALS['allmodules'][$hash];
-        else return $hash . '.xml';
+        else return $hash.'.xml';
     }
 
     /**
@@ -145,8 +145,8 @@ class DedeModule
     {
         if ($ftype == 'file') $filename = $hash;
         else if (!empty($this->modulesUrl)) {
-            $filename = $this->modulesUrl . $hash . '.xml';
-        } else $filename = $this->modulesPath . '/' . $this->GetHashFile($hash);
+            $filename = $this->modulesUrl.$hash.'.xml';
+        } else $filename = $this->modulesPath.'/'.$this->GetHashFile($hash);
         $start = 0;
         $minfos = array();
         $minfos['name'] = $minfos['info'] = $minfos['time'] = '';
@@ -155,7 +155,7 @@ class DedeModule
         //$minfos['filename'] = $filename;
         if (empty($this->modulesUrl)) {
             $minfos['filesize'] = filesize($filename) / 1024;
-            $minfos['filesize'] = number_format($minfos['filesize'], 2, '.', '') . ' Kb';
+            $minfos['filesize'] = number_format($minfos['filesize'], 2, '.', '').' Kb';
         }
         $fp = fopen($filename, 'r') or die("文件 {$filename} 不存在或不可读!");
         $n = 0;
@@ -216,7 +216,7 @@ class DedeModule
     function GetFileXml($hash, $ftype = 'hash')
     {
         if ($ftype == 'file') $filename = $hash;
-        else $filename = $this->modulesPath . '/' . $this->GetHashFile($hash);
+        else $filename = $this->modulesPath.'/'.$this->GetHashFile($hash);
         $filexml = '';
         $fp = fopen($filename, 'r') or die("文件 {$filename} 不存在或不可读!");
         $start = 0;
@@ -250,7 +250,7 @@ class DedeModule
     {
         $this->GetModuleInfo($hashcode, $ntype);
         $start = FALSE;
-        $filename = $this->modulesPath . '/' . $this->GetHashFile($hashcode);
+        $filename = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
         $fp = fopen($filename, 'r') or die("文件 {$filename} 不存在或不可读!");
         $okdata = '';
         while (!feof($fp)) {
@@ -281,8 +281,8 @@ class DedeModule
      */
     function WriteSystemFile($hashcode, $ntype)
     {
-        $filename = $hashcode . "-{$ntype}.php";
-        $fname = $this->modulesPath . '/' . $filename;
+        $filename = $hashcode."-{$ntype}.php";
+        $fname = $this->modulesPath.'/'.$filename;
         $filect = $this->GetSystemFile($hashcode, $ntype);
         $fp = fopen($fname, 'w') or die('生成 {$ntype} 文件失败！');
         fwrite($fp, $filect);
@@ -300,7 +300,7 @@ class DedeModule
      */
     function DelSystemFile($hashcode, $ntype)
     {
-        $filename = $this->modulesPath . '/' . $hashcode . "-{$ntype}.php";
+        $filename = $this->modulesPath.'/'.$hashcode."-{$ntype}.php";
         unlink($filename);
     }
 
@@ -313,7 +313,7 @@ class DedeModule
      */
     function HasModule($hashcode)
     {
-        $modulefile = $this->modulesPath . '/' . $this->GetHashFile($hashcode);
+        $modulefile = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
         if (file_exists($modulefile) && !is_dir($modulefile)) return TRUE;
         else  return FALSE;
     }
@@ -347,7 +347,7 @@ class DedeModule
     {
         $dap = new DedeAttParse();
         $filelists = array();
-        $modulefile = $this->modulesPath . '/' . $this->GetHashFile($hashcode);
+        $modulefile = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
         $fp = fopen($modulefile, 'r') or die("文件 {$modulefile} 不存在或不可读!");
         $i = 0;
         while (!feof($fp)) {
@@ -377,7 +377,7 @@ class DedeModule
         if ($isreplace == 0) return TRUE;
         else {
             $dap = new DedeAttParse();
-            $modulefile = $this->modulesPath . '/' . $this->GetHashFile($hashcode);
+            $modulefile = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
             $fp = fopen($modulefile, 'r') or die("文件 {$modulefile} 不存在或不可读!");
             $i = 0;
             $dirs = '';
@@ -421,7 +421,7 @@ class DedeModule
     {
         global $AdminBaseDir;
         $dap = new DedeAttParse();
-        $modulefile = $this->modulesPath . '/' . $this->GetHashFile($hashcode);
+        $modulefile = $this->modulesPath.'/'.$this->GetHashFile($hashcode);
         $fp = fopen($modulefile, 'r') or die("文件 {$modulefile} 不存在或不可读!");
         $i = 0;
         while (!feof($fp)) {
@@ -433,7 +433,7 @@ class DedeModule
                 $filetype = $dap->CAtt->GetAtt('type');
                 $filename = $dap->CAtt->GetAtt('name');
                 $filename = str_replace("\\", "/", $filename);
-                if (!empty($AdminBaseDir)) $filename = $AdminBaseDir . $filename;
+                if (!empty($AdminBaseDir)) $filename = $AdminBaseDir.$filename;
                 if ($filetype == 'dir') {
                     if (!is_dir($filename)) {
                         @mkdir($filename, $GLOBALS['cfg_dir_purview']);
@@ -495,7 +495,7 @@ class DedeModule
         $fn = count($fs) - 1;
         $ndir = '';
         for ($i = 0; $i < $fn; $i++) {
-            if ($ndir != '') $ndir = $ndir . '/' . $fs[$i];
+            if ($ndir != '') $ndir = $ndir.'/'.$fs[$i];
             else $ndir = $fs[$i];
             $rs = @is_dir($ndir);
             if (!$rs) {
@@ -547,7 +547,7 @@ class DedeModule
      */
     function MakeEncodeFileRunTest($basedir, $f)
     {
-        $filename = $basedir . '/' . $f;
+        $filename = $basedir.'/'.$f;
         if (isset($this->fileListNames[$f])) return;
         else if (preg_match("/Thumbs\.db/i", $f)) return;
         else $this->fileListNames[$f] = 1;
@@ -560,7 +560,7 @@ class DedeModule
             $dh = dir($filename);
             while ($filename = $dh->read()) {
                 if ($filename[0] == '.' || strtolower($filename) == 'cvs') continue;
-                $nfilename = $f . '/' . $filename;
+                $nfilename = $f.'/'.$filename;
                 $this->MakeEncodeFileRunTest($basedir, $nfilename);
             }
         }
@@ -577,7 +577,7 @@ class DedeModule
      */
     function MakeEncodeFileRun($basedir, $f, $fp)
     {
-        $filename = $basedir . '/' . $f;
+        $filename = $basedir.'/'.$f;
         if (isset($this->fileListNames[$f])) return;
         else if (preg_match("#Thumbs\.db#i", $f)) return;
         else $this->fileListNames[$f] = 1;
@@ -589,7 +589,7 @@ class DedeModule
             $dh = dir($filename);
             while ($filename = $dh->read()) {
                 if ($filename[0] == '.' || strtolower($filename) == 'cvs') continue;
-                $nfilename = $f . '/' . $filename;
+                $nfilename = $f.'/'.$filename;
                 $this->MakeEncodeFileRun($basedir, $nfilename, $fp);
             }
         } else {

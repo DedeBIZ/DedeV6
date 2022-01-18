@@ -27,7 +27,7 @@ class ActionSearch
 
     function GetSearchstr()
     {
-        require_once(dirname(__FILE__) . "/inc/inc_action_info.php");
+        require_once(dirname(__FILE__)."/inc/inc_action_info.php");
         return is_array($actionSearch) ? $actionSearch : array();
     }
 
@@ -80,11 +80,11 @@ class ActionSearch
             foreach ($text as $key => $value) {
                 if ($key == 'title' || $key == 'description') {
                     //仅对title,description进行数组替换
-                    $text[$key] = str_replace($this->keyword, '<font color="red">' . $this->keyword . '</font>', $text[$key]);
+                    $text[$key] = str_replace($this->keyword, '<font color="red">'.$this->keyword.'</font>', $text[$key]);
                 }
             }
         } else {
-            $text = str_replace($this->keyword, '<font color="red">' . $this->keyword . '</font>', $text);
+            $text = str_replace($this->keyword, '<font color="red">'.$this->keyword.'</font>', $text);
         }
         return $text;
     }

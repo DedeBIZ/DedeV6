@@ -11,8 +11,8 @@
  */
 if (!defined('DEDEMEMBER')) exit('dedebiz');
 
-require_once(DEDEINC . "/image.func.php");
-require_once(DEDEINC . "/oxwindow.class.php");
+require_once(DEDEINC."/image.func.php");
+require_once(DEDEINC."/oxwindow.class.php");
 
 $flag = '';
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;

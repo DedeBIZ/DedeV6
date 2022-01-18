@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Pm');
 if (!isset($action)) $action = '';
 
@@ -34,4 +34,4 @@ if ($action == "post") {
     ShowMsg('短信已成功发送', '-1');
     exit();
 }
-require_once(DEDEADMIN . "/templets/member_pmall.htm");
+require_once(DEDEADMIN."/templets/member_pmall.htm");

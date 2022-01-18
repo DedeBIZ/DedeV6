@@ -1,21 +1,21 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php
+if (!defined('DEDEINC')) exit("Request Error!");
 /**
  * 提示窗口对话框类
  *
  * @version        $Id: oxwindow.class.php 2 13:53 2010-11-11 tianya $
- * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
- * @link           https://www.dedebiz.com
+ * @package        .Libraries
+ * @copyright      Copyright (c) 2021, .COM
+ * @license        https://www..com/license
+ * @link           https://www..com
  */
-require_once(DEDEINC . "/dedetag.class.php");
-
+require_once(DEDEINC."/dedetag.class.php");
 /**
  * 提示窗口对话框类
  *
  * @package          OxWindow
- * @subpackage       DedeBIZ.Libraries
- * @link             https://www.dedebiz.com
+ * @subpackage       .Libraries
+ * @link             https://www..com
  */
 class OxWindow
 {
@@ -25,7 +25,6 @@ class OxWindow
     var $formName = "";
     var $tmpCode = "//checkcode";
     var $hasStart = false;
-
     /**
      *  初始化为含表单的页面
      *
@@ -37,20 +36,18 @@ class OxWindow
      */
     function Init($formaction = "", $checkScript = "js/blank.js", $formmethod = "POST", $formname = "myform")
     {
-        $this->myWin .= "<script language='javascript'>\r\n";
+        $this->myWin .= "<script>";
         if ($checkScript != "" && file_exists($checkScript)) {
             $fp = fopen($checkScript, "r");
             $this->myWin .= fread($fp, filesize($checkScript));
             fclose($fp);
         } else {
-            $this->myWin .= "<!-- function CheckSubmit()\r\n{ return true; } -->";
+            $this->myWin .= "<!--function CheckSubmit(){return true;}-->";
         }
-        $this->myWin .= "</script>\r\n";
+        $this->myWin .= "</script>";
         $this->formName = $formname;
-        $this->myWin .= "<form name='$formname' method='$formmethod' onSubmit='return CheckSubmit();' action='$formaction'>\r\n";
+        $this->myWin .= "<form name='$formname' method='$formmethod' onSubmit='return CheckSubmit();' action='$formaction'>";
     }
-
-    //
     /**
      *  增加隐藏域
      *
@@ -60,9 +57,8 @@ class OxWindow
      */
     function AddHidden($iname, $ivalue)
     {
-        $this->myWin .= "<input type='hidden' name='$iname' value='$ivalue'>\r\n";
+        $this->myWin .= "<input type='hidden' name='$iname' value='$ivalue'>";
     }
-
     /**
      *  开始创建窗口
      *
@@ -70,9 +66,8 @@ class OxWindow
      */
     function StartWin()
     {
-        $this->myWin .= "<table width='100%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#DADADA'>\r\n";
+        $this->myWin .= "<table width='100%' border='0' cellpadding='3' cellspacing='1'>";
     }
-
     /**
      *  增加一个两列的行
      *
@@ -83,12 +78,11 @@ class OxWindow
      */
     function AddItem($iname, $ivalue)
     {
-        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>\r\n";
-        $this->myWinItem .= "<td width='25%'>$iname</td>\r\n";
-        $this->myWinItem .= "<td width='75%'>$ivalue</td>\r\n";
-        $this->myWinItem .= "</tr>\r\n";
+        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>";
+        $this->myWinItem .= "<td width='30%'>$iname</td>";
+        $this->myWinItem .= "<td width='70%'>$ivalue</td>";
+        $this->myWinItem .= "</tr>";
     }
-
     /**
      *  增加一个单列的消息行
      *
@@ -110,11 +104,10 @@ class OxWindow
         } else {
             $colspan = "";
         }
-        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>\r\n";
-        $this->myWinItem .= "<td $colspan $height> $ivalue </td>\r\n";
-        $this->myWinItem .= "</tr>\r\n";
+        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>";
+        $this->myWinItem .= "<td $colspan $height>$ivalue</td>";
+        $this->myWinItem .= "</tr>";
     }
-
     /**
      *  增加单列的标题行
      *
@@ -131,11 +124,10 @@ class OxWindow
         } else {
             $colspan = "";
         }
-        $this->myWinItem .= "<tr bgcolor='#DADADA'>\r\n";
-        $this->myWinItem .= "<td $colspan background='{$cfg_static_dir}/img/wbg.gif' height='26'><font color='#666600'><b>$title</b></font></td>\r\n";
-        $this->myWinItem .= "</tr>\r\n";
+        $this->myWinItem .= "<tr>";
+        $this->myWinItem .= "<td $colspan style='height:26px;color:#424b51'>$title</td>";
+        $this->myWinItem .= "</tr>";
     }
-
     /**
      *  结束Window
      *
@@ -145,12 +137,11 @@ class OxWindow
     function CloseWin($isform = true)
     {
         if (!$isform) {
-            $this->myWin .= "</table>\r\n";
+            $this->myWin .= "</table>";
         } else {
-            $this->myWin .= "</table></form>\r\n";
+            $this->myWin .= "</table></form>";
         }
     }
-
     /**
      *  增加自定义JS脚本
      *
@@ -164,7 +155,6 @@ class OxWindow
             $this->myWin = substr_replace($this->myWin, $scripts, $pos, strlen($this->tmpCode));
         }
     }
-
     /**
      *  获取窗口
      *
@@ -200,19 +190,15 @@ class OxWindow
             if ($wintype != "hand") {
                 $this->myWin .= "
 <tr>
-<td colspan='2' bgcolor='#F9FCEF'>
-<table width='270' border='0' cellpadding='0' cellspacing='0'>
-<tr align='center' height='28'>
-<td width='90'><button type='submit' class='btn btn-success'>$tt</button></td>
-<td width='90'><button onClick='this.form.reset();return false;' type='button' class='btn btn-success'>重置</button></td>
-<td><button onClick='history.go(-1);' type='button' class='btn btn-success'>返回</button></td>
-</tr>
-</table>
+<td colspan='2' height='30'>
+<button type='submit' class='btn btn-success'>$tt</button>&nbsp;&nbsp;
+<button type='button' class='btn btn-success' onClick='this.form.reset();return false;'>重置</button>&nbsp;&nbsp;
+<button type='button' class='btn btn-success' onClick='history.go(-1);'>返回</button>
 </td>
 </tr>";
             } else {
                 if ($msg != '') {
-                    $this->myWin .= "<tr><td bgcolor='#F5F5F5'>$msg</td></tr>";
+                    $this->myWin .= "<tr><td>$msg</td></tr>";
                 } else {
                     $this->myWin .= '';
                 }
@@ -221,7 +207,6 @@ class OxWindow
         $this->CloseWin($isform);
         return $this->myWin;
     }
-
     /**
      *  显示页面
      *
@@ -233,11 +218,11 @@ class OxWindow
     {
         global $cfg_templets_dir, $wecome_info, $cfg_basedir;
         if (empty($wecome_info)) {
-            $wecome_info = "DedeBIZ OX 通用对话框：";
+            $wecome_info = "通用对话框：";
         }
         $ctp = new DedeTagParse();
         if ($modfile == '') {
-            $ctp->LoadTemplate($cfg_basedir . $cfg_templets_dir . '/plus/win_templet.htm');
+            $ctp->LoadTemplate($cfg_basedir.$cfg_templets_dir.'/plus/win_templet.htm');
         } else {
             $ctp->LoadTemplate($modfile);
         }
@@ -250,8 +235,7 @@ class OxWindow
         $ctp->Display();
         $ctp->Clear();
     }
-} //End Class
-
+}//End Class
 /**
  *  显示一个不带表单的普通提示
  *
@@ -264,7 +248,7 @@ function ShowMsgWin($msg, $title)
 {
     $win = new OxWindow();
     $win->Init();
-    $win->mainTitle = "DedeBIZ系统提示：";
+    $win->mainTitle = "系统提示：";
     $win->AddTitle($title);
     $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
     $winform = $win->GetWindow("hand");

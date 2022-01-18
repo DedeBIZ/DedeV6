@@ -139,8 +139,8 @@ if (!function_exists('gdversion')) {
 if (!function_exists('WaterImg')) {
     function WaterImg($srcFile, $fromGo = 'up')
     {
-        include(DEDEDATA . '/mark/inc_photowatermark_config.php');
-        require_once(DEDEINC . '/image.class.php');
+        include(DEDEDATA.'/mark/inc_photowatermark_config.php');
+        require_once(DEDEINC.'/image.class.php');
         if (isset($GLOBALS['needwatermark'])) {
             $photo_markup = $photo_markdown = empty($GLOBALS['needwatermark']) ? '0' : '1';
         }
@@ -161,7 +161,7 @@ if (!function_exists('WaterImg')) {
         if ($fromGo == 'down' && $photo_markdown == '0') {
             return;
         }
-        $TRUEMarkimg = DEDEDATA . '/mark/' . $photo_markimg;
+        $TRUEMarkimg = DEDEDATA.'/mark/'.$photo_markimg;
         if (!file_exists($TRUEMarkimg) || empty($photo_markimg)) {
             $TRUEMarkimg = "";
         }
@@ -170,8 +170,8 @@ if (!function_exists('WaterImg')) {
         }
         $cfg_watermarktext = array();
         if ($photo_marktype == '2') {
-            if (file_exists(DEDEDATA . '/mark/simhei.ttf')) {
-                $cfg_watermarktext['fontpath'] =  DEDEDATA . '/mark/simhei.ttf';
+            if (file_exists(DEDEDATA.'/mark/simhei.ttf')) {
+                $cfg_watermarktext['fontpath'] =  DEDEDATA.'/mark/simhei.ttf';
             } else {
                 return;
             }

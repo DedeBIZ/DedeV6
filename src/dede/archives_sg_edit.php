@@ -9,16 +9,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 
 if (empty($dopost)) $dopost = '';
 
 if ($dopost != 'save') {
-    require_once(DEDEADMIN . "/inc/inc_catalog_options.php");
-    require_once(DEDEINC . "/dedetag.class.php");
+    require_once(DEDEADMIN."/inc/inc_catalog_options.php");
+    require_once(DEDEINC."/dedetag.class.php");
     ClearMyAddon();
     $aid = intval($aid);
 
@@ -42,8 +42,8 @@ if ($dopost != 'save') {
 /*--------------------------------
 function __save(){  }
 -------------------------------*/ else if ($dopost == 'save') {
-    require_once(DEDEINC . '/image.func.php');
-    require_once(DEDEINC . '/oxwindow.class.php');
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
     if ($typeid == 0) {
         ShowMsg("请指定文档的栏目！", "-1");
         exit();
@@ -81,15 +81,15 @@ function __save(){  }
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-        $fullUrl = $fullUrl . ".png";
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
 
-        file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
 
         // 加水印
-        WaterImg($cfg_basedir . $fullUrl, 'up');
+        WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
     //分析处理附加表数据
@@ -114,14 +114,14 @@ function __save(){  }
                     }
                     ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $id);
                 }
-                $inadd_f .= ",`{$vs[0]}` = '" . ${$vs[0]} . "'";
+                $inadd_f .= ",`{$vs[0]}` = '".${$vs[0]}."'";
             }
         }
     }
 
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match("#p#", $flag)) {
-        $flag = ($flag == '' ? 'p' : $flag . ',p');
+        $flag = ($flag == '' ? 'p' : $flag.',p');
     }
 
     $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
@@ -137,7 +137,7 @@ function __save(){  }
     //生成HTML
     UpIndexKey($id, $arcrank, $typeid, $sortrank, '');
     $artUrl = MakeArt($id, TRUE, TRUE, $isremote);
-    if ($artUrl == '') $artUrl = $cfg_phpurl . "/view.php?aid=$id";
+    if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$id";
 
     ClearMyAddon($id, $title);
     //返回成功信息
@@ -145,7 +145,7 @@ function __save(){  }
     　　请选择你的后续操作：
     <a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新文档</a>
     &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $id . "&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
+    <a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a>
     &nbsp;&nbsp;

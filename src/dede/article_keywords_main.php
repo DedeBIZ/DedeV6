@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Keyword');
-require_once(DEDEINC . "/datalistcp.class.php");
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($dopost)) $dopost = '';
 
@@ -24,19 +24,19 @@ if ($dopost == 'saveall') {
         exit();
     }
     foreach ($aids as $aid) {
-        $rpurl = ${'rpurl_' . $aid};
-        $rpurlold = ${'rpurlold_' . $aid};
-        $keyword = ${'keyword_' . $aid};
+        $rpurl = ${'rpurl_'.$aid};
+        $rpurlold = ${'rpurlold_'.$aid};
+        $keyword = ${'keyword_'.$aid};
 
         //删除项目
-        if (!empty(${'isdel_' . $aid})) {
+        if (!empty(${'isdel_'.$aid})) {
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__keywords` WHERE aid='$aid'");
             continue;
         }
 
         //禁用项目
-        $staold = ${'staold_' . $aid};
-        $sta = empty(${'isnouse_' . $aid}) ? 1 : 0;
+        $staold = ${'staold_'.$aid};
+        $sta = empty(${'isnouse_'.$aid}) ? 1 : 0;
         if ($staold != $sta) {
             $query1 = "UPDATE `#@__keywords` SET sta='$sta',rpurl='$rpurl' WHERE aid='$aid' ";
             $dsql->ExecuteNoneQuery($query1);
@@ -82,7 +82,7 @@ $sql = "SELECT * FROM `#@__keywords` $addquery ORDER BY rank DESC";
 $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetParameter("keyword", $keyword);
-$dlist->SetTemplate(DEDEADMIN . "/templets/article_keywords_main.htm");
+$dlist->SetTemplate(DEDEADMIN."/templets/article_keywords_main.htm");
 $dlist->SetSource($sql);
 $dlist->Display();
 

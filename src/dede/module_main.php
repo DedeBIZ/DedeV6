@@ -9,24 +9,24 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_module');
-require_once(dirname(__FILE__) . "/../include/dedemodule.class.php");
-require_once(dirname(__FILE__) . "/../include/oxwindow.class.php");
+require_once(dirname(__FILE__)."/../include/dedemodule.class.php");
+require_once(dirname(__FILE__)."/../include/oxwindow.class.php");
 if (empty($action)) $action = '';
-require_once(DEDEDATA . "/admin/config_update.php");
-$mdir = DEDEDATA . '/module';
+require_once(DEDEDATA."/admin/config_update.php");
+$mdir = DEDEDATA.'/module';
 $mdurl = "";
 
 function TestWriteAble($d)
 {
   $tfile = '_dedet.txt';
   $d = preg_replace("#\/$#", '', $d);
-  $fp = @fopen($d . '/' . $tfile, 'w');
+  $fp = @fopen($d.'/'.$tfile, 'w');
   if (!$fp) return FALSE;
   else {
     fclose($fp);
-    $rs = @unlink($d . '/' . $tfile);
+    $rs = @unlink($d.'/'.$tfile);
     if ($rs) return TRUE;
     else return FALSE;
   }
@@ -35,7 +35,7 @@ function TestWriteAble($d)
 function ReWriteConfigAuto()
 {
   global $dsql;
-  $configfile = DEDEDATA . '/config.cache.inc.php';
+  $configfile = DEDEDATA.'/config.cache.inc.php';
   if (!is_writeable($configfile)) {
     echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数！";
     //ClearAllLink();
@@ -43,14 +43,14 @@ function ReWriteConfigAuto()
   }
   $fp = fopen($configfile, 'w');
   flock($fp, 3);
-  fwrite($fp, "<" . "?php\r\n");
+  fwrite($fp, "<"."?php\r\n");
   $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC ");
   $dsql->Execute();
   while ($row = $dsql->GetArray()) {
-    if ($row['type'] == 'number') fwrite($fp, "\${$row['varname']} = " . $row['value'] . ";\r\n");
-    else fwrite($fp, "\${$row['varname']} = '" . str_replace("'", '', $row['value']) . "';\r\n");
+    if ($row['type'] == 'number') fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
+    else fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
   }
-  fwrite($fp, "?" . ">");
+  fwrite($fp, "?".">");
   fclose($fp);
 }
 
@@ -69,7 +69,7 @@ if ($action == '') {
   if (is_array($modules_remote) && count($modules_remote) > 0) {
     $modules = array_merge($modules, $modules_remote);
   }
-  require_once(dirname(__FILE__) . "/templets/module_main.htm");
+  require_once(dirname(__FILE__)."/templets/module_main.htm");
   $dm->Clear();
   exit();
 }
@@ -86,7 +86,7 @@ function ViewDevelopoer();
   }
 
   $dev_id = $info['dev_id'];
-  $devURL = DEDECDNURL . "/developers/$dev_id.json";
+  $devURL = DEDECDNURL."/developers/$dev_id.json";
   $dhd = new DedeHttpDown();
   $dhd->OpenUrl($devURL);
   $devContent = $dhd->GetHtml();
@@ -137,7 +137,7 @@ function Setup();
     if (!preg_match("#^\.#", $prvdir)) $prvdir = './';
     $n = TRUE;
     foreach ($incdir as $k => $v) {
-      if (preg_match("#^" . $v . "#i", $prvdir)) {
+      if (preg_match("#^".$v."#i", $prvdir)) {
         $n = FALSE;
         break;
       }
@@ -253,7 +253,7 @@ function SetupRun()
   $rs = $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_module` WHERE hashcode LIKE '$hash' ");
   $rs = $dsql->ExecuteNoneQuery($query);
   if (!$rs) {
-    ShowMsg('保存数据库信息失败，无法完成安装！' . $dsql->GetError(), 'javascript:;');
+    ShowMsg('保存数据库信息失败，无法完成安装！'.$dsql->GetError(), 'javascript:;');
     exit();
   }
 
@@ -266,7 +266,7 @@ function SetupRun()
 
   //用模块的安装程序安装
   if (!isset($autosetup) || $autosetup == 0) {
-    include(DEDEDATA . '/module/' . $filename);
+    include(DEDEDATA.'/module/'.$filename);
     exit();
   }
   //系统自动安装
@@ -276,7 +276,7 @@ function SetupRun()
     $setupsql = $dm->GetSystemFile($hash, 'setupsql40');
 
     $setupsql = preg_replace("#ENGINE=MyISAM#i", 'TYPE=MyISAM', $setupsql);
-    $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET=' . $cfg_db_language;
+    $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET='.$cfg_db_language;
 
     if ($mysql_version >= 4.1) {
       $setupsql = preg_replace("#TYPE=MyISAM#i", $sql41tmp, $setupsql);
@@ -285,7 +285,7 @@ function SetupRun()
     //_ROOTURL_
     if ($cfg_cmspath == '/') $cfg_cmspath = '';
 
-    $rooturl = $cfg_basehost . $cfg_cmspath;
+    $rooturl = $cfg_basehost.$cfg_cmspath;
 
     $setupsql = preg_replace("#_ROOTURL_#i", $rooturl, $setupsql);
     $setupsql = preg_replace("#[\r\n]{1,}#", "\n", $setupsql);
@@ -362,7 +362,7 @@ function DelModule();
   exit();
 } else if ($action == 'delok') {
   $dm = new DedeModule($mdir);
-  $modfile = $mdir . "/" . $dm->GetHashFile($hash);
+  $modfile = $mdir."/".$dm->GetHashFile($hash);
   unlink($modfile) or die("删除文件 {$modfile} 失败！");
   ShowMsg("成功删除一个模块文件！", "module_main.php");
   exit();
@@ -458,8 +458,8 @@ function UnInstallRun();
   @$dm->DelSystemFile($hash, 'setup');
   $dm->Clear();
   if (!isset($autodel) || $autodel == 0) {
-    include(DEDEDATA . "/module/{$hash}-uninstall.php");
-    @unlink(DEDEDATA . "/module/{$hash}-uninstall.php");
+    include(DEDEDATA."/module/{$hash}-uninstall.php");
+    @unlink(DEDEDATA."/module/{$hash}-uninstall.php");
     exit();
   } else {
     @$dm->DelSystemFile($hash, 'uninstall');
@@ -517,7 +517,7 @@ function ViewOne();
     else $v['type'] = '文件';
     $filelist .= "{$v['type']}|{$v['name']}\r\n";
   }
-  if (file_exists(DEDEDATA . "/module/{$hash}-readme.php")) {
+  if (file_exists(DEDEDATA."/module/{$hash}-readme.php")) {
     $setupinfo = "已安装 <a href='module_main.php?action=uninstall&hash={$hash}'>卸载</a>";
   } else {
     $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
@@ -588,7 +588,7 @@ function Edit();
   $indexurl = str_replace('**', '=', $indexurl);
   $dm->Clear();
 
-  require_once(dirname(__FILE__) . '/templets/module_edit.htm');
+  require_once(dirname(__FILE__).'/templets/module_edit.htm');
   exit();
 }
 /*--------------

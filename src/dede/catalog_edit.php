@@ -9,8 +9,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/typelink.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/typelink.class.php");
 if (empty($dopost)) $dopost = '';
 $id = isset($id) ? intval($id) : 0;
 
@@ -71,7 +71,7 @@ if ($dopost == "save") {
     if ($topid > 0 && $issend == 1) {
         $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET issend='$issend' WHERE id='$topid'; ");
     }
-    $slinks = " id IN (" . GetSonIds($id) . ")";
+    $slinks = " id IN (".GetSonIds($id).")";
 
     //修改顶级栏目时强制修改下级的多站点支持属性
     if ($topid == 0 && preg_match("#,#", $slinks)) {
@@ -103,7 +103,7 @@ if ($dopost == "save") {
 } //End Save Action
 else if ($dopost == "savetime") {
     $uptopsql = '';
-    $slinks = " id IN (" . GetSonIds($id) . ")";
+    $slinks = " id IN (".GetSonIds($id).")";
 
     //顶级栏目二级域名根目录处理
     if ($topid == 0 && $moresite == 1) {
@@ -219,9 +219,9 @@ if ($dopost == 'time') {
                         $dsql->Execute();
                         while ($row = $dsql->GetObject()) {
                             if ($myrow['corank'] == $row->rank)
-                                echo "<option value='" . $row->rank . "' selected>" . $row->membername . "</option>\r\n";
+                                echo "<option value='".$row->rank."' selected>".$row->membername."</option>\r\n";
                             else
-                                echo "<option value='" . $row->rank . "'>" . $row->membername . "</option>\r\n";
+                                echo "<option value='".$row->rank."'>".$row->membername."</option>\r\n";
                         }
                         ?>
                     </select>

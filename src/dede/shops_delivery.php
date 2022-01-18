@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('shops_Delivery');
-require_once DEDEINC . '/datalistcp.class.php';
+require_once DEDEINC.'/datalistcp.class.php';
 
 if (!isset($do)) $do = '';
 if ($do == 'add') {
@@ -44,9 +44,9 @@ if ($do == 'add') {
         if (!is_array($row)) {
             continue;
         }
-        $dname = ${"m_dname" . $id};
-        $price = ${"m_price" . $id};
-        $des = ${"m_des" . $id};
+        $dname = ${"m_dname".$id};
+        $price = ${"m_price".$id};
+        $des = ${"m_des".$id};
         if (empty($dname) || (strlen($dname) > 100)) {
             $dname = addslashes($row['dname']);
         }
@@ -74,6 +74,6 @@ $dlist = new DataListCP();
 $dlist->pageSize = 25; //设定每页显示记录数（默认25条）
 
 //这两句的顺序不能更换
-$dlist->SetTemplate(DEDEADMIN . "/templets/shops_delivery.htm");      //载入模板
+$dlist->SetTemplate(DEDEADMIN."/templets/shops_delivery.htm");      //载入模板
 $dlist->SetSource("SELECT `pid`,`dname`,`price`,`des` FROM `#@__shops_delivery` ORDER BY `orders` ASC"); // 设定查询SQL
 $dlist->Display(); //显示

@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-require_once(DEDEINC . "/arc.freelist.class.php");
+require_once(DEDEINC."/arc.freelist.class.php");
 if (empty($startid)) $startid = 0;
 $ci = " aid >= $startid ";
 if (!empty($endid) && $endid >= $startid) {
@@ -56,10 +56,10 @@ if ($nextpage == $totalpage) {
 } else {
     if ($finishType) {
         $gourl = "makehtml_freelist_action.php?maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$nextpage";
-        ShowMsg("成功创建列表：" . $tid . "，继续进行操作！", $gourl, 0, 100);
+        ShowMsg("成功创建列表：".$tid."，继续进行操作！", $gourl, 0, 100);
     } else {
         $gourl = "makehtml_freelist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$pageno";
-        ShowMsg("列表：" . $tid . "，继续进行操作...", $gourl, 0, 100);
+        ShowMsg("列表：".$tid."，继续进行操作...", $gourl, 0, 100);
     }
 }
 $dsql->ExecuteNoneQuery("Update `#@__freelist` set  nodefault='1' where aid='$startid';");

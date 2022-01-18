@@ -21,13 +21,13 @@
 if (!function_exists('Dump')) {
     function Dump($var, $echo = true, $label = null, $strict = true)
     {
-        $label = ($label === null) ? '' : rtrim($label) . ' ';
+        $label = ($label === null) ? '' : rtrim($label).' ';
         if (!$strict) {
             if (ini_get('html_errors')) {
                 $output = print_r($var, true);
-                $output = "<pre>" . $label . htmlspecialchars($output, ENT_QUOTES) . "</pre>";
+                $output = "<pre>".$label.htmlspecialchars($output, ENT_QUOTES)."</pre>";
             } else {
-                $output = $label . " : " . print_r($var, true);
+                $output = $label." : ".print_r($var, true);
             }
         } else {
             ob_start();
@@ -35,7 +35,7 @@ if (!function_exists('Dump')) {
             $output = ob_get_clean();
             if (!extension_loaded('xdebug')) {
                 $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
-                $output = '<pre>' . $label . htmlspecialchars($output, ENT_QUOTES) . '</pre>';
+                $output = '<pre>'.$label.htmlspecialchars($output, ENT_QUOTES).'</pre>';
             }
         }
         if ($echo) {

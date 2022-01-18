@@ -18,11 +18,11 @@
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . '/dedetemplate.class.php');
+require_once(DEDEINC.'/dedetemplate.class.php');
 $codefile = (isset($needCode) ? $needCode : $cfg_soft_lang);
 $codefile = preg_replace("#[^\w-]#", '', $codefile);
-if (file_exists(DEDEINC . '/code/datalist.' . $codefile . '.inc')) {
-    require_once(DEDEINC . '/code/datalist.' . $codefile . '.inc');
+if (file_exists(DEDEINC.'/code/datalist.'.$codefile.'.inc')) {
+    require_once(DEDEINC.'/code/datalist.'.$codefile.'.inc');
 } else {
     $lang_pre_page = '上页';
     $lang_next_page = '下页';
@@ -147,9 +147,9 @@ class DataListCP
             $row = $this->dsql->GetOne($countQuery);
             if (!is_array($row)) $row['dd'] = 0;
             $this->totalResult = isset($row['dd']) ? $row['dd'] : 0;
-            $this->sourceSql .= " LIMIT 0," . $this->pageSize;
+            $this->sourceSql .= " LIMIT 0,".$this->pageSize;
         } else {
-            $this->sourceSql .= " LIMIT " . (($this->pageNO - 1) * $this->pageSize) . "," . $this->pageSize;
+            $this->sourceSql .= " LIMIT ".(($this->pageNO - 1) * $this->pageSize).",".$this->pageSize;
         }
     }
 
@@ -195,8 +195,8 @@ class DataListCP
         $search .= '1234567890!@#$%^&*()';
         $search .= '~`";:?+/={}[]-_|\'\\';
         for ($i = 0; $i < strlen($search); $i++) {
-            $val = preg_replace('/(&#[xX]0{0,8}' . dechex(ord($search[$i])) . ';?)/i', $search[$i], $val); // with a ;
-            $val = preg_replace('/(&#0{0,8}' . ord($search[$i]) . ';?)/', $search[$i], $val); // with a ;
+            $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); // with a ;
+            $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); // with a ;
         }
 
         $val = str_replace("`", "‘", $val);
@@ -226,7 +226,7 @@ class DataListCP
                     $pattern .= $ra[$i][$j];
                 }
                 $pattern .= '/i';
-                $replacement = substr($ra[$i], 0, 2) . '<x>' . substr($ra[$i], 2);
+                $replacement = substr($ra[$i], 0, 2).'<x>'.substr($ra[$i], 2);
                 $val = preg_replace($pattern, $replacement, $val);
                 if ($val_before == $val) {
                     $found = false;
@@ -275,10 +275,10 @@ class DataListCP
         //echo " {$totalpage}=={$this->totalResult}=={$this->pageSize}";
         //无结果或只有一页的情况
         if ($totalpage <= 1 && $this->totalResult > 0) {
-            return "<ul class='pagination justify-content-center'>\n<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">{$lang_total} 1 {$lang_page}/" . $this->totalResult . $lang_record_number . "</span></li></ul>";
+            return "<ul class='pagination justify-content-center'>\n<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">{$lang_total} 1 {$lang_page}/".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
         if ($this->totalResult == 0) {
-            return "<ul class='pagination justify-content-center'>\n<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">{$lang_total} 0 {$lang_page}/" . $this->totalResult . $lang_record_number . "</span></li></ul>";
+            return "<ul class='pagination justify-content-center'>\n<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">{$lang_total} 0 {$lang_page}/".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
         $infos = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">{$lang_total} {$totalpage} {$lang_page}/{$this->totalResult}{$lang_record_number} </span></li>";
         if ($this->totalResult != 0) {
@@ -287,22 +287,22 @@ class DataListCP
         if (count($this->getValues) > 0) {
             foreach ($this->getValues as $key => $value) {
                 $value = urlencode($value);
-                $geturl .= "$key=$value" . "&";
+                $geturl .= "$key=$value"."&";
                 $hidenform .= "<input type='hidden' name='$key' value='$value' />\n";
             }
         }
-        $purl .= "?" . $geturl;
+        $purl .= "?".$geturl;
 
         //获得上一页和下一页的链接
         if ($this->pageNO != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='" . $purl . "pageno=$prepagenum'>$lang_pre_page</a></li> \n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='" . $purl . "pageno=1'>$lang_index_page</a></li> \n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."pageno=$prepagenum'>$lang_pre_page</a></li> \n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."pageno=1'>$lang_index_page</a></li> \n";
         } else {
-            $indexpage = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">" . "$lang_index_page \n" . "</span></li>";
+            $indexpage = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">"."$lang_index_page \n"."</span></li>";
         }
         if ($this->pageNO != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='" . $purl . "pageno=$nextpagenum'>$lang_next_page</a></li> \n";
-            $endpage = "<li class='page-item'><a class='page-link' href='" . $purl . "pageno=$totalpage'>$lang_end_page</a></li> \n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."pageno=$nextpagenum'>$lang_next_page</a></li> \n";
+            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."pageno=$totalpage'>$lang_end_page</a></li> \n";
         } else {
             $endpage = " <li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">$lang_end_page</span></li> \n";
         }
@@ -323,7 +323,7 @@ class DataListCP
             }
         }
         for ($j; $j <= $total_list; $j++) {
-            $listdd .= $j == $this->pageNO ? "<li class='page-item'><span class='page-link'>$j</span></li>\r\n" : "<li class='page-item'><a class='page-link' href='" . $purl . "pageno=$j'>" . $j . "</a></li>\n";
+            $listdd .= $j == $this->pageNO ? "<li class='page-item'><span class='page-link'>$j</span></li>\r\n" : "<li class='page-item'><a class='page-link' href='".$purl."pageno=$j'>".$j."</a></li>\n";
         }
 
         $plist = "<ul class='pagination justify-content-center'>\n";
@@ -348,7 +348,7 @@ class DataListCP
             $plist .= $endpage;
         }
         if (preg_match("#form#i", $atts['listitem'])) {
-            $plist .= " <form name='pagelist' action='" . $this->GetCurUrl() . "' style='float:left;' class='pagelistform'>$hidenform";
+            $plist .= " <form name='pagelist' action='".$this->GetCurUrl()."' style='float:left;' class='pagelistform'>$hidenform";
             if ($totalpage > $total_list) {
                 $plist .= "<input type='text' name='pageno' style='padding:0px;width:30px;height:18px;font-size:11px' />\r\n";
                 $plist .= "<input type='submit' name='plistgo' value='GO' style='padding:0px;width:30px;height:22px;font-size:11px' />\r\n";

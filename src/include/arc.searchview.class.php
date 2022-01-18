@@ -8,11 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . "/typelink.class.php");
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/splitword.class.php");
-require_once(DEDEINC . "/taglib/hotwords.lib.php");
-require_once(DEDEINC . "/taglib/channel.lib.php");
+require_once(DEDEINC."/typelink.class.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/splitword.class.php");
+require_once(DEDEINC."/taglib/hotwords.lib.php");
+require_once(DEDEINC."/taglib/channel.lib.php");
 
 @set_time_limit(0);
 @ini_set('memory_limit', '512M');
@@ -118,7 +118,7 @@ class SearchView
         $this->CountRecord();
 
 
-        $tempfile = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'] . "/" . $GLOBALS['cfg_df_style'] . "/search.htm";
+        $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/search.htm";
         if (defined('DEDEMOB')) {
             $tempfile = str_replace('.htm', '_m.htm', $tempfile);
         }
@@ -134,7 +134,7 @@ class SearchView
         }
         $this->TotalPage = ceil($this->TotalResult / $this->PageSize);
         if ($this->PageNo == 1) {
-            $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET result='" . $this->TotalResult . "' WHERE keyword='" . addslashes($keyword) . "'; ");
+            $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET result='".$this->TotalResult."' WHERE keyword='".addslashes($keyword)."'; ");
         }
     }
 
@@ -170,7 +170,7 @@ class SearchView
         global $cfg_soft_lang;
         global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
         $keyword = cn_substr($keyword, 50);
-        $row = $this->dsql->GetOne("SELECT spwords FROM `#@__search_keywords` WHERE keyword='" . addslashes($keyword) . "'; ");
+        $row = $this->dsql->GetOne("SELECT spwords FROM `#@__search_keywords` WHERE keyword='".addslashes($keyword)."'; ");
         if (!is_array($row)) {
             if (strlen($keyword) > 7) {
                 if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
@@ -179,9 +179,9 @@ class SearchView
                     $client->key = $cfg_bizcore_key;
                     $data = $client->Spliteword($keyword);
                     $kvs = explode(",", $data->data);
-                    $keywords = $keyword . " ";
+                    $keywords = $keyword." ";
                     foreach ($kvs as $key => $value) {
-                        $keywords .= ' ' . $value;
+                        $keywords .= ' '.$value;
                     }
                     $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
                     $client->Close();
@@ -194,12 +194,12 @@ class SearchView
                     $keywords = $sp->GetFinallyResult();
                     $idx_keywords = $sp->GetFinallyIndex();
                     ksort($idx_keywords);
-                    $keywords = $keyword . ' ';
+                    $keywords = $keyword.' ';
                     foreach ($idx_keywords as $key => $value) {
                         if (strlen($key) <= 3) {
                             continue;
                         }
-                        $keywords .= ' ' . $key;
+                        $keywords .= ' '.$key;
                     }
                     $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
                     // var_dump($keywords);exit();
@@ -209,10 +209,10 @@ class SearchView
                 $keywords = $keyword;
             }
             $inquery = "INSERT INTO `#@__search_keywords`(`keyword`,`spwords`,`count`,`result`,`lasttime`)
-          VALUES ('" . addslashes($keyword) . "', '" . addslashes($keywords) . "', '1', '0', '" . time() . "'); ";
+          VALUES ('".addslashes($keyword)."', '".addslashes($keywords)."', '1', '0', '".time()."'); ";
             $this->dsql->ExecuteNoneQuery($inquery);
         } else {
-            $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET count=count+1,lasttime='" . time() . "' WHERE keyword='" . addslashes($keyword) . "'; ");
+            $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET count=count+1,lasttime='".time()."' WHERE keyword='".addslashes($keyword)."'; ");
             $keywords = $row['spwords'];
         }
         return $keywords;
@@ -281,16 +281,16 @@ class SearchView
             }
             $k = addslashes($k);
             if ($lsql == '') {
-                $lsql = $lsql . " CONCAT(spwords,' ') LIKE '%$k %' ";
+                $lsql = $lsql." CONCAT(spwords,' ') LIKE '%$k %' ";
             } else {
-                $lsql = $lsql . " OR CONCAT(spwords,' ') LIKE '%$k %' ";
+                $lsql = $lsql." OR CONCAT(spwords,' ') LIKE '%$k %' ";
             }
         }
         if ($lsql == '') {
             return '';
         } else {
             $likeword = '';
-            $lsql = "(" . $lsql . ") AND NOT(keyword like '" . addslashes($this->Keyword) . "') ";
+            $lsql = "(".$lsql.") AND NOT(keyword like '".addslashes($this->Keyword)."') ";
             $this->dsql->SetQuery("SELECT keyword,count FROM `#@__search_keywords` WHERE $lsql ORDER BY lasttime DESC LIMIT 0,$num; ");
             $this->dsql->Execute('l');
             while ($row = $this->dsql->GetArray('l')) {
@@ -301,7 +301,7 @@ class SearchView
                 } else {
                     $style = "";
                 }
-                $likeword .= "　<a href='search.php?keyword=" . urlencode($row['keyword']) . "&searchtype=titlekeyword'" . $style . "><u>" . $row['keyword'] . "</u></a> ";
+                $likeword .= "　<a href='search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'".$style."><u>".$row['keyword']."</u></a> ";
             }
             return $likeword;
         }
@@ -355,19 +355,19 @@ class SearchView
         $ksql = $this->GetKeywordSql();
         $ksqls = array();
         if ($this->StartTime > 0) {
-            $ksqls[] = " arc.senddate>'" . $this->StartTime . "' ";
+            $ksqls[] = " arc.senddate>'".$this->StartTime."' ";
         }
         if ($this->TypeID > 0) {
-            $ksqls[] = " typeid IN (" . GetSonIds($this->TypeID) . ") ";
+            $ksqls[] = " typeid IN (".GetSonIds($this->TypeID).") ";
         }
         if ($this->ChannelType > 0) {
-            $ksqls[] = " arc.channel='" . $this->ChannelType . "'";
+            $ksqls[] = " arc.channel='".$this->ChannelType."'";
         }
         if ($this->mid > 0) {
-            $ksqls[] = " arc.mid = '" . $this->mid . "'";
+            $ksqls[] = " arc.mid = '".$this->mid."'";
         }
         $ksqls[] = " arc.arcrank > -1 ";
-        $this->AddSql = ($ksql == '' ? join(' AND ', $ksqls) : join(' AND ', $ksqls) . " AND ($ksql)");
+        $this->AddSql = ($ksql == '' ? join(' AND ', $ksqls) : join(' AND ', $ksqls)." AND ($ksql)");
         if ($this->ChannelType < 0 || $this->ChannelTypeid < 0) {
             if ($this->ChannelType == "0") $id = $this->ChannelTypeid;
             else $id = $this->ChannelType;
@@ -377,10 +377,10 @@ class SearchView
         } else {
             $this->AddTable = "#@__archives";
         }
-        $cquery = "SELECT * FROM `{$this->AddTable}` arc WHERE " . $this->AddSql;
+        $cquery = "SELECT * FROM `{$this->AddTable}` arc WHERE ".$this->AddSql;
         //var_dump($cquery);
         $hascode = md5($cquery);
-        $row = $this->dsql->GetOne("SELECT * FROM `#@__arccache` WHERE `md5hash`='" . $hascode . "' ");
+        $row = $this->dsql->GetOne("SELECT * FROM `#@__arccache` WHERE `md5hash`='".$hascode."' ");
         $uptime = time();
         if (is_array($row) && time() - $row['uptime'] < 3600 * 24) {
             $aids = explode(',', $row['cachedata']);
@@ -398,7 +398,7 @@ class SearchView
                 }
                 $nums = count($aidarr) - 1;
                 $aids = implode(',', $aidarr);
-                $delete = "DELETE FROM `#@__arccache` WHERE uptime<" . (time() - 3600 * 24);
+                $delete = "DELETE FROM `#@__arccache` WHERE uptime<".(time() - 3600 * 24);
                 $this->dsql->SetQuery($delete);
                 $this->dsql->executenonequery();
                 $insert = "INSERT INTO `#@__arccache` (`md5hash`, `uptime`, `cachedata`)
@@ -525,8 +525,8 @@ class SearchView
         if ($tablewidth == '') $tablewidth = 100;
         if ($col == '') $col = 1;
         $colWidth = ceil(100 / $col);
-        $tablewidth = $tablewidth . "%";
-        $colWidth = $colWidth . "%";
+        $tablewidth = $tablewidth."%";
+        $colWidth = $colWidth."%";
         $innertext = trim($innertext);
         if ($innertext == '') {
             $innertext = GetSysTemplets("search_list.htm");
@@ -602,20 +602,20 @@ class SearchView
                     $row["title"] = $this->GetRedKeyWord(cn_substr($row["title"], $titlelen));
                     $row["id"] =  $row["id"];
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.jpg';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.jpg';
                     }
                     if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                        $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                        $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                     }
                     $row['picname'] = $row['litpic'];
                     $row["typeurl"] = GetTypeUrl($row["typeid"], $row["typedir"], $row["isdefault"], $row["defaultname"], $row["ispart"], $row["namerule2"], $row["moresite"], $row["siteurl"], $row["sitepath"]);
                     $row["info"] = $row["description"];
                     $row["filename"] = $row["arcurl"];
                     $row["stime"] = GetDateMK($row["pubdate"]);
-                    $row["textlink"] = "<a href='" . $row["filename"] . "'>" . $row["title"] . "</a>";
-                    $row["typelink"] = "[<a href='" . $row["typeurl"] . "'>" . $row["typename"] . "</a>]";
-                    $row["imglink"] = "<a href='" . $row["filename"] . "'><img src='" . $row["picname"] . "' border='0' width='$imgwidth' height='$imgheight'></a>";
-                    $row["image"] = "<img src='" . $row["picname"] . "' border='0' width='$imgwidth' height='$imgheight'>";
+                    $row["textlink"] = "<a href='".$row["filename"]."'>".$row["title"]."</a>";
+                    $row["typelink"] = "[<a href='".$row["typeurl"]."'>".$row["typename"]."</a>]";
+                    $row["imglink"] = "<a href='".$row["filename"]."'><img src='".$row["picname"]."' border='0' width='$imgwidth' height='$imgheight'></a>";
+                    $row["image"] = "<img src='".$row["picname"]."' border='0' width='$imgwidth' height='$imgheight'>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
@@ -674,10 +674,10 @@ class SearchView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<ul class=\"pagination justify-content-center pt-3\"><li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/" . $this->TotalResult . "条记录</span></li></ul>";
+            return "<ul class=\"pagination justify-content-center pt-3\"><li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li></ul>";
         }
         if ($this->TotalResult == 0) {
-            return "<ul class=\"pagination justify-content-center pt-3\"><li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/" . $this->TotalResult . "条记录</span></li></ul>";
+            return "<ul class=\"pagination justify-content-center pt-3\"><li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li></ul>";
         }
         $purl = $this->GetCurUrl();
 
@@ -687,30 +687,30 @@ class SearchView
         if ($this->TotalResult > $this->SearchMaxRc) {
             $totalpage = ceil($this->SearchMaxRc / $this->PageSize);
         }
-        $infos = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共找到<b>" . $this->TotalResult . "</b>条记录/最大显示<b>{$totalpage}</b>页</span></li>\r\n";
-        $geturl = "keyword=" . urlencode($oldkeyword) . "&searchtype=" . $this->SearchType;
-        $hidenform = "<input type='hidden' name='keyword' value='" . rawurldecode($oldkeyword) . "'>\r\n";
-        $geturl .= "&channeltype=" . $this->ChannelType . "&orderby=" . $this->OrderBy;
-        $hidenform .= "<input type='hidden' name='channeltype' value='" . $this->ChannelType . "'>\r\n";
-        $hidenform .= "<input type='hidden' name='orderby' value='" . $this->OrderBy . "'>\r\n";
-        $geturl .= "&kwtype=" . $this->KType . "&pagesize=" . $this->PageSize;
-        $hidenform .= "<input type='hidden' name='kwtype' value='" . $this->KType . "'>\r\n";
-        $hidenform .= "<input type='hidden' name='pagesize' value='" . $this->PageSize . "'>\r\n";
-        $geturl .= "&typeid=" . $this->TypeID . "&TotalResult=" . $this->TotalResult . "&";
-        $hidenform .= "<input type='hidden' name='typeid' value='" . $this->TypeID . "'>\r\n";
-        $hidenform .= "<input type='hidden' name='TotalResult' value='" . $this->TotalResult . "'>\r\n";
-        $purl .= "?" . $geturl;
+        $infos = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共找到<b>".$this->TotalResult."</b>条记录/最大显示<b>{$totalpage}</b>页</span></li>\r\n";
+        $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
+        $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>\r\n";
+        $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
+        $hidenform .= "<input type='hidden' name='channeltype' value='".$this->ChannelType."'>\r\n";
+        $hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>\r\n";
+        $geturl .= "&kwtype=".$this->KType."&pagesize=".$this->PageSize;
+        $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
+        $hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
+        $geturl .= "&typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
+        $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
+        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
+        $purl .= "?".$geturl;
 
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=$prepagenum'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=1'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li class='page-item disabled'><a class='page-link'>首页</a></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=$nextpagenum'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=$totalpage'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
         } else {
             $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>\r\n";
         }
@@ -734,13 +734,13 @@ class SearchView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class='page-item active'><a class='page-link'>$j&nbsp;</a></li>\r\n";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='" . $purl . "PageNo=$j'>" . $j . "</a>&nbsp;</li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a>&nbsp;</li>\r\n";
             }
         }
         $plist = "";
         // $plist  =  "<table border='0' cellpadding='0' cellspacing='0'>\r\n";
         // $plist .= "<tr align='center' style='font-size:10pt'>\r\n";
-        $plist .= "<form name='pagelist' action='" . $this->GetCurUrl() . "'>$hidenform";
+        $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
         $plist .= "<ul class=\"pagination justify-content-center pt-3\">";
         $plist .= $infos;
         $plist .= $indexpage;

@@ -18,7 +18,7 @@ function lib_infoguide(&$ctag, &$refObj)
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
 
-    $cmspath = ((empty($cfg_cmspath) || preg_match('#[/$]#', $cfg_cmspath)) ? $cfg_cmspath . '/' : $cfg_cmspath);
+    $cmspath = ((empty($cfg_cmspath) || preg_match('#[/$]#', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
 
     if (empty($refObj->Fields['typeid'])) {
         $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE channeltype='-8' And reid = '0' ");
@@ -41,7 +41,7 @@ function lib_infoguide(&$ctag, &$refObj)
     $fields = array('nativeplace' => '', 'infotype' => '', 'typeid' => $typeid);
 
     if ($hasSetEnumJs != 'has') {
-        $revalue .= '<script language="javascript" type="text/javascript" src="' . $cfg_mainsite . $cmspath . 'static/enums.js"></script>' . "\r\n";
+        $revalue .= '<script language="javascript" type="text/javascript" src="'.$cfg_mainsite.$cmspath.'static/enums.js"></script>'."\r\n";
         $GLOBALS['hasSetEnumJs'] = 'hasset';
     }
 
@@ -54,13 +54,13 @@ function lib_infoguide(&$ctag, &$refObj)
     $fields['nativeplace'] .= "<span class='infosearchtxt'>地区：</span><span id='span_nativeplace'></span>\r\n";
     $fields['nativeplace'] .= "<span id='span_nativeplace_son'></span>\r\n<span id='span_nativeplace_sec'></span><br />\r\n";
     $fields['nativeplace'] .= "<script language='javascript' type='text/javascript' src='{$cfg_mainsite}{$cmspath}data/enums/nativeplace.js'></script>\r\n";
-    $fields['nativeplace'] .= '<script language="javascript">MakeTopSelect("nativeplace", ' . $nativeplace . ');</script>' . "\r\n";
+    $fields['nativeplace'] .= '<script language="javascript">MakeTopSelect("nativeplace", '.$nativeplace.');</script>'."\r\n";
 
     $fields['infotype'] .= "<input type='hidden' id='hidden_infotype' name='infotype' value='{$infotype}' />\r\n";
     $fields['infotype'] .= "<span class='infosearchtxt'>类型：</span><span id='span_infotype'></span>\r\n";
     $fields['infotype'] .= "<span id='span_infotype_son'></span><span id='span_infotype_sec'></span><br />\r\n";
     $fields['infotype'] .= "<script language='javascript' type='text/javascript' src='{$cfg_mainsite}{$cmspath}data/enums/infotype.js'></script>\r\n";
-    $fields['infotype'] .= '<script language="javascript">MakeTopSelect("infotype", ' . $infotype . ');</script>' . "\r\n";
+    $fields['infotype'] .= '<script language="javascript">MakeTopSelect("infotype", '.$infotype.');</script>'."\r\n";
 
     if (is_array($ctp->CTags)) {
         foreach ($ctp->CTags as $tagid => $ctag) {

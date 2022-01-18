@@ -10,8 +10,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-require_once(DEDEINC . "/arc.searchview.class.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+require_once(DEDEINC."/arc.searchview.class.php");
 
 $pagesize = (isset($pagesize) && is_numeric($pagesize)) ? $pagesize : 10;
 $typeid = (isset($typeid) && is_numeric($typeid)) ? $typeid : 0;
@@ -36,16 +36,16 @@ $oldkeyword = $keyword = FilterSearch(stripslashes($keyword));
 
 //查找栏目信息
 if (empty($typeid)) {
-    $typenameCacheFile = DEDEDATA . '/cache/typename.inc';
+    $typenameCacheFile = DEDEDATA.'/cache/typename.inc';
     if (!file_exists($typenameCacheFile) || filemtime($typenameCacheFile) < time() - (3600 * 24)) {
-        $fp = fopen(DEDEDATA . '/cache/typename.inc', 'w');
-        fwrite($fp, "<" . "?php\r\n");
+        $fp = fopen(DEDEDATA.'/cache/typename.inc', 'w');
+        fwrite($fp, "<"."?php\r\n");
         $dsql->SetQuery("Select id,typename,channeltype From `#@__arctype`");
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
             fwrite($fp, "\$typeArr[{$row['id']}] = '{$row['typename']}';\r\n");
         }
-        fwrite($fp, '?' . '>');
+        fwrite($fp, '?'.'>');
         fclose($fp);
     }
     //引入栏目缓存并看关键字是否有相关栏目内容
@@ -66,7 +66,7 @@ if (empty($typeid)) {
 $keyword = addslashes(cn_substr($keyword, 30));
 $typeid = intval($typeid);
 
-if ($cfg_notallowstr != '' && preg_match("#" . $cfg_notallowstr . "#i", $keyword)) {
+if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $keyword)) {
     ShowMsg("你的搜索关键字中存在非法内容，被系统禁止！", "-1");
     exit();
 }
@@ -85,7 +85,7 @@ $row = $dsql->GetOne("SELECT * FROM `#@__search_limits` WHERE ip='{$ip}'");
 
 if (is_array($row)) {
     if (($now - $row['searchtime']) < $cfg_search_time) {
-        ShowMsg('管理员设定搜索时间间隔为' . $cfg_search_time . '秒，请稍后再试！', '-1');
+        ShowMsg('管理员设定搜索时间间隔为'.$cfg_search_time.'秒，请稍后再试！', '-1');
         exit;
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__search_limits` SET `searchtime`='{$now}' WHERE  `ip`='{$ip}';");

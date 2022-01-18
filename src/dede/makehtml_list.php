@@ -9,6 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/typelink.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/typelink.class.php");
 include DedeInclude('templets/makehtml_list.htm');

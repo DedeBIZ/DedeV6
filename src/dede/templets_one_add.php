@@ -9,12 +9,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_One');
 if (empty($dopost)) $dopost = "";
 
 if ($dopost == "save") {
-    require_once(DEDEINC . "/arc.partview.class.php");
+    require_once(DEDEINC."/arc.partview.class.php");
     $uptime = time();
     $body = str_replace('&quot;', '\\"', $body);
     $filename = preg_replace("#^\/#", "", $nfilename);
@@ -33,7 +33,7 @@ if ($dopost == "save") {
         exit();
     }
     $id = $dsql->GetLastID();
-    include_once(DEDEINC . "/arc.sgpage.class.php");
+    include_once(DEDEINC."/arc.sgpage.class.php");
     $sg = new sgpage($id);
     $sg->SaveToHtml();
     ShowMsg("成功增加一个页面！", "templets_one.php");
@@ -41,4 +41,4 @@ if ($dopost == "save") {
 }
 $row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage`  ");
 $nowid = is_array($row) ? $row['aid'] + 1 : '';
-include_once(DEDEADMIN . "/templets/templets_one_add.htm");
+include_once(DEDEADMIN."/templets/templets_one_add.htm");

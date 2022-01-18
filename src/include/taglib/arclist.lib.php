@@ -192,8 +192,8 @@ function lib_arclistDone(
     if ($tablewidth == "") $tablewidth = 100;
     if (empty($col)) $col = 1;
     $colWidth = ceil(100 / $col);
-    $tablewidth = $tablewidth . "%";
-    $colWidth = $colWidth . "%";
+    $tablewidth = $tablewidth."%";
+    $colWidth = $colWidth."%";
 
     //记录属性,以便分页样式统一调用
     $attarray = compact(
@@ -277,7 +277,7 @@ function lib_arclistDone(
                 if ($ctag->GetAtt('cross') == '1') {
                     $arr = $dsql->GetOne("SELECT `id`,`topid`,`cross`,`crossid`,`ispart`,`typename` FROM `#@__arctype` WHERE id='$typeid' ");
                     if ($arr['cross'] == 0 || ($arr['cross'] == 2 && trim($arr['crossid'] == ''))) {
-                        $orwheres[] = ' arc.typeid IN (' . GetSonIds($typeid) . ')';
+                        $orwheres[] = ' arc.typeid IN ('.GetSonIds($typeid).')';
                     } else {
                         $selquery = '';
                         if ($arr['cross'] == 1) {
@@ -290,13 +290,13 @@ function lib_arclistDone(
                             $dsql->SetQuery($selquery);
                             $dsql->Execute();
                             while ($arr = $dsql->GetArray()) {
-                                $CrossID .= ($CrossID == '' ? $arr['id'] : ',' . $arr['id']);
+                                $CrossID .= ($CrossID == '' ? $arr['id'] : ','.$arr['id']);
                             }
                         }
                     }
                 }
-                if ($CrossID == '') $orwheres[] = ' arc.typeid IN (' . GetSonIds($typeid) . ')';
-                else $orwheres[] = ' arc.typeid IN (' . GetSonIds($typeid) . ',' . $CrossID . ')';
+                if ($CrossID == '') $orwheres[] = ' arc.typeid IN ('.GetSonIds($typeid).')';
+                else $orwheres[] = ' arc.typeid IN ('.GetSonIds($typeid).','.$CrossID.')';
             }
         }
 
@@ -328,7 +328,7 @@ function lib_arclistDone(
     if ($orderby == 'hot' || $orderby == 'click') $ordersql = " ORDER BY arc.click $orderWay";
     else if ($orderby == 'sortrank' || $orderby == 'pubdate') $ordersql = " ORDER BY arc.sortrank $orderWay";
     else if ($orderby == 'id') $ordersql = "  ORDER BY arc.id $orderWay";
-    else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - " . $arcid . ")";
+    else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - ".$arcid.")";
     else if ($orderby == 'lastpost') $ordersql = "  ORDER BY arc.lastpost $orderWay";
     else if ($orderby == 'scores') $ordersql = "  ORDER BY arc.scores $orderWay";
     //功能：增加按好评数和差评数调用
@@ -363,7 +363,7 @@ function lib_arclistDone(
             $addtable = trim($row['addtable']);
             $addfields = explode(',', $addfield);
             $row['addtable'] = trim($row['addtable']);
-            $addfieldsSql = ",addf." . join(',addf.', $addfields);
+            $addfieldsSql = ",addf.".join(',addf.', $addfields);
             $addfieldsSqlJoin = " LEFT JOIN `$addtable` addf ON addf.aid = arc.id ";
         }
     }
@@ -376,10 +376,10 @@ function lib_arclistDone(
         $orwhere $ordersql $limitsql";
 
     //统一hash
-    $taghash = md5(serialize($ctag) . $typeid);
+    $taghash = md5(serialize($ctag).$typeid);
     $needSaveCache = true;
     //进行tagid的默认处理
-    if ($pagesize > 0) $tagid = AttDef($tagid, 'tag' . $taghash);
+    if ($pagesize > 0) $tagid = AttDef($tagid, 'tag'.$taghash);
 
     if ($idlist != '' || $GLOBALS['_arclistEnv'] == 'index' || $cfg_index_cache == 0) {
         $needSaveCache = false;
@@ -461,22 +461,22 @@ function lib_arclistDone(
                 );
 
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.gif';
+                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
                 }
                 if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                    $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                    $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                 }
                 $row['picname'] = $row['litpic'];
                 $row['stime'] = GetDateMK($row['pubdate']);
-                $row['typelink'] = "<a href='" . $row['typeurl'] . "'>" . $row['typename'] . "</a>";
-                $row['image'] = "<img src='" . $row['picname'] . "' border='0' width='$imgwidth' height='$imgheight' alt='" . preg_replace("#['><]#", "", $row['title']) . "'>";
-                $row['imglink'] = "<a href='" . $row['filename'] . "'>" . $row['image'] . "</a>";
+                $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
+                $row['image'] = "<img src='".$row['picname']."' border='0' width='$imgwidth' height='$imgheight' alt='".preg_replace("#['><]#", "", $row['title'])."'>";
+                $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
-                if ($row['color'] != '') $row['title'] = "<font color='" . $row['color'] . "'>" . $row['title'] . "</font>";
-                if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>" . $row['title'] . "</strong>";
+                if ($row['color'] != '') $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
+                if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>".$row['title']."</strong>";
                 //$row['title'] = "<b>".$row['title']."</b>";
-                $row['textlink'] = "<a href='" . $row['filename'] . "'>" . $row['title'] . "</a>";
+                $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
 
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
@@ -497,7 +497,7 @@ function lib_arclistDone(
                 if ($pagesize > 0) {
                     if ($GLOBALS['autoindex'] <= $pagesize) {
                         $liststr = $dtp2->GetResult();
-                        $artlist .= $liststr . "\r\n";
+                        $artlist .= $liststr."\r\n";
                     } else {
                         $artlist .= "";
                         $orderWeight[] = array(
@@ -507,7 +507,7 @@ function lib_arclistDone(
                     }
                 } else {
                     $liststr = $dtp2->GetResult();
-                    $artlist .= $liststr . "\r\n";
+                    $artlist .= $liststr."\r\n";
                 }
                 $orderWeight[] = array(
                     'weight'  => $row['weight'],
@@ -573,8 +573,8 @@ function lib_arclistDone(
         if ($cfg_cache_type == 'content' && $idsstr != '0') {
             $idsstr = addslashes($artlist);
         }
-        $inquery = "INSERT INTO `#@__arccache`(`md5hash`,`uptime`,`cachedata`) VALUES ('" . $taghash . "','" . time() . "', '$idsstr'); ";
-        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` WHERE md5hash='" . $taghash . "' ");
+        $inquery = "INSERT INTO `#@__arccache`(`md5hash`,`uptime`,`cachedata`) VALUES ('".$taghash."','".time()."', '$idsstr'); ";
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` WHERE md5hash='".$taghash."' ");
         $dsql->ExecuteNoneQuery($inquery);
     }
     return $artlist;

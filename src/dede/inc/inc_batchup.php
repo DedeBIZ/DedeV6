@@ -96,14 +96,14 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
                         $addfile = $row['url'];
                         $aid = $row['aid'];
                         $dsql->ExecuteNoneQuery("Delete From `#@__uploads` where aid = '$aid' ");
-                        $upfile = $cfg_basedir . $addfile;
+                        $upfile = $cfg_basedir.$addfile;
                         if (@file_exists($upfile)) @unlink($upfile);
                     }
                 }
             }
         }
         //删除文本数据
-        $filenameh = DEDEDATA . "/textdata/" . (ceil($aid / 5000)) . "/{$aid}-" . substr(md5($cfg_cookie_encode), 0, 16) . ".txt";
+        $filenameh = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
         if (@is_file($filenameh)) @unlink($filenameh);
     }
 
@@ -132,14 +132,14 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
         $arcRow['filename']
     );
     if (!preg_match("#\?#", $arcurl)) {
-        $htmlfile = GetTruePath() . str_replace($GLOBALS['cfg_basehost'], '', $arcurl);
+        $htmlfile = GetTruePath().str_replace($GLOBALS['cfg_basehost'], '', $arcurl);
         if (file_exists($htmlfile) && !is_dir($htmlfile)) {
             @unlink($htmlfile);
             $arcurls = explode(".", $htmlfile);
             $sname = $arcurls[count($arcurls) - 1];
             $fname = preg_replace("#(\.$sname)$#", "", $htmlfile);
             for ($i = 2; $i <= 100; $i++) {
-                $htmlfile = $fname . "_{$i}." . $sname;
+                $htmlfile = $fname."_{$i}.".$sname;
                 if (@file_exists($htmlfile)) @unlink($htmlfile);
                 else break;
             }

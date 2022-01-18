@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../config.php");
+require_once(dirname(__FILE__)."/../config.php");
 $cuserLogin = new userLogin();
 //后台功能操作配置项
 $actionSearch[0] = array(
@@ -33,7 +33,7 @@ $actionSearch[0] = array(
             'title' => '我发布的文档',
             'description' => '现在登录的管理员所发表的所有内容模型中的文档',
             'purview' => 'a_List,a_AccList,a_MyList',
-            'linkurl' => 'content_list.php?mid=' . $cuserLogin->userID
+            'linkurl' => 'content_list.php?mid='.$cuserLogin->userID
         ),
         3  =>  array(
             'title' => '评论管理',

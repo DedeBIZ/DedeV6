@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 管理后台首页主体
  *
@@ -9,23 +8,22 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . '/config.php');
-require(DEDEINC . '/image.func.php');
-require(DEDEINC . '/dedetag.class.php');
-$defaultIcoFile = DEDEDATA . '/admin/quickmenu.txt';
-$myIcoFile = DEDEDATA . '/admin/quickmenu-' . $cuserLogin->getUserID() . '.txt';
+require(dirname(__FILE__).'/config.php');
+require(DEDEINC.'/image.func.php');
+require(DEDEINC.'/dedetag.class.php');
+$defaultIcoFile = DEDEDATA.'/admin/quickmenu.txt';
+$myIcoFile = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
 if (!file_exists($myIcoFile)) $myIcoFile = $defaultIcoFile;
-
 //默认主页
 if (empty($dopost)) {
-    require(DEDEINC . '/inc/inc_fun_funAdmin.php');
-    $verLockFile = DEDEDATA . '/admin/ver.txt';
+    require(DEDEINC.'/inc/inc_fun_funAdmin.php');
+    $verLockFile = DEDEDATA.'/admin/ver.txt';
     $fp = fopen($verLockFile, 'r');
     $upTime = trim(fread($fp, 64));
     fclose($fp);
-    $oktime = substr($upTime, 0, 4) . '-' . substr($upTime, 4, 2) . '-' . substr($upTime, 6, 2);
+    $oktime = substr($upTime, 0, 4).'-'.substr($upTime, 4, 2).'-'.substr($upTime, 6, 2);
     $offUrl = SpGetNewInfo();
-    $dedecmsidc = DEDEDATA . '/admin/idc.txt';
+    $dedecmsidc = DEDEDATA.'/admin/idc.txt';
     $fp = fopen($dedecmsidc, 'r');
     $dedeIDC = fread($fp, filesize($dedecmsidc));
     fclose($fp);
@@ -35,51 +33,48 @@ if (empty($dopost)) {
 /*-----------------------
 增加新项
 function _AddNew() {   }
--------------------------*/ else if ($dopost == 'addnew') {
+-------------------------*/
+else if ($dopost == 'addnew') {
     if (empty($link) || empty($title)) {
-        ShowMsg("链接网址或标题不能为空！", "-1");
+        ShowMsg("链接网址或标题不能为空", "-1");
         exit();
     }
-
     $fp = fopen($myIcoFile, 'r');
     $oldct = trim(fread($fp, filesize($myIcoFile)));
     fclose($fp);
-
     $link = preg_replace("#['\"]#", '`', $link);
     $title = preg_replace("#['\"]#", '`', $title);
     $ico = preg_replace("#['\"]#", '`', $ico);
-    $oldct .= "\r\n<menu:item ico=\"{$ico}\" link=\"{$link}\" title=\"{$title}\" />";
-
-    $myIcoFileTrue = DEDEDATA . '/admin/quickmenu-' . $cuserLogin->getUserID() . '.txt';
+    $oldct .= "\r\n<menu:item ico=\"{$ico}\" link=\"{$link}\" title=\"{$title}\">";
+    $myIcoFileTrue = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
     $fp = fopen($myIcoFileTrue, 'w');
     fwrite($fp, $oldct);
     fclose($fp);
-
-    ShowMsg("成功增加一个项目！", "index_body.php?" . time());
+    ShowMsg("成功增加一个项目", "index_body.php?".time());
     exit();
 }
 /*---------------------------
 保存修改的项
 function _EditSave() {   }
-----------------------------*/ else if ($dopost == 'editsave') {
+----------------------------*/
+else if ($dopost == 'editsave') {
     $quickmenu = stripslashes($quickmenu);
-
-    $myIcoFileTrue = DEDEDATA . '/admin/quickmenu-' . $cuserLogin->getUserID() . '.txt';
+    $myIcoFileTrue = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
     $fp = fopen($myIcoFileTrue, 'w');
     fwrite($fp, $quickmenu);
     fclose($fp);
-
-    ShowMsg("成功修改快捷操作项目！", "index_body.php?" . time());
+    ShowMsg("成功修改快捷操作项目", "index_body.php?".time());
     exit();
 }
 /*---------------------------
 保存修改的项
 function _EditSave() {   }
-----------------------------*/ else if ($dopost == 'movesave') {
+----------------------------*/
+else if ($dopost == 'movesave') {
     $movedata = str_replace('\\', "", $sortorder);
     $movedata = json_decode($movedata, TRUE);
     $movedata = serialize($movedata);
-    $myIcoFileTrue = DEDEDATA . '/admin/move-' . $cuserLogin->getUserID() . '.txt';
+    $myIcoFileTrue = DEDEDATA.'/admin/move-'.$cuserLogin->getUserID().'.txt';
     $fp = fopen($myIcoFileTrue, 'w');
     fwrite($fp, $movedata);
     fclose($fp);
@@ -87,19 +82,20 @@ function _EditSave() {   }
 /*-----------------------------
 显示修改表单
 function _EditShow() {   }
------------------------------*/ else if ($dopost == 'editshow') {
+-----------------------------*/
+else if ($dopost == 'editshow') {
     $fp = fopen($myIcoFile, 'r');
     $oldct = trim(fread($fp, filesize($myIcoFile)));
     fclose($fp);
 ?>
     <form name='editform' action='index_body.php' method='post'>
-        <input type='hidden' name='dopost' value='editsave' />
+        <input type='hidden' name='dopost' value='editsave'>
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td height='28' background="images/tbg.gif">
                     <div style='float:left'><b>修改快捷操作项</b></div>
                     <div style='float:right;padding:3px 10px 0 0;'>
-                        <a href="javascript:CloseTab('editTab')"><img src="images/close.gif" width="12" height="12" border="0" /></a>
+                        <a href="javascript:CloseTab('editTab')"><img src="images/close.gif" width="12" height="12" border="0"></a>
                     </div>
                 </td>
             </tr>
@@ -107,43 +103,37 @@ function _EditShow() {   }
                 <td style="height:6px;font-size:1px;border-top:1px solid #8DA659">&nbsp;</td>
             </tr>
             <tr>
-                <td>
-                    按原格式修改/增加XML项。
-                </td>
+                <td>按原格式修改/增加XML项。</td>
             </tr>
             <tr>
-                <td align='center'>
-                    <textarea name="quickmenu" rows="10" cols="50" style="width:94%;height:220px"><?php echo $oldct; ?></textarea>
-                </td>
+                <td align='center'><textarea name="quickmenu" rows="10" cols="50" style="width:94%;height:220px"><?php echo $oldct; ?></textarea></td>
             </tr>
             <tr>
-                <td height="45" align="center">
-                    <input type="submit" name="Submit" value="保存项目" class="np coolbg" style="width:80px;cursor:pointer" />
-                    &nbsp;
-                    <input type="reset" name="reset" value="重设" class="np coolbg" style="width:50px;cursor:pointer" />
+                <td height="46" align="center">
+                    <input type="submit" name="Submit" value="保存项目" class="np coolbg" style="width:80px;cursor:pointer">&nbsp;
+                    <input type="reset" name="reset" value="重设" class="np coolbg" style="width:50px;cursor:pointer">
                 </td>
             </tr>
         </table>
     </form>
 <?php
-    exit();
+exit();
 }
 /*---------------------------------
 载入右边内容
 function _getRightSide() {   }
----------------------------------*/ else if ($dopost == 'getRightSide') {
+---------------------------------*/
+else if ($dopost == 'getRightSide') {
     $query = " SELECT COUNT(*) AS dd FROM `#@__member` ";
     $row1 = $dsql->GetOne($query);
     $query = " SELECT COUNT(*) AS dd FROM `#@__feedback` ";
     $row2 = $dsql->GetOne($query);
-
     $chArrNames = array();
     $query = "SELECT id, typename FROM `#@__channeltype` ";
     $dsql->Execute('c', $query);
     while ($row = $dsql->GetArray('c')) {
         $chArrNames[$row['id']] = $row['typename'];
     }
-
     $query = "SELECT COUNT(channel) AS dd, channel FROM `#@__arctiny` GROUP BY channel ";
     $allArc = 0;
     $chArr = array();
@@ -179,11 +169,11 @@ function _getRightSide() {   }
         </tr>
     </table>
 <?php
-    exit();
+exit();
 } else if ($dopost == 'getRightSideNews') {
     $query = "SELECT arc.id, arc.arcrank, arc.title, arc.channel, ch.editcon  FROM `#@__archives` arc
-            LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel
-             WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0, 6 ";
+        LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel
+        WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0, 6 ";
     $arcArr = array();
     $dsql->Execute('m', $query);
     while ($row = $dsql->GetArray('m')) {
@@ -200,46 +190,41 @@ function _getRightSide() {   }
             $linkstr = "·<a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>";
             if ($row['arcrank'] == -1) $linkstr .= "<font color='red'>(未审核)</font>";
         ?>
-            <tr>
-                <td class='nline'>
-                    <?php echo $linkstr; ?>
-                </td>
-            </tr>
+        <tr>
+            <td class='nline'><?php echo $linkstr; ?></td>
+        </tr>
         <?php
         }
         ?>
     </table>
 <?php
-    exit;
+exit;
 } else if ($dopost == 'setskin') {
     $cskin = empty($cskin) ? 1 : $cskin;
     $skin = !in_array($cskin, array(1, 2, 3, 4)) ? 1 : $cskin;
-    $skinconfig = DEDEDATA . '/admin/skin.txt';
+    $skinconfig = DEDEDATA.'/admin/skin.txt';
     PutFile($skinconfig, $skin);
 } elseif ($dopost == 'get_seo') {
-    // 直接采用DedeBIZ重写方法
+    //直接采用DedeBIZ重写方法
     exit;
 } elseif ($dopost == "system_info") {
     if (!extension_loaded("openssl")) {
         echo json_encode(array(
             "code" => -1001,
-            "msg" => "PHP不支持OpenSSL，无法完成Dede商业授权",
+            "msg" => "PHP不支持OpenSSL，无法完成商业版授权",
             "result" => null,
         ));
         exit;
     }
-
     if (empty($cfg_auth_code)) {
         echo json_encode(array(
             "code" => -1002,
-            "msg" => "当前站点尚未购买Dede商业授权",
+            "msg" => "当前站点尚未购买商业版授权",
             "result" => null,
         ));
         exit;
     }
-
     openssl_public_decrypt(base64_decode($cfg_auth_code), $decotent, DEDEPUB);
-
     $core_info = new stdClass;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
@@ -248,7 +233,6 @@ function _getRightSide() {   }
         $core_info = $client->SystemInfo();
         $client->Close();
     }
-
     if (!empty($decotent)) {
         $res = json_decode($decotent);
         if (isset($res->sid)) {

@@ -9,12 +9,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . '/oxwindow.class.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/oxwindow.class.php');
 CheckPurview('sys_StringMix');
 if (empty($dopost)) $dopost = '';
 $templates = empty($templates) ? '' : stripslashes($templates);
-$m_file = DEDEDATA . '/template.rand.php';
+$m_file = DEDEDATA.'/template.rand.php';
 
 //----------------------action
 $okmsg = '';
@@ -25,7 +25,7 @@ if ($dopost == 'save') {
     flock($fp, 3);
     fwrite($fp, $templates);
     fclose($fp);
-    $okmsg = '成功保存配置信息 AT:(' . MyDate('H:i:s', time()) . ')';
+    $okmsg = '成功保存配置信息 AT:('.MyDate('H:i:s', time()).')';
 }
 //对旧文档进行随机模板处理
 else if ($dopost == 'makeold') {

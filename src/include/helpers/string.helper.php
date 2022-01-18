@@ -64,7 +64,7 @@ if (!function_exists('cn_substr')) {
 
             if (ord($str[$i]) > 0x80) {
                 if ($str_len > $i + 1) {
-                    $c = $str[$i] . $str[$i + 1];
+                    $c = $str[$i].$str[$i + 1];
                 }
                 $i++;
             } else {
@@ -130,7 +130,7 @@ if (!function_exists('Html2Text')) {
     function Html2Text($str, $r = 0)
     {
         if (!function_exists('SpHtml2Text')) {
-            require_once(DEDEINC . "/inc/inc_fun_funString.php");
+            require_once(DEDEINC."/inc/inc_fun_funString.php");
         }
         if ($r == 0) {
             return SpHtml2Text($str);
@@ -195,7 +195,7 @@ if (!function_exists('GetPinyin')) {
         global $cfg_soft_lang;
         if (!function_exists('SpGetPinyin')) {
             //全局函数仅是inc_fun_funAdmin.php文件中函数的一个映射
-            require_once(DEDEINC . "/inc/inc_fun_funAdmin.php");
+            require_once(DEDEINC."/inc/inc_fun_funAdmin.php");
         }
         if ($cfg_soft_lang == 'utf-8') {
             return SpGetPinyin(utf82gb($str), $ishead, $isclose);
@@ -281,7 +281,7 @@ if (!function_exists('color_txt')) {
         $len        = mb_strlen($str);
         $colorTxt   = '';
         for ($i = 0; $i < $len; $i++) {
-            $colorTxt .=  '<span style="color:' . rand_color() . '">' . mb_substr($str, $i, 1, 'utf-8') . '</span>';
+            $colorTxt .=  '<span style="color:'.rand_color().'">'.mb_substr($str, $i, 1, 'utf-8').'</span>';
         }
         return $colorTxt;
     }
@@ -290,6 +290,6 @@ if (!function_exists('color_txt')) {
 if (!function_exists('rand_color')) {
     function rand_color()
     {
-        return '#' . sprintf("%02X", mt_rand(0, 255)) . sprintf("%02X", mt_rand(0, 255)) . sprintf("%02X", mt_rand(0, 255));
+        return '#'.sprintf("%02X", mt_rand(0, 255)).sprintf("%02X", mt_rand(0, 255)).sprintf("%02X", mt_rand(0, 255));
     }
 }

@@ -9,12 +9,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEMEMBER . "/inc/inc_catalog_options.php");
-require_once(DEDEMEMBER . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
+require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
@@ -38,15 +38,15 @@ if (empty($dopost)) {
         exit();
     }
     $addRow['id'] = $addRow['aid'];
-    include(DEDEMEMBER . "/templets/archives_sg_edit.htm");
+    include(DEDEMEMBER."/templets/archives_sg_edit.htm");
     exit();
 }
 
 /*------------------------------
 function _SaveArticle(){  }
 ------------------------------*/ else if ($dopost == 'save') {
-    require_once(DEDEINC . "/image.func.php");
-    require_once(DEDEINC . "/oxwindow.class.php");
+    require_once(DEDEINC."/image.func.php");
+    require_once(DEDEINC."/oxwindow.class.php");
     $flag = '';
     $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
     $userip = GetIP();
@@ -112,8 +112,8 @@ function _SaveArticle(){  }
 
                 ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $aid);
 
-                $inadd_f .= ',`' . $vs[0] . "` ='" . ${$vs[0]} . "' ";
-                $inadd_m .= ',' . $vs[0];
+                $inadd_f .= ',`'.$vs[0]."` ='".${$vs[0]}."' ";
+                $inadd_m .= ','.$vs[0];
             }
         }
 
@@ -137,13 +137,13 @@ function _SaveArticle(){  }
     UpIndexKey($aid, 0, $typeid, $sortrank, '');
     $artUrl = MakeArt($aid, true);
 
-    if ($artUrl == '') $artUrl = $cfg_phpurl . "/view.php?aid=$aid";
+    if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
 
     //返回成功信息
     $msg = "请选择你的后续操作：
         <a href='archives_sg_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新内容</a>
         &nbsp;&nbsp;
-        <a href='archives_do.php?channelid=$channelid&aid=" . $aid . "&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>
+        <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a>
         &nbsp;&nbsp;

@@ -10,8 +10,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-require_once(DEDEINC . "/channelunit.class.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+require_once(DEDEINC."/channelunit.class.php");
 if (!isset($action)) $action = '';
 unset($_FILES);
 if (isset($arcID)) $aid = $arcID;
@@ -46,7 +46,7 @@ else if ($action == 'send') {
     $mailbody .= "$msg \r\n\r\n";
     $mailbody .= "Powered by https://www.dedebiz.com DedeBIZ内容管理系统！";
 
-    $headers = "From: " . $cfg_adminemail . "\r\nReply-To: " . $cfg_adminemail;
+    $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
         $client->appid = $cfg_bizcore_appid;
@@ -56,7 +56,7 @@ else if ($action == 'send') {
     } else {
         if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_server)) {
             $mailtype = 'TXT';
-            require_once(DEDEINC . '/mail.class.php');
+            require_once(DEDEINC.'/mail.class.php');
             $smtp = new smtp($cfg_smtp_server, $cfg_smtp_port, true, $cfg_smtp_usermail, $cfg_smtp_password);
             $smtp->debug = false;
             $smtp->sendmail($email, $cfg_webname, $cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
@@ -75,4 +75,4 @@ if ($arcRow['aid'] == '') {
 }
 extract($arcRow, EXTR_OVERWRITE);
 //显示模板(简单PHP文件)
-include(DEDETEMPLATE . '/plus/recommend.htm');
+include(DEDETEMPLATE.'/plus/recommend.htm');

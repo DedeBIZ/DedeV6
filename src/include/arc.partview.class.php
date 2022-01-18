@@ -8,8 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . '/channelunit.class.php');
-require_once(DEDEINC . '/typelink.class.php');
+require_once(DEDEINC.'/channelunit.class.php');
+require_once(DEDEINC.'/typelink.class.php');
 
 /**
  * 视图类
@@ -260,7 +260,7 @@ class PartView
         }
 
         if (!isset($GLOBALS['__SpGetArcList'])) {
-            require_once(dirname(__FILE__) . "/inc/inc_fun_SpGetArcList.php");
+            require_once(dirname(__FILE__)."/inc/inc_fun_SpGetArcList.php");
         }
         return SpGetArcList(
             $this->dsql,

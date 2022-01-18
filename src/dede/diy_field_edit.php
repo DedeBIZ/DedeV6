@@ -9,18 +9,18 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 //增加权限检查
 
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEADMIN . "/inc/inc_admin_channel.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEADMIN."/inc/inc_admin_channel.php");
 if (empty($action)) $action = '';
 
 //获取模型信息
 $mysql_version = $dsql->GetVersion();
 $mysql_versions = explode(".", trim($mysql_version));
-$mysql_version = $mysql_versions[0] . "." . $mysql_versions[1];
+$mysql_version = $mysql_versions[0].".".$mysql_versions[1];
 $row = $dsql->GetOne("SELECT `table`,`info` FROM #@__diyforms WHERE diyid='$diyid'");
 $fieldset = $row['info'];
 $trueTable = $row['table'];
@@ -32,7 +32,7 @@ foreach ($dtp->CTags as $ctag) {
 }
 
 //字段类型信息
-$ds = file(DEDEADMIN . "/inc/fieldtype.txt");
+$ds = file(DEDEADMIN."/inc/fieldtype.txt");
 foreach ($ds as $d) {
     $dds = explode(',', trim($d));
     $fieldtypes[$dds[0]] = $dds[1];
@@ -57,7 +57,7 @@ if ($action == 'save') {
     if ($mysql_version < 4.1) {
         $tabsql .= " PRIMARY KEY  (`id`)\r\n) TYPE=MyISAM; ";
     } else {
-        $tabsql .= " PRIMARY KEY  (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=" . $cfg_db_language . "; ";
+        $tabsql .= " PRIMARY KEY  (`id`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
     }
     $dsql->ExecuteNoneQuery($tabsql);
 
@@ -86,10 +86,10 @@ if ($action == 'save') {
         if (trim($fieldname) == trim(strtolower($ctag->GetName()))) {
 
             if (isset($fields[$fieldname]) && $fields[$fieldname] != $buideType) {
-                $tabsql = "ALTER TABLE `$trueTable` CHANGE `$fieldname` " . $ntabsql;
+                $tabsql = "ALTER TABLE `$trueTable` CHANGE `$fieldname` ".$ntabsql;
                 $dsql->ExecuteNoneQuery($tabsql);
             } else if (!isset($fields[$fieldname])) {
-                $tabsql = "ALTER TABLE `$trueTable` ADD " . $ntabsql;
+                $tabsql = "ALTER TABLE `$trueTable` ADD ".$ntabsql;
                 $dsql->ExecuteNoneQuery($tabsql);
             } else {
                 $tabsql = '';
@@ -120,4 +120,4 @@ function _DELETE()
     ShowMsg("成功删除一个字段！", "diy_edit.php?diyid=$diyid");
     exit();
 }
-require_once(DEDEADMIN . "/templets/diy_field_edit.htm");
+require_once(DEDEADMIN."/templets/diy_field_edit.htm");

@@ -117,13 +117,13 @@ function helper($helpers)
     if (isset($_helpers[$helpers])) {
         return;
     }
-    if (file_exists(DEDEINC . '/helpers/' . $helpers . '.helper.php')) {
-        include_once(DEDEINC . '/helpers/' . $helpers . '.helper.php');
+    if (file_exists(DEDEINC.'/helpers/'.$helpers.'.helper.php')) {
+        include_once(DEDEINC.'/helpers/'.$helpers.'.helper.php');
         $_helpers[$helpers] = TRUE;
     }
     //无法载入小助手
     if (!isset($_helpers[$helpers])) {
-        exit('Unable to load the requested file: helpers/' . $helpers . '.helper.php');
+        exit('Unable to load the requested file: helpers/'.$helpers.'.helper.php');
     }
 }
 function dede_htmlspecialchars($str)
@@ -165,7 +165,7 @@ if (!function_exists('file_put_contents')) {
  */
 function UpdateStat()
 {
-    include_once(DEDEINC . "/inc/inc_stat.php");
+    include_once(DEDEINC."/inc/inc_stat.php");
     return SpUpdateStat();
 }
 $arrs1 = array();
@@ -193,7 +193,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         $gourl = "javascript:history.go(-1);";
     }
     if ($gourl == '' || $onlymsg == 1) {
-        $msg = "<script>alert(\"" . str_replace("\"", "“", $msg) . "\");</script>";
+        $msg = "<script>alert(\"".str_replace("\"", "“", $msg)."\");</script>";
     } else {
         //当网址为:close::objname 时, 关闭父框架的id=objname元素
         if (preg_match('/close::/', $gourl)) {
@@ -203,7 +203,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         }
         $func .= "var pgo=0;function JumpUrl(){if (pgo==0){location='$gourl'; pgo=1;}}";
         $rmsg = $func;
-        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.6;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#666;background:#f2f2f2}a{color:#28a745;text-decoration:none}.xushu-tips{margin:68px auto 0;padding:0;width:360px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}.tips{margin:0 20px;padding:12px 0;border-bottom:1px solid #f6f6f6}.tips p{margin:0;padding-left:10px;line-height:16px;font-size:14px;color:#424b51;text-align:left;border-left:3px solid #ff5722}.frame{padding:20px;height:120px}.go a{display:inline-block;margin:20px auto 0;padding:.375rem .75rem;color:#fff;background:#28a745;border:1px solid #28a745;box-sizing:border-box;border-radius:.2rem;text-align:center;transition:all .4s}.go a:hover{color:#fff;opacity:.8}@media (max-width:768px){body{padding:0 14px}.xushu-tips{width:100%}}</style>\");";
+        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#424b51;background:#f2f2f2}a{color:#28a745;text-decoration:none}.xushu-tips{margin:68px auto 0;padding:0;width:420px;height:auto;background:#fff;border-radius:.2rem}.tips{margin:0 20px;padding:16px 0;border-bottom:1px solid #f6f6f6}.tips p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #ff5722}.frame{padding:20px;min-height:120px;color:#666}.go a{display:inline-block;margin:20px auto 0;padding:.375rem .75rem;font-size:12px;color:#fff;background:#28a745;border:1px solid #28a745;box-sizing:border-box;border-radius:.2rem;transition:all .6s;text-align:center}.go a:hover{opacity:.8}@media (max-width:768px){body{padding:0 16px}.xushu-tips{width:100%}}</style>\");";
         $rmsg .= "document.write(\"<div class='xushu-tips'>";
         $rmsg .= "<div class='tips'><p>提示信息</p></div>\");";
         $rmsg .= "document.write(\"<div class='frame'>\");";
@@ -261,6 +261,6 @@ function IndexActive($idx)
 }
 // 自定义函数接口
 // 这里主要兼容早期的用户扩展,v5.7之后我们建议使用小助手helper进行扩展
-if (file_exists(DEDEINC . '/extend.func.php')) {
-    require_once(DEDEINC . '/extend.func.php');
+if (file_exists(DEDEINC.'/extend.func.php')) {
+    require_once(DEDEINC.'/extend.func.php');
 }

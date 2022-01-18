@@ -9,8 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . "/typelink.class.php");
-require_once(DEDEINC . "/channelunit.class.php");
+require_once(DEDEINC."/typelink.class.php");
+require_once(DEDEINC."/channelunit.class.php");
 
 @set_time_limit(0);
 /**
@@ -68,7 +68,7 @@ class SpecView
             $this->StartTime = GetMkTime($starttime);
         }
         $this->CountRecord();
-        $tempfile = $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_templets_dir'] . "/" . $GLOBALS['cfg_df_style'] . "/list_spec.htm";
+        $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/list_spec.htm";
         if (!file_exists($tempfile) || !is_file($tempfile)) {
             echo "模板文件不存在，无法解析文档！";
             exit();
@@ -119,7 +119,7 @@ class SpecView
         }
         if ($this->TotalResult == -1) {
             if ($this->StartTime > 0) {
-                $timesql = " AND #@__archives.senddate>'" . $this->StartTime . "'";
+                $timesql = " AND #@__archives.senddate>'".$this->StartTime."'";
             } else {
                 $timesql = "";
             }
@@ -233,14 +233,14 @@ class SpecView
                 }
             } //End foreach
 
-            $makeFile = $GLOBALS['cfg_special'] . "/spec_" . $this->PageNo . $GLOBALS['art_shortname'];
+            $makeFile = $GLOBALS['cfg_special']."/spec_".$this->PageNo.$GLOBALS['art_shortname'];
             $murl = $makeFile;
-            $makeFile = $GLOBALS['cfg_basedir'] . $makeFile;
+            $makeFile = $GLOBALS['cfg_basedir'].$makeFile;
             $this->dtp->SaveTo($makeFile);
             echo "成功创建：$murl<br/>";
         }
-        copy($GLOBALS['cfg_basedir'] . $GLOBALS['cfg_special'] . "/spec_1" . $GLOBALS['art_shortname'], $GLOBALS['cfg_basedir'] . $GLOBALS['cfg_special'] . "/index.html");
-        $murl = $GLOBALS['cfg_special'] . "/index.html";
+        copy($GLOBALS['cfg_basedir'].$GLOBALS['cfg_special']."/spec_1".$GLOBALS['art_shortname'], $GLOBALS['cfg_basedir'].$GLOBALS['cfg_special']."/index.html");
+        $murl = $GLOBALS['cfg_special']."/index.html";
         return $murl;
     }
 
@@ -320,8 +320,8 @@ class SpecView
             $col = 1;
         }
         $colWidth = ceil(100 / $col);
-        $tablewidth = $tablewidth . "%";
-        $colWidth = $colWidth . "%";
+        $tablewidth = $tablewidth."%";
+        $colWidth = $colWidth."%";
         $innertext = trim($innertext);
         if ($innertext == "") {
             $innertext = GetSysTemplets("spec_list.htm");
@@ -330,7 +330,7 @@ class SpecView
         //按不同情况设定SQL条件
         $orwhere = " arc.arcrank > -1 AND arc.channel = -1 ";
         if ($this->StartTime > 0) {
-            $orwhere .= " AND arc.senddate>'" . $this->StartTime . "'";
+            $orwhere .= " AND arc.senddate>'".$this->StartTime."'";
         }
 
         //排序方式
@@ -369,10 +369,10 @@ class SpecView
                     $row["title"] = cn_substr($row["title"], $titlelen);
                     $row["id"] =  $row["id"];
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.gif';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
                     }
                     if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                        $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                        $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                     }
                     $row['picname'] = $row['litpic'];
                     $row["arcurl"] = GetFileUrl(
@@ -394,10 +394,10 @@ class SpecView
                     $row["info"] = $row["description"];
                     $row["filename"] = $row["arcurl"];
                     $row["stime"] = GetDateMK($row["pubdate"]);
-                    $row["textlink"] = "<a href='" . $row["filename"] . "'>" . $row["title"] . "</a>";
-                    $row["typelink"] = "[<a href='" . $row["typeurl"] . "'>" . $row["typename"] . "</a>]";
-                    $row["imglink"] = "<a href='" . $row["filename"] . "'><img src='" . $row["picname"] . "' border='0' width='$imgwidth' height='$imgheight'></a>";
-                    $row["image"] = "<img src='" . $row["picname"] . "' border='0' width='$imgwidth' height='$imgheight'>";
+                    $row["textlink"] = "<a href='".$row["filename"]."'>".$row["title"]."</a>";
+                    $row["typelink"] = "[<a href='".$row["typeurl"]."'>".$row["typename"]."</a>]";
+                    $row["imglink"] = "<a href='".$row["filename"]."'><img src='".$row["picname"]."' border='0' width='$imgwidth' height='$imgheight'></a>";
+                    $row["image"] = "<img src='".$row["picname"]."' border='0' width='$imgwidth' height='$imgheight'>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
@@ -464,24 +464,24 @@ class SpecView
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
 
-            return "<span class=\"pageinfo\">共 <strong>1</strong>页<strong>" . $this->TotalResult . "</strong>条记录</span>";
+            return "<span class=\"pageinfo\">共 <strong>1</strong>页<strong>".$this->TotalResult."</strong>条记录</span>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class=\"pageinfo\">共 <strong>0</strong>页<strong>" . $this->TotalResult . "</strong>条记录</span>";
+            return "<span class=\"pageinfo\">共 <strong>0</strong>页<strong>".$this->TotalResult."</strong>条记录</span>";
         }
         $purl = $this->GetCurUrl();
         $tnamerule = "spec_";
 
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li><a href='" . $tnamerule . "$prepagenum" . $GLOBALS['art_shortname'] . "'>上一页</a></li>\r\n";
-            $indexpage = "<li><a href='" . $tnamerule . "1" . $GLOBALS['art_shortname'] . "'>首页</a></li>\r\n";
+            $prepage .= "<li><a href='".$tnamerule."$prepagenum".$GLOBALS['art_shortname']."'>上一页</a></li>\r\n";
+            $indexpage = "<li><a href='".$tnamerule."1".$GLOBALS['art_shortname']."'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li><a>首页</a></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li><a href='" . $tnamerule . "$nextpagenum" . $GLOBALS['art_shortname'] . "'>下一页</a></li>\r\n";
-            $endpage = "<li><a href='" . $tnamerule . "$totalpage" . $GLOBALS['art_shortname'] . "'>末页</a></li>\r\n";
+            $nextpage .= "<li><a href='".$tnamerule."$nextpagenum".$GLOBALS['art_shortname']."'>下一页</a></li>\r\n";
+            $endpage = "<li><a href='".$tnamerule."$totalpage".$GLOBALS['art_shortname']."'>末页</a></li>\r\n";
         } else {
             $endpage = "<li><a>末页</a></li>\r\n";
         }
@@ -505,10 +505,10 @@ class SpecView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class=\"thisclass\"><a>$j</a></li>\r\n";
             } else {
-                $listdd .= "<li><a href='" . $tnamerule . "$j" . $GLOBALS['art_shortname'] . "'>" . $j . "</a></li>\r\n";
+                $listdd .= "<li><a href='".$tnamerule."$j".$GLOBALS['art_shortname']."'>".$j."</a></li>\r\n";
             }
         }
-        $plist = $indexpage . $prepage . $listdd . $nextpage . $endpage;
+        $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;
         return $plist;
     }
 
@@ -531,28 +531,28 @@ class SpecView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<span class=\"pageinfo\">共1页/" . $this->TotalResult . "条记录</span>";
+            return "<span class=\"pageinfo\">共1页/".$this->TotalResult."条记录</span>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class=\"pageinfo\">共0页/" . $this->TotalResult . "条记录</span>";
+            return "<span class=\"pageinfo\">共0页/".$this->TotalResult."条记录</span>";
         }
 
         $purl = $this->GetCurUrl();
-        $geturl = "typeid=" . $this->TypeID . "&TotalResult=" . $this->TotalResult . "&";
-        $hidenform = "<input type='hidden' name='typeid' value='" . $this->TypeID . "'>\r\n";
-        $hidenform .= "<input type='hidden' name='TotalResult' value='" . $this->TotalResult . "'>\r\n";
-        $purl .= "?" . $geturl;
+        $geturl = "typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
+        $hidenform = "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
+        $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
+        $purl .= "?".$geturl;
 
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li><a href='" . $purl . "PageNo=$prepagenum'>上一页</a></li>\r\n";
-            $indexpage = "<li><a href='" . $purl . "PageNo=1'>首页</a></li>\r\n";
+            $prepage .= "<li><a href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
+            $indexpage = "<li><a href='".$purl."PageNo=1'>首页</a></li>\r\n";
         } else {
             $indexpage = "<li><a>首页</a></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li><a href='" . $purl . "PageNo=$nextpagenum'>下一页</a></li>\r\n";
-            $endpage = "<li><a href='" . $purl . "PageNo=$totalpage'>末页</a></li>\r\n";
+            $nextpage .= "<li><a href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
+            $endpage = "<li><a href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
         } else {
             $endpage = "<li><a>末页</a></li>";
         }
@@ -576,11 +576,11 @@ class SpecView
             if ($j == $this->PageNo) {
                 $listdd .= "<li class=\"thisclass\"><a>$j</a></li>\r\n";
             } else {
-                $listdd .= "<li><a href='" . $purl . "PageNo=$j'>" . $j . "</a></li>\r\n";
+                $listdd .= "<li><a href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
             }
         }
 
-        $plist = $indexpage . $prepage . $listdd . $nextpage . $endpage;
+        $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;
         return $plist;
     }
 

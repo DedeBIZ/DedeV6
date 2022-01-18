@@ -9,9 +9,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_Other');
-require_once(DEDEINC . "/typelink.class.php");
+require_once(DEDEINC."/typelink.class.php");
 if (empty($dopost)) $dopost = "";
 
 if ($dopost == "save") {

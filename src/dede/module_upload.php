@@ -9,20 +9,20 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_module');
-require_once(dirname(__FILE__) . "/../include/dedemodule.class.php");
-require_once(dirname(__FILE__) . "/../include/oxwindow.class.php");
+require_once(dirname(__FILE__)."/../include/dedemodule.class.php");
+require_once(dirname(__FILE__)."/../include/oxwindow.class.php");
 if (empty($action)) $action = '';
-$mdir = DEDEDATA . '/module';
+$mdir = DEDEDATA.'/module';
 
 if ($action == 'upload') {
     if (!is_uploaded_file($upfile)) {
         ShowMsg("貌似你什么都没有上传哦！", "javascript:;");
         exit();
     } else {
-        include_once(dirname(__FILE__) . "/../include/zip.class.php");
-        $tmpfilename = $mdir . '/' . ExecTime() . mt_rand(10000, 50000) . '.tmp';
+        include_once(dirname(__FILE__)."/../include/zip.class.php");
+        $tmpfilename = $mdir.'/'.ExecTime().mt_rand(10000, 50000).'.tmp';
         move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到{$tmpfilename}时失败，请检查{$mdir}目录是否有写入权限！");
 
         //ZIP格式的文件
@@ -45,10 +45,10 @@ if ($action == 'upload') {
                 ShowMsg("对不起，你上传的压缩包中不存在dede模块文件！<br /><br /><a href='javascript:history.go(-1);'>&gt;&gt;返回重新上传&gt;&gt;</a>", "javascript:;");
                 exit();
             }
-            $ziptmp = $mdir . '/ziptmp';
+            $ziptmp = $mdir.'/ziptmp';
             $z->Extract($tmpfilename, $ziptmp, $dedefileindex);
             unlink($tmpfilename);
-            $tmpfilename = $mdir . "/ziptmp/" . $dedefile;
+            $tmpfilename = $mdir."/ziptmp/".$dedefile;
         }
 
         $dm = new DedeModule($mdir);
@@ -63,7 +63,7 @@ if ($action == 'upload') {
             exit("hash check failed!");
         }
         
-        $okfile = $mdir . '/' . $infos['hash'] . '.xml';
+        $okfile = $mdir.'/'.$infos['hash'].'.xml';
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();

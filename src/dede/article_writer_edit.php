@@ -9,15 +9,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . '/oxwindow.class.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/oxwindow.class.php');
 CheckPurview('sys_Writer');
 if (empty($dopost)) $dopost = '';
 
 if (empty($allwriter)) $allwriter = '';
 else $allwriter = stripslashes($allwriter);
 
-$m_file = DEDEDATA . "/admin/writer.txt";
+$m_file = DEDEDATA."/admin/writer.txt";
 
 //保存
 if ($dopost == "save") {

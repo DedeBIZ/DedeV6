@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 if ($cuserLogin->adminStyle == 'dedecms') {
     include DedeInclude('templets/index_top1.htm');
 } else {

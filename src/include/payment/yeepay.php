@@ -323,7 +323,7 @@ class yeepay
         $k_ipad = $key ^ $ipad ;
         $k_opad = $key ^ $opad;
         
-        return md5($k_opad . pack("H*",md5($k_ipad . $data)));
+        return md5($k_opad.pack("H*",md5($k_ipad.$data)));
     }
 
     /*处理物品交易*/

@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Type');
 if (empty($dopost)) $dopost = "";
 
@@ -19,12 +19,12 @@ if ($dopost == "save") {
     $endID = $idend;
     for (; $startID <= $endID; $startID++) {
         $query = '';
-        $aid = ${'ID_' . $startID};
-        $pname =   ${'pname_' . $startID};
-        $rank =    ${'rank_' . $startID};
-        $money =   ${'money_' . $startID};
-        $exptime = ${'exptime_' . $startID};
-        if (isset(${'check_' . $startID})) {
+        $aid = ${'ID_'.$startID};
+        $pname =   ${'pname_'.$startID};
+        $rank =    ${'rank_'.$startID};
+        $money =   ${'money_'.$startID};
+        $exptime = ${'exptime_'.$startID};
+        if (isset(${'check_'.$startID})) {
             if ($pname != '') {
                 $query = "UPDATE #@__member_type SET pname='$pname',money='$money',rank='$rank',exptime='$exptime' WHERE aid='$aid'";
             }
@@ -59,4 +59,4 @@ $times[183] = '半年';
 $times[366] = '一年';
 $times[32767] = '终身';
 
-require_once(DEDEADMIN . "/templets/member_type.htm");
+require_once(DEDEADMIN."/templets/member_type.htm");

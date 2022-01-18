@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 //考虑安全原因不管是否开启游客投稿功能，都不允许用户对图集投稿
 CheckRank(0, 0);
@@ -21,11 +21,11 @@ if ($cfg_mb_album == 'N') {
     ShowMsg("对不起，由于系统关闭了图集功能，你访问的功能不可用！", "-1");
     exit();
 }
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/userlogin.class.php");
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEMEMBER . "/inc/inc_catalog_options.php");
-require_once(DEDEMEMBER . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/userlogin.class.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
+require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 2;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $menutype = 'content';
@@ -44,22 +44,22 @@ if (empty($dopost)) {
 
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-        $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='" . $cInfos['sendrank'] . "' ");
-        ShowMsg("对不起，需要[" . $row['membername'] . "]才能在这个频道发布文档！", "-1", "0", 5000);
+        $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$cInfos['sendrank']."' ");
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[" . $cInfos['usertype'] . "帐号]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档！", "-1", "0", 5000);
         exit();
     }
-    include(DEDEMEMBER . "/templets/album_add.htm");
+    include(DEDEMEMBER."/templets/album_add.htm");
     exit();
 }
 
 /*------------------------------
 function _SaveArticle(){  }
 ------------------------------*/ else if ($dopost == 'save') {
-    include(DEDEMEMBER . '/inc/archives_check.php');
+    include(DEDEMEMBER.'/inc/archives_check.php');
 
     $svali = GetCkVdValue();
     if (preg_match("/1/", $safe_gdopen)) {
@@ -76,18 +76,18 @@ function _SaveArticle(){  }
     $prow = isset($prow) && is_numeric($prow) ? $prow : 3;
     $pcol = isset($pcol) && is_numeric($pcol) ? $pcol : 3;
     $pagestyle = in_array($pagestyle, array('1', '2', '3')) ? $pagestyle : 2;
-    include(DEDEMEMBER . '/inc/archives_check.php');
+    include(DEDEMEMBER.'/inc/archives_check.php');
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$prow' col='$pcol' value='$pagestyle'/}\r\n";
     $hasone = false;
     $ddisfirst = 1;
 
     //只支持填写地址
     for ($i = 1; $i <= 120; $i++) {
-        if (!isset(${'imgfile' . $i})) {
+        if (!isset(${'imgfile'.$i})) {
             continue;
         }
-        $f = ${'imgfile' . $i};
-        $msg = isset(${'imgmsg' . $i}) ? ${'imgmsg' . $i} : "";
+        $f = ${'imgfile'.$i};
+        $msg = isset(${'imgmsg'.$i}) ? ${'imgmsg'.$i} : "";
         if (!empty($f) && filter_var($f, FILTER_VALIDATE_URL)) {
             $u = str_replace(array("\"", "'"), "`", $f);
             $info = str_replace(array("\"", "'"), "`", $msg);
@@ -116,8 +116,8 @@ function _SaveArticle(){  }
                     ${$vs[0]} = '';
                 }
                 ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], 0);
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
 
@@ -163,20 +163,20 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员！" . $gerr, "javascript:;");
+            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员！".$gerr, "javascript:;");
             exit();
         }
     }
 
     //增加积分
-    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='" . $cfg_ml->M_ID . "' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
 
     //生成HTML
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, true);
-    if ($artUrl == '') $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+    if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
 
     ClearMyAddon($arcID, $title);
 
@@ -187,7 +187,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看图集</a>
     &nbsp;&nbsp;
-    <a href='album_edit.php?aid=" . $arcID . "&channelid=$channelid' class='btn btn-secondary btn-sm'>更改图集</a>
+    <a href='album_edit.php?aid=".$arcID."&channelid=$channelid' class='btn btn-secondary btn-sm'>更改图集</a>
     &nbsp;&nbsp;
     <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布图集管理</a>
     ";

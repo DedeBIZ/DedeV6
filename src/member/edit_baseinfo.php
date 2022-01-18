@@ -7,13 +7,13 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
 $menutype = 'config';
 if (!isset($dopost)) $dopost = '';
 
 $pwd2 = (empty($pwd2)) ? "" : $pwd2;
-$row = $dsql->GetOne("SELECT  * FROM `#@__member` WHERE mid='" . $cfg_ml->M_ID . "'");
+$row = $dsql->GetOne("SELECT  * FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."'");
 $face = $row['face'];
 if ($dopost == 'save') {
     $svali = GetCkVdValue();
@@ -88,12 +88,12 @@ if ($dopost == 'save') {
         exit();
     }
 
-    $query1 = "UPDATE `#@__member` SET pwd='$pwd',sex='$sex'{$addupquery} where mid='" . $cfg_ml->M_ID . "' ";
+    $query1 = "UPDATE `#@__member` SET pwd='$pwd',sex='$sex'{$addupquery} where mid='".$cfg_ml->M_ID."' ";
     $dsql->ExecuteNoneQuery($query1);
 
     //如果是管理员，修改其后台密码
     if ($cfg_ml->fields['matt'] == 10 && $pwd2 != "") {
-        $query2 = "UPDATE `#@__admin` SET pwd='$pwd2' where id='" . $cfg_ml->M_ID . "' ";
+        $query2 = "UPDATE `#@__admin` SET pwd='$pwd2' where id='".$cfg_ml->M_ID."' ";
         $dsql->ExecuteNoneQuery($query2);
     }
     // 清除会员缓存
@@ -101,4 +101,4 @@ if ($dopost == 'save') {
     ShowMsg('成功更新你的基本资料！', 'edit_baseinfo.php', 0, 5000);
     exit();
 }
-include(DEDEMEMBER . "/templets/edit_baseinfo.htm");
+include(DEDEMEMBER."/templets/edit_baseinfo.htm");

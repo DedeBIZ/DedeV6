@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="<?php echo $cfg_soft_lang; ?>">
-	<meta name="robots" content="noindex,nofollow">
-	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../static/css/dede.css">
-	<title><?php echo $cfg_webname; ?>后台登录</title>
-	<style>
-body{font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;background:#f2f2f2}
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/css/dede.css">
+<title><?php echo $cfg_webname; ?>后台登录</title>
+<style>
+body{font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#424b51;background:#f8f8f8}
+img{max-width:100%}
 header{background:#ffffff}
-header .logo{width:260px;padding:1em 0}
+header .logo{width:300px;padding:1rem 0}
+.goindex{line-height:68px}
+.fa{font-size:16px}
 .login-from{max-width:580px;width:100%}
-.login-area{background:#ffffff;padding:2em;border-radius:.25rem}
+.login-area{background:#ffffff;padding:2rem;border-radius:.25rem}
 .login-area .btnLogin{width:100%}
-.login-power{padding-top:1em}
-.login-power a,.goindex a{color:#3DB058}
-.goindex{line-height:60px}
-	</style>
+.login-power{padding-top:1rem}
+.login-power a,.goindex a{color:#008e38}
+</style>
 </head>
 <body>
 	<header>
 		<div class="container top">
 			<div class="row">
-				<div class="col-6">
-					<a href="."><img class="logo" src="../static/img/admin-logo.png" title="<?php echo $cfg_soft_enname; ?>"></a>
+				<div class="col-10">
+					<div class="logo"><img src="../static/img/admin-logo.png" title="<?php echo $cfg_soft_enname; ?>"></div>
 				</div>
-				<div class="col-6 d-flex justify-content-end goindex">
+				<div class="col-2 d-flex justify-content-end goindex">
 					<a href="../index.php" target="_blank"><i class="fa fa-home" aria-hidden="true"></i></a>
 				</div>
 			</div>
@@ -36,7 +38,7 @@ header .logo{width:260px;padding:1em 0}
 	<main class="container login-from mt-5">
 		<?php echo $redmsg; ?>
 		<div class="login-area">
-			<h3 class="mb-3 text-center">后台登录</h3>
+			<h4 class="mb-4 text-center">后台登录</h4>
 			<form name="form1" method="post" action="login.php">
 				<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage); ?>">
 				<input type="hidden" name="dopost" value="login">

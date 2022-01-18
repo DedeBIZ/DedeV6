@@ -40,18 +40,18 @@ function GetFormItem($ctag, $admintype = 'admin')
         $innertext = $myformItem;
     } else if ($fieldType == 'stepselect') {
         global $hasSetEnumJs, $cfg_cmspath;
-        $cmspath = ((empty($cfg_cmspath) || !preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath . '/' : $cfg_cmspath);
+        $cmspath = ((empty($cfg_cmspath) || !preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
         $myformItem = '';
         $myformItem .= "<input type='hidden' id='hidden_{$fieldname}' name='{$fieldname}' value='0' />\r\n";
         $myformItem .= "<span id='span_{$fieldname}'></span>\r\n";
         $myformItem .= "<span id='span_{$fieldname}_son'></span>\r\n";
         $myformItem .= "<span id='span_{$fieldname}_sec'></span>\r\n";
         if ($hasSetEnumJs != 'hasset') {
-            $myformItem .= '<script language="javascript" type="text/javascript" src="' . $cmspath . 'static/enums.js"></script>' . "\r\n";
+            $myformItem .= '<script language="javascript" type="text/javascript" src="'.$cmspath.'static/enums.js"></script>'."\r\n";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
         $myformItem .= "<script language='javascript' type='text/javascript' src='{$cmspath}data/enums/{$fieldname}.js'></script>\r\n";
-        $myformItem .= '<script language="javascript" type="text/javascript">MakeTopSelect("' . $fieldname . '", 0);</script>' . "\r\n";
+        $myformItem .= '<script language="javascript" type="text/javascript">MakeTopSelect("'.$fieldname.'", 0);</script>'."\r\n";
         $formitem = str_replace('~name~', $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace('~form~', $myformItem, $formitem);
         return $formitem;
@@ -101,19 +101,19 @@ function GetFormItem($ctag, $admintype = 'admin')
         if ($admintype == 'diy') {
             $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:300px;height:22px;line-height:22px' />\r\n";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300px' class='text' /> <input name='" . $fieldname . "_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
         }
     } else if ($fieldType == 'media') {
         if ($admintype == 'diy') {
             $innertext = "<input type='hidden' name='$fieldname' id='$fieldname' value='' />不支持的类型\r\n";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300px' class='text' /> <input name='" . $fieldname . "_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\" />\r\n";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\" />\r\n";
         }
     } else if ($fieldType == 'addon') {
         if ($admintype == 'diy') {
             $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:300px;height:22px;line-height:22px' />\r\n";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300px' class='text' /> <input name='" . $fieldname . "_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
         }
     } else if ($fieldType == 'int' || $fieldType == 'float') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '0');
@@ -207,22 +207,22 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         }
         return $dvalue;
     } else if ($dtype == "textdata") {
-        $ipath = $cfg_cmspath . "/data/textdata";
+        $ipath = $cfg_cmspath."/data/textdata";
         $tpath = ceil($aid / 5000);
-        if (!is_dir($cfg_basedir . $ipath)) {
-            MkdirAll($cfg_basedir . $ipath, $GLOBALS['cfg_dir_purview']);
+        if (!is_dir($cfg_basedir.$ipath)) {
+            MkdirAll($cfg_basedir.$ipath, $GLOBALS['cfg_dir_purview']);
         }
-        if (!is_dir($cfg_basedir . $ipath . '/' . $tpath)) {
-            MkdirAll($cfg_basedir . $ipath . '/' . $tpath, $GLOBALS['cfg_dir_purview']);
+        if (!is_dir($cfg_basedir.$ipath.'/'.$tpath)) {
+            MkdirAll($cfg_basedir.$ipath.'/'.$tpath, $GLOBALS['cfg_dir_purview']);
         }
-        $ipath = $ipath . '/' . $tpath;
-        $filename = "{$ipath}/{$aid}-" . cn_substr(md5($cfg_cookie_encode), 0, 16) . ".txt";
+        $ipath = $ipath.'/'.$tpath;
+        $filename = "{$ipath}/{$aid}-".cn_substr(md5($cfg_cookie_encode), 0, 16).".txt";
 
         //会员投稿内容安全处理
         if ($admintype == 'member' || $admintype == 'diy') {
             $dvalue = HtmlReplace($dvalue, -1);
         }
-        $fp = fopen($cfg_basedir . $filename, "w");
+        $fp = fopen($cfg_basedir.$filename, "w");
         fwrite($fp, stripslashes($dvalue));
         fclose($fp);
         CloseFtp();
@@ -238,7 +238,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
             return '';
         }
         $iurl = trim(str_replace($GLOBALS['cfg_basehost'], "", $iurl));
-        $imgurl = "{dede:img text='' width='' height=''} " . $iurl . " {/dede:img}";
+        $imgurl = "{dede:img text='' width='' height=''} ".$iurl." {/dede:img}";
         if (preg_match("/^http:\/\//i", $iurl) && $GLOBALS['cfg_isUrlOpen']) {
             //远程图片
             $reimgs = '';
@@ -248,26 +248,26 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
                     if ($dtype == 'imgfile') {
                         $imgurl = $reimgs[1];
                     } else {
-                        $imgurl = "{dede:img text='' width='" . $reimgs[1] . "' height='" . $reimgs[2] . "'} " . $reimgs[0] . " {/dede:img}";
+                        $imgurl = "{dede:img text='' width='".$reimgs[1]."' height='".$reimgs[2]."'} ".$reimgs[0]." {/dede:img}";
                     }
                 }
             } else {
                 if ($dtype == 'imgfile') {
                     $imgurl = $iurl;
                 } else {
-                    $imgurl = "{dede:img text='' width='' height=''} " . $iurl . " {/dede:img}";
+                    $imgurl = "{dede:img text='' width='' height=''} ".$iurl." {/dede:img}";
                 }
             }
         } else if ($iurl != '') {
             //站内图片
-            $imgfile = $cfg_basedir . $iurl;
+            $imgfile = $cfg_basedir.$iurl;
             if (is_file($imgfile)) {
                 $info = '';
                 $imginfos = GetImageSize($imgfile, $info);
                 if ($dtype == "imgfile") {
                     $imgurl = $iurl;
                 } else {
-                    $imgurl = "{dede:img text='' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $iurl {/dede:img}";
+                    $imgurl = "{dede:img text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}";
                 }
             }
         }
@@ -323,14 +323,14 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         $innertext = $myformItem;
     } else if ($ctag->GetAtt("type") == 'stepselect') {
         global $hasSetEnumJs, $cfg_cmspath;
-        $cmspath = ((empty($cfg_cmspath) || preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath . '/' : $cfg_cmspath);
+        $cmspath = ((empty($cfg_cmspath) || preg_match('/[/$]/', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
         $myformItem = '';
         $myformItem .= "<input type='hidden' id='hidden_{$fieldname}' name='{$fieldname}' value='{$fvalue}' />\r\n";
         $myformItem .= "<span id='span_{$fieldname}'></span>\r\n";
         $myformItem .= "<span id='span_{$fieldname}_son'></span>\r\n";
         $myformItem .= "<span id='span_{$fieldname}_sec'></span>\r\n";
         if ($hasSetEnumJs != 'hasset') {
-            $myformItem .= '<script language="javascript" type="text/javascript" src="' . $cmspath . 'static/enums.js"></script>' . "\r\n";
+            $myformItem .= '<script language="javascript" type="text/javascript" src="'.$cmspath.'static/enums.js"></script>'."\r\n";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
         $myformItem .= "<script language='javascript' type='text/javascript' src='{$cmspath}data/enums/{$fieldname}.js'></script>\r\n";
@@ -371,8 +371,8 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
 
     //文本数据的特殊处理
     else if ($ftype == "textdata") {
-        if (is_file($cfg_basedir . $fvalue)) {
-            $fp = fopen($cfg_basedir . $fvalue, 'r');
+        if (is_file($cfg_basedir.$fvalue)) {
+            $fp = fopen($cfg_basedir.$fvalue, 'r');
             $okfvalue = '';
             while (!feof($fp)) {
                 $okfvalue .= fgets($fp, 1024);
@@ -382,16 +382,16 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             $okfvalue = '';
         }
         if ($admintype == 'admin') {
-            $myformItem = GetEditor($fieldname, $okfvalue, 350, 'Basic', 'string') . "\r\n <input type='hidden' name='{$fieldname}_file' value='{$fvalue}' />\r\n ";
+            $myformItem = GetEditor($fieldname, $okfvalue, 350, 'Basic', 'string')."\r\n <input type='hidden' name='{$fieldname}_file' value='{$fvalue}' />\r\n ";
         } else {
-            $myformItem = GetEditor($fieldname, $okfvalue, 350, 'Member', 'string') . "\r\n <input type='hidden' name='{$fieldname}_file' value='{$fvalue}' />\r\n ";
+            $myformItem = GetEditor($fieldname, $okfvalue, 350, 'Member', 'string')."\r\n <input type='hidden' name='{$fieldname}_file' value='{$fvalue}' />\r\n ";
         }
         $innertext = $myformItem;
     } else if ($ftype == "htmltext") {
         if ($admintype == 'admin') {
-            $myformItem = GetEditor($fieldname, $fvalue, 350, 'Basic', 'string') . "\r\n ";
+            $myformItem = GetEditor($fieldname, $fvalue, 350, 'Basic', 'string')."\r\n ";
         } else {
-            $myformItem = GetEditor($fieldname, $fvalue, 350, 'Member', 'string') . "\r\n ";
+            $myformItem = GetEditor($fieldname, $fvalue, 350, 'Member', 'string')."\r\n ";
         }
         $innertext = $myformItem;
     } else if ($ftype == "multitext") {
@@ -409,13 +409,13 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             $ntag = $ndtp->GetTag("img");
             $fvalue = trim($ntag->GetInnerText());
         }
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300px'  class='text' /> <input name='" . $fieldname . "_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300px'  class='text' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
     } else if ($ftype == "imgfile") {
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300px'  class='text' /> <input name='" . $fieldname . "_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300px'  class='text' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
     } else if ($ftype == "media") {
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300px'  class='text' /> <input name='" . $fieldname . "_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\" />\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300px'  class='text' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\" />\r\n";
     } else if ($ftype == "addon") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' style='width:300px'  class='text' /> <input name='" . $fieldname . "_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' style='width:300px'  class='text' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
     } else if ($ftype == "int" || $ftype == "float") {
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:100px'  class='intxt' value='$fvalue' /> (填写数值)\r\n";
     } else if ($ftype == "relation") {
