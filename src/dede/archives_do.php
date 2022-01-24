@@ -284,7 +284,7 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("你确实要删除“ $qstr 和 $aid ”这些文档？");
+        $win->AddTitle("你确实要删除 $qstr 和 $aid 这些文档？");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -308,8 +308,8 @@ else if ($dopost == 'moveArchives') {
         //输出AJAX可移动窗体
         $divname = 'moveArchives';
         echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">";
-        echo "    <div class='titLeft'>移动文档</div>";
-        echo "    <div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
+        echo "<div class='titLeft'>移动文档</div>";
+        echo "<div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
         echo "</div>";
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
@@ -318,23 +318,19 @@ else if ($dopost == 'moveArchives') {
         ?>
         <tr height='26'>
             <td width="80" class='bline'>&nbsp;目标栏目：</td>
-            <td class='bline'>
-                <?php echo $typeOptions; ?>
-            </td>
+            <td class='bline'><?php echo $typeOptions; ?></td>
         </tr>
         <tr height='26'>
             <td width="80" class='bline'>&nbsp;文档ID：</td>
             <td class='bline'>
-                <input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'><br>
-                移动到的目标栏目必须和选定的文档频道类型一致，否则程序会自动勿略不符合的文档。
+                <input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'>
+                <br>移动到的目标栏目必须和选定的文档频道类型一致，否则程序会自动勿略不符合的文档。
             </td>
         </tr>
         <tr height='36'>
             <td colspan='2' align='center' style='padding-top:10px'>
-                <input name="imageField" type="image" src="images/button_ok.gif" width="60" height="22" class="np" style="cursor:pointer">
-                &nbsp;&nbsp;
-                <img src="images/button_back.gif" width="60" height="22" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' style="cursor:pointer">
-            </td>
+                <button type='submit' class='btn btn-success'>保存</button>
+                <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
             </td>
         </tr>
         </table>
@@ -457,7 +453,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("本次操作将清空回收站所有共 $num 篇文档<br>你确实要永久删除“ $qstr ”这些文档？");
+        $win->AddTitle("本次操作将清空回收站所有共 $num 篇文档<br>你确实要永久删除 $qstr 这些文档？");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -498,7 +494,7 @@ else if ($dopost == 'del') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("你确实要永久删除“ $qstr 和 $aid ”这些文档？");
+        $win->AddTitle("你确实要永久删除 $qstr 和 $aid 这些文档？");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -556,15 +552,11 @@ else if ($dopost == 'quickEdit') {
     </tr>
     <tr height='26'>
         <td width="80" class='bline'>&nbsp;标题：</td>
-        <td class='bline'>
-            <input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px">
-        </td>
+        <td class='bline'><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
     </tr>
     <tr height='26'>
         <td width="80" class='bline'>&nbsp;简略标题：</td>
-        <td class='bline'>
-            <input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px">
-        </td>
+        <td class='bline'><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
     </tr>
     <tr height='26'>
         <td width="80" class='bline'>&nbsp;阅读权限：</td>
@@ -586,16 +578,12 @@ else if ($dopost == 'quickEdit') {
     </tr>
     <tr height='26'>
         <td width="80" class='bline'>&nbsp;关键字：</td>
-        <td class='bline'>
-            <input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px">
-        </td>
+        <td class='bline'><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
     <tr height='36'>
         <td colspan='2' align='center' class='py-3' style='padding-top:10px'>
-            <button type="submit" class="btn btn-success">保存</button>
-            &nbsp;&nbsp;
-            <button type="button" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class="btn btn-success">关闭</button>
-        </td>
+            <button type='submit' class='btn btn-success'>保存</button>
+            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
         </td>
     </tr>
     </table>
@@ -785,7 +773,8 @@ else if ($dopost == 'attsAdd') {
 /*--------------------------
 //批量删除属性
 function attsDel(){ }
----------------------------*/ else if ($dopost == 'attsDel') {
+---------------------------*/
+else if ($dopost == 'attsDel') {
     CheckPurview('a_Commend,sys_ArcBatch');
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
     if ($qstr == '') {
@@ -850,7 +839,7 @@ else if ($dopost == 'attsDlg') {
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
 ?>
     <tr height='26'>
-        <td width="80" class='bline'>&nbsp;属 性：</td>
+        <td width="80" class='bline'>&nbsp;属性：</td>
         <td class='bline'>
             <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
             <?php
@@ -865,16 +854,12 @@ else if ($dopost == 'attsDlg') {
     </tr>
     <tr height='26'>
         <td width="80" class='bline'>&nbsp;文档ID：</td>
-        <td class='bline'>
-            <input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'>
-        </td>
+        <td class='bline'><input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'></td>
     </tr>
     <tr height='36'>
         <td colspan='2' align='center' style='padding-top:10px'>
-            <input name="imageField" type="image" src="images/button_ok.gif" width="60" height="22" class="np" style="cursor:pointer">
-            &nbsp;&nbsp;
-            <img src="images/button_back.gif" width="60" height="22" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' style="cursor:pointer">
-        </td>
+            <button type='submit' class='btn btn-success'>保存</button>
+            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
         </td>
     </tr>
     </table>
@@ -897,13 +882,10 @@ else if ($dopost == 'getCatMap') {
     $tus = new TypeUnitSelector();
     ?>
     <form name='quicksel' action='javascript:;' method='get'>
-        <div class='quicksel'>
-            <?php $tus->ListAllType($channelid); ?>
-        </div>
+        <div class='quicksel'><?php $tus->ListAllType($channelid); ?></div>
         <div align='center' class='quickselfoot'>
-            <img src="images/button_ok.gif" onclick="getSelCat('<?php echo $targetid; ?>');" width="60" height="22" class="np" style="cursor:pointer">
-            &nbsp;&nbsp;
-            <img src="images/button_back.gif" onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' width="60" height="22" style="cursor:pointer">
+            <button onclick='getSelCat("<?php echo $targetid; ?>");' class='btn btn-success'>保存</button>
+            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
         </div>
     </form>
 <?php
