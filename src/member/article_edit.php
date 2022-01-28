@@ -36,7 +36,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，你不能再修改它！", "-1");
+            ShowMsg("这篇文档已经锁定，您不能再修改它！", "-1");
             exit();
         }
     }
@@ -110,7 +110,7 @@ function _SaveArticle(){  }
     }
 
     //返回成功信息
-    $msg = "　　请选择你的后续操作：
+    $msg = "　　请选择您的后续操作：
         <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新文章</a>
         &nbsp;&nbsp;
         <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>

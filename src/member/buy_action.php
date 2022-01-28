@@ -54,7 +54,7 @@ if ($product == 'member') {
     $ptype = "会员升级";
     $row = $dsql->GetOne("SELECT * FROM `#@__member_type` WHERE aid='{$pid}'");
     if (!is_array($row)) {
-        ShowMsg("无法识别你的订单！", 'javascript:;');
+        ShowMsg("无法识别您的订单！", 'javascript:;');
         exit();
     }
     $pname = $row['pname'];
@@ -63,7 +63,7 @@ if ($product == 'member') {
     $ptype = "点卡购买";
     $row = $dsql->GetOne("SELECT * From `#@__moneycard_type` WHERE tid='{$pid}'");
     if (!is_array($row)) {
-        ShowMsg("无法识别你的订单！", 'javascript:;');
+        ShowMsg("无法识别您的订单！", 'javascript:;');
         exit();
     }
     $pname = $row['pname'];
@@ -81,7 +81,7 @@ if (!isset($paytype)) {
     }
 
     if ($price == '') {
-        echo "无法识别你的订单！";
+        echo "无法识别您的订单！";
         exit();
     }
 

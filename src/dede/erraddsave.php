@@ -85,7 +85,7 @@ if ($dopost == "delete") {
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("你确实要删除“ $id ”这些错误提示？");
+        $win->AddTitle("您确实要删除“ $id ”这些错误提示？");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

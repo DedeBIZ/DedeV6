@@ -69,7 +69,7 @@ function __Apply()
         $dsql->Execute();
         $tt = $dsql->GetTotalRow();
         if ($tt == 0) {
-            ShowMsg("根据你指定的正则，找不到任何东西！", "javascript:;");
+            ShowMsg("根据您指定的正则，找不到任何东西！", "javascript:;");
             exit();
         }
         $oo = 0;

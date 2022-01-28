@@ -66,7 +66,7 @@ if ($dopost == "view") {
     $homeFile = DEDEADMIN."/".$position;
     $homeFile = str_replace("\\", "/", $homeFile);
     $homeFile = str_replace("//", "/", $homeFile);
-    $fp = fopen($homeFile, "w") or die("你指定的文件名有问题，无法创建文件");
+    $fp = fopen($homeFile, "w") or die("您指定的文件名有问题，无法创建文件");
     fclose($fp);
     if ($saveset == 1) {
         $iquery = "UPDATE `#@__homepageset` SET templet='$templet',position='$position' ";

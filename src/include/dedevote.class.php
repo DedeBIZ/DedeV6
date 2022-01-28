@@ -156,7 +156,7 @@ class DedeVote
     {
         global $ENV_GOBACK_URL, $file, $memberID, $row, $content;
         if (empty($voteitem)) {
-            return '你没选中任何项目！';
+            return '您没选中任何项目！';
         }
         $items = '';
 

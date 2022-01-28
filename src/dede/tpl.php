@@ -148,7 +148,7 @@ function _upload() {}
 -----------------------*/ else if ($action == 'uploadok') {
     CheckCSRF();
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("貌似你什么都没有上传哦！", "javascript:;");
+        ShowMsg("貌似您什么都没有上传哦！", "javascript:;");
         exit();
     } else {
         if (!preg_match("#\.(htm|html)$#", $upfile_name)) {
@@ -186,7 +186,7 @@ function lib_demotag(&\$ctag,&\$refObj)
     extract(\$ctag->CAttribute->Items, EXTR_SKIP);
     \$revalue = '';
     
-    //你需编写的代码，不能用echo之类语法，把最终返回值传给\$revalue
+    //您需编写的代码，不能用echo之类语法，把最终返回值传给\$revalue
     //------------------------------------------------------
     
     \$revalue = 'Hello Word!';

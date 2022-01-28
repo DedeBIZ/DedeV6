@@ -55,7 +55,7 @@ function TestPurview($n)
 function CheckPurview($n)
 {
     if (!TestPurview($n)) {
-        ShowMsg("对不起，你没有权限执行此操作！<br/><br/><a href='javascript:history.go(-1);'>点击此返回上一页&gt;&gt;</a>", 'javascript:;');
+        ShowMsg("对不起，您没有权限执行此操作！<br/><br/><a href='javascript:history.go(-1);'>点击此返回上一页&gt;&gt;</a>", 'javascript:;');
         exit();
     }
 }

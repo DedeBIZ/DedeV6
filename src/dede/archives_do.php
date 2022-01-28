@@ -15,7 +15,7 @@ require_once(DEDEINC.'/typelink.class.php');
 require_once(DEDEINC.'/arc.archives.class.php');
 $ENV_GOBACK_URL = (empty($_COOKIE['ENV_GOBACK_URL']) ? 'content_list.php' : $_COOKIE['ENV_GOBACK_URL']);
 if (empty($dopost)) {
-    ShowMsg('对不起，你没指定运行参数', '-1');
+    ShowMsg('对不起，您没指定运行参数', '-1');
     exit();
 }
 $aid = isset($aid) ? preg_replace("#[^0-9]#", '', $aid) : '';
@@ -122,7 +122,7 @@ else if ($dopost == "uploadLitpic") {
     if ($upfile == '-1') {
         $msg = "<script>
                 parent.document.getElementById('uploadwait').style.display = 'none';
-                alert('你没指定要上传的文件或文件大小超过限制');
+                alert('您没指定要上传的文件或文件大小超过限制');
             </script>";
     } else if ($upfile == '-2') {
         $msg = "<script>
@@ -284,7 +284,7 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("你确实要删除 $qstr 和 $aid 这些文档？");
+        $win->AddTitle("您确实要删除 $qstr 和 $aid 这些文档？");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -453,7 +453,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("本次操作将清空回收站所有共 $num 篇文档<br>你确实要永久删除 $qstr 这些文档？");
+        $win->AddTitle("本次操作将清空回收站所有共 $num 篇文档<br>您确实要永久删除 $qstr 这些文档？");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -494,7 +494,7 @@ else if ($dopost == 'del') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("你确实要永久删除 $qstr 和 $aid 这些文档？");
+        $win->AddTitle("您确实要永久删除 $qstr 和 $aid 这些文档？");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -600,7 +600,7 @@ else if ($dopost == 'quickEditSave') {
     //权限检测
     if (!TestPurview('a_Edit')) {
         if (TestPurview('a_AccEdit')) {
-            CheckCatalog($typeid, "对不起，你没有操作栏目 {$typeid} 的文档权限");
+            CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的文档权限");
         } else {
             CheckArcAdmin($aid, $cuserLogin->getUserID());
         }

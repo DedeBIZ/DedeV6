@@ -45,7 +45,7 @@ function __Delete()
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("diyid", $diyid);
-        $win->AddTitle("！将删除所有与该自定义表单相关的文件和数据<br />你确实要删除 \"".$row['name']."\" 这个自定义表单？");
+        $win->AddTitle("！将删除所有与该自定义表单相关的文件和数据<br />您确实要删除 \"".$row['name']."\" 这个自定义表单？");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -55,7 +55,7 @@ function __Delete()
     else if ($job == "yes") {
         $row = $dsql->GetOne("SELECT `table` FROM `#@__diyforms` WHERE diyid='$diyid'", MYSQL_ASSOC);
         if (!is_array($row)) {
-            ShowMsg("你所指定的自定义表单信息不存在!", "-1");
+            ShowMsg("您所指定的自定义表单信息不存在!", "-1");
             exit();
         }
 

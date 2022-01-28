@@ -34,7 +34,7 @@ $arcsta = $cInfos['arcsta'];
 
 //禁止访问无权限的模型
 if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-    ShowMsg('你无权限访问该部分', '-1');
+    ShowMsg('您无权限访问该部分', '-1');
     exit();
 }
 

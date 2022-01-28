@@ -59,7 +59,7 @@ if (!function_exists('OpenFtp')) {
         global $cfg_basedir, $cfg_ftp_host, $cfg_ftp_port, $cfg_ftp_user, $cfg_ftp_pwd, $cfg_ftp_root, $g_ftpLink;
         if (!$g_ftpLink) {
             if ($cfg_ftp_host == '') {
-                echo "由于你的站点的PHP配置存在限制，程序尝试用FTP进行目录操作，你必须在后台指定FTP相关的变量！";
+                echo "由于您的站点的PHP配置存在限制，程序尝试用FTP进行目录操作，您必须在后台指定FTP相关的变量！";
                 exit();
             }
             $g_ftpLink = ftp_connect($cfg_ftp_host, $cfg_ftp_port);

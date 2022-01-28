@@ -22,7 +22,7 @@ $uploadfile = isset($imgfile) && empty($uploadfile) ? $imgfile : $uploadfile;
 $uploadfile_name = isset($imgfile_name) && empty($uploadfile_name) ? $imgfile_name : $uploadfile_name;
 
 if (!is_uploaded_file($uploadfile)) {
-    ShowMsg("你没有选择上传的文件或选择的文件大小超出限制!", "-1");
+    ShowMsg("您没有选择上传的文件或选择的文件大小超出限制!", "-1");
     exit();
 }
 
@@ -32,7 +32,7 @@ $cfg_softtype = $cfg_softtype;
 $cfg_softtype = str_replace('||', '|', $cfg_softtype);
 $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
 if (!preg_match("#\.(".$cfg_softtype.")#i", $uploadfile_name)) {
-    ShowMsg("你所上传的{$uploadmbtype}不在许可列表，请更改系统对扩展名限定的配置！", "");
+    ShowMsg("您所上传的{$uploadmbtype}不在许可列表，请更改系统对扩展名限定的配置！", "");
     exit();
 }
 
@@ -52,7 +52,7 @@ if (!empty($newname)) {
     if (!preg_match("#\.#", $filename)) $fs = explode('.', $uploadfile_name);
     else $fs = explode('.', $filename);
     if (preg_match("#".$cfg_not_allowall."#", $fs[count($fs) - 1])) {
-        ShowMsg("你指定的文件名被系统禁止！", 'javascript:;');
+        ShowMsg("您指定的文件名被系统禁止！", 'javascript:;');
         exit();
     }
     if (!preg_match("#\.#", $filename)) $filename = $filename.'.'.$fs[count($fs) - 1];
@@ -60,7 +60,7 @@ if (!empty($newname)) {
     $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', $nowtme));
     $fs = explode('.', $uploadfile_name);
     if (preg_match("#".$cfg_not_allowall."#", $fs[count($fs) - 1])) {
-        ShowMsg("你上传了某些可能存在不安全因素的文件，系统拒绝操作！", 'javascript:;');
+        ShowMsg("您上传了某些可能存在不安全因素的文件，系统拒绝操作！", 'javascript:;');
         exit();
     }
     $filename = $filename.'.'.$fs[count($fs) - 1];

@@ -19,7 +19,7 @@ if (empty($dopost)) {
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='index_body.php'>系统主页</a> &gt;&gt; 系统错误修复工具";
-    $win->AddTitle('本工具用于检测和修复你的系统可能存在的错误');
+    $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>
@@ -52,7 +52,7 @@ function 1_test_db() {  }
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt;&gt; 检测数据结构";
-    $win->AddTitle('本工具用于检测和修复你的系统可能存在的错误');
+    $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>
@@ -60,7 +60,7 @@ function 1_test_db() {  }
     <b><font color='green'>已完成数据结构完整性检测！</font></b>
     <hr size='1'/>
     <br />
-    <b>如果你系统有下面几种问题之一，请检测微表正确性：</b><br />
+    <b>如果您系统有下面几种问题之一，请检测微表正确性：</b><br />
     1、无法获得主键，因此无法进行后续操作<br />
     2、更新数据库archives表时出错<br />
     3、列表显示数据目与实际文档数不一致<br />
@@ -136,7 +136,7 @@ function 2_test_arctiny() {  }
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt;&gt; 检测微表正确性";
-    $win->AddTitle('本工具用于检测和修复你的系统可能存在的错误');
+    $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>
@@ -196,7 +196,7 @@ function 3_re_arctiny() {  }
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt;&gt; 高级综合检测修复";
-    $win->AddTitle('本工具用于检测和修复你的系统可能存在的错误');
+    $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>

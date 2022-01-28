@@ -45,7 +45,7 @@ function _SAVE()
 if ($action == 'save') {
 
     if (!isset($fieldtypes[$dtype])) {
-        ShowMsg("你修改的是系统专用类型的数据，禁止操作！", "-1");
+        ShowMsg("您修改的是系统专用类型的数据，禁止操作！", "-1");
         exit();
     }
 

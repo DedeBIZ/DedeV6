@@ -13,7 +13,7 @@ if (!defined('DEDEMEMBER')) exit('dedebiz');
 
 //检查是否开放会员功能
 if ($cfg_mb_open == 'N') {
-    ShowMsg("系统关闭了会员功能，因此你无法访问此页面！", "javascript:;");
+    ShowMsg("系统关闭了会员功能，因此您无法访问此页面！", "javascript:;");
     exit();
 }
 
@@ -122,7 +122,7 @@ function GetUserSpaceInfos()
                   where m.userid like '$uid' ORDER BY g.dtime DESC ";
     $_vars = $dsql->GetOne($query);
     if (!is_array($_vars)) {
-        ShowMsg("你访问的用户可能已经被删除！", "javascript:;");
+        ShowMsg("您访问的用户可能已经被删除！", "javascript:;");
         exit();
     }
     if ($_vars['face'] == '') {

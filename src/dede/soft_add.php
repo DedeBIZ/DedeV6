@@ -54,15 +54,15 @@ else if ($dopost == 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查你发布内容的表单是否合法", "-1");
+        ShowMsg("文档为非指定的类型，请检查您发布内容的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg("你所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
+        ShowMsg("您所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
         exit();
     }
     if (!TestPurview('a_New')) {
-        CheckCatalog($typeid, "对不起，你没有操作栏目 {$typeid} 的权限");
+        CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的权限");
     }
     //对保存的内容进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();
@@ -246,7 +246,7 @@ else if ($dopost == 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择你的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布软件</a>&nbsp;&nbsp;<a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>查看软件</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>更改软件</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布软件管理</a>&nbsp;&nbsp;<a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>";
+    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布软件</a>&nbsp;&nbsp;<a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>查看软件</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>更改软件</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布软件管理</a>&nbsp;&nbsp;<a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>";
     $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>".GetUpdateTest();
     $wintitle = "成功发布一个软件";
     $wecome_info = "文章管理::发布软件";

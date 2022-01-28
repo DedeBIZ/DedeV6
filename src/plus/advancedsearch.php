@@ -49,7 +49,7 @@ if (empty($sql)) {
     $q = stripslashes($q);
     $q = preg_replace("#[\|\"\r\n\t%\*\?\(\)\$;,'%<>]#", " ", trim($q));
     if (($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $q)) || ($cfg_replacestr != '' && preg_match("#".$cfg_replacestr."#i", $q))) {
-        echo "你的信息中存在非法内容，被系统禁止！<a href='javascript:history.go(-1)'>[返回]</a>";
+        echo "您的信息中存在非法内容，被系统禁止！<a href='javascript:history.go(-1)'>[返回]</a>";
         exit();
     }
     $q = addslashes($q);

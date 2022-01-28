@@ -67,7 +67,7 @@ $keyword = addslashes(cn_substr($keyword, 30));
 $typeid = intval($typeid);
 
 if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $keyword)) {
-    ShowMsg("你的搜索关键字中存在非法内容，被系统禁止！", "-1");
+    ShowMsg("您的搜索关键字中存在非法内容，被系统禁止！", "-1");
     exit();
 }
 

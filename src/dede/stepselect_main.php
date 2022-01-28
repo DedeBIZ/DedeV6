@@ -96,7 +96,7 @@ function __del() { }
 
         ShowMsg("成功删除选中的枚举分类！", $ENV_GOBACK_URL);
     } else {
-        ShowMsg("你没选择任何分类！", "-1");
+        ShowMsg("您没选择任何分类！", "-1");
     }
     exit();
 } else if ($action == 'delenum') {
@@ -128,7 +128,7 @@ function __addnew_save() { }
     }
     $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE itemname LIKE '$itemname' OR egroup LIKE '$egroup' ");
     if (is_array($arr)) {
-        ShowMsg("你指定的类别名称或组名称已经存在，不能使用！", "stepselect_main.php");
+        ShowMsg("您指定的类别名称或组名称已经存在，不能使用！", "stepselect_main.php");
         exit();
     }
     $dsql->ExecuteNoneQuery("INSERT INTO `#@__stepselect`(`itemname`,`egroup`,`issign`,`issystem`) VALUES('$itemname','$egroup','0','0'); ");

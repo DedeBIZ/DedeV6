@@ -29,7 +29,7 @@ if ($action == 'save') {
 
     if (preg_match("#^(select|radio|checkbox)$#i", $dtype)) {
         if (!preg_match("#,#", $dfvalue)) {
-            ShowMsg("你设定了字段为 {$dtype} 类型，必须在默认值中指定元素列表，如：'a,b,c' ", "-1");
+            ShowMsg("您设定了字段为 {$dtype} 类型，必须在默认值中指定元素列表，如：'a,b,c' ", "-1");
             exit();
         }
     }
@@ -37,7 +37,7 @@ if ($action == 'save') {
     if ($dtype == 'stepselect') {
         $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='$fieldname' ");
         if (!is_array($arr)) {
-            ShowMsg("你设定了字段为联动类型，但系统中没找到与你定义的字段名相同的联动组名!", "-1");
+            ShowMsg("您设定了字段为联动类型，但系统中没找到与您定义的字段名相同的联动组名!", "-1");
             exit();
         }
     }

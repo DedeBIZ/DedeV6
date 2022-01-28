@@ -36,7 +36,7 @@ if ($dopost == "delete") {
         ShowMsg("成功删除指定链接！", $ENV_GOBACK_URL);
         exit();
     } else {
-        ShowMsg("你没选定任何链接！", $ENV_GOBACK_URL);
+        ShowMsg("您没选定任何链接！", $ENV_GOBACK_URL);
         exit();
     }
 } else if ($dopost == "saveedit") {

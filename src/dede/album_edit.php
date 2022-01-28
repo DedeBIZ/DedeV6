@@ -75,16 +75,16 @@ else if ($dopost == 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查你发布内容的表单是否合法", "-1");
+        ShowMsg("文档为非指定的类型，请检查您发布内容的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg("你所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
+        ShowMsg("您所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
         exit();
     }
     if (!TestPurview('a_Edit')) {
         if (TestPurview('a_AccEdit')) {
-            CheckCatalog($typeid, "对不起，你没有操作栏目 {$typeid} 的文档权限");
+            CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的文档权限");
         } else {
             CheckArcAdmin($id, $cuserLogin->getUserID());
         }
@@ -367,7 +367,7 @@ else if ($dopost == 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择你的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>&nbsp;&nbsp;<a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>预览文档</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理已发布图片</a>&nbsp;&nbsp;$backurl";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>&nbsp;&nbsp;<a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>预览文档</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理已发布图片</a>&nbsp;&nbsp;$backurl";
     $wintitle = "成功更改图集";
     $wecome_info = "文章管理::更改图集";
     $win = new OxWindow();

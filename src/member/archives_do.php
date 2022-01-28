@@ -99,7 +99,7 @@ function delArchives()
 
     $row = $dsql->GetOne($equery);
     if (!is_array($row)) {
-        ShowMsg("你没有权限删除这篇文档！", "-1");
+        ShowMsg("您没有权限删除这篇文档！", "-1");
         exit();
     }
     if (trim($row['maintable']) == '') $row['maintable'] = '#@__archives';
@@ -110,7 +110,7 @@ function delArchives()
     }
     $arr = $dsql->GetOne($equery);
     if (!is_array($arr)) {
-        ShowMsg("你没有权限删除这篇文档！", "-1");
+        ShowMsg("您没有权限删除这篇文档！", "-1");
         exit();
     }
 
@@ -118,7 +118,7 @@ function delArchives()
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，你不能再删除它！", "-1");
+            ShowMsg("这篇文档已经锁定，您不能再删除它！", "-1");
             exit();
         }
     }

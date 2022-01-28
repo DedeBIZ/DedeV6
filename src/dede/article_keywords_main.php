@@ -20,7 +20,7 @@ if (empty($dopost)) $dopost = '';
 if ($dopost == 'saveall') {
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "article_keywords_main.php" : $_COOKIE['ENV_GOBACK_URL'];
     if (!isset($aids)) {
-        ShowMsg("你没有选择要更改的内容！", $ENV_GOBACK_URL);
+        ShowMsg("您没有选择要更改的内容！", $ENV_GOBACK_URL);
         exit();
     }
     foreach ($aids as $aid) {

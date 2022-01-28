@@ -272,7 +272,7 @@ function __SendFeedback(){ }
     if ($ischeck == 0) {
         echo json_encode(array(
             "code" => 200,
-            "msg" => "成功发表评论，但需审核后才会显示你的评论",
+            "msg" => "成功发表评论，但需审核后才会显示您的评论",
             "data" => "ok",
         ));
     } else {

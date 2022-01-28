@@ -186,8 +186,8 @@ function getSoft_new()
                 $memberTypes[$row->rank] = $row->membername;
             }
             $memberTypes[0] = "游客";
-            $msgtitle = "你没有权限下载软件：{$arctitle}！";
-            $moremsg = "这个软件需要 <font color='red'>".$memberTypes[$needRank]."</font> 才能下载，你目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ！";
+            $msgtitle = "您没有权限下载软件：{$arctitle}！";
+            $moremsg = "这个软件需要 <font color='red'>".$memberTypes[$needRank]."</font> 才能下载，您目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ！";
             include_once(DEDETEMPLATE.'/plus/view_msg.htm');
             exit();
         }
@@ -201,8 +201,8 @@ function getSoft_new()
             if (!is_array($row)) {
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {
-                    $msgtitle = "你没有权限下载软件：{$arctitle}！";
-                    $moremsg = "这个软件需要 <font color='red'>".$needMoney." 金币</font> 才能下载，你目前拥有金币：<font color='red'>".$cfg_ml->M_Money." 个</font> ！";
+                    $msgtitle = "您没有权限下载软件：{$arctitle}！";
+                    $moremsg = "这个软件需要 <font color='red'>".$needMoney." 金币</font> 才能下载，您目前拥有金币：<font color='red'>".$cfg_ml->M_Money." 个</font> ！";
                     include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                     exit(0);
                 }

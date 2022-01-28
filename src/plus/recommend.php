@@ -42,7 +42,7 @@ else if ($action == 'send') {
     }
     $mailbody = '';
     $msg = RemoveXSS(dede_htmlspecialchars($msg));
-    $mailtitle = "你的好友给你推荐了一篇文章";
+    $mailtitle = "您的好友给您推荐了一篇文章";
     $mailbody .= "$msg \r\n\r\n";
     $mailbody .= "Powered by https://www.dedebiz.com DedeBIZ内容管理系统！";
 

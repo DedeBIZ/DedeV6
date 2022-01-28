@@ -71,11 +71,11 @@ if ($dopost == 'login') {
             //error
             else if ($res == -1) {
                 ResetVdValue();
-                ShowMsg('你的用户名不存在', 'login.php', 0, 1000);
+                ShowMsg('您的用户名不存在', 'login.php', 0, 1000);
                 exit;
             } else {
                 ResetVdValue();
-                ShowMsg('你的密码错误', 'login.php', 0, 1000);
+                ShowMsg('您的密码错误', 'login.php', 0, 1000);
                 exit;
             }
         }

@@ -23,7 +23,7 @@ function lib_demotag(&$ctag, &$refObj)
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';
 
-    //你需编写的代码，不能用echo之类语法，把最终返回值传给$revalue
+    //您需编写的代码，不能用echo之类语法，把最终返回值传给$revalue
     //------------------------------------------------------
 
     $revalue = 'Hello Word!';

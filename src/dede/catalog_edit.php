@@ -15,7 +15,7 @@ $id = isset($id) ? intval($id) : 0;
 //检查权限许可
 CheckPurview('t_Edit,t_AccEdit');
 //检查栏目操作许可
-CheckCatalog($id, '你无权更改本栏目');
+CheckCatalog($id, '您无权更改本栏目');
 /*-----------------------
 function action_save()
 ----------------------*/
@@ -57,7 +57,7 @@ if ($dopost == "save") {
     $uptopsql
     WHERE id='$id' ";
     if (!$dsql->ExecuteNoneQuery($upquery)) {
-        ShowMsg("保存当前栏目更改时失败，请检查你的输入资料是否存在问题", "-1");
+        ShowMsg("保存当前栏目更改时失败，请检查您的输入资料是否存在问题", "-1");
         exit();
     }
     //如果选择子栏目可投稿，更新顶级栏目为可投稿
@@ -119,7 +119,7 @@ else if ($dopost == "savetime") {
     corank='$corank' $uptopsql
     WHERE id='$id' ";
     if (!$dsql->ExecuteNoneQuery($upquery)) {
-        ShowMsg("保存当前栏目更改时失败，请检查你的输入资料是否存在问题", "-1");
+        ShowMsg("保存当前栏目更改时失败，请检查您的输入资料是否存在问题", "-1");
         exit();
     }
     UpDateCatCache();

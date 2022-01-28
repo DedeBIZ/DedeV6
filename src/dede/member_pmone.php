@@ -33,7 +33,7 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = true)
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
                 $i++;
             } else {
-                return $msgtitle.'可能含有乱码，建议你改用英文字母和数字组合！';
+                return $msgtitle.'可能含有乱码，建议您改用英文字母和数字组合！';
             }
         } else {
             if (preg_match("#[^0-9a-z@\.-]i#", $ck_uid[$i])) {
@@ -63,7 +63,7 @@ if ($action == "post") {
     }
     $row = $dsql->GetOne("Select * From `#@__member` where userid like '$msgtoid' ");
     if (!is_array($row)) {
-        ShowMsg("你指定的用户不存在,不能发送信息!", "-1");
+        ShowMsg("您指定的用户不存在,不能发送信息!", "-1");
         exit();
     }
     $subject = cn_substrR(HtmlReplace($subject, 1), 60);

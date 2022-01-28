@@ -13,7 +13,7 @@ require_once(dirname(__FILE__)."/config.php");
 //考虑安全原因不管是否开启游客投稿功能，都不允许用户投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了精简版会员空间，你访问的功能不可用！", "-1");
+    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用！", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -79,7 +79,7 @@ function _SaveArticle(){  }
                 if ($v == '') {
                     continue;
                 } else if ($v == 'templet') {
-                    ShowMsg("你保存的字段有误,请检查！", "-1");
+                    ShowMsg("您保存的字段有误,请检查！", "-1");
                     exit();
                 }
                 $vs = explode(',', $v);
@@ -195,7 +195,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
 
     //返回成功信息
     $msg = "
-        请选择你的后续操作：
+        请选择您的后续操作：
         <a href='soft_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布软件</a>
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看软件</a>
