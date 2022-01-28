@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 文档编辑
  *
@@ -13,28 +12,22 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
 require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEADMIN."/inc/inc_archives_functions.php");
-
 if (empty($dopost)) $dopost = '';
-
 if ($dopost != 'save') {
     require_once(DEDEADMIN."/inc/inc_catalog_options.php");
     require_once(DEDEINC."/dedetag.class.php");
     ClearMyAddon();
     $aid = intval($aid);
-
     //读取归档信息
     $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.*
     FROM `#@__archives` arc
     LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
-    LEFT JOIN `#@__arcrank` ar ON ar.rank=arc.arcrank WHERE arc.id='$aid'
-    ";
-
+    LEFT JOIN `#@__arcrank` ar ON ar.rank=arc.arcrank WHERE arc.id='$aid'";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
         ShowMsg("读取档案基本信息出错!", "-1");
         exit();
     }
-
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
@@ -50,40 +43,38 @@ if ($dopost != 'save') {
 }
 /*--------------------------------
 function __save(){  }
--------------------------------*/ else if ($dopost == 'save') {
+-------------------------------*/
+else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (empty($litpic_b64)) $litpic_b64 = '';
-
     if (empty($typeid2)) $typeid2 = 0;
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
     if (!isset($writer)) $writer = '';
-
     if ($typeid == 0) {
-        ShowMsg("请指定文档的栏目！", "-1");
+        ShowMsg("请指定文档的栏目", "-1");
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查你发布内容的表单是否合法！", "-1");
+        ShowMsg("文档为非指定的类型，请检查你发布内容的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg("你所选择的栏目与当前模型不相符，请选择白色的选项！", "-1");
+        ShowMsg("你所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
         exit();
     }
     if (!TestPurview('a_Edit')) {
         if (TestPurview('a_AccEdit')) {
-            CheckCatalog($typeid, "对不起，你没有操作栏目 {$typeid} 的文档权限！");
+            CheckCatalog($typeid, "对不起，你没有操作栏目 {$typeid} 的文档权限");
         } else {
             CheckArcAdmin($id, $cuserLogin->getUserID());
         }
     }
-
     //对保存的内容进行处理
     $pubdate = GetMkTime($pubdate);
     $sortrank = AddDay($pubdate, $sortup);
@@ -99,15 +90,11 @@ function __save(){  }
     $isremote  = 0;
     $serviterm = empty($serviterm) ? "" : $serviterm;
     if (!TestPurview('a_Check,a_AccCheck,a_MyCheck')) $arcrank = -1;
-
     $adminid = $cuserLogin->getUserID();
-
     //处理上传的缩略图
     if (empty($ddisremote)) $ddisremote = 0;
-
     $litpic = GetDDImage('none', $picname, $ddisremote);
-
-    // 处理新的缩略图上传
+    //处理新的缩略图上传
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
@@ -115,14 +102,11 @@ function __save(){  }
         CreateDir($savepath);
         $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         $fullUrl = $fullUrl.".png";
-
         file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
-
-        // 加水印
+        //加水印
         WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
-
     //分析处理附加表数据
     $inadd_f = '';
     $inadd_v = '';
@@ -149,7 +133,6 @@ function __save(){  }
             }
         }
     }
-
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match("#p#", $flag)) {
         $flag = ($flag == '' ? 'p' : $flag.',p');
@@ -157,7 +140,6 @@ function __save(){  }
     if ($redirecturl != '' && !preg_match("#j#", $flag)) {
         $flag = ($flag == '' ? 'j' : $flag.',j');
     }
-
     //跳转网址的文档强制为动态
     if (preg_match("#j#", $flag)) $ismake = -1;
     //更新数据库的SQL语句
@@ -185,21 +167,19 @@ function __save(){  }
     weight='$weight'
     WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库archives表时出错，请检查！", "-1");
+        ShowMsg("更新数据库archives表时出错，请检查", "-1");
         exit();
     }
-
     $cts = $dsql->GetOne("SELECT addtable From `#@__channeltype` WHERE id='$channelid' ");
     $addtable = trim($cts['addtable']);
     if ($addtable != '') {
         $useip = GetIP();
         $iquery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f},redirecturl='$redirecturl',userip='$useip' WHERE aid='$id' ";
         if (!$dsql->ExecuteNoneQuery($iquery)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请检查原因！", "javascript:;");
+            ShowMsg("更新附加表 `$addtable`  时出错，请检查原因", "javascript:;");
             exit();
         }
     }
-
     //生成HTML
     UpIndexKey($id, $arcrank, $typeid, $sortrank, $tags);
     $artUrl = MakeArt($id, TRUE, TRUE, $isremote);
@@ -207,8 +187,7 @@ function __save(){  }
         $artUrl = $cfg_phpurl."/view.php?aid=$id";
     }
     ClearMyAddon($id, $title);
-
-    // 自动更新关联内容
+    //自动更新关联内容
     if (is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {
@@ -219,22 +198,9 @@ function __save(){  }
             }
         }
     }
-
     //返回成功信息
-    $msg = "
-    　　请选择你的后续操作：
-    <a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新文档</a>
-    &nbsp;&nbsp;
-    <a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
-    &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a>
-    &nbsp;&nbsp;
-    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理文档</a>
-    &nbsp;&nbsp;
-    $backurl
-    ";
-
-    $wintitle = "成功更改文档！";
+    $msg = "请选择你的后续操作：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新文档</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>&nbsp;&nbsp;<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理文档</a>&nbsp;&nbsp;$backurl";
+    $wintitle = "成功更改文档";
     $wecome_info = "文档管理::更改文档";
     $win = new OxWindow();
     $win->AddTitle("成功更改文档：");
