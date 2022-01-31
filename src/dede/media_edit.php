@@ -85,27 +85,27 @@ function __save_edit() //保存更改
         if ($mediatype == 1) {
             $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
             if (!in_array($upfile_type, $sparr)) {
-                ShowMsg("你上传的不是图片类型的文件！", "javascript:history.go(-1);");
+                ShowMsg("您上传的不是图片类型的文件！", "javascript:history.go(-1);");
                 exit();
             }
         } else if ($mediatype == 2) {
             $sparr = array("application/x-shockwave-flash");
             if (!in_array($upfile_type, $sparr)) {
-                ShowMsg("你上传的不是Flash类型的文件！", "javascript:history.go(-1);");
+                ShowMsg("您上传的不是Flash类型的文件！", "javascript:history.go(-1);");
                 exit();
             }
         } else if ($mediatype == 3) {
             if (!preg_match('#audio|media|video#i', $upfile_type)) {
-                ShowMsg("你上传的为不正确类型的影音文件！", "javascript:history.go(-1);");
+                ShowMsg("您上传的为不正确类型的影音文件！", "javascript:history.go(-1);");
                 exit();
             }
             if (!preg_match("#\.".$cfg_mediatype."#", $upfile_name)) {
-                ShowMsg("你上传的影音文件扩展名无法被识别，请更改系统配置的参数！", "javascript:history.go(-1);");
+                ShowMsg("您上传的影音文件扩展名无法被识别，请更改系统配置的参数！", "javascript:history.go(-1);");
                 exit();
             }
         } else {
             if (!preg_match("#\.".$cfg_softtype."#", $upfile_name)) {
-                ShowMsg("你上传的附件扩展名无法被识别，请更改系统配置的参数！", "javascript:history.go(-1);");
+                ShowMsg("您上传的附件扩展名无法被识别，请更改系统配置的参数！", "javascript:history.go(-1);");
                 exit();
             }
         }

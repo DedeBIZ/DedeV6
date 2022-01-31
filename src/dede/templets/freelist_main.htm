@@ -41,7 +41,7 @@
 		}
 		//删除
 		function DelNote(nid) {
-			if (!window.confirm("你确认要删除这条记录么！")) { return false; }
+			if (!window.confirm("您确认要删除这条记录么！")) { return false; }
 			var listArea = $Obj('rslist');
 			totalrow = totalrow - 1;
 			var pagenum = Math.ceil(totalrow / pagesize);

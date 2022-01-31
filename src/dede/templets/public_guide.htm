@@ -29,7 +29,7 @@
 	function SetDefault()
 	{
 		if(selCheckbox==''){
-			ShowMsg("你没有选中需要设置为默认的栏目！");
+			ShowMsg("您没有选中需要设置为默认的栏目！");
 		}else{
 			var selobj = document.getElementById(selCheckbox);
 			location="public_guide.php?action=setdefault&cid="+selobj.value;

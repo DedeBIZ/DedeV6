@@ -138,12 +138,12 @@ function checkSubmit()
             <td align="right" class='bline'>升级时间：</td>
             <td class='bline' style="text-align:left;">
             <input type="text" style="width: 200px;" value="<?php echo $row['uptime']=($row['uptime']=="0")? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>" id="uptime" name="uptime">
-            （如果你要升级会员，必须设置此时间为当前时间）</td>
+            （如果您要升级会员，必须设置此时间为当前时间）</td>
           </tr>
           <tr> 
             <td align="right" class='bline'>会员天数：</td>
             <td class='bline' style="text-align:left;"><input type="text" style="width: 200px;" value="<?php echo $row['exptime']?>" id="exptime" name="exptime">
-            （如果你要升级会员，会员天数必须大于0） </td>
+            （如果您要升级会员，会员天数必须大于0） </td>
           </tr>
           <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<font  color="red">该会员已经到期</font>';?>
           <tr> 

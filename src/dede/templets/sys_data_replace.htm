@@ -18,11 +18,11 @@
     }
     function CheckSubmit() {
       if ($DE('rpfield').value == "") {
-        ShowMsg("你选择的操作为手工指定字段，但你并没指定！");
+        ShowMsg("您选择的操作为手工指定字段，但您并没指定！");
         return false;
       }
       if ($DE('rpstring').value == "") {
-        ShowMsg("你没指定要替换的字符串！");
+        ShowMsg("您没指定要替换的字符串！");
         return false;
       }
       return true;
@@ -72,7 +72,7 @@
 	$dsql->SetQuery("Show Tables");
   $dsql->Execute('t');
   if($dsql->GetError()!=''){
-  	echo "<font color='red'>找不到你所指定的数据库！ $dbname</font><br>";
+  	echo "<font color='red'>找不到您所指定的数据库！ $dbname</font><br>";
 		echo $qbutton;
   }
   echo "<select name='exptable' id='exptable' size='10' style='width:60%;height: 220px;' onchange='ShowFields()'>\r\n";

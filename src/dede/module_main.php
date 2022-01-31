@@ -115,7 +115,7 @@ function Setup();
     exit;
   }
 
-  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与你系统的编码不一致，请向开发者确认它的兼容性)</font>');
+  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性)</font>');
 
   $filelists = $dm->GetFileLists($hash);
   $filelist = '';
@@ -314,7 +314,7 @@ function DelModule();
   $dm = new DedeModule($mdir);
   $infos = $dm->GetModuleInfo($hash);
 
-  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与你系统的编码不一致，请向开发者确认它的兼容性)</font>');
+  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性)</font>');
   $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
@@ -350,7 +350,7 @@ function DelModule();
     </tr>
     <tr>
       <td height='28' colspan='2'>
-      删除模块仅删除这个模块的安装包文件，如果你已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'><u>卸载程序</u></a>来删除！
+      删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'><u>卸载程序</u></a>来删除！
     </td>
     </tr>
 </table>
@@ -374,7 +374,7 @@ function UnInstall();
   $infos = $dm->GetModuleInfo($hash);
 
   if ($infos['url'] == '') $infos['url'] = '&nbsp;';
-  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与你系统的编码不一致，请向开发者确认它的兼容性)</font>');
+  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性)</font>');
 
   $filelists = $dm->GetFileLists($hash);
   $filelist = '';
@@ -506,7 +506,7 @@ function ViewOne();
   $infos = $dm->GetModuleInfo($hash);
 
   if ($infos['url'] == '') $infos['url'] = '&nbsp;';
-  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与你系统的编码不一致，请向开发者确认它的兼容性)</font>');
+  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性)</font>');
 
   $filelists = $dm->GetFileLists($hash);
   $filelist = '';

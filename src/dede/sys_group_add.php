@@ -14,7 +14,7 @@ CheckPurview('sys_Group');
 if (!empty($dopost)) {
     $row = $dsql->GetOne("SELECT * FROM #@__admintype WHERE rank='".$rankid."'");
     if (is_array($row)) {
-        ShowMsg('你所创建的组别的级别值已存在，不允许重复!', '-1');
+        ShowMsg('您所创建的组别的级别值已存在，不允许重复!', '-1');
         exit();
     }
     if ($rankid > 10) {

@@ -87,7 +87,7 @@ class FileManagement
                 return 0;
             }
         } else {
-            ShowMsg("对不起，你移动的路径不合法！", "-1", 0, 5000);
+            ShowMsg("对不起，您移动的路径不合法！", "-1", 0, 5000);
             return 0;
         }
     }

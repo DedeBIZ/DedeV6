@@ -91,7 +91,7 @@ function LoadTestDiv()
 	var dfstr = '粘贴到这里...';
 	if(document.getElementById('imagebody').value.length <= dfstr.length)
 	{
-		alert('你还没有粘贴任何东西都编辑框哦！');
+		alert('您还没有粘贴任何东西都编辑框哦！');
 		return;
 	}
 	if(!newobj){

@@ -133,7 +133,7 @@ else if ($action == 'move') {
         exit();
     }
     if ($typenew['ispart'] != 0) {
-        ShowMsg("你不能把数据移动到非最终列表的栏目！", "javascript:;");
+        ShowMsg("您不能把数据移动到非最终列表的栏目！", "javascript:;");
         exit();
     }
     if ($typenew['channeltype'] != $typeold['channeltype']) {

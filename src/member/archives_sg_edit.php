@@ -34,7 +34,7 @@ if (empty($dopost)) {
     }
     $addRow = $dsql->GetOne("SELECT * FROM `{$cInfos['addtable']}` WHERE aid='$aid'; ");
     if ($addRow['mid'] != $cfg_ml->M_ID) {
-        ShowMsg("对不起，你没权限操作此文档！", "-1");
+        ShowMsg("对不起，您没权限操作此文档！", "-1");
         exit();
     }
     $addRow['id'] = $addRow['aid'];
@@ -71,7 +71,7 @@ function _SaveArticle(){  }
 
     //检测栏目是否有投稿权限
     if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0 || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
-        ShowMsg("你所选择的栏目不支持投稿！", "-1");
+        ShowMsg("您所选择的栏目不支持投稿！", "-1");
         exit();
     }
 
@@ -140,7 +140,7 @@ function _SaveArticle(){  }
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
 
     //返回成功信息
-    $msg = "请选择你的后续操作：
+    $msg = "请选择您的后续操作：
         <a href='archives_sg_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新内容</a>
         &nbsp;&nbsp;
         <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>

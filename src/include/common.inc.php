@@ -203,7 +203,7 @@ $cfg_soft_devteam = 'DedeBIZ';
 //文档的默认命名规则
 $art_shortname = $cfg_df_ext = '.html';
 $cfg_df_namerule = '{typedir}/{aid}'.$cfg_df_ext;
-//新建目录的权限，如果你使用别的属性，本程不保证程序能顺利在Linux或Unix系统运行
+//新建目录的权限，如果您使用别的属性，本程不保证程序能顺利在Linux或Unix系统运行
 if (isset($cfg_ftp_mkdir) && $cfg_ftp_mkdir == 'Y') {
     $cfg_dir_purview = '0755';
 } else {

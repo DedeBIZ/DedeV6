@@ -80,7 +80,7 @@ function _SaveArticle(){  }
 
     //检测栏目是否有投稿权限
     if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
-        ShowMsg("你所选择的栏目不支持投稿！", "-1");
+        ShowMsg("您所选择的栏目不支持投稿！", "-1");
         exit();
     }
 
@@ -181,7 +181,7 @@ function _SaveArticle(){  }
 
     //返回成功信息
     $msg = "
-    　　请选择你的后续操作：
+    　　请选择您的后续操作：
         <a href='archives_sg_add.php?channelid=$channelid' class='btn btn-secondary btn-sm'>继续发布内容</a>
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a>

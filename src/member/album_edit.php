@@ -12,11 +12,11 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了精简版会员空间，你访问的功能不可用！", "-1");
+    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用！", "-1");
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("对不起，由于系统关闭了图集功能，你访问的功能不可用！", "-1");
+    ShowMsg("对不起，由于系统关闭了图集功能，您访问的功能不可用！", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -44,7 +44,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，你不能再修改它！", "-1");
+            ShowMsg("这篇文档已经锁定，您不能再修改它！", "-1");
             exit();
         }
     }
@@ -170,7 +170,7 @@ function _Save(){  }
     //---------------------------------
     //返回成功信息
     //----------------------------------
-    $msg = "　　请选择你的后续操作：
+    $msg = "　　请选择您的后续操作：
 <a href='album_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新图集</a>
 &nbsp;&nbsp;
 <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>

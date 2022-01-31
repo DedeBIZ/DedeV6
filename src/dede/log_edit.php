@@ -12,7 +12,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Log');
 if (empty($dopost)) {
-    ShowMsg("你没指定任何参数！", "javascript:;");
+    ShowMsg("您没指定任何参数！", "javascript:;");
     exit();
 }
 
@@ -37,6 +37,6 @@ if ($dopost == "clear") {
     ShowMsg("成功删除指定的日志！", $bkurl);
     exit();
 } else {
-    ShowMsg("无法识别你的请求！", "javascript:;");
+    ShowMsg("无法识别您的请求！", "javascript:;");
     exit();
 }

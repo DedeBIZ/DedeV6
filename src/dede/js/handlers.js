@@ -13,7 +13,7 @@ function fileQueueError(file, errorCode, message) {
 		var imageName = "error.gif";
 		var errorName = "";
 		if (errorCode === SWFUpload.errorCode_QUEUE_LIMIT_EXCEEDED) {
-			errorName = "你添加的文件超过了限制！";
+			errorName = "您添加的文件超过了限制！";
 		}
 
 		if (errorName !== "") {

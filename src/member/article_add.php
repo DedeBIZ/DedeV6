@@ -132,7 +132,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
 
     //返回成功信息
     $msg =
-        "请选择你的后续操作：
+        "请选择您的后续操作：
     <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布文章</a>
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>

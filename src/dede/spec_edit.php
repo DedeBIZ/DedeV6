@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 专题编辑
  *
@@ -20,7 +19,6 @@ if ($dopost != 'save') {
     ClearMyAddon();
     $aid = intval($aid);
     $channelid = -1;
-
     //读取归档信息
     $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.*
     FROM `#@__archives` arc
@@ -43,27 +41,24 @@ if ($dopost != 'save') {
 }
 /*--------------------------------
 function __save(){  }
--------------------------------*/ else if ($dopost == 'save') {
+-------------------------------*/
+else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
-
     if (!isset($tags)) $tags = '';
     $channelid = -1;
-
     //处理自定义字段会用到这些变量
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
-
     //对保存的内容进行处理
     $pubdate = GetMkTime($pubdate);
     $sortrank = AddDay($pubdate, $sortup);
     if ($ishtml == 0) $ismake = -1;
     else $ismake = 0;
-
     $title = cn_substrR($title, $cfg_title_maxlen);
     $shorttitle = cn_substrR($shorttitle, 36);
     $color =  cn_substrR($color, 7);
@@ -78,13 +73,12 @@ function __save(){  }
         $arcrank = -1;
     }
     $adminid = $cuserLogin->getUserID();
-
     //处理上传的缩略图
     if (empty($ddisremote)) {
         $ddisremote = 0;
     }
     $litpic = GetDDImage('none', $picname, $ddisremote);
-    // 处理新的缩略图上传
+    //处理新的缩略图上传
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
@@ -92,14 +86,11 @@ function __save(){  }
         CreateDir($savepath);
         $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         $fullUrl = $fullUrl.".png";
-
         file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
-
-        // 加水印
+        //加水印
         WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
-
     //分析处理附加表数据
     $inadd_f = '';
     $inadd_v = '';
@@ -126,35 +117,33 @@ function __save(){  }
             }
         }
     }
-
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match('#p#', $flag)) {
         $flag = ($flag == '' ? 'p' : $flag.',p');
     }
     $inQuery = "UPDATE `#@__archives` SET
-            typeid='$typeid',
-            sortrank='$sortrank',
-            flag='$flag',
-            ismake='$ismake',
-            arcrank='$arcrank',
-            click='$click',
-            title='$title',
-            color='$color',
-            writer='$writer',
-            source='$source',
-            litpic='$litpic',
-            pubdate='$pubdate',
-            notpost='$notpost',
-            description='$description',
-            keywords='$keywords',
-            shorttitle='$shorttitle',
-            filename='$filename'
-            WHERE id='$id'; ";
+        typeid='$typeid',
+        sortrank='$sortrank',
+        flag='$flag',
+        ismake='$ismake',
+        arcrank='$arcrank',
+        click='$click',
+        title='$title',
+        color='$color',
+        writer='$writer',
+        source='$source',
+        litpic='$litpic',
+        pubdate='$pubdate',
+        notpost='$notpost',
+        description='$description',
+        keywords='$keywords',
+        shorttitle='$shorttitle',
+        filename='$filename'
+        WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库archives表时出错，请检查！", "-1");
+        ShowMsg("更新数据库archives表时出错，请检查", "-1");
         exit();
     }
-
     //专题节点列表
     $arcids = array();
     $notelist = '';
@@ -218,14 +207,12 @@ function __save(){  }
                 {/dede:specnote}\r\n";
         }
     }
-
     //更新附加表
     $inQuery = "UPDATE `#@__addonspec` SET typeid ='$typeid',note='$notelist'{$inadd_f},templet='$templet' WHERE aid='$id';";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库附加表 addonspec 时出错，请检查原因！", "-1");
+        ShowMsg("更新数据库附加表 addonspec 时出错，请检查原因", "-1");
         exit();
     }
-
     //生成HTML
     UpIndexKey($id, $arcrank, $typeid, $sortrank, $tags);
     $artUrl = MakeArt($id, TRUE, TRUE, $isremote);
@@ -233,7 +220,6 @@ function __save(){  }
         $artUrl = $cfg_phpurl."/view.php?aid=$id";
     }
     ClearMyAddon($id, $title);
-
     // 自动更新关联内容
     if (is_array($automake)) {
         foreach ($automake as $key => $value) {
@@ -245,20 +231,12 @@ function __save(){  }
             }
         }
     }
-
     //返回成功信息
-    $msg = "　　请选择你的后续操作：
-    <a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新专题</a>
-    &nbsp;&nbsp;
-    <a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>
-    &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a>
-    &nbsp;&nbsp;
-    <a href='content_s_list.php' class='btn btn-success btn-sm'>已发布专题管理</a> ";
-    $wintitle = "成功更改一个专题！";
+    $msg = "请选择您的后续操作：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新专题</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>查看更改</a>&nbsp;&nbsp;<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a>&nbsp;&nbsp;<a href='content_s_list.php' class='btn btn-success btn-sm'>已发布专题管理</a> ";
+    $wintitle = "成功更改一个专题";
     $wecome_info = "专题管理::更改专题";
     $win = new OxWindow();
-    $win->AddTitle("成功更改专题！");
+    $win->AddTitle("成功更改专题");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
     $win->Display();

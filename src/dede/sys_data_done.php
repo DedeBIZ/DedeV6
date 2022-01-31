@@ -31,7 +31,7 @@ function __bak_data();
 --------------------*/
 if ($dopost == 'bak') {
     if (empty($tablearr)) {
-        ShowMsg('你没选中任何表！', 'javascript:;');
+        ShowMsg('您没选中任何表！', 'javascript:;');
         exit();
     }
     if (!is_dir($bkdir)) {

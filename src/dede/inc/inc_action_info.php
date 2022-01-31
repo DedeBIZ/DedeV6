@@ -259,7 +259,7 @@ $actionSearch[6] = array(
         ),
         7  =>  array(
             'title' => '汇款账号设置',
-            'description' => '银行付款的账号设置,用户可以查看到你的银行付款账号方便支付',
+            'description' => '银行付款的账号设置,用户可以查看到您的银行付款账号方便支付',
             'purview' => 'sys_Data',
             'linkurl' => 'shops_bank.php'
         ),

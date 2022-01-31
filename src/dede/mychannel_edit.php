@@ -113,7 +113,7 @@ function __Export()
     $wecome_info = "<a href='mychannel_main.php'><u>内容模型管理</u></a>::导出内容模型规则";
     $win = new OxWindow();
     $win->Init();
-    $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，你可以共享给你的朋友：");
+    $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友：");
     $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:99%;height:450px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
@@ -337,7 +337,7 @@ function __SaveEdit()
     }
     $trueTable = str_replace("#@__", $cfg_dbprefix, $addtable);
     if (!$dsql->IsTable($trueTable)) {
-        ShowMsg("系统找不到你所指定的表 $trueTable ，请手工创建这个表！", "-1");
+        ShowMsg("系统找不到您所指定的表 $trueTable ，请手工创建这个表！", "-1");
         exit();
     }
     $dsql->ExecuteNoneQuery($query);
@@ -390,7 +390,7 @@ function __Delete()
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("你确实要删除 (".$row['typename'].") 这个频道？");
+        $win->AddTitle("您确实要删除 (".$row['typename'].") 这个频道？");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -399,7 +399,7 @@ function __Delete()
         require_once(DEDEINC."/typeunit.class.admin.php");
         $myrow = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$id'", MYSQL_ASSOC);
         if (!is_array($myrow)) {
-            ShowMsg('你所指定的频道信息不存在!', '-1');
+            ShowMsg('您所指定的频道信息不存在!', '-1');
             exit();
         }
 

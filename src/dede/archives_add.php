@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 文档发布
  *
@@ -13,27 +12,23 @@ require_once(dirname(__FILE__).'/config.php');
 CheckPurview('a_New,a_AccNew');
 require_once(DEDEINC.'/customfields.func.php');
 require_once(DEDEADMIN.'/inc/inc_archives_functions.php');
-
 if (empty($dopost)) $dopost = '';
-
 if ($dopost != 'save') {
     require_once(DEDEINC.'/dedetag.class.php');
     require_once(DEDEADMIN.'/inc/inc_catalog_options.php');
     ClearMyAddon();
     $channelid = empty($channelid) ? 0 : intval($channelid);
     $cid = empty($cid) ? 0 : intval($cid);
-
     //获得频道模型ID
     if ($cid > 0 && $channelid == 0) {
         $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid'; ");
         $channelid = $row['channeltype'];
     } else {
         if ($channelid == 0) {
-            ShowMsg('无法识别模型信息，因此无法操作！', '-1');
+            ShowMsg('无法识别模型信息，因此无法操作', '-1');
             exit();
         }
     }
-
     //获得频道模型信息
     $cInfos = $dsql->GetOne(" SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
     $channelid = $cInfos['id'];
@@ -44,38 +39,35 @@ if ($dopost != 'save') {
 }
 /*--------------------------------
 function __save(){  }
--------------------------------*/ else if ($dopost == 'save') {
+-------------------------------*/
+else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
     require_once(DEDEINC.'/oxwindow.class.php');
-
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(50, 200) : $cfg_arc_click);
     if (empty($litpic_b64)) $litpic_b64 = '';
-
     if (empty($typeid2)) $typeid2 = 0;
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(50, 200) : $cfg_arc_click);
-
     if ($typeid == 0) {
-        ShowMsg('请指定文档的栏目！', '-1');
+        ShowMsg('请指定文档的栏目', '-1');
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg('文档为非指定的类型，请检查你发布内容的表单是否合法！', '-1');
+        ShowMsg('文档为非指定的类型，请检查您发布内容的表单是否合法', '-1');
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg('你所选择的栏目与当前模型不相符，请选择白色的选项！', '-1');
+        ShowMsg('您所选择的栏目与当前模型不相符，请选择白色的选项', '-1');
         exit();
     }
     if (!TestPurview('a_New')) {
-        CheckCatalog($typeid, "对不起，你没有操作栏目 {$typeid} 的权限！");
+        CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的权限");
     }
-
     //对保存的内容进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();
     if (empty($source)) $source = '未知';
@@ -100,7 +92,6 @@ function __save(){  }
         $arcrank = -1;
     }
     $adminid = $cuserLogin->getUserID();
-
     //处理上传的缩略图
     if (empty($ddisremote)) {
         $ddisremote = 0;
@@ -114,22 +105,17 @@ function __save(){  }
         CreateDir($savepath);
         $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         $fullUrl = $fullUrl.".png";
-
         file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
-
-        // 加水印
+        //加水印
         WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
-
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $adminid);
-
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作！", "-1");
+        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
         exit();
     }
-
     //分析处理附加表数据
     $inadd_f = $inadd_v = '';
     if (!empty($dede_addonfields)) {
@@ -149,7 +135,6 @@ function __save(){  }
             }
         }
     }
-
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match("#p#", $flag)) {
         $flag = ($flag == '' ? 'p' : $flag.',p');
@@ -157,22 +142,18 @@ function __save(){  }
     if ($redirecturl != '' && !preg_match("#j#", $flag)) {
         $flag = ($flag == '' ? 'j' : $flag.',j');
     }
-
     //跳转网址的文档强制为动态
     if (preg_match("#j#", $flag)) $ismake = -1;
     //保存到主表
-    $query = "INSERT INTO `#@__archives`(id,typeid,typeid2,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
-color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywords,filename,dutyadmin,weight)
+    $query = "INSERT INTO `#@__archives`(id,typeid,typeid2,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywords,filename,dutyadmin,weight)
     VALUES ('$arcID','$typeid','$typeid2','$sortrank','$flag','$ismake','$channelid','$arcrank','$click','$money','$title','$shorttitle',
     '$color','$writer','$source','$litpic','$pubdate','$senddate','$adminid','$voteid','$notpost','$description','$keywords','$filename','$adminid','$weight');";
-
     if (!$dsql->ExecuteNoneQuery($query)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeBIZ官方".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
-
     //保存到附加表
     $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
     $addtable = trim($cts['addtable']);
@@ -183,11 +164,10 @@ color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywo
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"', '', $gerr), "javascript:;");
+            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeBIZ官方".str_replace('"', '', $gerr), "javascript:;");
             exit();
         }
     }
-
     //生成HTML
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, true, true, $isremote);
@@ -195,8 +175,7 @@ color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywo
         $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
     ClearMyAddon($arcID, $title);
-
-    // 自动更新关联内容
+    //自动更新关联内容
     if (is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {
@@ -207,22 +186,10 @@ color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywo
             }
         }
     }
-
     //返回成功信息
-    $msg = "    　　请选择你的后续操作：
-    <a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文档</a>
-    &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a>
-    &nbsp;&nbsp;
-    <a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>更改文档</a>
-    &nbsp;&nbsp;
-    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布文档管理</a>
-    &nbsp;&nbsp;
-    $backurl
-  ";
+    $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文档</a>&nbsp;&nbsp;<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>更改文档</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布文档管理</a>&nbsp;&nbsp;$backurl";
     $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>".GetUpdateTest();
-
-    $wintitle = '成功发布文档！';
+    $wintitle = '成功发布文档';
     $wecome_info = '文档管理::发布文档';
     $win = new OxWindow();
     $win->AddTitle('成功发布文档：');

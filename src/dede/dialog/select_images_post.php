@@ -27,14 +27,14 @@ if (empty($imgfile)) {
     $imgfile = '';
 }
 if (!is_uploaded_file($imgfile)) {
-    ShowMsg("你没有选择上传的文件!".$imgfile, "-1");
+    ShowMsg("您没有选择上传的文件!".$imgfile, "-1");
     exit();
 }
 $CKEditorFuncNum = (isset($CKEditorFuncNum)) ? $CKEditorFuncNum : 1;
 $imgfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $imgfile_name));
 
 if (!preg_match("#\.(".$cfg_imgtype.")#i", $imgfile_name)) {
-    ShowMsg("你所上传的图片类型不在许可列表，请更改系统对扩展名限定的配置！", "-1");
+    ShowMsg("您所上传的图片类型不在许可列表，请更改系统对扩展名限定的配置！", "-1");
     exit();
 }
 $nowtme = time();

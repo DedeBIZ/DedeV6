@@ -72,7 +72,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("你确实要删除(ID:".$id.")这个会员?");
+    $win->AddTitle("您确实要删除(ID:".$id.")这个会员?");
     $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' />&nbsp;(复制本代码： <font color='red'>$safecode</font> )", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
@@ -121,7 +121,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("你确实要删除(ID:".$id.")这个会员?");
+    $win->AddTitle("您确实要删除(ID:".$id.")这个会员?");
     $win->AddMsgItem(" 安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' /> (复制本代码： <font color='red'>$safecode</font>)", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();

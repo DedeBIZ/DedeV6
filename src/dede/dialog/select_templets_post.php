@@ -16,15 +16,15 @@ if (empty($uploadfile)) {
     $uploadfile = "";
 }
 if (!is_uploaded_file($uploadfile)) {
-    ShowMsg("你没有选择上传的文件!", "-1");
+    ShowMsg("您没有选择上传的文件!", "-1");
     exit();
 }
 if (!preg_match("#^text#", $uploadfile_type)) {
-    ShowMsg("你上传的不是文本类型附件!", "-1");
+    ShowMsg("您上传的不是文本类型附件!", "-1");
     exit();
 }
 if (!preg_match("#\.(".$cfg_txttype.")#i", $uploadfile_name)) {
-    ShowMsg("你所上传的模板文件类型不能被识别，只允许htm、html、tpl、txt扩展名！", "-1");
+    ShowMsg("您所上传的模板文件类型不能被识别，只允许htm、html、tpl、txt扩展名！", "-1");
     exit();
 }
 if ($filename != '') {
@@ -33,7 +33,7 @@ if ($filename != '') {
     $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
     $filename = $uploadfile_name;
     if ($filename == '' || !preg_match("#\.(".$cfg_txttype.")#i", $filename)) {
-        ShowMsg("你所上传的文件存在问题，请检查文件类型是否适合！", "-1");
+        ShowMsg("您所上传的文件存在问题，请检查文件类型是否适合！", "-1");
         exit();
     }
 }

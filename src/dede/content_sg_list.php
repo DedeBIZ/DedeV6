@@ -30,7 +30,7 @@ if (TestPurview('a_List')) {
     if ($cid == 0) {
         $ucid = $cid = $cuserLogin->getUserChannel();
     } else {
-        CheckCatalog($cid, "你无权浏览非指定栏目的内容！");
+        CheckCatalog($cid, "您无权浏览非指定栏目的内容！");
     }
 }
 
@@ -43,7 +43,7 @@ setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $tl = new TypeLink($cid);
 $listtable = @trim($tl->TypeInfos['addtable']);
 if (!empty($channelid) && !empty($ucid) && $tl->TypeInfos['channeltype'] != $channelid) {
-    ShowMsg('你没权限访问此页！', 'javascript:;');
+    ShowMsg('您没权限访问此页！', 'javascript:;');
     exit();
 }
 

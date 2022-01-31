@@ -74,7 +74,7 @@ class TagList
             $this->TagInfos = $this->dsql->GetOne("Select * From `#@__tagindex` where tag like '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
                 $fullsearch = $GLOBALS['cfg_phpurl']."/search.php?keyword=".$this->Tag."&searchtype=titlekeyword";
-                $msg = "系统无此标签，可能已经移除！<br /><br />你还可以尝试通过搜索程序去搜索这个关键字：<a href='$fullsearch'>前往搜索&gt;&gt;</a>";
+                $msg = "系统无此标签，可能已经移除！<br /><br />您还可以尝试通过搜索程序去搜索这个关键字：<a href='$fullsearch'>前往搜索&gt;&gt;</a>";
                 ShowMsg($msg, "-1");
                 exit();
             }

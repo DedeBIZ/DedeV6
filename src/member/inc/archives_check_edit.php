@@ -38,7 +38,7 @@ $addtable = $cInfos['addtable'];
 
 //检测栏目是否有投稿权限
 if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0 || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
-    ShowMsg("你所选择的栏目不支持投稿！", "-1");
+    ShowMsg("您所选择的栏目不支持投稿！", "-1");
     exit();
 }
 
