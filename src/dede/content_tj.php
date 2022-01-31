@@ -35,7 +35,7 @@ function GetArchives($dsql, $ordertype)
     } else {
         $ordersql = " ORDER BY click DESC ";
     }
-    $query = "SELECT id,title,click,scores FROM #@__archives $swhere $ordersql LIMIT 0,20 ";
+    $query = "SELECT id,title,click,scores FROM `#@__archives` $swhere $ordersql LIMIT 0,20 ";
     $dsql->SetQuery($query);
     $dsql->Execute('ga');
     while ($row = $dsql->GetObject('ga')) {

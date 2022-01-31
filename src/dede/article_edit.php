@@ -156,29 +156,29 @@ else if ($dopost == 'save') {
     //跳转网址的文档强制为动态
     if (preg_match("#j#", $flag)) $ismake = -1;
     //更新数据库的SQL语句
-    $query = "UPDATE #@__archives SET
-    typeid='$typeid',
-    typeid2='$typeid2',
-    sortrank='$sortrank',
-    flag='$flag',
-    click='$click',
-    ismake='$ismake',
-    arcrank='$arcrank',
-    money='$money',
-    title='$title',
-    color='$color',
-    writer='$writer',
-    source='$source',
-    litpic='$litpic',
-    pubdate='$pubdate',
-    notpost='$notpost',
-    description='$description',
-    keywords='$keywords',
-    shorttitle='$shorttitle',
-    filename='$filename',
-    dutyadmin='$adminid',
-    weight='$weight'
-    WHERE id='$id'; ";
+    $query = "UPDATE `#@__archives` SET
+    `typeid`='$typeid',
+    `typeid2`='$typeid2',
+    `sortrank`='$sortrank',
+    `flag`='$flag',
+    `click`='$click',
+    `ismake`='$ismake',
+    `arcrank`='$arcrank',
+    `money`='$money',
+    `title`='$title',
+    `color`='$color',
+    `writer`='$writer',
+    `source`='$source',
+    `litpic`='$litpic',
+    `pubdate`='$pubdate',
+    `notpost`='$notpost',
+    `description`='$description',
+    `keywords`='$keywords',
+    `shorttitle`='$shorttitle',
+    `filename`='$filename',
+    `dutyadmin`='$adminid',
+    `weight`='$weight'
+    WHERE `id`='$id'; ";
     if (!$dsql->ExecuteNoneQuery($query)) {
         ShowMsg('更新数据库archives表时出错，请检查', -1);
         exit();

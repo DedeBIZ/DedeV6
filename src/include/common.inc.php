@@ -53,6 +53,9 @@ if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
         }
     }
 }
+if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
+    mysqli_report(MYSQLI_REPORT_OFF);
+}
 //是否启用mb_substr替换cn_substr来提高效率
 $cfg_is_mb = $cfg_is_iconv = FALSE;
 if (function_exists('mb_substr')) $cfg_is_mb = TRUE;

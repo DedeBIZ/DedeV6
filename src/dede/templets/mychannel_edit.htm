@@ -163,7 +163,7 @@
             <option value='0'>游客</option>
             <?php
           $urank = $cuserLogin->getUserRank();
-          $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank' And rank>=10");
+          $dsql->SetQuery("Select * from `#@__arcrank` where `adminrank`<='$urank' And `rank`>=10");
           $dsql->Execute();
           while($row2 = $dsql->GetObject())
           {

@@ -538,7 +538,7 @@ else if ($dopost == 'quickEdit') {
         <td class='bline'>
             <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
             <?php
-            $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
+            $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY `sortid` ASC");
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
@@ -566,7 +566,7 @@ else if ($dopost == 'quickEdit') {
                 <?php echo $arcRow["rankname"] ?> </option>
                 <?php
                 $urank = $cuserLogin->getUserRank();
-                $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank'");
+                $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `adminrank`<='$urank'");
                 $dsql->Execute();
                 while ($row = $dsql->GetObject()) {
                     echo "<option value='".$row->rank."'>".$row->membername."</option>";
@@ -843,7 +843,7 @@ else if ($dopost == 'attsDlg') {
         <td class='bline'>
             <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
             <?php
-            $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
+            $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY `sortid` ASC");
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
