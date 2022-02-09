@@ -558,7 +558,7 @@ function getSelCat(targetId) {
 			}
 		}
 		if (selvalue == '') {
-			alert('你没有选中任何项目！');
+			alert('您没有选中任何项目！');
 			return;
 		}
 		if (targetObj) {
