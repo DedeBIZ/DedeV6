@@ -122,7 +122,7 @@ table{background:#fff}
                         else if ($file == "..") {
                             if ($activepath == "") continue;
                             $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                            $line = "\n<tr height='28'>
+                            $line = "\n<tr height='26'>
                             <td class='linerow'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='img/dir2.gif'>上级目录</a></td>
                             <td colspan='2' class='linerow'>当前目录:$activepath</td>
                             </tr>\r\n";
@@ -130,7 +130,7 @@ table{background:#fff}
                         } else if (is_dir("$inpath/$file")) {
                             if (preg_match("#^_(.*)$#i", $file)) continue;
                             if (preg_match("#^\.(.*)$#i", $file)) continue;
-                            $line = "\n<tr height='28'>
+                            $line = "\n<tr height='26'>
                             <td class='linerow'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='img/dir.gif'>$file</a></td>
                             <td class='linerow'></td>
                             <td class='linerow'></td>
@@ -142,7 +142,7 @@ table{background:#fff}
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;
-                            $line = "\n<tr height='28'>
+                            $line = "\n<tr height='26'>
                             <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='img/zip.gif'>$file</a></td>
                             <td class='linerow'>$filesize KB</td>
                             <td class='linerow'>$filetime</td>
@@ -154,7 +154,7 @@ table{background:#fff}
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;
-                            $line = "\n<tr height='28'>
+                            $line = "\n<tr height='26'>
                             <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='img/exe.gif'>$file</a></td>
                             <td class='linerow'>$filesize KB</td>
                             <td class='linerow'>$filetime</td>
