@@ -48,10 +48,10 @@ if($dopost=="add"){
 	$mid=$cuserLogin->getUserID();
 	$query = "INSERT INTO #@__mail_title (period,typeid,title,content,addtime,sendtime,writer,mid,state,count) VALUES ('$period','$typeid','$title','$message','$addtime',0,'$writer','$mid',0,0)";
 	if(!$dsql->ExecuteNoneQuery($query)){
-		ShowMsg("更新数据库#@__mail_title表时出错，请检查！","javascript:;");
+		ShowMsg("更新数据库#@__mail_title表时出错，请检查","javascript:;");
 	  exit();
 	}else{
-    ShowMsg("发表期刊成功！","mail_title.php");
+    ShowMsg("发表期刊成功","mail_title.php");
 		exit();
 	}
 }elseif($dopost=="editsave"){
@@ -76,15 +76,15 @@ if($dopost=="add"){
 
 	$query = "UPDATE #@__mail_title SET period='$period',typeid='$typeid',title='$title',content='$message',writer='$writer',mid='$mid' WHERE id=$id";
 	if(!$dsql->ExecuteNoneQuery($query)){
-		ShowMsg("更新数据库#@__mail_title表时出错，请检查！","javascript:;");
+		ShowMsg("更新数据库#@__mail_title表时出错，请检查","javascript:;");
 	  exit();
 	}else{
-    ShowMsg("编辑期刊成功！","mail_title.php");
+    ShowMsg("编辑期刊成功","mail_title.php");
 		exit();
 	}
 }elseif($dopost=="delete"){
   $dsql->ExecuteNoneQuery("Delete From `#@__mail_title` where id='$id'");
-  ShowMsg("删除期刊成功！","mail_title.php");
+  ShowMsg("删除期刊成功","mail_title.php");
 	exit();
 }else{
 	

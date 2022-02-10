@@ -20,7 +20,7 @@ function ReWriteConfig()
 {
     global $dsql, $configfile;
     if (!is_writeable($configfile)) {
-        echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数！";
+        echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
@@ -53,7 +53,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__sysconfig` SET `value`='$v' WHERE varname='$k' ");
     }
     ReWriteConfig();
-    ShowMsg("成功更改站点配置！", "sys_info.php");
+    ShowMsg("成功更改站点配置", "sys_info.php");
     exit();
 }
 //增加新变量
@@ -78,15 +78,15 @@ else if ($dopost == 'add') {
     VALUES ('$aid','$nvarname','$varmsg','$nvarvalue','$vartype','$vargroup')";
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if (!$rs) {
-        ShowMsg("新增变量失败，可能有非法字符！", "sys_info.php?gp=$vargroup");
+        ShowMsg("新增变量失败，可能有非法字符", "sys_info.php?gp=$vargroup");
         exit();
     }
     if (!is_writeable($configfile)) {
-        ShowMsg("成功保存变量，但由于 $configfile 无法写入，因此不能更新配置文件！", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功保存变量，但由于 $configfile 无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
         exit();
     } else {
         ReWriteConfig();
-        ShowMsg("成功保存变量并更新配置文件！", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功保存变量并更新配置文件", "sys_info.php?gp=$vargroup");
         exit();
     }
 }

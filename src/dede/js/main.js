@@ -496,7 +496,7 @@ function copyToClipboard(txt) {
 		try {
 			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
 		} catch (e) {
-			alert("被浏览器拒绝！\n请在浏览器地址栏输入'about:config'并回车\n然后将'signed.applets.codebase_principal_support'设置为'true'");
+			alert("被浏览器拒绝\n请在浏览器地址栏输入'about:config'并回车\n然后将'signed.applets.codebase_principal_support'设置为'true'");
 		}
 		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
 		if (!clip) return;
@@ -558,7 +558,7 @@ function getSelCat(targetId) {
 			}
 		}
 		if (selvalue == '') {
-			alert('您没有选中任何项目！');
+			alert('您没有选中任何项目');
 			return;
 		}
 		if (targetObj) {

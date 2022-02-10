@@ -91,7 +91,7 @@ if ($action == 'test') {
 
     AjaxHead();
     TestSafe(DEDEROOT);
-    if ($message == '') $message = "<font color='green' style='font-size:14px'>没发现可疑文件！</font>";
+    if ($message == '') $message = "<font color='green' style='font-size:14px'>没发现可疑文件</font>";
     echo $message;
     exit();
 } else if ($action == 'viewdiff') {
@@ -132,7 +132,7 @@ else if ($action == 'clear') {
             @unlink($d.'/'.$filename);
         }
     }
-    $message = "<font color='green' style='font-size:14px'>成功清空模板缓存！</font>";
+    $message = "<font color='green' style='font-size:14px'>成功清空模板缓存</font>";
     echo $message;
     exit();
 }

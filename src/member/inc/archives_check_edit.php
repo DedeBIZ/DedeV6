@@ -20,11 +20,11 @@ $userip = GetIP();
 $svali = GetCkVdValue();
 if (strtolower($vdcode) != $svali || $svali == '') {
     ResetVdValue();
-    ShowMsg('验证码错误！', '-1');
+    ShowMsg('验证码错误', '-1');
     exit();
 }
 if ($typeid == 0) {
-    ShowMsg('请指定文档隶属的栏目！', '-1');
+    ShowMsg('请指定文档隶属的栏目', '-1');
     exit();
 }
 
@@ -38,7 +38,7 @@ $addtable = $cInfos['addtable'];
 
 //检测栏目是否有投稿权限
 if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0 || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
-    ShowMsg("您所选择的栏目不支持投稿！", "-1");
+    ShowMsg("您所选择的栏目不支持投稿", "-1");
     exit();
 }
 
@@ -66,7 +66,7 @@ $mid = $cfg_ml->M_ID;
 $midQuery = "SELECT mid FROM `#@__arctiny` WHERE id='$aid'";
 $midRow = $dsql->GetOne($midQuery);
 if ($midRow['mid'] != $mid) {
-    ShowMsg('您暂无权限在这里进行修改文档！', 'javascript:;');
+    ShowMsg('您暂无权限在这里进行修改文档', 'javascript:;');
     exit;
 }
 

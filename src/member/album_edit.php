@@ -12,11 +12,11 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用！", "-1");
+    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用", "-1");
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("对不起，由于系统关闭了图集功能，您访问的功能不可用！", "-1");
+    ShowMsg("对不起，由于系统关闭了图集功能，您访问的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -44,7 +44,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，您不能再修改它！", "-1");
+            ShowMsg("这篇文档已经锁定，您不能再修改它", "-1");
             exit();
         }
     }
@@ -64,7 +64,7 @@ function _Save(){  }
     if (preg_match("/1/", $safe_gdopen)) {
         if (strtolower($vdcode) != $svali || $svali == '') {
             ResetVdValue();
-            ShowMsg('验证码错误！', '-1');
+            ShowMsg('验证码错误', '-1');
             exit();
         }
     }
@@ -119,7 +119,7 @@ function _Save(){  }
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();
         }
     }
@@ -138,7 +138,7 @@ function _Save(){  }
              flag='$flag'
         WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("把数据保存到数据库主表时出错，请联系管理员！".$dsql->GetError(), "-1");
+        ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
     }
 
@@ -158,7 +158,7 @@ function _Save(){  }
       isrm='$isrm'{$inadd_f}
     WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($query)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员！".$dsql->GetError(), "javascript:;");
+            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员".$dsql->GetError(), "javascript:;");
             exit();
         }
     }
@@ -179,7 +179,7 @@ function _Save(){  }
 &nbsp;&nbsp;
 <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理图集</a> ";
 
-    $wintitle = "成功更改图集！";
+    $wintitle = "成功更改图集";
     $wecome_info = "图集管理::更改图集";
     $win = new OxWindow();
     $win->AddTitle("成功更改图集：");

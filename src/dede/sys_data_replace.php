@@ -42,11 +42,11 @@ function __Apply()
         exit();
     }
     if ($exptable == '' || $rpfield == '') {
-        ShowMsg("请指定数据表和字段！", "javascript:;");
+        ShowMsg("请指定数据表和字段", "javascript:;");
         exit();
     }
     if ($rpstring == '') {
-        ShowMsg("请指定被替换内容！", "javascript:;");
+        ShowMsg("请指定被替换内容", "javascript:;");
         exit();
     }
     if ($rptype == 'replace') {
@@ -54,10 +54,10 @@ function __Apply()
         $rs = $dsql->ExecuteNoneQuery("UPDATE $exptable SET $rpfield=REPLACE($rpfield,'$rpstring','$tostring') $condition ");
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
         if ($rs) {
-            ShowMsg("成功完成数据替换！", "javascript:;");
+            ShowMsg("成功完成数据替换", "javascript:;");
             exit();
         } else {
-            ShowMsg("数据替换失败！", "javascript:;");
+            ShowMsg("数据替换失败", "javascript:;");
             exit();
         }
     } else {
@@ -69,7 +69,7 @@ function __Apply()
         $dsql->Execute();
         $tt = $dsql->GetTotalRow();
         if ($tt == 0) {
-            ShowMsg("根据您指定的正则，找不到任何东西！", "javascript:;");
+            ShowMsg("根据您指定的正则，找不到任何东西", "javascript:;");
             exit();
         }
         $oo = 0;
@@ -82,7 +82,7 @@ function __Apply()
             }
         }
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
-        ShowMsg("共找到 $tt 条记录，成功替换了 $oo 条！", "javascript:;");
+        ShowMsg("共找到 $tt 条记录，成功替换了 $oo 条", "javascript:;");
         exit();
     }
 }

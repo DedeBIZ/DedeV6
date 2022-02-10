@@ -19,7 +19,7 @@ if ($dopost == "save") {
     $tagname = trim($tagname);
     $row = $dsql->GetOne("SELECT typeid FROM `#@__mytag` WHERE typeid='$typeid' AND tagname LIKE '$tagname'");
     if (is_array($row)) {
-        ShowMsg("在相同栏目下已经存在同名的标记！", "-1");
+        ShowMsg("在相同栏目下已经存在同名的标记", "-1");
         exit();
     }
     $starttime = GetMkTime($starttime);
@@ -27,7 +27,7 @@ if ($dopost == "save") {
     $inQuery = "INSERT INTO `#@__mytag`(typeid,tagname,timeset,starttime,endtime,normbody,expbody)
      VALUES('$typeid','$tagname','$timeset','$starttime','$endtime','$normbody','$expbody'); ";
     $dsql->ExecuteNoneQuery($inQuery);
-    ShowMsg("成功增加一个自定义标记！", "mytag_main.php");
+    ShowMsg("成功增加一个自定义标记", "mytag_main.php");
     exit();
 }
 $startDay = time();

@@ -17,7 +17,7 @@ require_once DEDEINC.'/shopcar.class.php';
 require_once DEDEINC.'/memberlogin.class.php';
 
 if ($cfg_mb_open == 'N') {
-    ShowMsg("系统关闭了会员功能，因此您无法访问此页面！", "javascript:;");
+    ShowMsg("系统关闭了会员功能，因此您无法访问此页面", "javascript:;");
     exit();
 }
 $rs = array();
@@ -31,7 +31,7 @@ if (!isset($dopost) || empty($dopost)) {
     //获得购物车内商品,返回数组
     $Items = $cart->getItems();
     if (empty($Items)) {
-        ShowMsg("您的购物车中没有商品！", "-1");
+        ShowMsg("您的购物车中没有商品", "-1");
         exit();
     }
 
@@ -77,25 +77,25 @@ if (!isset($dopost) || empty($dopost)) {
     } else if ($do == 'clickout') {
         $svali = GetCkVdValue();
         if ((strtolower($vdcode) != $svali || $svali == "") && $payment == 'none') {
-            ShowMsg("验证码错误！", "-1");
+            ShowMsg("验证码错误", "-1");
             exit();
         }
         if (empty($address)) {
-            ShowMsg("请填写收货地址！", "-1");
+            ShowMsg("请填写收货地址", "-1");
             exit();
         }
         if (empty($postname)) {
-            ShowMsg("请填写收货人姓名！", "-1");
+            ShowMsg("请填写收货人姓名", "-1");
             exit();
         }
         $paytype    = isset($paytype) && is_numeric($paytype) ? $paytype : 0;
         $pid        = isset($pid) && is_numeric($pid) ? $pid : 0;
         if ($paytype < 1) {
-            ShowMsg("请选择支付方式！", "-1");
+            ShowMsg("请选择支付方式", "-1");
             exit();
         }
         if ($pid < 1) {
-            ShowMsg("请选择配送方式！", "-1");
+            ShowMsg("请选择配送方式", "-1");
             exit();
         }
         $address     = cn_substrR(trim(RemoveXSS($address)), 200);
@@ -105,11 +105,11 @@ if (!isset($dopost) || empty($dopost)) {
         $zip            = preg_replace("#[^0-9]#", "", $zip);
         $email        = cn_substrR(RemoveXSS($email), 255);
         if (empty($tel)) {
-            ShowMsg("请填写正确的收货人联系电话！", "-1");
+            ShowMsg("请填写正确的收货人联系电话", "-1");
             exit();
         }
         if ($zip < 1 || $zip > 999999) {
-            ShowMsg("请填写正确的收货人邮政编码！", "-1");
+            ShowMsg("请填写正确的收货人邮政编码", "-1");
             exit();
         }
 
@@ -121,16 +121,16 @@ if (!isset($dopost) || empty($dopost)) {
             $password = trim($password);
 
             if (empty($username) || $password) {
-                ShowMsg("请选登录！", "-1", 0, 2000);
+                ShowMsg("请选登录", "-1", 0, 2000);
                 exit();
             }
 
             $rs = $cfg_ml->CheckUser($username, $password);
             if ($rs == 0) {
-                ShowMsg("用户名不存在！", "-1", 0, 2000);
+                ShowMsg("用户名不存在", "-1", 0, 2000);
                 exit();
             } else if ($rs == -1) {
-                ShowMsg("密码错误！", "-1", 0, 2000);
+                ShowMsg("密码错误", "-1", 0, 2000);
                 exit();
             }
             $userid = $cfg_ml->M_ID;
@@ -168,7 +168,7 @@ if (!isset($dopost) || empty($dopost)) {
                 ";
                 $dsql->ExecuteNoneQuery($sql);
             } else {
-                ShowMsg("更新订单时出现错误！".$dsql->GetError(), "-1");
+                ShowMsg("更新订单时出现错误".$dsql->GetError(), "-1");
                 exit();
             }
         } else {
@@ -229,7 +229,7 @@ if (!isset($dopost) || empty($dopost)) {
     if (preg_match("/S-P[0-9]+RN[0-9]/", $oid)) {
         $oid = trim($oid);
     } else {
-        ShowMsg("您的订单号不存在！", "/member/shops_orders.php", 0, 2000);
+        ShowMsg("您的订单号不存在", "/member/shops_orders.php", 0, 2000);
         exit();
     }
 
@@ -241,16 +241,16 @@ if (!isset($dopost) || empty($dopost)) {
         $password = trim($password);
 
         if (empty($username) || $password) {
-            ShowMsg("请选登录！", "-1", 0, 2000);
+            ShowMsg("请选登录", "-1", 0, 2000);
             exit();
         }
 
         $rs = $cfg_ml->CheckUser($username, $password);
         if ($rs == 0) {
-            ShowMsg("用户名不存在！", "-1", 0, 2000);
+            ShowMsg("用户名不存在", "-1", 0, 2000);
             exit();
         } else if ($rs == -1) {
-            ShowMsg("密码错误！", "-1", 0, 2000);
+            ShowMsg("密码错误", "-1", 0, 2000);
             exit();
         }
         $userid = $cfg_ml->M_ID;

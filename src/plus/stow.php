@@ -23,7 +23,7 @@ require_once(DEDEINC."/memberlogin.class.php");
 $ml = new MemberLogin();
 
 if ($ml->M_ID == 0) {
-    ShowMsg('只有会员才允许收藏操作！', 'javascript:window.close();');
+    ShowMsg('只有会员才允许收藏操作', 'javascript:window.close();');
     exit();
 }
 
@@ -54,4 +54,4 @@ if ($type == '') {
 $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='{$ml->M_ID}' ");
 $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `stow`='{$row['nums']}' WHERE `mid`='".$ml->M_ID."'");
 
-ShowMsg('成功收藏一篇文档！', 'javascript:window.close();');
+ShowMsg('成功收藏一篇文档', 'javascript:window.close();');

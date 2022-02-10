@@ -99,7 +99,7 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
     $contentLength = $m_httphead['content-length'];
 
     //保存文件
-    $fp = fopen($filename, "w") or die("写入文件：{$filename} 失败！");
+    $fp = fopen($filename, "w") or die("写入文件：{$filename} 失败");
     $i = 0;
     $okdata = "";
     $starttime = time();

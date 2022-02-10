@@ -18,7 +18,7 @@ $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "ad_main.php" : $_COOKIE['
 
 if ($dopost == 'delete') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__myad` WHERE aid='$aid' ");
-    ShowMsg("成功删除一则广告代码！", $ENV_GOBACK_URL);
+    ShowMsg("成功删除一则广告代码", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "gettag") {
     require_once(DEDEINC.'/oxwindow.class.php');
@@ -63,7 +63,7 @@ if ($dopost == 'delete') {
      WHERE aid='$aid'
      ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功更改一则广告代码！", $ENV_GOBACK_URL);
+    ShowMsg("成功更改一则广告代码", $ENV_GOBACK_URL);
     exit();
 }
 

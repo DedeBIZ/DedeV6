@@ -23,7 +23,7 @@ body { background-image: url(images/allbg.gif); }
 function checkSubmit()
 {
    if(document.form1.title.value==""){
-	 ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空！");
+	 ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
 	 document.form1.title.focus();
 	 return false;
   }

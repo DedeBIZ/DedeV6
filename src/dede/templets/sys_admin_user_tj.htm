@@ -13,7 +13,7 @@
 	{
 		var loadhtml = $DE('loaddiv').innerHTML;
 		var ajaxdiv = $DE('userct'+uid);
-		var myajax = new DedeAjax(ajaxdiv, true, true, '载入失败！', loadhtml);
+		var myajax = new DedeAjax(ajaxdiv, true, true, '载入失败', loadhtml);
 		myajax.SendGet2('sys_admin_user_tj.php?dopost=getone&uid='+uid);
 	}
 </script>

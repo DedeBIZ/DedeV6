@@ -44,22 +44,22 @@
 		}
 		function delFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容！");
+			if (qstr == "") ShowMsg("您没选中任何内容");
 			else if (window.confirm('您确定要删除这些评论吗?')) location.href = "feedback_main.php?job=del&fid=" + qstr;
 		}
 		function delFeedbackIP() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容！");
+			if (qstr == "") ShowMsg("您没选中任何内容");
 			else if (window.confirm('您确定要删除这些评论吗?')) location.href = "feedback_main.php?job=delall&fid=" + qstr;
 		}
 		function checkFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容！");
+			if (qstr == "") ShowMsg("您没选中任何内容");
 			else location.href = "feedback_main.php?job=check&fid=" + qstr;
 		}
 		function editFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容！");
+			if (qstr == "") ShowMsg("您没选中任何内容");
 			else location.href = "feedback_edit.php?job=edit&fid=" + qstr;
 		}
 	</script>

@@ -23,11 +23,11 @@ body { background-image: url(images/allbg.gif); }
 function checkSubmit()
 {
   if(document.form1.title.value==""){
-	   ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空！");
+	   ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
 	   return false;
   }
   if(document.form1.typeid.value==0){
-    ShowMsg("请选择档案的主栏目！");
+    ShowMsg("请选择档案的主栏目");
 	   return false;
   }
 }

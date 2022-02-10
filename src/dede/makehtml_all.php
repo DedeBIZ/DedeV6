@@ -28,7 +28,7 @@ if ($action == '') {
         $starttime = GetMkTime($starttime);
         $mkvalue = ($uptype == 'time' ? $starttime : $startid);
         OptimizeData($dsql);
-        ShowMsg("完成数据优化，现在开始更新文档！", "makehtml_all.php?action=make&step=2&uptype=$uptype&mkvalue=$mkvalue");
+        ShowMsg("完成数据优化，现在开始更新文档", "makehtml_all.php?action=make&step=2&uptype=$uptype&mkvalue=$mkvalue");
         exit();
     }
     //更新文档
@@ -57,7 +57,7 @@ if ($action == '') {
         } else {
             if (file_exists($homeFile)) echo "启用静态生成，建议删除"+$homeFile;
         }
-        ShowMsg("完成更新所有文档，现在开始更新栏目页！", "makehtml_all.php?action=make&step=4&uptype=$uptype&mkvalue=$mkvalue");
+        ShowMsg("完成更新所有文档，现在开始更新栏目页", "makehtml_all.php?action=make&step=4&uptype=$uptype&mkvalue=$mkvalue");
         exit();
     }
     //更新栏目
@@ -69,7 +69,7 @@ if ($action == '') {
         $adminID = $cuserLogin->getUserID();
         $mkcachefile = DEDEDATA."/mkall_cache_{$adminID}.php";
         if ($uptype == 'all' || empty($mkvalue)) {
-            ShowMsg("不需要进行初处理，现更新所有栏目！", "makehtml_list_action.php?gotype=mkallct");
+            ShowMsg("不需要进行初处理，现更新所有栏目", "makehtml_list_action.php?gotype=mkallct");
             exit();
         } else {
             if ($uptype == 'time') {
@@ -96,7 +96,7 @@ if ($action == '') {
                 }
             }
         }
-        $fp = fopen($mkcachefile, 'w') or die("无法写入缓存文件：{$mkcachefile} 所以无法更新栏目！");
+        $fp = fopen($mkcachefile, 'w') or die("无法写入缓存文件：{$mkcachefile} 所以无法更新栏目");
         if (count($typeidsok) > 0) {
             fwrite($fp, "<"."?php\r\n");
             $i = -1;
@@ -108,11 +108,11 @@ if ($action == '') {
             }
             fwrite($fp, "?".">");
             fclose($fp);
-            ShowMsg("完成栏目缓存处理，现转向更新栏目！", "makehtml_list_action.php?gotype=mkall");
+            ShowMsg("完成栏目缓存处理，现转向更新栏目", "makehtml_list_action.php?gotype=mkall");
             exit();
         } else {
             fclose($fp);
-            ShowMsg("没有可更新的栏目，现在作最后数据优化！", "makehtml_all.php?action=make&step=10");
+            ShowMsg("没有可更新的栏目，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
             exit();
         }
     }
@@ -124,7 +124,7 @@ if ($action == '') {
         $mkcachefile = DEDEDATA."/mkall_cache_{$adminID}.php";
         @unlink($mkcachefile);
         OptimizeData($dsql);
-        ShowMsg("完成所有文件的更新！", "javascript:;");
+        ShowMsg("完成所有文件的更新", "javascript:;");
         exit();
     } //make step
 

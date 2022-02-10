@@ -1,5 +1,4 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -16,12 +15,12 @@
     function checkSubmit() {
       if (document.form2.email.value == "") {
         document.form2.email.focus();
-        ShowMsg("Email不能为空！");
+        ShowMsg("Email不能为空");
         return false;
       }
       if (document.form2.uname.value == "") {
         document.form2.uname.focus();
-        ShowMsg("用户昵称不能为空！");
+        ShowMsg("用户昵称不能为空");
         return false;
       }
     }
@@ -38,7 +37,7 @@
       <td height="200" bgcolor="#FFFFFF" align='center'><?php
 	if($row['matt']==10) 
     {
-    echo "<font color='red'>已经是管理员了，不要再提升了！</font>";
+    echo "<font color='red'>已经是管理员了，不要再提升了</font>";
     }else{
 	?>
         <table width="98%" border="0" cellspacing="0" cellpadding="6" class="table table-borderless">

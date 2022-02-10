@@ -119,7 +119,7 @@ class TypeLink
             if ($islink) {
                 return $indexpage;
             } else {
-                return "没指定分类！";
+                return "没指定分类";
             }
         } else {
             if ($islink) {

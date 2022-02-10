@@ -31,7 +31,7 @@ function __bak_data();
 --------------------*/
 if ($dopost == 'bak') {
     if (empty($tablearr)) {
-        ShowMsg('您没选中任何表！', 'javascript:;');
+        ShowMsg('您没选中任何表', 'javascript:;');
         exit();
     }
     if (!is_dir($bkdir)) {
@@ -179,7 +179,7 @@ if ($dopost == 'bak') {
                     $startpos = 0;
                     break;
                 } else {
-                    PutInfo("完成所有数据备份！", "");
+                    PutInfo("完成所有数据备份", "");
                     exit();
                 }
             }
@@ -279,7 +279,7 @@ function PutInfo($msg1, $msg2)
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
         <link rel='stylesheet' href='../static/css/bootstrap.min.css'>
         <title>DedeBIZ 提示信息</title>
-        <base target='_self'/>\n</head>\n<body leftmargin='0' topmargin='0'>\n<main class='container'><div class='modal' tabindex='-1' role='dialog' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>DedeBIZ 提示信息！</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
+        <base target='_self'/>\n</head>\n<body leftmargin='0' topmargin='0'>\n<main class='container'><div class='modal' tabindex='-1' role='dialog' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>DedeBIZ 提示信息</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
     echo $msginfo."\n</body>\n</html>";
 }
 

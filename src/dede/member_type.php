@@ -42,7 +42,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery($query);
     }
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
-    echo "<script> alert('成功更新会员产品分类表！'); </script>";
+    echo "<script> alert('成功更新会员产品分类表'); </script>";
 }
 $arcranks = array();
 $dsql->SetQuery("SELECT * FROM #@__arcrank WHERE rank>10 ");

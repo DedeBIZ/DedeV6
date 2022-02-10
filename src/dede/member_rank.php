@@ -39,11 +39,11 @@ if ($dopost == 'save') {
             $dsql->ExecuteNoneQuery($inquery);
         }
     }
-    echo "<script> alert('成功更新会员等级表！'); </script>";
+    echo "<script> alert('成功更新会员等级表'); </script>";
 }
 if ($dopost == 'del') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__arcrank` WHERE id='$id' AND rank<>10");
-    ShowMsg("删除成功！", "member_rank.php");
+    ShowMsg("删除成功", "member_rank.php");
     exit();
 }
 

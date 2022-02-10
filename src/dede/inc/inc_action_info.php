@@ -425,7 +425,7 @@ $actionSearch[10] = array(
         ),
         9  =>  array(
             'title' => '随机模板设置',
-            'description' => '本设置仅适用于系统默认的文章模型，设置后发布文章时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可！',
+            'description' => '本设置仅适用于系统默认的文章模型，设置后发布文章时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可',
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_template_rand.php'
         ),

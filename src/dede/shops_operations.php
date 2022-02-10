@@ -52,13 +52,13 @@ if (isset($dopost)) {
             $dsql->ExecuteNoneQuery($query2);
             $dsql->ExecuteNoneQuery($query3);
         }
-        ShowMsg("成功删除指定的订单记录！", $ENV_GOBACK_URL);
+        ShowMsg("成功删除指定的订单记录", $ENV_GOBACK_URL);
         exit();
     } else {
-        ShowMsg("不充许的操作范围！", $ENV_GOBACK_URL);
+        ShowMsg("不充许的操作范围", $ENV_GOBACK_URL);
         exit();
     }
-    ShowMsg("成功更改指定的订单记录！", $ENV_GOBACK_URL);
+    ShowMsg("成功更改指定的订单记录", $ENV_GOBACK_URL);
     exit();
 }
 

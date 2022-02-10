@@ -21,7 +21,7 @@ if ($dopost == "delete") {
     }
     if ($dquery != "") $dquery = " WHERE ".$dquery;
     $dsql->ExecuteNoneQuery("DELETE FROM #@__moneycard_record $dquery");
-    ShowMsg("成功删除指定的记录！", "cards_manage.php");
+    ShowMsg("成功删除指定的记录", "cards_manage.php");
     exit();
 } else {
     $addsql = '';

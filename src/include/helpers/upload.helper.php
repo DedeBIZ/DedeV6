@@ -120,23 +120,23 @@ if (!function_exists('MemberUploads')) {
             //源文件类型检查
             if ($utype == 'image') {
                 if (!preg_match("/\.(".$cfg_imgtype.")$/", $GLOBALS[$upname.'_name'])) {
-                    ShowMsg("您所上传的图片类型不在许可列表，请上传{$cfg_imgtype}类型！", '-1');
+                    ShowMsg("您所上传的图片类型不在许可列表，请上传{$cfg_imgtype}类型", '-1');
                     exit();
                 }
                 $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
                 $imgfile_type = strtolower(trim($GLOBALS[$upname.'_type']));
                 if (!in_array($imgfile_type, $sparr)) {
-                    ShowMsg('上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种！', '-1');
+                    ShowMsg('上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种', '-1');
                     exit();
                 }
             } else if ($utype == 'flash' && !preg_match("/\.swf$/", $GLOBALS[$upname.'_name'])) {
-                ShowMsg('上传的文件必须为flash文件！', '-1');
+                ShowMsg('上传的文件必须为flash文件', '-1');
                 exit();
             } else if ($utype == 'media' && !preg_match("/\.(".$cfg_mediatype.")$/", $GLOBALS[$upname.'_name'])) {
                 ShowMsg('您所上传的文件类型必须为：'.$cfg_mediatype, '-1');
                 exit();
             } else if (!preg_match("/\.(".$allAllowType.")$/", $GLOBALS[$upname.'_name'])) {
-                ShowMsg("您所上传的文件类型不被允许！", '-1');
+                ShowMsg("您所上传的文件类型不被允许", '-1');
                 exit();
             }
             //再次严格检测文件扩展名是否符合系统定义的类型
@@ -144,12 +144,12 @@ if (!function_exists('MemberUploads')) {
             $sname = $fs[count($fs) - 1];
             $alltypes = explode('|', $allAllowType);
             if (!in_array(strtolower($sname), $alltypes)) {
-                ShowMsg('您所上传的文件类型不被允许！', '-1');
+                ShowMsg('您所上传的文件类型不被允许', '-1');
                 exit();
             }
             //强制禁止的文件类型
             if (preg_match("/(asp|php|pl|cgi|shtm|js)$/", $sname)) {
-                ShowMsg('您上传的文件为系统禁止的类型！', '-1');
+                ShowMsg('您上传的文件为系统禁止的类型', '-1');
                 exit();
             }
             if ($exname == '') {
@@ -157,12 +157,12 @@ if (!function_exists('MemberUploads')) {
             } else {
                 $filename = $cfg_user_dir."/{$userid}/{$exname}.".$sname;
             }
-            move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到 {$filename} 失败！");
+            move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到 {$filename} 失败");
             @unlink($GLOBALS[$upname]);
 
             if (@filesize($cfg_basedir.$filename) > $GLOBALS['cfg_mb_upload_size'] * 1024) {
                 @unlink($cfg_basedir.$filename);
-                ShowMsg('您上传的文件超出系统大小限制！', '-1');
+                ShowMsg('您上传的文件超出系统大小限制', '-1');
                 exit();
             }
 

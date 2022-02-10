@@ -80,7 +80,7 @@ if ($action == 'post') {
     if (empty($do)) {
         $id = isset($id) && is_numeric($id) ? $id : 0;
         if (empty($id)) {
-            showMsg('非法操作！未指定id', 'javascript:;');
+            showMsg('非法操作未指定id', 'javascript:;');
             exit();
         }
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";

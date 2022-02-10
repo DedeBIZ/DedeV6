@@ -18,7 +18,7 @@ if ($dopost == "ok") {
     if (empty($uparc)) $uparc = 0;
     if ($step == -1) {
         if ($uparc == 0) sleep(1);
-        ShowMsg("成功更新所有缓存！", "javascript:;");
+        ShowMsg("成功更新所有缓存", "javascript:;");
         exit();
     }
 

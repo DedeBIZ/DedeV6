@@ -24,7 +24,7 @@ if (isset($allid)) {
 if ($dopost == "delete") {
     $id = preg_replace("#[^0-9]#", "", $id);
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__flink` WHERE id='$id'");
-    ShowMsg("成功删除一个链接！", $ENV_GOBACK_URL);
+    ShowMsg("成功删除一个链接", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "delall") {
     $aids = explode(',', $aids);
@@ -33,10 +33,10 @@ if ($dopost == "delete") {
             $aid = preg_replace("#[^0-9]#", "", $aid);
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__flink` WHERE id='$aid'");
         }
-        ShowMsg("成功删除指定链接！", $ENV_GOBACK_URL);
+        ShowMsg("成功删除指定链接", $ENV_GOBACK_URL);
         exit();
     } else {
-        ShowMsg("您没选定任何链接！", $ENV_GOBACK_URL);
+        ShowMsg("您没选定任何链接", $ENV_GOBACK_URL);
         exit();
     }
 } else if ($dopost == "saveedit") {
@@ -61,7 +61,7 @@ if ($dopost == "delete") {
     $query = "UPDATE `#@__flink` SET sortrank='$sortrank',url='$url',webname='$webname',logo='$logo',msg='$msg',
                   email='$email',typeid='$typeid',ischeck='$ischeck' WHERE id='$id' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功更改一个链接！", $ENV_GOBACK_URL);
+    ShowMsg("成功更改一个链接", $ENV_GOBACK_URL);
     exit();
 }
 $myLink = $dsql->GetOne("SELECT #@__flink.*,#@__flinktype.typename FROM #@__flink LEFT JOIN #@__flinktype ON #@__flink.typeid=#@__flinktype.id WHERE #@__flink.id=$id");

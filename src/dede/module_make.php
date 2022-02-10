@@ -40,11 +40,11 @@ function Makemodule()
     $filelist = str_replace("\r", "\n", trim($filelist));
     $filelist = trim(preg_replace("#[\n]{1,}#", "\n", $filelist));
     if ($filelist == '') {
-        ShowMsg("对不起，您没有指定模块的文件列表，因此不能创建项目！", "-1");
+        ShowMsg("对不起，您没有指定模块的文件列表，因此不能创建项目", "-1");
         exit();
     }
     if (empty($dev_id)) {
-        ShowMsg("开发者ID不能为空！", "-1");
+        ShowMsg("开发者ID不能为空", "-1");
         exit();
     }
     if (empty($priv)) {
@@ -89,14 +89,14 @@ function Makemodule()
 
     if ($dm->HasModule($hashcode)) {
         $dm->Clear();
-        ShowMsg("对不起，您指定同名模块已经存在，因此不能创建项目！<br>如果您要更新这个模块，请先删除：module/{$hashcode}.xml", "-1");
+        ShowMsg("对不起，您指定同名模块已经存在，因此不能创建项目<br>如果您要更新这个模块，请先删除：module/{$hashcode}.xml", "-1");
         exit();
     }
 
     $readmef = $setupf = $uninstallf = '';
 
     if (empty($readmetxt)) {
-        move_uploaded_file($readme, $mdir."/{$hashcode}-r.html") or die("您没填写说明或上传说明文件！");
+        move_uploaded_file($readme, $mdir."/{$hashcode}-r.html") or die("您没填写说明或上传说明文件");
         $readmef = $dm->GetEncodeFile($mdir."/{$hashcode}-r.html", TRUE);
     } else {
         $readmetxt = "<p style='line-height:150%'>".$readmetxt;
@@ -106,12 +106,12 @@ function Makemodule()
     }
 
     if ($autosetup == 0) {
-        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("您没上传，或系统无法把setup文件移动到 module 目录！");
+        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("您没上传，或系统无法把setup文件移动到 module 目录");
         $setupf = $dm->GetEncodeFile($mdir."/{$hashcode}-s.php", TRUE);
     }
 
     if ($autodel == 0) {
-        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("您没上传，或系统无法把uninstall文件移动到 module 目录！");
+        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("您没上传，或系统无法把uninstall文件移动到 module 目录");
         $uninstallf = $dm->GetEncodeFile($mdir."/{$hashcode}-u.php", TRUE);
     }
 
@@ -182,7 +182,7 @@ $filelist
     fwrite($fp, "</modulefiles>\r\n");
     fwrite($fp, "</module>\r\n");
     fclose($fp);
-    ShowMsg("成功对一个新模块进行编译！", "module_main.php");
+    ShowMsg("成功对一个新模块进行编译", "module_main.php");
     exit();
 }
 /*-------------
@@ -192,11 +192,11 @@ function editModule()
     $filelist = str_replace("\r", "\n", trim($filelist));
     $filelist = trim(preg_replace("#[\n]{1,}#", "\n", $filelist));
     if ($filelist == "") {
-        ShowMsg("对不起，您没有指定模块的文件列表，因此不能创建项目！", "-1");
+        ShowMsg("对不起，您没有指定模块的文件列表，因此不能创建项目", "-1");
         exit();
     }
     if (empty($dev_id)) {
-        ShowMsg("开发者ID不能为空！", "-1");
+        ShowMsg("开发者ID不能为空", "-1");
         exit();
     }
     if (empty($priv)) {
@@ -254,7 +254,7 @@ function editModule()
 
     //编译setup文件
     if (is_uploaded_file($setup)) {
-        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("您没上传，或系统无法把setup文件移动到 module 目录！");
+        move_uploaded_file($setup, $mdir."/{$hashcode}-s.php") or die("您没上传，或系统无法把setup文件移动到 module 目录");
         $setupf = $dm->GetEncodeFile($mdir."/{$hashcode}-s.php", TRUE);
     } else {
         if ($autosetup == 0) $setupf = base64_encode($dm->GetSystemFile($hashcode, 'setup'));
@@ -262,7 +262,7 @@ function editModule()
 
     //编译uninstall文件
     if (is_uploaded_file($uninstall)) {
-        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("您没上传，或系统无法把uninstall文件移动到 module 目录！");
+        move_uploaded_file($uninstall, $mdir."/{$hashcode}-u.php") or die("您没上传，或系统无法把uninstall文件移动到 module 目录");
         $uninstallf = $dm->GetEncodeFile($mdir."/{$hashcode}-u.php", true);
     } else {
         if ($autodel == 0) $uninstallf = base64_encode($dm->GetSystemFile($hashcode, 'uninstall'));
@@ -341,7 +341,7 @@ $filelist
         fwrite($fp, $fxml);
         fclose($fp);
     }
-    ShowMsg("成功对模块重新编译！", "module_main.php");
+    ShowMsg("成功对模块重新编译", "module_main.php");
     exit();
 }
 //ClearAllLink();

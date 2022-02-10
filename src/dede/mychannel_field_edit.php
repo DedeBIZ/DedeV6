@@ -51,7 +51,7 @@ function _SAVE()
 ----------------------*/
 if ($action == 'save') {
     if (!isset($fieldtypes[$dtype])) {
-        ShowMsg("您修改的是系统专用类型的数据，禁止操作！", "-1");
+        ShowMsg("您修改的是系统专用类型的数据，禁止操作", "-1");
         exit();
     }
 
@@ -121,7 +121,7 @@ if ($action == 'save') {
     $oksetting = addslashes($oksetting);
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting',listfields='$addlist' WHERE id='$id' ");
 
-    ShowMsg("成功更改一个字段的配置！", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
+    ShowMsg("成功更改一个字段的配置", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
 /*------------------
@@ -129,7 +129,7 @@ if ($action == 'save') {
 function _DELETE()
 -------------------*/ else if ($action == "delete") {
     if ($row['issystem'] == 1) {
-        ShowMsg("对不起，系统模型的字段不允许删除！", "-1");
+        ShowMsg("对不起，系统模型的字段不允许删除", "-1");
         exit();
     }
 
@@ -143,7 +143,7 @@ function _DELETE()
     $oksetting = addslashes($dtp->GetResultNP());
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting' WHERE id='$id' ");
     $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname` ");
-    ShowMsg("成功删除一个字段！", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
+    ShowMsg("成功删除一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
 

@@ -1,5 +1,4 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -15,14 +14,14 @@
   <script language="javascript">
     function checkSubmit() {
       if (document.form1.typename.value == '') {
-        ShowMsg("自定义表单名称不能为空！");
+        ShowMsg("自定义表单名称不能为空");
         return false;
       }
       return true;
     }
     //删除
     function DelNote(gourl) {
-      if (!window.confirm("您确认要删除这条记录么！")) { return false; }
+      if (!window.confirm("您确认要删除这条记录么")) { return false; }
       location.href = gourl;
     }
   </script>

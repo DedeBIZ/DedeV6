@@ -26,11 +26,11 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
     if ($cfg_mb_notallow != '') {
         $nas = explode(',', $cfg_mb_notallow);
         if (in_array($uid, $nas)) {
-            return $msgtitle.'为系统禁止的标识！';
+            return $msgtitle.'为系统禁止的标识';
         }
     }
     if ($cfg_md_idurl == 'Y' && preg_match("/[^a-z0-9]/i", $uid)) {
-        return $msgtitle.'必须由英文字母或数字组成！';
+        return $msgtitle.'必须由英文字母或数字组成';
     }
 
     if ($cfg_soft_lang == 'utf-8') {
@@ -44,17 +44,17 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
                 $i++;
             } else {
-                return $msgtitle.'可能含有乱码，建议您改用英文字母和数字组合！';
+                return $msgtitle.'可能含有乱码，建议您改用英文字母和数字组合';
             }
         } else {
             if (preg_match("/[^0-9a-z@\.-]/i", $ck_uid[$i])) {
-                return $msgtitle.'不能含有 [@]、[.]、[-]以外的特殊符号！';
+                return $msgtitle.'不能含有 [@]、[.]、[-]以外的特殊符号';
             }
         }
     }
     if ($ckhas) {
         $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE userid LIKE '$uid' ");
-        if (is_array($row)) return $msgtitle."已经存在！";
+        if (is_array($row)) return $msgtitle."已经存在";
     }
     return 'ok';
 }
@@ -69,13 +69,13 @@ function CheckNotAllow()
     global $dsql, $cfg_ml, $cfg_mb_spacesta;
     if (empty($cfg_ml->M_ID)) return;
     if ($cfg_ml->M_Spacesta == -2) {
-        ShowMsg("您已经被禁言，请与管理员联系！", "-1");
+        ShowMsg("您已经被禁言，请与管理员联系", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta == -10) {
-        ShowMsg("系统开启了邮件审核机制，因此您的帐号需要审核后才能发信息！", "-1");
+        ShowMsg("系统开启了邮件审核机制，因此您的帐号需要审核后才能发信息", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta < 0) {
-        ShowMsg('系统开启了审核机制，因此您的帐号需要管理员审核后才能发信息！', '-1');
+        ShowMsg('系统开启了审核机制，因此您的帐号需要管理员审核后才能发信息', '-1');
         exit();
     }
 }
@@ -264,7 +264,7 @@ class MemberLogin
         $hasuse = $this->GetUserSpace();
         $maxSize = $cfg_mb_max * 1024 * 1024;
         if ($hasuse >= $maxSize) {
-            ShowMsg('您的空间已满，不允许上传新文件！', '-1');
+            ShowMsg('您的空间已满，不允许上传新文件', '-1');
             exit();
         }
     }

@@ -36,7 +36,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，您不能再修改它！", "-1");
+            ShowMsg("这篇文档已经锁定，您不能再修改它", "-1");
             exit();
         }
     }
@@ -79,7 +79,7 @@ function _SaveArticle(){  }
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();
         }
     }
@@ -102,14 +102,14 @@ function _SaveArticle(){  }
      WHERE id='$aid' And mid='$mid'; ";
 
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("把数据保存到数据库主表时出错，请联系管理员！".$dsql->GetError(), "-1");
+        ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
     }
 
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f}, userip='$userip' WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员！", "javascript:;");
+            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -129,7 +129,7 @@ function _SaveArticle(){  }
         &nbsp;&nbsp;
         <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理内容</a>
         ";
-    $wintitle = "成功更改内容！";
+    $wintitle = "成功更改内容";
     $wecome_info = "内容管理::更改内容";
     $win = new OxWindow();
     $win->AddTitle("成功更改内容：");

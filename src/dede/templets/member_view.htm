@@ -16,13 +16,13 @@ function checkSubmit()
   if(document.form2.email.value=="")
   {
     document.form2.email.focus();
-    ShowMsg("Email不能为空！");
+    ShowMsg("Email不能为空");
     return false;
   }
   if(document.form2.uname.value=="")
   {
     document.form2.uname.focus();
-    ShowMsg("用户昵称不能为空！");
+    ShowMsg("用户昵称不能为空");
     return false;
   }
 }
@@ -36,7 +36,7 @@ function checkSubmit()
 <tr>
 <td height="200" bgcolor="#FFFFFF" align='center'>
 	<?php
-	if($row['matt']==10) echo "<font color='red'>当前用户是网站管理员关连的帐号，请小心操作！</font>";
+	if($row['matt']==10) echo "<font color='red'>当前用户是网站管理员关连的帐号，请小心操作</font>";
 	?>
 	<table width="98%" border="0" cellspacing="0" cellpadding="6" class="table table-borderless">
         <tr> 

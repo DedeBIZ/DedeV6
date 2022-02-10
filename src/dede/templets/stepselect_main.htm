@@ -59,47 +59,47 @@
         function AddType() {
             var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=addnew', true, true, '', '系统错误，无法获取数据！', loadhtml);
+            myajax.SendGet('stepselect_main.php?action=addnew', true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function AddEnum() {
             var id = GetSelType();
             if (id == 0) {
-                ShowMsg("必须选择一个类别！");
+                ShowMsg("必须选择一个类别");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=addenum&id=' + id, true, true, '', '系统错误，无法获取数据！', loadhtml);
+            myajax.SendGet('stepselect_main.php?action=addenum&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function EditType() {
             var id = GetSelType();
             if (id == 0) {
-                ShowMsg("必须选择一个类别！");
+                ShowMsg("必须选择一个类别");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=edit&id=' + id, true, true, '', '系统错误，无法获取数据！', loadhtml);
+            myajax.SendGet('stepselect_main.php?action=edit&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function ViewType() {
             var id = GetSelType();
             if (id == 0) {
-                ShowMsg("必须选择一个类别！");
+                ShowMsg("必须选择一个类别");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=view&id=' + id, true, true, '', '系统错误，无法获取数据！', loadhtml);
+            myajax.SendGet('stepselect_main.php?action=view&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function DelType() {
             if (window.confirm("您确实要删除这个分类吗？") == false) return false;
             var id = GetSelType();
             if (id == 0) {
-                ShowMsg("必须选择一个类别！");
+                ShowMsg("必须选择一个类别");
                 return false;
             }
             location.href = 'stepselect_main.php?action=del&id=' + id;

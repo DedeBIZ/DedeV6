@@ -21,9 +21,9 @@ if ($dopost == 'save') {
         $configstr .= "\${$v} = '".str_replace("'", "", stripslashes(${'edit___'.$v}))."';\r\n";
     }
     $configstr = '<'.'?'."\r\n".$configstr.'?'.'>';
-    $fp = fopen($ConfigFile, "w") or die("写入文件 $ConfigFile 失败，请检查权限！");
+    $fp = fopen($ConfigFile, "w") or die("写入文件 $ConfigFile 失败，请检查权限");
     fwrite($fp, $configstr);
     fclose($fp);
-    echo "<script>alert('修改通行证配置成功！');window.location='sys_passport.php?".time()."';</script>\r\n";
+    echo "<script>alert('修改通行证配置成功');window.location='sys_passport.php?".time()."';</script>\r\n";
 }
 include DedeInclude('templets/sys_passport.htm');

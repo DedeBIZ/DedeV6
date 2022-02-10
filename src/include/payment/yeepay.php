@@ -364,7 +364,7 @@ class yeepay
                 $nrow = $this->dsql->GetOne("SELECT num FROM #@__moneycard_type WHERE pname = '{$pname}'");
                 $dnum = $nrow['num'];
                 $sql1 = "UPDATE `#@__member` SET `money`=money+'{$nrow['num']}' WHERE `mid`='".$this->mid."'";
-                $oldinf ="已经充值了".$nrow['num']."金币到您的帐号！";
+                $oldinf ="已经充值了".$nrow['num']."金币到您的帐号";
             } else {
                 $cardid = $row['cardid'];
                 $sql1=" UPDATE #@__moneycard_record SET uid='".$this->mid."',isexp='1',utime='".time()."' WHERE cardid='$cardid' ";
@@ -378,7 +378,7 @@ class yeepay
                 return $oldinf;
             } else {
                 $this->log_result ("verify_failed,订单号:".$order_sn);//将验证结果存入文件
-                return "支付失败！";
+                return "支付失败";
             }
         /* 改变会员订单状态_支付成功 */
         } else if ( $product=="member" ){
@@ -404,10 +404,10 @@ class yeepay
             if($this->dsql->ExecuteNoneQuery($sql1) && $this->dsql->ExecuteNoneQuery($sql2))
             {
                 $this->log_result("verify_success,订单号:".$order_sn); //将验证结果存入文件
-                return "会员升级成功！";
+                return "会员升级成功";
             } else {
                 $this->log_result ("verify_failed,订单号:".$order_sn);//将验证结果存入文件
-                return "会员升级失败！";
+                return "会员升级失败";
             }
         }    
     }

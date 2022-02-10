@@ -22,7 +22,7 @@ if ($dopost == "viewinfo") //查看表结构
 {
     echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$tablename);
         $dsql->Execute('me');
@@ -36,11 +36,11 @@ if ($dopost == "viewinfo") //查看表结构
 {
     echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
         if ($rs) {
-            echo "执行优化表： $tablename  OK！";
+            echo "执行优化表： $tablename  OK";
         } else {
             echo "执行优化表： $tablename  失败，原因是：".$dsql->GetError();
         }
@@ -51,11 +51,11 @@ if ($dopost == "viewinfo") //查看表结构
 {
     echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
         if ($rs) {
-            echo "修复表： $tablename  OK！";
+            echo "修复表： $tablename  OK";
         } else {
             echo "修复表： $tablename  失败，原因是：".$dsql->GetError();
         }

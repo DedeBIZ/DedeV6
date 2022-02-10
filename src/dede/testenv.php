@@ -373,7 +373,7 @@ $action = isset($action) ? $action : '';
 		function clearIntervals() {
 			clearInterval(timer);
 			//document.getElementById('install').submit();
-			alert('全部检测完毕，您可以按照检测结果进行系统权限调整！');
+			alert('全部检测完毕，您可以按照检测结果进行系统权限调整');
 		}
 		//setTimeout(setIntervals, 100);
 

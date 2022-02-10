@@ -34,7 +34,7 @@ if ($dopost == 'del') {
             $rs = @unlink($truefile);
         }
         if ($rs == 1) {
-            $msg = "成功删除一个附件！";
+            $msg = "成功删除一个附件";
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE aid='".$aid."'");
         }
         ShowMsg($msg, $backurl);
@@ -64,7 +64,7 @@ if ($dopost == 'del') {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE aid='".$myrow['aid']."'");
             }
         }
-        ShowMsg('成功删除选定的文件！', $backurl);
+        ShowMsg('成功删除选定的文件', $backurl);
         exit();
     }
 }
@@ -85,27 +85,27 @@ function __save_edit() //保存更改
         if ($mediatype == 1) {
             $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
             if (!in_array($upfile_type, $sparr)) {
-                ShowMsg("您上传的不是图片类型的文件！", "javascript:history.go(-1);");
+                ShowMsg("您上传的不是图片类型的文件", "javascript:history.go(-1);");
                 exit();
             }
         } else if ($mediatype == 2) {
             $sparr = array("application/x-shockwave-flash");
             if (!in_array($upfile_type, $sparr)) {
-                ShowMsg("您上传的不是Flash类型的文件！", "javascript:history.go(-1);");
+                ShowMsg("您上传的不是Flash类型的文件", "javascript:history.go(-1);");
                 exit();
             }
         } else if ($mediatype == 3) {
             if (!preg_match('#audio|media|video#i', $upfile_type)) {
-                ShowMsg("您上传的为不正确类型的影音文件！", "javascript:history.go(-1);");
+                ShowMsg("您上传的为不正确类型的影音文件", "javascript:history.go(-1);");
                 exit();
             }
             if (!preg_match("#\.".$cfg_mediatype."#", $upfile_name)) {
-                ShowMsg("您上传的影音文件扩展名无法被识别，请更改系统配置的参数！", "javascript:history.go(-1);");
+                ShowMsg("您上传的影音文件扩展名无法被识别，请更改系统配置的参数", "javascript:history.go(-1);");
                 exit();
             }
         } else {
             if (!preg_match("#\.".$cfg_softtype."#", $upfile_name)) {
-                ShowMsg("您上传的附件扩展名无法被识别，请更改系统配置的参数！", "javascript:history.go(-1);");
+                ShowMsg("您上传的附件扩展名无法被识别，请更改系统配置的参数", "javascript:history.go(-1);");
                 exit();
             }
         }
@@ -151,14 +151,14 @@ function __save_edit() //保存更改
     $query = " UPDATE #@__uploads SET title='$title',mediatype='$mediatype',playtime='$playtime'";
     $query .= "$addquery WHERE aid='$aid' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg('成功更改一则附件数据！', 'media_edit.php?aid='.$aid);
+    ShowMsg('成功更改一则附件数据', 'media_edit.php?aid='.$aid);
     exit();
 }
 
 //读取档案信息
 $myrow = $dsql->GetOne("SELECT * FROM #@__uploads WHERE aid='".$aid."'");
 if (!is_array($myrow)) {
-    ShowMsg('错误，找不到此编号的档案！', 'javascript:;');
+    ShowMsg('错误，找不到此编号的档案', 'javascript:;');
     exit();
 }
 include DedeInclude('templets/media_edit.htm');

@@ -67,12 +67,12 @@ $keyword = addslashes(cn_substr($keyword, 30));
 $typeid = intval($typeid);
 
 if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $keyword)) {
-    ShowMsg("您的搜索关键字中存在非法内容，被系统禁止！", "-1");
+    ShowMsg("您的搜索关键字中存在非法内容，被系统禁止", "-1");
     exit();
 }
 
 if (($keyword == '' || strlen($keyword) < 2) && empty($typeid)) {
-    ShowMsg('关键字不能小于2个字节！', '-1');
+    ShowMsg('关键字不能小于2个字节', '-1');
     exit();
 }
 
@@ -85,7 +85,7 @@ $row = $dsql->GetOne("SELECT * FROM `#@__search_limits` WHERE ip='{$ip}'");
 
 if (is_array($row)) {
     if (($now - $row['searchtime']) < $cfg_search_time) {
-        ShowMsg('管理员设定搜索时间间隔为'.$cfg_search_time.'秒，请稍后再试！', '-1');
+        ShowMsg('管理员设定搜索时间间隔为'.$cfg_search_time.'秒，请稍后再试', '-1');
         exit;
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__search_limits` SET `searchtime`='{$now}' WHERE  `ip`='{$ip}';");

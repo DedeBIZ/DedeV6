@@ -20,7 +20,7 @@ function _AddNote(){ }
 if ($action == 'add') {
   $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '$url' ");
   if (is_array($row)) {
-    echo "系统已经存在这个网址的条目！";
+    echo "系统已经存在这个网址的条目";
   } else {
     $query = " INSERT INTO `#@__co_onepage`(`url`,`title`,`issource`,`lang`,`rule`) Values('$url','$title','$issource','$lang','$rule'); ";
     $dsql->ExecuteNonequery($query);

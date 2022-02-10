@@ -23,12 +23,12 @@ function __Toadmin()
 if ($dopost == "toadmin") {
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
-        ShowMsg('密码不合法，请使用[0-9a-zA-Z_@!.-]内的字符！', '-1', 0, 3000);
+        ShowMsg('密码不合法，请使用[0-9a-zA-Z_@!.-]内的字符', '-1', 0, 3000);
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
-        ShowMsg("请填写正确的安全验证串！", "member_toadmin.php?id={$id}");
+        ShowMsg("请填写正确的安全验证串", "member_toadmin.php?id={$id}");
         exit();
     }
     $pwdm = '';
@@ -46,7 +46,7 @@ if ($dopost == "toadmin") {
     }
     $typeids = (empty($typeids)) ? "" : $typeids;
     if ($typeids == '') {
-        ShowMsg("请为该管理员指定管理栏目！", "member_toadmin.php?id={$id}");
+        ShowMsg("请为该管理员指定管理栏目", "member_toadmin.php?id={$id}");
         exit();
     }
     $typeid = join(',', $typeids);
@@ -70,7 +70,7 @@ if ($dopost == "toadmin") {
     $inquery = "INSERT INTO `#@__member_pms` (`floginid`,`fromid`,`toid`,`tologinid`,`folder`,`subject`,`sendtime`,`writetime`,`hasview`,`isadmin`,`message`)
       VALUES ('$floginid','$fromid','$id','$userid','inbox','$subject','$sendtime','$writetime','0','0','$message'); ";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功升级一个帐户！", "member_main.php");
+    ShowMsg("成功升级一个帐户", "member_main.php");
     exit();
 }
 $id = preg_replace("#[^0-9]#", "", $id);

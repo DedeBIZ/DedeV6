@@ -1,5 +1,4 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -19,7 +18,7 @@
     function AddItem() {
       i++;
       if (i > 15) {
-        ShowMsg("最大只允许15个选项！");
+        ShowMsg("最大只允许15个选项");
         return;
       }
       var htmldata = "<br/>选项" + i + "： <input name='voteitem" + i + "' type='text' size='30' class='mt-2'>";
@@ -32,7 +31,7 @@
     }
     function checkSubmit() {
       if (document.form1.votename.value == "") {
-        ShowMsg("投票名称不能为空！");
+        ShowMsg("投票名称不能为空");
         document.form1.votename.focus();
         return false;
       }

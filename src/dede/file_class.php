@@ -33,7 +33,7 @@ class FileManagement
         if (($newname != $oldname) && is_writable($oldname)) {
             rename($oldname, $newname);
         }
-        ShowMsg("成功更改一个文件名！", "file_manage_main.php?activepath=".$this->activeDir);
+        ShowMsg("成功更改一个文件名", "file_manage_main.php?activepath=".$this->activeDir);
         return 0;
     }
 
@@ -45,10 +45,10 @@ class FileManagement
         if (is_writable($this->baseDir.$this->activeDir)) {
             MkdirAll($dirname, $GLOBALS['cfg_dir_purview']);
             CloseFtp();
-            ShowMsg("成功创建一个新目录！", "file_manage_main.php?activepath=".$this->activeDir."/".$newdir);
+            ShowMsg("成功创建一个新目录", "file_manage_main.php?activepath=".$this->activeDir."/".$newdir);
             return 1;
         } else {
-            ShowMsg("创建新目录失败，因为这个位置不允许写入！", "file_manage_main.php?activepath=".$this->activeDir);
+            ShowMsg("创建新目录失败，因为这个位置不允许写入", "file_manage_main.php?activepath=".$this->activeDir);
             return 0;
         }
     }
@@ -80,14 +80,14 @@ class FileManagement
                     copy($oldfile, $truepath."/$mfile");
                 }
                 unlink($oldfile);
-                ShowMsg("成功移动文件！", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 1;
             } else {
-                ShowMsg("移动文件 $oldfile -&gt; $truepath/$mfile 失败，可能是某个位置权限不足！", "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("移动文件 $oldfile -&gt; $truepath/$mfile 失败，可能是某个位置权限不足", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 0;
             }
         } else {
-            ShowMsg("对不起，您移动的路径不合法！", "-1", 0, 5000);
+            ShowMsg("对不起，您移动的路径不合法", "-1", 0, 5000);
             return 0;
         }
     }
@@ -157,11 +157,11 @@ class FileManagement
                 $this->RmDirFiles($filename);
             } else {
                 // 完善用户体验，by:sumic
-                ShowMsg("系统禁止删除".$t."！", "file_manage_main.php?activepath=".$this->activeDir);
+                ShowMsg("系统禁止删除".$t."", "file_manage_main.php?activepath=".$this->activeDir);
                 exit;
             }
         }
-        ShowMsg("成功删除一个".$t."！", "file_manage_main.php?activepath=".$this->activeDir);
+        ShowMsg("成功删除一个".$t."", "file_manage_main.php?activepath=".$this->activeDir);
         return 0;
     }
 }

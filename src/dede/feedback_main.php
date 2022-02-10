@@ -36,7 +36,7 @@ function jsTrimjajx($str, $len)
 if (!empty($job)) {
     $ids = preg_replace("#[^0-9,]#", '', $fid);
     if (empty($ids)) {
-        ShowMsg("您没选中任何选项！", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+        ShowMsg("您没选中任何选项", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
         exit;
     }
 } else {

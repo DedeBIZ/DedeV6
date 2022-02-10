@@ -50,7 +50,7 @@ function WriteEnumsCache($egroup = '')
         fclose($fp);
         if (empty($issign)) WriteEnumsJs($egroup);
     }
-    return '成功更新所有枚举缓存！';
+    return '成功更新所有枚举缓存';
 }
 
 /**

@@ -39,7 +39,7 @@ if (TestPurview('a_List')) {;
         $admin_catalog = join(',', $admin_catalogs);
         $userCatalogSql = " arc.typeid IN($admin_catalog) ";
     } else {
-        CheckCatalog($cid, '您无权浏览非指定栏目的内容！');
+        CheckCatalog($cid, '您无权浏览非指定栏目的内容');
     }
     if (TestPurview('a_MyList')) $mid =  $cuserLogin->getUserID();
 }

@@ -523,7 +523,7 @@ class Archives
             $tempfile = $this->GetTempletFile();
             if (!file_exists($tempfile) || !is_file($tempfile)) {
                 echo "文档ID：{$this->Fields['id']} - {$this->TypeLink->TypeInfos['typename']} - {$this->Fields['title']}<br />";
-                echo "模板文件不存在，无法解析文档！";
+                echo "模板文件不存在，无法解析文档";
                 exit();
             }
             $this->dtp->LoadTemplate($tempfile);
@@ -725,7 +725,7 @@ class Archives
                 $this->PreNext['preimg'] = "<a href='$mlink'><img src=\"{$preRow['litpic']}\" alt=\"{$preRow['title']}\"/></a> ";
             } else {
                 $this->PreNext['pre'] = "上一篇：没有了 ";
-                $this->PreNext['preimg'] = "<img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有上一图集了！\"/>";
+                $this->PreNext['preimg'] = "<img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有上一图集了\"/>";
             }
             if (is_array($nextRow)) {
                 if (defined('DEDEMOB')) {
@@ -758,7 +758,7 @@ class Archives
                 $this->PreNext['nextimg'] = "<a href='$mlink'><img src=\"{$nextRow['litpic']}\" alt=\"{$nextRow['title']}\"/></a> ";
             } else {
                 $this->PreNext['next'] = "下一篇：没有了 ";
-                $this->PreNext['nextimg'] = "<a href='javascript:void(0)' alt=\"\"><img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有下一图集了！\"/></a>";
+                $this->PreNext['nextimg'] = "<a href='javascript:void(0)' alt=\"\"><img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有下一图集了\"/></a>";
             }
         }
         //二次开发上一篇下一篇

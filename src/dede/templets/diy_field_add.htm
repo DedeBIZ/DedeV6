@@ -31,14 +31,14 @@ function GetFields()
 	
 	if(itemname=="")
 	{
-		ShowMsg("表单提示名称不能为空！");
+		ShowMsg("表单提示名称不能为空");
 		theform.itemname.focus();
 		return false;
 	}
 	
 	if(fieldname=="") 
 	{
-		ShowMsg("字段名称不能为空！");
+		ShowMsg("字段名称不能为空");
 		theform.fieldname.focus();
 		return false;
 	}
@@ -51,7 +51,7 @@ function GetFields()
 	
 	if((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
 	{
-		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）！");
+		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）");
 		return false;
 	}
 	

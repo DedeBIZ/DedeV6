@@ -34,14 +34,14 @@ $CKEditorFuncNum = (isset($CKEditorFuncNum)) ? $CKEditorFuncNum : 1;
 $imgfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $imgfile_name));
 
 if (!preg_match("#\.(".$cfg_imgtype.")#i", $imgfile_name)) {
-    ShowMsg("您所上传的图片类型不在许可列表，请更改系统对扩展名限定的配置！", "-1");
+    ShowMsg("您所上传的图片类型不在许可列表，请更改系统对扩展名限定的配置", "-1");
     exit();
 }
 $nowtme = time();
 $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
 $imgfile_type = strtolower(trim($imgfile_type));
 if (!in_array($imgfile_type, $sparr)) {
-    ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种！", "-1");
+    ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种", "-1");
     exit();
 }
 $mdir = MyDate($cfg_addon_savetype, $nowtme);
@@ -55,7 +55,7 @@ $fs = explode('.', $imgfile_name);
 $filename = $filename.'.'.$fs[count($fs) - 1];
 $filename_name = $filename_name.'.'.$fs[count($fs) - 1];
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
-move_uploaded_file($imgfile, $fullfilename) or die("上传文件到 $fullfilename 失败！");
+move_uploaded_file($imgfile, $fullfilename) or die("上传文件到 $fullfilename 失败");
 
 @unlink($imgfile);
 if (empty($resize)) {
@@ -93,8 +93,8 @@ if ($GLOBALS['cfg_html_editor'] == 'ckeditor' && $CKUpload) {
 
 
 if (!empty($noeditor)) {
-    ShowMsg("成功上传一幅图片！", "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&noeditor=yes&activepath=".urlencode($activepath)."/$mdir&d=".time());
+    ShowMsg("成功上传一幅图片", "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&noeditor=yes&activepath=".urlencode($activepath)."/$mdir&d=".time());
 } else {
-    ShowMsg("成功上传一幅图片！", "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."/$mdir&d=".time());
+    ShowMsg("成功上传一幅图片", "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."/$mdir&d=".time());
 }
 exit();

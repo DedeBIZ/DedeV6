@@ -29,13 +29,13 @@ if ($action == 'setdefault') {
     $win->AddTitle("<a href='public_guide.php?action=edit'>内容发布向导</a> &gt;&gt; 设置默认发布表单");
     if ($cid == 0) {
         $msg = "
-         成功取消默认发布表单！
+         成功取消默认发布表单
            <hr style='width:90%' size='1' />
            您目前想要进行的操作： <a href='public_guide.php?action=edit'>返回发布向导页</a>
       ";
     } else {
         $msg = "
-        成功保存默认发布表单，以后点击“内容发布”面板将直接跳转到您选择的内容发布页！
+        成功保存默认发布表单，以后点击“内容发布”面板将直接跳转到您选择的内容发布页
         <hr style='width:90%' size='1' />
            您目前想要进行的操作： <a href='public_guide.php'>转到默认发布表单</a> &nbsp; <a href='public_guide.php?action=edit'>返回发布向导页</a>
       ";

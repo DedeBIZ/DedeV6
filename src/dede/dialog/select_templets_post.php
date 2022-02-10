@@ -24,7 +24,7 @@ if (!preg_match("#^text#", $uploadfile_type)) {
     exit();
 }
 if (!preg_match("#\.(".$cfg_txttype.")#i", $uploadfile_name)) {
-    ShowMsg("您所上传的模板文件类型不能被识别，只允许htm、html、tpl、txt扩展名！", "-1");
+    ShowMsg("您所上传的模板文件类型不能被识别，只允许htm、html、tpl、txt扩展名", "-1");
     exit();
 }
 if ($filename != '') {
@@ -33,12 +33,12 @@ if ($filename != '') {
     $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
     $filename = $uploadfile_name;
     if ($filename == '' || !preg_match("#\.(".$cfg_txttype.")#i", $filename)) {
-        ShowMsg("您所上传的文件存在问题，请检查文件类型是否适合！", "-1");
+        ShowMsg("您所上传的文件存在问题，请检查文件类型是否适合", "-1");
         exit();
     }
 }
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
-move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到 $fullfilename 失败！");
+move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到 $fullfilename 失败");
 @unlink($uploadfile);
-ShowMsg("成功上传文件！", "select_templets.php?comeback=".urlencode($filename)."&f=$f&activepath=".urlencode($activepath)."&d=".time());
+ShowMsg("成功上传文件", "select_templets.php?comeback=".urlencode($filename)."&f=$f&activepath=".urlencode($activepath)."&d=".time());
 exit();

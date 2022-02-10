@@ -19,7 +19,7 @@ $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'mytag_main.php' : $_COOKI
 
 if ($dopost == 'delete') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__mytag` WHERE aid='$aid'");
-    ShowMsg("成功删除一个自定义标记！", $ENV_GOBACK_URL);
+    ShowMsg("成功删除一个自定义标记", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "saveedit") {
     CheckCSRF();
@@ -35,7 +35,7 @@ if ($dopost == 'delete') {
      expbody='$expbody'
      WHERE aid='$aid' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功更改一个自定义标记！", $ENV_GOBACK_URL);
+    ShowMsg("成功更改一个自定义标记", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "getjs") {
     require_once(DEDEINC."/oxwindow.class.php");

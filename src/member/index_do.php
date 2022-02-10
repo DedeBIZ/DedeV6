@@ -16,11 +16,11 @@ function check_email()
  *******************/
 if ($fmdo == 'sendMail') {
     if (!CheckEmail($cfg_ml->fields['email'])) {
-        ShowMsg('您的邮箱格式有错误！', '-1');
+        ShowMsg('您的邮箱格式有错误', '-1');
         exit();
     }
     if ($cfg_ml->fields['spacesta'] != -10) {
-        ShowMsg('您的帐号不在邮件验证状态，本操作无效！', '-1');
+        ShowMsg('您的帐号不在邮件验证状态，本操作无效', '-1');
         exit();
     }
     $userhash = md5($cfg_cookie_encode.'--'.$cfg_ml->fields['mid'].'--'.$cfg_ml->fields['email']);
@@ -55,28 +55,28 @@ if ($fmdo == 'sendMail') {
         }
     }
 
-    ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收！', '/member');
+    ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收', '/member');
     exit();
 } else if ($fmdo == 'checkMail') {
     $mid = intval($mid);
     if (empty($mid)) {
-        ShowMsg('您的效验串不合法！', '-1');
+        ShowMsg('您的效验串不合法', '-1');
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}' ");
     $needUserhash = md5($cfg_cookie_encode.'--'.$mid.'--'.$row['email']);
     if ($needUserhash != $userhash) {
-        ShowMsg('您的效验串不合法！', '-1');
+        ShowMsg('您的效验串不合法', '-1');
         exit();
     }
     if ($row['spacesta'] != -10) {
-        ShowMsg('您的帐号不在邮件验证状态，本操作无效！', '-1');
+        ShowMsg('您的帐号不在邮件验证状态，本操作无效', '-1');
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET spacesta=0 WHERE mid='{$mid}' ");
     // 清除会员缓存
     $cfg_ml->DelCache($mid);
-    ShowMsg('操作成功，请重新登录系统！', 'login.php');
+    ShowMsg('操作成功，请重新登录系统', 'login.php');
     exit();
 }
 /*********************
@@ -122,7 +122,7 @@ else if ($fmdo == 'user') {
                 if (!is_array($row)) {
                     $msg = "<font color='#4E7504'><b>√可以使用</b></font>";
                 } else {
-                    $msg = "<font color='red'><b>×Email已经被另一个帐号占用！</b></font>";
+                    $msg = "<font color='red'><b>×Email已经被另一个帐号占用</b></font>";
                 }
             }
         }
@@ -143,18 +143,18 @@ else if ($fmdo == 'user') {
     else if ($dopost == "money2s") {
         CheckRank(0, 0);
         if ($cfg_money_scores == 0) {
-            ShowMsg('系统禁用了积分与金币兑换功能！', '-1');
+            ShowMsg('系统禁用了积分与金币兑换功能', '-1');
             exit();
         }
         $money = empty($money) ? "" : abs(intval($money));
         if (empty($money)) {
-            ShowMsg('您没指定要兑换多少金币！', '-1');
+            ShowMsg('您没指定要兑换多少金币', '-1');
             exit();
         }
 
         $needscores = $money * $cfg_money_scores;
         if ($cfg_ml->fields['scores'] < $needscores) {
-            ShowMsg('您积分不足，不能换取这么多的金币！', '-1');
+            ShowMsg('您积分不足，不能换取这么多的金币', '-1');
             exit();
         }
         $litmitscores = $cfg_ml->fields['scores'] - $needscores;
@@ -169,7 +169,7 @@ else if ($fmdo == 'user') {
 
         // 清除会员缓存
         $cfg_ml->DelCache($cfg_ml->M_ID);
-        ShowMsg('成功兑换指定量的金币！', 'operation.php');
+        ShowMsg('成功兑换指定量的金币', 'operation.php');
         exit();
     }
 }
@@ -187,18 +187,18 @@ else if ($fmdo == 'login') {
         if (preg_match("/2/", $safe_gdopen)) {
             if (strtolower($vdcode) != $svali || $svali == '') {
                 ResetVdValue();
-                ShowMsg('验证码错误！', 'index.php');
+                ShowMsg('验证码错误', 'index.php');
                 exit();
             }
         }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();
-            ShowMsg("您输入的用户名 {$userid} 不合法！", "index.php");
+            ShowMsg("您输入的用户名 {$userid} 不合法", "index.php");
             exit();
         }
         if ($pwd == '') {
             ResetVdValue();
-            ShowMsg("密码不能为空！", "-1", 0, 2000);
+            ShowMsg("密码不能为空", "-1", 0, 2000);
             exit();
         }
 
@@ -207,15 +207,15 @@ else if ($fmdo == 'login') {
 
         if ($rs == 0) {
             ResetVdValue();
-            ShowMsg("用户名不存在！", "index.php", 0, 2000);
+            ShowMsg("用户名不存在", "index.php", 0, 2000);
             exit();
         } else if ($rs == -1) {
             ResetVdValue();
-            ShowMsg("密码错误！", "index.php", 0, 2000);
+            ShowMsg("密码错误", "index.php", 0, 2000);
             exit();
         } else if ($rs == -2) {
             ResetVdValue();
-            ShowMsg("管理员帐号不允许从前台登录！", "index.php", 0, 2000);
+            ShowMsg("管理员帐号不允许从前台登录", "index.php", 0, 2000);
             exit();
         } else {
             // 清除会员缓存
@@ -233,7 +233,7 @@ else if ($fmdo == 'login') {
     //退出登录
     else if ($dopost == "exit") {
         $cfg_ml->ExitCookie();
-        ShowMsg("成功退出登录！", "index.php", 0, 2000);
+        ShowMsg("成功退出登录", "index.php", 0, 2000);
         exit();
     }
 } else {

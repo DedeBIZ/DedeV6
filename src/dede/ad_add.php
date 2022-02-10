@@ -21,7 +21,7 @@ if ($dopost == "save") {
     $tagname = trim($tagname);
     $row = $dsql->GetOne("SELECT typeid FROM #@__myad WHERE typeid='$typeid' AND tagname LIKE '$tagname'");
     if (is_array($row)) {
-        ShowMsg("在相同栏目下已经存在同名的标记！", "-1");
+        ShowMsg("在相同栏目下已经存在同名的标记", "-1");
         exit();
     }
     $starttime = GetMkTime($starttime);
@@ -62,7 +62,7 @@ if ($dopost == "save") {
      VALUES('$clsid','$typeid','$tagname','$adname','$timeset','$starttime','$endtime','$normbody','$expbody');
     ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功增加一个广告！", "ad_main.php");
+    ShowMsg("成功增加一个广告", "ad_main.php");
     exit();
 }
 $dsql->Execute('dd', 'SELECT * FROM `#@__myadtype` ORDER BY id DESC');

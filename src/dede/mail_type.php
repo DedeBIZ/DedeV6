@@ -19,10 +19,10 @@ if($dopost=="add"){
 	
 	$query = "INSERT INTO #@__mail_type (typename,description) VALUES ('$typename','$description')";
 	if(!$dsql->ExecuteNoneQuery($query)){
-		ShowMsg("更新数据库#@__mail_type表时出错，请检查！","javascript:;");
+		ShowMsg("更新数据库#@__mail_type表时出错，请检查","javascript:;");
 	  exit();
 	}else{
-    ShowMsg("添加分类成功！","mail_type.php");
+    ShowMsg("添加分类成功","mail_type.php");
 		exit();
 	}
 }elseif($dopost=="editsave"){
@@ -35,15 +35,15 @@ if($dopost=="add"){
 	
 	$query = "UPDATE #@__mail_type SET typename='$typename',description='$description' WHERE id=$id";
 	if(!$dsql->ExecuteNoneQuery($query)){
-		ShowMsg("更新数据库#@__mail_type表时出错，请检查！","javascript:;");
+		ShowMsg("更新数据库#@__mail_type表时出错，请检查","javascript:;");
 	  exit();
 	}else{
-    ShowMsg("更改分类成功！","mail_type.php");
+    ShowMsg("更改分类成功","mail_type.php");
 		exit();
 	}
 }elseif($dopost=="delete"){
   $dsql->ExecuteNoneQuery("Delete From `#@__mail_type` where id='$id'");
-  ShowMsg("删除分类成功！","mail_type.php");
+  ShowMsg("删除分类成功","mail_type.php");
 	exit();
 }else{
 	$sql  = "SELECT * FROM `#@__mail_type` ORDER BY id ";

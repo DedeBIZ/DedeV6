@@ -135,7 +135,7 @@ if ($cfg_mb_open == 'N') {
             die('');
         }
     } else {
-        ShowMsg("系统关闭了会员功能，因此您无法访问此页面！", "javascript:;");
+        ShowMsg("系统关闭了会员功能，因此您无法访问此页面", "javascript:;");
         exit();
     }
 }

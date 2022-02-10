@@ -27,7 +27,7 @@ foreach(Array('_GET','_POST','_COOKIE') as $_request)
 require_once(DEDEINC.'/common.func.php');
 if(file_exists(INSLOCKFILE))
 {
-    exit(" 程序已运行安装，如果您确定要重新安装，请先从FTP中删除 install/install_lock.txt！");
+    exit(" 程序已运行安装，如果您确定要重新安装，请先从FTP中删除 install/install_lock.txt");
 }
 if(empty($step))
 {
@@ -103,9 +103,9 @@ else if($step==2)
         $db = new SQLite3(DEDEDATA.'/'.$dbname.'.db');
     } else {
         $dbtype = 'mysql';
-        $conn = mysql_connect($dbhost,$dbuser,$dbpwd) or die("<script>alert('数据库服务器或登录密码无效，\\n\\n无法连接数据库，请重新设定！');history.go(-1);</script>");
+        $conn = mysql_connect($dbhost,$dbuser,$dbpwd) or die("<script>alert('数据库服务器或登录密码无效，\\n\\n无法连接数据库，请重新设定');history.go(-1);</script>");
         mysql_query("CREATE DATABASE IF NOT EXISTS `".$dbname."`;",$conn);
-        mysql_select_db($dbname, $conn) or die("<script>alert('选择数据库失败，可能是您没权限，请预先创建一个数据库！');history.go(-1);</script>");
+        mysql_select_db($dbname, $conn) or die("<script>alert('选择数据库失败，可能是您没权限，请预先创建一个数据库');history.go(-1);</script>");
         //获得数据库版本信息
         $rs = mysql_query("SELECT VERSION();",$conn);
         $row = mysql_fetch_array($rs);
@@ -128,7 +128,7 @@ else if($step==2)
     $configStr1 = str_replace("~dbprefix~",$dbprefix,$configStr1);
     $configStr1 = str_replace("~dblang~",$dblang,$configStr1);
     @chmod(DEDEDATA,0777);
-    $fp = fopen(DEDEDATA."/common.inc.php","w") or die("<script>alert('写入配置失败，请检查../data目录是否可写入！');history.go(-1);</script>");
+    $fp = fopen(DEDEDATA."/common.inc.php","w") or die("<script>alert('写入配置失败，请检查../data目录是否可写入');history.go(-1);</script>");
     fwrite($fp,$configStr1);
     fclose($fp);
     //config.cache.inc.php
@@ -295,7 +295,7 @@ else if($step==10)
     } else {
         $result = array(
             "code" => -1,
-            "data" => "数据库连接失败！",
+            "data" => "数据库连接失败",
         );
         echo json_encode($result);
     }

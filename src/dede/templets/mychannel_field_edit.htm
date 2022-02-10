@@ -1,5 +1,4 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -28,13 +27,13 @@
       var notsend = (theform.notsend.checked ? 1 : 0);
 
       if (itemname == "") {
-        ShowMsg("表单提示名称不能为空！");
+        ShowMsg("表单提示名称不能为空");
         theform.itemname.focus();
         return false;
       }
 
       if ((dtype == "radio" || dtype == "select" || dtype == "checkbox") && vdefault == "") {
-        ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）！");
+        ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）");
         return false;
       }
 

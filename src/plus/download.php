@@ -28,7 +28,7 @@ if ($open == 0) {
 
     $cu = new ChannelUnit($arcRow['channel'], $aid);
     if (!is_array($cu->ChannelFields)) {
-        ShowMsg('获取文档信息失败！', '-1');
+        ShowMsg('获取文档信息失败', '-1');
         exit();
     }
 
@@ -94,7 +94,7 @@ function getSoft_new()
     //获得附加表信息
     $row = $dsql->GetOne("SELECT ch.addtable,arc.mid FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$id' ");
     if (empty($row['addtable'])) {
-        ShowMsg('找不到所需要的软件资源！', 'javascript:;');
+        ShowMsg('找不到所需要的软件资源', 'javascript:;');
         exit();
     }
     $mid = $row['mid'];
@@ -102,7 +102,7 @@ function getSoft_new()
     //读取连接列表、下载权限信息
     $row = $dsql->GetOne("SELECT softlinks,daccess,needmoney FROM `{$row['addtable']}` WHERE aid='$id' ");
     if (empty($row['softlinks'])) {
-        ShowMsg('找不到所需要的软件资源！', 'javascript:;');
+        ShowMsg('找不到所需要的软件资源', 'javascript:;');
         exit();
     }
     $softconfig = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
@@ -121,7 +121,7 @@ function getSoft_new()
     $dtp->LoadSource($row['softlinks']);
     if (!is_array($dtp->CTags)) {
         $dtp->Clear();
-        ShowMsg('找不到所需要的软件资源！', 'javascript:;');
+        ShowMsg('找不到所需要的软件资源', 'javascript:;');
         exit();
     }
     foreach ($dtp->CTags as $ctag) {
@@ -157,7 +157,7 @@ function getSoft_new()
         }
     }
     if ($softUrl == '') {
-        ShowMsg('找不到所需要的软件资源！', 'javascript:;');
+        ShowMsg('找不到所需要的软件资源', 'javascript:;');
         exit();
     }
     //-------------------------
@@ -186,8 +186,8 @@ function getSoft_new()
                 $memberTypes[$row->rank] = $row->membername;
             }
             $memberTypes[0] = "游客";
-            $msgtitle = "您没有权限下载软件：{$arctitle}！";
-            $moremsg = "这个软件需要 <font color='red'>".$memberTypes[$needRank]."</font> 才能下载，您目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ！";
+            $msgtitle = "您没有权限下载软件：{$arctitle}";
+            $moremsg = "这个软件需要 <font color='red'>".$memberTypes[$needRank]."</font> 才能下载，您目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ";
             include_once(DEDETEMPLATE.'/plus/view_msg.htm');
             exit();
         }
@@ -201,8 +201,8 @@ function getSoft_new()
             if (!is_array($row)) {
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {
-                    $msgtitle = "您没有权限下载软件：{$arctitle}！";
-                    $moremsg = "这个软件需要 <font color='red'>".$needMoney." 金币</font> 才能下载，您目前拥有金币：<font color='red'>".$cfg_ml->M_Money." 个</font> ！";
+                    $msgtitle = "您没有权限下载软件：{$arctitle}";
+                    $moremsg = "这个软件需要 <font color='red'>".$needMoney." 金币</font> 才能下载，您目前拥有金币：<font color='red'>".$cfg_ml->M_Money." 个</font> ";
                     include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                     exit(0);
                 }

@@ -11,7 +11,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 if (empty($dopost)) {
-    ShowMsg("对不起，请指定栏目参数！", "catalog_main.php");
+    ShowMsg("对不起，请指定栏目参数", "catalog_main.php");
     exit();
 }
 $cid = empty($cid) ? 0 : intval($cid);
@@ -37,7 +37,7 @@ if ($dopost == "addArchives") {
     }
     $gurl = $row["addcon"];
     if ($gurl == "") {
-        ShowMsg("对不起，您指的栏目可能有误！", "catalog_main.php");
+        ShowMsg("对不起，您指的栏目可能有误", "catalog_main.php");
         exit();
     }
 
@@ -64,7 +64,7 @@ function listArchives();
         $typename = $row["typename"];
         $channelname = $row["channelname"];
         if ($gurl == "") {
-            ShowMsg("对不起，您指的栏目可能有误！", "catalog_main.php");
+            ShowMsg("对不起，您指的栏目可能有误", "catalog_main.php");
             exit();
         }
     } else if ($channelid > 0) {
@@ -104,7 +104,7 @@ function upRank()
     CheckPurview('t_Edit,t_AccEdit');
 
     //检查栏目操作许可
-    CheckCatalog($cid, "您无权更改本栏目！");
+    CheckCatalog($cid, "您无权更改本栏目");
     $row = $dsql->GetOne("SELECT reid,sortrank FROM #@__arctype WHERE id='$cid'");
     $reid = $row['reid'];
     $sortrank = $row['sortrank'];
@@ -211,7 +211,7 @@ function unitCatalog() { }
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         if (!empty($row['dd'])) {
-            ShowMsg("栏目： $typename($typeid) 有子栏目，不能进行合并操作！", '-1');
+            ShowMsg("栏目： $typename($typeid) 有子栏目，不能进行合并操作", '-1');
             exit();
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
@@ -232,11 +232,11 @@ function unitCatalog() { }
         exit();
     } else {
         if ($typeid == $unittype) {
-            ShowMsg("同一栏目无法合并,请后退重试！", '-1');
+            ShowMsg("同一栏目无法合并,请后退重试", '-1');
             exit();
         }
         if (IsParent($unittype, $typeid)) {
-            ShowMsg('不能从父类合并到子类！', 'catalog_main.php');
+            ShowMsg('不能从父类合并到子类', 'catalog_main.php');
             exit();
         }
         $row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
@@ -249,7 +249,7 @@ function unitCatalog() { }
         $dsql->ExecuteNoneQuery("UPDATE `$addtable` SET typeid='$unittype' WHERE typeid='$typeid' ");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctype` WHERE id='$typeid' ");
         UpDateCatCache();
-        ShowMsg('成功合并指定栏目！', 'catalog_main.php');
+        ShowMsg('成功合并指定栏目', 'catalog_main.php');
         exit();
     }
 }
@@ -284,16 +284,16 @@ function moveCatalog() { }
         exit();
     } else {
         if ($typeid == $movetype) {
-            ShowMsg('移对对象和目标位置相同！', 'catalog_main.php');
+            ShowMsg('移对对象和目标位置相同', 'catalog_main.php');
             exit();
         }
         if (IsParent($movetype, $typeid)) {
-            ShowMsg('不能从父类移动到子类！', 'catalog_main.php');
+            ShowMsg('不能从父类移动到子类', 'catalog_main.php');
             exit();
         }
         $dsql->ExecuteNoneQuery(" UPDATE `#@__arctype` SET reid='$movetype' WHERE id='$typeid' ");
         UpDateCatCache();
-        ShowMsg('成功移动目录！', 'catalog_main.php');
+        ShowMsg('成功移动目录', 'catalog_main.php');
         exit();
     }
 }

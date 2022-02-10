@@ -315,7 +315,7 @@ class FreeList
             if (is_file($tmpdir."/".$tempfile)) {
                 $this->PartView->SetTemplet($tmpdir."/".$tempfile);
             } else {
-                $this->PartView->SetTemplet("这是没有使用模板的单独页！", "string");
+                $this->PartView->SetTemplet("这是没有使用模板的单独页", "string");
                 $nmfa = 1;
             }
         }
@@ -357,7 +357,7 @@ class FreeList
         foreach ($this->dtp->CTags as $tagid => $ctag) {
             if ($ctag->GetName() == "freelist") {
                 $limitstart = ($this->PageNo - 1) * $this->PageSize;
-                if ($this->PageNo > $this->FLInfos['maxpage']) $this->dtp->Assign($tagid, '已经超过了最大允许列出的页面！');
+                if ($this->PageNo > $this->FLInfos['maxpage']) $this->dtp->Assign($tagid, '已经超过了最大允许列出的页面');
                 else $this->dtp->Assign($tagid, $this->GetList($limitstart, $ismake));
             } else if ($ctag->GetName() == "pagelist") {
                 $list_len = trim($ctag->GetAtt("listsize"));

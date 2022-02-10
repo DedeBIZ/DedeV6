@@ -1,5 +1,4 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -18,11 +17,11 @@
     }
     function CheckSubmit() {
       if ($DE('rpfield').value == "") {
-        ShowMsg("您选择的操作为手工指定字段，但您并没指定！");
+        ShowMsg("您选择的操作为手工指定字段，但您并没指定");
         return false;
       }
       if ($DE('rpstring').value == "") {
-        ShowMsg("您没指定要替换的字符串！");
+        ShowMsg("您没指定要替换的字符串");
         return false;
       }
       return true;
@@ -72,7 +71,7 @@
 	$dsql->SetQuery("Show Tables");
   $dsql->Execute('t');
   if($dsql->GetError()!=''){
-  	echo "<font color='red'>找不到您所指定的数据库！ $dbname</font><br>";
+  	echo "<font color='red'>找不到您所指定的数据库 $dbname</font><br>";
 		echo $qbutton;
   }
   echo "<select name='exptable' id='exptable' size='10' style='width:60%;height: 220px;' onchange='ShowFields()'>\r\n";

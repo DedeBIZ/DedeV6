@@ -34,7 +34,7 @@ if (empty($dopost)) {
     }
     $addRow = $dsql->GetOne("SELECT * FROM `{$cInfos['addtable']}` WHERE aid='$aid'; ");
     if ($addRow['mid'] != $cfg_ml->M_ID) {
-        ShowMsg("对不起，您没权限操作此文档！", "-1");
+        ShowMsg("对不起，您没权限操作此文档", "-1");
         exit();
     }
     $addRow['id'] = $addRow['aid'];
@@ -55,13 +55,13 @@ function _SaveArticle(){  }
     if (preg_match("/3/", $safe_gdopen)) {
         if (strtolower($vdcode) != $svali || $svali == '') {
             ResetVdValue();
-            ShowMsg('验证码错误！', '-1');
+            ShowMsg('验证码错误', '-1');
             exit();
         }
     }
 
     if ($typeid == 0) {
-        ShowMsg('请指定文档隶属的栏目！', '-1');
+        ShowMsg('请指定文档隶属的栏目', '-1');
         exit();
     }
     $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend AS cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype
@@ -71,7 +71,7 @@ function _SaveArticle(){  }
 
     //检测栏目是否有投稿权限
     if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0 || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
-        ShowMsg("您所选择的栏目不支持投稿！", "-1");
+        ShowMsg("您所选择的栏目不支持投稿", "-1");
         exit();
     }
 
@@ -120,7 +120,7 @@ function _SaveArticle(){  }
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();
         }
     }
@@ -129,7 +129,7 @@ function _SaveArticle(){  }
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET `title`='$title',`typeid`='$typeid',`arcrank`='$arcrank',userip='$userip'{$inadd_f} WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员！", "javascript:;");
+            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -149,7 +149,7 @@ function _SaveArticle(){  }
         &nbsp;&nbsp;
         <a href='content_sg_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理内容</a>
         ";
-    $wintitle = "成功更改内容！";
+    $wintitle = "成功更改内容";
     $wecome_info = "内容管理::更改内容";
     $win = new OxWindow();
     $win->AddTitle("成功更改内容：");

@@ -25,13 +25,13 @@ if ($do == 'add') {
     $buynum = ($buynum < 1) ? 1 : $buynum;
     $rs = $dsql->GetOne("SELECT id,channel,title FROM #@__archives WHERE id='$id'");
     if (!is_array($rs)) {
-        ShowMsg("该商品已不存在！", "-1");
+        ShowMsg("该商品已不存在", "-1");
         exit();
     }
     $cts = GetChannelTable($rs['channel']);
     $rows = $dsql->GetOne("SELECT aid as id,trueprice as price,units FROM `$cts[addtable]` WHERE aid='$id'");
     if (!is_array($rows)) {
-        ShowMsg("该商品已不存在！", "-1");
+        ShowMsg("该商品已不存在", "-1");
         exit();
     }
     $rows['buynum'] = $buynum;
@@ -44,7 +44,7 @@ if ($do == 'add') {
     function delItem();                del products from car
     */
     if (!isset($ids)) {
-        ShowMsg("请选择要删除的商品！", "-1");
+        ShowMsg("请选择要删除的商品", "-1");
         exit;
     }
     if (is_array($ids)) {
@@ -63,7 +63,7 @@ if ($do == 'add') {
     function clearItem();        clear car products all!
     */
     $cart->clearItem();
-    ShowMsg("购物车中商品已全部清空！", "car.php");
+    ShowMsg("购物车中商品已全部清空", "car.php");
     exit;
 } elseif ($do == 'update') {
     /*
@@ -87,6 +87,6 @@ if ($do == 'add') {
             $cart->addItem($id, $rows);
         }
     }
-    ShowMsg("购物车中商品已全部更新！", "car.php");
+    ShowMsg("购物车中商品已全部更新", "car.php");
     exit;
 }

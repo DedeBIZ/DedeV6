@@ -54,7 +54,7 @@ class DedeModule
     {
         if (is_array($this->modules)) return $this->modules;
 
-        $dh = dir($this->modulesPath) or die("没找到模块目录：({$this->modulesPath})！");
+        $dh = dir($this->modulesPath) or die("没找到模块目录：({$this->modulesPath})");
 
         $fp = @fopen($this->modulesPath.'/modulescache.php', 'w') or die('读取文件权限出错,目录文件'.$this->modulesPath.'/modulescache.php不可写!');
 
@@ -284,7 +284,7 @@ class DedeModule
         $filename = $hashcode."-{$ntype}.php";
         $fname = $this->modulesPath.'/'.$filename;
         $filect = $this->GetSystemFile($hashcode, $ntype);
-        $fp = fopen($fname, 'w') or die('生成 {$ntype} 文件失败！');
+        $fp = fopen($fname, 'w') or die('生成 {$ntype} 文件失败');
         fwrite($fp, $filect);
         fclose($fp);
         return $filename;
@@ -449,7 +449,7 @@ class DedeModule
                         }
                     }
                     if (!empty($filename)) {
-                        $fw = fopen($filename, 'w') or die("写入文件 {$filename} 失败，请检查相关目录的权限！");
+                        $fw = fopen($filename, 'w') or die("写入文件 {$filename} 失败，请检查相关目录的权限");
                         $ct = '';
                         while (!feof($fp)) {
                             $l = fgets($fp, 1024);

@@ -226,7 +226,7 @@ class DedeHttpDown
         }
 
         if (@feof($this->m_fp)) {
-            $this->m_error = "连接已经关闭！";
+            $this->m_error = "连接已经关闭";
             return FALSE;
         }
         $fp = fopen($savefilename, "w");
@@ -497,7 +497,7 @@ class DedeHttpDown
                     $this->JumpOpenUrl($newurl);
                 }
             } else {
-                $this->m_error = "无法识别的答复！";
+                $this->m_error = "无法识别的答复";
             }
         }
     }

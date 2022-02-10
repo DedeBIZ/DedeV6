@@ -28,7 +28,7 @@ if ($dopost == "save") {
            `argrange` = '$argrange',
            downmsg = '$downmsg' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg('成功保存参数！', 'soft_config.php');
+    ShowMsg('成功保存参数', 'soft_config.php');
     exit();
 }
 //读取参数

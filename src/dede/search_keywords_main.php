@@ -47,7 +47,7 @@ else if ($dopost == 'delall') {
     foreach ($aids as $aid) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__search_keywords` WHERE aid='$aid';");
     }
-    ShowMsg("删除成功！", $ENV_GOBACK_URL);
+    ShowMsg("删除成功", $ENV_GOBACK_URL);
     exit();
 }
 //第一次进入这个页面

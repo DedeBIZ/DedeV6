@@ -16,7 +16,7 @@ $gotopage = RemoveXSS($gotopage);
 //检测安装目录安全性
 if (is_dir(dirname(__FILE__).'/../install')) {
     if (!file_exists(dirname(__FILE__).'/../install/install_lock.txt')) {
-        $fp = fopen(dirname(__FILE__).'/../install/install_lock.txt', 'w') or die('安装目录无写入权限，无法进行写入锁定文件，请安装完毕删除安装目录！');
+        $fp = fopen(dirname(__FILE__).'/../install/install_lock.txt', 'w') or die('安装目录无写入权限，无法进行写入锁定文件，请安装完毕删除安装目录');
         fwrite($fp, 'ok');
         fclose($fp);
     }
@@ -39,7 +39,7 @@ require_once(DEDEDATA.'/admin/config_update.php');
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if (preg_match('/dede\/login/i', $cururl)) {
-    $redmsg = '<div class="alert alert-warning" role="alert"><div class=\"safe-tips\">您的管理目录的名称中包含默认名称dede，建议在FTP里把它修改为其它名称，那样会更安全！</div></div>';
+    $redmsg = '<div class="alert alert-warning" role="alert"><div class=\"safe-tips\">您的管理目录的名称中包含默认名称dede，建议在FTP里把它修改为其它名称，那样会更安全</div></div>';
 } else {
     $redmsg = '';
 }
