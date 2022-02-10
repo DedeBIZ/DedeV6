@@ -33,6 +33,6 @@ function GetSta($sta)
 
 function GetMan($sta)
 {
-    if ($sta == 1) return "<u>禁用</u>";
-    else return "<u>启用</u>";
+    if ($sta == 1) return "禁用";
+    else return "启用";
 }

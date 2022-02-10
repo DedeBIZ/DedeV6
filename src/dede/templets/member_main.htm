@@ -107,7 +107,7 @@
         <td>{dede:field.mid/}</td>
         <td><a href="../member/index.php?uid={dede:field.userid/}" target='_blank'>
             <?php
-	  echo '<u>'.$fields['userid'].'</u>';
+	  echo ''.$fields['userid'].'';
 	if($fields['spacesta']==-2) echo "<font color='red'>(禁言)</font>";
 	if($fields['spacesta']==-1) echo "<font color='red'>(未审核)</font>";
 	  if(!empty($fields['face'])) {

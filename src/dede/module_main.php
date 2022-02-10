@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 模块管理
  *
@@ -17,7 +16,6 @@ if (empty($action)) $action = '';
 require_once(DEDEDATA."/admin/config_update.php");
 $mdir = DEDEDATA.'/module';
 $mdurl = "";
-
 function TestWriteAble($d)
 {
   $tfile = '_dedet.txt';
@@ -31,13 +29,12 @@ function TestWriteAble($d)
     else return FALSE;
   }
 }
-
 function ReWriteConfigAuto()
 {
   global $dsql;
   $configfile = DEDEDATA.'/config.cache.inc.php';
   if (!is_writeable($configfile)) {
-    echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数！";
+    echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数";
     //ClearAllLink();
     exit();
   }
@@ -53,7 +50,6 @@ function ReWriteConfigAuto()
   fwrite($fp, "?".">");
   fclose($fp);
 }
-
 /*--------------
 function ShowAll();
 --------------*/
@@ -61,7 +57,6 @@ if ($action == '') {
   $types = array('soft' => '模块', 'templets' => '模板', 'plus' => '小插件', 'patch' => '补丁');
   $dm = new DedeModule($mdir);
   if (empty($moduletype)) $moduletype = '';
-
   $modules_remote = $dm->GetModuleUrlList($moduletype, $mdurl);
   $modules = array();
   $modules = $dm->GetModuleList($moduletype);
@@ -75,16 +70,15 @@ if ($action == '') {
 }
 /*--------------
 function ViewDevelopoer();
---------------*/ else if ($action == 'view_developoer') {
-  // 检验开发者信息
+--------------*/
+else if ($action == 'view_developoer') {
+  //检验开发者信息
   $dm = new DedeModule($mdir);
   $info = $dm->GetModuleInfo($hash);
-
   if ($info == null) {
     ShowMsg("获取模块信息错误，模块文件可能被篡改", -1);
     exit;
   }
-
   $dev_id = $info['dev_id'];
   $devURL = DEDECDNURL."/developers/$dev_id.json";
   $dhd = new DedeHttpDown();
@@ -98,25 +92,23 @@ function ViewDevelopoer();
   $authAt = date("Y-m-d", $devInfo['auth_at']);
 
   if (!isset($info['dev_id'])) {
-    $devInfo['realname'] = $devInfo['dev_name'] = $info['team']." <font color=red>未认证</font>";
+    $devInfo['realname'] = $devInfo['dev_name'] = $info['team']." <font color='red'>未认证</font>";
     $authAt = "0000-00-00";
   }
-
-  ShowMsg("<div class='text-left'><p>开发者名称：{$devInfo['dev_name']}</p><p>开发者全称：{$devInfo['realname']}</p><p>开发者ID：{$devInfo['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$devInfo['dev_id']}'>查看详情</a></p>$offUrl<p>认证于：{$authAt}</p></a>", "javascript:;");
+  ShowMsg("<div class='text-left'><p>开发者名称：{$devInfo['dev_name']}</p><p>开发者全称：{$devInfo['realname']}</p><p>开发者ID：{$devInfo['dev_id']} <a target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$devInfo['dev_id']}' class='btn btn-success btn-sm'>未认证</a></p>$offUrl<p>认证于：{$authAt}</p></a>", "javascript:;");
   exit;
 }
 /*--------------
 function Setup();
---------------*/ else if ($action == 'setup') {
+--------------*/
+else if ($action == 'setup') {
   $dm = new DedeModule($mdir);
   $infos = $dm->GetModuleInfo($hash);
   if ($infos == null) {
     ShowMsg("获取模块信息错误，模块文件可能被篡改", -1);
     exit;
   }
-
-  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性)</font>');
-
+  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br />（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
   $filelists = $dm->GetFileLists($hash);
   $filelist = '';
   $prvdirs = array();
@@ -147,85 +139,74 @@ function Setup();
       $prvdirs[$prvdir][1] = TestWriteAble($prvdir);
     }
   }
-  $prvdir = "<table cellpadding='1' cellspacing='1' width='350' bgcolor='#cfcfcf' style='margin-top:5px;'>\r\n";
+  $prvdir = "<table cellpadding='1' cellspacing='1' width='350' bgcolor='#cfcfcf' style='margin-top:10px'>\r\n";
   $prvdir .= "<tr style='background:#FBFCE2'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
   foreach ($prvdirs as $k => $v) {
     if ($v) $cw = '√';
     else $cw = '<font color="red">×</font>';
-    $prvdir .= "<tr bgcolor='#ffffff'><td >$k</td>";
-    $prvdir .= "<td align='center' >$cw</td></tr>\r\n";
+    $prvdir .= "<tr bgcolor='#ffffff'><td>$k</td>";
+    $prvdir .= "<td align='center'>$cw</td></tr>\r\n";
   }
   $prvdir .= "</table>";
-
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
   $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt;&gt; 安装模块： {$infos['name']}");
   $win->AddHidden("hash", $hash);
   $win->AddHidden("action", 'setupstart');
-
-  $msg = "<style>.dtb{border-bottom:1px dotted #cccccc}</style>
+  $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
   <tr>
-    <td width='20%' height='28' class='dtb'>模块名称：</td>
+    <td width='20%' height='26' class='dtb'>模块名称：</td>
     <td width='80%' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>语言：</td>
+    <td height='26' class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>文件大小：</td>
+    <td height='26' class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>开发者ID：</td>
-    <td class='dtb'>{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a></td>
+    <td height='26' class='dtb'>开发者ID：</td>
+    <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a></td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>发布时间：</td>
+    <td height='26' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>使用协议：</td>
-    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank'>点击浏览...</a></td>
+    <td height='26' class='dtb'>使用协议：</td>
+    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
     <td height='30' class='dtb' colspan='2'>
-    <div class='alert alert-danger'>
-    <b>注意事项：</b>
-    安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限。
-    </div>
+    <div class='alert alert-danger'><b>注意事项：</b>安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限。</div>
     </td>
   </tr>
   <tr>
     <td height='30'><b>目录权限检测：</b><br /> ../ 为根目录 <br /> ./ 表示当前目录</td>
-    <td>
-    $prvdir
-    </td>
+    <td>$prvdir</td>
   </tr>
   <tr>
     <td height='30'>模块包含的所有文件列表：</td>
     <td></td>
   </tr>
   <tr>
-    <td height='164' colspan='2'>
+    <td height='160' colspan='2'>
      <textarea name='filelists' id='filelists' style='width:90%;height:200px'>{$filelist}</textarea>
     </td>
   </tr>
   <tr>
-    <td height='28'>对于已存在文件处理方法：</td>
+    <td height='26'>对于已存在文件处理方法：</td>
     <td>
-   <label><input name='isreplace' type='radio' value='1' checked='checked' />
-    覆盖</label>
-    <label><input name='isreplace' type='radio' value='3' />
-   覆盖，保留副本</label>
-   <label><input type='radio' name='isreplace' value='0' />
-   保留旧文件</label>
+    <label><input name='isreplace' type='radio' value='1' checked='checked'>覆盖</label>
+    <label><input name='isreplace' type='radio' value='3'>覆盖，保留副本</label>
+    <label><input type='radio' name='isreplace' value='0'>保留旧文件</label>
    </td>
   </tr>
-</table>
-    ";
+</table>";
   $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
   $winform = $win->GetWindow("ok", "");
   $win->Display();
@@ -234,36 +215,31 @@ function Setup();
 }
 /*---------------
 function SetupRun()
---------------*/ else if ($action == 'setupstart') {
+--------------*/
+else if ($action == 'setupstart') {
   if (!is_writeable($mdir)) {
-    ShowMsg("目录 {$mdir} 不支持写入，这将导致安装程序没法正常创建！", "-1");
+    ShowMsg("目录 {$mdir} 不支持写入，这将导致安装程序没法正常创建", "-1");
     exit();
   }
   $dm = new DedeModule($mdir);
-
   $minfos = $dm->GetModuleInfo($hash);
   extract($minfos, EXTR_SKIP);
-
   $menustring = addslashes($dm->GetSystemFile($hash, 'menustring'));
   $indexurl = str_replace('**', '=', $indexurl);
-
   $query = "INSERT INTO `#@__sys_module`(`hashcode` , `modname` , `indexname` , `indexurl` , `ismember` , `menustring` )
-                                    VALUES ('$hash' , '$name' , '$indexname' , '$indexurl' , '$ismember' , '$menustring' ) ";
-
+    VALUES ('$hash' , '$name' , '$indexname' , '$indexurl' , '$ismember' , '$menustring' ) ";
   $rs = $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_module` WHERE hashcode LIKE '$hash' ");
   $rs = $dsql->ExecuteNoneQuery($query);
   if (!$rs) {
-    ShowMsg('保存数据库信息失败，无法完成安装！'.$dsql->GetError(), 'javascript:;');
+    ShowMsg('保存数据库信息失败，无法完成安装'.$dsql->GetError(), 'javascript:;');
     exit();
   }
-
   $dm->WriteFiles($hash, $isreplace);
   $filename = '';
   if (!isset($autosetup) || $autosetup == 0) $filename = $dm->WriteSystemFile($hash, 'setup');
   if (!isset($autodel) || $autodel == 0) $dm->WriteSystemFile($hash, 'uninstall');
   $dm->WriteSystemFile($hash, 'readme');
   $dm->Clear();
-
   //用模块的安装程序安装
   if (!isset($autosetup) || $autosetup == 0) {
     include(DEDEDATA.'/module/'.$filename);
@@ -274,35 +250,26 @@ function SetupRun()
     $mysql_version = $dsql->GetVersion(TRUE);
     //默认使用MySQL 4.1 以下版本的SQL语句，对大于4.1版本采用替换处理 TYPE=MyISAM ==> ENGINE=MyISAM DEFAULT CHARSET=#~lang~#
     $setupsql = $dm->GetSystemFile($hash, 'setupsql40');
-
     $setupsql = preg_replace("#ENGINE=MyISAM#i", 'TYPE=MyISAM', $setupsql);
     $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET='.$cfg_db_language;
-
     if ($mysql_version >= 4.1) {
       $setupsql = preg_replace("#TYPE=MyISAM#i", $sql41tmp, $setupsql);
     }
-
     //_ROOTURL_
     if ($cfg_cmspath == '/') $cfg_cmspath = '';
-
     $rooturl = $cfg_basehost.$cfg_cmspath;
-
     $setupsql = preg_replace("#_ROOTURL_#i", $rooturl, $setupsql);
     $setupsql = preg_replace("#[\r\n]{1,}#", "\n", $setupsql);
-
     $sqls = @split(";[ \t]{0,}\n", $setupsql);
     foreach ($sqls as $sql) {
       if (trim($sql) != '') $dsql->ExecuteNoneQuery($sql);
     }
-
     ReWriteConfigAuto();
-
     $rflwft = "<script language='javascript' type='text/javascript'>\r\n";
     $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu_module.php';\r\n";
     $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu_module.php';\r\n";
     $rflwft .= "</script>";
     echo $rflwft;
-
     UpDateCatCache();
     ShowMsg('模块安装完成...', 'module_main.php');
     exit();
@@ -310,51 +277,48 @@ function SetupRun()
 }
 /*--------------
 function DelModule();
---------------*/ else if ($action == 'del') {
+--------------*/
+else if ($action == 'del') {
   $dm = new DedeModule($mdir);
   $infos = $dm->GetModuleInfo($hash);
-
-  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性)</font>');
-  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
+  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br />（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
+  $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a>";
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
   $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 删除模块： {$infos['name']}");
   $win->AddHidden('hash', $hash);
   $win->AddHidden('action', 'delok');
-  $msg = "<style>.dtb{border-bottom:1px dotted #cccccc}</style>
+  $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='750' border='0' cellspacing='0' cellpadding='0'>
     <tr>
-      <td width='20%' height='28' class='dtb'>模块名称：</td>
+      <td width='20%' height='26' class='dtb'>模块名称：</td>
       <td width='80%' class='dtb'>{$infos['name']}</td>
     </tr>
     <tr>
-      <td height='28' class='dtb'>语言：</td>
+      <td height='26' class='dtb'>语言：</td>
       <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-      <td height='28' class='dtb'>文件大小：</td>
+      <td height='26' class='dtb'>文件大小：</td>
       <td class='dtb'>{$infos['filesize']}</td>
     </tr>
     <tr>
-      <td height='28' class='dtb'>开发者ID：</td>
+      <td height='26' class='dtb'>开发者ID：</td>
       <td class='dtb'>{$dev_id}</td>
     </tr>
     <tr>
-      <td height='28' class='dtb'>发布时间：</td>
+      <td height='26' class='dtb'>发布时间：</td>
       <td class='dtb'>{$infos['time']}</td>
     </tr>
     <tr>
-      <td height='28' class='dtb'>使用协议：</td>
-      <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank'>点击浏览...</a></td>
+      <td height='26' class='dtb'>使用协议：</td>
+      <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-      <td height='28' colspan='2'>
-      删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'><u>卸载程序</u></a>来删除！
-    </td>
+      <td height='26' colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
     </tr>
-</table>
-    ";
+</table>";
   $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
   $winform = $win->GetWindow("ok", "");
   $win->Display();
@@ -363,19 +327,18 @@ function DelModule();
 } else if ($action == 'delok') {
   $dm = new DedeModule($mdir);
   $modfile = $mdir."/".$dm->GetHashFile($hash);
-  unlink($modfile) or die("删除文件 {$modfile} 失败！");
-  ShowMsg("成功删除一个模块文件！", "module_main.php");
+  unlink($modfile) or die("删除文件 {$modfile} 失败");
+  ShowMsg("成功删除一个模块文件", "module_main.php");
   exit();
 }
 /*--------------
 function UnInstall();
---------------*/ else if ($action == 'uninstall') {
+--------------*/
+else if ($action == 'uninstall') {
   $dm = new DedeModule($mdir);
   $infos = $dm->GetModuleInfo($hash);
-
   if ($infos['url'] == '') $infos['url'] = '&nbsp;';
-  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性)</font>');
-
+  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br />（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
   $filelists = $dm->GetFileLists($hash);
   $filelist = '';
   foreach ($filelists as $v) {
@@ -384,58 +347,55 @@ function UnInstall();
     else $v['type'] = '文件';
     $filelist .= "{$v['type']}|{$v['name']}\r\n";
   }
-  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
+  $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a>";
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
   $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 卸载模块： {$infos['name']}");
   $win->AddHidden("hash", $hash);
   $win->AddHidden("action", 'uninstallok');
-  $msg = "<style>.dtb{border-bottom:1px dotted #cccccc}</style>
+  $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='750' border='0' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='200' height='28' class='dtb'>模块名称：</td>
+    <td width='200' height='26' class='dtb'>模块名称：</td>
     <td width='550' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>语言：</td>
+    <td height='26' class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>文件大小：</td>
+    <td height='26' class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>开发者ID：</td>
+    <td height='26' class='dtb'>开发者ID：</td>
     <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>发布时间：</td>
+    <td height='26' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>使用协议：</td>
-    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank'>点击浏览...</a></td>
+    <td height='26' class='dtb'>使用协议：</td>
+    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td height='28'>模块包含的文件：<br />(文件路径相对于当前目录)</td><td>&nbsp;</td>
+    <td height='26'>模块包含的文件：<br />(文件路径相对于当前目录)</td><td>&nbsp;</td>
   </tr>
   <tr>
-    <td height='164' colspan='2'>
+    <td height='160' colspan='2'>
      <textarea name='filelists' id='filelists' style='width:90%;height:200px'>{$filelist}</textarea>
     </td>
   </tr>
   <tr>
-    <td height='28'>对于模块的文件处理方法：</td>
+    <td height='26'>对于模块的文件处理方法：</td>
     <td>
-    <label><input type='radio' name='isreplace' value='0' checked='checked' />
-    手工删除文件，仅运行卸载程序</label>
-    <label><input name='isreplace' type='radio' value='2' />
-    删除模块的所有文件</label>
+    <label><input type='radio' name='isreplace' value='0' checked='checked'>手工删除文件，仅运行卸载程序</label>
+    <label><input name='isreplace' type='radio' value='2'>删除模块的所有文件</label>
    </td>
   </tr>
-</table>
-    ";
+</table>";
   $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
   $winform = $win->GetWindow("ok", "");
   $win->Display();
@@ -444,13 +404,12 @@ function UnInstall();
 }
 /*--------------
 function UnInstallRun();
---------------*/ else if ($action == 'uninstallok') {
+--------------*/
+else if ($action == 'uninstallok') {
   $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_module` WHERE hashcode LIKE '$hash' ");
   $dm = new DedeModule($mdir);
-
   $minfos = $dm->GetModuleInfo($hash);
   extract($minfos, EXTR_SKIP);
-
   if (!isset($moduletype) || $moduletype != 'patch') {
     $dm->DeleteFiles($hash, $isreplace);
   }
@@ -470,9 +429,7 @@ function UnInstallRun();
         if (trim($sql) != '') $dsql->ExecuteNoneQuery($sql);
       }
     }
-
     ReWriteConfigAuto();
-
     $rflwft = "<script language='javascript' type='text/javascript'>\r\n";
     $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu_module.php';\r\n";
     $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu_module.php';\r\n";
@@ -484,7 +441,8 @@ function UnInstallRun();
 }
 /*--------------
 function ShowReadme();
---------------*/ else if ($action == 'showreadme') {
+--------------*/
+else if ($action == 'showreadme') {
   $dm = new DedeModule($mdir);
   $msg = $dm->GetSystemFile($hash, 'readme');
   $msg = preg_replace("/(.*)<body/isU", "", $msg);
@@ -501,13 +459,12 @@ function ShowReadme();
 }
 /*--------------
 function ViewOne();
---------------*/ else if ($action == 'view') {
+--------------*/
+else if ($action == 'view') {
   $dm = new DedeModule($mdir);
   $infos = $dm->GetModuleInfo($hash);
-
   if ($infos['url'] == '') $infos['url'] = '&nbsp;';
-  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br /><font color="red">(这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性)</font>');
-
+  $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br />（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
   $filelists = $dm->GetFileLists($hash);
   $filelist = '';
   $setupinfo = '';
@@ -522,47 +479,46 @@ function ViewOne();
   } else {
     $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
   }
-  $dev_id = empty($infos['dev_id'])? "未认证 <a style='color:red' target='_blank' href='{$cfg_biz_dedebizUrl}/developer'>前去认证</a>" : "{$infos['dev_id']} <a class='btn btn-success btn-sm' target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}'>查看详情</a>";
+  $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-success btn-sm'>安装</a> <a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a>";
   $win = new OxWindow();
   $win->Init("", "js/blank.js", "");
   $wecome_info = "模块管理";
   $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 模块详情： {$infos['name']}");
-  $msg = "<style>.dtb{border-bottom:1px dotted #cccccc}</style>
+  $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='20%' height='28' class='dtb'>模块名称：</td>
+    <td width='20%' height='26' class='dtb'>模块名称：</td>
     <td width='80%' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>语言：</td>
+    <td height='26' class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>文件大小：</td>
+    <td height='26' class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>开发者ID：</td>
+    <td height='26' class='dtb'>开发者ID：</td>
     <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>发布时间：</td>
+    <td height='26' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td height='28' class='dtb'>使用协议：</td>
-    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank'>点击浏览...</a></td>
+    <td height='26' class='dtb'>使用协议：</td>
+    <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td height='28'>模块包含的文件：<br />(文件路径相对于当前目录)</td><td>&nbsp;</td>
+    <td height='26'>模块包含的文件：<br />(文件路径相对于当前目录)</td><td>&nbsp;</td>
   </tr>
   <tr>
-    <td height='164' colspan='2'>
+    <td height='160' colspan='2'>
      <textarea name='filelists' id='filelists' style='width:90%;height:200px'>{$filelist}</textarea>
     </td>
   </tr>
-</table>
-    ";
+</table>";
   $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
   $winform = $win->GetWindow('hand', '');
   $win->Display();
@@ -571,15 +527,13 @@ function ViewOne();
 }
 /*--------------
 function Edit();
---------------*/ else if ($action == 'edit') {
+--------------*/
+else if ($action == 'edit') {
   $dm = new DedeModule($mdir);
-
   $minfos = $dm->GetModuleInfo($hash);
   extract($minfos, EXTR_SKIP);
-
   if (!isset($lang)) $lang = 'gb2312';
   if (!isset($moduletype)) $moduletype = 'soft';
-
   $menustring = $dm->GetSystemFile($hash, 'menustring');
   $setupsql40 = dede_htmlspecialchars($dm->GetSystemFile($hash, 'setupsql40'));
   $readmetxt = $dm->GetSystemFile($hash, 'readme');
@@ -587,12 +541,12 @@ function Edit();
   $filelist = $dm->GetSystemFile($hash, 'oldfilelist', false);
   $indexurl = str_replace('**', '=', $indexurl);
   $dm->Clear();
-
   require_once(dirname(__FILE__).'/templets/module_edit.htm');
   exit();
 }
 /*--------------
 function Download();
---------------*/ else if ($action == 'download') {
+--------------*/
+else if ($action == 'download') {
   ShowMsg("暂不支持模块下载功能", "javascript:;");
 }

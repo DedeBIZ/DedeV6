@@ -85,7 +85,7 @@ function ShowMenu(evt,obj,aid,atitle)
     new ContextItem("推荐文档",function(){ adArc(aid); }),
     new ContextItem("删除文档",function(){ delArc(aid); }),
     new ContextSeperator(),
-    new ContextItem("复制(<u>C</u>)",function(){ copyToClipboard(atitle); }),
+    new ContextItem("复制(C)",function(){ copyToClipboard(atitle); }),
     new ContextItem("重载页面",function(){ location.reload(); }),
     new ContextSeperator(),
     new ContextItem("全部选择",function(){ selAll(); }),

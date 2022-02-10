@@ -68,10 +68,10 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     $start = ($pageno-1) * $pagesize;
     $printhead ="<table width='98%' border='0' cellpadding='1' cellspacing='1' align='center'  class='table maintable table-bordered' style='background:#cfcfcf;margin-bottom:5px;'>
         <tr align='center' bgcolor='#FBFCE2'>
-          <td width='5%' class='tbsname'><a href='#' onclick=\"ReloadPage('aid')\"><u>ID</u></a></td>
+          <td width='5%' class='tbsname'><a href='#' onclick=\"ReloadPage('aid')\">ID</a></td>
           <td width='20%' class='tbsname'>列表名称</td>
           <td width='20%' class='tbsname'>模板文件</td>
-          <td width='5%' class='tbsname'><a href='#' onclick=\"ReloadPage('click')\"><u>点击</u></a></td>
+          <td width='5%' class='tbsname'><a href='#' onclick=\"ReloadPage('click')\">点击</a></td>
           <td width='15%' class='tbsname'>创建时间</td>
           <td class='tbsname'>管理</td>
             </tr>\r\n";

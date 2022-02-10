@@ -32,7 +32,7 @@ if ($dopost == 'delete') {
     如果不希望重新生成所有页面，则直接调用JS代码即可。
     ";
     $wintitle = "广告管理-获取广告标签";
-    $wecome_info = "<a href='ad_main.php'><u>广告管理</u></a>::获取JS";
+    $wecome_info = "<a href='ad_main.php'>广告管理</a>::获取JS";
     $win = new OxWindow();
     $win->Init();
     $winform = $win->GetWindow("hand", $info);

@@ -21,7 +21,7 @@
 		function ReloadPage(ordertype) {
 			orderby = ordertype;
 			var listArea = $Obj('rslist');
-			var errMsg = "网络通信出错！<br>[<a href=\"javascript:ReloadPage('" + ordertype + "')\"><u>点击此重新加载列表</u></a>]";
+			var errMsg = "网络通信出错！<br>[<a href=\"javascript:ReloadPage('" + ordertype + "')\">点击此重新加载列表</a>]";
 			var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在加载...");
 			myajax.SendGet("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget);
 		}
@@ -46,7 +46,7 @@
 			totalrow = totalrow - 1;
 			var pagenum = Math.ceil(totalrow / pagesize);
 			if (pagenum <= pageno) pageno = pagenum;
-			var errMsg = "网络通信出错！<br>[<a href=\"javascript:LoadPage('" + pageno + "')\"><u>点击此重新加载列表</u></a>]";
+			var errMsg = "网络通信出错！<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
 			var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理...");
 			myajax.SendGet("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno);
 			ReloadPageNum(pageno);

@@ -176,7 +176,7 @@ function getSoft_new()
         $cfg_ml = new MemberLogin();
         $arclink = $arcurl;
         $arctitle = $title;
-        $arcLinktitle = "<a href=\"{$arcurl}\"><u>".$arctitle."</u></a>";
+        $arcLinktitle = "<a href=\"{$arcurl}\">".$arctitle."</a>";
         $pubdate = GetDateTimeMk($pubdate);
 
         //会员级别不足

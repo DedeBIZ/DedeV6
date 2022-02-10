@@ -273,9 +273,9 @@ if(!empty($egroup))
         <tr>
             <td height="28" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
-                    &nbsp;·<a href='stepselect_main.php'><b><u>枚举组列表</u></b></a>
+                    &nbsp;·<a href='stepselect_main.php'><b>枚举组列表</b></a>
                     &gt; <a
-                        href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><b><u><?php echo $selgroup; ?></u></b></a>
+                        href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><b><?php echo $selgroup; ?></b></a>
                     &gt; <b>子分类列表</b>
                 </div>
                 <div style="float:right"></div>
@@ -339,7 +339,7 @@ if(!empty($egroup))
          }
          else
          {
-               echo "<a href='stepselect_main.php?egroup={$fields['egroup']}'><u>".$egroups[$fields['egroup']]."</u></a>";
+               echo "<a href='stepselect_main.php?egroup={$fields['egroup']}'>".$egroups[$fields['egroup']]."</a>";
          }
         ?>
                 </td>
@@ -370,7 +370,7 @@ else
         <tr>
             <td height="28" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
-                    &nbsp;·<a href='stepselect_main.php'><b><u>枚举组列表</u></b></a>
+                    &nbsp;·<a href='stepselect_main.php'><b>枚举组列表</b></a>
                 </div>
                 <div style="float:right"></div>
             </td>
@@ -389,7 +389,7 @@ else
             onMouseOut="javascript:this.bgColor='#FFFFFF';">
             <td><input type='checkbox' name='ids[]' value='{dede:field.id /}' class='np' /></td>
             <td> {dede:field.id /} </td>
-            <td> <a href='stepselect_main.php?egroup={dede:field.egroup /}'><u>{dede:field.itemname /}</u></a> </td>
+            <td> <a href='stepselect_main.php?egroup={dede:field.egroup /}'>{dede:field.itemname /}</a> </td>
             <td>
                 <?php
                 switch ($fields['issign']) {

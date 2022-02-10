@@ -110,7 +110,7 @@ function __Export()
         $channelconfig .= "<channel:{$k}>$v</channel:{$k}>\r\n";
     }
     $wintitle = "导出内容模型规则";
-    $wecome_info = "<a href='mychannel_main.php'><u>内容模型管理</u></a>::导出内容模型规则";
+    $wecome_info = "<a href='mychannel_main.php'>内容模型管理</a>::导出内容模型规则";
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友：");

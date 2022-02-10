@@ -51,7 +51,7 @@ if ($needMoney > 0 || $needRank > 1) {
                              $arc->Fields["title"],$arc->Fields["ismake"],$arc->Fields["arcrank"]);
     */
     $arclink = $cfg_phpurl.'/view.php?aid='.$arc->ArcID;
-    $arcLinktitle = "<a href=\"{$arclink}\"><u>".$arctitle."</u></a>";
+    $arcLinktitle = "<a href=\"{$arclink}\">".$arctitle."</a>";
 
     $description =  $arc->Fields["description"];
     $pubdate = GetDateTimeMk($arc->Fields["pubdate"]);

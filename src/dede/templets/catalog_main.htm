@@ -58,7 +58,7 @@ function CommonMenu(eobj,obj,tid,tname)
     new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
     new ContextSeperator(),
     new ContextItem("向上排前一级",function(){ location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-    new ContextItem("关闭菜单(<u>C</u>)",function(){})
+    new ContextItem("关闭菜单(C)",function(){})
   ]
   ContextMenu.display(eobj,popupoptions)
 }
@@ -80,7 +80,7 @@ function CommonMenuPart(eobj,obj,tid,tname)
     new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
     new ContextSeperator(),
     new ContextItem("向上排前一级",function(){ location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-    new ContextItem("关闭菜单(<u>C</u>)",function(){})
+    new ContextItem("关闭菜单(C)",function(){})
   ]
   ContextMenu.display(eobj,popupoptions)
 }
@@ -95,7 +95,7 @@ function SingleMenu(eobj,obj,tid,tname)
     new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
     new ContextSeperator(),
     new ContextItem("向上排前一级",function(){ window.location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-  new ContextItem("关闭菜单(<u>C</u>)",function(){})
+  new ContextItem("关闭菜单(C)",function(){})
   ]
   ContextMenu.display(eobj,popupoptions)
 }

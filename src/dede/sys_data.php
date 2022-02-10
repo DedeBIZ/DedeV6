@@ -20,7 +20,7 @@ if ($cfg_dbtype == 'sqlite') {
 
 if ($dopost == "viewinfo") //查看表结构
 {
-    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'><u>关闭</u></a>]\r\n<xmp>";
+    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
         echo "没有指定表名！";
     } else {
@@ -34,7 +34,7 @@ if ($dopost == "viewinfo") //查看表结构
     exit();
 } else if ($dopost == "opimize") //优化表
 {
-    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'><u>关闭</u></a>]\r\n<xmp>";
+    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
         echo "没有指定表名！";
     } else {
@@ -49,7 +49,7 @@ if ($dopost == "viewinfo") //查看表结构
     exit();
 } else if ($dopost == "repair") //修复表
 {
-    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'><u>关闭</u></a>]\r\n<xmp>";
+    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
         echo "没有指定表名！";
     } else {
