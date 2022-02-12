@@ -26,10 +26,10 @@ if ($dopost == "save") {
         $exptime = ${'exptime_'.$startID};
         if (isset(${'check_'.$startID})) {
             if ($pname != '') {
-                $query = "UPDATE #@__member_type SET pname='$pname',money='$money',rank='$rank',exptime='$exptime' WHERE aid='$aid'";
+                $query = "UPDATE `#@__member_type` SET `pname`='$pname',`money`='$money',`rank`='$rank',`exptime`='$exptime' WHERE `aid`='$aid'";
             }
         } else {
-            $query = "DELETE FROM #@__member_type WHERE aid='$aid' ";
+            $query = "DELETE FROM `#@__member_type` WHERE `aid`='$aid' ";
         }
         if ($query != '') {
             $dsql->ExecuteNoneQuery($query);
@@ -38,14 +38,14 @@ if ($dopost == "save") {
 
     //增加新记录
     if (isset($check_new) && $pname_new != '') {
-        $query = "INSERT INTO #@__member_type(rank,pname,money,exptime) VALUES('{$rank_new}','{$pname_new}','{$money_new}','{$exptime_new}');";
+        $query = "INSERT INTO `#@__member_type`(`rank`,`pname`,`money`,`exptime`) VALUES('{$rank_new}','{$pname_new}','{$money_new}','{$exptime_new}');";
         $dsql->ExecuteNoneQuery($query);
     }
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
-    echo "<script> alert('成功更新会员产品分类表'); </script>";
+    echo "<script> alert('成功更新会员产品分类表！'); </script>";
 }
 $arcranks = array();
-$dsql->SetQuery("SELECT * FROM #@__arcrank WHERE rank>10 ");
+$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank`>10 ");
 $dsql->Execute();
 while ($row = $dsql->GetArray()) {
     $arcranks[$row['rank']] = $row['membername'];

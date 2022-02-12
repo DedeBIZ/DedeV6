@@ -20,7 +20,7 @@ if (empty($dopost)) $dopost = '';
 if ($dopost == 'saveall') {
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "article_keywords_main.php" : $_COOKIE['ENV_GOBACK_URL'];
     if (!isset($aids)) {
-        ShowMsg("您没有选择要更改的内容", $ENV_GOBACK_URL);
+        ShowMsg("您没有选择要更改的内容！", $ENV_GOBACK_URL);
         exit();
     }
     foreach ($aids as $aid) {
@@ -49,7 +49,7 @@ if ($dopost == 'saveall') {
             $dsql->ExecuteNoneQuery($query1);
         }
     }
-    ShowMsg("完成指定的更改", $ENV_GOBACK_URL);
+    ShowMsg("完成指定的更改！", $ENV_GOBACK_URL);
     exit();
 }
 //增加关键字
@@ -58,17 +58,17 @@ else if ($dopost == 'add') {
     $keyword = trim($keyword);
     $rank = preg_replace("#[^0-9]#", '', $rank);
     if ($keyword == '') {
-        ShowMsg("关键字不能为空", -1);
+        ShowMsg("关键字不能为空！", -1);
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__keywords` WHERE keyword LIKE '$keyword'");
     if (is_array($row)) {
-        ShowMsg("关键字已存在库中", "-1");
+        ShowMsg("关键字已存在库中！", "-1");
         exit();
     }
-    $inquery = "INSERT INTO `#@__keywords`(keyword,rank,sta,rpurl) VALUES ('$keyword','$rank','1','$rpurl');";
+    $inquery = "INSERT INTO `#@__keywords`(`keyword`,`rank`,`sta`,`rpurl`) VALUES ('$keyword','$rank','1','$rpurl');";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功增加一个关键字", $ENV_GOBACK_URL);
+    ShowMsg("成功增加一个关键字！", $ENV_GOBACK_URL);
     exit();
 }
 if (empty($keyword)) {
@@ -78,7 +78,7 @@ if (empty($keyword)) {
     $addquery = " WHERE keyword LIKE '%$keyword%' ";
 }
 
-$sql = "SELECT * FROM `#@__keywords` $addquery ORDER BY rank DESC";
+$sql = "SELECT * FROM `#@__keywords` $addquery ORDER BY `rank` DESC";
 $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetParameter("keyword", $keyword);

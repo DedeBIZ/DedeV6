@@ -181,7 +181,7 @@ if ($dopost == 'install') {
 //配置支付接口
 else if ($dopost == 'config') {
     if ($pay_name == "" || $pay_desc == "" || $pay_fee == "") {
-        ShowMsg("您有未填写的项目", "-1");
+        ShowMsg("您有未填写的项目！", "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$pid'");
@@ -200,7 +200,7 @@ else if ($dopost == 'config') {
     $configstr = "<"."?php\r\n".$payment."\r\n?".">\r\n";
     if (!empty($payment)) {
         $m_file = DEDEDATA."/payment/".$row['code'].".php";
-        $fp = fopen($m_file, "w") or die("写入文件 $safeconfigfile 失败，请检查权限");
+        $fp = fopen($m_file, "w") or die("写入文件 $safeconfigfile 失败，请检查权限！");
         fwrite($fp, $configstr);
         fclose($fp);
     }
@@ -215,7 +215,7 @@ else if ($dopost == 'config') {
     $query = "UPDATE `#@__payment` SET name = '$pay_name',fee='$pay_fee',description='$pay_desc',config='$config',enabled='1' WHERE id='$pid'";
     $dsql->ExecuteNoneQuery($query);
     if ($pm == 'edit') $msg = "保存修改成功";
-    else $msg = "安装成功";
+    else $msg = "安装成功！";
     ShowMsg($msg, "sys_payment.php");
     exit();
 }
@@ -241,10 +241,10 @@ else if ($dopost == 'uninstall') {
     //同时需要删除对应的缓存
     $m_file = DEDEDATA."/payment/".$row['code'].".php";
     @unlink($m_file);
-    ShowMsg("删除成功", "sys_payment.php");
+    ShowMsg("删除成功！", "sys_payment.php");
     exit();
 }
-$sql = "SELECT * FROM `#@__payment` ORDER BY rank ASC";
+$sql = "SELECT * FROM `#@__payment` ORDER BY `rank` ASC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/sys_payment.htm");
 $dlist->SetSource($sql);
