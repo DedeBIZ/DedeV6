@@ -68,7 +68,7 @@ if ($dopost == 'analyse') {
             if (strlen($k) > 20) {
                 continue;
             }
-            $dsql->SetQuery("INSERT INTO `#@__keywords`(keyword,`rank`,sta,rpurl) VALUES('".addslashes($k)."','$v','1','')");
+            $dsql->SetQuery("INSERT INTO `#@__keywords`(keyword,rank,sta,rpurl) VALUES('".addslashes($k)."','$v','1','')");
             $dsql->Execute();
         }
         echo "完成关键字的导入！<br/>\r\n";

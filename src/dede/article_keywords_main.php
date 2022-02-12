@@ -66,7 +66,7 @@ else if ($dopost == 'add') {
         ShowMsg("关键字已存在库中！", "-1");
         exit();
     }
-    $inquery = "INSERT INTO `#@__keywords`(`keyword`,`rank`,`sta`,`rpurl`) VALUES ('$keyword','$rank','1','$rpurl');";
+    $inquery = "INSERT INTO `#@__keywords`(keyword,rank,sta,rpurl) VALUES ('$keyword','$rank','1','$rpurl');";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg("成功增加一个关键字！", $ENV_GOBACK_URL);
     exit();
@@ -78,7 +78,7 @@ if (empty($keyword)) {
     $addquery = " WHERE keyword LIKE '%$keyword%' ";
 }
 
-$sql = "SELECT * FROM `#@__keywords` $addquery ORDER BY `rank` DESC";
+$sql = "SELECT * FROM `#@__keywords` $addquery ORDER BY rank DESC";
 $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetParameter("keyword", $keyword);

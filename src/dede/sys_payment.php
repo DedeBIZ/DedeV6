@@ -244,7 +244,7 @@ else if ($dopost == 'uninstall') {
     ShowMsg("删除成功！", "sys_payment.php");
     exit();
 }
-$sql = "SELECT * FROM `#@__payment` ORDER BY `rank` ASC";
+$sql = "SELECT * FROM `#@__payment` ORDER BY rank ASC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/sys_payment.htm");
 $dlist->SetSource($sql);
