@@ -23,20 +23,20 @@ if ($dopost == "save") {
     }
     $row = $dsql->GetOne("SELECT filename FROM `#@__sgpage` WHERE likeid='$likeid' AND filename LIKE '$filename' ");
     if (is_array($row)) {
-        ShowMsg("已经存在相同的文件名，请更改为其它文件名！", "-1");
+        ShowMsg("已经存在相同的文件名，请更改为其它文件名", "-1");
         exit();
     }
     $inQuery = "INSERT INTO `#@__sgpage`(title,keywords,description,template,likeid,ismake,filename,uptime,body)
      VALUES('$title','$keywords','$description','$template','$likeid','$ismake','$filename','$uptime','$body'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("增加页面失败，请检内容是否有问题！", "-1");
+        ShowMsg("增加页面失败，请检内容是否有问题", "-1");
         exit();
     }
     $id = $dsql->GetLastID();
     include_once(DEDEINC."/arc.sgpage.class.php");
     $sg = new sgpage($id);
     $sg->SaveToHtml();
-    ShowMsg("成功增加一个页面！", "templets_one.php");
+    ShowMsg("成功增加一个页面", "templets_one.php");
     exit();
 }
 $row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage`  ");

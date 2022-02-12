@@ -25,7 +25,7 @@ if ($dopost == 'save') {
     $dsql->ExecuteNoneQuery($query);
     // 清除缓存
     $cfg_ml->DelCache($cfg_ml->M_ID);
-    ShowMsg('成功更新头像信息！', $backurl);
+    ShowMsg('成功更新头像信息', $backurl);
     exit();
 }
 $face = $cfg_ml->fields['face'];

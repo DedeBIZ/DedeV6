@@ -19,15 +19,15 @@ if (empty($action)) $action = '';
 if ($action == 'add') {
     //检查输入
     if (empty($id) || preg_match("#[^0-9-]#", $id)) {
-        ShowMsg("<font color=red>'频道id'</font>必须为数字！", "-1");
+        ShowMsg("<font color=red>'频道id'</font>必须为数字", "-1");
         exit();
     }
     if (preg_match("#[^a-z0-9]#i", $nid) || $nid == "") {
-        ShowMsg("<font color=red>'频道名字标识'</font>必须为英文字母或与数字混合字符串！", "-1");
+        ShowMsg("<font color=red>'频道名字标识'</font>必须为英文字母或与数字混合字符串", "-1");
         exit();
     }
     if ($addtable == "") {
-        ShowMsg("附加表不能为空！", "-1");
+        ShowMsg("附加表不能为空", "-1");
         exit();
     }
     $trueTable2 = str_replace("#@__", $cfg_dbprefix, $addtable);
@@ -37,7 +37,7 @@ if ($action == 'add') {
     //检查id是否重复
     $row = $dsql->GetOne("SELECT * FROM #@__channeltype WHERE id='$id' OR nid LIKE '$nid' OR addtable LIKE '$addtable'");
     if (is_array($row)) {
-        ShowMsg("可能‘频道id’、‘频道名称标识’、‘附加表名称’在数据库已存在，不能重复使用！", "-1");
+        ShowMsg("可能‘频道id’、‘频道名称标识’、‘附加表名称’在数据库已存在，不能重复使用", "-1");
         exit();
     }
     $mysql_version = $dsql->GetVersion();
@@ -109,7 +109,7 @@ if ($action == 'add') {
     $inQuery = "INSERT INTO `#@__channeltype`(id,nid,typename,addtable,addcon,mancon,editcon,useraddcon,usermancon,usereditcon,fieldset,listfields,issystem,issend,arcsta,usertype,sendrank,needdes,needpic,titlename,onlyone,dfcid)
     VALUES ('$id','$nid','$typename','$addtable','$addcon','$mancon','$editcon','$useraddcon','$usermancon','$usereditcon','$fieldset','$listfields','$issystem','$issend','$arcsta','$usertype','$sendrank','$needdes','$needpic','$titlename','$onlyone','$dfcid');";
     $dsql->ExecuteNoneQuery($inQuery);
-    ShowMsg("成功增加一个频道模型！", "mychannel_edit.php?id=".$id);
+    ShowMsg("成功增加一个频道模型", "mychannel_edit.php?id=".$id);
     exit();
 }
 $row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id DESC LIMIT 0,1 ");

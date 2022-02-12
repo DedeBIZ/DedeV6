@@ -38,11 +38,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
     include(DEDEMEMBER."/templets/archives_add.htm");
@@ -83,7 +83,7 @@ function _SaveArticle(){  }
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();
         }
     }
@@ -94,7 +94,7 @@ function _SaveArticle(){  }
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作！", "-1");
+        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
         exit();
     }
 
@@ -123,7 +123,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("Delete From `#@__archives` where id='$arcID'");
             $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错<br>error:{$gerr}，请联系管理员！", "javascript:;");
+            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错<br>error:{$gerr}，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -153,7 +153,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         &nbsp;&nbsp;
         <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布内容管理</a>
         ";
-    $wintitle = "成功发布内容！";
+    $wintitle = "成功发布内容";
     $wecome_info = "内容管理::发布内容";
     $win = new OxWindow();
     $win->AddTitle("成功发布内容：");

@@ -16,12 +16,12 @@ if (empty($dopost)) $dopost = "";
 $aid = preg_replace("#[^0-9]#", "", $aid);
 if ($dopost == "del") {
     $dsql->ExecuteNoneQuery("DELETE FROM #@__mynews WHERE aid='$aid';");
-    ShowMsg("成功删除一条站内新闻！", "mynews_main.php");
+    ShowMsg("成功删除一条站内新闻", "mynews_main.php");
     exit();
 } else if ($dopost == "editsave") {
     $inquery = "UPDATE #@__mynews SET title='$title',typeid='$typeid',writer='$writer',senddate='".GetMKTime($sdate)."',body='$body' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功更改一条站内新闻！", "mynews_main.php");
+    ShowMsg("成功更改一条站内新闻", "mynews_main.php");
     exit();
 }
 $myNews = $dsql->GetOne("SELECT #@__mynews.*,#@__arctype.typename FROM #@__mynews LEFT JOIN #@__arctype ON #@__arctype.id=#@__mynews.typeid WHERE #@__mynews.aid='$aid';");

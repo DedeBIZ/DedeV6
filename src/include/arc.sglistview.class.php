@@ -206,7 +206,7 @@ class SgListView
             }
         }
         if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "模板文件不存在，无法解析文档！";
+            echo "模板文件不存在，无法解析文档";
             exit();
         }
         $this->dtp->LoadTemplate($tempfile);
@@ -242,7 +242,7 @@ class SgListView
 
         //创建封面模板文件
         if ($this->TypeLink->TypeInfos['isdefault'] == -1) {
-            echo '这个类目是动态类目！';
+            echo '这个类目是动态类目';
             return '';
         }
 

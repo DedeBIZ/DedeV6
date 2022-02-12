@@ -83,7 +83,7 @@ function __link(){  }
 -------------------------------*/
 if ($dopost == 'place' or $dopost == 'report' or $dopost == 'account' or $dopost == 'setting') {
   if (!mda_islogin()) {
-    ShowMsg("您尚未登录德得广告，请先登录后继续使用……！", '?dopost=login');
+    ShowMsg("您尚未登录德得广告，请先登录后继续使用……", '?dopost=login');
     exit();
   }
   mda_check_islogin();
@@ -161,7 +161,7 @@ function __bind_user(){  }
   $domain = isset($domain) ? $domain : '';
   $channel_name = isset($channel_name) ? $channel_name : '';
   if (!$email or !$pwd or !$domain or !$channel_name) {
-    ShowMsg("填写正确的账号信息！", -1);
+    ShowMsg("填写正确的账号信息", -1);
     exit();
   }
   if ($cfg_soft_lang == 'gb2312') $channel_name = gb2utf8($channel_name);
@@ -173,7 +173,7 @@ function __bind_user(){  }
   );
   $rs = json_decode(mda_http_send(MDA_API_BIND_USER, 0, $paramsArr), TRUE);
   if (!$rs) {
-    ShowMsg("请求API错误，请重试！", -1);
+    ShowMsg("请求API错误，请重试", -1);
     exit();
   }
   if ($rs['code'] != 0) {
@@ -272,7 +272,7 @@ function __main(){  }
       </td>
     </tr>
     <tr>
-      <td height="30" colspan="2">您已成功登录德得广告！您可以进行以下操作：</td>
+      <td height="30" colspan="2">您已成功登录德得广告您可以进行以下操作：</td>
     </tr>
     <tr>
       <td height="30" colspan="2">
@@ -328,7 +328,7 @@ EOT;
   );
   $rs = json_decode(mda_http_send(MDA_API_LOGIN, 0, $paramsArr), TRUE);
   if (!$rs) {
-    ShowMsg("请求API错误，请重试！", -1);
+    ShowMsg("请求API错误，请重试", -1);
     exit();
   }
   if ($rs['code'] != 0) {
@@ -336,7 +336,7 @@ EOT;
     exit();
   }
   if ($rs['code'] == 0) {
-    ShowMsg("Channel Secret 修改成功……！", '?dopost=main');
+    ShowMsg("Channel Secret 修改成功……", '?dopost=main');
     mda_set_setting('channel_secret', $channel_secret);
   }
 }
@@ -417,7 +417,7 @@ function __index(){  }
     </tr>
     <tr>
       <td colspan='2' bgcolor='#F9FCEF'><table width='270' border='0' cellpadding='0' cellspacing='0'>
-          <tr align='center' height='28'>
+          <tr align='center' height='26'>
             <td width='90'><input name='imageField1' type='image' class='np' src='{$cfg_plus_dir}/img/button_ok.gif' width='60' height='22' border='0' /></td>
             <td width='90'></td>
             <td></td>

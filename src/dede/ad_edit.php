@@ -18,7 +18,7 @@ $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "ad_main.php" : $_COOKIE['
 
 if ($dopost == 'delete') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__myad` WHERE aid='$aid' ");
-    ShowMsg("成功删除一则广告代码！", $ENV_GOBACK_URL);
+    ShowMsg("成功删除一则广告代码", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "gettag") {
     require_once(DEDEINC.'/oxwindow.class.php');
@@ -32,7 +32,7 @@ if ($dopost == 'delete') {
     如果不希望重新生成所有页面，则直接调用JS代码即可。
     ";
     $wintitle = "广告管理-获取广告标签";
-    $wecome_info = "<a href='ad_main.php'><u>广告管理</u></a>::获取JS";
+    $wecome_info = "<a href='ad_main.php'>广告管理</a>::获取JS";
     $win = new OxWindow();
     $win->Init();
     $winform = $win->GetWindow("hand", $info);
@@ -63,7 +63,7 @@ if ($dopost == 'delete') {
      WHERE aid='$aid'
      ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功更改一则广告代码！", $ENV_GOBACK_URL);
+    ShowMsg("成功更改一则广告代码", $ENV_GOBACK_URL);
     exit();
 }
 

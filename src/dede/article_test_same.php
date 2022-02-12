@@ -18,7 +18,7 @@ if ($dopost == 'analyse') {
     if (is_array($arr)) {
         $maintable = $arr['maintable'];
     } else {
-        showmsg('频道id不正确，无法处理！', 'javascript:;');
+        showmsg('频道id不正确，无法处理', 'javascript:;');
         exit();
     }
     $dsql->SetQuery("SELECT COUNT(title) AS dd,title FROM `$maintable` WHERE channel='$channelid' GROUP BY title ORDER BY dd DESC LIMIT 0, $pagesize");
@@ -35,7 +35,7 @@ else if ($dopost == 'delsel') {
     if (empty($titles)) {
         header("Content-Type: text/html; charset={$cfg_ver_lang}");
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset={$cfg_ver_lang}\">\r\n";
-        echo "没有指定删除的文档！";
+        echo "没有指定删除的文档";
         exit();
     }
 
@@ -72,7 +72,7 @@ else if ($dopost == 'delsel') {
         }
     }
     $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `$maintable`; ");
-    ShowMsg("一共删除了[{$totalarc}]篇重复的文档！", "javascript:;");
+    ShowMsg("一共删除了[{$totalarc}]篇重复的文档", "javascript:;");
     exit();
 }
 

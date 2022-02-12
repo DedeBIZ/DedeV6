@@ -90,8 +90,8 @@ $(function () {
                     <div class="card-body">
                         <table width="98%" class="table table-borderless">
                             <tr>
-                                <td width="25%" class="nline" style="text-align:right">您的级别：</td>
-                                <td class="nline">
+                                <td width="30%" class="nline" style="text-align:right">
+                                    您的级别：
                                     <?php
                                     if($cuserLogin->getUserType()==10) {
                                         echo "总管理员";
@@ -101,8 +101,8 @@ $(function () {
                                     echo "信息采集员或其它管理员";
                                     }
                                     ?>
-                                    <a href="javascript:showMore()" class="btn btn-success btn-sm">查看更多</a>
                                 </td>
+                                <td class="nline"><a href="javascript:showMore()" class="btn btn-success btn-sm">查看更多</a></td>
                             </tr>
                             <tr>
                                 <td colspan="2" class="nline" id="allInfoTD" style="display:none">
@@ -202,7 +202,7 @@ $(function () {
                                     $row['editcon'] = 'archives_edit.php';
                                 }
                                 $linkstr = "<a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>";
-                                if($row['arcrank']==-1) $linkstr .= " <span class='btn btn-success btn-sm'>未审核</span>";
+                                if($row['arcrank']==-1) $linkstr .= "<span class='btn btn-danger btn-sm' style='margin-left:10px'>未审核</span>";
                             ?>
                             <tr>
                                 <td class="nline" style="text-align:left"><?php echo $linkstr; ?></td>

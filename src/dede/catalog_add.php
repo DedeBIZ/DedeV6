@@ -27,7 +27,7 @@ if ($id == 0 && $reid == 0) {
 } else {
     $checkID = empty($id) ? $reid : $id;
     CheckPurview('t_AccNew');
-    CheckCatalog($checkID, '您无权在本栏目下创建子类！');
+    CheckCatalog($checkID, '您无权在本栏目下创建子类');
 }
 
 if (empty($myrow)) $myrow = array();
@@ -136,7 +136,7 @@ function action_savequick(){ }
         }
     }
     UpDateCatCache();
-    ShowMsg('成功增加指定栏目！', 'catalog_main.php');
+    ShowMsg('成功增加指定栏目', 'catalog_main.php');
     exit();
 }
 /*---------------------
@@ -173,11 +173,11 @@ function action_save(){ }
         if ($siteurl != '') {
             $siteurl = preg_replace("#\/$#", "", $siteurl);
             if (!preg_match("#http:\/\/#i", $siteurl)) {
-                ShowMsg("您绑定的二级域名无效，请用(http://host)的形式！", "-1");
+                ShowMsg("您绑定的二级域名无效，请用(http://host)的形式", "-1");
                 exit();
             }
             if (preg_match("#".$cfg_basehost."#i", $siteurl)) {
-                ShowMsg("您绑定的二级域名与当前站点是同一个域，不需要绑定！", "-1");
+                ShowMsg("您绑定的二级域名与当前站点是同一个域，不需要绑定", "-1");
                 exit();
             }
         }
@@ -188,7 +188,7 @@ function action_save(){ }
         $true_typedir = str_replace("{cmspath}", $cfg_cmspath, $typedir);
         $true_typedir = preg_replace("#\/{1,}#", "/", $true_typedir);
         if (!CreateDir($true_typedir)) {
-            ShowMsg("创建目录 {$true_typedir} 失败，请检查您的路径是否存在问题！", "-1");
+            ShowMsg("创建目录 {$true_typedir} 失败，请检查您的路径是否存在问题", "-1");
             exit();
         }
     }
@@ -201,14 +201,14 @@ function action_save(){ }
     '$ispart','$corank','$description','$keywords','$seotitle','$moresite','$siteurl','$sitepath','$ishidden','$cross','$crossid','$content','$smalltypes')";
 
     if (!$dsql->ExecuteNoneQuery($in_query)) {
-        ShowMsg("保存目录数据时失败，请检查您的输入资料是否存在问题！", "-1");
+        ShowMsg("保存目录数据时失败，请检查您的输入资料是否存在问题", "-1");
         exit();
     }
     UpDateCatCache();
     if ($reid > 0) {
         PutCookie('lastCid', GetTopid($reid), 3600 * 24, '/');
     }
-    ShowMsg("成功创建一个分类！", "catalog_main.php");
+    ShowMsg("成功创建一个分类", "catalog_main.php");
     exit();
 } //End dopost==save
 

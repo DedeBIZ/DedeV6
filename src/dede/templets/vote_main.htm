@@ -1,8 +1,6 @@
 {dede:config.pagesize value='20'/}
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>投票管理</title>
@@ -33,7 +31,7 @@
       <td>{dede:field.aid /}</td>
       <td>
         <a href='{dede:global name="cfg_phpurl" /}/vote.php?aid={dede:field.aid/}&dopost=view' target='_blank'>
-          <u>{dede:field.votename /}</u>
+          {dede:field.votename /}
         </a>
       </td>
       <td>{dede:field.starttime function="GetDateMk(@me)" /}</td>

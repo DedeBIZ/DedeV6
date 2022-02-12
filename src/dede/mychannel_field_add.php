@@ -83,11 +83,11 @@ if ($action == 'save') {
     $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting',listfields='$addlist' WHERE id='$id' ");
     if (!$rs) {
         $grr = $dsql->GetError();
-        ShowMsg("保存节点配置出错！".$grr, "javascript:;");
+        ShowMsg("保存节点配置出错".$grr, "javascript:;");
         exit();
     }
 
-    ShowMsg("成功增加一个字段！", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
+    ShowMsg("成功增加一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
 

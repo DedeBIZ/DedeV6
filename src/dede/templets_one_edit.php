@@ -43,12 +43,12 @@ if ($dopost == "saveedit") {
      body='$body'
      WHERE aid='$aid'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新页面数据时失败，请检查长相是否有问题！", "-1");
+        ShowMsg("更新页面数据时失败，请检查长相是否有问题", "-1");
         exit();
     }
     $sg = new sgpage($aid);
     $sg->SaveToHtml();
-    ShowMsg("成功修改一个页面！", "templets_one.php");
+    ShowMsg("成功修改一个页面", "templets_one.php");
     exit();
 } else if ($dopost == "delete") {
     $row = $dsql->GetOne("SELECT filename FROM `#@__sgpage` WHERE aid='$aid'");
@@ -57,7 +57,7 @@ if ($dopost == "saveedit") {
     if (is_file($filename)) {
         unlink($filename);
     }
-    ShowMsg("成功删除一个页面！", "templets_one.php");
+    ShowMsg("成功删除一个页面", "templets_one.php");
     exit();
 } else if ($dopost == "make") {
     include_once(DEDEINC."/arc.sgpage.class.php");
@@ -65,7 +65,7 @@ if ($dopost == "saveedit") {
     $fileurl = $cfg_cmsurl.'/'.preg_replace("#\/{1,}#", "/", $row['filename']);
     $sg = new sgpage($aid);
     $sg->SaveToHtml();
-    ShowMsg("成功更新一个页面！", $fileurl);
+    ShowMsg("成功更新一个页面", $fileurl);
     exit();
 } else if ($dopost == "mkall") {
     include_once(DEDEINC."/arc.sgpage.class.php");
@@ -76,7 +76,7 @@ if ($dopost == "saveedit") {
         $sg->SaveToHtml();
         $i++;
     }
-    ShowMsg("成功更新 $i 个页面！", '-1');
+    ShowMsg("成功更新 $i 个页面", '-1');
     exit();
 } else if ($dopost == "mksel") {
     if (empty($ids)) {
@@ -85,7 +85,7 @@ if ($dopost == "saveedit") {
     include_once(DEDEINC."/arc.sgpage.class.php");
     $i = 0;
     if ($ids == 0) {
-        ShowMsg('您没有选择需要更新的文档！', '-1');
+        ShowMsg('您没有选择需要更新的文档', '-1');
         exit();
     } else if (is_array($ids)) {
         foreach ($ids as $aid) {
@@ -93,12 +93,12 @@ if ($dopost == "saveedit") {
             $sg->SaveToHtml();
             $i++;
         }
-        ShowMsg("成功更新 $i 个页面！", '-1');
+        ShowMsg("成功更新 $i 个页面", '-1');
         exit();
     }
 } else if ($dopost == "view") {
     if (empty($aid)) {
-        ShowMsg('错误的ID！', 'javascript:;');
+        ShowMsg('错误的ID', 'javascript:;');
         exit();
     }
     include_once(DEDEINC."/arc.sgpage.class.php");

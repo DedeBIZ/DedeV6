@@ -8,7 +8,7 @@ if($fmdo=="del")
 		$filename = $cfg_basedir.$activepath."/$filename";
 		@unlink($filename); 
 		$t="文件";
-		ShowMsg("成功删除一个".$t."！","mail_file_manage.php");
+		ShowMsg("成功删除一个".$t."","mail_file_manage.php");
 }else{
 	if(!isset($activepath)){
 		$activepath=$cfg_cmspath;

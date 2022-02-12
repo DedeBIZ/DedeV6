@@ -18,7 +18,7 @@ if ($dopost == "save") {
     $query = "INSERT INTO `#@__mynews`(title,writer,senddate,body)
      VALUES('$title','$writer','$dtime','$body')";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功发布一条站内新闻！", "mynews_main.php");
+    ShowMsg("成功发布一条站内新闻", "mynews_main.php");
     exit();
 }
 include DedeInclude('templets/mynews_add.htm');

@@ -57,7 +57,7 @@ if ($dopost == "delete") {
 } else {
     $row = $dsql->GetOne("SELECT * FROM #@__vote WHERE aid='$aid'");
     if (!is_array($row)) {
-        ShowMsg('指定投票不存在！', '-1');
+        ShowMsg('指定投票不存在', '-1');
         exit();
     }
     include DedeInclude('templets/vote_edit.htm');

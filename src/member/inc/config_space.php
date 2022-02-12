@@ -13,13 +13,13 @@ if (!defined('DEDEMEMBER')) exit('dedebiz');
 
 //检查是否开放会员功能
 if ($cfg_mb_open == 'N') {
-    ShowMsg("系统关闭了会员功能，因此您无法访问此页面！", "javascript:;");
+    ShowMsg("系统关闭了会员功能，因此您无法访问此页面", "javascript:;");
     exit();
 }
 
 //对uid进行过滤
 if (preg_match("/'/", $uid)) {
-    ShowMsg("您的用户名中含有非法字符！", "-1");
+    ShowMsg("您的用户名中含有非法字符", "-1");
     exit();
 } else {
     $uid = RemoveXSS($uid);
@@ -33,12 +33,12 @@ $_vars['bloglinks'] = $_vars['curtitle'] = '';
 //用户权限检查
 //被禁言用户
 if ($_vars['spacesta'] == -2) {
-    ShowMsg("用户：{$_vars['userid']} 被禁言，因此个人空间禁止访问！", "-1");
+    ShowMsg("用户：{$_vars['userid']} 被禁言，因此个人空间禁止访问", "-1");
     exit();
 }
 //未审核用户
 if ($_vars['spacesta'] < 0) {
-    ShowMsg("用户：{$_vars['userid']} 的资料尚未通过审核，因此空间禁止访问！", "-1");
+    ShowMsg("用户：{$_vars['userid']} 的资料尚未通过审核，因此空间禁止访问", "-1");
     exit();
 }
 //是否禁止了管理员空间的访问
@@ -47,7 +47,7 @@ if (
     $_vars['matt'] == 10 && $cfg_mb_adminlock == 'Y'
     && !(isset($cfg_ml->fields) && $cfg_ml->fields['matt'] == 10)
 ) {
-    ShowMsg('系统设置了禁止访问管理员的个人空间！', '-1');
+    ShowMsg('系统设置了禁止访问管理员的个人空间', '-1');
     exit();
 }
 
@@ -122,7 +122,7 @@ function GetUserSpaceInfos()
                   where m.userid like '$uid' ORDER BY g.dtime DESC ";
     $_vars = $dsql->GetOne($query);
     if (!is_array($_vars)) {
-        ShowMsg("您访问的用户可能已经被删除！", "javascript:;");
+        ShowMsg("您访问的用户可能已经被删除", "javascript:;");
         exit();
     }
     if ($_vars['face'] == '') {

@@ -14,11 +14,11 @@ require_once(dirname(__FILE__)."/config.php");
 //考虑安全原因不管是否开启游客投稿功能，都不允许用户对图集投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用！", "-1");
+    ShowMsg("由于系统开启了精简版会员空间，您访问的功能不可用", "-1");
     exit();
 }
 if ($cfg_mb_album == 'N') {
-    ShowMsg("对不起，由于系统关闭了图集功能，您访问的功能不可用！", "-1");
+    ShowMsg("对不起，由于系统关闭了图集功能，您访问的功能不可用", "-1");
     exit();
 }
 require_once(DEDEINC."/dedetag.class.php");
@@ -45,11 +45,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
     include(DEDEMEMBER."/templets/album_add.htm");
@@ -65,7 +65,7 @@ function _SaveArticle(){  }
     if (preg_match("/1/", $safe_gdopen)) {
         if (strtolower($vdcode) != $svali || $svali == '') {
             ResetVdValue();
-            ShowMsg('验证码错误！', '-1');
+            ShowMsg('验证码错误', '-1');
             exit();
         }
     }
@@ -124,7 +124,7 @@ function _SaveArticle(){  }
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();
         }
     }
@@ -132,7 +132,7 @@ function _SaveArticle(){  }
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作！", "-1");
+        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
         exit();
     }
     $description = HtmlReplace($description, -1);
@@ -154,7 +154,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作！。", "javascript:;");
+        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作。", "javascript:;");
         exit();
     } else {
         $query = "INSERT INTO `$addtable`(aid,typeid,userip,redirecturl,templet,pagestyle,maxwidth,imgurls,row,col,isrm,ddmaxwidth,pagepicnum{$inadd_f})
@@ -163,7 +163,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员！".$gerr, "javascript:;");
+            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员".$gerr, "javascript:;");
             exit();
         }
     }
@@ -191,7 +191,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     &nbsp;&nbsp;
     <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布图集管理</a>
     ";
-    $wintitle = "成功发布图集！";
+    $wintitle = "成功发布图集";
     $wecome_info = "图集管理::发布图集";
     $win = new OxWindow();
     $win->AddTitle("成功发布图集：");

@@ -18,13 +18,13 @@ require_once(DEDEINC.'/oxwindow.class.php');
 $id = trim(preg_replace("#[^0-9]#", '', $id));
 
 //检查栏目操作许可
-CheckCatalog($id, "您无权删除本栏目！");
+CheckCatalog($id, "您无权删除本栏目");
 if (empty($dopost)) $dopost = '';
 if ($dopost == 'ok') {
     $ut = new TypeUnit();
     $ut->DelType($id, $delfile);
     UpDateCatCache();
-    ShowMsg("成功删除一个栏目！", "catalog_main.php");
+    ShowMsg("成功删除一个栏目", "catalog_main.php");
     exit();
 }
 $dsql->SetQuery("SELECT typename,typedir FROM #@__arctype WHERE id=".$id);

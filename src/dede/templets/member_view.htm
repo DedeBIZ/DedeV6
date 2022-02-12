@@ -16,13 +16,13 @@ function checkSubmit()
   if(document.form2.email.value=="")
   {
     document.form2.email.focus();
-    ShowMsg("Email不能为空！");
+    ShowMsg("Email不能为空");
     return false;
   }
   if(document.form2.uname.value=="")
   {
     document.form2.uname.focus();
-    ShowMsg("用户昵称不能为空！");
+    ShowMsg("用户昵称不能为空");
     return false;
   }
 }
@@ -36,7 +36,7 @@ function checkSubmit()
 <tr>
 <td height="200" bgcolor="#FFFFFF" align='center'>
 	<?php
-	if($row['matt']==10) echo "<font color='red'>当前用户是网站管理员关连的帐号，请小心操作！</font>";
+	if($row['matt']==10) echo "<font color='red'>当前用户是网站管理员关连的帐号，请小心操作</font>";
 	?>
 	<table width="98%" border="0" cellspacing="0" cellpadding="6" class="table table-borderless">
         <tr> 
@@ -157,7 +157,7 @@ function checkSubmit()
             <input name="oldmatt" type="hidden" id="oldmatt" value="<?php echo $row['matt']?>" />
             <input name="matt" type="text" id="matt" value="<?php echo $row['matt']?>" size="3" />
           (0为普通，1为推荐，10为管理员[不能在前台登录]
-          <font color='red'>{非管理员ID是严格使用10属性的，要新建管理在 <a href='sys_admin_user_add.php' target='_blank'><u>系统帐号</u></a> 的地方增加}</font>)
+          <font color='red'>{非管理员ID是严格使用10属性的，要新建管理在 <a href='sys_admin_user_add.php' target='_blank'>系统帐号</a> 的地方增加}</font>)
             </td>
           </tr>
           <tr>
@@ -187,11 +187,11 @@ function checkSubmit()
           <tr> 
             <td width="17%" align="right" class='bline'>特殊操作：</td>
             <td width="83%" class='bline'  style="text-align:left;">
-            <a href='member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>&jumpurl=../member/edit_fullinfo.php' target='_blank'><u>查看/修改详细资料</u></a>
+            <a href='member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>&jumpurl=../member/edit_fullinfo.php' target='_blank'>查看/修改详细资料</a>
             &nbsp;|&nbsp;
-            <a href='member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>' target='_blank'><u>登录到此用户控制面板</u></a>
+            <a href='member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>' target='_blank'>登录到此用户控制面板</a>
             &nbsp;|&nbsp;
-            <a href='../member/index.php?uid=<?php echo $row['userid']; ?>' target='_blank'><u>浏览此用户的空间</u></a>
+            <a href='../member/index.php?uid=<?php echo $row['userid']; ?>' target='_blank'>浏览此用户的空间</a>
             </td> 
           </tr>
           <tr> 

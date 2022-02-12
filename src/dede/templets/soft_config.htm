@@ -1,7 +1,5 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>软件频道设置</title>
@@ -13,9 +11,9 @@
   <script language='javascript' src="js/main.js"></script>
   <script language="JavaScript">
     function AddServer() {
-      if (document.form1.serverurl.value == "" || document.form1.serverurl.value == "http://") { ShowMsg('服务器网址不能为空！'); return; }
-      if (document.form1.servername.value == "") { ShowMsg('服务器名称不能为空！'); return; }
-      if (document.form1.servertype.value == "") { ShowMsg('服务器类型不能为空！'); return; }
+      if (document.form1.serverurl.value == "" || document.form1.serverurl.value == "http://") { ShowMsg('服务器网址不能为空'); return; }
+      if (document.form1.servername.value == "") { ShowMsg('服务器名称不能为空'); return; }
+      if (document.form1.servertype.value == "") { ShowMsg('服务器类型不能为空'); return; }
       document.form1.sites.value += document.form1.serverurl.value + " | " + document.form1.servername.value + " | " + document.form1.servertype.value + "\r\n";
     }
   </script>
@@ -89,7 +87,7 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#F9FCEF" colspan='2' style="padding-left:10px;"><b>不管是全局，还是具体某软件设置了下面的参数，附件下载方式都必须链接到中转页，否则无效！</b>
+        <td bgcolor="#F9FCEF" colspan='2' style="padding-left:10px;"><b>不管是全局，还是具体某软件设置了下面的参数，附件下载方式都必须链接到中转页，否则无效</b>
         </td>
         </td>
       <tr>

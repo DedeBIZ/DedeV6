@@ -22,18 +22,18 @@ function __ShowHide()
 -----------------*/
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=1 WHERE id='$id' ");
-    ShowMsg("操作成功！", "mychannel_main.php");
+    ShowMsg("操作成功", "mychannel_main.php");
     exit();
 } else if ($dopost == "hide") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET isshow=0 WHERE id='$id'");
-    ShowMsg("操作成功！", "mychannel_main.php");
+    ShowMsg("操作成功", "mychannel_main.php");
     exit();
 }
 /*----------------
 function __CopyStart()
 -----------------*/ else if ($dopost == "copystart") {
     if ($id == -1) {
-        ShowMsg("专题模型不支持复制！", "-1");
+        ShowMsg("专题模型不支持复制", "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
@@ -98,7 +98,7 @@ function __CopyStart()
 function __Export()
 -----------------*/ else if ($dopost == "export") {
     if ($id == -1) {
-        ShowMsg("专题模型不支持导出！", "-1");
+        ShowMsg("专题模型不支持导出", "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' ");
@@ -110,7 +110,7 @@ function __Export()
         $channelconfig .= "<channel:{$k}>$v</channel:{$k}>\r\n";
     }
     $wintitle = "导出内容模型规则";
-    $wecome_info = "<a href='mychannel_main.php'><u>内容模型管理</u></a>::导出内容模型规则";
+    $wecome_info = "<a href='mychannel_main.php'>内容模型管理</a>::导出内容模型规则";
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友：");
@@ -157,7 +157,7 @@ function __ExportInOk()
     $dtp->SetNameSpace('channel', '<', '>');
     $dtp->LoadSource($exconfig);
 
-    if (!is_array($dtp->CTags)) GotoStaMsg("模型规则不是合法的Dede模型规则！");
+    if (!is_array($dtp->CTags)) GotoStaMsg("模型规则不是合法的Dede模型规则");
 
     $fields = array();
     foreach ($dtp->CTags as $ctag) {
@@ -166,7 +166,7 @@ function __ExportInOk()
     }
 
     if (!isset($fields['nid']) || !isset($fields['fieldset'])) {
-        GotoStaMsg("模型规则不是合法的Dede模型规则！");
+        GotoStaMsg("模型规则不是合法的Dede模型规则");
     }
 
     //正常的导入过程
@@ -174,7 +174,7 @@ function __ExportInOk()
 
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE nid='{$fields['nid']}' ");
     if (is_array($row)) {
-        GotoStaMsg("系统中已经存在相同标识 {$fields['nid']} 的规则！");
+        GotoStaMsg("系统中已经存在相同标识 {$fields['nid']} 的规则");
     }
 
     //创建表
@@ -231,7 +231,7 @@ function __ExportInOk()
 
     $rs = $dsql->ExecuteNoneQuery($inquery);
 
-    if (!$rs) GotoStaMsg("导入模型时发生错误！".$dsql->GetError());
+    if (!$rs) GotoStaMsg("导入模型时发生错误".$dsql->GetError());
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($fieldset);
@@ -257,7 +257,7 @@ function __ExportInOk()
     if ($allfields != '') {
         $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET listfields='$allfields' WHERE id='{$fields['newid']}' ");
     }
-    GotoStaMsg("成功导入一个模型！");
+    GotoStaMsg("成功导入一个模型");
 }
 /*----------------
 function __SaveCopy()
@@ -295,7 +295,7 @@ function __SaveCopy()
         exit();
     } else {
         $errv = $dsql->GetError();
-        ShowMsg("系统出错，请把错误代码发送到官方论坛，以检查原因！<br /> 错误代码：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
+        ShowMsg("系统出错，请把错误代码发送到官方论坛，以检查原因<br /> 错误代码：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
         exit();
     }
 }
@@ -331,17 +331,17 @@ function __SaveEdit()
         $dtp->SetNameSpace("field", "<", ">");
         $dtp->LoadSource(stripslashes($fieldset));
         if (!is_array($dtp->CTags)) {
-            ShowMsg("文本配置参数无效，无法进行解析！", "-1");
+            ShowMsg("文本配置参数无效，无法进行解析", "-1");
             exit();
         }
     }
     $trueTable = str_replace("#@__", $cfg_dbprefix, $addtable);
     if (!$dsql->IsTable($trueTable)) {
-        ShowMsg("系统找不到您所指定的表 $trueTable ，请手工创建这个表！", "-1");
+        ShowMsg("系统找不到您所指定的表 $trueTable ，请手工创建这个表", "-1");
         exit();
     }
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功更改一个模型！", "mychannel_main.php");
+    ShowMsg("成功更改一个模型", "mychannel_main.php");
     exit();
 }
 /*--------------------
@@ -375,7 +375,7 @@ function __Delete()
     CheckPurview('c_Del');
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     if ($row['issystem'] == 1) {
-        ShowMsg("系统模型不允许删除！", "mychannel_main.php");
+        ShowMsg("系统模型不允许删除", "mychannel_main.php");
         exit();
     }
     if (empty($job)) $job = "";
@@ -438,7 +438,7 @@ function __Delete()
 
         //更新栏目缓存
         UpDateCatCache($dsql);
-        ShowMsg("成功删除一个模型！", "mychannel_main.php");
+        ShowMsg("成功删除一个模型", "mychannel_main.php");
         exit();
     }
 } //del
@@ -655,7 +655,7 @@ function __modifysearch()
 else if ($dopost == 'del') {
     $mid = intval($mid);
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__advancedsearch` WHERE mid = '$mid'; ");
-    ShowMsg("成功删除一个自定义搜索！", "mychannel_main.php");
+    ShowMsg("成功删除一个自定义搜索", "mychannel_main.php");
     exit();
 }
 $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' ");

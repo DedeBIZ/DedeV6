@@ -29,7 +29,7 @@ $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
     $lid = $idArray[$pageno];
 } else {
-    ShowMsg("完成所有文件创建！", 'javascript:;');
+    ShowMsg("完成所有文件创建", 'javascript:;');
     exit();
 }
 $lv = new FreeList($lid);
@@ -52,11 +52,11 @@ if ($ntotalpage <= $maxpagesize) {
 $lv->Close();
 $nextpage = $pageno + 1;
 if ($nextpage == $totalpage) {
-    ShowMsg("完成所有文件创建！", 'javascript:;');
+    ShowMsg("完成所有文件创建", 'javascript:;');
 } else {
     if ($finishType) {
         $gourl = "makehtml_freelist_action.php?maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$nextpage";
-        ShowMsg("成功创建列表：".$tid."，继续进行操作！", $gourl, 0, 100);
+        ShowMsg("成功创建列表：".$tid."，继续进行操作", $gourl, 0, 100);
     } else {
         $gourl = "makehtml_freelist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$pageno";
         ShowMsg("列表：".$tid."，继续进行操作...", $gourl, 0, 100);

@@ -45,7 +45,7 @@ function _SAVE()
 if ($action == 'save') {
 
     if (!isset($fieldtypes[$dtype])) {
-        ShowMsg("您修改的是系统专用类型的数据，禁止操作！", "-1");
+        ShowMsg("您修改的是系统专用类型的数据，禁止操作", "-1");
         exit();
     }
 
@@ -101,7 +101,7 @@ if ($action == 'save') {
     $oksetting = $dtp->GetResultNP();
     $oksetting = addslashes($oksetting);
     $dsql->ExecuteNoneQuery("UPDATE #@__diyforms SET info='$oksetting' WHERE diyid='$diyid' ");
-    ShowMsg("成功更改一个字段的配置！", "diy_edit.php?diyid={$diyid}");
+    ShowMsg("成功更改一个字段的配置", "diy_edit.php?diyid={$diyid}");
     exit();
 }
 /*------------------
@@ -117,7 +117,7 @@ function _DELETE()
     $oksetting = addslashes($dtp->GetResultNP());
     $dsql->ExecuteNoneQuery("UPDATE #@__diyforms SET info='$oksetting' WHERE diyid='$diyid' ");
     $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname` ");
-    ShowMsg("成功删除一个字段！", "diy_edit.php?diyid=$diyid");
+    ShowMsg("成功删除一个字段", "diy_edit.php?diyid=$diyid");
     exit();
 }
 require_once(DEDEADMIN."/templets/diy_field_edit.htm");

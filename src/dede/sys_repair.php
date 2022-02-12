@@ -12,7 +12,7 @@
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_ArcBatch');
 require_once(dirname(__FILE__).'/../include/oxwindow.class.php');
-//ShowMsg("目前暂不需要此工具，以后有需要系统会进行自动升级这个程序！<br /><a href='index_body.php'>&lt;&lt;点击此返回&gt;&gt;</a>", "javascript:;");
+//ShowMsg("目前暂不需要此工具，以后有需要系统会进行自动升级这个程序<br /><a href='index_body.php'>&lt;&lt;点击此返回&gt;&gt;</a>", "javascript:;");
 //exit();
 if (empty($dopost)) {
     $win = new OxWindow();
@@ -57,7 +57,7 @@ function 1_test_db() {  }
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
-    <b><font color='green'>已完成数据结构完整性检测！</font></b>
+    <b><font color='green'>已完成数据结构完整性检测</font></b>
     <hr size='1'/>
     <br />
     <b>如果您系统有下面几种问题之一，请检测微表正确性：</b><br />
@@ -107,7 +107,7 @@ function 2_test_arctiny() {  }
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
     $msg .= "※微统计表记录数： {$row['dd']}<br />";
     if ($row['dd'] == $allarcnum) {
-        $msg .= "<p style='color:green;font-size:16px'><b>两者记录一致，无需修正！</b></p><br />";
+        $msg .= "<p style='color:green;font-size:16px'><b>两者记录一致，无需修正</b></p><br />";
     } else {
         $sql = " TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
@@ -125,9 +125,9 @@ function 2_test_arctiny() {  }
         }
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
         if ($row['dd'] == $allarcnum) {
-            $msg .= "<p style='color:green;font-size:16px'><b>修正记录成功！</b></p><br />";
+            $msg .= "<p style='color:green;font-size:16px'><b>修正记录成功</b></p><br />";
         } else {
-            $msg .= "<p style='color:red;font-size:16px'><b>修正记录失败，建议进行高级综合检测！</b></p><br />";
+            $msg .= "<p style='color:red;font-size:16px'><b>修正记录失败，建议进行高级综合检测</b></p><br />";
             $errall = " <a href='sys_repair.php?dopost=3' class='btn btn-danger'><b>进行高级结合性检测&gt;&gt;</b></a> ";
         }
     }
@@ -201,7 +201,7 @@ function 3_re_arctiny() {  }
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
-    完成所有修复操作，移除错误记录 {$errnum} 条！
+    完成所有修复操作，移除错误记录 {$errnum} 条
     <hr />
     <br />
     <a href='index_body.php' class='btn btn-success'><b>完成修正或无错误返回&gt;&gt;</b></a>

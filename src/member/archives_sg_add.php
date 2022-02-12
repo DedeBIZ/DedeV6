@@ -38,11 +38,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
     include(DEDEMEMBER."/templets/archives_sg_add.htm");
@@ -57,7 +57,7 @@ function _SaveArticle(){  }
     if (preg_match("/3/", $safe_gdopen)) {
         if (strtolower($vdcode) != $svali || $svali == '') {
             ResetVdValue();
-            ShowMsg('验证码错误！', '-1');
+            ShowMsg('验证码错误', '-1');
             exit();
         }
     }
@@ -70,7 +70,7 @@ function _SaveArticle(){  }
     $userip = GetIP();
 
     if ($typeid == 0) {
-        ShowMsg('请指定文档隶属的栏目！', '-1');
+        ShowMsg('请指定文档隶属的栏目', '-1');
         exit();
     }
 
@@ -80,19 +80,19 @@ function _SaveArticle(){  }
 
     //检测栏目是否有投稿权限
     if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
-        ShowMsg("您所选择的栏目不支持投稿！", "-1");
+        ShowMsg("您所选择的栏目不支持投稿", "-1");
         exit();
     }
 
     //检查频道设定的投稿许可权限
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("Select membername From #@__arcrank where rank='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
 
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[".$cInfos['usertype']."]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
 
@@ -142,7 +142,7 @@ function _SaveArticle(){  }
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != str_replace('`', '', $inadd_f)) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();
         }
     }
@@ -150,7 +150,7 @@ function _SaveArticle(){  }
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作！", "-1");
+        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
         exit();
     }
 
@@ -165,7 +165,7 @@ function _SaveArticle(){  }
         if (!$dsql->ExecuteNoneQuery($inquery)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员！", "javascript:;");
+            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -190,7 +190,7 @@ function _SaveArticle(){  }
         &nbsp;&nbsp;
         <a href='content_sg_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布内容管理</a>
         ";
-    $wintitle = "成功发布内容！";
+    $wintitle = "成功发布内容";
     $wecome_info = "内容管理::发布内容";
     $win = new OxWindow();
     $win->AddTitle("成功发布内容：");

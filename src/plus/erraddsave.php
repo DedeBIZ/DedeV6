@@ -51,7 +51,7 @@ if ($dopost == "saveedit") {
             "data" => "ok",
         ));
     } else {
-        ShowMsg("谢谢您对本网站的支持，我们会尽快处理您的建议！", "javascript:window.close();");
+        ShowMsg("谢谢您对本网站的支持，我们会尽快处理您的建议", "javascript:window.close();");
     }
 
     exit();

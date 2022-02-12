@@ -42,7 +42,7 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，您不能再修改它！", "-1");
+            ShowMsg("这篇文档已经锁定，您不能再修改它", "-1");
             exit();
         }
     }
@@ -139,7 +139,7 @@ function _SaveArticle(){  }
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();
         }
     }
@@ -156,7 +156,7 @@ function _SaveArticle(){  }
              flag='$flag'
       WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("更新数据库archives表时出错，请检查！", "-1");
+        ShowMsg("更新数据库archives表时出错，请检查", "-1");
         exit();
     }
 
@@ -201,7 +201,7 @@ function _SaveArticle(){  }
             introduce='$body'{$inadd_f}
             WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
-            ShowMsg("更新数据库附加表 addonsoft 时出错，请检查原因！", "-1");
+            ShowMsg("更新数据库附加表 addonsoft 时出错，请检查原因", "-1");
             exit();
         }
     }
@@ -221,7 +221,7 @@ function _SaveArticle(){  }
         &nbsp;&nbsp;
         <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理软件</a>
         ";
-    $wintitle = "成功更改软件！";
+    $wintitle = "成功更改软件";
     $wecome_info = "软件管理::更改软件";
     $win = new OxWindow();
     $win->AddTitle("成功更改软件：");

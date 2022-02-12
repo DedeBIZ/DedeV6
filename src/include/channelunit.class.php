@@ -36,7 +36,7 @@ class ChannelUnit
         $sql = " SELECT * FROM `#@__channeltype` WHERE id='$cid' ";
         $this->ChannelInfos = $this->dsql->GetOne($sql);
         if (!is_array($this->ChannelInfos)) {
-            echo '读取频道信息失败，无法进行后续操作！';
+            echo '读取频道信息失败，无法进行后续操作';
             exit();
         }
         $dtp = new DedeTagParse();
@@ -152,7 +152,7 @@ class ChannelUnit
         $dtp->LoadSource($fvalue);
         if (!is_array($dtp->CTags)) {
             $dtp->Clear();
-            return "无图片信息！";
+            return "无图片信息";
         }
         $ptag = $dtp->GetTag("pagestyle");
         if (is_object($ptag)) {

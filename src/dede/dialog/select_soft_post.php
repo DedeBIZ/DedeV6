@@ -32,7 +32,7 @@ $cfg_softtype = $cfg_softtype;
 $cfg_softtype = str_replace('||', '|', $cfg_softtype);
 $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
 if (!preg_match("#\.(".$cfg_softtype.")#i", $uploadfile_name)) {
-    ShowMsg("您所上传的{$uploadmbtype}不在许可列表，请更改系统对扩展名限定的配置！", "");
+    ShowMsg("您所上传的{$uploadmbtype}不在许可列表，请更改系统对扩展名限定的配置", "");
     exit();
 }
 
@@ -52,7 +52,7 @@ if (!empty($newname)) {
     if (!preg_match("#\.#", $filename)) $fs = explode('.', $uploadfile_name);
     else $fs = explode('.', $filename);
     if (preg_match("#".$cfg_not_allowall."#", $fs[count($fs) - 1])) {
-        ShowMsg("您指定的文件名被系统禁止！", 'javascript:;');
+        ShowMsg("您指定的文件名被系统禁止", 'javascript:;');
         exit();
     }
     if (!preg_match("#\.#", $filename)) $filename = $filename.'.'.$fs[count($fs) - 1];
@@ -60,7 +60,7 @@ if (!empty($newname)) {
     $filename = $cuserLogin->getUserID().'-'.dd2char(MyDate('ymdHis', $nowtme));
     $fs = explode('.', $uploadfile_name);
     if (preg_match("#".$cfg_not_allowall."#", $fs[count($fs) - 1])) {
-        ShowMsg("您上传了某些可能存在不安全因素的文件，系统拒绝操作！", 'javascript:;');
+        ShowMsg("您上传了某些可能存在不安全因素的文件，系统拒绝操作", 'javascript:;');
         exit();
     }
     $filename = $filename.'.'.$fs[count($fs) - 1];
@@ -68,7 +68,7 @@ if (!empty($newname)) {
 
 $fullfilename = $cfg_basedir.$activepath.'/'.$filename;
 $fullfileurl = $activepath.'/'.$filename;
-move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到 $fullfilename 失败！");
+move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到 $fullfilename 失败");
 @unlink($uploadfile);
 
 if ($uploadfile_type == 'application/x-shockwave-flash') {
@@ -99,6 +99,6 @@ if ($ck == 1) {
     );
     echo json_encode($arr);
 } else {
-    ShowMsg("成功上传文件！", $bkurl."?comeback=".urlencode($filename)."&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."&d=".time());
+    ShowMsg("成功上传文件", $bkurl."?comeback=".urlencode($filename)."&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."&d=".time());
     exit();
 }

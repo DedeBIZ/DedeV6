@@ -36,7 +36,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery($query);
     }
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
-    echo "<script> alert('成功更新友情链接网站分类表！'); </script>";
+    echo "<script> alert('成功更新友情链接网站分类表'); </script>";
 }
 
 include DedeInclude('templets/friendlink_type.htm');

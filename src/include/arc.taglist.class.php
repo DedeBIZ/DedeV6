@@ -74,7 +74,7 @@ class TagList
             $this->TagInfos = $this->dsql->GetOne("Select * From `#@__tagindex` where tag like '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
                 $fullsearch = $GLOBALS['cfg_phpurl']."/search.php?keyword=".$this->Tag."&searchtype=titlekeyword";
-                $msg = "系统无此标签，可能已经移除！<br /><br />您还可以尝试通过搜索程序去搜索这个关键字：<a href='$fullsearch'>前往搜索&gt;&gt;</a>";
+                $msg = "系统无此标签，可能已经移除<br /><br />您还可以尝试通过搜索程序去搜索这个关键字：<a href='$fullsearch'>前往搜索&gt;&gt;</a>";
                 ShowMsg($msg, "-1");
                 exit();
             }
@@ -92,7 +92,7 @@ class TagList
         //初始化模板
         $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style'].'/'.$this->Templet;
         if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "模板文件不存在，无法解析文档！";
+            echo "模板文件不存在，无法解析文档";
             exit();
         }
         $this->dtp->LoadTemplate($tempfile);

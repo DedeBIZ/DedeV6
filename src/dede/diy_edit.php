@@ -25,7 +25,7 @@ if ($dopost == "save") {
     $name = dede_htmlspecialchars($name);
     $query = "UPDATE `#@__diyforms` SET name = '$name', listtemplate='$listtemplate', viewtemplate='$viewtemplate', posttemplate='$posttemplate', public='$public' WHERE diyid='$diyid' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功更改一个自定义表单！", "diy_main.php");
+    ShowMsg("成功更改一个自定义表单", "diy_main.php");
     exit();
 }
 /*----------------
@@ -45,7 +45,7 @@ function __Delete()
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("diyid", $diyid);
-        $win->AddTitle("！将删除所有与该自定义表单相关的文件和数据<br />您确实要删除 \"".$row['name']."\" 这个自定义表单？");
+        $win->AddTitle("将删除所有与该自定义表单相关的文件和数据<br />您确实要删除 \"".$row['name']."\" 这个自定义表单？");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -64,7 +64,7 @@ function __Delete()
 
         //删除频道配置信息
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__diyforms` WHERE diyid='$diyid'");
-        ShowMsg("成功删除一个自定义表单！", "diy_main.php");
+        ShowMsg("成功删除一个自定义表单", "diy_main.php");
         exit();
     }
 }

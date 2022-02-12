@@ -17,7 +17,7 @@ include_once(DEDEINC.'/oxwindow.class.php');
 $svali = GetCkVdValue();
 if (strtolower($vdcode) != $svali || $svali == '') {
     ResetVdValue();
-    ShowMsg('验证码错误！', '-1');
+    ShowMsg('验证码错误', '-1');
     exit();
 }
 
@@ -29,7 +29,7 @@ $autokey = $remote = $dellink = $autolitpic = 0;
 $userip = GetIP();
 
 if ($typeid == 0) {
-    ShowMsg('请指定文档隶属的栏目！', '-1');
+    ShowMsg('请指定文档隶属的栏目', '-1');
     exit();
 }
 
@@ -39,19 +39,19 @@ $cInfos = $dsql->GetOne($query);
 
 //检测栏目是否有投稿权限
 if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
-    ShowMsg("您所选择的栏目不支持投稿！", "-1");
+    ShowMsg("您所选择的栏目不支持投稿", "-1");
     exit();
 }
 
 //检查频道设定的投稿许可权限
 if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
     $row = $dsql->GetOne("Select membername From #@__arcrank where rank='".$cInfos['sendrank']."' ");
-    ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档！", "-1", "0", 5000);
+    ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
     exit();
 }
 
 if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-    ShowMsg("对不起，需要[".$cInfos['usertype']."]才能在这个频道发布文档！", "-1", "0", 5000);
+    ShowMsg("对不起，需要[".$cInfos['usertype']."]才能在这个频道发布文档", "-1", "0", 5000);
     exit();
 }
 
@@ -82,7 +82,7 @@ $mid = $cfg_ml->M_ID;
 if ($cfg_mb_cktitle == 'Y') {
     $row = $dsql->GetOne("SELECT * FROM `#@__archives` WHERE title LIKE '$title' ");
     if (is_array($row)) {
-        ShowMsg("对不起，请不要发布重复文档！", "-1", "0", 5000);
+        ShowMsg("对不起，请不要发布重复文档", "-1", "0", 5000);
         exit();
     }
 }

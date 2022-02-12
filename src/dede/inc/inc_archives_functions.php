@@ -380,7 +380,7 @@ function GetDDImage($litpic, $picname, $isremote)
         $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png");
         $_FILES[$litpic]['type'] = strtolower(trim($_FILES[$litpic]['type']));
         if (!in_array($_FILES[$litpic]['type'], $sparr)) {
-            ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种！", "-1");
+            ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种", "-1");
             exit();
         }
         $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
@@ -695,7 +695,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
         $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png");
         $_FILES[$upname]['type'] = strtolower(trim($_FILES[$upname]['type']));
         if (!in_array($_FILES[$upname]['type'], $sparr)) {
-            ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种！", "-1");
+            ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种", "-1");
             exit();
         }
         if (!empty($handurl) && !preg_match("#^http:\/\/#i", $handurl) && file_exists($cfg_basedir.$handurl)) {

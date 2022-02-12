@@ -54,7 +54,7 @@ if ($product == 'member') {
     $ptype = "会员升级";
     $row = $dsql->GetOne("SELECT * FROM `#@__member_type` WHERE aid='{$pid}'");
     if (!is_array($row)) {
-        ShowMsg("无法识别您的订单！", 'javascript:;');
+        ShowMsg("无法识别您的订单", 'javascript:;');
         exit();
     }
     $pname = $row['pname'];
@@ -63,7 +63,7 @@ if ($product == 'member') {
     $ptype = "点卡购买";
     $row = $dsql->GetOne("SELECT * From `#@__moneycard_type` WHERE tid='{$pid}'");
     if (!is_array($row)) {
-        ShowMsg("无法识别您的订单！", 'javascript:;');
+        ShowMsg("无法识别您的订单", 'javascript:;');
         exit();
     }
     $pname = $row['pname'];
@@ -76,12 +76,12 @@ if (!isset($paytype)) {
     ";
     $isok = $dsql->ExecuteNoneQuery($inquery);
     if (!$isok) {
-        echo "数据库出错，请重新尝试！".$dsql->GetError();
+        echo "数据库出错，请重新尝试".$dsql->GetError();
         exit();
     }
 
     if ($price == '') {
-        echo "无法识别您的订单！";
+        echo "无法识别您的订单";
         exit();
     }
 
@@ -118,7 +118,7 @@ if (!isset($paytype)) {
 
     $rs['code'] = preg_replace("#[^0-9a-z]#i", "", $rs['code']);
     if (!file_exists(DEDEINC.'/payment/'.$rs['code'].'.php')) {
-        ShowMsg("未发现支付接口文件，请到后台配置！", 'javascript:;');
+        ShowMsg("未发现支付接口文件，请到后台配置", 'javascript:;');
         exit();
     }
 

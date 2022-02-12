@@ -21,18 +21,18 @@ if (empty($action)) {
     include(DEDEADMIN."/templets/diy_add.htm");
 } else {
     if (preg_match("#[^0-9-]#", $diyid) || empty($diyid)) {
-        ShowMsg("<font color=red>'自定义表单diyid'</font>必须为数字！", "-1");
+        ShowMsg("<font color=red>'自定义表单diyid'</font>必须为数字", "-1");
         exit();
     }
     if ($table == "") {
-        ShowMsg("表名不能为空！", "-1");
+        ShowMsg("表名不能为空", "-1");
         exit();
     }
     $public = isset($public) && is_numeric($public) ? $public : 0;
     $name = dede_htmlspecialchars($name);
     $row = $dsql->GetOne("SELECT * FROM #@__diyforms WHERE diyid='$diyid' OR `table` LIKE '$table' OR name LIKE '$name' ");
     if (is_array($row)) {
-        ShowMsg("可能自定义表单的‘diyid’、‘名称’在数据库中已存在，不能重复使用！", "-1");
+        ShowMsg("可能自定义表单的‘diyid’、‘名称’在数据库中已存在，不能重复使用", "-1");
         exit();
     }
     $query = "SHOW TABLES FROM {$dsql->dbName} ";

@@ -1,7 +1,7 @@
 <?php
 if($action=='edit') {
 $arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
-$sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改！'); return false;\" ";
+$sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); return false;\" ";
 if($arr['issystem']==0) $sbjs = '';
 ?>
 <!-- 编辑表单 -->

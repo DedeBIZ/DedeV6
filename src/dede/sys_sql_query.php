@@ -17,7 +17,7 @@ if (empty($dopost)) $dopost = "";
 if ($dopost == "viewinfo") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$tablename);
         $dsql->Execute('me');
@@ -31,10 +31,10 @@ if ($dopost == "viewinfo") {
 else if ($dopost == "opimize") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
-        if ($rs)  echo "执行优化表： $tablename  OK！";
+        if ($rs)  echo "执行优化表： $tablename  OK";
         else echo "执行优化表： $tablename  失败，原因是：".$dsql->GetError();
     }
     exit();
@@ -58,10 +58,10 @@ else if ($dopost == "opimizeAll") {
 else if ($dopost == "repair") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
-        if ($rs) echo "修复表： $tablename  OK！";
+        if ($rs) echo "修复表： $tablename  OK";
         else echo "修复表： $tablename  失败，原因是：".$dsql->GetError();
     }
     exit();
@@ -94,9 +94,9 @@ else if ($dopost == "query") {
         $dsql->SetQuery($sqlquery);
         $dsql->Execute();
         if ($dsql->GetTotalRow() <= 0) {
-            echo "运行SQL：{$sqlquery}，无返回记录！";
+            echo "运行SQL：{$sqlquery}，无返回记录";
         } else {
-            echo "运行SQL：{$sqlquery}，共有".$dsql->GetTotalRow()."条记录，最大返回100条！";
+            echo "运行SQL：{$sqlquery}，共有".$dsql->GetTotalRow()."条记录，最大返回100条";
         }
         $j = 0;
         while ($row = $dsql->GetArray()) {
@@ -132,12 +132,12 @@ else if ($dopost == "query") {
                 $nerrCode .= "执行： <font color='blue'>$q</font> 出错，错误提示：<font color='red'>".$errCode."</font><br>";
             }
         }
-        echo "成功执行{$i}个SQL语句！<br><br>";
+        echo "成功执行{$i}个SQL语句<br><br>";
         echo $nerrCode;
     } else {
         $dsql->ExecuteNoneQuery($sqlquery);
         $nerrCode = trim($dsql->GetError());
-        echo "成功执行1个SQL语句！<br><br>";
+        echo "成功执行1个SQL语句<br><br>";
         echo $nerrCode;
     }
     exit();

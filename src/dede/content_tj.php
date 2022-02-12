@@ -40,7 +40,7 @@ function GetArchives($dsql, $ordertype)
     $dsql->Execute('ga');
     while ($row = $dsql->GetObject('ga')) {
         if (preg_match("#feedback#i", $ordertype)) {
-            $moreinfo = "[<a target='_blank' href='".$GLOBALS['cfg_phpurl']."/feedback.php?aid={$row->id}'><u>评论：{$row->scores}</u></a>]";
+            $moreinfo = "[<a target='_blank' href='".$GLOBALS['cfg_phpurl']."/feedback.php?aid={$row->id}'>评论：{$row->scores}</a>]";
         } else {
             $moreinfo = "[点击：{$row->click}]";
         }

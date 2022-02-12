@@ -19,12 +19,12 @@ if ($dopost == 'saveedit') {
     CheckCSRF();
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
-        ShowMsg('密码不合法，请使用[0-9a-zA-Z_@!.-]内的字符！', '-1', 0, 3000);
+        ShowMsg('密码不合法，请使用[0-9a-zA-Z_@!.-]内的字符', '-1', 0, 3000);
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
-        ShowMsg("请填写正确的安全验证串！", "sys_admin_user_edit.php?id={$id}&dopost=edit");
+        ShowMsg("请填写正确的安全验证串", "sys_admin_user_edit.php?id={$id}&dopost=edit");
         exit();
     }
     $pwdm = '';
@@ -46,7 +46,7 @@ if ($dopost == 'saveedit') {
     $dsql->ExecuteNoneQuery($query);
     $query = "UPDATE `#@__member` SET uname='$uname',email='$email'$pwdm WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功更改一个帐户！", "sys_admin_user.php");
+    ShowMsg("成功更改一个帐户", "sys_admin_user.php");
     exit();
 } else if ($dopost == 'delete') {
     if (empty($userok)) $userok = "";
@@ -63,7 +63,7 @@ if ($dopost == 'saveedit') {
         $win->AddHidden("randcode", $randcode);
         $win->AddHidden("safecode", $safecode);
         $win->AddHidden("id", $id);
-        $win->AddTitle("系统警告！");
+        $win->AddTitle("系统警告");
         $win->AddMsgItem("您确信要删除用户：$userid 吗？", "50");
         $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' />&nbsp;(复制本代码： <font color='red'>$safecode</font> )", "30");
         $winform = $win->GetWindow("ok");
@@ -72,7 +72,7 @@ if ($dopost == 'saveedit') {
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
-        ShowMsg("请填写正确的安全验证串！", "sys_admin_user.php");
+        ShowMsg("请填写正确的安全验证串", "sys_admin_user.php");
         exit();
     }
 
@@ -81,9 +81,9 @@ if ($dopost == 'saveedit') {
     if ($rs > 0) {
         //更新前台用户信息
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt='0' WHERE mid='$id' LIMIT 1");
-        ShowMsg("成功删除一个帐户！", "sys_admin_user.php");
+        ShowMsg("成功删除一个帐户", "sys_admin_user.php");
     } else {
-        ShowMsg("不能删除id为1的创建人帐号，不能删除自己！", "sys_admin_user.php", 0, 3000);
+        ShowMsg("不能删除id为1的创建人帐号，不能删除自己", "sys_admin_user.php", 0, 3000);
     }
     exit();
 }

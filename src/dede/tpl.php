@@ -84,7 +84,7 @@ function save_tpl() { }
         exit();
     }
     if (!preg_match("#\.htm$#", $filename)) {
-        ShowMsg('DEDE模板文件，文件名必须用.htm结尾！', '-1');
+        ShowMsg('DEDE模板文件，文件名必须用.htm结尾', '-1');
         exit();
     }
     $content = stripslashes($content);
@@ -148,20 +148,20 @@ function _upload() {}
 -----------------------*/ else if ($action == 'uploadok') {
     CheckCSRF();
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("貌似您什么都没有上传哦！", "javascript:;");
+        ShowMsg("貌似您什么都没有上传哦", "javascript:;");
         exit();
     } else {
         if (!preg_match("#\.(htm|html)$#", $upfile_name)) {
-            ShowMsg("DedeBIZ模板只能用 .htm 或 .html扩展名！", "-1");
+            ShowMsg("DedeBIZ模板只能用 .htm 或 .html扩展名", "-1");
             exit();
         }
         if (preg_match("#[\\\\\/]#", $upfile_name)) {
-            ShowMsg("模板文件名有非法字符，禁止上传！", "-1");
+            ShowMsg("模板文件名有非法字符，禁止上传", "-1");
             exit();
         }
         move_uploaded_file($upfile, $templetdird.'/'.$upfile_name);
         @unlink($upfile);
-        ShowMsg("成功上传一个模板！", "templets_main.php?acdir=$acdir");
+        ShowMsg("成功上传一个模板", "templets_main.php?acdir=$acdir");
         exit();
     }
     exit();
@@ -199,7 +199,7 @@ function lib_demotag(&\$ctag,&\$refObj)
         $title = "新建标签";
     } else {
         if (!preg_match("#^[a-z0-9_-]{1,}\.lib\.php$#i", $filename)) {
-            ShowMsg('文件不是标准的标签碎片文件，不允许在此编辑！', '-1');
+            ShowMsg('文件不是标准的标签碎片文件，不允许在此编辑', '-1');
             exit();
         }
         $fp = fopen(DEDEINC.'/taglib/'.$filename, 'r');
@@ -217,7 +217,7 @@ function savetagfile() { }
 --------------------------*/ else if ($action == 'savetagfile') {
     CheckCSRF();
     if (!preg_match("#^[a-z0-9_-]{1,}\.lib\.php$#i", $filename)) {
-        ShowMsg('文件名不合法，不允许进行操作！', '-1');
+        ShowMsg('文件名不合法，不允许进行操作', '-1');
         exit();
     }
     require_once(DEDEINC.'/oxwindow.class.php');
@@ -235,7 +235,7 @@ function savetagfile() { }
         <input name='imageField1' type='image' class='np' src='images/button_ok.gif' width='60' height='22' border='0' />
     </form>
     ";
-    $wintitle = "成功修改/创建文件！";
+    $wintitle = "成功修改/创建文件";
     $wecome_info = "<a href='templets_tagsource.php'>标签源码碎片管理</a> &gt;&gt; 修改/新建标签";
     $win = new OxWindow();
     $win->AddTitle("修改/新建标签：");

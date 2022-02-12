@@ -66,16 +66,16 @@ function __del() { }
 ------------------*/ else if ($action == 'del') {
     $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
     if (!is_array($arr)) {
-        ShowMsg("无法获取分类信息，不允许后续操作！", "stepselect_main.php?".ExecTime());
+        ShowMsg("无法获取分类信息，不允许后续操作", "stepselect_main.php?".ExecTime());
         exit();
     }
     if ($arr['issystem'] == 1) {
-        ShowMsg("系统内置的枚举分类不能删除！", "stepselect_main.php?".ExecTime());
+        ShowMsg("系统内置的枚举分类不能删除", "stepselect_main.php?".ExecTime());
         exit();
     }
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__stepselect` WHERE id='$id'; ");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}'; ");
-    ShowMsg("成功删除一个分类！", "stepselect_main.php?".ExecTime());
+    ShowMsg("成功删除一个分类", "stepselect_main.php?".ExecTime());
     exit();
 } else if ($action == 'delenumAllSel') {
     if (isset($ids) && is_array($ids)) {
@@ -94,16 +94,16 @@ function __del() { }
             WriteEnumsCache($egroup);
         }
 
-        ShowMsg("成功删除选中的枚举分类！", $ENV_GOBACK_URL);
+        ShowMsg("成功删除选中的枚举分类", $ENV_GOBACK_URL);
     } else {
-        ShowMsg("您没选择任何分类！", "-1");
+        ShowMsg("您没选择任何分类", "-1");
     }
     exit();
 } else if ($action == 'delenum') {
     $row = $dsql->GetOne("SELECT egroup FROM `#@__sys_enum` WHERE id = '$id' ");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE id='{$id}'; ");
     WriteEnumsCache($row['egroup']);
-    ShowMsg("成功删除一个枚举！", $ENV_GOBACK_URL);
+    ShowMsg("成功删除一个枚举", $ENV_GOBACK_URL);
     exit();
 }
 /*-----------------
@@ -111,11 +111,11 @@ function __del() { }
 function __edit_save() { }
 ------------------*/ else if ($action == 'edit_save') {
     if (preg_match("#[^0-9a-z_-]#i", $egroup)) {
-        ShowMsg("组名称不能有全角字符或特殊符号！", "-1");
+        ShowMsg("组名称不能有全角字符或特殊符号", "-1");
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__stepselect` SET `itemname`='$itemname',`egroup`='$egroup' WHERE id='$id'; ");
-    ShowMsg("成功修改一个分类！", "stepselect_main.php?".ExecTime());
+    ShowMsg("成功修改一个分类", "stepselect_main.php?".ExecTime());
     exit();
 }
 /*-----------------
@@ -123,17 +123,17 @@ function __edit_save() { }
 function __addnew_save() { }
 ------------------*/ else if ($action == 'addnew_save') {
     if (preg_match("#[^0-9a-z_-]#i", $egroup)) {
-        ShowMsg("组名称不能有全角字符或特殊符号！", "-1");
+        ShowMsg("组名称不能有全角字符或特殊符号", "-1");
         exit();
     }
     $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE itemname LIKE '$itemname' OR egroup LIKE '$egroup' ");
     if (is_array($arr)) {
-        ShowMsg("您指定的类别名称或组名称已经存在，不能使用！", "stepselect_main.php");
+        ShowMsg("您指定的类别名称或组名称已经存在，不能使用", "stepselect_main.php");
         exit();
     }
     $dsql->ExecuteNoneQuery("INSERT INTO `#@__stepselect`(`itemname`,`egroup`,`issign`,`issystem`) VALUES('$itemname','$egroup','0','0'); ");
     WriteEnumsCache($egroup);
-    ShowMsg("成功添加一个分类！", "stepselect_main.php?egroup=$egroup");
+    ShowMsg("成功添加一个分类", "stepselect_main.php?egroup=$egroup");
     exit();
 }
 /*---------
@@ -164,7 +164,7 @@ function __exarea() { }
         }
     }
     WriteEnumsCache('nativeplace');
-    ShowMsg("成功导入所有旧的地区数据！", "stepselect_main.php?egroup=nativeplace");
+    ShowMsg("成功导入所有旧的地区数据", "stepselect_main.php?egroup=nativeplace");
     exit();
 }
 /*--------------------
@@ -180,7 +180,7 @@ function __addenum_save() { }
 这时候需要issign=2
 ---------------------*/ else if ($action == 'addenum_save') {
     if (empty($ename) || empty($egroup)) {
-        Showmsg("类别名称或组名称不能为空！", "-1");
+        Showmsg("类别名称或组名称不能为空", "-1");
         exit();
     }
     if ($issign == 1 || $topvalue == 0) {
@@ -194,7 +194,7 @@ function __addenum_save() { }
                                     VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ");
         }
         WriteEnumsCache($egroup);
-        ShowMsg("成功添加枚举分类！".$dsql->GetError(), $ENV_GOBACK_URL);
+        ShowMsg("成功添加枚举分类".$dsql->GetError(), $ENV_GOBACK_URL);
         exit();
     } else if ($issign == 2 && $topvalue != 0) {
         $minid = $topvalue;
@@ -219,7 +219,7 @@ function __addenum_save() { }
         }
         // echo $minid;
         WriteEnumsCache($egroup);
-        ShowMsg("成功添加枚举分类！", $ENV_GOBACK_URL);
+        ShowMsg("成功添加枚举分类", $ENV_GOBACK_URL);
         exit();
     } else {
         $minid = $topvalue;
@@ -237,7 +237,7 @@ function __addenum_save() { }
                           VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ");
         }
         WriteEnumsCache($egroup);
-        ShowMsg("成功添加枚举分类！", $ENV_GOBACK_URL);
+        ShowMsg("成功添加枚举分类", $ENV_GOBACK_URL);
         exit();
     }
 }
@@ -249,7 +249,7 @@ function __upenum() { }
     $row = $dsql->GetOne("SELECT egroup FROM `#@__sys_enum` WHERE id = '$aid' ");
     WriteEnumsCache($row['egroup']);
     $dsql->ExecuteNoneQuery("UPDATE `#@__sys_enum` SET `ename`='$ename',`disorder`='$disorder' WHERE id='$aid'; ");
-    ShowMsg("成功修改一个枚举！", $ENV_GOBACK_URL);
+    ShowMsg("成功修改一个枚举", $ENV_GOBACK_URL);
     exit();
 }
 /*-----------------
@@ -258,6 +258,6 @@ function __upallcache() { }
 ------------------*/ else if ($action == 'upallcache') {
     if (!isset($egroup)) $egroup = '';
     WriteEnumsCache($egroup);
-    ShowMsg("成更新枚举缓存！", $ENV_GOBACK_URL);
+    ShowMsg("成更新枚举缓存", $ENV_GOBACK_URL);
     exit();
 }

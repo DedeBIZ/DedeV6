@@ -13,7 +13,7 @@ require_once(dirname(__FILE__).'/config.php');
 $action = isset($action) ? trim($action) : '';
 if (empty($action)) {
     if (!@is_file($cfg_basedir.$file)) {
-        ShowMsg("对不起，必须选择站内的图片才能进行裁剪！<br />点击'<a href='./dialog/select_images.php?f=form1.picname&imgstick=small'>站内选择</a>', 上传或选择一个图片，然后才能进行裁剪！", "./dialog/select_images.php?f=form1.picname&imgstick=small", 0, 10000);
+        ShowMsg("对不起，必须选择站内的图片才能进行裁剪<br />点击'<a href='./dialog/select_images.php?f=form1.picname&imgstick=small'>站内选择</a>', 上传或选择一个图片，然后才能进行裁剪", "./dialog/select_images.php?f=form1.picname&imgstick=small", 0, 10000);
         exit();
     }
     include DEDEADMIN.'/templets/imagecut.htm';
@@ -22,15 +22,15 @@ if (empty($action)) {
     require_once(DEDEINC.'/image.func.php');
 
     if (!@is_file($cfg_basedir.$file)) {
-        ShowMsg('对不起，请重新选择裁剪图片！', '-1');
+        ShowMsg('对不起，请重新选择裁剪图片', '-1');
         exit();
     }
     if (empty($width)) {
-        ShowMsg('对不起，请选择裁剪图片的尺寸！', '-1');
+        ShowMsg('对不起，请选择裁剪图片的尺寸', '-1');
         exit();
     }
     if (empty($height)) {
-        ShowMsg('对不起，请选择裁剪图片的尺寸！', '-1');
+        ShowMsg('对不起，请选择裁剪图片的尺寸', '-1');
         exit();
     }
     $imginfo = getimagesize($cfg_basedir.$file);
@@ -54,7 +54,7 @@ if (empty($action)) {
             $source = imagecreatefrompng($srcFile);
             break;
         default:
-            ShowMsg('对不起，裁剪图片类型不支持请选择其他类型图片！', '-1');
+            ShowMsg('对不起，裁剪图片类型不支持请选择其他类型图片', '-1');
             break;
     }
 
@@ -87,7 +87,7 @@ if (empty($action)) {
             imagepng($thumba, $ddpicokurl);
             break;
         default:
-            ShowMsg("对不起，裁剪图片类型不支持请选择其他类型图片！", "-1");
+            ShowMsg("对不起，裁剪图片类型不支持请选择其他类型图片", "-1");
             break;
     }
 

@@ -18,12 +18,12 @@ $mdir = DEDEDATA.'/module';
 
 if ($action == 'upload') {
     if (!is_uploaded_file($upfile)) {
-        ShowMsg("貌似您什么都没有上传哦！", "javascript:;");
+        ShowMsg("貌似您什么都没有上传哦", "javascript:;");
         exit();
     } else {
         include_once(dirname(__FILE__)."/../include/zip.class.php");
         $tmpfilename = $mdir.'/'.ExecTime().mt_rand(10000, 50000).'.tmp';
-        move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到{$tmpfilename}时失败，请检查{$mdir}目录是否有写入权限！");
+        move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到{$tmpfilename}时失败，请检查{$mdir}目录是否有写入权限");
 
         //ZIP格式的文件
         if ($filetype == 1) {
@@ -42,7 +42,7 @@ if ($action == 'upload') {
             }
             if ($dedefileindex == -1) {
                 unlink($tmpfilename);
-                ShowMsg("对不起，您上传的压缩包中不存在dede模块文件！<br /><br /><a href='javascript:history.go(-1);'>&gt;&gt;返回重新上传&gt;&gt;</a>", "javascript:;");
+                ShowMsg("对不起，您上传的压缩包中不存在dede模块文件<br /><br /><a href='javascript:history.go(-1);'>&gt;&gt;返回重新上传&gt;&gt;</a>", "javascript:;");
                 exit();
             }
             $ziptmp = $mdir.'/ziptmp';
@@ -56,7 +56,7 @@ if ($action == 'upload') {
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("对不起，您上传的文件可能不是织梦模块的标准格式文件！<br /><br /><a href='javascript:history.go(-1);'>&gt;&gt;返回重新上传&gt;&gt;</a>", "javascript:;");
+            ShowMsg("对不起，您上传的文件可能不是织梦模块的标准格式文件<br /><br /><a href='javascript:history.go(-1);'>&gt;&gt;返回重新上传&gt;&gt;</a>", "javascript:;");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -67,14 +67,14 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("对不起，您上传的模块已经存在，<br />如果要覆盖请先删除原来版本或选择强制删除的选项！<br /><br /><a href='javascript:history.go(-1);'>&gt;&gt;返回重新上传&gt;&gt;</a>", "javascript:;");
+            ShowMsg("对不起，您上传的模块已经存在，<br />如果要覆盖请先删除原来版本或选择强制删除的选项<br /><br /><a href='javascript:history.go(-1);'>&gt;&gt;返回重新上传&gt;&gt;</a>", "javascript:;");
             exit();
         }
         @unlink($okfile);
         copy($tmpfilename, $okfile);
         @unlink($tmpfilename);
         $dm->Clear();
-        ShowMsg("成功上传一个新的模块！", "module_main.php?action=view&hash={$infos['hash']}");
+        ShowMsg("成功上传一个新的模块", "module_main.php?action=view&hash={$infos['hash']}");
         exit();
     }
 } else {

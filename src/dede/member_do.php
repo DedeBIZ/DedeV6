@@ -25,7 +25,7 @@ if ($dopost == "delmember") {
         $id = preg_replace("#[^0-9]#", '', $id);
         $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
         if ($safecodeok != $safecode) {
-            ShowMsg("请填写正确的安全验证串！", "member_do.php?id={$id}&dopost=delmember");
+            ShowMsg("请填写正确的安全验证串", "member_do.php?id={$id}&dopost=delmember");
             exit();
         }
         if (!empty($id)) {
@@ -54,11 +54,11 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE mid='$id' ");
                 $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET mid='0' WHERE mid='$id'");
             } else {
-                ShowMsg("无法删除此会员，如果这个会员是<b>[管理员]</b>，<br />必须先删除这个<b>[管理员]</b>才能删除此帐号！", $ENV_GOBACK_URL, 0, 5000);
+                ShowMsg("无法删除此会员，如果这个会员是<b>[管理员]</b>，<br />必须先删除这个<b>[管理员]</b>才能删除此帐号", $ENV_GOBACK_URL, 0, 5000);
                 exit();
             }
         }
-        ShowMsg("成功删除一个会员！", $ENV_GOBACK_URL);
+        ShowMsg("成功删除一个会员", $ENV_GOBACK_URL);
         exit();
     }
     $randcode = mt_rand(10000, 99999);
@@ -81,7 +81,7 @@ if ($dopost == "delmember") {
     if ($fmdo == 'yes') {
         $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
         if ($safecodeok != $safecode) {
-            ShowMsg("请填写正确的安全验证串！", "member_do.php?id={$id}&dopost=delmembers");
+            ShowMsg("请填写正确的安全验证串", "member_do.php?id={$id}&dopost=delmembers");
             exit();
         }
         if (!empty($id)) {
@@ -103,11 +103,11 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET mid='0' WHERE mid IN (".str_replace("`", ",", $id).")");
             } else {
-                ShowMsg("无法删除此会员，如果这个会员是管理员关连的ID，<br />必须先删除这个管理员才能删除此帐号！", $ENV_GOBACK_URL, 0, 3000);
+                ShowMsg("无法删除此会员，如果这个会员是管理员关连的ID，<br />必须先删除这个管理员才能删除此帐号", $ENV_GOBACK_URL, 0, 3000);
                 exit();
             }
         }
-        ShowMsg("成功删除这些会员！", $ENV_GOBACK_URL);
+        ShowMsg("成功删除这些会员", $ENV_GOBACK_URL);
         exit();
     }
     $randcode = mt_rand(10000, 99999);
@@ -134,11 +134,11 @@ function __Recommend()
     $id = preg_replace("#[^0-9]#", "", $id);
     if ($matt == 0) {
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt=1 WHERE mid='$id' AND matt<>10 LIMIT 1");
-        ShowMsg("成功设置一个会员推荐！", $ENV_GOBACK_URL);
+        ShowMsg("成功设置一个会员推荐", $ENV_GOBACK_URL);
         exit();
     } else {
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt=0 WHERE mid='$id' AND matt<>10 LIMIT 1");
-        ShowMsg("成功取消一个会员推荐！", $ENV_GOBACK_URL);
+        ShowMsg("成功取消一个会员推荐", $ENV_GOBACK_URL);
         exit();
     }
 }
@@ -153,7 +153,7 @@ function __EditUser()
     $uptime = GetMkTime($uptime);
 
     if ($matt == 10 && $oldmatt != 10) {
-        ShowMsg("对不起，为安全起见，不支持直接把前台会员转为管理的操作！", "-1");
+        ShowMsg("对不起，为安全起见，不支持直接把前台会员转为管理的操作", "-1");
         exit();
     }
     $query = "UPDATE `#@__member` SET
@@ -186,7 +186,7 @@ function __EditUser()
         $rs = $dsql->ExecuteNoneQuery2($query);
     }
 
-    ShowMsg('成功更改会员资料！', 'member_view.php?id='.$id);
+    ShowMsg('成功更改会员资料', 'member_view.php?id='.$id);
     exit();
 }
 /*--------------
@@ -206,7 +206,7 @@ function __LoginCP()
             $query = "DELETE FROM `#@__member_operation` WHERE aid = '$var'";
             $dsql->ExecuteNoneQuery($query);
         }
-        ShowMsg("删除成功！", "member_operations.php");
+        ShowMsg("删除成功", "member_operations.php");
         exit();
     }
 } else if ($dopost == "upoperations") {
@@ -216,7 +216,7 @@ function __LoginCP()
         foreach ($nid as $var) {
             $query = "UPDATE `#@__member_operation` SET sta = '1' WHERE aid = '$var'";
             $dsql->ExecuteNoneQuery($query);
-            ShowMsg("设置成功！", "member_operations.php");
+            ShowMsg("设置成功", "member_operations.php");
             exit();
         }
     }
@@ -227,7 +227,7 @@ function __LoginCP()
         foreach ($nid as $var) {
             $query = "UPDATE `#@__member_operation` SET sta = '2' WHERE aid = '$var'";
             $dsql->ExecuteNoneQuery($query);
-            ShowMsg("设置成功！", "member_operations.php");
+            ShowMsg("设置成功", "member_operations.php");
             exit();
         }
     }

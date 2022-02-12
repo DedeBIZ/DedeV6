@@ -24,7 +24,7 @@ function lib_infoguide(&$ctag, &$refObj)
         $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE channeltype='-8' And reid = '0' ");
         $typeid = (is_array($row) ? $row['id'] : 0);
         if (empty($typeid)) {
-            return '请指定一个栏目类型为“分类信息”，否则无法使用这个搜索表单！';
+            return '请指定一个栏目类型为“分类信息”，否则无法使用这个搜索表单';
         }
     } else {
         $typeid = $refObj->Fields['typeid'];

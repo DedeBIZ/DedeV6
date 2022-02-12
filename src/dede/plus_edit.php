@@ -33,7 +33,7 @@ if ($dopost == "show") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("aid", $aid);
         $win->AddTitle("您确实要删除'".$title."'这个插件？");
-        $win->AddMsgItem("<font color='red'>警告：在这里删除仅仅删除菜单项，要干净删除请在模块管理处删除！<br /><br /> <a href='module_main.php?moduletype=plus'>模块管理&gt;&gt;</a> </font>");
+        $win->AddMsgItem("<font color='red'>警告：在这里删除仅仅删除菜单项，要干净删除请在模块管理处删除<br /><br /> <a href='module_main.php?moduletype=plus'>模块管理&gt;&gt;</a> </font>");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

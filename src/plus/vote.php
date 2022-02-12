@@ -30,7 +30,7 @@ $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 if ($aid == 0) die(" Request Error! ");
 
 if ($aid == 0) {
-    ShowMsg("没指定投票项目的ID！", "-1");
+    ShowMsg("没指定投票项目的ID", "-1");
     exit();
 }
 $vo = new DedeVote($aid);
@@ -51,7 +51,7 @@ if ($dopost == 'send') {
     if (!empty($voteitem)) {
         $rsmsg = "<br />&nbsp;您方才的投票状态：".$vo->SaveVote($voteitem)."<br />";
     } else {
-        $rsmsg = "<br />&nbsp;您刚才没选择任何投票项目！<br />";
+        $rsmsg = "<br />&nbsp;您刚才没选择任何投票项目<br />";
     }
 
     if ($row['isenable'] == 1) {

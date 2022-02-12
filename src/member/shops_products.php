@@ -22,13 +22,13 @@ if ($dopost == '') {
     if (!empty($oid)) {
         if ($do == 'ok') {
             $dsql->ExecuteNoneQuery("UPDATE `#@__shops_orders` SET `state`='4' WHERE oid='$oid'");
-            ShowMsg("已确认订单！", 'shops_products.php?oid='.$oid);
+            ShowMsg("已确认订单", 'shops_products.php?oid='.$oid);
             exit();
         }
 
         $row = $dsql->GetOne("SELECT * FROM `#@__shops_userinfo` WHERE userid='".$cfg_ml->M_ID."' AND oid='$oid'");
         if (!isset($row['oid'])) {
-            ShowMsg("订单不存在！", -1);
+            ShowMsg("订单不存在", -1);
             exit();
         }
         $row['des'] = stripslashes($row['des']);

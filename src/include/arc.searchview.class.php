@@ -123,7 +123,7 @@ class SearchView
             $tempfile = str_replace('.htm', '_m.htm', $tempfile);
         }
         if (!file_exists($tempfile) || !is_file($tempfile)) {
-            echo "模板文件不存在，无法解析！";
+            echo "模板文件不存在，无法解析";
             exit();
         }
         $this->dtp->LoadTemplate($tempfile);
@@ -301,7 +301,7 @@ class SearchView
                 } else {
                     $style = "";
                 }
-                $likeword .= "　<a href='search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'".$style."><u>".$row['keyword']."</u></a> ";
+                $likeword .= "　<a href='search.php?keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword'".$style.">".$row['keyword']."</a> ";
             }
             return $likeword;
         }

@@ -63,7 +63,7 @@ function typename($me)
 
 if ($dopost == "delete") {
     if ($id == '') {
-        ShowMsg("参数无效！", "-1");
+        ShowMsg("参数无效", "-1");
         exit();
     }
 
@@ -74,7 +74,7 @@ if ($dopost == "delete") {
             $query = "DELETE FROM `#@__erradd` WHERE `id` = '$var'";
             $dsql->ExecuteNoneQuery($query);
         }
-        ShowMsg("成功删除指定的文档！", "erraddsave.php");
+        ShowMsg("成功删除指定的文档", "erraddsave.php");
         exit();
     } else {
         require_once(DEDEINC."/oxwindow.class.php");

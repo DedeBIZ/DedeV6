@@ -156,7 +156,7 @@ class DedeVote
     {
         global $ENV_GOBACK_URL, $file, $memberID, $row, $content;
         if (empty($voteitem)) {
-            return '您没选中任何项目！';
+            return '您没选中任何项目';
         }
         $items = '';
 
@@ -164,11 +164,11 @@ class DedeVote
         $nowtime = time();
         if ($nowtime > $this->VoteInfos['endtime']) {
 
-            ShowMsg('投票已经过期！', $ENV_GOBACK_URL);
+            ShowMsg('投票已经过期', $ENV_GOBACK_URL);
             exit();
         }
         if ($nowtime < $this->VoteInfos['starttime']) {
-            ShowMsg('投票还没有开始！', $ENV_GOBACK_URL);
+            ShowMsg('投票还没有开始', $ENV_GOBACK_URL);
             exit();
         }
 
@@ -231,7 +231,7 @@ class DedeVote
             }
         }
         $this->dsql->ExecuteNoneQuery("UPDATE `#@__vote` SET totalcount='".($this->VoteInfos['totalcount'] + 1)."',votenote='".addslashes($items)."' WHERE aid='".$this->VoteID."'");
-        return "投票成功！";
+        return "投票成功";
     }
 
     /**

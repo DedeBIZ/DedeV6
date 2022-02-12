@@ -156,7 +156,7 @@ class Alipay
             $pid=$row['pid'];
             $this->mid = $row['mid'];
         } else {    
-            return $msg = "支付失败，您的订单号有问题！";
+            return $msg = "支付失败，您的订单号有问题";
         }
 
         /* 检查数字签名是否正确 */
@@ -183,14 +183,14 @@ class Alipay
         {
             if($ordertype=="goods"){ 
                 if($this->success_db($order_sn))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
-                else  return $msg = "支付失败！<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                else  return $msg = "支付失败<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
             } else if ( $ordertype=="member" ) {
                 $oldinf = $this->success_mem($order_sn,$pname,$product,$pid);
                 return $msg = "<font color='red'>".$oldinf."</font><br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
             }
         } else {
             $this->log_result ("verify_failed");
-            return $msg = "支付失败！<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+            return $msg = "支付失败<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
         }
     }
 
@@ -232,7 +232,7 @@ class Alipay
                 $nrow = $this->dsql->GetOne("SELECT num FROM #@__moneycard_type WHERE pname = '{$pname}'");
                 $dnum = $nrow['num'];
                 $sql1 = "UPDATE `#@__member` SET `money`=money+'{$nrow['num']}' WHERE `mid`='".$this->mid."'";
-                $oldinf ="已经充值了".$nrow['num']."金币到您的帐号！";
+                $oldinf ="已经充值了".$nrow['num']."金币到您的帐号";
             } else {
                 $cardid = $row['cardid'];
                 $sql1=" UPDATE #@__moneycard_record SET uid='".$this->mid."',isexp='1',utime='".time()."' WHERE cardid='$cardid' ";
@@ -246,7 +246,7 @@ class Alipay
                 return $oldinf;
             } else {
                 $this->log_result ("verify_failed,订单号:".$order_sn);//将验证结果存入文件
-                return "支付失败！";
+                return "支付失败";
             }
         /* 改变会员订单状态_支付成功 */
         } else if ( $product=="member" ){
@@ -272,10 +272,10 @@ class Alipay
             if($this->dsql->ExecuteNoneQuery($sql1) && $this->dsql->ExecuteNoneQuery($sql2))
             {
                 $this->log_result("verify_success,订单号:".$order_sn); //将验证结果存入文件
-                return "会员升级成功！";
+                return "会员升级成功";
             } else {
                 $this->log_result ("verify_failed,订单号:".$order_sn);//将验证结果存入文件
-                return "会员升级失败！";
+                return "会员升级失败";
             }
         }    
     }

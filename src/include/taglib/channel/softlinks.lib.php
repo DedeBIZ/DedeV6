@@ -47,7 +47,7 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
     $dtp->LoadSource($fvalue);
     if (!is_array($dtp->CTags)) {
         $dtp->Clear();
-        return "无链接信息！";
+        return "无链接信息";
     }
     // 去除链接信息
     if (!empty($row['sites'])) {

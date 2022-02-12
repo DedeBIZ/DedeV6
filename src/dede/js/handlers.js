@@ -13,7 +13,7 @@ function fileQueueError(file, errorCode, message) {
 		var imageName = "error.gif";
 		var errorName = "";
 		if (errorCode === SWFUpload.errorCode_QUEUE_LIMIT_EXCEEDED) {
-			errorName = "您添加的文件超过了限制！";
+			errorName = "您添加的文件超过了限制";
 		}
 
 		if (errorName !== "") {
@@ -79,7 +79,7 @@ function uploadSuccess(file, serverData) {
 			progress.toggleCancel(false);
 		} else {
 			addImage("images/error.gif", 0);
-			progress.setStatus("有错误！");
+			progress.setStatus("有错误");
 			progress.toggleCancel(false);
 			alert(serverData);
 

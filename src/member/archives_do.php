@@ -28,7 +28,7 @@ if ($dopost == "delStow") {
     $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='".$cfg_ml->M_ID."' ");
     $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET `stow`='$row[nums]' WHERE `mid`='".$cfg_ml->M_ID."'");
 
-    ShowMsg("成功删除一条收藏记录！", $ENV_GOBACK_URL);
+    ShowMsg("成功删除一条收藏记录", $ENV_GOBACK_URL);
     exit();
 }
 
@@ -99,7 +99,7 @@ function delArchives()
 
     $row = $dsql->GetOne($equery);
     if (!is_array($row)) {
-        ShowMsg("您没有权限删除这篇文档！", "-1");
+        ShowMsg("您没有权限删除这篇文档", "-1");
         exit();
     }
     if (trim($row['maintable']) == '') $row['maintable'] = '#@__archives';
@@ -110,7 +110,7 @@ function delArchives()
     }
     $arr = $dsql->GetOne($equery);
     if (!is_array($arr)) {
-        ShowMsg("您没有权限删除这篇文档！", "-1");
+        ShowMsg("您没有权限删除这篇文档", "-1");
         exit();
     }
 
@@ -118,7 +118,7 @@ function delArchives()
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，您不能再删除它！", "-1");
+            ShowMsg("这篇文档已经锁定，您不能再删除它", "-1");
             exit();
         }
     }
@@ -144,10 +144,10 @@ function delArchives()
         countArchives($channelid);
         //扣除积分
         $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores-{$cfg_sendarc_scores} where mid='".$cfg_ml->M_ID."' And (scores-{$cfg_sendarc_scores}) > 0; ");
-        ShowMsg("成功删除一篇文档！", $ENV_GOBACK_URL);
+        ShowMsg("成功删除一篇文档", $ENV_GOBACK_URL);
         exit();
     } else {
-        ShowMsg("删除文档失败！", $ENV_GOBACK_URL);
+        ShowMsg("删除文档失败", $ENV_GOBACK_URL);
         exit();
     }
     exit();

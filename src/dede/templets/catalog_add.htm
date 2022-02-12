@@ -1,7 +1,5 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>栏目管理</title>
@@ -112,7 +110,7 @@ $i = 0;
 
     function checkSubmit() {
       if (document.form1.typename.value == "") {
-        alert("栏目名称不能为空！");
+        alert("栏目名称不能为空");
         document.form1.typename.focus();
         return false;
       }
@@ -148,7 +146,7 @@ $i = 0;
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
-                href="catalog_main.php"><u>栏目管理</u></a>&nbsp;&gt;&gt;&nbsp;增加栏目</td>
+                href="catalog_main.php">栏目管理</a>&nbsp;&gt;&gt;&nbsp;增加栏目</td>
           </tr>
         </table>
       </td>
@@ -182,9 +180,9 @@ $i = 0;
                   <tr>
                     <td width="84" height="24" align="center" background="images/itemnote1.gif">&nbsp;常规选项&nbsp;</td>
                     <td width="84" align="center" background="images/itemnote2.gif"><a href="javascript:;"
-                        onClick="ShowItem2()"><u>高级选项</u></a>&nbsp;</td>
+                        onClick="ShowItem2()">高级选项</a>&nbsp;</td>
                     <td width="84" align="center" background="images/itemnote2.gif"><a href="javascript:;"
-                        onClick="ShowItem3()"><u>栏目内容</u></a>&nbsp;</td>
+                        onClick="ShowItem3()">栏目内容</a>&nbsp;</td>
                   </tr>
                 </table>
               </td>
@@ -197,10 +195,10 @@ $i = 0;
                 <table height="24" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="84" align="center" background="images/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;"
-                        onClick="ShowItem1()"><u>常规选项</u></a>&nbsp;</td>
+                        onClick="ShowItem1()">常规选项</a>&nbsp;</td>
                     <td width="84" align="center" background="images/itemnote1.gif">高级选项&nbsp;</td>
                     <td width="84" align="center" background="images/itemnote2.gif"><a href="javascript:;"
-                        onClick="ShowItem3()"><u>栏目内容</u></a>&nbsp;</td>
+                        onClick="ShowItem3()">栏目内容</a>&nbsp;</td>
                   </tr>
                 </table>
               </td>
@@ -213,9 +211,9 @@ $i = 0;
                 <table height="24" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="84" align="center" background="images/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;"
-                        onClick="ShowItem1()"><u>常规选项</u></a>&nbsp;</td>
+                        onClick="ShowItem1()">常规选项</a>&nbsp;</td>
                     <td width="84" align="center" background="images/itemnote2.gif"><a href="javascript:;"
-                        onClick="ShowItem2()"><u>高级选项</u>&nbsp;</td>
+                        onClick="ShowItem2()">高级选项&nbsp;</td>
                     <td width="84" align="center" background="images/itemnote1.gif">栏目内容&nbsp;</td>
                   </tr>
                 </table>
@@ -417,7 +415,7 @@ $i = 0;
                     }
                     ?>
                 </select>
-                按 Ctrl 多选，不选系统将调用全部分类，在<a href='stepselect_main.php'>“<u>联动类别管理</u>”</a>中管理
+                按 Ctrl 多选，不选系统将调用全部分类，在<a href='stepselect_main.php'>“联动类别管理”</a>中管理
               </td>
             </tr>
           </table>

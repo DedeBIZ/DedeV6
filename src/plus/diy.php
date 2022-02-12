@@ -113,7 +113,7 @@ else if ($action == 'list') {
         exit();
     }
     if (empty($id)) {
-        showMsg('非法操作！未指定id', 'javascript:;');
+        showMsg('非法操作未指定id', 'javascript:;');
         exit();
     }
     if ($diy->public == 2) {
