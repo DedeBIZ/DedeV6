@@ -32,7 +32,7 @@ $cfg_softtype = $cfg_softtype;
 $cfg_softtype = str_replace('||', '|', $cfg_softtype);
 $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
 if (!preg_match("#\.(".$cfg_softtype.")#i", $uploadfile_name)) {
-    ShowMsg("您所上传的{$uploadmbtype}不在许可列表，请更改系统对扩展名限定的配置", "");
+    ShowMsg("您所上传的{$uploadmbtype}不在许可列表，请更改系统对扩展名限定的配置", "-1");
     exit();
 }
 
