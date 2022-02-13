@@ -7,7 +7,7 @@ if (!defined('DEDEINC')) {
  *
  * @version        $Id: feedback.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -54,7 +54,7 @@ function lib_feedback(&$ctag, &$refObj)
 
     $dsql->Execute('fb', $equery);
     while ($arr = $dsql->GetArray('fb')) {
-        $arr['face'] = empty($arr['mface']) ? $GLOBALS['cfg_cmspath'] . '/static/img/avatar.png' : $arr['mface'];
+        $arr['face'] = empty($arr['mface']) ? $GLOBALS['cfg_cmspath'].'/static/img/avatar.png' : $arr['mface'];
         $arr['title'] = cn_substr($arr['arctitle'], $titlelen);
         $arr['msg'] = jsTrim(Html2Text($arr['msg']), $infolen);
         foreach ($ctp->CTags as $tagid => $ctag) {

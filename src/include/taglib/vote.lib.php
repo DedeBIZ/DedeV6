@@ -7,12 +7,12 @@ if (!defined('DEDEINC')) {
  *
  * @version        $Id: vote.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . '/dedevote.class.php');
+require_once(DEDEINC.'/dedevote.class.php');
 function lib_vote(&$ctag, &$refObj)
 {
     global $dsql;

@@ -5,12 +5,12 @@
  *
  * @version        $Id: select_media.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeBIZ.Dialog
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($activepath)) {
     $activepath = '';
 }
@@ -20,8 +20,8 @@ $activepath = preg_replace("#\/{1,}#", '/', $activepath);
 if (strlen($activepath) < strlen($cfg_other_medias)) {
     $activepath = $cfg_other_medias;
 }
-$inpath = $cfg_basedir . $activepath;
-$activeurl = '..' . $activepath;
+$inpath = $cfg_basedir.$activepath;
+$activeurl = '..'.$activepath;
 if (!is_dir($inpath)) {
     die('No Exsits Path');
 }
@@ -34,10 +34,10 @@ if (empty($comeback)) {
 }
 $addparm = '';
 if (!empty($CKEditor)) {
-    $addparm = '&CKEditor=' . $CKEditor;
+    $addparm = '&CKEditor='.$CKEditor;
 }
 if (!empty($CKEditorFuncNum)) {
-    $addparm .= '&CKEditorFuncNum=' . $CKEditorFuncNum;
+    $addparm .= '&CKEditorFuncNum='.$CKEditorFuncNum;
 }
 if (!empty($noeditor)) {
     $addparm .= '&noeditor=yes';
@@ -96,10 +96,10 @@ if (!empty($noeditor)) {
                 if ($filesize != "")
                     if ($filesize < 0.1) {
                         @list($ty1, $ty2) = split("\.", $filesize);
-                        $filesize = $ty1 . "." . substr($ty2, 0, 2);
+                        $filesize = $ty1.".".substr($ty2, 0, 2);
                     } else {
                         @list($ty1, $ty2) = split("\.", $filesize);
-                        $filesize = $ty1 . "." . substr($ty2, 0, 1);
+                        $filesize = $ty1.".".substr($ty2, 0, 1);
                     }
                 $filetime = filemtime("$inpath/$file");
                 $filetime = MyDate("Y-m-d H:i:s", $filetime);
@@ -111,7 +111,7 @@ if (!empty($noeditor)) {
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "\n<tr>
-    <td class='linerow'> <a href=select_media.php?f=$f&activepath=" . urlencode($tmp) . $addparm . "><img src=img/dir2.gif border=0 width=16 height=16 align=absmiddle>上级目录</a></td>
+    <td class='linerow'> <a href=select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."><img src=img/dir2.gif border=0 width=16 height=16 align=absmiddle>上级目录</a></td>
     <td colspan='2' class='linerow'> 当前目录:$activepath</td>
     </tr>\r\n";
                 echo $line;
@@ -120,7 +120,7 @@ if (!empty($noeditor)) {
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "\n<tr>
    <td bgcolor='#F9FBF0' class='linerow'>
-    <a href=select_media.php?f=$f&activepath=" . urlencode("$activepath/$file") . $addparm . "><img src=img/dir.gif border=0 width=16 height=16 align=absmiddle>$file</a>
+    <a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src=img/dir.gif border=0 width=16 height=16 align=absmiddle>$file</a>
    </td>
    <td class='linerow'>-</td>
    <td bgcolor='#F9FBF0' class='linerow'>-</td>

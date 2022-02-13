@@ -6,18 +6,18 @@
  *
  * @version        $Id: mytag_js.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/../include/common.inc.php');
-require_once(DEDEINC . '/arc.partview.class.php');
+require_once(dirname(__FILE__).'/../include/common.inc.php');
+require_once(DEDEINC.'/arc.partview.class.php');
 
 if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 if ($aid == 0) die(" document.write('Request Error!'); ");
 
-$cacheFile = DEDEDATA . '/cache/mytag-' . $aid . '.htm';
+$cacheFile = DEDEDATA.'/cache/mytag-'.$aid.'.htm';
 if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile) > $cfg_puccache_time) {
     $pv = new PartView();
     $row = $pv->dsql->GetOne(" SELECT * FROM `#@__mytag` WHERE aid='$aid' ");

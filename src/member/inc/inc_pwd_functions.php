@@ -4,7 +4,7 @@
  * 
  * @version        $Id: inc_pwd_functions.php 1 15:18 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -20,7 +20,7 @@ function random($length, $numeric = 0)
 {
     PHP_VERSION < '4.2.0' && mt_srand((float)microtime() * 1000000);
     if ($numeric) {
-        $hash = sprintf('%0' . $length . 'd', mt_rand(0, pow(10, $length) - 1));
+        $hash = sprintf('%0'.$length.'d', mt_rand(0, pow(10, $length) - 1));
     } else {
         $hash = '';
         $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
@@ -54,7 +54,7 @@ function sendmail($email, $mailtitle, $mailbody, $headers)
     } else {
         if ($cfg_sendmail_bysmtp == 'Y') {
             $mailtype = 'TXT';
-            require_once(DEDEINC . '/mail.class.php');
+            require_once(DEDEINC.'/mail.class.php');
             $smtp = new smtp($cfg_smtp_server, $cfg_smtp_port, true, $cfg_smtp_usermail, $cfg_smtp_password);
             $smtp->debug = false;
             $smtp->sendmail($email, $cfg_webname, $cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
@@ -79,10 +79,10 @@ function newmail($mid, $userid, $mailto, $type, $send)
     global $db, $cfg_adminemail, $cfg_webname, $cfg_basehost, $cfg_memberurl;
     $mailtime = time();
     $randval = random(8);
-    $mailtitle = $cfg_webname . ":密码修改";
+    $mailtitle = $cfg_webname.":密码修改";
     $mailto = $mailto;
-    $headers = "From: " . $cfg_adminemail . "\r\nReply-To: $cfg_adminemail";
-    $mailbody = "亲爱的" . $userid . "：\r\n您好！感谢您使用" . $cfg_webname . "网。\r\n" . $cfg_webname . "应您的要求，重新设置密码：（注：如果您没有提出申请，请检查您的信息是否泄漏。）\r\n本次临时登录密码为：" . $randval . " 请于三天内登录下面网址确认修改。\r\n" . $cfg_basehost . $cfg_memberurl . "/resetpassword.php?dopost=getpasswd&id=" . $mid;
+    $headers = "From: ".$cfg_adminemail."\r\nReply-To: $cfg_adminemail";
+    $mailbody = "亲爱的".$userid."：\r\n您好感谢您使用".$cfg_webname."网。\r\n".$cfg_webname."应您的要求，重新设置密码：（注：如果您没有提出申请，请检查您的信息是否泄漏。）\r\n本次临时登录密码为：".$randval." 请于三天内登录下面网址确认修改。\r\n".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
     if ($type == 'INSERT') {
         $key = md5($randval);
         $sql = "INSERT INTO `#@__pwd_tmp` (`mid` ,`membername` ,`pwd` ,`mailtime`)VALUES ('$mid', '$userid',  '$key', '$mailtime');";
@@ -91,7 +91,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
                 return ShowMsg('EMAIL修改验证码已经发送到原来的邮箱请查收', 'login.php', '', '5000');
             } else if ($send == 'N') {
-                return ShowMsg('稍后跳转到修改页', $cfg_basehost . $cfg_memberurl . "/resetpassword.php?dopost=getpasswd&amp;id=" . $mid . "&amp;key=" . $randval);
+                return ShowMsg('稍后跳转到修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
             }
         } else {
             return ShowMsg('对不起修改失败，请联系管理员', 'login.php');
@@ -104,7 +104,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
                 ShowMsg('EMAIL修改验证码已经发送到原来的邮箱请查收', 'login.php');
             } elseif ($send == 'N') {
-                return ShowMsg('稍后跳转到修改页', $cfg_basehost . $cfg_memberurl . "/resetpassword.php?dopost=getpasswd&amp;id=" . $mid . "&amp;key=" . $randval);
+                return ShowMsg('稍后跳转到修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
             }
         } else {
             ShowMsg('对不起修改失败，请与管理员联系', 'login.php');
@@ -124,7 +124,7 @@ function member($mail, $userid)
     global $db;
     $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE email='$mail' AND userid = '$userid'";
     $row = $db->GetOne($sql);
-    if (!is_array($row)) return ShowMsg("对不起，用户ID输入错误！", "-1");
+    if (!is_array($row)) return ShowMsg("对不起，用户ID输入错误", "-1");
     else return $row;
 }
 

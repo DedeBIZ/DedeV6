@@ -2,13 +2,13 @@
 if (!defined('DEDEINC')) {
     exit("Request Error!");
 }
-require_once(DEDEINC . "/taglib/flink.lib.php");
+require_once(DEDEINC."/taglib/flink.lib.php");
 /**
  * 友情链接
  *
  * @version        $Id: flinktype.lib.php 1 15:57 2011年2月18日Z niap $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -39,10 +39,10 @@ function lib_flinktype(&$ctag, &$refObj)
     while ($dbrow = $dsql->GetObject()) {
         $row[] = $dbrow;
     }
-    $dedecms = new stdClass;
-    $dedecms->id = 999;
-    $dedecms->typename = '织梦链';
-    if ($type == 'dedecms') $row[] = $dedecms;
+    $DedeBIZ = new stdClass;
+    $DedeBIZ->id = 999;
+    $DedeBIZ->typename = '织梦链';
+    if ($type == 'DedeBIZ') $row[] = $DedeBIZ;
 
     foreach ($row as $key => $value) {
         if (is_array($dtp->CTags)) {

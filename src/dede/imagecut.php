@@ -5,41 +5,41 @@
  *
  * @version        $Id: imagecut.php 1 11:06 2010年7月13日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 $action = isset($action) ? trim($action) : '';
 if (empty($action)) {
-    if (!@is_file($cfg_basedir . $file)) {
-        ShowMsg("对不起，必须选择站内的图片才能进行裁剪！<br />点击'<a href='./dialog/select_images.php?f=form1.picname&imgstick=small'>站内选择</a>', 上传或选择一个图片，然后才能进行裁剪！", "./dialog/select_images.php?f=form1.picname&imgstick=small", 0, 10000);
+    if (!@is_file($cfg_basedir.$file)) {
+        ShowMsg("对不起，必须选择站内的图片才能进行裁剪<br />点击'<a href='./dialog/select_images.php?f=form1.picname&imgstick=small'>站内选择</a>', 上传或选择一个图片，然后才能进行裁剪", "./dialog/select_images.php?f=form1.picname&imgstick=small", 0, 10000);
         exit();
     }
-    include DEDEADMIN . '/templets/imagecut.htm';
+    include DEDEADMIN.'/templets/imagecut.htm';
     exit();
 } elseif ($action == 'cut') {
-    require_once(DEDEINC . '/image.func.php');
+    require_once(DEDEINC.'/image.func.php');
 
-    if (!@is_file($cfg_basedir . $file)) {
-        ShowMsg('对不起，请重新选择裁剪图片！', '-1');
+    if (!@is_file($cfg_basedir.$file)) {
+        ShowMsg('对不起，请重新选择裁剪图片', '-1');
         exit();
     }
     if (empty($width)) {
-        ShowMsg('对不起，请选择裁剪图片的尺寸！', '-1');
+        ShowMsg('对不起，请选择裁剪图片的尺寸', '-1');
         exit();
     }
     if (empty($height)) {
-        ShowMsg('对不起，请选择裁剪图片的尺寸！', '-1');
+        ShowMsg('对不起，请选择裁剪图片的尺寸', '-1');
         exit();
     }
-    $imginfo = getimagesize($cfg_basedir . $file);
+    $imginfo = getimagesize($cfg_basedir.$file);
     $imgw = $imginfo[0];
     $imgh = $imginfo[1];
     $temp = 400 / $imgw;
     $newwidth = 400;
     $newheight = $imgh * $temp;
-    $srcFile = $cfg_basedir . $file;
+    $srcFile = $cfg_basedir.$file;
     $thumb = imagecreatetruecolor($newwidth, $newheight);
     $thumba = imagecreatetruecolor($width, $height);
 
@@ -54,7 +54,7 @@ if (empty($action)) {
             $source = imagecreatefrompng($srcFile);
             break;
         default:
-            ShowMsg('对不起，裁剪图片类型不支持请选择其他类型图片！', '-1');
+            ShowMsg('对不起，裁剪图片类型不支持请选择其他类型图片', '-1');
             break;
     }
 
@@ -65,7 +65,7 @@ if (empty($action)) {
 
     $ddpicok = $reObjJs = '';
     if (empty($isupload)) {
-        $ddpicok = preg_replace("#\." . $ddn . "$#", '-lp.' . $ddn, $file);
+        $ddpicok = preg_replace("#\.".$ddn."$#", '-lp.'.$ddn, $file);
         $reObjJs = "        var backObj = window.opener.document.form1.picname;
         var prvObj = window.opener.document.getElementById('divpicview');\r\n";
     } else {
@@ -74,7 +74,7 @@ if (empty($action)) {
         var prvObj = window.opener.parent.document.getElementById('divpicview');\r\n";
     }
 
-    $ddpicokurl = $cfg_basedir . $ddpicok;
+    $ddpicokurl = $cfg_basedir.$ddpicok;
 
     switch ($imginfo['mime']) {
         case 'image/jpeg':
@@ -87,7 +87,7 @@ if (empty($action)) {
             imagepng($thumba, $ddpicokurl);
             break;
         default:
-            ShowMsg("对不起，裁剪图片类型不支持请选择其他类型图片！", "-1");
+            ShowMsg("对不起，裁剪图片类型不支持请选择其他类型图片", "-1");
             break;
     }
 
@@ -99,7 +99,7 @@ if (empty($action)) {
     //如果从其它图中剪出， 保存附件信息
     if (empty($isupload)) {
         $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-        VALUES ('$ddpicok','$ddpicok','1','0','0','0','" . filesize($ddpicokurl) . "','" . time() . "','" . $cuserLogin->getUserID() . "'); ";
+        VALUES ('$ddpicok','$ddpicok','1','0','0','0','".filesize($ddpicokurl)."','".time()."','".$cuserLogin->getUserID()."'); ";
         $dsql->ExecuteNoneQuery($inquery);
         $fid = $dsql->GetLastID();
         AddMyAddon($fid, $ddpicok);

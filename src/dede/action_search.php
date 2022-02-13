@@ -5,12 +5,12 @@
  *
  * @version        $Id: action_search.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(dirname(__FILE__) . "/actionsearch_class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__)."/actionsearch_class.php");
 
 //增加权限检查
 if (empty($dopost)) $dopost = "";

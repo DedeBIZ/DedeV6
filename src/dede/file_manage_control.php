@@ -5,19 +5,19 @@
  *
  * @version        $Id: file_manage_control.php 1 8:48 2010年7月13日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_文件管理器');
-require(DEDEINC . "/oxwindow.class.php");
-require_once(DEDEADMIN . '/file_class.php');
+require(DEDEINC."/oxwindow.class.php");
+require_once(DEDEADMIN.'/file_class.php');
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = "";
 if ($activepath == "") $inpath = $cfg_basedir;
-else $inpath = $cfg_basedir . $activepath;
+else $inpath = $cfg_basedir.$activepath;
 
 //文件管理器交互与逻辑控制文件
 $fmm = new FileManagement();
@@ -68,9 +68,9 @@ function __saveEdit();
     fputs($fp, $str);
     fclose($fp);
     if (empty($backurl)) {
-        ShowMsg("成功保存一个文件！", "file_manage_main.php?activepath=$activepath");
+        ShowMsg("成功保存一个文件", "file_manage_main.php?activepath=$activepath");
     } else {
-        ShowMsg("成功保存文件！", $backurl);
+        ShowMsg("成功保存文件", $backurl);
     }
     exit();
 }
@@ -90,7 +90,7 @@ else if($fmdo=="editview")
     {
         $backurl = "file_manage_main.php?activepath=$activepath";
     }
-    ShowMsg("成功保存文件！",$backurl);
+    ShowMsg("成功保存文件",$backurl);
     exit();
 }
 */
@@ -100,16 +100,16 @@ function __upload();
 ----------------*/ else if ($fmdo == "upload") {
     $j = 0;
     for ($i = 1; $i <= 50; $i++) {
-        $upfile = "upfile" . $i;
-        $upfile_name = "upfile" . $i . "_name";
+        $upfile = "upfile".$i;
+        $upfile_name = "upfile".$i."_name";
         if (!isset(${$upfile}) || !isset(${$upfile_name})) {
             continue;
         }
         $upfile = ${$upfile};
         $upfile_name = ${$upfile_name};
         if (is_uploaded_file($upfile)) {
-            if (!file_exists($cfg_basedir . $activepath . "/" . $upfile_name)) {
-                move_uploaded_file($upfile, $cfg_basedir . $activepath . "/" . $upfile_name);
+            if (!file_exists($cfg_basedir.$activepath."/".$upfile_name)) {
+                move_uploaded_file($upfile, $cfg_basedir.$activepath."/".$upfile_name);
             }
             @unlink($upfile);
             $j++;
@@ -126,10 +126,10 @@ else if ($fmdo == "space") {
     } else {
         $ecpath = $activepath;
     }
-    $titleinfo = "目录 <a href='file_manage_main.php?activepath=$activepath'><b><u>$ecpath</u></b></a> 空间使用状况：<br/>";
+    $titleinfo = "目录 <a href='file_manage_main.php?activepath=$activepath'><b>$ecpath</b></a> 空间使用状况：<br/>";
     $wintitle = "文件管理";
     $wecome_info = "文件管理::空间大小检查 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
-    $activepath = $cfg_basedir . $activepath;
+    $activepath = $cfg_basedir.$activepath;
     $space = new SpaceUse;
     $space->checksize($activepath);
     $total = $space->totalsize;

@@ -1,7 +1,5 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>发布文档</title>
@@ -26,11 +24,11 @@
   <script language="javascript">
     function checkSubmit() {
       if (document.form1.title.value == "") {
-        ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空！");
+        ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
         return false;
       }
       if (document.form1.typeid.value == 0) {
-        ShowMsg("请选择档案的主栏目！");
+        ShowMsg("请选择档案的主栏目");
         return false;
       }
     }
@@ -51,7 +49,7 @@
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
       <td width="65%" height="30"><IMG height=14 src="images/book1.gif" width=20>&nbsp;<a
-          href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"><u>文档列表</u></a>
+          href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a>
         &gt;&gt; 发布文档</td>
       <td width="30%" align='right'><?php echo $backurl; ?><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a>&nbsp;</td>
     </tr>
@@ -63,8 +61,8 @@
         <table width="800" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="84" height="24" align="center" background="images/itemnote1.gif">&nbsp;常规信息&nbsp;</td>
-            <td width="84" align="center" background="images/itemnote2.gif"><a href="#"
-                onClick="ShowItem2()"><u>高级参数</u></a></td>
+            <td width="84" align="center" background="images/itemnote2.gif"><a href="javascript:;"
+                onClick="ShowItem2()">高级参数</a></td>
             <td>&nbsp;</td>
           </tr>
         </table>
@@ -77,8 +75,8 @@
       <td colspan="2">
         <table height="24" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="84" align="center" background="images/itemnote2.gif"><a href="#"
-                onClick="ShowItem1()"><u>常规信息</u></a>&nbsp;</td>
+            <td width="84" align="center" background="images/itemnote2.gif"><a href="javascript:;"
+                onClick="ShowItem1()">常规信息</a>&nbsp;</td>
             <td width="84" align="center" background="images/itemnote1.gif">高级参数</td>
           </tr>
         </table>

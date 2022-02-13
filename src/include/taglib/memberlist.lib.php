@@ -7,7 +7,7 @@ if (!defined('DEDEINC')) {
  *
  * @version        $Id: memberlist.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -38,9 +38,9 @@ function lib_memberlist(&$ctag, &$refObj)
 
     $dsql->Execute('mb', $sql);
     while ($row = $dsql->GetArray('mb')) {
-        $row['spaceurl'] = $GLOBALS['cfg_basehost'] . '/member/index.php?uid=' . $row['userid'];
+        $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/member/index.php?uid='.$row['userid'];
         if (empty($row['face'])) {
-            $row['face'] = ($row['sex'] == '女') ? $GLOBALS['cfg_memberurl'] . '/templets/images/dfgirl.png' : $GLOBALS['cfg_memberurl'] . '/templets/images/dfboy.png';
+            $row['face'] = ($row['sex'] == '女') ? $GLOBALS['cfg_memberurl'].'/templets/images/dfgirl.png' : $GLOBALS['cfg_memberurl'].'/templets/images/dfboy.png';
         }
         foreach ($ctp->CTags as $tagid => $ctag) {
             if (isset($row[$ctag->GetName()])) {

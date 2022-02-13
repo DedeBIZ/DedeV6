@@ -5,13 +5,13 @@
  *
  * @version        $Id: makehtml_freelist_action.php 1 9:11 2010年7月19日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-require_once(DEDEINC . "/arc.freelist.class.php");
+require_once(DEDEINC."/arc.freelist.class.php");
 if (empty($startid)) $startid = 0;
 $ci = " aid >= $startid ";
 if (!empty($endid) && $endid >= $startid) {
@@ -29,7 +29,7 @@ $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
     $lid = $idArray[$pageno];
 } else {
-    ShowMsg("完成所有文件创建！", 'javascript:;');
+    ShowMsg("完成所有文件创建", 'javascript:;');
     exit();
 }
 $lv = new FreeList($lid);
@@ -52,14 +52,14 @@ if ($ntotalpage <= $maxpagesize) {
 $lv->Close();
 $nextpage = $pageno + 1;
 if ($nextpage == $totalpage) {
-    ShowMsg("完成所有文件创建！", 'javascript:;');
+    ShowMsg("完成所有文件创建", 'javascript:;');
 } else {
     if ($finishType) {
         $gourl = "makehtml_freelist_action.php?maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$nextpage";
-        ShowMsg("成功创建列表：" . $tid . "，继续进行操作！", $gourl, 0, 100);
+        ShowMsg("成功创建列表：".$tid."，继续进行操作", $gourl, 0, 100);
     } else {
         $gourl = "makehtml_freelist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$pageno";
-        ShowMsg("列表：" . $tid . "，继续进行操作...", $gourl, 0, 100);
+        ShowMsg("列表：".$tid."，继续进行操作...", $gourl, 0, 100);
     }
 }
 $dsql->ExecuteNoneQuery("Update `#@__freelist` set  nodefault='1' where aid='$startid';");

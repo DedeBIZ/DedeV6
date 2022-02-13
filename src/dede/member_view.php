@@ -5,15 +5,15 @@
  *
  * @version        $Id: member_view.php 1 14:15 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 CheckPurview('member_Edit');
 $ENV_GOBACK_URL = isset($_COOKIE['ENV_GOBACK_URL']) ? "member_main.php" : '';
 $id = preg_replace("#[^0-9]#", "", $id);
-$row = $dsql->GetOne("select  * from #@__member where mid='$id'");
+$row = $dsql->GetOne("select  * from `#@__member` where mid='$id'");
 
 $staArr = array(
     -10 => '等待验证邮件',

@@ -1,33 +1,32 @@
 <?php
-
 /**
  * 自定义表单列表
  *
  * @version        $Id: diy_list.php 1 18:31 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
-$action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete')) ? $action : '';
+$action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete','excel')) ? $action : '';
 if (empty($diyid)) {
     showMsg("非法操作!", 'javascript:;');
     exit();
 }
-require_once DEDEINC . '/diyform.cls.php';
+require_once DEDEINC.'/diyform.cls.php';
 $diy = new diyform($diyid);
 if ($action == 'post') {
     if (empty($do)) {
         $postform = $diy->getForm('post', '', 'admin');
-        include DEDEADMIN . '/templets/diy_post.htm';
+        include DEDEADMIN.'/templets/diy_post.htm';
     } else if ($do == 2) {
         $dede_fields = empty($dede_fields) ? '' : trim($dede_fields);
         $dede_fieldshash = empty($dede_fieldshash) ? '' : trim($dede_fieldshash);
         if (!empty($dede_fields)) {
-            if ($dede_fieldshash != md5($dede_fields . $cfg_cookie_encode)) {
+            if ($dede_fieldshash != md5($dede_fields.$cfg_cookie_encode)) {
                 showMsg("数据校验不对，程序返回", '-1');
                 exit();
             }
@@ -53,8 +52,8 @@ if ($action == 'post') {
                     } else {
                         ${$fieldinfo[0]} = getFieldValue(${$fieldinfo[0]}, $fieldinfo[1], 0, 'add', '', 'member');
                     }
-                    $addvar .= ', `' . $fieldinfo[0] . '`';
-                    $addvalue .= ", '" . ${$fieldinfo[0]} . "'";
+                    $addvar .= ', `'.$fieldinfo[0].'`';
+                    $addvalue .= ", '".${$fieldinfo[0]}."'";
                 }
             }
         }
@@ -67,13 +66,13 @@ if ($action == 'post') {
         }
     }
 } else if ($action == 'list') {
-    include_once DEDEINC . '/datalistcp.class.php';
+    include_once DEDEINC.'/datalistcp.class.php';
     $query = "SELECT * FROM {$diy->table} ORDER BY id DESC";
     $datalist = new DataListCP();
     $datalist->pageSize = 10;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
-    $datalist->SetTemplate(DEDEADMIN . '/templets/diy_list.htm');
+    $datalist->SetTemplate(DEDEADMIN.'/templets/diy_list.htm');
     $datalist->SetSource($query);
     $fieldlist = $diy->getFieldList();
     $datalist->Display();
@@ -81,20 +80,20 @@ if ($action == 'post') {
     if (empty($do)) {
         $id = isset($id) && is_numeric($id) ? $id : 0;
         if (empty($id)) {
-            showMsg('非法操作！未指定id', 'javascript:;');
+            showMsg('非法操作未指定id', 'javascript:;');
             exit();
         }
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";
         $row = $dsql->GetOne($query);
         if (!is_array($row)) {
-            showmsg("你访问的记录不存在或未经审核", '-1');
+            showmsg("您访问的记录不存在或未经审核", '-1');
             exit();
         }
         $postform = $diy->getForm('edit', $row, 'admin');
         $fieldlist = $diy->getFieldList();
         $c1 = $row['ifcheck'] == 1 ? 'checked' : '';
         $c2 = $row['ifcheck'] == 0 ? 'checked' : '';
-        include DEDEADMIN . '/templets/diy_edit_content.htm';
+        include DEDEADMIN.'/templets/diy_edit_content.htm';
     } else if ($do == 2) {
         $dede_fields = empty($dede_fields) ? '' : trim($dede_fields);
         $diyform = $dsql->GetOne("SELECT * FROM #@__diyforms WHERE diyid=$diyid");
@@ -122,7 +121,7 @@ if ($action == 'post') {
                         ${$fieldinfo[0]} = GetFieldValue(${$fieldinfo[0]}, $fieldinfo[1], 0, 'add', '', 'diy', $fieldinfo[0]);
                         ${$fieldinfo[0]} = empty(${$fieldinfo[0]}) ? $diyco[$fieldinfo[0]] : ${$fieldinfo[0]};
                     }
-                    $addsql .= !empty($addsql) ? ',`' . $fieldinfo[0] . "`='" . ${$fieldinfo[0]} . "'" : '`' . $fieldinfo[0] . "`='" . ${$fieldinfo[0]} . "'";
+                    $addsql .= !empty($addsql) ? ',`'.$fieldinfo[0]."`='".${$fieldinfo[0]}."'" : '`'.$fieldinfo[0]."`='".${$fieldinfo[0]}."'";
                 }
             }
         }
@@ -163,14 +162,43 @@ if ($action == 'post') {
         }
     } else if ($do = 1) {
         $row = $dsql->GetOne("SELECT * FROM `$diy->table` WHERE id='$id'");
-        if (file_exists($cfg_basedir . $row[$name])) {
-            unlink($cfg_basedir . $row[$name]);
+        if (file_exists($cfg_basedir.$row[$name])) {
+            unlink($cfg_basedir.$row[$name]);
             $dsql->ExecuteNoneQuery("UPDATE `$diy->table` SET $name='' WHERE id='$id'");
             showmsg('文件删除成功', "diy_list.php?action=list&diyid={$diy->diyid}");
         } else {
             showmsg('文件不存在', '-1');
         }
     }
+} 
+elseif($action == 'excel') {
+    ob_end_clean();//清除缓冲区,避免乱码
+    header("Content-type:application/vnd.ms-excel");
+    header("Content-Disposition:attachment;filename={$diy->name}_".date("Y-m-d").".xls");
+    print(chr(0xEF).chr(0xBB).chr(0xBF));//清除bom
+    $fieldlist = $diy->getFieldList();
+    echo "<table><tr>";
+    foreach($fieldlist as $field=>$fielddata)
+    {
+        echo "<th>{$fielddata[0]}</th>";
+    }
+    echo "<th>状态</th>";
+    echo "</tr>";
+    $sql = "SELECT * FROM {$diy->table} ORDER BY id DESC";
+    $dsql->SetQuery($sql);
+    $dsql->Execute('t');
+    while($arr = $dsql->GetArray('t'))
+    {
+        echo "<tr>";
+        foreach($fieldlist as $key => $field)
+        {
+            echo "<td>".$arr[$key]."</td>";
+        }
+    $status = $arr['ifcheck'] == 1 ? '已审核' : '未审核';
+    echo "<td>".$status."</td>";
+    echo "</tr>";
+    }
+    echo "</table>";
 } else {
     showmsg('未定义操作', "-1");
 }

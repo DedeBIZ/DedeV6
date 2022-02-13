@@ -5,13 +5,13 @@
  *
  * @version        $Id: article_description_main.php 1 14:12 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 @ob_start();
 @set_time_limit(3600);
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Keyword');
 if (empty($dojob)) $dojob = '';
 if ($dojob == '') {
@@ -98,7 +98,7 @@ if ($dojob == '') {
 
     //更新自动分页
     if ($dojob == 'page') {
-        require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
+        require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 
         $addquery  = "";
         if ($sid != 0) {
@@ -119,7 +119,7 @@ if ($dojob == '') {
         if ($totalnum > $startdd + $pagesize) {
             $limitSql = " LIMIT $startdd,$pagesize";
         } else if (($totalnum - $startdd) > 0) {
-            $limitSql = " LIMIT $startdd," . ($totalnum - $startdd);
+            $limitSql = " LIMIT $startdd,".($totalnum - $startdd);
         } else {
             $limitSql = "";
         }
@@ -156,7 +156,7 @@ if ($dojob == '') {
         $tjsta .= "<br/>完成处理文档总数的：$tjlen %，继续执行任务...";
 
         if ($tjnum < $totalnum) {
-            $nurl = "article_description_main.php?totalnum=$totalnum&startdd=" . ($startdd + $pagesize) . "&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
+            $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
             exit();
         } else {

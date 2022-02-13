@@ -1,24 +1,21 @@
 <?php
-
 /**
  * 图集发布
  *
  * @version        $Id: album_add.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('a_New,a_AccNew');
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
-
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 if (empty($dopost)) $dopost = '';
-
 if ($dopost != 'save') {
-    require_once(DEDEINC . "/dedetag.class.php");
-    require_once(DEDEADMIN . "/inc/inc_catalog_options.php");
+    require_once(DEDEINC."/dedetag.class.php");
+    require_once(DEDEADMIN."/inc/inc_catalog_options.php");
     ClearMyAddon();
     $channelid = empty($channelid) ? 0 : intval($channelid);
     $cid = empty($cid) ? 0 : intval($cid);
@@ -30,11 +27,9 @@ if ($dopost != 'save') {
     } else {
         if ($channelid == 0) $channelid = 2;
     }
-
     //获得频道模型信息
     $cInfos = $dsql->GetOne(" SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
     $channelid = $cInfos['id'];
-
     //获取文章最大id以确定当前权重
     $maxWright = $dsql->GetOne("SELECT COUNT(*) AS cc FROM #@__archives");
     include DedeInclude("templets/album_add.htm");
@@ -42,14 +37,13 @@ if ($dopost != 'save') {
 }
 /*--------------------------------
 function __save(){  }
--------------------------------*/ else if ($dopost == 'save') {
-    require_once(DEDEINC . '/image.func.php');
-    require_once(DEDEINC . '/oxwindow.class.php');
-
+-------------------------------*/
+else if ($dopost == 'save') {
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(50, 200) : $cfg_arc_click);
-
     if (!isset($typeid2)) $typeid2 = 0;
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
@@ -61,23 +55,21 @@ function __save(){  }
     if (!isset($albums)) $albums = "";
     if (!isset($delzip)) $delzip = 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(50, 200) : $cfg_arc_click);
-
     if ($typeid == 0) {
-        ShowMsg("请指定文档的栏目！", "-1");
+        ShowMsg("请指定文档的栏目", "-1");
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查你发布内容的表单是否合法！", "-1");
+        ShowMsg("文档为非指定的类型，请检查您发布内容的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg("你所选择的栏目与当前模型不相符，请选择白色的选项！", "-1");
+        ShowMsg("您所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
         exit();
     }
     if (!TestPurview('a_New')) {
-        CheckCatalog($typeid, "对不起，你没有操作栏目 {$typeid} 的权限！");
+        CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的权限");
     }
-
     //对保存的内容进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();
     if (empty($source)) $source = '未知';
@@ -101,37 +93,30 @@ function __save(){  }
         $arcrank = -1;
     }
     $adminid = $cuserLogin->getUserID();
-
     //处理上传的缩略图
     if (empty($ddisremote)) $ddisremote = 0;
     $litpic = GetDDImage('none', $picname, $ddisremote);
-
     // 处理新的缩略图上传
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-        $fullUrl = $fullUrl . ".png";
-
-        file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
-
-        // 加水印
-        WaterImg($cfg_basedir . $fullUrl, 'up');
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
+        //加水印
+        WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
-
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $adminid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作！", "-1");
+        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
         exit();
     }
-
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$row' col='$col' value='$pagestyle'/}\r\n";
     $hasone = FALSE;
-
     //处理并保存从网上复制的图片
     /*---------------------
     function _getformhtml()
@@ -149,10 +134,10 @@ function __save(){  }
     处理从ZIP中解压的图片
     ---------------------*/
     if ($formzip == 1) {
-        include_once(DEDEINC . "/zip.class.php");
-        include_once(DEDEADMIN . "/file_class.php");
-        $zipfile = $cfg_basedir . str_replace($cfg_mainsite, '', $zipfile);
-        $tmpzipdir = DEDEDATA . '/ziptmp/' . cn_substr(md5(ExecTime()), 16);
+        include_once(DEDEINC."/zip.class.php");
+        include_once(DEDEADMIN."/file_class.php");
+        $zipfile = $cfg_basedir.str_replace($cfg_mainsite, '', $zipfile);
+        $tmpzipdir = DEDEDATA.'/ziptmp/'.cn_substr(md5(ExecTime()), 16);
         $ntime = time();
         if (file_exists($zipfile)) {
             @mkdir($tmpzipdir, $GLOBALS['cfg_dir_purview']);
@@ -165,14 +150,13 @@ function __save(){  }
             $i = 0;
             foreach ($imgs as $imgold) {
                 $i++;
-                $savepath = $cfg_image_dir . "/" . MyDate("Y-m", $ntime);
+                $savepath = $cfg_image_dir."/".MyDate("Y-m", $ntime);
                 CreateDir($savepath);
-                $iurl = $savepath . "/" . MyDate("d", $ntime) . dd2char(MyDate("His", $ntime) . '-' . $adminid . "-{$i}" . mt_rand(1000, 9999));
-                $iurl = $iurl . substr($imgold, -4, 4);
-                $imgfile = $cfg_basedir . $iurl;
+                $iurl = $savepath."/".MyDate("d", $ntime).dd2char(MyDate("His", $ntime).'-'.$adminid."-{$i}".mt_rand(1000, 9999));
+                $iurl = $iurl.substr($imgold, -4, 4);
+                $imgfile = $cfg_basedir.$iurl;
                 copy($imgold, $imgfile);
                 unlink($imgold);
-
                 if (is_file($imgfile)) {
                     $litpicname = $pagestyle > 2 ? GetImageMapDD($iurl, $cfg_ddimg_width) : $iurl;
                     //指定了提取第一张为缩略图的情况强制使用第一张缩略图
@@ -183,19 +167,15 @@ function __save(){  }
                     }
                     $info = '';
                     $imginfos = GetImageSize($imgfile, $info);
-                    $imgurls .= "{dede:img ddimg='$litpicname' text='' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $iurl {/dede:img}\r\n";
-
+                    $imgurls .= "{dede:img ddimg='$litpicname' text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
                     //把图片信息保存到媒体文档管理档案中
                     $inquery = "
                    INSERT INTO #@__uploads(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-                    VALUES ('{$title}','{$iurl}','1','" . $imginfos[0] . "','" . $imginfos[1] . "','0','" . filesize($imgfile) . "','" . $ntime . "','$adminid');
-                 ";
+                    VALUES ('{$title}','{$iurl}','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".$ntime."','$adminid');";
                     $dsql->ExecuteNoneQuery($inquery);
                     $fid = $dsql->GetLastID();
                     AddMyAddon($fid, $iurl);
-
                     WaterImg($imgfile, 'up');
-
                     if (!$hasone && $ddisfirst == 1 && $litpic == '') {
                         if (empty($litpicname)) {
                             $litpicname = $iurl;
@@ -210,36 +190,30 @@ function __save(){  }
             $fm->RmDirFiles($tmpzipdir);
         }
     }
-
     if ($albums !== "") {
         $albumsArr  = json_decode(stripslashes($albums), true);
-
         for ($i = 0; $i <= count($albumsArr) - 1; $i++) {
             $album = $albumsArr[$i];
             $data = explode(',', $album['img']);
             $ntime = time();
-            $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+            $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
             CreateDir($savepath);
-            $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-            $fullUrl = $fullUrl . ".png";
-
-            file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
+            $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+            $fullUrl = $fullUrl.".png";
+            file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
             $info = '';
-            $imginfos = GetImageSize($cfg_basedir . $fullUrl, $info);
+            $imginfos = GetImageSize($cfg_basedir.$fullUrl, $info);
             $v = $fullUrl;
             $imginfo =  !empty($album['txt']) ? $album['txt'] : '';
-            $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $v {/dede:img}\r\n";
+            $imgurls .= "{dede:img ddimg='$v' text='$imginfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $v {/dede:img}\r\n";
             if ($ddisfirst == 1 && $litpic == '' && !empty($fullUrl)) {
                 $litpic = $fullUrl;
             }
         }
     }
-
     $imgurls = addslashes($imgurls);
-
     //处理body字段自动摘要、自动提取缩略图等
     $body = AnalyseHtmlBody($body, $description, $litpic, $keywords, 'htmltext');
-
     //分析处理附加表数据
     $inadd_f = '';
     $inadd_v = '';
@@ -264,20 +238,18 @@ function __save(){  }
                     }
                     ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $arcID);
                 }
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
     }
-
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match("#p#", $flag)) {
-        $flag = ($flag == '' ? 'p' : $flag . ',p');
+        $flag = ($flag == '' ? 'p' : $flag.',p');
     }
     if ($redirecturl != '' && !preg_match("#j#", $flag)) {
-        $flag = ($flag == '' ? 'j' : $flag . ',j');
+        $flag = ($flag == '' ? 'j' : $flag.',j');
     }
-
     //跳转网址的文档强制为动态
     if (preg_match("#j#", $flag)) $ismake = -1;
     //加入主档案表
@@ -288,17 +260,16 @@ function __save(){  }
     if (!$dsql->ExecuteNoneQuery($query)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery(" DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
-        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCMS官方。" . str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeBIZ官方".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
-
     //加入附加表
     $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
     $addtable = trim($cts['addtable']);
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作！。", "javascript:;");
+        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作。", "javascript:;");
         exit();
     }
     $useip = GetIP();
@@ -308,19 +279,17 @@ function __save(){  }
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。" . str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeBIZ官方".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
-
     //生成HTML
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE, TRUE, $isremote);
     if ($artUrl == '') {
-        $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+        $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
     ClearMyAddon($arcID, $title);
-
-    // 自动更新关联内容
+    //自动更新关联内容
     if (is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {
@@ -331,23 +300,11 @@ function __save(){  }
             }
         }
     }
-
     //返回成功信息
-    $msg = "
-    　　请选择你的后续操作：
-    <a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a>
-    &nbsp;&nbsp;
-    <a href='archives_do.php?aid=" . $arcID . "&dopost=editArchives' class='btn btn-success btn-sm'>更改图集</a>
-    &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>预览文档</a>
-    &nbsp;&nbsp;
-    <a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布图片管理</a>
-    &nbsp;&nbsp;
-    $backurl
-   ";
-    $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>" . GetUpdateTest();
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>更改图集</a>&nbsp;&nbsp;<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>预览文档</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布图片管理</a>&nbsp;&nbsp;$backurl";
+    $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>".GetUpdateTest();
 
-    $wintitle = "成功发布一个图集！";
+    $wintitle = "成功发布一个图集";
     $wecome_info = "文章管理::发布图集";
     $win = new OxWindow();
     $win->AddTitle("成功发布一个图集：");

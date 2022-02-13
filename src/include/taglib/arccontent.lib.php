@@ -6,12 +6,12 @@ if (!defined('DEDEINC')) exit('Request Error!');
  *
  * @version        $Id: arccontent.lib.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . "/channelunit.class.php");
+require_once(DEDEINC."/channelunit.class.php");
 // 这是一个用来调用文档内容的标签，只是提供一种方法，不建议太多地方调用，毕竟比较损耗性能
 /*
 用法：

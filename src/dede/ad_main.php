@@ -5,13 +5,13 @@
  *
  * @version        $Id: ad_main.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . '/datalistcp.class.php');
-require_once(DEDEINC . '/common.func.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/datalistcp.class.php');
+require_once(DEDEINC.'/common.func.php');
 setcookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
 
 $clsid = isset($clsid) ? intval($clsid) : 0;
@@ -37,7 +37,7 @@ LEFT JOIN `#@__myadtype` ap on ap.id=ad.clsid
 WHERE $where_sql
 ORDER BY ad.aid desc";
 $dlist = new DataListCP();
-$dlist->SetTemplet(DEDEADMIN . "/templets/ad_main.htm");
+$dlist->SetTemplet(DEDEADMIN."/templets/ad_main.htm");
 $dlist->SetSource($sql);
 $dlist->display();
 

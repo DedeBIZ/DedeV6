@@ -5,14 +5,14 @@
  * 
  * @version        $Id: inc_archives_functions.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 if (!defined('DEDEMEMBER')) exit('dedebiz');
-require_once(DEDEINC . '/image.func.php');
-require_once(DEDEINC . '/archives.func.php');
-require_once(DEDEINC . "/userlogin.class.php");
+require_once(DEDEINC.'/image.func.php');
+require_once(DEDEINC.'/archives.func.php');
+require_once(DEDEINC."/userlogin.class.php");
 
 //检查用户是否被禁言
 CheckNotAllow();
@@ -28,25 +28,25 @@ CheckNotAllow();
 function GetCurContentAlbum($body, $rfurl, &$firstdd)
 {
     global $cfg_multi_site, $cfg_basehost, $ddmaxwidth, $cfg_basedir, $pagestyle, $cfg_mb_rmdown, $title, $cfg_ml, $cfg_user_dir;
-    include_once(DEDEINC . "/dedecollection.func.php");
+    include_once(DEDEINC."/dedecollection.func.php");
     if (empty($ddmaxwidth)) $ddmaxwidth = 240;
     $rsimg = '';
-    $basehost = "http://" . $_SERVER["HTTP_HOST"];
+    $basehost = "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
     preg_match_all("/(src)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
     $img_array = array_unique($img_array[2]);
-    $imgUrl = $cfg_user_dir . "/" . $cfg_ml->M_ID;
-    $imgPath = $cfg_basedir . $imgUrl;
-    if (!is_dir($imgPath . "/")) {
+    $imgUrl = $cfg_user_dir."/".$cfg_ml->M_ID;
+    $imgPath = $cfg_basedir.$imgUrl;
+    if (!is_dir($imgPath."/")) {
         MkdirAll($imgPath, $GLOBALS['cfg_dir_purview']);
         CloseFtp();
     }
     $milliSecond = MyDate("ymdHis", time());
     foreach ($img_array as $key => $value) {
-        if (preg_match("#" . $basehost . "#i", $value)) {
+        if (preg_match("#".$basehost."#i", $value)) {
             continue;
         }
-        if ($cfg_basehost != $basehost && preg_match("#" . $cfg_basehost . "#i", $value)) {
+        if ($cfg_basehost != $basehost && preg_match("#".$cfg_basehost."#i", $value)) {
             continue;
         }
         if (!preg_match("#^http[s]?:\/\/#i", $value)) {
@@ -56,8 +56,8 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
             $value = trim($value);
             $itype =  substr($value, -4, 4);
             if (!preg_match("#\.(gif|jpg|png)#i", $itype)) $itype = ".jpg";
-            $rndFileName = $imgPath . "/" . $milliSecond . $key . $itype;
-            $iurl = $imgUrl . "/" . $milliSecond . $key . $itype;
+            $rndFileName = $imgPath."/".$milliSecond.$key.$itype;
+            $iurl = $imgUrl."/".$milliSecond.$key.$itype;
 
             //下载并保存文件
             //$rs = $htd->SaveToBin($rndFileName);
@@ -71,13 +71,13 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
                 }
                 if (empty($firstdd)) {
                     $firstdd = $litpicname;
-                    if (!file_exists($cfg_basedir . $firstdd)) $firstdd = $iurl;
+                    if (!file_exists($cfg_basedir.$firstdd)) $firstdd = $iurl;
                 }
                 @WaterImg($rndFileName, 'down');
                 $info = '';
                 $imginfos = GetImageSize($rndFileName, $info);
                 SaveUploadInfo($title, $iurl, 1, $imginfos);
-                $rsimg .= "{dede:img ddimg='$litpicname' text='' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $iurl {/dede:img}\r\n";
+                $rsimg .= "{dede:img ddimg='$litpicname' text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
             }
         } else {
             $rsimg .= "{dede:img ddimg='$value' text='' width='0' height='0'} $value {/dede:img}\r\n";
@@ -100,10 +100,10 @@ function GetImageMapDD($filename, $ddm, $oldname = '')
         $ddpicok = $oldname;
     } else {
         $ddn = substr($filename, -3);
-        $ddpicok = preg_replace("#\." . $ddn . "$#", "-lp." . $ddn, $filename);
+        $ddpicok = preg_replace("#\.".$ddn."$#", "-lp.".$ddn, $filename);
     }
-    $toFile = $GLOBALS['cfg_basedir'] . $ddpicok;
-    ImageResize($GLOBALS['cfg_basedir'] . $filename, $ddm, 300, $toFile);
+    $toFile = $GLOBALS['cfg_basedir'].$ddpicok;
+    ImageResize($GLOBALS['cfg_basedir'].$filename, $ddm, 300, $toFile);
     return $ddpicok;
 }
 
@@ -127,10 +127,10 @@ function SaveUploadInfo($title, $filename, $medaitype = 1, $addinfos = '')
     }
     if ($medaitype == 1) {
         $info = '';
-        $addinfos = GetImageSize($cfg_basedir . $filename, $info);
+        $addinfos = GetImageSize($cfg_basedir.$filename, $info);
     }
-    $addinfos[2] = @filesize($cfg_basedir . $filename);
-    $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$filename' AND mid='" . $cfg_ml->M_ID . "'; ");
+    $addinfos[2] = @filesize($cfg_basedir.$filename);
+    $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$filename' AND mid='".$cfg_ml->M_ID."'; ");
     $uptime = time();
     if (is_array($row)) {
         $query = "UPDATE `#@__uploads` SET title='$title',mediatype='$medaitype',
@@ -139,7 +139,7 @@ function SaveUploadInfo($title, $filename, $medaitype = 1, $addinfos = '')
         $dsql->ExecuteNoneQuery($query);
     } else {
         $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-           VALUES ('$title','$filename','$medaitype','" . $addinfos[0] . "','" . $addinfos[1] . "','0','" . $addinfos[2] . "','$uptime','" . $cfg_ml->M_ID . "'); ";
+           VALUES ('$title','$filename','$medaitype','".$addinfos[0]."','".$addinfos[1]."','0','".$addinfos[2]."','$uptime','".$cfg_ml->M_ID."'); ";
         $dsql->ExecuteNoneQuery($inquery);
     }
     $fid = $dsql->GetLastID();
@@ -204,15 +204,15 @@ function PrintAutoFieldsAdd(&$fieldset, $loadtype = 'all', $isprint = TRUE)
     if (is_array($dtp->CTags)) {
         foreach ($dtp->CTags as $tid => $ctag) {
             if ($loadtype != 'autofield' ||  $ctag->GetAtt('autofield') == 1) {
-                $dede_addonfields .= ($dede_addonfields == "" ? $ctag->GetName() . "," . $ctag->GetAtt('type') : ";" . $ctag->GetName() . "," . $ctag->GetAtt('type'));
-                $addonfieldsname .= "," . $ctag->GetName();
+                $dede_addonfields .= ($dede_addonfields == "" ? $ctag->GetName().",".$ctag->GetAtt('type') : ";".$ctag->GetName().",".$ctag->GetAtt('type'));
+                $addonfieldsname .= ",".$ctag->GetName();
                 if ($isprint) echo  GetFormItemA($ctag);
             }
         }
     }
 
-    echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"" . $dede_addonfields . "\" />";
-    echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"" . $GLOBALS['csrf_token'] . "\" />";
+    echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"".$dede_addonfields."\" />";
+    echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"".$GLOBALS['csrf_token']."\" />";
     // 增加一个返回
     return $addonfieldsname;
 }
@@ -237,13 +237,13 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
                 $loadtype != 'autofield'
                 || ($loadtype == 'autofield' && $ctag->GetAtt('autofield') == 1)
             ) {
-                $dede_addonfields .= ($dede_addonfields == '' ? $ctag->GetName() . "," . $ctag->GetAtt('type') : ";" . $ctag->GetName() . "," . $ctag->GetAtt('type'));
+                $dede_addonfields .= ($dede_addonfields == '' ? $ctag->GetName().",".$ctag->GetAtt('type') : ";".$ctag->GetName().",".$ctag->GetAtt('type'));
                 echo GetFormItemValueA($ctag, $fieldValues[$ctag->GetName()]);
             }
         }
     }
-    echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"" . $dede_addonfields . "\" />";
-    echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"" . $GLOBALS['csrf_token'] . "\" />";
+    echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"".$dede_addonfields."\" />";
+    echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"".$GLOBALS['csrf_token']."\" />";
 }
 
 /**
@@ -255,7 +255,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
  */
 function MakeArt($aid, $ismakesign = FALSE)
 {
-    include_once(DEDEINC . '/arc.archives.class.php');
+    include_once(DEDEINC.'/arc.archives.class.php');
     if ($ismakesign) {
         $envs['makesign'] = 'yes';
     }
@@ -316,24 +316,24 @@ function AnalyseHtmlBody($body, &$description, $dtype = '')
 function GetCurContent(&$body)
 {
     global $cfg_multi_site, $cfg_basehost, $cfg_basedir, $cfg_user_dir, $title, $cfg_ml;
-    include_once(DEDEINC . "/dedecollection.func.php");
+    include_once(DEDEINC."/dedecollection.func.php");
     $htd = new DedeHttpDown();
-    $basehost = "http://" . $_SERVER["HTTP_HOST"];
+    $basehost = "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
     preg_match_all("/(src|SRC)=[\"|'| ]{0,}(http[s]?:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
     $img_array = array_unique($img_array[2]);
-    $imgUrl = $cfg_user_dir . "/" . $cfg_ml->M_ID;
-    $imgPath = $cfg_basedir . $imgUrl;
-    if (!is_dir($imgPath . "/")) {
+    $imgUrl = $cfg_user_dir."/".$cfg_ml->M_ID;
+    $imgPath = $cfg_basedir.$imgUrl;
+    if (!is_dir($imgPath."/")) {
         MkdirAll($imgPath, $GLOBALS['cfg_dir_purview']);
         CloseFtp();
     }
     $milliSecond = MyDate("ymdHis", time());
     foreach ($img_array as $key => $value) {
-        if (preg_match("#" . $basehost . "#i", $value)) {
+        if (preg_match("#".$basehost."#i", $value)) {
             continue;
         }
-        if ($cfg_basehost != $basehost && preg_match("#" . $cfg_basehost . "#i", $value)) {
+        if ($cfg_basehost != $basehost && preg_match("#".$cfg_basehost."#i", $value)) {
             continue;
         }
         if (!preg_match("#^http:\/\/#i", $value)) {
@@ -351,10 +351,10 @@ function GetCurContent(&$body)
                 $itype = '.jpg';
             }
         }
-        $milliSecondN = dd2char($milliSecond . '-' . mt_rand(1000, 8000));
+        $milliSecondN = dd2char($milliSecond.'-'.mt_rand(1000, 8000));
         $value = trim($value);
-        $rndFileName = $imgPath . "/" . $milliSecondN . '-' . $key . $itype;
-        $fileurl = $imgUrl . "/" . $milliSecondN . '-' . $key . $itype;
+        $rndFileName = $imgPath."/".$milliSecondN.'-'.$key.$itype;
+        $fileurl = $imgUrl."/".$milliSecondN.'-'.$key.$itype;
         $rs = $htd->SaveToBin($rndFileName);
         if ($rs) {
             $body = str_replace($value, $fileurl, $body);

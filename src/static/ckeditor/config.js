@@ -9,9 +9,9 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'clipboard', groups: ['clipboard', 'undo'] },
 		{ name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
 		{ name: 'forms', groups: ['forms'] },
+		{ name: 'basicstyles', groups: ['basicstyles', 'cleanup', 'list', 'indent', 'blocks'] },
 		'/',
-		{ name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
-		{ name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph','textindent'] },
+		{ name: 'paragraph', groups: ['align', 'bidi', 'paragraph','textindent'] },
 		{ name: 'links', groups: ['links'] },
 		{ name: 'insert', groups: ['insert'] },
 		'/',
@@ -19,6 +19,8 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'colors', groups: ['colors'] },
 		{ name: 'tools', groups: ['tools'] }
 	];
+
+	config.height = 500;
 
 	config.extraPlugins = 'html5video,dedepagebreak,textindent';
 

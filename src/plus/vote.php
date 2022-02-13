@@ -6,22 +6,22 @@
  *
  * @version        $Id: vote.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/../include/common.inc.php");
-require(DEDEINC . "/dedevote.class.php");
-require(DEDEINC . "/memberlogin.class.php");
-require(DEDEINC . "/userlogin.class.php");
+require(dirname(__FILE__)."/../include/common.inc.php");
+require(DEDEINC."/dedevote.class.php");
+require(DEDEINC."/memberlogin.class.php");
+require(DEDEINC."/userlogin.class.php");
 
 $member = new MemberLogin;
 $memberID = $member->M_LoginID;
 $time = time();
-$content = $memberID . '|' . $time;
-$file = DEDEDATA . '/cache/vote_' . $aid . '_' . $member->M_ID . '.inc'; //存放会员投票记录的缓存文件
+$content = $memberID.'|'.$time;
+$file = DEDEDATA.'/cache/vote_'.$aid.'_'.$member->M_ID.'.inc'; //存放会员投票记录的缓存文件
 
-$loginurl = $cfg_basehost . "/member";
+$loginurl = $cfg_basehost."/member";
 $ENV_GOBACK_URL = empty($_SERVER['HTTP_REFERER']) ? '' : $_SERVER['HTTP_REFERER'];
 
 if (empty($dopost)) $dopost = '';
@@ -30,7 +30,7 @@ $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 if ($aid == 0) die(" Request Error! ");
 
 if ($aid == 0) {
-    ShowMsg("没指定投票项目的ID！", "-1");
+    ShowMsg("没指定投票项目的ID", "-1");
     exit();
 }
 $vo = new DedeVote($aid);
@@ -49,9 +49,9 @@ if ($row['isallow'] == 1) {
 if ($dopost == 'send') {
 
     if (!empty($voteitem)) {
-        $rsmsg = "<br />&nbsp;你方才的投票状态：" . $vo->SaveVote($voteitem) . "<br />";
+        $rsmsg = "<br />&nbsp;您方才的投票状态：".$vo->SaveVote($voteitem)."<br />";
     } else {
-        $rsmsg = "<br />&nbsp;你刚才没选择任何投票项目！<br />";
+        $rsmsg = "<br />&nbsp;您刚才没选择任何投票项目<br />";
     }
 
     if ($row['isenable'] == 1) {
@@ -76,4 +76,4 @@ if ($dopost == 'view') {
     }
 }
 //显示模板(简单PHP文件)
-include(DEDETEMPLATE . '/plus/vote.htm');
+include(DEDETEMPLATE.'/plus/vote.htm');

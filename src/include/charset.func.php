@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * @version        $Id: charset.func.php 1 17:44 2020-09-22 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -5,7 +5,7 @@
  *
  * @version        $Id: dedeatt.class.php 1 13:50 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

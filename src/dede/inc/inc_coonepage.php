@@ -5,11 +5,11 @@
  *
  * @version        $Id: inc_coonepage.php 1 10:32 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . '/charset.func.php');
+require_once(DEDEINC.'/charset.func.php');
 
 /**
  *  获取一个页面
@@ -24,7 +24,7 @@ function CoOnePage($gurl)
     $redatas = array('title' => '', 'body' => '', 'source' => '', 'writer' => '', 'description' => '', 'keywords' => '');
     $redatas['source'] = preg_replace("/http:\/\//i", "", $gurl);
     $redatas['source'] = preg_replace("/\/(.*)$/i", "", $redatas['source']);
-    $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '" . $redatas['source'] . "' ");
+    $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '".$redatas['source']."' ");
     $s = $e = '';
     if (is_array($row)) {
         list($s, $e) = explode('{@body}', $row['rule']);

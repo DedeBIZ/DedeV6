@@ -4,7 +4,7 @@
  *
  * @version        $Id: filter.inc.php 1 15:59 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -26,12 +26,12 @@ function _FilterAll($fk, &$svar)
             $svar[$_k] = _FilterAll($fk, $_v);
         }
     } else {
-        if ($cfg_notallowstr != '' && preg_match("#" . $cfg_notallowstr . "#i", $svar)) {
+        if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $svar)) {
             ShowMsg(" $fk has not allow words!", '-1');
             exit();
         }
         if ($cfg_replacestr != '') {
-            $svar = preg_replace('/' . $cfg_replacestr . '/i', "***", $svar);
+            $svar = preg_replace('/'.$cfg_replacestr.'/i', "***", $svar);
         }
     }
     if (!$magic_quotes_gpc) {

@@ -5,11 +5,11 @@
  *
  * @version        $Id: sys_admin_user_edit.php 1 16:22 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_User');
 
 if (isset($dopost) && $dopost == 'getone') {
@@ -35,10 +35,10 @@ if (isset($dopost) && $dopost == 'getone') {
 
     //季度
     $starttime = 0;
-    if (preg_match("#[123]#", $m) && $m < 10) $starttime = $y . "-01-01 00:00:00";
-    else if (preg_match("#[456]#", $m)) $starttime = $y . "-04-01 00:00:00";
-    else if (preg_match("#[789]#", $m)) $starttime = $y . "-07-01 00:00:00";
-    else  $starttime = $y . "-10-01 00:00:00";
+    if (preg_match("#[123]#", $m) && $m < 10) $starttime = $y."-01-01 00:00:00";
+    else if (preg_match("#[456]#", $m)) $starttime = $y."-04-01 00:00:00";
+    else if (preg_match("#[789]#", $m)) $starttime = $y."-07-01 00:00:00";
+    else  $starttime = $y."-10-01 00:00:00";
     $istarttime = GetMkTime($starttime);
     $sql = "SELECT addtable FROM `#@__channeltype` WHERE issystem='-1'";
     $dsql->Execute('me', $sql);
@@ -54,7 +54,7 @@ if (isset($dopost) && $dopost == 'getone') {
     $ccs = $row['cc'] + $ccs;
 
     //当月
-    $starttime = $y . "-{$m}-01 00:00:00";
+    $starttime = $y."-{$m}-01 00:00:00";
     $istarttime = GetMkTime($starttime);
     $sql = "SELECT addtable FROM `#@__channeltype` WHERE issystem='-1'";
     $dsql->Execute('me', $sql);
@@ -70,7 +70,7 @@ if (isset($dopost) && $dopost == 'getone') {
     $ccm = $row['cc'] + $ccm;
 
     //本周
-    $starttime = $y . "-{$m}-{$d} 00:00:00";
+    $starttime = $y."-{$m}-{$d} 00:00:00";
     $istarttime = GetMkTime($starttime) - (7 * 24 * 3600);
     $sql = "SELECT addtable FROM `#@__channeltype` WHERE issystem='-1'";
     $dsql->Execute('me', $sql);
@@ -86,7 +86,7 @@ if (isset($dopost) && $dopost == 'getone') {
     $ccw = $row['cc'] + $ccw;
 
     //当天
-    $starttime = $y . "-{$m}-{$d} 00:00:00";
+    $starttime = $y."-{$m}-{$d} 00:00:00";
     $istarttime = GetMkTime($starttime);
     $sql = "SELECT addtable FROM `#@__channeltype` WHERE issystem='-1'";
     $dsql->Execute('me', $sql);

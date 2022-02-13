@@ -5,18 +5,18 @@
  *
  * @version        $Id: index_memnu_module.php 1 23:44 2011/2/16 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 if ($cuserLogin->adminStyle != 'dedecms') {
 	header("location:index_menu.php?openitem=100");
 	exit();
 }
 
-require(DEDEADMIN . '/inc/inc_menu_module.php');
-require(DEDEADMIN . '/inc/inc_menu_func.php');
+require(DEDEADMIN.'/inc/inc_menu_module.php');
+require(DEDEADMIN.'/inc/inc_menu_func.php');
 ?>
 <html>
 

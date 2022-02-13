@@ -5,16 +5,16 @@
  *
  * @version        $Id: sys_group_add.php 1 22:28 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Group');
 if (!empty($dopost)) {
-    $row = $dsql->GetOne("SELECT * FROM #@__admintype WHERE rank='" . $rankid . "'");
+    $row = $dsql->GetOne("SELECT * FROM #@__admintype WHERE rank='".$rankid."'");
     if (is_array($row)) {
-        ShowMsg('你所创建的组别的级别值已存在，不允许重复!', '-1');
+        ShowMsg('您所创建的组别的级别值已存在，不允许重复!', '-1');
         exit();
     }
     if ($rankid > 10) {
@@ -24,7 +24,7 @@ if (!empty($dopost)) {
     $AllPurviews = '';
     if (is_array($purviews)) {
         foreach ($purviews as $pur) {
-            $AllPurviews = $pur . ' ';
+            $AllPurviews = $pur.' ';
         }
         $AllPurviews = trim($AllPurviews);
     }

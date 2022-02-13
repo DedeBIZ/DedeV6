@@ -5,11 +5,11 @@
  *
  * @version        $Id: sys_sql_query.php 1 22:28 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . "/config.php");
+require(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = "";
 
@@ -17,13 +17,13 @@ if (empty($dopost)) $dopost = "";
 if ($dopost == "viewinfo") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
-        $dsql->SetQuery("SHOW CREATE TABLE " . $dsql->dbName . "." . $tablename);
+        $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$tablename);
         $dsql->Execute('me');
         $row2 = $dsql->GetArray('me', MYSQL_BOTH);
         $ctinfo = $row2[1];
-        echo "<xmp>" . trim($ctinfo) . "</xmp>";
+        echo "<xmp>".trim($ctinfo)."</xmp>";
     }
     exit();
 }
@@ -31,11 +31,11 @@ if ($dopost == "viewinfo") {
 else if ($dopost == "opimize") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
-        if ($rs)  echo "执行优化表： $tablename  OK！";
-        else echo "执行优化表： $tablename  失败，原因是：" . $dsql->GetError();
+        if ($rs)  echo "执行优化表： $tablename  OK";
+        else echo "执行优化表： $tablename  失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -49,7 +49,7 @@ else if ($dopost == "opimizeAll") {
         if ($rs) {
             echo "优化表: {$row[0]} ok!<br />\r\n";
         } else {
-            echo "优化表: {$row[0]} 失败! 原因是: " . $dsql->GetError() . "<br />\r\n";
+            echo "优化表: {$row[0]} 失败! 原因是: ".$dsql->GetError()."<br />\r\n";
         }
     }
     exit();
@@ -58,11 +58,11 @@ else if ($dopost == "opimizeAll") {
 else if ($dopost == "repair") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
-        if ($rs) echo "修复表： $tablename  OK！";
-        else echo "修复表： $tablename  失败，原因是：" . $dsql->GetError();
+        if ($rs) echo "修复表： $tablename  OK";
+        else echo "修复表： $tablename  失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -76,7 +76,7 @@ else if ($dopost == "repairAll") {
         if ($rs) {
             echo "修复表: {$row[0]} ok!<br />\r\n";
         } else {
-            echo "修复表: {$row[0]} 失败! 原因是: " . $dsql->GetError() . "<br />\r\n";
+            echo "修复表: {$row[0]} 失败! 原因是: ".$dsql->GetError()."<br />\r\n";
         }
     }
     exit();
@@ -94,9 +94,9 @@ else if ($dopost == "query") {
         $dsql->SetQuery($sqlquery);
         $dsql->Execute();
         if ($dsql->GetTotalRow() <= 0) {
-            echo "运行SQL：{$sqlquery}，无返回记录！";
+            echo "运行SQL：{$sqlquery}，无返回记录";
         } else {
-            echo "运行SQL：{$sqlquery}，共有" . $dsql->GetTotalRow() . "条记录，最大返回100条！";
+            echo "运行SQL：{$sqlquery}，共有".$dsql->GetTotalRow()."条记录，最大返回100条";
         }
         $j = 0;
         while ($row = $dsql->GetArray()) {
@@ -129,15 +129,15 @@ else if ($dopost == "query") {
             if ($errCode == "") {
                 $i++;
             } else {
-                $nerrCode .= "执行： <font color='blue'>$q</font> 出错，错误提示：<font color='red'>" . $errCode . "</font><br>";
+                $nerrCode .= "执行： <font color='blue'>$q</font> 出错，错误提示：<font color='red'>".$errCode."</font><br>";
             }
         }
-        echo "成功执行{$i}个SQL语句！<br><br>";
+        echo "成功执行{$i}个SQL语句<br><br>";
         echo $nerrCode;
     } else {
         $dsql->ExecuteNoneQuery($sqlquery);
         $nerrCode = trim($dsql->GetError());
-        echo "成功执行1个SQL语句！<br><br>";
+        echo "成功执行1个SQL语句<br><br>";
         echo $nerrCode;
     }
     exit();

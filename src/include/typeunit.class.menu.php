@@ -4,11 +4,11 @@
  *
  * @version        $Id: typeunit.class.menu.php 1 15:21 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEDATA . "/cache/inc_catalog_base.inc");
+require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 
 /**
  * 栏目单元,主要用户管理后台管理菜单处
@@ -78,9 +78,9 @@ class TypeUnit
             $topidstr = '';
             while ($row = $this->dsql->GetObject()) {
                 if ($row->reid == 0) continue;
-                $topidstr .= ($topidstr == '' ? $row->reid : ',' . $row->reid);
+                $topidstr .= ($topidstr == '' ? $row->reid : ','.$row->reid);
             }
-            $admin_catalog .= ',' . $topidstr;
+            $admin_catalog .= ','.$topidstr;
             $admin_catalogs = explode(',', $admin_catalog);
             $admin_catalogs = array_unique($admin_catalogs);
         }
@@ -102,11 +102,11 @@ class TypeUnit
 
             //普通栏目
             if ($ispart == 0) {
-                $smenu = " oncontextmenu=\"CommonMenu(event,this,$id,'" . urlencode($typeName) . "')\"";
+                $smenu = " oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\"";
             }
             //封面频道
             else if ($ispart == 1) {
-                $smenu = " oncontextmenu=\"CommonMenuPart(event,this,$id,'" . urlencode($typeName) . "')\"";
+                $smenu = " oncontextmenu=\"CommonMenuPart(event,this,$id,'".urlencode($typeName)."')\"";
             }
             //独立页面
             //else if($ispart==2)
@@ -116,13 +116,13 @@ class TypeUnit
             //跳转网址
             else {
                 continue;
-                $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'" . urlencode($typeName) . "')\" ";
+                $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
             }
             echo "<dl class='topcc'>\r\n";
             echo "  <dd class='dlf'><img style='cursor:pointer' onClick=\"LoadSuns('suns{$id}',{$id});\" src='images/tree_explode.gif' width='11' height='11'></dd>\r\n";
-            echo "  <dd class='dlr'><a href='catalog_do.php?cid=" . $id . "&dopost=listArchives'{$smenu}>" . $typeName . "</a></dd>\r\n";
+            echo "  <dd class='dlr'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></dd>\r\n";
             echo "</dl>\r\n";
-            echo "<div id='suns" . $id . "' class='sunct'>";
+            echo "<div id='suns".$id."' class='sunct'>";
             if ($lastid == $id || $cfg_admin_channel == 'array') {
                 $this->LogicListAllSunType($id, "　");
             }
@@ -143,7 +143,7 @@ class TypeUnit
     {
         global $cfg_admin_channel, $admin_catalogs;
         $fid = $id;
-        $this->dsql->SetQuery("SELECT id,reid,typedir,typename,ispart,channeltype FROM `#@__arctype` WHERE reid='" . $id . "' ORDER BY sortrank");
+        $this->dsql->SetQuery("SELECT id,reid,typedir,typename,ispart,channeltype FROM `#@__arctype` WHERE reid='".$id."' ORDER BY sortrank");
         $this->dsql->Execute($fid);
         if ($this->dsql->GetTotalRow($fid) > 0) {
             while ($row = $this->dsql->GetObject($fid)) {
@@ -166,13 +166,13 @@ class TypeUnit
                 if (in_array($id, $this->aChannels) || $needcheck === false || $this->isAdminAll === true) {
                     //普通列表
                     if ($ispart == 0 || empty($ispart)) {
-                        $smenu = " oncontextmenu=\"CommonMenu(event,this,$id,'" . urlencode($typeName) . "')\"";
+                        $smenu = " oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\"";
                         $timg = " <img src='images/tree_page.gif'> ";
                     }
 
                     //封面频道
                     else if ($ispart == 1) {
-                        $smenu = " oncontextmenu=\"CommonMenuPart(event,this,$id,'" . urlencode($typeName) . "')\"";
+                        $smenu = " oncontextmenu=\"CommonMenuPart(event,this,$id,'".urlencode($typeName)."')\"";
                         $timg = " <img src='images/tree_part.gif'> ";
                     }
 
@@ -187,14 +187,14 @@ class TypeUnit
                     else {
                         continue;
                         $timg = " <img src='img/tree_page.gif'> ";
-                        $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'" . urlencode($typeName) . "')\" ";
+                        $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
                     }
                     echo "  <table class='sunlist'>\r\n";
                     echo "   <tr>\r\n";
-                    echo "     <td align='left'>" . $step . $timg . "<a href='catalog_do.php?cid=" . $id . "&dopost=listArchives'{$smenu}>" . $typeName . "</a></td>\r\n";
+                    echo "     <td align='left'>".$step.$timg."<a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></td>\r\n";
                     echo "   </tr>\r\n";
                     echo "  </table>\r\n";
-                    $this->LogicListAllSunType($id, $step . "　", false);
+                    $this->LogicListAllSunType($id, $step."　", false);
                 }
             }
         }

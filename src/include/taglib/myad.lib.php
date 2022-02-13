@@ -4,12 +4,12 @@
  *
  * @version        $Id: myad.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
-require_once(DEDEINC . '/taglib/mytag.lib.php');
+require_once(DEDEINC.'/taglib/mytag.lib.php');
 
 function lib_myad(&$ctag, &$refObj)
 {

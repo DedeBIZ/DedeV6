@@ -3,15 +3,15 @@
 /**
  * @version        $Id: buy_action.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'op';
-require_once DEDEINC . '/dedetemplate.class.php';
+require_once DEDEINC.'/dedetemplate.class.php';
 
 $product = isset($product) ? trim(HtmlReplace($product, 1)) : '';
 $mid = $cfg_ml->M_ID;
@@ -20,7 +20,7 @@ $pname = '';
 $price = '';
 $mtime = time();
 
-if (isset($pd_encode) && isset($pd_verify) && md5("payment" . $pd_encode . $cfg_cookie_encode) == $pd_verify) {
+if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cookie_encode) == $pd_verify) {
     $result = json_decode(mchStrCode($pd_encode, 'DECODE'));
 
     $product = preg_replace("#[^0-9a-z]#i", "", $result->product);
@@ -37,7 +37,7 @@ if (isset($pd_encode) && isset($pd_verify) && md5("payment" . $pd_encode . $cfg_
     }
     $buyid = $row['buyid'];
 } else {
-    $buyid = 'M' . $mid . 'T' . $mtime . 'RN' . mt_rand(100, 999);
+    $buyid = 'M'.$mid.'T'.$mtime.'RN'.mt_rand(100, 999);
     //删除用户旧的未付款的同类记录
     if (!empty($product)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_operation` WHERE mid='$mid' AND sta=0 AND product='$product'");
@@ -54,7 +54,7 @@ if ($product == 'member') {
     $ptype = "会员升级";
     $row = $dsql->GetOne("SELECT * FROM `#@__member_type` WHERE aid='{$pid}'");
     if (!is_array($row)) {
-        ShowMsg("无法识别你的订单！", 'javascript:;');
+        ShowMsg("无法识别您的订单", 'javascript:;');
         exit();
     }
     $pname = $row['pname'];
@@ -63,7 +63,7 @@ if ($product == 'member') {
     $ptype = "点卡购买";
     $row = $dsql->GetOne("SELECT * From `#@__moneycard_type` WHERE tid='{$pid}'");
     if (!is_array($row)) {
-        ShowMsg("无法识别你的订单！", 'javascript:;');
+        ShowMsg("无法识别您的订单", 'javascript:;');
         exit();
     }
     $pname = $row['pname'];
@@ -76,12 +76,12 @@ if (!isset($paytype)) {
     ";
     $isok = $dsql->ExecuteNoneQuery($inquery);
     if (!$isok) {
-        echo "数据库出错，请重新尝试！" . $dsql->GetError();
+        echo "数据库出错，请重新尝试".$dsql->GetError();
         exit();
     }
 
     if ($price == '') {
-        echo "无法识别你的订单！";
+        echo "无法识别您的订单";
         exit();
     }
 
@@ -107,22 +107,22 @@ if (!isset($paytype)) {
 
     $pr_encode = str_replace('=', '', mchStrCode(json_encode($pr_encode)));
 
-    $pr_verify = md5("payment" . $pr_encode . $cfg_cookie_encode);
+    $pr_verify = md5("payment".$pr_encode.$cfg_cookie_encode);
 
     $tpl = new DedeTemplate();
-    $tpl->LoadTemplate(DEDEMEMBER . '/templets/buy_action_payment.htm');
+    $tpl->LoadTemplate(DEDEMEMBER.'/templets/buy_action_payment.htm');
     $tpl->Display();
 } else {
 
     $rs = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$paytype' ");
 
     $rs['code'] = preg_replace("#[^0-9a-z]#i", "", $rs['code']);
-    if (!file_exists(DEDEINC . '/payment/' . $rs['code'] . '.php')) {
-        ShowMsg("未发现支付接口文件，请到后台配置！", 'javascript:;');
+    if (!file_exists(DEDEINC.'/payment/'.$rs['code'].'.php')) {
+        ShowMsg("未发现支付接口文件，请到后台配置", 'javascript:;');
         exit();
     }
 
-    require_once DEDEINC . '/payment/' . $rs['code'] . '.php';
+    require_once DEDEINC.'/payment/'.$rs['code'].'.php';
     $pay = new $rs['code'];
     $payment = "";
     if ($rs['code'] == "cod" || $rs['code'] == "bank") {
@@ -133,7 +133,7 @@ if (!isset($paytype)) {
             'out_trade_no' => $buyid,
             'price' => sprintf("%01.2f", $price)
         );
-        require_once DEDEDATA . '/payment/' . $rs['code'] . '.php';
+        require_once DEDEDATA.'/payment/'.$rs['code'].'.php';
     }
     $button = $pay->GetCode($order, $payment);
     $dtp = new DedeTemplate();
@@ -149,7 +149,7 @@ if (!isset($paytype)) {
     $dtp->SetVar('description', $rs['description']);
     $dtp->SetVar('button', $button);
     $dtp->Assign('carts', $carts);
-    $dtp->LoadTemplate(DEDEMEMBER . '/templets/shops_action_payment.htm');
+    $dtp->LoadTemplate(DEDEMEMBER.'/templets/shops_action_payment.htm');
     $dtp->Display();
     exit();
 }
@@ -170,8 +170,8 @@ function mchStrCode($string, $operation = 'ENCODE')
     $fixedkey = md5($key);
     $egiskeys = md5(substr($fixedkey, 16, 16));
     $runtokey = $key_length ? ($operation == 'ENCODE' ? substr(md5(microtime(true)), -$key_length) : substr($string, 0, $key_length)) : '';
-    $keys = md5(substr($runtokey, 0, 16) . substr($fixedkey, 0, 16) . substr($runtokey, 16) . substr($fixedkey, 16));
-    $string = $operation == 'ENCODE' ? sprintf('%010d', $expiry ? $expiry + time() : 0) . substr(md5($string . $egiskeys), 0, 16) . $string : base64_decode(substr($string, $key_length));
+    $keys = md5(substr($runtokey, 0, 16).substr($fixedkey, 0, 16).substr($runtokey, 16).substr($fixedkey, 16));
+    $string = $operation == 'ENCODE' ? sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$egiskeys), 0, 16).$string : base64_decode(substr($string, $key_length));
 
     $i = 0;
     $result = '';
@@ -180,9 +180,9 @@ function mchStrCode($string, $operation = 'ENCODE')
         $result .= chr(ord($string[$i]) ^ ord($keys[$i % 32]));
     }
     if ($operation == 'ENCODE') {
-        return $runtokey . str_replace('=', '', base64_encode($result));
+        return $runtokey.str_replace('=', '', base64_encode($result));
     } else {
-        if ((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26) . $egiskeys), 0, 16)) {
+        if ((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$egiskeys), 0, 16)) {
             return substr($result, 26);
         } else {
             return '';

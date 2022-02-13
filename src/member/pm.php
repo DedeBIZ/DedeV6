@@ -5,17 +5,17 @@
  * 
  * @version        $Id: pm.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'pm';
 $id = isset($id) ? intval($id) : 0;
 if ($cfg_mb_lit == 'Y') {
-    ShowMsg('由于系统开启了精简版会员空间，你不能向其它会员发短信息，不过你可以向他留言！', '-1');
+    ShowMsg('由于系统开启了精简版会员空间，您不能向其它会员发短信息，不过您可以向他留言', '-1');
     exit();
 }
 
@@ -40,7 +40,7 @@ if ($dopost == 'read') {
         $result = array(
             "code" => -1,
             "data" => null,
-            "msg" => "对不起，你指定的消息不存在或你没权限查看",
+            "msg" => "对不起，您指定的消息不存在或您没权限查看",
         );
         echo json_encode($result);
         exit();
@@ -66,7 +66,7 @@ else {
     if (!isset($folder)) {
         $folder = 'inbox';
     }
-    require_once(DEDEINC . "/datalistcp.class.php");
+    require_once(DEDEINC."/datalistcp.class.php");
     $wsql = '';
     if ($folder == 'outbox') {
         $wsql = " `fromid`='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' ";
@@ -103,7 +103,7 @@ else {
     $dlist = new DataListCP();
     $dlist->pageSize = 20;
     $dlist->SetParameter("dopost", $dopost);
-    $dlist->SetTemplate(DEDEMEMBER . '/templets/pm-main.htm');
+    $dlist->SetTemplate(DEDEMEMBER.'/templets/pm-main.htm');
     $dlist->SetSource($query);
     $dlist->Display();
 }

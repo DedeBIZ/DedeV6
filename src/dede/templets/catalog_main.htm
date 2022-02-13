@@ -1,40 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<meta charset="<?php echo $cfg_soft_lang; ?>">
 <title>栏目管理</title>
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/base.css" rel="stylesheet" type="text/css">
-<script language="javascript" src="js/global.js"></script>
-<script language="javascript" src="js/context_menu.js"></script>
-<script language="javascript" src="js/ieemu.js"></script>
-<script language="javascript" src="js/dialog.js"></script>
-<script language="javascript" src="../static/js/dedeajax2.js"></script>
-<script language="javascript">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css">
+<script src="js/global.js"></script>
+<script src="js/context_menu.js"></script>
+<script src="js/ieemu.js"></script>
+<script src="js/dialog.js"></script>
+<script src="../static/js/dedeajax2.js"></script>
+<script>
 function LoadSuns(ctid,tid)
-{
-    
-	if($DE(ctid).innerHTML.length < 10){
-      $DE('img'+tid).src = 'images/dedecontract.gif';
+{ 
+  if($DE(ctid).innerHTML.length < 10){
+    $DE('img'+tid).src = 'images/dedecontract.gif';
 	  var myajax = new DedeAjax($DE(ctid));
 	  myajax.SendGet('catalog_do.php?dopost=GetSunLists&cid='+tid);
-  }
-  else{ 
-  showHide(ctid,tid); 
+  } else {
+    showHide(ctid,tid); 
   }
 }
 function showHide(objname,tid)
 {
-    
-    if($DE(objname).style.display=="none")
-    {
-        $DE('img'+tid).src = 'images/dedecontract.gif';
-        $DE(objname).style.display = BROWSER.firefox? "" : "block";
-    } else {
-        $DE('img'+tid).src = 'images/dedeexplode.gif';
-        $DE(objname).style.display="none";
-    }
+  if($DE(objname).style.display=="none")
+  {
+    $DE('img'+tid).src = 'images/dedecontract.gif';
+    $DE(objname).style.display = BROWSER.firefox? "" : "block";
+  } else {
+    $DE('img'+tid).src = 'images/dedeexplode.gif';
+    $DE(objname).style.display="none";
+  }
 }
 if(moz) {
 	extendEventObject();
@@ -61,7 +58,7 @@ function CommonMenu(eobj,obj,tid,tname)
     new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
     new ContextSeperator(),
     new ContextItem("向上排前一级",function(){ location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-    new ContextItem("关闭菜单(<u>C</u>)",function(){})
+    new ContextItem("关闭菜单(C)",function(){})
   ]
   ContextMenu.display(eobj,popupoptions)
 }
@@ -83,7 +80,7 @@ function CommonMenuPart(eobj,obj,tid,tname)
     new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
     new ContextSeperator(),
     new ContextItem("向上排前一级",function(){ location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-    new ContextItem("关闭菜单(<u>C</u>)",function(){})
+    new ContextItem("关闭菜单(C)",function(){})
   ]
   ContextMenu.display(eobj,popupoptions)
 }
@@ -98,91 +95,71 @@ function SingleMenu(eobj,obj,tid,tname)
     new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
     new ContextSeperator(),
     new ContextItem("向上排前一级",function(){ window.location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-  new ContextItem("关闭菜单(<u>C</u>)",function(){})
+  new ContextItem("关闭菜单(C)",function(){})
   ]
   ContextMenu.display(eobj,popupoptions)
 }
 </script>
 <style>
-.coolbg2 {
-border: 1px solid #000000;
-background-color: #F2F5E9;
-height:18px
-}
-.coolbt2 {
-  border-left: 2px solid #EFEFEF;
-  border-top: 2px solid #EFEFEF;
-  border-right: 2px solid #ACACAC;
-  border-bottom: 2px solid #ACACAC;
-  background-color: #F7FCDA
-}
-.nbline {border-bottom: 1px solid #d6d6d6; background-color:#FFFFFF; }
-.bline2 {border-bottom: 1px solid #d6d6d6; background-color:#F9FCEF; }
-td, th{
-  padding: .25em;
-}
-.maintable {
-  border: 1px solid #DEE2E6;
-}
+td,th{padding:.25rem}
+.coolbg2{border:1px solid #ccc;background-color:#F2F5E9;height:18px}
+.coolbt2{border-left:2px solid #EFEFEF;border-top:2px solid #EFEFEF;border-right:2px solid #ACACAC;border-bottom:2px solid #ACACAC;background-color:#F7FCDA}
+.nbline{border-bottom:1px solid #d6d6d6;background-color:#FFFFFF}
+.bline2{border-bottom:1px solid #d6d6d6;background-color:#F9FCEF}
+.maintable{border:1px solid #DEE2E6}
+.btn+.btn{margin-left:10px}
 </style>
 </head>
-<body background='images/allbg.gif' leftmargin='8' topmargin='8' onLoad="ContextMenu.intializeContextMenu()">
+<body background="images/allbg.gif" leftmargin="8" topmargin="8" onLoad="ContextMenu.intializeContextMenu()">
 <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" align="center" class="maintable mt-3">
 <tr>
-   <td height="28" background='images/tbg.gif' style="padding-left:10px;">
-   <div style="float:left" class="py-3">
-    	<strong>网站栏目管理 </strong>
-   </div>
-   <div style="float:right;padding-right:6px;" class="py-3">
-   	<a href='catalog_add.php?listtype=all' class='btn btn-success btn-sm'>增加顶级栏目</a>
-    <a href='catalog_add.php?dopost=quick' class='btn btn-success btn-sm'>批量增加栏目</a>
-   	<a href="catalog_do.php?dopost=upcatcache" class='btn btn-success btn-sm'>更新栏目缓存</a>
-   	<a href="makehtml_list.php" class='btn btn-success btn-sm'>更新栏目HTML</a>
-   </a>
-   </td>
+  <td height="26" background="images/tbg.gif">
+    <span style="float:left;padding-left:10px;line-height:26px" class="py-3">
+    	<strong>网站栏目管理</strong>
+    </span>
+    <span style="float:right;padding-right:10px" class="py-3">
+   	  <a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
+      <a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量增加栏目</a>
+   	  <a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新栏目缓存</a>
+   	  <a href="makehtml_list.php" class="btn btn-success btn-sm">更新栏目</a></a>
+    </span>
+  </td>
 </tr>
 <tr>
-    <td height="28" bgcolor="#ffffff">
-    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td width="51%">提示：可使用右键菜单进行操作。</td>
-          <td width="49%" align="right">
-          	<?php if(!isset($exallct)) { ?>
-          	<a href='catalog_main.php?exallct=all'>[展开全部]</a>
-           <?php }else{ ?>
-           	<a href='catalog_main.php'>[普通模式]</a>
-           <?php } ?>
-          </td>
-        </tr>
-      </table>
-   </td>
+  <td height="26" bgcolor="#ffffff">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%" style="padding-left:10px;line-height:26px">提示：可使用右键菜单进行操作</td>
+        <td width="50%" style="padding-right:10px" align="right">
+        <?php if(!isset($exallct)) { ?>
+        <a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开全部</a>
+        <?php } else { ?>
+        <a href="catalog_main.php" class="btn btn-success btn-sm">普通模式</a>
+        <?php } ?>
+        </td>
+      </tr>
+    </table>
+  </td>
 </tr>
-<form name='form1' method='post' action='catalog_do.php?dopost=upRankAll'>
+<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
 <tr>
-<td height="120" bgcolor="#FFFFFF" valign="top">
+<td bgcolor="#FFFFFF" valign="top">
 <?php
 if(empty($opendir)) $opendir=-1;
 if($userChannel>0) $opendir=$userChannel;
 $tu = new TypeUnit();
 $tu->ListAllType($userChannel,$opendir);
 ?>
-<br/>
 </td>
 </tr>
 </form>
 <tr>
- <td height="36" bgcolor="#FFFFFF" align="center">
- <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
-   <tr>
-    <td align="right">
-		  <button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
-      <button type="button" name="sb4" class="btn btn-success btn-sm" onClick="location='makehtml_js.php';">获取JS</button>
-		  <button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目HTML</button>
-      <button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';">更新文档HTML</button>
-		  </td>
-    </tr>
-   </table>
- </td>
+  <td height="36" bgcolor="#FFFFFF" align="right" class="py-3" style="padding-right:10px">
+    <button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
+    <button type="button" name="sb4" class="btn btn-success btn-sm" onClick="location='makehtml_js.php';">获取脚本</button>
+		<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>
+    <button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';">更新文档</button>
+  </td>
 </tr>
 </table>
 </body>

@@ -3,19 +3,19 @@ function checkSubmit()
 {
 
 	if(document.form1.title.value=='') {
-		alert("图集标题不能为空！");
+		alert("图集标题不能为空");
 		document.form1.title.focus();
 		return false;
 	}
 
 	if(document.form1.typeid.value==0) {
-		alert("隶属栏目必须选择！");
+		alert("隶属栏目必须选择");
 		return false;
 	}
 
 	if(document.form1.typeid.options[document.form1.typeid.selectedIndex].className!='option3')
 	{
-		alert("隶属栏目必须选择白色背景的项目！");
+		alert("隶属栏目必须选择白色背景的项目");
 		return false;
 	}
 
@@ -91,7 +91,7 @@ function LoadTestDiv()
 	var dfstr = '粘贴到这里...';
 	if(document.getElementById('imagebody').value.length <= dfstr.length)
 	{
-		alert('你还没有粘贴任何东西都编辑框哦！');
+		alert('您还没有粘贴任何东西都编辑框哦');
 		return;
 	}
 	if(!newobj){
@@ -157,7 +157,7 @@ function ShowZipField(formitem,zipid,upid)
 function ShowHtmlField(formitem,htmlid,upid)
 {
 	if($Nav()!="IE"){
-		alert("该方法不适用于非IE浏览器！");
+		alert("该方法不适用于非IE浏览器");
 		return ;
 	}
 	if(formitem.checked){

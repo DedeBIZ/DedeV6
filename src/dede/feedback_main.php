@@ -5,16 +5,16 @@
  *
  * @version        $Id: feedback_main.php 1 19:09 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 //权限检查
 CheckPurview('sys_Feedback');
-require_once(DEDEINC . "/datalistcp.class.php");
-require_once(DEDEINC . "/typelink.class.php");
+require_once(DEDEINC."/datalistcp.class.php");
+require_once(DEDEINC."/typelink.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 
 function IsCheck($st)
@@ -36,7 +36,7 @@ function jsTrimjajx($str, $len)
 if (!empty($job)) {
     $ids = preg_replace("#[^0-9,]#", '', $fid);
     if (empty($ids)) {
-        ShowMsg("你没选中任何选项！", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+        ShowMsg("您没选中任何选项", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
         exit;
     }
 } else {
@@ -101,7 +101,7 @@ else {
     $tl = new TypeLink($typeid);
     $openarray = $tl->GetOptionArray($typeid, $admin_catalogs, 0);
 
-    $addsql = ($typeid != 0  ? " And typeid IN (" . GetSonIds($typeid) . ")" : '');
+    $addsql = ($typeid != 0  ? " And typeid IN (".GetSonIds($typeid).")" : '');
     $addsql .= ($aid != 0  ? " And aid=$aid " : '');
     $addsql .= ($ip != ''  ? " And ip LIKE '$ip' " : '');
 
@@ -117,7 +117,7 @@ else {
     $dlist->SetParameter('ip', $ip);
     $dlist->SetParameter('typeid', $typeid);
     $dlist->SetParameter('keyword', $keyword);
-    $dlist->SetTemplate(DEDEADMIN . '/templets/feedback_main.htm');
+    $dlist->SetTemplate(DEDEADMIN.'/templets/feedback_main.htm');
     $dlist->SetSource($querystring);
     $dlist->Display();
 }

@@ -4,7 +4,7 @@
  *
  * @version        $Id: mytag.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -19,7 +19,7 @@ function lib_mytag(&$ctag, &$refObj)
     $body = lib_GetMyTagT($refObj, $typeid, $name, '#@__mytag');
     //编译
     if ($ismake == 'yes') {
-        require_once(DEDEINC . '/arc.partview.class.php');
+        require_once(DEDEINC.'/arc.partview.class.php');
         $pvCopy = new PartView($typeid);
         $pvCopy->SetTemplet($body, "string");
         $body = $pvCopy->GetResult();
@@ -35,7 +35,7 @@ function lib_GetMyTagT(&$refObj, $typeid, $tagname, $tablename)
     if (!empty($refObj->Fields['typeid']) && $typeid == 0) $typeid = $refObj->Fields['typeid'];
 
     $typesql = $row = '';
-    if ($typeid > 0) $typesql = " And typeid IN(0," . GetTopids($typeid) . ") ";
+    if ($typeid > 0) $typesql = " And typeid IN(0,".GetTopids($typeid).") ";
 
     $row = $dsql->GetOne(" SELECT * FROM $tablename WHERE tagname LIKE '$tagname' $typesql ORDER BY typeid DESC ");
     if (!is_array($row)) return '';

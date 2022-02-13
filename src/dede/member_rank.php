@@ -5,11 +5,11 @@
  *
  * @version        $Id: member_rank.php 1 12:37 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Type');
 if (empty($dopost)) $dopost = '';
 
@@ -19,17 +19,17 @@ if ($dopost == 'save') {
     $endID = $idend;
     for (; $startID <= $endID; $startID++) {
         $query = '';
-        $id = ${"ID_" . $startID};
-        $name = ${"name_" . $startID};
-        $rank = ${"rank_" . $startID};
-        $money = ${"money_" . $startID};
-        $scores = ${"scores_" . $startID};
-        if (isset(${"check_" . $startID})) {
+        $id = ${"ID_".$startID};
+        $name = ${"name_".$startID};
+        $rank = ${"rank_".$startID};
+        $money = ${"money_".$startID};
+        $scores = ${"scores_".$startID};
+        if (isset(${"check_".$startID})) {
             if ($rank > 0) {
-                $query = "UPDATE `#@__arcrank` SET membername='$name',money='$money',rank='$rank',scores='$scores' WHERE id='$id' ";
+                $query = "UPDATE `#@__arcrank` SET membername='$name',money='$money',`rank`='$rank',scores='$scores' WHERE id='$id' ";
             }
         } else {
-            $query = "DELETE FROM `#@__arcrank` WHERE id='$id' AND rank<>10";
+            $query = "DELETE FROM `#@__arcrank` WHERE id='$id' AND `rank`<>10";
         }
         if ($query != '') $dsql->ExecuteNoneQuery($query);
     }
@@ -39,14 +39,14 @@ if ($dopost == 'save') {
             $dsql->ExecuteNoneQuery($inquery);
         }
     }
-    echo "<script> alert('成功更新会员等级表！'); </script>";
+    echo "<script> alert('成功更新会员等级表'); </script>";
 }
 if ($dopost == 'del') {
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arcrank` WHERE id='$id' AND rank<>10");
-    ShowMsg("删除成功！", "member_rank.php");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arcrank` WHERE id='$id' AND `rank`<>10");
+    ShowMsg("删除成功", "member_rank.php");
     exit();
 }
 
-$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE rank>0 ORDER BY rank");
+$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank`>0 ORDER BY `rank`");
 $dsql->Execute();
 include DedeInclude('templets/member_rank.htm');

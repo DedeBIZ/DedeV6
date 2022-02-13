@@ -1,12 +1,12 @@
 <?php
 if (!defined('DEDEINC')) exit('Request Error!');
-require_once(DEDEINC . '/channelunit.func.php');
+require_once(DEDEINC.'/channelunit.func.php');
 /**
  * 动态模板channel标签
  *
  * @version        $Id: plus_ask.php 1 13:58 2010年7月5日Z tianya $
  * @package        DedeBIZ.Tpllib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

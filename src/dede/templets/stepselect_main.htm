@@ -59,47 +59,47 @@
         function AddType() {
             var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=addnew', true, true, '', '系统错误，无法获取数据！', loadhtml);
+            myajax.SendGet('stepselect_main.php?action=addnew', true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function AddEnum() {
             var id = GetSelType();
             if (id == 0) {
-                ShowMsg("必须选择一个类别！");
+                ShowMsg("必须选择一个类别");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=addenum&id=' + id, true, true, '', '系统错误，无法获取数据！', loadhtml);
+            myajax.SendGet('stepselect_main.php?action=addenum&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function EditType() {
             var id = GetSelType();
             if (id == 0) {
-                ShowMsg("必须选择一个类别！");
+                ShowMsg("必须选择一个类别");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=edit&id=' + id, true, true, '', '系统错误，无法获取数据！', loadhtml);
+            myajax.SendGet('stepselect_main.php?action=edit&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function ViewType() {
             var id = GetSelType();
             if (id == 0) {
-                ShowMsg("必须选择一个类别！");
+                ShowMsg("必须选择一个类别");
                 return false;
             }
             var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=view&id=' + id, true, true, '', '系统错误，无法获取数据！', loadhtml);
+            myajax.SendGet('stepselect_main.php?action=view&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function DelType() {
-            if (window.confirm("你确实要删除这个分类吗？") == false) return false;
+            if (window.confirm("您确实要删除这个分类吗？") == false) return false;
             var id = GetSelType();
             if (id == 0) {
-                ShowMsg("必须选择一个类别！");
+                ShowMsg("必须选择一个类别");
                 return false;
             }
             location.href = 'stepselect_main.php?action=del&id=' + id;
@@ -130,7 +130,7 @@
         }
 
         function DelSel() {
-            if (window.confirm("你确实要删除这些分类吗？")) document.form1.submit();
+            if (window.confirm("您确实要删除这些分类吗？")) document.form1.submit();
         }
 
         function ChangePage2(sobj) {
@@ -273,9 +273,9 @@ if(!empty($egroup))
         <tr>
             <td height="28" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
-                    &nbsp;·<a href='stepselect_main.php'><b><u>枚举组列表</u></b></a>
+                    &nbsp;·<a href='stepselect_main.php'><b>枚举组列表</b></a>
                     &gt; <a
-                        href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><b><u><?php echo $selgroup; ?></u></b></a>
+                        href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><b><?php echo $selgroup; ?></b></a>
                     &gt; <b>子分类列表</b>
                 </div>
                 <div style="float:right"></div>
@@ -339,7 +339,7 @@ if(!empty($egroup))
          }
          else
          {
-               echo "<a href='stepselect_main.php?egroup={$fields['egroup']}'><u>".$egroups[$fields['egroup']]."</u></a>";
+               echo "<a href='stepselect_main.php?egroup={$fields['egroup']}'>".$egroups[$fields['egroup']]."</a>";
          }
         ?>
                 </td>
@@ -370,7 +370,7 @@ else
         <tr>
             <td height="28" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
-                    &nbsp;·<a href='stepselect_main.php'><b><u>枚举组列表</u></b></a>
+                    &nbsp;·<a href='stepselect_main.php'><b>枚举组列表</b></a>
                 </div>
                 <div style="float:right"></div>
             </td>
@@ -389,7 +389,7 @@ else
             onMouseOut="javascript:this.bgColor='#FFFFFF';">
             <td><input type='checkbox' name='ids[]' value='{dede:field.id /}' class='np' /></td>
             <td> {dede:field.id /} </td>
-            <td> <a href='stepselect_main.php?egroup={dede:field.egroup /}'><u>{dede:field.itemname /}</u></a> </td>
+            <td> <a href='stepselect_main.php?egroup={dede:field.egroup /}'>{dede:field.itemname /}</a> </td>
             <td>
                 <?php
                 switch ($fields['issign']) {

@@ -5,7 +5,7 @@
  *
  * @version        $Id: uploadsafe.inc.php 1 15:59 2020年8月19日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -35,33 +35,33 @@ foreach ($_FILES as $_key => $_value) {
         exit('Request var not allow for uploadsafe!');
     }
     $$_key = $_FILES[$_key]['tmp_name'];
-    ${$_key . '_name'} = $_FILES[$_key]['name'];
-    ${$_key . '_type'} = $_FILES[$_key]['type'] = preg_replace('#[^0-9a-z\./]#i', '', $_FILES[$_key]['type']);
-    ${$_key . '_size'} = $_FILES[$_key]['size'] = preg_replace('#[^0-9]#', '', $_FILES[$_key]['size']);
+    ${$_key.'_name'} = $_FILES[$_key]['name'];
+    ${$_key.'_type'} = $_FILES[$_key]['type'] = preg_replace('#[^0-9a-z\./]#i', '', $_FILES[$_key]['type']);
+    ${$_key.'_size'} = $_FILES[$_key]['size'] = preg_replace('#[^0-9]#', '', $_FILES[$_key]['size']);
 
-    if (is_array(${$_key . '_name'}) && count(${$_key . '_name'}) > 0) {
-        foreach (${$_key . '_name'} as $key => $value) {
-            if (!empty($value) && (preg_match("#\.(" . $cfg_not_allowall . ")$#i", $value) || !preg_match("#\.#", $value))) {
+    if (is_array(${$_key.'_name'}) && count(${$_key.'_name'}) > 0) {
+        foreach (${$_key.'_name'} as $key => $value) {
+            if (!empty($value) && (preg_match("#\.(".$cfg_not_allowall.")$#i", $value) || !preg_match("#\.#", $value))) {
                 if (!defined('DEDEADMIN')) {
                     exit('Not Admin Upload filetype not allow !');
                 }
             }
         }
     } else {
-        if (!empty(${$_key . '_name'}) && (preg_match("#\.(" . $cfg_not_allowall . ")$#i", ${$_key . '_name'}) || !preg_match("#\.#", ${$_key . '_name'}))) {
+        if (!empty(${$_key.'_name'}) && (preg_match("#\.(".$cfg_not_allowall.")$#i", ${$_key.'_name'}) || !preg_match("#\.#", ${$_key.'_name'}))) {
             if (!defined('DEDEADMIN')) {
                 exit('Not Admin Upload filetype not allow !');
             }
         }
     }
 
-    if (empty(${$_key . '_size'})) {
-        ${$_key . '_size'} = @filesize($$_key);
+    if (empty(${$_key.'_size'})) {
+        ${$_key.'_size'} = @filesize($$_key);
     }
     $imtypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/bmp");
 
-    if (is_array(${$_key . '_type'}) && count(${$_key . '_type'}) > 0) {
-        foreach (${$_key . '_type'} as $key => $value) {
+    if (is_array(${$_key.'_type'}) && count(${$_key.'_type'}) > 0) {
+        foreach (${$_key.'_type'} as $key => $value) {
             if (in_array(strtolower(trim($value)), $imtypes)) {
                 $image_dd = @getimagesize($$_key);
                 if ($image_dd == false) {
@@ -88,7 +88,7 @@ foreach ($_FILES as $_key => $_value) {
             }
         }
     } else {
-        if (in_array(strtolower(trim(${$_key . '_type'})), $imtypes)) {
+        if (in_array(strtolower(trim(${$_key.'_type'})), $imtypes)) {
             $image_dd = @getimagesize($$_key);
             if ($image_dd == false) {
                 continue;
@@ -103,7 +103,7 @@ foreach ($_FILES as $_key => $_value) {
             "image/xpng", "image/wbmp", "image/bmp"
         );
 
-        if (in_array(strtolower(trim(${$_key . '_type'})), $imtypes)) {
+        if (in_array(strtolower(trim(${$_key.'_type'})), $imtypes)) {
             $image_dd = @getimagesize($$_key);
             if ($image_dd == false) {
                 continue;

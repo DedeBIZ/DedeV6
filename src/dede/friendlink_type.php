@@ -5,11 +5,11 @@
  *
  * @version        $Id: friendlink_type.php 1 8:48 2010年7月13日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
 
 //保存更改
@@ -18,9 +18,9 @@ if ($dopost == "save") {
     $endID = $idend;
     for (; $startID <= $endID; $startID++) {
         $query = '';
-        $tid = ${'ID_' . $startID};
-        $pname =   ${'pname_' . $startID};
-        if (isset(${'check_' . $startID})) {
+        $tid = ${'ID_'.$startID};
+        $pname =   ${'pname_'.$startID};
+        if (isset(${'check_'.$startID})) {
             if ($pname != '') {
                 $query = "UPDATE `#@__flinktype` SET typename='$pname' WHERE id='$tid' ";
                 $dsql->ExecuteNoneQuery($query);
@@ -36,7 +36,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery($query);
     }
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
-    echo "<script> alert('成功更新友情链接网站分类表！'); </script>";
+    echo "<script> alert('成功更新友情链接网站分类表'); </script>";
 }
 
 include DedeInclude('templets/friendlink_type.htm');

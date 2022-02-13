@@ -5,14 +5,14 @@
  *
  * @version        $Id: member_pm.php 1 11:24 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Pm');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 
 if (!isset($folder)) $folder = '';
 if (!isset($username)) $username = '';
@@ -31,10 +31,10 @@ $postuser = "收件人";
 if ($folder == "inbox" || $folder == '') $postuser = "发件人";
 
 if (!empty($keyword)) {
-    $whereSql .= " AND (subject like '%" . $keyword . "%' OR message like '%" . $keyword . "%')";
+    $whereSql .= " AND (subject like '%".$keyword."%' OR message like '%".$keyword."%')";
 }
 if (!empty($username)) {
-    $whereSql .= " AND floginid like '%" . $username . "%'";
+    $whereSql .= " AND floginid like '%".$username."%'";
 }
 $sql = "SELECT * FROM #@__member_pms $whereSql ORDER BY sendtime desc";
 $dlist = new DataListCP();
@@ -42,7 +42,7 @@ $dlist->pagesize = 25;
 $dlist->SetParameter("folder", $folder);
 $dlist->SetParameter("username", $username);
 $dlist->SetParameter("keyword", $keyword);
-$dlist->SetTemplate(DEDEADMIN . "/templets/member_pm.htm");
+$dlist->SetTemplate(DEDEADMIN."/templets/member_pm.htm");
 $dlist->SetSource($sql);
 $dlist->Display();
 $dlist->Close();

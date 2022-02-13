@@ -5,14 +5,14 @@
  *
  * @version        $Id: member_operations.php 1 11:24 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Operations');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 
 if (empty($buyid)) $buyid = '';
 $addsql = " WHERE buyid LIKE '%$buyid%' ";
@@ -31,7 +31,7 @@ $dlist->dsql->Execute('ts');
 while ($rw = $dlist->dsql->GetArray('ts')) {
     $TypeNames[$rw['tid']] = $rw['pname'];
 }
-$tplfile = DEDEADMIN . "/templets/member_operations.htm";
+$tplfile = DEDEADMIN."/templets/member_operations.htm";
 
 //这两句的顺序不能更换
 $dlist->SetTemplate($tplfile);      //载入模板
@@ -46,7 +46,7 @@ function GetMemberID($mid)
     }
     $row = $dsql->GetOne("SELECT userid FROM #@__member WHERE mid='$mid' ");
     if (is_array($row)) {
-        return "<a href='member_view.php?id={$mid}'>" . $row['userid'] . "</a>";
+        return "<a href='member_view.php?id={$mid}'>".$row['userid']."</a>";
     } else {
         return '0';
     }

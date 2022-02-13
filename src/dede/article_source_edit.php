@@ -5,18 +5,18 @@
  *
  * @version        $Id: archives_add.php 1 14:30 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/oxwindow.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/oxwindow.class.php");
 CheckPurview('sys_Source');
 if (empty($dopost)) $dopost = '';
 if (empty($allsource)) $allsource = '';
 else $allsource = stripslashes($allsource);
 
-$m_file = DEDEDATA . "/admin/source.txt";
+$m_file = DEDEDATA."/admin/source.txt";
 
 //保存
 if ($dopost == 'save') {

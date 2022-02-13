@@ -3,14 +3,14 @@
 /**
  * @version        $Id: reg_new.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 
 if ($cfg_mb_allowreg == 'N') {
-    ShowMsg('系统关闭了新用户注册！', 'index.php');
+    ShowMsg('系统关闭了新用户注册', 'index.php');
     exit();
 }
 
@@ -19,7 +19,7 @@ $step = empty($step) ? 1 : intval($step);
 
 if ($step == 1) {
     if ($cfg_ml->IsLogin()) {
-        ShowMsg('你已经登录系统，无需重新注册！', 'index.php');
+        ShowMsg('您已经登录系统，无需重新注册', 'index.php');
         exit();
     }
     if ($dopost == 'regbase') {
@@ -27,7 +27,7 @@ if ($step == 1) {
         if (preg_match("/1/", $safe_gdopen)) {
             if (strtolower($vdcode) != $svali || $svali == '') {
                 ResetVdValue();
-                ShowMsg('验证码错误！', '-1');
+                ShowMsg('验证码错误', '-1');
                 exit();
             }
         }
@@ -51,15 +51,15 @@ if ($step == 1) {
             exit();
         }
         if (strlen($userid) > 20 || strlen($uname) > 36) {
-            ShowMsg('你的用户名或用户笔名过长，不允许注册！', '-1');
+            ShowMsg('您的用户名或用户笔名过长，不允许注册', '-1');
             exit();
         }
         if (strlen($userid) < $cfg_mb_idmin || strlen($pwd) < $cfg_mb_pwdmin) {
-            ShowMsg("你的用户名或密码过短，不允许注册！", "-1");
+            ShowMsg("您的用户名或密码过短，不允许注册", "-1");
             exit();
         }
         if ($pwdc != $pwd) {
-            ShowMsg('你两次输入的密码不一致！', '-1');
+            ShowMsg('您两次输入的密码不一致', '-1');
             exit();
         }
 
@@ -69,7 +69,7 @@ if ($step == 1) {
         //检测用户名是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
-            ShowMsg("你指定的用户名 {$userid} 已存在，请使用别的用户名！", "-1");
+            ShowMsg("您指定的用户名 {$userid} 已存在，请使用别的用户名", "-1");
             exit();
         }
 
@@ -125,20 +125,20 @@ if ($step == 1) {
             $cfg_ml = new MemberLogin(7 * 3600);
             $rs = $cfg_ml->CheckUser($userid, $userpwd);
 
-            ShowMsg('你已经登录系统，无需重新注册！', 'index.php');
+            ShowMsg('您已经登录系统，无需重新注册', 'index.php');
             exit;
         } else {
-            ShowMsg("注册失败，请检查资料是否有误或与管理员联系！", "-1");
+            ShowMsg("注册失败，请检查资料是否有误或与管理员联系", "-1");
             exit();
         }
     }
-    require_once(DEDEMEMBER . "/templets/reg-new.htm");
+    require_once(DEDEMEMBER."/templets/reg-new.htm");
 } else {
     if (!$cfg_ml->IsLogin()) {
-        ShowMsg("尚未完成基本信息的注册,请返回重新填写！", "index_do.php?fmdo=user&dopost=regnew");
+        ShowMsg("尚未完成基本信息的注册,请返回重新填写", "index_do.php?fmdo=user&dopost=regnew");
         exit;
     } else {
-        ShowMsg('你已经登录系统，无需重新注册！', 'index.php');
+        ShowMsg('您已经登录系统，无需重新注册', 'index.php');
         exit;
     }
 }

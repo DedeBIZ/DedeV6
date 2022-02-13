@@ -5,7 +5,7 @@
  *
  * @version        $Id:mynews.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -25,7 +25,7 @@ function lib_mynews(&$ctag, &$refObj)
     if (empty($innertext)) $innertext = GetSysTemplets('mynews.htm');
 
     $idsql = '';
-    if ($envs['typeid'] > 0) $idsql = " WHERE typeid='" . GetTopid($this->TypeID) . "' ";
+    if ($envs['typeid'] > 0) $idsql = " WHERE typeid='".GetTopid($this->TypeID)."' ";
     $dsql->SetQuery("SELECT * FROM #@__mynews $idsql ORDER BY senddate DESC LIMIT 0,$row");
     $dsql->Execute();
     $ctp = new DedeTagParse();

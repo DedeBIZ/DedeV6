@@ -1,7 +1,5 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>修改自定义表单</title>
@@ -15,14 +13,14 @@
   <script language="javascript">
     function checkSubmit() {
       if (document.form1.typename.value == '') {
-        ShowMsg("自定义表单名称不能为空！");
+        ShowMsg("自定义表单名称不能为空");
         return false;
       }
       return true;
     }
     //删除
     function DelNote(gourl) {
-      if (!window.confirm("你确认要删除这条记录么！")) { return false; }
+      if (!window.confirm("您确认要删除这条记录么")) { return false; }
       location.href = gourl;
     }
   </script>
@@ -56,7 +54,7 @@
       <input type='hidden' name='dopost' value='save'>
       <tr bgcolor="#CFCFCF">
         <td height="28" colspan="2" bgcolor="#EDF9D5" background='images/tbg.gif' style="padding-left:10px;">
-          <b><a href="diy_main.php"><u>自定义表单管理</u></a> &gt; 修改自定义表单：</b>
+          <b><a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单：</b>
           (修改表名不会创建新表，如果您不懂手工处理这些表，请不要更改)
         </td>
       </tr>

@@ -6,12 +6,12 @@
  *
  * @version        $Id: erraddsave.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
-require_once(DEDEINC . '/memberlogin.class.php');
+require_once(dirname(__FILE__)."/../include/common.inc.php");
+require_once(DEDEINC.'/memberlogin.class.php');
 
 $dopost = isset($dopost) ? $dopost : "";
 $aid = isset($aid) ? intval($aid) : 0;
@@ -51,7 +51,7 @@ if ($dopost == "saveedit") {
             "data" => "ok",
         ));
     } else {
-        ShowMsg("谢谢您对本网站的支持，我们会尽快处理您的建议！", "javascript:window.close();");
+        ShowMsg("谢谢您对本网站的支持，我们会尽快处理您的建议", "javascript:window.close();");
     }
 
     exit();

@@ -5,11 +5,11 @@
  *
  * @version        $Id: content_sg_list.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 $cid = isset($cid) ? intval($cid) : 0;
 $channelid = isset($channelid) ? intval($channelid) : 0;
 $mid = isset($mid) ? intval($mid) : 0;
@@ -17,7 +17,7 @@ if (!isset($keyword)) $keyword = '';
 if (!isset($arcrank)) $arcrank = '';
 
 if (empty($cid) && empty($channelid)) {
-    ShowMsg("该页面必须指定栏目ID或内容模型ID才能浏览！", "javascript:;");
+    ShowMsg("该页面必须指定栏目ID或内容模型ID才能浏览", "javascript:;");
     exit();
 }
 
@@ -30,29 +30,29 @@ if (TestPurview('a_List')) {
     if ($cid == 0) {
         $ucid = $cid = $cuserLogin->getUserChannel();
     } else {
-        CheckCatalog($cid, "你无权浏览非指定栏目的内容！");
+        CheckCatalog($cid, "您无权浏览非指定栏目的内容");
     }
 }
 
 $adminid = $cuserLogin->getUserID();
 $maintable = '#@__archives';
-require_once(DEDEINC . "/typelink.class.php");
-require_once(DEDEINC . "/datalistcp.class.php");
-require_once(DEDEADMIN . "/inc/inc_list_functions.php");
+require_once(DEDEINC."/typelink.class.php");
+require_once(DEDEINC."/datalistcp.class.php");
+require_once(DEDEADMIN."/inc/inc_list_functions.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $tl = new TypeLink($cid);
 $listtable = @trim($tl->TypeInfos['addtable']);
 if (!empty($channelid) && !empty($ucid) && $tl->TypeInfos['channeltype'] != $channelid) {
-    ShowMsg('你没权限访问此页！', 'javascript:;');
+    ShowMsg('您没权限访问此页', 'javascript:;');
     exit();
 }
 
 if ($cid == 0) {
     $row = $tl->dsql->GetOne("SELECT typename,addtable FROM `#@__channeltype` WHERE id='$channelid'");
-    $positionname = $row['typename'] . " &gt; ";
+    $positionname = $row['typename']." &gt; ";
     $listtable = $row['addtable'];
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName()) . " &gt; ";
+    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
 }
 
 $optionarr = $tl->GetOptionArray($cid, $admin_catalogs, $channelid);
@@ -60,7 +60,7 @@ $whereSql = $channelid == 0 ? " WHERE arc.channel < -1 " : " WHERE arc.channel =
 
 if (!empty($mid)) $whereSql .= " AND arc.mid = '$mid' ";
 if ($keyword != '') $whereSql .= " AND (arc.title like '%$keyword%') ";
-if ($cid != 0) $whereSql .= " AND arc.typeid in (" . GetSonIds($cid) . ")";
+if ($cid != 0) $whereSql .= " AND arc.typeid in (".GetSonIds($cid).")";
 
 if ($arcrank != '') {
     $whereSql .= " AND arc.arcrank = '$arcrank' ";
@@ -81,7 +81,7 @@ $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);
 $dlist->SetParameter("channelid", $channelid);
-$dlist->SetTemplate(DEDEADMIN . "/templets/content_sg_list.htm");
+$dlist->SetTemplate(DEDEADMIN."/templets/content_sg_list.htm");
 $dlist->SetSource($query);
 $dlist->Display();
 $dlist->Close();

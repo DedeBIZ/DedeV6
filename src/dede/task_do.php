@@ -5,11 +5,11 @@
  *
  * @version        $Id: task_do.php 1 23:07 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require(dirname(__FILE__) . '/config.php');
+require(dirname(__FILE__).'/config.php');
 $dopost = (!isset($dopost) ? '' : $dopost);
 /******************************
 返回到下一任务的URL
@@ -29,21 +29,21 @@ function GetNextUrl($notallowArr = array('dopost', 'f', 'del'))
             if (isset($nextdos[1])) {
                 for ($i = 1; $i < count($nextdos); $i++) {
                     if (trim($nextdos[$i]) == '') continue;
-                    $nextdo .= ($nextdo == '' ? $nextdos[$i] : ',' . $nextdos[$i]);
+                    $nextdo .= ($nextdo == '' ? $nextdos[$i] : ','.$nextdos[$i]);
                 }
             }
             //如果系统有多重任务， 把下一任务和任务列表参数提交给程序处理
             if (in_array('morejob', $notallowArr)) {
-                $reurl .= "&doposttmp=" . $nextdos[0];
+                $reurl .= "&doposttmp=".$nextdos[0];
                 if ($nextdo != '') $reurl .= "&nextdotmp=$nextdo";
             } else {
-                $reurl .= "&dopost=" . $nextdos[0];
+                $reurl .= "&dopost=".$nextdos[0];
                 if ($nextdo != '') $reurl .= "&nextdo=$nextdo";
             }
         } else if (in_array($k, $notallowArr)) {
             continue;
         } else {
-            $reurl .= "&{$k}=" . urlencode($GLOBALS[$k]);
+            $reurl .= "&{$k}=".urlencode($GLOBALS[$k]);
         }
     }
     return $reurl;
@@ -53,7 +53,7 @@ function GetNextUrl($notallowArr = array('dopost', 'f', 'del'))
 function makeprenext() {  }
  ******************************/
 if ($dopost == 'makeprenext') {
-    require_once(DEDEINC . '/arc.archives.class.php');
+    require_once(DEDEINC.'/arc.archives.class.php');
     $aid = intval($aid);
     $preRow =  $dsql->GetOne("SELECT id FROM `#@__arctiny` WHERE id<$aid AND arcrank>-1 AND typeid='$typeid' ORDER BY id DESC");
     $nextRow = $dsql->GetOne("SELECT id FROM `#@__arctiny` WHERE id>$aid AND arcrank>-1 AND typeid='$typeid' ORDER BY id ASC");
@@ -68,11 +68,11 @@ if ($dopost == 'makeprenext') {
         $arc->MakeHtml();
     }
     if (empty($nextdo)) {
-        ShowMsg("<b>完成上下篇文档更新任务！完成所有更新任务！</b>", "close::tgtable");
+        ShowMsg("<b>完成上下篇文档更新任务完成所有更新任务</b>", "close::tgtable");
         exit();
     } else {
         $jumpurl = GetNextUrl();
-        ShowMsg("完成下篇文档更新任务！ 继续执行其它任务...", $jumpurl, 0, 500);
+        ShowMsg("完成下篇文档更新任务 继续执行其它任务...", $jumpurl, 0, 500);
         exit();
     }
 }
@@ -81,19 +81,19 @@ if ($dopost == 'makeprenext') {
 function makeindex() {  }
  ******************************/
 if ($dopost == 'makeindex') {
-    require_once(DEDEINC . '/arc.partview.class.php');
+    require_once(DEDEINC.'/arc.partview.class.php');
     $envs = $_sys_globals = array();
     $envs['aid'] = 0;
     $pv = new PartView();
     $row = $pv->dsql->GetOne('SELECT * FROM `#@__homepageset`');
     $templet = str_replace("{style}", $cfg_df_style, $row['templet']);
-    $homeFile = dirname(__FILE__) . '/' . $row['position'];
+    $homeFile = dirname(__FILE__).'/'.$row['position'];
     $homeFile = str_replace("//", "/", str_replace("\\", "/", $homeFile));
     $fp = fopen($homeFile, 'w') or die("无法更新网站主页到：$homeFile 位置");
     fclose($fp);
-    $tpl = $cfg_basedir . $cfg_templets_dir . '/' . $templet;
+    $tpl = $cfg_basedir.$cfg_templets_dir.'/'.$templet;
     if (!file_exists($tpl)) {
-        $tpl = $cfg_basedir . $cfg_templets_dir . '/default/index.htm';
+        $tpl = $cfg_basedir.$cfg_templets_dir.'/default/index.htm';
         if (!file_exists($tpl)) exit("无法找到主页模板：$tpl ");
     }
     $GLOBALS['_arclistEnv'] = 'index';
@@ -101,11 +101,11 @@ if ($dopost == 'makeindex') {
     $pv->SaveToHtml($homeFile);
     $pv->Close();
     if (empty($nextdo)) {
-        ShowMsg("<b>完成主页更新任务！完成所有更新任务！</b>", "close::tgtable");
+        ShowMsg("<b>完成主页更新任务完成所有更新任务</b>", "close::tgtable");
         exit();
     } else {
         $jumpurl = GetNextUrl();
-        ShowMsg("完成主页更新！ 现在跳转到其它更新任务...", $jumpurl, 0, 500);
+        ShowMsg("完成主页更新 现在跳转到其它更新任务...", $jumpurl, 0, 500);
         exit();
     }
 }
@@ -114,14 +114,14 @@ if ($dopost == 'makeindex') {
 function makeparenttype() {  }
 ******************************/
 else if ($dopost == 'makeparenttype') {
-    require_once(DEDEDATA . "/cache/inc_catalog_base.inc");
-    require_once(DEDEINC . '/arc.listview.class.php');
+    require_once(DEDEDATA."/cache/inc_catalog_base.inc");
+    require_once(DEDEINC.'/arc.listview.class.php');
     $notallowArr = array('dopost', 'f', 'del', 'curpage', 'morejob');
 
     $jumpurl = GetNextUrl($notallowArr);
 
     if (empty($typeid)) {
-        ShowMsg("<b>完成栏目更新任务！完成所有更新任务！</b>", "close::tgtable");
+        ShowMsg("<b>完成栏目更新任务完成所有更新任务</b>", "close::tgtable");
         exit();
     }
     $topids = explode(',', GetTopids($typeid));
@@ -129,13 +129,13 @@ else if ($dopost == 'makeparenttype') {
     $tid = $topids[$curpage];
 
     if (isset($cfg_Cs[$tid]) && $cfg_Cs[$tid][1] > 0) {
-        require_once(DEDEINC . "/arc.listview.class.php");
+        require_once(DEDEINC."/arc.listview.class.php");
         $lv = new ListView($tid);
         $lv->CountRecord();
         $lv->MakeHtml();
         $lv->Close();
     } else {
-        require_once(DEDEINC . "/arc.sglistview.class.php");
+        require_once(DEDEINC."/arc.sglistview.class.php");
         $lv = new SgListView($tid);
         $lv->CountRecord();
         $lv->MakeHtml();
@@ -146,10 +146,10 @@ else if ($dopost == 'makeparenttype') {
         if (!empty($doposttmp)) {
             $jumpurl = preg_replace("#doposttmp|nextdotmp#", 'del', $jumpurl);
             $jumpurl .= "&dopost={$doposttmp}&nextdo={$nextdotmp}";
-            ShowMsg("完成栏目:{$tid}  更新！<br /><b>完成栏目更新任务，继续执行后续任务...</b>", $jumpurl, 0, 500);
+            ShowMsg("完成栏目:{$tid}  更新<br /><b>完成栏目更新任务，继续执行后续任务...</b>", $jumpurl, 0, 500);
             exit();
         } else {
-            ShowMsg("完成栏目:{$tid}  更新！<br /><b>完成栏目更新任务，完成所有更新任务！</b>", "close::tgtable");
+            ShowMsg("完成栏目:{$tid}  更新<br /><b>完成栏目更新任务，完成所有更新任务</b>", "close::tgtable");
             exit();
         }
     } else {

@@ -5,26 +5,26 @@
  *
  * @version        $Id: sys_data.php 1 17:19 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
 
 if ($cfg_dbtype == 'sqlite') {
-    showMsg('备份系统根目录下/data/' . $cfg_dbname . '.db文件即可', 'javascript:;');
+    showMsg('备份系统根目录下/data/'.$cfg_dbname.'.db文件即可', 'javascript:;');
     exit();
 }
 
 if ($dopost == "viewinfo") //查看表结构
 {
-    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'><u>关闭</u></a>]\r\n<xmp>";
+    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
-        $dsql->SetQuery("SHOW CREATE TABLE " . $dsql->dbName . "." . $tablename);
+        $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$tablename);
         $dsql->Execute('me');
         $row2 = $dsql->GetArray('me', MYSQL_BOTH);
         $ctinfo = $row2[1];
@@ -34,30 +34,30 @@ if ($dopost == "viewinfo") //查看表结构
     exit();
 } else if ($dopost == "opimize") //优化表
 {
-    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'><u>关闭</u></a>]\r\n<xmp>";
+    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
         if ($rs) {
-            echo "执行优化表： $tablename  OK！";
+            echo "执行优化表： $tablename  OK";
         } else {
-            echo "执行优化表： $tablename  失败，原因是：" . $dsql->GetError();
+            echo "执行优化表： $tablename  失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';
     exit();
 } else if ($dopost == "repair") //修复表
 {
-    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'><u>关闭</u></a>]\r\n<xmp>";
+    echo "[<a href='#' onclick='javascript:HideObj(\"_mydatainfo\")'>关闭</a>]\r\n<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名！";
+        echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
         if ($rs) {
-            echo "修复表： $tablename  OK！";
+            echo "修复表： $tablename  OK";
         } else {
-            echo "修复表： $tablename  失败，原因是：" . $dsql->GetError();
+            echo "修复表： $tablename  失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';

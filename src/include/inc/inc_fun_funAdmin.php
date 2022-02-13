@@ -4,7 +4,7 @@
  *
  * @version        $Id:inc_fun_funAdmin.php 1 13:58 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -44,16 +44,16 @@ function SpGetPinyin($str, $ishead = 0, $isclose = 1)
             return $str;
         }
         if (@count($pinyins) == 0) {
-            $fp = fopen(DEDEINC . '/data/pinyin.dat', 'r');
+            $fp = fopen(DEDEINC.'/data/pinyin.dat', 'r');
             while (!feof($fp)) {
                 $line = trim(fgets($fp));
-                $pinyins[$line[0] . $line[1]] = substr($line, 3, strlen($line) - 3);
+                $pinyins[$line[0].$line[1]] = substr($line, 3, strlen($line) - 3);
             }
             fclose($fp);
         }
         for ($i = 0; $i < $slen; $i++) {
             if (ord($str[$i]) > 0x80) {
-                $c = $str[$i] . $str[$i + 1];
+                $c = $str[$i].$str[$i + 1];
                 $i++;
                 if (isset($pinyins[$c])) {
                     if ($ishead == 0) {
@@ -102,7 +102,7 @@ function SpCreateDir($spath)
             continue;
         }
         $spath = trim($spath);
-        $truepath .= "/" . $spath;
+        $truepath .= "/".$spath;
         if (!is_dir($truepath) || !is_writeable($truepath)) {
             if (!is_dir($truepath)) {
                 $isok = MkdirAll($truepath, $cfg_dir_purview);
@@ -110,7 +110,7 @@ function SpCreateDir($spath)
                 $isok = ChmodAll($truepath, $cfg_dir_purview);
             }
             if (!$isok) {
-                echo "创建或修改目录：" . $truepath . " 失败！<br>";
+                echo "创建或修改目录：".$truepath." 失败<br>";
                 CloseFtp();
                 return false;
             }
@@ -153,9 +153,9 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
         $gtype = "print";
     }
     if ($GLOBALS['cfg_html_editor'] == 'fck') {
-        require_once(DEDEINC . '/FCKeditor/fckeditor.php');
+        require_once(DEDEINC.'/FCKeditor/fckeditor.php');
         $fck = new FCKeditor($fname);
-        $fck->BasePath        = $GLOBALS['cfg_cmspath'] . '/include/FCKeditor/';
+        $fck->BasePath        = $GLOBALS['cfg_cmspath'].'/include/FCKeditor/';
         $fck->Width        = '100%';
         $fck->Height        = $nheight;
         $fck->ToolbarSet    = $etype;
@@ -237,6 +237,6 @@ function SpGetNewInfo()
     $row2 = $dsql->GetOne($query);
     if ($row2) $add_query .= "&acount={$row2['dd']}";
 
-    $offUrl = DEDEBIZURL . "/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}";
+    $offUrl = DEDEBIZURL."/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}";
     return $offUrl;
 }

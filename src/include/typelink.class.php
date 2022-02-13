@@ -4,11 +4,11 @@
  *
  * @version        $Id: typelink.class.php 1 15:21 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . "/channelunit.func.php");
+require_once(DEDEINC."/channelunit.func.php");
 
 /**
  * 栏目连接类
@@ -36,7 +36,7 @@ class TypeLink
     //php5构造函数
     function __construct($typeid)
     {
-        $this->indexUrl = $GLOBALS['cfg_basehost'] . $GLOBALS['cfg_indexurl'];
+        $this->indexUrl = $GLOBALS['cfg_basehost'].$GLOBALS['cfg_indexurl'];
         $this->indexName = $GLOBALS['cfg_indexname'];
         $this->baseDir = $GLOBALS['cfg_basedir'];
         $this->modDir = $GLOBALS['cfg_templets_dir'];
@@ -95,7 +95,7 @@ class TypeLink
     function GetTypeDir()
     {
         if (empty($this->TypeInfos['typedir'])) {
-            return $GLOBALS['cfg_cmspath'] . $GLOBALS['cfg_arcdir'];
+            return $GLOBALS['cfg_cmspath'].$GLOBALS['cfg_arcdir'];
         } else {
             return $this->TypeInfos['typedir'];
         }
@@ -106,9 +106,9 @@ class TypeLink
     function GetPositionLink($islink = true)
     {
         if (defined('DEDEMOB')) {
-            $indexpage = "<li class='breadcrumb-item'><a href='index.php'>" . $this->indexName . "</a></li>";
+            $indexpage = "<li class='breadcrumb-item'><a href='index.php'>".$this->indexName."</a></li>";
         } else {
-            $indexpage = "<li class='breadcrumb-item'><a href='" . $this->indexUrl . "'>" . $this->indexName . "</a></li>";
+            $indexpage = "<li class='breadcrumb-item'><a href='".$this->indexUrl."'>".$this->indexName."</a></li>";
         }
 
         if ($this->valuePosition != "" && $islink) {
@@ -119,7 +119,7 @@ class TypeLink
             if ($islink) {
                 return $indexpage;
             } else {
-                return "没指定分类！";
+                return "没指定分类";
             }
         } else {
             if ($islink) {
@@ -128,8 +128,8 @@ class TypeLink
                     //调用递归逻辑
                     $this->LogicGetPosition($this->TypeInfos['reid'], true);
                 }
-                $this->valuePosition = $indexpage . $this->SplitSymbol . $this->valuePosition;
-                return $this->valuePosition . $this->SplitSymbol;
+                $this->valuePosition = $indexpage.$this->SplitSymbol.$this->valuePosition;
+                return $this->valuePosition.$this->SplitSymbol;
             } else {
                 $this->valuePositionName = $this->TypeInfos['typename'];
                 if ($this->TypeInfos['reid'] != 0) {
@@ -150,12 +150,12 @@ class TypeLink
     //获得某类目的链接列表，递归逻辑部分
     function LogicGetPosition($id, $islink)
     {
-        $this->dsql->SetQuery("SELECT id,reid,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE id='" . $id . "'");
+        $this->dsql->SetQuery("SELECT id,reid,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE id='".$id."'");
         $tinfos = $this->dsql->GetOne();
         if ($islink) {
-            $this->valuePosition = $this->GetOneTypeLink($tinfos) . $this->SplitSymbol . $this->valuePosition;
+            $this->valuePosition = $this->GetOneTypeLink($tinfos).$this->SplitSymbol.$this->valuePosition;
         } else {
-            $this->valuePositionName = $tinfos['typename'] . $this->SplitSymbol . $this->valuePositionName;
+            $this->valuePositionName = $tinfos['typename'].$this->SplitSymbol.$this->valuePositionName;
         }
         if ($tinfos['reid'] > 0) {
             $this->LogicGetPosition($tinfos['reid'], $islink);
@@ -168,7 +168,7 @@ class TypeLink
     function GetOneTypeLink($typeinfos)
     {
         $typepage = $this->GetOneTypeUrl($typeinfos);
-        $typelink = "<li class='breadcrumb-item'><a href='" . $typepage . "'>" . $typeinfos['typename'] . "</a></li>";
+        $typelink = "<li class='breadcrumb-item'><a href='".$typepage."'>".$typeinfos['typename']."</a></li>";
         return $typelink;
     }
 
@@ -176,7 +176,7 @@ class TypeLink
     function GetOneTypeUrl($typeinfos)
     {
         if (defined('DEDEMOB')) {
-            return 'list.php?tid=' . $typeinfos['id'];
+            return 'list.php?tid='.$typeinfos['id'];
         } else {
             return GetTypeUrl(
                 $typeinfos['id'],
@@ -213,9 +213,9 @@ class TypeLink
             $row = $this->dsql->GetOne("SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE id='$hid'");
             $channeltype = $row['channeltype'];
             if ($row['ispart'] == 1) {
-                $this->OptionArrayList .= "<option value='" . $row['id'] . "' style='background-color:#DFDFDB;color:#888888' selected>" . $row['typename'] . "</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row['id']."' style='background-color:#DFDFDB;color:#888888' selected>".$row['typename']."</option>\r\n";
             } else {
-                $this->OptionArrayList .= "<option value='" . $row['id'] . "' selected>" . $row['typename'] . "</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row['id']."' selected>".$row['typename']."</option>\r\n";
             }
         }
 
@@ -233,9 +233,9 @@ class TypeLink
                 $topidstr = '';
                 while ($row = $this->dsql->GetObject()) {
                     if ($row->reid == 0) continue;
-                    $topidstr .= ($topidstr == '' ? $row->reid : ',' . $row->reid);
+                    $topidstr .= ($topidstr == '' ? $row->reid : ','.$row->reid);
                 }
-                $admin_catalog .= ',' . $topidstr;
+                $admin_catalog .= ','.$topidstr;
                 $admin_catalogs = explode(',', $admin_catalog);
                 $admin_catalogs = array_unique($admin_catalogs);
                 $admin_catalog = join(',', $admin_catalogs);
@@ -251,9 +251,9 @@ class TypeLink
         while ($row = $this->dsql->GetObject()) {
             if ($row->id != $hid) {
                 if ($row->ispart == 1) {
-                    $this->OptionArrayList .= "<option value='" . $row->id . "' style='background-color:#EFEFEF;color:#666666'>" . $row->typename . "</option>\r\n";
+                    $this->OptionArrayList .= "<option value='".$row->id."' style='background-color:#EFEFEF;color:#666666'>".$row->typename."</option>\r\n";
                 } else {
-                    $this->OptionArrayList .= "<option value='" . $row->id . "'>" . $row->typename . "</option>\r\n";
+                    $this->OptionArrayList .= "<option value='".$row->id."'>".$row->typename."</option>\r\n";
                 }
             }
             $this->LogicGetOptionArray($row->id, "─", $oper);
@@ -275,18 +275,18 @@ class TypeLink
         global $cfg_admin_channel;
         if (empty($cfg_admin_channel)) $cfg_admin_channel = 'all';
 
-        $this->dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid='" . $id . "' AND ispart<>2 ORDER BY sortrank ASC");
+        $this->dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid='".$id."' AND ispart<>2 ORDER BY sortrank ASC");
         $this->dsql->Execute($id);
         while ($row = $this->dsql->GetObject($id)) {
             if (is_array($oper) && $cfg_admin_channel != 'all') {
                 if (!in_array($row->id, $oper)) continue;
             }
             if ($row->ispart == 1) {
-                $this->OptionArrayList .= "<option value='" . $row->id . "' style='background-color:#EFEFEF;color:#666666'>$step" . $row->typename . "</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row->id."' style='background-color:#EFEFEF;color:#666666'>$step".$row->typename."</option>\r\n";
             } else {
-                $this->OptionArrayList .= "<option value='" . $row->id . "'>$step" . $row->typename . "</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row->id."'>$step".$row->typename."</option>\r\n";
             }
-            $this->LogicGetOptionArray($row->id, $step . "─", $oper);
+            $this->LogicGetOptionArray($row->id, $step."─", $oper);
         }
     }
 
@@ -325,8 +325,8 @@ class TypeLink
         if ($col == "") $col = 1;
 
         $colWidth = ceil(100 / $col);
-        $tablewidth = $tablewidth . "%";
-        $colWidth = $colWidth . "%";
+        $tablewidth = $tablewidth."%";
+        $colWidth = $colWidth."%";
         if ($typetype == "") $typetype = "sun";
 
         if ($innertext == "") $innertext = GetSysTemplets("channel_list.htm");

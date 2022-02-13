@@ -1,23 +1,21 @@
 <?php
-
 /**
  * 专题添加
  *
  * @version        $Id: spec_add.php 1 16:22 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('a_New,a_AccNew');
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEADMIN . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 if (empty($dopost)) $dopost = '';
-
 if ($dopost != 'save') {
-    require_once(DEDEINC . '/dedetag.class.php');
-    require_once(DEDEADMIN . '/inc/inc_catalog_options.php');
+    require_once(DEDEINC.'/dedetag.class.php');
+    require_once(DEDEADMIN.'/inc/inc_catalog_options.php');
     ClearMyAddon();
     $channelid = -1;
     $cid = isset($cid) && is_numeric($cid) ? $cid : 0;
@@ -29,23 +27,21 @@ if ($dopost != 'save') {
 }
 /*--------------------------------
 function __save(){  }
--------------------------------*/ else if ($dopost == 'save') {
-    require_once(DEDEINC . '/image.func.php');
-    require_once(DEDEINC . '/oxwindow.class.php');
+-------------------------------*/
+else if ($dopost == 'save') {
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (empty($click)) $click = ($cfg_arc_click == '-1' ? mt_rand(50, 200) : $cfg_arc_click);
-
     $channelid = -1;
     $money = 0;
     if (!isset($tags)) $tags = '';
-
     //处理自定义字段会用到这些变量
     if (!isset($autokey)) $autokey = 0;
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
-
     //对保存的内容进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();
     if (empty($source)) $source = '未知';
@@ -54,7 +50,6 @@ function __save(){  }
     $sortrank = AddDay($pubdate, $sortup);
     if ($ishtml == 0) $ismake = -1;
     else $ismake = 0;
-
     $title = preg_replace('#"#', '＂', $title);
     $title = cn_substrR($title, $cfg_title_maxlen);
     $shorttitle = cn_substrR($shorttitle, 36);
@@ -68,66 +63,58 @@ function __save(){  }
     $serviterm = empty($serviterm) ? "" : $serviterm;
     if (!TestPurview('a_Check,a_AccCheck,a_MyCheck')) $arcrank = -1;
     $adminid = $cuserLogin->getUserID();
-
     //处理上传的缩略图
     if (empty($ddisremote)) {
         $ddisremote = 0;
     }
     $litpic = GetDDImage('none', $picname, $ddisremote);
-    // 处理新的缩略图上传
+    //处理新的缩略图上传
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
-        $savepath = $ddcfg_image_dir . '/' . MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath . '/' . dd2char(MyDate('mdHis', $ntime) . $cuserLogin->getUserID() . mt_rand(1000, 9999));
-        $fullUrl = $fullUrl . ".png";
-
-        file_put_contents($cfg_basedir . $fullUrl, base64_decode($data[1]));
-
-        // 加水印
-        WaterImg($cfg_basedir . $fullUrl, 'up');
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $fullUrl.".png";
+        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
+        //加水印
+        WaterImg($cfg_basedir.$fullUrl, 'up');
         $litpic = $fullUrl;
     }
-
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $adminid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，无法进行后续操作！", "-1");
+        ShowMsg("无法获得主键，无法进行后续操作", "-1");
         exit();
     }
-
     //保存到主表
-    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
-    color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywords,filename)
-    VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','$click','$money','$title','$shorttitle',
-    '$color','$writer','$source','$litpic','$pubdate','$senddate','$adminid','0','$notpost','$description','$keywords','$filename');";
+    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywords,filename)
+    VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','$click','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$adminid','0','$notpost','$description','$keywords','$filename');";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         echo $inQuery;
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeCMS官方。" . str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请把相关信息提交给DedeBIZ官方".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
-
     //专题节点列表
     $arcids = array();
     $notelist = '';
     for ($i = 1; $i <= $cfg_specnote; $i++) {
-        if (!empty(${'notename' . $i})) {
-            $notename = str_replace("'", "", trim(${'notename' . $i}));
-            $arcid = trim(${'arcid' . $i});
-            $col = trim(${'col' . $i});
-            $imgwidth = trim(${'imgwidth' . $i});
-            $imgheight = trim(${'imgheight' . $i});
-            $titlelen = trim(${'titlelen' . $i});
-            $infolen = trim(${'infolen' . $i});
-            $listtmp = trim(${'listtmp' . $i});
-            $noteid = trim(${'noteid' . $i});
-            $isauto = trim(${'isauto' . $i});
-            $keywords = str_replace("'", "", trim(${'keywords' . $i}));
-            $typeid = trim(${'typeid' . $i});
-            if (!empty(${'rownum' . $i}))  $rownum = trim(${'rownum' . $i});
+        if (!empty(${'notename'.$i})) {
+            $notename = str_replace("'", "", trim(${'notename'.$i}));
+            $arcid = trim(${'arcid'.$i});
+            $col = trim(${'col'.$i});
+            $imgwidth = trim(${'imgwidth'.$i});
+            $imgheight = trim(${'imgheight'.$i});
+            $titlelen = trim(${'titlelen'.$i});
+            $infolen = trim(${'infolen'.$i});
+            $listtmp = trim(${'listtmp'.$i});
+            $noteid = trim(${'noteid'.$i});
+            $isauto = trim(${'isauto'.$i});
+            $keywords = str_replace("'", "", trim(${'keywords'.$i}));
+            $typeid = trim(${'typeid'.$i});
+            if (!empty(${'rownum'.$i}))  $rownum = trim(${'rownum'.$i});
             else $rownum = 0;
             $arcid = preg_replace("#[^0-9,]#", "", $arcid);
             $ids = explode(",", $arcid);
@@ -140,7 +127,7 @@ function __save(){  }
                         if ($okids == "") {
                             $okids .= $mid;
                         } else {
-                            $okids .= "," . $mid;
+                            $okids .= ",".$mid;
                         }
                         $arcids[$mid] = 1;
                     }
@@ -154,7 +141,6 @@ function __save(){  }
                 {/dede:specnote}\r\n";
         }
     }
-
     //分析处理附加表数据
     $inadd_f = '';
     $inadd_v = '';
@@ -177,15 +163,14 @@ function __save(){  }
                     }
                     ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $arcID);
                 }
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
     }
-
     //处理图片文档的自定义属性
     if ($litpic != '' && !preg_match('#p#', $flag)) {
-        $flag = ($flag == '' ? 'p' : $flag . ',p');
+        $flag = ($flag == '' ? 'p' : $flag.',p');
     }
     $useip = GetIP();
     //加入附加表
@@ -193,19 +178,17 @@ function __save(){  }
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
-        ShowMsg("把数据保存到数据库附加表 addonspec 时出错，请检查原因！", "-1");
+        ShowMsg("把数据保存到数据库附加表 addonspec 时出错，请检查原因", "-1");
         exit();
     }
-
     //生成HTML
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE, TRUE, $isremote);
     if ($artUrl == '') {
-        $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+        $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
     ClearMyAddon($arcID, $title);
-
-    // 自动更新关联内容
+    //自动更新关联内容
     if (is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {
@@ -216,17 +199,9 @@ function __save(){  }
             }
         }
     }
-
     //返回成功信息
-    $msg = "
-    　　请选择你的后续操作：
-    <a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>创建新专题</a>
-    &nbsp;&nbsp;
-    <a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a>
-    &nbsp;&nbsp;
-    <a href='content_s_list.php' class='btn btn-success btn-sm'>已发布专题管理</a>
-    ";
-    $wintitle = "成功创建专题！";
+    $msg = "请选择您的后续操作：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>创建新专题</a>&nbsp;&nbsp;<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a>&nbsp;&nbsp;<a href='content_s_list.php' class='btn btn-success btn-sm'>已发布专题管理</a>";
+    $wintitle = "成功创建专题";
     $wecome_info = "文章管理::发布专题";
     $win = new OxWindow();
     $win->AddTitle("成功创建专题：");

@@ -5,16 +5,16 @@
  * 
  * @version        $Id: article_add.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/userlogin.class.php");
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEMEMBER . "/inc/inc_catalog_options.php");
-require_once(DEDEMEMBER . "/inc/inc_archives_functions.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/userlogin.class.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
+require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
@@ -32,22 +32,22 @@ if (empty($dopost)) {
 
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-        $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='" . $cInfos['sendrank'] . "' ");
-        ShowMsg("对不起，需要[" . $row['membername'] . "]才能在这个频道发布文档！", "-1", "0", 5000);
+        $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='".$cInfos['sendrank']."' ");
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
 
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[" . $cInfos['usertype'] . "帐号]才能在这个频道发布文档！", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
-    include(DEDEMEMBER . "/templets/article_add.htm");
+    include(DEDEMEMBER."/templets/article_add.htm");
     exit();
 }
 /*------------------------------
 function _SaveArticle(){  }
 ------------------------------*/ else if ($dopost == 'save') {
-    include(DEDEMEMBER . '/inc/archives_check.php');
+    include(DEDEMEMBER.'/inc/archives_check.php');
 
     //分析处理附加表数据
     $inadd_f = $inadd_v = '';
@@ -65,8 +65,8 @@ function _SaveArticle(){  }
                     ${$vs[0]} = '';
                 }
                 ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], 0);
-                $inadd_f .= ',' . $vs[0];
-                $inadd_v .= " ,'" . ${$vs[0]} . "' ";
+                $inadd_f .= ','.$vs[0];
+                $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
     }
@@ -74,7 +74,7 @@ function _SaveArticle(){  }
     // 这里对前台提交的附加数据进行一次校验
     $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
     if ($fontiterm != $inadd_f) {
-        ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+        ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
         exit();
     }
 
@@ -84,7 +84,7 @@ function _SaveArticle(){  }
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
-        ShowMsg("无法获得主键，因此无法进行后续操作！", "-1");
+        ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
         exit();
     }
 
@@ -105,7 +105,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作！。", "javascript:;");
+        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作。", "javascript:;");
         exit();
     } else {
         $inquery = "INSERT INTO `{$addtable}`(aid,typeid,userip,redirecturl,templet,body{$inadd_f}) Values('$arcID','$typeid','$userip','','','$body'{$inadd_v})";
@@ -113,26 +113,26 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员！", "javascript:;");
+            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员", "javascript:;");
             exit();
         }
     }
 
     //增加积分
-    $dsql->ExecuteNoneQuery("UPDATE `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='" . $cfg_ml->M_ID . "' ; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
 
     //生成HTML
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE);
-    if ($artUrl == '') $artUrl = $cfg_phpurl . "/view.php?aid=$arcID";
+    if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
 
     ClearMyAddon($arcID, $title);
 
     //返回成功信息
     $msg =
-        "请选择你的后续操作：
+        "请选择您的后续操作：
     <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布文章</a>
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>
@@ -140,7 +140,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     <a href='article_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>更改文章</a>
     &nbsp;&nbsp;
     <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布文章管理</a>";
-    $wintitle = "成功发布文章！";
+    $wintitle = "成功发布文章";
     $wecome_info = "文章管理::发布文章";
     $win = new OxWindow();
     $win->AddTitle("成功发布文章：");

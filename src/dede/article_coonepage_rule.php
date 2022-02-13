@@ -5,12 +5,12 @@
  *
  * @version        $Id: article_coonepage_rule.php 1 14:12 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/datalistcp.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($action)) $action = '';
 
@@ -20,7 +20,7 @@ function _AddNote(){ }
 if ($action == 'add') {
   $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '$url' ");
   if (is_array($row)) {
-    echo "系统已经存在这个网址的条目！";
+    echo "系统已经存在这个网址的条目";
   } else {
     $query = " INSERT INTO `#@__co_onepage`(`url`,`title`,`issource`,`lang`,`rule`) Values('$url','$title','$issource','$lang','$rule'); ";
     $dsql->ExecuteNonequery($query);
@@ -115,6 +115,6 @@ function _ShowLoad(){ }
 $sql = "";
 $sql = "SELECT id,url,title,lang,issource FROM `#@__co_onepage` ORDER BY id DESC";
 $dlist = new DataListCP();
-$dlist->SetTemplate(DEDEADMIN . "/templets/article_coonepage_rule.htm");
+$dlist->SetTemplate(DEDEADMIN."/templets/article_coonepage_rule.htm");
 $dlist->SetSource($sql);
 $dlist->Display();

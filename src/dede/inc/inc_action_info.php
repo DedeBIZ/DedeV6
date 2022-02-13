@@ -5,11 +5,11 @@
  *
  * @version        $Id: inc_action_info.php 2 14:55 2010-11-11 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../config.php");
+require_once(dirname(__FILE__)."/../config.php");
 $cuserLogin = new userLogin();
 //后台功能操作配置项
 $actionSearch[0] = array(
@@ -33,7 +33,7 @@ $actionSearch[0] = array(
             'title' => '我发布的文档',
             'description' => '现在登录的管理员所发表的所有内容模型中的文档',
             'purview' => 'a_List,a_AccList,a_MyList',
-            'linkurl' => 'content_list.php?mid=' . $cuserLogin->userID
+            'linkurl' => 'content_list.php?mid='.$cuserLogin->userID
         ),
         3  =>  array(
             'title' => '评论管理',
@@ -259,7 +259,7 @@ $actionSearch[6] = array(
         ),
         7  =>  array(
             'title' => '汇款账号设置',
-            'description' => '银行付款的账号设置,用户可以查看到你的银行付款账号方便支付',
+            'description' => '银行付款的账号设置,用户可以查看到您的银行付款账号方便支付',
             'purview' => 'sys_Data',
             'linkurl' => 'shops_bank.php'
         ),
@@ -425,7 +425,7 @@ $actionSearch[10] = array(
         ),
         9  =>  array(
             'title' => '随机模板设置',
-            'description' => '本设置仅适用于系统默认的文章模型，设置后发布文章时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可！',
+            'description' => '本设置仅适用于系统默认的文章模型，设置后发布文章时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可',
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_template_rand.php'
         ),
@@ -443,7 +443,7 @@ $actionSearch[10] = array(
         ),
         14  =>  array(
             'title' => '病毒扫描[S]',
-            'description' => '以DedeCMSV6开发模式为标准对现有的文件进行扫描并进行判断',
+            'description' => '以DedeBIZ开发模式为标准对现有的文件进行扫描并进行判断',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_safetest.php'
         ),

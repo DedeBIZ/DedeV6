@@ -5,7 +5,7 @@
  * 
  * @version        $Id: archives_sg_add.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -38,9 +38,9 @@ function GetOptionList($selid = 0, $channeltype = 0)
         }
         if ($row->channeltype == $channeltype && $row->issend == 1) {
             if ($row->ispart == 0) {
-                $OptionArrayList .= "<option value='" . $row->id . "' class='option3'{$selected}>" . $row->typename . "</option>\r\n";
+                $OptionArrayList .= "<option value='".$row->id."' class='option3'{$selected}>".$row->typename."</option>\r\n";
             } else if ($row->ispart == 1) {
-                $OptionArrayList .= "<option value='" . $row->id . "' class='option2'{$selected}>" . $row->typename . "</option>\r\n";
+                $OptionArrayList .= "<option value='".$row->id."' class='option2'{$selected}>".$row->typename."</option>\r\n";
             }
         }
         $selected = '';
@@ -63,7 +63,7 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
 {
     global $OptionArrayList, $channels, $dsql;
     $selected = '';
-    $dsql->SetQuery("Select id,typename,ispart,channeltype,issend From `#@__arctype` where reid='" . $id . "' And ispart<2 order by sortrank asc");
+    $dsql->SetQuery("Select id,typename,ispart,channeltype,issend From `#@__arctype` where reid='".$id."' And ispart<2 order by sortrank asc");
     $dsql->Execute($id);
     while ($row = $dsql->GetObject($id)) {
         if ($selid == $row->id) {
@@ -71,13 +71,13 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
         }
         if ($row->channeltype == $channeltype && $row->issend == 1) {
             if ($row->ispart == 0) {
-                $OptionArrayList .= "<option value='" . $row->id . "' class='option3'{$selected}>$step" . $row->typename . "</option>\r\n";
+                $OptionArrayList .= "<option value='".$row->id."' class='option3'{$selected}>$step".$row->typename."</option>\r\n";
             } else if ($row->ispart == 1) {
-                $OptionArrayList .= "<option value='" . $row->id . "' class='option2'{$selected}>$step" . $row->typename . "</option>\r\n";
+                $OptionArrayList .= "<option value='".$row->id."' class='option2'{$selected}>$step".$row->typename."</option>\r\n";
             }
         }
         $selected = '';
-        LogicGetOptionArray($row->id, $step . "─", $channeltype, $selid);
+        LogicGetOptionArray($row->id, $step."─", $channeltype, $selid);
     }
 }
 
@@ -102,7 +102,7 @@ function classification($mid, $mtypeid = 0, $channelid = 1)
                 $selected = " selected";
             }
         }
-        $list .= "<option value='" . $row['mtypeid'] . "' class='option3'{$selected}>" . $row['mtypename'] . "</option>\r\n";
+        $list .= "<option value='".$row['mtypeid']."' class='option3'{$selected}>".$row['mtypename']."</option>\r\n";
         $selected = '';
     }
     return $list;

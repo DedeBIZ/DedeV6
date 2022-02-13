@@ -1,7 +1,5 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>新增自由列表</title>
@@ -84,7 +82,7 @@
       style="border:1px solid #CFCFCF;border-bottom:none;" class="table-borderless">
       <tr>
         <td align="left" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px;" class="py-3">
-          <a href="freelist_main.php"><strong><u>自自由列表管理</u></strong></a>
+          <a href="freelist_main.php"><strong>自自由列表管理</strong></a>
           <strong> &gt;&gt; 增加一个列表：</strong>
         </td>
         <td align="right" bgcolor="#EDF9D5" background="images/tbg.gif"></td>
@@ -344,7 +342,7 @@
     }
     function CheckSubmit() {
       if (document.form1.title.value == "") {
-        ShowMsg("自由列表标题标题不能为空！");
+        ShowMsg("自由列表标题标题不能为空");
         document.form1.title.focus();
         return false;
       }

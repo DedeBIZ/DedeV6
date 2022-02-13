@@ -4,14 +4,14 @@
  *
  * @version        $Id: arclist.lib.php 2 8:29 2010年7月8日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
 function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname = '')
 {
-    require_once(DEDEINC . '/taglib/arclist.lib.php');
+    require_once(DEDEINC.'/taglib/arclist.lib.php');
     if ($noteinfo == '') return '';
     $noteid = $arcTag->GetAtt('noteid');
     $rvalue = '';

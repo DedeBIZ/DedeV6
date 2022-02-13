@@ -1,7 +1,5 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>组权限设置</title>
@@ -36,7 +34,7 @@
           	$dsql->Execute();
           	while($row = $dsql->GetObject()) echo '<font color=red>'.$row->rank.'</font>、';
           	?>
-                  ，级别值必须小于10，超过或等于10所有权限设置将无效(超级管理员)，如果10个组不能完全满足你的要求，允许使用小数） </td>
+                  ，级别值必须小于10，超过或等于10所有权限设置将无效(超级管理员)，如果10个组不能完全满足您的要求，允许使用小数） </td>
               </tr>
               <?php
         $start = 0;

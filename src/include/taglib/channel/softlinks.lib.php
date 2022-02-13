@@ -5,7 +5,7 @@ if (!defined('DEDEINC')) exit('Request Error!');
  *
  * @version        $Id:softlinks.lib.php 1 9:33 2010年7月8日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -28,7 +28,7 @@ function ch_softlinks($fvalue, &$ctag, &$refObj, $fname = '', $downloadpage = fa
     $downlinks = '';
     if ($row['downtype'] != '0' && !$downloadpage) {
         $tempStr = GetSysTemplets("channel_downlinkpage.htm");
-        $links = $phppath . "/download.php?open=0&aid=" . $refObj->ArcID . "&cid=" . $refObj->ChannelID;
+        $links = $phppath."/download.php?open=0&aid=".$refObj->ArcID."&cid=".$refObj->ChannelID;
         $downlinks = str_replace("~link~", $links, $tempStr);
         return $downlinks;
     } else {
@@ -47,7 +47,7 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
     $dtp->LoadSource($fvalue);
     if (!is_array($dtp->CTags)) {
         $dtp->Clear();
-        return "无链接信息！";
+        return "无链接信息";
     }
     // 去除链接信息
     if (!empty($row['sites'])) {
@@ -77,12 +77,12 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
 
             //支持http,迅雷下载,ftp,flashget
             if (!preg_match("#^http:\/\/|^thunder:\/\/|^ftp:\/\/|^flashget:\/\/#i", $link)) {
-                $link = $GLOBALS['cfg_mainsite'] . $link;
+                $link = $GLOBALS['cfg_mainsite'].$link;
             }
             $downloads = getDownloads($link);
             $uhash = substr(md5($link), 0, 24);
             if ($row['gotojump'] == 1) {
-                $link = $phppath . "/download.php?open=2&id={$refObj->ArcID}&uhash={$uhash}";
+                $link = $phppath."/download.php?open=2&id={$refObj->ArcID}&uhash={$uhash}";
             }
             $temp = str_replace("~link~", $link, $tempStr);
             $temp = str_replace("~server~", $serverName, $temp);
@@ -102,11 +102,11 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
             list($link, $serverName, $serverType) = explode('|', $site);
             if (!empty($link_type) && $link_type != trim($serverType)) continue;
 
-            $link = trim(preg_replace("#\/$#", "", $link)) . $firstLink;
+            $link = trim(preg_replace("#\/$#", "", $link)).$firstLink;
             $downloads = getDownloads($link);
             $uhash = substr(md5($link), 0, 24);
             if ($row['gotojump'] == 1) {
-                $link = $phppath . "/download.php?open=2&id={$refObj->ArcID}&uhash={$uhash}";
+                $link = $phppath."/download.php?open=2&id={$refObj->ArcID}&uhash={$uhash}";
             }
             $temp = str_replace("~link~", $link, $tempStr);
             $temp = str_replace("~server~", $serverName, $temp);

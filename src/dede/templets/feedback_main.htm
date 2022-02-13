@@ -44,22 +44,22 @@
 		}
 		function delFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("你没选中任何内容！");
-			else if (window.confirm('你确定要删除这些评论吗?')) location.href = "feedback_main.php?job=del&fid=" + qstr;
+			if (qstr == "") ShowMsg("您没选中任何内容");
+			else if (window.confirm('您确定要删除这些评论吗?')) location.href = "feedback_main.php?job=del&fid=" + qstr;
 		}
 		function delFeedbackIP() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("你没选中任何内容！");
-			else if (window.confirm('你确定要删除这些评论吗?')) location.href = "feedback_main.php?job=delall&fid=" + qstr;
+			if (qstr == "") ShowMsg("您没选中任何内容");
+			else if (window.confirm('您确定要删除这些评论吗?')) location.href = "feedback_main.php?job=delall&fid=" + qstr;
 		}
 		function checkFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容！");
+			if (qstr == "") ShowMsg("您没选中任何内容");
 			else location.href = "feedback_main.php?job=check&fid=" + qstr;
 		}
 		function editFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容！");
+			if (qstr == "") ShowMsg("您没选中任何内容");
 			else location.href = "feedback_edit.php?job=edit&fid=" + qstr;
 		}
 	</script>
@@ -74,7 +74,7 @@
 		<tr>
 			<td height="28" background='images/tbg.gif' style="padding-left:10px;">
 				<div style="float:left;">
-					<a href='feedback_main.php'><u><b>评论管理</b></u></a>
+					<a href='feedback_main.php'><b>评论管理</b></a>
 				</div>
 				<div style="float:right;padding-right:10px">
 					<form name='form1'>
@@ -107,17 +107,17 @@
 											用户：{dede:field.username/}
 										</td>
 										<td width="20%">
-											文档：<a href='feedback_main.php?aid={dede:field.aid/}'><u>{dede:field.arctitle
-													function="RemoveXSS(@me)"/}</u></a> (<a
+											文档：<a href='feedback_main.php?aid={dede:field.aid/}'>{dede:field.arctitle
+													function="RemoveXSS(@me)"/}</a> (<a
 												href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives"
-												target="_blank"><u>浏览</u></a>)
+												target="_blank">浏览</a>)
 											<?php if($fields['replycount'] > 0) { ?><a
 												href='feedback_main.php?fid={dede:field.id/}'>（{dede:field.replycount/}条回复）</a>
 											<?php } ?>
 										</td>
 										<td width="18%" align="center">
 											IP地址：<a
-												href='feedback_main.php?ip={dede:field.ip/}'><u>{dede:field.ip/}</u></a>
+												href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a>
 										</td>
 										<td width="15%">
 											时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}

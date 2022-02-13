@@ -5,7 +5,7 @@
  *
  * @version        $Id: inc_archives_all.php 1 9:56 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -69,7 +69,7 @@ function GetFormItem($ctag)
     }
     if ($ctag->GetAtt("type") == "htmltext" || $ctag->GetAtt("type") == "textdata") {
         $formitem = "";
-        $formitem .= "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">" . $ctag->GetAtt('itemname') . "</td><td>";
+        $formitem .= "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td><td>";
         $formitem .= GetEditor($fieldname, '', 350, 'Basic', 'string');
         $formitem .= "</td></tr></table>\r\n";
         return $formitem;
@@ -86,22 +86,22 @@ function GetFormItem($ctag)
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "img") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='" . $fieldname . "_bt' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "media") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='" . $fieldname . "_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "addon") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='" . $fieldname . "_bt' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "media") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='" . $fieldname . "_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
@@ -147,28 +147,28 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
     } else if ($dtype == "textdata") {
         if ($job == 'edit') {
             $addvarDirs = explode('/', $addvar);
-            $addvarDir = preg_replace("#\/" . $addvarDirs[count($addvarDirs) - 1] . "$#", "", $addvar);
-            $mdir = $GLOBALS['cfg_basedir'] . $addvarDir;
+            $addvarDir = preg_replace("#\/".$addvarDirs[count($addvarDirs) - 1]."$#", "", $addvar);
+            $mdir = $GLOBALS['cfg_basedir'].$addvarDir;
             if (!is_dir($mdir)) {
                 MkdirAll($mdir, $GLOBALS['cfg_dir_purview']);
             }
-            $fp = fopen($GLOBALS['cfg_basedir'] . $addvar, "w");
+            $fp = fopen($GLOBALS['cfg_basedir'].$addvar, "w");
             fwrite($fp, stripslashes($dvalue));
             fclose($fp);
             CloseFtp();
             return $addvar;
         } else {
-            $ipath = $GLOBALS['cfg_cmspath'] . "/data/textdata";
+            $ipath = $GLOBALS['cfg_cmspath']."/data/textdata";
             $tpath = ceil($aid / 5000);
-            if (!is_dir($GLOBALS['cfg_basedir'] . $ipath)) {
-                MkdirAll($GLOBALS['cfg_basedir'] . $ipath, $cfg_dir_purview);
+            if (!is_dir($GLOBALS['cfg_basedir'].$ipath)) {
+                MkdirAll($GLOBALS['cfg_basedir'].$ipath, $cfg_dir_purview);
             }
-            if (!is_dir($GLOBALS['cfg_basedir'] . $ipath . '/' . $tpath)) {
-                MkdirAll($GLOBALS['cfg_basedir'] . $ipath . '/' . $tpath, $cfg_dir_purview);
+            if (!is_dir($GLOBALS['cfg_basedir'].$ipath.'/'.$tpath)) {
+                MkdirAll($GLOBALS['cfg_basedir'].$ipath.'/'.$tpath, $cfg_dir_purview);
             }
-            $ipath = $ipath . '/' . $tpath;
-            $filename = "{$ipath}/{$aid}-" . cn_substr(md5($cfg_cookie_encode), 0, 16) . ".txt";
-            $fp = fopen($GLOBALS['cfg_basedir'] . $filename, "w");
+            $ipath = $ipath.'/'.$tpath;
+            $filename = "{$ipath}/{$aid}-".cn_substr(md5($cfg_cookie_encode), 0, 16).".txt";
+            $fp = fopen($GLOBALS['cfg_basedir'].$filename, "w");
             fwrite($fp, stripslashes($dvalue));
             fclose($fp);
             CloseFtp();
@@ -180,24 +180,24 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
             return "";
         }
         $iurl = trim(str_replace($GLOBALS['cfg_basehost'], "", $iurl));
-        $imgurl = "{dede:img text='' width='' height=''} " . $iurl . " {/dede:img}";
+        $imgurl = "{dede:img text='' width='' height=''} ".$iurl." {/dede:img}";
         if (preg_match("#^http:\/\/#i", $iurl) && $GLOBALS['isUrlOpen']) {
             //远程图片
             $reimgs = "";
             if ($isUrlOpen) {
                 $reimgs = GetRemoteImage($iurl, $GLOBALS['adminid']);
                 if (is_array($reimgs)) {
-                    $imgurl = "{dede:img text='' width='" . $reimgs[1] . "' height='" . $reimgs[2] . "'} " . $reimgs[0] . " {/dede:img}";
+                    $imgurl = "{dede:img text='' width='".$reimgs[1]."' height='".$reimgs[2]."'} ".$reimgs[0]." {/dede:img}";
                 }
             } else {
-                $imgurl = "{dede:img text='' width='' height=''} " . $iurl . " {/dede:img}";
+                $imgurl = "{dede:img text='' width='' height=''} ".$iurl." {/dede:img}";
             }
         } else if ($iurl != "") {
             //站内图片
-            $imgfile = $GLOBALS['cfg_basedir'] . $iurl;
+            $imgfile = $GLOBALS['cfg_basedir'].$iurl;
             if (is_file($imgfile)) {
                 $imginfos = GetImageSize($imgfile);
-                $imgurl = "{dede:img text='' width='" . $imginfos[0] . "' height='" . $imginfos[1] . "'} $iurl {/dede:img}";
+                $imgurl = "{dede:img text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}";
             }
         }
         return addslashes($imgurl);
@@ -271,8 +271,8 @@ function GetFormItemValue($ctag, $fvalue)
 
     //文本数据的特殊处理
     if ($ctag->GetAtt("type") == "textdata") {
-        if (is_file($GLOBALS['cfg_basedir'] . $fvalue)) {
-            $fp = fopen($GLOBALS['cfg_basedir'] . $fvalue, 'r');
+        if (is_file($GLOBALS['cfg_basedir'].$fvalue)) {
+            $fp = fopen($GLOBALS['cfg_basedir'].$fvalue, 'r');
             $okfvalue = "";
             while (!feof($fp)) {
                 $okfvalue .= fgets($fp, 1024);
@@ -281,14 +281,14 @@ function GetFormItemValue($ctag, $fvalue)
         } else {
             $okfvalue = "";
         }
-        $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">" . $ctag->GetAtt('itemname') . "</td>\r\n";
-        $formitem .= "<td>\r\n" . GetEditor($fieldname, $okfvalue, 350, 'Basic', 'string') . "</td>\r\n";
+        $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td>\r\n";
+        $formitem .= "<td>\r\n".GetEditor($fieldname, $okfvalue, 350, 'Basic', 'string')."</td>\r\n";
         $formitem .= "</tr></table>\r\n";
         $formitem .= "<input type='hidden' name='{$fieldname}_file' value='{$fvalue}'>\r\n";
         return $formitem;
     } else if ($ctag->GetAtt("type") == "htmltext") {
-        $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">" . $ctag->GetAtt('itemname') . "</td>\r\n";
-        $formitem .= "<td>\r\n" . GetEditor($fieldname, $fvalue, 350, 'Basic', 'string') . "</td>\r\n";
+        $formitem  = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"80\">".$ctag->GetAtt('itemname')."</td>\r\n";
+        $formitem .= "<td>\r\n".GetEditor($fieldname, $fvalue, 350, 'Basic', 'string')."</td>\r\n";
         $formitem .= "</tr></table>\r\n";
         return $formitem;
     } else if ($ctag->GetAtt("type") == "multitext") {
@@ -312,17 +312,17 @@ function GetFormItemValue($ctag, $fvalue)
         }
         $ntag = $ndtp->GetTag("img");
         $fvalue = trim($ntag->GetInnerText());
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300'><input name='" . $fieldname . "_bt' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "media") {
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300'><input name='" . $fieldname . "_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "addon") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' style='width:300'><input name='" . $fieldname . "_bt' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;

@@ -5,13 +5,13 @@
  *
  * @version        $Id: tag_test_action.php 1 23:07 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_Keyword');
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 $timestamp = time();
 if (empty($tag)) $tag = '';
 
@@ -29,7 +29,7 @@ if (empty($action)) {
     $dlist->SetParameter("orderway", $orderway);
     $dlist->SetParameter("orderby", $orderby);
     $dlist->pageSize = 20;
-    $dlist->SetTemplet(DEDEADMIN . "/templets/tags_main.htm");
+    $dlist->SetTemplet(DEDEADMIN."/templets/tags_main.htm");
     $dlist->SetSource($query);
     $dlist->Display();
     exit();
@@ -98,7 +98,7 @@ function fetch()
         $endaid = 0;
     }
     if (!empty($where)) {
-        $wheresql = " WHERE arcrank>-1 AND " . implode(' AND ', $where);
+        $wheresql = " WHERE arcrank>-1 AND ".implode(' AND ', $where);
     }
     $query = "SELECT id as aid,arcrank,typeid,keywords FROM `#@__archives` $wheresql LIMIT $start, 100";
     $dsql->SetQuery($query);
@@ -125,7 +125,7 @@ function fetch()
                     $trow = $dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__taglist` WHERE tag LIKE '$keyword'");
                     if (intval($trow['dd']) != $row['total']) {
 
-                        $query = "UPDATE `#@__tagindex` SET `total`=" . $trow['dd'] . ",uptime=$now WHERE id='$tid' ";
+                        $query = "UPDATE `#@__tagindex` SET `total`=".$trow['dd'].",uptime=$now WHERE id='$tid' ";
                         $dsql->ExecuteNoneQuery($query);
                     }
                 } else {

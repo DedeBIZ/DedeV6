@@ -5,7 +5,7 @@
  *
  * @version        $Id: tag.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -33,7 +33,7 @@ function lib_tag(&$ctag, &$refObj)
         $dsql->Execute();
         $ids = '';
         while ($row = $dsql->GetArray()) {
-            $ids .= ($ids == '' ? $row['tid'] : ',' . $row['tid']);
+            $ids .= ($ids == '' ? $row['tid'] : ','.$row['tid']);
         }
         if ($ids != '') {
             $addsql .= " AND id IN($ids)";
@@ -63,9 +63,9 @@ function lib_tag(&$ctag, &$refObj)
         $row['keyword'] = $row['tag'];
         $row['tag'] = dede_htmlspecialchars($row['tag']);
         if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {
-            $row['link'] = $cfg_cmsurl . "/a/tags/" . GetPinyin($row['keyword']) . "/";
+            $row['link'] = $cfg_cmsurl."/a/tags/".GetPinyin($row['keyword'])."/";
         } else {
-            $row['link'] = $cfg_cmsurl . "/tags.php?/" . urlencode($row['keyword']) . "/";
+            $row['link'] = $cfg_cmsurl."/tags.php?/".urlencode($row['keyword'])."/";
         }
 
         $row['highlight'] = mt_rand(1, 10);

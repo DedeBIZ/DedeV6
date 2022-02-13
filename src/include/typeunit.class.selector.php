@@ -4,11 +4,11 @@
  *
  * @version        $Id: typeunit.class.selector.php 1 15:21 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEDATA . "/cache/inc_catalog_base.inc");
+require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 
 /**
  * 栏目单元,选择框
@@ -60,9 +60,9 @@ class TypeUnitSelector
             $topidstr = '';
             while ($row = $this->dsql->GetObject()) {
                 if ($row->reid == 0) continue;
-                $topidstr .= ($topidstr == '' ? $row->reid : ',' . $row->reid);
+                $topidstr .= ($topidstr == '' ? $row->reid : ','.$row->reid);
             }
-            $admin_catalog .= ',' . $topidstr;
+            $admin_catalog .= ','.$topidstr;
             $admin_catalogs = explode(',', $admin_catalog);
             $admin_catalogs = array_unique($admin_catalogs);
         }
@@ -111,7 +111,7 @@ class TypeUnitSelector
         $fid = $id;
         $oldvalues = array();
         if (!empty($oldvalue)) $oldvalues = explode(',', $oldvalue);
-        $this->dsql->SetQuery("SELECT id,reid,typedir,typename,ispart,channeltype FROM `#@__arctype` WHERE reid='" . $id . "' ORDER BY sortrank");
+        $this->dsql->SetQuery("SELECT id,reid,typedir,typename,ispart,channeltype FROM `#@__arctype` WHERE reid='".$id."' ORDER BY sortrank");
         $this->dsql->Execute($fid);
         while ($row = $this->dsql->GetObject($fid)) {
             if ($cfg_admin_channel == 'array' && !in_array($row->id, $admin_catalogs)) {
@@ -133,10 +133,10 @@ class TypeUnitSelector
                 continue;
             }
             if ($chackRadio != '') {
-                $soncat .= "  <div class='item'><label>" . $chackRadio .' '. $typeName . "</label></div>\r\n";
+                $soncat .= "  <div class='item'><label>".$chackRadio .' '. $typeName."</label></div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
             } else {
-                $soncat .= "  <br style='clear:both' /><div class='item'><b>" . $typeName . "：</b></div>\r\n";
+                $soncat .= "  <br style='clear:both' /><div class='item'><b>".$typeName."：</b></div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
                 $soncat .= "        <br style='clear:both' />";
             }

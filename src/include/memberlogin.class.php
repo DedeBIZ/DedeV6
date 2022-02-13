@@ -4,7 +4,7 @@
  *
  * @version        $Id: userlogin.class.php 1 15:59 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -26,11 +26,11 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
     if ($cfg_mb_notallow != '') {
         $nas = explode(',', $cfg_mb_notallow);
         if (in_array($uid, $nas)) {
-            return $msgtitle . '为系统禁止的标识！';
+            return $msgtitle.'为系统禁止的标识';
         }
     }
     if ($cfg_md_idurl == 'Y' && preg_match("/[^a-z0-9]/i", $uid)) {
-        return $msgtitle . '必须由英文字母或数字组成！';
+        return $msgtitle.'必须由英文字母或数字组成';
     }
 
     if ($cfg_soft_lang == 'utf-8') {
@@ -44,17 +44,17 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
                 $i++;
             } else {
-                return $msgtitle . '可能含有乱码，建议你改用英文字母和数字组合！';
+                return $msgtitle.'可能含有乱码，建议您改用英文字母和数字组合';
             }
         } else {
             if (preg_match("/[^0-9a-z@\.-]/i", $ck_uid[$i])) {
-                return $msgtitle . '不能含有 [@]、[.]、[-]以外的特殊符号！';
+                return $msgtitle.'不能含有 [@]、[.]、[-]以外的特殊符号';
             }
         }
     }
     if ($ckhas) {
         $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE userid LIKE '$uid' ");
-        if (is_array($row)) return $msgtitle . "已经存在！";
+        if (is_array($row)) return $msgtitle."已经存在";
     }
     return 'ok';
 }
@@ -69,13 +69,13 @@ function CheckNotAllow()
     global $dsql, $cfg_ml, $cfg_mb_spacesta;
     if (empty($cfg_ml->M_ID)) return;
     if ($cfg_ml->M_Spacesta == -2) {
-        ShowMsg("你已经被禁言，请与管理员联系！", "-1");
+        ShowMsg("您已经被禁言，请与管理员联系", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta == -10) {
-        ShowMsg("系统开启了邮件审核机制，因此你的帐号需要审核后才能发信息！", "-1");
+        ShowMsg("系统开启了邮件审核机制，因此您的帐号需要审核后才能发信息", "-1");
         exit();
     } else if ($cfg_ml->M_Spacesta < 0) {
-        ShowMsg('系统开启了审核机制，因此你的帐号需要管理员审核后才能发信息！', '-1');
+        ShowMsg('系统开启了审核机制，因此您的帐号需要管理员审核后才能发信息', '-1');
         exit();
     }
 }
@@ -153,7 +153,7 @@ class MemberLogin
             if (is_array($this->fields)) {
                 //间隔一小时更新一次用户登录时间
                 if (time() - $this->M_LoginTime > 3600) {
-                    $dsql->ExecuteNoneQuery("update `#@__member` set logintime='" . time() . "',loginip='" . GetIP() . "' where mid='" . $this->fields['mid'] . "';");
+                    $dsql->ExecuteNoneQuery("update `#@__member` set logintime='".time()."',loginip='".GetIP()."' where mid='".$this->fields['mid']."';");
                     PutCookie("DedeLoginTime", time(), $this->M_KeepTime);
                 }
                 $this->M_LoginID = $this->fields['userid'];
@@ -213,7 +213,7 @@ class MemberLogin
         $mhasDay = $this->M_ExpTime - ceil(($nowtime - $this->M_UpTime) / 3600 / 24) + 1;
         if ($mhasDay <= 0) {
             $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET uptime='0',exptime='0',
-                                         rank='$cfg_mb_rank' WHERE mid='" . $this->fields['mid'] . "';");
+                                         rank='$cfg_mb_rank' WHERE mid='".$this->fields['mid']."';");
         }
         return $mhasDay;
     }
@@ -264,7 +264,7 @@ class MemberLogin
         $hasuse = $this->GetUserSpace();
         $maxSize = $cfg_mb_max * 1024 * 1024;
         if ($hasuse >= $maxSize) {
-            ShowMsg('你的空间已满，不允许上传新文件！', '-1');
+            ShowMsg('您的空间已满，不允许上传新文件', '-1');
             exit();
         }
     }
@@ -450,7 +450,7 @@ class MemberLogin
         $this->M_ID = $uid;
         $this->M_LoginTime = time();
         $loginip = GetIP();
-        $inquery = "UPDATE `#@__member` SET loginip='$loginip',logintime='" . $this->M_LoginTime . "' WHERE mid='" . $uid . "'";
+        $inquery = "UPDATE `#@__member` SET loginip='$loginip',logintime='".$this->M_LoginTime."' WHERE mid='".$uid."'";
         $dsql->ExecuteNoneQuery($inquery);
         if ($this->M_KeepTime > 0) {
             PutCookie('DedeUserID', $uid, $this->M_KeepTime);
@@ -472,13 +472,13 @@ class MemberLogin
     {
         $sta = '';
         if ($this->M_Rank == 0) {
-            $sta .= "你目前的身份是：普通会员";
+            $sta .= "您目前的身份是：普通会员";
         } else {
-            $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='" . $this->M_Rank . "'");
-            $sta .= "你目前的身份是：" . $row['membername'];
-            $rs = $dsql->GetOne("Select id From `#@__admin` where userid='" . $this->M_LoginID . "'");
+            $row = $dsql->GetOne("Select membername From `#@__arcrank` where `rank`='".$this->M_Rank."'");
+            $sta .= "您目前的身份是：".$row['membername'];
+            $rs = $dsql->GetOne("Select id From `#@__admin` where userid='".$this->M_LoginID."'");
             if (!is_array($rs)) {
-                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余天数: <font color='red'>" . $this->M_HasDay . "</font>  天 ";
+                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余天数: <font color='red'>".$this->M_HasDay."</font>  天 ";
                 elseif ($this->M_Rank > 10) $sta .= " <font color='red'>会员升级已经到期</font> ";
             }
         }

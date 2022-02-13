@@ -11,11 +11,11 @@
 
 function checkSubmitAlb() {
 	if (document.form1.title.value == '') {
-		ShowMsg("档案标题不能为空！");
+		ShowMsg("档案标题不能为空");
 		return false;
 	}
 	if (document.form1.typeid.value == 0) {
-		ShowMsg("请选择档案的主类别！");
+		ShowMsg("请选择档案的主类别");
 		return false;
 	}
 	document.form1.imagebody.value = $Obj('copyhtml').innerHTML;
@@ -69,7 +69,7 @@ function showZipField(formitem, zipid, upid) {
 //图集，显示与隐藏Html编辑框
 function showHtmlField(formitem, htmlid, upid) {
 	if ($Nav() != "IE") {
-		alert("该方法不适用于非IE浏览器！");
+		alert("该方法不适用于非IE浏览器");
 		return;
 	}
 	if (formitem.checked) {

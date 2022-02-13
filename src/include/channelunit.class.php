@@ -3,12 +3,12 @@
  * 频道模型单元类
  * @version        $Id: channelunit.class.php 2 17:32 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/channelunit.func.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/channelunit.func.php");
 
 /*----------------------------------
 function C____ChannelUnit();
@@ -36,7 +36,7 @@ class ChannelUnit
         $sql = " SELECT * FROM `#@__channeltype` WHERE id='$cid' ";
         $this->ChannelInfos = $this->dsql->GetOne($sql);
         if (!is_array($this->ChannelInfos)) {
-            echo '读取频道信息失败，无法进行后续操作！';
+            echo '读取频道信息失败，无法进行后续操作';
             exit();
         }
         $dtp = new DedeTagParse();
@@ -51,7 +51,7 @@ class ChannelUnit
                 }
                 $tnames[$tname] = 1;
                 if ($this->AllFieldNames != '') {
-                    $this->AllFieldNames .= ',' . $tname;
+                    $this->AllFieldNames .= ','.$tname;
                 } else {
                     $this->AllFieldNames .= $tname;
                 }
@@ -108,10 +108,10 @@ class ChannelUnit
         if ($ftype == 'text') {
             $fvalue = HtmlReplace($fvalue);
         } else if ($ftype == 'textdata') {
-            if (!is_file($GLOBALS['cfg_basedir'] . $fvalue)) {
+            if (!is_file($GLOBALS['cfg_basedir'].$fvalue)) {
                 return '';
             }
-            $fp = fopen($GLOBALS['cfg_basedir'] . $fvalue, 'r');
+            $fp = fopen($GLOBALS['cfg_basedir'].$fvalue, 'r');
             $fvalue = '';
             while (!feof($fp)) {
                 $fvalue .= fgets($fp, 1024);
@@ -122,9 +122,9 @@ class ChannelUnit
             $tmptext = GetSysTemplets("channel_addon.htm");
             $fvalue  = str_replace('~link~', $foldvalue, $tmptext);
             $fvalue  = str_replace('~phpurl~', $GLOBALS['cfg_phpurl'], $fvalue);
-        } else if (file_exists(DEDEINC . '/taglib/channel/' . $ftype . '.lib.php')) {
-            include_once(DEDEINC . '/taglib/channel/' . $ftype . '.lib.php');
-            $func = 'ch_' . $ftype;
+        } else if (file_exists(DEDEINC.'/taglib/channel/'.$ftype.'.lib.php')) {
+            include_once(DEDEINC.'/taglib/channel/'.$ftype.'.lib.php');
+            $func = 'ch_'.$ftype;
             $fvalue = $func($fvalue, $addvalue, $this, $fname);
         }
         return $fvalue;
@@ -152,7 +152,7 @@ class ChannelUnit
         $dtp->LoadSource($fvalue);
         if (!is_array($dtp->CTags)) {
             $dtp->Clear();
-            return "无图片信息！";
+            return "无图片信息";
         }
         $ptag = $dtp->GetTag("pagestyle");
         if (is_object($ptag)) {
@@ -190,12 +190,12 @@ class ChannelUnit
                     $imgurl = "view.php?aid=$this->ArcID&pageno=$photoid";
                 } else {
                     if ($photoid == 1) {
-                        $imgurl = $GLOBALS["fileFirst"] . ".html";
+                        $imgurl = $GLOBALS["fileFirst"].".html";
                     } else {
-                        $imgurl = $GLOBALS["fileFirst"] . "_" . $photoid . ".html";
+                        $imgurl = $GLOBALS["fileFirst"]."_".$photoid.".html";
                     }
                 }
-                $imgcls = "image" . ($photoid - 1);
+                $imgcls = "image".($photoid - 1);
                 $revalue .= "<dl><dt>$alt<dd>$ddimg<dd>$ddimg<dd>$ddimg<dd><dd><div></div><div></div><dd><dd>$photoid</dd></dl>\r\n";
                 $photoid++;
             }

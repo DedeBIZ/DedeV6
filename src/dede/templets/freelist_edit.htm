@@ -1,7 +1,5 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>更改自由列表</title>
@@ -42,7 +40,7 @@
     }
     function CheckSubmit() {
       if (document.form1.title.value == "") {
-        ShowMsg("自由列表标题标题不能为空！");
+        ShowMsg("自由列表标题标题不能为空");
         document.form1.title.focus();
         return false;
       }
@@ -73,7 +71,7 @@
             <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table-borderless">
               <tr>
                 <td width="35%" height="18" align="left" style="padding-left:10px;">
-                  <a href="freelist_main.php"><strong><u>自自由列表管理</u></strong></a>
+                  <a href="freelist_main.php"><strong>自自由列表管理</strong></a>
                   <strong> &gt;&gt; 更改自由列表：</strong>
                 </td>
                 <td width="65%" align="right"></td>

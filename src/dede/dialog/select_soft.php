@@ -4,11 +4,11 @@
  *
  * @version        $Id: select_soft.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeBIZ.Dialog
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($activepath)) {
     $activepath = '';
 }
@@ -17,8 +17,8 @@ $activepath = preg_replace("#\/{1,}#", '/', $activepath);
 if (strlen($activepath) < strlen($cfg_soft_dir)) {
     $activepath = $cfg_soft_dir;
 }
-$inpath = $cfg_basedir . $activepath;
-$activeurl = '..' . $activepath;
+$inpath = $cfg_basedir.$activepath;
+$activeurl = '..'.$activepath;
 if (empty($f)) {
     $f = 'form1.enclosure';
 }
@@ -30,10 +30,10 @@ if (empty($comeback)) {
 }
 $addparm = '';
 if (!empty($CKEditor)) {
-    $addparm = '&CKEditor=' . $CKEditor;
+    $addparm = '&CKEditor='.$CKEditor;
 }
 if (!empty($CKEditorFuncNum)) {
-    $addparm .= '&CKEditorFuncNum=' . $CKEditorFuncNum;
+    $addparm .= '&CKEditorFuncNum='.$CKEditorFuncNum;
 }
 if (!empty($noeditor)) {
     $addparm .= '&noeditor=yes';
@@ -48,10 +48,10 @@ if (!empty($noeditor)) {
     <link rel="stylesheet" href="../css/base.css">
     <style>
 html{background:#f2f2f2}
-body{margin:0;line-height:22px;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
+body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
 a{text-decoration:none!important}
 table{background:#fff}
-.bg{margin:10px;border-radius:2px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+.bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
 .linerow{border-bottom:1px solid #eee!important}
     </style>
 </head>
@@ -82,7 +82,7 @@ table{background:#fff}
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="job" value="upload">
-                    &nbsp;上传：<input type="file" name="uploadfile" size="24">
+                    &nbsp;上传：<input type="file" name="uploadfile" size="24" style="border:none">
                     &nbsp;
                     改名：<input type="text" name="newname" style="width:160px">
                     &nbsp;
@@ -109,10 +109,10 @@ table{background:#fff}
                             if ($filesize != "")
                                 if ($filesize < 0.1) {
                                     @list($ty1, $ty2) = split("\.", $filesize);
-                                    $filesize = $ty1 . "." . substr($ty2, 0, 2);
+                                    $filesize = $ty1.".".substr($ty2, 0, 2);
                                 } else {
                                     @list($ty1, $ty2) = split("\.", $filesize);
-                                    $filesize = $ty1 . "." . substr($ty2, 0, 1);
+                                    $filesize = $ty1.".".substr($ty2, 0, 1);
                                 }
                             $filetime = filemtime("$inpath/$file");
                             $filetime = MyDate("Y-m-d H:i", $filetime);
@@ -122,16 +122,16 @@ table{background:#fff}
                         else if ($file == "..") {
                             if ($activepath == "") continue;
                             $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                            $line = "\n<tr height='28'>
-                            <td class='linerow'><a href='select_soft.php?f=$f&activepath=" . urlencode($tmp) . $addparm . "'><img src='img/dir2.gif'>上级目录</a></td>
+                            $line = "\n<tr height='26'>
+                            <td class='linerow'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='img/dir2.gif'>上级目录</a></td>
                             <td colspan='2' class='linerow'>当前目录:$activepath</td>
                             </tr>\r\n";
                             echo $line;
                         } else if (is_dir("$inpath/$file")) {
-                            if (preg_match("#^_(.*)$#i", $file)) continue; #屏蔽FrontPage扩展目录和linux隐蔽目录
+                            if (preg_match("#^_(.*)$#i", $file)) continue;
                             if (preg_match("#^\.(.*)$#i", $file)) continue;
-                            $line = "\n<tr height='28'>
-                            <td class='linerow'><a href=select_soft.php?f=$f&activepath=" . urlencode("$activepath/$file") . $addparm . "><img src='img/dir.gif'>$file</a></td>
+                            $line = "\n<tr height='26'>
+                            <td class='linerow'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='img/dir.gif'>$file</a></td>
                             <td class='linerow'></td>
                             <td class='linerow'></td>
                             </tr>";
@@ -142,7 +142,7 @@ table{background:#fff}
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;
-                            $line = "\n<tr height='28'>
+                            $line = "\n<tr height='26'>
                             <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='img/zip.gif'>$file</a></td>
                             <td class='linerow'>$filesize KB</td>
                             <td class='linerow'>$filetime</td>
@@ -154,7 +154,7 @@ table{background:#fff}
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;
-                            $line = "\n<tr height='28'>
+                            $line = "\n<tr height='26'>
                             <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='img/exe.gif'>$file</a></td>
                             <td class='linerow'>$filesize KB</td>
                             <td class='linerow'>$filetime</td>
@@ -168,7 +168,7 @@ table{background:#fff}
             </td>
         </tr>
         <tr>
-            <td colspan="3" height="30">请点击要选择的文件，红色字样的为刚上传的文件</td>
+            <td colspan="3" height="30">点击选择的文件，红色字样的为刚上传的文件</td>
         </tr>
     </table>
 </body>

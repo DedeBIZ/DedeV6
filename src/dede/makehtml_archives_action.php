@@ -5,13 +5,13 @@
  *
  * @version        $Id: makehtml_archives_action.php 1 9:11 2010年7月19日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-require_once(DEDEINC . "/arc.archives.class.php");
+require_once(DEDEINC."/arc.archives.class.php");
 
 $est1 = ExecTime();
 $startid  = (empty($startid)  ? -1  : $startid);
@@ -66,7 +66,7 @@ if ($totalnum == 0) {
 if ($totalnum > $startdd + $pagesize) {
     $limitSql = " LIMIT $startdd,$pagesize";
 } else {
-    $limitSql = " LIMIT $startdd," . ($totalnum - $startdd);
+    $limitSql = " LIMIT $startdd,".($totalnum - $startdd);
 }
 
 $tjnum = $startdd;
@@ -95,7 +95,7 @@ $ttime = number_format(($ttime / 60), 2);
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
 $dvlen = $tjlen * 2;
 $tjsta = "<div style='width:200;height:15;border:1px solid #898989;text-align:left'><div style='width:$dvlen;height:15;background-color:#829D83'></div></div>";
-$tjsta .= "<br/>本次用时：" . number_format($t2, 2) . "，总用时：$ttime 分钟，到达位置：" . ($startdd + $pagesize) . "<br/>完成创建文件总数的：$tjlen %，继续执行任务...";
+$tjsta .= "<br/>本次用时：".number_format($t2, 2)."，总用时：$ttime 分钟，到达位置：".($startdd + $pagesize)."<br/>完成创建文件总数的：$tjlen %，继续执行任务...";
 
 
 //速度测试
@@ -109,8 +109,8 @@ if($startdd > 1000)
 
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";
-    $nurl .= "&totalnum=$totalnum&startdd=" . ($startdd + $pagesize) . "&pagesize=$pagesize";
-    $nurl .= "&seltime=$seltime&sstime=$sstime&stime=" . urlencode($stime) . "&etime=" . urlencode($etime) . "&uptype=$uptype&mkvalue=$mkvalue";
+    $nurl .= "&totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize";
+    $nurl .= "&seltime=$seltime&sstime=$sstime&stime=".urlencode($stime)."&etime=".urlencode($etime)."&uptype=$uptype&mkvalue=$mkvalue";
     ShowMsg($tjsta, $nurl, 0, 100);
     exit();
 } else {
@@ -118,7 +118,7 @@ if ($tjnum < $totalnum) {
         ShowMsg("生成文件：$totalnum 总用时：{$ttime} 分钟，现转向当前栏目更新&gt;&gt;", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
     } else {
         if ($uptype == '') {
-            ShowMsg("完成所有创建任务！，生成文件：$totalnum 总用时：{$ttime} 分钟。", "javascript:;");
+            ShowMsg("完成所有创建任务，生成文件：$totalnum 总用时：{$ttime} 分钟。", "javascript:;");
         } else {
             ShowMsg("完成文档HTML更新任务，现在开始进行主页更新...", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
         }

@@ -5,12 +5,12 @@
  *
  * @version        $Id: friendlink_main.php 1 8:48 2010年7月13日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 setcookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
 
 if (empty($keyword)) $keyword = '';
@@ -29,7 +29,7 @@ $sql = "SELECT * FROM `#@__flink` WHERE  CONCAT(`url`,`webname`,`email`) LIKE '%
 $dlist = new DataListCP();
 $dlist->SetParameter('keyword', $keyword);
 $dlist->SetParameter('ischeck', $ischeck);
-$dlist->SetTemplet(DEDEADMIN . '/templets/friendlink_main.htm');
+$dlist->SetTemplet(DEDEADMIN.'/templets/friendlink_main.htm');
 $dlist->SetSource($sql);
 $dlist->display();
 

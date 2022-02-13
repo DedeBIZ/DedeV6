@@ -5,26 +5,26 @@
  *
  * @version        $Id: vdimgck.php$
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/../include/common.inc.php');
-require_once(DEDEDATA . '/safe/inc_safe_config.php');
-require_once(DEDEDATA . '/config.cache.inc.php');
+require_once(dirname(__FILE__).'/../include/common.inc.php');
+require_once(DEDEDATA.'/safe/inc_safe_config.php');
+require_once(DEDEDATA.'/config.cache.inc.php');
 $config = array(
     'font_size'   => 20,
     'img_height'  => $safe_wheight,
     'word_type'  => (int)$safe_codetype,   // 1:数字 2:英文  3:单词
     'img_width'   => $safe_wwidth,
     'use_boder'   => TRUE,
-    'font_file'   => DEDEINC . '/data/fonts/' . mt_rand(1, 6) . '.ttf',
-    'wordlist_file'   => DEDEINC . '/data/words/words.txt',
+    'font_file'   => DEDEINC.'/data/fonts/'.mt_rand(1, 6).'.ttf',
+    'wordlist_file'   => DEDEINC.'/data/words/words.txt',
     'filter_type' => 5
 );
 
 $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
-$sessSavePath = DEDEDATA . "/sessions_{$enkey}";
+$sessSavePath = DEDEDATA."/sessions_{$enkey}";
 if (!is_dir($sessSavePath)) mkdir($sessSavePath);
 
 // Session保存路径
@@ -39,7 +39,7 @@ if (!echo_validate_image($config)) {
     @session_start();
     $_SESSION['securimage_code_value'] = strtolower('abcd');
     if (function_exists('imagecreatefromjpeg')) {
-        $im = @imagecreatefromjpeg(DEDEINC . '/data/vdcode.jpg');
+        $im = @imagecreatefromjpeg(DEDEINC.'/data/vdcode.jpg');
         header("Pragma:no-cache\r\n");
         header("Cache-Control:no-cache\r\n");
         header("Expires:0\r\n");
@@ -49,8 +49,8 @@ if (!echo_validate_image($config)) {
         header("Pragma:no-cache\r\n");
         header("Cache-Control:no-cache\r\n");
         header("Expires:0\r\n");
-        $c = file_get_contents(DEDEINC . '/data/vdcode.jpg', true);
-        $size = filesize(DEDEINC . '/data/vdcode.jpg');
+        $c = file_get_contents(DEDEINC.'/data/vdcode.jpg', true);
+        $size = filesize(DEDEINC.'/data/vdcode.jpg');
         header('Content-Type: image/x-icon');
         header("Content-length: $size");
         echo $c;
@@ -69,7 +69,7 @@ function echo_validate_image($config = array())
     $font_size   = isset($config['font_size']) ? $config['font_size'] : 14;
     $img_height  = isset($config['img_height']) ? $config['img_height'] : 38;
     $img_width   = isset($config['img_width']) ? $config['img_width'] : 68;
-    $font_file   = isset($config['font_file']) ? $config['font_file'] : DEDEINC . '/data/font/' . mt_rand(1, 6) . '.ttf';
+    $font_file   = isset($config['font_file']) ? $config['font_file'] : DEDEINC.'/data/font/'.mt_rand(1, 6).'.ttf';
     $use_boder   = isset($config['use_boder']) ? $config['use_boder'] : TRUE;
     $filter_type = isset($config['filter_type']) ? $config['filter_type'] : 0;
 

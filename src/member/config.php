@@ -3,7 +3,7 @@
 /**
  * @version        $Id: config.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -27,8 +27,8 @@ function XSSClean($val)
     $search .= '1234567890!@#$%^&*()';
     $search .= '~`";:?+/={}[]-_|\'\\';
     for ($i = 0; $i < strlen($search); $i++) {
-        $val = preg_replace('/(&#[xX]0{0,8}' . dechex(ord($search[$i])) . ';?)/i', $search[$i], $val); // with a ;
-        $val = preg_replace('/(&#0{0,8}' . ord($search[$i]) . ';?)/', $search[$i], $val); // with a ;
+        $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); // with a ;
+        $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); // with a ;
     }
 
     $val = str_replace("`", "‘", $val);
@@ -58,7 +58,7 @@ function XSSClean($val)
                 $pattern .= $ra[$i][$j];
             }
             $pattern .= '/i';
-            $replacement = substr($ra[$i], 0, 2) . '<x>' . substr($ra[$i], 2);
+            $replacement = substr($ra[$i], 0, 2).'<x>'.substr($ra[$i], 2);
             $val = preg_replace($pattern, $replacement, $val);
             if ($val_before == $val) {
                 $found = false;
@@ -73,10 +73,10 @@ $_POST = XSSClean($_POST);
 $_REQUEST = XSSClean($_REQUEST);
 $_COOKIE = XSSClean($_COOKIE);
 
-require_once(dirname(__FILE__) . '/../include/common.inc.php');
-require_once(DEDEINC . '/filter.inc.php');
-require_once(DEDEINC . '/memberlogin.class.php');
-require_once(DEDEINC . '/dedetemplate.class.php');
+require_once(dirname(__FILE__).'/../include/common.inc.php');
+require_once(DEDEINC.'/filter.inc.php');
+require_once(DEDEINC.'/memberlogin.class.php');
+require_once(DEDEINC.'/dedetemplate.class.php');
 
 // 检查CSRF
 function CheckCSRF()
@@ -112,7 +112,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
 }
 
 
-//获得当前脚本名称，如果你的系统被禁用了$_SERVER变量，请自行更改这个选项
+//获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行更改这个选项
 $dedeNowurl = $s_scriptName = '';
 $dedeNowurl = GetCurUrl();
 $dedeNowurls = explode('?', $dedeNowurl);
@@ -127,7 +127,7 @@ if ($cfg_mb_open == 'N') {
         if ($format === 'json') {
             echo json_encode(array(
                 "code" => -1,
-                "msg" => "系统关闭了会员功能，因此你无法访问此页面",
+                "msg" => "系统关闭了会员功能，因此您无法访问此页面",
                 "data" => null,
             ));
             exit;
@@ -135,7 +135,7 @@ if ($cfg_mb_open == 'N') {
             die('');
         }
     } else {
-        ShowMsg("系统关闭了会员功能，因此你无法访问此页面！", "javascript:;");
+        ShowMsg("系统关闭了会员功能，因此您无法访问此页面", "javascript:;");
         exit();
     }
 }
@@ -145,10 +145,10 @@ $cfg_ml = new MemberLogin($keeptime);
 //判断用户是否登录
 $myurl = '';
 if ($cfg_ml->IsLogin()) {
-    $myurl = $cfg_memberurl . "/index.php?uid=" . urlencode($cfg_ml->M_LoginID);
-    if (!preg_match("#^http[s]?:#i", $myurl)) $myurl = $cfg_basehost . $myurl;
+    $myurl = $cfg_memberurl."/index.php?uid=".urlencode($cfg_ml->M_LoginID);
+    if (!preg_match("#^http[s]?:#i", $myurl)) $myurl = $cfg_basehost.$myurl;
     if ($cfg_ml->fields['face'] == "") {
-        $cfg_ml->fields['face'] = $cfg_cmsurl . "/static/img/avatar.png";
+        $cfg_ml->fields['face'] = $cfg_cmsurl."/static/img/avatar.png";
     }
 }
 
@@ -166,7 +166,7 @@ function CheckRank($rank = 0, $money = 0)
 {
     global $cfg_ml, $cfg_memberurl, $cfg_mb_spacesta,$dsql;
     if (!$cfg_ml->IsLogin()) {
-        header("Location:{$cfg_memberurl}/login.php?gourl=" . urlencode(GetCurUrl()));
+        header("Location:{$cfg_memberurl}/login.php?gourl=".urlencode(GetCurUrl()));
         exit();
     } else {
         if ($cfg_mb_spacesta == '-10') {
@@ -189,7 +189,7 @@ function CheckRank($rank = 0, $money = 0)
                 $myname = "普通会员";
                 $needname = $row['membername'];
             } else {
-                $dsql->SetQuery("SELECT membername From `#@__arcrank` WHERE rank='$rank' OR rank='" . $cfg_ml->M_Rank . "' ORDER BY rank DESC");
+                $dsql->SetQuery("SELECT membername From `#@__arcrank` WHERE rank='$rank' OR rank='".$cfg_ml->M_Rank."' ORDER BY rank DESC");
                 $dsql->Execute();
                 $row = $dsql->GetObject();
                 $needname = $row->membername;
@@ -199,10 +199,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "普通会员";
                 }
             }
-            ShowMsg("对不起，需要：<span style='font-size:11pt;color:red'>$needname</span> 才能访问本页面。<br>你目前的等级是：<span style='font-size:11pt;color:red'>$myname</span> 。", "-1", 0, 5000);
+            ShowMsg("对不起，需要：<span style='font-size:11pt;color:red'>$needname</span> 才能访问本页面。<br>您目前的等级是：<span style='font-size:11pt;color:red'>$myname</span> 。", "-1", 0, 5000);
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("对不起，需要花费金币：<span style='font-size:11pt;color:red'>$money</span> 才能访问本页面。<br>你目前拥有的金币是：<span style='font-size:11pt;color:red'>" . $cfg_ml->M_Money . "</span>  。", "-1", 0, 5000);
+            ShowMsg("对不起，需要花费金币：<span style='font-size:11pt;color:red'>$money</span> 才能访问本页面。<br>您目前拥有的金币是：<span style='font-size:11pt;color:red'>".$cfg_ml->M_Money."</span>  。", "-1", 0, 5000);
             exit();
         }
     }
@@ -226,9 +226,9 @@ function countArchives($channelid)
         } else {
             $_field = 'articles';
         }
-        $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__archives WHERE channel='$id' AND mid='" . $cfg_ml->M_ID . "'");
+        $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__archives WHERE channel='$id' AND mid='".$cfg_ml->M_ID."'");
 
-        $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET " . $_field . "='" . $row['nums'] . "' WHERE mid='" . $cfg_ml->M_ID . "'");
+        $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET ".$_field."='".$row['nums']."' WHERE mid='".$cfg_ml->M_ID."'");
     } else {
         return FALSE;
     }

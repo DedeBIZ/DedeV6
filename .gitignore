@@ -37,3 +37,4 @@ src/data/js/
 src/data/vote/*.js
 src/data/module/*.xml
 src/data/*.db
+src/uploads/soft/*/

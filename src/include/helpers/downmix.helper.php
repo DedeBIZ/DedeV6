@@ -5,7 +5,7 @@
  *
  * @version        $Id: downmix.inc.php 1 9:14 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -27,10 +27,10 @@ if (!function_exists('RndString')) {
         $fontColor = "#FFFFFF";
 
         //div span p 标记的随机样式
-        $st1 = chr(mt_rand(ord('A'), ord('Z'))) . chr(mt_rand(ord('a'), ord('z'))) . chr(mt_rand(ord('a'), ord('z'))) . mt_rand(100, 999);
-        $st2 = chr(mt_rand(ord('A'), ord('Z'))) . chr(mt_rand(ord('a'), ord('z'))) . chr(mt_rand(ord('a'), ord('z'))) . mt_rand(100, 999);
-        $st3 = chr(mt_rand(ord('A'), ord('Z'))) . chr(mt_rand(ord('a'), ord('z'))) . chr(mt_rand(ord('a'), ord('z'))) . mt_rand(100, 999);
-        $st4 = chr(mt_rand(ord('A'), ord('Z'))) . chr(mt_rand(ord('a'), ord('z'))) . chr(mt_rand(ord('a'), ord('z'))) . mt_rand(100, 999);
+        $st1 = chr(mt_rand(ord('A'), ord('Z'))).chr(mt_rand(ord('a'), ord('z'))).chr(mt_rand(ord('a'), ord('z'))).mt_rand(100, 999);
+        $st2 = chr(mt_rand(ord('A'), ord('Z'))).chr(mt_rand(ord('a'), ord('z'))).chr(mt_rand(ord('a'), ord('z'))).mt_rand(100, 999);
+        $st3 = chr(mt_rand(ord('A'), ord('Z'))).chr(mt_rand(ord('a'), ord('z'))).chr(mt_rand(ord('a'), ord('z'))).mt_rand(100, 999);
+        $st4 = chr(mt_rand(ord('A'), ord('Z'))).chr(mt_rand(ord('a'), ord('z'))).chr(mt_rand(ord('a'), ord('z'))).mt_rand(100, 999);
         $rndstyle[1]['value'] = ".{$st1} { display:none; }";
         $rndstyle[1]['name'] = $st1;
         $rndstyle[2]['value'] = ".{$st2} { display:none; }";
@@ -51,7 +51,7 @@ if (!function_exists('RndString')) {
         $rndem[4] = 'p';
 
         //读取字符串数据
-        $fp = fopen(DEDEDATA . '/downmix.data.php', 'r');
+        $fp = fopen(DEDEDATA.'/downmix.data.php', 'r');
         $start = 0;
         $totalitem = 0;
 
@@ -79,7 +79,7 @@ if (!function_exists('RndString')) {
             if ($i + 2 >= $bodylen || $i < 50) {
                 $reString .= $body[$i];
             } else {
-                $ntag = @strtolower($body[$i] . $body[$i + 1] . $body[$i + 2]);
+                $ntag = @strtolower($body[$i].$body[$i + 1].$body[$i + 2]);
                 if ($ntag == '</p' || ($ntag == '<br' && $i - $prepos > $maxpos)) {
                     $dd = mt_rand(1, 4);
                     $emname = $rndem[$dd];
@@ -90,7 +90,7 @@ if (!function_exists('RndString')) {
                     } else {
                         $rnstr = " <font color='$fontColor'>$rnstr</font> ";
                     }
-                    $reString .= $rnstr . $body[$i];
+                    $reString .= $rnstr.$body[$i];
                     $prepos = $i;
                 } else {
                     $reString .= $body[$i];

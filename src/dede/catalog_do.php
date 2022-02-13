@@ -5,13 +5,13 @@
  *
  * @version        $Id: catalog_do.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 if (empty($dopost)) {
-    ShowMsg("对不起，请指定栏目参数！", "catalog_main.php");
+    ShowMsg("对不起，请指定栏目参数", "catalog_main.php");
     exit();
 }
 $cid = empty($cid) ? 0 : intval($cid);
@@ -37,7 +37,7 @@ if ($dopost == "addArchives") {
     }
     $gurl = $row["addcon"];
     if ($gurl == "") {
-        ShowMsg("对不起，你指的栏目可能有误！", "catalog_main.php");
+        ShowMsg("对不起，您指的栏目可能有误", "catalog_main.php");
         exit();
     }
 
@@ -64,7 +64,7 @@ function listArchives();
         $typename = $row["typename"];
         $channelname = $row["channelname"];
         if ($gurl == "") {
-            ShowMsg("对不起，你指的栏目可能有误！", "catalog_main.php");
+            ShowMsg("对不起，您指的栏目可能有误", "catalog_main.php");
             exit();
         }
     } else if ($channelid > 0) {
@@ -83,14 +83,14 @@ function listArchives();
 //浏览通用模板目录
 function viewTempletDir();
 ---------------------------*/ else if ($dopost == "viewTemplet") {
-    header("location:tpl.php?path=/" . $cfg_df_style);
+    header("location:tpl.php?path=/".$cfg_df_style);
     exit();
 }
 /*------------------------
 浏览单个页面的栏目
 function ViewSgPage()
 ------------------------*/ else if ($dopost == "viewSgPage") {
-    require_once(DEDEINC . "/arc.listview.class.php");
+    require_once(DEDEINC."/arc.listview.class.php");
     $lv = new ListView($cid);
     $pageurl = $lv->MakeHtml();
     ShowMsg("更新缓冲，请稍后...", $pageurl);
@@ -104,7 +104,7 @@ function upRank()
     CheckPurview('t_Edit,t_AccEdit');
 
     //检查栏目操作许可
-    CheckCatalog($cid, "你无权更改本栏目！");
+    CheckCatalog($cid, "您无权更改本栏目");
     $row = $dsql->GetOne("SELECT reid,sortrank FROM #@__arctype WHERE id='$cid'");
     $reid = $row['reid'];
     $sortrank = $row['sortrank'];
@@ -123,8 +123,8 @@ function upRank()
     if (is_array($row)) {
         $maxID = $row['id'];
         for ($i = 1; $i <= $maxID; $i++) {
-            if (isset(${'sortrank' . $i})) {
-                $dsql->ExecuteNoneQuery("UPDATE #@__arctype SET sortrank='" . (${'sortrank' . $i}) . "' WHERE id='{$i}';");
+            if (isset(${'sortrank'.$i})) {
+                $dsql->ExecuteNoneQuery("UPDATE #@__arctype SET sortrank='".(${'sortrank'.$i})."' WHERE id='{$i}';");
             }
         }
     }
@@ -175,7 +175,7 @@ function GetJs
 function GetSunListsMenu();
 -----------*/ else if ($dopost == "GetSunListsMenu") {
     $userChannel = $cuserLogin->getUserChannel();
-    require_once(DEDEINC . "/typeunit.class.menu.php");
+    require_once(DEDEINC."/typeunit.class.menu.php");
     AjaxHead();
     PutCookie('lastCidMenu', $cid, 3600 * 24, "/");
     $tu = new TypeUnit($userChannel);
@@ -185,7 +185,7 @@ function GetSunListsMenu();
 获得子类的内容
 function GetSunLists();
 -----------*/ else if ($dopost == "GetSunLists") {
-    require_once(DEDEINC . "/typeunit.class.admin.php");
+    require_once(DEDEINC."/typeunit.class.admin.php");
     AjaxHead();
     PutCookie('lastCid', $cid, 3600 * 24, "/");
     $tu = new TypeUnit();
@@ -200,9 +200,9 @@ function GetSunLists();
 function unitCatalog() { }
 -----------------*/ else if ($dopost == 'unitCatalog') {
     CheckPurview('t_Move');
-    require_once(DEDEINC . '/oxwindow.class.php');
-    require_once(DEDEINC . '/typelink.class.php');
-    require_once(DEDEINC . '/channelunit.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/typelink.class.php');
+    require_once(DEDEINC.'/channelunit.func.php');
     if (empty($nextjob)) {
         $typeid = isset($typeid) ? intval($typeid) : 0;
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctype` WHERE reid='$typeid' ");
@@ -211,7 +211,7 @@ function unitCatalog() { }
         $reid = $tl->TypeInfos['reid'];
         $channelid = $tl->TypeInfos['channeltype'];
         if (!empty($row['dd'])) {
-            ShowMsg("栏目： $typename($typeid) 有子栏目，不能进行合并操作！", '-1');
+            ShowMsg("栏目： $typename($typeid) 有子栏目，不能进行合并操作", '-1');
             exit();
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
@@ -224,19 +224,19 @@ function unitCatalog() { }
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
         $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档HTML和列表HTML。");
-        $win->AddItem('你选择的栏目是：', "<font color='red'>$typename($typeid)</font>");
-        $win->AddItem('你希望合并到那个栏目？', "<select name='unittype'>\r\n{$typeOptions}\r\n</select>");
+        $win->AddItem('您选择的栏目是：', "<font color='red'>$typename($typeid)</font>");
+        $win->AddItem('您希望合并到那个栏目？', "<select name='unittype'>\r\n{$typeOptions}\r\n</select>");
         $win->AddItem('注意事项：', '栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况。');
         $winform = $win->GetWindow('ok');
         $win->Display();
         exit();
     } else {
         if ($typeid == $unittype) {
-            ShowMsg("同一栏目无法合并,请后退重试！", '-1');
+            ShowMsg("同一栏目无法合并,请后退重试", '-1');
             exit();
         }
         if (IsParent($unittype, $typeid)) {
-            ShowMsg('不能从父类合并到子类！', 'catalog_main.php');
+            ShowMsg('不能从父类合并到子类', 'catalog_main.php');
             exit();
         }
         $row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
@@ -249,7 +249,7 @@ function unitCatalog() { }
         $dsql->ExecuteNoneQuery("UPDATE `$addtable` SET typeid='$unittype' WHERE typeid='$typeid' ");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctype` WHERE id='$typeid' ");
         UpDateCatCache();
-        ShowMsg('成功合并指定栏目！', 'catalog_main.php');
+        ShowMsg('成功合并指定栏目', 'catalog_main.php');
         exit();
     }
 }
@@ -258,9 +258,9 @@ function unitCatalog() { }
 function moveCatalog() { }
 -----------------*/ else if ($dopost == 'moveCatalog') {
     CheckPurview('t_Move');
-    require_once(DEDEINC . '/oxwindow.class.php');
-    require_once(DEDEINC . '/typelink.class.php');
-    require_once(DEDEINC . '/channelunit.func.php');
+    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/typelink.class.php');
+    require_once(DEDEINC.'/channelunit.func.php');
     if (empty($nextjob)) {
         $tl = new TypeLink($typeid);
         $typename = $tl->TypeInfos['typename'];
@@ -276,24 +276,24 @@ function moveCatalog() { }
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
         $win->AddTitle("移动目录时不会删除原来已创建的列表，移动后需重新对栏目创建HTML。");
-        $win->AddItem('你选择的栏目是：', "$typename($typeid)");
-        $win->AddItem('你希望移动到那个栏目？', "<select name='movetype'>\r\n<option value='0'>移动为顶级栏目</option>\r\n$typeOptions\r\n</select>");
+        $win->AddItem('您选择的栏目是：', "$typename($typeid)");
+        $win->AddItem('您希望移动到那个栏目？', "<select name='movetype'>\r\n<option value='0'>移动为顶级栏目</option>\r\n$typeOptions\r\n</select>");
         $win->AddItem('注意事项：', '不允许从父级移动到子级目录，只允许子级到更高级或同级或不同父级的情况。');
         $winform = $win->GetWindow('ok');
         $win->Display();
         exit();
     } else {
         if ($typeid == $movetype) {
-            ShowMsg('移对对象和目标位置相同！', 'catalog_main.php');
+            ShowMsg('移对对象和目标位置相同', 'catalog_main.php');
             exit();
         }
         if (IsParent($movetype, $typeid)) {
-            ShowMsg('不能从父类移动到子类！', 'catalog_main.php');
+            ShowMsg('不能从父类移动到子类', 'catalog_main.php');
             exit();
         }
         $dsql->ExecuteNoneQuery(" UPDATE `#@__arctype` SET reid='$movetype' WHERE id='$typeid' ");
         UpDateCatCache();
-        ShowMsg('成功移动目录！', 'catalog_main.php');
+        ShowMsg('成功移动目录', 'catalog_main.php');
         exit();
     }
 }

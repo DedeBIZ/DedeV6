@@ -5,11 +5,11 @@
  *
  * @version        $Id: friendlink_type.php 1 8:48 2010年7月13日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
 
 //保存更改
@@ -18,9 +18,9 @@ if ($dopost == "save") {
     $endID = $idend;
     for (; $startID <= $endID; $startID++) {
         $query = '';
-        $tid = ${'ID_' . $startID};
-        $pname =   ${'pname_' . $startID};
-        if (isset(${'check_' . $startID})) {
+        $tid = ${'ID_'.$startID};
+        $pname =   ${'pname_'.$startID};
+        if (isset(${'check_'.$startID})) {
             if ($pname != '') {
                 $query = "UPDATE `#@__myadtypee` SET typename='$pname' WHERE id='$tid' ";
                 $dsql->ExecuteNoneQuery($query);
@@ -36,7 +36,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery($query);
     }
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
-    ShowMsg("成功更新广告分类列表！", 'adtype_main.php');
+    ShowMsg("成功更新广告分类列表", 'adtype_main.php');
     exit;
 }
 

@@ -4,7 +4,7 @@
  *
  * @version        $Id: archive.helper.php 2 23:00 2010年7月5日Z tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -19,7 +19,7 @@ if (!function_exists('GetOneArchive')) {
     function GetOneArchive($aid)
     {
         global $dsql;
-        include_once(DEDEINC . "/channelunit.func.php");
+        include_once(DEDEINC."/channelunit.func.php");
         $aid = trim(preg_replace('/[^0-9]/', '', $aid));
         $reArr = array();
 
@@ -124,7 +124,7 @@ if (!function_exists('GetTags')) {
         $query = "SELECT tag FROM `#@__taglist` WHERE aid='$aid' ";
         $dsql->Execute('tag', $query);
         while ($row = $dsql->GetArray('tag')) {
-            $tags .= ($tags == '' ? $row['tag'] : ',' . $row['tag']);
+            $tags .= ($tags == '' ? $row['tag'] : ','.$row['tag']);
         }
         return $tags;
     }

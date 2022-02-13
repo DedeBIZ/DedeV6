@@ -5,14 +5,14 @@
  *
  * @version        $Id: makehtml_list_action.php 1 11:09 2010年7月19日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-require_once(DEDEDATA . "/cache/inc_catalog_base.inc");
-require_once(DEDEINC . "/channelunit.func.php");
+require_once(DEDEDATA."/cache/inc_catalog_base.inc");
+require_once(DEDEINC."/channelunit.func.php");
 
 if (!isset($upnext)) $upnext = 1;
 if (empty($gotype)) $gotype = '';
@@ -41,7 +41,7 @@ if ($gotype == '' || $gotype == 'mkallct') {
 //一键更新带缓存的情况
 else if ($gotype == 'mkall') {
     $uppage = 1;
-    $mkcachefile = DEDEDATA . "/mkall_cache_{$adminID}.php";
+    $mkcachefile = DEDEDATA."/mkall_cache_{$adminID}.php";
     $idArray = array();
     if (file_exists($mkcachefile)) require_once($mkcachefile);
 }
@@ -52,10 +52,10 @@ if (isset($idArray[$pageno])) {
     $tid = $idArray[$pageno];
 } else {
     if ($gotype == '') {
-        ShowMsg("完成所有列表更新！", "javascript:;");
+        ShowMsg("完成所有列表更新", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg("完成所有栏目列表更新，现在作最后数据优化！", "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目列表更新，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 }
@@ -74,11 +74,11 @@ if (!empty($tid)) {
         exit();
     }
     if ($cfg_Cs[$tid][1] > 0) {
-        require_once(DEDEINC . "/arc.listview.class.php");
+        require_once(DEDEINC."/arc.listview.class.php");
         $lv = new ListView($tid);
         $position = MfTypedir($lv->Fields['typedir']);
     } else {
-        require_once(DEDEINC . "/arc.sglistview.class.php");
+        require_once(DEDEINC."/arc.sglistview.class.php");
         $lv = new SgListView($tid);
     }
     // 这里统一统计
@@ -101,22 +101,22 @@ $nextpage = $pageno + 1;
 if ($nextpage >= $totalpage && $finishType) {
     if ($gotype == '') {
         if (empty($reurl)) {
-            $reurl = '../plus/list.php?tid=' . $tid;
+            $reurl = '../plus/list.php?tid='.$tid;
         }
-        ShowMsg("完成所有栏目列表更新！<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
+        ShowMsg("完成所有栏目列表更新<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg("完成所有栏目列表更新，现在作最后数据优化！", "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目列表更新，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 } else {
     if ($finishType) {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage";
-        ShowMsg("成功创建栏目：" . $tid . "，继续进行操作！", $gourl, 0, 100);
+        ShowMsg("成功创建栏目：".$tid."，继续进行操作", $gourl, 0, 100);
         exit();
     } else {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
-        ShowMsg("栏目：" . $tid . "，继续进行操作...", $gourl, 0, 100);
+        ShowMsg("栏目：".$tid."，继续进行操作...", $gourl, 0, 100);
         exit();
     }
 }

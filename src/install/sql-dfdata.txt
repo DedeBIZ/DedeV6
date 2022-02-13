@@ -513,7 +513,7 @@ INSERT INTO `#@__co_onepage` VALUES('5','www.dedebiz.com','DedeBIZ','1','gb2312'
 ('4','www.techweb.com.cn','Techweb','1','gb2312','<div class="content_txt">{@body}</div>\t\n'),
 ('6','tw.news.yahoo.com','台湾雅虎','1','big5','<div id="ynwsartcontent">{@body}</div>\t\n');
 
-INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com', 'DedeCMSV6', '', '', '', 1226375403, 1, 2);
+INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com', 'DedeBIZ', '', '', '', 1226375403, 1, 2);
 INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com/help', '帮助中心', '', '', '', 1227772717, 1, 2);
 INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com/auth', '授权中心', '', '', '', 1227772703, 1, 2);
 INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (3, 'https://www.dedebiz.com/git', '代码托管', '', '', '', 1603767210, 1, 1);
@@ -568,7 +568,7 @@ INSERT INTO `#@__payment` VALUES('3','alipay','支付宝','2','支付宝网站(w
 ('1','cod','货到付款','0','开通城市：×××\t\n货到付款区域：×××','3','a:0:{}','1','1','0'),
 ('6','yeepay','YeePay易宝','12','YeePay易宝（北京通融通信息技术有限公司）是专业从事多元化电子支付业务一站式服务的领跑者。在立足于网上支付的同时，YeePay易宝不断创新，将互联网、手机、固定电话整合在一个平台上，继短信支付、手机充值之后，首家推出了YeePay易宝电话支付业务，真正实现了离线支付，为更多传统行业搭建了电子支付的高速公路。YeePay易宝融合世界先进的电子支付文化，聚合众多金融、电信、IT、互联网等领域内的巨擘，旨在通过创新的支付机制，推动中国电子商务新进程。YeePay易宝致力于成为世界一流的电子支付应用和服务提供商，专注于金融增值服务和移动增值服务两大领域，创新并推广多元化、低成本的、安全有效的支付服务。<input type="button" name="Submit" value="立即注册" onclick="window.open("https://www.yeepay.com/selfservice/requestRegister.action")" />','2','a:2:{s:10:"yp_account";a:4:{s:5:"title";s:8:"商户编号";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:2:"aa";}s:6:"yp_key";a:4:{s:5:"title";s:8:"商户密钥";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:3:"dsa";}}','1','0','1');
 
-INSERT INTO `#@__softconfig` VALUES('0','1','1','1','http://www.aaa.com | 镜像地址一\t\nhttp://www.bbb.com | 镜像地址二\t\nhttp://www.ccc.com | 镜像地址三\t\n','<p> ■ 推荐使用第三方专业下载工具下载本站软件，使用 WinRAR v3.10 以上版本解压本站软件。<br />\t\n ■ 如果这个软件总是不能下载的请点击报告错误,谢谢合作!!<br />\t\n ■ 下载本站资源，如果服务器暂不能下载请过一段时间重试！<br />\t\n ■ 如果遇到什么问题，请到本站论坛去咨寻，我们将在那里提供更多 、更好的资源！<br />\t\n ■ 本站提供的一些商业软件是供学习研究之用，如用于商业用途，请购买正版。</p>','0','0','0','0');
+INSERT INTO `#@__softconfig` VALUES('0','1','1','1','http://www.aaa.com | 镜像地址一\t\nhttp://www.bbb.com | 镜像地址二\t\nhttp://www.ccc.com | 镜像地址三\t\n','<p> ■ 推荐使用第三方专业下载工具下载本站软件，使用 WinRAR v3.10 以上版本解压本站软件。<br />\t\n ■ 如果这个软件总是不能下载的请点击报告错误,谢谢合作!!<br />\t\n ■ 下载本站资源，如果服务器暂不能下载请过一段时间重试<br />\t\n ■ 如果遇到什么问题，请到本站论坛去咨寻，我们将在那里提供更多 、更好的资源<br />\t\n ■ 本站提供的一些商业软件是供学习研究之用，如用于商业用途，请购买正版。</p>','0','0','0','0');
 
 INSERT INTO `#@__stepselect` VALUES('1','血型','blood','1','1'),
 ('2','体型','bodytype','1','1'),
@@ -594,7 +594,7 @@ INSERT INTO `#@__sys_set` VALUES('1','nature','性格外向,性格内向,活泼�
 ('2','language','普通话,上海话,广东话,英语,日语,韩语,法语,意大利语,德语,西班牙语,俄语,阿拉伯语');
 
 
-INSERT INTO `#@__vote` VALUES('1','你是从哪儿得知本站的？','1266336000','1584547200','0','0','1','1','0','0','<v:note id="1" count="1">朋友介绍</v:note>rn<v:note id="2" count="0">门户网站的搜索引擎</v:note>rn<v:note id="3" count="2">Google或百度搜索</v:note>rn<v:note id="4" count="2">别的网站上的链接</v:note>rn<v:note id="5" count="1">其它途径</v:note>rn');
+INSERT INTO `#@__vote` VALUES('1','您是从哪儿得知本站的？','1266336000','1584547200','0','0','1','1','0','0','<v:note id="1" count="1">朋友介绍</v:note>rn<v:note id="2" count="0">门户网站的搜索引擎</v:note>rn<v:note id="3" count="2">Google或百度搜索</v:note>rn<v:note id="4" count="2">别的网站上的链接</v:note>rn<v:note id="5" count="1">其它途径</v:note>rn');
 
 INSERT INTO `#@__sys_enum` VALUES('139','cms制作','503','vocation','503','0'),
 ('39','租房','1','house','0','1'),
@@ -3994,7 +3994,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('47','cfg_cli_time','服务器时区设置','2','number','8'),
 ('48','cfg_mb_addontype','会员附件许可的类型','4','bstring','swf|mpg|mp3|rm|rmvb|wmv|wma|wav|mid|mov|zip|rar|doc|xsl|ppt|wps'),
 ('49','cfg_mb_max','会员附件总大小限制(MB)','4','number','500'),
-('20','cfg_replacestr','替换词语（词语会被替换成***）<br/>用|分开，但不要在结尾加|','5','bstring','她妈|它妈|他妈|你妈|去死|贱人'),
+('20','cfg_replacestr','替换词语（词语会被替换成***）<br/>用|分开，但不要在结尾加|','5','bstring','她妈|它妈|他妈|您妈|去死|贱人'),
 ('719','cfg_makeindex','发布文章后马上更新网站主页','6','bool','N'),
 ('51','cfg_keyword_like','使用关键词关连文章','6','bool','N'),
 ('52','cfg_index_max','网站主页调用函数最大索引文档数<br>不适用于经常单栏目采集过多内容的网站<br>不启用本项此值设置为0即可','6','number','10000'),

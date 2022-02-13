@@ -3,15 +3,15 @@
 /**
  * @version        $Id: buy.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'op';
-$myurl = $cfg_basehost . $cfg_member_dir . '/index.php?uid=' . $cfg_ml->M_LoginID;
+$myurl = $cfg_basehost.$cfg_member_dir.'/index.php?uid='.$cfg_ml->M_LoginID;
 $moneycards = '';
 $membertypes = '';
 $dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
@@ -40,5 +40,5 @@ while ($row = $dsql->GetObject()) {
     ";
 }
 $tpl = new DedeTemplate();
-$tpl->LoadTemplate(DEDEMEMBER . '/templets/buy.htm');
+$tpl->LoadTemplate(DEDEMEMBER.'/templets/buy.htm');
 $tpl->Display();

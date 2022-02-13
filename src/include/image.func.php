@@ -4,12 +4,12 @@
  *
  * @version        $Id: image.func.php 1 15:59 2010年7月5日Z tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
-include(DEDEDATA . '/mark/inc_photowatermark_config.php');
+include(DEDEDATA.'/mark/inc_photowatermark_config.php');
 //检测用户系统支持的图片格式
 global $cfg_photo_type, $cfg_photo_typenames, $cfg_photo_support;
 $cfg_photo_type['gif'] = FALSE;

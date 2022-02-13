@@ -5,12 +5,12 @@
  *
  * @version        $Id: public_guide.php 1 15:46 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/oxwindow.class.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/oxwindow.class.php");
 if (empty($action)) $action = '';
 
 /*--------------------
@@ -29,15 +29,15 @@ if ($action == 'setdefault') {
     $win->AddTitle("<a href='public_guide.php?action=edit'>内容发布向导</a> &gt;&gt; 设置默认发布表单");
     if ($cid == 0) {
         $msg = "
-         成功取消默认发布表单！
+         成功取消默认发布表单
            <hr style='width:90%' size='1' />
-           你目前想要进行的操作： <a href='public_guide.php?action=edit'>返回发布向导页</a>
+           您目前想要进行的操作： <a href='public_guide.php?action=edit'>返回发布向导页</a>
       ";
     } else {
         $msg = "
-        成功保存默认发布表单，以后点击“内容发布”面板将直接跳转到你选择的内容发布页！
+        成功保存默认发布表单，以后点击“内容发布”面板将直接跳转到您选择的内容发布页
         <hr style='width:90%' size='1' />
-           你目前想要进行的操作： <a href='public_guide.php'>转到默认发布表单</a> &nbsp; <a href='public_guide.php?action=edit'>返回发布向导页</a>
+           您目前想要进行的操作： <a href='public_guide.php'>转到默认发布表单</a> &nbsp; <a href='public_guide.php?action=edit'>返回发布向导页</a>
       ";
     }
     $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
@@ -60,7 +60,7 @@ if (is_array($row) && $action != 'edit') {
     }
     $channelid = $row['id'];
     $cid = 0;
-    require_once(DEDEADMIN . '/' . $addcon);
+    require_once(DEDEADMIN.'/'.$addcon);
     exit();
 }
 

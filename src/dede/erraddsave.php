@@ -5,13 +5,13 @@
  *
  * @version        $Id: erraddsave.php 1 19:09 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
-require_once(DEDEINC . '/datalistcp.class.php');
-require_once(DEDEINC . '/common.func.php');
+require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/datalistcp.class.php');
+require_once(DEDEINC.'/common.func.php');
 
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
@@ -63,7 +63,7 @@ function typename($me)
 
 if ($dopost == "delete") {
     if ($id == '') {
-        ShowMsg("参数无效！", "-1");
+        ShowMsg("参数无效", "-1");
         exit();
     }
 
@@ -74,10 +74,10 @@ if ($dopost == "delete") {
             $query = "DELETE FROM `#@__erradd` WHERE `id` = '$var'";
             $dsql->ExecuteNoneQuery($query);
         }
-        ShowMsg("成功删除指定的文档！", "erraddsave.php");
+        ShowMsg("成功删除指定的文档", "erraddsave.php");
         exit();
     } else {
-        require_once(DEDEINC . "/oxwindow.class.php");
+        require_once(DEDEINC."/oxwindow.class.php");
         $wintitle = "删除";
         $wecome_info = "<a href='erraddsave.php'>错误管理</a>::删除错误";
         $win = new OxWindow();
@@ -85,7 +85,7 @@ if ($dopost == "delete") {
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("你确实要删除“ $id ”这些错误提示？");
+        $win->AddTitle("您确实要删除“ $id ”这些错误提示？");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -95,6 +95,6 @@ if ($dopost == "delete") {
 
 $sql = "SELECT * FROM `#@__erradd` ORDER BY id desc";
 $dlist = new DataListCP();
-$dlist->SetTemplet(DEDEADMIN . "/templets/erradd.htm");
+$dlist->SetTemplet(DEDEADMIN."/templets/erradd.htm");
 $dlist->SetSource($sql);
 $dlist->display();

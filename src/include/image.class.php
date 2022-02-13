@@ -4,7 +4,7 @@
  *
  * @version        $Id: image.class.php 1 18:10 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -129,7 +129,7 @@ class image
                     $thumb['width'] = ceil($y_ratio * $imagewidth);
                     $thumb['height'] = $thumbheight;
                 }
-                $targetfile = !$preview ? ($this->thumbstatus == 1 ? $this->targetfile . '.thumb.jpg' : $this->targetfile) : './watermark_tmp.jpg';
+                $targetfile = !$preview ? ($this->thumbstatus == 1 ? $this->targetfile.'.thumb.jpg' : $this->targetfile) : './watermark_tmp.jpg';
                 $thumb_photo = imagecreatetruecolor($thumb['width'], $thumb['height']);
                 imagecopyresampled($thumb_photo, $attach_photo, 0, 0, 0, 0, $thumb['width'], $thumb['height'], $imagewidth, $imageheight);
                 if ($this->attachinfo['mime'] == 'image/jpeg') {
@@ -156,7 +156,7 @@ class image
             $imagefunc = $this->imagefunc;
             list($imagewidth, $imageheight) = $this->attachinfo;
             if ($this->watermarktype < 2) {
-                $watermark_file = $this->watermarktype == 1 ? DEDEDATA . '/mark/mark.png' : DEDEDATA . '/mark/mark.gif';
+                $watermark_file = $this->watermarktype == 1 ? DEDEDATA.'/mark/mark.png' : DEDEDATA.'/mark/mark.gif';
                 $watermarkinfo = @getimagesize($watermark_file);
                 $watermark_logo = $this->watermarktype == 1 ? @imagecreatefrompng($watermark_file) : @imagecreatefromgif($watermark_file);
                 if (!$watermark_logo) {

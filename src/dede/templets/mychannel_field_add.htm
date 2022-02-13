@@ -35,14 +35,14 @@ function GetFields()
 	
 	if(itemname=="")
 	{
-		ShowMsg("表单提示名称不能为空！");
+		ShowMsg("表单提示名称不能为空");
 		theform.itemname.focus();
 		return false;
 	}
 	
 	if(fieldname=="") 
 	{
-		ShowMsg("字段名称不能为空！");
+		ShowMsg("字段名称不能为空");
 		theform.fieldname.focus();
 		return false;
 	}
@@ -55,7 +55,7 @@ function GetFields()
 	
 	if((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
 	{
-		ShowMsg("你选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）！");
+		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）");
 		return false;
 	}
 	
@@ -134,7 +134,7 @@ class="table maintable table-bordered mt-3">
     <tr> 
       <td width="28%" bgcolor="#FFFFFF"><strong>字段名称：</strong><br>
       <span class="STYLE2">
-      	只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的<a href='stepselect_main.php' target='_blank'><u>[组名称]</u></a>。
+      	只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的<a href='stepselect_main.php' target='_blank'>[组名称]</a>。
       </span>
       </td>
       <td width="72%" bgcolor="#FFFFFF"> 

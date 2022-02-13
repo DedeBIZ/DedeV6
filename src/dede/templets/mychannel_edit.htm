@@ -1,7 +1,5 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>更改内容模型</title>
@@ -24,7 +22,7 @@
 
     //删除
     function DelNote(gourl) {
-      if (!window.confirm("你确认要删除这个字段么！")) { return false; }
+      if (!window.confirm("您确认要删除这个字段么")) { return false; }
       location.href = gourl;
     }
 
@@ -75,8 +73,8 @@
           <table border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td width="84" height="24" align="center" background="images/itemnote1.gif">&nbsp;基本设置&nbsp;</td>
-              <td width="84" align="center" background="images/itemnote2.gif"><a href="#"
-                  onClick="ShowItem2()"><u>字段管理</u></a>&nbsp;</td>
+              <td width="84" align="center" background="images/itemnote2.gif"><a href="javascript:;"
+                  onClick="ShowItem2()">字段管理</a>&nbsp;</td>
             </tr>
           </table>
         </td>
@@ -88,8 +86,8 @@
         <td colspan="2">
           <table border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="84" height="24" align="center" background="images/itemnote2.gif" bgcolor="#F2F7DF"><a href="#"
-                  onClick="ShowItem1()"><u>基本设置</u></a>&nbsp;</td>
+              <td width="84" height="24" align="center" background="images/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;"
+                  onClick="ShowItem1()">基本设置</a>&nbsp;</td>
               <td width="84" align="center" background="images/itemnote1.gif">字段管理&nbsp;</td>
             </tr>
           </table>
@@ -112,7 +110,7 @@
 	?>
       <tr>
         <td bgcolor="#FFFFFF"><b>模型性质</b><br />
-          <span class="STYLE2" id="help5">如果为<u>系统模型</u>将禁止删除，此选项不可更改，对于独立模型，系统强制创建字段aid、栏目ID、发布时间、文档标题。</span></td>
+          <span class="STYLE2" id="help5">如果为系统模型将禁止删除，此选项不可更改，对于独立模型，系统强制创建字段aid、栏目ID、发布时间、文档标题。</span></td>
         <td bgcolor="#FFFFFF">
           <?php
       if($row['issystem']==0) echo "自动模型";
@@ -163,7 +161,7 @@
             <option value='0'>游客</option>
             <?php
           $urank = $cuserLogin->getUserRank();
-          $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank' And rank>=10");
+          $dsql->SetQuery("Select * from `#@__arcrank` where `adminrank`<='$urank' And `rank`>=10");
           $dsql->Execute();
           while($row2 = $dsql->GetObject())
           {
@@ -368,7 +366,7 @@ if($ft==1)
                   href='mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&issystem=<?php echo $row['issystem']; ?>'><img
                     src='images/gtk-edit.png' alt='更改' title='更改' /></a>
                 <?php if($row['issystem']!=1){ ?>
-                | <a href='#'
+                | <a href='javascript:;'
                   onClick='javascript:DelNote("mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&action=delete");'><img
                     src='images/gtk-del.png' alt='删除' title='删除' /></a>
                 <?php } ?>
@@ -390,7 +388,7 @@ else
       <tr>
         <td height="24" width="35%" bgcolor="#FFFFFF">
           <strong>模型字段配置(文本模式) </strong><br />
-          修改配置文本可调整字段顺序，但不会更改字段属性！
+          修改配置文本可调整字段顺序，但不会更改字段属性
         </td>
         <td width="65%" bgcolor="#FFFFFF">
           <textarea name="fieldset" style="width:99%;height:300px" rows="10"

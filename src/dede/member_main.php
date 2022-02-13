@@ -5,13 +5,13 @@
  *
  * @version        $Id: member_main.php 1 10:49 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_List');
-require_once(DEDEINC . "/datalistcp.class.php");
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 
 if (!isset($sex)) $sex = '';
@@ -29,7 +29,7 @@ $sortkey = empty($sortkey) ? 'mid' : preg_replace("#[^a-z]#i", '', $sortkey);
 $staArr = array(-2 => '限制用户(禁言)', -1 => '未通过审核', 0 => '审核通过，提示填写完整信息', 1 => '没填写详细资料', 2 => '正常使用状态');
 $staArrmatt = array(1 => '被推荐', 0 => '非普通 ');
 $MemberTypes = array();
-$dsql->SetQuery("Select rank,membername From `#@__arcrank` where rank>0 ");
+$dsql->SetQuery("Select `rank`,`membername` From `#@__arcrank` where `rank`>0 ");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $MemberTypes[$row->rank] = $row->membername;
@@ -67,7 +67,7 @@ if ($matt != 10) {
 
 $whereSql = join(' AND ', $wheres);
 if ($whereSql != '') {
-    $whereSql = ' WHERE ' . $whereSql;
+    $whereSql = ' WHERE '.$whereSql;
 }
 
 $sql  = "SELECT * FROM `#@__member` $whereSql ORDER BY $sortkey DESC ";
@@ -78,7 +78,7 @@ $dlist->SetParameter('matt', $matt);
 $dlist->SetParameter('mtype', $mtype);
 $dlist->SetParameter('sortkey', $sortkey);
 $dlist->SetParameter('keyword', $keyword);
-$dlist->SetTemplet(DEDEADMIN . "/templets/member_main.htm");
+$dlist->SetTemplet(DEDEADMIN."/templets/member_main.htm");
 $dlist->SetSource($sql);
 $dlist->display();
 
@@ -86,7 +86,7 @@ function GetMemberName($rank, $mt)
 {
     global $MemberTypes;
     if (isset($MemberTypes[$rank])) {
-        if ($mt == 'ut') return " <font color='red'>待升级：" . $MemberTypes[$rank] . "</font>";
+        if ($mt == 'ut') return " <font color='red'>待升级：".$MemberTypes[$rank]."</font>";
         else return $MemberTypes[$rank];
     } else {
         if ($mt == 'ut') return '';

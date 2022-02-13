@@ -5,11 +5,11 @@
  *
  * @version        $Id: search_keywords_main.php 1 15:46 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 
 if (empty($pagesize)) $pagesize = 30;
@@ -47,14 +47,14 @@ else if ($dopost == 'delall') {
     foreach ($aids as $aid) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__search_keywords` WHERE aid='$aid';");
     }
-    ShowMsg("删除成功！", $ENV_GOBACK_URL);
+    ShowMsg("删除成功", $ENV_GOBACK_URL);
     exit();
 }
 //第一次进入这个页面
 if ($dopost == '') {
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__search_keywords` ");
     $totalRow = $row['dd'];
-    include(DEDEADMIN . "/templets/search_keywords_main.htm");
+    include(DEDEADMIN."/templets/search_keywords_main.htm");
 }
 
 //获得特定的关键字列表
@@ -67,18 +67,18 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     <table width='98%' border='0' cellpadding='1' cellspacing='1' bgcolor='#cfcfcf' style='margin-bottom:3px' align='center'>
     <tr align='center' bgcolor='#FBFCE2' height='24'>
       <td width='5%'>选择</td>
-      <td width='6%' height='23'><a href='#' onclick=\"ReloadPage('aid')\"><u>ID</u></a></td>
+      <td width='6%' height='23'><a href='#' onclick=\"ReloadPage('aid')\">ID</a></td>
       <td width='20%'>关键字</td>
       <td width='30%'>分词结果</td>
-      <td width='6%'><a href='#' onclick=\"ReloadPage('count')\"><u>频率</u></a></td>
-      <td width='6%'><a href='#' onclick=\"ReloadPage('result')\"><u>结果</u></a></td>
-      <td width='15%'><a href='#' onclick=\"ReloadPage('lasttime')\"><u>最后搜索时间</u></a></td>
+      <td width='6%'><a href='#' onclick=\"ReloadPage('count')\">频率</a></td>
+      <td width='6%'><a href='#' onclick=\"ReloadPage('result')\">结果</a></td>
+      <td width='15%'><a href='#' onclick=\"ReloadPage('lasttime')\">最后搜索时间</a></td>
       <td>管理</td>
     </tr>\r\n
     ";
     echo $printhead;
-    if ($orderby == 'result') $orderby = $orderby . " ASC";
-    else $orderby = $orderby . " DESC";
+    if ($orderby == 'result') $orderby = $orderby." ASC";
+    else $orderby = $orderby." DESC";
     $dsql->SetQuery("SELECT * FROM `#@__search_keywords` ORDER BY $orderby LIMIT $start,$pagesize ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
@@ -89,8 +89,8 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
       <td style='padding:5px;'><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
       <td style='padding:5px;'><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:95%;'></td>
       <td style='padding:5px;'><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
-      <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=" . urlencode($row['keyword']) . "&searchtype=titlekeyword' target='_blank'><u>{$row['result']}</u></a></td>
-      <td>" . MyDate("Y-m-d H:i:s", $row['lasttime']) . "</td>
+      <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
+      <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
       <td>
       <a href='#' onclick='UpdateNote({$row['aid']})' class='btn btn-success btn-sm'>更新</a> |
       <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'>删除</a>

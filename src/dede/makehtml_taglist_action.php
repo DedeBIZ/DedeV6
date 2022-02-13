@@ -5,13 +5,13 @@
  *
  * @version        $Id: makehtml_taglist_action.php 1 11:17 2020年8月19日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
-require_once(DEDEINC . "/arc.taglist.class.php");
+require_once(DEDEINC."/arc.taglist.class.php");
 
 if (empty($pageno)) $pageno = 0;
 if (empty($mkpage)) $mkpage = 1;
@@ -41,14 +41,14 @@ if ($upall == 1 && $ctagid == 0) {
 
 if ($ctagid == 0 && $allfinish) {
     $reurl = '../a/tags/';
-    ShowMsg("完成TAG更新！<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
+    ShowMsg("完成TAG更新<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
     exit;
 }
 
 
 $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
 
-MkdirAll($cfg_basedir . "/a/tags", $cfg_dir_purview);
+MkdirAll($cfg_basedir."/a/tags", $cfg_dir_purview);
 
 if (is_array($tag) && count($tag) > 0) {
     $dlist = new TagList($tag['tag'], 'taglist.htm');
@@ -72,7 +72,7 @@ if (is_array($tag) && count($tag) > 0) {
         $dlist->MakeHtml(1, 10);
         $reurl = '../a/tags/';
         if ($upall == 1) {
-            ShowMsg("完成TAG更新！<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
+            ShowMsg("完成TAG更新<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
         } else {
             $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
             $dsql->ExecuteNoneQuery($query);
@@ -82,7 +82,7 @@ if (is_array($tag) && count($tag) > 0) {
             }
 
             $reurl .= $tag['tag_pinyin'];
-            ShowMsg("完成TAG更新：[" . $tag['tag'] . "]！<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
+            ShowMsg("完成TAG更新：[".$tag['tag']."]<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
         }
         exit();
     } else {
@@ -95,12 +95,12 @@ if (is_array($tag) && count($tag) > 0) {
                 $nextpage = 0;
             }
             $gourl = "makehtml_taglist_action.php?maxpagesize=$maxpagesize&tagid=$tagid&pageno=$nextpage&upall=$upall&ctagid=$ctagid";
-            ShowMsg("成功生成TAG：[" . $tag['tag'] . "]，继续进行操作！", $gourl, 0, 100);
+            ShowMsg("成功生成TAG：[".$tag['tag']."]，继续进行操作", $gourl, 0, 100);
             exit();
         } else {
             // 继续当前这个
             $gourl = "makehtml_taglist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&tagid=$tagid&pageno=$pageno&upall=$upall&ctagid=$ctagid";
-            ShowMsg("成功生成TAG：[" . $tag['tag'] . "]，继续进行操作...", $gourl, 0, 100);
+            ShowMsg("成功生成TAG：[".$tag['tag']."]，继续进行操作...", $gourl, 0, 100);
             exit();
         }
     }

@@ -6,35 +6,31 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-document.write("<style type=\"text/css\">.close{float:right;cursor:default;}</style>")
-
+document.write("<style type=\"text/css\">.close{float:right;font-size:14px;cursor:pointer}</style>")
 function editTitle(aid) {
 	var show = document.getElementById("show_news");
 	var myajax = new DedeAjax(show, false, false, "", "", "");
 	myajax.SendGet2("catalog_edit.php?dopost=time&id=" + aid);
 	DedeXHTTP = null;
 }
-
 function $Dede(id) { return document.getElementById(id) }
 function AlertMsg(title, id) {
 	var msgw, msgh, msgbg, msgcolor, bordercolor, titlecolor, titlebg, content;
 	//弹出窗口设置
-	msgw = 600;		//窗口宽度 
-	msgh = 400;		//窗口高度 
-	msgbg = "#FFF";			//内容背景
-	msgcolor = "#000";		//内容颜色
-	bordercolor = "#5A6D58"; 	//边框颜色 
-	titlecolor = "#254015";	//标题颜色
-	titlebg = "#369 url(images/tbg.gif)";		//标题背景
+	msgw = 600;//窗口宽度 
+	msgbg = "#FFF";//内容背景
+	msgcolor = "#000";//内容颜色
+	bordercolor = "#5A6D58";//边框颜色 
+	titlecolor = "#254015";//标题颜色
+	titlebg = "#369 url(images/tbg.gif)";//标题背景
 	//遮罩背景设置  	
 	content = "<div id=show_news>对不起，载入失败</div>";
 	var sWidth, sHeight;
 	sWidth = screen.availWidth;
 	if (screen.availHeight > document.body.scrollHeight) {
-		sHeight = screen.availHeight;	//少于一屏
+		sHeight = screen.availHeight;//少于一屏
 	} else {
-		sHeight = document.body.scrollHeight;	//多于一屏 
+		sHeight = document.body.scrollHeight;//多于一屏 
 	}
 	//创建遮罩背景 
 	var maskObj = document.createElement("div");
@@ -42,7 +38,7 @@ function AlertMsg(title, id) {
 	maskObj.style.position = "absolute";
 	maskObj.style.top = "0";
 	maskObj.style.left = "0";
-	maskObj.style.background = "#777";
+	maskObj.style.background = "#666";
 	maskObj.style.filter = "Alpha(opacity=30);";
 	maskObj.style.opacity = "0.3";
 	maskObj.style.width = sWidth + "px";
@@ -59,7 +55,7 @@ function AlertMsg(title, id) {
 	msgObj.style.left = "100px";
 	msgObj.style.width = msgw + "px";
 	msgObj.style.height = msgh + "px";
-	msgObj.style.fontSize = "12px";
+	msgObj.style.fontSize = "14px";
 	msgObj.style.background = msgbg;
 	msgObj.style.border = "1px solid " + bordercolor;
 	msgObj.style.zIndex = "10001";
@@ -67,13 +63,13 @@ function AlertMsg(title, id) {
 	var thObj = document.createElement("div");
 	thObj.setAttribute("id", "msgth");
 	thObj.className = "DragAble";
-	thObj.title = "按住鼠标左键可以拖动窗口！";
+	thObj.title = "按住鼠标左键可以拖动窗口";
 	thObj.style.cursor = "move";
-	thObj.style.padding = "4px 6px";
+	thObj.style.padding = "10px";
 	thObj.style.color = titlecolor;
 	thObj.style.fontWeight = 'bold';
 	thObj.style.background = titlebg;
-	var titleStr = "<a class='close' title='关闭' style='cursor:pointer' onclick='CloseMsg()'>关闭</a>" + "<span>" + title + "</span>";
+	var titleStr = "<a class='close' onclick='CloseMsg()'>关闭</a>" + "<span>" + title + "</span>";
 	thObj.innerHTML = titleStr;
 	//创建内容
 	var bodyObj = document.createElement("div");
@@ -102,7 +98,6 @@ var nn6 = document.getElementById && !document.all;
 var isdrag = false;
 var y, x;
 var oDragObj;
-
 function moveMouse(e) {
 	if (isdrag) {
 		oDragObj.style.top = (nn6 ? nTY + e.clientY - y : nTY + event.clientY - y) + "px";
@@ -110,7 +105,6 @@ function moveMouse(e) {
 		return false;
 	}
 }
-
 function initDrag(e) {
 	var oDragHandle = nn6 ? e.target : event.srcElement;
 	var topElement = "HTML";
@@ -129,4 +123,4 @@ function initDrag(e) {
 	}
 }
 document.onmousedown = initDrag;
-document.onmouseup = new Function("isdrag=false");  
+document.onmouseup = new Function("isdrag=false");

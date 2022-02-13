@@ -5,23 +5,23 @@
  * 
  * @version        $Id: mypay.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'op';
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 setcookie('ENV_GOBACK_URL', GetCurUrl(), time() + 3600, '/');
 if (!isset($dopost)) $dopost = '';
 
 if ($dopost == '') {
-    $query = "SELECT * FROM `#@__member_operation` WHERE mid='" . $cfg_ml->M_ID . "' And product='archive' order by aid desc";
+    $query = "SELECT * FROM `#@__member_operation` WHERE mid='".$cfg_ml->M_ID."' And product='archive' order by aid desc";
     $dlist = new DataListCP();
     $dlist->pageSize = 20;
-    $dlist->SetTemplate(DEDEMEMBER . '/templets/mypay.htm');
+    $dlist->SetTemplate(DEDEMEMBER.'/templets/mypay.htm');
     $dlist->SetSource($query);
     $dlist->Display();
 } elseif ($dopost == 'del') {

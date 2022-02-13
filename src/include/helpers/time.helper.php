@@ -4,7 +4,7 @@
  *
  * @version        $Id: time.helper.php 1 2010-07-05 11:43:09Z tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -59,7 +59,7 @@ if (!function_exists('GetMkTime')) {
         }
         if (isset($ymd[1])) $dt[1] = $ymd[1];
         if (isset($ymd[2])) $dt[2] = $ymd[2];
-        if (strlen($dt[0]) == 2) $dt[0] = '20' . $dt[0];
+        if (strlen($dt[0]) == 2) $dt[0] = '20'.$dt[0];
         if (isset($ds[1])) {
             $hms = explode(":", $ds[1]);
             if (isset($hms[0])) $dt[3] = $hms[0];
@@ -158,10 +158,10 @@ if (!function_exists('FloorTime')) {
         $hours = floor(($seconds / 3600) % 24);
         $minutes = floor(($seconds / 60) % 60);
         $seconds = floor($seconds % 60);
-        if ($seconds >= 1) $times .= $seconds . '秒';
-        if ($minutes >= 1) $times = $minutes . '分钟 ' . $times;
-        if ($hours >= 1) $times = $hours . '小时 ' . $times;
-        if ($days >= 1)  $times = $days . '天';
+        if ($seconds >= 1) $times .= $seconds.'秒';
+        if ($minutes >= 1) $times = $minutes.'分钟 '.$times;
+        if ($hours >= 1) $times = $hours.'小时 '.$times;
+        if ($days >= 1)  $times = $days.'天';
         if ($days > 30) return false;
         $times .= '前';
         return str_replace(" ", '', $times);

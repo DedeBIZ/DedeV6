@@ -5,15 +5,15 @@
  *
  * @version        $Id: sys_data_replace.php 1 22:28 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_Data');
 if (empty($action)) $action = '';
 if (empty($action)) {
-    require_once(DEDEADMIN . "/templets/sys_data_replace.htm");
+    require_once(DEDEADMIN."/templets/sys_data_replace.htm");
     exit();
 }
 
@@ -24,9 +24,9 @@ function __getfields()
     AjaxHead();
     $dsql->GetTableFields($exptable);
     echo "<div style='border:1px solid #ababab;background-color:#FEFFF0;margin-top:6px;padding:3px;line-height:160%'>";
-    echo "表(" . $exptable . ")含有的字段：<br>";
+    echo "表(".$exptable.")含有的字段：<br>";
     while ($row = $dsql->GetFieldObject()) {
-        echo "<a href=\"javascript:pf('{$row->name}')\"><u>" . $row->name . "</u></a>\r\n";
+        echo "<a href=\"javascript:pf('{$row->name}')\">".$row->name."</a>\r\n";
     }
     echo "</div>";
     exit();
@@ -42,11 +42,11 @@ function __Apply()
         exit();
     }
     if ($exptable == '' || $rpfield == '') {
-        ShowMsg("请指定数据表和字段！", "javascript:;");
+        ShowMsg("请指定数据表和字段", "javascript:;");
         exit();
     }
     if ($rpstring == '') {
-        ShowMsg("请指定被替换内容！", "javascript:;");
+        ShowMsg("请指定被替换内容", "javascript:;");
         exit();
     }
     if ($rptype == 'replace') {
@@ -54,10 +54,10 @@ function __Apply()
         $rs = $dsql->ExecuteNoneQuery("UPDATE $exptable SET $rpfield=REPLACE($rpfield,'$rpstring','$tostring') $condition ");
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
         if ($rs) {
-            ShowMsg("成功完成数据替换！", "javascript:;");
+            ShowMsg("成功完成数据替换", "javascript:;");
             exit();
         } else {
-            ShowMsg("数据替换失败！", "javascript:;");
+            ShowMsg("数据替换失败", "javascript:;");
             exit();
         }
     } else {
@@ -69,20 +69,20 @@ function __Apply()
         $dsql->Execute();
         $tt = $dsql->GetTotalRow();
         if ($tt == 0) {
-            ShowMsg("根据你指定的正则，找不到任何东西！", "javascript:;");
+            ShowMsg("根据您指定的正则，找不到任何东西", "javascript:;");
             exit();
         }
         $oo = 0;
         while ($row = $dsql->GetArray()) {
             $kid = $row[$keyfield];
-            $rpf = preg_replace("#" . $rpstring . "#i", $tostring, $row[$rpfield]);
+            $rpf = preg_replace("#".$rpstring."#i", $tostring, $row[$rpfield]);
             $rs = $dsql->ExecuteNoneQuery("UPDATE $exptable SET $rpfield='$rpf' WHERE $keyfield='$kid' ");
             if ($rs) {
                 $oo++;
             }
         }
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
-        ShowMsg("共找到 $tt 条记录，成功替换了 $oo 条！", "javascript:;");
+        ShowMsg("共找到 $tt 条记录，成功替换了 $oo 条", "javascript:;");
         exit();
     }
 }

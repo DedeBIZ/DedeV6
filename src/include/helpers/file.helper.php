@@ -4,7 +4,7 @@
  *
  * @version        $Id: file.helper.php 1 2010-07-05 11:43:09Z tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -24,8 +24,8 @@ if (!function_exists('FtpMkdir')) {
     {
         global $cfg_basedir, $cfg_ftp_root, $g_ftpLink;
         OpenFtp();
-        $ftproot = preg_replace('/' . $cfg_ftp_root . '$/', '', $cfg_basedir);
-        $mdir = preg_replace('/^' . $ftproot . '/', '', $truepath);
+        $ftproot = preg_replace('/'.$cfg_ftp_root.'$/', '', $cfg_basedir);
+        $mdir = preg_replace('/^'.$ftproot.'/', '', $truepath);
         if ($isMkdir) {
             ftp_mkdir($g_ftpLink, $mdir);
         }
@@ -59,16 +59,16 @@ if (!function_exists('OpenFtp')) {
         global $cfg_basedir, $cfg_ftp_host, $cfg_ftp_port, $cfg_ftp_user, $cfg_ftp_pwd, $cfg_ftp_root, $g_ftpLink;
         if (!$g_ftpLink) {
             if ($cfg_ftp_host == '') {
-                echo "由于你的站点的PHP配置存在限制，程序尝试用FTP进行目录操作，你必须在后台指定FTP相关的变量！";
+                echo "由于您的站点的PHP配置存在限制，程序尝试用FTP进行目录操作，您必须在后台指定FTP相关的变量";
                 exit();
             }
             $g_ftpLink = ftp_connect($cfg_ftp_host, $cfg_ftp_port);
             if (!$g_ftpLink) {
-                echo "连接FTP失败！";
+                echo "连接FTP失败";
                 exit();
             }
             if (!ftp_login($g_ftpLink, $cfg_ftp_user, $cfg_ftp_pwd)) {
-                echo "登录FTP失败！";
+                echo "登录FTP失败";
                 exit();
             }
         }
@@ -132,7 +132,7 @@ if (!function_exists('ChmodAll')) {
         if ($isSafeMode || $cfg_ftp_mkdir == 'Y') {
             return FtpChmod($truepath, $mmode);
         } else {
-            return chmod($truepath, '0' . $mmode);
+            return chmod($truepath, '0'.$mmode);
         }
     }
 }
@@ -148,7 +148,7 @@ if (!function_exists('CreateDir')) {
     function CreateDir($spath)
     {
         if (!function_exists('SpCreateDir')) {
-            require_once(DEDEINC . '/inc/inc_fun_funAdmin.php');
+            require_once(DEDEINC.'/inc/inc_fun_funAdmin.php');
         }
         return SpCreateDir($spath);
     }
@@ -193,7 +193,7 @@ if (!function_exists('RmRecurse')) {
     function RmRecurse($file)
     {
         if (is_dir($file) && !is_link($file)) {
-            foreach (glob($file . '/*') as $sf) {
+            foreach (glob($file.'/*') as $sf) {
                 if (!RmRecurse($sf)) {
                     return false;
                 }

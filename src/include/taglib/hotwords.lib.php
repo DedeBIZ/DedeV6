@@ -5,7 +5,7 @@
  *
  * @version        $Id: hotwords.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -29,7 +29,7 @@ function lib_hotwords(&$ctag, &$refObj)
     $dsql->Execute('hw');
     $hotword = '';
     while ($row = $dsql->GetArray('hw')) {
-        $hotword .= "　<a href='" . $cfg_phpurl . "/search.php?keyword=" . urlencode($row['keyword']) . "'>" . $row['keyword'] . "</a> ";
+        $hotword .= "　<a href='".$cfg_phpurl."/search.php?keyword=".urlencode($row['keyword'])."'>".$row['keyword']."</a> ";
     }
     return $hotword;
 }

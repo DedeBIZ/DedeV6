@@ -5,17 +5,16 @@
  *
  * @version        $Id: testenv.php 13:57 2011/11/10 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
 $action = isset($action) ? $action : '';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $GLOBALS['cfg_soft_lang']; ?>">
 	<title>系统运行目录权限检测</title>
@@ -32,7 +31,7 @@ $action = isset($action) ? $action : '';
 		{
 			$tfile = '_write_able.txt';
 			$d = preg_replace("/\/$/", '', $d);
-			$fp = @fopen($d . '/' . $tfile, 'w');
+			$fp = @fopen($d.'/'.$tfile, 'w');
 			if (!$fp) {
 				if ($c == false) {
 					@chmod($d, 0777);
@@ -40,7 +39,7 @@ $action = isset($action) ? $action : '';
 				} else return TestWriteable($d, true);
 			} else {
 				fclose($fp);
-				return @unlink($d . '/' . $tfile) ? true : false;
+				return @unlink($d.'/'.$tfile) ? true : false;
 			}
 		}
 	}
@@ -49,19 +48,19 @@ $action = isset($action) ? $action : '';
 		// 检查是否具目录可执行
 		function TestExecuteable($d = '.', $siteuRL = '', $rootDir = '')
 		{
-			$testStr = '<' . chr(0x3F) . 'p' . chr(hexdec(68)) . chr(112) . "\n\r";
-			$filename = md5($d) . '.php';
-			$testStr .= 'function test(){ echo md5(\'' . $d . '\');}' . "\n\rtest();\n\r";
-			$testStr .= chr(0x3F) . '>';
+			$testStr = '<'.chr(0x3F).'p'.chr(hexdec(68)).chr(112)."\n\r";
+			$filename = md5($d).'.php';
+			$testStr .= 'function test(){ echo md5(\''.$d.'\');}'."\n\rtest();\n\r";
+			$testStr .= chr(0x3F).'>';
 			$reval = false;
 			if (empty($rootDir)) $rootDir = DEDEROOT;
 			if (TestWriteable($d)) {
-				@file_put_contents($d . '/' . $filename, $testStr);
-				$remoteUrl = $siteuRL . '/' . str_replace($rootDir, '', str_replace("\\", '/', realpath($d))) . '/' . $filename;
+				@file_put_contents($d.'/'.$filename, $testStr);
+				$remoteUrl = $siteuRL.'/'.str_replace($rootDir, '', str_replace("\\", '/', realpath($d))).'/'.$filename;
 				$tempStr = @PostHost($remoteUrl);
 
 				$reval = (md5($d) == trim($tempStr)) ? true : false;
-				unlink($d . '/' . $filename);
+				unlink($d.'/'.$filename);
 				return $reval;
 			} else {
 				return -1;
@@ -80,19 +79,19 @@ $action = isset($action) ? $action : '';
 			} elseif (!@$parse['port']) {
 				$parse['port'] = '80';
 			}
-			$parse['host'] = str_replace(array('http://', 'https://'), array('', 'ssl://'), "$parse[scheme]://") . $parse['host'];
+			$parse['host'] = str_replace(array('http://', 'https://'), array('', 'ssl://'), "$parse[scheme]://").$parse['host'];
 			if (!$fp = @fsockopen($parse['host'], $parse['port'], $errnum, $errstr, $timeout)) {
 				return false;
 			}
 			$method = strtoupper($method);
 			$wlength = $wdata = $responseText = '';
-			$parse['path'] = str_replace(array('\\', '//'), '/', @$parse['path']) . "?" . @$parse['query'];
+			$parse['path'] = str_replace(array('\\', '//'), '/', @$parse['path'])."?".@$parse['query'];
 			if ($method == 'GET') {
 				$separator = @$parse['query'] ? '&' : '';
 				substr($data, 0, 1) == '&' && $data = substr($data, 1);
-				$parse['path'] .= $separator . $data;
+				$parse['path'] .= $separator.$data;
 			} elseif ($method == 'POST') {
-				$wlength = "Content-length: " . strlen($data) . "\r\n";
+				$wlength = "Content-length: ".strlen($data)."\r\n";
 				$wdata = $data;
 			}
 			$write = "$method $parse[path] HTTP/1.0\r\nHost: $parse[host]\r\nContent-type: application/x-www-form-urlencoded\r\n{$wlength}Connection: close\r\n\r\n$wdata";
@@ -163,14 +162,14 @@ $action = isset($action) ? $action : '';
 		$dh = dir($d);
 		while ($filename = $dh->read()) {
 			if (
-				substr($filename, 0, 1) == '.' || is_file($d . '/' . $filename) ||
+				substr($filename, 0, 1) == '.' || is_file($d.'/'.$filename) ||
 				preg_match("#^(svn|bak-)#i", $filename)
 			) {
 				continue;
 			}
-			if (is_dir($d . '/' . $filename)) {
-				$dirname[] = $d . '/' . $filename;
-				GetSondir($d . '/' . $filename, $dirname);
+			if (is_dir($d.'/'.$filename)) {
+				$dirname[] = $d.'/'.$filename;
+				GetSondir($d.'/'.$filename, $dirname);
 			}
 		}
 		$dh->close();
@@ -195,25 +194,25 @@ $action = isset($action) ? $action : '';
 			if (($e == ".") || ($e == "..")) {
 				continue;
 			}
-			if ($rec && is_dir($path . "/" . $e) && ($ignoredir == '' || strpos($ignoredir, $e) === FALSE)) {
-				$ret = array_merge($ret, preg_ls($path . "/" . $e, $rec, $pat, $ignoredir));
+			if ($rec && is_dir($path."/".$e) && ($ignoredir == '' || strpos($ignoredir, $e) === FALSE)) {
+				$ret = array_merge($ret, preg_ls($path."/".$e, $rec, $pat, $ignoredir));
 				continue;
 			}
 			if (!preg_match($pat, $e)) {
 				continue;
 			}
-			$ret[] = $path . "/" . $e;
+			$ret[] = $path."/".$e;
 		}
-		return (empty($ret) && preg_match($pat, basename($path))) ? array($path . "/") : $ret;
+		return (empty($ret) && preg_match($pat, basename($path))) ? array($path."/") : $ret;
 	}
 
 	foreach ($needDir as $key => $val) {
-		$allPath[trim('/' . $val)] = array(
+		$allPath[trim('/'.$val)] = array(
 			'read' => true,    // 读取
 			'write' => false,   // 写入
 			'execute' => true // 执行
 		);
-		$sonDir = GetSondir(DEDEROOT . '/' . $val);
+		$sonDir = GetSondir(DEDEROOT.'/'.$val);
 		foreach ($sonDir as $kk => $vv) {
 			$vv = trim(str_replace(DEDEROOT, '', $vv));
 			$allPath[$vv] = array(
@@ -230,14 +229,14 @@ $action = isset($action) ? $action : '';
 		'/templets'
 	);
 	foreach ($needDir as $key => $val) {
-		$allPath[trim('/' . $val)] = array(
+		$allPath[trim('/'.$val)] = array(
 			'read' => true,    // 读取
 			'write' => false,   // 写入
 			'execute' => false // 执行
 		);
-		$sonDir = GetSondir(DEDEROOT . '/' . $val);
+		$sonDir = GetSondir(DEDEROOT.'/'.$val);
 		foreach ($sonDir as $kk => $vv) {
-			$vv = trim(str_replace(DEDEROOT . '/', '', $vv));
+			$vv = trim(str_replace(DEDEROOT.'/', '', $vv));
 			$allPath[$vv] = array(
 				'read' => true,    // 读取
 				'write' => false,   // 写入
@@ -253,9 +252,9 @@ $action = isset($action) ? $action : '';
 		'/include'
 	);
 	foreach ($jsDir as $k => $v) {
-		$jsfiles = preg_ls(DEDEROOT . $v, TRUE, "/.*\.(js)$/i");
+		$jsfiles = preg_ls(DEDEROOT.$v, TRUE, "/.*\.(js)$/i");
 		foreach ($jsfiles as $k => $v) {
-			$vv = trim(str_replace(DEDEROOT . '/', '/', $v));
+			$vv = trim(str_replace(DEDEROOT.'/', '/', $v));
 			$allPath[$vv] = array(
 				'read' => true,    // 读取
 				'write' => false,   // 写入
@@ -268,7 +267,7 @@ $action = isset($action) ? $action : '';
 		<dl style="margin-left:0.5%;margin-right:0.5%; width:97%" id="item1" class="dbox">
 			<dt class="lside"><span class="l" style="float:left">系统运行目录权限检测</span><span style="float:right; margin-right:20px"><a href="index_body.php">返回主页</a></span><span style="float:right; margin-right:20px"><a href="https://www.dedebiz.com/help" target="_blank">帮助说明</a></span></dt>
 			<dd>
-				<div style="padding:10px"> 说明：本程序用于检测DedeCMSV6站点所涉及的目录权限，并且提供一个全面的检测说明，您可以根据检测报告来配置站点以保证站点更为安全。</div>
+				<div style="padding:10px"> 说明：本程序用于检测DedeBIZ站点所涉及的目录权限，并且提供一个全面的检测说明，您可以根据检测报告来配置站点以保证站点更为安全。</div>
 				<div id="tableHeader" style="margin-left:10px">
 					<table width="784" border="0" cellpadding="0" cellspacing="1" bgcolor="#047700" id="scanTable">
 						<thead>
@@ -297,9 +296,9 @@ $action = isset($action) ? $action : '';
 		$ = jQuery;
 		var log = "<?php
 					foreach ($allPath as $key => $val) {
-						if (is_dir(DEDEROOT . $key)) {
+						if (is_dir(DEDEROOT.$key)) {
 					?><?php echo $key; ?>|<?php
-											$rs = TestExecuteable(DEDEROOT . $key, $cfg_basehost, $cfg_cmspath);
+											$rs = TestExecuteable(DEDEROOT.$key, $cfg_basehost, $cfg_cmspath);
 
 											if ($rs === -1) {
 												echo "<font color='red'>无法判断</font>";
@@ -311,26 +310,26 @@ $action = isset($action) ? $action : '';
 											}
 											?>|<?php
 												if ($val['read'] == true)
-													echo is_readable(DEDEROOT . $key) != $val['read'] ? "<font color='red'>错误(不可读)</font>" : "<font color='green'>正常(可读)</font>";
+													echo is_readable(DEDEROOT.$key) != $val['read'] ? "<font color='red'>错误(不可读)</font>" : "<font color='green'>正常(可读)</font>";
 												else
-													echo is_readable(DEDEROOT . $key) != $val['read'] ? "<font color='red'>错误(可读)</font>" : "<font color='green'>正常(不可读)</font>";
+													echo is_readable(DEDEROOT.$key) != $val['read'] ? "<font color='red'>错误(可读)</font>" : "<font color='green'>正常(不可读)</font>";
 												?>|<?php
 												if ($val['write'] == true)
-													echo TestWriteable(DEDEROOT . $key) != $val['write'] ? "<font color='red'>错误(不可写)</font>" : "<font color='green'>正常(可写)</font>";
+													echo TestWriteable(DEDEROOT.$key) != $val['write'] ? "<font color='red'>错误(不可写)</font>" : "<font color='green'>正常(可写)</font>";
 												else
-													echo TestWriteable(DEDEROOT . $key) != $val['write'] ? "<font color='red'>错误(可写)</font>" : "<font color='green'>正常(不可写)</font>";
+													echo TestWriteable(DEDEROOT.$key) != $val['write'] ? "<font color='red'>错误(可写)</font>" : "<font color='green'>正常(不可写)</font>";
 												?><dedecms><?php
 										} else {
 											?><?php echo $key; ?>|无需判断|<?php
 																if ($val['read'] == true)
-																	echo is_readable(DEDEROOT . $key) != $val['read'] ? "<font color='red'>错误(不可读)</font>" : "<font color='green'>正常(可读)</font>";
+																	echo is_readable(DEDEROOT.$key) != $val['read'] ? "<font color='red'>错误(不可读)</font>" : "<font color='green'>正常(可读)</font>";
 																else
-																	echo is_readable(DEDEROOT . $key) != $val['read'] ? "<font color='red'>错误(可读)</font>" : "<font color='green'>正常(不可读)</font>";
+																	echo is_readable(DEDEROOT.$key) != $val['read'] ? "<font color='red'>错误(可读)</font>" : "<font color='green'>正常(不可读)</font>";
 																?>|<?php
 																	if ($val['write'] == true)
-																		echo is_writable(DEDEROOT . $key) != $val['write'] ? "<font color='red'>错误(不可写)</font>" : "<font color='green'>正常(可写)</font>";
+																		echo is_writable(DEDEROOT.$key) != $val['write'] ? "<font color='red'>错误(不可写)</font>" : "<font color='green'>正常(可写)</font>";
 																	else
-																		echo is_writable(DEDEROOT . $key) != $val['write'] ? "<font color='red'>错误(可写)</font>" : "<font color='green'>正常(不可写)</font>";
+																		echo is_writable(DEDEROOT.$key) != $val['write'] ? "<font color='red'>错误(可写)</font>" : "<font color='green'>正常(不可写)</font>";
 																	?><dedecms><?php
 															}
 														}
@@ -373,7 +372,7 @@ $action = isset($action) ? $action : '';
 		function clearIntervals() {
 			clearInterval(timer);
 			//document.getElementById('install').submit();
-			alert('全部检测完毕，您可以按照检测结果进行系统权限调整！');
+			alert('全部检测完毕，您可以按照检测结果进行系统权限调整');
 		}
 		//setTimeout(setIntervals, 100);
 

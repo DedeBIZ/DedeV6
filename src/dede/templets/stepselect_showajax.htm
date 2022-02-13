@@ -1,12 +1,12 @@
 <?php
 if($action=='edit') {
 $arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
-$sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改！'); return false;\" ";
+$sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); return false;\" ";
 if($arr['issystem']==0) $sbjs = '';
 ?>
 <!-- 编辑表单 -->
 <div style='float:left;'><b>修改类别</b></div>
-<div style='float:right;'>[<a href="#" onclick="javascript:CloseTWin();">关闭</a>]</div>
+<div style='float:right;'>[<a href="javascript:;" onclick="javascript:CloseTWin();">关闭</a>]</div>
 <br style='clear:both' />
 <form action='stepselect_main.php' method='post'<?php echo $sbjs; ?>>
 <INPUT TYPE="hidden" NAME="action" value="edit_save" />
@@ -21,7 +21,7 @@ if($arr['issystem']==0) $sbjs = '';
 ?>
 <!-- 新增类别表单 -->
 <div style='float:left;'><b>新增类别</b></div>
-<div style='float:right;'>[<a href="#" onclick="javascript:CloseTWin();">关闭</a>]</div>
+<div style='float:right;'>[<a href="javascript:;" onclick="javascript:CloseTWin();">关闭</a>]</div>
 <br style='clear:both' />
 <form action='stepselect_main.php' method='post'>
 <INPUT TYPE="hidden" NAME="action" value="addnew_save" />
@@ -42,7 +42,7 @@ if($arr['issign']==0)
 ?>
 <!-- 新增枚举表单 -->
 <div style='float:left;'><b>添加枚举</b></div>
-<div style='float:right;'>[<a href="#" onclick="javascript:CloseTWin();">关闭</a>]</div>
+<div style='float:right;'>[<a href="javascript:;" onclick="javascript:CloseTWin();">关闭</a>]</div>
 <br style='clear:both' />
 <form action='stepselect_main.php' method='post'>
 <INPUT TYPE="hidden" NAME="action" value="addenum_save" />
@@ -78,7 +78,7 @@ if($arr['issign']==0)
 ?>
 <!-- 预览联动表单 -->
 <div style='float:left;'><b>预览联动表单</b></div>
-<div style='float:right;'>[<a href="#" onclick="javascript:CloseTWin();">关闭</a>]</div>
+<div style='float:right;'>[<a href="javascript:;" onclick="javascript:CloseTWin();">关闭</a>]</div>
 <br style='clear:both' />
 <br style='clear:both' />
 <div>

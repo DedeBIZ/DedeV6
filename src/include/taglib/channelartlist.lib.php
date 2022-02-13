@@ -1,20 +1,18 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php
+if (!defined('DEDEINC')) exit('Request Error!');
 /**
  * 获取当前频道的下级栏目的内容列表标签
  *
  * @version        $Id: channelartlist.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-require_once(DEDEINC . '/arc.partview.class.php');
-
+require_once(DEDEINC.'/arc.partview.class.php');
 function lib_channelartlist(&$ctag, &$refObj)
 {
     global $dsql, $envs, $_sys_globals;
-
     //处理标记属性、innertext
     $attlist = 'typeid|0,row|20,cacheid|';
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
@@ -27,15 +25,12 @@ function lib_channelartlist(&$ctag, &$refObj)
         $artlist = GetCacheBlock($cacheid);
         if ($artlist != '') return $artlist;
     }
-
     if (empty($typeid)) {
         $typeid = (!empty($refObj->TypeLink->TypeInfos['id']) ?  $refObj->TypeLink->TypeInfos['id'] : 0);
     }
-
     if ($innertext == '') $innertext = GetSysTemplets('part_channelartlist.htm');
     $totalnum = $row;
     if (empty($totalnum)) $totalnum = 20;
-
     //获得类别ID总数的信息
     $typeids = array();
     if ($typeid == 0 || $typeid == 'top') {
@@ -47,21 +42,25 @@ function lib_channelartlist(&$ctag, &$refObj)
             $tpsql = " id IN($typeid) AND ispart<>2 AND ishidden<>1 ";
         }
     }
-    $dsql->SetQuery("SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath 
-                                            FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
+    $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $typeids[] = $row;
     }
-
     if (!isset($typeids[0])) return '';
-
     $GLOBALS['itemindex'] = 0;
     $GLOBALS['itemparity'] = 1;
     for ($i = 0; isset($typeids[$i]); $i++) {
         $GLOBALS['itemindex']++;
         $pv = new PartView($typeids[$i]['id']);
         $pv->Fields['typeurl'] = GetOneTypeUrlA($typeids[$i]);
+        //栏目高亮
+		if($typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['id'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['reid'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['topid'] || $typeids[$i]['id'] == GetTopid($refObj->TypeLink->TypeInfos['id']) )
+		{
+			$pv->Fields['currentstyle'] = $currentstyle ? $currentstyle : 'current';
+		} else {
+			$pv->Fields['currentstyle'] = '';
+		}
         $pv->SetTemplet($innertext, 'string');
         $artlist .= $pv->GetResult();
         $GLOBALS['itemparity'] = ($GLOBALS['itemparity'] == 1 ? 2 : 1);

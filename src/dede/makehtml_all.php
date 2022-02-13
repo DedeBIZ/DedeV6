@@ -5,16 +5,16 @@
  *
  * @version        $Id: makehtml_all.php 1 8:48 2010年7月13日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . "/channelunit.func.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/channelunit.func.php");
 $action = (empty($action) ? '' : $action);
 
 if ($action == '') {
-    require_once(DEDEADMIN . "/templets/makehtml_all.htm");
+    require_once(DEDEADMIN."/templets/makehtml_all.htm");
     exit();
 } else if ($action == 'make') {
     //step = 1 更新主页、step = 2 更新内容、step = 3 更新栏目
@@ -28,14 +28,14 @@ if ($action == '') {
         $starttime = GetMkTime($starttime);
         $mkvalue = ($uptype == 'time' ? $starttime : $startid);
         OptimizeData($dsql);
-        ShowMsg("完成数据优化，现在开始更新文档！", "makehtml_all.php?action=make&step=2&uptype=$uptype&mkvalue=$mkvalue");
+        ShowMsg("完成数据优化，现在开始更新文档", "makehtml_all.php?action=make&step=2&uptype=$uptype&mkvalue=$mkvalue");
         exit();
     }
     //更新文档
     /*-------------------
     function _2_MakeArchives()
     ---------------------*/ else if ($step == 2) {
-        include_once(DEDEADMIN . "/makehtml_archives_action.php");
+        include_once(DEDEADMIN."/makehtml_archives_action.php");
         exit();
     }
     //更新主页
@@ -43,21 +43,21 @@ if ($action == '') {
     function _3_MakeHomePage()
     -------------------*/
     if ($step == 3) {
-        include_once(DEDEINC . "/arc.partview.class.php");
+        include_once(DEDEINC."/arc.partview.class.php");
         $pv = new PartView();
         $row = $pv->dsql->GetOne("SELECT * FROM `#@__homepageset` ");
         $templet = str_replace("{style}", $cfg_df_style, $row['templet']);
-        $homeFile = DEDEADMIN . '/' . $row['position'];
+        $homeFile = DEDEADMIN.'/'.$row['position'];
         $homeFile = str_replace("\\", '/', $homeFile);
         $homeFile = preg_replace("#\/{1,}#", '/', $homeFile);
         if ($row['showmod'] == 1) {
-            $pv->SetTemplet($cfg_basedir . $cfg_templets_dir . '/' . $templet);
+            $pv->SetTemplet($cfg_basedir.$cfg_templets_dir.'/'.$templet);
             $pv->SaveToHtml($homeFile);
             $pv->Close();
         } else {
             if (file_exists($homeFile)) echo "启用静态生成，建议删除"+$homeFile;
         }
-        ShowMsg("完成更新所有文档，现在开始更新栏目页！", "makehtml_all.php?action=make&step=4&uptype=$uptype&mkvalue=$mkvalue");
+        ShowMsg("完成更新所有文档，现在开始更新栏目页", "makehtml_all.php?action=make&step=4&uptype=$uptype&mkvalue=$mkvalue");
         exit();
     }
     //更新栏目
@@ -67,13 +67,13 @@ if ($action == '') {
         $mkvalue = intval($mkvalue);
         $typeidsok = $typeids = array();
         $adminID = $cuserLogin->getUserID();
-        $mkcachefile = DEDEDATA . "/mkall_cache_{$adminID}.php";
+        $mkcachefile = DEDEDATA."/mkall_cache_{$adminID}.php";
         if ($uptype == 'all' || empty($mkvalue)) {
-            ShowMsg("不需要进行初处理，现更新所有栏目！", "makehtml_list_action.php?gotype=mkallct");
+            ShowMsg("不需要进行初处理，现更新所有栏目", "makehtml_list_action.php?gotype=mkallct");
             exit();
         } else {
             if ($uptype == 'time') {
-                $query = "SELECT  DISTINCT typeid From `#@__arctiny` WHERE senddate >=" . GetMkTime($mkvalue) . " AND arcrank>-1";
+                $query = "SELECT  DISTINCT typeid From `#@__arctiny` WHERE senddate >=".GetMkTime($mkvalue)." AND arcrank>-1";
             } else {
                 $query = "SELECT DISTINCT typeid From `#@__arctiny` WHERE id>=$mkvalue AND arcrank>-1";
             }
@@ -96,9 +96,9 @@ if ($action == '') {
                 }
             }
         }
-        $fp = fopen($mkcachefile, 'w') or die("无法写入缓存文件：{$mkcachefile} 所以无法更新栏目！");
+        $fp = fopen($mkcachefile, 'w') or die("无法写入缓存文件：{$mkcachefile} 所以无法更新栏目");
         if (count($typeidsok) > 0) {
-            fwrite($fp, "<" . "?php\r\n");
+            fwrite($fp, "<"."?php\r\n");
             $i = -1;
             foreach ($typeidsok as $k => $t) {
                 if ($k != '') {
@@ -106,13 +106,13 @@ if ($action == '') {
                     fwrite($fp, "\$idArray[$i]={$k};\r\n");
                 }
             }
-            fwrite($fp, "?" . ">");
+            fwrite($fp, "?".">");
             fclose($fp);
-            ShowMsg("完成栏目缓存处理，现转向更新栏目！", "makehtml_list_action.php?gotype=mkall");
+            ShowMsg("完成栏目缓存处理，现转向更新栏目", "makehtml_list_action.php?gotype=mkall");
             exit();
         } else {
             fclose($fp);
-            ShowMsg("没有可更新的栏目，现在作最后数据优化！", "makehtml_all.php?action=make&step=10");
+            ShowMsg("没有可更新的栏目，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
             exit();
         }
     }
@@ -121,10 +121,10 @@ if ($action == '') {
     function _10_MakeAllOK()
     --------------------*/ else if ($step == 10) {
         $adminID = $cuserLogin->getUserID();
-        $mkcachefile = DEDEDATA . "/mkall_cache_{$adminID}.php";
+        $mkcachefile = DEDEDATA."/mkall_cache_{$adminID}.php";
         @unlink($mkcachefile);
         OptimizeData($dsql);
-        ShowMsg("完成所有文件的更新！", "javascript:;");
+        ShowMsg("完成所有文件的更新", "javascript:;");
         exit();
     } //make step
 

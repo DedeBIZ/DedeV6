@@ -1,151 +1,142 @@
 @import "tablebox.css";
-
-*{
+	* {
 	padding:0px;
 	margin:0px;
-	font-size: 13px;
+	font-size:13px
 }
-body{
-	font-family:Verdana, Arial, Helvetica, sans-serif;
+body {
+	font-family:Verdana,Arial,Helvetica,sans-serif;
 	font-size:12px;
 	background:url(images/top-bg.png) left top repeat-x;
-	background-color:#FFF;
+	background-color:#FFF
 }
-ul{
-	list-style:none;
+ul {
+	list-style:none
 }
-a{
-	color:#06C;
+a {
+	color:#06C
 }
-a:hover{
+a:hover {
 	color:#669900;
-	text-decoration:none;
+	text-decoration:none
 }
-input,button,select{
-	vertical-align:middle;
+input,button,select {
+	vertical-align:middle
 }
-
 select {
-	height: calc(1.5em + .75rem + 2px);
-	padding: .375rem .75rem;
-	font-weight: 400;
-	color: #495057;
-	background-color: #fff;
-	background-clip: padding-box;
-	border: 1px solid #ced4da;
-	border-radius: .25rem;
-	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	height:calc(1.5em + .75rem + 2px);
+	padding:.375rem .75rem;
+	font-weight:400;
+	color:#495057;
+	background-color:#fff;
+	background-clip:padding-box;
+	border:1px solid #ced4da;
+	border-radius:.25rem;
+	transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
-
 input[type="button"],input[type="submit"],input[type="reset"] {
-	border: none;
-	border-right: 1px solid #ACACAC;
-	border-bottom: 1px solid #ACACAC;
-	background-color: #F1F8B4;
-	padding: 2px;
-	padding-right: 5px;
-	padding-left: 5px;
-	cursor: pointer;
+	border:none;
+	border-right:1px solid #ACACAC;
+	border-bottom:1px solid #ACACAC;
+	background-color:#F1F8B4;
+	padding:2px;
+	padding-right:5px;
+	padding-left:5px;
+	cursor:pointer
 }
-
 input[type="text"],input[type="password"] {
-	font-size: 1rem;
-	font-weight: 400;
-	color: #495057;
-	background-color: #fff;
-	background-clip: padding-box;
-	border: 1px solid #ced4da;
-	border-radius: .25rem;
-	height: calc(1.5em + .75rem + 2px);
-	padding: .375rem .75rem;
-	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-	line-height: 18px;
-	vertical-align: middle;
+	font-size:1rem;
+	font-weight:400;
+	color:#495057;
+	background-color:#fff;
+	background-clip:padding-box;
+	border:1px solid #ced4da;
+	border-radius:.25rem;
+	height:calc(1.5em + .75rem + 2px);
+	padding:.375rem .75rem;
+	transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	line-height:18px;
+	vertical-align:middle
 }
-.fc-690{
-	color:#FF760A;
+.fc-690 {
+	color:#FF760A
 }
-.fs-14{
-	font-size:14px;
+.fs-14 {
+	font-size:14px
 }
-
-.top{
+.top {
 	width:960px;
 	height:72px;
 	overflow:hidden;
-	margin:0px auto;
+	margin:0px auto
 }
-.top .top-logo{
+.top .top-logo {
 	width:280px;
 	height:72px;
 	float:left;
 	padding-left:10px;
 	background:url(images/top-logo.png) 10px 0px no-repeat;
-	overflow:hidden;
+	overflow:hidden
 }
-.top .top-logo h1{
+.top .top-logo h1 {
 	font-size:0px;
-	line-height:1000%;
+	line-height:1000%
 }
-.top .top-link{
+.top .top-link {
 	height:25px;
 	padding:12px 12px 0px 0px;
-	overflow:hidden;
+	overflow:hidden
 }
-.top .top-link ul{
+.top .top-link ul {
 	height:15px;
 	float:right;
-	overflow:hidden;
+	overflow:hidden
 }
-.top .top-link ul li{
+.top .top-link ul li {
 	float:left;
 	padding-left:10px;
 	padding-right:10px;
 	border-left:1px solid #E8F5E3;
 	margin-left:-1px;
-	line-height:14px;
+	line-height:14px
 }
-.top .top-link ul li a{
+.top .top-link ul li a {
 	text-decoration:none;
-	color:#555;
+	color:#555
 }
-.top .top-version{
+.top .top-version {
 	height:40px;
 	float:right;
-	padding:13px 13px 0px 0px;
+	padding:13px 13px 0px 0px
 }
-.top .top-version h2{
+.top .top-version h2 {
 	color:#FF760A;
 	font-size:22px;
 	font-style:italic;
-	cursor:default;
+	cursor:default
 }
-
-.main{
+.main {
 	width:900px;
-	margin:14px auto 0px;
+	margin:14px auto 0px
 }
-
-.main .pleft{
+.main .pleft {
 	width:168px;
 	float:left;
 	cursor:default;
-	padding-top:6px;
+	padding-top:6px
 }
-.main .pright{
+.main .pright {
 	width:720px;
-	float:right;
+	float:right
 }
-
-
-.pr-title{
+.pr-title {
 	width:720px;
 	height:22px;
 	margin:8px auto 0px;
 	background:url(images/boxtitle_bg.gif) 0px 20px repeat-x;
-	overflow:hidden;
+	overflow:hidden
 }
-.pr-title h3{
+.pr-title h3 {
 	width:158px;
 	height:22px;
 	line-height:22px;
@@ -157,13 +148,12 @@ input[type="text"],input[type="password"] {
 	background:url(images/boxtitle_bg.gif) 0px -2px no-repeat;
 	letter-spacing:2px;
 	color:#FF760A;
-	font-weight:bold;
+	font-weight:bold
 }
-
-.t1{
-	width:162px;
+.t1 {
+	width:162px
 }
-.t1 dt{
+.t1 dt {
 	width:162px;
 	height:25px;
 	line-height:25px;
@@ -171,74 +161,68 @@ input[type="text"],input[type="password"] {
 	font-weight:bold;
 	color:#FF760A;
 	text-indent:10px;
-	letter-spacing:2px;
+	letter-spacing:2px
 }
-.t1 dd{
+.t1 dd {
 	width:160px;
 	background-color:#FFFAF7;
-	border:1px solid #FFCABF;
+	border:1px solid #FFCABF
 }
-.t1 dd ul{
+.t1 dd ul {
 	width:158px;
 	border:1px solid #FFF;
 	overflow:hidden;
 	padding:10px 0px;
-	background:url(images/step-ico-bg.png) 20px 21px no-repeat;
+	background:url(images/step-ico-bg.png) 20px 21px no-repeat
 }
-.t1 dd ul li{
+.t1 dd ul li {
 	height:40px;
 	line-height:36px;
 	text-indent:52px;
 	display:block;
 	color:#888;
-	font-size:14px;
+	font-size:14px
 }
-.t1 dd ul li.succeed{
+.t1 dd ul li.succeed {
 	color:#FF760A;
-	background:url(images/ico-step-succeed.png) 23px 14px no-repeat;
+	background:url(images/ico-step-succeed.png) 23px 14px no-repeat
 }
-.t1 dd ul li.now{
+.t1 dd ul li.now {
 	color:#FF9900;
 	font-weight:bold;
-	background:url(images/ico-step-now.png) 23px 14px no-repeat;
+	background:url(images/ico-step-now.png) 23px 14px no-repeat
 }
-
-.install-msg{
+.install-msg {
 	padding:10px 20px;
 	color:#777;
 	line-height:31px;
 	font-size:14px;
 	overflow:hidden;
-	clear:both;
-
+	clear:both
 }
-
-
-.pr-agreement{
+.pr-agreement {
 	padding:16px;
 	line-height:21px;
 	color:#666;
 	height:300px;
-	overflow-y:scroll;
+	overflow-y:scroll
 }
-.pr-agreement strong{
+.pr-agreement strong {
 	display:block;
 	color:#333;
 	line-height:27px;
-	margin-top:6px;
+	margin-top:6px
 }
-.pr-agreement p{
-	text-indent:30px;
+.pr-agreement p {
+	text-indent:30px
 }
-
-
-.btn-box{
+.btn-box {
 	margin-top:15px;
 	border-top:1px solid #DDD;
 	padding:10px 6px;
-	vertical-align:middle;
+	vertical-align:middle
 }
-.btn-next{
+.btn-next {
 	width:104px;
 	height:34px;
 	border:none;
@@ -247,9 +231,9 @@ input[type="text"],input[type="password"] {
 	margin-left:10px;
 	overflow:hidden;
 	font-size:0px;
-	line-height:100px;
+	line-height:100px
 }
-.btn-back{
+.btn-back {
 	width:104px;
 	height:34px;
 	border:none;
@@ -257,45 +241,39 @@ input[type="text"],input[type="password"] {
 	cursor:pointer;
 	overflow:hidden;
 	font-size:0px;
-	line-height:100px;
+	line-height:100px
 }
-
-
-#readpact{
+#readpact {
 	*margin-top:-4px;
-	margin-right:4px;
+	margin-right:4px
 }
-
-.over-link{
+.over-link {
 	padding:0px 40px;
 	line-height:41px;
 	overflow:hidden;
-	clear:both;
+	clear:both
 }
 .waitpage {
-  top:0;
-  left:0;
-  filter:Alpha(opacity=70);
-  -moz-opacity:0.7;
-  position:absolute;
-  z-index:10000;
-  background:url(images/loading1.gif) #ababab no-repeat center 200px;
-  width:100%;
-  height:2500px;
-  display:none;
+	top:0;
+	left:0;
+	filter:Alpha(opacity=70);
+	-moz-opacity:0.7;
+	position:absolute;
+	z-index:10000;
+	background:url(images/loading1.gif) #ababab no-repeat center 200px;
+	width:100%;
+	height:2500px;
+	display:none
 }
-
 .divpre {
-	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)
 }
-
 .modulesel {
-  width:120px;
-  margin-right:8px;
-  float:left;
+	width:120px;
+	margin-right:8px;
+	float:left
 }
-
 .pr-agreement h2 {
-	font-size: 14px;
-	font-weight: bolder;
+	font-size:14px;
+	font-weight:bolder
 }

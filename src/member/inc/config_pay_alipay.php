@@ -5,12 +5,12 @@ if (!defined('DEDEMEMBER')) exit("Request Error!");
  * 
  * @version        $Id: config_pay_alipay.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEMEMBER . "/paycenter/alipay/alipay_config.php");
-require_once(DEDEMEMBER . "/paycenter/alipay/alipay_service.php");
+require_once(DEDEMEMBER."/paycenter/alipay/alipay_config.php");
+require_once(DEDEMEMBER."/paycenter/alipay/alipay_service.php");
 if ($payment_exp[2] < 0) $payment_exp[2] = 0;
 $piice_ex = $price * $payment_exp[2];
 $parameter = array(
@@ -40,7 +40,7 @@ echo '<html>
     <title>转到支付宝支付页面</title>
 </head>
 <body onload="document.alipay.submit();">
-    <form name="alipay" action="' . $link . '" method="post">
+    <form name="alipay" action="'.$link.'" method="post">
     </form>
 </body>
 </html>';

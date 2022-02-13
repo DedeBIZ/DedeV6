@@ -5,38 +5,38 @@
  *
  * @version        $Id: sys_info.php 1 22:28 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
 if (empty($dopost)) $dopost = "";
 
-$configfile = DEDEDATA . '/config.cache.inc.php';
+$configfile = DEDEDATA.'/config.cache.inc.php';
 
 //更新配置函数
 function ReWriteConfig()
 {
     global $dsql, $configfile;
     if (!is_writeable($configfile)) {
-        echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数！";
+        echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
     flock($fp, 3);
-    fwrite($fp, "<" . "?php\r\n");
+    fwrite($fp, "<"."?php\r\n");
     $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         if ($row['type'] == 'number') {
             if ($row['value'] == '') $row['value'] = 0;
-            fwrite($fp, "\${$row['varname']} = " . $row['value'] . ";\r\n");
+            fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         } else {
-            fwrite($fp, "\${$row['varname']} = '" . str_replace("'", '', $row['value']) . "';\r\n");
+            fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
         }
     }
-    fwrite($fp, "?" . ">");
+    fwrite($fp, "?".">");
     fclose($fp);
 }
 
@@ -53,7 +53,7 @@ if ($dopost == "save") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__sysconfig` SET `value`='$v' WHERE varname='$k' ");
     }
     ReWriteConfig();
-    ShowMsg("成功更改站点配置！", "sys_info.php");
+    ShowMsg("成功更改站点配置", "sys_info.php");
     exit();
 }
 //增加新变量
@@ -78,15 +78,15 @@ else if ($dopost == 'add') {
     VALUES ('$aid','$nvarname','$varmsg','$nvarvalue','$vartype','$vargroup')";
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if (!$rs) {
-        ShowMsg("新增变量失败，可能有非法字符！", "sys_info.php?gp=$vargroup");
+        ShowMsg("新增变量失败，可能有非法字符", "sys_info.php?gp=$vargroup");
         exit();
     }
     if (!is_writeable($configfile)) {
-        ShowMsg("成功保存变量，但由于 $configfile 无法写入，因此不能更新配置文件！", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功保存变量，但由于 $configfile 无法写入，因此不能更新配置文件", "sys_info.php?gp=$vargroup");
         exit();
     } else {
         ReWriteConfig();
-        ShowMsg("成功保存变量并更新配置文件！", "sys_info.php?gp=$vargroup");
+        ShowMsg("成功保存变量并更新配置文件", "sys_info.php?gp=$vargroup");
         exit();
     }
 }
@@ -111,8 +111,8 @@ EOT;
 
         while ($row = $dsql->GetArray()) {
             $bgcolor = ($i++ % 2 == 0) ? "#F9FCEF" : "#ffffff";
-            $row['info'] = preg_replace("#{$keywords}#", '<font color="red">' . $keywords . '</font>', $row['info']);
-            $row['varname'] = preg_replace("#{$keywords}#", '<font color="red">' . $keywords . '</font>', $row['varname']);
+            $row['info'] = preg_replace("#{$keywords}#", '<font color="red">'.$keywords.'</font>', $row['info']);
+            $row['varname'] = preg_replace("#{$keywords}#", '<font color="red">'.$keywords.'</font>', $row['varname']);
 ?>
             <tr align="center" height="25" bgcolor="<?php echo $bgcolor ?>">
                 <td width="300"><?php echo $row['info']; ?>： </td>
@@ -125,11 +125,11 @@ EOT;
                         echo "<label><input type='radio' class='np' name='edit___{$row['varname']}' value='Y'$c1> 是</label>";
                         echo "<label><input type='radio' class='np' name='edit___{$row['varname']}' value='N'$c2> 否</label>";
                     } else if ($row['type'] == 'bstring') {
-                        echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>" . dede_htmlspecialchars($row['value']) . "</textarea>";
+                        echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
                     } else if ($row['type'] == 'number') {
                         echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
                     } else {
-                        echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"" . dede_htmlspecialchars($row['value']) . "\" style='width:80%'>";
+                        echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'>";
                     }
                     ?>
                 </td>

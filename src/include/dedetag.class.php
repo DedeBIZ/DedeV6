@@ -4,7 +4,7 @@
  *
  * @version        $Id: dedetag.class.php 1 10:33 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -204,12 +204,12 @@ class DedeTagParse
         $cfg_disable_funs = isset($cfg_disable_funs) ? $cfg_disable_funs : 'phpinfo,eval,exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,file_put_contents,fsockopen,fopen,fwrite';
         // 模板引擎增加disable_functions
         if (defined('DEDEDISFUN')) {
-            $tokens = token_get_all_nl('<?php' . $str . "\n\r?>");
+            $tokens = token_get_all_nl('<?php'.$str."\n\r?>");
             $disabled_functions = explode(',', $cfg_disable_funs);
             foreach ($tokens as $token) {
                 if (is_array($token)) {
                     if ($token[0] = '306' && in_array($token[1], $disabled_functions)) {
-                        $errmsg = 'DedeBIZ Error:function disabled "' . $token[1] . '" <a href="https://www.dedebiz.com/help" target="_blank">more...</a>';
+                        $errmsg = 'DedeBIZ Error:function disabled "'.$token[1].'" <a href="https://www.dedebiz.com/help" target="_blank">more...</a>';
                         return FALSE;
                     }
                 }
@@ -232,10 +232,10 @@ class DedeTagParse
             return FALSE;
         }
         $cdir = dirname($filename);
-        $cachedir = DEDEROOT . $cfg_tplcache_dir;
-        $ckfile = str_replace($cdir, '', $filename) . substr(md5($filename), 0, 16) . '.inc';
-        $ckfullfile = $cachedir . '/' . $ckfile;
-        $ckfullfile_t = $cachedir . '/' . $ckfile . '.txt';
+        $cachedir = DEDEROOT.$cfg_tplcache_dir;
+        $ckfile = str_replace($cdir, '', $filename).substr(md5($filename), 0, 16).'.inc';
+        $ckfullfile = $cachedir.'/'.$ckfile;
+        $ckfullfile_t = $cachedir.'/'.$ckfile.'.txt';
         $this->CacheFile = $ckfullfile;
         $this->TempMkTime = filemtime($filename);
         if (!file_exists($ckfullfile) || !file_exists($ckfullfile_t)) {
@@ -294,31 +294,31 @@ class DedeTagParse
      */
     function SaveCache()
     {
-        $fp = fopen($this->CacheFile . '.txt', "w");
-        fwrite($fp, $this->TempMkTime . "\n");
+        $fp = fopen($this->CacheFile.'.txt', "w");
+        fwrite($fp, $this->TempMkTime."\n");
         fclose($fp);
         $fp = fopen($this->CacheFile, "w");
         flock($fp, 3);
-        fwrite($fp, '<' . '?php' . "\r\n");
+        fwrite($fp, '<'.'?php'."\r\n");
         $errmsg = '';
         if (is_array($this->CTags)) {
             foreach ($this->CTags as $tid => $ctag) {
-                $arrayValue = 'Array("' . $ctag->TagName . '",';
+                $arrayValue = 'Array("'.$ctag->TagName.'",';
                 if (!$this->CheckDisabledFunctions($ctag->InnerText, $errmsg)) {
                     fclose($fp);
                     @unlink($this->taghashfile);
                     @unlink($this->CacheFile);
-                    @unlink($this->CacheFile . '.txt');
+                    @unlink($this->CacheFile.'.txt');
                     die($errmsg);
                 }
-                $arrayValue .= '"' . str_replace('$', '\$', str_replace("\r", "\\r", str_replace("\n", "\\n", str_replace('"', '\"', str_replace("\\", "\\\\", $ctag->InnerText))))) . '"';
+                $arrayValue .= '"'.str_replace('$', '\$', str_replace("\r", "\\r", str_replace("\n", "\\n", str_replace('"', '\"', str_replace("\\", "\\\\", $ctag->InnerText))))).'"';
                 $arrayValue .= ",{$ctag->StartPos},{$ctag->EndPos});";
                 fwrite($fp, "\$z[$tid]={$arrayValue}\n");
                 if (is_array($ctag->CAttribute->Items)) {
                     fwrite($fp, "\$z[$tid][4]=array();\n");
                     foreach ($ctag->CAttribute->Items as $k => $v) {
                         $v = str_replace("\\", "\\\\", $v);
-                        $v = str_replace('"', "\\" . '"', $v);
+                        $v = str_replace('"', "\\".'"', $v);
                         $v = str_replace('$', '\$', $v);
                         $k = trim(str_replace("'", "", $k));
                         if ($k == "") {
@@ -331,7 +331,7 @@ class DedeTagParse
                 }
             }
         }
-        fwrite($fp, "\n" . '?' . '>');
+        fwrite($fp, "\n".'?'.'>');
         fclose($fp);
     }
 
@@ -390,7 +390,7 @@ class DedeTagParse
         $this->ParseTemplet();
         */
         //优化模板字符串存取读取方式
-        $this->taghashfile = $filename = DEDEDATA . '/tplcache/' . md5($str) . '.inc';
+        $this->taghashfile = $filename = DEDEDATA.'/tplcache/'.md5($str).'.inc';
         if (!is_file($filename)) {
             file_put_contents($filename, $str);
         }
@@ -716,9 +716,9 @@ class DedeTagParse
         $TagEndWord = $this->TagEndWord;
         $sPos = 0;
         $ePos = 0;
-        $FullTagStartWord =  $TagStartWord . $this->NameSpace . ":";
-        $sTagEndWord =  $TagStartWord . "/" . $this->NameSpace . ":";
-        $eTagEndWord = "/" . $TagEndWord;
+        $FullTagStartWord =  $TagStartWord.$this->NameSpace.":";
+        $sTagEndWord =  $TagStartWord."/".$this->NameSpace.":";
+        $eTagEndWord = "/".$TagEndWord;
         $tsLen = strlen($FullTagStartWord);
         $sourceLen = strlen($this->SourceString);
 
@@ -769,7 +769,7 @@ class DedeTagParse
             if ($tTagName != '') {
                 $i = $sPos + $tsLen;
                 $endPos = -1;
-                $fullTagEndWordThis = $sTagEndWord . $tTagName . $TagEndWord;
+                $fullTagEndWordThis = $sTagEndWord.$tTagName.$TagEndWord;
 
                 $e1 = strpos($this->SourceString, $eTagEndWord, $i);
                 $e2 = strpos($this->SourceString, $FullTagStartWord, $i);
@@ -807,7 +807,7 @@ class DedeTagParse
 
                 //not found end tag , error
                 if ($endPos == -1) {
-                    echo "Tag Character postion $sPos, '$tTagName' Error！<br />\r\n";
+                    echo "Tag Character postion $sPos, '$tTagName' Error<br />\r\n";
                     break;
                 }
                 $i = $elen;
@@ -868,8 +868,8 @@ class DedeTagParse
         $functionname = str_replace("{\"", "[\"", $functionname);
         $functionname = str_replace("\"}", "\"]", $functionname);
         $functionname = preg_replace("/'@me'|\"@me\"|@me/i", '$DedeFieldValue', $functionname);
-        $functionname = "\$DedeFieldValue = " . $functionname;
-        @eval($functionname . ";"); //or die("<xmp>$functionname</xmp>");
+        $functionname = "\$DedeFieldValue = ".$functionname;
+        @eval($functionname.";"); //or die("<xmp>$functionname</xmp>");
         if (empty($DedeFieldValue)) {
             return '';
         } else {
@@ -916,17 +916,17 @@ class DedeTagParse
         if ($filename == '') {
             return '';
         }
-        if (file_exists(DEDEROOT . "/templets/" . $filename)) {
-            $okfile = DEDEROOT . "/templets/" . $filename;
-        } else if (file_exists(DEDEROOT . '/templets/' . $cfg_df_style . '/' . $filename)) {
-            $okfile = DEDEROOT . '/templets/' . $cfg_df_style . '/' . $filename;
+        if (file_exists(DEDEROOT."/templets/".$filename)) {
+            $okfile = DEDEROOT."/templets/".$filename;
+        } else if (file_exists(DEDEROOT.'/templets/'.$cfg_df_style.'/'.$filename)) {
+            $okfile = DEDEROOT.'/templets/'.$cfg_df_style.'/'.$filename;
         } else {
             return "无法在这个位置找到： $filename";
         }
 
         //编译
         if ($ismake != "no") {
-            require_once(DEDEINC . "/channelunit.func.php");
+            require_once(DEDEINC."/channelunit.func.php");
             $dtp = new DedeTagParse();
             $dtp->LoadTemplet($okfile);
             MakeOneTag($dtp, $this->refObj);

@@ -4,7 +4,7 @@
  *
  * @version        $Id: extend.helper.php 1 13:58 2010年7月5日Z tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -31,7 +31,7 @@ if (!function_exists('ParCv')) {
 if (!function_exists('ParamError')) {
     function ParamError()
     {
-        ShowMsg('对不起，你输入的参数有误！', 'javascript:;');
+        ShowMsg('对不起，您输入的参数有误', 'javascript:;');
         exit();
     }
 }
@@ -77,9 +77,9 @@ if (!function_exists('dede_strip_tags')) {
         $res = $strs[0];
         for ($i = 1; $i < count($strs); $i++) {
             if (!strpos($strs[$i], '>'))
-                $res = $res . '&lt;' . $strs[$i];
+                $res = $res.'&lt;'.$strs[$i];
             else
-                $res = $res . '<' . $strs[$i];
+                $res = $res.'<'.$strs[$i];
         }
         return strip_tags($res);
     }

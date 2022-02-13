@@ -5,17 +5,17 @@
  *
  * @version        $Id: pic_view.php 1 15:26 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('pic_view');
 if (empty($activepath)) $activepath = $cfg_medias_dir;
 
 $activepath = preg_replace("#\/{1,}#", "/", $activepath);
 $activepath = RemoveXSS($activepath);
-$truePath = $cfg_basedir . $activepath;
+$truePath = $cfg_basedir.$activepath;
 $listSize = 5;
 include DedeInclude('templets/pic_view.htm');
 
@@ -27,9 +27,9 @@ function GetPrePath($nowPath)
         $dirs = split("/", $nowPath);
         $nowPath = "";
         for ($i = 1; $i < count($dirs) - 1; $i++) {
-            $nowPath .= "/" . $dirs[$i];
+            $nowPath .= "/".$dirs[$i];
         }
-        echo ("<a href=\"pic_view.php?activepath=" . $nowPath . "\">转到上级目录</a>\n");
+        echo ("<a href=\"pic_view.php?activepath=".$nowPath."\">转到上级目录</a>\n");
     }
 }
 
@@ -46,13 +46,13 @@ function ListPic($truePath, $nowPath)
     echo ("<tr align='center'>\n");
     while ($filename = $dh->read()) {
         if (!preg_match("#\.$#", $filename)) {
-            $fullName = $truePath . "/" . $filename;
-            $fileUrl =  $nowPath . "/" . $filename;
+            $fullName = $truePath."/".$filename;
+            $fileUrl =  $nowPath."/".$filename;
             if (is_dir($fullName)) {
                 if ($col % $listSize == 0 && $col != 0) {
                     echo ("</tr>\n<tr align='center'>\n");
                     for ($i = $rowdd - $listSize; $i < $rowdd; $i++) {
-                        echo ("<td>" . $filelist[$i] . "</td>\n");
+                        echo ("<td>".$filelist[$i]."</td>\n");
                     }
                     echo ("</tr>\n<tr align='center'>\n");
                 }
@@ -60,7 +60,7 @@ function ListPic($truePath, $nowPath)
                     <td>
                     <table width='106' height='106' border='0' cellpadding='0' cellspacing='1' bgcolor='#CCCCCC'>
                     <tr><td align='center' bgcolor='#FFFFFF'>
-                    <a href='pic_view.php?activepath=" . $fileUrl . "'>
+                    <a href='pic_view.php?activepath=".$fileUrl."'>
                     <img src='images/pic_dir.gif' width='44' height='42' border='0'>
                     </a></td></tr></table></td>";
                 $filelist[$rowdd] = $filename;
@@ -71,7 +71,7 @@ function ListPic($truePath, $nowPath)
                 if ($col % $listSize == 0 && $col != 0) {
                     echo ("</tr>\n<tr align='center'>\n");
                     for ($i = $rowdd - $listSize; $i < $rowdd; $i++) {
-                        echo ("<td>" . $filelist[$i] . "</td>\n");
+                        echo ("<td>".$filelist[$i]."</td>\n");
                     }
                     echo ("</tr>\n<tr align='center'>\n");
                 }
@@ -80,7 +80,7 @@ function ListPic($truePath, $nowPath)
                     <table width='106' height='106' border='0' cellpadding='0' cellspacing='1' bgcolor='#CCCCCC'>
                     <tr>
                     <td align='center' bgcolor='#FFFFFF'>
-                    " . GetImgFile($truePath, $nowPath, $filename) . "
+                    ".GetImgFile($truePath, $nowPath, $filename)."
                     </td>
                     </tr></table></td>";
                 $filelist[$rowdd] = $filename;
@@ -98,7 +98,7 @@ function ListPic($truePath, $nowPath)
             $t = $listSize;
         }
         for ($i = $rowdd - $t; $i < $rowdd; $i++) {
-            echo ("<td>" . $filelist[$i] . "</td>\n");
+            echo ("<td>".$filelist[$i]."</td>\n");
         }
         echo ("</tr>\n");
     }
@@ -108,7 +108,7 @@ function GetImgFile($truePath, $nowPath, $fileName)
 {
     $toW = 102;
     $toH = 102;
-    $srcFile = $truePath . "/" . $fileName;
+    $srcFile = $truePath."/".$fileName;
     $info = "";
     $data = GetImageSize($srcFile, $info);
     $srcW = $data[0];
@@ -127,7 +127,7 @@ function GetImgFile($truePath, $nowPath, $fileName)
             $ftoW = $ftoH * ($srcW / $srcH);
         }
     }
-    return ("<a href='" . $nowPath . "/" . $fileName . "' target='_blank'><img src='" . $nowPath . "/" . $fileName . "' width='" . $ftoW . "' height='" . $ftoH . "' border='0'></a>");
+    return ("<a href='".$nowPath."/".$fileName."' target='_blank'><img src='".$nowPath."/".$fileName."' width='".$ftoW."' height='".$ftoH."' border='0'></a>");
 }
 
 function IsImg($fileName)

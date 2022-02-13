@@ -5,14 +5,14 @@
  *
  * @version        $Id: diy_add.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Edit');
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/oxwindow.class.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/oxwindow.class.php");
 
 if (empty($dopost)) $dopost = "";
 $diyid = (empty($diyid) ? 0 : intval($diyid));
@@ -25,7 +25,7 @@ if ($dopost == "save") {
     $name = dede_htmlspecialchars($name);
     $query = "UPDATE `#@__diyforms` SET name = '$name', listtemplate='$listtemplate', viewtemplate='$viewtemplate', posttemplate='$posttemplate', public='$public' WHERE diyid='$diyid' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功更改一个自定义表单！", "diy_main.php");
+    ShowMsg("成功更改一个自定义表单", "diy_main.php");
     exit();
 }
 /*----------------
@@ -45,7 +45,7 @@ function __Delete()
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("diyid", $diyid);
-        $win->AddTitle("！将删除所有与该自定义表单相关的文件和数据<br />你确实要删除 \"" . $row['name'] . "\" 这个自定义表单？");
+        $win->AddTitle("将删除所有与该自定义表单相关的文件和数据<br />您确实要删除 \"".$row['name']."\" 这个自定义表单？");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -55,7 +55,7 @@ function __Delete()
     else if ($job == "yes") {
         $row = $dsql->GetOne("SELECT `table` FROM `#@__diyforms` WHERE diyid='$diyid'", MYSQL_ASSOC);
         if (!is_array($row)) {
-            ShowMsg("你所指定的自定义表单信息不存在!", "-1");
+            ShowMsg("您所指定的自定义表单信息不存在!", "-1");
             exit();
         }
 
@@ -64,7 +64,7 @@ function __Delete()
 
         //删除频道配置信息
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__diyforms` WHERE diyid='$diyid'");
-        ShowMsg("成功删除一个自定义表单！", "diy_main.php");
+        ShowMsg("成功删除一个自定义表单", "diy_main.php");
         exit();
     }
 }
@@ -73,4 +73,4 @@ function __Delete()
 function edit()
 -----------------*/
 $row = $dsql->GetOne("Select * From #@__diyforms where diyid='$diyid'");
-include DEDEADMIN . "/templets/diy_edit.htm";
+include DEDEADMIN."/templets/diy_edit.htm";

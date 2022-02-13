@@ -5,14 +5,14 @@
  *
  * @version        $Id: mychannel_field_add.php 1 15:07 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_New');
-require_once(DEDEADMIN . "/inc/inc_admin_channel.php");
-require_once(DEDEINC . "/dedetag.class.php");
+require_once(DEDEADMIN."/inc/inc_admin_channel.php");
+require_once(DEDEINC."/dedetag.class.php");
 
 if (empty($action)) $action = '';
 $mysql_version = $dsql->GetVersion();
@@ -29,7 +29,7 @@ if ($action == 'save') {
 
     if (preg_match("#^(select|radio|checkbox)$#i", $dtype)) {
         if (!preg_match("#,#", $dfvalue)) {
-            ShowMsg("你设定了字段为 {$dtype} 类型，必须在默认值中指定元素列表，如：'a,b,c' ", "-1");
+            ShowMsg("您设定了字段为 {$dtype} 类型，必须在默认值中指定元素列表，如：'a,b,c' ", "-1");
             exit();
         }
     }
@@ -37,7 +37,7 @@ if ($action == 'save') {
     if ($dtype == 'stepselect') {
         $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='$fieldname' ");
         if (!is_array($arr)) {
-            ShowMsg("你设定了字段为联动类型，但系统中没找到与你定义的字段名相同的联动组名!", "-1");
+            ShowMsg("您设定了字段为联动类型，但系统中没找到与您定义的字段名相同的联动组名!", "-1");
             exit();
         }
     }
@@ -58,7 +58,7 @@ if ($action == 'save') {
     $rs = $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` ADD $ntabsql ");
     if (!$rs) {
         $gerr = $dsql->GetError();
-        ShowMsg("增加字段失败，错误提示为：" . $gerr, "javascript:;");
+        ShowMsg("增加字段失败，错误提示为：".$gerr, "javascript:;");
         exit();
     }
 
@@ -73,9 +73,9 @@ if ($action == 'save') {
                 break;
             }
         }
-        $oksetting = $ok ? $dtp->GetResultNP() : $fieldset . "\n" . stripslashes($fieldstring);
+        $oksetting = $ok ? $dtp->GetResultNP() : $fieldset."\n".stripslashes($fieldstring);
     } else {
-        $oksetting = $fieldset . "\r\n" . stripslashes($fieldstring);
+        $oksetting = $fieldset."\r\n".stripslashes($fieldstring);
     }
 
     $addlist = GetAddFieldList($dtp, $oksetting);
@@ -83,11 +83,11 @@ if ($action == 'save') {
     $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting',listfields='$addlist' WHERE id='$id' ");
     if (!$rs) {
         $grr = $dsql->GetError();
-        ShowMsg("保存节点配置出错！" . $grr, "javascript:;");
+        ShowMsg("保存节点配置出错".$grr, "javascript:;");
         exit();
     }
 
-    ShowMsg("成功增加一个字段！", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
+    ShowMsg("成功增加一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
 
@@ -101,9 +101,9 @@ $trueTable = $row['addtable'];
 $tabsql = "CREATE TABLE IF NOT EXISTS  `$trueTable`( `aid` int(11) NOT NULL default '0',\r\n `typeid` int(11) NOT NULL default '0',\r\n ";
 
 if ($mysql_version < 4.1) {
-    $tabsql .= " PRIMARY KEY  (`aid`), KEY `" . $trueTable . "_index` (`typeid`)\r\n) TYPE=MyISAM; ";
+    $tabsql .= " PRIMARY KEY  (`aid`), KEY `".$trueTable."_index` (`typeid`)\r\n) TYPE=MyISAM; ";
 } else {
-    $tabsql .= " PRIMARY KEY  (`aid`), KEY `" . $trueTable . "_index` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=" . $cfg_db_language . "; ";
+    $tabsql .= " PRIMARY KEY  (`aid`), KEY `".$trueTable."_index` (`typeid`)\r\n) ENGINE=MyISAM DEFAULT CHARSET=".$cfg_db_language."; ";
 }
 
 $dsql->ExecuteNoneQuery($tabsql);
@@ -134,7 +134,7 @@ while ($nrow = $dsql->GetArray('a', MYSQL_ASSOC)) {
 
 $f = '';
 foreach ($fields as $k => $v) {
-    $f .= ($f == '' ? $k : ' ' . $k);
+    $f .= ($f == '' ? $k : ' '.$k);
 }
 
 // 获取频道模型
@@ -145,4 +145,4 @@ while ($row = $dsql->GetObject()) {
     $channelArray[$row->id]['nid'] = $row->nid;
 }
 
-require_once(DEDEADMIN . "/templets/mychannel_field_add.htm");
+require_once(DEDEADMIN."/templets/mychannel_field_add.htm");

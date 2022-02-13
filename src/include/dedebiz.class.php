@@ -2,7 +2,7 @@
 // Copyright 2020 The DedeBiz Authors. All rights reserved.
 // license that can be found in the LICENSE file.
 
-// @copyright      Copyright (c) 2021, DedeBIZ.COM
+// @copyright      Copyright (c) 2022, DedeBIZ.COM
 // @license        https://www.dedebiz.com/license
 // @link           https://www.dedebiz.com
 
@@ -265,7 +265,7 @@ class DedeBizClient
     }
 
     // 关闭通信接口
-    // ！！！一次页面操作后一定记得要关闭连接，否则会占用系统资源
+    // 一次页面操作后一定记得要关闭连接，否则会占用系统资源
     function Close()
     {
         // 这里避免重复释放

@@ -5,16 +5,16 @@
  * 
  * @version        $Id: archives_edit.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckRank(0, 0);
-require_once(DEDEINC . "/dedetag.class.php");
-require_once(DEDEINC . "/customfields.func.php");
-require_once(DEDEMEMBER . "/inc/inc_catalog_options.php");
-require_once(DEDEMEMBER . "/inc/inc_archives_functions.php");
+require_once(DEDEINC."/dedetag.class.php");
+require_once(DEDEINC."/customfields.func.php");
+require_once(DEDEMEMBER."/inc/inc_catalog_options.php");
+require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
@@ -27,7 +27,7 @@ if (empty($dopost)) {
     //读取归档信息
     $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,arc.mtype as mtypeid,ch.arcsta
        FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
-       WHERE arc.id='$aid' And arc.mid='" . $cfg_ml->M_ID . "'; ";
+       WHERE arc.id='$aid' And arc.mid='".$cfg_ml->M_ID."'; ";
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
         ShowMsg("读取文档信息出错!", "-1");
@@ -36,20 +36,20 @@ if (empty($dopost)) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
         if ($dtime - $row['senddate'] > $maxtime) {
-            ShowMsg("这篇文档已经锁定，你不能再修改它！", "-1");
+            ShowMsg("这篇文档已经锁定，您不能再修改它", "-1");
             exit();
         }
     }
     $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid'; ");
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype`  WHERE id='{$row['channel']}'; ");
-    include(DEDEMEMBER . "/templets/archives_edit.htm");
+    include(DEDEMEMBER."/templets/archives_edit.htm");
     exit();
 }
 
 /*------------------------------
 function _SaveArticle(){  }
 ------------------------------*/ else if ($dopost == 'save') {
-    include(DEDEMEMBER . '/inc/archives_check_edit.php');
+    include(DEDEMEMBER.'/inc/archives_check_edit.php');
 
     //分析处理附加表数据
     $inadd_f = $inadd_m = '';
@@ -71,15 +71,15 @@ function _SaveArticle(){  }
                 }
 
                 ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $aid);
-                $inadd_m .= ',' . $vs[0];
-                $inadd_f .= ',' . $vs[0] . " ='" . ${$vs[0]} . "' ";
+                $inadd_m .= ','.$vs[0];
+                $inadd_f .= ','.$vs[0]." ='".${$vs[0]}."' ";
             }
         }
 
         // 这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交！", "-1");
+            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();
         }
     }
@@ -102,14 +102,14 @@ function _SaveArticle(){  }
      WHERE id='$aid' And mid='$mid'; ";
 
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("把数据保存到数据库主表时出错，请联系管理员！" . $dsql->GetError(), "-1");
+        ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
     }
 
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f}, userip='$userip' WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员！", "javascript:;");
+            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -117,19 +117,19 @@ function _SaveArticle(){  }
     $sortrank = empty($sortrank) ? 0 : $sortrank;
     UpIndexKey($aid, $arcrank, $typeid, $sortrank, $tags);
     $artUrl = MakeArt($aid, TRUE);
-    if ($artUrl == '') $artUrl = $cfg_phpurl . "/view.php?aid=$aid";
+    if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
 
     //返回成功信息
-    $msg = "　　请选择你的后续操作：
+    $msg = "　　请选择您的后续操作：
         <a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-secondary btn-sm'>发布新内容</a>
         &nbsp;&nbsp;
-        <a href='archives_edit.php?channelid=$channelid&aid=" . $aid . "' class='btn btn-secondary btn-sm'>查看更改</a>
+        <a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看更改</a>
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank'>查看内容</a>
         &nbsp;&nbsp;
         <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理内容</a>
         ";
-    $wintitle = "成功更改内容！";
+    $wintitle = "成功更改内容";
     $wecome_info = "内容管理::更改内容";
     $win = new OxWindow();
     $win->AddTitle("成功更改内容：");

@@ -6,11 +6,11 @@
  *
  * @version        $Id: digg_ajax.php$
  * @package        DedeBIZ.Plus
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/../include/common.inc.php");
+require_once(dirname(__FILE__)."/../include/common.inc.php");
 $action = isset($action) ? trim($action) : '';
 $format = isset($format) ? $format : '';
 $id = empty($id) ? 0 : intval($id);
@@ -31,7 +31,7 @@ if ($cid < 0) {
 }
 
 $prefix = 'diggCache';
-$key = 'aid-' . $id;
+$key = 'aid-'.$id;
 $row = GetCache($prefix, $key);
 
 if (!is_array($row) || $cfg_digg_update == 0) {
@@ -39,10 +39,10 @@ if (!is_array($row) || $cfg_digg_update == 0) {
 	if ($cfg_digg_update == 0) {
 		if ($action == 'good') {
 			$row['goodpost'] = $row['goodpost'] + 1;
-			$dsql->ExecuteNoneQuery("UPDATE `$maintable` SET scores = scores + {$cfg_caicai_add},goodpost=goodpost+1,lastpost=" . time() . " WHERE $idtype='$id'");
+			$dsql->ExecuteNoneQuery("UPDATE `$maintable` SET scores = scores + {$cfg_caicai_add},goodpost=goodpost+1,lastpost=".time()." WHERE $idtype='$id'");
 		} else if ($action == 'bad') {
 			$row['badpost'] = $row['badpost'] + 1;
-			$dsql->ExecuteNoneQuery("UPDATE `$maintable` SET scores = scores - {$cfg_caicai_sub},badpost=badpost+1,lastpost=" . time() . " WHERE $idtype='$id'");
+			$dsql->ExecuteNoneQuery("UPDATE `$maintable` SET scores = scores - {$cfg_caicai_sub},badpost=badpost+1,lastpost=".time()." WHERE $idtype='$id'");
 		}
 		DelCache($prefix, $key);
 	}
@@ -101,20 +101,20 @@ if ($formurl == 'caicai') {
 		$digg = json_encode($result);
 	} else {
 		// 兼容之前的老版本
-		$digg = '<div class="diggbox digg_good" onmousemove="this.style.backgroundPosition=\'left bottom\';" onmouseout="this.style.backgroundPosition=\'left top\';" onclick="postDigg(\'good\',' . $id . ')">
+		$digg = '<div class="diggbox digg_good" onmousemove="this.style.backgroundPosition=\'left bottom\';" onmouseout="this.style.backgroundPosition=\'left top\';" onclick="postDigg(\'good\','.$id.')">
 		<div class="digg_act">顶一下</div>
-		<div class="digg_num">(' . $row['goodpost'] . ')</div>
+		<div class="digg_num">('.$row['goodpost'].')</div>
 		<div class="digg_percent">
-			<div class="digg_percent_bar"><span style="width:' . $row['goodper'] . '%"></span></div>
-			<div class="digg_percent_num">' . $row['goodper'] . '%</div>
+			<div class="digg_percent_bar"><span style="width:'.$row['goodper'].'%"></span></div>
+			<div class="digg_percent_num">'.$row['goodper'].'%</div>
 		</div>
 	</div>
-	<div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition=\'right bottom\';" onmouseout="this.style.backgroundPosition=\'right top\';" onclick="postDigg(\'bad\',' . $id . ')">
+	<div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition=\'right bottom\';" onmouseout="this.style.backgroundPosition=\'right top\';" onclick="postDigg(\'bad\','.$id.')">
 		<div class="digg_act">踩一下</div>
-		<div class="digg_num">(' . $row['badpost'] . ')</div>
+		<div class="digg_num">('.$row['badpost'].')</div>
 		<div class="digg_percent">
-			<div class="digg_percent_bar"><span style="width:' . $row['badper'] . '%"></span></div>
-			<div class="digg_percent_num">' . $row['badper'] . '%</div>
+			<div class="digg_percent_bar"><span style="width:'.$row['badper'].'%"></span></div>
+			<div class="digg_percent_num">'.$row['badper'].'%</div>
 		</div>
 	</div>';
 	}

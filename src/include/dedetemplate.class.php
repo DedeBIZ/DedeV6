@@ -4,7 +4,7 @@
  *
  * @version        $Id: dedetemplate.class.php 3 15:44 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -30,7 +30,7 @@
 function MakePublicTag($atts = array(), $refObj = '', $fields = array())
 {
     $atts['tagname'] = preg_replace("/[0-9]{1,}$/", "", $atts['tagname']);
-    $plusfile = DEDEINC . '/tpllib/plus_' . $atts['tagname'] . '.php';
+    $plusfile = DEDEINC.'/tpllib/plus_'.$atts['tagname'].'.php';
     if (!file_exists($plusfile)) {
         if (isset($atts['rstype']) && $atts['rstype'] == 'string') {
             return '';
@@ -39,7 +39,7 @@ function MakePublicTag($atts = array(), $refObj = '', $fields = array())
         }
     } else {
         include_once($plusfile);
-        $func = 'plus_' . $atts['tagname'];
+        $func = 'plus_'.$atts['tagname'];
         return $func($atts, $refObj, $fields);
     }
 }
@@ -202,7 +202,7 @@ class DedeTemplate
         //$definedVars[] = 'var';
         //缓存目录
         if ($templatedir == '') {
-            $this->templateDir = DEDEROOT . '/templates';
+            $this->templateDir = DEDEROOT.'/templates';
         } else {
             $this->templateDir = $templatedir;
         }
@@ -210,12 +210,12 @@ class DedeTemplate
         //模板include目录
         if ($refDir == '') {
             if (isset($GLOBALS['cfg_df_style'])) {
-                $this->refDir = $this->templateDir . '/' . $GLOBALS['cfg_df_style'] . '/';
+                $this->refDir = $this->templateDir.'/'.$GLOBALS['cfg_df_style'].'/';
             } else {
                 $this->refDir = $this->templateDir;
             }
         }
-        $this->cacheDir = DEDEROOT . $GLOBALS['cfg_tplcache_dir'];
+        $this->cacheDir = DEDEROOT.$GLOBALS['cfg_tplcache_dir'];
     }
 
     //构造函数,兼容PHP4
@@ -324,19 +324,19 @@ class DedeTemplate
         $this->templateFile = $tmpfile;
         $this->refDir = '';
         for ($i = 0; $i < count($tmpfiles) - 1; $i++) {
-            $this->refDir .= $tmpfiles[$i] . '/';
+            $this->refDir .= $tmpfiles[$i].'/';
         }
         if (!is_dir($this->cacheDir)) {
             $this->cacheDir = $this->refDir;
         }
         if ($this->cacheDir != '') {
-            $this->cacheDir = $this->cacheDir . '/';
+            $this->cacheDir = $this->cacheDir.'/';
         }
         if (isset($GLOBALS['_DEBUG_CACHE'])) {
             $this->cacheDir = $this->refDir;
         }
-        $this->cacheFile = $this->cacheDir . preg_replace("/\.(wml|html|htm|php)$/", "_" . $this->GetEncodeStr($tmpfile) . '.inc', $tmpfileOnlyName);
-        $this->configFile = $this->cacheDir . preg_replace("/\.(wml|html|htm|php)$/", "_" . $this->GetEncodeStr($tmpfile) . '_config.inc', $tmpfileOnlyName);
+        $this->cacheFile = $this->cacheDir.preg_replace("/\.(wml|html|htm|php)$/", "_".$this->GetEncodeStr($tmpfile).'.inc', $tmpfileOnlyName);
+        $this->configFile = $this->cacheDir.preg_replace("/\.(wml|html|htm|php)$/", "_".$this->GetEncodeStr($tmpfile).'_config.inc', $tmpfileOnlyName);
 
         //不开启缓存、当缓存文件不存在、及模板为更新的文件的时候才载入模板并进行解析
         if (
@@ -370,8 +370,8 @@ class DedeTemplate
     {
         $this->sourceString = $str;
         $hashcode = md5($this->sourceString);
-        $this->cacheFile = $this->cacheDir . "/string_" . $hashcode . ".inc";
-        $this->configFile = $this->cacheDir . "/string_" . $hashcode . "_config.inc";
+        $this->cacheFile = $this->cacheDir."/string_".$hashcode.".inc";
+        $this->configFile = $this->cacheDir."/string_".$hashcode."_config.inc";
         $this->ParseTemplate();
     }
 
@@ -446,7 +446,7 @@ class DedeTemplate
             foreach ($tokens as $token) {
                 if (is_array($token)) {
                     if ($token[0] = '306' && in_array($token[1], $disabled_functions)) {
-                        $errmsg = 'DedeBIZ Error:function disabled "' . $token[1] . '" <a href="https://www.dedebiz.com/help" target="_blank">more...</a>';
+                        $errmsg = 'DedeBIZ Error:function disabled "'.$token[1].'" <a href="https://www.dedebiz.com/help" target="_blank">more...</a>';
                         return FALSE;
                     }
                 }
@@ -486,13 +486,13 @@ class DedeTemplate
             if (count($this->tpCfgs) > 0) {
                 $fp = fopen($this->configFile, 'w') or dir("Write Config File Error! ");
                 flock($fp, 3);
-                fwrite($fp, '<' . '?php' . "\r\n");
+                fwrite($fp, '<'.'?php'."\r\n");
                 foreach ($this->tpCfgs as $k => $v) {
                     $v = str_replace("\"", "\\\"", $v);
                     $v = str_replace("\$", "\\\$", $v);
                     fwrite($fp, "\$this->tpCfgs['$k']=\"$v\";\r\n");
                 }
-                fwrite($fp, '?' . '>');
+                fwrite($fp, '?'.'>');
                 fclose($fp);
             }
         }
@@ -627,7 +627,7 @@ class DedeTemplate
                 $endPos = -1;
 
                 //判断  '/}' '{tag:下一标记开始' '{/tag:标记结束' 谁最靠近
-                $fullTagEndWordThis = $fullTagEndWord . $ttagName . $tagEndWord;
+                $fullTagEndWordThis = $fullTagEndWord.$ttagName.$tagEndWord;
                 $e1 = strpos($this->sourceString, $sTagEndWord, $i);
                 $e2 = strpos($this->sourceString, $tagStartWord, $i);
                 $e3 = strpos($this->sourceString, $fullTagEndWordThis, $i);
@@ -661,7 +661,7 @@ class DedeTemplate
 
                 //如果找不到结束标记，则认为这个标记存在错误
                 if ($endPos == -1) {
-                    echo "Tpl Character postion $tagPos, '$ttagName' Error！<br />\r\n";
+                    echo "Tpl Character postion $tagPos, '$ttagName' Error<br />\r\n";
                     break;
                 }
                 $i = $elen;
@@ -690,16 +690,16 @@ class DedeTemplate
                     $cAtt->cAttributes->count = 2;
                     $cAtt->cAttributes->items['tagname'] = $ttagName;
                     $cAtt->cAttributes->items['condition'] = preg_replace("/^if[0-9]{0,}[\r\n\t ]/", "", $attStr);
-                    $innerText = preg_replace("/\{else\}/i", '<' . "?php\r\n}\r\nelse{\r\n" . '?' . '>', $innerText);
+                    $innerText = preg_replace("/\{else\}/i", '<'."?php\r\n}\r\nelse{\r\n".'?'.'>', $innerText);
                 } else if ($ttagName == 'php') {
                     $cAtt->cAttributes = new TagAttribute();
                     $cAtt->cAttributes->count = 2;
                     $cAtt->cAttributes->items['tagname'] = $ttagName;
-                    $cAtt->cAttributes->items['code'] = '<' . "?php\r\n" . trim(preg_replace(
+                    $cAtt->cAttributes->items['code'] = '<'."?php\r\n".trim(preg_replace(
                         "/^php[0-9]{0,}[\r\n\t ]/",
                         "",
                         $attStr
-                    )) . "\r\n?" . '>';
+                    ))."\r\n?".'>';
                 } else {
                     //普通标记，解释属性
                     $cAtt->SetSource($attStr);
@@ -765,8 +765,8 @@ class DedeTemplate
             $this->ParseTemplate();
         }
         $addset = '';
-        $addset .= '<' . '?php' . "\r\n" . 'if(!isset($GLOBALS[\'_vars\'])) $GLOBALS[\'_vars\'] = array(); ' . "\r\n" . '$fields = array();' . "\r\n" . '?' . '>';
-        return preg_replace("/\?" . ">[ \r\n\t]{0,}<" . "\?php/", "", $addset . $this->sourceString);
+        $addset .= '<'.'?php'."\r\n".'if(!isset($GLOBALS[\'_vars\'])) $GLOBALS[\'_vars\'] = array(); '."\r\n".'$fields = array();'."\r\n".'?'.'>';
+        return preg_replace("/\?".">[ \r\n\t]{0,}<"."\?php/", "", $addset.$this->sourceString);
     }
 
     /**
@@ -792,26 +792,26 @@ class DedeTemplate
             if ($cTag->GetAtt('function') != '') {
                 $cTag->tagValue = $this->CompilerFunction($cTag->GetAtt('function'), $cTag->tagValue);
             }
-            $cTag->tagValue = '<' . '?php echo ' . $cTag->tagValue . '; ?' . '>';
+            $cTag->tagValue = '<'.'?php echo '.$cTag->tagValue.'; ?'.'>';
         } else if ($tagname == 'cfg') {
-            $cTag->tagValue = '$GLOBALS[\'cfg_' . $varname . '\']'; //处理函数
+            $cTag->tagValue = '$GLOBALS[\'cfg_'.$varname.'\']'; //处理函数
             if ($cTag->GetAtt('function') != '') {
                 $cTag->tagValue = $this->CompilerFunction($cTag->GetAtt('function'), $cTag->tagValue);
             }
-            $cTag->tagValue = '<' . '?php echo ' . $cTag->tagValue . '; ?' . '>';
+            $cTag->tagValue = '<'.'?php echo '.$cTag->tagValue.'; ?'.'>';
         } else if ($tagname == 'name') {
-            $cTag->tagValue = '$' . $varname; //处理函数
+            $cTag->tagValue = '$'.$varname; //处理函数
             if ($cTag->GetAtt('function') != '') {
                 $cTag->tagValue = $this->CompilerFunction($cTag->GetAtt('function'), $cTag->tagValue);
             }
-            $cTag->tagValue = '<' . '?php echo ' . $cTag->tagValue . '; ?' . '>';
+            $cTag->tagValue = '<'.'?php echo '.$cTag->tagValue.'; ?'.'>';
         } else if ($tagname == 'object') {
             list($_obs, $_em) = explode('->', $varname);
             $cTag->tagValue = "\$GLOBALS['{$_obs}']->{$_em}"; //处理函数
             if ($cTag->GetAtt('function') != '') {
                 $cTag->tagValue = $this->CompilerFunction($cTag->GetAtt('function'), $cTag->tagValue);
             }
-            $cTag->tagValue = '<' . '?php echo ' . $cTag->tagValue . '; ?' . '>';
+            $cTag->tagValue = '<'.'?php echo '.$cTag->tagValue.'; ?'.'>';
         } else if ($tagname == 'var') {
             $cTag->tagValue = $this->CompilerArrayVar('var', $varname);
 
@@ -820,33 +820,33 @@ class DedeTemplate
             }
             // 增加默认空值处理
             if ($cTag->GetAtt('default') != '') {
-                $cTag->tagValue = '<' . '?php echo empty(' . $cTag->tagValue . ')? \'' . addslashes($cTag->GetAtt('default')) . '\':' . $cTag->tagValue . '; ?' . '>';
+                $cTag->tagValue = '<'.'?php echo empty('.$cTag->tagValue.')? \''.addslashes($cTag->GetAtt('default')).'\':'.$cTag->tagValue.'; ?'.'>';
             } else {
-                $cTag->tagValue = '<' . '?php echo ' . $cTag->tagValue . '; ?' . '>';
+                $cTag->tagValue = '<'.'?php echo '.$cTag->tagValue.'; ?'.'>';
             }
         } else if ($tagname == 'field') {
-            $cTag->tagValue = '$fields[\'' . $varname . '\']';
+            $cTag->tagValue = '$fields[\''.$varname.'\']';
             if ($cTag->GetAtt('function') != '') {
                 $cTag->tagValue = $this->CompilerFunction($cTag->GetAtt('function'), $cTag->tagValue);
             }
-            $cTag->tagValue = '<' . '?php echo ' . $cTag->tagValue . '; ?' . '>';
+            $cTag->tagValue = '<'.'?php echo '.$cTag->tagValue.'; ?'.'>';
         } else if (preg_match("/^key[0-9]{0,}/", $tagname) || preg_match("/^value[0-9]{0,}/", $tagname)) {
             if (preg_match("/^value[0-9]{0,}/", $tagname) && $varname != '') {
-                $cTag->tagValue = '<' . '?php echo ' . $this->CompilerArrayVar($tagname, $varname) . '; ?' . '>';
+                $cTag->tagValue = '<'.'?php echo '.$this->CompilerArrayVar($tagname, $varname).'; ?'.'>';
             } else {
-                $cTag->tagValue = '<' . '?php echo $' . $tagname . '; ?' . '>';
+                $cTag->tagValue = '<'.'?php echo $'.$tagname.'; ?'.'>';
             }
         } else if (preg_match("/^if[0-9]{0,}$/", $tagname)) {
             $cTag->tagValue = $this->CompilerIf($cTag);
         } else if ($tagname == 'echo') {
             if (trim($cTag->GetInnerText()) == '') $cTag->tagValue = $cTag->GetAtt('code');
             else {
-                $cTag->tagValue =  '<' . "?php echo $" . trim($cTag->GetInnerText()) . " ;?" . '>';
+                $cTag->tagValue =  '<'."?php echo $".trim($cTag->GetInnerText())." ;?".'>';
             }
         } else if ($tagname == 'php') {
             if (trim($cTag->GetInnerText()) == '') $cTag->tagValue = $cTag->GetAtt('code');
             else {
-                $cTag->tagValue =  '<' . "?php\r\n" . trim($cTag->GetInnerText()) . "\r\n?" . '>';
+                $cTag->tagValue =  '<'."?php\r\n".trim($cTag->GetInnerText())."\r\n?".'>';
             }
         }
 
@@ -855,21 +855,21 @@ class DedeTemplate
             $kk = '$key';
             $vv = '$value';
             if ($cTag->GetAtt('key') != '') {
-                $kk = '$key' . $cTag->GetAtt('key');
+                $kk = '$key'.$cTag->GetAtt('key');
             }
             if ($cTag->GetAtt('value') != '') {
-                $vv = '$value' . $cTag->GetAtt('value');
+                $vv = '$value'.$cTag->GetAtt('value');
             }
             $addvar = '';
             if (!preg_match("/\(/", $varname)) {
-                $varname = '$GLOBALS[\'' . $varname . '\']';
+                $varname = '$GLOBALS[\''.$varname.'\']';
             } else {
-                $addvar = "\r\n" . '$myarrs = $pageClass->' . $varname . ";\r\n";
+                $addvar = "\r\n".'$myarrs = $pageClass->'.$varname.";\r\n";
                 $varname = ' $myarrs ';
             }
-            $rsvalue = '<' . '?php ' . $addvar . ' foreach(' . $varname . ' as ' . $kk . '=>' . $vv . '){ ?' . ">";
+            $rsvalue = '<'.'?php '.$addvar.' foreach('.$varname.' as '.$kk.'=>'.$vv.'){ ?'.">";
             $rsvalue .= $cTag->GetInnerText();
-            $rsvalue .= '<' . '?php  }    ?' . ">\r\n";
+            $rsvalue .= '<'.'?php  }    ?'.">\r\n";
             $cTag->tagValue = $rsvalue;
         }
 
@@ -881,33 +881,33 @@ class DedeTemplate
             }
             $cTag->tagValue = $this->CompilerInclude($filename, FALSE);
             if ($cTag->tagValue == 0) $cTag->tagValue = '';
-            $cTag->tagValue = '<' . '?php include $this->CompilerInclude("' . $filename . '");' . "\r\n" . ' ?' . '>';
+            $cTag->tagValue = '<'.'?php include $this->CompilerInclude("'.$filename.'");'."\r\n".' ?'.'>';
         } else if ($tagname == 'label') {
             $bindFunc = $cTag->GetAtt('bind');
-            $rsvalue = 'echo ' . $bindFunc . ";\r\n";
-            $rsvalue = '<' . '?php  ' . $rsvalue . '  ?' . ">\r\n";
+            $rsvalue = 'echo '.$bindFunc.";\r\n";
+            $rsvalue = '<'.'?php  '.$rsvalue.'  ?'.">\r\n";
             $cTag->tagValue = $rsvalue;
         } else if ($tagname == 'datalist') {
             //生成属性数组
             foreach ($cTag->cAtt->items as $k => $v) {
                 $v = $this->TrimAtts($v);
-                $rsvalue .= '$atts[\'' . $k . '\'] = \'' . str_replace("'", "\\'", $v) . "';\r\n";
+                $rsvalue .= '$atts[\''.$k.'\'] = \''.str_replace("'", "\\'", $v)."';\r\n";
             }
-            $rsvalue = '<' . '?php' . "\r\n" . '$atts = array();' . "\r\n" . $rsvalue;
-            $rsvalue .= '$blockValue = $this->refObj->GetArcList($atts,$this->refObj,$fields); ' . "\r\n";
-            $rsvalue .= 'if(is_array($blockValue)){' . "\r\n";
-            $rsvalue .= 'foreach( $blockValue as $key=>$fields )' . "\r\n{\r\n" . '?' . ">";
+            $rsvalue = '<'.'?php'."\r\n".'$atts = array();'."\r\n".$rsvalue;
+            $rsvalue .= '$blockValue = $this->refObj->GetArcList($atts,$this->refObj,$fields); '."\r\n";
+            $rsvalue .= 'if(is_array($blockValue)){'."\r\n";
+            $rsvalue .= 'foreach( $blockValue as $key=>$fields )'."\r\n{\r\n".'?'.">";
             $rsvalue .= $cTag->GetInnerText();
-            $rsvalue .= '<' . '?php' . "\r\n}\r\n}" . '?' . '>';
+            $rsvalue .= '<'.'?php'."\r\n}\r\n}".'?'.'>';
             $cTag->tagValue = $rsvalue;
         } else if ($tagname == 'pagelist') {
             //生成属性数组
             foreach ($cTag->cAtt->items as $k => $v) {
                 $v = $this->TrimAtts($v);
-                $rsvalue .= '$atts[\'' . $k . '\'] = \'' . str_replace("'", "\\'", $v) . "';\r\n";
+                $rsvalue .= '$atts[\''.$k.'\'] = \''.str_replace("'", "\\'", $v)."';\r\n";
             }
-            $rsvalue = '<' . '?php' . "\r\n" . '$atts = array();' . "\r\n" . $rsvalue;
-            $rsvalue .= ' echo $this->refObj->GetPageList($atts,$this->refObj,$fields); ' . "\r\n" . '?' . ">\r\n";
+            $rsvalue = '<'.'?php'."\r\n".'$atts = array();'."\r\n".$rsvalue;
+            $rsvalue .= ' echo $this->refObj->GetPageList($atts,$this->refObj,$fields); '."\r\n".'?'.">\r\n";
             $cTag->tagValue = $rsvalue;
         } else {
             $bindFunc = $cTag->GetAtt('bind');
@@ -921,27 +921,27 @@ class DedeTemplate
                     continue;
                 }
                 $v = $this->TrimAtts($v);
-                $rsvalue .= '$atts[\'' . $k . '\'] = \'' . str_replace("'", "\\'", $v) . "';\r\n";
+                $rsvalue .= '$atts[\''.$k.'\'] = \''.str_replace("'", "\\'", $v)."';\r\n";
             }
-            $rsvalue = '<' . '?php' . "\r\n" . '$atts = array();' . "\r\n" . $rsvalue;
+            $rsvalue = '<'.'?php'."\r\n".'$atts = array();'."\r\n".$rsvalue;
 
             //绑定到默认函数还是指定函数(datasource属性指定)
             if ($bindFunc == '') {
-                $rsvalue .= '$blockValue = MakePublicTag($atts,$this->refObj,$fields); ' . "\r\n";
+                $rsvalue .= '$blockValue = MakePublicTag($atts,$this->refObj,$fields); '."\r\n";
             } else {
                 //自定义绑定函数如果不指定 bindtype，则指向$this->refObj->绑定函数名，即是默认指向被引用的类对象
-                if ($bindType == '') $rsvalue .= '$blockValue = $this->refObj->' . $bindFunc . '($atts,$this->refObj,$fields); ' . "\r\n";
-                else $rsvalue .= '$blockValue = ' . $bindFunc . '($atts,$this->refObj,$fields); ' . "\r\n";
+                if ($bindType == '') $rsvalue .= '$blockValue = $this->refObj->'.$bindFunc.'($atts,$this->refObj,$fields); '."\r\n";
+                else $rsvalue .= '$blockValue = '.$bindFunc.'($atts,$this->refObj,$fields); '."\r\n";
             }
 
             //返回结果类型：默认为 array 是一个二维数组，string 是字符串
             if ($rstype == 'string') {
-                $rsvalue .= 'echo $blockValue;' . "\r\n" . '?' . ">";
+                $rsvalue .= 'echo $blockValue;'."\r\n".'?'.">";
             } else {
-                $rsvalue .= 'if(is_array($blockValue) && count($blockValue) > 0){' . "\r\n";
-                $rsvalue .= 'foreach( $blockValue as $key=>$fields )' . "\r\n{\r\n" . '?' . ">";
+                $rsvalue .= 'if(is_array($blockValue) && count($blockValue) > 0){'."\r\n";
+                $rsvalue .= 'foreach( $blockValue as $key=>$fields )'."\r\n{\r\n".'?'.">";
                 $rsvalue .= $cTag->GetInnerText();
-                $rsvalue .= '<' . '?php' . "\r\n}\r\n}\r\n" . '?' . '>';
+                $rsvalue .= '<'.'?php'."\r\n}\r\n}\r\n".'?'.'>';
             }
             $cTag->tagValue = $rsvalue;
         }
@@ -962,13 +962,13 @@ class DedeTemplate
 
         if (!preg_match("/\[/", $varname)) {
             if (preg_match("/^value/", $vartype)) {
-                $varname = $vartype . '.' . $varname;
+                $varname = $vartype.'.'.$varname;
             }
             $varnames = explode('.', $varname);
             if (isset($varnames[1])) {
                 $varname = $varnames[0];
                 for ($i = 1; isset($varnames[$i]); $i++) {
-                    $varname .= "['" . $varnames[$i] . "']";
+                    $varname .= "['".$varnames[$i]."']";
                 }
             }
         }
@@ -977,7 +977,7 @@ class DedeTemplate
             $varnames = explode('[', $varname);
             $arrend = '';
             for ($i = 1; isset($varnames[$i]); $i++) {
-                $arrend .= '[' . $varnames[$i];
+                $arrend .= '['.$varnames[$i];
             }
             if (!preg_match("/[\"']/", $arrend)) {
                 $arrend = str_replace('[', '', $arrend);
@@ -985,23 +985,23 @@ class DedeTemplate
                 $arrend = "['{$arrend}']";
             }
             if ($vartype == 'var') {
-                $okvalue = '$GLOBALS[\'_vars\'][\'' . $varnames[0] . '\']' . $arrend;
+                $okvalue = '$GLOBALS[\'_vars\'][\''.$varnames[0].'\']'.$arrend;
             } else if (preg_match("/^value/", $vartype)) {
-                $okvalue = '$' . $varnames[0] . $arrend;
+                $okvalue = '$'.$varnames[0].$arrend;
             } else if ($vartype == 'field') {
-                $okvalue = '$fields[\'' . $varnames[0] . '\']' . $arrend;
+                $okvalue = '$fields[\''.$varnames[0].'\']'.$arrend;
             } else {
-                $okvalue = '$GLOBALS[\'' . $varnames[0] . '\']' . $arrend;
+                $okvalue = '$GLOBALS[\''.$varnames[0].'\']'.$arrend;
             }
         } else {
             if ($vartype == 'var') {
-                $okvalue = '$GLOBALS[\'_vars\'][\'' . $varname . '\']';
+                $okvalue = '$GLOBALS[\'_vars\'][\''.$varname.'\']';
             } else if (preg_match("/^value/", $vartype)) {
-                $okvalue = '$' . $vartype;
+                $okvalue = '$'.$vartype;
             } else if ($vartype == 'field') {
-                $okvalue = '$' . str_replace($varname);
+                $okvalue = '$'.str_replace($varname);
             } else {
-                $okvalue = '$GLOBALS[\'' . $varname . '\']';
+                $okvalue = '$GLOBALS[\''.$varname.'\']';
             }
         }
         return $okvalue;
@@ -1026,9 +1026,9 @@ class DedeTemplate
         } else {
             $condition = preg_replace("/((var\.|field\.|cfg\.|global\.|key[0-9]{0,}\.|value[0-9]{0,}\.)[\._a-z0-9]+)/ies", "private_rt('\\1')", $condition);
         }
-        $rsvalue = '<' . '?php if(' . $condition . '){ ?' . '>';
+        $rsvalue = '<'.'?php if('.$condition.'){ ?'.'>';
         $rsvalue .= $cTag->GetInnerText();
-        $rsvalue .= '<' . '?php } ?' . '>';
+        $rsvalue .= '<'.'?php } ?'.'>';
         return $rsvalue;
     }
 
@@ -1041,8 +1041,8 @@ class DedeTemplate
      */
     function TrimAtts($v)
     {
-        $v = str_replace('<' . '?', '&lt;?', $v);
-        $v = str_replace('?' . '>', '?&gt;', $v);
+        $v = str_replace('<'.'?', '&lt;?', $v);
+        $v = str_replace('?'.'>', '?&gt;', $v);
         return  $v;
     }
 
@@ -1074,10 +1074,10 @@ class DedeTemplate
         $okfile = '';
         if (@file_exists($filename)) {
             $okfile = $filename;
-        } else if (@file_exists($this->refDir . $filename)) {
-            $okfile = $this->refDir . $filename;
-        } else if (@file_exists($this->refDir . "../" . $filename)) {
-            $okfile = $this->refDir . "../" . $filename;
+        } else if (@file_exists($this->refDir.$filename)) {
+            $okfile = $this->refDir.$filename;
+        } else if (@file_exists($this->refDir."../".$filename)) {
+            $okfile = $this->refDir."../".$filename;
         }
         if ($okfile == '') return 0;
         if (!$isload) return 1;
@@ -1221,7 +1221,7 @@ class TagAttributeParse
                 if (isset($tmpvalues[2])) {
                     $okname = $tmpvalues[1];
                     for ($j = 2; isset($tmpvalues[$j]); $j++) {
-                        $okname .= "['" . $tmpvalues[$j] . "']";
+                        $okname .= "['".$tmpvalues[$j]."']";
                     }
                     $this->cAttributes->items['name'] = $okname;
                 } else if (isset($tmpvalues[1]) && $tmpvalues[1] != '') {
@@ -1243,7 +1243,7 @@ class TagAttributeParse
             if (isset($tmpvalues[2])) {
                 $okname = $tmpvalues[1];
                 for ($i = 2; isset($tmpvalues[$i]); $i++) {
-                    $okname .= "['" . $tmpvalues[$i] . "']";
+                    $okname .= "['".$tmpvalues[$i]."']";
                 }
                 $this->cAttributes->items['name'] = $okname;
             } else if (isset($tmpvalues[1]) && $tmpvalues[1] != '') {
@@ -1329,7 +1329,7 @@ function private_rt($str)
 
     $rs = '$GLOBALS[\'';
     if ($arr[0] == 'cfg') {
-        return $rs . 'cfg_' . $arr[1] . "']";
+        return $rs.'cfg_'.$arr[1]."']";
     } elseif ($arr[0] == 'var') {
         $arr[0] = '_vars';
         $rs .= implode('\'][\'', $arr);
@@ -1342,7 +1342,7 @@ function private_rt($str)
         return $rs;
     } else {
         if ($arr[0] == 'field') $arr[0] = 'fields';
-        $rs = '$' . $arr[0] . "['";
+        $rs = '$'.$arr[0]."['";
         unset($arr[0]);
         $rs .= implode('\'][\'', $arr);
         $rs .= "']";

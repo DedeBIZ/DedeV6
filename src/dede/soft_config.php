@@ -5,11 +5,11 @@
  *
  * @version        $Id: soft_config.php 1 16:09 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_SoftConfig');
 if (empty($dopost)) $dopost = '';
 
@@ -28,7 +28,7 @@ if ($dopost == "save") {
            `argrange` = '$argrange',
            downmsg = '$downmsg' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg('成功保存参数！', 'soft_config.php');
+    ShowMsg('成功保存参数', 'soft_config.php');
     exit();
 }
 //读取参数

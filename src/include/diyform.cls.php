@@ -4,13 +4,13 @@
  *
  * @version        $Id: diyform.cls.php 1 10:31 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 
-require_once DEDEINC . '/dedetag.class.php';
-require_once DEDEINC . '/customfields.func.php';
+require_once DEDEINC.'/dedetag.class.php';
+require_once DEDEINC.'/customfields.func.php';
 
 /**
  * diyform
@@ -56,9 +56,9 @@ class diyform
         $this->name = $diyinfo['name'];
         $this->table = $diyinfo['table'];
         $this->public = $diyinfo['public'];
-        $this->listTemplate = $diyinfo['listtemplate'] != '' && file_exists(DEDETEMPLATE . '/plus/' . $diyinfo['listtemplate']) ? $diyinfo['listtemplate'] : 'list_diyform.htm';
-        $this->viewTemplate = $diyinfo['viewtemplate'] != '' && file_exists(DEDETEMPLATE . '/plus/' . $diyinfo['viewtemplate']) ? $diyinfo['viewtemplate'] : 'view_diyform.htm';;
-        $this->postTemplate = $diyinfo['posttemplate'] != '' && file_exists(DEDETEMPLATE . '/plus/' . $diyinfo['posttemplate']) ? $diyinfo['posttemplate'] : 'post_diyform.htm';;
+        $this->listTemplate = $diyinfo['listtemplate'] != '' && file_exists(DEDETEMPLATE.'/plus/'.$diyinfo['listtemplate']) ? $diyinfo['listtemplate'] : 'list_diyform.htm';
+        $this->viewTemplate = $diyinfo['viewtemplate'] != '' && file_exists(DEDETEMPLATE.'/plus/'.$diyinfo['viewtemplate']) ? $diyinfo['viewtemplate'] : 'view_diyform.htm';;
+        $this->postTemplate = $diyinfo['posttemplate'] != '' && file_exists(DEDETEMPLATE.'/plus/'.$diyinfo['posttemplate']) ? $diyinfo['posttemplate'] : 'post_diyform.htm';;
     }
 
     /**
@@ -87,13 +87,13 @@ class diyform
                     } else {
                         $formstring .= $func($tag, dede_htmlspecialchars($value[$tag->GetName()], ENT_QUOTES), $admintype);
                     }
-                    $formfields .= $formfields == '' ? $tag->GetName() . ',' . $tag->GetAtt('type') : ';' . $tag->GetName() . ',' . $tag->GetAtt('type');
+                    $formfields .= $formfields == '' ? $tag->GetName().','.$tag->GetAtt('type') : ';'.$tag->GetName().','.$tag->GetAtt('type');
                 }
             }
         }
 
-        $formstring .= "<input type=\"hidden\" name=\"dede_fields\" value=\"" . $formfields . "\" />\n";
-        $formstring .= "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"" . md5($formfields . $cfg_cookie_encode) . "\" />";
+        $formstring .= "<input type=\"hidden\" name=\"dede_fields\" value=\"".$formfields."\" />\n";
+        $formstring .= "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"".md5($formfields.$cfg_cookie_encode)."\" />";
         return $formstring;
     }
 

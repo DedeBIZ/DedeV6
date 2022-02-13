@@ -5,7 +5,7 @@
  *
  * @version        $Id: arclistsg.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -98,7 +98,7 @@ function lib_arclistsg(&$ctag, &$refObj)
                 if ((isset($envs['cross']) || $ctag->GetAtt('cross') == '1') && $ctag->GetAtt('nocross') != '1') {
                     $arr = $dsql->GetOne("SELECT `id`,`topid`,`cross`,`crossid`,`ispart`,`typename` FROM `#@__arctype` WHERE id='$typeid' ");
                     if ($arr['cross'] == 0 || ($arr['cross'] == 2 && trim($arr['crossid'] == '')))
-                        $orwheres[] = ' typeid IN (' . GetSonIds($typeid) . ')';
+                        $orwheres[] = ' typeid IN ('.GetSonIds($typeid).')';
                     else {
                         $selquery = '';
                         if ($arr['cross'] == 1) {
@@ -112,13 +112,13 @@ function lib_arclistsg(&$ctag, &$refObj)
                             $dsql->SetQuery($selquery);
                             $dsql->Execute();
                             while ($arr = $dsql->GetArray()) {
-                                $CrossID .= ($CrossID == '' ? $arr['id'] : ',' . $arr['id']);
+                                $CrossID .= ($CrossID == '' ? $arr['id'] : ','.$arr['id']);
                             }
                         }
                     }
                 }
-                if ($CrossID == '') $orwheres[] = ' typeid IN (' . GetSonIds($typeid) . ')';
-                else $orwheres[] = ' typeid IN (' . GetSonIds($typeid) . ',' . $CrossID . ')';
+                if ($CrossID == '') $orwheres[] = ' typeid IN ('.GetSonIds($typeid).')';
+                else $orwheres[] = ' typeid IN ('.GetSonIds($typeid).','.$CrossID.')';
             }
         }
         //频道ID
@@ -132,7 +132,7 @@ function lib_arclistsg(&$ctag, &$refObj)
     $ordersql = '';
     if ($orderby == 'hot' || $orderby == 'click') $ordersql = " ORDER BY arc.click $orderway";
     else if ($orderby == 'id') $ordersql = "  ORDER BY arc.aid $orderway";
-    else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - " . $arcid . ")";
+    else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - ".$arcid.")";
     else if ($orderby == 'rand') $ordersql = "  ORDER BY rand()";
     else $ordersql = " ORDER BY arc.aid $orderway";
     //limit条件
@@ -209,22 +209,22 @@ function lib_arclistsg(&$ctag, &$refObj)
                 );
 
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/static/defaultpic.gif';
+                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
                 }
                 if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                    $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                    $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                 }
                 $row['picname'] = $row['litpic'];
 
-                $row['image'] = "<img src='" . $row['picname'] . "' border='0' width='{$imgwidth}' height='{$imgheight}' alt='" . preg_replace("#['><]#", "", $row['title']) . "' />";
+                $row['image'] = "<img src='".$row['picname']."' border='0' width='{$imgwidth}' height='{$imgheight}' alt='".preg_replace("#['><]#", "", $row['title'])."' />";
 
-                $row['imglink'] = "<a href='" . $row['filename'] . "'>" . $row['image'] . "</a>";
+                $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
 
                 $row['stime'] = GetDateMK($row['pubdate']);
-                $row['typelink'] = "<a href='" . $row['typeurl'] . "'>" . $row['typename'] . "</a>";
+                $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
-                $row['textlink'] = "<a href='" . $row['filename'] . "'>" . $row['title'] . "</a>";
+                $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
@@ -242,7 +242,7 @@ function lib_arclistsg(&$ctag, &$refObj)
                     $GLOBALS['autoindex']++;
                 }
 
-                $artlist .= $dtp2->GetResult() . "\r\n";
+                $artlist .= $dtp2->GetResult()."\r\n";
             } //if hasRow
             else {
                 $artlist .= '';
@@ -256,8 +256,8 @@ function lib_arclistsg(&$ctag, &$refObj)
     $idsstr = join(',', $ids);
     if ($idsstr != '' && $needcache && $cfg_index_cache > 0) {
         $mintime = time() - ($cfg_index_cache * 3600);
-        $inquery = "INSERT INTO `#@__arccache`(`md5hash`,`uptime`,`cachedata`) VALUES ('" . $md5hash . "', '" . time() . "', '$idsstr'); ";
-        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` WHERE md5hash='" . $md5hash . "' or uptime < $mintime ");
+        $inquery = "INSERT INTO `#@__arccache`(`md5hash`,`uptime`,`cachedata`) VALUES ('".$md5hash."', '".time()."', '$idsstr'); ";
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` WHERE md5hash='".$md5hash."' or uptime < $mintime ");
         $dsql->ExecuteNoneQuery($inquery);
     }
     return $artlist;

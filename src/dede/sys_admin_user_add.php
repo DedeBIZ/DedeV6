@@ -5,29 +5,29 @@
  *
  * @version        $Id: sys_admin_user_add.php 1 16:22 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_User');
-require_once(DEDEINC . "/typelink.class.php");
+require_once(DEDEINC."/typelink.class.php");
 if (empty($dopost)) $dopost = '';
 
 if ($dopost == 'add') {
     CheckCSRF();
     if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd) || preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
-        ShowMsg('密码或或用户名不合法，<br />请使用[0-9a-zA-Z_@!.-]内的字符！', '-1', 0, 3000);
+        ShowMsg('密码或或用户名不合法，<br />请使用[0-9a-zA-Z_@!.-]内的字符', '-1', 0, 3000);
         exit();
     }
-    $safecodeok = substr(md5($cfg_cookie_encode . $randcode), 0, 24);
+    $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecode != $safecodeok) {
-        ShowMsg('请填写安全验证串！', '-1', 0, 3000);
+        ShowMsg('请填写安全验证串', '-1', 0, 3000);
         exit();
     }
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__member` WHERE userid LIKE '$userid' ");
     if ($row['dd'] > 0) {
-        ShowMsg('用户名已存在！', '-1');
+        ShowMsg('用户名已存在', '-1');
         exit();
     }
     $mpwd = md5($pwd);
@@ -44,7 +44,7 @@ if ($dopost == 'add') {
 
     $mid = $dsql->GetLastID();
     if ($mid <= 0) {
-        die($dsql->GetError() . ' 数据库出错！');
+        die($dsql->GetError().' 数据库出错');
     }
 
     //后台管理员
@@ -65,11 +65,11 @@ if ($dopost == 'add') {
                 Values('$mid','10','0','{$uname}的空间','','person','',''); ";
     $dsql->ExecuteNoneQuery($adminquery);
 
-    ShowMsg('成功增加一个用户！', 'sys_admin_user.php');
+    ShowMsg('成功增加一个用户', 'sys_admin_user.php');
     exit();
 }
 $randcode = mt_rand(10000, 99999);
-$safecode = substr(md5($cfg_cookie_encode . $randcode), 0, 24);
+$safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
 $typeOptions = '';
 $dsql->SetQuery(" SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart=0 OR ispart=1) ");
 $dsql->Execute('op');

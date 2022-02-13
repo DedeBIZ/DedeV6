@@ -5,11 +5,11 @@
  *
  * @version        $Id: member_scores.php 1 11:24 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
+require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Scores');
 if (!isset($action)) $action = '';
 
@@ -28,8 +28,8 @@ if ($action == 'save') {
             if (empty($k)) {
                 $k = 0;
             }
-            $sql = $fildes . "='" . $k . "'";
-            $dsql->ExecuteNoneQuery("UPDATE `#@__scores` SET " . $sql . " WHERE id='{$ID}'");
+            $sql = $fildes."='".$k."'";
+            $dsql->ExecuteNoneQuery("UPDATE `#@__scores` SET ".$sql." WHERE id='{$ID}'");
             if (preg_match("#Ids-#", $rk)) {
                 if ($k) $dsql->ExecuteNoneQuery("DELETE FROM `#@__scores` WHERE id='$ID'");
             }

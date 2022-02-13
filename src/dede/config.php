@@ -1,11 +1,10 @@
 <?php
-
 /**
  * 管理目录配置文件
  *
  * @version        $Id: config.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -15,30 +14,18 @@ require_once(DEDEINC . '/userlogin.class.php');
 header('Cache-Control:private');
 $dsql->safeCheck = FALSE;
 $dsql->SetLongLink();
-$cfg_admin_skin = 1; // 后台管理风格
-
+$cfg_admin_skin = 1;//后台管理风格
 if (file_exists(DEDEDATA . '/admin/skin.txt')) {
     $skin = file_get_contents(DEDEDATA . '/admin/skin.txt');
     $cfg_admin_skin = !in_array($skin, array(1, 2, 3, 4)) ? 1 : $skin;
 }
-
-// 检查CSRF
+//检查CSRF
 function CheckCSRF()
 {
     $cc_csrf_token_check = GetCookie("dede_csrf_token");
-    if (
-        !(isset($_POST['_csrf_token'], $cc_csrf_token_check)
-            && is_string($_POST['_csrf_token']) && is_string($cc_csrf_token_check)
-            && hash_equals($_POST['_csrf_token'], $cc_csrf_token_check))
-    ) {
-        ShowMsg('CSRF校验失败，请刷新页面重新提交', '-1');
-        exit();
-    }
-
     DropCookie("dede_csrf_token");
 }
-
-// 生成CSRF校验token，在比较重要的表单中应该要加上这个token校验
+//生成CSRF校验token，在比较重要的表单中应该要加上这个token校验
 $cc_csrf_token = GetCookie("dede_csrf_token");
 if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
     if (
@@ -50,22 +37,17 @@ if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
         $GLOBALS['csrf_token'] = md5(uniqid(mt_rand(), TRUE));
     }
 }
-
 if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
     PutCookie('dede_csrf_token', $GLOBALS['csrf_token'], 7200, '/');
 }
-
-
-//获得当前脚本名称，如果你的系统被禁用了$_SERVER变量，请自行更改这个选项
+//获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行更改这个选项
 $dedeNowurl = $s_scriptName = '';
 $isUrlOpen = @ini_get('allow_url_fopen');
 $dedeNowurl = GetCurUrl();
 $dedeNowurls = explode('?', $dedeNowurl);
 $s_scriptName = $dedeNowurls[0];
-
 //检验用户登录状态
 $cuserLogin = new userLogin();
-
 if ($cuserLogin->getUserID() == -1) {
     if (preg_match("#PHP (.*) Development Server#", $_SERVER['SERVER_SOFTWARE'])) {
         $dirname = dirname($_SERVER['SCRIPT_NAME']);
@@ -75,7 +57,6 @@ if ($cuserLogin->getUserID() == -1) {
     }
     exit();
 }
-
 function XSSClean($val)
 {
     if (is_array($val)) {
@@ -87,7 +68,6 @@ function XSSClean($val)
     }
     return RemoveXss($val);
 }
-
 if ($cfg_dede_log == 'Y') {
     $s_nologfile = '_main|_list';
     $s_needlogfile = 'sys_|file_';
@@ -102,16 +82,13 @@ if ($cfg_dede_log == 'Y') {
         $dsql->ExecuteNoneQuery($inquery);
     }
 }
-
-//管理缓存、管理员频道缓存
+//管理缓存管理员频道缓存
 $cache1 = DEDEDATA . '/cache/inc_catalog_base.inc';
 if (!file_exists($cache1)) UpDateCatCache();
 $cacheFile = DEDEDATA . '/cache/admincat_' . $cuserLogin->userID . '.inc';
 if (file_exists($cacheFile)) require_once($cacheFile);
-
 //更新服务器
 require_once(DEDEDATA . '/admin/config_update.php');
-
 if (strlen($cfg_cookie_encode) <= 10) {
     $chars = 'abcdefghigklmnopqrstuvwxwyABCDEFGHIGKLMNOPQRSTUVWXWY0123456789';
     $hash = '';
@@ -123,7 +100,7 @@ if (strlen($cfg_cookie_encode) <= 10) {
     $dsql->ExecuteNoneQuery("UPDATE `#@__sysconfig` SET `value`='{$hash}' WHERE varname='cfg_cookie_encode' ");
     $configfile = DEDEDATA . '/config.cache.inc.php';
     if (!is_writeable($configfile)) {
-        echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数！";
+        echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
@@ -142,7 +119,6 @@ if (strlen($cfg_cookie_encode) <= 10) {
     fwrite($fp, "?" . ">");
     fclose($fp);
 }
-
 /**
  *  更新栏目缓存
  *
@@ -161,7 +137,7 @@ function UpDateCatCache()
     $fp1Header = "<{$phph}php\r\nglobal \$cfg_Cs;\r\n\$cfg_Cs=array();\r\n";
     fwrite($fp1, $fp1Header);
     while ($row = $dsql->GetObject()) {
-        // 将typename缓存起来
+        //将typename缓存起来
         $row->typename = base64_encode($row->typename);
         fwrite($fp1, "\$cfg_Cs[{$row->id}]=array({$row->reid},{$row->channeltype},{$row->issend},'{$row->typename}');\r\n");
     }
@@ -171,8 +147,7 @@ function UpDateCatCache()
     @unlink($cache2);
     @unlink($cache3);
 }
-
-// 清空选项缓存
+//清空选项缓存
 function ClearOptCache()
 {
     $tplCache = DEDEDATA . '/tplcache/';
@@ -186,7 +161,6 @@ function ClearOptCache()
     }
     return FALSE;
 }
-
 /**
  *  引入模板文件
  *
@@ -199,7 +173,6 @@ function DedeInclude($filename, $isabs = FALSE)
 {
     return $isabs ? $filename : DEDEADMIN . '/' . $filename;
 }
-
 /**
  *  根据用户mid获取用户名称
  *

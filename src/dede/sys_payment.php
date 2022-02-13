@@ -5,12 +5,12 @@
  *
  * @version        $Id: sys_info_mark.php 1 22:28 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(dirname(__FILE__) . "/config.php");
-require_once(DEDEINC . '/datalistcp.class.php');
+require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC.'/datalistcp.class.php');
 CheckPurview('sys_Data');
 
 $dopost = (empty($dopost)) ? '' : $dopost;
@@ -190,16 +190,16 @@ else if ($dopost == 'config') {
     } else if ($cfg_soft_lang == 'gb2312') {
         $config = unserialize($row['config']);
     }
-    $payments = "'code' => '" . $row['code'] . "',";
+    $payments = "'code' => '".$row['code']."',";
     foreach ($config as $key => $v) {
         $config[$key]['value'] = ${$key};
-        $payments .= "'" . $key . "' => '" . $config[$key]['value'] . "',";
+        $payments .= "'".$key."' => '".$config[$key]['value']."',";
     }
     $payments = substr($payments, 0, -1);
-    $payment = "\$payment=array(" . $payments . ")";
-    $configstr = "<" . "?php\r\n" . $payment . "\r\n?" . ">\r\n";
+    $payment = "\$payment=array(".$payments.")";
+    $configstr = "<"."?php\r\n".$payment."\r\n?".">\r\n";
     if (!empty($payment)) {
-        $m_file = DEDEDATA . "/payment/" . $row['code'] . ".php";
+        $m_file = DEDEDATA."/payment/".$row['code'].".php";
         $fp = fopen($m_file, "w") or die("写入文件 $safeconfigfile 失败，请检查权限！");
         fwrite($fp, $configstr);
         fclose($fp);
@@ -239,13 +239,13 @@ else if ($dopost == 'uninstall') {
     $query = "UPDATE `#@__payment` SET fee='',config='$config',enabled='0' WHERE id='$pid'";
     $dsql->ExecuteNoneQuery($query);
     //同时需要删除对应的缓存
-    $m_file = DEDEDATA . "/payment/" . $row['code'] . ".php";
+    $m_file = DEDEDATA."/payment/".$row['code'].".php";
     @unlink($m_file);
     ShowMsg("删除成功！", "sys_payment.php");
     exit();
 }
-$sql = "SELECT * FROM `#@__payment` ORDER BY rank ASC";
+$sql = "SELECT * FROM `#@__payment` ORDER BY `rank` ASC";
 $dlist = new DataListCP();
-$dlist->SetTemplet(DEDEADMIN . "/templets/sys_payment.htm");
+$dlist->SetTemplet(DEDEADMIN."/templets/sys_payment.htm");
 $dlist->SetSource($sql);
 $dlist->display();
