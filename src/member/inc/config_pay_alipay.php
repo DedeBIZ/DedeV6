@@ -5,7 +5,7 @@ if (!defined('DEDEMEMBER')) exit("Request Error!");
  * 
  * @version        $Id: config_pay_alipay.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

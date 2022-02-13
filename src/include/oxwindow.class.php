@@ -5,7 +5,7 @@ if (!defined('DEDEINC')) exit("Request Error!");
  *
  * @version        $Id: oxwindow.class.php 2 13:53 2010-11-11 tianya $
  * @package        .Libraries
- * @copyright      Copyright (c) 2021, .COM
+ * @copyright      Copyright (c) 2022, .COM
  * @license        https://www..com/license
  * @link           https://www..com
  */

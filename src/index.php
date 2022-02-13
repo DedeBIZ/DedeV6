@@ -3,7 +3,7 @@
 /**
  * @version        $Id: index.php 1 9:23 2010-11-11 tianya $
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

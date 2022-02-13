@@ -6,7 +6,7 @@
  *
  * @version        $Id: ad_js.php 1 20:30 2010年7月8日Z tianya $
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

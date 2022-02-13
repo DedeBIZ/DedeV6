@@ -3,7 +3,7 @@
 /**
  * @version        $Id: install.inc.php 1 13:41 2010年7月26日Z tianya $
  * @package        DedeBIZ.Install
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

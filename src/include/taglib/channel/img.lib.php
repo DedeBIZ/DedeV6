@@ -7,7 +7,7 @@ if (!defined('DEDEINC')) {
  *
  * @version        $Id:img.lib.php 1 9:33 2010年7月8日Z tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

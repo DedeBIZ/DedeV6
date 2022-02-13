@@ -5,7 +5,7 @@
  *
  * @version        $Id: makehtml_homepage.php 2 9:30 2010-11-11 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

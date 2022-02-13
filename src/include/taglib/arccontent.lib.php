@@ -6,7 +6,7 @@ if (!defined('DEDEINC')) exit('Request Error!');
  *
  * @version        $Id: arccontent.lib.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

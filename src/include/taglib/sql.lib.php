@@ -7,7 +7,7 @@ if (!defined('DEDEINC')) {
  *
  * @version        $Id: sql.lib.php 2 10:00 2010-11-11 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -2,7 +2,7 @@
 /**
  * @version        $Id: index.php 2021-01-03 tianya $
  * @package        DedeBIZ.Install
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -18,6 +18,9 @@ define('DEDEINC',dirname(__FILE__).'/../include');
 define('DEDEDATA',dirname(__FILE__).'/../data');
 define('DEDEROOT',preg_replace("#[\\\\\/]install#", '', dirname(__FILE__)));
 header("Content-Type: text/html; charset=utf-8");
+if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
+    mysqli_report(MYSQLI_REPORT_OFF);
+}
 require_once(DEDEROOT.'/install/install.inc.php');
 require_once(DEDEINC.'/zip.class.php');
 foreach(Array('_GET','_POST','_COOKIE') as $_request)
@@ -263,7 +266,7 @@ else if($step==2)
         VALUES('1','10','0','{$adminuser}的空间','','person','',''); ";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
     //锁定安装程序
-    $fp = fopen($insLockfile,'w');
+    $fp = fopen(INSLOCKFILE,'w');
     fwrite($fp,'ok');
     fclose($fp);
     header('Location:../dede/index.php');
