@@ -17,7 +17,7 @@ $f = RemoveXSS($f);
 
 if (empty($keywords)) $keywords = "";
 
-$sql = "SELECT * FROM #@__keywords ORDER BY rank DESC";
+$sql = "SELECT * FROM `#@__keywords` ORDER BY `rank` DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplate(DEDEADMIN."/templets/article_keywords_select.htm");
 $dlist->pageSize = 300;

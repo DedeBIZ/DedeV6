@@ -29,6 +29,9 @@ $dsql = $dsqlitete = $db = new DedeSqlite(FALSE);
 if (!defined('MYSQL_BOTH')) {
     define('MYSQL_BOTH', MYSQLI_BOTH);
 }
+if (!defined('MYSQL_ASSOC')) {
+    define('MYSQL_ASSOC', SQLITE3_ASSOC);
+}
 class DedeSqlite
 {
     var $linkID;
@@ -122,13 +125,13 @@ class DedeSqlite
     //为了防止采集等需要较长运行时间的程序超时，在运行这类程序时设置系统等待和交互时间
     function SetLongLink()
     {
-        @mysqli_query("SET interactive_timeout=3600, wait_timeout=3600 ;", $this->linkID);
+        // @mysqli_query("SET interactive_timeout=3600, wait_timeout=3600 ;", $this->linkID);
     }
 
     //获得错误描述
     function GetError()
     {
-        $str = mysqli_error($this->linkID);
+        $str = $dsqlite->lastErrorMsg();
         return $str;
     }
 
@@ -291,7 +294,7 @@ class DedeSqlite
     }
 
     //执行一个SQL语句,返回前一条记录或仅返回一条记录
-    function GetOne($sql = '', $acctype = MYSQLI_ASSOC)
+    function GetOne($sql = '', $acctype = SQLITE3_ASSOC)
     {
         global $dsqlite;
         if (!$dsqlite->isInit) {

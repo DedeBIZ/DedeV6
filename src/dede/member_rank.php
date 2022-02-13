@@ -29,7 +29,7 @@ if ($dopost == 'save') {
                 $query = "UPDATE `#@__arcrank` SET membername='$name',money='$money',`rank`='$rank',scores='$scores' WHERE id='$id' ";
             }
         } else {
-            $query = "DELETE FROM `#@__arcrank` WHERE id='$id' AND rank<>10";
+            $query = "DELETE FROM `#@__arcrank` WHERE id='$id' AND `rank`<>10";
         }
         if ($query != '') $dsql->ExecuteNoneQuery($query);
     }
@@ -42,7 +42,7 @@ if ($dopost == 'save') {
     echo "<script> alert('成功更新会员等级表'); </script>";
 }
 if ($dopost == 'del') {
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arcrank` WHERE id='$id' AND rank<>10");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arcrank` WHERE id='$id' AND `rank`<>10");
     ShowMsg("删除成功", "member_rank.php");
     exit();
 }
