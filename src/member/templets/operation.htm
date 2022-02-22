@@ -1,7 +1,5 @@
-
-<!doctype html>
-<html lang="zh-CN">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,9 +9,7 @@
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/dede.css">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/member.css">
   <title>金币订单 - 会员中心 - <?php echo $cfg_webname; ?></title>
-
 </head>
-
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
 
@@ -23,7 +19,7 @@
       <div class="container">
         <div class="row">
           <?php
-          $_menu_order = true; // 展开编辑信息
+          $_menu_order = true; //展开编辑信息
           $_menu_orderstate = 2;
           ?>
           <?php include(DEDEMEMBER."/templets/menu.htm"); ?>

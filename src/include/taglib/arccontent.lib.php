@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('Request Error!');
+if (!defined('DEDEINC')) exit('dedebiz');
 
 /**
  * 文档内容调用标签
@@ -27,7 +27,7 @@ function lib_arccontent(&$ctag, &$refObj)
     $revalue = "";
 
     if (in_array($type, array("pre", "next")) &&  get_class($refObj) === "Archives") {
-        // 在内容页面获取上一篇下一篇内容
+        //在内容页面获取上一篇下一篇内容
         $asql = "WHERE id<{$refObj->Fields['id']}";
         if ($type === "next") {
             $asql = "WHERE id>{$refObj->Fields['id']}";
@@ -39,7 +39,7 @@ function lib_arccontent(&$ctag, &$refObj)
     }
 
     if (!empty($aid)) {
-        // 指定ID获取内容
+        //指定ID获取内容
         $row =  $dsql->GetOne("SELECT id,channel FROM `#@__arctiny` WHERE id={$aid} AND arcrank>-1");
         $channel = new ChannelUnit($row['channel'], $aid);
         $fields = $dsql->GetOne("SELECT * FROM `{$channel->ChannelInfos['addtable']}` WHERE aid = {$row['id']}");

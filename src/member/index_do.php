@@ -74,7 +74,7 @@ if ($fmdo == 'sendMail') {
         exit();
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET spacesta=0 WHERE mid='{$mid}' ");
-    // 清除会员缓存
+    //清除会员缓存
     $cfg_ml->DelCache($mid);
     ShowMsg('操作成功，请重新登录系统', 'login.php');
     exit();
@@ -100,9 +100,9 @@ else if ($fmdo == 'user') {
             $msg = CheckUserID($uid, $msgtitle, false);
         }
         if ($msg == 'ok') {
-            $msg = "<font color='#4E7504'><b>√{$msgtitle}可以使用</b></font>";
+            $msg = "<span style='color:#28a745'><b>√{$msgtitle}可以使用</b></span>";
         } else {
-            $msg = "<font color='red'><b>×{$msg}</b></font>";
+            $msg = "<span style='color:#e74d58'><b>×{$msg}</b></span>";
         }
         echo $msg;
         exit();
@@ -113,16 +113,16 @@ else if ($fmdo == 'user') {
         AjaxHead();
 
         if ($cfg_md_mailtest == 'N') {
-            $msg = "<font color='#4E7504'><b>√可以使用</b></font>";
+            $msg = "<span style='color:#28a745'><b>√可以使用</b></span>";
         } else {
             if (!CheckEmail($email)) {
-                $msg = "<font color='#4E7504'><b>×Email格式有误</b></font>";
+                $msg = "<span style='color:#28a745'><b>×Email格式有误</b></span>";
             } else {
                 $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE email LIKE '$email' LIMIT 1");
                 if (!is_array($row)) {
-                    $msg = "<font color='#4E7504'><b>√可以使用</b></font>";
+                    $msg = "<span style='color:#28a745'><b>√可以使用</b></span>";
                 } else {
-                    $msg = "<font color='red'><b>×Email已经被另一个帐号占用</b></font>";
+                    $msg = "<span style='color:#e74d58'><b>×Email已经被另一个帐号占用</b></span>";
                 }
             }
         }
@@ -167,7 +167,7 @@ else if ($fmdo == 'user') {
         //修改积分与金币值
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=$litmitscores, money= money + $money  WHERE mid='".$cfg_ml->M_ID."' ");
 
-        // 清除会员缓存
+        //清除会员缓存
         $cfg_ml->DelCache($cfg_ml->M_ID);
         ShowMsg('成功兑换指定量的金币', 'operation.php');
         exit();
@@ -218,7 +218,7 @@ else if ($fmdo == 'login') {
             ShowMsg("管理员帐号不允许从前台登录", "index.php", 0, 2000);
             exit();
         } else {
-            // 清除会员缓存
+            //清除会员缓存
             $cfg_ml->DelCache($cfg_ml->M_ID);
             if (empty($gourl) || preg_match("#action|_do#i", $gourl)) {
                 ShowMsg("成功登录，5秒钟后转向系统主页...", "index.php", 0, 2000);

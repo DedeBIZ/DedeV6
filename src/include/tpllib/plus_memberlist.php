@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 //orderby = logintime(login new) or mid(register new)
 /**
  * 动态模板memberlist标签

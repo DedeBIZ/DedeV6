@@ -16,8 +16,6 @@ $safequestions[7] = '您最喜欢的歌曲是什么？';
 
 //end****************************
 
-
-
 //以下不要修改
 function GetSafequestion($selid=0,$formname='safequestion')
 {

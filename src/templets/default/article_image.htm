@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-CN">
-
+<!DOCTYPE html>
+<html>
 <head>
 	<meta charset="{dede:global.cfg_soft_lang/}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -68,7 +67,6 @@
 		}
 	</script>
 </head>
-
 <body>
 	{dede:include filename="top.htm"/}
 
@@ -205,9 +203,9 @@
 	<script>
 
 
-		// 页面加载触发
+		//页面加载触发
 		$(document).ready(function () {
-			// 获取文档点击数统计
+			//获取文档点击数统计
 			$.get("{dede:field name='phpurl'/}/count.php?format=json&view=yes&aid={dede:field.id/}&mid=1&cid={dede:field.channel/}", function (data) {
 				let result = JSON.parse(data);
 				$("#_count").html(result.data.click);

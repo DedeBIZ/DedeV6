@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 自动关连文档标签
  *
@@ -157,7 +157,7 @@ function lib_likearticle(&$ctag, &$refObj)
                 $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
-                if ($row['color'] != '') $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
+                if ($row['color'] != '') $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
                 if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>".$row['title']."</strong>";
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];

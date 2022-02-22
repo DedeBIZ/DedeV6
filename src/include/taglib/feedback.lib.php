@@ -1,6 +1,6 @@
 <?php
 if (!defined('DEDEINC')) {
-    exit("Request Error!");
+    exit("dedebiz");
 }
 /**
  * 调用最新评论

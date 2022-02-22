@@ -136,7 +136,7 @@ function _SaveArticle(){  }
             }
         }
 
-        // 这里对前台提交的附加数据进行一次校验
+        //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
             ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
@@ -144,7 +144,7 @@ function _SaveArticle(){  }
         }
     }
 
-    //更改主档案表
+    //修改主档案表
     $upQuery = "UPDATE `#@__archives` set
              ismake='$ismake',
              arcrank='$arcrank',
@@ -215,16 +215,16 @@ function _SaveArticle(){  }
     $msg = "　　请选择您的后续操作：
         <a href='soft_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新软件</a>
         &nbsp;&nbsp;
-        <a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看更改</a>
+        <a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看修改</a>
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看软件</a>
         &nbsp;&nbsp;
         <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理软件</a>
         ";
-    $wintitle = "成功更改软件";
-    $wecome_info = "软件管理::更改软件";
+    $wintitle = "成功修改软件";
+    $wecome_info = "软件管理::修改软件";
     $win = new OxWindow();
-    $win->AddTitle("成功更改软件：");
+    $win->AddTitle("成功修改软件：");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
     $win->Display();

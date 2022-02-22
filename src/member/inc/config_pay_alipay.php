@@ -23,11 +23,11 @@ $parameter = array(
     "body" => $pname,                             //商品描述，必填
     "out_trade_no" => $buyid,                     //商品外部交易号，必填,每次测试都须修改
     "logistics_fee" => '0.00',                    //物流配送费用
-    "logistics_payment" => 'BUYER_PAY',             // 物流配送费用付款方式：SELLER_PAY(卖家支付)、BUYER_PAY(买家支付)、BUYER_PAY_AFTER_RECEIVE(货到付款)
-    "logistics_type" => 'EXPRESS',                  // 物流配送方式：POST(平邮)、EMS(EMS)、EXPRESS(其他快递)
+    "logistics_payment" => 'BUYER_PAY',             //物流配送费用付款方式：SELLER_PAY(卖家支付)、BUYER_PAY(买家支付)、BUYER_PAY_AFTER_RECEIVE(货到付款)
+    "logistics_type" => 'EXPRESS',                  //物流配送方式：POST(平邮)、EMS(EMS)、EXPRESS(其他快递)
 
     "price" => sprintf("%01.2f", $price),         //商品单价，必填
-    "payment_type" => "1",                          // 默认为1,不需要修改
+    "payment_type" => "1",                          //默认为1,不需要修改
     "quantity" => "1",                            //商品数量，必填
     "show_url" => $show_url,                                //商品相关网站
     "seller_email" => $seller_email               //卖家邮箱，必填

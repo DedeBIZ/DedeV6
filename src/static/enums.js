@@ -60,7 +60,7 @@ function ChangeSon()
         var oj  = document.createElement('select');
         oj.name = emname + '_sec';
         oj.id   = emname + '_sec';
-        oj.className = "form-control mt-2";
+        oj.className = "form-control";
         oj.onchange = ChangeSec;
     }
     var v = this.options[this.selectedIndex].value;
@@ -130,7 +130,7 @@ function selNextSon()
         var oj  = document.createElement('select');
         oj.name = emname + '_son';
         oj.id   = emname + '_son';
-        oj.className = "form-control mt-2";
+        oj.className = "form-control";
         oj.onchange = ChangeSon;
     }
     var v = this.options[this.selectedIndex].value;
@@ -177,7 +177,7 @@ function MakeTopSelect(emname, selvalue)
     var selObj = document.createElement("select");
     selObj.name = emname + '_top';
     selObj.id   = emname + '_top';
-    selObj.className = "form-control mt-2";
+    selObj.className = "form-control";
     selObj.onchange = selNextSon;
     var selarr = eval('em_'+emname+'s');
     // alert(selarr[1002.2]);
@@ -233,7 +233,7 @@ function MakeTopSelect(emname, selvalue)
     selObj = document.createElement("select");
     selObj.name = emname + '_son';
     selObj.id   = emname + '_son';
-    selObj.className = "form-control mt-2";
+    selObj.className = "form-control";
     selObj.onchange = ChangeSon;
     aOption = document.createElement('OPTION');
     aOption.text = '请选择..';
@@ -275,7 +275,7 @@ function MakeTopSelect(emname, selvalue)
         selObj.onchange = ChangeSec;
         aOption = document.createElement('OPTION');
         aOption.text = '请选择..';
-        selObj.className = "form-control mt-2";
+        selObj.className = "form-control";
         aOption.value = 0;
         selObj.options.add(aOption);
         

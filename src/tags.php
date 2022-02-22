@@ -19,7 +19,6 @@ if (isset($_SERVER['QUERY_STRING'])) {
 } else {
     $tag = '';
 }
-
 $tag = FilterSearch(urldecode($tag));
 if ($tag != addslashes($tag)) $tag = '';
 if ($tag == '') $dlist = new TagList($tag, 'tag.htm');

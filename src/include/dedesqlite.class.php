@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 数据库类
  * 说明:系统底层数据库核心类
@@ -46,7 +47,7 @@ class DedeSqlite
     var $isClose;
     var $safeCheck;
     var $showError = false;
-    var $recordLog = false; // 记录日志到data/mysqli_record_log.inc便于进行调试
+    var $recordLog = false; //记录日志到data/mysqli_record_log.inc便于进行调试
     var $isInit = false;
     var $pconnect = false;
     var $_fixObject;
@@ -115,7 +116,7 @@ class DedeSqlite
 
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("DedeBIZ错误警告：<font color='red'>连接数据库失败，可能数据库密码不对或数据库服务器出错</font>");
+            $this->DisplayError("DedeBIZ错误警告：<span style='color:#e74d58'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
             exit();
         }
         $this->isInit = TRUE;
@@ -333,7 +334,7 @@ class DedeSqlite
     }
 
     //返回当前的一条记录并把游标移向下一记录
-    // SQLITE3_ASSOC、SQLITE3_NUM、SQLITE3_BOTH
+    //SQLITE3_ASSOC、SQLITE3_NUM、SQLITE3_BOTH
     function GetArray($id = "me", $acctype = SQLITE3_ASSOC)
     {
         switch ($acctype) {
@@ -378,7 +379,7 @@ class DedeSqlite
         return array_shift($this->_fixObject[$id]);
     }
 
-    // 检测是否存在某数据表
+    //检测是否存在某数据表
     function IsTable($tbname)
     {
         global $dsqlite;
@@ -688,7 +689,7 @@ if (!function_exists('CheckSql')) {
         }
         if (!empty($fail)) {
             fputs(fopen($log_file, 'a+'), "$userIP||$getUrl||$db_string||$error\r\n");
-            exit("<font size='5' color='red'>Safe Alert: Request Error step 2!</font>");
+            exit("<span>Safe Alert: Request Error step 2!</span>");
         } else {
             return $db_string;
         }

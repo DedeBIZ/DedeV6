@@ -77,7 +77,7 @@ Sockets：支持接入DedeBIZ商业组件模块
 
 2.上传程序目录中的`/src`到网站根目录；
 
-3.运行`http://www.yourname.com/install/index.php`(yourname表示你的域名),按照安装提速说明进行程序安装；
+3.运行`http://www.yourname.com/install/index.php`(yourname表示您的域名),按照安装提速说明进行程序安装；
 
 详细安装步骤可以查看[帮助文档](https://www.dedebiz.com/help)
 

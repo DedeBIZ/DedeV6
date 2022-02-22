@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('Request Error!');
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 软件相关标签
  *
@@ -49,7 +49,7 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
         $dtp->Clear();
         return "无链接信息";
     }
-    // 去除链接信息
+    //去除链接信息
     if (!empty($row['sites'])) {
         $sertype_arr = array();
         $row['sites'] = preg_replace("#[\r\n]{1,}#", "\n", $row['sites']);

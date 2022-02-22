@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit('dedebiz');
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 helper('string');
 require_once(DEDEDATA.'/smiley.data.php');
 

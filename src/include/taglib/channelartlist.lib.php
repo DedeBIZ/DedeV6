@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('Request Error!');
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 获取当前频道的下级栏目的内容列表标签
  *
@@ -13,8 +13,8 @@ require_once(DEDEINC.'/arc.partview.class.php');
 function lib_channelartlist(&$ctag, &$refObj)
 {
     global $dsql, $envs, $_sys_globals;
-    //处理标记属性、innertext
-    $attlist = 'typeid|0,row|20,cacheid|';
+    //添加不调用指定栏目文档参数，语法 notypeid='1'
+    $attlist = 'typeid|0,row|20,cacheid|,notypeid|0';
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = trim($ctag->GetInnerText());
@@ -41,6 +41,10 @@ function lib_channelartlist(&$ctag, &$refObj)
         } else {
             $tpsql = " id IN($typeid) AND ispart<>2 AND ishidden<>1 ";
         }
+    }
+    //否定指定栏目
+    if($notypeid!=0) {
+        $tpsql = $tpsql."and not(id in($notypeid))";
     }
     $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
     $dsql->Execute();

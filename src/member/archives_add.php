@@ -80,7 +80,7 @@ function _SaveArticle(){  }
             }
         }
 
-        // 这里对前台提交的附加数据进行一次校验
+        //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
             ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
@@ -149,7 +149,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a>
         &nbsp;&nbsp;
-        <a href='archives_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>更改内容</a>
+        <a href='archives_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>修改内容</a>
         &nbsp;&nbsp;
         <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布内容管理</a>
         ";

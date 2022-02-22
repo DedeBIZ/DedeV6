@@ -1,7 +1,5 @@
-
-<!doctype html>
-<html lang="zh-CN">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,7 +11,6 @@
   <script src="<?php echo $cfg_cmsurl;?>/static/js/member_album.js"></script>
   <title>修改图集:<?php echo $row['title']?> - 会员中心 - <?php echo $cfg_webname; ?></title>
 </head>
-
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
 
@@ -128,10 +125,10 @@
             </table>
             <table width="100%" border="0" id="seltb<?php echo $j; ?>" style="margin-bottom:6px;" align="center">
               <tr>
-                <td height="25" colspan="2">　<strong>图片</strong></td>
+                <td height="26" colspan="2">　<strong>图片</strong></td>
               </tr>
               <tr>
-                <td height="25">　本地上传：
+                <td height="26">　本地上传：
                   <input type="text" name='imgfile<?php echo $j; ?>' style="width:200px;" maxlength="100"
                     class="intxt" />
                 </td>

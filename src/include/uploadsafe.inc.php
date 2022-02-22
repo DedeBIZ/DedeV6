@@ -9,7 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!defined('DEDEINC')) exit('Request Error!');
+if (!defined('DEDEINC')) exit('dedebiz');
 
 if (isset($_FILES['GLOBALS'])) exit('Request not allow!');
 
@@ -28,7 +28,7 @@ if (
 foreach ($_FILES as $_key => $_value) {
     foreach ($keyarr as $k) {
         if (!isset($_FILES[$_key][$k])) {
-            exit('Request Error!');
+            exit('dedebiz');
         }
     }
     if (preg_match('#^(cfg_|GLOBALS)#', $_key)) {

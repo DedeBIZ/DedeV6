@@ -5,11 +5,11 @@
  *
  * @version        2020年12月11日 tianya $
  * @package        DedeBIZ.Command
- * @copyright      Copyright (c) 2021, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-// 切换工作目录到./src
+//切换工作目录到./src
 $workDir = dirname(__FILE__) . "/src";
 chdir($workDir);
 
@@ -32,7 +32,7 @@ WEBSITE:
 	https://www.dedebiz.com/help/
 ";
 
-// 将选项转化为SQL IN参数
+//将选项转化为SQL IN参数
 function Option2SQLin($str = "")
 {
 	$str = preg_replace("#[^0-9-,]#", "", $str);
@@ -72,8 +72,8 @@ function RandEncode($length=26)
 }
 
 if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
-	// PHP5.4以下不支持内建服务器
-	// 用于开发调试
+	//PHP5.4以下不支持内建服务器
+	//用于开发调试
 	if (phpversion() < "5.4") {
 		die("DedeBIZ:command web server not support\n\n");
 	}
@@ -89,10 +89,10 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	require_once($workDir . "/include/common.inc.php");
 	require_once(DEDEINC . "/cli.class.php");
 
-	// 一个命令行的生成工具
+	//一个命令行的生成工具
 	if (count($argv) > 2 && ($argv[2] == "arc" || $argv[2] == "a")) {
-		// 生成文档
-		// make arc typeid=1
+		//生成文档
+		//make arc typeid=1
 		$t1 = ExecTime();
 		$addsql = "1=1";
 		$typeid = Option2SQLin(DedeCli::getOption("typeid"));
@@ -120,7 +120,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		DedeCli::write($queryTime);
 		exit;
 	} else if (count($argv) > 2 && ($argv[2] == "list" || $argv[2] == "l")) {
-		// 生成栏目
+		//生成栏目
 		$addsql = "1=1";
 		$typeid = Option2SQLin(DedeCli::getOption("typeid"));
 		if (!empty($typeid)) {
@@ -140,7 +140,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		}
 		exit;
 	} else if (count($argv) > 2 && ($argv[2] == "index" || $argv[2] == "i")) {
-		// 生成首页
+		//生成首页
 		$position = DedeCli::getOption("position");
 		if (empty($position)) {
 			$position = "../index.html";
@@ -162,7 +162,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
         $pv->SaveToHtml($homeFile);
 		DedeCli::write("Make index html successfull");
 	} else if (count($argv) > 2 && ($argv[2] == "auto" || $argv[2] == "o")) {
-		// 自动生成
+		//自动生成
 		function OptimizeData($dsql)
 		{
 			global $cfg_dbprefix;
@@ -184,7 +184,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			exit;
 		}
 
-		// 1.生成首页
+		//1.生成首页
         $pv = new PartView();
         $row = $pv->dsql->GetOne("SELECT * FROM `#@__homepageset` ");
         $templet = str_replace("{style}", $cfg_df_style, $row['templet']);
@@ -199,7 +199,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
             if (file_exists($homeFile)) @unlink($homeFile);
 		}
 		DedeCli::write("Make index html successfull");
-		// 2.生成栏目
+		//2.生成栏目
 		$query = "SELECT DISTINCT typeid From `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1";
 		$dsql->SetQuery($query);
 		$dsql->Execute();
@@ -234,7 +234,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			DedeCli::write("Make list html successfull");
 		}
 
-		// 生成文档
+		//生成文档
 		$tt = $dsql->GetOne("SELECT COUNT(id) as dd FROM `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1");
 		$total = intval($tt['dd']);
 		$dsql->Execute('out', "SELECT id FROM `#@__arctiny` WHERE senddate >=" . $start . " AND arcrank>-1 ORDER BY typeid ASC");
@@ -248,7 +248,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		}
 		DedeCli::write("Make archives html successfull");
 		
-		// 优化数据
+		//优化数据
 		OptimizeData($dsql);
 		DedeCli::write("Optimize data successfull");
 	} else {
@@ -274,7 +274,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	define("DEDEINC", $workDir."/include");
 	require_once(DEDEINC."/dedehttpdown.class.php");
 	require_once(DEDEINC . "/cli.class.php");
-	// 更新系统
+	//更新系统
 	$latestURL = "https://cdn.dedebiz.com/release/latest.txt";
 	$del = new DedeHttpDown();
 	$del->OpenUrl($latestURL);
@@ -292,11 +292,11 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	$del->OpenUrl($fileHashURL);
 	$filelist = $del->GetJSON();
 	$offFiles = array();
-	// TODO 命令行自动更新
+	//TODO 命令行自动更新
 } else if (count($argv) > 1 && ($argv[1] == "quick" || $argv[1] == "q")){
 	define("DEDEINC", $workDir."/include");
 	require_once(DEDEINC . "/cli.class.php");
-	// 快速开始一个用于开发的DedeBIZ环境，基于SQLite无其他依赖
+	//快速开始一个用于开发的DedeBIZ环境，基于SQLite无其他依赖
 	if (file_exists($workDir."/data/DedeBIZ.db")) {
 		DedeCli::write("development environment has inited");
 		echo "Start Dev Server For DedeBIZ\n\r";
@@ -304,7 +304,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 		exit;
 	}
-	// 初始化安装一个开发环境
+	//初始化安装一个开发环境
 	$db = new SQLite3($workDir.'/data/DedeBIZ.db');
 	$fp = fopen($workDir."/install/common.inc.php","r");
     $configStr1 = fread($fp,filesize($workDir."/install/common.inc.php"));

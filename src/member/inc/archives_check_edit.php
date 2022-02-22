@@ -28,7 +28,7 @@ if ($typeid == 0) {
     exit();
 }
 
-// 校验CSRF
+//校验CSRF
 CheckCSRF();
 
 $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend as cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype

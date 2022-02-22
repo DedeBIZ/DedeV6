@@ -1,6 +1,6 @@
 <?php
 if (!defined('DEDEINC')) {
-    exit("Request Error!");
+    exit("dedebiz");
 }
 /**
  * 会员信息调用标签

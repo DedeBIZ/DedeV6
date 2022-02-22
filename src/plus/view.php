@@ -1,5 +1,4 @@
 <?php
-
 /**
  *
  * 关于文章权限设置的说明
@@ -64,7 +63,7 @@ if ($needMoney > 0 || $needRank > 1) {
         }
         $memberTypes[0] = "游客或没权限会员";
         $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-        $moremsg = "这篇文档需要 <font color='red'>".$memberTypes[$needRank]."</font> 才能访问，您目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ";
+        $moremsg = "这篇文档需要 <span style='color:#e74d58'>".$memberTypes[$needRank]."</span> 才能访问，您目前是：<span style='color:#e74d58'>".$memberTypes[$cfg_ml->M_Rank]."</span> ";
         include_once(DEDETEMPLATE.'/plus/view_msg.htm');
         exit();
     }
@@ -77,7 +76,7 @@ if ($needMoney > 0 || $needRank > 1) {
         if (!is_array($row)) {
             if ($cfg_ml->M_Money == '' || $needMoney > $cfg_ml->M_Money) {
                 $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-                $moremsg = "这篇文档需要 <font color='red'>".$needMoney." 金币</font> 才能访问，您目前拥有金币：<font color='red'>".$cfg_ml->M_Money." 个</font> ";
+                $moremsg = "这篇文档需要 <span style='color:#e74d58'>".$needMoney." 金币</span> 才能访问，您目前拥有金币：<span style='color:#e74d58'>".$cfg_ml->M_Money." 个</span> ";
                 include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                 $arc->Close();
                 exit();
@@ -101,7 +100,7 @@ if ($needMoney > 0 || $needRank > 1) {
                 }
 
                 $msgtitle = "扣金币购买阅读";
-                $moremsg = "阅读该文档内容需要付费<br>这篇文档需要 <font color='red'>".$needMoney." 金币</font> 才能访问，您目前拥有金币 <font color='red'>".$cfg_ml->M_Money." </font>个<br>确认阅读请点 [<a href='/plus/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>]";
+                $moremsg = "阅读该文档内容需要付费<br>这篇文档需要 <span style='color:#e74d58'>".$needMoney." 金币</span> 才能访问，您目前拥有金币 <span style='color:#e74d58'>".$cfg_ml->M_Money." </span>个<br>确认阅读请点 [<a href='/plus/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>]";
                 include_once($cfg_basedir.$cfg_templets_dir."/plus/view_msg.htm");
                 $arc->Close();
                 exit();

@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 搜索视图类
  *
@@ -102,7 +102,7 @@ class SearchView
         $this->dtp2 = new DedeTagParse();
         $this->dtp2->SetNameSpace("field", "[", "]");
         $this->TypeLink = new TypeLink($typeid);
-        // 通过分词获取关键词
+        //通过分词获取关键词
         $this->Keywords = $this->GetKeywords($keyword);
 
         //设置一些全局参数的值
@@ -185,7 +185,7 @@ class SearchView
                     }
                     $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
                     $client->Close();
-                    // var_dump($keywords);exit;
+                    //var_dump($keywords);exit;
                 } else {
                     $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
                     $sp->SetSource($keyword, $cfg_soft_lang, $cfg_soft_lang);
@@ -202,7 +202,7 @@ class SearchView
                         $keywords .= ' '.$key;
                     }
                     $keywords = preg_replace("/[ ]{1,}/", " ", $keywords);
-                    // var_dump($keywords);exit();
+                    //var_dump($keywords);exit();
                     unset($sp);
                 }
             } else {
@@ -326,10 +326,10 @@ class SearchView
             if (ord($k[0]) > 0x80 && strlen($k) < 2) {
                 continue;
             }
-            // 这里不区分大小写进行关键词替换
-            $fstr = str_ireplace($k, "<font color='red'>$k</font>", $fstr);
-            // 速度更快,效率更高
-            //$fstr = str_replace($k, "<font color='red'>$k</font>", $fstr);
+            //这里不区分大小写进行关键词替换
+            $fstr = str_ireplace($k, "<span style='color:#e74d58'>$k</span>", $fstr);
+            //速度更快,效率更高
+            //$fstr = str_replace($k, "<span style='color:#e74d58'>$k</span>", $fstr);
         }
         return $fstr;
     }
@@ -738,8 +738,8 @@ class SearchView
             }
         }
         $plist = "";
-        // $plist  =  "<table border='0' cellpadding='0' cellspacing='0'>\r\n";
-        // $plist .= "<tr align='center' style='font-size:10pt'>\r\n";
+        //$plist  =  "<table border='0' cellpadding='0' cellspacing='0'>\r\n";
+        //$plist .= "<tr align='center' style='font-size:10pt'>\r\n";
         $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
         $plist .= "<ul class=\"pagination justify-content-center pt-3\">";
         $plist .= $infos;
@@ -748,11 +748,11 @@ class SearchView
         $plist .= $listdd;
         $plist .= $nextpage;
         $plist .= $endpage;
-        // if($totalpage>$total_list)
-        // {
-        //     $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
-        //     $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
-        // }
+        //if($totalpage>$total_list)
+        //{
+        //    $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
+        //    $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
+        //}
         $plist .= "</ul></form>\r\n";
         return $plist;
     }

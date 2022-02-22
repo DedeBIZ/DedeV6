@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 动态分页类
  * 说明:数据量不大的数据分页,使得数据分页处理变得更加简单化
@@ -195,8 +196,8 @@ class DataListCP
         $search .= '1234567890!@#$%^&*()';
         $search .= '~`";:?+/={}[]-_|\'\\';
         for ($i = 0; $i < strlen($search); $i++) {
-            $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); // with a ;
-            $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); // with a ;
+            $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); //with a ;
+            $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); //with a ;
         }
 
         $val = str_replace("`", "‘", $val);

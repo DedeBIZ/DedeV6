@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit("Request Error!");
+if (!defined('DEDEINC')) exit('dedebiz');
 
 function ch_stepselect($fvalue, &$arcTag, &$refObj, $fname = '')
 {

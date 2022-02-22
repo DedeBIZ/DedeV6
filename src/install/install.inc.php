@@ -15,7 +15,6 @@ function RunMagicQuotes(&$str)
     $str = addslashes($str);
     return $str;
 }
-
 function gdversion()
 {
     //没启用php.ini函数的情况下如果有GD默认视作2.0以上版本
@@ -35,7 +34,6 @@ function gdversion()
         return $gdversion_h;
     }
 }
-
 function GetBackAlert($msg, $isstop = 0)
 {
     global $s_lang;
@@ -45,8 +43,6 @@ function GetBackAlert($msg, $isstop = 0)
     $msg = "<meta http-equiv=content-type content='text/html; charset={$s_lang}'>\r\n".$msg;
     return $msg;
 }
-
-
 function TestWrite($d)
 {
     $tfile = '_dedet.txt';
@@ -60,7 +56,6 @@ function TestWrite($d)
         else return false;
     }
 }
-
 function ReWriteConfigAuto()
 {
     global $dsql;
@@ -82,7 +77,6 @@ function ReWriteConfigAuto()
     fwrite($fp, "?".">");
     fclose($fp);
 }
-
 //更新栏目缓存
 function UpDateCatCache()
 {
@@ -101,7 +95,6 @@ function UpDateCatCache()
     fwrite($fp1, "{$phph}>");
     fclose($fp1);
 }
-
 function IsDownLoad($url)
 {
     if (file_exists($url.'.xml')) {

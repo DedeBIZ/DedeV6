@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 按排序位置的获取单个栏目的链接信息
  *

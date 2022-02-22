@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * Dede织梦模板类
  *
@@ -96,7 +96,7 @@ class DedeTagParse
     var $TagStartWord = '{';   //标记起始
     var $TagEndWord = '}';     //标记结束
     var $TagMaxLen = 64;       //标记名称的最大值
-    var $CharToLow = TRUE;     // TRUE表示对属性和标记名称不区分大小写
+    var $CharToLow = TRUE;     //TRUE表示对属性和标记名称不区分大小写
     var $IsCache = FALSE;      //是否使用缓冲
     var $TempMkTime = 0;
     var $CacheFile = '';
@@ -187,7 +187,7 @@ class DedeTagParse
         $this->SetDefault();
     }
 
-    // ------------------------------------------------------------------------
+    //------------------------------------------------------------------------
 
     /**
      * CheckDisabledFunctions
@@ -202,7 +202,7 @@ class DedeTagParse
     {
         global $cfg_disable_funs;
         $cfg_disable_funs = isset($cfg_disable_funs) ? $cfg_disable_funs : 'phpinfo,eval,exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,file_put_contents,fsockopen,fopen,fwrite';
-        // 模板引擎增加disable_functions
+        //模板引擎增加disable_functions
         if (defined('DEDEDISFUN')) {
             $tokens = token_get_all_nl('<?php'.$str."\n\r?>");
             $disabled_functions = explode(',', $cfg_disable_funs);
@@ -362,13 +362,13 @@ class DedeTagParse
         }
     }
 
-    // 仅用于兼容旧版本
+    //仅用于兼容旧版本
     function LoadTemplet($filename)
     {
         $this->LoadTemplate($filename);
     }
 
-    // 仅用于兼容旧版本
+    //仅用于兼容旧版本
     function LoadFile($filename)
     {
         $this->LoadTemplate($filename);
@@ -981,7 +981,7 @@ class DedeAttribute
         return $this->GetAtt("tagname");
     }
 
-    // 获得属性个数
+    //获得属性个数
     function GetCount()
     {
         return $this->Count + 1;
@@ -1032,7 +1032,7 @@ class DedeAttributeParse
         $strLen = strlen($this->sourceString);
         $this->cAttributes->Items = array();
 
-        // 获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
+        //获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
         for ($i = 0; $i < $strLen; $i++) {
             if ($this->sourceString[$i] == ' ') {
                 $this->cAttributes->Count++;
@@ -1116,5 +1116,5 @@ class DedeAttributeParse
             $this->cAttributes->Items[$tmpatt] = trim($tmpvalue);
         }
         //print_r($this->cAttributes->Items);
-    } // end func
+    } //end func
 }

@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 缓存小助手,支持文件和memcache
  *

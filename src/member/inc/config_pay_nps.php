@@ -6,7 +6,7 @@ include_once DEDEMEMBER.'/paycenter/nps/nps_config.inc.php';
 if($payment_exp[1] < 0.01) $payment_exp[1] = 0;
 $piice_ex = $price*$payment_exp[1];
 $price = $price+$piice_ex;
-// 公共函数定义
+//公共函数定义
 function HexToStr($hex)
 {
     $string="";

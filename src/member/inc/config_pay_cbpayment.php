@@ -14,18 +14,18 @@ $v_md5info = strtoupper(md5($text));                             //md5函数加�
 $remark1 = trim($ptype);//备注字段1
 $remark2 = trim($pname);//备注字段2
 
-$v_rcvname   = '站长';		// 收货人
-$v_rcvaddr   = '深圳';		// 收货地址
-$v_rcvtel    = '0755-83791960';		// 收货人电话
-$v_rcvpost   = '100080';		// 收货人邮编
-$v_rcvmobile = '13838384381';		// 收货人手机号
+$v_rcvname   = '站长';		//收货人
+$v_rcvaddr   = '深圳';		//收货地址
+$v_rcvtel    = '0755-83791960';		//收货人电话
+$v_rcvpost   = '100080';		//收货人邮编
+$v_rcvmobile = '13838384381';		//收货人手机号
 
-$v_ordername   = $cfg_ml->M_UserName;	// 订货人姓名
-$v_orderaddr   = '深圳';	// 订货人地址
-$v_ordertel    = '0755-83791960';	// 订货人电话
-$v_orderpost   = 518000;	// 订货人邮编
-$v_orderemail  = 'service@nps.cn';	// 订货人邮件
-$v_ordermobile = 13838384581;	// 订货人手机号
+$v_ordername   = $cfg_ml->M_UserName;	//订货人姓名
+$v_orderaddr   = '深圳';	//订货人地址
+$v_ordertel    = '0755-83791960';	//订货人电话
+$v_orderpost   = 518000;	//订货人邮编
+$v_orderemail  = 'service@nps.cn';	//订货人邮件
+$v_ordermobile = 13838384581;	//订货人手机号
 
 $strRequestUrl = $v_post_url.'?v_mid='.$v_mid.'&v_oid='.$v_oid.'&v_amount='.$v_amount.'&v_moneytype='.$v_moneytype
 	.'&v_url='.$v_url.'&v_md5info='.$v_md5info.'&remark1='.$remark1.'&remark2='.$remark2;

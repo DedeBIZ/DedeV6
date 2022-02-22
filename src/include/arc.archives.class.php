@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit("Request Error!");
+if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 文档类
  *
@@ -64,7 +64,7 @@ class Archives
             $this->ChannelUnit = new ChannelUnit($arr['channel'], $aid);
             $this->TypeLink = new TypeLink($arr['typeid']);
             if ($this->ChannelUnit->ChannelInfos['issystem'] != -1) {
-                // 如果当前文档不是系统模型，为单表模型
+                //如果当前文档不是系统模型，为单表模型
                 $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable
                     FROM `#@__archives` arc
                     LEFT JOIN #@__arctype tp on tp.id=arc.typeid
@@ -244,7 +244,7 @@ class Archives
             //模板里直接使用{dede:field name='image'/}获取缩略图
             $this->Fields['image'] = (!preg_match('/jpg|gif|png/i', $this->Fields['picname']) ? '' : "<img src='{$this->Fields['picname']}' />");
         }
-        // 处理投票选项
+        //处理投票选项
         if (isset($this->Fields['voteid']) && !empty($this->Fields['voteid'])) {
             $this->Fields['vote'] = '';
             $voteid = $this->Fields['voteid'];

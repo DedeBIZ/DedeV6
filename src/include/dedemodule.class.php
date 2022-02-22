@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 织梦模块类
  *
@@ -190,7 +190,7 @@ class DedeModule
         }
 
         if (isset($minfos['pubkey'])) {
-            // 验证模块信息
+            //验证模块信息
             $pubKey = @base64url_decode($minfos['pubkey']);
             @openssl_public_decrypt(base64url_decode($minfos['info']), $decontent, $pubKey);
             $enInfo = (array)json_decode($decontent);
@@ -256,7 +256,7 @@ class DedeModule
         while (!feof($fp)) {
             $line = fgets($fp, 1024);
             if (!$start) {
-                //  2011-6-7 修复模块打包程序中上传安装程序生成为空白文件(by:华强)
+                // 2011-6-7 修复模块打包程序中上传安装程序生成为空白文件(by:华强)
                 if (preg_match("#<{$ntype}>#i", $line)) $start = TRUE;
             } else {
                 if (preg_match("#<\/{$ntype}#i", $line)) break;

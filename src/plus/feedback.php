@@ -36,7 +36,7 @@ $good = isset($good) ? intval($good) : 0;
 $cfg_formmember = isset($cfg_formmember) ? true : false;
 $ischeck = $cfg_feedbackcheck == 'Y' ? 0 : 1;
 $aid = isset($aid) ? intval($aid) : 0;
-$fid = isset($fid) ? intval($fid) : 0; // 用来标记回复评论的变量
+$fid = isset($fid) ? intval($fid) : 0; //用来标记回复评论的变量
 
 if (empty($aid) && empty($fid)) {
     echo json_encode(array(
@@ -76,7 +76,7 @@ if ($action == '' || $action == 'show') {
         $where_sql .= " AND fb.aid={$aid}";
     }
 
-    // 调用20条热评
+    //调用20条热评
     $querystring = "SELECT fb.*,mb.userid,mb.face as mface,mb.spacesta,mb.scores,mb.sex FROM `#@__feedback` fb
     LEFT JOIN `#@__member` mb on mb.mid = fb.mid $where_sql AND fb.ischeck='1' ORDER BY fb.good DESC";
 
@@ -118,7 +118,7 @@ function __SendFeedback(){ }
     if (!$cfg_ml->IsLogin()) {
         if ($feedbacktype === 'good') {
 
-            // 未登录点good不进行数据库记录
+            //未登录点good不进行数据库记录
             echo json_encode(array(
                 "code" => 200,
                 "msg" => "",
@@ -128,7 +128,7 @@ function __SendFeedback(){ }
         }
         $svali = GetCkVdValue();
         if (strtolower($validate) != $svali || $svali == '') {
-            // ResetVdValue();
+            //ResetVdValue();
             echo json_encode(array(
                 "code" => -1,
                 "msg" => "验证码错误",

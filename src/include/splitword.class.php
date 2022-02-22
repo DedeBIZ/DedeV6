@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * Unicode编码词典的php分词器
  *

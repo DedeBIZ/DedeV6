@@ -76,7 +76,7 @@ function _SaveArticle(){  }
             }
         }
 
-        // 这里对前台提交的附加数据进行一次校验
+        //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
             ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
@@ -123,16 +123,16 @@ function _SaveArticle(){  }
     $msg = "　　请选择您的后续操作：
         <a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-secondary btn-sm'>发布新内容</a>
         &nbsp;&nbsp;
-        <a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看更改</a>
+        <a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看修改</a>
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank'>查看内容</a>
         &nbsp;&nbsp;
         <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理内容</a>
         ";
-    $wintitle = "成功更改内容";
-    $wecome_info = "内容管理::更改内容";
+    $wintitle = "成功修改内容";
+    $wecome_info = "内容管理::修改内容";
     $win = new OxWindow();
-    $win->AddTitle("成功更改内容：");
+    $win->AddTitle("成功修改内容：");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();

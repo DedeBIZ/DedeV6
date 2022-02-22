@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit("Request Error!");
+if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 提示窗口对话框类
  *

@@ -56,7 +56,7 @@ if ($tinfos['issystem'] == -1) {
             }
             $memberTypes[0] = "游客或没权限会员";
             $msgtitle = "您没有权限浏览栏目：{$lv->Fields['typename']} ";
-            $moremsg = "这个栏目需要 <font color='red'>".$memberTypes[$lv->Fields['corank']]."</font> 才能访问，您目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ";
+            $moremsg = "这个栏目需要 <span style='color:#e74d58'>".$memberTypes[$lv->Fields['corank']]."</span> 才能访问，您目前是：<span style='color:#e74d58'>".$memberTypes[$cfg_ml->M_Rank]."</span> ";
             include_once(DEDETEMPLATE.'/plus/view_msg_catalog.htm');
             exit();
         }

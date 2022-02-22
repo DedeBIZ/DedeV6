@@ -1,4 +1,4 @@
-<?php  if (!defined('DEDEINC')) exit('Request Error!');
+<?php  if (!defined('DEDEINC')) exit('dedebiz');
 // Copyright 2020 The DedeBiz Authors. All rights reserved.
 // license that can be found in the LICENSE file.
 
@@ -271,7 +271,7 @@ class DedeCli
      *
      * 使用:
      *
-     * // 等待任何输入
+     * //等待任何输入
      * DedeCli::prompt();
      *
      * $color = DedeCli::prompt('What is your favorite color?');
@@ -296,24 +296,24 @@ class DedeCli
         switch ($arg_count)
         {
             case 2:
-                // E.g: $ready = DedeCli::prompt('Are you ready?', array('y','n'));
+                //E.g: $ready = DedeCli::prompt('Are you ready?', array('y','n'));
                 if (is_array($args[1]))
                 {
                     list($output, $options) = $args;
                 }
-                // E.g: $color = DedeCli::prompt('What is your favourite color?', 'white');
+                //E.g: $color = DedeCli::prompt('What is your favourite color?', 'white');
                 elseif (is_string($args[1]))
                 {
                     list($output, $default) = $args;
                 }
                 break;
             case 1:
-                // E.g: $ready = DedeCli::prompt(array('y','n'));
+                //E.g: $ready = DedeCli::prompt(array('y','n'));
                 if (is_array($args[0]))
                 {
                     $options = $args[0];
                 }
-                // E.g: $ready = DedeCli::prompt('What did you do today?');
+                //E.g: $ready = DedeCli::prompt('What did you do today?');
                 elseif (is_string($args[0]))
                 {
                     $output = $args[0];

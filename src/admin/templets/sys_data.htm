@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+  <title>数据库维护</title>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href='css/base.css' rel='stylesheet' type='text/css'>
+  <script language="javascript" src="../static/js/dedeajax2.js"></script>
+  <script language="javascript">
+    var myajax;
+    var newobj;
+    var posLeft = 200;
+    var posTop = 150;
+    function LoadUrl(surl) {
+      newobj = document.getElementById('_mydatainfo');
+      if (!newobj) {
+        newobj = document.createElement("DIV");
+        newobj.id = '_mydatainfo';
+        newobj.style.position = 'absolute';
+        newobj.className = "dlg";
+        newobj.style.top = posTop;
+        newobj.style.left = posLeft;
+        document.body.appendChild(newobj);
+      } else {
+        newobj.style.display = "block";
+      }
+      myajax = new DedeAjax(newobj);
+      myajax.SendGet("sys_data.php?" + surl);
+    }
+    function HideObj(objname) {
+      var obj = document.getElementById(objname);
+      obj.style.display = "none";
+    }
+
+    //获得选中文件的数据表
+
+    function getCheckboxItem() {
+      var myform = document.form1;
+      var allSel = "";
+      if (myform.tables.value) return myform.tables.value;
+      for (i = 0; i < myform.tables.length; i++) {
+        if (myform.tables[i].checked) {
+          if (allSel == "")
+            allSel = myform.tables[i].value;
+          else
+            allSel = allSel + "," + myform.tables[i].value;
+        }
+      }
+      return allSel;
+    }
+
+    //反选
+    function ReSel() {
+      var myform = document.form1;
+      for (i = 0; i < myform.tables.length; i++) {
+        if (myform.tables[i].checked) myform.tables[i].checked = false;
+        else myform.tables[i].checked = true;
+      }
+    }
+
+    //全选
+    function SelAll() {
+      var myform = document.form1;
+      for (i = 0; i < myform.tables.length; i++) {
+        myform.tables[i].checked = true;
+      }
+    }
+
+    //取消
+    function NoneSel() {
+      var myform = document.form1;
+      for (i = 0; i < myform.tables.length; i++) {
+        myform.tables[i].checked = false;
+      }
+    }
+
+    function checkSubmit() {
+      var myform = document.form1;
+      myform.tablearr.value = getCheckboxItem();
+      return true;
+    }
+
+  </script>
+</head>
+
+<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+  <table width="99%" align="center" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6"
+    class="table maintable table-bordered mt-3">
+    <tr>
+      <td height="19" colspan="8" background="images/tbg.gif" bgcolor="#E7E7E7">
+        <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
+          <tr>
+            <td width="24%" style="padding-left:10px;"><strong>数据库管理</strong></td>
+            <td width="76%" align="right">
+              <a href="sys_data_revert.php" class="btn btn-success btn-sm">数据还原</a>
+              <a href="sys_sql_query.php" class="btn btn-success btn-sm">SQL命令行工具</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <form name="form1" onSubmit="checkSubmit()" action="sys_data_done.php?dopost=bak" method="post" target="stafrm">
+      <input type='hidden' name='tablearr' value='' />
+      <tr bgcolor="#F7F8ED">
+        <td height="26" colspan="8"><strong>DedeBIZV6默认系统表：</strong></td>
+      </tr>
+      <tr bgcolor="#FBFCE2" align="center">
+        <td height="26" width="5%">选择</td>
+        <td width="20%">表名</td>
+        <td width="8%">记录数</td>
+        <td width="17%">操作</td>
+        <td width="5%">选择</td>
+        <td width="20%">表名</td>
+        <td width="8%">记录数</td>
+        <td width="17%">操作</td>
+      </tr>
+      <?php  
+  for($i=0; isset($dedeSysTables[$i]); $i++)
+  { 
+    $t = $dedeSysTables[$i];
+    echo "<tr align='center'  bgcolor='#FFFFFF' height='24'>\r\n";
+  ?>
+      <td>
+        <input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" checked />
+      </td>
+      <td>
+        <?php echo $t; ?>
+      </td>
+      <td>
+        <?php echo TjCount($t,$dsql); ?>
+      </td>
+      <td>
+        <a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">优化</a>
+        <a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">修复</a>
+        <a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">结构</a>
+      </td>
+      <?php
+   $i++;
+   if(isset($dedeSysTables[$i])) {
+   	$t = $dedeSysTables[$i];
+  ?>
+      <td>
+        <input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" checked />
+      </td>
+      <td>
+        <?php echo $t; ?>
+      </td>
+      <td>
+        <?php echo TjCount($t,$dsql); ?>
+      </td>
+      <td>
+        <a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">优化</a>
+        <a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">修复</a>
+        <a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">结构</a>
+      </td>
+      <?php
+   }
+   else
+   {
+   	  echo "<td></td><td></td><td></td><td></td>\r\n";
+   }
+   echo "</tr>\r\n";
+  }
+  ?>
+      <tr bgcolor="#F9FCEF">
+        <td height="26" colspan="8"><strong>其它数据表：</strong></td>
+      </tr>
+      <tr bgcolor="#FBFCE2" align="center">
+        <td height="26" width="5%">选择</td>
+        <td width="20%">表名</td>
+        <td width="8%">记录数</td>
+        <td width="17%">操作</td>
+        <td width="5%">选择</td>
+        <td width="20%">表名</td>
+        <td width="8%">记录数</td>
+        <td width="17%">操作</td>
+      </tr>
+      <?php  
+  for($i=0; isset($otherTables[$i]); $i++)
+  { 
+    $t = $otherTables[$i];
+    echo "<tr align='center'  bgcolor='#FFFFFF' height='24'>\r\n";
+  ?>
+      <td>
+        <input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" />
+      </td>
+      <td>
+        <?php echo $t; ?>
+      </td>
+      <td>
+        <?php echo TjCount($t,$dsql); ?>
+      </td>
+      <td>
+        <a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">优化</a>
+        <a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">修复</a>
+        <a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">结构</a>
+      </td>
+      <?php
+   $i++;
+   if(isset($otherTables[$i])) {
+   	$t = $otherTables[$i];
+  ?>
+      <td>
+        <input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" />
+      </td>
+      <td>
+        <?php echo $t; ?>
+      </td>
+      <td>
+        <?php echo TjCount($t,$dsql); ?>
+      </td>
+      <td>
+        <a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">优化</a>
+        <a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">修复</a>
+        <a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');"
+          class="btn btn-success btn-sm">结构</a>
+      </td>
+      <?php
+   }else{
+   	  echo "<td></td><td></td><td></td><td></td>\r\n";
+   }
+   echo "</tr>\r\n";
+  }
+  ?>
+      <tr bgcolor="#ffffff">
+        <td height="26" colspan="8">
+          &nbsp;
+          <button name="b1" type="button" id="b1" class="btn btn-success btn-sm" onClick="SelAll()">全选</button>
+          &nbsp;
+          <button name="b2" type="button" id="b2" class="btn btn-success btn-sm" onClick="ReSel()">反选</button>
+          &nbsp;
+          <button name="b3" type="button" id="b3" class="btn btn-success btn-sm" onClick="NoneSel()">取消</button>
+        </td>
+      </tr>
+      <tr bgcolor="#F9FCEF">
+        <td height="26" colspan="8"><strong>数据备份选项：</strong></td>
+      </tr>
+      <tr align="center" bgcolor="#FFFFFF">
+        <td height="50" colspan="8">
+          <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
+            <tr>
+              <td height="30">当前数据库版本： <?php echo $mysql_version?></td>
+            </tr>
+            <tr>
+              <td height="30">
+                分卷大小：
+                <input name="fsize" type="text" id="fsize" value="2048" size="6" />
+                K&nbsp;，
+                <label><input name="isstruct" type="checkbox" class="np" id="isstruct" value="1" checked='1' />
+                  备份表结构信息</label>
+                <?php  if(@function_exists('gzcompress') && false) {  ?>
+                <input name="iszip" type="checkbox" class="np" id="iszip" value="1" checked='1' />
+                完成后压缩成ZIP
+                <?php } ?>
+                <button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </form>
+    <tr bgcolor="#F9FCEF">
+      <td height="26" colspan="8"><strong>进行状态：</strong></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td height="180" colspan="8">
+        <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

@@ -88,7 +88,7 @@ if (!function_exists('RndString')) {
                     if ($emname != 'font') {
                         $rnstr = " <$emname class='$rndstyleName'>$rnstr</$emname> ";
                     } else {
-                        $rnstr = " <font color='$fontColor'>$rnstr</font> ";
+                        $rnstr = " <span style='$fontColor'>$rnstr</span> ";
                     }
                     $reString .= $rnstr.$body[$i];
                     $prepos = $i;

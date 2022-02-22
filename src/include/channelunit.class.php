@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 频道模型单元类
  * @version        $Id: channelunit.class.php 2 17:32 2010年7月6日Z tianya $

@@ -1,7 +1,7 @@
 <?php
 if(!defined('DEDEINC'))
 {
-	exit("Request Error!");
+	exit("dedebiz");
 }
 
 function SpHtml2Text($str)

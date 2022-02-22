@@ -21,13 +21,13 @@ class image
     var $thumbstatus;
     var $watermarkstatus;
 
-    // 析构函数,兼容PHP4
+    //析构函数,兼容PHP4
     function image($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach = array())
     {
         $this->__construct($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach);
     }
 
-    // 析构函数
+    //析构函数
     function __construct($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach = array())
     {
         $this->thumbstatus = $cfg_thumb;

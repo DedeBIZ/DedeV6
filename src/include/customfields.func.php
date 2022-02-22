@@ -25,7 +25,6 @@ function GetFormItem($ctag, $admintype = 'admin')
     if ($innertext != '') {
         $formitem = $innertext;
     }
-
     if ($fieldType == 'select') {
         $myformItem = '';
         $items = explode(',', $ctag->GetAtt("default"));
@@ -93,10 +92,10 @@ function GetFormItem($ctag, $admintype = 'admin')
             $innertext = GetEditor($fieldname, $dfvalue, 350, 'Member', 'string');
         }
     } else if ($fieldType == "multitext") {
-        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:90%;height:80'></textarea>\r\n";
+        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:450px;height:50px'></textarea>\r\n";
     } else if ($fieldType == "datetime") {
         $nowtime = GetDateTimeMk(time());
-        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:250px\" class=\"intxt datepicker\"/>";
+        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:300px\" class=\"intxt datepicker\"/>";
     } else if ($fieldType == 'img' || $fieldType == 'imgfile') {
         if ($admintype == 'diy') {
             $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:300px;height:22px;line-height:22px' />\r\n";
@@ -121,12 +120,11 @@ function GetFormItem($ctag, $admintype = 'admin')
     } else if ($fieldType == 'relation') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '');
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
-        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:90%;height:80px'>$dfvalue</textarea><br>
+        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:80%;height:50pxpx'>$dfvalue</textarea><br>
         <button type='button' class='btn btn-success btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
         if ($ctag->GetAtt('automake') == 1) {
             $innertext .= "<input type='hidden' name='automake[$fieldname]' value=1>";
         }
-
         $innertext .= <<<EOT
 <script>
 if(typeof SelectArcList === "undefined") {
@@ -140,14 +138,13 @@ if(typeof SelectArcList === "undefined") {
 EOT;
     } else {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '');
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:250px'  class='intxt' value='$dfvalue' />
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300px'  class='intxt' value='$dfvalue' />
         \r\n";
     }
     $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
     $formitem = str_replace("~form~", $innertext, $formitem);
     return $formitem;
 }
-
 /**
  *  处理不同类型的数据
  *
@@ -217,7 +214,6 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         }
         $ipath = $ipath.'/'.$tpath;
         $filename = "{$ipath}/{$aid}-".cn_substr(md5($cfg_cookie_encode), 0, 16).".txt";
-
         //会员投稿内容安全处理
         if ($admintype == 'member' || $admintype == 'diy') {
             $dvalue = HtmlReplace($dvalue, -1);
@@ -283,7 +279,6 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '', $a
         return $dvalue;
     }
 }
-
 /**
  *  获得带值的表单(编辑时用)
  *
@@ -348,7 +343,6 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         }
         $innertext = $myformItem;
     }
-
     //checkbox
     else if ($ftype == 'checkbox') {
         $myformItem = '';
@@ -368,7 +362,6 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         }
         $innertext = $myformItem;
     }
-
     //文本数据的特殊处理
     else if ($ftype == "textdata") {
         if (is_file($cfg_basedir.$fvalue)) {
@@ -395,10 +388,10 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         }
         $innertext = $myformItem;
     } else if ($ftype == "multitext") {
-        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:90%;height:80px'>$fvalue</textarea>\r\n";
+        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:80%;height:50pxpx'>$fvalue</textarea>\r\n";
     } else if ($ftype == "datetime") {
         $nowtime = GetDateTimeMk($fvalue);
-        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:250px\" class=\"intxt datepicker\" />";
+        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:300px\" class=\"intxt datepicker\" />";
     } else if ($ftype == "img") {
         $ndtp = new DedeTagParse();
         $ndtp->LoadSource($fvalue);
@@ -420,7 +413,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:100px'  class='intxt' value='$fvalue' /> (填写数值)\r\n";
     } else if ($ftype == "relation") {
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
-        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:90%;height:80px'>$fvalue</textarea><br>
+        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:80%;height:50pxpx'>$fvalue</textarea><br>
         <button type='button' class='btn btn-success btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
         if ($ctag->GetAtt('automake') == 1) {
             $innertext .= "<input type='hidden' name='automake[$fieldname]' value=1>";
@@ -437,7 +430,7 @@ if(typeof SelectArcList === "undefined") {
 </script>
 EOT;
     } else {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:250px'  class='intxt' value='$fvalue' />\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300px'  class='intxt' value='$fvalue' />\r\n";
     }
     $formitem = str_replace('~name~', $ctag->GetAtt('itemname'), $formitem);
     $formitem = str_replace('~form~', $innertext, $formitem);

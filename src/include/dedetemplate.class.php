@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 模板引擎文件
  *
@@ -424,7 +424,7 @@ class DedeTemplate
         fclose($fp);
     }
 
-    // ------------------------------------------------------------------------
+    //------------------------------------------------------------------------
 
     /**
      * CheckDisabledFunctions
@@ -439,7 +439,7 @@ class DedeTemplate
     {
         global $cfg_disable_funs;
         $cfg_disable_funs = isset($cfg_disable_funs) ? $cfg_disable_funs : 'phpinfo,eval,exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,file_put_contents,fsockopen,fopen,fwrite';
-        // 模板引擎增加disable_functions
+        //模板引擎增加disable_functions
         if (!defined('DEDEDISFUN')) {
             $tokens = token_get_all_nl($str);
             $disabled_functions = explode(',', $cfg_disable_funs);
@@ -818,7 +818,7 @@ class DedeTemplate
             if ($cTag->GetAtt('function') != '') {
                 $cTag->tagValue = $this->CompilerFunction($cTag->GetAtt('function'), $cTag->tagValue);
             }
-            // 增加默认空值处理
+            //增加默认空值处理
             if ($cTag->GetAtt('default') != '') {
                 $cTag->tagValue = '<'.'?php echo empty('.$cTag->tagValue.')? \''.addslashes($cTag->GetAtt('default')).'\':'.$cTag->tagValue.'; ?'.'>';
             } else {
@@ -1212,7 +1212,7 @@ class TagAttributeParse
         $strLen = strlen($this->sourceString);
         $this->cAttributes->items = array();
 
-        // 获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
+        //获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
         for ($i = 0; $i < $strLen; $i++) {
             if ($this->sourceString[$i] == ' ') {
                 $this->cAttributes->count++;
@@ -1308,7 +1308,7 @@ class TagAttributeParse
             $this->cAttributes->items[$tmpatt] = trim($tmpvalue);
         } //print_r($this->cAttributes->items);
 
-    } // end func
+    } //end func
 
 } //End Class
 

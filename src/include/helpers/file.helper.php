@@ -118,7 +118,7 @@ if (!function_exists('MkdirAll')) {
 }
 
 /**
- *  更改所有模式
+ *  修改所有模式
  *
  * @access    public
  * @param     string  $truepath  文件路径

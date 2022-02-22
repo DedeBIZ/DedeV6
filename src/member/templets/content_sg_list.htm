@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-CN">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,16 +21,14 @@
     }
   </script>
 </head>
-
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
     <div class="container-fluid pannel">
       <div class="container">
         <div class="row">
           <?php
-          $_menu_conex = true; // 展开编辑信息
+          $_menu_conex = true; //展开编辑信息
           ?>
           <?php include(DEDEMEMBER."/templets/menu.htm"); ?>
           <div class="pannel-main col-md-9 mt-3 mb-3">
@@ -81,8 +78,8 @@
                       <td align="center"><?php echo $fields['typename']; ?></td>
                       <td align="center"><?php
                         if($fields['arcrank']>=0) echo "已审核";
-                        else if($fields['arcrank']==-2) echo "<font color='blue'>被退回</font>";
-                        else echo "<font color='red'>未审核</font>";
+                        else if($fields['arcrank']==-2) echo "<span style='color:#007bff'>被退回</span>";
+                        else echo "<span style='color:#e74d58'>未审核</span>";
                         ?></td>
                       <td align="center"><?php echo $fields['click']; ?></td>
                       <td align="center"><?php echo GetDateMk($fields['senddate']); ?></td>

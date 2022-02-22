@@ -1,6 +1,6 @@
 <?php
 if (!defined('DEDEINC')) {
-    exit("Request Error!");
+    exit("dedebiz");
 }
 require_once(DEDEINC."/taglib/flink.lib.php");
 /**

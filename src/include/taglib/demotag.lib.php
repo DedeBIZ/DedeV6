@@ -1,6 +1,6 @@
 <?php
 if (!defined('DEDEINC')) {
-    exit("Request Error!");
+    exit("dedebiz");
 }
 /**
  * 这仅是一个演示标签

@@ -182,7 +182,7 @@
                 return NULL;
             }
 
-            // inteleaved data and ecc codes
+            //inteleaved data and ecc codes
             for($i=0; $i<$raw->dataLength + $raw->eccLength; $i++) {
                 $code = $raw->getCode();
                 $bit = 0x80;
@@ -197,7 +197,7 @@
             
             unset($raw);
             
-            // remainder bits
+            //remainder bits
             $j = QRspec::getRemainder($version);
             for($i=0; $i<$j; $i++) {
                 $addr = $filler->next();
@@ -208,7 +208,7 @@
             unset($filler);
             
             
-            // masking
+            //masking
             $maskObj = new QRmask();
             if($mask < 0) {
             
@@ -402,7 +402,7 @@
         public $size = 3;
         public $margin = 4;
         
-        public $structured = 0; // not supported yet
+        public $structured = 0; //not supported yet
         
         public $level = QR_ECLEVEL_L;
         public $hint = QR_MODE_8;

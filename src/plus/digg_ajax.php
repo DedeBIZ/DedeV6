@@ -88,7 +88,7 @@ if ($formurl == 'caicai') {
 	$row['badper'] = trim(sprintf("%4.2f", $row['badper']));
 
 	if (!empty($format)) {
-		// 输出JSON API的方式
+		//输出JSON API的方式
 		$result = array(
 			"code" => 200,
 			"data" => array(
@@ -100,7 +100,7 @@ if ($formurl == 'caicai') {
 		);
 		$digg = json_encode($result);
 	} else {
-		// 兼容之前的老版本
+		//兼容之前的老版本
 		$digg = '<div class="diggbox digg_good" onmousemove="this.style.backgroundPosition=\'left bottom\';" onmouseout="this.style.backgroundPosition=\'left top\';" onclick="postDigg(\'good\','.$id.')">
 		<div class="digg_act">顶一下</div>
 		<div class="digg_num">('.$row['goodpost'].')</div>

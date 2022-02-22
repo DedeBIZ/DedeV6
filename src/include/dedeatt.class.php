@@ -132,9 +132,9 @@ class DedeAttParse
         $notAttribute = TRUE;
         $strLen = strlen($this->SourceString);
 
-        // 这里是获得Tag的名称,可视情况是否需要
-        // 如果不在这个里解析,则在解析整个Tag时解析
-        // 属性中不应该存在tagname这个名称
+        //这里是获得Tag的名称,可视情况是否需要
+        //如果不在这个里解析,则在解析整个Tag时解析
+        //属性中不应该存在tagname这个名称
         for ($i = 0; $i < $strLen; $i++) {
             $d = substr($this->SourceString, $i, 1);
             if ($d == ' ') {
@@ -176,7 +176,7 @@ class DedeAttParse
                 } else if ($startdd == 0) {
                     switch ($d) {
                         case ' ':
-                            // continue;
+                            //continue;
                             break;
                         case '\'':
                             $ddtag = '\'';

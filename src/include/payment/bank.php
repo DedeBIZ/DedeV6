@@ -1,5 +1,5 @@
 <?php
-if(!defined('DEDEINC')) exit('Request Error!');
+if(!defined('DEDEINC')) exit('dedebiz');
 /**
  * 银行汇款/转帐接口
  */

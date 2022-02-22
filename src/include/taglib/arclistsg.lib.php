@@ -18,7 +18,6 @@
  * @param     object  $refObj  引用对象
  * @return    string  成功后返回解析后的标签内容
  */
-
 function lib_arclistsg(&$ctag, &$refObj)
 {
     global $dsql, $PubFields, $cfg_keyword_like, $cfg_index_cache, $_arclistEnv, $envs, $_sys_globals;

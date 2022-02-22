@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 关联内容标签
  *
@@ -143,7 +143,7 @@ function lib_relation(&$ctag, &$refObj)
                 $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
-                if (isset($row['color']) && $row['color'] != '') $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
+                if (isset($row['color']) && $row['color'] != '') $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
                 if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>".$row['title']."</strong>";
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];

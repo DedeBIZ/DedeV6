@@ -18,7 +18,7 @@ $face = $row['face'];
 if ($dopost == 'save') {
     $svali = GetCkVdValue();
 
-    // 校验CSRF
+    //校验CSRF
     CheckCSRF();
 
     if (strtolower($vdcode) != $svali || $svali == '') {
@@ -96,7 +96,7 @@ if ($dopost == 'save') {
         $query2 = "UPDATE `#@__admin` SET pwd='$pwd2' where id='".$cfg_ml->M_ID."' ";
         $dsql->ExecuteNoneQuery($query2);
     }
-    // 清除会员缓存
+    //清除会员缓存
     $cfg_ml->DelCache($cfg_ml->M_ID);
     ShowMsg('成功更新您的基本资料', 'edit_baseinfo.php', 0, 5000);
     exit();

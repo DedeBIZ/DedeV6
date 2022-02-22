@@ -1,5 +1,5 @@
 <?php
-// 表情配置,表情图片放在/images/smiley中即可
+//表情配置,表情图片放在/images/smiley中即可
 $GLOBALS['cfg_smileys'] = array(
 //	表情符			          图片名称			宽度    高度     表情说明
 	'{s:1}'			=>	array('1.gif',			'24',	'24',	'高兴'),

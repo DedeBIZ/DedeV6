@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 栏目连接
  *
@@ -240,10 +240,10 @@ class TypeLink
                 $admin_catalogs = array_unique($admin_catalogs);
                 $admin_catalog = join(',', $admin_catalogs);
                 $admin_catalog = preg_replace("/,$/", '', $admin_catalog);
-                $query = "SELECT id,typename,ispart FROM `#@__arctype` WHERE ispart<>2 AND id in({$admin_catalog}) AND reid=0 $ctsql";
+                $query = "SELECT id,typename,ispart FROM `#@__arctype` WHERE id in({$admin_catalog}) AND reid=0 $ctsql";
             }
         } else {
-            $query = "SELECT id,typename,ispart FROM `#@__arctype` WHERE ispart<>2 AND reid=0 $ctsql ORDER BY sortrank ASC";
+            $query = "SELECT id,typename,ispart FROM `#@__arctype` WHERE reid=0 $ctsql ORDER BY sortrank ASC";
         }
 
         $this->dsql->SetQuery($query);

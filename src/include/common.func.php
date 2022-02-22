@@ -183,8 +183,8 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
 {
     global $cfg_soft_lang, $cfg_cmsurl;
     if(empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
-    $htmlhead  = "<html><head><meta charset='utf-8'><title>提示信息</title><meta name='viewport' content='width=device-width,initial-scale=1'>";
-    $htmlhead .= "<base target='_self'></head><body>".(isset($GLOBALS['ucsynlogin']) ? $GLOBALS['ucsynlogin'] : '')."<center><script>";
+    $htmlhead  = "<html><head><meta charset='utf-8'><title>提示信息</title><meta name='viewport' content='width=device-width,initial-scale=1'><base target='_self'></head>";
+    $htmlhead .= "<body>".(isset($GLOBALS['ucsynlogin']) ? $GLOBALS['ucsynlogin'] : '')."<center><script>";
     $htmlfoot  = "</script></center></body></html>";
     $litime = ($limittime == 0 ? 1000 : $limittime);
     $func = '';
@@ -203,17 +203,17 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         }
         $func .= "var pgo=0;function JumpUrl(){if (pgo==0){location='$gourl'; pgo=1;}}";
         $rmsg = $func;
-        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#424b51;background:#f2f2f2}a{color:#28a745;text-decoration:none}.xushu-tips{margin:68px auto 0;padding:0;width:420px;height:auto;background:#fff;border-radius:.2rem}.tips{margin:0 20px;padding:16px 0;border-bottom:1px solid #f6f6f6}.tips p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #ff5722}.frame{padding:20px;min-height:120px;color:#666}.go a{display:inline-block;margin:20px auto 0;padding:.375rem .75rem;font-size:12px;color:#fff;background:#28a745;border:1px solid #28a745;box-sizing:border-box;border-radius:.2rem;transition:all .6s;text-align:center}.go a:hover{opacity:.8}@media (max-width:768px){body{padding:0 16px}.xushu-tips{width:100%}}</style>\");";
-        $rmsg .= "document.write(\"<div class='xushu-tips'>";
-        $rmsg .= "<div class='tips'><p>提示信息</p></div>\");";
-        $rmsg .= "document.write(\"<div class='frame'>\");";
+        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#424b51;background:#f2f2f2}a{color:#28a745;text-decoration:none}.tips{margin:68px auto 0;padding:0;width:420px;height:auto;background:#fff;border-radius:.2rem}.tips-head{margin:0 20px;padding:16px 0;border-bottom:1px solid #f6f6f6}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #ff5722}.tips-box{padding:20px;min-height:120px;color:#666}.btn a{display:inline-block;margin:20px auto 0;padding:.375rem .75rem;font-size:12px;color:#fff;background:#28a745;border-radius:.2rem;text-align:center;transition:all .6s}.btn a:hover{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5)}@media (max-width:768px){body{padding:0 15px}.tips{width:100%}}</style>\");";
+        $rmsg .= "document.write(\"<div class='tips'>";
+        $rmsg .= "<div class='tips-head'><p>提示信息</p></div>\");";
+        $rmsg .= "document.write(\"<div class='tips-box'>\");";
         $rmsg .= "document.write(\"".str_replace("\"","“",$msg)."\");";
         $rmsg .= "document.write(\"";
         if($onlymsg==0)
         {
             if( $gourl != 'javascript:;' && $gourl != '')
             {
-                $rmsg .= "<div class='go'><a href='{$gourl}'>点击反应</a></div>\");";
+                $rmsg .= "<div class='btn'><a href='{$gourl}'>点击反应</a></div>\");";
                 $rmsg .= "setTimeout('JumpUrl()',$litime);";
             } else {
                 $rmsg .= "</div>\");";
@@ -250,7 +250,7 @@ function IndexSub($idx, $num)
 {
     return intval($idx) - intval($num) == 0 ? '0 ' : intval($idx) - intval($num);
 }
-// 用来返回index的active
+//用来返回index的active
 function IndexActive($idx)
 {
     if ($idx == 1) {
@@ -259,8 +259,8 @@ function IndexActive($idx)
         return '';
     }
 }
-// 自定义函数接口
-// 这里主要兼容早期的用户扩展,v5.7之后我们建议使用小助手helper进行扩展
+//自定义函数接口
+//这里主要兼容早期的用户扩展,v5.7之后我们建议使用小助手helper进行扩展
 if (file_exists(DEDEINC.'/extend.func.php')) {
     require_once(DEDEINC.'/extend.func.php');
 }

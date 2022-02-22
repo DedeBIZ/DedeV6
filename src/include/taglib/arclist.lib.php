@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文章列表调用标记
  *
@@ -19,16 +20,13 @@
  * @param     object  $refObj  引用对象
  * @return    string  成功后返回解析后的标签内容
  */
-
 function lib_arclist(&$ctag, &$refObj)
 {
     global $envs;
-
     $autopartid = 0;
     $tagid = '';
     $tagname = $ctag->GetTagName();
     $channelid = $ctag->GetAtt('channelid');
-
     //增加对分页内容的处理
     $pagesize = $ctag->GetAtt('pagesize');
     if ($pagesize == '') {
@@ -36,9 +34,8 @@ function lib_arclist(&$ctag, &$refObj)
     } else {
         $tagid = $ctag->GetAtt('tagid');
     }
-    // arclist是否需要weight排序,默认为"N",如果需要排序则设置为"Y"
+    //arclist是否需要weight排序,默认为"N",如果需要排序则设置为"Y"
     $isweight = $ctag->GetAtt('isweight');
-
     if ($tagname == 'imglist' || $tagname == 'imginfolist') {
         $listtype = 'image';
     } else if ($tagname == 'specart') {
@@ -51,69 +48,36 @@ function lib_arclist(&$ctag, &$refObj)
     } else {
         $listtype = $ctag->GetAtt('type');
     }
-
     //排序
     if ($ctag->GetAtt('sort') != '') $orderby = $ctag->GetAtt('sort');
     else if ($tagname == 'hotart') $orderby = 'click';
     else $orderby = $ctag->GetAtt('orderby');
-
     //对相应的标记使用不同的默认innertext
     if (trim($ctag->GetInnerText()) != '') $innertext = $ctag->GetInnerText();
     else if ($tagname == 'imglist') $innertext = GetSysTemplets('part_imglist.htm');
     else if ($tagname == 'imginfolist') $innertext = GetSysTemplets('part_imginfolist.htm');
     else $innertext = GetSysTemplets("part_arclist.htm");
-
     //兼容titlelength
     if ($ctag->GetAtt('titlelength') != '') $titlelen = $ctag->GetAtt('titlelength');
     else $titlelen = $ctag->GetAtt('titlelen');
-
     //兼容infolength
     if ($ctag->GetAtt('infolength') != '') $infolen = $ctag->GetAtt('infolength');
     else $infolen = $ctag->GetAtt('infolen');
-
     $typeid = trim($ctag->GetAtt('typeid'));
     if (empty($typeid)) {
         $typeid = (isset($refObj->Fields['typeid']) ? $refObj->Fields['typeid'] : $envs['typeid']);
     }
-
     if ($listtype == 'autolist') {
         $typeid = lib_GetAutoChannelID($ctag->GetAtt('partsort'), $typeid);
     }
-
     if ($ctag->GetAtt('att') == '') {
         $flag = $ctag->GetAtt('flag');
     } else {
         $flag = $ctag->GetAtt('att');
     }
-
-    return lib_arclistDone(
-        $refObj,
-        $ctag,
-        $typeid,
-        $ctag->GetAtt('row'),
-        $ctag->GetAtt('col'),
-        $titlelen,
-        $infolen,
-        $ctag->GetAtt('imgwidth'),
-        $ctag->GetAtt('imgheight'),
-        $listtype,
-        $orderby,
-        $ctag->GetAtt('keyword'),
-        $innertext,
-        $envs['aid'],
-        $ctag->GetAtt('idlist'),
-        $channelid,
-        $ctag->GetAtt('limit'),
-        $flag,
-        $ctag->GetAtt('orderway'),
-        $ctag->GetAtt('subday'),
-        $ctag->GetAtt('noflag'),
-        $tagid,
-        $pagesize,
-        $isweight
+    return lib_arclistDone ($refObj, $ctag, $typeid, $ctag->GetAtt('row'), $ctag->GetAtt('col'), $titlelen, $infolen, $ctag->GetAtt('imgwidth'), $ctag->GetAtt('imgheight'), $listtype, $orderby, $ctag->GetAtt('keyword'), $innertext, $envs['aid'], $ctag->GetAtt('idlist'), $channelid, $ctag->GetAtt('limit'), $flag,$ctag->GetAtt('orderway'), $ctag->GetAtt('subday'), $ctag->GetAtt('noflag'), $tagid,$pagesize,$isweight,$ctag->GetAtt('notypeid')
     );
 }
-
 /**
  *  arclist解析函数
  *
@@ -143,32 +107,8 @@ function lib_arclist(&$ctag, &$refObj)
  * @param     string  $isweight  是否需要对检索出来的内容按照weight排序
  * @return    string
  */
-function lib_arclistDone(
-    &$refObj,
-    &$ctag,
-    $typeid = 0,
-    $row = 10,
-    $col = 1,
-    $titlelen = 30,
-    $infolen = 160,
-    $imgwidth = 120,
-    $imgheight = 90,
-    $listtype = 'all',
-    $orderby = 'default',
-    $keyword = '',
-    $innertext = '',
-    $arcid = 0,
-    $idlist = '',
-    $channelid = 0,
-    $limit = '',
-    $att = '',
-    $order = 'desc',
-    $subday = 0,
-    $noflag = '',
-    $tagid = '',
-    $pagesize = 0,
-    $isweight = 'N'
-) {
+function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen=30, $infolen=160, $imgwidth=120, $imgheight=90, $listtype='all', $orderby='default', $keyword='', $innertext='', $arcid=0, $idlist='', $channelid=0, $limit='', $att='', $order='desc', $subday=0, $noflag='',$tagid='', $pagesize=0, $isweight='N',$notypeid=0)
+{
     global $dsql, $PubFields, $cfg_keyword_like, $cfg_index_cache, $_arclistEnv, $envs, $cfg_cache_type, $cfg_digg_update;
     $row = AttDef($row, 10);
     $titlelen = AttDef($titlelen, 30);
@@ -186,7 +126,6 @@ function lib_arclistDone(
     $orderby = strtolower($orderby);
     $keyword = trim($keyword);
     $innertext = trim($innertext);
-
     $tablewidth = $ctag->GetAtt('tablewidth');
     $writer = $ctag->GetAtt('writer');
     if ($tablewidth == "") $tablewidth = 100;
@@ -194,36 +133,14 @@ function lib_arclistDone(
     $colWidth = ceil(100 / $col);
     $tablewidth = $tablewidth."%";
     $colWidth = $colWidth."%";
-
     //记录属性,以便分页样式统一调用
-    $attarray = compact(
-        "row",
-        "titlelen",
-        'infolen',
-        'imgwidth',
-        'imgheight',
-        'listtype',
-        'arcid',
-        'channelid',
-        'orderby',
-        'orderWay',
-        'subday',
-        'pagesize',
-        'orderby',
-        'keyword',
-        'tablewidth',
-        'col',
-        'colWidth'
-    );
-
+    $attarray = compact('row', 'titlelen', 'infolen', 'imgwidth', 'imgheight', 'listtype', 'arcid', 'channelid', 'orderby', 'orderWay', 'subday', 'pagesize', 'orderby', 'keyword', 'tablewidth', 'col', 'colWidth');
     if ($innertext == '') $innertext = GetSysTemplets('part_arclist.htm');
     if (@$ctag->GetAtt('getall') == 1) $getall = 1;
     else $getall = 0;
-
     if ($att == '0') $att = '';
     if ($att == '3') $att = 'f';
     if ($att == '1') $att = 'h';
-
     $orwheres = array();
     $maintable = '#@__archives';
     //按不同情况设定SQL条件 排序方式
@@ -231,12 +148,10 @@ function lib_arclistDone(
         if ($orderby == 'near' && $cfg_keyword_like == 'N') {
             $keyword = '';
         }
-
         if ($writer == 'this') {
             $wmid =  isset($refObj->Fields['mid']) ? $refObj->Fields['mid'] : 0;
             $orwheres[] = " arc.mid = '$wmid' ";
         }
-
         //时间限制(用于调用最近热门文章、热门评论之类)，这里的时间只能计算到天，否则缓存功能将无效
         if ($subday > 0) {
             $ntime = gmmktime(0, 0, 0, gmdate('m'), gmdate('d'), gmdate('Y'));
@@ -255,7 +170,6 @@ function lib_arclistDone(
             $flags = explode(',', $att);
             for ($i = 0; isset($flags[$i]); $i++) $orwheres[] = " FIND_IN_SET('{$flags[$i]}', arc.flag)>0 ";
         }
-
         if (!empty($typeid) && $typeid != 'top') {
             //指定了多个栏目时，不再获取子类的id
             if (preg_match('#,#', $typeid)) {
@@ -299,7 +213,6 @@ function lib_arclistDone(
                 else $orwheres[] = ' arc.typeid IN ('.GetSonIds($typeid).','.$CrossID.')';
             }
         }
-
         //频道ID
         if (preg_match('#spec#i', $listtype)) $channelid == -1;
 
@@ -316,13 +229,14 @@ function lib_arclistDone(
                 }
             }
         }
-
-        $orwheres[] = ' arc.arcrank > -1 ';
-
+        $orwheres[] = 'arc.arcrank > -1';
+        if(!empty($notypeid))
+        {
+            $orwheres[] = "and arc.typeid NOT IN (".GetSonIds($notypeid).")";
+        }
         //由于这个条件会导致缓存功能失去意义，因此取消
         //if($arcid!=0) $orwheres[] = " arc.id<>'$arcid' ";
     }
-
     //文档排序的方式
     $ordersql = '';
     if ($orderby == 'hot' || $orderby == 'click') $ordersql = " ORDER BY arc.click $orderWay";
@@ -331,12 +245,11 @@ function lib_arclistDone(
     else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - ".$arcid.")";
     else if ($orderby == 'lastpost') $ordersql = "  ORDER BY arc.lastpost $orderWay";
     else if ($orderby == 'scores') $ordersql = "  ORDER BY arc.scores $orderWay";
-    //功能：增加按好评数和差评数调用
+    //增加按好评数和差评数调用
     else if ($orderby == 'goodpost') $ordersql = " order by arc.goodpost $orderWay";
     else if ($orderby == 'badpost') $ordersql = " order by arc.badpost $orderWay";
     else if ($orderby == 'rand') $ordersql = "  ORDER BY rand()";
     else $ordersql = " ORDER BY arc.sortrank $orderWay";
-
     //limit条件
     $limit = trim(preg_replace('#limit#is', '', $limit));
     if ($limit != '') {
@@ -344,7 +257,6 @@ function lib_arclistDone(
         $limitarr = explode(',', $limit);
         $line = isset($limitarr[1]) ? $limitarr[1] : $line;
     } else $limitsql = " LIMIT 0,$line ";
-
     $orwhere = '';
     if (isset($orwheres[0])) {
         $orwhere = join(' And ', $orwheres);
@@ -352,7 +264,6 @@ function lib_arclistDone(
         $orwhere = preg_replace("#And[ ]{1,}And#is", 'And ', $orwhere);
     }
     if ($orwhere != '') $orwhere = " WHERE $orwhere ";
-
     //获取附加表信息
     $addfield = trim($ctag->GetAtt('addfields'));
     $addfieldsSql = '';
@@ -367,20 +278,17 @@ function lib_arclistDone(
             $addfieldsSqlJoin = " LEFT JOIN `$addtable` addf ON addf.aid = arc.id ";
         }
     }
-
     $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,
         tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
         $addfieldsSql
         FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id
         $addfieldsSqlJoin
         $orwhere $ordersql $limitsql";
-
     //统一hash
     $taghash = md5(serialize($ctag).$typeid);
     $needSaveCache = true;
     //进行tagid的默认处理
     if ($pagesize > 0) $tagid = AttDef($tagid, 'tag'.$taghash);
-
     if ($idlist != '' || $GLOBALS['_arclistEnv'] == 'index' || $cfg_index_cache == 0) {
         $needSaveCache = false;
     } else {
@@ -394,7 +302,6 @@ function lib_arclistDone(
             return $idlist;
         }
     }
-
     //指定了id或使用缓存中的id
     if ($idlist != '') {
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,
@@ -404,7 +311,6 @@ function lib_arclistDone(
              $addfieldsSqlJoin
           WHERE arc.id in($idlist) $ordersql ";
     }
-
     $dsql->SetQuery($query);
     $dsql->Execute('al');
     //$row = $dsql->GetArray("al");
@@ -417,7 +323,6 @@ function lib_arclistDone(
     $GLOBALS['autoindex'] = 0;
     $ids = array();
     $orderWeight = array();
-
     for ($i = 0; $i < $line; $i++) {
         if ($col > 1) $artlist .= "<tr>\r\n";
         for ($j = 0; $j < $col; $j++) {
@@ -427,11 +332,9 @@ function lib_arclistDone(
                 //处理一些特殊字段
                 $row['info'] = $row['infos'] = cn_substr($row['description'], $infolen);
                 $row['id'] =  $row['id'];
-
                 if ($row['corank'] > 0 && $row['arcrank'] == 0) {
                     $row['arcrank'] = $row['corank'];
                 }
-
                 $row['filename'] = $row['arcurl'] = GetFileUrl(
                     $row['id'],
                     $row['typeid'],
@@ -447,7 +350,6 @@ function lib_arclistDone(
                     $row['siteurl'],
                     $row['sitepath']
                 );
-
                 $row['typeurl'] = GetTypeUrl(
                     $row['typeid'],
                     $row['typedir'],
@@ -459,7 +361,6 @@ function lib_arclistDone(
                     $row['siteurl'],
                     $row['sitepath']
                 );
-
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
                     $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
                 }
@@ -473,15 +374,13 @@ function lib_arclistDone(
                 $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
-                if ($row['color'] != '') $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
+                if ($row['color'] != '') $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
                 if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>".$row['title']."</strong>";
                 //$row['title'] = "<b>".$row['title']."</b>";
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
-
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
-
                 if (is_array($dtp2->CTags)) {
                     foreach ($dtp2->CTags as $k => $ctag) {
                         if ($ctag->GetName() == 'array') {
@@ -513,13 +412,12 @@ function lib_arclistDone(
                     'weight'  => $row['weight'],
                     'arclist' => $liststr
                 );
-            } //if hasRow
+            }//if hasRow
             else {
                 $artlist .= '';
             }
-
-            // 进行判断,如果启用排序则内容输出为重新排序后的内容
-            // var_dump($isweight=='y' && count($orderWeight) == $line);
+            //进行判断,如果启用排序则内容输出为重新排序后的内容
+            //var_dump($isweight=='y' && count($orderWeight) == $line);
             $isweight = strtolower($isweight);
             if ($isweight == 'y') {
                 $artlist = '';
@@ -530,14 +428,13 @@ function lib_arclistDone(
                 }
             }
             if ($col > 1) $artlist .= "    </td>\r\n";
-        } //Loop Col
+        }//Loop Col
         if ($col > 1) $i += $col - 1;
         if ($col > 1) $artlist .= "    </tr>\r\n";
-    } //loop line
+    }//loop line
     if ($col > 1) $artlist .= "    </table>\r\n";
     $dsql->FreeResult("al");
     $idsstr = join(',', $ids);
-
     //分页特殊处理
     if ($pagesize > 0) {
         $artlist .= "    </div>\r\n";
@@ -551,22 +448,10 @@ function lib_arclistDone(
         ";
             $dsql->ExecuteNoneQuery($query);
         } else {
-            $query = "UPDATE `#@__arcmulti`
-           SET
-           uptime='$uptime',
-           innertext='$innertext',
-           pagesize='$pagesize',
-           arcids='$idsstr',
-           ordersql='$ordersql',
-           addfieldsSql='$addfieldsSql',
-           addfieldsSqlJoin='$addfieldsSqlJoin',
-           attstr='$attstr'
-           WHERE tagid='$tagid'
-        ";
+            $query = "UPDATE `#@__arcmulti` SET uptime='$uptime', innertext='$innertext', pagesize='$pagesize', arcids='$idsstr', ordersql='$ordersql', addfieldsSql='$addfieldsSql', addfieldsSqlJoin='$addfieldsSqlJoin', attstr='$attstr' WHERE tagid='$tagid'";
             $dsql->ExecuteNoneQuery($query);
         }
     }
-
     //保存ID缓存
     if ($needSaveCache) {
         if ($idsstr == '') $idsstr = '0';
@@ -579,7 +464,6 @@ function lib_arclistDone(
     }
     return $artlist;
 }
-
 /**
  *  查询缓存
  *
@@ -602,7 +486,6 @@ function GetArclistCache($md5hash)
         return $arr['cachedata'];
     }
 }
-
 /**
  *  获取自动频道ID
  *
@@ -620,15 +503,13 @@ function lib_GetAutoChannelID($sortid, $topid)
     if (!is_array($row)) return 0;
     else return $row['id'];
 }
-
 /**
  *  对查询结果集进行排序
  *
  * @access    public
  * @param     array     $list 查询结果
  * @param     string    $field 排序的字段名
- * @param     array     $sortby 排序类型
- *            asc正向排序 desc逆向排序 nat自然排序
+ * @param     array     $sortby 排序类型 asc正向排序 desc逆向排序 nat自然排序
  * @return    array
  */
 function list_sort_by($list, $field, $sortby = 'asc')
@@ -638,13 +519,13 @@ function list_sort_by($list, $field, $sortby = 'asc')
         foreach ($list as $i => $data)
             $refer[$i] = &$data[$field];
         switch ($sortby) {
-            case 'asc': // 正向排序
+            case 'asc'://正向排序
                 asort($refer);
                 break;
-            case 'desc': // 逆向排序
+            case 'desc'://逆向排序
                 arsort($refer);
                 break;
-            case 'nat': // 自然排序
+            case 'nat'://自然排序
                 natcasesort($refer);
                 break;
         }

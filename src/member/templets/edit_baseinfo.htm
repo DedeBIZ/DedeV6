@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-CN">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,9 +8,8 @@
   <link href="<?php echo $cfg_cmsurl;?>/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/dede.css">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/member.css">
-  <title>更改帐号基本资料 - 会员中心 - <?php echo $cfg_webname; ?></title>
+  <title>修改帐号基本资料 - 会员中心 - <?php echo $cfg_webname; ?></title>
 </head>
-
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
 
@@ -20,8 +18,8 @@
       <div class="container">
         <div class="row">
           <?php
-          $_menu_edtex = true; // 展开编辑信息
-          $_menu_edtitem = 'base'; // 当前标签页
+          $_menu_edtex = true; //展开编辑信息
+          $_menu_edtitem = 'base'; //当前标签页
           ?>
           <?php include(DEDEMEMBER."/templets/menu.htm"); ?>
           <div class="pannel-main col-md-9 mt-3 mb-3">

@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * SMTP邮件操作类
  *
@@ -22,10 +22,10 @@ class smtp
     var $user;
     var $pass;
 
-    // 私有变量
+    //私有变量
     var $sock;
 
-    // 析构函数
+    //析构函数
     function smtp($relay_host = "", $smtp_port = 25, $auth = FALSE, $user, $pass)
     {
         $this->debug = FALSE;

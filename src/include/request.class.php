@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 处理外部请求变量的类
  *

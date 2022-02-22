@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 栏目单元,选择框
  *

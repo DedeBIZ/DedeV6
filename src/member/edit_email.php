@@ -18,7 +18,7 @@ if ($dopost == 'save') {
         ShowMsg('Email已经设置，无需重复提交', '-1');
         exit();
     }
-    // 校验CSRF
+    //校验CSRF
     CheckCSRF();
     if (!CheckEmail($email)) {
         ShowMsg('Email格式不正确', '-1');
@@ -28,7 +28,7 @@ if ($dopost == 'save') {
 
     $query = "UPDATE `#@__member` SET `email` = '$email' WHERE mid='{$cfg_ml->M_ID}' ";
     $dsql->ExecuteNoneQuery($query);
-    // 清除缓存
+    //清除缓存
     $cfg_ml->DelCache($cfg_ml->M_ID);
     ShowMsg('成功更新邮箱信息', $backurl);
     exit();

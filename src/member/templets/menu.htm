@@ -1,5 +1,5 @@
 <?php
-// 这里读取channel用于显示菜单
+//这里读取channel用于显示菜单
 $dsql->Execute('addmod', "SELECT id,nid,typename,useraddcon,usermancon,issend,issystem,usertype,isshow FROM `#@__channeltype` ");
 $channels = array();
 while ($channel = $dsql->GetArray('addmod')) {

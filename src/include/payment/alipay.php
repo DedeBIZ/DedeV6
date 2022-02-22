@@ -1,5 +1,5 @@
 <?php
-if(!defined('DEDEINC')) exit('Request Error!');
+if(!defined('DEDEINC')) exit('dedebiz');
 /**
  * 支付宝接口类
  */
@@ -186,7 +186,7 @@ class Alipay
                 else  return $msg = "支付失败<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
             } else if ( $ordertype=="member" ) {
                 $oldinf = $this->success_mem($order_sn,$pname,$product,$pid);
-                return $msg = "<font color='red'>".$oldinf."</font><br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                return $msg = "<span style='color:#e74d58'>".$oldinf."</span><br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
             }
         } else {
             $this->log_result ("verify_failed");
@@ -236,7 +236,7 @@ class Alipay
             } else {
                 $cardid = $row['cardid'];
                 $sql1=" UPDATE #@__moneycard_record SET uid='".$this->mid."',isexp='1',utime='".time()."' WHERE cardid='$cardid' ";
-                $oldinf='您的充值密码是：<font color="green">'.$cardid.'</font>';
+                $oldinf='您的充值密码是：<span style="color:#28a745">'.$cardid.'</span>';
             }
             //更新交易状态为已关闭
             $sql2=" UPDATE #@__member_operation SET sta=2,oldinfo='$oldinf' WHERE buyid='$order_sn'";

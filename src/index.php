@@ -11,8 +11,7 @@ if (!file_exists(dirname(__FILE__).'/data/common.inc.php')) {
     header('Location:install/index.php');
     exit();
 }
-
-//自动生成HTML版
+//自动生成网页版
 if (isset($_GET['upcache']) || !file_exists('index.html')) {
     require_once(dirname(__FILE__)."/include/common.inc.php");
     require_once DEDEINC."/arc.partview.class.php";

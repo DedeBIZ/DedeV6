@@ -43,11 +43,11 @@
     
         public static $capacity = array(
             array(  0,    0, 0, array(   0,    0,    0,    0)),
-            array( 21,   26, 0, array(   7,   10,   13,   17)), // 1
+            array( 21,   26, 0, array(   7,   10,   13,   17)), //1
             array( 25,   44, 7, array(  10,   16,   22,   28)),
             array( 29,   70, 7, array(  15,   26,   36,   44)),
             array( 33,  100, 7, array(  20,   36,   52,   64)),
-            array( 37,  134, 7, array(  26,   48,   72,   88)), // 5
+            array( 37,  134, 7, array(  26,   48,   72,   88)), //5
             array( 41,  172, 7, array(  36,   64,   96,  112)),
             array( 45,  196, 0, array(  40,   72,  108,  130)),
             array( 49,  242, 0, array(  48,   88,  132,  156)),
@@ -166,23 +166,23 @@
             $words = (1 << $bits) - 1;
             
             if($mode == QR_MODE_KANJI) {
-                $words *= 2; // the number of bytes is required
+                $words *= 2; //the number of bytes is required
             }
 
             return $words;
         }
 
-        // Error correction code -----------------------------------------------
-        // Table of the error correction code (Reed-Solomon block)
-        // See Table 12-16 (pp.30-36), JIS X0510:2004.
+        //Error correction code -----------------------------------------------
+        //Table of the error correction code (Reed-Solomon block)
+        //See Table 12-16 (pp.30-36), JIS X0510:2004.
 
         public static $eccTable = array(
             array(array( 0,  0), array( 0,  0), array( 0,  0), array( 0,  0)),
-            array(array( 1,  0), array( 1,  0), array( 1,  0), array( 1,  0)), // 1
+            array(array( 1,  0), array( 1,  0), array( 1,  0), array( 1,  0)), //1
             array(array( 1,  0), array( 1,  0), array( 1,  0), array( 1,  0)),
             array(array( 1,  0), array( 1,  0), array( 2,  0), array( 2,  0)),
             array(array( 1,  0), array( 2,  0), array( 2,  0), array( 4,  0)),
-            array(array( 1,  0), array( 2,  0), array( 2,  2), array( 2,  2)), // 5
+            array(array( 1,  0), array( 2,  0), array( 2,  2), array( 2,  2)), //5
             array(array( 2,  0), array( 4,  0), array( 4,  0), array( 4,  0)),
             array(array( 2,  0), array( 4,  0), array( 2,  4), array( 4,  1)),
             array(array( 2,  0), array( 2,  2), array( 4,  2), array( 4,  2)),
@@ -221,7 +221,7 @@
         );                                                                       
 
         //----------------------------------------------------------------------
-        // CACHEABLE!!!
+        //CACHEABLE!!!
         
         public static function getEccSpec($version, $level, array &$spec)
         {
@@ -249,19 +249,19 @@
             }
         }
 
-        // Alignment pattern ---------------------------------------------------
+        //Alignment pattern ---------------------------------------------------
 
-        // Positions of alignment patterns.
-        // This array includes only the second and the third position of the 
-        // alignment patterns. Rest of them can be calculated from the distance 
-        // between them.
+        //Positions of alignment patterns.
+        //This array includes only the second and the third position of the 
+        //alignment patterns. Rest of them can be calculated from the distance 
+        //between them.
          
-        // See Table 1 in Appendix E (pp.71) of JIS X0510:2004.
+        //See Table 1 in Appendix E (pp.71) of JIS X0510:2004.
          
         public static $alignmentPattern = array(      
             array( 0,  0),
-            array( 0,  0), array(18,  0), array(22,  0), array(26,  0), array(30,  0), // 1- 5
-            array(34,  0), array(22, 38), array(24, 42), array(26, 46), array(28, 50), // 6-10
+            array( 0,  0), array(18,  0), array(22,  0), array(26,  0), array(30,  0), //1- 5
+            array(34,  0), array(22, 38), array(24, 42), array(26, 46), array(28, 50), //6-10
             array(30, 54), array(32, 58), array(34, 62), array(26, 46), array(26, 48), //11-15
             array(26, 50), array(30, 54), array(30, 56), array(30, 58), array(34, 62), //16-20
             array(28, 50), array(26, 50), array(30, 54), array(28, 54), array(32, 58), //21-25
@@ -333,12 +333,12 @@
             }
         }
 
-        // Version information pattern -----------------------------------------
+        //Version information pattern -----------------------------------------
 
-		// Version information pattern (BCH coded).
-        // See Table 1 in Appendix D (pp.68) of JIS X0510:2004.
+		//Version information pattern (BCH coded).
+        //See Table 1 in Appendix D (pp.68) of JIS X0510:2004.
         
-		// size: [QRSPEC_VERSION_MAX - 6]
+		//size: [QRSPEC_VERSION_MAX - 6]
 		
         public static $versionPattern = array(
             0x07c94, 0x085bc, 0x09a99, 0x0a4d3, 0x0bbf6, 0x0c762, 0x0d847, 0x0e60d,
@@ -357,8 +357,8 @@
             return self::$versionPattern[$version -7];
         }
 
-        // Format information --------------------------------------------------
-        // See calcFormatInfo in tests/test_qrspec.c (orginal qrencode c lib)
+        //Format information --------------------------------------------------
+        //See calcFormatInfo in tests/test_qrspec.c (orginal qrencode c lib)
         
         public static $formatInfo = array(
             array(0x77c4, 0x72f3, 0x7daa, 0x789d, 0x662f, 0x6318, 0x6c41, 0x6976),
@@ -378,8 +378,8 @@
             return self::$formatInfo[$level][$mask];
         }
 
-        // Frame ---------------------------------------------------------------
-        // Cache of initial frames.
+        //Frame ---------------------------------------------------------------
+        //Cache of initial frames.
          
         public static $frames = array();
 
@@ -413,12 +413,12 @@
             $frameLine = str_repeat ("\0", $width);
             $frame = array_fill(0, $width, $frameLine);
 
-            // Finder pattern
+            //Finder pattern
             self::putFinderPattern($frame, 0, 0);
             self::putFinderPattern($frame, $width - 7, 0);
             self::putFinderPattern($frame, 0, $width - 7);
             
-            // Separator
+            //Separator
             $yOffset = $width - 7;
             
             for($y=0; $y<7; $y++) {
@@ -434,7 +434,7 @@
             QRstr::set($frame, $width-8, 7, $setPattern);
             QRstr::set($frame, 0, $width - 8, $setPattern);
         
-            // Format info
+            //Format info
             $setPattern = str_repeat("\x84", 9);
             QRstr::set($frame, 0, 8, $setPattern);
             QRstr::set($frame, $width - 8, 8, $setPattern, 8);
@@ -446,17 +446,17 @@
                 $frame[$yOffset][8] = "\x84";
             }
 
-            // Timing pattern  
+            //Timing pattern  
             
             for($i=1; $i<$width-15; $i++) {
                 $frame[6][7+$i] = chr(0x90 | ($i & 1));
                 $frame[7+$i][6] = chr(0x90 | ($i & 1));
             }
             
-            // Alignment pattern  
+            //Alignment pattern  
             self::putAlignmentPattern($version, $frame, $width);
             
-            // Version information 
+            //Version information 
             if($version >= 7) {
                 $vinf = self::getVersionPattern($version);
 
@@ -478,7 +478,7 @@
                 }
             }
     
-            // and a little bit...  
+            //and a little bit...  
             $frame[$width - 8][8] = "\x81";
             
             return $frame;

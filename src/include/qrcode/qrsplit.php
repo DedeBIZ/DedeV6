@@ -104,16 +104,16 @@
             
             if($mode == QR_MODE_8) {
                 $dif = QRinput::estimateBitsModeNum($run) + 4 + $ln
-                     + QRinput::estimateBitsMode8(1)         // + 4 + l8
-                     - QRinput::estimateBitsMode8($run + 1); // - 4 - l8
+                     + QRinput::estimateBitsMode8(1)         //+ 4 + l8
+                     - QRinput::estimateBitsMode8($run + 1); //- 4 - l8
                 if($dif > 0) {
                     return $this->eat8();
                 }
             }
             if($mode == QR_MODE_AN) {
                 $dif = QRinput::estimateBitsModeNum($run) + 4 + $ln
-                     + QRinput::estimateBitsModeAn(1)        // + 4 + la
-                     - QRinput::estimateBitsModeAn($run + 1);// - 4 - la
+                     + QRinput::estimateBitsModeAn(1)        //+ 4 + la
+                     - QRinput::estimateBitsModeAn($run + 1);//- 4 - la
                 if($dif > 0) {
                     return $this->eatAn();
                 }
@@ -141,9 +141,9 @@
                         $q++;
                     }
                     
-                    $dif = QRinput::estimateBitsModeAn($p) // + 4 + la
+                    $dif = QRinput::estimateBitsModeAn($p) //+ 4 + la
                          + QRinput::estimateBitsModeNum($q - $p) + 4 + $ln
-                         - QRinput::estimateBitsModeAn($q); // - 4 - la
+                         - QRinput::estimateBitsModeAn($q); //- 4 - la
                          
                     if($dif < 0) {
                         break;
@@ -159,8 +159,8 @@
 
             if(!self::isalnumat($this->dataStr, $p)) {
                 $dif = QRinput::estimateBitsModeAn($run) + 4 + $la
-                     + QRinput::estimateBitsMode8(1) // + 4 + l8
-                      - QRinput::estimateBitsMode8($run + 1); // - 4 - l8
+                     + QRinput::estimateBitsMode8(1) //+ 4 + l8
+                      - QRinput::estimateBitsMode8($run + 1); //- 4 - l8
                 if($dif > 0) {
                     return $this->eat8();
                 }
@@ -209,9 +209,9 @@
                     while(self::isdigitat($this->dataStr, $q)) {
                         $q++;
                     }
-                    $dif = QRinput::estimateBitsMode8($p) // + 4 + l8
+                    $dif = QRinput::estimateBitsMode8($p) //+ 4 + l8
                          + QRinput::estimateBitsModeNum($q - $p) + 4 + $ln
-                         - QRinput::estimateBitsMode8($q); // - 4 - l8
+                         - QRinput::estimateBitsMode8($q); //- 4 - l8
                     if($dif < 0) {
                         break;
                     } else {
@@ -222,9 +222,9 @@
                     while(self::isalnumat($this->dataStr, $q)) {
                         $q++;
                     }
-                    $dif = QRinput::estimateBitsMode8($p)  // + 4 + l8
+                    $dif = QRinput::estimateBitsMode8($p)  //+ 4 + l8
                          + QRinput::estimateBitsModeAn($q - $p) + 4 + $la
-                         - QRinput::estimateBitsMode8($q); // - 4 - l8
+                         - QRinput::estimateBitsMode8($q); //- 4 - l8
                     if($dif < 0) {
                         break;
                     } else {

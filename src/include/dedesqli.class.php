@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 数据库类
  * 说明:系统底层数据库核心类
@@ -52,7 +53,7 @@ class DedeSqli
     var $isClose;
     var $safeCheck;
     var $showError = false;
-    var $recordLog = false; // 记录日志到data/mysqli_record_log.inc便于进行调试
+    var $recordLog = false; //记录日志到data/mysqli_record_log.inc便于进行调试
     var $isInit = false;
     var $pconnect = false;
 
@@ -130,7 +131,7 @@ class DedeSqli
 
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("DedeBIZ错误警告：<font color='red'>连接数据库失败，可能数据库密码不对或数据库服务器出错</font>");
+            $this->DisplayError("DedeBIZ错误警告：<span style='color:#e74d58'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
             exit();
         }
         $this->isInit = TRUE;
@@ -336,7 +337,7 @@ class DedeSqli
         }
 
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError(mysqli_error($this->linkID)." <br />Error sql: <font color='red'>".$this->queryString."</font>");
+            $this->DisplayError(mysqli_error($this->linkID)." <br />Error sql: <span style='color:#e74d58'>".$this->queryString."</span>");
         }
     }
 
@@ -349,11 +350,11 @@ class DedeSqli
     function GetOne($sql = '', $acctype = MYSQLI_ASSOC)
     {
         global $dsqli;
-        // $t1 = ExecTime();
+        //$t1 = ExecTime();
         if (!$dsqli->isInit) {
             $this->Init($this->pconnect);
         }
-        // echo ExecTime() - $t1;
+        //echo ExecTime() - $t1;
         if ($dsqli->isClose) {
             $this->Open(FALSE);
             $dsqli->isClose = FALSE;
@@ -388,10 +389,10 @@ class DedeSqli
     }
 
     //返回当前的一条记录并把游标移向下一记录
-    // MYSQLI_ASSOC、MYSQLI_NUM、MYSQLI_BOTH
+    //MYSQLI_ASSOC、MYSQLI_NUM、MYSQLI_BOTH
     function GetArray($id = "me", $acctype = MYSQLI_ASSOC)
     {
-        // var_dump($this->result);
+        //var_dump($this->result);
         if ($this->result[$id] === 0) {
             return FALSE;
         } else {
@@ -408,7 +409,7 @@ class DedeSqli
         }
     }
 
-    // 检测是否存在某数据表
+    //检测是否存在某数据表
     function IsTable($tbname)
     {
         global $dsqli;
@@ -543,7 +544,7 @@ EOT;
             $emsg .= "<div><h3>DedeBIZ Error Warning!</h3>\r\n";
             $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:red'>Technical Support: https://www.dedebiz.com</a></div>";
             $emsg .= "<div style='line-helght:160%;font-size:14px;color:green'>\r\n";
-            $emsg .= "<div style='color:blue'><br />Error page: <font color='red'>".$this->GetCurUrl()."</font></div>\r\n";
+            $emsg .= "<div style='color:blue'><br />Error page: <span style='color:#e74d58'>".$this->GetCurUrl()."</span></div>\r\n";
             $emsg .= "<div>Error infos: {$msg}</div>\r\n";
             $emsg .= "<br /></div></div>\r\n";
 
@@ -601,7 +602,7 @@ if (!function_exists('CheckSql')) {
             //$notallow2 = "--|/\*";
             if (preg_match("/".$notallow1."/i", $db_string)) {
                 fputs(fopen($log_file, 'a+'), "$userIP||$getUrl||$db_string||SelectBreak\r\n");
-                exit("<font size='5' color='red'>Safe Alert: Request Error step 1 !</font>");
+                exit("<span>Safe Alert: Request Error step 1 !</span>");
             }
         }
 
@@ -672,7 +673,7 @@ if (!function_exists('CheckSql')) {
         }
         if (!empty($fail)) {
             fputs(fopen($log_file, 'a+'), "$userIP||$getUrl||$db_string||$error\r\n");
-            exit("<font size='5' color='red'>Safe Alert: Request Error step 2!</font>");
+            exit("<span>Safe Alert: Request Error step 2!</span>");
         } else {
             return $db_string;
         }

@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * Tag列表类
  *
@@ -78,7 +78,7 @@ class TagList
                 ShowMsg($msg, "-1");
                 exit();
             }
-            // 确定是否存在tag_pinyin
+            //确定是否存在tag_pinyin
             if (empty($this->TagInfos['tag_pinyin'])) {
                 $this->TagInfos['tag_pinyin'] = $this->TagPinyinExists($this->Tag) ? GetPinyin($this->Tag).$this->TagInfos['id'] : GetPinyin($this->Tag);
                 $this->dsql->ExecNoneQuery("UPDATE `#@__tagindex` SET tag_pinyin = '{$this->TagInfos['tag_pinyin']}' WHERE tag LIKE '{$this->Tag}'");
@@ -264,7 +264,7 @@ class TagList
                 if ($list_len == "") {
                     $list_len = 3;
                 }
-                // var_dump($ismake);
+                //var_dump($ismake);
                 if ($ismake == 0) {
                     $this->dtp->Assign($tagid, $this->GetPageListDM($list_len, $listitem));
                 } else {
@@ -403,7 +403,7 @@ class TagList
                     $row['fulltitle'] = $row['title'];
                     $row['title'] = cn_substr($row['title'], $titlelen);
                     if ($row['color'] != '') {
-                        $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
+                        $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
                     }
                     if (preg_match('/c/', $row['flag'])) {
                         $row['title'] = "<b>".$row['title']."</b>";
@@ -544,10 +544,10 @@ class TagList
             return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条</span></li>";
         }
         $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条</span></li>\r\n";
-        // $purl = $this->GetCurUrl();
+        //$purl = $this->GetCurUrl();
         $purl = "/a/tags/".GetPinyin($this->Tag);
 
-        // var_dump($purl);
+        //var_dump($purl);
 
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
@@ -613,7 +613,7 @@ class TagList
         return $truepath;
     }
 
-    // 生成静态Tag
+    //生成静态Tag
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
         global $cfg_dir_purview, $envs;

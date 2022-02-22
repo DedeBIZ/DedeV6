@@ -1,0 +1,131 @@
+{dede:config.pagesize value="20"/}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+  <title>友情链接管理</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/base.css" rel="stylesheet" type='text/css'>
+  <script language="javascript" src="../static/js/jquery.js"></script>
+  <script src="../static/js/bootstrap.bundle.js"></script>
+  <script language="javascript" src="js/main.js"></script>
+  <script language='javascript'>
+    function Sel(stype) {
+      for (var i = 0; i < document.getElementsByName('aids').length; i++) {
+        if (stype == 'all') document.getElementsByName('aids')[i].checked = true;
+        else document.getElementsByName('aids')[i].checked = false;
+      }
+    }
+    function checkSubmit() {
+      var str = '';
+      for (var i = 0; i < document.getElementsByName('aids').length; i++) {
+        if (document.getElementsByName('aids')[i].checked) {
+          if (str == '') str += document.getElementsByName('aids')[i].value;
+          else str += ',' + document.getElementsByName('aids')[i].value;
+        }
+      }
+      if (str == '') {
+        ShowMsg('您没选择任何内容');
+        return false;
+      }
+      else {
+        location = "friendlink_edit.php?aids=" + str + "&dopost=delall";
+      }
+    }
+  </script>
+</head>
+
+<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table table-bordered maintable mt-3">
+    <tr>
+      <td height="26" background="images/tbg.gif" colspan="8" style="padding-left:10px;">
+        <div style="float:left">
+          <b>友情链接管理</b>
+        </div>
+        <div style="float:right;padding-right:6px;">
+          <a href="friendlink_add.php" class="btn btn-success btn-sm">增加链接</a>
+          <a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
+          <a href='{dede:global name=' cfg_phpurl' /}/flink.php' target='_blank' class="btn btn-success btn-sm">友情链接预览</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td height="30" align="center" bgcolor="#F9FCEF" colspan="8">
+        <form action="friendlink_main.php" name="form1" method="get">
+          <table border="0" cellspacing="0" cellpadding="3" class="table table-borderless">
+            <tr>
+              <td>关键字：</td>
+              <td><input name="keyword" type="text" id="keyword" size="12" style="width:250px"
+                  value="<?php echo $keyword; ?>" /></td>
+              <td>
+                <select name="ischeck" id="ischeck">
+                  <?php
+        			foreach($selCheckArr as $k=>$v)
+        			{
+        				if($k==$ischeck) echo "<option value='$k' selected>$v</option>\r\n";
+        				else echo "<option value='$k'>$v</option>\r\n";
+        			}
+        			?>
+                </select>
+              </td>
+              <td>
+                <button type="submit" class="btn btn-success">搜索</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </td>
+    </tr>
+    <form name='form1' method='post' action='friendlink_edit.php' onSubmit='return checkSubmit();'>
+      <input type='hidden' name='dopost' value='delall' />
+      <input type='hidden' name='allid' value='' />
+      <tr align="center" bgcolor="#FBFCE2" height="26">
+        <td width="6%">选择</td>
+        <td width="23%">网站名称</td>
+        <td width="12%">网站Logo</td>
+        <td width="15%">站长Email</td>
+        <td width="15%">时间</td>
+        <td width="8%">状态</td>
+        <td width="8%">顺序</td>
+        <td width="15%">管理</td>
+      </tr>
+      {dede:datalist}
+      <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='aids' value='{dede:field.id/}' class='np'></td>
+        <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i>地址：{dede:field.url/}</i></td>
+        <td>{dede:field.logo function="GetPic(@me)"/}</td>
+        <td>{dede:field.email/}</td>
+        <td>{dede:field.dtime function="MyDate('Y-m-d',@me)"/}</td>
+        <td>{dede:field.ischeck function="GetSta(@me)"/}</td>
+        <td>{dede:field.sortrank/}</td>
+        <td>
+          <a href='friendlink_edit.php?id={dede:field.id/}&dopost=getedit' class="btn btn-success btn-sm">修改</a>
+          <a href='friendlink_edit.php?id={dede:field.id/}&dopost=delete' class="btn btn-success btn-sm">删除</a>
+        </td>
+      </tr>
+      {/dede:datalist}
+    </form>
+    <tr bgcolor="#ffffff" height="26">
+      <td colspan="8">
+        　
+        <a href='javascript:;' onclick='Sel("all")' class="btn btn-success btn-sm">全选</a>
+        <a href='javascript:;' onclick='Sel("none")' class="btn btn-success btn-sm">取消</a>
+        <a href='javascript:;' onclick='checkSubmit()' class="btn btn-success btn-sm">批量删除</a>
+
+      </td>
+    </tr>
+    <tr align="center" bgcolor="#F9FCEF" height="26">
+      <td colspan="8">
+        {dede:pagelist listsize=6/}
+      </td>
+    </tr>
+  </table>
+  </td>
+  </tr>
+  </table>
+</body>
+
+</html>

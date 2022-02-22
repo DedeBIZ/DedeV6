@@ -174,7 +174,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
         $addConfig = "";
         if (defined("DEDEADMIN")) {
             $addConfig = ",{allowedContent:true,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,dedepagebreak,ddfilebrowser,textindent'}";
-            // $addConfig = ",{filebrowserImageUploadUrl:'./dialog/select_images_post.php'}";
+            //$addConfig = ",{filebrowserImageUploadUrl:'./dialog/select_images_post.php'}";
         }
         $code = <<<EOT
 <script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
@@ -190,9 +190,9 @@ EOT;
         }
     } else {
         /*
-        // ------------------------------------------------------------------------
-        // 当前版本,暂时取消dedehtml编辑器的支持
-        // ------------------------------------------------------------------------
+        //------------------------------------------------------------------------
+        //当前版本,暂时取消dedehtml编辑器的支持
+        //------------------------------------------------------------------------
         require_once(DEDEINC.'/htmledit/dede_editor.php');
         $ded = new DedeEditor($fname);
         $ded->BasePath        = $GLOBALS['cfg_cmspath'].'/include/htmledit/' ;

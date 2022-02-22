@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 自由列表类
  *
@@ -607,7 +607,7 @@ class FreeList
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
                     $row['title'] = cn_substr($row['title'], $titlelen);
                     if ($row['color'] != "") {
-                        $row['title'] = "<font color='".$row['color']."'>".$row['title']."</font>";
+                        $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
                     }
                     if (preg_match("#c#", $row['flag'])) {
                         $row['title'] = "<b>".$row['title']."</b>";

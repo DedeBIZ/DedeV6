@@ -71,7 +71,7 @@ function _SaveArticle(){  }
         }
     }
 
-    // 这里对前台提交的附加数据进行一次校验
+    //这里对前台提交的附加数据进行一次校验
     $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
     if ($fontiterm != $inadd_f) {
         ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
@@ -137,7 +137,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>
     &nbsp;&nbsp;
-    <a href='article_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>更改文章</a>
+    <a href='article_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>修改文章</a>
     &nbsp;&nbsp;
     <a href='content_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布文章管理</a>";
     $wintitle = "成功发布文章";

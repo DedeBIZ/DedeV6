@@ -74,7 +74,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
  
-	// Encoding modes
+	//Encoding modes
 	 
 	define('QR_MODE_NUL', -1);
 	define('QR_MODE_NUM', 0);
@@ -83,14 +83,14 @@
 	define('QR_MODE_KANJI', 3);
 	define('QR_MODE_STRUCTURE', 4);
 
-	// Levels of error correction.
+	//Levels of error correction.
 
 	define('QR_ECLEVEL_L', 0);
 	define('QR_ECLEVEL_M', 1);
 	define('QR_ECLEVEL_Q', 2);
 	define('QR_ECLEVEL_H', 3);
 	
-	// Supported output formats
+	//Supported output formats
 	
 	define('QR_FORMAT_TEXT', 0);
 	define('QR_FORMAT_PNG',  1);
@@ -114,15 +114,15 @@
  * Config file, tuned-up for merged verion
  */
      
-    define('QR_CACHEABLE', false);       // use cache - more disk reads but less CPU power, masks and format templates are stored there
-    define('QR_CACHE_DIR', false);       // used when QR_CACHEABLE === true
-    define('QR_LOG_DIR', false);         // default error logs dir   
+    define('QR_CACHEABLE', false);       //use cache - more disk reads but less CPU power, masks and format templates are stored there
+    define('QR_CACHE_DIR', false);       //used when QR_CACHEABLE === true
+    define('QR_LOG_DIR', false);         //default error logs dir   
     
-    define('QR_FIND_BEST_MASK', true);                                                          // if true, estimates best mask (spec. default, but extremally slow; set to false to significant performance boost but (propably) worst quality code
-    define('QR_FIND_FROM_RANDOM', 2);                                                       // if false, checks all masks available, otherwise value tells count of masks need to be checked, mask id are got randomly
-    define('QR_DEFAULT_MASK', 2);                                                               // when QR_FIND_BEST_MASK === false
+    define('QR_FIND_BEST_MASK', true);                                                          //if true, estimates best mask (spec. default, but extremally slow; set to false to significant performance boost but (propably) worst quality code
+    define('QR_FIND_FROM_RANDOM', 2);                                                       //if false, checks all masks available, otherwise value tells count of masks need to be checked, mask id are got randomly
+    define('QR_DEFAULT_MASK', 2);                                                               //when QR_FIND_BEST_MASK === false
                                                   
-    define('QR_PNG_MAXIMUM_SIZE',  1024);                                                       // maximum allowed png image width (in pixels), tune to make sure GD and PHP can handle such big images
+    define('QR_PNG_MAXIMUM_SIZE',  1024);                                                       //maximum allowed png image width (in pixels), tune to make sure GD and PHP can handle such big images
                                                   
 
 
@@ -355,11 +355,11 @@
     
         public static $capacity = array(
             array(  0,    0, 0, array(   0,    0,    0,    0)),
-            array( 21,   26, 0, array(   7,   10,   13,   17)), // 1
+            array( 21,   26, 0, array(   7,   10,   13,   17)), //1
             array( 25,   44, 7, array(  10,   16,   22,   28)),
             array( 29,   70, 7, array(  15,   26,   36,   44)),
             array( 33,  100, 7, array(  20,   36,   52,   64)),
-            array( 37,  134, 7, array(  26,   48,   72,   88)), // 5
+            array( 37,  134, 7, array(  26,   48,   72,   88)), //5
             array( 41,  172, 7, array(  36,   64,   96,  112)),
             array( 45,  196, 0, array(  40,   72,  108,  130)),
             array( 49,  242, 0, array(  48,   88,  132,  156)),
@@ -478,23 +478,23 @@
             $words = (1 << $bits) - 1;
             
             if($mode == QR_MODE_KANJI) {
-                $words *= 2; // the number of bytes is required
+                $words *= 2; //the number of bytes is required
             }
 
             return $words;
         }
 
-        // Error correction code -----------------------------------------------
-        // Table of the error correction code (Reed-Solomon block)
-        // See Table 12-16 (pp.30-36), JIS X0510:2004.
+        //Error correction code -----------------------------------------------
+        //Table of the error correction code (Reed-Solomon block)
+        //See Table 12-16 (pp.30-36), JIS X0510:2004.
 
         public static $eccTable = array(
             array(array( 0,  0), array( 0,  0), array( 0,  0), array( 0,  0)),
-            array(array( 1,  0), array( 1,  0), array( 1,  0), array( 1,  0)), // 1
+            array(array( 1,  0), array( 1,  0), array( 1,  0), array( 1,  0)), //1
             array(array( 1,  0), array( 1,  0), array( 1,  0), array( 1,  0)),
             array(array( 1,  0), array( 1,  0), array( 2,  0), array( 2,  0)),
             array(array( 1,  0), array( 2,  0), array( 2,  0), array( 4,  0)),
-            array(array( 1,  0), array( 2,  0), array( 2,  2), array( 2,  2)), // 5
+            array(array( 1,  0), array( 2,  0), array( 2,  2), array( 2,  2)), //5
             array(array( 2,  0), array( 4,  0), array( 4,  0), array( 4,  0)),
             array(array( 2,  0), array( 4,  0), array( 2,  4), array( 4,  1)),
             array(array( 2,  0), array( 2,  2), array( 4,  2), array( 4,  2)),
@@ -533,7 +533,7 @@
         );                                                                       
 
         //----------------------------------------------------------------------
-        // CACHEABLE!!!
+        //CACHEABLE!!!
         
         public static function getEccSpec($version, $level, array &$spec)
         {
@@ -561,19 +561,19 @@
             }
         }
 
-        // Alignment pattern ---------------------------------------------------
+        //Alignment pattern ---------------------------------------------------
 
-        // Positions of alignment patterns.
-        // This array includes only the second and the third position of the 
-        // alignment patterns. Rest of them can be calculated from the distance 
-        // between them.
+        //Positions of alignment patterns.
+        //This array includes only the second and the third position of the 
+        //alignment patterns. Rest of them can be calculated from the distance 
+        //between them.
          
-        // See Table 1 in Appendix E (pp.71) of JIS X0510:2004.
+        //See Table 1 in Appendix E (pp.71) of JIS X0510:2004.
          
         public static $alignmentPattern = array(      
             array( 0,  0),
-            array( 0,  0), array(18,  0), array(22,  0), array(26,  0), array(30,  0), // 1- 5
-            array(34,  0), array(22, 38), array(24, 42), array(26, 46), array(28, 50), // 6-10
+            array( 0,  0), array(18,  0), array(22,  0), array(26,  0), array(30,  0), //1- 5
+            array(34,  0), array(22, 38), array(24, 42), array(26, 46), array(28, 50), //6-10
             array(30, 54), array(32, 58), array(34, 62), array(26, 46), array(26, 48), //11-15
             array(26, 50), array(30, 54), array(30, 56), array(30, 58), array(34, 62), //16-20
             array(28, 50), array(26, 50), array(30, 54), array(28, 54), array(32, 58), //21-25
@@ -645,12 +645,12 @@
             }
         }
 
-        // Version information pattern -----------------------------------------
+        //Version information pattern -----------------------------------------
 
-		// Version information pattern (BCH coded).
-        // See Table 1 in Appendix D (pp.68) of JIS X0510:2004.
+		//Version information pattern (BCH coded).
+        //See Table 1 in Appendix D (pp.68) of JIS X0510:2004.
         
-		// size: [QRSPEC_VERSION_MAX - 6]
+		//size: [QRSPEC_VERSION_MAX - 6]
 		
         public static $versionPattern = array(
             0x07c94, 0x085bc, 0x09a99, 0x0a4d3, 0x0bbf6, 0x0c762, 0x0d847, 0x0e60d,
@@ -669,8 +669,8 @@
             return self::$versionPattern[$version -7];
         }
 
-        // Format information --------------------------------------------------
-        // See calcFormatInfo in tests/test_qrspec.c (orginal qrencode c lib)
+        //Format information --------------------------------------------------
+        //See calcFormatInfo in tests/test_qrspec.c (orginal qrencode c lib)
         
         public static $formatInfo = array(
             array(0x77c4, 0x72f3, 0x7daa, 0x789d, 0x662f, 0x6318, 0x6c41, 0x6976),
@@ -690,8 +690,8 @@
             return self::$formatInfo[$level][$mask];
         }
 
-        // Frame ---------------------------------------------------------------
-        // Cache of initial frames.
+        //Frame ---------------------------------------------------------------
+        //Cache of initial frames.
          
         public static $frames = array();
 
@@ -725,12 +725,12 @@
             $frameLine = str_repeat ("\0", $width);
             $frame = array_fill(0, $width, $frameLine);
 
-            // Finder pattern
+            //Finder pattern
             self::putFinderPattern($frame, 0, 0);
             self::putFinderPattern($frame, $width - 7, 0);
             self::putFinderPattern($frame, 0, $width - 7);
             
-            // Separator
+            //Separator
             $yOffset = $width - 7;
             
             for($y=0; $y<7; $y++) {
@@ -746,7 +746,7 @@
             QRstr::set($frame, $width-8, 7, $setPattern);
             QRstr::set($frame, 0, $width - 8, $setPattern);
         
-            // Format info
+            //Format info
             $setPattern = str_repeat("\x84", 9);
             QRstr::set($frame, 0, 8, $setPattern);
             QRstr::set($frame, $width - 8, 8, $setPattern, 8);
@@ -758,17 +758,17 @@
                 $frame[$yOffset][8] = "\x84";
             }
 
-            // Timing pattern  
+            //Timing pattern  
             
             for($i=1; $i<$width-15; $i++) {
                 $frame[6][7+$i] = chr(0x90 | ($i & 1));
                 $frame[7+$i][6] = chr(0x90 | ($i & 1));
             }
             
-            // Alignment pattern  
+            //Alignment pattern  
             self::putAlignmentPattern($version, $frame, $width);
             
-            // Version information 
+            //Version information 
             if($version >= 7) {
                 $vinf = self::getVersionPattern($version);
 
@@ -790,7 +790,7 @@
                 }
             }
     
-            // and a little bit...  
+            //and a little bit...  
             $frame[$width - 8][8] = "\x81";
             
             return $frame;
@@ -2041,16 +2041,16 @@
             
             if($mode == QR_MODE_8) {
                 $dif = QRinput::estimateBitsModeNum($run) + 4 + $ln
-                     + QRinput::estimateBitsMode8(1)         // + 4 + l8
-                     - QRinput::estimateBitsMode8($run + 1); // - 4 - l8
+                     + QRinput::estimateBitsMode8(1)         //+ 4 + l8
+                     - QRinput::estimateBitsMode8($run + 1); //- 4 - l8
                 if($dif > 0) {
                     return $this->eat8();
                 }
             }
             if($mode == QR_MODE_AN) {
                 $dif = QRinput::estimateBitsModeNum($run) + 4 + $ln
-                     + QRinput::estimateBitsModeAn(1)        // + 4 + la
-                     - QRinput::estimateBitsModeAn($run + 1);// - 4 - la
+                     + QRinput::estimateBitsModeAn(1)        //+ 4 + la
+                     - QRinput::estimateBitsModeAn($run + 1);//- 4 - la
                 if($dif > 0) {
                     return $this->eatAn();
                 }
@@ -2078,9 +2078,9 @@
                         $q++;
                     }
                     
-                    $dif = QRinput::estimateBitsModeAn($p) // + 4 + la
+                    $dif = QRinput::estimateBitsModeAn($p) //+ 4 + la
                          + QRinput::estimateBitsModeNum($q - $p) + 4 + $ln
-                         - QRinput::estimateBitsModeAn($q); // - 4 - la
+                         - QRinput::estimateBitsModeAn($q); //- 4 - la
                          
                     if($dif < 0) {
                         break;
@@ -2096,8 +2096,8 @@
 
             if(!self::isalnumat($this->dataStr, $p)) {
                 $dif = QRinput::estimateBitsModeAn($run) + 4 + $la
-                     + QRinput::estimateBitsMode8(1) // + 4 + l8
-                      - QRinput::estimateBitsMode8($run + 1); // - 4 - l8
+                     + QRinput::estimateBitsMode8(1) //+ 4 + l8
+                      - QRinput::estimateBitsMode8($run + 1); //- 4 - l8
                 if($dif > 0) {
                     return $this->eat8();
                 }
@@ -2146,9 +2146,9 @@
                     while(self::isdigitat($this->dataStr, $q)) {
                         $q++;
                     }
-                    $dif = QRinput::estimateBitsMode8($p) // + 4 + l8
+                    $dif = QRinput::estimateBitsMode8($p) //+ 4 + l8
                          + QRinput::estimateBitsModeNum($q - $p) + 4 + $ln
-                         - QRinput::estimateBitsMode8($q); // - 4 - l8
+                         - QRinput::estimateBitsMode8($q); //- 4 - l8
                     if($dif < 0) {
                         break;
                     } else {
@@ -2159,9 +2159,9 @@
                     while(self::isalnumat($this->dataStr, $q)) {
                         $q++;
                     }
-                    $dif = QRinput::estimateBitsMode8($p)  // + 4 + l8
+                    $dif = QRinput::estimateBitsMode8($p)  //+ 4 + l8
                          + QRinput::estimateBitsModeAn($q - $p) + 4 + $la
-                         - QRinput::estimateBitsMode8($q); // - 4 - l8
+                         - QRinput::estimateBitsMode8($q); //- 4 - l8
                     if($dif < 0) {
                         break;
                     } else {
@@ -2285,16 +2285,16 @@
  
     class QRrsItem {
     
-        public $mm;                  // Bits per symbol 
-        public $nn;                  // Symbols per block (= (1<<mm)-1) 
-        public $alpha_to = array();  // log lookup table 
-        public $index_of = array();  // Antilog lookup table 
-        public $genpoly = array();   // Generator polynomial 
-        public $nroots;              // Number of generator roots = number of parity symbols 
-        public $fcr;                 // First consecutive root, index form 
-        public $prim;                // Primitive element, index form 
-        public $iprim;               // prim-th root of 1, index form 
-        public $pad;                 // Padding bytes in shortened block 
+        public $mm;                  //Bits per symbol 
+        public $nn;                  //Symbols per block (= (1<<mm)-1) 
+        public $alpha_to = array();  //log lookup table 
+        public $index_of = array();  //Antilog lookup table 
+        public $genpoly = array();   //Generator polynomial 
+        public $nroots;              //Number of generator roots = number of parity symbols 
+        public $fcr;                 //First consecutive root, index form 
+        public $prim;                //Primitive element, index form 
+        public $iprim;               //prim-th root of 1, index form 
+        public $pad;                 //Padding bytes in shortened block 
         public $gfpoly;
     
         //----------------------------------------------------------------------
@@ -2311,18 +2311,18 @@
         //----------------------------------------------------------------------
         public static function init_rs_char($symsize, $gfpoly, $fcr, $prim, $nroots, $pad)
         {
-            // Common code for intializing a Reed-Solomon control block (char or int symbols)
-            // Copyright 2004 Phil Karn, KA9Q
-            // May be used under the terms of the GNU Lesser General Public License (LGPL)
+            //Common code for intializing a Reed-Solomon control block (char or int symbols)
+            //Copyright 2004 Phil Karn, KA9Q
+            //May be used under the terms of the GNU Lesser General Public License (LGPL)
 
             $rs = null;
             
-            // Check parameter ranges
+            //Check parameter ranges
             if($symsize < 0 || $symsize > 8)                     return $rs;
             if($fcr < 0 || $fcr >= (1<<$symsize))                return $rs;
             if($prim <= 0 || $prim >= (1<<$symsize))             return $rs;
-            if($nroots < 0 || $nroots >= (1<<$symsize))          return $rs; // Can't have more roots than symbol values!
-            if($pad < 0 || $pad >= ((1<<$symsize) -1 - $nroots)) return $rs; // Too much padding
+            if($nroots < 0 || $nroots >= (1<<$symsize))          return $rs; //Can't have more roots than symbol values!
+            if($pad < 0 || $pad >= ((1<<$symsize) -1 - $nroots)) return $rs; //Too much padding
 
             $rs = new QRrsItem();
             $rs->mm = $symsize;
@@ -2332,13 +2332,13 @@
             $rs->alpha_to = array_fill(0, $rs->nn+1, 0);
             $rs->index_of = array_fill(0, $rs->nn+1, 0);
           
-            // PHP style macro replacement ;)
+            //PHP style macro replacement ;)
             $NN =& $rs->nn;
             $A0 =& $NN;
             
-            // Generate Galois field lookup tables
-            $rs->index_of[0] = $A0; // log(zero) = -inf
-            $rs->alpha_to[$A0] = 0; // alpha**-inf = 0
+            //Generate Galois field lookup tables
+            $rs->index_of[0] = $A0; //log(zero) = -inf
+            $rs->alpha_to[$A0] = 0; //alpha**-inf = 0
             $sr = 1;
           
             for($i=0; $i<$rs->nn; $i++) {
@@ -2352,7 +2352,7 @@
             }
             
             if($sr != 1){
-                // field generator polynomial is not primitive!
+                //field generator polynomial is not primitive!
                 $rs = NULL;
                 return $rs;
             }
@@ -2367,7 +2367,7 @@
 
             /* Find prim-th root of 1, used in decoding */
             for($iprim=1;($iprim % $prim) != 0;$iprim += $rs->nn)
-            ; // intentional empty-body loop!
+            ; //intentional empty-body loop!
             
             $rs->iprim = (int)($iprim / $prim);
             $rs->genpoly[0] = 1;
@@ -2375,7 +2375,7 @@
             for ($i = 0,$root=$fcr*$prim; $i < $nroots; $i++, $root += $prim) {
                 $rs->genpoly[$i+1] = 1;
 
-                // Multiply rs->genpoly[] by  @**(root + x)
+                //Multiply rs->genpoly[] by  @**(root + x)
                 for ($j = $i; $j > 0; $j--) {
                     if ($rs->genpoly[$j] != 0) {
                         $rs->genpoly[$j] = $rs->genpoly[$j-1] ^ $rs->alpha_to[$rs->modnn($rs->index_of[$rs->genpoly[$j]] + $root)];
@@ -2383,11 +2383,11 @@
                         $rs->genpoly[$j] = $rs->genpoly[$j-1];
                     }
                 }
-                // rs->genpoly[0] can never be zero
+                //rs->genpoly[0] can never be zero
                 $rs->genpoly[0] = $rs->alpha_to[$rs->modnn($rs->index_of[$rs->genpoly[0]] + $root)];
             }
             
-            // convert rs->genpoly[] to index form for quicker encoding
+            //convert rs->genpoly[] to index form for quicker encoding
             for ($i = 0; $i <= $nroots; $i++)
                 $rs->genpoly[$i] = $rs->index_of[$rs->genpoly[$i]];
 
@@ -2415,10 +2415,10 @@
                 
                 $feedback = $INDEX_OF[$data[$i] ^ $parity[0]];
                 if($feedback != $A0) {      
-                    // feedback term is non-zero
+                    //feedback term is non-zero
             
-                    // This line is unnecessary when GENPOLY[NROOTS] is unity, as it must
-                    // always be for the polynomials constructed by init_rs()
+                    //This line is unnecessary when GENPOLY[NROOTS] is unity, as it must
+                    //always be for the polynomials constructed by init_rs()
                     $feedback = $this->modnn($NN - $GENPOLY[$NROOTS] + $feedback);
             
                     for($j=1;$j<$NROOTS;$j++) {
@@ -2426,7 +2426,7 @@
                     }
                 }
                 
-                // Shift 
+                //Shift 
                 array_shift($parity);
                 if($feedback != $A0) {
                     array_push($parity, $ALPHA_TO[$this->modnn($feedback + $GENPOLY[0])]);
@@ -2990,7 +2990,7 @@
                 return NULL;
             }
 
-            // inteleaved data and ecc codes
+            //inteleaved data and ecc codes
             for($i=0; $i<$raw->dataLength + $raw->eccLength; $i++) {
                 $code = $raw->getCode();
                 $bit = 0x80;
@@ -3005,7 +3005,7 @@
             
             unset($raw);
             
-            // remainder bits
+            //remainder bits
             $j = QRspec::getRemainder($version);
             for($i=0; $i<$j; $i++) {
                 $addr = $filler->next();
@@ -3016,7 +3016,7 @@
             unset($filler);
             
             
-            // masking
+            //masking
             $maskObj = new QRmask();
             if($mask < 0) {
             
@@ -3210,7 +3210,7 @@
         public $size = 3;
         public $margin = 4;
         
-        public $structured = 0; // not supported yet
+        public $structured = 0; //not supported yet
         
         public $level = QR_ECLEVEL_L;
         public $hint = QR_MODE_8;

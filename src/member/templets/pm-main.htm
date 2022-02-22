@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-CN">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,7 +12,7 @@
   <script src="<?php echo $cfg_cmsurl;?>/static/js/dede.js"></script>
   <title>消息管理 - 会员中心 - <?php echo $cfg_webname; ?></title>
   <script>
-    // 阅读消息
+    //阅读消息
     function ReadMsg(id) {
       $.get(`<?php echo $cfg_memberurl?>/pm.php?dopost=read&id=${id}`, function (data) {
         let result = JSON.parse(data);
@@ -31,7 +30,6 @@
     }
   </script>
 </head>
-
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
 
@@ -41,8 +39,8 @@
       <div class="container">
         <div class="row">
           <?php
-          $_menu_pmex = true; // 展开短消息菜单
-          $_menu_pmstate = $state; // 当前活动菜单项目
+          $_menu_pmex = true; //展开短消息菜单
+          $_menu_pmstate = $state; //当前活动菜单项目
           ?>
           <?php include(DEDEMEMBER."/templets/menu.htm"); ?>
           <div class="pannel-main col-md-9 mt-3 mb-3">

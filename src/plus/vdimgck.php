@@ -15,7 +15,7 @@ require_once(DEDEDATA.'/config.cache.inc.php');
 $config = array(
     'font_size'   => 20,
     'img_height'  => $safe_wheight,
-    'word_type'  => (int)$safe_codetype,   // 1:数字 2:英文  3:单词
+    'word_type'  => (int)$safe_codetype,   //1:数字 2:英文  3:单词
     'img_width'   => $safe_wwidth,
     'use_boder'   => TRUE,
     'font_file'   => DEDEINC.'/data/fonts/'.mt_rand(1, 6).'.ttf',
@@ -27,7 +27,7 @@ $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
 $sessSavePath = DEDEDATA."/sessions_{$enkey}";
 if (!is_dir($sessSavePath)) mkdir($sessSavePath);
 
-// Session保存路径
+//Session保存路径
 
 if (is_writeable($sessSavePath) && is_readable($sessSavePath)) {
     session_save_path($sessSavePath);
@@ -35,7 +35,7 @@ if (is_writeable($sessSavePath) && is_readable($sessSavePath)) {
 if (!empty($cfg_domain_cookie)) session_set_cookie_params(0, '/', $cfg_domain_cookie);
 
 if (!echo_validate_image($config)) {
-    // 如果不成功则初始化一个默认验证码
+    //如果不成功则初始化一个默认验证码
     @session_start();
     $_SESSION['securimage_code_value'] = strtolower('abcd');
     if (function_exists('imagecreatefromjpeg')) {
@@ -112,30 +112,30 @@ function echo_validate_image($config = array())
 
     $rndcodelen = strlen($rndstring);
 
-    // //背景横线
-    // $lineColor1 = imagecolorallocate($im, 0xda, 0xd9, 0xd1);
-    // for ($j = 3; $j <= $img_height - 3; $j = $j + 3) {
-    //     imageline($im, 2, $j, $img_width - 2, $j, $lineColor1);
-    // }
+    ////背景横线
+    //$lineColor1 = imagecolorallocate($im, 0xda, 0xd9, 0xd1);
+    //for ($j = 3; $j <= $img_height - 3; $j = $j + 3) {
+    //    imageline($im, 2, $j, $img_width - 2, $j, $lineColor1);
+    //}
 
-    // //背景竖线
-    // $lineColor2 = imagecolorallocate($im, 0xda, 0xd9, 0xd1);
-    // for ($j = 2; $j < 100; $j = $j + 6) {
-    //     imageline($im, $j, 0, $j + 8, $img_height, $lineColor2);
-    // }
+    ////背景竖线
+    //$lineColor2 = imagecolorallocate($im, 0xda, 0xd9, 0xd1);
+    //for ($j = 2; $j < 100; $j = $j + 6) {
+    //    imageline($im, $j, 0, $j + 8, $img_height, $lineColor2);
+    //}
 
-    // 增加一些噪线
+    //增加一些噪线
     for ($i = 0; $i < 5; $i++) {
         $red = mt_rand(50, 255);
         $green = mt_rand(50, 255);
         $blue = mt_rand(50, 255);
         $tcol = imagecolorallocate($im, $red, $green, $blue);
-        if (mt_rand(0, 1)) { // Horizontal
+        if (mt_rand(0, 1)) { //Horizontal
             $Xa   = mt_rand(0, $img_width / 2);
             $Ya   = mt_rand(0, $img_height);
             $Xb   = mt_rand($img_width / 2, $img_width);
             $Yb   = mt_rand(0, $img_height);
-        } else { // Vertical
+        } else { //Vertical
             $Xa   = mt_rand(0, $img_width);
             $Ya   = mt_rand(0, $img_height / 2);
             $Xb   = mt_rand(0, $img_width);

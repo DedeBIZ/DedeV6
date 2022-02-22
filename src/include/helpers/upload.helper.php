@@ -187,7 +187,7 @@ if (!function_exists('MemberUploads')) {
             } else if (!preg_match("/\.(".$allAllowType.")$/", $handname)) {
                 exit('Not allow filename for filetype!');
             }
-            // 2011-4-10 修复会员中心修改相册时候错误(by:jason123j)
+            //2011-4-10 修复会员中心修改相册时候错误(by:jason123j)
             else if (!preg_match('#^http:#', $handname) && !preg_match('#^'.$cfg_user_dir.'/'.$userid."#", $handname) && !$isadmin) {
                 exit('Not allow filename for not userdir!');
             }

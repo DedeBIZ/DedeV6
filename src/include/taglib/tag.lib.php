@@ -25,7 +25,7 @@ function lib_tag(&$ctag, &$refObj)
     $ltype = $sort;
     $num = $row;
 
-    $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); // 取一个平均
+    $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); //取一个平均
     $addsql = "WHERE 1=1 AND total >= {$dd['tt']}";
 
     if ($getall == 0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid'])) {

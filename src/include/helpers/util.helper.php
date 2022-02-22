@@ -16,29 +16,29 @@ if (!function_exists('token_get_all_nl')) {
     {
         $new_tokens = array();
 
-        // Get the tokens
+        //Get the tokens
         $tokens = token_get_all($source);
 
-        // Split newlines into their own tokens
+        //Split newlines into their own tokens
         foreach ($tokens as $token) {
             $token_name = is_array($token) ? $token[0] : null;
             $token_data = is_array($token) ? $token[1] : $token;
 
-            // Do not split encapsed strings or multiline comments
+            //Do not split encapsed strings or multiline comments
             if ($token_name == T_CONSTANT_ENCAPSED_STRING || substr($token_data, 0, 2) == '/*') {
                 $new_tokens[] = array($token_name, $token_data);
                 continue;
             }
 
-            // Split the data up by newlines
+            //Split the data up by newlines
             $split_data = preg_split('#(\r\n|\n)#', $token_data, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
             foreach ($split_data as $data) {
                 if ($data == "\r\n" || $data == "\n") {
-                    // This is a new line token
+                    //This is a new line token
                     $new_tokens[] = array(T_NEW_LINE, $data);
                 } else {
-                    // Add the token under the original token name
+                    //Add the token under the original token name
                     $new_tokens[] = is_array($token) ? array($token_name, $data) : $data;
                 }
             }
@@ -259,16 +259,16 @@ if (!function_exists('json_encode')) {
             //对象转换成数组
             $data = get_object_vars($data);
         } else if (!is_array($data)) {
-            // 普通格式直接输出
+            //普通格式直接输出
             return format_json_value($data);
         }
-        // 判断是否关联数组
+        //判断是否关联数组
         if (empty($data) || is_numeric(implode('', array_keys($data)))) {
             $assoc  =  FALSE;
         } else {
             $assoc  =  TRUE;
         }
-        // 组装 Json字符串
+        //组装 Json字符串
         $json = $assoc ? '{' : '[';
         foreach ($data as $key => $val) {
             if (!is_NULL($val)) {
@@ -279,7 +279,7 @@ if (!function_exists('json_encode')) {
                 }
             }
         }
-        if (strlen($json) > 1) { // 加上判断 防止空数组
+        if (strlen($json) > 1) { //加上判断 防止空数组
             $json  = substr($json, 0, -1);
         }
         $json .= $assoc ? '}' : ']';
@@ -298,15 +298,15 @@ if (!function_exists('json_encode')) {
 if (!function_exists('json_decode')) {
     function json_decode($json, $assoc = FALSE)
     {
-        // 目前不支持二维数组或对象
+        //目前不支持二维数组或对象
         $begin  =  substr($json, 0, 1);
         if (!in_array($begin, array('{', '[')))
-            // 不是对象或者数组直接返回
+            //不是对象或者数组直接返回
             return $json;
         $parse = substr($json, 1, -1);
         $data  = explode(',', $parse);
         if ($flag = $begin == '{') {
-            // 转换成PHP对象
+            //转换成PHP对象
             $result   = new stdClass();
             foreach ($data as $val) {
                 $item    = explode(':', $val);
@@ -316,7 +316,7 @@ if (!function_exists('json_decode')) {
             if ($assoc)
                 $result   = get_object_vars($result);
         } else {
-            // 转换成PHP数组
+            //转换成PHP数组
             $result   = array();
             foreach ($data as $val)
                 $result[]  =  json_decode($val, $assoc);

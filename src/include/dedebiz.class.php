@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 // Copyright 2020 The DedeBiz Authors. All rights reserved.
 // license that can be found in the LICENSE file.
 
@@ -44,7 +44,7 @@ class DedeBizClient
 
     function request(&$req)
     {
-        // 进行签名
+        //进行签名
         $this->MakeSign($req);
         $str = json_encode($req);
         $length = strlen($str);
@@ -72,7 +72,7 @@ class DedeBizClient
         return $this->CheckSign($msg);
     }
 
-    // 用户获取当前服务器状态信息
+    //用户获取当前服务器状态信息
     function SystemInfo()
     {
         $req = array(
@@ -81,7 +81,7 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 检测是否连接
+    //检测是否连接
     function Ping($i)
     {
         $req = array(
@@ -93,7 +93,7 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 发送邮件
+    //发送邮件
     function MailSend($to, $subject, $title, $content="", $quote="", $link_url="", $link_title="")
     {
         $req = array(
@@ -111,7 +111,7 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 获取一个管理员信息
+    //获取一个管理员信息
     function AdminGetOne()
     {
         $req = array(
@@ -123,7 +123,7 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 检查管理员密码是否存在
+    //检查管理员密码是否存在
     function AdminPWDExists()
     {
         $req = array(
@@ -135,7 +135,7 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 创建DedeBIZ授权密码
+    //创建DedeBIZ授权密码
     function AdminPWDCreate($pwd)
     {
         $req = array(
@@ -147,7 +147,7 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 设置首页锁定状态
+    //设置首页锁定状态
     function AdminSetIndexLockState($pwd, $state)
     {
         $req = array(
@@ -160,8 +160,8 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 缓存
-    // $key:键 $val:值 $d:缓存时间
+    //缓存
+    //$key:键 $val:值 $d:缓存时间
     function CacheSet($key, $val, $duration)
     {
         $req = array(
@@ -175,8 +175,8 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 获取缓存内容
-    // $key:键
+    //获取缓存内容
+    //$key:键
     function CacheGet($key)
     {
         $req = array(
@@ -188,8 +188,8 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 删除缓存内容
-    // $key:键
+    //删除缓存内容
+    //$key:键
     function CacheDel($key)
     {
         $req = array(
@@ -201,8 +201,8 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 获取分词结果
-    // $key:键
+    //获取分词结果
+    //$key:键
     function Spliteword($body)
     {
         $req = array(
@@ -214,8 +214,8 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 获取分词结果
-    // $body:内容 $sep:分隔符
+    //获取分词结果
+    //$body:内容 $sep:分隔符
     function Pinyin($body, $sep)
     {
         $req = array(
@@ -228,7 +228,7 @@ class DedeBizClient
         return $this->request($req);
     }
 
-    // 拼接规则就是method+
+    //拼接规则就是method+
     function MakeSign(&$req)
     {
         if (empty($req['timestamp'])) {
@@ -249,7 +249,7 @@ class DedeBizClient
         $req['sign'] = hash("sha256", $pstr);
     }
 
-    // 校验返回数据是否正确
+    //校验返回数据是否正确
     function CheckSign(&$msg)
     {
         $rsp = json_decode($msg);
@@ -264,11 +264,11 @@ class DedeBizClient
         }
     }
 
-    // 关闭通信接口
-    // 一次页面操作后一定记得要关闭连接，否则会占用系统资源
+    //关闭通信接口
+    //一次页面操作后一定记得要关闭连接，否则会占用系统资源
     function Close()
     {
-        // 这里避免重复释放
+        //这里避免重复释放
         if (strtolower(get_resource_type($this->socket)) === "socket") {
             socket_close($this->socket);
         }

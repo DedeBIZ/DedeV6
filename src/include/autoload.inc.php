@@ -1,5 +1,5 @@
 <?php
-if(!defined('DEDEINC')) exit("Request Error!");
+if(!defined('DEDEINC')) exit("dedebiz");
 /**
  * @version        $Id: autoload.inc.php 1 17:44 2020-09-22 tianya $
  * @package        DedeBIZ.Libraries

@@ -40,7 +40,7 @@ function IsCommendArchives($iscommend)
 function GetCommendTitle($title, $iscommend)
 {
     if (preg_match('/c/', $iscommend)) {
-        $title = "$title<font color='red'>(推荐)</font>";
+        $title = "$title<span style='color:#e74d58'>(推荐)</span>";
     }
     return "$title";
 }
@@ -91,7 +91,7 @@ function IsHtmlArchives($ismake)
     } else if ($ismake == -1) {
         return "仅动态";
     } else {
-        return "<font color='red'>未生成</font>";
+        return "<span style='color:#e74d58'>未生成</span>";
     }
 }
 
@@ -127,7 +127,7 @@ function GetRankName($arcrank)
 function IsPicArchives($picname)
 {
     if ($picname != "") {
-        return "<font color='red'>(图)</font>";
+        return "<span style='color:#e74d58'>(图)</span>";
     } else {
         return "";
     }

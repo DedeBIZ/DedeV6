@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('Request Error!');
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 指定的单个栏目的链接标签
  *

@@ -27,8 +27,8 @@ function XSSClean($val)
     $search .= '1234567890!@#$%^&*()';
     $search .= '~`";:?+/={}[]-_|\'\\';
     for ($i = 0; $i < strlen($search); $i++) {
-        $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); // with a ;
-        $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); // with a ;
+        $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); //with a ;
+        $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); //with a ;
     }
 
     $val = str_replace("`", "‘", $val);
@@ -78,7 +78,7 @@ require_once(DEDEINC.'/filter.inc.php');
 require_once(DEDEINC.'/memberlogin.class.php');
 require_once(DEDEINC.'/dedetemplate.class.php');
 
-// 检查CSRF
+//检查CSRF
 function CheckCSRF()
 {
     $cc_csrf_token_check = GetCookie("dede_csrf_token");
@@ -94,7 +94,7 @@ function CheckCSRF()
     DropCookie("dede_csrf_token");
 }
 
-// 生成CSRF校验token，在比较重要的表单中应该要加上这个token校验
+//生成CSRF校验token，在比较重要的表单中应该要加上这个token校验
 $cc_csrf_token = GetCookie("dede_csrf_token");
 if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
     if (
@@ -112,7 +112,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
 }
 
 
-//获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行更改这个选项
+//获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行修改这个选项
 $dedeNowurl = $s_scriptName = '';
 $dedeNowurl = GetCurUrl();
 $dedeNowurls = explode('?', $dedeNowurl);
@@ -170,14 +170,14 @@ function CheckRank($rank = 0, $money = 0)
         exit();
     } else {
         if ($cfg_mb_spacesta == '-10') {
-            // var_dump($cfg_ml->fields);
+            //var_dump($cfg_ml->fields);
             //如果启用注册邮件验证
             if ($cfg_ml->fields['spacesta'] == '-10') {
                 if (empty($cfg_ml->fields['email'])) {
                     ShowMsg("邮箱地址为空，请设置一个可用的邮箱地址", "edit_email.php", 0, 5000);
                     exit;
                 }
-                $msg = "您尚未进行邮件验证，请到邮箱查阅...</br>重新发送邮件验证 <a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail'><font color='red'>点击此处</font></a>";
+                $msg = "您尚未进行邮件验证，请到邮箱查阅...</br>重新发送邮件验证 <a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail'><span style='color:#e74d58'>点击此处</span></a>";
                 ShowMsg($msg, "-1", 0, 5000);
                 exit;
             }

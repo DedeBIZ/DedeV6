@@ -23,7 +23,7 @@
 </div> <!-- ./digg -->
 
 <script>
-    // 获取顶踩数据
+    //获取顶踩数据
     function GetDigg(aid,cid) {
         let url = `{dede:global.cfg_phpurl/}/digg_ajax.php?id=${aid}&cid=${cid}&format=json`;
         $.get(url, function (data) {

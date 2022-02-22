@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 织梦HTTP下载类
  *
@@ -320,8 +320,8 @@ class DedeHttpDown
             curl_setopt($this->m_ch, CURLOPT_FOLLOWLOCATION, 1);
             if ($requestType == "POST") {
                 curl_setopt($this->m_ch, CURLOPT_POST, 1);
-                // $content = is_array($post) ? http_build_query($post) : $post;
-                // curl_setopt($this->m_ch, CURLOPT_POSTFIELDS, urldecode($content));
+                //$content = is_array($post) ? http_build_query($post) : $post;
+                //curl_setopt($this->m_ch, CURLOPT_POSTFIELDS, urldecode($content));
             }
             if (!empty($this->m_cookies)) {
                 curl_setopt($this->m_ch, CURLOPT_COOKIE, $this->m_cookies);

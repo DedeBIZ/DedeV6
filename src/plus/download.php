@@ -161,7 +161,7 @@ function getSoft_new()
         exit();
     }
     //-------------------------
-    // 读取文档信息，判断权限
+    //读取文档信息，判断权限
     //-------------------------
     $arcRow = GetOneArchive($id);
     if ($arcRow['aid'] == '') {
@@ -187,7 +187,7 @@ function getSoft_new()
             }
             $memberTypes[0] = "游客";
             $msgtitle = "您没有权限下载软件：{$arctitle}";
-            $moremsg = "这个软件需要 <font color='red'>".$memberTypes[$needRank]."</font> 才能下载，您目前是：<font color='red'>".$memberTypes[$cfg_ml->M_Rank]."</font> ";
+            $moremsg = "这个软件需要 <span style='color:#e74d58'>".$memberTypes[$needRank]."</span> 才能下载，您目前是：<span style='color:#e74d58'>".$memberTypes[$cfg_ml->M_Rank]."</span> ";
             include_once(DEDETEMPLATE.'/plus/view_msg.htm');
             exit();
         }
@@ -202,7 +202,7 @@ function getSoft_new()
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {
                     $msgtitle = "您没有权限下载软件：{$arctitle}";
-                    $moremsg = "这个软件需要 <font color='red'>".$needMoney." 金币</font> 才能下载，您目前拥有金币：<font color='red'>".$cfg_ml->M_Money." 个</font> ";
+                    $moremsg = "这个软件需要 <span style='color:#e74d58'>".$needMoney." 金币</span> 才能下载，您目前拥有金币：<span style='color:#e74d58'>".$cfg_ml->M_Money." 个</span> ";
                     include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                     exit(0);
                 }

@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit('Request Error!');
+<?php if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 获得责任编辑名称
  *
@@ -17,7 +17,6 @@
  * @param     object  $refObj  引用对象
  * @return    string  成功后返回解析后的标签内容
  */
-
 function lib_adminname(&$ctag, &$refObj)
 {
     global $dsql;

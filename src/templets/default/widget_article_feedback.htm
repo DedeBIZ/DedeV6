@@ -108,7 +108,7 @@
 <script async>
 
 
-	// 发表评论
+	//发表评论
 	function SendFeedback() {
 		let feedback = {
 			action: "send",
@@ -135,7 +135,7 @@
 		});
 	}
 
-	// 进行回复，回复必须登录
+	//进行回复，回复必须登录
 	function SendReplyFeedback(fid) {
 		let content = $(`._feedback_reply[for="${fid}"]`).find(".iptReplyContent").val();
 		let reply = {
@@ -156,7 +156,7 @@
 		$(`._feedback_reply[for="${fid}"]`).find(".btnSend").attr("disabled", "disabled");
 	}
 
-	// 回复某个评论
+	//回复某个评论
 	function ReplyFeedback(fid) {
 		let replyPannel = `<div class="form-group mt-2">
 			<div class="input-group">
@@ -180,7 +180,7 @@
 
 	}
 
-	// 加载回复评论
+	//加载回复评论
 	function LoadReplyFeedbacks(fid) {
 		$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
 
@@ -222,7 +222,7 @@
 		})
 	}
 
-	// 赞
+	//赞
 	function GoodFeedback(fid, g) {
 		let good = {
 			action : "send",

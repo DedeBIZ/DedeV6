@@ -108,7 +108,7 @@ if ($dopost == "") {
                     $db->executenonequery($sql);
                     $sql = "UPDATE `#@__member` SET `pwd` = '$pwdok' WHERE `mid` = '$id';";
                     if ($db->executenonequery($sql)) {
-                        showmsg('更改密码成功，请牢记新密码', 'login.php');
+                        showmsg('修改密码成功，请牢记新密码', 'login.php');
                         exit;
                     }
                 }

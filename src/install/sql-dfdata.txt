@@ -518,7 +518,6 @@ INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `
 INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com/auth', '授权中心', '', '', '', 1227772703, 1, 2);
 INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (3, 'https://www.dedebiz.com/git', '代码托管', '', '', '', 1603767210, 1, 1);
 
-
 INSERT INTO `#@__flinktype` VALUES('1','综合网站'),
 ('2','娱乐类'),
 ('3','教育类'),
@@ -563,7 +562,7 @@ INSERT INTO `#@__shops_delivery` VALUES('1','送货上门','10.21','送货上门
 INSERT INTO `#@__member_stowtype` VALUES('sys','系统收藏','archives_do.php'),
 ('book','小说收藏','/book/book.php?bid');
 
-INSERT INTO `#@__payment` VALUES('3','alipay','支付宝','2','支付宝网站(www.alipay.com) 是国内先进的网上支付平台。<br/>DedeCMS联合支付宝推出支付宝接口。<br/><a href="https://www.alipay.com/himalayas/practicality_customer.htm?customer_external_id=C4335994340215837114&market_type=from_agent_contract&pro_codes=6ACD133C5F350958F7F62F29651356BB " target="_blank"><font color="red">立即在线申请</font></a>','1','a:4:{s:14:"alipay_account";a:4:{s:5:"title";s:14:"支付宝用户账号";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:20:"yuan12345xin@163.com";}s:10:"alipay_key";a:4:{s:5:"title";s:14:"交易安全校验码";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:6:"dsfsdf";}s:14:"alipay_partner";a:4:{s:5:"title";s:12:"合作者身份ID";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:1:"1";}s:17:"alipay_pay_method";a:5:{s:5:"title";s:14:"支付宝账号类型";s:11:"description";s:52:"请选择您最后一次跟支付宝签订的协议里面说明的接口类型";s:4:"type";s:6:"select";s:5:"iterm";s:58:"0:使用标准双接口,1:使用担保交易接口,2:使用即时到帐交易接口";s:5:"value";s:1:"1";}}','1','0','1'),
+INSERT INTO `#@__payment` VALUES('3','alipay','支付宝','2','支付宝网站(www.alipay.com) 是国内先进的网上支付平台。<br/>DedeCMS联合支付宝推出支付宝接口。<br/><a href="https://www.alipay.com/himalayas/practicality_customer.htm?customer_external_id=C4335994340215837114&market_type=from_agent_contract&pro_codes=6ACD133C5F350958F7F62F29651356BB " target="_blank"><span style="color:#e74d58">立即在线申请</span></a>','1','a:4:{s:14:"alipay_account";a:4:{s:5:"title";s:14:"支付宝用户账号";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:20:"yuan12345xin@163.com";}s:10:"alipay_key";a:4:{s:5:"title";s:14:"交易安全校验码";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:6:"dsfsdf";}s:14:"alipay_partner";a:4:{s:5:"title";s:12:"合作者身份ID";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:1:"1";}s:17:"alipay_pay_method";a:5:{s:5:"title";s:14:"支付宝账号类型";s:11:"description";s:52:"请选择您最后一次跟支付宝签订的协议里面说明的接口类型";s:4:"type";s:6:"select";s:5:"iterm";s:58:"0:使用标准双接口,1:使用担保交易接口,2:使用即时到帐交易接口";s:5:"value";s:1:"1";}}','1','0','1'),
 ('2','bank','银行汇款/转帐','0','银行名称\t\n收款人信息：全称 ××× ；帐号或地址 ××× ；开户行 ×××。\t\n注意事项：办理电汇时，请在电汇单“汇款用途”一栏处注明您的订单号。','4','a:0:{}','1','1','0'),
 ('1','cod','货到付款','0','开通城市：×××\t\n货到付款区域：×××','3','a:0:{}','1','1','0'),
 ('6','yeepay','YeePay易宝','12','YeePay易宝（北京通融通信息技术有限公司）是专业从事多元化电子支付业务一站式服务的领跑者。在立足于网上支付的同时，YeePay易宝不断创新，将互联网、手机、固定电话整合在一个平台上，继短信支付、手机充值之后，首家推出了YeePay易宝电话支付业务，真正实现了离线支付，为更多传统行业搭建了电子支付的高速公路。YeePay易宝融合世界先进的电子支付文化，聚合众多金融、电信、IT、互联网等领域内的巨擘，旨在通过创新的支付机制，推动中国电子商务新进程。YeePay易宝致力于成为世界一流的电子支付应用和服务提供商，专注于金融增值服务和移动增值服务两大领域，创新并推广多元化、低成本的、安全有效的支付服务。<input type="button" name="Submit" value="立即注册" onclick="window.open("https://www.yeepay.com/selfservice/requestRegister.action")" />','2','a:2:{s:10:"yp_account";a:4:{s:5:"title";s:8:"商户编号";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:2:"aa";}s:6:"yp_key";a:4:{s:5:"title";s:8:"商户密钥";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:3:"dsa";}}','1','0','1');
@@ -1455,24 +1454,24 @@ INSERT INTO `#@__sys_enum` VALUES('139','cms制作','503','vocation','503','0'),
 ('19284','南明区','12501.1','nativeplace','12501','2'),
 ('19283','贵阳市','12501','nativeplace','12501','1'),
 ('19282','贵州省','12500','nativeplace','12500','0'),
-('19281','雷波县','12021.17','nativeplace','12021','2'),
-('19280','美姑县','12021.16','nativeplace','12021','2'),
-('19279','甘洛县','12021.15','nativeplace','12021','2'),
-('19278','越西县','12021.14','nativeplace','12021','2'),
-('19277','冕宁县','12021.13','nativeplace','12021','2'),
-('19276','喜德县','12021.12','nativeplace','12021','2'),
-('19275','昭觉县','12021.11','nativeplace','12021','2'),
-('19274','金阳县','12021.10','nativeplace','12021','2'),
-('19273','布拖县','12021.9','nativeplace','12022','2'),
-('19272','普格县','12021.8','nativeplace','12022','2'),
-('19271','宁南县','12021.7','nativeplace','12022','2'),
-('19270','会东县','12021.6','nativeplace','12022','2'),
-('19269','会理县','12021.5','nativeplace','12022','2'),
-('19268','德昌县','12021.4','nativeplace','12021','2'),
-('19267','盐源县','12021.3','nativeplace','12021','2'),
-('19266','木里藏族自治县','12021.2','nativeplace','12021','2'),
-('19265','西昌市','12021.1','nativeplace','12021','2'),
-('19264','凉山彝族自治州','12021','nativeplace','12021','1'),
+('19281','雷波县','12022.17','nativeplace','12022','2'),
+('19280','美姑县','12022.16','nativeplace','12022','2'),
+('19279','甘洛县','12022.15','nativeplace','12022','2'),
+('19278','越西县','12022.14','nativeplace','12022','2'),
+('19277','冕宁县','12022.13','nativeplace','12022','2'),
+('19276','喜德县','12022.12','nativeplace','12022','2'),
+('19275','昭觉县','12022.11','nativeplace','12022','2'),
+('19274','金阳县','12022.10','nativeplace','12022','2'),
+('19273','布拖县','12022.9','nativeplace','12022','2'),
+('19272','普格县','12022.8','nativeplace','12022','2'),
+('19271','宁南县','12022.7','nativeplace','12022','2'),
+('19270','会东县','12022.6','nativeplace','12022','2'),
+('19269','会理县','12022.5','nativeplace','12022','2'),
+('19268','德昌县','12022.4','nativeplace','12022','2'),
+('19267','盐源县','12022.3','nativeplace','12022','2'),
+('19266','木里藏族自治县','12022.2','nativeplace','12022','2'),
+('19265','西昌市','12022.1','nativeplace','12022','2'),
+('19264','凉山彝族自治州','12022','nativeplace','12022','1'),
 ('19263','得荣县','12020.18','nativeplace','12020','2'),
 ('19262','稻城县','12020.17','nativeplace','12020','2'),
 ('19261','乡城县','12020.16','nativeplace','12020','2'),
@@ -1482,11 +1481,11 @@ INSERT INTO `#@__sys_enum` VALUES('139','cms制作','503','vocation','503','0'),
 ('19257','石渠县','12020.12','nativeplace','12020','2'),
 ('19256','白玉县','12020.11','nativeplace','12020','2'),
 ('19255','德格县','12020.10','nativeplace','12020','2'),
-('19254','新龙县','12020.9','nativeplace','12021','2'),
-('19253','甘孜县','12020.8','nativeplace','12021','2'),
-('19252','炉霍县','12020.7','nativeplace','12021','2'),
-('19251','道孚县','12020.6','nativeplace','12021','2'),
-('19250','雅江县','12020.5','nativeplace','12021','2'),
+('19254','新龙县','12020.9','nativeplace','12022','2'),
+('19253','甘孜县','12020.8','nativeplace','12022','2'),
+('19252','炉霍县','12020.7','nativeplace','12022','2'),
+('19251','道孚县','12020.6','nativeplace','12022','2'),
+('19250','雅江县','12020.5','nativeplace','12022','2'),
 ('19249','九龙县','12020.4','nativeplace','12020','2'),
 ('19248','丹巴县','12020.3','nativeplace','12020','2'),
 ('19247','泸定县','12020.2','nativeplace','12020','2'),
@@ -3950,7 +3949,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('4','cfg_indexurl','网页主页链接','1','string','/'),
 ('5','cfg_backup_dir','数据备份目录（在data目录内）','2','string','backupdata'),
 ('6','cfg_indexname','主页链接名','1','string','首页'),
-('7','cfg_webname','网站名称','1','string','我的网站'),
+('7','cfg_webname','网站名称','1','string','某某公司'),
 ('8','cfg_adminemail','网站发信EMAIL','2','string','support@dedebiz.com'),
 ('9','cfg_html_editor','Html编辑器（ckeditor,需要fck的用户可以去官网下载）','2','string','ckeditor'),
 ('10','cfg_arcdir','文档HTML默认保存路径','1','string','/a'),
@@ -3971,7 +3970,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点根网址','1','str
 ('25','cfg_multi_site','(是/否)支持多站点，开启此项后附件、栏目连接、arclist内容启用绝对网址','2','bool','N'),
 ('58','cfg_rm_remote','远程图片本地化','7','bool','Y'),
 ('27','cfg_dede_log','(是/否)开启管理日志','2','bool','N'),
-('28','cfg_powerby','网站版权信息','1','bstring','Copyright &copy; 2021 DedeBIZ 版权所有'),
+('28','cfg_powerby','网站版权信息','1','bstring','Copyright &copy; 2022 DedeBIZ 版权所有'),
 ('722','cfg_jump_once','跳转网址是否直接跳转？（否则显示中转页）','7','bool','Y'),
 ('723','cfg_task_pwd','系统计划任务客户端许可密码<br/>(需要客户端，通常不会太重要)','7','string',''),
 ('29','cfg_arcsptitle','(是/否)开启分页标题，开启会影响HTML生成速度','6','bool','N'),
@@ -4105,7 +4104,6 @@ INSERT INTO `#@__sys_module` VALUES (1, '0cce60bc0238aa03804682c801584991', '百
 (5, 'acb8b88eb4a6d4bfc375c18534f9439e', '投票模块', '', '', 0, ''),
 (6, '572606600345b1a4bb8c810bbae434cc', '挑错管理', '', '', 0, '');
 
-
 INSERT INTO `#@__plus` VALUES (27, '友情链接模块', '<m:item name=''友情链接'' link=''friendlink_main.php'' rank=''plus_友情链接'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (24, '文件管理器', '<m:item name=''文件管理器'' link=''file_manage_main.php'' rank=''plus_文件管理器'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (23, '百度新闻', '<m:item name=''百度新闻'' link=''baidunews.php'' rank=''plus_百度新闻'' target=''main'' />', '', 'DedeBIZ', 1, 'baidunews.php'),
@@ -4114,5 +4112,5 @@ INSERT INTO `#@__plus` VALUES (27, '友情链接模块', '<m:item name=''友情�
 (10, '挑错管理', '<m:item name=''挑错管理'' link=''erraddsave.php'' rank=''plus_挑错管理'' target=''main'' />', '', 'DedeBIZ', 1, '<m:item name=''挑错管理'' link=''catalog_do.php?dopost=erraddsave.php'' rank=''plus_挑错管理'' target=''main'' />');
 
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_disable_funs', '模板引擎禁用PHP函数', 7, 'bstring', 'phpinfo,eval,exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,file_put_contents');
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_disable_tags', '模板引擎禁用标签', 7, 'bstring', 'php');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ('cfg_disable_tags', '模板引擎禁用标签', 7, 'bstring', '');
 ALTER TABLE `#@__arctiny` ADD INDEX `idx_typeid_arcrank_sortrank` (`typeid`, `arcrank`, `sortrank`);

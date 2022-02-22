@@ -1,4 +1,4 @@
-<?php if (!defined('DEDEINC')) exit("Request Error!");
+<?php if (!defined('DEDEINC')) exit("dedebiz");
 /**
  * 过滤核心处理文件
  *
@@ -35,7 +35,7 @@ function _FilterAll($fk, &$svar)
         }
     }
     if (!$magic_quotes_gpc) {
-        // var_dump($svar);
+        //var_dump($svar);
         if (is_array($svar)) {
             foreach ($svar as $key => $value) {
                 $svar[$key] = addslashes($svar[$key]);

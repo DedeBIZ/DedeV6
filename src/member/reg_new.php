@@ -32,15 +32,15 @@ if ($step == 1) {
             }
         }
 
-        // $faqkey = isset($faqkey) && is_numeric($faqkey) ? $faqkey : 0;
-        // if($safe_faq_reg == '1')
-        // {
-        //     if($safefaqs[$faqkey]['answer'] != $rsafeanswer || $rsafeanswer=='')
-        //     {
-        //         ShowMsg('验证问题答案错误', '-1');
-        //         exit();
-        //     }
-        // }
+        //$faqkey = isset($faqkey) && is_numeric($faqkey) ? $faqkey : 0;
+        //if($safe_faq_reg == '1')
+        //{
+        //    if($safefaqs[$faqkey]['answer'] != $rsafeanswer || $rsafeanswer=='')
+        //    {
+        //        ShowMsg('验证问题答案错误', '-1');
+        //        exit();
+        //    }
+        //}
 
         $userid = $uname = trim($userid);
         $pwd = trim($userpwd);

@@ -69,7 +69,7 @@ function _SaveArticle(){  }
             }
         }
 
-        // 这里对前台提交的附加数据进行一次校验
+        //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
 
         if ($fontiterm != $inadd_m) {
@@ -113,16 +113,16 @@ function _SaveArticle(){  }
     $msg = "　　请选择您的后续操作：
         <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新文章</a>
         &nbsp;&nbsp;
-        <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看更改</a>
+        <a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看修改</a>
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>
         &nbsp;&nbsp;
         <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理文章</a>
         ";
-    $wintitle = "成功更改文章";
-    $wecome_info = "文章管理::更改文章";
+    $wintitle = "成功修改文章";
+    $wecome_info = "文章管理::修改文章";
     $win = new OxWindow();
-    $win->AddTitle("成功更改文章：");
+    $win->AddTitle("成功修改文章：");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();

@@ -21,7 +21,7 @@ if (strtolower($vdcode) != $svali || $svali == '') {
     exit();
 }
 
-// 校验CSRF
+//校验CSRF
 CheckCSRF();
 
 $flag = '';

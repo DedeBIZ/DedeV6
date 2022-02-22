@@ -17,13 +17,13 @@ if (!isset($backurl)) {
     $backurl = 'edit_face.php';
 }
 if ($dopost == 'save') {
-    // 校验CSRF
+    //校验CSRF
     CheckCSRF();
     $face = HtmlReplace($faceurl, -1);
 
     $query = "UPDATE `#@__member` SET `face` = '$face' WHERE mid='{$cfg_ml->M_ID}' ";
     $dsql->ExecuteNoneQuery($query);
-    // 清除缓存
+    //清除缓存
     $cfg_ml->DelCache($cfg_ml->M_ID);
     ShowMsg('成功更新头像信息', $backurl);
     exit();
