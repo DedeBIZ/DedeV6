@@ -58,9 +58,9 @@ if ($dopost == "toadmin") {
                     VALUES('$id','$userid'$inputpwdv,'$uname','$typeid','$tname','$email')";
     }
     $dsql->ExecuteNoneQuery($query);
-    $query = "UPDATE `#@__member` SET rank='100',uname='$uname',matt='10',email='$email'$pwdm WHERE mid='$id'";
+    $query = "UPDATE `#@__member` SET `rank`='100',uname='$uname',matt='10',email='$email'$pwdm WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
-    $row = $dsql->GetOne("SELECT * FROM #@__admintype WHERE rank='$usertype'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__admintype` WHERE `rank`='$usertype'");
     $floginid = $cuserLogin->getUserName();
     $fromid = $cuserLogin->getUserID();
     $subject = "恭喜您已经成功提升为管理员";

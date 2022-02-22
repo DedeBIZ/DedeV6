@@ -71,7 +71,7 @@
                 <select name='usertype' style='width:200px'>
                   <?php
 			  	
-			  	$dsql->SetQuery("Select * from `#@__admintype` order by rank asc");
+			  	$dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
 			  	$dsql->Execute("ut");
 			  	while($myrow = $dsql->GetObject("ut"))
 			  	{

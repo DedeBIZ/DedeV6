@@ -200,7 +200,7 @@ if ($dopost == 'time') {
                 <td class="bline" height="26" align="center">浏览权限：</td>
                 <td class="bline"><select name="corank" id="corank" style="width:100">
                     <?php
-                    $dsql->SetQuery("SELECT * FROM #@__arcrank WHERE rank >= 0");
+                    $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0");
                     $dsql->Execute();
                     while ($row = $dsql->GetObject()) {
                         if ($myrow['corank'] == $row->rank)

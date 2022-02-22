@@ -28,7 +28,7 @@ if ($dopost == 'save') {
     ShowMsg('成功修改用户组的权限!', 'sys_group.php');
     exit();
 } else if ($dopost == 'del') {
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__admintype` WHERE CONCAT(`rank`)='$rank' AND system='0';");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__admintype` WHERE CONCAT(`rank`)='$rank' AND `system`='0';");
     ShowMsg("成功删除一个用户组!", "sys_group.php");
     exit();
 }

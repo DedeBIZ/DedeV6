@@ -25,7 +25,7 @@ if ($dopost == 'save') {
         $scores = ${"scores_".$startID};
         if (isset(${"check_".$startID})) {
             if ($rank > 0) {
-                $query = "UPDATE `#@__arcrank` SET membername='$name',money='$money',rank='$rank',scores='$scores' WHERE id='$id' ";
+                $query = "UPDATE `#@__arcrank` SET membername='$name',money='$money',`rank`='$rank',scores='$scores' WHERE id='$id' ";
             }
         } else {
             $query = "DELETE FROM `#@__arcrank` WHERE id='$id' AND rank<>10";
@@ -41,11 +41,11 @@ if ($dopost == 'save') {
     echo "<script> alert('成功更新会员等级表'); </script>";
 }
 if ($dopost == 'del') {
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arcrank` WHERE id='$id' AND rank<>10");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arcrank` WHERE id='$id' AND `rank`<>10");
     ShowMsg("删除成功", "member_rank.php");
     exit();
 }
 
-$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE rank>0 ORDER BY rank");
+$dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank`>0 ORDER BY `rank`");
 $dsql->Execute();
 include DedeInclude('templets/member_rank.htm');

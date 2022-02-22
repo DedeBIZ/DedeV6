@@ -45,7 +45,7 @@ if (!isset($dopost) || empty($dopost)) {
 
     if (!isset($do) || empty($do)) {
         $shops_deliveryarr = array();
-        $dsql->SetQuery("SELECT pid,dname,price,des FROM #@__shops_delivery ORDER BY orders ASC");
+        $dsql->SetQuery("SELECT pid,dname,price,des FROM `#@__shops_delivery` ORDER BY orders ASC");
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
             $shops_deliveryarr[] = $row;
@@ -53,7 +53,7 @@ if (!isset($dopost) || empty($dopost)) {
 
         //获取支付接口列表
         $shops_paymentarr = array();
-        $dsql->SetQuery("SELECT * FROM #@__payment WHERE enabled='1' ORDER BY rank ASC");
+        $dsql->SetQuery("SELECT * FROM `#@__payment` WHERE enabled='1' ORDER BY `rank` ASC");
         $dsql->Execute();
         $i = 0;
         while ($row = $dsql->GetArray()) {

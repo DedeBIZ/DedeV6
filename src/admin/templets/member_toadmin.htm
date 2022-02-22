@@ -72,7 +72,7 @@
               <td height="30" align="right">用户类型：</td>
               <td align="left"><select name='usertype' style='width:200px'>
                   <?php
-			  	$dsql->SetQuery("Select * from #@__admintype order by rank asc");
+			  	$dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
 			  	$dsql->Execute("ut");
 			  	while($myrow = $dsql->GetObject("ut"))
 			  	{

@@ -162,7 +162,7 @@ function __EditUser()
             matt = '$matt',
             money = '$money',
             scores = '$scores',
-            rank = '$rank',
+            `rank` = '$rank',
             spacesta='$spacesta',
             uptime='$uptime',
             exptime='$exptime'
@@ -176,7 +176,7 @@ function __EditUser()
             sex = '$sex',
             money = '$money',
             scores = '$scores',
-            rank = '$rank',
+            `rank` = '$rank',
             spacesta='$spacesta',
             uptime='$uptime',
             exptime='$exptime'

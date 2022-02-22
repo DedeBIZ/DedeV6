@@ -185,11 +185,11 @@ function CheckRank($rank = 0, $money = 0)
         if ($cfg_ml->M_Rank < $rank) {
             $needname = "";
             if ($cfg_ml->M_Rank == 0) {
-                $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='$rank'");
+                $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='$rank'");
                 $myname = "普通会员";
                 $needname = $row['membername'];
             } else {
-                $dsql->SetQuery("SELECT membername From `#@__arcrank` WHERE rank='$rank' OR rank='".$cfg_ml->M_Rank."' ORDER BY rank DESC");
+                $dsql->SetQuery("SELECT membername From `#@__arcrank` WHERE `rank`='$rank' OR `rank`='".$cfg_ml->M_Rank."' ORDER BY `rank` DESC");
                 $dsql->Execute();
                 $row = $dsql->GetObject();
                 $needname = $row->membername;

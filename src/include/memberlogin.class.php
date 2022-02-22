@@ -213,7 +213,7 @@ class MemberLogin
         $mhasDay = $this->M_ExpTime - ceil(($nowtime - $this->M_UpTime) / 3600 / 24) + 1;
         if ($mhasDay <= 0) {
             $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET uptime='0',exptime='0',
-                                         rank='$cfg_mb_rank' WHERE mid='".$this->fields['mid']."';");
+                                         `rank`='$cfg_mb_rank' WHERE mid='".$this->fields['mid']."';");
         }
         return $mhasDay;
     }

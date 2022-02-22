@@ -20,7 +20,7 @@ $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $adminRanks[$row->rank] = $row->typename;
 }
-$query = "SELECT #@__admin.*,#@__arctype.typename FROM #@__admin LEFT JOIN #@__arctype ON #@__admin.typeid = #@__arctype.id $rank ";
+$query = "SELECT `#@__admin`.*,`#@__arctype`.typename FROM `#@__admin` LEFT JOIN `#@__arctype` ON `#@__admin`.typeid = `#@__arctype`.id $rank ";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/sys_admin_user.htm");
 $dlist->SetSource($query);

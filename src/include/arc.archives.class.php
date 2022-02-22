@@ -1012,7 +1012,7 @@ class Archives
         $karr = $kaarr = $GLOBALS['replaced'] = array();
         //暂时屏蔽超链接
         $body = preg_replace("#(<a(.*))(>)(.*)(<)(\/a>)#isU", '\\1-]-\\4-[-\\6', $body);
-        $query = "SELECT * FROM #@__keywords WHERE rpurl<>'' ORDER BY rank DESC";
+        $query = "SELECT * FROM `#@__keywords` WHERE rpurl<>'' ORDER BY `rank` DESC";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute();
         while($row = $this->dsql->GetArray())
@@ -1038,7 +1038,7 @@ class Archives
                     $body = str_replace_limit($key, "<a href='$key_url' target='_blank'>$key</a>", $body, $cfg_replace_num);
                 }
             } else {
-                $query = "SELECT * FROM #@__keywords WHERE rpurl<>'' ORDER BY rank DESC";
+                $query = "SELECT * FROM `#@__keywords` WHERE rpurl<>'' ORDER BY `rank` DESC";
                 $this->dsql->SetQuery($query);
                 $this->dsql->Execute();
                 while($row = $this->dsql->GetArray())

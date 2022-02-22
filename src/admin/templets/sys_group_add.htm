@@ -30,7 +30,7 @@
                   （数字，系统已占用的级别值：
                   <?php
           	
-          	$dsql->SetQuery("Select rank From #@__admintype");
+          	$dsql->SetQuery("Select `rank` From `#@__admintype`");
           	$dsql->Execute();
           	while($row = $dsql->GetObject()) echo '<span style='color:#e74d58'>'.$row->rank.'</span>、';
           	?>

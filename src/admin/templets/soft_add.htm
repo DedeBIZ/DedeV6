@@ -334,7 +334,7 @@ table{border-collapse:separate}
               <td width="179" align="left">
                 <select name="daccess" id="daccess" style="width:90px">
                 <?php
-                $dsql->SetQuery("Select * from `#@__arcrank` where rank>=0 ");
+                $dsql->SetQuery("Select * from `#@__arcrank` where `rank`>=0 ");
                 $dsql->Execute();
                 while($row = $dsql->GetArray())
                 {

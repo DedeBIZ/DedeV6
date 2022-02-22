@@ -28,7 +28,7 @@ $sortkey = empty($sortkey) ? 'mid' : preg_replace("#[^a-z]#i", '', $sortkey);
 $staArr = array(-2 => '限制用户(禁言)', -1 => '未通过审核', 0 => '审核通过，提示填写完整信息', 1 => '没填写详细资料', 2 => '正常使用状态');
 $staArrmatt = array(1 => '被推荐', 0 => '非普通 ');
 $MemberTypes = array();
-$dsql->SetQuery("Select rank,membername From `#@__arcrank` where rank>0 ");
+$dsql->SetQuery("Select `rank`,membername From `#@__arcrank` where `rank`>0 ");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $MemberTypes[$row->rank] = $row->membername;

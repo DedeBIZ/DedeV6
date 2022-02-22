@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Group');
 if (!empty($dopost)) {
-    $row = $dsql->GetOne("SELECT * FROM #@__admintype WHERE rank='".$rankid."'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__admintype` WHERE `rank`='".$rankid."'");
     if (is_array($row)) {
         ShowMsg('您所创建的组别的级别值已存在，不允许重复!', '-1');
         exit();
@@ -27,7 +27,7 @@ if (!empty($dopost)) {
         }
         $AllPurviews = trim($AllPurviews);
     }
-    $dsql->ExecuteNoneQuery("INSERT INTO #@__admintype(rank,typename,system,purviews) VALUES ('$rankid','$groupname', 0, '$AllPurviews');");
+    $dsql->ExecuteNoneQuery("INSERT INTO `#@__admintype`(`rank`,typename,`system`,purviews) VALUES ('$rankid','$groupname', 0, '$AllPurviews');");
     ShowMsg("成功创建一个新的用户组!", "sys_group.php");
     exit();
 }
