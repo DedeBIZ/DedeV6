@@ -15,7 +15,7 @@ setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($rank)) $rank = '';
 else $rank = " WHERE CONCAT(#@__admin.usertype)='$rank' ";
 
-$dsql->SetQuery("SELECT rank,typename FROM `#@__admintype` ");
+$dsql->SetQuery("SELECT `rank`,typename FROM `#@__admintype` ");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $adminRanks[$row->rank] = $row->typename;

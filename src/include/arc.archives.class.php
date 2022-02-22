@@ -1028,7 +1028,7 @@ class Archives
         {
             if($cfg_replace_num > 0)
             {
-                $query = "SELECT * FROM #@__keywords WHERE rpurl<>'' ORDER BY rank DESC";
+                $query = "SELECT * FROM `#@__keywords` WHERE rpurl<>'' ORDER BY `rank` DESC";
                 $this->dsql->SetQuery($query);
                 $this->dsql->Execute();
                 while($row = $this->dsql->GetArray())
