@@ -1,4 +1,4 @@
--- 6.0.4
+-- 6.0.5
 ALTER TABLE `#@__arctype`
 	ADD COLUMN `namegk` varchar(255) NULL AFTER `typename`,
 	ADD COLUMN `enname` varchar(255) NULL AFTER `namegk`,

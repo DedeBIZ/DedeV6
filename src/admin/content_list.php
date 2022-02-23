@@ -14,22 +14,17 @@ require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/typelink.class.php');
 require_once(DEDEINC.'/datalistcp.class.php');
 require_once(DEDEADMIN.'/inc/inc_list_functions.php');
-
 $cid = isset($cid) ? intval($cid) : 0;
 $channelid = isset($channelid) ? intval($channelid) : 0;
 $mid = isset($mid) ? intval($mid) : 0;
-
 if (!isset($keyword)) $keyword = '';
 if (!isset($flag)) $flag = '';
 if (!isset($f)) $f = '';
 if (!isset($arcrank)) $arcrank = '';
 if (!isset($dopost)) $dopost = '';
-
 $arcrank = RemoveXSS($arcrank);
-
 //检查权限许可，总权限
 CheckPurview('a_List,a_AccList,a_MyList');
-
 //栏目浏览许可
 $userCatalogSql = '';
 if (TestPurview('a_List')) {;
@@ -47,7 +42,6 @@ $adminid = $cuserLogin->getUserID();
 $maintable = '#@__archives';
 setcookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
 $tl = new TypeLink($cid);
-
 //----------------------------------------
 //在不指定排序条件和关键字的情况下直接统计微表
 //----------------------------------------
@@ -86,7 +80,6 @@ if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
     $arr = $dsql->GetOne($sql);
     $totalresult = $arr['dd'];
 }
-
 if ($cid == 0) {
     if ($channelid == 0) {
         $positionname = '所有栏目&gt;';
@@ -99,7 +92,6 @@ if ($cid == 0) {
 } else {
     $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
 }
-
 //当选择的是单表模型栏目时，直接跳转到单表模型管理区
 if (
     empty($channelid)
@@ -111,12 +103,9 @@ if ($channelid < -1) {
     header("location:content_sg_list.php?f=$f&cid=$cid&channelid=$channelid&keyword=$keyword");
     exit();
 }
-
-
 //栏目大于800则需要缓存数据
 $optHash = md5($cid.serialize($admin_catalogs).$channelid);
 $optCache = DEDEDATA."/tplcache/inc_option_$optHash.inc";
-
 $typeCount = 0;
 if (file_exists($cache1)) require_once($cache1);
 else $cfg_Cs = array();
@@ -131,16 +120,12 @@ if ($typeCount > 800) {
 } else {
     $optionarr = $tl->GetOptionArray($cid, $admin_catalogs, $channelid);
 }
-
 $whereSql = empty($channelid) ? " WHERE arc.channel > 0  AND arc.arcrank > -2 " : " WHERE arc.channel = '$channelid' AND arc.arcrank > -2 ";
-
 $flagsArr = '';
 $dsql->Execute('f', 'SELECT * FROM `#@__arcatt` ORDER BY sortid ASC');
 while ($frow = $dsql->GetArray('f')) {
     $flagsArr .= ($frow['att'] == $flag ? "<option value='{$frow['att']}' selected>{$frow['attname']}</option>\r\n" : "<option value='{$frow['att']}'>{$frow['attname']}</option>\r\n");
 }
-
-
 if (!empty($userCatalogSql)) {
     $whereSql .= " AND ".$userCatalogSql;
 }
@@ -162,22 +147,17 @@ if ($arcrank != '') {
 } else {
     $CheckUserSend = "<button type='button' class='btn btn-success btn-sm' onClick=\"location='catalog_do.php?cid=".$cid."&dopost=listArchives&arcrank=-1&gurl=content_list.php';\">稿件审核</button>";
 }
-
 $orderby = empty($orderby) ? 'id' : preg_replace("#[^a-z0-9]#", "", $orderby);
 $orderbyField = 'arc.'.$orderby;
-
 $query = "SELECT arc.id,arc.typeid,arc.senddate,arc.flag,arc.ismake,
 arc.channel,arc.arcrank,arc.click,arc.title,arc.color,arc.litpic,arc.pubdate,arc.mid
 FROM `$maintable` arc
 $whereSql
 ORDER BY $orderbyField DESC";
-
 if (empty($f) || !preg_match("#form#", $f)) $f = 'form1.arcid1';
-
 //初始化
 $dlist = new DataListCP();
-$dlist->pageSize = 30;
-
+$dlist->pageSize = 40;
 //GET参数
 $dlist->SetParameter('dopost', 'listArchives');
 $dlist->SetParameter('keyword', $keyword);
@@ -188,15 +168,11 @@ $dlist->SetParameter('orderby', $orderby);
 $dlist->SetParameter('arcrank', $arcrank);
 $dlist->SetParameter('channelid', $channelid);
 $dlist->SetParameter('f', $f);
-
 //模板
 if (empty($s_tmplets)) $s_tmplets = 'templets/content_list.htm';
 $dlist->SetTemplate(DEDEADMIN.'/'.$s_tmplets);
-
 //查询
 $dlist->SetSource($query);
-
 //显示
 $dlist->Display();
-//echo $dlist->queryTime;
 $dlist->Close();

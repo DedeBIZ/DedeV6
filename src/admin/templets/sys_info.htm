@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="<?php echo $cfg_soft_lang; ?>">
-<title>系统配置参数</title>
+<title>系统配置变量</title>
 <script src="../static/js/dedeajax2.js"></script>
 <script src="../static/js/jquery.js"></script>
 <script>
@@ -58,7 +58,7 @@ function resetCookieEncode() {
   <div style="min-width:780px">
     <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
       <tr>
-        <td height="30" background="images/tbg.gif" style="padding-left:10px"><b>系统配置参数</b></td>
+        <td height="30" background="images/tbg.gif" style="padding-left:10px"><b>系统配置变量</b></td>
       </tr>
       <tr>
         <td height="30" bgcolor="#ffffff" align="left">
@@ -105,7 +105,7 @@ function resetCookieEncode() {
                   多行文本 </td>
               </tr>
               <tr>
-                <td height="26">参数说明</td>
+                <td height="26">变量说明</td>
                 <td align="left"><input type="text" name="varmsg" id="varmsg" class="npvar" style="width:80%"></td>
                 <td align="center">所属组</td>
                 <td align="left">
@@ -155,8 +155,8 @@ function resetCookieEncode() {
             ?>
             <table width="100%" style="<?php if($n!=$gp) echo 'display:none'; ?>" id="td<?php echo $n?>" border="0" cellspacing="1" cellpadding="1" bgcolor="#cfcfcf">
               <tr align="center" bgcolor="#FBFCE2">
-                <td width="300">参数说明</td>
-                <td>参数值</td>
+                <td width="300">变量说明</td>
+                <td>变量值</td>
                 <td width="220">变量名</td>
               </tr>
               <?php
@@ -197,7 +197,7 @@ function resetCookieEncode() {
                 }
                 ?>
                 </td>
-                <td>{dede:field.<?php echo $row['varname']?>/}</td>
+                <td><?php echo $row['varname']?></td>
               </tr>
               <?php
               }

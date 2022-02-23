@@ -1,7 +1,5 @@
 <?php
-if (!defined('DEDEINC')) {
-    exit("dedebiz");
-}
+if (!defined('DEDEINC')) exit('dedebiz');
 require_once(DEDEINC."/taglib/flink.lib.php");
 /**
  * 友情链接
@@ -12,7 +10,6 @@ require_once(DEDEINC."/taglib/flink.lib.php");
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function lib_flinktype(&$ctag, &$refObj)
 {
     global $dsql;

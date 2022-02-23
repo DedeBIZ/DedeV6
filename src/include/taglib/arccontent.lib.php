@@ -1,6 +1,5 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-
 /**
  * 文档内容调用标签
  *
@@ -10,9 +9,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 require_once(DEDEINC."/channelunit.class.php");
-// 这是一个用来调用文档内容的标签，只是提供一种方法，不建议太多地方调用，毕竟比较损耗性能
+//这是一个用来调用文档内容的标签，只是提供一种方法，不建议太多地方调用，毕竟比较损耗性能
 /*
 用法：
 {dede:arccontent type='pre|next'}

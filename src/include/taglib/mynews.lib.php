@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 站内新闻调用标签
  *
@@ -9,8 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-
 function lib_mynews(&$ctag, &$refObj)
 {
     global $dsql, $envs;

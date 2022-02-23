@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 子栏目调用标签
  *
@@ -9,8 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-
 function lib_sonchannel(&$ctag, &$refObj)
 {
     global $_sys_globals, $dsql;

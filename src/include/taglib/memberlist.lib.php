@@ -1,7 +1,5 @@
 <?php
-if (!defined('DEDEINC')) {
-    exit("dedebiz");
-}
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 会员信息调用标签
  *
@@ -11,7 +9,6 @@ if (!defined('DEDEINC')) {
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 //orderby = logintime(login new) or mid(register new)
 function lib_memberlist(&$ctag, &$refObj)
 {

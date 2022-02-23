@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @version        $Id: edit_email.php 2020/12/18 tianya $
  * @package        DedeBIZ.Member

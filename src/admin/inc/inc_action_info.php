@@ -42,7 +42,7 @@ $actionSearch[0] = array(
         ),
         4  =>  array(
             'title' => '内容回收站',
-            'description' => '如果在"系统基本参数"的"核心设置"中开启了"文章回收站(是/否)开启功能",后台删除的文档将会存放在此处',
+            'description' => '如果在"系统配置变量"的"核心设置"中开启了"文章回收站(是/否)开启功能",后台删除的文档将会存放在此处',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'recycling.php'
         )
@@ -375,7 +375,7 @@ $actionSearch[10] = array(
     'description' => '对网站的一些基本信息和配置进行管理',
     'soniterm' => array(
         0  =>  array(
-            'title' => '系统基本参数',
+            'title' => '系统配置变量',
             'description' => '包含站点设置、核心设置 、附件设置、会员设置、互动设置、性能选项、其它选项、模块设置、添加新变量等分类，其中有网站基本信息和网站的基本设置选项',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info.php'

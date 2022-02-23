@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEINC')) exit('dedebiz');
 //function GetTags($num,$ltype='new',$InnerText='')
 /**
  * TAG调用标签
@@ -9,7 +10,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function lib_tag(&$ctag, &$refObj)
 {
     global $dsql, $envs, $cfg_cmsurl;

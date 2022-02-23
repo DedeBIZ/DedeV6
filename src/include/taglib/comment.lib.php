@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 用于注释的标签
  *
@@ -8,8 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
- 
-// 只是用于进行注释
+//只是用于进行注释
 function lib_comment(&$ctag, &$refObj)
 {
     return "";   

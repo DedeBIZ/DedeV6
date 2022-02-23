@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit('dedebiz');
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 按排序位置的获取单个栏目的链接信息
  *
@@ -8,7 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function lib_autochannel(&$ctag, &$refObj)
 {
     global $dsql;

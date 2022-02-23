@@ -1,6 +1,5 @@
 <?php
-if (!defined('DEDEINC'))
-    exit('dedebiz');
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 
  *
@@ -10,7 +9,6 @@ if (!defined('DEDEINC'))
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function lib_php(&$ctag, &$refObj)
 {
     global $dsql;

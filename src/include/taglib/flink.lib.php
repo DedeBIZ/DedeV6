@@ -1,7 +1,5 @@
 <?php
-if (!defined('DEDEINC')) {
-    exit("dedebiz");
-}
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 友情链接
  *
@@ -11,7 +9,6 @@ if (!defined('DEDEINC')) {
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 helper('cache');
 function lib_flink(&$ctag, &$refObj)
 {

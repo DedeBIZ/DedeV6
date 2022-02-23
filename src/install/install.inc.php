@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @version        $Id: install.inc.php 1 13:41 2010年7月26日Z tianya $
  * @package        DedeBIZ.Install

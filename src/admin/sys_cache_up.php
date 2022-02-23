@@ -12,7 +12,6 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_ArcBatch');
 if (empty($dopost)) $dopost = '';
 if (empty($step)) $step = 1;
-
 if ($dopost == "ok") {
     if (empty($uparc)) $uparc = 0;
     if ($step == -1) {
@@ -20,7 +19,6 @@ if ($dopost == "ok") {
         ShowMsg("成功更新所有缓存", "javascript:;");
         exit();
     }
-
     //更新栏目缓存
     else if ($step == 1) {
         UpDateCatCache();
@@ -28,7 +26,6 @@ if ($dopost == "ok") {
         ShowMsg("成功更新栏目缓存，及后台栏目选项,准备更新枚举缓存...", "sys_cache_up.php?dopost=ok&step=2&uparc=$uparc");
         exit();
     }
-
     //更新枚举缓存
     else if ($step == 2) {
         include_once(DEDEINC."/enums.func.php");
@@ -37,7 +34,6 @@ if ($dopost == "ok") {
         ShowMsg("成功更新枚举缓存，准备更新调用缓存...", "sys_cache_up.php?dopost=ok&step=3&uparc=$uparc");
         exit();
     }
-
     //清理arclist调用缓存、过期会员访问历史、过期短信
     else if ($step == 3) {
         echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
@@ -55,7 +51,7 @@ if ($dopost == "ok") {
     }
     //修正错误文档
     else if ($step == 9) {
-        ShowMsg('修正错误文档操作已经取消，请在&lt;系统-&gt;系统错误修复[S]&gt;中操作...', 'sys_cache_up.php?dopost=ok&step=-1&uparc=1', 0, 5000);
+        ShowMsg('修正错误文档操作已经取消，后台系统：系统错误修复中操作...', 'sys_cache_up.php?dopost=ok&step=-1&uparc=1', 0, 5000);
         exit();
     }
 }

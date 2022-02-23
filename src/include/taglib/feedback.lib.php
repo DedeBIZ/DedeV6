@@ -1,7 +1,5 @@
 <?php
-if (!defined('DEDEINC')) {
-    exit("dedebiz");
-}
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 调用最新评论
  *
@@ -11,7 +9,6 @@ if (!defined('DEDEINC')) {
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function lib_feedback(&$ctag, &$refObj)
 {
     global $dsql;

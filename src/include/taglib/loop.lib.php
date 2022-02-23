@@ -1,7 +1,5 @@
 <?php
-if (!defined('DEDEINC')) {
-    exit("dedebiz");
-}
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 调用任意表的数据标签
  *
@@ -11,7 +9,6 @@ if (!defined('DEDEINC')) {
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 require_once(DEDEINC.'/dedevote.class.php');
 function lib_loop(&$ctag, &$refObj)
 {

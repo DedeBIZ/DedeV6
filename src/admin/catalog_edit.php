@@ -77,17 +77,17 @@ if ($dopost == "save") {
     }
     //修改子栏目属性
     if (!empty($upnext)) {
-        $upquery = "UPDATE `#@__arctype` SET
-        issend='$issend',
-        defaultname='$defaultname',
-        channeltype='$channeltype',
-        tempindex='$tempindex',
-        templist='$templist',
-        temparticle='$temparticle',
-        namerule='$namerule',
-        namerule2='$namerule2',
-        ishidden='$ishidden'
-        WHERE 1=1 AND $slinks";
+    $upquery = "UPDATE `#@__arctype` SET
+    issend='$issend',
+    defaultname='$defaultname',
+    channeltype='$channeltype',
+    tempindex='$tempindex',
+    templist='$templist',
+    temparticle='$temparticle',
+    namerule='$namerule',
+    namerule2='$namerule2',
+    ishidden='$ishidden'
+    WHERE 1=1 AND $slinks";
         if (!$dsql->ExecuteNoneQuery($upquery)) {
             ShowMsg("修改当前栏目成功，但修改下级栏目属性时失败", "-1");
             exit();
@@ -96,7 +96,7 @@ if ($dopost == "save") {
     UpDateCatCache();
     ShowMsg("成功修改一个分类", "catalog_main.php");
     exit();
-}//End Save Action
+} //End Save Action
 else if ($dopost == "savetime") {
     $uptopsql = '';
     $slinks = " id IN (".GetSonIds($id).")";
@@ -165,80 +165,76 @@ if ($dopost == 'time') {
         <input type="hidden" name="moresite" value="<?php echo $myrow['moresite']; ?>">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td class="bline" height="26" align="center" colspan="2">
-                    <a href="catalog_edit.php?id=<?php echo $id; ?>">当前是快捷编辑模式，如果您要修改更详细的参数，请使用高级模式&gt;&gt;</a>
+                <td width="150" class='bline' height="26" align="center">是否支持投稿：</td>
+                <td class='bline'>
+                    <label><input type='radio' name='issend' value='0' class='np' <?php if ($myrow['issend'] == "0") echo " checked='1' "; ?>>&nbsp;不支持</label>
+                    <label><input type='radio' name='issend' value='1' class='np' <?php if ($myrow['issend'] == "1") echo " checked='1' "; ?>>&nbsp;支持</label>
                 </td>
             </tr>
             <tr>
-                <td width="150" class="bline" height="26" align="center">是否支持投稿：</td>
-                <td class="bline">
-                    <label><input type='radio' name='issend' value='0' class='np' <?php if ($myrow['issend'] == "0") echo " checked='1' "; ?>>不支持</label>&nbsp;
-                    <label><input type='radio' name='issend' value='1' class='np' <?php if ($myrow['issend'] == "1") echo " checked='1' "; ?>>支持</label>
-                </td>
-            </tr>
-            <!--在快速修改修改内容模型后，因为模板没改变，会导致错误，因此去除些选择框-->
-            <tr>
-                <td class="bline" height="26" align="center">内容模型：</td>
-                <td class="bline">
+                <td class='bline' height="26" align="center">内容模型：</td>
+                <td class='bline'>
                     <?php
                     foreach ($channelArray as $k => $arr) {
                         if ($k == $channelid) echo "{$arr['typename']} | {$arr['nid']}";
                     }
                     ?>
-                    <a href='catalog_edit.php?id=<?php echo $id; ?>'>[修改]</a>
+                    <a href='catalog_edit.php?id=<?php echo $id; ?>' class='btn btn-success btn-sm'>更多模型</a>
                 </td>
             </tr>
             <tr>
-                <td class="bline" height="26" align="center">栏目名称：</td>
-                <td class="bline"><input name="typename" type="text" id="typename" size="30" value="<?php echo $myrow['typename'] ?>" class="iptxt"></td>
+                <td class='bline' height="26" align="center">栏目名称：</td>
+                <td class='bline'><input name="typename" type="text" id="typename" value="<?php echo $myrow['typename'] ?>" style="width:260px" class="iptxt"></td>
             </tr>
             <tr>
-                <td class="bline" height="26" align="center">排列顺序：</td>
-                <td class="bline"> <input name="sortrank" size="6" type="text" value="<?php echo $myrow['sortrank'] ?>" class="iptxt">（由低 -&gt; 高）</td>
+                <td class='bline' height="26" align="center"> 排列顺序： </td>
+                <td class='bline'> <input name="sortrank" type="text" value="<?php echo $myrow['sortrank'] ?>" style="width:100" class="iptxt">（由低 -&gt; 高）</td>
             </tr>
             <tr>
-                <td class="bline" height="26" align="center">浏览权限：</td>
-                <td class="bline"><select name="corank" id="corank" style="width:100">
+                <td class='bline' height="26" align="center">浏览权限：</td>
+                <td class='bline'>
+                    <select name="corank" id="corank" style="width:100">
                     <?php
                     $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0");
                     $dsql->Execute();
                     while ($row = $dsql->GetObject()) {
                         if ($myrow['corank'] == $row->rank)
-                        echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
-                        else
-                        echo "<option value='".$row->rank."'>".$row->membername."</option>";
+                            echo "<option value='".$row->rank."' selected>".$row->membername."</option>\r\n";
+                            else
+                            echo "<option value='".$row->rank."'>".$row->membername."</option>\r\n";
                     }
                     ?>
-                    </select>（仅限制栏目里的文档浏览权限）</td>
-            </tr>
-            <tr>
-                <td class="bline" height="26" align="center">文件保存目录：</td>
-                <td class="bline"><input name="typedir" type="text" id="typedir" value="<?php echo $myrow['typedir'] ?>" style="width:300px" class="iptxt"></td>
-            </tr>
-            <tr>
-                <td height="26" align="center" class="bline">栏目列表选项：</td>
-                <td class="bline">
-                    <label><input type='radio' name='isdefault' value='1' class='np' <?php if ($myrow['isdefault'] == 1) echo " checked='1' "; ?>>链接到默认页</label>
-                    <label><input type='radio' name='isdefault' value='0' class='np' <?php if ($myrow['isdefault'] == 0) echo " checked='1' "; ?>>链接到列表第一页</label>
-                    <label><input type='radio' name='isdefault' value='-1' class='np' <?php if ($myrow['isdefault'] == -1) echo " checked='1' "; ?>>使用动态页</label>
+                    </select>（仅限制栏目里的文档浏览权限）
                 </td>
             </tr>
             <tr>
-                <td class="bline" height="26" align="center">默认页的名称： </td>
-                <td class="bline"><input name="defaultname" type="text" value="<?php echo $myrow['defaultname'] ?>" class="iptxt"></td>
+                <td class='bline' height="26" align="center">文件保存目录：</td>
+                <td class='bline'><input name="typedir" type="text" id="typedir" value="<?php echo $myrow['typedir'] ?>" style="width:260px"class="iptxt"></td>
             </tr>
             <tr>
-                <td height="26" class="bline" align="center">栏目属性：</td>
-                <td class="bline">
-                    <label><input name="ispart" type="radio" id="radio" value="0" class='np' <?php if ($myrow['ispart'] == 0) echo " checked='1' "; ?>>最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                    <label><input name="ispart" type="radio" id="radio2" value="1" class='np' <?php if ($myrow['ispart'] == 1) echo " checked='1' "; ?>>频道封面（栏目本身不允许发布文档）</label><br>
-                    <label><input name="ispart" type="radio" id="radio3" value="2" class='np' <?php if ($myrow['ispart'] == 2) echo " checked='1' "; ?>>外部连接（在"文件保存目录"处填写网址）</label></td>
+                <td height="26" align="center" class='bline'>栏目列表选项：</td>
+                <td class='bline'>
+                    <label><input type='radio' name='isdefault' value='1' class='np' <?php if ($myrow['isdefault'] == 1) echo " checked='1' "; ?>>&nbsp;链接到默认页</label>
+                    <label><input type='radio' name='isdefault' value='0' class='np' <?php if ($myrow['isdefault'] == 0) echo " checked='1' "; ?>>&nbsp;链接到列表第一页</label>
+                    <label><input type='radio' name='isdefault' value='-1' class='np' <?php if ($myrow['isdefault'] == -1) echo " checked='1' "; ?>>&nbsp;使用动态页</label>
+                </td>
+            </tr>
+            <tr>
+                <td class='bline' height="26" align="center">默认页的名称：</td>
+                <td class='bline'><input name="defaultname" type="text" value="<?php echo $myrow['defaultname'] ?>" style="width:260px" class="iptxt"></td>
+            </tr>
+            <tr>
+                <td height="26" class='bline' align="center">栏目属性：</td>
+                <td class='bline'>
+                    <label><input name="ispart" type="radio" id="radio" value="0" class='np' <?php if ($myrow['ispart'] == 0) echo " checked='1' "; ?>>&nbsp;最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+                    <label><input name="ispart" type="radio" id="radio2" value="1" class='np' <?php if ($myrow['ispart'] == 1) echo " checked='1' "; ?>>&nbsp;频道封面（栏目本身不允许发布文档）</label><br>
+                    <label><input name="ispart" type="radio" id="radio3" value="2" class='np' <?php if ($myrow['ispart'] == 2) echo " checked='1' "; ?>>&nbsp;外部连接（在"文件保存目录"处填写网址）</label>
+                </td>
             </tr>
             <tr>
                 <td align="center" colspan="2" height="50" bgcolor='#FAFEE0'>
-                    <input name="imageField" type="image" src="images/button_ok.gif" width="60" height="26" border="0" class="np">
-                    &nbsp;&nbsp;&nbsp;
-                    <a title='关闭' onclick='CloseMsg()'><img src="images/button_back.gif" width="60" height="26" border="0"></a>
+                    <button onclick='getSelCat("<?php echo $targetid; ?>");' class='btn btn-success'>保存</button>
+                    <button type='button' onclick='CloseMsg()' class='btn btn-success'>关闭</button>
                 </td>
             </tr>
         </table>

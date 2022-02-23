@@ -1,5 +1,5 @@
 <?php
-!defined('DEDEINC') && exit("403 Forbidden!");
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 
  *
@@ -9,7 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function lib_productimagelist(&$ctag, &$refObj)
 {
     global $dsql, $sqlCt;

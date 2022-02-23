@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit('dedebiz');
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 关联内容标签
  *
@@ -8,8 +9,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-// 关联内容
+//关联内容
 function lib_relation(&$ctag, &$refObj)
 {
     global $dsql;

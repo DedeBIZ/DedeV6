@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 获取网站搜索的热门关键字
  *
@@ -9,8 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-
 function lib_hotwords(&$ctag, &$refObj)
 {
     global $cfg_phpurl, $dsql;

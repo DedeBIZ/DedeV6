@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @version        $Id: check_card.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member

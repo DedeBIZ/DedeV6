@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @version        $Id: ajax_feedback.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member

@@ -49,7 +49,7 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main'/>
 </m:top>
 <m:top item='10_' name='系统设置' display='none' rank='sys_User,sys_Group,sys_Edit,sys_Log,sys_Data'>
-    <m:item name='系统基本参数' link='sys_info.php' rank='sys_Edit' target='main' />
+    <m:item name='系统配置变量' link='sys_info.php' rank='sys_Edit' target='main' />
     <m:item name='系统用户管理' link='sys_admin_user.php' rank='sys_User' target='main' />
     <m:item name='用户组设定' link='sys_group.php' rank='sys_Group' target='main' />
     <m:item name='系统日志管理' link='log_list.php' rank='sys_Log' target='main' />

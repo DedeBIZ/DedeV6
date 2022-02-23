@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit('dedebiz');
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * QRCode
  *
@@ -8,7 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 
 $GLOBALS['qrcode_id'] = isset($GLOBALS['qrcode_id']) ? $GLOBALS['qrcode_id'] : 1;
 function lib_qrcode(&$ctag, &$refObj)

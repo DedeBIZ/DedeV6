@@ -83,9 +83,8 @@
         ?>
         </td>
         <td>
-          <div id='manager_<?php echo $v['hash']; ?>'
-            <?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none;"'?>>
-            <a class="btn btn-success" href='module_main.php?action=view_developoer&hash=<?php echo $v['hash']; ?>'>开发者信息</a>
+          <div id='manager_<?php echo $v['hash']; ?>'<?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none;"'?>>
+            <a class="btn btn-success" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash']; ?>" style="margin-right:6px">开发者信息</a>
             <div class="btn-group" role="group">
               <button id="btnAction" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">操作</button>
               <div class="dropdown-menu" aria-labelledby="btnAction">
@@ -102,7 +101,7 @@
       }
       ?>
       <tr>
-        <td colspan="7" align="center" bgcolor='#F9FCEF'>&nbsp;</td>
+        <td colspan="7" align="center" bgcolor='#F9FCEF'></td>
       </tr>
     </form>
   </table>

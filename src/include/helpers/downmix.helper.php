@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 防采集混淆字符串
  *
@@ -9,7 +8,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 /**
  *  混淆字符串内容
  *

@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 单页文档相同标识调用标签
  *
@@ -10,8 +10,7 @@
  * @link           https://www.dedebiz.com
  */
 
-
-if (!defined('DEDEINC')) exit('dedebiz');
+if (!defined('DEDEINC')) exit('Request Error!');
 require_once(dirname(__FILE__).'/likesgpage.lib.php');
 
 function lib_likepage(&$ctag, &$refObj)
