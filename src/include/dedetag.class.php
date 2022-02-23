@@ -613,10 +613,15 @@ class DedeTagParse
             $phpcode = $refObj->GetInnerText();
         }
         $phpcode = preg_replace("/'@me'|\"@me\"|@me/i", '$DedeMeValue', $phpcode);
-        @eval($phpcode); //or die("<xmp>$phpcode</xmp>");
+        try {
+            @eval($phpcode); 
 
-        $this->CTags[$i]->TagValue = $DedeMeValue;
-        $this->CTags[$i]->IsReplace = TRUE;
+            $this->CTags[$i]->TagValue = $DedeMeValue;
+            $this->CTags[$i]->IsReplace = TRUE;
+        } catch (Exception $e) {
+            //or die("<xmp>$phpcode</xmp>");
+        }
+
     }
 
     /**
@@ -869,12 +874,18 @@ class DedeTagParse
         $functionname = str_replace("\"}", "\"]", $functionname);
         $functionname = preg_replace("/'@me'|\"@me\"|@me/i", '$DedeFieldValue', $functionname);
         $functionname = "\$DedeFieldValue = ".$functionname;
-        @eval($functionname.";"); //or die("<xmp>$functionname</xmp>");
-        if (empty($DedeFieldValue)) {
+        try {
+            @eval($functionname.";"); 
+            if (empty($DedeFieldValue)) {
+                return '';
+            } else {
+                return $DedeFieldValue;
+            }
+        } catch (Exception $e) {
+            //or die("<xmp>$functionname</xmp>");
             return '';
-        } else {
-            return $DedeFieldValue;
         }
+
     }
 
     /**
