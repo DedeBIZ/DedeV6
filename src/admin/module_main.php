@@ -86,14 +86,14 @@ else if ($action == 'view_developoer') {
   $devInfo = (array)json_decode($devContent);
   $offUrl = "";
   if ($devInfo['dev_type'] == 1) {
-    $offUrl = "<p>官方网址：<code>{$devInfo['offurl']}</code> <small>(复制在浏览器中打开)</small></p>";
+    $offUrl = "<p>官方网址：<code>{$devInfo['offurl']}</code><small>（复制在浏览器中打开）</small></p>";
   }
   $authAt = date("Y-m-d", $devInfo['auth_at']);
   if (!isset($info['dev_id'])) {
-    $devInfo['realname'] = $devInfo['dev_name'] = $info['team']." <span style='color:#e74d58'>未认证</span>";
+    $devInfo['dev_name'] = $info['team']."<span style='display:inline-block;margin-left:10px;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem'>未认证</span>";
     $authAt = "0000-00-00";
   }
-  ShowMsg("<div class='text-left'><p>开发者名称：{$devInfo['dev_name']}</p><p>开发者全称：{$devInfo['realname']}</p><p>开发者ID：{$devInfo['dev_id']} <a target='_blank' href='{$cfg_biz_dedebizUrl}/developer?dev_id={$devInfo['dev_id']}' class='btn btn-success btn-sm'>未认证</a></p>$offUrl<p>认证于：{$authAt}</p></a>", "javascript:;");
+  ShowMsg("<p>开发者名称：{$devInfo['dev_name']}</p><p>开发者ID：{$devInfo['dev_id']}</p><span>认证于：{$authAt}</span>", "-1");
   exit;
 }
 /*--------------
