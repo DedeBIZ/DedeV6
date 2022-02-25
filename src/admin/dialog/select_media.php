@@ -26,7 +26,6 @@ if (!is_dir($inpath)) {
 if (empty($f)) {
     $f = 'form1.enclosure';
 }
-
 if (empty($comeback)) {
     $comeback = '';
 }
@@ -154,7 +153,7 @@ table{background:#fff}
                 <td class='linerow' align='center'>$filetime</td>
                 </tr>";
                 echo "$line";
-            } else if (preg_match("#\.(rm|rmvb)#i", $file)) {
+            } else if (preg_match("#\.(rm|rmvb|mp3|mp4)#i", $file)) {
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
