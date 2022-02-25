@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit("dedebiz");
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 专题视图类
  *

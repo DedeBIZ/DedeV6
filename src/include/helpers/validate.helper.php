@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit('dedebiz');
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 验证小助手
  *

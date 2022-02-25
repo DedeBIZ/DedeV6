@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit("dedebiz");
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 栏目小助手,本文件仅做一个映射
  *

@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEINC')) exit('dedebiz');
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 管理员后台基本函数
  *
@@ -8,7 +9,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 /**
  *  获取拼音信息
  *
@@ -74,11 +74,8 @@ function SpGetPinyin($str, $ishead = 0, $isclose = 1)
             unset($pinyins);
         }
     }
-
     return $restr;
 }
-
-
 /**
  *  创建目录
  *
@@ -119,10 +116,9 @@ function SpCreateDir($spath)
     CloseFtp();
     return true;
 }
-
 function jsScript($js)
 {
-    $out = "<script type=\"text/javascript\">";
+    $out = "<script>";
     $out .= "//<![CDATA[\n";
     $out .= $js;
     $out .= "\n//]]>";
@@ -130,7 +126,6 @@ function jsScript($js)
 
     return $out;
 }
-
 /**
  *  获取编辑器
  *
@@ -174,44 +169,19 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
         $addConfig = "";
         if (defined("DEDEADMIN")) {
             $addConfig = ",{allowedContent:true,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,dedepagebreak,ddfilebrowser,mimage,textindent'}";
-            //$addConfig = ",{filebrowserImageUploadUrl:'./dialog/select_images_post.php'}";
         }
         $code = <<<EOT
 <script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
 <textarea id="{$fname}" name="{$fname}" rows="8" cols="60">{$fvalue}</textarea>
-<script>
-var editor = CKEDITOR.replace('{$fname}'{$addConfig});
-</script>
+<script>var editor = CKEDITOR.replace('{$fname}'{$addConfig});</script>
 EOT;
         if ($gtype == "print") {
             echo $code;
         } else {
             return $code;
         }
-    } else {
-        /*
-        //------------------------------------------------------------------------
-        //当前版本,暂时取消dedehtml编辑器的支持
-        //------------------------------------------------------------------------
-        require_once(DEDEINC.'/htmledit/dede_editor.php');
-        $ded = new DedeEditor($fname);
-        $ded->BasePath        = $GLOBALS['cfg_cmspath'].'/include/htmledit/' ;
-        $ded->Width        = '100%' ;
-        $ded->Height        = $nheight ;
-        $ded->ToolbarSet = strtolower($etype);
-        $ded->Value = $fvalue ;
-        if($gtype=="print")
-        {
-            $ded->Create();
-        }
-        else
-        {
-            return $ded->CreateHtml();
-        }
-        */
     }
 }
-
 /**
  *  获取更新信息
  *
@@ -236,7 +206,6 @@ function SpGetNewInfo()
     $query = "SELECT COUNT(*) AS dd FROM `#@__arctiny` ";
     $row2 = $dsql->GetOne($query);
     if ($row2) $add_query .= "&acount={$row2['dd']}";
-
     $offUrl = DEDEBIZURL."/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}";
     return $offUrl;
 }
