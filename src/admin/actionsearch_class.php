@@ -17,25 +17,21 @@ class ActionSearch
         $this->asarray = $this->GetSearchstr();
         $this->keyword = $keyword;
     }
-
     //初始化系统
     function ActionSearch($keyword)
     {
         $this->__construct($keyword);
     }
-
     function GetSearchstr()
     {
         require_once(dirname(__FILE__)."/inc/inc_action_info.php");
         return is_array($actionSearch) ? $actionSearch : array();
     }
-
     function search()
     {
         $this->searchkeyword();
         return $this->result;
     }
-
     /**
      *  遍历功能配置项进行关键词匹配
      *
@@ -65,7 +61,6 @@ class ActionSearch
             $i++;
         }
     }
-
     /**
      *  加亮关键词
      *
@@ -87,7 +82,6 @@ class ActionSearch
         }
         return $text;
     }
-
     function _strpos($string, $find)
     {
         if (function_exists('stripos'))  return stripos($string, $find);

@@ -12,7 +12,6 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_FreeList');
 require_once DEDEINC.'/channelunit.func.php';
 setcookie("ENV_GOBACK_URL",$dedeNowurl,time()+3600,"/");
-
 if(empty($pagesize)) $pagesize = 18;
 if(empty($pageno)) $pageno = 1;
 if(empty($dopost)) $dopost = '';
@@ -22,12 +21,10 @@ if(empty($keyword))
     $keyword = '';
     $addget = '';
     $addsql = '';
-} else
-{
+} else {
     $addget = '&keyword='.urlencode($keyword);
     $addsql = " where title like '%$keyword%' ";
 }
-
 //重载列表
 if($dopost=='getlist')
 {
@@ -35,7 +32,6 @@ if($dopost=='getlist')
     GetTagList($dsql,$pageno,$pagesize,$orderby);
     exit();
 }
-
 //删除字段
 else if($dopost=='del')
 {
@@ -45,7 +41,6 @@ else if($dopost=='del')
     GetTagList($dsql,$pageno,$pagesize,$orderby);
     exit();
 }
-
 //第一次进入这个页面
 if($dopost=='')
 {
@@ -53,7 +48,6 @@ if($dopost=='')
     $totalRow = $row['dd'];
     include(DEDEADMIN."/templets/freelist_main.htm");
 }
-
 /**
  * 获得特定的Tag列表
  *
@@ -81,8 +75,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     while($row = $dsql->GetArray())
     {
         $listurl = GetFreeListUrl($row['aid'],$row['namerule'],$row['listdir'],$row['defaultpage'],$row['nodefault']);
-        $line = "
-    <tr align='center' bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+        $line = "<tr align='center' bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
         <td>{$row['aid']}</td>
         <td> <a href='$listurl' target='_blank'>{$row['title']}</a> </td>
         <td> {$row['templet']} </td>

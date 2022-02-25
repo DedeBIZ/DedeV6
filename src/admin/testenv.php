@@ -42,7 +42,6 @@ $action = isset($action) ? $action : '';
 			}
 		}
 	}
-
 	if (!function_exists('TestExecuteable')) {
 		//检查是否具目录可执行
 		function TestExecuteable($d = '.', $siteuRL = '', $rootDir = '')
@@ -66,8 +65,6 @@ $action = isset($action) ? $action : '';
 			}
 		}
 	}
-
-
 	if (!function_exists('PostHost')) {
 		function PostHost($host, $data = '', $method = 'GET', $showagent = null, $port = null, $timeout = 30)
 		{
@@ -103,7 +100,6 @@ $action = isset($action) ? $action : '';
 			return $responseText;
 		}
 	}
-
 	$allPath = array();
 	$needDir = "$cfg_medias_dir|
 	$cfg_image_dir|
@@ -132,8 +128,6 @@ $action = isset($action) ? $action : '';
 			'execute' => false //执行
 		);
 	}
-
-
 	//所有栏目目录
 	$sql = "SELECT typedir FROM #@__arctype ORDER BY id DESC";
 	$dsql->SetQuery($sql);
@@ -148,7 +142,6 @@ $action = isset($action) ? $action : '';
 			'execute' => false //执行
 		);
 	}
-
 	//只允许读取,不允许写入的目录
 	$needDir = array(
 		'include',
@@ -174,7 +167,6 @@ $action = isset($action) ? $action : '';
 		$dh->close();
 		return $dirname;
 	}
-
 	//获取所有文件列表
 	function preg_ls($path = ".", $rec = FALSE, $pat = "/.*/", $ignoredir = '')
 	{
@@ -204,7 +196,6 @@ $action = isset($action) ? $action : '';
 		}
 		return (empty($ret) && preg_match($pat, basename($path))) ? array($path."/") : $ret;
 	}
-
 	foreach ($needDir as $key => $val) {
 		$allPath[trim('/'.$val)] = array(
 			'read' => true,    //读取
@@ -221,7 +212,6 @@ $action = isset($action) ? $action : '';
 			);
 		}
 	}
-
 	//不需要执行的
 	$needDir = array(
 		'/images',
@@ -243,7 +233,6 @@ $action = isset($action) ? $action : '';
 			);
 		}
 	}
-
 	//所有js建议只读
 	$jsDir = array(
 		'/images',

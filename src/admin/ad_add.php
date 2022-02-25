@@ -12,7 +12,6 @@ require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_广告管理');
 require_once DEDEINC."/typelink.class.php";
 if (empty($dopost)) $dopost = "";
-
 if ($dopost == "save") {
     CheckCSRF();
     //timeset tagname typeid normbody expbody

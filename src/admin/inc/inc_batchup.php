@@ -22,33 +22,28 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
     global $dsql, $cfg_cookie_encode, $cfg_multi_site, $cfg_medias_dir;
     global $cuserLogin, $cfg_upload_switch, $cfg_delete, $cfg_basedir;
     global $admin_catalogs, $cfg_admin_channel;
-
     if ($cfg_delete == 'N') $type = 'OK';
     if (empty($aid)) return;
     $aid = preg_replace("#[^0-9]#i", '', $aid);
     $arctitle = $arcurl = '';
     if ($recycle == 1) $whererecycle = "AND arcrank = '-2'";
     else $whererecycle = "";
-
     //查询表信息
     $query = "SELECT ch.maintable,ch.addtable,ch.nid,ch.issystem FROM `#@__arctiny` arc
-                LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-              LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
+        LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
+        LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $row = $dsql->GetOne($query);
     $nid = $row['nid'];
     $maintable = (trim($row['maintable']) == '' ? '#@__archives' : trim($row['maintable']));
     $addtable = trim($row['addtable']);
     $issystem = $row['issystem'];
-
     //查询档案信息
     if ($issystem == -1) {
         $arcQuery = "SELECT arc.*,tp.* from `$addtable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.aid='$aid' ";
     } else {
         $arcQuery = "SELECT arc.*,tp.*,arc.id AS aid FROM `$maintable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.id='$aid' ";
     }
-
     $arcRow = $dsql->GetOne($arcQuery);
-
     //检测权限
     if (!TestPurview('a_Del,sys_ArcBatch')) {
         if (TestPurview('a_AccDel')) {
@@ -63,11 +58,9 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
             return FALSE;
         }
     }
-
     //$issystem==-1 是单表模型，不使用回收站
     if ($issystem == -1) $type = 'OK';
     if (!is_array($arcRow)) return FALSE;
-
     /** 删除到回收站 **/
     if ($cfg_delete == 'Y' && $type == 'ON') {
         $dsql->ExecuteNoneQuery("UPDATE `$maintable` SET arcrank='-2' WHERE id='$aid' ");
@@ -104,17 +97,14 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
         $filenameh = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
         if (@is_file($filenameh)) @unlink($filenameh);
     }
-
     if (empty($arcRow['money'])) $arcRow['money'] = 0;
     if (empty($arcRow['ismake'])) $arcRow['ismake'] = 1;
     if (empty($arcRow['arcrank'])) $arcRow['arcrank'] = 0;
     if (empty($arcRow['filename'])) $arcRow['filename'] = '';
-
     //删除HTML
     if ($arcRow['ismake'] == -1 || $arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0 || $arcRow['money'] > 0) {
         return TRUE;
     }
-
     //强制转换非多站点模式，以便统一方式获得实际HTML文件
     $GLOBALS['cfg_multi_site'] = 'N';
     $arcurl = GetFileUrl(
@@ -143,10 +133,8 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
             }
         }
     }
-
     return true;
 }
-
 //获取真实路径
 function GetTruePath($siterefer = '', $sitepath = '')
 {

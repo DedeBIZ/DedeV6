@@ -27,23 +27,20 @@ if (empty($dopost)) {
     if (is_array($types)) {
         foreach ($types as $v) $ntype .= $v.' ';
     }
-
     if ($ntype != '') $atts .= " type='".trim($ntype)."' ";
     if (!empty($typeid)) $atts .= " typeid='$typeid' ";
     if (!empty($channel)) $atts .= " channel='$channel' ";
     if (!empty($subday)) $atts .= " subday='$subday' ";
     if (!empty($keywordarc)) $atts .= " keyword='$keywordarc' ";
     if (!empty($att)) $atts .= " att='$att' ";
-
     $innertext = trim($innertext);
     if (!empty($innertext)) $innertext = stripslashes($innertext);
-
     $listTag = "{dede:list $atts}$innertext{/dede:list}";
     $listTag = addslashes($listTag);
     $inquery = "
-     INSERT INTO `#@__freelist`(`title` , `namerule`  , `listdir` , `defaultpage` , `nodefault` , `templet` , `edtime`, `maxpage` , `click` , `listtag` , `keywords` , `description`)
-     VALUES ('$title','$namerule','$listdir','$defaultpage','$nodefault','$templet','$edtime', '$maxpage','0','$listTag','$keywords','$description');
-   ";
+        INSERT INTO `#@__freelist`(`title` , `namerule`  , `listdir` , `defaultpage` , `nodefault` , `templet` , `edtime`, `maxpage` , `click` , `listtag` , `keywords` , `description`)
+        VALUES ('$title','$namerule','$listdir','$defaultpage','$nodefault','$templet','$edtime', '$maxpage','0','$listTag','$keywords','$description');
+    ";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg("成功增加一个自由列表!", "freelist_main.php");
     exit();

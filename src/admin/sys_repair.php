@@ -46,7 +46,8 @@ if (empty($dopost)) {
 /*-------------------
 数据结构常规检测
 function 1_test_db() {  }
---------------------*/ else if ($dopost == 1) {
+--------------------*/
+else if ($dopost == 1) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
@@ -78,7 +79,8 @@ function 1_test_db() {  }
 /*-------------------
 检测微表正确性并尝试修复
 function 2_test_arctiny() {  }
---------------------*/ else if ($dopost == 2) {
+--------------------*/
+else if ($dopost == 2) {
     $msg = '';
 
     $allarcnum = 0;
@@ -156,7 +158,8 @@ function 2_test_arctiny() {  }
 /*-------------------
 高级方式修复微表(会删除不合法主键的内容)
 function 3_re_arctiny() {  }
---------------------*/ else if ($dopost == 3) {
+--------------------*/
+else if ($dopost == 3) {
     $errnum = 0;
     $sql = " TRUNCATE TABLE `#@__arctiny`";
     $dsql->ExecuteNoneQuery($sql);

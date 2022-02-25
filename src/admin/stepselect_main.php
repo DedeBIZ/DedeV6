@@ -62,7 +62,8 @@ if (empty($action)) {
 /*-----------------
 删除类型或枚举值
 function __del() { }
-------------------*/ else if ($action == 'del') {
+------------------*/
+else if ($action == 'del') {
     $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
     if (!is_array($arr)) {
         ShowMsg("无法获取分类信息，不允许后续操作", "stepselect_main.php?".ExecTime());
@@ -108,7 +109,8 @@ function __del() { }
 /*-----------------
 保存类型修改
 function __edit_save() { }
-------------------*/ else if ($action == 'edit_save') {
+------------------*/
+else if ($action == 'edit_save') {
     if (preg_match("#[^0-9a-z_-]#i", $egroup)) {
         ShowMsg("组名称不能有全角字符或特殊符号", "-1");
         exit();
@@ -120,7 +122,8 @@ function __edit_save() { }
 /*-----------------
 保存新类型
 function __addnew_save() { }
-------------------*/ else if ($action == 'addnew_save') {
+------------------*/
+else if ($action == 'addnew_save') {
     if (preg_match("#[^0-9a-z_-]#i", $egroup)) {
         ShowMsg("组名称不能有全角字符或特殊符号", "-1");
         exit();
@@ -138,7 +141,8 @@ function __addnew_save() { }
 /*---------
 把旧版全国省市表替换当前地区数据
 function __exarea() { }
-----------*/ else if ($action == 'exarea') {
+----------*/
+else if ($action == 'exarea') {
     $bigtypes = array();
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE egroup='nativeplace'; ");
     $query = "SELECT * FROM `#@__area` WHERE reid =0 order by id asc";
@@ -177,7 +181,8 @@ function __addenum_save() { }
 新增二级枚举下添加"-N"自己类别选择,例如:
 1001二级枚举下面的3级类目,则为1001-1,1001-2...
 这时候需要issign=2
----------------------*/ else if ($action == 'addenum_save') {
+---------------------*/
+else if ($action == 'addenum_save') {
     if (empty($ename) || empty($egroup)) {
         Showmsg("类别名称或组名称不能为空", "-1");
         exit();
@@ -243,7 +248,8 @@ function __addenum_save() { }
 /*-----------------
 修改枚举名称和排序
 function __upenum() { }
-------------------*/ else if ($action == 'upenum') {
+------------------*/
+else if ($action == 'upenum') {
     $ename = trim(preg_replace("# └─(─){1,}#", '', $ename));
     $row = $dsql->GetOne("SELECT egroup FROM `#@__sys_enum` WHERE id = '$aid' ");
     WriteEnumsCache($row['egroup']);
@@ -254,7 +260,8 @@ function __upenum() { }
 /*-----------------
 更新枚举缓存
 function __upallcache() { }
-------------------*/ else if ($action == 'upallcache') {
+------------------*/
+else if ($action == 'upallcache') {
     if (!isset($egroup)) $egroup = '';
     WriteEnumsCache($egroup);
     ShowMsg("成更新枚举缓存", $ENV_GOBACK_URL);

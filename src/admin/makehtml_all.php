@@ -33,7 +33,8 @@ if ($action == '') {
     //更新文档
     /*-------------------
     function _2_MakeArchives()
-    ---------------------*/ else if ($step == 2) {
+    ---------------------*/
+else if ($step == 2) {
         include_once(DEDEADMIN."/makehtml_archives_action.php");
         exit();
     }
@@ -62,7 +63,8 @@ if ($action == '') {
     //更新栏目
     /*-------------------
     function _4_MakeCatalog()
-    --------------------*/ else if ($step == 4) {
+    --------------------*/
+else if ($step == 4) {
         $mkvalue = intval($mkvalue);
         $typeidsok = $typeids = array();
         $adminID = $cuserLogin->getUserID();
@@ -118,7 +120,8 @@ if ($action == '') {
     //成功状态
     /*-------------------
     function _10_MakeAllOK()
-    --------------------*/ else if ($step == 10) {
+    --------------------*/
+else if ($step == 10) {
         $adminID = $cuserLogin->getUserID();
         $mkcachefile = DEDEDATA."/mkall_cache_{$adminID}.php";
         @unlink($mkcachefile);

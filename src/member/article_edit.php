@@ -46,7 +46,8 @@ if (empty($dopost)) {
 
 /*------------------------------
 function _SaveArticle(){  }
-------------------------------*/ else if ($dopost == 'save') {
+------------------------------*/
+else if ($dopost == 'save') {
     include(DEDEMEMBER.'/inc/archives_check_edit.php');
 
     //分析处理附加表数据

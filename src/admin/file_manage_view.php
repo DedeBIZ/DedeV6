@@ -16,7 +16,6 @@ $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = "";
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
-
 //显示控制层
 //修改文件名
 if ($fmdo == "rename") {
@@ -39,7 +38,6 @@ if ($fmdo == "rename") {
 else if ($fmdo == "newdir") {
     if ($activepath == "") $activepathname = "根目录";
     else $activepathname = $activepath;
-
     $wintitle = "&nbsp;文件管理";
     $wecome_info = "&nbsp;文件管理::新建目录 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
     $win = new OxWindow();
@@ -52,7 +50,6 @@ else if ($fmdo == "newdir") {
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
-
 //移动文件
 else if ($fmdo == "move") {
     $wintitle = "&nbsp;文件管理";
@@ -69,7 +66,6 @@ else if ($fmdo == "move") {
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
-
 //删除文件
 else if ($fmdo == "del") {
     $wintitle = "&nbsp;文件管理";
@@ -89,13 +85,11 @@ else if ($fmdo == "del") {
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
-
 //编辑文件
 else if ($fmdo == "edit") {
     if (!isset($backurl)) {
         $backurl = "";
     }
-
     $activepath = str_replace("..", "", $activepath);
     $filename = str_replace("..", "", $filename);
     $file = "$cfg_basedir$activepath/$filename";
@@ -164,7 +158,6 @@ else if ($fmdo == "newfile") {
     $ctp->LoadTemplate(DEDEADMIN."/templets/file_edit.htm");
     $ctp->display();
 }
-
 //上传文件
 else if ($fmdo == "upload") {
     $ctp = new DedeTagParse();

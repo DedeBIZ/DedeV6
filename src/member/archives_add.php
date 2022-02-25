@@ -49,7 +49,8 @@ if (empty($dopost)) {
 }
 /*------------------------------
 function _SaveArticle(){  }
-------------------------------*/ else if ($dopost == 'save') {
+------------------------------*/
+else if ($dopost == 'save') {
     include(dirname(__FILE__).'/inc/archives_check.php');
     //分析处理附加表数据
     $inadd_f = $inadd_v = '';

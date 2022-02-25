@@ -126,7 +126,8 @@ if ($action == 'save') {
 /*------------------
 删除字段
 function _DELETE()
--------------------*/ else if ($action == "delete") {
+-------------------*/
+else if ($action == "delete") {
     if ($row['issystem'] == 1) {
         ShowMsg("对不起，系统模型的字段不允许删除", "-1");
         exit();

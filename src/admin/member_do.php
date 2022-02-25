@@ -128,7 +128,8 @@ if ($dopost == "delmember") {
 /*----------------
 function __Recommend()
 推荐会员
-----------------*/ else if ($dopost == "recommend") {
+----------------*/
+else if ($dopost == "recommend") {
     CheckPurview('member_Edit');
     $id = preg_replace("#[^0-9]#", "", $id);
     if ($matt == 0) {
@@ -144,7 +145,8 @@ function __Recommend()
 /*----------------
 function __EditUser()
 修改会员
-----------------*/ else if ($dopost == 'edituser') {
+----------------*/
+else if ($dopost == 'edituser') {
     CheckPurview('member_Edit');
     if (!isset($_POST['id'])) exit('dedebiz');
     $pwdsql = empty($pwd) ? '' : ",pwd='".md5($pwd)."'";
@@ -191,7 +193,8 @@ function __EditUser()
 /*--------------
 function __LoginCP()
 登录会员的控制面板
-----------*/ else if ($dopost == "memberlogin") {
+----------*/
+else if ($dopost == "memberlogin") {
     CheckPurview('member_Edit');
     PutCookie('DedeUserID', $id, 1800);
     PutCookie('DedeLoginTime', time(), 1800);

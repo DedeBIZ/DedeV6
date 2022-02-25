@@ -13,7 +13,6 @@ CheckPurview('sys_ArcBatch');
 require_once(DEDEINC."/typelink.class.php");
 require_once(DEDEADMIN."/inc/inc_batchup.php");
 @set_time_limit(0);
-
 //typeid,startid,endid,seltime,starttime,endtime,action,newtypeid
 //批量操作
 //check del move makehtml
@@ -23,7 +22,6 @@ if (empty($endid)) $endid = 0;
 if (empty($seltime)) $seltime = 0;
 if (empty($typeid)) $typeid = 0;
 if (empty($userid)) $userid = '';
-
 //生成HTML操作由其它页面处理
 if ($action == "makehtml") {
     $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
@@ -37,7 +35,6 @@ $gwhere = " WHERE 1 ";
 if ($startid > 0) $gwhere .= " AND id>= $startid ";
 if ($endid > $startid) $gwhere .= " AND id<= $endid ";
 $idsql = '';
-
 if ($typeid != 0) {
     $ids = GetSonIds($typeid);
     $gwhere .= " AND typeid IN($ids) ";
@@ -55,7 +52,6 @@ if (!empty($userid)) {
 }
 //特殊操作
 if (!empty($heightdone)) $action = $heightdone;
-
 //指量审核
 if ($action == 'check') {
     if (empty($startid) || empty($endid) || $endid < $startid) {
@@ -156,7 +152,6 @@ else if ($action == 'move') {
         if ($rs) $tdd++;
         //DelArc($row->id,true);
     }
-
     if ($tdd > 0) {
         $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
         $jumpurl .= "&typeid=$newtypeid&pagesize=20&seltime=$seltime";

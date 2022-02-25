@@ -101,7 +101,8 @@ if ($action == '' || $action == 'show') {
 //------------------------------------
 /*
 function __SendFeedback(){ }
-*/ else if ($action == 'send') {
+*/
+else if ($action == 'send') {
     //读取文档信息
     $arcRow = GetOneArchive($aid);
     if ((empty($arcRow['aid']) || $arcRow['notpost'] == '1') && empty($fid)) {

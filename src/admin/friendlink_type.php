@@ -10,7 +10,6 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
-
 //保存修改
 if ($dopost == "save") {
     $startID = 1;
@@ -37,5 +36,4 @@ if ($dopost == "save") {
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
     echo "<script> alert('成功更新友情链接网站分类表'); </script>";
 }
-
 include DedeInclude('templets/friendlink_type.htm');

@@ -14,7 +14,6 @@ if (empty($dopost)) {
     ShowMsg("您没指定任何参数", "javascript:;");
     exit();
 }
-
 //清空所有日志
 if ($dopost == "clear") {
     $dsql->ExecuteNoneQuery("DELETE FROM #@__log");

@@ -55,7 +55,8 @@ if (empty($dopost)) {
 
 /*------------------------------
 function _SaveArticle(){  }
-------------------------------*/ else if ($dopost == 'save') {
+------------------------------*/
+else if ($dopost == 'save') {
     $description = '';
     include(DEDEMEMBER.'/inc/archives_check.php');
 

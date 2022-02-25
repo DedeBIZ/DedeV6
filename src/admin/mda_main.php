@@ -139,7 +139,8 @@ EOT;
 }
 /*--------------------------------
 function __clearcache(){  }
--------------------------------*/ else if ($dopost == 'clearcache') {
+-------------------------------*/
+else if ($dopost == 'clearcache') {
   if (!is_dir(DEDEDATA."/cache/mda/") or  RmRecurse(DEDEDATA."/cache/mda/")) {
     ShowMsg("成功清除缓存信息", -1);
     exit();
@@ -150,7 +151,8 @@ function __clearcache(){  }
 }
 /*--------------------------------
 function __bind_user(){  }
--------------------------------*/ else if ($dopost == 'bind_user') {
+-------------------------------*/
+else if ($dopost == 'bind_user') {
   $email = isset($email) ? $email : '';
   $pwd = isset($pwd) ? $pwd : '';
   $domain = isset($domain) ? $domain : '';
@@ -190,7 +192,8 @@ EOT;
 }
 /*--------------------------------
 function __login(){  }
--------------------------------*/ else if ($dopost == 'login') {
+-------------------------------*/
+else if ($dopost == 'login') {
   $email = mda_get_setting('email');
   $channel_uuid = mda_get_setting('channel_uuid');
   $channel_secret = mda_get_setting('channel_secret');
@@ -238,7 +241,8 @@ EOT;
 }
 /*--------------------------------
 function __main(){  }
--------------------------------*/ else if ($dopost == 'main') {
+-------------------------------*/
+else if ($dopost == 'main') {
   $mda_version = MDA_VER;
   $channel_uuid = mda_get_setting('channel_uuid');
   $channel_secret = mda_get_setting('channel_secret');
@@ -338,7 +342,8 @@ EOT;
 //------------------------------------------------------------------------
 /*--------------------------------
 function __index(){  }
--------------------------------*/ else {
+-------------------------------*/
+else {
   if (mda_get_setting('email') and mda_get_setting('channel_uuid') and mda_get_setting('channel_secret') and empty($logout)) {
     header('Location:?dopost=login');
     exit;

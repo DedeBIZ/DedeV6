@@ -30,7 +30,8 @@ if ($dopost == "show") {
 }
 /*----------------
 function __CopyStart()
------------------*/ else if ($dopost == "copystart") {
+-----------------*/
+else if ($dopost == "copystart") {
     if ($id == -1) {
         ShowMsg("专题模型不支持复制", "-1");
         exit();
@@ -95,7 +96,8 @@ function __CopyStart()
 }
 /*----------------
 function __Export()
------------------*/ else if ($dopost == "export") {
+-----------------*/
+else if ($dopost == "export") {
     if ($id == -1) {
         ShowMsg("专题模型不支持导出", "-1");
         exit();
@@ -119,7 +121,8 @@ function __Export()
 }
 /*----------------
 function __ExportIn()
------------------*/ else if ($dopost == "exportin") {
+-----------------*/
+else if ($dopost == "exportin") {
     $wintitle = "导入内容模型规则";
     $wecome_info = "<a href='mychannel_main.php'>内容模型管理</a>::导入内容模型规则";
     $win = new OxWindow();
@@ -133,7 +136,8 @@ function __ExportIn()
 }
 /*----------------
 function __ExportInOk()
------------------*/ else if ($dopost == "exportinok") {
+-----------------*/
+else if ($dopost == "exportinok") {
     require_once(DEDEADMIN."/inc/inc_admin_channel.php");
     function GotoStaMsg($msg)
     {
@@ -260,7 +264,8 @@ function __ExportInOk()
 }
 /*----------------
 function __SaveCopy()
------------------*/ else if ($dopost == "copysave") {
+-----------------*/
+else if ($dopost == "copysave") {
     $cid = intval($cid);
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$cid' ", MYSQL_ASSOC);
     foreach ($row as $k => $v) {
@@ -300,7 +305,8 @@ function __SaveCopy()
 }
 /*------------
 function __SaveEdit()
-------------*/ else if ($dopost == "save") {
+------------*/
+else if ($dopost == "save") {
     $fieldset = preg_replace("#[\r\n]{1,}#", "\r\n", $fieldset);
     $usertype = empty($usertype) ? '' : $usertype;
 
@@ -345,7 +351,8 @@ function __SaveEdit()
 }
 /*--------------------
 function __GetTemplate()
---------------------*/ else if ($dopost == "gettemplets") {
+--------------------*/
+else if ($dopost == "gettemplets") {
     require_once(DEDEINC."/oxwindow.class.php");
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     $wintitle = "&nbsp;频道管理-查看模板";
@@ -370,7 +377,8 @@ function __GetTemplate()
 }
 /*--------------------
 function __Delete()
---------------------*/ else if ($dopost == "delete") {
+--------------------*/
+else if ($dopost == "delete") {
     CheckPurview('c_Del');
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     if ($row['issystem'] == 1) {
@@ -443,7 +451,8 @@ function __Delete()
 } //del
 /*----------------
 function __modifysearch()
------------------*/ else if ($dopost == 'modifysearch') {
+-----------------*/
+else if ($dopost == 'modifysearch') {
     if (!isset($step)) $step = 0;
     if (empty($step)) {
         $step = 1;

@@ -14,9 +14,7 @@ CheckPurview('sys_Source');
 if (empty($dopost)) $dopost = '';
 if (empty($allurls)) $allsource = '';
 else $allurls = stripslashes($allurls);
-
 $m_file = DEDEDATA."/admin/allowurl.txt";
-
 //保存
 if ($dopost == 'save') {
     $fp = fopen($m_file, 'w');

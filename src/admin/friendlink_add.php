@@ -32,15 +32,13 @@ if ($dopost == "add") {
     } else {
         $imgurl = $logo;
     }
-
     //强制检测用户友情链接分类是否数据结构不符
     if (empty($typeid) || preg_match("#[^0-9]#", $typeid)) {
         $typeid = 0;
         $dsql->ExecuteNoneQuery("ALTER TABLE `#@__flinktype` CHANGE `ID` `id` MEDIUMINT( 8 ) UNSIGNED DEFAULT NULL AUTO_INCREMENT; ");
     }
-
     $query = "INSERT INTO `#@__flink`(sortrank,url,webname,logo,msg,email,typeid,dtime,ischeck)
-            VALUES('$sortrank','$url','$webname','$imgurl','$msg','$email','$typeid','$dtime','$ischeck'); ";
+        VALUES('$sortrank','$url','$webname','$imgurl','$msg','$email','$typeid','$dtime','$ischeck'); ";
     $rs = $dsql->ExecuteNoneQuery($query);
     $burl = empty($_COOKIE['ENV_GOBACK_URL']) ? "friendlink_main.php" : $_COOKIE['ENV_GOBACK_URL'];
     if ($rs) {

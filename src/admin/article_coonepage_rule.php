@@ -12,7 +12,6 @@ require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($action)) $action = '';
-
 /*------
 function _AddNote(){ }
 -------*/
@@ -28,7 +27,8 @@ if ($action == 'add') {
 }
 /*------
 function _DelNote(){ }
--------*/ else if ($action == 'del') {
+-------*/
+else if ($action == 'del') {
   if (!preg_match("#,#", $ids)) {
     $query = "DELETE FROM `#@__co_onepage` WHERE id='$ids' ";
   } else {
@@ -36,17 +36,18 @@ function _DelNote(){ }
   }
   $dsql->ExecuteNonequery($query);
 }
-
 /*------
 function _EditNote(){ }
--------*/ else if ($action == 'editsave') {
+-------*/
+else if ($action == 'editsave') {
   $query = "UPDATE `#@__co_onepage` SET `url`='$url',`title`='$title',`issource`='$issource',`lang`='$lang',`rule`='$rule' WHERE id='$id' ";
   $dsql->ExecuteNonequery($query);
   echo $dsql->GetError();
 }
 /*------
 function _EditNoteLoad(){ }
--------*/ else if ($action == 'editload') {
+-------*/
+else if ($action == 'editload') {
   $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE id='$id' ");
   AjaxHead();
 ?>

@@ -1,5 +1,5 @@
 <?php 
-if (!defined('DEDEMEMBER')) exit("Request Error!");
+if (!defined('DEDEMEMBER')) exit('dedebiz');
 //财付通 网上支付接口
 /*这里替换为您的实际商户号*/
 $strSpid    = $payment_userid[0];
@@ -56,7 +56,6 @@ $strSignText = "cmdno=".$strCmdNo."&date=".$strBillDate."&bargainor_id=".$strSal
           "&total_fee=".$strTotalFee."&fee_type=".$strFeeType."&return_url=".$strRetUrl .
           "&attach=".$strAttach."&key=".$strSpkey;
 $strSign = strtoupper(md5($strSignText));
-
 /*请求支付串*/
 $strRequest = "cmdno=".$strCmdNo."&date=".$strBillDate."&bargainor_id=".$strSaler.       
 "&transaction_id=".$strTransactionId."&sp_billno=".$strSpBillNo.       
@@ -65,8 +64,6 @@ $strRequest = "cmdno=".$strCmdNo."&date=".$strBillDate."&bargainor_id=".$strSale
 "&purchaser_id=".$strBuyerId.       
 "&sign=".$strSign ;
 $strRequestUrl = "https://www.tenpay.com/cgi-bin/v1.0/pay_gate.cgi?".$strRequest;
-
-
 if($cfg_soft_lang == 'utf-8')
 {
     $strRequestUrl = utf82gb($strRequestUrl);    

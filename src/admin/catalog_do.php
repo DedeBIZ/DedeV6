@@ -47,7 +47,8 @@ if ($dopost == "addArchives") {
 /*--------------------------
 //管理文档
 function listArchives();
----------------------------*/ else if ($dopost == "listArchives") {
+---------------------------*/
+else if ($dopost == "listArchives") {
     if (!empty($gurl)) {
         if (empty($arcrank)) {
             $arcrank = '';
@@ -81,14 +82,16 @@ function listArchives();
 /*--------------------------
 //浏览通用模板目录
 function viewTempletDir();
----------------------------*/ else if ($dopost == "viewTemplet") {
+---------------------------*/
+else if ($dopost == "viewTemplet") {
     header("location:tpl.php?path=/".$cfg_df_style);
     exit();
 }
 /*------------------------
 浏览单个页面的栏目
 function ViewSgPage()
-------------------------*/ else if ($dopost == "viewSgPage") {
+------------------------*/
+else if ($dopost == "viewSgPage") {
     require_once(DEDEINC."/arc.listview.class.php");
     $lv = new ListView($cid);
     $pageurl = $lv->MakeHtml();
@@ -98,7 +101,8 @@ function ViewSgPage()
 /*------------------------
 修改栏目排列顺序
 function upRank()
-------------------------*/ else if ($dopost == "upRank") {
+------------------------*/
+else if ($dopost == "upRank") {
     //检查权限许可
     CheckPurview('t_Edit,t_AccEdit');
 
@@ -134,7 +138,8 @@ function upRank()
 /*--------------------------
 //更新栏目缓存
 function UpCatlogCache();
----------------------------*/ else if ($dopost == "upcatcache") {
+---------------------------*/
+else if ($dopost == "upcatcache") {
     UpDateCatCache();
     $sql = " TRUNCATE TABLE `#@__arctiny`";
     $dsql->ExecuteNoneQuery($sql);
@@ -165,14 +170,16 @@ function UpCatlogCache();
 /*---------------------
 获取JS文件
 function GetJs
-----------------------*/ else if ($dopost == "GetJs") {
+----------------------*/
+else if ($dopost == "GetJs") {
     header("location:makehtml_js.php");
     exit();
 }
 /*-----------
 获得子类的内容
 function GetSunListsMenu();
------------*/ else if ($dopost == "GetSunListsMenu") {
+-----------*/
+else if ($dopost == "GetSunListsMenu") {
     $userChannel = $cuserLogin->getUserChannel();
     require_once(DEDEINC."/typeunit.class.menu.php");
     AjaxHead();
@@ -183,7 +190,8 @@ function GetSunListsMenu();
 /*-----------
 获得子类的内容
 function GetSunLists();
------------*/ else if ($dopost == "GetSunLists") {
+-----------*/
+else if ($dopost == "GetSunLists") {
     require_once(DEDEINC."/typeunit.class.admin.php");
     AjaxHead();
     PutCookie('lastCid', $cid, 3600 * 24, "/");
@@ -197,7 +205,8 @@ function GetSunLists();
 /*----------------
 合并栏目
 function unitCatalog() { }
------------------*/ else if ($dopost == 'unitCatalog') {
+-----------------*/
+else if ($dopost == 'unitCatalog') {
     CheckPurview('t_Move');
     require_once(DEDEINC.'/oxwindow.class.php');
     require_once(DEDEINC.'/typelink.class.php');
@@ -255,7 +264,8 @@ function unitCatalog() { }
 /*----------------
 移动栏目
 function moveCatalog() { }
------------------*/ else if ($dopost == 'moveCatalog') {
+-----------------*/
+else if ($dopost == 'moveCatalog') {
     CheckPurview('t_Move');
     require_once(DEDEINC.'/oxwindow.class.php');
     require_once(DEDEINC.'/typelink.class.php');

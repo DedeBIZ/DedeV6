@@ -13,7 +13,6 @@ CheckPurview('sys_ArcTj');
 $row1 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
 $row2 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__feedback` ");
 $row3 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__member` ");
-
 /**
  *  获取文档
  *

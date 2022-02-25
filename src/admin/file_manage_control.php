@@ -17,48 +17,42 @@ $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = "";
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
-
 //文件管理器交互与逻辑控制文件
 $fmm = new FileManagement();
 $fmm->Init();
-
 /*---------------
 function __rename();
 ----------------*/
 if ($fmdo == "rename") {
     $fmm->RenameFile($oldfilename, $newfilename);
 }
-
 //新建目录
-
 /*---------------
 function __newdir();
-----------------*/ else if ($fmdo == "newdir") {
+----------------*/
+else if ($fmdo == "newdir") {
     CheckCSRF();
     $fmm->NewDir($newpath);
 }
-
 //移动文件
-
 /*---------------
 function __move();
-----------------*/ else if ($fmdo == "move") {
+----------------*/
+else if ($fmdo == "move") {
     $fmm->MoveFile($filename, $newpath);
 }
-
 //删除文件
-
 /*---------------
 function __delfile();
-----------------*/ else if ($fmdo == "del") {
+----------------*/
+else if ($fmdo == "del") {
     $fmm->DeleteFile($filename);
 }
-
 //文件编辑
-
 /*---------------
 function __saveEdit();
-----------------*/ else if ($fmdo == "edit") {
+----------------*/
+else if ($fmdo == "edit") {
     CheckCSRF();
     $filename = str_replace("..", "", $filename);
     $file = "$cfg_basedir$activepath/$filename";
@@ -96,7 +90,8 @@ else if($fmdo=="editview")
 //文件上传
 /*---------------
 function __upload();
-----------------*/ else if ($fmdo == "upload") {
+----------------*/
+else if ($fmdo == "upload") {
     $j = 0;
     for ($i = 1; $i <= 50; $i++) {
         $upfile = "upfile".$i;
@@ -117,7 +112,6 @@ function __upload();
     ShowMsg("成功上传 $j 个文件到: $activepath", "file_manage_main.php?activepath=$activepath");
     exit();
 }
-
 //空间检查
 else if ($fmdo == "space") {
     if ($activepath == "") {

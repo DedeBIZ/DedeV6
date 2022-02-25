@@ -49,7 +49,8 @@ if (empty($dopost)) {
 }
 /*------------------------------
 function _SaveArticle(){  }
-------------------------------*/ else if ($dopost == 'save') {
+------------------------------*/
+else if ($dopost == 'save') {
     include_once(DEDEINC."/image.func.php");
     include_once(DEDEINC."/oxwindow.class.php");
     $svali = GetCkVdValue();

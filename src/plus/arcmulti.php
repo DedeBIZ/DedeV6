@@ -7,7 +7,7 @@ $mtype = empty($mtype)? 0 : intval(preg_replace("/[^\d]/",'', $mtype));
 $pnum = empty($pnum)? 0 : intval(preg_replace("/[^\d]/",'', $pnum));
 $tagid = empty($tagid)? '' : (preg_replace("/[^a-z0-9]/",'', $tagid));
 
-if($tagid=='' || $pnum==0) die(" Request Error! ");
+if($tagid=='' || $pnum==0) die("dedebiz");
 
 if($tagid !='')
 {

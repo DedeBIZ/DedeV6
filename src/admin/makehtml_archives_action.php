@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
 require_once(DEDEINC."/arc.archives.class.php");
-
 $est1 = ExecTime();
 $startid  = (empty($startid)  ? -1  : $startid);
 $endid    = (empty($endid)    ? 0  : $endid);

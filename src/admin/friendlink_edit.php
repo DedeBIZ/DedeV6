@@ -56,9 +56,7 @@ if ($dopost == "delete") {
     $email = $request->Item('email', '');
     $typeid = $request->Item('typeid', 0);
     $ischeck = $request->Item('ischeck', 0);
-
-    $query = "UPDATE `#@__flink` SET sortrank='$sortrank',url='$url',webname='$webname',logo='$logo',msg='$msg',
-                  email='$email',typeid='$typeid',ischeck='$ischeck' WHERE id='$id' ";
+    $query = "UPDATE `#@__flink` SET sortrank='$sortrank',url='$url',webname='$webname',logo='$logo',msg='$msg', email='$email',typeid='$typeid',ischeck='$ischeck' WHERE id='$id' ";
     $dsql->ExecuteNoneQuery($query);
     ShowMsg("成功修改一个链接", $ENV_GOBACK_URL);
     exit();

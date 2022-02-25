@@ -10,10 +10,8 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('plus_文件管理器');
-
 $libdir = DEDEINC.'/taglib';
 $helpdir = DEDEINC.'/taglib/help';
-
 //获取默认文件说明信息
 function GetHelpInfo($tagname)
 {
@@ -27,5 +25,4 @@ function GetHelpInfo($tagname)
     fclose($fp);
     return $helpinfo;
 }
-
 include DedeInclude('templets/templets_tagsource.htm');

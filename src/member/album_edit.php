@@ -58,7 +58,8 @@ if (empty($dopost)) {
 }
 /*------------------------------
 function _Save(){  }
-------------------------------*/ else if ($dopost == 'save') {
+------------------------------*/
+else if ($dopost == 'save') {
     $svali = GetCkVdValue();
     if (preg_match("/1/", $safe_gdopen)) {
         if (strtolower($vdcode) != $svali || $svali == '') {

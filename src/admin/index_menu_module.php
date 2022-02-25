@@ -13,7 +13,6 @@ if ($cuserLogin->adminStyle != 'dedecms') {
 	header("location:index_menu.php?openitem=100");
 	exit();
 }
-
 require(DEDEADMIN.'/inc/inc_menu_module.php');
 require(DEDEADMIN.'/inc/inc_menu_func.php');
 ?>
@@ -33,7 +32,6 @@ require(DEDEADMIN.'/inc/inc_menu_func.php');
 	}
 </script>
 <base target="main">
-
 <body leftmargin="0" topmargin="0" target="main">
 	<table width='100%' height="100%" border='0' cellspacing='0' cellpadding='0'>
 		<tr>
@@ -50,5 +48,4 @@ require(DEDEADMIN.'/inc/inc_menu_func.php');
 		</tr>
 	</table>
 </body>
-
 </html>

@@ -11,10 +11,8 @@
 require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/datalistcp.class.php');
 require_once(DEDEINC.'/common.func.php');
-
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
-
 function username($mid)
 {
     global $dsql;
@@ -29,7 +27,6 @@ function username($mid)
     }
     exit();
 }
-
 function typename($me)
 {
     switch ($me) {
@@ -59,14 +56,11 @@ function typename($me)
             break;
     }
 }
-
 if ($dopost == "delete") {
     if ($id == '') {
         ShowMsg("参数无效", "-1");
         exit();
     }
-
-
     if ($fmdo == 'yes') {
         $id = explode("`", $id);
         foreach ($id as $var) {
@@ -91,7 +85,6 @@ if ($dopost == "delete") {
     }
     exit();
 }
-
 $sql = "SELECT * FROM `#@__erradd` ORDER BY id desc";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/erradd.htm");

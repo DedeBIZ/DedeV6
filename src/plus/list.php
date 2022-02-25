@@ -10,27 +10,19 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../include/common.inc.php");
-
 $t1 = ExecTime();
-
 $tid = (isset($tid) && is_numeric($tid) ? $tid : 0);
-
 $channelid = (isset($channelid) && is_numeric($channelid) ? $channelid : 0);
-
-if ($tid == 0 && $channelid == 0) die(" Request Error! ");
+if ($tid == 0 && $channelid == 0) die("dedebiz");
 if (isset($TotalResult)) $TotalResult = intval(preg_replace("/[^\d]/", '', $TotalResult));
-
-
 //如果指定了内容模型ID但没有指定栏目ID，那么自动获得为这个内容模型的第一个顶级栏目作为频道默认栏目
 if (!empty($channelid) && empty($tid)) {
-
     $tinfos = $dsql->GetOne("SELECT tp.id,ch.issystem FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.channeltype='$channelid' And tp.reid=0 order by sortrank asc");
     if (!is_array($tinfos)) die(" No catalogs in the channel! ");
     $tid = $tinfos['id'];
 } else {
     $tinfos = $dsql->GetOne("SELECT ch.issystem FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id='$tid' ");
 }
-
 if ($tinfos['issystem'] == -1) {
     $nativeplace = ((empty($nativeplace) || !is_numeric($nativeplace)) ? 0 : $nativeplace);
     $infotype = ((empty($infotype) || !is_numeric($infotype)) ? 0 : $infotype);
@@ -61,9 +53,7 @@ if ($tinfos['issystem'] == -1) {
         }
     }
 }
-
 if ($lv->IsError) ParamError();
-
 $lv->Display();
 if (DEBUG_LEVEL === TRUE) {
     $queryTime = ExecTime() - $t1;

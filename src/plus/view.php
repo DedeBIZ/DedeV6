@@ -15,46 +15,31 @@
  */
 require_once(dirname(__FILE__)."/../include/common.inc.php");
 require_once(DEDEINC.'/arc.archives.class.php');
-
 $t1 = ExecTime();
-
 if (empty($okview)) $okview = '';
 if (isset($arcID)) $aid = $arcID;
 if (!isset($dopost)) $dopost = '';
-
 $arcID = $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
-if ($aid == 0) die(" Request Error! ");
-
+if ($aid == 0) die("dedebiz");
 $arc = new Archives($aid);
 if ($arc->IsError) ParamError();
-
-
 //检查阅读权限
 $needMoney = $arc->Fields['money'];
 $needRank = $arc->Fields['arcrank'];
-
 require_once(DEDEINC.'/memberlogin.class.php');
 $cfg_ml = new MemberLogin();
-
 if ($needRank < 0 && $arc->Fields['mid'] != $cfg_ml->M_ID) {
     ShowMsg('文章尚未审核,非作者本人无权查看!', 'javascript:;');
     exit();
 }
-
 //设置了权限限制的文章
 //arctitle msgtitle moremsg
 if ($needMoney > 0 || $needRank > 1) {
     $arctitle = $arc->Fields['title'];
-    /*
-    $arclink = GetFileUrl($arc->ArcID,$arc->Fields["typeid"],$arc->Fields["senddate"],
-                             $arc->Fields["title"],$arc->Fields["ismake"],$arc->Fields["arcrank"]);
-    */
     $arclink = $cfg_phpurl.'/view.php?aid='.$arc->ArcID;
     $arcLinktitle = "<a href=\"{$arclink}\">".$arctitle."</a>";
-
     $description =  $arc->Fields["description"];
     $pubdate = GetDateTimeMk($arc->Fields["pubdate"]);
-
     //会员级别不足
     if (($needRank > 1 && $cfg_ml->M_Rank < $needRank && $arc->Fields['mid'] != $cfg_ml->M_ID)) {
         $dsql->Execute('me', "SELECT * FROM `#@__arcrank` ");
@@ -67,7 +52,6 @@ if ($needMoney > 0 || $needRank > 1) {
         include_once(DEDETEMPLATE.'/plus/view_msg.htm');
         exit();
     }
-
     //需要金币的情况
     if ($needMoney > 0  && $arc->Fields['mid'] != $cfg_ml->M_ID) {
         $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE".$aid."' AND mid='".$cfg_ml->M_ID."'";
@@ -90,7 +74,6 @@ if ($needMoney > 0 || $needRank > 1) {
                             showmsg('购买失败, 请返回', -1);
                             exit;
                         }
-
                         showmsg('购买成功，购买扣点不会重扣金币，谢谢', '/plus/view.php?aid='.$aid);
                         exit;
                     } else {
@@ -98,7 +81,6 @@ if ($needMoney > 0 || $needRank > 1) {
                         exit;
                     }
                 }
-
                 $msgtitle = "扣金币购买阅读";
                 $moremsg = "阅读该文档内容需要付费<br>这篇文档需要 <span style='color:#dc3545'>".$needMoney." 金币</span> 才能访问，您目前拥有金币 <span style='color:#dc3545'>".$cfg_ml->M_Money." </span>个<br>确认阅读请点 [<a href='/plus/view.php?aid=".$aid."&dopost=buy' target='_blank'>确认付点阅读</a>]";
                 include_once($cfg_basedir.$cfg_templets_dir."/plus/view_msg.htm");
@@ -108,7 +90,6 @@ if ($needMoney > 0 || $needRank > 1) {
         }
     } //金币处理付处理
 }
-
 $arc->Display();
 if (DEBUG_LEVEL === TRUE) {
     $queryTime = ExecTime() - $t1;

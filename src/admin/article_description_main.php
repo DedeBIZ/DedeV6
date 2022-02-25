@@ -23,13 +23,11 @@ if ($dojob == '') {
     if (empty($sid)) $sid = 0;
     if (empty($eid)) $eid = 0;
     if (empty($dojob)) $dojob = 'des';
-
     $table = preg_replace("#[^0-9a-zA-Z_\#@]#", "", $table);
     $field = preg_replace("#[^0-9a-zA-Z_\[\]]#", "", $field);
     $channel = intval($channel);
     if ($dsize > 250) $dsize = 250;
     $tjnum = 0;
-
     //获取自动摘要
     if ($dojob == 'des') {
         if (empty($totalnum)) {
@@ -73,7 +71,6 @@ if ($dojob == '') {
                 }
                 $dsql->ExecuteNoneQuery("UPDATE #@__archives SET description='{$des}' WHERE id='{$row['id']}';");
             }
-
             //返回进度信息
             $startdd = $startdd + $pagesize;
             if ($totalnum > $startdd) {
@@ -94,7 +91,6 @@ if ($dojob == '') {
             exit();
         }
     } //获取自动摘要代码结束
-
     //更新自动分页
     if ($dojob == 'page') {
         require_once(DEDEADMIN."/inc/inc_archives_functions.php");
@@ -106,14 +102,12 @@ if ($dojob == '') {
         if ($eid != 0) {
             $addquery  .= " and aid<='$eid' ";
         }
-
         //统计记录总数
         if ($totalnum == 0) {
             $sql = "SELECT COUNT(*) AS dd FROM $table WHERE 1 $addquery";
             $row = $dsql->GetOne($sql);
             $totalnum = $row['dd'];
         }
-
         //获取记录，并分析
         if ($totalnum > $startdd + $pagesize) {
             $limitSql = " LIMIT $startdd,$pagesize";
@@ -141,16 +135,13 @@ if ($dojob == '') {
                 }
             }
         } //end if limit
-
         //返回进度提示
         if ($totalnum > 0) {
             $tjlen = ceil(($tjnum / $totalnum) * 100);
         } else {
             $tjlen = 100;
         }
-
         $dvlen = $tjlen * 2;
-
         $tjsta = "<div style='width:200;height:15;border:1px solid #898989;text-align:left'><div style='width:$dvlen;height:15;background-color:#829D83'></div></div>";
         $tjsta .= "<br/>完成处理文档总数的：$tjlen %，继续执行任务...";
 

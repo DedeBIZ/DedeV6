@@ -29,28 +29,25 @@ if (empty($dopost)) {
     if (is_array($types)) {
         foreach ($types as $v) $ntype .= $v.' ';
     }
-
     if ($ntype != '') $atts .= " type='".trim($ntype)."' ";
     if (!empty($typeid)) $atts .= " typeid='$typeid' ";
     if (!empty($channel)) $atts .= " channel='$channel' ";
     if (!empty($subday)) $atts .= " subday='$subday' ";
     if (!empty($keywordarc)) $atts .= " keyword='$keywordarc' ";
     if (!empty($att)) $atts .= " att='$att' ";
-
     $innertext = trim($innertext);
     if (!empty($innertext)) $innertext = stripslashes($innertext);
-
     $listTag = "{dede:list $atts}$innertext{/dede:list}";
     $listTag = addslashes($listTag);
     $inquery = "
-     UPDATE `#@__freelist` set
-     title='$title', namerule='$namerule',
-     listdir='$listdir', defaultpage='$defaultpage',
-     nodefault='$nodefault', templet='$templet',
-     edtime='$edtime', `maxpage`='$maxpage', listtag='$listTag', keywords='$keywords',
-     description='$description' WHERE aid='$aid';
-   ";
+        UPDATE `#@__freelist` set
+        title='$title', namerule='$namerule',
+        listdir='$listdir', defaultpage='$defaultpage',
+        nodefault='$nodefault', templet='$templet',
+        edtime='$edtime', `maxpage`='$maxpage', listtag='$listTag', keywords='$keywords',
+        description='$description' WHERE aid='$aid';
+    ";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功修改一个自由列表!", "freelist_main.php");
+    ShowMsg("成功修改一个自由列表", "freelist_main.php");
     exit();
 }

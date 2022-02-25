@@ -19,7 +19,6 @@ if ($dopost == "save" && $isarc == 0) {
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
     $voteitems = "";
-
     $j = 0;
     for ($i = 1; $i <= 15; $i++) {
         if (!empty(${"voteitem".$i})) {
@@ -38,7 +37,6 @@ if ($dopost == "save" && $isarc == 0) {
     $vote_content = $vt->GetVoteForm();
     $vote_content = preg_replace(array("#/#", "#([\r\n])[\s]+#"), array("\/", " "), $vote_content); //取出内容中的空白字符并进行转义
     $vote_content = 'document.write("'.$vote_content.'");';
-
     $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
     file_put_contents($vote_file, $vote_content);
     ShowMsg("成功增加一组投票", "vote_main.php");
@@ -47,7 +45,6 @@ if ($dopost == "save" && $isarc == 0) {
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
     $voteitems = "";
-
     $j = 0;
     for ($i = 1; $i <= 15; $i++) {
         if (!empty(${"voteitem".$i})) {

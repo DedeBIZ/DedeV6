@@ -22,7 +22,8 @@ if ($action == '') {
 /*-------------
 //生成项目
 function Makemodule()
---------------*/ else if ($action == 'make') {
+--------------*/
+else if ($action == 'make') {
     require_once(DEDEINC.'/dedehttpdown.class.php');
 
     //校验私钥,确定开发者身份
@@ -187,7 +188,8 @@ $filelist
 /*-------------
 //修改项目
 function editModule()
---------------*/ else if ($action == 'edit') {
+--------------*/
+else if ($action == 'edit') {
     $filelist = str_replace("\r", "\n", trim($filelist));
     $filelist = trim(preg_replace("#[\n]{1,}#", "\n", $filelist));
     if ($filelist == "") {

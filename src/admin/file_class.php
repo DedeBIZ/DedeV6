@@ -13,11 +13,9 @@ class FileManagement
 {
     var $baseDir = "";
     var $activeDir = "";
-
     //是否允许文件管理器删除目录；
     //默认为不允许 0 ,如果希望可能管理整个目录,请把值设为 1 ；
     var $allowDeleteDir = 0;
-
     //初始化系统
     function Init()
     {
@@ -25,7 +23,6 @@ class FileManagement
         $this->baseDir = $cfg_basedir;
         $this->activeDir = $activepath;
     }
-
     //修改文件名
     function RenameFile($oldname, $newname)
     {
@@ -37,7 +34,6 @@ class FileManagement
         ShowMsg("成功修改一个文件名", "file_manage_main.php?activepath=".$this->activeDir);
         return 0;
     }
-
     //创建新目录
     function NewDir($dirname)
     {
@@ -53,7 +49,6 @@ class FileManagement
             return 0;
         }
     }
-
     /**
      *  移动文件
      *
@@ -92,7 +87,6 @@ class FileManagement
             return 0;
         }
     }
-
     /**
      * 删除目录
      *
@@ -116,7 +110,6 @@ class FileManagement
         $dh->close();
         @rmdir($indir);
     }
-
     /**
      * 获得某目录合符规则的文件
      *
@@ -139,7 +132,6 @@ class FileManagement
         }
         $dh->close();
     }
-
     /**
      * 删除文件
      *
@@ -166,12 +158,10 @@ class FileManagement
         return 0;
     }
 }
-
 //目录文件大小检测类
 class SpaceUse
 {
     var $totalsize = 0;
-
     function checksize($indir)
     {
         $dh = dir($indir);
@@ -185,18 +175,15 @@ class SpaceUse
             }
         }
     }
-
     function setkb($size)
     {
         $size = $size / 1024;
-
         if ($size > 0) {
             list($t1, $t2) = explode(".", $size);
             $size = $t1.".".substr($t2, 0, 1);
         }
         return $size;
     }
-
     function setmb($size)
     {
         $size = $size / 1024 / 1024;

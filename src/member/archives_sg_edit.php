@@ -43,7 +43,8 @@ if (empty($dopost)) {
 
 /*------------------------------
 function _SaveArticle(){  }
-------------------------------*/ else if ($dopost == 'save') {
+------------------------------*/
+else if ($dopost == 'save') {
     require_once(DEDEINC."/image.func.php");
     require_once(DEDEINC."/oxwindow.class.php");
     $flag = '';

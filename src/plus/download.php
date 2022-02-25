@@ -16,7 +16,7 @@ if (!isset($open)) $open = 0;
 //读取链接列表
 if ($open == 0) {
     $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
-    if ($aid == 0) exit(' Request Error! ');
+    if ($aid == 0) exit('dedebiz');
 
     $arcRow = GetOneArchive($aid);
     if ($arcRow['aid'] == '') {
@@ -50,7 +50,8 @@ if ($open == 0) {
 /*------------------------
 //提供软件给用户下载(旧模式)
 function getSoft_old()
-------------------------*/ else if ($open == 1) {
+------------------------*/
+else if ($open == 1) {
     //更新下载次数
     $id = isset($id) && is_numeric($id) ? $id : 0;
     $link = base64_decode(urldecode($link));
@@ -88,7 +89,8 @@ function getSoft_old()
 /*------------------------
 //提供软件给用户下载(新模式)
 function getSoft_new()
-------------------------*/ else if ($open == 2) {
+------------------------*/
+else if ($open == 2) {
     $id = intval($id);
     //获得附加表信息
     $row = $dsql->GetOne("SELECT ch.addtable,arc.mid FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$id' ");

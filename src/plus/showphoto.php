@@ -14,7 +14,7 @@ require_once(DEDEINC."/channelunit.class.php");
 
 if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
-if ($aid == 0) die(" Request Error! ");
+if ($aid == 0) die("dedebiz");
 
 //读取文档信息
 $arctitle = '';

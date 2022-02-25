@@ -34,7 +34,8 @@ if ($dopost == "delStow") {
 /*-----------------
 function addArchives()
 添加投稿
-------------------*/ else if ($dopost == "addArc") {
+------------------*/
+else if ($dopost == "addArc") {
     if ($channelid == 1) {
         $addcon = 'article_add.php?channelid='.$channelid;
     } else if ($channelid == 2) {
@@ -60,7 +61,8 @@ function addArchives()
 /*-----------------
 function editArchives()
 修改投稿
-------------------*/ else if ($dopost == "edit") {
+------------------*/
+else if ($dopost == "edit") {
     CheckRank(0, 0);
     if ($channelid == 1) {
         $edit = 'article_edit.php?channelid='.$channelid;
@@ -87,7 +89,8 @@ function editArchives()
 /*--------------------
 function delArchives()
 删除文章
---------------------*/ else if ($dopost == "delArc") {
+--------------------*/
+else if ($dopost == "delArc") {
     CheckRank(0, 0);
     include_once(DEDEMEMBER."/inc/inc_batchup.php");
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'content_list.php?channelid=' : $_COOKIE['ENV_GOBACK_URL'];
@@ -155,7 +158,8 @@ function delArchives()
 /*-----------------
 function viewArchives()
 查看文章
-------------------*/ else if ($dopost == "viewArchives") {
+------------------*/
+else if ($dopost == "viewArchives") {
     CheckRank(0, 0);
     if ($type == "") {
         header("location:".$cfg_phpurl."/view.php?aid=".$aid);

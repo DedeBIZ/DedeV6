@@ -9,7 +9,6 @@
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/charset.func.php');
-
 /**
  *  获取一个页面
  *
@@ -47,28 +46,24 @@ function CoOnePage($gurl)
                 $body = utf82gb($body);
             }
         }
-
         //获取标题
         $inarr = array();
         preg_match("/<title>(.*)<\/title>/isU", $body, $inarr);
         if (isset($inarr[1])) {
             $redatas['title'] = $inarr[1];
         }
-
         //获取关键词
         $inarr = array();
         preg_match("/<meta[\s]+name=['\"]keywords['\"] content=['\"](.*)['\"]/isU", $body, $inarr);
         if (isset($inarr[1])) {
             $redatas['keywords'] = cn_substr(html2text($inarr[1]), 30);
         }
-
         //获取摘要
         $inarr = array();
         preg_match("/<meta[\s]+name=['\"]description['\"] content=['\"](.*)['\"]/isU", $body, $inarr);
         if (isset($inarr[1])) {
             $redatas['description'] = cn_substr(html2text($inarr[1]), $cfg_auot_description);
         }
-
         //获取内容
         if ($s != '' && $e != '') {
             $redatas['body'] = GetHtmlAreaA($s, $e, $body);
@@ -79,7 +74,6 @@ function CoOnePage($gurl)
     }
     return $redatas;
 }
-
 /**
  *  获取特定区域的HTML
  *

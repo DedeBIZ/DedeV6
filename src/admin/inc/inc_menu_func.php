@@ -10,15 +10,11 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-
 $headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\")'><b>~channelname~</b></dt>
 <dd style='display:~display~' class='sitem' id='items~cc~'>
 <ul class='sitemu'>\r\n";
-
 $footTemplet = "</ul>\r\n</dd>\r\n</dl>\r\n";
-
 $itemTemplet = "<li>~link~</li>\r\n";
-
 function GetMenus($userrank, $topos = 'main')
 {
     global $openitem, $headTemplet, $footTemplet, $itemTemplet;
@@ -69,7 +65,6 @@ function GetMenus($userrank, $topos = 'main')
                         } else {
                             $addico = 'images/gtk-sadd.png';
                         }
-
                         //an add icos , small items use att ischannel='1' addico='ico' addalt='msg' linkadd=''
                         $link = "        <div class='items'>
             <div class='fllct'>$link</div>\r\n
@@ -88,5 +83,4 @@ function GetMenus($userrank, $topos = 'main')
             echo "<!-- Item ".($m + 1)." End -->\r\n";
         }
     }
-}
-//End Function
+}//End Function

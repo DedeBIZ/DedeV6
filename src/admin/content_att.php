@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Att');
 if (empty($dopost)) $dopost = '';
-
 //保存修改
 if ($dopost == "save") {
     $startID = 1;
@@ -25,5 +24,4 @@ if ($dopost == "save") {
     }
     echo "<script> alert('成功更新自定文档义属性表'); </script>";
 }
-
 include DedeInclude('templets/content_att.htm');

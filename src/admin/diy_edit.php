@@ -12,10 +12,8 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Edit');
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/oxwindow.class.php");
-
 if (empty($dopost)) $dopost = "";
 $diyid = (empty($diyid) ? 0 : intval($diyid));
-
 /*----------------
 function __SaveEdit()
 -----------------*/
@@ -29,12 +27,12 @@ if ($dopost == "save") {
 }
 /*----------------
 function __Delete()
------------------*/ else if ($dopost == "delete") {
+-----------------*/
+else if ($dopost == "delete") {
     @set_time_limit(0);
     CheckPurview('c_Del');
     $row = $dsql->GetOne("SELECT * FROM #@__diyforms WHERE diyid='$diyid'");
     if (empty($job)) $job = "";
-
     //确认提示
     if ($job == "") {
         $wintitle = "自定义表单管理-删除自定义表单";
@@ -49,7 +47,6 @@ function __Delete()
         $win->Display();
         exit();
     }
-
     //操作
     else if ($job == "yes") {
         $row = $dsql->GetOne("SELECT `table` FROM `#@__diyforms` WHERE diyid='$diyid'", MYSQL_ASSOC);
@@ -57,17 +54,14 @@ function __Delete()
             ShowMsg("您所指定的自定义表单信息不存在!", "-1");
             exit();
         }
-
         //删除表
         $dsql->ExecuteNoneQuery("DROP TABLE IF EXISTS `{$row['table']}`;");
-
         //删除频道配置信息
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__diyforms` WHERE diyid='$diyid'");
         ShowMsg("成功删除一个自定义表单", "diy_main.php");
         exit();
     }
 }
-
 /*----------------
 function edit()
 -----------------*/

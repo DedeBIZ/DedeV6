@@ -76,7 +76,8 @@ if ($action == 'edit' || $action == 'newfile') {
 /*---------------------------
 function save_tpl() { }
 保存编辑模板
---------------------------*/ else if ($action == 'saveedit') {
+--------------------------*/
+else if ($action == 'saveedit') {
     CheckCSRF();
     if ($filename == '') {
         ShowMsg('未指定要编辑的文件或文件名不合法', '-1');
@@ -101,7 +102,8 @@ function save_tpl() { }
 /*---------------------------
 function del_tpl() { }
 删除模板
---------------------------*/ else if ($action == 'del') {
+--------------------------*/
+else if ($action == 'del') {
     $truefile = $templetdird.'/'.$filename;
     if (unlink($truefile)) {
         ShowMsg('删除文件成功', 'templets_main.php?acdir='.$acdir);
@@ -114,7 +116,8 @@ function del_tpl() { }
 /*----------------------
 function _upload() {}
 上传新模板
------------------------*/ else if ($action == 'upload') {
+-----------------------*/
+else if ($action == 'upload') {
     require_once(dirname(__FILE__).'/../include/oxwindow.class.php');
     $acdir = str_replace('.', '', $acdir);
     $win = new OxWindow();
@@ -144,7 +147,8 @@ function _upload() {}
 /*----------------------
 function _upload() {}
 上传新模板
------------------------*/ else if ($action == 'uploadok') {
+-----------------------*/
+else if ($action == 'uploadok') {
     CheckCSRF();
     if (!is_uploaded_file($upfile)) {
         ShowMsg("貌似您什么都没有上传哦", "javascript:;");
@@ -168,7 +172,8 @@ function _upload() {}
 /*---------------------------
 function edittag() { }
 修改标签碎片
---------------------------*/ else if ($action == 'edittag' || $action == 'addnewtag') {
+--------------------------*/
+else if ($action == 'edittag' || $action == 'addnewtag') {
     if ($action == 'addnewtag') {
         $democode = '<'."?php
 if(!defined('DEDEINC'))
@@ -213,7 +218,8 @@ function lib_demotag(&\$ctag,&\$refObj)
 /*---------------------------
 function savetagfile() { }
 保存标签碎片修改
---------------------------*/ else if ($action == 'savetagfile') {
+--------------------------*/
+else if ($action == 'savetagfile') {
     CheckCSRF();
     if (!preg_match("#^[a-z0-9_-]{1,}\.lib\.php$#i", $filename)) {
         ShowMsg('文件名不合法，不允许进行操作', '-1');

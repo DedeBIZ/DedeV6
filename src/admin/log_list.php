@@ -14,13 +14,11 @@ require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $sql = $where = "";
-
 if (empty($adminid)) $adminid = 0;
 if (empty($cip)) $cip = "";
 if (empty($dtime)) $dtime = 0;
 if ($adminid > 0) $where .= " AND #@__log.adminid='$adminid' ";
 if ($cip != "") $where .= " AND #@__log.cip LIKE '%$cip%' ";
-
 if ($dtime > 0) {
     $nowtime = time();
     $starttime = $nowtime - ($dtime * 24 * 3600);

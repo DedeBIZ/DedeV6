@@ -13,7 +13,6 @@ CheckPurview('sys_Keyword');
 require_once(DEDEINC.'/datalistcp.class.php');
 $timestamp = time();
 if (empty($tag)) $tag = '';
-
 if (empty($action)) {
     $orderby = empty($orderby) ? 'id' : preg_replace("#[^a-z]#i", '', $orderby);
     $orderway = isset($orderway) && $orderway == 'asc' ? 'asc' : 'desc';
@@ -35,7 +34,8 @@ if (empty($action)) {
 }
 /*
 function update()
-*/ else if ($action == 'update') {
+*/
+else if ($action == 'update') {
     $tid = (empty($tid) ? 0 : intval($tid));
     $count = (empty($count) ? 0 : intval($count));
     if (empty($tid)) {
@@ -49,7 +49,8 @@ function update()
 }
 /*
 function delete()
-*/ else if ($action == 'delete') {
+*/
+else if ($action == 'delete') {
     if (@is_array($ids)) {
         $stringids = implode(',', $ids);
     } else if (!empty($ids)) {
@@ -82,7 +83,8 @@ function delete()
 }
 /*
 function fetch()
-*/ else if ($action == 'fetch') {
+*/
+else if ($action == 'fetch') {
     $wheresql = '';
     $start = isset($start) && is_numeric($start) ? $start : 0;
     $where = array();

@@ -19,7 +19,8 @@ if (empty($action)) {
 /*-------------------------------
 //列出数据库表里的字段
 function __getfields()
---------------------------------*/ else if ($action == 'getfields') {
+--------------------------------*/
+else if ($action == 'getfields') {
     AjaxHead();
     $dsql->GetTableFields($exptable);
     echo "<div style='border:1px solid #ababab;background-color:#FEFFF0;margin-top:6px;padding:3px;line-height:160%'>";
@@ -33,7 +34,8 @@ function __getfields()
 /*-------------------------------
 //保存用户设置，清空会员数据
 function __Apply()
---------------------------------*/ else if ($action == 'apply') {
+--------------------------------*/
+else if ($action == 'apply') {
     $validate = empty($validate) ? '' : strtolower($validate);
     $svali = GetCkVdValue();
     if ($validate == "" || $validate != $svali) {

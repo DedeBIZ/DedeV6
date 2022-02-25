@@ -10,7 +10,6 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
-
 //保存修改
 if ($dopost == "save") {
     $startID = 1;
@@ -38,5 +37,4 @@ if ($dopost == "save") {
     ShowMsg("成功更新广告分类列表", 'adtype_main.php');
     exit;
 }
-
 include DedeInclude('templets/adtype_main.htm');
