@@ -1,11 +1,6 @@
 <?php
 /**
- *  添加联动多筛选
- *
- * @param     string  $str  字符
- * @param     string  $stype  类型
- * @param     string  $fieldset  字段列表
- * @param     string  $loadtype  载入类型
+ * 添加联动多筛选
  */
 function litimgurls($imgid=0)
 {
@@ -112,3 +107,4 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $lo
     }
 	echo $dede_addonfields;
 }
+?>
