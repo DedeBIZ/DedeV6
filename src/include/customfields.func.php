@@ -99,7 +99,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:360px\" class=\"intxt datepicker\"/>";
     } else if ($fieldType == 'img' || $fieldType == 'imgfile') {
         if ($admintype == 'diy') {
-            $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:360px;height:22px;line-height:22px' />\r\n";
+            $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:360px' />\r\n";
         } else {
             $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:360px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
         }
@@ -111,7 +111,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         }
     } else if ($fieldType == 'addon') {
         if ($admintype == 'diy') {
-            $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:360px;height:22px;line-height:22px' />\r\n";
+            $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:360px' />\r\n";
         } else {
             $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:360px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
         }
@@ -122,7 +122,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '');
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
         $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:360px;height:50px'>$dfvalue</textarea><br>
-        <button type='button' class='btn btn-success btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
+        <button type='button' class='btn btn-success btn-sm' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
         if ($ctag->GetAtt('automake') == 1) {
             $innertext .= "<input type='hidden' name='automake[$fieldname]' value=1>";
         }
@@ -415,7 +415,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
     } else if ($ftype == "relation") {
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
         $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:360px;height:50px'>$fvalue</textarea><br>
-        <button type='button' class='btn btn-success btn-sm mt-2 mb-2' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
+        <button type='button' class='btn btn-success btn-sm' onclick='SelectArcList(\"form1.$fieldname\", $channel);'>选择关联内容</button>\r\n";
         if ($ctag->GetAtt('automake') == 1) {
             $innertext .= "<input type='hidden' name='automake[$fieldname]' value=1>";
         }
