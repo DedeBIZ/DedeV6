@@ -1,5 +1,4 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * SMTP邮件操作类
  *
@@ -11,7 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 class smtp
 {
-    // 公有变量
+    //公有变量
     var $smtp_port;
     var $time_out;
     var $host_name;

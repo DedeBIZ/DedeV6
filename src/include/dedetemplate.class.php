@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 /**
  *  这个函数用于定义任意名称的块使用的接口
  *  返回值应是一个二维数组

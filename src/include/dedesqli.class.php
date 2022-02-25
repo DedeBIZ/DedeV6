@@ -17,8 +17,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
-// 在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作
-// 为了防止错误，操作完后不必关闭数据库
+//在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作
+//为了防止错误，操作完后不必关闭数据库
 if (!function_exists("mysqli_init")) {
     echo "DedeBIZ提示：尚未发现开启mysqli模块，请在php.ini中启用`extension=mysqli`。";
     exit;
@@ -542,7 +542,7 @@ EOT;
         if ($this->showError) {
             $emsg = '';
             $emsg .= "<div><h3>DedeBIZ Error Warning!</h3>\r\n";
-            $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:#dc3545'>Technical Support: https://www.dedebiz.com</a></div>";
+            $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:red'>Technical Support: https://www.dedebiz.com</a></div>";
             $emsg .= "<div style='line-helght:160%;font-size:14px;color:green'>\r\n";
             $emsg .= "<div style='color:blue'><br />Error page: <span style='color:#dc3545'>".$this->GetCurUrl()."</span></div>\r\n";
             $emsg .= "<div>Error infos: {$msg}</div>\r\n";

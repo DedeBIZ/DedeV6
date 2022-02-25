@@ -25,7 +25,6 @@
     }
   </script>
 </head>
-
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
     <tr>
@@ -36,7 +35,7 @@
       <td height="200" bgcolor="#FFFFFF" align='center'><?php
 	if($row['matt']==10) 
     {
-    echo "<span style='color:#dc3545'>已经是管理员了，不要再提升了</span>";
+    echo "<span style='color:#e74d58'>已经是管理员了，不要再提升了</span>";
     }else{
 	?>
         <table width="98%" border="0" cellspacing="0" cellpadding="6" class="table table-borderless">
@@ -106,7 +105,7 @@
               <td align="left"><input name="safecode" type="text" id="safecode" size="16" style="width:200px" />
                 <input name="randcode" type="hidden" value="<?php echo $randcode; ?>" />
                 &nbsp;
-                (复制本代码：<span style='color:#dc3545'><?php echo $safecode;  ?></span> ) </td>
+                (复制本代码：<span style='color:#e74d58'><?php echo $safecode;  ?></span> ) </td>
             </tr>
             <tr>
               <td height="67" align="right">&nbsp;</td>

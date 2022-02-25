@@ -6,14 +6,13 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 //针对会员中心操作进行XSS过滤
 function XSSClean($val)
 {
     global $cfg_soft_lang;
     if ($cfg_soft_lang == 'gb2312') gb2utf8($val);
     if (is_array($val)) {
-        // while (list($key) = each($val))
+        //while (list($key) = each($val))
         foreach ($val as $key => $value) {
             if (in_array($key, array('tags', 'body', 'dede_fields', 'dede_addonfields', 'dopost', 'introduce'))) continue;
             $val[$key] = XSSClean($val[$key]);
@@ -184,11 +183,11 @@ function CheckRank($rank = 0, $money = 0)
         if ($cfg_ml->M_Rank < $rank) {
             $needname = "";
             if ($cfg_ml->M_Rank == 0) {
-                $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='$rank'");
+                $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='$rank'");
                 $myname = "普通会员";
                 $needname = $row['membername'];
             } else {
-                $dsql->SetQuery("SELECT membername From `#@__arcrank` WHERE `rank`='$rank' OR `rank`='".$cfg_ml->M_Rank."' ORDER BY `rank` DESC");
+                $dsql->SetQuery("SELECT membername From `#@__arcrank` WHERE rank='$rank' OR rank='".$cfg_ml->M_Rank."' ORDER BY rank DESC");
                 $dsql->Execute();
                 $row = $dsql->GetObject();
                 $needname = $row->membername;
@@ -198,10 +197,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "普通会员";
                 }
             }
-            ShowMsg("对不起，需要：<span style='font-size:11pt;color:#dc3545'>$needname</span> 才能访问本页面。<br>您目前的等级是：<span style='font-size:11pt;color:#dc3545'>$myname</span> 。", "-1", 0, 5000);
+            ShowMsg("对不起，需要：<span style='font-size:11pt;color:red'>$needname</span> 才能访问本页面。<br>您目前的等级是：<span style='font-size:11pt;color:red'>$myname</span> 。", "-1", 0, 5000);
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("对不起，需要花费金币：<span style='font-size:11pt;color:#dc3545'>$money</span> 才能访问本页面。<br>您目前拥有的金币是：<span style='font-size:11pt;color:#dc3545'>".$cfg_ml->M_Money."</span>  。", "-1", 0, 5000);
+            ShowMsg("对不起，需要花费金币：<span style='font-size:11pt;color:red'>$money</span> 才能访问本页面。<br>您目前拥有的金币是：<span style='font-size:11pt;color:red'>".$cfg_ml->M_Money."</span>  。", "-1", 0, 5000);
             exit();
         }
     }

@@ -10,10 +10,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/arc.partview.class.php');
-
 helper('cache');
 @set_time_limit(0);
-
 /**
  * 自由列表类
  *

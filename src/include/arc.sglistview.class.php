@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 @set_time_limit(0);
 require_once(DEDEINC."/arc.partview.class.php");
 

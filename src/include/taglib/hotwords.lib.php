@@ -1,5 +1,4 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 获取网站搜索的热门关键字
  *

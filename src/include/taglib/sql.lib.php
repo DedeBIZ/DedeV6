@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function lib_sql(&$ctag, &$refObj)
 {
     global $dsql, $sqlCt, $cfg_soft_lang;

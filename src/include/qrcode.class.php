@@ -1,5 +1,4 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * PHP QR Code porting
  *

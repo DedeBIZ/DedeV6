@@ -1,5 +1,4 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * Unicode编码词典的php分词器
  *
@@ -14,7 +13,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 //常量定义
 define('_SP_', chr(0xFF).chr(0xFE)); 
 define('UCS2', 'ucs-2be');

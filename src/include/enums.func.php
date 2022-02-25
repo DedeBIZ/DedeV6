@@ -9,8 +9,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-// 弱不存在缓存文件则写入缓存
+//弱不存在缓存文件则写入缓存
 if (!file_exists(DEDEDATA.'/enums/system.php')) WriteEnumsCache();
 
 /**

@@ -1,10 +1,11 @@
-<?php  if (!defined('DEDEINC')) exit('dedebiz');
-// Copyright 2020 The DedeBiz Authors. All rights reserved.
-// license that can be found in the LICENSE file.
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
+//Copyright 2020 The DedeBiz Authors. All rights reserved.
+//license that can be found in the LICENSE file.
 
-// @copyright      Copyright (c) 2022, DedeBIZ.COM
-// @license        https://www.dedebiz.com/license
-// @link           https://www.dedebiz.com
+//@copyright      Copyright (c) 2022, DedeBIZ.COM
+//@license        https://www.dedebiz.com/license
+//@link           https://www.dedebiz.com
 /*
 The MIT License (MIT)
 

@@ -1,5 +1,4 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 单页文档相同标识调用标签
  *

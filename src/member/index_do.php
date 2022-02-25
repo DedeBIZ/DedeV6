@@ -1,7 +1,7 @@
 <?php
 /**
-* @version        $Id: index_do.php 1 8:24 2010年7月9日Z tianya $
-* @package        DedeBIZ.Member
+     * @version        $Id: index_do.php 1 8:24 2010年7月9日Z tianya $
+     * @package        DedeBIZ.Member
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
@@ -99,7 +99,7 @@ else if ($fmdo == 'user') {
             $msg = CheckUserID($uid, $msgtitle, false);
         }
         if ($msg == 'ok') {
-            $msg = "<span style='color:color:#dc3545'><b>√{$msgtitle}可以使用</b></span>";
+            $msg = "<span style='color:#28a745'><b>√{$msgtitle}可以使用</b></span>";
         } else {
             $msg = "<span style='color:#dc3545'><b>×{$msg}</b></span>";
         }
@@ -112,14 +112,14 @@ else if ($fmdo == 'user') {
         AjaxHead();
 
         if ($cfg_md_mailtest == 'N') {
-            $msg = "<span style='color:color:#dc3545'><b>√可以使用</b></span>";
+            $msg = "<span style='color:#28a745'><b>√可以使用</b></span>";
         } else {
             if (!CheckEmail($email)) {
-                $msg = "<span style='color:color:#dc3545'><b>×Email格式有误</b></span>";
+                $msg = "<span style='color:#28a745'><b>×Email格式有误</b></span>";
             } else {
                 $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE email LIKE '$email' LIMIT 1");
                 if (!is_array($row)) {
-                    $msg = "<span style='color:color:#dc3545'><b>√可以使用</b></span>";
+                    $msg = "<span style='color:#28a745'><b>√可以使用</b></span>";
                 } else {
                     $msg = "<span style='color:#dc3545'><b>×Email已经被另一个帐号占用</b></span>";
                 }

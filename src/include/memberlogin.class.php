@@ -9,8 +9,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-// 使用缓存助手
+//使用缓存助手
 helper('cache');
 /**
  *  检查用户名的合法性
@@ -214,7 +213,7 @@ class MemberLogin
         $mhasDay = $this->M_ExpTime - ceil(($nowtime - $this->M_UpTime) / 3600 / 24) + 1;
         if ($mhasDay <= 0) {
             $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET uptime='0',exptime='0',
-                                         `rank`='$cfg_mb_rank' WHERE mid='".$this->fields['mid']."';");
+                                         rank='$cfg_mb_rank' WHERE mid='".$this->fields['mid']."';");
         }
         return $mhasDay;
     }
@@ -475,7 +474,7 @@ class MemberLogin
         if ($this->M_Rank == 0) {
             $sta .= "您目前的身份是：普通会员";
         } else {
-            $row = $dsql->GetOne("Select membername From `#@__arcrank` where `rank`='".$this->M_Rank."'");
+            $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$this->M_Rank."'");
             $sta .= "您目前的身份是：".$row['membername'];
             $rs = $dsql->GetOne("Select id From `#@__admin` where userid='".$this->M_LoginID."'");
             if (!is_array($rs)) {

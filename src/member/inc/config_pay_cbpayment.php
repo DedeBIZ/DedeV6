@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEMEMBER')) exit('dedebiz');
+if (!defined('DEDEMEMBER')) exit("Request Error!");
 require_once(DEDEMEMBER."/paycenter/cbpayment/cbpayment_config.php");
 if($payment_exp[3] < 0) $payment_exp[3] = 0;
 $piice_ex = $price*$payment_exp[3];

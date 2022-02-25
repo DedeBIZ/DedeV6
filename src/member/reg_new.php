@@ -75,7 +75,7 @@ if ($step == 1) {
         //会员的默认金币
         $dfscores = 0;
         $dfmoney = 0;
-        $dfrank = $dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE `rank`='10' ");
+        $dfrank = $dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE rank='10' ");
         if (is_array($dfrank)) {
             $dfmoney = $dfrank['money'];
             $dfscores = $dfrank['scores'];

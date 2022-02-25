@@ -7,7 +7,6 @@
   <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href='css/base.css' rel='stylesheet' type='text/css'>
 </head>
-
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
     <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
       <form name='form1' action='sys_group_add.php' method='post'>
@@ -32,7 +31,7 @@
           	
           	$dsql->SetQuery("Select `rank` From `#@__admintype`");
           	$dsql->Execute();
-          	while($row = $dsql->GetObject()) echo '<span style='color:#dc3545'>'.$row->rank.'</span>、';
+          	while($row = $dsql->GetObject()) echo '<span style='color:#e74d58'>'.$row->rank.'</span>、';
           	?>
                   ，级别值必须小于10，超过或等于10所有权限设置将无效(超级管理员)，如果10个组不能完全满足您的要求，允许使用小数） </td>
               </tr>

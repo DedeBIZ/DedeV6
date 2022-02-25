@@ -225,21 +225,21 @@ class Alipay
         /* 改变点卡订单状态_支付成功 */
         if($product=="card")
         {
-            $row = $this->dsql->GetOne("SELECT cardid FROM `#@__moneycard_record` WHERE ctid='$pid' AND isexp='0' ");;
+            $row = $this->dsql->GetOne("SELECT cardid FROM #@__moneycard_record WHERE ctid='$pid' AND isexp='0' ");;
             //如果找不到某种类型的卡，直接为用户增加金币
             if(!is_array($row))
             {
-                $nrow = $this->dsql->GetOne("SELECT num FROM `#@__moneycard_type` WHERE pname = '{$pname}'");
+                $nrow = $this->dsql->GetOne("SELECT num FROM #@__moneycard_type WHERE pname = '{$pname}'");
                 $dnum = $nrow['num'];
                 $sql1 = "UPDATE `#@__member` SET `money`=money+'{$nrow['num']}' WHERE `mid`='".$this->mid."'";
                 $oldinf ="已经充值了".$nrow['num']."金币到您的帐号";
             } else {
                 $cardid = $row['cardid'];
-                $sql1=" UPDATE `#@__moneycard_record` SET uid='".$this->mid."',isexp='1',utime='".time()."' WHERE cardid='$cardid' ";
-                $oldinf='您的充值密码是：<span style="color:color:#dc3545">'.$cardid.'</span>';
+                $sql1=" UPDATE #@__moneycard_record SET uid='".$this->mid."',isexp='1',utime='".time()."' WHERE cardid='$cardid' ";
+                $oldinf='您的充值密码是：<span style="color:#28a745">'.$cardid.'</span>';
             }
             //更新交易状态为已关闭
-            $sql2=" UPDATE `#@__member_operation` SET sta=2,oldinfo='$oldinf' WHERE buyid='$order_sn'";
+            $sql2=" UPDATE #@__member_operation SET sta=2,oldinfo='$oldinf' WHERE buyid='$order_sn'";
             if($this->dsql->ExecuteNoneQuery($sql1) && $this->dsql->ExecuteNoneQuery($sql2))
             {
                 $this->log_result("verify_success,订单号:".$order_sn); //将验证结果存入文件
@@ -250,11 +250,11 @@ class Alipay
             }
         /* 改变会员订单状态_支付成功 */
         } else if ( $product=="member" ){
-            $row = $this->dsql->GetOne("SELECT `rank`,exptime FROM `#@__member_type` WHERE aid='$pid' ");
+            $row = $this->dsql->GetOne("SELECT rank,exptime FROM #@__member_type WHERE aid='$pid' ");
             $rank = $row['rank'];
             $exptime = $row['exptime'];
             /*计算原来升级剩余的天数*/
-            $rs = $this->dsql->GetOne("SELECT uptime,exptime FROM `#@__member` WHERE mid='".$this->mid."'");
+            $rs = $this->dsql->GetOne("SELECT uptime,exptime FROM #@__member WHERE mid='".$this->mid."'");
             if($rs['uptime']!=0 && $rs['exptime']!=0 ) 
             {
                 $nowtime = time();
@@ -262,13 +262,13 @@ class Alipay
                 $mhasDay=($mhasDay>0)? $mhasDay : 0;
             }
             //获取会员默认级别的金币和积分数
-            $memrank = $this->dsql->GetOne("SELECT money,scores FROM `#@__arcrank` WHERE `rank`='$rank'");
+            $memrank = $this->dsql->GetOne("SELECT money,scores FROM #@__arcrank WHERE rank='$rank'");
             //更新会员信息
-            $sql1 =  " UPDATE `#@__member` SET `rank`='$rank',money=money+'{$memrank['money']}',
+            $sql1 =  " UPDATE #@__member SET rank='$rank',money=money+'{$memrank['money']}',
                        scores=scores+'{$memrank['scores']}',exptime='$exptime'+'$mhasDay',uptime='".time()."' 
                        WHERE mid='".$this->mid."'";
             //更新交易状态为已关闭
-            $sql2=" UPDATE `#@__member_operation` SET sta='2',oldinfo='会员升级成功!' WHERE buyid='$order_sn' ";
+            $sql2=" UPDATE #@__member_operation SET sta='2',oldinfo='会员升级成功!' WHERE buyid='$order_sn' ";
             if($this->dsql->ExecuteNoneQuery($sql1) && $this->dsql->ExecuteNoneQuery($sql2))
             {
                 $this->log_result("verify_success,订单号:".$order_sn); //将验证结果存入文件

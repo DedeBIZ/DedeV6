@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 if (!isset($cfg_mainsite)) extract($GLOBALS, EXTR_SKIP);
 global $PubFields, $pTypeArrays, $idArrary, $envs, $v1, $v2;
 

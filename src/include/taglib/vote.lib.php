@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 require_once(DEDEINC.'/dedevote.class.php');
 function lib_vote(&$ctag, &$refObj)
 {

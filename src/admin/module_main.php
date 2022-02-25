@@ -155,27 +155,27 @@ else if ($action == 'setup') {
   $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
   <tr>
-    <td width='20%' class='dtb'>模块名称：</td>
+    <td width='20%' height='26' class='dtb'>模块名称：</td>
     <td width='80%' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td class='dtb'>语言：</td>
+    <td height='26' class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td class='dtb'>文件大小：</td>
+    <td height='26' class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td class='dtb'>开发者ID：</td>
+    <td height='26' class='dtb'>开发者ID：</td>
     <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a></td>
   </tr>
   <tr>
-    <td class='dtb'>发布时间：</td>
+    <td height='26' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td class='dtb'>使用协议：</td>
+    <td height='26' class='dtb'>使用协议：</td>
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
@@ -197,7 +197,7 @@ else if ($action == 'setup') {
     </td>
   </tr>
   <tr>
-    <td>对于已存在文件处理方法：</td>
+    <td height='26'>对于已存在文件处理方法：</td>
     <td>
     <label><input name='isreplace' type='radio' value='1' checked='checked'> 覆盖</label>
     <label><input name='isreplace' type='radio' value='3'> 覆盖，保留副本</label>
@@ -290,31 +290,31 @@ else if ($action == 'del') {
   $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='750' border='0' cellspacing='0' cellpadding='0'>
     <tr>
-      <td width='20%' class='dtb'>模块名称：</td>
+      <td width='20%' height='26' class='dtb'>模块名称：</td>
       <td width='80%' class='dtb'>{$infos['name']}</td>
     </tr>
     <tr>
-      <td class='dtb'>语言：</td>
+      <td height='26' class='dtb'>语言：</td>
       <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-      <td class='dtb'>文件大小：</td>
+      <td height='26' class='dtb'>文件大小：</td>
       <td class='dtb'>{$infos['filesize']}</td>
     </tr>
     <tr>
-      <td class='dtb'>开发者ID：</td>
+      <td height='26' class='dtb'>开发者ID：</td>
       <td class='dtb'>{$dev_id}</td>
     </tr>
     <tr>
-      <td class='dtb'>发布时间：</td>
+      <td height='26' class='dtb'>发布时间：</td>
       <td class='dtb'>{$infos['time']}</td>
     </tr>
     <tr>
-      <td class='dtb'>使用协议：</td>
+      <td height='26' class='dtb'>使用协议：</td>
       <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-      <td colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除。</td>
+      <td height='26' colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除。</td>
     </tr>
 </table>";
   $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
@@ -355,31 +355,31 @@ else if ($action == 'uninstall') {
   $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='750' border='0' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='200' class='dtb'>模块名称：</td>
+    <td width='200' height='26' class='dtb'>模块名称：</td>
     <td width='550' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td class='dtb'>语言：</td>
+    <td height='26' class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td class='dtb'>文件大小：</td>
+    <td height='26' class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td class='dtb'>开发者ID：</td>
+    <td height='26' class='dtb'>开发者ID：</td>
     <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
-    <td class='dtb'>发布时间：</td>
+    <td height='26' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td class='dtb'>使用协议：</td>
+    <td height='26' class='dtb'>使用协议：</td>
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
+    <td height='26'>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
   </tr>
   <tr>
     <td height='160' colspan='2'>
@@ -387,7 +387,7 @@ else if ($action == 'uninstall') {
     </td>
   </tr>
   <tr>
-    <td>对于模块的文件处理方法：</td>
+    <td height='26'>对于模块的文件处理方法：</td>
     <td>
     <label><input type='radio' name='isreplace' value='0' checked='checked'> 手工删除文件，仅运行卸载程序</label>
     <label><input name='isreplace' type='radio' value='2'> 删除模块的所有文件</label>
@@ -485,31 +485,31 @@ else if ($action == 'view') {
   $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='20%' class='dtb'>模块名称：</td>
+    <td width='20%' height='26' class='dtb'>模块名称：</td>
     <td width='80%' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td class='dtb'>语言：</td>
+    <td height='26' class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td class='dtb'>文件大小：</td>
+    <td height='26' class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td class='dtb'>开发者ID：</td>
+    <td height='26' class='dtb'>开发者ID：</td>
     <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
-    <td class='dtb'>发布时间：</td>
+    <td height='26' class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td class='dtb'>使用协议：</td>
+    <td height='26' class='dtb'>使用协议：</td>
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
+    <td height='26'>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
   </tr>
   <tr>
     <td height='160' colspan='2'>

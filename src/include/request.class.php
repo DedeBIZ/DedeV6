@@ -1,5 +1,4 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 处理外部请求变量的类
  *
@@ -12,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-// REQUEST常量,用于判断是否启用REQUEST类
+//REQUEST常量,用于判断是否启用REQUEST类
 define('DEDEREQUEST', TRUE);
 
 //简化 cls_request::item() 函数

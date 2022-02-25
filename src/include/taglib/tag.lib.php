@@ -1,5 +1,4 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
 //function GetTags($num,$ltype='new',$InnerText='')
 /**
  * TAG调用标签

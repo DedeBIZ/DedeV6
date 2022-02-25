@@ -17,8 +17,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
-// 在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作
-// 为了防止错误，操作完后不必关闭数据库
+//在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作
+//为了防止错误，操作完后不必关闭数据库
 $dsql = $dsqlitete = $db = new DedeSqlite(FALSE);
 /**
  * Dede MySQLi数据库类
@@ -29,9 +29,6 @@ $dsql = $dsqlitete = $db = new DedeSqlite(FALSE);
  */
 if (!defined('MYSQL_BOTH')) {
     define('MYSQL_BOTH', MYSQLI_BOTH);
-}
-if (!defined('MYSQL_ASSOC')) {
-    define('MYSQL_ASSOC', SQLITE3_ASSOC);
 }
 class DedeSqlite
 {
@@ -108,7 +105,7 @@ class DedeSqlite
             $this->linkID = $dsqlite->linkID;
         } else {
 
-            $this->linkID = new SQLite3(DEDEDATA . '/' . $this->dbName . '.db');
+            $this->linkID = new SQLite3(DEDEDATA.'/'.$this->dbName.'.db');
 
             //复制一个对象副本
             CopySQLiPoint($this);
@@ -126,13 +123,13 @@ class DedeSqlite
     //为了防止采集等需要较长运行时间的程序超时，在运行这类程序时设置系统等待和交互时间
     function SetLongLink()
     {
-        // @mysqli_query("SET interactive_timeout=3600, wait_timeout=3600 ;", $this->linkID);
+        @mysqli_query("SET interactive_timeout=3600, wait_timeout=3600 ;", $this->linkID);
     }
 
     //获得错误描述
     function GetError()
     {
-        $str = $dsqlite->lastErrorMsg();
+        $str = mysqli_error($this->linkID);
         return $str;
     }
 
@@ -182,7 +179,7 @@ class DedeSqlite
         }
         if (is_array($this->parameters)) {
             foreach ($this->parameters as $key => $value) {
-                $this->queryString = str_replace("@" . $key, "'$value'", $this->queryString);
+                $this->queryString = str_replace("@".$key, "'$value'", $this->queryString);
             }
         }
         //SQL语句安全检查
@@ -220,7 +217,7 @@ class DedeSqlite
         }
         if (is_array($this->parameters)) {
             foreach ($this->parameters as $key => $value) {
-                $this->queryString = str_replace("@" . $key, "'$value'", $this->queryString);
+                $this->queryString = str_replace("@".$key, "'$value'", $this->queryString);
             }
         }
         $t1 = ExecTime();
@@ -285,7 +282,7 @@ class DedeSqlite
         }
 
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError($this->linkID->lastErrorMsg() . " <br />Error sql: <span style='color:#dc3545'>" . $this->queryString . "</span>");
+            $this->DisplayError($this->linkID->lastErrorMsg()." <br />Error sql: <span style='color:#dc3545'>".$this->queryString."</span>");
         }
     }
 
@@ -295,7 +292,7 @@ class DedeSqlite
     }
 
     //执行一个SQL语句,返回前一条记录或仅返回一条记录
-    function GetOne($sql = '', $acctype = SQLITE3_ASSOC)
+    function GetOne($sql = '', $acctype = MYSQLI_ASSOC)
     {
         global $dsqlite;
         if (!$dsqlite->isInit) {
@@ -306,7 +303,7 @@ class DedeSqlite
             $dsqlite->isClose = FALSE;
         }
         if (!empty($sql)) {
-            if (!preg_match("/LIMIT/i", $sql)) $this->SetQuery(preg_replace("/[,;]$/i", '', trim($sql)) . " LIMIT 0,1;");
+            if (!preg_match("/LIMIT/i", $sql)) $this->SetQuery(preg_replace("/[,;]$/i", '', trim($sql))." LIMIT 0,1;");
             else $this->SetQuery($sql);
         }
         $this->Execute("one");
@@ -352,16 +349,12 @@ class DedeSqlite
         if ($this->result[$id] === 0) {
             return FALSE;
         } else {
-            if ($this->result[$id]) {
-                $rs = $this->result[$id]->fetchArray($acctype);
-                if (!$rs) {
-                    $this->result[$id] = 0;
-                    return false;
-                }
-                return $rs;
-            } else {
+            $rs = $this->result[$id]->fetchArray($acctype);
+            if (!$rs) {
+                $this->result[$id] = 0;
                 return false;
             }
+            return $rs;
         }
     }
 
@@ -369,12 +362,10 @@ class DedeSqlite
     {
         if (!isset($this->_fixObject[$id])) {
             $this->_fixObject[$id] = array();
-            if ($this->result[$id]) {
-                while ($row = $this->result[$id]->fetchArray(SQLITE3_ASSOC)) {
-                    $this->_fixObject[$id][] = (object)$row;
-                }
-                $this->result[$id]->reset();
+            while ($row = $this->result[$id]->fetchArray(SQLITE3_ASSOC)) {
+                $this->_fixObject[$id][] = (object)$row;
             }
+            $this->result[$id]->reset();
         }
         return array_shift($this->_fixObject[$id]);
     }
@@ -412,7 +403,7 @@ class DedeSqlite
         $sqlite_version = $rs;
         if ($isformat) {
             $sqlite_versions = explode(".", trim($sqlite_version));
-            $sqlite_version = number_format($sqlite_versions[0] . "." . $sqlite_versions[1], 2);
+            $sqlite_version = number_format($sqlite_versions[0].".".$sqlite_versions[1], 2);
         }
         return $sqlite_version;
     }
@@ -534,7 +525,7 @@ class DedeSqlite
 
     function RecordLog($runtime = 0)
     {
-        $RecordLogFile = dirname(__FILE__) . '/../data/mysqli_record_log.inc';
+        $RecordLogFile = dirname(__FILE__).'/../data/mysqli_record_log.inc';
         $url = $this->GetCurUrl();
         $savemsg = <<<EOT
 
@@ -551,26 +542,26 @@ EOT;
     //显示数据链接错误信息
     function DisplayError($msg)
     {
-        $errorTrackFile = dirname(__FILE__) . '/../data/mysqli_error_trace.inc';
-        if (file_exists(dirname(__FILE__) . '/../data/mysqli_error_trace.php')) {
-            @unlink(dirname(__FILE__) . '/../data/mysqli_error_trace.php');
+        $errorTrackFile = dirname(__FILE__).'/../data/mysqli_error_trace.inc';
+        if (file_exists(dirname(__FILE__).'/../data/mysqli_error_trace.php')) {
+            @unlink(dirname(__FILE__).'/../data/mysqli_error_trace.php');
         }
         if ($this->showError) {
             $emsg = '';
             $emsg .= "<div><h3>DedeBIZ Error Warning!</h3>\r\n";
-            $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:#dc3545'>Technical Support: https://www.dedebiz.com</a></div>";
+            $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:red'>Technical Support: https://www.dedebiz.com</a></div>";
             $emsg .= "<div style='line-helght:160%;font-size:14px;color:green'>\r\n";
-            $emsg .= "<div style='color:blue'><br />Error page: <span style='color:#dc3545'>" . $this->GetCurUrl() . "</span></div>\r\n";
+            $emsg .= "<div style='color:blue'><br />Error page: <span style='color:#dc3545'>".$this->GetCurUrl()."</span></div>\r\n";
             $emsg .= "<div>Error infos: {$msg}</div>\r\n";
             $emsg .= "<br /></div></div>\r\n";
 
             echo $emsg;
         }
 
-        $savemsg = 'Page: ' . $this->GetCurUrl() . "\r\nError: " . $msg . "\r\nTime" . date('Y-m-d H:i:s');
+        $savemsg = 'Page: '.$this->GetCurUrl()."\r\nError: ".$msg."\r\nTime".date('Y-m-d H:i:s');
         //保存MySql错误日志
         $fp = @fopen($errorTrackFile, 'a');
-        @fwrite($fp, '<' . '?php  exit();' . "\r\n/*\r\n{$savemsg}\r\n*/\r\n?" . ">\r\n");
+        @fwrite($fp, '<'.'?php  exit();'."\r\n/*\r\n{$savemsg}\r\n*/\r\n?".">\r\n");
         @fclose($fp);
     }
 
@@ -585,7 +576,7 @@ EOT;
             if (empty($_SERVER["QUERY_STRING"])) {
                 $nowurl = $scriptName;
             } else {
-                $nowurl = $scriptName . "?" . $_SERVER["QUERY_STRING"];
+                $nowurl = $scriptName."?".$_SERVER["QUERY_STRING"];
             }
         }
         return $nowurl;
@@ -607,7 +598,7 @@ if (!function_exists('CheckSql')) {
         $error = '';
         $old_pos = 0;
         $pos = -1;
-        $log_file = DEDEINC . '/../data/' . md5($cfg_cookie_encode) . '_safe.txt';
+        $log_file = DEDEINC.'/../data/'.md5($cfg_cookie_encode).'_safe.txt';
         $userIP = GetIP();
         $getUrl = GetCurUrl();
 
@@ -616,9 +607,9 @@ if (!function_exists('CheckSql')) {
             $notallow1 = "[^0-9a-z@\._-]{1,}(union|sleep|benchmark|load_file|outfile)[^0-9a-z@\.-]{1,}";
 
             //$notallow2 = "--|/\*";
-            if (preg_match("/" . $notallow1 . "/i", $db_string)) {
+            if (preg_match("/".$notallow1."/i", $db_string)) {
                 fputs(fopen($log_file, 'a+'), "$userIP||$getUrl||$db_string||SelectBreak\r\n");
-                exit("<span style='color:#dc3545'>Safe Alert: Request Error step 1 !</span>");
+                exit("<span>Safe Alert: Request Error step 1 !</span>");
             }
         }
 

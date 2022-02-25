@@ -90,7 +90,7 @@ if ($action == 'test') {
 
     AjaxHead();
     TestSafe(DEDEROOT);
-    if ($message == '') $message = "<span style='color:color:#dc3545'>没发现可疑文件</span>";
+    if ($message == '') $message = "<span style='color:#28a745'>没发现可疑文件</span>";
     echo $message;
     exit();
 } else if ($action == 'viewdiff') {
@@ -131,7 +131,7 @@ else if ($action == 'clear') {
             @unlink($d.'/'.$filename);
         }
     }
-    $message = "<span style='color:color:#dc3545'>成功清空模板缓存</span>";
+    $message = "<span style='color:#28a745'>成功清空模板缓存</span>";
     echo $message;
     exit();
 }

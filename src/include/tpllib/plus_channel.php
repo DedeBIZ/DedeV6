@@ -10,7 +10,6 @@ require_once(DEDEINC.'/channelunit.func.php');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function plus_channel(&$atts, &$refObj, &$fields)
 {
     global $dsql, $_vars;

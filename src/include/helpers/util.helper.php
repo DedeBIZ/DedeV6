@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 define('T_NEW_LINE', -1);
 
 if (!function_exists('token_get_all_nl')) {

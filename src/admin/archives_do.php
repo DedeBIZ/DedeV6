@@ -316,11 +316,11 @@ else if ($dopost == 'moveArchives') {
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
         echo "<table width='100%' style='display:inline-block;z-index:9000'>";
         ?>
-        <tr>
+        <tr height='26'>
             <td width="86" class='bline'>&nbsp;目标栏目：</td>
             <td class='bline'><?php echo $typeOptions; ?></td>
         </tr>
-        <tr>
+        <tr height='26'>
             <td width="86" class='bline'>&nbsp;文档ID：</td>
             <td class='bline'>
                 <input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'>
@@ -521,7 +521,7 @@ else if ($dopost == 'quickEdit') {
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
     ?>
-    <tr>
+    <tr height='26'>
         <td width="86" class='bline'>&nbsp;所属栏目：</td>
         <td class='bline'>
             <?php
@@ -533,7 +533,7 @@ else if ($dopost == 'quickEdit') {
             ?>
         </td>
     </tr>
-    <tr>
+    <tr height='26'>
         <td width="86" class='bline'>&nbsp;属性：</td>
         <td class='bline'>
             <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
@@ -550,15 +550,15 @@ else if ($dopost == 'quickEdit') {
             ?>
         </td>
     </tr>
-    <tr>
+    <tr height='26'>
         <td width="86" class='bline'>&nbsp;标题：</td>
         <td class='bline'><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
     </tr>
-    <tr>
+    <tr height='26'>
         <td width="86" class='bline'>&nbsp;简略标题：</td>
         <td class='bline'><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
     </tr>
-    <tr>
+    <tr height='26'>
         <td width="86" class='bline'>&nbsp;阅读权限：</td>
         <td class='bline'>
             <select name="arcrank" id="arcrank" style="width:100px">
@@ -576,7 +576,7 @@ else if ($dopost == 'quickEdit') {
             需要金币：<input name="money" type="text" id="money" value="<?php echo $arcRow["money"]; ?>" style="width:100px">
         </td>
     </tr>
-    <tr>
+    <tr height='26'>
         <td width="86" class='bline'>&nbsp;关键字：</td>
         <td class='bline'><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
@@ -838,7 +838,7 @@ else if ($dopost == 'attsDlg') {
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
 ?>
-    <tr>
+    <tr height='26'>
         <td width="86" class='bline'>&nbsp;属性：</td>
         <td class='bline'>
             <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
@@ -852,7 +852,7 @@ else if ($dopost == 'attsDlg') {
             ?>
         </td>
     </tr>
-    <tr>
+    <tr height='26'>
         <td width="86" class='bline'>&nbsp;文档ID：</td>
         <td class='bline'><input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'></td>
     </tr>

@@ -1,18 +1,18 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-// Copyright 2020 The DedeBiz Authors. All rights reserved.
-// license that can be found in the LICENSE file.
+//Copyright 2020 The DedeBiz Authors. All rights reserved.
+//license that can be found in the LICENSE file.
 
-// @copyright      Copyright (c) 2022, DedeBIZ.COM
-// @license        https://www.dedebiz.com/license
-// @link           https://www.dedebiz.com
+//@copyright      Copyright (c) 2022, DedeBIZ.COM
+//@license        https://www.dedebiz.com/license
+//@link           https://www.dedebiz.com
 
-// 本文件为DedeBIZ商业组件(www.dedebiz.com)PHP SDK
-// 目的是弥补织梦内容管理系统性能和安全方面的不足，提供更多功能
+//本文件为DedeBIZ商业组件(www.dedebiz.com)PHP SDK
+//目的是弥补织梦内容管理系统性能和安全方面的不足，提供更多功能
 
 define("DEDEBIZ", true);
 
-// 本文件用于和DedeBIZ商业组件进行通信，以获取更多额外的扩展功能
+//本文件用于和DedeBIZ商业组件进行通信，以获取更多额外的扩展功能
 class DedeBizClient
 {
     var $socket;

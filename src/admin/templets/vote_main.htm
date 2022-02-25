@@ -8,7 +8,6 @@
 	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
 </head>
-
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table table-bordered maintable mt-3">
     <tr>
@@ -38,7 +37,7 @@
       <td>{dede:field.endtime function="GetDateMk(@me)" /}</td>
       <td>{dede:field.totalcount /}</td>
       <td>
-        <?php if($fields['isenable'] == 1){echo "<span style='color:#dc3545'>未启用</span>";}else{echo "<span style='color:color:#dc3545'>启用</span>";} ?>
+        <?php if($fields['isenable'] == 1){echo "<span style='color:#e74d58'>未启用</span>";}else{echo "<span style='color:#28a745'>启用</span>";} ?>
       </td>
       <td>
         <a title="获取代码" href='vote_getcode.php?aid={dede:field.aid /}' class="btn btn-success btn-sm">代码</a>

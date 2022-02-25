@@ -616,13 +616,13 @@ class DedeTagParse
         $phpcode = preg_replace("/'@me'|\"@me\"|@me/i", '$DedeMeValue', $phpcode);
         try {
             @eval($phpcode); 
-
             $this->CTags[$i]->TagValue = $DedeMeValue;
             $this->CTags[$i]->IsReplace = TRUE;
         } catch (Exception $e) {
             //or die("<xmp>$phpcode</xmp>");
         }
-
+        $this->CTags[$i]->TagValue = $DedeMeValue;
+        $this->CTags[$i]->IsReplace = TRUE;
     }
 
     /**
@@ -886,7 +886,6 @@ class DedeTagParse
             //or die("<xmp>$functionname</xmp>");
             return '';
         }
-
     }
 
     /**

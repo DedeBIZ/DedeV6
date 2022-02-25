@@ -1,4 +1,5 @@
-<?php if (!defined('DEDEMEMBER')) exit("dedebiz");
+<?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 模型列表函数
  * 

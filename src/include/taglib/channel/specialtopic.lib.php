@@ -9,7 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname = '')
 {
     require_once(DEDEINC.'/taglib/arclist.lib.php');

@@ -9,7 +9,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-// ------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /**
  *  缩图片自动生成函数，来源支持bmp、gif、jpg、png

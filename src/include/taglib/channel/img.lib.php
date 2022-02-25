@@ -1,7 +1,5 @@
 <?php
-if (!defined('DEDEINC')) {
-    exit("dedebiz");
-}
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 图像标签
  *
@@ -11,7 +9,6 @@ if (!defined('DEDEINC')) {
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
 {
     global $cfg_album_width, $cfg_album_row, $cfg_album_col, $cfg_album_pagesize, $cfg_album_style, $cfg_album_ddwidth, $cfg_basehost, $cfg_multi_site;

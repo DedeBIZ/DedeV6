@@ -92,7 +92,7 @@ else if ($dopost == 'editshow') {
         <input type='hidden' name='dopost' value='editsave'>
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td background="images/tbg.gif">
+                <td height='26' background="images/tbg.gif">
                     <div style='float:left'><b>修改快捷操作项</b></div>
                     <div style='float:right;padding:3px 10px 0 0;'>
                         <a href="javascript:CloseTab('editTab')"><img src="images/close.gif" width="12" height="12" border="0"></a>

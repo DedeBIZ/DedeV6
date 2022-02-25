@@ -96,7 +96,7 @@
                         <td>
                           <div class="pm-read-status" for="<?php echo $fields['id'];?>">
                             <?php
-                            $readmsg = ($fields['hasview']==0 ? "<span style='color:#dc3545'>未阅读</span>" : '已阅读');
+                            $readmsg = ($fields['hasview']==0 ? "<span style='color:red'>未阅读</span>" : '已阅读');
                             echo $readmsg;
                             ?>
                           </div>

@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 
-
 $UC2GBTABLE = $CODETABLE = $BIG5_DATA = $GB_DATA = '';
 $GbkUniDic = null;
 

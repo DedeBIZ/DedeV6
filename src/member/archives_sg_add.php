@@ -36,7 +36,7 @@ if (empty($dopost)) {
 
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-        $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
+        $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='".$cInfos['sendrank']."' ");
         ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
@@ -85,7 +85,7 @@ function _SaveArticle(){  }
 
     //检查频道设定的投稿许可权限
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-        $row = $dsql->GetOne("Select membername From #@__arcrank where `rank`='".$cInfos['sendrank']."' ");
+        $row = $dsql->GetOne("Select membername From #@__arcrank where rank='".$cInfos['sendrank']."' ");
         ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }

@@ -18,7 +18,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 require_once(DEDEINC.'/dedetemplate.class.php');
 $codefile = (isset($needCode) ? $needCode : $cfg_soft_lang);
 $codefile = preg_replace("#[^\w-]#", '', $codefile);

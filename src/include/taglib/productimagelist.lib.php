@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEINC')) exit('dedebiz');
+!defined('DEDEINC') && exit("403 Forbidden!");
 /**
  * 
  *

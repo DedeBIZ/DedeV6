@@ -7,7 +7,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 function dede_autoloader($classname)
 {
     $classname = preg_replace("/[^0-9a-z_]/i", '', $classname);
