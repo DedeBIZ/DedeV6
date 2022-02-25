@@ -120,7 +120,7 @@ if ($dopost == 'place' or $dopost == 'report' or $dopost == 'account' or $dopost
   <tr>
     <td width="100%" height="100%" valign="top" bgcolor='#ffffff' style="padding-top:5px"><table width='100%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#DADADA' height="100%">
         <tr bgcolor='#DADADA'>
-          <td colspan='2' background='images/wbg.gif' height='26'><span><b>{$ptitle}</b></span></td>
+          <td colspan='2' background='images/wbg.gif'><span><b>{$ptitle}</b></span></td>
         </tr>
         {$addstr}
         <tr bgcolor='#FFFFFF'>
@@ -367,7 +367,7 @@ function __index(){  }
   <input type='hidden' name='dopost' value='bind_user'>
   <table width='100%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#DADADA'>
     <tr bgcolor='#DADADA'>
-      <td colspan='2' background='{$cfg_static_dir}/img/wbg.gif' height='26'><span><b>德得广告</b></span></td>
+      <td colspan='2' background='{$cfg_static_dir}/img/wbg.gif'><span><b>德得广告</b></span></td>
     </tr>
     <tr bgcolor='#FFFFFF'>
       <td colspan='2'  height='100'>
@@ -412,7 +412,7 @@ function __index(){  }
     </tr>
     <tr>
       <td colspan='2' bgcolor='#F9FCEF'><table width='270' border='0' cellpadding='0' cellspacing='0'>
-          <tr align='center' height='26'>
+          <tr align='center'>
             <td width='90'><input name='imageField1' type='image' class='np' src='{$cfg_plus_dir}/img/button_ok.gif' width='60' height='22' border='0' /></td>
             <td width='90'></td>
             <td></td>

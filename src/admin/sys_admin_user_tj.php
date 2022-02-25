@@ -102,7 +102,7 @@ if (isset($dopost) && $dopost == 'getone') {
 
     $msg = "<table width='96%' border='0' align='center' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf'>
     <tr align='center' bgcolor='#FBFCE2'>
-      <td width='18%' height='26'><strong>管理员↓|统计信息→</strong></td>
+      <td width='18%'><strong>管理员↓|统计信息→</strong></td>
       <td width='18%'><strong>全部(文档|点击)</strong></td>
       <td width='16%'><strong>季度</strong></td>
       <td width='16%'><strong>当月</strong></td>
@@ -110,7 +110,7 @@ if (isset($dopost) && $dopost == 'getone') {
       <td width='16%'><strong>当天</strong></td>
     </tr>
     <tr align='center' bgcolor='#FFFFFF'>
-      <td height='26'>{$userid}</td>
+      <td>{$userid}</td>
       <td>{$dd} | {$cc}</td>
       <td>{$dds} | {$ccs}</td>
       <td>{$ddm} | {$ccm}</td>

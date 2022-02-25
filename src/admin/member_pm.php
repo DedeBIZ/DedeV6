@@ -55,6 +55,6 @@ function GetFolders($me)
 function IsReader($me)
 {
     $me = preg_replace("#[^0-1]#", "", $me);
-    if ($me) return "<span style='color:#28a745'>√</span>";
-    else return "<span style='color:#e74d58'>×</span>";
+    if ($me) return "<span style='color:color:#dc3545'>√</span>";
+    else return "<span style='color:#dc3545'>×</span>";
 }

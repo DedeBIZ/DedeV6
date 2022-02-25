@@ -39,9 +39,9 @@ if ($dopost == "viewinfo") //查看表结构
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
         if ($rs) {
-            echo "执行优化表： $tablename  OK";
+            echo "执行优化表：$tablename  OK";
         } else {
-            echo "执行优化表： $tablename  失败，原因是：".$dsql->GetError();
+            echo "执行优化表：$tablename  失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';
@@ -54,9 +54,9 @@ if ($dopost == "viewinfo") //查看表结构
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
         if ($rs) {
-            echo "修复表： $tablename  OK";
+            echo "修复表：$tablename  OK";
         } else {
-            echo "修复表： $tablename  失败，原因是：".$dsql->GetError();
+            echo "修复表：$tablename  失败，原因是：".$dsql->GetError();
         }
     }
     echo '</xmp>';

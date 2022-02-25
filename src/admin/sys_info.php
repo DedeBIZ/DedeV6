@@ -110,11 +110,11 @@ EOT;
 
         while ($row = $dsql->GetArray()) {
             $bgcolor = ($i++ % 2 == 0) ? "#F9FCEF" : "#ffffff";
-            $row['info'] = preg_replace("#{$keywords}#", '<span style="color:#e74d58">'.$keywords.'</span>', $row['info']);
-            $row['varname'] = preg_replace("#{$keywords}#", '<span style="color:#e74d58">'.$keywords.'</span>', $row['varname']);
+            $row['info'] = preg_replace("#{$keywords}#", '<span style="color:#dc3545">'.$keywords.'</span>', $row['info']);
+            $row['varname'] = preg_replace("#{$keywords}#", '<span style="color:#dc3545">'.$keywords.'</span>', $row['varname']);
 ?>
             <tr align="center" height="26" bgcolor="<?php echo $bgcolor ?>">
-                <td width="300"><?php echo $row['info']; ?>： </td>
+                <td width="300"><?php echo $row['info']; ?>：</td>
                 <td align="left" style="padding:3px;">
                     <?php
                     if ($row['type'] == 'bool') {

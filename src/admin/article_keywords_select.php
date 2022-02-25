@@ -27,7 +27,7 @@ $dlist->Display();
 function GetSta($sta)
 {
     if ($sta == 1) return "正常";
-    else return "<span style='color:#e74d58'>禁用</span>";
+    else return "<span style='color:#dc3545'>禁用</span>";
 }
 
 function GetMan($sta)

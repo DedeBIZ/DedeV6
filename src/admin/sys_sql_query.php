@@ -33,8 +33,8 @@ else if ($dopost == "opimize") {
         echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
-        if ($rs)  echo "执行优化表： $tablename  OK";
-        else echo "执行优化表： $tablename  失败，原因是：".$dsql->GetError();
+        if ($rs)  echo "执行优化表：$tablename  OK";
+        else echo "执行优化表：$tablename  失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -60,8 +60,8 @@ else if ($dopost == "repair") {
         echo "没有指定表名";
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
-        if ($rs) echo "修复表： $tablename  OK";
-        else echo "修复表： $tablename  失败，原因是：".$dsql->GetError();
+        if ($rs) echo "修复表：$tablename  OK";
+        else echo "修复表：$tablename  失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -107,7 +107,7 @@ else if ($dopost == "query") {
             echo "记录：$j";
             echo "<hr size=1 width='100%'/>";
             foreach ($row as $k => $v) {
-                echo "<span style='color:#e74d58'>{$k}：</span>{$v}<br/>\r\n";
+                echo "<span style='color:#dc3545'>{$k}：</span>{$v}<br/>\r\n";
             }
         }
         exit();
@@ -128,7 +128,7 @@ else if ($dopost == "query") {
             if ($errCode == "") {
                 $i++;
             } else {
-                $nerrCode .= "执行： <span style='color:#007bff'>$q</span> 出错，错误提示：<span style='color:#e74d58'>".$errCode."</span><br>";
+                $nerrCode .= "执行：<span style='color:#007bff'>$q</span> 出错，错误提示：<span style='color:#dc3545'>".$errCode."</span><br>";
             }
         }
         echo "成功执行{$i}个SQL语句<br><br>";

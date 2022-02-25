@@ -60,12 +60,12 @@ if($dopost=="send"){
 }else{
 	
 	function GetState($state){
-		if($state=="0") return "<span style='color:#e74d58'>未发送</span>";
+		if($state=="0") return "<span style='color:#dc3545'>未发送</span>";
 		else return "已发送";
 	}
 	
 	function GetSendTimeMk($mktime){
-		if($mktime=="0") return "<span style='color:#e74d58'>未发送</span>";
+		if($mktime=="0") return "<span style='color:#dc3545'>未发送</span>";
 		else return MyDate('Y-m-d H:i:s',$mktime);
 	}
 	

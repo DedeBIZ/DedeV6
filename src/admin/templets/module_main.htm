@@ -63,7 +63,7 @@
         <td><?php echo $v['time']; ?></td>
         <td>
         <?php
-      	if($cfg_soft_lang != $v['lang']) echo "<span style='color:#e74d58'>".$v['lang']."</span>";
+      	if($cfg_soft_lang != $v['lang']) echo "<span style='color:#dc3545'>".$v['lang']."</span>";
       	else  echo $v['lang'];
         ?>
         </td>
@@ -78,7 +78,7 @@
 				    echo "未安装 <a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-success btn-sm'>安装</a>";
 			    }
 		    } else {
-			    echo "<div id=\"status_{$v['hash']}\"><span style='color:#e74d58'>未下载</span> <a href=\"javascript:getmodule('download','{$v['hash']}')\" class='btn btn-success btn-sm'>下载</a></div>";
+			    echo "<div id=\"status_{$v['hash']}\"><span style='color:#dc3545'>未下载</span> <a href=\"javascript:getmodule('download','{$v['hash']}')\" class='btn btn-success btn-sm'>下载</a></div>";
         }
         ?>
         </td>

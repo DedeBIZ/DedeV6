@@ -187,7 +187,7 @@ if ($dopost == 'time') {
                 <td class='bline'><input name="typename" type="text" id="typename" value="<?php echo $myrow['typename'] ?>" style="width:260px" class="iptxt"></td>
             </tr>
             <tr>
-                <td class='bline' height="26" align="center"> 排列顺序： </td>
+                <td class='bline' height="26" align="center"> 排列顺序：</td>
                 <td class='bline'> <input name="sortrank" type="text" value="<?php echo $myrow['sortrank'] ?>" style="width:100" class="iptxt">（由低 -&gt; 高）</td>
             </tr>
             <tr>

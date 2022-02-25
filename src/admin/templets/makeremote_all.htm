@@ -58,7 +58,7 @@ function changeDopost(postval)
     ?>
     <tr>
       <td width="61" align="center" valign="top" bgcolor="<?php echo $bgcolor;?>"><input name="Iterm[<?php echo $key;?>]" type="checkbox" id="Iterm" value="<?php echo $value['filedir'] ;?>"></td>
-      <td width="185" align="left" valign="top" bgcolor="<?php echo $bgcolor;?>"><?php echo $value['filedir'] ;?><?php echo ($value['issystem']==1)? '<span style='color:#e74d58'>[系统]</span>' : '' ;?></td>
+      <td width="185" align="left" valign="top" bgcolor="<?php echo $bgcolor;?>"><?php echo $value['filedir'] ;?><?php echo ($value['issystem']==1)? '<span style='color:#dc3545'>[系统]</span>' : '' ;?></td>
       <td width="265" valign="top" bgcolor="<?php echo $bgcolor;?>"><?php echo $value['description'] ;?></td>
       <td width="195" align="center" valign="top" bgcolor="<?php echo $bgcolor;?>"><label>
 
@@ -80,7 +80,7 @@ function changeDopost(postval)
   <tr bgcolor="#E6F3CD">
     <td height="26" colspan="5"><table width="100%">
         <tr>
-          <td width="74%">进行状态： </td>
+          <td width="74%">进行状态：</td>
           <td width="26%" align="right"><script language='javascript'>
             	function ResizeDiv(obj,ty)
             	{

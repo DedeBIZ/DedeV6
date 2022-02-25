@@ -92,7 +92,7 @@ else if ($dopost == 'editshow') {
         <input type='hidden' name='dopost' value='editsave'>
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td height='26' background="images/tbg.gif">
+                <td background="images/tbg.gif">
                     <div style='float:left'><b>修改快捷操作项</b></div>
                     <div style='float:right;padding:3px 10px 0 0;'>
                         <a href="javascript:CloseTab('editTab')"><img src="images/close.gif" width="12" height="12" border="0"></a>
@@ -146,25 +146,25 @@ else if ($dopost == 'getRightSide') {
 ?>
     <table width="100%" class="table table-borderless">
         <tr>
-            <td width='50%' class='nline' style="text-align:left"> 会员数： </td>
+            <td width='50%' class='nline' style="text-align:left"> 会员数：</td>
             <td class='nline' style="text-align:left"> <?php echo $row1['dd']; ?> </td>
         </tr>
         <tr>
-            <td class='nline' style="text-align:left"> 文档数： </td>
+            <td class='nline' style="text-align:left"> 文档数：</td>
             <td class='nline' style="text-align:left"> <?php echo $allArc; ?> </td>
         </tr>
         <?php
         foreach ($chArr as $row) {
         ?>
             <tr>
-                <td class='nline' style="text-align:left"> <?php echo $row['typename']; ?>： </td>
+                <td class='nline' style="text-align:left"> <?php echo $row['typename']; ?>：</td>
                 <td class='nline' style="text-align:left"> <?php echo $row['dd']; ?>&nbsp; </td>
             </tr>
         <?php
         }
         ?>
         <tr>
-            <td style="text-align:left"> 评论数： </td>
+            <td style="text-align:left"> 评论数：</td>
             <td style="text-align:left"> <?php echo $row2['dd']; ?> </td>
         </tr>
     </table>
@@ -188,7 +188,7 @@ exit();
                 $row['editcon'] = 'archives_edit.php';
             }
             $linkstr = "·<a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>";
-            if ($row['arcrank'] == -1) $linkstr .= "<span style='color:#e74d58'>(未审核)</span>";
+            if ($row['arcrank'] == -1) $linkstr .= "<span style='color:#dc3545'>(未审核)</span>";
         ?>
         <tr>
             <td class='nline'><?php echo $linkstr; ?></td>

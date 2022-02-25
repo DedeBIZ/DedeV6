@@ -71,7 +71,7 @@ while(($file = $dh->read()) !== false)
 	{
 		if(preg_match("#^_(.*)$#i",$file)) continue; #屏蔽FrontPage扩展目录和linux隐蔽目录
 		if(preg_match("#^\.(.*)$#i",$file)) continue;
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
     <a href=file_manage_main.php?activepath=".urlencode("$activepath/$file")."><img src=images/dir.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>　</td>
@@ -86,7 +86,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else if(preg_match("#\.(gif|png)#i",$file))
 	{
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/gif.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -101,7 +101,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else if(preg_match("#\.(jpg)#i",$file))
 	{
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/jpg.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -116,7 +116,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else if(preg_match("#\.(swf|fla|fly)#i",$file))
 	{
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/flash.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -131,7 +131,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else if(preg_match("#\.(zip|rar|tar.gz)#i",$file))
 	{
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/zip.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -146,7 +146,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else if(preg_match("#\.(exe)#i",$file))
 	{
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/exe.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -161,7 +161,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else if(preg_match("#\.(mp3|wma)#i",$file))
 	{
-		$line = "\n<tr bgcolor='#FFFFFF'  height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF'  onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/mp3.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -176,7 +176,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else if(preg_match("#\.(wmv|api)#i",$file))
 	{
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/wmv.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -191,7 +191,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else if(preg_match("#\.(rm|rmvb)#i",$file))
 	{
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/rm.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -224,7 +224,7 @@ while(($file = $dh->read()) !== false)
 	else if(preg_match("#\.(htm|html)#i",$file))
 	{
 		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
-		$line = "\n<tr bgcolor='#FFFFFF'  height='26'onMouseMove=\"javascript:this.bgColor='#F9FBF0';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#F9FBF0';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/htm.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -241,7 +241,7 @@ while(($file = $dh->read()) !== false)
 	else if(preg_match("#\.(php)#i",$file))
 	{
 		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/php.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -258,7 +258,7 @@ while(($file = $dh->read()) !== false)
 	else if(preg_match("#\.(js)#i",$file))
 	{
 		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/js.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -275,7 +275,7 @@ while(($file = $dh->read()) !== false)
 	else if(preg_match("#\.(css)#i",$file))
 	{
 		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
    <td>
    <a href=$activeurl/$file target=_blank><img src=images/css.gif border=0 width=16 height=16 align=absmiddle>$file</a></td>
    <td>$filesize KB</td>
@@ -291,7 +291,7 @@ while(($file = $dh->read()) !== false)
 	}
 	else
 	{
-		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+		$line = "\n<tr bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
     <td><a href=$activeurl/$file target=_blank>$file</td>
     <td>$filesize KB</td>
     <td align='center'>$filetime</td>
@@ -315,7 +315,7 @@ foreach ($files as $file)
 }
 ?>
     <tr>
-      <td colspan="4" height='26' bgcolor='#F9FCEF'>
+      <td colspan="4" bgcolor='#F9FCEF'>
         <a href='file_manage_main.php' class="btn btn-success btn-sm">根目录</a>
         <a href='file_manage_view.php?fmdo=newfile&activepath=<?php echo urlencode($activepath)?>' class="btn btn-success btn-sm">新建文件</a>
         <a href='file_manage_view.php?fmdo=newdir&activepath=<?php echo urlencode($activepath)?>' class="btn btn-success btn-sm">新建目录</a>

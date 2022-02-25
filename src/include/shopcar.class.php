@@ -1,6 +1,6 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-define("DE_ItemEcode", 'Shop_De_'); //识别购物车Cookie前缀,非开发人员请不要随意更改!
+define("DE_ItemEcode", 'Shop_De_');//识别购物车Cookie前缀,非开发人员请不要随意更改!
 /**
  * 购物车类
  *
@@ -10,7 +10,6 @@ define("DE_ItemEcode", 'Shop_De_'); //识别购物车Cookie前缀,非开发人�
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-// ------------------------------------------------------------------------
 /**
  * 会员购物车类
  *

@@ -65,12 +65,12 @@ function MakeUpload(mnum)
 		fhtml += "<td height=\"25\" colspan=\"2\">　<strong>图片"+startNum+"：</strong></td>";
 		fhtml += "</tr>";
 		fhtml += "<tr bgcolor=\"#FFFFFF\"> ";
-		fhtml += "<td height=\"25\"> 　图片地址： ";
+		fhtml += "<td height=\"25\"> 　图片地址：";
 		fhtml += "<input type=\"text\" name='imgfile"+startNum+"' style=\"width:330px\" class=\"intxt\"/> <nobr>填写远程网址</nobr></td>";
 		fhtml += "<td rowspan=\"2\" align=\"center\"><div id='divpicview"+startNum+"' class='divpre'></div></td>";
 		fhtml += "</tr>";
 		fhtml += "<tr bgcolor=\"#FFFFFF\"> ";
-		fhtml += "<td height=\"56\" valign=\"top\">　图片简介： ";
+		fhtml += "<td height=\"56\" valign=\"top\">　图片简介：";
 		fhtml += "<textarea name='imgmsg"+startNum+"' style=\"height:46px;width:330px\"></textarea></td>";
 		fhtml += "</tr></tobdy></table>\r\n";
 		upfield.innerHTML += fhtml;

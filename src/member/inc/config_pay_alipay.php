@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEMEMBER')) exit("Request Error!");
+if (!defined('DEDEMEMBER')) exit('dedebiz');
 /**
  * 支付页面
  * 

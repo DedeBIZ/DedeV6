@@ -141,7 +141,7 @@ else if ($action == 'setup') {
   $prvdir .= "<tr style='background:#FBFCE2'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
   foreach ($prvdirs as $k => $v) {
     if ($v) $cw = '√';
-    else $cw = '<span style="color:#e74d58">×</span>';
+    else $cw = '<span style="color:#dc3545">×</span>';
     $prvdir .= "<tr bgcolor='#ffffff'><td>$k</td>";
     $prvdir .= "<td align='center'>$cw</td></tr>\r\n";
   }
@@ -149,33 +149,33 @@ else if ($action == 'setup') {
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
-  $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt;&gt; 安装模块： {$infos['name']}");
+  $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt;&gt; 安装模块：{$infos['name']}");
   $win->AddHidden("hash", $hash);
   $win->AddHidden("action", 'setupstart');
   $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
   <tr>
-    <td width='20%' height='26' class='dtb'>模块名称：</td>
+    <td width='20%' class='dtb'>模块名称：</td>
     <td width='80%' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>语言：</td>
+    <td class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>文件大小：</td>
+    <td class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>开发者ID：</td>
+    <td class='dtb'>开发者ID：</td>
     <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a></td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>发布时间：</td>
+    <td class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>使用协议：</td>
+    <td class='dtb'>使用协议：</td>
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
@@ -197,7 +197,7 @@ else if ($action == 'setup') {
     </td>
   </tr>
   <tr>
-    <td height='26'>对于已存在文件处理方法：</td>
+    <td>对于已存在文件处理方法：</td>
     <td>
     <label><input name='isreplace' type='radio' value='1' checked='checked'> 覆盖</label>
     <label><input name='isreplace' type='radio' value='3'> 覆盖，保留副本</label>
@@ -284,37 +284,37 @@ else if ($action == 'del') {
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
-  $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 删除模块： {$infos['name']}");
+  $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 删除模块：{$infos['name']}");
   $win->AddHidden('hash', $hash);
   $win->AddHidden('action', 'delok');
   $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='750' border='0' cellspacing='0' cellpadding='0'>
     <tr>
-      <td width='20%' height='26' class='dtb'>模块名称：</td>
+      <td width='20%' class='dtb'>模块名称：</td>
       <td width='80%' class='dtb'>{$infos['name']}</td>
     </tr>
     <tr>
-      <td height='26' class='dtb'>语言：</td>
+      <td class='dtb'>语言：</td>
       <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
     </tr>
     <tr>
-      <td height='26' class='dtb'>文件大小：</td>
+      <td class='dtb'>文件大小：</td>
       <td class='dtb'>{$infos['filesize']}</td>
     </tr>
     <tr>
-      <td height='26' class='dtb'>开发者ID：</td>
+      <td class='dtb'>开发者ID：</td>
       <td class='dtb'>{$dev_id}</td>
     </tr>
     <tr>
-      <td height='26' class='dtb'>发布时间：</td>
+      <td class='dtb'>发布时间：</td>
       <td class='dtb'>{$infos['time']}</td>
     </tr>
     <tr>
-      <td height='26' class='dtb'>使用协议：</td>
+      <td class='dtb'>使用协议：</td>
       <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-      <td height='26' colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除。</td>
+      <td colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除。</td>
     </tr>
 </table>";
   $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
@@ -349,37 +349,37 @@ else if ($action == 'uninstall') {
   $win = new OxWindow();
   $win->Init("module_main.php", "js/blank.js", "post");
   $wecome_info = "模块管理";
-  $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 卸载模块： {$infos['name']}");
+  $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 卸载模块：{$infos['name']}");
   $win->AddHidden("hash", $hash);
   $win->AddHidden("action", 'uninstallok');
   $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='750' border='0' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='200' height='26' class='dtb'>模块名称：</td>
+    <td width='200' class='dtb'>模块名称：</td>
     <td width='550' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>语言：</td>
+    <td class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>文件大小：</td>
+    <td class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>开发者ID：</td>
+    <td class='dtb'>开发者ID：</td>
     <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>发布时间：</td>
+    <td class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>使用协议：</td>
+    <td class='dtb'>使用协议：</td>
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td height='26'>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
+    <td>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
   </tr>
   <tr>
     <td height='160' colspan='2'>
@@ -387,7 +387,7 @@ else if ($action == 'uninstall') {
     </td>
   </tr>
   <tr>
-    <td height='26'>对于模块的文件处理方法：</td>
+    <td>对于模块的文件处理方法：</td>
     <td>
     <label><input type='radio' name='isreplace' value='0' checked='checked'> 手工删除文件，仅运行卸载程序</label>
     <label><input name='isreplace' type='radio' value='2'> 删除模块的所有文件</label>
@@ -481,35 +481,35 @@ else if ($action == 'view') {
   $win = new OxWindow();
   $win->Init("", "js/blank.js", "");
   $wecome_info = "模块管理";
-  $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 模块详情： {$infos['name']}");
+  $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 模块详情：{$infos['name']}");
   $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='20%' height='26' class='dtb'>模块名称：</td>
+    <td width='20%' class='dtb'>模块名称：</td>
     <td width='80%' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>语言：</td>
+    <td class='dtb'>语言：</td>
     <td class='dtb'>{$infos['lang']} {$alertMsg}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>文件大小：</td>
+    <td class='dtb'>文件大小：</td>
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>开发者ID：</td>
+    <td class='dtb'>开发者ID：</td>
     <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>发布时间：</td>
+    <td class='dtb'>发布时间：</td>
     <td class='dtb'>{$infos['time']}</td>
   </tr>
   <tr>
-    <td height='26' class='dtb'>使用协议：</td>
+    <td class='dtb'>使用协议：</td>
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td height='26'>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
+    <td>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
   </tr>
   <tr>
     <td height='160' colspan='2'>

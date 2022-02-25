@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEMEMBER')) exit("Request Error!");
+if (!defined('DEDEMEMBER')) exit('dedebiz');
 include_once DEDEMEMBER.'/paycenter/yeepay/yeepay_config.php';
 
 if($payment_exp[4] < 0) $payment_exp[4] = 0;

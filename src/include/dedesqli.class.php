@@ -122,7 +122,7 @@ class DedeSqli
 
             $this->linkID = mysqli_init();
             mysqli_real_connect($this->linkID, $dbhost, $this->dbUser, $this->dbPwd, false, $dbport);
-            mysqli_errno($this->linkID) != 0 && $this->DisplayError('DedeBIZ错误警告： 链接('.$this->pconnect.') 到MySQL发生错误');
+            mysqli_errno($this->linkID) != 0 && $this->DisplayError('DedeBIZ错误警告：链接('.$this->pconnect.') 到MySQL发生错误');
 
 
             //复制一个对象副本
@@ -131,7 +131,7 @@ class DedeSqli
 
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("DedeBIZ错误警告：<span style='color:#e74d58'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+            $this->DisplayError("DedeBIZ错误警告：<span style='color:#dc3545'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
             exit();
         }
         $this->isInit = TRUE;
@@ -337,7 +337,7 @@ class DedeSqli
         }
 
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError(mysqli_error($this->linkID)." <br />Error sql: <span style='color:#e74d58'>".$this->queryString."</span>");
+            $this->DisplayError(mysqli_error($this->linkID)." <br />Error sql: <span style='color:#dc3545'>".$this->queryString."</span>");
         }
     }
 
@@ -544,7 +544,7 @@ EOT;
             $emsg .= "<div><h3>DedeBIZ Error Warning!</h3>\r\n";
             $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:#dc3545'>Technical Support: https://www.dedebiz.com</a></div>";
             $emsg .= "<div style='line-helght:160%;font-size:14px;color:green'>\r\n";
-            $emsg .= "<div style='color:blue'><br />Error page: <span style='color:#e74d58'>".$this->GetCurUrl()."</span></div>\r\n";
+            $emsg .= "<div style='color:blue'><br />Error page: <span style='color:#dc3545'>".$this->GetCurUrl()."</span></div>\r\n";
             $emsg .= "<div>Error infos: {$msg}</div>\r\n";
             $emsg .= "<br /></div></div>\r\n";
 

@@ -119,7 +119,7 @@ class TypeUnit
             $id = $row->id;
             $rank = $row->sortrank;
             if ($row->ishidden == '1') {
-                $nss = "<span style='color:#e74d58'>[隐]</span>";
+                $nss = "<span style='color:#dc3545'>[隐]</span>";
             } else {
                 $nss = '';
             }
@@ -206,7 +206,7 @@ class TypeUnit
                 }
                 $rank = $row->sortrank;
                 if ($row->ishidden == '1') {
-                    $nss = "<span style='color:#e74d58'>[隐]</span>";
+                    $nss = "<span style='color:#dc3545'>[隐]</span>";
                 } else {
                     $nss = '';
                 }

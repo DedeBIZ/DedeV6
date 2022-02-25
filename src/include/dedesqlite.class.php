@@ -116,7 +116,7 @@ class DedeSqlite
 
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("DedeBIZ错误警告：<span style='color:#e74d58'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+            $this->DisplayError("DedeBIZ错误警告：<span style='color:#dc3545'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
             exit();
         }
         $this->isInit = TRUE;
@@ -285,7 +285,7 @@ class DedeSqlite
         }
 
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError($this->linkID->lastErrorMsg() . " <br />Error sql: <font color='red'>" . $this->queryString . "</font>");
+            $this->DisplayError($this->linkID->lastErrorMsg() . " <br />Error sql: <span style='color:#dc3545'>" . $this->queryString . "</span>");
         }
     }
 
@@ -560,7 +560,7 @@ EOT;
             $emsg .= "<div><h3>DedeBIZ Error Warning!</h3>\r\n";
             $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:#dc3545'>Technical Support: https://www.dedebiz.com</a></div>";
             $emsg .= "<div style='line-helght:160%;font-size:14px;color:green'>\r\n";
-            $emsg .= "<div style='color:blue'><br />Error page: <font color='red'>" . $this->GetCurUrl() . "</font></div>\r\n";
+            $emsg .= "<div style='color:blue'><br />Error page: <span style='color:#dc3545'>" . $this->GetCurUrl() . "</span></div>\r\n";
             $emsg .= "<div>Error infos: {$msg}</div>\r\n";
             $emsg .= "<br /></div></div>\r\n";
 
@@ -618,7 +618,7 @@ if (!function_exists('CheckSql')) {
             //$notallow2 = "--|/\*";
             if (preg_match("/" . $notallow1 . "/i", $db_string)) {
                 fputs(fopen($log_file, 'a+'), "$userIP||$getUrl||$db_string||SelectBreak\r\n");
-                exit("<font size='5' color='red'>Safe Alert: Request Error step 1 !</font>");
+                exit("<span style='color:#dc3545'>Safe Alert: Request Error step 1 !</span>");
             }
         }
 

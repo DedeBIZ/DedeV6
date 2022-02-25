@@ -188,7 +188,7 @@ class yeepay
                         else  return $msg = "支付失败!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
                     } else if ($ordertype=="member") {
                         $oldinf = $this->success_mem($r6_Order,$pname,$product,$pid);
-                        return $msg = "<span style='color:#e74d58'>".$oldinf."</span><br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                        return $msg = "<span style='color:#dc3545'>".$oldinf."</span><br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
                     }
                 } else if ( $r9_BType == "2" ){
                     #如果需要应答机制则必须回写流,以success开头,大小写不敏感.
@@ -368,7 +368,7 @@ class yeepay
             } else {
                 $cardid = $row['cardid'];
                 $sql1=" UPDATE #@__moneycard_record SET uid='".$this->mid."',isexp='1',utime='".time()."' WHERE cardid='$cardid' ";
-                $oldinf='您的充值密码是：<span style="color:#28a745">'.$cardid.'</span>';
+                $oldinf='您的充值密码是：<span style="color:color:#dc3545">'.$cardid.'</span>';
             }
             //更新交易状态为已关闭
             $sql2=" UPDATE #@__member_operation SET sta=2,oldinfo='$oldinf' WHERE buyid='$order_sn'";

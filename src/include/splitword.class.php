@@ -5,7 +5,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  *
  *  1、只适用于php5，必要函数 iconv
  *  2、本程序是使用RMM逆向匹配算法进行分词的，词库需要特别编译，本类里提供了 MakeDict() 方法
- *  3、简单操作流程： SetSource -> StartAnalysis -> Get***Result
+ *  3、简单操作流程：SetSource -> StartAnalysis -> Get***Result
  *  4、对主词典使用特殊格式进行编码, 不需要载入词典到内存操作
  *
  * @version        $Id: splitword.class.php 2 11:45 2011-2-14 itplato $

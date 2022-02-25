@@ -1,5 +1,5 @@
 <?php
-if (!defined('DEDEMEMBER')) exit("Request Error!");
+if (!defined('DEDEMEMBER')) exit('dedebiz');
 //nps 网上支付接口
 include_once DEDEMEMBER.'/paycenter/nps/nps_config.inc.php';
 //支付手续费

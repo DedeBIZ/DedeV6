@@ -56,7 +56,7 @@ function __CopyStart()
     $wecome_info = "&nbsp;<a href='mychannel_main.php'>频道管理</a> - 模型复制";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
-    $win->AddTitle("&nbsp;被复制频道： [<span style='color:#e74d58'>".$row['typename']."</span>]");
+    $win->AddTitle("&nbsp;被复制频道：[<span style='color:#dc3545'>".$row['typename']."</span>]");
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
@@ -539,9 +539,9 @@ function __modifysearch()
                 } else if ($mainfield == 'iscommend') {
                     $forms .= "<label><input type=\"checkbox\" name=\"iscommend\" value=\"1\" />推荐</label><br />";
                 } else if ($mainfield == 'writer') {
-                    $forms .= "作者： <input type=\"text\" name=\"writer\" value=\"\" /><br />";
+                    $forms .= "作者：<input type=\"text\" name=\"writer\" value=\"\" /><br />";
                 } else if ($mainfield == 'source') {
-                    $forms .= "来源： <input type=\"text\" name=\"source\" value=\"\" /><br />";
+                    $forms .= "来源：<input type=\"text\" name=\"source\" value=\"\" /><br />";
                 } else if ($mainfield == 'senddate') {
                     $forms .= "开始时间：<input type=\"text\" name=\"startdate\" value=\"\" /><br />";
                     $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\" /><br />";

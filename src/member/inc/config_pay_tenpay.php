@@ -1,5 +1,5 @@
 <?php 
-if (!defined('DEDEMEMBER')) exit("Request Error!");
+if (!defined('DEDEMEMBER')) exit('dedebiz');
 //财付通 网上支付接口
 /*这里替换为您的实际商户号*/
 $strSpid    = $payment_userid[0];

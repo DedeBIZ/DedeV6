@@ -18,11 +18,11 @@ if (empty($action)) $action = '';
 if ($action == 'add') {
     //检查输入
     if (empty($id) || preg_match("#[^0-9-]#", $id)) {
-        ShowMsg("<span style='color:#e74d58'>'频道id'</span>必须为数字", "-1");
+        ShowMsg("<span style='color:#dc3545'>'频道id'</span>必须为数字", "-1");
         exit();
     }
     if (preg_match("#[^a-z0-9]#i", $nid) || $nid == "") {
-        ShowMsg("<span style='color:#e74d58'>'频道名字标识'</span>必须为英文字母或与数字混合字符串", "-1");
+        ShowMsg("<span style='color:#dc3545'>'频道名字标识'</span>必须为英文字母或与数字混合字符串", "-1");
         exit();
     }
     if ($addtable == "") {

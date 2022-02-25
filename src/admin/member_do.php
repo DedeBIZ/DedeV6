@@ -72,7 +72,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
     $win->AddTitle("您确实要删除(ID:".$id.")这个会员?");
-    $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' />&nbsp;(复制本代码： <span style='color:#e74d58'>$safecode</span> )", "30");
+    $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' />&nbsp;(复制本代码：<span style='color:#dc3545'>$safecode</span> )", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 } else if ($dopost == "delmembers") {
@@ -121,7 +121,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
     $win->AddTitle("您确实要删除(ID:".$id.")这个会员?");
-    $win->AddMsgItem(" 安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' /> (复制本代码： <span style='color:#e74d58'>$safecode</span>)", "30");
+    $win->AddMsgItem(" 安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' /> (复制本代码：<span style='color:#dc3545'>$safecode</span>)", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
@@ -146,7 +146,7 @@ function __EditUser()
 修改会员
 ----------------*/ else if ($dopost == 'edituser') {
     CheckPurview('member_Edit');
-    if (!isset($_POST['id'])) exit('Request Error!');
+    if (!isset($_POST['id'])) exit('dedebiz');
     $pwdsql = empty($pwd) ? '' : ",pwd='".md5($pwd)."'";
     if (empty($sex)) $sex = '男';
     $uptime = GetMkTime($uptime);

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @version        $Id: config.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.Member
@@ -177,7 +176,7 @@ function CheckRank($rank = 0, $money = 0)
                     ShowMsg("邮箱地址为空，请设置一个可用的邮箱地址", "edit_email.php", 0, 5000);
                     exit;
                 }
-                $msg = "您尚未进行邮件验证，请到邮箱查阅...</br>重新发送邮件验证 <a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail'><span style='color:#e74d58'>点击此处</span></a>";
+                $msg = "您尚未进行邮件验证，请到邮箱查阅...</br>重新发送邮件验证 <a href='{$cfg_memberurl}/index_do.php?fmdo=sendMail'><span style='color:#dc3545'>点击此处</span></a>";
                 ShowMsg($msg, "-1", 0, 5000);
                 exit;
             }

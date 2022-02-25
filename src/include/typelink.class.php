@@ -293,7 +293,7 @@ class TypeLink
 
     /**
      *  获得与该类相关的类目，本函数应用于模板标记{dede:channel}{/dede:channel}中
-     *  $typetype 的值为： sun 下级分类 self 同级分类 top 顶级分类
+     *  $typetype 的值为：sun 下级分类 self 同级分类 top 顶级分类
      *
      * @access    public
      * @param     int   $typeid   栏目ID

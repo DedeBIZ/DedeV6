@@ -18,7 +18,7 @@ setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 
 function IsCheck($st)
 {
-    return $st == 1 ? "[已审核]" : "<span style='color:#e74d58'>[未审核]</span>";
+    return $st == 1 ? "[已审核]" : "<span style='color:#dc3545'>[未审核]</span>";
 }
 
 function jsTrimjajx($str, $len)

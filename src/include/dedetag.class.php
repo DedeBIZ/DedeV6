@@ -933,7 +933,7 @@ class DedeTagParse
         } else if (file_exists(DEDEROOT.'/templets/'.$cfg_df_style.'/'.$filename)) {
             $okfile = DEDEROOT.'/templets/'.$cfg_df_style.'/'.$filename;
         } else {
-            return "无法在这个位置找到： $filename";
+            return "无法在这个位置找到：$filename";
         }
 
         //编译

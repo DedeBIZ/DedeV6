@@ -106,8 +106,8 @@
         <td><a href="../member/index.php?uid={dede:field.userid/}" target='_blank'>
             <?php
 	  echo ''.$fields['userid'].'';
-	if($fields['spacesta']==-2) echo "<span style='color:#e74d58'>(禁言)</span>";
-	if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>(未审核)</span>";
+	if($fields['spacesta']==-2) echo "<span style='color:#dc3545'>(禁言)</span>";
+	if($fields['spacesta']==-1) echo "<span style='color:#dc3545'>(未审核)</span>";
 	  if(!empty($fields['face'])) {
        echo "<br /><img src='{$fields['face']}' width='60' alt='浏览会员空间' />";
 	  }

@@ -56,7 +56,7 @@ function 1_test_db() {  }
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
-    <b><span style='color:#28a745'>已完成数据结构完整性检测</span></b>
+    <b><span style='color:color:#dc3545'>已完成数据结构完整性检测</span></b>
     <hr size='1'/>
     <br />
     <b>如果您系统有下面几种问题之一，请检测微表正确性：</b><br />
@@ -84,7 +84,7 @@ function 2_test_arctiny() {  }
     $allarcnum = 0;
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__archives` ");
     $allarcnum = $arcnum = $row['dd'];
-    $msg .= "·#@__archives 表总记录数： {$arcnum} <br />";
+    $msg .= "·#@__archives 表总记录数：{$arcnum} <br />";
 
     $shtables = array();
     $dsql->Execute('me', " SELECT addtable FROM `#@__channeltype` WHERE id < -1 ");
@@ -96,21 +96,21 @@ function 2_test_arctiny() {  }
             if (!isset($shtables[$addtable])) {
                 $shtables[$addtable] = 1;
                 $row = $dsql->GetOne("SELECT COUNT(aid) AS dd FROM `$addtable` ");
-                $msg .= "·{$addtable} 表总记录数： {$row['dd']} <br />";
+                $msg .= "·{$addtable} 表总记录数：{$row['dd']} <br />";
                 $allarcnum += $row['dd'];
             }
         }
     }
-    $msg .= "※总有效记录数： {$allarcnum} <br /> ";
+    $msg .= "※总有效记录数：{$allarcnum} <br /> ";
     $errall = "<a href='index_body.php' style='font-size:14px;'><b>完成修正或无错误返回&gt;&gt;</b></a>";
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
-    $msg .= "※微统计表记录数： {$row['dd']}<br />";
+    $msg .= "※微统计表记录数：{$row['dd']}<br />";
     if ($row['dd'] == $allarcnum) {
         $msg .= "<p style='color:green;font-size:16px'><b>两者记录一致，无需修正</b></p><br />";
     } else {
         $sql = " TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
-        $msg .= "<span style='color:#e74d58'>两者记录不一致，尝试进行简单修正...</span><br />";
+        $msg .= "<span style='color:#dc3545'>两者记录不一致，尝试进行简单修正...</span><br />";
         //导入普通模型微数据
         $sql = "INSERT INTO `#@__arctiny`(id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid)  
             SELECT id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid FROM `#@__archives` ";

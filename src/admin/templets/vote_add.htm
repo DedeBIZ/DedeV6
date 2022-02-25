@@ -20,13 +20,13 @@
         ShowMsg("最大只允许15个选项");
         return;
       }
-      var htmldata = "<br/>选项" + i + "： <input name='voteitem" + i + "' type='text' size='30' class='mt-2'>";
+      var htmldata = "<br/>选项" + i + "：<input name='voteitem" + i + "' type='text' size='30' class='mt-2'>";
       jQuery("#voteitem").append(htmldata);
     }
     function ResetItem() {
       i = 1;
       var obj = document.getElementById("voteitem");
-      obj.innerHTML = "选项1： <input name='voteitem1' type='text' size='30'>";
+      obj.innerHTML = "选项1：<input name='voteitem1' type='text' size='30'>";
     }
     function checkSubmit() {
       if (document.form1.votename.value == "") {
