@@ -126,7 +126,7 @@ function 2_test_arctiny() {  }
         if ($row['dd'] == $allarcnum) {
             $msg .= "<p style='color:green;font-size:16px'><b>修正记录成功</b></p><br />";
         } else {
-            $msg .= "<p style='color:red;font-size:16px'><b>修正记录失败，建议进行高级综合检测</b></p><br />";
+            $msg .= "<p style='color:#dc3545;font-size:16px'><b>修正记录失败，建议进行高级综合检测</b></p><br />";
             $errall = " <a href='sys_repair.php?dopost=3' class='btn btn-danger'><b>进行高级结合性检测&gt;&gt;</b></a> ";
         }
     }

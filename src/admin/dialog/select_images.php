@@ -196,7 +196,7 @@ table{background:#fff}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:red' ";
+                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='img/picviewnone.gif'></a></td>
@@ -209,7 +209,7 @@ table{background:#fff}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:red' ";
+                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='img/picviewnone.gif'></a></td>

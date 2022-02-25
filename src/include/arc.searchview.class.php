@@ -296,7 +296,7 @@ class SearchView
             $this->dsql->Execute('l');
             while ($row = $this->dsql->GetArray('l')) {
                 if ($row['count'] > 1000) {
-                    $fstyle = " style='font-size:11pt;color:red'";
+                    $fstyle = " style='font-size:11pt;color:#dc3545'";
                 } else if ($row['count'] > 300) {
                     $fstyle = " style='font-size:10pt;color:green'";
                 } else {

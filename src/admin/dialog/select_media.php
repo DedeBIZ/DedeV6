@@ -133,7 +133,7 @@ table{background:#fff}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:red' ";
+                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='img/flash.gif'>$file</a></td>
@@ -145,7 +145,7 @@ table{background:#fff}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:red' ";
+                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='img/wmv.gif'>$file</a></td>
@@ -157,7 +157,7 @@ table{background:#fff}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:red' ";
+                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='img/rm.gif'>$file</a></td>
@@ -169,7 +169,7 @@ table{background:#fff}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:red' ";
+                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='img/mp3.gif'>$file</a></td>
