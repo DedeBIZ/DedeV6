@@ -30,6 +30,9 @@ $dsql = $dsqlitete = $db = new DedeSqlite(FALSE);
 if (!defined('MYSQL_BOTH')) {
     define('MYSQL_BOTH', MYSQLI_BOTH);
 }
+if (!defined('MYSQL_ASSOC')) {
+    define('MYSQL_ASSOC', SQLITE3_ASSOC);
+}
 class DedeSqlite
 {
     var $linkID;
