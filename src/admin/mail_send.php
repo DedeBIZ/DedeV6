@@ -25,7 +25,7 @@ function sendmail($email, $mailtitle, $mailbody)
 				exit();
 			}
 			$smtp->sendmail($email,$cfg_webname,$cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
-		}else{
+		} else {
 			@mail($email, $mailtitle, $mailbody, $headers);
 		}
 	}
@@ -62,7 +62,7 @@ if($action=="post"){
   	if(file_exists(DEDEDATA.'/mail/'.$mailfile)){
 			$address = file(DEDEDATA.'/mail/'.$mailfile);
 			$address=implode(",", $address);
-		}else{
+		} else {
 			ShowMsg($mailfile."不存在","-1");
 		  exit();
 		}    

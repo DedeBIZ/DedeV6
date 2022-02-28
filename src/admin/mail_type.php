@@ -21,7 +21,7 @@ if($dopost=="add"){
 	if(!$dsql->ExecuteNoneQuery($query)){
 		ShowMsg("更新数据库#@__mail_type表时出错，请检查","javascript:;");
 	  exit();
-	}else{
+	} else {
     ShowMsg("添加分类成功","mail_type.php");
 		exit();
 	}
@@ -37,7 +37,7 @@ if($dopost=="add"){
 	if(!$dsql->ExecuteNoneQuery($query)){
 		ShowMsg("更新数据库#@__mail_type表时出错，请检查","javascript:;");
 	  exit();
-	}else{
+	} else {
     ShowMsg("修改分类成功","mail_type.php");
 		exit();
 	}
@@ -45,7 +45,7 @@ if($dopost=="add"){
   $dsql->ExecuteNoneQuery("Delete From `#@__mail_type` where id='$id'");
   ShowMsg("删除分类成功","mail_type.php");
 	exit();
-}else{
+} else {
 	$sql  = "SELECT * FROM `#@__mail_type` ORDER BY id ";
 	$dlist = new DataListCP();
 	$dlist->SetTemplet(DEDEADMIN."/templets/mail_type_main.htm");

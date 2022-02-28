@@ -148,9 +148,7 @@ class SplitWord
         if( isset($this->mainDicInfos[ $keynum ]) )
         {
             $data = $this->mainDicInfos[ $keynum ];
-        }
-        else
-        {
+        } else {
             //rewind( $this->mainDicHand );
             $move_pos = $keynum * 8;
             fseek($this->mainDicHand, $move_pos, SEEK_SET);
@@ -201,9 +199,7 @@ class SplitWord
             else {
                 $rs = FALSE;
             }
-        }
-        else
-        {
+        } else {
            $rs = FALSE;
         }
         return $rs;
@@ -236,9 +232,7 @@ class SplitWord
         if($maindic=='' || !file_exists($maindic) )
         {
             $dicWords = $this->mainDicFile ;
-        }
-        else
-        {
+        } else {
             $dicWords = $maindic;
             $this->mainDicFile = $maindic;
         }
@@ -246,7 +240,7 @@ class SplitWord
         //加载主词典（只打开）
         if($this->isUnpacked){
         	$this->mainDicHand = fopen($dicWords, 'r');
-        }else{
+        } else {
         	$this->InportDict($this->mainDicFileZip);
         }
         
@@ -318,9 +312,7 @@ class SplitWord
         {
             $this->newWords[$word]++;
             $this->mainDicInfos[$word]['c']++;
-        }
-        else
-        {
+        } else {
             $this->newWords[$word] = 1;
             $this->mainDicInfos[$word] = $infos;
         }

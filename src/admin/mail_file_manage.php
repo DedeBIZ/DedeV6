@@ -9,7 +9,7 @@ if($fmdo=="del")
 		@unlink($filename); 
 		$t="文件";
 		ShowMsg("成功删除一个".$t."","mail_file_manage.php");
-}else{
+} else {
 	if(!isset($activepath)){
 		$activepath=$cfg_cmspath;
 	}
@@ -21,13 +21,13 @@ if($fmdo=="del")
 	}
 	if($activepath == ""){
 		$inpath = $cfg_basedir."/data/mail";
-	}else{
+	} else {
 		$inpath = $cfg_basedir.$activepath."/data/mail";
 	}
 	$activeurl = $activepath;
 	if(preg_match("#".$cfg_templets_dir."#i", $activepath)){
 		$istemplets = true;
-	}else{
+	} else {
 		$istemplets = false;
 	}
 	include DedeInclude('templets/mail_file_manage.htm');

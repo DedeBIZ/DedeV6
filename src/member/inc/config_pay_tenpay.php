@@ -76,7 +76,7 @@ if($cfg_soft_lang == 'utf-8')
         </form>
     </body>
     </html>';    
-}else{
+} else {
     echo '<html>
     <head>
         <title>转到财付通支付页面</title>

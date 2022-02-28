@@ -529,9 +529,7 @@ class DedeTemplate
                     fclose($fp);
                 }
             }
-        }
-        else
-        {
+        } else {
             if($ctype=='config' && count($this->tpCfgs) > 0 )
             {
                 $fp = fopen($this->configFile,'w') or dir("Write Config File Error! ");

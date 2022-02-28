@@ -136,9 +136,7 @@ else if($fmdo=="editview")
     if((eregi("<html",$content) && eregi("<body",$content)) || $ishead == "yes")
     {
         $contentView = GetEditor("str",$content,"500","Default","string","true");
-    }
-    else
-    {
+    } else {
         $contentView = GetEditor("str",$content,"500","Default","string","false");
     }
     $GLOBALS['filename'] = $filename;

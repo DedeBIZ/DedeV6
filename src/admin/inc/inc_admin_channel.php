@@ -86,9 +86,7 @@ function GetFieldMake($dtype, $fieldname, $dfvalue, $mxlen)
         $dfvalue = "'".$dfvalue."'";
         $fields[0] = " `$fieldname` enum($dfvalue) NULL;";
         $fields[1] = "enum($dfvalue)";
-    }
-    else
-    {
+    } else {
         if(empty($dfvalue))
         {
             $dfvalue = '';
@@ -106,7 +104,6 @@ function GetFieldMake($dtype, $fieldname, $dfvalue, $mxlen)
     }
     return $fields;
 }
-
 /**
  * 获取模型列表字段
  *

@@ -12,17 +12,14 @@ if (!defined('DEDEINC')) exit('dedebiz');
 require_once(DEDEINC.'/charset.func.php');
 require_once(DEDEINC.'/dedeatt.class.php');
 require_once(DEDEINC.'/dedehttpdown.class.php');
-
 function base64url_encode($data)
 {
     return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
 }
-
 function base64url_decode($data)
 {
     return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));
 }
-
 class DedeModule
 {
     var $modulesPath;
@@ -43,7 +40,6 @@ class DedeModule
     {
         $this->__construct($modulespath);
     }
-
     /**
      *  枚举系统里已经存在的模块(缓存功能实际上只作hash与文件名的解析，在此不特别处理)
      *
@@ -54,11 +50,8 @@ class DedeModule
     function GetModuleList($moduletype = '')
     {
         if (is_array($this->modules)) return $this->modules;
-
         $dh = dir($this->modulesPath) or die("没找到模块目录：({$this->modulesPath})");
-
-        $fp = @fopen($this->modulesPath.'/modulescache.php', 'w') or die('读取文件权限出错,目录文件'.$this->modulesPath.'/modulescache.php不可写!');
-
+        $fp = @fopen($this->modulesPath.'/modulescache.php', 'w') or die('读取文件权限出错,目录文件'.$this->modulesPath.'/modulescache.php不可写');
         fwrite($fp, "<"."?php\r\n");
         fwrite($fp, "global \$allmodules;\r\n");
         while ($filename = $dh->read()) {
@@ -81,7 +74,6 @@ class DedeModule
         $dh->Close();
         return $this->modules;
     }
-
     /**
      *  从远程获取模块信息
      *
@@ -119,7 +111,6 @@ class DedeModule
             }
         }
     }
-
     /**
      *  获得指定hash的模块文件
      *
@@ -133,7 +124,6 @@ class DedeModule
         if (isset($GLOBALS['allmodules'][$hash])) return $GLOBALS['allmodules'][$hash];
         else return $hash.'.xml';
     }
-
     /**
      *  获得某模块的基本信息
      *
@@ -176,20 +166,16 @@ class DedeModule
             }
         }
         fclose($fp);
-
         if (empty($minfos['lang'])) {
             $minfos['lang'] = "utf-8";
         }
         if (isset($minfos['lang'])) $this->moduleLang = trim($minfos['lang']);
         else $this->moduleLang = 'gbk';
-
         if ($this->sysLang == 'gb2312') $this->sysLang = 'gbk';
         if ($this->moduleLang == 'gb2312') $this->moduleLang = 'gbk';
-
         if ($this->sysLang != $this->moduleLang) {
             foreach ($minfos as $k => $v) $minfos[$k] = $this->AppCode($v);
         }
-
         if (isset($minfos['pubkey'])) {
             //验证模块信息
             $pubKey = @base64url_decode($minfos['pubkey']);
@@ -202,7 +188,6 @@ class DedeModule
                 return null;
             }
         }
-
         return $minfos;
     }
 
@@ -236,7 +221,6 @@ class DedeModule
         fclose($fp);
         return $filexml;
     }
-
     /**
      *  获得系统文件的内容
      *  指安装、删除、协议文件
@@ -257,7 +241,7 @@ class DedeModule
         while (!feof($fp)) {
             $line = fgets($fp, 1024);
             if (!$start) {
-                // 2011-6-7 修复模块打包程序中上传安装程序生成为空白文件(by:华强)
+                //2011-6-7 修复模块打包程序中上传安装程序生成为空白文件
                 if (preg_match("#<{$ntype}>#i", $line)) $start = TRUE;
             } else {
                 if (preg_match("#<\/{$ntype}#i", $line)) break;
@@ -271,7 +255,6 @@ class DedeModule
         $okdata = $this->AppCode($okdata);
         return $okdata;
     }
-
     /**
      *  把某系统文件转换为文件
      *
@@ -290,7 +273,6 @@ class DedeModule
         fclose($fp);
         return $filename;
     }
-
     /**
      *  删除系统文件
      *
@@ -304,7 +286,6 @@ class DedeModule
         $filename = $this->modulesPath.'/'.$hashcode."-{$ntype}.php";
         unlink($filename);
     }
-
     /**
      *  检查是否已经存在指定的模块
      *
@@ -318,7 +299,6 @@ class DedeModule
         if (file_exists($modulefile) && !is_dir($modulefile)) return TRUE;
         else  return FALSE;
     }
-
     /**
      *  读取文件，返回编码后的文件内容
      *
@@ -336,7 +316,6 @@ class DedeModule
         if (!empty($str)) return base64_encode($str);
         else return '';
     }
-
     /**
      *  获取模块包里的文件名列表
      *
@@ -364,7 +343,6 @@ class DedeModule
         fclose($fp);
         return $filelists;
     }
-
     /**
      *  删除已安装模块附带的文件
      *
@@ -409,7 +387,6 @@ class DedeModule
         }
         return TRUE;
     }
-
     /**
      *  把模块包里的文件写入服务器
      *
@@ -482,7 +459,6 @@ class DedeModule
         fclose($fp);
         return TRUE;
     }
-
     /**
      *  测试某文件的文件夹是否创建
      *
@@ -506,7 +482,6 @@ class DedeModule
         }
         return TRUE;
     }
-
     /**
      *  获取某个目录或文件的打包数据
      *
@@ -522,7 +497,6 @@ class DedeModule
         $this->MakeEncodeFileRun($basedir, $f, $fp);
         return TRUE;
     }
-
     /**
      *  测试目标文件
      *
@@ -537,7 +511,6 @@ class DedeModule
         $this->MakeEncodeFileRunTest($basedir, $f);
         return TRUE;
     }
-
     /**
      *  检测某个目录或文件的打包数据，递归
      *
@@ -566,7 +539,6 @@ class DedeModule
             }
         }
     }
-
     /**
      *  获取个目录或文件的打包数据，递归
      *
@@ -600,7 +572,6 @@ class DedeModule
             fwrite($fp, $fileList);
         }
     }
-
     /**
      *  清理
      *

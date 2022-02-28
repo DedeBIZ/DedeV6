@@ -206,9 +206,7 @@ class DedeCli
             $step    = (int)round($percent / 10);
             fwrite(STDOUT, "[\033[32m".str_repeat('#', $step).str_repeat('.', 10 - $step)."\033[0m]");
             fwrite(STDOUT, sprintf(" %3d%% Complete", $percent).PHP_EOL);
-        }
-        else
-        {
+        } else {
             fwrite(STDOUT, "\007");
         }
     }
@@ -362,9 +360,7 @@ class DedeCli
                 $time--;
             }
             static::write();
-        }
-        else
-        {
+        } else {
             if ($seconds > 0)
             {
                 sleep($seconds);

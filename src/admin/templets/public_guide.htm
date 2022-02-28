@@ -22,7 +22,7 @@
 		if(selobj.checked){
 			if(preobj!=null && selid != selCheckbox) preobj.checked = false;
 			selCheckbox = selid;
-		}else{
+		} else {
 			if(selCheckbox == selid) selCheckbox = '';
 		}
 	}
@@ -30,7 +30,7 @@
 	{
 		if(selCheckbox==''){
 			ShowMsg("您没有选中需要设置为默认的栏目");
-		}else{
+		} else {
 			var selobj = document.getElementById(selCheckbox);
 			location="public_guide.php?action=setdefault&cid="+selobj.value;
 		}
@@ -89,7 +89,7 @@
         ?>
         <a href="<?php echo $row['mancon']; ?>" class="btn btn-success btn-sm">管理内容</a>
         <a href="catalog_do.php?channelid=<?php echo $row['id'];?>&cid=0&dopost=addArchives" class="btn btn-success btn-sm">发布内容</a>
-       <?php }else{ ?>
+       <?php } else { ?>
        		 | 
         <span>管理内容</span>
         	 | 

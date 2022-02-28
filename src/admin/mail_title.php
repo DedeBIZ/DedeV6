@@ -50,7 +50,7 @@ if($dopost=="add"){
 	if(!$dsql->ExecuteNoneQuery($query)){
 		ShowMsg("更新数据库#@__mail_title表时出错，请检查","javascript:;");
 	  exit();
-	}else{
+	} else {
     ShowMsg("发表期刊成功","mail_title.php");
 		exit();
 	}
@@ -78,7 +78,7 @@ if($dopost=="add"){
 	if(!$dsql->ExecuteNoneQuery($query)){
 		ShowMsg("更新数据库#@__mail_title表时出错，请检查","javascript:;");
 	  exit();
-	}else{
+	} else {
     ShowMsg("编辑期刊成功","mail_title.php");
 		exit();
 	}
@@ -86,7 +86,7 @@ if($dopost=="add"){
   $dsql->ExecuteNoneQuery("Delete From `#@__mail_title` where id='$id'");
   ShowMsg("删除期刊成功","mail_title.php");
 	exit();
-}else{
+} else {
 	
 	function GetSendTimeMk($mktime){
 		if($mktime=="0") return "未发送";

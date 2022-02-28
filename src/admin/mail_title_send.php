@@ -27,7 +27,7 @@ if($dopost=="send"){
 					exit();
 				}
 				$smtp->sendmail($email,$cfg_webname,$cfg_smtp_usermail, $mailtitle, $mailbody, $mailtype);
-			}else{
+			} else {
 				@mail($email, $mailtitle, $mailbody, $headers);
 			}
 		}
@@ -57,7 +57,7 @@ if($dopost=="send"){
 		ShowMsg('邮件已成功发送','mail_title_send.php');
 		exit();
 	}
-}else{
+} else {
 	
 	function GetState($state){
 		if($state=="0") return "<span style='color:#dc3545'>未发送</span>";

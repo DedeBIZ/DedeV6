@@ -7,15 +7,12 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-
 if ($cfg_mb_allowreg == 'N') {
     ShowMsg('系统关闭了新用户注册', 'index.php');
     exit();
 }
-
 if (!isset($dopost)) $dopost = '';
 $step = empty($step) ? 1 : intval($step);
-
 if ($step == 1) {
     if ($cfg_ml->IsLogin()) {
         ShowMsg('您已经登录系统，无需重新注册', 'index.php');
@@ -30,17 +27,6 @@ if ($step == 1) {
                 exit();
             }
         }
-
-        //$faqkey = isset($faqkey) && is_numeric($faqkey) ? $faqkey : 0;
-        //if($safe_faq_reg == '1')
-        //{
-        //    if($safefaqs[$faqkey]['answer'] != $rsafeanswer || $rsafeanswer=='')
-        //    {
-        //        ShowMsg('验证问题答案错误', '-1');
-        //        exit();
-        //    }
-        //}
-
         $userid = $uname = trim($userid);
         $pwd = trim($userpwd);
         $pwdc = trim($userpwdok);
@@ -61,17 +47,14 @@ if ($step == 1) {
             ShowMsg('您两次输入的密码不一致', '-1');
             exit();
         }
-
         $uname = HtmlReplace($uname, 1);
         $userid = HtmlReplace($userid, 1);
-
         //检测用户名是否存在
         $row = $dsql->GetOne("SELECT mid FROM `#@__member` WHERE userid LIKE '$userid' ");
         if (is_array($row)) {
             ShowMsg("您指定的用户名 {$userid} 已存在，请使用别的用户名", "-1");
             exit();
         }
-
         //会员的默认金币
         $dfscores = 0;
         $dfmoney = 0;
@@ -86,16 +69,11 @@ if ($step == 1) {
         $loginip = GetIP();
         $pwd = md5($userpwd);
         $mtype = '个人';
-
         $spaceSta = ($cfg_mb_spacesta < 0 ? $cfg_mb_spacesta : 0);
-
-        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`pwd` ,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,
-        `matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
-       VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores',
-       '0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip'); ";
+        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`pwd` ,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
+        VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip'); ";
         if ($dsql->ExecuteNoneQuery($inQuery)) {
             $mid = $dsql->GetLastID();
-
             //写入默认会员详细资料
             if ($mtype == '个人') {
                 $space = 'person';
@@ -104,26 +82,21 @@ if ($step == 1) {
             } else {
                 $space = 'person';
             }
-
             //写入默认统计数据
             $membertjquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`)
-                   VALUES ('$mid','0','0','0','0','0','0','0','0'); ";
+                VALUES ('$mid','0','0','0','0','0','0','0','0'); ";
             $dsql->ExecuteNoneQuery($membertjquery);
-
             //写入默认空间配置数据
             $spacequery = "INSERT INTO `#@__member_space`(`mid` ,`pagesize` ,`matt` ,`spacename` ,`spacelogo` ,`spacestyle`, `sign` ,`spacenews`)
-                    VALUES('{$mid}','10','0','{$uname}的空间','','$space','',''); ";
+                VALUES('{$mid}','10','0','{$uname}的空间','','$space','',''); ";
             $dsql->ExecuteNoneQuery($spacequery);
-
             //写入其它默认数据
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES('$mid','DedeBIZ','https://www.dedebiz.com'); ");
-
             //----------------------------------------------
             //模拟登录
             //---------------------------
             $cfg_ml = new MemberLogin(7 * 3600);
             $rs = $cfg_ml->CheckUser($userid, $userpwd);
-
             ShowMsg('您已经登录系统，无需重新注册', 'index.php');
             exit;
         } else {

@@ -65,9 +65,7 @@ class FreeList
         if(empty($channelid))
         {
             showmsg('必须指定频道','-1');exit();
-        }
-        else
-        {
+        } else {
             $channelid = intval($channelid);
             $channelinfo = $this->dsql->getone("select maintable from #@__channeltype where id='$channelid'");
             $this->maintable = $channelinfo['maintable'];

@@ -23,18 +23,14 @@ function __autoload($classname)
     if ( is_file ( DEDEINC.'/'.$libclassfile ) )
     {
         require DEDEINC.'/'.$libclassfile;
-    }
-    else
-    {
+    } else {
         if (DEBUG_LEVEL === TRUE)
         {
             echo '<pre>';
             echo $classname.'类找不到';
             echo '</pre>';
             exit ();
-        }
-        else
-        {
+        } else {
             header ( "location:/404.html" );
             die ();
         }
