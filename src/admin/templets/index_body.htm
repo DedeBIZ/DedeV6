@@ -85,8 +85,8 @@ $(function () {
                     <div class="card-body">
                         <table width="98%" class="table table-borderless">
                             <tr>
-                                <td width="160" class="nline" style="text-align:right">您的级别：
-                                    <?php
+                                <td width="160" class="nline">
+                                    您的级别：<?php
                                     if($cuserLogin->getUserType()==10) {
                                         echo "总管理员";
                                     } else if($cuserLogin->getUserType()==5) {
@@ -99,7 +99,7 @@ $(function () {
                                 <td class="nline"><a href="javascript:showMore()" class="btn btn-success btn-sm">查看更多</a></td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="nline" id="allInfoTD" style="display:none">
+                                <td colspan="2" id="allInfoTD" class="nline" style="display:none">
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="allInfo" style="display:none">
                                         <tr>
                                             <td class="nline" style="text-align:right" rowspan="5">PHP环境摘要：</td>
@@ -176,9 +176,7 @@ $(function () {
                     <div class="card-header">最新文档</div>
                     <div class="card-body">
                         <?php
-                        $query = "SELECT arc.id, arc.arcrank, arc.title, arc.channel, ch.editcon  FROM `#@__archives` arc
-                            LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel
-                            WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0, 5";
+                        $query = "SELECT arc.id, arc.arcrank, arc.title, arc.channel, ch.editcon  FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0, 5";
                         $arcArr = array();
                         $dsql->Execute('m', $query);
                         while($row = $dsql->GetArray('m'))
@@ -233,7 +231,7 @@ $(function () {
                         <td height="26" colspan="3" background="images/tbg.gif">
                             <div style="float:left;margin-left:10px">增加快捷操作项</div>
                             <div style="float:right;padding:2px 10px 0 0">
-                                <a href="javascript:CloseTab('addTab')"><img src="images/close.gif" width="12" height="12" border="0"></a>
+                                <a href="javascript:CloseTab('addTab')"><img src="images/close.gif"></a>
                             </div>
                         </td>
                     </tr>
