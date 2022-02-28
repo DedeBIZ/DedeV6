@@ -288,7 +288,7 @@ else if($step==10)
 		if(empty($dbname)){
 			$info = "信息正确";
 		} else {
-			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统将覆盖数据库": "数据库不存在,系统将自动创建";
+			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统将覆盖数据库": "数据库不存在，系统将自动创建";
         }
         $result = array(
             "code" => 200,
