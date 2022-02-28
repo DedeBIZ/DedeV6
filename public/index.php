@@ -6,7 +6,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-if (!file_exists(dirname(__FILE__).'/data/common.inc.php')) {
+if (!file_exists(dirname(__FILE__).'/../data/common.inc.php')) {
     header('Location:install/index.php');
     exit();
 }

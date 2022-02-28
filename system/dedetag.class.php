@@ -233,7 +233,7 @@ class DedeTagParse
             return FALSE;
         }
         $cdir = dirname($filename);
-        $cachedir = DEDEROOT.$cfg_tplcache_dir;
+        $cachedir = BIZROOT.$cfg_tplcache_dir;
         $ckfile = str_replace($cdir, '', $filename).substr(md5($filename), 0, 16).'.inc';
         $ckfullfile = $cachedir.'/'.$ckfile;
         $ckfullfile_t = $cachedir.'/'.$ckfile.'.txt';

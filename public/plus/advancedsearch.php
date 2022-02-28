@@ -15,7 +15,7 @@ $timestamp = time();
 @session_start();
 
 //限制同时搜索数量
-$timelock = '../data/time.lock';
+$timelock = '../../data/time.lock';
 if ($cfg_allsearch_limit < 1) {
     $cfg_allsearch_limit = 1;
 }
