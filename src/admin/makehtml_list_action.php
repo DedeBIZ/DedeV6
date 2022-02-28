@@ -115,7 +115,7 @@ if ($nextpage >= $totalpage && $finishType) {
         exit();
     } else {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
-        ShowMsg("栏目：".$tid."，继续进行操作...", $gourl, 0, 100);
+        ShowMsg("栏目：".$tid."，继续进行操作", $gourl, 0, 100);
         exit();
     }
 }

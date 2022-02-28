@@ -190,7 +190,7 @@ button+button{margin-left:10px}
             document.querySelectorAll('#file_list li.up-no').forEach((el,i)=>{
                 el.classList ? el.classList.add('up-now') : el.className+=' up-now';
             });
-            e.target.innerText='上传中...';
+            e.target.innerText='上传中';
             upAllFiles(0);
         }
     });

@@ -84,22 +84,22 @@ function GetFormItem($ctag)
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "img") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "media") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "addon") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览' onClick=\"SelectSoft('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "media") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
@@ -309,17 +309,17 @@ function GetFormItemValue($ctag, $fvalue)
         }
         $ntag = $ndtp->GetTag("img");
         $fvalue = trim($ntag->GetInnerText());
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "media") {
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览' onClick=\"SelectMedia('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "addon") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\">\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' style='width:300'><input name='".$fieldname."_bt' type='button' value='浏览' onClick=\"SelectSoft('form1.$fieldname')\">\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;

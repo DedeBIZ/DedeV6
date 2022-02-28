@@ -169,7 +169,7 @@ table{border-collapse:separate}
                 <?php
                 $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
                 echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
-                echo "<option value='0'>请选择栏目...</option>\r\n";
+                echo "<option value='0'>请选择栏目</option>\r\n";
                 echo $typeOptions;
                 echo "</select>";
 			          ?>
@@ -333,7 +333,7 @@ table{border-collapse:separate}
               <td width="450"><input type='text' name="keywords" id="keywords" style="width:80%" value="" /></td>
               <td width="260"><label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>
                 自动获取，手动填写用","分开</label><br>
-                <button type="button" name="Submit" value=""  class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览...</button>
+                <button type="button" name="Submit" value=""  class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
             </tr>
           </table>

@@ -93,7 +93,7 @@ function dede_random_bytes($length)
  *  {
  *      function HelloDede()
  *      {
- *          echo "Hello! Dede...";
+ *          echo "Hello! Dede";
  *      }
  *  }
  *  </code>

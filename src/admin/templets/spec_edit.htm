@@ -167,7 +167,7 @@
                 &nbsp;缩略图：
               </td>
               <td width="560">
-                <input name="picname" type="text" id="picname" style="width:300px" value="<?php echo $arcRow["litpic"]?>"> <button type="button" name="Submit" class="btn btn-success" onClick="SelectImage('form1.picname','');">浏览...</button>
+                <input name="picname" type="text" id="picname" style="width:300px" value="<?php echo $arcRow["litpic"]?>"> <button type="button" name="Submit" class="btn btn-success" onClick="SelectImage('form1.picname','');">浏览</button>
                 <label><input type='checkbox' class='np' name='ddisremote' value='1'> 
                 远程 </label>
                 <span class="btn btn-success fileinput-button">
@@ -196,7 +196,7 @@
               <td width="90">&nbsp;专题模板：</td>
               <td>
                 <input name="templet" type="text" id="templet" style="width:250px" value="<?php echo $addRow["templet"]?>" />
-                <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览...</button>
+                <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
               </td>
             </tr>
           </table>
@@ -260,7 +260,7 @@
                 <?php
            	$typeOptions = GetOptionList($arcRow["typeid"],$cuserLogin->getUserChannel(),0);
            	echo "<select name='typeid' style='width:240px'>\r\n";
-            if($arcRow["typeid"]=="0") echo "<option value='0' selected='1'>请选择主分类...</option>\r\n";
+            if($arcRow["typeid"]=="0") echo "<option value='0' selected='1'>请选择主分类</option>\r\n";
             echo $typeOptions;
             echo "</select>";
 			      ?>

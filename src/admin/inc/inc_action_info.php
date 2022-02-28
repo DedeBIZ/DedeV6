@@ -301,7 +301,7 @@ $actionSearch[8] = array(
             'linkurl' => 'makehtml_list.php'
         ),
         2  =>  array(
-            'title' => '更新文档HTML',
+            'title' => '更新文档H',
             'description' => '对每个栏目下的文档进行静态HTML页面的生成',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_archives.php'
@@ -313,7 +313,7 @@ $actionSearch[8] = array(
             'linkurl' => 'makehtml_map_guide.php'
         ),
         4  =>  array(
-            'title' => '更新RSS文件 HTML',
+            'title' => '更新订阅 HTML',
             'description' => '对全站的RSS进行更新',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_rss.php'

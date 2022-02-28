@@ -269,7 +269,7 @@ else if ($action == 'setupstart') {
     $rflwft .= "</script>";
     echo $rflwft;
     UpDateCatCache();
-    ShowMsg('模块安装完成...', 'module_main.php');
+    ShowMsg('模块安装完成', 'module_main.php');
     exit();
   }
 }
@@ -433,7 +433,7 @@ else if ($action == 'uninstallok') {
     $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu_module.php';\r\n";
     $rflwft .= "</script>";
     echo $rflwft;
-    ShowMsg('模块卸载完成...', 'module_main.php');
+    ShowMsg('模块卸载完成', 'module_main.php');
     exit();
   }
 }

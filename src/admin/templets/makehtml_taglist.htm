@@ -30,7 +30,7 @@
        $sql="select * from #@__tagindex where total > {$dd['tt']} order by tag asc"; 
        $dsql->Execute('al',$sql);
      echo "<select name='tagid' style='width:300px'>\r\n";
-      if($tid == 0) echo "<option value='0' selected='1'>更新所有标签...</option>\r\n";
+      if($tid == 0) echo "<option value='0' selected='1'>更新所有标签</option>\r\n";
        while($row=$dsql->GetObject('al')){     
         if($tid > 0 && $tid == $row->id) echo "<option value='".$row->id."' selected='1'>".$row->tag."</option>";
         else echo "<option value='".$row->id."'>".$row->tag."</option>";

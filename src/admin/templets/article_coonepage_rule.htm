@@ -23,7 +23,7 @@
 		//编辑
 		function EditNode(nid) {
 			$DE('editNode').style.display = 'block';
-			var myajax = new DedeAjax($DE('editNodeBody'), false, true, "", "", "请稍候，正在载入...");
+			var myajax = new DedeAjax($DE('editNodeBody'), false, true, "", "", "请稍候，正在载入");
 			myajax.SendGet2('article_coonepage_rule.php?action=editload&id=' + nid);
 			DedeXHTTP = null;
 		}
@@ -145,7 +145,7 @@
 	</table>
 	<!--  下面是隐藏的栏目增加／修改表单  -->
 	<div id="editNode">
-		<span id='editNodeBody'>请稍候，正在载入...</span>
+		<span id='editNodeBody'>请稍候，正在载入</span>
 	</div>
 
 	<div id="addNode">

@@ -11,7 +11,7 @@
 function LoadSuns(ctid,tid)
 {
 	if($DE(ctid).innerHTML.length < 10){
-	  var myajax = new DedeAjax($DE(ctid),true,true,'','x','...');
+	  var myajax = new DedeAjax($DE(ctid),true,true,'','x','');
 	  myajax.SendGet('catalog_do.php?dopost=GetSunListsMenu&cid='+tid);
   } else { if(document.all) showHide(ctid); }
 }

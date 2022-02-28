@@ -111,7 +111,7 @@
                       <td height="36" align="left">列表模板：</td>
                       <td align="left"><input name="templet" type="text" id="templet" style="width:300px" value="<?php echo $row['templet']?>">
                         <button type="button" name="set4" style="width:60px"
-                          onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览...</button></td>
+                          onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button></td>
                     </tr>
                     <tr>
                       <td height="30" align="left">最大列出页数：</td>
@@ -147,7 +147,7 @@
                   <?php
                $typeid = $ctag->GetAtt('typeid');
                echo "<select name='typeid' style='width:100'>\r\n";
-               echo "<option value='0'>不限栏目...</option>\r\n";
+               echo "<option value='0'>不限栏目</option>\r\n";
                $dsql->SetQuery("Select id,typename, channeltype From #@__arctype");
                $dsql->Execute();
                while($lrow = $dsql->GetObject()){
@@ -183,7 +183,7 @@
                   <?php
                 $att  = $ctag->GetAtt('att');
                 echo "<select name='att' style='width:100'>\r\n";
-                echo "<option value='0'>不限...</option>\r\n";
+                echo "<option value='0'>不限</option>\r\n";
                 $dsql->SetQuery("Select * From #@__arcatt");
                 $dsql->Execute();
                 while($nrow = $dsql->GetObject())

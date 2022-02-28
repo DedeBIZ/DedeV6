@@ -21,7 +21,7 @@ class DedeCli
 {
     public static $readline_support = false;
     protected static $initialized = false;
-    protected static $wait_msg = "Press any key to continue...";
+    protected static $wait_msg = "Press any key to continue";
     protected static $segments = [];
     protected static $options = [];
 
@@ -355,7 +355,7 @@ class DedeCli
             $time = $seconds;
             while ($time > 0)
             {
-                fwrite(STDOUT, $time.'... ');
+                fwrite(STDOUT, $time.' ');
                 sleep(1);
                 $time--;
             }

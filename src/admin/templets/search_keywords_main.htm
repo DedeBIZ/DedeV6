@@ -21,7 +21,7 @@ function ReloadPage(ordertype) {
     orderby = ordertype;
     var listArea = $Obj('rslist');
     var errMsg = "网络通信出错<br>[<a href=\"javascript:ReloadPage('" + ordertype + "')\">点击此重新加载列表</a>]";
-    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在加载...");
+    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在加载");
     myajax.SendGet("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype);
 }
 //载入指定页的列表
@@ -37,7 +37,7 @@ function UpdateNote(nid) {
     var kws = $Obj('spwords' + nid).value;
     var ct = $Obj('count' + nid).value;
     var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
-    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理...");
+    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理");
     <?php
     if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {
     ?>
@@ -65,7 +65,7 @@ function DelNote(nid) {
     var pagenum = Math.ceil(totalrow / pagesize);
     if (pagenum <= pageno) pageno = pagenum;
     var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
-    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理...");
+    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理");
     myajax.SendGet("search_keywords_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno + "&orderby=" + orderby);
     ReloadPageNum(pageno);
 }

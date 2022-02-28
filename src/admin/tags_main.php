@@ -146,6 +146,6 @@ else if ($action == 'fetch') {
     }
     $start = $start + 100;
     $goto = "tags_main.php?action=fetch&startaid=$startaid&endaid=$endaid&start=$start";
-    ShowMsg('继续获取tags ...', $goto, 0, 500);
+    ShowMsg('继续获取tags ', $goto, 0, 500);
     exit();
 }

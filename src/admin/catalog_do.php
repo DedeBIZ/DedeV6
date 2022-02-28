@@ -95,7 +95,7 @@ else if ($dopost == "viewSgPage") {
     require_once(DEDEINC."/arc.listview.class.php");
     $lv = new ListView($cid);
     $pageurl = $lv->MakeHtml();
-    ShowMsg("更新缓冲，请稍后...", $pageurl);
+    ShowMsg("更新缓冲，请稍后", $pageurl);
     exit();
 }
 /*------------------------
@@ -117,7 +117,7 @@ else if ($dopost == "upRank") {
         $dsql->ExecuteNoneQuery("UPDATE #@__arctype SET sortrank='$sortrank' WHERE id='$cid'");
     }
     UpDateCatCache();
-    ShowMsg("操作成功，返回目录...", "catalog_main.php");
+    ShowMsg("操作成功，返回目录", "catalog_main.php");
     exit();
 } else if ($dopost == "upRankAll") {
     //检查权限许可
@@ -132,7 +132,7 @@ else if ($dopost == "upRank") {
         }
     }
     UpDateCatCache();
-    ShowMsg("操作成功，正在返回...", "catalog_main.php");
+    ShowMsg("操作成功，正在返回", "catalog_main.php");
     exit();
 }
 /*--------------------------
@@ -164,7 +164,7 @@ else if ($dopost == "upcatcache") {
             $doarray[$tb]  = 1;
         }
     }
-    ShowMsg("操作成功，正在返回...", "catalog_main.php");
+    ShowMsg("操作成功，正在返回", "catalog_main.php");
     exit();
 }
 /*---------------------

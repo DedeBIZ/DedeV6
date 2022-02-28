@@ -36,7 +36,7 @@
 			{
 					echo '<tbody>';
 					echo '<tr><td bgcolor="#eeeeee" width="20%">id</td>';
-					echo '<td bgcolor="#eeeeee"><div class="left">'.$fields['id'].'</div><div class="right"><a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank">详细...</a> &nbsp;</div></td></tr>';
+					echo '<td bgcolor="#eeeeee"><div class="left">'.$fields['id'].'</div><div class="right"><a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank">详细</a> &nbsp;</div></td></tr>';
 					foreach($fieldlist as $field=>$fielddata)
 					{
 						if($fields[$field]=='') continue;
@@ -54,7 +54,7 @@
 							else $fields[$field] = dede_htmlspecialchars($fields[$field]);
 							if( strlen($fields[$field]) > 250 )
 							{
-								$fields[$field] = cn_substr( $fields[$field], 250).'...';
+								$fields[$field] = cn_substr( $fields[$field], 250).'';
 							}
 						}
 						echo "<tr><td bgcolor='#ffffff'>{$fielddata[0]}</td><td bgcolor='#ffffff'>{$fields[$field]}</td></tr>\r\n";

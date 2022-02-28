@@ -210,7 +210,7 @@ class DedeTagParse
             foreach ($tokens as $token) {
                 if (is_array($token)) {
                     if ($token[0] = '306' && in_array($token[1], $disabled_functions)) {
-                        $errmsg = 'DedeBIZ Error:function disabled "'.$token[1].'" <a href="https://www.dedebiz.com/help" target="_blank">more...</a>';
+                        $errmsg = 'DedeBIZ Error:function disabled "'.$token[1].'" <a href="https://www.dedebiz.com/help" target="_blank">more</a>';
                         return FALSE;
                     }
                 }

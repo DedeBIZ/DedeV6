@@ -101,19 +101,19 @@ function GetFormItem($ctag, $admintype = 'admin')
         if ($admintype == 'diy') {
             $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:360px' />\r\n";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:360px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:360px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
         }
     } else if ($fieldType == 'media') {
         if ($admintype == 'diy') {
             $innertext = "<input type='hidden' name='$fieldname' id='$fieldname' value='' />不支持的类型\r\n";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:360px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\" />\r\n";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:360px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览' onClick=\"SelectMedia('form1.$fieldname')\" />\r\n";
         }
     } else if ($fieldType == 'addon') {
         if ($admintype == 'diy') {
             $innertext = "<input type='file' name='$fieldname' id='$fieldname' style='width:360px' />\r\n";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:360px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:360px' class='text' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
         }
     } else if ($fieldType == 'int' || $fieldType == 'float') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '0');
@@ -403,13 +403,13 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             $ntag = $ndtp->GetTag("img");
             $fvalue = trim($ntag->GetInnerText());
         }
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:360px' class='intxt' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:360px' class='intxt' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
     } else if ($ftype == "imgfile") {
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:360px' class='intxt' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:360px' class='intxt' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />\r\n";
     } else if ($ftype == "media") {
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:360px' class='intxt' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectMedia('form1.$fieldname')\" />\r\n";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' style='width:360px' class='intxt' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览' onClick=\"SelectMedia('form1.$fieldname')\" />\r\n";
     } else if ($ftype == "addon") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' style='width:360px' class='intxt' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览...' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' style='width:360px' class='intxt' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览' onClick=\"SelectSoft('form1.$fieldname')\" />\r\n";
     } else if ($ftype == "int" || $ftype == "float") {
         $innertext = "<input type='text' name='$fieldname' id='$fieldname' style='width:100px' class='intxt' value='$fvalue' /> (填写数值)\r\n";
     } else if ($ftype == "relation") {

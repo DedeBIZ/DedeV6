@@ -58,7 +58,7 @@ if ($nextpage == $totalpage) {
         ShowMsg("成功创建列表：".$tid."，继续进行操作", $gourl, 0, 100);
     } else {
         $gourl = "makehtml_freelist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$pageno";
-        ShowMsg("列表：".$tid."，继续进行操作...", $gourl, 0, 100);
+        ShowMsg("列表：".$tid."，继续进行操作", $gourl, 0, 100);
     }
 }
 $dsql->ExecuteNoneQuery("Update `#@__freelist` set  nodefault='1' where aid='$startid';");

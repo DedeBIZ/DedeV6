@@ -971,7 +971,7 @@ class SplitWord
      
     /**
      * 获取索引hash数组
-     * @return array('word'=>count,...)
+     * @return array('word'=>count,)
      */
      function GetFinallyIndex()
      {

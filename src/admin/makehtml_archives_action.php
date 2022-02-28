@@ -81,7 +81,7 @@ $ttime = number_format(($ttime / 60), 2);
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
 $dvlen = $tjlen * 2;
 $tjsta = "<div style='width:200;height:15;border:1px solid #898989;text-align:left'><div style='width:$dvlen;height:15;background-color:#829D83'></div></div>";
-$tjsta .= "<br>本次用时：".number_format($t2, 2)."，总用时：$ttime 分钟，到达位置：".($startdd + $pagesize)."<br>完成创建文件总数的：$tjlen %，继续执行任务...";
+$tjsta .= "<br>本次用时：".number_format($t2, 2)."，总用时：$ttime 分钟，到达位置：".($startdd + $pagesize)."<br>完成创建文件总数的：$tjlen %，继续执行任务";
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";
     $nurl .= "&totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize";
@@ -95,7 +95,7 @@ if ($tjnum < $totalnum) {
         if ($uptype == '') {
             ShowMsg("完成所有创建任务，生成文件：$totalnum 总用时：{$ttime} 分钟", "javascript:;");
         } else {
-            ShowMsg("完成文档HTML更新任务，现在开始进行主页更新...", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
+            ShowMsg("完成文档HTML更新任务，现在开始进行主页更新", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
         }
     }
 }

@@ -186,7 +186,7 @@ table{border-collapse:separate}
                   <?php
                   $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
                   echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
-                  echo "<option value='0'>请选择栏目...</option>\r\n";
+                  echo "<option value='0'>请选择栏目</option>\r\n";
                   echo $typeOptions;
                   echo "</select>";
 			            ?>
@@ -291,7 +291,7 @@ table{border-collapse:separate}
             <tr>
               <td width="100">&nbsp;压缩包文件：</td>
               <td><input type='text' name='zipfile' id='zipfile' style='width:300px'>
-                <button name='addon_bt' type='button' onClick="SelectSoft('form1.zipfile')" class="btn btn-success btn-sm">浏览...</button>
+                <button name='addon_bt' type='button' onClick="SelectSoft('form1.zipfile')" class="btn btn-success btn-sm">浏览</button>
                 <label><input name="delzip" type="checkbox" id="delzip" value="1" checked="checked" />
                 处理后删除压缩文件</label></td>
             </tr>
@@ -307,7 +307,7 @@ table{border-collapse:separate}
                 把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片
                 <input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()">
                 <br>
-                <div id='copyhtml' style='margin-top:6px;margin-bottom:6px;border:solid 1px #CCCCCC;width:96%;padding:6px;height:250px;width:100%' contenteditable="true">粘贴到这里...</div>
+                <div id='copyhtml' style='margin-top:6px;margin-bottom:6px;border:solid 1px #CCCCCC;width:96%;padding:6px;height:250px;width:100%' contenteditable="true">粘贴到这里</div>
               </td>
             </tr>
           </table>
@@ -454,7 +454,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键字：</td>
-              <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value="" /> <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览...</button></td>
+              <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value="" /> <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览</button></td>
             </tr>
           </table>
         </td>

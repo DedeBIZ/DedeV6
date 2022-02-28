@@ -478,7 +478,7 @@
                 }
             }
     
-            //and a little bit...  
+            //and a little bit  
             $frame[$width - 8][8] = "\x81";
             
             return $frame;

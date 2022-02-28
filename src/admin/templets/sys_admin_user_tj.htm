@@ -27,7 +27,7 @@
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
 <div id='loaddiv' style='display:none'>
-	<p align='center'><img src='images/loadinglit.gif' /> 请稍后，正在载入中...</p>
+	<p align='center'><img src='images/loadinglit.gif' /> 请稍后，正在载入中</p>
 </div>
 <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
   <tr>
@@ -41,7 +41,7 @@
   $dsql->Execute('me', 'Select * From `#@__admin` order by id asc');
   while( $arr = $dsql->GetArray('me') )
   {
-  	echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='images/loadinglit.gif' /> 请稍后，正在载入中...</p></div>\r\n<script language='javascript'>LoadUser({$arr['id']});</script>\r\n";
+  	echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='images/loadinglit.gif' /> 请稍后，正在载入中</p></div>\r\n<script language='javascript'>LoadUser({$arr['id']});</script>\r\n";
   }
   ?>
   </td>

@@ -78,12 +78,12 @@ if ($dopost == "view") {
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-        echo "<div class=\"alert alert-success\" role=\"alert\">成功更新首页：".$homeFile." <a href='{$position}' target='_blank' class='btn btn-success btn-sm'>浏览...</a></div>";
+        echo "<div class=\"alert alert-success\" role=\"alert\">成功更新首页：".$homeFile." <a href='{$position}' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
     } else {
         //动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-        echo "<div class=\"alert alert-success\" role=\"alert\">采用动态浏览：<a href='../index.php' target='_blank' class='btn btn-success btn-sm'>浏览...</a></div>";
+        echo "<div class=\"alert alert-success\" role=\"alert\">采用动态浏览：<a href='../index.php' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
     }
     $iquery = "UPDATE `#@__homepageset` SET showmod='$showmod'";
     $dsql->ExecuteNoneQuery($iquery);

@@ -11,7 +11,7 @@
     function ShowFields() {
       var exptable = $DE('exptable').options[$DE('exptable').selectedIndex].value;
       var queryUrl = "sys_data_replace.php?exptable=" + exptable + "&action=getfields";
-      var myajax = new DedeAjax($DE('fields'), true, true, '', 'x', '...');
+      var myajax = new DedeAjax($DE('fields'), true, true, '', 'x', '');
       myajax.SendGet(queryUrl);
     }
     function CheckSubmit() {

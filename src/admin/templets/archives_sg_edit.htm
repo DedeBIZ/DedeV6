@@ -144,7 +144,7 @@ table{border-collapse:separate}
             <?php
             $typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
             echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
-            if($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目...</option>\r\n";
+            if($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>\r\n";
             echo $typeOptions;
             echo "</select>";
 			     ?>

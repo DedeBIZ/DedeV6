@@ -69,7 +69,7 @@ if ($action == 'check') {
             $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET arcrank=0 WHERE id='{$row->id}'");
         }
     }
-    ShowMsg("完成数据库的审核处理，准备更新HTML...", $jumpurl);
+    ShowMsg("完成数据库的审核处理，准备更新HTML", $jumpurl);
     exit();
 }
 //批量删除
@@ -156,9 +156,9 @@ else if ($action == 'move') {
         $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
         $jumpurl .= "&typeid=$newtypeid&pagesize=20&seltime=$seltime";
         $jumpurl .= "&stime=".urlencode($starttime)."&etime=".urlencode($endtime);
-        ShowMsg("成功移动 $tdd 条记录，准备重新生成HTML...", $jumpurl);
+        ShowMsg("成功移动 $tdd 条记录，准备重新生成HTML", $jumpurl);
     } else {
-        ShowMsg("完成操作，没移动任何数据...", "javascript:;");
+        ShowMsg("完成操作，没移动任何数据", "javascript:;");
     }
 }
 //删除空标题内容

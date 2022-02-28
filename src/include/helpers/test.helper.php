@@ -13,6 +13,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 if (!function_exists('HelloDede')) {
     function HelloDede()
     {
-        echo "Hello! Dede...";
+        echo "Hello! Dede";
     }
 }

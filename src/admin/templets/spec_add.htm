@@ -220,7 +220,7 @@
               <td><?php
            $typeOptions = GetOptionList($cid, $cuserLogin->getUserChannel(), 0);
            echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
-           echo "<option value='0'>请选择主分类...</option>\r\n";
+           echo "<option value='0'>请选择主分类</option>\r\n";
            echo $typeOptions;
            echo "</select>";
 					?>
@@ -240,7 +240,7 @@
               <td width="202"><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np"
                   id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />
                 自动获取，手动填写用","分开<br>
-                <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览...</button></td>
+                <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button></td>
             </tr>
           </table>
         </td>
@@ -304,7 +304,7 @@
             <tr>
               <td width="90">&nbsp;专题模板：</td>
               <td><input name="templet" type="text" id="templet" style="width:250px" value="<?php echo $cfg_df_style?>/article_spec.htm" />
-                <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览...</button></td>
+                <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button></td>
             </tr>
           </table>
         </td>
@@ -410,7 +410,7 @@
             <tr>
               <td>节点容器模板：</td>
               <td colspan="2"><input name="notetemplet<?php echo $i?>" type="text" id="notetemplet<?php echo $i?>" value="system/channel_spec_note.htm" style="width:300">
-                <button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.notetemplet<?php echo $i?>');">浏览...</button></td>
+                <button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.notetemplet<?php echo $i?>');">浏览</button></td>
             </tr>
             <?php
           }

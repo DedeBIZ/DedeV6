@@ -488,7 +488,7 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
         }
         if (in_array($tagname, $alltags)) {
             if (in_array($tagname, $disable_tags)) {
-                if (DEBUG_LEVEL) echo 'DedeBIZ Error:Tag disabled:"'.$tagname.'" <a href="https://www.dedebiz.com/help/" target="_blank">more...</a>!';
+                if (DEBUG_LEVEL) echo 'DedeBIZ Error:Tag disabled:"'.$tagname.'" <a href="https://www.dedebiz.com/help/" target="_blank">more</a>!';
                 continue;
             }
             if (DEBUG_LEVEL == TRUE) {

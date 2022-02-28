@@ -112,7 +112,7 @@ else if ($dopost == 2) {
     } else {
         $sql = " TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
-        $msg .= "<span style='color:#dc3545'>两者记录不一致，尝试进行简单修正...</span><br>";
+        $msg .= "<span style='color:#dc3545'>两者记录不一致，尝试进行简单修正</span><br>";
         //导入普通模型微数据
         $sql = "INSERT INTO `#@__arctiny`(id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid)  
             SELECT id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid FROM `#@__archives` ";

@@ -65,7 +65,7 @@
               </div>
               <div class="col-12 description py-2">
                   <a href="[field:arcurl/]">
-                      [field:description/]...
+                      [field:description/]
                   </a>
               </div>
               <div class="col-12 addinfo">
@@ -118,7 +118,7 @@
                       <td height="30" align="left">列表模板：</td>
                       <td align="left"><input name="templet" type="text" id="templet" style="width:300px" value="{style}/list_free.htm">
                         <button type="button" name="set4" style="width:60px"
-                          onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览...</button></td>
+                          onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button></td>
                     </tr>
                     <tr>
                       <td height="30" align="left">最大列出页数：</td>
@@ -174,7 +174,7 @@
                 <td height="26" align="left"> 限定栏目：
                   <?php
                  echo "<select name='typeid' style='width:100'>\r\n";
-                 echo "<option value='0'>不限栏目...</option>\r\n";
+                 echo "<option value='0'>不限栏目</option>\r\n";
                 $dsql->SetQuery("Select ID,typename, channeltype From #@__arctype");
                 $dsql->Execute();
                 while($lrow = $dsql->GetObject()){
@@ -192,7 +192,7 @@
                 <td height="26" align="left"> 限定频道：
                   <?php
        echo "<select name='channel' style='width:100'>\r\n";
-       echo "<option value='0' selected>不限...</option>\r\n";
+       echo "<option value='0' selected>不限</option>\r\n";
        $dsql->SetQuery("Select ID,typename From #@__channeltype where ID>0");
 	   $dsql->Execute();
 	   while($row = $dsql->GetObject())
@@ -207,7 +207,7 @@
                 <td height="26" align="left">附加属性：
                   <?php
        echo "<select name='att' style='width:100'>\r\n";
-       echo "<option value='0' selected>不限...</option>\r\n";
+       echo "<option value='0' selected>不限</option>\r\n";
        $dsql->SetQuery("Select * From #@__arcatt");
 	   $dsql->Execute();
 	   while($row = $dsql->GetObject())

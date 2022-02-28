@@ -180,7 +180,7 @@ table{border-collapse:separate}
             <td><?php
            	$typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
            	echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
-            if($arcRow['typeid']=='0') echo "<option value='0' selected>请选择主分类...</option>\r\n";
+            if($arcRow['typeid']=='0') echo "<option value='0' selected>请选择主分类</option>\r\n";
             echo $typeOptions;
             echo '</select>';
 			   	   ?>
@@ -416,7 +416,7 @@ if($cfg_need_typeid2=='Y') {
           <tr>
             <td width="100">&nbsp;压缩包文件：</td>
             <td><input type='text' name='zipfile' id='zipfile' style='width:300px'>
-              <button name='addon_bt' type='button' class='btn btn-success btn-sm' onClick="SelectSoft('form1.zipfile')">浏览...</button>
+              <button name='addon_bt' type='button' class='btn btn-success btn-sm' onClick="SelectSoft('form1.zipfile')">浏览</button>
               <label><input name="delzip" type="checkbox" id="delzip" value="1" checked="checked" />
               处理后删除压缩文件</label>
             </td>
@@ -433,7 +433,7 @@ if($cfg_need_typeid2=='Y') {
               <br>把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片
               <input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()">
               <br>
-              <div id='copyhtml' style='margin-top:6px;margin-bottom:6px;border:solid 1px #CCCCCC;width:96%;padding:6px;height:250px;width:100%' contenteditable="true">粘贴到这里...</div>
+              <div id='copyhtml' style='margin-top:6px;margin-bottom:6px;border:solid 1px #CCCCCC;width:96%;padding:6px;height:250px;width:100%' contenteditable="true">粘贴到这里</div>
             </td>
           </tr>
         </table>
