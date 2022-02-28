@@ -123,7 +123,6 @@ function jsScript($js)
     $out .= $js;
     $out .= "\n//]]>";
     $out .= "</script>\n";
-
     return $out;
 }
 /**

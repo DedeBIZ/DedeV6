@@ -123,7 +123,6 @@ $adminMenu1
 </m:top>
 $adminMenu2
 <m:top item='1_10_7_' name='系统帮助' display='none'>
-    <m:item name='参考文档' link='$cfg_biz_helpUrl' rank='' target='_blank' />
+    <m:item name='系统概况' link='$cfg_biz_helpUrl' rank='' target='_blank' />
     <m:item name='代码托管' link='$cfg_biz_gitUrl' rank='' target='_blank' />
-    <m:item name='商业支持' link='$cfg_biz_dedebizUrl' rank='' target='_blank' />
 </m:top>";

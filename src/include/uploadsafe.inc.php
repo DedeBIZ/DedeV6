@@ -9,9 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 if (!defined('DEDEINC')) exit('dedebiz');
-
 if (isset($_FILES['GLOBALS'])) exit('Request not allow!');
-
 //为了防止用户通过注入的可能性改动了数据库
 //这里强制限定的某些文件类型禁止上传
 $cfg_not_allowall = "php|pl|cgi|asp|aspx|jsp|php3|shtm|shtml";
@@ -37,7 +35,6 @@ foreach ($_FILES as $_key => $_value) {
     ${$_key.'_name'} = $_FILES[$_key]['name'];
     ${$_key.'_type'} = $_FILES[$_key]['type'] = preg_replace('#[^0-9a-z\./]#i', '', $_FILES[$_key]['type']);
     ${$_key.'_size'} = $_FILES[$_key]['size'] = preg_replace('#[^0-9]#', '', $_FILES[$_key]['size']);
-
     if (is_array(${$_key.'_name'}) && count(${$_key.'_name'}) > 0) {
         foreach (${$_key.'_name'} as $key => $value) {
             if (!empty($value) && (preg_match("#\.(".$cfg_not_allowall.")$#i", $value) || !preg_match("#\.#", $value))) {
@@ -53,12 +50,10 @@ foreach ($_FILES as $_key => $_value) {
             }
         }
     }
-
     if (empty(${$_key.'_size'})) {
         ${$_key.'_size'} = @filesize($$_key);
     }
     $imtypes = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/bmp");
-
     if (is_array(${$_key.'_type'}) && count(${$_key.'_type'}) > 0) {
         foreach (${$_key.'_type'} as $key => $value) {
             if (in_array(strtolower(trim($value)), $imtypes)) {
@@ -70,12 +65,9 @@ foreach ($_FILES as $_key => $_value) {
                     exit('Upload filetype not allow !');
                 }
             }
-
             $imtypes = array(
-                "image/pjpeg", "image/jpeg", "image/gif", "image/png",
-                "image/xpng", "image/wbmp", "image/bmp"
+                "image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/bmp"
             );
-
             if (in_array(strtolower(trim($value)), $imtypes)) {
                 $image_dd = @getimagesize($$_key);
                 if ($image_dd == false) {
@@ -96,12 +88,9 @@ foreach ($_FILES as $_key => $_value) {
                 exit('Upload filetype not allow !');
             }
         }
-
         $imtypes = array(
-            "image/pjpeg", "image/jpeg", "image/gif", "image/png",
-            "image/xpng", "image/wbmp", "image/bmp"
+            "image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/bmp"
         );
-
         if (in_array(strtolower(trim(${$_key.'_type'})), $imtypes)) {
             $image_dd = @getimagesize($$_key);
             if ($image_dd == false) {

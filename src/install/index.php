@@ -10,7 +10,7 @@
 error_reporting(E_ALL || ~E_NOTICE);
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
-$cfg_version_detail = '6.0.4'; //详细版本号
+$cfg_version_detail = '6.1.0'; //详细版本号
 $errmsg = '';
 if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
     mysqli_report(MYSQLI_REPORT_OFF);
