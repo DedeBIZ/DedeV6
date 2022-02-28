@@ -100,7 +100,7 @@ else if ($action == 'make') {
         $readmef = $dm->GetEncodeFile($mdir."/{$hashcode}-r.html", TRUE);
     } else {
         $readmetxt = "<p style='line-height:150%'>".$readmetxt;
-        $readmetxt = preg_replace("#[\r\n]{1,}#", "<br />\r\n", $readmetxt);
+        $readmetxt = preg_replace("#[\r\n]{1,}#", "<br>\r\n", $readmetxt);
         $readmetxt .= "</p>";
         $readmef = base64_encode(trim($readmetxt));
     }

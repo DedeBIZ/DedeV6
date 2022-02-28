@@ -23,11 +23,11 @@ function ShowMore(formitem,one,more,group)
 <body>
 <div class="bodytitle">
 	<div class="bodytitleleft"></div>
-	<div class="bodytitletxt" style="padding-left:10px;">邮件订阅</div>
+	<div class="bodytitletxt" style="padding-left:10px">邮件订阅</div>
 </div>
 <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="background:#cfcfcf;">
   <tr>
-    <td height="26" colspan="9" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px;">发送邮件</td>
+    <td height="26" colspan="9" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px">发送邮件</td>
   </tr>
   <tr bgcolor="#ffffff" height="26">
     <td colspan="7" align="left">
@@ -44,7 +44,7 @@ function ShowMore(formitem,one,more,group)
       </tr>
     <tr id="one">
         <td height="30" align="right">E-Mail地址：</td>
-        <td height="26" colspan="2"><input name="address" type="text" class="text" value="@" size="28" maxlength="40" style="width:250px;margin-top:5px;margin-left:10px;"/>          
+        <td height="26" colspan="2"><input name="address" type="text" class="text" value="@" size="28" maxlength="40" style="width:250px;margin-top:5px;margin-left:10px">          
           填写用户的E-Mail地址</td>
       </tr>
       <tr id="more" style="display:none">
@@ -55,11 +55,10 @@ function ShowMore(formitem,one,more,group)
         <tr id="group" style="display:none">
         <td height="30" align="right">邮件列表：</td>
         <td height="26" colspan="2">
-        <select name="mailfile" id="mailfile" style="margin-left: 10px;">
+        <select name="mailfile" id="mailfile" style="margin-left:10px">
         <?php
         foreach($mailfiles as $i=>$mailfile)
         {
-  
             $selected = ($mailfile==$filename) ? " selected " : "";
         ?>
         <option value="<?php echo $mailfile; ?>" <?php echo $selected; ?> ><?php echo $mailfile; ?></option>
@@ -81,7 +80,6 @@ function ShowMore(formitem,one,more,group)
         </td>
         <td width="314" >&nbsp;</td>
       </tr>
-
       <tr>
         <td height="26" align="right" valign="top">&nbsp;</td>
         <td height="30" colspan="2" ><input type="submit" value="提交" class="button01" /></td>

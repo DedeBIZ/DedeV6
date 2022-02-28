@@ -38,13 +38,12 @@
   </script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center"
-    class="table maintable table-bordered mt-3" style="	background:#cfcfcf;">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="background:#cfcfcf;">
     <tr>
       <td height="26" colspan="7" bgcolor="#EDF9D5" background='images/tbg.gif'>
         <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr>
-            <td width="30%" style="padding-left:10px;"><strong>点卡业务管理：</strong> </td>
+            <td width="30%" style="padding-left:10px"><strong>点卡业务管理：</strong> </td>
             <td width="45%" align="right" style="padding-top:4px;">
               <button type="button" onClick="location='cards_manage.php?isexp=0';"
                 class="btn btn-success btn-sm">未使用</button>
@@ -74,8 +73,7 @@
     </tr>
     <form name="form1">
       {dede:datalist}
-      <tr align="center" bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+      <tr align="center" bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
         <td><input type='checkbox' name='aids' value='{dede:field.aid/}' class='np'></td>
         <td>{dede:field.cardid/}</td>
         <td><?php echo $TypeNames[$fields['ctid']]?></td>

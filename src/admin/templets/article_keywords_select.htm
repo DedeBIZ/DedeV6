@@ -10,9 +10,7 @@ function SelKw(kw)
 	if(document.form2.keywords.value)
 	{
 		document.form2.keywords.value += ","+kw;
-	}
-	else
-	{
+	} else {
 		document.form2.keywords.value = kw;
 	}
 }
@@ -21,9 +19,7 @@ function ReturnValue()
 	if(window.opener.document.<?php echo $f?>.value)
 	{
 		window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
-	}
-	else
-	{
+	} else {
 		window.opener.document.<?php echo $f?>.value = document.form2.keywords.value;
 	}
 	//window.opener=true; //firefox出错

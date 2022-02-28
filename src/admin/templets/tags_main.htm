@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-	<title>tags管理</title>
+	<title>标签管理</title>
 	<script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
 	<script src="/static/js/bootstrap.bundle.js"></script>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
@@ -30,7 +30,6 @@
 		function DeleteOne(tid) {
 			location = "tags_main.php?action=delete&ids=" + tid;
 		}
-
 		function UpdateKwDes(tid, tag) {
 			$.get("tags_main.php?action=get_one&tid=" + tid, function (data) {
 				let rs = JSON.parse(data);
@@ -69,10 +68,8 @@
 				`, {
 					footer: `<button type="button" class="btn btn-outline-success" onclick="UpdateKwDesDo(${tid}, '~modalID~')">设置</button>`,
 				});
-
 			})
 		}
-
 		function UpdateKwDesDo(tid, mdlID) {
 			let title = $("#iptTitle").val();
 			let kw = $("#iptKw").val();
@@ -89,22 +86,19 @@
 				}
 
 			})
-
 		}
 	</script>
 </head>
 <body>
 	<div class="bodytitle mt-3">
 		<div class="bodytitleleft"></div>
-		<div class="bodytitletxt" style="padding-left:10px;"><a href="tags_main.php">Tags标签管理</a></div>
+		<div class="bodytitletxt" style="padding-left:10px"><a href="tags_main.php">标签管理</a></div>
 	</div>
 	<div class="main">
-		<form name='form1' action="tags_main.php?action=fetch" method="post" style="margin-bottom:6px;">
-			<table width="98%" border="0" cellspacing="1" align="center" class="table maintable"
-				style="background:#CFCFCF;">
+		<form name='form1' action="tags_main.php?action=fetch" method="post" style="margin-bottom:10px">
+			<table width="98%" border="0" cellspacing="1" align="center" class="table maintable" style="background:#CFCFCF;">
 				<tr>
-					<td height="26" align="left" bgcolor="#F0FBBD" background="images/wbg.gif"
-						style="padding-left:10px;"><strong>提取Tag</strong></td>
+					<td height="26" align="left" bgcolor="#F0FBBD" background="images/wbg.gif" style="padding-left:10px"><strong>提取Tag</strong></td>
 				</tr>
 				<tr>
 					<td height="30" align="center" bgcolor="#Ffffff">
@@ -113,8 +107,8 @@
 						结束id:
 						<input type="text" name="endaid" />
 						&nbsp;
-						<button name="submit" type="submit" class="btn btn-success">获取Tags</button>
-						<small>(tag以文档关键词为准)</small>
+						<button name="submit" type="submit" class="btn btn-success">获取标签</button>
+						<small>（tag以文档关键词为准）</small>
 					</td>
 				</tr>
 			</table>
@@ -123,20 +117,17 @@
 			class="table maintable table-bordered" style="background:#CFCFCF;">
 			<tr>
 				<td height="26" colspan="7" bgcolor="#F0F0F0">
-					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
-						class="table-borderless">
+					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="table-borderless">
 						<tr>
-							<td align="left" style="padding-left:10px;"><strong>Tag维护</strong></td>
+							<td align="left" style="padding-left:10px"><strong>标签维护</strong></td>
 							<form name='form2' action="tags_main.php">
 								<td width="40%" align="right">
 									搜索：
 									<input type='text' name='tag' size='10' value="<?php echo $tag;?>">
 									<button type='submit' name='sb' class="btn btn-success btn-sm">确定</button>
-									&nbsp; <a href="makehtml_taglist.php" name='sb'
-										class="btn btn-success btn-sm">更新Tag HTML</a>
+									&nbsp; <a href="makehtml_taglist.php" name='sb' class="btn btn-success btn-sm">更新标签</a>
 								</td>
 							</form>
-
 						</tr>
 					</table>
 				</td>
@@ -144,18 +135,14 @@
 			<tr align="center" bgcolor="#FBFCE2" height="26">
 				<td width="5%">删</td>
 				<td width="20%">标签</td>
-				<td width="10%"><a
-						href="tags_main.php?tag=<?php echo $tag;?>&orderby=count&orderway=<?php echo $neworderway;?>">点击</a>
+				<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=count&orderway=<?php echo $neworderway;?>">点击</a>
 				</td>
-				<td width="10%"><a
-						href="tags_main.php?tag=<?php echo $tag;?>&orderby=total&orderway=<?php echo $neworderway;?>">文档数</a>
+				<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=total&orderway=<?php echo $neworderway;?>">文档数</a>
 				</td>
-				<td width="15%"><a
-						href="tags_main.php?tag=<?php echo $tag;?>&orderby=addtime&orderway=<?php echo $neworderway;?>">添加时间</a>
+				<td width="15%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=addtime&orderway=<?php echo $neworderway;?>">添加时间</a>
 				</td>
 				<td width="15%">更新时间</td>
 				<td width="20%">操作</td>
-
 			</tr>
 			<form name='form3' action="tags_main.php?action=delete" method="post">
 				{dede:datalist}
@@ -170,12 +157,10 @@
 						<input type="checkbox" name="ids[]" value="<?php echo $fields['id']; ?>" class='np' />
 					</td>
 					<td>
-						<a href="../tags.php?/<?php echo urlencode($fields['tag']); ?>/" target="_blank">{dede:field.tag
-							/}</a>
+						<a href="../tags.php?/<?php echo urlencode($fields['tag']); ?>/" target="_blank">{dede:field.tag/}</a>
 					</td>
 					<td>
-						<input type='text' value='<?php echo $fields['count']; ?>'
-							id='count<?php echo $fields['id']; ?>' size='5' />
+						<input type="text" value="<?php echo $fields['count']; ?>" id="count<?php echo $fields['id']; ?>" size='5' />
 					</td>
 					<td>
 						<?php echo $fields['total']; ?>
@@ -187,14 +172,10 @@
 						<?php echo $fields['uptime']; ?>
 					</td>
 					<td>
-						<a href='javascript:UpdateKwDes(<?php echo $fields['id']; ?>, "<?php echo $fields['tag']; ?>");'
-							class="btn btn-success btn-sm">关键词描述</a>
-						<a href='javascript:UpdateOne(<?php echo $fields['id']; ?>);'
-							class="btn btn-success btn-sm">更新</a>
-						<a href='makehtml_taglist.php?tid=<?php echo $fields['id'];?>'
-							class="btn btn-success btn-sm">生成HTML</a>
-						<a href='javascript:DeleteOne(<?php echo $fields['id']; ?>);'
-							class="btn btn-success btn-sm">删</a>
+						<a href='javascript:UpdateKwDes(<?php echo $fields['id']; ?>, "<?php echo $fields['tag']; ?>");' class="btn btn-success btn-sm">关键词描述</a>
+						<a href='javascript:UpdateOne(<?php echo $fields['id']; ?>);' class="btn btn-success btn-sm">更新</a>
+						<a href='makehtml_taglist.php?tid=<?php echo $fields['id'];?>' class="btn btn-success btn-sm">生成HTML</a>
+						<a href='javascript:DeleteOne(<?php echo $fields['id']; ?>);' class="btn btn-success btn-sm">删</a>
 					</td>
 				</tr>
 				{/dede:datalist}
@@ -202,7 +183,7 @@
 					<td align="center" bgcolor="#F8FEE0" height="26">
 						<label>
 							<input type="checkbox" onclick="checkall(this.form, 'ids')" name="all" class="np" />
-							<br />全选
+							<br>全选
 						</label>
 					</td>
 					<td height="26" colspan="7" align="center" bgcolor="#F8FEE0">
@@ -218,5 +199,4 @@
 		</table>
 	</div>
 </body>
-
 </html>

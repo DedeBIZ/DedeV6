@@ -28,18 +28,16 @@
       if (str == '') {
         ShowMsg('您没选择任何内容');
         return false;
-      }
-      else {
+      } else {
         location = "friendlink_edit.php?aids=" + str + "&dopost=delall";
       }
     }
   </script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table table-bordered maintable mt-3">
     <tr>
-      <td height="26" background="images/tbg.gif" colspan="8" style="padding-left:10px;">
+      <td height="26" background="images/tbg.gif" colspan="8" style="padding-left:10px">
         <div style="float:left">
           <b>友情链接管理</b>
         </div>
@@ -56,8 +54,7 @@
           <table border="0" cellspacing="0" cellpadding="3" class="table table-borderless">
             <tr>
               <td>关键字：</td>
-              <td><input name="keyword" type="text" id="keyword" size="12" style="width:250px"
-                  value="<?php echo $keyword; ?>" /></td>
+              <td><input name="keyword" type="text" id="keyword" size="12" style="width:250px" value="<?php echo $keyword; ?>" /></td>
               <td>
                 <select name="ischeck" id="ischeck">
                   <?php
@@ -91,8 +88,7 @@
         <td width="15%">管理</td>
       </tr>
       {dede:datalist}
-      <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+      <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
         <td><input type='checkbox' name='aids' value='{dede:field.id/}' class='np'></td>
         <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i>地址：{dede:field.url/}</i></td>
         <td>{dede:field.logo function="GetPic(@me)"/}</td>
@@ -109,11 +105,9 @@
     </form>
     <tr bgcolor="#ffffff" height="26">
       <td colspan="8">
-        　
         <a href='javascript:;' onclick='Sel("all")' class="btn btn-success btn-sm">全选</a>
         <a href='javascript:;' onclick='Sel("none")' class="btn btn-success btn-sm">取消</a>
         <a href='javascript:;' onclick='checkSubmit()' class="btn btn-success btn-sm">批量删除</a>
-
       </td>
     </tr>
     <tr align="center" bgcolor="#F9FCEF" height="26">
@@ -126,5 +120,4 @@
   </tr>
   </table>
 </body>
-
 </html>

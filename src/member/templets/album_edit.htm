@@ -97,8 +97,7 @@
                       <label><input name="pagestyle" type="radio" id="pagestyle3" onclick="checkMuList()" value="3"
                         <?php if($cfg_album_style==3) echo " checked='checked'"; ?> />多行多列显示(缩略图)</label>
                       <div id='spagelist' style="<?php if($abinfo->GetAtt('value')!=2) echo "display:none"; ?>" class="mTB10"> 每页图片数：
-                      <input name='pagpicnum' id='pagpicnum' size='10' class="text"
-                      value="<?php echo $abinfo->GetAtt('pagpicnum'); ?>" />
+                      <input name='pagpicnum' id='pagpicnum' size='10' class="text" value="<?php echo $abinfo->GetAtt('pagpicnum'); ?>" />
                       </div>
                     </p>
                     <p>
@@ -165,7 +164,7 @@
                         <div class="col-sm-10">
                           <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt"
                                   style='width:100px;text-transform:uppercase;' />
-                                <img src="../plus/vdimgck.php" alt="看不清？点击更换" align="absmiddle" style="cursor:pointer"
+                                <img src="../plus/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer"
                                   onclick="this.src=this.src+'?'" />
                         </div>
                       </div>

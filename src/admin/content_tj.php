@@ -43,7 +43,7 @@ function GetArchives($dsql, $ordertype)
             $moreinfo = "[点击：{$row->click}]";
         }
         echo "·<a href='archives_do.php?aid={$row->id}&dopost=viewArchives' target='_blank'>";
-        echo cn_substr($row->title, 30)."</a>{$moreinfo}<br/>\r\n";
+        echo cn_substr($row->title, 30)."</a>{$moreinfo}<br>\r\n";
     }
 }
 include DedeInclude('templets/content_tj.htm');

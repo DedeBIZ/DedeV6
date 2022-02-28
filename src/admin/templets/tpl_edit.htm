@@ -19,7 +19,7 @@
 	<script language="javascript">
 		function Post() {
 			if (document.form1.filename.value == "") {
-				alert("文件名不能为空。");
+				alert("文件名不能为空");
 				document.form1.filename.focus();
 				return false;
 			}
@@ -49,9 +49,9 @@
 </head>
 <body bgcolor="#F2F4F3" leftmargin="8" topmargin="8">
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ECFAD3"
-		style="margin-bottom:8px;" class="table maintable table-bordered mt-3">
+		style="margin-bottom:10px" class="table maintable table-bordered mt-3">
 		<tr>
-			<td height="26" style="border:1px dotted #BFD67C" background='images/wbg.gif'><a href='templets_main.php?acdir=<?php echo $acdir; ?>'><b>模板管理</b></a> &gt;&gt;<b>修改/新建模板</b></td>
+			<td height="26" style="border:1px dotted #BFD67C" background='images/wbg.gif'><a href='templets_main.php?acdir=<?php echo $acdir; ?>'><b>模板管理</b></a>  &gt;&gt; <b>修改/新建模板</b></td>
 		</tr>
 	</table>
 	<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
@@ -60,7 +60,7 @@
 		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
 		<table width='98%' border='0' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf' align="center" class="table maintable table-bordered mt-3">
 			<tr bgcolor='#EEF4EA'>
-				<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px;">
+				<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px">
 					<span><b>修改/新建模板：</b></span>
 				</td>
 			</tr>
@@ -69,7 +69,7 @@
 				<td><input name=filename size=40 value="<?php echo $filename; ?>" />（不允许用 “..” 形式的路径）</td>
 			</tr>
 			<tr bgcolor="#F9FCEF">
-				<td colspan='2' hieght="30" style="padding-left:10px;"><b>参考标签：</b></td>
+				<td colspan='2' hieght="30" style="padding-left:10px"><b>参考标签：</b></td>
 			</tr>
 			<tr bgcolor='#FFFFFF'>
 				<td colspan='2'>
@@ -86,13 +86,13 @@
 					<?php
 						foreach ($helps as $key => $help)
 						{
-							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style=" float:right;"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div><b>标签名称：</b>'.$key.'<br /><b>功能说明：</b>'.trim($help[0]).'<br /><b>使用实例：</b><br /><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br /><b>参数说明：</b><br />'."\r\n";
+							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style=" float:right;"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div><b>标签名称：</b>'.$key.'<br><b>功能说明：</b>'.trim($help[0]).'<br><b>使用实例：</b><br><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br><b>参数说明：</b><br>'."\r\n";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
 							{
 								$parameter = trim($parameter);
 								if($parameter == '') continue;
-								else echo $parameter,'<br />';
+								else echo $parameter,'<br>';
 							}
 						echo '</div>'."\r\n";
 					}

@@ -255,7 +255,7 @@ $action = isset($action) ? $action : '';
 		<dl style="margin-left:0.5%;margin-right:0.5%; width:97%" id="item1" class="dbox">
 			<dt class="lside"><span class="l" style="float:left">系统运行目录权限检测</span><span style="float:right; margin-right:20px"><a href="index_body.php">返回主页</a></span><span style="float:right; margin-right:20px"><a href="https://www.dedebiz.com/help" target="_blank">帮助说明</a></span></dt>
 			<dd>
-				<div style="padding:10px"> 说明：本程序用于检测DedeBIZ站点所涉及的目录权限，并且提供一个全面的检测说明，您可以根据检测报告来配置站点以保证站点更为安全。</div>
+				<div style="padding:10px"> 说明：本程序用于检测DedeBIZ站点所涉及的目录权限，并且提供一个全面的检测说明，您可以根据检测报告来配置站点以保证站点更为安全</div>
 				<div id="tableHeader" style="margin-left:10px">
 					<table width="784" border="0" cellpadding="0" cellspacing="1" bgcolor="#047700" id="scanTable">
 						<thead>

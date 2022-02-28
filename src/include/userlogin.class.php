@@ -56,7 +56,7 @@ function TestPurview($n)
 function CheckPurview($n)
 {
     if (!TestPurview($n)) {
-        ShowMsg("对不起，您没有权限执行此操作<br/><br/><a href='javascript:history.go(-1);'>点击此返回上一页&gt;&gt;</a>", 'javascript:;');
+        ShowMsg("对不起，您没有权限执行此操作<br><br><a href='javascript:history.go(-1);'>点击此返回上一页&gt;&gt;</a>", 'javascript:;');
         exit();
     }
 }
@@ -95,7 +95,7 @@ function CheckCatalog($cid, $msg)
         return TRUE;
     }
     if (!in_array($cid, $admin_catalogs)) {
-        ShowMsg(" $msg <br/><br/><a href='javascript:history.go(-1);'>点击此返回上一页&gt;&gt;</a>", 'javascript:;');
+        ShowMsg(" $msg <br><br><a href='javascript:history.go(-1);'>点击此返回上一页&gt;&gt;</a>", 'javascript:;');
         exit();
     }
     return TRUE;

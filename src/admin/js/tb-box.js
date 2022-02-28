@@ -37,7 +37,7 @@ function tb_init(domChunk)
  */
 function tb_action(msg, gourl)
 {
-    msg += "<br/><a href='javascript:tb_remove();'>&lt;&lt;点错了</a> &nbsp;|&nbsp; <a href='"+gourl+"'>确定要操作&gt;&gt;</a>";
+    msg += "<br><a href='javascript:tb_remove();'>&lt;&lt;点错了</a> &nbsp;|&nbsp; <a href='"+gourl+"'>确定要操作&gt;&gt;</a>";
     tb_showmsg(msg);
 }
 

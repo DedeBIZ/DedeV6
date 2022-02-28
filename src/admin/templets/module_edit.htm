@@ -13,9 +13,7 @@ function ShowHideField(cbox,vid,nid)
 	{
 		document.getElementById(nid).style.display = 'block';
 		document.getElementById(vid).style.display = 'none';
-	}
-	else
-	{
+	} else {
 		document.getElementById(nid).style.display = 'none';
 		document.getElementById(vid).style.display = 'block';
 	}
@@ -26,9 +24,7 @@ function ShowHideMb(rbox1,nid)
 	if(rboxobj.checked)
 	{
 		document.getElementById(nid).style.display = 'none';
-	}
-	else
-	{
+	} else {
 		document.getElementById(nid).style.display = 'block';
 	}
 }
@@ -42,14 +38,14 @@ td{padding-left:8px}
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
 <div class="bodytitle mt-3">
 	<div class="bodytitleleft"></div>
-	<div class="bodytitletxt" style="padding-left:10px;">模块管理</div>
+	<div class="bodytitletxt" style="padding-left:10px">模块管理</div>
 </div>
 <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3" style="background:#CFCFCF;">
   <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
    <input type='hidden' name='action' value='edit'>
    <input type='hidden' name='dev_id' value='<?php echo $dev_id; ?>'>
     <tr>
-      <td height="26" colspan="2" bgcolor="#EDF9D5" background='images/wbg.gif' style="padding-left:10px;"><b>
+      <td height="26" colspan="2" bgcolor="#EDF9D5" background='images/wbg.gif' style="padding-left:10px"><b>
       	 	<a href="module_main.php">模块管理</a>
           &gt; 模块修改：
         </b>
@@ -64,8 +60,7 @@ td{padding-left:8px}
     <tr>
       <td width="19%" align="center" bgcolor="#FFFFFF"><b>开发者ID：</b></td>
       <td width="81%" bgcolor="#FFFFFF">
-      	<input name="dev_id2" type="text" id="dev_id2" style="width:180px" value="<?php echo $dev_id; ?>" class='alltxt' disabled/> <a
-        href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者ID？</a>
+      	<input name="dev_id2" type="text" id="dev_id2" style="width:180px" value="<?php echo $dev_id; ?>" class='alltxt' disabled/> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者ID</a>
       </td>
     </tr>
     <tr>
@@ -99,13 +94,13 @@ td{padding-left:8px}
     <tr>
       <td align="center" bgcolor="#FFFFFF"><b>是否涉及会员系统：</b></td>
       <td bgcolor="#FFFFFF">
-<label><input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo " checked='1' ";?> />
+<label><input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo " checked='1' ";?>>
 不涉及</label>
-<label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class='np' <?php if($ismember=='1') echo " checked='1' ";?> /> 涉及</label>
+<label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class='np' <?php if($ismember=='1') echo " checked='1' ";?>> 涉及</label>
 <div id='rboxct' style='display:<?php echo ($ismember=='0' ? 'none' : 'block'); ?>'>
    	  导航使用名称：
       <input name="indexname" type="text" id="indexname" style="width:180px" value="<?php echo $indexname; ?>" class='alltxt'/>
-      <br />
+      <br>
 导航使用网址：
 <input name="indexurl" type="text" id="indexurl" style="width:180px" value="<?php echo $indexurl; ?>" class='alltxt' />
 (用相对于会员中心的网址，如：../ask)
@@ -116,7 +111,7 @@ td{padding-left:8px}
       <td align="center" bgcolor="#FFFFFF"><b>后台管理菜单：</b></td>
       <td bgcolor="#FFFFFF">
       	<textarea name="menustring" rows="8" id="menustring" style="width:80%"><?php echo $menustring; ?></textarea>
-      	<br />
+      	<br>
       	(普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php)
       </td>
     </tr>
@@ -127,7 +122,7 @@ td{padding-left:8px}
           <tr>
             <td width="75%" bgcolor="#F3FDE1">
             	<b>使用协议或说明：</b>
-            	<br /> 如果需要带HTML格式，请编译后点击修改时使用HTML
+            	<br> 如果需要带HTML格式，请编译后点击修改时使用HTML
             </td>
           </tr>
           <tr>
@@ -143,7 +138,7 @@ td{padding-left:8px}
       <td bgcolor="#FFFFFF">
       <label><input type="checkbox" name="autosetup" id="autosetup" value='1' class="np" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if(isset($autosetup) && $autosetup==1) echo " checked='1'"; ?> />
       	自动生成(由系统自动处理安装)</label>
-      	<br />
+      	<br>
      <div style='display:<?php if(!isset($autosetup) || $autosetup==0) echo "block"; else echo 'none'; ?>' id='autosetupinput'>
       	<input name="setup" type="file" id="setup" style="width:350px" />
      </div>
@@ -152,9 +147,9 @@ td{padding-left:8px}
           <tr>
             <td width="75%" bgcolor="#F3FDE1">
             	<b>请使用MySQL4.0版本格式的SQL语句:</b>
-            	<br />
+            	<br>
             	MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=* ，改为 TYPE=MyISAM ，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束
-            	<br />
+            	<br>
             	如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php
             </td>
           </tr>
@@ -173,7 +168,7 @@ td{padding-left:8px}
       <td bgcolor="#FFFFFF">
         <label><input type="checkbox" name="autodel" id="autodel" value='1' class="np" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if(isset($autodel) && $autodel==1) echo " checked='1' "; ?> />
       	自动生成(由系统自动处理卸载)</label>
-      	<br />
+      	<br>
       	<div style='display:<?php if(!isset($autodel) || $autodel==0) echo 'block'; else echo 'none'; ?>' id='autodelinput'>
       	  <input name="uninstall" type="file" id="uninstall" style="width:350px" />
         </div>
@@ -182,7 +177,7 @@ td{padding-left:8px}
           <tr>
             <td width="75%" bgcolor="#F3FDE1">
             	<b>卸载时执行的SQL语句：</b>
-            	<br />
+            	<br>
             	(SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束)
             </td>
           </tr>
@@ -207,10 +202,10 @@ td{padding-left:8px}
 
     <tr>
       <td align="center" bgcolor="#FFFFFF"><b>文件列表：</b></td>
-      <td bgcolor="#FFFFFF"><p>每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件。<br />
-        如：<br />
-          如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录，<br />
-          对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中。 <br>
+      <td bgcolor="#FFFFFF"><p>每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
+        如：<br>
+          如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录，<br>
+          对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中 <br>
           <textarea name="filelist" rows="8" id="filelist" style="width:80%"><?php echo $filelist; ?></textarea>
           </p>
         </td>
@@ -221,7 +216,7 @@ td{padding-left:8px}
       <td bgcolor="#FFFFFF">
         <p>
           开发者认证后获取的私钥
-          <br />
+          <br>
           <textarea name="priv" rows="8" id="priv" style="width:80%"></textarea>
         </p>
       </td>

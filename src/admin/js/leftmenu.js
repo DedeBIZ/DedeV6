@@ -31,9 +31,7 @@ function showHide(objname)
 		}
 		if(ischange) setCookie('menuitems',okstr,7);
         objsun.className = 'bitem2';
-	}
-	else
-	{
+	} else {
 		obj.style.display = 'block';
 		ischange = true;
 		for(var i=0; i < ckstrs.length; i++)
@@ -121,9 +119,7 @@ function ShowMainMenu(n)
 		curLink.className = 'mm';
 		targetLink.className = 'mmac';
 		curitem = n;
-	}
-	else
-	{
+	} else {
 		var myajax = new DedeAjax(targetCt);
 		myajax.SendGet2("index_menu_load.php?openitem="+n);
 		if(targetCt.innerHTML!='')

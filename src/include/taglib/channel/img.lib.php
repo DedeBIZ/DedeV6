@@ -102,7 +102,7 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
             if ($pagestyle == 1) {
                 $fields['imgwidth'] = '';
                 $fields['linkurl'] = $fields['imgsrc'];
-                $fields['textlink'] = "<br /><a href='{$fields['linkurl']}' target='_blank'>{$fields['text']}</a>";
+                $fields['textlink'] = "<br><a href='{$fields['linkurl']}' target='_blank'>{$fields['text']}</a>";
             } else if ($pagestyle == 2) {
                 if ($fields['width'] > $maxwidth) {
                     $fields['imgwidth'] = " width='$maxwidth' ";
@@ -111,7 +111,7 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
                 }
                 $fields['linkurl'] = $fields['imgsrc'];
                 if ($fields['text'] != '') {
-                    $fields['textlink'] = "<br /><a href='{$fields['linkurl']}' target='_blank'>{$fields['text']}</a>\r\n";
+                    $fields['textlink'] = "<br><a href='{$fields['linkurl']}' target='_blank'>{$fields['text']}</a>\r\n";
                 } else {
                     $fields['textlink'] = '';
                 }

@@ -18,7 +18,6 @@
         return false;
       }
     }
-
     $(document).ready(function () {
       $('.datepicker').daterangepicker({
         "singleDatePicker": true,
@@ -47,18 +46,15 @@
       }, function (start) {
         $(this).val(start.format("YYYY-MM-DD HH:mm"));
       });
-
     })
   </script>
   <style type="text/css">
     .typetab {
       text-align: left;
     }
-
     .typetab ul {
       list-style: none;
     }
-
     .typetab ul li {
       float: left;
       margin: 5px 5px 0px;
@@ -69,11 +65,9 @@
       text-align: center;
       cursor: pointer;
     }
-
     .typetab ul .act {
       background: url(images/adtype_act.gif) no-repeat scroll 0px 0px;
     }
-
     .i_table {
       border: 1px solid #CCC;
     }
@@ -83,13 +77,11 @@
   <form action="ad_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
       <tr>
-        <td height="26" background="images/tbg.gif" style="padding-left:10px;"><b><a
-              href="ad_main.php">广告管理</a></b> &gt;&gt; 增加广告位置 </td>
+        <td height="26" background="images/tbg.gif" style="padding-left:10px"><b><a href="ad_main.php">广告管理</a></b> &gt;&gt; 增加广告位置 </td>
       </tr>
       <tr>
         <td height="200" bgcolor="#FFFFFF" valign="top">
           <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
-
             <input name="normbody[style]" type="hidden" value="code" id="adstyle" />
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
             <input type='hidden' name='dopost' value='save'>

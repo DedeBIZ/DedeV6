@@ -261,14 +261,14 @@ class FreeList
 
             //保存文件
             $this->dtp->SaveTo($makeFile);
-            echo "<div class=\"alert alert-success\" role=\"alert\">成功创建：<a href='".preg_replace("#\/{1,}#", "/", $murl)."' target='_blank'>".preg_replace("#\/{1,}#", "/", $murl)."</a></div><br/>";
+            echo "<div class=\"alert alert-success\" role=\"alert\">成功创建：<a href='".preg_replace("#\/{1,}#", "/", $murl)."' target='_blank'>".preg_replace("#\/{1,}#", "/", $murl)."</a></div><br>";
         }
         if ($this->FLInfos['nodefault'] == 0) {
             $murl = '/'.str_replace('{cmspath}', $GLOBALS['cfg_cmspath'], $this->FLInfos['listdir']);
             $murl .= '/'.$this->FLInfos['defaultpage'];
             $indexfile = $GLOBALS['cfg_basedir'].$murl;
             $murl = preg_replace("#\/{1,}#", "/", $murl);
-            echo "<div class=\"alert alert-success\" role=\"alert\">复制：$firstFile 为 ".$this->FLInfos['defaultpage']."</div><br/>";
+            echo "<div class=\"alert alert-success\" role=\"alert\">复制：$firstFile 为 ".$this->FLInfos['defaultpage']."</div><br>";
             copy($firstFile, $indexfile);
         }
         $this->Close();

@@ -64,7 +64,7 @@ if (empty($dopost)) {
                 if ($ctag->GetName() == 'link') {
                     $nForm .= "软件地址".$newRowStart."：<input class='form-control' type='text' name='softurl".$newRowStart."'  value='".trim($ctag->GetInnerText())."' />
             服务器名称：<input class='form-control' type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."'  />
-            <br />";
+            <br>";
                     $newRowStart++;
                 }
             }

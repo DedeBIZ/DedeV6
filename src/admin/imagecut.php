@@ -12,7 +12,7 @@ require_once(dirname(__FILE__).'/config.php');
 $action = isset($action) ? trim($action) : '';
 if (empty($action)) {
     if (!@is_file($cfg_basedir.$file)) {
-        ShowMsg("对不起，必须选择站内的图片才能进行裁剪<br />点击'<a href='./dialog/select_images.php?f=form1.picname&imgstick=small'>站内选择</a>', 上传或选择一个图片，然后才能进行裁剪", "./dialog/select_images.php?f=form1.picname&imgstick=small", 0, 10000);
+        ShowMsg("对不起，必须选择站内的图片才能进行裁剪<br>点击'<a href='./dialog/select_images.php?f=form1.picname&imgstick=small'>站内选择</a>', 上传或选择一个图片，然后才能进行裁剪", "./dialog/select_images.php?f=form1.picname&imgstick=small", 0, 10000);
         exit();
     }
     include DEDEADMIN.'/templets/imagecut.htm';

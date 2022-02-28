@@ -15,7 +15,7 @@ CheckPurview('sys_Keyword');
 if (empty($dopost)) $dopost = '';
 //分析已存在的关键字（适用于默认的文章模型）
 if ($dopost == 'analyse') {
-    echo "正在读取关键字数据库...<br/>\r\n";
+    echo "正在读取关键字数据库...<br>\r\n";
     flush();
     $ws = $wserr = $wsnew = "";
     $dsql->SetQuery("SELECT * FROM `#@__keywords`");
@@ -24,9 +24,9 @@ if ($dopost == 'analyse') {
         if ($row->sta == 1) $ws[$row->keyword] = 1;
         else $wserr[$row->keyword] = 1;
     }
-    echo "完成关键字数据库的载入<br/>\r\n";
+    echo "完成关键字数据库的载入<br>\r\n";
     flush();
-    echo "读取档案数据库，并对禁用的关键字和生字进行处理...<br/>\r\n";
+    echo "读取档案数据库，并对禁用的关键字和生字进行处理...<br>\r\n";
     flush();
     $dsql->SetQuery("SELECT id,keywords FROM `#@__archives`");
     $dsql->Execute();
@@ -54,13 +54,13 @@ if ($dopost == 'analyse') {
             }
         }
     }
-    echo "完成档案数据库的处理<br/>\r\n";
+    echo "完成档案数据库的处理<br>\r\n";
     flush();
     if (is_array($wsnew)) {
-        echo "对关键字进行排序...<br/>\r\n";
+        echo "对关键字进行排序...<br>\r\n";
         flush();
         arsort($wsnew);
-        echo "把关键字保存到数据库...<br/>\r\n";
+        echo "把关键字保存到数据库...<br>\r\n";
         flush();
         foreach ($wsnew as $k => $v) {
             if (strlen($k) > 20) {
@@ -69,11 +69,11 @@ if ($dopost == 'analyse') {
             $dsql->SetQuery("INSERT INTO `#@__keywords`(keyword,`rank`,sta,rpurl) VALUES('".addslashes($k)."','$v','1','')");
             $dsql->Execute();
         }
-        echo "完成关键字的导入<br/>\r\n";
+        echo "完成关键字的导入<br>\r\n";
         flush();
         sleep(1);
     } else {
-        echo "没发现任何新的关键字<br/>\r\n";
+        echo "没发现任何新的关键字<br>\r\n";
         flush();
         sleep(1);
     }
@@ -189,7 +189,7 @@ else if ($dopost == 'fetch') {
 
     $dvlen = $tjlen * 2;
     $tjsta = "<div style='width:200;height:15;border:1px solid #898989;text-align:left'><div style='width:$dvlen;height:15;background-color:#829D83'></div></div>";
-    $tjsta .= "<br/>完成处理文档总数的：$tjlen %，位置：{$startdd}，继续执行任务...";
+    $tjsta .= "<br>完成处理文档总数的：$tjlen %，位置：{$startdd}，继续执行任务...";
 
     if ($tjnum < $totalnum) {
         $nurl = "article_keywords_make.php?dopost=fetch&totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize";

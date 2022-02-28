@@ -10,7 +10,7 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table table-bordered maintable mt-3">
     <tr>
-      <td height="26" background="images/tbg.gif" style="padding-left:10px;">
+      <td height="26" background="images/tbg.gif" style="padding-left:10px">
         <b><a href="friendlink_main.php">友情链接管理</a></b> &gt;&gt; 链接修改</td>
     </tr>
     <tr>
@@ -22,22 +22,19 @@
             <tr>
               <td width="19%" height="26">网址：</td>
               <td width="81%">
-                <input name="url" type="text" id="url" value="<?php echo $myLink['url']?>" size="30"
-                  class='pubinputs' />
+                <input name="url" type="text" id="url" value="<?php echo $myLink['url']?>" size="30" class='pubinputs' />
               </td>
             </tr>
             <tr>
               <td width="19%" height="26">排列位置：</td>
               <td width="81%">
-                <input name="sortrank" type="text" id="sortrank" value="<?php echo $myLink['sortrank']?>" size="10"
-                  class='pubinputs' style="width:60px" />
+                <input name="sortrank" type="text" id="sortrank" value="<?php echo $myLink['sortrank']?>" size="10" class='pubinputs' style="width:60px" />
                 (由小到大排列)
               </td>
             </tr>
             <tr>
               <td height="26">网站名称：</td>
-              <td><input name="webname" type="text" id="webname" size="30" value="<?php echo $myLink['webname']?>"
-                  class='pubinputs' /></td>
+              <td><input name="webname" type="text" id="webname" size="30" value="<?php echo $myLink['webname']?>" class='pubinputs' /></td>
             </tr>
             <tr>
               <td height="26">网站Logo：</td>
@@ -58,8 +55,7 @@
             </tr>
             <tr>
               <td height="26">站长Email：</td>
-              <td><input name="email" type="text" id="email" size="30" value="<?php echo $myLink['email']?>"
-                  class='pubinputs' /></td>
+              <td><input name="email" type="text" id="email" size="30" value="<?php echo $myLink['email']?>" class='pubinputs' /></td>
             </tr>
             <tr>
               <td height="26">链接位置：</td>
@@ -91,8 +87,7 @@
               <td height="50">&nbsp;</td>
               <td>
                 <button type="submit" name="Submit" class="btn btn-success"> 提 交 </button> 　
-                <button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';"
-                  class="btn btn-success"> 返 回 </button>
+                <button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';" class="btn btn-success"> 返 回 </button>
               </td>
             </tr>
           </table>

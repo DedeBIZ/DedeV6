@@ -58,7 +58,7 @@ if ($dopost == "upload") {
             }
             /*
 			dedecms后台文件任意上传漏洞
-			漏洞描述：dedecms早期版本后台存在大量的富文本编辑器，该控件提供了一些文件上传接口，同时dedecms对上传文件的后缀类型未进行严格的限制，这导致了黑客可以上传WEBSHELL，获取网站后台权限。
+			漏洞描述：dedecms早期版本后台存在大量的富文本编辑器，该控件提供了一些文件上传接口，同时dedecms对上传文件的后缀类型未进行严格的限制，这导致了黑客可以上传WEBSHELL，获取网站后台权限
 			*/
             if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)[^a-zA-Z0-9]+$#i', trim($filename))) {
                 ShowMsg("您指定的文件名被系统禁止", "javascript:;");

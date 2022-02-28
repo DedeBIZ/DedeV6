@@ -562,12 +562,12 @@ INSERT INTO `#@__shops_delivery` VALUES('1','送货上门','10.21','送货上门
 INSERT INTO `#@__member_stowtype` VALUES('sys','系统收藏','archives_do.php'),
 ('book','小说收藏','/book/book.php?bid');
 
-INSERT INTO `#@__payment` VALUES('3','alipay','支付宝','2','支付宝网站(www.alipay.com) 是国内先进的网上支付平台。<br/>DedeCMS联合支付宝推出支付宝接口。<br/><a href="https://www.alipay.com/himalayas/practicality_customer.htm?customer_external_id=C4335994340215837114&market_type=from_agent_contract&pro_codes=6ACD133C5F350958F7F62F29651356BB " target="_blank"><span style="color:#dc3545">立即在线申请</span></a>','1','a:4:{s:14:"alipay_account";a:4:{s:5:"title";s:14:"支付宝用户账号";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:20:"yuan12345xin@163.com";}s:10:"alipay_key";a:4:{s:5:"title";s:14:"交易安全校验码";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:6:"dsfsdf";}s:14:"alipay_partner";a:4:{s:5:"title";s:12:"合作者身份ID";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:1:"1";}s:17:"alipay_pay_method";a:5:{s:5:"title";s:14:"支付宝账号类型";s:11:"description";s:52:"请选择您最后一次跟支付宝签订的协议里面说明的接口类型";s:4:"type";s:6:"select";s:5:"iterm";s:58:"0:使用标准双接口,1:使用担保交易接口,2:使用即时到帐交易接口";s:5:"value";s:1:"1";}}','1','0','1'),
-('2','bank','银行汇款/转帐','0','银行名称\t\n收款人信息：全称 ××× ；帐号或地址 ××× ；开户行 ×××。\t\n注意事项：办理电汇时，请在电汇单“汇款用途”一栏处注明您的订单号。','4','a:0:{}','1','1','0'),
+INSERT INTO `#@__payment` VALUES('3','alipay','支付宝','2','支付宝网站(www.alipay.com) 是国内先进的网上支付平台<br>DedeCMS联合支付宝推出支付宝接口<br><a href="https://www.alipay.com/himalayas/practicality_customer.htm?customer_external_id=C4335994340215837114&market_type=from_agent_contract&pro_codes=6ACD133C5F350958F7F62F29651356BB " target="_blank"><span style="color:#dc3545">立即在线申请</span></a>','1','a:4:{s:14:"alipay_account";a:4:{s:5:"title";s:14:"支付宝用户账号";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:20:"yuan12345xin@163.com";}s:10:"alipay_key";a:4:{s:5:"title";s:14:"交易安全校验码";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:6:"dsfsdf";}s:14:"alipay_partner";a:4:{s:5:"title";s:12:"合作者身份ID";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:1:"1";}s:17:"alipay_pay_method";a:5:{s:5:"title";s:14:"支付宝账号类型";s:11:"description";s:52:"请选择您最后一次跟支付宝签订的协议里面说明的接口类型";s:4:"type";s:6:"select";s:5:"iterm";s:58:"0:使用标准双接口,1:使用担保交易接口,2:使用即时到帐交易接口";s:5:"value";s:1:"1";}}','1','0','1'),
+('2','bank','银行汇款/转帐','0','银行名称\t\n收款人信息：全称 ××× ；帐号或地址 ××× ；开户行 ×××\t\n注意事项：办理电汇时，请在电汇单“汇款用途”一栏处注明您的订单号','4','a:0:{}','1','1','0'),
 ('1','cod','货到付款','0','开通城市：×××\t\n货到付款区域：×××','3','a:0:{}','1','1','0'),
-('6','yeepay','YeePay易宝','12','YeePay易宝（北京通融通信息技术有限公司）是专业从事多元化电子支付业务一站式服务的领跑者。在立足于网上支付的同时，YeePay易宝不断创新，将互联网、手机、固定电话整合在一个平台上，继短信支付、手机充值之后，首家推出了YeePay易宝电话支付业务，真正实现了离线支付，为更多传统行业搭建了电子支付的高速公路。YeePay易宝融合世界先进的电子支付文化，聚合众多金融、电信、IT、互联网等领域内的巨擘，旨在通过创新的支付机制，推动中国电子商务新进程。YeePay易宝致力于成为世界一流的电子支付应用和服务提供商，专注于金融增值服务和移动增值服务两大领域，创新并推广多元化、低成本的、安全有效的支付服务。<input type="button" name="Submit" value="立即注册" onclick="window.open("https://www.yeepay.com/selfservice/requestRegister.action")" />','2','a:2:{s:10:"yp_account";a:4:{s:5:"title";s:8:"商户编号";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:2:"aa";}s:6:"yp_key";a:4:{s:5:"title";s:8:"商户密钥";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:3:"dsa";}}','1','0','1');
+('6','yeepay','YeePay易宝','12','YeePay易宝（北京通融通信息技术有限公司）是专业从事多元化电子支付业务一站式服务的领跑者在立足于网上支付的同时，YeePay易宝不断创新，将互联网、手机、固定电话整合在一个平台上，继短信支付、手机充值之后，首家推出了YeePay易宝电话支付业务，真正实现了离线支付，为更多传统行业搭建了电子支付的高速公路YeePay易宝融合世界先进的电子支付文化，聚合众多金融、电信、IT、互联网等领域内的巨擘，旨在通过创新的支付机制，推动中国电子商务新进程YeePay易宝致力于成为世界一流的电子支付应用和服务提供商，专注于金融增值服务和移动增值服务两大领域，创新并推广多元化、低成本的、安全有效的支付服务<input type="button" name="Submit" value="立即注册" onclick="window.open("https://www.yeepay.com/selfservice/requestRegister.action")" />','2','a:2:{s:10:"yp_account";a:4:{s:5:"title";s:8:"商户编号";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:2:"aa";}s:6:"yp_key";a:4:{s:5:"title";s:8:"商户密钥";s:11:"description";s:0:"";s:4:"type";s:4:"text";s:5:"value";s:3:"dsa";}}','1','0','1');
 
-INSERT INTO `#@__softconfig` VALUES('0','1','1','1','http://www.aaa.com | 下载地址一\t\nhttp://www.bbb.com | 下载地址二\t\nhttp://www.ccc.com | 下载地址三\t\n','<p>如果这个软件总是不能下载的请点击报告错误，谢谢合作。<br>\t\n下载本站资源，如果服务器暂不能下载请过一段时间重试。<br>\t\n如果遇到什么问题，请联系我们，我们将在那里提供更多，更好的资源。</p>','0','0','0','0');
+INSERT INTO `#@__softconfig` VALUES('0','1','1','1','http://www.aaa.com | 下载地址一\t\nhttp://www.bbb.com | 下载地址二\t\nhttp://www.ccc.com | 下载地址三\t\n','<p>如果这个软件总是不能下载的请点击报告错误，谢谢合作<br>\t\n下载本站资源，如果服务器暂不能下载请过一段时间重试<br>\t\n如果遇到什么问题，请联系我们，我们将在那里提供更多，更好的资源</p>','0','0','0','0');
 
 INSERT INTO `#@__stepselect` VALUES('1','血型','blood','1','1'),
 ('2','体型','bodytype','1','1'),
@@ -593,7 +593,7 @@ INSERT INTO `#@__sys_set` VALUES('1','nature','性格外向,性格内向,活泼�
 ('2','language','普通话,上海话,广东话,英语,日语,韩语,法语,意大利语,德语,西班牙语,俄语,阿拉伯语');
 
 
-INSERT INTO `#@__vote` VALUES('1','您是从哪儿得知本站的？','1266336000','1584547200','0','0','1','1','0','0','<v:note id="1" count="1">朋友介绍</v:note>rn<v:note id="2" count="0">门户网站的搜索引擎</v:note>rn<v:note id="3" count="2">Google或百度搜索</v:note>rn<v:note id="4" count="2">别的网站上的链接</v:note>rn<v:note id="5" count="1">其它途径</v:note>rn');
+INSERT INTO `#@__vote` VALUES('1','您是从哪儿得知本站的','1266336000','1584547200','0','0','1','1','0','0','<v:note id="1" count="1">朋友介绍</v:note>rn<v:note id="2" count="0">门户网站的搜索引擎</v:note>rn<v:note id="3" count="2">Google或百度搜索</v:note>rn<v:note id="4" count="2">别的网站上的链接</v:note>rn<v:note id="5" count="1">其它途径</v:note>rn');
 
 INSERT INTO `#@__sys_enum` VALUES('139','cms制作','503','vocation','503','0'),
 ('39','租房','1','house','0','1'),
@@ -3971,7 +3971,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点网址（http://域
 ('58','cfg_rm_remote','远程图片本地化','7','bool','Y'),
 ('27','cfg_dede_log','是否开启管理日志','2','bool','N'),
 ('28','cfg_powerby','网站版权信息','1','bstring','Copyright &copy; 2022 DedeBIZ 版权所有'),
-('722','cfg_jump_once','跳转网址是否直接跳转？否则显示中转页','7','bool','Y'),
+('722','cfg_jump_once','跳转网址是否直接跳转否则显示中转页','7','bool','Y'),
 ('723','cfg_task_pwd','系统计划任务客户端许可密码，需要客户端，通常不会太重要','7','string',''),
 ('29','cfg_arcsptitle','是否开启分页标题，开启影响文档生成速度','6','bool','N'),
 ('30','cfg_arcautosp','是否开启长文章自动分页','6','bool','N'),

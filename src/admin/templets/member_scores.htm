@@ -23,14 +23,13 @@
 <body background="images/allbg.gif">
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px;">积分头衔设置</div>
+    <div class="bodytitletxt" style="padding-left:10px">积分头衔设置</div>
   </div>
   <form action="member_scores.php" method="post">
     <input name="action" type="hidden" value="save" />
-    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle"
-      style="border:1px solid #CFCFCF;border-bottom:none;">
+    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="border:1px solid #CFCFCF;border-bottom:none;">
       <tr bgcolor="#EDF9D5">
-        <td width="100%" height="26" background='images/tbg.gif' style="padding-left:10px;">
+        <td width="100%" height="26" background='images/tbg.gif' style="padding-left:10px">
           <b><a href="member_main.php">会员管理</a> &gt; 积分头衔设置：</b>
         </td>
       </tr>
@@ -49,8 +48,7 @@
       <?php
 		foreach($Scores as $v){	
 		?>
-      <tr bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+      <tr bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
         <td align="center">
           <input name="Ids-<?php echo $v['id']?>" type="checkbox" id="Ids-<?php echo $v['id']?>" value="1" class='np' />
         </td>

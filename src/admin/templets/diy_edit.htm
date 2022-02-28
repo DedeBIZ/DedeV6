@@ -44,54 +44,49 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px;">自定义表单管理</div>
+    <div class="bodytitletxt" style="padding-left:10px">自定义表单管理</div>
   </div>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3"
-    style="background:#CFCFCF;">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="background:#CFCFCF;">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
       <input type='hidden' name='diyid' value='<?php echo $diyid;?>'>
       <input type='hidden' name='dopost' value='save'>
       <tr bgcolor="#CFCFCF">
-        <td height="26" colspan="2" bgcolor="#EDF9D5" background='images/tbg.gif' style="padding-left:10px;">
+        <td height="26" colspan="2" bgcolor="#EDF9D5" background='images/tbg.gif' style="padding-left:10px">
           <b><a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单：</b>
           (修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改)
         </td>
       </tr>
       <tr>
-        <td width="170" height="26" align="left" bgcolor="#FFFFFF">自定义表单 diyid：<br />
-          <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性。</span> </td>
+        <td width="170" height="26" align="left" bgcolor="#FFFFFF">自定义表单 diyid：<br>
+          <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span> </td>
         <td bgcolor="#FFFFFF">
           <?php echo $diyid;?>
-          * <img src="images/help.gif" alt="帮助" border="0" style="cursor:hand"
-            onclick="showHide2('help1')" /></td>
+          * <img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')" /></td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#F9FCEF">自定义表单名称：<br />
-          <span class="STYLE2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字。</span></td>
+        <td height="26" align="left" bgcolor="#F9FCEF">自定义表单名称：<br>
+          <span class="STYLE2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
         <td bgcolor="#F9FCEF">
           <input name="name" type="text" id="name" value="<?php echo $row['name']?>" style="width:180px"
             class='alltxt' />
-          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand"
-            onclick="showHide2('help3')" />
+          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help3')" />
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">数据表：<br />
+        <td height="26" align="left" bgcolor="#FFFFFF">数据表：<br>
           <span class="STYLE2" id="help5">自定义表单数据表创建后不可修改表名</span></td>
         <td bgcolor="#FFFFFF">
           <input name="table" type="text" id="table" style="width:180px" value="<?php echo $row['table']; ?>"
             class='alltxt' disabled='1' />
-          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand"
-            onclick="showHide2('help5')" />
+          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')" />
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#F9FCEF">模型字段配置：<br />
-          信息索引类字段系统已经加入，<br />
-          您只需要增加其它个性化字段即可。</td>
+        <td height="26" align="left" bgcolor="#F9FCEF">模型字段配置：<br>
+          信息索引类字段系统已经加入，<br>
+          您只需要增加其它个性化字段即可</td>
         <td bgcolor="#F9FCEF">
-          <button name="fset" type="button" id="fset"
-            onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid; ?>'" class="btn btn-success btn-sm"
+          <button name="fset" type="button" id="fset" onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid; ?>'" class="btn btn-success btn-sm"
            >添加新字段</button>
         </td>
       </tr>
@@ -146,8 +141,7 @@ foreach($dtp->CTags as $ctag)
               </td>
               <td>
                 <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</a>
-                <a
-                  href="diy_field_edit.php?diyid=<?php echo $diyid;?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-globe" aria-hidden="true"></i> 删除</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-globe" aria-hidden="true"></i> 删除</a>
               </td>
             </tr>
             <?php 
@@ -179,7 +173,7 @@ foreach($dtp->CTags as $ctag)
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">前台列表和内容页公开？：</td>
+        <td height="26" align="left" bgcolor="#FFFFFF">前台列表和内容页公开：</td>
         <td bgcolor="#FFFFFF">
           <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>
               class='np' /> 完全公开 </label>

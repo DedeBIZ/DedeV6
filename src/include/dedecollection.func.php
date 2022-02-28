@@ -159,7 +159,7 @@ function RefurlCookie($gurl)
     $sessionQuery .= "Connection: Close\r\n\r\n";
     $errno = "";
     $errstr = "";
-    $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10) or die($ghost.'<br />');
+    $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10) or die($ghost.'<br>');
     fwrite($m_fp, $sessionQuery);
     $lnum = 0;
 

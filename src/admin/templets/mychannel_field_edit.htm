@@ -88,8 +88,7 @@
   </style>
 </head>
 <body topmargin=8>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3"
-    style="	background:#CFCFCF;">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="background:#CFCFCF;">
     <form name="form1" action="mychannel_field_edit.php" method="post" onSubmit="return GetFields();">
       <input type='hidden' name='action' value='save' />
       <input type='hidden' name='id' value='<?php echo $id?>' />
@@ -100,12 +99,11 @@
         <td height="26" colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif">
           <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%" style="padding-left:10px;">
-                <a href="mychannel_main.php"><b>频道管理</b></a> <b>&gt;&gt; 查看/修改字段：</b>
+              <td width="30%" style="padding-left:10px">
+                <a href="mychannel_main.php"><b>频道管理</b></a> <b> &gt;&gt;  查看/修改字段：</b>
               </td>
               <td align="right" style="padding-top:6px;">
-                <button type="button" name="ss1" class="btn btn-success btn-sm"
-                  onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';">当前模型信息</button>
+                <button type="button" name="ss1" class="btn btn-success btn-sm" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';">当前模型信息</button>
                 <button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">内容模型管理</button>
               </td>
             </tr>
@@ -115,7 +113,7 @@
       <?php if($row['issystem']==1){ ?>
       <tr>
         <td colspan="2" bgcolor="#FFFFFF">
-          <span class="STYLE1">您当前操作的字段属于系统模型字段：修改系统模型有风险，请不要随便改动系统模型的字段相关的属性。</span> </td>
+          <span class="STYLE1">您当前操作的字段属于系统模型字段：修改系统模型有风险，请不要随便改动系统模型的字段相关的属性</span> </td>
       </tr>
       <?php } ?>
       <tr>
@@ -148,7 +146,7 @@
           <label><input name="islist" type="checkbox" class="np" id="islist" value="1"
             <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");  ?> />
           使字段可以在列表的底层模板中获得(自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择)</label>
-          <br />
+          <br>
           <label><input name="notsend" type="checkbox" class="np" id="notsend" value="1"
             <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");  ?> />
           前台投稿及采集规则禁用本字段</label></td>
@@ -223,7 +221,7 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>内容是否需要分页符：</strong><br />
+        <td bgcolor="#FFFFFF"><strong>内容是否需要分页符：</strong><br>
           <span class="STYLE2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
         <td bgcolor="#FFFFFF">
           <input name="isnull" type="hidden" value="1" />
@@ -237,7 +235,7 @@
       <tr>
         <td bgcolor="#FFFFFF"><strong>默认值：</strong><br>
           <span class="STYLE2">
-            如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目(用“,”分开，如“男,女,人妖”)，如果为联动选框，这里填写联动选框项目名称。</span></td>
+            如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目(用“,”分开，如“男,女,人妖”)，如果为联动选框，这里填写联动选框项目名称</span></td>
         <td bgcolor="#FFFFFF"><textarea name="vdefault" type="text" id="vdefault"
             style="width:70%;height:60px"><?php echo $ctag->GetAtt('default'); ?></textarea></td>
       </tr>

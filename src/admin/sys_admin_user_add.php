@@ -16,7 +16,7 @@ if (empty($dopost)) $dopost = '';
 if ($dopost == 'add') {
     CheckCSRF();
     if (preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd) || preg_match("#[^0-9a-zA-Z_@!\.-]#", $userid)) {
-        ShowMsg('密码或或用户名不合法，<br />请使用[0-9a-zA-Z_@!.-]内的字符', '-1', 0, 3000);
+        ShowMsg('密码或或用户名不合法，<br>请使用[0-9a-zA-Z_@!.-]内的字符', '-1', 0, 3000);
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);

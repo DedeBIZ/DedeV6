@@ -86,14 +86,12 @@
   <form name="form1" action="catalog_add.php" method="post">
     <input type="hidden" name="dopost" value="savequick" />
     <input type="hidden" name="savetype" value="" id="savetype" />
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#111111"
-      style="BORDER-COLLAPSE: collapse" class="mt-3">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#111111" style="BORDER-COLLAPSE: collapse" class="mt-3">
       <tr>
         <td width="100%" height="26" valign="top">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30"><img height='14' src='images/book1.gif' width='20' />&nbsp;<a
-                  href="catalog_main.php">栏目管理</a> &gt;&gt; 批量增加栏目 </td>
+              <td height="30"><img height='14' src='images/book1.gif' width='20' />&nbsp;<a href="catalog_main.php">栏目管理</a> &gt;&gt; 批量增加栏目 </td>
             </tr>
           </table>
         </td>
@@ -122,11 +120,11 @@
           <table width="100%" border="0" id="needset" cellspacing="0" cellpadding="0"
             style="border:1px solid #cfcfcf;background:#ffffff;text-align:left;" class="table">
             <tr>
-              <td height="26" bgcolor="#F9FCEF" style="padding-left:10px;"><strong>公用参数：</strong></td>
+              <td height="26" bgcolor="#F9FCEF" style="padding-left:10px"><strong>公用参数：</strong></td>
               <td bgcolor="#F9FCEF"></td>
             </tr>
             <tr>
-              <td width="150" class='bline' height="26" style="padding-left:10px;">是否支持投稿：</td>
+              <td width="150" class='bline' height="26" style="padding-left:10px">是否支持投稿：</td>
               <td class='bline'>
                 <label><input type='radio' name='issend' value='0' class='np' />
                 不支持</label>
@@ -135,7 +133,7 @@
                 支持</label> </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px;">目录保存位置：</td>
+              <td class='bline' height="26" style="padding-left:10px">目录保存位置：</td>
               <td class='bline'>
                 
                 <input name="referpath" type="radio" id="truepath1" class="np" value="parent"
@@ -151,12 +149,11 @@
                 <input name="referpath" type="radio" id="truepath2" class="np" value="cmspath" />
                 <label for="truepath2">CMS根目录</label>
                 <input name="nextdir" type="hidden" id="nextdir" value="<?php echo $pardir; ?>" />
-                <span id="pathtype" style="display:none"><input name="referpath" type="radio" id="truepath3" class="np"
-                    value="typepath" />
+                <span id="pathtype" style="display:none"><input name="referpath" type="radio" id="truepath3" class="np" value="typepath" />
                   隶属栏目所属的目录</span></td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px;">隶属栏目：</td>
+              <td class='bline' height="26" style="padding-left:10px">隶属栏目：</td>
               <td class='bline'>
                 <select name='reid' onchange="showSeltype(this)">
                   <option value='0'>选择所属目录... </option>
@@ -166,7 +163,7 @@
               </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px;">内容模型：&nbsp; </td>
+              <td class='bline' height="26" style="padding-left:10px">内容模型：&nbsp; </td>
               <td class='bline'><select name="channeltype" id="channeltype" style="width:200px"
                   onChange="ParTemplet(this)">
                   <?php
@@ -180,7 +177,7 @@
               </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px;">栏目列表选项：</td>
+              <td class='bline' height="26" style="padding-left:10px">栏目列表选项：</td>
               <td class='bline'>
                 <label><input type='radio' name='isdefault' value='1' class='np' checked='1' />
                 链接到默认页</label>
@@ -190,40 +187,37 @@
                 使用动态页</label> </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px;">默认页的名称：</td>
+              <td class='bline' height="26" style="padding-left:10px">默认页的名称：</td>
               <td class='bline'><input name="defaultname" type="text" value="index.html" class="pubinputs" /></td>
             </tr>
             <tr id='helpvar2' style='display:none'>
-              <td height="26" bgcolor="#F3F7EA" style="padding-left:10px;">支持变量：</td>
-              <td height="26" bgcolor="#F3F7EA"> {Y}、{M}、{D} 年月日<br />
-                {timestamp} INT类型的UNIX时间戳<br />
-                {aid} 文章ID<br />
-                {pinyin} 拼音+文章ID<br />
-                {py} 拼音部首+文章ID<br />
-                {typedir} 栏目目录 <br />
-                {cc} 日期+ID混编后用转换为适合的字母 <br />
+              <td height="26" bgcolor="#F3F7EA" style="padding-left:10px">支持变量：</td>
+              <td height="26" bgcolor="#F3F7EA"> {Y}、{M}、{D} 年月日<br>
+                {timestamp} INT类型的UNIX时间戳<br>
+                {aid} 文章ID<br>
+                {pinyin} 拼音+文章ID<br>
+                {py} 拼音部首+文章ID<br>
+                {typedir} 栏目目录 <br>
+                {cc} 日期+ID混编后用转换为适合的字母 <br>
               </td>
             </tr>
             <tr>
-              <td height="26" class='bline' style="padding-left:10px;">文章命名规则：</td>
+              <td height="26" class='bline' style="padding-left:10px">文章命名规则：</td>
               <td class='bline'><input name="namerule" type="text" id="namerule" value="{typedir}/{Y}{M}{D}/{aid}.html"
                   size="40" class="pubinputs" />
-                <img src="images/help.gif" alt="帮助" border="0" style="cursor:pointer"
-                  onClick="ShowHide('helpvar2')" /> </td>
+                <img src="images/help.gif" alt="帮助" border="0" style="cursor:pointer" onClick="ShowHide('helpvar2')" /> </td>
             </tr>
             <tr id='helpvar3' style='display:none'>
-              <td height="26" bgcolor="#F3F7EA" style="padding-left:10px;">支持变量：</td>
+              <td height="26" bgcolor="#F3F7EA" style="padding-left:10px">支持变量：</td>
               <td bgcolor="#F3F7EA">{page} 列表的页码</td>
             </tr>
             <tr>
-              <td height="26" style="padding-left:10px;">列表命名规则：</td>
-              <td><input name="namerule2" type="text" id="namerule2" value="{typedir}/list_{tid}_{page}.html" size="40"
-                  class="pubinputs" />
-                <img src="images/help.gif" alt="帮助" border="0" style="cursor:pointer"
-                  onClick="ShowHide('helpvar3')" /></td>
+              <td height="26" style="padding-left:10px">列表命名规则：</td>
+              <td><input name="namerule2" type="text" id="namerule2" value="{typedir}/list_{tid}_{page}.html" size="40" class="pubinputs" />
+                <img src="images/help.gif" alt="帮助" border="0" style="cursor:pointer" onClick="ShowHide('helpvar3')" /></td>
             </tr>
             <tr>
-              <td height="26" bgcolor="#F9FCEF" style="padding-left:10px;"><strong>栏目填写：</strong></td>
+              <td height="26" bgcolor="#F9FCEF" style="padding-left:10px"><strong>栏目填写：</strong></td>
               <td bgcolor="#F9FCEF"></td>
             </tr>
             <tr>
@@ -248,10 +242,8 @@
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr bgcolor="#FFFFFF" height="30" class="repeat" align="center">
-                      <td class="rank"><input type="hidden" name="posttype<?php echo $i; ?>"
-                          value="<?php echo $i; ?>" />
-                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>"
-                          value="<?php echo $i; ?>" class="pubinputs" style="width:50px;" /></td>
+                      <td class="rank"><input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>" />
+                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:50px;" /></td>
                       <td align='center'><input type="text" name="toptype<?php echo $i; ?>"
                           id="toptype<?php echo $i; ?>" class="pubinputs" style="width:160px;" /></td>
                       <td><input type="text" name="sontype<?php echo $i; ?>" id="sontype<?php echo $i; ?>"
@@ -282,10 +274,8 @@
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr bgcolor="#FFFFFF" height="30" class="repeat" align="center">
-                      <td class="rank"><input type="hidden" name="posttype<?php echo $i; ?>"
-                          value="<?php echo $i; ?>" />
-                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>"
-                          value="<?php echo $i; ?>" class="pubinputs" style="width:50px;" /></td>
+                      <td class="rank"><input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>" />
+                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:50px;" /></td>
                       <td align='center'><input type="text" name="reltype<?php echo $i; ?>"
                           id="reltype<?php echo $i; ?>" class="pubinputs" style="width:160px;" /></td>
                       <td align="center"><button type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>

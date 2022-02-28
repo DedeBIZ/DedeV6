@@ -237,7 +237,7 @@ class SpecView
             $murl = $makeFile;
             $makeFile = $GLOBALS['cfg_basedir'].$makeFile;
             $this->dtp->SaveTo($makeFile);
-            echo "成功创建：$murl<br/>";
+            echo "成功创建：$murl<br>";
         }
         copy($GLOBALS['cfg_basedir'].$GLOBALS['cfg_special']."/spec_1".$GLOBALS['art_shortname'], $GLOBALS['cfg_basedir'].$GLOBALS['cfg_special']."/index.html");
         $murl = $GLOBALS['cfg_special']."/index.html";

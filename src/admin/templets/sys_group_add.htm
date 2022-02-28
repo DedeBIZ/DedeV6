@@ -12,8 +12,7 @@
       <form name='form1' action='sys_group_add.php' method='post'>
         <input type='hidden' name='dopost' value='save'>
         <tr>
-          <td height="26" background="images/tbg.gif" align="left" style="padding-left:10px;"><b><a
-                href='sys_group.php'>系统用户组管理</a>&gt;&gt;增加用户组：</b></td>
+          <td height="26" background="images/tbg.gif" align="left" style="padding-left:10px"><b><a href='sys_group.php'>系统用户组管理</a> &gt;&gt; 增加用户组：</b></td>
         </tr>
         <tr>
           <td valign="top" bgcolor="#FFFFFF" align="center">
@@ -49,8 +48,8 @@
         		$start++;
         		$lhead = "
         	 <tr> 
-           <td height='25' colspan='2' bgcolor='#F9FAF3' style='text-align:left; line-height: 22px;'>{$start}、".str_replace('>>','',$line)."</td></tr>
-           <tr><td height='25' colspan='2' style='text-align:left; line-height: 22px;'>
+           <td height='26' colspan='2' bgcolor='#F9FAF3' style='text-align:left; line-height: 22px;'>{$start}、".str_replace('>>','',$line)."</td></tr>
+           <tr><td height='26' colspan='2' style='text-align:left; line-height: 22px;'>
         		"; 
         		echo $lhead;
         	}
@@ -58,9 +57,9 @@
         	{
         		$ls = explode('>',$line);
         		$tag = $ls[1];
-        		$tagname = str_replace('[br]', '<br />', $ls[2]);
+        		$tagname = str_replace('[br]', '<br>', $ls[2]);
         		if(!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
-        		else $tagname = str_replace('<br />', "<span>($tag)</span><br />", $tagname);
+        		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
         		echo "          	<label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'> $tagname</label>\r\n";
         	  $k++;
         	}
@@ -70,10 +69,10 @@
           </td>
         </tr>
         <tr>
-          <td height='25' colspan='2' bgcolor='#F9FAF3' style="text-align:left;"><?php echo $start?>、插件权限</td>
+          <td height='26' colspan='2' bgcolor='#F9FAF3' style="text-align:left;"><?php echo $start?>、插件权限</td>
         </tr>
         <tr>
-          <td height='25' colspan='2' style='text-align:left;'>
+          <td height='26' colspan='2' style='text-align:left;'>
             <?php
          $l = 0;
          $dsql->SetQuery('Select plusname From #@__plus');
@@ -82,7 +81,7 @@
          	 echo "          	<label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label>\r\n";
         	 $k++;
         	 $l++;
-        	 if($l%6==0) echo "<br />";
+        	 if($l%6==0) echo "<br>";
          }
          ?>
           </td>

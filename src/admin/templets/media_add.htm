@@ -15,7 +15,6 @@
       background-color: #F2F5E9;
       height: 18px;
     }
-
     .pubinputs {
       height: auto;
       margin-top: 5px;
@@ -35,7 +34,7 @@
       var endNum = Number(document.form1.picnum.value) + startNum;
       if (endNum > 40) endNum = 40;
       for (startNum; startNum <= endNum; startNum++) {
-        upfield.innerHTML += "<input type='file' name='upfile" + startNum + "' style='width:300px' size='30' class='pubinputs' /><br/>";
+        upfield.innerHTML += "<input type='file' name='upfile" + startNum + "' style='width:300px' size='30' class='pubinputs' /><br>";
       }
     }
     function ResetUpload() {
@@ -51,9 +50,8 @@
       <td height="26" background='images/tbg.gif'>
         <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
           <tr>
-            <td width="2%" align="center" valign="middle"><img src="images/item_tt2.gif" width="7" height="15" /></td>
-            <td width="44%"><strong>上传新文件：</strong></td>
-            <td width="54%" align="right"><a href='media_main.php' class="btn btn-success btn-sm">附件/媒体数据管理</a></td>
+            <td width="45%"><strong>上传新文件：</strong></td>
+            <td width="55%" align="right"><a href='media_main.php' class="btn btn-success btn-sm">附件/媒体数据管理</a></td>
           </tr>
         </table>
       </td>
@@ -61,7 +59,7 @@
     <tr>
       <td height="19" bgcolor="#ffffff">
         <img src="images/help.gif" border="0" />
-        提示：图片类型仅支持jpg、png、gif、wbmp格式，flash为.swf格式，视音频和附件为限定扩展名的类型(可在系统参数中修改)。
+        提示：图片类型仅支持jpg、png、gif、wbmp格式，flash为.swf格式，视音频和附件为限定扩展名的类型(可在系统参数中修改)
       </td>
     </tr>
     <tr>
@@ -118,11 +116,11 @@
             <tr>
               <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
               <td bgcolor="#FFFFFF" style="text-align:left;">
-                <input name="upfile1" type="file" id="upfile1" style='width:300px' size='30' class='pubinputs' /><br />
-                <input name="upfile2" type="file" id="upfile2" style='width:300px' size='30' class='pubinputs' /><br />
-                <input name="upfile3" type="file" id="upfile3" style='width:300px' size='30' class='pubinputs' /><br />
-                <input name="upfile4" type="file" id="upfile4" style='width:300px' size='30' class='pubinputs' /><br />
-                <input name="upfile5" type="file" id="upfile5" style='width:300px' size='30' class='pubinputs' /><br />
+                <input name="upfile1" type="file" id="upfile1" style='width:300px' size='30' class='pubinputs' /><br>
+                <input name="upfile2" type="file" id="upfile2" style='width:300px' size='30' class='pubinputs' /><br>
+                <input name="upfile3" type="file" id="upfile3" style='width:300px' size='30' class='pubinputs' /><br>
+                <input name="upfile4" type="file" id="upfile4" style='width:300px' size='30' class='pubinputs' /><br>
+                <input name="upfile5" type="file" id="upfile5" style='width:300px' size='30' class='pubinputs' /><br>
                 <span id='uploadfield'></span>
               </td>
             </tr>
@@ -143,5 +141,4 @@
     </tr>
   </table>
 </body>
-
 </html>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>文档自动摘要、自动分页</title>
+  <title>文档自动摘要自动分页</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
@@ -14,41 +14,29 @@
         <td height="26" background='images/tbg.gif'>
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18" style="padding-left:10px;"><strong>文档自动摘要、自动分页：</strong></td>
+              <td width="30%" height="18" style="padding-left:10px"><strong>文档自动摘要自动分页：</strong></td>
               <td width="70%" align="right">&nbsp;</td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="30" bgcolor="#FFFFFF">
-          　　用于自动更新您系统没有填写摘要的文档的摘要信息或更新没分页的文档的自动分页标识（文档使用了自动分页后会降低HTML生成速度，并且在没人工干扰的情况下可能导致分页内容的HTML错误，请小心使用此功能）。</td>
+        <td height="30" bgcolor="#FFFFFF">用于自动更新您系统没有填写摘要的文档的摘要信息或更新没分页的文档的自动分页标识（文档使用了自动分页后会降低HTML生成速度，并且在没人工干扰的情况下可能导致分页内容的HTML错误，请小心使用此功能）</td>
       </tr>
       <tr>
         <td height="36" bgcolor="#FFFFFF">
           <table width="90%" border="0" cellpadding="2" cellspacing="2" class="table table-borderless">
             <tr>
-              <td width="50%">频道ID：
-                <input name="channel" type="text" id="channel" value="1" size="10">
-                （可在“<a href="mychannel_main.php">频道模型管理</a>”处获得）</td>
-              <td width="50%">摘要大小：
-                <input name="dsize" type="text" id="dsize" size="15" value="<?php echo $cfg_auot_description?>">
-                (最大250字节)</td>
+              <td width="50%">频道ID：<input name="channel" type="text" id="channel" value="1" size="10">（可在“<a href="mychannel_main.php">频道模型管理</a>”处获得）</td>
+              <td width="50%">摘要大小：<input name="dsize" type="text" id="dsize" size="15" value="<?php echo $cfg_auot_description?>">（最大250字节）</td>
             </tr>
             <tr>
-              <td>数据表：
-                <input name="table" type="text" id="table2" value="<?php echo $cfg_dbprefix?>addonarticle" size="20">
-              </td>
-              <td>分析字段：
-                <input name="field" type="text" id="field2" value="body" size="15"></td>
+              <td>数据表：<input name="table" type="text" id="table2" value="<?php echo $cfg_dbprefix?>addonarticle" size="20"></td>
+              <td>分析字段：<input name="field" type="text" id="field2" value="body" size="15"></td>
             </tr>
             <tr>
-              <td>最小值：
-                <input name="msize" type="text" id="msize2" value="512" size="10">
-                （字节，内容大于该值才分析）</td>
-              <td>每批处理：
-                <input name="pagesize" type="text" id="pagesize" value="100" size="10">
-                条记录</td>
+              <td>最小值：<input name="msize" type="text" id="msize2" value="512" size="10">（字节，内容大于该值才分析）</td>
+              <td>每批处理：<input name="pagesize" type="text" id="pagesize" value="100" size="10">条记录</td>
             </tr>
             <tr>
               <td>开始ID：
@@ -58,14 +46,12 @@
               <td>&nbsp;</td>
             </tr>
             <tr>
-              <td>操　作：
+              <td>操作：
                 <label><input name="dojob" type="radio" class="np" value="des" checked>
                 自动摘要</label>
                 <label><input type="radio" name="dojob" class="np" value="page">
                 自动分页</label>　</td>
-              <td>（自动分页大小：
-                <?php echo $cfg_arcautosp_size?>
-                K，<a href='sys_info.php' class="btn btn-success btn-sm">修改系统参数</a>）</td>
+              <td>（自动分页大小：<?php echo $cfg_arcautosp_size?> K，<a href='sys_info.php' class="btn btn-success btn-sm">修改系统参数</a>）</td>
             </tr>
           </table>
         </td>
@@ -103,5 +89,4 @@
     </tr>
   </table>
 </body>
-
 </html>

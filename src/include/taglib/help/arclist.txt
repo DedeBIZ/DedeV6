@@ -12,7 +12,7 @@ titlelen = '30' 标题长度 等同于titlelength
 infolen='160' 表示内容简介长度 等同于infolength
 imgwidth='120' 缩略图宽度
 imgheight='90' 缩略图高度
-listtype='all' 栏目类型（顶级栏目？？）
+listtype='all' 栏目类型（顶级栏目）
 orderby='sortrank' 文档排序方式
 	§ orderby='hot' 或 orderby='click' 表示按点击数排列
 	§ orderby='sortrank' 或 orderby='pubdate' 按出版时间排列

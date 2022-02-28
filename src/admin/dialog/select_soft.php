@@ -166,7 +166,7 @@ table{background:#fff}
             </td>
         </tr>
         <tr>
-            <td colspan="3" height="30">点击选择的文件，红色字样的为刚上传的文件。</td>
+            <td colspan="3" height="30">点击选择的文件，红色字样的为刚上传的文件</td>
         </tr>
     </table>
 </body>

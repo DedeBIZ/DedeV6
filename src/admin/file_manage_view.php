@@ -59,7 +59,7 @@ else if ($fmdo == "move") {
     $win->AddHidden("fmdo", $fmdo);
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
-    $win->AddTitle("新位置前面不加'/'表示相对于当前位置，加'/'表示相对于根目录。");
+    $win->AddTitle("新位置前面不加'/'表示相对于当前位置，加'/'表示相对于根目录");
     $win->AddItem("被移动文件：", $filename);
     $win->AddItem("当前位置：", $activepath);
     $win->AddItem("新位置：", "<input name='newpath' type='input' class='alltxt' id='newpath' size='40'>");
@@ -76,9 +76,9 @@ else if ($fmdo == "del") {
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
     if (@is_dir($cfg_basedir.$activepath."/$filename")) {
-        $wmsg = "您确信要删除目录：$filename 吗？";
+        $wmsg = "您确信要删除目录：$filename 吗";
     } else {
-        $wmsg = "您确信要删除文件：$filename 吗？";
+        $wmsg = "您确信要删除文件：$filename 吗";
     }
     $win->AddTitle("删除文件确认");
     $win->AddMsgItem($wmsg, "50");

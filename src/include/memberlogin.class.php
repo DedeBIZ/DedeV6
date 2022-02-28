@@ -482,7 +482,7 @@ class MemberLogin
                 elseif ($this->M_Rank > 10) $sta .= " <span style='color:#dc3545'>会员升级已经到期</span> ";
             }
         }
-        $sta .= " 拥有金币：{$this->M_Money} 个， 积分：{$this->M_Scores} 分。";
+        $sta .= " 拥有金币：{$this->M_Money} 个， 积分：{$this->M_Scores} 分";
         return $sta;
     }
 }//End Class

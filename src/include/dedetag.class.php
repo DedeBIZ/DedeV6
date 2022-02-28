@@ -813,7 +813,7 @@ class DedeTagParse
 
                 //not found end tag , error
                 if ($endPos == -1) {
-                    echo "Tag Character postion $sPos, '$tTagName' Error<br />\r\n";
+                    echo "Tag Character postion $sPos, '$tTagName' Error<br>\r\n";
                     break;
                 }
                 $i = $elen;

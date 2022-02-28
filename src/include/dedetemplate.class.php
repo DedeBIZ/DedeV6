@@ -659,7 +659,7 @@ class DedeTemplate
 
                 //如果找不到结束标记，则认为这个标记存在错误
                 if ($endPos == -1) {
-                    echo "Tpl Character postion $tagPos, '$ttagName' Error<br />\r\n";
+                    echo "Tpl Character postion $tagPos, '$ttagName' Error<br>\r\n";
                     break;
                 }
                 $i = $elen;

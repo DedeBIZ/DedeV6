@@ -337,7 +337,7 @@ class DedeSqli
         }
 
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError(mysqli_error($this->linkID)." <br />Error sql: <span style='color:#dc3545'>".$this->queryString."</span>");
+            $this->DisplayError(mysqli_error($this->linkID)." <br>Error sql: <span style='color:#dc3545'>".$this->queryString."</span>");
         }
     }
 
@@ -544,9 +544,9 @@ EOT;
             $emsg .= "<div><h3>DedeBIZ Error Warning!</h3>\r\n";
             $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:red'>Technical Support: https://www.dedebiz.com</a></div>";
             $emsg .= "<div style='line-helght:160%;font-size:14px;color:green'>\r\n";
-            $emsg .= "<div style='color:blue'><br />Error page: <span style='color:#dc3545'>".$this->GetCurUrl()."</span></div>\r\n";
+            $emsg .= "<div style='color:blue'><br>Error page: <span style='color:#dc3545'>".$this->GetCurUrl()."</span></div>\r\n";
             $emsg .= "<div>Error infos: {$msg}</div>\r\n";
-            $emsg .= "<br /></div></div>\r\n";
+            $emsg .= "<br></div></div>\r\n";
 
             echo $emsg;
         }

@@ -180,7 +180,7 @@ else if ($action == 'setup') {
   </tr>
   <tr>
     <td height='30' class='dtb' colspan='2'>
-    <div class='alert alert-danger'><b>注意事项：</b>安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限。</div>
+    <div class='alert alert-danger'><b>注意事项：</b>安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限</div>
     </td>
   </tr>
   <tr>
@@ -314,7 +314,7 @@ else if ($action == 'del') {
       <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
     </tr>
     <tr>
-      <td height='26' colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除。</td>
+      <td height='26' colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
     </tr>
 </table>";
   $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");

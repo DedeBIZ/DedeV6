@@ -103,7 +103,7 @@ else if ($dopost == 'editshow') {
                 <td style="height:6px;font-size:1px;border-top:1px solid #8DA659">&nbsp;</td>
             </tr>
             <tr>
-                <td>按原格式修改/增加XML项。</td>
+                <td>按原格式修改/增加XML项</td>
             </tr>
             <tr>
                 <td align='center'><textarea name="quickmenu" rows="10" cols="50" style="width:94%;height:220px"><?php echo $oldct; ?></textarea></td>

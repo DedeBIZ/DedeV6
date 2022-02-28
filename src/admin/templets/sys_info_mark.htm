@@ -2,20 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>系统配置参数 - 图片水印设置</title>
+  <title>系统配置变量 - 图片水印设置</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href='css/base.css' rel='stylesheet' type='text/css'>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6"
-    class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
     <form action="sys_info_mark.php" method="post" enctype="multipart/form-data">
       <input type="hidden" name="action" value="save">
       <input type="hidden" name="get_photo_markimg" value="<?php echo $photo_markimg?>">
       <tr>
-        <td height="26" colspan="2" bgcolor="#FFFFFF" background="images/tbg.gif" style="padding-left:10px;">
-          <b>DedeBIZV6系统配置参数</b> - <strong>图片水印设置</strong> </td>
+        <td height="26" colspan="2" bgcolor="#FFFFFF" background="images/tbg.gif" style="padding-left:10px">
+          <b>系统配置变量</b> - <strong>图片水印设置</strong> </td>
       </tr>
       <tr bgcolor="#FFFFFF">
         <td width="41%" height="26">上传的图片是否使用图片水印功能：<br> </td>
@@ -88,7 +87,7 @@
         </td>
       </tr>
       <tr bgcolor="#FFFFFF">
-        <td height="26">设置 JPEG 类型的图片附件添加水印后质量参数，范围为 0～100 的整数，数值越大结果图片效果越好，但尺寸也越大。</td>
+        <td height="26">设置 JPEG 类型的图片附件添加水印后质量参数，范围为 0～100 的整数，数值越大结果图片效果越好，但尺寸也越大</td>
         <td>
           <input type="text" name="get_photo_marktrans" id="get_photo_marktrans" value="<?php echo $photo_marktrans?>">
         </td>

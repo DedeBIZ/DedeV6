@@ -20,15 +20,14 @@
   </script>
 </head>
 <body background="images/allbg.gif" leftmargin="8" topmargin="8">
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center"
-    class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
     <form name="form1" action="makehtml_homepage.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="make">
       <tr>
         <td height="26" colspan="2" background='images/tbg.gif'>
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18" style="padding-left:10px;"><strong>首页更新向导：</strong></td>
+              <td width="30%" height="18" style="padding-left:10px"><strong>首页更新向导：</strong></td>
               <td width="70%" align="right">&nbsp;</td>
             </tr>
           </table>
@@ -42,8 +41,8 @@
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="2" valign="top" bgcolor="#FFFFFF">默认的情况下，生成的首页文件放在CMS的安装目录，如果您的CMS不是安装在网站根目录的，又想把首页创建到网站根目录，那么请用相对路径来表示“首页位置”。
-          <br>例：您的CMS安装在 http://www.abc.com/DedeBIZ/ 目录，您想生成的首页为 http://www.abc.com/index.html，那么首页位置就应该用：“../index.html”。</td>
+        <td height="26" colspan="2" valign="top" bgcolor="#FFFFFF">默认的情况下，生成的首页文件放在CMS的安装目录，如果您的CMS不是安装在网站根目录的，又想把首页创建到网站根目录，那么请用相对路径来表示“首页位置”
+          <br>例：您的CMS安装在 http://www.abc.com/DedeBIZ/ 目录，您想生成的首页为 http://www.abc.com/index.html，那么首页位置就应该用：“../index.html”</td>
       </tr>
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">首页位置：</td>
@@ -61,9 +60,9 @@
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">首页模式:</td>
         <td height="26" valign="top" bgcolor="#FFFFFF">
-          <label><input name="showmod" type="radio" value="0" class="np" <?php echo ($row['showmod']==0)? "checked='checked'" : "";?> />
+          <label><input name="showmod" type="radio" value="0" class="np" <?php echo ($row['showmod']==0)? "checked='checked'" : "";?>>
             动态浏览</label>
-          <label><input name="showmod" type="radio" class="np" value="1" <?php echo ($row['showmod']==1)? "checked='checked'" : "";?> />
+          <label><input name="showmod" type="radio" class="np" value="1" <?php echo ($row['showmod']==1)? "checked='checked'" : "";?>>
             生成静态 (或者手动删除根目录下index.html文件)</label></td>
       </tr>
       <tr>
@@ -99,9 +98,9 @@
         <tr>
           <td height="26" valign="top" bgcolor="#FFFFFF">首页状态：</td>
           <td height="26" valign="top" bgcolor="#FFFFFF">
-            <label><input name="lockindex" type="radio" class="np" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?> />
+            <label><input name="lockindex" type="radio" class="np" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?>>
               解锁</label>
-            <label><input name="lockindex" type="radio" value="lock" class="np" <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?> />
+            <label><input name="lockindex" type="radio" value="lock" class="np" <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?>>
               锁定</label>
           </td>
         </tr>

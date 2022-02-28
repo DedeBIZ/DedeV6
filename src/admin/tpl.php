@@ -235,9 +235,9 @@ else if ($action == 'savetagfile') {
     $msg = "
     <form name='form1' action='tag_test_action.php' target='blank' method='post'>
       <input type='hidden' name='dopost' value='make' />
-        <b>测试标签：</b>(需要使用环境变量的不能在此测试)<br/>
-        <textarea name='partcode' cols='150' rows='6' style='width:90%;'>{dede:{$tagname} }{/dede:{$tagname}}</textarea><br />
-        <input name='imageField1' type='image' class='np' src='images/button_ok.gif' width='60' height='22' border='0' />
+        <b>测试标签：</b>(需要使用环境变量的不能在此测试)<br>
+        <textarea name='partcode' cols='150' rows='6' style='width:90%;'>{dede:{$tagname} }{/dede:{$tagname}}</textarea><br>
+        <input name='imageField1' type='image' class='np' src='images/button_ok.gif' width='60' height='26' border='0' />
     </form>
     ";
     $wintitle = "成功修改/创建文件";

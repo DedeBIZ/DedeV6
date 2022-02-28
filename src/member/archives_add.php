@@ -106,7 +106,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID' ");
-        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请联系管理员。", "javascript:;");
+        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请联系管理员", "javascript:;");
         exit();
     }
 
@@ -115,7 +115,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("Delete From `#@__archives` where id='$arcID'");
         $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID'");
-        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作。", "javascript:;");
+        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
         $inquery = "INSERT INTO `{$addtable}`(aid,typeid,userip,redirecturl,templet{$inadd_f}) Values('$arcID','$typeid','$userip','',''{$inadd_v})";

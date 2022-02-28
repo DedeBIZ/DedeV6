@@ -11,7 +11,7 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table table-bordered maintable mt-3">
     <tr>
-      <td height="26" background="images/tbg.gif" colspan="7" style="padding-left:10px;">
+      <td height="26" background="images/tbg.gif" colspan="7" style="padding-left:10px">
         <b>投票管理</b>&nbsp;<a href="vote_add.php" class="btn btn-success btn-sm">增加一组投票</a>
       </td>
     </tr>
@@ -25,8 +25,7 @@
       <td width="20%">管理</td>
     </tr>
     {dede:datalist}
-    <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-      onMouseOut="javascript:this.bgColor='#FFFFFF';">
+    <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
       <td>{dede:field.aid /}</td>
       <td>
         <a href='{dede:global name="cfg_phpurl" /}/vote.php?aid={dede:field.aid/}&dopost=view' target='_blank'>

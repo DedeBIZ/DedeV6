@@ -158,7 +158,7 @@ else if ($dopost == 'save') {
     $addtable = trim($cInfos['addtable']);
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作。", "javascript:;");
+        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
         $inquery = "INSERT INTO `{$addtable}`(aid,typeid,arcrank,mid,channel,title,senddate,litpic,userip{$inadd_f}) Values('$arcID','$typeid','$arcrank','$mid','$channelid','$title','$senddate','','$userip'{$inadd_v})";

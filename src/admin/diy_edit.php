@@ -42,7 +42,7 @@ else if ($dopost == "delete") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("diyid", $diyid);
-        $win->AddTitle("将删除所有与该自定义表单相关的文件和数据<br />您确实要删除 \"".$row['name']."\" 这个自定义表单？");
+        $win->AddTitle("将删除所有与该自定义表单相关的文件和数据<br>您确实要删除 \"".$row['name']."\" 这个自定义表单？");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

@@ -25,7 +25,7 @@ if ($dopost == 'delete') {
     $showhtml .= "预览：<iframe name='testfrm' frameborder='0' src='ad_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='200'></iframe>";
     $row = $dsql->GetOne("SELECT tagname from `#@__myad` WHERE aid='$aid' ");
     $showtag = '{'."dede:myad name='{$row['tagname']}'/".'}';
-    $info = "<b>说明：</b>如果嵌入的是织梦CMS广告标签，那么将会解析成标签中的内容到页面，广告修改后需要重新生成。<br />
+    $info = "<b>说明：</b>如果嵌入的是织梦CMS广告标签，那么将会解析成标签中的内容到页面，广告修改后需要重新生成。<br>
     如果不希望重新生成所有页面，则直接调用JS代码即可。
     ";
     $wintitle = "广告管理-获取广告标签";

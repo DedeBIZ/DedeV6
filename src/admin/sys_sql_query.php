@@ -46,9 +46,9 @@ else if ($dopost == "opimizeAll") {
     while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
         $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `{$row[0]}` ");
         if ($rs) {
-            echo "优化表: {$row[0]} ok!<br />\r\n";
+            echo "优化表: {$row[0]} ok!<br>\r\n";
         } else {
-            echo "优化表: {$row[0]} 失败! 原因是: ".$dsql->GetError()."<br />\r\n";
+            echo "优化表: {$row[0]} 失败! 原因是: ".$dsql->GetError()."<br>\r\n";
         }
     }
     exit();
@@ -73,9 +73,9 @@ else if ($dopost == "repairAll") {
     while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `{$row[0]}` ");
         if ($rs) {
-            echo "修复表: {$row[0]} ok!<br />\r\n";
+            echo "修复表: {$row[0]} ok!<br>\r\n";
         } else {
-            echo "修复表: {$row[0]} 失败! 原因是: ".$dsql->GetError()."<br />\r\n";
+            echo "修复表: {$row[0]} 失败! 原因是: ".$dsql->GetError()."<br>\r\n";
         }
     }
     exit();
@@ -85,7 +85,7 @@ else if ($dopost == "query") {
     CheckCSRF();
     $sqlquery = trim(stripslashes($sqlquery));
     if (preg_match("#drop(.*)table#i", $sqlquery) || preg_match("#drop(.*)database#", $sqlquery)) {
-        echo "<span style='font-size:10pt'>删除'数据表'或'数据库'的语句不允许在这里执行。</span>";
+        echo "<span style='font-size:10pt'>删除'数据表'或'数据库'的语句不允许在这里执行</span>";
         exit();
     }
     //运行查询语句
@@ -107,7 +107,7 @@ else if ($dopost == "query") {
             echo "记录：$j";
             echo "<hr size=1 width='100%'/>";
             foreach ($row as $k => $v) {
-                echo "<span style='color:#dc3545'>{$k}：</span>{$v}<br/>\r\n";
+                echo "<span style='color:#dc3545'>{$k}：</span>{$v}<br>\r\n";
             }
         }
         exit();

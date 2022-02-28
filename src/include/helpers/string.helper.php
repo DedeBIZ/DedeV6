@@ -155,7 +155,7 @@ if (!function_exists('Text2Html')) {
         $txt = str_replace("  ", "　", $txt);
         $txt = str_replace("<", "&lt;", $txt);
         $txt = str_replace(">", "&gt;", $txt);
-        $txt = preg_replace("/[\r\n]{1,}/isU", "<br/>\r\n", $txt);
+        $txt = preg_replace("/[\r\n]{1,}/isU", "<br>\r\n", $txt);
         return $txt;
     }
 }
@@ -238,7 +238,7 @@ if (!function_exists('ubb')) {
         //$Text=ereg_replace("\n","<br>",$Text);
         $Text = preg_replace("/\\t/is", "  ", $Text);
         $Text = preg_replace("/\[hr\]/is", "<hr>", $Text);
-        $Text = preg_replace("/\[separator\]/is", "<br/>", $Text);
+        $Text = preg_replace("/\[separator\]/is", "<br>", $Text);
         $Text = preg_replace("/\[h1\](.+?)\[\/h1\]/is", "<h1>\\1</h1>", $Text);
         $Text = preg_replace("/\[h2\](.+?)\[\/h2\]/is", "<h2>\\1</h2>", $Text);
         $Text = preg_replace("/\[h3\](.+?)\[\/h3\]/is", "<h3>\\1</h3>", $Text);

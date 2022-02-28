@@ -27,10 +27,9 @@
 <body background="images/allbg.gif">
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px;">短信管理</div>
+    <div class="bodytitletxt" style="padding-left:10px">短信管理</div>
   </div>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-borderless"
-    style="background:#CFCFCF;margin-bottom:5px;">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-borderless" style="background:#CFCFCF;margin-bottom:10px;">
     <tr>
       <td height="30" align="center" bgcolor="#F9FCEF">
         <form action="member_pm.php" name="form1" method="get">
@@ -38,12 +37,10 @@
             <tr>
               <td width="90">&nbsp;关键字：</td>
               <td width="110" align="center">
-                <input name="keyword" type="text" id="keyword" size="12" style="width:100"
-                  value="{dede:global name='keyword'/}" />
+                <input name="keyword" type="text" id="keyword" size="12" style="width:100" value="{dede:global name='keyword'/}" />
               </td>
               <td width="86">&nbsp;用户：</td>
-              <td width="74"><input name="username" type="text" id="username" size="12" style="width:100"
-                  value="{dede:global name='username'/}" /></td>
+              <td width="74"><input name="username" type="text" id="username" size="12" style="width:100" value="{dede:global name='username'/}" /></td>
               <td width="100" align="center">
                 <select name="folder" id="folder">
                   <option value="inbox">收件箱</option>
@@ -59,14 +56,12 @@
       </td>
     </tr>
   </table>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered"
-    style="	background:#CFCFCF;">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered" style="background:#CFCFCF;">
     <tr>
       <td height="26" colspan="9" bgcolor="#EDF9D5" background='images/tbg.gif'>
         <table width="99%" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
           <tr>
-            <td align="left"><span class="current" id="cate_1">短信列表</span> <a href='member_pmall.php'>群发短信</a> <a
-                href='member_pmone.php'>单独短信</a></td>
+            <td align="left"><span class="current" id="cate_1">短信列表</span> <a href='member_pmall.php'>群发短信</a> <a href='member_pmone.php'>单独短信</a></td>
             <td align="left"></td>
             <td align="left"></td>
           </tr>
@@ -83,8 +78,7 @@
       <td width="10%" align="center">操作</td>
     </tr>
     {dede:datalist}
-    <tr height="26" align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-      onMouseOut="javascript:this.bgColor='#FFFFFF';">
+    <tr height="26" align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
       <td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
       <td>{dede:field.subject function='dede_htmlspecialchars(@me)'/}<br></td>
       <td>{dede:field.hasview function='IsReader(@me)'/}</td>

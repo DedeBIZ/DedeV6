@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>重复文档检测</title>
 <script language="javascript">
-
 //获得选中文件的文件名
 function getCheckboxItem()
 {
@@ -22,14 +21,12 @@ function getCheckboxItem()
 	}
 	return allSel;
 }
-
 //删除文档
 function delArc(){
 	var qstr=getCheckboxItem();
 	document.form2.titles.value = qstr;
 	document.form2.submit();
 }
-
 function selAll()
 {
 	for(i=0;i<document.form2.arcTitle.length;i++){
@@ -125,8 +122,7 @@ a {
      <input type='button' name='bt2' value='反选' onclick='noSelAll()' />
      &nbsp;
      <input type='button' name='bt3' value='删除' onclick='delArc()' />
-     &nbsp;
-     (共有 <?php echo $allarc; ?> 篇重复标题的文档)
+     （共有 <?php echo $allarc; ?> 篇重复标题的文档）
    </td>
  </tr>
 </form>

@@ -11,7 +11,7 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="26" background="images/tbg.gif" colspan="7" style="padding-left:10px;">
+      <td height="26" background="images/tbg.gif" colspan="7" style="padding-left:10px">
         <b>自定义标记管理</b>
         &nbsp;<a class="btn btn-success" href="mytag_add.php">增加一个标记</a>
         &nbsp;<a class="btn btn-success" href="mytag_tag_guide.php">智能标记向导</a>
@@ -26,8 +26,7 @@
       <td width="20%">管理</td>
     </tr>
     {dede:datalist}
-    <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-      onMouseOut="javascript:this.bgColor='#FFFFFF';">
+    <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
       <td>{dede:field.aid /}</td>
       <td>{dede:field.tagname /}</td>
       <td>{dede:field.typename function='TestType(@me)'/}</td>

@@ -6,8 +6,7 @@
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" media="all" href="../static/js/calendar/calendar-win2k-1.css"
-    title="win2k-1" />
+  <link rel="stylesheet" type="text/css" media="all" href="../static/js/calendar/calendar-win2k-1.css">
   <script type="text/javascript" src="../static/js/calendar/calendar.js"></script>
   <script type="text/javascript" src="../static/js/calendar/calendar-cn.js"></script>
   <script language="javascript">
@@ -15,8 +14,7 @@
       if (document.all) {
         var posLeft = window.event.clientY - 100;
         var posTop = window.event.clientX - 400;
-      }
-      else {
+      } else {
         var posLeft = 100;
         var posTop = 100;
       }
@@ -31,8 +29,7 @@
   <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" align="center"
-    class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" align="center" class="table maintable table-bordered mt-3">
     <form name="form1" action="tag_test_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="make" />
       <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
@@ -40,17 +37,15 @@
         <td height="26" colspan="2" background='images/tbg.gif'>
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18" style="padding-left:10px;"><strong>全局标记测试：</strong></td>
+              <td width="30%" height="18" style="padding-left:10px"><strong>全局标记测试：</strong></td>
               <td width="70%" align="right">&nbsp;</td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td colspan="2" valign="top" bgcolor="#FFFFFF">
-          　　全局标记指的是应用在网站主页、单独页面、频道封面使用的单独的模板标记，在列表或文章模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文章或列表所在的栏目，如果您要测试的标记是在列表或文章中使用，请指定环境变量（栏目ＩＤ）。<br />
-          　　各标记的具体含义和用途，请在<a href="https://www.dedebiz.com/help" target="_blank">模板标记参考</a>一章查阅。
-        </td>
+        <td colspan="2" valign="top" bgcolor="#FFFFFF">全局标记指的是应用在网站主页、单独页面、频道封面使用的单独的模板标记，在列表或文章模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文章或列表所在的栏目，如果您要测试的标记是在列表或文章中使用，请指定环境变量（栏目ＩＤ）<br>
+        各标记的具体含义和用途，请在<a href="https://www.dedebiz.com/help" target="_blank">模板标记参考</a>一章查阅</td>
       </tr>
       <tr>
         <td colspan="2" valign="top" bgcolor="#FFFFFF">输入要测试的局部代码：</td>
@@ -114,5 +109,4 @@
     });
   </script>
 </body>
-
 </html>

@@ -119,7 +119,7 @@ else if ($fmdo == "space") {
     } else {
         $ecpath = $activepath;
     }
-    $titleinfo = "目录 <a href='file_manage_main.php?activepath=$activepath'><b>$ecpath</b></a> 空间使用状况：<br/>";
+    $titleinfo = "目录 <a href='file_manage_main.php?activepath=$activepath'><b>$ecpath</b></a> 空间使用状况：<br>";
     $wintitle = "文件管理";
     $wecome_info = "文件管理::空间大小检查 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
     $activepath = $cfg_basedir.$activepath;
@@ -131,7 +131,7 @@ else if ($fmdo == "space") {
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "POST");
     $win->AddTitle($titleinfo);
-    $win->AddMsgItem("　　$totalmb M<br/>　　$totalkb KB<br/>　　$total 字节");
+    $win->AddMsgItem("　　$totalmb M<br>　　$totalkb KB<br>　　$total 字节");
     $winform = $win->GetWindow("");
     $win->Display();
 }

@@ -155,7 +155,7 @@ class Array2form
 }
 $tplstring = "
             <tr>
-              <td height='25' align='center'>~title~：</td>
+              <td height='26' align='center'>~title~：</td>
               <td>~form~ <small>~description~</small></td>
             </tr>
 ";

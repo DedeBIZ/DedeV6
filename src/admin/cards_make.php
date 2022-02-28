@@ -52,7 +52,7 @@ elseif ($dopost == 'make') {
         $inquery = "INSERT INTO #@__moneycard_record(ctid,cardid,uid,isexp,mtime,utime,money,num)
               VALUES('$ctid','$cardid','0','0','$mtime','$utime','$money','$num'); ";
         $dsql->ExecuteNoneQuery($inquery);
-        echo "成功生成点卡：{$cardid}<br/>";
+        echo "成功生成点卡：{$cardid}<br>";
     }
     echo "成功生成 {$mnum} 个点卡";
 }

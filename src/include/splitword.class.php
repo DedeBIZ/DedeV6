@@ -544,7 +544,7 @@ class SplitWord
                 if( $spos > 0 ) $lastType = $this->simpleResult[$spos-1]['t'];
                 if($slen < 5)
                 {
-                      //echo iconv(UCS2, 'utf-8', $str).'<br/>';
+                      //echo iconv(UCS2, 'utf-8', $str).'<br>';
                       if( $lastType==4 && ( isset($this->addonDic['u'][$str]) || isset($this->addonDic['u'][substr($str, 0, 2)]) ) )
                       {
                               $str2 = '';
@@ -605,7 +605,7 @@ class SplitWord
         $quote1 = chr(0x20).chr(0x1C);
         $tmparr = array();
         $hasw = 0;
-        //如果前一个词为 “ ， 并且字符串小于3个字符当成一个词处理。
+        //如果前一个词为 “ ， 并且字符串小于3个字符当成一个词处理
         if( $spos > 0 && $slen < 11 && $this->simpleResult[$spos-1]['w']==$quote1 )
         {
             $tmparr[] = $str;
@@ -745,7 +745,7 @@ class SplitWord
                 if( !isset($this->addonDic['s'][$nw]) && strlen($nw)<5 && !$is_rs )
                 {
                     $newarr[$j] = $cw.$nw;
-                    //echo iconv(UCS2, 'utf-8', $newarr[$j])."<br />";
+                    //echo iconv(UCS2, 'utf-8', $newarr[$j])."<br>";
                     //尝试检测第三个词
                     if( strlen($nw)==2 && isset($smarr[$i+2]) && strlen($smarr[$i+2])==2 && !isset( $this->addonDic['s'][$smarr[$i+2]] ) )
                     {

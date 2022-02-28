@@ -153,7 +153,7 @@ class TypeUnit
             }
             //独立页面
             else if ($ispart == 2) {
-                echo "  <tr height='24' bgcolor='#FBFCE2'>\r\n";
+                echo "  <tr height='26' bgcolor='#FBFCE2'>\r\n";
                 echo "  <td width='2%' class='bline2'><img style='cursor:pointer' id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" src='images/dedeexplode.gif' width='11' height='11'></td>\r\n";
                 echo "  <td class='bline2'><table width='98%' border='0' cellspacing='0' cellpadding='0'><tr><td width='50%'><input class='np' type='checkbox' name='tids[]' value='{$id}'><a href='catalog_edit.php?id=".$id."' oncontextmenu=\"SingleMenu(event,this,$id,'".urlencode($typeName)."')\"> {$nss}".$typeName."[ID:".$id."]</a>  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><img src='images/write2.gif'/></a>";
                 echo "    </td><td align='right'>";
@@ -212,7 +212,7 @@ class TypeUnit
 
                 //普通列表
                 if ($ispart == 0) {
-                    echo "<tr height='24' oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\">\r\n";
+                    echo "<tr height='26' oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\">\r\n";
                     echo "<td class='nbline'>";
                     echo "<table width='98%' border='0' cellspacing='0' cellpadding='0'>";
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#FAFCE0';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\"><td width='50%'>";
@@ -229,7 +229,7 @@ class TypeUnit
 
                 //封面频道
                 else if ($ispart == 1) {
-                    echo " <tr height='24' oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\">\r\n";
+                    echo " <tr height='26' oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\">\r\n";
                     echo "<td class='nbline'><table width='98%' border='0' cellspacing='0' cellpadding='0'><tr onMouseMove=\"javascript:this.bgColor='#FAFCE0';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\"><td width='50%'>";
                     echo "<input class='np' type='checkbox' name='tids[]' value='{$id}'>$step <img style='cursor:pointer' id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" src='images/dedeexplode.gif' width='11' height='11'> <a href='catalog_do.php?cid=".$id."&dopost=listArchives'>{$nss}".$typeName."[ID:".$id."]</a>  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><img src='images/write2.gif'/></a>";
                     echo "</td><td align='right'>";
@@ -244,7 +244,7 @@ class TypeUnit
 
                 //独立页面
                 else if ($ispart == 2) {
-                    echo "<tr height='24' oncontextmenu=\"SingleMenu(event,this,$id,'".urlencode($typeName)."')\">\r\n";
+                    echo "<tr height='26' oncontextmenu=\"SingleMenu(event,this,$id,'".urlencode($typeName)."')\">\r\n";
                     echo "<td class='bline2'><table width='98%' border='0' cellspacing='0' cellpadding='0'>";
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#FAFCE0';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\"><td width='50%'>";
                     echo "<input class='np' type='checkbox' name='tids[]' value='{$id}'>$step <img style='cursor:pointer' id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" src='images/dedeexplode.gif' width='11' height='11'> <a href='catalog_do.php?cid=".$id."&dopost=listArchives'>{$nss}".$typeName."[ID:".$id."]</a>  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><img src='images/write2.gif'/></a>";

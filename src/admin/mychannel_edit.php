@@ -12,10 +12,8 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Edit');
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/oxwindow.class.php");
-
 if (empty($dopost)) $dopost = "";
 $id = isset($id) && is_numeric($id) ? $id : 0;
-
 /*----------------
 function __ShowHide()
 -----------------*/
@@ -64,23 +62,23 @@ else if ($dopost == "copystart") {
     $msg = "
         <table width='460' border='0' cellspacing='0' cellpadding='0'>
         <tr>
-        <td width='170' height='24' align='center'>新频道id：</td>
+        <td width='170' height='26' align='center'>新频道id：</td>
         <td width='230'><input name='newid' type='text' id='newid' size='6' value='{$newid}' /></td>
         </tr>
         <tr>
-        <td height='24' align='center'>新频道名称：</td>
+        <td height='26' align='center'>新频道名称：</td>
         <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' style='width:250px' /></td>
         </tr>
         <tr>
-        <td height='24' align='center'>新频道标识：</td>
+        <td height='26' align='center'>新频道标识：</td>
         <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' style='width:250px' /></td>
         </tr>
         <tr>
-        <td height='24' align='center'>新附加表：</td>
+        <td height='26' align='center'>新附加表：</td>
         <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' style='width:250px' /></td>
         </tr>
         <tr>
-        <td height='24' align='center'>复制模板：</td>
+        <td height='26' align='center'>复制模板：</td>
         <td>
         <label><input name='copytemplet' type='radio' id='copytemplet' value='1' class='np' checked='checked' /> 复制</label>
         &nbsp;
@@ -152,26 +150,20 @@ else if ($dopost == "exportinok") {
         $win->Display();
         exit();
     }
-
     $msg = "无信息";
     $exconfig = stripslashes($exconfig);
-
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('channel', '<', '>');
     $dtp->LoadSource($exconfig);
-
     if (!is_array($dtp->CTags)) GotoStaMsg("模型规则不是合法的Dede模型规则");
-
     $fields = array();
     foreach ($dtp->CTags as $ctag) {
         $fname = $ctag->GetName('name');
         $fields[$fname] = trim($ctag->GetInnerText());
     }
-
     if (!isset($fields['nid']) || !isset($fields['fieldset'])) {
         GotoStaMsg("模型规则不是合法的Dede模型规则");
     }
-
     //正常的导入过程
     $mysql_version = $dsql->GetVersion(true);
 
@@ -179,7 +171,6 @@ else if ($dopost == "exportinok") {
     if (is_array($row)) {
         GotoStaMsg("系统中已经存在相同标识 {$fields['nid']} 的规则");
     }
-
     //创建表
     if ($fields['issystem'] != -1) {
         $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}`(
@@ -210,7 +201,6 @@ else if ($dopost == "exportinok") {
         GotoStaMsg("创建表失败!".$dsql->GetError());
         exit();
     }
-
     if ($fields['issystem'] == 1) $fields['issystem'] = 0;
     if ($fields['issystem'] == 0) {
         $row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id DESC ");
@@ -219,21 +209,12 @@ else if ($dopost == "exportinok") {
         $row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id ASC ");
         $fields['newid'] = $row['id'] - 1;
     }
-
     $fieldset = $fields['fieldset'];
     $fields['fieldset'] = addslashes($fields['fieldset']);
-
-    $inquery = " INSERT INTO `#@__channeltype`(`id` , `nid` , `typename` , `addtable` , `addcon` ,
-     `mancon` , `editcon` , `useraddcon` , `usermancon` , `usereditcon` ,
-      `fieldset` , `listfields` , `issystem` , `isshow` , `issend` ,
-       `arcsta`,`usertype` , `sendrank` )
+    $inquery = " INSERT INTO `#@__channeltype`(`id` , `nid` , `typename` , `addtable` , `addcon` , `mancon` , `editcon` , `useraddcon` , `usermancon` , `usereditcon` , `fieldset` , `listfields` , `issystem` , `isshow` , `issend` , `arcsta`,`usertype` , `sendrank` )
     VALUES('{$fields['newid']}' , '{$fields['nid']}' , '{$fields['typename']}' , '{$fields['addtable']}' , '{$fields['addcon']}' ,
-     '{$fields['mancon']}' , '{$fields['editcon']}' , '{$fields['useraddcon']}' , '{$fields['usermancon']}' , '{$fields['usereditcon']}' ,
-      '{$fields['fieldset']}' , '{$fields['listfields']}' , '{$fields['issystem']}' , '{$fields['isshow']}' , '{$fields['issend']}' ,
-       '{$fields['arcsta']}' , '{$fields['usertype']}' , '{$fields['sendrank']}' ); ";
-
+     '{$fields['mancon']}' , '{$fields['editcon']}' , '{$fields['useraddcon']}' , '{$fields['usermancon']}' , '{$fields['usereditcon']}' , '{$fields['fieldset']}' , '{$fields['listfields']}' , '{$fields['issystem']}' , '{$fields['isshow']}' , '{$fields['issend']}' , '{$fields['arcsta']}' , '{$fields['usertype']}' , '{$fields['sendrank']}' ); ";
     $rs = $dsql->ExecuteNoneQuery($inquery);
-
     if (!$rs) GotoStaMsg("导入模型时发生错误".$dsql->GetError());
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
@@ -256,7 +237,6 @@ else if ($dopost == "exportinok") {
             $dsql->ExecuteNoneQuery(" ALTER TABLE `{$fields['addtable']}` ADD  $ntabsql ");
         }
     }
-
     if ($allfields != '') {
         $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET listfields='$allfields' WHERE id='{$fields['newid']}' ");
     }
@@ -271,13 +251,8 @@ else if ($dopost == "copysave") {
     foreach ($row as $k => $v) {
         ${strtolower($k)} = addslashes($v);
     }
-    $inquery = " INSERT INTO `#@__channeltype`(`id` , `nid` , `typename` , `addtable` , `addcon` ,
-                `mancon` , `editcon` , `useraddcon` , `usermancon` , `usereditcon` , `fieldset` , `listfields` ,
-                 `issystem` , `isshow` , `issend` , `arcsta`,`usertype` , `sendrank` )
-              VALUES('$newid' , '$newnid' , '$newtypename' , '$newaddtable' , '$addcon' ,
-               '$mancon' , '$editcon' , '$useraddcon' , '$usermancon' , '$usereditcon' , '$fieldset' , '$listfields' ,
-               '$issystem' , '$isshow' , '$issend' , '$arcsta','$usertype' , '$sendrank' );
-  ";
+    $inquery = " INSERT INTO `#@__channeltype`(`id` , `nid` , `typename` , `addtable` , `addcon` , `mancon` , `editcon` , `useraddcon` , `usermancon` , `usereditcon` , `fieldset` , `listfields` , `issystem` , `isshow` , `issend` , `arcsta`,`usertype` , `sendrank` )
+    VALUES('$newid' , '$newnid' , '$newtypename' , '$newaddtable' , '$addcon' , '$mancon' , '$editcon' , '$useraddcon' , '$usermancon' , '$usereditcon' , '$fieldset' , '$listfields' , '$issystem' , '$isshow' , '$issend' , '$arcsta','$usertype' , '$sendrank' );";
     $mysql_version = $dsql->GetVersion(TRUE);
     if (!$dsql->IsTable($newaddtable)) {
         $dsql->Execute('me', "SHOW CREATE TABLE {$dsql->dbName}.{$addtable}");
@@ -299,7 +274,7 @@ else if ($dopost == "copysave") {
         exit();
     } else {
         $errv = $dsql->GetError();
-        ShowMsg("系统出错，请把错误代码发送到官方论坛，以检查原因<br /> 错误代码：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
+        ShowMsg("系统出错，请把错误代码发送到官方论坛，以检查原因<br> 错误代码：mychannel_edit.php?dopost=savecopy $errv", "javascript:;");
         exit();
     }
 }
@@ -309,7 +284,6 @@ function __SaveEdit()
 else if ($dopost == "save") {
     $fieldset = preg_replace("#[\r\n]{1,}#", "\r\n", $fieldset);
     $usertype = empty($usertype) ? '' : $usertype;
-
     $query = "Update `#@__channeltype` set
     typename = '$typename',
     addtable = '$addtable',
@@ -363,10 +337,10 @@ else if ($dopost == "gettemplets") {
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "
         文档模板：{$defaulttemplate}/article_{$row['nid']}.htm
-        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm'>[修改]</a><br/>
+        <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=article_{$row['nid']}.htm'>[修改]</a><br>
         列表模板：{$defaulttemplate}/list_{$row['nid']}.htm
         <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm'>[修改]</a>
-        <br/>
+        <br>
         频道封面模板：{$defaulttemplate}/index_{$row['nid']}.htm
         <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm'>[修改]</a>
     ";
@@ -386,7 +360,6 @@ else if ($dopost == "delete") {
         exit();
     }
     if (empty($job)) $job = "";
-
     if ($job == "") //确认提示
     {
         require_once(DEDEINC."/oxwindow.class.php");
@@ -397,7 +370,7 @@ else if ($dopost == "delete") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确实要删除 (".$row['typename'].") 这个频道？");
+        $win->AddTitle("您确实要删除 (".$row['typename'].") 这个频道");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -409,19 +382,16 @@ else if ($dopost == "delete") {
             ShowMsg('您所指定的频道信息不存在!', '-1');
             exit();
         }
-
         //检查频道的表是否独占数据表
         $addtable = str_replace($cfg_dbprefix, '', str_replace('#@__', $cfg_dbprefix, $myrow['addtable']));
         $row = $dsql->GetOne("SELECT COUNT(id) AS dd FROM `#@__channeltype` WHERE  addtable like '{$cfg_dbprefix}{$addtable}' OR addtable LIKE CONCAT('#','@','__','$addtable') ; ");
         $isExclusive2 = ($row['dd'] > 1 ? 0 : 1);
-
         //获取与频道关连的所有栏目id
         $tids = '';
         $dsql->Execute('qm', "SELECT id FROM `#@__arctype` WHERE channeltype='$id'");
         while ($row = $dsql->GetArray('qm')) {
             $tids .= ($tids == '' ? $row['id'] : ','.$row['id']);
         }
-
         //删除相关信息
         if ($tids != '') {
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE typeid IN($tids); ");
@@ -430,7 +400,6 @@ else if ($dopost == "delete") {
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE typeid IN ($tids); ");
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctype` WHERE id IN ($tids); ");
         }
-
         //删除附加表或附加表内的信息
         if ($isExclusive2 == 1) {
             $dsql->ExecuteNoneQuery("DROP TABLE IF EXISTS `{$cfg_dbprefix}{$addtable}`;");
@@ -439,10 +408,8 @@ else if ($dopost == "delete") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `{$myrow['addtable']}` WHERE typeid IN ($tids); ");
             }
         }
-
         //删除频道配置信息
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__channeltype` WHERE id='$id' ");
-
         //更新栏目缓存
         UpDateCatCache($dsql);
         ShowMsg("成功删除一个模型", "mychannel_main.php");
@@ -476,10 +443,8 @@ else if ($dopost == 'modifysearch') {
         $c3 = in_array('writer', $searchinfo['mainfields']) ? 'checked' : '';
         $c4 = in_array('source', $searchinfo['mainfields']) ? 'checked' : '';
         $c5 = in_array('senddate', $searchinfo['mainfields']) ? 'checked' : '';
-
         $mainfields = '<label><input type="checkbox" name="mainfields[]" '.$c1.' value="iscommend" class="np" /> 是否推荐</label> ';
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c2.' value="typeid" class="np" /> 栏目</label> ';
-
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c3.' value="writer" class="np" /> 作者</label> ';
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c4.' value="source" class="np" /> 来源</label> ';
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c5.' value="senddate" class="np" /> 发布时间</label> ';
@@ -492,7 +457,6 @@ else if ($dopost == 'modifysearch') {
         */
         $query = "SELECT * FROM `#@__channeltype` WHERE id='$mid'";
         $channel = $dsql->GetOne($query);
-
         $searchtype = array('int', 'datetime', 'float', 'textdata', 'textchar', 'text', 'htmltext', 'multitext', 'select', 'radio', 'checkbox');
         $addonfields = '';
         $dtp = new DedeTagParse();
@@ -512,7 +476,6 @@ else if ($dopost == 'modifysearch') {
                     $_oo = array('channel', 'arcrank', 'title', 'senddate', 'mid', 'click', 'flag', 'litpic', 'userip', 'lastpost', 'scores', 'goodpost', 'badpost', 'endtime');
                     if (in_array($value, $_oo)) continue;
                 }
-
                 $label = $ctag->GetAtt('itemname');
                 if (in_array($datatype, $searchtype)) {
                     $checked = in_array($value, $addonfieldsarr) ? 'checked' : '';
@@ -531,7 +494,7 @@ else if ($dopost == 'modifysearch') {
         $forms = '<form action="'.$cfg_cmspath.'/plus/advancedsearch.php" method="post">';
         $forms .= "<input type=\"hidden\" name=\"mid\" value=\"$mid\" />";
         $forms .= "<input type=\"hidden\" name=\"dopost\" value=\"search\" />";
-        $forms .= "关键词：<input type=\"text\" name=\"q\" /><br />";
+        $forms .= "关键词：<input type=\"text\" name=\"q\" /><br>";
         $mainstring = '';
         if (!empty($mainfields) && is_array($mainfields)) {
             $mainstring = implode(',', $mainfields);
@@ -540,52 +503,48 @@ else if ($dopost == 'modifysearch') {
                     require_once(dirname(__FILE__)."/../include/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br />栏目：<select name='typeid' style='width:200'>\r\n";
+                    $forms .= "<br>栏目：<select name='typeid' style='width:200'>\r\n";
                     $forms .= "<option value='0' selected>--不限栏目--</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";
-                    $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\" />包含子栏目</label><br />";
+                    $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\" />包含子栏目</label><br>";
                 } else if ($mainfield == 'iscommend') {
-                    $forms .= "<label><input type=\"checkbox\" name=\"iscommend\" value=\"1\" />推荐</label><br />";
+                    $forms .= "<label><input type=\"checkbox\" name=\"iscommend\" value=\"1\" />推荐</label><br>";
                 } else if ($mainfield == 'writer') {
-                    $forms .= "作者：<input type=\"text\" name=\"writer\" value=\"\" /><br />";
+                    $forms .= "作者：<input type=\"text\" name=\"writer\" value=\"\" /><br>";
                 } else if ($mainfield == 'source') {
-                    $forms .= "来源：<input type=\"text\" name=\"source\" value=\"\" /><br />";
+                    $forms .= "来源：<input type=\"text\" name=\"source\" value=\"\" /><br>";
                 } else if ($mainfield == 'senddate') {
-                    $forms .= "开始时间：<input type=\"text\" name=\"startdate\" value=\"\" /><br />";
-                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\" /><br />";
+                    $forms .= "开始时间：<input type=\"text\" name=\"startdate\" value=\"\" /><br>";
+                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\" /><br>";
                 }
             }
         }
-
         $addonstring = '';
         $intarr = array('int', 'float');
         $textarr = array('textdata', 'textchar', 'text', 'htmltext', 'multitext');
-
         if ($channel['issystem'] < 0) {
             foreach ($addonfields as $addonfield) {
                 if ($addonfield == 'typeid') {
                     require_once(dirname(__FILE__)."/../include/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br />栏目：<select name='typeid' style='width:200'>\r\n";
+                    $forms .= "<br>栏目：<select name='typeid' style='width:200'>\r\n";
                     $forms .= "<option value='0' selected>--不限栏目--</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";
-                    $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\" />包含子栏目</label><br />";
+                    $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\" />包含子栏目</label><br>";
                     $addonstring .= 'typeid:int,';
                 } elseif ($addonfield == 'senddate') {
-                    $forms .= "开始时间：<input type=\"text\" name=\"startdate\" value=\"\" /><br />";
-                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\" /><br />";
+                    $forms .= "开始时间：<input type=\"text\" name=\"startdate\" value=\"\" /><br>";
+                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\" /><br>";
                     $addonstring .= 'senddate:datetime,';
                 }
             }
         }
-
         if (is_array($addonfields) && !empty($addonfields)) {
             $query = "SELECT * FROM #@__channeltype WHERE id='$mid'";
             $channel = $dsql->GetOne($query);
-
             $dtp = new DedeTagParse();
             $dtp->SetNameSpace("field", "<", ">");
             $dtp->LoadSource($channel['fieldset']);
@@ -603,20 +562,19 @@ else if ($dopost == 'modifysearch') {
                     }
                 }
             }
-
             foreach ($fieldarr as $k => $field) {
                 $itemname = $itemarr[$k];
                 $name = $field;
                 $type = $typearr[$k];
                 $tmp = $name.':'.$type;
                 if (in_array($type, $intarr)) {
-                    $forms .= "<br />$itemname : <input type=\"text\" name=\"start".$name."\" value=\"\" /> 到 <input type=\"text\" name=\"end".$name."\" value=\"\" /><br />";
+                    $forms .= "<br>$itemname : <input type=\"text\" name=\"start".$name."\" value=\"\" /> 到 <input type=\"text\" name=\"end".$name."\" value=\"\" /><br>";
                 } else if (in_array($type, $textarr)) {
-                    $forms .= "$itemname : <input type=\"text\" name=\"$name\" value=\"\" /><br />";
+                    $forms .= "$itemname : <input type=\"text\" name=\"$name\" value=\"\" /><br>";
                 } else if ($type == 'select') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br />$itemname : <select name=\"$name\" ><option value=\"\">不限</option>";
+                        $forms .= "<br>$itemname : <select name=\"$name\" ><option value=\"\">不限</option>";
                         foreach ($values as $value) {
                             $forms .= "<option value=\"$value\">$value</option>";
                         }
@@ -625,7 +583,7 @@ else if ($dopost == 'modifysearch') {
                 } else if ($type == 'radio') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br />$itemname : <label><input type=\"radio\" name=\"".$name."\" value=\"\" checked />不限</label>";
+                        $forms .= "<br>$itemname : <label><input type=\"radio\" name=\"".$name."\" value=\"\" checked />不限</label>";
                         foreach ($values as $value) {
                             $forms .= "<label><input type=\"radio\" name=\"".$name."\" value=\"$value\" />$value</label>";
                         }
@@ -633,14 +591,14 @@ else if ($dopost == 'modifysearch') {
                 } else if ($type == 'checkbox') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br />$itemname : ";
+                        $forms .= "<br>$itemname : ";
                         foreach ($values as $value) {
                             $forms .= "<label><input type=\"checkbox\" name=\"".$name."[]\" value=\"$value\" />$value</label>";
                         }
                     }
                 } elseif ($type == 'datetime') {
-                    $forms .= "<br />开始时间：<input type=\"text\" name=\"startdate\" value=\"\" /><br />";
-                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\" /><br />";
+                    $forms .= "<br>开始时间：<input type=\"text\" name=\"startdate\" value=\"\" /><br>";
+                    $forms .= "结束时间：<input type=\"text\" name=\"enddate\" value=\"\" /><br>";
                 } else {
                     $tmp = '';
                 }
@@ -654,7 +612,7 @@ else if ($dopost == 'modifysearch') {
         $formshtml = dede_htmlspecialchars($forms);
         echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
         echo "下面为生成的html表单，请自行复制，根据自己需求修改样式后粘贴到对应的模板中<br><br><textarea cols=\"100\"  rows=\"10\">".$forms."</textarea>";
-        echo '<br />预览：<br /><hr>';
+        echo '<br>预览：<br><hr>';
         echo $forms;
     }
     exit;

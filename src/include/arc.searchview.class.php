@@ -14,7 +14,6 @@ require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/splitword.class.php");
 require_once(DEDEINC."/taglib/hotwords.lib.php");
 require_once(DEDEINC."/taglib/channel.lib.php");
-
 @set_time_limit(0);
 @ini_set('memory_limit', '512M');
 
@@ -52,7 +51,7 @@ class SearchView
     var $SearchTime;
     var $AddSql;
     var $RsFields;
-
+    
     /**
      *  php5构造函数
      *
@@ -117,8 +116,6 @@ class SearchView
             $this->Fields[$k] = $v;
         }
         $this->CountRecord();
-
-
         $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style']."/search.htm";
         if (defined('DEDEMOB')) {
             $tempfile = str_replace('.htm', '_m.htm', $tempfile);
@@ -751,8 +748,8 @@ class SearchView
         $plist .= $endpage;
         //if($totalpage>$total_list)
         //{
-        //   $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
-        //   $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
+        //  $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
+        //  $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
         //}
         $plist .= "</ul></form>\r\n";
         return $plist;

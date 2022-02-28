@@ -151,9 +151,9 @@ class DedeHttpDown
     function printError()
     {
         echo "错误信息：".$this->m_error;
-        echo "<br/>具体返回头：<br/>";
+        echo "<br>具体返回头：<br>";
         foreach ($this->m_httphead as $k => $v) {
-            echo "$k => $v <br/>\r\n";
+            echo "$k => $v <br>\r\n";
         }
     }
 
@@ -168,7 +168,7 @@ class DedeHttpDown
         if (preg_match("/^2/", $this->GetHead("http-state"))) {
             return TRUE;
         } else {
-            $this->m_error .= $this->GetHead("http-state")." - ".$this->GetHead("http-describe")."<br/>";
+            $this->m_error .= $this->GetHead("http-state")." - ".$this->GetHead("http-describe")."<br>";
             return FALSE;
         }
     }
@@ -184,7 +184,7 @@ class DedeHttpDown
         if (preg_match("/^2/", $this->GetHead("http-state")) && preg_match("/text|xml/i", $this->GetHead("content-type"))) {
             return TRUE;
         } else {
-            $this->m_error .= "内容为非文本类型或网址重定向<br/>";
+            $this->m_error .= "内容为非文本类型或网址重定向<br>";
             return FALSE;
         }
     }
@@ -204,7 +204,7 @@ class DedeHttpDown
         ) {
             return TRUE;
         } else {
-            $this->m_error .= "类型不对 ".$this->GetHead("content-type")."<br/>";
+            $this->m_error .= "类型不对 ".$this->GetHead("content-type")."<br>";
             return FALSE;
         }
     }

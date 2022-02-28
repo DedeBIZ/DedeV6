@@ -211,7 +211,7 @@ else if ($dopost == 'save') {
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作。", "javascript:;");
+        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     }
     $daccess = isset($daccess) && is_numeric($daccess) ? $daccess : 0;

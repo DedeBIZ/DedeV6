@@ -41,9 +41,9 @@ if ($row['isallow'] == 1) {
 if ($dopost == 'send') {
 
     if (!empty($voteitem)) {
-        $rsmsg = "<br />&nbsp;您方才的投票状态：".$vo->SaveVote($voteitem)."<br />";
+        $rsmsg = "<br>&nbsp;您方才的投票状态：".$vo->SaveVote($voteitem)."<br>";
     } else {
-        $rsmsg = "<br />&nbsp;您刚才没选择任何投票项目<br />";
+        $rsmsg = "<br>&nbsp;您刚才没选择任何投票项目<br>";
     }
     if ($row['isenable'] == 1) {
         ShowMsg('此投票项未启用,暂时不能进行投票', $ENV_GOBACK_URL);

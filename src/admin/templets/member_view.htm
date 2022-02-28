@@ -31,7 +31,7 @@ function checkSubmit()
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
 <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
   <tr>
-    <td height="19" background="images/tbg.gif" style="padding-left:10px;"><a href='<?php echo $ENV_GOBACK_URL; ?>'><b>会员管理</b></a> &gt;&gt; 查看会员</td>
+    <td height="19" background="images/tbg.gif" style="padding-left:10px"><a href='<?php echo $ENV_GOBACK_URL; ?>'><b>会员管理</b></a> &gt;&gt; 查看会员</td>
 </tr>
 <tr>
 <td height="200" bgcolor="#FFFFFF" align='center'>
@@ -51,7 +51,7 @@ function checkSubmit()
               <?php
 			  echo "<b>".$row['userid']."</b>";
               if($row['face']!='') {
-			     echo "<br /><img src='{$row['face']}' width='80'/>";
+			     echo "<br><img src='{$row['face']}' width='80'/>";
 			  }
 			  ?>
              </td>
@@ -100,11 +100,11 @@ function checkSubmit()
           <tr> 
             <td align="right" class='bline'>性　别：</td>
             <td class='bline' style="text-align:left;">
-              <label><input type="radio" name="sex" class="np" value="男"<?php if($row['sex']=="男" ) echo" checked='1'" ;?> />
+              <label><input type="radio" name="sex" class="np" value="男"<?php if($row['sex']=="男" ) echo" checked='1'" ;?>>
               男</label> &nbsp; 
-              <label><input type="radio" name="sex" class="np" value="女"<?php if($row['sex']=="女" ) echo" checked='1'" ;?> />
+              <label><input type="radio" name="sex" class="np" value="女"<?php if($row['sex']=="女" ) echo" checked='1'" ;?>>
               女</label>
-              <label><input type="radio" name="sex" class="np" value=""<?php if($row['sex']=="" ) echo" checked='1'" ;?> />
+              <label><input type="radio" name="sex" class="np" value=""<?php if($row['sex']=="" ) echo" checked='1'" ;?>>
               保密</label>
              </td>
           </tr>
@@ -180,7 +180,7 @@ function checkSubmit()
             <?php
             $nrow = $dsql->GetOne("Select * From `#@__member_tj` where mid='{$row['mid']}' ");
             echo "文章：{$nrow['article']} 图集：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']}";
-            echo "<br />空间访问：{$nrow['homecount']} 页面访问：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']} ";
+            echo "<br>空间访问：{$nrow['homecount']} 页面访问：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']} ";
             ?>
             </td>
           </tr>

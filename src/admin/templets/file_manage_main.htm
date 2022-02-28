@@ -57,7 +57,7 @@ while(($file = $dh->read()) !== false)
 		}
 		$tmp = preg_replace("#[\/][^\/]*$#i","",$activepath);
 		$line = "\n<tr>
-  <td bgcolor='#ffffff' height='25'>
+  <td bgcolor='#ffffff' height='26'>
   <a href=file_manage_main.php?activepath=".urlencode($tmp)."><img src=images/dir2.gif border=0 width=16 height=16 align=absmiddle>上级目录</a>
   </td>
   <td colspan='3' bgcolor='#ffffff'>
@@ -288,9 +288,7 @@ while(($file = $dh->read()) !== false)
    </td>
    </tr>";
 		$files[] = $line;
-	}
-	else
-	{
+	} else {
 		$line = "\n<tr bgcolor='#FFFFFF' height='26' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
     <td><a href=$activeurl/$file target=_blank>$file</td>
     <td>$filesize KB</td>

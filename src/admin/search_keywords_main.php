@@ -10,12 +10,10 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
-
 if (empty($pagesize)) $pagesize = 30;
 if (empty($pageno)) $pageno = 1;
 if (empty($dopost)) $dopost = '';
 if (empty($orderby)) $orderby = 'aid';
-
 //重载列表
 if ($dopost == 'getlist') {
     AjaxHead();
@@ -55,7 +53,6 @@ if ($dopost == '') {
     $totalRow = $row['dd'];
     include(DEDEADMIN."/templets/search_keywords_main.htm");
 }
-
 //获得特定的关键字列表
 function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
 {
@@ -64,9 +61,9 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
     <table width='98%' border='0' cellpadding='1' cellspacing='1' bgcolor='#cfcfcf' style='margin-bottom:3px' align='center'>
-    <tr align='center' bgcolor='#FBFCE2' height='24'>
+    <tr align='center' bgcolor='#FBFCE2' height='26'>
       <td width='5%'>选择</td>
-      <td width='6%' height='23'><a href='#' onclick=\"ReloadPage('aid')\">ID</a></td>
+      <td width='6%' height='26'><a href='#' onclick=\"ReloadPage('aid')\">ID</a></td>
       <td width='20%'>关键字</td>
       <td width='30%'>分词结果</td>
       <td width='6%'><a href='#' onclick=\"ReloadPage('count')\">频率</a></td>
@@ -83,8 +80,8 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     while ($row = $dsql->GetArray()) {
         $line = "
       <tr align='center' bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
-      <td height='24'><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
-      <td height='24'>{$row['aid']}</td>
+      <td height='26'><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
+      <td height='26'>{$row['aid']}</td>
       <td style='padding:5px;'><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
       <td style='padding:5px;'><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:95%;'></td>
       <td style='padding:5px;'><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
@@ -98,7 +95,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     ";
         echo $line;
     }
-    echo "  <tr align='left' bgcolor='#ffffff' height='30'>
+    echo "<tr align='left' bgcolor='#ffffff' height='30'>
             <td colspan='8' style='padding-left:10px;'>
             <a href='javascript:selAll()' class='btn btn-success btn-sm'>反选</a>
             <a href='javascript:noselAll()' class='btn btn-success btn-sm'>取消</a>

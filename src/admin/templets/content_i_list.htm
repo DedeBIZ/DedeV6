@@ -45,7 +45,7 @@
 	<table width='98%' border='0' cellpadding='2' cellspacing='1' bgcolor='#cfcfcf' align='center'
 		style="margin-top:8px;" class="table-bordered">
 		<tr bgcolor='#EEF4EA' height='26'>
-			<td background='images/wbg.gif' colspan='7' style="padding-left:10px;">
+			<td background='images/wbg.gif' colspan='7' style="padding-left:10px">
 				{dede:global.positionname/}文档列表 &nbsp;(使用鼠标右键进行常用操作)
 			</td>
 		</tr>
@@ -79,12 +79,12 @@
 						str_replace('\'', '' , @me)" /}')">
 						<b>{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</b>
 					</a>
-					<br />
+					<br>
 					　　发布时间：{dede:field.senddate function='GetDateTimeMk(@me)' /}
 				</td>
 				<td width="12%" height="26" align="center" class="py-3">
 					{dede:field.typeid function='GetTypename(@me)'/}
-					<br />
+					<br>
 					ID: {dede:field.id/}
 				</td>
 				<td width="11%" align="center" class="py-3">{dede:field.arcrank function='GetRankName(@me)' /}</td>

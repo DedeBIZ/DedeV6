@@ -13,16 +13,14 @@
       <form name='form1' action='sys_group_edit.php' method='post'>
         <input type='hidden' name='dopost' value='save'>
         <tr>
-          <td height="26" background="images/tbg.gif" align="left" style="padding-left:10px;"><b><a
-                href='sys_group.php'>系统用户组管理</a>&gt;&gt;修改用户组：</b></td>
+          <td height="26" background="images/tbg.gif" align="left" style="padding-left:10px"><b><a href='sys_group.php'>系统用户组管理</a> &gt;&gt; 修改用户组：</b></td>
         </tr>
         <tr>
           <td valign="top" bgcolor="#FFFFFF" align="center">
             <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
                 <td width="9%" height="30">组名称：</td>
-                <td width="91%" style="text-align:left;"> <input name="typename" type="text" id="typename"
-                    value="<?php echo $groupSet['typename']?>">
+                <td width="91%" style="text-align:left;"> <input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>">
                 </td>
               </tr>
               <tr>
@@ -46,8 +44,8 @@
         		$start++;
         		$lhead = "
         	 <tr> 
-           <td height='25' colspan='2' bgcolor='#F9FAF3' style='text-align:left;'>{$start}、".str_replace('>>','',$line)."</td></tr>
-           <tr><td height='25' colspan='2' style='text-align:left;'>
+           <td height='26' colspan='2' bgcolor='#F9FAF3' style='text-align:left;'>{$start}、".str_replace('>>','',$line)."</td></tr>
+           <tr><td height='26' colspan='2' style='text-align:left;'>
         		"; 
         		echo $lhead;
         	}
@@ -56,9 +54,9 @@
         		$ls = explode('>',$line);
         		$tag = $ls[1];
         		$tagname = str_replace('[br]','<br>',$ls[2]);
-        		if(!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
-        		else $tagname = str_replace('<br />', "<span>($tag)</span><br />", $tagname);
-        		echo "          	<label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label>\r\n";
+        		if(!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";
+        		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
+        		echo "<label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label>\r\n";
         	  $k++;
         	}
         }
@@ -67,10 +65,10 @@
           </td>
         </tr>
         <tr>
-          <td height='25' colspan='2' bgcolor='#F9FAF3' style="text-align:left;"><?php echo $start?>、插件权限</td>
+          <td height='26' colspan='2' bgcolor='#F9FAF3' style="text-align:left;"><?php echo $start?>、插件权限</td>
         </tr>
         <tr>
-          <td height='25' colspan='2' style="text-align:left;">
+          <td height='26' colspan='2' style="text-align:left;">
             <?php
          $l = 0;
          $dsql->SetQuery('SELECT plusname FROM #@__plus');

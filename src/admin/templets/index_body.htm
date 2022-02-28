@@ -85,7 +85,7 @@ $(function () {
                     <div class="card-body">
                         <table width="98%" class="table table-borderless">
                             <tr>
-                                <td width="30%" class="nline" style="text-align:right">您的级别：
+                                <td width="160" class="nline" style="text-align:right">您的级别：
                                     <?php
                                     if($cuserLogin->getUserType()==10) {
                                         echo "总管理员";
@@ -104,8 +104,8 @@ $(function () {
                                         <tr>
                                             <td class="nline" style="text-align:right" rowspan="5">PHP环境摘要：</td>
                                             <td class="nline" style="text-align:left">
-                                                <span style="margin-right:10px">PHP版本：<?php echo @phpversion(); ?></span>
-                                                <span>GD版本：<?php echo @gdversion(); ?></span>
+                                                <span>PHP版本：<?php echo @phpversion(); ?></span>
+                                                <span style="margin-left:10px">GD版本：<?php echo @gdversion(); ?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -119,8 +119,8 @@ $(function () {
                                         </tr>
                                         <tr>
                                             <td class="nline" style="text-align:left">
-                                                <span style="margin-right:10px">Register_Globals：<?php echo ini_get("register_globals") ? 'On' : 'Off'?></span>
-                                                <span>Magic_Quotes_Gpc：<?php echo ini_get("magic_quotes_gpc") ? 'On' : 'Off'?></span>
+                                                <span>Register_Globals：<?php echo ini_get("register_globals") ? 'On' : 'Off'?></span>
+                                                <span style="margin-left:10px">Magic_Quotes_Gpc：<?php echo ini_get("magic_quotes_gpc") ? 'On' : 'Off'?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -137,7 +137,7 @@ $(function () {
                                                 $n = 0;
                                                 foreach($needfunc as $k) {
                                                     if(!function_exists($k)) {
-                                                        echo "<span class='btn btn-danger'>[{$k}×]</span> ";
+                                                        echo "<span class='btn btn-danger btn-sm'>{$k} ×</span>";
                                                         $n++;
                                                     }
                                                 }
@@ -152,8 +152,8 @@ $(function () {
                                         <tr>
                                             <td class="nline" style="text-align:right">软件版本信息：</td>
                                             <td class="nline" style="text-align:left">
-                                                <span style="margin-right:10px">版本名称：<?php echo $cfg_soft_enname; ?></span>
-                                                <span>版本号：<?php echo $cfg_version; ?></span>
+                                                <span>版本名称：<?php echo $cfg_soft_enname; ?></span>
+                                                <span style="margin-left:10px">版本号：<?php echo $cfg_version; ?></span>
                                             </td>
                                         </tr>
                                     </table>
@@ -231,8 +231,8 @@ $(function () {
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td height="26" colspan="3" background="images/tbg.gif">
-                            <div style="float:left;padding-left:10px">增加快捷操作项</div>
-                            <div style="float:right;padding:4px 10px 0 0">
+                            <div style="float:left;margin-left:10px">增加快捷操作项</div>
+                            <div style="float:right;padding:2px 10px 0 0">
                                 <a href="javascript:CloseTab('addTab')"><img src="images/close.gif" width="12" height="12" border="0"></a>
                             </div>
                         </td>
@@ -250,7 +250,7 @@ $(function () {
                     </tr>
                     <tr>
                         <td height="36"></td>
-                        <td><input type="submit" name="Submit" value="保存项目" class="np coolbg" style="width:80px;cursor:pointer"></td>
+                        <td><input type="submit" name="Submit" value="保存项目" class="np coolbg"></td>
                     </tr>
                 </table>
             </form>
@@ -343,7 +343,7 @@ $(function () {
                 } else {
                     $("#_systeminfo").html(`
                     <div class="py-1">尚未启动商业版服务，原因：${rsp.msg}</div>
-                    <div class="py-1">目前是社区版开源免费，但商业版可以提高性能，支付功能，小程序等。</div>
+                    <div class="py-1">目前是社区版开源免费，但商业版可以提高性能，支付功能，小程序等</div>
                     <div class="py-1"><a href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}" target="_blank" class="btn btn-danger btn-sm">开启商业版</a></div>
                     `);
                 }

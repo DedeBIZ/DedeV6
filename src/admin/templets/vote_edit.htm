@@ -41,14 +41,13 @@
       }, function (start) {
         $(this).val(start.format("YYYY-MM-DD HH:mm"));
       });
-
     })
   </script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="26" background="images/tbg.gif" style="padding-left:10px;"><a href="vote_main.php"><b>投票管理</b></a>&gt;&gt;增加投票&nbsp;&nbsp;</td>
+      <td height="26" background="images/tbg.gif" style="padding-left:10px"><a href="vote_main.php"><b>投票管理</b></a> &gt;&gt; 增加投票&nbsp;&nbsp;</td>
     </tr>
     <tr>
       <td height="200" bgcolor="#FFFFFF" valign="top">
@@ -68,13 +67,11 @@
             </tr>
             <tr>
               <td align="center">开始时间：</td>
-              <td><input class="datepicker1" name="starttime" type="text" id="starttime"
-                  value="<?php echo GetDateMk($row['starttime'])?>"></td>
+              <td><input class="datepicker1" name="starttime" type="text" id="starttime" value="<?php echo GetDateMk($row['starttime'])?>"></td>
             </tr>
             <tr>
               <td align="center">结束时间：</td>
-              <td><input class="datepicker1" name="endtime" type="text" id="endtime"
-                  value="<?php echo GetDateMk($row['endtime'])?>"></td>
+              <td><input class="datepicker1" name="endtime" type="text" id="endtime" value="<?php echo GetDateMk($row['endtime'])?>"></td>
             </tr>
             <tr>
               <td align="center">是否允许游客投票：</td>
@@ -106,7 +103,7 @@
                 多选</label> </td>
             </tr>
             <tr>
-              <td align="center">投 票 项：<br />
+              <td align="center">投 票 项：<br>
                 (请按相同的形式来增加或修改节点，其中属性：id不能重复) </td>
               <td><textarea name="votenote" rows="8" id="votenote"
                   style="width:80%"><?php echo $row['votenote']?></textarea>

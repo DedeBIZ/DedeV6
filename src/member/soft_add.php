@@ -123,7 +123,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
-        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请联系管理员。", "javascript:;");
+        ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请联系管理员", "javascript:;");
         exit();
     }
 
@@ -161,7 +161,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     if (empty($addtable)) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作。", "javascript:;");
+        ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     }
     $inQuery = "INSERT INTO `$addtable`(aid,typeid,filetype,language,softtype,accredit,
@@ -174,7 +174,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         echo $inQuery;
         exit();
-        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方。".str_replace('"', '', $gerr), "javascript:;");
+        ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请把相关信息提交给DedeCMS官方".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }
 

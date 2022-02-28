@@ -56,8 +56,7 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="19" background="images/tbg.gif" style="padding-left:10px;"><b><a
-            href="mytag_main.php">自定义标记管理</a></b>&gt;&gt;增加新标记</td>
+      <td height="19" background="images/tbg.gif" style="padding-left:10px"><b><a href="mytag_main.php">自定义标记管理</a></b> &gt;&gt; 增加新标记</td>
     </tr>
     <tr>
       <td height="200" bgcolor="#FFFFFF" valign="top">
@@ -67,12 +66,12 @@
             <input type='hidden' name='dopost' value='save' />
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
             <tr>
-              <td height="26" colspan="3">自定义标记的调用方法：<br />
+              <td height="26" colspan="3">自定义标记的调用方法：<br>
                 {dede:mytag name='标记名称' ismake='是否含板块代码（yes 或 no）' typeid='栏目ID'/}
-                <br />
-                1、name 标记名称，该项是必须的属性，以下 2、3是可选属性；<br />
-                2、ismake 默认是 no 表示设定的纯HTML代码， yes 表示含板块标记的代码；<br />
-                3、typeid 表示所属栏目的ID，默认为 0 ，表示所有栏目通用的显示内容，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目ＩＤ。</td>
+                <br>
+                1、name 标记名称，该项是必须的属性，以下 2、3是可选属性；<br>
+                2、ismake 默认是 no 表示设定的纯HTML代码， yes 表示含板块标记的代码；<br>
+                3、typeid 表示所属栏目的ID，默认为 0 ，表示所有栏目通用的显示内容，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目ＩＤ</td>
             </tr>
             <tr>
               <td width="15%" height="26" align="center">所属栏目：</td>

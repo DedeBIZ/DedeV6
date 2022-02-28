@@ -28,8 +28,7 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="19" background="images/tbg.gif" style="padding-left:10px;"><a
-          href='<?php echo $ENV_GOBACK_URL; ?>'><b>会员管理</b></a> &gt;&gt; 提升为管理员</td>
+      <td height="19" background="images/tbg.gif" style="padding-left:10px"><a href='<?php echo $ENV_GOBACK_URL; ?>'><b>会员管理</b></a> &gt;&gt; 提升为管理员</td>
     </tr>
     <tr>
       <td height="200" bgcolor="#FFFFFF" align='center'><?php
@@ -51,7 +50,7 @@
               <td width="83%" class='bline' align="left"><?php
 			  echo "<b>".$row['userid']."</b>";
               if($row['face']!='') {
-			     echo "<br /><img src='{$row['face']}' width='80'/>";
+			     echo "<br><img src='{$row['face']}' width='80'/>";
 			  }
 			  ?></td>
             </tr>
@@ -96,8 +95,7 @@
             </tr>
             <tr>
               <td height="30" align="right">电子邮箱：</td>
-              <td align="left"><input name="email" type="text" id="email" size="16" style="width:200px"
-                  value="<?php echo $row['email']?>" />
+              <td align="left"><input name="email" type="text" id="email" size="16" style="width:200px" value="<?php echo $row['email']?>" />
                 &nbsp;</td>
             </tr>
             <tr>

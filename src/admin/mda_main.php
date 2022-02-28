@@ -418,7 +418,7 @@ else {
     <tr>
       <td colspan='2' bgcolor='#F9FCEF'><table width='270' border='0' cellpadding='0' cellspacing='0'>
           <tr align='center' height='26'>
-            <td width='90'><input name='imageField1' type='image' class='np' src='{$cfg_plus_dir}/img/button_ok.gif' width='60' height='22' border='0' /></td>
+            <td width='90'><input name='imageField1' type='image' class='np' src='{$cfg_plus_dir}/img/button_ok.gif' width='60' height='26' border='0' /></td>
             <td width='90'></td>
             <td></td>
           </tr>

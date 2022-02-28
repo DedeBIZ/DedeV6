@@ -87,7 +87,7 @@ else if ($action == 'editload') {
       <tr>
         <td height="30">&nbsp;</td>
         <td colspan="2">
-          使用不带http及任何附加目录的网址<br />
+          使用不带http及任何附加目录的网址<br>
           如：news.dedebiz.com
         </td>
       </tr>

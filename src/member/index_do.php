@@ -29,7 +29,7 @@ if ($fmdo == 'sendMail') {
     $mailtitle = "{$cfg_webname}--会员邮件验证通知";
     $mailbody = '';
     $mailbody .= "尊敬的用户[{$cfg_ml->fields['uname']}]，您好：\r\n";
-    $mailbody .= "欢迎注册成为[{$cfg_webname}]的会员。\r\n";
+    $mailbody .= "欢迎注册成为[{$cfg_webname}]的会员\r\n";
     $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏访问这地址：\r\n\r\n";
     $mailbody .= "{$url}\r\n\r\n";
     $mailbody .= "Power by https://www.dedebiz.com DedeBIZ内容管理系统\r\n";

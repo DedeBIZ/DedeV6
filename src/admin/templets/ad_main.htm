@@ -9,15 +9,14 @@
   <link href="css/base.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/allbg.gif" leftmargin="8" topmargin='8'>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6"
-    class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="26" background="images/tbg.gif" colspan="7" style="padding-left:10px;">
+      <td height="26" background="images/tbg.gif" colspan="7" style="padding-left:10px">
         <a href="ad_main.php">广告管理</a> &nbsp;<a href="ad_add.php" class="btn btn-success btn-sm">增加一个新广告</a>
         <a href="adtype_main.php" class="btn btn-success btn-sm">广告分类管理</a></td>
     </tr>
     <tr>
-      <td height="26" colspan="7" style="padding-left:10px;" bgcolor="#FFFFFF">
+      <td height="26" colspan="7" style="padding-left:10px" bgcolor="#FFFFFF">
         <table style="width: 70%;" class="table-borderless">
           <tr>
             <form action='ad_main.php' method='get' name='form3' id="form3">
@@ -56,8 +55,7 @@
     </tr>
 
     {dede:datalist}
-    <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-      onMouseOut="javascript:this.bgColor='#FFFFFF';">
+    <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
       <td>{dede:field.aid /}</td>
       <td>{dede:field.clsname function='TestType(@me,1)'/}</td>
       <td>{dede:field.adname /}</td>

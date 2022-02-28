@@ -17,7 +17,7 @@
       else if (myems[1].checked) itxt.value = document.getElementById("list2").innerHTML;
       else if (myems[2].checked) itxt.value = document.getElementById("list3").innerHTML;
       else if (myems[3].checked) itxt.value = document.getElementById("list4").innerHTML;
-      itxt.value = itxt.value.replace("<BR>", "<BR/>");
+      itxt.value = itxt.value.replace("<BR>", "<br>");
       itxt.value = itxt.value.toLowerCase();
     }
     function ShowHide(objname) {
@@ -31,8 +31,7 @@
       if (document.all) {
         var posLeft = window.event.clientY - 200;
         var posTop = window.event.clientX - 300;
-      }
-      else {
+      } else {
         var posLeft = 100;
         var posTop = 100;
       }
@@ -57,11 +56,10 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px;">频道管理</div>
+    <div class="bodytitletxt" style="padding-left:10px">频道管理</div>
   </div>
   <center>
-    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center"  class="table maintable table-bordered"
-      style="background:#CFCFCF;">
+    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center"  class="table maintable table-bordered" style="background:#CFCFCF;">
       <form action="freelist_edit.php" method="post" name="form1" onSubmit="return CheckSubmit();">
         <input type="hidden" name="dopost" value="save">
         <input type="hidden" name="aid" value="<?php echo $row['aid']?>">
@@ -69,7 +67,7 @@
           <td height="26" bgcolor="#EDF9D5" background="images/tbg.gif">
             <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table-borderless">
               <tr>
-                <td width="35%" height="18" align="left" style="padding-left:10px;">
+                <td width="35%" height="18" align="left" style="padding-left:10px">
                   <a href="freelist_main.php"><strong>自自由列表管理</strong></a>
                   <strong> &gt;&gt; 修改自由列表：</strong>
                 </td>
@@ -86,23 +84,20 @@
                   <table width="100%" border="0" cellspacing="1" cellpadding="0">
                     <tr>
                       <td height="26" colspan="2" align="left"><img src="images/help.gif">自由列表标记的说明：自由列表标记(freelist)的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成Google
-                        Map、生成按自定义排序规则的文章列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成HTML或访问速度。</td>
+                        Map、生成按自定义排序规则的文章列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成HTML或访问速度</td>
                     </tr>
                     <tr>
                       <td width="16%" height="26" align="left">自由列表标题：</td>
-                      <td width="84%" align="left"><input name="title" type="text" id="title" style="width:35%"
-                          value="<?php echo $row['title']?>"></td>
+                      <td width="84%" align="left"><input name="title" type="text" id="title" style="width:35%" value="<?php echo $row['title']?>"></td>
                     </tr>
                     <tr>
                       <td height="26" align="left">列表HTML存放目录：</td>
-                      <td align="left"><input name="listdir" type="text" id="listdir" style="width:35%"
-                          value="<?php echo $row['listdir']?>">
+                      <td align="left"><input name="listdir" type="text" id="listdir" style="width:35%" value="<?php echo $row['listdir']?>">
                         {listdir}变量的值</td>
                     </tr>
                     <tr>
                       <td height="26" align="left">目录默认页名称：</td>
-                      <td align="left"><input name="defaultpage" type="text" id="defaultpage" style="width:35%"
-                          value="<?php echo $row['defaultpage']?>">
+                      <td align="left"><input name="defaultpage" type="text" id="defaultpage" style="width:35%" value="<?php echo $row['defaultpage']?>">
                         <label><input name="nodefault" type="checkbox" id="nodefault" value="1"
                           <?php  if($row['nodefault']==1) echo " checked"; ?>>
                         不使用目录默认主页</label>
@@ -110,21 +105,18 @@
                     </tr>
                     <tr>
                       <td height="26" align="left">命名规则：</td>
-                      <td align="left"><input name="namerule" type="text" id="namerule" style="width:35%"
-                          value="<?php echo $row['namerule']?>"></td>
+                      <td align="left"><input name="namerule" type="text" id="namerule" style="width:35%" value="<?php echo $row['namerule']?>"></td>
                     </tr>
                     <tr>
                       <td height="36" align="left">列表模板：</td>
-                      <td align="left"><input name="templet" type="text" id="templet" style="width:300px"
-                          value="<?php echo $row['templet']?>">
+                      <td align="left"><input name="templet" type="text" id="templet" style="width:300px" value="<?php echo $row['templet']?>">
                         <button type="button" name="set4" style="width:60px"
                           onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览...</button></td>
                     </tr>
                     <tr>
                       <td height="30" align="left">最大列出页数：</td>
                       <td align="left">
-                        <input name="maxpage" type="text" id="maxpage" style="width:100px"
-                          value="<?php echo $row['maxpage']; ?>">
+                        <input name="maxpage" type="text" id="maxpage" style="width:100px" value="<?php echo $row['maxpage']; ?>">
                       </td>
                     </tr>
                     <tr>
@@ -134,8 +126,7 @@
                     </tr>
                     <tr>
                       <td height="26" align="left">关键字：</td>
-                      <td align="left"><input name="keywords" type="text" id="keywords" style="width:60%"
-                          value="<?php echo $row['keywords']; ?>" /></td>
+                      <td align="left"><input name="keywords" type="text" id="keywords" style="width:60%" value="<?php echo $row['keywords']; ?>" /></td>
                     </tr>
                     <tr>
                       <td height="26" align="left">列表描述：</td>
@@ -217,8 +208,7 @@
                   <input name="pagesize" type="text" id="pagesize" value="<?php echo $ctag->GetAtt('pagesize')?>"
                     size="4">
                   　显示列数：
-                  <input name="col" type="text" id="col"
-                    value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v; ?>"
+                  <input name="col" type="text" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v; ?>"
                     size="4">
                   标题长度：
                   <input name="titlelen" type="text" id="titlelen" value="<?php echo $ctag->GetAtt('titlelen')?>"
@@ -290,7 +280,7 @@
               </tr>
               <tr>
                 <td height="80" align="left" id='innervar' style="display:none">
-                  <span><img src="images/help.gif">支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,<br>stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示。<br>·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y--%d H:i:s',@me)/]</span>
+                  <span><img src="images/help.gif">支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,<br>stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示<br>·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y--%d H:i:s',@me)/]</span>
                 </td>
               </tr>
               <tr>

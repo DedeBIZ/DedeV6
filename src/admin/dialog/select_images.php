@@ -150,7 +150,7 @@ table{background:#fff}
             <td width="30%" class="linerow">修改时间</td>
         </tr>
         <tr>
-            <td class="linerow" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览。</td>
+            <td class="linerow" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
         </tr>
         <?php
         $dh = dir($inpath);

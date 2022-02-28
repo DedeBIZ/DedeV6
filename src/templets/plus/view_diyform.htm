@@ -20,7 +20,7 @@
 		</div>
 		<div class="cbox mceneter">
 			<div class="maplist">
-			<br />
+			<br>
 <table class='table' cellspacing="1">
 <?php
 echo '<tbody>';
@@ -36,9 +36,7 @@ foreach($fieldlist as $field=>$fielddata)
 	else if($fielddata[1]=='addon')
 	{
 			$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='img/addon.gif' border='0' /> 相关附件</a>";
-	}
-	else
-	{
+	} else {
 		if(!in_array($fielddata[1], $allowhtml))
 		{
 			$row[$field] = htmlspecialchars($row[$field]);

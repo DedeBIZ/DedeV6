@@ -27,8 +27,8 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="19" background="images/tbg.gif" style="padding-left:10px;">
-        <b><a href="templets_one.php">单独页面管理</a></b>&gt;&gt;增加新页面
+      <td height="19" background="images/tbg.gif" style="padding-left:10px">
+        <b><a href="templets_one.php">单独页面管理</a></b> &gt;&gt; 增加新页面
       </td>
     </tr>
     <tr>
@@ -38,7 +38,7 @@
             <input type='hidden' name='dopost' value='save'>
             <tr>
               <td colspan="2">
-                单独页面管理仅适用于页面较少的情况(建议小于500个页面)，大量文档的用文章模型进行管理。
+                单独页面管理仅适用于页面较少的情况(建议小于500个页面)，大量文档的用文章模型进行管理
               </td>
             </tr>
             <tr>
@@ -71,15 +71,14 @@
             	}
             	echo "</select>\r\n";
             	?>
-                <br />
+                <br>
                 (通过这个标识来识别类同页面，模板中用{dede:likesgpage id='标识'/}调用有相同标识的页面)
               </td>
             </tr>
             <tr>
               <td height="26" align="center">文件名：</td>
               <td>
-                <input name="nfilename" type="text" id="nfilename"
-                  value="<?php echo $cfg_arcdir."/newfile{$nowid}.html"; ?>" size="30">
+                <input name="nfilename" type="text" id="nfilename" value="<?php echo $cfg_arcdir."/newfile{$nowid}.html"; ?>" size="30">
                 （相对于CMS安装目录）
               </td>
             </tr>

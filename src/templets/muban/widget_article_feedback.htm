@@ -28,7 +28,7 @@
 				<div class="form-check">
 					<input type="checkbox" value="1" name="notuser" id="iptAny" class="form-check-input" />
 					<label class="form-check-label" for="iptAny">
-						匿名评论？
+						匿名评论
 					</label>
 				</div>
 			</div>
@@ -169,7 +169,7 @@
             if (result.code !== 200) {
 				$(`._feedback_reply`).html("");
 				ShowAlert(`._feedback_reply[for="${fid}"]`, 
-				'回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/member/login.php">[点击登录]</a>后再来回复。', 'warning', 5000);
+				'回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/member/login.php">[点击登录]</a>后再来回复', 'warning', 5000);
             } else {
 				$(`._feedback_reply`).html("");
 				$(`._feedback_reply[for="${fid}"]`).html(replyPannel);

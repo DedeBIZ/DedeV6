@@ -53,7 +53,7 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE mid='$id' ");
                 $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET mid='0' WHERE mid='$id'");
             } else {
-                ShowMsg("无法删除此会员，如果这个会员是<b>[管理员]</b>，<br />必须先删除这个<b>[管理员]</b>才能删除此帐号", $ENV_GOBACK_URL, 0, 5000);
+                ShowMsg("无法删除此会员，如果这个会员是<b>[管理员]</b>，<br>必须先删除这个<b>[管理员]</b>才能删除此帐号", $ENV_GOBACK_URL, 0, 5000);
                 exit();
             }
         }
@@ -102,7 +102,7 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET mid='0' WHERE mid IN (".str_replace("`", ",", $id).")");
             } else {
-                ShowMsg("无法删除此会员，如果这个会员是管理员关连的ID，<br />必须先删除这个管理员才能删除此帐号", $ENV_GOBACK_URL, 0, 3000);
+                ShowMsg("无法删除此会员，如果这个会员是管理员关连的ID，<br>必须先删除这个管理员才能删除此帐号", $ENV_GOBACK_URL, 0, 3000);
                 exit();
             }
         }

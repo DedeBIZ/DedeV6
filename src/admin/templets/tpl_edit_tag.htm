@@ -31,7 +31,7 @@ function Post()
 {
 	if (document.form1.filename.value=="")
 	{
-		ShowMsg("文件名不能为空。");
+		ShowMsg("文件名不能为空");
 		document.form1.filename.focus();
 		return false;
 	}
@@ -46,9 +46,9 @@ function Post()
 <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
 <body bgcolor="#F2F4F3" leftmargin="8" topmargin="8">
-<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ECFAD3" style="margin-bottom:8px;" class="mt-3">
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ECFAD3" style="margin-bottom:10px" class="mt-3">
   <tr> 
-    <td height="26" style="border:1px dotted #BFD67C" background="images/wbg.gif" ><a href='templets_tagsource.php'><b>标签源码碎片管理</b></a> &gt;&gt; <b><?php echo $title; ?></b></td>
+    <td height="26" style="border:1px dotted #BFD67C" background="images/wbg.gif" style="padding-left:10px"><a href='templets_tagsource.php'><b>标签源码碎片管理</b></a> &gt;&gt; <b><?php echo $title; ?></b></td>
   </tr>
 </table>
 <form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
@@ -57,8 +57,8 @@ function Post()
 <input type="hidden" name="action" value="savetagfile" />
 	<table width='98%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf' align="center" class="table maintable table-bordered mt-3">
 		<tr bgcolor='#EEF4EA'>
-			<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px;">
-					<span><b><?php echo $title; ?></b>(修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份)</span>
+			<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px">
+					<span><b><?php echo $title; ?></b>（修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份）</span>
 			</td>
 		</tr>
 		<tr bgcolor='#FFFFFF'>
@@ -71,9 +71,9 @@ function Post()
 		<tr bgcolor='#FFFFFF'>
   		<td> 标签格式说明 </td>
   		<td>
-  			标签文件名为：标签名.lib.php <br />
-  			接口函数定义为：function lib_标签名(&$ctag,&$refObj)，返回值是结果字符串<br />
-  			修改标签时为了防止出错，您也可以修改它的名称(同时修改文件名和函数名)，这样等同继承了原来标签的代码建立一个新的标签。
+  			标签文件名为：标签名.lib.php <br>
+  			接口函数定义为：function lib_标签名(&$ctag,&$refObj)，返回值是结果字符串<br>
+  			修改标签时为了防止出错，您也可以修改它的名称(同时修改文件名和函数名)，这样等同继承了原来标签的代码建立一个新的标签
   		</td>
 		</tr>
     <tr bgcolor='#FFFFFF'>

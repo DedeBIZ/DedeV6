@@ -20,7 +20,7 @@
         ShowMsg("最大只允许15个选项");
         return;
       }
-      var htmldata = "<br/>选项" + i + "：<input name='voteitem" + i + "' type='text' size='30' class='mt-2'>";
+      var htmldata = "<br>选项" + i + "：<input name='voteitem" + i + "' type='text' size='30' class='mt-2'>";
       jQuery("#voteitem").append(htmldata);
     }
     function ResetItem() {
@@ -36,7 +36,6 @@
       }
     }
   </script>
-
 <script language="javascript">
   $(document).ready(function () {
     $('.datepicker1').daterangepicker({
@@ -66,14 +65,13 @@
     }, function (start) {
       $(this).val(start.format("YYYY-MM-DD HH:mm"));
     });
-
   })
 </script>
 </head>
 <body background="images/allbg.gif" leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="26" background="images/tbg.gif" style="padding-left:10px;"><a href='vote_main.php'>投票管理</a>&gt;&gt;增加投票&nbsp;&nbsp;</td>
+      <td height="26" background="images/tbg.gif" style="padding-left:10px"><a href='vote_main.php'>投票管理</a> &gt;&gt; 增加投票&nbsp;&nbsp;</td>
     </tr>
     <tr>
       <td height="200" bgcolor="#FFFFFF" valign="top">
