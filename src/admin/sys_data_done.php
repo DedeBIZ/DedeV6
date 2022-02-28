@@ -16,9 +16,7 @@ CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
 $bkdir = DEDEDATA.'/'.$cfg_backup_dir;
 //跳转到一下页的js
-$gotojs = "function GotoNextPage(){
-    document.gonext."."submit();
-}"."\r\nset"."Timeout('GotoNextPage()',500);";
+$gotojs = "function GotoNextPage(){document.gonext."."submit();}"."\r\nset"."Timeout('GotoNextPage()',500);";
 $dojs = "<script>$gotojs</script>";
 /*--------------------
 备份数据
@@ -26,7 +24,7 @@ function __bak_data();
 --------------------*/
 if ($dopost == 'bak') {
     if (empty($tablearr)) {
-        ShowMsg('您没选中任何表', 'javascript:;');
+        ShowMsg('您没选中数据表', 'javascript:;');
         exit();
     }
     if (!is_dir($bkdir)) {
@@ -84,7 +82,7 @@ if ($dopost == 'bak') {
             fclose($fp);
             $tmsg .= "备份数据表结构信息完成";
         }
-        $tmsg .= "正在进行数据备份的初始化工作，请稍后";
+        $tmsg .= "正在进行数据备份初始化工作，请稍后";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php'>
            <input type='hidden' name='isstruct' value='$isstruct' />
            <input type='hidden' name='dopost' value='bak' />
@@ -125,7 +123,7 @@ if ($dopost == 'bak') {
                 $fp = fopen($bakfilename, "w");
                 fwrite($fp, $bakStr);
                 fclose($fp);
-                $tmsg = "完成到 {$m} 条记录的备份，继续备份 {$nowtable}";
+                $tmsg = "完成到{$m}条数据备份，继续备份{$nowtable}";
                 $doneForm = "<form name='gonext' method='post' action='sys_data_done.php'>
                 <input type='hidden' name='isstruct' value='$isstruct' />
                 <input type='hidden' name='dopost' value='bak' />
@@ -167,7 +165,7 @@ if ($dopost == 'bak') {
                 }
             }
         }
-        $tmsg = "完成到 {$m} 条记录的备份，继续备份 {$nowtable}";
+        $tmsg = "完成到{$m}条数据备份，继续备份{$nowtable}";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=bak'>
           <input type='hidden' name='isstruct' value='$isstruct' />
           <input type='hidden' name='fsize' value='$fsize' />
@@ -185,7 +183,7 @@ function __re_data();
 -------------------------*/ 
 else if ($dopost == 'redat') {
     if ($bakfiles == '') {
-        ShowMsg('没指定任何要还原的文件', 'javascript:;');
+        ShowMsg('没指定任何要还原数据', 'javascript:;');
         exit();
     }
     $bakfilesTmp = $bakfiles;
@@ -214,7 +212,7 @@ else if ($dopost == 'redat') {
         if ($delfile == 1) {
             @unlink("$bkdir/$structfile");
         }
-        $tmsg = "完成数据表信息还原，准备还原数据";
+        $tmsg = "完成数据表还原，继续还原数据";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=redat'>
         <input type='hidden' name='startgo' value='1' />
         <input type='hidden' name='delfile' value='$delfile' />
@@ -240,10 +238,10 @@ else if ($dopost == 'redat') {
             @unlink("$bkdir/$nowfile");
         }
         if ($bakfilesTmp == "") {
-            ShowMsg('成功还原所有的文件的数据', 'javascript:;');
+            ShowMsg('成功还原所有的文件数据', 'javascript:;');
             exit();
         }
-        $tmsg = "成功还原 {$nowfile} 的 {$oknum} 条记录，正在准备还原其它数据";
+        $tmsg = "成功还原{$nowfile}文件{$oknum}条数据，正在继续还原其它数据";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=redat'>
         <input type='hidden' name='startgo' value='1' />
         <input type='hidden' name='delfile' value='$delfile' />
@@ -256,13 +254,8 @@ else if ($dopost == 'redat') {
 function PutInfo($msg1, $msg2)
 {
     global $cfg_soft_lang;
-    $msginfo = "<html>\n<head>
-        <meta http-equiv='Content-Type' content='text/html; charset={$cfg_soft_lang}' />
-        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-        <link rel='stylesheet' href='../static/css/bootstrap.min.css'>
-        <title>提示信息</title>
-        <base target='_self'/>\n</head>\n<body leftmargin='0' topmargin='0'>\n<main class='container'><div class='modal' tabindex='-1' role='dialog' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>提示信息</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
-    echo $msginfo."\n</body>\n</html>";
+    $msginfo = "<html><head><meta charset='{$cfg_soft_lang}'><meta name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no'><link rel='stylesheet' href='../static/css/bootstrap.min.css'><title>提示信息</title><base target='_self'></head><body><main class='container'><div class='modal' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>提示信息</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
+    echo $msginfo."</body></html>";
 }
 function RpLine($str)
 {
