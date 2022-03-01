@@ -474,7 +474,7 @@ class MemberLogin
         if ($this->M_Rank == 0) {
             $sta .= "您目前的身份是：普通会员";
         } else {
-            $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$this->M_Rank."'");
+            $row = $dsql->GetOne("Select membername From `#@__arcrank` where `rank`='".$this->M_Rank."'");
             $sta .= "您目前的身份是：".$row['membername'];
             $rs = $dsql->GetOne("Select id From `#@__admin` where userid='".$this->M_LoginID."'");
             if (!is_array($rs)) {

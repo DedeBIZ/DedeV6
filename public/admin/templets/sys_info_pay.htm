@@ -19,7 +19,7 @@ var payment_image = new Array(
 <?php 
 $mch_temp = array();
 foreach($cfg_pay_info['type'] as $k => $val){ 
-	$mch_temp[] = '"../member/templets/images/pay/'.addslashes($cfg_pay_info['logo'][$k]).'"';
+	$mch_temp[] = '"../user/templets/images/pay/'.addslashes($cfg_pay_info['logo'][$k]).'"';
 }
 echo implode(",\n",$mch_temp);
 ?>
@@ -155,7 +155,7 @@ foreach($payment_arr as $value){
 <td align="left" bgcolor="#FFFFFF">
   <a id="payreg" href="http://union.tenpay.com/mch/mch_register.shtml?posid=22&actid=84&opid=50&whoid=31&sp_suggestuser=1202347401" target="_bank" style="margin-left:6px;">点击申请</a>
   <br>
-  <img src="../../member/images/pay/tenpay.jpg" id="regimage" />
+  <img src="../../user/images/pay/tenpay.jpg" id="regimage" />
   <p>
   <span id="paydes">财付通是腾讯公司为促进中国电子商务的发展需要，满足互联网用户价值需求，针对网上交易安全而精心推出的一系列服务</span>
   </p> </td>

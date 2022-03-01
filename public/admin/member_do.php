@@ -198,7 +198,7 @@ else if ($dopost == "memberlogin") {
     CheckPurview('member_Edit');
     PutCookie('DedeUserID', $id, 1800);
     PutCookie('DedeLoginTime', time(), 1800);
-    if (empty($jumpurl)) header("location:../member/index.php");
+    if (empty($jumpurl)) header("location:../user/index.php");
     else header("location:$jumpurl");
 } else if ($dopost == "deoperations") {
     $nid = preg_replace('#[^0-9,]#', '', preg_replace('#`#', ',', $nid));

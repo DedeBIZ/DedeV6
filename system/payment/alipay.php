@@ -182,15 +182,15 @@ class Alipay
         if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'WAIT_SELLER_SEND_GOODS' || $_GET['trade_status'] == 'TRADE_SUCCESS')
         {
             if($ordertype=="goods"){ 
-                if($this->success_db($order_sn))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
-                else  return $msg = "支付失败<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                if($this->success_db($order_sn))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
+                else  return $msg = "支付失败<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
             } else if ( $ordertype=="member" ) {
                 $oldinf = $this->success_mem($order_sn,$pname,$product,$pid);
-                return $msg = "<span style='color:#dc3545'>".$oldinf."</span><br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                return $msg = "<span style='color:#dc3545'>".$oldinf."</span><br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
             }
         } else {
             $this->log_result ("verify_failed");
-            return $msg = "支付失败<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+            return $msg = "支付失败<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
         }
     }
 

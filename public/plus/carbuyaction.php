@@ -228,7 +228,7 @@ if (!isset($dopost) || empty($dopost)) {
     if (preg_match("/S-P[0-9]+RN[0-9]/", $oid)) {
         $oid = trim($oid);
     } else {
-        ShowMsg("您的订单号不存在", "/member/shops_orders.php", 0, 2000);
+        ShowMsg("您的订单号不存在", "/user/shops_orders.php", 0, 2000);
         exit();
     }
 

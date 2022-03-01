@@ -18,7 +18,7 @@ define('DEDEINC', str_replace("\\", '/', dirname(__FILE__)));
 define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6)).'public'); // 站点根目录
 define('BIZROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6))); // BIZ根目录
 define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
-define('DEDEMEMBER', DEDEROOT.'/member');
+define('DEDEMEMBER', DEDEROOT.'/user');
 define('DEDETEMPLATE', DEDEROOT.'/templets');
 define('DEDEBIZURL', "https://www.dedebiz.com");//Dede商业支持
 define('DEDEVER', 6);//当前系统大版本
@@ -175,7 +175,7 @@ $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
 $cfg_data_dir = $cfg_cmspath.'/data';
 $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
 //会员目录
-$cfg_member_dir = $cfg_cmspath.'/member';
+$cfg_member_dir = $cfg_cmspath.'/user';
 $cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
 //专题列表的存放路径
 $cfg_special = $cfg_cmspath.'/special';

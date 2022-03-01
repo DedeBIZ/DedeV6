@@ -20,13 +20,13 @@
 <script>
     //校验是否登录
     function CheckLogin() {
-        $.get("{dede:global.cfg_cmsurl/}/member/ajax_loginsta.php?format=json",function(data) {
+        $.get("{dede:global.cfg_cmsurl/}/user/ajax_loginsta.php?format=json",function(data) {
             let result = JSON.parse(data);
             if (result.code === 200) {
                 $("#_login").html(`
                     欢迎，${result.data.username}
-                    <a class="ml-2" href="{dede:global.cfg_cmsurl/}/member/">[会员中心]</a>
-                    <a class="ml-2" href="{dede:global.cfg_cmsurl/}/member/index_do.php?fmdo=login&dopost=exit">[退出]</a>
+                    <a class="ml-2" href="{dede:global.cfg_cmsurl/}/user/">[会员中心]</a>
+                    <a class="ml-2" href="{dede:global.cfg_cmsurl/}/user/index_do.php?fmdo=login&dopost=exit">[退出]</a>
                 `);
                 $("#iptUsername").val(result.data.username);
                 $("#iptUsername").attr("disabled", "disabled");

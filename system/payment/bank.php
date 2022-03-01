@@ -17,7 +17,7 @@ class bank
     *
     * @return void
     */
-    var $orderurl = '../member/shops_products.php';
+    var $orderurl = '../user/shops_products.php';
     
     function bank()
     {
@@ -46,7 +46,7 @@ class bank
         $cart = new MemberShops();
         $cart->clearItem();
         $cart->MakeOrders();
-        if($payment=="member") $button="您可以 <a href='/'>返回首页</a> 或去 <a href='/member/operation.php'>会员中心</a>";
+        if($payment=="member") $button="您可以 <a href='/'>返回首页</a> 或去 <a href='/user/operation.php'>会员中心</a>";
         else $button="您可以 <a href='/' class='btn btn-success'>返回首页</a> 或去 <a class='btn btn-success' href='{$this->orderurl}?oid=".$order."'>查看订单</a>";
         return $button;
     }

@@ -184,21 +184,21 @@ class yeepay
                 #    并且需要对返回的处理进行事务控制，进行记录的排它性处理，防止对同一条交易重复发货的情况发生.                
                 if($r9_BType == "1" || $r9_BType == "3"){
                     if($ordertype == "goods"){ 
-                        if($this->success_db($r6_Order))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
-                        else  return $msg = "支付失败!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                        if($this->success_db($r6_Order))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
+                        else  return $msg = "支付失败!<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
                     } else if ($ordertype=="member") {
                         $oldinf = $this->success_mem($r6_Order,$pname,$product,$pid);
-                        return $msg = "<span style='color:#dc3545'>".$oldinf."</span><br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                        return $msg = "<span style='color:#dc3545'>".$oldinf."</span><br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
                     }
                 } else if ( $r9_BType == "2" ){
                     #如果需要应答机制则必须回写流,以success开头,大小写不敏感.
                     echo "success";
                     if($ordertype=="goods"){ 
-                        if($this->success_db($r6_Order))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
-                        else  return $msg = "支付失败!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                        if($this->success_db($r6_Order))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
+                        else  return $msg = "支付失败!<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
                     } else if ($ordertype=="member") {
-                        if($this->success_mem($r6_Order,$pname,$product,$pid))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
-                        else  return $msg = "支付失败!<br> <a href='/'>返回主页</a> <a href='/member'>会员中心</a>";
+                        if($this->success_mem($r6_Order,$pname,$product,$pid))  return $msg = "支付成功!<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
+                        else  return $msg = "支付失败!<br> <a href='/'>返回主页</a> <a href='/user'>会员中心</a>";
                     }
                 }
             }

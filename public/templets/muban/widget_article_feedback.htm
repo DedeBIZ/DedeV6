@@ -164,12 +164,12 @@
 				<button class="btn btn-success btnSend" type="button" onClick='SendReplyFeedback(${fid})'>回复</button>
 			</div>
 		</div>`;
-        $.get("{dede:global.cfg_cmsurl/}/member/ajax_loginsta.php?format=json", function(data) {
+        $.get("{dede:global.cfg_cmsurl/}/user/ajax_loginsta.php?format=json", function(data) {
             let result = JSON.parse(data);
             if (result.code !== 200) {
 				$(`._feedback_reply`).html("");
 				ShowAlert(`._feedback_reply[for="${fid}"]`, 
-				'回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/member/login.php">[点击登录]</a>后再来回复', 'warning', 5000);
+				'回复需要登录会员中心，您可以<a href="{dede:global.cfg_cmsurl/}/user/login.php">[点击登录]</a>后再来回复', 'warning', 5000);
             } else {
 				$(`._feedback_reply`).html("");
 				$(`._feedback_reply[for="${fid}"]`).html(replyPannel);
