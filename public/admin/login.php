@@ -20,13 +20,6 @@ if (is_dir(dirname(__FILE__).'/../install')) {
         fwrite($fp, 'ok');
         fclose($fp);
     }
-    //为了防止未知安全性问题，强制禁用安装程序的文件
-    if (file_exists("../install/index.php")) {
-        @rename("../install/index.php", "../install/index.php.bak");
-    }
-    if (file_exists("../install/module-install.php")) {
-        @rename("../install/module-install.php", "../install/module-install.php.bak");
-    }
     $fileindex = "../install/index.html";
     if (!file_exists($fileindex)) {
         $fp = @fopen($fileindex, 'w');

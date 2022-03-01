@@ -215,7 +215,7 @@ class DedeTemplate
                 $this->refDir = $this->templateDir;
             }
         }
-        $this->cacheDir = DEDEROOT.$GLOBALS['cfg_tplcache_dir'];
+        $this->cacheDir = BIZROOT.$GLOBALS['cfg_tplcache_dir'];
     }
 
     //构造函数,兼容PHP4

@@ -15,8 +15,8 @@ if (DEDE_ENVIRONMENT == 'production') {
 }
 define('DEBUG_LEVEL', FALSE);//如果设置为TRUE则会打印执行SQL的时间和标签加载时间方便调试
 define('DEDEINC', str_replace("\\", '/', dirname(__FILE__)));
-define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6)).'public');
-define('BIZROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6)));
+define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6)).'public'); // 站点根目录
+define('BIZROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6))); // BIZ根目录
 define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
 define('DEDEMEMBER', DEDEROOT.'/member');
 define('DEDETEMPLATE', DEDEROOT.'/templets');
