@@ -81,7 +81,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	echo "Open http://localhost:8088\n\r";
 	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
 } else if (count($argv) > 1 && ($argv[1] == "make" || $argv[1] == "m")) {
-	if (!file_exists($workDir . "/include/common.inc.php")) {
+	if (!file_exists($workDir . "/../system/common.inc.php")) {
 		DedeCli::error("Check your root path is right");
 		exit;
 	}
@@ -297,7 +297,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	define("DEDEINC", $workDir."/../system");
 	require_once(DEDEINC . "/cli.class.php");
 	//快速开始一个用于开发的DedeBIZ环境，基于SQLite无其他依赖
-	if (file_exists($workDir."/data/DedeBIZ.db")) {
+	if (file_exists($workDir."/../data/DedeBIZ.db")) {
 		DedeCli::write("development environment has inited");
 		echo "Start Dev Server For DedeBIZ\n\r";
 		echo "Open http://localhost:8088\n\r";
@@ -305,11 +305,11 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		exit;
 	}
 	//初始化安装一个开发环境
-	$db = new SQLite3($workDir.'/data/DedeBIZ.db');
+	$db = new SQLite3($workDir.'/../data/DedeBIZ.db');
 	$fp = fopen($workDir."/install/common.inc.php","r");
     $configStr1 = fread($fp,filesize($workDir."/install/common.inc.php"));
     fclose($fp);
-    @chmod($workDir."/data",0777);
+    @chmod($workDir."/../data",0777);
     $dbtype = "sqlite";
     $dbhost = "";
     $dbname = "DedeBIZ";
@@ -326,7 +326,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     $configStr1 = str_replace("~dbpwd~",$dbpwd,$configStr1);
     $configStr1 = str_replace("~dbprefix~",$dbprefix,$configStr1);
     $configStr1 = str_replace("~dblang~",$dblang,$configStr1);
-    $fp = fopen($workDir."/data/common.inc.php","w") or die("error,check ../data writeable");
+    $fp = fopen($workDir."/../data/common.inc.php","w") or die("error,check ../data writeable");
     fwrite($fp,$configStr1);
     fclose($fp);
 
@@ -347,11 +347,11 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     $configStr2 = str_replace("~webname~",$webname,$configStr2);
     $configStr2 = str_replace("~adminmail~",$adminmail,$configStr2);
 
-    $fp = fopen($workDir.'/data/config.cache.inc.php','w');
+    $fp = fopen($workDir.'/../data/config.cache.inc.php','w');
     fwrite($fp,$configStr2);
     fclose($fp);
 
-    $fp = fopen($workDir.'/data/config.cache.bak.php','w');
+    $fp = fopen($workDir.'/../data/config.cache.bak.php','w');
     fwrite($fp,$configStr2);
     fclose($fp);
 
