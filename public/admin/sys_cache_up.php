@@ -23,7 +23,7 @@ if ($dopost == "ok") {
     else if ($step == 1) {
         UpDateCatCache();
         ClearOptCache();
-        ShowMsg("成功更新栏目缓存，及后台栏目选项,准备更新枚举缓存", "sys_cache_up.php?dopost=ok&step=2&uparc=$uparc");
+        ShowMsg("成功更新栏目缓存及后台栏目选项，准备更新枚举缓存", "sys_cache_up.php?dopost=ok&step=2&uparc=$uparc");
         exit();
     }
     //更新枚举缓存
@@ -51,7 +51,7 @@ if ($dopost == "ok") {
     }
     //修正错误文档
     else if ($step == 9) {
-        ShowMsg('修正错误文档操作已经取消，后台系统：系统错误修复中操作', 'sys_cache_up.php?dopost=ok&step=-1&uparc=1', 0, 5000);
+        ShowMsg('修正错误文档操作已经取消，后台系统中系统错误修复中操作', 'sys_cache_up.php?dopost=ok&step=-1&uparc=1', 0, 5000);
         exit();
     }
 }

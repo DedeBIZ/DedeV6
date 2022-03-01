@@ -35,8 +35,8 @@
     </div>
     <div class="head">
         <div class="top">
-            <div class="top_logo"><a href="javascript:;" onclick="JumpFrame('index_menu.php','index_body.php');"><?php echo $cfg_webname; ?>系统</a></div>
-            <div class="top_version"><?php echo $cfg_version_detail; ?></div>
+            <div class="top_logo"><a onclick="JumpFrame('index_menu.php','index_body.php');"><?php echo $cfg_webname; ?>系统</a></div>
+            <div class="top_version">V<?php echo $cfg_version_detail; ?></div>
             <div class="top_link">
                 <ul>
                     <li class="welcome"><img src="/static/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><a href="exit.php">注销</a></li>

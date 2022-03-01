@@ -88,25 +88,22 @@ else if ($dopost == 'editshow') {
     $oldct = trim(fread($fp, filesize($myIcoFile)));
     fclose($fp);
 ?>
-    <form name='editform' action='index_body.php' method='post'>
-        <input type='hidden' name='dopost' value='editsave'>
+    <form name="editform" action="index_body.php" method="post">
+        <input type="hidden" name="dopost" value="editsave">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td height='26' background="images/tbg.gif">
-                    <div style='float:left'><b>修改快捷操作项</b></div>
-                    <div style='float:right;padding:3px 10px 0 0;'>
-                        <a href="javascript:CloseTab('editTab')"><img src="images/close.gif" width="12" height="12" border="0"></a>
+                <td height="30" background="images/tbg.gif">
+                    <div style="float:left;margin-left:10px"><b>修改快捷操作项</b></div>
+                    <div style="float:right;padding:2px 10px 0 0">
+                        <a href="javascript:CloseTab('editTab')"><img src="images/close.gif"></a>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td style="height:6px;font-size:1px;border-top:1px solid #8DA659">&nbsp;</td>
+                <td style="height:10px;border-top:1px solid #8DA659"></td>
             </tr>
             <tr>
-                <td>按原格式修改/增加XML项</td>
-            </tr>
-            <tr>
-                <td align='center'><textarea name="quickmenu" rows="10" cols="50" style="width:94%;height:220px"><?php echo $oldct; ?></textarea></td>
+                <td align="center"><textarea name="quickmenu" rows="10" cols="50"><?php echo $oldct; ?></textarea></td>
             </tr>
             <tr>
                 <td height="36" align="center">
@@ -146,26 +143,26 @@ else if ($dopost == 'getRightSide') {
 ?>
     <table width="100%" class="table table-borderless">
         <tr>
-            <td width='50%' class='nline' style="text-align:left"> 会员数：</td>
-            <td class='nline' style="text-align:left"> <?php echo $row1['dd']; ?> </td>
+            <td class="nline" style="width:50%;text-align:left">会员数：</td>
+            <td class="nline" style="text-align:left"><?php echo $row1['dd']; ?></td>
         </tr>
         <tr>
-            <td class='nline' style="text-align:left"> 文档数：</td>
-            <td class='nline' style="text-align:left"> <?php echo $allArc; ?> </td>
+            <td class="nline" style="text-align:left">文档数：</td>
+            <td class="nline" style="text-align:left"><?php echo $allArc; ?></td>
         </tr>
         <?php
         foreach ($chArr as $row) {
         ?>
             <tr>
-                <td class='nline' style="text-align:left"> <?php echo $row['typename']; ?>：</td>
-                <td class='nline' style="text-align:left"> <?php echo $row['dd']; ?>&nbsp; </td>
+                <td class="nline" style="text-align:left"><?php echo $row['typename']; ?>：</td>
+                <td class="nline" style="text-align:left"><?php echo $row['dd']; ?></td>
             </tr>
         <?php
         }
         ?>
         <tr>
-            <td style="text-align:left"> 评论数：</td>
-            <td style="text-align:left"> <?php echo $row2['dd']; ?> </td>
+            <td style="text-align:left">评论数：</td>
+            <td style="text-align:left"><?php echo $row2['dd']; ?></td>
         </tr>
     </table>
 <?php
@@ -191,7 +188,7 @@ exit();
             if ($row['arcrank'] == -1) $linkstr .= "<span style='color:#dc3545'>(未审核)</span>";
         ?>
         <tr>
-            <td class='nline'><?php echo $linkstr; ?></td>
+            <td class="nline"><?php echo $linkstr; ?></td>
         </tr>
         <?php
         }

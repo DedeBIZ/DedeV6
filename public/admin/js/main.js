@@ -389,7 +389,7 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	newobj.style.minWidth = "450px";
 	newobj.style.top = posTop + "px";
 	newobj.style.left = posLeft + "px";
-	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="images/loadinglit.gif" /> Loading...</div>';
+	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="images/loadinglit.gif"> Loading...</div>';
 	newobj.style.display = 'block';
 	var myajax = new DedeAjax(newobj);
 	myajax.SendGet(surl);

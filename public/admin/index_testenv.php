@@ -123,20 +123,20 @@ if (!function_exists('IsWritable')) {
 $safeMsg = array();
 $dirname = str_replace('index_body.php', '', strtolower($_SERVER['PHP_SELF']));
 if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
-	$safeMsg[] = '您的管理目录的名称中包含默认名称admin，建议改名；';
+	$safeMsg[] = '您的管理目录的名称中包含默认名称admin，建议改名';
 }
 if (IsWritable(DEDEDATA.'/common.inc.php')) {
-	$safeMsg[] = '强烈建议data/common.inc.php文件属性设置为644或只读；';
+	$safeMsg[] = '强烈建议data/common.inc.php文件属性设置为644或只读';
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
-	$linkurl = "<a href='sys_admin_user.php' class='btn btn-success btn-sm' style='margin-left:10px'>修改</a>";
+	$linkurl = "<a href='sys_admin_user.php' class='btn btn-success btn-sm'>修改</a>";
 	switch ($rs) {
 		case -1:
-			$msg = "没有修改默认管理员名称admin，建议您修改为其他管理账号{$linkurl}";
+			$msg = "没有修改默认管理员名称admin，建议您修改为其他管理账号 {$linkurl}";
 			break;
 		case -2:
-			$msg = "没有修改默认的管理员名称和密码，强烈建议您进行修改{$linkurl}";
+			$msg = "没有修改默认的管理员名称和密码，强烈建议您进行修改 {$linkurl}";
 			break;
 	}
 	$safeMsg[] = $msg;
