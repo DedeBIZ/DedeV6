@@ -24,8 +24,8 @@ if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
 }
 
 $moduleCacheFile = dirname(__FILE__).'/modules.tmp.inc';
-define('DEDEINC',dirname(__FILE__).'/../../system');
-define('DEDEDATA',dirname(__FILE__).'/../../data');
+define('DEDEINC',dirname(__FILE__).'/../system');
+define('DEDEDATA',dirname(__FILE__).'/../data');
 define('DEDEROOT',preg_replace("#[\\\\\/]install#", '', dirname(__FILE__)));
 header("Content-Type: text/html; charset=utf-8");
 require_once(DEDEROOT.'/install/install.inc.php');
