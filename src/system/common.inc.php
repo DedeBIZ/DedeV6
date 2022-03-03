@@ -223,7 +223,7 @@ if ($cfg_sendmail_bysmtp == 'Y' && !empty($cfg_smtp_usermail)) {
     $cfg_adminemail = $cfg_smtp_usermail;
 }
 //DedeBIZ商业化组件
-require_once(DEDEINC.'/dedebiz.class.php');
+require_once(DEDEINC.'/libraries/dedebiz.class.php');
 //对全局分页传递参数进行过滤
 if (isset($GLOBALS['PageNo'])) {
     $GLOBALS['PageNo'] = intval($GLOBALS['PageNo']);

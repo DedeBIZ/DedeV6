@@ -118,7 +118,7 @@ function _upload() {}
 上传新模板
 -----------------------*/
 else if ($action == 'upload') {
-    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $acdir = str_replace('.', '', $acdir);
     $win = new OxWindow();
     make_hash();
@@ -225,7 +225,7 @@ else if ($action == 'savetagfile') {
         ShowMsg('文件名不合法，不允许进行操作', '-1');
         exit();
     }
-    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $tagname = preg_replace("#\.lib\.php$#i", "", $filename);
     $content = stripslashes($content);
     $truefile = DEDEINC.'/taglib/'.$filename;

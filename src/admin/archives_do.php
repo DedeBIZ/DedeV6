@@ -253,7 +253,7 @@ function delArchives(){ }
 ---------------------------*/
 else if ($dopost == "delArchives") {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC."/oxwindow.class.php");
+    require_once(DEDEINC."/libraries/oxwindow.class.php");
     if (empty($fmdo)) $fmdo = '';
 
     if ($fmdo == 'yes') {
@@ -387,7 +387,7 @@ function RbReturnArchives(){ }
 ------------------------------*/
 else if ($dopost == 'return') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC."/oxwindow.class.php");
+    require_once(DEDEINC."/libraries/oxwindow.class.php");
 
     if (!empty($aid) && empty($qstr)) $qstr = $aid;
 
@@ -409,7 +409,7 @@ function RbClearArchives(){ }
 ------------------------------*/
 else if ($dopost == 'clear') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC."/oxwindow.class.php");
+    require_once(DEDEINC."/libraries/oxwindow.class.php");
     if (empty($fmdo)) $fmdo = '';
     $recycle = empty($recycle) ? "" : $recycle;
 
@@ -464,7 +464,7 @@ function RbDelArchives(){ }
 ------------------------------*/
 else if ($dopost == 'del') {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC."/oxwindow.class.php");
+    require_once(DEDEINC."/libraries/oxwindow.class.php");
     if (empty($fmdo)) $fmdo = '';
     $recycle = empty($recycle) ? "" : $recycle;
     if ($fmdo == 'yes') {

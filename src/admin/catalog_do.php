@@ -208,7 +208,7 @@ function unitCatalog() { }
 -----------------*/
 else if ($dopost == 'unitCatalog') {
     CheckPurview('t_Move');
-    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     require_once(DEDEINC.'/typelink/typelink.class.php');
     require_once(DEDEINC.'/channelunit.func.php');
     if (empty($nextjob)) {
@@ -267,7 +267,7 @@ function moveCatalog() { }
 -----------------*/
 else if ($dopost == 'moveCatalog') {
     CheckPurview('t_Move');
-    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     require_once(DEDEINC.'/typelink/typelink.class.php');
     require_once(DEDEINC.'/channelunit.func.php');
     if (empty($nextjob)) {

@@ -52,7 +52,7 @@ function _SaveArticle(){  }
 ------------------------------*/
 else if ($dopost == 'save') {
     include_once(DEDEINC."/image.func.php");
-    include_once(DEDEINC."/oxwindow.class.php");
+    include_once(DEDEINC."/libraries/oxwindow.class.php");
     $svali = GetCkVdValue();
     if (preg_match("/3/", $safe_gdopen)) {
         if (strtolower($vdcode) != $svali || $svali == '') {

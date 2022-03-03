@@ -23,7 +23,7 @@ if ($dopost == "show") {
     if (empty($job)) $job = "";
     if ($job == "") //确认提示
     {
-        require_once(DEDEINC."/oxwindow.class.php");
+        require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "删除插件";
         $wecome_info = "<a href='plus_main.php'>插件管理</a>::删除插件";
         $win = new OxWindow();

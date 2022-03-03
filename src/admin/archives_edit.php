@@ -46,7 +46,7 @@ function __save(){  }
 -------------------------------*/
 else if ($dopost == 'save') {
     require_once(DEDEINC.'/image.func.php');
-    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (empty($litpic_b64)) $litpic_b64 = '';

@@ -10,7 +10,7 @@
  */
 require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_文件管理器');
-require(DEDEINC."/oxwindow.class.php");
+require(DEDEINC."/libraries/oxwindow.class.php");
 require_once(DEDEADMIN.'/file_class.php');
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);

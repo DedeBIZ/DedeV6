@@ -13,7 +13,7 @@ require_once(dirname(__FILE__).'/config.php');
 //检查权限许可
 CheckPurview('t_Del,t_AccDel');
 require_once(DEDEINC.'/typelink/typeunit.class.admin.php');
-require_once(DEDEINC.'/oxwindow.class.php');
+require_once(DEDEINC.'/libraries/oxwindow.class.php');
 $id = trim(preg_replace("#[^0-9]#", '', $id));
 
 //检查栏目操作许可

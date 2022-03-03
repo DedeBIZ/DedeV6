@@ -11,7 +11,7 @@
 if (!defined('DEDEMEMBER'))    exit('dedebiz');
 
 include_once(DEDEINC.'/image.func.php');
-include_once(DEDEINC.'/oxwindow.class.php');
+include_once(DEDEINC.'/libraries/oxwindow.class.php');
 
 $svali = GetCkVdValue();
 if (strtolower($vdcode) != $svali || $svali == '') {

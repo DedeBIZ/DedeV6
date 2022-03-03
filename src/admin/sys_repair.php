@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_ArcBatch');
-require_once(DEDEINC.'/oxwindow.class.php');
+require_once(DEDEINC.'/libraries/oxwindow.class.php');
 //ShowMsg("目前暂不需要此工具，以后有需要系统会进行自动升级这个程序<br><a href='index_body.php'>&lt;&lt;点击此返回&gt;&gt;</a>", "javascript:;");
 //exit();
 if (empty($dopost)) {

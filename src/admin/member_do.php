@@ -9,7 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-require_once(DEDEINC."/oxwindow.class.php");
+require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
 $ENV_GOBACK_URL = isset($_COOKIE['ENV_GOBACK_URL']) ? 'member_main.php' : '';

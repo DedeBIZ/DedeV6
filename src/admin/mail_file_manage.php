@@ -1,6 +1,6 @@
 <?php
 require(dirname(__FILE__)."/config.php");
-require_once(DEDEINC."/oxwindow.class.php");
+require_once(DEDEINC."/libraries/oxwindow.class.php");
 CheckPurview('plus_Mail');
 if(!isset($fmdo)) $fmdo="";
 if($fmdo=="del")

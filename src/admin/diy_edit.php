@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Edit');
 require_once(DEDEINC."/dedetag.class.php");
-require_once(DEDEINC."/oxwindow.class.php");
+require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($dopost)) $dopost = "";
 $diyid = (empty($diyid) ? 0 : intval($diyid));
 /*----------------

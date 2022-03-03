@@ -19,7 +19,7 @@ if ($dopost == 'delete') {
     ShowMsg("成功删除一则广告代码", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "gettag") {
-    require_once(DEDEINC.'/oxwindow.class.php');
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $jscode = "<script src='{$cfg_phpurl}/ad_js.php?aid=$aid' language='javascript'></script>";
     $showhtml = "<xmp style='color:#333333;background-color:#ffffff'>\r\n\r\n$jscode\r\n\r\n</xmp>";
     $showhtml .= "预览：<iframe name='testfrm' frameborder='0' src='ad_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='200'></iframe>";

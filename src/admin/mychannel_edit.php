@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_Edit');
 require_once(DEDEINC."/dedetag.class.php");
-require_once(DEDEINC."/oxwindow.class.php");
+require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($dopost)) $dopost = "";
 $id = isset($id) && is_numeric($id) ? $id : 0;
 /*----------------
@@ -327,7 +327,7 @@ else if ($dopost == "save") {
 function __GetTemplate()
 --------------------*/
 else if ($dopost == "gettemplets") {
-    require_once(DEDEINC."/oxwindow.class.php");
+    require_once(DEDEINC."/libraries/oxwindow.class.php");
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     $wintitle = "&nbsp;频道管理-查看模板";
     $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::查看模板";
@@ -362,7 +362,7 @@ else if ($dopost == "delete") {
     if (empty($job)) $job = "";
     if ($job == "") //确认提示
     {
-        require_once(DEDEINC."/oxwindow.class.php");
+        require_once(DEDEINC."/libraries/oxwindow.class.php");
         $wintitle = "频道管理-删除模型";
         $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::删除模型";
         $win = new OxWindow();

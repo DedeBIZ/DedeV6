@@ -88,7 +88,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	}
 
 	require_once($workDir . "/system/common.inc.php");
-	require_once(DEDEINC . "/cli.class.php");
+	require_once(DEDEINC . "/libraries/cli.class.php");
 
 	//一个命令行的生成工具
 	if (count($argv) > 2 && ($argv[2] == "arc" || $argv[2] == "a")) {
@@ -274,7 +274,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 } else if (count($argv) > 1 && ($argv[1] == "update" || $argv[1] == "u")) {
 	define("DEDEINC", $workDir."/system");
 	require_once(DEDEINC."/dedehttpdown.class.php");
-	require_once(DEDEINC . "/cli.class.php");
+	require_once(DEDEINC . "/libraries/cli.class.php");
 	//更新系统
 	$latestURL = "https://cdn.dedebiz.com/release/latest.txt";
 	$del = new DedeHttpDown();
@@ -296,7 +296,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	//TODO 命令行自动更新
 } else if (count($argv) > 1 && ($argv[1] == "quick" || $argv[1] == "q")){
 	define("DEDEINC", $workDir."/system");
-	require_once(DEDEINC . "/cli.class.php");
+	require_once(DEDEINC . "/libraries/cli.class.php");
 	//快速开始一个用于开发的DedeBIZ环境，基于SQLite无其他依赖
 	if (file_exists($workDir."/data/DedeBIZ.db")) {
 		DedeCli::write("development environment has inited");
