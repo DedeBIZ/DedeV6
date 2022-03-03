@@ -41,7 +41,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $lo
 		$tid = $tidsq["typeid"];
 	}
 	$nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".$_REQUEST['PageNo'] : '');
-	$filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/plus/list.php?tid=".$tid);
+	$filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
     $cInfos = $dsql->GetOne(" Select * From  `#@__channeltype` where id='$channelid' ");
 	$fieldset=$cInfos['fieldset'];
 	$dtp = new DedeTagParse();

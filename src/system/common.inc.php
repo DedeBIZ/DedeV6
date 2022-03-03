@@ -165,7 +165,7 @@ $cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/de
 //cms安装目录的网址
 $cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
 //插件目录，这个目录是用于存放计数器、投票、评论等程序的必要动态程序
-$cfg_plus_dir = $cfg_cmspath.'/plus';
+$cfg_plus_dir = $cfg_cmspath.'/apps';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
 $cfg_static_dir = $cfg_cmspath.'/static';
 $cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
@@ -177,7 +177,7 @@ $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
 $cfg_member_dir = $cfg_cmspath.'/user';
 $cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
 //专题列表的存放路径
-$cfg_special = $cfg_cmspath.'/special';
+$cfg_special = $cfg_cmspath.'/apps/special';
 $cfg_specialurl = $cfg_mainsite.$cfg_special;
 //附件目录
 $cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;

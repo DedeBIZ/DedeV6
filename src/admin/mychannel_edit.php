@@ -491,7 +491,7 @@ else if ($dopost == 'modifysearch') {
             $addonfields = '';
         }
         $template = trim($template);
-        $forms = '<form action="'.$cfg_cmspath.'/plus/advancedsearch.php" method="post">';
+        $forms = '<form action="'.$cfg_cmspath.'/apps/advancedsearch.php" method="post">';
         $forms .= "<input type=\"hidden\" name=\"mid\" value=\"$mid\" />";
         $forms .= "<input type=\"hidden\" name=\"dopost\" value=\"search\" />";
         $forms .= "关键词：<input type=\"text\" name=\"q\" /><br>";

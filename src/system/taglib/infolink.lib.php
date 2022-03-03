@@ -55,26 +55,26 @@ function lib_infolink(&$ctag, &$refObj)
 
     $fields['nativeplace'] = $fields['infotype'] = '';
 
-    $fields['linkallplace'] = "<a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&infotype={$infotype}'>不限</a>";
-    $fields['linkalltype'] = "<a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}'>不限</a>";
+    $fields['linkallplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$infotype}'>不限</a>";
+    $fields['linkalltype'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}'>不限</a>";
 
     //地区链接
     if (empty($nativeplace)) {
         foreach ($em_nativeplaces as $eid => $em) {
             if ($eid % 500 != 0) continue;
-            $fields['nativeplace'] .= " <a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+            $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
         }
     } else {
         $sontype = (($nativeplace % 500 != 0) ? $nativeplace : 0);
         $toptype = (($nativeplace % 500 == 0) ? $nativeplace : ($nativeplace - ($nativeplace % 500)));
 
-        $fields['nativeplace'] = "<a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> <b>{$em_nativeplaces[$toptype]}</b></a> &gt;&gt; ";
+        $fields['nativeplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> <b>{$em_nativeplaces[$toptype]}</b></a> &gt;&gt; ";
         foreach ($em_nativeplaces as $eid => $em) {
             if ($eid < $toptype + 1 || $eid > $toptype + 499) continue;
             if ($eid == $nativeplace) {
                 $fields['nativeplace'] .= " <b>{$em}</b>\r\n";
             } else {
-                $fields['nativeplace'] .= " <a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
+                $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
             }
         }
     }
@@ -87,19 +87,19 @@ function lib_infolink(&$ctag, &$refObj)
             if ($eid == $infotype) {
                 $fields['infotype'] .= " <b>{$em}</b>\r\n";
             } else {
-                $fields['infotype'] .= " <a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&infotype={$eid}&nativeplace={$nativeplace}'>{$em}</a>\r\n";
+                $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$eid}&nativeplace={$nativeplace}'>{$em}</a>\r\n";
             }
         }
     } else {
         $sontype = (($infotype % 500 != 0) ? $infotype : 0);
         $toptype = (($infotype % 500 == 0) ? $infotype : ($infotype - ($infotype % 500)));
-        $fields['infotype'] .= "<a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'><b>{$em_infotypes[$toptype]}</b></a> &gt;&gt; ";
+        $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'><b>{$em_infotypes[$toptype]}</b></a> &gt;&gt; ";
         foreach ($em_infotypes as $eid => $em) {
             if ($eid < $toptype + 1 || $eid > $toptype + 499) continue;
             if ($eid == $infotype) {
                 $fields['infotype'] .= " <b>{$em}</b>\r\n";
             } else {
-                $fields['infotype'] .= " <a href='{$baseurl}plus/list.php?channelid={$channelid}&tid={$typeid}&infotype={$eid}&nativeplace={$nativeplace}'>{$em}</a>\r\n";
+                $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$eid}&nativeplace={$nativeplace}'>{$em}</a>\r\n";
             }
         }
     }

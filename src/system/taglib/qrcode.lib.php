@@ -19,7 +19,7 @@ function lib_qrcode(&$ctag, &$refObj)
     extract($ctag->CAttribute->Items, EXTR_SKIP);
 
     //var_dump($refObj->Fields['id']);
-
+    $id = 0;
     if (empty($type) and empty($id)) {
         if (get_class($refObj) == 'Archives') {
             $type = 'arc';

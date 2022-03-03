@@ -18,8 +18,8 @@
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
 						<input type="text" class="form-control" id="iptValidate" style="text-transform:uppercase;">
-						<img src="{dede:global.cfg_cmspath/}/plus/vdimgck.php" id="validateimg" style="cursor:pointer;"
-							onclick="this.src='{dede:global.cfg_cmspath/}/plus/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)"
+						<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" style="cursor:pointer;"
+							onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)"
 							title="点击我更换图片" alt="点击我更换图片" />
 					</div>
 				</div>
@@ -127,10 +127,10 @@
 				$("#iptMsg").val("");
 				$("#iptValidate").val("");
 				($("#iptUsername").attr("disabled") !== "disabled") && $("#iptUsername").val("");
-				$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/plus/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+				$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
 			} else {
 				ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
-				$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/plus/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
+				$("#validateimg").attr("src", '{dede:global.cfg_cmspath/}/apps/vdimgck.php?' + new Date().getTime() + Math.round(Math.random() * 10000));
 			}
 		});
 	}

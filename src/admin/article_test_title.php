@@ -14,5 +14,5 @@ if (empty($t) || $cfg_check_title == 'N') exit;
 
 $row = $dsql->GetOne("SELECT id FROM `#@__archives` WHERE title LIKE '$t' ");
 if (is_array($row)) {
-    echo "提示：系统已经存在标题为 '<a href='../plus/view.php?aid={$row['id']}' style='color:#dc3545' target='_blank'>$t</a>' 的文档[<a href='#' onclick='javascript:HideObj(\"mytitle\")'>关闭</a>]";
+    echo "提示：系统已经存在标题为 '<a href='../apps/view.php?aid={$row['id']}' style='color:#dc3545' target='_blank'>$t</a>' 的文档[<a href='#' onclick='javascript:HideObj(\"mytitle\")'>关闭</a>]";
 }

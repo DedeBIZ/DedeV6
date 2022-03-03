@@ -27,7 +27,7 @@ function GetSta($sta, $oid)
     global $dsql;
     $row = $dsql->GetOne("SELECT p.name FROM `#@__shops_orders` AS s LEFT JOIN `#@__payment` AS p ON s.paytype=p.id WHERE s.oid='$oid'");
     if ($sta == 0) {
-        return  '未付款('.$row['name'].') < <a href="../plus/carbuyaction.php?dopost=memclickout&oid='.$oid.'" target="_blank">去付款</a>';
+        return  '未付款('.$row['name'].') < <a href="../apps/carbuyaction.php?dopost=memclickout&oid='.$oid.'" target="_blank">去付款</a>';
     } else if ($sta == 1) {
         return '已付款,等发货';
     } else if ($sta == 2) {
