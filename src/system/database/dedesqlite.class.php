@@ -33,6 +33,9 @@ if (!defined('MYSQL_BOTH')) {
 if (!defined('MYSQL_ASSOC')) {
     define('MYSQL_ASSOC', SQLITE3_ASSOC);
 }
+if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
+    mysqli_report(MYSQLI_REPORT_OFF);
+}
 class DedeSqlite
 {
     var $linkID;

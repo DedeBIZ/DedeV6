@@ -496,7 +496,7 @@ class DedeSqli
         if (!is_array($this->result)) {
             return '';
         }
-        foreach ($this->result as $kk => $vv) {
+        foreach ($this->result as $vv) {
             if ($vv) {
                 @mysqli_free_result($vv);
             }

@@ -115,8 +115,8 @@ class TagList
     //关闭相关资源
     function Close()
     {
-        @$this->dsql->Close();
         @$this->TypeLink->Close();
+        @$this->dsql->Close();
     }
 
     /**
@@ -203,8 +203,9 @@ class TagList
         if ($this->Tag != '') {
             $this->ParseDMFields($this->PageNo, 0);
         }
-        $this->Close();
+        
         $this->dtp->Display();
+        // $this->Close();
     }
 
     /**

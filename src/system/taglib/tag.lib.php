@@ -25,6 +25,9 @@ function lib_tag(&$ctag, &$refObj)
     $num = $row;
 
     $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); //取一个平均
+    if (!$dd['tt']) {
+        $dd['tt'] = 0;
+    }
     $addsql = "WHERE 1=1 AND total >= {$dd['tt']}";
 
     if ($getall == 0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid'])) {
@@ -64,7 +67,7 @@ function lib_tag(&$ctag, &$refObj)
         if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {
             $row['link'] = $cfg_cmsurl."/a/tags/".GetPinyin($row['keyword'])."/";
         } else {
-            $row['link'] = $cfg_cmsurl."/tags.php?/".urlencode($row['keyword'])."/";
+            $row['link'] = $cfg_cmsurl."/apps/tags.php?/".urlencode($row['keyword'])."/";
         }
 
         $row['highlight'] = mt_rand(1, 10);
