@@ -310,7 +310,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	$fp = fopen($workDir."/install/common.inc.php","r");
     $configStr1 = fread($fp,filesize($workDir."/install/common.inc.php"));
     fclose($fp);
-    @chmod($workDir."/../data",0777);
+    @chmod($workDir."/data",0777);
     $dbtype = "sqlite";
     $dbhost = "";
     $dbname = "DedeBIZ";
@@ -318,6 +318,8 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     $dbpwd = "";
     $dbprefix = "dede_";
     $dblang = "utf8";
+
+	mkdir($workDir.'/data/tplcache', 0777);
 
     //common.inc.php
     $configStr1 = str_replace("~dbtype~",$dbtype,$configStr1);
@@ -348,11 +350,11 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
     $configStr2 = str_replace("~webname~",$webname,$configStr2);
     $configStr2 = str_replace("~adminmail~",$adminmail,$configStr2);
 
-    $fp = fopen($workDir.'/../data/config.cache.inc.php','w');
+    $fp = fopen($workDir.'/data/config.cache.inc.php','w');
     fwrite($fp,$configStr2);
     fclose($fp);
 
-    $fp = fopen($workDir.'/../data/config.cache.bak.php','w');
+    $fp = fopen($workDir.'/data/config.cache.bak.php','w');
     fwrite($fp,$configStr2);
     fclose($fp);
 
@@ -462,6 +464,10 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 	if (phpversion() < "5.4") {
 		die("DedeBIZ:command web server not support\n\n");
 	}
+
+	// 写入安装程序锁
+	file_put_contents($workDir.'/install/install_lock.txt', 'ok');
+
 	echo "Start Dev Server For DedeBIZ\n\r";
 	echo "Open http://localhost:8088\n\r";
 	passthru(PHP_BINARY . ' -S localhost:8088 -t' . escapeshellarg('./'));
