@@ -98,7 +98,7 @@ else if($step==2)
     $dbhost = empty($dbhost)? "localhost" : $dbhost;
     $dbuser = empty($dbuser)? "root" : $dbuser;
     $dbuser = empty($dbuser)? "root" : $dbuser;
-    $dbprefix = empty($dbprefix)? "dedebiz_" : $dbprefix;
+    $dbprefix = empty($dbprefix)? "biz_" : $dbprefix;
     $dbname = empty($dbname)? $dfDbname : $dbname;
     $adminuser = empty($adminuser)? "admin" : $adminuser;
     $adminpwd = empty($adminpwd)? "admin" : $adminpwd;
