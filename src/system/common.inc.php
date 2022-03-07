@@ -161,7 +161,7 @@ if ($cfg_multi_site == 'Y') {
 //模板的存放目录
 $cfg_templets_dir = $cfg_cmspath.'/theme';
 $cfg_templeturl = $cfg_mainsite.$cfg_templets_dir;
-$cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/muban" : $cfg_mainsite.$cfg_templets_dir."/$cfg_df_style";
+$cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/templets" : $cfg_mainsite.$cfg_templets_dir."/$cfg_df_style";
 //cms安装目录的网址
 $cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
 //插件目录，这个目录是用于存放计数器、投票、评论等程序的必要动态程序

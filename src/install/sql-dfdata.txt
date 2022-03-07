@@ -3964,7 +3964,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点网址（http://域
 ('21','cfg_feedbackcheck','是否需审核评论及留言','5','bool','Y'),
 ('22','cfg_keyword_replace','是否使用关键字替换功能，开启影响文档生成速度','2','bool','Y'),
 ('23','cfg_fck_xhtml','是否使用富文本XHTML','1','bool','N'),
-('24','cfg_df_style','网站模板默认风格','1','string','muban'),
+('24','cfg_df_style','网站模板默认风格','1','string','templets'),
 ('25','cfg_multi_site','是否支持多站点，开启此项后附件栏目连接arclist内容启用绝对网址','2','bool','N'),
 ('58','cfg_rm_remote','远程图片本地化','7','bool','Y'),
 ('27','cfg_dede_log','是否开启管理日志','2','bool','N'),
