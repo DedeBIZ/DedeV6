@@ -15,6 +15,7 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
 <style>
 body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#424b51;background:#fff}
 ul{margin:0;padding:0;list-style:none}
+input[type=radio],input[type=checkbox]{margin:0;height:auto;box-shadow:none;outline:none;vertical-align:text-top}
 button+button{margin-left:10px}
 #wrap{padding:10px}
 #topbar{padding:10px 0;border-bottom:1px solid #ccc;text-align:right}
@@ -57,8 +58,6 @@ button+button{margin-left:10px}
         formData.append('upload', file, file.name);
         if (document.querySelector('#isWater').checked) {
             formData.append('needwatermark', 1);
-        } else {
-            //formData.append('needwatermark', 0);
         }
         let res = await fetch('select_images_post.php', {
             method: 'POST',
@@ -145,7 +144,6 @@ button+button{margin-left:10px}
             //返回
             console.log(axupimgs.res);
             axupimgs.res.forEach((v,k)=>{
-                //window.opener.CKEDITOR.tools.callFunction(k, v);
                 let addonHTML = `<img src='${v.url}'/>`;
                 window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
             })
