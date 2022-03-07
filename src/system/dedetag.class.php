@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * Dede织梦模板类
+ * DedeBIZ模板类
  *
  * @version        $Id: dedetag.class.php 1 10:33 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
@@ -27,7 +27,6 @@ class DedeTag
     var $CAttribute = null;   //标记属性描述,即是class DedeAttribute
     var $TagValue = "";     //标记的值
     var $TagID = 0;
-
     /**
      *  获取标记的名称和值
      *
@@ -38,7 +37,6 @@ class DedeTag
     {
         return strtolower($this->TagName);
     }
-
     /**
      *  获取值
      *
@@ -49,40 +47,33 @@ class DedeTag
     {
         return $this->TagValue;
     }
-
     //下面两个成员函数仅是为了兼容旧版
     function GetTagName()
     {
         return strtolower($this->TagName);
     }
-
     function GetTagValue()
     {
         return $this->TagValue;
     }
-
     //获取标记的指定属性
     function IsAttribute($str)
     {
         return $this->CAttribute->IsAttribute($str);
     }
-
     function GetAttribute($str)
     {
         return $this->CAttribute->GetAtt($str);
     }
-
     function GetAtt($str)
     {
         return $this->CAttribute->GetAtt($str);
     }
-
     function GetInnerText()
     {
         return $this->InnerText;
     }
 }
-
 /**
  * DedeTagParse Dede织梦模板类
  * function c____DedeTagParse();
@@ -106,7 +97,6 @@ class DedeTagParse
     var $Count = -1;           //$Tags标记个数
     var $refObj = '';          //引用当前模板类的对象
     var $taghashfile = '';
-
     function __construct()
     {
         if (!isset($GLOBALS['cfg_tplcache'])) {
@@ -131,12 +121,10 @@ class DedeTagParse
         $this->TempMkTime = 0;
         $this->CacheFile = '';
     }
-
     function DedeTagParse()
     {
         $this->__construct();
     }
-
     /**
      *  设置标记的命名空间，默认为dede
      *
@@ -152,7 +140,6 @@ class DedeTagParse
         $this->TagStartWord = $s;
         $this->TagEndWord = $e;
     }
-
     /**
      *  重置成员变量或Clear
      *
@@ -165,7 +152,6 @@ class DedeTagParse
         $this->CTags = array();
         $this->Count = -1;
     }
-
     /**
      *  强制引用
      *
@@ -177,19 +163,14 @@ class DedeTagParse
     {
         $this->refObj = $refObj;
     }
-
     function GetCount()
     {
         return $this->Count + 1;
     }
-
     function Clear()
     {
         $this->SetDefault();
     }
-
-    //------------------------------------------------------------------------
-
     /**
      * CheckDisabledFunctions
      *
@@ -218,7 +199,6 @@ class DedeTagParse
         }
         return TRUE;
     }
-
     /**
      *  检测模板缓存
      *
@@ -242,7 +222,6 @@ class DedeTagParse
         if (!file_exists($ckfullfile) || !file_exists($ckfullfile_t)) {
             return FALSE;
         }
-
         //检测模板最后更新时间
         $fp = fopen($ckfullfile_t, 'r');
         $time_info = trim(fgets($fp, 64));
@@ -250,11 +229,9 @@ class DedeTagParse
         if ($time_info != $this->TempMkTime) {
             return FALSE;
         }
-
         //引入缓冲数组
         include($this->CacheFile);
         $errmsg = '';
-
         //把缓冲数组内容读入类
         if (isset($z) && is_array($z)) {
             foreach ($z as $k => $v) {
@@ -285,7 +262,6 @@ class DedeTagParse
         }
         return TRUE;
     }
-
     /**
      *  写入缓存
      *
@@ -337,7 +313,6 @@ class DedeTagParse
             fclose($fp);
         }
     }
-
     /**
      *  载入模板文件
      *
@@ -364,19 +339,16 @@ class DedeTagParse
             }
         }
     }
-
     //仅用于兼容旧版本
     function LoadTemplet($filename)
     {
         $this->LoadTemplate($filename);
     }
-
     //仅用于兼容旧版本
     function LoadFile($filename)
     {
         $this->LoadTemplate($filename);
     }
-
     /**
      *  载入模板字符串
      *
@@ -386,12 +358,6 @@ class DedeTagParse
      */
     function LoadSource($str)
     {
-        /*
-        $this->SetDefault();
-        $this->SourceString = $str;
-        $this->IsCache = FALSE;
-        $this->ParseTemplet();
-        */
         //优化模板字符串存取读取方式
         $this->taghashfile = $filename = DEDEDATA.'/tplcache/'.md5($str).'.inc';
         if (!is_file($filename)) {
@@ -399,12 +365,10 @@ class DedeTagParse
         }
         $this->LoadTemplate($filename);
     }
-
     function LoadString($str)
     {
         $this->LoadSource($str);
     }
-
     /**
      *  获得指定名称的Tag的ID(如果有多个同名的Tag,则取没有被取代为内容的第一个Tag)
      *
@@ -428,7 +392,6 @@ class DedeTagParse
         }
         return -1;
     }
-
     /**
      *  获得指定名称的CTag数据类(如果有多个同名的Tag,则取没有被分配内容的第一个Tag)
      *
@@ -452,7 +415,6 @@ class DedeTagParse
         }
         return '';
     }
-
     /**
      *  通过名称获取标记
      *
@@ -464,7 +426,6 @@ class DedeTagParse
     {
         return $this->GetTag($str);
     }
-
     /**
      *  获得指定ID的CTag数据类
      *
@@ -480,7 +441,6 @@ class DedeTagParse
             return '';
         }
     }
-
     /**
      *  给_vars数组传递一个元素
      *
@@ -496,7 +456,6 @@ class DedeTagParse
         }
         $_sys_globals[$vname] = $vvalue;
     }
-
     /**
      *  分配指定ID的标记的值
      *
@@ -517,7 +476,6 @@ class DedeTagParse
             }
         }
     }
-
     /**
      *  分配指定名称的标记的值，如果标记包含属性，请不要用此函数
      *
@@ -534,7 +492,6 @@ class DedeTagParse
             }
         }
     }
-
     /**
      *  处理特殊标记
      *
@@ -547,7 +504,6 @@ class DedeTagParse
         for ($i = 0; $i <= $this->Count; $i++) {
             $CTag = $this->CTags[$i];
             $str = '';
-
             //获取一个外部变量
             if ($CTag->TagName == 'global') {
                 $str = $this->GetGlobals($CTag->GetAtt('name'));
@@ -558,7 +514,6 @@ class DedeTagParse
                 $this->CTags[$i]->IsReplace = TRUE;
                 $this->CTags[$i]->TagValue = $str;
             }
-
             //引入静态文件
             else if ($CTag->TagName == 'include') {
                 $filename = ($CTag->GetAtt('file') == '' ? $CTag->GetAtt('filename') : $CTag->GetAtt('file'));
@@ -566,7 +521,6 @@ class DedeTagParse
                 $this->CTags[$i]->IsReplace = TRUE;
                 $this->CTags[$i]->TagValue = $str;
             }
-
             //循环一个普通数组
             else if ($CTag->TagName == 'foreach') {
                 $arr = $this->CTags[$i]->GetAtt('array');
@@ -580,7 +534,6 @@ class DedeTagParse
                 $this->CTags[$i]->IsReplace = TRUE;
                 $this->CTags[$i]->TagValue = $str;
             }
-
             //设置/获取变量值
             else if ($CTag->TagName == 'var') {
                 $vname = $this->CTags[$i]->GetAtt('name');
@@ -594,7 +547,6 @@ class DedeTagParse
                 $this->CTags[$i]->IsReplace = TRUE;
                 $this->CTags[$i]->TagValue = $str;
             }
-
             //运行PHP接口
             if ($CTag->GetAtt('runphp') == 'yes') {
                 $this->RunPHP($CTag, $i);
@@ -604,7 +556,6 @@ class DedeTagParse
             }
         }
     }
-
     //运行PHP代码
     function RunPHP(&$refObj, $i)
     {
@@ -626,7 +577,6 @@ class DedeTagParse
         $this->CTags[$i]->TagValue = $DedeMeValue;
         $this->CTags[$i]->IsReplace = TRUE;
     }
-
     /**
      *  把分析模板输出到一个字符串中
      *  不替换没被处理的值
@@ -659,7 +609,6 @@ class DedeTagParse
         }
         return $ResultString;
     }
-
     /**
      *  把分析模板输出到一个字符串中,并返回
      *
@@ -686,7 +635,6 @@ class DedeTagParse
         }
         return $ResultString;
     }
-
     /**
      *  直接输出解析模板
      *
@@ -697,7 +645,6 @@ class DedeTagParse
     {
         echo $this->GetResult();
     }
-
     /**
      *  把解析模板输出为文件
      *
@@ -707,11 +654,10 @@ class DedeTagParse
      */
     function SaveTo($filename)
     {
-        $fp = @fopen($filename, "w") or die("DedeTag Engine Create File False");
+        $fp = @fopen($filename, "w") or die("请检查栏目文件保存目录是否填写正确");
         fwrite($fp, $this->GetResult());
         fclose($fp);
     }
-
     /**
      *  解析模板
      *
@@ -729,17 +675,14 @@ class DedeTagParse
         $eTagEndWord = "/".$TagEndWord;
         $tsLen = strlen($FullTagStartWord);
         $sourceLen = strlen($this->SourceString);
-
         if ($sourceLen <= ($tsLen + 3)) {
             return;
         }
         $cAtt = new DedeAttributeParse();
         $cAtt->charToLow = $this->CharToLow;
-
         //遍历模板字符串，请取标记及其属性信息
         for ($i = 0; $i < $sourceLen; $i++) {
             $tTagName = '';
-
             //如果不进行此判断，将无法识别相连的两个标记
             if ($i - 1 >= 0) {
                 $ss = $i - 1;
@@ -759,12 +702,6 @@ class DedeTagParse
                 break;
             }
             //判断是否已经到倒数第三个字符(可能性几率极小，取消此逻辑)
-            /*
-            if($sPos > ($sourceLen-$tsLen-3) )
-            {
-                break;
-            }
-            */
             for ($j = ($sPos + $tsLen); $j < ($sPos + $tsLen + $this->TagMaxLen); $j++) {
                 if ($j > ($sourceLen - 1)) {
                     break;
@@ -778,13 +715,10 @@ class DedeTagParse
                 $i = $sPos + $tsLen;
                 $endPos = -1;
                 $fullTagEndWordThis = $sTagEndWord.$tTagName.$TagEndWord;
-
                 $e1 = strpos($this->SourceString, $eTagEndWord, $i);
                 $e2 = strpos($this->SourceString, $FullTagStartWord, $i);
                 $e3 = strpos($this->SourceString, $fullTagEndWordThis, $i);
-
                 //$eTagEndWord = /} $FullTagStartWord = {tag: $fullTagEndWordThis = {/tag:xxx]
-
                 $e1 = trim($e1);
                 $e2 = trim($e2);
                 $e3 = trim($e3);
@@ -812,7 +746,6 @@ class DedeTagParse
                         $elen = $endPos + strlen($fullTagEndWordThis);
                     }
                 }
-
                 //not found end tag , error
                 if ($endPos == -1) {
                     echo "Tag Character postion $sPos, '$tTagName' Error<br>\r\n";
@@ -820,7 +753,6 @@ class DedeTagParse
                 }
                 $i = $elen;
                 $ePos = $endPos;
-
                 //分析所找到的标记位置等信息
                 $attStr = '';
                 $innerText = '';
@@ -855,12 +787,10 @@ class DedeTagParse
                 break;
             }
         } //结束遍历模板字符串
-
         if ($this->IsCache) {
             $this->SaveCache();
         }
     }
-
     /**
      *  处理某字段的函数
      *
@@ -889,7 +819,6 @@ class DedeTagParse
             return '';
         }
     }
-
     /**
      *  获得一个外部变量
      *
@@ -900,12 +829,10 @@ class DedeTagParse
     function GetGlobals($varname)
     {
         $varname = trim($varname);
-
         //禁止在模板文件读取数据库密码
         if ($varname == "dbuserpwd" || $varname == "cfg_dbpwd") {
             return "";
         }
-
         //正常情况
         if (isset($GLOBALS[$varname])) {
             return $GLOBALS[$varname];
@@ -913,7 +840,6 @@ class DedeTagParse
             return "";
         }
     }
-
     /**
      *  引入文件
      *
@@ -929,14 +855,13 @@ class DedeTagParse
         if ($filename == '') {
             return '';
         }
-        if (file_exists(DEDEROOT."/templets/".$filename)) {
-            $okfile = DEDEROOT."/templets/".$filename;
-        } else if (file_exists(DEDEROOT.'/templets/'.$cfg_df_style.'/'.$filename)) {
-            $okfile = DEDEROOT.'/templets/'.$cfg_df_style.'/'.$filename;
+        if (file_exists(DEDEROOT."/theme/".$filename)) {
+            $okfile = DEDEROOT."/theme/".$filename;
+        } else if (file_exists(DEDEROOT.'/theme/'.$cfg_df_style.'/'.$filename)) {
+            $okfile = DEDEROOT.'/theme/'.$cfg_df_style.'/'.$filename;
         } else {
             return "无法在这个位置找到：$filename";
         }
-
         //编译
         if ($ismake != "no") {
             require_once(DEDEINC."/channelunit.func.php");
@@ -952,7 +877,6 @@ class DedeTagParse
         return $restr;
     }
 }
-
 /**********************************************
 //class DedeAttribute Dede模板标记属性集合
 function c____DedeAttribute();
@@ -974,33 +898,28 @@ class DedeAttribute
             return "";
         }
     }
-
     //同上
     function GetAttribute($str)
     {
         return $this->GetAtt($str);
     }
-
     //判断属性是否存在
     function IsAttribute($str)
     {
         if (isset($this->Items[$str])) return TRUE;
         else return FALSE;
     }
-
     //获得标记名称
     function GetTagName()
     {
         return $this->GetAtt("tagname");
     }
-
     //获得属性个数
     function GetCount()
     {
         return $this->Count + 1;
     }
 }
-
 /*******************************
 //属性解析器(本版本中已经支持使用\'这种语法,和用.间隔表示name属性,如 field.body)
 function c____DedeAttributeParse();
@@ -1016,23 +935,14 @@ class DedeAttributeParse
         $this->cAttributes = new DedeAttribute();
         $strLen = 0;
         $this->sourceString = trim(preg_replace("/[ \r\n\t]{1,}/", " ", $str));
-
         //为了在function内能使用数组，这里允许对[ ]进行转义使用
         $this->sourceString = str_replace('\]', ']', $this->sourceString);
         $this->sourceString = str_replace('[', '[', $this->sourceString);
-        /*
-        $this->sourceString = str_replace('\>','>',$this->sourceString);
-        $this->sourceString = str_replace('<','>',$this->sourceString);
-        $this->sourceString = str_replace('{','{',$this->sourceString);
-        $this->sourceString = str_replace('\}','}',$this->sourceString);
-        */
-
         $strLen = strlen($this->sourceString);
         if ($strLen > 0 && $strLen <= $this->sourceMaxSize) {
             $this->ParseAttribute();
         }
     }
-
     //解析属性
     function ParseAttribute()
     {
@@ -1044,7 +954,6 @@ class DedeAttributeParse
         $hasAttribute = FALSE;
         $strLen = strlen($this->sourceString);
         $this->cAttributes->Items = array();
-
         //获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
         for ($i = 0; $i < $strLen; $i++) {
             if ($this->sourceString[$i] == ' ') {
@@ -1061,7 +970,6 @@ class DedeAttributeParse
                 $tmpvalue .= $this->sourceString[$i];
             }
         }
-
         //不存在属性列表的情况
         if (!$hasAttribute) {
             $this->cAttributes->Count++;
@@ -1073,7 +981,6 @@ class DedeAttributeParse
             return;
         }
         $tmpvalue = '';
-
         //如果字符串含有属性值，遍历源字符串,并获得各属性
         for ($i; $i < $strLen; $i++) {
             $d = $this->sourceString[$i];
@@ -1090,7 +997,6 @@ class DedeAttributeParse
                     $startdd = 0;
                 }
             }
-
             //查找属性的限定标志
             else if ($startdd == 0) {
                 switch ($d) {
@@ -1121,8 +1027,7 @@ class DedeAttributeParse
                     $tmpvalue .= $d;
                 }
             }
-        } //for
-
+        }//for
         //最后一个属性的给值
         if ($tmpatt != '') {
             $this->cAttributes->Count++;

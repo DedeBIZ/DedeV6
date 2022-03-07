@@ -52,7 +52,6 @@ function WriteEnumsCache($egroup = '')
     }
     return '成功更新所有枚举缓存';
 }
-
 /**
  *  获取联动表单两级数据的父类与子类
  *
@@ -72,7 +71,6 @@ function GetEnumsTypes($v)
     }
     return $rearr;
 }
-
 /**
  *  获取枚举的select表单
  *
@@ -105,7 +103,6 @@ function GetEnumsForm($egroup, $evalue = 0, $formid = '', $seltitle = '')
     $forms .= "</select>";
     return $forms;
 }
-
 /**
  *  获取一级数据
  *
@@ -125,8 +122,6 @@ function getTopData($egroup)
     }
     return $data;
 }
-
-
 /**
  *  获取数据的JS代码(二级联动)
  *
@@ -152,7 +147,6 @@ function GetEnumsJs($egroup)
     $jsCode .= "-->";
     return $jsCode;
 }
-
 /**
  *  写入联动JS代码
  *
@@ -167,8 +161,6 @@ function WriteEnumsJs($egroup)
     fwrite($fp, GetEnumsJs($egroup));
     fclose($fp);
 }
-
-
 /**
  *  获取枚举的值
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * 多媒体选择框
+ * 多媒体选择
  *
  * @version        $Id: select_media.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeBIZ.Dialog
@@ -43,15 +43,14 @@ if (!empty($noeditor)) {
 <html>
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=<?php echo $cfg_soft_lang; ?>'>
-    <title>媒体文件管理器</title>
+    <title>选择多媒体</title>
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/base.css">
     <style>
 html{background:#f2f2f2}
-body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
-a{text-decoration:none!important}
 table{background:#fff}
+a{text-decoration:none!important}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
 .linerow{border-bottom:1px solid #eee!important}
     </style>
@@ -80,7 +79,7 @@ table{background:#fff}
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="job" value="upload">
                     <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>">
-                    上传：<input type="file" name="uploadfile" style="width:160px;border:none">
+                    上传：<input type="file" name="uploadfile" style="width:360px;border:none">
                     <button type="submit" name="sb1" class="btn btn-success btn-sm">确定</button>
                 </form>
             </td>

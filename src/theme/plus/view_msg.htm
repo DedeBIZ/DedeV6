@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+  <title>
+    <?php echo $msgtitle; ?>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/bootstrap.min.css">
+  <link href="<?php echo $cfg_cmsurl;?>/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/style.css">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/index.css">
+  <script src="<?php echo $cfg_cmsurl;?>/static/js/jquery.min.js"></script>
+</head>
+<body class="flinkpage">
+
+  <?php include("plus_header.htm") ;?>
+
+  <div class="container">
+    <div class="sp-title">
+      <span class="more">
+        <a href="stow.php?aid=<?php echo $aid; ?>">[收藏此文档]</a>
+        &#160;
+        <a href="../user">[会员中心]</a>
+        &#160;
+        <a href="../">[返回首页]</a>
+      </span>
+    </div>
+    <div class="formbox">
+      <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#DDEAC8" class='table'>
+        <tr bgcolor="#EFF4EA">
+          <td height="26" colspan="2">&#160;<strong>错误具体提示信息：</strong></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td height="60" colspan="2" align="center">
+            <?php echo $moremsg; ?>
+          </td>
+        </tr>
+        <tr bgcolor="#EFF4EA">
+          <td width="17%" height="26" align="center">
+            <strong>文档标题：</strong>
+          </td>
+          <td width="83%" height="26">
+            &#160;
+            <?php echo $arcLinktitle; ?>
+          </td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td height="26" align="center">
+            <strong>发布时间：</strong>
+          </td>
+          <td height="26">
+            &#160;
+            <?php echo $pubdate; ?>
+          </td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td height="70" align="center">
+            <strong>文档简介：</strong>
+          </td>
+          <td>
+            &#160;
+            <?php echo $description; ?>
+          </td>
+        </tr>
+      </table>
+      <br>
+    </div>
+  </div>
+
+  <?php include("plus_footer.htm") ;?>
+
+</body>
+
+</html>

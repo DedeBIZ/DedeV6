@@ -54,7 +54,7 @@ if ($fmdo == 'sendMail') {
         }
     }
 
-    ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收', '/member');
+    ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收', '/user');
     exit();
 } else if ($fmdo == 'checkMail') {
     $mid = intval($mid);

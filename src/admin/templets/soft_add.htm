@@ -8,7 +8,7 @@
   <link href="css/base.css" rel="stylesheet" type="text/css">
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
-  <script language="javascript" src="../static/js/dedeajax2.js"></script>
+  <script language="javascript" src="../static/js/webajax.js"></script>
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
   <script type="text/javascript" src="../static/js/moment.min.js"></script>
   <script type="text/javascript" src="../static/js/daterangepicker.js"></script>
@@ -439,15 +439,11 @@ table{border-collapse:separate}
             <tr>
               <td width="90">&nbsp;附加选项：</td>
               <td>
-                <label><input name="remote" type="checkbox" class="np" id="remote" value="1"
-                  <?php if($cfg_rm_remote=='Y') echo ' checked'; ?>>
-                下载远程图片和资源</label>
-                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1"
-                  <?php if($cfg_arc_dellink=='Y') echo ' checked'; ?>>
-                删除非站内链接</label> <a  class='btn btn-success btn-sm' href="javascript:OpenMyWin('article_allowurl_edit.php');">设置</a>
-                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"
-                  <?php if($cfg_arc_autopic=='Y') echo ' checked'; ?>>
-                提取第一个图片为缩略图</label> </td>
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked'; ?>>&nbsp;下载远程图片和资源&nbsp;</label>
+                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo ' checked'; ?>>&nbsp;删除非站内链接</label>
+                <a href="javascript:OpenMyWin('article_allowurl_edit.php');" class="btn btn-success btn-sm">设置</a>&nbsp;
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked'; ?>>&nbsp;提取第一个图片为缩略图</label>
+              </td>
             </tr>
           </table>
         </td>

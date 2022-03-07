@@ -43,7 +43,6 @@ function MakePublicTag($atts = array(), $refObj = '', $fields = array())
         return $func($atts, $refObj, $fields);
     }
 }
-
 /**
  *  设定属性的默认值
  *
@@ -62,7 +61,6 @@ function FillAtts(&$atts, $attlist)
         }
     }
 }
-
 /**
  *  把上级的fields传递给atts
  *
@@ -94,7 +92,6 @@ function FillFields(&$atts, &$refObj, &$fields)
         }
     }
 }
-
 /**
  * class Tag 标记的数据结构描述
  * function C__Tag();
@@ -113,7 +110,6 @@ class Tag
     var $cAtt;            //标记属性描述,即是class TagAttribute
     var $tagValue = "";        //标记的值
     var $tagID = 0;
-
     /**
      *  获取标记的名称和值
      *
@@ -124,22 +120,18 @@ class Tag
     {
         return strtolower($this->tagName);
     }
-
     function GetValue()
     {
         return $this->tagValue;
     }
-
     function IsAtt($str)
     {
         return $this->cAtt->IsAttribute($str);
     }
-
     function GetAtt($str)
     {
         return $this->cAtt->GetAtt($str);
     }
-
     /**
      *  获取底层模板
      *
@@ -150,7 +142,6 @@ class Tag
         return $this->innerText;
     }
 }
-
 /**
  * 模板解析器
  * function C__DedeTemplate
@@ -176,8 +167,6 @@ class DedeTemplate
     var $templateFile = '';
     var $sourceString = '';
     var $cTags = array();
-
-    //var $definedVars = array();
     var $count = -1;
     var $loopNum = 0;
     var $refObj = '';
@@ -187,8 +176,6 @@ class DedeTemplate
     var $sTagEndWord = '/}';
     var $tagEndWord = '}';
     var $tpCfgs = array();
-
-
     /**
      *  析构函数
      *
@@ -199,14 +186,12 @@ class DedeTemplate
      */
     function __construct($templatedir = '', $refDir = '')
     {
-        //$definedVars[] = 'var';
         //缓存目录
         if ($templatedir == '') {
             $this->templateDir = DEDEROOT.'/templates';
         } else {
             $this->templateDir = $templatedir;
         }
-
         //模板include目录
         if ($refDir == '') {
             if (isset($GLOBALS['cfg_df_style'])) {
@@ -217,13 +202,11 @@ class DedeTemplate
         }
         $this->cacheDir = DEDEROOT.$GLOBALS['cfg_tplcache_dir'];
     }
-
-    //构造函数,兼容PHP4
+    //构造函数，兼容PHP4
     function DedeTemplate($templatedir = '', $refDir = '')
     {
         $this->__construct($templatedir, $refDir);
     }
-
     /**
      *  设定本类自身实例的类引用和使用本类的类实例(如果在类中使用本模板引擎，后一参数一般为$this)
      *
@@ -235,7 +218,6 @@ class DedeTemplate
     {
         $this->refObj = $refObj;
     }
-
     /**
      *  设定Var的键值对
      *
@@ -248,7 +230,6 @@ class DedeTemplate
     {
         $GLOBALS['_vars'][$k] = $v;
     }
-
     /**
      *  设定Var的键值对
      *
@@ -261,7 +242,6 @@ class DedeTemplate
     {
         $GLOBALS['_vars'][$k] = $v;
     }
-
     /**
      *  设定数组
      *
@@ -274,7 +254,6 @@ class DedeTemplate
     {
         $GLOBALS[$k] = $v;
     }
-
     /**
      *  设置标记风格
      *
@@ -292,7 +271,6 @@ class DedeTemplate
         $this->sTagEndWord = $stend;
         $this->tagEndWord = $tend;
     }
-
     /**
      *  获得模板设定的config值
      *
@@ -304,7 +282,6 @@ class DedeTemplate
     {
         return (isset($this->tpCfgs[$k]) ? $this->tpCfgs[$k] : '');
     }
-
     /**
      *  设定模板文件
      *
@@ -337,7 +314,6 @@ class DedeTemplate
         }
         $this->cacheFile = $this->cacheDir.preg_replace("/\.(wml|html|htm|php)$/", "_".$this->GetEncodeStr($tmpfile).'.inc', $tmpfileOnlyName);
         $this->configFile = $this->cacheDir.preg_replace("/\.(wml|html|htm|php)$/", "_".$this->GetEncodeStr($tmpfile).'_config.inc', $tmpfileOnlyName);
-
         //不开启缓存、当缓存文件不存在、及模板为更新的文件的时候才载入模板并进行解析
         if (
             $this->isCache == FALSE || !file_exists($this->cacheFile)
@@ -358,7 +334,6 @@ class DedeTemplate
             }
         }
     }
-
     /**
      *  载入模板字符串
      *
@@ -374,7 +349,6 @@ class DedeTemplate
         $this->configFile = $this->cacheDir."/string_".$hashcode."_config.inc";
         $this->ParseTemplate();
     }
-
     /**
      *  调用此函数include一个编译后的PHP文件，通常是在最后一个步骤才调用本文件
      *
@@ -387,7 +361,6 @@ class DedeTemplate
         $this->WriteCache();
         return $this->cacheFile;
     }
-
     /**
      *  显示内容，由于函数中会重新解压一次$GLOBALS变量，所以在动态页中，应该尽量少用本方法，
      *  取代之是直接在程序中 include $tpl->CacheFile()，不过include $tpl->CacheFile()这种方式不能在类或函数内使用
@@ -403,7 +376,6 @@ class DedeTemplate
         $this->WriteCache();
         include $this->cacheFile;
     }
-
     /**
      *  保存运行后的程序为文件
      *
@@ -423,9 +395,6 @@ class DedeTemplate
         fwrite($fp, $okstr);
         fclose($fp);
     }
-
-    //------------------------------------------------------------------------
-
     /**
      * CheckDisabledFunctions
      *
@@ -454,7 +423,6 @@ class DedeTemplate
         }
         return TRUE;
     }
-
     /**
      *  解析模板并写缓存文件
      *
@@ -475,7 +443,6 @@ class DedeTemplate
             flock($fp, 3);
             $result = trim($this->GetResult());
             $errmsg = '';
-            //var_dump($result);exit();
             if (!$this->CheckDisabledFunctions($result, $errmsg)) {
                 fclose($fp);
                 @unlink($this->cacheFile);
@@ -496,58 +463,7 @@ class DedeTemplate
                 fclose($fp);
             }
         }
-        /*
-        if(!file_exists($this->cacheFile) || $this->isCache==FALSE
-        || ( file_exists($this->templateFile) && (filemtime($this->templateFile) > filemtime($this->cacheFile)) ) )
-        {
-            if($ctype!='config')
-            {
-                if(!$this->isParse)
-                {
-                    $this->ParseTemplate();
-                }
-                $fp = fopen($this->cacheFile,'w') or dir("Write Cache File Error! ");
-                flock($fp,3);
-                fwrite($fp,trim($this->GetResult()));
-                fclose($fp);
-
-            }
-            else
-            {
-                if(count($this->tpCfgs) > 0)
-                {
-                    $fp = fopen($this->configFile,'w') or dir("Write Config File Error! ");
-                    flock($fp,3);
-                    fwrite($fp,'<'.'?php'."\r\n");
-                    foreach($this->tpCfgs as $k=>$v)
-                    {
-                        $v = str_replace("\"","\\\"",$v);
-                        $v = str_replace("\$","\\\$",$v);
-                        fwrite($fp,"\$this->tpCfgs['$k']=\"$v\";\r\n");
-                    }
-                    fwrite($fp,'?'.'>');
-                    fclose($fp);
-                }
-            }
-        } else {
-            if($ctype=='config' && count($this->tpCfgs) > 0 )
-            {
-                $fp = fopen($this->configFile,'w') or dir("Write Config File Error! ");
-                flock($fp,3);
-                fwrite($fp,'<'.'?php'."\r\n");
-                foreach($this->tpCfgs as $k=>$v)
-                {
-                    $v = str_replace("\"","\\\"",$v);
-                    $v = str_replace("\$","\\\$",$v);
-                    fwrite($fp,"\$this->tpCfgs['$k']=\"$v\";\r\n");
-                }
-                fwrite($fp,'?'.'>');
-                fclose($fp);
-            }
-        }
-        */
     }
-
     /**
      *  获得模板文件名的md5字符串
      *
@@ -561,7 +477,6 @@ class DedeTemplate
         $encodeStr = substr(md5($tmpfile), 0, 24);
         return $encodeStr;
     }
-
     /**
      *  解析模板
      *
@@ -589,14 +504,12 @@ class DedeTemplate
         }
         $cAtt = new TagAttributeParse();
         $cAtt->CharToLow = TRUE;
-
         //遍历模板字符串，请取标记及其属性信息
         $t = 0;
         $preTag = '';
         $tswLen = strlen($tagStartWord);
         for ($i = 0; $i < $sourceLen; $i++) {
             $ttagName = '';
-
             //如果不进行此判断，将无法识别相连的两个标记
             if ($i - 1 >= 0) {
                 $ss = $i - 1;
@@ -604,14 +517,12 @@ class DedeTemplate
                 $ss = 0;
             }
             $tagPos = strpos($this->sourceString, $tagStartWord, $ss);
-
             //判断后面是否还有模板标记
             if ($tagPos == 0 && ($sourceLen - $i < $tswLen
                 || substr($this->sourceString, $i, $tswLen) != $tagStartWord)) {
                 $tagPos = -1;
                 break;
             }
-
             //获取TAG基本信息
             for ($j = $tagPos + $startWordLen; $j < $tagPos + $startWordLen + $this->tagMaxLen; $j++) {
                 if (preg_match("/[ >\/\r\n\t\}\.]/", $this->sourceString[$j])) {
@@ -623,7 +534,6 @@ class DedeTemplate
             if ($ttagName != '') {
                 $i = $tagPos + $startWordLen;
                 $endPos = -1;
-
                 //判断  '/}' '{tag:下一标记开始' '{/tag:标记结束' 谁最靠近
                 $fullTagEndWordThis = $fullTagEndWord.$ttagName.$tagEndWord;
                 $e1 = strpos($this->sourceString, $sTagEndWord, $i);
@@ -644,7 +554,6 @@ class DedeTemplate
                     $endPos = $e3;
                     $elen = $endPos + strlen($fullTagEndWordThis);
                 }
-
                 //同时存在 '/}' 和 '{/tag:标记'
                 else {
                     //如果 '/}' 比 '{tag:'、'{/tag:标记' 都要靠近，则认为结束标志是 '/}'，否则结束标志为 '{/tag:标记'
@@ -656,14 +565,12 @@ class DedeTemplate
                         $elen = $endPos + strlen($fullTagEndWordThis);
                     }
                 }
-
                 //如果找不到结束标记，则认为这个标记存在错误
                 if ($endPos == -1) {
                     echo "Tpl Character postion $tagPos, '$ttagName' Error<br>\r\n";
                     break;
                 }
                 $i = $elen;
-
                 //分析所找到的标记位置等信息
                 $attStr = '';
                 $innerText = '';
@@ -681,7 +588,6 @@ class DedeTemplate
                     }
                 }
                 $ttagName = strtolower($ttagName);
-
                 //if、php标记，把整个属性串视为属性
                 if (preg_match("/^if[0-9]{0,}$/", $ttagName)) {
                     $cAtt->cAttributes = new TagAttribute();
@@ -716,13 +622,11 @@ class DedeTemplate
                 $i = $tagPos + $startWordLen;
                 break;
             }
-        } //结束遍历模板字符串
+        }//结束遍历模板字符串
         if ($this->count > -1 && $this->isCompiler) {
             $this->CompilerAll();
         }
     }
-
-
     /**
      *  把模板标记转换为PHP代码
      *
@@ -733,7 +637,7 @@ class DedeTemplate
     {
         $this->loopNum++;
         if ($this->loopNum > 10) {
-            return; //限制最大递归深度为 10 以防止因标记出错等可能性导致死循环
+            return;//限制最大递归深度为 10 以防止因标记出错等可能性导致死循环
         }
         $ResultString = '';
         $nextTagEnd = 0;
@@ -749,8 +653,6 @@ class DedeTemplate
         $this->sourceString = $ResultString;
         $this->ParseTemplate();
     }
-
-
     /**
      *  获得最终结果
      *
@@ -766,7 +668,6 @@ class DedeTemplate
         $addset .= '<'.'?php'."\r\n".'if(!isset($GLOBALS[\'_vars\'])) $GLOBALS[\'_vars\'] = array(); '."\r\n".'$fields = array();'."\r\n".'?'.'>';
         return preg_replace("/\?".">[ \r\n\t]{0,}<"."\?php/", "", $addset.$this->sourceString);
     }
-
     /**
      *  编译单个标记
      *
@@ -780,7 +681,6 @@ class DedeTemplate
         $tagname = $cTag->tagName;
         $varname = $cTag->GetAtt('name');
         $rsvalue = "";
-
         //用于在模板中设置一个变量以提供作扩展用途
         //此变量直接提交到 this->tpCfgs 中，并会生成与模板对应的缓存文件 ***_config.php 文件
         if ($tagname == 'config') {
@@ -847,7 +747,6 @@ class DedeTemplate
                 $cTag->tagValue =  '<'."?php\r\n".trim($cTag->GetInnerText())."\r\n?".'>';
             }
         }
-
         //遍历数组
         else if (preg_match("/^array[0-9]{0,}/", $tagname)) {
             $kk = '$key';
@@ -870,8 +769,7 @@ class DedeTemplate
             $rsvalue .= '<'.'?php  }    ?'.">\r\n";
             $cTag->tagValue = $rsvalue;
         }
-
-        //include 文件
+        //system文件
         else if ($tagname == 'include') {
             $filename = $cTag->GetAtt('file');
             if ($filename == '') {
@@ -912,7 +810,6 @@ class DedeTemplate
             $bindType = $cTag->GetAtt('bindtype');
             $rstype =  ($cTag->GetAtt('resulttype') == '' ? $cTag->GetAtt('rstype') : $cTag->GetAtt('resulttype'));
             $rstype = strtolower($rstype);
-
             //生成属性数组
             foreach ($cTag->cAtt->items as $k => $v) {
                 if (preg_match("/(bind|bindtype)/i", $k)) {
@@ -922,7 +819,6 @@ class DedeTemplate
                 $rsvalue .= '$atts[\''.$k.'\'] = \''.str_replace("'", "\\'", $v)."';\r\n";
             }
             $rsvalue = '<'.'?php'."\r\n".'$atts = array();'."\r\n".$rsvalue;
-
             //绑定到默认函数还是指定函数(datasource属性指定)
             if ($bindFunc == '') {
                 $rsvalue .= '$blockValue = MakePublicTag($atts,$this->refObj,$fields); '."\r\n";
@@ -931,7 +827,6 @@ class DedeTemplate
                 if ($bindType == '') $rsvalue .= '$blockValue = $this->refObj->'.$bindFunc.'($atts,$this->refObj,$fields); '."\r\n";
                 else $rsvalue .= '$blockValue = '.$bindFunc.'($atts,$this->refObj,$fields); '."\r\n";
             }
-
             //返回结果类型：默认为 array 是一个二维数组，string 是字符串
             if ($rstype == 'string') {
                 $rsvalue .= 'echo $blockValue;'."\r\n".'?'.">";
@@ -945,7 +840,6 @@ class DedeTemplate
         }
         return $cTag->tagValue;
     }
-
     /**
      *  编译可能为数组的变量
      *
@@ -957,7 +851,6 @@ class DedeTemplate
     function CompilerArrayVar($vartype, $varname)
     {
         $okvalue = '';
-
         if (!preg_match("/\[/", $varname)) {
             if (preg_match("/^value/", $vartype)) {
                 $varname = $vartype.'.'.$varname;
@@ -970,7 +863,6 @@ class DedeTemplate
                 }
             }
         }
-
         if (preg_match("/\[/", $varname)) {
             $varnames = explode('[', $varname);
             $arrend = '';
@@ -1004,7 +896,6 @@ class DedeTemplate
         }
         return $okvalue;
     }
-
     /**
      *  编译if标记
      *
@@ -1029,7 +920,6 @@ class DedeTemplate
         $rsvalue .= '<'.'?php } ?'.'>';
         return $rsvalue;
     }
-
     /**
      *  处理block区块传递的atts属性的值
      *
@@ -1043,7 +933,6 @@ class DedeTemplate
         $v = str_replace('?'.'>', '?&gt;', $v);
         return  $v;
     }
-
     /**
      *  函数 function 语法处理
      *
@@ -1058,9 +947,8 @@ class DedeTemplate
         $funcstr = str_replace('@me', $nvalue, $funcstr);
         return $funcstr;
     }
-
     /**
-     *  引入文件 include 语法处理
+     *  引入文件system语法处理
      *
      * @access    public
      * @param     string  $filename  文件名
@@ -1086,7 +974,6 @@ class DedeTemplate
         return $itpl->CacheFile();
     }
 }
-
 /**
  * class TagAttribute Tag属性集合
  * function C__TagAttribute();
@@ -1100,7 +987,6 @@ class TagAttribute
 {
     var $count = -1;
     var $items = array(); //属性元素的集合
-
     /**
      *  获得某个属性
      *
@@ -1119,7 +1005,6 @@ class TagAttribute
             return "";
         }
     }
-
     /**
      *  同上
      *
@@ -1131,7 +1016,6 @@ class TagAttribute
     {
         return $this->GetAtt($str);
     }
-
     /**
      *  判断属性是否存在
      *
@@ -1144,7 +1028,6 @@ class TagAttribute
         if (isset($this->items[$str])) return TRUE;
         else return FALSE;
     }
-
     /**
      *  获得标记名称
      *
@@ -1155,7 +1038,6 @@ class TagAttribute
     {
         return $this->GetAtt("tagname");
     }
-
     /**
      *  获得属性个数
      *
@@ -1166,8 +1048,7 @@ class TagAttribute
     {
         return $this->count + 1;
     }
-} //End Class
-
+}//End Class
 /**
  * 属性解析器
  * function C__TagAttributeParse();
@@ -1192,7 +1073,6 @@ class TagAttributeParse
             $this->ParseAttribute();
         }
     }
-
     /**
      *  解析属性
      *
@@ -1209,7 +1089,6 @@ class TagAttributeParse
         $hasAttribute = FALSE;
         $strLen = strlen($this->sourceString);
         $this->cAttributes->items = array();
-
         //获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
         for ($i = 0; $i < $strLen; $i++) {
             if ($this->sourceString[$i] == ' ') {
@@ -1232,7 +1111,6 @@ class TagAttributeParse
                 $tmpvalue .= $this->sourceString[$i];
             }
         }
-
         //不存在属性列表的情况
         if (!$hasAttribute) {
             $this->cAttributes->count++;
@@ -1250,7 +1128,6 @@ class TagAttributeParse
             return;
         }
         $tmpvalue = '';
-
         //如果字符串含有属性值，遍历源字符串,并获得各属性
         for ($i; $i < $strLen; $i++) {
             $d = $this->sourceString[$i];
@@ -1267,7 +1144,6 @@ class TagAttributeParse
                     $startdd = 0;
                 }
             }
-
             //查找属性的限定标志
             else if ($startdd == 0) {
                 switch ($d) {
@@ -1299,17 +1175,13 @@ class TagAttributeParse
                 }
             }
         } //for
-
         //最后一个属性的给值
         if ($tmpatt != '') {
             $this->cAttributes->count++;
             $this->cAttributes->items[$tmpatt] = trim($tmpvalue);
         } //print_r($this->cAttributes->items);
-
     } //end func
-
 } //End Class
-
 /**
  *  私有标签编译,主要用于if标签内的字符串解析
  *
@@ -1324,7 +1196,6 @@ function private_rt($str)
     } else {
         $arr = explode('.', $str);
     }
-
     $rs = '$GLOBALS[\'';
     if ($arr[0] == 'cfg') {
         return $rs.'cfg_'.$arr[1]."']";

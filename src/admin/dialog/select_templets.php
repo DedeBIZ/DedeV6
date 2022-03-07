@@ -1,6 +1,6 @@
 <?php
 /**
- * 模板选择框
+ * 模板选择
  *
  * @version        $Id: select_templets.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeBIZ.Dialog
@@ -34,15 +34,14 @@ if (empty($comeback)) {
 <html>
 <head>
     <meta charset="<?php echo $cfg_soft_lang; ?>">
-    <title>模板管理器</title>
+    <title>选择模板</title>
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/base.css">
     <style>
 html{background:#f2f2f2}
-body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
-a{text-decoration:none!important}
 table{background:#fff}
+a{text-decoration:none!important}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
 .linerow{border-bottom:1px solid #eee!important}
     </style>

@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/channelunit.func.php");
-
 /*----------------------------------
 function C____ChannelUnit();
 -----------------------------------*/
@@ -23,7 +22,6 @@ class ChannelUnit
     var $ArcID;
     var $dsql;
     var $SplitPageField;
-
     //php5构造函数
     function __construct($cid, $aid = 0)
     {
@@ -71,12 +69,10 @@ class ChannelUnit
         }
         $dtp->Clear();
     }
-
     function ChannelUnit($cid, $aid = 0)
     {
         $this->__construct($cid, $aid);
     }
-
     /**
      *  设置档案ID
      *
@@ -88,7 +84,6 @@ class ChannelUnit
     {
         $this->ArcID = $aid;
     }
-
     /**
      *  处理某个字段的值
      *
@@ -105,7 +100,6 @@ class ChannelUnit
         if ($fvalue == '') {
             if ($ftype != 'checkbox') $fvalue = $this->ChannelFields[$fname]['default'];
         }
-
         if ($ftype == 'text') {
             $fvalue = HtmlReplace($fvalue);
         } else if ($ftype == 'textdata') {
@@ -130,7 +124,6 @@ class ChannelUnit
         }
         return $fvalue;
     }
-
     /**
      *  获取缩略图链接
      *
@@ -147,7 +140,6 @@ class ChannelUnit
             if (empty($GLOBALS["stNowPage"])) $NowPage = 1;
             else $NowPage = intval($GLOBALS["stNowPage"]);
         }
-
         $revalue = "";
         $dtp = new DedeTagParse();
         $dtp->LoadSource($fvalue);
@@ -177,7 +169,6 @@ class ChannelUnit
         $photoid = 1;
         $images = array();
         $TotalPhoto = sizeof($dtp->CTags);
-
         foreach ($dtp->CTags as $ctag) {
             if ($ctag->GetName() == "img") {
                 $iw = $ctag->GetAtt('width');
@@ -205,7 +196,6 @@ class ChannelUnit
         unset($images);
         return $revalue;
     }
-
     //关闭所占用的资源
     function Close()
     {

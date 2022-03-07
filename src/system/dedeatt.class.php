@@ -8,7 +8,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//------------------------------------------------------------------------
 /**
  * 属性的数据描述
  * function c____DedeAtt();
@@ -21,7 +20,6 @@ class DedeAtt
 {
     var $Count = -1;
     var $Items = array(); //属性元素的集合
-
     /**
      *  //获得某个属性
      *
@@ -40,13 +38,11 @@ class DedeAtt
             return "";
         }
     }
-
     //同上
     function GetAttribute($str)
     {
         return $this->GetAtt($str);
     }
-
     /**
      *  判断属性是否存在
      *
@@ -58,7 +54,6 @@ class DedeAtt
     {
         return isset($this->Items[$str]) ? TRUE : FALSE;
     }
-
     /**
      *  获得标记名称
      *
@@ -69,7 +64,6 @@ class DedeAtt
     {
         return $this->GetAtt("tagname");
     }
-
     /**
      *   获得属性个数
      *
@@ -80,8 +74,7 @@ class DedeAtt
     {
         return $this->Count + 1;
     }
-} //End DedeAtt
-
+}//End DedeAtt
 /**
  * 属性解析器
  * function c____DedeAttParse();
@@ -96,7 +89,6 @@ class DedeAttParse
     var $SourceMaxSize = 1024;
     var $CAtt; //属性的数据描述类
     var $CharToLow = TRUE;
-
     /**
      *  设置属性解析器源字符串
      *
@@ -114,7 +106,6 @@ class DedeAttParse
             $this->ParseAtt();
         }
     }
-
     /**
      *  解析属性(私有成员，仅给SetSource调用)
      *
@@ -130,7 +121,6 @@ class DedeAttParse
         $ddtag = "";
         $notAttribute = TRUE;
         $strLen = strlen($this->SourceString);
-
         //这里是获得Tag的名称,可视情况是否需要
         //如果不在这个里解析,则在解析整个Tag时解析
         //属性中不应该存在tagname这个名称
@@ -150,13 +140,11 @@ class DedeAttParse
                 $tmpvalue .= $d;
             }
         }
-
         //不存在属性列表的情况
         if ($notAttribute) {
             $this->CAtt->Count++;
             $this->CAtt->Items["tagname"] = ($this->CharToLow ? strtolower(trim($tmpvalue)) : trim($tmpvalue));
         }
-
         //如果字符串含有属性值，遍历源字符串,并获得各属性
         if (!$notAttribute) {
             for ($i; $i < $strLen; $i++) {
@@ -209,6 +197,5 @@ class DedeAttParse
             } //完成属性解析
 
         } //for
-
     } //has Attribute
 }//End DedeAttParse

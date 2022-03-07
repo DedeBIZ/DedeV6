@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 session_start();
-
 /**
  *  检验用户是否有权使用某功能,这个函数是一个回值函数
  *  CheckPurview函数只是对他回值的一个处理过程
@@ -45,7 +44,6 @@ function TestPurview($n)
     }
     return $rs;
 }
-
 /**
  *  对权限检测后返回操作对话框
  *
@@ -60,7 +58,6 @@ function CheckPurview($n)
         exit();
     }
 }
-
 /**
  *  是否没权限限制(超级管理员)
  *
@@ -77,9 +74,7 @@ function TestAdmin()
         return FALSE;
     }
 }
-
 $DedeUserCatalogs = array();
-
 /**
  *  检测用户是否有权限操作某栏目
  *
@@ -100,7 +95,6 @@ function CheckCatalog($cid, $msg)
     }
     return TRUE;
 }
-
 /**
  *  发布文档临时附件信息缓存、发文档前先清空附件信息
  *  发布文档时涉及的附件保存到缓存里，完成后把它与文档关连
@@ -128,7 +122,6 @@ function AddMyAddon($fid, $filename)
     fwrite($fp, "\$maNum = $maNum;\r\n");
     fclose($fp);
 }
-
 /**
  *  清理附件，如果关连的文档ID，先把上一批附件传给这个文档ID
  *
@@ -146,7 +139,6 @@ function ClearMyAddon($aid = 0, $title = '')
     if (!file_exists($cacheFile)) {
         return;
     }
-
     //把附件与文档关连
     if (!empty($aid)) {
         include($cacheFile);
@@ -160,7 +152,6 @@ function ClearMyAddon($aid = 0, $title = '')
     }
     @unlink($cacheFile);
 }
-
 /**
  * 登录类
  *
@@ -184,7 +175,6 @@ class userLogin
     var $keepUserPurviewTag = 'dede_admin_purview';
     var $keepAdminStyleTag = 'dede_admin_style';
     var $adminStyle = 'DedeBIZ';
-
     //php5构造函数
     function __construct($admindir = '')
     {
@@ -197,19 +187,16 @@ class userLogin
             $this->userPurview = $_SESSION[$this->keepUserPurviewTag];
             $this->adminStyle = $_SESSION[$this->keepAdminStyleTag];
         }
-
         if ($admindir != '') {
             $this->adminDir = $admindir;
         } else {
             $this->adminDir = $admin_path;
         }
     }
-
     function userLogin($admindir = '')
     {
         $this->__construct($admindir);
     }
-
     /**
      *  检验用户是否正确
      *
@@ -221,7 +208,6 @@ class userLogin
     function checkUser($username, $userpwd)
     {
         global $dsql;
-
         //只允许用户名和密码用0-9,a-z,A-Z,'@','_','.','-'这些字符
         $this->userName = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $username);
         $this->userPwd = preg_replace("/[^0-9a-zA-Z_@!\.-]/", '', $userpwd);
@@ -247,7 +233,6 @@ class userLogin
             return 1;
         }
     }
-
     /**
      *  保持用户的会话状态
      *
@@ -259,36 +244,26 @@ class userLogin
         if ($this->userID != '' && $this->userType != '') {
             global $admincachefile, $adminstyle;
             if (empty($adminstyle)) $adminstyle = 'DedeBIZ';
-
             @session_register($this->keepUserIDTag);
             $_SESSION[$this->keepUserIDTag] = $this->userID;
-
             @session_register($this->keepUserTypeTag);
             $_SESSION[$this->keepUserTypeTag] = $this->userType;
-
             @session_register($this->keepUserChannelTag);
             $_SESSION[$this->keepUserChannelTag] = $this->userChannel;
-
             @session_register($this->keepUserNameTag);
             $_SESSION[$this->keepUserNameTag] = $this->userName;
-
             @session_register($this->keepUserPurviewTag);
             $_SESSION[$this->keepUserPurviewTag] = $this->userPurview;
-
             @session_register($this->keepAdminStyleTag);
             $_SESSION[$this->keepAdminStyleTag] = $adminstyle;
-
             PutCookie('DedeUserID', $this->userID, 3600 * 24, '/');
             PutCookie('DedeLoginTime', time(), 3600 * 24, '/');
-
             $this->ReWriteAdminChannel();
-
             return 1;
         } else {
             return -1;
         }
     }
-
     /**
      *  重写用户权限频道
      *
@@ -323,8 +298,6 @@ class userLogin
         fwrite($fp, '?'.'>');
         fclose($fp);
     }
-
-    //
     /**
      *  结束用户的会话状态
      *
@@ -344,7 +317,6 @@ class userLogin
         DropCookie('DedeLoginTime');
         $_SESSION = array();
     }
-
     /**
      *  获得用户管理频道的值
      *
@@ -359,7 +331,6 @@ class userLogin
             return '';
         }
     }
-
     /**
      *  获得用户的权限值
      *
@@ -374,7 +345,6 @@ class userLogin
             return -1;
         }
     }
-
     /**
      *  获取用户权限值
      *
@@ -385,7 +355,6 @@ class userLogin
     {
         return $this->getUserType();
     }
-
     /**
      *  获得用户的ID
      *
@@ -400,7 +369,6 @@ class userLogin
             return -1;
         }
     }
-
     /**
      *  获得用户的笔名
      *
@@ -415,7 +383,6 @@ class userLogin
             return -1;
         }
     }
-
     /**
      *  用户权限表
      *
@@ -427,7 +394,6 @@ class userLogin
         return $this->userPurview;
     }
 }
-
 /**
  *  获得某id的所有下级id
  *
@@ -448,7 +414,6 @@ function GetSonIdsUL($id, $channel = 0, $addthis = TRUE)
     $rquery = join(',', $GLOBALS['idArray']);
     return $rquery;
 }
-
 /**
  *  递归逻辑
  *

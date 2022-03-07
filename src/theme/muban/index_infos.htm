@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="{dede:global.cfg_soft_lang/}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/bootstrap.min.css">
+    <link href="{dede:global.cfg_cmsurl/}/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/style.css">
+    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/css/index.css">
+    <link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/img/favicon.png">
+    <script src="{dede:global.cfg_cmsurl/}/static/js/jquery.min.js"></script>
+    <title>{dede:global.cfg_webname/}</title>
+    <meta name="keywords" content="{dede:global.cfg_keywords/}">
+    <meta name="description" content="{dede:global.cfg_description/}">
+</head>
+<body>
+    {dede:include filename="top.htm"/}
+      
+    {dede:include filename="header.htm"/}
+
+	{dede:include filename="navbar.htm"/}
+	
+    <div class="container">
+        <div class="position">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">当前位置</li>
+                    {dede:field name='position'/}
+                </ol>
+            </nav>
+        </div>
+        <!-- /.position -->
+    </div>
+
+    <main class="container">
+        <div class="row">
+            <div class="col-12 col-lg-9 index-left">
+              <div class="row">
+                {dede:channelartlist}
+                <div class="col-md-6 mb-3">
+                  <div class="card ddcard-normal">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-6 caption"><span><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></span></div>
+                              <div class="col-6 d-flex justify-content-end more">
+                                <a href="{dede:field name='typeurl'/}">更多</a>
+                              </div>
+                          </div>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                          {dede:arclistsg titlelen='60' row='8'}
+                          <li><i class="fa fa-bookmark-o" aria-hidden="true"></i> <a
+                                  title="[field:fulltitle/]"
+                                  href="[field:arcurl/]">[field:title/]</a>
+                          </li>
+                          {/dede:arclistsg}
+                      </ul>
+                  </div>
+                </div>
+                {/dede:channelartlist}
+              </div>
+
+            </div><!-- /.index-left -->
+            <aside class="col-12 col-lg-3">
+
+              {dede:include comment='推荐内容' filename="widget_recommend_sg.htm"/}
+
+              {dede:include comment='热点内容' filename="widget_hot_sg.htm"/}
+
+              {dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
+            </aside><!-- /aside -->
+        </div>
+    </main>
+    <!-- /main -->
+
+    {dede:include filename="footer.htm"/}
+</body>
+
+</html>
+

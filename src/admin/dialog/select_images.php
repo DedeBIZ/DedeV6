@@ -1,6 +1,6 @@
 <?php
 /**
- * 图片选择框
+ * 图片选择
  *
  * @version        $Id: select_images.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeBIZ.Dialog
@@ -49,18 +49,17 @@ if (!empty($noeditor)) {
 <html>
 <head>
     <meta charset="<?php echo $cfg_soft_lang; ?>">
-    <title>图片浏览器</title>
+    <title>选择图片</title>
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/base.css">
     <style>
 html{background:#f2f2f2}
-body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif}
-a{text-decoration:none!important}
 table{background:#fff}
+a{text-decoration:none!important}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+.napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}
 .linerow{border-bottom:1px solid #eee!important}
-.napisdiv{left:40;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}
     </style>
     <script>
     function nullLink() {
@@ -134,7 +133,7 @@ table{background:#fff}
                     <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
                     <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>">
                     <input type="hidden" name="job" value="upload">
-                    上传：<input type="file" name="imgfile" style="width:160px;border:none">
+                    上传：<input type="file" name="imgfile" style="width:260px;border:none">
                     <label><input type="checkbox" name="needwatermark" value="1" class="np" <?php if ($photo_markup == '1') echo "checked"; ?> /> 水印 </label>
                     <label><input type="checkbox" name="resize" value="1" class="np"> 缩小 </label>
                     宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:46px">
@@ -144,9 +143,9 @@ table{background:#fff}
             </td>
         </tr>
         <tr>
-            <td width="10%" class="linerow">预览</td>
+            <td width="8%" class="linerow">预览</td>
             <td width="40%" class="linerow">选择图片</td>
-            <td width="20%" class="linerow">文件大小</td>
+            <td width="22%" class="linerow">文件大小</td>
             <td width="30%" class="linerow">修改时间</td>
         </tr>
         <tr>

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../static/css/jquery.fileupload.css">
 <link rel="stylesheet" href="../static/css/cropper.min.css">
 <script src="../static/js/jquery.js"></script>
-<script src="../static/js/dedeajax2.js"></script>
+<script src="../static/js/webajax.js"></script>
 <script src="../static/js/moment.min.js"></script>
 <script src="../static/js/daterangepicker.js"></script>
 <script src="js/main.js"></script>
@@ -266,8 +266,8 @@ table{border-collapse:separate}
               <td width="90">&nbsp;附加选项：</td>
               <td>
                 <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?>>&nbsp;下载远程图片和资源&nbsp;</label>
-                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?>>&nbsp;删除非站内链接&nbsp;</label>
-                <a href="javascript:OpenMyWin('article_allowurl_edit.php')">[设置]</a>
+                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?>>&nbsp;删除非站内链接</label>
+                <a href="javascript:OpenMyWin('article_allowurl_edit.php')" class="btn btn-success btn-sm">设置</a>&nbsp;
                 <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>>&nbsp;提取第一个图片为缩略图&nbsp;</label>
                 <label><input type='checkbox' name='needwatermark' value='1' class='np' <?php if($photo_markup=='1') echo "checked"; ?>>&nbsp;图片是否加水印</label>
               </td>

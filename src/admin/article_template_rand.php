@@ -78,7 +78,7 @@ make_hash();
 $msg = "
 <link href='css/base.css' rel='stylesheet' type='text/css' />
 <script language='javascript' src='js/main.js'></script>
-<script language='javascript' src='../static/js/dedeajax2.js'></script>
+<script language='javascript' src='../static/js/webajax.js'></script>
 <script language='javascript'>
 function DoRand(jobname)
 {

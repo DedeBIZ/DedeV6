@@ -12,7 +12,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 require_once(DEDEINC."/libraries/dedehttpdown.class.php");
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/charset.func.php");
-
 /**
  *  下载图片
  *
@@ -50,7 +49,6 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
     $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10);
     fwrite($m_fp, $sessionQuery);
     $lnum = 0;
-
     //获取详细应答头
     $m_httphead = array();
     $httpstas = explode(" ", fgets($m_fp, 256));
@@ -80,7 +78,6 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
             $m_httphead[strtolower($hkey)] = trim($hvalue);
         }
     }
-
     //分析返回记录
     if (preg_match("/^3/", $m_httphead["http-state"])) {
         if (isset($m_httphead["location"]) && $JumpCount < 3) {
@@ -97,7 +94,6 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
         return FALSE;
     }
     $contentLength = $m_httphead['content-length'];
-
     //保存文件
     $fp = fopen($filename, "w") or die("写入文件：{$filename} 失败");
     $i = 0;
@@ -106,12 +102,10 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
     while (!feof($m_fp)) {
         $okdata .= fgetc($m_fp);
         $i++;
-
         //超时结束
         if (time() - $starttime > $maxtime) {
             break;
         }
-
         //到达指定大小结束
         if ($i >= $contentLength) {
             break;
@@ -129,7 +123,6 @@ function DownImageKeep($gurl, $rfurl, $filename, $gcookie = "", $JumpCount = 0, 
     fclose($m_fp);
     return TRUE;
 }
-
 /**
  *  获得某页面返回的Cookie信息
  *
@@ -162,7 +155,6 @@ function RefurlCookie($gurl)
     $m_fp = fsockopen($ghost, 80, $errno, $errstr, 10) or die($ghost.'<br>');
     fwrite($m_fp, $sessionQuery);
     $lnum = 0;
-
     //获取详细应答头
     $gcookie = "";
     while (!feof($m_fp)) {
@@ -179,7 +171,6 @@ function RefurlCookie($gurl)
     fclose($m_fp);
     return $gcookie;
 }
-
 /**
  *  获得网址的host和query部份
  *
@@ -194,7 +185,6 @@ function GetHostInfo($gurl)
     $garr['query'] = "/".preg_replace("/^([^\/]*)\//i", "", $gurl);
     return $garr;
 }
-
 /**
  *  HTML里的图片转DEDE格式
  *
@@ -225,7 +215,6 @@ function TurnImageTag(&$body)
     $ttx = "\r\n{dede:pagestyle maxwidth='{$cfg_album_width}' ddmaxwidth='{$cfg_ddimg_width}' row='3' col='3' value='2'/}\r\n{dede:comments}图集类型会采集时生成此配置是正常的，不过如果后面没有跟着img标记则表示规则无效{/dede:comments}\r\n".$ttx;
     return $ttx;
 }
-
 /**
  *  HTML里的网址格式转换
  *
@@ -249,7 +238,6 @@ function TurnLinkTag(&$body)
     }
     return $ttx;
 }
-
 /**
  *  替换XML的CDATA
  *
@@ -263,7 +251,6 @@ function RpCdata($str)
     $str = str_replace(']]>', '', $str);
     return  $str;
 }
-
 /**
  *  分析RSS里的链接
  *
@@ -277,7 +264,6 @@ function GetRssLinks($rssurl)
     $dhd = new DedeHttpDown();
     $dhd->OpenUrl($rssurl);
     $rsshtml = $dhd->GetHtml();
-
     //分析编码
     preg_match("/encoding=[\"']([^\"']*)[\"']/is", $rsshtml, $infos);
     if (isset($infos[1])) {
@@ -321,7 +307,6 @@ function GetRssLinks($rssurl)
     }
     return $rsarr;
 }
-
 /**
  *  从RSS摘要获取图片信息
  *
@@ -344,7 +329,6 @@ function GetddImgFromRss($descriptions, $refurl)
         return '';
     }
 }
-
 /**
  *  补全网址
  *
@@ -361,7 +345,6 @@ function FillUrl($refurl, $surl)
     $surl = trim($surl);
     $urls = @parse_url($refurl);
     $basehost = ((!isset($urls['port']) || $urls['port'] == '80') ? $urls['host'] : $urls['host'].':'.$urls['port']);
-
     //$basepath = $basehost.(!isset($urls['path']) ? '' : '/'.$urls['path']);
     //由于直接获得的path在处理 http://xxxx/nnn/aaa?fdsafd 这种情况时会有错误，因此用其它方式处理
     $basepath = $basehost;
@@ -380,7 +363,6 @@ function FillUrl($refurl, $surl)
     if ($pos > 0) {
         $surl = substr($surl, 0, $pos);
     }
-
     //用 '/' 表示网站根的网址
     if ($surl[0] == '/') {
         $okurl = $basehost.$surl;
@@ -405,7 +387,6 @@ function FillUrl($refurl, $surl)
     $okurl = 'http://'.preg_replace("/\/{1,}/", '/', $okurl);
     return $okurl;
 }
-
 /**
  *  从匹配规则中获取列表网址
  *
@@ -422,7 +403,6 @@ function FillUrl($refurl, $surl)
 function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid = 0, $addv = 1, $usemore = 0, $batchrule = '')
 {
     global $dsql, $islisten;
-
     $lists = array();
     $n = 0;
     $islisten = (empty($islisten) ? 0 : $islisten);
@@ -450,7 +430,6 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
             if ($addv <= 0) {
                 $addv = 1;
             }
-
             //没指定多栏目匹配规则
             if ($usemore == 0) {
                 while ($startid <= $endid) {
@@ -463,7 +442,6 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                     }
                 }
             }
-
             //匹配多个栏目
             //规则表达式 [(#)=>(#)匹配的网址; (*)=>(*)的范围，如：1-20; typeid=>栏目id; addurl=>附加的网址(用|分开多个)]
             else {
@@ -495,7 +473,6 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                             list($startid, $endid) = explode('-', $v);
                         }
                     }
-
                     //如果栏目用栏目名称
                     if (preg_match('/[^0-9]/', $typeid)) {
                         $arr = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE typename LIKE '$typeid' ");
@@ -505,7 +482,6 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                             $typeid = 0;
                         }
                     }
-
                     //附加网址优先
                     $mjj = 0;
                     if (isset($addurls[0])) {
@@ -523,7 +499,6 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                             }
                         }
                     }
-
                     //如果为非监听模式或监听模式没手工指定的附加网址
                     if ($islisten != 1 || $mjj == 0) {
                         //匹配规则里的网址，注：(#)的网址是是允许使用(*)的
@@ -543,10 +518,7 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
                     }
                 }
             } //End 匹配多栏目
-
         } //End使用规则匹配的情况
-
     }
-
     return $lists;
 }//End

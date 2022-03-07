@@ -40,6 +40,5 @@ if (function_exists("imagecreatefromwbmp") && function_exists("imagewbmp")) {
     $cfg_photo_typenames[] = "image/wbmp";
     $cfg_photo_support .= "WBMP ";
 }
-
 //引入图像处理小助手
 helper('image');

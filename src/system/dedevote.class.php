@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/dedetag.class.php");
-
 /**
  * 投票类
  *
@@ -25,7 +24,6 @@ class DedeVote
     var $VoteCount;
     var $VoteID;
     var $dsql;
-
     //php5构造函数
     function __construct($aid)
     {
@@ -54,11 +52,9 @@ class DedeVote
     {
         $this->__construct($aid);
     }
-
     function Close()
     {
     }
-
     /**
      *  获得投票项目总投票次数
      *
@@ -73,7 +69,6 @@ class DedeVote
             return 0;
         }
     }
-
     /**
      *  增加指定的投票节点的票数
      *
@@ -87,7 +82,6 @@ class DedeVote
             $this->VoteNotes[$aid]['count']++;
         }
     }
-
     /**
      *  获得项目的投票表单
      *
@@ -128,7 +122,6 @@ class DedeVote
         $items .= "<input type='hidden' name='ismore' value='".$this->VoteInfos['ismore']."' />\r\n";
         $items .= "<tr align='center'><td height='$lineheight' id='votetitle' style='border-bottom:1px dashed #999999;color:#3F7652' $titlebackgroup><strong>".$this->VoteInfos['votename']."</strong></td></tr>\r\n";
         if ($this->VoteCount > 0) {
-
             foreach ($this->VoteNotes as $k => $arr) {
                 if ($this->VoteInfos['ismore'] == 0) {
                     $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><label><input type='radio' name='voteitem' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
@@ -144,7 +137,6 @@ class DedeVote
         $items .= "</form>\r\n</table>\r\n";
         return $items;
     }
-
     /**
      * 保存投票数据
      * 请不要在输出任何内容之前使用SaveVote()方法!
@@ -160,7 +152,6 @@ class DedeVote
             return '您没选中任何项目';
         }
         $items = '';
-
         //检查投票是否已过期
         $nowtime = time();
         if ($nowtime > $this->VoteInfos['endtime']) {
@@ -172,7 +163,6 @@ class DedeVote
             ShowMsg('投票还没有开始', $ENV_GOBACK_URL);
             exit();
         }
-
         //检测游客是否已投过票
         if (isset($_COOKIE['VOTE_MEMBER_IP'])) {
             if ($_COOKIE['VOTE_MEMBER_IP'] == $_SERVER['REMOTE_ADDR']) {
@@ -184,7 +174,6 @@ class DedeVote
         } else {
             setcookie('VOTE_MEMBER_IP', $_SERVER['REMOTE_ADDR'], time() * $row['spec'] * 3600, '/');
         }
-
         //检查用户是否已投过票
         $nowtime = time();
         $VoteMem = $this->dsql->GetOne("SELECT * FROM #@__vote_member WHERE voteid = '$this->VoteID' and userid='$memberID'");
@@ -234,7 +223,6 @@ class DedeVote
         $this->dsql->ExecuteNoneQuery("UPDATE `#@__vote` SET totalcount='".($this->VoteInfos['totalcount'] + 1)."',votenote='".addslashes($items)."' WHERE aid='".$this->VoteID."'");
         return "投票成功";
     }
-
     /**
      *  获得项目的投票结果
      *

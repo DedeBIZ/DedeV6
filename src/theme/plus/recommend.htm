@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+  <title>推荐_<?php echo $title; ?>_{dede:global name='cfg_webname'/}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/bootstrap.min.css">
+  <link href="<?php echo $cfg_cmsurl;?>/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/style.css">
+</head>
+<body class="flinkpage">
+
+  <?php include("plus_header.htm") ;?>
+  
+  <div class="container">
+    <div class="sp-title mt-3">
+      <strong>推荐：<?php echo $title; ?></strong>
+    </div>
+    <div class="formbox">
+      <form name="form1" method="post" action="recommend.php">
+        <input type="hidden" name="arcurl" value="<?php echo $arcurl; ?>">
+        <input type="hidden" name="action" value="send">
+        <input type="hidden" name="arcID" value="<?php echo $aid; ?>">
+        <table width="100%" border="0" class="table" cellspacing="2" cellpadding="1">
+          <tr>
+            <td height="30" align="right" width="150">您好友的Email：</td>
+            <td height="30" align="left"><input name="email" type="text" class="form-control" id="email" value="@" /></td>
+          </tr>
+          <tr>
+            <td height="30" align="right">您的留言：</td>
+            <td height="30" align="left"><textarea name="msg" cols="80" rows="16" id="msg" class="form-control">
+您好，我在 [<?php echo $cfg_webname; ?>] 发现了一个很好的东东：
+您不妨去看看吧
+
+文档的名称是：<?php echo $title; ?>
+
+网址是：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?>
+</textarea></td>
+          </tr>
+          <tr>
+            <td height="30" align="left">&#160;</td>
+            <td height="30" align="left">
+              <button type="submit" class="btn btn-success">发送</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+  
+  <?php include("plus_footer.htm") ;?>
+
+</body>
+
+</html>

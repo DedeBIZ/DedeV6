@@ -46,7 +46,6 @@ function _FilterAll($fk, &$svar)
     }
     return $svar;
 }
-
 /* 对_GET,_POST,_COOKIE进行过滤 */
 foreach (array('_GET', '_POST', '_COOKIE') as $_request) {
     foreach ($$_request as $_k => $_v) {

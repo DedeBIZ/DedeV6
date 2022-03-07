@@ -32,13 +32,11 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
     if ($cfg_md_idurl == 'Y' && preg_match("/[^a-z0-9]/i", $uid)) {
         return $msgtitle.'必须由英文字母或数字组成';
     }
-
     if ($cfg_soft_lang == 'utf-8') {
         $ck_uid = utf82gb($uid);
     } else {
         $ck_uid = $uid;
     }
-
     for ($i = 0; isset($ck_uid[$i]); $i++) {
         if (ord($ck_uid[$i]) > 0x80) {
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
@@ -58,7 +56,6 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
     }
     return 'ok';
 }
-
 /**
  *  检查用户是否被禁言
  *
@@ -79,7 +76,6 @@ function CheckNotAllow()
         exit();
     }
 }
-
 function FormatUsername($username)
 {
     $username = str_replace("`", "‘", $username);
@@ -90,7 +86,6 @@ function FormatUsername($username)
     $username = str_replace(")", "）", $username);
     return addslashes($username);
 }
-
 /**
  * 网站会员登录类
  *
@@ -119,7 +114,6 @@ class MemberLogin
     var $M_JoinTime;
     var $M_Honor = '';
     var $memberCache = 'memberlogin';
-
     //php5构造函数
     function __construct($kptime = -1, $cache = FALSE)
     {
@@ -149,7 +143,6 @@ class MemberLogin
             } else {
                 $this->fields = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$this->M_ID}' ");
             }
-
             if (is_array($this->fields)) {
                 //间隔一小时更新一次用户登录时间
                 if (time() - $this->M_LoginTime > 3600) {
@@ -183,12 +176,10 @@ class MemberLogin
             }
         }
     }
-
     function MemberLogin($kptime = -1)
     {
         $this->__construct($kptime);
     }
-
     /**
      *  删除缓存,每次登录时和在修改用户资料的地方会清除
      *
@@ -200,7 +191,6 @@ class MemberLogin
     {
         DelCache($this->memberCache, $mid);
     }
-
     /**
      *  判断会员是否到期
      *
@@ -212,12 +202,10 @@ class MemberLogin
         $nowtime = time();
         $mhasDay = $this->M_ExpTime - ceil(($nowtime - $this->M_UpTime) / 3600 / 24) + 1;
         if ($mhasDay <= 0) {
-            $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET uptime='0',exptime='0',
-                                         rank='$cfg_mb_rank' WHERE mid='".$this->fields['mid']."';");
+            $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET uptime='0',exptime='0',rank='$cfg_mb_rank' WHERE mid='".$this->fields['mid']."';");
         }
         return $mhasDay;
     }
-
     /**
      *  退出cookie的会话
      *
@@ -227,7 +215,6 @@ class MemberLogin
     {
         $this->ResetUser();
     }
-
     /**
      *  验证用户是否已经登录
      *
@@ -238,7 +225,6 @@ class MemberLogin
         if ($this->M_ID > 0) return TRUE;
         else return FALSE;
     }
-
     /**
      *  检测用户上传空间
      *
@@ -251,7 +237,6 @@ class MemberLogin
         $row = $dsql->GetOne("SELECT sum(filesize) AS fs FROM `#@__uploads` WHERE mid='$uid'; ");
         return $row['fs'];
     }
-
     /**
      *  检查用户空间信息
      *
@@ -268,7 +253,6 @@ class MemberLogin
             exit();
         }
     }
-
     /**
      *  更新用户信息统计表
      *
@@ -294,12 +278,10 @@ class MemberLogin
             }
         }
         $inquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`)
-               VALUES ('$mid','$article','$album','$archives','$homecount','$pagecount','$feedback','$friend','$stow'); ";
+            VALUES ('$mid','$article','$album','$archives','$homecount','$pagecount','$feedback','$friend','$stow'); ";
         $dsql->ExecuteNoneQuery("Delete From `#@__member_tj` where mid='$mid' ");
         $dsql->ExecuteNoneQuery($inquery);
     }
-
-    //
     /**
      *  重置用户信息
      *
@@ -325,7 +307,6 @@ class MemberLogin
         DropCookie('DedeUserID');
         DropCookie('DedeLoginTime');
     }
-
     /**
      *  获取整数值
      *
@@ -338,7 +319,6 @@ class MemberLogin
         $fnum = preg_replace("/[^0-9\.]/", '', $fnum);
         return $fnum;
     }
-
     /**
      *  用户登录
      *  把登录密码转为指定长度md5数据
@@ -362,7 +342,6 @@ class MemberLogin
                 return md5($pwd);
         }
     }
-
     /**
      *  把数据库密码转为特定长度
      *  如果数据库密码是明文的，本程序不支持
@@ -391,7 +370,6 @@ class MemberLogin
             }
         }
     }
-
     /**
      *  检查用户是否合法
      *
@@ -403,16 +381,13 @@ class MemberLogin
     function CheckUser(&$loginuser, $loginpwd)
     {
         global $dsql;
-
         //检测用户名的合法性
         $rs = CheckUserID($loginuser, '用户名', FALSE);
-
         //用户名不正确时返回验证错误，原登录名通过引用返回错误提示信息
         if ($rs != 'ok') {
             $loginuser = $rs;
             return '0';
         }
-
         //matt=10 是管理员关连的前台帐号，为了安全起见，这个帐号只能从后台登录，不能直接从前台登录
         $row = $dsql->GetOne("SELECT mid,matt,pwd,logintime FROM `#@__member` WHERE userid LIKE '$loginuser' ");
         if (is_array($row)) {
@@ -431,7 +406,6 @@ class MemberLogin
             return 0;
         }
     }
-
     /**
      *  保存用户cookie
      *
@@ -460,7 +434,6 @@ class MemberLogin
             PutCookie('DedeLoginTime', $this->M_LoginTime);
         }
     }
-
     /**
      *  获得会员目前的状态
      *

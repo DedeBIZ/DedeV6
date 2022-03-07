@@ -3951,7 +3951,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点网址（http://域
 ('8','cfg_adminemail','网站发信邮箱','2','string','support@dedebiz.com'),
 ('9','cfg_html_editor','富文本','2','string','ckeditor'),
 ('10','cfg_arcdir','默认文档生成文件路径','1','string','/a'),
-('11','cfg_medias_dir','默认图片上传文件路径','1','string','/uploads'),
+('11','cfg_medias_dir','默认图片上传文件路径','1','string','/static'),
 ('12','cfg_ddimg_width','缩略图默认宽度','3','number','400'),
 ('13','cfg_ddimg_height','缩略图默认高度','3','number','300'),
 ('63','cfg_album_width','图集默认显示图片的大小','3','number','800'),

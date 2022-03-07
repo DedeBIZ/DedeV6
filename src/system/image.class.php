@@ -21,13 +21,11 @@ class image
     var $watermarktext;
     var $thumbstatus;
     var $watermarkstatus;
-
     //析构函数,兼容PHP4
     function image($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach = array())
     {
         $this->__construct($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach);
     }
-
     //析构函数
     function __construct($targetfile, $cfg_thumb, $cfg_watermarktext, $photo_waterpos, $photo_diaphaneity, $photo_wheight, $photo_wwidth, $cfg_watermarktype, $photo_marktrans, $trueMarkimg, $attach = array())
     {
@@ -43,8 +41,6 @@ class image
         $this->targetfile = $targetfile;
         $this->attachinfo = @getimagesize($targetfile);
         $this->attach = $attach;
-
-
         switch ($this->attachinfo['mime']) {
             case 'image/jpeg':
                 $this->imagecreatefromfunc = function_exists('imagecreatefromjpeg') ? 'imagecreatefromjpeg' : '';
@@ -58,8 +54,7 @@ class image
                 $this->imagecreatefromfunc = function_exists('imagecreatefrompng') ? 'imagecreatefrompng' : '';
                 $this->imagefunc = function_exists('imagepng') ? 'imagepng' : '';
                 break;
-        } //为空则匹配类型的函数不存在
-
+        }//为空则匹配类型的函数不存在
         $this->attach['size'] = empty($this->attach['size']) ? @filesize($targetfile) : $this->attach['size'];
         if ($this->attachinfo['mime'] == 'image/gif') {
             $fp = fopen($targetfile, 'rb');
@@ -68,7 +63,6 @@ class image
             $this->animatedgif = strpos($targetfilecontent, 'NETSCAPE2.0') === false ? 0 : 1;
         }
     }
-
     /**
      *  生成缩略图
      *
@@ -81,13 +75,11 @@ class image
     function thumb($thumbwidth, $thumbheight, $preview = 0)
     {
         $this->thumb_gd($thumbwidth, $thumbheight, $preview);
-
         if ($this->thumbstatus == 2 && $this->watermarkstatus) {
             $this->image($this->targetfile, $this->attach);
             $this->attach['size'] = filesize($this->targetfile);
         }
     }
-
     /**
      *  图片水印
      *
@@ -102,7 +94,6 @@ class image
         }
         $this->watermark_gd($preview);
     }
-
     /**
      *  使用gd生成缩略图
      *
@@ -114,7 +105,6 @@ class image
      */
     function thumb_gd($thumbwidth, $thumbheight, $preview = 0)
     {
-
         if ($this->thumbstatus && function_exists('imagecreatetruecolor') && function_exists('imagecopyresampled') && function_exists('imagejpeg')) {
             $imagecreatefromfunc = $this->imagecreatefromfunc;
             $imagefunc = $this->thumbstatus == 1 ? 'imagejpeg' : $this->imagefunc;
@@ -142,7 +132,6 @@ class image
             }
         }
     }
-
     /**
      *  使用gd进行水印
      *
@@ -176,7 +165,6 @@ class image
             if (($this->watermarktype < 2 && is_readable($watermark_file) || $this->watermarktype == 2) && $wmwidth > 10 && $wmheight > 10 && !$this->animatedgif) {
                 switch ($this->watermarkstatus) {
                     case 1:
-
                         $x = +5;
                         $y = +5;
                         break;

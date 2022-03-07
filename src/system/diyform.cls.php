@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once DEDEINC.'/dedetag.class.php';
 require_once DEDEINC.'/customfields.func.php';
-
 /**
  * diyform
  *
@@ -30,7 +29,6 @@ class diyform
     var $listTemplate;
     var $viewTemplate;
     var $postTemplate;
-
     function diyform($diyid)
     {
         $this->__construct($diyid);
@@ -60,7 +58,6 @@ class diyform
         $this->viewTemplate = $diyinfo['viewtemplate'] != '' && file_exists(DEDETEMPLATE.'/plus/'.$diyinfo['viewtemplate']) ? $diyinfo['viewtemplate'] : 'view_diyform.htm';;
         $this->postTemplate = $diyinfo['posttemplate'] != '' && file_exists(DEDETEMPLATE.'/plus/'.$diyinfo['posttemplate']) ? $diyinfo['posttemplate'] : 'post_diyform.htm';;
     }
-
     /**
      *  获取表单
      *
@@ -91,12 +88,10 @@ class diyform
                 }
             }
         }
-
         $formstring .= "<input type=\"hidden\" name=\"dede_fields\" value=\"".$formfields."\" />\n";
         $formstring .= "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"".md5($formfields.$cfg_cookie_encode)."\" />";
         return $formstring;
     }
-
     /**
      *  获取字段列表
      *

@@ -28,11 +28,10 @@ if (file_exists(DEDEINC.'/code/datalist.'.$codefile.'.inc')) {
     $lang_next_page = '下页';
     $lang_index_page = '首页';
     $lang_end_page = '末页';
-    $lang_record_number = '条记录';
+    $lang_record_number = '篇';
     $lang_page = '页';
     $lang_total = '共';
 }
-
 /**
  * DataListCP
  *
@@ -50,7 +49,6 @@ class DataListCP
     var $sourceSql;
     var $isQuery;
     var $queryTime;
-
     /**
      *  用指定的文档ID进行初始化
      *
@@ -69,7 +67,6 @@ class DataListCP
         } else {
             $dsql = $GLOBALS['dsqlitete'];
         }
-
         $this->sourceSql = '';
         $this->pageSize = 25;
         $this->queryTime = 0;
@@ -88,7 +85,6 @@ class DataListCP
             $this->tpl->LoadTemplate($tplfile);
         }
     }
-
     /**
      *  兼容PHP4版本
      *
@@ -100,13 +96,11 @@ class DataListCP
     {
         $this->__construct($tplfile);
     }
-
     //设置SQL语句
     function SetSource($sql)
     {
         $this->sourceSql = $sql;
     }
-
     //设置模板
     //如果想要使用模板中指定的pagesize，必须在调用模板后才调用 SetSource($sql)
     function SetTemplate($tplfile)
@@ -117,7 +111,6 @@ class DataListCP
     {
         $this->tpl->LoadTemplate($tplfile);
     }
-
     /**
      *  对config参数及get参数等进行预处理
      *
@@ -135,7 +128,6 @@ class DataListCP
         }
         $this->pageNO = $pageno;
         $this->totalResult = $totalresult;
-
         if (isset($this->tpl->tpCfgs['pagesize'])) {
             $this->pageSize = $this->tpl->tpCfgs['pagesize'];
         }
@@ -152,13 +144,11 @@ class DataListCP
             $this->sourceSql .= " LIMIT ".(($this->pageNO - 1) * $this->pageSize).",".$this->pageSize;
         }
     }
-
     //设置网址的Get参数键值
     function SetParameter($key, $value)
     {
         $this->getValues[$key] = $value;
     }
-
     //设置/获取文档相关的各种变量
     function SetVar($k, $v)
     {
@@ -167,13 +157,11 @@ class DataListCP
             $_vars[$k] = $v;
         }
     }
-
     function GetVar($k)
     {
         global $_vars;
         return isset($_vars[$k]) ? $_vars[$k] : '';
     }
-
     function XSSClean($val)
     {
         if (is_array($val)) {
@@ -184,7 +172,6 @@ class DataListCP
         }
         return $this->RemoveXss($val);
     }
-
     function RemoveXss($val)
     {
         global $cfg_soft_lang;
@@ -198,18 +185,15 @@ class DataListCP
             $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); //with a ;
             $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); //with a ;
         }
-
         $val = str_replace("`", "‘", $val);
         $val = str_replace("'", "‘", $val);
         $val = str_replace("\"", "“", $val);
         $val = str_replace(",", "，", $val);
         $val = str_replace("(", "（", $val);
         $val = str_replace(")", "）", $val);
-
         $ra1 = array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 'style', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base');
         $ra2 = array('onabort', 'onactivate', 'onafterprint', 'onafterupdate', 'onbeforeactivate', 'onbeforecopy', 'onbeforecut', 'onbeforedeactivate', 'onbeforeeditfocus', 'onbeforepaste', 'onbeforeprint', 'onbeforeunload', 'onbeforeupdate', 'onblur', 'onbounce', 'oncellchange', 'onchange', 'onclick', 'oncontextmenu', 'oncontrolselect', 'oncopy', 'oncut', 'ondataavailable', 'ondatasetchanged', 'ondatasetcomplete', 'ondblclick', 'ondeactivate', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onerror', 'onerrorupdate', 'onfilterchange', 'onfinish', 'onfocus', 'onfocusin', 'onfocusout', 'onhelp', 'onkeydown', 'onkeypress', 'onkeyup', 'onlayoutcomplete', 'onload', 'onlosecapture', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onmove', 'onmoveend', 'onmovestart', 'onpaste', 'onpropertychange', 'onreadystatechange', 'onreset', 'onresize', 'onresizeend', 'onresizestart', 'onrowenter', 'onrowexit', 'onrowsdelete', 'onrowsinserted', 'onscroll', 'onselect', 'onselectionchange', 'onselectstart', 'onstart', 'onstop', 'onsubmit', 'onunload');
         $ra = array_merge($ra1, $ra2);
-
         $found = true;
         while ($found == true) {
             $val_before = $val;
@@ -236,7 +220,6 @@ class DataListCP
         if ($cfg_soft_lang == 'gb2312') $val = utf82gb($val);
         return $val;
     }
-
     //获取当前页数据列表
     function GetArcList($atts, $refObj = '', $fields = array())
     {
@@ -255,7 +238,6 @@ class DataListCP
         $this->queryTime = (Exectime() - $t1);
         return $rsArray;
     }
-
     //获取分页导航列表
     function GetPageList($atts, $refObj = '', $fields = array())
     {
@@ -271,7 +253,6 @@ class DataListCP
             $atts['listitem'] = "info,index,end,pre,next,pageno";
         }
         $totalpage = ceil($this->totalResult / $this->pageSize);
-
         //echo " {$totalpage}=={$this->totalResult}=={$this->pageSize}";
         //无结果或只有一页的情况
         if ($totalpage <= 1 && $this->totalResult > 0) {
@@ -292,7 +273,6 @@ class DataListCP
             }
         }
         $purl .= "?".$geturl;
-
         //获得上一页和下一页的链接
         if ($this->pageNO != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."pageno=$prepagenum'>$lang_pre_page</a></li> \n";
@@ -306,7 +286,6 @@ class DataListCP
         } else {
             $endpage = " <li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">$lang_end_page</span></li> \n";
         }
-
         //获得数字链接
         $listdd = "";
         $total_list = $atts['listsize'] * 2 + 1;
@@ -325,9 +304,7 @@ class DataListCP
         for ($j; $j <= $total_list; $j++) {
             $listdd .= $j == $this->pageNO ? "<li class='page-item'><span class='page-link'>$j</span></li>\r\n" : "<li class='page-item'><a class='page-link' href='".$purl."pageno=$j'>".$j."</a></li>\n";
         }
-
         $plist = "<ul class='pagination justify-content-center'>\n";
-
         //info,index,end,pre,next,pageno,form
         if (preg_match("#info#i", $atts['listitem'])) {
             $plist .= $infos;
@@ -358,7 +335,6 @@ class DataListCP
         $plist .= "</ul>\n";
         return $plist;
     }
-
     //获得当前网址
     function GetCurUrl()
     {
@@ -371,22 +347,18 @@ class DataListCP
         }
         return $nowurl;
     }
-
     //关闭
     function Close()
     {
     }
-
     //显示数据
     function Display()
     {
         $this->PreLoad();
-
         //在PHP4中，对象引用必须放在display之前，放在其它位置中无效
         $this->tpl->SetObject($this);
         $this->tpl->Display();
     }
-
     //保存为HTML
     function SaveTo($filename)
     {

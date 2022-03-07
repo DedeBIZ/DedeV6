@@ -18,7 +18,7 @@ define('DEDEINC', str_replace("\\", '/', dirname(__FILE__)));
 define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6))); // 站点根目录
 define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
 define('DEDEMEMBER', DEDEROOT.'/user');
-define('DEDETEMPLATE', DEDEROOT.'/templets');
+define('DEDETEMPLATE', DEDEROOT.'/theme');
 define('DEDEBIZURL', "https://www.dedebiz.com");//Dede商业支持
 define('DEDEVER', 6);//当前系统大版本
 define('DEDEPUB', '-----BEGIN PUBLIC KEY-----
@@ -159,9 +159,9 @@ if ($cfg_multi_site == 'Y') {
     $cfg_mainsite = '';
 }
 //模板的存放目录
-$cfg_templets_dir = $cfg_cmspath.'/templets';
+$cfg_templets_dir = $cfg_cmspath.'/theme';
 $cfg_templeturl = $cfg_mainsite.$cfg_templets_dir;
-$cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/default" : $cfg_mainsite.$cfg_templets_dir."/$cfg_df_style";
+$cfg_templets_skin = empty($cfg_df_style) ? $cfg_mainsite.$cfg_templets_dir."/muban" : $cfg_mainsite.$cfg_templets_dir."/$cfg_df_style";
 //cms安装目录的网址
 $cfg_cmsurl = $cfg_mainsite.$cfg_cmspath;
 //插件目录，这个目录是用于存放计数器、投票、评论等程序的必要动态程序

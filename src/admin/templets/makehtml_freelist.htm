@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>生成HTML</title>
+  <title>更新自由列表</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet" type="text/css">
@@ -10,7 +10,7 @@
 <body background="images/allbg.gif">
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px">HTML更新</div>
+    <div class="bodytitletxt" style="padding-left:10px">更新自由列表</div>
   </div>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center"  class="table maintable table-bordered" style="background:#CFCFCF;">
     <form name="form1" action="makehtml_freelist_action.php" method="get" target='stafrm'>
@@ -18,7 +18,7 @@
         <td colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table-borderless">
             <tr>
-              <td width="30%" height="18" style="padding-left:10px"><strong>更新自由列表HTML：</strong></td>
+              <td width="30%" height="18" style="padding-left:10px"><strong>更新自由列表：</strong></td>
               <td width="70%" align="right"><button type="button" name="b113" onClick="location='freelist_main.php';" class="btn btn-success btn-sm">管理自由列表</button>
               </td>
             </tr>
@@ -49,7 +49,7 @@
       </tr>
       <tr>
         <td height="36" colspan="2" bgcolor="#ffffff" align="center">
-            <button type="button" onClick="document.form1.submit();"  class="btn btn-success">开始生成HTML</button>
+            <button type="button" onClick="document.form1.submit();"  class="btn btn-success">开始更新</button>
           &nbsp; </td>
       </tr>
     </form>
@@ -83,5 +83,4 @@
     </tr>
   </table>
 </body>
-
 </html>

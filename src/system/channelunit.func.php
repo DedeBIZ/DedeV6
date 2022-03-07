@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 if (!isset($cfg_mainsite)) extract($GLOBALS, EXTR_SKIP);
 global $PubFields, $pTypeArrays, $idArrary, $envs, $v1, $v2;
-
 $pTypeArrays = $idArrary = $PubFields = $envs = array();
 $PubFields['phpurl'] = $cfg_phpurl;
 $PubFields['indexurl'] = $cfg_mainsite.$cfg_indexurl;
@@ -25,5 +24,4 @@ $envs['reid'] = 0;
 $envs['aid'] = 0;
 $envs['keyword'] = '';
 $envs['idlist'] = '';
-
 helper('channelunit');

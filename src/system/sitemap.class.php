@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.func.php");
-
 /**
  * 网站地图(sitemap类)
  *
@@ -23,7 +22,6 @@ class SiteMap
     var $dsql;
     var $artDir;
     var $baseDir;
-
     //php5构造函数
     function __construct()
     {
@@ -33,17 +31,14 @@ class SiteMap
         $this->idArrary = "";
         $this->dsql = $GLOBALS['dsql'];
     }
-
     function SiteMap()
     {
         $this->__construct();
     }
-
     //清理类
     function Close()
     {
     }
-
     /**
      *  获取网站地图
      *
@@ -68,17 +63,9 @@ class SiteMap
             }
             $mapString .= "<div class=\"linkbox\">\r\n<h3><a href='$typelink'>".$row->typename."</a></h3>";
             $mapString .= "\t<ul class=\"f6\">\t\t\r".$this->LogicListAllSunType($row->id, $maptype)."\t\n</ul></div>\r\n";
-            /*
-            $mapString .= "<tr><td width='17%' align='center' bgcolor='#FAFEF1'>";
-            $mapString .= "<a href='$typelink'><b>".$row->typename."</b></a>";
-            $mapString .= "</td><td width='83%' bgcolor='#FFFFFF'>";
-            $mapString .= $this->LogicListAllSunType($row->id,$maptype);
-            $mapString .= "</td></tr>";
-            */
         }
         return $mapString;
     }
-
     /**
      *  获得子类目的递归调用
      *

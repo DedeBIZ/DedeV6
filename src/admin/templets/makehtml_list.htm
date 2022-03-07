@@ -16,7 +16,7 @@
             <tr>
               <td width="30%" height="18" style="padding-left:10px"><strong>更新栏目：</strong></td>
               <td width="70%" align="right">
-                <a href="makehtml_archives.php?typeid=<?php echo (isset($typeid) ? $typeid : 0); ?>" class="btn btn-success btn-sm">更新文档H</a>
+                <a href="makehtml_archives.php?typeid=<?php echo (isset($typeid) ? $typeid : 0); ?>" class="btn btn-success btn-sm">更新文档</a>
                 <a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a>
               </td>
             </tr>
@@ -39,8 +39,7 @@
       </tr>
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">每次最大创建页数：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10">
-          个文件 </td>
+        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10"> 个文件</td>
       </tr>
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">是否更新子栏目：</td>
@@ -53,7 +52,7 @@
       </tr>
       <tr>
         <td height="26" colspan="2" bgcolor="#ffffff" align="center">
-          <button name="b112" type="button" class="btn btn-success" onClick="document.form1.submit();">开始生成HTML</button>
+          <button name="b112" type="button" class="btn btn-success" onClick="document.form1.submit();">开始更新</button>
         </td>
       </tr>
     </form>
@@ -84,5 +83,4 @@
     </tr>
   </table>
 </body>
-
 </html>
