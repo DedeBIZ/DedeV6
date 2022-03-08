@@ -75,11 +75,18 @@ button+button{margin-left:10px}
             el.setAttribute('data-num',i);
         });
 	}
+    function isFileImage(file) {
+        return file && file['type'].split('/')[0] === 'image';
+    }
     function addList(files){
         var files_sum = files.length;
         var vDom = document.createDocumentFragment();
         for(let i=0;i<files_sum;i++){
             let file = files[i];
+            if (!isFileImage(file)) {
+                alert("选择非图片文件无法上传")
+                return;
+            }
             let blobUrl = window.URL.createObjectURL(file)
             axupimgs.res.push({file:file,blobUrl:blobUrl,url:''});
             let li = document.createElement('li');
