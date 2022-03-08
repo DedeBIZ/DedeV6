@@ -17,7 +17,6 @@ src/uploads/allimg/*
 src/.txt
 src/data/enums/
 src/index.html
-src/data/module/
 src/uploads/*.php
 src/data/time.lock.inc
 src/m/index.html
@@ -38,5 +37,6 @@ src/data/sitemap.html
 src/data/js/
 src/data/vote/*.js
 src/data/module/*.xml
+src/data/module/*.php
 src/data/*.db
 src/uploads/soft/*/
