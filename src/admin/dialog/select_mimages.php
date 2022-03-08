@@ -58,6 +58,8 @@ button+button{margin-left:10px}
         formData.append('upload', file, file.name);
         if (document.querySelector('#isWater').checked) {
             formData.append('needwatermark', 1);
+        } else {
+            //formData.append('needwatermark', 0);
         }
         let res = await fetch('select_images_post.php', {
             method: 'POST',
