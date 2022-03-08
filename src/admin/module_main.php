@@ -43,6 +43,7 @@ function ReWriteConfigAuto()
     $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
+        if(empty($row['value']) && $row['type'] == 'number') $row['value'] = 0;
         if ($row['type'] == 'number') fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         else fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
       }
