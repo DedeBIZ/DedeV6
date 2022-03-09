@@ -1,161 +1,168 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-	<title>专题管理</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<script language="javascript" src="js/context_menu.js"></script>
-	<script language="javascript" src="js/ieemu.js"></script>
-	<script language="javascript">
-		if (moz) {
-			extendEventObject();
-			extendElementModel();
-			emulateAttachEvent();
-		}
-		function viewArc(aid) {
-			if (aid == 0) aid = getOneItem();
-			window.open("archives_do.php?aid=" + aid + "&dopost=viewArchives");
-		}
-		function editArc(aid) {
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=editArchives";
-		}
-		function updateArc(aid) {
-			var qstr = getCheckboxItem();
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=makeArchives&qstr=" + qstr;
-		}
-		function checkArc(aid) {
-			var qstr = getCheckboxItem();
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=checkArchives&qstr=" + qstr;
-		}
-		function adArc(aid) {
-			var qstr = getCheckboxItem();
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?aid=" + aid + "&dopost=commendArchives&qstr=" + qstr;
-		}
-		function delArc(aid) {
-			var qstr = getCheckboxItem();
-			if (aid == 0) aid = getOneItem();
-			location = "archives_do.php?qstr=" + qstr + "&aid=" + aid + "&dopost=delArchives";
-		}
-		//上下文菜单
-		function ShowMenu(evt, obj, aid, atitle) {
-			var eobj, popupoptions
-			popupoptions = [
-				new ContextItem("浏览文档", function () { viewArc(aid); }),
-				new ContextItem("编辑文档", function () { editArc(aid); }),
-				new ContextSeperator(),
-				new ContextItem("更新HTML", function () { updateArc(aid); }),
-				new ContextItem("审核文档", function () { checkArc(aid); }),
-				new ContextItem("推荐文档", function () { adArc(aid); }),
-				new ContextSeperator(),
-				new ContextItem("删除文档", function () { delArc(aid); }),
-				new ContextSeperator(),
-				new ContextItem("全部选择", function () { selAll(); }),
-				new ContextItem("取消选择", function () { noSelAll(); }),
-				new ContextSeperator(),
-				new ContextItem("关闭菜单", function () { })
-			]
-			ContextMenu.display(evt, popupoptions)
-		}
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>专题文档管理</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<script src="js/context_menu.js"></script>
+<script src="js/ieemu.js"></script>
+<script>
+if (moz) {
+	extendEventObject();
+	extendElementModel();
+	emulateAttachEvent();
+}
+function viewArc(aid) {
+	if (aid == 0) aid = getOneItem();
+	window.open("archives_do.php?aid=" + aid + "&dopost=viewArchives");
+}
+function editArc(aid) {
+	if (aid == 0) aid = getOneItem();
+	location = "archives_do.php?aid=" + aid + "&dopost=editArchives";
+}
+function updateArc(aid) {
+	var qstr = getCheckboxItem();
+	if (aid == 0) aid = getOneItem();
+	location = "archives_do.php?aid=" + aid + "&dopost=makeArchives&qstr=" + qstr;
+}
+function checkArc(aid) {
+	var qstr = getCheckboxItem();
+	if (aid == 0) aid = getOneItem();
+	location = "archives_do.php?aid=" + aid + "&dopost=checkArchives&qstr=" + qstr;
+}
+function adArc(aid) {
+	var qstr = getCheckboxItem();
+	if (aid == 0) aid = getOneItem();
+	location = "archives_do.php?aid=" + aid + "&dopost=commendArchives&qstr=" + qstr;
+}
+function delArc(aid) {
+	var qstr = getCheckboxItem();
+	if (aid == 0) aid = getOneItem();
+	location = "archives_do.php?qstr=" + qstr + "&aid=" + aid + "&dopost=delArchives";
+}
+//上下文菜单
+function ShowMenu(evt, obj, aid, atitle) {
+	var eobj, popupoptions
+	popupoptions = [
+		new ContextItem("浏览文档", function () { viewArc(aid); }),
+		new ContextItem("编辑文档", function () { editArc(aid); }),
+		new ContextSeperator(),
+		new ContextItem("更新HTML", function () { updateArc(aid); }),
+		new ContextItem("审核文档", function () { checkArc(aid); }),
+		new ContextItem("推荐文档", function () { adArc(aid); }),
+		new ContextSeperator(),
+		new ContextItem("删除文档", function () { delArc(aid); }),
+		new ContextSeperator(),
+		new ContextItem("全部选择", function () { selAll(); }),
+		new ContextItem("取消选择", function () { noSelAll(); }),
+		new ContextSeperator(),
+		new ContextItem("关闭菜单", function () { })
+	]
+	ContextMenu.display(evt, popupoptions)
+}
 
-		//获得选中文件的文件名
-		function getCheckboxItem() {
-			var allSel = "";
-			if (document.form2.arcID.value) return document.form2.arcID.value;
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (document.form2.arcID[i].checked) {
-					if (allSel == "")
-						allSel = document.form2.arcID[i].value;
-					else
-						allSel = allSel + "`" + document.form2.arcID[i].value;
-				}
-			}
-			return allSel;
+//获得选中文件的文件名
+function getCheckboxItem() {
+	var allSel = "";
+	if (document.form2.arcID.value) return document.form2.arcID.value;
+	for (i = 0; i < document.form2.arcID.length; i++) {
+		if (document.form2.arcID[i].checked) {
+			if (allSel == "")
+				allSel = document.form2.arcID[i].value;
+			else
+				allSel = allSel + "`" + document.form2.arcID[i].value;
 		}
-
-		//获得选中其中一个的id
-		function getOneItem() {
-			var allSel = "";
-			if (document.form2.arcID.value) return document.form2.arcID.value;
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (document.form2.arcID[i].checked) {
-					allSel = document.form2.arcID[i].value;
-					break;
-				}
-			}
-			return allSel;
+	}
+	return allSel;
+}
+//获得选中其中一个的id
+function getOneItem() {
+	var allSel = "";
+	if (document.form2.arcID.value) return document.form2.arcID.value;
+	for (i = 0; i < document.form2.arcID.length; i++) {
+		if (document.form2.arcID[i].checked) {
+			allSel = document.form2.arcID[i].value;
+			break;
 		}
-
-		function selAll() {
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (!document.form2.arcID[i].checked) {
-					document.form2.arcID[i].checked = true;
-				}
-			}
+	}
+	return allSel;
+}
+function selAll() {
+	for (i = 0; i < document.form2.arcID.length; i++) {
+		if (!document.form2.arcID[i].checked) {
+			document.form2.arcID[i].checked = true;
 		}
-		function noSelAll() {
-			for (i = 0; i < document.form2.arcID.length; i++) {
-				if (document.form2.arcID[i].checked) {
-					document.form2.arcID[i].checked = false;
-				}
-			}
+	}
+}
+function noSelAll() {
+	for (i = 0; i < document.form2.arcID.length; i++) {
+		if (document.form2.arcID[i].checked) {
+			document.form2.arcID[i].checked = false;
 		}
-	</script>
+	}
+}
+</script>
+<style>
+.btn+.btn{margin-left:10px}
+</style>
 </head>
-<body leftmargin="8" topmargin="8" background='images/allbg.gif' onLoad="ContextMenu.intializeContextMenu()">
-	<table width="100%" align="center" border="0" cellpadding="0" cellspacing="1" bgcolor="#D6D6D6"
-		class="table maintable table-bordered mt-3">
+<body leftmargin="8" topmargin="8" background="images/allbg.gif" onLoad="ContextMenu.intializeContextMenu()">
+	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable table-bordered mt-3">
 		<tr>
-			<td height="26" background="images/newlinebg3.gif">
-				<table width="98%" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
-					<tr>
-						<td align="center">
-							<button type='button' class="btn btn-success btn-sm" onClick="location='makehtml_spec.php';">更新专题HTML</button>
-							<button type='button' class="btn btn-success btn-sm" onClick="location='spec_add.php';">添加专题</button>
-							<?php echo $CheckUserSend?>
-							<button type='button' class="btn btn-success btn-sm" onClick="location='catalog_main.php';">频道管理</button>
-						</td>
-					</tr>
-				</table>
+			<td>
+				<button type="button" class="btn btn-success btn-sm" onClick="location='makehtml_spec.php';">更新专题</button>
+				<button type="button" class="btn btn-success btn-sm" onClick="location='spec_add.php';">添加专题</button>
+				<?php echo $CheckUserSend?>
+				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_main.php';">频道管理</button>
 			</td>
 		</tr>
 	</table>
-
-	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#cfcfcf" class="table maintable table-bordered">
-		<tr bgcolor="#E7E7E7">
-			<td height="26" colspan="9" background="images/tbg.gif" style="padding-left:10px">
-				<strong>文章列表</strong>
-				(在文章标题处使用鼠标右键进行常用操作)
-			</td>
+	<form name="form3" action="content_s_list.php" method="get">
+		<input type="hidden" name="dopost" value="listArchives">
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="mb-3" style="margin-top:10px;border:1px solid #dee2e6">
+			<tr>
+				<td style="background:#f8f8f8">
+					<table cellpadding="0" cellspacing="0" height="36">
+						<tr>
+							<td>
+								<select name="cid" style="margin:0 10px;width:160px">
+									<option value="0">选择分类</option>
+									<?php echo $optionarr?>
+								</select>
+							</td>
+							<td>关键字：</td>
+							<td><input type="text" name="keyword" value="<?php echo $keyword?>" style="margin-right:10px;width:260px"></td>
+							<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<table width="98%" cellpadding="2" cellspacing="1" bgcolor="#CFCFCF" align="center" class="table table-bordered maintable" style="margin-top:10px">
+		<tr>
+			<td height="30" colspan="10" style="margin-left:10px;background:#f8f8f8">文章列表（在文章标题处使用鼠标右键进行常用操作）</td>
 		</tr>
 		<form name="form2">
 			<tr align="center" bgcolor="#FBFCE2" height="26">
 				<td width="6%">ID</td>
 				<td width="4%">选择</td>
 				<td width="30%">文章标题</td>
-				<td width="12%">更新时间</td>
-				<td width="11%">类目</td>
-				<td width="8%">点击</td>
-				<td width="7%">HTML</td>
-				<td width="9%">权限</td>
-				<td width="12%">属性</td>
+				<td width="10%">更新时间</td>
+				<td width="10%">类目</td>
+				<td width="10%">点击</td>
+				<td width="10%">HTML</td>
+				<td width="10%">权限</td>
+				<td width="10%">属性</td>
 			</tr>
 			{dede:datalist}
-			<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-				onMouseOut="javascript:this.bgColor='#FFFFFF';" height="26"
-				oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">
+			<tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="26" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
-				<td align='left'>
-					<a href='archives_do.php?aid={dede:field.id/}&dopost=editArchives'
-						oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">
-						{dede:field.title/}
-					</a>
+				<td align="left">
+					<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">{dede:field.title/}</a>
 				</td>
 				<td><?php echo MyDate("Y-m-d H:i",$fields['senddate'])?></td>
 				<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
@@ -165,52 +172,22 @@
 				<td><?php echo IsCommendArchives($fields['flag'])?></td>
 			</tr>
 			{/dede:datalist}
-			<tr bgcolor="#ffffff">
-				<td height="26" colspan="9">
-					&nbsp;
+			<tr>
+				<td height="36" colspan="9" style="margin-left:10px;background:#fff">
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-					<a href="javascript:viewArc(0)" class="btn btn-success btn-sm">&nbsp;查看&nbsp;</a>
-					<a href="javascript:editArc(0)" class="btn btn-success btn-sm">&nbsp;修改&nbsp;</a>
-					<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">&nbsp;更新&nbsp;</a>
-					<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">&nbsp;审核&nbsp;</a>
-					<a href="javascript:adArc(0)" class="btn btn-success btn-sm">&nbsp;推荐&nbsp;</a>
-					<a href="javascript:delArc(0)" class="btn btn-success btn-sm">&nbsp;删除&nbsp;</a>
+					<a href="javascript:viewArc(0)" class="btn btn-success btn-sm">查看</a>
+					<a href="javascript:editArc(0)" class="btn btn-success btn-sm">修改</a>
+					<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
+					<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
+					<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
+					<a href="javascript:delArc(0)" class="btn btn-success btn-sm">删除</a>
 				</td>
 			</tr>
 		</form>
-		<tr align="right" bgcolor="#F9FCEF">
-			<td height="26" colspan="9" align="center">
-				{dede:pagelist listsize=5/}
-			</td>
+		<tr>
+			<td height="36" colspan="9" align="center" style="background:#f8f8f8">{dede:pagelist listsize=5/}</td>
 		</tr>
 	</table>
-	<form name='form3' action='content_s_list.php' method='get'>
-		<input type='hidden' name='dopost' value='listArchives'>
-		<table width='98%' align="center" border='0' class="mb-3" cellpadding='1' cellspacing='1' class="table-borderless" background="images/wbg.gif">
-
-			<tr>
-				<td width='160' align='center'>请选择类目：</td>
-				<td width='160'>
-					<select name='cid' style='width:150'>
-						<option value='0'>选择分类</option>
-						<?php echo $optionarr?>
-					</select>
-				</td>
-				<td width='100'>
-					关键字：
-				</td>
-				<td width='160'>
-					<input type='text' name='keyword' value='<?php echo $keyword?>' style='width:150'>
-				</td>
-				<td width='100'>
-					<button type="submit" class="btn btn-success btn-sm">搜索</button>
-				</td>
-
-			</tr>
-
-		</table>
-	</form>
 </body>
-
 </html>
