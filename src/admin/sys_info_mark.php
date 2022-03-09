@@ -26,7 +26,8 @@ if ($action == "save") {
     $vars = array('photo_markup', 'photo_markdown', 'photo_marktype', 'photo_wwidth', 'photo_wheight', 'photo_waterpos', 'photo_watertext', 'photo_fontsize', 'photo_fontcolor', 'photo_marktrans', 'photo_diaphaneity');
     $configstr = $shortname = "";
     foreach ($vars as $v) {
-        ${$v} = str_replace("'", "", ${'get_'.$v});
+        $tmp = stripslashes(${'get_'.$v});
+        ${$v} = addslashes(str_replace("'", "", $tmp));
         $configstr .= "\${$v} = '".${$v}."';\r\n";
     }
     if (is_uploaded_file($newimg)) {

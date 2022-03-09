@@ -100,10 +100,10 @@ function newmail($mid, $userid, $mailto, $type, $send)
         $key = md5($randval);
         $sql = "UPDATE `#@__pwd_tmp` SET `pwd` = '$key',mailtime = '$mailtime'  WHERE `mid` ='$mid';";
         if ($db->ExecuteNoneQuery($sql)) {
-            if ($send == 'Y') {
+            if ($send === 'Y') {
                 sendmail($mailto, $mailtitle, $mailbody, $headers);
                 ShowMsg('EMAIL修改验证码已经发送到原来的邮箱请查收', 'login.php');
-            } elseif ($send == 'N') {
+            } elseif ($send === 'N') {
                 return ShowMsg('稍后跳转到修改页', $cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&amp;id=".$mid."&amp;key=".$randval);
             }
         } else {
