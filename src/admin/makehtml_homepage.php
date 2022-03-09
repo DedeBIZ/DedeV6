@@ -12,6 +12,10 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
 require_once(DEDEINC."/archive/partview.class.php");
 if (empty($dopost)) $dopost = '';
+if (!preg_match('#\.htm$#i', trim($templet))) {
+    ShowMsg("不是合法的模板文件，后缀必须为.htm", "javascript:;");
+    exit();
+}
 if ($dopost == "view") {
     $pv = new PartView();
     $templet = str_replace("{style}", $cfg_df_style, $templet);
@@ -60,6 +64,10 @@ if ($dopost == "view") {
     }
     $remotepos = empty($remotepos) ? '/index.html' : $remotepos;
     $serviterm = empty($serviterm) ? "" : $serviterm;
+    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($position))) {
+        ShowMsg("您指定的文件名被系统禁止", "javascript:;");
+        exit();
+    }
     $homeFile = DEDEADMIN."/".$position;
     $homeFile = str_replace("\\", "/", $homeFile);
     $homeFile = str_replace("//", "/", $homeFile);
