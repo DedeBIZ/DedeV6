@@ -25,15 +25,12 @@ if (!preg_match("#\.(".$cfg_txttype.")#i", $uploadfile_name)) {
     ShowMsg("您所上传的模板文件类型不能被识别，只允许htm、html、tpl、txt扩展名", "-1");
     exit();
 }
-if ($filename != '') {
-    $filename = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $filename));
-} else {
-    $uploadfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $uploadfile_name));
+if ($filename =='') {
     $filename = $uploadfile_name;
-    if ($filename == '' || !preg_match("#\.(".$cfg_txttype.")#i", $filename)) {
-        ShowMsg("您所上传的文件存在问题，请检查文件类型是否适合", "-1");
-        exit();
-    }
+}
+$filename = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $filename));
+if ($filename == '' || !preg_match("#\.(" . $cfg_txttype . ")#i", $filename)) {
+       ShowMsg("你所上传的文件存在问题，请检查文件类型是否适合！", "-1");
 }
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
 move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到 $fullfilename 失败");
