@@ -65,6 +65,16 @@ if ($dopost == "upload") {
                 exit();
             }
             $fullfilename = $cfg_basedir.$filename;
+            $mime = get_mime_type(${"upfile".$i});
+            if (preg_match("#^unknow#", $mime)) {
+                ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+                exit;
+            }
+            if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+                ShowMsg("仅支持媒体文件及应用程序上传", -1);
+                exit;
+            }
+            
             if ($mediatype == 1) {
                 @move_uploaded_file(${"upfile".$i}, $fullfilename);
                 $info = '';

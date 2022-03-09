@@ -47,6 +47,19 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
     }
 }
 
+function get_mime_type($filename)
+{
+    if (! function_exists('finfo_open'))
+    {
+        return 'unknow/octet-stream';
+    }
+
+    $finfo    = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $filename);
+    finfo_close($finfo);
+    return $mimeType;
+}
+
 function is_all_numeric(array $array){
     foreach($array as $item){
         if(!is_numeric($item)) return false;

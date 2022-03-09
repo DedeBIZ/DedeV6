@@ -27,6 +27,15 @@ if ($dopost == "add") {
             CloseFtp();
         }
         $imgurl = $imgurl."/".$filename;
+        $mime = get_mime_type($logoimg);
+        if (preg_match("#^unknow#", $mime)) {
+            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+            exit;
+        }
+        if (!preg_match("#^image#i", $mime)) {
+            ShowMsg("非图片格式文件，无法正常上传", -1);
+            exit;
+        }
         move_uploaded_file($logoimg, $cfg_basedir.$imgurl) or die("复制文件到:".$cfg_basedir.$imgurl."失败");
         @unlink($logoimg);
     } else {

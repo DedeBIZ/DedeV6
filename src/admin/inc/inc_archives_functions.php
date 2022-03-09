@@ -393,6 +393,15 @@ function GetDDImage($litpic, $picname, $isremote)
         } else {
             $fullUrl = $fullUrl.".jpg";
         }
+        $mime = get_mime_type($_FILES[$litpic]['tmp_name']);
+        if (preg_match("#^unknow#", $mime)) {
+            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+            exit;
+        }
+        if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+            ShowMsg("仅支持媒体文件及应用程序上传", -1);
+            exit;
+        }
         @move_uploaded_file($_FILES[$litpic]['tmp_name'], $cfg_basedir.$fullUrl);
         $litpic = $fullUrl;
         if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($cfg_basedir.$fullUrl, $cfg_ddimg_width, $cfg_ddimg_height);
@@ -715,6 +724,15 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
             $fullUrl = $fullUrl.".png";
         } else {
             $fullUrl = $fullUrl.".jpg";
+        }
+        $mime = get_mime_type($_FILES[$upname]['tmp_name']);
+        if (preg_match("#^unknow#", $mime)) {
+            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+            exit;
+        }
+        if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+            ShowMsg("仅支持媒体文件及应用程序上传", -1);
+            exit;
         }
         //保存
         @move_uploaded_file($_FILES[$upname]['tmp_name'], $cfg_basedir.$fullUrl);

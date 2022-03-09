@@ -45,6 +45,15 @@ if ($action == "save") {
             exit;
         }
         $photo_markimg = 'mark'.$shortname;
+        $mime = get_mime_type($newimg);
+        if (preg_match("#^unknow#", $mime)) {
+            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+            exit;
+        }
+        if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+            ShowMsg("仅支持媒体文件及应用程序上传", -1);
+            exit;
+        }
         @move_uploaded_file($newimg, DEDEDATA."/mark/".$photo_markimg);
     }
     $configstr .= "\$photo_markimg = '{$photo_markimg}';\r\n";

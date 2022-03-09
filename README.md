@@ -24,19 +24,21 @@ DedeBIZ.x是一个LTS版本，支持将到2022年10月截止，目前DedeBIZ已�
 
 1.Windows 平台
 
-IIS/Apache/Nginx + PHP5/PHP7/PHP8 + MySQL5/8/10
+IIS/Apache/Nginx + PHP5.3+/PHP7/PHP8 + MySQL5/8/10
 
 如果在windows环境中使用，建议用DedeCMS提供的DedeAMPZ套件以达到最佳使用性能
 
 2.Linux/Unix 平台
 
-Apache/Nginx + PHP5/PHP7 + MySQL5/8/10 (PHP必须在非安全模式下运行)
+Apache/Nginx + PHP5.3+/PHP7 + MySQL5/8/10 (PHP必须在非安全模式下运行)
 
 建议使用平台：Linux + Apache2.2 + PHP7.4 + MySQL5.0
 
 3.PHP必须环境或启用的系统函数
 
 CURL：数据采集
+
+Fileinfo：文件上传安全校验
 
 GD扩展库：图像验证码、水印、二维码生成
 

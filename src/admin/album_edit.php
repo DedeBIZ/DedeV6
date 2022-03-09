@@ -188,6 +188,15 @@ else if ($dopost == 'save') {
                 $imgurls .= "{dede:img ddimg='$ddurl' text='$iinfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
                 continue;
             }
+            $mime = get_mime_type($tmpFile);
+            if (preg_match("#^unknow#", $mime)) {
+                ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+                exit;
+            }
+            if (!preg_match("#^image#i", $mime)) {
+                ShowMsg("非图片格式文件，无法正常上传", -1);
+                exit;
+            }
             move_uploaded_file($tmpFile, $imgfile);
             $imginfos = @GetImageSize($imgfile, $info);
             if ($ddurl == $iurl) {

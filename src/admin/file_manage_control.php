@@ -102,6 +102,16 @@ else if ($fmdo == "upload") {
         $upfile = ${$upfile};
         $upfile_name = ${$upfile_name};
         if (is_uploaded_file($upfile)) {
+            // 检查文件类型
+            $mime = get_mime_type($upfile);
+            if (preg_match("#^unknow#", $mime)) {
+                ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+                exit;
+            }
+            if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+                ShowMsg("仅支持媒体文件及应用程序上传", -1);
+                exit;
+            }
             if (!file_exists($cfg_basedir.$activepath."/".$upfile_name)) {
                 move_uploaded_file($upfile, $cfg_basedir.$activepath."/".$upfile_name);
             }

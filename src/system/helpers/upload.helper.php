@@ -79,6 +79,12 @@ if (!function_exists('AdminUpload')) {
             }
         }
         $fileurl = $filedir.'/'.$filename.'.'.$file_sname;
+
+
+        $mime = get_mime_type($file_tmp);
+        if (!preg_match("#^image#i", $mime)) {
+            return -1;
+        }
         $rs = move_uploaded_file($file_tmp, $cfg_basedir.$fileurl);
         if (!$rs) return -2;
         if ($ftype == 'image' && $watermark) {
@@ -157,6 +163,17 @@ if (!function_exists('MemberUploads')) {
             } else {
                 $filename = $cfg_user_dir."/{$userid}/{$exname}.".$sname;
             }
+
+            $mime = get_mime_type($GLOBALS[$upname]);
+            if (preg_match("#^unknow#", $mime)) {
+                ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+                exit;
+            }
+            if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+                ShowMsg("仅支持媒体文件及应用程序上传", -1);
+                exit;
+            }
+
             move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到 {$filename} 失败");
             @unlink($GLOBALS[$upname]);
 

@@ -50,6 +50,15 @@ $fs = explode('.', $imgfile_name);
 $filename = $filename.'.'.$fs[count($fs) - 1];
 $filename_name = $filename_name.'.'.$fs[count($fs) - 1];
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
+$mime = get_mime_type($imgfile);
+if (preg_match("#^unknow#", $mime)) {
+    ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+    exit;
+}
+if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+    ShowMsg("仅支持媒体文件及应用程序上传", -1);
+    exit;
+}
 move_uploaded_file($imgfile, $fullfilename) or die("上传文件到 $fullfilename 失败");
 @unlink($imgfile);
 if (empty($resize)) {

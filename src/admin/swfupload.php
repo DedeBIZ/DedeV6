@@ -34,6 +34,16 @@ if (empty($dopost)) {
 
     $FiledataNew = str_replace("\\", '/', $Filedata);
     $FiledataNew = $tmpdir.'/'.preg_replace("/(.*)[\/]/isU", "", $FiledataNew);
+
+    $mime = get_mime_type($Filedata);
+    if (preg_match("#^unknow#", $mime)) {
+        echo "ERROR: Create {$tmpdir} dir Error! ";
+        exit;
+    }
+    if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+        echo "ERROR: Create {$tmpdir} dir Error! ";
+        exit;
+    }
     move_uploaded_file($Filedata, $FiledataNew);
 
     $info = $ftype = $sname = '';
