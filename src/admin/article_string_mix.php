@@ -16,7 +16,7 @@ if (empty($dopost)) $dopost = '';
 if (empty($allsource)) $allsource = '';
 else $allsource = stripslashes($allsource);
 
-$m_file = DEDEDATA."/downmix.data.php";
+$m_file = DEDEDATA."/downmix.data.inc";
 
 //保存
 if ($dopost == "save") {

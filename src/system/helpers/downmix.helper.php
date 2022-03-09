@@ -49,7 +49,7 @@ if (!function_exists('RndString')) {
         $rndem[4] = 'p';
 
         //读取字符串数据
-        $fp = fopen(DEDEDATA.'/downmix.data.php', 'r');
+        $fp = fopen(DEDEDATA.'/downmix.data.inc', 'r');
         $start = 0;
         $totalitem = 0;
 
