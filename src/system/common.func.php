@@ -46,6 +46,14 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
         }
     }
 }
+
+function is_all_numeric(array $array){
+    foreach($array as $item){
+        if(!is_numeric($item)) return false;
+    }
+    return true;
+}
+
 function make_hash()
 {
     $rand = dede_random_bytes(16);

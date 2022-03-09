@@ -132,6 +132,7 @@ class ListView
         if(empty($cfg_need_typeid2)) $cfg_need_typeid2 = 'N';
 		//获得附加表的相关信息
 		$addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
+        $filtersql = '';
 		if($addtable!="")
 		{
 			$addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
@@ -655,6 +656,7 @@ class ListView
         } else {
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }
+        $filtersql = '';
 		//获得附加表的相关信息
 		$addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
 		if($addtable!="")

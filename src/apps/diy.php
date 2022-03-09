@@ -25,7 +25,7 @@ function Post(){ }
 if ($action == 'post') {
     if (empty($do)) {
         $postform = $diy->getForm(true);
-        include DEDEROOT."/templets/plus/{$diy->postTemplate}";
+        include DEDEROOT."/theme/plus/{$diy->postTemplate}";
         exit();
     } elseif ($do == 2) {
         $dede_fields = empty($dede_fields) ? '' : trim($dede_fields);
@@ -103,7 +103,7 @@ else if ($action == 'list') {
     $datalist->pageSize = 10;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
-    $datalist->SetTemplate(DEDEINC."/../templets/plus/{$diy->listTemplate}");
+    $datalist->SetTemplate(DEDEINC."/../theme/plus/{$diy->listTemplate}");
     $datalist->SetSource($query);
     $fieldlist = $diy->getFieldList();
     $datalist->Display();
@@ -128,5 +128,5 @@ else if ($action == 'list') {
         exit();
     }
     $fieldlist = $diy->getFieldList();
-    include DEDEROOT."/templets/plus/{$diy->viewTemplate}";
+    include DEDEROOT."/theme/plus/{$diy->viewTemplate}";
 }

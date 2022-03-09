@@ -46,7 +46,7 @@ if ($action == 'post') {
                     }
                     $fieldinfo = explode(',', $field);
                     if ($fieldinfo[1] == 'htmltext' || $fieldinfo[1] == 'textdata') {
-                        ${$fieldinfo[0]} = filterscript(stripslashes(${$fieldinfo[0]}));
+                        ${$fieldinfo[0]} = HtmlReplace(stripslashes(${$fieldinfo[0]}),1);
                         ${$fieldinfo[0]} = addslashes(${$fieldinfo[0]});
                         ${$fieldinfo[0]} = getFieldValue(${$fieldinfo[0]}, $fieldinfo[1], 0, 'add', '', 'member');
                     } else {
@@ -112,7 +112,7 @@ if ($action == 'post') {
                     }
                     $fieldinfo = explode(',', $field);
                     if ($fieldinfo[1] == 'htmltext' || $fieldinfo[1] == 'textdata') {
-                        ${$fieldinfo[0]} = filterscript(stripslashes(${$fieldinfo[0]}));
+                        ${$fieldinfo[0]} = HtmlReplace(stripslashes(${$fieldinfo[0]}),1);
                         ${$fieldinfo[0]} = addslashes(${$fieldinfo[0]});
                         ${$fieldinfo[0]} = GetFieldValue(${$fieldinfo[0]}, $fieldinfo[1], 0, 'add', '', 'member');
                         ${$fieldinfo[0]} = empty(${$fieldinfo[0]}) ? $diyco[$fieldinfo[0]] : ${$fieldinfo[0]};
@@ -134,7 +134,7 @@ if ($action == 'post') {
         }
     }
 } elseif ($action == 'check') {
-    if (is_array($id)) {
+    if (is_array($id) && is_all_numeric($id)) {
         $ids = implode(',', $id);
     } else {
         showmsg('未选中要操作的内容', '-1');
@@ -176,7 +176,7 @@ elseif($action == 'excel') {
     header("Content-type:application/vnd.ms-excel");
     header("Content-Disposition:attachment;filename={$diy->name}_".date("Y-m-d").".xls");
     print(chr(0xEF).chr(0xBB).chr(0xBF));//清除bom
-    $fieldlist = $diy->getFieldList();
+    $fieldlist = (array)$diy->getFieldList();
     echo "<table><tr>";
     foreach($fieldlist as $field=>$fielddata)
     {
