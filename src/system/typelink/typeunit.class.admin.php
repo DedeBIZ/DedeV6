@@ -140,7 +140,7 @@ class TypeUnit
                 echo "<a href='catalog_edit.php?id={$id}' class='btn btn-success btn-sm' title='修改'><i class='fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-success btn-sm' title='移动'><i class='fa fa-share-square'></i></a>";
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-success btn-sm' title='删除'><i class='fa fa-trash'></i></a>";
-                echo "&nbsp;<input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:26px'></td></tr></table></td></tr>";
+                echo "&nbsp;<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;height:26px'></td></tr></table></td></tr>";
             }
             //独立页面
             else if ($ispart == 2) {
@@ -152,7 +152,7 @@ class TypeUnit
                 echo "<a href='catalog_edit.php?id={$id}' class='btn btn-success btn-sm' title='修改'><i class='fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' class='btn btn-success btn-sm' title='移动'><i class='fa fa-share-square'></i></a>";
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' class='btn btn-success btn-sm' title='删除'><i class='fa fa-trash'></i></a>";
-                echo "&nbsp;<input type='text' name='sortrank{$id}' value='{$rank}' style='width:35px;height:26px'></td></tr></table></td></tr>";
+                echo "&nbsp;<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;height:26px'></td></tr></table></td></tr>";
             }
             echo "<tr><td colspan='2' id='suns".$id."'>";
             $lastid = GetCookie('lastCid');
