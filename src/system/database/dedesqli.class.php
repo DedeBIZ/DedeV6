@@ -189,6 +189,10 @@ class DedeSqli
 
     function Esc($_str)
     {
+        global $dsqli;
+        if (!$dsqli->isInit) {
+            $this->Init($this->pconnect);
+        }
         if (version_compare(phpversion(), '4.3.0', '>=')) {
             return @mysqli_real_escape_string($this->linkID, $_str);
         } else {

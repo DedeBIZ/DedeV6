@@ -163,7 +163,7 @@ class DedeSqlite
 
     function Esc($_str)
     {
-        return addslashes($_str);
+        return $this->linkID->escapeString($_str);
     }
 
     //执行一个不返回结果的SQL语句，如update,delete,insert等

@@ -32,6 +32,7 @@ function ReWriteConfig()
             if ($row['value'] == '') $row['value'] = 0;
             fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         } else {
+            $row['value'] = stripslashes($row['value']);
             fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
         }
     }
@@ -49,6 +50,9 @@ if ($dopost == "save") {
             continue;
         }
         $k = preg_replace("#^edit___#", "", $k);
+        
+        $v = $dsql->Esc($v);
+        $k = $dsql->Esc($k);
         $dsql->ExecuteNoneQuery("UPDATE `#@__sysconfig` SET `value`='$v' WHERE varname='$k' ");
     }
     ReWriteConfig();
