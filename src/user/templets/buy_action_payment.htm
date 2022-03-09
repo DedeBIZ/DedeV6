@@ -62,7 +62,7 @@
                           <td align="right" valign="top"><span class="td1">支付方式：</span></td>
                           <td><table border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
                               {dede:array.payment_list}
-                              <tr onMouseMove="javascript:this.bgColor='#F8F8F8';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+                              <tr onMouseMove="javascript:this.bgColor='#f6f6f6';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
                                 <td width="10%" align="right" style="vertical-align:middle;">{dede:if value.code=="cod" || value.code=="bank"} <input name="paytype" type="radio" value="{dede:value.id/}"  disabled="disabled"/>{else}<input name="paytype" type="radio" value="{dede:value.id/}"/>{/dede:if}</td>
                                 <td width="20%" valign="middle" style="vertical-align:middle;"> {dede:value.name/} </td>
                                 <td width="60%"> {dede:value.description/} </td>
