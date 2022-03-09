@@ -219,8 +219,11 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键字：</td>
-              <td width="500"><input type='text' name="keywords" id="keywords" style="width:80%" value="" /></td>
-              <td width="202"><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />自动获取，手动填写用","分开<br><button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button></td>
+              <td width="450">
+                <input type='text' name="keywords" id="keywords" style="width:80%" value="" />
+                <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
+              </td>
+              <td><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />自动获取，手动填写用","分开</td>
             </tr>
           </table>
         </td>
