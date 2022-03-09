@@ -163,6 +163,10 @@ class DedeSqlite
 
     function Esc($_str)
     {
+        global $dsqlite;
+        if (!$dsqlite->isInit) {
+            $this->Init($this->pconnect);
+        }
         return $this->linkID->escapeString($_str);
     }
 
