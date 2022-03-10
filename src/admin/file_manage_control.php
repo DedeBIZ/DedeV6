@@ -55,6 +55,10 @@ function __saveEdit();
 else if ($fmdo == "edit") {
     CheckCSRF();
     $filename = str_replace("..", "", $filename);
+    if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
+        ShowMsg("您指定的文件名被系统禁止", "javascript:;");
+        exit();
+    }
     $file = "$cfg_basedir$activepath/$filename";
     $str = stripslashes($str);
     $fp = fopen($file, "w");
