@@ -1,0 +1,13 @@
+User-agent: * 
+Disallow: /apps/ad_js.php
+Disallow: /apps/advancedsearch.php
+Disallow: /apps/erraddsave.php
+Disallow: /apps/disdls.php
+Disallow: /apps/feedback.php
+Disallow: /apps/rss.php
+Disallow: /apps/search.php
+Disallow: /apps/recommend.php
+Disallow: /apps/stow.php
+Disallow: /apps/count.php
+Disallow: /system
+Disallow: /theme
