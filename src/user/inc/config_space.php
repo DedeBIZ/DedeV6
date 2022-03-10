@@ -9,13 +9,11 @@
  * @link           https://www.dedebiz.com
  */
 if (!defined('DEDEMEMBER')) exit('dedebiz');
-
 //检查是否开放会员功能
 if ($cfg_mb_open == 'N') {
     ShowMsg("系统关闭了会员功能，因此您无法访问此页面", "javascript:;");
     exit();
 }
-
 //对uid进行过滤
 if (preg_match("/'/", $uid)) {
     ShowMsg("您的用户名中含有非法字符", "-1");
@@ -23,12 +21,8 @@ if (preg_match("/'/", $uid)) {
 } else {
     $uid = RemoveXSS($uid);
 }
-
-
 $_vars = GetUserSpaceInfos();
 $_vars['bloglinks'] = $_vars['curtitle'] = '';
-
-//---------------------------
 //用户权限检查
 //被禁言用户
 if ($_vars['spacesta'] == -2) {
@@ -49,8 +43,6 @@ if (
     ShowMsg('系统设置了禁止访问管理员的个人空间', '-1');
     exit();
 }
-
-//---------------------------
 //默认风格
 if ($_vars['spacestyle'] == '') {
     if ($_vars['mtype'] == '个人') {
@@ -65,25 +57,21 @@ if ($_vars['spacestyle'] == '') {
 if (!is_dir(DEDEMEMBER.'/space/'.$_vars['spacestyle'])) {
     $_vars['spacestyle'] = 'person';
 }
-
 //获取分类数据
 $mtypearr = array();
 $dsql->Execute('mty', "select * from `#@__mtypes` where mid='".$_vars['mid']."'");
 while ($row = $dsql->GetArray('mty')) {
     $mtypearr[] = $row;
 }
-
 //获取栏目导航数据
 $_vars['bloglinks'] = array();
 $query = "SELECT tp.channeltype,ch.typename FROM `#@__arctype` tp 
-      LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype 
-      WHERE (ch.usertype='' OR ch.usertype LIKE '{$_vars['mtype']}') And tp.channeltype<>1 And tp.issend=1 And tp.ishidden=0 GROUP BY tp.channeltype ORDER BY ABS(tp.channeltype) asc";
+    LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype 
+    WHERE (ch.usertype='' OR ch.usertype LIKE '{$_vars['mtype']}') And tp.channeltype<>1 And tp.issend=1 And tp.ishidden=0 GROUP BY tp.channeltype ORDER BY ABS(tp.channeltype) asc";
 $dsql->Execute('ctc', $query);
 while ($row = $dsql->GetArray('ctc')) {
     $_vars['bloglinks'][$row['channeltype']] = $row['typename'];
 }
-
-
 //获取企业用户私有数据
 if ($_vars['mtype'] == '企业') {
     require_once(DEDEINC.'/enums.func.php');
@@ -100,7 +88,6 @@ if ($_vars['mtype'] == '企业') {
     if ($action == 'infos') $action = 'introduce';
     $_vars['comface'] = empty($_vars['comface']) ? 'images/comface.png' : $_vars['comface'];
 }
-
 /**
  * 获取空间基本信息
  *
@@ -111,14 +98,12 @@ function GetUserSpaceInfos()
     global $dsql, $uid, $cfg_memberurl;
     $_vars = array();
     $userid = preg_replace("#[\r\n\t \*%]#", '', $uid);
-    $query = "SELECT m.mid,m.mtype,m.userid,m.uname,m.sex,m.rank,m.email,m.scores,
-                            m.spacesta,m.face,m.logintime,
-                            s.*,t.*,m.matt,r.membername,g.msg
-                  From `#@__member` m
-                  LEFT JOIN `#@__member_space` s on s.mid=m.mid
-                  LEFT JOIN `#@__member_tj` t on t.mid=m.mid
-                  LEFT JOIN `#@__arcrank` r on r.rank=m.rank
-                  where m.userid like '$uid' ORDER BY g.dtime DESC ";
+    $query = "SELECT m.mid,m.mtype,m.userid,m.uname,m.sex,m.rank,m.email,m.scores,m.spacesta,m.face,m.logintime,s.*,t.*,m.matt,r.membername,g.msg
+        From `#@__member` m
+        LEFT JOIN `#@__member_space` s on s.mid=m.mid
+        LEFT JOIN `#@__member_tj` t on t.mid=m.mid
+        LEFT JOIN `#@__arcrank` r on r.rank=m.rank
+        where m.userid like '$uid' ORDER BY g.dtime DESC ";
     $_vars = $dsql->GetOne($query);
     if (!is_array($_vars)) {
         ShowMsg("您访问的用户可能已经被删除", "javascript:;");

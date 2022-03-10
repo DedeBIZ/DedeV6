@@ -4,9 +4,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>智能标记向导</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/codemirror.css">
   <script type="text/javascript" src="js/codemirror.js"></script>
   <script type="text/javascript" src="js/mode/xml/xml.js"></script>
   <script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
@@ -44,14 +44,14 @@
     </span>
     <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
       <form action="mytag_tag_guide_ok.php" method="post" target="stafrm" name="form1">
-        <input type="hidden" name="dopost" value="gettag" />
+        <input type="hidden" name="dopost" value="gettag">
         <tr>
           <td height="26" align="left" background="images/tbg.gif" style="padding-left:10px"><b><a
                 href="mytag_main.php" align="left">自定义标记管理</a></b> &gt;&gt; 智能标记生成向导：</td>
         </tr>
         <tr>
           <td height="265" valign="top" bgcolor="#FFFFFF">
-            <table width="99%" border="0" align="right" cellpadding="0" cellspacing="0" style="text-align:left;" class="table table-borderless">
+            <table width="99%" border="0" align="right" cellpadding="0" cellspacing="0" style="text-align:left" class="table table-borderless">
               <tr>
                 <td height="26">列表样式：</td>
               </tr>
@@ -60,18 +60,18 @@
                   <table width="99%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%" height="126">
-                        <label><img src="images/g_t2.jpg" width="130" height="100" />
+                        <label><img src="images/g_t2.jpg" width="130" height="100">
                         <input name="liststyle" class="np" type="radio" onClick="ChangeListStyle()" value="1"
                           checked='1' /></label> </td>
                       <td width="25%">
-                        <label><img src="images/g_t1.jpg" width="130" height="110" />
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2" /></label></td>
+                        <label><img src="images/g_t1.jpg" width="130" height="110">
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2"></label></td>
                       <td width="25%">
-                        <label><img src="images/g_t3.jpg" width="130" height="110" />
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="3" /></label></td>
+                        <label><img src="images/g_t3.jpg" width="130" height="110">
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="3"></label></td>
                       <td>
-                        <label><img src="images/g_t4.jpg" width="130" height="110" />
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="4" /></label></td>
+                        <label><img src="images/g_t4.jpg" width="130" height="110">
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="4"></label></td>
                     </tr>
                   </table>
                 </td>
@@ -115,22 +115,22 @@
               </tr>
               <tr>
                 <td height="26">调用记录条数：
-                  <input name="row" type="text" id="row" value="10" size="4" />
+                  <input name="row" type="text" id="row" value="10" size="4">
                   　显示列数：
-                  <input name="col" type="text" id="col" value="1" size="4" />
+                  <input name="col" type="text" id="col" value="1" size="4">
                   　标题长度：
-                  <input name="titlelen" type="text" id="titlelen" value="24" size="4" />
+                  <input name="titlelen" type="text" id="titlelen" value="24" size="4">
                   （1 字节 = 0.5个中文字）</td>
               </tr>
               <tr>
                 <td height="26"> 高级筛选：
-                  <label><input name="types[]" type="checkbox" id="type[]" value="image" class="np" />
+                  <label><input name="types[]" type="checkbox" id="type[]" value="image" class="np">
                   带缩略图</label>
-                  <label><input name="types[]" type="checkbox" id="type[]" value="commend" class="np" />
+                  <label><input name="types[]" type="checkbox" id="type[]" value="commend" class="np">
                   推荐</label>
-                  <label><input name="types[]" type="checkbox" id="type[]" value="spec" class="np" />
+                  <label><input name="types[]" type="checkbox" id="type[]" value="spec" class="np">
                   专题</label>　关键字：
-                  <input name="keyword" type="text" id="keyword" />
+                  <input name="keyword" type="text" id="keyword">
                   （&quot;,&quot;逗号分开） </td>
               </tr>
               <tr>
@@ -148,12 +148,12 @@
                   　
                   <label><input name="order" type="radio" class="np" value="desc" checked='1' />
                   由高到低</label>
-                  <label><input type="radio" name="order" class="np" value="asc" />
+                  <label><input type="radio" name="order" class="np" value="asc">
                   由低到高</label></td>
               </tr>
               <tr>
                 <td height="26">文档发布时间：
-                  <input name="subday" type="text" id="subday" value="0" size="6" />
+                  <input name="subday" type="text" id="subday" value="0" size="6">
                   天以内 （0 表示不限）</td>
               </tr>
               <tr>
@@ -231,5 +231,4 @@
     }
   </script>
 </body>
-
 </html>

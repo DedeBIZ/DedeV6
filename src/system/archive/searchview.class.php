@@ -16,7 +16,6 @@ require_once(DEDEINC."/taglib/hotwords.lib.php");
 require_once(DEDEINC."/taglib/channel.lib.php");
 @set_time_limit(0);
 @ini_set('memory_limit', '512M');
-
 /**
  * 搜索视图类
  *
@@ -51,7 +50,6 @@ class SearchView
     var $SearchTime;
     var $AddSql;
     var $RsFields;
-    
     /**
      *  php5构造函数
      *
@@ -104,7 +102,6 @@ class SearchView
         $this->TypeLink = new TypeLink($typeid);
         //通过分词获取关键词
         $this->Keywords = $this->GetKeywords($keyword);
-
         //设置一些全局参数的值
         if ($this->TypeID == "0") {
             $this->ChannelTypeid = 1;
@@ -135,7 +132,6 @@ class SearchView
             $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET result='".$this->TotalResult."' WHERE keyword='".addslashes($keyword)."'; ");
         }
     }
-
     //php4构造函数
     function SearchView(
         $typeid,
@@ -150,12 +146,10 @@ class SearchView
     ) {
         $this->__construct($typeid, $keyword, $orderby, $achanneltype, $searchtype, $starttime, $upagesize, $kwtype, $mid);
     }
-
     //关闭相关资源
     function Close()
     {
     }
-
     /**
      *  获得关键字的分词结果，并保存到数据库
      *
@@ -215,7 +209,6 @@ class SearchView
         }
         return $keywords;
     }
-
     /**
      *  获得关键字SQL
      *
@@ -257,7 +250,6 @@ class SearchView
             return $kwsql;
         }
     }
-
     /**
      *  获得相关的关键字
      *
@@ -304,7 +296,6 @@ class SearchView
             return $likeword;
         }
     }
-
     /**
      *  加粗关键字
      *
@@ -331,7 +322,6 @@ class SearchView
         }
         return $fstr;
     }
-
     /**
      *  统计列表里的记录
      *
@@ -407,7 +397,6 @@ class SearchView
             }
         }
     }
-
     /**
      *  显示列表
      *
@@ -479,7 +468,6 @@ class SearchView
         if (!empty($oldkeyword)) $keyword = $oldkeyword;
         $this->dtp->Display();
     }
-
     /**
      *  获得文档列表
      *
@@ -529,7 +517,6 @@ class SearchView
         if ($innertext == '') {
             $innertext = GetSysTemplets("search_list.htm");
         }
-
         //排序方式
         $ordersql = '';
         if ($this->ChannelType < 0 || $this->ChannelTypeid < 0) {
@@ -549,7 +536,6 @@ class SearchView
                 $ordersql = " ORDER BY arc.sortrank desc";
             }
         }
-
         //搜索
         $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
             act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
@@ -633,18 +619,15 @@ class SearchView
                     }
                     $artlist .= $this->dtp2->GetResult();
                 } //if hasRow
-
                 else {
                     $artlist .= "";
                 }
                 if ($col > 1) $artlist .= "</td>\r\n";
             } //Loop Col
-
             if ($col > 1) {
                 $artlist .= "</tr>\r\n";
             }
         } //Loop Line
-
         if ($col > 1) {
             $artlist .= "</table>\r\n";
         }
@@ -652,7 +635,6 @@ class SearchView
 
         return $artlist;
     }
-
     /**
      *  获取动态的分页列表
      *
@@ -678,9 +660,7 @@ class SearchView
             return "<ul class=\"pagination justify-content-center pt-3\"><li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li></ul>";
         }
         $purl = $this->GetCurUrl();
-
         $oldkeyword = (empty($oldkeyword) ? $this->Keyword : $oldkeyword);
-
         //当结果超过限制时，重设结果页数
         if ($this->TotalResult > $this->SearchMaxRc) {
             $totalpage = ceil($this->SearchMaxRc / $this->PageSize);
@@ -698,7 +678,6 @@ class SearchView
         $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
         $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
         $purl .= "?".$geturl;
-
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
@@ -712,7 +691,6 @@ class SearchView
         } else {
             $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>\r\n";
         }
-
         //获得数字链接
         $listdd = "";
         $total_list = $list_len * 2 + 1;
@@ -754,7 +732,6 @@ class SearchView
         $plist .= "</ul></form>\r\n";
         return $plist;
     }
-
     /**
      *  获得当前的页面文件的url
      *

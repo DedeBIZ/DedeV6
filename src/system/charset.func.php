@@ -7,7 +7,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//------------------------------------------------------------------------
 //字符编码转换的小助手
 //这里仅做一个映射
 helper("charset");

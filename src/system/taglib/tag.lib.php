@@ -1,5 +1,4 @@
 <?php
-//function GetTags($num,$ltype='new',$InnerText='')
 /**
  * TAG调用标签
  *
@@ -16,20 +15,16 @@ function lib_tag(&$ctag, &$refObj)
     $attlist = "row|30,sort|new,getall|0,typeid|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     $InnerText = $ctag->GetInnerText();
     if (trim($InnerText) == '') $InnerText = GetSysTemplets('tag_one.htm');
     $revalue = '';
-
     $ltype = $sort;
     $num = $row;
-
     $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); //取一个平均
     if (!$dd['tt']) {
         $dd['tt'] = 0;
     }
     $addsql = "WHERE 1=1 AND total >= {$dd['tt']}";
-
     if ($getall == 0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid'])) {
         $dsql->SetQuery("SELECT tid FROM `#@__taglist` WHERE aid = '{$refObj->Fields['aid']}' ");
         $dsql->Execute();
@@ -46,18 +41,14 @@ function lib_tag(&$ctag, &$refObj)
             $addsql .= " AND typeid='$typeid'";
         }
     }
-
     if ($ltype == 'rand') $orderby = 'rand() ';
     else if ($ltype == 'week') $orderby = ' weekcc DESC ';
     else if ($ltype == 'month') $orderby = ' monthcc DESC ';
     else if ($ltype == 'hot') $orderby = ' count DESC ';
     else if ($ltype == 'total') $orderby = ' total DESC ';
     else $orderby = 'addtime DESC  ';
-
-
     $dsql->SetQuery("SELECT * FROM `#@__tagindex` $addsql ORDER BY $orderby LIMIT 0,$num");
     $dsql->Execute();
-
     $ctp = new DedeTagParse();
     $ctp->SetNameSpace('field', '[', ']');
     $ctp->LoadSource($InnerText);
@@ -69,7 +60,6 @@ function lib_tag(&$ctag, &$refObj)
         } else {
             $row['link'] = $cfg_cmsurl."/apps/tags.php?/".urlencode($row['keyword'])."/";
         }
-
         $row['highlight'] = mt_rand(1, 10);
         foreach ($ctp->CTags as $tagid => $ctag) {
             if (isset($row[$ctag->GetName()])) {

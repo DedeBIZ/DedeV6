@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>修改广告</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
   <script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
   <script type="text/javascript" src="../static/js/moment.min.js"></script>
@@ -54,7 +54,7 @@
           <form action="ad_edit.php" method="post" enctype="multipart/form-data" name="form1">
             <input type='hidden' name='aid' value='<?php echo $aid?>'>
             <input type='hidden' name='dopost' value='saveedit'>
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <tr>
               <td height="26" align="center">广告位标识：</td>
               <td colspan="2"><?php echo $row['tagname']; ?></td>
@@ -63,9 +63,7 @@
               <td height="26" align="center">广告分类：</td>
               <td colspan="2"><select name='clsid' style='width:150' id="clsid">
                   <option value='0'>默认分类</option>
-
                   <?php echo $option;?>
-
                 </select></td>
             </tr>
             <tr>
@@ -83,8 +81,7 @@
             </tr>
             <tr>
               <td height="26" align="center">广告位名称：</td>
-              <td colspan="2"><input name="adname" type="text" id="adname" size="30" value="<?php echo $row['adname']?>"
-                  class='iptxt' /></td>
+              <td colspan="2"><input name="adname" type="text" id="adname" size="30" value="<?php echo $row['adname']?>" class='iptxt' /></td>
             </tr>
             <tr>
               <td height="26" align="center">时间限制：</td>
@@ -99,11 +96,9 @@
             <tr>
               <td height="26" align="center">投放时间：</td>
               <td colspan="2">从
-                <input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>"
-                  class='iptxt datepicker' />
+                <input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" class='iptxt datepicker' />
                 到
-                <input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>"
-                  class='iptxt datepicker' /></td>
+                <input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" class='iptxt datepicker' /></td>
             </tr>
             <tr>
               <td height="80" align="center">正常显示内容：</td>
@@ -126,5 +121,4 @@
     </tr>
   </table>
 </body>
-
 </html>

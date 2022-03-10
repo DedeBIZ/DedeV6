@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 $g_ftpLink = false;
-
 /**
  *  使用FTP方法创建文件夹目录
  *
@@ -32,7 +31,6 @@ if (!function_exists('FtpMkdir')) {
         return ftp_site($g_ftpLink, "chmod $mmode $mdir");
     }
 }
-
 /**
  *  改变目录模式
  *
@@ -46,8 +44,6 @@ if (!function_exists('FtpChmod')) {
         return FtpMkdir($truepath, $mmode, false);
     }
 }
-
-
 /**
  *  打开FTP链接,打开之前确保已经设置好了FTP相关的配置信息
  *
@@ -74,8 +70,6 @@ if (!function_exists('OpenFtp')) {
         }
     }
 }
-
-
 /**
  *  关闭FTP链接
  *
@@ -90,8 +84,6 @@ if (!function_exists('CloseFtp')) {
         }
     }
 }
-
-
 /**
  *  创建所有目录
  *
@@ -116,7 +108,6 @@ if (!function_exists('MkdirAll')) {
         }
     }
 }
-
 /**
  *  修改所有模式
  *
@@ -136,8 +127,6 @@ if (!function_exists('ChmodAll')) {
         }
     }
 }
-
-
 /**
  *  创建目录
  *
@@ -153,7 +142,6 @@ if (!function_exists('CreateDir')) {
         return SpCreateDir($spath);
     }
 }
-
 /**
  *  写文件
  *
@@ -181,7 +169,6 @@ if (!function_exists('PutFile')) {
         }
     }
 }
-
 /**
  *  用递归方式删除目录
  *

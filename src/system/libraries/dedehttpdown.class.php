@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
-
 class DedeHttpDown
 {
     var $m_ch = '';
@@ -33,7 +32,6 @@ class DedeHttpDown
     var $HomeUrl = '';
     var $reTry = 0;
     var $JumpCount = 0;
-
     /**
      *  初始化系统
      *
@@ -77,7 +75,6 @@ class DedeHttpDown
             $this->BaseUrlPath = preg_replace("/\/$/", "", $this->BaseUrlPath);
         }
     }
-
     /**
      *  重设各参数
      *
@@ -99,7 +96,6 @@ class DedeHttpDown
         $this->m_cookies = "";
         $this->m_error = "";
     }
-
     /**
      *  打开指定网址
      *
@@ -116,12 +112,10 @@ class DedeHttpDown
         $this->m_html = '';
         $this->reTry = 0;
         $this->Close();
-
         //初始化系统
         $this->PrivateInit($url);
         $this->PrivateStartSession($requestType);
     }
-
     /**
      *  转到303重定向网址
      *
@@ -141,7 +135,6 @@ class DedeHttpDown
         $this->PrivateInit($url);
         $this->PrivateStartSession('GET');
     }
-
     /**
      *  获得某操作错误的原因
      *
@@ -156,7 +149,6 @@ class DedeHttpDown
             echo "$k => $v <br>\r\n";
         }
     }
-
     /**
      *  判别用Get方法发送的头的应答结果是否正确
      *
@@ -172,7 +164,6 @@ class DedeHttpDown
             return FALSE;
         }
     }
-
     /**
      *  看看返回的网页是否是text类型
      *
@@ -188,7 +179,6 @@ class DedeHttpDown
             return FALSE;
         }
     }
-
     /**
      *  判断返回的网页是否是特定的类型
      *
@@ -208,7 +198,6 @@ class DedeHttpDown
             return FALSE;
         }
     }
-
     /**
      *  用Http协议下载文件
      *
@@ -225,7 +214,6 @@ class DedeHttpDown
             file_put_contents($savefilename, $this->m_html);
             return TRUE;
         }
-
         if (@feof($this->m_fp)) {
             $this->m_error = "连接已经关闭";
             return FALSE;
@@ -238,7 +226,6 @@ class DedeHttpDown
         fclose($fp);
         return TRUE;
     }
-
     /**
      *  保存网页内容为Text文件
      *
@@ -254,12 +241,10 @@ class DedeHttpDown
             return "";
         }
     }
-
     function SaveBinFile($filename)
     {
         return $this->SaveBinFile($filename);
     }
-
     /**
      *  用Http协议获得一个网页的内容
      *
@@ -283,7 +268,6 @@ class DedeHttpDown
         @fclose($this->m_fp);
         return $this->m_html;
     }
-
     function GetJSON()
     {
         if ($this->m_html != '') {
@@ -301,7 +285,6 @@ class DedeHttpDown
         @fclose($this->m_fp);
         return json_decode($this->m_html);
     }
-
     /**
      *  开始HTTP会话
      *
@@ -331,10 +314,8 @@ class DedeHttpDown
                 curl_setopt($this->m_ch, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($this->m_ch, CURLOPT_SSL_VERIFYHOST, false);
             }
-
             $this->m_puthead = array();
             $this->m_puthead["Host"] = $this->m_host;
-
             //发送用户自定义的请求头
             if (!isset($this->m_puthead["Accept"])) {
                 $this->m_puthead["Accept"] = "*/*";
@@ -356,10 +337,8 @@ class DedeHttpDown
             if (count($headers) > 0) {
                 curl_setopt($this->m_ch, CURLOPT_HTTPHEADER, $headers);
             }
-
             curl_setopt($this->m_ch, CURLOPT_CONNECTTIMEOUT, 20);
             curl_setopt($this->m_ch, CURLOPT_TIMEOUT, 900);
-
             $this->m_html = curl_exec($this->m_ch);
             $status = curl_getinfo($this->m_ch);
             if (count($status) > 0) {
@@ -386,9 +365,7 @@ class DedeHttpDown
             $httpv = "HTTP/1.0";
         }
         $ps = explode('?', $this->m_urlpath);
-
         $headString = '';
-
         //发送固定的起始请求头GET、Host信息
         if ($requestType == "GET") {
             $headString .= "GET ".$this->m_urlpath." $httpv\r\n";
@@ -396,7 +373,6 @@ class DedeHttpDown
             $headString .= "POST ".$ps[0]." $httpv\r\n";
         }
         $this->m_puthead["Host"] = $this->m_host;
-
         //发送用户自定义的请求头
         if (!isset($this->m_puthead["Accept"])) {
             $this->m_puthead["Accept"] = "*/*";
@@ -407,7 +383,6 @@ class DedeHttpDown
         if (!isset($this->m_puthead["Refer"])) {
             $this->m_puthead["Refer"] = "http://".$this->m_puthead["Host"];
         }
-
         foreach ($this->m_puthead as $k => $v) {
             $k = trim($k);
             $v = trim($v);
@@ -429,7 +404,6 @@ class DedeHttpDown
             fputs($this->m_fp, "Content-Type: application/x-www-form-urlencoded\r\n");
             fputs($this->m_fp, "Content-Length: $plen\r\n");
         }
-
         //发送固定的结束请求头
         //HTTP1.1协议必须指定文档结束后关闭链接,否则读取文档时无法使用feof判断结束
         if ($httpv == "HTTP/1.1") {
@@ -440,7 +414,6 @@ class DedeHttpDown
         if ($requestType == "POST") {
             fputs($this->m_fp, $postdata);
         }
-
         //获取应答头状态信息
         $httpstas = explode(" ", fgets($this->m_fp, 256));
         $this->m_httphead["http-edition"] = trim($httpstas[0]);
@@ -449,7 +422,6 @@ class DedeHttpDown
         for ($i = 2; $i < count($httpstas); $i++) {
             $this->m_httphead["http-describe"] .= " ".trim($httpstas[$i]);
         }
-
         //获取详细应答头
         while (!feof($this->m_fp)) {
             $line = trim(fgets($this->m_fp, 256));
@@ -475,7 +447,6 @@ class DedeHttpDown
                 $this->m_httphead[strtolower($hkey)] = trim($hvalue);
             }
         }
-
         //如果连接被不正常关闭，重试
         if (feof($this->m_fp)) {
             if ($this->reTry > 10) {
@@ -483,7 +454,6 @@ class DedeHttpDown
             }
             $this->PrivateStartSession($requestType);
         }
-
         //判断是否是3xx开头的应答
         if (preg_match("/^3/", $this->m_httphead["http-state"])) {
             if ($this->JumpCount > 3) {
@@ -502,7 +472,6 @@ class DedeHttpDown
             }
         }
     }
-
     /**
      *  获得一个Http头的值
      *
@@ -515,12 +484,10 @@ class DedeHttpDown
         $headname = strtolower($headname);
         return isset($this->m_httphead[$headname]) ? $this->m_httphead[$headname] : '';
     }
-
     function SetCookie($cookie)
     {
         $this->m_cookies = $cookie;
     }
-
     /**
      *  设置Http头的值
      *
@@ -533,7 +500,6 @@ class DedeHttpDown
     {
         $this->m_puthead[$skey] = $svalue;
     }
-
     /**
      *  打开连接
      *
@@ -545,7 +511,6 @@ class DedeHttpDown
         if ($this->m_host == "") {
             return FALSE;
         }
-
         $errno = "";
         $errstr = "";
         $this->m_fp = @fsockopen($this->m_host, $this->m_port, $errno, $errstr, 10);
@@ -556,7 +521,6 @@ class DedeHttpDown
             return TRUE;
         }
     }
-
     /**
      *  关闭连接
      *
@@ -572,7 +536,6 @@ class DedeHttpDown
             @fclose($this->m_fp);
         }
     }
-
     /**
      *  补全相对网址
      *

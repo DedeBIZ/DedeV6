@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>点卡产品分类</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="background:#cfcfcf;">
@@ -32,15 +32,15 @@
       <tr align="center" bgcolor="#FFFFFF">
         <td height="26" valign="top">
           <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>"
-            class='pubinputs' style="width:90%" />
+            class='pubinputs' style="width:90%">
         </td>
         <td height="26" valign="top">
           <input name="num_<?php echo $k?>" value="<?php echo $row->num?>" type="text" id="num_<?php echo $k?>"
-            class='pubinputs' style="width:80%" />
+            class='pubinputs' style="width:80%">
         </td>
         <td>
           <input name="money_<?php echo $k?>" value="<?php echo $row->money?>" type="text" id="money_<?php echo $k?>"
-            class='pubinputs' style="width:80%" />
+            class='pubinputs' style="width:80%">
           (元)
         </td>
         <td>
@@ -59,13 +59,13 @@
       </tr>
       <tr height="26" align="center" bgcolor="#FFFFFF">
         <td valign="top">
-          <input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%" />
+          <input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%">
         </td>
         <td valign="top">
-          <input name="num_new" value="100" type="text" id="num_new" class='pubinputs' style="width:80%" />
+          <input name="num_new" value="100" type="text" id="num_new" class='pubinputs' style="width:80%">
         </td>
         <td valign="top">
-          <input name="money_new" type="text" id="money_new" class='pubinputs' style='width:80%' value="30" />
+          <input name="money_new" type="text" id="money_new" class='pubinputs' style='width:80%' value="30">
           (元)
         </td>
         <td align="center" bgcolor="#FFFFFF">
@@ -80,5 +80,4 @@
     </form>
   </table>
 </body>
-
 </html>

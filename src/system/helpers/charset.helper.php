@@ -9,10 +9,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 $UC2GBTABLE = $CODETABLE = $BIG5_DATA = $GB_DATA = '';
 $GbkUniDic = null;
-
 /**
  *  UTF-8 转GB编码
  *
@@ -65,7 +63,6 @@ if (!function_exists('utf82gb')) {
         return $okstr;
     }
 }
-
 /**
  *  GB转UTF-8编码
  *
@@ -111,7 +108,6 @@ if (!function_exists('gb2utf8')) {
         return $ret;
     }
 }
-
 /**
  *  Unicode转utf8
  *
@@ -143,7 +139,6 @@ if (!function_exists('u2utf8')) {
         return $str;
     }
 }
-
 /**
  *  utf8转Unicode
  *
@@ -175,7 +170,6 @@ if (!function_exists('utf82u')) {
         }
     }
 }
-
 /**
  *  Big5码转换成GB码
  *
@@ -215,7 +209,6 @@ if (!function_exists('big52gb')) {
         return $Text;
     }
 }
-
 /**
  *  GB码转换成Big5码
  *
@@ -255,7 +248,6 @@ if (!function_exists('gb2big5')) {
         return $Text;
     }
 }
-
 /**
  *  unicode url编码转gbk编码函数
  *
@@ -274,7 +266,6 @@ if (!function_exists('UnicodeUrl2Gbk')) {
             }
             fclose($fp);
         }
-
         //处理字符串
         $str = str_replace('$#$', '+', $str);
         $glen = strlen($str);
@@ -299,7 +290,6 @@ if (!function_exists('UnicodeUrl2Gbk')) {
         return $okstr;
     }
 }
-
 /**
  *  自动转换字符集 支持数组转换
  *

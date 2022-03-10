@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
-
 /**
  * 栏目单元,选择框
  *
@@ -21,7 +20,6 @@ require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 class TypeUnitSelector
 {
     var $dsql;
-
     //php5构造函数
     function __construct()
     {
@@ -33,12 +31,10 @@ class TypeUnitSelector
     {
         $this->__construct();
     }
-
     //清理类
     function Close()
     {
     }
-
     /**
      *  列出某一频道下的所有栏目
      *
@@ -50,7 +46,6 @@ class TypeUnitSelector
     {
 
         global $cfg_admin_channel, $admin_catalogs, $targetid, $oldvalue;
-
         $oldvalues = array();
         if (!empty($oldvalue)) $oldvalues = explode(',', $oldvalue);
         //检测用户有权限的顶级栏目
@@ -67,9 +62,7 @@ class TypeUnitSelector
             $admin_catalogs = explode(',', $admin_catalog);
             $admin_catalogs = array_unique($admin_catalogs);
         }
-
         $this->dsql->SetQuery("SELECT id,typedir,typename,ispart,channeltype FROM `#@__arctype` WHERE reid=0 ORDER BY sortrank");
-
         $this->dsql->Execute(0);
         $lastid = GetCookie('lastCidMenu');
         while ($row = $this->dsql->GetObject(0)) {
@@ -96,7 +89,6 @@ class TypeUnitSelector
             echo "</div>\r\n";
         }
     }
-
     /**
      *  获得子类目的递归调用
      *

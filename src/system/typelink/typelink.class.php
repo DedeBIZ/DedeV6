@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.func.php");
-
 /**
  * 栏目连接类
  *
@@ -32,8 +31,6 @@ class TypeLink
     var $valuePosition;
     var $valuePositionName;
     var $OptionArrayList;
-
-    //构造函数///////
     //php5构造函数
     function __construct($typeid)
     {
@@ -48,7 +45,6 @@ class TypeLink
         $this->valuePositionName = '';
         $this->typeDir = '';
         $this->OptionArrayList = '';
-
         //载入类目信息
         $query = "SELECT tp.*,ch.typename as ctypename,ch.addtable,ch.issystem FROM `#@__arctype` tp left join `#@__channeltype` ch
         on ch.id=tp.channeltype  WHERE tp.id='$typeid' ";
@@ -61,19 +57,16 @@ class TypeLink
             }
         }
     }
-
     //对于使用默认构造函数的情况
     //GetPositionLink()将不可用
     function TypeLink($typeid)
     {
         $this->__construct($typeid);
     }
-
     //关闭数据库连接，析放资源
     function Close()
     {
     }
-
     //重设类目ID
     function SetTypeID($typeid)
     {
@@ -82,7 +75,6 @@ class TypeLink
         $this->valuePositionName = "";
         $this->typeDir = "";
         $this->OptionArrayList = "";
-
         //载入类目信息
         $query = "
         SELECT #@__arctype.*,#@__channeltype.typename as ctypename
@@ -91,7 +83,6 @@ class TypeLink
         $this->dsql->SetQuery($query);
         $this->TypeInfos = $this->dsql->GetOne();
     }
-
     //获得这个类目的路径
     function GetTypeDir()
     {
@@ -101,7 +92,6 @@ class TypeLink
             return $this->TypeInfos['typedir'];
         }
     }
-
     //获得某类目的链接列表 如：类目一>>类目二>> 这样的形式
     //islink 表示返回的列表是否带连接
     function GetPositionLink($islink = true)
@@ -141,13 +131,11 @@ class TypeLink
             }
         }
     }
-
     //获得名字列表
     function GetPositionName()
     {
         return $this->GetPositionLink(false);
     }
-
     //获得某类目的链接列表，递归逻辑部分
     function LogicGetPosition($id, $islink)
     {
@@ -164,7 +152,6 @@ class TypeLink
             return 0;
         }
     }
-
     //获得某个类目的超链接信息
     function GetOneTypeLink($typeinfos)
     {
@@ -172,7 +159,6 @@ class TypeLink
         $typelink = "<li class='breadcrumb-item'><a href='".$typepage."'>".$typeinfos['typename']."</a></li>";
         return $typelink;
     }
-
     //获得某分类连接的URL
     function GetOneTypeUrl($typeinfos)
     {
@@ -192,7 +178,6 @@ class TypeLink
             );
         }
     }
-
     //获得类别列表
     //hid 是指默认选中类目，0 表示“请选择类目”或“不限类目”
     //oper 是用户允许管理的类目，0 表示所有类目
@@ -201,15 +186,12 @@ class TypeLink
     {
         return $this->GetOptionList($hid, $oper, $channeltype, $usersg);
     }
-
     function GetOptionList($hid = 0, $oper = 0, $channeltype = 0, $usersg = 0)
     {
         global $cfg_admin_channel;
         if (empty($cfg_admin_channel)) $cfg_admin_channel = 'all';
-
         if (!$this->dsql) $this->dsql = $GLOBALS['dsql'];
         $this->OptionArrayList = '';
-
         if ($hid > 0) {
             $row = $this->dsql->GetOne("SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE id='$hid'");
             $channeltype = $row['channeltype'];
@@ -219,11 +201,8 @@ class TypeLink
                 $this->OptionArrayList .= "<option value='".$row['id']."' selected>".$row['typename']."</option>\r\n";
             }
         }
-
         if ($channeltype == 0) $ctsql = '';
         else $ctsql = " AND channeltype='$channeltype' ";
-
-
         if (is_array($oper) && $cfg_admin_channel != 'all') {
             if (count($oper) == 0) {
                 $query = "SELECT id,typename,ispart FROM `#@__arctype` WHERE 1=2 ";
@@ -246,7 +225,6 @@ class TypeLink
         } else {
             $query = "SELECT id,typename,ispart FROM `#@__arctype` WHERE reid=0 $ctsql ORDER BY sortrank ASC";
         }
-
         $this->dsql->SetQuery($query);
         $this->dsql->Execute();
         while ($row = $this->dsql->GetObject()) {
@@ -261,7 +239,6 @@ class TypeLink
         }
         return $this->OptionArrayList;
     }
-
     /**
      *  逻辑递归
      *
@@ -275,7 +252,6 @@ class TypeLink
     {
         global $cfg_admin_channel;
         if (empty($cfg_admin_channel)) $cfg_admin_channel = 'all';
-
         $this->dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid='".$id."' AND ispart<>2 ORDER BY sortrank ASC");
         $this->dsql->Execute($id);
         while ($row = $this->dsql->GetObject($id)) {
@@ -290,7 +266,6 @@ class TypeLink
             $this->LogicGetOptionArray($row->id, $step."─", $oper);
         }
     }
-
     /**
      *  获得与该类相关的类目，本函数应用于模板标记{dede:channel}{/dede:channel}中
      *  $typetype 的值为：sun 下级分类 self 同级分类 top 顶级分类
@@ -320,18 +295,14 @@ class TypeLink
         if ($row == "") $row = 8;
         if ($reid == "") $reid = 0;
         if ($col == "") $col = 1;
-
         $tablewidth = str_replace("%", "", $tablewidth);
         if ($tablewidth == "") $tablewidth = 100;
         if ($col == "") $col = 1;
-
         $colWidth = ceil(100 / $col);
         $tablewidth = $tablewidth."%";
         $colWidth = $colWidth."%";
         if ($typetype == "") $typetype = "sun";
-
         if ($innertext == "") $innertext = GetSysTemplets("channel_list.htm");
-
         if ($reid == 0 && $typeid > 0) {
             $dbrow = $this->dsql->GetOne("SELECT reid FROM `#@__arctype` WHERE id='$typeid' ");
             if (is_array($dbrow)) {
@@ -349,7 +320,6 @@ class TypeLink
             $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl
             FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         }
-
         //AND ID<>'$typeid'
         $dtp2 = new DedeTagParse();
         $dtp2->SetNameSpace("field", "[", "]");
@@ -393,7 +363,6 @@ class TypeLink
                 }
                 $GLOBALS['autoindex']++;
             } //Loop Col
-
             if ($col > 1) {
                 $i += $col - 1;
             }
@@ -408,5 +377,4 @@ class TypeLink
         $this->dsql->FreeResult();
         return $likeType;
     } //GetChannel
-
 }//End Class

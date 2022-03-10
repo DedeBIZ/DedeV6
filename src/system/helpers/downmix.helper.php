@@ -20,10 +20,8 @@ if (!function_exists('RndString')) {
     {
         //最大间隔距离(如果在检测不到p标记的情况下，加入混淆字串的最大间隔距离)
         $maxpos = 1024;
-
         //font 的字体颜色
         $fontColor = "#FFFFFF";
-
         //div span p 标记的随机样式
         $st1 = chr(mt_rand(ord('A'), ord('Z'))).chr(mt_rand(ord('a'), ord('z'))).chr(mt_rand(ord('a'), ord('z'))).mt_rand(100, 999);
         $st2 = chr(mt_rand(ord('A'), ord('Z'))).chr(mt_rand(ord('a'), ord('z'))).chr(mt_rand(ord('a'), ord('z'))).mt_rand(100, 999);
@@ -41,18 +39,15 @@ if (!function_exists('RndString')) {
         $rndstyleValue = $rndstyle[$mdd]['value'];
         $rndstyleName = $rndstyle[$mdd]['name'];
         $reString = "<style> $rndstyleValue </style>\r\n";
-
         //附机标记
         $rndem[1] = 'font';
         $rndem[2] = 'div';
         $rndem[3] = 'span';
         $rndem[4] = 'p';
-
         //读取字符串数据
         $fp = fopen(DEDEDATA.'/downmix.data.inc', 'r');
         $start = 0;
         $totalitem = 0;
-
         while (!feof($fp)) {
             $v = trim(fgets($fp, 128));
             if ($start == 1) {
@@ -69,7 +64,6 @@ if (!function_exists('RndString')) {
             }
         }
         fclose($fp);
-
         //处理要防采集的字段
         $bodylen = strlen($body) - 1;
         $prepos = 0;

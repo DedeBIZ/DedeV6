@@ -27,8 +27,6 @@ if (!function_exists('MyDate')) {
         return gmdate($format, $timest + $addtime);
     }
 }
-
-
 /**
  * 从普通时间转换为Linux时间截
  *
@@ -80,8 +78,6 @@ if (!function_exists('GetMkTime')) {
         }
     }
 }
-
-
 /**
  *  减去时间
  *
@@ -97,8 +93,6 @@ if (!function_exists('SubDay')) {
         return $cday;
     }
 }
-
-
 /**
  *  增加天数
  *
@@ -114,8 +108,6 @@ if (!function_exists('AddDay')) {
         return $oktime;
     }
 }
-
-
 /**
  *  返回格式化(Y-m-d H:i:s)的是时间
  *
@@ -128,7 +120,6 @@ if (!function_exists('GetDateTimeMk')) {
         return MyDate('Y-m-d H:i:s', $mktime);
     }
 }
-
 /**
  *  返回格式化(Y-m-d)的日期
  *
@@ -142,8 +133,6 @@ if (!function_exists('GetDateMk')) {
         else return MyDate("Y-m-d", $mktime);
     }
 }
-
-
 /**
  *  将时间转换为距离现在的精确时间
  *

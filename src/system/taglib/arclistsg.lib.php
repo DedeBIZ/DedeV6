@@ -19,12 +19,10 @@
 function lib_arclistsg(&$ctag, &$refObj)
 {
     global $dsql, $PubFields, $cfg_keyword_like, $cfg_index_cache, $_arclistEnv, $envs, $_sys_globals;
-
     //属性处理
     $attlist = "typeid|0,row|10,col|1,flag|,titlelen|30,sort|default,keyword|,innertext|,arcid|0,idlist|,channelid|0,limit|,orderway|desc,subday|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     $line = $row;
     $orderby = strtolower($sort);
     if ($col == '') $col = 1;
@@ -32,31 +30,23 @@ function lib_arclistsg(&$ctag, &$refObj)
     if (empty($imgheight)) $imgheight = "";
     $innertext = trim($ctag->GetInnerText());
     if ($innertext == '') $innertext = GetSysTemplets("part_arclistsg.htm");
-
     if (empty($channelid) && isset($GLOBALS['envs']['channelid'])) {
         $channelid = $GLOBALS['envs']['channelid'];
     }
-
     if (empty($typeid) && !empty($envs['typeid'])) {
         $typeid = $envs['typeid'];
     }
-
     if (empty($typeid) && empty($channelid)) {
         return "No channel info!";
     }
-
     if (!empty($channelid)) $gquery = "SELECT addtable,listfields FROM `#@__channeltype` WHERE id='$channelid' ";
     else $gquery = "SELECT ch.addtable,listfields FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE id='$typeid'";
-
     $row = $dsql->GetOne($gquery);
-
     $orwheres = array();
     $maintable = trim($row['addtable']);
-
     if ($maintable == '') {
         return "No addtable info!";
     }
-
     //列表调用字段
     $listarcs = array('aid', 'typeid');
     if (!empty($row['listfields'])) {
@@ -67,7 +57,6 @@ function lib_arclistsg(&$ctag, &$refObj)
     }
     $arclistquery = join(',', $listarcs);
     $arclistquery .= ",arc.aid AS id,arc.senddate AS pubdate";
-
     //按不同情况设定SQL条件 排序方式
     if ($idlist == '') {
         if ($orderby == 'near' && $cfg_keyword_like == 'N') {
@@ -80,12 +69,10 @@ function lib_arclistsg(&$ctag, &$refObj)
             $limitday = $ntime - ($subday * 24 * 3600);
             $orwheres[] = " arc.senddate > $limitday ";
         }
-
         if ($flag != '') {
             $flags = explode(',', $flag);
             for ($i = 0; isset($flags[$i]); $i++) $orwheres[] = " FIND_IN_SET('{$flags[$i]}',flag)>0 ";
         }
-
         if (!empty($typeid)) {
             //指定了多个栏目时，不再获取子类的id
             if (preg_match('#,#', $typeid)) $orwheres[] = " typeid IN ($typeid) ";
@@ -104,7 +91,6 @@ function lib_arclistsg(&$ctag, &$refObj)
                             $arr['crossid'] = preg_replace('#[^0-9,]#', '', trim($arr['crossid']));
                             if ($arr['crossid'] != '') $selquery = "SELECT id,topid FROM `#@__arctype` WHERE id IN('{$arr['crossid']}') AND id<>'{$typeid}' AND topid<>'{$typeid}'  ";
                         }
-
                         if ($selquery != '') {
                             $dsql->SetQuery($selquery);
                             $dsql->Execute();
@@ -119,9 +105,7 @@ function lib_arclistsg(&$ctag, &$refObj)
             }
         }
         //频道ID
-
         if (!empty($channelid)) $orwheres[] = " AND arc.channel = '$channelid' ";
-
         //由于这个条件会导致缓存功能失去意义，因此取消
         //if($arcid!=0) $orwheres[] = " arc.id<>'$arcid' ";
     }
@@ -136,7 +120,6 @@ function lib_arclistsg(&$ctag, &$refObj)
     $limit = trim(preg_replace('#limit#i', '', $limit));
     if ($limit != '') $limitsql = " LIMIT $limit ";
     else $limitsql = " LIMIT 0,$line ";
-
     $orwhere = '';
     if (isset($orwheres[0])) {
         $orwhere = join(' AND ', $orwheres);
@@ -144,12 +127,9 @@ function lib_arclistsg(&$ctag, &$refObj)
         $orwhere = preg_replace("#AND[ ]{1,}AND#i", 'AND ', $orwhere);
     }
     if ($orwhere != '') $orwhere = " WHERE $orwhere ";
-
-    $query = "SELECT $arclistquery,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,
-        tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-        FROM `$maintable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-        $orwhere AND arc.arcrank > -1 $ordersql $limitsql";
-
+    $query = "SELECT $arclistquery,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+    FROM `$maintable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
+    $orwhere AND arc.arcrank > -1 $ordersql $limitsql";
     $md5hash = md5($query);
     $needcache = TRUE;
     if ($idlist != '') $needcache = FALSE;
@@ -176,7 +156,6 @@ function lib_arclistsg(&$ctag, &$refObj)
             if ($col > 1) $artlist .= "    <div>\r\n";
             if ($row = $dsql->GetArray("al")) {
                 $ids[] = $row['aid'];
-
                 $row['filename'] = $row['arcurl'] = GetFileUrl(
                     $row['id'],
                     $row['typeid'],
@@ -192,7 +171,6 @@ function lib_arclistsg(&$ctag, &$refObj)
                     $row['siteurl'],
                     $row['sitepath']
                 );
-
                 $row['typeurl'] = GetTypeUrl(
                     $row['typeid'],
                     $row['typedir'],
@@ -204,7 +182,6 @@ function lib_arclistsg(&$ctag, &$refObj)
                     $row['siteurl'],
                     $row['sitepath']
                 );
-
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
                     $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
                 }
@@ -212,11 +189,8 @@ function lib_arclistsg(&$ctag, &$refObj)
                     $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                 }
                 $row['picname'] = $row['litpic'];
-
                 $row['image'] = "<img src='".$row['picname']."' border='0' width='{$imgwidth}' height='{$imgheight}' alt='".preg_replace("#['><]#", "", $row['title'])."' />";
-
                 $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
-
                 $row['stime'] = GetDateMK($row['pubdate']);
                 $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
                 $row['fulltitle'] = $row['title'];
@@ -225,7 +199,6 @@ function lib_arclistsg(&$ctag, &$refObj)
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
-
                 if (is_array($dtp2->CTags)) {
                     foreach ($dtp2->CTags as $k => $ctag) {
                         if ($ctag->GetName() == 'array') {
@@ -238,7 +211,6 @@ function lib_arclistsg(&$ctag, &$refObj)
                     }
                     $GLOBALS['autoindex']++;
                 }
-
                 $artlist .= $dtp2->GetResult()."\r\n";
             } //if hasRow
             else {
@@ -259,7 +231,6 @@ function lib_arclistsg(&$ctag, &$refObj)
     }
     return $artlist;
 }
-
 //查询缓存
 function GetArclistSgCache($md5hash)
 {
@@ -276,7 +247,6 @@ function GetArclistSgCache($md5hash)
     //返回缓存id数据
     else return $arr['cachedata'];
 }
-
 function lib_GetAutoChannelID2($sortid, $topid)
 {
     global $dsql;

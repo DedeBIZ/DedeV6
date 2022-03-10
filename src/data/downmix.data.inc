@@ -1,13 +1,6 @@
 <?php
-//----------------------------
 //以下为手工指定的混淆串
-//----------------------------
-#start#
-#,织梦好，好织梦
-#,本文来自织梦
-#,织梦内容管理系统
-#,dedebiz.com
-#,copyright dedebiz
-#,内容来自dedebiz
-#end#
+#织梦内容管理系统
+#dedebiz.com
+#copyright dedebiz
 ?>

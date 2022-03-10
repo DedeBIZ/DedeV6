@@ -1,11 +1,9 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-
 function ch_stepselect($fvalue, &$arcTag, &$refObj, $fname = '')
 {
     return GetEnumsValue2($fname, $fvalue);
 }
-
 /**
  * 获取二级枚举的值
  *

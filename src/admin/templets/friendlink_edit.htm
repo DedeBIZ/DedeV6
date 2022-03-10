@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>友情链接修改</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table table-bordered maintable mt-3">
@@ -28,7 +28,7 @@
             <tr>
               <td width="19%" height="26">排列位置：</td>
               <td width="81%">
-                <input name="sortrank" type="text" id="sortrank" value="<?php echo $myLink['sortrank']?>" size="10" class='pubinputs' style="width:60px" />
+                <input name="sortrank" type="text" id="sortrank" value="<?php echo $myLink['sortrank']?>" size="10" class='pubinputs' style="width:60px">
                 (由小到大排列)
               </td>
             </tr>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
               <td height="26">上传Logo：</td>
-              <td><input name="logoimg" type="file" id="logoimg" size="30" /></td>
+              <td><input name="logoimg" type="file" id="logoimg" size="30"></td>
             </tr>
             <tr>
               <td height="26">网站简况：</td>
@@ -95,5 +95,4 @@
     </tr>
   </table>
 </body>
-
 </html>

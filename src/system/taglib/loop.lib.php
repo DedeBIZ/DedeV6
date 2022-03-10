@@ -16,14 +16,11 @@ function lib_loop(&$ctag, &$refObj)
     $attlist = "table|,tablename|,row|8,sort|,if|,ifcase|,orderway|desc";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     $innertext = trim($ctag->GetInnertext());
     $revalue = '';
     if (!empty($table)) $tablename = $table;
-
     if ($tablename == '' || $innertext == '') return '';
     if ($if != '') $ifcase = $if;
-
     if ($sort != '') $sort = " ORDER BY $sort $orderway ";
     if ($ifcase != '') $ifcase = " WHERE $ifcase ";
     $dsql->SetQuery("SELECT * FROM $tablename $ifcase $sort LIMIT 0,$row");

@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 /**
  *  去除html中不规则内容字符
-
  *
  * @access    public
  * @param     string  $str  需要处理的字符串
@@ -45,9 +44,6 @@ if (!function_exists('HtmlReplace')) {
         return addslashes($str);
     }
 }
-
-
-
 /**
  *  修复浏览器XSS hack的函数
  *
@@ -66,11 +62,9 @@ if (!function_exists('RemoveXSS')) {
             $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); //with a ;
             $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); //with a ;
         }
-
         $ra1 = array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 'style', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base');
         $ra2 = array('onabort', 'onactivate', 'onafterprint', 'onafterupdate', 'onbeforeactivate', 'onbeforecopy', 'onbeforecut', 'onbeforedeactivate', 'onbeforeeditfocus', 'onbeforepaste', 'onbeforeprint', 'onbeforeunload', 'onbeforeupdate', 'onblur', 'onbounce', 'oncellchange', 'onchange', 'onclick', 'oncontextmenu', 'oncontrolselect', 'oncopy', 'oncut', 'ondataavailable', 'ondatasetchanged', 'ondatasetcomplete', 'ondblclick', 'ondeactivate', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onerror', 'onerrorupdate', 'onfilterchange', 'onfinish', 'onfocus', 'onfocusin', 'onfocusout', 'onhelp', 'onkeydown', 'onkeypress', 'onkeyup', 'onlayoutcomplete', 'onload', 'onlosecapture', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onmove', 'onmoveend', 'onmovestart', 'onpaste', 'onpropertychange', 'onreadystatechange', 'onreset', 'onresize', 'onresizeend', 'onresizestart', 'onrowenter', 'onrowexit', 'onrowsdelete', 'onrowsinserted', 'onscroll', 'onselect', 'onselectionchange', 'onselectstart', 'onstart', 'onstop', 'onsubmit', 'onunload');
         $ra = array_merge($ra1, $ra2);
-
         $found = true;
         while ($found == true) {
             $val_before = $val;
@@ -97,7 +91,6 @@ if (!function_exists('RemoveXSS')) {
         return $val;
     }
 }
-
 /**
  *  处理禁用HTML但允许换行的内容
  *
@@ -114,7 +107,6 @@ if (!function_exists('TrimMsg')) {
         return addslashes($msg);
     }
 }
-
 /**
  *  过滤用于搜索的字符串
  *

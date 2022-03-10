@@ -28,20 +28,16 @@ if (!function_exists('AdminUpload')) {
         global $cfg_basedir, $cfg_image_dir, $cfg_soft_dir, $cfg_other_medias;
         global $cfg_imgtype, $cfg_softtype, $cfg_mediatype;
         if ($watermark) include_once(DEDEINC.'/image.func.php');
-
         $file_tmp = isset($GLOBALS[$uploadname]) ? $GLOBALS[$uploadname] : '';
         if ($file_tmp == '' || !is_uploaded_file($file_tmp)) {
             return -1;
         }
-
         $file_tmp = $GLOBALS[$uploadname];
         $file_size = filesize($file_tmp);
         $file_type = $filetype == '' ? strtolower(trim($GLOBALS[$uploadname.'_type'])) : $filetype;
-
         $file_name = isset($GLOBALS[$uploadname.'_name']) ? $GLOBALS[$uploadname.'_name'] : '';
         $file_snames = explode('.', $file_name);
         $file_sname = strtolower(trim($file_snames[count($file_snames) - 1]));
-
         if ($ftype == 'image' || $ftype == 'imagelit') {
             $filetype = '1';
             $sparr = array('image/pjpeg', 'image/jpeg', 'image/gif', 'image/png', 'image/xpng', 'image/wbmp');
@@ -79,8 +75,6 @@ if (!function_exists('AdminUpload')) {
             }
         }
         $fileurl = $filedir.'/'.$filename.'.'.$file_sname;
-
-
         $mime = get_mime_type($file_tmp);
         if (!preg_match("#^image#i", $mime)) {
             return -1;
@@ -90,7 +84,6 @@ if (!function_exists('AdminUpload')) {
         if ($ftype == 'image' && $watermark) {
             WaterImg($cfg_basedir.$fileurl, 'up');
         }
-
         //保存信息到数据库
         $title = $filename.'.'.$file_sname;
         $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
@@ -101,8 +94,6 @@ if (!function_exists('AdminUpload')) {
         return $fileurl;
     }
 }
-
-
 //前台会员通用上传函数
 //$upname 是文件上传框的表单名，而不是表单的变量
 //$handname 允许用户手工指定网址情况下的网址
@@ -110,7 +101,6 @@ if (!function_exists('MemberUploads')) {
     function MemberUploads($upname, $handname, $userid = 0, $utype = 'image', $exname = '', $maxwidth = 0, $maxheight = 0, $water = false, $isadmin = false)
     {
         global $cfg_imgtype, $cfg_mb_addontype, $cfg_mediatype, $cfg_user_dir, $cfg_basedir, $cfg_dir_purview;
-
         //当为游客投稿的情况下，这个 id 为 0
         if (empty($userid)) $userid = 0;
         if (!is_dir($cfg_basedir.$cfg_user_dir."/$userid")) {
@@ -163,7 +153,6 @@ if (!function_exists('MemberUploads')) {
             } else {
                 $filename = $cfg_user_dir."/{$userid}/{$exname}.".$sname;
             }
-
             $mime = get_mime_type($GLOBALS[$upname]);
             if (preg_match("#^unknow#", $mime)) {
                 ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
@@ -173,16 +162,13 @@ if (!function_exists('MemberUploads')) {
                 ShowMsg("仅支持媒体文件及应用程序上传", -1);
                 exit;
             }
-
             move_uploaded_file($GLOBALS[$upname], $cfg_basedir.$filename) or die("上传文件到 {$filename} 失败");
             @unlink($GLOBALS[$upname]);
-
             if (@filesize($cfg_basedir.$filename) > $GLOBALS['cfg_mb_upload_size'] * 1024) {
                 @unlink($cfg_basedir.$filename);
                 ShowMsg('您上传的文件超出系统大小限制', '-1');
                 exit();
             }
-
             //加水印或缩小图片
             if ($utype == 'image') {
                 include_once(DEDEINC.'/image.func.php');

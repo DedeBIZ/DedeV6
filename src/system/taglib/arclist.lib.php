@@ -214,9 +214,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         }
         //频道ID
         if (preg_match('#spec#i', $listtype)) $channelid == -1;
-
         if (!empty($channelid)) $orwheres[] = " And arc.channel = '$channelid' ";
-
         if (!empty($noflag)) {
             if (!preg_match('#,#', $noflag)) {
                 $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
@@ -303,16 +301,14 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     }
     //指定了id或使用缓存中的id
     if ($idlist != '') {
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,
-            tp.moresite,tp.siteurl,tp.sitepath
-            $addfieldsSql
-             FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id
-             $addfieldsSqlJoin
-          WHERE arc.id in($idlist) $ordersql ";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+        $addfieldsSql
+        FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id
+        $addfieldsSqlJoin
+        WHERE arc.id in($idlist) $ordersql ";
     }
     $dsql->SetQuery($query);
     $dsql->Execute('al');
-    //$row = $dsql->GetArray("al");
     $artlist = '';
     if ($pagesize > 0)  $artlist .= "    <div id='{$tagid}'>\r\n";
     if ($col > 1) $artlist = "<table width='$tablewidth' border='0' cellspacing='0' cellpadding='0'>\r\n";

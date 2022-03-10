@@ -11,11 +11,9 @@
 function lib_hotwords(&$ctag, &$refObj)
 {
     global $cfg_phpurl, $dsql;
-
     $attlist = "num|6,subday|365,maxlength|16";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     $nowtime = time();
     if (empty($subday)) $subday = 365;
     if (empty($num)) $num = 6;

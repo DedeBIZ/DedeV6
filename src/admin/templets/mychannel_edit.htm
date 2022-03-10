@@ -48,8 +48,8 @@
     }
   </script>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body topmargin="8">
   <form name="form1" action="mychannel_edit.php" method="post">
@@ -130,14 +130,14 @@
         <td bgcolor="#FFFFFF"><b>频道名称</b><br>
           <span class="STYLE2" id="help3">频道的中文名称，在后台管理，前台发布等均使用此名字</span></td>
         <td bgcolor="#FFFFFF"><input name="typename" type="text" id="typename" value="<?php echo $row['typename']; ?>"
-            class="pubinputs" /></td>
+            class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><b>附加表</b><br>
           <span class="STYLE2" id="help4">频道除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性(推荐、会员权限等)，也可以使用完全以附加表作为存储数据</span>
         </td>
         <td bgcolor="#FFFFFF"><input name="addtable" type="text" id="addtable" value="<?php echo $row['addtable']; ?>"
-            class="pubinputs" />
+            class="pubinputs">
           ( #@__ 是表示数据表前缀)</td>
       </tr>
       <tr>
@@ -173,7 +173,7 @@
         $dsql->Execute();
         while($row3 = $dsql->GetObject())
         {
-          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name." /> ".$row3->name."</label> \r\n";
+          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name."</label> \r\n";
         }
        ?>
        <label><input name="usertype" class="np" type="radio" value=""
@@ -193,45 +193,45 @@
       <tr>
         <td bgcolor="#FFFFFF"><strong>档案发布程序</strong></td>
         <td bgcolor="#FFFFFF"><input name="addcon" type="text" id="addcon" value="<?php echo $row['addcon']; ?>"
-            class="pubinputs" /></td>
+            class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><strong>档案修改程序</strong></td>
         <td bgcolor="#FFFFFF"><input name="editcon" type="text" id="editcon" value="<?php echo $row['editcon']; ?>"
-            class="pubinputs" /></td>
+            class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><strong>档案管理程序</strong></td>
         <td bgcolor="#FFFFFF"><input name="mancon" type="text" id="mancon" value="<?php echo $row['mancon']; ?>"
-            class="pubinputs" /></td>
+            class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><strong>前台会员发布程序</strong></td>
         <td bgcolor="#FFFFFF"><input name="useraddcon" type="text" id="useraddcon"
-            value="<?php echo $row['useraddcon']; ?>" class="pubinputs" /></td>
+            value="<?php echo $row['useraddcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><strong>前台会员修改程序</strong></td>
         <td bgcolor="#FFFFFF"><input name="usereditcon" type="text" id="usereditcon"
-            value="<?php echo $row['usereditcon']; ?>" class="pubinputs" /></td>
+            value="<?php echo $row['usereditcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><strong>前台会员管理程序</strong></td>
         <td bgcolor="#FFFFFF"><input name="usermancon" type="text" id="usermancon"
-            value="<?php echo $row['usermancon']; ?>" class="pubinputs" /></td>
+            value="<?php echo $row['usermancon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><strong>列表附加字段</strong><br>
           <span class="STYLE2" id="help6">用&quot;,&quot;分开，可以在列表模板{dede:list}{/dede:list}中用[field:name /]调用</span></td>
         <td bgcolor="#FFFFFF">
           <input name="listfields" type="text" id="listfields" size="50" value="<?php echo $row['listfields']; ?>"
-            class="pubinputs" style="width:80%;" /> </td>
+            class="pubinputs" style="width:80%"> </td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><b>投稿标题使用名称</b></td>
         <td bgcolor="#FFFFFF">
           <input name="titlename" type="text" id="titlename" value="<?php echo $row['titlename']; ?>"
-            class="pubinputs" /> </td>
+            class="pubinputs"> </td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">
@@ -262,7 +262,7 @@
           <span class="STYLE2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span> </td>
         <td bgcolor="#FFFFFF">
           <input name="dfcid" type="text" id="dfcid" value="<?php echo $row['dfcid']; ?>" class="pubinputs"
-            style="width:80px" /></td>
+            style="width:80px"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF"><b>投稿具有唯一性</b><br>
@@ -411,5 +411,4 @@ if(!empty($openfield))
 }
 ?>
 </body>
-
 </html>

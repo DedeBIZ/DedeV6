@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>修改自定义表单</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
   <script language="javascript" src="js/main.js"></script>
@@ -44,7 +44,7 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px">自定义表单管理</div>
+    <div class="bodytitletxt">自定义表单管理</div>
   </div>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="background:#CFCFCF;">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
@@ -60,8 +60,9 @@
         <td width="170" height="26" align="left" bgcolor="#FFFFFF">自定义表单 diyid：<br>
           <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span> </td>
         <td bgcolor="#FFFFFF">
-          <?php echo $diyid;?>
-          * <img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')" /></td>
+          <?php echo $diyid; ?>
+          <img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')">
+        </td>
       </tr>
       <tr>
         <td height="26" align="left" bgcolor="#F9FCEF">自定义表单名称：<br>
@@ -69,7 +70,7 @@
         <td bgcolor="#F9FCEF">
           <input name="name" type="text" id="name" value="<?php echo $row['name']?>" style="width:180px"
             class='alltxt' />
-          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help3')" />
+          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help3')">
         </td>
       </tr>
       <tr>
@@ -78,7 +79,7 @@
         <td bgcolor="#FFFFFF">
           <input name="table" type="text" id="table" style="width:180px" value="<?php echo $row['table']; ?>"
             class='alltxt' disabled='1' />
-          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')" />
+          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')">
         </td>
       </tr>
       <tr>
@@ -202,5 +203,4 @@ foreach($dtp->CTags as $ctag)
     </form>
   </table>
 </body>
-
 </html>

@@ -17,16 +17,16 @@
     }
   </script>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body background="images/allbg.gif">
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px">积分头衔设置</div>
+    <div class="bodytitletxt">积分头衔设置</div>
   </div>
   <form action="member_scores.php" method="post">
-    <input name="action" type="hidden" value="save" />
+    <input name="action" type="hidden" value="save">
     <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="border:1px solid #CFCFCF;border-bottom:none;">
       <tr bgcolor="#EDF9D5">
         <td width="100%" height="26" background='images/tbg.gif' style="padding-left:10px">
@@ -54,13 +54,13 @@
         </td>
         <td align="left" style="padding:5px;">
           <input name="integral-<?php echo $v['id']?>" type="text" id="integral-<?php echo $v['id']?>"
-            value="<?php echo $v['integral']?>" size="10" /></td>
+            value="<?php echo $v['integral']?>" size="10"></td>
         <td align="left" style="padding:5px;">
           <input name="icon-<?php echo $v['id']?>" type="text" id="icon-<?php echo $v['id']?>"
-            value="<?php echo $v['icon']?>" size="3" /></td>
+            value="<?php echo $v['icon']?>" size="3"></td>
         <td align="left" style="padding:5px;">
           <input name="titles-<?php echo $v['id']?>" type="text" id="titles-<?php echo $v['id']?>"
-            value="<?php echo $v['titles']?>" size="20" /></td>
+            value="<?php echo $v['titles']?>" size="20"></td>
         <td align="left" style="padding:5px;">
           <select name="isdefault-<?php echo $v['id']?>" id="isdefault-<?php echo $v['id']?>">
             <option value="1" <?php if($v['isdefault']) echo " selected='selected'";?>>是</option>
@@ -73,9 +73,9 @@
 		?>
       <tr bgcolor="#F9FCEF">
         <td >新增：</td>
-        <td style="padding:5px;"><input name="add_integral" type="text" id="add_integral" size="10" /></td>
-        <td style="padding:5px;"><input name="add_icon" type="text" id="add_icon" size="3" /></td>
-        <td style="padding:5px;"><input name="add_titles" type="text" id="add_titles" size="20" /></td>
+        <td style="padding:5px;"><input name="add_integral" type="text" id="add_integral" size="10"></td>
+        <td style="padding:5px;"><input name="add_icon" type="text" id="add_icon" size="3"></td>
+        <td style="padding:5px;"><input name="add_titles" type="text" id="add_titles" size="20"></td>
         <td style="padding:5px;">
           <select name="add_isdefault" id="add_isdefault">
             <option value="1">是</option>
@@ -93,5 +93,4 @@
   </form>
 
 </body>
-
 </html>

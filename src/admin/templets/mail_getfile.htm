@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>发送邮件</title>
-<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/base.css">
 <style type="text/css">
 .rb{ border-right:1px solid #98CAEF }
 .tb{ border-top:1px solid #98CAEF }
@@ -13,7 +13,7 @@
 <body>
 <div class="bodytitle">
 	<div class="bodytitleleft"></div>
-	<div class="bodytitletxt" style="padding-left:10px">邮件订阅</div>
+	<div class="bodytitletxt">邮件订阅</div>
 </div>
 <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="background:#cfcfcf;">
   <tr>
@@ -22,12 +22,12 @@
   <tr bgcolor="#ffffff" height="26">
     <td colspan="7" align="left">
     <form method="post" action="mail_getfile.php">
-    <input name="dopost" type="hidden" value="save" />
+    <input name="dopost" type="hidden" value="save">
     <table width="100%" border="0" cellpadding="1" cellspacing="1"  bgcolor="#ffffff">
       <tr>
         <td width="15%" height="30" align="right">条件：</td>
-        <td width="85%" height="26">开始MID<input name="start" type="text" id="start" class="company_manage_form_label" style="width:50px;height:16px;margin-top:5px;margin-left:10px;" />
-          -- 结束MID<input name="end" type="text" id="end" class="company_manage_form_label" style="width:50px;height:16px;margin-top:5px;margin-left:10px;" />(获取全部可以不填写)</td>
+        <td width="85%" height="26">开始MID<input name="start" type="text" id="start" class="company_manage_form_label" style="width:50px;height:16px;margin-top:5px;margin-left:10px">
+          -- 结束MID<input name="end" type="text" id="end" class="company_manage_form_label" style="width:50px;height:16px;margin-top:5px;margin-left:10px">(获取全部可以不填写)</td>
       </tr>
       <tr>
         <td width="15%" height="30" align="right">保存邮件列表的文件名：</td>
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td height="26" align="right" valign="top">&nbsp;</td>
-        <td height="30"><input type="submit" value="提交" class="button01" /></td>
+        <td height="30"><input type="submit" value="提交" class="button01"></td>
       </tr>
     </table>
      </form>

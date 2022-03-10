@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
     <title>联动枚举管理</title>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/base.css">
     <style>
         li {
             float: left;
@@ -237,9 +237,9 @@ if(!empty($egroup))
         <tr bgcolor="#ffffff" height='48'>
             <td>
                 <form action='stepselect_main.php' method='post'>
-                    <INPUT TYPE="hidden" NAME="action" value="addenum_save" />
-                    <INPUT TYPE="hidden" NAME="issign" value="<?php echo $arr['issign']; ?>" />
-                    <INPUT TYPE="hidden" NAME="egroup" value="<?php echo $arr['egroup']; ?>" />
+                    <INPUT TYPE="hidden" NAME="action" value="addenum_save">
+                    <INPUT TYPE="hidden" NAME="issign" value="<?php echo $arr['issign']; ?>">
+                    <INPUT TYPE="hidden" NAME="egroup" value="<?php echo $arr['egroup']; ?>">
                     <div style='float:left;'>
                         <b>&nbsp;隶属分类：</b>
                         <select name='topvalue' style='width:130px' onChange="ChangePage2(this)">
@@ -284,7 +284,7 @@ if(!empty($egroup))
         </tr>
         <form action='stepselect_main.php' name='upenumf' method='post' id="upenumf">
             <input type='hidden' name='action' value='upenum' />
-            <INPUT TYPE="hidden" NAME="aid" value="" />
+            <INPUT TYPE="hidden" NAME="aid" value="">
             <input type='hidden' name='ename' value='' />
             <input type='hidden' name='disorder' value='' />
         </form>
@@ -414,5 +414,4 @@ else
 }
 ?>
 </body>
-
 </html>

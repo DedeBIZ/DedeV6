@@ -13,33 +13,26 @@ if (!defined('DEDEINC')) exit('dedebiz');
 function lib_relation(&$ctag, &$refObj)
 {
     global $dsql;
-
     //属性处理
     $attlist = "row|12,titlelen|28,infolen|150,name|default,orderby|";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     if (get_class($refObj) != "Archives") {
         return "暂无相关内容";
     }
-
     if (empty($refObj->Fields[$name])) {
         return "暂无相关内容";
     }
-
     if (!isset($refObj->ChannelUnit->ChannelFields[$name])) {
         return "暂无相关内容";
     }
-
     if (empty($tablewidth)) $tablewidth = 100;
     if (empty($col)) $col = 1;
     $colWidth = ceil(100 / $col);
     $tablewidth = $tablewidth."%";
     $colWidth = $colWidth."%";
-
     $ids = array();
     $channelid = $refObj->ChannelUnit->ChannelFields[$name]["channel"];
-
     $odb = "";
     if ($channelid > 0) {
         $odb = " ORDER BY arc.sortrank DESC";
@@ -49,7 +42,6 @@ function lib_relation(&$ctag, &$refObj)
     if ($orderby == "click") {
         $odb = " ORDER BY arc.click DESC";
     }
-
     if ($channelid > 0) {
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,
     tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
@@ -64,10 +56,8 @@ function lib_relation(&$ctag, &$refObj)
     FROM `{$maintable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
     where arc.arcrank>-1 AND arc.aid IN (".$refObj->Fields[$name].") $odb";
     }
-
     $innertext = trim($ctag->GetInnerText());
     if ($innertext == '') $innertext = GetSysTemplets('part_arclist.htm');
-
     $dsql->SetQuery($query);
     $dsql->Execute('al');
     $artlist = '';
@@ -96,11 +86,9 @@ function lib_relation(&$ctag, &$refObj)
                 $row['ismake'] = isset($row['ismake']) ? $row['ismake'] : 0;
                 //处理一些特殊字段
                 $row['info'] = $row['infos'] = cn_substr($row['description'], $infolen);
-
                 if ($row['corank'] > 0 && $row['arcrank'] == 0) {
                     $row['arcrank'] = $row['corank'];
                 }
-
                 $row['filename'] = $row['arcurl'] = GetFileUrl(
                     $row['id'],
                     $row['typeid'],
@@ -116,7 +104,6 @@ function lib_relation(&$ctag, &$refObj)
                     $row['siteurl'],
                     $row['sitepath']
                 );
-
                 $row['typeurl'] = GetTypeUrl(
                     $row['typeid'],
                     $row['typedir'],
@@ -128,7 +115,6 @@ function lib_relation(&$ctag, &$refObj)
                     $row['siteurl'],
                     $row['sitepath']
                 );
-
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
                     $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/defaultpic.gif';
                 }
@@ -149,7 +135,6 @@ function lib_relation(&$ctag, &$refObj)
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
-
                 if (is_array($dtp2->CTags)) {
                     foreach ($dtp2->CTags as $k => $ctag) {
                         if ($ctag->GetName() == 'array') {

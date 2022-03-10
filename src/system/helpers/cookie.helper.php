@@ -26,8 +26,6 @@ if (!function_exists('PutCookie')) {
         setcookie($key.'__ckMd5', substr(md5($cfg_cookie_encode.$value), 0, 16), time() + $kptime, $pa, $cfg_domain_cookie);
     }
 }
-
-
 /**
  *  清除Cookie记录
  *
@@ -42,7 +40,6 @@ if (!function_exists('DropCookie')) {
         setcookie($key.'__ckMd5', '', time() - 360000, "/", $cfg_domain_cookie);
     }
 }
-
 /**
  *  获取Cookie记录
  *

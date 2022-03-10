@@ -17,16 +17,11 @@ function plus_memberlist(&$atts, &$refObj, &$fields)
     FillAtts($atts, $attlist);
     FillFields($atts, $fields, $refObj);
     extract($atts, EXTR_OVERWRITE);
-
     $rearray = array();
-
     $wheresql = ' WHERE mb.spacesta > -1 AND mb.matt != 10';
-
     if ($iscommend > 0) $wheresql .= " AND  mb.matt='$iscommend' ";
-
     $sql = "SELECT mb.*,ms.spacename,ms.sign FROM `#@__member` mb
     LEFT JOIN `#@__member_space` ms ON ms.mid = mb.mid $wheresql ORDER BY mb.{$orderby} DESC LIMIT 0,$row ";
-
     $dsql->Execute('mb', $sql);
     while ($row = $dsql->GetArray('mb')) {
         $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/user/index.php?uid='.$row['userid'];

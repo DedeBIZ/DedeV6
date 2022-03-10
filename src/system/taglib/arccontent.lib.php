@@ -23,7 +23,6 @@ function lib_arccontent(&$ctag, &$refObj)
     $aid = $ctag->GetAtt('aid');
     $type = $ctag->GetAtt('type');
     $revalue = "";
-
     if (in_array($type, array("pre", "next")) &&  get_class($refObj) === "Archives") {
         //在内容页面获取上一篇下一篇内容
         $asql = "WHERE id<{$refObj->Fields['id']}";
@@ -31,25 +30,19 @@ function lib_arccontent(&$ctag, &$refObj)
             $asql = "WHERE id>{$refObj->Fields['id']}";
         }
         $row =  $dsql->GetOne("SELECT id,channel FROM `#@__arctiny` $asql AND arcrank>-1 AND typeid='{$refObj->Fields['typeid']}' ORDER BY id DESC");
-
         $channel = new ChannelUnit($row['channel'], $refObj->Fields['id']);
         $fields = $dsql->GetOne("SELECT * FROM `{$channel->ChannelInfos['addtable']}` WHERE aid = {$row['id']}");
     }
-
     if (!empty($aid)) {
         //指定ID获取内容
         $row =  $dsql->GetOne("SELECT id,channel FROM `#@__arctiny` WHERE id={$aid} AND arcrank>-1");
         $channel = new ChannelUnit($row['channel'], $aid);
         $fields = $dsql->GetOne("SELECT * FROM `{$channel->ChannelInfos['addtable']}` WHERE aid = {$row['id']}");
     }
-
-
     $innerText = trim($ctag->GetInnerText());
     $ctp = new DedeTagParse();
     $ctp->SetNameSpace('field', '[', ']');
     $ctp->LoadSource($innerText);
-
-
     if (is_array($ctp->CTags)) {
         foreach ($ctp->CTags as $tagid => $ctag) {
             if (isset($fields[$ctag->GetName()])) {
@@ -58,6 +51,5 @@ function lib_arccontent(&$ctag, &$refObj)
         }
         $revalue .= $ctp->GetResult();
     }
-
     return $revalue;
 }

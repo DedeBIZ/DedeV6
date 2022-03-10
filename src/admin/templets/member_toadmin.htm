@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>提升为管理员</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <script language='javascript' src='../data/enums/area.js'></script>
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script language="javascript" src="../static/js/bootstrap.bundle.js"></script>
@@ -42,9 +42,9 @@
             <td colspan="2" height="10"></td>
           </tr>
           <form name="form2" action="member_toadmin.php" method="post" onSubmit="return checkSubmit();">
-            <input type="hidden" name="dopost" value="toadmin" />
-            <input type="hidden" name="userid" value="<?php echo $row['userid']?>" />
-            <input type="hidden" name="id" value="<?php echo $id?>" />
+            <input type="hidden" name="dopost" value="toadmin">
+            <input type="hidden" name="userid" value="<?php echo $row['userid']?>">
+            <input type="hidden" name="id" value="<?php echo $id?>">
             <tr>
               <td width="17%" align="right" class='bline'>用户名：</td>
               <td width="83%" class='bline' align="left"><?php
@@ -57,12 +57,12 @@
             <tr>
               <td height="30" align="right">用户笔名：</td>
               <td align="left">
-                <input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:200px" /> &nbsp;（发布文章后显示责任编辑的名字）
+                <input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:200px"> &nbsp;（发布文章后显示责任编辑的名字）
               </td>
             </tr>
             <tr>
               <td height="30" align="right">用户密码：</td>
-              <td align="left"><input name="pwd" type="text" id="pwd" size="16" style="width:200px" />
+              <td align="left"><input name="pwd" type="text" id="pwd" size="16" style="width:200px">
                 &nbsp;（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符） </td>
             </tr>
             <tr>
@@ -89,18 +89,18 @@
             </tr>
             <tr>
               <td height="30" align="right">真实姓名：</td>
-              <td align="left"><input name="tname" type="text" id="tname" size="16" style="width:200px" value="" />
+              <td align="left"><input name="tname" type="text" id="tname" size="16" style="width:200px" value="">
                 &nbsp;</td>
             </tr>
             <tr>
               <td height="30" align="right">电子邮箱：</td>
-              <td align="left"><input name="email" type="text" id="email" size="16" style="width:200px" value="<?php echo $row['email']?>" />
+              <td align="left"><input name="email" type="text" id="email" size="16" style="width:200px" value="<?php echo $row['email']?>">
                 &nbsp;</td>
             </tr>
             <tr>
               <td height="30" align="right">安全验证串：</td>
-              <td align="left"><input name="safecode" type="text" id="safecode" size="16" style="width:200px" />
-                <input name="randcode" type="hidden" value="<?php echo $randcode; ?>" />
+              <td align="left"><input name="safecode" type="text" id="safecode" size="16" style="width:200px">
+                <input name="randcode" type="hidden" value="<?php echo $randcode; ?>">
                 &nbsp;
                 (复制本代码：<span style='color:#e74d58'><?php echo $safecode;  ?></span> ) </td>
             </tr>
@@ -119,5 +119,4 @@
     </tr>
   </table>
 </body>
-
 </html>

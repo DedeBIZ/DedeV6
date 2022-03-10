@@ -22,47 +22,37 @@ if (!function_exists('GetOneArchive')) {
         include_once(DEDEINC."/channelunit.func.php");
         $aid = trim(preg_replace('/[^0-9]/', '', $aid));
         $reArr = array();
-
         $chRow = $dsql->GetOne("SELECT arc.*,ch.maintable,ch.addtable,ch.issystem FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ");
-
         if (!is_array($chRow)) {
             return $reArr;
         } else {
             if (empty($chRow['maintable'])) $chRow['maintable'] = '#@__archives';
         }
-
         if ($chRow['issystem'] != -1) {
             $nquery = " SELECT arc.*,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath
-                        FROM `{$chRow['maintable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-                        WHERE arc.id='$aid' ";
+            FROM `{$chRow['maintable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
+            WHERE arc.id='$aid' ";
         } else {
             $nquery = " SELECT arc.*,1 AS ismake,0 AS money,'' AS filename,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath
-                        FROM `{$chRow['addtable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-                        WHERE arc.aid='$aid' ";
+            FROM `{$chRow['addtable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
+            WHERE arc.aid='$aid' ";
         }
-
         $arcRow = $dsql->GetOne($nquery);
-
         if (!is_array($arcRow)) {
             return $reArr;
         }
-
         if (!isset($arcRow['description'])) {
             $arcRow['description'] = '';
         }
-
         if (empty($arcRow['description']) && isset($arcRow['body'])) {
             $arcRow['description'] = cn_substr(html2text($arcRow['body']), 250);
         }
-
         if (!isset($arcRow['pubdate'])) {
             $arcRow['pubdate'] = $arcRow['senddate'];
         }
-
         if (!isset($arcRow['notpost'])) {
             $arcRow['notpost'] = 0;
         }
-
         $reArr = $arcRow;
         $reArr['aid']    = $aid;
         $reArr['topid']  = $arcRow['topid'];
@@ -85,8 +75,6 @@ if (!function_exists('GetOneArchive')) {
         return $reArr;
     }
 }
-
-
 /**
  *  获取模型的表信息
  *
@@ -109,7 +97,6 @@ if (!function_exists('GetChannelTable')) {
         return $row;
     }
 }
-
 /**
  *  获得某文档的所有tag
  *
@@ -129,7 +116,6 @@ if (!function_exists('GetTags')) {
         return $tags;
     }
 }
-
 /**
  *  获取一个微表的索引键
  *
@@ -152,15 +138,13 @@ if (!function_exists('GetIndexKey')) {
         $typeid2 = intval($typeid2);
         $senddate = intval($senddate);
         $iquery = "
-          INSERT INTO `#@__arctiny` (`arcrank`,`typeid`,`typeid2`,`channel`,`senddate`, `sortrank`, `mid`)
-          VALUES ('$arcrank','$typeid','$typeid2' , '$channelid','$senddate', '$sortrank', '$mid') ";
+            INSERT INTO `#@__arctiny` (`arcrank`,`typeid`,`typeid2`,`channel`,`senddate`, `sortrank`, `mid`)
+            VALUES ('$arcrank','$typeid','$typeid2' , '$channelid','$senddate', '$sortrank', '$mid') ";
         $dsql->ExecuteNoneQuery($iquery);
         $aid = $dsql->GetLastID();
         return $aid;
     }
 }
-
-
 /**
  *  更新微表key及Tag
  *
@@ -180,10 +164,7 @@ if (!function_exists('UpIndexKey')) {
         $addtime = time();
         $query = " UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank' WHERE id = '$id' ";
         $dsql->ExecuteNoneQuery($query);
-
-        /*
-        * 处理修改后的Tag
-        */
+        //处理修改后的Tag
         if ($tags != '') {
             $oldtag = GetTags($id);
             $oldtags = explode(',', $oldtag);
@@ -208,8 +189,6 @@ if (!function_exists('UpIndexKey')) {
         }
     }
 }
-
-
 /**
  *  插入Tags
  *
@@ -231,8 +210,6 @@ if (!function_exists('InsertTags')) {
         }
     }
 }
-
-
 /**
  *  插入一个tag
  *

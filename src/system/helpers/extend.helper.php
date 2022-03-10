@@ -21,8 +21,6 @@ if (!function_exists('ParCv')) {
         return chr($n);
     }
 }
-
-
 /**
  *  显示一个错误
  *
@@ -35,7 +33,6 @@ if (!function_exists('ParamError')) {
         exit();
     }
 }
-
 /**
  *  默认属性
  *
@@ -49,8 +46,6 @@ if (!function_exists('AttDef')) {
         return empty($oldvar) ? $nv : $oldvar;
     }
 }
-
-
 /**
  *  返回Ajax头信息
  *
@@ -64,7 +59,6 @@ if (!function_exists('AjaxHead')) {
         @header("Expires:0\r\n");
     }
 }
-
 /**
  *  去除html和php标记
  *

@@ -12,7 +12,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/channelunit.func.php");
-
 @set_time_limit(0);
 /**
  * RSS视图类
@@ -30,7 +29,6 @@ class RssView
     var $MaxRow;
     var $dtp;
     var $remoteDir;
-
     /**
      *  php5构造函数
      *
@@ -61,18 +59,15 @@ class RssView
         }
         $this->ParseTemplet();
     }
-
     //php4构造函数
     function RssView($typeid, $max_row = 50)
     {
         $this->__construct($typeid, $max_row);
     }
-
     //关闭相关资源
     function Close()
     {
     }
-
     /**
      *  显示列表
      *
@@ -83,7 +78,6 @@ class RssView
     {
         $this->dtp->Display();
     }
-
     /**
      *  开始创建列表
      *
@@ -98,7 +92,6 @@ class RssView
         $this->dtp->SaveTo($mfile);
         return $murl;
     }
-
     /**
      *  解析模板
      *
@@ -118,7 +111,6 @@ class RssView
             }
         }
     }
-
     /**
      *  获得文档列表
      *

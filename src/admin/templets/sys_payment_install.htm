@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>安装支付接口</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <style>
   .npvar {
@@ -29,7 +29,7 @@
               <input type='hidden' name='dopost' value='config'>
               <tr>
                 <td height="26" align="center">支付名称：</td>
-                <td width="85%"><input name="pay_name" type="text" class='iptxt' id="pay_name" value="<?php echo $row['name'];?>" size="30" /></td>
+                <td width="85%"><input name="pay_name" type="text" class='iptxt' id="pay_name" value="<?php echo $row['name'];?>" size="30"></td>
               </tr>
               <tr>
                 <td width="15%" height="108" align="center">支付描述：</td>
@@ -39,7 +39,7 @@
               <?php echo $reval ?>
               <tr>
                 <td height="26" align="center">手续费：</td>
-                <td><input name="pay_fee" type="text" class='iptxt' id="pay_fee" size="10" value="<?php echo $row['fee'];?>" /> 元</td>
+                <td><input name="pay_fee" type="text" class='iptxt' id="pay_fee" size="10" value="<?php echo $row['fee'];?>"> 元</td>
               </tr>
               <tr>
                 <td height="26" align="center">货到付款：</td>
@@ -62,5 +62,4 @@
     </table>
   </center>
 </body>
-
 </html>

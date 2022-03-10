@@ -6,8 +6,8 @@
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script language="javascript" src="js/main.js"></script>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <style type="text/css">
     .STYLE1 {
       color: #FF0000
@@ -27,7 +27,7 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px">自定义搜索管理</div>
+    <div class="bodytitletxt">自定义搜索管理</div>
   </div>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="background:#CFCFCF;">
     <form name="form1" action="mychannel_edit.php" method="post" target="stafrm">
@@ -79,7 +79,7 @@
         <td align="left" bgcolor="#FFFFFF">自定义搜索结果页模板<br>
           <span class="STYLE2" id="help5" style="display: none;">只填写文件名，且文件必须在templets/default目录中 </span></td>
         <td bgcolor="#FFFFFF">
-          <input type="text" name="template" value="<?php echo $template;?>" style="width:200px" />
+          <input type="text" name="template" value="<?php echo $template;?>" style="width:200px">
         </td>
       </tr>
       <tr bgcolor="#ffffff">
@@ -125,5 +125,4 @@
     </tr>
   </table>
 </body>
-
 </html>

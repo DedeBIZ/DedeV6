@@ -4,10 +4,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>采集内容管理</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <script language="javascript">
-
     //获得选中文件的文件名
     function getCheckboxItem() {
       var allSel = "";
@@ -22,14 +21,12 @@
       }
       return allSel;
     }
-
     function ReSel() {
       for (i = 0; i < document.form1.logs.length; i++) {
         if (document.form1.logs[i].checked) document.form1.logs[i].checked = false;
         else document.form1.logs[i].checked = true;
       }
     }
-
     function DelSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
@@ -38,11 +35,9 @@
       }
       location.href = "log_edit.php?dopost=del&ids=" + nid;
     }
-
     function ClearLog() {
       location.href = "log_edit.php?dopost=clear";
     }
-
   </script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
@@ -69,7 +64,7 @@
                   <?php echo $adminlist?>
                 </select>
                 IP地址：
-                <input name="cip" type="text" id="cip" size="15" style="width:100px" />
+                <input name="cip" type="text" id="cip" size="15" style="width:100px">
                 时间：
                 <select name="dtime" id="dtime">
                   <option value="0" selected>--全部--</option>
@@ -105,7 +100,7 @@
           {dede:field.userid/}
         </td>
         <td>
-          <input class="np" type="text" value="{dede:field.filename/}" name="t0" style="width:100px" />
+          <input class="np" type="text" value="{dede:field.filename/}" name="t0" style="width:100px">
         </td>
         <td>
           {dede:field.method/}
@@ -117,7 +112,7 @@
           {dede:field.dtime function="MyDate('y/m/d H:i:s',@me)" /}
         </td>
         <td>
-          <input class="np" type="text" value="{dede:field.query/}" name="t1" style="width:280px" />
+          <input class="np" type="text" value="{dede:field.query/}" name="t1" style="width:280px">
         </td>
       </tr>
       {/dede:datalist}
@@ -136,5 +131,4 @@
     </tr>
   </table>
 </body>
-
 </html>

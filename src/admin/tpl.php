@@ -10,9 +10,7 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('plus_文件管理器');
-
 $action = isset($action) ? trim($action) : '';
-
 if (empty($acdir)) $acdir = $cfg_df_style;
 $templetdir = $cfg_basedir.$cfg_templets_dir;
 $templetdird = $templetdir.'/'.$acdir;
@@ -35,7 +33,6 @@ if ($action == 'edit' || $action == 'newfile') {
     if (!file_exists($templetdird.'/'.$filename)  && $action == 'edit') {
         $action = 'newfile';
     }
-
     //读取文件内容
     //$content = dede_htmlspecialchars(trim(file_get_contents($truePath.$filename)));
     if ($action == 'edit') {
@@ -50,7 +47,6 @@ if ($action == 'edit' || $action == 'newfile') {
         if (empty($filename)) $filename = 'newtpl.htm';
         $content = '';
     }
-
     //获取标签帮助信息
     $helps = $dtags = array();
     $tagHelpDir = DEDEINC.'/taglib/help/';
@@ -183,19 +179,13 @@ if(!defined('DEDEINC'))
 function lib_demotag(&\$ctag,&\$refObj)
 {
     global \$dsql,\$envs;
-    
     //属性处理
     \$attlist=\"row|12,titlelen|24\";
     FillAttsDefault(\$ctag->CAttribute->Items,\$attlist);
     extract(\$ctag->CAttribute->Items, EXTR_SKIP);
     \$revalue = '';
-    
     //您需编写的代码，不能用echo之类语法，把最终返回值传给\$revalue
-    //------------------------------------------------------
-    
     \$revalue = 'Hello Word!';
-    
-    //------------------------------------------------------
     return \$revalue;
 }
 ?".'>';

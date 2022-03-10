@@ -13,17 +13,14 @@ require_once(DEDEINC.'/channelunit.func.php');
 function plus_channel(&$atts, &$refObj, &$fields)
 {
     global $dsql, $_vars;
-
     $attlist = "typeid=0,reid=0,row=100,type=son,currentstyle=";
     FillAtts($atts, $attlist);
     FillFields($atts, $fields, $refObj);
     extract($atts, EXTR_OVERWRITE);
-
     $line = empty($row) ? 100 : $row;
     $reArray = array();
     $reid = 0;
     $topid = 0;
-
     //如果属性里没指定栏目id，从引用类里获取栏目信息
     if (empty($typeid)) {
         if (isset($refObj->TypeLink->TypeInfos['id'])) {
@@ -42,9 +39,7 @@ function plus_channel(&$atts, &$refObj, &$fields)
         $topid = $row2['topid'];
         $issetInfos = true;
     }
-
     if ($type == '' || $type == 'sun') $type = 'son';
-
     if ($type == 'top') {
         $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
           FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
@@ -57,15 +52,11 @@ function plus_channel(&$atts, &$refObj, &$fields)
         $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
             FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
     }
-
     //检查是否有子栏目，并返回rel提示（用于二级菜单）
     $needRel = true;
-
     if (empty($sql)) return $reArray;
-
     $dsql->Execute('me', $sql);
     $totalRow = $dsql->GetTotalRow('me');
-
     //如果用子栏目模式，当没有子栏目时显示同级栏目
     if ($type == 'son' && $reid != 0 && $totalRow == 0) {
         $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath

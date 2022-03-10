@@ -140,9 +140,7 @@ function tb_show(caption, url, refParent)
                         $("#TB_load").remove();
                         $("#TB_window").css({display:"block"});
                     }
-            }
-            else
-            {
+            } else {
                     $("#TB_ajaxContent").load(url += "&random=" + (new Date().getTime()),function(){//to do a post change this load method
                         tb_position();
                         $("#TB_load").remove();

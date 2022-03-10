@@ -3,8 +3,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>更新标签</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center" class="table maintable table-bordered mt-3">
@@ -24,25 +24,24 @@
       <tr>
         <td width="300" valign="top" bgcolor="#FFFFFF">选择标签：</td>
         <td width="377" valign="top" bgcolor="#FFFFFF">
-          <?php
-       $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); //取一个平均
-       $dd['tt'] = ($dd['tt'] > 5)? $dd['tt'] : 0;
-       $sql="select * from #@__tagindex where total > {$dd['tt']} order by tag asc"; 
-       $dsql->Execute('al',$sql);
-     echo "<select name='tagid' style='width:300px'>\r\n";
-      if($tid == 0) echo "<option value='0' selected='1'>更新所有标签</option>\r\n";
-       while($row=$dsql->GetObject('al')){     
-        if($tid > 0 && $tid == $row->id) echo "<option value='".$row->id."' selected='1'>".$row->tag."</option>";
-        else echo "<option value='".$row->id."'>".$row->tag."</option>";
-	   }
-       echo "</select>";
-		?>
+        <?php
+        $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); //取一个平均
+        $dd['tt'] = ($dd['tt'] > 5)? $dd['tt'] : 0;
+        $sql="select * from #@__tagindex where total > {$dd['tt']} order by tag asc"; 
+        $dsql->Execute('al',$sql);
+        echo "<select name='tagid' style='width:300px'>\r\n";
+        if($tid == 0) echo "<option value='0' selected='1'>更新所有标签</option>\r\n";
+        while($row=$dsql->GetObject('al')){     
+          if($tid > 0 && $tid == $row->id) echo "<option value='".$row->id."' selected='1'>".$row->tag."</option>";
+          else echo "<option value='".$row->id."'>".$row->tag."</option>";
+	       }
+        echo "</select>";
+		    ?>
         </td>
       </tr>
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">每次最大创建页数：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10">
-          个文件 </td>
+        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10"> 个文件</td>
       </tr>
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">说明：</td>

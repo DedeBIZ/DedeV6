@@ -36,7 +36,6 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
             $maxwidth = $cfg_album_width;
         }
     }
-
     //遍历图片信息
     $mrow = 0;
     $mcol = 0;
@@ -45,7 +44,6 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
     if (trim($innerTmp) == '') {
         $innerTmp = GetSysTemplets("channel_article_image.htm");
     }
-
     if ($pagestyle == 1) {
         $pagesize = $pagepicnum;
     } else if ($pagestyle == 2) {
@@ -53,7 +51,6 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
     } else {
         $pagesize = $irow * $icol;
     }
-
     if (is_object($arcTag) && $arcTag->GetAtt('pagesize') > 0) {
         $pagesize = $arcTag->GetAtt('pagesize');
     }

@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>增加商品</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script language="javascript" src="../static/js/webajax.js"></script>
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
@@ -69,9 +69,9 @@ table{border-collapse:separate}
     </tr>
   </table>
   <form name="form1" action="archives_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit()">
-    <input type="hidden" name="channelid" value="<?php echo $channelid?>" />
-    <input type="hidden" name="cid" value="<?php echo $cid?>" />
-    <input type="hidden" name="dopost" value="save" />
+    <input type="hidden" name="channelid" value="<?php echo $channelid?>">
+    <input type="hidden" name="cid" value="<?php echo $cid?>">
+    <input type="hidden" name="dopost" value="save">
     <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
     <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #cfcfcf;background:#ffffff;">
       <tr>
@@ -113,7 +113,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;跳转网址：</td>
-              <td><input name="redirecturl" type="text" id="redirecturl" style="width:300px" value="" /></td>
+              <td><input name="redirecturl" type="text" id="redirecturl" style="width:300px" value=""></td>
             </tr>
           </table>
         </td>
@@ -123,9 +123,9 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;Tag标签：</td>
-              <td><input name="tags" type="text" id="tags" value="" style="width:300px" />(','号分开，单个标签小于12字节)</td>
+              <td><input name="tags" type="text" id="tags" value="" style="width:300px">(','号分开，单个标签小于12字节)</td>
               <td width="50">权重：</td>
-              <td><input name="weight" type="text" id="weight" style="width:50px" value="<?php echo $maxWright['cc'];?>" />(越小越靠前)</td>
+              <td><input name="weight" type="text" id="weight" style="width:50px" value="<?php echo $maxWright['cc'];?>">(越小越靠前)</td>
             </tr>
           </table>
         </td>
@@ -139,7 +139,7 @@ table{border-collapse:separate}
                 <table width="100%" border="0" cellspacing="1" cellpadding="1">
                   <tr>
                     <td height="30">
-                      <input name="picname" type="text" id="picname" style="width:240px" />
+                      <input name="picname" type="text" id="picname" style="width:240px">
                       <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' />&nbsp;远程</label>
                       <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                       <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class='btn btn-success btn-sm'>选择图片</button>
@@ -330,7 +330,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键字：</td>
-              <td width="450"><input type='text' name="keywords" id="keywords" style="width:80%" value="" /></td>
+              <td width="450"><input type='text' name="keywords" id="keywords" style="width:80%" value=""></td>
               <td width="260"><label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>
                 自动获取，手动填写用","分开</label><br>
                 <button type="button" name="Submit" value=""  class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
@@ -355,7 +355,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="120">&nbsp;自定义文件名：</td>
-              <td width="450"><input type="text" name="filename" id="filename" />（不包括后缀名如.html等）</td>
+              <td width="450"><input type="text" name="filename" id="filename">（不包括后缀名如.html等）</td>
               <td width="260">&nbsp;</td>
             </tr>
           </table>

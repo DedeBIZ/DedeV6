@@ -40,8 +40,8 @@
     }
   </script>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body topmargin="8">
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
@@ -59,7 +59,7 @@
           <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span>
         </td>
         <td width="65%" bgcolor="#FFFFFF">
-          <input name="id" type="text" id="id" size="10" value="<?php echo $newid; ?>" class="pubinputs" /> *
+          <input name="id" type="text" id="id" size="10" value="<?php echo $newid; ?>" class="pubinputs"> *
         </td>
       </tr>
       <tr>
@@ -69,7 +69,7 @@
             “default/article_名字标识.htm”，列表模板、封面模板类推 </span>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="nid" type="text" id="nid" value="ch<?php echo $newid; ?>" class="pubinputs" /> *
+          <input name="nid" type="text" id="nid" value="ch<?php echo $newid; ?>" class="pubinputs"> *
         </td>
       </tr>
       <tr>
@@ -78,7 +78,7 @@
           <span class="STYLE2" id="help3">频道的中文名称，在后台管理，前台发布等均使用此名字</span>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="typename" type="text" id="typename" value="频道<?php echo $newid; ?>" class="pubinputs" /> *
+          <input name="typename" type="text" id="typename" value="频道<?php echo $newid; ?>" class="pubinputs"> *
         </td>
       </tr>
       <tr>
@@ -88,9 +88,9 @@
         </td>
         <td bgcolor="#FFFFFF">
           <input name="addtable" type="text" id="addtable" value="<?php echo $cfg_dbprefix,'addon',$newid; ?>"
-            class="pubinputs" />
+            class="pubinputs">
           必须由英文、数字、下划线组成 *
-          <label><input name="isdel" type="checkbox" class="np" id="isdel" value="1" />
+          <label><input name="isdel" type="checkbox" class="np" id="isdel" value="1">
           删除已有表</label>
         </td>
       </tr>
@@ -102,9 +102,9 @@
         <td bgcolor="#FFFFFF">
           <label><input type="radio" name="issystem" id='is1' class="np" value="0" onClick="PublicDefault()" checked='1' />
            自动模型 </label>
-          <label><input type="radio" name="issystem" id='is2' value="1" onClick="PublicDefault()" class="np" />
+          <label><input type="radio" name="issystem" id='is2' value="1" onClick="PublicDefault()" class="np">
            系统模型 </label>
-          <label><input type="radio" name="issystem" id='is3' value="-1" onClick="PublicDefault()" class="np" />
+          <label><input type="radio" name="issystem" id='is3' value="-1" onClick="PublicDefault()" class="np">
            独立模型(不使用主表) </label>
         </td>
       </tr>
@@ -115,7 +115,7 @@
         <td bgcolor="#FFFFFF">
           <label><input name="issend" type="radio" class="np" value="0" checked='1' />
           不支持 </label>
-          <label><input type="radio" name="issend" class="np" value="1" />
+          <label><input type="radio" name="issend" class="np" value="1">
           支持 </label>
         </td>
       </tr>
@@ -148,7 +148,7 @@
         $dsql->Execute();
         while($row3 = $dsql->GetObject())
         {
-          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name." /> ".$row3->name." </label>\r\n";
+          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name." </label>\r\n";
         }
        ?>
        <label><input name="usertype" class="np" type="radio" value="" checked='1' />
@@ -162,16 +162,16 @@
         <td bgcolor="#FFFFFF">
           <label><input name="arcsta" class="np" type="radio" value="-1" checked='1' />
           未审核 </label>
-          <label><input name="arcsta" class="np" type="radio" value="0" />
+          <label><input name="arcsta" class="np" type="radio" value="0">
           已审核（自动生成HTML）</label>
-          <label><input name="arcsta" class="np" type="radio" value="1" />
+          <label><input name="arcsta" class="np" type="radio" value="1">
           已审核（仅使用动态文档）</label></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">
           <b>投稿标题使用名称</b></td>
         <td bgcolor="#FFFFFF">
-          <input name="titlename" type="text" id="titlename" value="标题" class="pubinputs" />
+          <input name="titlename" type="text" id="titlename" value="标题" class="pubinputs">
         </td>
       </tr>
       <tr>
@@ -181,7 +181,7 @@
         <td bgcolor="#FFFFFF">
           <label><input name="needdes" type="radio" class="np" value="1" checked='1' />
           使用 </label>
-          <label><input name="needdes" type="radio" class="np" value="0" />
+          <label><input name="needdes" type="radio" class="np" value="0">
           不使用 </label>
         </td>
       </tr>
@@ -192,7 +192,7 @@
         <td bgcolor="#FFFFFF">
           <label><input name="needpic" type="radio" class="np" value="1" checked='1' />
           使用 </label>
-          <label><input name="needpic" type="radio" class="np" value="0" />
+          <label><input name="needpic" type="radio" class="np" value="0">
           不使用 </label>
         </td>
       </tr>
@@ -202,7 +202,7 @@
           <span class="STYLE2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="dfcid" type="text" id="dfcid" value="0" class="pubinputs" style="width:80px;" /></td>
+          <input name="dfcid" type="text" id="dfcid" value="0" class="pubinputs" style="width:80px"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">
@@ -210,7 +210,7 @@
           <span class="STYLE2" id="help9">如果投稿是唯一的(会员只能在这个模型对应的栏目中发布单篇文档)，其作用相当于自定义表单</span>
         </td>
         <td bgcolor="#FFFFFF">
-          <label><input name="onlyone" type="radio" class="np" value="1" />
+          <label><input name="onlyone" type="radio" class="np" value="1">
           是 </label>
           <label><input name="onlyone" type="radio" class="np" value="0" checked='1' />
           不是 </label>
@@ -221,7 +221,7 @@
           <b>档案发布程序</b>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="addcon" type="text" id="addcon" value="archives_add.php" class="pubinputs" />
+          <input name="addcon" type="text" id="addcon" value="archives_add.php" class="pubinputs">
           *
         </td>
       </tr>
@@ -230,7 +230,7 @@
           <b>档案修改程序</b>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="editcon" type="text" id="editcon" value="archives_edit.php" class="pubinputs" />
+          <input name="editcon" type="text" id="editcon" value="archives_edit.php" class="pubinputs">
           *
         </td>
       </tr>
@@ -239,7 +239,7 @@
           <b>档案管理程序</b>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="mancon" type="text" id="mancon" value="content_list.php" class="pubinputs" />
+          <input name="mancon" type="text" id="mancon" value="content_list.php" class="pubinputs">
           *
         </td>
       </tr>
@@ -248,7 +248,7 @@
           <b>前台会员发布程序</b>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="useraddcon" type="text" id="useraddcon" value="archives_add.php" class="pubinputs" />
+          <input name="useraddcon" type="text" id="useraddcon" value="archives_add.php" class="pubinputs">
         </td>
       </tr>
       <tr>
@@ -256,7 +256,7 @@
           <b>前台会员修改程序</b>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="usereditcon" type="text" id="usereditcon" value="archives_edit.php" class="pubinputs" />
+          <input name="usereditcon" type="text" id="usereditcon" value="archives_edit.php" class="pubinputs">
         </td>
       </tr>
       <tr>
@@ -264,7 +264,7 @@
           <b>前台会员管理程序</b>
         </td>
         <td bgcolor="#FFFFFF">
-          <input name="usermancon" type="text" id="usermancon" value="content_list.php" class="pubinputs" />
+          <input name="usermancon" type="text" id="usermancon" value="content_list.php" class="pubinputs">
         </td>
       </tr>
       <tr bgcolor="#F9FCEF">
@@ -285,5 +285,4 @@
     </form>
   </table>
 </body>
-
 </html>

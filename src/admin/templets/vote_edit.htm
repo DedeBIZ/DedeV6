@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>投票管理</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script language="javascript" src="../static/js/bootstrap.bundle.js"></script>
@@ -54,7 +54,7 @@
         <form name="form1" method="post" action="vote_edit.php">
           <input type="hidden" name="dopost" value="saveedit">
           <input type="hidden" name="aid" value="<?php echo $aid?>">
-          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
+          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
           <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
             <tr>
               <td width="15%" align="center">投票名称：</td>
@@ -134,5 +134,4 @@
     </tr>
   </table>
 </body>
-
 </html>

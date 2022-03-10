@@ -4,9 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>标签源码碎片管理</title>
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/base.css">
-<link rel="stylesheet" type="text/css" href="css/codemirror.css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/codemirror.css">
 <script language="javascript" src="../static/js/jquery.js"></script>
 <script src="../static/js/bootstrap.bundle.js"></script>
 <script language="javascript" src="js/main.js"></script>
@@ -52,9 +52,9 @@ function Post()
   </tr>
 </table>
 <form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
-<input type="hidden" name="actiondo" value="<?php echo $action; ?>" />
-<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
-<input type="hidden" name="action" value="savetagfile" />
+<input type="hidden" name="actiondo" value="<?php echo $action; ?>">
+<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+<input type="hidden" name="action" value="savetagfile">
 	<table width='98%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf' align="center" class="table maintable table-bordered mt-3">
 		<tr bgcolor='#EEF4EA'>
 			<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px">

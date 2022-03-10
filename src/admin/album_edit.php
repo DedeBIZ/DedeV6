@@ -166,9 +166,7 @@ else if ($dopost == 'save') {
     }
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$row' col='$col' value='$pagestyle'/}\r\n";
     $hasone = false;
-    //----------------------------------------
     //检查旧的图片是否有更新，并保存
-    //-----------------------------------------
     for ($i = 1; $i <= 120; $i++) {
         if (!isset(${'imgurl'.$i})) continue;
         $info = '';
@@ -221,9 +219,7 @@ else if ($dopost == 'save') {
             $imgurls .= "{dede:img ddimg='$ddurl' text='$iinfo' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
         }
     }
-    //----------------------------
     //从HTML中获取新图片
-    //----------------------------
     if ($formhtml == 1 && !empty($imagebody)) {
         $imagebody = stripslashes($imagebody);
         $imgurls .= GetCurContentAlbum($imagebody, $copysource, $litpicname);

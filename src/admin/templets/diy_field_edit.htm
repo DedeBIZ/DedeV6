@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>修改字段</title>
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css">
 <script language="javascript" src="../static/js/jquery.js"></script>
 <script src="../static/js/bootstrap.bundle.js"></script>
 <script language='javascript' src="js/main.js"></script>
@@ -134,7 +134,7 @@ td{ padding:2px; padding-left:6px; }
       <td bgcolor="#FFFFFF"><strong>内容是否需要分页符：</strong><br>
         <span class="STYLE2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td bgcolor="#FFFFFF">
-      	<input name="isnull" type="hidden" value="1" />
+      	<input name="isnull" type="hidden" value="1">
         <label><input name="spage" type="radio"  value="split"<?php  if($ctag->GetAtt('page')=='split') echo " checked='1' "; ?> class='np' />
         是 &nbsp; </label>
         <label><input name="spage" type="radio"  value="no"<?php  if($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo " checked='1' "; ?> class='np' />

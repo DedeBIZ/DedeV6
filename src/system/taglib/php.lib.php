@@ -15,7 +15,7 @@ function lib_php(&$ctag, &$refObj)
     global $db;
     $phpcode = trim($ctag->GetInnerText());
     if ($phpcode == '')
-        return '';
+    return '';
     ob_start();
     extract($GLOBALS, EXTR_SKIP);
     @eval($phpcode);

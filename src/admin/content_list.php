@@ -42,36 +42,28 @@ $adminid = $cuserLogin->getUserID();
 $maintable = '#@__archives';
 setcookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
 $tl = new TypeLink($cid);
-//----------------------------------------
 //在不指定排序条件和关键字的情况下直接统计微表
-//----------------------------------------
 if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
     $tinyQuerys = array();
-
     if (!empty($userCatalogSql)) {
         $tinyQuerys[] = str_replace('arc.', '', $userCatalogSql);
     }
-
     if (!empty($channelid) && empty($cid)) {
         $tinyQuerys[] = " channel = '$channelid' ";
     } else {
         $tinyQuerys[] = " channel>0 ";
     }
-
     if (!empty($arcrank)) {
         $tinyQuerys[] = " arcrank='$arcrank' ";
     } else {
         $tinyQuerys[] = " arcrank > -2 ";
     }
-
     if (!empty($mid)) {
         $tinyQuerys[] = " mid='$mid' ";
     }
-
     if (!empty($cid)) {
         $tinyQuerys[] = " typeid in(".GetSonIds($cid).") ";
     }
-
     if (count($tinyQuerys) > 0) {
         $tinyQuery = "WHERE ".join(' AND ', $tinyQuerys);
     }

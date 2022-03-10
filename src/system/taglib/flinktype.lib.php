@@ -16,19 +16,15 @@ function lib_flinktype(&$ctag, &$refObj)
     $attlist = "row|24,titlelen|24";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     $totalrow = $row;
     $revalue = '';
-
     $equery = "SELECT * FROM `#@__flinktype` order by id asc limit 0,$totalrow";
-
     if (trim($ctag->GetInnerText()) == '') $innertext = "<li>[field:typename /]</li>";
     else $innertext = $ctag->GetInnerText();
     if (!isset($type)) $type = '';
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("dede", "{", "}");
     $dtp->LoadString($innertext);
-
     $dsql->SetQuery($equery);
     $dsql->Execute();
     $rs = '';
@@ -40,7 +36,6 @@ function lib_flinktype(&$ctag, &$refObj)
     $DedeBIZ->id = 999;
     $DedeBIZ->typename = '织梦链';
     if ($type == 'DedeBIZ') $row[] = $DedeBIZ;
-
     foreach ($row as $key => $value) {
         if (is_array($dtp->CTags)) {
             $GLOBALS['envs']['flinkid'] = $value->id;

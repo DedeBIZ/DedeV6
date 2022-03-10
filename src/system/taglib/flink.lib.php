@@ -22,9 +22,7 @@ function lib_flink(&$ctag, &$refObj)
     if (isset($GLOBALS['envs']['flinkid'])) {
         $typeid = $GLOBALS['envs']['flinkid'];
     }
-
     $wsql = " where ischeck >= '$linktype' ";
-
     if ($typeid == 0) {
         $wsql .= '';
     } else {
@@ -35,15 +33,11 @@ function lib_flink(&$ctag, &$refObj)
     } else if ($type == 'text') {
         $wsql .= " And logo='' ";
     }
-
     $equery = "SELECT * FROM `#@__flink` $wsql order by sortrank asc limit 0,$totalrow";
-
     if (trim($ctag->GetInnerText()) == '') $innertext = "[field:link /] ";
     else $innertext = $ctag->GetInnerText();
-
     $dsql->SetQuery($equery);
     $dsql->Execute();
-
     while ($dbrow = $dsql->GetObject()) {
         if ($type == 'text' || $type == 'textall') {
             $link = "<a href='".$dbrow->url."' target='_blank'>".cn_substr($dbrow->webname, $titlelen)."</a> ";

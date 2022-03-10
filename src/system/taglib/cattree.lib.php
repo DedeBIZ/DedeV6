@@ -19,7 +19,6 @@ function lib_cattree(&$ctag, &$refObj)
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';
-
     if (empty($typeid)) {
         if (isset($refObj->TypeLink->TypeInfos['id'])) {
             $typeid = $refObj->TypeLink->TypeInfos['id'];
@@ -65,7 +64,6 @@ function lib_cattree(&$ctag, &$refObj)
     }
     return $revalue;
 }
-
 function cattreeListSon($id, &$revalue)
 {
     global $dsql;

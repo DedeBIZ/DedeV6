@@ -9,8 +9,8 @@
     }
   </style>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body>
   <table width="98%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#cfcfcf" class="table maintable table-bordered mt-3">
@@ -21,9 +21,9 @@
     <tr>
       <td height="187" colspan="2" align="center" bgcolor="#FFFFFF">
         <form name="form1" method="post" action="feedback_edit.php">
-          <input type="hidden" name="dopost" value="edit" />
-          <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
-          <table width="100%" border="0" cellpadding="3" cellspacing="1" style="text-align:left;" class="table table-borderless">
+          <input type="hidden" name="dopost" value="edit">
+          <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+          <table width="100%" border="0" cellpadding="3" cellspacing="1" style="text-align:left" class="table table-borderless">
             <tr bgcolor="#FFFFFF">
               <td width="120" height="26">评论所属文章：</td>
               <td>
@@ -33,7 +33,7 @@
             <tr bgcolor="#FFFFFF">
               <td height="26">评论人：</td>
               <td>
-                <input name="username" type="text" id="username" size="20" value="<?php echo $row['username']; ?>" />
+                <input name="username" type="text" id="username" size="20" value="<?php echo $row['username']; ?>">
               </td>
             </tr>
             <tr bgcolor="#FFFFFF">
@@ -79,5 +79,4 @@
     </tr>
   </table>
 </body>
-
 </html>

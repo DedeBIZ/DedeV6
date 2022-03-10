@@ -14,8 +14,6 @@ CheckPurview('sys_StringMix');
 if (empty($dopost)) $dopost = '';
 $templates = empty($templates) ? '' : stripslashes($templates);
 $m_file = DEDEDATA.'/template.rand.php';
-
-//----------------------action
 $okmsg = '';
 //保存配置
 if ($dopost == 'save') {
@@ -64,8 +62,6 @@ else if ($dopost == 'clearold') {
     echo "全部清除操作成功";
     exit();
 }
-
-//-------------------------read
 //读出
 if (empty($templates) && filesize($m_file) > 0) {
     $fp = fopen($m_file, 'r');
@@ -76,7 +72,7 @@ $wintitle = "随机模板防采集设置";
 $wecome_info = "随机模板防采集设置";
 make_hash();
 $msg = "
-<link href='css/base.css' rel='stylesheet' type='text/css' />
+<link rel='stylesheet' href='css/base.css' />
 <script language='javascript' src='js/main.js'></script>
 <script language='javascript' src='../static/js/webajax.js'></script>
 <script language='javascript'>
@@ -109,7 +105,6 @@ function DoRand(jobname)
     <td><textarea name='templates' id='templates' style='width:100%;height:250px'>$templates</textarea></td>
 </tr>
 </table>";
-
 $win = new OxWindow();
 $win->Init('article_template_rand.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');

@@ -12,7 +12,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
 function lib_feedback(&$ctag, &$refObj)
 {
     global $dsql;
-
     $attlist = "row|12,titlelen|24,infolen|100,orderby|";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
@@ -37,18 +36,14 @@ function lib_feedback(&$ctag, &$refObj)
         }
     }
     $wsql = " WHERE fb.ischeck=1 AND fb.fid=0 ";
-
     if (get_class($refObj) === "Archives" && isset($refObj->Fields["id"])) {
         $wsql .= " AND fb.aid='{$refObj->Fields["id"]}'";
     }
-
     $equery = "SELECT fb.*,mb.userid,mb.face as mface,mb.spacesta,mb.scores,mb.sex FROM `#@__feedback` fb
     LEFT JOIN `#@__member` mb on mb.mid = fb.mid $wsql $order LIMIT 0 , $totalrow";
-
     $ctp = new DedeTagParse();
     $ctp->SetNameSpace('field', '[', ']');
     $ctp->LoadSource($innertext);
-
     $dsql->Execute('fb', $equery);
     while ($arr = $dsql->GetArray('fb')) {
         $arr['face'] = empty($arr['mface']) ? $GLOBALS['cfg_cmspath'].'/static/img/avatar.png' : $arr['mface'];
@@ -61,7 +56,6 @@ function lib_feedback(&$ctag, &$refObj)
     }
     return $revalue;
 }
-
 function jsTrim($str, $len)
 {
     $str = preg_replace("/{quote}(.*){\/quote}/is", '', $str);

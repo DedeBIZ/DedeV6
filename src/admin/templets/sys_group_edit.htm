@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>组权限设置</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href='css/base.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel='stylesheet' href='css/base.css'>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <center>
@@ -20,12 +20,12 @@
             <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
                 <td width="9%" height="30">组名称：</td>
-                <td width="91%" style="text-align:left;"> <input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>">
+                <td width="91%" style="text-align:left"> <input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>">
                 </td>
               </tr>
               <tr>
                 <td width="9%" height="30">级别值：</td>
-                <td width="91%" style="text-align:left;">
+                <td width="91%" style="text-align:left">
                   <input name="rank" type="hidden" id="rank" value="<?php echo $groupSet['rank']?>">
                   <?php echo $groupSet['rank']?>
                 </td>
@@ -65,10 +65,10 @@
           </td>
         </tr>
         <tr>
-          <td height='26' colspan='2' bgcolor='#F9FAF3' style="text-align:left;"><?php echo $start?>、插件权限</td>
+          <td height='26' colspan='2' bgcolor='#F9FAF3' style="text-align:left"><?php echo $start?>、插件权限</td>
         </tr>
         <tr>
-          <td height='26' colspan='2' style="text-align:left;">
+          <td height='26' colspan='2' style="text-align:left">
             <?php
          $l = 0;
          $dsql->SetQuery('SELECT plusname FROM #@__plus');
@@ -96,5 +96,4 @@
     </table>
   </center>
 </body>
-
 </html>

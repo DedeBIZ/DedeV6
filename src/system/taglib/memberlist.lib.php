@@ -16,23 +16,17 @@ function lib_memberlist(&$ctag, &$refObj)
     $attlist = "row|6,iscommend|0,orderby|logintime,signlen|50";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     $revalue = '';
     $innerText = trim($ctag->GetInnerText());
     if (empty($innerText)) $innerText = GetSysTemplets('memberlist.htm');
-
     $wheresql = ' WHERE mb.spacesta>-1 AND mb.matt<10 ';
-
     if ($iscommend > 0) $wheresql .= " AND  mb.matt='$iscommend' ";
-
     $sql = "SELECT mb.*,ms.spacename,ms.sign FROM `#@__member` mb
-        LEFT JOIN `#@__member_space` ms ON ms.mid = mb.mid
-        $wheresql order by mb.{$orderby} DESC LIMIT 0,$row ";
-
+    LEFT JOIN `#@__member_space` ms ON ms.mid = mb.mid
+    $wheresql order by mb.{$orderby} DESC LIMIT 0,$row ";
     $ctp = new DedeTagParse();
     $ctp->SetNameSpace('field', '[', ']');
     $ctp->LoadSource($innerText);
-
     $dsql->Execute('mb', $sql);
     while ($row = $dsql->GetArray('mb')) {
         $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/user/index.php?uid='.$row['userid'];
@@ -46,6 +40,5 @@ function lib_memberlist(&$ctag, &$refObj)
         }
         $revalue .= $ctp->GetResult();
     }
-
     return $revalue;
 }

@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>新增频道</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
   <script language="javascript" src="js/main.js"></script>
@@ -52,7 +52,7 @@
         <td bgcolor="#FFFFFF">
           <input name="diyid" type="text" id="diyid" size="10" value="<?php echo $newdiyid?>" class='pubinputs'
             style='width:60px' />
-          * <img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')" />
+          * <img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')">
         </td>
       </tr>
       <tr>
@@ -63,7 +63,7 @@
         <td bgcolor="#FFFFFF">
           <input name="name" type="text" id="name" style="width:180px" value="自定义表单<?php echo $newdiyid;?>"
             class='pubinputs' />
-          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help3')" />
+          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help3')">
         </td>
       </tr>
       <tr>
@@ -72,7 +72,7 @@
         <td bgcolor="#FFFFFF">
           <input name="table" type="text" id="table" style="width:180px"
             value="<?php echo $cfg_dbprefix; ?>diyform<?php echo $newdiyid; ?>" class='pubinputs' />
-          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')" />
+          *<img src="images/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')">
         </td>
       </tr>
       <tr>
@@ -121,5 +121,4 @@
     </form>
   </table>
 </body>
-
 </html>

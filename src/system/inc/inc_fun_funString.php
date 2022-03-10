@@ -29,5 +29,4 @@ function SpHtml2Text($str)
 	$alltext = preg_replace("/[ ]+/s"," ",$alltext);
 	return $alltext;
 }
-
 ?>

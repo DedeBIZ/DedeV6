@@ -31,16 +31,13 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname = '')
             $keywords = '';
             $stypeid = 0;
             if (empty($rownum)) $rownum = 40;
-
             //通过关键字和栏目ID自动获取模式
             if ($isauto == 1) {
                 $idlist = '';
                 $keywords = trim($ctag->GetAtt('keywords'));
                 $stypeid = $ctag->GetAtt('typeid');
             }
-
             $listTemplet = trim($ctag->GetInnerText()) != '' ? $ctag->GetInnerText() : GetSysTemplets('spec_arclist.htm');
-
             $idvalue = lib_arclistDone(
                 $refObj,
                 $ctag,

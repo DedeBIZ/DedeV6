@@ -23,7 +23,7 @@ if (!function_exists('GetCache')) {
     {
         global $cache_helper_config;
         $key = md5($key);
-        /* 如果启用MC缓存 */
+        //如果启用MC缓存 
         if ($is_memcache === TRUE && !empty($cache_helper_config['memcache']) && $cache_helper_config['memcache']['is_mc_enable'] === 'Y') {
             $mc_path = empty($cache_helper_config['memcache']['mc'][substr($key, 0, 1)]) ? $cache_helper_config['memcache']['mc']['default'] : $cache_helper_config['memcache']['mc'][substr($key, 0, 1)];
             $mc_path = parse_url($mc_path);
@@ -36,7 +36,6 @@ if (!function_exists('GetCache')) {
         }
         $key = substr($key, 0, 2).'/'.substr($key, 2, 2).'/'.substr($key, 4, 2).'/'.$key;
         $result = @file_get_contents(DEDEDATA."/cache/$prefix/$key.php");
-
         if ($result === false) {
             return false;
         }
@@ -48,8 +47,6 @@ if (!function_exists('GetCache')) {
         return $result['data'];
     }
 }
-
-
 /**
  *  写缓存
  *
@@ -65,7 +62,7 @@ if (!function_exists('SetCache')) {
     {
         global $cache_helper_config;
         $key = md5($key);
-        /* 如果启用MC缓存 */
+        //如果启用MC缓存
         if (!empty($cache_helper_config['memcache']) && $cache_helper_config['memcache']['is_mc_enable'] === 'Y' && $is_memcache === TRUE) {
             $mc_path = empty($cache_helper_config['memcache']['mc'][substr($key, 0, 1)]) ? $cache_helper_config['memcache']['mc']['default'] : $cache_helper_config['memcache']['mc'][substr($key, 0, 1)];
             $mc_path = parse_url($mc_path);
@@ -86,8 +83,6 @@ if (!function_exists('SetCache')) {
         return @PutFile(DEDEDATA."/cache/$prefix/$key.php",  $cache_data);
     }
 }
-
-
 /**
  *  删除缓存
  *
@@ -98,12 +93,12 @@ if (!function_exists('SetCache')) {
  * @return    string
  */
 if (!function_exists('DelCache')) {
-    /* 删缓存 */
+    //删缓存
     function DelCache($prefix, $key, $is_memcache = TRUE)
     {
         global $cache_helper_config;
         $key = md5($key);
-        /* 如果启用MC缓存 */
+        //如果启用MC缓存
         if (!empty($cache_helper_config['memcache']) && $cache_helper_config['memcache']['is_mc_enable'] === TRUE && $is_memcache === TRUE) {
             $mc_path = empty($cache_helper_config['memcache']['mc'][substr($key, 0, 1)]) ? $cache_helper_config['memcache']['mc']['default'] : $cache_helper_config['memcache']['mc'][substr($key, 0, 1)];
             $mc_path = parse_url($mc_path);

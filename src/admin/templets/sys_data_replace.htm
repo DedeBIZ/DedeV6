@@ -31,13 +31,13 @@
 
   </script>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body>
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px">批量管理</div>
+    <div class="bodytitletxt">批量管理</div>
   </div>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered" style="background:#CFCFCF;">
     <form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
@@ -84,7 +84,7 @@
                   </tr>
                   <tr>
                     <td height="26"> 要替换的字段：
-                      <input name="rpfield" type="text" id="rpfield" class="alltxt" />
+                      <input name="rpfield" type="text" id="rpfield" class="alltxt">
                     </td>
                   </tr>
                 </table>
@@ -97,7 +97,7 @@
                 普通替换</label>
                 <label><input type="radio" name="rptype" id="ot2" value="regex" class='np' />
                 正则表达式</label> 主键字段：
-                <input name="keyfield" type="text" id="keyfield" size="12" class="alltxt" />
+                <input name="keyfield" type="text" id="keyfield" size="12" class="alltxt">
                 （正则模式必须指定）
               </td>
             </tr>
@@ -111,7 +111,7 @@
             </tr>
             <tr>
               <td height="26">&nbsp;替换条件：</td>
-              <td><input name="condition" type="text" id="condition" style="width:45%" class="alltxt" />
+              <td><input name="condition" type="text" id="condition" style="width:45%" class="alltxt">
                 (空完全替换)</td>
             </tr>
             <tr>
@@ -120,7 +120,7 @@
                 <table width="300" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="90">
-                      <input type="text" name="validate" class="alltxt" style="width:80px;text-transform: uppercase;" />
+                      <input type="text" name="validate" class="alltxt" style="width:80px;text-transform: uppercase">
                     </td>
                     <td>
                       <img src='../apps/vdimgck.php'  style="cursor:pointer;"
@@ -166,5 +166,4 @@
     </tr>
   </table>
 </body>
-
 </html>

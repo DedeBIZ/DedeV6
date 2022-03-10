@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>站内新闻发布</title>
-<link href="css/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/base.css">
 <script>
 function checkSubmit()
 {
@@ -19,13 +19,13 @@ function checkSubmit()
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
 <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6">
   <form action="mynews_add.php" method="post" name="form1" onSubmit="return checkSubmit();">
-  <input type="hidden" name="dopost" value="save" />
+  <input type="hidden" name="dopost" value="save">
   <tr>
       <td height="26" background="images/tbg.gif"> 
         <table width="99%" border="0" cellspacing="0" cellpadding="0">
           <tr> 
             <td><strong>&nbsp;站内新闻管理-&gt;增加消息</strong></td>
-            <td align="right"> <a href="mynews_main.php"><img src="images/file_edit.gif" width="15" height="16" border="0">返回管理页</a> 
+            <td align="right"> <a href="mynews_main.php"><img src="images/file_edit.gif" border="0">返回管理页</a> 
             </td>
           </tr>
         </table></td>
@@ -64,12 +64,12 @@ function checkSubmit()
           <tr> 
             <td height="30" align="right">发言人：</td>
             <td  align="left">
-            	<input name="writer" type="text" id="writer" value="<?php echo $cuserLogin->getUserName()?>" size="16" />            
+            	<input name="writer" type="text" id="writer" value="<?php echo $cuserLogin->getUserName()?>" size="16">            
            </td>
           </tr>
 		  <tr> 
             <td height="30" align="right">日期：</td>
-            <td  align="left"><input name="sdate" type="text" id="sdate" size="25" value="<?php echo GetDateTimeMk(time())?>" />
+            <td  align="left"><input name="sdate" type="text" id="sdate" size="25" value="<?php echo GetDateTimeMk(time())?>">
            </td>
           </tr>
           <tr> 
@@ -83,7 +83,7 @@ function checkSubmit()
           <tr> 
             <td height="36">&nbsp;</td>
             <td>
-            	<input type="submit" name="Submit" value="发布新闻" class="coolbg np" />
+            	<input type="submit" name="Submit" value="发布新闻" class="coolbg np">
             </td>
           </tr>
           <tr> 

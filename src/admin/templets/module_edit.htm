@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
 <script language="javascript" src="../static/js/webajax.js"></script>
 <script language="javascript">
 function ShowHideField(cbox,vid,nid)
@@ -30,7 +30,7 @@ function ShowHideMb(rbox1,nid)
 }
 </script>
 <title>模块打包</title>
-<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/base.css">
 <style>
 td{padding-left:8px}
 </style>
@@ -38,7 +38,7 @@ td{padding-left:8px}
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
 <div class="bodytitle mt-3">
 	<div class="bodytitleleft"></div>
-	<div class="bodytitletxt" style="padding-left:10px">模块管理</div>
+	<div class="bodytitletxt">模块管理</div>
 </div>
 <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3" style="background:#CFCFCF;">
   <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
@@ -140,7 +140,7 @@ td{padding-left:8px}
       	自动生成(由系统自动处理安装)</label>
       	<br>
      <div style='display:<?php if(!isset($autosetup) || $autosetup==0) echo "block"; else echo 'none'; ?>' id='autosetupinput'>
-      	<input name="setup" type="file" id="setup" style="width:350px" />
+      	<input name="setup" type="file" id="setup" style="width:350px">
      </div>
      <div style='margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo "block"; else echo 'none'; ?>' id='autosetupct'>
       	<table width="80%" border="0" cellpadding="5" cellspacing="1" bgcolor="#83B771">
@@ -170,7 +170,7 @@ td{padding-left:8px}
       	自动生成(由系统自动处理卸载)</label>
       	<br>
       	<div style='display:<?php if(!isset($autodel) || $autodel==0) echo 'block'; else echo 'none'; ?>' id='autodelinput'>
-      	  <input name="uninstall" type="file" id="uninstall" style="width:350px" />
+      	  <input name="uninstall" type="file" id="uninstall" style="width:350px">
         </div>
       	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none'; ?>' id='autodelct'>
       	<table width="80%" border="0" cellpadding="5" cellspacing="1" bgcolor="#83B771">

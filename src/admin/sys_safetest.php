@@ -86,7 +86,7 @@ function TestSafe($tdir)
 
 //检测
 if ($action == 'test') {
-    $message = '<link rel="stylesheet" href="../static/css/bootstrap.min.css"><link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">';
+    $message = '<link rel="stylesheet" href="../static/css/bootstrap.min.css"><link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">';
 
     AjaxHead();
     TestSafe(DEDEROOT);

@@ -28,7 +28,6 @@ if (!function_exists('GetRankStar')) {
         return $nstar;
     }
 }
-
 /**
  *  获得文章网址
  *  如果要获得文件的路径，直接用
@@ -68,7 +67,6 @@ if (!function_exists('GetFileUrl')) {
     ) {
         $articleUrl = GetFileName($aid, $typeid, $timetag, $title, $ismake, $rank, $namerule, $typedir, $money, $filename);
         $sitepath = MfTypedir($sitepath);
-
         //是否强制使用绝对网址
         if ($GLOBALS['cfg_multi_site'] == 'Y') {
             if ($siteurl == '') {
@@ -81,11 +79,9 @@ if (!function_exists('GetFileUrl')) {
                 $articleUrl = $siteurl.$articleUrl;
             }
         }
-
         return $articleUrl;
     }
 }
-
 /**
  *  获得新文件名(本函数会自动创建目录)
  *
@@ -106,15 +102,12 @@ if (!function_exists('GetFileNewName')) {
     {
         global $cfg_arc_dirname;
         $articlename = GetFileName($aid, $typeid, $timetag, $title, $ismake, $rank, $namerule, $typedir, $money, $filename);
-
         if (preg_match("/\?/", $articlename)) {
             return $articlename;
         }
-
         if ($cfg_arc_dirname == 'Y' && preg_match("/\/$/", $articlename)) {
             $articlename = $articlename."index.html";
         }
-
         $slen = strlen($articlename) - 1;
         for ($i = $slen; $i >= 0; $i--) {
             if ($articlename[$i] == '/') {
@@ -127,9 +120,6 @@ if (!function_exists('GetFileNewName')) {
         return $articlename;
     }
 }
-
-
-
 /**
  *  获得文件相对于主站点根目录的物理文件名(动态网址返回url)
  *
@@ -190,8 +180,6 @@ if (!function_exists('GetFileName')) {
         }
     }
 }
-
-
 /**
  *  获得指定类目的URL链接
  *  对于使用封面文件和单独页面的情况，强制使用默认页名称
@@ -230,11 +218,9 @@ if (!function_exists('GetTypeUrl')) {
                 else $reurl = $typedir.'/';
             }
         }
-
         if (!preg_match("/^http:\/\//", $reurl)) {
             $reurl = preg_replace("/\/{1,}/i", '/', $reurl);
         }
-
         if ($GLOBALS['cfg_multi_site'] == 'Y') {
             if ($siteurl == '') {
                 $siteurl = $GLOBALS['cfg_basehost'];
@@ -249,7 +235,6 @@ if (!function_exists('GetTypeUrl')) {
         return $reurl;
     }
 }
-
 /**
  *  魔法变量，用于获取两个可变的值
  *
@@ -263,7 +248,6 @@ if (!function_exists('MagicVar')) {
         return $GLOBALS['autoindex'] % 2 == 0 ? $v1 : $v2;
     }
 }
-
 /**
  *  获取某个类目的所有上级栏目id
  *
@@ -277,9 +261,6 @@ if (!function_exists('GetTopids')) {
         return join(',', $arr);
     }
 }
-
-
-
 /**
  *  获取上级ID列表
  *
@@ -302,8 +283,6 @@ if (!function_exists('GetParentIds')) {
         }
     }
 }
-
-
 /**
  *  检测栏目是否是另一个栏目的父目录
  *
@@ -319,8 +298,6 @@ if (!function_exists('IsParent')) {
         return in_array($pid, $pTypeArrays);
     }
 }
-
-
 /**
  *  获取一个类目的顶级类目id
  *
@@ -341,8 +318,6 @@ if (!function_exists('GetTopid')) {
         }
     }
 }
-
-
 /**
  *  获得某id的所有下级id
  *
@@ -363,7 +338,6 @@ function GetSonIds($id, $channel = 0, $addthis = true)
     $rquery = preg_replace("/,$/", '', $rquery);
     return $rquery;
 }
-
 //递归逻辑
 function GetSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
 {
@@ -378,7 +352,6 @@ function GetSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
         }
     }
 }
-
 /**
  *  栏目目录规则
  *
@@ -392,7 +365,6 @@ function MfTypedir($typedir)
     $typedir = preg_replace("/\/{1,}/", "/", $typedir);
     return $typedir;
 }
-
 /**
  *  模板目录规则
  *
@@ -405,7 +377,6 @@ function MfTemplet($tmpdir)
     $tmpdir = preg_replace("/\/{1,}/", "/", $tmpdir);
     return $tmpdir;
 }
-
 /**
  *  清除用于js的空白块
  *
@@ -416,7 +387,6 @@ function FormatScript($atme)
 {
     return $atme == '&nbsp;' ? '' : $atme;
 }
-
 /**
  *  给属性默认值
  *
@@ -434,7 +404,6 @@ function FillAttsDefault(&$atts, $attlist)
         }
     }
 }
-
 /**
  *  给块标记赋值
  *
@@ -458,7 +427,6 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
         }
     }
     $dh->Close();
-
     //遍历tag元素
     if (!is_array($dtp->CTags)) {
         return '';
@@ -478,7 +446,6 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
             }
             continue;
         }
-
         //由于考虑兼容性，原来文章调用使用的标记别名统一保留，这些标记实际调用的解析文件为inc_arclist.php
         if (preg_match("/^(artlist|likeart|hotart|imglist|imginfolist|coolart|specart|autolist)$/", $tagname)) {
             $tagname = 'arclist';
@@ -510,7 +477,6 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
         }
     }
 }
-
 /**
  *  获取某栏目的url
  *
@@ -531,7 +497,6 @@ function GetOneTypeUrlA($typeinfos)
         $typeinfos['sitepath']
     );
 }
-
 /**
  *  设置全局环境变量
  *
@@ -558,7 +523,6 @@ function SetSysEnv($typeid = 0, $typename = '', $aid = 0, $title = '', $curfile 
         $_sys_globals['aid'] = $aid;
     }
 }
-
 /**
  *  获得图书的URL
  *
@@ -570,11 +534,9 @@ function SetSysEnv($typeid = 0, $typename = '', $aid = 0, $title = '', $curfile 
 function GetBookUrl($bid, $title, $gdir = 0)
 {
     global $cfg_cmspath;
-    $bookurl = $gdir == 1 ?
-        "{$cfg_cmspath}/book/".DedeID2Dir($bid) : "{$cfg_cmspath}/book/".DedeID2Dir($bid).'/'.GetPinyin($title).'-'.$bid.'.html';
+    $bookurl = $gdir == 1 ? "{$cfg_cmspath}/book/".DedeID2Dir($bid) : "{$cfg_cmspath}/book/".DedeID2Dir($bid).'/'.GetPinyin($title).'-'.$bid.'.html';
     return $bookurl;
 }
-
 /**
  *  根据ID生成目录
  *
@@ -586,7 +548,6 @@ function DedeID2Dir($aid)
     $n = ceil($aid / 1000);
     return $n;
 }
-
 /**
  *  获得自由列表的网址
  *
@@ -616,7 +577,6 @@ function GetFreeListUrl($lid, $namerule, $listdir, $defaultpage, $nodefault)
     }
     return $okfile;
 }
-
 /**
  *  获取网站搜索的热门关键字
  *
@@ -656,7 +616,6 @@ function GetHotKeywords(&$dsql, $num = 8, $nday = 365, $klen = 16, $orderby = 'c
     }
     return $hotword;
 }
-
 /**
  *  使用绝对网址
  *
@@ -667,7 +626,6 @@ function Gmapurl($gurl)
 {
     return preg_match("/http[s]?:\/\//i", $gurl) ? $gurl : $GLOBALS['cfg_basehost'].$gurl;
 }
-
 /**
  *  引用回复标记处理
  *
@@ -687,7 +645,6 @@ function Quote_replace($quote)
     $quote = str_replace('{/quote}', '</div>', $quote);
     return $quote;
 }
-
 /**
  *  获取、写入指定cacheid的块
  *
@@ -709,7 +666,6 @@ function GetCacheBlock($cacheid)
     fclose($fp);
     return $str;
 }
-
 /**
  *  写入缓存块
  *

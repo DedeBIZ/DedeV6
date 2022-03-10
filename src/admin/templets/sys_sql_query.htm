@@ -4,9 +4,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>SQL命令行工具</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href='css/base.css' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel='stylesheet' href='css/base.css'>
+  <link rel="stylesheet" href="css/codemirror.css">
   <script type="text/javascript" src="js/codemirror.js"></script>
   <script type="text/javascript" src="js/mode/sql/sql.js"></script>
 </head>
@@ -30,7 +30,7 @@
         <table width="100%" border="0" cellspacing="4" cellpadding="2" class="table table-borderless">
           <form action="sys_sql_query.php" method="post" name="infoform" target="stafrm">
             <input type='hidden' name='dopost' value='viewinfo' />
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <tr bgcolor="#ffffff">
               <td width="15%" height="26" align="center">系统的表信息：</td>
               <td>
@@ -86,7 +86,7 @@ while($row = $dsql->GetArray('t',MYSQL_BOTH))
             </tr>
           </form>
           <form action="sys_sql_query.php" method="post" name="form1" target="stafrm">
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <input type='hidden' name='dopost' value='query'>
             <tr>
               <td height="26" colspan="2" bgcolor="#F9FCEF"><strong>运行SQL命令行：
@@ -119,5 +119,4 @@ while($row = $dsql->GetArray('t',MYSQL_BOTH))
     });
   </script>
 </body>
-
 </html>

@@ -34,7 +34,6 @@ function ch_softlinks($fvalue, &$ctag, &$refObj, $fname = '', $downloadpage = fa
         return ch_softlinks_all($fvalue, $ctag, $refObj, $row);
     }
 }
-
 //读取所有链接地址
 function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
 {
@@ -60,7 +59,6 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
             $sertype_arr[trim($serverName)] = trim($serverType);
         }
     }
-
     $tempStr = GetSysTemplets('channel_downlinks.htm');
     $downlinks = '';
     foreach ($dtp->CTags as $ctag) {
@@ -69,11 +67,9 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
             $serverName = trim($ctag->GetAtt('text'));
             $islocal = trim($ctag->GetAtt('islocal'));
             if (isset($sertype_arr[$serverName]) && $islinktype && $sertype_arr[$serverName] != $link_type) continue;
-
             //分析本地链接
             if (!isset($firstLink) && $islocal == 1) $firstLink = $link;
             if ($islocal == 1 && $row['islocal'] != 1) continue;
-
             //支持http,迅雷下载,ftp,flashget
             if (!preg_match("#^http:\/\/|^thunder:\/\/|^ftp:\/\/|^flashget:\/\/#i", $link)) {
                 $link = $GLOBALS['cfg_mainsite'].$link;
@@ -115,7 +111,6 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
     }
     return $downlinks;
 }
-
 function getDownloads($url)
 {
     global $dsql;

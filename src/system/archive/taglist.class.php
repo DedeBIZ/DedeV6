@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC.'/channelunit.class.php');
 require_once(DEDEINC.'/typelink/typelink.class.php');
-
 @set_time_limit(0);
 /**
  * Tag列表类
@@ -36,7 +35,6 @@ class TagList
     var $Templet;
     var $TagInfos;
     var $TempletsFile;
-
     /**
      *  php5构造函数
      *
@@ -63,12 +61,9 @@ class TagList
         } else {
             $this->Fields['title'] = $keyword;
         }
-
         $this->TempletsFile = '';
-
         //设置一些全局参数的值
         foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
-
         //读取Tag信息
         if ($this->Tag != '') {
             $this->TagInfos = $this->dsql->GetOne("Select * From `#@__tagindex` where tag like '{$this->Tag}' ");
@@ -83,12 +78,10 @@ class TagList
                 $this->TagInfos['tag_pinyin'] = $this->TagPinyinExists($this->Tag) ? GetPinyin($this->Tag).$this->TagInfos['id'] : GetPinyin($this->Tag);
                 $this->dsql->ExecNoneQuery("UPDATE `#@__tagindex` SET tag_pinyin = '{$this->TagInfos['tag_pinyin']}' WHERE tag LIKE '{$this->Tag}'");
             }
-
             $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->Fields['title'] : $this->TagInfos['title'];
             $this->Fields['keywords'] = empty($this->TagInfos['keywords']) ? $this->Fields['keywords'] : $this->TagInfos['keywords'];
             $this->Fields['description'] = empty($this->TagInfos['description']) ? $this->Fields['description'] : $this->TagInfos['description'];
         }
-
         //初始化模板
         $tempfile = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir']."/".$GLOBALS['cfg_df_style'].'/'.$this->Templet;
         if (!file_exists($tempfile) || !is_file($tempfile)) {
@@ -98,27 +91,23 @@ class TagList
         $this->dtp->LoadTemplate($tempfile);
         $this->TempletsFile = preg_replace("#^".$GLOBALS['cfg_basedir']."#", '', $tempfile);
     }
-
     function TagPinyinExists($tag)
     {
         $tag_py = GetPinyin($tag);
         $row = $this->dsql->GetOne("Select count(*) as dd From `#@__tagindex` where tag_pinyin like '{$tag_py}' ");
         return $row['dd'] > 0;
     }
-
     //php4构造函数
     function TagList($keyword, $templet)
     {
         $this->__construct($keyword, $templet);
     }
-
     //关闭相关资源
     function Close()
     {
         @$this->TypeLink->Close();
         @$this->dsql->Close();
     }
-
     /**
      *  统计列表里的记录
      *
@@ -141,20 +130,16 @@ class TagList
             $cquery = "SELECT COUNT(*) AS dd FROM `#@__taglist` WHERE tid = '{$this->TagInfos['id']}' AND arcrank >-1 ";
             $row = $this->dsql->GetOne($cquery);
             $this->TotalResult = $row['dd'];
-
             //更新Tag信息
             $ntime = time();
-
             //更新浏览量和记录数
             $upquery = "UPDATE `#@__tagindex` SET total='{$row['dd']}',count=count+1,weekcc=weekcc+1,monthcc=monthcc+1 WHERE tag LIKE '{$this->Tag}' ";
             $this->dsql->ExecuteNoneQuery($upquery);
             $oneday = 24 * 3600;
-
             //周统计
             if (ceil(($ntime - $this->TagInfos['weekup']) / $oneday) > 7) {
                 $this->dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET weekcc=0,weekup='{$ntime}' WHERE tag LIKE '{$this->Tag}' ");
             }
-
             //月统计
             if (ceil(($ntime - $this->TagInfos['monthup']) / $oneday) > 30) {
                 $this->dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET monthcc=0,monthup='{$ntime}' WHERE tag LIKE '{$this->Tag}' ");
@@ -175,7 +160,6 @@ class TagList
         }
         $this->TotalPage = ceil($this->TotalResult / $this->PageSize);
     }
-
     /**
      *  显示列表
      *
@@ -185,7 +169,6 @@ class TagList
     function Display()
     {
         $makeDir = empty($this->Tag) ? $this->GetTruePath()."/a/tags/index.html" : $this->GetTruePath()."/a/tags/".GetPinyin($this->Tag)."/index.html";
-
         if (file_exists($makeDir)) {
             header('HTTP/1.1 301 Moved Permanently');
             if (!empty($this->Tag)) {
@@ -195,7 +178,6 @@ class TagList
             }
             exit;
         }
-
         if ($this->Tag != '') {
             $this->CountRecord();
         }
@@ -203,11 +185,9 @@ class TagList
         if ($this->Tag != '') {
             $this->ParseDMFields($this->PageNo, 0);
         }
-        
         $this->dtp->Display();
         // $this->Close();
     }
-
     /**
      *  解析模板，对固定的标记进行初始给值
      *
@@ -218,7 +198,6 @@ class TagList
     {
         MakeOneTag($this->dtp, $this);
     }
-
     /**
      *  解析模板，对内容里的变动进行赋值
      *
@@ -274,7 +253,6 @@ class TagList
             }
         }
     }
-
     /**
      *  获得一个单列的文档列表
      *
@@ -333,10 +311,8 @@ class TagList
             $idlists .= ($idlists == '' ? $row['aid'] : ','.$row['aid']);
         }
         if ($idlists == '') return '';
-
         //按不同情况设定SQL条件
         $orwhere = " se.id IN($idlists) ";
-
         //排序方式
         if ($orderby == "sortrank") {
             $ordersql = "  ORDER BY se.sortrank $orderWay";
@@ -345,7 +321,6 @@ class TagList
         }
         $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
             FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id WHERE $orwhere $ordersql ";
-
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $row = $this->PageSize / $col;
@@ -360,7 +335,6 @@ class TagList
                 if ($row = $this->dsql->GetArray("al")) {
                     $GLOBALS['autoindex']++;
                     $ids[$row['id']] = $row['id'];
-
                     //处理一些特殊字段
                     $row['infos'] = cn_substr($row['description'], $infolen);
                     $row['id'] =  $row['id'];
@@ -429,19 +403,15 @@ class TagList
                     }
                     $artlist .= $this->dtp2->GetResult();
                 } //if hasRow
-
             } //Loop Col
-
             if ($col > 1) {
                 $i += $col - 1;
                 $artlist .= "    </div>\r\n";
             }
         } //Loop Line
-
         $this->dsql->FreeResult('al');
         return $artlist;
     }
-
     /**
      *  获取动态的分页列表
      *
@@ -469,7 +439,6 @@ class TagList
         $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条</span></li>\r\n";
         $purl = $this->GetCurUrl();
         $purl .= "?/".urlencode($this->Tag);
-
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."/$prepagenum/'>上一页</a></li>\r\n";
@@ -483,7 +452,6 @@ class TagList
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
-
         //获得数字链接
         $listdd = "";
         $total_list = $list_len * 2 + 1;
@@ -527,7 +495,6 @@ class TagList
         }
         return $plist;
     }
-
     function GetPageListST($list_len, $listitem = "info,index,end,pre,next,pageno")
     {
         $prepage = "";
@@ -547,9 +514,7 @@ class TagList
         $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条</span></li>\r\n";
         //$purl = $this->GetCurUrl();
         $purl = "/a/tags/".GetPinyin($this->Tag);
-
         //var_dump($purl);
-
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."/$prepagenum/'>上一页</a></li>\r\n";
@@ -563,7 +528,6 @@ class TagList
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
-
         //获得数字链接
         $listdd = "";
         $total_list = $list_len * 2 + 1;
@@ -607,29 +571,24 @@ class TagList
         }
         return $plist;
     }
-
     function GetTruePath()
     {
         $truepath = $GLOBALS["cfg_basedir"];
         return $truepath;
     }
-
     //生成静态Tag
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
         global $cfg_dir_purview, $envs;
-
         $envs['makeTag'] = 1;
         if (empty($this->TotalResult) && $this->Tag != "") $this->CountRecord();
         //初步给固定值的标记赋值
         $this->ParseTempletsFirst();
-
         if ($this->Tag == "") {
             MkdirAll($this->GetTruePath()."/a/tags/", $cfg_dir_purview);
             $this->dtp->SaveTo($this->GetTruePath()."/a/tags/index.html");
         } else {
             $totalpage = ceil($this->TotalResult / $this->PageSize);
-
             if ($totalpage == 0) {
                 $totalpage = 1;
             }
@@ -644,7 +603,6 @@ class TagList
             if ($endpage == 1) {
                 $endpage = 2;
             }
-
             $makeDir = $this->GetTruePath()."/a/tags/".$this->TagInfos['tag_pinyin']."/";
             MkdirAll($makeDir, $cfg_dir_purview);
             for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
@@ -659,7 +617,6 @@ class TagList
             }
         }
     }
-
     /**
      *  获得一个指定的频道的链接
      *
@@ -677,7 +634,6 @@ class TagList
     {
         return GetTypeUrl($typeid, MfTypedir($typedir), $isdefault, $defaultname, $ispart, $namerule2, $siteurl);
     }
-
     /**
      *  获得一个指定档案的链接
      *
@@ -698,7 +654,6 @@ class TagList
     {
         return GetFileUrl($aid, $typeid, $timetag, $title, $ismake, $rank, $namerule, $artdir, $money, $filename);
     }
-
     /**
      *  获得当前的页面文件的url
      *

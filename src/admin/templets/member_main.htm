@@ -5,8 +5,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>网站会员管理</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <script language="javascript" src="js/member.js"></script>
   <style type="text/css">
     .rb {
@@ -25,7 +25,7 @@
           <table border="0" cellspacing="0" cellpadding="3" class="table table-borderless" style="width: 790px;">
             <tr>
               <td>关键字：</td>
-              <td><input name="keyword" type="text" id="keyword" size="12" style="width:120px" value="{dede:global name='keyword'/}" /></td>
+              <td><input name="keyword" type="text" id="keyword" size="12" style="width:120px" value="{dede:global name='keyword'/}"></td>
               <td>&nbsp;排序：</td>
               <td>
                 <select name="sortkey" id="sortkey" style="width:120px">
@@ -96,7 +96,7 @@
       </tr>
       {dede:datalist}
       <tr height="26" align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-        <td><input name="mid" type="checkbox" id="mid" value="{dede:field.mid/}" class="np" /></td>
+        <td><input name="mid" type="checkbox" id="mid" value="{dede:field.mid/}" class="np"></td>
         <td>{dede:field.mid/}</td>
         <td><a href="../user/index.php?uid={dede:field.userid/}" target='_blank'>
             <?php
@@ -153,5 +153,4 @@
     </table>
   </form>
 </body>
-
 </html>

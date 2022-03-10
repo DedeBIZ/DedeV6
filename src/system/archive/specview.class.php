@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEINC."/channelunit.class.php");
-
 @set_time_limit(0);
 /**
  * 专题视图类
@@ -37,7 +36,6 @@ class SpecView
     var $Fields;
     var $StartTime;
     var $remoteDir;
-
     /**
      *  php5构造函数
      *
@@ -57,7 +55,6 @@ class SpecView
         $this->TypeLink = new TypeLink(0);
         $this->ChannelUnit = new ChannelUnit(-1);
         $this->remoteDir = '';
-
         //设置一些全局参数的值
         foreach ($GLOBALS['PubFields'] as $k => $v) {
             $this->Fields[$k] = $v;
@@ -88,18 +85,15 @@ class SpecView
         }
         $this->TotalPage = ceil($this->TotalResult / $this->PageSize);
     }
-
     //php4构造函数
     function SpecView($starttime = 0)
     {
         $this->__construct($starttime);
     }
-
     //关闭相关资源
     function Close()
     {
     }
-
     /**
      *  统计列表里的记录
      *
@@ -131,7 +125,6 @@ class SpecView
             }
         }
     }
-
     /**
      *  显示列表
      *
@@ -180,7 +173,6 @@ class SpecView
         }
         $this->dtp->Display();
     }
-
     /**
      *  开始创建列表
      *
@@ -232,7 +224,6 @@ class SpecView
                     $this->dtp->Assign($tagid, $this->GetPageListST($list_len));
                 }
             } //End foreach
-
             $makeFile = $GLOBALS['cfg_special']."/spec_".$this->PageNo.$GLOBALS['art_shortname'];
             $murl = $makeFile;
             $makeFile = $GLOBALS['cfg_basedir'].$makeFile;
@@ -243,7 +234,6 @@ class SpecView
         $murl = $GLOBALS['cfg_special']."/index.html";
         return $murl;
     }
-
     /**
      *  解析模板，对固定的标记进行初始给值
      *
@@ -254,7 +244,6 @@ class SpecView
     {
         MakeOneTag($this->dtp, $this);
     }
-
     /**
      *  获取内容列表
      *
@@ -326,13 +315,11 @@ class SpecView
         if ($innertext == "") {
             $innertext = GetSysTemplets("spec_list.htm");
         }
-
         //按不同情况设定SQL条件
         $orwhere = " arc.arcrank > -1 AND arc.channel = -1 ";
         if ($this->StartTime > 0) {
             $orwhere .= " AND arc.senddate>'".$this->StartTime."'";
         }
-
         //排序方式
         $ordersql = '';
         if ($orderby == 'senddate') {
@@ -344,8 +331,7 @@ class SpecView
         } else {
             $ordersql = " ORDER BY arc.sortrank desc";
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,arc.money,
-            tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,arc.money,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
             FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
             WHERE $orwhere $ordersql LIMIT $limitstart,$row ";
         $this->dsql->SetQuery($query);
@@ -401,7 +387,6 @@ class SpecView
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
-
                     //编译附加表里的数据
                     foreach ($this->ChannelUnit->ChannelFields as $k => $arr) {
                         if (isset($row[$k])) {
@@ -424,7 +409,6 @@ class SpecView
                     }
                     $artlist .= $this->dtp2->GetResult();
                 } //if hasRow
-
                 else {
                     $artlist .= "";
                 }
@@ -432,19 +416,16 @@ class SpecView
                     $artlist .= "</td>\r\n";
                 }
             } //Loop Col
-
             if ($col > 1) {
                 $artlist .= "</tr>\r\n";
             }
         } //Loop Line
-
         if ($col > 1) {
             $artlist .= "</table>\r\n";
         }
         $this->dsql->FreeResult("al");
         return $artlist;
     }
-
     /**
      *  获取静态的分页列表
      *
@@ -463,7 +444,6 @@ class SpecView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-
             return "<span class=\"pageinfo\">共 <strong>1</strong>页<strong>".$this->TotalResult."</strong>条记录</span>";
         }
         if ($this->TotalResult == 0) {
@@ -471,7 +451,6 @@ class SpecView
         }
         $purl = $this->GetCurUrl();
         $tnamerule = "spec_";
-
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li><a href='".$tnamerule."$prepagenum".$GLOBALS['art_shortname']."'>上一页</a></li>\r\n";
@@ -485,7 +464,6 @@ class SpecView
         } else {
             $endpage = "<li><a>末页</a></li>\r\n";
         }
-
         //获得数字链接
         $listdd = "";
         $total_list = $list_len * 2 + 1;
@@ -511,7 +489,6 @@ class SpecView
         $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;
         return $plist;
     }
-
     /**
      *  获取动态的分页列表
      *
@@ -536,13 +513,11 @@ class SpecView
         if ($this->TotalResult == 0) {
             return "<span class=\"pageinfo\">共0页/".$this->TotalResult."条记录</span>";
         }
-
         $purl = $this->GetCurUrl();
         $geturl = "typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
         $hidenform = "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
         $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
         $purl .= "?".$geturl;
-
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li><a href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
@@ -556,7 +531,6 @@ class SpecView
         } else {
             $endpage = "<li><a>末页</a></li>";
         }
-
         //获得数字链接
         $listdd = "";
         $total_list = $list_len * 2 + 1;
@@ -579,11 +553,9 @@ class SpecView
                 $listdd .= "<li><a href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
             }
         }
-
         $plist = $indexpage.$prepage.$listdd.$nextpage.$endpage;
         return $plist;
     }
-
     /**
      *  获得当前的页面文件的url
      *

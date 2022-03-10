@@ -17,7 +17,6 @@ function lib_qrcode(&$ctag, &$refObj)
     $attlist = "type|,id|";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     //var_dump($refObj->Fields['id']);
     $id = 0;
     if (empty($type) and empty($id)) {
@@ -35,9 +34,8 @@ function lib_qrcode(&$ctag, &$refObj)
             $id = 0;
         }
     }
-
     $reval = <<<EOT
-  <a href='https://www.dedebiz.com/' id='__dedeqrcode_{$GLOBALS['qrcode_id']}'>二维码、二维码生成</a>
+  <a href='https://www.dedebiz.com/' id='__dedeqrcode_{$GLOBALS['qrcode_id']}'>二维码生成</a>
   <script type="text/javascript">
   	var __dedeqrcode_id={$GLOBALS['qrcode_id']};
   	var __dedeqrcode_aid={$id};

@@ -21,32 +21,24 @@ class smtp
     var $auth;
     var $user;
     var $pass;
-
     //私有变量
     var $sock;
-
     //析构函数
     function smtp($relay_host = "", $smtp_port = 25, $auth = FALSE, $user, $pass)
     {
         $this->debug = FALSE;
         $this->smtp_port = $smtp_port;
         $this->relay_host = $relay_host;
-
         //is used in fsockopen()
         $this->time_out = 30;
-
-        #
         $this->auth = $auth; //auth
         $this->user = $user;
         $this->pass = $pass;
-        #
-
         //is used in HELO command
         $this->host_name = "localhost";
         $this->log_file = "";
         $this->sock = FALSE;
     }
-
     /**
      *  邮件主函数
      *
@@ -70,7 +62,6 @@ class smtp
         if ($cc != "") {
             $header .= "Cc: ".$cc."\r\n";
         }
-
         $header .= "From: $webname<".$from.">\r\n";
         $subject  = "=?".$GLOBALS['cfg_soft_lang']."?B?".base64_encode($subject)."?=";
         $header .= "Subject: ".$subject."\r\n";
@@ -107,7 +98,6 @@ class smtp
         }
         return $sent;
     }
-
     /**
      *  SMTP发送
      *
@@ -124,8 +114,6 @@ class smtp
         if (!$this->smtp_putcmd("HELO", $helo)) {
             return $this->smtp_error("sending HELO command");
         }
-
-        #auth
         if ($this->auth) {
             if (!$this->smtp_putcmd("AUTH LOGIN", base64_encode($this->user))) {
                 return $this->smtp_error("sending HELO command");
@@ -134,8 +122,6 @@ class smtp
                 return $this->smtp_error("sending HELO command");
             }
         }
-
-        #
         if (!$this->smtp_putcmd("MAIL", "FROM:<".$from.">")) {
             return $this->smtp_error("sending MAIL FROM command");
         }
@@ -156,7 +142,6 @@ class smtp
         }
         return TRUE;
     }
-
     function smtp_sockopen($address)
     {
         if ($this->relay_host == "") {
@@ -165,7 +150,6 @@ class smtp
             return $this->smtp_sockopen_relay();
         }
     }
-
     function smtp_sockopen_relay()
     {
         $this->log_write("Trying to ".$this->relay_host.":".$this->smtp_port."\n");
@@ -178,7 +162,6 @@ class smtp
         $this->log_write("Connected to relay host ".$this->relay_host."\n");
         return TRUE;;
     }
-
     function smtp_sockopen_mx($address)
     {
         $domain = preg_replace("/^.+@([^@]+)$/i", "\1", $address);
@@ -200,21 +183,18 @@ class smtp
         $this->log_write("Error: Cannot connect to any mx hosts (".implode(", ", $MXHOSTS).")\n");
         return FALSE;
     }
-
     function smtp_message($header, $body)
     {
         fputs($this->sock, $header."\r\n".$body);
         $this->smtp_debug("> ".str_replace("\r\n", "\n"."> ", $header."\n> ".$body."\n> "));
         return TRUE;
     }
-
     function smtp_eom()
     {
         fputs($this->sock, "\r\n.\r\n");
         $this->smtp_debug(". [EOM]\n");
         return $this->smtp_ok();
     }
-
     function smtp_ok()
     {
         $response = str_replace("\r\n", "", fgets($this->sock, 512));
@@ -227,7 +207,6 @@ class smtp
         }
         return TRUE;
     }
-
     function smtp_putcmd($cmd, $arg = "")
     {
         if ($arg != "") {
@@ -241,13 +220,11 @@ class smtp
         $this->smtp_debug("> ".$cmd."\n");
         return $this->smtp_ok();
     }
-
     function smtp_error($string)
     {
         $this->log_write("Error: Error occurred while ".$string.".\n");
         return FALSE;
     }
-
     function log_write($message)
     {
         $this->smtp_debug($message);
@@ -264,7 +241,6 @@ class smtp
         fclose($fp);
         return TRUE;
     }
-
     function strip_comment($address)
     {
         $comment = "#\([^()]*\)#";
@@ -273,14 +249,12 @@ class smtp
         }
         return $address;
     }
-
     function get_address($address)
     {
         $address = preg_replace("#([ \t\r\n])+#", "", $address);
         $address = preg_replace("#^.*<(.+)>.*$#", "\1", $address);
         return $address;
     }
-
     function smtp_debug($message)
     {
         if ($this->debug) {

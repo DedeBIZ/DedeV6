@@ -9,8 +9,8 @@ body {
 }
 </style>
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css">
 <script language="javascript" src="../static/js/jquery.js"></script>
 <script src="../static/js/bootstrap.bundle.js"></script>
 </head>
@@ -23,9 +23,9 @@ body {
   <tr>
     <td height="167" colspan="2" align="center" bgcolor="#FFFFFF" valign="top">
 	<form name="form1" method="post" enctype="multipart/form-data" action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
-	<input type="hidden" name="dopost" value="edit" />
-	<input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
-    <table width="100%" border="0" cellpadding="3" cellspacing="1" style="text-align:left;">
+	<input type="hidden" name="dopost" value="edit">
+	<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+    <table width="100%" border="0" cellpadding="3" cellspacing="1" style="text-align:left">
 		<?php
 		 $formfields = '';
 		 foreach($fieldlist as $field=>$fielddata)

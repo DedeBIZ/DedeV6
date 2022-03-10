@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC.'/channelunit.class.php');
 require_once(DEDEINC.'/typelink/typelink.class.php');
-
 /**
  * 视图类
  *
@@ -29,7 +28,6 @@ class PartView
     var $pvCopy;
     var $refObj;
     var $remoteDir;
-
     /**
      *  php5构造函数
      *
@@ -47,7 +45,6 @@ class PartView
         $this->dtp->SetNameSpace("dede", "{", "}");
         $this->dtp->SetRefObj($this);
         $this->remoteDir = '';
-
         if ($needtypelink) {
             $this->TypeLink = new TypeLink($typeid);
             if (is_array($this->TypeLink->TypeInfos)) {
@@ -59,25 +56,21 @@ class PartView
             }
             $_sys_globals['curfile'] = 'partview';
             @$_sys_globals['typename'] = $this->Fields['typename'];
-
             //设置环境变量
             @SetSysEnv($this->TypeID, $this->Fields['typename'], 0, '', 'partview');
         }
         SetSysEnv($this->TypeID, '', 0, '', 'partview');
         $this->Fields['typeid'] = $this->TypeID;
-
         //设置一些全局参数的值
         foreach ($GLOBALS['PubFields'] as $k => $v) {
             $this->Fields[$k] = $v;
         }
     }
-
     //php4构造函数
     function PartView($typeid = 0, $needtypelink = TRUE)
     {
         $this->__construct($typeid, $needtypelink);
     }
-
     /**
      *  重新指定引入的对象
      *
@@ -92,7 +85,6 @@ class PartView
             $this->__construct($refObj->TypeID);
         }
     }
-
     /**
      *  指定typelink对象给当前类实例
      *
@@ -111,7 +103,6 @@ class PartView
             }
         }
     }
-
     /**
      *  设置要解析的模板
      *
@@ -133,7 +124,6 @@ class PartView
         }
         $this->ParseTemplet();
     }
-
     /**
      *  显示内容
      *
@@ -144,7 +134,6 @@ class PartView
     {
         $this->dtp->Display();
     }
-
     /**
      *  获取内容
      *
@@ -155,7 +144,6 @@ class PartView
     {
         return $this->dtp->GetResult();
     }
-
     /**
      *  保存结果为文件
      *
@@ -168,7 +156,6 @@ class PartView
     {
         $this->dtp->SaveTo($filename);
     }
-
     /**
      *  解析模板里的标签
      *
@@ -191,7 +178,6 @@ class PartView
         }
         MakeOneTag($this->dtp, $this); //这个函数放在 channelunit.func.php 文件中
     }
-
     /**
      * 获得限定模型或栏目的一个指定文档列表
      * 这个标记由于使用了缓存，并且处理数据是支持分表模式的，因此速度更快，但不能进行整站的数据调用
@@ -259,7 +245,6 @@ class PartView
                 return "";
             }
         }
-
         if (!isset($GLOBALS['__SpGetArcList'])) {
             require_once(dirname(__FILE__)."/inc/inc_fun_SpGetArcList.php");
         }
@@ -290,7 +275,6 @@ class PartView
             $ctag
         );
     }
-
     //关闭所占用的资源
     function Close()
     {

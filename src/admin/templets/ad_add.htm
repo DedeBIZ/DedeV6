@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>增加广告</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
   <script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
   <script type="text/javascript" src="../static/js/moment.min.js"></script>
@@ -82,8 +82,8 @@
       <tr>
         <td height="200" bgcolor="#FFFFFF" valign="top">
           <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
-            <input name="normbody[style]" type="hidden" value="code" id="adstyle" />
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
+            <input name="normbody[style]" type="hidden" value="code" id="adstyle">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <input type='hidden' name='dopost' value='save'>
             <tr>
               <td height="26" colspan="3">广告代码的调用方法：{dede:myad name='广告位标识'/} </td>
@@ -119,16 +119,15 @@
             </tr>
             <tr>
               <td height="26" align="center">时间限制：</td>
-              <td colspan="2"><input name="timeset" type="radio" class="np" value="0" checked='1' id="notimelimit" />
+              <td colspan="2"><input name="timeset" type="radio" class="np" value="0" checked='1' id="notimelimit">
                 <label for="notimelimit">永不过期</label>
-                <input type="radio" name="timeset" class="np" value="1" id="timelimit" />
+                <input type="radio" name="timeset" class="np" value="1" id="timelimit">
                 <label for="timelimit">在设内时间内有效</label></td>
             </tr>
             <tr>
               <td height="26" align="center">投放时间：</td>
               <td colspan="2">从
-                <input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>"
-                  class='iptxt datepicker' />
+                <input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" class='iptxt datepicker' />
                 到
                 <input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" class='iptxt datepicker' />
               </td>
@@ -263,5 +262,4 @@
       })(jQuery);
   </script>
 </body>
-
 </html>

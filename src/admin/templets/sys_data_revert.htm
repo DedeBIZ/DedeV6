@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>数据库维护--数据还原</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <script language="javascript">
     //获得选中文件的数据表
     function getCheckboxItem() {
@@ -120,7 +120,7 @@
           <label><input name="structfile" type="checkbox" class="np" id="structfile" value="<?php echo $structfile?>"
             checked='1' />
           还原表结构信息(<?php echo $structfile?>)</label>
-          <label><input name="delfile" type="checkbox" class="np" id="delfile" value="1" />
+          <label><input name="delfile" type="checkbox" class="np" id="delfile" value="1">
           还原后删除备份文件</label></td>
       </tr>
       <tr bgcolor="#E3F4BB">
@@ -140,5 +140,4 @@
     </tr>
   </table>
 </body>
-
 </html>

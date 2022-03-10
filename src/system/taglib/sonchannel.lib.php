@@ -11,20 +11,16 @@
 function lib_sonchannel(&$ctag, &$refObj)
 {
     global $_sys_globals, $dsql;
-
     $attlist = "row|100,nosonmsg|,col|1";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $innertext = $ctag->GetInnerText();
-
     $typeid = $_sys_globals['typeid'];
     if (empty($typeid)) {
         return $ctag->GetAtt('nosonmsg');
     }
-
     $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-        FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0,$row";
-
+    FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0,$row";
     //And id<>'$typeid'
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace("field", "[", "]");

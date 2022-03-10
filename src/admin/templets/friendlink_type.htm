@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>网站类型管理</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body background="images/allbg.gif" leftmargin='8' topmargin='8'>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="background:#CFCFCF;">
@@ -37,7 +37,7 @@
         </td>
 
         <td height="26" valign="top"><input name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" type="text"
-            id="pname_<?php echo $k?>" class='pubinputs' style="width:90%" /> </td>
+            id="pname_<?php echo $k?>" class='pubinputs' style="width:90%"> </td>
         <td>
           <label><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" value="1" checked='1'
             class='np' />
@@ -52,7 +52,7 @@
       </tr>
       <tr height="26" align="center" bgcolor="#FFFFFF">
         <td colspan="2" valign="top">
-          <input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%" /> </td>
+          <input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%"> </td>
 
         <td align="center" bgcolor="#FFFFFF">
           <label><input name="check_new" type="checkbox" id="check_new" value="1" checked='1' class='np' />
@@ -60,10 +60,9 @@
       </tr>
       <tr>
         <td height="30" colspan="5" align="center" bgcolor="#F9FCEF">
-          <input name="imageField" type="submit" class="np coolbg" value="确定" /> </td>
+          <input name="imageField" type="submit" class="np coolbg" value="确定"> </td>
       </tr>
     </form>
   </table>
 </body>
-
 </html>

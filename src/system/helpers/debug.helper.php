@@ -45,7 +45,6 @@ if (!function_exists('Dump')) {
             return $output;
     }
 }
-
 /**
  *  获取执行时间
  *  例如:$t1 = ExecTime();

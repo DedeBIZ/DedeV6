@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>增加自定义标记</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href='css/base.css' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel='stylesheet' href='css/base.css'>
   <link href="../static/css/daterangepicker.css" rel="stylesheet">
   <script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
@@ -64,7 +64,7 @@
           <form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1"
             onSubmit="return checkSubmit()">
             <input type='hidden' name='dopost' value='save' />
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <tr>
               <td height="26" colspan="3">自定义标记的调用方法：<br>
                 {dede:mytag name='标记名称' ismake='是否含板块代码（yes 或 no）' typeid='栏目ID'/}
@@ -88,27 +88,27 @@
             </tr>
             <tr>
               <td height="26" align="center">标记名称：</td>
-              <td colspan="2"><input name="tagname" type="text" id="tagname" /></td>
+              <td colspan="2"><input name="tagname" type="text" id="tagname"></td>
             </tr>
             <tr>
               <td height="26" align="center">时间限制：</td>
               <td colspan="2">
                 <label><input name="timeset" type="radio" value="0" checked='1' />
                 永不过期</label>
-                <label><input type="radio" name="timeset" value="1" />
+                <label><input type="radio" name="timeset" value="1">
                 在设内时间内有效</label>
               </td>
             </tr>
             <tr>
               <td height="26" align="center">开始时间：</td>
               <td colspan="2">
-                <input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" class="datepicker" />
+                <input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" class="datepicker">
               </td>
             </tr>
             <tr>
               <td height="26" align="center">结束时间：</td>
               <td colspan="2">
-                <input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" class="datepicker" />
+                <input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" class="datepicker">
               </td>
             </tr>
             <tr>
@@ -137,5 +137,4 @@
     </tr>
   </table>
 </body>
-
 </html>

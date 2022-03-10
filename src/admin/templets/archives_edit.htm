@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>修改商品</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <script src="../static/js/jquery.js"></script>
   <script language="javascript" src="../static/js/webajax.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
@@ -65,9 +65,9 @@ table{border-collapse:separate}
     </tr>
   </table>
   <form name="form1" action="archives_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
-    <input type="hidden" name="channelid" value="<?php echo $channelid?>" />
-    <input type="hidden" name="id" value="<?php echo $aid?>" />
-    <input type="hidden" name="dopost" value="save" />
+    <input type="hidden" name="channelid" value="<?php echo $channelid?>">
+    <input type="hidden" name="id" value="<?php echo $aid?>">
+    <input type="hidden" name="dopost" value="save">
     <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
     <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #cfcfcf;background:#ffffff;">
       <tr>
@@ -112,7 +112,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;跳转网址：</td>
-              <td><input name="redirecturl" type="text" id="redirecturl" style="width:300px" value="<?php echo $addRow['redirecturl']; ?>" /></td>
+              <td><input name="redirecturl" type="text" id="redirecturl" style="width:300px" value="<?php echo $addRow['redirecturl']; ?>"></td>
             </tr>
           </table>
         </td>
@@ -122,9 +122,9 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;Tag标签：</td>
-              <td><input name="tags" type="text" id="tags" value="<?php echo $tags; ?>" style="width:300px" />（','号分开，单个标签小于12字节）</td>
+              <td><input name="tags" type="text" id="tags" value="<?php echo $tags; ?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
               <td width="50">权重：</td>
-              <td><input name="weight" type="text" id="weight" style="width:50px" value="<?php echo $arcRow['weight'];?>" />（越小越靠前）</td>
+              <td><input name="weight" type="text" id="weight" style="width:50px" value="<?php echo $arcRow['weight'];?>">（越小越靠前）</td>
             </tr>
           </table>
         </td>
@@ -323,7 +323,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="50">&nbsp;关键字：</td>
-              <td><input type="text" name="keywords" id="keywords" style="width:60%" value="<?php echo $arcRow["keywords"]?>" /></td>
+              <td><input type="text" name="keywords" id="keywords" style="width:60%" value="<?php echo $arcRow["keywords"]?>"></td>
             </tr>
           </table>
         </td>
@@ -343,7 +343,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="120">&nbsp;自定义文件名：</td>
-              <td width="450"><input type="text" name="filename" id="filename" value="<?php echo $arcRow["filename"]?>" />（不包括后缀名如.html等）</td>
+              <td width="450"><input type="text" name="filename" id="filename" value="<?php echo $arcRow["filename"]?>">（不包括后缀名如.html等）</td>
               <td width="260"></td>
             </tr>
           </table>

@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 //拼音的缓冲数组
 $pinyins = array();
-
 /**
  *  中文截取2，单字节截取模式
  *  如果是request的内容，必须使用这个函数
@@ -29,7 +28,6 @@ if (!function_exists('cn_substrR')) {
         return addslashes($str);
     }
 }
-
 /**
  *  中文截取2，单字节截取模式
  *
@@ -62,7 +60,6 @@ if (!function_exists('cn_substr')) {
             } else if ($i > $startdd) {
                 $restr .= $c;
             }
-
             if (ord($str[$i]) > 0x80) {
                 if ($str_len > $i + 1) {
                     $c = $str[$i].$str[$i + 1];
@@ -71,7 +68,6 @@ if (!function_exists('cn_substr')) {
             } else {
                 $c = $str[$i];
             }
-
             if ($i >= $enddd) {
                 if (strlen($restr) + strlen($c) > $slen) {
                     break;
@@ -84,7 +80,6 @@ if (!function_exists('cn_substr')) {
         return $restr;
     }
 }
-
 /**
  *  utf-8中文截取，单字节截取模式
  *
@@ -103,7 +98,6 @@ if (!function_exists('cn_substr_utf8')) {
         preg_match_all("/./su", $str, $ar);
         $str = '';
         $tstr = '';
-
         //为了兼容mysql4.1以下版本,与数据库varchar一致,这里使用按字节截取
         for ($i = 0; isset($ar[0][$i]); $i++) {
             if (strlen($tstr) < $start) {
@@ -119,7 +113,6 @@ if (!function_exists('cn_substr_utf8')) {
         return $str;
     }
 }
-
 /**
  *  HTML转换为文本
  *
@@ -141,8 +134,6 @@ if (!function_exists('Html2Text')) {
         }
     }
 }
-
-
 /**
  *  文本转HTML
  *
@@ -159,7 +150,6 @@ if (!function_exists('Text2Html')) {
         return $txt;
     }
 }
-
 /**
  *  获取半角字符
  *
@@ -180,7 +170,6 @@ if (!function_exists('GetAlabNum')) {
         return $fnum;
     }
 }
-
 /**
  *  获取拼音以gbk编码为准
  *
@@ -213,23 +202,18 @@ if (!function_exists('GetPinyin')) {
  * @param     long    $options  替换的字符集
  * @return    string
  */
-
 if (!function_exists('htmlspecialchars_decode')) {
     function htmlspecialchars_decode($str, $options = ENT_COMPAT)
     {
         $trans = get_html_translation_table(HTML_SPECIALCHARS, $options);
-
         $decode = array();
         foreach ($trans as $char => $entity) {
             $decode[$entity] = $char;
         }
-
         $str = strtr($str, $decode);
-
         return $str;
     }
 }
-
 if (!function_exists('ubb')) {
     function ubb($Text)
     {
@@ -272,7 +256,6 @@ if (!function_exists('ubb')) {
         return $Text;
     }
 }
-
 if (!function_exists('color_txt')) {
     function color_txt($str)
     {
@@ -287,7 +270,6 @@ if (!function_exists('color_txt')) {
         return $colorTxt;
     }
 }
-
 if (!function_exists('rand_color')) {
     function rand_color()
     {

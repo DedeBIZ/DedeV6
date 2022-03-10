@@ -54,7 +54,6 @@ class DedeSqlite
     var $isInit = false;
     var $pconnect = false;
     var $_fixObject;
-
     //用外部定义的变量初始类，并连接数据库
     function __construct($pconnect = FALSE, $nconnect = FALSE)
     {
@@ -65,12 +64,10 @@ class DedeSqlite
             $this->Init($pconnect);
         }
     }
-
     function DedeSql($pconnect = FALSE, $nconnect = TRUE)
     {
         $this->__construct($pconnect, $nconnect);
     }
-
     function Init($pconnect = FALSE)
     {
         $this->linkID = 0;
@@ -84,7 +81,6 @@ class DedeSqlite
         $this->result["me"] = 0;
         $this->Open($pconnect);
     }
-
     //用指定参数初始数据库信息
     function SetSource($host, $username, $pwd, $dbname, $dbprefix = "dede_")
     {
@@ -95,13 +91,11 @@ class DedeSqlite
         $this->dbPrefix = $dbprefix;
         $this->result["me"] = 0;
     }
-
     //设置SQL里的参数
     function SetParameter($key, $value)
     {
         $this->parameters[$key] = $value;
     }
-
     //连接数据库
     function Open($pconnect = FALSE)
     {
@@ -110,34 +104,28 @@ class DedeSqlite
         if ($dsqlite && !$dsqlite->isClose && $dsqlite->isInit) {
             $this->linkID = $dsqlite->linkID;
         } else {
-
             $this->linkID = new SQLite3(DEDEDATA.'/'.$this->dbName.'.db');
-
             //复制一个对象副本
             CopySQLiPoint($this);
         }
-
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("DedeBIZ错误警告：<span style='color:#dc3545'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+            $this->DisplayError("系统提示：<span style='color:#dc3545'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
             exit();
         }
         $this->isInit = TRUE;
         return TRUE;
     }
-
     //为了防止采集等需要较长运行时间的程序超时，在运行这类程序时设置系统等待和交互时间
     function SetLongLink()
     {
         // @mysqli_query("SET interactive_timeout=3600, wait_timeout=3600 ;", $this->linkID);
     }
-
     //获得错误描述
     function GetError()
     {
         return $this->linkID->lastErrorMsg();
     }
-
     //关闭数据库
     //mysql能自动管理非持久连接的连接池
     //实际上关闭并无意义并且容易出错，所以取消这函数
@@ -150,17 +138,14 @@ class DedeSqlite
             $GLOBALS['dsql'] = NULL;
         }
     }
-
     //定期清理死连接
     function ClearErrLink()
     {
     }
-
     //关闭指定的数据库连接
     function CloseLink($dblink)
     {
     }
-
     function Esc($_str)
     {
         global $dsqlite;
@@ -169,7 +154,6 @@ class DedeSqlite
         }
         return $this->linkID->escapeString($_str);
     }
-
     //执行一个不返回结果的SQL语句，如update,delete,insert等
     function ExecuteNoneQuery($sql = '')
     {
@@ -193,12 +177,8 @@ class DedeSqlite
         }
         //SQL语句安全检查
         if ($this->safeCheck) CheckSql($this->queryString, 'update');
-
         $t1 = ExecTime();
-
         $rs = $this->linkID->exec($this->queryString);
-
-
         //查询性能测试
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
@@ -207,8 +187,6 @@ class DedeSqlite
         }
         return $rs;
     }
-
-
     //执行一个返回影响记录条数的SQL语句，如update,delete,insert等
     function ExecuteNoneQuery2($sql = '')
     {
@@ -220,7 +198,6 @@ class DedeSqlite
             $this->Open(FALSE);
             $dsqlite->isClose = FALSE;
         }
-
         if (!empty($sql)) {
             $this->SetQuery($sql);
         }
@@ -231,32 +208,26 @@ class DedeSqlite
         }
         $t1 = ExecTime();
         $this->linkID->exec($this->queryString);
-
         //查询性能测试
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
             //echo $this->queryString."--{$queryTime}<hr />\r\n";
         }
-
         return $this->linkID->changes();
     }
-
     function ExecNoneQuery($sql = '')
     {
         return $this->ExecuteNoneQuery($sql);
     }
-
     function GetFetchRow($id = 'me')
     {
         return $this->result[$id]->numColumns();
     }
-
     function GetAffectedRows()
     {
         return $this->linkID->changes();
     }
-
     //执行一个带返回结果的SQL语句，如SELECT，SHOW等
     function Execute($id = "me", $sql = '')
     {
@@ -275,31 +246,24 @@ class DedeSqlite
         if ($this->safeCheck) {
             CheckSql($this->queryString);
         }
-
         $t1 = ExecTime();
         //var_dump($this->queryString);
-
         $this->result[$id] = $this->linkID->query($this->queryString);
-
         //var_dump(mysql_error());
-
         //查询性能测试
         if ($this->recordLog) {
             $queryTime = ExecTime() - $t1;
             $this->RecordLog($queryTime);
             //echo $this->queryString."--{$queryTime}<hr />\r\n";
         }
-
         if ($this->result[$id] === FALSE) {
             $this->DisplayError($this->linkID->lastErrorMsg()." <br>Error sql: <span style='color:#dc3545'>".$this->queryString."</span>");
         }
     }
-
     function Query($id = "me", $sql = '')
     {
         $this->Execute($id, $sql);
     }
-
     //执行一个SQL语句,返回前一条记录或仅返回一条记录
     function GetOne($sql = '', $acctype = MYSQLI_ASSOC)
     {
@@ -324,7 +288,6 @@ class DedeSqlite
             return ($arr);
         }
     }
-
     //执行一个不与任何表名有关的SQL语句,Create等
     function ExecuteSafeQuery($sql, $id = "me")
     {
@@ -338,7 +301,6 @@ class DedeSqlite
         }
         $this->result[$id] = $this->linkID->query($sql);
     }
-
     //返回当前的一条记录并把游标移向下一记录
     //SQLITE3_ASSOC、SQLITE3_NUM、SQLITE3_BOTH
     function GetArray($id = "me", $acctype = SQLITE3_ASSOC)
@@ -354,7 +316,6 @@ class DedeSqlite
                 $acctype = SQLITE3_BOTH;
                 break;
         }
-
         if ($this->result[$id] === 0) {
             return FALSE;
         } else {
@@ -366,7 +327,6 @@ class DedeSqlite
             return $rs;
         }
     }
-
     function GetObject($id = "me")
     {
         if (!isset($this->_fixObject[$id])) {
@@ -378,7 +338,6 @@ class DedeSqlite
         }
         return array_shift($this->_fixObject[$id]);
     }
-
     //检测是否存在某数据表
     function IsTable($tbname)
     {
@@ -388,15 +347,12 @@ class DedeSqlite
         }
         $prefix = "#@__";
         $tbname = str_replace($prefix, $GLOBALS['cfg_dbprefix'], $tbname);
-
         $row = $this->linkID->querySingle("PRAGMA table_info({$tbname});");
-
         if ($row !== null) {
             return TRUE;
         }
         return FALSE;
     }
-
     //获得MySql的版本号
     function GetVersion($isformat = TRUE)
     {
@@ -416,7 +372,6 @@ class DedeSqlite
         }
         return $sqlite_version;
     }
-
     //获取特定表的信息
     function GetTableFields($tbname, $id = "me")
     {
@@ -429,7 +384,6 @@ class DedeSqlite
         $query = "SELECT * FROM {$tbname} LIMIT 0,1";
         $this->result[$id] = $this->linkID->query($query);
     }
-
     //获取字段详细信息
     function GetFieldObject($id = "me")
     {
@@ -440,10 +394,8 @@ class DedeSqlite
                 $fields[] =  $this->result[$id]->columnName($i);
             }
         }
-
         return (object)$fields;
     }
-
     //获得查询的总记录数
     function GetTotalRow($id = "me")
     {
@@ -452,7 +404,6 @@ class DedeSqlite
         $row = $rs->fetchArray();
         return $row['dd'];
     }
-
     //获取上一步INSERT操作产生的ID
     function GetLastID()
     {
@@ -463,7 +414,6 @@ class DedeSqlite
         //return $row["lid"];
         return $this->linkID->lastInsertRowID();
     }
-
     //释放记录集占用的资源
     function FreeResult($id = "me")
     {
@@ -482,7 +432,6 @@ class DedeSqlite
             }
         }
     }
-
     //设置SQL语句，会自动把SQL语句里的#@__替换为$this->dbPrefix(在配置文件中为$cfg_dbprefix)
     function SetQuery($sql)
     {
@@ -494,7 +443,6 @@ class DedeSqlite
             $this->queryString = preg_replace("/CONCAT\(([^\)]*?)\)/i", str_replace(",", "||", $matches[1]), $this->queryString);
             $this->queryString = str_replace("'||'", "','", $this->queryString);
         }
-
         $this->queryString = preg_replace("/FIND_IN_SET\('([\w]+)', arc.flag\)>0/i", "(',' || arc.flag || ',') LIKE '%,\\1,%'", $this->queryString);
         $this->queryString = preg_replace("/FIND_IN_SET\('([\w]+)', arc.flag\)<1/i", "(',' || arc.flag || ',') NOT LIKE '%,\\1,%'", $this->queryString);
         if (preg_match("/CREATE TABLE/i", $this->queryString)) {
@@ -502,7 +450,6 @@ class DedeSqlite
             $this->queryString = preg_replace('/character set (.*?) /i', '', $this->queryString);
             $this->queryString = preg_replace('/unsigned/i', '', $this->queryString);
             $this->queryString = str_replace('TYPE=MyISAM', '', $this->queryString);
-
             $this->queryString = preg_replace('/TINYINT\(([\d]+)\)/i', 'INTEGER', $this->queryString);
             $this->queryString = preg_replace('/mediumint\(([\d]+)\)/i', 'INTEGER', $this->queryString);
             $this->queryString = preg_replace('/smallint\(([\d]+)\)/i', 'INTEGER', $this->queryString);
@@ -526,12 +473,10 @@ class DedeSqlite
         $this->queryString = str_replace('\t\n', "", $this->queryString);
         //var_dump($this->queryString);
     }
-
     function SetSql($sql)
     {
         $this->SetQuery($sql);
     }
-
     function RecordLog($runtime = 0)
     {
         $RecordLogFile = dirname(__FILE__).'/../data/mysqli_record_log.inc';
@@ -547,7 +492,6 @@ EOT;
         @fwrite($fp, $savemsg);
         @fclose($fp);
     }
-
     //显示数据链接错误信息
     function DisplayError($msg)
     {
@@ -563,17 +507,14 @@ EOT;
             $emsg .= "<div style='color:blue'><br>Error page: <span style='color:#dc3545'>".$this->GetCurUrl()."</span></div>\r\n";
             $emsg .= "<div>Error infos: {$msg}</div>\r\n";
             $emsg .= "<br></div></div>\r\n";
-
             echo $emsg;
         }
-
         $savemsg = 'Page: '.$this->GetCurUrl()."\r\nError: ".$msg."\r\nTime".date('Y-m-d H:i:s');
         //保存MySql错误日志
         $fp = @fopen($errorTrackFile, 'a');
         @fwrite($fp, '<'.'?php  exit();'."\r\n/*\r\n{$savemsg}\r\n*/\r\n?".">\r\n");
         @fclose($fp);
     }
-
     //获得当前的脚本网址
     function GetCurUrl()
     {
@@ -591,13 +532,11 @@ EOT;
         return $nowurl;
     }
 }
-
 //复制一个对象副本
 function CopySQLiPoint(&$ndsql)
 {
     $GLOBALS['dsqlite'] = $ndsql;
 }
-
 //SQL语句过滤程序，由80sec提供，这里作了适当的修改
 if (!function_exists('CheckSql')) {
     function CheckSql($db_string, $querytype = 'select')
@@ -610,18 +549,15 @@ if (!function_exists('CheckSql')) {
         $log_file = DEDEINC.'/../data/'.md5($cfg_cookie_encode).'_safe.txt';
         $userIP = GetIP();
         $getUrl = GetCurUrl();
-
         //如果是普通查询语句，直接过滤一些特殊语法
         if ($querytype == 'select') {
             $notallow1 = "[^0-9a-z@\._-]{1,}(union|sleep|benchmark|load_file|outfile)[^0-9a-z@\.-]{1,}";
-
             //$notallow2 = "--|/\*";
             if (preg_match("/".$notallow1."/i", $db_string)) {
                 fputs(fopen($log_file, 'a+'), "$userIP||$getUrl||$db_string||SelectBreak\r\n");
                 exit("<span>Safe Alert: Request Error step 1 !</span>");
             }
         }
-
         //完整的SQL检查
         while (TRUE) {
             $pos = strpos($db_string, '\'', $pos + 1);
@@ -645,7 +581,6 @@ if (!function_exists('CheckSql')) {
         }
         $clean .= substr($db_string, $old_pos);
         $clean = trim(strtolower(preg_replace(array('~\s+~s'), array(' '), $clean)));
-
         if (
             strpos($clean, '@') !== FALSE  or strpos($clean, 'char(') !== FALSE or strpos($clean, '"') !== FALSE
             or strpos($clean, '$s$$s$') !== FALSE
@@ -654,19 +589,16 @@ if (!function_exists('CheckSql')) {
             if (preg_match("#^create table#i", $clean)) $fail = FALSE;
             $error = "unusual character";
         }
-
         //老版本的Mysql并不支持union，常用的程序里也不使用union，但是一些黑客使用它，所以检查它
         if (strpos($clean, 'union') !== FALSE && preg_match('~(^|[^a-z])union($|[^[a-z])~s', $clean) != 0) {
             $fail = TRUE;
             $error = "union detect";
         }
-
         //发布版本的程序可能比较少包括--,#这样的注释，但是黑客经常使用它们
         elseif (strpos($clean, '/*') > 2 || strpos($clean, '--') !== FALSE || strpos($clean, '#') !== FALSE) {
             $fail = TRUE;
             $error = "comment detect";
         }
-
         //这些函数不会被使用，但是黑客会用它来操作文件，down掉数据库
         elseif (strpos($clean, 'sleep') !== FALSE && preg_match('~(^|[^a-z])sleep($|[^[a-z])~s', $clean) != 0) {
             $fail = TRUE;
@@ -681,7 +613,6 @@ if (!function_exists('CheckSql')) {
             $fail = TRUE;
             $error = "file fun detect";
         }
-
         //老版本的MYSQL不支持子查询，我们的程序里可能也用得少，但是黑客可以使用它来查询数据库敏感信息
         elseif (preg_match('~\([^)]*?select~s', $clean) != 0) {
             $fail = TRUE;

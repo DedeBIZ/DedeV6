@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>增加分类</title>
 <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/base.css">
 <script language="javascript" src="../static/js/jquery.js"></script>
 <script src="../static/js/bootstrap.bundle.js"></script>
 <script language="javascript" src="../static/js/webajax.js"></script>
@@ -58,9 +58,9 @@ table{border-collapse:separate}
     </tr>
   </table>
 <form name="form1" action="archives_sg_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit()">
-  <input type="hidden" name="channelid" value="<?php echo $channelid?>" />
-  <input type="hidden" name="cid" value="<?php echo $cid?>" />
-  <input type="hidden" name="dopost" value="save" />
+  <input type="hidden" name="channelid" value="<?php echo $channelid?>">
+  <input type="hidden" name="cid" value="<?php echo $cid?>">
+  <input type="hidden" name="dopost" value="save">
   <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
   <table width="98%"  border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #cfcfcf;background:#ffffff;">
     <tr>
@@ -101,7 +101,7 @@ table{border-collapse:separate}
             	<table width="100%" border="0" cellspacing="1" cellpadding="1">
                 <tr>
                   <td height="26">
-                    <input name="picname" type="text" id="picname" style="width:260px" />
+                    <input name="picname" type="text" id="picname" style="width:260px">
                     <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' />&nbsp;远程</label>
                     <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                     <button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>

@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/archive/partview.class.php");
-
 /**
  * 单表模型列表视图类
  *
@@ -26,7 +25,6 @@ class sgpage
     var $Fields;
     var $TypeLink;
     var $partView;
-
     /**
      *  php5构造函数
      *
@@ -37,14 +35,12 @@ class sgpage
     function __construct($aid)
     {
         global $cfg_basedir, $cfg_templets_dir, $cfg_df_style, $envs;
-
         $this->dsql = $GLOBALS['dsql'];
         $this->dtp = new DedeTagParse();
         $this->dtp->refObj = $this;
         $this->dtp->SetNameSpace("dede", "{", "}");
         $this->Fields = $this->dsql->GetOne("SELECT * FROM `#@__sgpage` WHERE aid='$aid' ");
         $envs['aid'] = $this->Fields['aid'];
-
         //设置一些全局参数的值
         foreach ($GLOBALS['PubFields'] as $k => $v) {
             $this->Fields[$k] = $v;
@@ -58,13 +54,11 @@ class sgpage
         $this->dtp->LoadTemplate($tplfile);
         $this->ParseTemplet();
     }
-
     //php4构造函数
     function sgpage($aid)
     {
         $this->__construct($aid);
     }
-
     /**
      *  显示内容
      *
@@ -75,7 +69,6 @@ class sgpage
     {
         $this->dtp->Display();
     }
-
     /**
      *  获取内容
      *
@@ -86,7 +79,6 @@ class sgpage
     {
         return $this->dtp->GetResult();
     }
-
     /**
      *  保存结果为文件
      *
@@ -99,7 +91,6 @@ class sgpage
         $filename = preg_replace("/\/{1,}/", '/', $filename);
         $this->dtp->SaveTo($filename);
     }
-
     /**
      *  解析模板里的标签
      *
@@ -111,7 +102,6 @@ class sgpage
         $GLOBALS['envs']['likeid'] = $this->Fields['likeid'];
         MakeOneTag($this->dtp, $this);
     }
-
     //关闭所占用的资源
     function Close()
     {

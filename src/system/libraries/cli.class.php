@@ -16,7 +16,6 @@ function is_cli()
 {
     return (PHP_SAPI === 'cli' || defined('STDIN'));
 }
-    
 class DedeCli
 {
     public static $readline_support = false;
@@ -24,7 +23,6 @@ class DedeCli
     protected static $wait_msg = "Press any key to continue";
     protected static $segments = [];
     protected static $options = [];
-
     protected static $foreground_colors = [
         'black'        => '0;30',
         'dark_gray'    => '1;30',
@@ -44,7 +42,6 @@ class DedeCli
         'light_gray'   => '0;37',
         'white'        => '1;37',
     ];
-
     protected static $background_colors = [
         'black'      => '40',
         'red'        => '41',
@@ -55,7 +52,6 @@ class DedeCli
         'cyan'       => '46',
         'light_gray' => '47',
     ];
-
     public static function init()
     {
         if (is_cli())
@@ -63,12 +59,10 @@ class DedeCli
             static::$readline_support = extension_loaded('readline');
             static::parseCommandLine();
             static::$initialized = true;
-        } else
-		{
+        } else {
 			define('STDOUT', 'php://output');
 		}
     }
-
     private static function parseCommandLine()
     {
         $optionsFound = false;
@@ -96,7 +90,6 @@ class DedeCli
             $optionsFound = false;
         }
     }
-
     public static function getOption(string $name)
     {
         if (! array_key_exists($name, static::$options))
@@ -108,12 +101,10 @@ class DedeCli
             : static::$options[$name];
         return $val;
     }
-
     public static function getOptions()
     {
         return static::$options;
     }
-
     public static function getOptionString(): string
     {
         if (! count(static::$options))
@@ -131,7 +122,6 @@ class DedeCli
         }
         return $out;
     }
-
     public static function newLine(int $num = 1)
     {
         for ($i = 0; $i < $num; $i++)
@@ -139,12 +129,10 @@ class DedeCli
             static::write('');
         }
     }
-
     public static function isWindows()
     {
         return 'win' === strtolower(substr(php_uname("s"), 0, 3));
     }
-
     public static function color(string $text, string $foreground, string $background = null, string $format = null)
     {
         if (static::isWindows() && ! isset($_SERVER['ANSICON']))
@@ -171,7 +159,6 @@ class DedeCli
         $string .= $text."\033[0m";
         return $string;
     }
-
     public static function getWidth(int $default = 80): int
     {
         if (static::isWindows())
@@ -180,7 +167,6 @@ class DedeCli
         }
         return (int)shell_exec('tput cols');
     }
-
     public static function getHeight(int $default = 32): int
     {
         if (static::isWindows())
@@ -189,7 +175,6 @@ class DedeCli
         }
         return (int)shell_exec('tput lines');
     }
-
     public static function showProgress($thisStep = 1, int $totalSteps = 10)
     {
         static $inProgress = false;
@@ -210,7 +195,6 @@ class DedeCli
             fwrite(STDOUT, "\007");
         }
     }
-
     public static function wrap(string $string = null, int $max = 0, int $pad_left = 0): string
     {
         if (empty($string))
@@ -236,9 +220,7 @@ class DedeCli
                 if ( ! $first)
                 {
                     $line = str_repeat(" ", $pad_left).$line;
-                }
-                else
-                {
+                } else {
                     $first = false;
                 }
             });
@@ -246,15 +228,12 @@ class DedeCli
         }
         return $lines;
     }
-
-
     public static function clearScreen()
     {
         static::isWindows()
             ? static::newLine(40)
             : fwrite(STDOUT, chr(27)."[H".chr(27)."[2J");
     }
-
     public static function input(string $prefix = null): string
     {
         if (static::$readline_support)
@@ -264,7 +243,6 @@ class DedeCli
         echo $prefix;
         return fgets(STDIN);
     }
-
     /**
      * 询问用户输入.这个可以1个或2个参数.
      *
@@ -287,11 +265,9 @@ class DedeCli
         $options = [];
         $output  = '';
         $default = null;
-
         $arg_count = count($args);
         $required = end($args) === true;
         $required === true && --$arg_count;
-
         switch ($arg_count)
         {
             case 2:
@@ -347,7 +323,6 @@ class DedeCli
         }
         return empty($input) ? '' : $input;
     }
-
     public static function wait(int $seconds, bool $countdown = false)
     {
         if ($countdown === true)
@@ -364,15 +339,12 @@ class DedeCli
             if ($seconds > 0)
             {
                 sleep($seconds);
-            }
-            else
-            {
+            } else {
                 static::write(static::$wait_msg);
                 static::input();
             }
         }
     }
-
     public static function error(string $text, string $foreground = 'light_red', string $background = null)
     {
         if ($foreground || $background)
@@ -381,7 +353,6 @@ class DedeCli
         }
         fwrite(STDERR, $text.PHP_EOL);
     }
-
     public static function write(string $text = '', string $foreground = null, string $background = null)
     {
         if ($foreground || $background)
@@ -391,5 +362,4 @@ class DedeCli
         fwrite(STDOUT, $text.PHP_EOL);
     }
 }
-
 DedeCli::init();

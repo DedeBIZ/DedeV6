@@ -12,25 +12,21 @@
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 require_once(DEDEINC."/channelunit.class.php");
 if (!isset($open)) $open = 0;
-
 //读取链接列表
 if ($open == 0) {
     $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
     if ($aid == 0) exit('dedebiz');
-
     $arcRow = GetOneArchive($aid);
     if ($arcRow['aid'] == '') {
         ShowMsg('无法获取未知文档的信息!', '-1');
         exit();
     }
     extract($arcRow, EXTR_SKIP);
-
     $cu = new ChannelUnit($arcRow['channel'], $aid);
     if (!is_array($cu->ChannelFields)) {
         ShowMsg('获取文档信息失败', '-1');
         exit();
     }
-
     $vname = '';
     foreach ($cu->ChannelFields as $k => $v) {
         if ($v['type'] == 'softlinks') {
@@ -39,11 +35,9 @@ if ($open == 0) {
         }
     }
     $row = $dsql->GetOne("SELECT $vname FROM `".$cu->ChannelInfos['addtable']."` WHERE aid='$aid'");
-
     include_once(DEDEINC.'/taglib/channel/softlinks.lib.php');
     $ctag = '';
     $downlinks = ch_softlinks($row[$vname], $ctag, $cu, '', TRUE);
-
     require_once(DEDETEMPLATE.'/plus/download_links_templet.htm');
     exit();
 }
@@ -66,7 +60,6 @@ else if ($open == 1) {
         $query = " INSERT INTO `#@__downloads`(`hash`,`id`,`downloads`) VALUES('$hash','$id',1); ";
         $dsql->ExecNoneQuery($query);
     }
-
     $row = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
     $sites = explode("\n", $row['sites']);
     $allowed = array();
@@ -77,12 +70,10 @@ else if ($open == 1) {
             $allowed[] = $domain['host'];
         }
     }
-
     if (!in_array($linkinfo['host'], $allowed)) {
         ShowMsg('非下载地址，禁止访问', 'javascript:;');
         exit;
     }
-
     header("location:$link");
     exit();
 }
@@ -99,7 +90,6 @@ else if ($open == 2) {
         exit();
     }
     $mid = $row['mid'];
-
     //读取连接列表、下载权限信息
     $row = $dsql->GetOne("SELECT softlinks,daccess,needmoney FROM `{$row['addtable']}` WHERE aid='$id' ");
     if (empty($row['softlinks'])) {
@@ -113,7 +103,6 @@ else if ($open == 2) {
         $needRank = $row['daccess'];
         $needMoney = $row['needmoney'];
     }
-
     //分析连接列表
     require_once(DEDEINC.'/dedetag.class.php');
     $softUrl = '';
@@ -161,16 +150,13 @@ else if ($open == 2) {
         ShowMsg('找不到所需要的软件资源', 'javascript:;');
         exit();
     }
-    //-------------------------
     //读取文档信息，判断权限
-    //-------------------------
     $arcRow = GetOneArchive($id);
     if ($arcRow['aid'] == '') {
         ShowMsg('无法获取未知文档的信息!', '-1');
         exit();
     }
     extract($arcRow, EXTR_SKIP);
-
     //处理需要下载权限的软件
     if ($needRank > 0 || $needMoney > 0) {
         require_once(DEDEINC.'/memberlogin.class.php');
@@ -179,7 +165,6 @@ else if ($open == 2) {
         $arctitle = $title;
         $arcLinktitle = "<a href=\"{$arcurl}\">".$arctitle."</a>";
         $pubdate = GetDateTimeMk($pubdate);
-
         //会员级别不足
         if (($needRank > 1 && $cfg_ml->M_Rank < $needRank && $mid != $cfg_ml->M_ID)) {
             $dsql->Execute('me', "SELECT * FROM `#@__arcrank` ");
@@ -192,7 +177,6 @@ else if ($open == 2) {
             include_once(DEDETEMPLATE.'/plus/view_msg.htm');
             exit();
         }
-
         //以下为正常情况，自动扣点数
         //如果文章需要金币，检查用户是否浏览过本文档
         if ($needMoney > 0  && $mid != $cfg_ml->M_ID) {

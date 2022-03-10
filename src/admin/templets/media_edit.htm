@@ -4,8 +4,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 	<title>修改文件</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/base.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/base.css">
 	<script language="javascript" src="../static/js/jquery.js"></script>
 	<script language="javascript" src="../static/js/bootstrap.bundle.js"></script>
 	<script language="javascript" src="js/main.js"></script>
@@ -33,8 +33,7 @@
 			<td height="19" background='images/tbg.gif'>
 				<table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
 					<tr>
-						<td width="2%" align="center" valign="middle"><img src="images/item_tt2.gif" width="7"
-								height="15"></td>
+						<td width="2%" align="center" valign="middle"><img src="images/item_tt2.gif"></td>
 						<td width="44%"><strong>修改媒体：</strong></td>
 						<td width="54%" align="right"><a href='media_main.php' class="btn btn-success btn-sm">附件/媒体数据管理</a></td>
 					</tr>
@@ -54,30 +53,25 @@
 					<form enctype="multipart/form-data" name='form1' action="media_edit.php" method="POST"
 						onSubmit="return CheckSubmit();">
 						<input type="hidden" name="dopost" value="save">
-						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
+						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 						<input type="hidden" name="aid" value="<?php echo $aid?>">
 						<tr>
 							<td width="15%" height="30" align="left" bgcolor="#FFFFFF" class='bline'>媒体类型：</td>
 							<td width="85%" height="26" align="left" bgcolor="#FFFFFF" class='bline'>
-								<label><input type="radio" name="mediatype" class="np" value="1"
-									<?php if($myrow['mediatype']==1) echo " checked"; ?>>
+								<label><input type="radio" name="mediatype" class="np" value="1" <?php if($myrow['mediatype']==1) echo " checked"; ?>>
 								图片</label>
-								<label><input type="radio" name="mediatype" class="np" value="2"
-									<?php if($myrow['mediatype']==2) echo " checked"; ?>>
+								<label><input type="radio" name="mediatype" class="np" value="2" <?php if($myrow['mediatype']==2) echo " checked"; ?>>
 								FLASH</label>
-								<label><input type="radio" name="mediatype" class="np" value="3"
-									<?php if($myrow['mediatype']==3) echo " checked"; ?>>
+								<label><input type="radio" name="mediatype" class="np" value="3" <?php if($myrow['mediatype']==3) echo " checked"; ?>>
 								视频/音频</label>
-								<label><input type="radio" name="mediatype" class="np" value="4"
-									<?php if($myrow['mediatype']==4) echo " checked"; ?>>
+								<label><input type="radio" name="mediatype" class="np" value="4" <?php if($myrow['mediatype']==4) echo " checked"; ?>>
 								附件/其它</label>
 							</td>
 						</tr>
 						<tr>
 							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>说明标题：</td>
 							<td height="26" align="left" bgcolor="#FFFFFF" class='bline'>
-								<input name="title" type="text" id="title" size="30"
-									value="<?php echo $myrow['title']?>">
+								<input name="title" type="text" id="title" size="30" value="<?php echo $myrow['title']?>">
 							</td>
 						</tr>
 						<tr>
@@ -88,50 +82,38 @@
 						<tr>
 							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>附加参数：</td>
 							<td height="26" align="left" bgcolor="#FFFFFF" class='bline'>
-								宽：
-								<input name="mediawidth" type="text" id="mediawidth" size="5"
-									value="<?php echo $myrow['width']?>">
-								(像素)　高：
-								<input name="mediaheight" type="text" id="mediaheight" size="5"
-									value="<?php echo $myrow['height']?>">
-								(像素)　播放时间：
-								<input name="playtime" type="text" id="playtime" size="5"
-									value="<?php echo $myrow['playtime']?>">
-								(分钟)
+								宽：<input name="mediawidth" type="text" id="mediawidth" size="5" value="<?php echo $myrow['width']?>">（像素）
+								高：<input name="mediaheight" type="text" id="mediaheight" size="5" value="<?php echo $myrow['height']?>">（像素）
+								播放时间：<input name="playtime" type="text" id="playtime" size="5" value="<?php echo $myrow['playtime']?>">（分钟）
 							</td>
 						</tr>
 						<tr>
 							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>原文件：</td>
 							<td align="left" bgcolor="#FFFFFF" class='bline'>
-								<input name="filename" type="text" id="filename" style='width:350px'
-									value="<?php echo $myrow['url']?>">
+								<input name="filename" type="text" id="filename" style='width:350px' value="<?php echo $myrow['url']?>">
 								<a href='<?php echo $myrow['url']?>' target='_blank'>[查看]</a>
 							</td>
 						</tr>
 						<?php
-if($myrow['mediatype']==1)
-{
- 	$fullfilename = $cfg_basedir.$myrow['url'];
- 	if(file_exists($fullfilename)){
- 		$info = "";
- 		$sizes = getimagesize($fullfilename,$info);
- 		if(is_array($sizes)){
- 			if($sizes[0]>200) $w=200;
- 			else $w = $sizes[0];
-?>
+						if($myrow['mediatype']==1)
+						{
+							$fullfilename = $cfg_basedir.$myrow['url'];
+							if(file_exists($fullfilename)){
+								$info = "";
+								$sizes = getimagesize($fullfilename,$info);
+								if(is_array($sizes)){
+									if($sizes[0]>200) $w=200;
+									else $w = $sizes[0];
+						?>
 						<tr>
 							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>预览：</td>
 							<td align="left" bgcolor="#FFFFFF" class='bline'>
-								<a href='<?php echo $myrow['url']?>' target='_blank'><img
-										src='<?php echo $myrow['url']."?q=".time()?>' width='<?php echo $w?>' border='0'
-										id='picview'></a>
+								<a href="<?php echo $myrow['url']?>" target="_blank"><img src="<?php echo $myrow['url'].'?q='.time()?>" width="<?php echo $w?>" id="picview"></a>
 							</td>
 						</tr>
 						<?php } } } ?>
 						<tr>
-							<td height="26" align="center" bgcolor="#FFFFFF" class='bline'>
-								修改文件：
-							</td>
+							<td height="26" align="center" bgcolor="#FFFFFF" class='bline'>修改文件：</td>
 							<td align="left" bgcolor="#FFFFFF" class='bline'>
 								<input name="upfile" type="file" id="upfile" style='width:300px' size='30'>
 							</td>
@@ -153,5 +135,4 @@ if($myrow['mediatype']==1)
 		</tr>
 	</table>
 </body>
-
 </html>

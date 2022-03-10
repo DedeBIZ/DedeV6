@@ -15,7 +15,6 @@ class zip
     var $eof_ctrl_dir = "\x50\x4b\x05\x06\x00\x00\x00\x00";
     var $old_offset = 0;
     var $dirs = array(".");
-
     /**
      *  获取zip文件中的文件列表
      *
@@ -51,7 +50,6 @@ class zip
         }
         return $ret;
     }
-
     /**
      *  增加文件到压缩文件
      *
@@ -76,7 +74,6 @@ class zip
         }
         return $ret;
     }
-
     /**
      *  获取文件,获取后可以让其进行下载
      *
@@ -91,7 +88,6 @@ class zip
             pack('v', sizeof($this->ctrl_dir)).pack('v', sizeof($this->ctrl_dir)) .
             pack('V', strlen($ctrldir)).pack('V', strlen($data))."\x00\x00";
     }
-
     /**
      *  增加文件目录
      *
@@ -116,7 +112,6 @@ class zip
         $this->old_offset = $new_offset;
         $this->dirs[] = $name;
     }
-
     /**
      *  编译指定的文件为zip文件（filename可以为文件数组array、目录dir或单个文件file）
      *
@@ -163,7 +158,6 @@ class zip
             return 0;
         }
     }
-
     /**
      *  读取某文件夹的所有文件
      *
@@ -193,7 +187,6 @@ class zip
         }
         return $files;
     }
-
     /**
      *  增加文件
      *
@@ -245,7 +238,6 @@ class zip
         $this->ctrl_dir[] = $cdrec;
         return true;
     }
-
     /**
      *  返回时间
      *
@@ -266,7 +258,6 @@ class zip
         return (($timearray['year'] - 1980) << 25) | ($timearray['mon'] << 21) |     ($timearray['mday'] << 16) | ($timearray['hours'] << 11) |
             ($timearray['minutes'] << 5) | ($timearray['seconds'] >> 1);
     }
-
     /**
      *  解压整个压缩包
      *  直接用 Extract 会有路径问题，本函数先从列表中获得文件信息并创建好所有目录然后才运行 Extract
@@ -293,7 +284,6 @@ class zip
         }
         $this->Extract($zn, $to);
     }
-
     /**
      *  解压单个文件
      *
@@ -333,7 +323,6 @@ class zip
         fclose($zip);
         return $stat;
     }
-
     function ReadFileHeader($zip)
     {
         $binary_data = fread($zip, 30);
@@ -366,7 +355,6 @@ class zip
         $header['status'] = "ok";
         return $header;
     }
-
     function ReadCentralFileHeaders($zip)
     {
         $binary_data = fread($zip, 46);
@@ -404,7 +392,6 @@ class zip
         }
         return $header;
     }
-
     function ReadCentralDir($zip, $zip_name)
     {
         $size = filesize($zip_name);
@@ -416,7 +403,6 @@ class zip
         @fseek($zip, $size - $maximum_size);
         $pos = ftell($zip);
         $bytes = 0x00000000;
-
         while ($pos < $size) {
             $byte = @fread($zip, 1);
             $bytes = ($bytes << 8) | Ord($byte);
@@ -440,7 +426,6 @@ class zip
         $centd['disk'] = $data['disk'];
         return $centd;
     }
-
     function ExtractFile($header, $to, $zip)
     {
         $header = $this->readfileheader($zip);
@@ -490,7 +475,6 @@ class zip
                     @fwrite($fp, $binary_data, $read_size);
                     $size -= $read_size;
                 }
-
                 $binary_data = pack('VV', $header['crc'], $header['size']);
                 fwrite($fp, $binary_data, 8);
                 fclose($fp);

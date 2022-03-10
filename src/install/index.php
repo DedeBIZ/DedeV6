@@ -198,9 +198,7 @@ else if($step==2)
                     if(preg_match('#CREATE#i', $query))
                     {
                         $rs = mysql_query(preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query),$conn);
-                    }
-                    else
-                    {
+                    } else {
                         $rs = mysql_query($query,$conn);
                     }
                 }

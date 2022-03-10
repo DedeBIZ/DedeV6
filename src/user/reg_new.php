@@ -92,9 +92,7 @@ if ($step == 1) {
             $dsql->ExecuteNoneQuery($spacequery);
             //写入其它默认数据
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES('$mid','DedeBIZ','https://www.dedebiz.com'); ");
-            //----------------------------------------------
             //模拟登录
-            //---------------------------
             $cfg_ml = new MemberLogin(7 * 3600);
             $rs = $cfg_ml->CheckUser($userid, $userpwd);
             ShowMsg('您已经登录系统，无需重新注册', 'index.php');

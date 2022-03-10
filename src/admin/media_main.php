@@ -13,7 +13,6 @@ require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($dopost)) $dopost = '';
-
 //文件式管理器
 if ($dopost == 'filemanager') {
     if (file_exists('./file_manage_main.php')) {
@@ -23,9 +22,7 @@ if ($dopost == 'filemanager') {
     }
     exit();
 }
-
 //数据库管理
-//------------------------------------------------------------------------
 if (empty($keyword)) $keyword = "";
 $addsql = " WHERE (u.title LIKE '%$keyword%' OR u.url LIKE '%$keyword%') ";
 if (empty($membertype)) {
@@ -43,8 +40,7 @@ if (empty($mediatype)) {
 if ($mediatype > 1) {
     $addsql .= " AND u.mediatype='$membertype' ";
 }
-$sql = "SELECT u.aid,u.title,u.url,u.mediatype,u.filesize,u.mid,u.uptime
-,a.userid AS adminname,m.userid AS membername
+$sql = "SELECT u.aid,u.title,u.url,u.mediatype,u.filesize,u.mid,u.uptime,a.userid AS adminname,m.userid AS membername
 FROM #@__uploads u
 LEFT JOIN #@__admin a ON  a.id = u.mid
 LEFT JOIN #@__member m ON m.mid = u.mid
@@ -57,7 +53,6 @@ $dlist->SetParameter("membertype", $membertype);
 $dlist->SetTemplate(DEDEADMIN."/templets/media_main.htm");
 $dlist->SetSource($sql);
 $dlist->Display();
-
 function MediaType($tid, $nurl)
 {
     if ($tid == 1) {
@@ -70,13 +65,11 @@ function MediaType($tid, $nurl)
         return "附件/其它";
     }
 }
-
 function GetFileSize($fs)
 {
     $fs = $fs / 1024;
     return trim(sprintf("%10.1f", $fs)." K");
 }
-
 function UploadAdmin($adminid, $mid)
 {
     if ($adminid != '') return $adminid;

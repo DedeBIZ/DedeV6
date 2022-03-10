@@ -9,55 +9,43 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 require_once(DEDEINC.'/enums.func.php');
 require_once(DEDEDATA.'/enums/nativeplace.php');
 require_once(DEDEDATA.'/enums/infotype.php');
-
 function lib_infolink(&$ctag, &$refObj)
 {
     global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite;
     global $em_nativeplaces, $em_infotypes;
-
     //属性处理
     //$attlist="row|12,titlelen|24";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
     //extract($ctag->CAttribute->Items, EXTR_SKIP);
-
     $cmspath = ((empty($cfg_cmspath) || !preg_match("#\/$#", $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath);
     $baseurl = preg_replace("#\/$#", '', $cfg_mainsite).$cmspath;
-
     $smalltypes = '';
     if (!empty($refObj->TypeLink->TypeInfos['smalltypes'])) {
         $smalltypes = explode(',', $refObj->TypeLink->TypeInfos['smalltypes']);
     }
-
     if (empty($refObj->Fields['typeid'])) {
         $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE channeltype='-8' And reid = '0' ");
         $typeid = (is_array($row) ? $row['id'] : 0);
     } else {
         $typeid = $refObj->Fields['typeid'];
     }
-
     $innerText = trim($ctag->GetInnerText());
     if (empty($innerText)) $innerText = GetSysTemplets("info_link.htm");
     $ctp = new DedeTagParse();
     $ctp->SetNameSpace('field', '[', ']');
     $ctp->LoadSource($innerText);
-
     $revalue = $seli = '';
     $channelid = (empty($refObj->TypeLink->TypeInfos['channeltype']) ? -8 : $refObj->TypeLink->TypeInfos['channeltype']);
-
     $fields = array(
         'nativeplace' => '', 'infotype' => '', 'typeid' => $typeid,
         'channelid' => $channelid, 'linkallplace' => '', 'linkalltype' => ''
     );
-
     $fields['nativeplace'] = $fields['infotype'] = '';
-
     $fields['linkallplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$infotype}'>不限</a>";
     $fields['linkalltype'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}'>不限</a>";
-
     //地区链接
     if (empty($nativeplace)) {
         foreach ($em_nativeplaces as $eid => $em) {
@@ -103,8 +91,6 @@ function lib_infolink(&$ctag, &$refObj)
             }
         }
     }
-
-
     if (is_array($ctp->CTags)) {
         foreach ($ctp->CTags as $tagid => $ctag) {
             if (isset($fields[$ctag->GetName()])) {
@@ -113,6 +99,5 @@ function lib_infolink(&$ctag, &$refObj)
         }
         $revalue .= $ctp->GetResult();
     }
-
     return $revalue;
 }

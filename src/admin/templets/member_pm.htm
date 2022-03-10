@@ -5,8 +5,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>用户短信管理</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
   <style type="text/css">
     .rb {
       border-right: 1px solid #98CAEF
@@ -27,7 +27,7 @@
 <body background="images/allbg.gif">
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt" style="padding-left:10px">短信管理</div>
+    <div class="bodytitletxt">短信管理</div>
   </div>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-borderless" style="background:#CFCFCF;margin-bottom:10px;">
     <tr>
@@ -37,10 +37,10 @@
             <tr>
               <td width="90">&nbsp;关键字：</td>
               <td width="110" align="center">
-                <input name="keyword" type="text" id="keyword" size="12" style="width:100" value="{dede:global name='keyword'/}" />
+                <input name="keyword" type="text" id="keyword" size="12" style="width:100" value="{dede:global name='keyword'/}">
               </td>
               <td width="86">&nbsp;用户：</td>
-              <td width="74"><input name="username" type="text" id="username" size="12" style="width:100" value="{dede:global name='username'/}" /></td>
+              <td width="74"><input name="username" type="text" id="username" size="12" style="width:100" value="{dede:global name='username'/}"></td>
               <td width="100" align="center">
                 <select name="folder" id="folder">
                   <option value="inbox">收件箱</option>
@@ -100,5 +100,4 @@
   </table>
 
 </body>
-
 </html>

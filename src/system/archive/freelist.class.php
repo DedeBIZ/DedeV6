@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once DEDEINC.'/archive/partview.class.php';
 @set_time_limit(0);
-
 /**
  * 自由列表类
  *
@@ -36,7 +35,6 @@ class FreeList
     var $ListObj;
     var $TempletsFile;
     var $maintable;
-
     //php5构造函数
     function __construct($fid)
     {
@@ -49,7 +47,6 @@ class FreeList
         $this->FLInfos = $this->dsql->GetOne("SELECT * FROM `#@__freelist` WHERE aid='$fid' ");
         $liststr = $this->FLInfos['listtag'];
         $this->FLInfos['maxpage'] = (empty($this->FLInfos['maxpage']) ? 100 : $this->FLInfos['maxpage']);
-
         //载入数据里保存的列表属性信息
         $ndtp = new DedeTagParse();
         $ndtp->SetNameSpace("dede", "{", "}");
@@ -60,7 +57,6 @@ class FreeList
             $this->PageSize = 30;
         }
         $channelid = $this->ListObj->GetAtt('channel');
-
         /*
         if(empty($channelid))
         {
@@ -73,12 +69,10 @@ class FreeList
         */
         $channelid = intval($channelid);
         $this->maintable = '#@__archives';
-
         //全局模板解析器
         $this->dtp = new DedeTagParse();
         $this->dtp->SetNameSpace("dede", "{", "}");
         $this->dtp->SetRefObj($this);
-
         //设置一些全局参数的值
         $this->Fields['aid'] = $this->FLInfos['aid'];
         $this->Fields['title'] = $this->FLInfos['title'];
@@ -98,18 +92,15 @@ class FreeList
         $this->PartView = new PartView();
         $this->CountRecord();
     }
-
     //php4构造函数
     function FreeList($fid)
     {
         $this->__construct($fid);
     }
-
     //关闭相关资源
     function Close()
     {
     }
-
     /**
      *  统计列表里的记录
      *
@@ -119,7 +110,6 @@ class FreeList
     function CountRecord()
     {
         global $cfg_list_son, $cfg_needsontype;
-
         //统计数据库记录
         $this->TotalResult = -1;
         if (isset($GLOBALS['TotalResult'])) {
@@ -130,7 +120,6 @@ class FreeList
         } else {
             $this->PageNo = 1;
         }
-
         //已经有总记录的值
         if ($this->TotalResult == -1) {
             $addSql  = " arcrank > -1 AND channel>-1 ";
@@ -142,7 +131,6 @@ class FreeList
             if (empty($channelid)) {
                 $channelid = 0;
             }
-
             //是否指定栏目条件
             if (!empty($typeid)) {
                 if ($cfg_list_son == 'N') {
@@ -151,18 +139,15 @@ class FreeList
                     $addSql .= " AND typeid in (".GetSonIds($typeid, 0, TRUE).") ";
                 }
             }
-
             //自定义属性条件
             if ($att != '') {
                 $flags = explode(',', $att);
                 for ($i = 0; isset($flags[$i]); $i++) $addSql .= " AND FIND_IN_SET('{$flags[$i]}',flag)>0 ";
             }
-
             //文档的频道模型
             if ($channelid > 0 && !preg_match("#spec#i", $listtype)) {
                 $addSql .= " AND channel = '$channelid' ";
             }
-
             //推荐文档 带缩略图  专题文档
             if (preg_match("#commend#i", $listtype)) {
                 $addSql .= " AND FIND_IN_SET('c',flag) > 0  ";
@@ -195,7 +180,6 @@ class FreeList
             $this->TotalResult = $this->TotalPage * $this->PageSize;
         }
     }
-
     /**
      *  载入模板
      *
@@ -213,7 +197,6 @@ class FreeList
         $this->dtp->LoadTemplate($tempfile);
         $this->TempletsFile = preg_replace("#^".$GLOBALS['cfg_basedir']."#", '', $tempfile);
     }
-
     /**
      *  列表创建HTML
      *
@@ -245,7 +228,6 @@ class FreeList
         $firstFile = '';
         for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
             $this->ParseDMFields($this->PageNo, 1);
-
             //文件名
             $makeFile = $this->GetMakeFileRule();
             if (!preg_match("#^\/#", $makeFile)) {
@@ -258,7 +240,6 @@ class FreeList
             if ($this->PageNo == 1) {
                 $firstFile = $makeFile;
             }
-
             //保存文件
             $this->dtp->SaveTo($makeFile);
             echo "<div class=\"alert alert-success\" role=\"alert\">成功创建：<a href='".preg_replace("#\/{1,}#", "/", $murl)."' target='_blank'>".preg_replace("#\/{1,}#", "/", $murl)."</a></div><br>";
@@ -274,7 +255,6 @@ class FreeList
         $this->Close();
         return $murl;
     }
-
     /**
      *  显示列表
      *
@@ -288,7 +268,6 @@ class FreeList
         $this->ParseDMFields($this->PageNo, 0);
         $this->dtp->Display();
     }
-
     /**
      *  显示单独模板页面
      *
@@ -330,7 +309,6 @@ class FreeList
             }
         }
     }
-
     /**
      *  解析模板，对固定的标记进行初始给值
      *
@@ -341,7 +319,6 @@ class FreeList
     {
         MakeOneTag($this->dtp, $this);
     }
-
     /**
      *  解析模板，对内容里的变动进行赋值
      *
@@ -373,7 +350,6 @@ class FreeList
             }
         }
     }
-
     /**
      *  获得要创建的文件名称规则
      *
@@ -397,7 +373,6 @@ class FreeList
             return $okfile;
         }
     }
-
     /**
      *  获得一个单列的文档列表
      *
@@ -423,13 +398,11 @@ class FreeList
         $imgheight = AttDef($imgheight, 80);
         $innertext = trim($this->ListObj->GetInnerText());
         if (empty($innertext)) $innertext = GetSysTemplets("list_fulllist.htm");
-
         $tablewidth = 100;
         if ($col == "") $col = 1;
         $colWidth = ceil(100 / $col);
         $tablewidth = $tablewidth."%";
         $colWidth = $colWidth."%";
-
         //按不同情况设定SQL条件
         $orwhere = " arc.arcrank > -1 AND channel>-1 ";
         $typeid = $this->ListObj->GetAtt('typeid');
@@ -438,7 +411,6 @@ class FreeList
         $att = $this->ListObj->GetAtt('att');
         $channelid = $this->ListObj->GetAtt('channel');
         if (empty($channelid)) $channelid = 0;
-
         //是否指定栏目条件
         if (!empty($typeid)) {
             if ($cfg_list_son == 'N') {
@@ -447,7 +419,6 @@ class FreeList
                 $orwhere .= " AND arc.typeid IN (".GetSonIds($typeid, 0, TRUE).") ";
             }
         }
-
         //自定义属性条件
         if ($att != '') {
             $flags = explode(',', $att);
@@ -457,7 +428,6 @@ class FreeList
         if ($channelid > 0 && !preg_match("#spec#i", $listtype)) {
             $orwhere .= " AND arc.channel = '$channelid' ";
         }
-
         //推荐文档 带缩略图  专题文档
         if (preg_match("#commend#i", $listtype)) {
             $orwhere .= " AND FIND_IN_SET('c',flag) > 0  ";
@@ -478,7 +448,6 @@ class FreeList
         }
         $orderby = $this->ListObj->GetAtt('orderby');
         $orderWay = $this->ListObj->GetAtt('orderway');
-
         //排序方式
         $ordersql = "";
         if ($orderby == "senddate") {
@@ -498,7 +467,6 @@ class FreeList
         } else {
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }
-
         //获得附加表的相关信息
         $addField = "";
         $addJoin = "";
@@ -522,9 +490,7 @@ class FreeList
                 }
             }
         }
-
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,
-        tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
         $addField
         FROM {$this->maintable} arc
         LEFT JOIN #@__arctype tp ON arc.typeid=tp.id
@@ -550,7 +516,6 @@ class FreeList
                 }
                 if ($row = $this->dsql->GetArray("al")) {
                     $GLOBALS['autoindex']++;
-
                     //处理一些特殊字段
                     $row['id'] =  $row['id'];
                     $row['arcurl'] = $this->GetArcUrl(
@@ -583,9 +548,7 @@ class FreeList
                             $row["siteurl"] = $GLOBALS['cfg_mainsite'];
                         }
                     }
-
                     $row['description'] = cn_substr($row['description'], $infolen);
-
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
                         $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/defaultpic.gif';
                     }
@@ -610,7 +573,6 @@ class FreeList
                     if (preg_match("#c#", $row['flag'])) {
                         $row['title'] = "<b>".$row['title']."</b>";
                     }
-
                     //编译附加表里的数据
                     if (is_object($this->ChannelUnit)) {
                         foreach ($row as $k => $v) {
@@ -624,7 +586,6 @@ class FreeList
                             }
                         }
                     }
-
                     //解析单条记录
                     if (is_array($indtp->CTags)) {
                         foreach ($indtp->CTags as $k => $ctag) {
@@ -643,7 +604,6 @@ class FreeList
                     }
                     $artlist .= $indtp->GetResult();
                 } //if hasRow
-
                 else {
                     $artlist .= "";
                 }
@@ -651,7 +611,6 @@ class FreeList
                     $artlist .= "    </td>\r\n";
                 }
             } //Loop Col
-
             if ($col > 1) {
                 $i += $col - 1;
             }
@@ -659,14 +618,12 @@ class FreeList
                 $artlist .= "    </tr>\r\n";
             }
         } //Loop Line
-
         if ($col > 1) {
             $artlist .= "</table>\r\n";
         }
         $this->dsql->FreeResult("al");
         return $artlist;
     }
-
     /**
      *  获取静态的分页列表
      *
@@ -695,8 +652,6 @@ class FreeList
         $purl = $this->GetCurUrl();
         $tnamerule = $this->GetMakeFileRule();
         $tnamerule = preg_replace("#^(.*)\/#", '', $tnamerule);
-
-
         //获得上一页和主页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $prepagenum, $tnamerule)."'>上一页</a></li>\r\n";
@@ -704,7 +659,6 @@ class FreeList
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
-
         //下一页,未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
             $nextpage .= "<a href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a>\r\n";
@@ -712,7 +666,6 @@ class FreeList
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
-
         //option链接
         $optionlen = strlen($totalpage);
         $optionlen = $optionlen * 12 + 18;
@@ -727,7 +680,6 @@ class FreeList
             }
         }
         $optionlist .= "</select>";
-
         //获得数字链接
         $listdd = "";
         $total_list = $list_len * 2 + 1;
@@ -743,7 +695,6 @@ class FreeList
                 $total_list = $totalpage;
             }
         }
-
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
                 $listdd .= "<li class=\"page-item active\"><span class='page-link'>{$j}</span></li>\r\n";
@@ -775,7 +726,6 @@ class FreeList
         }
         return $plist;
     }
-
     /**
      *  获取动态的分页列表
      *
@@ -806,7 +756,6 @@ class FreeList
         $hidenform = "<input type='hidden' name='lid' value='".$this->FreeID."' />\r\n";
         $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."' />\r\n";
         $purl .= "?".$geturl;
-
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a>\r\n";
@@ -820,7 +769,6 @@ class FreeList
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
-
         //获得数字链接
         $listdd = "";
         $total_list = $list_len * 2 + 1;
@@ -848,7 +796,6 @@ class FreeList
         $plist .= "</form>\r\n";
         return $plist;
     }
-
     /**
      *  获得一个指定档案的链接
      *
@@ -899,7 +846,6 @@ class FreeList
             $sitepath
         );
     }
-
     /**
      *  获得当前的页面文件的url
      *

@@ -15,21 +15,17 @@ if (!function_exists('token_get_all_nl')) {
     function token_get_all_nl($source)
     {
         $new_tokens = array();
-
         //Get the tokens
         $tokens = token_get_all($source);
-
         //Split newlines into their own tokens
         foreach ($tokens as $token) {
             $token_name = is_array($token) ? $token[0] : null;
             $token_data = is_array($token) ? $token[1] : $token;
-
             //Do not split encapsed strings or multiline comments
             if ($token_name == T_CONSTANT_ENCAPSED_STRING || substr($token_data, 0, 2) == '/*') {
                 $new_tokens[] = array($token_name, $token_data);
                 continue;
             }
-
             //Split the data up by newlines
             $split_data = preg_split('#(\r\n|\n)#', $token_data, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
@@ -43,11 +39,9 @@ if (!function_exists('token_get_all_nl')) {
                 }
             }
         }
-
         return $new_tokens;
     }
 }
-
 if (!function_exists('token_name_nl')) {
     function token_name_nl($token)
     {
@@ -58,7 +52,6 @@ if (!function_exists('token_name_nl')) {
         return token_name($token);
     }
 }
-
 /**
  *  获得当前的脚本网址
  *
@@ -81,7 +74,6 @@ if (!function_exists('GetCurUrl')) {
         return $nowurl;
     }
 }
-
 /**
  *  获取用户真实地址
  *
@@ -128,7 +120,6 @@ if (!function_exists('GetIP')) {
         return $realip;
     }
 }
-
 /**
  *  获取编辑器
  *
@@ -149,7 +140,6 @@ if (!function_exists('GetEditor')) {
         return SpGetEditor($fname, $fvalue, $nheight, $etype, $gtype, $isfullpage, $bbcode);
     }
 }
-
 /**
  *  获取模板
  *
@@ -169,7 +159,6 @@ if (!function_exists('GetTemplets')) {
         }
     }
 }
-
 /**
  *  获取系统模板
  *
@@ -182,7 +171,6 @@ if (!function_exists('GetSysTemplets')) {
         return GetTemplets($GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'].'/system/'.$filename);
     }
 }
-
 /**
  *  获取新闻提示
  *
@@ -197,7 +185,6 @@ if (!function_exists('GetNewInfo')) {
         return SpGetNewInfo();
     }
 }
-
 /**
  *  生成一个随机字符
  *
@@ -228,7 +215,6 @@ if (!function_exists('dd2char')) {
         return $okdd;
     }
 }
-
 /**
  *  json_encode兼容函数
  *
@@ -252,7 +238,6 @@ if (!function_exists('json_encode')) {
         }
         return $value;
     }
-
     function json_encode($data)
     {
         if (is_object($data)) {
@@ -286,7 +271,6 @@ if (!function_exists('json_encode')) {
         return $json;
     }
 }
-
 /**
  *  json_decode兼容函数
  *

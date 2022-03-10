@@ -9,8 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//------------------------------------------------------------------------
-
 /**
  *  缩图片自动生成函数，来源支持bmp、gif、jpg、png
  *  但生成的小图只用jpg或png格式
@@ -94,9 +92,6 @@ if (!function_exists('ImageResize')) {
         return TRUE;
     }
 }
-
-
-
 /**
  *  获得GD的版本
  *
@@ -127,8 +122,6 @@ if (!function_exists('gdversion')) {
         }
     }
 }
-
-
 /**
  *  图片自动加水印函数
  *
@@ -152,7 +145,6 @@ if (!function_exists('WaterImg')) {
         $srcInfo = @getimagesize($srcFile, $info);
         $srcFile_w    = $srcInfo[0];
         $srcFile_h    = $srcInfo[1];
-
         if ($srcFile_w < $photo_wwidth || $srcFile_h < $photo_wheight) {
             return;
         }
@@ -189,7 +181,6 @@ if (!function_exists('WaterImg')) {
         $img->watermark(0);
     }
 }
-
 /**
  *  会对空白地方填充满
  *
@@ -226,20 +217,15 @@ if (!function_exists('ImageResizeNew')) {
                 $img = imagecreatefromwbmp($srcFile);
                 break;
         }
-
         $width = imageSX($img);
         $height = imageSY($img);
-
         if (!$width || !$height) {
             return FALSE;
         }
-
         $target_width = $toW;
         $target_height = $toH;
         $target_ratio = $target_width / $target_height;
-
         $img_ratio = $width / $height;
-
         if ($target_ratio > $img_ratio) {
             $new_height = $target_height;
             $new_width = $img_ratio * $target_height;
@@ -247,27 +233,21 @@ if (!function_exists('ImageResizeNew')) {
             $new_height = $target_width / $img_ratio;
             $new_width = $target_width;
         }
-
         if ($new_height > $target_height) {
             $new_height = $target_height;
         }
         if ($new_width > $target_width) {
             $new_height = $target_width;
         }
-
         $new_img = ImageCreateTrueColor($target_width, $target_height);
-
         if ($cfg_ddimg_bgcolor == 0) $bgcolor = ImageColorAllocate($new_img, 0xff, 0xff, 0xff);
         else $bgcolor = 0;
-
         if (!@imagefilledrectangle($new_img, 0, 0, $target_width - 1, $target_height - 1, $bgcolor)) {
             return FALSE;
         }
-
         if (!@imagecopyresampled($new_img, $img, ($target_width - $new_width) / 2, ($target_height - $new_height) / 2, 0, 0, $new_width, $new_height, $width, $height)) {
             return FALSE;
         }
-
         //保存为目标文件
         if ($issave) {
             switch ($srcInfo[2]) {
