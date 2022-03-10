@@ -77,8 +77,8 @@ function ReloadPageNum(startnum) {
     var ahtml = "";
     var startloop = 1;
     var endnum = 0;
-    ahtml += "共：" + totalrow + " 条记录/" + pagenum + "页 ";
-    if (pageno > 1) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno - 1) + ")'>↑上页</a> ";
+    ahtml += "共" + totalrow + "篇" + pagenum + "页";
+    if (pageno > 1) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno - 1) + ")'>上页</a> ";
     if (startnum >= pagenum - listsize) {
         startloop = pagenum - (listsize * 2);
         if (startloop < 1) startloop = 1;
@@ -102,7 +102,7 @@ function ReloadPageNum(startnum) {
             else ahtml += "<a href='javascript:;' onclick='LoadPage(" + i + ")'>[" + i + "]</a> ";
         }
     }
-    if (pageno < pagenum) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno + 1) + ")'>下页↓</a> ";
+    if (pageno < pagenum) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno + 1) + ")'>下页</a> ";
       ListArea.innerHTML = ahtml;
 }
 </script>

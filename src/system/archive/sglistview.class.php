@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 @set_time_limit(0);
 require_once(DEDEINC."/archive/partview.class.php");
-
 /**
  * 单表模型列表视图类
  *
@@ -726,13 +725,13 @@ class SgListView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 1 页".$this->TotalResult."条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 0 页".$this->TotalResult."条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>";
         }
         $purl = $this->GetCurUrl();
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共 {$totalpage} 页".$this->TotalResult."条</span></li>";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>";
         $tnamerule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
         $tnamerule = preg_replace("/^(.*)\//", '', $tnamerule);
         //获得上一页和主页的链接
@@ -834,10 +833,10 @@ class SgListView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>";
         }
         $purl = $this->GetCurUrl();
         $geturl = "tid=".$this->TypeID."&TotalResult=".$this->TotalResult."&nativeplace=$nativeplace&infotype=$infotype&keyword=".urlencode($keyword)."&";

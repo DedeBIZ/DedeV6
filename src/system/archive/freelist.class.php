@@ -643,12 +643,12 @@ class FreeList
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>";
         }
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条记录</span></li>";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>";
         $purl = $this->GetCurUrl();
         $tnamerule = $this->GetMakeFileRule();
         $tnamerule = preg_replace("#^(.*)\/#", '', $tnamerule);
@@ -745,12 +745,12 @@ class FreeList
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条记录</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>";
         }
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条记录</span></li>";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>";
         $purl = $this->GetCurUrl();
         $geturl = "lid=".$this->FreeID."&TotalResult=".$this->TotalResult."&";
         $hidenform = "<input type='hidden' name='lid' value='".$this->FreeID."' />\r\n";
@@ -782,7 +782,7 @@ class FreeList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
             } else {
                 $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
             }

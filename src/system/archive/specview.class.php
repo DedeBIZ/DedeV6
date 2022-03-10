@@ -444,10 +444,10 @@ class SpecView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<span class=\"pageinfo\">共 <strong>1</strong>页<strong>".$this->TotalResult."</strong>条记录</span>";
+            return "<span class='pageinfo'>1页".$this->TotalResult."篇</span>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class=\"pageinfo\">共 <strong>0</strong>页<strong>".$this->TotalResult."</strong>条记录</span>";
+            return "<span class='pageinfo'>0页".$this->TotalResult."篇</span>";
         }
         $purl = $this->GetCurUrl();
         $tnamerule = "spec_";
@@ -481,7 +481,7 @@ class SpecView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class=\"thisclass\"><a>$j</a></li>\r\n";
+                $listdd .= "<li class='thisclass'><a>$j</a></li>\r\n";
             } else {
                 $listdd .= "<li><a href='".$tnamerule."$j".$GLOBALS['art_shortname']."'>".$j."</a></li>\r\n";
             }
@@ -508,10 +508,10 @@ class SpecView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<span class=\"pageinfo\">共1页/".$this->TotalResult."条记录</span>";
+            return "<span class='pageinfo'>1页".$this->TotalResult."篇</span>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class=\"pageinfo\">共0页/".$this->TotalResult."条记录</span>";
+            return "<span class='pageinfo'>0页".$this->TotalResult."篇</span>";
         }
         $purl = $this->GetCurUrl();
         $geturl = "typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
@@ -548,7 +548,7 @@ class SpecView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class=\"thisclass\"><a>$j</a></li>\r\n";
+                $listdd .= "<li class='thisclass'><a>$j</a></li>\r\n";
             } else {
                 $listdd .= "<li><a href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
             }

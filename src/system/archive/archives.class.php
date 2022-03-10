@@ -795,7 +795,7 @@ class Archives
         if ($totalPage == 1) {
             return "";
         }
-        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共".$totalPage."页: </span></li>";
+        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>".$totalPage."页</span></li>";
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
@@ -862,7 +862,7 @@ class Archives
         if ($totalPage == 1) {
             return "";
         }
-        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共".$totalPage."页: </span></li>";
+        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>".$totalPage."页:</span></li>";
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {

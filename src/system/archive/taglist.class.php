@@ -431,12 +431,12 @@ class TagList
         }
         $totalpage = $this->TotalPage;
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>";
         }
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条</span></li>\r\n";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>\r\n";
         $purl = $this->GetCurUrl();
         $purl .= "?/".urlencode($this->Tag);
         //获得上一页和下一页的链接
@@ -469,7 +469,7 @@ class TagList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
             } else {
                 $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."/$j/'>".$j."</a></li>\r\n";
             }
@@ -506,12 +506,12 @@ class TagList
         }
         $totalpage = $this->TotalPage;
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共1页/".$this->TotalResult."条</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共0页/".$this->TotalResult."条</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>";
         }
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class=\"page-link\">共{$totalpage}页/".$this->TotalResult."条</span></li>\r\n";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>\r\n";
         //$purl = $this->GetCurUrl();
         $purl = "/a/tags/".GetPinyin($this->Tag);
         //var_dump($purl);
@@ -545,7 +545,7 @@ class TagList
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class=\"page-item active\"><span class='page-link'>$j</span></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
             } else {
                 $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."/$j/'>".$j."</a></li>\r\n";
             }
