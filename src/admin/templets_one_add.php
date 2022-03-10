@@ -16,6 +16,10 @@ if ($dopost == "save") {
     $uptime = time();
     $body = str_replace('&quot;', '\\"', $body);
     $filename = preg_replace("#^\/#", "", $nfilename);
+    if (!preg_match('#\.htm$#i', trim($template))) {
+        ShowMsg("您指定的文件名被系统禁止", "javascript:;");
+        exit();
+    }
     if ($likeid == '') {
         $likeid = $likeidsel;
     }
