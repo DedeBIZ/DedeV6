@@ -9,14 +9,14 @@
  * @link           https://www.dedebiz.com
  */
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
-require_once(DEDEADMIN . '/../system/common.inc.php');
-require_once(DEDEINC . '/userlogin.class.php');
+require_once(DEDEADMIN.'/../system/common.inc.php');
+require_once(DEDEINC.'/userlogin.class.php');
 header('Cache-Control:private');
 $dsql->safeCheck = FALSE;
 $dsql->SetLongLink();
 $cfg_admin_skin = 1;//后台管理风格
-if (file_exists(DEDEDATA . '/admin/skin.txt')) {
-    $skin = file_get_contents(DEDEDATA . '/admin/skin.txt');
+if (file_exists(DEDEDATA.'/admin/skin.txt')) {
+    $skin = file_get_contents(DEDEDATA.'/admin/skin.txt');
     $cfg_admin_skin = !in_array($skin, array(1, 2, 3, 4)) ? 1 : $skin;
 }
 //检查CSRF
@@ -51,9 +51,9 @@ $cuserLogin = new userLogin();
 if ($cuserLogin->getUserID() == -1) {
     if (preg_match("#PHP (.*) Development Server#", $_SERVER['SERVER_SOFTWARE'])) {
         $dirname = dirname($_SERVER['SCRIPT_NAME']);
-        header("location:{$dirname}/login.php?gotopage=" . urlencode($dedeNowurl));
+        header("location:{$dirname}/login.php?gotopage=".urlencode($dedeNowurl));
     } else {
-        header("location:login.php?gotopage=" . urlencode($dedeNowurl));
+        header("location:login.php?gotopage=".urlencode($dedeNowurl));
     }
     exit();
 }
@@ -76,9 +76,9 @@ if ($cfg_dede_log == 'Y') {
     $s_scriptNames = explode('/', $s_scriptName);
     $s_scriptNames = $s_scriptNames[count($s_scriptNames) - 1];
     $s_userip = GetIP();
-    if ($s_method == 'POST' || (!preg_match("#" . $s_nologfile . "#i", $s_scriptNames) && $s_query != '') || preg_match("#" . $s_needlogfile . "#i", $s_scriptNames)) {
+    if ($s_method == 'POST' || (!preg_match("#".$s_nologfile."#i", $s_scriptNames) && $s_query != '') || preg_match("#".$s_needlogfile."#i", $s_scriptNames)) {
         $inquery = "INSERT INTO `#@__log`(adminid,filename,method,query,cip,dtime)
-             VALUES ('" . $cuserLogin->getUserID() . "','{$s_scriptNames}','{$s_method}','" . addslashes($s_query) . "','{$s_userip}','" . time() . "');";
+             VALUES ('".$cuserLogin->getUserID()."','{$s_scriptNames}','{$s_method}','".addslashes($s_query)."','{$s_userip}','".time()."');";
         $dsql->ExecuteNoneQuery($inquery);
     }
 }
@@ -86,12 +86,12 @@ if (file_exists(DEDEDATA."/downmix.data.php")) {
     rename(DEDEDATA."/downmix.data.php",DEDEDATA."/downmix.data.inc");
 }
 //管理缓存管理员频道缓存
-$cache1 = DEDEDATA . '/cache/inc_catalog_base.inc';
+$cache1 = DEDEDATA.'/cache/inc_catalog_base.inc';
 if (!file_exists($cache1)) UpDateCatCache();
-$cacheFile = DEDEDATA . '/cache/admincat_' . $cuserLogin->userID . '.inc';
+$cacheFile = DEDEDATA.'/cache/admincat_'.$cuserLogin->userID.'.inc';
 if (file_exists($cacheFile)) require_once($cacheFile);
 //更新服务器
-require_once(DEDEDATA . '/admin/config_update.php');
+require_once(DEDEDATA.'/admin/config_update.php');
 if (strlen($cfg_cookie_encode) <= 10) {
     $chars = 'abcdefghigklmnopqrstuvwxwyABCDEFGHIGKLMNOPQRSTUVWXWY0123456789';
     $hash = '';
@@ -101,25 +101,25 @@ if (strlen($cfg_cookie_encode) <= 10) {
         $hash .= $chars[mt_rand(0, $max)];
     }
     $dsql->ExecuteNoneQuery("UPDATE `#@__sysconfig` SET `value`='{$hash}' WHERE varname='cfg_cookie_encode' ");
-    $configfile = DEDEDATA . '/config.cache.inc.php';
+    $configfile = DEDEDATA.'/config.cache.inc.php';
     if (!is_writeable($configfile)) {
         echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
     flock($fp, 3);
-    fwrite($fp, "<" . "?php\r\n");
+    fwrite($fp, "<"."?php\r\n");
     $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         if ($row['type'] == 'number') {
             if ($row['value'] == '') $row['value'] = 0;
-            fwrite($fp, "\${$row['varname']} = " . $row['value'] . ";\r\n");
+            fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         } else {
-            fwrite($fp, "\${$row['varname']} = '" . str_replace("'", '', $row['value']) . "';\r\n");
+            fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
         }
     }
-    fwrite($fp, "?" . ">");
+    fwrite($fp, "?".">");
     fclose($fp);
 }
 /**
@@ -131,8 +131,8 @@ if (strlen($cfg_cookie_encode) <= 10) {
 function UpDateCatCache()
 {
     global $dsql, $cache1, $cuserLogin;
-    $cache2 = DEDEDATA . '/cache/channelsonlist.inc';
-    $cache3 = DEDEDATA . '/cache/channeltoplist.inc';
+    $cache2 = DEDEDATA.'/cache/channelsonlist.inc';
+    $cache3 = DEDEDATA.'/cache/channeltoplist.inc';
     $dsql->SetQuery("SELECT id,reid,channeltype,issend,typename FROM `#@__arctype`");
     $dsql->Execute();
     $fp1 = fopen($cache1, 'w');
@@ -153,8 +153,8 @@ function UpDateCatCache()
 //清空选项缓存
 function ClearOptCache()
 {
-    $tplCache = DEDEDATA . '/tplcache/';
-    $fileArray = glob($tplCache . "inc_option_*.inc");
+    $tplCache = DEDEDATA.'/tplcache/';
+    $fileArray = glob($tplCache."inc_option_*.inc");
     if (count($fileArray) > 1) {
         foreach ($fileArray as $key => $value) {
             if (file_exists($value)) unlink($value);
@@ -174,7 +174,7 @@ function ClearOptCache()
  */
 function DedeInclude($filename, $isabs = FALSE)
 {
-    return $isabs ? $filename : DEDEADMIN . '/' . $filename;
+    return $isabs ? $filename : DEDEADMIN.'/'.$filename;
 }
 /**
  *  根据用户mid获取用户名称

@@ -20,7 +20,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 //在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作
 //为了防止错误，操作完后不必关闭数据库
 if (!function_exists("mysqli_init")) {
-    echo "DedeBIZ提示：尚未发现开启mysqli模块，请在php.ini中启用`extension=mysqli`。";
+    echo "DedeBIZ提示：尚未发现开启mysqli模块，请在php.ini中启用`extension=mysqli`";
     exit;
 }
 $dsql = $dsqli = $db = new DedeSqli(FALSE);
@@ -436,8 +436,8 @@ class DedeSqli
     //获取上一步INSERT操作产生的ID
     function GetLastID()
     {
-        //如果 AUTO_INCREMENT 的列的类型是 BIGINT，则 mysqli_insert_id() 返回的值将不正确。
-        //可以在 SQL 查询中用 MySQL 内部的 SQL 函数 LAST_INSERT_ID() 来替代。
+        //如果 AUTO_INCREMENT 的列的类型是 BIGINT，则 mysqli_insert_id() 返回的值将不正确
+        //可以在 SQL 查询中用 MySQL 内部的 SQL 函数 LAST_INSERT_ID() 来替代
         //$rs = mysqli_query($this->linkID, "Select LAST_INSERT_ID() as lid");
         //$row = mysqli_fetch_array($rs);
         //return $row["lid"];

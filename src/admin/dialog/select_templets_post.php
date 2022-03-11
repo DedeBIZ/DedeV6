@@ -29,7 +29,7 @@ if ($filename =='') {
     $filename = $uploadfile_name;
 }
 $filename = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $filename));
-if ($filename == '' || !preg_match("#\.(" . $cfg_txttype . ")#i", $filename)) {
+if ($filename == '' || !preg_match("#\.(".$cfg_txttype.")#i", $filename)) {
        ShowMsg("您所上传的文件存在问题，请检查文件类型是否适合", "-1");
 }
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
