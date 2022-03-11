@@ -155,14 +155,14 @@ else if ($dopost == "exportinok") {
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('channel', '<', '>');
     $dtp->LoadSource($exconfig);
-    if (!is_array($dtp->CTags)) GotoStaMsg("模型规则不是合法的Dede模型规则");
+    if (!is_array($dtp->CTags)) GotoStaMsg("模型规则不是合法的模型规则");
     $fields = array();
     foreach ($dtp->CTags as $ctag) {
         $fname = $ctag->GetName('name');
         $fields[$fname] = trim($ctag->GetInnerText());
     }
     if (!isset($fields['nid']) || !isset($fields['fieldset'])) {
-        GotoStaMsg("模型规则不是合法的Dede模型规则");
+        GotoStaMsg("模型规则不是合法的模型规则");
     }
     //正常的导入过程
     $mysql_version = $dsql->GetVersion(true);
