@@ -453,8 +453,14 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;关键字：</td>
-              <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value=""> <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览</button></td>
+              <td width="90">&nbsp;关键词：</td>
+              <td>
+                <input type='text' name="keywords" id="keywords" style="width:290px" value="">
+                <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览</button>
+              </td>
+              <td width="260">
+                <label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>&nbsp;自动获取，手动填写用","分开</label>
+              </td>
             </tr>
           </table>
         </td>

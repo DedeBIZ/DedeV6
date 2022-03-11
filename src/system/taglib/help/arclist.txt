@@ -21,7 +21,7 @@ orderby='sortrank' 文档排序方式
 	§ orderby=='scores' 按得分排序
 	§ orderby='id' 按文章ID排序
 	§ orderby='rand' 随机获得指定条件的文档列表
-keyword='' 含有指定关键字的文档列表，多个关键字用","分
+keyword='' 含有指定关键词的文档列表，多个关键词用","分
 innertext = '' 单条记录样式
 aid='' 指定文档ID
 idlist ='' 提取特定文档（文档ID） 

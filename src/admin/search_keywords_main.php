@@ -53,7 +53,7 @@ if ($dopost == '') {
     $totalRow = $row['dd'];
     include(DEDEADMIN."/templets/search_keywords_main.htm");
 }
-//获得特定的关键字列表
+//获得特定的关键词列表
 function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
 {
     global $cfg_phpurl;
@@ -64,7 +64,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     <tr align='center' bgcolor='#FBFCE2' height='26'>
       <td width='5%'>选择</td>
       <td width='6%' height='26'><a href='#' onclick=\"ReloadPage('aid')\">ID</a></td>
-      <td width='20%'>关键字</td>
+      <td width='20%'>关键词</td>
       <td width='30%'>分词结果</td>
       <td width='6%'><a href='#' onclick=\"ReloadPage('count')\">频率</a></td>
       <td width='6%'><a href='#' onclick=\"ReloadPage('result')\">结果</a></td>

@@ -315,10 +315,12 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;发布时间：</td>
-              <td width="240"><?php
-			$nowtime = GetDateTimeMk(time());
-			echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" class='datepicker'>";
-			?> </td>
+              <td width="240">
+                <?php
+			          $nowtime = GetDateTimeMk(time());
+			          echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" class='datepicker'>";
+			          ?>
+              </td>
               <td width="90">消费金币：</td>
               <td width="380"><input name="money" type="text" id="money" value="0" size="10"></td>
             </tr>
@@ -329,11 +331,13 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;关键字：</td>
-              <td width="450"><input type='text' name="keywords" id="keywords" style="width:80%" value=""></td>
-              <td width="260"><label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>
-                自动获取，手动填写用","分开</label><br>
+              <td width="90">&nbsp;关键词：</td>
+              <td>
+                <input type='text' name="keywords" id="keywords" style="width:290" value="">
                 <button type="button" name="Submit" value=""  class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
+              </td>
+              <td width="260">
+                <label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>&nbsp;自动获取，手动填写用","分开</label>
               </td>
             </tr>
           </table>

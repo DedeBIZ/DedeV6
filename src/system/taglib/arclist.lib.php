@@ -157,7 +157,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             $limitday = $ntime - ($subday * 24 * 3600);
             $orwheres[] = " arc.senddate > $limitday ";
         }
-        //关键字条件
+        //关键词条件
         if ($keyword != '') {
             $keyword = str_replace(',', '|', $keyword);
             $orwheres[] = " CONCAT(arc.title,arc.keywords) REGEXP '$keyword' ";

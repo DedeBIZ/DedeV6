@@ -13,9 +13,9 @@
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_Keyword');
 if (empty($dopost)) $dopost = '';
-//分析已存在的关键字（适用于默认的文章模型）
+//分析已存在的关键词（适用于默认的文章模型）
 if ($dopost == 'analyse') {
-    echo "正在读取关键字数据库<br>\r\n";
+    echo "正在读取关键词数据库<br>\r\n";
     flush();
     $ws = $wserr = $wsnew = "";
     $dsql->SetQuery("SELECT * FROM `#@__keywords`");
@@ -24,9 +24,9 @@ if ($dopost == 'analyse') {
         if ($row->sta == 1) $ws[$row->keyword] = 1;
         else $wserr[$row->keyword] = 1;
     }
-    echo "完成关键字数据库的载入<br>\r\n";
+    echo "完成关键词数据库的载入<br>\r\n";
     flush();
-    echo "读取档案数据库，并对禁用的关键字和生字进行处理<br>\r\n";
+    echo "读取档案数据库，并对禁用的关键词和生字进行处理<br>\r\n";
     flush();
     $dsql->SetQuery("SELECT id,keywords FROM `#@__archives`");
     $dsql->Execute();
@@ -57,10 +57,10 @@ if ($dopost == 'analyse') {
     echo "完成档案数据库的处理<br>\r\n";
     flush();
     if (is_array($wsnew)) {
-        echo "对关键字进行排序<br>\r\n";
+        echo "对关键词进行排序<br>\r\n";
         flush();
         arsort($wsnew);
-        echo "把关键字保存到数据库<br>\r\n";
+        echo "把关键词保存到数据库<br>\r\n";
         flush();
         foreach ($wsnew as $k => $v) {
             if (strlen($k) > 20) {
@@ -69,18 +69,18 @@ if ($dopost == 'analyse') {
             $dsql->SetQuery("INSERT INTO `#@__keywords`(keyword,`rank`,sta,rpurl) VALUES('".addslashes($k)."','$v','1','')");
             $dsql->Execute();
         }
-        echo "完成关键字的导入<br>\r\n";
+        echo "完成关键词的导入<br>\r\n";
         flush();
         sleep(1);
     } else {
-        echo "没发现任何新的关键字<br>\r\n";
+        echo "没发现任何新的关键词<br>\r\n";
         flush();
         sleep(1);
     }
-    ShowMsg('完成所有操作，现在转到关键字列表页', 'article_keywords_main.php');
+    ShowMsg('完成所有操作，现在转到关键词列表页', 'article_keywords_main.php');
     exit();
 }
-//自动获取关键字（适用于默认的文章模型）
+//自动获取关键词（适用于默认的文章模型）
 else if ($dopost == 'fetch') {
     require_once(DEDEINC."/libraries/splitword.class.php");
     if (empty($startdd)) {
@@ -99,7 +99,7 @@ else if ($dopost == 'fetch') {
         $totalnum = $row['dd'];
     }
 
-    //获取记录，并分析关键字
+    //获取记录，并分析关键词
     if ($totalnum > $startdd + $pagesize) {
         $limitSql = " LIMIT $startdd,$pagesize";
     } else if (($totalnum - $startdd) > 0) {

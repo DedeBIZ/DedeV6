@@ -569,7 +569,7 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
     if ($autolitpic == 1 && $litpic == '') {
         $litpic = GetDDImgFromBody($body);
     }
-    //自动获取关键字
+    //自动获取关键词
     if ($autokey == 2 && $keywords == '') {
         $subject = $title;
         $message = $body;

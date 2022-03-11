@@ -218,7 +218,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;关键字：</td>
+              <td width="90">&nbsp;关键词：</td>
               <td width="450">
                 <input type='text' name="keywords" id="keywords" style="width:80%" value="">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
@@ -304,7 +304,7 @@ table{border-collapse:separate}
           1、文章列表用ID1,ID2,ID3这样形式分开，系统会自动排除不同节点的相同文章；<br>
           2、关于单条记录模板里的[field:fieldname /]标记的使用，请参考关于系统帮助关于 arclist 标记的说明；<br>
           3、节点ID是节点的唯一标识，专题模板中用{dede:field.note noteid='标识'/}这样来表示单个节点，不指定noteid时为所有节点列表<br>
-          4、正常的情况下，每个节点显示的是“节点文章列表”里的文档，如果您指定为“自动获取模式”，那么必须指定关键字和栏目ID </td>
+          4、正常的情况下，每个节点显示的是“节点文章列表”里的文档，如果您指定为“自动获取模式”，那么必须指定关键词和栏目ID </td>
       </tr>
       <tr>
         <td height="26" valign="top">
@@ -347,7 +347,7 @@ table{border-collapse:separate}
                 <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1" class="np">
                 自动获取文档</label>
                 &nbsp;
-                <label>关键字：
+                <label>关键词：
                 <input name="keywords<?php echo $i?>" type="text" id="keywords<?php echo $i?>" value="" size="16">
                 (逗号分开)</label>
                 栏目ID：

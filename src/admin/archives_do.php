@@ -577,7 +577,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr height='26'>
-        <td width="86" class='bline'>&nbsp;关键字：</td>
+        <td width="86" class='bline'>&nbsp;关键词：</td>
         <td class='bline'><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
     <tr height='36'>
@@ -663,7 +663,7 @@ else if ($dopost == "makekw") {
         $client->appid = $cfg_bizcore_appid;
         $client->key = $cfg_bizcore_key;
         while ($row = $dsql->GetArray()) {
-            //跳过已经有关键字的内容
+            //跳过已经有关键词的内容
             if (trim($row['keywords']) != '') continue;
             $aid = $row['id'];
             $keywords = '';
@@ -676,7 +676,7 @@ else if ($dopost == "makekw") {
             $description = str_replace('［', ' ', $description);
             $description = str_replace('］', ' ', $description);
             $description = preg_replace("#[ \t]{1,}#is", ' ', $description);
-            $description = str_replace('关键字', '', $description);
+            $description = str_replace('关键词', '', $description);
             $description = str_replace('关键词', '', $description);
             $description = addslashes($description);
             $dsql->ExecuteNoneQuery(" UPDATE `#@__archives` SET `keywords`='$keywords',`description`='$description'  WHERE id='{$aid}' ");
@@ -686,7 +686,7 @@ else if ($dopost == "makekw") {
         include_once(DEDEINC.'/libraries/splitword.class.php');
         $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
         while ($row = $dsql->GetArray()) {
-            //跳过已经有关键字的内容
+            //跳过已经有关键词的内容
             if (trim($row['keywords']) != '') continue;
             $aid = $row['id'];
             $keywords = '';
@@ -721,7 +721,7 @@ else if ($dopost == "makekw") {
             $description = str_replace('［', ' ', $description);
             $description = str_replace('］', ' ', $description);
             $description = preg_replace("#[ \t]{1,}#is", ' ', $description);
-            $description = str_replace('关键字', '', $description);
+            $description = str_replace('关键词', '', $description);
             $description = str_replace('关键词', '', $description);
             $description = addslashes($description);
             $dsql->ExecuteNoneQuery(" UPDATE `#@__archives` SET `keywords`='$keywords',`description`='$description'  WHERE id='{$aid}' ");

@@ -75,7 +75,7 @@
 >sys_Source>新闻来源
 >sys_Writer>作者管理
 >sys_SoftConfig>软件频道参数
->sys_Keyword>关键字管理
+>sys_Keyword>关键词管理
 >sys_MakeHtml>更新HTML
 >sys_Feedback>评论管理
 >sys_Upload>管理任意上传

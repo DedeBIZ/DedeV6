@@ -578,7 +578,7 @@ function GetFreeListUrl($lid, $namerule, $listdir, $defaultpage, $nodefault)
     return $okfile;
 }
 /**
- *  获取网站搜索的热门关键字
+ *  获取网站搜索的热门关键词
  *
  * @param     object  $dsql
  * @param     string  $num  获取数目

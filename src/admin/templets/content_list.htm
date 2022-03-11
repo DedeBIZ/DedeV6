@@ -48,7 +48,7 @@
 									{dede:global.optionarr/}
 								</select>
 							</td>
-							<td>关键字：</td>
+							<td>关键词：</td>
 							<td><input name="keyword" type="text" value="{dede:global.keyword/}" style="margin-right:10px;width:260px"></td>
 							<td>
 								<select name="orderby" style="margin-right:10px;width:160px">
@@ -122,7 +122,7 @@
 					<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
 					<a href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid)?0:$channelid); ?>)" class="btn btn-success btn-sm">移动</a>
 					<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
-					<?php if($channelid==1) echo "<a href='javascript:kwArc(0)' class='btn btn-success btn-sm'>自动关键字</a>"; ?>
+					<?php if($channelid==1) echo "<a href='javascript:kwArc(0)' class='btn btn-success btn-sm'>自动关键词</a>"; ?>
 					<a href="javascript:;" onClick="cAtts('attsAdd',event,this)" class="btn btn-success btn-sm">增加属性</a>
 					<a href="javascript:;" onClick="cAtts('attsDel',event,this)" class="btn btn-danger btn-sm">删除属性</a>
 				</td>

@@ -125,7 +125,7 @@
                         content=&quot;&quot;&gt; 描述</td>
                     </tr>
                     <tr>
-                      <td height="26" align="left">关键字：</td>
+                      <td height="26" align="left">关键词：</td>
                       <td align="left"><input name="keywords" type="text" id="keywords" style="width:60%" value="<?php echo $row['keywords']; ?>"></td>
                     </tr>
                     <tr>
@@ -230,7 +230,7 @@
                   推荐</label>
                   <label><input name="types[]" type="checkbox" id="type3" value="spec" class="inputbut"
                     <?php if(preg_match("#spec#i", $setype)) echo ' checked';?>>
-                  专题</label>　关键字：
+                  专题</label>　关键词：
                   <input name="keywordarc" type="text" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">
                   （&quot;,&quot;逗号分开）
                 </td>

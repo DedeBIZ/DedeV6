@@ -49,23 +49,23 @@ if ($dopost == 'saveall') {
     ShowMsg("完成指定的修改", $ENV_GOBACK_URL);
     exit();
 }
-//增加关键字
+//增加关键词
 else if ($dopost == 'add') {
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "-1" : $_COOKIE['ENV_GOBACK_URL'];
     $keyword = trim($keyword);
     $rank = preg_replace("#[^0-9]#", '', $rank);
     if ($keyword == '') {
-        ShowMsg("关键字不能为空", -1);
+        ShowMsg("关键词不能为空", -1);
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__keywords` WHERE keyword LIKE '$keyword'");
     if (is_array($row)) {
-        ShowMsg("关键字已存在库中", "-1");
+        ShowMsg("关键词已存在库中", "-1");
         exit();
     }
     $inquery = "INSERT INTO `#@__keywords`(keyword,`rank`,sta,rpurl) VALUES ('$keyword','$rank','1','$rpurl');";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功增加一个关键字", $ENV_GOBACK_URL);
+    ShowMsg("成功增加一个关键词", $ENV_GOBACK_URL);
     exit();
 }
 if (empty($keyword)) {

@@ -151,7 +151,7 @@ class SearchView
     {
     }
     /**
-     *  获得关键字的分词结果，并保存到数据库
+     *  获得关键词的分词结果，并保存到数据库
      *
      * @access    public
      * @param     string  $keyword  关键词
@@ -210,7 +210,7 @@ class SearchView
         return $keywords;
     }
     /**
-     *  获得关键字SQL
+     *  获得关键词SQL
      *
      * @access    private
      * @return    string
@@ -251,7 +251,7 @@ class SearchView
         }
     }
     /**
-     *  获得相关的关键字
+     *  获得相关的关键词
      *
      * @access    public
      * @param     string  $num  关键词数目
@@ -297,7 +297,7 @@ class SearchView
         }
     }
     /**
-     *  加粗关键字
+     *  加粗关键词
      *
      * @access    private
      * @param     string  $fstr  关键词字符

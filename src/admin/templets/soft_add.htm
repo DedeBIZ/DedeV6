@@ -526,10 +526,10 @@ table{border-collapse:separate}
             <tr>
               <td width="90">&nbsp;发布时间：</td>
               <td width="240">
-              <?php
-              $nowtime = GetDateTimeMk(time());
-              echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" class='datepicker' style=\"width:200;\" >";
-			        ?>
+                <?php
+                $nowtime = GetDateTimeMk(time());
+                echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" class='datepicker' style=\"width:200;\" >";
+			          ?>
               </td>
               <td width="90">消费金币：</td>
               <td width="380"><input name="money" type="hidden" id="money" value="0">（此项已经独立分离）</td>
@@ -541,9 +541,14 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;关键字：</td>
-              <td colspan="2"><input type='text' name="keywords" id="keywords" style="width:290px;" value="">
-                <button type="button" name="Submit" class='btn btn-success btn-sm' onClick="SelectKeywords('form1.keywords');">浏览</button>&nbsp;&nbsp;<label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>&nbsp;自动获取，手动填写用","分开</label></td>
+              <td width="90">&nbsp;关键词：</td>
+              <td>
+                <input type='text' name="keywords" id="keywords" style="width:290px" value="">
+                <button type="button" name="Submit" class='btn btn-success btn-sm' onClick="SelectKeywords('form1.keywords');">浏览</button>
+              </td>
+              <td colspan="260">
+                <label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>>&nbsp;自动获取，手动填写用","分开</label>
+              </td>
             </tr>
           </table>
         </td>
