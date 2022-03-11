@@ -30,7 +30,7 @@ if ($filename =='') {
 }
 $filename = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $filename));
 if ($filename == '' || !preg_match("#\.(" . $cfg_txttype . ")#i", $filename)) {
-       ShowMsg("你所上传的文件存在问题，请检查文件类型是否适合！", "-1");
+       ShowMsg("您所上传的文件存在问题，请检查文件类型是否适合", "-1");
 }
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
 move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到 $fullfilename 失败");
