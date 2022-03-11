@@ -15,8 +15,7 @@ function dede_autoloader($classname)
     {
         return TRUE;
     }
-    if (in_array($classname, array("archives","freelist","listview","partview","rssview",
-    "searchview","sglistview","sgpage","specview","taglist"))) {
+    if (in_array($classname, array("archives","freelist","listview","partview","rssview","searchview","sglistview","sgpage","specview","taglist"))) {
         $classname = "arc.".$classname;
     }
     $libclassfile = $classname.'.class.php';
