@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+  <title>更新首页</title>
+  <script src="../static/js/jquery.js" language="javascript" type="text/javascript"></script>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script language="javascript">
+    function SelectTemplets(fname) {
+      var posLeft = 200;
+      var posTop = 300;
+      window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
+    }
+    function htmlSubmit() {
+      form1.submit();
+      $("#dedebiz_admin").val("");
+    }
+  </script>
+</head>
+<body background="images/allbg.gif" leftmargin="8" topmargin="8">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
+    <form name="form1" action="makehtml_homepage.php" target="stafrm" method="post">
+      <input type="hidden" name="dopost" value="make">
+      <tr>
+        <td height="26" colspan="2" background='images/tbg.gif'>
+          <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
+            <tr>
+              <td width="30%" height="18" style="padding-left:10px"><strong>更新首页向导：</strong></td>
+              <td width="70%" align="right">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td width="177" valign="top" bgcolor="#FFFFFF">选择首页模板：</td>
+        <td width="791" valign="top" bgcolor="#FFFFFF">
+          <input name="templet" type="text" id="templet" style="width:300" value="<?php echo $row['templet']?>">
+          <button class="btn btn-success btn-sm" type="button" name="set4" value="" onClick="SelectTemplets('form1.templet');">浏览</button>
+        </td>
+      </tr>
+      <tr>
+        <td height="26" colspan="2" valign="top" bgcolor="#FFFFFF">默认的情况下，生成的首页文件放在CMS的安装目录，如果您的CMS不是安装在网站根目录的，又想把首页创建到网站根目录，那么请用相对路径来表示“首页位置”
+          <br>例：您的CMS安装在 http://www.abc.com/DedeBIZ/ 目录，您想生成的首页为 http://www.abc.com/index.html，那么首页位置就应该用：“../index.html”</td>
+      </tr>
+      <tr>
+        <td height="26" valign="top" bgcolor="#FFFFFF">首页位置：</td>
+        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="position" type="text" id="position" value="<?php echo $row['position']?>" size="30"></td>
+      </tr>
+      <tr>
+        <td height="26" valign="top" bgcolor="#FFFFFF">相关选项：</td>
+        <td height="26" valign="top" bgcolor="#FFFFFF">
+          <label><input name="saveset" type="radio" value="0" class="np">
+            不保存当前选项</label>
+          <label><input name="saveset" type="radio" class="np" value="1" checked>
+            保存当前选项</label>
+        </td>
+      </tr>
+      <tr>
+        <td height="26" valign="top" bgcolor="#FFFFFF">首页模式:</td>
+        <td height="26" valign="top" bgcolor="#FFFFFF">
+          <label><input name="showmod" type="radio" value="0" class="np" <?php echo ($row['showmod']==0)? "checked='checked'" : "";?>>
+            动态浏览</label>
+          <label><input name="showmod" type="radio" class="np" value="1" <?php echo ($row['showmod']==1)? "checked='checked'" : "";?>>
+            生成静态 (或者手动删除根目录下index.html文件)</label></td>
+      </tr>
+      <tr>
+        <td height="26" colspan="2" valign="top" bgcolor="#dee2e6">首页防篡改（首页位置修改请重新启动商业组件）</td>
+      </tr>
+        <?php
+        if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+          $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+          $client->appid = $cfg_bizcore_appid;
+          $client->key = $cfg_bizcore_key;
+          $data = $client->AdminPWDExists();
+          $data = json_decode($data->data);
+          $rs = (array)($data->result);
+          if($rs["admin_pwd_exists"] == "false") {
+        ?>
+        <tr>
+          <td height="26" valign="top" bgcolor="#FFFFFF">设置操作密码：</td>
+          <td height="26" valign="top" bgcolor="#FFFFFF"><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">设定后所有的DedeBIZ涉及安全操作输入当前操作密码</td>
+        </tr>
+        <tr>
+          <td height="26" valign="top" bgcolor="#FFFFFF">重复操作密码：</td>
+          <td height="26" valign="top" bgcolor="#FFFFFF">
+            <input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" size="30">
+          </td>
+        </tr>
+        <?php } else { ?>
+        <tr>
+          <td height="26" valign="top" bgcolor="#FFFFFF">操作密码：</td>
+          <td height="26" valign="top" bgcolor="#FFFFFF">
+            <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">
+          </td>
+        </tr>
+        <tr>
+          <td height="26" valign="top" bgcolor="#FFFFFF">首页状态：</td>
+          <td height="26" valign="top" bgcolor="#FFFFFF">
+            <label><input name="lockindex" type="radio" class="np" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?>>
+              解锁</label>
+            <label><input name="lockindex" type="radio" value="lock" class="np" <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?>>
+              锁定</label>
+          </td>
+        </tr>
+        <?php
+        }
+        } else {
+        ?>
+      <tr>
+        <td height="26" colspan="2" valign="top" bgcolor="#FFFFFF">尚未开启DedeBIZ商业组件 <a class="btn btn-danger btn-sm" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a>
+        </td>
+      </tr>
+      <?php
+      }
+      ?>
+      <tr>
+        <td height="30" colspan="2" bgcolor="#ffffff" align="center">
+          <button name="view" class="btn btn-success" type="button" id="view" onClick="window.open('makehtml_homepage.php?dopost=view&templet='+form1.templet.value);">预览首页</button>
+          <button type="button" onclick="htmlSubmit()" class='btn btn-success' name="Submit">开始更新</button>
+        </td>
+      </tr>
+    </form>
+    <tr bgcolor="#F9FCEF">
+      <td height="26" colspan="2">
+        <table width="100%" class="table table-borderless">
+          <tr>
+            <td width="74%">进行状态：</td>
+            <td width="26%" align="right">
+              <script language='javascript'>
+                function ResizeDiv(obj, ty) {
+                  if (ty == "+") document.all[obj].style.pixelHeight += 50;
+                  else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+                }
+              </script>
+              [<a href='javascript:;' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='javascript:;' onClick="ResizeDiv('mdv','-');">缩小</a>]
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td colspan="2" id="mtd">
+        <div id='mdv' style='width:100%;height:350px;'>
+          <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

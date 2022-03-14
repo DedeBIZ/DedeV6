@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+  <title><?php echo $cfg_webname?>_投票结果</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/bootstrap.min.css">
+  <link href="<?php echo $cfg_cmsurl;?>/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/style.css">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/index.css">
+  <script src="<?php echo $cfg_cmsurl;?>/static/js/jquery.min.js"></script>
+</head>
+<body class="flinkpage">
+  <?php include("plus_header.htm") ;?>
+
+  <div class="container">
+    <div class="sp-title">
+      <h3><?php echo $voname?></h3>
+      <p><span class="more">
+          投票开始时间：<?php echo $starttime;?>　
+          投票结束时间:<?php echo $endtime;?>
+          投票人数：<?php echo $totalcount;?>
+        </span></p>
+    </div>
+    <div class="formbox">
+      <?php echo $rsmsg;?>
+    </div>
+    <div class="formbox">
+      <?php echo $votelist;?>
+    </div>
+  </div>
+
+  <?php include("plus_footer.htm") ;?>
+
+</body>
+
+</html>

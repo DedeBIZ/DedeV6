@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+  <title>更新系统缓存</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
+    <form name="form1" action="sys_cache_up.php" method="get" target='stafrm'>
+      <input type="hidden" name="dopost" value="ok">
+      <tr>
+        <td height="26" background='images/tbg.gif'>
+          <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
+            <tr>
+              <td width="30%" height="18" style="padding-left:10px"><strong>更新系统缓存：</strong></td>
+              <td width="70%" align="right">&nbsp; </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="26" valign="top" bgcolor="#FFFFFF" style="line-height:20px;">
+          本程序作默认会执行下面的操作：
+          <br>
+          1、更新栏目缓存
+          2、更新枚举缓存
+          3、清理arclist调用缓存
+          4、清理过期会员访问历史
+          5、删除过期短信
+          <br>
+          <label><input name="uparc" type="checkbox" class="np" value="1"> 检测并清理错误文档 </label>
+          <br>
+          （该项操作很占资源，如果没有出现页码不正确、无法解析文档等情况，不要执行本操作）
+        </td>
+      </tr>
+      <tr>
+        <td height="26" bgcolor="#ffffff" align="center">
+          <button name="b112" type="button" class="btn btn-success" value="" onClick="document.form1.submit();"
+          >开始执行</button>
+        </td>
+      </tr>
+    </form>
+    <tr bgcolor="#F9FCEF">
+      <td height="26">
+        <table width="100%" class="table table-borderless">
+          <tr>
+            <td width="74%">进行状态：</td>
+            <td width="26%" align="right">
+              <script language='javascript'>
+                function ResizeDiv(obj, ty) {
+                  if (ty == "+") document.all[obj].style.pixelHeight += 50;
+                  else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+                }
+              </script>
+              [<a href='javascript:;' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='javascript:;' onClick="ResizeDiv('mdv','-');">缩小</a>]
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td id="mtd">
+        <div id='mdv' style='width:100%;height:350px;'>
+          <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

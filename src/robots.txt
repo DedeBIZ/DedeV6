@@ -1,5 +1,6 @@
-User-agent: *
+User-agent: * 
+Disallow: /apps
 Disallow: /data
-Disallow: /include
-Disallow: /plus
-Disallow: /templets
+Disallow: /system
+Disallow: /theme
+Disallow: /user

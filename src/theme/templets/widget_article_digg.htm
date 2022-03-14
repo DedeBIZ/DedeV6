@@ -1,0 +1,78 @@
+{dede:comment text="顶踩模块"/}
+<div class="row justify-content-center digg">
+    <div class="comment-container mb-3" onclick="javascript:PostDigg('good',{dede:field.id/})">
+        <div class="comment-top">
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+            <p class="comment-top-text">顶一下[<span id="goodpost">{dede:field.goodpost/}</span>]</p>
+        </div>
+        <div class="progress" style="height: 10px;">
+            <div class="progress-bar" role="progressbar" id="goodper" style="width: {dede:field.goodper/}%"
+                aria-valuenow="{dede:field.goodper/}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+    <div class="comment-container mb-3" onclick="javascript:PostDigg('bad',{dede:field.id/})">
+        <div class="comment-top">
+            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+            <p class="comment-top-text-danger">踩一下[<span id="badpost">{dede:field.badpost/}</span>]</p>
+        </div>
+        <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" id="badper" style="width:{dede:field.badper/}%"
+                aria-valuenow="{dede:field.badper/}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+</div> <!-- ./digg -->
+
+<script>
+    //获取顶踩数据
+    function GetDigg(aid,cid) {
+        let url = `{dede:global.cfg_phpurl/}/digg_ajax.php?id=${aid}&cid=${cid}&format=json`;
+        $.get(url, function (data) {
+            let reval = JSON.parse(data);
+            if (reval.code === 200) {
+                $("#goodpost").html(reval.data.goodpost);
+                $("#badpost").html(reval.data.badpost);
+                $("#goodper").css("width", `${reval.data.goodper}%`)
+                $("#badper").css("width", `${reval.data.badper}%`)
+            }
+        })
+    }
+
+    function PostDigg(ftype, aid) {
+        var saveid = GetCookie('diggid');
+        if (saveid != null) {
+            var saveids = saveid.split(',');
+            var hasid = false;
+            saveid = '';
+            j = 1;
+            for (i = saveids.length - 1; i >= 0; i--) {
+                if (saveids[i] == aid && hasid) continue;
+                else {
+                    if (saveids[i] == aid && !hasid) hasid = true;
+                    saveid += (saveid == '' ? saveids[i] : ',' + saveids[i]);
+                    j++;
+                    if (j == 20 && hasid) break;
+                    if (j == 19 && !hasid) break;
+                }
+            }
+            if (hasid) { ShowMsg("您已经顶过该帖，请不要重复顶帖 "); return; }
+            else saveid += ',' + aid;
+            SetCookie('diggid', saveid, 1);
+        }
+        else {
+            SetCookie('diggid', aid, 1);
+        }
+        let url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action=" + ftype + "&id=" + aid + "&format=json&cid={dede:field.channel/}";
+        $.get(url, function (data) {
+            let reval = JSON.parse(data);
+            if (reval.code === 200) {
+                $("#goodpost").html(reval.data.goodpost);
+                $("#badpost").html(reval.data.badpost);
+                $("#goodper").css("width", `${reval.data.goodper}%`)
+                $("#badper").css("width", `${reval.data.badper}%`)
+            }
+        });
+    }
+
+    GetDigg("{dede:field.id/}", "{dede:field.channel/}");
+
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+  <title>重复文档检测</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+  <div class="bodytitle mt-3">
+    <div class="bodytitleleft"></div>
+    <div class="bodytitletxt">批量管理</div>
+  </div>
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered" style="background:#CFCFCF;">
+    <form action="article_test_same.php" name="form1" target="stafrm">
+      <input type='hidden' name='dopost' value='analyse'>
+      <tr>
+        <td height="26" bgcolor="#EDF9D5" background="images/tbg.gif">
+          <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
+            <tr>
+              <td width="30%" height="18"><strong>&nbsp;重复文档检测：</strong></td>
+              <td width="70%" align="right">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="30" align="center" bgcolor="#FFFFFF">
+          <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="table table-borderless">
+            <tr>
+              <td width="20%" height="30" align="left">频道类型：</td>
+              <td align="left">
+                <select name="channelid">
+                  <?php
+               if(!empty($channelinfos))
+               {
+	                  foreach($channelinfos as $rs)
+	                  {
+		                  echo "<option value=".$rs['id'].">".$rs['typename']."</option>";
+	                  }
+               }
+               ?>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" height="30" align="left">删除选项：</td>
+              <td align="left">
+                <label><input name="deltype" type="radio" value="delnew" class='np' checked='1' />
+                 保留最旧的一条</label>
+                <label><input type="radio" name="deltype" value="delold" class='np' />
+                 保留最新的一条</label>
+              </td>
+            </tr>
+            <tr>
+              <td height="30" align="left">每排列出记录：</td>
+              <td align="left"><input name="pagesize" type="text" id="pagesize" value="100" size="10">
+                条</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="30" bgcolor="#ffffff" align="center" style="padding-top:6px">
+          <button type="submit" name="Submit" class="btn btn-success">分析标题重复的文档</button>
+        </td>
+      </tr>
+    </form>
+    <tr bgcolor="#F9FCEF">
+      <td height="30"><strong>结果：</strong></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td id="mtd">
+        <div id='mdv' style='width:100%;height:420px;'>
+          <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

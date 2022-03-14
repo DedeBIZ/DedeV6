@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="<?php echo $cfg_cmsurl;?>/static/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/bootstrap.min.css">
+  <link href="<?php echo $cfg_cmsurl;?>/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/style.css">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/member.css">
+  <title>修改帐号基本资料 - 会员中心 - <?php echo $cfg_webname; ?></title>
+</head>
+<body>
+  <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+
+  <main class="member">
+    <div class="container-fluid pannel">
+      <div class="container">
+        <div class="row">
+          <?php
+          $_menu_edtex = true; //展开编辑信息
+          $_menu_edtitem = 'base'; //当前标签页
+          ?>
+          <?php include(DEDEMEMBER."/templets/menu.htm"); ?>
+          <div class="pannel-main col-md-9 mt-3 mb-3">
+            <div class="pannel-main-container">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="edit_baseinfo.php">账号安全</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="edit_face.php">头像设置</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="edit_email.php">验证邮箱</a>
+                </li>
+              </ul>
+              <form action="edit_baseinfo.php" method="post" enctype="multipart/form-data" name="form2"
+                onsubmit="return checkSubmit();" class="mt-3">
+                <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
+                <input type="hidden" name="dopost" value="save" />
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">帐号类型</label>
+                  <div class="col-sm-10">
+                    <?php echo $row['mtype']; ?>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">用户名</label>
+                  <div class="col-sm-10">
+                    <?php echo $cfg_ml->M_LoginID; ?>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="iptUname" class="col-sm-2 col-form-label">昵称/公司名称</label>
+                  <div class="col-sm-10">
+                    <input name="uname" type="text" class="form-control" id="iptUname" value="<?php echo $row['uname']; ?>">
+                  </div>
+                  <small class="offset-md-2 col-sm-8 text-muted">
+                    个人会员该项为昵称，企业会员填写公司名称
+                  </small>
+                </div>
+
+                <div class="form-group row">
+                  <label for="iptOldpwd" class="col-sm-2 col-form-label">原登录密码</label>
+                  <div class="col-sm-10">
+                    <input name="oldpwd" type="password" class="form-control" id="iptOldpwd">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="iptUserpwd" class="col-sm-2 col-form-label">新密码</label>
+                  <div class="col-sm-10">
+                    <input name="userpwd" type="password" class="form-control" id="iptUserpwd">
+                  </div>
+                  <small class="offset-md-2 col-sm-8 text-muted">
+                    不修改密码请保留此项为空
+                  </small>
+                </div>
+
+                <div class="form-group row">
+                  <label for="iptUserpwdok" class="col-sm-2 col-form-label">确认新密码</label>
+                  <div class="col-sm-10">
+                    <input name="userpwdok" type="password" class="form-control" id="iptUserpwdok">
+                  </div>
+                  <small class="offset-md-2 col-sm-8 text-muted">
+                    不修改密码请保留此项为空
+                  </small>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">原安全问题</label>
+                  <div class="col-sm-10">
+                    <?php
+                        require(DEDEDATA.'/safequestions.php');
+                        echo GetSafequestion($row['safequestion'],'safequestion');
+                    ?>
+                  </div>
+                  <small class="offset-md-2 col-sm-8 text-muted">
+                    忘记密码时重设密码用
+                  </small>
+                </div>
+
+                <div class="form-group row">
+                  <label for="iptSafeanswer" class="col-sm-2 col-form-label">原问题答案</label>
+                  <div class="col-sm-10">
+                    <input name="safeanswer" type="text" class="form-control" id="iptSafeanswer">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">新安全问题</label>
+                  <div class="col-sm-10">
+                    <?php
+                      echo GetSafequestion(0,'newsafequestion');
+                    ?>
+                  </div>
+                  <small class="offset-md-2 col-sm-8 text-muted">
+                    不修改不用填写
+                  </small>
+                </div>
+
+                <div class="form-group row">
+                  <label for="iptNewsafeanswer" class="col-sm-2 col-form-label">新问题答案</label>
+                  <div class="col-sm-10">
+                    <input name="newsafeanswer" type="text" class="form-control" id="iptNewsafeanswer">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="iptEmail" class="col-sm-2 col-form-label">电子邮箱</label>
+                  <div class="col-sm-10">
+                    <input name="email" type="email" class="form-control" id="iptEmail">
+                  </div>
+                  <small class="offset-md-2 col-sm-8 text-muted">
+                    每个电子邮邮箱只能注册一个帐号，要修改电子邮箱必须填写正确安全问题的答案
+                  </small>
+                </div>
+
+                <div class="form-group row">
+                  <label for="iptEmail" class="col-sm-2 col-form-label">性别</label>
+                  <div class="col-sm-10">
+                    <label><input type="radio" name="sex" value="男"
+                      <?php if($row['sex']=='男') echo " checked='checked' "; ?> />
+                    男</label> &nbsp;
+                    <label><input type="radio" name="sex" value="女"
+                      <?php if($row['sex']=='女') echo " checked='checked' "; ?> />
+                    女</label> &nbsp;
+                    <label><input type="radio" name="sex" value="保密'"
+                      <?php if($row['sex']=='保密') echo " checked='checked' "; ?> />
+                    保密</label>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="iptValidate" class="col-sm-2 col-form-label">验证码</label>
+                  <div class="col-sm-10">
+                    <div class="input-group">
+                      <input name="vdcode" placeholder="输入图形验证码" type="text" class="form-control" id="iptValidate"
+                        style="text-transform:uppercase;">
+                      <img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer;"
+                        onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)"
+                        title="点击我更换图片" alt="点击我更换图片" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-success">保存</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+  <script>
+    function checkSubmit() {
+      if (document.form2.oldpwd.value == '') {
+        document.form2.oldpwd.focus();
+        ShowMsg("旧密码必须填写");
+        return false;
+      }
+      if (document.form2.userpwdok.value != document.form2.userpwd.value) {
+        document.form2.userpwdok.focus();
+        ShowMsg("两次密码不一致");
+        return false;
+      }
+      if (document.form2.email.value == "") {
+        document.form2.email.focus();
+        ShowMsg("Email不能为空");
+        return false;
+      }
+      if (document.form2.uname.value == "") {
+        document.form2.uname.focus();
+        ShowMsg("用户昵称不能为空");
+        return false;
+      }
+      if (document.form2.vdcode.value == "") {
+        document.form2.vdcode.focus();
+        ShowMsg("验证码不能为空");
+        return false;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

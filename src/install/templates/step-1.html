@@ -1,19 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>安装程序 - DedeBIZ - DedeBIZ技术支持</title>
+	<meta charset="<?php echo $cfg_soft_lang; ?>">
+	<title>安装程序</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
 	<script src="../static/js/jquery.min.js"></script>
 	<script src="../static/js/popper.min.js"></script>
 	<script src="../static/js/bootstrap.bundle.js"></script>
-	<script src="../static/js/dede.js"></script>
+	<script src="../static/js/style.js"></script>
+	<style>body{font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#343a40;background:#f2f2f2}input,select,.btn{font-size:14px!important}@media (min-width:1200px){.container{max-width:950px}}</style>
 </head>
 <body>
-	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-		<h5 class="my-0 mr-md-auto font-weight-normal text-success">DedeBIZ安装程序</h5>
-		<nav class="my-2 my-md-0 mr-md-3">
+	<div class="d-flex flex-column flex-md-row align-items-center mb-3 p-3 px-md-5 bg-white border-bottom shadow-sm">
+		<h5 class="my-0 mr-md-auto text-success">安装程序</h5>
+		<nav class="my-md-0 mr-md-3">
 			<a class="p-2 text-dark" href="https://www.dedebiz.com/git" target="_blank">代码托管</a>
 			<a class="p-2 text-dark" href="https://www.dedebiz.com/help" target="_blank">帮助中心</a>
 			<a class="p-2 text-dark" href="https://www.dedebiz.com/service" target="_blank">技术服务</a>
@@ -24,16 +25,14 @@
 		if(count($arrMsg) > 0){
 			foreach($arrMsg as $msg){
 		?>
-		<div class="alert alert-warning" role="alert">
-			<?php echo $msg ?>
-		</div>
+		<div class="alert alert-warning"><?php echo $msg ?></div>
 		<?php
 		}
 		}
 		?>
 		<div class="card mb-4 shadow-sm">
 			<div class="card-header bg-success text-white">
-				<h5 class="my-0 fw-normal text-center">首次运行安装程序（v<?php echo $cfg_version_detail;?>）</h5>
+				<h5 class="my-0 fw-normal text-center">首次运行安装程序DedeCMSV<?php echo $cfg_version_detail;?></h5>
 			</div>
 			<div class="card-body">
 				<form action="index.php" method="post" name="form1">
@@ -48,7 +47,7 @@
 							<option value="mysql" selected>MySQL</option>
 							<option value="sqlite">SQLite</option>
 						</select>
-						<div class="form-text text-muted">一般为MySQL，SQLite仅用于开发调试不建议生产中使用</div>
+						<div class="form-text text-danger">一般为MySQL，SQLite仅用于开发调试不建议生产中使用</div>
 					</div>
 					<div class="mb-3">
 						<label for="dbhost" class="form-label">数据库主机</label>
@@ -64,7 +63,8 @@
 					</div>
 					<div class="mb-3">
 						<label for="dbprefix" class="form-label">数据表前缀</label>
-						<input name="dbprefix" type="text" class="form-control" id="dbprefix" placeholder="dede_">
+						<input name="dbprefix" type="text" class="form-control" id="dbprefix" placeholder="biz_">
+						<div class="form-text text-danger">请注意数据库名称默认为biz_</div>
 					</div>
 					<div class="mb-3">
 						<label for="dbname" class="form-label">数据库名称</label>
@@ -81,7 +81,7 @@
 					<div class="mb-3">
 						<label for="adminuser" class="form-label">用户名</label>
 						<input name="adminuser" type="text" class="form-control" id="adminuser" placeholder="admin">
-						<div class="form-text text-muted">只能用'0-9'、'a-z'、'A-Z'、'.'、'@'、'_'、'-'、'!'以内范围的字符</div>
+						<div class="form-text text-dark">只能用'0-9'、'a-z'、'A-Z'、'.'、'@'、'_'、'-'、'!'以内范围的字符</div>
 					</div>
 					<div class="mb-3">
 						<label for="adminpwd" class="form-label">密码</label>
@@ -89,7 +89,7 @@
 					</div>
 					<div class="mb-3">
 						<label for="webname" class="form-label">网站名称</label>
-						<input name="webname" type="text" class="form-control" id="webname" placeholder="我的网站">
+						<input name="webname" type="text" class="form-control" id="webname" placeholder="某某公司">
 					</div>
 					<div class="mb-3">
 						<label for="baseurl" class="form-label">网站网址</label>
@@ -98,16 +98,17 @@
 					<div class="mb-3">
 						<label for="cmspath" class="form-label">安装目录</label>
 						<input name="cmspath" type="text" class="form-control" id="cmspath" placeholder="<?php echo $basepath; ?>">
-						<div class="form-text text-muted">在根目录安装时不必理会</div>
+						<div class="form-text text-danger">在根目录安装时不必理会</div>
 					</div>
-					<button type="submit" class="btn btn-success">立即安装</button>  <span class="ml-2">安装即表示您同意<a href="https://www.dedebiz.com/license" target="_blank">站点授权协议</a></span>
+					<button type="submit" class="btn btn-success">立即安装</button>
+					<span class="ml-2">安装即表示您同意<a href="https://www.dedebiz.com/license" target="_blank" class="text-dark">站点授权协议</a></span>
 				</form>
 			</div>
 		</div>
 		<footer>
 			<div class="row">
 				<div class="col-12 col-md">
-					<p class="d-block mb-3 text-muted">© 2022 <a href="https://www.dedebiz.com" target="_blank" title="DedeBIZ商业技术支持，提供更专业强大的站点应用开发技术">DedeBIZ技术支持</a></p>
+					<p class="d-block mb-3">© 2022 <a href="https://www.dedebiz.com" target="_blank" class="text-dark">DedeBIZ技术支持</a></p>
 				</div>
 			</div>
 		</footer>

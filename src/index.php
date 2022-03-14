@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @version        $Id: index.php 1 9:23 2010-11-11 tianya $
  * @package        DedeBIZ.Site
@@ -11,11 +10,10 @@ if (!file_exists(dirname(__FILE__).'/data/common.inc.php')) {
     header('Location:install/index.php');
     exit();
 }
-
-//自动生成HTML版
+//自动生成网页版
 if (isset($_GET['upcache']) || !file_exists('index.html')) {
-    require_once(dirname(__FILE__)."/include/common.inc.php");
-    require_once DEDEINC."/arc.partview.class.php";
+    require_once(dirname(__FILE__)."/system/common.inc.php");
+    require_once DEDEINC."/archive/partview.class.php";
     $GLOBALS['_arclistEnv'] = 'index';
     $row = $dsql->GetOne("SELECT * FROM `#@__homepageset`");
     $row['templet'] = MfTemplet($row['templet']);

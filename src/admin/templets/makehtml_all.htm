@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>一键更新</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="../static/css/daterangepicker.css">
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/moment.min.js"></script>
+<script src="../static/js/daterangepicker.js"></script>
+<script>
+$(document).ready(function () {
+    $('.datepicker').daterangepicker({
+        "singleDatePicker": true,
+        "autoApply": true,
+        "showDropdowns": true,
+        "linkedCalendars": false,
+        "timePicker": true,
+        "timePicker24Hour": true,
+        "showCustomRangeLabel": false,
+        ranges: {
+            '今日': [moment(), moment()],
+            '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            '本月': [moment().startOf('month'), moment().startOf('month')],
+            '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+        },
+        "locale": {
+            format: 'YYYY-MM-DD HH:mm',
+            applyLabel: '确定',
+            cancelLabel: '取消',
+            daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月'],
+            firstDay: 1
+        }
+    }, function (start) {
+        $(this).val(start.format("YYYY-MM-DD HH:mm"));
+    });
+})
+</script>
+<script>
+function SelUp(){
+    var ob1 = document.getElementById("uptype1");
+    var ob2 = document.getElementById("uptype2");
+    var ob3 = document.getElementById("uptype3");
+    if(ob1.checked){
+        document.getElementById("seltime").style.display = "";
+        document.getElementById("selid").style.display = "none";
+    } else if(ob2.checked){
+        document.getElementById("seltime").style.display = "none";
+        document.getElementById("selid").style.display = "";
+    } else {
+        document.getElementById("seltime").style.display = "none";
+        document.getElementById("selid").style.display = "none";
+   }
+}
+</script>
+</head>
+<body background="images/allbg.gif" leftmargin="8" topmargin="8">
+    <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
+        <form name="form1" action="makehtml_all.php" target="stafrm" method="post">
+            <input type="hidden" name="action" value="make">
+            <tr>
+                <td height="30" colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px">
+                    <strong>一键更新网站：</strong></td>
+                </td>
+            </tr>
+            <tr>
+                <td width="30%" height="30"  bgcolor="#FFFFFF">&nbsp;更新选项：</td>
+                <td valign="top" bgcolor="#FFFFFF">
+                  <label><input name="uptype" id="uptype1" type="radio" value="time" onClick="SelUp()" checked="checked">&nbsp;指定时间的所有更新</label>
+                  <label><input name="uptype" id="uptype2" type="radio" onClick="SelUp()" value="id">&nbsp;指定ID文档的所有更新</label>
+                  <label><input name="uptype" id="uptype3" type="radio" onClick="SelUp()" value="mkall">&nbsp;更新所有</label>
+                </td>
+            </tr>
+            <tr id="seltime">
+                <td height="26"  bgcolor="#FFFFFF">&nbsp;起始时间：</td>
+                <td height="26"  bgcolor="#FFFFFF"><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time()); ?>" style="width:200px" class="datepicker"></td>
+            </tr>
+            <tr bgcolor="#FFFFFF" id="selid" style="display:none">
+                <td height="26">&nbsp;起始ID：</td>
+                <td height="26"><input name="startid" type="text" id="startid" value="0" size="4"></td>
+            </tr>
+            <tr>
+                <td height="30" colspan="2" bgcolor="#ffffff" align="center"><button type="submit" name="Submit" class="btn btn-success">开始更新</button></td>
+            </tr>
+        </form>
+        <tr bgcolor="#F9FCEF">
+            <td colspan="2" style="line-height:26px">&nbsp;进行状态：
+                <script>
+                function ResizeDiv(obj,ty)
+                {
+                    if(ty=="+") document.all[obj].style.pixelHeight += 50;
+                    else if(document.all[obj].style.pixelHeight>80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+                }
+                </script>
+                <span style="float:right">
+                    <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>&nbsp;
+                    <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
+                </span>
+            </td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+            <td colspan="2" id="mtd">
+                <div id="mdv" style="width:100%;height:350px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="350px"></iframe></div>
+                <script>
+                document.all.mdv.style.pixelHeight = screen.height - 360;
+                </script>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

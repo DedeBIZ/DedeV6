@@ -1,6 +1,6 @@
 <?php
 /**
- * @version        $Id: index.php 2021-01-03 tianya $
+ * @version        $Id: index.php 2022-01-03 tianya $
  * @package        DedeBIZ.Install
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -8,30 +8,34 @@
  */
 @set_time_limit(0);
 error_reporting(E_ALL || ~E_NOTICE);
+define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
+
+if(file_exists(INSLOCKFILE))
+{
+    exit("程序已运行安装，如果您确定要重新安装，请先删除 public/install/install_lock.txt");
+}
+
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
-$cfg_version_detail = '6.0.4'; // 详细版本号
+$cfg_version_detail = '6.1.0'; //详细版本号
 $errmsg = '';
-define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
-$moduleCacheFile = dirname(__FILE__).'/modules.tmp.inc';
-define('DEDEINC',dirname(__FILE__).'/../include');
-define('DEDEDATA',dirname(__FILE__).'/../data');
-define('DEDEROOT',preg_replace("#[\\\\\/]install#", '', dirname(__FILE__)));
-header("Content-Type: text/html; charset=utf-8");
 if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
     mysqli_report(MYSQLI_REPORT_OFF);
 }
+
+$moduleCacheFile = dirname(__FILE__).'/modules.tmp.inc';
+define('DEDEINC',dirname(__FILE__).'/../system');
+define('DEDEDATA',dirname(__FILE__).'/../data');
+define('DEDEROOT',preg_replace("#[\\\\\/]install#", '', dirname(__FILE__)));
+header("Content-Type: text/html; charset=utf-8");
 require_once(DEDEROOT.'/install/install.inc.php');
-require_once(DEDEINC.'/zip.class.php');
+require_once(DEDEINC.'/libraries/zip.class.php');
 foreach(Array('_GET','_POST','_COOKIE') as $_request)
 {
     foreach($$_request as $_k => $_v) ${$_k} = RunMagicQuotes($_v);
 }
 require_once(DEDEINC.'/common.func.php');
-if(file_exists(INSLOCKFILE))
-{
-    exit(" 程序已运行安装，如果您确定要重新安装，请先从FTP中删除 install/install_lock.txt");
-}
+
 if(empty($step))
 {
     $step = 1;
@@ -94,11 +98,11 @@ else if($step==2)
     $dbhost = empty($dbhost)? "localhost" : $dbhost;
     $dbuser = empty($dbuser)? "root" : $dbuser;
     $dbuser = empty($dbuser)? "root" : $dbuser;
-    $dbprefix = empty($dbprefix)? "dede_" : $dbprefix;
+    $dbprefix = empty($dbprefix)? "biz_" : $dbprefix;
     $dbname = empty($dbname)? $dfDbname : $dbname;
     $adminuser = empty($adminuser)? "admin" : $adminuser;
     $adminpwd = empty($adminpwd)? "admin" : $adminpwd;
-    $webname = empty($webname)? "我的网站" : $webname;
+    $webname = empty($webname)? "某某公司" : $webname;
     $baseurl = empty($baseurl)? $dfbaseurl : $baseurl;
     $cmspath = empty($cmspath)? $dfbasepath : $cmspath;
     if ( $dbtype == 'sqlite' )
@@ -194,9 +198,7 @@ else if($step==2)
                     if(preg_match('#CREATE#i', $query))
                     {
                         $rs = mysql_query(preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query),$conn);
-                    }
-                    else
-                    {
+                    } else {
                         $rs = mysql_query($query,$conn);
                     }
                 }
@@ -269,7 +271,7 @@ else if($step==2)
     $fp = fopen(INSLOCKFILE,'w');
     fwrite($fp,'ok');
     fclose($fp);
-    header('Location:../dede/index.php');
+    header('Location:../admin/index.php');
     exit();
 }
 /*------------------------
@@ -288,7 +290,7 @@ else if($step==10)
 		if(empty($dbname)){
 			$info = "信息正确";
 		} else {
-			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统将覆盖数据库": "数据库不存在,系统将自动创建";
+			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统将覆盖数据库": "数据库不存在，系统将自动创建";
         }
         $result = array(
             "code" => 200,

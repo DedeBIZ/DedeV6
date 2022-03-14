@@ -1,4 +1,12 @@
--- 6.0.0
+-- 6.1.0
+ALTER TABLE `#@__arctype`
+	ADD COLUMN `namegk` varchar(255) NULL AFTER `typename`,
+	ADD COLUMN `enname` varchar(255) NULL AFTER `namegk`,
+	ADD COLUMN `ennamegk` varchar(255) NULL AFTER `enname`,
+	ADD COLUMN `litpic` varchar(255) NULL AFTER `ennamegk`,
+	ADD COLUMN `litimg` varchar(255) NULL AFTER `litpic`;
+
+-- 6.0.3
 
 ALTER TABLE `#@__tagindex`
 	ADD COLUMN `uptime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `addtime`,

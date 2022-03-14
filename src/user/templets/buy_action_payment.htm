@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="<?php echo $cfg_cmsurl;?>/static/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/bootstrap.min.css">
+  <link href="<?php echo $cfg_cmsurl;?>/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/style.css">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/css/member.css">
+  <title>订单确认 - 会员中心 -<?php echo $cfg_webname; ?></title>
+</head>
+<body>
+  <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+  <main class="member">
+    <div class="container-fluid pannel">
+      <div class="container">
+        <div class="row">
+          <div class="pannel-main col-md-12 mt-3 mb-3">
+            <div class="pannel-main-container">
+              <nav class="navbar navbar-expand-lg">
+                <ol class="breadcrumb mb-0 mr-auto">
+                  <li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
+                  <li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/buy.php">钱包积分</a></li>
+                  <li class="breadcrumb-item">确认订单</li>
+                  </li>
+                </ol>
+                <span class="navbar-text">
+                  <a href="javascript:history.back(-1);" class="btn btn-sm">返回</a>
+                </span>
+              </nav>
+              <div id="mainCp">
+                <h5 class="meTitle">订单确认</h5>
+                <div class="alert alert-success" role="alert">
+                  您申请购买的产品如下，确认无误后请点击“购买并支付”按钮，进行网上支付，如果支付失败，请与管理员联系其它支付方式：
+                </div>
+                <div class="postForm">
+                  <h5 class="meTitle" style="padding-top: 20px;">购买点卡/会员服务</h5>
+                  <form method="post" name="E_FORM" action="buy_action.php" target="_blank">
+                    <input type="hidden" name="pd_encode" value="<?php echo $pr_encode;?>">
+                    <input type="hidden" name="pd_verify" value="<?php echo $pr_verify;?>">
+                     <input type="hidden" name="aid" value="<?php echo $buyid;?>">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                      <tbody>
+                        <tr>
+                          <td width="15%" align="right" valign="top">订单编号：</td>
+                          <td><?php echo $buyid?></td>
+                        </tr>
+                        <tr>
+                          <td align="right" valign="top">产品类型：</td>
+                          <td><?php echo $ptype?></td>
+                        </tr>
+                        <tr>
+                          <td align="right" valign="top">产品名称：</td>
+                          <td><?php echo $pname?></td>
+                        </tr>
+                        <tr>
+                          <td align="right" valign="top"><span class="td1">产品价格：</span></td>
+                          <td><?php echo $price;?>元</td>
+                        </tr>
+                        <tr>
+                          <td align="right" valign="top"><span class="td1">支付方式：</span></td>
+                          <td><table border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
+                              {dede:array.payment_list}
+                              <tr onMouseMove="javascript:this.bgColor='#f6f6f6';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+                                <td width="10%" align="right" style="vertical-align:middle;">{dede:if value.code=="cod" || value.code=="bank"} <input name="paytype" type="radio" value="{dede:value.id/}"  disabled="disabled"/>{else}<input name="paytype" type="radio" value="{dede:value.id/}"/>{/dede:if}</td>
+                                <td width="20%" valign="middle" style="vertical-align:middle;"> {dede:value.name/} </td>
+                                <td width="60%"> {dede:value.description/} </td>
+                                <td width="10%" align="center"><span class="fc-f60">{dede:value.fee/}元</span></td>
+                              </tr>
+                              {/dede:array}
+                          </table></td>
+                        </tr>
+                        <tr>
+                          <td align="right" valign="top">&nbsp;</td>
+                          <td><button class="btn btn-success" type="submit">购买并支付</button>
+                            <button class="btn btn-secondary" type="button" onclick="location='buy.php'">返回</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </form>
+                </div>
+              </div>
+              <!--主操作区域 --> 
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+</body>
+
+</html>

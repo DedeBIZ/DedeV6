@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+	<title>自由列表管理</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/base.css">
+	<script language="javascript" src="../static/js/jquery.js"></script>
+	<script language="javascript" src="../static/js/webajax.js"></script>
+	<script language="javascript" src="js/main.js"></script>
+	<script language="JavaScript">
+		var pageno = 1;
+		var totalrow = <?php echo $totalRow;?>;
+		var pagesize = <?php echo $pagesize;?>;
+		var orderby = '<?php echo $orderby?>';
+		var addget = "<?php echo $addget?>";
+		//加载列表
+		function ReloadPage(ordertype) {
+			orderby = ordertype;
+			var listArea = $Obj('rslist');
+			var errMsg = "网络通信出错<br>[<a href=\"javascript:ReloadPage('" + ordertype + "')\">点击此重新加载列表</a>]";
+			var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在加载");
+			myajax.SendGet("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget);
+		}
+		//载入指定页的列表
+		function LoadPage(npage) {
+			pageno = npage;
+			ReloadPage(orderby);
+			ReloadPageNum(pageno);
+		}
+		//修改
+		function EditNote(nid) {
+			location.href = 'freelist_edit.php?aid=' + nid;
+		}
+		//更新HTML
+		function CreateNote(nid) {
+			location.href = 'makehtml_freelist.php?aid=' + nid;
+		}
+		//删除
+		function DelNote(nid) {
+			if (!window.confirm("您确认要删除这条记录么")) { return false; }
+			var listArea = $Obj('rslist');
+			totalrow = totalrow - 1;
+			var pagenum = Math.ceil(totalrow / pagesize);
+			if (pagenum <= pageno) pageno = pagenum;
+			var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
+			var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理");
+			myajax.SendGet("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno);
+			ReloadPageNum(pageno);
+		}
+		//重新加载分页列表
+		function ReloadPageNum(startnum) {
+			var ListArea = $Obj('pagelist');
+			var pagenum = Math.ceil(totalrow / pagesize);
+			var listsize = 3;
+			var ahtml = "<ul class='pagination justify-content-center'>";
+			var startloop = 1;
+			var endnum = 0;
+			ahtml += "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>" + pagenum + "页" + totalrow + "篇</span></li>";
+			if (pageno > 1 && pageno != 1) ahtml += "<li class='page-item d-none d-sm-block disabled'><a href='javascript:;' class='page-link' onclick='LoadPage(1)'>首页</a></li>";
+			if (pageno > 1) ahtml += "<li class='page-item d-none d-sm-block'><a href='javascript:;' class='page-link' onclick='LoadPage(" + (pageno - 1) + ")'>上页</a></li> ";
+			if (startnum >= pagenum - listsize) {
+				startloop = pagenum - (listsize * 2);
+				if (startloop < 1) startloop = 1;
+				for (i = startloop; i <= pagenum; i++) {
+					if (i == pageno) ahtml += "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>" + i + "</span></li>";
+					else ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + i + ")'>[" + i + "]</a></li>";
+				}
+			}
+			else if (pagenum < listsize) {
+				for (i = 1; i <= pagenum; i++) {
+					if (i == pageno) ahtml += i + " ";
+					else ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + i + ")'>[" + i + "]</a></li>";
+				}
+			}
+			else {
+				startloop = startnum - listsize;
+				if (startloop < 1) { startloop = 1; endnum = startloop + (listsize * 2); }
+				else { endnum = startnum + listsize; }
+				if (endnum >= pagenum) endnum = pagenum;
+				for (i = startloop; i <= endnum; i++) {
+					if (i == pageno) ahtml += i + " ";
+					else ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + i + ")'>[" + i + "]</a></li>";
+				}
+			}
+			if (pageno < pagenum) ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + (pageno + 1) + ")'>下页</a></li>";
+			if (pageno != pagenum && pagenum > 1) ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + pagenum + ")'>末页</a></li>";
+			ListArea.innerHTML = ahtml+"</ul>";
+		}
+	</script>
+</head>
+<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+	<div class="bodytitle mt-3">
+		<div class="bodytitleleft"></div>
+		<div class="bodytitletxt">频道管理</div>
+	</div>
+
+	<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="maintable"
+		style="border:1px solid #CFCFCF;border-bottom:none;">
+		<tr>
+			<td bgcolor="#CFCFCF" class="tbtitletxt" background="images/tbg.gif">
+				<table width='100%' border="0" cellpadding='0' cellspacing='0' class="maintable">
+					<tr>
+						<td width='36%' class="py-3" style="padding-left:10px"><strong>自由列表管理</strong>&nbsp;
+							<a href="freelist_add.php" class="btn btn-success btn-sm">增加列表</a>
+						</td>
+						<td width="29%">&nbsp;</td>
+						<td width="35%" align='right'>&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<div id='rslist'>
+		<?php
+	GetTagList($dsql,$pageno,$pagesize,$orderby);
+	?>
+	</div>
+	<div id='pagelist' class="mb-3 mt-3"><script language='javascript'>ReloadPageNum(1);</script></div>
+	<table width="98%" border="0" cellpadding="5" cellspacing="1" align="center"
+		style=" border:1px solid #CFCFCF;line-height:31px;margin:auto;" class="table table-borderless maintable mb-3">
+		<tr>
+			<td height="36" align="center" style="background:#F9FCEF;padding:7px 6px 3px 6px;">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+					<form action="freelist_main.php" name="form1" id="form1">
+						<tr>
+							<td width="200" align="center">
+								<input type="text" name="keyword" id="keyword" class='alltxt' style="width:170px" value="<?php echo $keyword?>">
+							</td>
+							<td width="86" align="left">
+								<button type="submit" name="Submit2" class="btn btn-success btn-sm">搜索</button>
+							</td>
+							<td align="left">
+								<button type="button" name="bt1"
+									onclick="location='freelist_add.php';" class="btn btn-success btn-sm">增加列表</button>
+								&nbsp;
+								<button type="button" name="bt2"
+									onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm">更新所有列表HTML</button>
+							</td>
+							<td width="200">
+								
+							</td>
+						</tr>
+					</form>
+				</table>
+				
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
