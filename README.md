@@ -4,7 +4,7 @@
 
 ## 版本说明
 
-DedeCMSV6.x是一个LTS版本，支持将到2022年10月截止，目前DedeCMSV6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取
+DedeCMSV6.x是一个LTS版本，支持将到2024年10月截止，目前DedeCMSV6已经发布，可以[点击下载](https://www.dedebiz.com/download)获取
 
 ## 参与开源
 
