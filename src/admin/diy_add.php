@@ -34,10 +34,16 @@ if (empty($action)) {
         ShowMsg("可能自定义表单的‘diyid’、‘名称’在数据库中已存在，不能重复使用", "-1");
         exit();
     }
-    $query = "SHOW TABLES FROM {$dsql->dbName} ";
+    if ($cfg_dbtype=="sqlite") {
+        $query = " SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
+    } else {
+        $query = "SHOW TABLES";
+    }
+    
     $dsql->SetQuery($query);
-    $dsql->Execute();
-    while ($row = $dsql->getarray()) {
+    $dsql->Execute("biz");
+
+    while ($row = $dsql->GetArray("biz")) {
         if (empty($row[0])) $row[0] = '';
         if ($table == $row[0]) {
             showmsg('指定的表在数据库中重复', '-1');

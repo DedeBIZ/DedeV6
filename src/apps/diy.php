@@ -17,7 +17,7 @@ if (empty($diyid)) {
     showMsg('非法操作!', 'javascript:;');
     exit();
 }
-require_once DEDEINC.'/diyform.cls.php';
+require_once DEDEINC.'/diyform.class.php';
 $diy = new diyform($diyid);
 /*----------------------------
 function Post(){ }

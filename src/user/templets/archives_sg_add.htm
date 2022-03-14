@@ -74,7 +74,7 @@
                   </div>
                   <?php
                     //自定义字段
-                    PrintAutoFieldsAdd($cInfos['fieldset'],'autofield');
+                    PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');
                   ?>
                   <!-- 表单操作区域 -->
                   <div class="contentShow postForm">

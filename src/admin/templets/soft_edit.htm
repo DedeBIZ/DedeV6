@@ -310,7 +310,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td><?php PrintAutoFieldsEdit($cInfos['fieldset'],$addRow,'autofield'); ?></td>
+        <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield'); ?></td>
       </tr>
       <tr>
         <td height="26" bgcolor="#F9FCEF" class="bline2">&nbsp;<strong>下载限制：</strong></td>

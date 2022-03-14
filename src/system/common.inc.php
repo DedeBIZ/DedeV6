@@ -257,6 +257,15 @@ $cfg_biz_helpUrl = DEDEBIZURL."/help";
 $cfg_biz_gitUrl = DEDEBIZURL."/git";
 $cfg_biz_dedebizUrl = DEDEBIZURL;
 //引入数据库类
+if (!defined('MYSQL_BOTH')) {
+    define('MYSQL_BOTH', MYSQLI_BOTH);
+}
+if (!defined('MYSQL_ASSOC')) {
+    define('MYSQL_ASSOC', MYSQLI_ASSOC);
+}
+if (!defined('MYSQL_NUM')) {
+    define('MYSQL_NUM', MYSQLI_NUM);
+}
 if ($GLOBALS['cfg_dbtype'] == 'mysql' || $GLOBALS['cfg_dbtype'] == 'mysqli') {
     require_once(DEDEINC.'/database/dedesqli.class.php');
 } else {

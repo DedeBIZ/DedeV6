@@ -186,7 +186,7 @@
                   </div>
                   <?php
                     //自定义字段
-                    PrintAutoFieldsEdit($cInfos['fieldset'],$addRow,'autofield');
+                    PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');
                   ?>
                   <!-- 表单操作区域 -->
                   <div class="contentShow postForm">

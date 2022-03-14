@@ -31,7 +31,7 @@ function __Delete()
 else if ($dopost == "delete") {
     @set_time_limit(0);
     CheckPurview('c_Del');
-    $row = $dsql->GetOne("SELECT * FROM #@__diyforms WHERE diyid='$diyid'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid'");
     if (empty($job)) $job = "";
     //确认提示
     if ($job == "") {
@@ -65,5 +65,5 @@ else if ($dopost == "delete") {
 /*----------------
 function edit()
 -----------------*/
-$row = $dsql->GetOne("Select * From #@__diyforms where diyid='$diyid'");
+$row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid'");
 include DEDEADMIN."/templets/diy_edit.htm";

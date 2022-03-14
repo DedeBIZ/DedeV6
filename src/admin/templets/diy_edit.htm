@@ -108,7 +108,7 @@ foreach($ds as $d){
 	$dds = explode(',',trim($d));
 	$fieldtypes[$dds[0]] = $dds[1];
 }
-$fieldset = $row['info'];
+$fieldset = stripslashes($row['info']);
 $dtp = new DedeTagParse();
 $dtp->SetNameSpace("field","<",">");
 $dtp->LoadSource($fieldset);

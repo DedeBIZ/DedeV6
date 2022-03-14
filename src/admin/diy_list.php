@@ -16,7 +16,7 @@ if (empty($diyid)) {
     showMsg("非法操作!", 'javascript:;');
     exit();
 }
-require_once DEDEINC.'/diyform.cls.php';
+require_once DEDEINC.'/diyform.class.php';
 $diy = new diyform($diyid);
 if ($action == 'post') {
     if (empty($do)) {
@@ -31,7 +31,7 @@ if ($action == 'post') {
                 exit();
             }
         }
-        $diyform = $dsql->getOne("SELECT * FROM #@__diyforms WHERE diyid=$diyid");
+        $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         if (!is_array($diyform)) {
             showmsg("自定义表单不存在", '-1');
             exit();
@@ -96,7 +96,7 @@ if ($action == 'post') {
         include DEDEADMIN.'/templets/diy_edit_content.htm';
     } else if ($do == 2) {
         $dede_fields = empty($dede_fields) ? '' : trim($dede_fields);
-        $diyform = $dsql->GetOne("SELECT * FROM #@__diyforms WHERE diyid=$diyid");
+        $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         $diyco = $dsql->GetOne("SELECT * FROM `$diy->table` WHERE id='$id'");
         if (!is_array($diyform)) {
             showmsg("自定义表单不存在", '-1');

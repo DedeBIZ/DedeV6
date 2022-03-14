@@ -295,7 +295,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td><?php PrintAutoFieldsAdd($cInfos['fieldset'],'autofield'); ?></td>
+        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
       </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="2" style="border:1px solid #cfcfcf;background:#ffffff;display:none;" cellspacing="2" id="adset">

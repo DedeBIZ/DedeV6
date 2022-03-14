@@ -12,10 +12,6 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
 require_once(DEDEINC."/archive/partview.class.php");
 if (empty($dopost)) $dopost = '';
-if (!preg_match('#\.htm$#i', trim($templet))) {
-    ShowMsg("不是合法的模板文件，后缀必须为.htm", "javascript:;");
-    exit();
-}
 if ($dopost == "view") {
     $pv = new PartView();
     $templet = str_replace("{style}", $cfg_df_style, $templet);

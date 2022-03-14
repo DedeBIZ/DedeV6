@@ -317,7 +317,7 @@ table{border-collapse:separate}
       <tr>
         <td>
         <?php
-        PrintAutoFieldsEdit($cInfos['fieldset'],$addRow,'autofield');
+        PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');
         ?>
         </td>
       </tr>

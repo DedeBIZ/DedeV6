@@ -31,12 +31,7 @@ $dsql = $dsqli = $db = new DedeSqli(FALSE);
  * @subpackage     DedeBIZ.Libraries
  * @link           https://www.dedebiz.com
  */
-if (!defined('MYSQL_BOTH')) {
-    define('MYSQL_BOTH', MYSQLI_BOTH);
-}
-if (!defined('MYSQL_ASSOC')) {
-    define('MYSQL_ASSOC', MYSQLI_ASSOC);
-}
+
 class DedeSqli
 {
     var $linkID;
@@ -60,6 +55,11 @@ class DedeSqli
         $this->isClose = FALSE;
         $this->safeCheck = TRUE;
         $this->pconnect = $pconnect;
+        $this->dbHost   =  $GLOBALS['cfg_dbhost'];
+        $this->dbUser   =  $GLOBALS['cfg_dbuser'];
+        $this->dbPwd    =  $GLOBALS['cfg_dbpwd'];
+        $this->dbName   =  $GLOBALS['cfg_dbname'];
+        $this->dbPrefix =  $GLOBALS['cfg_dbprefix'];
         if ($nconnect) {
             $this->Init($pconnect);
         }
@@ -73,11 +73,7 @@ class DedeSqli
         $this->linkID = 0;
         //$this->queryString = '';
         //$this->parameters = Array();
-        $this->dbHost   =  $GLOBALS['cfg_dbhost'];
-        $this->dbUser   =  $GLOBALS['cfg_dbuser'];
-        $this->dbPwd    =  $GLOBALS['cfg_dbpwd'];
-        $this->dbName   =  $GLOBALS['cfg_dbname'];
-        $this->dbPrefix =  $GLOBALS['cfg_dbprefix'];
+
         $this->result["me"] = 0;
         $this->Open($pconnect);
     }
@@ -488,9 +484,9 @@ EOT;
     //显示数据链接错误信息
     function DisplayError($msg)
     {
-        $errorTrackFile = dirname(__FILE__).'/../data/mysqli_error_trace.inc';
-        if (file_exists(dirname(__FILE__).'/../data/mysqli_error_trace.php')) {
-            @unlink(dirname(__FILE__).'/../data/mysqli_error_trace.php');
+        $errorTrackFile = dirname(__FILE__).'/../../data/mysqli_error_trace.inc';
+        if (file_exists(dirname(__FILE__).'/../../data/mysqli_error_trace.php')) {
+            @unlink(dirname(__FILE__).'/../../data/mysqli_error_trace.php');
         }
         if ($this->showError) {
             $emsg = '';

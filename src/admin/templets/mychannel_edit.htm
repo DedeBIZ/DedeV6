@@ -316,7 +316,7 @@ foreach($ds as $d){
 	$dds = explode(',',trim($d));
 	$fieldtypes[$dds[0]] = $dds[1];
 }
-$fieldset = $row['fieldset'];
+$fieldset = stripslashes($row['fieldset']);
 $dtp = new DedeTagParse();
 $dtp->SetNameSpace("field","<",">");
 $dtp->LoadSource($fieldset);
@@ -385,7 +385,7 @@ else
         </td>
         <td width="65%" bgcolor="#FFFFFF">
           <textarea name="fieldset" style="width:99%;height:300px" rows="10"
-            id="fieldset"><?php echo $row['fieldset']; ?></textarea>
+            id="fieldset"><?php echo stripslashes($row['fieldset']); ?></textarea>
         </td>
       </tr>
     </table>

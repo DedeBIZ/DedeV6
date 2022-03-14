@@ -524,7 +524,7 @@ else if ($dopost == 'modifysearch') {
         $intarr = array('int', 'float');
         $textarr = array('textdata', 'textchar', 'text', 'htmltext', 'multitext');
         if ($channel['issystem'] < 0) {
-            foreach ($addonfields as $addonfield) {
+            foreach ((array)$addonfields as $addonfield) {
                 if ($addonfield == 'typeid') {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);

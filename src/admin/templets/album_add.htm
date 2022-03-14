@@ -217,7 +217,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td><?php PrintAutoFieldsAdd($cInfos['fieldset'],'autofield'); ?></td>
+        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
       </tr>
       <tr>
         <td height="26" bgcolor="#F9FCEF" class="bline2">&nbsp;<strong>图集选项：</strong></td>

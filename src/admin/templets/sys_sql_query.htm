@@ -38,9 +38,15 @@
                   <tr>
                     <td width="35%">
                       <select name="tablename" id="tablename" style="width:100%;height: auto;" size="6">
-                        <?php
-$dsql->SetQuery("Show Tables");
+<?php
+if ($cfg_dbtype=="sqlite") {
+  $query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
+} else {
+  $query = "SHOW TABLES FROM {$GLOBALS['cfg_dbname']} ";
+}
+$dsql->SetQuery($query);
 $dsql->Execute('t');
+
 while($row = $dsql->GetArray('t',MYSQL_BOTH))
 {
 	$dsql->SetQuery("Select count(*) From ".$row[0]);

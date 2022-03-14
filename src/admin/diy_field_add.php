@@ -21,8 +21,8 @@ function Save()
 if ($action == 'save') {
     //模型信息
     $fieldname = strtolower($fieldname);
-    $row = $dsql->GetOne("SELECT `table`,`info` FROM #@__diyforms WHERE diyid='$diyid'");
-    $fieldset = $row['info'];
+    $row = $dsql->GetOne("SELECT `table`,`info` FROM `#@__diyforms` WHERE diyid='$diyid'");
+    $fieldset = stripslashes($row['info']);
     require_once(DEDEINC."/dedetag.class.php");
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");

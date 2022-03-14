@@ -201,7 +201,7 @@ table{border-collapse:separate}
       </tr>
       <?php } ?>
       <tr>
-        <td><?php PrintAutoFieldsAdd($cInfos['fieldset']); ?></td>
+        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset'])); ?></td>
       </tr>
       <tr>
         <td width="100%" height="26">

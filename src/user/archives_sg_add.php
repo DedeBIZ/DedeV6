@@ -140,7 +140,7 @@ else if ($dopost == 'save') {
         }
 
         //这里对前台提交的附加数据进行一次校验
-        $fontiterm = PrintAutoFieldsAdd($cInfos['fieldset'], 'autofield', FALSE);
+        $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != str_replace('`', '', $inadd_f)) {
             ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
             exit();

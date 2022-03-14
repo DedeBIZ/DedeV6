@@ -46,6 +46,12 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
         }
     }
 }
+// 一个支持在PHP Cli Server打印的方法
+function var_dump_cli($val){
+    ob_start();
+    var_dump($val);
+    error_log(ob_get_clean(), 4);
+}
 function get_mime_type($filename)
 {
     if (! function_exists('finfo_open'))
@@ -290,7 +296,7 @@ if (file_exists(DEDEINC.'/extend.func.php')) {
 function litimgurls($imgid=0)
 {
     global $lit_imglist,$dsql;
-    $row = $dsql->GetOne("SELECT c.addtable FROM #@__archives AS a LEFT JOIN #@__channeltype AS c ON a.channel=c.id where a.id='$imgid'");
+    $row = $dsql->GetOne("SELECT c.addtable FROM `#@__archives` AS a LEFT JOIN `#@__channeltype` AS c ON a.channel=c.id where a.id='$imgid'");
     $addtable = trim($row['addtable']);
     $row = $dsql->GetOne("Select imgurls From `$addtable` where aid='$imgid'");
     $ChannelUnit = new ChannelUnit(2,$imgid);
@@ -322,13 +328,13 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $lo
     $tid = $defaulttid ? $defaulttid : $tid;
     if ($id!="")
     {
-        $tidsq = $dsql->GetOne(" Select typeid From `#@__archives` where id='$id' ");
+        $tidsq = $dsql->GetOne("SELECT typeid FROM `#@__archives` WHERE id='$id' ");
         $tid = $tidsq["typeid"];
     }
     $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".$_REQUEST['PageNo'] : '');
     $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
-    $cInfos = $dsql->GetOne(" Select * From  `#@__channeltype` where id='$channelid' ");
-    $fieldset=$cInfos['fieldset'];
+    $cInfos = $dsql->GetOne("SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
+    $fieldset=stripslashes($cInfos['fieldset']);
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('field','<','>');
     $dtp->LoadSource($fieldset);

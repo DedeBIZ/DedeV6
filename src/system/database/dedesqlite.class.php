@@ -265,7 +265,7 @@ class DedeSqlite
         $this->Execute($id, $sql);
     }
     //执行一个SQL语句,返回前一条记录或仅返回一条记录
-    function GetOne($sql = '', $acctype = MYSQLI_ASSOC)
+    function GetOne($sql = '', $acctype = SQLITE3_ASSOC)
     {
         global $dsqlite;
         if (!$dsqlite->isInit) {
@@ -495,9 +495,9 @@ EOT;
     //显示数据链接错误信息
     function DisplayError($msg)
     {
-        $errorTrackFile = dirname(__FILE__).'/../data/mysqli_error_trace.inc';
-        if (file_exists(dirname(__FILE__).'/../data/mysqli_error_trace.php')) {
-            @unlink(dirname(__FILE__).'/../data/mysqli_error_trace.php');
+        $errorTrackFile = dirname(__FILE__).'/../../data/mysqli_error_trace.inc';
+        if (file_exists(dirname(__FILE__).'/../../data/mysqli_error_trace.php')) {
+            @unlink(dirname(__FILE__).'/../../data/mysqli_error_trace.php');
         }
         if ($this->showError) {
             $emsg = '';

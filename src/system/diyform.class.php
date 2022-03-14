@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 自定义表单解析类
  *
- * @version        $Id: diyform.cls.php 1 10:31 2010年7月6日Z tianya $
+ * @version        $Id: diyform.class.php 1 10:31 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -44,13 +44,13 @@ class diyform
     {
         $this->diyid = $diyid;
         $this->db = $GLOBALS['dsql'];
-        $query = "SELECT * FROM #@__diyforms WHERE diyid='{$diyid}'";
+        $query = "SELECT * FROM `#@__diyforms` WHERE diyid='{$diyid}'";
         $diyinfo = $this->db->GetOne($query);
         if (!is_array($diyinfo)) {
             showMsg('参数不正确，该自定义表单不存在', 'javascript:;');
             exit();
         }
-        $this->info = $diyinfo['info'];
+        $this->info = stripslashes($diyinfo['info']);
         $this->name = $diyinfo['name'];
         $this->table = $diyinfo['table'];
         $this->public = $diyinfo['public'];

@@ -43,7 +43,7 @@ if ($action == 'save') {
 
     //模型信息
     $row = $dsql->GetOne("SELECT fieldset,addtable,issystem FROM `#@__channeltype` WHERE id='$id'");
-    $fieldset = $row['fieldset'];
+    $fieldset = stripslashes($row['fieldset']);
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("field", "<", ">");
     $dtp->LoadSource($fieldset);

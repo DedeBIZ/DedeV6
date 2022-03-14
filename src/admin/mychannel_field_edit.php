@@ -19,7 +19,7 @@ $mysql_version = $dsql->GetVersion();
 
 //获取模型信息
 $row = $dsql->GetOne("SELECT fieldset,'' as maintable,addtable,issystem FROM `#@__channeltype` WHERE id='$id'");
-$fieldset = $row['fieldset'];
+$fieldset = stripslashes($row['fieldset']);
 $trueTable = $row['addtable'];
 
 $dtp = new DedeTagParse();
