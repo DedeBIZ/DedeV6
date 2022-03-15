@@ -30,7 +30,7 @@ IIS/Apache/Nginx + PHP5.3+/PHP7/PHP8 + MySQL5/8/10
 
 Apache/Nginx + PHP5.3+/PHP7 + MySQL5/8/10 (PHP必须在非安全模式下运行)
 
-建议使用平台：Linux + Apache2.2 + PHP7.4 + MySQL5.0
+建议使用平台：Linux + Apache2.4 + PHP7.4 + MySQL8.0
 
 3.PHP必须环境或启用的系统函数
 
@@ -67,7 +67,7 @@ Sockets：支持接入DedeBIZ商业组件模块
 
   * php的上传的临时文件夹没设置好或没写入权限，这会导致文件上传的功能无法使用；
   
-  * 出现莫名的错误，如安装时显示空白，这样能是由于系统没装载mysql扩展导致的，对于初级用户，可以下载dede的php套件包，以方便简单的使用
+  * 出现莫名的错误，如安装时显示空白，这样能是由于系统没装载mysql扩展导致的，对于初级用户，建议采用命令行工具来运行测试站点；
 
 ## 程序安装使用
 
@@ -101,6 +101,7 @@ COMMANDS:
 WEBSITE:
 	https://www.dedebiz.com/help/
 ```
+想要快速启动站点，运行`./dedebiz s`，根据提示打开浏览器地址即可快速使用系统
 
 如果我们想要生成静态文件，可以执行`./dedebiz m o`，便可以自动生成
 
