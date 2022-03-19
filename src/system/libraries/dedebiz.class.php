@@ -153,7 +153,7 @@ class DedeBizClient
             "parms" => array(
                 "k" => $key,
                 "v" => $val,
-                "d" => $duration,
+                "d" => (string)$duration,
             )
         );
         return $this->request($req);

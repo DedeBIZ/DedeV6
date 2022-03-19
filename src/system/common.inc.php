@@ -17,6 +17,7 @@ define('DEBUG_LEVEL', FALSE);//如果设置为TRUE则会打印执行SQL的时间
 define('DEDEINC', str_replace("\\", '/', dirname(__FILE__)));
 define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6))); // 站点根目录
 define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
+define('DEDESTATIC', DEDEROOT.'/static');
 define('DEDEMEMBER', DEDEROOT.'/user');
 define('DEDETEMPLATE', DEDEROOT.'/theme');
 define('DEDEBIZURL', "https://www.dedebiz.com");//Dede商业支持
@@ -231,16 +232,7 @@ if (isset($GLOBALS['PageNo'])) {
 if (isset($GLOBALS['TotalResult'])) {
     $GLOBALS['TotalResult'] = intval($GLOBALS['TotalResult']);
 }
-//设定缓存配置信息
-if ($cfg_memcache_enable == 'Y') {
-    $cache_helper_config = array();
-    $cache_helper_config['memcache']['is_mc_enable'] = $GLOBALS["cfg_memcache_enable"];
-    $cache_helper_config['memcache']['mc'] = array(
-        'default' => $GLOBALS["cfg_memcache_mc_defa"],
-        'other' => $GLOBALS["cfg_memcache_mc_oth"]
-    );
-    $cache_helper_config['memcache']['mc_cache_time'] = $GLOBALS["cfg_puccache_time"];
-}
+
 if (!isset($cfg_NotPrintHead)) {
     if (PHP_SAPI != 'cli') {
         header("Content-Type: text/html; charset={$cfg_soft_lang}");
