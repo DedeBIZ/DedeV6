@@ -16,15 +16,10 @@ function ch_stepselect($fvalue, &$arcTag, &$refObj, $fname = '')
 function GetEnumsValue2($egroup, $evalue = 0)
 {
     if (!isset($GLOBALS['em_'.$egroup.'s'])) {
-        $cachefile = DEDEDATA.'/enums/'.$egroup.'.php';
-        if (!file_exists($cachefile)) {
-            require_once(DEDEINC.'/enums.func.php');
-            WriteEnumsCache();
-        }
-        if (!file_exists($cachefile)) {
-            return '';
-        } else {
-            require_once($cachefile);
+        $cachefile = DEDESTATIC.'/enums/'.$egroup.'.json';
+        $data = json_decode(file_get_contents($cachefile));
+        foreach ($data as $key => $value) {
+            $GLOBALS['em_'.$egroup.'s'][$key] = $value;
         }
     }
     if ($evalue >= 500) {

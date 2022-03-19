@@ -67,8 +67,8 @@ class Archives
                 //如果当前文档不是系统模型，为单表模型
                 $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable
                     FROM `#@__archives` arc
-                    LEFT JOIN #@__arctype tp on tp.id=arc.typeid
-                    LEFT JOIN #@__channeltype as ch on arc.channel = ch.id
+                    LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid
+                    LEFT JOIN `#@__channeltype` as ch on arc.channel = ch.id
                     WHERE arc.id='$aid' ";
                 $this->Fields = $this->dsql->GetOne($query);
             } else {
