@@ -146,25 +146,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
     if ($gtype == "") {
         $gtype = "print";
     }
-    if ($GLOBALS['cfg_html_editor'] == 'fck') {
-        require_once(DEDEINC.'/FCKeditor/fckeditor.php');
-        $fck = new FCKeditor($fname);
-        $fck->BasePath        = $GLOBALS['cfg_cmspath'].'/include/FCKeditor/';
-        $fck->Width        = '100%';
-        $fck->Height        = $nheight;
-        $fck->ToolbarSet    = $etype;
-        $fck->Config['FullPage'] = $isfullpage;
-        if ($GLOBALS['cfg_fck_xhtml'] == 'Y') {
-            $fck->Config['EnableXHTML'] = 'true';
-            $fck->Config['EnableSourceXHTML'] = 'true';
-        }
-        $fck->Value = $fvalue;
-        if ($gtype == "print") {
-            $fck->Create();
-        } else {
-            return $fck->CreateHtml();
-        }
-    } else if ($GLOBALS['cfg_html_editor'] == 'ckeditor') {
+    if ($GLOBALS['cfg_html_editor'] == 'ckeditor') {
         $addConfig = "";
         if (defined("DEDEADMIN")) {
             $addConfig = ",{allowedContent:true,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,dedepagebreak,ddfilebrowser,mimage,textindent'}";
