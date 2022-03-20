@@ -80,8 +80,9 @@ function _RunMagicQuotes(&$svar)
     }
     return $svar;
 }
-foreach (array('_GET', '_POST', '_COOKIE', '_REQUEST') as $_request) {
-    foreach ($$_request as $_k => $_v) {
+
+foreach (array('_GET', '_POST', '_COOKIE') as $_req) {
+    foreach ($$_req as $_k => $_v) {
         if ($_k == 'nvarname') ${$_k} = $_v;
         else ${$_k} = _RunMagicQuotes($_v);
     }
@@ -225,7 +226,6 @@ if (!isset($cfg_NotPrintHead)) {
     if (PHP_SAPI != 'cli') {
         header("Content-Type: text/html; charset={$cfg_soft_lang}");
     }
-    
 }
 //自动加载类库处理
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
