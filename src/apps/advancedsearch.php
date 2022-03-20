@@ -15,7 +15,7 @@ $timestamp = time();
 @session_start();
 
 //限制同时搜索数量
-$timelock = '../../data/time.lock';
+$timelock = DEDEDATA.'/time.lock';
 if ($cfg_allsearch_limit < 1) {
     $cfg_allsearch_limit = 1;
 }
@@ -34,7 +34,7 @@ if ($mid == 0) {
     exit();
 }
 
-$query = "SELECT maintable, mainfields, addontable, addonfields, template FROM #@__advancedsearch WHERE mid='$mid'";
+$query = "SELECT maintable, mainfields, addontable, addonfields, template FROM `#@__advancedsearch` WHERE mid='$mid'";
 $searchinfo = $dsql->GetOne($query);
 if (!is_array($searchinfo)) {
     showmsg('自定义搜索模型不存在', '-1');
@@ -171,12 +171,12 @@ if (empty($sql)) {
         $where = str_replace('main.', 'addon.', $where);
         $orderby = str_replace('main.', 'addon.', $orderby);
         $query = "SELECT addon.*, arctype.* FROM $addontable addon 
-        LEFT JOIN #@__arctype arctype ON arctype.id = addon.typeid
+        LEFT JOIN `#@__arctype` arctype ON arctype.id = addon.typeid
         $where $orderby";
     } else {
         $query = "SELECT main.id AS aid,main.*,main.description AS description1, type.* 
     FROM $maintable main 
-    LEFT JOIN #@__arctype type ON type.id = main.typeid 
+    LEFT JOIN `#@__arctype` type ON type.id = main.typeid 
     LEFT JOIN $addontable addon ON addon.aid = main.id 
     $where  $orderby";
     }
@@ -195,10 +195,10 @@ $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetParameter("hash", $sqlhash);
 $dlist->SetParameter("mid", $mid);
-if (file_exists(DEDEROOT."/templets/default/$template")) {
-    $templatefile = DEDEROOT."/templets/default/$template";
+if (file_exists(DEDEROOT."/theme/templets/$template")) {
+    $templatefile = DEDEROOT."/theme/templets/$template";
 } else {
-    $templatefile = DEDEROOT."/templets/default/advancedsearch.htm";
+    $templatefile = DEDEROOT."/theme/templets/advancedsearch.htm";
 }
 $dlist->SetTemplate($templatefile);
 $dlist->SetSource($query);

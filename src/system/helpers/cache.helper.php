@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 缓存小助手,支持文件和memcache
+ * 缓存小助手,支持文件和dedebiz cache
  *
  * @version        $Id: cache.helper.php 1 10:46 2011-3-2 tianya $
  * @package        DedeBIZ.Helpers
@@ -15,24 +15,24 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @access    public
  * @param     string  $prefix  前缀
  * @param     string  $key  键
- * @param     string  $is_memcache  是否为memcache缓存
  * @return    string
  */
 if (!function_exists('GetCache')) {
-    function GetCache($prefix, $key, $is_memcache = TRUE)
+    function GetCache($prefix, $key)
     {
-        global $cache_helper_config;
+        global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+
         $key = md5($key);
-        //如果启用MC缓存 
-        if ($is_memcache === TRUE && !empty($cache_helper_config['memcache']) && $cache_helper_config['memcache']['is_mc_enable'] === 'Y') {
-            $mc_path = empty($cache_helper_config['memcache']['mc'][substr($key, 0, 1)]) ? $cache_helper_config['memcache']['mc']['default'] : $cache_helper_config['memcache']['mc'][substr($key, 0, 1)];
-            $mc_path = parse_url($mc_path);
-            $key = ltrim($mc_path['path'], '/').'_'.$prefix.'_'.$key;
-            if (empty($GLOBALS['mc_'.$mc_path['host']])) {
-                $GLOBALS['mc_'.$mc_path['host']] = new Memcache();
-                $GLOBALS['mc_'.$mc_path['host']]->connect($mc_path['host'], $mc_path['port']);
-            }
-            return $GLOBALS['mc_'.$mc_path['host']]->get($key);
+        // 商业组件缓存
+        if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+            $client->appid = $cfg_bizcore_appid;
+            $client->key = $cfg_bizcore_key;
+            $key = trim($prefix.'_'.$key);
+            $data = $client->CacheGet($key);
+            $result = unserialize($data->data);
+            $client->Close();
+            return $result;
         }
         $key = substr($key, 0, 2).'/'.substr($key, 2, 2).'/'.substr($key, 4, 2).'/'.$key;
         $result = @file_get_contents(DEDEDATA."/cache/$prefix/$key.php");
@@ -58,22 +58,20 @@ if (!function_exists('GetCache')) {
  * @return    int
  */
 if (!function_exists('SetCache')) {
-    function SetCache($prefix, $key, $value, $timeout = 3600, $is_memcache = TRUE)
+    function SetCache($prefix, $key, $value, $timeout = 3600)
     {
-        global $cache_helper_config;
+        global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
         $key = md5($key);
-        //如果启用MC缓存
-        if (!empty($cache_helper_config['memcache']) && $cache_helper_config['memcache']['is_mc_enable'] === 'Y' && $is_memcache === TRUE) {
-            $mc_path = empty($cache_helper_config['memcache']['mc'][substr($key, 0, 1)]) ? $cache_helper_config['memcache']['mc']['default'] : $cache_helper_config['memcache']['mc'][substr($key, 0, 1)];
-            $mc_path = parse_url($mc_path);
-            $key = ltrim($mc_path['path'], '/').'_'.$prefix.'_'.$key;
-            if (empty($GLOBALS['mc_'.$mc_path['host']])) {
-                $GLOBALS['mc_'.$mc_path['host']] = new Memcache();
-                $GLOBALS['mc_'.$mc_path['host']]->connect($mc_path['host'], $mc_path['port']);
-                //设置数据压缩门槛
-                //$GLOBALS ['mc_'.$mc_path ['host']]->setCompressThreshold(2048, 0.2);
-            }
-            $result = $GLOBALS['mc_'.$mc_path['host']]->set($key, $value, MEMCACHE_COMPRESSED, $timeout);
+
+        // 商业组件缓存
+        if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+            $client->appid = $cfg_bizcore_appid;
+            $client->key = $cfg_bizcore_key;
+            $key = trim($prefix.'_'.$key);
+            $data = $client->CacheSet($key,serialize($value),$timeout);
+            $result = unserialize($data->data);
+            $client->Close();
             return $result;
         }
         $key = substr($key, 0, 2).'/'.substr($key, 2, 2).'/'.substr($key, 4, 2).'/'.$key;
@@ -89,25 +87,25 @@ if (!function_exists('SetCache')) {
  * @access    public
  * @param     string  $prefix  前缀
  * @param     string  $key  键
- * @param     string  $is_memcache  是否为memcache缓存
  * @return    string
  */
 if (!function_exists('DelCache')) {
     //删缓存
-    function DelCache($prefix, $key, $is_memcache = TRUE)
+    function DelCache($prefix, $key)
     {
-        global $cache_helper_config;
+        global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
+
         $key = md5($key);
-        //如果启用MC缓存
-        if (!empty($cache_helper_config['memcache']) && $cache_helper_config['memcache']['is_mc_enable'] === TRUE && $is_memcache === TRUE) {
-            $mc_path = empty($cache_helper_config['memcache']['mc'][substr($key, 0, 1)]) ? $cache_helper_config['memcache']['mc']['default'] : $cache_helper_config['memcache']['mc'][substr($key, 0, 1)];
-            $mc_path = parse_url($mc_path);
-            $key = ltrim($mc_path['path'], '/').'_'.$prefix.'_'.$key;
-            if (empty($GLOBALS['mc_'.$mc_path['host']])) {
-                $GLOBALS['mc_'.$mc_path['host']] = new Memcache();
-                $GLOBALS['mc_'.$mc_path['host']]->connect($mc_path['host'], $mc_path['port']);
-            }
-            return $GLOBALS['mc_'.$mc_path['host']]->delete($key);
+
+        // 商业组件缓存
+        if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+            $client->appid = $cfg_bizcore_appid;
+            $client->key = $cfg_bizcore_key;
+            $key = trim($prefix.'_'.$key);
+            $data = $client->CacheDel($key);
+            $client->Close();
+            return true;
         }
         $key = substr($key, 0, 2).'/'.substr($key, 2, 2).'/'.substr($key, 4, 2).'/'.$key;
         return @unlink(DEDEDATA."/cache/$prefix/$key.php");

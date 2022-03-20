@@ -10,12 +10,25 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/enums.func.php');
-require_once(DEDEDATA.'/enums/nativeplace.php');
-require_once(DEDEDATA.'/enums/infotype.php');
+
+
+$cachefile = DEDESTATIC.'/enums/nativeplace.json';
+$data = json_decode(file_get_contents($cachefile));
+foreach ($data as $key => $value) {
+    $GLOBALS['em_nativeplaces'][$key] = $value;
+}
+
+$cachefile = DEDESTATIC.'/enums/infotype.json';
+$data = json_decode(file_get_contents($cachefile));
+foreach ($data as $key => $value) {
+    $GLOBALS['em_infotypes'][$key] = $value;
+}
+
 function lib_infolink(&$ctag, &$refObj)
 {
     global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite;
     global $em_nativeplaces, $em_infotypes;
+
     //属性处理
     //$attlist="row|12,titlelen|24";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);

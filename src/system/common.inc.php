@@ -9,14 +9,24 @@
 //生产环境使用production，如果采用dev模式，会有一些php的报错信息提示，便于开发调试
 define('DEDE_ENVIRONMENT', 'production');
 if (DEDE_ENVIRONMENT == 'production') {
-    error_reporting(E_ALL || ~E_NOTICE);
+    ini_set('display_errors', 0);
+    if (version_compare(PHP_VERSION, '5.3', '>='))
+    {
+        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+    }
+    else
+    {
+        error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+    }
 } else {
-    error_reporting(E_ALL);
+    error_reporting(-1);
+    ini_set('display_errors', 1);
 }
 define('DEBUG_LEVEL', FALSE);//如果设置为TRUE则会打印执行SQL的时间和标签加载时间方便调试
 define('DEDEINC', str_replace("\\", '/', dirname(__FILE__)));
 define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6))); // 站点根目录
 define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
+define('DEDESTATIC', DEDEROOT.'/static');
 define('DEDEMEMBER', DEDEROOT.'/user');
 define('DEDETEMPLATE', DEDEROOT.'/theme');
 define('DEDEBIZURL', "https://www.dedebiz.com");//Dede商业支持
@@ -31,9 +41,6 @@ NQabUzX9JoYtXqPcpZRT7ymHrppU0KFdUSEJiW0utTWJo0HrDOBIT5qWlM0MP9p/
 PwIDAQAB
 -----END PUBLIC KEY-----'); //DedeBIZ系统公钥
 define('DEDECDNURL', 'https://cdn.dedebiz.com'); //默认静态资源地址
-if (version_compare(PHP_VERSION, '5.3.0', '<') && function_exists("get_magic_quotes_gpc")) {
-    set_magic_quotes_runtime(0);
-}
 if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
     if (!function_exists('session_register')) {
         function session_register()
@@ -59,42 +66,25 @@ if (function_exists('mb_substr')) $cfg_is_mb = TRUE;
 if (function_exists('iconv_substr')) $cfg_is_iconv = TRUE;
 function _RunMagicQuotes(&$svar)
 {
-    if (function_exists("get_magic_quotes_gpc") && !@get_magic_quotes_gpc()) {
-        if (is_array($svar)) {
-            foreach ($svar as $_k => $_v) $svar[$_k] = _RunMagicQuotes($_v);
-        } else {
-            if (strlen($svar) > 0 && preg_match('#^(cfg_|GLOBALS|_GET|_POST|_COOKIE|_SESSION)#', $svar)) {
-                exit('Request var not allow!');
-            }
-            $svar = addslashes($svar);
+    if (is_array($svar)) {
+        foreach ($svar as $_k => $_v) {
+            if ($_k == 'nvarname') continue;
+            _RunMagicQuotes($_k);
+            $svar[$_k] = _RunMagicQuotes($_v);
         }
+    } else {
+        if (strlen($svar) > 0 && preg_match('#^(cfg_|GLOBALS|_GET|_REQUEST|_POST|_COOKIE|_SESSION)#', $svar)) {
+            exit('Request var not allow!');
+        }
+        $svar = addslashes($svar);
     }
     return $svar;
 }
-if (!defined('DEDEREQUEST')) {
-    //检查和注册外部提交的变量（2011.8.10 修改登录时相关过滤）
-    function CheckRequest(&$val)
-    {
-        if (is_array($val)) {
-            foreach ($val as $_k => $_v) {
-                if ($_k == 'nvarname') continue;
-                CheckRequest($_k);
-                CheckRequest($val[$_k]);
-            }
-        } else {
-            if (strlen($val) > 0 && preg_match('#^(cfg_|GLOBALS|_GET|_POST|_COOKIE|_SESSION)#', $val)) {
-                exit('Request var not allow!');
-            }
-        }
-    }
-    //var_dump($_REQUEST);exit;
-    CheckRequest($_REQUEST);
-    CheckRequest($_COOKIE);
-    foreach (array('_GET', '_POST', '_COOKIE') as $_request) {
-        foreach ($$_request as $_k => $_v) {
-            if ($_k == 'nvarname') ${$_k} = $_v;
-            else ${$_k} = _RunMagicQuotes($_v);
-        }
+
+foreach (array('_GET', '_POST', '_COOKIE') as $_req) {
+    foreach ($$_req as $_k => $_v) {
+        if ($_k == 'nvarname') ${$_k} = $_v;
+        else ${$_k} = _RunMagicQuotes($_v);
     }
 }
 //系统相关变量检测
@@ -194,7 +184,7 @@ $cfg_soft_dir = $cfg_medias_dir.'/soft';
 $cfg_other_medias = $cfg_medias_dir.'/media';
 //软件摘要信息，****请不要删除本项**** 否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
-$cfg_version_detail = '6.1.0'; //详细版本号
+$cfg_version_detail = '6.1.1'; //详细版本号
 $cfg_soft_lang = 'utf-8';
 $cfg_soft_public = 'base';
 $cfg_softname = '织梦内容管理系统';
@@ -231,21 +221,11 @@ if (isset($GLOBALS['PageNo'])) {
 if (isset($GLOBALS['TotalResult'])) {
     $GLOBALS['TotalResult'] = intval($GLOBALS['TotalResult']);
 }
-//设定缓存配置信息
-if ($cfg_memcache_enable == 'Y') {
-    $cache_helper_config = array();
-    $cache_helper_config['memcache']['is_mc_enable'] = $GLOBALS["cfg_memcache_enable"];
-    $cache_helper_config['memcache']['mc'] = array(
-        'default' => $GLOBALS["cfg_memcache_mc_defa"],
-        'other' => $GLOBALS["cfg_memcache_mc_oth"]
-    );
-    $cache_helper_config['memcache']['mc_cache_time'] = $GLOBALS["cfg_puccache_time"];
-}
+
 if (!isset($cfg_NotPrintHead)) {
     if (PHP_SAPI != 'cli') {
         header("Content-Type: text/html; charset={$cfg_soft_lang}");
     }
-    
 }
 //自动加载类库处理
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {

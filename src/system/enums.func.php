@@ -33,22 +33,19 @@ function WriteEnumsCache($egroup = '')
         $egroups[] = $nrow['egroup'];
     }
     foreach ($egroups as $egroup) {
-        $cachefile = DEDEDATA.'/enums/'.$egroup.'.php';
-        $fp = fopen($cachefile, 'w');
-        fwrite($fp, '<'."?php\r\nglobal \$em_{$egroup}s;\r\n\$em_{$egroup}s = array();\r\n");
+        $cachefile = DEDESTATIC.'/enums/'.$egroup.'.json';
         $dsql->SetQuery("SELECT ename,evalue,issign FROM `#@__sys_enum` WHERE egroup='$egroup' ORDER BY disorder ASC, evalue ASC ");
         $dsql->Execute('enum');
         $issign = -1;
         $tenum = false; //三级联动标识
+        $data = array();
         while ($nrow = $dsql->GetArray('enum')) {
-            fwrite($fp, "\$em_{$egroup}s['{$nrow['evalue']}'] = '{$nrow['ename']}';\r\n");
+            $data[$nrow['evalue']] = $nrow['ename'];
             if ($issign == -1) $issign = $nrow['issign'];
             if ($nrow['issign'] == 2) $tenum = true;
         }
+        file_put_contents($cachefile,json_encode($data));
         if ($tenum) $dsql->ExecuteNoneQuery("UPDATE `#@__stepselect` SET `issign`=2 WHERE egroup='$egroup'; ");
-        fwrite($fp, '?'.'>');
-        fclose($fp);
-        if (empty($issign)) WriteEnumsJs($egroup);
     }
     return '成功更新所有枚举缓存';
 }
@@ -83,8 +80,11 @@ function GetEnumsTypes($v)
  */
 function GetEnumsForm($egroup, $evalue = 0, $formid = '', $seltitle = '')
 {
-    $cachefile = DEDEDATA.'/enums/'.$egroup.'.php';
-    include($cachefile);
+    $cachefile = DEDESTATIC.'/enums/'.$egroup.'.json';
+    $data = json_decode(file_get_contents($cachefile));
+    foreach ($data as $key => $value) {
+        ${'em_'.$egroup.'s'}[$key] = $value;
+    }
     if ($formid == '') {
         $formid = $egroup;
     }
@@ -113,8 +113,11 @@ function GetEnumsForm($egroup, $evalue = 0, $formid = '', $seltitle = '')
 function getTopData($egroup)
 {
     $data = array();
-    $cachefile = DEDEDATA.'/enums/'.$egroup.'.php';
-    include($cachefile);
+    $cachefile = DEDESTATIC.'/enums/'.$egroup.'.json';
+    $data = json_decode(file_get_contents($cachefile));
+    foreach ($data as $key => $value) {
+        ${'em_'.$egroup.'s'}[$key] = $value;
+    }
     foreach (${'em_'.$egroup.'s'} as $k => $v) {
         if ($k >= 500 && $k % 500 == 0) {
             $data[$k] = $v;
@@ -132,8 +135,12 @@ function getTopData($egroup)
 function GetEnumsJs($egroup)
 {
     global ${'em_'.$egroup.'s'};
-    include_once(DEDEDATA.'/enums/'.$egroup.'.php');
-    $jsCode = "<!--\r\n";
+    $cachefile = DEDESTATIC.'/enums/'.$egroup.'.json';
+    $data = json_decode(file_get_contents($cachefile));
+    foreach ($data as $key => $value) {
+        ${'em_'.$egroup.'s'}[$key] = $value;
+    }
+    $jsCode = "";
     $jsCode .= "em_{$egroup}s=new Array();\r\n";
     foreach (${'em_'.$egroup.'s'} as $k => $v) {
         //JS中将3级类目存放到第二个key中去
@@ -144,23 +151,9 @@ function GetEnumsJs($egroup)
             $jsCode .= "em_{$egroup}s[$k]='$v';\r\n";
         }
     }
-    $jsCode .= "-->";
     return $jsCode;
 }
-/**
- *  写入联动JS代码
- *
- * @access    public
- * @param     string    $egroup   联动组
- * @return    string
- */
-function WriteEnumsJs($egroup)
-{
-    $jsfile = DEDEDATA.'/enums/'.$egroup.'.js';
-    $fp = fopen($jsfile, 'w');
-    fwrite($fp, GetEnumsJs($egroup));
-    fclose($fp);
-}
+
 /**
  *  获取枚举的值
  *
@@ -171,7 +164,11 @@ function WriteEnumsJs($egroup)
  */
 function GetEnumsValue($egroup, $evalue = 0)
 {
-    include_once(DEDEDATA.'/enums/'.$egroup.'.php');
+    $cachefile = DEDESTATIC.'/enums/'.$egroup.'.json';
+    $data = json_decode(file_get_contents($cachefile));
+    foreach ($data as $key => $value) {
+        ${'em_'.$egroup.'s'}[$key] = $value;
+    }
     if (isset(${'em_'.$egroup.'s'}[$evalue])) {
         return ${'em_'.$egroup.'s'}[$evalue];
     } else {

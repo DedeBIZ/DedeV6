@@ -14,7 +14,6 @@ src/install/index.html
 src/install/module-install.php.bak
 src/a/*/
 src/.txt
-src/data/enums/
 src/index.html
 src/uploads/*.php
 src/data/time.lock.inc
@@ -40,3 +39,5 @@ src/data/module/*.php
 src/data/*.db
 src/uploads/soft/*/
 src/static/allimg/*/
+src/data/time.lock
+src/static/enums/*.json

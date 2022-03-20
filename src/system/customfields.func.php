@@ -49,8 +49,15 @@ function GetFormItem($ctag, $admintype = 'admin')
             $myformItem .= '<script src="'.$cmspath.'static/enums.js"></script>'."\r\n";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
-        $myformItem .= "<script src='{$cmspath}data/enums/{$fieldname}.js'></script>\r\n";
-        $myformItem .= '<script>MakeTopSelect("'.$fieldname.'", 0);</script>'."\r\n";
+        $myformItem .= "<script>
+        var em_{$fieldname}s = [];
+        fetch('{$cmspath}static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d)=>{
+            Object.entries(d).forEach(v=>{
+                em_{$fieldname}s[parseFloat(v[0])]= v[1];
+            });
+            MakeTopSelect('$fieldname', 0);
+        })
+        </script>\r\n";
         $formitem = str_replace('~name~', $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace('~form~', $myformItem, $formitem);
         return $formitem;
@@ -328,8 +335,15 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             $myformItem .= '<script src="'.$cmspath.'static/enums.js"></script>'."\r\n";
             $GLOBALS['hasSetEnumJs'] = 'hasset';
         }
-        $myformItem .= "<script src='{$cmspath}data/enums/{$fieldname}.js'></script>\r\n";
-        $myformItem .= "<script>MakeTopSelect('$fieldname', $fvalue);</script>\r\n";
+        $myformItem .= "<script>
+        var em_{$fieldname}s = [];
+        fetch('{$cmspath}static/enums/{$fieldname}.json').then((resp)=>resp.json()).then((d)=>{
+            Object.entries(d).forEach(v=>{
+                em_{$fieldname}s[parseFloat(v[0])]= v[1];
+            });
+            MakeTopSelect('$fieldname', $fvalue);
+        })
+        </script>\r\n";
         $formitem = str_replace('~name~', $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace('~form~', $myformItem, $formitem);
         return $formitem;

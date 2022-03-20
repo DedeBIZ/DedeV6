@@ -153,7 +153,7 @@ class DedeBizClient
             "parms" => array(
                 "k" => $key,
                 "v" => $val,
-                "d" => $duration,
+                "d" => (string)$duration,
             )
         );
         return $this->request($req);
@@ -244,9 +244,17 @@ class DedeBizClient
     function Close()
     {
         //这里避免重复释放
-        if (strtolower(get_resource_type($this->socket)) === "socket") {
-            socket_close($this->socket);
-        }
+        try {
+            if (strtolower(get_resource_type($this->socket)) === "socket") {
+                socket_close($this->socket);
+            }
+            return true;
+        } catch (TypeError $e) {
+            return false;
+        } catch (Exception $e) {
+            return false;
+         }
+        
     }
     function __destruct()
     {

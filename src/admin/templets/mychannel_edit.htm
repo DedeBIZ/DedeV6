@@ -43,6 +43,13 @@
     }
 
     function ShowItem2() {
+      setTimeout(() => {
+        var editor = CodeMirror.fromTextArea(document.getElementById('fieldset'), {
+        lineNumbers: true,
+        lineWrapping: true,
+        mode: 'text/html'
+      });
+      }, 100);
       ShowObj('head2'); ShowObj('adset');
       HideObj('head1'); HideObj('needset');
     }
@@ -50,6 +57,12 @@
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/codemirror.css">
+	<script type="text/javascript" src="js/codemirror.js"></script>
+	<script type="text/javascript" src="js/mode/xml/xml.js"></script>
+	<script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
+	<script type="text/javascript" src="js/mode/css/css.js"></script>
+	<script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
 <body topmargin="8">
   <form name="form1" action="mychannel_edit.php" method="post">

@@ -9,6 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
 CheckPurview('sys_Edit');
 if (empty($action)) $action = '';
 if (empty($message)) $message = '尚未进行检测……';
@@ -50,10 +51,11 @@ function TestOneFile($f)
     if (preg_match("#(".$info.")[ \r\n\t]{0,}([\[\(])#i", $str)) {
         $trfile = preg_replace("#^".DEDEROOT."#", '', $f);
         $oldTrfile = $trfile;
-        $trfile = substr(str_replace("/", "\\", $trfile), 1);
+        $trfile = '/'.substr(str_replace("\\", "/", $trfile), 1);
 
         $localFilehash = md5_file($f);
         $remoteFilehash = isset($offFiles[$trfile]) ? $offFiles[$trfile] : '';
+
         if ($localFilehash === $remoteFilehash) {
             return 0;
         }
