@@ -14,6 +14,9 @@
     <title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
     <meta name="keywords" content="{dede:field.keywords/}" />
     <meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+    <link href="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" rel="stylesheet">
+    <script src="{dede:global.cfg_cmsurl/}/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
     {dede:include filename="top.htm"/}
