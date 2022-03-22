@@ -17,7 +17,7 @@ if(file_exists(INSLOCKFILE))
 
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
-$cfg_version_detail = '6.1.1'; //详细版本号
+$cfg_version_detail = '6.1.2'; //详细版本号
 $errmsg = '';
 if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
     mysqli_report(MYSQLI_REPORT_OFF);
