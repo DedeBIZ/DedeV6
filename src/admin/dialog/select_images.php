@@ -100,6 +100,10 @@ a{text-decoration:none!important}
             var fileUrl = reimg;
             window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
         }
+        if (window.opener.CKEDITOR.instances.<?php echo $f ?>) {
+            let addonHTML = `<img src='${reimg}'>`;
+            window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
+        }
         if (window.opener.document.<?php echo $f ?> != null) {
             window.opener.document.<?php echo $f ?>.value = reimg;
             if (window.opener.document.getElementById('div<?php echo $v ?>')) {
