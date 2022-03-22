@@ -28,6 +28,16 @@ class FileManagement
     {
         $oldname = $this->baseDir.$this->activeDir."/".$oldname;
         $newname = $this->baseDir.$this->activeDir."/".$newname;
+        $oldext = pathinfo($oldname)['extension'];
+        $newext = pathinfo($newname)['extension'];
+
+        if ($oldext != $newext) {
+            if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($newname))) {
+                ShowMsg("您指定的文件名被系统禁止", "javascript:;");
+                exit();
+            }
+        }
+        
         if (($newname != $oldname) && is_writable($oldname)) {
             rename($oldname, $newname);
         }

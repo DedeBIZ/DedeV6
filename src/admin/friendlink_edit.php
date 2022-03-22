@@ -58,5 +58,6 @@ if ($dopost == "delete") {
     ShowMsg("成功修改一个链接", $ENV_GOBACK_URL);
     exit();
 }
+$id = preg_replace("#[^0-9]#", "", $id);
 $myLink = $dsql->GetOne("SELECT `#@__flink`.*,`#@__flinktype`.typename FROM `#@__flink` LEFT JOIN `#@__flinktype` ON `#@__flink`.typeid=`#@__flinktype`.id WHERE `#@__flink`.id=$id");
 include DedeInclude('templets/friendlink_edit.htm');
