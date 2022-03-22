@@ -9,6 +9,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+
+define('DEDE_ENVIRONMENT', 'production');
+define('DEBUG_LEVEL', FALSE); //如果设置为TRUE则会打印执行SQL的时间和标签加载时间方便调试
+
 //切换工作目录到./public
 $workDir = dirname(__FILE__) . "/src";
 
@@ -113,7 +117,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 			$id = $row->id;
 			$ac = new Archives($id);
 			$rurl = $ac->MakeHtml(0);
-			DedeCli::showProgress(ceil(($i / $total) * 100), 100);
+			DedeCli::showProgress(ceil(($i / $total) * 100), 100, $i, $total);
 			$i++;
 		}
 		DedeCli::write("Make archive html successfull");

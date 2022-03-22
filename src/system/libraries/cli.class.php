@@ -175,7 +175,7 @@ class DedeCli
         }
         return (int)shell_exec('tput lines');
     }
-    public static function showProgress($thisStep = 1, int $totalSteps = 10)
+    public static function showProgress($thisStep = 1, int $totalSteps = 10, int $pos = 0,int $total = 0)
     {
         static $inProgress = false;
         if ($inProgress !== false && $inProgress <= $thisStep)
@@ -190,7 +190,11 @@ class DedeCli
             $percent = intval(($thisStep / $totalSteps) * 100);
             $step    = (int)round($percent / 10);
             fwrite(STDOUT, "[\033[32m".str_repeat('#', $step).str_repeat('.', 10 - $step)."\033[0m]");
-            fwrite(STDOUT, sprintf(" %3d%% Complete", $percent).PHP_EOL);
+            $addstr = "";
+            if ($pos > 0 && $total > 0) {
+                $addstr .= " Pos:{$pos},Total:{$total}";
+            }
+            fwrite(STDOUT, sprintf(" %3d%% Complete{$addstr}", $percent).PHP_EOL);
         } else {
             fwrite(STDOUT, "\007");
         }

@@ -7,7 +7,15 @@
  * @link           https://www.dedebiz.com
  */
 //生产环境使用production，如果采用dev模式，会有一些php的报错信息提示，便于开发调试
-define('DEDE_ENVIRONMENT', 'production');
+
+if (!defined('DEDE_ENVIRONMENT')) {
+    define('DEDE_ENVIRONMENT', 'production');
+}
+
+if (!defined('DEBUG_LEVEL')) {
+    define('DEBUG_LEVEL', FALSE);//如果设置为TRUE则会打印执行SQL的时间和标签加载时间方便调试
+}
+
 if (DEDE_ENVIRONMENT == 'production') {
     ini_set('display_errors', 0);
     if (version_compare(PHP_VERSION, '5.3', '>='))
@@ -22,7 +30,7 @@ if (DEDE_ENVIRONMENT == 'production') {
     error_reporting(-1);
     ini_set('display_errors', 1);
 }
-define('DEBUG_LEVEL', FALSE);//如果设置为TRUE则会打印执行SQL的时间和标签加载时间方便调试
+
 define('DEDEINC', str_replace("\\", '/', dirname(__FILE__)));
 define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6))); // 站点根目录
 define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
