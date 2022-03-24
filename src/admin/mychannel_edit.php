@@ -504,7 +504,7 @@ else if ($dopost == 'modifysearch') {
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
                     $forms .= "<br>栏目：<select name='typeid' style='width:200'>\r\n";
-                    $forms .= "<option value='0' selected>--不限栏目--</option>\r\n";
+                    $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";
                     $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\" />包含子栏目</label><br>";
@@ -530,7 +530,7 @@ else if ($dopost == 'modifysearch') {
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
                     $forms .= "<br>栏目：<select name='typeid' style='width:200'>\r\n";
-                    $forms .= "<option value='0' selected>--不限栏目--</option>\r\n";
+                    $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";
                     $forms .= "<label><input type=\"checkbox\" name=\"includesons\" value=\"1\" />包含子栏目</label><br>";

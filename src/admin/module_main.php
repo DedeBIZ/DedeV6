@@ -169,7 +169,7 @@ else if ($action == 'setup') {
   </tr>
   <tr>
     <td height='26' class='dtb'>开发者ID：</td>
-    <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a></td>
+    <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>未认证</a></td>
   </tr>
   <tr>
     <td height='26' class='dtb'>发布时间：</td>
@@ -281,7 +281,7 @@ else if ($action == 'del') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
-    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>未认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
@@ -346,7 +346,7 @@ else if ($action == 'uninstall') {
         else $v['type'] = '文件';
         $filelist .= "{$v['type']}|{$v['name']}\r\n";
     }
-    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>未认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
@@ -478,7 +478,7 @@ else if ($action == 'view') {
     } else {
         $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
     }
-    $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-success btn-sm' style='margin-left:6px'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>未认证</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>未认证</a>";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";

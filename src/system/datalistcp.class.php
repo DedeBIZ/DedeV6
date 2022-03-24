@@ -327,8 +327,8 @@ class DataListCP
         if (preg_match("#form#i", $atts['listitem'])) {
             $plist .= " <form name='pagelist' action='".$this->GetCurUrl()."' style='float:left;' class='pagelistform'>$hidenform";
             if ($totalpage > $total_list) {
-                $plist .= "<input type='text' name='pageno' style='padding:0px;width:30px;height:18px' />\r\n";
-                $plist .= "<input type='submit' name='plistgo' value='GO' style='padding:0px;width:30px;height:22px' />\r\n";
+                $plist .= "<input type='text' name='pageno' style='padding:0;width:30px;height:18px' />\r\n";
+                $plist .= "<input type='submit' name='plistgo' value='GO' style='padding:0;width:30px;height:22px' />\r\n";
             }
             $plist .= "</form>\n";
         }

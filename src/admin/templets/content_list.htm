@@ -13,9 +13,6 @@
 <script src="js/context_menu.js"></script>
 <script src="js/main.js"></script>
 <script src="js/list.js"></script>
-<style>
-.btn+.btn{margin-left:10px}
-</style>
 </head>
 <body leftmargin="8" topmargin="8" background="images/allbg.gif" onLoad="ContextMenu.intializeContextMenu()">
 	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable table-bordered mt-3">
@@ -94,12 +91,7 @@
 			<tr align="center" bgcolor="#ffffff" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
-				<td align="left">
-					<span id="arc{dede:field.id/}">
-						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'{dede:field.title function="str_replace('\'','',@me)"/}')">{dede:field.title/}</a>
-					</span>
-					{dede:field.flag function='IsCommendArchives(@me)'/}
-				</td>
+				<td align="left"><span id="arc{dede:field.id/}"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'{dede:field.title function="str_replace('\'','',@me)"/}')">{dede:field.title/}</a></span>{dede:field.flag function='IsCommendArchives(@me)'/}</td>
 				<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 				<td><a href="content_list.php?cid={dede:field.typeid/}">{dede:field.typeid function='GetTypename(@me)'/}</a></td>
 				<td>{dede:field.click/}</td>

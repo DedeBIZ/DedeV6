@@ -85,10 +85,9 @@
               <td height="30">授权栏目：</td>
               <td style="text-align:left">
                 <select name="typeids[]" id="typeid" size='10' style="width:200px;height: 200px;" multiple="true">
-                  <option value="0" class='alltype' selected>--所有频道--</option>
+                  <option value="0" class='alltype' selected>所有频道</option>
                   <?php echo $typeOptions?>
-                </select>
-                &nbsp;(按 Ctrl 可以进行多选)
+                </select>（按Ctrl可以进行多选）
               </td>
             </tr>
             <tr>
@@ -113,8 +112,7 @@
             <tr>
               <td height="60">&nbsp;</td>
               <td>
-                <button type="submit" class="btn btn-success" onClick="DoSubmit('gettag')"
-                class="coolbg np">增加用户</button>
+                <button type="submit" class="btn btn-success" onClick="DoSubmit('gettag')" class="coolbg np">增加用户</button>
               </td>
             </tr>
           </table>

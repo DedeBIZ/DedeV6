@@ -9,7 +9,7 @@
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
   <script language="javascript" src="../static/js/webajax.js"></script>
-  <link href="../static/css/daterangepicker.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/daterangepicker.css">
   <script type="text/javascript" src="../static/js/moment.min.js"></script>
   <script type="text/javascript" src="../static/js/daterangepicker.js"></script>
   <link rel="stylesheet" href="../static/css/jquery.fileupload.css">
@@ -47,8 +47,7 @@
 body{background:#fff}
 img{vertical-align:baseline}
 table{border-collapse:separate}
-.btn+.btn{margin-left:10px}
-.STYLE1 {color:#555}
+.style1 {color:#555}
 </style>
 </head>
 <body topmargin="8">
@@ -211,7 +210,8 @@ table{border-collapse:separate}
             <tr>
               <td width="90">&nbsp;软件副栏目：</td>
               <td>
-                <span id='typeid2ct'></span><input type='text' name='typeid2' id='typeid2' value='' style='width:200px;' />
+                <span id='typeid2ct'></span>
+                <input type='text' name='typeid2' id='typeid2' value='' style='width:200px;' />
                 <img src='images/menusearch2.gif' style='cursor:pointer;' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2')" alt='选择副栏目' title='选择副栏目' />
               </td>
             </tr>
@@ -331,7 +331,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td width="100" height="30">&nbsp;需会员权限：</td>
-              <td width="179" align="left">
+              <td width="180" align="left">
                 <select name="daccess" id="daccess" style="width:90px">
                 <?php
                 $dsql->SetQuery("Select * from `#@__arcrank` where `rank`>=0 ");
@@ -346,10 +346,10 @@ table{border-collapse:separate}
                 </select>
               </td>
               <td width="120" align="center">需消费金币：</td>
-              <td width="411"><input name="needmoney" type="text" id="needmoney" value="<?php echo $softconfig['dfywboy']; ?>" size="8">&nbsp;个</td>
+              <td width="410"><input name="needmoney" type="text" id="needmoney" value="<?php echo $softconfig['dfywboy']; ?>" size="8">&nbsp;个</td>
             </tr>
             <tr>
-              <td height="26" colspan="4" style="border-top:1px dashed #8EAF61" class="py-3"><span class="STYLE1">（如果设定了下载限制，<a href="soft_config.php"  class="btn btn-success btn-sm">软件频道设置</a>&nbsp;中“附件下载方式：”必须选择“链接到跳转页面”）</span></td>
+              <td height="26" colspan="4" style="border-top:1px dashed #8EAF61" class="py-3"><span class="style1">（如果设定了下载限制，<a href="soft_config.php"  class="btn btn-success btn-sm">软件频道设置</a>&nbsp;中“附件下载方式：”必须选择“链接到跳转页面”）</span></td>
             </tr>
           </table>
         </td>
@@ -469,9 +469,7 @@ table{border-collapse:separate}
                 <label><input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> /> 禁止评论</label>
               </td>
               <td width="90">浏览次数：</td>
-              <td>
-                <input type='text' name='click' value='<?php echo ($cfg_arc_click=='-1' ? mt_rand(50, 200) : $cfg_arc_click); ?>' style='width:100px;' />
-              </td>
+              <td><input type='text' name='click' value='<?php echo ($cfg_arc_click=='-1' ? mt_rand(50, 200) : $cfg_arc_click); ?>' style='width:100px;' /></td>
             </tr>
           </table>
         </td>
@@ -481,14 +479,16 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="26">&nbsp;文章排序：</td>
-              <td width="240"> <select name="sortup" id="sortup" style="width:150">
+              <td width="240">
+                <select name="sortup" id="sortup" style="width:150">
                   <option value="0" selected>默认排序</option>
                   <option value="7">置顶一周</option>
                   <option value="30">置顶一个月</option>
                   <option value="90">置顶三个月</option>
                   <option value="180">置顶半年</option>
                   <option value="360">置顶一年</option>
-                </select> </td>
+                </select>
+              </td>
               <td width="90">标题颜色：</td>
               <td>
                 <input name="color" type="text" id="color" style="width:120px">
@@ -559,7 +559,7 @@ table{border-collapse:separate}
             <tr>
               <td width="120">&nbsp;内容摘要：</td>
               <td width="450"><textarea name="description" rows="3" id="description" style="width:80%"></textarea></td>
-              <td width="260">&nbsp;</td>
+              <td width="260"></td>
             </tr>
           </table>
         </td>
@@ -570,7 +570,7 @@ table{border-collapse:separate}
             <tr>
               <td width="120">&nbsp;自定义文件名：</td>
               <td width="450"><input type="text" name="filename" id="filename">（不包括后缀名如.html等）</td>
-              <td width="260">&nbsp;</td>
+              <td width="260"></td>
             </tr>
           </table>
         </td>

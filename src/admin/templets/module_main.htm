@@ -73,9 +73,9 @@
 		    $file = DEDEDATA."/module/{$v['hash']}.xml";
 		    if(file_exists($file)) {
 			    if(file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
-				    echo "已安装 <a href='module_main.php?action=uninstall&hash={$v['hash']}' class='btn btn-success btn-sm'>卸载</a>";
+				    echo "<span class='btn btn-success btn-sm'>已安装</span><a class='btn btn-danger btn-sm' href='module_main.php?action=uninstall&hash={$v['hash']}'>卸载</a>";
 			    } else {
-				    echo "未安装 <a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-success btn-sm'>安装</a>";
+				    echo "<span class='btn btn-success btn-sm'>未安装</span><a class='btn btn-success btn-sm' href='module_main.php?action=setup&hash={$v['hash']}'>安装</a>";
 			    }
 		    } else {
 			    echo "<div id=\"status_{$v['hash']}\"><span style='color:#dc3545'>未下载</span> <a href=\"javascript:getmodule('download','{$v['hash']}')\" class='btn btn-success btn-sm'>下载</a></div>";
@@ -84,16 +84,11 @@
         </td>
         <td>
           <div id='manager_<?php echo $v['hash']; ?>'<?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none;"'?>>
-            <a class="btn btn-success" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash']; ?>" style="margin-right:6px">开发者信息</a>
-            <div class="btn-group" role="group">
-              <button id="btnAction" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">操作</button>
-              <div class="dropdown-menu" aria-labelledby="btnAction">
-                <a class="dropdown-item" href="module_main.php?action=showreadme&hash=<?php echo $v['hash']; ?>">说明</a>
-                <a class="dropdown-item" href="module_main.php?action=view&hash=<?php echo $v['hash']; ?>">详细</a>
-                <a class="dropdown-item" href="module_main.php?action=edit&hash=<?php echo $v['hash']; ?>">修改</a>
-                <a class="dropdown-item" href="module_main.php?action=del&hash=<?php echo $v['hash']; ?>">删除</a>
-              </div>
-            </div>
+            <a class="btn btn-success btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash']; ?>">开发者</a>
+            <a class="btn btn-success btn-sm" href="module_main.php?action=showreadme&hash=<?php echo $v['hash']; ?>">说明</a>
+            <a class="btn btn-success btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash']; ?>">详情</a>
+            <a class="btn btn-success btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash']; ?>">修改</a>
+            <a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash']; ?>">删除</a>
           </div>
         </td>
       </tr>

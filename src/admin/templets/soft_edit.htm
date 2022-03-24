@@ -9,7 +9,7 @@
   <script language="javascript" src="../static/js/jquery.js"></script>
   <script src="../static/js/bootstrap.bundle.js"></script>
   <script language="javascript" src="../static/js/webajax.js"></script>
-  <link href="../static/css/daterangepicker.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/css/jquery.fileupload.css">
   <script type="text/javascript" src="../static/js/moment.min.js"></script>
   <script type="text/javascript" src="../static/js/daterangepicker.js"></script>
@@ -42,7 +42,6 @@
 body{background:#fff}
 img{vertical-align:baseline}
 table{border-collapse:separate}
-.btn+.btn{margin-left:10px}
 </style>
 </head>
 <body topmargin="8" background="images/allbg.gif">
@@ -320,7 +319,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td width="100" height="30">&nbsp;需会员权限：</td>
-              <td width="179" align="center">
+              <td width="180" align="center">
                 <select name="daccess" id="daccess" style="width:100px">
                 <?php
                 $dsql->SetQuery("Select * from `#@__arcrank` where `rank`>=0 ");
@@ -335,7 +334,7 @@ table{border-collapse:separate}
                 </select>
               </td>
               <td width="120" align="center">需消费金币：</td>
-              <td width="411"><input name="needmoney" type="text" id="needmoney" value="<?php echo $needmoney; ?>" size="8">&nbsp;个</td>
+              <td width="410"><input name="needmoney" type="text" id="needmoney" value="<?php echo $needmoney; ?>" size="8">&nbsp;个</td>
             </tr>
             <tr>
               <td height="26" colspan="4" style="border-top:1px dashed #8EAF61"><span class="STYLE1 py-3">（如果设定了下载限制，<a href="soft_config.php" target="_blank">软件频道设置</a>&nbsp;中“附件下载方式：”必须选择“链接到跳转页面”）</span></td>
@@ -450,7 +449,8 @@ table{border-collapse:separate}
                 </select>
               </td>
               <td width="90">发布选项：</td>
-              <td><label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked";?>> 
+              <td>
+                <label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked";?>> 
                 生成HTML </label>
                 <label><input type="radio" name="ishtml" class="np" value="0" <?php if($arcRow["ismake"]==-1) echo " checked";?>> 
                 仅动态浏览</label>
@@ -491,9 +491,7 @@ table{border-collapse:separate}
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90" height="50">&nbsp;简要说明：</td>
-            <td>
-              <textarea name="description" rows="3" id="description" style="width:60%"><?php echo $arcRow["description"]?></textarea>
-            </td>
+            <td><textarea name="description" rows="3" id="description" style="width:60%"><?php echo $arcRow["description"]?></textarea></td>
           </tr>
         </table>
       </td>

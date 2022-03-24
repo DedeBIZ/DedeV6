@@ -23,7 +23,7 @@
               $tl = new TypeLink(0);
               $typeOptions = $tl->GetOptionArray(0,0,0);
               echo "<select name='typeid' style='width:200' class='form-control'>\r\n";
-              echo "<option value='0' selected>--不限栏目--</option>\r\n";
+              echo "<option value='0' selected>不限栏目</option>\r\n";
               echo $typeOptions;
               echo "</select>";
             ?>
@@ -36,7 +36,7 @@
           <tr bgcolor="#FFFFFF">
             <td height="30" align="center">发布时间：</td>
             <td height="30"><select name="starttime" id="starttime">
-                <option value="-1" selected>--不限--</option>
+                <option value="-1" selected>不限</option>
                 <option value="7">一周以内</option>
                 <option value="30">一个月内</option>
                 <option value="90">三个月内</option>
@@ -46,7 +46,7 @@
           <tr bgcolor="#FFFFFF">
             <td height="30" align="center">内容类型：</td>
             <td height="30"> <select name="channeltype" id="channeltype" class="form-control">
-                <option value="0" selected>--不限--</option>
+                <option value="0" selected>不限</option>
                 <?php
 					 
 					 $dsql->SetQuery("Select id,typename From #@__channeltype order by id desc");
@@ -61,7 +61,7 @@
           <tr bgcolor="#FFFFFF">
             <td height="30" align="center">排序方式：</td>
             <td height="30"> <select name="orderby" id="orderby" class="form-control">
-                <option value="sortrank" selected>--默认--</option>
+                <option value="sortrank" selected>默认</option>
                 <option value="senddate">收录时间</option>
                 <option value="pubdate">发布时间</option>
                 <option value="id">文档ID</option>
@@ -98,11 +98,7 @@
       </table>
       <br>
     </div>
-
   </div>
-
   <?php include("plus_footer.htm") ;?>
-
 </body>
-
 </html>
