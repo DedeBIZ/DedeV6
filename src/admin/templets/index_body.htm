@@ -125,7 +125,7 @@
                                     if(trim($row['editcon'])==''){
                                         $row['editcon'] = 'archives_edit.php';
                                     }
-                                    $rowarcrank = $row['arcrank']==-1? "<span class='btn btn-danger btn-sm' style='margin-left:6px'>未审核</span>":"";
+                                    $rowarcrank = $row['arcrank']==-1? "<small>[未审核]</small>":"";
                                     $pubdate = GetDateMk($row['pubdate']);
                                     echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
                                 }
@@ -225,7 +225,7 @@
                     infoStr += `
                     <tr>
                         <td class="nline" style="text-align:left">授权域名：</td>
-                        <td class="nline" style="text-align:left">${rsp.result.domain} <a href="<?php echo $cfg_biz_dedebizUrl;?>/auth/?domain=${rsp.result.domain}" class="btn btn-danger btn-sm">查看</a></td>
+                        <td class="nline" style="text-align:left">${rsp.result.domain} <a href="<?php echo $cfg_biz_dedebizUrl;?>/auth/?domain=${rsp.result.domain}" class="btn btn-success btn-sm">查看</a></td>
                     </tr>
                     `;
                 }
