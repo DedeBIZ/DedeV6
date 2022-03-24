@@ -1,4 +1,4 @@
-<!--
+// 建议采用现代浏览器内置的fetch替换现有的webajax.js
 //xmlhttp和xmldom对象
 var DedeXHTTP = null;
 var DedeXDOM = null;
@@ -201,7 +201,7 @@ this.SendGet2 = function(purl) {
         if(purl.indexOf('?')==-1) purl = purl + '?' + gkey;
         else  purl = purl + '&' + gkey;
     }
-    DedeXHTTP.open("GET", purl, false);
+    DedeXHTTP.open("GET", purl, true);
     this.SendHead();
     DedeXHTTP.send(null);
     //firefox中直接检测XHTTP状态
@@ -213,7 +213,7 @@ this.SendPost2 = function(purl) {
     var pdata = "";
     var i=0;
     this.state = 0;
-    DedeXHTTP.open("POST", purl, false);
+    DedeXHTTP.open("POST", purl, true);
     this.SendHead();
     //post数据
     if(this.keyCount!=-1)
@@ -277,5 +277,3 @@ function SetCookie(c_name,value,expiredays)
     exdate.setDate(exdate.getDate() + expiredays);
     document.cookie = c_name + "=" +escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()); //使设置的有效时间正确。增加toGMTString()
 }
-
--->
