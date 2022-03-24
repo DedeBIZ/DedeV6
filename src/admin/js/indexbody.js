@@ -10,8 +10,9 @@ function CloseTab(tb)
 
 function ListAll(){
     $DE('editTab').style.display = 'block';
-    var myajax = new DedeAjax($DE('editTabBody'));
-    myajax.SendGet('index_body.php?dopost=editshow');
+	fetch('index_body.php?dopost=editshow').then(resp=>resp.text()).then((d)=>{
+		$DE('editTabBody').innerHTML = d;
+	});
 }
 
 function ShowWaitDiv(){
@@ -21,6 +22,7 @@ function ShowWaitDiv(){
 
 window.onload = function()
 {
-    var myajax = new DedeAjax($DE('listCount'));
-    myajax.SendGet('index_body.php?dopost=getRightSide');
+	fetch('index_body.php?dopost=getRightSide').then(resp=>resp.text()).then((d)=>{
+		$DE('listCount').innerHTML = d;
+	});
 };

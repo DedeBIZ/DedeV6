@@ -20,8 +20,11 @@
 			orderby = ordertype;
 			var listArea = $Obj('rslist');
 			var errMsg = "网络通信出错<br>[<a href=\"javascript:ReloadPage('" + ordertype + "')\">点击此重新加载列表</a>]";
-			var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在加载");
-			myajax.SendGet("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget);
+			fetch("freelist_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype + addget).then(resp=>resp.text()).then((d)=>{
+				listArea.innerHTML = d;
+			}).catch((error) => {
+				listArea.innerHTML = errMsg;
+			});
 		}
 		//载入指定页的列表
 		function LoadPage(npage) {
@@ -45,8 +48,17 @@
 			var pagenum = Math.ceil(totalrow / pagesize);
 			if (pagenum <= pageno) pageno = pagenum;
 			var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
-			var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理");
-			myajax.SendGet("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno);
+			fetch("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno).then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error(errMsg);
+			}).then((d)=>{
+				listArea.innerHTML = d;
+			}).catch((error) => {
+				listArea.innerHTML = errMsg;
+			});
+
 			ReloadPageNum(pageno);
 		}
 		//重新加载分页列表

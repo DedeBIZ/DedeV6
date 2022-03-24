@@ -13,8 +13,9 @@
 function LoadSuns(ctid,tid)
 {
     if($DE(ctid).innerHTML.length < 10){
-        var myajax = new DedeAjax($DE(ctid),true,true,'','x','');
-        myajax.SendGet('catalog_do.php?dopost=GetSunListsMenu&cid='+tid);
+        fetch('catalog_do.php?dopost=GetSunListsMenu&cid='+tid).then(resp=>resp.text()).then((d)=>{
+            $DE(ctid).innerHTML = d;
+		});
     }
     else{ if(document.all) showHide(ctid); }
 }

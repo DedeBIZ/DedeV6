@@ -298,8 +298,7 @@ function LoadNewDiv(e, surl, oname) {
 		newobj.style.display = "block";
 	}
 	if (newobj.innerHTML.length < 10) {
-		var myajax = new DedeAjax(newobj);
-		myajax.SendGet(surl);
+		fetch(surl).then(resp=>resp.text()).then((d)=>{newobj.innerHTML = d});
 	}
 }
 
@@ -322,8 +321,9 @@ function LoadNewDiv2(e, surl, oname, dlgcls) {
 		document.body.appendChild(newobj);
 	}
 	newobj.innerHTML = '';
-	var myajax = new DedeAjax(newobj);
-	myajax.SendGet2(surl);
+	fetch(surl).then(resp=>resp.text()).then((d)=>{
+		newobj.innerHTML = d;
+	});
 	if (newobj.innerHTML == '') newobj.style.display = 'none';
 	else newobj.style.display = 'block';
 	jQuery(newobj).css('top', '50px').css('left', '300px');
@@ -391,8 +391,9 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	newobj.style.left = posLeft + "px";
 	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="images/loadinglit.gif"> Loading...</div>';
 	newobj.style.display = 'block';
-	var myajax = new DedeAjax(newobj);
-	myajax.SendGet(surl);
+	fetch(surl).then(resp=>resp.text()).then((d)=>{
+		newobj.innerHTML = d;
+	});
 	fixupPos = false;
 }
 

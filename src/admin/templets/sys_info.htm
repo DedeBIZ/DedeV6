@@ -34,8 +34,16 @@ function backSearch() {
 function getSearch() {
   var searchKeywords = $Obj('keywds').value;
   searchKeywords = searchKeywords.replace(/^cfg_/, "");
-  var myajax = new DedeAjax($Obj('_search'));
-  myajax.SendGet('sys_info.php?dopost=search&keywords=' + searchKeywords)
+  fetch('sys_info.php?dopost=search&keywords=' + searchKeywords).then(resp=>{
+    if (resp.ok) {
+      return resp.text()
+    }
+    throw new Error('系统错误，无法获取数据');
+  }).then((d)=>{
+    $Obj('_search').innerHTML = d;
+  }).catch((error) => {
+    $Obj('_search').innerHTML = errMsg;
+  });
   $Obj('_searchback').innerHTML = '<button class="btn btn-success btn-sm" name="searchbackBtn" type="button" id="searchbackBtn" onclick="backSearch()">返回</button>'
   $Obj('_mainsearch').innerHTML = '';
   searchconfig = true;

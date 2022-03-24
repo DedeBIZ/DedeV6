@@ -55,9 +55,17 @@
         }
 
         function AddType() {
-            var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=addnew', true, true, '', '系统错误，无法获取数据', loadhtml);
+            fetch('stepselect_main.php?action=addnew').then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('系统错误，无法获取数据');
+			}).then((d)=>{
+				$DE('edsta').innerHTML = d;
+			}).catch((error) => {
+				$DE('edsta').innerHTML = errMsg;
+			});
         }
 
         function AddEnum() {
@@ -66,9 +74,17 @@
                 ShowMsg("必须选择一个类别");
                 return false;
             }
-            var myajax = new DedeAjax($DE('edsta'));
+            fetch('stepselect_main.php?action=addenum&id=' + id).then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('系统错误，无法获取数据');
+			}).then((d)=>{
+				$DE('edsta').innerHTML = d;
+			}).catch((error) => {
+				$DE('edsta').innerHTML = errMsg;
+			});
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=addenum&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
         }
 
         function EditType() {
@@ -77,9 +93,17 @@
                 ShowMsg("必须选择一个类别");
                 return false;
             }
-            var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=edit&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
+            fetch('stepselect_main.php?action=edit&id=' + id).then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('系统错误，无法获取数据');
+			}).then((d)=>{
+				$DE('edsta').innerHTML = d;
+			}).catch((error) => {
+				$DE('edsta').innerHTML = errMsg;
+			});
         }
 
         function ViewType() {
@@ -88,9 +112,17 @@
                 ShowMsg("必须选择一个类别");
                 return false;
             }
-            var myajax = new DedeAjax($DE('edsta'));
             $DE('edsta').style.display = 'block';
-            myajax.SendGet('stepselect_main.php?action=view&id=' + id, true, true, '', '系统错误，无法获取数据', loadhtml);
+            fetch('stepselect_main.php?action=view&id=' + id).then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('系统错误，无法获取数据');
+			}).then((d)=>{
+				$DE('edsta').innerHTML = d;
+			}).catch((error) => {
+				$DE('edsta').innerHTML = errMsg;
+			});
         }
 
         function DelType() {

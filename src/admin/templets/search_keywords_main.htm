@@ -21,8 +21,16 @@ function ReloadPage(ordertype) {
     orderby = ordertype;
     var listArea = $Obj('rslist');
     var errMsg = "网络通信出错<br>[<a href=\"javascript:ReloadPage('" + ordertype + "')\">点击此重新加载列表</a>]";
-    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在加载");
-    myajax.SendGet("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype);
+    fetch("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype).then(resp=>{
+        if (resp.ok) {
+            return resp.text()
+        }
+        throw new Error(errMsg);
+    }).then((d)=>{
+        listArea.innerHTML = d;
+    }).catch((error) => {
+        listArea.innerHTML = errMsg;
+    });
 }
 //载入指定页的列表
 function LoadPage(npage) {
@@ -37,22 +45,33 @@ function UpdateNote(nid) {
     var kws = $Obj('spwords' + nid).value;
     var ct = $Obj('count' + nid).value;
     var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
-    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理");
     <?php
     if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {
     ?>
-    myajax.AddKeyUtf8('dopost', 'update');
-    myajax.AddKeyUtf8('aid', nid);
-    myajax.AddKeyUtf8('keyword', kw);
-    myajax.AddKeyUtf8('spwords', kws);
-    myajax.AddKeyUtf8('count', ct);
-    myajax.AddKeyUtf8('pageno', pageno);
-    myajax.AddKeyUtf8('orderby', orderby);
-    myajax.SendPost2('search_keywords_main.php');
+    const formData = new FormData()
+    formData.append('dopost', 'update');
+    formData.append('aid', nid);
+    formData.append('keyword', kw);
+    formData.append('spwords', kws);
+    formData.append('count', ct);
+    formData.append('pageno', pageno);
+    formData.append('orderby', orderby);
+    fetch('search_keywords_main.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(r => {
+        if (r.ok) {
+            return r.text()
+        }
+        throw new Error(errMsg);
+    })
+    .then(d => {
+        listArea.innerHTML = d;
+    }).catch((error) => {
+        $DE('edsta').innerHTML = errMsg;
+    });
     <?php
-    }
-    elseif(strtolower(substr($cfg_soft_lang, 0, 2)) == 'gb') {
-        echo 'myajax.SendGet2("search_keywords_main.php?dopost=update&aid="+nid+"&keyword="+kw+"&spwords="+kws+"&count="+ct+"&pageno="+pageno+"&orderby="+orderby);';
     }
     ?>
     ShowMsg('成功更新关键词');
@@ -65,8 +84,16 @@ function DelNote(nid) {
     var pagenum = Math.ceil(totalrow / pagesize);
     if (pagenum <= pageno) pageno = pagenum;
     var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
-    var myajax = new DedeAjax(listArea, true, true, "", errMsg, "正在处理");
-    myajax.SendGet("search_keywords_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno + "&orderby=" + orderby);
+    fetch("search_keywords_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno + "&orderby=" + orderby).then(resp=>{
+        if (resp.ok) {
+            return resp.text()
+        }
+        throw new Error(errMsg);
+    }).then((d)=>{
+        listArea.innerHTML = d;
+    }).catch((error) => {
+        listArea.innerHTML = errMsg;
+    });
     ReloadPageNum(pageno);
 }
 //重新加载分页列表

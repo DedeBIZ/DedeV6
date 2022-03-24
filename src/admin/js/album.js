@@ -127,15 +127,17 @@ function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 //删除已经上传的图片
 function delAlbPic(pid) {
 	var tgobj = $Obj('albCtok' + pid);
-	var myajax = new DedeAjax(tgobj);
-	myajax.SendGet2('swfupload.php?dopost=del&id=' + pid);
-	$Obj('thumbnails').removeChild(tgobj);
+	fetch('swfupload.php?dopost=del&id=' + pid).then(resp=>resp.text()).then((d)=>{
+		tgobj.innerHTML = d;
+		$Obj('thumbnails').removeChild(tgobj);
+	});
 }
 
 //删除已经上传的图片(编辑时用)
 function delAlbPicOld(picfile, pid) {
 	var tgobj = $Obj('albold' + pid);
-	var myajax = new DedeAjax(tgobj);
-	myajax.SendGet2('swfupload.php?dopost=delold&picfile=' + picfile);
-	$Obj('thumbnailsEdit').removeChild(tgobj);
+	fetch('swfupload.php?dopost=delold&picfile=' + picfile).then(resp=>resp.text()).then((d)=>{
+		tgobj.innerHTML = d;
+		$Obj('thumbnailsEdit').removeChild(tgobj);
+	});
 }

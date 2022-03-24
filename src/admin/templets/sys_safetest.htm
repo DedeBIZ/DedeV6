@@ -20,15 +20,33 @@
       var filetype = $Obj('filetype').value;
       var info = $Obj('info').value;
       $Obj('loaddiv').style.display = 'block';
-      var myajax = new DedeAjax($DE('messagetd'));
-      myajax.SendGet2('sys_safetest.php?action=test&filetype=' + filetype + "&info=" + info);
-      $Obj('loaddiv').style.display = 'none';
+
+      fetch('sys_safetest.php?action=test&filetype=' + filetype + "&info=" + info).then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('系统错误，无法获取数据');
+			}).then((d)=>{
+				$DE('messagetd').innerHTML = d;
+        $Obj('loaddiv').style.display = 'none';
+			}).catch((error) => {
+				$DE('messagetd').innerHTML = errMsg;
+			});
     }
     function LoadCtClear() {
       $Obj('loaddiv').style.display = 'block';
-      var myajax = new DedeAjax($DE('messagetd'));
-      myajax.SendGet2('sys_safetest.php?action=clear');
-      $Obj('loaddiv').style.display = 'none';
+
+      fetch('sys_safetest.php?action=clear').then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('系统错误，无法获取数据');
+			}).then((d)=>{
+				$DE('messagetd').innerHTML = d;
+        $Obj('loaddiv').style.display = 'none';
+			}).catch((error) => {
+				$DE('messagetd').innerHTML = errMsg;
+			});
     }
   </script>
 </head>

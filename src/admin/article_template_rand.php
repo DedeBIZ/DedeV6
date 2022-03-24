@@ -80,10 +80,11 @@ function DoRand(jobname)
 {
     ChangeFullDiv('show');
     \$DE('loading').style.display = 'block';
-    var myajax = new DedeAjax(\$DE('tmpct'));
-    myajax.SendGet2('article_template_rand.php?dopost='+jobname+'&token={$_SESSION['token']}');
-    \$DE('loading').style.display = 'none';
-    ChangeFullDiv('hide');
+    fetch('article_template_rand.php?dopost='+jobname+'&token={$_SESSION['token']}').then(resp=>resp.text()).then((d)=>{
+        \$DE('tmpct').innerHTML = d;
+        \$DE('loading').style.display = 'none';
+        ChangeFullDiv('hide');
+    });
 }
 </script>
 <div id='loading' style='z-index:3000;top:160;left:300;position:absolute;display:none;'>

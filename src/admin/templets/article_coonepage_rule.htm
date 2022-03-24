@@ -23,9 +23,9 @@
 		//编辑
 		function EditNode(nid) {
 			$DE('editNode').style.display = 'block';
-			var myajax = new DedeAjax($DE('editNodeBody'), false, true, "", "", "请稍候，正在载入");
-			myajax.SendGet2('article_coonepage_rule.php?action=editload&id=' + nid);
-			DedeXHTTP = null;
+			fetch('article_coonepage_rule.php?action=editload&id=' + nid).then(resp=>resp.text()).then((d)=>{
+				$DE('editNodeBody').innerHTML = d;
+			});
 		}
 
 		//获得选中文件的文件名

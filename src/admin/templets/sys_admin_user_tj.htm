@@ -13,8 +13,16 @@
 	{
 		var loadhtml = $DE('loaddiv').innerHTML;
 		var ajaxdiv = $DE('userct'+uid);
-		var myajax = new DedeAjax(ajaxdiv, true, true, '载入失败', loadhtml);
-		myajax.SendGet2('sys_admin_user_tj.php?dopost=getone&uid='+uid);
+		fetch('sys_admin_user_tj.php?dopost=getone&uid='+uid).then(resp=>{
+			if (resp.ok) {
+				return resp.text()
+			}
+			throw new Error('载入失败');
+		}).then((d)=>{
+			ajaxdiv.innerHTML = d;
+		}).catch((error) => {
+			ajaxdiv.innerHTML = errMsg;
+		});
 	}
 </script>
 <style>

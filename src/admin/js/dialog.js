@@ -9,9 +9,9 @@
 document.write("<style type=\"text/css\">.close{float:right;font-size:14px;cursor:pointer}</style>")
 function editTitle(aid) {
 	var show = document.getElementById("show_news");
-	var myajax = new DedeAjax(show, false, false, "", "", "");
-	myajax.SendGet2("catalog_edit.php?dopost=time&id=" + aid);
-	DedeXHTTP = null;
+	fetch("catalog_edit.php?dopost=time&id=" + aid).then(resp=>resp.text()).then((d)=>{
+		show.innerHTML = d;
+	});
 }
 function $Dede(id) { return document.getElementById(id) }
 function AlertMsg(title, id) {

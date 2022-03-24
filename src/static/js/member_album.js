@@ -106,19 +106,19 @@ function LoadTestDiv()
 	else{
 		newobj.style.display = "block";
 	}
-	var myajax = new DedeAjax(newobj,false,true,'-','-','...');
-	var v = document.getElementById('imagebody').value;
-	vcc++;
 
-	//utf8
-	myajax.AddKeyUtf8('myhtml',v);
-	myajax.AddKeyUtf8('vcc',vcc);
-	myajax.SendPost2('album_testhtml.php');
-
-	//gbk
-	//myajax.SendGet2("album_testhtml.php?vcc="+vcc+"&myhtml="+v);
-
-	DedeXHTTP = null;
+	const formData = new FormData()
+	formData.append('myhtml', v);
+	formData.append('vcc', vcc);
+	fetch('album_testhtml.php', {
+		method: 'POST',
+		body: formData
+	})
+	.then(r => r.text())
+	.then(d => {
+		newobj.innerHTML = d;
+		vcc++;
+	})
 }
 
 function checkMuList(psid,cmid)

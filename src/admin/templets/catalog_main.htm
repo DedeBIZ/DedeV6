@@ -16,8 +16,9 @@ function LoadSuns(ctid,tid)
 { 
   if($DE(ctid).innerHTML.length < 10){
     $DE('img'+tid).src = 'images/dedecontract.gif';
-	  var myajax = new DedeAjax($DE(ctid));
-	  myajax.SendGet('catalog_do.php?dopost=GetSunLists&cid='+tid);
+    fetch('catalog_do.php?dopost=GetSunLists&cid='+tid).then(resp=>resp.text()).then((d)=>{
+      $DE(ctid).innerHTML = d;
+		});
   } else {
     showHide(ctid,tid); 
   }

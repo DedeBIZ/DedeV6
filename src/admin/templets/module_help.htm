@@ -8,23 +8,18 @@
       var tgobj = document.getElementById('modulcode');
       var email = document.form1.email.value;
       var modulname = document.form1.modulname.value;
-      var myajax = new DedeAjax(tgobj, false, true, '-', '-', '');
-   <? php
-   if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {
-   ?>
-          myajax.AddKeyUtf8('action', 'gethash');
-        myajax.AddKeyUtf8('email', email);
-        myajax.AddKeyUtf8('modulname', modulname);
-        myajax.SendPost2('module_make.php');
-   <? php
-   }
-      elseif(strtolower(substr($cfg_soft_lang, 0, 2)) == 'gb') {
-        echo 'myajax.SendGet2("module_make.php?action=gethash&email="+email+"&modulname="+modulname);';
-      }
-   ?>
-
-        //myajax.SendGet2('module_make.php?action=gethash&email='+email+'&modulname='+modulname);
-        DedeXHTTP = null;
+      const formData = new FormData()
+      formData.append('action', 'gethash');
+      formData.append('email', email);
+      formData.append('modulname', modulname);
+      fetch('module_make.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(r => r.text())
+      .then(d => {
+        tgobj.innerHTML = d;
+      })
     }
   </script>
   <title>模块打包</title>

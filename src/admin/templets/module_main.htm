@@ -12,10 +12,10 @@
   <script>
     function getmodule(action, hash) {
       $DE('status_' + hash).innerHTML = '<img src=\'images/loadinglit.gif\'>';
-      var myajax = new DedeAjax($DE('status_' + hash), false, true, '-', '-', '');
-      myajax.SendGet2('module_main.php?action=download&hash=' + hash);
+      fetch('module_main.php?action=download&hash=' + hash).then(resp=>resp.text()).then((d)=>{
+        $DE('status_' + hash).innerHTML = d;
+      });
       $DE('manager_' + hash).style.display = 'block';
-      DedeXHTTP = null;
     }
   </script>
 </head>

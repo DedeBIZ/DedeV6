@@ -120,17 +120,17 @@ function ShowMainMenu(n)
 		targetLink.className = 'mmac';
 		curitem = n;
 	} else {
-		var myajax = new DedeAjax(targetCt);
-		myajax.SendGet2("index_menu_load.php?openitem="+n);
-		if(targetCt.innerHTML!='')
-		{
-			curCt.style.display = 'none';
-			targetCt.style.display = 'block';
-			curLink.className = 'mm';
-			targetLink.className = 'mmac';
-			curitem = n;
-		}
-		DedeXHTTP = null;
+		fetch("index_menu_load.php?openitem="+n).then(resp=>resp.text()).then((d)=>{
+			targetCt.innerHTML = d;
+			if(targetCt.innerHTML!='')
+			{
+				curCt.style.display = 'none';
+				targetCt.style.display = 'block';
+				curLink.className = 'mm';
+				targetLink.className = 'mmac';
+				curitem = n;
+			}
+		});
 	}
 	// bindClick();
 }

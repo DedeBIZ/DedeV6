@@ -8,7 +8,6 @@
   <link rel='stylesheet' href='css/base.css'>
   <script language="javascript" src="../static/js/webajax.js"></script>
   <script language="javascript">
-    var myajax;
     var newobj;
     var posLeft = 200;
     var posTop = 150;
@@ -25,8 +24,16 @@
       } else {
         newobj.style.display = "block";
       }
-      myajax = new DedeAjax(newobj);
-      myajax.SendGet("sys_data.php?" + surl);
+      fetch("sys_data.php?" + surl).then(resp=>{
+				if (resp.ok) {
+					return resp.text()
+				}
+				throw new Error('x');
+			}).then((d)=>{
+				newobj.innerHTML = d;
+			}).catch((error) => {
+				newobj.innerHTML = errMsg;
+			});
     }
     function HideObj(objname) {
       var obj = document.getElementById(objname);
