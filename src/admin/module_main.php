@@ -108,7 +108,7 @@ else if ($action == 'setup') {
         exit;
     }
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
-    $filelists = $dm->GetFileLists($hash);
+    $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     $prvdirs = array();
     $incdir = array();
@@ -150,6 +150,16 @@ else if ($action == 'setup') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
+    $devURL = DEDECDNURL."/developers/{$infos['dev_id']}.json";
+    $dhd = new DedeHttpDown();
+    $dhd->OpenUrl($devURL);
+    $devContent = $dhd->GetHtml();
+    $devInfo = (array)json_decode($devContent);
+    $s = "未认证";
+    if (($devInfo['dev_id'] == $infos['dev_id']) && !empty($devInfo['dev_id'])) {
+      $s = "已认证";
+    }
+
     $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt;&gt; 安装模块：{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
@@ -169,7 +179,7 @@ else if ($action == 'setup') {
   </tr>
   <tr>
     <td height='26' class='dtb'>开发者ID：</td>
-    <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>未认证</a></td>
+    <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a></td>
   </tr>
   <tr>
     <td height='26' class='dtb'>发布时间：</td>
@@ -221,7 +231,7 @@ else if ($action == 'setupstart') {
         exit();
     }
     $dm = new DedeModule($mdir);
-    $minfos = $dm->GetModuleInfo($hash);
+    $minfos = (array)$dm->GetModuleInfo($hash);
     extract($minfos, EXTR_SKIP);
     $menustring = addslashes($dm->GetSystemFile($hash, 'menustring'));
     $indexurl = str_replace('**', '=', $indexurl);
@@ -338,7 +348,7 @@ else if ($action == 'uninstall') {
     $infos = $dm->GetModuleInfo($hash);
     if ($infos['url'] == '') $infos['url'] = '&nbsp;';
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
-    $filelists = $dm->GetFileLists($hash);
+    $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     foreach ($filelists as $v) {
         if (empty($v['name'])) continue;
@@ -407,7 +417,7 @@ function UnInstallRun();
 else if ($action == 'uninstallok') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_module` WHERE hashcode LIKE '$hash' ");
     $dm = new DedeModule($mdir);
-    $minfos = $dm->GetModuleInfo($hash);
+    $minfos = (array)$dm->GetModuleInfo($hash);
     extract($minfos, EXTR_SKIP);
     if (!isset($moduletype) || $moduletype != 'patch') {
         $dm->DeleteFiles($hash, $isreplace);
@@ -464,9 +474,18 @@ else if ($action == 'view') {
     $infos = $dm->GetModuleInfo($hash);
     if ($infos['url'] == '') $infos['url'] = '&nbsp;';
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
-    $filelists = $dm->GetFileLists($hash);
+    $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
     $setupinfo = '';
+    $devURL = DEDECDNURL."/developers/{$infos['dev_id']}.json";
+    $dhd = new DedeHttpDown();
+    $dhd->OpenUrl($devURL);
+    $devContent = $dhd->GetHtml();
+    $devInfo = (array)json_decode($devContent);
+    $s = "未认证";
+    if (($devInfo['dev_id'] == $infos['dev_id']) && !empty($devInfo['dev_id'])) {
+      $s = "已认证";
+    }
     foreach ($filelists as $v) {
         if (empty($v['name'])) continue;
         if ($v['type'] == 'dir') $v['type'] = '目录';
@@ -478,7 +497,8 @@ else if ($action == 'view') {
     } else {
         $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
     }
-    $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>未认证</a>";
+
+    $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>{$s}</a>";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";
@@ -529,7 +549,7 @@ function Edit();
 --------------*/
 else if ($action == 'edit') {
     $dm = new DedeModule($mdir);
-    $minfos = $dm->GetModuleInfo($hash);
+    $minfos = (array)$dm->GetModuleInfo($hash);
     extract($minfos, EXTR_SKIP);
     if (!isset($lang)) $lang = 'gb2312';
     if (!isset($moduletype)) $moduletype = 'soft';
