@@ -76,7 +76,8 @@ class image
     {
         $this->thumb_gd($thumbwidth, $thumbheight, $preview);
         if ($this->thumbstatus == 2 && $this->watermarkstatus) {
-            $this->image($this->targetfile, $this->attach);
+            $this->image($this->targetfile, $this->attach,$this->watermarktext,$this->watermarkstatus,$this->watermarktrans,$this->watermarkminheight
+        ,$this->watermarkminwidth,$this->watermarktype,$this->watermarktrans,true,$this->attach);
             $this->attach['size'] = filesize($this->targetfile);
         }
     }

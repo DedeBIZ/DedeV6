@@ -51,7 +51,7 @@ function MakePublicTag($atts = array(), $refObj = '', $fields = array())
  * @param     array    $attlist  属性列表
  * @return    void
  */
-function FillAtts(&$atts, $attlist)
+function FillAtts(&$atts, $attlist="")
 {
     $attlists = explode(',', $attlist);
     foreach ($attlists as $att) {
@@ -889,7 +889,7 @@ class DedeTemplate
             } else if (preg_match("/^value/", $vartype)) {
                 $okvalue = '$'.$vartype;
             } else if ($vartype == 'field') {
-                $okvalue = '$'.str_replace($varname);
+                $okvalue = '$fields[\''.trim($varname).'\']';
             } else {
                 $okvalue = '$GLOBALS[\''.$varname.'\']';
             }

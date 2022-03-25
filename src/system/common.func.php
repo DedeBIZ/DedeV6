@@ -93,9 +93,6 @@ function dede_random_bytes($length)
             return FALSE;
         }
     }
-    if (defined('MCRYPT_DEV_URANDOM') && ($output = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM)) !== FALSE) {
-        return $output;
-    }
     if (is_readable('/dev/urandom') && ($fp = fopen('/dev/urandom', 'rb')) !== FALSE) {
         version_compare(PHP_VERSION, '5.4.0', '>=') && stream_set_chunk_size($fp, $length);
         $output = fread($fp, $length);
@@ -322,7 +319,7 @@ function string_filter($str,$stype="inject") {
     return $str;
 }
 //载入自定义表单，用于发布
-function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $loadtype='autofield')
+function AddFilter($channelid, $type=1, $fieldsnamef="", $defaulttid=0, $loadtype='autofield')
 {
     global $tid,$dsql,$id;
     $tid = $defaulttid ? $defaulttid : $tid;

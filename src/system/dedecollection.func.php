@@ -185,36 +185,7 @@ function GetHostInfo($gurl)
     $garr['query'] = "/".preg_replace("/^([^\/]*)\//i", "", $gurl);
     return $garr;
 }
-/**
- *  HTML里的图片转DEDE格式
- *
- * @access    public
- * @param     string  $body  文章内容
- * @return    string
- */
-function TurnImageTag(&$body)
-{
-    global $cfg_album_width, $cfg_ddimg_width;
-    if (empty($cfg_album_width)) {
-        $cfg_album_width = 800;
-    }
-    if (empty($cfg_ddimg_width)) {
-        $cfg_ddimg_width = 150;
-    }
-    $patten = "/<\\s*img\\s.*?src\\s*=\\s*([\"\\'])?(?(1)(.*?)\\1|([^\\s\\>\"\\']+))/isx";
-    preg_match_all($patten, $body, $images);
-    $returnArray1 = $images[2];
-    $returnArray2 = $images[3];
-    foreach ($returnArray1 as $key => $value) {
-        if ($value) {
-            $ttx .= "{dede:img ddimg='$litpicname' text='图 ".($key + 1)."'}".$value."{/dede:img}"."\r\n";
-        } else {
-            $ttx .= "{dede:img ddimg='$litpicname' text='图 ".($key + 1)."'}".$returnArray2[$key]."{/dede:img}"."\r\n";
-        }
-    }
-    $ttx = "\r\n{dede:pagestyle maxwidth='{$cfg_album_width}' ddmaxwidth='{$cfg_ddimg_width}' row='3' col='3' value='2'/}\r\n{dede:comments}图集类型会采集时生成此配置是正常的，不过如果后面没有跟着img标记则表示规则无效{/dede:comments}\r\n".$ttx;
-    return $ttx;
-}
+
 /**
  *  HTML里的网址格式转换
  *
