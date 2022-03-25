@@ -3,8 +3,35 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>更新标签</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/select2.min.css">
   <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/base.css">
+  <script language="javascript" src="../static/js/jquery.min.js"></script>
+  <script language="javascript" src="../static/js/select2.full.min.js"></script>
+  <script language="javascript" src="../static/js/i18n/zh-CN.js"></script>
+  <script>
+    $(function(){
+        $('#tagid').select2({
+          language: "zh-CN",
+          ajax: {
+            url: 'makehtml_taglist.php?action=search',
+            delay: 500,
+            data: function (params) {
+              var query = {
+                search: params.term,
+              }
+              return query;
+            },
+            processResults: function (data) {
+              data = JSON.parse(data);
+              return {
+                results: data.data
+              };
+            }
+          }
+        });
+    });
+  </script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center" class="table maintable table-bordered mt-3">
@@ -24,19 +51,7 @@
       <tr>
         <td width="300" valign="top" bgcolor="#FFFFFF">选择标签：</td>
         <td width="377" valign="top" bgcolor="#FFFFFF">
-        <?php
-        $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); //取一个平均
-        $dd['tt'] = ($dd['tt'] > 5)? $dd['tt'] : 0;
-        $sql="select * from #@__tagindex where total > {$dd['tt']} order by tag asc"; 
-        $dsql->Execute('al',$sql);
-        echo "<select name='tagid' style='width:300px'>\r\n";
-        if($tid == 0) echo "<option value='0' selected='1'>更新所有标签</option>\r\n";
-        while($row=$dsql->GetObject('al')){     
-          if($tid > 0 && $tid == $row->id) echo "<option value='".$row->id."' selected='1'>".$row->tag."</option>";
-          else echo "<option value='".$row->id."'>".$row->tag."</option>";
-	       }
-        echo "</select>";
-		    ?>
+          <select id='tagid' name='tagid' style='width:300px'>
         </td>
       </tr>
       <tr>
@@ -46,7 +61,6 @@
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">说明：</td>
         <td height="26" valign="top" bgcolor="#FFFFFF">
-          仅更新文档数多于<?php echo $dd['tt'];?>的关键词<br>
           更新所有Tag将会智能更新在[Tag标签管理]中重新获取更新的内容<br>
           Tag首页模板文件：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm<br>
           Tag列表页模板文件：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/taglist.htm<br>

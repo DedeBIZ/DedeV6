@@ -6,6 +6,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 require_once(DEDEINC."/archive/taglist.class.php");
 $PageNo = 1;
@@ -18,6 +19,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 } else {
     $tag = '';
 }
+
 $tag = FilterSearch(urldecode($tag));
 if ($tag != addslashes($tag)) $tag = '';
 if ($tag == '') $dlist = new TagList($tag, 'tag.htm');

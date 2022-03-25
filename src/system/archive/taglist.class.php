@@ -172,9 +172,9 @@ class TagList
         if (file_exists($makeDir)) {
             header('HTTP/1.1 301 Moved Permanently');
             if (!empty($this->Tag)) {
-                header('Location:a/tags/'.GetPinyin($this->Tag)."/");
+                header('Location:../a/tags/'.GetPinyin($this->Tag)."/");
             } else {
-                header('Location:a/tags/');
+                header('Location:../a/tags/');
             }
             exit;
         }
