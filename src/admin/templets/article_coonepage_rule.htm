@@ -27,7 +27,6 @@
 				$DE('editNodeBody').innerHTML = d;
 			});
 		}
-
 		//获得选中文件的文件名
 		function getCheckboxItem() {
 			var allSel = "";
@@ -39,7 +38,6 @@
 			}
 			return allSel;
 		}
-
 		function selAll() {
 			for (i = 0; i < document.form2.ids.length; i++) {
 				if (!document.form2.ids[i].checked) {
@@ -54,7 +52,6 @@
 				}
 			}
 		}
-
 		//删除节点
 		function DelNode(selid) {
 			if (selid == 0) selid = getCheckboxItem();
@@ -66,7 +63,7 @@
 		}
 
 	</script>
-	<style type="text/css">
+	<style>
 		#addNode {
 			position: absolute;
 			left: 20px;
@@ -78,7 +75,6 @@
 			padding: 6px;
 			display: none
 		}
-
 		#editNode {
 			position: absolute;
 			left: 20px;
@@ -97,7 +93,7 @@
 		class="table maintable table-bordered mt-3">
 		<tr bgcolor="#F3FAD3">
 			<td height="26" colspan="6">
-				<div style="float:left;padding-left:6px"><b>单页采集规则管理：</b></div>
+				<div style="float:left;padding-left:6px">单页采集规则管理：</div>
 				<div style="float:right;padding-right:10px"><a href='javascript:ShowAddNode();'
 						class="btn btn-success btn-sm">增加新网址</a>
 				</div>

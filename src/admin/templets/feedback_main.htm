@@ -71,7 +71,7 @@
 		<tr>
 			<td height="26" background='images/tbg.gif' style="padding-left:10px">
 				<div style="float:left;">
-					<a href='feedback_main.php'><b>评论管理</b></a>
+					<a href='feedback_main.php'>评论管理</a>
 				</div>
 				<div style="float:right;padding-right:10px">
 					<form name='form1'>
@@ -97,34 +97,25 @@
 									class="table table-borderless">
 									<tr bgcolor="#F4FAE4">
 										<td width="9%">
-											&nbsp;选择 <input name="fid" type="checkbox" class="np" id="fid"
-												value="{dede:field.id/}">
+											&nbsp;选择 <input name="fid" type="checkbox" class="np" id="fid" value="{dede:field.id/}">
 										</td>
 										<td width="12%">
 											用户：{dede:field.username/}
 										</td>
 										<td width="20%">
-											文档：<a href='feedback_main.php?aid={dede:field.aid/}'>{dede:field.arctitle
-													function="RemoveXSS(@me)"/}</a> (<a
-												href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives"
-												target="_blank">浏览</a>)
-											<?php if($fields['replycount'] > 0) { ?><a
-												href='feedback_main.php?fid={dede:field.id/}'>（{dede:field.replycount/}条回复）</a>
+											文档：<a href='feedback_main.php?aid={dede:field.aid/}'>{dede:field.arctitle function="RemoveXSS(@me)"/}</a> (<a href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives" target="_blank">浏览</a>)
+											<?php if($fields['replycount'] > 0) { ?><a href='feedback_main.php?fid={dede:field.id/}'>（{dede:field.replycount/}条回复）</a>
 											<?php } ?>
 										</td>
 										<td width="18%" align="center">
-											IP地址：<a
-												href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a>
+											IP地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a>
 										</td>
 										<td width="15%">
 											时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}
 										</td>
 										<td width="20%" align="center">
-											<a class="btn btn-success btn-sm"
-												href='feedback_edit.php?id={dede:field.id/}'><i
-													class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
-											<a class="btn btn-success btn-sm"
-											href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新文档</a>
+											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
+											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新文档</a>
 										</td>
 									</tr>
 									<tr align="center" bgcolor="#FFFFFF">
@@ -153,20 +144,14 @@
 								<table width="98%">
 									<tr>
 										<td width="30%">
-											<button type='button' name='kk1' onClick="selAll()"
-												class="btn btn-success btn-sm">全选</button>
-											<button type='button' name='kk2' onClick="selNone()"
-												class="btn btn-success btn-sm">取消</button>
-											<button type='button' name='kk3' onClick="selNor()"
-												class="btn btn-success btn-sm">反选</button>
+											<button type='button' name='kk1' onClick="selAll()" class="btn btn-success btn-sm">全选</button>
+											<button type='button' name='kk2' onClick="selNone()" class="btn btn-success btn-sm">取消</button>
+											<button type='button' name='kk3' onClick="selNor()" class="btn btn-success btn-sm">反选</button>
 										</td>
 										<td align="right">
-											<button type='button' name='db' onClick="delFeedbackIP()"
-												class="btn btn-success btn-sm">删除相同IP的所有评论</button>
-											<button type='button' name='db' onClick="delFeedback()"
-												class="btn btn-success btn-sm">删除评论</button>
-											<button type='button' name='db2' onClick="checkFeedback()"
-												class="btn btn-success btn-sm">审核评论</button>
+											<button type='button' name='db' onClick="delFeedbackIP()" class="btn btn-success btn-sm">删除相同IP的所有评论</button>
+											<button type='button' name='db' onClick="delFeedback()" class="btn btn-success btn-sm">删除评论</button>
+											<button type='button' name='db2' onClick="checkFeedback()" class="btn btn-success btn-sm">审核评论</button>
 										</td>
 									</tr>
 								</table>

@@ -50,7 +50,7 @@ function multipage($allItemTotal, $currPageNum, $pageSize, $tagid = '')
   //计算总页数
   $pagesNum = ceil($allItemTotal / $pageSize);
   //第一页显示
-  $firstPage = ($currPageNum <= 1) ? $currPageNum."</b>&lt;&lt;" : "<a href='javascript:multi(1,\"{$tagid}\")' title='第1页'>1&lt;&lt;</a>";
+  $firstPage = ($currPageNum <= 1) ? $currPageNum."&lt;&lt;" : "<a href='javascript:multi(1,\"{$tagid}\")' title='第1页'>1&lt;&lt;</a>";
   //最后一页显示
   $lastPage = ($currPageNum >= $pagesNum) ? "&gt;&gt;".$currPageNum : "<a href='javascript:multi(".$pagesNum.",\"{$tagid}\")' title='第".$pagesNum."页'>&gt;&gt;".$pagesNum."</a>";
   //上一页显示

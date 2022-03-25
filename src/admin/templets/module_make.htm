@@ -36,30 +36,30 @@
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
-    <div class="bodytitletxt"><b>模块管理</b></div>
+    <div class="bodytitletxt">模块管理</div>
   </div>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable" style="background:#CFCFCF;">
     <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
       <input type='hidden' name='action' value='make'>
       <tr>
-        <td height="26" colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px"><a href="module_main.php"><b>模块管理</b></a>
-          &gt; <b> 模块打包：</b> </td>
+        <td height="26" colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px"><a href="module_main.php">模块管理</a>
+          &gt;  模块打包： </td>
       </tr>
       <tr>
-        <td width="19%" align="center" bgcolor="#FFFFFF"><b>模块名称：</b></td>
+        <td width="19%" align="center" bgcolor="#FFFFFF">模块名称：</td>
         <td width="81%" bgcolor="#FFFFFF">
           <input name="modulname" type="text" id="modulname" style="width:180px" class='alltxt' /> </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>语言编码：</b></td>
+        <td align="center" bgcolor="#FFFFFF">语言编码：</td>
         <td bgcolor="#FFFFFF">
-          <b><?php echo $cfg_soft_lang; ?></b>
+          <?php echo $cfg_soft_lang; ?>
           (不同编码模块可以使用，但不能在此打包)
           <input name="lang" type="hidden" value='<?php echo $cfg_soft_lang; ?>' />
         </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>封装类型：</b></td>
+        <td align="center" bgcolor="#FFFFFF">封装类型：</td>
         <td bgcolor="#FFFFFF">
           <label><input name="moduletype" type="radio" id="moduletype1" class='np' value='soft' checked='1' />
             模块</label>
@@ -69,19 +69,19 @@
         </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>开发者ID：</b></td>
+        <td align="center" bgcolor="#FFFFFF">开发者ID：</td>
         <td bgcolor="#FFFFFF">
           <input name="dev_id" type="text" id="dev_id" style="width:180px" class='alltxt' /> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者ID</a>
         </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>发布时间：</b></td>
+        <td align="center" bgcolor="#FFFFFF">发布时间：</td>
         <td bgcolor="#FFFFFF">
           <input name="mtime" type="text" id="mtime" style="width:180px" value="<?php echo GetDateMk(time()); ?>"
             class='alltxt' /> </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>是否涉及会员系统：</b></td>
+        <td align="center" bgcolor="#FFFFFF">是否涉及会员系统：</td>
         <td bgcolor="#FFFFFF">
           <label><input name="ismember" type="radio" class='np' id="ismember0" value="0"
               onclick="ShowHideMb('ismember0','rboxct')" checked="checked">
@@ -100,7 +100,7 @@
         </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>后台管理菜单：</b></td>
+        <td align="center" bgcolor="#FFFFFF">后台管理菜单：</td>
         <td bgcolor="#FFFFFF">
           <textarea name="menustring" rows="8" id="menustring" style="width:80%"></textarea>
           <br>
@@ -108,7 +108,7 @@
         </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>使用说明文件：</b></td>
+        <td align="center" bgcolor="#FFFFFF">使用说明文件：</td>
         <td bgcolor="#FFFFFF">
           <label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" class="np"
               onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')">
@@ -121,7 +121,7 @@
             <table width="80%" border="0" cellpadding="5" cellspacing="1" bgcolor="#83B771">
               <tr>
                 <td width="75%" bgcolor="#F3FDE1">
-                  <b>填写使用协议或说明：</b>
+                  填写使用协议或说明：
                   <br> 如果需要带HTML格式，请编译后点击修改时使用HTML
                 </td>
               </tr>
@@ -135,7 +135,7 @@
         </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>安装程序：</b></td>
+        <td align="center" bgcolor="#FFFFFF">安装程序：</td>
         <td bgcolor="#FFFFFF">
           <label><input type="checkbox" name="autosetup" value='1' id="autosetup" class="np"
               onclick="ShowHideField('autosetup','autosetupinput','autosetupct')">
@@ -148,7 +148,7 @@
             <table width="80%" border="0" cellpadding="5" cellspacing="1" bgcolor="#83B771">
               <tr>
                 <td width="75%" bgcolor="#F3FDE1">
-                  <b>请使用MySQL4.0版本格式的SQL语句:</b>
+                  请使用MySQL4.0版本格式的SQL语句:
                   <br>
                   MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=* ，改为 TYPE=MyISAM ，SQL语句允许换行，但必须用 ";换行"
                   表示一条SQL语句结束
@@ -167,7 +167,7 @@
         </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>删除程序：</b></td>
+        <td align="center" bgcolor="#FFFFFF">删除程序：</td>
         <td bgcolor="#FFFFFF">
           <label><input type="checkbox" name="autodel" value='1' id="autodel" class="np"
               onclick="ShowHideField('autodel','autodelinput','autodelct')">
@@ -180,7 +180,7 @@
             <table width="80%" border="0" cellpadding="5" cellspacing="1" bgcolor="#83B771">
               <tr>
                 <td width="75%" bgcolor="#F3FDE1">
-                  <b>卸载时执行的SQL语句：</b>
+                  卸载时执行的SQL语句：
                   <br>
                   (SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束)
                 </td>
@@ -197,7 +197,7 @@
       </tr>
 
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>文件列表：</b></td>
+        <td align="center" bgcolor="#FFFFFF">文件列表：</td>
         <td bgcolor="#FFFFFF">
           <p>
             每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
@@ -209,7 +209,7 @@
       </tr>
 
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><b>开发者私钥：</b></td>
+        <td align="center" bgcolor="#FFFFFF">开发者私钥：</td>
         <td bgcolor="#FFFFFF">
           <p>
             开发者认证后获取的私钥

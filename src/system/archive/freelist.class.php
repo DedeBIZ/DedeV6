@@ -571,7 +571,7 @@ class FreeList
                         $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
                     }
                     if (preg_match("#c#", $row['flag'])) {
-                        $row['title'] = "<b>".$row['title']."</b>";
+                        $row['title'] = "".$row['title']."";
                     }
                     //编译附加表里的数据
                     if (is_object($this->ChannelUnit)) {

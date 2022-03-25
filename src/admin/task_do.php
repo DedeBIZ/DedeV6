@@ -67,7 +67,7 @@ if ($dopost == 'makeprenext') {
         $arc->MakeHtml();
     }
     if (empty($nextdo)) {
-        ShowMsg("<b>完成上下篇文档更新任务完成所有更新任务</b>", "close::tgtable");
+        ShowMsg("完成上下篇文档更新任务完成所有更新任务", "close::tgtable");
         exit();
     } else {
         $jumpurl = GetNextUrl();
@@ -100,7 +100,7 @@ if ($dopost == 'makeindex') {
     $pv->SaveToHtml($homeFile);
     $pv->Close();
     if (empty($nextdo)) {
-        ShowMsg("<b>完成主页更新任务完成所有更新任务</b>", "close::tgtable");
+        ShowMsg("完成主页更新任务完成所有更新任务", "close::tgtable");
         exit();
     } else {
         $jumpurl = GetNextUrl();
@@ -120,7 +120,7 @@ else if ($dopost == 'makeparenttype') {
     $jumpurl = GetNextUrl($notallowArr);
 
     if (empty($typeid)) {
-        ShowMsg("<b>完成栏目更新任务完成所有更新任务</b>", "close::tgtable");
+        ShowMsg("完成栏目更新任务完成所有更新任务", "close::tgtable");
         exit();
     }
     $topids = explode(',', GetTopids($typeid));
@@ -145,10 +145,10 @@ else if ($dopost == 'makeparenttype') {
         if (!empty($doposttmp)) {
             $jumpurl = preg_replace("#doposttmp|nextdotmp#", 'del', $jumpurl);
             $jumpurl .= "&dopost={$doposttmp}&nextdo={$nextdotmp}";
-            ShowMsg("完成栏目:{$tid}  更新<br><b>完成栏目更新任务，继续执行后续任务</b>", $jumpurl, 0, 500);
+            ShowMsg("完成栏目:{$tid}  更新<br>完成栏目更新任务，继续执行后续任务", $jumpurl, 0, 500);
             exit();
         } else {
-            ShowMsg("完成栏目:{$tid}  更新<br><b>完成栏目更新任务，完成所有更新任务</b>", "close::tgtable");
+            ShowMsg("完成栏目:{$tid}  更新<br>完成栏目更新任务，完成所有更新任务", "close::tgtable");
             exit();
         }
     } else {

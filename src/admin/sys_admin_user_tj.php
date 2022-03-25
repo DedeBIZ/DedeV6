@@ -102,12 +102,12 @@ if (isset($dopost) && $dopost == 'getone') {
 
     $msg = "<table width='96%' border='0' align='center' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf'>
     <tr align='center' bgcolor='#FBFCE2'>
-      <td width='18%' height='26'><strong>管理员::统计信息</strong></td>
-      <td width='18%'><strong>全部(文档|点击)</strong></td>
-      <td width='16%'><strong>季度</strong></td>
-      <td width='16%'><strong>当月</strong></td>
-      <td width='16%'><strong>近七天</strong></td>
-      <td width='16%'><strong>当天</strong></td>
+      <td width='18%' height='26'>管理员::统计信息</td>
+      <td width='18%'>全部(文档|点击)</td>
+      <td width='16%'>季度</td>
+      <td width='16%'>当月</td>
+      <td width='16%'>近七天</td>
+      <td width='16%'>当天</td>
     </tr>
     <tr align='center' bgcolor='#FFFFFF'>
       <td height='26'>{$userid}</td>

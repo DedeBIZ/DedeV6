@@ -25,14 +25,14 @@ if (empty($dopost)) {
     <td height='250' valign='top'>
     <br>
     由于手动升级时用户没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理<br><br>
-    <b>本工具目前主要执行下面动作：</b><br>
+    本工具目前主要执行下面动作：<br>
     1、修复/优化数据表；<br>
     2、更新系统缓存；<br>
     3、检测系统变量一致性<br>
     4、检测微表与主表数据一致性<br>
     <br>
     <br>
-    <a href='sys_repair.php?dopost=1' class='btn btn-danger'><b>点击此开始进行常规检测&gt;&gt;</b></a>
+    <a href='sys_repair.php?dopost=1' class='btn btn-danger'>点击此开始进行常规检测&gt;&gt;</a>
     <br><br><br>
     </td>
   </tr>
@@ -57,15 +57,15 @@ else if ($dopost == 1) {
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
-    <b><span style='color:#28a745'>已完成数据结构完整性检测</span></b>
+    <span style='color:#28a745'>已完成数据结构完整性检测</span>
     <hr size='1'/>
     <br>
-    <b>如果您系统有下面几种问题之一，请检测微表正确性：</b><br>
+    如果您系统有下面几种问题之一，请检测微表正确性：<br>
     1、无法获得主键，因此无法进行后续操作<br>
     2、更新数据库archives表时出错<br>
     3、列表显示数据目与实际文档数不一致<br>
     <br>
-    <a href='sys_repair.php?dopost=2' class='btn btn-danger'><b>点击此检测微表正确性&gt;&gt;</b></a>
+    <a href='sys_repair.php?dopost=2' class='btn btn-danger'>点击此检测微表正确性&gt;&gt;</a>
     <br><br><br>
     </td>
   </tr>
@@ -104,11 +104,11 @@ else if ($dopost == 2) {
         }
     }
     $msg .= "※总有效记录数：{$allarcnum} <br> ";
-    $errall = "<a href='index_body.php' style='font-size:14px;'><b>完成修正或无错误返回&gt;&gt;</b></a>";
+    $errall = "<a href='index_body.php' style='font-size:14px;'>完成修正或无错误返回&gt;&gt;</a>";
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
     $msg .= "※微统计表记录数：{$row['dd']}<br>";
     if ($row['dd'] == $allarcnum) {
-        $msg .= "<p style='color:green;font-size:16px'><b>两者记录一致，无需修正</b></p><br>";
+        $msg .= "<p style='color:green;font-size:16px'>两者记录一致，无需修正</p><br>";
     } else {
         $sql = " TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
@@ -126,10 +126,10 @@ else if ($dopost == 2) {
         }
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
         if ($row['dd'] == $allarcnum) {
-            $msg .= "<p style='color:green;font-size:16px'><b>修正记录成功</b></p><br>";
+            $msg .= "<p style='color:green;font-size:16px'>修正记录成功</p><br>";
         } else {
-            $msg .= "<p style='color:#dc3545;font-size:16px'><b>修正记录失败，建议进行高级综合检测</b></p><br>";
-            $errall = " <a href='sys_repair.php?dopost=3' class='btn btn-danger'><b>进行高级结合性检测&gt;&gt;</b></a> ";
+            $msg .= "<p style='color:#dc3545;font-size:16px'>修正记录失败，建议进行高级综合检测</p><br>";
+            $errall = " <a href='sys_repair.php?dopost=3' class='btn btn-danger'>进行高级结合性检测&gt;&gt;</a> ";
         }
     }
     UpDateCatCache();
@@ -206,7 +206,7 @@ else if ($dopost == 3) {
     完成所有修复操作，移除错误记录 {$errnum} 条
     <hr />
     <br>
-    <a href='index_body.php' class='btn btn-success'><b>完成修正或无错误返回&gt;&gt;</b></a>
+    <a href='index_body.php' class='btn btn-success'>完成修正或无错误返回&gt;&gt;</a>
     </td>
   </tr>
  </table>

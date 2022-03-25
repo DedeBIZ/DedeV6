@@ -17,9 +17,9 @@
       $.get(`<?php echo $cfg_memberurl?>/pm.php?dopost=read&id=${id}`, function (data) {
         let result = JSON.parse(data);
         if (result.code === 200) {
-          ShowMsg(`<b>标题：</b><p>${result.data.subject}</p>
-          <b>时间：</b><p>${result.data.sendtime}</p>
-          <b>内容</b><p>${result.data.subject}</p>`,{
+          ShowMsg(`标题：<p>${result.data.subject}</p>
+          时间：<p>${result.data.sendtime}</p>
+          内容<p>${result.data.subject}</p>`,{
             title : "查看短消息",
           });
           $(`.pm-read-status[for='${id}']`).html("已阅读");

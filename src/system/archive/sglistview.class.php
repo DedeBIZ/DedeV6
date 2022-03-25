@@ -666,7 +666,7 @@ class SgListView
                     $row['fulltitle'] = $row['title'];
                     $row['title'] = cn_substr($row['title'], $titlelen);
                     if (preg_match('/b/', $row['flag'])) {
-                        $row['title'] = "<b>".$row['title']."</b>";
+                        $row['title'] = "".$row['title']."";
                     }
                     $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];

@@ -191,11 +191,11 @@ else if ($action == 'setup') {
   </tr>
   <tr>
     <td height='30' class='dtb' colspan='2'>
-    <div class='alert alert-danger'><b>注意事项：</b>安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限</div>
+    <div class='alert alert-danger'>注意事项：安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限</div>
     </td>
   </tr>
   <tr>
-    <td height='30'><b>目录权限检测：</b><br> ../ 为根目录 <br> ./ 表示当前目录</td>
+    <td height='30'>目录权限检测：<br> ../ 为根目录 <br> ./ 表示当前目录</td>
     <td>$prvdir</td>
   </tr>
   <tr>

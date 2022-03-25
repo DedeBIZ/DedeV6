@@ -130,7 +130,7 @@ function lib_relation(&$ctag, &$refObj)
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
                 if (isset($row['color']) && $row['color'] != '') $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
-                if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>".$row['title']."</strong>";
+                if (preg_match('#b#', $row['flag'])) $row['title'] = "".$row['title']."";
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                 $row['memberurl'] = $GLOBALS['cfg_memberurl'];

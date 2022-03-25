@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-$headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\")'><b>~channelname~</b></dt>
+$headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\")'>~channelname~</dt>
 <dd style='display:~display~' class='sitem' id='items~cc~'>
 <ul class='sitemu'>\r\n";
 $footTemplet = "</ul>\r\n</dd>\r\n</dl>\r\n";

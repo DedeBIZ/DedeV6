@@ -163,7 +163,7 @@ else if ($dopost == 'del') {
     @unlink($cfg_basedir.$_SESSION['bigfile_info'][$id]);
     $_SESSION['file_info'][$id] = '';
     $_SESSION['bigfile_info'][$id] = '';
-    echo "<b>已删除</b>";
+    echo "已删除";
     exit();
 }
 /************************
@@ -202,6 +202,6 @@ else if ($dopost == 'delold') {
         @unlink($imgfile);
     }
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$picfile}'; ");
-    echo "<b>已删除</b>";
+    echo "已删除";
     exit();
 }

@@ -120,7 +120,7 @@ class DedeVote
         $items .= "<input type='hidden' name='dopost' value='send' />\r\n";
         $items .= "<input type='hidden' name='aid' value='".$this->VoteID."' />\r\n";
         $items .= "<input type='hidden' name='ismore' value='".$this->VoteInfos['ismore']."' />\r\n";
-        $items .= "<tr align='center'><td height='$lineheight' id='votetitle' style='border-bottom:1px dashed #999999;color:#3F7652' $titlebackgroup><strong>".$this->VoteInfos['votename']."</strong></td></tr>\r\n";
+        $items .= "<tr align='center'><td height='$lineheight' id='votetitle' style='border-bottom:1px dashed #999999;color:#3F7652' $titlebackgroup>".$this->VoteInfos['votename']."</td></tr>\r\n";
         if ($this->VoteCount > 0) {
             foreach ($this->VoteNotes as $k => $arr) {
                 if ($this->VoteInfos['ismore'] == 0) {

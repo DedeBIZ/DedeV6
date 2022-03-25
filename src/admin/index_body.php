@@ -93,7 +93,7 @@ else if ($dopost == 'editshow') {
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td height="30" background="images/tbg.gif">
-                    <div style="float:left;margin-left:10px"><b>修改快捷操作项</b></div>
+                    <div style="float:left;margin-left:10px">修改快捷操作项</div>
                     <div style="float:right;padding:2px 10px 0 0">
                         <a href="javascript:CloseTab('editTab')"><img src="images/close.gif"></a>
                     </div>

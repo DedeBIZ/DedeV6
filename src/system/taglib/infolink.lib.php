@@ -69,11 +69,11 @@ function lib_infolink(&$ctag, &$refObj)
         $sontype = (($nativeplace % 500 != 0) ? $nativeplace : 0);
         $toptype = (($nativeplace % 500 == 0) ? $nativeplace : ($nativeplace - ($nativeplace % 500)));
 
-        $fields['nativeplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> <b>{$em_nativeplaces[$toptype]}</b></a> &gt;&gt; ";
+        $fields['nativeplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> {$em_nativeplaces[$toptype]}</a> &gt;&gt; ";
         foreach ($em_nativeplaces as $eid => $em) {
             if ($eid < $toptype + 1 || $eid > $toptype + 499) continue;
             if ($eid == $nativeplace) {
-                $fields['nativeplace'] .= " <b>{$em}</b>\r\n";
+                $fields['nativeplace'] .= " {$em}\r\n";
             } else {
                 $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
             }
@@ -86,7 +86,7 @@ function lib_infolink(&$ctag, &$refObj)
             if (!is_array($smalltypes) && $eid % 500 != 0) continue;
             if (is_array($smalltypes) && !in_array($eid, $smalltypes)) continue;
             if ($eid == $infotype) {
-                $fields['infotype'] .= " <b>{$em}</b>\r\n";
+                $fields['infotype'] .= " {$em}\r\n";
             } else {
                 $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$eid}&nativeplace={$nativeplace}'>{$em}</a>\r\n";
             }
@@ -94,11 +94,11 @@ function lib_infolink(&$ctag, &$refObj)
     } else {
         $sontype = (($infotype % 500 != 0) ? $infotype : 0);
         $toptype = (($infotype % 500 == 0) ? $infotype : ($infotype - ($infotype % 500)));
-        $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'><b>{$em_infotypes[$toptype]}</b></a> &gt;&gt; ";
+        $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'>{$em_infotypes[$toptype]}</a> &gt;&gt; ";
         foreach ($em_infotypes as $eid => $em) {
             if ($eid < $toptype + 1 || $eid > $toptype + 499) continue;
             if ($eid == $infotype) {
-                $fields['infotype'] .= " <b>{$em}</b>\r\n";
+                $fields['infotype'] .= " {$em}\r\n";
             } else {
                 $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$eid}&nativeplace={$nativeplace}'>{$em}</a>\r\n";
             }

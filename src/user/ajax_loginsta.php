@@ -47,7 +47,7 @@ if ($format === 'json') {
 }
 ?>
 <div class="userinfo">
-    <div class="welcome">您好：<strong><?php echo $cfg_ml->M_UserName; ?></strong>，欢迎登录 </div>
+    <div class="welcome">您好：<?php echo $cfg_ml->M_UserName; ?>，欢迎登录 </div>
     <div class="userface">
         <a href="<?php echo $cfg_memberurl; ?>/index.php"><img src="<?php echo $facepic; ?>" width="52" height="52" /></a>
     </div>

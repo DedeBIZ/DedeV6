@@ -104,7 +104,7 @@ if (!function_exists('IsWritable')) {
 		if ($isDir) {
 			if (is_dir($pathfile)) {
 				mt_srand((float)microtime() * 1000000);
-				$pathfile = $pathfile.'dede_'.uniqid(mt_rand()).'.tmp';
+				$pathfile = $pathfile.'biz_'.uniqid(mt_rand()).'.tmp';
 			} elseif (@mkdir($pathfile)) {
 				return IsWritable($pathfile);
 			} else {
@@ -145,7 +145,7 @@ if ($rs < 0) {
 <?php
 if (count($safeMsg) > 0) {
 ?>
-	<div class="alert alert-danger">
+	<div class="alert alert-danger mt-3 mb-3">
 		<?php
 		$i = 1;
 		foreach ($safeMsg as $key => $val) {

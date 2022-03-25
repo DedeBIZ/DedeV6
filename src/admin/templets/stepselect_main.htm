@@ -181,7 +181,7 @@
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" style="margin-bottom:6px" class="table maintable mt-3">
         <tr>
             <td height="26" background="images/wbg.gif" colspan="6" style="padding-left:10px">
-                <div style="float:left"><b>联动枚举组管理</b></div>
+                <div style="float:left">联动枚举组管理</div>
                 <div style="float:right"><a href='stepselect_main.php?action=upallcache' class="btn btn-success btn-sm">更新所有枚举缓存</a>&nbsp;
                 </div>
             </td>
@@ -190,7 +190,7 @@
             <td height="30" bgcolor="#ffffff" style="padding:6px;">
                 <table width="800" border="0" cellspacing="0" cellpadding="0" class="table maintable table-borderless">
                     <tr>
-                        <td width="85"><strong>请选择组别：</strong></td>
+                        <td width="85">请选择组别：</td>
                         <td width="264">
                             <select name="egroup1" id="egroup1" style="width:90%;" onChange="ChangePage(this)">
                                 <option value='0'>所有组</option>
@@ -253,9 +253,9 @@ if(!empty($egroup))
         <tr>
             <td height="26" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
-                    &nbsp;·<b><?php echo $selgroup; ?></b>
+                    &nbsp;·<?php echo $selgroup; ?>
                     &gt;
-                    <b>子分类管理</b>
+                    子分类管理
                 </div>
                 <div style="float:right">
                     <?php
@@ -273,14 +273,14 @@ if(!empty($egroup))
                     <INPUT TYPE="hidden" NAME="issign" value="<?php echo $arr['issign']; ?>">
                     <INPUT TYPE="hidden" NAME="egroup" value="<?php echo $arr['egroup']; ?>">
                     <div style='float:left;'>
-                        <b>&nbsp;隶属分类：</b>
+                        &nbsp;隶属分类：
                         <select name='topvalue' style='width:130px' onChange="ChangePage2(this)">
                             <option value='0'><?php echo $selgroup; ?></option>
                             <?php echo $options; ?>
                         </select>
                     </div>
                     <div style='float:left;'>
-                        <b>&nbsp;分类名称：</b><INPUT TYPE="text" NAME="ename" class="iptxt" style='width:350px' />
+                        &nbsp;分类名称：<INPUT TYPE="text" NAME="ename" class="iptxt" style='width:350px' />
                     </div>
                     <div style='float:left;padding-left:6px'>
                         <button TYPE="submit" name='sb2' class="btn btn-success btn-sm">增加分类</button>
@@ -297,9 +297,9 @@ if(!empty($egroup))
         <tr>
             <td height="26" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
-                    &nbsp;·<a href='stepselect_main.php'><b>枚举组列表</b></a>
-                    &gt; <a href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><b><?php echo $selgroup; ?></b></a>
-                    &gt; <b>子分类列表</b>
+                    &nbsp;·<a href='stepselect_main.php'>枚举组列表</a>
+                    &gt; <a href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><?php echo $selgroup; ?></a>
+                    &gt; 子分类列表
                 </div>
                 <div style="float:right"></div>
             </td>
@@ -393,7 +393,7 @@ else
         <tr>
             <td height="26" background="images/tbg.gif" colspan="8">
                 <div style="float:left">
-                    &nbsp;·<a href='stepselect_main.php'><b>枚举组列表</b></a>
+                    &nbsp;·<a href='stepselect_main.php'>枚举组列表</a>
                 </div>
                 <div style="float:right"></div>
             </td>

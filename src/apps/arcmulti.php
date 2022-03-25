@@ -80,8 +80,8 @@ if($tagid !='')
                     $row['fulltitle'] = $row['title'];
                     $row['title'] = cn_substr($row['title'],$titlelen);
                     if($row['color']!='') $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
-                    if(preg_match('#b#', $row['flag'])) $row['title'] = "<strong>".$row['title']."</strong>";
-                    //$row['title'] = "<b>".$row['title']."</b>";
+                    if(preg_match('#b#', $row['flag'])) $row['title'] = "".$row['title']."";
+                    //$row['title'] = "".$row['title']."";
 
                     $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
 

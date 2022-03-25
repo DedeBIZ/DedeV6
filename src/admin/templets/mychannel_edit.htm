@@ -72,8 +72,8 @@
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
       <tr>
         <td height="26" colspan="2" background="images/tbg.gif" style="padding-left:10px">
-          <a href="mychannel_main.php"><b>内容模型管理</b></a>
-          <b> &gt; 修改内容模型：</b>
+          <a href="mychannel_main.php">内容模型管理</a>
+           &gt; 修改内容模型：
         </td>
       </tr>
     </table>
@@ -116,7 +116,7 @@
 	}
 	?>
       <tr>
-        <td bgcolor="#FFFFFF"><b>模型性质</b><br>
+        <td bgcolor="#FFFFFF">模型性质<br>
           <span class="STYLE2" id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid、栏目ID、发布时间、文档标题</span></td>
         <td bgcolor="#FFFFFF">
           <?php
@@ -127,26 +127,26 @@
         </td>
       </tr>
       <tr>
-        <td width="35%" bgcolor="#FFFFFF"><b>频道ID</b><br>
+        <td width="35%" bgcolor="#FFFFFF">频道ID<br>
           <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span></td>
         <td width="65%" bgcolor="#FFFFFF">
           <?php echo $row['id']; ?> </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><b>名字标识</b><br>
+        <td bgcolor="#FFFFFF">名字标识<br>
           <span class="STYLE2" id="help2">与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，频道默认文档模板是
             “default/article_名字标识.htm”，列表模板、封面模板类推 </span></td>
         <td bgcolor="#FFFFFF">
           <?php echo $row['nid']; ?> </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><b>频道名称</b><br>
+        <td bgcolor="#FFFFFF">频道名称<br>
           <span class="STYLE2" id="help3">频道的中文名称，在后台管理，前台发布等均使用此名字</span></td>
         <td bgcolor="#FFFFFF"><input name="typename" type="text" id="typename" value="<?php echo $row['typename']; ?>"
             class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><b>附加表</b><br>
+        <td bgcolor="#FFFFFF">附加表<br>
           <span class="STYLE2" id="help4">频道除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性(推荐、会员权限等)，也可以使用完全以附加表作为存储数据</span>
         </td>
         <td bgcolor="#FFFFFF"><input name="addtable" type="text" id="addtable" value="<?php echo $row['addtable']; ?>"
@@ -154,7 +154,7 @@
           ( #@__ 是表示数据表前缀)</td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>是否支持会员投稿</strong></td>
+        <td bgcolor="#FFFFFF">是否支持会员投稿</td>
         <td bgcolor="#FFFFFF">
           <label><input name="issend" type="radio" class="np" value="0" <?php if($row['issend']==0) echo " checked='1' "; ?> /> 
           不支持 </label>
@@ -162,7 +162,7 @@
            支持 </label> </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>会员许可投稿级别</strong></td>
+        <td bgcolor="#FFFFFF">会员许可投稿级别</td>
         <td bgcolor="#FFFFFF">
           <select name="sendrank" id="sendrank" style="width:120px">
             <option value='0'>游客</option>
@@ -179,7 +179,7 @@
           </select> </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>许可投稿会员组</strong></td>
+        <td bgcolor="#FFFFFF">许可投稿会员组</td>
         <td bgcolor="#FFFFFF">
           <?php
         $dsql->SetQuery("Select * from `#@__member_model`");
@@ -194,7 +194,7 @@
           不限</label></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>会员稿件默认状态</strong></td>
+        <td bgcolor="#FFFFFF">会员稿件默认状态</td>
         <td bgcolor="#FFFFFF">
           <label><input name="arcsta" class="np" type="radio" value="-1" <?php if($row['arcsta']==-1) echo " checked='1' ";?>>
            未审核</label> 
@@ -204,51 +204,51 @@
           已审核（仅使用动态文档）</label> </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>档案发布程序</strong></td>
+        <td bgcolor="#FFFFFF">档案发布程序</td>
         <td bgcolor="#FFFFFF"><input name="addcon" type="text" id="addcon" value="<?php echo $row['addcon']; ?>"
             class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>档案修改程序</strong></td>
+        <td bgcolor="#FFFFFF">档案修改程序</td>
         <td bgcolor="#FFFFFF"><input name="editcon" type="text" id="editcon" value="<?php echo $row['editcon']; ?>"
             class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>档案管理程序</strong></td>
+        <td bgcolor="#FFFFFF">档案管理程序</td>
         <td bgcolor="#FFFFFF"><input name="mancon" type="text" id="mancon" value="<?php echo $row['mancon']; ?>"
             class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>前台会员发布程序</strong></td>
+        <td bgcolor="#FFFFFF">前台会员发布程序</td>
         <td bgcolor="#FFFFFF"><input name="useraddcon" type="text" id="useraddcon"
             value="<?php echo $row['useraddcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>前台会员修改程序</strong></td>
+        <td bgcolor="#FFFFFF">前台会员修改程序</td>
         <td bgcolor="#FFFFFF"><input name="usereditcon" type="text" id="usereditcon"
             value="<?php echo $row['usereditcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>前台会员管理程序</strong></td>
+        <td bgcolor="#FFFFFF">前台会员管理程序</td>
         <td bgcolor="#FFFFFF"><input name="usermancon" type="text" id="usermancon"
             value="<?php echo $row['usermancon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>列表附加字段</strong><br>
+        <td bgcolor="#FFFFFF">列表附加字段<br>
           <span class="STYLE2" id="help6">用&quot;,&quot;分开，可以在列表模板{dede:list}{/dede:list}中用[field:name /]调用</span></td>
         <td bgcolor="#FFFFFF">
           <input name="listfields" type="text" id="listfields" size="50" value="<?php echo $row['listfields']; ?>"
             class="pubinputs" style="width:80%"> </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><b>投稿标题使用名称</b></td>
+        <td bgcolor="#FFFFFF">投稿标题使用名称</td>
         <td bgcolor="#FFFFFF">
           <input name="titlename" type="text" id="titlename" value="<?php echo $row['titlename']; ?>"
             class="pubinputs"> </td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">
-          <strong>投稿是否使用摘要</strong>
+          投稿是否使用摘要
           <br>
           <span class="STYLE2">如果不使用主表(独立模型)，缩略图设置同</span>
         </td>
@@ -261,7 +261,7 @@
           不使用 </label></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><strong>投稿是否使用缩图</strong></td>
+        <td bgcolor="#FFFFFF">投稿是否使用缩图</td>
         <td bgcolor="#FFFFFF">
           <label><input name="needpic" type="radio" class="np" value="1"
             <?php if($row['needpic']==1) echo " checked='1'"; ?> />
@@ -271,14 +271,14 @@
           不使用 </label></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><b>默认栏目ID</b><br>
+        <td bgcolor="#FFFFFF">默认栏目ID<br>
           <span class="STYLE2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span> </td>
         <td bgcolor="#FFFFFF">
           <input name="dfcid" type="text" id="dfcid" value="<?php echo $row['dfcid']; ?>" class="pubinputs"
             style="width:80px"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF"><b>投稿具有唯一性</b><br>
+        <td bgcolor="#FFFFFF">投稿具有唯一性<br>
           <span class="STYLE2" id="help9">如果投稿是唯一的(会员只能在这个模型对应的栏目中发布单篇文档)，其作用相当于自定义表单</span> </td>
         <td bgcolor="#FFFFFF">
           <label><input name="onlyone" type="radio" class="np" value="1"
@@ -293,7 +293,7 @@
     <table width="98%" id='adset' border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6"
       style='display:none' class="table maintable table-bordered">
       <tr>
-        <td height="26" bgcolor="#ffffff"><strong>模型字段配置(可视化模式)</strong></td>
+        <td height="26" bgcolor="#ffffff">模型字段配置(可视化模式)</td>
         <td bgcolor="#ffffff">
           <button name="fset" type="button" id="fset" onClick="location.href='mychannel_field_add.php?id=<?php echo $id; ?>'" class="btn btn-success btn-sm">添加新字段</button> </td>
       </tr>
@@ -393,7 +393,7 @@ else
       </tr>
       <tr>
         <td height="26" width="35%" bgcolor="#FFFFFF">
-          <strong>模型字段配置(文本模式) </strong><br>
+          模型字段配置(文本模式) <br>
           修改配置文本可调整字段顺序，但不会修改字段属性
         </td>
         <td width="65%" bgcolor="#FFFFFF">
