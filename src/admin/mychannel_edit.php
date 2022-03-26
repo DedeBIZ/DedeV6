@@ -178,7 +178,7 @@ else if ($dopost == "exportinok") {
                 `typeid` int(11) NOT NULL default '0',
                 `redirecturl` varchar(255) NOT NULL default '',
                 `templet` varchar(30) NOT NULL default '',
-                `userip` char(15) NOT NULL default '',";
+                `userip` char(46) NOT NULL default '',";
     } else {
         $tabsql = "CREATE TABLE IF NOT EXISTS `{$fields['addtable']}`(
                   `aid` int(11) NOT NULL default '0',

@@ -53,7 +53,7 @@ if ($action == 'add') {
                     `typeid` int(11) NOT NULL default '0',
                     `redirecturl` varchar(255) NOT NULL default '',
                     `templet` varchar(30) NOT NULL default '',
-                    `userip` char(15) NOT NULL default '',
+                    `userip` char(48) NOT NULL default '',
            ";
             } else {
                 $tabsql = "CREATE TABLE `$trueTable2`(
@@ -67,7 +67,7 @@ if ($action == 'add') {
                     `senddate` int(11) NOT NULL default '0',
                     `flag` set('c','h','p','f','s','j','a','b') default NULL,
                     `litpic` varchar(60) NOT NULL default '',
-                    `userip` char(15) NOT NULL default '',
+                    `userip` char(48) NOT NULL default '',
                     `lastpost` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',
                     `scores` MEDIUMINT( 8 ) NOT NULL DEFAULT '0',
                     `goodpost` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
