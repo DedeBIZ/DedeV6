@@ -1,3 +1,17 @@
+-- 6.1.7
+ALTER TABLE `#@__addonarticle` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
+ALTER TABLE `#@__addonimages` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
+ALTER TABLE `#@__addoninfos` MODIFY COLUMN `userip` varchar(46) NOT NULL DEFAULT '' AFTER `litpic`;
+ALTER TABLE `#@__addonshop` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
+ALTER TABLE `#@__addonsoft` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
+ALTER TABLE `#@__addonspec` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
+ALTER TABLE `#@__admin` MODIFY COLUMN `loginip` varchar(46) NOT NULL DEFAULT '' AFTER `logintime`;
+ALTER TABLE `#@__feedback` MODIFY COLUMN `ip` char(46) NOT NULL DEFAULT '' AFTER `arctitle`;
+ALTER TABLE `#@__log` MODIFY COLUMN `cip` char(46) NOT NULL DEFAULT '' AFTER `query`;
+ALTER TABLE `#@__member` MODIFY COLUMN `joinip` char(46) NOT NULL DEFAULT '' AFTER `jointime`,MODIFY COLUMN `loginip` char(46) NOT NULL DEFAULT '' AFTER `logintime`;
+ALTER TABLE `#@__shops_orders` MODIFY COLUMN `ip` char(46) CHARACTER NOT NULL DEFAULT '' AFTER `state`;
+ALTER TABLE `#@__dl_log` MODIFY COLUMN `ip` char(46) NOT NULL AFTER `id`;
+
 -- 6.1.0
 ALTER TABLE `#@__arctype`
 	ADD COLUMN `namegk` varchar(255) NULL AFTER `typename`,

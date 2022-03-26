@@ -5,7 +5,7 @@ CREATE TABLE `#@__addonarticle` (
   `body` mediumtext,
   `redirecturl` varchar(255) NOT NULL default '',
   `templet` varchar(30) NOT NULL default '',
-  `userip` char(15) NOT NULL default '',
+  `userip` char(46) NOT NULL default '',
   PRIMARY KEY  (`aid`),
   KEY `typeid` (`typeid`)
 ) TYPE=MyISAM;
@@ -23,7 +23,7 @@ CREATE TABLE `#@__addonimages` (
   `ddmaxwidth` smallint(6) NOT NULL default '200',
   `pagepicnum` smallint(6) NOT NULL default '12',
   `templet` varchar(30) NOT NULL default '',
-  `userip` char(15) NOT NULL default '',
+  `userip` char(46) NOT NULL default '',
   `redirecturl` varchar(255) NOT NULL default '',
   `body` mediumtext,
   PRIMARY KEY  (`aid`),
@@ -40,7 +40,7 @@ CREATE TABLE `#@__addoninfos` (
   `click` int(10) unsigned NOT NULL default '0',
   `title` varchar(60) NOT NULL default '',
   `litpic` varchar(120) NOT NULL default '',
-  `userip` varchar(15) NOT NULL default ' ',
+  `userip` varchar(46) NOT NULL default ' ',
   `senddate` int(11) NOT NULL default '0',
   `flag` set('c','h','p','f','s','j','a','b') default NULL,
   `lastpost` int(10) unsigned NOT NULL default '0',
@@ -70,7 +70,7 @@ CREATE TABLE `#@__addonshop` (
   `brand` varchar(250) NOT NULL default '',
   `units` varchar(250) NOT NULL default '',
   `templet` varchar(30) NOT NULL,
-  `userip` char(15) NOT NULL,
+  `userip` char(46) NOT NULL,
   `redirecturl` varchar(255) NOT NULL,
   `vocation` char(20) NOT NULL default '0',
   `infotype` char(20) NOT NULL default '0',
@@ -97,7 +97,7 @@ CREATE TABLE `#@__addonsoft` (
   `daccess` smallint(5) NOT NULL default '0',
   `needmoney` smallint(5) NOT NULL default '0',
   `templet` varchar(30) NOT NULL default '',
-  `userip` char(15) NOT NULL default '',
+  `userip` char(46) NOT NULL default '',
   `redirecturl` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`aid`),
   KEY `softMain` (`typeid`)
@@ -109,7 +109,7 @@ CREATE TABLE `#@__addonspec` (
   `typeid` smallint(5) unsigned NOT NULL default '0',
   `note` text,
   `templet` varchar(30) NOT NULL default '',
-  `userip` char(15) NOT NULL default '',
+  `userip` char(46) NOT NULL default '',
   `redirecturl` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`aid`),
   KEY `typeid` (`typeid`)
@@ -126,7 +126,7 @@ CREATE TABLE `#@__admin` (
   `email` char(30) NOT NULL default '',
   `typeid` text,
   `logintime` int(10) unsigned NOT NULL default '0',
-  `loginip` varchar(20) NOT NULL default '',
+  `loginip` varchar(46) NOT NULL default '',
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM;
 
@@ -384,7 +384,7 @@ CREATE TABLE `#@__feedback` (
   `typeid` smallint(5) unsigned NOT NULL default '0',
   `username` char(20) NOT NULL default '',
   `arctitle` varchar(60) NOT NULL default '',
-  `ip` char(15) NOT NULL default '',
+  `ip` char(46) NOT NULL default '',
   `ischeck` smallint(6) NOT NULL default '0',
   `dtime` int(10) unsigned NOT NULL default '0',
   `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0',
@@ -472,7 +472,7 @@ CREATE TABLE `#@__log` (
   `filename` char(60) NOT NULL default '',
   `method` char(10) NOT NULL default '',
   `query` char(200) NOT NULL default '',
-  `cip` char(15) NOT NULL default '',
+  `cip` char(46) NOT NULL default '',
   `dtime` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`lid`)
 ) TYPE=MyISAM;
@@ -497,9 +497,9 @@ CREATE TABLE `#@__member` (
   `safequestion` smallint(5) unsigned NOT NULL default '0',
   `safeanswer` char(30) NOT NULL default '',
   `jointime` int(10) unsigned NOT NULL default '0',
-  `joinip` char(16) NOT NULL default '',
+  `joinip` char(46) NOT NULL default '',
   `logintime` int(10) unsigned NOT NULL default '0',
-  `loginip` char(16) NOT NULL default '',
+  `loginip` char(46) NOT NULL default '',
   `checkmail` smallint(6) NOT NULL default '-1',
   PRIMARY KEY  (`mid`),
   KEY `userid` (`userid`,`sex`),
@@ -884,7 +884,7 @@ CREATE TABLE `#@__shops_orders` (
   `price` float(13,2) NOT NULL default '0.00',
   `priceCount` float(13,2) NOT NULL,
   `state` tinyint(1) NOT NULL default '0',
-  `ip` char(15) NOT NULL default '',
+  `ip` char(46) NOT NULL default '',
   `stime` int(10) NOT NULL default '0',
   KEY `stime` (`stime`),
   KEY `userid` (`userid`),
@@ -1089,7 +1089,7 @@ CREATE TABLE `#@__vote_member` (
 DROP TABLE IF EXISTS `#@__dl_log`;
 CREATE TABLE `#@__dl_log` (
   `id` mediumint(10) unsigned NOT NULL auto_increment,
-  `ip` char(16) NOT NULL,
+  `ip` char(46) NOT NULL,
   `lang` char(6) NOT NULL,
   `dtype` varchar(10) NOT NULL,
   `dltime` int(10) unsigned NOT NULL default '0',
