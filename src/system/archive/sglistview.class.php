@@ -51,7 +51,8 @@ class SgListView
      */
     function __construct($typeid, $searchArr = array())
     {
-        global $dsql;
+        global $dsql,$envs;
+        $envs['url_type'] = 1;
         $this->TypeID = $typeid;
         $this->dsql = $dsql;
         $this->CrossID = '';

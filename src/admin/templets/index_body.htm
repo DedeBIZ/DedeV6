@@ -12,18 +12,74 @@
 <script src="../static/js/jquery.js"></script>
 <script src="../static/js/bootstrap.bundle.js"></script>
 <script src="../static/js/webajax.js"></script>
+<script src="../static/js/chart.min.js"></script>
 <script src="js/indexbody.js"></script>
 <script src="js/main.js"></script>
 <style>
 .row{display:flex;flex-wrap:wrap}
 .row>[class*='col-']{display:flex;flex-direction:column}
 .table{margin-bottom:0}
+.stattable{width: 100%;}
+table.stattable td {
+    padding: 0 5px;
+    height: 25px;
+    line-height: 25px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 12px;
+    text-align: right;
+}
+table.stattable td.today {
+    font-size: 12px;
+    color: #000;
+    height: 25px;
+    line-height: 25px;
+    font-weight: 700;
+}
 </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <div id="__testEvn" class="col-md-12"></div>
+            <div class="col-md-12 mt-3">
+                <div class="card">
+                    <div class="card-header">流量统计 <a title="点击查看流量统计图" href="#statChart"><i class="fa fa-line-chart" aria-hidden="true"></i></a></div>
+                    <div class="card-body">
+                        <table class="stattable">
+                            <tbody>
+                                <tr class="title">
+                                    <td width="10%"></td>
+                                    <td width="20%">浏览次数(PV)</td>
+                                    <td width="20%">独立访客(UV)</td>
+                                    <td width="20%">IP</td>
+                                    <td width="18%" >访问次数</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="today">今日</td>
+                                    <td class="today" id="today_pv">...</td>
+                                    <td class="today" id="today_uv">...</td>
+                                    <td class="today" id="today_ip">...</td>
+                                    <td class="today" id="today_vv">...</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="">昨日</td>
+                                    <td id="yestoday_pv">...</td>
+                                    <td id="yestoday_uv">...</td>
+                                    <td id="yestoday_ip">...</td>
+                                    <td id="yestoday_vv">...</td>
+                                </tr>
+                                <tr class="bg-white grey9 hide" style="display: table-row;">
+                                    <td class="">历史累计</td>
+                                    <td id="total_pv">...</td>
+                                    <td id="total_uv">...</td>
+                                    <td id="total_ip">...</td>
+                                    <td id="total_vv">...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-6 mt-3 updatenews">
                 <div class="card">
                     <div class="card-header">更新消息</div>
@@ -42,27 +98,6 @@
                 <div class="card">
                     <div class="card-header">版本授权</div>
                     <div class="card-body" id="_systeminfo">正在载入</div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3">
-                <div class="card">
-                    <div class="card-header">快捷操作<span class="float-right"><a href="javascript:AddNew()" class="btn btn-success btn-sm">新增</a><a href="javascript:ListAll()" class="btn btn-success btn-sm">管理</a></span></div>
-                    <div class="card-body">
-                        <ul class="nav">
-                            <?php
-                            $dtp = new DedeTagparse();
-                            $dtp->SetNameSpace('menu','<','>');
-                            $dtp->LoadTemplet($myIcoFile);
-                            if(is_array($dtp->CTags)){
-                                foreach($dtp->CTags as $ctag){
-                                    $title = $ctag->GetAtt('title');
-                                    $link = $ctag->GetAtt('link');
-                                    echo "<a href='{$link}' class='btn btn-success btn-sm'>{$title}</a>";
-                                }
-                            }
-                            ?>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div class="col-md-6 mt-3">
@@ -138,9 +173,17 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header"><a name="statChart">流量统计图</a></div>
+                    <div class="card-body">
+                        <canvas id="statChart" style="height: 260px;"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="footer">
+    <div class="footer mt-2">
         <div id="loaddiv" style="display:none">
             <p align="center"><img src="images/loadinglit.gif">请稍后，正在下载更新文件列表</p>
         </div>
@@ -188,6 +231,21 @@
     });
     </script>
     <script>
+    Date.prototype.Format = function (fmt) { //author: meizz 
+        var o = {
+            "M+": this.getMonth() + 1, //月份 
+            "d+": this.getDate(), //日 
+            "h+": this.getHours(), //小时 
+            "m+": this.getMinutes(), //分 
+            "s+": this.getSeconds(), //秒 
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+            "S": this.getMilliseconds() //毫秒 
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
     var dedebizInfo;
     function ViewDedeBIZ(){
         console.log(dedebizInfo);
@@ -280,11 +338,128 @@
             }
         });
     }
+    function LoadStat() {
+        $.get("index_body.php?dopost=get_statistics", function(data){
+            let rsp = JSON.parse(data);
+            if (rsp.code == 200) {
+                var tpv = parseInt(rsp.result.pv);
+                var tuv = parseInt(rsp.result.uv);
+                var tip = parseInt(rsp.result.ip);
+                var tvv = parseInt(rsp.result.vv);
+                $("#today_pv").html(tpv);
+                $("#today_uv").html(tuv);
+                $("#today_ip").html(tip);
+                $("#today_vv").html(tvv);
+
+                $.get("index_body.php?dopost=get_statistics&sdate=-1", function(data){
+                    let rsp = JSON.parse(data);
+                    if (rsp.code == 200) {
+                        $("#total_pv").html(parseInt(rsp.result.pv)+tpv);
+                        $("#total_uv").html(parseInt(rsp.result.uv)+tuv);
+                        $("#total_ip").html(parseInt(rsp.result.ip)+tip);
+                        $("#total_vv").html(parseInt(rsp.result.vv)+tvv);
+                    }
+                });
+            }
+        });
+
+        var d = new Date();
+        d.setDate(d.getDate() - 1);
+        var s = d.Format("yyyy-MM-dd");
+        s = s.replaceAll("-","");
+        $.get("index_body.php?dopost=get_statistics&sdate="+s, function(data){
+            let rsp = JSON.parse(data);
+            if (rsp.code == 200) {
+                $("#yestoday_pv").html(rsp.result.pv);
+                $("#yestoday_uv").html(rsp.result.uv);
+                $("#yestoday_ip").html(rsp.result.ip);
+                $("#yestoday_vv").html(rsp.result.vv);
+            }
+        });
+    }
+
+    async function LoadStatChart() {
+        const ctx = document.getElementById('statChart').getContext('2d');
+        let labels = [];
+        let pvs = [];
+        let ips = [];
+        let uvs = [];
+        let vvs = [];
+        for (let i = 15; i > 0; i--) {
+            var d = new Date();
+            d.setDate(d.getDate() - i);
+            var s = d.Format("yyyy-MM-dd");
+            labels.push(d.Format("MM-dd"));
+            s = s.replaceAll("-","");
+            let resp = await fetch("index_body.php?dopost=get_statistics&sdate="+s);
+            let data = await resp.json();
+            if (data.code == 200) {
+                pvs.push(typeof data.result.pv=="undefined"? 0 : data.result.pv);
+                ips.push(typeof data.result.ip=="undefined"? 0 : data.result.ip);
+                uvs.push(typeof data.result.uv=="undefined"? 0 : data.result.uv);
+                vvs.push(typeof data.result.vv=="undefined"? 0 : data.result.vv);
+            }
+        }
+
+        console.log(pvs);
+        console.log(ips);
+        console.log(uvs);
+        console.log(vvs);
+
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: '<?php echo $cfg_webname; ?>流量统计图'
+                    }
+                }
+            },
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'IP',
+                    data: ips,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor :'rgba(255, 99, 132, 0.2)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'PV',
+                    data: pvs,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor :'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 1
+                },{
+                    label: 'UV',
+                    data: uvs,
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderWidth: 1
+                },{
+                    label: '访问次数',
+                    data: vvs,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 1
+                }
+            ]
+            },
+        });
+    }
+
     $(document).ready(function(){
         LoadServer();
+        LoadStat();
+        LoadStatChart();
         setInterval(function(){
             LoadServer();
-        }, 5000)
+        }, 60000)
     });
     </script>
 </body>

@@ -11,9 +11,6 @@
 require(dirname(__FILE__).'/config.php');
 require(DEDEINC.'/image.func.php');
 require(DEDEINC.'/dedetag.class.php');
-$defaultIcoFile = DEDEDATA.'/admin/quickmenu.txt';
-$myIcoFile = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
-if (!file_exists($myIcoFile)) $myIcoFile = $defaultIcoFile;
 //默认主页
 if (empty($dopost)) {
     require(DEDEINC.'/inc/inc_fun_funAdmin.php');
@@ -29,92 +26,6 @@ if (empty($dopost)) {
     fclose($fp);
     include DedeInclude('templets/index_body.htm');
     exit();
-}
-/*-----------------------
-增加新项
-function _AddNew() {   }
--------------------------*/
-else if ($dopost == 'addnew') {
-    if (empty($link) || empty($title)) {
-        ShowMsg("链接网址或标题不能为空", "-1");
-        exit();
-    }
-    $fp = fopen($myIcoFile, 'r');
-    $oldct = trim(fread($fp, filesize($myIcoFile)));
-    fclose($fp);
-    $link = preg_replace("#['\"]#", '`', $link);
-    $title = preg_replace("#['\"]#", '`', $title);
-    $ico = preg_replace("#['\"]#", '`', $ico);
-    $oldct .= "\r\n<menu:item ico=\"{$ico}\" link=\"{$link}\" title=\"{$title}\">";
-    $myIcoFileTrue = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
-    $fp = fopen($myIcoFileTrue, 'w');
-    fwrite($fp, $oldct);
-    fclose($fp);
-    ShowMsg("成功增加一个项目", "index_body.php?".time());
-    exit();
-}
-/*---------------------------
-保存修改的项
-function _EditSave() {   }
-----------------------------*/
-else if ($dopost == 'editsave') {
-    $quickmenu = stripslashes($quickmenu);
-    $myIcoFileTrue = DEDEDATA.'/admin/quickmenu-'.$cuserLogin->getUserID().'.txt';
-    $fp = fopen($myIcoFileTrue, 'w');
-    fwrite($fp, $quickmenu);
-    fclose($fp);
-    ShowMsg("成功修改快捷操作项目", "index_body.php?".time());
-    exit();
-}
-/*---------------------------
-保存修改的项
-function _EditSave() {   }
-----------------------------*/
-else if ($dopost == 'movesave') {
-    $movedata = str_replace('\\', "", $sortorder);
-    $movedata = json_decode($movedata, TRUE);
-    $movedata = serialize($movedata);
-    $myIcoFileTrue = DEDEDATA.'/admin/move-'.$cuserLogin->getUserID().'.txt';
-    $fp = fopen($myIcoFileTrue, 'w');
-    fwrite($fp, $movedata);
-    fclose($fp);
-}
-/*-----------------------------
-显示修改表单
-function _EditShow() {   }
------------------------------*/
-else if ($dopost == 'editshow') {
-    $fp = fopen($myIcoFile, 'r');
-    $oldct = trim(fread($fp, filesize($myIcoFile)));
-    fclose($fp);
-?>
-    <form name="editform" action="index_body.php" method="post">
-        <input type="hidden" name="dopost" value="editsave">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-                <td height="30" background="images/tbg.gif">
-                    <div style="float:left;margin-left:10px">修改快捷操作项</div>
-                    <div style="float:right;padding:2px 10px 0 0">
-                        <a href="javascript:CloseTab('editTab')"><img src="images/close.gif"></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="height:10px;border-top:1px solid #8DA659"></td>
-            </tr>
-            <tr>
-                <td align="center"><textarea name="quickmenu" rows="10" cols="50"><?php echo $oldct; ?></textarea></td>
-            </tr>
-            <tr>
-                <td height="36" align="center">
-                    <input type="submit" name="Submit" value="保存项目" class="np coolbg" style="width:80px;cursor:pointer">&nbsp;
-                    <input type="reset" name="reset" value="重设" class="np coolbg" style="width:50px;cursor:pointer">
-                </td>
-            </tr>
-        </table>
-    </form>
-<?php
-exit();
 }
 /*---------------------------------
 载入右边内容
@@ -247,5 +158,17 @@ exit;
             ));
         }
     }
-}
+} elseif ($dopost == 'get_statistics') {
+    require_once(DEDEINC."/libraries/statistics.class.php");
+    //获取统计信息
+    $sdate = empty($sdate) ? 0 : intval($sdate);
+    $stat = new DedeStatistics;
+    $rs = $stat->GetInfoByDate($sdate);
+    echo json_encode(array(
+        "code" => 200,
+        "msg" => "",
+        "result" => $rs,
+    ));
+    exit;
+} 
 ?>

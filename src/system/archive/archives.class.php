@@ -50,13 +50,14 @@ class Archives
      */
     function __construct($aid)
     {
-        global $dsql;
+        global $dsql,$envs;
         $this->IsError = FALSE;
         $this->ArcID = $aid;
         $this->PreNext = array();
         $this->dsql = $dsql;
         $query = "SELECT channel,typeid FROM `#@__arctiny` WHERE id='$aid' ";
         $arr = $this->dsql->GetOne($query);
+        $envs['url_type'] = 2;
         if (!is_array($arr)) {
             $this->IsError = TRUE;
         } else {

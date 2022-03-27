@@ -76,7 +76,7 @@ class SearchView
         $kwtype = 1,
         $mid = 0
     ) {
-        global $cfg_search_max, $cfg_search_maxrc, $cfg_search_time;
+        global $cfg_search_max, $cfg_search_maxrc, $cfg_search_time,$envs;
         if (empty($upagesize)) {
             $upagesize = 10;
         }
@@ -131,6 +131,8 @@ class SearchView
         if ($this->PageNo == 1) {
             $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET result='".$this->TotalResult."' WHERE keyword='".addslashes($keyword)."'; ");
         }
+        $envs['url_type'] = 3;
+        $envs['value'] = $keyword;
     }
     //php4构造函数
     function SearchView(

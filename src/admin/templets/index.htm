@@ -90,25 +90,6 @@
             <iframe src="index_body.php" id="main" name="main" frameborder="0"></iframe>
         </div>
     </div>
-    <div class="qucikmenu" id="qucikmenu">
-        <ul>
-        <?php
-        $dtp = new DedeTagparse();
-        $dtp->SetNameSpace('menu','<','>');
-        $dtp->LoadTemplet($myIcoFile);
-        if(is_array($dtp->CTags))
-        {
-          foreach($dtp->CTags as $ctag)
-          {
-                $title = $ctag->GetAtt('title');
-                $ico = $ctag->GetAtt('ico');
-                $link = $ctag->GetAtt('link');
-                echo "<li><a target='main' href='{$link}'>{$title}</a></li>";
-            }
-        }
-        ?>
-        </ul>
-    </div>
     <script>
     function JumpFrame(url1, url2) {
         jQuery('#menufra').get(0).src = url1;

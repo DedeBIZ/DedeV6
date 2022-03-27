@@ -45,7 +45,7 @@ class TagList
      */
     function __construct($keyword, $templet)
     {
-        global $dsql;
+        global $dsql,$envs;
         $this->Templet = $templet;
         $this->Tag = $keyword;
         $this->dsql = $dsql;
@@ -90,6 +90,8 @@ class TagList
         }
         $this->dtp->LoadTemplate($tempfile);
         $this->TempletsFile = preg_replace("#^".$GLOBALS['cfg_basedir']."#", '', $tempfile);
+        $envs['url_type'] = 4;
+        $envs['value'] = $keyword;
     }
     function TagPinyinExists($tag)
     {

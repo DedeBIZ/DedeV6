@@ -50,7 +50,8 @@ class ListView
      */
     function __construct($typeid, $uppage = 1)
     {
-        global $dsql;
+        global $dsql,$envs;
+        $envs['url_type'] = 1;
         $this->TypeID = $typeid;
         $this->dsql = &$dsql;
         $this->CrossID = '';
