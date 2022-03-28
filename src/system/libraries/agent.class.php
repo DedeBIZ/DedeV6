@@ -213,7 +213,8 @@ class Agent extends Mobile_Detect
 
             // Check match
             if ($this->match($regex, $userAgent)) {
-                return $key ?: reset((array)$this->matchesArray);
+                $val = (array)$this->matchesArray;
+                return $key ?: reset($val);
             }
         }
 

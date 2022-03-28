@@ -102,14 +102,6 @@ table.stattable td.today {
             </div>
             <div class="col-md-6 mt-3">
                 <div class="card">
-                    <div class="card-header">信息统计</div>
-                    <div class="card-body">
-                        <dd id='listCount'>正在载入</dd>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3">
-                <div class="card">
                     <div class="card-header">基本信息</div>
                     <div class="card-body">
                         <table width="98%" class="table table-borderless">
@@ -133,42 +125,6 @@ table.stattable td.today {
                                 <td>上传文件：<?php echo ini_get("post_max_size") ?></td>
                                 <td>远程连接：<?php echo ini_get("allow_url_fopen") ? '允许':'不允许'; ?></td>
                             </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3">
-                <div class="card">
-                    <div class="card-header">最新文档</div>
-                    <div class="card-body">
-                        <table width="100%" class="table table-borderless">
-                            <?php
-                            $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.pubdate, arc.channel, ch.editcon, tp.typename  FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0,5";
-                            $arcArr = array();
-                            $dsql->Execute('m', $query);
-                            while($row = $dsql->GetArray('m'))
-                            {
-                                $arcArr[] = $row;
-                            }
-                            ?>
-                            <?php
-                            if(count($arcArr) > 1)
-                            {
-                                foreach($arcArr as $row)
-                                {
-                                    if(trim($row['editcon'])==''){
-                                        $row['editcon'] = 'archives_edit.php';
-                                    }
-                                    $rowarcrank = $row['arcrank']==-1? "<small>[未审核]</small>":"";
-                                    $pubdate = GetDateMk($row['pubdate']);
-                                    echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
-                                }
-                            } else {
-                            ?>
-                            <tr><td class="nline" colspan="2">暂无文档</td></tr>
-                            <?php
-                            }
-                            ?>
                         </table>
                     </div>
                 </div>

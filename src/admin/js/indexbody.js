@@ -19,10 +19,3 @@ function ShowWaitDiv(){
     $DE('loaddiv').style.display = 'block';
     return true;
 }
-
-window.onload = function()
-{
-	fetch('index_body.php?dopost=getRightSide').then(resp=>resp.text()).then((d)=>{
-		$DE('listCount').innerHTML = d;
-	});
-};
