@@ -203,10 +203,10 @@ if (!function_exists('GetTypeUrl')) {
         global $cfg_typedir_df;
         $typedir = MfTypedir($typedir);
         $sitepath = MfTypedir($sitepath);
-        //伪静态栏目，Nginx伪静态规则参考：rewrite ^/list([0-9]+)$ /apps/list.php?tid=$1;rewrite ^/list([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+        //伪静态栏目，Nginx伪静态规则参考：rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
         if($isdefault==-1) {
             //目录版
-            $reurl = "/list".$typeid."";
+            $reurl = "/list-".$typeid."";
             //网页版$reurl = "/list".$typeid.".html";
         } else if ($ispart == 2) {
             //跳转网址
