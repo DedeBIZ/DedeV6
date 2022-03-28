@@ -74,7 +74,7 @@ $nextlink = 'javascript:;';
 if ($nextSrc != '') {
     $nextlink = "showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1);
     if ($pageGuide != "") $pageGuide .= " | ";
-    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1)."'>下一幅图片&gt;&gt;</a>";
+    $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($nextSrc)."&npos=".($npos + 1)."'>下一幅图片&gt;</a>";
 } else {
     $pageGuide .= " | 没有了";
 }

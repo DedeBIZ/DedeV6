@@ -120,7 +120,7 @@ else if ($action == 'upload') {
     make_hash();
     $win->Init("tpl.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "模块管理";
-    $wecome_info = "<a href='templets_main.php'>模板管理</a> &gt;&gt; 上传模板";
+    $wecome_info = "<a href='templets_main.php'>模板管理</a> &gt; 上传模板";
     $win->AddTitle('请选择要上传的文件:');
     $win->AddHidden("action", 'uploadok');
     $msg = "
@@ -231,7 +231,7 @@ else if ($action == 'savetagfile') {
     </form>
     ";
     $wintitle = "成功修改/创建文件";
-    $wecome_info = "<a href='templets_tagsource.php'>标签源码碎片管理</a> &gt;&gt; 修改/新建标签";
+    $wecome_info = "<a href='templets_tagsource.php'>标签源码碎片管理</a> &gt; 修改/新建标签";
     $win = new OxWindow();
     $win->AddTitle("修改/新建标签：");
     $win->AddMsgItem($msg);

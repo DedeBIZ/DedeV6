@@ -48,9 +48,7 @@ function noSelAll()
 <body>
 <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tbtitle">
   <tr bgcolor="#E7E7E7">
-    <td height="26" colspan="3" bgcolor="#EDF9D5">
-    	·重复文档列表：
-    </td>
+    <td height="26" colspan="3" bgcolor="#EDF9D5">重复文档列表：</td>
   </tr>
   <form name="form2" method="POST" action="article_test_same.php">
    <input type='hidden' name='deltype' value='<?php echo $deltype; ?>' />
@@ -60,9 +58,9 @@ function noSelAll()
    <input type='hidden' name='maintable' value='<?php echo $maintable; ?>' />
    <input type='hidden' name='titles' value='' />
   <tr bgcolor="#F8FBFB" height="26" align="center">
-    <td width="9%"> 选择 </td>
-    <td width="10%"> 重复数量 </td>
-    <td width="81%"> 文档标题 </td>
+    <td width="9%">选择</td>
+    <td width="10%">重复数量</td>
+    <td width="81%">文档标题</td>
   </tr>
  <?php
  while($row = $dsql->GetArray())

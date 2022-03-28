@@ -289,44 +289,38 @@ $actionSearch[8] = array(
     'description' => '针对主页、栏目、文档、专题等等进行更新',
     'soniterm' => array(
         0  =>  array(
-            'title' => '更新主页HTML',
-            'description' => '生成网站主页面的HTML',
+            'title' => '更新主页',
+            'description' => '生成网站主页面',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_homepage.php'
         ),
         1  =>  array(
             'title' => '更新栏目 HTML',
-            'description' => '对每个栏目进行静态HTML页面的生成',
+            'description' => '对每个栏目进行静态页面的生成',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_list.php'
         ),
         2  =>  array(
             'title' => '更新文档H',
-            'description' => '对每个栏目下的文档进行静态HTML页面的生成',
+            'description' => '对每个栏目下的文档进行静态页面的生成',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_archives.php'
         ),
         3  =>  array(
-            'title' => '更新网站地图',
-            'description' => '生成网站地图的静态HTML页面',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_map_guide.php'
-        ),
-        4  =>  array(
-            'title' => '更新订阅 HTML',
+            'title' => '更新订阅',
             'description' => '对全站的RSS进行更新',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_rss.php'
         ),
-        5  =>  array(
-            'title' => '获取JS文件',
-            'description' => '可以获取某个栏目的js连接',
+        4  =>  array(
+            'title' => '更新脚本',
+            'description' => '可以获取某个栏目的脚本连接',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_js.php'
         ),
-        6  =>  array(
-            'title' => '更新专题 HTML',
-            'description' => '对专题进行静态HTML页面的生成',
+        5  =>  array(
+            'title' => '更新专题',
+            'description' => '对专题进行静态页面的生成',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_spec.php'
         ),

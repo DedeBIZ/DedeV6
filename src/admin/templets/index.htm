@@ -41,7 +41,7 @@
             <div class="top_link">
                 <ul>
                     <li class="welcome">
-                        <a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?></a>
+                        <a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10) {echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a>
                         <a href="exit.php">退出</a>
                     </li>
                     <?php

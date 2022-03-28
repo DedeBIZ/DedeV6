@@ -76,7 +76,7 @@ if ($action == 'upload') {
     $win = new OxWindow();
     $win->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data");
     $win->mainTitle = "模块管理";
-    $wecome_info = "<a href='module_main.php'>模块管理</a> &gt;&gt; 上传模块";
+    $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块";
     $win->AddTitle('请选择要上传的文件:');
     $win->AddHidden("action", 'upload');
     $msg = "<table width='600' border='0' cellspacing='0' cellpadding='0'>

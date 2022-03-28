@@ -10,25 +10,20 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/enums.func.php');
-
-
 $cachefile = DEDESTATIC.'/enums/nativeplace.json';
 $data = json_decode(file_get_contents($cachefile));
 foreach ($data as $key => $value) {
     $GLOBALS['em_nativeplaces'][$key] = $value;
 }
-
 $cachefile = DEDESTATIC.'/enums/infotype.json';
 $data = json_decode(file_get_contents($cachefile));
 foreach ($data as $key => $value) {
     $GLOBALS['em_infotypes'][$key] = $value;
 }
-
 function lib_infolink(&$ctag, &$refObj)
 {
     global $dsql, $nativeplace, $infotype, $hasSetEnumJs, $cfg_cmspath, $cfg_mainsite;
     global $em_nativeplaces, $em_infotypes;
-
     //属性处理
     //$attlist="row|12,titlelen|24";
     //FillAttsDefault($ctag->CAttribute->Items,$attlist);
@@ -69,7 +64,7 @@ function lib_infolink(&$ctag, &$refObj)
         $sontype = (($nativeplace % 500 != 0) ? $nativeplace : 0);
         $toptype = (($nativeplace % 500 == 0) ? $nativeplace : ($nativeplace - ($nativeplace % 500)));
 
-        $fields['nativeplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> {$em_nativeplaces[$toptype]}</a> &gt;&gt; ";
+        $fields['nativeplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> {$em_nativeplaces[$toptype]}</a> &gt; ";
         foreach ($em_nativeplaces as $eid => $em) {
             if ($eid < $toptype + 1 || $eid > $toptype + 499) continue;
             if ($eid == $nativeplace) {
@@ -94,7 +89,7 @@ function lib_infolink(&$ctag, &$refObj)
     } else {
         $sontype = (($infotype % 500 != 0) ? $infotype : 0);
         $toptype = (($infotype % 500 == 0) ? $infotype : ($infotype - ($infotype % 500)));
-        $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'>{$em_infotypes[$toptype]}</a> &gt;&gt; ";
+        $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'>{$em_infotypes[$toptype]}</a> &gt; ";
         foreach ($em_infotypes as $eid => $em) {
             if ($eid < $toptype + 1 || $eid > $toptype + 499) continue;
             if ($eid == $infotype) {

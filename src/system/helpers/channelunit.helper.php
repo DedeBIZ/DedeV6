@@ -145,9 +145,11 @@ if (!function_exists('GetFileName')) {
             $typeid = -1;
         }
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
-            //动态文章
+            //伪静态文档，Nginx伪静态规则参考：rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
             if ($cfg_rewrite == 'Y') {
-                return $GLOBALS["cfg_plus_dir"]."/view-".$aid.'-1.html';
+                //目录版return "/article/".$aid."";
+                //网页版
+                return "/".$aid.".html";
             } else {
                 return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
             }
@@ -201,9 +203,11 @@ if (!function_exists('GetTypeUrl')) {
         global $cfg_typedir_df;
         $typedir = MfTypedir($typedir);
         $sitepath = MfTypedir($sitepath);
-        if ($isdefault == -1) {
-            //动态
-            $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
+        //伪静态栏目，Nginx伪静态规则参考：rewrite ^/list([0-9]+)$ /apps/list.php?tid=$1;rewrite ^/list([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+        if($isdefault==-1) {
+            //目录版
+            $reurl = "/list".$typeid."";
+            //网页版$reurl = "/list".$typeid.".html";
         } else if ($ispart == 2) {
             //跳转网址
             $reurl = $typedir;

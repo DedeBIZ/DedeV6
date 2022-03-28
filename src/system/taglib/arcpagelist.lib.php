@@ -52,7 +52,7 @@ function multipage($allItemTotal, $currPageNum, $pageSize, $tagid = '')
   //第一页显示
   $firstPage = ($currPageNum <= 1) ? $currPageNum."&lt;&lt;" : "<a href='javascript:multi(1,\"{$tagid}\")' title='第1页'>1&lt;&lt;</a>";
   //最后一页显示
-  $lastPage = ($currPageNum >= $pagesNum) ? "&gt;&gt;".$currPageNum : "<a href='javascript:multi(".$pagesNum.",\"{$tagid}\")' title='第".$pagesNum."页'>&gt;&gt;".$pagesNum."</a>";
+  $lastPage = ($currPageNum >= $pagesNum) ? "&gt;".$currPageNum : "<a href='javascript:multi(".$pagesNum.",\"{$tagid}\")' title='第".$pagesNum."页'>&gt;".$pagesNum."</a>";
   //上一页显示
   $prePage  = ($currPageNum <= 1) ? "上页" : "<a href='javascript:multi(".($currPageNum - 1).",\"{$tagid}\")'  accesskey='p'  title='上一页'>[上一页]</a>";
   //下一页显示

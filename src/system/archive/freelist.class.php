@@ -568,7 +568,7 @@ class FreeList
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
                     $row['title'] = cn_substr($row['title'], $titlelen);
                     if ($row['color'] != "") {
-                        $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
+                        $row['title'] = "<span style='color:".$row['color']."'>".$row['title']."</span>";
                     }
                     if (preg_match("#c#", $row['flag'])) {
                         $row['title'] = "".$row['title']."";

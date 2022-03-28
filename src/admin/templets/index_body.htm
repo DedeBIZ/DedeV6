@@ -16,25 +16,15 @@
 <script src="js/indexbody.js"></script>
 <script src="js/main.js"></script>
 <style>
+table.stattable td{padding:.6rem;font-size:12px;border-bottom:1px solid #f0f0f0;text-align:right;vertical-align:middle}
+table.stattable td.today{font-size:12px;color:#000}
 .row{display:flex;flex-wrap:wrap}
 .row>[class*='col-']{display:flex;flex-direction:column}
 .table{margin-bottom:0}
-.stattable{width: 100%;}
-table.stattable td {
-    padding: 0 5px;
-    height: 25px;
-    line-height: 25px;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 12px;
-    text-align: right;
-}
-table.stattable td.today {
-    font-size: 12px;
-    color: #000;
-    height: 25px;
-    line-height: 25px;
-    font-weight: 700;
-}
+.stattable{width:100%}
+.col-md-6:nth-child(2n){margin-left:-15px}
+.web-info{padding:10px;background:#f6f6f6;border-radius:.2rem;text-align:center}
+.web-info p{margin-bottom:10px}
 </style>
 </head>
 <body>
@@ -43,7 +33,7 @@ table.stattable td.today {
             <div id="__testEvn" class="col-md-12"></div>
             <div class="col-md-12 mt-3">
                 <div class="card">
-                    <div class="card-header">流量统计 <a title="点击查看流量统计图" href="#statChart"><i class="fa fa-line-chart" aria-hidden="true"></i></a></div>
+                    <div class="card-header"><a title="点击查看流量统计图" href="#statChart"><i class="fa fa-line-chart"></i></a>&nbsp;流量统计表</div>
                     <div class="card-body">
                         <table class="stattable">
                             <tbody>
@@ -56,24 +46,24 @@ table.stattable td.today {
                                 </tr>
                                 <tr class="bg-white">
                                     <td class="today">今日</td>
-                                    <td class="today" id="today_pv">...</td>
-                                    <td class="today" id="today_uv">...</td>
-                                    <td class="today" id="today_ip">...</td>
-                                    <td class="today" id="today_vv">...</td>
+                                    <td class="today" id="today_pv"></td>
+                                    <td class="today" id="today_uv"></td>
+                                    <td class="today" id="today_ip"></td>
+                                    <td class="today" id="today_vv"></td>
                                 </tr>
                                 <tr class="bg-white">
-                                    <td class="">昨日</td>
-                                    <td id="yestoday_pv">...</td>
-                                    <td id="yestoday_uv">...</td>
-                                    <td id="yestoday_ip">...</td>
-                                    <td id="yestoday_vv">...</td>
+                                    <td>昨日</td>
+                                    <td id="yestoday_pv"></td>
+                                    <td id="yestoday_uv"></td>
+                                    <td id="yestoday_ip"></td>
+                                    <td id="yestoday_vv"></td>
                                 </tr>
-                                <tr class="bg-white grey9 hide" style="display: table-row;">
-                                    <td class="">历史累计</td>
-                                    <td id="total_pv">...</td>
-                                    <td id="total_uv">...</td>
-                                    <td id="total_ip">...</td>
-                                    <td id="total_vv">...</td>
+                                <tr class="bg-white grey9 hide" style="display:table-row">
+                                    <td>历史累计</td>
+                                    <td id="total_pv"></td>
+                                    <td id="total_uv"></td>
+                                    <td id="total_ip"></td>
+                                    <td id="total_vv"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -82,48 +72,37 @@ table.stattable td.today {
             </div>
             <div class="col-md-6 mt-3 updatenews">
                 <div class="card">
-                    <div class="card-header">更新消息</div>
+                    <div class="card-header"><i class="fa fa-gear"></i>&nbsp;系统信息</div>
                     <div class="card-body">
                         <div id="updateinfos">
-                            <?php
-                            echo "<div class='updatedvt py-3'>";
-                            echo "安全操作：<a href='sys_data.php' class='btn btn-success btn-sm'>备份还原</a><a href='sys_safetest.php' class='btn btn-success btn-sm'>病毒扫描</a><a href='sys_repair.php' class='btn btn-success btn-sm'>错误修复</a></div>";
-                            echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' width='98%' height='100'></iframe>";
-                            ?>
+                            <?php echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' style='width:98%;height:60px;padding:.6rem'></iframe>"; ?>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3">
-                <div class="card">
-                    <div class="card-header">版本授权</div>
-                    <div class="card-body" id="_systeminfo">正在载入</div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3">
-                <div class="card">
-                    <div class="card-header">基本信息</div>
-                    <div class="card-body">
                         <table width="98%" class="table table-borderless">
                             <tr>
-                                <td width="50%">操作系统：<?php echo PHP_OS; ?></td>
-                                <td>Web服务器：<?php echo $_SERVER['SERVER_SOFTWARE']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>网站域名：<a href="<?php echo $cfg_basehost; ?>" target="_blank"><?php echo $_SERVER['SERVER_NAME']; ?></a></td>
-                                <td>网站地址：<?php echo gethostbyname($_SERVER['SERVER_NAME']); ?></td>
-                            </tr>
-                            <tr>
-                                <td>您的级别：<?php if($cuserLogin->getUserType()==10) {echo "总管理员";} else if($cuserLogin->getUserType()==5) {echo "频道总编";} else {echo "信息采集员或其它管理员";}?></td>
-                                <td>版本信息：<?php echo $cfg_soft_enname; ?></td>
-                            </tr>
-                            <tr>
-                                <td>PHP版本：<?php echo @phpversion(); ?></td>
-                                <td>GD版本：<?php echo @gdversion(); ?></td>
-                            </tr>
-                            <tr>
-                                <td>上传文件：<?php echo ini_get("post_max_size") ?></td>
-                                <td>远程连接：<?php echo ini_get("allow_url_fopen") ? '允许':'不允许'; ?></td>
+                                <td>
+                                    <div class="web-info">
+                                        <p>操作系统</p>
+                                        <span><?php echo PHP_OS; ?></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="web-info">
+                                        <p>Web服务器</p>
+                                        <span><?php echo $_SERVER['SERVER_SOFTWARE']; ?></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="web-info">
+                                        <p>服务器IP</p>
+                                        <span><?php echo gethostbyname($_SERVER['SERVER_NAME']); ?></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="web-info">
+                                        <p>PHP版本</p>
+                                        <span><?php echo @phpversion(); ?></span>
+                                    </div>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -131,9 +110,51 @@ table.stattable td.today {
             </div>
             <div class="col-md-6 mt-3">
                 <div class="card">
-                    <div class="card-header"><a name="statChart">流量统计图</a></div>
+                    <div class="card-header"><i class="fa fa-database"></i>&nbsp;版本授权</div>
+                    <div class="card-body" id="_systeminfo">正在载入</div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header"><a name="statChart"><i class="fa fa-bar-chart"></i>&nbsp;流量统计图</a></div>
                     <div class="card-body">
-                        <canvas id="statChart" style="height: 260px;"></canvas>
+                        <canvas id="statChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-file-word-o"></i>&nbsp;最新文档</div>
+                    <div class="card-body">
+                        <table width="100%" class="table table-borderless">
+                            <?php
+                            $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.pubdate, arc.channel, ch.editcon, tp.typename  FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0,12";
+                            $arcArr = array();
+                            $dsql->Execute('m', $query);
+                            while($row = $dsql->GetArray('m'))
+                            {
+                                $arcArr[] = $row;
+                            }
+                            ?>
+                            <?php
+                            if(count($arcArr) > 1)
+                            {
+                                foreach($arcArr as $row)
+                                {
+                                    if(trim($row['editcon'])==''){
+                                        $row['editcon'] = 'archives_edit.php';
+                                    }
+                                    $rowarcrank = $row['arcrank']==-1? "&nbsp;<span class='btn btn-danger btn-sm'>未审核</span>":"";
+                                    $pubdate = GetDateMk($row['pubdate']);
+                                    echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
+                                }
+                            } else {
+                            ?>
+                            <tr><td colspan="2">暂无文档</td></tr>
+                            <?php
+                            }
+                            ?>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -187,6 +208,105 @@ table.stattable td.today {
     });
     </script>
     <script>
+    var dedebizInfo;
+    function ViewDedeBIZ(){
+        console.log(dedebizInfo);
+        ShowMsg(`
+        <table width="100%" class="table table-borderless">
+            <tbody>
+                <tr>
+                    <td style="width:50%">版本号：</td>
+                    <td>V${dedebizInfo.result.server_version}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">运行时间：</td>
+                    <td>${dedebizInfo.result.server_run_time}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">服务器系统：</td>
+                    <td>${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}）</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">内存占用：</td>
+                    <td>${dedebizInfo.result.server_memory_usage}%</td>
+                </tr>
+            </tbody>
+        </table>
+        `);
+    }
+    function LoadServer(){
+        $.get("index_body.php?dopost=system_info", function(data){
+            let rsp = JSON.parse(data);
+            if (rsp.code === 200){
+                let infoStr = `<table width="100%" class="table table-borderless"><tbody>`;
+                if (typeof rsp.result.domain !== "undefined"){
+                    infoStr += `
+                    <tr>
+                        <td style="width:50%">授权域名：</td>
+                        <td>${rsp.result.domain} <a href="<?php echo $cfg_biz_dedebizUrl;?>/auth/?domain=${rsp.result.domain}" class="btn btn-success btn-sm">查看</a></td>
+                    </tr>
+                    `;
+                }
+                if (typeof rsp.result.title !== "undefined"){
+                    infoStr += `
+                    <tr>
+                        <td style="width:50%">站点名称：</td>
+                        <td>${rsp.result.title}</td>
+                    </tr>
+                    `;
+                }
+                if (typeof rsp.result.stype !== "undefined"){
+                    infoStr += `
+                    <tr>
+                        <td style="width:50%">站点类型：</td>
+                        <td>${rsp.result.stype}</td>
+                    </tr>
+                    `;
+                }
+                if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined"){
+                    infoStr += `
+                    <tr>
+                        <td style="width:50%">授权版本：</td>
+                        <td>V${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
+                    </tr>
+                    `;
+                }
+                if (rsp.result.core === null || rsp.result.core.code != 200){
+                    //下面是DedeBIZ Core组件信息
+                    infoStr += `
+                    <tr>
+                        <td style="width:50%">版本组件：</td>
+                        <td><a href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008" target="_blank" class="btn btn-danger btn-sm">如何启动组件</a></td>
+                    </tr>
+                    `;
+                } else {
+                    dedebizInfo = JSON.parse(rsp.result.core.data);
+                    infoStr += `
+                    <tr>
+                        <td style="width:50%">版本组件：</td>
+                        <td><a href="javascript:ViewDedeBIZ()" class="btn btn-success btn-sm">查看组件信息</a></td>
+                    </tr>
+                    `;
+                }
+                infoStr += "</tbody></table>";
+                $("#_systeminfo").html(infoStr);
+            } else {
+                $("#_systeminfo").html(`
+                <table width="100%" class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td style="width:50%">尚未启动商业版服务，原因：${rsp.msg}</td>
+                            <td style="text-align:right">当前版本：社区版<a href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}" target="_blank" class="btn btn-success btn-sm" style="margin-left:10px">升级商业版</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">如果您已购买商业使用授权，您可以在我们的授权中心查询到相信关商业授权信息，如果授权类型同查询不符，则说明您可能购买了非法商业授权，请及时同我们取得联系</td>
+                        </tr>
+                    </tbody>
+                </table>
+                `);
+            }
+        });
+    }
     Date.prototype.Format = function (fmt) { //author: meizz 
         var o = {
             "M+": this.getMonth() + 1, //月份 
@@ -202,98 +322,6 @@ table.stattable td.today {
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
         return fmt;
     }
-    var dedebizInfo;
-    function ViewDedeBIZ(){
-        console.log(dedebizInfo);
-        ShowMsg(`
-        <table width="100%" class="table table-borderless">
-            <tbody>
-                <tr>
-                    <td class="nline" style="text-align:left">版本号：</td>
-                    <td class="nline" style="text-align:left">V${dedebizInfo.result.server_version}</td>
-                </tr>
-                <tr>
-                    <td class="nline" style="text-align:left">运行时间：</td>
-                    <td class="nline" style="text-align:left">${dedebizInfo.result.server_run_time}</td>
-                </tr>
-                <tr>
-                    <td class="nline" style="text-align:left">服务器系统：</td>
-                    <td class="nline" style="text-align:left">${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}）</td>
-                </tr>
-                <tr>
-                    <td class="nline" style="text-align:left">内存占用：</td>
-                    <td class="nline" style="text-align:left">${dedebizInfo.result.server_memory_usage}%</td>
-                </tr>
-            </tbody>
-        </table>
-        `);
-    }
-    //加载服务信息
-    function LoadServer(){
-        $.get("index_body.php?dopost=system_info", function(data){
-            let rsp = JSON.parse(data);
-            if (rsp.code === 200){
-                let infoStr = `<table width="100%" class="table table-borderless"><tbody>`;
-                if (typeof rsp.result.domain !== "undefined"){
-                    infoStr += `
-                    <tr>
-                        <td class="nline" style="text-align:left">授权域名：</td>
-                        <td class="nline" style="text-align:left">${rsp.result.domain} <a href="<?php echo $cfg_biz_dedebizUrl;?>/auth/?domain=${rsp.result.domain}" class="btn btn-success btn-sm">查看</a></td>
-                    </tr>
-                    `;
-                }
-                if (typeof rsp.result.title !== "undefined"){
-                    infoStr += `
-                    <tr>
-                        <td class="nline" style="text-align:left">站点名称：</td>
-                        <td class="nline" style="text-align:left">${rsp.result.title}</td>
-                    </tr>
-                    `;
-                }
-                if (typeof rsp.result.stype !== "undefined"){
-                    infoStr += `
-                    <tr>
-                        <td class="nline" style="text-align:left">站点类型：</td>
-                        <td class="nline" style="text-align:left">${rsp.result.stype}</td>
-                    </tr>
-                    `;
-                }
-                if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined"){
-                    infoStr += `
-                    <tr>
-                        <td class="nline" style="text-align:left">授权版本：</td>
-                        <td class="nline" style="text-align:left">V${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
-                    </tr>
-                    `;
-                }
-                if (rsp.result.core === null || rsp.result.core.code != 200){
-                    //下面是DedeBIZ Core组件信息
-                    infoStr += `
-                    <tr>
-                        <td class="nline" style="text-align:left">版本组件：</td>
-                        <td class="nline" style="text-align:left"><a href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=-1008" target="_blank" class="btn btn-danger btn-sm">如何启动组件</a></td>
-                    </tr>
-                    `;
-                } else {
-                    dedebizInfo = JSON.parse(rsp.result.core.data);
-                    infoStr += `
-                    <tr>
-                        <td class="nline" style="text-align:left">版本组件：</td>
-                        <td class="nline" style="text-align:left"><a href="javascript:ViewDedeBIZ()" class="btn btn-success btn-sm">查看组件信息</a></td>
-                    </tr>
-                    `;
-                }
-                infoStr += "</tbody></table>";
-                $("#_systeminfo").html(infoStr);
-            } else {
-                $("#_systeminfo").html(`
-                <div class="py-1">尚未启动商业版服务，原因：${rsp.msg}</div>
-                <div class="py-1">目前是社区版开源免费，但商业版可以提高性能，支付功能，小程序等</div>
-                <div class="py-1"><a href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}" target="_blank" class="btn btn-danger btn-sm">开启商业版</a></div>
-                `);
-            }
-        });
-    }
     function LoadStat() {
         $.get("index_body.php?dopost=get_statistics", function(data){
             let rsp = JSON.parse(data);
@@ -306,7 +334,6 @@ table.stattable td.today {
                 $("#today_uv").html(tuv);
                 $("#today_ip").html(tip);
                 $("#today_vv").html(tvv);
-
                 $.get("index_body.php?dopost=get_statistics&sdate=-1", function(data){
                     let rsp = JSON.parse(data);
                     if (rsp.code == 200) {
@@ -318,7 +345,6 @@ table.stattable td.today {
                 });
             }
         });
-
         var d = new Date();
         d.setDate(d.getDate() - 1);
         var s = d.Format("yyyy-MM-dd");
@@ -333,7 +359,6 @@ table.stattable td.today {
             }
         });
     }
-
     async function LoadStatChart() {
         const ctx = document.getElementById('statChart').getContext('2d');
         let labels = [];
@@ -356,12 +381,10 @@ table.stattable td.today {
                 vvs.push(typeof data.result.vv=="undefined"? 0 : data.result.vv);
             }
         }
-
         console.log(pvs);
         console.log(ips);
         console.log(uvs);
         console.log(vvs);
-
         const myChart = new Chart(ctx, {
             type: 'line',
             options: {
@@ -408,7 +431,6 @@ table.stattable td.today {
             },
         });
     }
-
     $(document).ready(function(){
         LoadServer();
         LoadStat();

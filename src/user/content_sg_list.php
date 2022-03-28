@@ -19,7 +19,6 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 if (!isset($keyword)) $keyword = '';
 if (!isset($arcrank)) $arcrank = '';
-
 $positionname = '';
 $menutype = 'content';
 $mid = $cfg_ml->M_ID;
@@ -30,17 +29,15 @@ if (!is_array($cInfos)) {
     exit();
 }
 $arcsta = $cInfos['arcsta'];
-
 //禁止访问无权限的模型
 if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
     ShowMsg('您无权限访问该部分', '-1');
     exit();
 }
-
 if ($cid == 0) {
-    $positionname = $cInfos['typename']." &gt;&gt; ";
+    $positionname = $cInfos['typename']." &gt; ";
 } else {
-    $positionname = str_replace($cfg_list_symbol, " &gt;&gt; ", $tl->GetPositionName())." &gt;&gt; ";
+    $positionname = str_replace($cfg_list_symbol, " &gt; ", $tl->GetPositionName())." &gt; ";
 }
 $whereSql = " WHERE arc.channel = '$channelid' AND arc.mid='$mid' ";
 if ($keyword != '') {
@@ -58,12 +55,11 @@ if ($arcrank == '1') {
 } else if ($arcrank == '-2') {
     $whereSql .= " And arc.arcrank = -2";
 }
-
 $query = "SELECT arc.aid,arc.aid as id,arc.typeid,arc.senddate,arc.channel,arc.click,arc.title,arc.mid,tp.typename,arc.arcrank
-        FROM `{$cInfos['addtable']}` arc
-        LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-        $whereSql
-        ORDER BY arc.aid desc ";
+    FROM `{$cInfos['addtable']}` arc
+    LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
+    $whereSql
+    ORDER BY arc.aid desc ";
 $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetParameter("dopost", "listArchives");

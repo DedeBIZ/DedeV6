@@ -159,8 +159,7 @@ else if ($action == 'setup') {
     if (($devInfo['dev_id'] == $infos['dev_id']) && !empty($devInfo['dev_id'])) {
       $s = "已认证";
     }
-
-    $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt;&gt; 安装模块：{$infos['name']}");
+    $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt; 安装模块：{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
     $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
@@ -291,11 +290,11 @@ else if ($action == 'del') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
-    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>未认证</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 删除模块：{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 删除模块：{$infos['name']}");
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
     $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
@@ -356,11 +355,11 @@ else if ($action == 'uninstall') {
         else $v['type'] = '文件';
         $filelist .= "{$v['type']}|{$v['name']}\r\n";
     }
-    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>未认证</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>未认证</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>已认证</a>";
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 卸载模块：{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 卸载模块：{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
@@ -390,7 +389,8 @@ else if ($action == 'uninstall') {
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td height='26'>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
+    <td height='26'>模块包含的文件（文件路径相对于当前目录）</td>
+    <td></td>
   </tr>
   <tr>
     <td height='160' colspan='2'>
@@ -460,7 +460,7 @@ else if ($action == 'showreadme') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 使用说明：");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 使用说明：");
     $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
     $winform = $win->GetWindow("hand");
     $win->Display();
@@ -498,11 +498,11 @@ else if ($action == 'view') {
         $setupinfo = "未安装 <a href='module_main.php?action=setup&hash={$hash}'>安装</a>";
     }
 
-    $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>{$s}</a>";
+    $dev_id = empty($infos['dev_id'])? "<a href='module_main.php?action=setup&hash={$hash}' class='btn btn-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer' target='_blank' class='btn btn-danger btn-sm'>{$s}</a>" : "{$infos['dev_id']} <a href='module_main.php?action=setup&hash={$hash}' class='btn btn-success btn-sm'>安装</a><a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-danger btn-sm'>{$s}</a>";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt;&gt; 模块详情：{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 模块详情：{$infos['name']}");
     $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0'>
   <tr>
@@ -530,7 +530,8 @@ else if ($action == 'view') {
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td height='26'>模块包含的文件：<br>（文件路径相对于当前目录）</td><td>&nbsp;</td>
+    <td height='26'>模块包含的文件（文件路径相对于当前目录）</td>
+    <td></td>
   </tr>
   <tr>
     <td height='160' colspan='2'>

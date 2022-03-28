@@ -47,12 +47,9 @@
 	</script>
 </head>
 <body leftmargin="0" topmargin="0" background='images/allbg.gif'>
-
 	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
 		<tr bgcolor="#E7E7E7">
-			<td height="26" colspan="9" background="images/tbg.gif">
-				 §文章列表
-			</td>
+			<td height="26" colspan="9" background="images/tbg.gif">文章列表</td>
 		</tr>
 		<form name="form2">
 			<tr align="center" bgcolor="#FAFAF1" height="26">
@@ -71,9 +68,7 @@
 				onMouseOut="javascript:this.bgColor='#FFFFFF';" height="26">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
-				<td align='left'>
-					<a href='archives_do.php?aid={dede:field.id/}&dopost=editArchives'>{dede:field.title/}</a>
-				</td>
+				<td align='left'><a href='archives_do.php?aid={dede:field.id/}&dopost=editArchives'>{dede:field.title/}</a></td>
 				<td>{dede:field.senddate function="GetDateMk(@me)" /}</td>
 				<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
 				<td>{dede:field.click/}</td>
@@ -84,11 +79,8 @@
 			{/dede:datalist}
 			<tr bgcolor="#FAFAF1">
 				<td height="26" colspan="9">
-					&nbsp;
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
-					&nbsp;
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-					&nbsp;
 					<a href="javascript:ReturnValue()" class="btn btn-success btn-sm">把选定值加到列表</a>
 				</td>
 			</tr>
@@ -113,15 +105,9 @@
 									<?php echo $optionarr?>
 								</select>
 							</td>
-							<td width='100'>
-								关键词：
-							</td>
-							<td width='160'>
-								<input type='text' name='keyword' value='<?php echo $keyword?>' style='width:150'>
-							</td>
-							<td width='100'>
-								<button type="submit" class="btn btn-success btn-sm">搜索</button>
-							</td>
+							<td width='100'>关键词：</td>
+							<td width='160'><input type='text' name='keyword' value='<?php echo $keyword?>' style='width:150'></td>
+							<td width='100'><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 						</tr>
 					</table>
 				</td>

@@ -792,7 +792,7 @@ class ListView
                     $row['fulltitle'] = $row['title'];
                     $row['title'] = cn_substr($row['title'], $titlelen);
                     if ($row['color'] != '') {
-                        $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
+                        $row['title'] = "<span style='color:".$row['color']."'>".$row['title']."</span>";
                     }
                     if (preg_match('/c/', $row['flag'])) {
                         $row['title'] = "".$row['title']."";
@@ -922,6 +922,16 @@ class ListView
         if (preg_match('/end/i', $listitem)) $plist .= $endpage;
         if (preg_match('/option/i', $listitem)) $plist .= $optionlist;
         if (preg_match('/info/i', $listitem)) $plist .= $maininfo;
+        //伪静态分页处理
+        if ($cfg_rewrite == 'Y')
+        {
+            
+            $plist = str_replace('.php?tid=','-',$plist);
+            $plist = preg_replace("/&TotalResult=(\d+)/i","",$plist);//去掉总结果数值
+            //目录版
+            $plist = preg_replace("/&PageNo=(\d+)/i",'-\\1',$plist);
+            //网页版$plist = preg_replace("/&PageNo=(\d+)/i",'-\\1.html',$plist);
+        }
         return $plist;
     }
     /**

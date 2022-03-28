@@ -90,7 +90,7 @@ if ($tjnum < $totalnum) {
     exit();
 } else {
     if ($typeid != '') {
-        ShowMsg("生成文件：$totalnum 总用时：{$ttime} 分钟，现转向当前栏目更新&gt;&gt;", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
+        ShowMsg("生成文件：$totalnum 总用时：{$ttime} 分钟，现转向当前栏目更新&gt;", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
     } else {
         if ($uptype == '') {
             ShowMsg("完成所有创建任务，生成文件：$totalnum 总用时：{$ttime} 分钟", "javascript:;");

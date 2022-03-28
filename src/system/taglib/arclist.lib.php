@@ -369,7 +369,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);
-                if ($row['color'] != '') $row['title'] = "<span style='".$row['color']."'>".$row['title']."</span>";
+                if ($row['color'] != '') $row['title'] = "<span style='color:".$row['color']."'>".$row['title']."</span>";
                 if (preg_match('#b#', $row['flag'])) $row['title'] = "".$row['title']."";
                 //$row['title'] = "".$row['title']."";
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";

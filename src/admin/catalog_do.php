@@ -16,7 +16,6 @@ if (empty($dopost)) {
 $cid = empty($cid) ? 0 : intval($cid);
 $unittype = empty($unittype) ? 0 : intval($unittype);
 $channelid = empty($channelid) ? 0 : intval($channelid);
-
 /*--------------------------
 //增加文档
 function addArchives();
@@ -105,7 +104,6 @@ function upRank()
 else if ($dopost == "upRank") {
     //检查权限许可
     CheckPurview('t_Edit,t_AccEdit');
-
     //检查栏目操作许可
     CheckCatalog($cid, "您无权修改本栏目");
     $row = $dsql->GetOne("SELECT reid,sortrank FROM #@__arctype WHERE id='$cid'");
@@ -143,12 +141,10 @@ else if ($dopost == "upcatcache") {
     UpDateCatCache();
     $sql = " TRUNCATE TABLE `#@__arctiny`";
     $dsql->ExecuteNoneQuery($sql);
-
     //导入普通模型微数据
     $sql = "INSERT INTO `#@__arctiny`(id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid)  
-            SELECT id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid FROM `#@__archives` ";
+        SELECT id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid FROM `#@__archives` ";
     $dsql->ExecuteNoneQuery($sql);
-
     //导入单表模型微数据
     $dsql->SetQuery("SELECT id,addtable FROM `#@__channeltype` WHERE id < -1 ");
     $dsql->Execute();
@@ -224,7 +220,7 @@ else if ($dopost == 'unitCatalog') {
         }
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
         $wintitle = '合并栏目';
-        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt;&gt; 合并栏目";
+        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt; 合并栏目";
         $win = new OxWindow();
         $win->Init('catalog_do.php', 'js/blank.js', 'POST');
         $win->AddHidden('dopost', 'unitCatalog');
@@ -277,7 +273,7 @@ else if ($dopost == 'moveCatalog') {
         $channelid = $tl->TypeInfos['channeltype'];
         $typeOptions = $tl->GetOptionArray(0, 0, $channelid);
         $wintitle = "移动栏目";
-        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt;&gt; 移动栏目";
+        $wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt; 移动栏目";
         $win = new OxWindow();
         $win->Init('catalog_do.php', 'js/blank.js', 'POST');
         $win->AddHidden('dopost', 'moveCatalog');
