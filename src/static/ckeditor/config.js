@@ -18,6 +18,7 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'colors', groups: ['colors'] },
 		{ name: 'tools', groups: ['tools'] }
 	];
+	config.height = 500;
 	config.extraPlugins = 'html5video,dedepagebreak,textindent';
 	config.removeButtons = 'About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';
 	config.font_names='宋体/SimSun;楷体/KaiTi;黑体/SimHei;微软雅黑/Microsoft YaHei;微软正黑/Microsoft JhengHei'+ config.font_names;
