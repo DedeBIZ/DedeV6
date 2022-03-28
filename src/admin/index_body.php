@@ -35,6 +35,39 @@ else if ($dopost == 'setskin') {
 } elseif ($dopost == 'get_seo') {
     //直接采用DedeBIZ重写方法
     exit;
+} elseif($dopost == 'get_articles'){
+?>
+<table width="100%" class="table table-borderless">
+    <?php
+    $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.pubdate, arc.channel, ch.editcon, tp.typename  FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0,12";
+    $arcArr = array();
+    $dsql->Execute('m', $query);
+    while($row = $dsql->GetArray('m'))
+    {
+        $arcArr[] = $row;
+    }
+    ?>
+    <?php
+    if(count($arcArr) > 1)
+    {
+        foreach($arcArr as $row)
+        {
+            if(trim($row['editcon'])==''){
+                $row['editcon'] = 'archives_edit.php';
+            }
+            $rowarcrank = $row['arcrank']==-1? "&nbsp;<small>[未审核]</small>":"";
+            $pubdate = GetDateMk($row['pubdate']);
+            echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
+        }
+    } else {
+    ?>
+    <tr><td colspan="2">暂无文档</td></tr>
+    <?php
+    }
+    ?>
+</table>
+<?php
+    exit;
 } elseif ($dopost == "system_info") {
     if (!extension_loaded("openssl")) {
         echo json_encode(array(

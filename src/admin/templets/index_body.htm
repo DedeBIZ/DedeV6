@@ -22,7 +22,7 @@ table.stattable td.today{font-size:12px;color:#000}
 .row>[class*='col-']{display:flex;flex-direction:column}
 .table{margin-bottom:0}
 .stattable{width:100%}
-.col-md-6:nth-child(2n){margin-left:-15px}
+.mt-30{margin-top:30px}
 .web-info{padding:10px;background:#f6f6f6;border-radius:.2rem;text-align:center}
 .web-info p{margin-bottom:10px}
 </style>
@@ -31,7 +31,7 @@ table.stattable td.today{font-size:12px;color:#000}
     <div class="container-fluid">
         <div class="row">
             <div id="__testEvn" class="col-md-12"></div>
-            <div class="col-md-12 mt-3">
+            <div class="col-md-12 mt-30">
                 <div class="card">
                     <div class="card-header"><a title="点击查看流量统计图" href="#statChart"><i class="fa fa-line-chart"></i></a>&nbsp;流量统计表</div>
                     <div class="card-body">
@@ -70,7 +70,7 @@ table.stattable td.today{font-size:12px;color:#000}
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mt-3 updatenews">
+            <div class="col-md-6 mt-30 updatenews">
                 <div class="card">
                     <div class="card-header"><i class="fa fa-gear"></i>&nbsp;系统信息</div>
                     <div class="card-body">
@@ -108,13 +108,13 @@ table.stattable td.today{font-size:12px;color:#000}
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            <div class="col-md-6 mt-30">
                 <div class="card">
                     <div class="card-header"><i class="fa fa-database"></i>&nbsp;版本授权</div>
                     <div class="card-body" id="_systeminfo">正在载入</div>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            <div class="col-md-6 mt-30">
                 <div class="card">
                     <div class="card-header"><a name="statChart"><i class="fa fa-bar-chart"></i>&nbsp;流量统计图</a></div>
                     <div class="card-body">
@@ -122,39 +122,11 @@ table.stattable td.today{font-size:12px;color:#000}
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            <div class="col-md-6 mt-30">
                 <div class="card">
                     <div class="card-header"><i class="fa fa-file-word-o"></i>&nbsp;最新文档</div>
-                    <div class="card-body">
-                        <table width="100%" class="table table-borderless">
-                            <?php
-                            $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.pubdate, arc.channel, ch.editcon, tp.typename  FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0,12";
-                            $arcArr = array();
-                            $dsql->Execute('m', $query);
-                            while($row = $dsql->GetArray('m'))
-                            {
-                                $arcArr[] = $row;
-                            }
-                            ?>
-                            <?php
-                            if(count($arcArr) > 1)
-                            {
-                                foreach($arcArr as $row)
-                                {
-                                    if(trim($row['editcon'])==''){
-                                        $row['editcon'] = 'archives_edit.php';
-                                    }
-                                    $rowarcrank = $row['arcrank']==-1? "&nbsp;<span class='btn btn-danger btn-sm'>未审核</span>":"";
-                                    $pubdate = GetDateMk($row['pubdate']);
-                                    echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
-                                }
-                            } else {
-                            ?>
-                            <tr><td colspan="2">暂无文档</td></tr>
-                            <?php
-                            }
-                            ?>
-                        </table>
+                    <div class="card-body" id="newarticles">
+                        正在载入
                     </div>
                 </div>
             </div>
@@ -203,6 +175,11 @@ table.stattable td.today{font-size:12px;color:#000}
         $.get("index_testenv.php", function (data){
             if (data !== ''){
                 $("#__testEvn").html(data);
+            }
+        });
+        $.get("index_body.php?dopost=get_articles", function (data){
+            if (data !== ''){
+                $("#newarticles").html(data);
             }
         });
     });
@@ -295,11 +272,11 @@ table.stattable td.today{font-size:12px;color:#000}
                 <table width="100%" class="table table-borderless">
                     <tbody>
                         <tr>
-                            <td style="width:50%">尚未启动商业版服务，原因：${rsp.msg}</td>
+                            <td style="width:60%">尚未启动商业版服务，原因：${rsp.msg}</td>
                             <td style="text-align:right">当前版本：社区版<a href="<?php echo $cfg_biz_dedebizUrl;?>/start?code=${rsp.code}" target="_blank" class="btn btn-success btn-sm" style="margin-left:10px">升级商业版</a></td>
                         </tr>
                         <tr>
-                            <td colspan="2">如果您已购买商业使用授权，您可以在我们的授权中心查询到相信关商业授权信息，如果授权类型同查询不符，则说明您可能购买了非法商业授权，请及时同我们取得联系</td>
+                            <td colspan="2">如果您已购买商业版授权，您可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系，谢谢。</td>
                         </tr>
                     </tbody>
                 </table>
