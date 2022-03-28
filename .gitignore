@@ -41,3 +41,4 @@ src/uploads/soft/*/
 src/static/allimg/*/
 src/data/time.lock
 src/static/enums/*.json
+src/static/litimg/*/
