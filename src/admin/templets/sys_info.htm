@@ -63,7 +63,7 @@ function resetCookieEncode() {
 </head>
 <body background="images/allbg.gif" leftmargin="8" topmargin="8">
   <div style="min-width:780px">
-    <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
+    <table width="98%" border="0" cellpadding="2" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
       <tr>
         <td height="30" background="images/tbg.gif" style="padding-left:10px">系统配置变量</td>
       </tr>
@@ -135,9 +135,9 @@ function resetCookieEncode() {
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellpadding="0" cellspacing="0" style="margin-top:10px" bgcolor="#D6D6D6" align="center" class="table maintable table-bordered mt-3">
+    <table width="98%" border="0" cellpadding="0" cellspacing="0" style="margin-top:10px" align="center" class="table maintable table-bordered mt-3">
       <tr>
-        <td height="26" align="right" background="images/tbg.gif" style="border:1px solid #cfcfcf;border-bottom:none">
+        <td height="26" align="right" background="images/tbg.gif" style="border:1px solid #dee2e6;border-bottom:none">
           <span style="line-height:26px">配置搜索：</span>
           <input type="text" name="keywds" id="keywds">
           <button type="button" onclick="getSearch()" class="btn btn-success btn-sm">搜索</button>
@@ -161,7 +161,7 @@ function resetCookieEncode() {
               $dls = explode(',',$dl);
               $n++;
             ?>
-            <table width="100%" style="<?php if($n!=$gp) echo 'display:none'; ?>" id="td<?php echo $n?>" border="0" cellspacing="1" cellpadding="1" bgcolor="#cfcfcf">
+            <table width="100%" style="<?php if($n!=$gp) echo 'display:none'; ?>" id="td<?php echo $n?>" border="0" cellspacing="1" cellpadding="1">
               <tr align="center" bgcolor="#FBFCE2">
                 <td width="300">变量说明</td>
                 <td>变量值</td>
@@ -175,7 +175,7 @@ function resetCookieEncode() {
               {
                 if($i%2==0)
                 {
-                  $bgcolor = "#F9FCEF";
+                  $bgcolor = "#f6f6f6";
                 } else {
                   $bgcolor = "#ffffff";
                 }
@@ -215,7 +215,7 @@ function resetCookieEncode() {
             }
             ?>
             </div>
-            <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#f6f6f6" style="border:1px solid #cfcfcf;border-top:none" class="table table-borderless">
+            <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#f6f6f6" style="border:1px solid #dee2e6;border-top:none" class="table table-borderless">
               <tr height="36">
                 <td>
                   <button type="submit" class="btn btn-success">确定</button>

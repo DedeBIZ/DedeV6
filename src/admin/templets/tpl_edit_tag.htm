@@ -55,7 +55,7 @@ function Post()
 <input type="hidden" name="actiondo" value="<?php echo $action; ?>">
 <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 <input type="hidden" name="action" value="savetagfile">
-	<table width='98%'  border='0' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf' align="center" class="table maintable table-bordered mt-3">
+	<table width='98%'  border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable table-bordered mt-3">
 		<tr bgcolor='#EEF4EA'>
 			<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px">
 					<span><?php echo $title; ?>（修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份）</span>
@@ -82,7 +82,7 @@ function Post()
 	  </td>
     </tr>
     <tr>
-      <td height="36" colspan='2'  bgcolor="#F9FCEF">
+      <td height="36" colspan='2'  bgcolor="#f6f6f6">
           <button type="submit" name='B1' class="btn btn-success">  保 存  </button>
           &nbsp;
           <button type="reset" name='B2' class="btn btn-success"> 重 置 </button>

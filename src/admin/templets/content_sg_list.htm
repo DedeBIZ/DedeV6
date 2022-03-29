@@ -195,7 +195,7 @@
 						<td height="4"></td>
 					</tr>
 				</table>
-				<table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#cfcfcf" class="table table-bordered">
+				<table width="100%" border="0" cellpadding="2" cellspacing="1" class="table table-bordered">
 					<tr bgcolor="#E7E7E7">
 						<td height="26" colspan="9" background="images/tbg.gif" style="padding-left:10px">
 							{dede:global.positionname/}文档列表 &nbsp;(使用鼠标右键进行常用操作)
@@ -246,8 +246,7 @@
 								<a class="btn btn-success btn-sm" href="javascript:checkArc(0)" class="coolbg">&nbsp;审核&nbsp;</a>
 								<a class="btn btn-success btn-sm" href="javascript:adArc(0)" class="coolbg">&nbsp;推荐&nbsp;</a>
 								<a class="btn btn-success btn-sm" href="javascript:;"
-									onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid); ?>)"
-									class="coolbg">&nbsp;移动&nbsp;</a>
+									onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid); ?>)" class="coolbg">&nbsp;移动&nbsp;</a>
 								<a class="btn btn-success btn-sm" href="javascript:delArc(0)" class="coolbg">&nbsp;删除&nbsp;</a>
 								<?php
 								if(!empty($f)) {
@@ -259,7 +258,7 @@
 							</td>
 						</tr>
 					</form>
-					<tr align="right" bgcolor="#F9FCEF">
+					<tr align="right" bgcolor="#f6f6f6">
 						<td height="26" colspan="9" align="center">
 							{dede:pagelist listsize=3/}
 						</td>
@@ -271,7 +270,7 @@
 					</tr>
 					<tr bgcolor="#FFFFFF">
 						<td height="26">
-							<table width='100%' border='0' cellpadding='1' cellspacing='1' bgcolor='#cfcfcf' class="table table-bordered">
+							<table width='100%' border='0' cellpadding='1' cellspacing='1' class="table table-bordered">
 								<tr bgcolor='#F7F7F7'>
 									<form name='form3' action='content_sg_list.php' method='get'>
 										<input type='hidden' name='dopost' value='listArchives'>

@@ -11,7 +11,7 @@
   <script type="text/javascript" src="js/mode/sql/sql.js"></script>
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
     <tr>
       <td height="19" background="images/tbg.gif">
         <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
@@ -95,7 +95,7 @@ while($row = $dsql->GetArray('t',MYSQL_BOTH))
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <input type='hidden' name='dopost' value='query'>
             <tr>
-              <td height="26" colspan="2" bgcolor="#F9FCEF">运行SQL命令行：
+              <td height="26" colspan="2" bgcolor="#f6f6f6">运行SQL命令行：
                   <label><input name="querytype" type="radio" class="np" value="0">
                     单行命令（支持简单查询）</label>
                   <label><input name="querytype" type="radio" class="np" value="2" checked>

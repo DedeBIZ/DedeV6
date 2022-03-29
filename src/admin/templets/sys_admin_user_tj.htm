@@ -37,7 +37,7 @@
 <div id='loaddiv' style='display:none'>
 	<p align='center'><img src='images/loadinglit.gif'>请稍后，正在载入</p>
 </div>
-<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6" class="table maintable table-bordered mt-3">
+<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
   <tr>
     <td height="26" background="images/tbg.gif" bgcolor="#E7E7E7"> 
       <a href="sys_admin_user.php" style="padding-left:10px">管理员帐号</a> &gt; 编辑绩效统计
@@ -49,7 +49,7 @@
   $dsql->Execute('me', 'Select * From `#@__admin` order by id asc');
   while( $arr = $dsql->GetArray('me') )
   {
-  	echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='images/loadinglit.gif' /> 请稍后，正在载入</p></div>\r\n<script language='javascript'>LoadUser({$arr['id']});</script>\r\n";
+  	echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='images/loadinglit.gif'> 请稍后，正在载入</p></div>\r\n<script language='javascript'>LoadUser({$arr['id']});</script>\r\n";
   }
   ?>
   </td>

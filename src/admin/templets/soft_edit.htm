@@ -45,8 +45,7 @@ table{border-collapse:separate}
 </style>
 </head>
 <body topmargin="8" background="images/allbg.gif">
-  <form name="form1" action="soft_edit.php" enctype="multipart/form-data" method="post"
-    onSubmit="return checkSubmit();">
+  <form name="form1" action="soft_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
     <input type="hidden" name="dopost" value="save">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
     <input type="hidden" name="id" value="<?php echo $aid?>">
@@ -81,7 +80,7 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #cfcfcf;background:#ffffff;">
+    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff;">
       <tr>
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
@@ -312,7 +311,7 @@ table{border-collapse:separate}
         <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield'); ?></td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#F9FCEF" class="bline2">&nbsp;下载限制：</td>
+        <td height="26" bgcolor="#f6f6f6" class="bline2">&nbsp;下载限制：</td>
       </tr>
       <tr>
         <td height="26" class="bline">
@@ -343,7 +342,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" bgcolor="#F9FCEF" class="bline2">&nbsp;软件链接列表：</td>
+        <td height="26" colspan="4" bgcolor="#f6f6f6" class="bline2">&nbsp;软件链接列表：</td>
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
@@ -371,7 +370,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" bgcolor="#F9FCEF" class="bline2">&nbsp;软件详细介绍：</td>
+        <td height="26" colspan="4" bgcolor="#f6f6f6" class="bline2">&nbsp;软件详细介绍：</td>
       </tr>
       <tr>
         <td height="26" colspan="4" bgcolor="#F1F5F2" class="bline">
@@ -396,7 +395,7 @@ table{border-collapse:separate}
       </tr>
     </table>
     <!--高级参数-->
-    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="adset" style="display:none;border:1px solid #cfcfcf;background:#ffffff;">
+    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="adset" style="display:none;border:1px solid #dee2e6;background:#ffffff;">
       <tr>
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
@@ -508,7 +507,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f6f6f6" style="border:1px solid #cfcfcf;border-top:none" class="mb-3">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f6f6f6" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
     <tr height="36">
       <td style="padding:.6rem">
         <button type="submit" class="btn btn-success">保存</button>

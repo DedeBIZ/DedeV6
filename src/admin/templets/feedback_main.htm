@@ -66,13 +66,11 @@
 	<link rel="stylesheet" href="css/base.css">
 </head>
 <body background='images/allbg.gif' leftmargin='8' topmargin='8'>
-	<table width="98%" border="0" cellpadding="3" align="center" cellspacing="1" bgcolor="#D6D6D6"
+	<table width="98%" border="0" cellpadding="3" align="center" cellspacing="1"
 		class="table table-bordered maintable mt-3">
 		<tr>
 			<td height="26" background='images/tbg.gif' style="padding-left:10px">
-				<div style="float:left;">
-					<a href='feedback_main.php'>评论管理</a>
-				</div>
+				<div style="float:left">评论管理</div>
 				<div style="float:right;padding-right:10px">
 					<form name='form1'>
 						关键词：
@@ -88,13 +86,12 @@
 		</tr>
 		<form name='feedback'>
 			<tr>
-				<td height="215" bgcolor="#FFFFFF" valign="top">
+				<td bgcolor="#FFFFFF" valign="top">
 					<table width='100%' border='0' cellpadding='0' cellspacing='0' class="table table-borderless">
 						{dede:datalist}
 						<tr height='26'>
 							<td>
-								<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#EEF7D2"
-									class="table table-borderless">
+								<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#EEF7D2" class="table table-borderless">
 									<tr bgcolor="#F4FAE4">
 										<td width="9%">
 											&nbsp;选择 <input name="fid" type="checkbox" class="np" id="fid" value="{dede:field.id/}">
@@ -135,7 +132,7 @@
 						</tr>
 						{/dede:datalist}
 						<tr>
-							<td height='26' align='center' bgcolor="#F9FCEF">
+							<td height='26' align='center' bgcolor="#f6f6f6">
 								{dede:pagelist listsize='5' /}
 							</td>
 						</tr>

@@ -58,7 +58,7 @@ else if ($action == 'editload') {
       <tr>
         <td width="102" height="30">网站名称：</td>
         <td width="302"><input name="title" type="text" id="title" style="width:200px" value="<?php echo $row['title']; ?>" /></td>
-        <td width="26" align="center"><a href="javascript:CloseEditNode()" class="mr-3"><img src="images/close.gif" /></a></td>
+        <td width="26" align="center"><a href="javascript:CloseEditNode()" class="mr-3"><img src="images/close.gif"></a></td>
       </tr>
       <tr>
         <td height="30">原内容编码：</td>

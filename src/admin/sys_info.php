@@ -98,7 +98,7 @@ else if ($dopost == 'search') {
     $keywords = isset($keywords) ? strip_tags($keywords) : '';
     $i = 1;
     $configstr = <<<EOT
- <table width="100%" cellspacing="1" cellpadding="1" border="0" bgcolor="#cfcfcf" id="tdSearch" style="">
+ <table width="100%" cellspacing="1" cellpadding="1" border="0" id="tdSearch" style="">
   <tbody>
    <tr height="26" bgcolor="#fbfce2" align="center">
     <td width="300">参数说明</td>
@@ -113,7 +113,7 @@ EOT;
         $dsql->Execute();
 
         while ($row = $dsql->GetArray()) {
-            $bgcolor = ($i++ % 2 == 0) ? "#F9FCEF" : "#ffffff";
+            $bgcolor = ($i++ % 2 == 0) ? "#f6f6f6" : "#ffffff";
             $row['info'] = preg_replace("#{$keywords}#", '<span style="color:#dc3545">'.$keywords.'</span>', $row['info']);
             $row['varname'] = preg_replace("#{$keywords}#", '<span style="color:#dc3545">'.$keywords.'</span>', $row['varname']);
 ?>
@@ -146,7 +146,7 @@ EOT;
         exit;
     }
     if ($i == 1) {
-        echo '      <tr align="center" bgcolor="#F9FCEF" height="26">
+        echo '      <tr align="center" bgcolor="#f6f6f6" height="26">
            <td colspan="3">没有找到搜索的内容</td>
           </tr></table>';
     }

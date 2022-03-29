@@ -55,7 +55,7 @@ else if ($dopost == 'setskin') {
             if(trim($row['editcon'])==''){
                 $row['editcon'] = 'archives_edit.php';
             }
-            $rowarcrank = $row['arcrank']==-1? "&nbsp;<small>[未审核]</small>":"";
+            $rowarcrank = $row['arcrank']==-1? "&nbsp;<sapn class='btn btn-success btn-sm'>[未审核]</span>":"";
             $pubdate = GetDateMk($row['pubdate']);
             echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
         }
@@ -80,7 +80,7 @@ else if ($dopost == 'setskin') {
     if (empty($cfg_auth_code)) {
         echo json_encode(array(
             "code" => -1002,
-            "msg" => "当前站点尚未购买商业版授权",
+            "msg" => "当前站点尚未升级商业版授权",
             "result" => null,
         ));
         exit;

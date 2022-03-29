@@ -88,7 +88,7 @@ function DoRand(jobname)
 }
 </script>
 <div id='loading' style='z-index:3000;top:160;left:300;position:absolute;display:none;'>
-    <img src='images/loadinglit.gif' /> 请稍后，正在操作中
+    <img src='images/loadinglit.gif'> 请稍后，正在操作中
 </div>
 <table width='98%' align='center'>
 <tr>
@@ -100,7 +100,7 @@ function DoRand(jobname)
     </td>
 </tr>
 <tr>
-    <td bgcolor='#F9FCEF'>请按说明修改设置：</td>
+    <td bgcolor='#f6f6f6'>请按说明修改设置：</td>
 </tr>
 <tr>
     <td><textarea name='templates' id='templates' style='width:100%;height:250px'>$templates</textarea></td>

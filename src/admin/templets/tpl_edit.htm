@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/base.css">
 	<style>
 .selbt{float:left;display:inline-block;padding:6px;margin:0 6px 6px 0;text-align:center}
-.helpdiv{float:left;display:none;border:1px dashed #749F4D;background-color:#F9FCEF;width:100%;padding:5px}
+.helpdiv{float:left;display:none;border:1px dashed #749F4D;background-color:#f6f6f6;width:100%;padding:5px}
 	</style>
 	<link rel="stylesheet" href="css/codemirror.css">
 	<script type="text/javascript" src="js/codemirror.js"></script>
@@ -48,8 +48,7 @@
 	</script>
 </head>
 <body bgcolor="#F2F4F3" leftmargin="8" topmargin="8">
-	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ECFAD3"
-		style="margin-bottom:10px" class="table maintable table-bordered mt-3">
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ECFAD3" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
 		<tr>
 			<td height="26" style="border:1px dotted #BFD67C" background='images/wbg.gif'><a href='templets_main.php?acdir=<?php echo $acdir; ?>'>模板管理</a>  &gt; 修改/新建模板</td>
 		</tr>
@@ -58,7 +57,7 @@
 		<input type="hidden" name="action" value="saveedit">
 		<input type="hidden" name="acdir" value="<?php echo $acdir; ?>">
 		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-		<table width='98%' border='0' cellpadding='3' cellspacing='1' bgcolor='#cfcfcf' align="center" class="table maintable table-bordered mt-3">
+		<table width='98%' border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable table-bordered mt-3">
 			<tr bgcolor='#EEF4EA'>
 				<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px">
 					<span>修改/新建模板：</span>
@@ -68,7 +67,7 @@
 				<td>文件名称</td>
 				<td><input name=filename size=40 value="<?php echo $filename; ?>">（不允许用 “..” 形式的路径）</td>
 			</tr>
-			<tr bgcolor="#F9FCEF">
+			<tr bgcolor="#f6f6f6">
 				<td colspan='2' hieght="30" style="padding-left:10px">参考标签：</td>
 			</tr>
 			<tr bgcolor='#FFFFFF'>
@@ -105,7 +104,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td height="36" colspan='2' bgcolor="#F9FCEF">
+				<td height="36" colspan='2' bgcolor="#f6f6f6">
 					<button type="submit" name='B1' class="btn btn-success btn-sm">保存</button>
 					&nbsp;
 					<button type="reset" name='B2' class="btn btn-success btn-sm">取消修改</button>

@@ -106,14 +106,14 @@ td,th{padding:.25rem}
 .coolbg2{border:1px solid #ccc;background-color:#F2F5E9;height:18px}
 .coolbt2{border-left:2px solid #EFEFEF;border-top:2px solid #EFEFEF;border-right:2px solid #ACACAC;border-bottom:2px solid #ACACAC;background-color:#F7FCDA}
 .nbline{border-bottom:1px solid #d6d6d6;background-color:#FFFFFF}
-.bline2{border-bottom:1px solid #d6d6d6;background-color:#F9FCEF}
+.bline2{border-bottom:1px solid #d6d6d6;background-color:#f6f6f6}
 .maintable{border:1px solid #DEE2E6}
 </style>
 </head>
 <body background="images/allbg.gif" leftmargin="8" topmargin="8" onLoad="ContextMenu.intializeContextMenu()">
-<table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" align="center" class="maintable mt-3">
+<table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3">
 <tr>
-  <td height="26" background="images/tbg.gif">
+  <td height="26" style="background:#f6f6f6">
     <span style="float:left;padding-left:10px;line-height:26px" class="py-3">网站栏目管理</span>
     <span style="float:right;padding-right:10px" class="py-3">
    	  <a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
@@ -127,13 +127,12 @@ td,th{padding:.25rem}
   <td height="26" bgcolor="#ffffff">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="50%" style="padding-left:10px">修改栏目属性（使用鼠标右键弹出菜单）</td>
-        <td width="50%" style="padding-right:10px" align="right">
-        <?php if(!isset($exallct)) { ?>
-        <a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
-        <?php } else { ?>
-        <a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
-        <?php } ?>
+        <td style="padding-left:10px">
+          <?php if(!isset($exallct)) { ?>
+          <a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
+          <?php } else { ?>
+          <a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
+          <?php } ?>
         </td>
       </tr>
     </table>
@@ -152,7 +151,7 @@ $tu->ListAllType($userChannel,$opendir);
 </tr>
 </form>
 <tr>
-  <td height="36" bgcolor="#FFFFFF" align="right" class="py-3" style="padding-right:10px">
+  <td height="36" align="right" class="py-3" style="padding-right:10px;background:#f6f6f6">
     <button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
     <button type="button" name="sb4" class="btn btn-success btn-sm" onClick="location='makehtml_js.php';">更新脚本</button>
 		<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>
