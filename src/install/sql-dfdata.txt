@@ -4072,7 +4072,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点网址（http://域
 ('739','cfg_qk_uploadlit','异步上传缩略图，空间太不稳定用户关闭此项','3','bool','Y'),
 ('740','cfg_login_adds','登录会员中心获积分','5','number','2'),
 ('741','cfg_userad_adds','会员推广获积分','5','number','10'),
-('742','cfg_ddimg_full','是否使用缩略图强制大小，对背景填充，','3','bool','N'),
+('742','cfg_ddimg_full','是否使用缩略图强制大小，对背景填充','3','bool','N'),
 ('743','cfg_ddimg_bgcolor','缩略图空白背景填充颜色（0白，1黑）','3','number','0'),
 ('744','cfg_replace_num','文档内容关键词替换次数（0为全部替换）','7','number','1'),
 ('745','cfg_uplitpic_cut','是否上传缩略图后马上弹出裁剪框','3','bool','Y'),
