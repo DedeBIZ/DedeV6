@@ -17,8 +17,8 @@
 <script src="js/main.js"></script>
 <style>
 table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:right;vertical-align:middle}
-.table{margin-bottom:0}
 .stattable{width:100%}
+.table{margin-bottom:0}
 .web-info{padding:10px;background:#f6f6f6;border-radius:.2rem;text-align:center}
 .web-info p{margin-bottom:10px}
 </style>
@@ -26,10 +26,10 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div id="__testEvn" class="col-md-12"></div>
+            <div id="tips" class="col-md-12"></div>
             <div class="col-md-12 mt-3 mb-3">
                 <div class="card">
-                    <div class="card-header"><a title="点击查看流量统计图" href="#statChart"><i class="fa fa-line-chart"></i></a>&nbsp;流量统计表</div>
+                    <div class="card-header"><a title="查看流量统计图" href="#statChart"><i class="fa fa-line-chart"></i></a>&nbsp;流量统计表</div>
                     <div class="card-body">
                         <table class="stattable">
                             <tbody>
@@ -42,24 +42,24 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
                                 </tr>
                                 <tr class="bg-white">
                                     <td class="today">今日</td>
-                                    <td class="today" id="today_pv"></td>
-                                    <td class="today" id="today_uv"></td>
-                                    <td class="today" id="today_ip"></td>
-                                    <td class="today" id="today_vv"></td>
+                                    <td class="today" id="today_pv">0</td>
+                                    <td class="today" id="today_uv">0</td>
+                                    <td class="today" id="today_ip">0</td>
+                                    <td class="today" id="today_vv">0</td>
                                 </tr>
                                 <tr class="bg-white">
                                     <td>昨日</td>
-                                    <td id="yestoday_pv"></td>
-                                    <td id="yestoday_uv"></td>
-                                    <td id="yestoday_ip"></td>
-                                    <td id="yestoday_vv"></td>
+                                    <td id="yestoday_pv">0</td>
+                                    <td id="yestoday_uv">0</td>
+                                    <td id="yestoday_ip">0</td>
+                                    <td id="yestoday_vv">0</td>
                                 </tr>
                                 <tr class="bg-white grey9 hide" style="display:table-row">
                                     <td>历史累计</td>
-                                    <td id="total_pv"></td>
-                                    <td id="total_uv"></td>
-                                    <td id="total_ip"></td>
-                                    <td id="total_vv"></td>
+                                    <td id="total_pv">0</td>
+                                    <td id="total_uv">0</td>
+                                    <td id="total_ip">0</td>
+                                    <td id="total_vv">0</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -99,6 +99,12 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
                                         <span><?php echo @phpversion(); ?></span>
                                     </div>
                                 </td>
+                                <td>
+                                    <div class="web-info">
+                                        <p>数据库版本</p>
+                                        <span><?php echo $dsql->GetVersion(); ?></span>
+                                    </div>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -130,9 +136,7 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
         <div id="loaddiv" style="display:none">
             <p align="center"><img src="images/loadinglit.gif">请稍后，正在下载更新文件列表</p>
         </div>
-        <div id="editTab">
-            <span id="editTabBody">请稍候，正在载入</span>
-        </div>
+        <div id="editTab"><span id="editTabBody">请稍候，正在载入</span></div>
         <div id="addTab">
             <form name="addform" action="index_body.php">
                 <input type="hidden" name="dopost" value="addnew">
@@ -168,7 +172,7 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
     $(function(){
         $.get("index_testenv.php", function (data){
             if (data !== ''){
-                $("#__testEvn").html(data);
+                $("#tips").html(data);
             }
         });
         $.get("index_body.php?dopost=get_articles", function (data){

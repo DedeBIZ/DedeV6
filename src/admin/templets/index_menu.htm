@@ -19,9 +19,9 @@ dl.bitem2{margin:0 0 2px 10px;width:140px;background:url(images/menunewbg2.gif)r
 dl.bitem dt,dl.bitem2 dt{padding-left:30px;height:26px;line-height:26px;cursor:pointer}
 dl.bitem dd,dl.bitem2 dd{padding:10px;background:#fff}
 dl.bitem dt b,dl.bitem2 dt b{color:#4f7632}
-a.mm div{padding:7px 4px 4px 10px;height:40px;font-weight:600;color:#666;background:url(images/leftmbg1.gif)no-repeat;cursor:pointer}
+a.mm div{padding:7px 4px 4px 10px;height:40px;color:#666;background:url(images/leftmbg1.gif)no-repeat;cursor:pointer}
 a.mm:hover div{color:#4f7632;background:url(images/leftbg2.gif)no-repeat}
-a.mmac div{padding:7px 4px 4px 10px;height:40px;font-weight:600;color:#4f7632;background:url(images/leftbg2.gif)no-repeat}
+a.mmac div{padding:7px 4px 4px 10px;height:40px;color:#4f7632;background:url(images/leftbg2.gif)no-repeat}
 #mainct{padding-top:12px;background:url(images/idnbg1.gif)repeat-y}
 .sitemu li{padding:0 0 0 20px;height:26px;line-height:26px;background:url(images/arr4.gif)no-repeat 6px 10px}
 .fllct{float:left;width:80px}
@@ -33,15 +33,15 @@ a.mmac div{padding:7px 4px 4px 10px;height:40px;font-weight:600;color:#4f7632;ba
 	<table width="180" align="left" cellspacing="0" cellpadding="0">
 		<tr>
 			<td valign="top" style="padding-top:10px" width="26">
-				<a id="link1" class="mmac"><div onClick="ShowMainMenu(1)">运维</div></a>
-				<a id="link100" class="mm"><div onClick="ShowMainMenu(100)">插件</div></a>
-				<a id="link5" class="mm"><div onClick="ShowMainMenu(5)">更新</div></a>
-				<a id="link6" class="mm"><div onClick="ShowMainMenu(6)">会员</div></a>
+				<a id="link1" class="mmac"><div onClick="ShowMainMenu(1)"><b>运维<b></div></a>
+				<a id="link100" class="mm"><div onClick="ShowMainMenu(100)"><b>插件<b></div></a>
+				<a id="link5" class="mm"><div onClick="ShowMainMenu(5)"><b>更新<b></div></a>
+				<a id="link6" class="mm"><div onClick="ShowMainMenu(6)"><b>会员<b></div></a>
 				<?php
 				if($cuserLogin->getUserType()>=10){
 				?>
-				<a id="link7" class="mm"><div onClick="ShowMainMenu(7)">模板</div></a>
-				<a id="link10" class="mm"><div onClick="ShowMainMenu(10)">系统</div></a>
+				<a id="link7" class="mm"><div onClick="ShowMainMenu(7)"><b>模板<b></div></a>
+				<a id="link10" class="mm"><div onClick="ShowMainMenu(10)"><b>系统<b></div></a>
 				<?php
 				}
 				?>

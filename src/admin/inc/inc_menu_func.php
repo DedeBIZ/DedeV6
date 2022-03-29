@@ -10,11 +10,9 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-$headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\")'>~channelname~</dt>
-<dd style='display:~display~' class='sitem' id='items~cc~'>
-<ul class='sitemu'>\r\n";
-$footTemplet = "</ul>\r\n</dd>\r\n</dl>\r\n";
-$itemTemplet = "<li>~link~</li>\r\n";
+$headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\")'><b>~channelname~</b></dt><dd style='display:~display~' class='sitem' id='items~cc~'><ul class='sitemu'>";
+$footTemplet = "</ul></dd></dl>";
+$itemTemplet = "<li>~link~</li>";
 function GetMenus($userrank, $topos = 'main')
 {
     global $openitem, $headTemplet, $footTemplet, $itemTemplet;
@@ -35,7 +33,7 @@ function GetMenus($userrank, $topos = 'main')
         if ($ctag->GetName() == 'top' && ($ctag->GetAtt('rank') == '' || TestPurview($ctag->GetAtt('rank')))) {
             if ($openitem != 999 && !preg_match("#".$openitem.'_'."#", $ctag->GetAtt('item')) && $openitem != 100) continue;
             $m++;
-            echo "<!-- Item ".($m + 1)." Strat -->\r\n";
+            echo "<!-- Item ".($m + 1)." Strat -->";
             $htmp = str_replace("~channelname~", $ctag->GetAtt("name"), $headTemplet);
             if (empty($openitem) || $openitem == 100) {
                 if ($ctag->GetAtt('notshowall') == '1') continue;
@@ -67,20 +65,20 @@ function GetMenus($userrank, $topos = 'main')
                         }
                         //an add icos , small items use att ischannel='1' addico='ico' addalt='msg' linkadd=''
                         $link = "        <div class='items'>
-            <div class='fllct'>$link</div>\r\n
+            <div class='fllct'>$link</div>
             <div class='flrct'>
                 <a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><img src='$addico' alt='$addalt' title='$addalt'/></a>
             </div>
-        </div>\r\n";
+        </div>";
                     } else {
-                        $link .= "\r\n";
+                        $link .= "";
                     }
                     $itemtmp = str_replace('~link~', $link, $itemTemplet);
                     echo $itemtmp;
                 }
             }
             echo $footTemplet;
-            echo "<!-- Item ".($m + 1)." End -->\r\n";
+            echo "<!-- Item ".($m + 1)." End -->";
         }
     }
 }//End Function
