@@ -1,10 +1,7 @@
-// 建议采用现代浏览器内置的fetch替换现有的webajax.js
-
+//建议采用现代浏览器内置的fetch替换现有的webajax.js
 function $DE(id) {
     return document.getElementById(id);
 }
-
-
 //读写cookie函数
 function GetCookie(c_name)
 {
@@ -24,7 +21,6 @@ function GetCookie(c_name)
     }
     return null
 }
-
 function SetCookie(c_name,value,expiredays)
 {
     var exdate = new Date();
