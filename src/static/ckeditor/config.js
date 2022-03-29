@@ -18,6 +18,7 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'colors', groups: ['colors'] },
 		{ name: 'tools', groups: ['tools'] }
 	];
+	config.removePlugins = 'exportpdf';
 	config.height = 500;
 	config.extraPlugins = 'html5video,dedepagebreak,textindent';
 	config.removeButtons = 'About,ShowBlocks,Iframe,Flash,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField';

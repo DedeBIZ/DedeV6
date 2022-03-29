@@ -158,23 +158,23 @@ class TypeUnit
                     //普通列表
                     if ($ispart == 0 || empty($ispart)) {
                         $smenu = " oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\"";
-                        $timg = " <img src='images/tree_page.gif'> ";
+                        $timg = " <img src='images/tree_page.gif'>";
                     }
                     //封面频道
                     else if ($ispart == 1) {
                         $smenu = " oncontextmenu=\"CommonMenuPart(event,this,$id,'".urlencode($typeName)."')\"";
-                        $timg = " <img src='images/tree_part.gif'> ";
+                        $timg = " <img src='images/tree_part.gif'>";
                     }
                     //独立页面
                     //else if($ispart==2)
                     //{
-                    //$timg = " <img src='img/tree_page.gif'> ";
+                    //$timg = " <img src='img/tree_page.gif'>";
                     //$smenu = " oncontextmenu=\"SingleMenu(event,this,$id,'".urlencode($typeName)."')\" ";
                     //}
                     //跳转网址
                     else {
                         continue;
-                        $timg = " <img src='img/tree_page.gif'> ";
+                        $timg = " <img src='img/tree_page.gif'>";
                         $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
                     }
                     echo "  <table class='sunlist'>\r\n";
