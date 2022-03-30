@@ -45,7 +45,7 @@ if (!empty($noeditor)) {
     <meta http-equiv='Content-Type' content='text/html; charset=<?php echo $cfg_soft_lang; ?>'>
     <title>选择多媒体</title>
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/web/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>
 html{background:#f2f2f2}
