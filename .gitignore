@@ -24,7 +24,7 @@ src/data/mysqli_error_trace.inc
 src/uploads/litimg/*
 src/special/*.html
 *.bat
-src/data/backupdata/*
+src/data/backupdata/*.txt
 src/a/*.html
 src/data/mkall_cache_*.php
 src/data/payment/cod.php
