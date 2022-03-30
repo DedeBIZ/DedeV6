@@ -29,7 +29,6 @@ function IsCommendArchives($iscommend)
     }
     return $s;
 }
-
 /**
  *  获得推荐的标题
  *
@@ -44,7 +43,6 @@ function GetCommendTitle($title, $iscommend)
     }
     return "$title";
 }
-
 $GLOBALS['RndTrunID'] = 1;
 /**
  *  更换颜色
@@ -62,7 +60,6 @@ function GetColor($color1, $color2)
         return $color2;
     }
 }
-
 /**
  *  检查图片是否存在
  *
@@ -77,7 +74,6 @@ function CheckPic($picname)
         return "images/dfpic.gif";
     }
 }
-
 /**
  *  判断内容是否生成HTML
  *
@@ -94,7 +90,6 @@ function IsHtmlArchives($ismake)
         return "<span style='color:#dc3545'>未生成</span>";
     }
 }
-
 /**
  *  获得内容的限定级别名称
  *
@@ -117,7 +112,6 @@ function GetRankName($arcrank)
         return "不限";
     }
 }
-
 /**
  *  判断内容是否为图片文章
  *
@@ -127,7 +121,7 @@ function GetRankName($arcrank)
 function IsPicArchives($picname)
 {
     if ($picname != "") {
-        return "<span style='color:#dc3545'>(图)</span>";
+        return "<span style='color:#dc3545'>[图]</span>";
     } else {
         return "";
     }

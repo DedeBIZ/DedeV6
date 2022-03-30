@@ -9,7 +9,6 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-
 //考虑安全原因不管是否开启游客投稿功能，都不允许用户对图集投稿
 CheckRank(0, 0);
 if ($cfg_mb_lit == 'Y') {
@@ -29,7 +28,6 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 2;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $menutype = 'content';
 if (empty($formhtml)) $formhtml = 0;
-
 /*-------------
 function _ShowForm(){  }
 --------------*/
@@ -40,7 +38,6 @@ if (empty($dopost)) {
         ShowMsg('模型参数不正确', '-1');
         exit();
     }
-
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$cInfos['sendrank']."' ");
@@ -54,7 +51,6 @@ if (empty($dopost)) {
     include(DEDEMEMBER."/templets/album_add.htm");
     exit();
 }
-
 /*------------------------------
 function _SaveArticle(){  }
 ------------------------------*/
@@ -80,7 +76,6 @@ else if ($dopost == 'save') {
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$prow' col='$pcol' value='$pagestyle'/}\r\n";
     $hasone = false;
     $ddisfirst = 1;
-
     //只支持填写地址
     for ($i = 1; $i <= 120; $i++) {
         if (!isset(${'imgfile'.$i})) {
@@ -95,7 +90,6 @@ else if ($dopost == 'save') {
         }
     } //循环结束
     $imgurls = addslashes($imgurls);
-
     //分析处理附加表数据
     $isrm = 1;
     if (!isset($formhtml)) {
@@ -120,7 +114,6 @@ else if ($dopost == 'save') {
                 $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
-
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
@@ -128,7 +121,6 @@ else if ($dopost == 'save') {
             exit();
         }
     }
-
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
@@ -148,7 +140,6 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请联系管理员", "javascript:;");
         exit();
     }
-
     //保存到附加表
     $addtable = trim($cInfos['addtable']);
     if (empty($addtable)) {
@@ -167,22 +158,17 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
             exit();
         }
     }
-
     //增加积分
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
-
     //生成HTML
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, true);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
-
     ClearMyAddon($arcID, $title);
-
     //返回成功信息
-    $msg = "
-　　请选择您的后续操作：
+    $msg = "请选择您的后续操作：
     <a href='album_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布图集</a>
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看图集</a>

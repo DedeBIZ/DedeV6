@@ -964,7 +964,7 @@ class Mobile_Detect
         }
 
         // test the alternate, too
-        $altHeader = 'HTTP_' . $header;
+        $altHeader = 'HTTP_'.$header;
 
         //Test both the regular and the HTTP_ prefix
         if (isset($this->httpHeaders[$header])) {
@@ -1061,7 +1061,7 @@ class Mobile_Detect
             $this->userAgent = null;
             foreach ($this->getUaHttpHeaders() as $altHeader) {
                 if (false === empty($this->httpHeaders[$altHeader])) { // @todo: should use getHttpHeader(), but it would be slow. (Serban)
-                    $this->userAgent .= $this->httpHeaders[$altHeader] . " ";
+                    $this->userAgent .= $this->httpHeaders[$altHeader]." ";
                 }
             }
 

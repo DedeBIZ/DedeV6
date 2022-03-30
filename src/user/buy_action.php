@@ -11,27 +11,23 @@ CheckRank(0, 0);
 $menutype = 'mydede';
 $menutype_son = 'op';
 require_once DEDEINC.'/dedetemplate.class.php';
-
 $product = isset($product) ? trim(HtmlReplace($product, 1)) : '';
 $mid = $cfg_ml->M_ID;
 $ptype = '';
 $pname = '';
 $price = '';
 $mtime = time();
-
 if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cookie_encode) == $pd_verify) {
     $result = json_decode(mchStrCode($pd_encode, 'DECODE'));
-
     $product = preg_replace("#[^0-9a-z]#i", "", $result->product);
     $pid = preg_replace("#[^0-9a-z]#i", "", $result->pid);
-
     $row  = $dsql->GetOne("SELECT * FROM `#@__member_operation` WHERE mid='$mid' AND sta=0 AND product='$product'");
     if (!isset($row['buyid'])) {
-        ShowMsg("请不要重复提交表单!", 'javascript:;');
+        ShowMsg("请不要重复提交表单", 'javascript:;');
         exit();
     }
     if (!isset($paytype)) {
-        ShowMsg("请选择支付方式!", 'javascript:;');
+        ShowMsg("请选择支付方式", 'javascript:;');
         exit();
     }
     $buyid = $row['buyid'];
@@ -42,12 +38,10 @@ if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cook
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_operation` WHERE mid='$mid' AND sta=0 AND product='$product'");
     }
 }
-
 if (empty($product)) {
     ShowMsg("请选择一个产品!", 'javascript:;');
     exit();
 }
-
 $pid = isset($pid) && is_numeric($pid) ? $pid : 0;
 if ($product == 'member') {
     $ptype = "会员升级";
@@ -68,7 +62,6 @@ if ($product == 'member') {
     $pname = $row['pname'];
     $price = $row['money'];
 }
-
 if (!isset($paytype)) {
     $inquery = "INSERT INTO `#@__member_operation`(`buyid` , `pname` , `product` , `money` , `mtime` , `pid` , `mid` , `sta` ,`oldinfo`)
    VALUES ('$buyid', '$pname', '$product' , '$price' , '$mtime' , '$pid' , '$mid' , '0' , '$ptype');
@@ -78,12 +71,10 @@ if (!isset($paytype)) {
         echo "数据库出错，请重新尝试".$dsql->GetError();
         exit();
     }
-
     if ($price == '') {
         echo "无法识别您的订单";
         exit();
     }
-
     //获取支付接口列表
     $payment_list = array();
     $dsql->SetQuery("SELECT * FROM `#@__payment` WHERE enabled='1' ORDER BY `rank` ASC");
@@ -94,7 +85,6 @@ if (!isset($paytype)) {
         $i++;
     }
     unset($row);
-
     $pr_encode = array();
     foreach ($_REQUEST as $key => $val) {
         if (!in_array($key, array('product', 'pid'))) {
@@ -103,24 +93,18 @@ if (!isset($paytype)) {
         $val = preg_replace("#[^0-9a-z]#i", "", $val);
         $pr_encode[$key] = $val;
     }
-
     $pr_encode = str_replace('=', '', mchStrCode(json_encode($pr_encode)));
-
     $pr_verify = md5("payment".$pr_encode.$cfg_cookie_encode);
-
     $tpl = new DedeTemplate();
     $tpl->LoadTemplate(DEDEMEMBER.'/templets/buy_action_payment.htm');
     $tpl->Display();
 } else {
-
     $rs = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$paytype' ");
-
     $rs['code'] = preg_replace("#[^0-9a-z]#i", "", $rs['code']);
     if (!file_exists(DEDEINC.'/payment/'.$rs['code'].'.php')) {
         ShowMsg("未发现支付接口文件，请到后台配置", 'javascript:;');
         exit();
     }
-
     require_once DEDEINC.'/payment/'.$rs['code'].'.php';
     $pay = new $rs['code'];
     $payment = "";
@@ -152,7 +136,6 @@ if (!isset($paytype)) {
     $dtp->Display();
     exit();
 }
-
 /**
  *  加密函数
  *
@@ -171,7 +154,6 @@ function mchStrCode($string, $operation = 'ENCODE')
     $runtokey = $key_length ? ($operation == 'ENCODE' ? substr(md5(microtime(true)), -$key_length) : substr($string, 0, $key_length)) : '';
     $keys = md5(substr($runtokey, 0, 16).substr($fixedkey, 0, 16).substr($runtokey, 16).substr($fixedkey, 16));
     $string = $operation == 'ENCODE' ? sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$egiskeys), 0, 16).$string : base64_decode(substr($string, $key_length));
-
     $i = 0;
     $result = '';
     $string_length = strlen($string);

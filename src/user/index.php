@@ -11,9 +11,7 @@ require_once(dirname(__FILE__)."/config.php");
 $uid = empty($uid) ? "" : RemoveXSS($uid);
 if (empty($action)) $action = '';
 if (empty($aid)) $aid = '';
-
 $menutype = 'mydede';
-
 //会员后台
 if ($uid == '') {
     $iscontrol = 'yes';
@@ -28,10 +26,8 @@ if ($uid == '') {
         } else {
             $ddsize = 0;
         }
-
         require_once(DEDEINC.'/channelunit.func.php');
-
-        /* 最新文档8条 */
+        //最新文档8条
         $archives = array();
         $sql = "SELECT arc.*, category.namerule, category.typedir, category.moresite, category.siteurl, category.sitepath, mem.userid
         FROM `#@__archives` arc
@@ -45,24 +41,19 @@ if ($uid == '') {
             $row['htmlurl'] = GetFileUrl($row['id'], $row['typeid'], $row['senddate'], $row['title'], $row['ismake'], $row['arcrank'], $row['namerule'], $row['typedir'], $row['money'], $row['filename'], $row['moresite'], $row['siteurl'], $row['sitepath']);
             $archives[] = $row;
         }
-
-        /** 调用访客记录 **/
+        //调用访客记录
         $_vars['mid'] = $cfg_ml->M_ID;
-
         if (empty($cfg_ml->fields['face'])) {
             $cfg_ml->fields['face'] = ($cfg_ml->fields['sex'] == '女') ? 'templets/images/dfgirl.png' : 'templets/images/dfboy.png';
         }
-
-        /** 我的收藏 **/
+        //我的收藏
         $favorites = array();
         $dsql->Execute('fl', "SELECT * FROM `#@__member_stow` WHERE mid='{$cfg_ml->M_ID}'  LIMIT 5");
         while ($arr = $dsql->GetArray('fl')) {
             $favorites[] = $arr;
         }
-
-        /** 有没新短信 **/
+        //有没新短信
         $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_pms` WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");
-
         $dpl = new DedeTemplate();
         $tpl = dirname(__FILE__)."/templets/index.htm";
         $dpl->LoadTemplate($tpl);

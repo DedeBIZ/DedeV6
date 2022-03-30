@@ -13,7 +13,6 @@ include_once DEDEINC.'/datalistcp.class.php';
 $menutype = 'mydede';
 $menutype_son = 'op';
 if (!isset($dopost)) $dopost = '';
-
 /**
  *  获取状态
  *
@@ -56,7 +55,7 @@ if ($dopost == '') {
             $dsql->ExecuteNoneQuery($query2);
             $dsql->ExecuteNoneQuery($query3);
         }
-        ShowMsg("成功删除指定的交易记录!", "shops_orders.php");
+        ShowMsg("成功删除指定的交易记录", "shops_orders.php");
         exit();
     }
 }

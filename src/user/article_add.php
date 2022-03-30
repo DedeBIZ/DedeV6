@@ -18,24 +18,19 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
-
 /*-------------
 function _ShowForm(){  }
 --------------*/
 if (empty($dopost)) {
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
-
     //如果限制了会员级别或类型，则允许游客投稿选项无效
     if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') CheckRank(0, 0);
-
-
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='".$cInfos['sendrank']."' ");
         ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
-
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
         ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
@@ -48,7 +43,6 @@ function _SaveArticle(){  }
 ------------------------------*/
 else if ($dopost == 'save') {
     include(DEDEMEMBER.'/inc/archives_check.php');
-
     //分析处理附加表数据
     $inadd_f = $inadd_v = '';
     if (!empty($dede_addonfields)) {
@@ -70,36 +64,29 @@ else if ($dopost == 'save') {
             }
         }
     }
-
     //这里对前台提交的附加数据进行一次校验
     $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
     if ($fontiterm != $inadd_f) {
         ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
         exit();
     }
-
     $body = AnalyseHtmlBody($body, $description);
     $body = HtmlReplace($body, -1);
-
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
         ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
         exit();
     }
-
     //保存到主表
-    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
-color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
-VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle',
-'$color','$writer','$source','','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
+    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
+    VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
         ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请联系管理员", "javascript:;");
         exit();
     }
-
     //保存到附加表
     $addtable = trim($cInfos['addtable']);
     if (empty($addtable)) {
@@ -117,22 +104,17 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
             exit();
         }
     }
-
     //增加积分
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
-
     //生成HTML
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
-
     ClearMyAddon($arcID, $title);
-
     //返回成功信息
-    $msg =
-        "请选择您的后续操作：
+    $msg = "请选择您的后续操作：
     <a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>继续发布文章</a>
     &nbsp;&nbsp;
     <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a>

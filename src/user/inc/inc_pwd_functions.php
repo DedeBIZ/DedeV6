@@ -31,7 +31,6 @@ function random($length, $numeric = 0)
     }
     return $hash;
 }
-
 /**
  *  邮件发送函数
  *
@@ -63,7 +62,6 @@ function sendmail($email, $mailtitle, $mailbody, $headers)
         }
     }
 }
-
 /**
  *  发送邮件；type为INSERT新建验证码，UPDATE修改验证码；
  *
@@ -82,7 +80,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
     $mailtitle = $cfg_webname.":密码修改";
     $mailto = $mailto;
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: $cfg_adminemail";
-    $mailbody = "亲爱的".$userid."：\r\n您好感谢您使用".$cfg_webname."网\r\n".$cfg_webname."应您的要求，重新设置密码：（注：如果您没有提出申请，请检查您的信息是否泄漏）\r\n本次临时登录密码为：".$randval." 请于三天内登录下面网址确认修改\r\n".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
+    $mailbody = "您好".$userid."：\r\n感谢您使用".$cfg_webname."网\r\n".$cfg_webname."应您的要求，重新设置密码（如果您没有提出申请，请检查您的信息是否泄漏）\r\n本次临时登录密码为：".$randval." 请于三天内登录下面网址确认修改\r\n".$cfg_basehost.$cfg_memberurl."/resetpassword.php?dopost=getpasswd&id=".$mid;
     if ($type == 'INSERT') {
         $key = md5($randval);
         $sql = "INSERT INTO `#@__pwd_tmp` (`mid` ,`membername` ,`pwd` ,`mailtime`)VALUES ('$mid', '$userid',  '$key', '$mailtime');";
@@ -111,7 +109,6 @@ function newmail($mid, $userid, $mailto, $type, $send)
         }
     }
 }
-
 /**
  *  查询会员信息mail用户输入邮箱地址；userid用户名
  *
@@ -127,7 +124,6 @@ function member($mail, $userid)
     if (!is_array($row)) return ShowMsg("对不起，用户ID输入错误", "-1");
     else return $row;
 }
-
 /**
  *  查询是否发送过验证码
  *

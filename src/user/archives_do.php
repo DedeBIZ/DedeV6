@@ -10,10 +10,8 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
-
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
-
 /*-----------------
 function delStow()
 删除收藏
@@ -30,7 +28,6 @@ if ($dopost == "delStow") {
     ShowMsg("成功删除一条收藏记录", $ENV_GOBACK_URL);
     exit();
 }
-
 /*-----------------
 function addArchives()
 添加投稿
@@ -57,7 +54,6 @@ else if ($dopost == "addArc") {
     header("Location:$addcon");
     exit();
 }
-
 /*-----------------
 function editArchives()
 修改投稿
@@ -85,7 +81,6 @@ else if ($dopost == "edit") {
     header("Location:$edit"."&aid=$aid");
     exit();
 }
-
 /*--------------------
 function delArchives()
 删除文章
@@ -94,11 +89,8 @@ else if ($dopost == "delArc") {
     CheckRank(0, 0);
     include_once(DEDEMEMBER."/inc/inc_batchup.php");
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'content_list.php?channelid=' : $_COOKIE['ENV_GOBACK_URL'];
-
-
     $equery = "SELECT arc.channel,arc.senddate,arc.arcrank,ch.maintable,ch.addtable,ch.issystem,ch.arcsta FROM `#@__arctiny` arc
-               LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
-
+        LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $row = $dsql->GetOne($equery);
     if (!is_array($row)) {
         ShowMsg("您没有权限删除这篇文档", "-1");
@@ -115,7 +107,6 @@ else if ($dopost == "delArc") {
         ShowMsg("您没有权限删除这篇文档", "-1");
         exit();
     }
-
     if ($row['arcrank'] >= 0) {
         $dtime = time();
         $maxtime = $cfg_mb_editday * 24 * 3600;
@@ -124,20 +115,16 @@ else if ($dopost == "delArc") {
             exit();
         }
     }
-
     $channelid = $row['channel'];
     $row['litpic'] = (isset($arr['litpic']) ? $arr['litpic'] : '');
-
     //删除文档
     if ($row['issystem'] != -1) $rs = DelArc($aid);
     else $rs = DelArcSg($aid);
-
     //删除缩略图
     if (trim($row['litpic']) != '' && preg_match("#^".$cfg_user_dir."/{$cfg_ml->M_ID}#", $row['litpic'])) {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '{$row['litpic']}' AND mid='{$cfg_ml->M_ID}' ");
         @unlink($cfg_basedir.$row['litpic']);
     }
-
     if ($ENV_GOBACK_URL == 'content_list.php?channelid=') {
         $ENV_GOBACK_URL = $ENV_GOBACK_URL.$channelid;
     }
@@ -154,7 +141,6 @@ else if ($dopost == "delArc") {
     }
     exit();
 }
-
 /*-----------------
 function viewArchives()
 查看文章

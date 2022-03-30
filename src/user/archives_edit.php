@@ -18,7 +18,6 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
-
 /*-------------
 function _ShowForm(){  }
 --------------*/
@@ -44,13 +43,11 @@ if (empty($dopost)) {
     include(DEDEMEMBER."/templets/archives_edit.htm");
     exit();
 }
-
 /*------------------------------
 function _SaveArticle(){  }
 ------------------------------*/
 else if ($dopost == 'save') {
     include(DEDEMEMBER.'/inc/archives_check_edit.php');
-
     //分析处理附加表数据
     $inadd_f = $inadd_m = '';
     if (!empty($dede_addonfields)) {
@@ -64,18 +61,15 @@ else if ($dopost == 'save') {
                 if (!isset(${$vs[0]})) {
                     ${$vs[0]} = '';
                 }
-
                 //自动摘要和远程图片本地化
                 if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $vs[1]);
                 }
-
                 ${$vs[0]} = GetFieldValueA(${$vs[0]}, $vs[1], $aid);
                 $inadd_m .= ','.$vs[0];
                 $inadd_f .= ','.$vs[0]." ='".${$vs[0]}."' ";
             }
         }
-
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_m) {
@@ -83,29 +77,24 @@ else if ($dopost == 'save') {
             exit();
         }
     }
-
     //处理图片文档的自定义属性
     if ($litpic != '') $flag = 'p';
-
-
     //更新数据库的SQL语句
     $upQuery = "UPDATE `#@__archives` SET
-              ismake='$ismake',
-              arcrank='$arcrank',
-              typeid='$typeid',
-              title='$title',
-              litpic='$litpic',
-              description='$description',
-              keywords='$keywords',  
-              mtype = '$mtypesid',        
-              flag='$flag'
-     WHERE id='$aid' And mid='$mid'; ";
-
+        ismake='$ismake',
+        arcrank='$arcrank',
+        typeid='$typeid',
+        title='$title',
+        litpic='$litpic',
+        description='$description',
+        keywords='$keywords',  
+        mtype = '$mtypesid',        
+        flag='$flag'
+    WHERE id='$aid' And mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
     }
-
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f}, userip='$userip' WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
@@ -118,9 +107,8 @@ else if ($dopost == 'save') {
     UpIndexKey($aid, $arcrank, $typeid, $sortrank, $tags);
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
-
     //返回成功信息
-    $msg = "　　请选择您的后续操作：
+    $msg = "请选择您的后续操作：
         <a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-secondary btn-sm'>发布新内容</a>
         &nbsp;&nbsp;
         <a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看修改</a>

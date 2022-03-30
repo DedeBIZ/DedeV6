@@ -12,10 +12,8 @@ if (!defined('DEDEMEMBER')) exit('dedebiz');
 require_once(DEDEINC.'/image.func.php');
 require_once(DEDEINC.'/archives.func.php');
 require_once(DEDEINC."/userlogin.class.php");
-
 //检查用户是否被禁言
 CheckNotAllow();
-
 /**
  *  获得HTML里的外部资源，针对图集
  *
@@ -84,7 +82,6 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
     }
     return $rsimg;
 }
-
 /**
  *  图集里大图的小图
  *
@@ -105,7 +102,6 @@ function GetImageMapDD($filename, $ddm, $oldname = '')
     ImageResize($GLOBALS['cfg_basedir'].$filename, $ddm, 300, $toFile);
     return $ddpicok;
 }
-
 /**
  *  把上传的信息保存到数据库
  *
@@ -132,9 +128,8 @@ function SaveUploadInfo($title, $filename, $medaitype = 1, $addinfos = '')
     $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$filename' AND mid='".$cfg_ml->M_ID."'; ");
     $uptime = time();
     if (is_array($row)) {
-        $query = "UPDATE `#@__uploads` SET title='$title',mediatype='$medaitype',
-                     width='{$addinfos[0]}',height='{$addinfos[1]}',filesize='{$addinfos[2]}',uptime='$uptime'
-                     WHERE aid='{$row['aid']}'; ";
+        $query = "UPDATE `#@__uploads` SET title='$title',mediatype='$medaitype',width='{$addinfos[0]}',height='{$addinfos[1]}',filesize='{$addinfos[2]}',uptime='$uptime'
+            WHERE aid='{$row['aid']}'; ";
         $dsql->ExecuteNoneQuery($query);
     } else {
         $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
@@ -145,7 +140,6 @@ function SaveUploadInfo($title, $filename, $medaitype = 1, $addinfos = '')
     AddMyAddon($fid, $filename);
     return TRUE;
 }
-
 /**
  *  获得一个附加表单
  *
@@ -156,7 +150,6 @@ function GetFormItemA($ctag)
 {
     return GetFormItem($ctag, 'member');
 }
-
 /**
  *  处理不同类型的数据
  *
@@ -171,7 +164,6 @@ function GetFieldValueA($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
 {
     return GetFieldValue($dvalue, $dtype, $aid, $job, $addvar, 'member');
 }
-
 /**
  *  获得带值的表单(编辑时用)
  *
@@ -183,7 +175,6 @@ function GetFormItemValueA($ctag, $fvalue)
 {
     return GetFormItemValue($ctag, $fvalue, 'member');
 }
-
 /**
  *  载入自定义表单(用于发布)
  *
@@ -209,13 +200,11 @@ function PrintAutoFieldsAdd(&$fieldset, $loadtype = 'all', $isprint = TRUE)
             }
         }
     }
-
     echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"".$dede_addonfields."\" />";
     echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"".$GLOBALS['csrf_token']."\" />";
     //增加一个返回
     return $addonfieldsname;
 }
-
 /**
  *  载入自定义表单(用于编辑)
  *
@@ -244,7 +233,6 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
     echo "<input type=\"hidden\" name=\"dede_addonfields\" value=\"".$dede_addonfields."\" />";
     echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"".$GLOBALS['csrf_token']."\" />";
 }
-
 /**
  *  创建指定ID的文档
  *
@@ -274,7 +262,6 @@ function MakeArt($aid, $ismakesign = FALSE)
     }
     return $reurl;
 }
-
 /**
  *  处理HTML文本、自动摘要、自动获取缩略图等
  *
@@ -289,12 +276,10 @@ function AnalyseHtmlBody($body, &$description, $dtype = '')
     global $cfg_mb_rmdown, $cfg_basehost, $cfg_auot_description, $arcID;
     $autolitpic = (empty($autolitpic) ? '' : $autolitpic);
     $body = stripslashes($body);
-
     //远程图片本地化
     if ($cfg_mb_rmdown == 'Y') {
         $body = GetCurContent($body);
     }
-
     //自动摘要
     if ($description == '' && $cfg_auot_description > 0) {
         $description = cn_substr(html2text($body), $cfg_auot_description);
@@ -304,7 +289,6 @@ function AnalyseHtmlBody($body, &$description, $dtype = '')
     $body = addslashes($body);
     return $body;
 }
-
 /**
  *  获得文章body里的外部资源
  *

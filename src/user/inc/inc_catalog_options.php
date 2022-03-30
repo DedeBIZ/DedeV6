@@ -9,7 +9,6 @@
  * @link           https://www.dedebiz.com
  */
 if (!defined('DEDEMEMBER')) exit('dedebiz');
-
 /**
  *  获取选项列表
  *
@@ -47,7 +46,6 @@ function GetOptionList($selid = 0, $channeltype = 0)
     }
     return $OptionArrayList;
 }
-
 /**
  *  逻辑递归
  *
@@ -79,7 +77,6 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
         LogicGetOptionArray($row->id, $step."─", $channeltype, $selid);
     }
 }
-
 /**
  *  自定义类型
  *

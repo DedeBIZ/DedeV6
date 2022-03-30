@@ -15,7 +15,6 @@ $menutype_son = 'op';
 require_once(DEDEINC.'/datalistcp.class.php');
 setcookie('ENV_GOBACK_URL', GetCurUrl(), time() + 3600, '/');
 if (!isset($dopost)) $dopost = '';
-
 if ($dopost == '') {
     $query = "SELECT * FROM `#@__member_operation` WHERE mid='".$cfg_ml->M_ID."' And product='archive' order by aid desc";
     $dlist = new DataListCP();

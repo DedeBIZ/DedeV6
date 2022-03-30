@@ -23,12 +23,10 @@ if ($rank == 'top') {
     $sql = "SELECT s.*,t.* FROM `#@__member_stow` AS s left join `#@__member_stowtype` AS t on t.stowname=s.type  where s.mid='".$cfg_ml->M_ID."' order by s.id desc";
     $tpl = 'mystow';
 }
-
 $dsql->Execute('nn', 'SELECT indexname,stowname FROM `#@__member_stowtype`');
 while ($row = $dsql->GetArray('nn')) {
     $rows[] = $row;
 }
-
 $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetTemplate(DEDEMEMBER."/templets/mystow.htm");

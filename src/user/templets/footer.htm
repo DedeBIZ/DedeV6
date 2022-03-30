@@ -13,22 +13,19 @@
     </button>
 </div>
 <!-- /.scroll-top -->
-
-
-<script src="<?php echo $cfg_cmsurl;?>/static/web/js/popper.min.js"></script>
-<script src="<?php echo $cfg_cmsurl;?>/static/web/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo $cfg_cmsurl;?>/static/web/js/style.js"></script>
-
+<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/popper.min.js"></script>
+<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/style.js"></script>
 <script>
     //校验是否登录
     function CheckLogin() {
-        $.get("<?php echo $cfg_cmsurl;?>/user/ajax_loginsta.php?format=json",function(data) {
+        $.get("<?php echo $cfg_cmsurl; ?>/user/ajax_loginsta.php?format=json",function(data) {
             let result = JSON.parse(data);
             if (result.code === 200) {
                 $("#_login").html(`
                     欢迎，${result.data.username}
-                    <a class="ml-2" href="<?php echo $cfg_cmsurl;?>/user/">[会员中心]</a>
-                    <a class="ml-2" href="<?php echo $cfg_cmsurl;?>/user/index_do.php?fmdo=login&dopost=exit">[退出]</a>
+                    <a class="ml-2" href="<?php echo $cfg_cmsurl; ?>/user/">[会员中心]</a>
+                    <a class="ml-2" href="<?php echo $cfg_cmsurl; ?>/user/index_do.php?fmdo=login&dopost=exit">[退出]</a>
                 `);
                 $("#iptUsername").val(result.data.username);
                 $("#iptUsername").attr("disabled", "disabled");

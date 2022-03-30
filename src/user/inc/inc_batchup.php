@@ -10,7 +10,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.func.php");
-
 /**
  *  删除文档
  *
@@ -22,21 +21,18 @@ function DelArc($aid)
 {
     global $dsql, $cfg_cookie_encode, $cfg_ml, $cfg_upload_switch, $cfg_medias_dir;
     $aid = intval($aid);
-
     //读取文档信息
     $arctitle = '';
     $arcurl = '';
-
     $arcQuery = "SELECT arc.*,ch.addtable,tp.typedir,tp.typename,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,ch.nid
-          FROM `#@__archives` arc
-          LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-          LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
+        FROM `#@__archives` arc
+        LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
+        LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
         WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
         return false;
     }
-
     //删除数据库的内容
     $dsql->ExecuteNoneQuery(" DELETE FROM `#@__arctiny` WHERE id='$aid' ");
     if ($arcRow['addtable'] != '') {
@@ -70,11 +66,9 @@ function DelArc($aid)
                     }
                 }
                 $tmpname = '/(\\'.$cfg_medias_dir.'.+?)(\"| )/';
-
-                //取出文章附件；
+                //取出文章附件
                 preg_match_all("$tmpname", $row["$nid"], $delname);
-
-                //移出重复附件；
+                //移出重复附件
                 $delname = array_unique($delname['1']);
                 foreach ($delname as $var) {
                     $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url='$var' AND mid = '$cfg_ml->M_ID'");
@@ -89,7 +83,6 @@ function DelArc($aid)
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` where aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` where aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` where aid='$aid'");
-
     //删除HTML
     if ($arcRow['ismake'] == -1 || $arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0 || $arcRow['money'] > 0) {
         return TRUE;
@@ -120,13 +113,11 @@ function DelArc($aid)
             }
         }
     }
-
     //删除文本文件
     $filenameh = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
     if (is_file($filename)) @unlink($filename);
     return TRUE;
 }
-
 /**
  *  删除不带主表内容模型的数据
  *
@@ -138,30 +129,24 @@ function DelArcSg($aid)
 {
     global $dsql, $cfg_cookie_encode, $cfg_ml, $cfg_upload_switch, $cfg_medias_dir;
     $aid = intval($aid);
-
     //读取文档信息
     $arctitle = '';
     $arcurl = '';
-
-    $arcQuery = "Select arc.id,arc.typeid,arc.senddate,arc.arcrank,ch.addtable,ch.nid,
-        tp.typedir,tp.typename,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-          from `#@__arctiny` arc
-          left join `#@__arctype` tp on tp.id=arc.typeid
-          left join `#@__channeltype` ch on ch.id=arc.channel
+    $arcQuery = "Select arc.id,arc.typeid,arc.senddate,arc.arcrank,ch.addtable,ch.nid,tp.typedir,tp.typename,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+        from `#@__arctiny` arc
+        left join `#@__arctype` tp on tp.id=arc.typeid
+        left join `#@__channeltype` ch on ch.id=arc.channel
         where arc.id='$aid' ";
     $arcRow = $dsql->GetOne($arcQuery);
-
     if (!is_array($arcRow)) {
         return FALSE;
     }
-
     //删除数据库的内容
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` where id='$aid' ");
     $dsql->ExecuteNoneQuery("DELETE FROM `".$arcRow['addtable']."` where aid='$aid' ");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` where aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` where aid='$aid'");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` where aid='$aid'");
-
     //删除HTML
     if ($arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0) {
         return TRUE;
@@ -196,7 +181,6 @@ function DelArcSg($aid)
     $filenameh = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
     return TRUE;
 }
-
 /**
  *  获取真实路径
  *

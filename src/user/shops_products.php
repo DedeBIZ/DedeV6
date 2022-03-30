@@ -13,7 +13,6 @@ include_once DEDEINC.'/datalistcp.class.php';
 $menutype = 'mydede';
 $menutype_son = 'op';
 if (!isset($dopost)) $dopost = '';
-
 if ($dopost == '') {
     $do = isset($do) ? trim($do) : '';
     $oid = isset($oid) ? preg_replace("#[^-0-9A-Z]#i", "", $oid) : '';
@@ -24,7 +23,6 @@ if ($dopost == '') {
             ShowMsg("已确认订单", 'shops_products.php?oid='.$oid);
             exit();
         }
-
         $row = $dsql->GetOne("SELECT * FROM `#@__shops_userinfo` WHERE userid='".$cfg_ml->M_ID."' AND oid='$oid'");
         if (!isset($row['oid'])) {
             ShowMsg("订单不存在", -1);
@@ -44,7 +42,6 @@ if ($dopost == '') {
         unset($rs);
         $addsql = " AND oid='".$oid."'";
     }
-
     $sql = "SELECT * FROM `#@__shops_products` WHERE userid='".$cfg_ml->M_ID."' $addsql ORDER BY aid ASC";
     $dl = new DataListCP();
     $dl->pageSize = 20;
@@ -65,11 +62,10 @@ if ($dopost == '') {
             $dsql->ExecuteNoneQuery($query2);
             $dsql->ExecuteNoneQuery($query3);
         }
-        ShowMsg("成功删除指定的交易记录!", "shops_products.php");
+        ShowMsg("成功删除指定的交易记录", "shops_products.php");
         exit();
     }
 }
-
 /**
  *  获取状态
  *
@@ -92,7 +88,6 @@ function GetSta($sta, $oid)
         return '已完成';
     }
 }
-
 /**
  *  购物车时间
  *

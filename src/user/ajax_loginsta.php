@@ -7,13 +7,9 @@
  * @link           https://www.dedebiz.com
  */
 define('AJAXLOGIN', TRUE);
-
 require_once(dirname(__FILE__)."/config.php");
-
 AjaxHead();
-
 $format = isset($format) ? "json" : "";
-
 if (!$cfg_ml->IsLogin()) {
     if ($format === 'json') {
         echo json_encode(array(
@@ -26,12 +22,9 @@ if (!$cfg_ml->IsLogin()) {
     }
     exit;
 }
-
 $uid  = $cfg_ml->M_LoginID;
-
 !$cfg_ml->fields['face'] && $face = ($cfg_ml->fields['sex'] == '女') ? 'dfgirl' : 'dfboy';
 $facepic = empty($face) ? $cfg_ml->fields['face'] : $GLOBALS['cfg_memberurl'].'/templets/images/'.$face.'.png';
-
 if ($format === 'json') {
     echo json_encode(array(
         "code" => 200,

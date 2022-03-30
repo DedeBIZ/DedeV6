@@ -17,7 +17,6 @@ require_once(DEDEMEMBER."/inc/inc_archives_functions.php");
 $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 3;
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $menutype = 'content';
-
 /*-------------
 function _ShowForm(){  }
 --------------*/
@@ -48,7 +47,7 @@ if (empty($dopost)) {
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$row['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取频道配置信息出错!", "javascript:;");
+        ShowMsg("读取频道配置信息出错", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -84,7 +83,6 @@ function _SaveArticle(){  }
 else if ($dopost == 'save') {
     $description = '';
     include(DEDEMEMBER.'/inc/archives_check_edit.php');
-
     //分析处理附加表数据
     $inadd_f = '';
     if (!empty($dede_addonfields)) {
@@ -105,10 +103,8 @@ else if ($dopost == 'save') {
     }
     $body = AnalyseHtmlBody($body, $description);
     $body = HtmlReplace($body, -1);
-
     //处理图片文档的自定义属性
     if ($litpic != '') $flag = 'p';
-
     //分析处理附加表数据
     $inadd_f = '';
     $inadd_v = '';
@@ -122,7 +118,6 @@ else if ($dopost == 'save') {
                     continue;
                 }
                 $vs = explode(',', $v);
-
                 //HTML文本特殊处理
                 if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $litpic, $keywords, $vs[1]);
@@ -135,15 +130,13 @@ else if ($dopost == 'save') {
                 $inadd_f .= ",`{$vs[0]}` = '".${$vs[0]}."'";
             }
         }
-
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
-            ShowMsg("提交表单同系统配置不相符,请重新提交", "-1");
+            ShowMsg("提交表单同系统配置不相符，请重新提交", "-1");
             exit();
         }
     }
-
     //修改主档案表
     $upQuery = "UPDATE `#@__archives` set
              ismake='$ismake',
@@ -159,7 +152,6 @@ else if ($dopost == 'save') {
         ShowMsg("更新数据库archives表时出错，请检查", "-1");
         exit();
     }
-
     //软件链接列表
     $urls = '';
     for ($i = 1; $i <= 9; $i++) {
@@ -177,7 +169,6 @@ else if ($dopost == 'save') {
         }
     }
     $urls = addslashes($urls);
-
     //更新附加表
     $needmoney = @intval($needmoney);
     if ($needmoney > 100) $needmoney = 100;
@@ -201,7 +192,7 @@ else if ($dopost == 'save') {
             introduce='$body'{$inadd_f}
             WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
-            ShowMsg("更新数据库附加表 addonsoft 时出错，请检查原因", "-1");
+            ShowMsg("更新数据库附加表时出错，请检查原因", "-1");
             exit();
         }
     }
@@ -210,9 +201,8 @@ else if ($dopost == 'save') {
     if ($artUrl == '') {
         $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     }
-
     //返回成功信息
-    $msg = "　　请选择您的后续操作：
+    $msg = "请选择您的后续操作：
         <a href='soft_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新软件</a>
         &nbsp;&nbsp;
         <a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看修改</a>

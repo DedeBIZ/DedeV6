@@ -12,21 +12,17 @@ require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEMEMBER."/inc/inc_pwd_functions.php");
 if (empty($dopost)) $dopost = "";
 $id = isset($id) ? intval($id) : 0;
-
 if ($dopost == "") {
     include(dirname(__FILE__)."/templets/resetpassword.htm");
 } elseif ($dopost == "getpwd") {
-
     //验证验证码
     if (!isset($vdcode)) $vdcode = '';
-
     $svali = GetCkVdValue();
     if (strtolower($vdcode) != $svali || $svali == '') {
         ResetVdValue();
         ShowMsg("对不起，验证码输入错误", "-1");
         exit();
     }
-
     //验证邮箱，用户名
     if (empty($mail) && empty($userid)) {
         showmsg('对不起，请输入用户名或邮箱', '-1');
@@ -39,7 +35,6 @@ if ($dopost == "") {
         exit();
     }
     $member = member($mail, $userid);
-
     //以邮件方式取回密码；
     if ($type == 1) {
         //判断系统邮件服务是否开启
@@ -49,7 +44,6 @@ if ($dopost == "") {
             showmsg('对不起邮件服务暂未开启，请联系管理员', 'login.php');
             exit();
         }
-
         //以安全问题取回密码；
     } else if ($type == 2) {
         if ($member['safequestion'] == 0) {
@@ -64,9 +58,7 @@ if ($dopost == "") {
     $sql = "SELECT safequestion,safeanswer,userid,email FROM `#@__member` WHERE mid = '$mid'";
     $row = $db->GetOne($sql);
     if (empty($safequestion)) $safequestion = '';
-
     if (empty($safeanswer)) $safeanswer = '';
-
     if ($row['safequestion'] === $safequestion && $row['safeanswer'] === $safeanswer) {
         sn($mid, $row['userid'], $row['email'], 'N');
         exit();
@@ -97,7 +89,6 @@ if ($dopost == "") {
         require_once(dirname(__FILE__)."/templets/resetpassword2.htm");
     } elseif ($setp == 2) {
         if (isset($key)) $pwdtmp = $key;
-
         $sn = md5(trim($pwdtmp));
         if ($row['pwd'] == $sn) {
             if ($pwd != "") {

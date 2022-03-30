@@ -28,18 +28,15 @@ function XSSClean($val)
         $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val); //with a ;
         $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); //with a ;
     }
-
     $val = str_replace("`", "‘", $val);
     $val = str_replace("'", "‘", $val);
     $val = str_replace("\"", "“", $val);
     $val = str_replace(",", "，", $val);
     $val = str_replace("(", "（", $val);
     $val = str_replace(")", "）", $val);
-
     $ra1 = array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 'style', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base');
     $ra2 = array('onabort', 'onactivate', 'onafterprint', 'onafterupdate', 'onbeforeactivate', 'onbeforecopy', 'onbeforecut', 'onbeforedeactivate', 'onbeforeeditfocus', 'onbeforepaste', 'onbeforeprint', 'onbeforeunload', 'onbeforeupdate', 'onblur', 'onbounce', 'oncellchange', 'onchange', 'onclick', 'oncontextmenu', 'oncontrolselect', 'oncopy', 'oncut', 'ondataavailable', 'ondatasetchanged', 'ondatasetcomplete', 'ondblclick', 'ondeactivate', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onerror', 'onerrorupdate', 'onfilterchange', 'onfinish', 'onfocus', 'onfocusin', 'onfocusout', 'onhelp', 'onkeydown', 'onkeypress', 'onkeyup', 'onlayoutcomplete', 'onload', 'onlosecapture', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onmove', 'onmoveend', 'onmovestart', 'onpaste', 'onpropertychange', 'onreadystatechange', 'onreset', 'onresize', 'onresizeend', 'onresizestart', 'onrowenter', 'onrowexit', 'onrowsdelete', 'onrowsinserted', 'onscroll', 'onselect', 'onselectionchange', 'onselectstart', 'onstart', 'onstop', 'onsubmit', 'onunload');
     $ra = array_merge($ra1, $ra2);
-
     $found = true;
     while ($found == true) {
         $val_before = $val;
@@ -70,12 +67,10 @@ $_GET = XSSClean($_GET);
 $_POST = XSSClean($_POST);
 $_REQUEST = XSSClean($_REQUEST);
 $_COOKIE = XSSClean($_COOKIE);
-
 require_once(dirname(__FILE__).'/../system/common.inc.php');
 require_once(DEDEINC.'/filter.inc.php');
 require_once(DEDEINC.'/memberlogin.class.php');
 require_once(DEDEINC.'/dedetemplate.class.php');
-
 //检查CSRF
 function CheckCSRF()
 {
@@ -88,10 +83,8 @@ function CheckCSRF()
         ShowMsg('CSRF校验失败，请刷新页面重新提交', '-1');
         exit();
     }
-
     DropCookie("dede_csrf_token");
 }
-
 //生成CSRF校验token，在比较重要的表单中应该要加上这个token校验
 $cc_csrf_token = GetCookie("dede_csrf_token");
 if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
@@ -104,12 +97,9 @@ if (!isset($GLOBALS['csrf_token']) || $GLOBALS['csrf_token'] === null) {
         $GLOBALS['csrf_token'] = md5(uniqid(mt_rand(), TRUE));
     }
 }
-
 if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
     PutCookie('dede_csrf_token', $GLOBALS['csrf_token'], 7200, '/');
 }
-
-
 //获得当前脚本名称，如果您的系统被禁用了$_SERVER变量，请自行修改这个选项
 $dedeNowurl = $s_scriptName = '';
 $dedeNowurl = GetCurUrl();
@@ -118,7 +108,6 @@ $s_scriptName = $dedeNowurls[0];
 $menutype = '';
 $menutype_son = '';
 $gourl = empty($gourl) ? "" : RemoveXSS($gourl);
-
 //检查是否开放会员功能
 if ($cfg_mb_open == 'N') {
     if (defined('AJAXLOGIN')) {
@@ -139,7 +128,6 @@ if ($cfg_mb_open == 'N') {
 }
 $keeptime = isset($keeptime) && is_numeric($keeptime) ? $keeptime : -1;
 $cfg_ml = new MemberLogin($keeptime);
-
 //判断用户是否登录
 $myurl = '';
 if ($cfg_ml->IsLogin()) {
@@ -149,10 +137,8 @@ if ($cfg_ml->IsLogin()) {
         $cfg_ml->fields['face'] = $cfg_cmsurl."../static/web/img/avatar.png";
     }
 }
-
-/** 有没新短信 **/
+//有没新短信
 $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_pms` WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");
-
 /**
  *  检查用户是否有权限进行某个操作
  *
@@ -197,15 +183,14 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "普通会员";
                 }
             }
-            ShowMsg("对不起，需要：<span style='font-size:11pt;color:red'>$needname</span> 才能访问本页面<br>您目前的等级是：<span style='font-size:11pt;color:red'>$myname</span> ", "-1", 0, 5000);
+            ShowMsg("对不起，需要：<span style='color:red'>$needname</span> 才能访问本页面<br>您目前的等级是：<span style='color:red'>$myname</span> ", "-1", 0, 5000);
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("对不起，需要花费金币：<span style='font-size:11pt;color:red'>$money</span> 才能访问本页面<br>您目前拥有的金币是：<span style='font-size:11pt;color:red'>".$cfg_ml->M_Money."</span>  ", "-1", 0, 5000);
+            ShowMsg("对不起，需要花费金币：<span style='color:red'>$money</span> 才能访问本页面<br>您目前拥有的金币是：<span style='color:red'>".$cfg_ml->M_Money."</span>  ", "-1", 0, 5000);
             exit();
         }
     }
 }
-
 /**
  *  更新文档统计
  *

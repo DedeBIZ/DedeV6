@@ -19,7 +19,6 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 if (!isset($keyword)) $keyword = '';
 if (!isset($arcrank)) $arcrank = '';
-
 $positionname = '';
 $menutype = 'content';
 $mid = $cfg_ml->M_ID;
@@ -32,13 +31,11 @@ if (!is_array($cInfos)) {
 $arcsta = $cInfos['arcsta'];
 $dtime = time();
 $maxtime = $cfg_mb_editday * 24 * 3600;
-
 //禁止访问无权限的模型
 if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
     ShowMsg('您无权限访问该部分', '-1');
     exit();
 }
-
 if ($cid == 0) {
     $row = $tl->dsql->GetOne("Select typename From #@__channeltype where id='$channelid'");
     if (is_array($row)) {
@@ -54,8 +51,6 @@ if ($keyword != '') {
     $whereSql .= " And (arc.title like '%$keyword%') ";
 }
 if ($cid != 0) $whereSql .= " And arc.typeid in (".GetSonIds($cid).")";
-
-
 //增加分类查询
 if ($arcrank == '1') {
     $whereSql .= " And arc.arcrank >= 0";
@@ -64,7 +59,6 @@ if ($arcrank == '1') {
 } else if ($arcrank == '-2') {
     $whereSql .= " And arc.arcrank = -2";
 }
-
 $classlist = '';
 $dsql->SetQuery("SELECT * FROM `#@__mtypes` WHERE `mid` = '$cfg_ml->M_ID';");
 $dsql->Execute();
@@ -74,12 +68,11 @@ while ($row = $dsql->GetArray()) {
 if ($mtypesid != 0) {
     $whereSql .= " And arc.mtype = '$mtypesid'";
 }
-$query = "SELECT arc.id,arc.typeid,arc.senddate,arc.flag,arc.ismake,arc.channel,arc.arcrank,
-        arc.click,arc.title,arc.color,arc.litpic,arc.pubdate,arc.mid,tp.typename,ch.typename as channelname
-        from `#@__archives` arc
-        left join `#@__arctype` tp on tp.id=arc.typeid
-        left join `#@__channeltype` ch on ch.id=arc.channel
-       $whereSql order by arc.senddate desc ";
+$query = "SELECT arc.id,arc.typeid,arc.senddate,arc.flag,arc.ismake,arc.channel,arc.arcrank,arc.click,arc.title,arc.color,arc.litpic,arc.pubdate,arc.mid,tp.typename,ch.typename as channelname
+    from `#@__archives` arc
+    left join `#@__arctype` tp on tp.id=arc.typeid
+    left join `#@__channeltype` ch on ch.id=arc.channel
+    $whereSql order by arc.senddate desc ";
 $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetParameter("dopost", "listArchives");

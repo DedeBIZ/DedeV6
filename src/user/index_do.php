@@ -1,15 +1,14 @@
 <?php
 /**
-     * @version        $Id: index_do.php 1 8:24 2010年7月9日Z tianya $
-     * @package        DedeBIZ.User
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
- * @link           https://www.dedebiz.com
- */
+* @version        $Id: index_do.php 1 8:24 2010年7月9日Z tianya $
+* @package        DedeBIZ.User
+* @copyright      Copyright (c) 2022, DedeBIZ.COM
+* @license        https://www.dedebiz.com/license
+* @link           https://www.dedebiz.com
+*/
 require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
-
 /*********************
 function check_email()
  *******************/
@@ -32,10 +31,8 @@ if ($fmdo == 'sendMail') {
     $mailbody .= "欢迎注册成为[{$cfg_webname}]的会员\r\n";
     $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏访问这地址：\r\n\r\n";
     $mailbody .= "{$url}\r\n\r\n";
-    $mailbody .= "Power by https://www.dedebiz.com DedeBIZ内容管理系统\r\n";
-
+    $mailbody .= "Power by DedeBIZ内容管理系统\r\n";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
-
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
         $client->appid = $cfg_bizcore_appid;
@@ -53,7 +50,6 @@ if ($fmdo == 'sendMail') {
             @mail($cfg_ml->fields['email'], $mailtitle, $mailbody, $headers);
         }
     }
-
     ShowMsg('成功发送邮件，请稍后登录您的邮箱进行接收', '/user');
     exit();
 } else if ($fmdo == 'checkMail') {
@@ -82,7 +78,6 @@ if ($fmdo == 'sendMail') {
 function Case_user()
 *******************/
 else if ($fmdo == 'user') {
-
     //检查用户名是否存在
     if ($dopost == "checkuser") {
         AjaxHead();
@@ -106,7 +101,6 @@ else if ($fmdo == 'user') {
         echo $msg;
         exit();
     }
-
     //检查email是否存在
     else  if ($dopost == "checkmail") {
         AjaxHead();
@@ -128,7 +122,6 @@ else if ($fmdo == 'user') {
         echo $msg;
         exit();
     }
-
     //引入注册页面
     else if ($dopost == "regnew") {
         $step = empty($step) ? 1 : intval(preg_replace("/[^\d]/", '', $step));
@@ -136,9 +129,9 @@ else if ($fmdo == 'user') {
         exit();
     }
     /***************************
-  //积分换金币
-  function money2s() {  }
-  ***************************/
+    //积分换金币
+    function money2s() {  }
+    ***************************/
     else if ($dopost == "money2s") {
         CheckRank(0, 0);
         if ($cfg_money_scores == 0) {
@@ -150,14 +143,12 @@ else if ($fmdo == 'user') {
             ShowMsg('您没指定要兑换多少金币', '-1');
             exit();
         }
-
         $needscores = $money * $cfg_money_scores;
         if ($cfg_ml->fields['scores'] < $needscores) {
             ShowMsg('您积分不足，不能换取这么多的金币', '-1');
             exit();
         }
         $litmitscores = $cfg_ml->fields['scores'] - $needscores;
-
         //保存记录
         $mtime = time();
         $inquery = "INSERT INTO `#@__member_operation`(`buyid` , `pname` , `product` , `money` , `mtime` , `pid` , `mid` , `sta` ,`oldinfo`)
@@ -165,14 +156,12 @@ else if ($fmdo == 'user') {
         $dsql->ExecuteNoneQuery($inquery);
         //修改积分与金币值
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=$litmitscores, money= money + $money  WHERE mid='".$cfg_ml->M_ID."' ");
-
         //清除会员缓存
         $cfg_ml->DelCache($cfg_ml->M_ID);
         ShowMsg('成功兑换指定量的金币', 'operation.php');
         exit();
     }
 }
-
 /*********************
 function login()
 *******************/
@@ -200,10 +189,8 @@ else if ($fmdo == 'login') {
             ShowMsg("密码不能为空", "-1", 0, 2000);
             exit();
         }
-
         //检查帐号
         $rs = $cfg_ml->CheckUser($userid, $pwd);
-
         if ($rs == 0) {
             ResetVdValue();
             ShowMsg("用户名不存在", "index.php", 0, 2000);
@@ -228,7 +215,6 @@ else if ($fmdo == 'login') {
             exit();
         }
     }
-
     //退出登录
     else if ($dopost == "exit") {
         $cfg_ml->ExitCookie();
@@ -236,5 +222,5 @@ else if ($fmdo == 'login') {
         exit();
     }
 } else {
-    ShowMsg("本页面禁止返回!", "index.php");
+    ShowMsg("本页面禁止返回", "index.php");
 }

@@ -15,7 +15,6 @@ $menutype = 'mydede';
 $menutype_son = 'op';
 setcookie("ENV_GOBACK_URL", GetCurUrl(), time() + 3600, "/");
 if (!isset($dopost)) $dopost = '';
-
 /**
  *  获取状态
  *
@@ -40,6 +39,6 @@ if ($dopost == '') {
     $ids = preg_replace("#[^0-9,]#", "", $ids);
     $query = "DELETE FROM `#@__member_operation` WHERE aid IN($ids) AND mid='{$cfg_ml->M_ID}'";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功删除指定的交易记录!", "operation.php");
+    ShowMsg("成功删除指定的交易记录", "operation.php");
     exit();
 }

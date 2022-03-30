@@ -17,14 +17,12 @@ if ($cfg_mb_lit == 'Y') {
     ShowMsg('由于系统开启了精简版会员空间，您不能向其它会员发短信息，不过您可以向他留言', '-1');
     exit();
 }
-
 if (!isset($dopost)) {
     $dopost = '';
 }
 //检查用户是否被禁言
 CheckNotAllow();
 $state = empty($state) ? 0 : intval($state);
-
 if ($dopost == 'read') {
     $sql = "SELECT * FROM `#@__member_friends` WHERE  mid='{$cfg_ml->M_ID}' AND ftype!='-1' ORDER BY addtime DESC LIMIT 20";
     $friends = array();
@@ -97,7 +95,6 @@ else {
         $wsql = " `fromid` ='{$cfg_ml->M_ID}' AND folder LIKE 'outbox'";
         $tname = "已发信息";
     }
-
     $query = "SELECT * FROM `#@__member_pms` WHERE $wsql ORDER BY sendtime DESC";
     $dlist = new DataListCP();
     $dlist->pageSize = 20;

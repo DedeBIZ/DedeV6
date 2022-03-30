@@ -17,19 +17,17 @@ if (isset($oid)) {
         exit();
     }
     $priceCount = $row['priceCount'];
-
     $members = $dsql->GetOne("SELECT `money` FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."'");
     if ($members['money'] < $priceCount) {
         ShowMsg("支付失败点数不够", "-1");
         exit();
     }
-
     if ($dsql->ExecuteNoneQuery("UPDATE `#@__shops_orders` SET `state`='1' WHERE `oid`='$oid' AND `userid`='".$cfg_ml->M_ID."' AND `state`<1")) {
         $res = $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET money=money-$priceCount WHERE mid='{$cfg_ml->M_ID}'");
-        ShowMsg("下单,支付成功,等待商家发货", "../user/shops_products.php?oid=".$oid);
+        ShowMsg("下单，支付成功，等待商家发货", "../user/shops_products.php?oid=".$oid);
         exit();
     } else {
-        ShowMsg("支付失败,请联系管理员", "-1");
+        ShowMsg("支付失败，请联系管理员", "-1");
         exit();
     }
 } else {

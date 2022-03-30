@@ -18,7 +18,6 @@ $channelid = isset($channelid) && is_numeric($channelid) ? $channelid : 1;
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $mtypesid = isset($mtypesid) && is_numeric($mtypesid) ? $mtypesid : 0;
 $menutype = 'content';
-
 /*-------------
 function _ShowForm(){  }
 --------------*/
@@ -28,12 +27,10 @@ if (empty($dopost)) {
         ShowMsg('模型不存在', '-1');
         exit();
     }
-
     //如果限制了会员级别或类型，则允许游客投稿选项无效
     if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') {
         CheckRank(0, 0);
     }
-
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("Select membername From `#@__arcrank` where rank='".$cInfos['sendrank']."' ");
@@ -67,7 +64,6 @@ else if ($dopost == 'save') {
                 if (!isset(${$vs[0]})) {
                     ${$vs[0]} = '';
                 }
-
                 //自动摘要和远程图片本地化
                 if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $vs[1]);
@@ -79,7 +75,6 @@ else if ($dopost == 'save') {
                 $inadd_v .= " ,'".${$vs[0]}."' ";
             }
         }
-
         //这里对前台提交的附加数据进行一次校验
         $fontiterm = PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']), 'autofield', FALSE);
         if ($fontiterm != $inadd_f) {
@@ -87,29 +82,23 @@ else if ($dopost == 'save') {
             exit();
         }
     }
-
     //处理图片文档的自定义属性
     if ($litpic != '') $flag = 'p';
-
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
         ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
         exit();
     }
-
     //保存到主表
-    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
-color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
-VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle',
-'$color','$writer','$source','$litpic','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
+    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
+    VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID' ");
         ShowMsg("把数据保存到数据库主表 `#@__archives` 时出错，请联系管理员", "javascript:;");
         exit();
     }
-
     //保存到附加表
     $addtable = trim($cInfos['addtable']);
     if (empty($addtable)) {
@@ -127,24 +116,19 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
             exit();
         }
     }
-
     //增加积分
     $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} where mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
-
     //生成HTML
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, true);
     if ($artUrl == '') {
         $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
-
     ClearMyAddon($arcID, $title);
-
     //返回成功信息
-    $msg = "
-    　　请选择您的后续操作：
+    $msg = "请选择您的后续操作：
         <a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-secondary btn-sm'>继续发布内容</a>
         &nbsp;&nbsp;
         <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a>

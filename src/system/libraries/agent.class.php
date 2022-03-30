@@ -390,7 +390,7 @@ class Agent extends Mobile_Detect
                 } elseif (is_array($merged[$key])) {
                     $merged[$key][] = $value;
                 } else {
-                    $merged[$key] .= '|' . $value;
+                    $merged[$key] .= '|'.$value;
                 }
             }
         }
