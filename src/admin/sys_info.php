@@ -33,7 +33,7 @@ function ReWriteConfig()
             fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         } else {
             $row['value'] = stripslashes($row['value']);
-            fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
+            fwrite($fp, "\${$row['varname']} = '".str_replace(array("'","\\"), '', $row['value'])."';\r\n");
         }
     }
     fwrite($fp, "?".">");
