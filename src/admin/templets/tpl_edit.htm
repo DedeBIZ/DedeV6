@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 	<title>文件编辑</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../static/web/css/admin.css">
 	<style>
 .selbt{float:left;display:inline-block;padding:6px;margin:0 6px 6px 0;text-align:center}
 .helpdiv{float:left;display:none;border:1px dashed #749F4D;background-color:#f6f6f6;width:100%;padding:5px}
@@ -50,7 +50,7 @@
 <body bgcolor="#F2F4F3" leftmargin="8" topmargin="8">
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ECFAD3" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
 		<tr>
-			<td height="26" style="border:1px dotted #BFD67C" background='images/wbg.gif'><a href='templets_main.php?acdir=<?php echo $acdir; ?>'>模板管理</a>  &gt; 修改/新建模板</td>
+			<td height="26" style="border:1px dotted #BFD67C" background='../static/web/img/wbg.gif'><a href='templets_main.php?acdir=<?php echo $acdir; ?>'>模板管理</a>  &gt; 修改/新建模板</td>
 		</tr>
 	</table>
 	<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
@@ -59,7 +59,7 @@
 		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 		<table width='98%' border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable table-bordered mt-3">
 			<tr bgcolor='#EEF4EA'>
-				<td colspan='2' background='images/wbg.gif' height='26' style="padding-left:10px">
+				<td colspan='2' background='../static/web/img/wbg.gif' height='26' style="padding-left:10px">
 					<span>修改/新建模板：</span>
 				</td>
 			</tr>

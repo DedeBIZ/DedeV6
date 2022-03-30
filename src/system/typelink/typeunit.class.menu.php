@@ -112,7 +112,7 @@ class TypeUnit
                 $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
             }
             echo "<dl class='topcc'>\r\n";
-            echo "  <dd class='dlf'><img style='cursor:pointer' onClick=\"LoadSuns('suns{$id}',{$id});\" src='images/tree_explode.gif'></dd>\r\n";
+            echo "  <dd class='dlf'><img style='cursor:pointer' onClick=\"LoadSuns('suns{$id}',{$id});\" src='../static/web/img/tree_explode.gif'></dd>\r\n";
             echo "  <dd class='dlr'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></dd>\r\n";
             echo "</dl>\r\n";
             echo "<div id='suns".$id."' class='sunct'>";
@@ -163,18 +163,18 @@ class TypeUnit
                     //封面频道
                     else if ($ispart == 1) {
                         $smenu = " oncontextmenu=\"CommonMenuPart(event,this,$id,'".urlencode($typeName)."')\"";
-                        $timg = " <img src='images/tree_part.gif'>";
+                        $timg = " <img src='../static/web/img/tree_part.gif'>";
                     }
                     //独立页面
                     //else if($ispart==2)
                     //{
-                    //$timg = " <img src='img/tree_page.gif'>";
+                    //$timg = " <img src='../static/web/img/tree_page.gif'>";
                     //$smenu = " oncontextmenu=\"SingleMenu(event,this,$id,'".urlencode($typeName)."')\" ";
                     //}
                     //跳转网址
                     else {
                         continue;
-                        $timg = " <img src='img/tree_page.gif'>";
+                        $timg = " <img src='../static/web/img/tree_page.gif'>";
                         $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
                     }
                     echo "  <table class='sunlist'>\r\n";

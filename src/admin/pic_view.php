@@ -60,7 +60,7 @@ function ListPic($truePath, $nowPath)
                     <table width='106' height='106' border='0' cellpadding='0' cellspacing='1' bgcolor='#CCCCCC'>
                     <tr><td align='center' bgcolor='#FFFFFF'>
                     <a href='pic_view.php?activepath=".$fileUrl."'>
-                    <img src='images/pic_dir.gif' width='44' height='42' border='0'>
+                    <img src='images/pic_dir.gif'>
                     </a></td></tr></table></td>";
                 $filelist[$rowdd] = $filename;
                 $col++;

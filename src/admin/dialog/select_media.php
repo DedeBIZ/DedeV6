@@ -44,9 +44,9 @@ if (!empty($noeditor)) {
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=<?php echo $cfg_soft_lang; ?>'>
     <title>选择多媒体</title>
-    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/web/css/admin.css">
     <style>
 html{background:#f2f2f2}
 table{background:#fff}
@@ -115,7 +115,7 @@ a{text-decoration:none!important}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td class='linerow'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='img/dir2.gif'>上级目录</a></td>
+                <td class='linerow'><a href='select_media.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../static/web/img/dir2.gif'>上级目录</a></td>
                 <td colspan='2' class='linerow'>当前目录：$activepath</td>
                 </tr>";
                 echo $line;
@@ -123,7 +123,7 @@ a{text-decoration:none!important}
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td class='linerow'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='img/dir.gif'>$file</a></td>
+                <td class='linerow'><a href=select_media.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../static/web/img/dir.gif'>$file</a></td>
                 <td class='linerow'></td>
                 <td class='linerow'></td>
                 </tr>";
@@ -135,7 +135,7 @@ a{text-decoration:none!important}
                 if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='img/flash.gif'>$file</a></td>
+                <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='../static/web/img/flash.gif'>$file</a></td>
                 <td class='linerow'>$filesize KB</td>
                 <td align='center' class='linerow'>$filetime</td>
                 </tr>";
@@ -147,7 +147,7 @@ a{text-decoration:none!important}
                 if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='img/wmv.gif'>$file</a></td>
+                <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='../static/web/img/wmv.gif'>$file</a></td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow' align='center'>$filetime</td>
                 </tr>";
@@ -159,7 +159,7 @@ a{text-decoration:none!important}
                 if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='img/rm.gif'>$file</a></td>
+                <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='../static/web/img/rm.gif'>$file</a></td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow' align='center'>$filetime</td>
                 </tr>";
@@ -171,7 +171,7 @@ a{text-decoration:none!important}
                 if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='img/mp3.gif'>$file</a></td>
+                <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='../static/web/img/mp3.gif'>$file</a></td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow' align='center'>$filetime</td>
                 </tr>";

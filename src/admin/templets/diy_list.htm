@@ -3,11 +3,11 @@
 <head>
 <meta charset="<?php echo $cfg_soft_lang; ?>">
 <title><?php echo $diy->name; ?></title>
-<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body background="images/allbg.gif" leftmargin="8" topmargin="8">
+<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
 	<div class="bodytitle mt-3">
 		<div class="bodytitleleft"></div>
 		<div class="bodytitletxt"><?php echo $diy->name; ?>列表</div>
@@ -16,9 +16,9 @@
 		<input type="hidden" name="diyid" value="<?php echo $diyid; ?>">
 		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable" style="margin-top:10px;background:#CFCFCF">
 			<tr>
-				<td colspan="3" height="26" background="images/tbg.gif">
+				<td colspan="3" height="26" background="../static/web/img/tbg.gif">
 					<div style="float:left"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name; ?></div>
-					<div style="float:right;padding-right:10px"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid; ?>" target="_blank"><img src="images/gtk-tmp.png" align="left" title="前台预览">前台预览</a></div>
+					<div style="float:right;padding-right:10px"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid; ?>" target="_blank"><img src="../static/web/img/gtk-tmp.png" align="left" title="前台预览">前台预览</a></div>
 				</td>
 			</tr>
 			{dede:datalist}
@@ -27,15 +27,15 @@
 			{
 				$allowhtml = array('htmltext');
 				$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
-				echo '<tr bgcolor="#F8FDE3" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><img src="images/feedback-edit.gif" border="0" width="46" height="18"></a></td></tr>';
+				echo '<tr bgcolor="#F8FDE3" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><img src="../static/web/img/feedback-edit.gif" border="0" width="46" height="18"></a></td></tr>';
 				foreach($fieldlist as $field=>$fielddata)
 				{
 					if($fields[$field]=='') continue;
 					if($fielddata[1]=='img'){
-					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='images/channeladd.gif' border='0'>图片附件</a>\r\n";
+					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='../static/web/img/channeladd.gif' border='0'>图片附件</a>\r\n";
 					}
 					else if($fielddata[1]=='addon'){
-					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='images/channeladd.gif' border='0'>其它附件</a>";
+					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='../static/web/img/channeladd.gif' border='0'>其它附件</a>";
 					} else {
 						if(!in_array($fielddata[1],$allowhtml)){
 							$fields[$field] = dede_htmlspecialchars($fields[$field]);

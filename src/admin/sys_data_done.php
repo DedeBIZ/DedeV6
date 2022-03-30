@@ -254,7 +254,7 @@ else if ($dopost == 'redat') {
 function PutInfo($msg1, $msg2)
 {
     global $cfg_soft_lang;
-    $msginfo = "<html><head><meta charset='{$cfg_soft_lang}'><meta name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no'><link rel='stylesheet' href='../static/css/bootstrap.min.css'><title>提示信息</title><base target='_self'></head><body><main class='container'><div class='modal' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>提示信息</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
+    $msginfo = "<html><head><meta charset='{$cfg_soft_lang}'><meta name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no'><link rel='stylesheet' href='../static/web/css/bootstrap.min.css'><title>提示信息</title><base target='_self'></head><body><main class='container'><div class='modal' style='display:block'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h6 class='modal-title'>提示信息</h6></div><div class='modal-body'>{$msg1}</div></div></div></div></main>{$msg2}";
     echo $msginfo."</body></html>";
 }
 function RpLine($str)

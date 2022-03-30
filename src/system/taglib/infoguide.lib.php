@@ -34,7 +34,7 @@ function lib_infoguide(&$ctag, &$refObj)
     $revalue = $seli = '';
     $fields = array('nativeplace' => '', 'infotype' => '', 'typeid' => $typeid);
     if ($hasSetEnumJs != 'has') {
-        $revalue .= '<script language="javascript" type="text/javascript" src="'.$cfg_mainsite.$cmspath.'static/enums.js"></script>'."\r\n";
+        $revalue .= '<script language="javascript" type="text/javascript" src="'.$cfg_mainsite.$cmspath.'static/js/enums.js"></script>'."\r\n";
         $GLOBALS['hasSetEnumJs'] = 'hasset';
     }
     $fields['nativeplace'] = $fields['infotype'] = '';

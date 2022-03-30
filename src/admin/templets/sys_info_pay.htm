@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>支付接口配置</title>
-<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
 <script language='javascript'>
 var _key = 0;
 var payment_regurl = new Array(
@@ -66,7 +66,7 @@ function savePayment(){
 <style>
 .npvar { width:90% }
 </style>
-<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
 <center>
 <form action="sys_info_pay.php" method="post" name="form1" onSubmit="savePayment()">
 <input type="hidden" name="dopost" value="save">
@@ -85,7 +85,7 @@ foreach($payment_arr as $value){
 <td>
 <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#cbd8ac" class="sysinfo">
 <tr align="center" height="26">
-  <td height="30" colspan="2" align="left" bgcolor="#EDF9D5" background='images/tbg.gif'>&nbsp;支付接口配置参数
+  <td height="30" colspan="2" align="left" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'>&nbsp;支付接口配置参数
 </td>
 </tr>
 <tr align="center" height="26" bgcolor="#FFFFFF">

@@ -74,7 +74,7 @@ function TestSafe($tdir)
 }
 //检测
 if ($action == 'test') {
-    $message = '<link rel="stylesheet" href="../static/css/bootstrap.min.css"><link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">';
+    $message = '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css"><link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">';
     AjaxHead();
     TestSafe(DEDEROOT);
     if ($message == '') $message = "<span style='color:#28a745'>没发现可疑文件</span>";

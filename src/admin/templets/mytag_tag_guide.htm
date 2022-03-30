@@ -3,9 +3,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>智能标记向导</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="css/codemirror.css">
   <script type="text/javascript" src="js/codemirror.js"></script>
   <script type="text/javascript" src="js/mode/xml/xml.js"></script>
@@ -13,7 +13,7 @@
   <script type="text/javascript" src="js/mode/css/css.js"></script>
   <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
-<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
   <center>
     <span style="display:none" id="list1">
       ·[field:textlink/]([field:pubdate function=MyDate('m-d',@me)/])<br>
@@ -46,7 +46,7 @@
       <form action="mytag_tag_guide_ok.php" method="post" target="stafrm" name="form1">
         <input type="hidden" name="dopost" value="gettag">
         <tr>
-          <td height="26" align="left" background="images/tbg.gif" style="padding-left:10px"><a href="mytag_main.php" align="left">自定义标记管理</a> &gt; 智能标记生成向导：</td>
+          <td height="26" align="left" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mytag_main.php" align="left">自定义标记管理</a> &gt; 智能标记生成向导：</td>
         </tr>
         <tr>
           <td height="265" valign="top" bgcolor="#FFFFFF">
@@ -59,16 +59,16 @@
                   <table width="99%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%" height="126">
-                        <label><img src="images/g_t2.jpg" width="130" height="100">
+                        <label><img src="../static/web/img/g_t2.jpg" width="130" height="100">
                         <input name="liststyle" class="np" type="radio" onClick="ChangeListStyle()" value="1" checked='1' /></label> </td>
                       <td width="25%">
-                        <label><img src="images/g_t1.jpg" width="130" height="110">
+                        <label><img src="../static/web/img/g_t1.jpg">
                         <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2"></label></td>
                       <td width="25%">
-                        <label><img src="images/g_t3.jpg" width="130" height="110">
+                        <label><img src="../static/web/img/g_t3.jpg">
                         <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="3"></label></td>
                       <td>
-                        <label><img src="images/g_t4.jpg" width="130" height="110">
+                        <label><img src="../static/web/img/g_t4.jpg">
                         <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="4"></label></td>
                     </tr>
                   </table>

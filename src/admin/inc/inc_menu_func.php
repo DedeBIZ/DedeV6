@@ -61,7 +61,7 @@ function GetMenus($userrank, $topos = 'main')
                         if ($ctag2->GetAtt('addico') != '') {
                             $addico = $ctag2->GetAtt('addico');
                         } else {
-                            $addico = 'images/gtk-sadd.png';
+                            $addico = '../static/web/img/gtk-sadd.png';
                         }
                         //an add icos , small items use att ischannel='1' addico='ico' addalt='msg' linkadd=''
                         $link = "        <div class='items'>

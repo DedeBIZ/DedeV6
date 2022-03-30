@@ -309,7 +309,7 @@ else if ($dopost == 'moveArchives') {
         $divname = 'moveArchives';
         echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">";
         echo "<div class='titLeft'>移动文档</div>";
-        echo "<div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
+        echo "<div class='titRight'><img src='../static/web/img/ico-close.gif' style='cursor:pointer' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
         echo "</div>";
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
@@ -514,7 +514,7 @@ else if ($dopost == 'quickEdit') {
     $divname = 'quickEdit';
     echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">";
     echo "<div class='titLeft'>快速属性编辑</div>";
-    echo "<div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
+    echo "<div class='titRight'><img src='../static/web/img/ico-close.gif' style='cursor:pointer' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
     echo "</div>";
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
@@ -831,7 +831,7 @@ else if ($dopost == 'attsDlg') {
     $divname = 'attsDlg';
     echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">";
     echo "<div class='titLeft'>{$dojobname}</div>";
-    echo "<div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
+    echo "<div class='titRight'><img src='../static/web/img/ico-close.gif' style='cursor:pointer' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
     echo "</div>";
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
@@ -877,7 +877,7 @@ else if ($dopost == 'getCatMap') {
     $divname = 'getCatMap';
     echo "<div class='title' style='cursor:default'>";
     echo "<div class='titLeft'>栏目快速选择器</div>";
-    echo "<div class='titRight'><img src='images/ico-close.gif' style='cursor:pointer;' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
+    echo "<div class='titRight'><img src='../static/web/img/ico-close.gif' style='cursor:pointer' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
     echo "</div>";
     $tus = new TypeUnitSelector();
     ?>

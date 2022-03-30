@@ -3,9 +3,9 @@
 <head>
 <meta charset="<?php echo $cfg_soft_lang; ?>">
 <title>模板管理器</title>
-<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
 <style>
 a.btn{color:white!important}
 .linerow{border-bottom:1px solid #CBD8AC}
@@ -17,20 +17,20 @@ function DelTpl(filename) {
 }
 </script>
 </head>
-<body background="images/allbg.gif" leftmargin="8" topmargin="8">
+<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
 	<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
 		<tr>
-			<td height="30" background="images/tbg.gif" colspan="7">
+			<td height="30" background="../static/web/img/tbg.gif" colspan="7">
 				模板管理
 			</td>
 		</tr>
 	</table>
 	<table width="98%" border="0" cellspacing="1" cellpadding="0" align="center" class="table maintable table-bordered">
 		<tr height="30" align="center">
-			<td width="25%" background="images/wbg.gif">文件名</td>
-			<td width="30%" background="images/wbg.gif">文件描述</td>
-			<td width="25%" background="images/wbg.gif">修改时间</td>
-			<td width="20%" background="images/wbg.gif">操作</td>
+			<td width="25%" background="../static/web/img/wbg.gif">文件名</td>
+			<td width="30%" background="../static/web/img/wbg.gif">文件描述</td>
+			<td width="25%" background="../static/web/img/wbg.gif">修改时间</td>
+			<td width="20%" background="../static/web/img/wbg.gif">操作</td>
 		</tr>
 		<tr>
 			<td colspan="4" height="30" bgcolor="#f6f6f6">
@@ -58,7 +58,7 @@ function DelTpl(filename) {
 			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 		?>
 		<tr height="26" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="images/htm.gif"><?php echo $filename; ?></a></td>
+			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename; ?></a></td>
 			<td><?php echo $fileinfo; ?></td>
 			<td align="center"><?php echo $filetime; ?></td>
 			<td align="center">

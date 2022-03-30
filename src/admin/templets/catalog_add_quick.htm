@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>栏目管理--快速创建栏目</title>
-  <script type="text/javascript" src="../static/js/jquery.js"></script>
+  <script type="text/javascript" src="../static/web/js/jquery.min.js"></script>
   <script type="text/javascript">
     var $ = jQuery;
     $(document).ready(function () {
@@ -73,9 +73,9 @@
       }
     }
   </script>
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-  <link rel='stylesheet' href='css/base.css'>
+	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+  <link rel='stylesheet' href='../static/web/css/admin.css'>
   <style>
     .table {
       margin: 0;
@@ -91,13 +91,13 @@
         <td width="100%" height="26" valign="top">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30"><img height='14' src='images/book1.gif' width='20' />&nbsp;<a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目 </td>
+              <td height="30"><img height='14' src='../static/web/img/book1.gif' width='20' />&nbsp;<a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目 </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td width="100%" height="1" background="images/sp_bg.gif"></td>
+        <td width="100%" height="1" background="../static/web/img/sp_bg.gif"></td>
       </tr>
     </table>
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -111,7 +111,7 @@
               <td colspan="2" bgcolor="#FFFFFF">
                 <table width="86" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="86" height="26" align="center" background="images/itemnote1.gif">&nbsp;常规选项&nbsp;</td>
+                    <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">&nbsp;常规选项&nbsp;</td>
                   </tr>
                 </table>
               </td>
@@ -205,7 +205,7 @@
               <td height="26" class='bline' style="padding-left:10px">文章命名规则：</td>
               <td class='bline'><input name="namerule" type="text" id="namerule" value="{typedir}/{Y}{M}{D}/{aid}.html"
                   size="40" class="pubinputs">
-                <img src="images/help.gif" alt="帮助" border="0" style="cursor:pointer" onClick="ShowHide('helpvar2')"> </td>
+                <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:pointer" onClick="ShowHide('helpvar2')"> </td>
             </tr>
             <tr id='helpvar3' style='display:none'>
               <td height="26" bgcolor="#F3F7EA" style="padding-left:10px">支持变量：</td>
@@ -214,7 +214,7 @@
             <tr>
               <td height="26" style="padding-left:10px">列表命名规则：</td>
               <td><input name="namerule2" type="text" id="namerule2" value="{typedir}/list_{tid}_{page}.html" size="40" class="pubinputs">
-                <img src="images/help.gif" alt="帮助" border="0" style="cursor:pointer" onClick="ShowHide('helpvar3')"></td>
+                <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:pointer" onClick="ShowHide('helpvar3')"></td>
             </tr>
             <tr>
               <td height="26" bgcolor="#f6f6f6" style="padding-left:10px">栏目填写：</td>

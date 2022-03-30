@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>修改分类</title>
-<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/base.css">
-<script language="javascript" src="../static/js/jquery.js"></script>
-<script language="javascript" src="../static/js/webajax.js"></script>
-<script type="text/javascript" src="../static/js/moment.min.js"></script>
-<script type="text/javascript" src="../static/js/daterangepicker.js"></script>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
+<script language="javascript" src="../static/web/js/jquery.min.js"></script>
+<script language="javascript" src="../static/web/js/webajax.js"></script>
+<script type="text/javascript" src="../static/web/js/moment.min.js"></script>
+<script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
 <script language="javascript" src="js/main.js"></script>
-<link rel="stylesheet" href="../static/css/daterangepicker.css">
-<script src="../static/js/bootstrap.bundle.js"></script>
-<link rel="stylesheet" href="../static/css/jquery.fileupload.css">
-<link href="../static/css/cropper.min.css" rel="stylesheet">
-<script src="../static/js/cropper.min.js"></script>
+<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+<link href="../static/web/css/cropper.min.css" rel="stylesheet">
+<script src="../static/web/js/cropper.min.js"></script>
 <script language="javascript">
 function checkSubmit()
 {
@@ -36,7 +36,7 @@ table{border-collapse:separate}
 <body topmargin="8">
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
-      <td width="65%" height="30"><img src="images/book1.gif">&nbsp;<a href="content_sg_list.php?cid=<?php echo $addRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 修改分类</td>
+      <td width="65%" height="30"><img src="../static/web/img/book1.gif">&nbsp;<a href="content_sg_list.php?cid=<?php echo $addRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 修改分类</td>
       <td width="30%" align='right'>&nbsp; <?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
     </tr>
   </table>
@@ -45,7 +45,7 @@ table{border-collapse:separate}
       <td colspan="2">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="86" height="26" align="center" background="images/itemnote1.gif">常规信息</td>
+            <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规信息</td>
             <td width="86" align="center"></td>
           </tr>
         </table>
@@ -125,7 +125,7 @@ table{border-collapse:separate}
               <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
               <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
             </td>
-            <td align="center"><img id="litPic" src="<?php if($addRow['litpic']!='') echo $addRow['litpic']; else echo '../static/defaultpic.gif'; ?>" style="height:80px"></td>
+            <td align="center"><img id="litPic" src="<?php if($addRow['litpic']!='') echo $addRow['litpic']; else echo '../static/web/img/defaultpic.jpg'; ?>" style="height:80px"></td>
           </tr>
         </table>
       </td>
@@ -147,7 +147,7 @@ table{border-collapse:separate}
             echo $typeOptions;
             echo "</select>";
 			     ?>
-			     <img src='images/menusearch.gif' style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid', '<?php echo $addRow['typeid']; ?>')" alt='快捷选择' title='快捷选择' />
+			     <img src='../static/web/img/menusearch.gif' style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid', '<?php echo $addRow['typeid']; ?>')" alt='快捷选择' title='快捷选择' />
 			     </td>
           </tr>
       </table></td>

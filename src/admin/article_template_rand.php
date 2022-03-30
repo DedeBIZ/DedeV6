@@ -72,9 +72,9 @@ $wintitle = "随机模板防采集设置";
 $wecome_info = "随机模板防采集设置";
 make_hash();
 $msg = "
-<link rel='stylesheet' href='css/base.css' />
+<link rel='stylesheet' href='../static/web/css/admin.css' />
 <script language='javascript' src='js/main.js'></script>
-<script language='javascript' src='../static/js/webajax.js'></script>
+<script language='javascript' src='../static/web/js/webajax.js'></script>
 <script language='javascript'>
 function DoRand(jobname)
 {
@@ -88,7 +88,7 @@ function DoRand(jobname)
 }
 </script>
 <div id='loading' style='z-index:3000;top:160;left:300;position:absolute;display:none;'>
-    <img src='images/loadinglit.gif'>请稍后，正在操作中
+    <img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中
 </div>
 <table width='98%' align='center'>
 <tr>

@@ -3,13 +3,13 @@
 <head>
 <meta charset="<?php echo $cfg_soft_lang; ?>">
 <title>图片文档管理</title>
-<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/base.css">
-<script src="../static/js/jquery.js"></script>
-<script src="../static/js/bootstrap.bundle.js"></script>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
+<script src="../static/web/js/jquery.min.js"></script>
+<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
-<script src="../static/js/webajax.js"></script>
+<script src="../static/web/js/webajax.js"></script>
 <script src="js/ieemu.js"></script>
 <script src="js/context_menu.js"></script>
 <script src="js/main.js"></script>
@@ -18,7 +18,7 @@
 img{margin-right:0}
 </style>
 </head>
-<body leftmargin="8" topmargin="8" background="images/allbg.gif" onLoad="ContextMenu.intializeContextMenu()">
+<body leftmargin="8" topmargin="8" background="../static/web/img/allbg.gif" onLoad="ContextMenu.intializeContextMenu()">
 	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable table-bordered mt-3">
 		<tr>
 			<td>
@@ -90,7 +90,7 @@ img{margin-right:0}
 				<td width="32%" class="pl-3">
 					<p>
 						<input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np">
-						<img src="images/trun.gif" title="编辑属性" onClick="QuickEdit({dede:field.id/},event,this);" style="cursor:pointer">
+						<img src="../static/web/img/trun.gif" title="编辑属性" onClick="QuickEdit({dede:field.id/},event,this);" style="cursor:pointer">
 						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'{dede:field.title function=" str_replace('\'', '' , @me)" /}')">{dede:field.title/}&nbsp;{dede:field.flag function='IsCommendArchives(@me)'/}</a>
 					</p>
 					<span>发布时间：{dede:field.senddate function='GetDateTimeMk(@me)'/}</span>

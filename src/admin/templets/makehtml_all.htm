@@ -3,13 +3,13 @@
 <head>
 <meta charset="<?php echo $cfg_soft_lang; ?>">
 <title>一键更新</title>
-<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="../static/css/daterangepicker.css">
-<script src="../static/js/jquery.js"></script>
-<script src="../static/js/moment.min.js"></script>
-<script src="../static/js/daterangepicker.js"></script>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" rel="stylesheet" href="../static/web/css/admin.css">
+<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+<script src="../static/web/js/jquery.min.js"></script>
+<script src="../static/web/js/moment.min.js"></script>
+<script src="../static/web/js/daterangepicker.js"></script>
 <script>
 $(document).ready(function () {
     $('.datepicker').daterangepicker({
@@ -57,12 +57,12 @@ function SelUp(){
 }
 </script>
 </head>
-<body background="images/allbg.gif" leftmargin="8" topmargin="8">
+<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
     <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
         <form name="form1" action="makehtml_all.php" target="stafrm" method="post">
             <input type="hidden" name="action" value="make">
             <tr>
-                <td height="30" colspan="2" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px">
+                <td height="30" colspan="2" bgcolor="#EDF9D5" background="../static/web/img/tbg.gif" style="padding-left:10px">
                     一键更新网站：</td>
                 </td>
             </tr>

@@ -16,7 +16,7 @@ if ($dopost == "ok") {
     require_once(DEDEINC."/archive/specview.class.php");
     $sp = new SpecView();
     $rurl = $sp->MakeHtml(0);
-    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
     echo "<div class=\"alert alert-success\" role=\"alert\">成功生成所有专题HTML列表<a href='$rurl' target='_blank' class='btn btn-success'>预览</a></div>";
     exit();
 }

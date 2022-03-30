@@ -56,7 +56,7 @@ $dlist->Display();
 function MediaType($tid, $nurl)
 {
     if ($tid == 1) {
-        return "图片<a href=\"javascript:;\" onClick=\"ChangeImage('$nurl');\"><img src='./dialog/img/picviewnone.gif' name='picview' border='0' alt='预览'></a>";
+        return "图片<a href=\"javascript:;\" onClick=\"ChangeImage('$nurl');\"><img src='../static/web/img/picviewnone.gif' name='picview' border='0' alt='预览'></a>";
     } else if ($tid == 2) {
         return "FLASH";
     } else if ($tid == 3) {

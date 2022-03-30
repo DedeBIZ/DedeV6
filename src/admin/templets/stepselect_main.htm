@@ -4,21 +4,21 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
     <title>联动枚举管理</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/web/css/admin.css">
     <style>
 li{float:left;padding-right:10px;line-height:26px}
 .abt{width:90%;border:1px #ffffff solid}
 #edsta{position:absolute;top:70px;left:110px;width:280px;height:200px;background-color:#f6f6f6;border:1px solid #dedede;display:none;padding:6px}
 #edsta div{margin:6px}
     </style>
-    <SCRIPT LANGUAGE="JavaScript" src="../static/js/webajax.js"></SCRIPT>
-    <script language="javascript" src="../static/js/jquery.js"></script>
-    <script src="../static/js/bootstrap.bundle.js"></script>
+    <SCRIPT LANGUAGE="JavaScript" src="../static/web/js/webajax.js"></SCRIPT>
+    <script language="javascript" src="../static/web/js/jquery.min.js"></script>
+    <script src="../static/web/js/bootstrap.bundle.min.js"></script>
     <script language='javascript' src='js/main.js'></script>
     <SCRIPT LANGUAGE="JavaScript">
-        var loadhtml = "<center><img src='../static/loadinglit.gif' style='padding:30px' /></center>";
+        var loadhtml = "<center><img src='../static/web/img/loadinglit.gif' style='padding:30px' /></center>";
         function updateItem(aid) {
             var upenumf = document.getElementById('upenumf');
             upenumf.ename.value = $DE('ename' + aid).value;
@@ -152,13 +152,13 @@ li{float:left;padding-right:10px;line-height:26px}
         }
     </SCRIPT>
 </head>
-<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
     <div id='edsta'>
-        <center><img src='../static/loadinglit.gif'></center>
+        <center><img src='../static/web/img/loadinglit.gif'></center>
     </div>
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable mt-3">
         <tr>
-            <td height="26" background="images/wbg.gif" colspan="6" style="padding-left:10px">联动枚举组管理</td>
+            <td height="26" background="../static/web/img/wbg.gif" colspan="6" style="padding-left:10px">联动枚举组管理</td>
         </tr>
         <tr>
             <td width="100">请选择组别：</td>
@@ -181,7 +181,7 @@ li{float:left;padding-right:10px;line-height:26px}
                     ?>
                 </select>
             </td>
-            <td colspan='2'><img src='images/help.gif'>灰色字的为系统内置枚举，您是不能对它进行删除修改操作的，但可以添加或修改它的元素</td>
+            <td colspan='2'><img src='../static/web/img/help.gif'>灰色字的为系统内置枚举，您是不能对它进行删除修改操作的，但可以添加或修改它的元素</td>
             <td>
                 <button type="button" name="gedit" id="gedit" class="btn btn-success btn-sm" onClick="EditType()">修改</button>
                 <button type="button" name="gdel" id="gdel" class="btn btn-success btn-sm" onClick="DelType()">删除</button>
@@ -216,7 +216,7 @@ if(!empty($egroup))
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1"
         style='margin-bottom:10px;' class="table maintable table-bordered">
         <tr>
-            <td height="26" background="images/tbg.gif" colspan="8">
+            <td height="26" background="../static/web/img/tbg.gif" colspan="8">
                 <div style="float:left">
                     &nbsp;·<?php echo $selgroup; ?>
                     &gt;
@@ -251,7 +251,7 @@ if(!empty($egroup))
                         <button TYPE="submit" name='sb2' class="btn btn-success btn-sm">增加分类</button>
                     </div>
                     <div style='clear:both'>
-                        &nbsp;<img src='images/help.gif'>如果没选择隶属分类则表示增加的是顶级分类，用半角逗号","分开可以一次增加多个分类
+                        &nbsp;<img src='../static/web/img/help.gif'>如果没选择隶属分类则表示增加的是顶级分类，用半角逗号","分开可以一次增加多个分类
                     </div>
                 </form>
             </td>
@@ -260,7 +260,7 @@ if(!empty($egroup))
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1"
         class="table maintable table-bordered">
         <tr>
-            <td height="26" background="images/tbg.gif" colspan="8">
+            <td height="26" background="../static/web/img/tbg.gif" colspan="8">
                 <div style="float:left">
                     &nbsp;<a href='stepselect_main.php'>枚举组列表</a>
                     &gt; <a href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><?php echo $selgroup; ?></a>
@@ -356,7 +356,7 @@ else
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1"
         class="table maintable table-bordered">
         <tr>
-            <td height="26" background="images/tbg.gif" colspan="8">
+            <td height="26" background="../static/web/img/tbg.gif" colspan="8">
                 <div style="float:left">
                     &nbsp;·<a href='stepselect_main.php'>枚举组列表</a>
                 </div>

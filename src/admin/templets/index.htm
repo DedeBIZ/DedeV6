@@ -4,9 +4,9 @@
 <meta charset="<?php echo $cfg_soft_lang; ?>">
 <meta name="robots" content="noindex,nofollow">
 <title><?php echo $cfg_webname; ?>后台管理</title>
-<link rel="shortcut icon" href="../static/img/favicon.ico">
+<link rel="shortcut icon" href="../static/web/img/favicon.ico">
 <link rel="stylesheet" href="css/frame.css">
-<script src="../static/js/jquery.js"></script>
+<script src="../static/web/js/jquery.min.js"></script>
 <script src="js/frame.js"></script>
 <style>
 #skinlist{display:block;height:10px;margin-top:10px;overflow:hidden;width:86px}
@@ -41,7 +41,7 @@
             <div class="top_link">
                 <ul>
                     <li class="welcome">
-                        <a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10) {echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a>
+                        <a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10) {echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a>
                         <a href="exit.php">退出</a>
                     </li>
                     <?php

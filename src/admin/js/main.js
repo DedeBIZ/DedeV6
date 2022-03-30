@@ -21,7 +21,7 @@ function $Obj(objname) {
 /*
 function ShowColor()
 {
-	var fcolor=showModalDialog("images/color.htm?ok",false,"dialogWidth:106px;dialogHeight:110px;status:0;dialogTop:"+(+120)+";dialogLeft:"+(+120));
+	var fcolor=showModalDialog("../static/web/img/color.htm?ok",false,"dialogWidth:106px;dialogHeight:110px;status:0;dialogTop:"+(+120)+";dialogLeft:"+(+120));
 	if(fcolor!=null && fcolor!="undefined") document.form1.color.value = fcolor;
 }
 */
@@ -41,7 +41,7 @@ function ColorSel(c, oname) {
 }
 
 function ShowColor(e, o) {
-	LoadNewDiv(e, 'images/colornew.htm', 'colordlg');
+	LoadNewDiv(e, '../static/web/img/colornew.htm', 'colordlg');
 }
 
 function ShowHide(objname) {
@@ -118,7 +118,7 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 		newobj.style.left = 100;
 		newobj.style.display = 'block';
 		document.body.appendChild(newobj);
-		newobj.innerHTML = '<img src="images/loadinglit.gif" alit="" />上传中...';
+		newobj.innerHTML = '<img src="../static/web/img/loadinglit.gif" alit="" />上传中...';
 	}
 	newobj.style.display = 'block';
 	//提交后还原form的action等参数
@@ -389,7 +389,7 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	newobj.style.minWidth = "450px";
 	newobj.style.top = posTop + "px";
 	newobj.style.left = posLeft + "px";
-	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="images/loadinglit.gif">Loading...</div>';
+	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="../static/web/img/loadinglit.gif">Loading...</div>';
 	newobj.style.display = 'block';
 	fetch(surl).then(resp=>resp.text()).then((d)=>{
 		newobj.innerHTML = d;
@@ -731,7 +731,7 @@ $(document).ready(function () {
 		litpicImgSrc = "";
 		litpicImg = "";
 		$("#litpic_b64").val(litpicImg);
-		$("#litPic").attr("src", "../static/defaultpic.gif");
+		$("#litPic").attr("src", "../static/web/img/defaultpic.jpg");
 	})
 
 	// 添加图片

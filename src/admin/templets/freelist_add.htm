@@ -3,11 +3,11 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>新增自由列表</title>
-  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/base.css">
-  <script language="javascript" src="../static/js/jquery.js"></script>
-  <script src="../static/js/bootstrap.bundle.js"></script>
+  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <script language="javascript" src="../static/web/js/jquery.min.js"></script>
+  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js" language="javascript"></script>
   <link rel="stylesheet" href="css/codemirror.css">
   <script type="text/javascript" src="js/codemirror.js"></script>
@@ -16,7 +16,7 @@
   <script type="text/javascript" src="js/mode/css/css.js"></script>
   <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
-<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
   <div class="bodytitle mt-3">
     <div class="bodytitleleft"></div>
     <div class="bodytitletxt">频道管理</div>
@@ -76,11 +76,10 @@
     </div>
     <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" style="border:1px solid #dee2e6;border-bottom:none;" class="table-borderless">
       <tr>
-        <td align="left" bgcolor="#EDF9D5" background="images/tbg.gif" style="padding-left:10px" class="py-3">
-          <a href="freelist_main.php">自由列表管理</a>
-           &gt; 增加一个列表：
+        <td align="left" bgcolor="#EDF9D5" background="../static/web/img/tbg.gif" style="padding-left:10px" class="py-3">
+          <a href="freelist_main.php">自由列表管理</a> &gt; 增加一个列表：
         </td>
-        <td align="right" bgcolor="#EDF9D5" background="images/tbg.gif"></td>
+        <td align="right" bgcolor="#EDF9D5" background="../static/web/img/tbg.gif"></td>
       </tr>
     </table>
     <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered">
@@ -93,7 +92,7 @@
                 <td height="56">
                   <table width="100%" border="0" cellspacing="1" cellpadding="0">
                     <tr>
-                      <td height="26" colspan="2" align="left"><img src="images/help.gif">自由列表标记的说明：自由列表标记(freelist)的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成Google Map、生成按自定义排序规则的文章列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成HTML或访问速度</td>
+                      <td height="26" colspan="2" align="left"><img src="../static/web/img/help.gif">自由列表标记的说明：自由列表标记(freelist)的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成Google Map、生成按自定义排序规则的文章列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成HTML或访问速度</td>
                     </tr>
                     <tr>
                       <td width="16%" height="26" align="left">自由列表标题：</td>
@@ -137,34 +136,32 @@
                     </tr>
                     <tr>
                       <td height="26" align="left">列表描述：</td>
-                      <td align="left"><textarea name="description" id="description"
-                          style="width:60%;height:50px"></textarea></td>
+                      <td align="left"><textarea name="description" id="description" style="width:60%;height:50px"></textarea></td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td height="26" align="left" style="background:#FBFCE2;"><img src="images/file_tt.gif" style="margin-left:6px;margin-right:6px;">列表样式：（这里是定义自由列表模板里的{dede:freelist/}标记的样式和属性）</td>
+                <td height="26" align="left" style="background:#FBFCE2;"><img src="../static/web/img/file_tt.gif">列表样式：（这里是定义自由列表模板里的{dede:freelist/}标记的样式和属性）</td>
               </tr>
               <tr>
                 <td height="72" align="left">
                   <table width="99%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%" height="126">
-                        <label><img src="images/g_t2.jpg" width="130" height="100">
+                        <label><img src="../static/web/img/g_t2.jpg" width="130" height="100">
                         <input name="liststyle" type="radio" onClick="ChangeListStyle()" value="1"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="images/g_t1.jpg" width="130" height="110">
+                        <label><img src="../static/web/img/g_t1.jpg">
                         <input type="radio" onClick="ChangeListStyle()" name="liststyle" value="2"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="images/g_t3.jpg" width="130" height="110">
+                        <label><img src="../static/web/img/g_t3.jpg">
                         <input type="radio" onClick="ChangeListStyle()" name="liststyle" value="3"></label>
                       </td>
                       <td>
-                        <label><img src="images/g_t4.jpg" width="130" height="110"> <input name="liststyle" type="radio"
-                          onClick="ChangeListStyle()" value="4" checked></label>
+                        <label><img src="../static/web/img/g_t4.jpg"> <input name="liststyle" type="radio" onClick="ChangeListStyle()" value="4" checked></label>
                         </td>
                     </tr>
                   </table>
@@ -258,7 +255,7 @@
                   由低到高</label></td>
               </tr>
               <tr>
-                <td height="26" align="left">循环内的单行记录样式(InnerText)：[<a href='javascript:ShowHide("innervar");'><img src="images/help.gif" border="0">底层变量field参考</a>]</td>
+                <td height="26" align="left">循环内的单行记录样式(InnerText)：[<a href='javascript:ShowHide("innervar");'><img src="../static/web/img/help.gif" border="0">底层变量field参考</a>]</td>
               </tr>
               <tr>
                 <td height="99" align="left"> <textarea name="innertext" cols="80" rows="6" id="myinnertext" style="width:80%;height:120px"></textarea>
@@ -268,7 +265,7 @@
               </tr>
               <tr>
                 <td height="80" align="left" id='innervar' style="display:none">
-                  <span><img src="images/help.gif">支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,<br>stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示<br>·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</span>
+                  <span><img src="../static/web/img/help.gif">支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,<br>stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示<br>·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</span>
                 </td>
               </tr>
               <tr>

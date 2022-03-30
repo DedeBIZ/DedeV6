@@ -3,10 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>栏目管理</title>
-<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/base.css">
-<script src="../static/js/jquery.js"></script>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
+<script src="../static/web/js/jquery.min.js"></script>
 <script src="js/main.js"></script>
 <style>
 textarea{min-height:30px}
@@ -125,13 +125,13 @@ function CheckCross() {
       <td width="100%" height="26" valign="top">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td height="30"><img src="images/book1.gif"><a href="catalog_main.php">栏目管理</a> &gt; 增加栏目</td>
+            <td height="30"><img src="../static/web/img/book1.gif"><a href="catalog_main.php">栏目管理</a> &gt; 增加栏目</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td width="100%" height="1" background="images/sp_bg.gif"></td>
+      <td width="100%" height="1" background="../static/web/img/sp_bg.gif"></td>
     </tr>
   </table>
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -154,9 +154,9 @@ function CheckCross() {
               <td colspan="2" bgcolor="#fff" align="left">
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="84" height="26" align="center" background="images/itemnote1.gif">常规选项</td>
-                    <td width="84" align="center" background="images/itemnote2.gif"><a href="#" onClick="ShowItem2()">高级选项</a></td>
-                    <td width="84" align="center" background="images/itemnote2.gif"><a href="#" onClick="ShowItem3()">栏目内容</a></td>
+                    <td width="84" height="26" align="center" background="../static/web/img/itemnote1.gif">常规选项</td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="#" onClick="ShowItem2()">高级选项</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="#" onClick="ShowItem3()">栏目内容</a></td>
                   </tr>
                 </table>
               </td>
@@ -167,9 +167,9 @@ function CheckCross() {
               <td colspan="2" bgcolor="#fff" style="text-align:left">
                 <table height="26" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="84" align="center" background="images/itemnote2.gif" bgcolor="#F2F7DF"><a href="#" onClick="ShowItem1()">常规选项</a></td>
-                    <td width="84" align="center" background="images/itemnote1.gif">高级选项</td>
-                    <td width="84" align="center" background="images/itemnote2.gif"><a href="#" onClick="ShowItem3()">栏目内容</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="#" onClick="ShowItem1()">常规选项</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote1.gif">高级选项</td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="#" onClick="ShowItem3()">栏目内容</a></td>
                   </tr>
                 </table>
               </td>
@@ -180,9 +180,9 @@ function CheckCross() {
               <td colspan="2" bgcolor="#fff" style="text-align:left">
                 <table height="26" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="84" align="center" background="images/itemnote2.gif" bgcolor="#F2F7DF"><a href="#" onClick="ShowItem1()">常规选项</a></td>
-                    <td width="84" align="center" background="images/itemnote2.gif"><a href="#" onClick="ShowItem2()">高级选项</td>
-                    <td width="84" align="center" background="images/itemnote1.gif">栏目内容</td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="#" onClick="ShowItem1()">常规选项</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="#" onClick="ShowItem2()">高级选项</td>
+                    <td width="84" align="center" background="../static/web/img/itemnote1.gif">栏目内容</td>
                   </tr>
                 </table>
               </td>
@@ -343,7 +343,7 @@ function CheckCross() {
               </td>
             </tr>
             <tr>
-              <td style="padding-left:10px">栏目交叉：<img src="images/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvarco')"> <br>仅适用[最终列表栏目]</td>
+              <td style="padding-left:10px">栏目交叉：<img src="../static/web/img/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvarco')"> <br>仅适用[最终列表栏目]</td>
               <td>
                 <input name="cross" type="radio" id="cross0" value="0" class='np' onClick="CheckCross()" checked='1'>
                 <label for="cross0">不交叉</label>
@@ -430,7 +430,7 @@ function CheckCross() {
               <td>
                 <input name="tempindex" type="text" value="{style}/index_<?php echo $nid?>.htm" size="40" class="alltxt">
                 <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
-                <img src="images/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar1')">
+                <img src="../static/web/img/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar1')">
               </td>
             </tr>
             <tr>
@@ -463,7 +463,7 @@ function CheckCross() {
               <td height="26" style="padding-left:10px">文章命名规则：</td>
               <td>
                 <input name="namerule" type="text" id="namerule" value="<?php echo $cfg_df_namerule;?>" size="40" class="alltxt">
-                <img src="images/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar2')">
+                <img src="../static/web/img/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar2')">
               </td>
             </tr>
             <tr id='helpvar3' style='display:none'>
@@ -474,7 +474,7 @@ function CheckCross() {
               <td height="26" style="padding-left:10px">列表命名规则：</td>
               <td>
                 <input name="namerule2" type="text" id="namerule2" value="{typedir}/list_{tid}_{page}.html" size="40" class="alltxt">
-                <img src="images/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar3')">
+                <img src="../static/web/img/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar3')">
               </td>
             </tr>
             <tr>

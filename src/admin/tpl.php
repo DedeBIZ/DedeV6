@@ -227,7 +227,7 @@ else if ($action == 'savetagfile') {
       <input type='hidden' name='dopost' value='make' />
         测试标签：(需要使用环境变量的不能在此测试)<br>
         <textarea name='partcode' cols='150' rows='6' style='width:90%;'>{dede:{$tagname} }{/dede:{$tagname}}</textarea><br>
-        <input name='imageField1' type='image' class='np' src='images/button_ok.gif' width='60' height='26' border='0' />
+        <input name='imageField1' type='image' class='np' src='../static/web/img/button_ok.gif' width='60' height='26' border='0' />
     </form>
     ";
     $wintitle = "成功修改/创建文件";

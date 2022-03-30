@@ -97,5 +97,5 @@ function GetMAtt($m)
 {
     if ($m < 1) return '';
     else if ($m == 10) return "&nbsp;<span style='color:#dc3545'>[管理员]</span>";
-    else return "&nbsp;<img src='images/adminuserico.gif' wmidth='16' height='15'><span style='color:#dc3545'>[荐]</span>";
+    else return "&nbsp;<img src='../static/web/img/adminuserico.gif'><span style='color:#dc3545'>[荐]</span>";
 }
