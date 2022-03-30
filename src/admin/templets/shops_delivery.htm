@@ -11,7 +11,6 @@
   .fontOrange {
     COLOR: #ff4e00
   }
-
   .npvar {
     width: 90%
   }
@@ -22,10 +21,7 @@
       <input type="hidden" name="do" value="add">
       <table width="100%" border="0" cellpadding="1" cellspacing="1" class="table maintable table-bordered mt-3 sysinfo">
         <tr align="center" height="26">
-          <td height="30" colspan="2" align="left" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'
-            style="padding-left:10px">
-            增加一个配送方式
-          </td>
+          <td height="30" colspan="2" align="left" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif' style="padding-left:10px">增加一个配送方式</td>
         </tr>
         <tr align="center" height="26" bgcolor="#FFFFFF">
           <td width="13%" height="30" align="right" bgcolor="#FFFFFF">
@@ -50,7 +46,7 @@
           </td>
           <td align="left" bgcolor="#FFFFFF">
             <textarea name="des" id="des" style="margin-left:6px;height:50px;width:320px;"></textarea>
-            &nbsp;最多100个文字内,简要说明一下
+            &nbsp;最多100个文字内，简要说明一下
           </td>
         </tr>
         <tr bgcolor="#F3FFDD">
@@ -85,7 +81,7 @@
               <tr>
                 <td width="23%" height="26" align="left" style="padding-left:5px;">
                   <input name="m_dname<?php echo $rs['pid'];?>" type="text" value="<?php echo $rs['dname'];?>">
-                  <div style="padding:3px;BORDER-TOP: #CCC 1px solid;"><a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid'];?>" onClick="return(confirm('删除后无法恢复,您确定删除吗?'))">删除</a></div>
+                  <div style="padding:3px;BORDER-TOP: #CCC 1px solid;"><a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid'];?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a></div>
                 </td>
                 <td width="77%" align="left" valign="top" style="BORDER-BOTTOM: #CCC 1px solid;padding-left:5px;">
                   手续费：

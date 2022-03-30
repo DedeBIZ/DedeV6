@@ -19,7 +19,7 @@ $newname = (empty($newname) ? '' : preg_replace("#[\\ \"\*\?\t\r\n<>':\/|]#", ""
 $uploadfile = isset($imgfile) && empty($uploadfile) ? $imgfile : $uploadfile;
 $uploadfile_name = isset($imgfile_name) && empty($uploadfile_name) ? $imgfile_name : $uploadfile_name;
 if (!is_uploaded_file($uploadfile)) {
-    ShowMsg("您没有选择上传的文件或选择的文件大小超出限制!", "-1");
+    ShowMsg("您没有选择上传的文件或选择的文件大小超出限制", "-1");
     exit();
 }
 //软件类型所有支持的附件
