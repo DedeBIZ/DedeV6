@@ -4,9 +4,6 @@ var navIE = document.all && navigator.userAgent.indexOf("Firefox") == -1;
 var myspeed = 0;
 $(function () {
 
-	//快捷菜单
-	bindQuickMenu();
-
 	//左侧菜单开关
 	LeftMenuToggle();
 
@@ -28,25 +25,6 @@ $(function () {
 		$("#qucikmenu").slideToggle("fast")
 	}
 });
-
-function bindQuickMenu() {//快捷菜单
-	$("#ac_qucikmenu").bind("mouseenter", function () {
-		$("#qucikmenu").slideDown("fast");
-	}).dblclick(function () {
-		$("#qucikmenu").slideToggle("fast");
-	}).bind("mouseleave", function () {
-		hidequcikmenu = setTimeout('$("#qucikmenu").slideUp("fast");', 700);
-		$(this).bind("mouseenter", function () { clearTimeout(hidequcikmenu); });
-	});
-	$("#qucikmenu").bind("mouseleave", function () {
-		hidequcikmenu = setTimeout('$("#qucikmenu").slideUp("fast");', 700);
-		$(this).bind("mouseenter", function () { clearTimeout(hidequcikmenu); });
-	}).find("a").click(function () {
-		$(this).blur();
-		$("#qucikmenu").slideUp("fast");
-		//$("#ac_qucikmenu").text($(this).text());
-	});
-}
 
 function LeftMenuToggle() {//左侧菜单开关
 	$("#togglemenu").click(function () {

@@ -20,10 +20,6 @@ if (empty($dopost)) {
     fclose($fp);
     $oktime = substr($upTime, 0, 4).'-'.substr($upTime, 4, 2).'-'.substr($upTime, 6, 2);
     $offUrl = SpGetNewInfo();
-    $dedecmsidc = DEDEDATA.'/admin/idc.txt';
-    $fp = fopen($dedecmsidc, 'r');
-    $dedeIDC = fread($fp, filesize($dedecmsidc));
-    fclose($fp);
     include DedeInclude('templets/index_body.htm');
     exit();
 }

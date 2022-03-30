@@ -80,7 +80,6 @@
 >sys_Feedback>评论管理
 >sys_Upload>管理任意上传
 >sys_MyUpload>管理我的上传
->pic_view>图片浏览器
 
 >>会员管理
 
