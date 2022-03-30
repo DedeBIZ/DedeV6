@@ -43,9 +43,9 @@ if (!empty($noeditor)) {
 <head>
     <meta charset="<?php echo $cfg_soft_lang; ?>">
     <title>选择软件</title>
-    <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/web/font-awesome/font-awesome.min.css">
-    <link rel="stylesheet" href="../static/web/css/admin.css">
+    <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/web/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>
 html{background:#f2f2f2}
 table{background:#fff}
@@ -120,7 +120,7 @@ a{text-decoration:none!important}
                             if ($activepath == "") continue;
                             $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                             $line = "<tr height='26'>
-                            <td class='linerow'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../static/web/img/dir2.gif'>上级目录</a></td>
+                            <td class='linerow'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
                             <td colspan='2' class='linerow'>当前目录：$activepath</td>
                             </tr>\r\n";
                             echo $line;
@@ -128,7 +128,7 @@ a{text-decoration:none!important}
                             if (preg_match("#^_(.*)$#i", $file)) continue;
                             if (preg_match("#^\.(.*)$#i", $file)) continue;
                             $line = "<tr height='26'>
-                            <td class='linerow'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../static/web/img/dir.gif'>$file</a></td>
+                            <td class='linerow'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/dir.gif'>$file</a></td>
                             <td class='linerow'></td>
                             <td class='linerow'></td>
                             </tr>";
@@ -140,7 +140,7 @@ a{text-decoration:none!important}
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;
                             $line = "<tr height='26'>
-                            <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../static/web/img/zip.gif'>$file</a></td>
+                            <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/zip.gif'>$file</a></td>
                             <td class='linerow'>$filesize KB</td>
                             <td class='linerow'>$filetime</td>
                             </tr>";
@@ -152,7 +152,7 @@ a{text-decoration:none!important}
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
                             $reurl = $reurl;
                             $line = "<tr height='26'>
-                            <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../static/web/img/exe.gif'>$file</a></td>
+                            <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/exe.gif'>$file</a></td>
                             <td class='linerow'>$filesize KB</td>
                             <td class='linerow'>$filetime</td>
                             </tr>";

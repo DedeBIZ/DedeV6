@@ -50,9 +50,9 @@ if (!empty($noeditor)) {
 <head>
     <meta charset="<?php echo $cfg_soft_lang; ?>">
     <title>选择图片</title>
-    <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/web/font-awesome/font-awesome.min.css">
-    <link rel="stylesheet" href="../static/web/css/admin.css">
+    <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/web/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>
 html{background:#f2f2f2}
 table{background:#fff}
@@ -72,7 +72,7 @@ a{text-decoration:none!important}
 </head>
 <body class="bg">
     <div id="floater" class="napisdiv">
-        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../static/web/img/picviewnone.gif" id="picview" alt="关闭预览"></a>
+        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/picviewnone.gif" id="picview" alt="关闭预览"></a>
     </div>
     <script src="../js/float.js"></script>
     <script>
@@ -181,7 +181,7 @@ a{text-decoration:none!important}
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
                 <td class='linerow' colspan='2'>
-                <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../static/web/img/dir2.gif'>上级目录</a></td>
+                <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
                 <td colspan='2' class='linerow'>当前目录:$activepath</td>
                 </tr>";
                 echo $line;
@@ -190,7 +190,7 @@ a{text-decoration:none!important}
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
                 <td class='linerow' colspan='2'>
-                <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../static/web/img/dir.gif'>$file</a></td>
+                <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/dir.gif'>$file</a></td>
                 <td class='linerow'></td>
                 <td class='linerow'></td>
                 </tr>";
@@ -202,8 +202,8 @@ a{text-decoration:none!important}
                 if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='../static/web/img/picviewnone.gif'></a></td>
-                <td class='linerow'><a href=# onclick=\"ReturnImg('$reurl');\" $lstyle><img src='../static/web/img/gif.gif'>$file</a></td>
+                <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='../../static/web/img/picviewnone.gif'></a></td>
+                <td class='linerow'><a href=# onclick=\"ReturnImg('$reurl');\" $lstyle><img src='../../static/web/img/gif.gif'>$file</a></td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow'>$filetime</td>
                 </tr>";
@@ -215,8 +215,8 @@ a{text-decoration:none!important}
                 if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='../static/web/img/picviewnone.gif'></a></td>
-                <td class='linerow'><a href=# onclick=\"ReturnImg('$reurl');\" $lstyle><img src='../static/web/img/jpg.gif'>$file</a></td>
+                <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='../../static/web/img/picviewnone.gif'></a></td>
+                <td class='linerow'><a href=# onclick=\"ReturnImg('$reurl');\" $lstyle><img src='../../static/web/img/jpg.gif'>$file</a></td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow'>$filetime</td>
                 </tr>";
