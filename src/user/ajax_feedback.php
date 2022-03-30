@@ -9,7 +9,6 @@
 require_once(dirname(__FILE__).'/config.php');
 AjaxHead();
 if ($myurl == '') exit('');
-
 else {
     $uid  = $cfg_ml->M_LoginID;
     $face = $cfg_ml->fields['face'] == '' ? $GLOBALS['cfg_memberurl'].'/images/nopic.gif' : $cfg_ml->fields['face'];
