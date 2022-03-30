@@ -642,8 +642,8 @@ function ShowMsg(content, ...args) {
 		}
 	}
 
-	footer = footer.replace("~modalID~", modalID);
-	content = content.replace("~modalID~", modalID);
+	footer = footer.replaceAll("~modalID~", modalID);
+	content = content.replaceAll("~modalID~", modalID);
 
 	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -691,7 +691,6 @@ var optCropper = {
 			.toDataURL();
 		litpicImg = dataUrl;
 		$("#litPic").attr("src", litpicImg);
-		$("#litpic_b64").val(litpicImg);
 	},
 	aspectRatio: 4 / 3,
 	// 拖动截取缩略图后，截取的缩略图更新到imageItems中
@@ -719,10 +718,38 @@ function setAspectRatio(ar) {
 	$("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
 }
 
+function okImage(modalID) {
+	uploadImage(litpicImg);
+	$("#litPic").attr("src", litpicImg);
+	CloseModal('GKModal' + modalID);
+}
+
 function useDefault(modalID) {
-	$("#litpic_b64").val(litpicImgSrc);
+	uploadImage(litpicImgSrc);
 	$("#litPic").attr("src", litpicImgSrc);
 	CloseModal('GKModal' + modalID);
+}
+
+function uploadImage(litpicImgSrc) {
+    const formData = new FormData()
+    formData.append('litpic_b64', litpicImgSrc);
+    fetch('archives_do.php?dopost=upload_base64_image', {
+        method: 'POST',
+        body: formData
+    })
+    .then(r => {
+        if (r.ok) {
+            return r.json()
+        }
+        throw new Error(errMsg);
+    })
+    .then(d => {
+		if (d.code == 200) {
+			$("#picname").val(d.data.image_url);
+		}
+    }).catch((error) => {
+        alert("上传缩略图错误");
+    });
 }
 
 $(document).ready(function () {
@@ -730,7 +757,7 @@ $(document).ready(function () {
 	$("#btnClearAll").click(function (event) {
 		litpicImgSrc = "";
 		litpicImg = "";
-		$("#litpic_b64").val(litpicImg);
+		$("#picname").val(litpicImg);
 		$("#litPic").attr("src", "../../static/web/img/defaultpic.jpg");
 	})
 
@@ -748,7 +775,12 @@ $(document).ready(function () {
 			reader.onload = (function (theFile) {
 				return function (e) {
 					litpicImgSrc = e.target.result;
-					SetThumb(litpicImgSrc);
+					if (cfg_uplitpic_cut=='Y') {
+						SetThumb(litpicImgSrc);
+					} else {
+						uploadImage(litpicImgSrc);
+						$("#litPic").attr("src", litpicImgSrc);
+					}
 				};
 			})(f);
 			reader.readAsDataURL(f);
@@ -759,7 +791,7 @@ $(document).ready(function () {
 	// 截取缩略图
 	function SetThumb(srcURL) {
 		var footer =
-			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success'>使用原图</a> <a href='?' class='btn btn-success' data-dismiss='modal' aria-label='Close'>确定</a></p>";
+			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success'>使用原图</a> <a href='javascript:okImage(\"~modalID~\")' class='btn btn-success'>确定</a></p>";
 		var optButton = `<p><div class="form-group">
 			  <label for="aspectRatio">比例</label>
 			  <select class="form-control" id="aspectRatio" onchange="setAspectRatio(this.selectedIndex)">

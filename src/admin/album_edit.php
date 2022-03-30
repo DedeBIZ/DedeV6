@@ -112,19 +112,6 @@ else if ($dopost == 'save') {
         $ddisremote = 0;
     }
     $litpic = GetDDImage('none', $picname, $ddisremote);
-    //处理新的缩略图上传
-    if ($litpic_b64 != "") {
-        $data = explode(',', $litpic_b64);
-        $ntime = time();
-        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
-        CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
-        $fullUrl = $fullUrl.".png";
-        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
-        //加水印
-        WaterImg($cfg_basedir.$fullUrl, 'up');
-        $litpic = $fullUrl;
-    }
     //分析body里的内容
     $body = AnalyseHtmlBody($body, $description, $litpic, $keywords, 'htmltext');
     //处理图片文档的自定义属性

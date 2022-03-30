@@ -22,14 +22,13 @@ if ($dopost != 'save') {
     ClearMyAddon();
     $channelid = empty($channelid) ? 0 : intval($channelid);
     $cid = empty($cid) ? 0 : intval($cid);
-    if (empty($litpic_b64)) $litpic_b64 = '';
     if (empty($geturl)) $geturl = '';
     $keywords = $writer = $source = $body = $description = $title = '';
     //采集单个网页
     if (preg_match("#^http:\/\/#", $geturl)) {
         require_once(DEDEADMIN."/inc/inc_coonepage.php");
         $redatas = CoOnePage($geturl);
-        extract($redatas);
+        extract((array)$redatas);
     }
     //获得频道模型ID
     if ($cid > 0 && $channelid == 0) {
@@ -105,19 +104,6 @@ else if ($dopost == 'save') {
         $ddisremote = 0;
     }
     $litpic = GetDDImage('none', $picname, $ddisremote);
-    //处理新的缩略图上传
-    if ($litpic_b64 != "") {
-        $data = explode(',', $litpic_b64);
-        $ntime = time();
-        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
-        CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
-        $fullUrl = $fullUrl.".png";
-        file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
-        //加水印
-        WaterImg($cfg_basedir.$fullUrl, 'up');
-        $litpic = $fullUrl;
-    }
     //生成文档ID
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $adminid);
     if (empty($arcID)) {

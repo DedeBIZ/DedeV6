@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
 <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
 <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+<script>
+  const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';
+</script>
 <script src="../static/web/js/jquery.min.js"></script>
 <script src="../static/web/js/webajax.js"></script>
 <script src="../static/web/js/moment.min.js"></script>
@@ -72,7 +75,6 @@ table{border-collapse:separate}
     <input type="hidden" name="dopost" value="save">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
     <input type="hidden" name="id" value="<?php echo $aid?>">
-    <input type="hidden" id="litpic_b64" name="litpic_b64" value="">
     <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff">
       <tr>
         <td height="26" colspan="2" class="bline">
