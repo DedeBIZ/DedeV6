@@ -126,7 +126,7 @@ ContextMenu.populatePopup = function (arr, win) {
 	doc.body.innerHTML = '';
 	//if (doc.getElementsByTagName("LINK").length == 0){
 	doc.open();
-	doc.write('<html><head><link rel="StyleSheet" type="text/css" href="js/contextmenu.css"></head><body></body></html>');
+	doc.write('<html><head><link rel="StyleSheet" href="js/contextmenu.css"></head><body></body></html>');
 	doc.close();
 	//}
 	for (i = 0; i < alen; i++) {

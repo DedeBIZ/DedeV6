@@ -173,7 +173,7 @@ a:visited {
 	height:30px;
 	line-height:30px;
 	border-bottom:1px solid #C9CFC1;
-	background:#F9FCDC url(../static/web/img/dlgtitle.gif)repeat-x;
+	background:#F9FCDC url(/static/web/img/dlgtitle.gif)repeat-x;
 	text-align:right
 }
 .coolbg5 {
@@ -204,7 +204,7 @@ a:visited {
 	height:30px;
 	line-height:30px;
 	border-bottom:1px solid #C9CFC1;
-	background:url(../static/web/img/dlgtitle.gif)repeat-x;
+	background:url(/static/web/img/dlgtitle.gif)repeat-x;
 	text-align:left;
 	cursor:move
 }
@@ -300,7 +300,7 @@ a:visited {
 }
 .nbt {
 	padding:2px;
-	background:#fff url(../static/web/img/allbtbg.gif);
+	background:#fff url(/static/web/img/allbtbg.gif);
 	border:1px solid #A5AF83
 }
 .tdt {
@@ -322,7 +322,7 @@ a:visited {
 	width:98%;
 	height:30px;
 	border:1px dotted #BFD67C;
-	background:url(../static/web/img/wbg.gif)
+	background:url(/static/web/img/wbg.gif)
 }
 .bodytitle div {
 	float:left;
@@ -354,19 +354,19 @@ option.alltype {
 	padding-left:16px;
 	height:18px;
 	line-height:18px;
-	background:url(../static/web/img/arr4.gif)3px 4px no-repeat
+	background:url(/static/web/img/arr4.gif)3px 4px no-repeat
 }
 option.btype {
 	padding-left:16px;
 	height:18px;
 	line-height:18px;
-	background:url(../static/web/img/arr4.gif)3px 4px no-repeat
+	background:url(/static/web/img/arr4.gif)3px 4px no-repeat
 }
 option.stype {
 	padding-left:26px;
 	height:18px;
 	line-height:18px;
-	background:url(../static/web/img/arrr.gif)10px 4px no-repeat
+	background:url(/static/web/img/arrr.gif)10px 4px no-repeat
 }
 .ilist {
 	border-top:1px dashed #eee;
@@ -380,7 +380,7 @@ option.stype {
 	float:left;
 	padding:0;
 	height:18px;
-	background:url(../static/web/img/typeid2bg.gif)no-repeat;
+	background:url(/static/web/img/typeid2bg.gif)no-repeat;
 	border:0
 }
 #litpic {
@@ -399,10 +399,10 @@ option.stype {
 }
 #starttime,#endtime,#pubdate,#uptime {
 	padding-left:30px;
-	background:url(../static/web/img/calendar.gif)10px no-repeat
+	background:url(/static/web/img/calendar.gif)10px no-repeat
 }
 #title {
-	background:url(../static/web/img/ruler.gif)repeat-x 0px 10px
+	background:url(/static/web/img/ruler.gif)repeat-x 0px 10px
 }
 .spec {
 	width:60px

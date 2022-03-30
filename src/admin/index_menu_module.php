@@ -19,8 +19,8 @@ require(DEDEADMIN.'/inc/inc_menu_func.php');
 <html>
 <head>
 	<title>DedeBIZ menu</title>
-	<link rel="stylesheet" href="../static/web/css/admin.css" type="text/css" />
-	<link rel="stylesheet" href="css/menuold.css" type="text/css" />
+	<link rel="stylesheet" href="../static/web/css/admin.css" />
+	<link rel="stylesheet" href="css/menuold.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
 	<base target="main" />
 </head>

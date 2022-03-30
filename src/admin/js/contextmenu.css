@@ -4,7 +4,7 @@
 }
 .WebFX-ContextMenu-Body {
     background-color:#EEFFEC;
-    background-image:url('../static/web/img/mmenubg.gif');
+    background-image:url(../../static/web/img/mmenubg.gif);
     margin:0;
     padding:1px;
     border:1px solid #E0E7C9

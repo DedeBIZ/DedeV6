@@ -18,8 +18,8 @@ $action = isset($action) ? $action : '';
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $GLOBALS['cfg_soft_lang']; ?>">
 	<title>系统运行目录权限检测</title>
-	<link rel="stylesheet" type="text/css" href="../static/web/css/admin.css" />
-	<link rel="stylesheet" type="text/css" href="css/indexbody.css" />
+	<link rel="stylesheet" href="../static/web/css/admin.css" />
+	<link rel="stylesheet" href="css/indexbody.css" />
 	<script type="text/javascript" src="../static/web/js/jquery.min.js"></script>
 </head>
 <body leftmargin="8" topmargin='8' bgcolor="#FFFFFF" style="min-width:840px">

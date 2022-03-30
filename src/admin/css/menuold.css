@@ -13,7 +13,7 @@ dl.bitem {
 	margin:0 0px 6px 6px
 }
 dl.bitem dt {
-	background:url(../static/web/img/menubg.gif);
+	background:url(../../static/web/img/menubg.gif);
 	height:26px;
 	line-height:26px;
 	text-align:center;
@@ -33,11 +33,11 @@ dl.bitem dd {
 }
 div.items {
 	line-height:22px;
-	background:url(../static/web/img/arr4.gif) no-repeat 10px 9px
+	background:url(../../static/web/img/arr4.gif) no-repeat 10px 9px
 }
 span.items {
 	padding:10px 0px 10px 22px;
-	background:url(../static/web/img/arr4.gif) no-repeat 10px 12px
+	background:url(../../static/web/img/arr4.gif) no-repeat 10px 12px
 }
 ul {
 	padding-top:2px
@@ -48,5 +48,5 @@ li {
 .sitemu li {
 	padding:0 0px 0px 22px;
 	line-height:24px;
-	background:url(../static/web/img/arr4.gif) no-repeat 10px 9px
+	background:url(../../static/web/img/arr4.gif) no-repeat 10px 9px
 }

@@ -106,7 +106,7 @@
 }
 .dbox dt.rside {
 	border-bottom:1px solid #DEEAB6;
-	background:url(../static/web/img/wbg.gif)repeat-x
+	background:url(../../static/web/img/wbg.gif)repeat-x
 }
 .dbox dd {
 	padding:0
@@ -117,7 +117,7 @@
 #updatetest {
 	padding:6px;
 	padding-left:110px;
-	background:url(../images/ico_spider.gif)no-repeat scroll 10px 15px transparent
+	background:url(../../images/ico_spider.gif)no-repeat scroll 10px 15px transparent
 }
 #quickmenu {
 	width:100%;

@@ -270,7 +270,7 @@ body.hidemenu .right {
 .mapitem ul li {
 	text-indent:20px;
 	line-height:24px;
-	background:url(../static/web/img/arrr.gif)0 8px no-repeat
+	background:url(../../static/web/img/arrr.gif)0 8px no-repeat
 }
 .allmenu a {
 	color:#5C604F
