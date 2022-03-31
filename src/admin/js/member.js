@@ -8,13 +8,11 @@ if(moz) {
 	extendElementModel();
 	emulateAttachEvent();
 }
-
 function delArc(mid){
 	var qstr=getCheckboxItem();
 	if(mid==0) mid = getOneItem();
 	location="member_do.php?id="+qstr+"&dopost=delmembers";
 }
-
 //获得选中文件的文件名
 function getCheckboxItem()
 {
@@ -32,7 +30,6 @@ function getCheckboxItem()
 	}
 	return allSel;
 }
-
 //获得选中其中一个的id
 function getOneItem()
 {
@@ -42,13 +39,12 @@ function getOneItem()
 	{
 		if(document.form2.mid[i].checked)
 		{
-				allSel = document.form2.mid[i].value;
-				break;
+			allSel = document.form2.mid[i].value;
+			break;
 		}
 	}
 	return allSel;
 }
-
 function selAll()
 {
 	for(i=0;i<document.form2.mid.length;i++)

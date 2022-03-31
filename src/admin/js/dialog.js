@@ -49,8 +49,6 @@ function AlertMsg(title, id) {
 	var msgObj = document.createElement("div")
 	msgObj.setAttribute("id", "msgdiv");
 	msgObj.style.position = "absolute";
-	//msgObj.style.top = (screen.availHeight - msgh) / 4 + "px";
-	//msgObj.style.left = (screen.availWidth - msgw) / 2 + "px";
 	msgObj.style.top = "100px";
 	msgObj.style.left = "100px";
 	msgObj.style.width = msgw + "px";

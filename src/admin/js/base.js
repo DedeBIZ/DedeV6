@@ -9,7 +9,6 @@
 		}).blur(function(){
 			$(this).removeClass("txt_s");
 		});
-		
 		//表格折叠
 		$(".tform").find("tbody tr th[_show]").each(function(i){
 			//加入折叠提示
@@ -33,14 +32,12 @@
 				$(this).removeClass("mouseon");
 			}).click();			
 		});
-
 		//列表行高亮
 		$("table[_dlist*='light']").children("tbody").children("tr").mouseover(function(){
 			if($(this).attr("_nolight")!="yes")$(this).addClass("t_on");
 		}).mouseout(function(){
 			$(this).removeClass("t_on");
 		});
-		
 		//列表行整行选择
 		$("table[_dlist*='check']").each(function(){
 			//处理行点击
@@ -57,7 +54,6 @@
 				}
 				
 			});
-			
 			//处理checkbox点击
 			$(this).find("td input[type='checkbox']").click(function(){
 				tr = $(this).parent("td").parent("tr");
@@ -69,7 +65,6 @@
 					tr.addClass("t_sl");
 				}
 			});
-			
 			//排除链接及按钮点击
 			$(this).find("tbody tr td a,tbody tr td button,tbody tr td table").click(function(){
 				tr = $(this).parent("td").parent("tr");
@@ -84,19 +79,14 @@
 			});
 			
 		});
-		
-		
-		
 		//高亮初始化
 		setChecklight();
-		
 		//全选按钮
 		$("button[_click='allSelect']").click(function(){
 			ckbox = $(this).parent("td").parent("tr").parent("tbody").find("td input[type='checkbox']");
 			ckbox.attr("checked","checked");
 			setChecklight();
 		});
-		
 		//反选按钮
 		$("button[_click='unSelect']").click(function(){
 			ckbox = $(this).parent("td").parent("tr").parent("tbody").find("td input[type='checkbox']");
@@ -106,7 +96,6 @@
 			
 			setChecklight();
 		});
-		
 		//自定义提交
 		$("button[_submit]").click(function(){
 			url = $(this).attr("_submit");
@@ -117,11 +106,8 @@
 			}
 			$(this).parents("form").attr("action",url).submit();
 		});
-		
-		
 	});
-
-	/*高亮初始化*/
+	//高亮初始化
 	function setChecklight(){
 		$(".tlist[_dlist*='check']").find("tbody tr td input[type='checkbox']").each(function(i){
 			tr = $(this).parent("td").parent("tr");
@@ -132,8 +118,7 @@
 			}
 		});
 	}
-	
-	/*栏目跳转*/
+	//栏目跳转
 	function AC(mid){
 		f = $(window.parent.document);
 		mlink = f.find("a[id='"+mid+"']");
@@ -156,4 +141,3 @@
 		}
 	
 	}
-	

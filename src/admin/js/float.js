@@ -32,7 +32,6 @@ function heartBeat() {
 	}
 
 }
-
 function checkFocus(x, y) {
 	stalkerx = document.floater.pageX;
 	stalkery = document.floater.pageY;
@@ -41,7 +40,6 @@ function checkFocus(x, y) {
 	if ((x > stalkerx && x < (stalkerx + stalkerwidth)) && (y > stalkery && y < (stalkery + stalkerheight))) return true;
 	else return false;
 }
-
 function grabIt(e) {
 	if (IE) {
 		whichIt = event.srcElement;
@@ -62,9 +60,7 @@ function grabIt(e) {
 		}
 	} return true;
 }
-
 function moveIt(e) {
-
 	if (whichIt == null) { return false; }
 	if (IE) {
 		newX = (event.clientX + document.body.scrollLeft);
@@ -88,7 +84,6 @@ function moveIt(e) {
 	}
 	return false;
 }
-
 function dropIt() {
 	whichIt = null;
 	if (NS) window.releaseEvents(Event.MOUSEMOVE);

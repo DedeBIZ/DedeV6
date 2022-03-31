@@ -7,8 +7,6 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-
 function checkSubmitAlb() {
 	if (document.form1.title.value == '') {
 		ShowMsg("档案标题不能为空");
@@ -19,9 +17,8 @@ function checkSubmitAlb() {
 		return false;
 	}
 	document.form1.imagebody.value = $Obj('copyhtml').innerHTML;
-
 	if ($("#thumbnails .albCt").length > 0) {
-		// 这里从thumbnails中取出图片元素信息
+		//这里从thumbnails中取出图片元素信息
 		$("#thumbnails .albCt").each(function () {
 			albums.push({
 				"img": $(this).find("img").attr("src"),
@@ -29,16 +26,12 @@ function checkSubmitAlb() {
 			})
 		})
 	}
-
 	$("#albums").val(JSON.stringify(albums));
-
 	return true;
 }
-
 function testGet() {
 	LoadTestDiv();
 }
-
 function checkMuList(psid, cmid) {
 	if ($Obj('pagestyle3').checked) {
 		$Obj('cfgmulist').style.display = 'block';
@@ -51,21 +44,16 @@ function checkMuList(psid, cmid) {
 		$Obj('spagelist').style.display = 'none';
 	}
 }
-
 //图集，显示与隐藏zip文件选项
 function showZipField(formitem, zipid, upid) {
 	if (formitem.checked) {
 		$Obj(zipid).style.display = 'block';
 		$Obj(upid).style.display = 'none';
-		//$Obj('handfield').style.display = 'none';
-		// $Obj('formhtml').checked = false;
 		$Obj('copyhtml').innerHTML = '';
 	} else {
 		$Obj(zipid).style.display = 'none';
-		//$Obj('handfield').style.display = 'block';
 	}
 }
-
 //图集，显示与隐藏Html编辑框
 function showHtmlField(formitem, htmlid, upid) {
 	if ($Nav() != "IE") {
@@ -75,15 +63,12 @@ function showHtmlField(formitem, htmlid, upid) {
 	if (formitem.checked) {
 		$Obj(htmlid).style.display = 'block';
 		$Obj(upid).style.display = 'none';
-		//$Obj('handfield').style.display = 'none';
 		$Obj('formzip').checked = false;
 	} else {
 		$Obj(htmlid).style.display = 'none';
-		//$Obj('handfield').style.display = 'block';
 		$Obj('copyhtml').innerHTML = '';
 	}
 }
-
 function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 	var newobj = null;
 	if (f.value == '') return;
@@ -98,7 +83,6 @@ function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 	nForm.target = frname;
 	nForm.dopost.value = 'uploadLitpic';
 	nForm.submit();
-
 	picnameObj.value = '';
 	newobj = $Obj('uploadwait');
 	if (!newobj) {
@@ -119,11 +103,7 @@ function seePicNewAlb(f, imgdid, frname, hpos, acname) {
 	nForm.dopost.value = 'save';
 	nForm.target = '';
 	nForm.litpic.disabled = true;
-	//nForm.litpic = null;
-	//if(nForm.attachEvent) nForm.attachEvent("onsubmit", checkSubmit);
-	//else nForm.addEventListener("submit", checkSubmit, true);
 }
-
 //删除已经上传的图片
 function delAlbPic(pid) {
 	var tgobj = $Obj('albCtok' + pid);
@@ -132,8 +112,7 @@ function delAlbPic(pid) {
 		$Obj('thumbnails').removeChild(tgobj);
 	});
 }
-
-//删除已经上传的图片(编辑时用)
+//删除已经上传的图片，编辑时用
 function delAlbPicOld(picfile, pid) {
 	var tgobj = $Obj('albold' + pid);
 	fetch('swfupload.php?dopost=delold&picfile=' + picfile).then(resp=>resp.text()).then((d)=>{

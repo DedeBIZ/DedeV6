@@ -6,90 +6,65 @@ var nForm = null;
 var nFrame = null;
 var picnameObj = null;
 var vImg = null;
-
 function $Nav() {
 	if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
 	else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
 	else return "OT";
 }
-
 function $Obj(objname) {
 	return document.getElementById(objname);
 }
-
-//旧的颜色选择框（已经过期）
-/*
-function ShowColor()
-{
-	var fcolor=showModalDialog("../../static/web/img/color.htm?ok",false,"dialogWidth:106px;dialogHeight:110px;status:0;dialogTop:"+(+120)+";dialogLeft:"+(+120));
-	if(fcolor!=null && fcolor!="undefined") document.form1.color.value = fcolor;
-}
-*/
-
 function ColorSel(c, oname) {
 	var tobj = $Obj(oname);
 	if (!tobj) tobj = eval('document.form1.' + oname);
 	if (!tobj) {
 		$Obj('colordlg').style.display = 'none';
 		return false;
-	}
-	else {
+	} else {
 		tobj.value = c;
 		$Obj('colordlg').style.display = 'none';
 		return true;
 	}
 }
-
 function ShowColor(e, o) {
 	LoadNewDiv(e, '../../static/web/img/colornew.htm', 'colordlg');
 }
-
 function ShowHide(objname) {
 	var obj = $Obj(objname);
 	if (obj.style.display != "none") obj.style.display = "none";
 	else obj.style.display = "inline-block";
 }
-
 function ShowHideT(objname) {
 	var obj = $Obj(objname);
 	if (obj.style.display != "none") obj.style.display = "none";
 	else obj.style.display = ($Nav() == "IE" ? "inline-block" : "table");
 }
-
 function ShowObj(objname) {
 	var obj = $Obj(objname);
 	if (obj == null) return false;
 	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table");
 }
-
 function ShowObjRow(objname) {
 	var obj = $Obj(objname);
 	obj.style.display = ($Nav() == "IE" ? "inline-block" : "table-row");
 }
-
 function AddTypeid2() {
 	ShowObjRow('typeid2tr');
-	//$Obj('typeid2ct').innerHTML = $Obj('typeidct').innerHTML.replace('typeid','typeid2');
 }
-
 function HideObj(objname) {
 	var obj = $Obj(objname);
 	if (obj == null) return false;
 	obj.style.display = "none";
 }
-
 function ShowItem1() {
 	ShowObj('needset'); ShowObj('head1'); HideObj('head2'); HideObj('adset'); ShowObj('votehead');
 }
-
 function ShowItem2() {
 	ShowObj('head2'); ShowObj('adset'); HideObj('voteset'); HideObj('head1'); HideObj('needset'); HideObj('votehead');
 }
-
 function SeePic(img, f) {
 	if (f.value != '') img.src = f.value;
 }
-
 function SeePicNew(f, imgdid, frname, hpos, acname) {
 	var newobj = null;
 	if (f.value == '') return;
@@ -104,7 +79,6 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 	nForm.target = frname;
 	nForm.dopost.value = 'uploadLitpic';
 	nForm.submit();
-
 	picnameObj.value = '';
 	newobj = $Obj('uploadwait');
 	if (!newobj) {
@@ -126,29 +100,22 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 	nForm.dopost.value = 'save';
 	nForm.target = '';
 	nForm.litpic.disabled = true;
-	//nForm.litpic = null;
-	//if(nForm.attachEvent) nForm.attachEvent("onsubmit", checkSubmit);
-	//else nForm.addEventListener("submit", checkSubmit, true);
 }
-
 function SelectFlash() {
 	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 300; var posTop = window.event.clientY; }
 	else { var posLeft = 100; var posTop = 100; }
 	window.open("./dialog/select_media.php?f=form1.flashurl", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=500,height=350,left=" + posLeft + ", top=" + posTop);
 }
-
 function SelectMedia(fname) {
 	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 200; var posTop = window.event.clientY; }
 	else { var posLeft = 100; var posTop = 100; }
 	window.open("./dialog/select_media.php?f=" + fname, "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=500,height=350,left=" + posLeft + ", top=" + posTop);
 }
-
 function SelectSoft(fname) {
 	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 200; var posTop = window.event.clientY - 50; }
 	else { var posLeft = 100; var posTop = 100; }
 	window.open("./dialog/select_soft.php?f=" + fname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
 }
-
 function SelectImage(fname, stype, imgsel) {
 	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 100; var posTop = window.event.clientY; }
 	else { var posLeft = 100; var posTop = 100; }
@@ -157,7 +124,6 @@ function SelectImage(fname, stype, imgsel) {
 	if (!stype) stype = '';
 	window.open("./dialog/select_images.php?f=" + fname + "&noeditor=yes&imgstick=" + stype + imgsel, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=650,height=400,left=" + posLeft + ", top=" + posTop);
 }
-
 function imageCut(fname) {
 	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 100; var posTop = window.event.clientY; }
 	else { var posLeft = 100; var posTop = 100; }
@@ -169,7 +135,6 @@ function imageCut(fname) {
 	}
 	window.open("imagecut.php?f=" + fname + "&file=" + file, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + posLeft + ", top=" + posTop);
 }
-
 function SelectImageN(fname, stype, vname) {
 	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 100; var posTop = window.event.clientY; }
 	else { var posLeft = 100; var posTop = 100; }
@@ -177,13 +142,11 @@ function SelectImageN(fname, stype, vname) {
 	if (!stype) stype = '';
 	window.open("./dialog/select_images.php?f=" + fname + "&imgstick=" + stype + "&v=" + vname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
 }
-
 function SelectKeywords(f) {
 	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 350; var posTop = window.event.clientY - 200; }
 	else { var posLeft = 100; var posTop = 100; }
 	window.open("article_keywords_select.php?f=" + f, "popUpkwWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=450,left=" + posLeft + ", top=" + posTop);
 }
-
 function InitPage() {
 	var selsource = $Obj('selsource');
 	var selwriter = $Obj('selwriter');
@@ -193,30 +156,25 @@ function InitPage() {
 	if (selwriter) { selwriter.onmousedown = function (e) { SelectWriter(e); } }
 	if (titlechange) { titlechange.onchange = function (e) { TestHasTitle(e); } }
 }
-
 function OpenMyWin(surl) {
 	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=500,height=350,left=200, top=100");
 }
-
 function OpenMyWinCoOne(surl) {
 	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=450,left=100,top=50");
 }
-
 function PutSource(str) {
 	var osource = $Obj('source');
 	if (osource) osource.value = str;
 	$Obj('mysource').style.display = 'none';
 	ChangeFullDiv('hide');
 }
-
 function PutWriter(str) {
 	var owriter = $Obj('writer');
 	if (owriter) owriter.value = str;
 	$Obj('mywriter').style.display = 'none';
 	ChangeFullDiv('hide');
 }
-
-// 增加选择投票内容
+//增加选择投票内容
 function PutVote(str) {
 	var ovote = $Obj('voteid');
 	if (ovote) {
@@ -228,14 +186,12 @@ function PutVote(str) {
 	}
 
 }
-
 function ClearDivCt(objname) {
 	if (!$Obj(objname)) return;
 	$Obj(objname).innerHTML = '';
 	$Obj(objname).style.display = 'none';
 	ChangeFullDiv("hide");
 }
-
 function ChangeFullDiv(showhide, screenheigt) {
 	var newobj = $Obj('fullpagediv');
 	if (showhide == 'show') {
@@ -246,26 +202,19 @@ function ChangeFullDiv(showhide, screenheigt) {
 			newobj.className = 'fullpagediv';
 			newobj.style.height = document.body.clientHeight + 50 + 'px';
 			document.body.appendChild(newobj);
-		}
-		else {
+		}  else {
 			newobj.style.display = 'block';
 		}
-	}
-	else {
+	} else {
 		if (newobj) newobj.style.display = 'none';
 	}
 }
-
 function SelectSource(e) {
 	LoadNewDiv(e, 'article_select_sw.php?t=source&k=8&rnd=' + Math.random(), 'mysource');
-	//ChangeFullDiv('show');
 }
-
 function SelectWriter(e) {
 	LoadNewDiv(e, 'article_select_sw.php?t=writer&k=8&rnd=' + Math.random(), 'mywriter');
-	//ChangeFullDiv('show');
 }
-
 function LoadNewDiv(e, surl, oname) {
 	var pxStr = '';
 	if ($Nav() == 'IE') {
@@ -275,9 +224,7 @@ function LoadNewDiv(e, surl, oname) {
 		var scrollTop = document.documentElement.scrollTop || window.pageYOffset;
 		if (typeof (scrollTop) == 'undefined') scrollTop = document.body.scrollTop;
 		posTop += scrollTop;
-
-	}
-	else {
+	} else {
 		var posLeft = e.pageX - 20;
 		var posTop = e.pageY - 30;
 		pxStr = 'px';
@@ -293,19 +240,16 @@ function LoadNewDiv(e, surl, oname) {
 		newobj.style.top = posTop + pxStr;
 		newobj.style.left = posLeft + pxStr;
 		document.body.appendChild(newobj);
-	}
-	else {
+	} else {
 		newobj.style.display = "block";
 	}
 	if (newobj.innerHTML.length < 10) {
 		fetch(surl).then(resp=>resp.text()).then((d)=>{newobj.innerHTML = d});
 	}
 }
-
 function TestHasTitle(e) {
 	LoadNewDiv2(e, 'article_test_title.php?t=' + $Obj('title').value, 'mytitle', "dlgTesttitle");
 }
-
 function LoadNewDiv2(e, surl, oname, dlgcls) {
 	var posLeft = 300;
 	var posTop = 50;
@@ -329,7 +273,6 @@ function LoadNewDiv2(e, surl, oname, dlgcls) {
 	jQuery(newobj).css('top', '50px').css('left', '300px');
 	DedeXHTTP = null;
 }
-
 function ShowUrlTr() {
 	var jumpTest = $Obj('flagsj');
 	var jtr = $Obj('redirecturltr');
@@ -340,31 +283,26 @@ function ShowUrlTr() {
 		jtr.style.display = "none";
 	}
 }
-
 function ShowUrlTrEdit() {
 	ShowUrlTr();
 	var jumpTest = $Obj('isjump');
 	var rurl = $Obj('redirecturl');
 	if (!jumpTest.checked) rurl.value = "";
 }
-
 function CkRemote() {
 	document.getElementById('picname').value = '';
 }
-
 //载入指定宽高的AJAX窗体
 function LoadQuickDiv(e, surl, oname, w, h) {
 	if ($Nav() == 'IE') {
 		if (window.event) {
 			var posLeft = window.event.clientX - 20;
 			var posTop = window.event.clientY - 30;
-		}
-		else {
+		} else {
 			var posLeft = e.clientX - 20;
 			var posTop = e.clientY + 30;
 		}
-	}
-	else {
+	} else {
 		var posLeft = e.pageX - 20;
 		var posTop = e.pageY - 30;
 	}
@@ -396,11 +334,9 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	});
 	fixupPos = false;
 }
-
 function MyGetScrollTop() {
 	return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 }
-
 //通用事件获取接口
 function getEvent() {
 	if ($Nav() == 'IE') return window.event;
@@ -417,7 +353,6 @@ function getEvent() {
 	}
 	return null;
 }
-
 //模拟ondrop事件相关代码
 /*----------------------------
 leftLeaning = 300;
@@ -429,11 +364,9 @@ newobj.onmousedown = DropStop;
 function DropStart() {
 	this.style.cursor = 'move';
 }
-
 function DropStop() {
 	this.style.cursor = 'default';
 }
-
 function DropMove() {
 	if (this.style.cursor != 'move') return;
 	var event = getEvent();
@@ -441,15 +374,13 @@ function DropMove() {
 		var posLeft = event.clientX - 20;
 		var posTop = event.clientY - 30;
 		posTop += document.body.scrollTop;
-	}
-	else {
+	} else {
 		var posLeft = event.pageX - 20;
 		var posTop = event.pageY - 30;
 	}
 	this.style.top = posTop;
 	this.style.left = posLeft - leftLeaning;
 }
-
 //对指定的元素绑定move事件
 /*-----------------------------
 onmousemove="DropMoveHand('divname', 225);"
@@ -471,15 +402,13 @@ function DropMoveHand(objid, mleftLeaning) {
 		var posLeft = event.clientX - 20;
 		var posTop = event.clientY - 20;
 		posTop += window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-	}
-	else {
+	} else {
 		var posLeft = event.pageX - 20;
 		var posTop = event.pageY - 20;
 	}
 	obj.style.top = posTop + "px";
 	obj.style.left = posLeft - mleftLeaning + "px";
 }
-
 //复制内容到剪切板
 function copyToClipboard(txt) {
 	if (txt == null || txt == '') {
@@ -489,11 +418,9 @@ function copyToClipboard(txt) {
 	if (window.clipboardData) {
 		window.clipboardData.clearData();
 		window.clipboardData.setData("Text", txt);
-	}
-	else if (navigator.userAgent.indexOf('Opera') != -1) {
+	} else if (navigator.userAgent.indexOf('Opera') != -1) {
 		window.location = txt;
-	}
-	else {
+	} else {
 		try {
 			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
 		} catch (e) {
@@ -501,10 +428,8 @@ function copyToClipboard(txt) {
 		}
 		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
 		if (!clip) return;
-
 		var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
 		if (!trans) return;
-
 		trans.addDataFlavor('text/unicode');
 		var str = new Object();
 		var len = new Object();
@@ -517,7 +442,6 @@ function copyToClipboard(txt) {
 		clip.setData(trans, null, clipid.kGlobalClipboard);
 	}
 }
-
 function getSelTxt() {
 	var g, r;
 	if (document.all) {
@@ -527,14 +451,12 @@ function getSelTxt() {
 	}
 	return g;
 }
-
 //显示栏目Map地图
 function ShowCatMap(e, obj, cid, targetId, oldvalue) {
 	fixupPos = true;
 	LoadQuickDiv(e, 'archives_do.php?dopost=getCatMap&targetid=' + targetId + '&channelid=' + cid + '&oldvalue=' + oldvalue + '&rnd=' + Math.random(), 'getCatMap', '700px', '500px');
 	ChangeFullDiv('show');
 }
-
 function getSelCat(targetId) {
 	var selBox = document.quicksel.seltypeid;
 	var targetObj = $Obj(targetId);
@@ -572,53 +494,34 @@ function getSelCat(targetId) {
 	HideObj("getCatMap");
 	ChangeFullDiv("hide");
 }
-
 function getElementLeft(element) {
 	var actualLeft = element.offsetLeft;
 	var current = element.offsetParent;
-
 	while (current !== null) {
 		actualLeft += current.offsetLeft;
 		current = current.offsetParent;
 	}
-
 	return actualLeft;
 }
-
 function getElementTop(element) {
 	var actualTop = element.offsetTop;
 	var current = element.offsetParent;
-
 	while (current !== null) {
 		actualTop += current.offsetTop;
 		current = current.offsetParent;
 	}
-
 	return actualTop;
 }
-
-// Copyright 2020 The MuEMS Authors. All rights reserved.
-// license that can be found in the LICENSE file.
-
-// -----msgbox-------------------------------------
-
-// 生成一个随机ID
+//Copyright 2020 The MuEMS Authors. All rights reserved.
+//license that can be found in the LICENSE file.
+//-----msgbox-------------------------------------
+//生成一个随机ID
 function guid() {
 	function S4() {
 		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 	}
 	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-
-// 显示对话框，动态创建modal并显示，退出自动销毁窗体
-// args是以下结构体
-/*
-args = {
-	title : "",         // 标题，默认是MuEMS
-	footer : "",        // 底部按钮，可以自定义按钮
-	noClose : false,    // 是否显示右上角关闭按钮，默认显示
-}
-*/
 // 函数会返回一个modalID，通过这个ID可自已定义一些方法
 // 这里用到了一个展开语法
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
@@ -628,7 +531,6 @@ function ShowMsg(content, ...args) {
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
 	var noClose = false;
-
 	if (args.length == 1) {
 		// 存在args参数
 		if (typeof args[0].title !== 'undefined' && args[0].title != "") {
@@ -641,10 +543,8 @@ function ShowMsg(content, ...args) {
 			noClose = true;
 		}
 	}
-
 	footer = footer.replaceAll("~modalID~", modalID);
 	content = content.replaceAll("~modalID~", modalID);
-
 	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}" aria-hidden="true">
 <div class="modal-dialog" role="document">
 <div class="modal-content"><div class="modal-header">
@@ -665,8 +565,7 @@ function ShowMsg(content, ...args) {
 	})
 	return modalID;
 }
-
-// 隐藏并销毁modal
+//隐藏并销毁modal
 function CloseModal(modalID) {
 	$("#" + modalID).modal('hide');
 	$("#" + modalID).on('hidden.bs.modal', function (e) {
@@ -675,8 +574,7 @@ function CloseModal(modalID) {
 		}
 	})
 }
-
-// 获取缩略图
+//获取缩略图
 var litpicImgSrc = "";
 var litpicImg = "";
 var currentCID = 0;
@@ -693,17 +591,15 @@ var optCropper = {
 		$("#litPic").attr("src", litpicImg);
 	},
 	aspectRatio: 4 / 3,
-	// 拖动截取缩略图后，截取的缩略图更新到imageItems中
+	//拖动截取缩略图后，截取的缩略图更新到imageItems中
 	cropend: function (data) {
-		// 这里的ID要单独取出来
-		var dataUrl = $(this).cropper("getCroppedCanvas")
-			.toDataURL();
+		//这里的ID要单独取出来
+		var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
 		litpicImg = dataUrl;
 		$("#litPic").attr("src", litpicImg);
 		$("#litpic_b64").val(litpicImg);
 	}
 }
-
 var cropperAspectRatio = {
 	0: 16 / 9,
 	1: 4 / 3,
@@ -711,25 +607,21 @@ var cropperAspectRatio = {
 	3: 2 / 3,
 	4: NaN,
 }
-
 function setAspectRatio(ar) {
 	var opts = optCropper;
 	opts.aspectRatio = cropperAspectRatio[ar];
 	$("#cropImg" + mdlCropperID).cropper('destroy').cropper(opts);
 }
-
 function okImage(modalID) {
 	uploadImage(litpicImg);
 	$("#litPic").attr("src", litpicImg);
 	CloseModal('GKModal' + modalID);
 }
-
 function useDefault(modalID) {
 	uploadImage(litpicImgSrc);
 	$("#litPic").attr("src", litpicImgSrc);
 	CloseModal('GKModal' + modalID);
 }
-
 function uploadImage(litpicImgSrc) {
     const formData = new FormData()
     formData.append('litpic_b64', litpicImgSrc);
@@ -751,26 +643,22 @@ function uploadImage(litpicImgSrc) {
         alert("上传缩略图错误");
     });
 }
-
 $(document).ready(function () {
-
 	$("#btnClearAll").click(function (event) {
 		litpicImgSrc = "";
 		litpicImg = "";
 		$("#picname").val(litpicImg);
 		$("#litPic").attr("src", "../../static/web/img/defaultpic.jpg");
 	})
-
-	// 添加图片
+	//添加图片
 	$("#iptAddImages").change(function (event) {
 		var files = event.target.files;
 		for (var i = 0, f; f = files[i]; i++) {
-			// 如果不是图片忽略
+			//如果不是图片忽略
 			if (!f.type.match('image.*')) {
 				continue;
 			}
-
-			// 将图片渲染到浏览器
+			//将图片渲染到浏览器
 			var reader = new FileReader();
 			reader.onload = (function (theFile) {
 				return function (e) {
@@ -787,8 +675,7 @@ $(document).ready(function () {
 		}
 		$("#iptAddImages").val("");
 	});
-
-	// 截取缩略图
+	//截取缩略图
 	function SetThumb(srcURL) {
 		var footer =
 			"<p><a href='javascript:useDefault(\"~modalID~\");' class='btn btn-success'>使用原图</a> <a href='javascript:okImage(\"~modalID~\")' class='btn btn-success'>确定</a></p>";
@@ -810,12 +697,10 @@ $(document).ready(function () {
 			noClose: false,
 			title: 'DedeBIZ缩略图裁剪',
 		});
-
 		setTimeout(function () {
 			$("#cropImg" + mdlCropperID).cropper(optCropper);
 		}, 500);
 	}
-
 	if ($.fn.daterangepicker) {
 		$('.datepicker').daterangepicker({
 			"singleDatePicker": true,
@@ -854,7 +739,4 @@ $(document).ready(function () {
 			picker.move();
 		})
 	}
-
-
-
 })

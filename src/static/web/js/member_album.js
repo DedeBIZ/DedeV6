@@ -1,37 +1,29 @@
-
 function checkSubmit()
 {
-
 	if(document.form1.title.value=='') {
 		alert("图集标题不能为空");
 		document.form1.title.focus();
 		return false;
 	}
-
 	if(document.form1.typeid.value==0) {
 		alert("隶属栏目必须选择");
 		return false;
 	}
-
 	if(document.form1.typeid.options[document.form1.typeid.selectedIndex].className!='option3')
 	{
 		alert("隶属栏目必须选择白色背景的项目");
 		return false;
 	}
-
 	document.form1.imagebody.value = document.getElementById('copyhtml').innerHTML;
-
 	document.getElementById('postloader').style.display = 'block';
 
 }
-
 function CheckSelTable(nnum){
 	var cbox = document.getElementById('isokcheck'+nnum);
 	var seltb = document.getElementById('seltb'+nnum);
 	if(!cbox.checked) seltb.style.display = 'none';
 	else seltb.style.display = 'block';
 }
-
 var startNum = 1;
 function MakeUpload(mnum)
 {
@@ -41,20 +33,15 @@ function MakeUpload(mnum)
 	var fhtml = "";
 	var dsel = " checked='checked' ";
 	var dplay = "display:none";
-
 	if(mnum==0) endNum = startNum + Number(pnumObj.value);
 	else endNum = mnum;
 	if(endNum>120) endNum = 120;
-
-	//document.getElementById('handfield').style.display = 'block';
-
 	for(startNum;startNum < endNum;startNum++)
 	{
 		if(startNum==1){
 			dsel = " checked='checked' ";
 			dplay = "block";
-		}else
-		{
+		} else {
 			dsel = " ";
 			dplay = "display:none";
 		}
@@ -76,12 +63,10 @@ function MakeUpload(mnum)
 		upfield.innerHTML += fhtml;
 	}
 }
-
 function TestGet()
 {
 	LoadTestDiv();
 }
-
 var vcc = 0;
 function LoadTestDiv()
 {
@@ -91,7 +76,7 @@ function LoadTestDiv()
 	var dfstr = '粘贴到这里...';
 	if(document.getElementById('imagebody').value.length <= dfstr.length)
 	{
-		alert('您还没有粘贴任何东西都编辑框哦');
+		alert('您还没有粘贴任何东西在编辑框');
 		return;
 	}
 	if(!newobj){
@@ -102,11 +87,9 @@ function LoadTestDiv()
 		newobj.style.top = posTop;
 		newobj.style.left = posLeft;
 		document.body.appendChild(newobj);
-	}
-	else{
+	} else{
 		newobj.style.display = "block";
 	}
-
 	const formData = new FormData()
 	formData.append('myhtml', v);
 	formData.append('vcc', vcc);
@@ -120,7 +103,6 @@ function LoadTestDiv()
 		vcc++;
 	})
 }
-
 function checkMuList(psid,cmid)
 {
 	if(document.getElementById('pagestyle3').checked)
@@ -130,29 +112,22 @@ function checkMuList(psid,cmid)
 	else if(document.getElementById('pagestyle1').checked)
 	{
 		document.getElementById('spagelist').style.display = 'block';
-	}
-	else
-	{
+	} else {
 		document.getElementById('spagelist').style.display = 'none';
 	}
 }
-
 //图集，显示与隐藏zip文件选项
 function ShowZipField(formitem,zipid,upid)
 {
 	if(formitem.checked){
 		document.getElementById(zipid).style.display = 'block';
 		document.getElementById(upid).style.display = 'none';
-		//document.getElementById('handfield').style.display = 'none';
 		document.getElementById('formhtml').checked = false;
 		document.getElementById('copyhtml').innerHTML = '';
-	}else
-	{
+	} else {
 		document.getElementById(zipid).style.display = 'none';
-		//document.getElementById('handfield').style.display = 'block';
 	}
 }
-
 //图集，显示与隐藏Html编辑框
 function ShowHtmlField(formitem,htmlid,upid)
 {
@@ -162,13 +137,8 @@ function ShowHtmlField(formitem,htmlid,upid)
 	}
 	if(formitem.checked){
 		document.getElementById(htmlid).style.display = 'block';
-		//document.getElementById(upid).style.display = 'none';
-		//document.getElementById('handfield').style.display = 'none';
-		//document.getElementById('formzip').checked = false;
-	}else
-	{
+	} else {
 		document.getElementById(htmlid).style.display = 'none';
-		//document.getElementById('handfield').style.display = 'block';
 		document.getElementById('copyhtml').innerHTML = '';
 	}
 }

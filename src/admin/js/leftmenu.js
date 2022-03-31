@@ -1,4 +1,3 @@
-
 function showHide(objname)
 {
 	//只对主菜单设置cookie
@@ -12,7 +11,7 @@ function showHide(objname)
 			obj.style.display = 'block';
 		return true;
 	}
-  //正常设置cookie
+  	//正常设置cookie
 	var ckstr = getCookie('menuitems');
 	var ckstrs = null;
 	var okstr ='';
@@ -75,14 +74,9 @@ function setCookie(c_name,value,expiredays)
 var totalitem = 12;
 function CheckOpenMenu()
 {
-	//setCookie('menuitems','');
 	var ckstr = getCookie('menuitems');
 	var curitem = '';
 	var curobj = null;
-	
-	//cross_obj = document.getElementById("staticbuttons");
-	//setInterval("initializeIT()",20);
-	
 	if(ckstr==null)
 	{
 		ckstr='1_1,2_1,3_1';
@@ -103,7 +97,6 @@ function CheckOpenMenu()
 		}
 	}
 }
-
 var curitem = 1;
 function ShowMainMenu(n)
 {
@@ -132,6 +125,4 @@ function ShowMainMenu(n)
 			}
 		});
 	}
-	// bindClick();
 }
-

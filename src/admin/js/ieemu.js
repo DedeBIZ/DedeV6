@@ -6,10 +6,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 var ie = document.all != null;
 var moz = !ie && document.getElementById != null && document.layers == null;
-
 /*
  * Extends the event object with srcElement, cancelBubble, returnValue,
  * fromElement and toElement
@@ -18,17 +16,14 @@ function extendEventObject() {
 	Event.prototype.__defineSetter__("returnValue", function (b) {
 		if (!b) this.preventDefault();
 	});
-
 	Event.prototype.__defineSetter__("cancelBubble", function (b) {
 		if (b) this.stopPropagation();
 	});
-
 	Event.prototype.__defineGetter__("srcElement", function () {
 		var node = this.target;
 		while (node.nodeType != 1) node = node.parentNode;
 		return node;
 	});
-
 	Event.prototype.__defineGetter__("fromElement", function () {
 		var node;
 		if (this.type == "mouseover")
@@ -39,7 +34,6 @@ function extendEventObject() {
 		while (node.nodeType != 1) node = node.parentNode;
 		return node;
 	});
-
 	Event.prototype.__defineGetter__("toElement", function () {
 		var node;
 		if (this.type == "mouseout")
@@ -50,7 +44,6 @@ function extendEventObject() {
 		while (node.nodeType != 1) node = node.parentNode;
 		return node;
 	});
-
 	Event.prototype.__defineGetter__("offsetX", function () {
 		return this.layerX;
 	});
@@ -58,7 +51,6 @@ function extendEventObject() {
 		return this.layerY;
 	});
 }
-
 /*
  * Emulates element.attachEvent as well as detachEvent
  */
@@ -72,7 +64,6 @@ function emulateAttachEvent() {
 			};
 			this.addEventListener(shortTypeName, fHandler._ieEmuEventHandler, false);
 		};
-
 	HTMLDocument.prototype.detachEvent =
 		HTMLElement.prototype.detachEvent = function (sType, fHandler) {
 			var shortTypeName = sType.replace(/on/, "");
@@ -82,7 +73,6 @@ function emulateAttachEvent() {
 				this.removeEventListener(shortTypeName, fHandler, true);
 		};
 }
-
 /*
  * This function binds the event object passed along in an
  * event to window.event
@@ -94,12 +84,10 @@ function emulateEventHandlers(eventNames) {
 		}, true);	// using capture
 	}
 }
-
 /*
  * Simple emulation of document.all
  * this one is far from complete. Be cautious
  */
-
 function emulateAllModel() {
 	var allGetter = function () {
 		var a = this.getElementsByTagName("*");
@@ -112,13 +100,11 @@ function emulateAllModel() {
 	HTMLDocument.prototype.__defineGetter__("all", allGetter);
 	HTMLElement.prototype.__defineGetter__("all", allGetter);
 }
-
 function extendElementModel() {
 	HTMLElement.prototype.__defineGetter__("parentElement", function () {
 		if (this.parentNode == this.ownerDocument) return null;
 		return this.parentNode;
 	});
-
 	HTMLElement.prototype.__defineGetter__("children", function () {
 		var tmp = [];
 		var j = 0;
@@ -138,28 +124,20 @@ function extendElementModel() {
 		}
 		return tmp;
 	});
-
 	HTMLElement.prototype.contains = function (oEl) {
 		if (oEl == this) return true;
 		if (oEl == null) return false;
 		return this.contains(oEl.parentNode);
 	};
 }
-
 /*
-
 document.defaultView.getComputedStyle(el1,<BR>null).getPropertyValue('top');
-
 */
 function emulateCurrentStyle(properties) {
 	HTMLElement.prototype.__defineGetter__("currentStyle", function () {
 		var cs = {};
 		var el = this;
 		for (var i = 0; i < properties.length; i++) {
-			//cs.__defineGetter__(properties[i], function () {
-			//	window.status = "i: " + i	;
-			//	return document.defaultView.getComputedStyle(el, null).getPropertyValue(properties[i]);
-			//});
 			cs.__defineGetter__(properties[i], encapsulateObjects(el, properties[i]));
 		}
 		return cs;
@@ -171,9 +149,7 @@ function encapsulateObjects(el, sProperty) {
 		return document.defaultView.getComputedStyle(el, null).getPropertyValue(sProperty);
 	};
 }
-
 function emulateHTMLModel() {
-
 	// This function is used to generate a html string for the text properties/methods
 	// It replaces '\n' with "<BR"> as well as fixes consecutive white spaces
 	// It also repalaces some special characters	
@@ -183,32 +159,27 @@ function emulateHTMLModel() {
 			s = s.replace(/\s\s/, "&nbsp; ");
 		return s.replace(/\s/g, " ");
 	}
-
 	HTMLElement.prototype.insertAdjacentHTML = function (sWhere, sHTML) {
 		var df;	// : DocumentFragment
 		var r = this.ownerDocument.createRange();
-
 		switch (String(sWhere).toLowerCase()) {
 			case "beforebegin":
 				r.setStartBefore(this);
 				df = r.createContextualFragment(sHTML);
 				this.parentNode.insertBefore(df, this);
 				break;
-
 			case "afterbegin":
 				r.selectNodeContents(this);
 				r.collapse(true);
 				df = r.createContextualFragment(sHTML);
 				this.insertBefore(df, this.firstChild);
 				break;
-
 			case "beforeend":
 				r.selectNodeContents(this);
 				r.collapse(false);
 				df = r.createContextualFragment(sHTML);
 				this.appendChild(df);
 				break;
-
 			case "afterend":
 				r.setStartAfter(this);
 				df = r.createContextualFragment(sHTML);
@@ -216,7 +187,6 @@ function emulateHTMLModel() {
 				break;
 		}
 	};
-
 	HTMLElement.prototype.__defineSetter__("outerHTML", function (sHTML) {
 		var r = this.ownerDocument.createRange();
 		r.setStartBefore(this);
@@ -225,7 +195,6 @@ function emulateHTMLModel() {
 
 		return sHTML;
 	});
-
 	HTMLElement.prototype.__defineGetter__("canHaveChildren", function () {
 		switch (this.tagName) {
 			case "AREA":
@@ -245,7 +214,6 @@ function emulateHTMLModel() {
 		}
 		return true;
 	});
-
 	HTMLElement.prototype.__defineGetter__("outerHTML", function () {
 		var attr, attrs = this.attributes;
 		var str = "<" + this.tagName;
@@ -259,28 +227,22 @@ function emulateHTMLModel() {
 
 		return str + ">" + this.innerHTML + "</" + this.tagName + ">";
 	});
-
-
 	HTMLElement.prototype.__defineSetter__("innerText", function (sText) {
 		this.innerHTML = convertTextToHTML(sText);
 		return sText;
 	});
-
 	var tmpGet;
 	HTMLElement.prototype.__defineGetter__("innerText", tmpGet = function () {
 		var r = this.ownerDocument.createRange();
 		r.selectNodeContents(this);
 		return r.toString();
 	});
-
 	HTMLElement.prototype.__defineSetter__("outerText", function (sText) {
 		this.outerHTML = convertTextToHTML(sText);
 		return sText;
 	});
 	HTMLElement.prototype.__defineGetter__("outerText", tmpGet);
-
 	HTMLElement.prototype.insertAdjacentText = function (sWhere, sText) {
 		this.insertAdjacentHTML(sWhere, convertTextToHTML(sText));
 	};
-
 }

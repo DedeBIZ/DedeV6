@@ -15,9 +15,7 @@ function selNext(oj, v)
         aOption.value = '0';
         oj.options.add(aOption);
         return;
-    }
-    else
-    {
+    } else {
         aOption = document.createElement('OPTION');
         aOption.text = '具体地区';
         aOption.value = '0';
@@ -38,7 +36,6 @@ function ChangeSon()
 {
     //由于支持3级联动,所以这里需要对自己改变进行重构
     var emname = this.name.replace('_son', '');
-    //alert(emname);
     if( document.getElementById(emname+'_sec') )
     {
         var oj = document.getElementById(emname + '_sec');
@@ -55,7 +52,6 @@ function ChangeSon()
     var selarr = eval('em_'+emname+'s');
     var selv = parseInt(v);
     var maxv = parseInt(v) + 0.5;
-    //alert(maxv);
     i = 0;
     while(newobj && newobj.length > 0) oj.remove(0);
     clear(oj);
@@ -154,7 +150,6 @@ function MakeTopSelect(emname, selvalue)
     selObj.className = "form-control";
     selObj.onchange = selNextSon;
     var selarr = eval('em_'+emname+'s');
-    //alert(selarr[1002.2]);
     var topvalue = 0;
     var sonvalue = 0;
     var secvalue = 0;
@@ -162,7 +157,6 @@ function MakeTopSelect(emname, selvalue)
     aOption.text = '请选择..';
     aOption.value = 0;
     selObj.options.add(aOption);
-    //alert(selvalue);
     if(selvalue % 500 == 0 ) 
     {
         topvalue = selvalue;
@@ -197,7 +191,6 @@ function MakeTopSelect(emname, selvalue)
     }
     document.getElementById('span_'+emname).appendChild(selObj);
     //如果子类存在值，创建子类
-    //if(sonvalue > 0 || topvalue > 0) {
     selObj = document.createElement("select");
     selObj.name = emname + '_son';
     selObj.id   = emname + '_son';
@@ -245,7 +238,6 @@ function MakeTopSelect(emname, selvalue)
         selObj.options.add(aOption);
         var selv = sonvalue;
         var maxv = parseInt(sonvalue) + 0.5;
-        //alert(maxv);
         i = 0;
         for(i = selv + 0.001; i < maxv; i = FloatAdd(i, 0.001))
         {

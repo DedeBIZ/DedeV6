@@ -113,7 +113,6 @@ function getCheckboxItem()
 	}
 	return allSel;
 }
-
 //获得选中其中一个的id
 function getOneItem()
 {
@@ -129,7 +128,6 @@ function getOneItem()
 	}
 	return allSel;
 }
-
 function selAll()
 {
 	if (typeof document.form2.arcID.length === "undefined") {
