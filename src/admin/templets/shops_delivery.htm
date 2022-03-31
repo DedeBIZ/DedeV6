@@ -77,17 +77,17 @@
           <td height="50" colspan="3" align="center" bgcolor="#FFFFFF">
             <table width="100%" border="0" cellpadding="1" cellspacing="2" style="BORDER: #CCC 1px solid;" class="table table-striped">
               <?php foreach($deliveryarr as $rs) { ?>
-              <input type="hidden" name="pid[]" value="<?php echo $rs['pid'];?>">
+              <input type="hidden" name="pid[]" value="<?php echo $rs['pid']; ?>">
               <tr>
                 <td width="23%" height="26" align="left" style="padding-left:5px;">
-                  <input name="m_dname<?php echo $rs['pid'];?>" type="text" value="<?php echo $rs['dname'];?>">
-                  <div style="padding:3px;BORDER-TOP: #CCC 1px solid;"><a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid'];?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a></div>
+                  <input name="m_dname<?php echo $rs['pid']; ?>" type="text" value="<?php echo $rs['dname']; ?>">
+                  <div style="padding:3px;BORDER-TOP: #CCC 1px solid;"><a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid']; ?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a></div>
                 </td>
                 <td width="77%" align="left" valign="top" style="BORDER-BOTTOM: #CCC 1px solid;padding-left:5px;">
                   手续费：
-                  <input name="m_price<?php echo $rs['pid'];?>" type="text" id="m_price<?php echo $rs['pid'];?>" style="margin-left:6px;" value="<?php echo $rs['price'];?>" size="6" maxlength="6">
+                  <input name="m_price<?php echo $rs['pid']; ?>" type="text" id="m_price<?php echo $rs['pid']; ?>" style="margin-left:6px;" value="<?php echo $rs['price']; ?>" size="6" maxlength="6">
                   元
-                  <div style="padding:3px;BORDER-TOP: #CCC 1px solid;"><textarea name="m_des<?php echo $rs['pid'];?>" id="m_des<?php echo $rs['pid'];?>" style="margin-left:6px; width:320px;"><?php echo $rs['des'];?></textarea></div>
+                  <div style="padding:3px;BORDER-TOP: #CCC 1px solid;"><textarea name="m_des<?php echo $rs['pid']; ?>" id="m_des<?php echo $rs['pid']; ?>" style="margin-left:6px; width:320px;"><?php echo $rs['des']; ?></textarea></div>
                 </td>
               </tr>
               <?php  }?>

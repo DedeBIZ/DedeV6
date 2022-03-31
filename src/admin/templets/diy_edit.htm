@@ -48,7 +48,7 @@
   </div>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
-      <input type='hidden' name='diyid' value='<?php echo $diyid;?>'>
+      <input type='hidden' name='diyid' value='<?php echo $diyid; ?>'>
       <input type='hidden' name='dopost' value='save'>
       <tr>
         <td height="26" colspan="2" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif' style="padding-left:10px">
@@ -140,8 +140,8 @@ foreach($dtp->CTags as $ctag)
 		 ?>
               </td>
               <td>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</a>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-globe" aria-hidden="true"></i> 删除</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid; ?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid; ?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-globe" aria-hidden="true"></i> 删除</a>
               </td>
             </tr>
             <?php 
@@ -155,31 +155,31 @@ foreach($dtp->CTags as $ctag)
         <td height="26" align="left" bgcolor="#FFFFFF">列表模板：</td>
         <td bgcolor="#FFFFFF">
           <input name="listtemplate" type="text" id="listtemplate" style="width:180px"
-            value="<?php echo $row['listtemplate'];?>" class='alltxt' />
+            value="<?php echo $row['listtemplate']; ?>" class='alltxt' />
         </td>
       </tr>
       <tr>
         <td height="26" align="left" bgcolor="#FFFFFF">内容模板：</td>
         <td bgcolor="#FFFFFF">
           <input name="viewtemplate" type="text" id="viewtemplate" style="width:180px"
-            value="<?php echo $row['viewtemplate'];?>" class='alltxt' />
+            value="<?php echo $row['viewtemplate']; ?>" class='alltxt' />
         </td>
       </tr>
       <tr>
         <td height="26" align="left" bgcolor="#FFFFFF">发布模板：</td>
         <td bgcolor="#FFFFFF">
           <input name="posttemplate" type="text" id="posttemplate" style="width:180px"
-            value="<?php echo $row['posttemplate'];?>" class='alltxt' />
+            value="<?php echo $row['posttemplate']; ?>" class='alltxt' />
         </td>
       </tr>
       <tr>
         <td height="26" align="left" bgcolor="#FFFFFF">前台列表和内容页公开：</td>
         <td bgcolor="#FFFFFF">
-          <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>
+          <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?>
               class='np' /> 完全公开 </label>
-          <label><input name="public" type="radio" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>
+          <label><input name="public" type="radio" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?>
               class='np' /> 公开审核过的 </label>
-          <label><input name="public" type="radio" value="0" <?php echo $row['public'] == 0 ? 'checked' : '';?>
+          <label><input name="public" type="radio" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?>
               class='np' /> 不公开 </label>
         </td>
       </tr>
@@ -187,7 +187,7 @@ foreach($dtp->CTags as $ctag)
         <td height="26" colspan="2">
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
             <tr>
-              <td width="26%" height="36">&nbsp;</td>
+              <td width="26%" height="36"></td>
               <td width="15%">
                 <button type="submit" name="button" id="button" class='btn btn-success'>确定</button>
               </td>

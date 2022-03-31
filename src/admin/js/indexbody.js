@@ -2,24 +2,20 @@ function AddNew()
 {
     $DE('addTab').style.display = 'block';
 }
-
 function CloseTab(tb)
 {
     $DE(tb).style.display = 'none';
 }
-
 function ListAll(){
     $DE('editTab').style.display = 'block';
 	fetch('index_body.php?dopost=editshow').then(resp=>resp.text()).then((d)=>{
 		$DE('editTabBody').innerHTML = d;
 	});
 }
-
 function ShowWaitDiv(){
     $DE('loaddiv').style.display = 'block';
     return true;
 }
-
 $(function(){
     $.get("index_testenv.php", function (data){
         if (data !== ''){
@@ -32,7 +28,7 @@ $(function(){
         }
     });
 });
-
+//Dedebiz info
 var dedebizInfo;
 function ViewDedeBIZ(){
     console.log(dedebizInfo);

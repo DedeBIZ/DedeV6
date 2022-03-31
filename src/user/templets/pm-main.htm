@@ -81,7 +81,7 @@
                       {dede:datalist}
                       <tr>
                         <td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}"
-                            style=" margin-left:5px" /></td>
+                            style="margin-left:5px" /></td>
                         <td><?php
                         if($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
                         else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
@@ -96,7 +96,7 @@
                         <td>
                           <div class="pm-read-status" for="<?php echo $fields['id'];?>">
                             <?php
-                            $readmsg = ($fields['hasview']==0 ? "<span style='color:red'>未阅读</span>" : '已阅读');
+                            $readmsg = ($fields['hasview']==0 ? "<span style='color:#dc3545'>未阅读</span>" : '已阅读');
                             echo $readmsg;
                             ?>
                           </div>

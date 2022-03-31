@@ -6,8 +6,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
-//---事件句并------------------------------
+//事件句并
 function fileQueueError(file, errorCode, message) {
 	try {
 		var imageName = "error.gif";
@@ -15,12 +14,10 @@ function fileQueueError(file, errorCode, message) {
 		if (errorCode === SWFUpload.errorCode_QUEUE_LIMIT_EXCEEDED) {
 			errorName = "您添加的文件超过了限制";
 		}
-
 		if (errorName !== "") {
 			alert(errorName);
 			return;
 		}
-
 		switch (errorCode) {
 			case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
 				imageName = "zerobyte.gif";
@@ -40,7 +37,6 @@ function fileQueueError(file, errorCode, message) {
 	}
 
 }
-
 function fileDialogComplete(numFilesSelected, numFilesQueued) {
 	try {
 		if (numFilesQueued > 0) {
@@ -50,7 +46,6 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
 		this.debug(ex);
 	}
 }
-
 function uploadProgress(file, bytesLoaded) {
 	try {
 		var percent = Math.ceil((bytesLoaded / file.size) * 100);
@@ -67,31 +62,26 @@ function uploadProgress(file, bytesLoaded) {
 		this.debug(ex);
 	}
 }
-
 function uploadSuccess(file, serverData) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.upload_target);
 
 		if (serverData.substring(0, 7) === "FILEID:") {
 			addImage("swfupload.php?dopost=thumbnail&id=" + serverData.substring(7), serverData.substring(7));
-
-			progress.setStatus("获取缩略图...");
+			progress.setStatus("获取缩略图");
 			progress.toggleCancel(false);
 		} else {
 			addImage("images/error.gif", 0);
 			progress.setStatus("有错误");
 			progress.toggleCancel(false);
 			alert(serverData);
-
 		}
 	} catch (ex) {
 		this.debug(ex);
 	}
 }
-
 function uploadComplete(file) {
 	try {
-		/*  I want the next upload to continue automatically so I'll call startUpload here */
 		if (this.getStats().files_queued > 0) {
 			this.startUpload();
 		} else {
@@ -104,7 +94,6 @@ function uploadComplete(file) {
 		this.debug(ex);
 	}
 }
-
 function uploadError(file, errorCode, message) {
 	var imageName = "error.gif";
 	var progress;
@@ -138,91 +127,73 @@ function uploadError(file, errorCode, message) {
 				alert(message);
 				break;
 		}
-
 		addImage("images/" + imageName, 0);
-
 	} catch (ex3) {
 		this.debug(ex3);
 	}
 
 }
-
 var albImg = 0;
 function addImage(src, pid) {
 	var newImgDiv = document.createElement("div");
 	var delstr = '';
-	var iptwidth = 190;
+	var iptwidth = 160;
 	albImg++;
 	if (pid != 0) {
 		albImg = 'ok' + pid;
-		delstr = '<a href="javascript:delAlbPic(' + pid + ')">[删除]</a>';
+		delstr = '<a class="btn btn-success btn-sm" href="javascript:delAlbPic(' + pid + ')">删除</a>';
 	} else {
 		albImg = 'err' + albImg;
 	}
 	newImgDiv.className = 'albCt';
 	newImgDiv.id = 'albCt' + albImg;
 	document.getElementById("thumbnails").appendChild(newImgDiv);
-	newImgDiv.innerHTML = '<img src="' + src + '" width="120" />' + delstr;
+	newImgDiv.innerHTML = '<img src="' + src + '" style="width:120px">' + delstr;
 	if (typeof arctype != 'undefined' && arctype == 'article') {
 		iptwidth = 100;
 		if (pid != 0) {
-			newImgDiv.innerHTML = '<img src="' + src + '" width="120" onClick="addtoEdit(' + pid + ')"/>' + delstr;
+			newImgDiv.innerHTML = '<img src="' + src + '" style="width:120px" onClick="addtoEdit(' + pid + ')">' + delstr;
 		}
 	}
-	newImgDiv.innerHTML += '<div style="margin-top:10px">注释：<input type="text" name="picinfo' + albImg + '" value="" style="width:' + iptwidth + 'px;" /></div>';
+	newImgDiv.innerHTML += '<div style="margin-top:10px">注释：<input type="text" name="picinfo' + albImg + '" value="" style="width:' + iptwidth + 'px;"></div>';
 }
-
-
 /* ******************************************
  *	FileProgress Object
  *	Control object for displaying file info
  * ****************************************** */
-
 function FileProgress(file, targetID) {
 	this.fileProgressID = "divFileProgress";
-
 	this.fileProgressWrapper = document.getElementById(this.fileProgressID);
 	if (!this.fileProgressWrapper) {
 		this.fileProgressWrapper = document.createElement("div");
 		this.fileProgressWrapper.className = "progressWrapper";
 		this.fileProgressWrapper.id = this.fileProgressID;
-
 		this.fileProgressElement = document.createElement("div");
 		this.fileProgressElement.className = "progressContainer";
-
 		var progressCancel = document.createElement("a");
 		progressCancel.className = "progressCancel";
 		progressCancel.href = "#";
 		progressCancel.style.visibility = "hidden";
 		progressCancel.appendChild(document.createTextNode(" "));
-
 		var progressText = document.createElement("div");
 		progressText.className = "progressName";
 		progressText.appendChild(document.createTextNode(file.name));
-
 		var progressBar = document.createElement("div");
 		progressBar.className = "progressBarInProgress";
-
 		var progressStatus = document.createElement("div");
 		progressStatus.className = "progressBarStatus";
 		progressStatus.innerHTML = "&nbsp;";
-
 		this.fileProgressElement.appendChild(progressCancel);
 		this.fileProgressElement.appendChild(progressText);
 		this.fileProgressElement.appendChild(progressStatus);
 		this.fileProgressElement.appendChild(progressBar);
-
 		this.fileProgressWrapper.appendChild(this.fileProgressElement);
-
 		document.getElementById(targetID).appendChild(this.fileProgressWrapper);
-
 	} else {
 		this.fileProgressElement = this.fileProgressWrapper.firstChild;
 		this.fileProgressElement.childNodes[1].firstChild.nodeValue = file.name;
 	}
-
 	this.height = this.fileProgressWrapper.offsetHeight;
-
 }
 FileProgress.prototype.setProgress = function (percentage) {
 	this.fileProgressElement.className = "progressContainer blue";

@@ -90,7 +90,7 @@ foreach($payment_arr as $value){
 </tr>
 <tr align="center" height="26" bgcolor="#FFFFFF">
 <td height="30" colspan="2" align="left" bgcolor="#FFFFFF">
-&nbsp;&nbsp;<?php echo $message;?></td>
+&nbsp;&nbsp;<?php echo $message; ?></td>
 </tr>
 <tr align="center" height="26" bgcolor="#FFFFFF">
 <td width="13%" height="30" align="right" bgcolor="#FFFFFF">
@@ -99,7 +99,7 @@ foreach($payment_arr as $value){
 <div style="padding:6px; line-height:24px;">
 <?php foreach($cfg_pay_info['name'] as $k => $val) { ?>
 <li style="float:left; width:180px;">
-<input name="payment_select[<?php echo $k;?>]" type="checkbox" value="<?php echo $cfg_pay_info['type'][$k];?>" Onclick="if(this.checked == true) ShowReg(<?php echo $k;?>);" <?php if(in_array($cfg_pay_info['type'][$k],$payment_select)) echo 'checked'; ?>> <span onClick="ShowReg(<?php echo $k;?>);" style="cursor:pointer;"><?php echo $val;?></span>
+<input name="payment_select[<?php echo $k; ?>]" type="checkbox" value="<?php echo $cfg_pay_info['type'][$k]; ?>" Onclick="if(this.checked == true) ShowReg(<?php echo $k; ?>);" <?php if(in_array($cfg_pay_info['type'][$k],$payment_select)) echo 'checked'; ?>> <span onClick="ShowReg(<?php echo $k; ?>);" style="cursor:pointer;"><?php echo $val; ?></span>
 </li>
 <?php }?>
 </div>
@@ -171,7 +171,7 @@ ShowReg(0);
         <td height="50" colspan="3" align="center" bgcolor="#FFFFFF"> <table width="200" border="0" cellspacing="1" cellpadding="1">
             <tr>
               <td align="center" valign="middle"><input type="reset" name="button"  value="重置" class='np coolbg' />              </td>
-              <td align="center" valign="middle"><input name="imageField" type="submit" class='np coolbg' value="提交"/>&nbsp;</td>
+              <td align="center" valign="middle"><input name="imageField" type="submit" class='np coolbg' value="提交"/></td>
             </tr>
         </table></td>
       </tr>

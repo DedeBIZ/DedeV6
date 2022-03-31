@@ -118,7 +118,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td height="26" align="left">&nbsp;</td>
+                      <td height="26" align="left"></td>
                       <td align="left">以下选项用于模板里的 &lt;meta name=&quot;keywords|description&quot;content=&quot;&quot;&gt; 描述</td>
                     </tr>
                     <tr>
@@ -217,13 +217,13 @@
               	?>
                   高级筛选：
                   <label><input name="types[]" type="checkbox" id="type1" value="image"
-                    <?php if(preg_match("#image#i",$setype)) echo ' checked';?>>
+                    <?php if(preg_match("#image#i",$setype)) echo ' checked'; ?>>
                   带缩略图</label>
                   <label><input name="types[]" type="checkbox" id="type2" value="commend"
-                    <?php if(preg_match("#commend#i", $setype)) echo ' checked';?>>
+                    <?php if(preg_match("#commend#i", $setype)) echo ' checked'; ?>>
                   推荐</label>
                   <label><input name="types[]" type="checkbox" id="type3" value="spec" class="inputbut"
-                    <?php if(preg_match("#spec#i", $setype)) echo ' checked';?>>
+                    <?php if(preg_match("#spec#i", $setype)) echo ' checked'; ?>>
                   专题</label>　关键词：
                   <input name="keywordarc" type="text" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">
                   （&quot;,&quot;逗号分开）
@@ -256,10 +256,10 @@
                   </select>
                   　
                   <label><input name="order" type="radio" value="desc"
-                    <?php if($ctag->GetAtt('orderway')=='desc') echo " checked";?>>
+                    <?php if($ctag->GetAtt('orderway')=='desc') echo " checked"; ?>>
                   由高到低</label>
                   <label><input type="radio" name="order" value="asc"
-                    <?php if($ctag->GetAtt('orderway')=='asc') echo " checked";?>>
+                    <?php if($ctag->GetAtt('orderway')=='asc') echo " checked"; ?>>
                   由低到高</label></td>
               </tr>
               <tr>
@@ -286,7 +286,7 @@
         </tr>
       </form>
       <tr>
-        <td valign="top" bgcolor="#f6f6f6">&nbsp;</td>
+        <td valign="top" bgcolor="#f6f6f6"></td>
       </tr>
     </table>
   </center>

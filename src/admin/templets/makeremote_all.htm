@@ -57,11 +57,11 @@ function changeDopost(postval)
     $bgcolor = ($key % 2 == 0)? '#E6F3CD' : '#FFFFFF';
     ?>
     <tr>
-      <td width="60" align="center" valign="top" bgcolor="<?php echo $bgcolor;?>"><input name="Iterm[<?php echo $key;?>]" type="checkbox" id="Iterm" value="<?php echo $value['filedir'] ;?>"></td>
-      <td width="185" align="left" valign="top" bgcolor="<?php echo $bgcolor;?>"><?php echo $value['filedir'] ;?><?php echo ($value['issystem']==1)? '<span style='color:#dc3545'>[系统]</span>' : '' ;?></td>
-      <td width="260" valign="top" bgcolor="<?php echo $bgcolor;?>"><?php echo $value['description'] ;?></td>
-      <td width="190" align="center" valign="top" bgcolor="<?php echo $bgcolor;?>"><label></label></td>
-      <td width="190" align="center" valign="top" bgcolor="<?php echo $bgcolor;?>"><?php echo GetState($value['state']) ;?></td>
+      <td width="60" align="center" valign="top" bgcolor="<?php echo $bgcolor; ?>"><input name="Iterm[<?php echo $key; ?>]" type="checkbox" id="Iterm" value="<?php echo $value['filedir'] ; ?>"></td>
+      <td width="185" align="left" valign="top" bgcolor="<?php echo $bgcolor; ?>"><?php echo $value['filedir'] ; ?><?php echo ($value['issystem']==1)? '<span style='color:#dc3545'>[系统]</span>' : '' ; ?></td>
+      <td width="260" valign="top" bgcolor="<?php echo $bgcolor; ?>"><?php echo $value['description'] ; ?></td>
+      <td width="190" align="center" valign="top" bgcolor="<?php echo $bgcolor; ?>"><label></label></td>
+      <td width="190" align="center" valign="top" bgcolor="<?php echo $bgcolor; ?>"><?php echo GetState($value['state']) ; ?></td>
     </tr>
     <?php
     }

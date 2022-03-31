@@ -64,7 +64,7 @@
           <form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1"
             onSubmit="return checkSubmit()">
             <input type='hidden' name='dopost' value='save' />
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
               <td height="26" colspan="3">自定义标记的调用方法：<br>
                 {dede:mytag name='标记名称' ismake='是否含板块代码（yes 或 no）' typeid='栏目ID'/}
@@ -116,17 +116,17 @@
               <td width="76%">
                 <textarea name="normbody" id="normbody" style="width:80%;height:100"></textarea>
               </td>
-              <td width="9%">&nbsp;</td>
+              <td width="9%"></td>
             </tr>
             <tr>
               <td height="80" align="center">过期显示内容：</td>
               <td>
                 <textarea name="expbody" id="expbody" style="width:80%;height:100"></textarea>
               </td>
-              <td>&nbsp;</td>
+              <td></td>
             </tr>
             <tr>
-              <td height="53" align="center">&nbsp;</td>
+              <td height="53" align="center"></td>
               <td colspan="2">
                 <button type="submit" class="btn btn-success">确定</button>
               </td>

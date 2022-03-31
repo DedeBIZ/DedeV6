@@ -36,10 +36,10 @@
         <td bgcolor="#FFFFFF" width="200">链接显示方式：</td>
         <td bgcolor="#FFFFFF">
           <label><input type="radio" name="downtype" class="np" value="0"
-            <?php if($row['downtype']==0) echo " checked='checked' ";?>>
+            <?php if($row['downtype']==0) echo " checked='checked' "; ?>>
           直接显示地址列表</label>
           <label><input name="downtype" type="radio" value="1" class="np"
-            <?php if($row['downtype']==1) echo " checked='checked' ";?>>
+            <?php if($row['downtype']==1) echo " checked='checked' "; ?>>
           要求进入下载地址列表页</label>
         </td>
       </tr>
@@ -47,10 +47,10 @@
         <td bgcolor="#FFFFFF">附件下载方式：</td>
         <td bgcolor="#FFFFFF">
           <label><input type="radio" name="gotojump" class="np" value="0"
-            <?php if($row['gotojump']==0) echo " checked='checked' ";?>>
+            <?php if($row['gotojump']==0) echo " checked='checked' "; ?>>
           链接到真实软件地址</label>
           <label><input name="gotojump" type="radio" class="np" value="1"
-            <?php if($row['gotojump']==1) echo " checked='checked' ";?>>
+            <?php if($row['gotojump']==1) echo " checked='checked' "; ?>>
           链接到跳转页面</label>
         </td>
       </tr>
@@ -58,30 +58,30 @@
         <td bgcolor="#FFFFFF">是否启用镜像站点：</td>
         <td bgcolor="#FFFFFF">
           <label><input type="radio" name="ismoresite" class="np" value="1"
-            <?php if($row['ismoresite']==1) echo " checked='checked' ";?>>
+            <?php if($row['ismoresite']==1) echo " checked='checked' "; ?>>
           启用</label>
           <label><input name="ismoresite" type="radio" class="np" value="0"
-            <?php if($row['ismoresite']==0) echo " checked='checked' ";?>>
+            <?php if($row['ismoresite']==0) echo " checked='checked' "; ?>>
           不启用</label></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">启用镜像站点后是否保留本地下载：</td>
         <td bgcolor="#FFFFFF">
           <label><input type="radio" name="islocal" class="np" value="1"
-            <?php if($row['islocal']==1) echo " checked='checked' ";?>>
+            <?php if($row['islocal']==1) echo " checked='checked' "; ?>>
           保留</label>
           <label><input name="islocal" type="radio" class="np" value="0"
-            <?php if($row['islocal']==0) echo " checked='checked' ";?>>
+            <?php if($row['islocal']==0) echo " checked='checked' "; ?>>
           不保留</label></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">镜像处理方式：</td>
         <td bgcolor="#FFFFFF">
           <label><input type="radio" name="moresitedo" class="np" value="1"
-            <?php if($row['moresitedo']==1) echo " checked='checked' ";?>>
+            <?php if($row['moresitedo']==1) echo " checked='checked' "; ?>>
           根据本地地址和服务器列表自动生成</label>
           <label><input name="moresitedo" type="radio" class="np" value="0"
-            <?php if($row['moresitedo']==0) echo " checked='checked' ";?>>
+            <?php if($row['moresitedo']==0) echo " checked='checked' "; ?>>
           发布时按服务器生成列表由我手工填写</label>
         </td>
       </tr>
@@ -117,9 +117,9 @@
         <td bgcolor="#FFFFFF">参数限制方式：</td>
         <td bgcolor="#FFFFFF">
             <label><input type="radio" name="argrange" class="np" value="0"
-            <?php if($row['argrange']==0) echo " checked='checked' ";?>> 允许发布时重新选择权限</label> 
+            <?php if($row['argrange']==0) echo " checked='checked' "; ?>> 允许发布时重新选择权限</label> 
             <label><input type="radio" name="argrange" class="np" value="2"
-            <?php if($row['argrange']==1) echo " checked='checked' ";?>> 所有软件均使用此权限</label> 
+            <?php if($row['argrange']==1) echo " checked='checked' "; ?>> 所有软件均使用此权限</label> 
         </td>
       </tr>
       <tr>

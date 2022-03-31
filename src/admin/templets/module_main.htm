@@ -24,12 +24,12 @@
     <div class="bodytitleleft"></div>
     <div class="bodytitletxt">模块管理</div>
     <div class="bodytitletxt" style="float:right;padding-right:10px">
-      <a href="<?php echo $cfg_biz_dedebizUrl;?>?from=module" target="_blank">应用市场</a> | 
+      <a href="<?php echo $cfg_biz_dedebizUrl; ?>?from=module" target="_blank">应用市场</a> | 
       <a href="module_upload.php">模块上传</a> | 
       <a href="module_make.php">模块打包</a>
     </div>
   </div>
-  <div class="alert alert-info maintable mb-3" style="margin:0 auto">从DedeBIZV6开始，启动了<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，为了保障系统及技术服务安全，请认准DedeBIZ商业认证开发者</div>
+  <div class="alert alert-info maintable mb-3" style="margin:0 auto">从DedeBIZV6开始，启动了<a href="<?php echo $cfg_biz_dedebizUrl; ?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，为了保障系统及技术服务安全，请认准DedeBIZ商业认证开发者</div>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable">
     <form name="form1" action="plus_add.php" method="post">
       <input type='hidden' name='dopost' value='save'>
@@ -67,7 +67,7 @@
       	else  echo $v['lang'];
         ?>
         </td>
-        <td><?php echo $types[$v['moduletype']];?></td>
+        <td><?php echo $types[$v['moduletype']]; ?></td>
         <td>
         <?php
 		    $file = DEDEDATA."/module/{$v['hash']}.xml";

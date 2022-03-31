@@ -54,16 +54,16 @@
           <form action="ad_edit.php" method="post" enctype="multipart/form-data" name="form1">
             <input type='hidden' name='aid' value='<?php echo $aid?>'>
             <input type='hidden' name='dopost' value='saveedit'>
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
               <td height="26" align="center">广告位标识：</td>
               <td colspan="2"><?php echo $row['tagname']; ?></td>
             </tr>
             <tr>
               <td height="26" align="center">广告分类：</td>
-              <td colspan="2"><select name='clsid' style='width:150' id="clsid">
+              <td colspan="2"><select name='clsid' style='width:150px' id="clsid">
                   <option value='0'>默认分类</option>
-                  <?php echo $option;?>
+                  <?php echo $option; ?>
                 </select></td>
             </tr>
             <tr>
@@ -102,17 +102,17 @@
             </tr>
             <tr>
               <td height="80" align="center">正常显示内容：</td>
-              <td width="76%"><textarea name="normbody" rows="10" id="normbody" style="width:80%;height:100"><?php echo dede_htmlspecialchars(stripslashes($row['normbody']))?></textarea>
+              <td width="76%"><textarea name="normbody" rows="10" id="normbody" style="width:80%;height:100px"><?php echo dede_htmlspecialchars(stripslashes($row['normbody']))?></textarea>
               </td>
-              <td width="9%">&nbsp;</td>
+              <td width="9%"></td>
             </tr>
             <tr>
               <td height="80" align="center">过期显示内容：</td>
-              <td><textarea name="expbody" rows="10" id="expbody" style="width:80%;height:100"><?php echo dede_htmlspecialchars($row['expbody'])?></textarea></td>
-              <td>&nbsp;</td>
+              <td><textarea name="expbody" rows="10" id="expbody" style="width:80%;height:100px"><?php echo dede_htmlspecialchars($row['expbody'])?></textarea></td>
+              <td></td>
             </tr>
             <tr>
-              <td height="53" align="center">&nbsp;</td>
+              <td height="53" align="center"></td>
               <td colspan="2"><button type="submit" class="btn btn-success">确定</button></td>
             </tr>
           </form>

@@ -79,10 +79,10 @@
           <form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
             <input type='hidden' name='dopost' value='save'>
             <input type="hidden" name="isarc" value="<?php echo $isarc; ?>">
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
               <td width="15%" align="center">投票名称：</td>
-              <td width="85%"> <input name="votename" type="text" id="votename"> </td>
+              <td width="85%"> <input name="votename" type="text" id="votename"></td>
             </tr>
             <tr>
               <td align="center">开始时间：</td>
@@ -148,7 +148,7 @@
                 否</label></td>
             </tr>
             <tr>
-              <td height="36">&nbsp;</td>
+              <td height="36"></td>
               <td>
                 <button type="submit" name="Submit" class="btn btn-success">保存投票数据</button>
                 <button type="button" onclick="history.back()" name="Submit" class="btn btn-success">返回</button>
@@ -159,7 +159,7 @@
             </tr>
           </form>
 
-          <td colspan="2">&nbsp;</td>
+          <td colspan="2"></td>
         </table>
       </td>
     </tr>

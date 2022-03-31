@@ -63,7 +63,7 @@
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="177" height="18" style="padding-left:10px">文档批量管理：</td>
-              <td align="right">&nbsp;</td>
+              <td align="right"></td>
             </tr>
           </table>
         </td>
@@ -74,7 +74,7 @@
           <?php
        $tl = new TypeLink(0);
        $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-       echo "<select name='typeid' style='width:300'>\r\n";
+       echo "<select name='typeid' style='width:300px'>\r\n";
        echo "<option value='0' selected>不限栏目</option>\r\n";
        echo $typeOptions;
        echo "</select>";
@@ -133,7 +133,7 @@
         <td height="26" bgcolor="#FFFFFF">
           <?php
        echo "<span id='moveField' style='display:none'>新位置：";
-       echo "<select name='newtypeid' style='width:250;'>\r\n";
+       echo "<select name='newtypeid' style='width:250px'>\r\n";
        echo $typeOptions;
        echo "</select>";
        echo "<hr>";
@@ -168,7 +168,7 @@
     </tr>
     <tr bgcolor="#FFFFFF">
       <td colspan="2" id="mtd">
-        <div id='mdv' style='width:100%;height:250;'>
+        <div id='mdv' style='width:100%;height:250px'>
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
         </div>
       </td>
@@ -180,7 +180,7 @@
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="30%" height="18" style="padding-left:10px">错误文档修正：</td>
-              <td width="70%" align="right">&nbsp;</td>
+              <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>

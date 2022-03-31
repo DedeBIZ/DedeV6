@@ -54,7 +54,7 @@
         <form name="form1" method="post" action="vote_edit.php">
           <input type="hidden" name="dopost" value="saveedit">
           <input type="hidden" name="aid" value="<?php echo $aid?>">
-          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
           <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
             <tr>
               <td width="15%" align="center">投票名称：</td>
@@ -97,9 +97,9 @@
             <tr>
               <td align="center">是否多选：</td>
               <td> <label><input name="ismore" type="radio" class="np" value="0"
-                  <?php if($row['ismore']==0) echo " checked";?>>
+                  <?php if($row['ismore']==0) echo " checked"; ?>>
                 单选</label>
-                <label><input type="radio" name="ismore" class="np" value="1" <?php if($row['ismore']==1) echo " checked";?>>
+                <label><input type="radio" name="ismore" class="np" value="1" <?php if($row['ismore']==1) echo " checked"; ?>>
                 多选</label> </td>
             </tr>
             <tr>
@@ -119,14 +119,14 @@
                 否</label></td>
             </tr>
             <tr>
-              <td height="36">&nbsp;</td>
+              <td height="36"></td>
               <td>
                 <button type="submit" name="Submit" class="btn btn-success">保存投票数据</button>
                 <button type="button" onclick="history.back()" name="Submit" class="btn btn-success">返回</button>
               </td>
             </tr>
             <tr>
-              <td colspan="2">&nbsp;</td>
+              <td colspan="2"></td>
             </tr>
           </table>
         </form>

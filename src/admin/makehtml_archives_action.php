@@ -80,7 +80,7 @@ $ttime = number_format(($ttime / 60), 2);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
 $dvlen = $tjlen * 2;
-$tjsta = "<div style='width:200;height:15;border:1px solid #898989;text-align:left'><div style='width:$dvlen;height:15;background-color:#829D83'></div></div>";
+$tjsta = "<div style='width:200px;height:16px;border:1px solid #898989;text-align:left'><div style='width:200px;height:16px;background-color:#829D83'></div></div>";
 $tjsta .= "<br>本次用时：".number_format($t2, 2)."，总用时：$ttime 分钟，到达位置：".($startdd + $pagesize)."<br>完成创建文件总数的：$tjlen %，继续执行任务";
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";

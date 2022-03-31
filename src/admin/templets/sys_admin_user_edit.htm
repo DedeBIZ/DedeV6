@@ -23,7 +23,7 @@
       <td height="215" align="center" valign="top" bgcolor="#FFFFFF">
         <form name="form1" action="sys_admin_user_edit.php" method="post">
           <input type="hidden" name="dopost" value="saveedit">
-          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
           <input type="hidden" name="id" value="<?php echo $row['id']?>">
           <table width="98%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
@@ -86,7 +86,7 @@
               </td>
             </tr>
             <tr>
-              <td height="60">&nbsp;</td>
+              <td height="60"></td>
               <td>
                 <button type="submit" name="Submit" class="btn btn-success">保存用户</button>
               </td>

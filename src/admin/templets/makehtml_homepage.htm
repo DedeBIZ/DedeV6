@@ -28,7 +28,7 @@
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="30%" height="18" style="padding-left:10px">更新首页向导</td>
-              <td width="70%" align="right">&nbsp;</td>
+              <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>
@@ -60,9 +60,9 @@
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">首页模式:</td>
         <td height="26" valign="top" bgcolor="#FFFFFF">
-          <label><input name="showmod" type="radio" value="0" class="np" <?php echo ($row['showmod']==0)? "checked='checked'" : "";?>>
+          <label><input name="showmod" type="radio" value="0" class="np" <?php echo ($row['showmod']==0)? "checked='checked'" : ""; ?>>
             动态浏览</label>
-          <label><input name="showmod" type="radio" class="np" value="1" <?php echo ($row['showmod']==1)? "checked='checked'" : "";?>>
+          <label><input name="showmod" type="radio" class="np" value="1" <?php echo ($row['showmod']==1)? "checked='checked'" : ""; ?>>
             生成静态 (或者手动删除根目录下index.html文件)</label></td>
       </tr>
       <tr>
@@ -98,9 +98,9 @@
         <tr>
           <td height="26" valign="top" bgcolor="#FFFFFF">首页状态：</td>
           <td height="26" valign="top" bgcolor="#FFFFFF">
-            <label><input name="lockindex" type="radio" class="np" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : "";?>>
+            <label><input name="lockindex" type="radio" class="np" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : ""; ?>>
               解锁</label>
-            <label><input name="lockindex" type="radio" value="lock" class="np" <?php echo ($row['index_lock_state']==false)? "checked='checked'" : "";?>>
+            <label><input name="lockindex" type="radio" value="lock" class="np" <?php echo ($row['index_lock_state']==false)? "checked='checked'" : ""; ?>>
               锁定</label>
           </td>
         </tr>

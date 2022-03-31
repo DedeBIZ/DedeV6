@@ -85,7 +85,7 @@ else if ($action == 'editload') {
         </td>
       </tr>
       <tr>
-        <td height="30">&nbsp;</td>
+        <td height="30"></td>
         <td colspan="2">
           使用不带http及任何附加目录的网址<br>
           如：news.dedebiz.com
@@ -96,11 +96,11 @@ else if ($action == 'editload') {
         <td colspan="2">仅针对文章内容，格式：前面HTML{@body}后面HMTL</td>
       </tr>
       <tr>
-        <td height="90">&nbsp;</td>
+        <td height="90"></td>
         <td colspan="2"><textarea name="rule" style="width:300px;height:80px"><?php echo $row['rule']; ?></textarea></td>
       </tr>
       <tr>
-        <td height="30">&nbsp;</td>
+        <td height="30"></td>
         <td colspan="2"><button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存规则</button>
           <button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button></td>
       </tr>

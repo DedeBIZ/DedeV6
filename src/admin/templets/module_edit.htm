@@ -58,13 +58,13 @@ td{padding-left:8px}
     <tr>
       <td width="19%" align="center" bgcolor="#FFFFFF">开发者ID：</td>
       <td width="81%" bgcolor="#FFFFFF">
-      	<input name="dev_id2" type="text" id="dev_id2" style="width:180px" value="<?php echo $dev_id; ?>" class='alltxt' disabled/> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者ID</a>
+      	<input name="dev_id2" type="text" id="dev_id2" style="width:180px" value="<?php echo $dev_id; ?>" class='alltxt' disabled/> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a>
       </td>
     </tr>
     <tr>
       <td align="center" bgcolor="#FFFFFF">语言编码：</td>
       <td bgcolor="#FFFFFF">
-        <?php echo $lang;?>
+        <?php echo $lang; ?>
       </td>
     </tr>
     <tr>
@@ -92,9 +92,9 @@ td{padding-left:8px}
     <tr>
       <td align="center" bgcolor="#FFFFFF">是否涉及会员系统：</td>
       <td bgcolor="#FFFFFF">
-<label><input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo " checked='1' ";?>>
+<label><input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo " checked='1' "; ?>>
 不涉及</label>
-<label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class='np' <?php if($ismember=='1') echo " checked='1' ";?>> 涉及</label>
+<label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class='np' <?php if($ismember=='1') echo " checked='1' "; ?>> 涉及</label>
 <div id='rboxct' style='display:<?php echo ($ismember=='0' ? 'none' : 'block'); ?>'>
    	  导航使用名称：
       <input name="indexname" type="text" id="indexname" style="width:180px" value="<?php echo $indexname; ?>" class='alltxt'/>

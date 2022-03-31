@@ -70,7 +70,7 @@ function CheckPic($picname)
     if ($picname != "") {
         return $picname;
     } else {
-        return "images/dfpic.gif";
+        return "/static/web/img/defaultpic.jpg";
     }
 }
 //判断内容是否生成HTML

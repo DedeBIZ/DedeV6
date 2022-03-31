@@ -16,7 +16,7 @@
         <form action="mytag_edit.php" method="post" enctype="multipart/form-data" name="form1">
           <input type='hidden' name='aid' value='<?php echo $aid?>'>
           <input type='hidden' name='dopost' value='saveedit'>
-          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
           <tr> 
             <td width="15%" height="26" align="center">所属栏目：</td>
             <td colspan="2">
@@ -54,17 +54,17 @@
             <td width="76%">
 			<textarea name="normbody" id="normbody" style="width:80%;height:100"><?php echo $row['normbody']?></textarea> 
             </td>
-            <td width="9%">&nbsp;</td>
+            <td width="9%"></td>
           </tr>
           <tr> 
             <td height="80" align="center">过期显示内容：</td>
             <td>
 			<textarea name="expbody" id="expbody" style="width:80%;height:100"><?php echo $row['expbody']?></textarea> 
             </td>
-            <td>&nbsp;</td>
+            <td></td>
           </tr>
           <tr> 
-            <td height="53" align="center">&nbsp;</td>
+            <td height="53" align="center"></td>
             <td colspan="2"><input name="imageField" type="image" src="../static/web/img/button_ok.gif"></td>
           </tr>
         </form>

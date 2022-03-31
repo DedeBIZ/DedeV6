@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>图片裁剪 Image Cropper</title>
-<script>var targetname = '<?php echo $f;?>';</script>
+<script>var targetname = '<?php echo $f; ?>';</script>
 <script type="text/javascript" src="../static/web/js/jquery.min.js"></script>
 <script src="../static/web/js/ui.core.js"></script>
 <script src="../static/web/js/ui.draggable.js"></script>
@@ -152,17 +152,17 @@ function ReturnImg(reimg)
 <div id="box">
 	<form id="setFace" name="setFace" method="post" action="imagecut.php">
 	<input type="hidden" name="action" value="cut">
-	<input type="hidden" name="f" value="<?php echo $f;?>">
-	<input type="hidden" name="file" value="<?php echo $file;?>">
+	<input type="hidden" name="f" value="<?php echo $f; ?>">
+	<input type="hidden" name="file" value="<?php echo $file; ?>">
 	<input type="hidden" name="isupload" value="<?php echo (empty($isupload) ? '' : $isupload); ?>">
    <div id="imgBox">
-    	<img id="faceImg" src="<?php echo $file;?>">
+    	<img id="faceImg" src="<?php echo $file; ?>">
     	<div id="imgCut"></div>
    </div>
    <div>
    		<div id="imgBox_pre">
    		预览
-   		<div class='boximg'><img id="faceImg_pre" src="<?php echo $file;?>"></div>
+   		<div class='boximg'><img id="faceImg_pre" src="<?php echo $file; ?>"></div>
    		<p align="center">
    			<button type="submit" name="sb1" id="sb1">裁剪</button> &nbsp;
    			<button type="button" name="useold" onClick="ReturnImg('<?php echo $file; ?>')">使用原图</button>

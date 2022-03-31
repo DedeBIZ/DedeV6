@@ -188,7 +188,7 @@ else if ($dopost == 'fetch') {
     else $tjlen = 100;
 
     $dvlen = $tjlen * 2;
-    $tjsta = "<div style='width:200;height:15;border:1px solid #898989;text-align:left'><div style='width:$dvlen;height:15;background-color:#829D83'></div></div>";
+    $tjsta = "<div style='width:200px;height:16px;border:1px solid #898989;text-align:left'><div style='width:200px;height:16px;background-color:#829D83'></div></div>";
     $tjsta .= "<br>完成处理文档总数的：$tjlen %，位置：{$startdd}，继续执行任务";
 
     if ($tjnum < $totalnum) {

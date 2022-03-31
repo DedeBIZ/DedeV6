@@ -183,10 +183,10 @@ function CheckRank($rank = 0, $money = 0)
                     $myname = "普通会员";
                 }
             }
-            ShowMsg("对不起，需要：<span style='color:red'>$needname</span> 才能访问本页面<br>您目前的等级是：<span style='color:red'>$myname</span> ", "-1", 0, 5000);
+            ShowMsg("对不起，需要：<span style='color:#dc3545'>$needname</span> 才能访问本页面<br>您目前的等级是：<span style='color:#dc3545'>$myname</span> ", "-1", 0, 5000);
             exit();
         } else if ($cfg_ml->M_Money < $money) {
-            ShowMsg("对不起，需要花费金币：<span style='color:red'>$money</span> 才能访问本页面<br>您目前拥有的金币是：<span style='color:red'>".$cfg_ml->M_Money."</span>  ", "-1", 0, 5000);
+            ShowMsg("对不起，需要花费金币：<span style='color:#dc3545'>$money</span> 才能访问本页面<br>您目前拥有的金币是：<span style='color:#dc3545'>".$cfg_ml->M_Money."</span>  ", "-1", 0, 5000);
             exit();
         }
     }

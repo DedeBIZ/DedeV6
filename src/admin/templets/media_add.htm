@@ -65,7 +65,7 @@
           <form enctype="multipart/form-data" name='form1' action="media_add.php" method="POST"
             onSubmit="return CheckSubmit();">
             <input type="hidden" name="dopost" value="upload">
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
               <td width="15%" height="30" align="center" bgcolor="#FFFFFF" class='bline'>媒体类型：</td>
               <td width="85%" height="26" bgcolor="#FFFFFF" class='bline' style="text-align:left">
@@ -108,7 +108,7 @@
               </td>
             </tr>
             <tr>
-              <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
+              <td align="center" bgcolor="#FFFFFF"></td>
               <td bgcolor="#FFFFFF" style="text-align:left">
                 <input name="upfile1" type="file" id="upfile1" style='width:300px' size='30' class='pubinputs' /><br>
                 <input name="upfile2" type="file" id="upfile2" style='width:300px' size='30' class='pubinputs' /><br>

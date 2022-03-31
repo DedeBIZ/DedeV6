@@ -100,11 +100,11 @@ function checkSubmit()
           <tr> 
             <td align="right" class='bline'>性　别：</td>
             <td class='bline' style="text-align:left">
-              <label><input type="radio" name="sex" class="np" value="男"<?php if($row['sex']=="男" ) echo" checked='1'" ;?>>
+              <label><input type="radio" name="sex" class="np" value="男"<?php if($row['sex']=="男" ) echo" checked='1'" ; ?>>
               男</label> &nbsp; 
-              <label><input type="radio" name="sex" class="np" value="女"<?php if($row['sex']=="女" ) echo" checked='1'" ;?>>
+              <label><input type="radio" name="sex" class="np" value="女"<?php if($row['sex']=="女" ) echo" checked='1'" ; ?>>
               女</label>
-              <label><input type="radio" name="sex" class="np" value=""<?php if($row['sex']=="" ) echo" checked='1'" ;?>>
+              <label><input type="radio" name="sex" class="np" value=""<?php if($row['sex']=="" ) echo" checked='1'" ; ?>>
               保密</label>
              </td>
           </tr>
@@ -137,7 +137,7 @@ function checkSubmit()
           <tr> 
             <td align="right" class='bline'>升级时间：</td>
             <td class='bline' style="text-align:left">
-            <input type="text" style="width: 200px;" value="<?php echo $row['uptime']=($row['uptime']=="0")? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']);?>" id="uptime" name="uptime">
+            <input type="text" style="width: 200px;" value="<?php echo $row['uptime']=($row['uptime']=="0")? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']); ?>" id="uptime" name="uptime">
             （如果您要升级会员，必须设置此时间为当前时间）</td>
           </tr>
           <tr> 
@@ -145,7 +145,7 @@ function checkSubmit()
             <td class='bline' style="text-align:left"><input type="text" style="width: 200px;" value="<?php echo $row['exptime']?>" id="exptime" name="exptime">
             （如果您要升级会员，会员天数必须大于0） </td>
           </tr>
-          <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span style="color:#dc3545">该会员已经到期</span>';?>
+          <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span style="color:#dc3545">该会员已经到期</span>'; ?>
           <tr> 
             <td align="right" class='bline'>会员剩余天数：</td>
             <td class='bline' style="text-align:left"><?php echo $mhasDay; ?></td>
@@ -195,7 +195,7 @@ function checkSubmit()
             </td> 
           </tr>
           <tr> 
-            <td height="67" align="right" >&nbsp;</td>
+            <td height="67" align="right" ></td>
             <td height="67" align="left">
             <button type="submit" name="Submit" class='btn btn-success'>确定修改</button> 
               &nbsp;&nbsp;

@@ -80,12 +80,12 @@
         <table width="800" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
           <form name='forms' method='post' action='media_main.php'>
             <tr>
-              <td width="10">&nbsp;</td>
-              <td width="100" align="center">关键词：</td>
-              <td width="100">
+              <td width="10"></td>
+              <td width="90" align="center">关键词：</td>
+              <td width="90">
                 <input name="keyword" type="text" id="keyword" style="width:100" value="<?php echo $keyword?>">
               </td>
-              <td width="100" align="center">
+              <td width="90" align="center">
                 <select name='mediatype' style='width:80'>
                   <option value='0'>文件类型</option>
                   <option value='1' <?php if($mediatype==1) echo " selected"?>>图片</option>
@@ -93,7 +93,7 @@
                   <option value='3' <?php if($mediatype==3) echo " selected"?>>视频/音频</option>
                   <option value='4' <?php if($mediatype==4) echo " selected"?>>其它附件</option>
                 </select> </td>
-              <td width="100" align="center">
+              <td width="90" align="center">
                 <select name='membertype' style='width:80'>
                   <option value='0'>用户组</option>
                   <option value='1' <?php if($membertype==1) echo " selected"?>>管理员</option>

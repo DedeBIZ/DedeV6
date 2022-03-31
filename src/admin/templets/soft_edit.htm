@@ -6,9 +6,7 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script>
-    const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';
-  </script>
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script language="javascript" src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script language="javascript" src="../static/web/js/webajax.js"></script>
@@ -17,7 +15,7 @@
   <script type="text/javascript" src="../static/web/js/moment.min.js"></script>
   <script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
   <script language="javascript" src="js/main.js"></script>
-  <link href="../static/web/css/cropper.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <script src="../static/web/js/cropper.min.js"></script>
   <script language="javascript">
     function checkSubmit() {
@@ -33,7 +31,7 @@
       var endNum = parseInt(document.form1.picnum.value) + startNum;
       if (endNum > 30) endNum = 30;
       for (startNum; startNum < endNum; startNum++) {
-        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' style='width:280px' value='http://' />  服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:150px' /></div>\r\n";
+        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:300px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
       }
     }
     function ShowHideAddr() {
@@ -54,7 +52,7 @@ table{border-collapse:separate}
     <input type="hidden" name="id" value="<?php echo $aid?>">
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
-        <td width="85%" height="30"><img src="../static/web/img/book1.gif">&nbsp;<a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&dopost=listArchives"></a><a href="catalog_do.php?cid=<?php echo $arcRow["typeid"]?>&dopost=listArchives">软件列表</a> &gt; 修改软件</td>
+        <td width="85%" height="30"><img src="../static/web/img/book1.gif"><a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&dopost=listArchives"></a><a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&dopost=listArchives">软件列表</a> &gt; 修改软件</td>
         <td align="right">&nbsp; <a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a></td>
       </tr>
     </table>
@@ -88,9 +86,9 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文章标题：</td>
-              <td width="400"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:380px"> </td>
+              <td width="400"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:380px"></td>
               <td width="90">&nbsp;简略标题：</td>
-              <td><input name="shorttitle" type="text" id="shorttitle" style="width:150px" value="<?php echo $arcRow['shorttitle']; ?>"> </td>
+              <td><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -99,7 +97,7 @@ table{border-collapse:separate}
         <td width="400%" height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="100">&nbsp;自定义属性：</td>
+              <td width="90">&nbsp;自定义属性：</td>
               <td>
               <?php
 		          $dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
@@ -120,11 +118,11 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
+        <td height="26" colspan="4" class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;跳转网址：</td>
-              <td><input name="redirecturl" type="text" id="redirecturl" style="width:300px" value="<?php echo $addRow['redirecturl']?>"></td>
+              <td><input name="redirecturl" type="text" id="redirecturl" value="<?php echo $addRow['redirecturl']?>" style="width:300px"></td>
             </tr>
           </table>
         </td>
@@ -135,8 +133,8 @@ table{border-collapse:separate}
             <tr>
               <td width="90">&nbsp;Tag标签：</td>
               <td><input name="tags" type="text" id="tags" value="<?php echo $tags; ?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
-              <td width="50">权重：</td>
-              <td><input name="weight" type="text" id="weight" style="width:50px" value="<?php echo $arcRow['weight'];?>">（越小越靠前）</td>
+              <td width="60">权重：</td>
+              <td><input name="weight" type="text" id="weight" value="<?php echo $arcRow['weight']; ?>" style="width:60px">（越小越靠前）</td>
             </tr>
           </table>
         </td>
@@ -165,29 +163,36 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;软件来源：</td>
-              <td width="240"> <input name="source" type="text" id="source" style="width:200px" value="<?php echo $arcRow['source']?>"></td>
-              <td width="90">软件作者：</td>
-              <td width="160"><input name="writer" type="text" id="writer" style="width:120px" value="<?php echo $arcRow['writer']?>"></td>
-              <td></td>
+              <td width="250">
+                <input name="source" type="text" id="source"value="<?php echo $arcRow['source']?>" style="width:160px">
+                <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
+              </td>
+              <td width="60">作者：</td>
+              <td>
+                <input name="writer" type="text" id="writer" value="<?php echo $arcRow['writer']?>" style="width:160px">
+                <button name="selwriter" type="button" id="selwriter" class="btn btn-success btn-sm">选择</button>
+              </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="570" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="100">&nbsp;文章主栏目：</td>
+              <td width="90">&nbsp;软件主栏目：</td>
               <td>
                 <?php
                 $typeOptions = GetOptionList($arcRow["typeid"],$cuserLogin->getUserChannel(),$channelid);
-                echo "<select name='typeid' id='typeid' style='width:240px'>\r\n";
-                if($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择主分类</option>\r\n";
+                echo "<select name='typeid' id='typeid' style='width:160px'>";
+                if($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择主分类</option>";
                 echo $typeOptions;
                 echo "</select>";
 			          ?>
-                <img src='../static/web/img/menusearch.gif' style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid', '<?php echo $arcRow['typeid']; ?>')" alt='快捷选择' title='快捷选择' />
+                <img src='../static/web/img/menusearch.gif' onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid','<?php echo $arcRow['typeid']; ?>')" title='快捷选择' style='cursor:pointer'>
               </td>
+              <td width="90">消费金币：</td>
+              <td><input name="needmoney" type="text" id="needmoney" value="<?php echo $needmoney; ?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -199,25 +204,47 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="100">&nbsp;软件副栏目：</td>
+              <td width="90">&nbsp;副栏目：</td>
               <td>
-                <span id='typeid2ct'></span>
-                <input type='text' name='typeid2' id='typeid2' value='<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>' style='width:200px;' />
-                <img src='../static/web/img/menusearch2.gif' style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2', '<?php echo $arcRow['typeid2']; ?>')" alt='选择副栏目' title='选择副栏目' /></td>
+                <span id="typeid2ct"></span>
+                <input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>" style="width:160px">
+                <img src='../static/web/img/menusearch2.gif' onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')"title='选择副栏目' style='cursor:pointer'></td>
             </tr>
           </table>
         </td>
       </tr>
-      <?php } ?>
+      <?php
+      }
+      ?>
       <tr>
-        <td width="400%" height="26" colspan="4" class="bline">
+        <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
+              <td width="90">&nbsp;关键词：</td>
+              <td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']?>" style="width:360px"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="26" class="bline">
+          <table width="800" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="90">&nbsp;简要说明：</td>
+              <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $arcRow['description']?></textarea></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="26" colspan="4" class="bline">
+          <table width="1100" border="0" cellspacing="0" cellpadding="0">
+            <tr>
               <td width="90">&nbsp;文件类型：</td>
-              <td width="240">
-                <select name="filetype" id="filetype" style="width:100">
+              <td>
+                <select name="filetype" id="filetype" style="width:120px">
                   <?php
-                  if($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\">".$addRow["filetype"]."</option>\r\n";
+                  if($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\">".$addRow['filetype']."</option>";
                   ?>
                   <option value=".exe">.exe</option>
                   <option value=".zip">.zip</option>
@@ -227,9 +254,9 @@ table{border-collapse:separate}
                   <option value="其它">其它</option>
                 </select></td>
               <td width="90">软件等级：</td>
-              <td><select name="softrank" id="softrank" style="width:100">
+              <td><select name="softrank" id="softrank" style="width:120px">
                   <?php
-                  if($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\">".$addRow["softrank"]."星</option>\r\n";
+                  if($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\">".$addRow['softrank']."星</option>";
                   ?>
                   <option value="1">一星</option>
                   <option value="2">二星</option>
@@ -238,40 +265,34 @@ table{border-collapse:separate}
                   <option value="5">五星</option>
                 </select>
               </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="88">&nbsp;软件类型：</td>
-              <td width="130">
-                <select name="softtype" id="softtype" style="width:100">
+              <td width="90">&nbsp;软件类型：</td>
+              <td>
+                <select name="softtype" id="softtype" style="width:120px">
                   <?php
-                  if($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\">".$addRow["softtype"]."</option>\r\n";
+                  if($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\">".$addRow['softtype']."</option>";
                   ?>
                   <option value="国产软件">国产软件</option>
                   <option value="国外软件">国外软件</option>
                   <option value="汉化补丁">汉化补丁</option>
                 </select>
               </td>
-              <td width="89">界面语言：</td>
-              <td width="130"><select name="language" id="language" style="width:100">
+              <td width="90">界面语言：</td>
+              <td>
+                <select name="language" id="language" style="width:120px">
                   <?php
-                  if($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\">".$addRow["language"]."</option>\r\n";
+                  if($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\">".$addRow['language']."</option>";
                   ?>
                   <option value="简体中文">简体中文</option>
                   <option value="英文软件">英文软件</option>
                   <option value="繁体中文">繁体中文</option>
                   <option value="其它类型">其它类型</option>
-                </select></td>
+                </select>
+              </td>
               <td width="90">授权方式：</td>
               <td>
-                <select name="accredit" id="accredit" style="width:100">
+                <select name="accredit" id="accredit" style="width:120px">
                   <?php
-                  if($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\">".$addRow["accredit"]."</option>\r\n";
+                  if($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\">".$addRow['accredit']."</option>";
                   ?>
                   <option value="共享软件">共享软件</option>
                   <option value="免费软件">免费软件</option>
@@ -290,9 +311,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;运行环境：</td>
-              <td width="240"><input type='text' name='os' value='<?php echo $addRow["os"]?>' style='width:200px' /></td>
-              <td width="90">&nbsp;软件大小：</td>
-              <td><input name="softsize" type="text" id="softsize" style="width:100" value="<?php echo $addRow["softsize"]?>"></td>
+              <td><input type='text' name='os' value='<?php echo $addRow["os"]?>' style='width:300px'></td>
             </tr>
           </table>
         </td>
@@ -302,46 +321,41 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;官方网址：</td>
-              <td width="240"><input name="officialUrl" type="text" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" style='width:200px' /></td>
+              <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" style='width:300px'></td>
               <td width="90">程序演示：</td>
-              <td><input name="officialDemo" type="text" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" style='width:200px' /></td>
+              <td><input name="officialDemo" type="text" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" style='width:300px'></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="26" colspan="4" class="bline">
+          <table width="800" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="90">&nbsp;软件大小：</td>
+              <td><input name="softsize" type="text" id="softsize" value="<?php echo $addRow['softsize']?>" style="width:60px"></td>
+              <td width="90" height="30">&nbsp;需会员权限：</td>
+              <td>
+                <select name="daccess" id="daccess" style="width:160px">
+                <?php
+                $dsql->SetQuery("Select * from `#@__arcrank` where `rank`>=0 ");
+                $dsql->Execute();
+                while($row = $dsql->GetArray())
+                {
+                  if($row['rank']==0) $row['membername'] = "不限会员";
+                  if($row['rank'] == $daccess) echo "<option value='{$row['rank']}' selected>{$row['membername']}</option>";
+                  else echo "<option value='{$row['rank']}'>{$row['membername']}</option>";
+                }
+                ?>
+                </select>
+                <a href="soft_config.php" class="btn btn-success btn-sm">软件频道设置</a>
+              </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
         <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield'); ?></td>
-      </tr>
-      <tr>
-        <td height="26" bgcolor="#f6f6f6" class="bline2">&nbsp;下载限制：</td>
-      </tr>
-      <tr>
-        <td height="26" class="bline">
-          <table width="800" border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td width="100" height="30">&nbsp;需会员权限：</td>
-              <td width="180" align="center">
-                <select name="daccess" id="daccess" style="width:100px">
-                <?php
-                $dsql->SetQuery("Select * from `#@__arcrank` where `rank`>=0 ");
-                $dsql->Execute();
-                while($row = $dsql->GetArray())
-                {
-                	if($row['rank']==0) $row['membername'] = "不限会员";
-									if($row['rank'] == $daccess) echo "<option value='{$row['rank']}' selected>{$row['membername']}</option>\r\n";
-									else echo "<option value='{$row['rank']}'>{$row['membername']}</option>\r\n";
-                }
-                ?>
-                </select>
-              </td>
-              <td width="120" align="center">需消费金币：</td>
-              <td width="410"><input name="needmoney" type="text" id="needmoney" value="<?php echo $needmoney; ?>" size="8">&nbsp;个</td>
-            </tr>
-            <tr>
-              <td height="26" colspan="4" style="border-top:1px dashed #8EAF61"><span class="STYLE1 py-3">（如果设定了下载限制，<a href="soft_config.php" target="_blank">软件频道设置</a>&nbsp;中“附件下载方式：”必须选择“链接到跳转页面”）</span></td>
-            </tr>
-          </table>
-        </td>
       </tr>
       <tr>
         <td height="26" colspan="4" bgcolor="#f6f6f6" class="bline2">&nbsp;软件链接列表：</td>
@@ -354,7 +368,6 @@ table{border-collapse:separate}
               <td>
                 <input name="picnum" type="text" id="picnum" size="8" value="5">
                 <button class='btn btn-success btn-sm' name='kkkup' type='button' id='kkkup2' onClick="MakeUpload();">增加数量</button>
-                &nbsp;
                 <button class='btn btn-success btn-sm' type="button" name="Submit3" id="btsh3" onClick="ShowHideAddr();">隐藏地址</button>（最多为30个链接）
               </td>
             </tr>
@@ -383,7 +396,8 @@ table{border-collapse:separate}
                 <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?>>
                 下载远程图片和资源 </label>
                 <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>>
-                提取第一个图片为缩略图 </label></td>
+                提取第一个图片为缩略图 </label>
+              </td>
             </tr>
           </table>
         </td>
@@ -402,14 +416,19 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="26" width="240">&nbsp;评论选项：</td>
+              <td width="90" height="26" width="250">&nbsp;评论选项：</td>
               <td width="250">
                 <label><input type='radio' name='notpost' class='np' value='0' <?php if($arcRow['notpost']==0) echo " checked='1' "; ?> /> 允许评论 </label>
                 &nbsp;
                 <label><input type='radio' name='notpost' class='np' value='1' <?php if($arcRow['notpost']==1) echo " checked='1' "; ?> /> 禁止评论 </label>
               </td>
-              <td width="90">浏览次数：</td>
-              <td><input type='text' name='click' value='<?php echo $arcRow['click']; ?>' style='width:100px;' /></td>
+              <td width="90">发布选项：</td>
+              <td>
+                <label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked"; ?>> 
+                生成HTML </label>
+                <label><input type="radio" name="ishtml" class="np" value="0" <?php if($arcRow["ismake"]==-1) echo " checked"; ?>> 
+                仅动态浏览</label>
+              </td>
             </tr>
           </table>
         </td>
@@ -419,11 +438,12 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文章排序：</td>
-              <td width="250"> <select name="sortup" id="sortup" style="width:150">
+              <td width="250">
+                <select name="sortup" id="sortup" style="width:160px">
                 <?php
                 $subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
-                echo "<option value='0'>正常排序</option>\r\n";
-                if($subday>0) echo "<option value='$subday' selected>置顶 $subday 天</option>\r\n";
+                echo "<option value='0'>正常排序</option>";
+                if($subday>0) echo "<option value='$subday' selected>置顶 $subday 天</option>";
                 ?>
                   <option value="7">置顶一周</option>
                   <option value="30">置顶一个月</option>
@@ -432,7 +452,10 @@ table{border-collapse:separate}
                   <option value="360">置顶一年</option>
                 </select> </td>
               <td width="90">标题颜色：</td>
-              <td><input name="color" type="text" id="color" style="width:120" value="<?php echo $arcRow["color"]?>"> <button class='btn btn-success btn-sm' name="modcolor" type="button" id="modcolor" onClick="ShowColor(event,this)">选取</button></td>
+              <td>
+                <input name="color" type="text" id="color" value="<?php echo $arcRow['color']?>" style="width:120px">
+                <button class='btn btn-success btn-sm' name="modcolor" type="button" id="modcolor" onClick="ShowColor(event,this)">选取</button>
+              </td>
             </tr>
           </table>
         </td>
@@ -443,19 +466,14 @@ table{border-collapse:separate}
             <tr>
               <td width="90">&nbsp;阅读权限：</td>
               <td width="250">
-                <select name="arcrank" id="arcrank" style="width:150px">
+                <select name="arcrank" id="arcrank" style="width:160px">
                   <option value='<?php echo $arcRow["arcrank"]; ?>'><?php echo ($arcRow["arcrank"]==0 ? '已审核状态' : $arcRow["rankname"]); ?></option>
                   <option value='0'>已审核状态</option>
                   <option value='-1'>未审核状态</option>
                 </select>
               </td>
-              <td width="90">发布选项：</td>
-              <td>
-                <label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked";?>> 
-                生成HTML </label>
-                <label><input type="radio" name="ishtml" class="np" value="0" <?php if($arcRow["ismake"]==-1) echo " checked";?>> 
-                仅动态浏览</label>
-              </td>
+              <td width="90">&nbsp;文件名称：</td>
+              <td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" style="width:120px">（不包括后缀名如.html等）</td>
             </tr>
           </table>
         </td>
@@ -468,46 +486,15 @@ table{border-collapse:separate}
               <td width="250">
               <?php
               $nowtime = GetDateTimeMk($arcRow["pubdate"]);
-              echo "<input name=\"pubdate\" value=\"$nowtime\" type=\"text\" id=\"pubdate\" style=\"width:200;\" class='datepicker' >";
+              echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker' style='width:160px'>";
 			        ?>
               </td>
-              <td width="90">消费金币：</td>
-              <td><input name="money" type="hidden" id="money" value="<?php echo $arcRow['money']?>">（此项已经独立分离）</td>
+              <td width="90">浏览次数：</td>
+              <td><input type="text" name="click" value="<?php echo $arcRow['click']; ?>" style="width:120px"></td>
             </tr>
           </table>
         </td>
       </tr>
-    <tr>
-      <td height="26" class="bline">
-        <table width="800" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="90" height="50">&nbsp;关键词：</td>
-            <td><input type="text" name="keywords" id="keywords" style="width:60%" value="<?php echo $arcRow["keywords"]?>"></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td height="26" class="bline">
-        <table width="800" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="90" height="50">&nbsp;简要说明：</td>
-            <td><textarea name="description" rows="3" id="description" style="width:60%"><?php echo $arcRow["description"]?></textarea></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td height="26" colspan="4">
-        <table width="800" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="120">&nbsp;自定义文件名：</td>
-            <td width="450"><input type="text" name="filename" id="filename" value="<?php echo $arcRow["filename"]?>">（不包括后缀名如.html等）</td>
-            <td width="260"></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
     </table>
     <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f6f6f6" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
     <tr height="36">
