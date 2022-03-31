@@ -1,36 +1,34 @@
-function AddNew()
-{
+function AddNew() {
     $DE('addTab').style.display = 'block';
 }
-function CloseTab(tb)
-{
+function CloseTab(tb) {
     $DE(tb).style.display = 'none';
 }
-function ListAll(){
+function ListAll() {
     $DE('editTab').style.display = 'block';
-	fetch('index_body.php?dopost=editshow').then(resp=>resp.text()).then((d)=>{
-		$DE('editTabBody').innerHTML = d;
-	});
+    fetch('index_body.php?dopost=editshow').then(resp => resp.text()).then((d) => {
+        $DE('editTabBody').innerHTML = d;
+    });
 }
-function ShowWaitDiv(){
+function ShowWaitDiv() {
     $DE('loaddiv').style.display = 'block';
     return true;
 }
-$(function(){
-    $.get("index_testenv.php", function (data){
-        if (data !== ''){
+$(function () {
+    $.get("index_testenv.php", function (data) {
+        if (data !== '') {
             $("#tips").html(data);
         }
     });
-    $.get("index_body.php?dopost=get_articles", function (data){
-        if (data !== ''){
+    $.get("index_body.php?dopost=get_articles", function (data) {
+        if (data !== '') {
             $("#newarticles").html(data);
         }
     });
 });
 //Dedebiz info
 var dedebizInfo;
-function ViewDedeBIZ(){
+function ViewDedeBIZ() {
     console.log(dedebizInfo);
     ShowMsg(`
     <table width="100%" class="table table-borderless">
@@ -55,12 +53,12 @@ function ViewDedeBIZ(){
     </table>
     `);
 }
-function LoadServer(){
-    $.get("index_body.php?dopost=system_info", function(data){
+function LoadServer() {
+    $.get("index_body.php?dopost=system_info", function (data) {
         let rsp = JSON.parse(data);
-        if (rsp.code === 200){
+        if (rsp.code === 200) {
             let infoStr = `<table width="100%" class="table table-borderless"><tbody>`;
-            if (typeof rsp.result.domain !== "undefined"){
+            if (typeof rsp.result.domain !== "undefined") {
                 infoStr += `
                 <tr>
                     <td style="width:50%">授权域名：</td>
@@ -68,7 +66,7 @@ function LoadServer(){
                 </tr>
                 `;
             }
-            if (typeof rsp.result.title !== "undefined"){
+            if (typeof rsp.result.title !== "undefined") {
                 infoStr += `
                 <tr>
                     <td style="width:50%">站点名称：</td>
@@ -76,7 +74,7 @@ function LoadServer(){
                 </tr>
                 `;
             }
-            if (typeof rsp.result.stype !== "undefined"){
+            if (typeof rsp.result.stype !== "undefined") {
                 infoStr += `
                 <tr>
                     <td style="width:50%">站点类型：</td>
@@ -84,7 +82,7 @@ function LoadServer(){
                 </tr>
                 `;
             }
-            if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined"){
+            if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined") {
                 infoStr += `
                 <tr>
                     <td style="width:50%">授权版本：</td>
@@ -92,7 +90,7 @@ function LoadServer(){
                 </tr>
                 `;
             }
-            if (rsp.result.core === null || rsp.result.core.code != 200){
+            if (rsp.result.core === null || rsp.result.core.code != 200) {
                 //下面是DedeBIZ Core组件信息
                 infoStr += `
                 <tr>
@@ -140,11 +138,11 @@ Date.prototype.Format = function (fmt) { //author: meizz
     };
     if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
     for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
 function LoadStat() {
-    $.get("index_body.php?dopost=get_statistics", function(data){
+    $.get("index_body.php?dopost=get_statistics", function (data) {
         let rsp = JSON.parse(data);
         if (rsp.code == 200) {
             var tpv = parseInt(rsp.result.pv);
@@ -155,13 +153,13 @@ function LoadStat() {
             $("#today_uv").html(tuv);
             $("#today_ip").html(tip);
             $("#today_vv").html(tvv);
-            $.get("index_body.php?dopost=get_statistics&sdate=-1", function(data){
+            $.get("index_body.php?dopost=get_statistics&sdate=-1", function (data) {
                 let rsp = JSON.parse(data);
                 if (rsp.code == 200) {
-                    $("#total_pv").html(parseInt(rsp.result.pv)+tpv);
-                    $("#total_uv").html(parseInt(rsp.result.uv)+tuv);
-                    $("#total_ip").html(parseInt(rsp.result.ip)+tip);
-                    $("#total_vv").html(parseInt(rsp.result.vv)+tvv);
+                    $("#total_pv").html(parseInt(rsp.result.pv) + tpv);
+                    $("#total_uv").html(parseInt(rsp.result.uv) + tuv);
+                    $("#total_ip").html(parseInt(rsp.result.ip) + tip);
+                    $("#total_vv").html(parseInt(rsp.result.vv) + tvv);
                 }
             });
         }
@@ -169,8 +167,8 @@ function LoadStat() {
     var d = new Date();
     d.setDate(d.getDate() - 1);
     var s = d.Format("yyyy-MM-dd");
-    s = s.replaceAll("-","");
-    $.get("index_body.php?dopost=get_statistics&sdate="+s, function(data){
+    s = s.replaceAll("-", "");
+    $.get("index_body.php?dopost=get_statistics&sdate=" + s, function (data) {
         let rsp = JSON.parse(data);
         if (rsp.code == 200) {
             $("#yestoday_pv").html(rsp.result.pv);
@@ -192,14 +190,14 @@ async function LoadStatChart() {
         d.setDate(d.getDate() - i);
         var s = d.Format("yyyy-MM-dd");
         labels.push(d.Format("MM-dd"));
-        s = s.replaceAll("-","");
-        let resp = await fetch("index_body.php?dopost=get_statistics&sdate="+s);
+        s = s.replaceAll("-", "");
+        let resp = await fetch("index_body.php?dopost=get_statistics&sdate=" + s);
         let data = await resp.json();
         if (data.code == 200) {
-            pvs.push(typeof data.result.pv=="undefined"? 0 : data.result.pv);
-            ips.push(typeof data.result.ip=="undefined"? 0 : data.result.ip);
-            uvs.push(typeof data.result.uv=="undefined"? 0 : data.result.uv);
-            vvs.push(typeof data.result.vv=="undefined"? 0 : data.result.vv);
+            pvs.push(typeof data.result.pv == "undefined" ? 0 : data.result.pv);
+            ips.push(typeof data.result.ip == "undefined" ? 0 : data.result.ip);
+            uvs.push(typeof data.result.uv == "undefined" ? 0 : data.result.uv);
+            vvs.push(typeof data.result.vv == "undefined" ? 0 : data.result.vv);
         }
     }
     const myChart = new Chart(ctx, {
@@ -219,41 +217,41 @@ async function LoadStatChart() {
         data: {
             labels: labels,
             datasets: [
-            {
-                label: 'PV',
-                data: pvs,
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor :'rgba(54, 162, 235, 0.2)',
-                borderWidth: 1
-            },{
-                label: 'UV',
-                data: uvs,
-                borderColor: 'rgba(255, 206, 86, 1)',
-                backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                borderWidth: 1
-            },{
-                label: 'IP',
-                data: ips,
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor :'rgba(255, 99, 132, 0.2)',
-                borderWidth: 1
-            },
-            ,{
-                label: '访问次数',
-                data: vvs,
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderWidth: 1
-            }
-        ]
+                {
+                    label: 'PV',
+                    data: pvs,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 1
+                }, {
+                    label: 'UV',
+                    data: uvs,
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderWidth: 1
+                }, {
+                    label: 'IP',
+                    data: ips,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderWidth: 1
+                }
+                , {
+                    label: '访问次数',
+                    data: vvs,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 1
+                }
+            ]
         },
     });
 }
-$(document).ready(function(){
+$(document).ready(function () {
     LoadServer();
     LoadStat();
     LoadStatChart();
-    setInterval(function(){
+    setInterval(function () {
         LoadServer();
     }, 60000)
 });
