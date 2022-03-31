@@ -24,6 +24,16 @@
 </style>
 </head>
 <body class="showmenu">
+<?php
+if(preg_match( '/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match( '/Trident/i',$_SERVER['HTTP_USER_AGENT'])){
+?>
+<div id="browsehappy" style="padding:30px;font-size:14px;line-height:16px;color:#856404;background:#fff3cd;border-radius:.25rem;border:none;">
+    <a onclick="document.getElementById('browsehappy').style.display='none';" style="float:right;cursor:pointer"><span aria-hidden="true">×</span></a>
+    <span>您正在使用一个过时的浏览器，请您<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，以提高您的后台体验</span>
+</div>
+<?php
+}
+?>
     <div class="pagemask"></div>
     <iframe class="iframemask"></iframe>
     <div class="allmenu">
