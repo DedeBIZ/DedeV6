@@ -21,14 +21,11 @@ ALTER TABLE `#@__arctype`
 	ADD COLUMN `litimg` varchar(255) NULL AFTER `litpic`;
 
 -- 6.0.3
-
 ALTER TABLE `#@__tagindex`
 	ADD COLUMN `uptime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `addtime`,
 	ADD COLUMN `mktime` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `uptime`;
-
 ALTER TABLE `#@__feedback`
 	ADD COLUMN `fid` INT UNSIGNED NOT NULL DEFAULT 0 AFTER `aid`;
-
 ALTER TABLE `#@__feedback`
 	ADD COLUMN `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `dtime`;
 
@@ -55,9 +52,6 @@ CREATE TABLE `#@__search_limits` (
 
 -- 6.0.2
 ALTER TABLE `#@__tagindex` ADD COLUMN `keywords` VARCHAR(255) NULL DEFAULT NULL AFTER `tag`;
-
 ALTER TABLE `#@__tagindex` ADD COLUMN `description` VARCHAR(255) NULL DEFAULT NULL AFTER `keywords`;
-
 ALTER TABLE `#@__tagindex` ADD COLUMN `title` VARCHAR(255) NULL DEFAULT NULL AFTER `description`;
-
 ALTER TABLE `#@__tagindex` ADD COLUMN `tag_pinyin` VARCHAR(255) NULL DEFAULT NULL AFTER `title`;
