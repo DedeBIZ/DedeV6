@@ -218,13 +218,7 @@ async function LoadStatChart() {
         },
         data: {
             labels: labels,
-            datasets: [{
-                label: 'IP',
-                data: ips,
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor :'rgba(255, 99, 132, 0.2)',
-                borderWidth: 1
-            },
+            datasets: [
             {
                 label: 'PV',
                 data: pvs,
@@ -238,6 +232,13 @@ async function LoadStatChart() {
                 backgroundColor: 'rgba(255, 206, 86, 0.2)',
                 borderWidth: 1
             },{
+                label: 'IP',
+                data: ips,
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor :'rgba(255, 99, 132, 0.2)',
+                borderWidth: 1
+            },
+            ,{
                 label: '访问次数',
                 data: vvs,
                 borderColor: 'rgba(75, 192, 192, 1)',
