@@ -100,7 +100,7 @@ function DoRand(jobname)
     </td>
 </tr>
 <tr>
-    <td bgcolor='#f6f6f6'>请按说明修改设置：</td>
+    <td bgcolor='#f8f8f8'>请按说明修改设置：</td>
 </tr>
 <tr>
     <td><textarea name='templates' id='templates' style='width:100%;height:250px'>$templates</textarea></td>

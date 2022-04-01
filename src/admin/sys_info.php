@@ -113,7 +113,7 @@ EOT;
         $dsql->Execute();
 
         while ($row = $dsql->GetArray()) {
-            $bgcolor = ($i++ % 2 == 0) ? "#f6f6f6" : "#ffffff";
+            $bgcolor = ($i++ % 2 == 0) ? "#f8f8f8" : "#ffffff";
             $row['info'] = preg_replace("#{$keywords}#", '<span style="color:#dc3545">'.$keywords.'</span>', $row['info']);
             $row['varname'] = preg_replace("#{$keywords}#", '<span style="color:#dc3545">'.$keywords.'</span>', $row['varname']);
 ?>
@@ -146,7 +146,7 @@ EOT;
         exit;
     }
     if ($i == 1) {
-        echo '      <tr align="center" bgcolor="#f6f6f6" height="26">
+        echo '      <tr align="center" bgcolor="#f8f8f8" height="26">
            <td colspan="3">没有找到搜索的内容</td>
           </tr></table>';
     }

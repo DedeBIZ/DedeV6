@@ -95,7 +95,7 @@ while($row = $dsql->GetArray('t',MYSQL_BOTH))
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <input type='hidden' name='dopost' value='query'>
             <tr>
-              <td height="26" colspan="2" bgcolor="#f6f6f6">运行SQL命令行：
+              <td height="26" colspan="2" bgcolor="#f8f8f8">运行SQL命令行：
                   <label><input name="querytype" type="radio" class="np" value="0">
                     单行命令（支持简单查询）</label>
                   <label><input name="querytype" type="radio" class="np" value="2" checked>
