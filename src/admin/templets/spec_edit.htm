@@ -19,24 +19,12 @@
   <script src="../static/web/js/cropper.min.js"></script>
   <script language="javascript">
     function SelectTemplets(fname) {
-      if (document.all) {
-        var posLeft = window.event.clientY - 100;
-        var posTop = window.event.clientX - 400;
-      } else {
-        var posLeft = 100;
-        var posTop = 100;
-      }
-      window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
+      var pos = GetWinPos(800,600);
+      window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
     }
     function SelectArcList(fname) {
-      if (document.all) {
-        var posLeft = window.event.clientY - 100;
-        var posTop = window.event.clientX - 400;
-      } else {
-        var posLeft = 100;
-        var posTop = 100;
-      }
-      window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=700,height=500,left=" + posLeft + ", top=" + posTop);
+      var pos = GetWinPos(800,600);
+      window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=700,height=500,left=" + pos.left + ", top=" + pos.top);
     }
     function checkSubmit() {
       if (document.form1.title.value == "") {

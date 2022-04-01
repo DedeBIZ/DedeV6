@@ -6,6 +6,20 @@ var nForm = null;
 var nFrame = null;
 var picnameObj = null;
 var vImg = null;
+
+function GetWinPos(w, h) {
+	var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
+	var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
+
+	var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+	var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+	var systemZoom = width / window.screen.availWidth;
+	var left = (width - w) / 2 / systemZoom + dualScreenLeft;
+	var top = (height - h) / 2 / systemZoom + dualScreenTop;
+	return { left: left, top: top };
+}
+
 function $Nav() {
 	if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
 	else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
@@ -102,50 +116,43 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 	nForm.litpic.disabled = true;
 }
 function SelectFlash() {
-	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 300; var posTop = window.event.clientY; }
-	else { var posLeft = 100; var posTop = 100; }
-	window.open("./dialog/select_media.php?f=form1.flashurl", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=500,height=350,left=" + posLeft + ", top=" + posTop);
+	var pos = GetWinPos(800,600);
+	window.open("./dialog/select_media.php?f=form1.flashurl", "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectMedia(fname) {
-	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 200; var posTop = window.event.clientY; }
-	else { var posLeft = 100; var posTop = 100; }
-	window.open("./dialog/select_media.php?f=" + fname, "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=500,height=350,left=" + posLeft + ", top=" + posTop);
+	var pos = GetWinPos(800,600);
+	window.open("./dialog/select_media.php?f=" + fname, "popUpFlashWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectSoft(fname) {
-	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 200; var posTop = window.event.clientY - 50; }
-	else { var posLeft = 100; var posTop = 100; }
-	window.open("./dialog/select_soft.php?f=" + fname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
+	var pos = GetWinPos(800,600);
+	window.open("./dialog/select_soft.php?f=" + fname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectImage(fname, stype, imgsel) {
-	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 100; var posTop = window.event.clientY; }
-	else { var posLeft = 100; var posTop = 100; }
+	var pos = GetWinPos(800,600);
 	if (!fname) fname = 'form1.picname';
 	if (imgsel) imgsel = '&noeditor=yes';
 	if (!stype) stype = '';
-	window.open("./dialog/select_images.php?f=" + fname + "&noeditor=yes&imgstick=" + stype + imgsel, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=650,height=400,left=" + posLeft + ", top=" + posTop);
+	window.open("./dialog/select_images.php?f=" + fname + "&noeditor=yes&imgstick=" + stype + imgsel, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function imageCut(fname) {
-	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 100; var posTop = window.event.clientY; }
-	else { var posLeft = 100; var posTop = 100; }
+	var pos = GetWinPos(800,600);
 	if (!fname) fname = 'picname';
 	file = document.getElementById(fname).value;
 	if (file == '') {
 		alert('请先选择网站内已上传的图片');
 		return false;
 	}
-	window.open("imagecut.php?f=" + fname + "&file=" + file, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + posLeft + ", top=" + posTop);
+	window.open("imagecut.php?f=" + fname + "&file=" + file, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectImageN(fname, stype, vname) {
-	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 100; var posTop = window.event.clientY; }
-	else { var posLeft = 100; var posTop = 100; }
+	var pos = GetWinPos(800,600);
 	if (!fname) fname = 'form1.picname';
 	if (!stype) stype = '';
-	window.open("./dialog/select_images.php?f=" + fname + "&imgstick=" + stype + "&v=" + vname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
+	window.open("./dialog/select_images.php?f=" + fname + "&imgstick=" + stype + "&v=" + vname, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function SelectKeywords(f) {
-	if ($Nav() == 'IE') { var posLeft = window.event.clientX - 350; var posTop = window.event.clientY - 200; }
-	else { var posLeft = 100; var posTop = 100; }
-	window.open("article_keywords_select.php?f=" + f, "popUpkwWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=450,left=" + posLeft + ", top=" + posTop);
+	var pos = GetWinPos(800,600);
+	window.open("article_keywords_select.php?f=" + f, "popUpkwWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function InitPage() {
 	var selsource = $Obj('selsource');
@@ -157,10 +164,12 @@ function InitPage() {
 	if (titlechange) { titlechange.onchange = function (e) { TestHasTitle(e); } }
 }
 function OpenMyWin(surl) {
-	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=500,height=350,left=200, top=100");
+	var pos = GetWinPos(800,600);
+	window.open(surl, "popUpMyWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+", top="+pos.top);
 }
 function OpenMyWinCoOne(surl) {
-	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=450,left=100,top=50");
+	var pos = GetWinPos(800,600);
+	window.open(surl, "popUpMyWin2", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+",top="+pos.top);
 }
 function PutSource(str) {
 	var osource = $Obj('source');
@@ -202,7 +211,7 @@ function ChangeFullDiv(showhide, screenheigt) {
 			newobj.className = 'fullpagediv';
 			newobj.style.height = document.body.clientHeight + 50 + 'px';
 			document.body.appendChild(newobj);
-		}  else {
+		} else {
 			newobj.style.display = 'block';
 		}
 	} else {
@@ -244,7 +253,7 @@ function LoadNewDiv(e, surl, oname) {
 		newobj.style.display = "block";
 	}
 	if (newobj.innerHTML.length < 10) {
-		fetch(surl).then(resp=>resp.text()).then((d)=>{newobj.innerHTML = d});
+		fetch(surl).then(resp => resp.text()).then((d) => { newobj.innerHTML = d });
 	}
 }
 function TestHasTitle(e) {
@@ -265,7 +274,7 @@ function LoadNewDiv2(e, surl, oname, dlgcls) {
 		document.body.appendChild(newobj);
 	}
 	newobj.innerHTML = '';
-	fetch(surl).then(resp=>resp.text()).then((d)=>{
+	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
 	});
 	if (newobj.innerHTML == '') newobj.style.display = 'none';
@@ -329,7 +338,7 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	newobj.style.left = posLeft + "px";
 	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="../../static/web/img/loadinglit.gif">Loading...</div>';
 	newobj.style.display = 'block';
-	fetch(surl).then(resp=>resp.text()).then((d)=>{
+	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
 	});
 	fixupPos = false;
@@ -623,25 +632,25 @@ function useDefault(modalID) {
 	CloseModal('GKModal' + modalID);
 }
 function uploadImage(litpicImgSrc) {
-    const formData = new FormData()
-    formData.append('litpic_b64', litpicImgSrc);
-    fetch('archives_do.php?dopost=upload_base64_image', {
-        method: 'POST',
-        body: formData
-    })
-    .then(r => {
-        if (r.ok) {
-            return r.json()
-        }
-        throw new Error(errMsg);
-    })
-    .then(d => {
-		if (d.code == 200) {
-			$("#picname").val(d.data.image_url);
-		}
-    }).catch((error) => {
-        alert("上传缩略图错误");
-    });
+	const formData = new FormData()
+	formData.append('litpic_b64', litpicImgSrc);
+	fetch('archives_do.php?dopost=upload_base64_image', {
+		method: 'POST',
+		body: formData
+	})
+		.then(r => {
+			if (r.ok) {
+				return r.json()
+			}
+			throw new Error(errMsg);
+		})
+		.then(d => {
+			if (d.code == 200) {
+				$("#picname").val(d.data.image_url);
+			}
+		}).catch((error) => {
+			alert("上传缩略图错误");
+		});
 }
 $(document).ready(function () {
 	$("#btnClearAll").click(function (event) {
@@ -663,7 +672,7 @@ $(document).ready(function () {
 			reader.onload = (function (theFile) {
 				return function (e) {
 					litpicImgSrc = e.target.result;
-					if (cfg_uplitpic_cut=='Y') {
+					if (cfg_uplitpic_cut == 'Y') {
 						SetThumb(litpicImgSrc);
 					} else {
 						uploadImage(litpicImgSrc);

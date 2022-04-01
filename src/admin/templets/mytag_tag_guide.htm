@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="css/codemirror.css">
+  <script src="js/main.js" language="javascript"></script>
   <script type="text/javascript" src="js/codemirror.js"></script>
   <script type="text/javascript" src="js/mode/xml/xml.js"></script>
   <script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
@@ -221,9 +222,8 @@
       document.form1.submit();
     }
     function SelectArcList(fname) {
-      var posLeft = 10;
-      var posTop = 10;
-      window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=700,height=500,left=" + posLeft + ", top=" + posTop);
+      var pos = GetWinPos(800,600);
+      window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
     }
   </script>
 </body>

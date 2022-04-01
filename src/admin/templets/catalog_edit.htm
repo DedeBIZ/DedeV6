@@ -27,9 +27,8 @@ function Nav() {
   else return "OT";
 }
 function SelectTemplets(fname) {
-  var posLeft = 200;
-  var posTop = 300;
-  window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=680,height=400,left=" + posLeft + ", top=" + posTop);
+  var pos = GetWinPos(800,600);
+  window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
 function ShowHide(objname) {
   var obj = document.getElementById(objname);

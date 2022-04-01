@@ -305,14 +305,8 @@
         obj.style.display = "block";
     }
     function SelectTemplets(fname) {
-      if (document.all) {
-        var posLeft = window.event.clientY - 200;
-        var posTop = window.event.clientX - 300;
-      } else {
-        var posLeft = 100;
-        var posTop = 100;
-      }
-      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
+      var pos = GetWinPos(800,600);
+      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
     }
     function CheckSubmit() {
       if (document.form1.title.value == "") {

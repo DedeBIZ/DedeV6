@@ -6,9 +6,10 @@
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-<style>
-.table td,.table th{border-top:0}
-</style>
+  <style>
+  .table td,.table th{border-top:0}
+  </style>
+  <script src="js/main.js" language="javascript"></script>
   <script language="javascript">
     //获得选中项
     function getCheckboxItem() {
@@ -63,7 +64,8 @@
       location.href = "shops_operations.php?dopost=push&nid=" + nid;
     }
     function OpenMyWinN(surl, w, h) {
-      window.open(surl, "popUpMyWinN", "scrollbars=yes,resizable=yes,statebar=no,width=" + w + ",height=" + h + ",left=200, top=100");
+      var pos = GetWinPos(w,h);
+      window.open(surl, "popUpMyWinN", "scrollbars=yes,resizable=yes,statebar=no,width=" + w + ",height=" + h + ",left="+pos.left+", top="+pos.top);
     }
   </script>
 </head>
@@ -125,11 +127,11 @@
           <?php echo $fields['oid']; ?>
         </td>
         <td align="center">
-          <a href="javascript:OpenMyWinN('shops_operations_userinfo.php?oid=<?php echo $fields['oid']?>',500,350);"><?php echo $fields['consignee']?></a>
+          <a href="javascript:OpenMyWinN('shops_operations_userinfo.php?oid=<?php echo $fields['oid']?>',800,600);"><?php echo $fields['consignee']?></a>
         </td>
         <td align="center">
           <?php echo $fields['cartcount']?>
-          <a class="btn btn-success btn-sm" href="javascript:OpenMyWinN('shops_operations_cart.php?oid=<?php echo $fields['oid']?>',680,450);">详情</a>
+          <a class="btn btn-success btn-sm" href="javascript:OpenMyWinN('shops_operations_cart.php?oid=<?php echo $fields['oid']?>',800,600);">详情</a>
         </td>
         <td align="center">
           <?php echo GetDateTimeMk($fields['stime'])?>

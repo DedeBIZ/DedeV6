@@ -6,16 +6,11 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
+  <script src="js/main.js" language="javascript"></script>
   <script language="javascript">
     function SelectTemplets(fname) {
-      if (document.all) {
-        var posLeft = window.event.clientY - 100;
-        var posTop = window.event.clientX - 400;
-      } else {
-        var posLeft = 100;
-        var posTop = 100;
-      }
-      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir.'/plus')?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left=" + posLeft + ", top=" + posTop);
+      var pos = GetWinPos(800,600);
+      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir.'/plus')?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
     }
   </script>
 </head>
