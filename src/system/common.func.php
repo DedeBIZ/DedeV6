@@ -205,7 +205,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
     global $cfg_soft_lang, $cfg_cmsurl;
     if(empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
     $htmlhead  = "<html><head><meta charset='utf-8'><title>提示信息</title><meta name='viewport' content='width=device-width,initial-scale=1'><base target='_self'></head>";
-    $htmlhead .= "<body>".(isset($GLOBALS['ucsynlogin']) ? $GLOBALS['ucsynlogin'] : '')."<center><script>";
+    $htmlhead .= "<body><center><script>";
     $htmlfoot  = "</script></center></body></html>";
     $litime = ($limittime == 0 ? 1000 : $limittime);
     $func = '';

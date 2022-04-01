@@ -62,6 +62,8 @@ a{text-decoration:none!important}
     function ReturnValue(reimg) {
         if (window.opener.document.<?php echo $f ?> != null) {
             window.opener.document.<?php echo $f ?>.value = reimg;
+            window.close();
+            return
         }
         var funcNum = <?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>;
         if (window.opener.CKEDITOR != null && funcNum != 1) {
