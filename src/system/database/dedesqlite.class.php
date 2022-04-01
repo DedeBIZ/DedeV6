@@ -17,11 +17,15 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 @set_time_limit(0);
+if (!extension_loaded("sqlite3")) {
+    ShowMsg("尚未发现开启sqlite3模块，请在php.ini中启用`extension=sqlite3`","javasctipt:;",-1) ;
+    exit;
+}
 //在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作
 //为了防止错误，操作完后不必关闭数据库
 $dsql = $dsqlitete = $db = new DedeSqlite(FALSE);
 /**
- * Dede MySQLi数据库类
+ * Dede SQLite3数据库类
  *
  * @package        DedeSqli
  * @subpackage     DedeBIZ.Libraries
@@ -49,7 +53,7 @@ class DedeSqlite
     var $parameters;
     var $isClose;
     var $safeCheck;
-    var $showError = false;
+    var $showError = true;
     var $recordLog = false; //记录日志到data/mysqli_record_log.inc便于进行调试
     var $isInit = false;
     var $pconnect = false;
@@ -249,6 +253,10 @@ class DedeSqlite
         $t1 = ExecTime();
         //var_dump($this->queryString);
         $this->result[$id] = $this->linkID->query($this->queryString);
+        if (!$this->result[$id]) {
+            $this->DisplayError("执行SQL错误:{$this->linkID->lastErrorMsg()}");
+            exit;
+        }
         //var_dump(mysql_error());
         //查询性能测试
         if ($this->recordLog) {
@@ -479,7 +487,7 @@ class DedeSqlite
     }
     function RecordLog($runtime = 0)
     {
-        $RecordLogFile = dirname(__FILE__).'/../data/mysqli_record_log.inc';
+        $RecordLogFile = DEDEDATA.'/mysqli_record_log.inc';
         $url = $this->GetCurUrl();
         $savemsg = <<<EOT
 
@@ -495,22 +503,13 @@ EOT;
     //显示数据链接错误信息
     function DisplayError($msg)
     {
-        $errorTrackFile = dirname(__FILE__).'/../../data/mysqli_error_trace.inc';
-        if (file_exists(dirname(__FILE__).'/../../data/mysqli_error_trace.php')) {
-            @unlink(dirname(__FILE__).'/../../data/mysqli_error_trace.php');
-        }
+        $errorTrackFile = DEDEDATA.'/sqlite_error_trace.inc';
         if ($this->showError) {
-            $emsg = '';
-            $emsg .= "<div><h3>DedeBIZ Error Warning!</h3>\r\n";
-            $emsg .= "<div><a href='https://www.dedebiz.com' target='_blank' style='color:#dc3545'>Technical Support: https://www.dedebiz.com</a></div>";
-            $emsg .= "<div style='line-helght:160%;font-size:14px;color:green'>\r\n";
-            $emsg .= "<div style='color:blue'><br>Error page: <span style='color:#dc3545'>".$this->GetCurUrl()."</span></div>\r\n";
-            $emsg .= "<div>Error infos: {$msg}</div>\r\n";
-            $emsg .= "<br></div></div>\r\n";
-            echo $emsg;
+            ShowMsg("{$msg}", "javascript:;", -1);
+            exit;
         }
         $savemsg = 'Page: '.$this->GetCurUrl()."\r\nError: ".$msg."\r\nTime".date('Y-m-d H:i:s');
-        //保存MySql错误日志
+        //保存SQLite错误日志
         $fp = @fopen($errorTrackFile, 'a');
         @fwrite($fp, '<'.'?php  exit();'."\r\n/*\r\n{$savemsg}\r\n*/\r\n?".">\r\n");
         @fclose($fp);

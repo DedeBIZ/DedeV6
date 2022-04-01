@@ -248,13 +248,14 @@ if (!defined('MYSQL_ASSOC')) {
 if (!defined('MYSQL_NUM')) {
     define('MYSQL_NUM', MYSQLI_NUM);
 }
+//全局常用函数
+require_once(DEDEINC.'/common.func.php');
+
 if ($GLOBALS['cfg_dbtype'] == 'mysql' || $GLOBALS['cfg_dbtype'] == 'mysqli') {
     require_once(DEDEINC.'/database/dedesqli.class.php');
 } else {
     require_once(DEDEINC.'/database/dedesqlite.class.php');
 }
-//全局常用函数
-require_once(DEDEINC.'/common.func.php');
 //载入小助手配置,并对其进行默认初始化
 $cfg_helper_autoload = array(
     'charset',    /* 编码小助手 */
