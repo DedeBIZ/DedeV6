@@ -228,7 +228,7 @@ else if ($dopost == 'unitCatalog') {
         $win->AddHidden('channelid', $channelid);
         $win->AddHidden('nextjob', 'unitok');
         $win->AddTitle("合并目录时不会删除原来的栏目目录，合并后需手动更新目标栏目的文档HTML和列表HTML");
-        $win->AddItem('您选择的栏目是：', "<span style='color:#ff5722'>$typename($typeid)</span>");
+        $win->AddItem('您选择的栏目是：', "<span style='color:#dc3545'>$typename($typeid)</span>");
         $win->AddItem('您希望合并到那个栏目', "<select name='unittype'>\r\n{$typeOptions}\r\n</select>");
         $win->AddItem('注意事项：', '栏目不能有下级子栏目，只允许子级到更高级或同级或不同父级的情况');
         $winform = $win->GetWindow('ok');

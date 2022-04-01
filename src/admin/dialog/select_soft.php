@@ -136,7 +136,7 @@ a{text-decoration:none!important}
                             </tr>";
                             echo "$line";
                         } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
-                            if ($file == $comeback) $lstyle = " style='color:#ff5722' ";
+                            if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                             else  $lstyle = "";
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);
@@ -148,7 +148,7 @@ a{text-decoration:none!important}
                             </tr>";
                             echo "$line";
                         } else {
-                            if ($file == $comeback) $lstyle = " style='color:#ff5722' ";
+                            if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
                             else  $lstyle = '';
                             $reurl = "$activeurl/$file";
                             $reurl = preg_replace("#^\.\.#", "", $reurl);

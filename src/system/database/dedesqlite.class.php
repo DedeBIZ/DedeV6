@@ -114,7 +114,7 @@ class DedeSqlite
         }
         //处理错误，成功连接则选择数据库
         if (!$this->linkID) {
-            $this->DisplayError("系统提示：<span style='color:#ff5722'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
+            $this->DisplayError("系统提示：<span style='color:#dc3545'>连接数据库失败，可能数据库密码不对或数据库服务器出错</span>");
             exit();
         }
         $this->isInit = TRUE;
@@ -265,7 +265,7 @@ class DedeSqlite
             //echo $this->queryString."--{$queryTime}<hr />\r\n";
         }
         if ($this->result[$id] === FALSE) {
-            $this->DisplayError($this->linkID->lastErrorMsg()." <br>Error sql: <span style='color:#ff5722'>".$this->queryString."</span>");
+            $this->DisplayError($this->linkID->lastErrorMsg()." <br>Error sql: <span style='color:#dc3545'>".$this->queryString."</span>");
         }
     }
     function Query($id = "me", $sql = '')

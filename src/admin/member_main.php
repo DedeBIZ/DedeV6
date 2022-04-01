@@ -85,7 +85,7 @@ function GetMemberName($rank, $mt)
 {
     global $MemberTypes;
     if (isset($MemberTypes[$rank])) {
-        if ($mt == 'ut') return " <span style='color:#ff5722'>待升级：".$MemberTypes[$rank]."</span>";
+        if ($mt == 'ut') return " <span style='color:#dc3545'>待升级：".$MemberTypes[$rank]."</span>";
         else return $MemberTypes[$rank];
     } else {
         if ($mt == 'ut') return '';
@@ -96,6 +96,6 @@ function GetMemberName($rank, $mt)
 function GetMAtt($m)
 {
     if ($m < 1) return '';
-    else if ($m == 10) return "&nbsp;<span style='color:#ff5722'>[管理员]</span>";
-    else return "&nbsp;<img src='../static/web/img/adminuserico.gif'><span style='color:#ff5722'>[荐]</span>";
+    else if ($m == 10) return "&nbsp;<span style='color:#dc3545'>[管理员]</span>";
+    else return "&nbsp;<img src='../static/web/img/adminuserico.gif'><span style='color:#dc3545'>[荐]</span>";
 }

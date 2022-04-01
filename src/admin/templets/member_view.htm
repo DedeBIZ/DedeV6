@@ -36,7 +36,7 @@ function checkSubmit()
 <tr>
 <td height="200" bgcolor="#FFFFFF" align='center'>
 	<?php
-	if($row['matt']==10) echo "<span style='color:#ff5722'>当前用户是网站管理员关连的帐号，请小心操作</span>";
+	if($row['matt']==10) echo "<span style='color:#dc3545'>当前用户是网站管理员关连的帐号，请小心操作</span>";
 	?>
 	<table width="98%" border="0" cellspacing="0" cellpadding="6" class="table table-borderless">
         <tr> 
@@ -145,7 +145,7 @@ function checkSubmit()
             <td class='bline' style="text-align:left"><input type="text" style="width: 200px;" value="<?php echo $row['exptime']?>" id="exptime" name="exptime">
             （如果您要升级会员，会员天数必须大于0） </td>
           </tr>
-          <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span style="color:#ff5722">该会员已经到期</span>'; ?>
+          <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span style="color:#dc3545">该会员已经到期</span>'; ?>
           <tr> 
             <td align="right" class='bline'>会员剩余天数：</td>
             <td class='bline' style="text-align:left"><?php echo $mhasDay; ?></td>
@@ -157,7 +157,7 @@ function checkSubmit()
             <input name="oldmatt" type="hidden" id="oldmatt" value="<?php echo $row['matt']?>">
             <input name="matt" type="text" id="matt" value="<?php echo $row['matt']?>" size="3">
           (0为普通，1为推荐，10为管理员[不能在前台登录]
-          <span style='color:#ff5722'>{非管理员ID是严格使用10属性的，要新建管理在 <a href='sys_admin_user_add.php' target='_blank'>系统帐号</a> 的地方增加}</span>)
+          <span style='color:#dc3545'>{非管理员ID是严格使用10属性的，要新建管理在 <a href='sys_admin_user_add.php' target='_blank'>系统帐号</a> 的地方增加}</span>)
             </td>
           </tr>
           <tr>

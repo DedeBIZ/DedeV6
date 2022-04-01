@@ -19,7 +19,7 @@ input[type=radio],input[type=checkbox]{margin:0;height:auto;box-shadow:none;outl
 button+button{margin-left:10px}
 #wrap{padding:10px}
 #topbar{padding:10px 0;border-bottom:1px solid #ccc;text-align:right}
-#topbar button{display:inline-block;border:0;padding:.25rem .5rem;line-height:1.5;font-size:12px;color:#fff;background:#009688;border-color:#009688;border-radius:.25rem;transition:all .6s;text-align:center}
+#topbar button{display:inline-block;border:0;padding:.25rem .5rem;line-height:1.5;font-size:12px;color:#fff;background:#28a745;border-color:#28a745;border-radius:.25rem;transition:all .6s;text-align:center}
 .topbar button+.topbar button{margin-left:10px}
 #topbar button:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5);outline:none}
 #file_list{display:grid;grid-gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));padding-top:10px}
