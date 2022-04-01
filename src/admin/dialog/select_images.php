@@ -118,7 +118,7 @@ a{text-decoration:none!important}
                 window.opener.document.getElementById('litPic').src = reimg;
             }
             if (document.all) window.opener = true;
-        } else if (window.opener.CKEDITOR.instances.<?php echo $f ?>) {
+        } else if (typeof window.opener.CKEDITOR.instances["<?php echo $f ?>"] !== "undefined") {
             let addonHTML = `<img src='${reimg}'>`;
             window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
         }

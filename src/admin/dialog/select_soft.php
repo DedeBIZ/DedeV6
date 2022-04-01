@@ -60,18 +60,18 @@ a{text-decoration:none!important}
         return;
     }
     function ReturnValue(reimg) {
-        if (window.opener.document.<?php echo $f ?> != null) {
-            window.opener.document.<?php echo $f ?>.value = reimg;
-            window.close();
-            return
-        }
         var funcNum = <?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>;
         if (window.opener.CKEDITOR != null && funcNum != 1) {
             window.opener.CKEDITOR.tools.callFunction(funcNum, reimg);
         }
-        if (window.opener.CKEDITOR.instances.<?php echo $f ?>) {
+        if (typeof window.opener.CKEDITOR.instances["<?php echo $f ?>"] !== "undefined") {
             let addonHTML = `<a href='${reimg}' target='_blank'><img src='<?php echo $cfg_cmspath ?>/static/web/img/addon.gif'>附件：${reimg}</a>`;
             window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
+        }
+        if (window.opener.document.<?php echo $f ?> != null) {
+            window.opener.document.<?php echo $f ?>.value = reimg;
+            window.close();
+            return
         }
         window.close();
     }

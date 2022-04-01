@@ -96,12 +96,7 @@ class TypeLink
     //islink 表示返回的列表是否带连接
     function GetPositionLink($islink = true)
     {
-        if (defined('DEDEMOB')) {
-            $indexpage = "<li class='breadcrumb-item'><a href='index.php'>".$this->indexName."</a></li>";
-        } else {
-            $indexpage = "<li class='breadcrumb-item'><a href='".$this->indexUrl."'>".$this->indexName."</a></li>";
-        }
-
+        $indexpage = "<li class='breadcrumb-item'><a href='".$this->indexUrl."'>".$this->indexName."</a></li>";
         if ($this->valuePosition != "" && $islink) {
             return $this->valuePosition;
         } else if ($this->valuePositionName != "" && !$islink) {
@@ -162,21 +157,17 @@ class TypeLink
     //获得某分类连接的URL
     function GetOneTypeUrl($typeinfos)
     {
-        if (defined('DEDEMOB')) {
-            return 'list.php?tid='.$typeinfos['id'];
-        } else {
-            return GetTypeUrl(
-                $typeinfos['id'],
-                MfTypedir($typeinfos['typedir']),
-                $typeinfos['isdefault'],
-                $typeinfos['defaultname'],
-                $typeinfos['ispart'],
-                $typeinfos['namerule2'],
-                $typeinfos['moresite'],
-                $typeinfos['siteurl'],
-                $typeinfos['sitepath']
-            );
-        }
+        return GetTypeUrl(
+            $typeinfos['id'],
+            MfTypedir($typeinfos['typedir']),
+            $typeinfos['isdefault'],
+            $typeinfos['defaultname'],
+            $typeinfos['ispart'],
+            $typeinfos['namerule2'],
+            $typeinfos['moresite'],
+            $typeinfos['siteurl'],
+            $typeinfos['sitepath']
+        );
     }
     //获得类别列表
     //hid 是指默认选中类目，0 表示“请选择类目”或“不限类目”
