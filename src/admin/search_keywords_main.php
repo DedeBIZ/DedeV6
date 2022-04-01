@@ -88,8 +88,8 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
       <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
       <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
       <td>
-      <a href='#' onclick='UpdateNote({$row['aid']})' class='btn btn-success btn-sm'>更新</a> |
-      <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'>删除</a>
+        <a href='#' onclick='UpdateNote({$row['aid']})' class='btn btn-success btn-sm'>更新</a>
+        <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'>删除</a>
       </td>
     </tr>
     ";

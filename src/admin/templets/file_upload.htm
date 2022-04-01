@@ -16,12 +16,12 @@
         {
           i++;
           myob = document.getElementById("upfield");
-          myob.innerHTML+="<p>文件"+i+"：<input type='file' name='upfile"+i+"' size='40'></p>";
+          myob.innerHTML+="<p>文件"+i+"：<input type='file' name='upfile"+i+"' size='56'></p>";
         }
         function reset_upload()
         { 
           myob = document.getElementById("upfield");
-          myob.innerHTML="<p>文件1：<input type='file' name='upfile1' size='40'></p>";
+          myob.innerHTML="<p>文件1：<input type='file' name='upfile1' size='56'></p>";
         }
       </script>
       <form method="POST" enctype="multipart/form-data" action="file_manage_control.php" name="form1">
@@ -38,7 +38,7 @@
           <tr>
             <td width="10%"></td>
             <td width="90%">
-              <div id="upfield"><p>文件1：<input type='file' name='upfile1' size='40'></p></div>
+              <div id="upfield"><p>文件1：<input type='file' name='upfile1' size='56'></p></div>
             </td>
           </tr>
           <tr>

@@ -72,7 +72,7 @@ $wintitle = "随机模板防采集设置";
 $wecome_info = "随机模板防采集设置";
 make_hash();
 $msg = "
-<link rel='stylesheet' href='../static/web/css/admin.css' />
+<link rel='stylesheet' href='../static/web/css/admin.css'>
 <script language='javascript' src='js/main.js'></script>
 <script language='javascript' src='../static/web/js/webajax.js'></script>
 <script language='javascript'>
@@ -87,13 +87,13 @@ function DoRand(jobname)
     });
 }
 </script>
-<div id='loading' style='z-index:3000;top:160;left:300;position:absolute;display:none;'>
+<div id='loading' style='position:absolute;top:160;display:none;z-index:3000'>
     <img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中
 </div>
 <table width='98%' align='center'>
 <tr>
     <td height='26'>
-    如果您想对旧的文章应用随机模板设置，请点击此对旧文章进行处理(必须设置好模板项)
+    如果您想对旧的文章应用随机模板设置，请点击此对旧文章进行处理（必须设置好模板项）
     &nbsp;<a href='#' onclick='DoRand(\"makeold\")' class='btn btn-success btn-sm'>设置全部</a>
     &nbsp;<a href='#' onclick='DoRand(\"clearold\")' class='btn btn-success btn-sm'>取消全部</a>
     &nbsp;<span id='tmpct' style='color:#dc3545;font-weight:bold'>$okmsg</span>

@@ -35,14 +35,10 @@
               <td width="25%" style="padding-left:10px">关键词维护</td>
               <form name='form1' action="article_keywords_main.php">
                 <td width="75%" align="right">
-                  搜索：<input type='text' name='keyword' size='20' />
+                  搜索：<input type='text' name='keyword' size='20' />&nbsp;
                   <button type='submit' name='sb' value='' class="btn btn-success btn-sm">确定</button>
-                  &nbsp;
-                  <button class="btn btn-success btn-sm" name="n1" type="button" id="n1"
-                    onClick="location='article_keywords_make.php';">分析系统内的关键词</button>
-                  &nbsp;
-                  <button class="btn btn-success btn-sm" name="n11" type="button" id="n11"
-                    onClick="location='search_keywords_main.php';">管理搜索的关键词</button>
+                  <button class="btn btn-success btn-sm" name="n1" type="button" id="n1" onClick="location='article_keywords_make.php';">分析系统内的关键词</button>
+                  <button class="btn btn-success btn-sm" name="n11" type="button" id="n11" onClick="location='search_keywords_main.php';">管理搜索的关键词</button>
                 </td>
               </form>
             </tr>
@@ -55,13 +51,13 @@
           <td width="100%" height="30" colspan="6">
             <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
-                <td width="90" align="center">新增关键词：</td>
-                <td width="140"><input name="keyword" type="text" id="keyword"/></td>
+                <td width="90">新增关键词：</td>
+                <td><input name="keyword" type="text" id="keyword" style="width:260px"></td>
                 <td width="90">链接网址：</td>
-                <td width="140"><input name="rpurl" type="text" id="rpurl"/></td>
-                <td width="86">频率：</td>
-                <td width="60"><input name="rank" type="text" id="rank" style="width:50px" value="30"></td>
-                <td width="86"><button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button></td>
+                <td><input name="rpurl" type="text" id="rpurl" style="width:260px"></td>
+                <td width="60">频率：</td>
+                <td><input name="rank" type="text" id="rank" value="30" style="width:260px"></td>
+                <td><button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button></td>
               </tr>
             </table>
           </td>

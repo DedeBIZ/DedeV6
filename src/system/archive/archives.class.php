@@ -690,9 +690,8 @@ class Archives
             $nextR = $this->dsql->GetOne("Select id From `#@__arctiny` where id>$aid And arcrank>-1 And typeid='{$this->Fields['typeid']}' order by id asc");
             $next = (is_array($nextR) ? " where arc.id={$nextR['id']} " : ' where 1>2 ');
             $pre = (is_array($preR) ? " where arc.id={$preR['id']} " : ' where 1>2 ');
-            $query = "Select arc.id,arc.title,arc.shorttitle,arc.typeid,arc.ismake,arc.senddate,arc.arcrank,arc.money,arc.filename,arc.litpic,
-                t.typedir,t.typename,t.namerule,t.namerule2,t.ispart,t.moresite,t.siteurl,t.sitepath
-                from `#@__archives` arc left join #@__arctype t on arc.typeid=t.id  ";
+            $query = "Select arc.id,arc.title,arc.shorttitle,arc.typeid,arc.ismake,arc.senddate,arc.arcrank,arc.money,arc.filename,arc.litpic,t.typedir,t.typename,t.namerule,t.namerule2,t.ispart,t.moresite,t.siteurl,t.sitepath
+            from `#@__archives` arc left join #@__arctype t on arc.typeid=t.id ";
             $nextRow = $this->dsql->GetOne($query.$next);
             $preRow = $this->dsql->GetOne($query.$pre);
             if (is_array($preRow)) {
@@ -1013,42 +1012,23 @@ class Archives
         $karr = $kaarr = $GLOBALS['replaced'] = array();
         //暂时屏蔽超链接
         $body = preg_replace("#(<a(.*))(>)(.*)(<)(\/a>)#isU", '\\1-]-\\4-[-\\6', $body);
-        $query = "SELECT * FROM `#@__keywords` WHERE rpurl<>'' ORDER BY `rank` DESC";
+        $query = "SELECT * FROM #@__keywords WHERE rpurl<>'' ORDER BY rank DESC";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute();
-        while($row = $this->dsql->GetArray())
-        {
-            global $cfg_replace_num;
+        while ($row = $this->dsql->GetArray()) {
             $key = trim($row['keyword']);
-            $key_url=trim($row['rpurl']);
+            $key_url = trim($row['rpurl']);
             $karr[] = $key;
             $kaarr[] = "<a href='$key_url' target='_blank'>$key</a>";
         }
+        $GLOBALS['_dd_karr'] = $karr;
+        $GLOBALS['_dd_kaarr'] = $kaarr;
         //这里可能会有错误
-        if (version_compare(PHP_VERSION, '5.5.0', '>='))
-        {
-            if($cfg_replace_num > 0)
-            {
-                $query = "SELECT * FROM `#@__keywords` WHERE rpurl<>'' ORDER BY `rank` DESC";
-                $this->dsql->SetQuery($query);
-                $this->dsql->Execute();
-                while($row = $this->dsql->GetArray())
-                {
-                    $key = trim($row['keyword']);
-                    $key_url=trim($row['rpurl']);
-                    $body = str_replace_limit($key, "<a href='$key_url' target='_blank'>$key</a>", $body, $cfg_replace_num);
-                }
-            } else {
-                $query = "SELECT * FROM `#@__keywords` WHERE rpurl<>'' ORDER BY `rank` DESC";
-                $this->dsql->SetQuery($query);
-                $this->dsql->Execute();
-                while($row = $this->dsql->GetArray())
-                {
-                    $key = trim($row['keyword']);
-                    $key_url=trim($row['rpurl']);
-                    $body = str_replace($key, "<a href='$key_url' target='_blank'>$key</a>", $body);
-                }
-            }
+        if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
+            $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight8", $body);
+        } else if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
+
+            $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
         } else {
             $body = @preg_replace("#(^|>)([^<]+)(?=<|$)#sUe", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
         }
@@ -1057,43 +1037,30 @@ class Archives
         return $body;
     }
 }//End Archives
-//指定替换次数功能
-function str_replace_limit($search, $replace, $subject, $limit){
-    if(is_array($search)){
-        foreach($search as $k=>$v){
-            $search[$k] = '`'. preg_quote($search[$k], '`'). '`';
-        }
-    } else {
-        $search = '`'. preg_quote($search, '`'). '`';
-    }
-    return preg_replace($search, $replace, $subject, $limit);
+function _highlight8($matches){
+    return _highlight($matches[2], $GLOBALS['_dd_karr'], $GLOBALS['_dd_kaarr'], $matches[1]);
 }
-//高亮专用, 替换多次时可能不能达到最多次
+//高亮专用, 替换多次是可能不能达到最多次
 function _highlight($string, $words, $result, $pre)
 {
     global $cfg_replace_num;
-    if (version_compare(PHP_VERSION, '5.5.0', '>='))
-    {
+    if (version_compare(PHP_VERSION, '5.5.0', '>=') && version_compare(PHP_VERSION, '8.0.0', '<')) {
         $string = $string[0];
         $pre = $pre[0];
     }
     $string = str_replace('\"', '"', $string);
-    if($cfg_replace_num > 0)
-    {
-        foreach ($words as $key => $word)
-        {
-            if($GLOBALS['replaced'][$word] == 1)
-            {
+    if ($cfg_replace_num > 0) {
+        foreach ($words as $key => $word) {
+            if ($GLOBALS['replaced'][$word] == 1) {
                 continue;
             }
-            $string = preg_replace("#".preg_quote($word)."#", $result[$key], $string, $cfg_replace_num);
-            if(strpos($string, $word) !== FALSE)
-            {
+            $string = preg_replace("#" . preg_quote($word) . "#", $result[$key], $string, $cfg_replace_num);
+            if (strpos($string, $word) !== FALSE) {
                 $GLOBALS['replaced'][$word] = 1;
             }
         }
     } else {
         $string = str_replace($words, $result, $string);
     }
-    return $pre.$string;
+    return $pre . $string;
 }
