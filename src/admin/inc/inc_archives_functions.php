@@ -124,15 +124,32 @@ function GetCurContent($body)
         $htd->OpenUrl($value);
 
         $itype = $htd->GetHead("content-type");
-        $itype = substr($value, -4, 4);
-        if (!preg_match("#\.(jpg|gif|png)#i", $itype)) {
-            if ($itype == 'image/gif') {
-                $itype = ".gif";
-            } else if ($itype == 'image/png') {
-                $itype = ".png";
-            } else {
-                $itype = '.jpg';
-            }
+        $isImage = true;
+        if ($itype == 'image/gif') {
+            $itype = ".gif";
+        } else if ($itype == 'image/png') {
+            $itype = ".png";
+        } else if($itype == 'video/mp4'){
+            $itype = ".mp4";
+            $isImage = false;
+        } else if (preg_match("#^text#i",$itype)){
+            $itype = ".txt";
+            $isImage = false;
+        } else if ($itype == 'application/zip'){
+            $itype = ".zip";
+            $isImage = false;
+        } else if ($itype == 'application/x-rar-compressed'){
+            $itype = ".rar";
+            $isImage = false;
+        } else if($itype == 'image/jpeg') {
+            $itype = '.jpg';
+        } else if($itype == 'image/bmp') {
+            $itype = '.bmp';
+        } else if($itype == 'image/svg+xml') {
+            $itype = '.svg';
+            $isImage = false;
+        } else {
+            continue;
         }
         $milliSecondN = dd2char($milliSecond.mt_rand(1000, 8000));
         $value = trim($value);
@@ -141,7 +158,10 @@ function GetCurContent($body)
         $rs = $htd->SaveToBin($rndFileName);
         if ($rs) {
             $info = '';
-            $imginfos = GetImageSize($rndFileName, $info);
+            $imginfos = array(0,0);
+            if ($isImage) {
+                $imginfos = GetImageSize($rndFileName, $info);
+            }
             $fsize = filesize($rndFileName);
             //保存图片附件信息
             $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid)
@@ -153,7 +173,9 @@ function GetCurContent($body)
                 $fileurl = $cfg_basehost.$fileurl;
             }
             $body = str_replace($value, $fileurl, $body);
-            @WaterImg($rndFileName, 'down');
+            if ($isImage) {
+                @WaterImg($rndFileName, 'down');
+            }
         }
     }
     $htd->Close();

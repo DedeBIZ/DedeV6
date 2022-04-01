@@ -24,72 +24,78 @@ if (!function_exists('ImageResize')) {
     function ImageResize($srcFile, $toW, $toH, $toFile = "")
     {
         global $cfg_photo_type;
-        if ($toFile == '') $toFile = $srcFile;
-        $info = '';
-        $srcInfo = GetImageSize($srcFile, $info);
-        switch ($srcInfo[2]) {
-            case 1:
-                if (!$cfg_photo_type['gif']) return FALSE;
-                $im = imagecreatefromgif($srcFile);
-                break;
-            case 2:
-                if (!$cfg_photo_type['jpeg']) return FALSE;
-                $im = imagecreatefromjpeg($srcFile);
-                break;
-            case 3:
-                if (!$cfg_photo_type['png']) return FALSE;
-                $im = imagecreatefrompng($srcFile);
-                break;
-            case 6:
-                if (!$cfg_photo_type['bmp']) return FALSE;
-                $im = imagecreatefromwbmp($srcFile);
-                break;
-        }
-        $srcW = ImageSX($im);
-        $srcH = ImageSY($im);
-        if ($srcW <= $toW && $srcH <= $toH) return TRUE;
-        $toWH = $toW / $toH;
-        $srcWH = $srcW / $srcH;
-        if ($toWH <= $srcWH) {
-            $ftoW = $toW;
-            $ftoH = $ftoW * ($srcH / $srcW);
-        } else {
-            $ftoH = $toH;
-            $ftoW = $ftoH * ($srcW / $srcH);
-        }
-        if ($srcW > $toW || $srcH > $toH) {
-            if (function_exists("imagecreateTRUEcolor")) {
-                @$ni = imagecreateTRUEcolor($ftoW, $ftoH);
-                if ($ni) {
-                    imagecopyresampled($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
+        try {
+            if ($toFile == '') $toFile = $srcFile;
+            $info = '';
+            $srcInfo = GetImageSize($srcFile, $info);
+            switch ($srcInfo[2]) {
+                case 1:
+                    if (!$cfg_photo_type['gif']) return FALSE;
+                    $im = imagecreatefromgif($srcFile);
+                    break;
+                case 2:
+                    if (!$cfg_photo_type['jpeg']) return FALSE;
+                    $im = imagecreatefromjpeg($srcFile);
+                    break;
+                case 3:
+                    if (!$cfg_photo_type['png']) return FALSE;
+                    $im = imagecreatefrompng($srcFile);
+                    break;
+                case 6:
+                    if (!$cfg_photo_type['bmp']) return FALSE;
+                    $im = imagecreatefromwbmp($srcFile);
+                    break;
+            }
+            $srcW = ImageSX($im);
+            $srcH = ImageSY($im);
+            if ($srcW <= $toW && $srcH <= $toH) return TRUE;
+            $toWH = $toW / $toH;
+            $srcWH = $srcW / $srcH;
+            if ($toWH <= $srcWH) {
+                $ftoW = $toW;
+                $ftoH = $ftoW * ($srcH / $srcW);
+            } else {
+                $ftoH = $toH;
+                $ftoW = $ftoH * ($srcW / $srcH);
+            }
+            if ($srcW > $toW || $srcH > $toH) {
+                if (function_exists("imagecreateTRUEcolor")) {
+                    @$ni = imagecreateTRUEcolor($ftoW, $ftoH);
+                    if ($ni) {
+                        imagecopyresampled($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
+                    } else {
+                        $ni = imagecreate($ftoW, $ftoH);
+                        imagecopyresized($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
+                    }
                 } else {
                     $ni = imagecreate($ftoW, $ftoH);
                     imagecopyresized($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
                 }
-            } else {
-                $ni = imagecreate($ftoW, $ftoH);
-                imagecopyresized($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
+                switch ($srcInfo[2]) {
+                    case 1:
+                        imagegif($ni, $toFile);
+                        break;
+                    case 2:
+                        imagejpeg($ni, $toFile, 85);
+                        break;
+                    case 3:
+                        imagepng($ni, $toFile);
+                        break;
+                    case 6:
+                        imagebmp($ni, $toFile);
+                        break;
+                    default:
+                        return FALSE;
+                }
+                imagedestroy($ni);
             }
-            switch ($srcInfo[2]) {
-                case 1:
-                    imagegif($ni, $toFile);
-                    break;
-                case 2:
-                    imagejpeg($ni, $toFile, 85);
-                    break;
-                case 3:
-                    imagepng($ni, $toFile);
-                    break;
-                case 6:
-                    imagebmp($ni, $toFile);
-                    break;
-                default:
-                    return FALSE;
-            }
-            imagedestroy($ni);
+            imagedestroy($im);
+            return true;
+        } catch(Throwable $th) {
+            return false;
+        } catch (Exception $e) {
+            return false;
         }
-        imagedestroy($im);
-        return TRUE;
     }
 }
 /**
