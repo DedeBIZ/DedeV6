@@ -14,12 +14,9 @@
     <meta name="description" content="{dede:global.cfg_description/}">
 </head>
 <body>
-    {dede:include filename="top.htm"/}
-      
-    {dede:include filename="header.htm"/}
-
-	{dede:include filename="navbar.htm"/}
-	
+    {dede:include filename='top.htm'/}
+    {dede:include filename='header.htm'/}
+	  {dede:include filename='navbar.htm'/}
     <div class="container">
         <div class="position">
             <nav aria-label="breadcrumb">
@@ -31,7 +28,6 @@
         </div>
         <!-- /.position -->
     </div>
-
     <main class="container">
         <div class="row">
             <div class="col-12 col-lg-9 index-left">
@@ -49,9 +45,7 @@
                       </div>
                       <ul class="list-group list-group-flush">
                           {dede:arclistsg titlelen='60' row='8'}
-                          <li><i class="fa fa-bookmark-o" aria-hidden="true"></i> <a
-                                  title="[field:fulltitle/]"
-                                  href="[field:arcurl/]">[field:title/]</a>
+                          <li><i class="fa fa-bookmark-o" aria-hidden="true"></i> <a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
                           </li>
                           {/dede:arclistsg}
                       </ul>
@@ -59,22 +53,15 @@
                 </div>
                 {/dede:channelartlist}
               </div>
-
             </div><!-- /.index-left -->
             <aside class="col-12 col-lg-3">
-
               {dede:include comment='推荐内容' filename="widget_recommend_sg.htm"/}
-
               {dede:include comment='热点内容' filename="widget_hot_sg.htm"/}
-
               {dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
             </aside><!-- /aside -->
         </div>
     </main>
     <!-- /main -->
-
     {dede:include filename="footer.htm"/}
 </body>
-
 </html>
-

@@ -72,11 +72,11 @@
               <td>
                 <select name="typeid" id="typeid">
                   <?php
-        echo "	<option value='".$myLink['typeid']."'>".$myLink['typename']."</option>\r\n";
+        echo " <option value='".$myLink['typeid']."'>".$myLink['typename']."</option>\r\n";
         $dsql->SetQuery("select * from #@__flinktype where id<>'".$myLink['typeid']."'");
         $dsql->Execute();
         while($row=$dsql->GetObject()){
-        	echo "	<option value='".$row->id."'>".$row->typename."</option>\r\n";
+        	echo " <option value='".$row->id."'>".$row->typename."</option>\r\n";
         }
         ?>
                 </select>

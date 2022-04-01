@@ -20,7 +20,7 @@
     }
     //删除
     function DelNote(gourl) {
-      if (!window.confirm("您确认要删除这条记录么")) { return false; }
+      if (!window.confirm("您确认要删除这条记录吗")) { return false; }
       location.href = gourl;
     }
   </script>
@@ -57,7 +57,7 @@
       </tr>
       <tr>
         <td width="170" height="26" align="left" bgcolor="#FFFFFF">自定义表单 diyid：<br>
-          <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span> </td>
+          <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span></td>
         <td bgcolor="#FFFFFF">
           <?php echo $diyid; ?>
           <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')">

@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
+<style>
+.table td,.table th{border-top:0}
+</style>
   <script language="javascript">
     //获得选中项
     function getCheckboxItem() {
@@ -30,7 +33,7 @@
     function DelSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
-        alert("请选择要删除的业务记录!\r\n");
+        alert("请选择要删除的业务记录");
         return;
       }
       location.href = "shops_operations.php?dopost=delete&nid=" + nid;
@@ -38,7 +41,7 @@
     function UpSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
-        alert("请选择要修改的订单记录!\r\n");
+        alert("请选择要修改的订单记录");
         return;
       }
       location.href = "shops_operations.php?dopost=up&nid=" + nid;
@@ -46,7 +49,7 @@
     function OkSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
-        alert("请选择要修改的订单记录!\r\n");
+        alert("请选择要修改的订单记录");
         return;
       }
       location.href = "shops_operations.php?dopost=ok&nid=" + nid;
@@ -54,7 +57,7 @@
     function PushSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
-        alert("请选择要修改的订单记录!\r\n");
+        alert("请选择要修改的订单记录");
         return;
       }
       location.href = "shops_operations.php?dopost=push&nid=" + nid;
@@ -65,37 +68,35 @@
   </script>
 </head>
 <body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3" style="background:#cbd8ac;margin-bottom:10px;">
-    <tr>
-      <td height="30" align="center" bgcolor="#f6f6f6">
-        <form name="form2" method="get" action="shops_operations.php">
-          <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless" style="width: 400px;">
+  <form name="form2" method="get" action="shops_operations.php">
+    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3" style="margin-bottom:10px">
+      <tr>
+        <td bgcolor="#f6f6f6">
+          <table border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td>输入订单号：</td>
-              <td>
-                <input name="buyid" type="text" id="buyid"></td>
-              <td width="90" align="center"> <button type="submit" class="btn btn-success btn-sm">搜索</button>
-              </td>
+              <td><input name="buyid" type="text" id="buyid" style="margin-right:10px;width:260px"></td>
+              <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
             </tr>
           </table>
-        </form>
-      </td>
-    </tr>
-  </table>
+        </td>
+      </tr>
+    </table>
+  </form>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered">
     <tr>
       <td height="26" colspan="11" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'>
         <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr>
-            <td width="30%" style="padding-left:10px">订单列表： </td>
-            <td width="45%" align="right" style="padding-top:4px">
+            <td width="30%" style="padding-left:10px">订单列表：</td>
+            <td width="45%" align="right" style="padding-top:10px">
               <button type="button" onClick="location='shops_operations.php?sta=0'" class="btn btn-success btn-sm">未付款</button>
               <button type="button" onClick="location='shops_operations.php?sta=1';" class="btn btn-success btn-sm">已付款</button>
               <button type="button" onClick="location='shops_operations.php?sta=2';" class="btn btn-success btn-sm">已发货</button>
               <button type="button" onClick="location='shops_operations.php?sta=4';" class="btn btn-success btn-sm">已完成</button>
               <button type="button" onClick="location='shops_operations.php';" class="btn btn-success btn-sm">全部</button>
             </td>
-            <td width="25%" align="right" style="padding-top:4px">
+            <td width="25%" align="right" style="padding-top:10px">
               <button type="button" onClick="location='shops_operations.php';" class="btn btn-success btn-sm">订单管理</button>
             </td>
           </tr>
@@ -157,7 +158,7 @@
       {/dede:datalist}
     </form>
     <tr>
-      <td height="26" colspan="11" bgcolor="#FCFDF7" style="padding-top:4px;">&nbsp;
+      <td height="26" colspan="11" bgcolor="#FCFDF7" style="padding-top:10px">&nbsp;
         <button type="button" onClick="ReSel();" class="btn btn-success btn-sm">反选</button>
         <button type="button" onClick="DelSel();" class="btn btn-success btn-sm">删除</button>
         <button type="button" onClick="UpSel();" class="btn btn-success btn-sm">设为已付款状态</button>

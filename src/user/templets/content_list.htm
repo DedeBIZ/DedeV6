@@ -17,7 +17,7 @@
       location = "archives_do.php?dopost=edit&channelid=" + channelid + "&aid=" + aid;
     }
     function delArc(aid) {
-      if (window.confirm('您确定要删除这篇文档吗?')) location = "archives_do.php?aid=" + aid + "&dopost=delArc";
+      if (window.confirm('您确定要删除这篇文档吗')) location = "archives_do.php?aid=" + aid + "&dopost=delArc";
     }
   </script>
 </head>
@@ -36,25 +36,20 @@
               <nav class="navbar navbar-expand-lg">
                 <ul class="navbar-nav mr-auto mt-2">
                   <li class="nav-item">
-                    <a class="nav-link<?php echo ($arcrank=='')? ' active' : '';?>"
-                      href="content_list.php?channelid=<?php echo $channelid;?>">全部</a>
+                    <a class="nav-link<?php echo ($arcrank=='')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>">全部</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link<?php echo ($arcrank=='1')? ' active' : '';?>"
-                      href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=1">已审核</a>
+                    <a class="nav-link<?php echo ($arcrank=='1')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=1">已审核</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link<?php echo ($arcrank=='-1')? ' active' : '';?>"
-                      href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=-1">未审核</a>
+                    <a class="nav-link<?php echo ($arcrank=='-1')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=-1">未审核</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link<?php echo ($arcrank=='-2')? ' active' : '';?>"
-                      href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=-2">被退回</a>
+                    <a class="nav-link<?php echo ($arcrank=='-2')? ' active' : '';?>" href="content_list.php?channelid=<?php echo $channelid;?>&arcrank=-2">被退回</a>
                   </li>
                 </ul>
                 <span class="navbar-text">
-                  <a href="archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>"
-                    class="btn btn-success btn-sm">添加内容</a>
+                  <a href="archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>" class="btn btn-success btn-sm">添加内容</a>
                 </span>
               </nav>
               <div class="table-responsive">
@@ -72,9 +67,7 @@
                   <tbody>
                     {dede:datalist}
                     <tr>
-                      <td class="tabTitle"><a
-                          href='<?php echo $cfg_phpurl; ?>/view.php?aid=<?php echo $fields['id']; ?>'
-                          target='_blank'><?php echo $fields['title']; ?><?php echo IsPicArchives($fields['litpic']); ?></a>
+                      <td class="tabTitle"><a href='<?php echo $cfg_phpurl; ?>/view.php?aid=<?php echo $fields['id']; ?>' target='_blank'><?php echo $fields['title']; ?><?php echo IsPicArchives($fields['litpic']); ?></a>
                       </td>
                       <td align="center"><?php echo $fields['typename']; ?></td>
                       <td align="center"><?php
@@ -112,5 +105,4 @@
   </main>
   <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
 </body>
-
 </html>

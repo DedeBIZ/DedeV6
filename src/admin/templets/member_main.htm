@@ -9,65 +9,60 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <script language="javascript" src="js/member.js"></script>
   <style>
-    .rb {
-      border-right: 1px solid #666666
-    }
-    .tb {
-      border-top: 1px solid #666666
-    }
+.table td,.table th{border-top:0}
   </style>
 </head>
 <body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
+  <form action="member_main.php" name="form1" method="get">
+  <table width="98%" border="0" cellspacing="1" align="center" class="table maintable mt-3" style="margin-bottom:10px">
     <tr>
-      <td height="30" align="center" bgcolor="#f6f6f6">
-        <form action="member_main.php" name="form1" method="get">
-          <table border="0" cellspacing="0" cellpadding="3" class="table table-borderless" style="width: 790px;">
-            <tr>
-              <td>关键词：</td>
-              <td><input name="keyword" type="text" id="keyword" size="12" style="width:120px" value="{dede:global name='keyword'/}"></td>
-              <td>&nbsp;排序：</td>
-              <td>
-                <select name="sortkey" id="sortkey" style="width:120px">
-                  {dede:global name='sortform'/}
-                  <option value="mid">mid/注册时间</option>
-                  <option value="logintime">登录时间</option>
-                  <option value="rank">会员等级</option>
-                  <option value="money">会员金币</option>
-                  <option value="scores">会员积分</option>
-                </select>
-              </td>
-              <td>
-                <select name="sex" id="sex" style="width:60px">
-                  {dede:global name='sexform'/}
-                  <option value="男">男</option>
-                  <option value="女">女</option>
-                  <option value="保密">保密</option>
-                </select>
-              </td>
-              <td>
-                <select name="spacesta" id="spacesta" style="width:150px">
-                  <option value='-10'>会员状态</option>
-                  <?php
-           		foreach($staArr as $k=>$v)
-           		{
-           			if($spacesta==$k) echo "<option value='$k' selected>$v</option>\r\n";
-           			else echo "<option value='$k'>$v</option>\r\n";
-           		}
-           	  ?>
-                </select></td>
-              <td>
-                <button type="submit" class="btn btn-success btn-sm">搜索</button>
-              </td>
-            </tr>
-          </table>
-        </form>
+      <td style="background:#f6f6f6">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>关键词：</td>
+            <td><input name="keyword" type="text" id="keyword" value="{dede:global name='keyword'/}" style="margin-right:10px;width:260px"></td>
+            <td>排序：</td>
+            <td>
+              <select name="sortkey" id="sortkey" style="margin-right:10px;width:160px">
+                {dede:global name='sortform'/}
+                <option value="mid">mid/注册时间</option>
+                <option value="logintime">登录时间</option>
+                <option value="rank">会员等级</option>
+                <option value="money">会员金币</option>
+                <option value="scores">会员积分</option>
+              </select>
+            </td>
+            <td>
+              <select name="sex" id="sex" style="margin-right:10px;width:160px">
+                {dede:global name='sexform'/}
+                <option value="男">男</option>
+                <option value="女">女</option>
+                <option value="保密">保密</option>
+              </select>
+            </td>
+            <td>
+              <select name="spacesta" id="spacesta" style="margin-right:10px;width:160px">
+                <option value='-10'>会员状态</option>
+                <?php
+                foreach($staArr as $k=>$v)
+                {
+                  if($spacesta==$k) echo "<option value='$k' selected>$v</option>";
+                  else echo "<option value='$k'>$v</option>";
+                }
+                ?>
+              </select>
+            </td>
+            <td>
+              <button type="submit" class="btn btn-success btn-sm">搜索</button>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   </table>
+  </form>
   <form name="form2">
-    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1"
-      class="table table-bordered maintable">
+    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" class="table table-bordered maintable">
       <tr>
         <td height="26" colspan="9" background="../static/web/img/tbg.gif">
           <table width="99%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
@@ -99,15 +94,16 @@
         <td><input name="mid" type="checkbox" id="mid" value="{dede:field.mid/}" class="np"></td>
         <td>{dede:field.mid/}</td>
         <td><a href="../user/index.php?uid={dede:field.userid/}" target='_blank'>
-            <?php
-	  echo ''.$fields['userid'].'';
-	if($fields['spacesta']==-2) echo "<span style='color:#e74d58'>(禁言)</span>";
-	if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>(未审核)</span>";
-	  if(!empty($fields['face'])) {
-       echo "<br><img src='{$fields['face']}' width='60' alt='浏览会员空间' />";
-	  }
-	?>
-          </a></td>
+          <?php
+          echo ''.$fields['userid'].'';
+          if($fields['spacesta']==-2) echo "<span style='color:#e74d58'>(禁言)</span>";
+          if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>(未审核)</span>";
+          if(!empty($fields['face'])) {
+            echo "<br><img src='{$fields['face']}' alt='浏览会员空间' style='max-width:80px;height:auto'>";
+          }
+          ?>
+          </a>
+        </td>
         <td>
           {dede:field.email/}
           <br>

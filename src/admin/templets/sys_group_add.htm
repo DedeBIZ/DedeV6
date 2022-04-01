@@ -60,7 +60,7 @@
         		$tagname = str_replace('[br]', '<br>', $ls[2]);
         		if(!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
         		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
-        		echo "          	<label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'> $tagname</label>\r\n";
+        		echo " <label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'> $tagname</label>\r\n";
         	  $k++;
         	}
         }
@@ -78,7 +78,7 @@
          $dsql->SetQuery('Select plusname From #@__plus');
          $dsql->Execute();
          while($row=$dsql->GetObject()){
-         	 echo "          	<label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label>\r\n";
+         	 echo " <label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label>\r\n";
         	 $k++;
         	 $l++;
         	 if($l%6==0) echo "<br>";
@@ -89,8 +89,7 @@
         <tr>
           <td height="50" align="center"></td>
           <td height="50" style="text-align:left">
-            <button type="submit" class="btn btn-success" onClick="DoSubmit('gettag')"
-            class="coolbg np">保存</button>
+            <button type="submit" class="btn btn-success" onClick="DoSubmit('gettag')" class="coolbg np">保存</button>
           </td>
         </tr>
     </table>

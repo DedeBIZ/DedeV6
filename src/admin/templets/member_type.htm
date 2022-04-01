@@ -15,8 +15,8 @@
         <td height="26" colspan="5" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'>
           <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%" style="padding-left:10px">会员产品分类：</td>
-              <td align="right" style="padding-top:4px;">
+              <td width="30%" style="padding-left:10px">会员产品分类</td>
+              <td align="right" style="padding-top:10px">
                 <button type="button" class="btn btn-success" onClick="location='member_rank.php';">会员级别管理</button>
                 <button type="button" class="btn btn-success" onClick="location='member_operations.php';">会员业务记录</button>
               </td>
@@ -42,8 +42,7 @@
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
       <tr align="center" bgcolor="#FFFFFF">
         <td height="26" valign="top">
-          <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>"
-            style="width:90%" class='pubinputs' />
+          <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" style="width:90%" class='pubinputs' />
         </td>
         <td height="26" valign="top">
           <select name='rank_<?php echo $k?>' id='rank_<?php echo $k?>' style='width:90%' />
@@ -56,8 +55,7 @@
           </select>
         </td>
         <td>
-          <input name="money_<?php echo $k?>" value="<?php echo $row->money?>" type="text" id="money_<?php echo $k?>"
-            style="width:80%" class='pubinputs' />
+          <input name="money_<?php echo $k?>" value="<?php echo $row->money?>" type="text" id="money_<?php echo $k?>" style="width:80%" class='pubinputs' />
           (元)
         </td>
         <td>

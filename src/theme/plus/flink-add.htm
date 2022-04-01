@@ -12,10 +12,7 @@
 <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
 </head>
 <body class="flinkpage">
-
 <?php include("plus_header.htm") ;?>
-
-
 <div class="container">
 	<div class="sp-title">
 		<nav class="navbar navbar-expand-lg">
@@ -62,7 +59,7 @@
         $dsql->Execute();
         while($row=$dsql->GetObject())
         {
-        	echo "	<option value='".$row->id."'>".$row->typename."</option>\r\n";
+        	echo " <option value='".$row->id."'>".$row->typename."</option>\r\n";
         }
         ?>
                     </select> </td>

@@ -9,39 +9,32 @@
       else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
       else return "OT";
     }
-
     function $Obj(objname) {
       return document.getElementById(objname);
     }
-
     function ShowHide2(objname) {
       var obj = $Obj(objname);
       if (obj.style.display != 'block') { obj.style.display = 'block' }
       else { obj.style.display = 'none'; }
     }
-
     //删除
     function DelNote(gourl) {
-      if (!window.confirm("您确认要删除这个字段么")) { return false; }
+      if (!window.confirm("您确认要删除这个字段吗")) { return false; }
       location.href = gourl;
     }
-
     function ShowObj(objname) {
       var obj = document.getElementById(objname);
       if (Nav() == 'IE') { obj.style.display = "block"; obj.style.display = "block"; }
       else obj.style.display = "table";
     }
-
     function HideObj(objname) {
       var obj = document.getElementById(objname);
       obj.style.display = "none";
     }
-
     function ShowItem1() {
       ShowObj('head1'); ShowObj('needset');
       HideObj('head2'); HideObj('adset');
     }
-
     function ShowItem2() {
       setTimeout(() => {
         var editor = CodeMirror.fromTextArea(document.getElementById('fieldset'), {
@@ -71,10 +64,7 @@
     <input type='hidden' name='issystem' value='<?php echo $row['issystem']; ?>'>
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
       <tr>
-        <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">
-          <a href="mychannel_main.php">内容模型管理</a>
-           &gt; 修改内容模型：
-        </td>
+        <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mychannel_main.php">内容模型管理</a> &gt; 修改内容模型</td>
       </tr>
     </table>
     <table width="98%" border="0" cellspacing="0" id="head1" cellpadding="0" align="center" style="display:block">
@@ -82,7 +72,7 @@
         <td colspan="2">
           <table border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">基本设置&nbsp;</td>
+              <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">基本设置</td>
               <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">字段管理</a></td>
             </tr>
           </table>
@@ -96,7 +86,7 @@
           <table border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td width="86" height="26" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;" onClick="ShowItem1()">基本设置</a></td>
-              <td width="86" align="center" background="../static/web/img/itemnote1.gif">字段管理&nbsp;</td>
+              <td width="86" align="center" background="../static/web/img/itemnote1.gif">字段管理</td>
             </tr>
           </table>
         </td>
@@ -142,15 +132,13 @@
       <tr>
         <td bgcolor="#FFFFFF">频道名称<br>
           <span class="STYLE2" id="help3">频道的中文名称，在后台管理，前台发布等均使用此名字</span></td>
-        <td bgcolor="#FFFFFF"><input name="typename" type="text" id="typename" value="<?php echo $row['typename']; ?>"
-            class="pubinputs"></td>
+        <td bgcolor="#FFFFFF"><input name="typename" type="text" id="typename" value="<?php echo $row['typename']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">附加表<br>
-          <span class="STYLE2" id="help4">频道除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性(推荐、会员权限等)，也可以使用完全以附加表作为存储数据</span>
+          <span class="STYLE2" id="help4">频道除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性（推荐、会员权限等），也可以使用完全以附加表作为存储数据</span>
         </td>
-        <td bgcolor="#FFFFFF"><input name="addtable" type="text" id="addtable" value="<?php echo $row['addtable']; ?>"
-            class="pubinputs">
+        <td bgcolor="#FFFFFF"><input name="addtable" type="text" id="addtable" value="<?php echo $row['addtable']; ?>" class="pubinputs">
           ( #@__ 是表示数据表前缀)</td>
       </tr>
       <tr>
@@ -205,18 +193,15 @@
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">档案发布程序</td>
-        <td bgcolor="#FFFFFF"><input name="addcon" type="text" id="addcon" value="<?php echo $row['addcon']; ?>"
-            class="pubinputs"></td>
+        <td bgcolor="#FFFFFF"><input name="addcon" type="text" id="addcon" value="<?php echo $row['addcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">档案修改程序</td>
-        <td bgcolor="#FFFFFF"><input name="editcon" type="text" id="editcon" value="<?php echo $row['editcon']; ?>"
-            class="pubinputs"></td>
+        <td bgcolor="#FFFFFF"><input name="editcon" type="text" id="editcon" value="<?php echo $row['editcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">档案管理程序</td>
-        <td bgcolor="#FFFFFF"><input name="mancon" type="text" id="mancon" value="<?php echo $row['mancon']; ?>"
-            class="pubinputs"></td>
+        <td bgcolor="#FFFFFF"><input name="mancon" type="text" id="mancon" value="<?php echo $row['mancon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">前台会员发布程序</td>
@@ -235,22 +220,20 @@
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">列表附加字段<br>
-          <span class="STYLE2" id="help6">用&quot;,&quot;分开，可以在列表模板{dede:list}{/dede:list}中用[field:name /]调用</span></td>
+          <span class="STYLE2" id="help6">用&quot;,&quot;分开，可以在列表模板{dede:list}{/dede:list}中用[field:name/]调用</span></td>
         <td bgcolor="#FFFFFF">
-          <input name="listfields" type="text" id="listfields" size="50" value="<?php echo $row['listfields']; ?>"
-            class="pubinputs" style="width:80%"></td>
+          <input name="listfields" type="text" id="listfields" size="50" value="<?php echo $row['listfields']; ?>" class="pubinputs" style="width:80%"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">投稿标题使用名称</td>
         <td bgcolor="#FFFFFF">
-          <input name="titlename" type="text" id="titlename" value="<?php echo $row['titlename']; ?>"
-            class="pubinputs"></td>
+          <input name="titlename" type="text" id="titlename" value="<?php echo $row['titlename']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">
           投稿是否使用摘要
           <br>
-          <span class="STYLE2">如果不使用主表(独立模型)，缩略图设置同</span>
+          <span class="STYLE2">如果不使用主表（独立模型）缩略图设置同</span>
         </td>
         <td bgcolor="#FFFFFF">
           <label><input name="needdes" type="radio" class="np" value="1"
@@ -272,14 +255,13 @@
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">默认栏目ID<br>
-          <span class="STYLE2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span> </td>
+          <span class="STYLE2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span></td>
         <td bgcolor="#FFFFFF">
-          <input name="dfcid" type="text" id="dfcid" value="<?php echo $row['dfcid']; ?>" class="pubinputs"
-            style="width:80px"></td>
+          <input name="dfcid" type="text" id="dfcid" value="<?php echo $row['dfcid']; ?>" class="pubinputs" style="width:80px"></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">投稿具有唯一性<br>
-          <span class="STYLE2" id="help9">如果投稿是唯一的(会员只能在这个模型对应的栏目中发布单篇文档)，其作用相当于自定义表单</span> </td>
+          <span class="STYLE2" id="help9">如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单</span></td>
         <td bgcolor="#FFFFFF">
           <label><input name="onlyone" type="radio" class="np" value="1"
             <?php if($row['onlyone']==1) echo " checked='1'"; ?> />

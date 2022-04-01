@@ -3,9 +3,7 @@
 <head>
 	<meta charset="{dede:global.cfg_soft_lang/}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<script>
-		const PHPURL = '{dede:field name="phpurl"/}';
-	</script>
+	<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
 	<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	<script src="{dede:global.cfg_cmsurl/}/static/web/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
@@ -38,14 +36,11 @@
 				gtimer = setTimeout("dPlayNext()", 10000);
 			}
 		}
-
 		//上一张
 		function dPlayPre() {
-
 			if (npage < 2) {
 				ShowMsg("这是第一页");
-			}
-			else {
+			} else {
 				if (npage == 2) {
 					if (namehand != '') location.href = namehand + shortname;
 					else location.href = "view.php?aid={dede:field name='id'/}";
@@ -56,7 +51,6 @@
 				}
 			}
 		}
-
 		//下一张
 		function dPlayNext() {
 			if (npage == totalpage) { ShowMsg("没有了哦"); }
@@ -68,12 +62,9 @@
 	</script>
 </head>
 <body>
-	{dede:include filename="top.htm"/}
-
-	{dede:include filename="header.htm"/}
-
-	{dede:include filename="navbar.htm"/}
-
+	{dede:include filename='top.htm'/}
+	{dede:include filename='header.htm'/}
+	{dede:include filename='navbar.htm'/}
 	<div class="container">
 		<div class="position">
 			<nav aria-label="breadcrumb">
@@ -85,7 +76,6 @@
 		</div>
 		<!-- /.position -->
 	</div>
-
 	<main class="container">
 		<div class="row">
 			<div class="col-md-8 article-main">
@@ -96,9 +86,7 @@
 					<small>作者：</small>{dede:field.writer/}
 					<small>点击：</small><span id="_count">...</span>次
 				</div>
-
 				<div class="picbox">
-
 					{dede:field name='pagestyle' alt='根据不同的页面风格输出不同的头信息' runphp='yes'}
 					if(@me==3) {
 					@me = '<ul class="e8">';
@@ -112,26 +100,21 @@
 							<a href='javascript:dStopPlay();' class='btn btn-success'>自动 / 暂停播放</a>\r\n
 						</div>
 						";
-						}
-						else {
+						} else {
 						@me = '';
 						}
 						{/dede:field}
 						<!-- 如果使用的是多页单图模式(幻灯)，把href里的链接改为 javascript:dPlayNext(); 表示点击看下一页 -->
 						{dede:field name='imgurls' alt='图片输出区'}
 						[field:pagestyle runphp='yes'] @me= (@me==3 ? '<li>' : '');[/field:pagestyle]
-							<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ] @me=(@me==3 ? 'class="pic"' : ''
-								); [/field:pagestyle]>
-								<img src='[field:imgsrc/]' id='bigimg' [field:imgwidth /] alt='[field:alttext /]'
-									border='0' />
+							<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ] @me=(@me==3 ? 'class="pic"' : ''); [/field:pagestyle]>
+								<img src='[field:imgsrc/]' id='bigimg' [field:imgwidth /] alt='[field:alttext /]'>
 							</a>
-							<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ]@me=(@me==3 ? 'class="title"' : ''
-								);[/field:pagestyle]>
+							<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ]@me=(@me==3 ? 'class="title"' : '');[/field:pagestyle]>
 								[field:title /]
 							</a>
 							[field:pagestyle runphp='yes'] @me = (@me==3 ? '</li>' : ''); [/field:pagestyle]
 						{/dede:field}
-
 						{dede:field name='pagestyle' alt='根据不同的风格输出不同的结尾信息' runphp='yes'}
 						if(@me==3) {
 						@me = '</ul>';
@@ -139,22 +122,17 @@
 					else if(@me==2) {
 					@me = "
 					<script language='javascript'>dStartPlay();</script>\r\n";
-					}
-					else {
+					} else {
 					@me = '';
 					}
 					{/dede:field}
 				</div>
-
 				<div class="body py-2">
 					{dede:field.body/} (责任编辑：{dede:adminname/})
 				</div>
 				<!-- /.body -->
-
 				<div class="clearfix"></div>
-
 				{dede:include comment='文档顶踩模块' filename="widget_article_digg.htm"/}
-
 				<div class="row">
 					<div class="col-md-4 prenext pt-2">
 						<div class="pagination-previous">{dede:prenext get='pre'/}</div>
@@ -163,46 +141,29 @@
 					<div class="col-md-8">
 						<div class="row actbox">
 							<ul>
-								<li><i class="fa fa-star-o" aria-hidden="true"></i> <a
-										href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}"
-										target="_blank">收藏</a></li>
-								<li><i class="fa fa-bug" aria-hidden="true"></i> <a
-										href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a>
+								<li><i class="fa fa-star-o" aria-hidden="true"></i> <a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
+								<li><i class="fa fa-bug" aria-hidden="true"></i> <a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a>
 								</li>
-								<li><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <a
-										href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}"
-										target="_blank">推荐</a></li>
-								<li><i class="fa fa-print" aria-hidden="true"></i> <a href="#"
-										onClick="window.print();">打印</a></li>
+								<li><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
+								<li><i class="fa fa-print" aria-hidden="true"></i> <a href="#" onClick="window.print();">打印</a></li>
 							</ul>
 						</div><!-- /actbox -->
 					</div>
 				</div>
-
 				{dede:include comment='文档评论模块' file='widget_article_feedback.htm' /}
-
 			</div>
 			<!-- /.article-main -->
-
 			<aside class="col-md-4 article-sidebar">
-
 				{dede:include comment='推荐内容' filename="widget_recommend.htm"/}
-
 				{dede:include comment='热点内容' filename="widget_hot.htm"/}
-
 				{dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
-
 			</aside>
 			<!-- /.article-sidebar -->
-
 		</div>
 	</main>
 	<!-- /main -->
-
 	{dede:include filename="footer.htm"/}
 	<script>
-
-
 		//页面加载触发
 		$(document).ready(function () {
 			//获取文档点击数统计
@@ -213,5 +174,4 @@
 		});
 	</script>
 </body>
-
 </html>

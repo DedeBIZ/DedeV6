@@ -9,11 +9,10 @@
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
   <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/member_album.js"></script>
-  <title>修改图集<?php echo $row['title']?> - 会员中心 - <?php echo $cfg_webname; ?></title>
+  <title>修改<?php echo $row['title']?> - 会员中心 - <?php echo $cfg_webname; ?></title>
 </head>
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
     <div class="container-fluid pannel">
       <div class="container">
@@ -23,15 +22,14 @@
               <nav class="navbar navbar-expand-lg">
                 <ol class="breadcrumb mb-0 mr-auto">
                   <li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
-                  <li class="breadcrumb-item">修改图集:<?php echo $row['title']?></li>
+                  <li class="breadcrumb-item">修改：<?php echo $row['title']?></li>
                   </li>
                 </ol>
                 <span class="navbar-text">
                   <a href="javascript:history.back(-1);" class="btn btn-sm">返回</a>
                 </span>
               </nav>
-              <form name="addcontent" action="album_edit.php" method="post" enctype="multipart/form-data"
-                onsubmit="return checkSubmit();">
+              <form name="addcontent" action="album_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
                 <input type="hidden" name="dopost" value="save" />
                 <input type="hidden" name="aid" value="<?php echo $row['id']; ?>" />
                 <input type="hidden" name="idhash" value="<?php echo hash('sha256', $row['id'].$cfg_cookie_encode); ?>" />
@@ -55,8 +53,7 @@
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">作者</label>
                     <div class="col-sm-10">
-                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>"
-                        class="form-control" />
+                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control" />
                     </div>
                   </div>
                   <div class="form-group row">
@@ -68,13 +65,13 @@
                         echo $typeOptions;
                         echo "</select>";
                       ?>
-                      <span style="color:#F00">*</span>(不能选择带颜色的分类)
+                      <span style="color:#F00">*</span>（不能选择带颜色的分类）
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">图集简介</label>
                     <div class="col-sm-10">
-                      <textarea class='form-control' name="description" id="description"><?php echo $row["description"]; ?></textarea>(内容的简要说明)
+                      <textarea class='form-control' name="description" id="description"><?php echo $row["description"]; ?></textarea>（内容的简要说明）
                     </div>
                   </div>
                   <?php
@@ -103,8 +100,7 @@
                     <p>
                       <label>手工上传：</label>
                       图片数目：<input name="picnum" type="text" id="picnum" size="6" value="3" maxlength="100" class="intxt" />
-                      <button class="btn btn-success btn-sm" name='kkkup' type='button' id='kkkup2'
-                        onclick="MakeUpload(0);">增加</button>(最大60幅)
+                      <button class="btn btn-success btn-sm" name='kkkup' type='button' id='kkkup2' onclick="MakeUpload(0);">增加</button>（最大60幅）
                     </p>
                     <p>
                       <div id="uploadfield"></div>
@@ -117,31 +113,27 @@
 	   ?>
             <table width='98%' align="center">
               <tr>
-                <td height="18"><input type='checkbox' name='isokcheck<?php echo $j; ?>' id='isokcheck<?php echo $j; ?>'
-                    value='1' class='np' onclick='CheckSelTable(<?php echo $j; ?>)' checked='1' />
+                <td height="18"><input type='checkbox' name='isokcheck<?php echo $j; ?>' id='isokcheck<?php echo $j; ?>' value='1' class='np' onclick='CheckSelTable(<?php echo $j; ?>)' checked='1' />
                   显示/隐藏图片[<?php echo $j; ?>]的选框 </td>
               </tr>
             </table>
             <table width="100%" border="0" id="seltb<?php echo $j; ?>" style="margin-bottom:10px;" align="center">
               <tr>
-                <td height="26" colspan="2">　图片</td>
+                <td height="26" colspan="2"> 图片</td>
               </tr>
               <tr>
-                <td height="26">　本地上传：
-                  <input type="text" name='imgfile<?php echo $j; ?>' style="width:200px;" maxlength="100"
-                    class="intxt" />
+                <td height="26"> 本地上传：
+                  <input type="text" name='imgfile<?php echo $j; ?>' style="width:200px;" maxlength="100" class="intxt" />
                 </td>
                 <td rowspan="3" align="center">
                   <div id='divpicview<?php echo $j; ?>' class='divpre' style="height:5px"></div>
-                  <img src="<?php echo trim($ctag->GetInnerText()); ?>" id="picview<?php echo $j; ?>"
-                    name="picview<?php echo $j; ?>" style="width: 128px; height: 128px;" />
+                  <img src="<?php echo trim($ctag->GetInnerText()); ?>" id="picview<?php echo $j; ?>" name="picview<?php echo $j; ?>" style="width: 128px; height: 128px;" />
                 </td>
               </tr>
               <input type="hidden" name='imgurl<?php echo $j; ?>' value='<?php echo trim($ctag->GetInnerText())?>' />
               <tr>
-                <td height="56">　图片简介：
-                  <textarea name='imgmsg<?php echo $j; ?>'
-                    style="height:46px;width:200px"><?php echo trim($ctag->GetAtt('text'))?></textarea></td>
+                <td height="56"> 图片简介：
+                  <textarea name='imgmsg<?php echo $j; ?>' style="height:46px;width:200px"><?php echo trim($ctag->GetAtt('text'))?></textarea></td>
               </tr>
             </table>
             <?php
@@ -162,10 +154,8 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">验证码</label>
                         <div class="col-sm-10">
-                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt"
-                                  style='width:100px;text-transform:uppercase;' />
-                                <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer"
-                                  onclick="this.src=this.src+'?'" />
+                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt" style='width:100px;text-transform:uppercase;' />
+                          <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer" onclick="this.src=this.src+'?'" />
                         </div>
                       </div>
                     <?php }?>
@@ -183,7 +173,5 @@
     </div>
   </main>
   <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
-
 </body>
-
 </html>

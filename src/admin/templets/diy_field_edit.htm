@@ -95,12 +95,12 @@ td{ padding:2px; padding-left:6px; }
           $dtype = $ctag->GetAtt('type');
           if($dtype!='' && isset($fieldtypes[$dtype]))
           {
-          	echo "          <option value='{$dtype}'>{$fieldtypes[$dtype]}</option>\r\n";
+          	echo "<option value='{$dtype}'>{$fieldtypes[$dtype]}</option>\r\n";
           	$canchange = true;
           }
           else
           {
-          	echo "          <option value='{$dtype}'>系统专用类型</option>\r\n";
+          	echo "<option value='{$dtype}'>系统专用类型</option>\r\n";
           	$canchange = false;
           }
           if($canchange)

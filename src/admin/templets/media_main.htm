@@ -48,7 +48,7 @@
     function DelSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
-        alert("请选择项目!\r\n");
+        alert("请选择项目");
         return;
       }
       location.href = "media_edit.php?dopost=del&ids=" + nid;
@@ -83,7 +83,7 @@
               <td width="10"></td>
               <td width="90" align="center">关键词：</td>
               <td width="90">
-                <input name="keyword" type="text" id="keyword" style="width:100" value="<?php echo $keyword?>">
+                <input name="keyword" type="text" id="keyword" style="width:100px" value="<?php echo $keyword?>">
               </td>
               <td width="90" align="center">
                 <select name='mediatype' style='width:80'>

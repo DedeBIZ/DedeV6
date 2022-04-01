@@ -12,9 +12,7 @@
 </head>
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
-
     <div class="container-fluid pannel">
       <div class="container">
         <div class="row">
@@ -113,12 +111,11 @@
 			alert("您没选中任何信息");
 			return false;
 		}
-		if(window.confirm("您确定要删除这些消息么"))
+		if(window.confirm("您确定要删除这些消息吗"))
 		{
 			location = "shops_orders.php?dopost=del&ids="+selid;
 		}
 	}
     </script>
 </body>
-
 </html>

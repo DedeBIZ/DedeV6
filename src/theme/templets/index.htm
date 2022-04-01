@@ -14,12 +14,9 @@
     <meta name="description" content="{dede:global.cfg_description/}">
 </head>
 <body>
-    {dede:include filename="top.htm"/}
-
-    {dede:include filename="header.htm"/}
-
-    {dede:include filename="navbar.htm"/}
-
+    {dede:include filename='top.htm'/}
+    {dede:include filename='header.htm'/}
+    {dede:include filename='navbar.htm'/}
     <main class="container mt-3">
         <div class="index-main">
             <div class="col-12">
@@ -28,16 +25,13 @@
                         <div id="carouselIndex" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 {dede:arclist channelid=1 flag='f' row=6}
-                                <li data-target="#carouselIndex"
-                                    data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]"
-                                    class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
+                                <li data-target="#carouselIndex"  data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
                                 {/dede:arclist}
                             </ol>
                             <div class="carousel-inner">
                                 {dede:arclist channelid=1 flag='f' row=6}
                                 <div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
-                                    <a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]"
-                                            class="mr-3" alt="[field:fulltitle/]"></a>
+                                    <a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" class="mr-3" alt="[field:fulltitle/]"></a>
                                 </div>
                                 {/dede:arclist}
                             </div>
@@ -61,8 +55,7 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 {dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
-                                <li><i class="fa fa-bookmark-o" aria-hidden="true"></i> <a title="[field:fulltitle/]"
-                                        href="[field:arcurl/]">[field:title/]</a>
+                                <li><i class="fa fa-bookmark-o" aria-hidden="true"></i> <a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
                                 </li>
                                 {/dede:arclist}
                             </ul>
@@ -96,18 +89,15 @@
                             </div>
                             {/dede:arclist}
                         </div>
-
                     </div>
                 </div><!-- /.spec -->
-
                 <div class="row">
                     {dede:channelartlist}
                     <div class="col-md-6 mt-3">
                         <div class="card ddcard-normal">
                             <div class="card-header">
                                 <div class="row">
-                                    <div class="col-6 caption"><span><a href="{dede:field name='typeurl'/}">{dede:field
-                                                name='typename'/}</a></span></div>
+                                    <div class="col-6 caption"><span><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></span></div>
                                     <div class="col-6 d-flex justify-content-end more">
                                         <a href="{dede:field name='typeurl'/}">更多</a>
                                     </div>
@@ -115,8 +105,7 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 {dede:arclist titlelen='60' row='8'}
-                                <li><i class="fa fa-bookmark-o" aria-hidden="true"></i> <a title="[field:fulltitle/]"
-                                        href="[field:arcurl/]">[field:title/]</a>
+                                <li><i class="fa fa-bookmark-o" aria-hidden="true"></i> <a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
                                 </li>
                                 {/dede:arclist}
                             </ul>
@@ -124,29 +113,21 @@
                     </div>
                     {/dede:channelartlist}
                 </div>
-
             </div><!-- /.index-left -->
             <aside class="col-12 col-lg-3">
-
                 {dede:include comment='推荐内容' filename="widget_recommend.htm"/}
-
                 {dede:include comment='热点内容' filename="widget_hot.htm"/}
-
                 {dede:include comment='投票' filename="widget_vote.htm"/}
-
                 {dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
             </aside><!-- /aside -->
         </div>
     </main>
     <!-- /main -->
-
     <div class="container-fluid flink mt-3">
         <div class="container py-3">
             友情连接：{dede:flink row='24'/}
         </div>
     </div>
-
     {dede:include filename="footer.htm"/}
 </body>
-
 </html>

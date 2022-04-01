@@ -12,9 +12,7 @@
 </head>
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
-
     <div class="container-fluid pannel">
       <div class="container">
         <div class="row">
@@ -42,21 +40,17 @@
                 <div class="form-group row">
                   <label for="iptUname" class="col-sm-2 col-form-label">手工填写网址</label>
                   <div class="col-sm-10">
-                    <input name='faceurl' type='text' id='faceurl' size='35' class='form-control'
-                  value='<?php echo $face; ?>' />
+                    <input name='faceurl' type='text' id='faceurl' size='35' class='form-control' value='<?php echo $face; ?>' />
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptValidate" class="col-sm-2 col-form-label">原来头像</label>
                   <div class="col-sm-10">
                     <?php
                         if($face!='') echo " <img class='' src='$face' />\r\n";
                     ?>
-                    
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <div class="col-sm-10">
                     <button type="submit" class="btn btn-success">保存</button>
@@ -71,6 +65,5 @@
   </main>
   <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
 </body>
-
 </html>
 

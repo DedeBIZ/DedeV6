@@ -12,9 +12,7 @@
 </head>
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
-
     <div class="container-fluid pannel">
       <div class="container">
         <div class="row">
@@ -37,15 +35,11 @@
                   <tbody>
                     {dede:datalist}
                     <tr>
-                      <td colspan="5" class="tabTitle"><a href='archives_do.php?dopost=viewArchives&aid={dede:field.aid/}'
-                        target='_blank'>{dede:field.title/}</a></td>
+                      <td colspan="5" class="tabTitle"><a href='archives_do.php?dopost=viewArchives&aid={dede:field.aid/}' target='_blank'>{dede:field.title/}</a></td>
                       <td width="25%" align="center" class="doPost"><span class="itemDigg">
-                          <a class="text_button"
-                            href="../apps/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}"
-                            target="_blank">[推荐]</a>
+                          <a class="text_button" href="../apps/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}" target="_blank">[推荐]</a>
                         </span> <span class="itemManage">
-                          <a
-                            href='archives_do.php?dopost=delStow&type={dede:field.type/}&aid={dede:field.aid/}'>[删除]</a>
+                          <a href='archives_do.php?dopost=delStow&type={dede:field.type/}&aid={dede:field.aid/}'>[删除]</a>
                         </span></td>
                     </tr>
                     <tr style="border-bottom: solid 1px #DDD;">
@@ -65,8 +59,6 @@
       </div>
     </div>
   </main>
-
   <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
 </body>
-
 </html>

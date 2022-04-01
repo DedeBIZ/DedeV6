@@ -64,12 +64,9 @@
 										{dede:var.carts.price_count/}</span>元 </div>
 								<div style="float:right; height:33px;">
 									<!--<input type="button" value="打印购物车" class="btn-2" onclick="printPage(1)"/>-->
-									<input type="button" value="更新订单号" class="btn btn-success btn-sm"
-										onclick="makeCarId()" />
-									<input type="button" value="删除已选定" class="btn btn-success btn-sm"
-										onclick="DelPost()" />
-									<input type="button" value="清空"
-										onclick="if(confirm('确定清空购物车中的商品吗?')){ location='posttocar.php?do=clear' }"
+									<input type="button" value="更新订单号" class="btn btn-success btn-sm" onClick="makeCarId()" />
+									<input type="button" value="删除已选定" class="btn btn-success btn-sm" onClick="DelPost()" />
+									<input type="button" value="清空" onClick="if(confirm('确定清空购物车中的商品吗?')){ location='posttocar.php?do=clear' }"
 										class="btn btn-success btn-sm" />
 									<input onclick="ChangePost()" type="button" value="更新数量"
 										class="btn btn-success btn-sm" />

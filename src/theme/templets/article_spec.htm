@@ -3,9 +3,7 @@
 <head>
 	<meta charset="{dede:global.cfg_soft_lang/}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<script>
-		const PHPURL = '{dede:field name="phpurl"/}';
-	</script>
+	<script>const PHPURL = '{dede:field name="phpurl"/}';</script>
 	<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	<script src="{dede:global.cfg_cmsurl/}/static/web/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
@@ -17,12 +15,9 @@
 	<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
 </head>
 <body>
-	{dede:include filename="top.htm"/}
-
-	{dede:include filename="header.htm"/}
-
-	{dede:include filename="navbar.htm"/}
-
+	{dede:include filename='top.htm'/}
+	{dede:include filename='header.htm'/}
+	{dede:include filename='navbar.htm'/}
 	<div class="container">
 		<div class="position">
 			<nav aria-label="breadcrumb">
@@ -34,7 +29,6 @@
 		</div>
 		<!-- /.position -->
 	</div>
-
 	<main class="container">
 		<div class="row">
 			<div class="col-md-8 article-main">
@@ -44,38 +38,25 @@
 					<small>来源：</small>{dede:field.source/}
 					<small>作者：</small>{dede:field.writer/}
 				</div>
-
 				<div class="speciallist row pt-2">
 				{dede:field.note/}
 				</div>
-
 				<div class="body py-2">
 					{dede:field.body/} (责任编辑：{dede:adminname/})
 				</div>
 				<!-- /.body -->
-
 				<div class="clearfix"></div>
-
-				
 			</div>
 			<!-- /.article-main -->
-
 			<aside class="col-md-4 article-sidebar">
-
 				{dede:include comment='推荐内容' filename="widget_recommend.htm"/}
-
 				{dede:include comment='热点内容' filename="widget_hot.htm"/}
-
 				{dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
-
 			</aside>
 			<!-- /.article-sidebar -->
-
 		</div>
 	</main>
 	<!-- /main -->
-
 	{dede:include filename="footer.htm"/}
 </body>
-
 </html>

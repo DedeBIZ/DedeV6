@@ -32,9 +32,7 @@
 </head>
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
-
     <div class="container-fluid pannel">
       <div class="container">
         <div class="row">
@@ -47,16 +45,13 @@
             <div class="pannel-main-container">
               <ul class="nav mt-2">
                 <li class="nav-item">
-                  <a class="nav-link<?php if($state === 0) echo ' active';?>"
-                    href="pm.php?folder=<?php echo $folder;?>">全部</a>
+                  <a class="nav-link<?php if($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link<?php if($state === 1) echo ' active';?>"
-                    href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a>
+                  <a class="nav-link<?php if($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link<?php if($state === -1) echo ' active';?>"
-                    href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a>
+                  <a class="nav-link<?php if($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a>
                 </li>
               </ul>
               <div class="table-responsive">
@@ -80,8 +75,7 @@
                     <tbody>
                       {dede:datalist}
                       <tr>
-                        <td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}"
-                            style="margin-left:5px" /></td>
+                        <td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}" style="margin-left:5px" /></td>
                         <td><?php
                         if($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
                         else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
@@ -111,8 +105,7 @@
                 </form>
               </div>
               <nav>
-                <button class="btn btn-success btn-sm" type="button" onclick="DoSubmit('<?php echo $folder; ?>')"
-                  class="greenBtn3">删除选中</button> {dede:pagelist listsize=5 /}
+                <button class="btn btn-success btn-sm" type="button" onclick="DoSubmit('<?php echo $folder; ?>')" class="greenBtn3">删除选中</button> {dede:pagelist listsize=5 /}
               </nav>
             </div>
           </div>
@@ -144,13 +137,10 @@
         ShowMsg("您没选中任何信息");
         return false;
       }
-      if (window.confirm("您确定要删除这些消息么")) {
+      if (window.confirm("您确定要删除这些消息吗")) {
         location = "pm.php?dopost=del&ids=" + selid + "&folder=" + myfolder;
       }
     }
-
-
   </script>
 </body>
-
 </html>

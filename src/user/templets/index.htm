@@ -17,9 +17,7 @@
 </head>
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
-
     <div class="container-fluid pannel">
       <div class="container">
         <div class="row">
@@ -39,13 +37,10 @@
                 </div>
                 <div class="col-12 col-md-9 title">
                   <h3 class="mt-0 mb-3"><?php echo $cfg_ml->M_LoginID; ?></h3>
-                  <p>积分：<span class="text-danger"><?php echo $cfg_ml->M_Scores;?></span> 金币：<span
-                      class="text-danger"><?php echo $cfg_ml->M_Money;?></span> <a
-                      href="<?php echo $cfg_memberurl;?>/buy.php" class="btn btn-danger btn-sm">充值</a></p>
+                  <p>积分：<span class="text-danger"><?php echo $cfg_ml->M_Scores;?></span> 金币：<span class="text-danger"><?php echo $cfg_ml->M_Money;?></span> <a href="<?php echo $cfg_memberurl;?>/buy.php" class="btn btn-danger btn-sm">充值</a></p>
                 </div>
               </div>
             </div>
-
             <div class="pannel-main-container mt-3">
               <div class="media-body py-3">
                 <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list">
@@ -112,7 +107,6 @@
                 </ul>
               </div>
             </div>
-
             <div class="pannel-main-container mt-3">
               <div class="media-body row">
                 <div class="col-12 py-3">
@@ -123,8 +117,7 @@
                         foreach ($archives as $archive)
                         {
                       ?>
-                      <li><a href="<?php echo $archive['htmlurl']; ?>"
-                          title="<?php echo $archive['title']; ?>"><?php echo $archive['title']; ?></a></li>
+                      <li><a href="<?php echo $archive['htmlurl']; ?>" title="<?php echo $archive['title']; ?>"><?php echo $archive['title']; ?></a></li>
                       <?php
                         }
                       ?>
@@ -140,5 +133,4 @@
   </main>
   <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
 </body>
-
 </html>

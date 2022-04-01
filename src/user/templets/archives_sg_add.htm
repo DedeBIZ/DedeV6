@@ -12,7 +12,6 @@
 </head>
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
     <div class="container-fluid pannel">
       <div class="container">
@@ -49,8 +48,7 @@
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">作者</label>
                     <div class="col-sm-10">
-                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>"
-                        class="form-control" />
+                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control" />
                     </div>
                   </div>
                   <div class="form-group row">
@@ -63,13 +61,13 @@
                         echo $typeOptions;
                         echo "</select>";
                       ?>
-                      <span style="color:#F00">*</span>(不能选择带颜色的分类)
+                      <span style="color:#F00">*</span>（不能选择带颜色的分类）
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">信息摘要</label>
                     <div class="col-sm-10">
-                      <textarea class='form-control' name="description" id="description"></textarea>(内容的简要说明)
+                      <textarea class='form-control' name="description" id="description"></textarea>（内容的简要说明）
                     </div>
                   </div>
                   <?php
@@ -85,10 +83,8 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">验证码</label>
                         <div class="col-sm-10">
-                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt"
-                                  style='width:100px;text-transform:uppercase;' />
-                                <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer"
-                                  onclick="this.src=this.src+'?'" />
+                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt" style='width:100px;text-transform:uppercase;' />
+                          <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer" onclick="this.src=this.src+'?'" />
                         </div>
                       </div>
                     <?php }?>
@@ -132,5 +128,4 @@
     }
   </script>
 </body>
-
 </html>

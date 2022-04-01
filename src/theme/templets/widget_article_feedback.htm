@@ -4,8 +4,7 @@
 	<div id="feedback-alert">
 	</div>
 	<div class="content">
-		<textarea cols="60" id="iptMsg" name="msg" rows="5" class="form-control"
-			placeholder="说点什么吧，请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论"></textarea>
+		<textarea cols="60" id="iptMsg" name="msg" rows="5" class="form-control" placeholder="说点什吗吧，请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论"></textarea>
 	</div>
 	<div class="post">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
@@ -106,8 +105,6 @@
 	}
 </style>
 <script async>
-
-
 	//发表评论
 	function SendFeedback() {
 		let feedback = {
@@ -119,7 +116,6 @@
 			validate: $("#iptValidate").val(),
 			notuser: $("#iptAny").is(":checked") ? "1" : "",
 		};
-
 		$.post("{dede:field name='phpurl'/}/feedback.php", feedback, function (data) {
 			let result = JSON.parse(data);
 			if (result.code === 200) {

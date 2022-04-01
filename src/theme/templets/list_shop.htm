@@ -13,12 +13,9 @@
     <meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
 </head>
 <body>
-    {dede:include filename="top.htm"/}
-    
-    {dede:include filename="header.htm"/}
-
-    {dede:include filename="navbar.htm"/}
-
+    {dede:include filename='top.htm'/}
+    {dede:include filename='header.htm'/}
+    {dede:include filename='navbar.htm'/}
     <div class="container">
         <div class="position">
             <nav aria-label="breadcrumb">
@@ -30,11 +27,9 @@
         </div>
         <!-- /.position -->
     </div>
-
     <main class="container">
         <div class="row">
             <div class="col-md-8 list-main">
-                
                 <ul class="list-unstyled items">
                     {dede:list pagesize='10'}
                     <li class="media border-bottom-dashed mt-2 py-2">
@@ -56,7 +51,6 @@
                         </div>
                     </li>
                     {/dede:list}
-                    
                 </ul>
                 <nav>
                     <ul class="pagination justify-content-center py-3">
@@ -66,25 +60,16 @@
 
             </div>
             <!-- /.list-main -->
-
             <aside class="col-md-4 article-sidebar">
-
                 {dede:include comment='栏目列表' filename="widget_channels.htm"/}
-
                 {dede:include comment='推荐内容' filename="widget_recommend.htm"/}
-
                 {dede:include comment='热点内容' filename="widget_hot.htm"/}
-
                 {dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
-
             </aside>
             <!-- /.article-sidebar -->
-
         </div>
     </main>
     <!-- /main -->
-
     {dede:include filename="footer.htm"/}
 </body>
-
 </html>

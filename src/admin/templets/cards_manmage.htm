@@ -30,7 +30,7 @@
     function DelSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
-        alert("请选择要删除的卡!\r\n");
+        alert("请选择要删除的卡");
         return;
       }
       location.href = "cards_manage.php?dopost=delete&aids=" + nid;
@@ -43,14 +43,14 @@
       <td height="26" colspan="7" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'>
         <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr>
-            <td width="30%" style="padding-left:10px">点卡业务管理： </td>
-            <td width="45%" align="right" style="padding-top:10px;">
+            <td width="30%" style="padding-left:10px">点卡业务管理</td>
+            <td width="45%" align="right" style="padding-top:10px">
               <button type="button" onClick="location='cards_manage.php?isexp=0';" class="btn btn-success btn-sm">未使用</button>
               <button type="button" onClick="location='cards_manage.php?isexp=1';" class="btn btn-success btn-sm">已售出</button>
               <button type="button" onClick="location='cards_manage.php?isexp=-1';" class="btn btn-success btn-sm">已使用</button>
               <button type="button" onClick="location='cards_manage.php';" class="btn btn-success btn-sm">全部</button>
             </td>
-            <td width="25%" align="right" style="padding-top:4px;">
+            <td width="25%" align="right" style="padding-top:10px">
               <button type="button" onClick="location='cards_make.php';" class="btn btn-success btn-sm">生成点卡</button>
               <button type="button" onClick="location='cards_type.php';" class="btn btn-success btn-sm">点卡产品分类</button>
             </td>

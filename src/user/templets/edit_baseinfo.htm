@@ -12,7 +12,6 @@
 </head>
 <body>
   <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-
   <main class="member">
     <div class="container-fluid pannel">
       <div class="container">
@@ -35,8 +34,7 @@
                   <a class="nav-link" href="edit_email.php">验证邮箱</a>
                 </li>
               </ul>
-              <form action="edit_baseinfo.php" method="post" enctype="multipart/form-data" name="form2"
-                onsubmit="return checkSubmit();" class="mt-3">
+              <form action="edit_baseinfo.php" method="post" enctype="multipart/form-data" name="form2" onsubmit="return checkSubmit();" class="mt-3">
                 <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>" />
                 <input type="hidden" name="dopost" value="save" />
                 <div class="form-group row">
@@ -208,5 +206,4 @@
   </script>
 
 </body>
-
 </html>
