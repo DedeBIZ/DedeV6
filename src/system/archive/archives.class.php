@@ -465,14 +465,8 @@ class Archives
                 $tmpfile = $cfg_basedir.$cfg_templets_dir."/{$cfg_df_style}/article_spec.htm";
             }
         }
-        if (defined('DEDEMOB')) {
-            $tmpfile = str_replace('.htm', '_m.htm', $tmpfile);
-        }
         if (!file_exists($tmpfile)) {
             $tmpfile = $cfg_basedir.$cfg_templets_dir."/{$cfg_df_style}/".($cid == 'spec' ? 'article_spec.htm' : 'article_default.htm');
-            if (defined('DEDEMOB')) {
-                $tmpfile = str_replace('.htm', '_m.htm', $tmpfile);
-            }
         }
         if (!preg_match("#.htm$#", $tmpfile)) return FALSE;
         return $tmpfile;
@@ -696,25 +690,21 @@ class Archives
             $nextRow = $this->dsql->GetOne($query.$next);
             $preRow = $this->dsql->GetOne($query.$pre);
             if (is_array($preRow)) {
-                if (defined('DEDEMOB')) {
-                    $mlink = 'view.php?aid='.$preRow['id'];
-                } else {
-                    $mlink = GetFileUrl(
-                        $preRow['id'],
-                        $preRow['typeid'],
-                        $preRow['senddate'],
-                        $preRow['title'],
-                        $preRow['ismake'],
-                        $preRow['arcrank'],
-                        $preRow['namerule'],
-                        $preRow['typedir'],
-                        $preRow['money'],
-                        $preRow['filename'],
-                        $preRow['moresite'],
-                        $preRow['siteurl'],
-                        $preRow['sitepath']
-                    );
-                }
+                $mlink = GetFileUrl(
+                    $preRow['id'],
+                    $preRow['typeid'],
+                    $preRow['senddate'],
+                    $preRow['title'],
+                    $preRow['ismake'],
+                    $preRow['arcrank'],
+                    $preRow['namerule'],
+                    $preRow['typedir'],
+                    $preRow['money'],
+                    $preRow['filename'],
+                    $preRow['moresite'],
+                    $preRow['siteurl'],
+                    $preRow['sitepath']
+                );
                 //二次开发上一篇属性
                 $preRow['litpic'] = (empty($preRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/defaultpic.jpg' : $preRow['litpic'];
                 $this->PreNext['diy']['pre']['id'] = $preRow['id'];
@@ -729,25 +719,21 @@ class Archives
                 $this->PreNext['preimg'] = "<img src=\"/templets/default/images/nophoto.jpg\" alt=\"对不起，没有上一图集了\"/>";
             }
             if (is_array($nextRow)) {
-                if (defined('DEDEMOB')) {
-                    $mlink = 'view.php?aid='.$preRow['id'];
-                } else {
-                    $mlink = GetFileUrl(
-                        $nextRow['id'],
-                        $nextRow['typeid'],
-                        $nextRow['senddate'],
-                        $nextRow['title'],
-                        $nextRow['ismake'],
-                        $nextRow['arcrank'],
-                        $nextRow['namerule'],
-                        $nextRow['typedir'],
-                        $nextRow['money'],
-                        $nextRow['filename'],
-                        $nextRow['moresite'],
-                        $nextRow['siteurl'],
-                        $nextRow['sitepath']
-                    );
-                }
+                $mlink = GetFileUrl(
+                    $nextRow['id'],
+                    $nextRow['typeid'],
+                    $nextRow['senddate'],
+                    $nextRow['title'],
+                    $nextRow['ismake'],
+                    $nextRow['arcrank'],
+                    $nextRow['namerule'],
+                    $nextRow['typedir'],
+                    $nextRow['money'],
+                    $nextRow['filename'],
+                    $nextRow['moresite'],
+                    $nextRow['siteurl'],
+                    $nextRow['sitepath']
+                );
                 //二次开发下一篇属性
                 $nextRow['litpic'] = (empty($nextRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/defaultpic.jpg' : $nextRow['litpic'];
                 $this->PreNext['diy']['next']['id'] = $nextRow['id'];
