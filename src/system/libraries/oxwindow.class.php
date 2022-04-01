@@ -125,7 +125,7 @@ class OxWindow
             $colspan = "";
         }
         $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td $colspan style='height:26px;color:#424b51'>$title</td>";
+        $this->myWinItem .= "<td $colspan style='height:26px;color:#393d49'>$title</td>";
         $this->myWinItem .= "</tr>";
     }
     /**
