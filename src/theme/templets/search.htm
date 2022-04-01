@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
     <link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-    <title>搜索页_{dede:global.cfg_webname/} - {dede:global.cfg_welcome/}</title>
+    <title>搜索{dede:global name='keyword'/}结果-{dede:pagelist listsize='0' listitem='pageno' function='html2text(@me)' runphp='yes'} if(@me>1) @me='第'.trim(@me).'页-';else @me='';{/dede:pagelist}{dede:global name='cfg_webname'/}</title>
     <meta name="keywords" content="{dede:field name='keywords'/}" />
     <meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
 </head>
