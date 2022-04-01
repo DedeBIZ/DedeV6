@@ -11,9 +11,7 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Edit');
 if (empty($dopost)) $dopost = "";
-
 $configfile = DEDEDATA.'/config.cache.inc.php';
-
 //更新配置函数
 function ReWriteConfig()
 {
@@ -39,7 +37,6 @@ function ReWriteConfig()
     fwrite($fp, "?".">");
     fclose($fp);
 }
-
 //保存配置的改动
 if ($dopost == "save") {
     CheckCSRF();

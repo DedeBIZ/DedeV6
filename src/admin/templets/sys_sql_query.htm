@@ -53,30 +53,24 @@ while($row = $dsql->GetArray('t',MYSQL_BOTH))
 	$dsql->Execute('n');
 	$row2 = $dsql->GetArray('n',MYSQL_BOTH);
 	$dd = $row2[0];
-	echo " 		<option value='".$row[0]."'>".$row[0]."(".$dd.")</option>\r\n";
+	echo "<option value='".$row[0]."'>".$row[0]."(".$dd.")</option>\r\n";
 }
 ?>
                       </select>
                     </td>
                     <td width="2%"></td>
                     <td width="63%" valign="bottom">
-
                       <div style="float:left;margin-right:20px;">
-                        <button type="Submit" name="Submit1" class="btn btn-success btn-sm"
-                          onClick="this.form.dopost.value='opimize';">优化选中表</button>
+                        <button type="Submit" name="Submit1" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimize';">优化选中表</button>
                         <br>
-                        <button type="Submit" name="Submit2" class="btn btn-success btn-sm"
-                          onClick="this.form.dopost.value='repair';" style="margin-top:6px;">修复选中表</button>
+                        <button type="Submit" name="Submit2" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repair';" style="margin-top:6px;">修复选中表</button>
                         <br>
-                        <button type="Submit" name="Submit3" class="btn btn-success btn-sm"
-                          onClick="this.form.dopost.value='viewinfo';" style="margin-top:6px;">查看表结构</button>
+                        <button type="Submit" name="Submit3" class="btn btn-success btn-sm" onClick="this.form.dopost.value='viewinfo';" style="margin-top:6px;">查看表结构</button>
                       </div>
                       <div style="float:left">
-                        <button type="Submit" name="Submit5" class="btn btn-success btn-sm"
-                          onClick="this.form.dopost.value='opimizeAll';">优化全部表</button>
+                        <button type="Submit" name="Submit5" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimizeAll';">优化全部表</button>
                         <br>
-                        <button type="Submit" name="Submit6" class="btn btn-success btn-sm"
-                          onClick="this.form.dopost.value='repairAll';" style="margin-top:6px;">修复全部表</button>
+                        <button type="Submit" name="Submit6" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repairAll';" style="margin-top:6px;">修复全部表</button>
                       </div>
 
                     </td>

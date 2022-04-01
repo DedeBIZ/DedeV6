@@ -12,7 +12,6 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 require_once(DEDEINC."/channelunit.func.php");
-
 if (!isset($upnext)) $upnext = 1;
 if (empty($gotype)) $gotype = '';
 if (empty($pageno)) $pageno = 0;
@@ -21,7 +20,6 @@ if (empty($typeid)) $typeid = 0;
 if (!isset($uppage)) $uppage = 0;
 if (empty($maxpagesize)) $maxpagesize = 50;
 $adminID = $cuserLogin->getUserID();
-
 //检测获取所有栏目ID
 //普通生成或一键更新时更新所有栏目
 if ($gotype == '' || $gotype == 'mkallct') {
@@ -44,7 +42,6 @@ else if ($gotype == 'mkall') {
     $idArray = array();
     if (file_exists($mkcachefile)) require_once($mkcachefile);
 }
-
 //当前更新栏目的ID
 $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
@@ -58,14 +55,11 @@ if (isset($idArray[$pageno])) {
         exit();
     }
 }
-
 if ($pageno == 0 && $mkpage == 1) //清空缓存
 {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` ");
 }
-
 $reurl = '';
-
 //更新数组所记录的栏目
 if (!empty($tid)) {
     if (!isset($cfg_Cs[$tid])) {
@@ -95,7 +89,6 @@ if (!empty($tid)) {
         if ($mkpage >= ($ntotalpage + 1)) $finishType = TRUE;
     }
 }
-
 $nextpage = $pageno + 1;
 if ($nextpage >= $totalpage && $finishType) {
     if ($gotype == '') {

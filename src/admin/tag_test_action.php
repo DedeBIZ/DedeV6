@@ -17,13 +17,10 @@ if (empty($partcode)) {
     exit;
 }
 $partcode = stripslashes($partcode);
-
 if (empty($typeid)) $typeid = 0;
 if (empty($showsource)) $showsource = "";
-
 if ($typeid > 0) $pv = new PartView($typeid);
 else $pv = new PartView();
-
 $pv->SetTemplet($partcode, "string");
 if ($showsource == "" || $showsource == "yes") {
     echo "模板代码:";

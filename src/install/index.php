@@ -9,12 +9,10 @@
 @set_time_limit(0);
 error_reporting(E_ALL || ~E_NOTICE);
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
-
 if(file_exists(INSLOCKFILE))
 {
     exit("程序已运行安装，如果您确定要重新安装，请先删除 public/install/install_lock.txt");
 }
-
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
 $cfg_version_detail = '6.1.7beta'; //详细版本号
@@ -22,7 +20,6 @@ $errmsg = '';
 if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
     mysqli_report(MYSQLI_REPORT_OFF);
 }
-
 $moduleCacheFile = dirname(__FILE__).'/modules.tmp.inc';
 define('DEDEINC',dirname(__FILE__).'/../system');
 define('DEDEDATA',dirname(__FILE__).'/../data');
@@ -35,7 +32,6 @@ foreach(Array('_GET','_POST','_COOKIE') as $_request)
     foreach($$_request as $_k => $_v) ${$_k} = RunMagicQuotes($_v);
 }
 require_once(DEDEINC.'/common.func.php');
-
 if(empty($step))
 {
     $step = 1;
