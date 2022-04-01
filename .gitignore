@@ -42,3 +42,6 @@ src/static/allimg/*/
 src/data/time.lock
 src/static/enums/*.json
 src/static/litimg/*/
+src/data/sqlite_error_trace.inc
+src/static/soft/*/
+src/static/userup/*/
