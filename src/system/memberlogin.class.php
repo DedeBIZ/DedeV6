@@ -451,8 +451,8 @@ class MemberLogin
             $sta .= "您目前的身份是：".$row['membername'];
             $rs = $dsql->GetOne("Select id From `#@__admin` where userid='".$this->M_LoginID."'");
             if (!is_array($rs)) {
-                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余天数: <span style='color:#dc3545'>".$this->M_HasDay."</span>  天 ";
-                elseif ($this->M_Rank > 10) $sta .= " <span style='color:#dc3545'>会员升级已经到期</span> ";
+                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余天数: <span style='color:#ff5722'>".$this->M_HasDay."</span>  天 ";
+                elseif ($this->M_Rank > 10) $sta .= " <span style='color:#ff5722'>会员升级已经到期</span> ";
             }
         }
         $sta .= " 拥有金币：{$this->M_Money} 个， 积分：{$this->M_Scores} 分";

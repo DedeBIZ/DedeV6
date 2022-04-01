@@ -91,7 +91,7 @@ else if ($action == 'view_developoer') {
     }
     $authAt = date("Y-m-d", $devInfo['auth_at']);
     if (!isset($info['dev_id'])) {
-        $devInfo['dev_name'] = $info['team']."<span style='display:inline-block;margin-left:10px;padding:.25rem .5rem;line-height:1.5;font-size:12px;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem'>未认证</span>";
+        $devInfo['dev_name'] = $info['team']."<span style='display:inline-block;margin-left:10px;padding:.25rem .5rem;line-height:1.5;font-size:12px;color:#fff;background:#ff5722;border-color:#ff5722;border-radius:.2rem'>未认证</span>";
         $authAt = "未知";
     }
     ShowMsg("<p>开发者名称：{$devInfo['dev_name']}</p><p>开发者ID：{$devInfo['dev_id']}</p><span>认证于：{$authAt}</span>", "-1");
@@ -142,7 +142,7 @@ else if ($action == 'setup') {
     $prvdir .= "<tr style='background:#FBFCE2'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
     foreach ($prvdirs as $k => $v) {
         if ($v) $cw = '√';
-        else $cw = '<span style="color:#dc3545">×</span>';
+        else $cw = '<span style="color:#ff5722">×</span>';
         $prvdir .= "<tr bgcolor='#ffffff'><td>$k</td>";
         $prvdir .= "<td align='center'>$cw</td></tr>\r\n";
     }

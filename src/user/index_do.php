@@ -96,7 +96,7 @@ else if ($fmdo == 'user') {
         if ($msg == 'ok') {
             $msg = "<span style='color:#009688'>√{$msgtitle}可以使用</span>";
         } else {
-            $msg = "<span style='color:#dc3545'>×{$msg}</span>";
+            $msg = "<span style='color:#ff5722'>×{$msg}</span>";
         }
         echo $msg;
         exit();
@@ -115,7 +115,7 @@ else if ($fmdo == 'user') {
                 if (!is_array($row)) {
                     $msg = "<span style='color:#009688'>√可以使用</span>";
                 } else {
-                    $msg = "<span style='color:#dc3545'>×Email已经被另一个帐号占用</span>";
+                    $msg = "<span style='color:#ff5722'>×Email已经被另一个帐号占用</span>";
                 }
             }
         }

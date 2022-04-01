@@ -107,7 +107,7 @@ else if ($dopost == "query") {
             echo "记录：$j";
             echo "<hr size=1 width='100%'/>";
             foreach ($row as $k => $v) {
-                echo "<span style='color:#dc3545'>{$k}：</span>{$v}<br>\r\n";
+                echo "<span style='color:#ff5722'>{$k}：</span>{$v}<br>\r\n";
             }
         }
         exit();
@@ -128,7 +128,7 @@ else if ($dopost == "query") {
             if ($errCode == "") {
                 $i++;
             } else {
-                $nerrCode .= "执行：<span style='color:#007bff'>$q</span> 出错，错误提示：<span style='color:#dc3545'>".$errCode."</span><br>";
+                $nerrCode .= "执行：<span style='color:#007bff'>$q</span> 出错，错误提示：<span style='color:#ff5722'>".$errCode."</span><br>";
             }
         }
         echo "成功执行{$i}个SQL语句<br><br>";

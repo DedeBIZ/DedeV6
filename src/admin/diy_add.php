@@ -20,7 +20,7 @@ if (empty($action)) {
     include(DEDEADMIN."/templets/diy_add.htm");
 } else {
     if (preg_match("#[^0-9-]#", $diyid) || empty($diyid)) {
-        ShowMsg("<span style='color:#dc3545'>'自定义表单diyid'</span>必须为数字", "-1");
+        ShowMsg("<span style='color:#ff5722'>'自定义表单diyid'</span>必须为数字", "-1");
         exit();
     }
     if ($table == "") {

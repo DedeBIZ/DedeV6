@@ -115,7 +115,7 @@ a{text-decoration:none!important}
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(htm|html)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                    if ($file == $comeback) $lstyle = " style='color:#ff5722' ";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
@@ -127,7 +127,7 @@ a{text-decoration:none!important}
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(css)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                    if ($file == $comeback) $lstyle = " style='color:#ff5722' ";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
@@ -139,7 +139,7 @@ a{text-decoration:none!important}
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(js)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                    if ($file == $comeback) $lstyle = " style='color:#ff5722' ";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
@@ -151,7 +151,7 @@ a{text-decoration:none!important}
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(jpg)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                    if ($file == $comeback) $lstyle = " style='color:#ff5722' ";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
@@ -163,7 +163,7 @@ a{text-decoration:none!important}
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(gif|png)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                    if ($file == $comeback) $lstyle = " style='color:#ff5722' ";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
@@ -175,7 +175,7 @@ a{text-decoration:none!important}
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(txt)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                    if ($file == $comeback) $lstyle = " style='color:#ff5722' ";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
