@@ -64,7 +64,7 @@ a{text-decoration:none!important}
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="job" value="upload">
-                    上传：<input type="file" name="uploadfile" style="width:260px;border:none">
+                    上传：<input type="file" name="uploadfile" style="width:50%;border:none">
                     改名：<input type="text" name="filename" style="width:160px">
                     <button type="submit" name="sb1" class="btn btn-success btn-sm">确定</button>
                 </form>
