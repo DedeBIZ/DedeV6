@@ -52,7 +52,7 @@ else if ($dopost == "copystart") {
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     $wintitle = "频道管理-模型复制";
-    $wecome_info = "&nbsp;<a href='mychannel_main.php'>频道管理</a> - 模型复制";
+    $wecome_info = "&nbsp;<a href='mychannel_main.php'>频道管理</a>::模型复制";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddTitle("&nbsp;被复制频道：[<span style='color:#ff5722'>".$row['typename']."</span>]");
