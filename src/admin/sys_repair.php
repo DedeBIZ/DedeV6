@@ -57,7 +57,7 @@ else if ($dopost == 1) {
     <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
-    <span style='color:#28a745'>已完成数据结构完整性检测</span>
+    <span style='color:#009688'>已完成数据结构完整性检测</span>
     <hr size='1'/>
     <br>
     如果您系统有下面几种问题之一，请检测微表正确性：<br>

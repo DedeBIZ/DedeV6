@@ -292,32 +292,32 @@ $action = isset($action) ? $action : '';
 												echo "<span style='color:#dc3545'>无法判断</span>";
 											} else {
 												if ($val['execute'] == true)
-													echo $rs != $val['execute'] ? "<span style='color:#dc3545'>错误(不可执行)</span>" : "<span style='color:#28a745'>正常(可执行)</span>";
+													echo $rs != $val['execute'] ? "<span style='color:#dc3545'>错误(不可执行)</span>" : "<span style='color:#009688'>正常(可执行)</span>";
 												else
-													echo $rs != $val['execute'] ? "<span style='color:#dc3545'>错误(可执行)</span>" : "<span style='color:#28a745'>正常(不可执行)</span>";
+													echo $rs != $val['execute'] ? "<span style='color:#dc3545'>错误(可执行)</span>" : "<span style='color:#009688'>正常(不可执行)</span>";
 											}
 											?>|<?php
 												if ($val['read'] == true)
-													echo is_readable(DEDEROOT.$key) != $val['read'] ? "<span style='color:#dc3545'>错误(不可读)</span>" : "<span style='color:#28a745'>正常(可读)</span>";
+													echo is_readable(DEDEROOT.$key) != $val['read'] ? "<span style='color:#dc3545'>错误(不可读)</span>" : "<span style='color:#009688'>正常(可读)</span>";
 												else
-													echo is_readable(DEDEROOT.$key) != $val['read'] ? "<span style='color:#dc3545'>错误(可读)</span>" : "<span style='color:#28a745'>正常(不可读)</span>";
+													echo is_readable(DEDEROOT.$key) != $val['read'] ? "<span style='color:#dc3545'>错误(可读)</span>" : "<span style='color:#009688'>正常(不可读)</span>";
 												?>|<?php
 												if ($val['write'] == true)
-													echo TestWriteable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(不可写)</span>" : "<span style='color:#28a745'>正常(可写)</span>";
+													echo TestWriteable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(不可写)</span>" : "<span style='color:#009688'>正常(可写)</span>";
 												else
-													echo TestWriteable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(可写)</span>" : "<span style='color:#28a745'>正常(不可写)</span>";
+													echo TestWriteable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(可写)</span>" : "<span style='color:#009688'>正常(不可写)</span>";
 												?><dedecms><?php
 										} else {
 											?><?php echo $key; ?>|无需判断|<?php
 																if ($val['read'] == true)
-																	echo is_readable(DEDEROOT.$key) != $val['read'] ? "<span style='color:#dc3545'>错误(不可读)</span>" : "<span style='color:#28a745'>正常(可读)</span>";
+																	echo is_readable(DEDEROOT.$key) != $val['read'] ? "<span style='color:#dc3545'>错误(不可读)</span>" : "<span style='color:#009688'>正常(可读)</span>";
 																else
-																	echo is_readable(DEDEROOT.$key) != $val['read'] ? "<span style='color:#dc3545'>错误(可读)</span>" : "<span style='color:#28a745'>正常(不可读)</span>";
+																	echo is_readable(DEDEROOT.$key) != $val['read'] ? "<span style='color:#dc3545'>错误(可读)</span>" : "<span style='color:#009688'>正常(不可读)</span>";
 																?>|<?php
 																	if ($val['write'] == true)
-																		echo is_writable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(不可写)</span>" : "<span style='color:#28a745'>正常(可写)</span>";
+																		echo is_writable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(不可写)</span>" : "<span style='color:#009688'>正常(可写)</span>";
 																	else
-																		echo is_writable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(可写)</span>" : "<span style='color:#28a745'>正常(不可写)</span>";
+																		echo is_writable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(可写)</span>" : "<span style='color:#009688'>正常(不可写)</span>";
 																	?><dedecms><?php
 															}
 														}
