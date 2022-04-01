@@ -25,19 +25,19 @@ if ($uptype == "all") {
     } else {
         $pv = new PartView($row['id']);
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
-        $pv->SaveToHtml($cfg_basedir.$cfg_cmspath."/data/js/".$row['id'].".js", 0);
+        $pv->SaveToHtml($cfg_basedir.$cfg_cmspath."/static/js/".$row['id'].".js", 0);
         $typeid = $row['id'];;
-        ShowMsg("成功更新".$cfg_cmspath."/data/js/".$row['id'].".js，继续进行操作", "makehtml_js_action.php?typeid=$typeid", 0, 100);
+        ShowMsg("成功更新".$cfg_cmspath."/static/js/".$row['id'].".js，继续进行操作", "makehtml_js_action.php?typeid=$typeid", 0, 100);
         exit();
     }
 } else {
     $pv = new PartView($typeid);
     $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
-    $pv->SaveToHtml($cfg_basedir.$cfg_cmspath."/data/js/".$typeid.".js", 0);
+    $pv->SaveToHtml($cfg_basedir.$cfg_cmspath."/static/js/".$typeid.".js", 0);
     echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-    echo "<div class=\"alert alert-success\" role=\"alert\">成功更新".$cfg_cmspath."/data/js/".$typeid.".js";
+    echo "<div class=\"alert alert-success\" role=\"alert\">成功更新".$cfg_cmspath."/static/js/".$typeid.".js";
     echo "预览：</div>";
     echo "<hr>";
-    echo "<script src='".$cfg_cmspath."/data/js/".$typeid.".js'></script>";
+    echo "<script src='".$cfg_cmspath."/static/js/".$typeid.".js'></script>";
     exit();
 }

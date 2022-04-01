@@ -45,3 +45,5 @@ src/static/litimg/*/
 src/data/sqlite_error_trace.inc
 src/static/soft/*/
 src/static/userup/*/
+src/static/js/*.js
+src/apps/special/*.html
