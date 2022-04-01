@@ -47,7 +47,7 @@ if (!empty($noeditor)) {
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>
-html{background:#f2f2f2}
+html{background:#f6f6f6}
 table{background:#fff}
 a{text-decoration:none!important}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
