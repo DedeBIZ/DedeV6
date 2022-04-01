@@ -13,8 +13,7 @@
       <input type="hidden" name="action" value="save">
       <input type="hidden" name="get_photo_markimg" value="<?php echo $photo_markimg?>">
       <tr>
-        <td height="26" colspan="2" bgcolor="#FFFFFF" background="../static/web/img/tbg.gif" style="padding-left:10px">
-          系统配置变量 - 图片水印设置 </td>
+        <td height="26" colspan="2" bgcolor="#FFFFFF" background="../static/web/img/tbg.gif" style="padding-left:10px">系统配置变量 - 图片水印设置 </td>
       </tr>
       <tr bgcolor="#FFFFFF">
         <td width="41%" height="26">上传的图片是否使用图片水印功能：<br> </td>
@@ -49,7 +48,6 @@
               <?php if($photo_marktype == 1) echo 'checked'?>> png </label>
           &nbsp;<label><input type="radio" name="get_photo_marktype" value="2"
               <?php if($photo_marktype == 2) echo 'checked'?>> 文字 </label>
-
         </td>
       </tr>
       <tr bgcolor="#FFFFFF">
@@ -60,7 +58,6 @@
           <input name="get_photo_wheight" type=text id="get_photo_wheight" value="<?php echo $photo_wheight?>" size="5">
         </td>
       </tr>
-
       <tr bgcolor="#FFFFFF">
         <td height="26">水印图片文件名（如果不存在，则使用文字水印）：</td>
         <td><img src="../data/mark/<?php echo $photo_markimg; ?>" alt="dede"></td>
@@ -68,7 +65,7 @@
       <tr bgcolor="#FFFFFF">
         <td height="26">上传新图片：</td>
         <td>
-          <input name="newimg" type="file" id="newimg" style="width:300">
+          <input name="newimg" type="file" id="newimg" style="width:300px">
           <br>
           <?php echo "支持的图片格式：gif png"; ?> </td>
       </tr>
@@ -94,8 +91,7 @@
       </tr>
       <tr bgcolor="#FFFFFF">
         <td height="26">设置 GIF 类型水印图片与原始图片的融合度,水印透明度（0—100，值越小越透明）：</td>
-        <td><input name="get_photo_diaphaneity" type=text id="get_photo_diaphaneity"
-            value="<?php echo $photo_diaphaneity?>"></td>
+        <td><input name="get_photo_diaphaneity" type=text id="get_photo_diaphaneity" value="<?php echo $photo_diaphaneity?>"></td>
       </tr>
       <tr bgcolor="#FFFFFF">
         <td height="26">水印位置：</td>
@@ -149,7 +145,6 @@
           </table>
         </td>
       </tr>
-
       <tr bgcolor="#f8f8f8">
         <td height="36" colspan="2">
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
@@ -157,8 +152,8 @@
               <td width="7%"></td>
               <td width="93%" align="center">
                 <button type="submit" class="btn btn-success">确定</button>
-                　&nbsp;
-                <button type="reset" class="btn btn-success">重置</button> </td>
+                <button type="reset" class="btn btn-success">重置</button>
+              </td>
             </tr>
           </table>
         </td>
