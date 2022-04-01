@@ -129,17 +129,8 @@ function GetCurContent($body)
             $itype = ".gif";
         } else if ($itype == 'image/png') {
             $itype = ".png";
-        } else if($itype == 'video/mp4'){
-            $itype = ".mp4";
-            $isImage = false;
-        } else if (preg_match("#^text#i",$itype)){
-            $itype = ".txt";
-            $isImage = false;
-        } else if ($itype == 'application/zip'){
-            $itype = ".zip";
-            $isImage = false;
-        } else if ($itype == 'application/x-rar-compressed'){
-            $itype = ".rar";
+        } else if ($itype == 'audio/mpeg'){
+            $itype = ".mp3";
             $isImage = false;
         } else if($itype == 'image/jpeg') {
             $itype = '.jpg';
