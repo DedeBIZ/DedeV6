@@ -79,7 +79,7 @@
                 <?php
            	$tl = new TypeLink(0);
            	$typeOptions = $tl->GetOptionArray(0,0,0);
-            echo "<select name='typeid' style='width:300'>\r\n";
+            echo "<select name='typeid' style='width:300px'>\r\n";
             echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>\r\n";
             echo $typeOptions;
             echo "</select>";
@@ -114,14 +114,14 @@
             <tr>
               <td height="80" align="center">正常显示内容：</td>
               <td width="76%">
-                <textarea name="normbody" id="normbody" style="width:80%;height:100"></textarea>
+                <textarea name="normbody" id="normbody" style="width:80%;height:100px"></textarea>
               </td>
               <td width="9%"></td>
             </tr>
             <tr>
               <td height="80" align="center">过期显示内容：</td>
               <td>
-                <textarea name="expbody" id="expbody" style="width:80%;height:100"></textarea>
+                <textarea name="expbody" id="expbody" style="width:80%;height:100px"></textarea>
               </td>
               <td></td>
             </tr>

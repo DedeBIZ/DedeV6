@@ -35,7 +35,7 @@
        if(empty($cid)) $cid="0";
        $tl = new TypeLink($cid);
        $typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0,1);
-       echo "<select name='typeid' style='width:300'>\r\n";
+       echo "<select name='typeid' style='width:300px'>\r\n";
        if($cid=="0") echo "<option value='0' selected>所有栏目</option>\r\n";
        echo $typeOptions;
        echo "</select>";
@@ -52,8 +52,7 @@
       </tr>
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">模板文件：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="templet" type="text" id="templet" style="width:300"
-            value="plus/js.htm">
+        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="templet" type="text" id="templet" style="width:300px" value="plus/js.htm">
           <button type="button" class="btn btn-success btn-sm" name="set4" onClick="SelectTemplets('form1.templet');">浏览</button>
         </td>
       </tr>
