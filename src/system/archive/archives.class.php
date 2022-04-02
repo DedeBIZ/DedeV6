@@ -994,10 +994,6 @@ class Archives
      */
     function ReplaceKeyword($kw,&$body)
     {
-        global $cfg_cmspath;
-        $maxkey = 5;
-        $kws = explode(",",trim($kw));//以分好为间隔符
-        $i=0;
         $karr = $kaarr = $GLOBALS['replaced'] = array();
         //暂时屏蔽超链接
         $body = preg_replace("#(<a(.*))(>)(.*)(<)(\/a>)#isU", '\\1-]-\\4-[-\\6', $body);
@@ -1012,31 +1008,19 @@ class Archives
         }
         $GLOBALS['_dd_karr'] = $karr;
         $GLOBALS['_dd_kaarr'] = $kaarr;
-        //这里可能会有错误
-        if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
-            $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight8", $body);
-        } else if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
-
-            $body = @preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
-        } else {
-            $body = @preg_replace("#(^|>)([^<]+)(?=<|$)#sUe", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
-        }
+        $body = preg_replace_callback("#(^|>)([^<]+)(?=<|$)#sU", "_highlightkeywords", $body);
         //恢复超链接
         $body = preg_replace("#(<a(.*))-\]-(.*)-\[-(\/a>)#isU", '\\1>\\3<\\4', $body);
         return $body;
     }
 }//End Archives
-function _highlight8($matches){
+function _highlightkeywords($matches){
     return _highlight($matches[2], $GLOBALS['_dd_karr'], $GLOBALS['_dd_kaarr'], $matches[1]);
 }
 //高亮专用，替换多次是可能不能达到最多次
 function _highlight($string, $words, $result, $pre)
 {
     global $cfg_replace_num;
-    if (version_compare(PHP_VERSION, '5.5.0', '>=') && version_compare(PHP_VERSION, '8.0.0', '<')) {
-        $string = $string[0];
-        $pre = $pre[0];
-    }
     $string = str_replace('\"', '"', $string);
     if ($cfg_replace_num > 0) {
         foreach ($words as $key => $word) {
