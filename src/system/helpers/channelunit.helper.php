@@ -109,6 +109,7 @@ if (!function_exists('GetFileNewName')) {
             $articlename = $articlename."index.html";
         }
         $slen = strlen($articlename) - 1;
+        $subpos = 0;
         for ($i = $slen; $i >= 0; $i--) {
             if ($articlename[$i] == '/') {
                 $subpos = $i;
@@ -144,15 +145,16 @@ if (!function_exists('GetFileName')) {
             $namerule = $cfg_special.'/arc-{aid}.html';
             $typeid = -1;
         }
+        //伪静态文档，Nginx伪静态规则参考：
+        //rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;
+        //rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
+        if ($cfg_rewrite == 'Y') {
+            //目录版return "/article/".$aid."";
+            //网页版
+            return $GLOBALS['cfg_cmspath'].'/'.$aid.".html";
+        }
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
-            //伪静态文档，Nginx伪静态规则参考：rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
-            if ($cfg_rewrite == 'Y') {
-                //目录版return "/article/".$aid."";
-                //网页版
-                return "/".$aid.".html";
-            } else {
-                return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
-            }
+            return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
         } else {
             $articleDir = MfTypedir($typedir);
             $articleRule = strtolower($namerule);
@@ -200,14 +202,21 @@ if (!function_exists('GetFileName')) {
 if (!function_exists('GetTypeUrl')) {
     function GetTypeUrl($typeid, $typedir, $isdefault, $defaultname, $ispart, $namerule2, $moresite = 0, $siteurl = '', $sitepath = '')
     {
-        global $cfg_typedir_df;
+        global $cfg_typedir_df,$cfg_rewrite;
         $typedir = MfTypedir($typedir);
         $sitepath = MfTypedir($sitepath);
-        //伪静态栏目，Nginx伪静态规则参考：rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+        //伪静态栏目，Nginx伪静态规则参考：
+        //rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;
+        //rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+        if ($cfg_rewrite == 'Y') {
+            //目录版return "/article/".$aid."";
+            //网页版
+            return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
+        }
+
         if($isdefault==-1) {
-            //目录版
-            $reurl = "/list-".$typeid."";
-            //网页版$reurl = "/list".$typeid.".html";
+            //动态
+            $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
         } else if ($ispart == 2) {
             //跳转网址
             $reurl = $typedir;
@@ -400,7 +409,7 @@ function FormatScript($atme)
  */
 function FillAttsDefault(&$atts, $attlist)
 {
-    $attlists = explode(',', $attlist);
+    $attlists = explode(',', (string)$attlist);
     for ($i = 0; isset($attlists[$i]); $i++) {
         list($k, $v) = explode('|', $attlists[$i]);
         if (!isset($atts[$k])) {

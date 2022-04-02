@@ -823,6 +823,7 @@ class ListView
      */
     function GetPageListST($list_len, $listitem = "index,end,pre,next,pageno")
     {
+        global $cfg_rewrite,$cfg_cmspath;
         $prepage = $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
@@ -901,7 +902,7 @@ class ListView
         //伪静态分页处理
         if ($cfg_rewrite == 'Y')
         {
-            
+            $plist = str_replace('/apps/', $cfg_cmspath.'/', $plist);
             $plist = str_replace('.php?tid=','-',$plist);
             $plist = preg_replace("/&TotalResult=(\d+)/i","",$plist);//去掉总结果数值
             //目录版
@@ -920,7 +921,7 @@ class ListView
      */
     function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
-        global $cfg_rewrite;
+        global $cfg_rewrite,$cfg_cmspath;
         $prepage = $nextpage = '';
         $prepagenum = $this->PageNo - 1;
         $nextpagenum = $this->PageNo + 1;
@@ -991,6 +992,7 @@ class ListView
         if (preg_match('/option/i', $listitem)) $plist .= $optionlist;
         if (preg_match('/info/i', $listitem)) $plist .= $maininfo;
         if ($cfg_rewrite == 'Y') {
+            $plist = str_replace('/apps/', $cfg_cmspath.'/', $plist);
             $plist = str_replace('.php?tid=', '-', $plist);
             $plist = str_replace('&TotalResult=', '-', $plist);
             $plist = preg_replace("/&PageNo=(\d+)/i", '-\\1.html', $plist);
