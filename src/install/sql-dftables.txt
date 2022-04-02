@@ -47,7 +47,7 @@ CREATE TABLE `#@__addoninfos` (
   `scores` mediumint(8) NOT NULL default '0',
   `goodpost` mediumint(8) unsigned NOT NULL default '0',
   `badpost` mediumint(8) unsigned NOT NULL default '0',
-  `nativeplace` smallint(5) unsigned NOT NULL default '0',
+  `nativeplace` char(20) unsigned NOT NULL default '0',
   `infotype` char(20) NOT NULL default '0',
   `body` mediumtext,
   `endtime` int(11) NOT NULL default '0',

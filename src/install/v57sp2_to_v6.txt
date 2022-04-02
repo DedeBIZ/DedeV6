@@ -9,8 +9,10 @@ ALTER TABLE `#@__admin` MODIFY COLUMN `loginip` varchar(46) NOT NULL DEFAULT '' 
 ALTER TABLE `#@__feedback` MODIFY COLUMN `ip` char(46) NOT NULL DEFAULT '' AFTER `arctitle`;
 ALTER TABLE `#@__log` MODIFY COLUMN `cip` char(46) NOT NULL DEFAULT '' AFTER `query`;
 ALTER TABLE `#@__member` MODIFY COLUMN `joinip` char(46) NOT NULL DEFAULT '' AFTER `jointime`,MODIFY COLUMN `loginip` char(46) NOT NULL DEFAULT '' AFTER `logintime`;
-ALTER TABLE `#@__shops_orders` MODIFY COLUMN `ip` char(46) CHARACTER NOT NULL DEFAULT '' AFTER `state`;
+ALTER TABLE `#@__shops_orders` MODIFY COLUMN `ip` char(46) NOT NULL DEFAULT '' AFTER `state`;
 ALTER TABLE `#@__dl_log` MODIFY COLUMN `ip` char(46) NOT NULL AFTER `id`;
+ALTER TABLE `#@__arctype` CHANGE COLUMN `litpic` `bigpic` char(255) NOT NULL DEFAULT '' AFTER `ennamegk`;
+ALTER TABLE `#@__addoninfos` MODIFY COLUMN `nativeplace` char(20) NOT NULL DEFAULT 0 AFTER `badpost`;
 
 -- 6.1.0
 ALTER TABLE `#@__arctype`

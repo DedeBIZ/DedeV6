@@ -36,7 +36,7 @@ if ($dopost == "save") {
     namegk='$namegk',
     enname='$enname',
     ennamegk='$ennamegk',
-    litpic='$litpic',
+    bigpic='$bigpic',
     litimg='$litimg',
     typedir='$typedir',
     isdefault='$isdefault',
