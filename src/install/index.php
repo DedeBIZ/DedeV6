@@ -11,7 +11,7 @@ error_reporting(E_ALL || ~E_NOTICE);
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
 if(file_exists(INSLOCKFILE))
 {
-    exit("程序已运行安装，如果您确定要重新安装，请先删除 public/install/install_lock.txt");
+    exit("程序已运行安装，如果您确定要重新安装，请先删除 /install/install_lock.txt");
 }
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
@@ -48,6 +48,9 @@ if($step==1)
     }
     if (!extension_loaded("sockets")) {
         $arrMsg[] = "Sockets未开启，将无法安装<a href='https://www.dedebiz.com/download#dedebiz' target='_blank'>DedeBIZ商业组件</a>";
+    }
+    if (!extension_loaded("fileinfo")) {
+        $arrMsg[] = "Fileinfo未开启，将无法正常进行文件上传";
     }
     if (!function_exists('mysqli_connect')) {
         $arrMsg[] = "MySQL不支持，将无法使用本系统";
