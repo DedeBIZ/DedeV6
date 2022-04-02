@@ -257,7 +257,7 @@ CREATE TABLE `#@__arctype` (
   `namegk` char(200) NOT NULL default '',
   `enname` char(200) NOT NULL default '',
   `ennamegk` char(200) NOT NULL default '',
-  `litpic` char(255) NOT NULL default '',
+  `bigpic` char(255) NOT NULL default '',
   `litimg` char(255) NOT NULL default '',
   `typedir` char(60) NOT NULL default '',
   `isdefault` smallint(6) NOT NULL default '0',
