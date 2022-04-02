@@ -28,7 +28,11 @@ if ($action == "search") {
         );
         echo json_encode($result);
     }
-
+    $result = array(
+        "code" => 200,
+        "data" => null,
+    );
+    echo json_encode($result);
     exit;
 }
 

@@ -69,7 +69,7 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
             </div>
             <div class="col-md-6 mt-3 mb-3 updatenews">
                 <div class="card">
-                    <div class="card-header"><a href="javascript:CopySystemInfo(`DedeBIZ:操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?>`);"><i class="fa fa-gear"></i></a>&nbsp;系统信息</div>
+                    <div class="card-header"><a href="javascript:CopySystemInfo(`Dede:<?php echo $cfg_version_detail;?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?>`);"><i class="fa fa-gear"></i></a>&nbsp;系统信息</div>
                     <div class="card-body">
                         <div id="updateinfos">
                             <?php echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' style='width:98%;height:70px;padding:.6rem'></iframe>"; ?>

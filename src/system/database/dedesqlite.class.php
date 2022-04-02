@@ -505,6 +505,7 @@ EOT;
     {
         $errorTrackFile = DEDEDATA.'/sqlite_error_trace.inc';
         if ($this->showError) {
+            $msg = str_replace(array("\r","\n"),"",addslashes($msg));
             ShowMsg("{$msg}", "javascript:;", -1);
             exit;
         }
