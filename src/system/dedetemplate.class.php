@@ -791,10 +791,11 @@ class DedeTemplate
             }
             $rsvalue = '<'.'?php'."\r\n".'$atts = array();'."\r\n".$rsvalue;
             $rsvalue .= '$blockValue = $this->refObj->GetArcList($atts,$this->refObj,$fields); '."\r\n";
+            $rsvalue .= '$total = $this->refObj->totalResult;'."\r\n";
             $rsvalue .= 'if(is_array($blockValue)){'."\r\n";
             $rsvalue .= 'foreach( $blockValue as $key=>$fields )'."\r\n{\r\n".'?'.">";
             $rsvalue .= $cTag->GetInnerText();
-            $rsvalue .= '<'.'?php'."\r\n}\r\n}".'?'.'>';
+            $rsvalue .= '<'.'?php'."\r\n}if(\$total==0 && !empty(\$atts['empty'])) echo \$atts['empty'];\r\n}".'?'.'>';
             $cTag->tagValue = $rsvalue;
         } else if ($tagname == 'pagelist') {
             //生成属性数组

@@ -32,7 +32,7 @@
         <td width="10%">排序</td>
         <td width="20%">管理</td>
       </tr>
-      {dede:datalist}
+      {dede:datalist empty='<tr><td colspan="4"><center>暂无内容</center></td></tr>'}
       <tr align="center" bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
         <td>{dede:field.name /}</td>
         <td align="left">{dede:field.description /}</td>
@@ -55,7 +55,7 @@
       </tr>
       {/dede:datalist}
       <tr align="center" bgcolor="#f8f8f8" height="26">
-        <td colspan="5"> {dede:pagelist listsize=5/} </td>
+        <td colspan="4"> {dede:pagelist listsize=5/} </td>
       </tr>
     </table>
     </td>

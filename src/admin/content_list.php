@@ -56,7 +56,7 @@ if (empty($totalresult) && empty($keyword) && empty($orderby) && empty($flag)) {
     if (!empty($arcrank)) {
         $tinyQuerys[] = " arcrank='$arcrank' ";
     } else {
-        $tinyQuerys[] = " arcrank > -2 ";
+        $tinyQuerys[] = " arcrank >= 0 ";
     }
     if (!empty($mid)) {
         $tinyQuerys[] = " mid='$mid' ";

@@ -58,15 +58,7 @@ class DataListCP
      */
     function __construct($tplfile = '')
     {
-        if ($GLOBALS['cfg_dbtype'] == 'mysql') {
-            if ($GLOBALS['cfg_mysql_type'] == 'mysqli' && function_exists("mysqli_init")) {
-                $dsql = $GLOBALS['dsqli'];
-            } else {
-                $dsql = $GLOBALS['dsql'];
-            }
-        } else {
-            $dsql = $GLOBALS['dsqlitete'];
-        }
+        global $dsql;
         $this->sourceSql = '';
         $this->pageSize = 25;
         $this->queryTime = 0;

@@ -25,7 +25,7 @@
       <td width="20%">结束时间</td>
       <td width="20%">管理</td>
     </tr>
-    {dede:datalist}
+    {dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
     <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
       <td>{dede:field.aid /}</td>
       <td>{dede:field.tagname /}</td>

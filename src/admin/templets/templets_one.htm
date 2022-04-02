@@ -72,7 +72,7 @@
       </tr>
       <form name='form1' action='templets_one_edit.php'>
          <input type='hidden' name='dopost' value='mksel' />
-         {dede:datalist}
+         {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
          <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
             onMouseOut="javascript:this.bgColor='#FFFFFF';">
             <td><input type='checkbox' name='ids[]' value='{dede:field.aid /}' class='np'></td>

@@ -72,7 +72,7 @@
       </tr>
       <form name='form3' action="article_keywords_main.php" method="post">
         <input type='hidden' name='dopost' value='saveall' />
-        {dede:datalist}
+        {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
         <tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
           onMouseOut="javascript:this.bgColor='#FFFFFF';">
           <td height="26">

@@ -287,7 +287,7 @@ if(!empty($egroup))
         </form>
         <form name='form1' action='stepselect_main.php' method='post'>
             <input type='hidden' name='action' value='delenumAllSel' />
-            {dede:datalist}
+            {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
             <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
                 onMouseOut="javascript:this.bgColor='#FFFFFF';">
                 <td><input type='checkbox' name='ids[]' value='{dede:field.id /}' class='np' /></td>
