@@ -31,9 +31,6 @@ function DedeCopyToClipboard(text) {
         document.body.removeChild(textarea);
     } 
 }
-function CopySystemInfo(txt) {
-    DedeCopyToClipboard(txt);
-}
 $(function () {
     $.get("index_testenv.php", function (data) {
         if (data !== '') {
@@ -46,6 +43,12 @@ $(function () {
         }
     });
 });
+function copyFn(){
+    var val = document.getElementById('text');
+    window.getSelection().selectAllChildren(val);
+    document.execCommand ("Copy");
+    //alert("成功复制系统信息");
+}
 //Dedebiz info
 var dedebizInfo;
 function ViewDedeBIZ() {

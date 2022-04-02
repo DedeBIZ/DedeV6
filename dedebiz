@@ -469,7 +469,7 @@ if (count($argv) > 1 && ($argv[1] == "serv" || $argv[1] == "s")) {
 		die("DedeBIZ:command web server not support\n\n");
 	}
 
-	// 写入安装程序锁
+	// 写入程序安装锁
 	file_put_contents($workDir.'/install/install_lock.txt', 'ok');
 
 	echo "Start Dev Server For DedeBIZ\n\r";

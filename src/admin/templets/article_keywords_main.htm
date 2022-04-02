@@ -73,8 +73,7 @@
       <form name='form3' action="article_keywords_main.php" method="post">
         <input type='hidden' name='dopost' value='saveall' />
         {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
-        <tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-          onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
           <td height="26">
             <input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1' />
           </td>
@@ -92,8 +91,7 @@
           </td>
           <td>
             <input type='hidden' name='staold_{dede:field.aid/}' value='{dede:field.sta/}' />
-            <label><input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta
-              function="GetSta(@me)" /} />
+            <label><input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta function="GetSta(@me)" /} />
             禁用</label>
             &nbsp;
             <label><input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1' />

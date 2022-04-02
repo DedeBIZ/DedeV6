@@ -241,7 +241,7 @@ class DedeModule
         while (!feof($fp)) {
             $line = fgets($fp, 1024);
             if (!$start) {
-                //2011-6-7 修复模块打包程序中上传安装程序生成为空白文件
+                //2011-6-7 修复模块打包程序中上传程序安装生成为空白文件
                 if (preg_match("#<{$ntype}>#i", $line)) $start = TRUE;
             } else {
                 if (preg_match("#<\/{$ntype}#i", $line)) break;

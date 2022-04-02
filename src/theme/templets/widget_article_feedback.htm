@@ -16,8 +16,8 @@
 				<div class="col-md-6 mb-3 areaValidate" style="display: none;">
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
-						<input type="text" class="form-control" id="iptValidate" style="text-transform:uppercase;">
-						<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" style="cursor:pointer;" onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片" />
+						<input type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
+						<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片" />
 					</div>
 				</div>
 			</div>
@@ -34,7 +34,6 @@
 			<button class="btn btn-success" type="button" onClick='SendFeedback()'>发表评论</button>
 		</div>
 	</div>
-
 	<div class="feedbacks">
 		{dede:feedback}
 		<div class="media">
@@ -67,21 +66,17 @@
 		border-radius: 50%;
 		border: solid 1px #DDD;
 	}
-
 	.feedbacks .media {
 		border-bottom: solid 1px #DDD;
 		padding-top: 10px;
 	}
-
 	.feedbacks .feedback_replies .media {
 		border-top: solid 1px #DDD;
 		border-bottom:none;
 	}
-
 	.feedbacks .media-body {
 		padding: 0 1em .5em 1em;
 	}
-
 	.feedbacks .media-body small{
 		color: #999;
 	}
@@ -92,7 +87,6 @@
 		color: #F1813F;
 		font-size: 14px;
 	}
-
 	.feedbacks ._feedback_reply .alert {
 		margin-bottom: 0;
 	}
@@ -128,7 +122,6 @@
 			}
 		});
 	}
-
 	//进行回复，回复必须登录
 	function SendReplyFeedback(fid) {
 		let content = $(`._feedback_reply[for="${fid}"]`).find(".iptReplyContent").val();
@@ -149,7 +142,6 @@
 		})
 		$(`._feedback_reply[for="${fid}"]`).find(".btnSend").attr("disabled", "disabled");
 	}
-
 	//回复某个评论
 	function ReplyFeedback(fid) {
 		let replyPannel = `<div class="form-group mt-2">
@@ -173,7 +165,6 @@
 		$(`._feedback_reply[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
 
 	}
-
 	//加载回复评论
 	function LoadReplyFeedbacks(fid) {
 		$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
@@ -215,7 +206,6 @@
 			}
 		})
 	}
-
 	//赞
 	function GoodFeedback(fid, g) {
 		let good = {
