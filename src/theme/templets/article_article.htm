@@ -23,7 +23,7 @@
     <div class="container">
         <div class="position">
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0">
+                <ol class="breadcrumb mt-3">
                     <li class="breadcrumb-item">当前位置</li>
                     {dede:field name='position'/}
                 </ol>
@@ -31,7 +31,6 @@
         </div>
         <!-- /.position -->
     </div>
-
     <main class="container">
         <div class="row">
             <div class="col-md-8 article-main">
@@ -66,8 +65,7 @@
                     <div class="col-md-8">
                         <div class="row actbox">
                             <ul>
-                                <li><i class="fa fa-star-o" aria-hidden="true"></i> <a
-                                        href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}"
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i> <a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}"
                                         target="_blank">收藏</a></li>
                                 <li><i class="fa fa-bug" aria-hidden="true"></i> <a
                                         href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a>
