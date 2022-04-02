@@ -114,7 +114,7 @@ function DelArc($aid)
         }
     }
     //删除文本文件
-    $filenameh = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
+    $filename = DEDEDATA."/textdata/".(ceil($aid / 5000))."/{$aid}-".substr(md5($cfg_cookie_encode), 0, 16).".txt";
     if (is_file($filename)) @unlink($filename);
     return TRUE;
 }
