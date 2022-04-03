@@ -1,4 +1,36 @@
 -- 6.1.7
+DROP TABLE IF EXISTS `#@__statistics`;
+CREATE TABLE `#@__statistics` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `sdate` int DEFAULT NULL COMMENT '记录日期',
+  `pv` int DEFAULT NULL COMMENT 'PV',
+  `uv` int DEFAULT NULL COMMENT 'UV',
+  `ip` int DEFAULT NULL COMMENT 'IP',
+  `vv` int DEFAULT NULL COMMENT 'vv',
+  PRIMARY KEY (`id`)
+) TYPE=MyISAM;
+DROP TABLE IF EXISTS `#@__statistics_detail`;
+CREATE TABLE `#@__statistics_detail` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `t` int DEFAULT NULL COMMENT 'unixtime',
+  `created_date` int DEFAULT NULL COMMENT '日期，20220326',
+  `created_hour` int DEFAULT NULL COMMENT '时间，12',
+  `dduuid` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'uuid',
+  `ssid` varchar(32) DEFAULT NULL COMMENT 'session_id',
+  `ip` varchar(46) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'ip地址',
+  `browser` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '浏览器',
+  `device` varchar(50) DEFAULT NULL COMMENT '设备',
+  `device_type` varchar(10) DEFAULT NULL COMMENT '设备类型',
+  `os` varchar(20) DEFAULT NULL COMMENT '操作系统',
+  `url_type` tinyint DEFAULT NULL COMMENT '访问地址类型：0:未知 1:列表 2:内容 3:搜索 4:TAG',
+  `typeid` int DEFAULT NULL COMMENT '栏目ID',
+  `aid` int DEFAULT NULL COMMENT '内容ID',
+  `value` varchar(50) DEFAULT NULL COMMENT '值',
+  PRIMARY KEY (`id`),
+  KEY `idx_created_date_dduuid` (`created_date`,`dduuid`),
+  KEY `idx_created_date_ip` (`created_date`,`ip`),
+  KEY `idx_created_date_ssid` (`created_date`,`ssid`)
+) TYPE=MyISAM;
 ALTER TABLE `#@__addonarticle` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
 ALTER TABLE `#@__addonimages` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
 ALTER TABLE `#@__addoninfos` MODIFY COLUMN `userip` varchar(46) NOT NULL DEFAULT '' AFTER `litpic`;
