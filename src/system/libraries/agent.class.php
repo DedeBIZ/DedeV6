@@ -5,8 +5,6 @@ require_once(DEDEINC."/libraries/mobiledetect.class.php");
 
 // copyright https://github.com/jenssegers/agent
 
-use BadMethodCallException;
-
 class Agent extends Mobile_Detect
 {
     /**
@@ -405,7 +403,7 @@ class Agent extends Mobile_Detect
     {
         // Make sure the name starts with 'is', otherwise
         if (strpos($name, 'is') !== 0) {
-            throw new BadMethodCallException("No such method exists: $name");
+            throw new Exception("No such method exists: $name");
         }
 
         $this->setDetectionType(self::DETECTION_TYPE_EXTENDED);

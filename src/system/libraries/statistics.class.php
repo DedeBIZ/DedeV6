@@ -99,7 +99,9 @@ EOT;
         ksort($pmvalue);
         $sign = $pmvalue['sign'];
         unset($pmvalue['sign']);
-
+        if (time() - $pmvalue['t'] > 5) {
+            die("DedeBIZ:time out");
+        }
         $cs = sha1(http_build_query($pmvalue).md5($cfg_cookie_encode));
         if ($sign !== $cs) {
             die("DedeBIZ:check sign failed");

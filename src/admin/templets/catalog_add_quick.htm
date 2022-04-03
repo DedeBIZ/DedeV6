@@ -46,14 +46,14 @@
   <script language="javascript">
     function ShowHide(objname) {
       var obj = document.getElementById(objname);
-      if (obj.style.display == "block" || obj.style.display == "")
+      if (obj.style.display == "")
         obj.style.display = "none";
       else
-        obj.style.display = "block";
+        obj.style.display = "";
     }
     function ShowObj(objname) {
       var obj = document.getElementById(objname);
-      obj.style.display = "block";
+      obj.style.display = "";
     }
     function HideObj(objname) {
       var obj = document.getElementById(objname);
