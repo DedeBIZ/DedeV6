@@ -27,18 +27,18 @@
           </div>
           <div class="form-group">
             <div class="input-group">
-              <input placeholder="输入密码" name="pwd" type="password" class="form-control" id="iptPwd" style="text-transform:uppercase;">
+              <input placeholder="输入密码" name="pwd" type="password" class="form-control" id="iptPwd" style="text-transform:uppercase">
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
-              <input name="vdcode" placeholder="输入图形验证码" type="text" class="form-control" id="iptValidate" style="text-transform:uppercase;">
-              <img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer;" onclick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片" />
+              <input name="vdcode" placeholder="输入图形验证码" type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
+              <img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片" />
             </div>
           </div>
           <button type="submit" class="btn btn-success btnLogin">登 录</button>
           <a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success btnLogin mt-2">注 册</a>
-            <a href="<?php echo $cfg_memberurl;?>/resetpassword.php" style="color:#008E38;">忘记密码</a>
+          <a href="<?php echo $cfg_memberurl;?>/resetpassword.php" style="color:#008E38;">忘记密码</a>
         </form>
       </div>
     </div>

@@ -31,7 +31,7 @@ function checkSubmit()
 <body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
 <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
   <tr>
-    <td height="19" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href='<?php echo $ENV_GOBACK_URL; ?>'>会员管理</a> &gt; 查看会员</td>
+    <td height="20" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href='<?php echo $ENV_GOBACK_URL; ?>'>会员管理</a> &gt; 查看会员</td>
 </tr>
 <tr>
 <td height="200" bgcolor="#FFFFFF" align='center'>
@@ -143,7 +143,7 @@ function checkSubmit()
           <tr> 
             <td align="right" class='bline'>会员天数：</td>
             <td class='bline' style="text-align:left"><input type="text" style="width: 200px;" value="<?php echo $row['exptime']?>" id="exptime" name="exptime">
-            （如果您要升级会员，会员天数必须大于0） </td>
+            （如果您要升级会员，会员天数必须大于0）</td>
           </tr>
           <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span style="color:#dc3545">该会员已经到期</span>'; ?>
           <tr> 

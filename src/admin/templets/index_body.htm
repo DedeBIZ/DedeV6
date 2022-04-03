@@ -22,6 +22,7 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
 .table{margin-bottom:0}
 .web-info{padding:10px;background:#f8f8f8;border-radius:.2rem;text-align:center}
 .web-info p{margin-bottom:10px}
+#text{font-size:0}
 </style>
 </head>
 <body>
@@ -30,7 +31,7 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
             <div id="tips" class="col-md-12"></div>
             <div class="col-md-12 mt-3 mb-3">
                 <div class="card">
-                    <div class="card-header"><a title="查看流量统计图" href="#statChart"><i class="fa fa-line-chart"></i></a>&nbsp;流量统计表</div>
+                    <div class="card-header"><a href="#statChart" title="查看流量统计图"><i class="fa fa-line-chart"></i>&nbsp;流量统计表</a></div>
                     <div class="card-body">
                         <table class="stattable">
                             <tbody>
@@ -69,7 +70,10 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
             </div>
             <div class="col-md-6 mt-3 mb-3 updatenews">
                 <div class="card">
-                    <div class="card-header"><a href="javascript:CopySystemInfo(`Dede:<?php echo $cfg_version_detail;?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?>`);"><i class="fa fa-gear"></i></a>&nbsp;系统信息</div>
+                    <div class="card-header">
+                        <a href="javascript:copyFn()"><i class="fa fa-gear"></i>&nbsp;系统信息</a>
+                        <span id="text">Dede:<?php echo $cfg_version_detail; ?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?></span>
+                    </div>
                     <div class="card-body">
                         <div id="updateinfos">
                             <?php echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' style='width:98%;height:70px;padding:.6rem'></iframe>"; ?>
@@ -131,42 +135,6 @@ table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:righ
                     <div class="card-body" id="newarticles">正在载入</div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="footer mt-2">
-        <div id="loaddiv" style="display:none">
-            <p align="center"><img src="../static/web/img/loadinglit.gif">请稍后，正在下载更新文件列表</p>
-        </div>
-        <div id="editTab"><span id="editTabBody">请稍候，正在载入</span></div>
-        <div id="addTab">
-            <form name="addform" action="index_body.php">
-                <input type="hidden" name="dopost" value="addnew">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td height="30" colspan="3" background="../static/web/img/tbg.gif">
-                            <div style="float:left;margin-left:10px">增加快捷操作项</div>
-                            <div style="float:right;padding:2px 10px 0 0">
-                                <a href="javascript:CloseTab('addTab')"><img src="../static/web/img/close.gif"></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="height:10px;border-top:1px solid #8DA659"></td>
-                    </tr>
-                    <tr>
-                        <td width="22%" height="26" align="right">链接标题：</td>
-                        <td width="78%"><input name="title" type="text" class="pubinputs" style="margin-bottom:10px;width:260px"></td>
-                    </tr>
-                    <tr>
-                        <td width="22%" height="26" align="right">链接网址：</td>
-                        <td width="78%"><input name="link" type="text" class="pubinputs" style="width:260px"></td>
-                    </tr>
-                    <tr>
-                        <td height="36"></td>
-                        <td><input type="submit" name="Submit" value="保存项目" class="np coolbg"></td>
-                    </tr>
-                </table>
-            </form>
         </div>
     </div>
 </body>

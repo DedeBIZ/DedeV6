@@ -60,8 +60,7 @@
       <tr>
         <td align="center" bgcolor="#FFFFFF">封装类型：</td>
         <td bgcolor="#FFFFFF">
-          <label><input name="moduletype" type="radio" id="moduletype1" class='np' value='soft' checked='1' />
-            模块</label>
+          <label><input name="moduletype" type="radio" id="moduletype1" class='np' value='soft' checked='1' /> 模块</label>
           <label><input name="moduletype" type="radio" id="moduletype2" class='np' value='templets' /> 模板</label>
           <label><input name="moduletype" type="radio" id="moduletype3" class='np' value='plus' /> 小插件</label>
           <label><input name="moduletype" type="radio" id="moduletype3" class='np' value='patch' /> 补丁</label>
@@ -76,17 +75,14 @@
       <tr>
         <td align="center" bgcolor="#FFFFFF">发布时间：</td>
         <td bgcolor="#FFFFFF">
-          <input name="mtime" type="text" id="mtime" style="width:180px" value="<?php echo GetDateMk(time()); ?>"
-            class='alltxt' /> </td>
+          <input name="mtime" type="text" id="mtime" style="width:180px" value="<?php echo GetDateMk(time()); ?>" class='alltxt' /> </td>
       </tr>
       <tr>
         <td align="center" bgcolor="#FFFFFF">是否涉及会员系统：</td>
         <td bgcolor="#FFFFFF">
-          <label><input name="ismember" type="radio" class='np' id="ismember0" value="0"
-              onclick="ShowHideMb('ismember0','rboxct')" checked="checked">
+          <label><input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked">
             不涉及</label>
-          <label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')"
-              class='np' /> 涉及</label>
+          <label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class='np' /> 涉及</label>
           <div id='rboxct' style='display:none'>
             导航使用名称：
             <input name="indexname" type="text" id="indexname" style="width:180px" value="">
@@ -109,8 +105,7 @@
       <tr>
         <td align="center" bgcolor="#FFFFFF">使用说明文件：</td>
         <td bgcolor="#FFFFFF">
-          <label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" class="np"
-              onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')">
+          <label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" class="np" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')">
             直接填写</label>
           <br>
           <div style='display:block' id='autoreadmeinput'>
@@ -134,10 +129,9 @@
         </td>
       </tr>
       <tr>
-        <td align="center" bgcolor="#FFFFFF">安装程序：</td>
+        <td align="center" bgcolor="#FFFFFF">程序安装：</td>
         <td bgcolor="#FFFFFF">
-          <label><input type="checkbox" name="autosetup" value='1' id="autosetup" class="np"
-              onclick="ShowHideField('autosetup','autosetupinput','autosetupct')">
+          <label><input type="checkbox" name="autosetup" value='1' id="autosetup" class="np" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')">
             自动生成(由系统自动处理安装)</label>
           <br>
           <div style='display:block' id='autosetupinput'>
@@ -162,15 +156,13 @@
               </tr>
             </table>
           </div>
-
         </td>
       </tr>
       <tr>
         <td align="center" bgcolor="#FFFFFF">删除程序：</td>
         <td bgcolor="#FFFFFF">
-          <label><input type="checkbox" name="autodel" value='1' id="autodel" class="np"
-              onclick="ShowHideField('autodel','autodelinput','autodelct')">
-            自动生成(由系统自动处理卸载)</label>
+          <label><input type="checkbox" name="autodel" value='1' id="autodel" class="np" onclick="ShowHideField('autodel','autodelinput','autodelct')">
+            自动生成（由系统自动处理卸载）</label>
           <br>
           <div style='display:block' id='autodelinput'>
             <input name="uninstall" type="file" id="uninstall" style="width:350px">
@@ -181,7 +173,7 @@
                 <td width="75%" bgcolor="#F3FDE1">
                   卸载时执行的SQL语句：
                   <br>
-                  (SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束)
+                  （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）
                 </td>
               </tr>
               <tr>

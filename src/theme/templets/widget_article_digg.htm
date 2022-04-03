@@ -19,7 +19,6 @@
         </div>
     </div>
 </div> <!-- ./digg -->
-
 <script>
     //获取顶踩数据
     function GetDigg(aid,cid) {
@@ -34,7 +33,6 @@
             }
         })
     }
-
     function PostDigg(ftype, aid) {
         var saveid = GetCookie('diggid');
         if (saveid != null) {
@@ -70,7 +68,5 @@
             }
         });
     }
-
     GetDigg("{dede:field.id/}", "{dede:field.channel/}");
-
 </script>

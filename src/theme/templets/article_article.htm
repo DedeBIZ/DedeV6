@@ -41,22 +41,17 @@
                     <small>作者：</small>{dede:field.writer/}
                     <small>点击：</small><span id="_count">...</span>次
                 </div>
-
                 <div class="body py-2">
                     {dede:field.body/} (责任编辑：{dede:adminname/})
                 </div>
                 <!-- /.body -->
-
                 <nav>
                     <ul class="pagination justify-content-center py-3">
                         {dede:pagebreak/}
                     </ul>
                 </nav>
-
                 <div class="clearfix"></div>
-
                 {dede:include comment='文档顶踩模块' filename="widget_article_digg.htm"/}
-
                 <div class="row">
                     <div class="col-md-4 prenext pt-2">
                         <div class="pagination-previous">{dede:prenext get='pre'/}</div>
@@ -65,45 +60,29 @@
                     <div class="col-md-8">
                         <div class="row actbox">
                             <ul>
-                                <li><i class="fa fa-star-o" aria-hidden="true"></i> <a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}"
-                                        target="_blank">收藏</a></li>
-                                <li><i class="fa fa-bug" aria-hidden="true"></i> <a
-                                        href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a>
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i> <a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
+                                <li><i class="fa fa-bug" aria-hidden="true"></i> <a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a>
                                 </li>
-                                <li><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <a
-                                        href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}"
-                                        target="_blank">推荐</a></li>
-                                <li><i class="fa fa-print" aria-hidden="true"></i> <a href="#"
-                                        onClick="window.print();">打印</a></li>
+                                <li><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
+                                <li><i class="fa fa-print" aria-hidden="true"></i> <a href="#" onClick="window.print();">打印</a></li>
                             </ul>
                         </div><!-- /actbox -->
                     </div>
                 </div>
-
                 {dede:include comment='文档评论模块' file='widget_article_feedback.htm' /}
-
             </div>
             <!-- /.article-main -->
-
             <aside class="col-md-4 article-sidebar">
-
                 {dede:include comment='推荐内容' filename="widget_recommend.htm"/}
-
                 {dede:include comment='热点内容' filename="widget_hot.htm"/}
-
                 {dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
-
             </aside>
             <!-- /.article-sidebar -->
-
         </div>
     </main>
     <!-- /main -->
-
     {dede:include filename="footer.htm"/}
     <script>
-
-
         //页面加载触发
         $(document).ready(function () {
             //获取文档点击数统计

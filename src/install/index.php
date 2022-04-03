@@ -266,7 +266,7 @@ else if($step==2)
     $adminquery = "INSERT INTO `{$dbprefix}member_space`(`mid` ,`pagesize` ,`matt` ,`spacename` ,`spacelogo` ,`spacestyle`, `sign` ,`spacenews`)
         VALUES('1','10','0','{$adminuser}的空间','','person','',''); ";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
-    //锁定安装程序
+    //锁定程序安装
     $fp = fopen(INSLOCKFILE,'w');
     fwrite($fp,'ok');
     fclose($fp);

@@ -58,14 +58,12 @@
                     个人会员该项为昵称，企业会员填写公司名称
                   </small>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptOldpwd" class="col-sm-2 col-form-label">原登录密码</label>
                   <div class="col-sm-10">
                     <input name="oldpwd" type="password" class="form-control" id="iptOldpwd">
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptUserpwd" class="col-sm-2 col-form-label">新密码</label>
                   <div class="col-sm-10">
@@ -75,7 +73,6 @@
                     不修改密码请保留此项为空
                   </small>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptUserpwdok" class="col-sm-2 col-form-label">确认新密码</label>
                   <div class="col-sm-10">
@@ -85,7 +82,6 @@
                     不修改密码请保留此项为空
                   </small>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">原安全问题</label>
                   <div class="col-sm-10">
@@ -98,14 +94,12 @@
                     忘记密码时重设密码用
                   </small>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptSafeanswer" class="col-sm-2 col-form-label">原问题答案</label>
                   <div class="col-sm-10">
                     <input name="safeanswer" type="text" class="form-control" id="iptSafeanswer">
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">新安全问题</label>
                   <div class="col-sm-10">
@@ -117,14 +111,12 @@
                     不修改不用填写
                   </small>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptNewsafeanswer" class="col-sm-2 col-form-label">新问题答案</label>
                   <div class="col-sm-10">
                     <input name="newsafeanswer" type="text" class="form-control" id="iptNewsafeanswer">
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptEmail" class="col-sm-2 col-form-label">电子邮箱</label>
                   <div class="col-sm-10">
@@ -134,7 +126,6 @@
                     每个电子邮邮箱只能注册一个帐号，要修改电子邮箱必须填写正确安全问题的答案
                   </small>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptEmail" class="col-sm-2 col-form-label">性别</label>
                   <div class="col-sm-10">
@@ -149,15 +140,12 @@
                     保密</label>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label for="iptValidate" class="col-sm-2 col-form-label">验证码</label>
                   <div class="col-sm-10">
                     <div class="input-group">
-                      <input name="vdcode" placeholder="输入图形验证码" type="text" class="form-control" id="iptValidate"
-                        style="text-transform:uppercase;">
-                      <img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer;"
-                        onclick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)"
+                      <input name="vdcode" placeholder="输入图形验证码" type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
+                      <img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)"
                         title="点击我更换图片" alt="点击我更换图片" />
                     </div>
                   </div>

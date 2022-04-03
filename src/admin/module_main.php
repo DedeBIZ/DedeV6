@@ -226,7 +226,7 @@ function SetupRun()
 --------------*/
 else if ($action == 'setupstart') {
     if (!is_writeable($mdir)) {
-        ShowMsg("目录 {$mdir} 不支持写入，这将导致安装程序没法正常创建", "-1");
+        ShowMsg("目录 {$mdir} 不支持写入，这将导致程序安装没法正常创建", "-1");
         exit();
     }
     $dm = new DedeModule($mdir);
@@ -248,7 +248,7 @@ else if ($action == 'setupstart') {
     if (!isset($autodel) || $autodel == 0) $dm->WriteSystemFile($hash, 'uninstall');
     $dm->WriteSystemFile($hash, 'readme');
     $dm->Clear();
-    //用模块的安装程序安装
+    //用模块的程序安装安装
     if (!isset($autosetup) || $autosetup == 0) {
         include(DEDEDATA.'/module/'.$filename);
         exit();
