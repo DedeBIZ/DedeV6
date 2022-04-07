@@ -13,6 +13,8 @@
     $(function(){
         $('#tagid').select2({
           language: "zh-CN",
+          allowClear: true,
+          placeholder:"请选择一个标签",
           ajax: {
             url: 'makehtml_taglist.php?action=search',
             delay: 500,
@@ -48,11 +50,31 @@
           </table>
         </td>
       </tr>
+      <?php
+      if($tagid > 0) {
+        $row = $dsql->GetOne("Select tag From `#@__tagindex` where id = '$tagid' ");
+      ?>
+      <tr>
+        <td width="300" valign="top" bgcolor="#FFFFFF">输入标签：</td>
+        <td width="377" valign="top" bgcolor="#FFFFFF">
+          <input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php">重新选择</a>
+        </td>
+      </tr>
+      <?php
+      } else {
+      ?>
       <tr>
         <td width="300" valign="top" bgcolor="#FFFFFF">输入标签：</td>
         <td width="377" valign="top" bgcolor="#FFFFFF">
           <select id='tagid' name='tagid' style='width:300px'></select>（请输入标签搜索）
         </td>
+      </tr>
+      <?php
+      }
+      ?>
+      <tr>
+        <td height="26" valign="top" bgcolor="#FFFFFF">生成位置：</td>
+        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" size="30" disabled> <a href="sys_info.php" class="text-success">【系统设置】</a>-【其他选项】中“TAGS生成目录”项进行调整</td>
       </tr>
       <tr>
         <td height="26" valign="top" bgcolor="#FFFFFF">每次最大创建页数：</td>

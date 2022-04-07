@@ -27,6 +27,7 @@ if ($action == "search") {
             "data" => $result,
         );
         echo json_encode($result);
+        exit;
     }
     $result = array(
         "code" => 200,

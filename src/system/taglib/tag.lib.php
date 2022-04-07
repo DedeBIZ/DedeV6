@@ -10,7 +10,7 @@
  */
 function lib_tag(&$ctag, &$refObj)
 {
-    global $dsql, $envs, $cfg_cmsurl;
+    global $dsql, $envs, $cfg_cmsurl,$cfg_tags_dir;
     //属性处理
     $attlist = "row|30,sort|new,getall|0,typeid|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
@@ -20,11 +20,8 @@ function lib_tag(&$ctag, &$refObj)
     $revalue = '';
     $ltype = $sort;
     $num = $row;
-    $dd = $dsql->GetOne("SELECT ROUND(AVG(total)) as tt FROM `#@__tagindex`"); //取一个平均
-    if (!$dd['tt']) {
-        $dd['tt'] = 0;
-    }
-    $addsql = "WHERE 1=1 AND total >= {$dd['tt']}";
+    $addsql = "WHERE 1=1";
+    $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
     if ($getall == 0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid'])) {
         $dsql->SetQuery("SELECT tid FROM `#@__taglist` WHERE aid = '{$refObj->Fields['aid']}' ");
         $dsql->Execute();
@@ -56,9 +53,9 @@ function lib_tag(&$ctag, &$refObj)
         $row['keyword'] = $row['tag'];
         $row['tag'] = dede_htmlspecialchars($row['tag']);
         if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {
-            $row['link'] = $cfg_cmsurl."/a/tags/".GetPinyin($row['keyword'])."/";
+            $row['link'] = $cfg_cmsurl.$tagsdir."/".$row['id']."/";
         } else {
-            $row['link'] = $cfg_cmsurl."/apps/tags.php?/".urlencode($row['keyword'])."/";
+            $row['link'] = $cfg_cmsurl."/apps/tags.php?/".$row['id']."/";
         }
         $row['highlight'] = mt_rand(1, 10);
         foreach ($ctp->CTags as $tagid => $ctag) {

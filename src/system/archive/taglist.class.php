@@ -35,6 +35,7 @@ class TagList
     var $Templet;
     var $TagInfos;
     var $TempletsFile;
+    var $tagsDir;
     /**
      *  php5构造函数
      *
@@ -47,7 +48,7 @@ class TagList
     {
         global $dsql,$envs;
         $this->Templet = $templet;
-        $this->Tag = $keyword;
+        $this->Tag = (int)$keyword;
         $this->dsql = $dsql;
         $this->dtp = new DedeTagParse();
         $this->dtp->SetRefObj($this);
@@ -65,18 +66,12 @@ class TagList
         //设置一些全局参数的值
         foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
         //读取Tag信息
-        if ($this->Tag != '') {
-            $this->TagInfos = $this->dsql->GetOne("Select * From `#@__tagindex` where tag like '{$this->Tag}' ");
+        if (!empty($this->Tag)) {
+            $this->TagInfos = $this->dsql->GetOne("Select * From `#@__tagindex` where id = '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
-                $fullsearch = $GLOBALS['cfg_phpurl']."/search.php?keyword=".$this->Tag."&searchtype=titlekeyword";
-                $msg = "系统无此标签，可能已经移除<br><br>您还可以尝试通过搜索程序去搜索这个关键词：<a href='$fullsearch'>前往搜索&gt;</a>";
+                $msg = "系统无此标签，可能已经移除";
                 ShowMsg($msg, "-1");
                 exit();
-            }
-            //确定是否存在tag_pinyin
-            if (empty($this->TagInfos['tag_pinyin'])) {
-                $this->TagInfos['tag_pinyin'] = $this->TagPinyinExists($this->Tag) ? GetPinyin($this->Tag).$this->TagInfos['id'] : GetPinyin($this->Tag);
-                $this->dsql->ExecNoneQuery("UPDATE `#@__tagindex` SET tag_pinyin = '{$this->TagInfos['tag_pinyin']}' WHERE tag LIKE '{$this->Tag}'");
             }
             $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->Fields['title'] : $this->TagInfos['title'];
             $this->Fields['keywords'] = empty($this->TagInfos['keywords']) ? $this->Fields['keywords'] : $this->TagInfos['keywords'];
@@ -92,12 +87,6 @@ class TagList
         $this->TempletsFile = preg_replace("#^".$GLOBALS['cfg_basedir']."#", '', $tempfile);
         $envs['url_type'] = 4;
         $envs['value'] = $keyword;
-    }
-    function TagPinyinExists($tag)
-    {
-        $tag_py = GetPinyin($tag);
-        $row = $this->dsql->GetOne("Select count(*) as dd From `#@__tagindex` where tag_pinyin like '{$tag_py}' ");
-        return $row['dd'] > 0;
     }
     //php4构造函数
     function TagList($keyword, $templet)
@@ -170,13 +159,15 @@ class TagList
      */
     function Display()
     {
-        $makeDir = empty($this->Tag) ? $this->GetTruePath()."/a/tags/index.html" : $this->GetTruePath()."/a/tags/".GetPinyin($this->Tag)."/index.html";
+        global $cfg_cmspath,$cfg_tags_dir;
+        $tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
+        $makeDir = empty($this->Tag) ? $this->GetTruePath().$tagsDir."/index.html" : $this->GetTruePath().$tagsDir."/".$this->Tag."/index.html";
         if (file_exists($makeDir)) {
             header('HTTP/1.1 301 Moved Permanently');
             if (!empty($this->Tag)) {
-                header('Location:../a/tags/'.GetPinyin($this->Tag)."/");
+                header('Location:..'.$tagsDir.'/'.GetPinyin($this->Tag)."/");
             } else {
-                header('Location:../a/tags/');
+                header('Location:..'.$tagsDir.'/');
             }
             exit;
         }
@@ -578,6 +569,14 @@ class TagList
         $truepath = $GLOBALS["cfg_basedir"];
         return $truepath;
     }
+
+    function SetTagsDir($dir = '')
+    {
+        global $cfg_tags_dir,$cfg_cmspath;
+        if ($dir == "") $dir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
+        $this->tagsDir = $dir;
+    }
+
     //生成静态Tag
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
@@ -587,8 +586,8 @@ class TagList
         //初步给固定值的标记赋值
         $this->ParseTempletsFirst();
         if ($this->Tag == "") {
-            MkdirAll($this->GetTruePath()."/a/tags/", $cfg_dir_purview);
-            $this->dtp->SaveTo($this->GetTruePath()."/a/tags/index.html");
+            MkdirAll($this->GetTruePath().$this->tagsDir, $cfg_dir_purview);
+            $this->dtp->SaveTo($this->GetTruePath().$this->tagsDir."/index.html");
         } else {
             $totalpage = ceil($this->TotalResult / $this->PageSize);
             if ($totalpage == 0) {
@@ -605,7 +604,7 @@ class TagList
             if ($endpage == 1) {
                 $endpage = 2;
             }
-            $makeDir = $this->GetTruePath()."/a/tags/".$this->TagInfos['tag_pinyin']."/";
+            $makeDir = $this->GetTruePath().$this->tagsDir.'/'.$this->TagInfos['id']."/";
             MkdirAll($makeDir, $cfg_dir_purview);
             for ($this->PageNo = $startpage; $this->PageNo < $endpage; $this->PageNo++) {
                 $this->ParseDMFields($this->PageNo, 1);

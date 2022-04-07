@@ -105,7 +105,7 @@
 		</form>
 		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered">
 			<tr>
-				<td height="26" colspan="7" bgcolor="#f8f8f8">
+				<td height="26" colspan="8" bgcolor="#f8f8f8">
 					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="table-borderless">
 						<tr>
 							<td align="left" style="padding-left:10px">标签维护</td>
@@ -122,6 +122,7 @@
 			</tr>
 			<tr height="26" align="center" bgcolor="#FBFCE2">
 				<td width="8%">选择</td>
+				<td width="5%">ID</td>
 				<td width="30%">标签</td>
 				<td width="10%"><a href="tags_main.php?tag=<?php echo $tag; ?>&orderby=count&orderway=<?php echo $neworderway; ?>">点击</a></td>
 				<td width="10%"><a href="tags_main.php?tag=<?php echo $tag; ?>&orderby=total&orderway=<?php echo $neworderway; ?>">文档数</a></td>
@@ -138,13 +139,14 @@
 				?>
 				<tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
 					<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id']; ?>" class='np' /></td>
+					<td>{dede:field.id/}</td>
 					<td><a href="../apps/tags.php?/<?php echo urlencode($fields['tag']); ?>/" target="_blank">{dede:field.tag/}</a></td>
 					<td><input type="text" value="<?php echo $fields['count']; ?>" id="count<?php echo $fields['id']; ?>" size='5' /></td>
 					<td><?php echo $fields['total']; ?></td>
 					<td><?php echo $fields['addtime']; ?></td>
 					<td><?php echo $fields['uptime']; ?></td>
 					<td>
-						<a href='javascript:UpdateKwDes(<?php echo $fields['id']; ?>,"<?php echo $fields['tag']; ?>");' class="btn btn-success btn-sm">关键词描述</a>
+						<a href='javascript:UpdateKwDes(<?php echo $fields['id']; ?>,"<?php echo $fields['tag']; ?>");' class="btn btn-success btn-sm">设置</a>
 						<a href="javascript:UpdateOne(<?php echo $fields['id']; ?>);" class="btn btn-success btn-sm">更新</a>
 						<a href="makehtml_taglist.php?tagid=<?php echo $fields['id']; ?>" class="btn btn-success btn-sm">生成</a>
 						<a href="javascript:DeleteOne(<?php echo $fields['id']; ?>);" class="btn btn-success btn-sm">删除</a>
@@ -156,7 +158,7 @@
 						<input type="checkbox" onclick="checkall(this.form,'ids')" name="all" class="np">&nbsp;全选&nbsp;
 						<button type="button" onclick="document.form3.submit()" class="btn btn-success">删除</button>
 					</td>
-					<td colspan="6" align="center">{dede:pagelist/}</td>
+					<td colspan="7" align="center">{dede:pagelist/}</td>
 				</tr>
 			</form>
 		</table>

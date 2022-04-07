@@ -4090,8 +4090,8 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点网址（http://域
 ('764', 'cfg_bizcore_hostname', 'DedeBIZ Core地址', 1, 'string', '127.0.0.1'),
 ('765', 'cfg_bizcore_port', 'DedeBIZ Core端口', 1, 'number', '8181'),
 ('766', 'cfg_bizcore_appid', 'DedeBIZ Core应用ID', 1, 'string', ''),
-('767', 'cfg_bizcore_key', 'DedeBIZ Core通信密钥', 1, 'string', '')
-;
+('767', 'cfg_bizcore_key', 'DedeBIZ Core通信密钥', 1, 'string', ''),
+('710', 'cfg_tags_dir', 'TAGS生成目录', 7, 'string', '{cmspath}/a/tags');
 
 INSERT INTO `#@__sys_module` VALUES (1, '0cce60bc0238aa03804682c801584991', '百度新闻', '', '', 0, ''),
 (2, '1f35620fb42d452fa2bdc1dee1690f92', '文件管理器', '', '', 0, ''),

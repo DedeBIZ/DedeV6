@@ -18,7 +18,8 @@ if (empty($upall)) $upall = 0; //是否更新全部 0为更新单个 1为更新�
 if (empty($ctagid)) $ctagid = 0; //当前处理的tagid
 if (empty($maxpagesize)) $maxpagesize = 50;
 $tagid = isset($tagid) ? intval($tagid) : 0;
-
+$tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
+// 生成
 if ($tagid > 0) {
     $upall = 0; //更新单个模式
     $ctagid = $tagid;
@@ -26,33 +27,30 @@ if ($tagid > 0) {
     $upall = 1; //更新全部模式
 }
 $allfinish = false; //是否全部完成
-
+// 判断生成模式
 if ($upall == 1 && $ctagid == 0) {
-    $rr = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE mktime <> uptime LIMIT 1");
+    $rr = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE mktime <> uptime OR mktime = 0 LIMIT 1");
     if (!empty($rr) && count($rr) > 0) {
         $ctagid = $rr['id'];
     } else {
         $allfinish = true;
     }
 }
-
 if ($ctagid == 0 && $allfinish) {
     $dlist = new TagList('', 'tag.htm');
+    $dlist->SetTagsDir($tagsdir);
     $dlist->MakeHtml(1, 10);
-
-    $reurl = '../a/tags/';
+    $reurl = '..'.$tagsdir;
     ShowMsg("完成TAG更新<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
     exit;
 }
-
-
 $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
-
-MkdirAll($cfg_basedir."/a/tags", $cfg_dir_purview);
-
+// 创建TAGS目录
+MkdirAll($cfg_basedir.$cfg_tags_dir, $cfg_dir_purview);
 if (is_array($tag) && count($tag) > 0) {
-    $dlist = new TagList($tag['tag'], 'taglist.htm');
+    $dlist = new TagList($tag['id'], 'taglist.htm');
     $dlist->CountRecord();
+    $dlist->SetTagsDir($tagsdir);
     $ntotalpage = $dlist->TotalPage;
 
     if ($ntotalpage <= $maxpagesize) {
@@ -69,19 +67,15 @@ if (is_array($tag) && count($tag) > 0) {
     $onefinish = $nextpage >= $ntotalpage && $finishType;
     if (($upall == 0 && $onefinish) || ($upall == 1 && $allfinish && $onefinish)) {
         $dlist = new TagList('', 'tag.htm');
+        $dlist->SetTagsDir($tagsdir);
         $dlist->MakeHtml(1, 10);
-        $reurl = '../a/tags/';
+        $reurl = '..'.$tagsdir;
         if ($upall == 1) {
             ShowMsg("完成TAG更新<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
         } else {
             $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
             $dsql->ExecuteNoneQuery($query);
-
-            if (empty($tag['tag_pinyin'])) {
-                $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
-            }
-
-            $reurl .= $tag['tag_pinyin'];
+            $reurl .= '/'.$ctagid;
             ShowMsg("完成TAG更新：[".$tag['tag']."]<a href='$reurl' target='_blank'>浏览TAG首页</a>", "javascript:;");
         }
         exit();
@@ -89,6 +83,9 @@ if (is_array($tag) && count($tag) > 0) {
         if ($finishType) {
             //完成了一个跳到下一个
             if ($upall == 1) {
+                $now = time();
+                $query = "UPDATE `#@__tagindex` SET uptime={$now} WHERE id='$ctagid' ";
+                $dsql->ExecuteNoneQuery($query);
                 $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
                 $dsql->ExecuteNoneQuery($query);
                 $ctagid = 0;

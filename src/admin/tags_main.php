@@ -78,7 +78,8 @@ else if ($action == 'delete') {
     $title = empty($title) ? "" : HtmlReplace($title, 0);
     $kw = empty($kw) ? "" : HtmlReplace($kw, 0);
     $des = empty($des) ? "" : HtmlReplace($des, 0);
-    $dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET title='{$title}',keywords='{$kw}',`description`='{$des}' WHERE id = {$tid}");
+    $now = time();
+    $dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET title='{$title}',keywords='{$kw}',`description`='{$des}',`uptime`='{$now}' WHERE id = {$tid}");
     echo json_encode(array('code' => 200, 'result' => true));
 }
 /*
