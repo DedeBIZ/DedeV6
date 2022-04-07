@@ -29,7 +29,7 @@ $needRank = $arc->Fields['arcrank'];
 require_once(DEDEINC.'/memberlogin.class.php');
 $cfg_ml = new MemberLogin();
 if ($needRank < 0 && $arc->Fields['mid'] != $cfg_ml->M_ID) {
-    ShowMsg('文章尚未审核,非作者本人无权查看!', 'javascript:;');
+    ShowMsg('文章尚未审核，非作者本人无权查看', 'javascript:;');
     exit();
 }
 //设置了权限限制的文章
@@ -93,5 +93,5 @@ if ($needMoney > 0 || $needRank > 1) {
 $arc->Display();
 if (DEBUG_LEVEL === TRUE) {
     $queryTime = ExecTime() - $t1;
-    echo "<div style='width:98%;margin:1rem auto;color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;position: relative;padding: .75rem 1.25rem;border: 1px solid transparent;border-radius: .25rem;'>页面加载总消耗时间：{$queryTime}</div>\r\n";
+    echo "<div style='width:98%;margin:1rem auto;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;position: relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.25rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
 }

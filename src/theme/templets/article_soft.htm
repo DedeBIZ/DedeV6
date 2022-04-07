@@ -45,16 +45,15 @@
 					<p><small>官方网址：</small><span>{dede:field.officialurl/}</span></p>
 					<p><small>演示网址：</small><span>{dede:field.officialdemo/}</span></p>
 					<p><small>下载次数：</small><span><script src="{dede:field.phpurl/}/disdls.php?aid={dede:field.id/}" language="javascript"></script></span></p>
-					<p>下载地址</p>
-					<p>
-						<ul class="downurllist">
-							{dede:field name='softlinks'/}
-						</ul>
-					</p>
+					<p><small>详细介绍：</small><span>{dede:field.introduce/}</span></p>
 					<p>下载说明</p>
 					<div class="alert alert-success" role="alert">
 						{dede:softmsg/}
 					</div>
+					<p>下载地址</p>
+					<ul class="downurllist">
+						{dede:field name='softlinks'/}
+					</ul>
 				</div>
 				<!-- /.body -->
 				<div class="clearfix"></div>
