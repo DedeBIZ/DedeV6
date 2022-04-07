@@ -289,7 +289,7 @@ class Archives
     function MakeHtml($isremote = 0)
     {
         global $fileFirst, $cfg_basehost,$cfg_rewrite;
-        if ($cfg_rewrite) {
+        if ($cfg_rewrite == 'Y') {
             return '';
         }
 

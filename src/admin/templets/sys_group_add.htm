@@ -30,7 +30,7 @@
           	
           	$dsql->SetQuery("Select `rank` From `#@__admintype`");
           	$dsql->Execute();
-          	while($row = $dsql->GetObject()) echo '<span style='color:#e74d58'>'.$row->rank.'</span>、';
+          	while($row = $dsql->GetObject()) echo '<span style=\'color:#e74d58\'>'.$row->rank.'</span>';
           	?>
                   ，级别值必须小于10，超过或等于10所有权限设置将无效(超级管理员)，如果10个组不能完全满足您的要求，允许使用小数）</td>
               </tr>
