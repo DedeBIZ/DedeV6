@@ -51,7 +51,7 @@ else if ($dopost == 'savequick') {
     $templist = "{style}/list_{$nid}.htm";
     $temparticle = "{style}/article_{$nid}.htm";
     $queryTemplate = "INSERT INTO `#@__arctype`(reid,topid,sortrank,typename,namegk,enname,ennamegk,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`)
-    VALUES('~reid~','~topid~','~rank~','~typename~','~namegk~','~enname~','~ennamegk~','~bigpic~','~litimg~','~typedir~','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','0','0','','','~typename~','0','','','0','0','0','','')";
+    VALUES('~reid~','~topid~','~rank~','~typename~','','','','','','~typedir~','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','0','0','','','~typename~','0','','','0','0','0','','')";
     if (empty($savetype)) {
         foreach ($_POST as $k => $v) {
             if (preg_match("#^posttype#", $k)) {

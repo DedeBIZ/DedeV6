@@ -10,7 +10,6 @@
  */
 if (!defined('DEDEMEMBER')) exit('dedebiz');
 require_once(DEDEINC.'/image.func.php');
-require_once(DEDEINC.'/archives.func.php');
 require_once(DEDEINC."/userlogin.class.php");
 //检查用户是否被禁言
 CheckNotAllow();

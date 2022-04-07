@@ -10,7 +10,6 @@
  */
 require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
 require_once(DEDEINC.'/image.func.php');
-require_once(DEDEINC.'/archives.func.php');
 require_once(DEDEINC.'/archive/partview.class.php');
 $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '';
 $backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn btn-success btn-sm'>记忆的列表页</a> &nbsp;" : '';

@@ -87,11 +87,11 @@ if (!function_exists('GetChannelTable')) {
     {
         global $dsql;
         if ($formtype == 'archive') {
-            $query = "SELECT ch.maintable, ch.addtable FROM #@__arctiny tin LEFT JOIN #@__channeltype ch ON ch.id=tin.channel WHERE tin.id='$id'";
+            $query = "SELECT ch.maintable, ch.addtable FROM `#@__arctiny` tin LEFT JOIN `#@__channeltype` ch ON ch.id=tin.channel WHERE tin.id='$id'";
         } else if ($formtype == 'typeid') {
-            $query = "SELECT ch.maintable, ch.addtable FROM #@__arctype act LEFT JOIN #@__channeltype ch ON ch.id=act.channeltype WHERE act.id='$id'";
+            $query = "SELECT ch.maintable, ch.addtable FROM `#@__arctype` act LEFT JOIN `#@__channeltype` ch ON ch.id=act.channeltype WHERE act.id='$id'";
         } else {
-            $query = "SELECT maintable, addtable FROM #@__channeltype WHERE id='$id'";
+            $query = "SELECT maintable, addtable FROM `#@__channeltype` WHERE id='$id'";
         }
         $row = $dsql->GetOne($query);
         return $row;

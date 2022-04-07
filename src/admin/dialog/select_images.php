@@ -19,8 +19,8 @@ if (empty($imgstick)) {
 $noeditor = isset($noeditor) ? $noeditor : '';
 $activepath = str_replace('.', '', $activepath);
 $activepath = preg_replace("#\/{1,}#", '/', $activepath);
-if (strlen($activepath) < strlen($cfg_medias_dir)) {
-    $activepath = $cfg_medias_dir;
+if (strlen($activepath) < strlen($cfg_image_dir)) {
+    $activepath = $cfg_image_dir;
 }
 $inpath = $cfg_basedir.$activepath;
 $activeurl = '..'.$activepath;
