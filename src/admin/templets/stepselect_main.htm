@@ -156,7 +156,7 @@ li{float:left;padding-right:10px;line-height:26px}
     <div id='edsta'>
         <center><img src='../static/web/img/loadinglit.gif'></center>
     </div>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
+    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable mt-3">
         <tr>
             <td height="26" background="../static/web/img/wbg.gif" colspan="6" style="padding-left:10px">联动枚举组管理</td>
         </tr>
@@ -288,8 +288,8 @@ if(!empty($egroup))
         <form name='form1' action='stepselect_main.php' method='post'>
             <input type='hidden' name='action' value='delenumAllSel' />
             {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-            <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-                onMouseOut="javascript:this.bgColor='#FFFFFF';">
+            <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+                onMouseOut="javascript:this.bgColor='#ffffff';">
                 <td><input type='checkbox' name='ids[]' value='{dede:field.id /}' class='np' /></td>
                 <td>{dede:field.id /}</td>
                 <td>
@@ -373,8 +373,8 @@ else
             <td>操作</td>
         </tr>
         {dede:datalist}
-        <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-            onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+            onMouseOut="javascript:this.bgColor='#ffffff';">
             <td><input type='checkbox' name='ids[]' value='{dede:field.id /}' class='np' /></td>
             <td> {dede:field.id /} </td>
             <td> <a href='stepselect_main.php?egroup={dede:field.egroup /}'>{dede:field.itemname /}</a> </td>

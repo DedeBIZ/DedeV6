@@ -78,7 +78,7 @@ class OxWindow
      */
     function AddItem($iname, $ivalue)
     {
-        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>";
+        $this->myWinItem .= "<tr bgcolor='#ffffff'>";
         $this->myWinItem .= "<td width='30%'>$iname</td>";
         $this->myWinItem .= "<td width='70%'>$ivalue</td>";
         $this->myWinItem .= "</tr>";
@@ -104,7 +104,7 @@ class OxWindow
         } else {
             $colspan = "";
         }
-        $this->myWinItem .= "<tr bgcolor='#FFFFFF'>";
+        $this->myWinItem .= "<tr bgcolor='#ffffff'>";
         $this->myWinItem .= "<td $colspan $height>$ivalue</td>";
         $this->myWinItem .= "</tr>";
     }

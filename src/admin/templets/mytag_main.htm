@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
     <tr>
       <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">
         自定义标记管理
@@ -26,7 +26,7 @@
       <td width="20%">管理</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
-    <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+    <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid /}</td>
       <td>{dede:field.tagname /}</td>
       <td>{dede:field.typename function='TestType(@me)'/}</td>

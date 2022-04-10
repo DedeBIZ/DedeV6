@@ -16,7 +16,7 @@
   </script>
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="makehtml_js_action.php" method="get" target='stafrm'>
       <tr>
         <td height="26" colspan="2" background='../static/web/img/tbg.gif'>
@@ -30,8 +30,8 @@
         </td>
       </tr>
       <tr>
-        <td width="108" valign="top" bgcolor="#FFFFFF">选择栏目：</td>
-        <td width="377" valign="top" bgcolor="#FFFFFF">
+        <td width="108" valign="top" bgcolor="#ffffff">选择栏目：</td>
+        <td width="377" valign="top" bgcolor="#ffffff">
           <?php
        if(empty($cid)) $cid="0";
        $tl = new TypeLink($cid);
@@ -44,22 +44,22 @@
         </td>
       </tr>
       <tr>
-        <td height="36" bgcolor="#FFFFFF">JS文件：</td>
-        <td height="36" bgcolor="#FFFFFF">
+        <td height="36" bgcolor="#ffffff">JS文件：</td>
+        <td height="36" bgcolor="#ffffff">
           <span>
             <?php echo "&lt;script src='".$cfg_cmspath."/static/js/".$cid.".js' language='javascript'&gt;&lt;/script&gt;"; ?>
           </span>
         </td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#FFFFFF">模板文件：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="templet" type="text" id="templet" style="width:300px" value="plus/js.htm">
+        <td height="26" valign="top" bgcolor="#ffffff">模板文件：</td>
+        <td height="26" valign="top" bgcolor="#ffffff"><input name="templet" type="text" id="templet" style="width:300px" value="plus/js.htm">
           <button type="button" class="btn btn-success btn-sm" name="set4" onClick="SelectTemplets('form1.templet');">浏览</button>
         </td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#FFFFFF">更新选项：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF">
+        <td height="26" valign="top" bgcolor="#ffffff">更新选项：</td>
+        <td height="26" valign="top" bgcolor="#ffffff">
           <label><input type="radio" name="uptype" value="all" class="np">
           更新所有栏目</label>
           <label><input name="uptype" type="radio" value="onlyme" class="np" checked>
@@ -90,7 +90,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#FFFFFF">
+    <tr bgcolor="#ffffff">
       <td colspan="2" id="mtd">
         <div id='mdv' style='width:100%;height:350px;'>
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>

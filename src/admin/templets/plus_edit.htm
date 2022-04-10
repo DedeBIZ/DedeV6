@@ -21,26 +21,26 @@ body {
       <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="plus_main.php">插件管理</a> &gt; 修改插件：</td>
     </tr>
     <tr> 
-      <td width="19%" align="center" bgcolor="#FFFFFF">插件名称</td>
-      <td width="81%" bgcolor="#FFFFFF">
+      <td width="19%" align="center" bgcolor="#ffffff">插件名称</td>
+      <td width="81%" bgcolor="#ffffff">
       	<input type='text' name='plusname' style='width:180px' value='<?php echo $row['plusname']?>'>
       </td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF">作者</td>
-      <td bgcolor="#FFFFFF">
+      <td align="center" bgcolor="#ffffff">作者</td>
+      <td bgcolor="#ffffff">
       	<?php echo $row['writer']?>
       </td>
     </tr>
      <tr> 
-      <td align="center" bgcolor="#FFFFFF">菜单配置</td>
-      <td bgcolor="#FFFFFF">
+      <td align="center" bgcolor="#ffffff">菜单配置</td>
+      <td bgcolor="#ffffff">
       	<textarea name="menustring" rows="6" id="menustring" style="width:80%"><?php echo $row['menustring']?></textarea>
       </td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF">文件列表</td>
-      <td bgcolor="#FFFFFF">文件用&quot;,&quot;分开，路径相对于管理目录（当前目录）<br>
+      <td align="center" bgcolor="#ffffff">文件列表</td>
+      <td bgcolor="#ffffff">文件用&quot;,&quot;分开，路径相对于管理目录（当前目录）<br>
         <textarea name="filelist" rows="8" id="filelist" style="width:80%"><?php echo $row['filelist']?></textarea></td>
     </tr>
     <tr bgcolor="#F9FDF0"> 

@@ -23,34 +23,34 @@
         <tr align="center" height="26">
           <td height="30" colspan="2" align="left" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif' style="padding-left:10px">增加一个配送方式</td>
         </tr>
-        <tr align="center" height="26" bgcolor="#FFFFFF">
-          <td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+        <tr align="center" height="26" bgcolor="#ffffff">
+          <td width="13%" height="30" align="right" bgcolor="#ffffff">
             &nbsp;&nbsp;名称：
           </td>
-          <td align="left" bgcolor="#FFFFFF"><input name="dname" style="margin-left:6px;" type="text" id="dname">
+          <td align="left" bgcolor="#ffffff"><input name="dname" style="margin-left:6px;" type="text" id="dname">
             &nbsp;*此处填写配送方式名称</td>
         </tr>
         <tr align="center" height="26" bgcolor="#ECF8FF">
-          <td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+          <td width="13%" height="30" align="right" bgcolor="#ffffff">
             &nbsp;&nbsp;手续费：
           </td>
-          <td align="left" bgcolor="#FFFFFF">
+          <td align="left" bgcolor="#ffffff">
             <input name="price" type="text" id="price" style="margin-left:6px;" value="0.00" size="6" maxlength="6">
             元
             &nbsp;*发货时所用的手续费，若要收取，请填写(精确到小数位两位)
           </td>
         </tr>
         <tr align="center" height="26" bgcolor="#ECF8FF">
-          <td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+          <td width="13%" height="30" align="right" bgcolor="#ffffff">
             &nbsp;&nbsp;简要说明：
           </td>
-          <td align="left" bgcolor="#FFFFFF">
+          <td align="left" bgcolor="#ffffff">
             <textarea name="des" id="des" style="margin-left:6px;height:50px;width:320px;"></textarea>
             &nbsp;最多100个文字内，简要说明一下
           </td>
         </tr>
         <tr bgcolor="#F3FFDD">
-          <td height="50" colspan="3" align="center" bgcolor="#FFFFFF">
+          <td height="50" colspan="3" align="center" bgcolor="#ffffff">
             <table width="200" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
               <tr align="center">
                 <td>
@@ -74,7 +74,7 @@
           </td>
         </tr>
         <tr bgcolor="#F3FFDD">
-          <td height="50" colspan="3" align="center" bgcolor="#FFFFFF">
+          <td height="50" colspan="3" align="center" bgcolor="#ffffff">
             <table width="100%" border="0" cellpadding="1" cellspacing="2" style="BORDER: #CCC 1px solid;" class="table table-striped">
               <?php foreach($deliveryarr as $rs) { ?>
               <input type="hidden" name="pid[]" value="<?php echo $rs['pid']; ?>">
@@ -95,7 +95,7 @@
           </td>
         </tr>
         <tr bgcolor="#F3FFDD">
-          <td height="36" colspan="3" align="left" bgcolor="#FFFFFF">
+          <td height="36" colspan="3" align="left" bgcolor="#ffffff">
             <button name="imageField2" type="submit" class="btn btn-success">修改</button>
           </td>
         </tr>

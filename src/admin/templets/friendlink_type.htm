@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="friendlink_type.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
@@ -32,7 +32,7 @@
       $k++;
 	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>">
-      <tr align="center" bgcolor="#FFFFFF">
+      <tr align="center" bgcolor="#ffffff">
         <td height="26" valign="top"><?php echo $row->id; ?>
         </td>
 
@@ -49,11 +49,11 @@
       <tr bgcolor="#F8FCF1">
         <td height="26" colspan="5" valign="top" bgcolor="#f8f8f8">新增一个网站类型：</td>
       </tr>
-      <tr height="26" align="center" bgcolor="#FFFFFF">
+      <tr height="26" align="center" bgcolor="#ffffff">
         <td colspan="2" valign="top">
           <input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%"></td>
 
-        <td align="center" bgcolor="#FFFFFF">
+        <td align="center" bgcolor="#ffffff">
           <label><input name="check_new" type="checkbox" id="check_new" value="1" checked='1' class='np' />
           新增 </label></td>
       </tr>

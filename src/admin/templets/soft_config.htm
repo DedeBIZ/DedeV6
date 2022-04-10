@@ -19,7 +19,7 @@
   </script>
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="soft_config.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
@@ -33,8 +33,8 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF" width="200">链接显示方式：</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff" width="200">链接显示方式：</td>
+        <td bgcolor="#ffffff">
           <label><input type="radio" name="downtype" class="np" value="0"
             <?php if($row['downtype']==0) echo " checked='checked' "; ?>>
           直接显示地址列表</label>
@@ -44,8 +44,8 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">附件下载方式：</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">附件下载方式：</td>
+        <td bgcolor="#ffffff">
           <label><input type="radio" name="gotojump" class="np" value="0"
             <?php if($row['gotojump']==0) echo " checked='checked' "; ?>>
           链接到真实软件地址</label>
@@ -55,8 +55,8 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">是否启用镜像站点：</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">是否启用镜像站点：</td>
+        <td bgcolor="#ffffff">
           <label><input type="radio" name="ismoresite" class="np" value="1"
             <?php if($row['ismoresite']==1) echo " checked='checked' "; ?>>
           启用</label>
@@ -65,8 +65,8 @@
           不启用</label></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">启用镜像站点后是否保留本地下载：</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">启用镜像站点后是否保留本地下载：</td>
+        <td bgcolor="#ffffff">
           <label><input type="radio" name="islocal" class="np" value="1"
             <?php if($row['islocal']==1) echo " checked='checked' "; ?>>
           保留</label>
@@ -75,8 +75,8 @@
           不保留</label></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">镜像处理方式：</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">镜像处理方式：</td>
+        <td bgcolor="#ffffff">
           <label><input type="radio" name="moresitedo" class="np" value="1"
             <?php if($row['moresitedo']==1) echo " checked='checked' "; ?>>
           根据本地地址和服务器列表自动生成</label>
@@ -90,8 +90,8 @@
         </td>
         </td>
       <tr>
-        <td bgcolor="#FFFFFF">下载默认等级：</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">下载默认等级：</td>
+        <td bgcolor="#ffffff">
           <select name="dfrank" id="dfrank" style="width:150px">
             <?php
               $urank = $cuserLogin->getUserRank();
@@ -108,14 +108,14 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">下载默认金币：</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">下载默认金币：</td>
+        <td bgcolor="#ffffff">
           <input type="text" name="dfywboy" class="np" value="<?php echo $row['dfywboy']; ?>" style='width:80px;' />
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">参数限制方式：</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">参数限制方式：</td>
+        <td bgcolor="#ffffff">
             <label><input type="radio" name="argrange" class="np" value="0"
             <?php if($row['argrange']==0) echo " checked='checked' "; ?>> 允许发布时重新选择权限</label> 
             <label><input type="radio" name="argrange" class="np" value="2"
@@ -127,7 +127,7 @@
           镜像服务器列表：</td>
       </tr>
       <tr>
-        <td colspan="2" bgcolor="#FFFFFF">服务器网址：
+        <td colspan="2" bgcolor="#ffffff">服务器网址：
           <input name="serverurl" type="text" id="serverurl" value="http://">
           服务器名称：
           <input name="servername" type="text" id="servername">
@@ -137,13 +137,13 @@
         </td>
       </tr>
       <tr>
-        <td height="62" colspan="2" bgcolor="#FFFFFF"><textarea name="sites" id="sites" style="width:99%;height:150px"><?php echo $row['sites']; ?></textarea></td>
+        <td height="62" colspan="2" bgcolor="#ffffff"><textarea name="sites" id="sites" style="width:99%;height:150px"><?php echo $row['sites']; ?></textarea></td>
       </tr>
       <tr>
         <td height="26" colspan="2" bgcolor="#f8f8f8" style="padding-left:10px">下载说明：</td>
       </tr>
       <tr>
-        <td height="62" colspan="2" bgcolor="#FFFFFF"><?php GetEditor('downmsg',$row['downmsg'],250); ?></td>
+        <td height="62" colspan="2" bgcolor="#ffffff"><?php GetEditor('downmsg',$row['downmsg'],250); ?></td>
       </tr>
       <tr>
         <td height="36" colspan="2" bgcolor="#f8f8f8" align="center">

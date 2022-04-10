@@ -21,7 +21,7 @@
    </style>
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
+   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable mt-3">
       <tr>
          <td bgcolor="#F2F2F2" colspan="6" style="padding-left:10px">
             <form action='templets_one.php' name='sss'>
@@ -72,8 +72,8 @@
       <form name='form1' action='templets_one_edit.php'>
          <input type='hidden' name='dopost' value='mksel' />
          {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-         <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-            onMouseOut="javascript:this.bgColor='#FFFFFF';">
+         <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+            onMouseOut="javascript:this.bgColor='#ffffff';">
             <td><input type='checkbox' name='ids[]' value='{dede:field.aid /}' class='np'></td>
             <td>{dede:field.aid /}</td>
             <td><a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=edit'>{dede:field.title /}</a></td>

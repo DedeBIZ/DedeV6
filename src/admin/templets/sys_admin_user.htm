@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-  <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3">
     <tr>
       <td height="26" colspan="5" background="../static/web/img/tbg.gif">
         <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
@@ -24,7 +24,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#FFFFFF">
+    <tr bgcolor="#ffffff">
       <td height="26" colspan="5">
         <div class="alert alert-info mb-0">为了防止错误操作，系统不允许在管理界面删除超级管理员，如果确实要删除，请自行在数据表dede_admin中删除</div>
       </td>
@@ -37,7 +37,7 @@
       <td width="23%" align="center">管理项</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
-    <tr bgcolor="#FFFFFF" align="center">
+    <tr bgcolor="#ffffff" align="center">
       <td rowspan="2">{dede:field.userid /}</td>
       <td rowspan="2">{dede:field.uname /}<br> </td>
       <td>{dede:field.usertype function="GetUserType(@me)"/}</td>
@@ -49,7 +49,7 @@
       </td>
     </tr>
     <tr>
-      <td colspan="2" align="center" bgcolor="#FFFFFF">
+      <td colspan="2" align="center" bgcolor="#ffffff">
         登录时间：{dede:field.logintime function="GetDateTimeMk(@me)" /}　登录IP：{dede:field.loginip/}
       </td>
     </tr>

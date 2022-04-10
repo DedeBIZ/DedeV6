@@ -29,12 +29,12 @@ function checkSubmit()
 </script>
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
+<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
   <tr>
     <td height="20" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href='<?php echo $ENV_GOBACK_URL; ?>'>会员管理</a> &gt; 查看会员</td>
 </tr>
 <tr>
-<td height="200" bgcolor="#FFFFFF" align='center'>
+<td height="200" bgcolor="#ffffff" align='center'>
 	<?php
 	if($row['matt']==10) echo "<span style='color:#dc3545'>当前用户是网站管理员关连的帐号，请小心操作</span>";
 	?>

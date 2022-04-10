@@ -45,7 +45,7 @@
   </script>
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin='8' topmargin='8'>
-  <table width="98%" align="center" border="0" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
+  <table width="98%" align="center" border="0" cellpadding="3" cellspacing="1" class="table maintable mt-3">
     <tr>
       <td height="26" background='../static/web/img/tbg.gif'>
         <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
@@ -60,15 +60,15 @@
       <td height="20" bgcolor="#ffffff"><img src="../static/web/img/help.gif">提示：图片类型仅支持jpg、png、gif、wbmp格式，flash为.swf格式，视音频和附件为限定扩展名的类型（可在系统参数中修改）</td>
     </tr>
     <tr>
-      <td height="69" align="center" valign="top" bgcolor="#FFFFFF">
+      <td height="69" align="center" valign="top" bgcolor="#ffffff">
         <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
           <form enctype="multipart/form-data" name='form1' action="media_add.php" method="POST"
             onSubmit="return CheckSubmit();">
             <input type="hidden" name="dopost" value="upload">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
-              <td width="15%" height="30" align="center" bgcolor="#FFFFFF" class='bline'>媒体类型：</td>
-              <td width="85%" height="26" bgcolor="#FFFFFF" class='bline' style="text-align:left">
+              <td width="15%" height="30" align="center" bgcolor="#ffffff" class='bline'>媒体类型：</td>
+              <td width="85%" height="26" bgcolor="#ffffff" class='bline' style="text-align:left">
                 <label><input name="mediatype" type="radio" class="np" value="1" checked='1' />
                 图片 </label>
                 <label><input type="radio" name="mediatype" class="np" value="2">
@@ -80,36 +80,36 @@
               </td>
             </tr>
             <tr>
-              <td height="30" align="center" bgcolor="#FFFFFF" class='bline'>说明标题：</td>
-              <td height="26" bgcolor="#FFFFFF" class='bline' style="text-align:left">
+              <td height="30" align="center" bgcolor="#ffffff" class='bline'>说明标题：</td>
+              <td height="26" bgcolor="#ffffff" class='bline' style="text-align:left">
                 <input name="title" type="text" id="title" size="30" style="width:300px">
               </td>
             </tr>
             <tr>
-              <td height="30" align="center" bgcolor="#FFFFFF" class='bline'>参数说明：</td>
-              <td height="30" bgcolor="#FFFFFF" class='bline' colspan='2' style="text-align:left">
+              <td height="30" align="center" bgcolor="#ffffff" class='bline'>参数说明：</td>
+              <td height="30" bgcolor="#ffffff" class='bline' colspan='2' style="text-align:left">
                 图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义
               </td>
             </tr>
             <tr>
-              <td height="30" align="center" bgcolor="#FFFFFF" class='bline'>附加参数：</td>
-              <td height="26" bgcolor="#FFFFFF" class='bline' style="text-align:left">
+              <td height="30" align="center" bgcolor="#ffffff" class='bline'>附加参数：</td>
+              <td height="26" bgcolor="#ffffff" class='bline' style="text-align:left">
                 宽：<input name="mediawidth" type="text" id="mediawidth" size="5">（像素）
                 高：<input name="mediaheight" type="text" id="mediaheight" size="5">（像素）
                 播放时间：<input name="playtime" type="text" id="mediawidth3" size="5">（分钟）
               </td>
             </tr>
             <tr>
-              <td height="30" align="center" bgcolor="#FFFFFF" class='bline'>上传文件：</td>
-              <td bgcolor="#FFFFFF" class='bline' style="text-align:left">数量：
+              <td height="30" align="center" bgcolor="#ffffff" class='bline'>上传文件：</td>
+              <td bgcolor="#ffffff" class='bline' style="text-align:left">数量：
                 <input name="picnum" type="text" id="picnum" value="5" size="6">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="MakeUpload()">增加</button>&nbsp;
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="ResetUpload()">恢复</button>
               </td>
             </tr>
             <tr>
-              <td align="center" bgcolor="#FFFFFF"></td>
-              <td bgcolor="#FFFFFF" style="text-align:left">
+              <td align="center" bgcolor="#ffffff"></td>
+              <td bgcolor="#ffffff" style="text-align:left">
                 <input name="upfile1" type="file" id="upfile1" style='width:300px' size='30' class='pubinputs' /><br>
                 <input name="upfile2" type="file" id="upfile2" style='width:300px' size='30' class='pubinputs' /><br>
                 <input name="upfile3" type="file" id="upfile3" style='width:300px' size='30' class='pubinputs' /><br>
@@ -119,7 +119,7 @@
               </td>
             </tr>
             <tr>
-              <td height="50" colspan="2" bgcolor="#FFFFFF">
+              <td height="50" colspan="2" bgcolor="#ffffff">
                 <table width="60%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td align="center">

@@ -88,14 +88,14 @@ foreach($payment_arr as $value){
   <td height="30" colspan="2" align="left" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'>&nbsp;支付接口配置参数
 </td>
 </tr>
-<tr align="center" height="26" bgcolor="#FFFFFF">
-<td height="30" colspan="2" align="left" bgcolor="#FFFFFF">
+<tr align="center" height="26" bgcolor="#ffffff">
+<td height="30" colspan="2" align="left" bgcolor="#ffffff">
 &nbsp;&nbsp;<?php echo $message; ?></td>
 </tr>
-<tr align="center" height="26" bgcolor="#FFFFFF">
-<td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+<tr align="center" height="26" bgcolor="#ffffff">
+<td width="13%" height="30" align="right" bgcolor="#ffffff">
 &nbsp;&nbsp;接口类型：</td>
-<td align="left" bgcolor="#FFFFFF">
+<td align="left" bgcolor="#ffffff">
 <div style="padding:6px; line-height:24px;">
 <?php foreach($cfg_pay_info['name'] as $k => $val) { ?>
 <li style="float:left; width:180px;">
@@ -106,49 +106,49 @@ foreach($payment_arr as $value){
 </td>
 </tr>
 <tr align="center" height="26" bgcolor="#ECF8FF">
-<td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+<td width="13%" height="30" align="right" bgcolor="#ffffff">
 &nbsp;&nbsp;商户号：</td>
-<td align="left" bgcolor="#FFFFFF">
+<td align="left" bgcolor="#ffffff">
 	<input name="SalesId" type="text" id="SalesId" class='pubinputs' value="" onKeyUp="setPayment('userid',this.value)"/>
   &nbsp;此处填写您的支付帐号、客户号或客户id等，此帐号在支付服务提供商处取得</td>
 </tr>
 
 <tr align="center" height="26" bgcolor="#ECF8FF">
-<td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+<td width="13%" height="30" align="right" bgcolor="#ffffff">
 &nbsp;&nbsp;邮箱：</td>
-<td align="left" bgcolor="#FFFFFF"> <input name="SalesEmail" type="text" id="SalesEmail"  class='pubinputs' value="" onMouseOver="setPayment('email',this.value)"/>
+<td align="left" bgcolor="#ffffff"> <input name="SalesEmail" type="text" id="SalesEmail"  class='pubinputs' value="" onMouseOver="setPayment('email',this.value)"/>
   &nbsp;使用支付宝接口时,需填写支付宝账号邮箱</td>
 </tr>
 
 <tr align="center" height="26" bgcolor="#ECF8FF">
-<td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+<td width="13%" height="30" align="right" bgcolor="#ffffff">
 &nbsp;&nbsp;私钥：</td>
-<td align="left" bgcolor="#FFFFFF">
+<td align="left" bgcolor="#ffffff">
 	<input name="SalesKey" type="text" id="SalesKey"  class='pubinputs' style="width:450px;" value="" onMouseOver="setPayment('key',this.value)"/>
   <br>
   &nbsp;签约商家请填写“交易安全校验码(key)”；未签约商家不用填写此项.(该项只支持数字和英文字母)</td>
 </tr>
 
 <tr align="center" height="26" bgcolor="#ECF8FF">
-<td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+<td width="13%" height="30" align="right" bgcolor="#ffffff">
 &nbsp;&nbsp;支持交易货币：</td>
-<td align="left" bgcolor="#FFFFFF">
+<td align="left" bgcolor="#ffffff">
   <input name="SalesCurpay" type="checkbox" id="SalesCurpay" value="CNY" checked="checked" class="np">
   人民币&nbsp;*现只支持人民币,根据支付接口与银行卡决定,默认为人民币.</td>
 </tr>
 
 <tr align="center" height="26" bgcolor="#ECF8FF">
-<td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+<td width="13%" height="30" align="right" bgcolor="#ffffff">
 &nbsp;&nbsp;支付手续费：</td>
-<td align="left" bgcolor="#FFFFFF">
+<td align="left" bgcolor="#ffffff">
   <input name="SalesExp" type="text"  class='pubinputs' style="width:80px" value="" onMouseOver="setPayment('exp',this.value)"/>
   以百分比计算,手续费将计算在产品价格内.如果3% 则填0.03</td>
 </tr>
 
 <tr align="center" height="26" bgcolor="#ECF8FF">
-<td width="13%" height="30" align="right" bgcolor="#FFFFFF">
+<td width="13%" height="30" align="right" bgcolor="#ffffff">
 &nbsp;&nbsp;支付接口申请地址：</td>
-<td align="left" bgcolor="#FFFFFF">
+<td align="left" bgcolor="#ffffff">
   <a id="payreg" href="http://union.tenpay.com/mch/mch_register.shtml?posid=22&actid=84&opid=50&whoid=31&sp_suggestuser=1202347401" target="_bank" style="margin-left:6px;">点击申请</a>
   <br>
   <img src="../../user/images/pay/tenpay.jpg" id="regimage">
@@ -168,7 +168,7 @@ ShowReg(0);
         <td height="26" colspan="3" align="left" bgcolor="#EDF9D5">&nbsp;如果该配置无效要手动修改,可打开/data/sys_pay.cache.php文件进行手工配置</td>
       </tr>
       <tr bgcolor="#F3FFDD">
-        <td height="50" colspan="3" align="center" bgcolor="#FFFFFF"> <table width="200" border="0" cellspacing="1" cellpadding="1">
+        <td height="50" colspan="3" align="center" bgcolor="#ffffff"> <table width="200" border="0" cellspacing="1" cellpadding="1">
             <tr>
               <td align="center" valign="middle"><input type="reset" name="button"  value="重置" class='np coolbg' />              </td>
               <td align="center" valign="middle"><input name="imageField" type="submit" class='np coolbg' value="提交"/></td>

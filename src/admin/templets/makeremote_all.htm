@@ -43,18 +43,18 @@ function changeDopost(postval)
       </td>
     </tr>
     <tr>
-      <td width="61" valign="top" bgcolor="#FFFFFF">
+      <td width="61" valign="top" bgcolor="#ffffff">
         <label><input type="checkbox" name="remoteiterm" id="remoteiterm"  onChange="javascript:checkAll()"></label>&nbsp;选择
       </td>
-      <td width="185" align="center" valign="top" bgcolor="#FFFFFF">项目（站点根目录）</td>
-      <td width="265" align="center" valign="top" bgcolor="#FFFFFF">项目说明</td>
-      <td width="195" align="center" valign="top" bgcolor="#FFFFFF">选择服务器</td>
-      <td width="196" align="center" valign="top" bgcolor="#FFFFFF">状态</td>
+      <td width="185" align="center" valign="top" bgcolor="#ffffff">项目（站点根目录）</td>
+      <td width="265" align="center" valign="top" bgcolor="#ffffff">项目说明</td>
+      <td width="195" align="center" valign="top" bgcolor="#ffffff">选择服务器</td>
+      <td width="196" align="center" valign="top" bgcolor="#ffffff">状态</td>
     </tr>
     <?php
     foreach($remotefile as $key => $value)
 	  {
-    $bgcolor = ($key % 2 == 0)? '#E6F3CD' : '#FFFFFF';
+    $bgcolor = ($key % 2 == 0)? '#E6F3CD' : '#ffffff';
     ?>
     <tr>
       <td width="60" align="center" valign="top" bgcolor="<?php echo $bgcolor; ?>"><input name="Iterm[<?php echo $key; ?>]" type="checkbox" id="Iterm" value="<?php echo $value['filedir'] ; ?>"></td>
@@ -91,7 +91,7 @@ function changeDopost(postval)
         </tr>
       </table></td>
   </tr>
-  <tr bgcolor="#FFFFFF">
+  <tr bgcolor="#ffffff">
     <td colspan="5" id="mtd"><div id='mdv' style='width:100%;height:350px;'>
         <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
       </div>

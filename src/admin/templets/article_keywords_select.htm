@@ -42,7 +42,7 @@ function AddNewKw()
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="1" topmargin="1">
 <div class="main">
-  <table width="100%" align="center" border="0" cellpadding="1" cellspacing="1" class="table maintable table-bordered mt-3">
+  <table width="100%" align="center" border="0" cellpadding="1" cellspacing="1" class="table maintable mt-3">
    <form name='form1' action="article_keywords_main.php">
    <input type='hidden' name='dopost' value='add' />
     <tr id="addnew" style="display:none">
@@ -76,7 +76,7 @@ function AddNewKw()
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF" style="line-height:180%">
+        <td bgcolor="#ffffff" style="line-height:180%">
         	{dede:datalist empty='<center>暂无内容</center>'}
         	 <a href='javascript:SelKw("{dede:field.keyword/}")'>{dede:field.keyword/}</a>
           {/dede:datalist}

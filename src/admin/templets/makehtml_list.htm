@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="makehtml_list_action.php" method="get" target='stafrm'>
       <tr>
         <td height="26" colspan="2" background='../static/web/img/tbg.gif'>
@@ -24,8 +24,8 @@
         </td>
       </tr>
       <tr>
-        <td width="108" valign="top" bgcolor="#FFFFFF">选择栏目：</td>
-        <td width="377" valign="top" bgcolor="#FFFFFF">
+        <td width="108" valign="top" bgcolor="#ffffff">选择栏目：</td>
+        <td width="377" valign="top" bgcolor="#ffffff">
           <?php
        if(empty($cid)) $cid=0;
        $tl = new TypeLink($cid);
@@ -38,12 +38,12 @@
         </td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#FFFFFF">每次最大创建页数：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10"> 个文件</td>
+        <td height="26" valign="top" bgcolor="#ffffff">每次最大创建页数：</td>
+        <td height="26" valign="top" bgcolor="#ffffff"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10"> 个文件</td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#FFFFFF">是否更新子栏目：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF">
+        <td height="26" valign="top" bgcolor="#ffffff">是否更新子栏目：</td>
+        <td height="26" valign="top" bgcolor="#ffffff">
           <label><input name="upnext" type="radio" class="np" value="1" checked='1' />
           更新子级栏目</label>
           <label><input type="radio" name="upnext" class="np" value="0">
@@ -74,7 +74,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#FFFFFF">
+    <tr bgcolor="#ffffff">
       <td colspan="2" id="mtd">
         <div id='mdv' style='width:100%;height:350px;'>
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>

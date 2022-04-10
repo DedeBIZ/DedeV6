@@ -7,66 +7,66 @@
 <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 <link rel="stylesheet" href="../static/web/css/admin.css">
 <body>
-<table width="50%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#CCCCCC" class="table maintable table-bordered mt-3">
+<table width="50%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#CCCCCC" class="table maintable mt-3">
   <tr>
     <td height="26" colspan="2" align="center" bgcolor="#F0F0F0">订单信息</td>
   </tr>
 {dede:datalist}
   <tr>
-    <td width="29%" height="26" align="right" bgcolor="#FFFFFF">订单号：</td>
-    <td width="71%" bgcolor="#FFFFFF">&nbsp;{dede:field.oid/}</td>
+    <td width="29%" height="26" align="right" bgcolor="#ffffff">订单号：</td>
+    <td width="71%" bgcolor="#ffffff">&nbsp;{dede:field.oid/}</td>
   </tr>
    <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">商品名称：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;{dede:field.title/}</td>
+    <td height="26" align="right" bgcolor="#ffffff">商品名称：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;{dede:field.title/}</td>
   </tr>
    <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">单价（元/单位）:</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;{dede:field.uprice/}</td>
+    <td height="26" align="right" bgcolor="#ffffff">单价（元/单位）:</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;{dede:field.uprice/}</td>
   </tr>
    <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">数量：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;{dede:field.cartcount/}</td>
+    <td height="26" align="right" bgcolor="#ffffff">数量：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;{dede:field.cartcount/}</td>
   </tr>
   <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">支付方式：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;<?php echo GetSta($fields['state'],$oid)?></td>
+    <td height="26" align="right" bgcolor="#ffffff">支付方式：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;<?php echo GetSta($fields['state'],$oid)?></td>
   </tr>
   <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">配送：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;{dede:field.dname/} 费用:{dede:field.dprice/}元</td>
+    <td height="26" align="right" bgcolor="#ffffff">配送：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;{dede:field.dname/} 费用:{dede:field.dprice/}元</td>
   </tr>
    <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">购买时间：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;{dede:field.stime function=GetDateTimeMk(@me)/}</td>
+    <td height="26" align="right" bgcolor="#ffffff">购买时间：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;{dede:field.stime function=GetDateTimeMk(@me)/}</td>
   </tr>
    <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">收货人：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;<?php echo $row['consignee']?></td>
+    <td height="26" align="right" bgcolor="#ffffff">收货人：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;<?php echo $row['consignee']?></td>
   </tr>
   <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">地址：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;<?php echo $row['address']?></td>
+    <td height="26" align="right" bgcolor="#ffffff">地址：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;<?php echo $row['address']?></td>
   </tr>
   <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">邮编：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;<?php echo $row['zip']?></td>
+    <td height="26" align="right" bgcolor="#ffffff">邮编：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;<?php echo $row['zip']?></td>
   </tr>
   <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">联系电话：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;<?php echo $row['tel']?></td>
+    <td height="26" align="right" bgcolor="#ffffff">联系电话：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;<?php echo $row['tel']?></td>
   </tr>
   <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">邮箱：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;<?php echo $row['email']?></td>
+    <td height="26" align="right" bgcolor="#ffffff">邮箱：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;<?php echo $row['email']?></td>
   </tr>
   <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">留言：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;<?php echo $row['des']?></td>
+    <td height="26" align="right" bgcolor="#ffffff">留言：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;<?php echo $row['des']?></td>
   </tr>
   <tr>
-    <td height="26" align="right" bgcolor="#FFFFFF">合计（元）：</td>
-    <td height="26" bgcolor="#FFFFFF">&nbsp;{dede:field.priceCount/}元</td>
+    <td height="26" align="right" bgcolor="#ffffff">合计（元）：</td>
+    <td height="26" bgcolor="#ffffff">&nbsp;{dede:field.priceCount/}元</td>
   </tr>
 {/dede:datalist}
   <tr>

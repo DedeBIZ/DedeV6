@@ -52,20 +52,20 @@
 		<input type="hidden" name="action" value="saveedit">
 		<input type="hidden" name="acdir" value="<?php echo $acdir; ?>">
 		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
-		<table width='98%' border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable table-bordered mt-3">
+		<table width='98%' border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3">
 			<tr bgcolor='#EEF4EA'>
 				<td colspan='2' background='../static/web/img/wbg.gif' height='26' style="padding-left:10px">
 					<span>修改/新建模板：</span>
 				</td>
 			</tr>
-			<tr bgcolor='#FFFFFF'>
+			<tr bgcolor='#ffffff'>
 				<td>文件名称</td>
 				<td><input name=filename size=40 value="<?php echo $filename; ?>">（不允许用 “..” 形式的路径）</td>
 			</tr>
 			<tr bgcolor="#f8f8f8">
 				<td colspan='2' hieght="30" style="padding-left:10px">参考标签：</td>
 			</tr>
-			<tr bgcolor='#FFFFFF'>
+			<tr bgcolor='#ffffff'>
 				<td colspan='2'>
 					<?php
 					foreach ($helps as $key => $help)
@@ -76,7 +76,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan='2' bgcolor='#FFFFFF' style="border-top:1px solid #fff;">
+				<td colspan='2' bgcolor='#ffffff' style="border-top:1px solid #fff;">
 					<?php
 						foreach ($helps as $key => $help)
 						{
@@ -93,7 +93,7 @@
 					?>
 				</td>
 			</tr>
-			<tr bgcolor='#FFFFFF'>
+			<tr bgcolor='#ffffff'>
 				<td colspan='2'>
 					<textarea id="content" name="content" cols="150" rows="24" style="width:100%;height:450px"><?php echo $content; ?></textarea>
 				</td>

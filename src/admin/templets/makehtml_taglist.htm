@@ -36,7 +36,7 @@
   </script>
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center" class="table maintable mt-3">
     <form name="form1" action="makehtml_tag_action_list.php" method="get" target='stafrm'>
       <tr>
         <td height="26" colspan="2" background='../static/web/img/tbg.gif'>
@@ -55,8 +55,8 @@
         $row = $dsql->GetOne("Select tag From `#@__tagindex` where id = '$tagid' ");
       ?>
       <tr>
-        <td width="300" valign="top" bgcolor="#FFFFFF">输入标签：</td>
-        <td width="377" valign="top" bgcolor="#FFFFFF">
+        <td width="300" valign="top" bgcolor="#ffffff">输入标签：</td>
+        <td width="377" valign="top" bgcolor="#ffffff">
           <input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php">重新选择</a>
         </td>
       </tr>
@@ -64,8 +64,8 @@
       } else {
       ?>
       <tr>
-        <td width="300" valign="top" bgcolor="#FFFFFF">输入标签：</td>
-        <td width="377" valign="top" bgcolor="#FFFFFF">
+        <td width="300" valign="top" bgcolor="#ffffff">输入标签：</td>
+        <td width="377" valign="top" bgcolor="#ffffff">
           <select id='tagid' name='tagid' style='width:300px'></select>（请输入标签搜索）
         </td>
       </tr>
@@ -73,16 +73,16 @@
       }
       ?>
       <tr>
-        <td height="26" valign="top" bgcolor="#FFFFFF">生成位置：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" size="30" disabled> <a href="sys_info.php" class="text-success">【系统设置】</a>-【其他选项】中“TAGS生成目录”项进行调整</td>
+        <td height="26" valign="top" bgcolor="#ffffff">生成位置：</td>
+        <td height="26" valign="top" bgcolor="#ffffff"><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" size="30" disabled> <a href="sys_info.php" class="text-success">【系统设置】</a>-【其他选项】中“TAGS生成目录”项进行调整</td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#FFFFFF">每次最大创建页数：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10"> 个文件</td>
+        <td height="26" valign="top" bgcolor="#ffffff">每次最大创建页数：</td>
+        <td height="26" valign="top" bgcolor="#ffffff"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10"> 个文件</td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#FFFFFF">说明：</td>
-        <td height="26" valign="top" bgcolor="#FFFFFF">
+        <td height="26" valign="top" bgcolor="#ffffff">说明：</td>
+        <td height="26" valign="top" bgcolor="#ffffff">
           更新所有Tag将会智能更新在[Tag标签管理]中重新获取更新的内容<br>
           Tag首页模板文件：<?php echo $cfg_templets_dir; ?>/<?php echo $cfg_df_style?>/tag.htm<br>
           Tag列表页模板文件：<?php echo $cfg_templets_dir; ?>/<?php echo $cfg_df_style?>/taglist.htm<br>
@@ -113,7 +113,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#FFFFFF">
+    <tr bgcolor="#ffffff">
       <td colspan="2" id="mtd">
         <div id='mdv' style='width:100%;height:350px;'>
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>

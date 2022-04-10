@@ -20,7 +20,7 @@ body {
     <td width="100%" height="26" colspan="2" background="../static/web/img/tbg.gif"><a href="<?php echo $ENV_GOBACK_URL; ?>">表单管理</a> &gt; 编辑评论</td>
   </tr>
   <tr>
-    <td height="167" colspan="2" align="center" bgcolor="#FFFFFF" valign="top">
+    <td height="167" colspan="2" align="center" bgcolor="#ffffff" valign="top">
 	<form name="form1" method="post" enctype="multipart/form-data" action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
 	<input type="hidden" name="dopost" value="edit">
 	<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -49,7 +49,7 @@ body {
 		}
 		echo "<input type='hidden' name='dede_fields' value='".$formfields."'>";
 		?>
-          <tr bgcolor="#FFFFFF"> 
+          <tr bgcolor="#ffffff"> 
             <td height="36" width='600' colspan="2" align="center">
                <button type="submit" name="Submit1" class='btn btn-success'>保存修改</button>
                <button type="button" name="Submit2" class='btn btn-success' onClick="location='<?php echo $ENV_GOBACK_URL; ?>';">不理返回</button>
