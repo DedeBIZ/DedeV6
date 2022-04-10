@@ -36,14 +36,12 @@ td{padding-left:8px}
 </style>
 </head>
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3 mb-3">
   <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
    <input type='hidden' name='action' value='edit'>
    <input type='hidden' name='dev_id' value='<?php echo $dev_id; ?>'>
     <tr>
-      <td height="26" colspan="2" bgcolor="#EDF9D5" background='../static/web/img/wbg.gif' style="padding-left:10px">
-      	 	<a href="module_main.php">模块管理</a> &gt; 模块修改：
-       </td>
+      <td height="26" colspan="2" bgcolor="#EDF9D5" background='../static/web/img/wbg.gif' style="padding-left:10px"><a href="module_main.php">模块管理</a> &gt; 模块修改</td>
     </tr>
     <tr>
       <td width="19%" align="center" bgcolor="#FFFFFF">模块名称：</td>
@@ -154,7 +152,6 @@ td{padding-left:8px}
           </tr>
         </table>
       </div>
-
       </td>
     </tr>
     <tr>
@@ -182,10 +179,8 @@ td{padding-left:8px}
           </tr>
         </table>
       </div>
-
       </td>
     </tr>
-
     <tr>
       <td align="center" bgcolor="#FFFFFF">模块文件选项：</td>
       <td bgcolor="#FFFFFF">
@@ -193,7 +188,6 @@ td{padding-left:8px}
       	<label><input name="rebuild" type="radio" id="rebuild2" class='np' value='no'/> 不对[文件列表]内文件重编译</label>
       </td>
     </tr>
-
     <tr>
       <td align="center" bgcolor="#FFFFFF">文件列表：</td>
       <td bgcolor="#FFFFFF"><p>每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
@@ -204,7 +198,6 @@ td{padding-left:8px}
           </p>
         </td>
     </tr>
-
     <tr>
       <td align="center" bgcolor="#FFFFFF">开发者私钥：</td>
       <td bgcolor="#FFFFFF">
@@ -215,8 +208,8 @@ td{padding-left:8px}
         </p>
       </td>
     </tr>
-    <tr bgcolor="#F9FDF0">
-      <td height="26" colspan="2" style="padding-left:10px">
+    <tr bgcolor="#f8f8f8">
+      <td height="36" colspan="2" align="center" style="padding-left:10px">
         <button name="imageField" type="submit" class="btn btn-success">提交</button>
         <button name="button" id="button" onClick="location='plus_main.php';" class="btn btn-success">返回</button>
       </td>

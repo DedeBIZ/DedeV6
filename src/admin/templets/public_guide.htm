@@ -41,25 +41,20 @@
 </script>
 </head>
 <body leftmargin="8" topmargin="8" background='../static/web/img/allbg.gif'>
-<table width="98%" height="30" border="0" align="center" cellpadding="1" cellspacing="1" class="table maintable table-bordered mt-3" style="border:1px solid #dee2e6;margin-top:6px;border-bottom:none;">
-  <tr>
-    <td class="tbtitletxt" background='../static/web/img/tbg.gif'>&nbsp;内容发布向导：</td>
-  </tr>
-</table>
 <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" style="border:1px solid #dee2e6;" class="table maintable table-borderless mt-3">
   <tr align="center">
-    <td height="120" align="left" valign="top" bgcolor="#FFFFFF" style="padding:6px;padding-bottom:20px">
+    <td height="120" align="left" valign="top" bgcolor="#FFFFFF">
 	<table width="100%" border="0" cellspacing="0" cellpadding="6">
       <tr>
-        <td>内容发布说明：<br>
-          1、必须先建立与频道内容模型关连的栏目才能发布内容（<a href="catalog_main.php">栏目管理</a>）；<br>
-          2、如果您设置了某频道为默认发布表单，以后将不再显示此向导，而是直接显示您所选的频道的发布表单，如果想要发布其它频道的内容，可以从左边的目录树中选择，如果以后您想要修改默认发布表单，请点击目录树上方的“发布向导”图标；</td>
+        <td>内容发布说明<br>
+          1、必须先建立与频道内容模型关连的栏目才能发布内容（<a href="catalog_main.php">栏目管理</a>）<br>
+          2、如果您设置了某频道为默认发布表单，以后将不再显示此向导，而是直接显示您所选的频道的发布表单，如果想要发布其它频道的内容，可以从左边的目录树中选择，如果以后您想要修改默认发布表单，请点击目录树上方的“发布向导”图标</td>
       </tr>
   </table>
 	<table width="100%" border="0" cellpadding="3" cellspacing="1"  class="table table-bordered">
     <tr height="26" align="center" bgcolor="#FBFCE2">
         <td width="8%" >选择</td>
-		<td width="8%">频道ID</td>
+		    <td width="8%">频道ID</td>
         <td width="20%">频道内容模型</td>
         <td width="23%">附加表</td>
         <td width="10%">栏目数</td>
@@ -101,15 +96,15 @@
     }
     ?>
     </table>
-	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td>
         	<button name="b1" type="button" id="b1" onClick="SetDefault()" class="btn btn-success btn-sm">把所选的频道表单设为默认表单</button>
-        	&nbsp;&nbsp;
         	<button name="b2" type="button" id="b2" onClick="ResetDefault()" class="btn btn-success btn-sm">取消默认表单</button>
         </td>
       </tr>
-    </table></td>
+    </table>
+  </td>
   </tr>
 </table>
 </body>
