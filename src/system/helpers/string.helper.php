@@ -248,7 +248,7 @@ if (!function_exists('ubb')) {
             $Text = preg_replace("/\[colorTxt\](.+?)\[\/colorTxt\]/eis", "color_txt('\\1')", $Text);
         }
         $Text = preg_replace("/\[email\](.+?)\[\/email\]/is", "<a href='mailto:\\1'>\\1</a>", $Text);
-        $Text = preg_replace("/\[i\](.+?)\[\/i\]/is", "<i>\\1</i>", $Text);
+        $Text = preg_replace("/\[i\](.+?)\[\/i\]/is", "<i>\\1</i> ", $Text);
         $Text = preg_replace("/\[u\](.+?)\[\/u\]/is", "\\1", $Text);
         $Text = preg_replace("/\[b\](.+?)\[\/b\]/is", "\\1", $Text);
         $Text = preg_replace("/\[quote\](.+?)\[\/quote\]/is", "<blockquote>引用:<div style='border:1px solid silver;background:#EFFFDF;color:#393939;padding:5px' >\\1</div></blockquote>", $Text);

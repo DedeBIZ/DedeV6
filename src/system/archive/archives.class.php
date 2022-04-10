@@ -788,7 +788,7 @@ class Archives
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
-            $PageList .= "<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='#'>上一页</a></li>";
+            $PageList .= "<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
         } else {
             if ($nPage == 1) {
                 $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid'>上一页</a></li>";
@@ -855,7 +855,7 @@ class Archives
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
-            $PageList .= "<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='#'>上一页</a></li>";
+            $PageList .= "<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
         } else {
             if ($nPage == 1) {
                 $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
@@ -1027,7 +1027,7 @@ function _highlight($string, $words, $result, $pre)
             if ($GLOBALS['replaced'][$word] == 1) {
                 continue;
             }
-            $string = preg_replace("#" . preg_quote($word) . "#", $result[$key], $string, $cfg_replace_num);
+            $string = preg_replace("#".preg_quote($word)."#", $result[$key], $string, $cfg_replace_num);
             if (strpos($string, $word) !== FALSE) {
                 $GLOBALS['replaced'][$word] = 1;
             }
@@ -1035,5 +1035,5 @@ function _highlight($string, $words, $result, $pre)
     } else {
         $string = str_replace($words, $result, $string);
     }
-    return $pre . $string;
+    return $pre.$string;
 }

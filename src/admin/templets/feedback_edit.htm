@@ -22,7 +22,7 @@
         <form name="form1" method="post" action="feedback_edit.php">
           <input type="hidden" name="dopost" value="edit">
           <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-          <table width="100%" border="0" cellpadding="3" cellspacing="1" style="text-align:left" class="table table-borderless">
+          <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table table-borderless">
             <tr bgcolor="#FFFFFF">
               <td width="120" height="26">评论所属文章：</td>
               <td>
@@ -68,7 +68,6 @@
             <tr bgcolor="#FFFFFF">
               <td height="36" width='600' colspan="2" align="center">
                 <button type="submit" class="btn btn-success">保存修改</button>
-                &nbsp;
                 <button onClick="location='<?php echo $ENV_GOBACK_URL; ?>';" type="button" class="btn btn-success">不理返回</button>
               </td>
             </tr>

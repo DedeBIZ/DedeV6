@@ -321,8 +321,8 @@ if(!empty($egroup))
                 if(!empty($egroup))
         {
         ?>
-                    <a href='javascript:updateItem({dede:field.id/});' class="btn btn-success btn-sm"> <i class="fa fa-refresh" aria-hidden="true"></i> 更新</a>
-                    <a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class="btn btn-success btn-sm"> <i class="fa fa-trash" aria-hidden="true"></i> 删除</a>
+                    <a href='javascript:updateItem({dede:field.id/});' class="btn btn-success btn-sm"><i class="fa fa-refresh"></i> 更新</a>
+                    <a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
                     <?php
          }
          else
@@ -396,8 +396,8 @@ else
             <td> {dede:field.issystem function="@me==1 ? '是' : '否'" /} </td>
             <td>{dede:field.egroup /}</td>
             <td>
-                <a href='stepselect_main.php?action=upallcache&egroup={dede:field.egroup /}' class="btn btn-success btn-sm"> <i class="fa fa-refresh" aria-hidden="true"></i> 更新缓存</a>
-                <a href='stepselect_main.php?egroup={dede:field.egroup /}' class="btn btn-success btn-sm"> <i class="fa fa-list-ul" aria-hidden="true"></i> 查看子分类</a>
+                <a href='stepselect_main.php?action=upallcache&egroup={dede:field.egroup /}' class="btn btn-success btn-sm"><i class="fa fa-refresh"></i> 更新缓存</a>
+                <a href='stepselect_main.php?egroup={dede:field.egroup /}' class="btn btn-success btn-sm"><i class="fa fa-list-ul"></i> 查看子分类</a>
             </td>
         </tr>
         {/dede:datalist}

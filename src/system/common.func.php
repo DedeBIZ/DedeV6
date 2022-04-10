@@ -350,7 +350,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef="", $defaulttid=0, $loadtyp
                 $dede_addonfields .= ''.$ctag->GetAtt('itemname').'：';
                 switch ($type) {
                     case 1:
-                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#008e38;border-color:#008e38;border-radius:.2rem">全部</a>' : '<span style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">全部</span>').'&nbsp;';
+                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#28a745;border-color:#28a745;border-radius:.2rem">全部</a>' : '<span style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">全部</span>').'&nbsp;';
                         $addonfields_items = explode(",",$ctag->GetAtt('default'));
                         for ($i=0; $i<count($addonfields_items); $i++)
                         {
@@ -365,7 +365,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef="", $defaulttid=0, $loadtyp
                             $href3 = str_replace(array("&".$ctag->GetName()."=".$fields_value,$ctag->GetName()."=".$fields_value, "&".$ctag->GetName()."=&"), array("&".$ctag->GetName()."=".$fields_value2,$ctag->GetName()."=".$fields_value2, "&"), $filterarr);
                             $href3 = !end(explode("=", $href3)) ? str_replace("&".end(explode("&", $href3)), "", $href3) : $href3;
                             
-                            $dede_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) && $is_select!=1 ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#008e38;border-color:#008e38;border-radius:.2rem">'.$addonfields_items[$i].'</a>' : '<a title="'.$addonfields_items[$i].'" href="'.$href3.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">'.$addonfields_items[$i].'<span style="margin-left:6px;color:#fff">×</span></a>')."&nbsp;";
+                            $dede_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) && $is_select!=1 ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#28a745;border-color:#28a745;border-radius:.2rem">'.$addonfields_items[$i].'</a>' : '<a title="'.$addonfields_items[$i].'" href="'.$href3.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">'.$addonfields_items[$i].'<span style="margin-left:6px;color:#fff">×</span></a>')."&nbsp;";
                         }
                         $dede_addonfields .= '<br><br>';
                     break;

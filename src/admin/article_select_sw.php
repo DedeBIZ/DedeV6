@@ -16,11 +16,11 @@ if ($t == 'source') {
     $m_file = DEDEDATA."/admin/source.txt";
     $allsources = file($m_file);
     echo "<div class='coolbg4'>[<a href=\"javascript:OpenMyWin('article_source_edit.php');ClearDivCt('mysource');\">设置</a>]&nbsp;";
-    echo "[<a href='#' onclick='javascript:HideObj(\"mysource\");ChangeFullDiv(\"hide\");'>关闭</a>]</div>\r\n<div class='wsselect'>\r\n";
+    echo "[<a href='javascript:;' onclick='javascript:HideObj(\"mysource\");ChangeFullDiv(\"hide\");'>关闭</a>]</div>\r\n<div class='wsselect'>\r\n";
     foreach ($allsources as $v) {
         $v = trim($v);
         if ($v != "") {
-            echo "<a href='#' onclick='javascript:PutSource(\"$v\")'>$v</a> | \r\n";
+            echo "<a href='javascript:;' onclick='javascript:PutSource(\"$v\")'>$v</a> | \r\n";
         }
     }
     echo "</div><div class='coolbg5'>&nbsp;</div>";
@@ -28,7 +28,7 @@ if ($t == 'source') {
     //作者列表
     $m_file = DEDEDATA."/admin/writer.txt";
     echo "<div class='coolbg4'>[<a href=\"javascript:OpenMyWin('article_writer_edit.php');ClearDivCt('mywriter');\">设置</a>]&nbsp;";
-    echo "[<a href='#' onclick='javascript:HideObj(\"mywriter\");ChangeFullDiv(\"hide\");'>关闭</a>]</div>\r\n<div class='wsselect'>\r\n";
+    echo "[<a href='javascript:;' onclick='javascript:HideObj(\"mywriter\");ChangeFullDiv(\"hide\");'>关闭</a>]</div>\r\n<div class='wsselect'>\r\n";
     if (filesize($m_file) > 0) {
         $fp = fopen($m_file, 'r');
         $str = fread($fp, filesize($m_file));
@@ -37,7 +37,7 @@ if ($t == 'source') {
         foreach ($strs as $str) {
             $str = trim($str);
             if ($str != "") {
-                echo "<a href='#' onclick='javascript:PutWriter(\"$str\")'>$str</a> | ";
+                echo "<a href='javascript:;' onclick='javascript:PutWriter(\"$str\")'>$str</a> | ";
             }
         }
     }
