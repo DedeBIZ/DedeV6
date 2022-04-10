@@ -44,7 +44,7 @@ else if ($action == 'update') {
     }
     $query = "UPDATE `#@__tagindex` SET `count`='$count' WHERE id='$tid' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功保存标签的点击信息!", 'tags_main.php');
+    ShowMsg("成功保存标签的点击信息", 'tags_main.php');
     exit();
 }
 /*

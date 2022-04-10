@@ -986,7 +986,7 @@ class Archives
         return $revalue;
     }
     /**
-     * 高亮问题修正, 排除alt title <a></a>直接的字符替换
+     * 高亮问题修正，排除alt title <a></a>直接的字符替换
      *
      * @param string $kw
      * @param string $body
