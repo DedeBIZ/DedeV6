@@ -34,9 +34,7 @@
 		<input type="hidden" name="_csrf_token" value="{dede:global name='csrf_token'/}">
 		<table width='100%' border='0' align="center" cellpadding='3' cellspacing='1' class="table maintable mt-3">
 			<tr bgcolor='#EEF4EA'>
-				<td colspan='2' background='../static/web/img/wbg.gif' height='26' style="padding-left:10px">
-					<span>修改/新建文件：</span>
-				</td>
+				<td colspan='2' background='../static/web/img/wbg.gif' height='26' style="padding-left:10px">修改/新建文件</td>
 			</tr>
 			<tr bgcolor='#ffffff'>
 				<td>工作目录</td>
@@ -47,20 +45,15 @@
 			</tr>
 			<tr bgcolor='#ffffff'>
 				<td>文件名称</td>
-				<td>
-					<input name=filename size=40 value="{dede:global name='filename'/}">
-					（不允许用 “..” 形式的路径）
-				</td>
+				<td><input name=filename size=40 value="{dede:global name='filename'/}">（不允许用 “..” 形式的路径）</td>
 			</tr>
-			<tr bgcolor='#ffffff' class="table table-bordered">
+			<tr bgcolor='#ffffff' class="table">
 				<td colspan='2'>{dede:global name='contentView'/}</td>
 			</tr>
 			<tr>
 				<td colspan='2' height="36" bgcolor='#f8f8f8' align='center'>
 					<button type=submit name='B1' class="btn btn-success">保存</button>
-					&nbsp;
 					<button type=reset name='B2' class="btn btn-success">重置</button>
-					&nbsp;
 					<button type=button name='B4' class="btn btn-success" onClick="javascript:history.go(-1);">返回</button>
 				</td>
 			</tr>
