@@ -118,7 +118,7 @@ function resetCookieEncode() {
                 <td align="center">所属组</td>
                 <td align="left">
                 <?php
-                echo "<select name='vargroup' class='npvar'>";
+                echo "<select name='vargroup' class='npvar' style='width:160px'>";
                 foreach($ds as $dl){
                   $dl = trim($dl);
                   if(empty($dl)) continue;
@@ -139,7 +139,7 @@ function resetCookieEncode() {
       <tr>
         <td height="26" align="right" background="../static/web/img/tbg.gif" style="border:1px solid #dee2e6;border-bottom:none">
           <span style="line-height:26px">配置搜索：</span>
-          <input type="text" name="keywds" id="keywds">
+          <input type="text" name="keywds" id="keywds" style="width:260px">
           <button type="button" onclick="getSearch()" class="btn btn-success btn-sm">搜索</button>
           <span id="_searchback"></span>
         </td>
