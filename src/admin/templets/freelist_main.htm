@@ -102,19 +102,13 @@
 		}
 	</script>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-	<div class="bodytitle mt-3 mb-3">
-		<div class="bodytitleleft"></div>
-		<div class="bodytitletxt">频道管理</div>
-	</div>
-	<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="maintable" style="border:1px solid #dee2e6;border-bottom:none">
+<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
+	<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="maintable mt-3" style="border:1px solid #dee2e6;border-bottom:none">
 		<tr>
 			<td class="tbtitletxt" background="../static/web/img/tbg.gif">
 				<table width='100%' border="0" cellpadding='0' cellspacing='0'>
 					<tr>
-						<td width='36%' class="py-3" style="padding-left:10px">自由列表管理&nbsp;
-							<a href="freelist_add.php" class="btn btn-success btn-sm">增加列表</a>
-						</td>
+						<td width='36%' class="py-3" style="padding-left:10px">自由列表管理&nbsp;<a href="freelist_add.php" class="btn btn-success btn-sm">增加列表</a></td>
 						<td width="29%"></td>
 						<td width="35%" align='right'></td>
 					</tr>
@@ -123,37 +117,31 @@
 		</tr>
 	</table>
 	<div id='rslist'>
-		<?php
+	<?php
 	GetTagList($dsql,$pageno,$pagesize,$orderby);
 	?>
 	</div>
 	<div id='pagelist' class="mb-3 mt-3"><script language='javascript'>ReloadPageNum(1);</script></div>
 	<table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" style="border:1px solid #dee2e6;line-height:31px;margin:auto;" class="table table-borderless maintable mb-3">
 		<tr>
-			<td height="36" align="center" style="background:#f8f8f8;padding:7px 6px 3px 6px;">
+			<td height="36" align="center" style="background:#f8f8f8">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
 					<form action="freelist_main.php" name="form1" id="form1">
 						<tr>
-							<td width="200" align="center">
-								<input type="text" name="keyword" id="keyword" class='alltxt' style="width:170px" value="<?php echo $keyword?>">
+							<td width="170" align="center">
+								<input type="text" name="keyword" id="keyword" class='alltxt' style="width:160px" value="<?php echo $keyword?>">
 							</td>
-							<td width="86" align="left">
+							<td width="60" align="left">
 								<button type="submit" name="Submit2" class="btn btn-success btn-sm">搜索</button>
 							</td>
-							<td align="left">
-								<button type="button" name="bt1"
-									onclick="location='freelist_add.php';" class="btn btn-success btn-sm">增加列表</button>
-								&nbsp;
-								<button type="button" name="bt2"
-									onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm">更新所有列表HTML</button>
+							<td>
+								<button type="button" name="bt1" onclick="location='freelist_add.php';" class="btn btn-success btn-sm">增加列表</button>
+								<button type="button" name="bt2" onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm">更新所有列表HTML</button>
 							</td>
-							<td width="200">
-								
-							</td>
+							<td width="200"></td>
 						</tr>
 					</form>
 				</table>
-				
 			</td>
 		</tr>
 	</table>

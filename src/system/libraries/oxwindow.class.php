@@ -191,8 +191,8 @@ class OxWindow
                 $this->myWin .= "
 <tr>
 <td colspan='2' height='30'>
-<button type='submit' class='btn btn-success'>$tt</button>&nbsp;&nbsp;
-<button type='button' class='btn btn-success' onClick='this.form.reset();return false;'>重置</button>&nbsp;&nbsp;
+<button type='submit' class='btn btn-success'>$tt</button>
+<button type='button' class='btn btn-success' onClick='this.form.reset();return false;'>重置</button>
 <button type='button' class='btn btn-success' onClick='history.go(-1);'>返回</button>
 </td>
 </tr>";
@@ -250,7 +250,7 @@ function ShowMsgWin($msg, $title)
     $win->Init();
     $win->mainTitle = "系统提示：";
     $win->AddTitle($title);
-    $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("hand");
     $win->Display();
 }

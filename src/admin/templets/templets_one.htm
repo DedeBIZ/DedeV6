@@ -20,26 +20,26 @@
       }
    </style>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
+<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
       <tr>
          <td bgcolor="#F2F2F2" colspan="6" style="padding-left:10px">
             <form action='templets_one.php' name='sss'>
                <ul>
                   <li>关键词：</li>
-                  <li><input type='text' name='keyword' value="<?php if(!empty($keyword)) $keyword = ''; ?>" style='width:160px' /></li>
+                  <li><input type='text' name='keyword' value="<?php if(!empty($keyword)) $keyword = ''; ?>" style='width:160px'></li>
                   <li>标识：</li>
                   <li><?php
      $likeid = (!isset($likeid) ? '' : $likeid);
-     echo "<select name='likeid' id='likeid'>\r\n";
+     echo "<select name='likeid' id='likeid' style='width:160px'>";
      $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
-     echo "<option value=''>不限</option>\r\n";
+     echo "<option value=''>不限</option>";
      while($arr = $dsql->GetArray('s'))
      {
-        if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>\r\n";
-        else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>\r\n";
+        if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
+        else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
      }
-     echo "</select>\r\n";
+     echo "</select>";
   ?></li>
                   <li><button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button></li>
                </ul>

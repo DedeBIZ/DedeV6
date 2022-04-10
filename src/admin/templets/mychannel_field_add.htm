@@ -88,7 +88,7 @@ $(document).ready(function () {
 
 </script>
 <style>
-td{ padding:2px; padding-left:6px; line-height:150%; }
+td{ padding:2px; padding-left:6px; line-height:26px }
 .STYLE1 {color: #FF3300}
 .STYLE2 {color: #666666}
 .nw { float:left; width:150px; }
@@ -100,15 +100,12 @@ td{ padding:2px; padding-left:6px; line-height:150%; }
 <input type='hidden' name='action' value='save' />
 <input type='hidden' name='id' value='<?php echo $id?>' />
 <input type='hidden' name='fieldstring' value='' />
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" 
-class="table maintable table-bordered mt-3">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
     <tr> 
       <td colspan="2" bgcolor="#EDF9D5" background="../static/web/img/tbg.gif">
         <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
-            <td width="30%" style="padding-left:10px">
-            	<a href="mychannel_main.php">频道管理</a>  &gt; 增加新字段：
-            </td>
+            <td width="30%" style="padding-left:10px"><a href="mychannel_main.php">频道管理</a> &gt; 增加新字段</td>
             <td align="right">
 							<button type="button" name="ss1" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';" class="btn btn-success btn-sm">当前模型信息</button>
 							<button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">内容模型管理</button>
@@ -119,7 +116,7 @@ class="table maintable table-bordered mt-3">
     </tr>
     <tr>
       <td colspan="2" bgcolor="#FFFFFF">
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger">
           所有填写的内容不允许包含双引号[&quot;]，否则配置将无法写入
         </div>
       </td>

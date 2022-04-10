@@ -104,7 +104,7 @@ function ReloadPageNum(startnum) {
     var ahtml = "";
     var startloop = 1;
     var endnum = 0;
-    ahtml += "共" + totalrow + "篇" + pagenum + "页";
+    ahtml += "共" + totalrow + "条" + pagenum + "页";
     if (pageno > 1) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno - 1) + ")'>上页</a> ";
     if (startnum >= pagenum - listsize) {
         startloop = pagenum - (listsize * 2);

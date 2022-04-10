@@ -41,12 +41,8 @@
     }
   </style>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <div class="bodytitle mt-3 mb-3">
-    <div class="bodytitleleft"></div>
-    <div class="bodytitletxt">自定义表单管理</div>
-  </div>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered">
+<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
       <input type='hidden' name='diyid' value='<?php echo $diyid; ?>'>
       <input type='hidden' name='dopost' value='save'>

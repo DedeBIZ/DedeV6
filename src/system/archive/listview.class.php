@@ -832,13 +832,13 @@ class ListView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>\r\n";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>\r\n";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>\r\n";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>\r\n";
         }
         $purl = $this->GetCurUrl();
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>\r\n";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $tnamerule = $this->GetMakeFileRule($this->Fields['id'], "list", $this->Fields['typedir'], $this->Fields['defaultname'], $this->Fields['namerule2']);
         //获得上一页和主页的链接
         if ($this->PageNo != 1) {
@@ -930,12 +930,12 @@ class ListView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>\r\n";
+            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>\r\n";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>\r\n";
+            return "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>\r\n";
         }
-        $maininfo = "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>\r\n";
+        $maininfo = "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $purl = $this->GetCurUrl();
         //如果开启为静态,则对规则进行替换
         if ($cfg_rewrite == 'Y') {

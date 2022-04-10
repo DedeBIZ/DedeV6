@@ -15,12 +15,10 @@
     }
   </style>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
+<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">
-        标签源码碎片管理
-      </td>
+      <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">标签源码碎片管理</td>
     </tr>
   </table>
   <table width="98%" cellspacing="1" cellpadding="0" border="0" align="center" class="table maintable table-bordered">
@@ -31,11 +29,16 @@
       <td width="20%" background="../static/web/img/wbg.gif">操作</td>
     </tr>
     <tr>
-      <td colspan='4' height="30" bgcolor="#f8f8f8">
+      <td colspan="4" height="30">
         <div style="float:left;line-height:26px">当前位置：标签源码碎片管理（文件存放在 ../system/taglib 文件夹）</div>
         <div style="float:right;padding-right:10px">
           <a href='tpl.php?action=addnewtag' class="btn btn-success btn-sm">增加一个新的标签</a>
         </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" height="30">
+        <div class="alert alert-danger mb-0">修改系统标签有风险，请小心操作</div>
       </td>
     </tr>
     <?php
@@ -62,13 +65,6 @@
       </td>
     </tr>
     <?php } ?>
-    <tr>
-      <td colspan="4" height='30' bgcolor="#f8f8f8">
-        <div class="alert alert-danger" role="alert">
-          修改系统标签有风险，请小心操作
-        </div>
-      </td>
-    </tr>
   </table>
 </body>
 </html>

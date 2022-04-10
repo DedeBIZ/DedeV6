@@ -99,7 +99,7 @@ else if ($action == 'make') {
         move_uploaded_file($readme, $mdir."/{$hashcode}-r.html") or die("您没填写说明或上传说明文件");
         $readmef = $dm->GetEncodeFile($mdir."/{$hashcode}-r.html", TRUE);
     } else {
-        $readmetxt = "<p style='line-height:150%'>".$readmetxt;
+        $readmetxt = "<p style='line-height:26px'>".$readmetxt;
         $readmetxt = preg_replace("#[\r\n]{1,}#", "<br>\r\n", $readmetxt);
         $readmetxt .= "</p>";
         $readmef = base64_encode(trim($readmetxt));

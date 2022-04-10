@@ -13,7 +13,7 @@
     }
   </style>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
+<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
   <table width='98%' border='0' cellspacing='1' cellpadding='2' align='center' class="table table-bordered maintable mt-3">
     <tr height="26" align="center">
       <td width="36%" background="../static/web/img/wbg.gif">文件名</td>
@@ -106,7 +106,7 @@ while(($file = $dh->read()) !== false)
    <a href=$activeurl/$file target=_blank><img src='../static/web/img/jpg.gif'>$file</a></td>
    <td>$filesize KB</td>
    <td align='center' class='linerow'>$filetime</td>
-   <td >
+   <td>
    <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'> <i class='fa fa-address-card-o' aria-hidden='true'></i> 改名</a>
    <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'> <i class='fa fa-trash' aria-hidden='true'></i> 删除</a>
    <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'> <i class='fa fa-share-square' aria-hidden='true'></i> 移动</a>
@@ -151,7 +151,7 @@ while(($file = $dh->read()) !== false)
    <a href=$activeurl/$file target=_blank><img src='../static/web/img/exe.gif'>$file</a></td>
    <td>$filesize KB</td>
    <td align='center'>$filetime</td>
-   <td >
+   <td>
    <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'> <i class='fa fa-address-card-o' aria-hidden='true'></i> 改名</a>
    <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'> <i class='fa fa-trash' aria-hidden='true'></i> 删除</a>
    <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'> <i class='fa fa-share-square' aria-hidden='true'></i> 移动</a>

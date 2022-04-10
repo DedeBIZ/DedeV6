@@ -444,10 +444,10 @@ class SpecView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<span class='pageinfo'>1页".$this->TotalResult."篇</span>";
+            return "<span class='pageinfo'>1页".$this->TotalResult."条</span>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class='pageinfo'>0页".$this->TotalResult."篇</span>";
+            return "<span class='pageinfo'>0页".$this->TotalResult."条</span>";
         }
         $purl = $this->GetCurUrl();
         $tnamerule = "spec_";
@@ -508,10 +508,10 @@ class SpecView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<span class='pageinfo'>1页".$this->TotalResult."篇</span>";
+            return "<span class='pageinfo'>1页".$this->TotalResult."条</span>";
         }
         if ($this->TotalResult == 0) {
-            return "<span class='pageinfo'>0页".$this->TotalResult."篇</span>";
+            return "<span class='pageinfo'>0页".$this->TotalResult."条</span>";
         }
         $purl = $this->GetCurUrl();
         $geturl = "typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";

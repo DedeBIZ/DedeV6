@@ -135,7 +135,7 @@ else if ($action == 'upload') {
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow('ok', '');
     $win->Display();
     exit();
