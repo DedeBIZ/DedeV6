@@ -52,13 +52,10 @@
         <td bgcolor="#ffffff">
           <table width="100%" border="0" cellpadding="2" cellspacing="2" class="table table-borderless">
             <tr bgcolor="#ffffff">
-              <td colspan="2" style="line-height:180%">
-                <div class="alert alert-info mb-0">
-                  <i class="fa fa-info-circle"></i> 程序用于批量替换数据库中某字段的内容，此操作极为危险，请小心使用
-                </div>
+              <td colspan="2">
+                <div class="alert alert-info mb-0">程序用于批量替换数据库中某字段的内容，此操作极为危险，请小心使用</div>
               </td>
             </tr>
-
             <tr id='datasel'>
               <td width="15%" height="66">&nbsp;选择数据表与字段：</td>
               <td>
@@ -72,7 +69,7 @@
   	echo "<span style='color:#dc3545'>找不到您所指定的数据库 $dbname</span><br>";
 		echo $qbutton;
   }
-  echo "<select name='exptable' id='exptable' size='10' style='width:60%;height: 220px;' onchange='ShowFields()'>\r\n";
+  echo "<select name='exptable' id='exptable' size='10' style='width:60%;height:220px' onchange='ShowFields()'>\r\n";
   while($row = $dsql->GetArray('t',MYSQL_BOTH)){
 	  echo "<option value='{$row[0]}'>{$row[0]}</option>\r\n";
   }
