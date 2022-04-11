@@ -43,8 +43,8 @@ function checkSubmit()
           <input type="hidden" name="dopost" value="edituser">
           <input type="hidden" name="id" value="<?php echo $id?>">
           <tr> 
-            <td width="160" height="26">用户名：</td>
-            <td height="26"> 
+            <td width="160" height="26" class="bline">用户名：</td>
+            <td height="26" class="bline">
               <?php
               echo "".$row['userid']."";
               if($row['face']!='') {
@@ -54,42 +54,42 @@ function checkSubmit()
              </td>
           </tr>
           <tr> 
-            <td height="26">密码：</td>
+            <td height="26" class="bline">密码：</td>
             <td height="26" ><input type="text" name="pwd" id="pwd" style="width:260px">（不修改留空）</td>
           </tr>
           <tr> 
-            <td height="26">注册时间：</td>
-            <td height="26">
+            <td height="26" class="bline">注册时间：</td>
+            <td height="26" class="bline">
               <?php echo GetDateTimeMk($row['jointime'])?>
               　IP：
               <?php echo $row['joinip']?>
              </td>
           </tr>
           <tr> 
-            <td height="26">最近登录时间：</td>
-            <td height="26"> 
+            <td height="26" class="bline">最近登录时间：</td>
+            <td height="26" class="bline"> 
               <?php echo GetDateTimeMk($row['logintime'])?>
               　IP：
               <?php echo $row['loginip']?>
              </td>
           </tr>
           <tr> 
-            <td height="26">用户类型：</td>
+            <td height="26" class="bline">用户类型：</td>
             <td height="26" ><?php echo $row['mtype']; ?></td>
           </tr>
           <tr> 
-            <td height="26">电子邮箱：</td>
-            <td height="26"><input name="email" type="text" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
+            <td height="26" class="bline">电子邮箱：</td>
+            <td height="26" class="bline"><input name="email" type="text" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
           </tr>
           <tr> 
-            <td height="26">昵称：</td>
-            <td height="26">
+            <td height="26" class="bline">昵称：</td>
+            <td height="26" class="bline">
             <input name="uname" type="text" value="<?php echo $row['uname']?>" id="uname" style="width:260px">
            </td>
           </tr>
           <tr> 
-            <td height="26">性别：</td>
-            <td height="26">
+            <td height="26" class="bline">性别：</td>
+            <td height="26" class="bline">
               <label><input type="radio" name="sex" class="np" value="男"<?php if($row['sex']=="男" ) echo" checked='1'" ; ?>>
               男</label> &nbsp; 
               <label><input type="radio" name="sex" class="np" value="女"<?php if($row['sex']=="女" ) echo" checked='1'" ; ?>>
@@ -99,15 +99,15 @@ function checkSubmit()
              </td>
           </tr>
           <tr> 
-            <td height="26">金币 ：</td>
-            <td height="26">
+            <td height="26" class="bline">金币 ：</td>
+            <td height="26" class="bline">
               <input name="money" type="text" id="money" value="<?php echo $row['money']; ?>" style="width:60px"> 
               积分：<input name="scores" type="text" id="scores" value="<?php echo $row['scores']; ?>" style="width:60px">
             </td>
           </tr>
           <tr> 
-            <td height="26">等级：</td>
-            <td height="26"><?php
+            <td height="26" class="bline">等级：</td>
+            <td height="26" class="bline"><?php
              $MemberTypes = array();
              $dsql->SetQuery("Select `rank`,membername From `#@__arcrank` where `rank`>0");
              $dsql->Execute('n');
@@ -126,29 +126,29 @@ function checkSubmit()
 			?></td>
           </tr>
           <tr> 
-            <td height="26">升级时间：</td>
-            <td height="26"><input type="text" name="uptime" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']); ?>" id="uptime" style="width:260px">（如果您要升级会员，必须设置此时间为当前时间）</td>
+            <td height="26" class="bline">升级时间：</td>
+            <td height="26" class="bline"><input type="text" name="uptime" value="<?php echo $row['uptime']=($row['uptime']=='0')? GetDateTimeMk(time()) : GetDateTimeMk($row['uptime']); ?>" id="uptime" style="width:260px">（如果您要升级会员，必须设置此时间为当前时间）</td>
           </tr>
           <tr> 
-            <td height="26">会员天数：</td>
-            <td height="26"><input type="text" name="exptime" value="<?php echo $row['exptime']?>" id="exptime" style="width:60px">（如果您要升级会员，会员天数必须大于0）</td>
+            <td height="26" class="bline">会员天数：</td>
+            <td height="26" class="bline"><input type="text" name="exptime" value="<?php echo $row['exptime']?>" id="exptime" style="width:60px">（如果您要升级会员，会员天数必须大于0）</td>
           </tr>
           <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span style="color:#dc3545">该会员已经到期</span>'; ?>
           <tr> 
-            <td height="26">会员剩余天数：</td>
-            <td height="26"><?php echo $mhasDay; ?></td>
+            <td height="26" class="bline">会员剩余天数：</td>
+            <td height="26" class="bline"><?php echo $mhasDay; ?></td>
           </tr>
           <tr> 
           <?php } ?>
-            <td height="26">推荐级别：</td>
-            <td height="26">
+            <td height="26" class="bline">推荐级别：</td>
+            <td height="26" class="bline">
               <input name="oldmatt" type="hidden" id="oldmatt" value="<?php echo $row['matt']?>" style="width:60px">
               <input name="matt" type="text" id="matt" value="<?php echo $row['matt']?>" style="width:60px">（0为普通，1为推荐，10为管理员不能在前台登录非管理员ID是严格使用10属性的，要新建管理在<a href='sys_admin_user_add.php' target='_blank'>系统帐号</a>地方增加）
             </td>
           </tr>
           <tr>
-            <td height="26">资料状况：</td>
-            <td height="26">
+            <td height="26" class="bline">资料状况：</td>
+            <td height="26" class="bline">
            	<select name='spacesta' style='width:160px'>
            		<?php
            		foreach($staArr as $k=>$v)
@@ -162,7 +162,7 @@ function checkSubmit()
           </tr>
           <tr> 
             <td height="26" height="60">空间信息：</td>
-            <td height="26">
+            <td height="26" class="bline">
             <?php
             $nrow = $dsql->GetOne("Select * From `#@__member_tj` where mid='{$row['mid']}' ");
             echo "文章：{$nrow['article']} 图集：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']}";
@@ -171,8 +171,8 @@ function checkSubmit()
             </td>
           </tr>
           <tr> 
-            <td height="26">特殊操作：</td>
-            <td height="26">
+            <td height="26" class="bline">特殊操作：</td>
+            <td height="26" class="bline">
               <a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>&jumpurl=../user/edit_fullinfo.php" target="_blank">查看/修改详细资料</a>
               <a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>" target="_blank">登录到此用户控制面板</a>
               <a href="../user/index.php?uid=<?php echo $row['userid']; ?>" target="_blank">浏览此用户的空间</a>
