@@ -82,7 +82,7 @@ table{border-collapse:separate}
     </table>
     <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff;">
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文章标题：</td>
@@ -94,7 +94,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td width="400%" height="26" colspan="4">
+        <td width="400%" height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;自定义属性：</td>
@@ -118,7 +118,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
+        <td height="26" colspan="4" class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;跳转网址：</td>
@@ -128,7 +128,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td width="400%" height="26">
+        <td width="400%" height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;Tag标签：</td>
@@ -140,7 +140,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr id="pictable">
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="80">&nbsp;缩略图：</td>
@@ -159,7 +159,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;软件来源：</td>
@@ -177,7 +177,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="570" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;软件主栏目：</td>
@@ -201,7 +201,7 @@ table{border-collapse:separate}
       if($cfg_need_typeid2=='Y') {
       ?>
       <tr>
-        <td height="26">
+        <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;副栏目：</td>
@@ -217,7 +217,7 @@ table{border-collapse:separate}
       }
       ?>
       <tr>
-        <td height="26">
+        <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键词：</td>
@@ -227,7 +227,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26">
+        <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;简要说明：</td>
@@ -237,7 +237,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="1100" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文件类型：</td>
@@ -307,7 +307,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;运行环境：</td>
@@ -317,7 +317,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;官方网址：</td>
@@ -329,7 +329,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;软件大小：</td>
@@ -361,7 +361,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" bgcolor="#f8f8f8" class="bline2">&nbsp;软件链接列表：</td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;其它地址：</td>
@@ -375,7 +375,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <?php
           echo $nForm;
 	        ?>
@@ -388,7 +388,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" bgcolor="#f8f8f8" class="bline2">&nbsp;软件详细介绍：</td>
       </tr>
       <tr>
-        <td height="26" colspan="4" bgcolor="#F1F5F2">
+        <td height="26" colspan="4" bgcolor="#F1F5F2" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;附加选项：</td>
@@ -413,7 +413,7 @@ table{border-collapse:separate}
     <!--高级参数-->
     <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="adset" style="display:none;border:1px solid #dee2e6;background:#ffffff;">
       <tr>
-        <td height="26" colspan="4">
+        <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="26" width="250">&nbsp;评论选项：</td>
@@ -434,7 +434,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26">
+        <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文章排序：</td>
@@ -461,7 +461,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26">
+        <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;阅读权限：</td>
@@ -479,7 +479,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="70">
+        <td height="70" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;更新时间：</td>
