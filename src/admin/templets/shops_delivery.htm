@@ -69,34 +69,31 @@
       <input type="hidden" name="do" value="edit">
       <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle">
         <tr>
-          <td height="26" colspan="3" align="left" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'>
-            &nbsp;已有配送方式列表
-          </td>
+          <td height="26" colspan="3" align="left" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'>已有配送方式列表</td>
         </tr>
         <tr bgcolor="#F3FFDD">
-          <td height="50" colspan="3" align="center" bgcolor="#ffffff">
-            <table width="100%" border="0" cellpadding="1" cellspacing="2" style="BORDER: #CCC 1px solid;" class="table table-striped">
+          <td colspan="3" align="center" bgcolor="#ffffff">
+            <table width="100%" border="0" cellpadding="1" cellspacing="2" class="table">
               <?php foreach($deliveryarr as $rs) { ?>
               <input type="hidden" name="pid[]" value="<?php echo $rs['pid']; ?>">
               <tr>
-                <td width="23%" height="26" align="left" style="padding-left:5px;">
+                <td width="30%" height="26" align="left">
                   <input name="m_dname<?php echo $rs['pid']; ?>" type="text" value="<?php echo $rs['dname']; ?>">
-                  <div style="padding:3px;BORDER-TOP: #CCC 1px solid;"><a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid']; ?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a></div>
+                  <a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid']; ?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a>
                 </td>
-                <td width="77%" align="left" valign="top" style="BORDER-BOTTOM: #CCC 1px solid;padding-left:5px;">
-                  手续费：
-                  <input name="m_price<?php echo $rs['pid']; ?>" type="text" id="m_price<?php echo $rs['pid']; ?>" style="margin-left:6px;" value="<?php echo $rs['price']; ?>" size="6" maxlength="6">
+                <td width="70%" align="left" valign="top">
+                  手续费：<input name="m_price<?php echo $rs['pid']; ?>" type="text" id="m_price<?php echo $rs['pid']; ?>" value="<?php echo $rs['price']; ?>" style="width:60px">
                   元
-                  <div style="padding:3px;BORDER-TOP: #CCC 1px solid;"><textarea name="m_des<?php echo $rs['pid']; ?>" id="m_des<?php echo $rs['pid']; ?>" style="margin-left:6px; width:320px;"><?php echo $rs['des']; ?></textarea></div>
+                  <textarea name="m_des<?php echo $rs['pid']; ?>" id="m_des<?php echo $rs['pid']; ?>" style="width:360px;height:50px"><?php echo $rs['des']; ?></textarea>
                 </td>
               </tr>
-              <?php  }?>
+              <?php }?>
             </table>
           </td>
         </tr>
         <tr bgcolor="#F3FFDD">
-          <td height="36" colspan="3" align="left" bgcolor="#ffffff">
-            <button name="imageField2" type="submit" class="btn btn-success">修改</button>
+          <td height="36" colspan="3" bgcolor="#f8f8f8" align="center">
+            <button name="imageField2" type="submit" class="btn btn-success">确定</button>
           </td>
         </tr>
       </table>
