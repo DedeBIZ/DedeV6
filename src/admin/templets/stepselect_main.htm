@@ -104,7 +104,7 @@ li{float:left;padding-right:10px;line-height:26px}
         }
 
         function DelType() {
-            if (window.confirm("您确实要删除这个分类吗") == false) return false;
+            if (window.confirm("您确定要删除这个分类吗") == false) return false;
             var id = GetSelType();
             if (id == 0) {
                 ShowMsg("必须选择一个类别");
@@ -138,7 +138,7 @@ li{float:left;padding-right:10px;line-height:26px}
         }
 
         function DelSel() {
-            if (window.confirm("您确实要删除这些分类吗")) document.form1.submit();
+            if (window.confirm("您确定要删除这些分类吗")) document.form1.submit();
         }
 
         function ChangePage2(sobj) {

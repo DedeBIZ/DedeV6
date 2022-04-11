@@ -56,7 +56,7 @@
 		function DelNode(selid) {
 			if (selid == 0) selid = getCheckboxItem();
 			if (selid != '') {
-				if (window.confirm("您确实要删除这些条目吗")) location = "article_coonepage_rule.php?ids=" + selid + "&action=del";
+				if (window.confirm("您确定要删除这些条目吗")) location = "article_coonepage_rule.php?ids=" + selid + "&action=del";
 			} else {
 				ShowMsg("您没选择任何条目");
 			}

@@ -370,7 +370,7 @@ else if ($dopost == "delete") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确实要删除 (".$row['typename'].") 这个频道");
+        $win->AddTitle("您确定要删除 (".$row['typename'].") 这个频道");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();

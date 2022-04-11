@@ -76,9 +76,9 @@ else if ($fmdo == "del") {
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("filename", $filename);
     if (@is_dir($cfg_basedir.$activepath."/$filename")) {
-        $wmsg = "您确信要删除目录：$filename 吗";
+        $wmsg = "您确定要删除目录：$filename 吗";
     } else {
-        $wmsg = "您确信要删除文件：$filename 吗";
+        $wmsg = "您确定要删除文件：$filename 吗";
     }
     $win->AddTitle("删除文件确认");
     $win->AddMsgItem($wmsg, "50");

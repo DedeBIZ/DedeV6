@@ -13,7 +13,6 @@ require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
 $ENV_GOBACK_URL = isset($_COOKIE['ENV_GOBACK_URL']) ? 'member_main.php' : '';
-
 /*----------------
 function __DelMember()
 删除会员
@@ -71,8 +70,8 @@ if ($dopost == "delmember") {
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("您确实要删除(ID:".$id.")这个会员?");
-    $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' />&nbsp;(复制本代码：<span style='color:#dc3545'>$safecode</span> )", "30");
+    $win->AddTitle("您确定要删除会员ID:".$id." 吗");
+    $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' style='width:260px'>（复制本代码：<span style='color:#dc3545'>$safecode</span>）", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 } else if ($dopost == "delmembers") {
@@ -85,14 +84,12 @@ if ($dopost == "delmember") {
         }
         if (!empty($id)) {
             //删除用户信息
-
             $rs = $dsql->ExecuteNoneQuery2("DELETE FROM `#@__member` WHERE mid IN (".str_replace("`", ",", $id).") And matt<>10 ");
             if ($rs > 0) {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_tj` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_space` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_company` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_person` WHERE mid IN (".str_replace("`", ",", $id).") ");
-
                 //删除用户相关数据
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE mid IN (".str_replace("`", ",", $id).") ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_flink` WHERE mid IN (".str_replace("`", ",", $id).") ");
@@ -120,7 +117,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("您确实要删除(ID:".$id.")这个会员?");
+    $win->AddTitle("您确定要删除(ID:".$id.")这个会员?");
     $win->AddMsgItem(" 安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' /> (复制本代码：<span style='color:#dc3545'>$safecode</span>)", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
@@ -152,7 +149,6 @@ else if ($dopost == 'edituser') {
     $pwdsql = empty($pwd) ? '' : ",pwd='".md5($pwd)."'";
     if (empty($sex)) $sex = '男';
     $uptime = GetMkTime($uptime);
-
     if ($matt == 10 && $oldmatt != 10) {
         ShowMsg("对不起，为安全起见，不支持直接把前台会员转为管理的操作", "-1");
         exit();
