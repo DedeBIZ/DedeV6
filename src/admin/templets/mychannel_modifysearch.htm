@@ -34,9 +34,8 @@
       <input type='hidden' name='dopost' value='modifysearch'>
       <tr>
         <td height="26" colspan="2" background='../static/web/img/tbg.gif' style="padding-left:10px">
-          <div style="width:100px; float:right"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid; ?>">删除自定义搜索</a></div>
-          <a href="mychannel_main.php">内容模型管理</a> &gt; 自定义搜索管理：
-          (自定义搜索在方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索)
+          <div style="width:100px;float:right"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid; ?>">删除自定义搜索</a></div>
+          <a href="mychannel_main.php">内容模型管理</a> &gt; 自定义搜索管理（自定义搜索在方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索）
         </td>
       </tr>
       <tr>
@@ -73,7 +72,7 @@
       </tr>
       <tr>
         <td align="left" bgcolor="#ffffff">自定义搜索结果页模板<br>
-          <span class="STYLE2" id="help5" style="display: none;">只填写文件名，且文件必须在templets/default目录中 </span></td>
+          <span class="STYLE2" id="help5" style="display:none">只填写文件名，且文件必须在templets/default目录中 </span></td>
         <td bgcolor="#ffffff">
           <input type="text" name="template" value="<?php echo $template; ?>" style="width:260px">
         </td>
@@ -82,7 +81,7 @@
         <td height="26" colspan="2">
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="26%" height="36"></td>
+              <td width="30%" height="36"></td>
               <td width="15%">
                 <button type="submit" class="btn btn-success btn-sm">确定</button>
               </td>
@@ -98,8 +97,8 @@
       <td height="26" colspan="2" bgcolor="#f8f8f8">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="74%">&nbsp;&nbsp;进行状态：</td>
-            <td width="26%" align="right">
+            <td width="70%">&nbsp;&nbsp;进行状态：</td>
+            <td width="30%" align="right">
               <script language='javascript'>
                 function ResizeDiv(obj, ty) {
                   if (ty == "+") document.all[obj].style.pixelHeight += 50;

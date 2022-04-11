@@ -1,19 +1,18 @@
 {dede:comment text="内容评论模块"/}
 <div class="comment mt-3 mb-3">
 	<h4>发表评论</h4>
-	<div id="feedback-alert">
-	</div>
+	<div id="feedback-alert"></div>
 	<div class="content">
 		<textarea cols="60" id="iptMsg" name="msg" rows="5" class="form-control" placeholder="说点什吗吧，请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论"></textarea>
 	</div>
 	<div class="post">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
-			<div class="form-row">
+			<div class="form-row mt-3">
 				<div class="col-md-6 mb-3">
 					<label for="iptUsername">用户名</label>
 					<input type="text" class="form-control" id="iptUsername">
 				</div>
-				<div class="col-md-6 mb-3 areaValidate" style="display: none;">
+				<div class="col-md-6 mb-3 areaValidate" style="display:none">
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
 						<input type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
@@ -24,9 +23,7 @@
 			<div class="form-group">
 				<div class="form-check">
 					<input type="checkbox" value="1" name="notuser" id="iptAny" class="form-check-input" />
-					<label class="form-check-label" for="iptAny">
-						匿名评论
-					</label>
+					<label class="form-check-label" for="iptAny">匿名评论</label>
 				</div>
 			</div>
 		</div>

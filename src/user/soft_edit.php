@@ -202,15 +202,7 @@ else if ($dopost == 'save') {
         $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：
-        <a href='soft_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新软件</a>
-        &nbsp;&nbsp;
-        <a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看修改</a>
-        &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看软件</a>
-        &nbsp;&nbsp;
-        <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理软件</a>
-        ";
+    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新软件</a><a href='soft_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看修改</a><a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看软件</a><a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理软件</a>";
     $wintitle = "成功修改软件";
     $wecome_info = "软件管理::修改软件";
     $win = new OxWindow();

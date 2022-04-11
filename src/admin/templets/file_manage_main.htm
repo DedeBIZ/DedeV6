@@ -16,10 +16,10 @@
 <body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
   <table width='98%' border='0' cellspacing='1' cellpadding='2' align='center' class="table maintable mt-3">
     <tr height="26" align="center">
-      <td width="36%" background="../static/web/img/wbg.gif">文件名</td>
-      <td width="12%" background="../static/web/img/newlinebg3.gif">文件大小</td>
-      <td width="20%" background="../static/web/img/wbg.gif">最后修改时间</td>
-      <td width="30%" background="../static/web/img/newlinebg3.gif">操作</td>
+      <td width="36%" background="../static/web/img/wbg.gif">文件名称</td>
+      <td width="12%" background="../static/web/img/wbg.gif">文件大小</td>
+      <td width="20%" background="../static/web/img/wbg.gif">修改时间</td>
+      <td width="30%" background="../static/web/img/wbg.gif">操作</td>
     </tr>
     <?php
 $dh = dir($inpath);
@@ -38,9 +38,7 @@ while(($file = $dh->read()) !== false)
 		{
 			@list($ty1,$ty2)=explode(".",$filesize);
 			$filesize=$ty1.".".substr($ty2,0,2);
-		}
-		else
-		{
+		} else {
 			@list($ty1,$ty2)=explode(".",$filesize);
 			$filesize=$ty1.".".substr($ty2,0,1);
 		}

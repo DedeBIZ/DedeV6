@@ -91,7 +91,7 @@
         <td width="100%" height="26" valign="top">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30"><img height='14' src='../static/web/img/book1.gif' width='20' />&nbsp;<a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目 </td>
+              <td height="30"><img height='14' src='../static/web/img/book1.gif' width='20' />&nbsp;<a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目</td>
             </tr>
           </table>
         </td>
@@ -111,13 +111,13 @@
               <td colspan="2" bgcolor="#ffffff">
                 <table width="86" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规选项&nbsp;</td>
+                    <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规选项</td>
                   </tr>
                 </table>
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6;background:#ffffff;text-align:left;" class="table">
+          <table width="100%" border="0" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6" class="table">
             <tr>
               <td height="26" bgcolor="#f8f8f8" style="padding-left:10px">公用参数：</td>
               <td bgcolor="#f8f8f8"></td>
@@ -134,43 +134,40 @@
             <tr>
               <td class='bline' height="26" style="padding-left:10px">目录保存位置：</td>
               <td class='bline'>
-                
-                <input name="referpath" type="radio" id="truepath1" class="np" value="parent"
-                  checked='1' />
-                  <label for="truepath1">默认HMTL目录(
+                <input name="referpath" type="radio" id="truepath1" class="np" value="parent" checked='1' />
+                <label for="truepath1">默认HMTL目录（
                 <?php
-            $pardir = '{cmspath}'.$cfg_arcdir;
-            if(!empty($typedir)) $pardir = $typedir.'/';
-            $pardir = preg_replace("#\/{1,}#", '/', $pardir);
-            echo $pardir;
-            ?>
-                )</label>
+                $pardir = '{cmspath}'.$cfg_arcdir;
+                if(!empty($typedir)) $pardir = $typedir.'/';
+                $pardir = preg_replace("#\/{1,}#", '/', $pardir);
+                echo $pardir;
+                ?>）</label>
                 <input name="referpath" type="radio" id="truepath2" class="np" value="cmspath">
                 <label for="truepath2">CMS根目录</label>
                 <input name="nextdir" type="hidden" id="nextdir" value="<?php echo $pardir; ?>">
                 <span id="pathtype" style="display:none"><input name="referpath" type="radio" id="truepath3" class="np" value="typepath">
-                  隶属栏目所属的目录</span></td>
+                  隶属栏目所属的目录</span>
+                </td>
             </tr>
             <tr>
               <td class='bline' height="26" style="padding-left:10px">隶属栏目：</td>
               <td class='bline'>
                 <select name='reid' onchange="showSeltype(this)">
-                  <option value='0'>选择所属目录 </option>
+                  <option value='0'>选择所属目录</option>
                   <?php echo $typeOptions; ?>
-                </select>
-                （默认为顶级栏目）
+                </select>（默认为顶级栏目）
               </td>
             </tr>
             <tr>
               <td class='bline' height="26" style="padding-left:10px">内容模型：&nbsp; </td>
               <td class='bline'><select name="channeltype" id="channeltype" style="width:260px" onChange="ParTemplet(this)">
-                  <?php
-            foreach($channelArray as $k=>$arr)
-            {
-            	if($k==$channelid) echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
-              else  echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
-            }
-            ?>
+                <?php
+                foreach($channelArray as $k=>$arr)
+                {
+            	    if($k==$channelid) echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                  else  echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                }
+                ?>
                 </select>
               </td>
             </tr>
@@ -182,7 +179,8 @@
                 <label><input type='radio' name='isdefault' value='0' class='np' />
                 链接到列表第一页</label>
                 <label><input type='radio' name='isdefault' value='-1' class='np' />
-                使用动态页</label> </td>
+                使用动态页</label>
+              </td>
             </tr>
             <tr>
               <td class='bline' height="26" style="padding-left:10px">默认页的名称：</td>
@@ -219,62 +217,55 @@
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>
-              <td colspan='2' style="padding:5px 0px 8px 10px">
+              <td colspan='2'>
                 <table id="addQuick" width="850" border="0" cellpadding="3" cellspacing="1">
                   <tbody>
                     <tr bgcolor="#FBFCE2" align="center">
                       <td width="60" height="26">排序</td>
                       <td width="170">顶级栏目名称</td>
-                      <td width="520">子栏目(用&quot;目录名称1,目录名称2&quot;这样表示多个栏目)</td>
-                      <td width="250" align="center"><button type="button" id="add" class="btn btn-success btn-sm">添加</button>
-                      </td>
+                      <td width="520">子栏目（用&quot;目录名称1,目录名称2&quot;这样表示多个栏目）</td>
+                      <td width="250" align="center"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
                     </tr>
                     <tr bgcolor="#ffffff" height="30" align="center">
-                      <td class="rank"><input type="hidden" name="posttype" value=""
-                          class="pubinputs">
-                        <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:50px"></td>
-                      <td align='center'><input type="text" name="toptype" id="toptype" class="pubinputs"
-                          style="width:160px"></td>
+                      <td class="rank"><input type="hidden" name="posttype" value="" class="pubinputs">
+                        <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px"></td>
+                      <td align='center'><input type="text" name="toptype" id="toptype" class="pubinputs" style="width:160px"></td>
                       <td><input type="text" name="sontype" id="sontype" class="pubinputs" style="width:480px"></td>
                       <td align="center"><button name="" type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr bgcolor="#ffffff" height="30" class="repeat" align="center">
                       <td class="rank"><input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>">
-                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:50px"></td>
-                      <td align='center'><input type="text" name="toptype<?php echo $i; ?>"
-                          id="toptype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
-                      <td><input type="text" name="sontype<?php echo $i; ?>" id="sontype<?php echo $i; ?>"
-                          class="pubinputs" style="width:480px"></td>
+                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:60px"></td>
+                      <td align='center'><input type="text" name="toptype<?php echo $i; ?>" id="toptype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
+                      <td><input type="text" name="sontype<?php echo $i; ?>" id="sontype<?php echo $i; ?>" class="pubinputs" style="width:480px"></td>
                       <td align="center"><button name="" type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php } ?>
                   </tbody>
                 </table>
-
-
                 <table id="addQuickRel" width="302" border="0" cellpadding="3" cellspacing="1" style="display:none">
                   <tbody>
                     <tr bgcolor="#FBFCE2" align="center">
                       <td width="60" height="26">排序</td>
                       <td width="170">栏目名称</td>
-                      <td width="250" align="center"><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button>
-                      </td>
+                      <td width="250" align="center"><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
                     </tr>
                     <tr bgcolor="#ffffff" height="30" align="center">
-                      <td class="rank"><input type="hidden" name="posttype" value=""
-                          class="pubinputs">
-                        <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:50px"></td>
-                      <td align='center'><input type="text" name="reltype" id="reltype" class="pubinputs"
-                          style="width:160px"></td>
+                      <td class="rank">
+                        <input type="hidden" name="posttype" value="" class="pubinputs">
+                        <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px">
+                      </td>
+                      <td align='center'><input type="text" name="reltype" id="reltype" class="pubinputs" style="width:160px"></td>
                       <td align="center"><button name="" type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr bgcolor="#ffffff" height="30" class="repeat" align="center">
-                      <td class="rank"><input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>">
-                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:50px"></td>
-                      <td align='center'><input type="text" name="reltype<?php echo $i; ?>"
-                          id="reltype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
+                      <td class="rank">
+                        <input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>">
+                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:60px">
+                      </td>
+                      <td align='center'><input type="text" name="reltype<?php echo $i; ?>" id="reltype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
                       <td align="center"><button type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php } ?>
@@ -283,11 +274,12 @@
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0;" class="mb-3">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
             <tr>
-              <td width="1%" height="36"></td>
-              <td width="99%" valign="bottom" class="py-3"><button type="submit" class="btn btn-success">确定</button>
-                &nbsp;&nbsp;&nbsp; <a href="catalog_main.php" class="btn btn-success">返回</a></td>
+              <td align="center" height="36" style="padding:.6rem">
+                <button type="submit" class="btn btn-success">确定</button>
+                <a href="catalog_main.php" class="btn btn-success">返回</a>
+              </td>
             </tr>
           </table>
         </td>
