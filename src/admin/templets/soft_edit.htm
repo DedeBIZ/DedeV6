@@ -31,7 +31,7 @@
       var endNum = parseInt(document.form1.picnum.value) + startNum;
       if (endNum > 30) endNum = 30;
       for (startNum; startNum < endNum; startNum++) {
-        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:300px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
+        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:260px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
       }
     }
     function ShowHideAddr() {
@@ -311,7 +311,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;运行环境：</td>
-              <td><input type='text' name='os' value='<?php echo $addRow["os"]?>' style='width:300px'></td>
+              <td><input type='text' name='os' value='<?php echo $addRow["os"]?>' style='width:260px'></td>
             </tr>
           </table>
         </td>
@@ -321,9 +321,9 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;官方网址：</td>
-              <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" style='width:300px'></td>
+              <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" style='width:260px'></td>
               <td width="90">程序演示：</td>
-              <td><input name="officialDemo" type="text" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" style='width:300px'></td>
+              <td><input name="officialDemo" type="text" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" style='width:260px'></td>
             </tr>
           </table>
         </td>

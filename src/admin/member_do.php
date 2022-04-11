@@ -118,7 +118,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
     $win->AddTitle("您确定要删除(ID:".$id.")这个会员?");
-    $win->AddMsgItem(" 安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' /> (复制本代码：<span style='color:#dc3545'>$safecode</span>)", "30");
+    $win->AddMsgItem(" 安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:260px' /> (复制本代码：<span style='color:#dc3545'>$safecode</span>)", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }

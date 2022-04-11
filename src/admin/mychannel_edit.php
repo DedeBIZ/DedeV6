@@ -503,7 +503,7 @@ else if ($dopost == 'modifysearch') {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' style='width:200px'>\r\n";
+                    $forms .= "<br>栏目：<select name='typeid' style='width:260px'>\r\n";
                     $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";
@@ -529,7 +529,7 @@ else if ($dopost == 'modifysearch') {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' style='width:200px'>\r\n";
+                    $forms .= "<br>栏目：<select name='typeid' style='width:260px'>\r\n";
                     $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";
