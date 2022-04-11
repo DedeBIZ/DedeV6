@@ -25,8 +25,7 @@ foreach ($filelist as $key => $ff) {
 }
 $alter = "";
 if (count($offFiles) == 0) {
-    $alter = '
-    <div class="alert alert-danger maintable mb-2" style="margin:0 auto;">无法同官方网站文件服务器通信，校验时候无法保证本地文件是否同官方服务器文件是否一致</div>';
+    $alter = '<div class="alert alert-danger maintable" style="margin:12px auto">无法同官方网站文件服务器通信，校验时候无法保证本地文件是否同官方服务器文件是否一致</div>';
 }
 function TestOneFile($f)
 {
