@@ -100,8 +100,8 @@
               while($nrow = $dsql->GetArray())
               {
                 	if($nrow['rank']==0) $nrow['membername'] = "开放下载";
-                	if($nrow['rank']==$row['dfrank']) echo "     <option value='{$nrow['rank']}' selected>{$nrow['membername']}</option>\r\n";
-                	else echo "     <option value='{$nrow['rank']}'>{$nrow['membername']}</option>\r\n";
+                	if($nrow['rank']==$row['dfrank']) echo "<option value='{$nrow['rank']}' selected>{$nrow['membername']}</option>\r\n";
+                	else echo "<option value='{$nrow['rank']}'>{$nrow['membername']}</option>\r\n";
               }
          ?>
           </select>
@@ -137,7 +137,7 @@
         </td>
       </tr>
       <tr>
-        <td height="62" colspan="2" bgcolor="#ffffff"><textarea name="sites" id="sites" style="width:99%;height:150px"><?php echo $row['sites']; ?></textarea></td>
+        <td height="62" colspan="2" bgcolor="#ffffff"><textarea name="sites" id="sites" style="width:98%;height:150px"><?php echo $row['sites']; ?></textarea></td>
       </tr>
       <tr>
         <td height="26" colspan="2" bgcolor="#f8f8f8" style="padding-left:10px">下载说明：</td>
