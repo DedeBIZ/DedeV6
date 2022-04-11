@@ -91,7 +91,7 @@ function CloseModal(modalID) {
 }
 //在某个元素内显示alert信息
 function ShowAlert(ele, content, type, showtime = 3000) {
-    let msg = `<div class="alert alert-${type}">
+    let msg = `<div class="alert alert-${type}" role="alert">
         ${content}
     </div>`;
     $(ele).html(msg);
