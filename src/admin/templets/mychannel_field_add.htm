@@ -116,17 +116,15 @@ td{ padding:2px; padding-left:6px; line-height:26px }
     </tr>
     <tr>
       <td colspan="2" bgcolor="#ffffff">
-        <div class="alert alert-danger">
-          所有填写的内容不允许包含双引号[&quot;]，否则配置将无法写入
-        </div>
+        <div class="alert alert-danger mb-0">所有填写的内容不允许包含双引号[&quot;]，否则配置将无法写入</div>
       </td>
     </tr>
     <tr> 
       <td bgcolor="#ffffff">表单提示文字：<br>
-          <span class="STYLE2">发布内容时显示的提示文字</span></td>
-      <td bgcolor="#ffffff">
-      	<input name="itemname" type="text" id="itemname" class="pubinputs">
-        *</td>
+        <span class="STYLE2">发布内容时显示的提示文字</span></td>
+        <td bgcolor="#ffffff">
+      	<input name="itemname" type="text" id="itemname" class="pubinputs"> *
+      </td>
     </tr>
     <tr> 
       <td width="28%" bgcolor="#ffffff">字段名称：<br>
@@ -134,10 +132,9 @@ td{ padding:2px; padding-left:6px; line-height:26px }
       	只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的<a href='stepselect_main.php' target='_blank'>[组名称]</a>
       </span>
       </td>
-      <td width="72%" bgcolor="#ffffff"> 
-        <input name="fieldname" type="text" id="fieldname" class="pubinputs"> 
-        *
-       </td>
+      <td width="72%" bgcolor="#ffffff">
+        <input name="fieldname" type="text" id="fieldname" class="pubinputs"> *
+      </td>
     </tr>
     <tr>
       <td bgcolor="#ffffff">字段类型：</td>
@@ -215,11 +212,11 @@ td{ padding:2px; padding-left:6px; line-height:26px }
             {
               if($k==$channelid) {
                   $nid = $arr['nid'];
-                  echo "    <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                  echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
               }
               else
               {
-                  echo "    <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                  echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
               }
             }
           ?>
