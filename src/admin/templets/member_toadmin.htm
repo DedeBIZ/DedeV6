@@ -44,8 +44,8 @@
             <input type="hidden" name="userid" value="<?php echo $row['userid']?>">
             <input type="hidden" name="id" value="<?php echo $id?>">
             <tr>
-              <td width="120" class="bline">用户名：</td>
-              <td class="bline" height="26" class="bline">
+              <td width="120">用户名：</td>
+              <td height="26">
               <?php
               echo "".$row['userid']."";
               if($row['face']!='') {
@@ -55,16 +55,16 @@
             </td>
             </tr>
             <tr>
-              <td height="26" class="bline">用户笔名：</td>
-              <td height="26" class="bline"><input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文章后显示责任编辑的名字）</td>
+              <td height="26">用户笔名：</td>
+              <td height="26"><input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文章后显示责任编辑的名字）</td>
             </tr>
             <tr>
-              <td height="26" class="bline">用户密码：</td>
-              <td height="26" class="bline"><input name="pwd" type="text" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
+              <td height="26">用户密码：</td>
+              <td height="26"><input name="pwd" type="text" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
             </tr>
             <tr>
-              <td height="26" class="bline">用户类型：</td>
-              <td height="26" class="bline">
+              <td height="26">用户类型：</td>
+              <td height="26">
                 <select name='usertype' style='width:160px'>
                 <?php
                 $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
@@ -79,8 +79,8 @@
               </td>
             </tr>
             <tr>
-              <td height="26" class="bline">负责频道：</td>
-              <td height="26" class="bline">
+              <td height="26">负责频道：</td>
+              <td height="26">
                 <select name="typeids[]" id="typeid" style="width:260px;height:200px" multiple="true">
                   <option value="0" class='alltype'>所有频道</option>
                   <?php echo $typeOptions?>
@@ -88,16 +88,16 @@
               </td>
             </tr>
             <tr>
-              <td height="26" class="bline">真实姓名：</td>
-              <td height="26" class="bline"><input name="tname" type="text" id="tname" size="16" style="width:260px" value=""></td>
+              <td height="26">真实姓名：</td>
+              <td height="26"><input name="tname" type="text" id="tname" size="16" style="width:260px" value=""></td>
             </tr>
             <tr>
-              <td height="26" class="bline">电子邮箱：</td>
-              <td height="26" class="bline"><input name="email" type="text" id="email" size="16" style="width:260px" value="<?php echo $row['email']?>"></td>
+              <td height="26">电子邮箱：</td>
+              <td height="26"><input name="email" type="text" id="email" size="16" style="width:260px" value="<?php echo $row['email']?>"></td>
             </tr>
             <tr>
-              <td height="26" class="bline">安全验证串：</td>
-              <td height="26" class="bline">
+              <td height="26">安全验证串：</td>
+              <td height="26">
                 <input name="safecode" type="text" id="safecode" size="16" style="width:260px"> 
                 <input name="randcode" type="hidden" value="<?php echo $randcode; ?>">
                 （复制本代码：<span style='color:#e74d58'><?php echo $safecode;  ?></span>）
@@ -105,7 +105,7 @@
             </tr>
             <tr>
               <td height="36"></td>
-              <td height="36" height="26" class="bline">
+              <td height="36" height="26">
                 <button type="submit" name="Submit" class='btn btn-success'>确定提升</button>
                 <button type="reset" name="Submit22" class='btn btn-success'>重置表单</button></td>
             </tr>

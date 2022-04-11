@@ -93,7 +93,7 @@ table{border-collapse:separate}
   </table>
   <table width="98%"  border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff;">
     <tr>
-      <td height="26" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
+      <td height="26" colspan="4"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;图集标题：</td>
             <td width="400"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:380px"></td>
@@ -104,7 +104,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td width="400%" height="26" colspan="4" class="bline">
+      <td width="400%" height="26" colspan="4">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;自定义属性：</td>
@@ -127,7 +127,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
+      <td height="26" colspan="4" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;跳转网址：</td>
@@ -137,7 +137,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td width="400%" height="26" class="bline">
+      <td width="400%" height="26">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;Tag标签：</td>
@@ -149,7 +149,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr id="pictable">
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90" height="80">&nbsp;缩略图：</td>
@@ -165,7 +165,7 @@ table{border-collapse:separate}
         </table></td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
+      <td height="26" colspan="4"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;图集来源：</td>
             <td width="250">
@@ -182,7 +182,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
         <table width="570" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;图集主栏目：</td>
@@ -206,7 +206,7 @@ table{border-collapse:separate}
     if($cfg_need_typeid2=='Y') {
     ?>
     <tr>
-      <td height="26" class="bline">
+      <td height="26">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;副栏目：</td>
@@ -220,7 +220,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" class="bline">
+      <td height="26">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;关键词：</td>
@@ -230,7 +230,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" class="bline">
+      <td height="26">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;内容摘要：</td>
@@ -248,7 +248,7 @@ table{border-collapse:separate}
       ?></td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
+      <td height="26" colspan="4"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;图集内容：</td>
             <td><?php GetEditor("body",$body,450,"Diy"); ?></td>
@@ -260,7 +260,7 @@ table{border-collapse:separate}
       <td height="26" bgcolor="#f8f8f8" class="bline2">&nbsp;高级属性：</td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
       <table width="800" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="90" height="26" width="250">&nbsp;评论选项：</td>
@@ -281,7 +281,7 @@ table{border-collapse:separate}
       </table>
     </tr>
     <tr>
-      <td height="26" class="bline">
+      <td height="26">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;文档排序：</td>
@@ -308,7 +308,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" class="bline">
+      <td height="26">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;阅读权限：</td>
@@ -332,7 +332,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="70" class="bline">
+      <td height="70">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;发布时间：</td>
@@ -352,7 +352,7 @@ table{border-collapse:separate}
   <!--高级参数-->
   <table width="98%"  border="0" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;background:#ffffff;display:none">
     <tr>
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;表现方式：</td>
@@ -368,7 +368,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr id='cfgmulist' style='<?php if($pagestyle!=3) echo 'display:none'; ?>'>
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="120">&nbsp;多列式参数：</td>
@@ -386,7 +386,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr id='spagelist' style='<?php if($pagestyle!=1) echo 'display:none'; ?>'>
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;每页图片数：</td>
@@ -396,7 +396,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr style='display:none'>
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;限制宽度：</td>
@@ -406,7 +406,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;上传方式：</td>
@@ -420,7 +420,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr id="zipff" style="display:none">
-      <td height="26" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0" height="100">
+      <td height="26" colspan="4"><table width="800" border="0" cellspacing="0" cellpadding="0" height="100">
           <tr>
             <td width="90">&nbsp;压缩包文件：</td>
             <td><input type='text' name='zipfile' id='zipfile' style='width:260px'>
@@ -433,7 +433,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr id="htmlfield" style="display:none">
-      <td height="26" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
+      <td height="26" colspan="4"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;网上复制：</td>
             <td>复制的源网址：
@@ -448,7 +448,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline">
+      <td height="26" colspan="4">
         <table width='100%'>
           <tr>
             <td>
@@ -494,7 +494,7 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline" style="background:#f8f8f8">
+      <td height="26" colspan="4" style="background:#f8f8f8">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;增加新图片：</td>

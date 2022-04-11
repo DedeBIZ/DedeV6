@@ -65,58 +65,51 @@
           <label><input name="showmod" type="radio" class="np" value="1" <?php echo ($row['showmod']==1)? "checked='checked'" : ""; ?>>
             生成静态 (或者手动删除根目录下index.html文件)</label></td>
       </tr>
+      <?php
+      if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
+        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
+        $client->appid = $cfg_bizcore_appid;
+        $client->key = $cfg_bizcore_key;
+        $data = $client->AdminPWDExists();
+        if($data->code == -1){
+      ?>
       <tr>
-        <td height="26" colspan="2" valign="top" bgcolor="#dee2e6">首页防篡改（首页位置修改请重新启动商业组件）</td>
+        <td height="26" colspan="2" valign="top" bgcolor="#ffffff">尚未开启DedeBIZ商业组件 <a class="btn btn-danger btn-sm" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a>
+        </td>
       </tr>
-        <?php
-        if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-          $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
-          $client->appid = $cfg_bizcore_appid;
-          $client->key = $cfg_bizcore_key;
-          $data = $client->AdminPWDExists();
-          if($data->code == -1){
-        ?>
-        <tr>
-          <td height="26" colspan="2" valign="top" bgcolor="#ffffff">尚未开启DedeBIZ商业组件 <a class="btn btn-danger btn-sm" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a>
-          </td>
-        </tr>
-        <?php
-          } else {
-            $data = json_decode($data->data);
-            $rs = (array)($data->result);
-            if($rs["admin_pwd_exists"] == "false") {
-        ?>
-        <tr>
-          <td height="26" valign="top" bgcolor="#ffffff">设置操作密码：</td>
-          <td height="26" valign="top" bgcolor="#ffffff"><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">设定后所有的DedeBIZ涉及安全操作输入当前操作密码</td>
-        </tr>
-        <tr>
-          <td height="26" valign="top" bgcolor="#ffffff">重复操作密码：</td>
-          <td height="26" valign="top" bgcolor="#ffffff">
-            <input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" size="30">
-          </td>
-        </tr>
-        <?php } else { ?>
-        <tr>
-          <td height="26" valign="top" bgcolor="#ffffff">操作密码：</td>
-          <td height="26" valign="top" bgcolor="#ffffff">
-            <input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">
-          </td>
-        </tr>
-        <tr>
-          <td height="26" valign="top" bgcolor="#ffffff">首页状态：</td>
-          <td height="26" valign="top" bgcolor="#ffffff">
-            <label><input name="lockindex" type="radio" class="np" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : ""; ?>>
-              解锁</label>
-            <label><input name="lockindex" type="radio" value="lock" class="np" <?php echo ($row['index_lock_state']==false)? "checked='checked'" : ""; ?>>
-              锁定</label>
-          </td>
-        </tr>
-        <?php
-            }
-          }
-        } else {
-        ?>
+      <?php
+      } else {
+        $data = json_decode($data->data);
+        $rs = (array)($data->result);
+        if($rs["admin_pwd_exists"] == "false") {
+      ?>
+      <tr>
+        <td height="26" valign="top" bgcolor="#ffffff">设置操作密码：</td>
+        <td height="26" valign="top" bgcolor="#ffffff"><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30">设定后所有的DedeBIZ涉及安全操作输入当前操作密码</td>
+      </tr>
+      <tr>
+        <td height="26" valign="top" bgcolor="#ffffff">重复操作密码：</td>
+        <td height="26" valign="top" bgcolor="#ffffff"><input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" size="30"></td>
+      </tr>
+      <?php } else { ?>
+      <tr>
+        <td height="26" valign="top" bgcolor="#ffffff">操作密码：</td>
+        <td height="26" valign="top" bgcolor="#ffffff"><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" size="30"></td>
+      </tr>
+      <tr>
+        <td height="26" valign="top" bgcolor="#ffffff">首页状态：</td>
+        <td height="26" valign="top" bgcolor="#ffffff">
+          <label><input name="lockindex" type="radio" class="np" value="unlock" <?php echo ($rs['index_lock_state']==true)? "checked='checked'" : ""; ?>>
+            解锁</label>
+          <label><input name="lockindex" type="radio" value="lock" class="np" <?php echo ($row['index_lock_state']==false)? "checked='checked'" : ""; ?>>
+            锁定</label>
+        </td>
+      </tr>
+      <?php
+      }
+      }
+      } else {
+      ?>
       <tr>
         <td height="26" colspan="2" valign="top" bgcolor="#ffffff">尚未开启DedeBIZ商业组件 <a class="btn btn-danger btn-sm" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a>
         </td>
@@ -135,8 +128,8 @@
       <td height="26" colspan="2">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="74%">进行状态：</td>
-            <td width="26%" align="right">
+            <td width="70%">进行状态：</td>
+            <td width="30%" align="right">
               <script language='javascript'>
                 function ResizeDiv(obj, ty) {
                   if (ty == "+") document.all[obj].style.pixelHeight += 50;
@@ -151,7 +144,7 @@
     </tr>
     <tr bgcolor="#ffffff">
       <td colspan="2" id="mtd">
-        <div id='mdv' style='width:100%;height:350px;'>
+        <div id='mdv' style='width:100%;height:350px'>
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
         </div>
       </td>
