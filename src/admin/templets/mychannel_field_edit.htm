@@ -144,7 +144,7 @@
       <tr>
         <td bgcolor="#ffffff">数据类型：</td>
         <td bgcolor="#ffffff">
-          <select name="dtype" id="type" style="width:200px">
+          <select name="dtype" id="type" style="width:260px">
             <?php 
           $dtype = $ctag->GetAtt('type');
           if($dtype!='' && isset($fieldtypes[$dtype]))
@@ -187,7 +187,7 @@
         </span>
         </td>
         <td bgcolor="#ffffff"> 
-          <select name="channeltype" id="channeltype" style="width:200px">
+          <select name="channeltype" id="channeltype" style="width:260px">
             <?php
               $channelid = $ctag->GetAtt('channel') == "" ? 1 : $ctag->GetAtt('channel');
               

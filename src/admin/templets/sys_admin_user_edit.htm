@@ -33,20 +33,20 @@
             <tr>
               <td height="30">用户笔名：</td>
               <td style="text-align:left">
-                <input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:200px"> &nbsp;（发布文章后显示责任编辑的名字）
+                <input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px"> &nbsp;（发布文章后显示责任编辑的名字）
               </td>
             </tr>
             <tr>
               <td height="30">用户密码：</td>
               <td style="text-align:left">
-                <input name="pwd" type="text" id="pwd" size="16" style="width:200px">
+                <input name="pwd" type="text" id="pwd" size="16" style="width:260px">
                 &nbsp;（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）
               </td>
             </tr>
             <tr>
               <td height="30">用户类型：</td>
               <td style="text-align:left">
-                <select name='usertype' style='width:200px'>
+                <select name='usertype' style='width:260px'>
                   <?php
 			  	$dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
 			  	$dsql->Execute("ut");
@@ -62,7 +62,7 @@
             <tr>
               <td height="30">负责频道：</td>
               <td style="text-align:left">
-                <select name="typeids[]" id="typeid" size='10' style="width:200px;height: 200px;" multiple="true">
+                <select name="typeids[]" id="typeid" size='10' style="width:260px;height:200px" multiple="true">
                   <option value="0" class='alltype'>所有频道</option>
                   <?php echo $typeOptions?>
                 </select>（按Ctrl可以进行多选）
@@ -70,16 +70,16 @@
             </tr>
             <tr>
               <td height="30">真实姓名：</td>
-              <td style="text-align:left"><input name="tname" type="text" id="tname" size="16" style="width:200px" value="<?php echo $row['tname']?>"> &nbsp;</td>
+              <td style="text-align:left"><input name="tname" type="text" id="tname" size="16" style="width:260px" value="<?php echo $row['tname']?>"> &nbsp;</td>
             </tr>
             <tr>
               <td height="30">电子邮箱：</td>
-              <td style="text-align:left"><input name="email" type="text" id="email" size="16" style="width:200px" value="<?php echo $row['email']?>"> &nbsp;</td>
+              <td style="text-align:left"><input name="email" type="text" id="email" size="16" style="width:260px" value="<?php echo $row['email']?>"> &nbsp;</td>
             </tr>
             <tr>
               <td height="30">安全验证串：</td>
               <td style="text-align:left">
-                <input name="safecode" type="text" id="safecode" size="16" style="width:200px">
+                <input name="safecode" type="text" id="safecode" size="16" style="width:260px">
                 <input name="randcode" type="hidden" value="<?php echo $randcode; ?>">
                 &nbsp;
                 (复制本代码：<span style='color:#e74d58'><?php echo $safecode;  ?></span> )
