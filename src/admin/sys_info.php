@@ -116,7 +116,7 @@ EOT;
 ?>
             <tr align="center" height="26" bgcolor="<?php echo $bgcolor ?>">
                 <td width="300"><?php echo $row['info']; ?>：</td>
-                <td align="left" style="padding:3px;">
+                <td align="left" style="padding:6px;">
                     <?php
                     if ($row['type'] == 'bool') {
                         $c1 = '';
