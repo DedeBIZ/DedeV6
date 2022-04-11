@@ -78,24 +78,24 @@
       </tr>
       <tr bgcolor="#FEFCEF" height="30" align="center">
         <td width="6%">选择</td>
-        <td width="5%">mid</td>
-        <td width="11%">登录名</td>
+        <td width="6%">mid</td>
+        <td width="10%">登录名</td>
         <td width="16%">email/昵称</td>
-        <td width="5%">性别</td>
+        <td width="6%">性别</td>
         <td width="8%">会员等级</td>
         <td width="15%">会员属性</td>
-        <td width="14%">最后登录</td>
+        <td width="10%">最后登录</td>
         <td>操作</td>
       </tr>
-      {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
+      {dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
       <tr height="26" align="center" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
         <td><input name="mid" type="checkbox" id="mid" value="{dede:field.mid/}" class="np"></td>
         <td>{dede:field.mid/}</td>
         <td><a href="../user/index.php?uid={dede:field.userid/}" target='_blank'>
           <?php
           echo ''.$fields['userid'].'';
-          if($fields['spacesta']==-2) echo "<span style='color:#e74d58'>(禁言)</span>";
-          if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>(未审核)</span>";
+          if($fields['spacesta']==-2) echo "<span style='color:#e74d58'>[禁言]</span>";
+          if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>[未审核]</span>";
           if(!empty($fields['face'])) {
             echo "<br><img src='{$fields['face']}' alt='浏览会员空间' style='max-width:80px;height:auto'>";
           }
