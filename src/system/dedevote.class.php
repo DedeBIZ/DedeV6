@@ -124,9 +124,9 @@ class DedeVote
         if ($this->VoteCount > 0) {
             foreach ($this->VoteNotes as $k => $arr) {
                 if ($this->VoteInfos['ismore'] == 0) {
-                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><label><input type='radio' name='voteitem' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
+                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#424b51'><label><input type='radio' name='voteitem' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
                 } else {
-                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><label><input type=checkbox name='voteitem[]' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
+                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#424b51'><label><input type=checkbox name='voteitem[]' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
                 }
             }
             $items .= "<tr><td height='$lineheight'>\r\n";
