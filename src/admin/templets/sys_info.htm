@@ -163,9 +163,9 @@ function resetCookieEncode() {
             ?>
             <table width="100%" border="0" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none'; ?>">
               <tr align="center" bgcolor="#FBFCE2">
-                <td width="300" style="border-top:0">变量说明</td>
+                <td width="360" style="border-top:0">变量说明</td>
                 <td style="border-top:0">变量值</td>
-                <td width="220" style="border-top:0">变量名</td>
+                <td width="260" style="border-top:0">变量名</td>
               </tr>
               <?php
               $dsql->SetQuery("Select * From `#@__sysconfig` where groupid='{$dls[0]}' order by aid asc");
