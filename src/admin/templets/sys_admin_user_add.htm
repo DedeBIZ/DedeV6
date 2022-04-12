@@ -49,24 +49,21 @@
           <input type="hidden" name="dopost" value="add">
           <table width="98%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
-              <td width="16%" height="30">用户登录ID：</td>
-              <td width="84%" style="text-align:left"><input name="userid" type="text" id="userid" size="16" style="width:260px">
-                  &nbsp;（只能用'0-9'、'a-z'、'A-Z'、'.'、'@'、'_'、'-'、'!'以内范围的字符）</td>
+              <td width="160" height="26" class="bline">用户登录ID：</td>
+              <td><input name="userid" type="text" id="userid" size="16" style="width:260px">（只能用'0-9'、'a-z'、'A-Z'、'.'、'@'、'_'、'-'、'!'以内范围的字符）</td>
             </tr>
             <tr>
-              <td height="30">用户笔名：</td>
-              <td style="text-align:left"><input name="uname" type="text" id="uname" size="16" style="width:260px">
-                &nbsp;（发布文章后显示责任编辑的名字）</td>
+              <td height="26" class="bline">用户笔名：</td>
+              <td><input name="uname" type="text" id="uname" size="16" style="width:260px">（发布文章后显示责任编辑的名字）</td>
             </tr>
             <tr>
-              <td height="30">用户密码：</td>
-              <td style="text-align:left"><input name="pwd" type="text" id="pwd" size="16" style="width:260px">
-                &nbsp;（只能用'0-9'、'a-z'、'A-Z'、'.'、'@'、'_'、'-'、'!'以内范围的字符）</td>
+              <td height="26" class="bline">用户密码：</td>
+              <td><input name="pwd" type="text" id="pwd" size="16" style="width:260px">（只能用'0-9'、'a-z'、'A-Z'、'.'、'@'、'_'、'-'、'!'以内范围的字符）</td>
             </tr>
             <tr>
-              <td height="30">用户组：</td>
-              <td style="text-align:left">
-                <select name='usertype' style='width:260px'>
+              <td height="26" class="bline">用户组：</td>
+              <td height="26" class="bline">
+                <select name='usertype' style='width:160px'>
                   <?php
 			  	
 			  	$dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
@@ -77,41 +74,35 @@
 			  	}
 			  	?>
                 </select>
-                &nbsp;
                 <a href='sys_group.php' class='btn btn-success btn-sm'>用户组设定</a>
               </td>
             </tr>
             <tr>
-              <td height="30">授权栏目：</td>
-              <td style="text-align:left">
-                <select name="typeids[]" id="typeid" size='10' style="width:260px;height:200px" multiple="true">
+              <td height="26" class="bline">授权栏目：</td>
+              <td height="26" class="bline">
+                <select name="typeids[]" id="typeid" style="width:260px;height:200px" multiple="true">
                   <option value="0" class='alltype' selected>所有频道</option>
                   <?php echo $typeOptions?>
                 </select>（按Ctrl可以进行多选）
               </td>
             </tr>
             <tr>
-              <td height="30">真实姓名：</td>
-              <td style="text-align:left"><input name="tname" type="text" id="tname" size="16" style="width:260px">
-                &nbsp;</td>
+              <td height="26" class="bline">真实姓名：</td>
+              <td height="26" class="bline"><input name="tname" type="text" id="tname"style="width:260px"></td>
             </tr>
             <tr>
-              <td height="30">电子邮箱：</td>
-              <td style="text-align:left"><input name="email" type="text" id="email" size="16" style="width:260px">
-                &nbsp;</td>
+              <td height="26" class="bline">电子邮箱：</td>
+              <td height="26" class="bline"><input name="email" type="text" id="email" style="width:260px"></td>
             </tr>
             <tr>
-              <td height="30">安全验证串：</td>
-              <td style="text-align:left">
-                <input name="safecode" type="text" id="safecode" size="16" style="width:260px">
-                <input name="randcode" type="hidden" value="<?php echo $randcode; ?>">
-                &nbsp;
-                (复制本代码：<span style='color:#e74d58'><?php echo $safecode;  ?></span> )
+              <td height="26" class="bline">安全验证串：</td>
+              <td height="26" class="bline">
+                <input name="safecode" type="text" id="safecode" style="width:260px">
+                <input name="randcode" type="hidden" value="<?php echo $randcode; ?>">（复制本代码：<span style='color:#e74d58'><?php echo $safecode;  ?></span>）
               </td>
             </tr>
             <tr>
-              <td height="60"></td>
-              <td>
+              <td colspan="2" class="py-3">
                 <button type="submit" class="btn btn-success" onClick="DoSubmit('gettag')" class="coolbg np">增加用户</button>
               </td>
             </tr>
