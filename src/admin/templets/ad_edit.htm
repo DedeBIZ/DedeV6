@@ -44,9 +44,9 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1"  align="center" class="table maintable mt-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px">&nbsp;<a href="ad_main.php">广告管理</a> &gt; 修改广告 </td>
+      <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="ad_main.php">广告管理</a> &gt; 修改广告</td>
     </tr>
     <tr>
       <td height="200" bgcolor="#ffffff" valign="top">
@@ -56,18 +56,19 @@
             <input type='hidden' name='dopost' value='saveedit'>
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
-              <td height="26" align="center">广告位标识：</td>
+              <td height="26">广告位标识：</td>
               <td colspan="2"><?php echo $row['tagname']; ?></td>
             </tr>
             <tr>
-              <td height="26" align="center">广告分类：</td>
-              <td colspan="2"><select name='clsid' style='width:150px' id="clsid">
+              <td height="26">广告分类：</td>
+              <td colspan="2">
+                <select name='clsid' id="clsid" style='width:160px'>
                   <option value='0'>默认分类</option>
                   <?php echo $option; ?>
                 </select></td>
             </tr>
             <tr>
-              <td width="15%" height="26" align="center">广告投放范围：</td>
+              <td width="15%" height="26">广告投放范围：</td>
               <td colspan="2"><?php
            	$tl = new TypeLink(0);
            	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
@@ -77,43 +78,42 @@
             echo "</select>";
 			?>
                 <br>
-                （如果在所选栏目找不到指定标识的广告内容，系统会自动搜索父栏目）</td>
+              （如果在所选栏目找不到指定标识的广告内容，系统会自动搜索父栏目）</td>
             </tr>
             <tr>
-              <td height="26" align="center">广告位名称：</td>
-              <td colspan="2"><input name="adname" type="text" id="adname" size="30" value="<?php echo $row['adname']?>" class='iptxt' /></td>
+              <td height="26">广告位名称：</td>
+              <td colspan="2"><input name="adname" type="text" id="adname" value="<?php echo $row['adname']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
-              <td height="26" align="center">时间限制：</td>
+              <td height="26">时间限制：</td>
               <td colspan="2">
-                <label><input class="np" name="timeset" type="radio" value="0"
-                  <?php if($row['timeset']==0) echo " checked='1' "; ?> />
+                <label><input class="np" name="timeset" type="radio" value="0" <?php if($row['timeset']==0) echo " checked='1' "; ?> />
                 永不过期</label>
-                <label><input class="np" type="radio" name="timeset" value="1"
-                  <?php if($row['timeset']==1) echo " checked='1' "; ?> />
-                在设内时间内有效</label></td>
+                <label><input class="np" type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo " checked='1' "; ?> />
+                在设内时间内有效</label>
+              </td>
             </tr>
             <tr>
-              <td height="26" align="center">投放时间：</td>
+              <td height="26">投放时间：</td>
               <td colspan="2">从
-                <input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" class='iptxt datepicker' />
+                <input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" class='iptxt datepicker' style="width:160px">
                 到
-                <input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" class='iptxt datepicker' /></td>
+                <input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" class='iptxt datepicker' style="width:160px">
+              </td>
             </tr>
             <tr>
-              <td height="80" align="center">正常显示内容：</td>
+              <td height="80">正常显示内容：</td>
               <td width="76%"><textarea name="normbody" rows="10" id="normbody" style="width:80%;height:100px"><?php echo dede_htmlspecialchars(stripslashes($row['normbody']))?></textarea>
               </td>
               <td width="9%"></td>
             </tr>
             <tr>
-              <td height="80" align="center">过期显示内容：</td>
+              <td height="80">过期显示内容：</td>
               <td><textarea name="expbody" rows="10" id="expbody" style="width:80%;height:100px"><?php echo dede_htmlspecialchars($row['expbody'])?></textarea></td>
               <td></td>
             </tr>
             <tr>
-              <td height="53" align="center"></td>
-              <td colspan="2"><button type="submit" class="btn btn-success">确定</button></td>
+              <td colspan="3" height="36" align="center"><button type="submit" class="btn btn-success">确定</button></td>
             </tr>
           </form>
         </table>

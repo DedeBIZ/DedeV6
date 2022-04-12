@@ -5,7 +5,7 @@
   <title>增加自定义标记</title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel='stylesheet' href='../static/web/css/admin.css'>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <script src="../static/web/js/jquery.min.js" language="javascript" type="text/javascript"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
@@ -61,8 +61,7 @@
     <tr>
       <td height="200" bgcolor="#ffffff" valign="top">
         <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
-          <form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1"
-            onSubmit="return checkSubmit()">
+          <form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
             <input type='hidden' name='dopost' value='save' />
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>

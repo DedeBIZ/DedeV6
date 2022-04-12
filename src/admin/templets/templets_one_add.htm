@@ -5,7 +5,7 @@
   <title>增加自定义页面</title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel='stylesheet' href='../static/web/css/admin.css'>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script language="javascript" src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script language="javascript" src="js/main.js"></script>
@@ -27,35 +27,27 @@
 <body>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px">
-        <a href="templets_one.php">单独页面管理</a> &gt; 增加新页面
-      </td>
+      <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="templets_one.php">单独页面管理</a> &gt; 增加新页面</td>
     </tr>
     <tr>
       <td height="200" bgcolor="#ffffff" valign="top">
-        <table width="100%" border="0" cellspacing="4" cellpadding="2" class="table table-borderless">
+        <table width="100%" border="0" cellspacing="4" cellpadding="2" class="table table-borderless mb-0">
           <form action="templets_one_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
             <input type='hidden' name='dopost' value='save'>
             <tr>
-              <td colspan="2">
-                单独页面管理仅适用于页面较少的情况(建议小于500个页面)，大量文档的用文章模型进行管理
-              </td>
+              <td colspan="2">单独页面管理仅适用于页面较少的情况（建议小于500个页面）大量文档的用文章模型进行管理</td>
             </tr>
             <tr>
               <td width="15%" height="26" align="center">页面标题：</td>
-              <td>
-                <input name="title" type="text" id="title" size="30">
-              </td>
+              <td><input name="title" type="text" id="title" size="30"></td>
             </tr>
             <tr>
               <td height="26" align="center">页面关键词：</td>
-              <td><input name="keywords" type="text" id="keywords" size="30">
-                (用&quot;,&quot;分开{dede:field name='keywords'/})</td>
+              <td><input name="keywords" type="text" id="keywords" size="30">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
             </tr>
             <tr>
               <td height="26" align="center">页面摘要信息：</td>
-              <td><textarea name="description" cols="50" id="description"></textarea>
-                (100字左右{dede:field name='description'/})</td>
+              <td><textarea name="description" cols="50" id="description"></textarea>（100字左右{dede:field name='description'/}）</td>
             </tr>
             <tr>
               <td height="26" align="center">关联标识：</td>
@@ -72,15 +64,12 @@
             	echo "</select>\r\n";
             	?>
                 <br>
-                (通过这个标识来识别类同页面，模板中用{dede:likesgpage id='标识'/}调用有相同标识的页面)
+              （通过这个标识来识别类同页面，模板中用{dede:likesgpage id='标识'/}调用有相同标识的页面）
               </td>
             </tr>
             <tr>
               <td height="26" align="center">文件名：</td>
-              <td>
-                <input name="nfilename" type="text" id="nfilename" value="<?php echo $cfg_arcdir."/newfile{$nowid}.html"; ?>" size="30">
-                （相对于CMS安装目录）
-              </td>
+              <td><input name="nfilename" type="text" id="nfilename" value="<?php echo $cfg_arcdir.'/newfile{$nowid}.html'; ?>" size="30">（相对于CMS安装目录）</td>
             </tr>
             <tr>
               <td height="26" align="center">模板文件名：</td>
@@ -92,7 +81,8 @@
                 <label><input name="ismake" type="radio" value="1">
                 含模板标记，要编译</label>
                 <label><input name="ismake" type="radio" value="0" checked>
-                不含模板标记，不需要编译</label></td>
+                不含模板标记，不需要编译</label>
+              </td>
             </tr>
             <tr>
               <td height="26" colspan="2">
@@ -107,8 +97,7 @@
               </td>
             </tr>
             <tr>
-              <td height="36" align="center"></td>
-              <td>
+              <td height="36" colspan="2" align="center">
                 <button type="submit" name="button1" id="button1" class="btn btn-success">确定</button>
                 <button type="button" onClick="document.form1.reset();" class="btn btn-success">重置</button>
               </td>
