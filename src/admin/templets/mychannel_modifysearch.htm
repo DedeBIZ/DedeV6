@@ -37,10 +37,8 @@
         </td>
       </tr>
       <tr>
-        <td width="35%" height="26" align="left" bgcolor="#ffffff">频道ID：<br></td>
-        <td width="65%" bgcolor="#ffffff">
-          <?php echo $mid; ?>
-        </td>
+        <td width="30%" height="26" align="left" bgcolor="#ffffff">频道ID：</td>
+        <td width="70%" bgcolor="#ffffff"><?php echo $mid; ?></td>
       </tr>
       <tr>
         <td height="26" align="left" bgcolor="#ffffff">频道名称：<br></td>
@@ -49,41 +47,37 @@
         </td>
       </tr>
       <?php
-    if($channel['issystem'] >= 0) {
-    ?>
+      if($channel['issystem'] >= 0) {
+      ?>
       <tr>
         <td align="left" bgcolor="#ffffff">主表可供自定义搜索的字段<br>
-          <span class="STYLE2" id="help2">标题、关键词、摘要为默认选项，不用选择 </span></td>
+          <span class="STYLE2" id="help2">标题、关键词、摘要为默认选项，不用选择 </span>
+        </td>
         <td bgcolor="#ffffff">
           <?php echo $mainfields; ?>
         </td>
       </tr>
       <?php 
-    }    
-    ?>
+      }    
+      ?>
       <tr>
         <td height="26" align="left" bgcolor="#ffffff">附件表可供自定义搜索的字段：<br>
-          <span class="STYLE2" id="help4">这里的字段是程序依据字段类型自动选择生成的</span></td>
-        <td bgcolor="#ffffff">
-          <?php echo $addonfields; ?>
+          <span class="STYLE2" id="help4">这里的字段是程序依据字段类型自动选择生成的</span>
         </td>
+        <td bgcolor="#ffffff"><?php echo $addonfields; ?></td>
       </tr>
       <tr>
         <td align="left" bgcolor="#ffffff">自定义搜索结果页模板<br>
-          <span class="STYLE2" id="help5" style="display:none">只填写文件名，且文件必须在templets/default目录中 </span></td>
-        <td bgcolor="#ffffff">
-          <input type="text" name="template" value="<?php echo $template; ?>" style="width:260px">
+          <span class="STYLE2" id="help5" style="display:none">只填写文件名，且文件必须在templets/default目录中</span>
         </td>
+        <td bgcolor="#ffffff"><input type="text" name="template" value="<?php echo $template; ?>" style="width:260px"></td>
       </tr>
       <tr bgcolor="#ffffff">
         <td height="26" colspan="2">
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="36"></td>
-              <td width="15%">
+              <td height="36" align="center">
                 <button type="submit" class="btn btn-success btn-sm">确定</button>
-              </td>
-              <td width="59%">
                 <button type="button" onclick="location='mychannel_main.php';" class="btn btn-success btn-sm">返回</button>
               </td>
             </tr>
@@ -91,7 +85,7 @@
         </td>
       </tr>
     </form>
-    <tr bgcolor="bgcolor=" #f8f8f8">
+    <tr bgcolor="#f8f8f8">
       <td height="26" colspan="2" bgcolor="#f8f8f8">
         <table width="100%" class="table table-borderless">
           <tr>
