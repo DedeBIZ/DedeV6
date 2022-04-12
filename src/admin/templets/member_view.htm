@@ -32,7 +32,7 @@ function checkSubmit()
 <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
   <tr>
     <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href='<?php echo $ENV_GOBACK_URL; ?>'>会员管理</a> &gt; 查看会员</td>
-</tr>
+  </tr>
 <tr>
 <td height="200" bgcolor="#ffffff" align='center'>
 	<?php
@@ -51,7 +51,7 @@ function checkSubmit()
                 echo "<br><img src='{$row['face']}' style='max-width:80px;height:auto'>";
               }
               ?>
-             </td>
+            </td>
           </tr>
           <tr> 
             <td height="26" class="bline">密码：</td>
@@ -62,15 +62,14 @@ function checkSubmit()
             <td height="26" class="bline">
               <?php echo GetDateTimeMk($row['jointime'])?>
               IP：<?php echo $row['joinip']?>
-             </td>
+            </td>
           </tr>
           <tr> 
             <td height="26" class="bline">最近登录时间：</td>
             <td height="26" class="bline"> 
               <?php echo GetDateTimeMk($row['logintime'])?>
-              　IP：
-              <?php echo $row['loginip']?>
-             </td>
+              IP：<?php echo $row['loginip']?>
+            </td>
           </tr>
           <tr> 
             <td height="26" class="bline">用户类型：</td>
@@ -82,9 +81,7 @@ function checkSubmit()
           </tr>
           <tr> 
             <td height="26" class="bline">昵称：</td>
-            <td height="26" class="bline">
-            <input name="uname" type="text" value="<?php echo $row['uname']?>" id="uname" style="width:260px">
-           </td>
+            <td height="26" class="bline"><input name="uname" type="text" value="<?php echo $row['uname']?>" id="uname" style="width:260px"></td>
           </tr>
           <tr> 
             <td height="26" class="bline">性别：</td>
@@ -106,23 +103,25 @@ function checkSubmit()
           </tr>
           <tr> 
             <td height="26" class="bline">等级：</td>
-            <td height="26" class="bline"><?php
-             $MemberTypes = array();
-             $dsql->SetQuery("Select `rank`,membername From `#@__arcrank` where `rank`>0");
-             $dsql->Execute('n');
-             $MemberTypes[0] = "限制会员";
-             while($nrow = $dsql->GetObject('n')){
+            <td height="26" class="bline">
+              <?php
+              $MemberTypes = array();
+              $dsql->SetQuery("Select `rank`,membername From `#@__arcrank` where `rank`>0");
+              $dsql->Execute('n');
+              $MemberTypes[0] = "限制会员";
+              while($nrow = $dsql->GetObject('n')){
 	              $MemberTypes[$nrow->rank] = $nrow->membername;
-             }
-             $options = "<select name='rank' style='width:160px'>";
-             foreach($MemberTypes as $k=>$v)
-             {
+              }
+              $options = "<select name='rank' style='width:160px'>";
+              foreach($MemberTypes as $k=>$v)
+              {
   	            if($k!=$row['rank']) $options .= "<option value='$k'>$v</option>";
   	            else $options .= "<option value='$k' selected>$v</option>";
-             }
-             $options .= "</select>";
-			 echo $options;
-			?></td>
+              }
+              $options .= "</select>";
+			        echo $options;
+			        ?>
+            </td>
           </tr>
           <tr> 
             <td height="26" class="bline">升级时间：</td>
@@ -148,7 +147,7 @@ function checkSubmit()
           <tr>
             <td height="26" class="bline">资料状况：</td>
             <td height="26" class="bline">
-           	<select name='spacesta' style='width:160px'>
+           	  <select name='spacesta' style='width:160px'>
            		<?php
            		foreach($staArr as $k=>$v)
            		{
@@ -156,7 +155,7 @@ function checkSubmit()
            			else echo "<option value='$k'>$v</option>";
            		}
            		?>
-           	</select>
+           	  </select>
             </td>
           </tr>
           <tr> 

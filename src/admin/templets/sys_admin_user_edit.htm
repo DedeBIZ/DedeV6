@@ -32,9 +32,7 @@
             </tr>
             <tr>
               <td height="26" class="bline">用户笔名：</td>
-              <td height="26" class="bline">
-                <input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px"> &nbsp;（发布文章后显示责任编辑的名字）
-              </td>
+              <td height="26" class="bline"><input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文章后显示责任编辑的名字）</td>
             </tr>
             <tr>
               <td height="26" class="bline">用户密码：</td>
@@ -44,15 +42,15 @@
               <td height="26" class="bline">用户类型：</td>
               <td height="26" class="bline">
                 <select name='usertype' style='width:160px'>
-                  <?php
-                  $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
-                  $dsql->Execute("ut");
-                  while($myrow = $dsql->GetObject("ut"))
-                  {
-                    if($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
-                    else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
-                  }
-                  ?>
+                <?php
+                $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
+                $dsql->Execute("ut");
+                while($myrow = $dsql->GetObject("ut"))
+                {
+                  if($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+                  else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
+                }
+                ?>
                 </select>
               </td>
             </tr>
