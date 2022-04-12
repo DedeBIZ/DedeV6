@@ -132,7 +132,7 @@
 			</tr>
 		</form>
 		<tr align="right" bgcolor="#F3FAD3">
-			<td height="26" colspan="6" align="center">{dede:pagelist listsize='6'/}</td>
+			<td height="36" colspan="6" align="center">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 	<!--下面是隐藏的栏目增加修改表单-->
@@ -152,20 +152,16 @@
 				<tr>
 					<td height="30">原内容编码：</td>
 					<td colspan="2">
-						<label><input type="radio" name="lang" value="utf-8" checked="checked">
-							UTF-8</label>
-						<label>
-							<input type="radio" name="lang" value="gb2312">
-							GB2312/GBK</label>
+						<label><input type="radio" name="lang" value="utf-8" checked="checked"> UTF-8 </label>
+						<label><input type="radio" name="lang" value="gb2312"> GB2312/GBK</label>
 					</td>
 				</tr>
 				<tr>
 					<td height="30">用作文章来源：</td>
 					<td colspan="2">
-						<label><input type="radio" name="issource" value="0">
-							否</label>
-						<label><input name="issource" type="radio" value="1" checked="checked">
-							是</label></td>
+						<label><input type="radio" name="issource" value="0"> 否 </label>
+						<label><input name="issource" type="radio" value="1" checked="checked"> 是</label>
+					</td>
 				</tr>
 				<tr>
 					<td height="30">网站网址：</td>
@@ -185,8 +181,8 @@
 					<td colspan="2"><textarea name="rule" style="width:300px;height:80px">{@body}</textarea></td>
 				</tr>
 				<tr>
-					<td height="30"></td>
-					<td colspan="2"><button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存规则</button>
+					<td colspan="3" align="center" class="py-3">
+						<button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存规则</button>
 						<button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button>
 					</td>
 				</tr>
