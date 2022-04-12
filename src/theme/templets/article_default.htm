@@ -40,18 +40,13 @@
 					<small>点击：</small><span id="_count">...</span>次
 				</div>
 				<div>
-					<div class="alert alert-warning mt-2">
-						您会看到这个提示，那是因为您的系统无法识别某栏目的模型信息，或者您新建模型后，没为这个模型设计单独的模板不同模型的文档浏览页的模板为：article_模型名字标识.htm
-						如“article_article.htm”，更多的信息您可以在频道模型管理的地方查看
-					</div>
+					<div class="alert alert-warning mt-2">您会看到这个提示，那是因为您的系统无法识别某栏目的模型信息，或者您新建模型后，没为这个模型设计单独的模板不同模型的文档浏览页的模板为：article_模型名字标识.htm如“article_article.htm”，更多的信息您可以在频道模型管理的地方查看</div>
 					{dede:fieldlist}
 					<table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#BED1AB" class="table">
 						<tr>
 							<td width="23%" height="26" align="center" bgcolor="#FBFEF5">
-								[field:name/] 内容：
-								<br>
-								模板调用标记：
-								<br>
+								[field:name/] 内容：<br>
+								模板调用标记：<br>
 								<script language='javascript'>document.write("{" + "dede:field.[field:tagname/] /" + "}");</script>
 							</td>
 							<td width="77%" bgcolor="#ffffff"> [field:value/] </td>
@@ -59,9 +54,7 @@
 					</table>
 					{/dede:fieldlist}
 				</div>
-				<div class="body py-2">
-					{dede:field.body/} (责任编辑：{dede:adminname/})
-				</div>
+				<div class="body py-2">{dede:field.body/}（责任编辑：{dede:adminname/}）</div>
 				<!-- /.body -->
 				<div class="clearfix"></div>
 				{dede:include comment='文档顶踩模块' filename="widget_article_digg.htm"/}
