@@ -87,7 +87,7 @@ else if ($dopost == "copystart") {
         </tr>
         </table>
         ";
-    $win->AddMsgItem("<div style='padding:20px;line-height:300%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     exit();
@@ -333,7 +333,7 @@ else if ($dopost == "gettemplets") {
     $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::查看模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
-    $win->AddTitle("&nbsp;频道：（".$row['typename']."）默认模板文件说明：");
+    $win->AddTitle("&nbsp;频道[".$row['typename']."]默认模板文件说明：");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "
         文档模板：{$defaulttemplate}/article_{$row['nid']}.htm
@@ -344,7 +344,7 @@ else if ($dopost == "gettemplets") {
         频道封面模板：{$defaulttemplate}/index_{$row['nid']}.htm
         <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm'>[修改]</a>
     ";
-    $win->AddMsgItem("<div style='padding:20px;line-height:300%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("hand", "");
     $win->Display();
     exit();
