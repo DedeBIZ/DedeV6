@@ -22,7 +22,7 @@ $action = isset($action) ? $action : '';
 	<link rel="stylesheet" href="css/indexbody.css" />
 	<script type="text/javascript" src="../static/web/js/jquery.min.js"></script>
 </head>
-<body leftmargin="8" topmargin='8' bgcolor="#ffffff" style="min-width:840px">
+<body>
 	<?php
 	if (!function_exists('TestWriteable')) {
 		//检测是否可写

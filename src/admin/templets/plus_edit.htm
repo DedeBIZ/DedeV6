@@ -3,22 +3,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>修改插件</title>
-<style>
-<!--
-body {
-	background-image: url(../static/web/img/allbg.gif);
-}
--->
-</style>
 <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body topmargin="8">
+<body>
 <table width="98%"  border="0" align="center" cellpadding="3" cellspacing="1">
   <form name="form1" action="plus_edit.php" method="post">
    <input type='hidden' name='dopost' value='saveedit'>
    <input type='hidden' name='aid' value='<?php echo $aid?>'>
     <tr> 
-      <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="plus_main.php">插件管理</a> &gt; 修改插件：</td>
+      <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="plus_main.php">插件管理</a> &gt; 修改插件</td>
     </tr>
     <tr> 
       <td width="19%" align="center" bgcolor="#ffffff">插件名称</td>
@@ -28,9 +21,7 @@ body {
     </tr>
     <tr> 
       <td align="center" bgcolor="#ffffff">作者</td>
-      <td bgcolor="#ffffff">
-      	<?php echo $row['writer']?>
-      </td>
+      <td bgcolor="#ffffff"><?php echo $row['writer']?></td>
     </tr>
      <tr> 
       <td align="center" bgcolor="#ffffff">菜单配置</td>
@@ -41,7 +32,8 @@ body {
     <tr> 
       <td align="center" bgcolor="#ffffff">文件列表</td>
       <td bgcolor="#ffffff">文件用&quot;,&quot;分开，路径相对于管理目录（当前目录）<br>
-        <textarea name="filelist" rows="8" id="filelist" style="width:80%"><?php echo $row['filelist']?></textarea></td>
+        <textarea name="filelist" rows="8" id="filelist" style="width:80%"><?php echo $row['filelist']?></textarea>
+      </td>
     </tr>
     <tr bgcolor="#F9FDF0"> 
       <td height="26" colspan="2">
@@ -52,7 +44,7 @@ body {
             <td width="59%"><img src="../static/web/img/button_back.gif" width="60" height="26" onClick="location='plus_main.php';" style="cursor:pointer"></td>
           </tr>
         </table>
-        </td>
+      </td>
     </tr>
   </form>
 </table>

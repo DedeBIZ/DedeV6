@@ -32,7 +32,7 @@ require(DEDEADMIN.'/inc/inc_menu_func.php');
 	}
 </script>
 <base target="main">
-<body leftmargin="0" topmargin="0" target="main">
+<body>
 	<table width='100%' height="100%" border='0' cellspacing='0' cellpadding='0'>
 		<tr>
 			<td style='padding-left:3px;padding-top:8px' valign="top">

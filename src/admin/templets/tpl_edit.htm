@@ -47,14 +47,14 @@
 		}
 	</script>
 </head>
-<body bgcolor="#F2F4F3" leftmargin="8" topmargin="8">
+<body>
 	<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
 		<input type="hidden" name="action" value="saveedit">
 		<input type="hidden" name="acdir" value="<?php echo $acdir; ?>">
 		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 		<table width='98%' border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3">
 			<tr bgcolor='#EEF4EA'>
-				<td colspan='2' background='../static/web/img/wbg.gif' height='26' style="padding-left:10px">修改/新建模板</td>
+				<td colspan="2" height="26" background="../static/web/img/wbg.gif" style="padding-left:10px">修改/新建模板</td>
 			</tr>
 			<tr bgcolor='#ffffff'>
 				<td>文件名称</td>
@@ -74,7 +74,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan='2' bgcolor='#ffffff' style="border-top:1px solid #fff;">
+				<td colspan='2' bgcolor='#ffffff' style="border-top:1px solid #fff">
 					<?php
 						foreach ($helps as $key => $help)
 						{
