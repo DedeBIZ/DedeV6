@@ -12,13 +12,11 @@
     .STYLE1 {
       color: #dc3545
     }
-
     td {
       padding: 2px;
       padding-left: 6px;
       line-height: 150%;
     }
-
     .STYLE2 {
       color: #424b51;
     }
@@ -33,7 +31,7 @@
       <input type='hidden' name='step' value='<?php echo $step?>'>
       <input type='hidden' name='dopost' value='modifysearch'>
       <tr>
-        <td height="26" colspan="2" background='../static/web/img/tbg.gif' style="padding-left:10px">
+        <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">
           <div style="width:100px;float:right"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid; ?>">删除自定义搜索</a></div>
           <a href="mychannel_main.php">内容模型管理</a> &gt; 自定义搜索管理（自定义搜索在方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索）
         </td>
@@ -100,12 +98,13 @@
             <td width="70%">&nbsp;&nbsp;进行状态：</td>
             <td width="30%" align="right">
               <script language='javascript'>
-                function ResizeDiv(obj, ty) {
-                  if (ty == "+") document.all[obj].style.pixelHeight += 50;
-                  else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-                }
+              function ResizeDiv(obj, ty) {
+                if (ty == "+") document.all[obj].style.pixelHeight += 50;
+                else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+              }
               </script>
-              [<a href='javascript:;' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='javascript:;' onClick="ResizeDiv('mdv','-');">缩小</a>]
+              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
             </td>
           </tr>
         </table>
@@ -113,7 +112,7 @@
     </tr>
     <tr bgcolor="#ffffff">
       <td colspan="2" id="mtd">
-        <div id='mdv' style='width:100%;height:250px;'>
+        <div id="mdv" style="width:100%;height:300px"> 
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
         </div>
       </td>
