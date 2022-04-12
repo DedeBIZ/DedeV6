@@ -204,7 +204,7 @@ table{border-collapse:separate}
               <td>
                 <span id='typeid2ct'></span>
                 <input type='text' name='typeid2' id='typeid2' value='<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>' style='width:260px;' />
-                <img src='../static/web/img/menusearch2.gif' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title='选择副栏目' style='cursor:pointer'>
+                <img src='../static/web/img/menusearch2.gif' onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title='选择副栏目' style='cursor:pointer'>
               </td>
             </tr>
           </table>
@@ -214,8 +214,8 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="50">&nbsp;关键词：</td>
-              <td><input type="text" name="keywords" id="keywords" style="width:60%" value="<?php echo $arcRow["keywords"]?>"></td>
+              <td width="90">&nbsp;关键词：</td>
+              <td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']?>" style="width:360px"></td>
             </tr>
           </table>
         </td>
@@ -224,8 +224,8 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="50">&nbsp;文档摘要：</td>
-              <td><textarea name="description" rows="3" id="description" style="width:60%"><?php echo $arcRow['description']?></textarea></td>
+              <td width="90">&nbsp;描述：</td>
+              <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $arcRow['description']?></textarea></td>
             </tr>
           </table>
         </td>
