@@ -151,7 +151,7 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;商品来源：</td>
+              <td width="90">&nbsp;来源：</td>
               <td width="250">
                 <input name="source" type="text" id="source" value="<?php echo $arcRow['source']?>" style="width:160px">
                 <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -176,7 +176,7 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="570" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;商品主栏目：</td>
+              <td width="90">&nbsp;发布栏目：</td>
               <td>
                 <?php
                 $typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
@@ -200,7 +200,7 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;商品副栏目：</td>
+              <td width="90">&nbsp;副栏目：</td>
               <td>
                 <span id='typeid2ct'></span>
                 <input type='text' name='typeid2' id='typeid2' value='<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>' style='width:260px;' />

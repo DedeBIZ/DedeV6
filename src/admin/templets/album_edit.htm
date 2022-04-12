@@ -167,7 +167,7 @@ table{border-collapse:separate}
     <tr>
       <td height="26" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;图集来源：</td>
+            <td width="90">&nbsp;来源：</td>
             <td width="250">
               <input name="source" type="text" id="source" value="<?php echo $arcRow['source']?>" style="width:160px">
               <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -185,7 +185,7 @@ table{border-collapse:separate}
       <td height="26" colspan="4" class="bline">
         <table width="570" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;图集主栏目：</td>
+            <td width="90">&nbsp;发布栏目：</td>
             <td>
               <?php
            	  $typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
