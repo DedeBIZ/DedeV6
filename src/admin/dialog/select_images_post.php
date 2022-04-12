@@ -33,7 +33,7 @@ if (!preg_match("#\.(".$cfg_imgtype.")#i", $imgfile_name)) {
     exit();
 }
 $nowtme = time();
-$sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
+$sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
 $imgfile_type = strtolower(trim($imgfile_type));
 if (!in_array($imgfile_type, $sparr)) {
     ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种", "-1");
