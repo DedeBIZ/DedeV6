@@ -43,7 +43,7 @@
             <tr>
               <td height="26" class="bline">用户类型：</td>
               <td height="26" class="bline">
-                <select name='usertype' style='width:260px'>
+                <select name='usertype' style='width:160px'>
                   <?php
                   $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
                   $dsql->Execute("ut");
@@ -59,7 +59,7 @@
             <tr>
               <td height="26" class="bline">负责频道：</td>
               <td height="26" class="bline">
-                <select name="typeids[]" id="typeid" size='10' style="width:160px;height:200px" multiple="true">
+                <select name="typeids[]" id="typeid" size='10' style="width:260px;height:200px" multiple="true">
                   <option value="0" class='alltype'>所有频道</option>
                   <?php echo $typeOptions?>
                 </select>（按Ctrl可以进行多选）
