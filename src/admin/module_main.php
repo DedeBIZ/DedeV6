@@ -298,7 +298,7 @@ else if ($action == 'del') {
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
     $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
-    <table width='750' border='0' cellspacing='0' cellpadding='0'>
+    <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
     <tr>
       <td width='20%' height='26' class='dtb'>模块名称：</td>
       <td width='80%' class='dtb'>{$infos['name']}</td>
@@ -363,10 +363,10 @@ else if ($action == 'uninstall') {
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
-    <table width='750' border='0' cellspacing='0' cellpadding='0'>
+    <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
   <tr>
-    <td width='200' height='26' class='dtb'>模块名称：</td>
-    <td width='550' class='dtb'>{$infos['name']}</td>
+    <td width='20%' height='26' class='dtb'>模块名称：</td>
+    <td width='80%' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
     <td height='26' class='dtb'>语言：</td>
