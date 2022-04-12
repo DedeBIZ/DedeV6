@@ -17,15 +17,8 @@ function DelTpl(filename) {
 }
 </script>
 </head>
-<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-	<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
-		<tr>
-			<td height="30" background="../static/web/img/tbg.gif" colspan="7">
-				模板管理
-			</td>
-		</tr>
-	</table>
-	<table width="98%" border="0" cellspacing="1" cellpadding="0" align="center" class="table maintable table-bordered">
+<body>
+	<table width="98%" border="0" cellspacing="1" cellpadding="0" align="center" class="table maintable mt-3">
 		<tr height="30" align="center">
 			<td width="25%" background="../static/web/img/wbg.gif">文件名</td>
 			<td width="30%" background="../static/web/img/wbg.gif">文件描述</td>
@@ -57,16 +50,16 @@ function DelTpl(filename) {
 			$filetime = MyDate("Y-m-d H:i",$filetime);
 			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 		?>
-		<tr height="26" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+		<tr height="26" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
 			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename; ?></a></td>
 			<td><?php echo $fileinfo; ?></td>
 			<td align="center"><?php echo $filetime; ?></td>
 			<td align="center">
-				<a href="tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+				<a href="tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a>
 				<?php
 				if(!isset($fileinfos[$filename])){
 				?>
-				<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash" aria-hidden="true"></i></a>
+				<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash"></i></a>
 				<?php
 		   		}
 				?>

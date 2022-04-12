@@ -215,7 +215,7 @@ else if ($action == 'setup') {
    </td>
   </tr>
 </table>";
-    $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='padding-left:10px;line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -298,7 +298,7 @@ else if ($action == 'del') {
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
     $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
-    <table width='750' border='0' cellspacing='0' cellpadding='0'>
+    <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
     <tr>
       <td width='20%' height='26' class='dtb'>模块名称：</td>
       <td width='80%' class='dtb'>{$infos['name']}</td>
@@ -327,7 +327,7 @@ else if ($action == 'del') {
       <td height='26' colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
     </tr>
 </table>";
-    $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='padding-left:10px;line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -363,10 +363,10 @@ else if ($action == 'uninstall') {
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
-    <table width='750' border='0' cellspacing='0' cellpadding='0'>
+    <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
   <tr>
-    <td width='200' height='26' class='dtb'>模块名称：</td>
-    <td width='550' class='dtb'>{$infos['name']}</td>
+    <td width='20%' height='26' class='dtb'>模块名称：</td>
+    <td width='80%' class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
     <td height='26' class='dtb'>语言：</td>
@@ -405,7 +405,7 @@ else if ($action == 'uninstall') {
    </td>
   </tr>
 </table>";
-    $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='padding-left:10px;line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -461,7 +461,7 @@ else if ($action == 'showreadme') {
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 使用说明：");
-    $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='padding-left:10px;line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("hand");
     $win->Display();
     exit();
@@ -539,7 +539,7 @@ else if ($action == 'view') {
     </td>
   </tr>
 </table>";
-    $win->AddMsgItem("<div style='padding-left:10px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='padding-left:10px;line-height:26px'>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     $dm->Clear();

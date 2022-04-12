@@ -554,13 +554,13 @@ function ShowMsg(content, ...args) {
 	}
 	footer = footer.replaceAll("~modalID~", modalID);
 	content = content.replaceAll("~modalID~", modalID);
-	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}" aria-hidden="true">
+	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}">
 <div class="modal-dialog" role="document">
 <div class="modal-content"><div class="modal-header">
 <h5 class="modal-title" id="GKModalLabel${modalID}">${title}</h5>`;
 	if (!noClose) {
 		modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		<span aria-hidden="true">&times;</span>
+		<span>&times;</span>
 		</button>`;
 	}
 	modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;

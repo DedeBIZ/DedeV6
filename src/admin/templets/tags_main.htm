@@ -88,22 +88,18 @@
 </style>
 </head>
 <body>
-	<div class="bodytitle mt-3 mb-3">
-		<div class="bodytitleleft"></div>
-		<div class="bodytitletxt"><a href="tags_main.php">标签管理</a></div>
-	</div>
 	<div class="main">
 		<form name="form1" action="tags_main.php?action=fetch" method="post">
-			<table width="98%" border="0" cellspacing="1" align="center" class="table maintable">
+			<table width="98%" border="0" cellspacing="1" align="center" class="table maintable mt-3">
 				<tr>
 					<td height="26" align="left" bgcolor="#F0FBBD" background="../static/web/img/wbg.gif" style="padding-left:10px">提取标签</td>
 				</tr>
 				<tr>
-					<td height="30" bgcolor="#Ffffff">开始ID：<input type="text" name="startaid">&nbsp;结束ID：<input type="text" name="endaid">&nbsp;<button name="submit" type="submit" class="btn btn-success">获取标签</button><small>（以文档关键词为准）</small></td>
+					<td height="30" bgcolor="#ffffff">开始ID：<input type="text" name="startaid">&nbsp;结束ID：<input type="text" name="endaid">&nbsp;<button name="submit" type="submit" class="btn btn-success">获取标签</button><small>（以文档关键词为准）</small></td>
 				</tr>
 			</table>
 		</form>
-		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered">
+		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable">
 			<tr>
 				<td height="26" colspan="8" bgcolor="#f8f8f8">
 					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="table-borderless">
@@ -131,13 +127,13 @@
 				<td width="22%">操作</td>
 			</tr>
 			<form name="form3" action="tags_main.php?action=delete" method="post">
-				{dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
+				{dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
 				<?php
 				$fields['addtime'] = GetDateMk($fields['addtime']);
 				$fields['uptime'] = GetDateMk($fields['uptime']);
 				$fields['tag'] = dede_htmlspecialchars($fields['tag']);
 				?>
-				<tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+				<tr align="center" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
 					<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id']; ?>" class='np' /></td>
 					<td>{dede:field.id/}</td>
 					<td><a href="../apps/tags.php?/<?php echo urlencode($fields['tag']); ?>/" target="_blank">{dede:field.tag/}</a></td>

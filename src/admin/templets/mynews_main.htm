@@ -6,16 +6,14 @@
 <title>站内新闻管理</title>
 <link rel='stylesheet' href='../static/web/css/admin.css'>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
+<body>
 <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1">
   <tr> 
     <td height="26" colspan="6" background="../static/web/img/tbg.gif">
     	<table width="99%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td>&nbsp;站内新闻管理</td>
-          <td align="right">
-		  [<a href="mynews_add.php">新增一则站内新闻</a>]
-		  </td>
+          <td align="right">[<a href="mynews_add.php">新增一则站内新闻</a>]</td>
         </tr>
       </table>
     </td>
@@ -29,7 +27,7 @@
     <td>操作</td>
   </tr>
   {dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
-  <tr align="center" height="26" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';"> 
+  <tr align="center" height="26" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';"> 
     <td width="8%">{dede:field.aid/}</td>
     <td width="30%">{dede:field.title /}</td>
     <td width="16%">{dede:field.typename /}</td>
@@ -42,9 +40,7 @@
   </tr>
   {/dede:datalist}
   <tr align="center" bgcolor="#F9FBF2"> 
-    <td height="26" colspan="6">
-    	{dede:pagelist listsize=6/}
-    </td>
+    <td height="26" colspan="6">{dede:pagelist listsize='6'/}</td>
   </tr>
 </table>
 </body>

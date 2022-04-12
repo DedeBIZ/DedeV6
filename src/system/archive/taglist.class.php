@@ -424,12 +424,12 @@ class TagList
         }
         $totalpage = $this->TotalPage;
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>\r\n";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $purl = $this->GetCurUrl();
         $purl .= "?/".urlencode($this->Tag);
         //获得上一页和下一页的链接
@@ -499,12 +499,12 @@ class TagList
         }
         $totalpage = $this->TotalPage;
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
-        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>\r\n";
+        $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         //$purl = $this->GetCurUrl();
         $purl = "/a/tags/".GetPinyin($this->Tag);
         //var_dump($purl);

@@ -88,27 +88,24 @@ $(document).ready(function () {
 
 </script>
 <style>
-td{ padding:2px; padding-left:6px; line-height:150%; }
+td{ padding:6px; padding-left:6px; line-height:26px }
 .STYLE1 {color: #FF3300}
-.STYLE2 {color: #666666}
+.STYLE2 {color: #424b51}
 .nw { float:left; width:150px; }
 .cls { clear:both; }
 </style>
 </head>
-<body topmargin=8>
+<body>
 <form name="form1" action="mychannel_field_add.php" method="post" onSubmit="return GetFields();">
 <input type='hidden' name='action' value='save' />
 <input type='hidden' name='id' value='<?php echo $id?>' />
 <input type='hidden' name='fieldstring' value='' />
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" 
-class="table maintable table-bordered mt-3">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
     <tr> 
-      <td colspan="2" bgcolor="#EDF9D5" background="../static/web/img/tbg.gif">
+      <td colspan="2" background="../static/web/img/tbg.gif">
         <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
-            <td width="30%" style="padding-left:10px">
-            	<a href="mychannel_main.php">频道管理</a>  &gt; 增加新字段：
-            </td>
+            <td width="30%" style="padding-left:10px"><a href="mychannel_main.php">频道管理</a> &gt; 增加新字段</td>
             <td align="right">
 							<button type="button" name="ss1" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';" class="btn btn-success btn-sm">当前模型信息</button>
 							<button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">内容模型管理</button>
@@ -118,33 +115,30 @@ class="table maintable table-bordered mt-3">
       </td>
     </tr>
     <tr>
-      <td colspan="2" bgcolor="#FFFFFF">
-        <div class="alert alert-danger" role="alert">
-          所有填写的内容不允许包含双引号[&quot;]，否则配置将无法写入
-        </div>
+      <td colspan="2" bgcolor="#ffffff">
+        <div class="alert alert-danger mb-0">所有填写的内容不允许包含双引号[&quot;]，否则配置将无法写入</div>
       </td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">表单提示文字：<br>
-          <span class="STYLE2">发布内容时显示的提示文字</span></td>
-      <td bgcolor="#FFFFFF">
-      	<input name="itemname" type="text" id="itemname" class="pubinputs">
-        *</td>
+      <td bgcolor="#ffffff">表单提示文字：<br>
+        <span class="STYLE2">发布内容时显示的提示文字</span></td>
+        <td bgcolor="#ffffff">
+      	<input name="itemname" type="text" id="itemname" class="pubinputs"> *
+      </td>
     </tr>
     <tr> 
-      <td width="28%" bgcolor="#FFFFFF">字段名称：<br>
+      <td width="28%" bgcolor="#ffffff">字段名称：<br>
       <span class="STYLE2">
       	只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的<a href='stepselect_main.php' target='_blank'>[组名称]</a>
       </span>
       </td>
-      <td width="72%" bgcolor="#FFFFFF"> 
-        <input name="fieldname" type="text" id="fieldname" class="pubinputs"> 
-        *
-       </td>
+      <td width="72%" bgcolor="#ffffff">
+        <input name="fieldname" type="text" id="fieldname" class="pubinputs"> *
+      </td>
     </tr>
     <tr>
-      <td bgcolor="#FFFFFF">字段类型：</td>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">字段类型：</td>
+      <td bgcolor="#ffffff">
 	    <label><input name="autofield" type="radio" value="1" class="np" checked="checked">
         系统自动生成表单字段</label>
       <label><input type="radio" name="autofield" class="np" value="0">
@@ -152,10 +146,10 @@ class="table maintable table-bordered mt-3">
        </td>
     </tr>
     <tr>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">
       前台参数：
       </td>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">
       <label><input name="islist" type="checkbox" class="np" id="islist" value="1">
       使字段可以在列表的底层模板中获得(自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择)</label><br>
       <label><input name="notsend" type="checkbox" class="np" id="notsend" value="1">
@@ -163,11 +157,11 @@ class="table maintable table-bordered mt-3">
      </td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">
       内容是否需要分页符：<br>
       <span class="STYLE2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span>
       </td>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">
       	<input name="isnull" type="hidden" value="1">
         <label><input name="spage" type="radio"  value="split" class='np' />
          是</label>
@@ -177,10 +171,10 @@ class="table maintable table-bordered mt-3">
      </td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">
       数据类型：
       </td>
-      <td bgcolor="#FFFFFF" id="dataType">
+      <td bgcolor="#ffffff" id="dataType">
 <div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype1' value="text" checked='1'> 单行文本(varchar) </label></div>
 <div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype2' value="textchar"> 单行文本(char) </label></div>
 <div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype3' value="multitext"> 多行文本 </label></div>
@@ -204,25 +198,25 @@ class="table maintable table-bordered mt-3">
 <div class='nw'><label><input type='radio' class='np' name='dtype' id='dtype16' value="relation"> 关联内容 </label></div>
        </td>
     </tr>
-    <tr id="_relation" style="display: none;"> 
-      <td bgcolor="#FFFFFF">内容模型：<br>
+    <tr id="_relation" style="display:none"> 
+      <td bgcolor="#ffffff">内容模型：<br>
       <span class="STYLE2">
       选择关联内容对应的内容模型
       </span>
       </td>
-      <td bgcolor="#FFFFFF"> 
-        <select name="channeltype" id="channeltype" style="width:200px">
+      <td bgcolor="#ffffff"> 
+        <select name="channeltype" id="channeltype" style="width:260px">
           <?php
             $channelid = 1;
             foreach($channelArray as $k=>$arr)
             {
               if($k==$channelid) {
                   $nid = $arr['nid'];
-                  echo "    <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                  echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
               }
               else
               {
-                  echo "    <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                  echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
               }
             }
           ?>
@@ -232,42 +226,42 @@ class="table maintable table-bordered mt-3">
       </td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">默认值：<br>
+      <td bgcolor="#ffffff">默认值：<br>
       <span class="STYLE2">
       如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目(用“,”分开，如“男,女,人妖”)
       </span>
       </td>
-      <td bgcolor="#FFFFFF"> 
+      <td bgcolor="#ffffff"> 
       	<textarea name="vdefault" type="text" id="vdefault" style="width:70%;height:60px"></textarea>
       </td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">最大长度：<br>
+      <td bgcolor="#ffffff">最大长度：<br>
       <span class="STYLE2">
       文本数据必须填写，大于255为text类型
       </span>
       </td>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">
       	<input name="maxlength" type="text" id="maxlength" class="pubinputs" value="250" style="width:80px">
        </td>
     </tr>
     <tr>
-      <td bgcolor="#FFFFFF">自定义表单HTML：</td>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">自定义表单HTML：</td>
+      <td bgcolor="#ffffff">
       	自定义表单HTML模板中用~name~表示提示文字，~form~表示表单元素
       </td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF"></td>
-      <td bgcolor="#FFFFFF">
-      	<textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%; height:120px;"></textarea>
+      <td align="center" bgcolor="#ffffff"></td>
+      <td bgcolor="#ffffff">
+      	<textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%;height:120px"></textarea>
       </td>
     </tr>
     <tr> 
       <td height="26" colspan="2" bgcolor="#f8f8f8">
 	     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
-            <td width="26%" height="36"></td>
+            <td width="30%" height="36"></td>
             <td width="10%">
             <button type="submit" name="button1" id="button1" class="btn btn-success">确定</button>
             </td>

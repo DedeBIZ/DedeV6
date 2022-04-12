@@ -16,47 +16,44 @@
       li {
          float: left;
          padding-right: 8px;
-         line-height: 24px;
+         line-height: 26px;
       }
    </style>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable table-bordered mt-3">
+<body>
+   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable mt-3">
       <tr>
-         <td bgcolor="#F2F2F2" colspan="6" style="padding-left:10px">
+         <td bgcolor="#f6f6f6" colspan="6" style="padding-left:10px">
             <form action='templets_one.php' name='sss'>
                <ul>
                   <li>关键词：</li>
-                  <li><input type='text' name='keyword' value="<?php if(!empty($keyword)) $keyword = ''; ?>" style='width:160px' /></li>
+                  <li><input type='text' name='keyword' value="<?php if(!empty($keyword)) $keyword = ''; ?>" style='width:160px'></li>
                   <li>标识：</li>
                   <li><?php
      $likeid = (!isset($likeid) ? '' : $likeid);
-     echo "<select name='likeid' id='likeid'>\r\n";
+     echo "<select name='likeid' id='likeid' style='width:160px'>";
      $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
-     echo "<option value=''>不限</option>\r\n";
+     echo "<option value=''>不限</option>";
      while($arr = $dsql->GetArray('s'))
      {
-        if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>\r\n";
-        else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>\r\n";
+        if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
+        else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
      }
-     echo "</select>\r\n";
+     echo "</select>";
   ?></li>
                   <li><button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button></li>
                </ul>
             </form>
          </td>
    </table>
-   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table table-bordered maintable">
+   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable">
       <tr>
          <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">
-            <div style="float:left">
-               单独页面管理
-            </div>
+            <div style="float:left">单独页面管理</div>
             <div style="float:right">
                <a href="templets_one_add.php" class="btn btn-success btn-sm">增加一个页面</a>
-               &nbsp;<a href="javascript:;" onClick="document.form1.submit();" class="btn btn-success btn-sm">更新选中页面</a>
-               &nbsp;<a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm">更新所有页面</a>
-               &nbsp;&nbsp;&nbsp;&nbsp;
+               <a href="javascript:;" onClick="document.form1.submit();" class="btn btn-success btn-sm">更新选中页面</a>
+               <a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm">更新所有页面</a>
             </div>
          </td>
       </tr>
@@ -72,8 +69,8 @@
       <form name='form1' action='templets_one_edit.php'>
          <input type='hidden' name='dopost' value='mksel' />
          {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-         <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-            onMouseOut="javascript:this.bgColor='#FFFFFF';">
+         <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+            onMouseOut="javascript:this.bgColor='#ffffff';">
             <td><input type='checkbox' name='ids[]' value='{dede:field.aid /}' class='np'></td>
             <td>{dede:field.aid /}</td>
             <td><a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=edit'>{dede:field.title /}</a></td>
@@ -81,17 +78,15 @@
             <td>{dede:field.likeid /}</td>
             <td>{dede:field.uptime function='GetDateMk(@me)'/}</td>
             <td>
-               <a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=edit' class="btn btn-success btn-sm"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</a>
-               <a href="templets_one_edit.php?aid={dede:field.aid /}&dopost=view" target='_blank' class="btn btn-success btn-sm"> <i class="fa fa-globe" aria-hidden="true"></i> 预览</a>
-               <a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=delete' class="btn btn-success btn-sm"> <i class="fa fa-trash" aria-hidden="true"></i>  删除</a>
+               <a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=edit' class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+               <a href="templets_one_edit.php?aid={dede:field.aid /}&dopost=view" target='_blank' class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 预览</a>
+               <a href='templets_one_edit.php?aid={dede:field.aid /}&dopost=delete' class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
             </td>
          </tr>
          {/dede:datalist}
       </form>
       <tr align="center" bgcolor="#f8f8f8" height="26">
-         <td colspan="7">
-            {dede:pagelist listsize=6/}
-         </td>
+         <td colspan="7">{dede:pagelist listsize='6'/}</td>
       </tr>
    </table>
    </td>

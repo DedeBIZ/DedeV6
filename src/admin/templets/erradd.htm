@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 	<link href="../static/web/css/admin.css" rel='stylesheet' type='text/css'>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
+<body>
 	<script type="text/javascript">
 		function getOneItem() {
 			var allSel = "";
@@ -55,7 +55,7 @@
 	</script>
 	<form name="form2">
 		<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1"
-			class="table maintable table-bordered mt-3">
+			class="table maintable mt-3">
 			<tr>
 				<td height="26" background="../static/web/img/tbg.gif" colspan="8" style="padding-left:10px">文章错误管理</td>
 			</tr>
@@ -70,13 +70,12 @@
 				<td width="15%">修改建议</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-			<tr align="center" bgcolor="#FFFFFF" height="26" align="center"
-				onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+			<tr align="center" bgcolor="#ffffff" height="26" align="center"
+				onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
 				<td><input name="id" type="checkbox" id="id" value="{dede:field.id/}" class="np"></td>
 				<td>{dede:field.id /}</td>
 				<td>{dede:field.mid function='username(@me)'/}</td>
-				<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title /}</a>
-				</td>
+				<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title /}</a></td>
 				<td>{dede:field.type function='typename(@me)'/}</td>
 				<td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
 				<td>{dede:field.errtxt /}</td>
@@ -91,9 +90,7 @@
 				</td>
 			</tr>
 			<tr align="center" bgcolor="#f8f8f8" height="26">
-				<td colspan="8">
-					{dede:pagelist listsize=5/}
-				</td>
+				<td colspan="8">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</form>

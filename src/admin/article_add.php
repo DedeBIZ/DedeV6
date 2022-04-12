@@ -209,7 +209,7 @@ else if ($dopost == 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文章</a>&nbsp;&nbsp;<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文章</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改文章</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布文章管理</a>&nbsp;&nbsp;$backurl";
+    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文章</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文章</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改文章</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布文章管理</a>$backurl";
     $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>".GetUpdateTest();
     $wintitle = "成功发布文章";
     $wecome_info = "文章管理::发布文章";

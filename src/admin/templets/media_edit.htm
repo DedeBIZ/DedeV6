@@ -26,11 +26,10 @@
 		}
 	</script>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-	<table width="99%" align="center" border="0" cellpadding="3" cellspacing="1"
-		class="table maintable table-bordered mt-3">
+<body>
+	<table width="99%" align="center" border="0" cellpadding="3" cellspacing="1" class="table maintable mt-3">
 		<tr>
-			<td height="20" background='../static/web/img/tbg.gif'>
+			<td height="26" background="../static/web/img/tbg.gif">
 				<table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
 					<tr>
 						<td width="2%" align="center" valign="middle"><img src="../static/web/img/item_tt2.gif"></td>
@@ -41,14 +40,12 @@
 			</td>
 		</tr>
 		<tr>
-			<td height="20" bgcolor="#ffffff">
-				<div class="alert alert-info" role="alert">
-					<i class="fa fa-info-circle" aria-hidden="true"></i> 提示：图片类型仅支持jpg、png、gif、wbmp格式，flash为.swf格式，视音频和附件为限定扩展名的类型(可在系统参数中修改)
-				</div>
+			<td height="26" bgcolor="#ffffff">
+				<div class="alert alert-info mb-0">图片类型仅支持jpg、png、gif、wbmp格式，flash为.swf格式，视音频和附件为限定扩展名的类型（可在系统参数中修改）</div>
 			</td>
 		</tr>
 		<tr>
-			<td height="69" align="center" valign="top" bgcolor="#FFFFFF">
+			<td height="69" align="center" valign="top" bgcolor="#ffffff">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<form enctype="multipart/form-data" name='form1' action="media_edit.php" method="POST"
 						onSubmit="return CheckSubmit();">
@@ -56,8 +53,8 @@
 						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 						<input type="hidden" name="aid" value="<?php echo $aid?>">
 						<tr>
-							<td width="15%" height="30" align="left" bgcolor="#FFFFFF" class='bline'>媒体类型：</td>
-							<td width="85%" height="26" align="left" bgcolor="#FFFFFF" class='bline'>
+							<td width="15%" height="30" align="left" bgcolor="#ffffff" class='bline'>媒体类型：</td>
+							<td width="85%" height="26" align="left" bgcolor="#ffffff" class='bline'>
 								<label><input type="radio" name="mediatype" class="np" value="1" <?php if($myrow['mediatype']==1) echo " checked"; ?>>
 								图片</label>
 								<label><input type="radio" name="mediatype" class="np" value="2" <?php if($myrow['mediatype']==2) echo " checked"; ?>>
@@ -69,27 +66,27 @@
 							</td>
 						</tr>
 						<tr>
-							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>说明标题：</td>
-							<td height="26" align="left" bgcolor="#FFFFFF" class='bline'>
+							<td height="30" align="center" bgcolor="#ffffff" class='bline'>说明标题：</td>
+							<td height="26" align="left" bgcolor="#ffffff" class='bline'>
 								<input name="title" type="text" id="title" size="30" value="<?php echo $myrow['title']?>">
 							</td>
 						</tr>
 						<tr>
-							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>参数说明：</td>
-							<td height="30" colspan='2' align="left" bgcolor="#FFFFFF" class='bline'>
+							<td height="30" align="center" bgcolor="#ffffff" class='bline'>参数说明：</td>
+							<td height="30" colspan='2' align="left" bgcolor="#ffffff" class='bline'>
 								图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
 						</tr>
 						<tr>
-							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>附加参数：</td>
-							<td height="26" align="left" bgcolor="#FFFFFF" class='bline'>
+							<td height="30" align="center" bgcolor="#ffffff" class='bline'>附加参数：</td>
+							<td height="26" align="left" bgcolor="#ffffff" class='bline'>
 								宽：<input name="mediawidth" type="text" id="mediawidth" size="5" value="<?php echo $myrow['width']?>">（像素）
 								高：<input name="mediaheight" type="text" id="mediaheight" size="5" value="<?php echo $myrow['height']?>">（像素）
 								播放时间：<input name="playtime" type="text" id="playtime" size="5" value="<?php echo $myrow['playtime']?>">（分钟）
 							</td>
 						</tr>
 						<tr>
-							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>原文件：</td>
-							<td align="left" bgcolor="#FFFFFF" class='bline'>
+							<td height="30" align="center" bgcolor="#ffffff" class='bline'>原文件：</td>
+							<td align="left" bgcolor="#ffffff" class='bline'>
 								<input name="filename" type="text" id="filename" style='width:350px' value="<?php echo $myrow['url']?>">
 								<a href='<?php echo $myrow['url']?>' target='_blank'>[查看]</a>
 							</td>
@@ -106,20 +103,20 @@
 									else $w = $sizes[0];
 						?>
 						<tr>
-							<td height="30" align="center" bgcolor="#FFFFFF" class='bline'>预览：</td>
-							<td align="left" bgcolor="#FFFFFF" class='bline'>
+							<td height="30" align="center" bgcolor="#ffffff" class='bline'>预览：</td>
+							<td align="left" bgcolor="#ffffff" class='bline'>
 								<a href="<?php echo $myrow['url']?>" target="_blank"><img src="<?php echo $myrow['url'].'?q='.time()?>" width="<?php echo $w?>" id="picview"></a>
 							</td>
 						</tr>
 						<?php } } } ?>
 						<tr>
-							<td height="26" align="center" bgcolor="#FFFFFF" class='bline'>修改文件：</td>
-							<td align="left" bgcolor="#FFFFFF" class='bline'>
-								<input name="upfile" type="file" id="upfile" style='width:300px' size='30'>
+							<td height="26" align="center" bgcolor="#ffffff" class='bline'>修改文件：</td>
+							<td align="left" bgcolor="#ffffff" class='bline'>
+								<input name="upfile" type="file" id="upfile" style='width:260px' size='30'>
 							</td>
 						</tr>
 						<tr>
-							<td height="62" colspan="2" bgcolor="#FFFFFF" class='bline'>
+							<td height="62" colspan="2" bgcolor="#ffffff" class='bline'>
 								<table width="60%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
 									<tr>
 										<td align="center" height='48'>

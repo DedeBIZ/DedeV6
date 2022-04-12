@@ -13,13 +13,7 @@ function SelectTemplets(fname){
 }
 </script>
 </head>
-<body leftmargin='8' topmargin='8'>
-<div class="bodytitle">
-	<div class="bodytitleleft"></div>
-	<div class="bodytitletxt">
-	<a href='diy_main.php'>自定义表单管理</a> &gt; <a href='diy_list.php?action=list&diyid=<?php echo $diyid; ?>'><?php echo $diy->name; ?></a> &gt; 发布内容
-	</div>
-</div>
+<body>
 <form name="form1" action="diy_list.php" method="post" >
 <input type="hidden" name="action" value="post">
 <input type="hidden" name="diyid" value="<?php echo $diyid; ?>">

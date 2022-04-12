@@ -53,7 +53,7 @@ img{vertical-align:baseline}
 table{border-collapse:separate}
 </style>
 </head>
-<body topmargin="8" background="../static/web/img/allbg.gif">
+<body>
   <form name="form1" action="album_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmitAlb();">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
     <input type="hidden" name="cid" value="<?php echo $cid; ?>">
@@ -170,7 +170,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;图集来源：</td>
+              <td width="90">&nbsp;来源：</td>
               <td width="250">
                 <input name="source" type="text" id="source" value=""style="width:160px" >
                 <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -188,7 +188,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="600" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;图集主栏目：</td>
+              <td width="90">&nbsp;发布栏目：</td>
               <td>
                 <span id='typeidct'>
                   <?php
@@ -247,7 +247,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;内容摘要：</td>
+              <td width="90">&nbsp;描述：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
             </tr>
           </table>
@@ -255,9 +255,6 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
-      </tr>
-      <tr>
-        <td height="26" bgcolor="#f8f8f8" class="bline2">&nbsp;图集选项：</td>
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
@@ -327,7 +324,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0" height="100">
             <tr>
               <td width="90">&nbsp;压缩包文件：</td>
-              <td><input type='text' name='zipfile' id='zipfile' style='width:300px'>
+              <td><input type='text' name='zipfile' id='zipfile' style='width:260px'>
                 <button name='addon_bt' type='button' onClick="SelectSoft('form1.zipfile')" class="btn btn-success btn-sm">浏览</button>
                 <label><input name="delzip" type="checkbox" id="delzip" value="1" checked="checked">
                 处理后删除压缩文件</label></td>
@@ -355,7 +352,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="36">&nbsp;手工上传：</td>
-              <td><span class="btn btn-success btn-sm fileinput-button"><i class="glyphicon glyphicon-plus"></i>选择本地图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
+              <td><span class="btn btn-success btn-sm fileinput-button"><i class="glyphicon glyphicon-plus"></i> 选择本地图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
             </tr>
           </table>
         </td>
@@ -469,9 +466,9 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr height="36">
-        <td style="padding:.6rem">
+        <td align="center" style="padding:.6rem">
           <button type="submit" class="btn btn-success">保存</button>
           <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
         </td>

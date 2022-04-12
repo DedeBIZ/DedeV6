@@ -94,7 +94,7 @@ class DedeVote
      * @param     string   $itembgcolor  项目背景
      * @return    string
      */
-    function GetVoteForm($lineheight = 30, $tablewidth = "100%", $titlebgcolor = "#EDEDE2", $titlebackgroup = "", $tablebg = "#FFFFFF", $itembgcolor = "#FFFFFF")
+    function GetVoteForm($lineheight = 30, $tablewidth = "100%", $titlebgcolor = "#EDEDE2", $titlebackgroup = "", $tablebg = "#ffffff", $itembgcolor = "#ffffff")
     {
         //省略参数
         if ($lineheight == "") {
@@ -110,10 +110,10 @@ class DedeVote
             $titlebackgroup = "background='$titlebackgroup'";
         }
         if ($tablebg == "") {
-            $tablebg = "#FFFFFF";
+            $tablebg = "#ffffff";
         }
         if ($itembgcolor == "") {
-            $itembgcolor = "#FFFFFF";
+            $itembgcolor = "#ffffff";
         }
         $items = "<table width='$tablewidth' border='0' cellspacing='1' class='table' cellpadding='1' id='voteitem'>\r\n";
         $items .= "<form name='voteform' method='post' action='".$GLOBALS['cfg_phpurl']."/vote.php' target='_blank'>\r\n";
@@ -124,9 +124,9 @@ class DedeVote
         if ($this->VoteCount > 0) {
             foreach ($this->VoteNotes as $k => $arr) {
                 if ($this->VoteInfos['ismore'] == 0) {
-                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><label><input type='radio' name='voteitem' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
+                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#424b51'><label><input type='radio' name='voteitem' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
                 } else {
-                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#666666'><label><input type=checkbox name='voteitem[]' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
+                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#424b51'><label><input type=checkbox name='voteitem[]' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
                 }
             }
             $items .= "<tr><td height='$lineheight'>\r\n";

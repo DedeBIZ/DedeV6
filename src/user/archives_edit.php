@@ -108,15 +108,7 @@ else if ($dopost == 'save') {
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "请选择您的后续操作：
-        <a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-secondary btn-sm'>发布新内容</a>
-        &nbsp;&nbsp;
-        <a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看修改</a>
-        &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank'>查看内容</a>
-        &nbsp;&nbsp;
-        <a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理内容</a>
-        ";
+    $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-secondary btn-sm'>发布新内容</a><a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-secondary btn-sm'>查看修改</a><a href='$artUrl' target='_blank'>查看内容</a><a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理内容</a>";
     $wintitle = "成功修改内容";
     $wecome_info = "内容管理::修改内容";
     $win = new OxWindow();

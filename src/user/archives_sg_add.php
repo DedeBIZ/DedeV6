@@ -157,15 +157,7 @@ else if ($dopost == 'save') {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：
-        <a href='archives_sg_add.php?channelid=$channelid' class='btn btn-secondary btn-sm'>继续发布内容</a>
-        &nbsp;&nbsp;
-        <a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a>
-        &nbsp;&nbsp;
-        <a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>修改内容</a>
-        &nbsp;&nbsp;
-        <a href='content_sg_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布内容管理</a>
-        ";
+    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?channelid=$channelid' class='btn btn-secondary btn-sm'>继续发布内容</a><a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看内容</a><a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-secondary btn-sm'>修改内容</a><a href='content_sg_list.php?channelid={$channelid}' class='btn btn-secondary btn-sm'>已发布内容管理</a>";
     $wintitle = "成功发布内容";
     $wecome_info = "内容管理::发布内容";
     $win = new OxWindow();

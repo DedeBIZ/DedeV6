@@ -47,10 +47,10 @@
                     <thead>
                       <tr>
                         <th colspan="2" width="25%">订单号</th>
-                        <th>状态 </th>
-                        <th width="10%">数量 </th>
+                        <th>状态</th>
+                        <th width="10%">数量</th>
                         <th width="10%">总计(元)</th>
-                        <th width="20%">时间 </th>
+                        <th width="20%">时间</th>
                       </tr>
                     </thead>
                     <form name='form1' action="shops_orders.php" method="post">
@@ -71,9 +71,7 @@
                       <button type="button" onclick="DoSubmit()" class="btn btn-success btn-sm">删除选中</button></td></tr></tbody>
                     </form>
                 </table>
-                <nav>
-                  {dede:pagelist listsize=5 /}
-                </nav>
+                <nav>{dede:pagelist listsize='6'/}</nav>
               </div>
               <!--主操作区域 -->
             </div>

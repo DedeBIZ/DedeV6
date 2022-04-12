@@ -121,7 +121,7 @@ else if ($action == 'upload') {
     $win->Init("tpl.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "模块管理";
     $wecome_info = "<a href='templets_main.php'>模板管理</a> &gt; 上传模板";
-    $win->AddTitle('请选择要上传的文件:');
+    $win->AddTitle('请选择要上传的文件：');
     $win->AddHidden("action", 'uploadok');
     $msg = "
     <table width='600' border='0' cellspacing='0' cellpadding='0'>
@@ -135,7 +135,7 @@ else if ($action == 'upload') {
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow('ok', '');
     $win->Display();
     exit();

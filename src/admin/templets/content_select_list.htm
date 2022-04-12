@@ -46,8 +46,8 @@
 		}
 	</script>
 </head>
-<body leftmargin="0" topmargin="0" background='../static/web/img/allbg.gif'>
-	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="table maintable table-bordered mt-3">
+<body>
+	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3">
 		<tr bgcolor="#E7E7E7">
 			<td height="26" colspan="9" background="../static/web/img/tbg.gif">文章列表</td>
 		</tr>
@@ -64,8 +64,8 @@
 				<td width="13%">属性</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
-			<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-				onMouseOut="javascript:this.bgColor='#FFFFFF';" height="26">
+			<tr align='center' bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+				onMouseOut="javascript:this.bgColor='#ffffff';" height="26">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
 				<td align='left'><a href='archives_do.php?aid={dede:field.id/}&dopost=editArchives'>{dede:field.title/}</a></td>
@@ -86,9 +86,7 @@
 			</tr>
 		</form>
 		<tr align="right" bgcolor="#EEF4EA">
-			<td height="26" colspan="9" align="center">
-				{dede:pagelist listsize=5/}
-			</td>
+			<td height="26" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 	<table width='100%' align="center" border='0' cellpadding='1' cellspacing='1' bgcolor='#CBD8AC' class="table maintable table-borderless">

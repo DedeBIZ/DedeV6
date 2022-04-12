@@ -1,19 +1,18 @@
 {dede:comment text="内容评论模块"/}
 <div class="comment mt-3 mb-3">
 	<h4>发表评论</h4>
-	<div id="feedback-alert">
-	</div>
+	<div id="feedback-alert"></div>
 	<div class="content">
 		<textarea cols="60" id="iptMsg" name="msg" rows="5" class="form-control" placeholder="说点什吗吧，请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论"></textarea>
 	</div>
 	<div class="post">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
-			<div class="form-row">
+			<div class="form-row mt-3">
 				<div class="col-md-6 mb-3">
 					<label for="iptUsername">用户名</label>
 					<input type="text" class="form-control" id="iptUsername">
 				</div>
-				<div class="col-md-6 mb-3 areaValidate" style="display: none;">
+				<div class="col-md-6 mb-3 areaValidate" style="display:none">
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
 						<input type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
@@ -24,9 +23,7 @@
 			<div class="form-group">
 				<div class="form-check">
 					<input type="checkbox" value="1" name="notuser" id="iptAny" class="form-check-input" />
-					<label class="form-check-label" for="iptAny">
-						匿名评论
-					</label>
+					<label class="form-check-label" for="iptAny">匿名评论</label>
 				</div>
 			</div>
 		</div>
@@ -47,7 +44,7 @@
 						<a href="javascript:ReplyFeedback([field:id/])">[回复]</a> <a href="javascript:LoadReplyFeedbacks([field:id/])">[field:replycount /]条回复</a>
 					</span>
 					<div class="feedback-action">
-						<a href="javascript:GoodFeedback([field:id/], [field:good/])"><span id="feedbackGood[field:id/]">[field:good/]</span> <i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+						<a href="javascript:GoodFeedback([field:id/], [field:good/])"><span id="feedbackGood[field:id/]">[field:good/]</span><i class="fa fa-thumbs-up"></i></a>
 					</div>
 				</div>
 				<div class="_feedback_reply mt-1" for="[field:id/]">
@@ -162,12 +159,12 @@
             }
 		});
 		
-		$(`._feedback_reply[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
+		$(`._feedback_reply[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin"></i> ');
 
 	}
 	//加载回复评论
 	function LoadReplyFeedbacks(fid) {
-		$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
+		$(`.feedback_replies[for="${fid}"]`).html('<i class="fa fa-spinner fa-spin"></i> ');
 
 		$.get("{dede:field name='phpurl'/}/feedback.php", {
 			"aid" : "{dede:field name='id'/}",
@@ -185,7 +182,7 @@
 				<small>~dtimestr~</small>
 			</span>
 			<div class="feedback-action">
-				<a href="javascript:GoodFeedback(~id~, ~good~)"><span id="feedbackGood~id~">~good~</span> <i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+				<a href="javascript:GoodFeedback(~id~, ~good~)"><span id="feedbackGood~id~">~good~</span><i class="fa fa-thumbs-up"></i></a>
 			</div>
 		</div>
 	</div>

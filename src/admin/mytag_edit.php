@@ -50,7 +50,7 @@ if ($dopost == 'delete') {
     $win->Display();
     exit();
 } else if ($dopost == "testjs") {
-    echo "<body bgcolor='#ffffff'>";
+    echo "<body>";
     echo "<script src='{$cfg_phpurl}/mytag_js.php?aid=$aid&nocache=1' language='javascript'></script>";
     exit();
 }

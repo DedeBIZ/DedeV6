@@ -17,8 +17,8 @@
 img{margin-right:0}
 </style>
 </head>
-<body leftmargin="8" topmargin="8" background="../static/web/img/allbg.gif" onLoad="ContextMenu.intializeContextMenu()">
-	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable table-bordered mt-3">
+<body onLoad="ContextMenu.intializeContextMenu()">
+	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3">
 		<tr>
 			<td>
 				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
@@ -67,7 +67,7 @@ img{margin-right:0}
 			</tr>
 		</table>
 	</form>
-	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table table-bordered maintable" style="margin-top:10px">
+	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable" style="margin-top:10px">
 		<tr>
 			<td height="30" colspan="10" style="margin-left:10px;background:#f8f8f8">{dede:global.positionname/}文档列表（使用鼠标右键进行常用操作）</td>
 		</tr>
@@ -83,7 +83,7 @@ img{margin-right:0}
 	</table>
 	<form name="form2">
 		{dede:datalist empty='<center>暂无内容</center>'}
-		<table width="98%" border="0" cellpadding="1" cellspacing="1" class="ilist" align="center" class="table" style="margin-top:10px">
+		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="ilist" style="margin-top:10px">
 			<tr>
 				<td width="12%" align="center" class="py-3"><img src="{dede:field.litpic function='CheckPic(@me)'/}" alt="文档图片" style="max-width:80px;max-height:60px"></td>
 				<td width="32%" class="pl-3">
@@ -106,7 +106,7 @@ img{margin-right:0}
 		</table>
 		{/dede:datalist}
 	</form>
-	<table width="98%" border="0" cellspacing="1" cellpadding="1" align="center">
+	<table width="98%" border="0" cellspacing="1" cellpadding="1" align="center" class="mb-3">
 		<tr>
 			<td height="36" colspan="10" class="py-3" style="background:#fff">
 				<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
@@ -123,7 +123,7 @@ img{margin-right:0}
 			</td>
 		</tr>
 		<tr>
-			<td height="36" colspan="10" align="center" class="py-3" style="background:#f8f8f8">{dede:pagelist listsize=5/}</td>
+			<td height="36" colspan="10" align="center" class="py-3" style="background:#f8f8f8">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 </body>

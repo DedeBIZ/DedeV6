@@ -113,7 +113,7 @@ function CheckCross() {
 }
 </script>
 </head>
-<body leftmargin="15" topmargin="10" bgcolor="#fff">
+<body>
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#cfcfcf" class="mt-3">
     <tr>
       <td width="100%" height="26" valign="top">
@@ -149,8 +149,8 @@ function CheckCross() {
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="84" height="26" align="center" background="../static/web/img/itemnote1.gif">常规选项</td>
-                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="#" onClick="ShowItem2()">高级选项</a></td>
-                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="#" onClick="ShowItem3()">栏目内容</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem3()">栏目内容</a></td>
                   </tr>
                 </table>
               </td>
@@ -161,9 +161,9 @@ function CheckCross() {
               <td colspan="2" bgcolor="#fff" style="text-align:left">
                 <table height="26" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="84" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="#" onClick="ShowItem1()">常规选项</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
                     <td width="84" align="center" background="../static/web/img/itemnote1.gif">高级选项</td>
-                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="#" onClick="ShowItem3()">栏目内容</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem3()">栏目内容</a></td>
                   </tr>
                 </table>
               </td>
@@ -174,8 +174,8 @@ function CheckCross() {
               <td colspan="2" bgcolor="#fff" style="text-align:left">
                 <table height="26" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="84" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="#" onClick="ShowItem1()">常规选项</a></td>
-                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="#" onClick="ShowItem2()">高级选项</td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
+                    <td width="84" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
                     <td width="84" align="center" background="../static/web/img/itemnote1.gif">栏目内容</td>
                   </tr>
                 </table>
@@ -200,7 +200,7 @@ function CheckCross() {
             <tr>
               <td class="bline" height="26" style="padding-left:10px">内容模型：</td>
               <td class="bline">
-                <select name="channeltype" id="channeltype" style="width:200px" onChange="ParTemplet(this)">
+                <select name="channeltype" id="channeltype" style="width:260px" onChange="ParTemplet(this)">
                   <?php
                   foreach($channelArray as $k=>$arr)
                   {
@@ -496,9 +496,9 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
             <tr>
-              <td style="padding:.6rem">
+              <td align="center" style="padding:.6rem">
                 <button type="submit" class="btn btn-success">确定</button>
                 <a href="catalog_main.php" class="btn btn-success">返回</a>
               </td>

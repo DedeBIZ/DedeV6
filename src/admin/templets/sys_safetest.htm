@@ -7,11 +7,6 @@
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="css/indexbody.css">
-  <style>
-    td {
-      padding-left: 8px;
-    }
-  </style>
   <script language="javascript" src="../static/web/js/jquery.min.js"></script>
   <script language='javascript' src='js/main.js'></script>
   <script language="javascript" src="../static/web/js/webajax.js"></script>
@@ -50,52 +45,37 @@
     }
   </script>
 </head>
-<body leftmargin="8" topmargin="8" background='../static/web/img/allbg.gif'>
+<body>
   <div id='loaddiv' style='display:none'>
     <p align='center' style='padding-top:200px'><img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中</p>
   </div>
-  <div class="bodytitle mt-3 mb-3">
-    <div class="bodytitleleft"></div>
-    <div class="bodytitletxt">用户安全中心</div>
-  </div>
   <?php echo $alter; ?>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
     <tr>
-      <td width="100%" height="26" colspan="2" bgcolor="#EDF9D5" background="../static/web/img/tbg.gif" style="padding-left:10px">
-        木马自检程序
-      </td>
+      <td width="100%" height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">木马自检程序</td>
     </tr>
     <tr>
-      <td height="73" colspan="2" bgcolor="#FFFFFF">
-        安全建议：
-        <br>
+      <td height="73" colspan="2" bgcolor="#ffffff">
+        安全建议：<br>
         1、有条件的用户把data、system、theme修改为不可对外访问，static、a目录设置为不允许执行脚本，其它目录禁止写入，系统将更安全；<br>
         2、本检测程以开发模式为标准，如果您的网站目录包含其它系统，此检测程序可能会产生错误判断；<br>
         3、检测程序会跳过对模板缓存目录的检测，为了安全起见，检测完成后建议清空模板缓存
       </td>
     </tr>
     <tr>
-      <td height="50" colspan="2" bgcolor="#FFFFFF">
-        <p>文件类型：
-          <input name="filetype" type="text" id="filetype" value="php|inc" style="width:420px">
-          &nbsp;要检查的文件类型</p>
-        <p>代码特征：
-          <input name="info" type="text" id="info" value="eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode" style="width:420px">
-          &nbsp;特征代码</p>
+      <td height="50" colspan="2" bgcolor="#ffffff">
+        <p>文件类型：<input name="filetype" type="text" id="filetype" value="php|inc" style="width:420px">&nbsp;要检查的文件类型</p>
+        <p>代码特征：<input name="info" type="text" id="info" value="eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode" style="width:420px">&nbsp;特征代码</p>
       </td>
     </tr>
     <tr>
-      <td height="50" colspan="2" bgcolor="#FFFFFF">
+      <td height="50" colspan="2" bgcolor="#ffffff">
         <button type="button" name="bt1" class="btn btn-success" onclick="LoadCtTest();">开始检测</button>
-        &nbsp;
         <button type="button" name="bt2" class="btn btn-success" onclick="LoadCtClear();">清空模板缓存</button>
       </td>
     </tr>
     <tr>
       <td height="30" colspan="2" bgcolor="#f8f8f8">检测结果：结果仅供参考，请务必查看源码后才删除非法文件</td>
-    </tr>
-    <tr>
-      <td height="300" colspan="2" id="messagetd" valign="top" bgcolor="#FFFFFF"></td>
     </tr>
   </table>
 </body>

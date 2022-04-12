@@ -60,12 +60,12 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
 {
     global $cfg_phpurl,$addsql;
     $start = ($pageno-1) * $pagesize;
-    $printhead ="<table width='98%' border='0' cellpadding='1' cellspacing='1' align='center'  class='table maintable table-bordered' style='background:#cfcfcf;margin-bottom:10px;'>
+    $printhead ="<table width='98%' border='0' cellpadding='1' cellspacing='1' align='center'  class='table maintable' style='background:#cfcfcf;margin-bottom:10px;'>
         <tr align='center' bgcolor='#FBFCE2'>
-          <td width='5%' class='tbsname'><a href='#' onclick=\"ReloadPage('aid')\">ID</a></td>
+          <td width='5%' class='tbsname'><a href='javascript:;' onclick=\"ReloadPage('aid')\">ID</a></td>
           <td width='20%' class='tbsname'>列表名称</td>
           <td width='20%' class='tbsname'>模板文件</td>
-          <td width='5%' class='tbsname'><a href='#' onclick=\"ReloadPage('click')\">点击</a></td>
+          <td width='5%' class='tbsname'><a href='javascript:;' onclick=\"ReloadPage('click')\">点击</a></td>
           <td width='15%' class='tbsname'>创建时间</td>
           <td class='tbsname'>管理</td>
             </tr>\r\n";
@@ -75,15 +75,15 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     while($row = $dsql->GetArray())
     {
         $listurl = GetFreeListUrl($row['aid'],$row['namerule'],$row['listdir'],$row['defaultpage'],$row['nodefault']);
-        $line = "<tr align='center' bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+        $line = "<tr align='center' bgcolor='#ffffff' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
         <td>{$row['aid']}</td>
         <td> <a href='$listurl' target='_blank'>{$row['title']}</a> </td>
         <td> {$row['templet']} </td>
         <td> {$row['click']} </td>
         <td>".MyDate("y-m-d",$row['edtime'])."</td>
-        <td> <a href='#' onclick='EditNote({$row['aid']})' class='btn btn-success btn-sm'> <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> 修改</a>
-        <a href='#' onclick='CreateNote({$row['aid']})' class='btn btn-success btn-sm'> <i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> 更新</a>
-         <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'> <i class=\"fa fa-trash\" aria-hidden=\"true\"></i> 删除</a>
+        <td> <a href='javascript:;' onclick='EditNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> 修改</a>
+        <a href='javascript:;' onclick='CreateNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> 更新</a>
+         <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i> 删除</a>
     </td>
   </tr>";
         echo $line;

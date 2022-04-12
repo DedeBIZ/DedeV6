@@ -142,8 +142,8 @@
 		}
 	</script>
 </head>
-<body leftmargin="8" topmargin="8" background='../static/web/img/allbg.gif' onLoad="ContextMenu.intializeContextMenu()">
-	<table width="98%" align="center" border="0" cellspacing="0" cellpadding="0" class="table table-bordered maintable mt-3">
+<body onLoad="ContextMenu.intializeContextMenu()">
+	<table width="98%" align="center" border="0" cellspacing="0" cellpadding="0" class="table maintable mt-3">
 		<tr>
 			<td>
 				<button type='button' class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
@@ -181,7 +181,7 @@
 			</tr>
 		</table>
 	</form>
-	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table table-bordered maintable" style="margin-top:10px">
+	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable" style="margin-top:10px">
 		<tr bgcolor="#E7E7E7">
 			<td height="30" colspan="9" background="../static/web/img/tbg.gif" style="padding-left:10px">{dede:global.positionname/}文档列表（使用鼠标右键进行常用操作）</td>
 		</tr>
@@ -219,11 +219,11 @@
 				<td height="26" colspan="9">
 					<a class="btn btn-success btn-sm" href="javascript:selAll()" class="coolbg">全选</a>
 					<a class="btn btn-success btn-sm" href="javascript:noSelAll()" class="coolbg">取消</a>
-					<a class="btn btn-success btn-sm" href="javascript:updateArc(0)" class="coolbg">&nbsp;更新&nbsp;</a>
-					<a class="btn btn-success btn-sm" href="javascript:checkArc(0)" class="coolbg">&nbsp;审核&nbsp;</a>
-					<a class="btn btn-success btn-sm" href="javascript:adArc(0)" class="coolbg">&nbsp;推荐&nbsp;</a>
-					<a class="btn btn-success btn-sm" href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid); ?>)" class="coolbg">&nbsp;移动&nbsp;</a>
-					<a class="btn btn-success btn-sm" href="javascript:delArc(0)" class="coolbg">&nbsp;删除&nbsp;</a>
+					<a class="btn btn-success btn-sm" href="javascript:updateArc(0)" class="coolbg">更新</a>
+					<a class="btn btn-success btn-sm" href="javascript:checkArc(0)" class="coolbg">审核</a>
+					<a class="btn btn-success btn-sm" href="javascript:adArc(0)" class="coolbg">推荐</a>
+					<a class="btn btn-success btn-sm" href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid); ?>)" class="coolbg">移动</a>
+					<a class="btn btn-success btn-sm" href="javascript:delArc(0)" class="coolbg">删除</a>
 					<?php
 					if(!empty($f)) {
 					?>
@@ -235,9 +235,7 @@
 			</tr>
 		</form>
 		<tr align="right" bgcolor="#f8f8f8">
-			<td height="26" colspan="9" align="center">
-				{dede:pagelist listsize=3/}
-			</td>
+			<td height="26" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 </body>

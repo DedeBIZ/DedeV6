@@ -87,7 +87,7 @@ else if ($dopost == "copystart") {
         </tr>
         </table>
         ";
-    $win->AddMsgItem("<div style='padding:20px;line-height:300%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     exit();
@@ -113,7 +113,7 @@ else if ($dopost == "export") {
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友：");
-    $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:99%;height:450px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
+    $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:98%;height:450px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
 }
@@ -127,7 +127,7 @@ else if ($dopost == "exportin") {
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
     $win->AddTitle("输入规则内容：(导入模型会和原有模型冲突，不过可以在导入后修改)");
-    $win->AddMsgItem("<textarea name='exconfig' style='width:99%;height:450px;word-wrap: break-word;word-break:break-all;'></textarea>");
+    $win->AddMsgItem("<textarea name='exconfig' style='width:98%;height:450px;word-wrap: break-word;word-break:break-all;'></textarea>");
     $winform = $win->GetWindow("ok");
     $win->Display();
     exit();
@@ -333,7 +333,7 @@ else if ($dopost == "gettemplets") {
     $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::查看模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
-    $win->AddTitle("&nbsp;频道：（".$row['typename']."）默认模板文件说明：");
+    $win->AddTitle("&nbsp;频道[".$row['typename']."]默认模板文件说明：");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "
         文档模板：{$defaulttemplate}/article_{$row['nid']}.htm
@@ -344,7 +344,7 @@ else if ($dopost == "gettemplets") {
         频道封面模板：{$defaulttemplate}/index_{$row['nid']}.htm
         <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm'>[修改]</a>
     ";
-    $win->AddMsgItem("<div style='padding:20px;line-height:300%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("hand", "");
     $win->Display();
     exit();
@@ -370,7 +370,7 @@ else if ($dopost == "delete") {
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确实要删除 (".$row['typename'].") 这个频道");
+        $win->AddTitle("您确定要删除 (".$row['typename'].") 这个频道");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -503,7 +503,7 @@ else if ($dopost == 'modifysearch') {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' style='width:200px'>\r\n";
+                    $forms .= "<br>栏目：<select name='typeid' style='width:260px'>\r\n";
                     $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";
@@ -529,7 +529,7 @@ else if ($dopost == 'modifysearch') {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' style='width:200px'>\r\n";
+                    $forms .= "<br>栏目：<select name='typeid' style='width:260px'>\r\n";
                     $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";

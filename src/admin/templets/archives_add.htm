@@ -36,7 +36,7 @@ table{border-collapse:separate}
 .form-control{display:inline-block;margin-right:10px;width:160px}
 </style>
 </head>
-<body topmargin="8">
+<body>
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
       <td width="65%" height="30"><img src="../static/web/img/book1.gif"><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 发布商品</td>
@@ -150,7 +150,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;商品来源：</td>
+              <td width="90">&nbsp;来源：</td>
               <td width="250">
                 <input name="source" type="text" id="source" style="width:160px" value="" size="16">
                 <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -175,7 +175,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="600" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;商品主栏目：</td>
+              <td width="90">&nbsp;发布栏目：</td>
               <td>
                 <span id='typeidct'>
                 <?php
@@ -234,7 +234,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;内容摘要：</td>
+              <td width="90">&nbsp;描述：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
             </tr>
           </table>
@@ -356,9 +356,9 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr height="36">
-        <td style="padding:.6rem">
+        <td align="center" style="padding:.6rem">
           <button type="submit" class="btn btn-success">保存</button>
           <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
         </td>

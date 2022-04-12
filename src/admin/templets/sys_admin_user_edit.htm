@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>管理员帐号--修改帐号</title>
+  <title>管理员帐号 - 修改帐号</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
+<body>
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
     <tr>
-      <td height="20" background="../static/web/img/tbg.gif">
+      <td height="26" background="../static/web/img/tbg.gif">
         <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
           <tr>
             <td width="24%" style="padding-left:10px">修改帐号 </td>
@@ -20,75 +20,69 @@
       </td>
     </tr>
     <tr>
-      <td height="215" align="center" valign="top" bgcolor="#FFFFFF">
+      <td height="215" align="center" valign="top" bgcolor="#ffffff">
         <form name="form1" action="sys_admin_user_edit.php" method="post">
           <input type="hidden" name="dopost" value="saveedit">
           <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
           <input type="hidden" name="id" value="<?php echo $row['id']?>">
           <table width="98%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
-              <td width="16%" height="30">用户登录ID：</td>
-              <td width="84%" style="text-align:left"><?php echo $row['userid']?></td>
+              <td width="160"  height="26" class="bline">用户登录ID：</td>
+              <td><?php echo $row['userid']?></td>
             </tr>
             <tr>
-              <td height="30">用户笔名：</td>
-              <td style="text-align:left">
-                <input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:200px"> &nbsp;（发布文章后显示责任编辑的名字）
-              </td>
+              <td height="26" class="bline">用户笔名：</td>
+              <td height="26" class="bline"><input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文章后显示责任编辑的名字）</td>
             </tr>
             <tr>
-              <td height="30">用户密码：</td>
-              <td style="text-align:left">
-                <input name="pwd" type="text" id="pwd" size="16" style="width:200px">
-                &nbsp;（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）
-              </td>
+              <td height="26" class="bline">用户密码：</td>
+              <td height="26" class="bline"><input name="pwd" type="text" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
             </tr>
             <tr>
-              <td height="30">用户类型：</td>
-              <td style="text-align:left">
-                <select name='usertype' style='width:200px'>
-                  <?php
-			  	$dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
-			  	$dsql->Execute("ut");
-			  	while($myrow = $dsql->GetObject("ut"))
-			  	{
-			  		if($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>\r\n";
-			  		else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>\r\n";
-			  	}
-			  	?>
+              <td height="26" class="bline">用户类型：</td>
+              <td height="26" class="bline">
+                <select name='usertype' style='width:160px'>
+                <?php
+                $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
+                $dsql->Execute("ut");
+                while($myrow = $dsql->GetObject("ut"))
+                {
+                  if($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+                  else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
+                }
+                ?>
                 </select>
               </td>
             </tr>
             <tr>
-              <td height="30">负责频道：</td>
-              <td style="text-align:left">
-                <select name="typeids[]" id="typeid" size='10' style="width:200px;height: 200px;" multiple="true">
+              <td height="26" class="bline">负责频道：</td>
+              <td height="26" class="bline">
+                <select name="typeids[]" id="typeid" size='10' style="width:260px;height:200px" multiple="true">
                   <option value="0" class='alltype'>所有频道</option>
                   <?php echo $typeOptions?>
                 </select>（按Ctrl可以进行多选）
               </td>
             </tr>
             <tr>
-              <td height="30">真实姓名：</td>
-              <td style="text-align:left"><input name="tname" type="text" id="tname" size="16" style="width:200px" value="<?php echo $row['tname']?>"> &nbsp;</td>
+              <td height="26" class="bline">真实姓名：</td>
+              <td height="26" class="bline"><input name="tname" type="text" id="tname" value="<?php echo $row['tname']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td height="30">电子邮箱：</td>
-              <td style="text-align:left"><input name="email" type="text" id="email" size="16" style="width:200px" value="<?php echo $row['email']?>"> &nbsp;</td>
+              <td height="26" class="bline">电子邮箱：</td>
+              <td height="26" class="bline"><input name="email" type="text" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td height="30">安全验证串：</td>
-              <td style="text-align:left">
-                <input name="safecode" type="text" id="safecode" size="16" style="width:200px">
-                <input name="randcode" type="hidden" value="<?php echo $randcode; ?>">
-                &nbsp;
-                (复制本代码：<span style='color:#e74d58'><?php echo $safecode;  ?></span> )
+              <td height="26" class="bline">安全验证串：</td>
+              <td height="26" class="bline">
+                <input name="safecode" type="text" id="safecode" style="width:260px">
+                <input name="randcode" type="hidden" value="<?php echo $randcode; ?>">（复制本代码：<span style='color:#e74d58'><?php echo $safecode;  ?></span>）
               </td>
             </tr>
             <tr>
-              <td height="60"></td>
+              <td height="36"></td>
               <td>
-                <button type="submit" name="Submit" class="btn btn-success">保存用户</button>
+                <button type="submit" name="Submit" class="btn btn-success btn-sm">保存用户</button>
+                <button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm">不理返回</button>
               </td>
             </tr>
           </table>

@@ -104,7 +104,7 @@ function ReloadPageNum(startnum) {
     var ahtml = "";
     var startloop = 1;
     var endnum = 0;
-    ahtml += "共" + totalrow + "篇" + pagenum + "页";
+    ahtml += "共" + totalrow + "条" + pagenum + "页";
     if (pageno > 1) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno - 1) + ")'>上页</a> ";
     if (startnum >= pagenum - listsize) {
         startloop = pagenum - (listsize * 2);
@@ -134,12 +134,12 @@ function ReloadPageNum(startnum) {
 }
 </script>
 <style>
-.nnpp{border-bottom:1px solid #666666;border-top:1px solid #FFFFFF;border-left:1px solid #FFFFFF;border-right:1px solid #FFFFFF;filter:alpha(opacity=50)}
+.nnpp{border-bottom:1px solid #424b51;border-top:1px solid #ffffff;border-left:1px solid #ffffff;border-right:1px solid #ffffff;filter:alpha(opacity=50)}
 </style>
 </head>
-<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
+<body>
     <div class="main" align="center">
-        <table width="98%" border="0" cellpadding="1" cellspacing="1" bgcolor="#f8f8f8" class="table maintable table-bordered mt-3">
+        <table width="98%" border="0" cellpadding="1" cellspacing="1" bgcolor="#f8f8f8" class="table maintable mt-3">
             <tr>
                 <td width="30%" align="left" style="padding-left:10px">搜索关键词维护</td>
                 <td align="right"><button class="btn btn-success btn-sm" name="n1" type="button" id="n1" onClick="location='article_keywords_main.php';">文档关键词维护</button></td>
@@ -150,7 +150,7 @@ function ReloadPageNum(startnum) {
         GetKeywordList($dsql,$pageno,$pagesize,$orderby);
         ?>
         </span>
-        <table width="98%" border="0" cellpadding="1" cellspacing="1" bgcolor="#f8f8f8" class="table maintable table-bordered mt-3">
+        <table width="98%" border="0" cellpadding="1" cellspacing="1" bgcolor="#f8f8f8" class="table maintable mt-3">
             <tr align="center">
                 <td height="36" colspan="8" bgcolor="#f8f8f8">
                     <span id="pagelist"></span>

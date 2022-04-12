@@ -105,12 +105,12 @@ function SingleMenu(eobj,obj,tid,tname)
 td,th{padding:.25rem}
 .coolbg2{border:1px solid #ccc;background-color:#F2F5E9;height:18px}
 .coolbt2{border-left:2px solid #EFEFEF;border-top:2px solid #EFEFEF;border-right:2px solid #ACACAC;border-bottom:2px solid #ACACAC;background-color:#F7FCDA}
-.nbline{border-bottom:1px solid #d6d6d6;background-color:#FFFFFF}
-.bline2{border-bottom:1px solid #d6d6d6;background-color:#f8f8f8}
+.nbline{border-bottom:1px solid #eee;background-color:#ffffff}
+.bline2{border-bottom:1px solid #eee;background-color:#f8f8f8}
 .maintable{border:1px solid #DEE2E6}
 </style>
 </head>
-<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8" onLoad="ContextMenu.intializeContextMenu()">
+<body onLoad="ContextMenu.intializeContextMenu()">
 <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3">
 <tr>
   <td height="26" style="background:#f8f8f8">
@@ -140,7 +140,7 @@ td,th{padding:.25rem}
 </tr>
 <form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
 <tr>
-<td bgcolor="#FFFFFF" valign="top">
+<td bgcolor="#ffffff" valign="top">
 <?php
 if(empty($opendir)) $opendir=-1;
 if($userChannel>0) $opendir=$userChannel;

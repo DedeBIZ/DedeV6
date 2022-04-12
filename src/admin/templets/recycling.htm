@@ -65,8 +65,8 @@
 		}
 	</script>
 </head>
-<body leftmargin="8" topmargin="8" background='../static/web/img/allbg.gif'>
-	<table width="98%" border="0" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 table-bordered">
+<body>
+	<table width="98%" border="0" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3">
 		<tr bgcolor="#E7E7E7">
 			<td height="26" colspan="7" background="../static/web/img/tbg.gif" style="padding-left:10px">
 				文档回收站 &nbsp;
@@ -83,8 +83,8 @@
 				<td width="10%">操作</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-			<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-				onMouseOut="javascript:this.bgColor='#FFFFFF';" height="26"
+			<tr align='center' bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+				onMouseOut="javascript:this.bgColor='#ffffff';" height="26"
 				oncontextmenu="ShowMenu(event,this,{dede:field.id/},'{dede:field.title function='urlencode(@me)'/}')">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
@@ -99,15 +99,15 @@
 			{/dede:datalist}
 			<tr bgcolor="#ffffff">
 				<td height="26" colspan="7">
-					&nbsp;
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-					<a href="javascript:moveArc(0)" class="btn btn-success btn-sm">&nbsp;还原&nbsp;</a>
-					<a href="javascript:delArc(0)" class="btn btn-success btn-sm">&nbsp;删除&nbsp;</a></td>
+					<a href="javascript:moveArc(0)" class="btn btn-success btn-sm">还原</a>
+					<a href="javascript:delArc(0)" class="btn btn-success btn-sm">删除</a>
+				</td>
 			</tr>
 		</form>
 		<tr align="right" bgcolor="#f8f8f8">
-			<td height="30" colspan="7" align="center">{dede:pagelist listsize=3/}</td>
+			<td height="30" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 </body>

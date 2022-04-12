@@ -60,7 +60,7 @@ img{vertical-align:baseline}
 table{border-collapse:separate}
 </style>
 </head>
-<body topmargin="8">
+<body>
   <form name="form1" action="spec_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
     <input type="hidden" name="dopost" value="save">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
@@ -141,7 +141,7 @@ table{border-collapse:separate}
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
               </td>
-              <td width="150" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height: 80px"></td>
+              <td width="150" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
             </tr>
           </table>
         </td>
@@ -368,9 +368,9 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr height="36">
-        <td style="padding:.6rem">
+        <td align="center" style="padding:.6rem">
           <button type="submit" class="btn btn-success">保存</button>
           <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
         </td>

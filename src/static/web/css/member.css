@@ -35,7 +35,7 @@ main.login-from {
 }
 
 .login-area .licence a {
-    color: #008E38;
+    color: #28a745;
 }
 
 .copyright.light {
@@ -46,12 +46,12 @@ main.login-from {
 .flink a,
 .copyright.light,
 .copyright.light a {
-    color: #666666;
+    color: #424b51;
 }
 
 
 .member a {
-    color: #008E38;
+    color: #28a745;
 }
 .member .member-actions {
     font-size: 16px;

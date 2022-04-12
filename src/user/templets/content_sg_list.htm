@@ -57,23 +57,25 @@
                   <thead>
                     <tr>
                       <th width="25%">文章标题</th>
-                      <th width="15%">类目 </th>
-                      <th>状态 </th>
-                      <th>点击 </th>
-                      <th width="15%">发布时间 </th>
+                      <th width="15%">类目</th>
+                      <th>状态</th>
+                      <th>点击</th>
+                      <th width="15%">发布时间</th>
                       <th width="25%">操作</th>
                     </tr>
                   </thead>
                   <tbody>
                     {dede:datalist}
                     <tr>
-                      <td class="tabTitle"><a href='<?php echo $cfg_phpurl; ?>/view.php?aid=<?php echo $fields['aid']; ?>' target='_blank'><?php echo $fields['title']; ?></a> </td>
+                      <td class="tabTitle"><a href="<?php echo $cfg_phpurl; ?>/view.php?aid=<?php echo $fields['aid']; ?>" target="_blank"><?php echo $fields['title']; ?></a> </td>
                       <td align="center"><?php echo $fields['typename']; ?></td>
-                      <td align="center"><?php
+                      <td align="center">
+                        <?php
                         if($fields['arcrank']>=0) echo "已审核";
                         else if($fields['arcrank']==-2) echo "<span style='color:#007bff'>被退回</span>";
                         else echo "<span style='color:#dc3545'>未审核</span>";
-                        ?></td>
+                        ?>
+                      </td>
                       <td align="center"><?php echo $fields['click']; ?></td>
                       <td align="center"><?php echo GetDateMk($fields['senddate']); ?></td>
                       <td align="center" class="doPost">
@@ -85,9 +87,7 @@
                   </tbody>
                 </table>
               </div>
-              <nav>
-                {dede:pagelist listsize=5 /}
-              </nav>
+              <nav>{dede:pagelist listsize='6'/}</nav>
             </div>
           </div>
         </div>

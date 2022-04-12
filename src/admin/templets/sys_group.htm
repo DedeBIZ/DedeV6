@@ -7,26 +7,25 @@
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+<body>
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="content_att.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
-        <td height="26" colspan="3" background='../static/web/img/tbg.gif'>
+        <td height="26" colspan="3" background="../static/web/img/tbg.gif">
           <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
               <td width="24%" style="padding-left:10px">系统用户组管理 </td>
               <td width="76%" align="right">
                   <a href="sys_group_add.php" class="btn btn-success">增加一个用户组</a>
                   <a href="sys_admin_user.php" class="btn btn-success">管理系统用户</a>
-                
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr bgcolor="#FBFCE2" align="center">
-        <td width="20%" height="26">Rank</td>
+        <td width="20%" height="26">等级</td>
         <td width="45%">组名称</td>
         <td width="35%">管理</td>
       </tr>
@@ -36,7 +35,7 @@
 	while($row = $dsql->GetObject())
 	{
 	?>
-      <tr align="center" bgcolor="#FFFFFF">
+      <tr align="center" bgcolor="#ffffff">
         <td height="26">
           <?php echo $row->rank?>
         </td>

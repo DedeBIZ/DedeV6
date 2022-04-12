@@ -4,12 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>新增频道</title>
   <style>
-    body {
-      background-image: url(../static/web/img/allbg.gif);
-    }
-
     .STYLE2 {
-      color: #666666;
+      color: #424b51;
     }
   </style>
   <script language="javascript">
@@ -43,49 +39,47 @@
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body topmargin="8">
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
+<body>
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
     <form name="form1" action="mychannel_add.php" method="post">
       <input type='hidden' name='action' value='add'>
       <tr>
-        <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">
-          <a href="mychannel_main.php">内容模型管理</a> &gt; 新增内容模型
-        </td>
+        <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mychannel_main.php">内容模型管理</a> &gt; 新增内容模型</td>
       </tr>
       <tr>
-        <td width="35%" bgcolor="#FFFFFF">
+        <td width="35%" bgcolor="#ffffff">
           频道ID<br>
           <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span>
         </td>
-        <td width="65%" bgcolor="#FFFFFF">
+        <td width="65%" bgcolor="#ffffff">
           <input name="id" type="text" id="id" size="10" value="<?php echo $newid; ?>" class="pubinputs"> *
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           名字标识<br>
           <span class="STYLE2" id="help2">与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，频道默认文档模板是
             “default/article_名字标识.htm”，列表模板、封面模板类推 </span>
         </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <input name="nid" type="text" id="nid" value="ch<?php echo $newid; ?>" class="pubinputs"> *
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           频道名称<br>
           <span class="STYLE2" id="help3">频道的中文名称，在后台管理，前台发布等均使用此名字</span>
         </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <input name="typename" type="text" id="typename" value="频道<?php echo $newid; ?>" class="pubinputs"> *
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           附加表<br>
           <span class="STYLE2" id="help4">频道除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性(推荐、会员权限等)，也可以使用完全以附加表作为存储数据</span>
         </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <input name="addtable" type="text" id="addtable" value="<?php echo $cfg_dbprefix,'addon',$newid; ?>" class="pubinputs">
           必须由英文、数字、下划线组成 *
           <label><input name="isdel" type="checkbox" class="np" id="isdel" value="1">
@@ -93,24 +87,22 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           模型性质<br>
-          <span class="STYLE2" id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid,typeid,senddate,title, mid,
-            channel，独立模型的文档内容必须点击栏目进入列表才能管理</span></td>
-        <td bgcolor="#FFFFFF">
+          <span class="STYLE2" id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid,typeid,senddate,title,mid,channel，独立模型的文档内容必须点击栏目进入列表才能管理</span>
+        </td>
+        <td bgcolor="#ffffff">
           <label><input type="radio" name="issystem" id='is1' class="np" value="0" onClick="PublicDefault()" checked='1' />
            自动模型 </label>
           <label><input type="radio" name="issystem" id='is2' value="1" onClick="PublicDefault()" class="np">
            系统模型 </label>
           <label><input type="radio" name="issystem" id='is3' value="-1" onClick="PublicDefault()" class="np">
-           独立模型(不使用主表) </label>
+           独立模型（不使用主表）</label>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          是否支持会员投稿
-        </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">是否支持会员投稿</td>
+        <td bgcolor="#ffffff">
           <label><input name="issend" type="radio" class="np" value="0" checked='1' />
           不支持 </label>
           <label><input type="radio" name="issend" class="np" value="1">
@@ -118,10 +110,8 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          会员许可投稿级别
-        </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">会员许可投稿级别</td>
+        <td bgcolor="#ffffff">
           <select name='sendrank' id='sendrank' style='width:120px'>
             <option value='0'>游客</option>
             <?php
@@ -130,17 +120,15 @@
               $dsql->Execute();
               while($row2 = $dsql->GetObject())
               {
-              	echo "     <option value='".$row2->rank."'>".$row2->membername."</option>\r\n";
+              	echo "<option value='".$row2->rank."'>".$row2->membername."</option>\r\n";
               }
           ?>
           </select>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          许可投稿会员组
-        </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">许可投稿会员组</td>
+        <td bgcolor="#ffffff">
           <?php
         $dsql->SetQuery("Select * from `#@__member_model`");
         $dsql->Execute();
@@ -149,34 +137,31 @@
           echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name." </label>\r\n";
         }
        ?>
-       <label><input name="usertype" class="np" type="radio" value="" checked='1' />
-          不限 </label>
+       <label><input name="usertype" class="np" type="radio" value="" checked='1' /> 不限</label>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          会员稿件默认状态
-        </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">会员稿件默认状态</td>
+        <td bgcolor="#ffffff">
           <label><input name="arcsta" class="np" type="radio" value="-1" checked='1' />
           未审核 </label>
           <label><input name="arcsta" class="np" type="radio" value="0">
           已审核（自动生成HTML）</label>
           <label><input name="arcsta" class="np" type="radio" value="1">
-          已审核（仅使用动态文档）</label></td>
+          已审核（仅使用动态文档）</label>
+        </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          投稿标题使用名称</td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">投稿标题使用名称</td>
+        <td bgcolor="#ffffff">
           <input name="titlename" type="text" id="titlename" value="标题" class="pubinputs">
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           投稿是否使用摘要<br>
           <span class="STYLE2">如果不使用主表(独立模型)，缩略图设置同</span></td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <label><input name="needdes" type="radio" class="np" value="1" checked='1' />
           使用 </label>
           <label><input name="needdes" type="radio" class="np" value="0">
@@ -184,10 +169,8 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          投稿是否使用缩图
-        </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">投稿是否使用缩图</td>
+        <td bgcolor="#ffffff">
           <label><input name="needpic" type="radio" class="np" value="1" checked='1' />
           使用 </label>
           <label><input name="needpic" type="radio" class="np" value="0">
@@ -195,19 +178,19 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           默认栏目ID<br>
           <span class="STYLE2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span>
         </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <input name="dfcid" type="text" id="dfcid" value="0" class="pubinputs" style="width:80px"></td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           投稿具有唯一性<br>
-          <span class="STYLE2" id="help9">如果投稿是唯一的(会员只能在这个模型对应的栏目中发布单篇文档)，其作用相当于自定义表单</span>
+          <span class="STYLE2" id="help9">如果投稿是唯一的（会员只能在这个模型对应的栏目中发布单篇文档）其作用相当于自定义表单</span>
         </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <label><input name="onlyone" type="radio" class="np" value="1">
           是 </label>
           <label><input name="onlyone" type="radio" class="np" value="0" checked='1' />
@@ -215,53 +198,38 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          档案发布程序
-        </td>
-        <td bgcolor="#FFFFFF">
-          <input name="addcon" type="text" id="addcon" value="archives_add.php" class="pubinputs">
-          *
+        <td bgcolor="#ffffff">档案发布程序</td>
+        <td bgcolor="#ffffff">
+          <input name="addcon" type="text" id="addcon" value="archives_add.php" class="pubinputs"> *
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          档案修改程序
-        </td>
-        <td bgcolor="#FFFFFF">
-          <input name="editcon" type="text" id="editcon" value="archives_edit.php" class="pubinputs">
-          *
+        <td bgcolor="#ffffff">档案修改程序</td>
+        <td bgcolor="#ffffff">
+          <input name="editcon" type="text" id="editcon" value="archives_edit.php" class="pubinputs"> *
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          档案管理程序
-        </td>
-        <td bgcolor="#FFFFFF">
-          <input name="mancon" type="text" id="mancon" value="content_list.php" class="pubinputs">
-          *
+        <td bgcolor="#ffffff">档案管理程序</td>
+        <td bgcolor="#ffffff">
+          <input name="mancon" type="text" id="mancon" value="content_list.php" class="pubinputs"> *
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          前台会员发布程序
-        </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">前台会员发布程序</td>
+        <td bgcolor="#ffffff">
           <input name="useraddcon" type="text" id="useraddcon" value="archives_add.php" class="pubinputs">
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          前台会员修改程序
-        </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">前台会员修改程序</td>
+        <td bgcolor="#ffffff">
           <input name="usereditcon" type="text" id="usereditcon" value="archives_edit.php" class="pubinputs">
         </td>
       </tr>
       <tr>
-        <td bgcolor="#FFFFFF">
-          前台会员管理程序
-        </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">前台会员管理程序</td>
+        <td bgcolor="#ffffff">
           <input name="usermancon" type="text" id="usermancon" value="content_list.php" class="pubinputs">
         </td>
       </tr>
@@ -269,7 +237,7 @@
         <td height="30" colspan="2">
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="26%"></td>
+              <td width="30%"></td>
               <td width="15%">
                 <button type="submit" class="btn btn-success">确定</button>
               </td>

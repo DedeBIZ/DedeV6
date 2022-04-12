@@ -36,23 +36,19 @@
                     {dede:datalist}
                     <tr>
                       <td colspan="5" class="tabTitle"><a href='archives_do.php?dopost=viewArchives&aid={dede:field.aid/}' target='_blank'>{dede:field.title/}</a></td>
-                      <td width="25%" align="center" class="doPost"><span class="itemDigg">
-                          <a class="text_button" href="../apps/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}" target="_blank">[推荐]</a>
-                        </span> <span class="itemManage">
-                          <a href='archives_do.php?dopost=delStow&type={dede:field.type/}&aid={dede:field.aid/}'>[删除]</a>
-                        </span></td>
-                    </tr>
-                    <tr style="border-bottom: solid 1px #DDD;">
-                      <td colspan="6" class="tabTitle tbBtm">收藏时间:<?php echo MyDate('Y-m-d H:i', $fields['addtime']); ?>
+                      <td width="25%" align="center" class="doPost">
+                        <span class="itemDigg"><a class="text_button" href="../apps/recommend.php?type={dede:field.type/}&aid={dede:field.aid/}" target="_blank">[推荐]</a></span> 
+                        <span class="itemManage"><a href='archives_do.php?dopost=delStow&type={dede:field.type/}&aid={dede:field.aid/}'>[删除]</a></span>
                       </td>
+                    </tr>
+                    <tr style="border-bottom: solid 1px #ddd">
+                      <td colspan="6" class="tabTitle tbBtm">收藏时间:<?php echo MyDate('Y-m-d H:i', $fields['addtime']); ?></td>
                     </tr>
                     {/dede:datalist}
                   </tbody>
                 </table>
               </div>
-              <nav>
-                {dede:pagelist listsize=5 /}
-              </nav>
+              <nav>{dede:pagelist listsize='6'/}</nav>
             </div>
           </div>
         </div>

@@ -27,13 +27,13 @@ function changeDopost(postval)
 }
 </script>
 </head>
-<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
+<body>
 <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center">
   <form action="makeremote_all.php" method="post" name="form2" target="stafrm" id="form2">
     <input type="hidden" name="dopost" value="make">
      <input type="hidden" name="maketype" value="">
     <tr>
-      <td height="26" colspan="5" background='../static/web/img/tbg.gif'>
+      <td height="26" colspan="5" background="../static/web/img/tbg.gif">
         <table width="98%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="30%" height="18">远程服务器同步向导：</td>
@@ -43,18 +43,18 @@ function changeDopost(postval)
       </td>
     </tr>
     <tr>
-      <td width="61" valign="top" bgcolor="#FFFFFF">
+      <td width="61" valign="top" bgcolor="#ffffff">
         <label><input type="checkbox" name="remoteiterm" id="remoteiterm"  onChange="javascript:checkAll()"></label>&nbsp;选择
       </td>
-      <td width="185" align="center" valign="top" bgcolor="#FFFFFF">项目（站点根目录）</td>
-      <td width="265" align="center" valign="top" bgcolor="#FFFFFF">项目说明</td>
-      <td width="195" align="center" valign="top" bgcolor="#FFFFFF">选择服务器</td>
-      <td width="196" align="center" valign="top" bgcolor="#FFFFFF">状态</td>
+      <td width="185" align="center" valign="top" bgcolor="#ffffff">项目（站点根目录）</td>
+      <td width="265" align="center" valign="top" bgcolor="#ffffff">项目说明</td>
+      <td width="195" align="center" valign="top" bgcolor="#ffffff">选择服务器</td>
+      <td width="196" align="center" valign="top" bgcolor="#ffffff">状态</td>
     </tr>
     <?php
     foreach($remotefile as $key => $value)
 	  {
-    $bgcolor = ($key % 2 == 0)? '#E6F3CD' : '#FFFFFF';
+    $bgcolor = ($key % 2 == 0)? '#E6F3CD' : '#ffffff';
     ?>
     <tr>
       <td width="60" align="center" valign="top" bgcolor="<?php echo $bgcolor; ?>"><input name="Iterm[<?php echo $key; ?>]" type="checkbox" id="Iterm" value="<?php echo $value['filedir'] ; ?>"></td>
@@ -70,8 +70,8 @@ function changeDopost(postval)
       <td height="30" colspan="5" bgcolor="#FAFAF1" align="left">功能说明：本功能主要用于本地服务器文件同远程服务器进行同步，这里我们有几个是系统文件夹（Html生成、文件上传、专题）是必须要同远程服务器同步的，当然也有可选文件夹，用户可以在系统根目录\data\config.file.inc.php文件中进行修改（修改方法已在文件中说明）</td>
     </tr>
     <tr>
-      <td height="30" colspan="5" bgcolor="#FAFAF1" align="center"><input type="submit" class='coolbg np' name="Submit2" value="更新选择">
-        &nbsp;&nbsp;&nbsp;&nbsp;
+      <td height="30" colspan="5" bgcolor="#FAFAF1" align="center">
+        <input type="submit" class='coolbg np' name="Submit2" value="更新选择">&nbsp;
         <input type="submit" class='coolbg np' name="Submit" value="同步更新所有" onClick="changeDopost('makeall')">
       </td>
     </tr>
@@ -79,20 +79,24 @@ function changeDopost(postval)
   <tr bgcolor="#E6F3CD">
     <td height="26" colspan="5"><table width="100%">
         <tr>
-          <td width="74%">进行状态：</td>
-          <td width="26%" align="right"><script language='javascript'>
-            	function ResizeDiv(obj,ty)
-            	{
-            		if(ty=="+") document.all[obj].style.pixelHeight += 50;
-            		else if(document.all[obj].style.pixelHeight>80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-            	}
-            	</script>
-            [<a href='javascript:;' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='javascript:;' onClick="ResizeDiv('mdv','-');">缩小</a>] </td>
+          <td width="70%">进行状态：</td>
+          <td width="30%" align="right">
+            <script language='javascript'>
+            function ResizeDiv(obj,ty) {
+            	if(ty=="+") document.all[obj].style.pixelHeight += 50;
+            	else if(document.all[obj].style.pixelHeight>80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+            }
+            </script>
+            <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+            <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
+          </td>
         </tr>
-      </table></td>
+      </table>
+    </td>
   </tr>
-  <tr bgcolor="#FFFFFF">
-    <td colspan="5" id="mtd"><div id='mdv' style='width:100%;height:350px;'>
+  <tr bgcolor="#ffffff">
+    <td colspan="5" id="mtd">
+      <div id="mdv" style="width:100%;height:300px"> 
         <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
       </div>
     </td>

@@ -65,11 +65,10 @@
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-	<table width="98%" border="0" cellpadding="3" align="center" cellspacing="1"
-		class="table table-bordered maintable mt-3">
+<body>
+	<table width="98%" border="0" cellpadding="3" align="center" cellspacing="1" class="table maintable mt-3">
 		<tr>
-			<td height="26" background='../static/web/img/tbg.gif' style="padding-left:10px">
+			<td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px">
 				<div style="float:left">评论管理</div>
 				<div style="float:right;padding-right:10px">
 					<form name='form1'>
@@ -86,36 +85,28 @@
 		</tr>
 		<form name='feedback'>
 			<tr>
-				<td bgcolor="#FFFFFF" valign="top">
+				<td bgcolor="#ffffff" valign="top">
 					<table width='100%' border='0' cellpadding='0' cellspacing='0' class="table table-borderless">
 						{dede:datalist empty='<tr height="26"><td><center>暂无内容</center></td></tr>'}
 						<tr height='26'>
 							<td>
 								<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#EEF7D2" class="table table-borderless">
 									<tr bgcolor="#F4FAE4">
-										<td width="9%">
-											&nbsp;选择 <input name="fid" type="checkbox" class="np" id="fid" value="{dede:field.id/}">
-										</td>
-										<td width="12%">
-											用户：{dede:field.username/}
-										</td>
+										<td width="9%">选择 <input name="fid" type="checkbox" class="np" id="fid" value="{dede:field.id/}"></td>
+										<td width="12%">用户：{dede:field.username/}</td>
 										<td width="20%">
 											文档：<a href='feedback_main.php?aid={dede:field.aid/}'>{dede:field.arctitle function="RemoveXSS(@me)"/}</a> (<a href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives" target="_blank">浏览</a>)
 											<?php if($fields['replycount'] > 0) { ?><a href='feedback_main.php?fid={dede:field.id/}'>（{dede:field.replycount/}条回复）</a>
 											<?php } ?>
 										</td>
-										<td width="18%" align="center">
-											IP地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a>
-										</td>
-										<td width="15%">
-											时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}
-										</td>
+										<td width="18%" align="center">IP地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
+										<td width="15%">时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}</td>
 										<td width="20%" align="center">
-											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
-											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新文档</a>
+											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'>编辑评论</a>
+											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新评论</a>
 										</td>
 									</tr>
-									<tr align="center" bgcolor="#FFFFFF">
+									<tr align="center" bgcolor="#ffffff">
 										<td height="26" colspan="6">
 											<table width="98%" border="0" cellspacing="0" cellpadding="0">
 												<tr>
@@ -132,9 +123,7 @@
 						</tr>
 						{/dede:datalist}
 						<tr>
-							<td height='26' align='center' bgcolor="#f8f8f8">
-								{dede:pagelist listsize='5' /}
-							</td>
+							<td height='26' align='center' bgcolor="#f8f8f8">{dede:pagelist listsize='6'/}</td>
 						</tr>
 						<tr>
 							<td height='30'>

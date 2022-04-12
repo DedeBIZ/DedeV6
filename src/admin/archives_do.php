@@ -311,7 +311,7 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
-        $win->AddTitle("您确实要删除 $qstr 和 $aid 这些文档");
+        $win->AddTitle("您确定要删除 $qstr 和 $aid 这些文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -355,7 +355,7 @@ else if ($dopost == 'moveArchives') {
             </td>
         </tr>
         <tr height='36'>
-            <td colspan='2' align='center' style='padding-top:10px'>
+            <td colspan='2' align='center' class='py-3'>
                 <button type='submit' class='btn btn-success'>保存</button>
                 <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
             </td>
@@ -480,7 +480,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("本次操作将清空回收站所有共 $num 篇文档<br>您确实要永久删除 $qstr 这些文档");
+        $win->AddTitle("本次操作将清空回收站所有共 $num 篇文档<br>您确定要永久删除 $qstr 这些文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -521,7 +521,7 @@ else if ($dopost == 'del') {
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确实要永久删除 $qstr 和 $aid 这些文档");
+        $win->AddTitle("您确定要永久删除 $qstr 和 $aid 这些文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -608,7 +608,7 @@ else if ($dopost == 'quickEdit') {
         <td class='bline'><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
     <tr height='36'>
-        <td colspan='2' align='center' class='py-3' style='padding-top:10px'>
+        <td colspan='2' align='center' class='py-3'>
             <button type='submit' class='btn btn-success'>保存</button>
             <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
         </td>
@@ -884,7 +884,7 @@ else if ($dopost == 'attsDlg') {
         <td class='bline'><input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'></td>
     </tr>
     <tr height='36'>
-        <td colspan='2' align='center' style='padding-top:10px'>
+        <td colspan='2' align='center' class='py-3'>
             <button type='submit' class='btn btn-success'>保存</button>
             <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
         </td>

@@ -35,7 +35,7 @@
       var endNum = parseInt(document.form1.picnum.value) + startNum - 1;
       if (endNum > 30) endNum = 30;
       for (startNum; startNum <= endNum; startNum++) {
-        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:300px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
+        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:260px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
       }
     }
     function ShowHideAddr() {
@@ -51,7 +51,7 @@ table{border-collapse:separate}
 .style1 {color:#555}
 </style>
 </head>
-<body topmargin="8">
+<body>
   <form name="form1" action="soft_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
     <input type="hidden" name="dopost" value="save">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
@@ -162,7 +162,7 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;软件来源：</td>
+              <td width="90">&nbsp;来源：</td>
               <td width="250">
                 <input name="source" type="text" id="source" style="width:160px">
                 <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -180,7 +180,7 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="600" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;软件主栏目：</td>
+              <td width="90">&nbsp;发布栏目：</td>
               <td>
                 <span id='typeidct'>
                 <?php
@@ -212,7 +212,7 @@ table{border-collapse:separate}
               <td width="90">&nbsp;副栏目：</td>
               <td>
                 <span id='typeid2ct'></span>
-                <input type='text' name='typeid2' id='typeid2' value='' style='width:200px;' />
+                <input type='text' name='typeid2' id='typeid2' value='' style='width:260px;' />
                 <img src='../static/web/img/menusearch2.gif' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2')" title='选择副栏目' style='cursor:pointer'>
               </td>
             </tr>
@@ -239,7 +239,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;内容摘要：</td>
+              <td width="90">&nbsp;描述：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
             </tr>
           </table>
@@ -306,7 +306,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;运行环境：</td>
-              <td><input type='text' name='os' value='Win2003,WinXP,Win2000,Win9X' style='width:300px'></td>
+              <td><input type='text' name='os' value='Win2003,WinXP,Win2000,Win9X' style='width:260px'></td>
             </tr>
           </table>
         </td>
@@ -397,7 +397,7 @@ table{border-collapse:separate}
           ?>
           <?php echo $sitename; ?>：
           <input type='hidden' name='forconfig<?php echo $startNum; ?>' value='1'>
-          <input type='text' name='softurlfirst<?php echo $startNum; ?>' style='width:300px' value='<?php echo $siteurl; ?>'> +
+          <input type='text' name='softurlfirst<?php echo $startNum; ?>' style='width:260px' value='<?php echo $siteurl; ?>'> +
           <input type='text' name='softurl<?php echo $startNum; ?>' style='width:160px' value=''> =
           <input type='text' name='servermsg<?php echo $startNum; ?>' style='width:160px' value='<?php echo $sitename; ?>'>
           <label><input type='checkbox' name='need<?php echo $startNum; ?>' class='np' value='1' checked> 启用</label>
@@ -431,9 +431,6 @@ table{border-collapse:separate}
             <div id="uploadfield" style="width:800px"></div>
           </div>
         </td>
-      </tr>
-      <tr>
-        <td height="26" bgcolor="#f8f8f8" class="bline2">&nbsp;软件详细介绍：</td>
       </tr>
       <tr>
         <td height="26" class="bline">
@@ -540,9 +537,9 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr height="36">
-        <td style="padding:.6rem">
+        <td align="center" style="padding:.6rem">
           <button type="submit" class="btn btn-success">保存</button>
           <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
         </td>

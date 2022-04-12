@@ -109,7 +109,7 @@ if (isset($dopost) && $dopost == 'getone') {
       <td width='16%'>近七天</td>
       <td width='16%'>当天</td>
     </tr>
-    <tr align='center' bgcolor='#FFFFFF'>
+    <tr align='center' bgcolor='#ffffff'>
       <td height='26'>{$userid}</td>
       <td>{$dd} | {$cc}</td>
       <td>{$dds} | {$ccs}</td>

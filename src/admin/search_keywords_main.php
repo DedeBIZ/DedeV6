@@ -60,15 +60,15 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $start = ($pageno - 1) * $pagesize;
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
-    <table width='98%' border='0' cellpadding='1' cellspacing='1' style='margin-bottom:10px' align='center' class='table maintable table-bordered'>
+    <table width='98%' border='0' cellpadding='1' cellspacing='1' style='margin-bottom:10px' align='center' class='table maintable'>
     <tr align='center' bgcolor='#FBFCE2' height='26'>
       <td width='5%'>选择</td>
-      <td width='6%' height='26'><a href='#' onclick=\"ReloadPage('aid')\">ID</a></td>
+      <td width='6%' height='26'><a href='javascript:;' onclick=\"ReloadPage('aid')\">ID</a></td>
       <td width='20%'>关键词</td>
       <td width='30%'>分词结果</td>
-      <td width='6%'><a href='#' onclick=\"ReloadPage('count')\">频率</a></td>
-      <td width='6%'><a href='#' onclick=\"ReloadPage('result')\">结果</a></td>
-      <td width='15%'><a href='#' onclick=\"ReloadPage('lasttime')\">最后搜索时间</a></td>
+      <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('count')\">频率</a></td>
+      <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('result')\">结果</a></td>
+      <td width='15%'><a href='javascript:;' onclick=\"ReloadPage('lasttime')\">最后搜索时间</a></td>
       <td>管理</td>
     </tr>\r\n
     ";
@@ -79,17 +79,17 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $line = "
-      <tr align='center' bgcolor='#FFFFFF' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#FFFFFF';\">
+      <tr align='center' bgcolor='#ffffff' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
       <td height='26'><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
       <td height='26'>{$row['aid']}</td>
-      <td style='padding:5px;'><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
-      <td style='padding:5px;'><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:95%;'></td>
-      <td style='padding:5px;'><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
+      <td style='padding:6px;'><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
+      <td style='padding:6px;'><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:95%;'></td>
+      <td style='padding:6px;'><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
       <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
       <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
       <td>
-        <a href='#' onclick='UpdateNote({$row['aid']})' class='btn btn-success btn-sm'>更新</a>
-        <a href='#' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'>删除</a>
+        <a href='javascript:;' onclick='UpdateNote({$row['aid']})' class='btn btn-success btn-sm'>更新</a>
+        <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'>删除</a>
       </td>
     </tr>
     ";

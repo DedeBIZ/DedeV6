@@ -100,7 +100,7 @@ class Array2form
             case 'text':
                 //生成文本编辑框
                 $valstr = (empty($formarry['value'])) ? "value=''" : "value='{$formarry['value']}'";
-                $reval_form = "<input type='text' name='{$key}' id='{$key}' style='width:300px' class='text'{$valstr}>";
+                $reval_form = "<input type='text' name='{$key}' id='{$key}' style='width:260px' class='text'{$valstr}>";
                 break;
             case 'select':
                 //生成选择框

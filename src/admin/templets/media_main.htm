@@ -55,14 +55,14 @@
     }
   </script>
 </head>
-<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
+<body>
   <div id="floater" class="napisdiv">
     <a href="javascript:;" onClick="ChangeImage('../static/web/img/picviewnone.gif');">
       <img src='../static/web/img/picviewnone.gif' id='picview' name='picview' border='0' alt='单击关闭预览' style='z-index:10000'>
     </a>
   </div>
   <SCRIPT src="js/float.js"></SCRIPT>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable table-bordered mt-3">
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
     <tr>
       <td height="26" colspan="7" background="../static/web/img/tbg.gif">
         <table width='96%' cellpadding='0' cellspacing='0' style="padding-left:10px" class="table-borderless">
@@ -119,7 +119,7 @@
     </tr>
     <form name='form1'>
       {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-      <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+      <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
         <td>
           <input type='checkbox' name='aids' id='aids{dede:field.aid/}' value='{dede:field.aid/}' class='np' />
         </td>
@@ -133,22 +133,20 @@
         <td>{dede:field.uptime function="MyDate('Y-m-d H:i',@me)"/}</td>
         <td>{dede:field.mediatype function="MediaType(@me,$fields['url'])"/}</td>
         <td>
-          <a href='media_edit.php?aid={dede:field.aid/}&dopost=edit' class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</a>
-          <a href='media_edit.php?aid={dede:field.aid/}&dopost=del' class="btn btn-success btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> 删除</a>
+          <a href='media_edit.php?aid={dede:field.aid/}&dopost=edit' class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+          <a href='media_edit.php?aid={dede:field.aid/}&dopost=del' class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
         </td>
       </tr>
       {/dede:datalist}
       <tr bgcolor="#ffffff" height="26">
         <td colspan="7">
-          &nbsp; <button type="button" name="b4" class="btn btn-success btn-sm" onClick="AllSel();">全选</button>
-          &nbsp; <button type="button" name="b5" class="btn btn-success btn-sm" onClick="NoneSel();">取消</button>
-          &nbsp; <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除所选</button>
+          <button type="button" name="b4" class="btn btn-success btn-sm" onClick="AllSel();">全选</button>
+          <button type="button" name="b5" class="btn btn-success btn-sm" onClick="NoneSel();">取消</button>
+          <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除所选</button>
         </td>
       </tr>
       <tr bgcolor="#f8f8f8" height="36">
-        <td colspan="7" align="center">
-          {dede:pagelist listsize=5/}
-        </td>
+        <td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
       </tr>
     </form>
   </table>

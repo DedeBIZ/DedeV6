@@ -7,14 +7,10 @@
 <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body background="../static/web/img/allbg.gif" leftmargin="8" topmargin="8">
-	<div class="bodytitle mt-3 mb-3">
-		<div class="bodytitleleft"></div>
-		<div class="bodytitletxt"><?php echo $diy->name; ?>列表</div>
-	</div>
+<body>
 	<form action="diy_list.php" method="post">
 		<input type="hidden" name="diyid" value="<?php echo $diyid; ?>">
-		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable">
+		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
 			<tr>
 				<td colspan="3" height="26" background="../static/web/img/tbg.gif">
 					<div style="float:left"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name; ?></div>

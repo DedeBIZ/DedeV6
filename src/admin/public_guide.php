@@ -38,7 +38,7 @@ if ($action == 'setdefault') {
         您目前想要进行的操作：<a href='public_guide.php'>转到默认发布表单</a> &nbsp; <a href='public_guide.php?action=edit'>返回发布向导页</a>
       ";
     }
-    $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow("hand");
     $win->Display();
     exit();

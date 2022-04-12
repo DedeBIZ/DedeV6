@@ -15,12 +15,11 @@ function editTitle(aid) {
 }
 function $Dede(id) { return document.getElementById(id) }
 function AlertMsg(title, id) {
-	var msgw, msgh, msgbg, msgcolor, bordercolor, titlecolor, titlebg, content;
+	var msgw, msgh, msgbg, msgcolor, titlecolor, titlebg, content;
 	//弹出窗口设置
 	msgw = 600;//窗口宽度 
 	msgbg = "#FFF";//内容背景
 	msgcolor = "#000";//内容颜色
-	bordercolor = "#5A6D58";//边框颜色 
 	titlecolor = "#254015";//标题颜色
 	titlebg = "#369 url(../../static/web/img/tbg.gif)";//标题背景
 	//遮罩背景设置  	
@@ -55,7 +54,6 @@ function AlertMsg(title, id) {
 	msgObj.style.height = msgh + "px";
 	msgObj.style.fontSize = "14px";
 	msgObj.style.background = msgbg;
-	msgObj.style.border = "1px solid " + bordercolor;
 	msgObj.style.zIndex = "10001";
 	//创建标题
 	var thObj = document.createElement("div");

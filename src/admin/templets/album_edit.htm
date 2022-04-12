@@ -54,7 +54,7 @@ table{border-collapse:separate}
 .albEdit {height:auto}
 </style>
 </head>
-<body topmargin="8">
+<body>
 <form name="form1" action="album_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmitAlb();">
   <input type="hidden" name="channelid" value="<?php echo $channelid?>">
   <input type="hidden" name="id" value="<?php echo $aid?>">
@@ -167,7 +167,7 @@ table{border-collapse:separate}
     <tr>
       <td height="26" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;图集来源：</td>
+            <td width="90">&nbsp;来源：</td>
             <td width="250">
               <input name="source" type="text" id="source" value="<?php echo $arcRow['source']?>" style="width:160px">
               <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -185,7 +185,7 @@ table{border-collapse:separate}
       <td height="26" colspan="4" class="bline">
         <table width="570" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;图集主栏目：</td>
+            <td width="90">&nbsp;发布栏目：</td>
             <td>
               <?php
            	  $typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
@@ -233,7 +233,7 @@ table{border-collapse:separate}
       <td height="26" class="bline">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;内容摘要：</td>
+            <td width="90">&nbsp;描述：</td>
             <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $arcRow['description']?></textarea></td>
           </tr>
         </table>
@@ -352,9 +352,6 @@ table{border-collapse:separate}
   <!--高级参数-->
   <table width="98%"  border="0" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;background:#ffffff;display:none">
     <tr>
-      <td height="26" bgcolor="#f8f8f8" class="bline2">&nbsp;图集选项：</td>
-    </tr>
-    <tr>
       <td height="26" colspan="4" class="bline">
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -393,8 +390,7 @@ table{border-collapse:separate}
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;每页图片数：</td>
-            <td><input name='pagepicnum' id='pagpicnum' size='10' value='<?php echo $pagepicnum; ?>' />
-              单页多图显示需要设置此参数，这种模式下系统不会为每张图单独生成缩略图 </td>
+            <td><input name='pagepicnum' id='pagpicnum' size='10' value='<?php echo $pagepicnum; ?>' /> 单页多图显示需要设置此参数，这种模式下系统不会为每张图单独生成缩略图</td>
           </tr>
         </table>
       </td>
@@ -427,7 +423,7 @@ table{border-collapse:separate}
       <td height="26" colspan="4" class="bline"><table width="800" border="0" cellspacing="0" cellpadding="0" height="100">
           <tr>
             <td width="90">&nbsp;压缩包文件：</td>
-            <td><input type='text' name='zipfile' id='zipfile' style='width:300px'>
+            <td><input type='text' name='zipfile' id='zipfile' style='width:260px'>
               <button name='addon_bt' type='button' class='btn btn-success btn-sm' onClick="SelectSoft('form1.zipfile')">浏览</button>
               <label><input name="delzip" type="checkbox" id="delzip" value="1" checked="checked">
               处理后删除压缩文件</label>
@@ -452,10 +448,8 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" bgcolor="#f8f8f8" class="bline2">&nbsp;原有图片：</td>
-    </tr>
-    <tr>
-      <td height="26" colspan="4" class="bline"><table width='100%'>
+      <td height="26" colspan="4" class="bline">
+        <table width='100%'>
           <tr>
             <td>
               <div id="thumbnailsEdit">
@@ -500,10 +494,11 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td height="26" colspan="4" class="bline" style="background:#f8f8f8;"><table width="800" border="0" cellspacing="0" cellpadding="0">
+      <td height="26" colspan="4" class="bline" style="background:#f8f8f8">
+        <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;增加新图片：</td>
-            <td><span class="btn btn-success btn-sm fileinput-button"><i class="glyphicon glyphicon-plus"></i>选择本地图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
+            <td><span class="btn btn-success btn-sm fileinput-button"><i class="glyphicon glyphicon-plus"></i> 选择本地图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
           </tr>
         </table>
       </td>
@@ -521,9 +516,9 @@ table{border-collapse:separate}
       </td>
     </tr>
   </table>
-  <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
+  <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
     <tr height="36">
-      <td style="padding:.6rem">
+      <td align="center" style="padding:.6rem">
         <button type="submit" class="btn btn-success">保存</button>
         <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
       </td>

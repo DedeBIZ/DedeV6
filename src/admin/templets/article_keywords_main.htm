@@ -2,16 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>关键词管理</title>
+  <title>文档关键词维护</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <style>
     .nnpp {
-      border-bottom: 1px solid #666666;
-      border-top: 1px solid #FFFFFF;
-      border-left: 1px solid #FFFFFF;
-      border-right: 1px solid #FFFFFF;
+      border-bottom: 1px solid #424b51;
+      border-top: 1px solid #ffffff;
+      border-left: 1px solid #ffffff;
+      border-right: 1px solid #ffffff;
       filter: alpha(opacity=50);
     }
   </style>
@@ -25,14 +25,14 @@
     }
   </script>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
+<body>
   <div class="main">
-    <table width="98%" border="0" cellpadding="1" align='center' cellspacing="1" class="table maintable table-bordered mt-3">
+    <table width="98%" border="0" cellpadding="1" align='center' cellspacing="1" class="table maintable mt-3">
       <tr>
         <td height="26" colspan="6" background="../static/web/img/tbg.gif">
           <table width="96%" border="0" class="table table-borderless">
             <tr>
-              <td width="25%" style="padding-left:10px">关键词维护</td>
+              <td width="25%" style="padding-left:10px">文档关键词维护</td>
               <form name='form1' action="article_keywords_main.php">
                 <td width="75%" align="right">
                   搜索：<input type='text' name='keyword' size='20' />&nbsp;
@@ -52,11 +52,11 @@
             <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
                 <td width="90">新增关键词：</td>
-                <td><input name="keyword" type="text" id="keyword" style="width:260px"></td>
-                <td width="90">链接网址：</td>
-                <td><input name="rpurl" type="text" id="rpurl" style="width:260px"></td>
+                <td width="270"><input name="keyword" type="text" id="keyword" style="width:260px"></td>
+                <td width="60">链接：</td>
+                <td width="270"><input name="rpurl" type="text" id="rpurl" style="width:260px"></td>
                 <td width="60">频率：</td>
-                <td><input name="rank" type="text" id="rank" value="30" style="width:60px"></td>
+                <td width="70"><input name="rank" type="text" id="rank" value="30" style="width:60px"></td>
                 <td><button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button></td>
               </tr>
             </table>
@@ -73,7 +73,7 @@
       <form name='form3' action="article_keywords_main.php" method="post">
         <input type='hidden' name='dopost' value='saveall' />
         {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
-        <tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <tr align="center" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
           <td height="26">
             <input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1' />
           </td>
@@ -81,7 +81,7 @@
             <input type='hidden' value='{dede:field.keyword/}' name='keyword_{dede:field.aid/}' />
             {dede:field.keyword/}
           </td>
-          <td style="padding:5px 0;">
+          <td style="padding:6px 0;">
             <input type='hidden' value='{dede:field.rpurl/}' name='rpurlold_{dede:field.aid/}' />
             <input type='text' style='width:90%' class='nnpp' value='{dede:field.rpurl/}'
               name='rpurl_{dede:field.aid/}' />
@@ -101,17 +101,13 @@
         {/dede:datalist}
         <tr bgcolor="#ffffff">
           <td height="26" colspan="6">
-            &nbsp;
             <button type="button" name="dl1" class="btn btn-success btn-sm" onClick="selAll()">反选</button>
-            &nbsp;
             <button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存修改</button>
           </td>
         </tr>
       </form>
       <tr align="center" bgcolor="#f8f8f8">
-        <td height="26" colspan="6">
-          {dede:pagelist listsize=3/}
-        </td>
+        <td height="26" colspan="6">{dede:pagelist listsize='6'/}</td>
       </tr>
     </table>
   </div>

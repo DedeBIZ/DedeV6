@@ -4,7 +4,7 @@ $arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
 $sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); return false;\" ";
 if($arr['issystem']==0) $sbjs = '';
 ?>
-<!-- 编辑表单 -->
+<!--编辑表单-->
 <div style='float:left'>修改类别</div>
 <div style='float:right'><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
 <br style='clear:both'>
@@ -19,7 +19,7 @@ if($arr['issystem']==0) $sbjs = '';
 <?php
 } else if($action=='addnew') {
 ?>
-<!-- 新增类别表单 -->
+<!--新增类别表单-->
 <div style='float:left'>新增类别</div>
 <div style='float:right'><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
 <br style='clear:both'>
@@ -40,7 +40,7 @@ if($arr['issign']==0)
   while($row1 = $dsql->GetArray('out')) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>\r\n";
 }
 ?>
-<!-- 新增枚举表单 -->
+<!--新增枚举表单-->
 <div style='float:left'>添加枚举</div>
 <div style='float:right'><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
 <br style='clear:both'>
@@ -74,7 +74,7 @@ if($arr['issign']==0)
   	}
   }
 ?>
-<!-- 预览联动表单 -->
+<!--预览联动表单-->
 <div style='float:left'>预览联动表单</div>
 <div style='float:right'><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
 <br style='clear:both'>

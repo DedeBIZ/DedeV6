@@ -90,9 +90,7 @@ function CheckOpenMenu()
 		if(ckstr.indexOf(curitem) > 0 && curobj != null)
 		{
 			curobj.style.display = 'block';
-		}
-		else
-		{
+		} else {
 			if(curobj != null) curobj.style.display = 'none';
 		}
 	}

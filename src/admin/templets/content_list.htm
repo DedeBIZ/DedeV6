@@ -14,8 +14,8 @@
 <script src="js/main.js"></script>
 <script src="js/list.js"></script>
 </head>
-<body leftmargin="8" topmargin="8" background="../static/web/img/allbg.gif" onLoad="ContextMenu.intializeContextMenu()">
-	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable table-bordered mt-3">
+<body onLoad="ContextMenu.intializeContextMenu()">
+	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3">
 		<tr>
 			<td>
 				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
@@ -71,7 +71,7 @@
 		</table>
 	</form>
 	<form name="form2">
-		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table table-bordered maintable" style="margin-top:10px">
+		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable" style="margin-top:10px">
 			<tr>
 				<td height="30" colspan="10" style="margin-left:10px;background:#f8f8f8">{dede:global.positionname/}文档列表（使用鼠标右键进行常用操作）</td>
 			</tr>
@@ -99,9 +99,9 @@
 				<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
 				<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 				<td>
-					<a href="javascript:;" title="属性" class="btn btn-success btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-cogs" aria-hidden="true"></i></a>
-					<a href="javascript:;" title="编辑" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-					<a href="javascript:;" title="预览" class="btn btn-success btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-globe" aria-hidden="true"></i></a>
+					<a href="javascript:;" title="属性" class="btn btn-success btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-cogs"></i></a>
+					<a href="javascript:;" title="编辑" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i></a>
+					<a href="javascript:;" title="预览" class="btn btn-success btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-globe"></i></a>
 				</td>
 			</tr>
 			{/dede:datalist}

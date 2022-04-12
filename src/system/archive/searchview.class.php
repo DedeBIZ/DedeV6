@@ -653,10 +653,10 @@ class SearchView
         }
         $totalpage = ceil($this->TotalResult / $this->PageSize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<ul class='pagination justify-content-center pt-3'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."篇</span></li></ul>";
+            return "<ul class='pagination justify-content-center pt-3'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li></ul>";
         }
         if ($this->TotalResult == 0) {
-            return "<ul class='pagination justify-content-center pt-3'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."篇</span></li></ul>";
+            return "<ul class='pagination justify-content-center pt-3'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li></ul>";
         }
         $purl = $this->GetCurUrl();
         $oldkeyword = (empty($oldkeyword) ? $this->Keyword : $oldkeyword);
@@ -664,7 +664,7 @@ class SearchView
         if ($this->TotalResult > $this->SearchMaxRc) {
             $totalpage = ceil($this->SearchMaxRc / $this->PageSize);
         }
-        $infos = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."篇</span></li>\r\n";
+        $infos = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
         $hidenform = "<input type='hidden' name='keyword' value='".rawurldecode($oldkeyword)."'>\r\n";
         $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;

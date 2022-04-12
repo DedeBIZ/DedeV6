@@ -22,41 +22,36 @@ function GetFields()
 	var vinnertext = theform.vinnertext.value;
 	var spage = (theform.spage[0].checked ? theform.spage[0].value : theform.spage[1].value);
 	var sisnull = (isnull==0 ? "false" : "true");
-	
 	if(itemname=="")
 	{
 		ShowMsg("表单提示名称不能为空");
 		theform.itemname.focus();
 		return false;
 	}
-	
 	if((dtype=="radio"||dtype=="select"||dtype=="checkbox") && vdefault=="")
 	{
 		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）");
 		return false;
 	}
-	
 	if(spage=="no") spage = "";
-	
 	revalue =  "<field:"+fieldname+" itemname=\""+itemname+"\" autofield=\"1\" type=\""+dtype+"\"";
 	revalue += " isnull=\""+sisnull+"\" default=\""+vdefault+"\" ";
 	revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">\r\n"+vinnertext+"</field:"+fieldname+">\r\n";
 	document.form1.fieldstring.value = revalue;
-
   return true;
   
 }
 </script>
 <style>
-td{ padding:2px; padding-left:6px; }
+td{ padding:6px; padding-left:6px; }
 .STYLE1 {color: #FF3300}
-.STYLE2 {color: #666666}
+.STYLE2 {color: #424b51}
 .nw { float:left; width:150px; }
 .cls { clear:both; }
 </style>
 </head>
-<body topmargin=8 background='../static/web/img/allbg.gif'>
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+<body>
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
   <form name="form1" action="diy_field_edit.php" method="post" onSubmit="return GetFields();">
   	<input type='hidden' name='action' value='save'>
   	<input type='hidden' name='diyid' value='<?php echo $diyid?>'>
@@ -64,42 +59,40 @@ td{ padding:2px; padding-left:6px; }
 	  <input type='hidden' name='issystem' value='<?php echo $issystem?>'>
 	  <input type='hidden' name='fieldstring' value=''>
     <tr> 
-      <td height="26" colspan="2" bgcolor="#EDF9D5" background="../static/web/img/tbg.gif">
+      <td height="26" colspan="2" background="../static/web/img/tbg.gif">
         <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
-            <td width="30%" style="padding-left:10px"><a href="diy_main.php">自定义表单管理</a> &gt; 修改字段：            </td>
-            <td align="right" style="padding-top:6px;">
+            <td width="30%" style="padding-left:10px"><a href="diy_main.php">自定义表单管理</a> &gt; 修改字段</td>
+            <td align="right">
 			        <button type="button" name="ss1" onClick="location='diy_edit.php?diyid=<?php echo $diyid; ?>&dopost=edit';" class="btn btn-success btn-sm">当前表单信息</button>
             </td>
           </tr>
-        </table> </td>
+        </table>
+      </td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">表单提示文字：<br>
-        <span class="STYLE2">发布内容时显示的提示文字</span></td>
-      <td bgcolor="#FFFFFF">
-      	<input name="itemname" type="text" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>" class="pubinputs">
-        *（发布内容时显示的项名字）      </td>
+      <td bgcolor="#ffffff">表单提示文字：<br>
+        <span class="STYLE2">发布内容时显示的提示文字</span>
+      </td>
+      <td bgcolor="#ffffff"><input name="itemname" type="text" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>" class="pubinputs"> *（发布内容时显示的项名字）</td>
     </tr>
     <tr> 
-      <td width="28%" bgcolor="#FFFFFF">字段名称：<br>
-        <span class="STYLE2">只能用英文字母或数字，数据表的真实字段名</span></td>
-      <td width="72%" bgcolor="#FFFFFF" style="table-layout:fixed;word-break:break-all"> 
-        <?php echo $fname?>     </td>
+      <td width="28%" bgcolor="#ffffff">字段名称：<br>
+        <span class="STYLE2">只能用英文字母或数字，数据表的真实字段名</span>
+      </td>
+      <td width="72%" bgcolor="#ffffff" style="table-layout:fixed;word-break:break-all"><?php echo $fname?></td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">数据类型：</td>
-      <td bgcolor="#FFFFFF">
-      	<select name="dtype" id="type" style="width:200px">
+      <td bgcolor="#ffffff">数据类型：</td>
+      <td bgcolor="#ffffff">
+      	<select name="dtype" id="type" style="width:260px">
           <?php 
           $dtype = $ctag->GetAtt('type');
           if($dtype!='' && isset($fieldtypes[$dtype]))
           {
           	echo "<option value='{$dtype}'>{$fieldtypes[$dtype]}</option>\r\n";
           	$canchange = true;
-          }
-          else
-          {
+          } else {
           	echo "<option value='{$dtype}'>系统专用类型</option>\r\n";
           	$canchange = false;
           }
@@ -122,18 +115,12 @@ td{ padding:2px; padding-left:6px; }
            }
           ?>
         </select>
-        <!--
-        //取消的类型
-        option value="textdata">文本保存HTML数据</option>
-        <option value="imgfile">图片(仅网址)</option>
-        <option value="media">多媒体文件</option>
-        <option value="stepselect">联动类型</option-->
-        </td>
+      </td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">内容是否需要分页符：<br>
+      <td bgcolor="#ffffff">内容是否需要分页符：<br>
         <span class="STYLE2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">
       	<input name="isnull" type="hidden" value="1">
         <label><input name="spage" type="radio"  value="split"<?php if($ctag->GetAtt('page')=='split') echo " checked='1' "; ?> class='np' />
         是 &nbsp; </label>
@@ -141,38 +128,35 @@ td{ padding:2px; padding-left:6px; }
         否</label></td>
       </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">默认值：<br>
+      <td bgcolor="#ffffff">默认值：<br>
         <span class="STYLE2"> 如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目(用“,”分开，如“男,女,人妖”)，如果为联动选框，这里填写联动选框项目名称</span></td>
-      <td bgcolor="#FFFFFF"><textarea name="vdefault" type="text" id="vdefault" style="width:70%;height:60px"><?php echo $ctag->GetAtt('default'); ?></textarea></td>
+      <td bgcolor="#ffffff"><textarea name="vdefault" type="text" id="vdefault" style="width:70%;height:60px"><?php echo $ctag->GetAtt('default'); ?></textarea></td>
     </tr>
     <tr> 
-      <td bgcolor="#FFFFFF">最大长度：<br>
+      <td bgcolor="#ffffff">最大长度：<br>
         <span class="STYLE2"> 文本数据必须填写，大于255为text类型 </span></td>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff">
       	<input name="maxlength" type="text" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" style="width:80px;padding-top:3px;"></td>
     </tr>
     <tr>
-      <td bgcolor="#FFFFFF" style="padding-left:10px">自定义表单HTML：</td>
-      <td bgcolor="#FFFFFF">
+      <td bgcolor="#ffffff" style="padding-left:10px">自定义表单HTML：</td>
+      <td bgcolor="#ffffff">
       	自定义表单HTML用~name~表示提示文字，~form~表示表单元素<br>      </td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF"><br>      </td>
-      <td bgcolor="#FFFFFF"><textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%; height:120px;"><?php echo $ctag->GetInnerText(); ?></textarea></td>
+      <td align="center" bgcolor="#ffffff"><br>      </td>
+      <td bgcolor="#ffffff"><textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%;height:120px"><?php echo $ctag->GetInnerText(); ?></textarea></td>
     </tr>
     <tr>
       <td height="26" colspan="2" bgcolor="#f8f8f8">
         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless mb-3">
           <tr>
-            <td width="26%" height="36"></td>
-            <td width="10%" class="py-3">
-              <button type="submit" class="btn btn-success">确定</button>
-            </td>
-            <td class="py-3">
-              <button type="reset" class="btn btn-success">重置</button>
-            </td>
+            <td width="30%" height="36"></td>
+            <td width="10%" class="py-3"><button type="submit" class="btn btn-success">确定</button></td>
+            <td class="py-3"><button type="reset" class="btn btn-success">重置</button></td>
           </tr>
-      </table></td>
+        </table>
+      </td>
     </tr>
   </form>
 </table>

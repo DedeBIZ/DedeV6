@@ -22,7 +22,7 @@ $action = isset($action) ? $action : '';
 	<link rel="stylesheet" href="css/indexbody.css" />
 	<script type="text/javascript" src="../static/web/js/jquery.min.js"></script>
 </head>
-<body leftmargin="8" topmargin='8' bgcolor="#FFFFFF" style="min-width:840px">
+<body>
 	<?php
 	if (!function_exists('TestWriteable')) {
 		//检测是否可写
@@ -345,7 +345,7 @@ $action = isset($action) ? $action : '';
 			if (item == '') {
 				return false;
 			}
-			var tempvar = '<tr>\r				        <td width="40%" height="26" bgcolor="#FFFFFF">' + item[0] + '</td>\r		            <td width="20%" height="26" align="center" bgcolor="#FEF7C5">' + item[1] + '</td>\r				        <td width="20%" height="26" align="center" bgcolor="#FFFFFF">\r						' + item[2] + '</td>\r				        <td width="20%" height="26" align="center" bgcolor="#FFFFFF">\r						' + item[3] + '</td>\r			      </tr>  ';
+			var tempvar = '<tr>\r				        <td width="40%" height="26" bgcolor="#ffffff">' + item[0] + '</td>\r		            <td width="20%" height="26" align="center" bgcolor="#FEF7C5">' + item[1] + '</td>\r				        <td width="20%" height="26" align="center" bgcolor="#ffffff">\r						' + item[2] + '</td>\r				        <td width="20%" height="26" align="center" bgcolor="#ffffff">\r						' + item[3] + '</td>\r			      </tr>  ';
 
 			//chiledelem.innerHTML = tempvar;
 			//document.getElementById("mainList").appendChild(chiledelem);

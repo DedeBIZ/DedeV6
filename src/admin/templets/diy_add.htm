@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>新增频道</title>
+  <title>新增自定义表单</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -21,7 +21,7 @@
   </script>
   <style>
     .STYLE1 {
-      color: #FF0000
+      color: #dc3545
     }
 
     td {
@@ -31,67 +31,67 @@
     }
 
     .STYLE2 {
-      color: #666666;
+      color: #424b51;
       display: none;
     }
   </style>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+<body>
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="diy_add.php?action=add" method="post" onSubmit="return checkSubmit();">
       <tr>
-        <td height="26" colspan="2" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif'>
+        <td height="26" colspan="2" background="../static/web/img/tbg.gif">
           <a href="diy_main.php">自定义表单管理</a> &gt; 新增自定义表单
         </td>
       </tr>
       <tr>
-        <td width="160" height="26" align="left" bgcolor="#FFFFFF">
+        <td width="160" height="26" align="left" bgcolor="#ffffff">
           diyid：<br>
           <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性推荐使用默认值</span>
         </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <input name="diyid" type="text" id="diyid" size="10" value="<?php echo $newdiyid?>" class='pubinputs'
             style='width:60px' />
           * <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')">
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">
+        <td height="26" align="left" bgcolor="#ffffff">
           自定义表单名称：<br>
           <span class="STYLE2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span>
         </td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <input name="name" type="text" id="name" style="width:180px" value="自定义表单<?php echo $newdiyid; ?>" class='pubinputs' />
           *<img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help3')">
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">数据表：<br>
+        <td height="26" align="left" bgcolor="#ffffff">数据表：<br>
           <span class="STYLE2" id="help5">必须由英文、数字、下划线组成，用于保存自定义表单数据，不能和已有表名重复，创建后不可修改表名</span></td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <input name="table" type="text" id="table" style="width:180px" value="<?php echo $cfg_dbprefix; ?>diyform<?php echo $newdiyid; ?>" class='pubinputs' />
           *<img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')">
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">字段配置：</td>
-        <td bgcolor="#FFFFFF"><span class="STYLE1">建立自定义表单后在“修改”自定义表单的地方添加字段即可</span></td>
+        <td height="26" align="left" bgcolor="#ffffff">字段配置：</td>
+        <td bgcolor="#ffffff"><span class="STYLE1">建立自定义表单后在“修改”自定义表单的地方添加字段即可</span></td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">列表模板：</td>
-        <td bgcolor="#FFFFFF"><input name="listtemplate" type="text" id="listtemplate" style="width:180px" value="list_diyform<?php echo $newdiyid; ?>.htm" class='pubinputs' /></td>
+        <td height="26" align="left" bgcolor="#ffffff">列表模板：</td>
+        <td bgcolor="#ffffff"><input name="listtemplate" type="text" id="listtemplate" style="width:180px" value="list_diyform<?php echo $newdiyid; ?>.htm" class='pubinputs' /></td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">内容模板：</td>
-        <td bgcolor="#FFFFFF"><input name="viewtemplate" type="text" id="viewtemplate" style="width:180px" value="view_diyform<?php echo $newdiyid; ?>.htm" class='pubinputs' /></td>
+        <td height="26" align="left" bgcolor="#ffffff">内容模板：</td>
+        <td bgcolor="#ffffff"><input name="viewtemplate" type="text" id="viewtemplate" style="width:180px" value="view_diyform<?php echo $newdiyid; ?>.htm" class='pubinputs' /></td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">发布模板：</td>
-        <td bgcolor="#FFFFFF"><input name="posttemplate" type="text" id="posttemplate" style="width:180px" value="post_diyform<?php echo $newdiyid; ?>.htm" class='pubinputs' /></td>
+        <td height="26" align="left" bgcolor="#ffffff">发布模板：</td>
+        <td bgcolor="#ffffff"><input name="posttemplate" type="text" id="posttemplate" style="width:180px" value="post_diyform<?php echo $newdiyid; ?>.htm" class='pubinputs' /></td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">前台列表和内容页公开：</td>
-        <td bgcolor="#FFFFFF">
+        <td height="26" align="left" bgcolor="#ffffff">前台列表和内容页公开：</td>
+        <td bgcolor="#ffffff">
           <label><input name="public" type="radio" value="2" class='np' /> 完全公开</label>
           <label><input name="public" type="radio" value="1" class='np' checked='1' /> 公开审核过的</label>
           <label><input name="public" type="radio" value="0" class='np' /> 不公开</label>
@@ -101,7 +101,7 @@
         <td height="26" colspan="2">
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
             <tr>
-              <td width="26%" height="36"></td>
+              <td width="30%" height="36"></td>
               <td width="15%">
                 <button type="submit" name="button" id="button" class='btn btn-success'>确定</button>
               </td>

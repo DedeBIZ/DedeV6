@@ -127,7 +127,7 @@ else if ($dopost == 'save') {
     }
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文档</a>&nbsp;&nbsp;<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a>&nbsp;&nbsp;<a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>已发布文档管理</a>&nbsp;&nbsp;<a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>";
+    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='content_sg_list.php?cid=$typeid&channelid={$channelid}&dopost=listArchives' class='btn btn-success btn-sm'>已发布文档管理</a><a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>";
     $wintitle = "成功发布文档";
     $wecome_info = "文档管理::发布文档";
     $win = new OxWindow();

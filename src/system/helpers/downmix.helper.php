@@ -21,7 +21,7 @@ if (!function_exists('RndString')) {
         //最大间隔距离(如果在检测不到p标记的情况下，加入混淆字串的最大间隔距离)
         $maxpos = 1024;
         //font 的字体颜色
-        $fontColor = "#FFFFFF";
+        $fontColor = "#ffffff";
         //div span p 标记的随机样式
         $st1 = chr(mt_rand(ord('A'), ord('Z'))).chr(mt_rand(ord('a'), ord('z'))).chr(mt_rand(ord('a'), ord('z'))).mt_rand(100, 999);
         $st2 = chr(mt_rand(ord('A'), ord('Z'))).chr(mt_rand(ord('a'), ord('z'))).chr(mt_rand(ord('a'), ord('z'))).mt_rand(100, 999);

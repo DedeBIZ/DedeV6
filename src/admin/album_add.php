@@ -287,7 +287,7 @@ else if ($dopost == 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a>&nbsp;&nbsp;<a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图集</a>&nbsp;&nbsp;<a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>预览文档</a>&nbsp;&nbsp;<a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布图片管理</a>&nbsp;&nbsp;$backurl";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图片</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改图集</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>预览文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布图片管理</a>$backurl";
     $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>".GetUpdateTest();
 
     $wintitle = "成功发布一个图集";

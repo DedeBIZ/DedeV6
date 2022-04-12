@@ -56,7 +56,7 @@
 		function DelNode(selid) {
 			if (selid == 0) selid = getCheckboxItem();
 			if (selid != '') {
-				if (window.confirm("您确实要删除这些条目吗")) location = "article_coonepage_rule.php?ids=" + selid + "&action=del";
+				if (window.confirm("您确定要删除这些条目吗")) location = "article_coonepage_rule.php?ids=" + selid + "&action=del";
 			} else {
 				ShowMsg("您没选择任何条目");
 			}
@@ -88,9 +88,8 @@
 		}
 	</style>
 </head>
-<body leftmargin="8" topmargin="8" background='../static/web/img/allbg.gif'>
-	<table width="100%" border="0" cellpadding="2" align="center" cellspacing="1"
-		class="table maintable table-bordered mt-3">
+<body>
+	<table width="100%" border="0" cellpadding="2" align="center" cellspacing="1" class="table maintable mt-3">
 		<tr bgcolor="#F3FAD3">
 			<td height="26" colspan="6">
 				<div style="float:left;padding-left:6px">单页采集规则管理：</div>
@@ -109,8 +108,8 @@
 				<td width="12%">操作</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
-			<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-				onMouseOut="javascript:this.bgColor='#FFFFFF';" height="26">
+			<tr align='center' bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+				onMouseOut="javascript:this.bgColor='#ffffff';" height="26">
 				<td><?php echo $fields['id']?></td>
 				<td><input name="ids" type="checkbox" id="ids" value="<?php echo $fields['id']?>" class="np"></td>
 				<td align='left'>
@@ -126,20 +125,17 @@
 			{/dede:datalist}
 			<tr bgcolor="#FAFAF1">
 				<td height="26" colspan="6">
-					&nbsp;
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-					<a href="javascript:DelNode(0)" class="btn btn-success btn-sm">&nbsp;删除&nbsp;</a>
+					<a href="javascript:DelNode(0)" class="btn btn-success btn-sm">删除</a>
 				</td>
 			</tr>
 		</form>
 		<tr align="right" bgcolor="#F3FAD3">
-			<td height="26" colspan="6" align="center">
-				{dede:pagelist listsize=5/}
-			</td>
+			<td height="26" colspan="6" align="center">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
-	<!--  下面是隐藏的栏目增加／修改表单  -->
+	<!--下面是隐藏的栏目增加修改表单-->
 	<div id="editNode">
 		<span id='editNodeBody'>请稍候，正在载入</span>
 	</div>
@@ -150,7 +146,7 @@
 			<table width="430" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="102" height="30">网站名称：</td>
-					<td width="302"><input name="title" type="text" id="title" style="width:200px"></td>
+					<td width="302"><input name="title" type="text" id="title" style="width:260px"></td>
 					<td width="26" align="center"><a href="javascript:CloseAddNode()" class="mr-3"><img src="../static/web/img/close.gif"></a></td>
 				</tr>
 				<tr>
@@ -173,7 +169,7 @@
 				</tr>
 				<tr>
 					<td height="30">网站网址：</td>
-					<td colspan="2"><input name="url" type="text" id="url" style="width:200px"></td>
+					<td colspan="2"><input name="url" type="text" id="url" style="width:260px"></td>
 				</tr>
 				<tr>
 					<td height="30"></td>
@@ -190,13 +186,12 @@
 				</tr>
 				<tr>
 					<td height="30"></td>
-					<td colspan="2"><button class="btn btn-success btn-sm" type="submit" name="Submit"
-							value="">保存规则</button>
-						<button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button></td>
+					<td colspan="2"><button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存规则</button>
+						<button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button>
+					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
-
 </body>
 </html>

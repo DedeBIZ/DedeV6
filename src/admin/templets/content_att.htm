@@ -7,16 +7,16 @@
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8'>
-  <table width="98%" border="0" cellpadding="0" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+<body>
+  <table width="98%" border="0" cellpadding="0" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="content_att.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
-        <td height="26" colspan="3" background='../static/web/img/tbg.gif' style="padding-left:10px">文档自定义属性管理
+        <td height="26" colspan="3" background="../static/web/img/tbg.gif" style="padding-left:10px">文档自定义属性管理
         </td>
       </tr>
       <tr>
-        <td height="30" colspan="3" bgcolor="#FFFFFF">
+        <td height="30" colspan="3" bgcolor="#ffffff">
           自定义属性的意义和使用说明：<br>
           在以往的版本中，网站主页、频道封面的设计，都只能单调的用 arclist 标记把某栏目最新或按特定排序方式的文档无选择的读出来，这样做法存在很大的不足，例如，我希望在最顶部的地方显示我想要的文档，在以往的版本中是无法做到的，但使用自定义属性之后，只要给arclist 标记加上 att='自定义属性的ID' 的属性，然后在发布的时候对适合的文档选择专门的属性，那么使用arclist的地方就会按您的意愿显示指定的文档<br>
           注意事项：这个版本中att对应的字段是SET类型字段,因此为了数据安全起见不允许用户增加其它类型,但调用时允许使用组合条件,如:att='c,p'表示推荐图片新闻
@@ -36,7 +36,7 @@
 	  $k++;
 	?>
       <input type="hidden" name="att_<?php echo $k?>" value="<?php echo $row->att?>">
-      <tr bgcolor="#FFFFFF" height="26">
+      <tr bgcolor="#ffffff" height="26">
         <td align="center">
           <?php echo $row->att; ?>
         </td>
@@ -55,7 +55,7 @@
         <td height="26" colspan="3" bgcolor="#f8f8f8"></td>
       </tr>
       <tr>
-        <td height="30" colspan="3" align="center" bgcolor="#FFFFFF">
+        <td height="30" colspan="3" align="center" bgcolor="#ffffff">
           <button type="submit" class="btn btn-success">确定</button>
         </td>
       </tr>

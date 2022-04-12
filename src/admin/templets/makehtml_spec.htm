@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<body background="../static/web/img/allbg.gif" leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable table-bordered mt-3">
+<body>
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="makehtml_spec.php" method="get" target='stafrm'>
       <input type="hidden" name="dopost" value="ok">
       <tr>
-        <td height="26" background='../static/web/img/tbg.gif'>
+        <td height="26" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="30%" height="18" style="padding-left:10px">更新专题</td>
@@ -22,11 +22,7 @@
         </td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#FFFFFF">
-          说明：为了安全起见，专题目录建议设置仅可读写权限，发布专题后需要手动更新，默认文件为
-          <br>
-          <?php echo $cfg_cmspath.$cfg_special."/index.html"?>
-        </td>
+        <td height="26" valign="top" bgcolor="#ffffff">为了安全起见，专题目录建议设置仅可读写权限，发布专题后需要手动更新，默认文件为：<?php echo $cfg_cmspath.$cfg_special."/index.html"?></td>
       </tr>
       <tr>
         <td height="26" bgcolor="#ffffff" align="center"> 
@@ -38,23 +34,24 @@
       <td height="26">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="74%">进行状态：</td>
-            <td width="26%" align="right">
+            <td width="70%">进行状态：</td>
+            <td width="30%" align="right">
               <script language='javascript'>
-                function ResizeDiv(obj, ty) {
-                  if (ty == "+") document.all[obj].style.pixelHeight += 50;
-                  else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-                }
+              function ResizeDiv(obj, ty) {
+                if (ty == "+") document.all[obj].style.pixelHeight += 50;
+                else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+              }
               </script>
-              [<a href='javascript:;' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='javascript:;' onClick="ResizeDiv('mdv','-');">缩小</a>]
+              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
             </td>
           </tr>
         </table>
       </td>
     </tr>
-    <tr bgcolor="#FFFFFF">
+    <tr bgcolor="#ffffff">
       <td id="mtd">
-        <div id='mdv' style='width:100%;height:350px;'>
+        <div id="mdv" style="width:100%;height:300px"> 
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
         </div>
       </td>

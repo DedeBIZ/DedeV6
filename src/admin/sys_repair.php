@@ -11,7 +11,7 @@
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_ArcBatch');
 require_once(DEDEINC.'/libraries/oxwindow.class.php');
-//ShowMsg("目前暂不需要此工具，以后有需要系统会进行自动升级这个程序<br><a href='index_body.php'>&lt;&lt;点击此返回&gt;</a>", "javascript:;");
+//ShowMsg("目前暂不需要此工具，以后有需要系统会进行自动升级这个程序<br><a href='index_body.php'>&lt;&lt;点击返回</a>", "javascript:;");
 //exit();
 if (empty($dopost)) {
     $win = new OxWindow();
@@ -32,13 +32,13 @@ if (empty($dopost)) {
     4、检测微表与主表数据一致性<br>
     <br>
     <br>
-    <a href='sys_repair.php?dopost=1' class='btn btn-danger'>点击此开始进行常规检测&gt;</a>
+    <a href='sys_repair.php?dopost=1' class='btn btn-danger'>常规检测</a>
     <br><br><br>
     </td>
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     exit();
@@ -65,13 +65,13 @@ else if ($dopost == 1) {
     2、更新数据库archives表时出错<br>
     3、列表显示数据目与实际文档数不一致<br>
     <br>
-    <a href='sys_repair.php?dopost=2' class='btn btn-danger'>点击此检测微表正确性&gt;</a>
+    <a href='sys_repair.php?dopost=2' class='btn btn-danger'>检测数据</a>
     <br><br><br>
     </td>
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     exit();
@@ -104,11 +104,11 @@ else if ($dopost == 2) {
         }
     }
     $msg .= "※总有效记录数：{$allarcnum} <br> ";
-    $errall = "<a href='index_body.php' style='font-size:14px;'>完成修正或无错误返回&gt;</a>";
+    $errall = "<a href='index_body.php' class='btn btn-success'>完成修正</a>";
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
     $msg .= "※微统计表记录数：{$row['dd']}<br>";
     if ($row['dd'] == $allarcnum) {
-        $msg .= "<p style='color:green;font-size:16px'>两者记录一致，无需修正</p><br>";
+        $msg .= "<p style='color:green'>两者记录一致，无需修正</p><br>";
     } else {
         $sql = " TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
@@ -126,10 +126,10 @@ else if ($dopost == 2) {
         }
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
         if ($row['dd'] == $allarcnum) {
-            $msg .= "<p style='color:green;font-size:16px'>修正记录成功</p><br>";
+            $msg .= "<p style='color:green>修正记录成功</p><br>";
         } else {
-            $msg .= "<p style='color:#dc3545;font-size:16px'>修正记录失败，建议进行高级综合检测</p><br>";
-            $errall = " <a href='sys_repair.php?dopost=3' class='btn btn-danger'>进行高级结合性检测&gt;</a> ";
+            $msg .= "<p style='color:#dc3545'>修正记录失败，建议进行高级综合检测</p><br>";
+            $errall = " <a href='sys_repair.php?dopost=3' class='btn btn-danger'>结合性检测</a> ";
         }
     }
     UpDateCatCache();
@@ -150,7 +150,7 @@ else if ($dopost == 2) {
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     exit();
@@ -195,7 +195,7 @@ else if ($dopost == 3) {
         }
     }
     $win = new OxWindow();
-    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
+    $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
     $win->mainTitle = "系统修复工具";
     $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt; 高级综合检测修复";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
@@ -206,12 +206,12 @@ else if ($dopost == 3) {
     完成所有修复操作，移除错误记录 {$errnum} 条
     <hr />
     <br>
-    <a href='index_body.php' class='btn btn-success'>完成修正或无错误返回&gt;</a>
+    <a href='index_body.php' class='btn btn-success'>完成修正</a>
     </td>
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='padding-left:20px;line-height:150%'>$msg</div>");
+    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     exit();

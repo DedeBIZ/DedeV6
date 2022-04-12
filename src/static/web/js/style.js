@@ -60,13 +60,13 @@ function ShowMsg(content, ...args) {
     }
     footer = footer.replaceAll("~modalID~", modalID);
     content = content.replaceAll("~modalID~", modalID);
-    var modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}" aria-hidden="true">
+    var modal = `<div id="DedeModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DedeModalLabel${modalID}">
 <div class="modal-dialog modal-dialog-centered" role="document">
 <div class="modal-content"><div class="modal-header">
 <h6 class="modal-title" id="DedeModalLabel${modalID}">${title}</h6>`;
     if (!noClose) {
         modal += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		<span aria-hidden="true">&times;</span>
+		<span>&times;</span>
 		</button>`;
     }
     modal += `</div><div class="modal-body">${content}</div><div class="modal-footer">${footer}</div></div></div></div>`;

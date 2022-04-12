@@ -31,7 +31,7 @@
               </nav>
               <div id="mainCp">
                 <h5 class="meTitle">订单确认</h5>
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success">
                   您申请购买的产品如下，确认无误后请点击“购买并支付”按钮，进行网上支付，如果支付失败，请与管理员联系其它支付方式：
                 </div>
                 <div class="postForm">
@@ -62,7 +62,7 @@
                           <td align="right" valign="top"><span class="td1">支付方式：</span></td>
                           <td><table border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
                               {dede:array.payment_list}
-                              <tr onMouseMove="javascript:this.bgColor='#f8f8f8';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+                              <tr onMouseMove="javascript:this.bgColor='#f8f8f8';" onMouseOut="javascript:this.bgColor='#ffffff';">
                                 <td width="10%" align="right" style="vertical-align:middle;">{dede:if value.code=="cod" || value.code=="bank"} <input name="paytype" type="radio" value="{dede:value.id/}"  disabled="disabled"/>{else}<input name="paytype" type="radio" value="{dede:value.id/}"/>{/dede:if}</td>
                                 <td width="20%" valign="middle" style="vertical-align:middle;"> {dede:value.name/} </td>
                                 <td width="60%"> {dede:value.description/} </td>
@@ -82,7 +82,6 @@
                 </div>
               </div>
               <!--主操作区域 --> 
-              
             </div>
           </div>
         </div>

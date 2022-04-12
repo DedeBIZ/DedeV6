@@ -57,7 +57,7 @@ table{border-collapse:separate}
 .btn+.btn{margin-left:10px}
 </style>
 </head>
-<body topmargin="8">
+<body>
   <form name="form1" action="spec_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
     <input type="hidden" name="id" value="<?php echo $arcRow['id']?>">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
@@ -443,9 +443,9 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr height="36">
-        <td style="padding:.6rem">
+        <td align="center" style="padding:.6rem">
           <button type="submit" class="btn btn-success">保存</button>
           <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
         </td>

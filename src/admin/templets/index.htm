@@ -5,6 +5,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title><?php echo $cfg_webname; ?>后台管理</title>
 <link rel="shortcut icon" href="../static/web/img/favicon.ico">
+<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/frame.css">
 <script src="../static/web/js/jquery.min.js"></script>
 <script src="js/frame.js"></script>
@@ -73,8 +74,8 @@
         </div>
         <div class="topnav">
             <div class="menuact">
-                <a href="javascript:;" id="togglemenu">隐藏菜单</a>
-                <a href="javascript:;" id="allmenu">功能地图</a>
+                <a href="javascript:;" id="togglemenu"><i class="fa fa-bars"></i> 隐藏菜单</a>
+                <a href="javascript:;" id="allmenu"><i class="fa fa-map-marker"></i> 功能地图</a>
             </div>
             <div id="skin"></div>
             <div class="nav" id="nav"></div>
@@ -83,8 +84,8 @@
                     <form action="action_search.php" method="post" target="main">
                         <input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
                         <button type="submit" class="np">搜索</button>
-                        <a href="<?php echo $cfg_biz_gitUrl; ?>" target="_blank">代码托管</a>
-                        <a href="<?php echo $cfg_biz_helpUrl; ?>" target="_blank">帮助中心</a>
+                        <a href="<?php echo $cfg_biz_gitUrl; ?>" target="_blank"><i class="fa fa-code"></i> 代码托管</a>
+                        <a href="<?php echo $cfg_biz_helpUrl; ?>" target="_blank"><i class="fa fa-info-circle"></i> 帮助中心</a>
                     </form>
                 </div>
             </div>

@@ -54,12 +54,12 @@
     })
   </script>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center"  class="table maintable table-bordered mt-3">
+<body>
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center"  class="table maintable mt-3">
     <form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="go">
       <tr>
-        <td height="26" colspan="2" background='../static/web/img/tbg.gif'>
+        <td height="26" colspan="2" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="180" height="18" style="padding-left:10px">文档批量管理</td>
@@ -69,12 +69,12 @@
         </td>
       </tr>
       <tr>
-        <td width="180" align="center" bgcolor="#FFFFFF">选定栏目：</td>
-        <td bgcolor="#FFFFFF">
+        <td width="180" align="center" bgcolor="#ffffff">选定栏目：</td>
+        <td bgcolor="#ffffff">
           <?php
        $tl = new TypeLink(0);
        $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-       echo "<select name='typeid' style='width:300px'>\r\n";
+       echo "<select name='typeid' style='width:260px'>\r\n";
        echo "<option value='0' selected>不限栏目</option>\r\n";
        echo $typeOptions;
        echo "</select>";
@@ -82,15 +82,15 @@
         </td>
       </tr>
       <tr>
-        <td height="26" align="center" bgcolor="#FFFFFF">起始ID：</td>
-        <td height="26" bgcolor="#FFFFFF">开始：
+        <td height="26" align="center" bgcolor="#ffffff">起始ID：</td>
+        <td height="26" bgcolor="#ffffff">开始：
           <input name="startid" type="text" id="startid" size="10">
           结束：
           <input name="endid" type="text" id="endid" size="10"></td>
       </tr>
       <tr>
-        <td height="26" align="center" bgcolor="#FFFFFF">档案发布时间：</td>
-        <td height="26" bgcolor="#FFFFFF">
+        <td height="26" align="center" bgcolor="#ffffff">档案发布时间：</td>
+        <td height="26" bgcolor="#ffffff">
           <table width="500" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td colspan="2"> <label>
@@ -111,12 +111,12 @@
         </td>
       </tr>
       <tr>
-        <td height="26" align="center" bgcolor="#FFFFFF">用户的登录id：</td>
-        <td height="26" bgcolor="#FFFFFF"><input name="userid" type="text" id="userid" size="20">（网址uid=后面跟的id）</td>
+        <td height="26" align="center" bgcolor="#ffffff">用户的登录id：</td>
+        <td height="26" bgcolor="#ffffff"><input name="userid" type="text" id="userid" size="20">（网址uid=后面跟的id）</td>
       </tr>
       <tr>
-        <td height="26" align="center" bgcolor="#FFFFFF">操作：</td>
-        <td height="26" bgcolor="#FFFFFF">
+        <td height="26" align="center" bgcolor="#ffffff">操作：</td>
+        <td height="26" bgcolor="#ffffff">
           <label><input name="action" type="radio" class="np" id="checkradio" onClick="ShowHideMove()" value="check"
             checked='1' />
           审核文档</label>
@@ -127,9 +127,9 @@
           <label><input name="action" type="radio" class="np" id="delradio" value="del" onClick="ShowHideMove()">
           删除文档</label></td>
       </tr>
-      <tr height="26" bgcolor="#FFFFFF">
-        <td height="26" align="center" bgcolor="#FFFFFF">移动选项：</td>
-        <td height="26" bgcolor="#FFFFFF">
+      <tr height="26" bgcolor="#ffffff">
+        <td height="26" align="center" bgcolor="#ffffff">移动选项：</td>
+        <td height="26" bgcolor="#ffffff">
           <?php
        echo "<span id='moveField' style='display:none'>新位置：";
        echo "<select name='newtypeid' style='width:250px'>\r\n";
@@ -150,23 +150,24 @@
       <td height="26" colspan="2">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="74%">进行状态：</td>
-            <td width="26%" align="right">
+            <td width="70%">进行状态：</td>
+            <td width="30%" align="right">
               <script language='javascript'>
-                function ResizeDiv(obj, ty) {
-                  if (ty == "+") document.all[obj].style.pixelHeight += 50;
-                  else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-                }
+              function ResizeDiv(obj, ty) {
+                if (ty == "+") document.all[obj].style.pixelHeight += 50;
+                else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+              }
               </script>
-              [<a href='javascript:;' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='javascript:;' onClick="ResizeDiv('mdv','-');">缩小</a>]
+              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
             </td>
           </tr>
         </table>
       </td>
     </tr>
-    <tr bgcolor="#FFFFFF">
+    <tr bgcolor="#ffffff">
       <td colspan="2" id="mtd">
-        <div id='mdv' style='width:100%;height:250px'>
+        <div id="mdv" style="width:100%;height:300px"> 
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
         </div>
       </td>
@@ -174,7 +175,7 @@
     <form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="go">
       <tr>
-        <td height="26" colspan="2" background='../static/web/img/tbg.gif'>
+        <td height="26" colspan="2" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="30%" height="18" style="padding-left:10px">错误文档修正：</td>
@@ -183,8 +184,8 @@
           </table>
         </td>
       </tr>
-      <tr height="26" bgcolor="#FFFFFF">
-        <td height="26" colspan="2" align="center" bgcolor="#FFFFFF">
+      <tr height="26" bgcolor="#ffffff">
+        <td height="26" colspan="2" align="center" bgcolor="#ffffff">
           <label><input type='radio' value='delnulltitle' name='action' class='np' />
            删除空标题的文章</label>
           <label><input type='radio' value='delnullbody' name='action' class='np' />

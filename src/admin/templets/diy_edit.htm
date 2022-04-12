@@ -26,7 +26,7 @@
   </script>
   <style>
     .STYLE1 {
-      color: #FF0000
+      color: #dc3545
     }
 
     td {
@@ -36,29 +36,25 @@
     }
 
     .STYLE2 {
-      color: #666666;
+      color: #424b51;
       display: none;
     }
   </style>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <div class="bodytitle mt-3 mb-3">
-    <div class="bodytitleleft"></div>
-    <div class="bodytitletxt">自定义表单管理</div>
-  </div>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-bordered">
+<body>
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
       <input type='hidden' name='diyid' value='<?php echo $diyid; ?>'>
       <input type='hidden' name='dopost' value='save'>
       <tr>
-        <td height="26" colspan="2" bgcolor="#EDF9D5" background='../static/web/img/tbg.gif' style="padding-left:10px">
+        <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">
           <a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）
         </td>
       </tr>
       <tr>
-        <td width="170" height="26" align="left" bgcolor="#FFFFFF">自定义表单 diyid：<br>
+        <td width="170" height="26" align="left" bgcolor="#ffffff">自定义表单 diyid：<br>
           <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span></td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <?php echo $diyid; ?>
           <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')">
         </td>
@@ -72,9 +68,9 @@
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">数据表：<br>
+        <td height="26" align="left" bgcolor="#ffffff">数据表：<br>
           <span class="STYLE2" id="help5">自定义表单数据表创建后不可修改表名</span></td>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#ffffff">
           <input name="table" type="text" id="table" style="width:180px" value="<?php echo $row['table']; ?>" class='alltxt' disabled='1' />
           *<img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')">
         </td>
@@ -89,7 +85,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan='2' bgcolor="#FFFFFF" style="padding:6px">
+        <td colspan='2' bgcolor="#ffffff">
           <table width="100%" border="0" cellpadding="1" cellspacing="1" align="center">
             <tr align="center" bgcolor="#FBFCE2" height="26">
               <td width="28%">表单提示文字</td>
@@ -112,7 +108,7 @@ $dtp->LoadSource($fieldset);
 if(is_array($dtp->CTags)){
 foreach($dtp->CTags as $ctag)
 {
-?> <tr align="center" bgcolor="#FFFFFF" height="26">
+?> <tr align="center" bgcolor="#ffffff" height="26">
               <td>
                 <?php 
 			$itname = $ctag->GetAtt('itemname');
@@ -138,8 +134,8 @@ foreach($dtp->CTags as $ctag)
 		 ?>
               </td>
               <td>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid; ?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</a>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid; ?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"> <i class="fa fa-globe" aria-hidden="true"></i> 删除</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid; ?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid; ?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 删除</a>
               </td>
             </tr>
             <?php 
@@ -150,26 +146,26 @@ foreach($dtp->CTags as $ctag)
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">列表模板：</td>
-        <td bgcolor="#FFFFFF">
+        <td height="26" align="left" bgcolor="#ffffff">列表模板：</td>
+        <td bgcolor="#ffffff">
           <input name="listtemplate" type="text" id="listtemplate" style="width:180px" value="<?php echo $row['listtemplate']; ?>" class='alltxt' />
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">内容模板：</td>
-        <td bgcolor="#FFFFFF">
+        <td height="26" align="left" bgcolor="#ffffff">内容模板：</td>
+        <td bgcolor="#ffffff">
           <input name="viewtemplate" type="text" id="viewtemplate" style="width:180px" value="<?php echo $row['viewtemplate']; ?>" class='alltxt' />
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">发布模板：</td>
-        <td bgcolor="#FFFFFF">
+        <td height="26" align="left" bgcolor="#ffffff">发布模板：</td>
+        <td bgcolor="#ffffff">
           <input name="posttemplate" type="text" id="posttemplate" style="width:180px" value="<?php echo $row['posttemplate']; ?>" class='alltxt' />
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#FFFFFF">前台列表和内容页公开：</td>
-        <td bgcolor="#FFFFFF">
+        <td height="26" align="left" bgcolor="#ffffff">前台列表和内容页公开：</td>
+        <td bgcolor="#ffffff">
           <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?>
               class='np' /> 完全公开 </label>
           <label><input name="public" type="radio" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?>
@@ -182,7 +178,7 @@ foreach($dtp->CTags as $ctag)
         <td height="26" colspan="2">
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
             <tr>
-              <td width="26%" height="36"></td>
+              <td width="30%" height="36"></td>
               <td width="15%">
                 <button type="submit" name="button" id="button" class='btn btn-success'>确定</button>
               </td>

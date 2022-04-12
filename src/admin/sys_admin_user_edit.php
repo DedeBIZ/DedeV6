@@ -13,7 +13,6 @@ CheckPurview('sys_User');
 require_once(DEDEINC.'/typelink/typelink.class.php');
 if (empty($dopost)) $dopost = '';
 $id = preg_replace("#[^0-9]#", '', $id);
-
 if ($dopost == 'saveedit') {
     CheckCSRF();
     $pwd = trim($pwd);
@@ -62,9 +61,9 @@ if ($dopost == 'saveedit') {
         $win->AddHidden("randcode", $randcode);
         $win->AddHidden("safecode", $safecode);
         $win->AddHidden("id", $id);
-        $win->AddTitle("系统警告");
-        $win->AddMsgItem("您确信要删除用户：$userid 吗", "50");
-        $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:200px' />&nbsp;(复制本代码：<span style='color:#dc3545'>$safecode</span> )", "30");
+        $win->AddTitle("系统提示");
+        $win->AddMsgItem("您确定要删除用户：$userid 吗", "50");
+        $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' style='width:260px'>（复制本代码：<span style='color:#dc3545'>$safecode</span>）", "30");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -74,7 +73,6 @@ if ($dopost == 'saveedit') {
         ShowMsg("请填写正确的安全验证串", "sys_admin_user.php");
         exit();
     }
-
     //不能删除id为1的创建人帐号，不能删除自己
     $rs = $dsql->ExecuteNoneQuery2("DELETE FROM `#@__admin` WHERE id='$id' AND id<>1 AND id<>'".$cuserLogin->getUserID()."' ");
     if ($rs > 0) {
@@ -86,7 +84,6 @@ if ($dopost == 'saveedit') {
     }
     exit();
 }
-
 //显示用户信息
 $randcode = mt_rand(10000, 99999);
 $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
@@ -95,7 +92,6 @@ $row = $dsql->GetOne("SELECT * FROM `#@__admin` WHERE id='$id'");
 $typeids = explode(',', $row['typeid']);
 $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart=0 OR ispart=1)");
 $dsql->Execute('op');
-
 while ($nrow = $dsql->GetObject('op')) {
     $typeOptions .= "<option value='{$nrow->id}' class='btype'".(in_array($nrow->id, $typeids) ? ' selected' : '').">{$nrow->typename}</option>\r\n";
     $dsql->SetQuery("SELECT id,typename FROM #@__arctype WHERE reid={$nrow->id} AND (ispart=0 OR ispart=1)");

@@ -34,14 +34,14 @@
     }
   </script>
 </head>
-<body background='../static/web/img/allbg.gif' leftmargin='8' topmargin='8'>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table table-bordered maintable mt-3">
+<body>
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
     <tr>
       <td height="26" background="../static/web/img/tbg.gif" colspan="8" style="padding-left:10px">
         <div style="float:left">
           友情链接管理
         </div>
-        <div style="float:right;padding-right:6px;">
+        <div style="float:right;padding-right:10px">
           <a href="friendlink_add.php" class="btn btn-success btn-sm">增加链接</a>
           <a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
           <a href='{dede:global name=' cfg_phpurl' /}/flink.php' target='_blank' class="btn btn-success btn-sm">友情链接预览</a>
@@ -88,9 +88,9 @@
         <td width="15%">管理</td>
       </tr>
       {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-      <tr align="center" bgcolor="#FFFFFF" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+      <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
         <td><input type='checkbox' name='aids' value='{dede:field.id/}' class='np'></td>
-        <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i>地址：{dede:field.url/}</i></td>
+        <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i>地址：{dede:field.url/}</i> </td>
         <td>{dede:field.logo function="GetPic(@me)"/}</td>
         <td>{dede:field.email/}</td>
         <td>{dede:field.dtime function="MyDate('Y-m-d',@me)"/}</td>
@@ -111,9 +111,7 @@
       </td>
     </tr>
     <tr align="center" bgcolor="#f8f8f8" height="26">
-      <td colspan="8">
-        {dede:pagelist listsize=6/}
-      </td>
+      <td colspan="8">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
   </td>

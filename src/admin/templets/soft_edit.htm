@@ -31,7 +31,7 @@
       var endNum = parseInt(document.form1.picnum.value) + startNum;
       if (endNum > 30) endNum = 30;
       for (startNum; startNum < endNum; startNum++) {
-        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:300px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
+        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:260px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
       }
     }
     function ShowHideAddr() {
@@ -45,7 +45,7 @@ img{vertical-align:baseline}
 table{border-collapse:separate}
 </style>
 </head>
-<body topmargin="8" background="../static/web/img/allbg.gif">
+<body>
   <form name="form1" action="soft_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
     <input type="hidden" name="dopost" value="save">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
@@ -162,7 +162,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;软件来源：</td>
+              <td width="90">&nbsp;来源：</td>
               <td width="250">
                 <input name="source" type="text" id="source"value="<?php echo $arcRow['source']?>" style="width:160px">
                 <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -180,7 +180,7 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="570" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;软件主栏目：</td>
+              <td width="90">&nbsp;发布栏目：</td>
               <td>
                 <?php
                 $typeOptions = GetOptionList($arcRow["typeid"],$cuserLogin->getUserChannel(),$channelid);
@@ -230,7 +230,7 @@ table{border-collapse:separate}
         <td height="26" class="bline">
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;简要说明：</td>
+              <td width="90">&nbsp;描述：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $arcRow['description']?></textarea></td>
             </tr>
           </table>
@@ -311,7 +311,7 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;运行环境：</td>
-              <td><input type='text' name='os' value='<?php echo $addRow["os"]?>' style='width:300px'></td>
+              <td><input type='text' name='os' value='<?php echo $addRow["os"]?>' style='width:260px'></td>
             </tr>
           </table>
         </td>
@@ -321,9 +321,9 @@ table{border-collapse:separate}
           <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;官方网址：</td>
-              <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" style='width:300px'></td>
+              <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" style='width:260px'></td>
               <td width="90">程序演示：</td>
-              <td><input name="officialDemo" type="text" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" style='width:300px'></td>
+              <td><input name="officialDemo" type="text" id="officialDemo" value="<?php echo $addRow['officialDemo']?>" style='width:260px'></td>
             </tr>
           </table>
         </td>
@@ -383,9 +383,6 @@ table{border-collapse:separate}
             <div id='uploadfield' style='width:800px'></div>
           </div>
         </td>
-      </tr>
-      <tr>
-        <td height="26" colspan="4" bgcolor="#f8f8f8" class="bline2">&nbsp;软件详细介绍：</td>
       </tr>
       <tr>
         <td height="26" colspan="4" bgcolor="#F1F5F2" class="bline">
@@ -496,9 +493,9 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:none" class="mb-3">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
     <tr height="36">
-      <td style="padding:.6rem">
+      <td align="center" style="padding:.6rem">
         <button type="submit" class="btn btn-success">保存</button>
         <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
       </td>

@@ -16,16 +16,13 @@
 	<div class="container">
 		<div class="ctitle">
 			<nav class="navbar navbar-expand-lg">
-                <ul class="navbar-nav mr-auto mt-2">
-                  <li class="nav-item">
-                    <h3><?php echo $diy->name; ?>内容列表</h3>
-                  </li>
-                </ul>
-                <span class="navbar-text">
-                  <a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success">发布信息</a>
-                </span>
-            </nav>
-			
+         <ul class="navbar-nav mr-auto mt-2">
+           <li class="nav-item">
+            <h3><?php echo $diy->name; ?>内容列表</h3>
+           </li>
+         </ul>
+         <span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success">发布信息</a></span>
+      </nav>
 		</div>
 		<div class="cbox mceneter">
 			<div class="maplist">
@@ -47,9 +44,7 @@
 						else if($fielddata[1]=='addon')
 						{
 							$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif' border='0' /> 其它附件</a>";
-						}
-						else
-						{
+						} else {
 							if($fielddata[1]=='htmltext') $fields[$field] = html2text($fields[$field]);
 							else $fields[$field] = dede_htmlspecialchars($fields[$field]);
 							if( strlen($fields[$field]) > 250 )
@@ -66,9 +61,9 @@
 			?>
 			</table>
 			{/dede:datalist}
-<table class='listtable' cellspacing="2">
-<tr><td bgcolor="#ffffff">{dede:pagelist listsize=5 /}</td></tr>
-</table>
+			<table class='listtable' cellspacing="2">
+				<tr><td bgcolor="#ffffff">{dede:pagelist listsize='6'/}</td></tr>
+			</table>
 			</div>
 		</div>
 	</div>

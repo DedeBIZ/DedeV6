@@ -13,7 +13,7 @@ require_once(DEDEINC.'/dedevote.class.php');
 function lib_vote(&$ctag, &$refObj)
 {
     global $dsql;
-    $attlist = "id|0,lineheight|24,tablewidth|100%,titlebgcolor|#EDEDE2,titlebackgroup|,tablebg|#FFFFFF";
+    $attlist = "id|0,lineheight|24,tablewidth|100%,titlebgcolor|#EDEDE2,titlebackgroup|,tablebg|#ffffff";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
 
