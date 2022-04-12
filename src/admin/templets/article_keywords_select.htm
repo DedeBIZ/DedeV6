@@ -70,13 +70,13 @@ function AddNewKw()
               <td width="69%" align="right">
                 <button class="btn btn-success btn-sm" type="button" name="kwa" onClick="AddNewKw()">新增关键词</button>
                 <button class="btn btn-success btn-sm" type="button" name="kwm" onClick="location='article_keywords_main.php';">关键词管理</button>
-                </td>
+              </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff" style="line-height:180%">
+        <td bgcolor="#ffffff">
         	{dede:datalist empty='<center>暂无内容</center>'}
         	 <a href='javascript:SelKw("{dede:field.keyword/}")'>{dede:field.keyword/}</a>
           {/dede:datalist}
@@ -94,9 +94,7 @@ function AddNewKw()
         </td>
       </tr>
       <tr align="center">
-        <td height="26" bgcolor="#f8f8f8">
-         {dede:pagelist listsize=3/}
-         </td>
+        <td height="26" bgcolor="#f8f8f8">{dede:pagelist listsize='6'/}</td>
       </tr>
     </form>
   </table>

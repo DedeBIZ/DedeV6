@@ -44,29 +44,20 @@
       <td>{dede:field.isshow function="GetSta(@me,$fields['id'])" /}</td>
       <td>{dede:field.issystem function='IsSystem(@me)'/}</td>
       <td>
-        <a href='mychannel_edit.php?id={dede:field.id/}&dopost=copystart'><img src='../static/web/img/gtk-copy.png' title='复制'
-            alt='复制' /></a>
-        <a href='mychannel_edit.php?id={dede:field.id/}&dopost=gettemplets'><img src='../static/web/img/gtk-tmp.png' title='模板'
-            alt='模板' /></a>
-        <a href='mychannel_edit.php?id={dede:field.id /}&dopost=export'><img src='../static/web/img/gtk-ex.png' title='导出'
-            alt='导出' /></a>
-        <a href='mychannel_edit.php?id={dede:field.id/}&dopost=edit'><img src='../static/web/img/gtk-edit.png' alt='修改'
-            title='修改' /></a>
-        <a href='mychannel_edit.php?mid={dede:field.id/}&dopost=modifysearch'><img src='../static/web/img/gtk-search.png'
-            alt='自定义搜索' title='自定义搜索' /></a>
-        <a href='mychannel_edit.php?id={dede:field.id/}&dopost=delete'><img src='../static/web/img/gtk-del.png' alt='删除'
-            title='删除' /></a>
+        <a href='mychannel_edit.php?id={dede:field.id/}&dopost=copystart'><img src='../static/web/img/gtk-copy.png' title='复制' alt='复制' /></a>
+        <a href='mychannel_edit.php?id={dede:field.id/}&dopost=gettemplets'><img src='../static/web/img/gtk-tmp.png' title='模板' alt='模板' /></a>
+        <a href='mychannel_edit.php?id={dede:field.id /}&dopost=export'><img src='../static/web/img/gtk-ex.png' title='导出' alt='导出' /></a>
+        <a href='mychannel_edit.php?id={dede:field.id/}&dopost=edit'><img src='../static/web/img/gtk-edit.png' alt='修改' title='修改' /></a>
+        <a href='mychannel_edit.php?mid={dede:field.id/}&dopost=modifysearch'><img src='../static/web/img/gtk-search.png' alt='自定义搜索' title='自定义搜索' /></a>
+        <a href='mychannel_edit.php?id={dede:field.id/}&dopost=delete'><img src='../static/web/img/gtk-del.png' alt='删除' title='删除' /></a>
       </td>
     </tr>
     {/dede:datalist}
     <tr align="center" bgcolor="#f8f8f8" height="26">
-      <td colspan="7">
-        {dede:pagelist listsize="5"/}
-      </td>
+      <td colspan="7">{dede:pagelist listsize='6'/}</td>
     </tr>
-    <tr align="center" bgcolor="#ffffff" height="30">
-      <td colspan="7">
-        图标说明：
+    <tr align="center" bgcolor="#ffffff" height="36">
+      <td colspan="7">图标说明：
         <img src='../static/web/img/gtk-copy.png' title='复制' alt='复制' /> 复制
         <img src='../static/web/img/gtk-tmp.png' title='模板' alt='模板' /> 模板
         <img src='../static/web/img/gtk-ex.png' title='导出' alt='导出' /> 导出

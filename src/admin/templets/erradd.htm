@@ -75,8 +75,7 @@
 				<td><input name="id" type="checkbox" id="id" value="{dede:field.id/}" class="np"></td>
 				<td>{dede:field.id /}</td>
 				<td>{dede:field.mid function='username(@me)'/}</td>
-				<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title /}</a>
-				</td>
+				<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title /}</a></td>
 				<td>{dede:field.type function='typename(@me)'/}</td>
 				<td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
 				<td>{dede:field.errtxt /}</td>
@@ -91,9 +90,7 @@
 				</td>
 			</tr>
 			<tr align="center" bgcolor="#f8f8f8" height="26">
-				<td colspan="8">
-					{dede:pagelist listsize=5/}
-				</td>
+				<td colspan="8">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</form>

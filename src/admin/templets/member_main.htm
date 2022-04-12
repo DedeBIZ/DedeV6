@@ -65,12 +65,12 @@
         <td height="26" colspan="9" background="../static/web/img/tbg.gif">
           <table width="99%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="29%" style="padding-left:10px">注册会员列表</td>
-              <td width="71%" align="right">
+              <td width="30%" style="padding-left:10px">注册会员列表</td>
+              <td width="70%" align="right" style="padding-right:10px">
                 <a href="member_main.php">所有会员</a> |
                 <a href="member_main.php?spacesta=-2">被禁言用户</a> |
                 <a href="member_main.php?matt=1">被推荐</a> |
-                <a href="member_main.php?matt=0">普通</a> &nbsp;
+                <a href="member_main.php?matt=0">普通</a>
               </td>
             </tr>
           </table>
@@ -102,26 +102,18 @@
           ?>
           </a>
         </td>
-        <td>
-          {dede:field.email/}
-          <br>
+        <td>{dede:field.email/}<br>
           昵称：{dede:field.uname/}
         </td>
         <td>
           {dede:field.sex /}
         </td>
-        <td>
-          <a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a>
-        </td>
-        <td>
-          {dede:field.mtype /}用户 {dede:field.matt function="GetMAtt(@me)" /}
-          <br>
+        <td><a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a></td>
+        <td>{dede:field.mtype /} 用户 {dede:field.matt function="GetMAtt(@me)" /}<br>
           金币：{dede:field.money /} 积分：{dede:field.scores /}
         </td>
-        <td>
-          {dede:field.logintime function="MyDate('y-m-d H:i',@me)" /}
-          <br>
-          【{dede:field.loginip /}】
+        <td>{dede:field.logintime function="MyDate('y-m-d H:i',@me)" /}<br>
+          {dede:field.loginip /}
         </td>
         <td align="center">
           <a href="member_view.php?id={dede:field.mid/}" class="btn btn-success btn-sm">修改</a>
@@ -133,16 +125,13 @@
       {/dede:datalist}
       <tr bgcolor="#ffffff">
         <td height="36" colspan="9">
-          &nbsp;
           <button type="button" onClick="selAll();" class="btn btn-success btn-sm">全选</button>
           <button type="button" onClick="noSelAll();" class="btn btn-success btn-sm">取消</button>
-          <button type="button" onClick="delArc(0);" class="btn btn-success btn-sm">删除</button>
-          （如果已经整合了论坛的用户请不要使用批量删除功能）</td>
+          <button type="button" onClick="delArc(0);" class="btn btn-success btn-sm">删除</button>（如果已经整合了论坛的用户请不要使用批量删除功能）
+        </td>
       </tr>
       <tr bgcolor="#f8f8f8">
-        <td height="36" colspan="9" align="center">
-          {dede:pagelist listsize='6' /}
-        </td>
+        <td height="36" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
       </tr>
     </table>
   </form>

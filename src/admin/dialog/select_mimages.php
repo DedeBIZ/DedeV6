@@ -13,7 +13,7 @@ include(DEDEDATA.'/mark/inc_photowatermark_config.php');
 <meta name="format-detection" content="telephone=no">
 <title>插入多图</title>
 <style>
-body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#393d49;background:#fff}
+body{margin:0;line-height:1.5;font:12px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#424b51;background:#fff}
 ul{margin:0;padding:0;list-style:none}
 input[type=radio],input[type=checkbox]{margin:0;height:auto;box-shadow:none;outline:none;vertical-align:text-top}
 button+button{margin-left:10px}

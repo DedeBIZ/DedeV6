@@ -140,15 +140,13 @@
       {/dede:datalist}
       <tr bgcolor="#ffffff" height="26">
         <td colspan="7">
-          &nbsp; <button type="button" name="b4" class="btn btn-success btn-sm" onClick="AllSel();">全选</button>
-          &nbsp; <button type="button" name="b5" class="btn btn-success btn-sm" onClick="NoneSel();">取消</button>
-          &nbsp; <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除所选</button>
+          <button type="button" name="b4" class="btn btn-success btn-sm" onClick="AllSel();">全选</button>
+          <button type="button" name="b5" class="btn btn-success btn-sm" onClick="NoneSel();">取消</button>
+          <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除所选</button>
         </td>
       </tr>
       <tr bgcolor="#f8f8f8" height="36">
-        <td colspan="7" align="center">
-          {dede:pagelist listsize=5/}
-        </td>
+        <td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
       </tr>
     </form>
   </table>

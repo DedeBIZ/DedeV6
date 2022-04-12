@@ -1,8 +1,8 @@
 {dede:config.pagesize value="30"/}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCtype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+    <meta http-equiv="Content-type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
     <title>联动枚举管理</title>
     <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -21,18 +21,16 @@ li{float:left;padding-right:10px;line-height:26px}
         var loadhtml = "<center><img src='../static/web/img/loadinglit.gif' style='padding:30px' /></center>";
         function updateItem(aid) {
             var upenumf = document.getElementById('upenumf');
-            upenumf.ename.value = $DE('ename' + aid).value;
+            upenumf.emame.value = $DE('emame' + aid).value;
             upenumf.disorder.value = $DE('disorder' + aid).value;
             upenumf.aid.value = aid;
             upenumf.submit();
         }
-
-        function GetSelType() {
+        function GetSeltype() {
             var selvalue = $DE('egroup1').options[$DE('egroup1').selectedIndex].value;
             return selvalue;
         }
-
-        function AddType() {
+        function Addtype() {
             $DE('edsta').style.display = 'block';
             fetch('stepselect_main.php?action=addnew').then(resp=>{
 				if (resp.ok) {
@@ -45,9 +43,8 @@ li{float:left;padding-right:10px;line-height:26px}
 				$DE('edsta').innerHTML = errMsg;
 			});
         }
-
         function AddEnum() {
-            var id = GetSelType();
+            var id = GetSeltype();
             if (id == 0) {
                 ShowMsg("必须选择一个类别");
                 return false;
@@ -64,9 +61,8 @@ li{float:left;padding-right:10px;line-height:26px}
 			});
             $DE('edsta').style.display = 'block';
         }
-
-        function EditType() {
-            var id = GetSelType();
+        function Edittype() {
+            var id = GetSeltype();
             if (id == 0) {
                 ShowMsg("必须选择一个类别");
                 return false;
@@ -83,9 +79,8 @@ li{float:left;padding-right:10px;line-height:26px}
 				$DE('edsta').innerHTML = errMsg;
 			});
         }
-
-        function ViewType() {
-            var id = GetSelType();
+        function Viewtype() {
+            var id = GetSeltype();
             if (id == 0) {
                 ShowMsg("必须选择一个类别");
                 return false;
@@ -102,22 +97,19 @@ li{float:left;padding-right:10px;line-height:26px}
 				$DE('edsta').innerHTML = errMsg;
 			});
         }
-
-        function DelType() {
+        function Deltype() {
             if (window.confirm("您确定要删除这个分类吗") == false) return false;
-            var id = GetSelType();
+            var id = GetSeltype();
             if (id == 0) {
                 ShowMsg("必须选择一个类别");
                 return false;
             }
             location.href = 'stepselect_main.php?action=del&id=' + id;
         }
-
         function CloseTWin() {
             $DE('edsta').innerHTML = loadhtml;
             $DE('edsta').style.display = 'none';
         }
-
         function ChangePage(sobj) {
             var ntxt = sobj.options[sobj.selectedIndex].text;
             if (sobj.options[sobj.selectedIndex].value == 0) {
@@ -128,19 +120,16 @@ li{float:left;padding-right:10px;line-height:26px}
                 location.href = 'stepselect_main.php?egroup=' + ns[0];
             }
         }
-
         function TogSel() {
-            var ems = document.getElementsByName('ids[]');
+            var ems = document.getElementsBymame('ids[]');
             for (i = 0; i < ems.length; i++) {
                 if (ems[i].checked == false) ems[i].checked = true;
                 else ems[i].checked = false;
             }
         }
-
         function DelSel() {
             if (window.confirm("您确定要删除这些分类吗")) document.form1.submit();
         }
-
         function ChangePage2(sobj) {
             var nv = sobj.options[sobj.selectedIndex].value;
             if (sobj.options[sobj.selectedIndex].value == 0) {
@@ -156,14 +145,14 @@ li{float:left;padding-right:10px;line-height:26px}
     <div id='edsta'>
         <center><img src='../static/web/img/loadinglit.gif'></center>
     </div>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable mt-3">
+    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3" style="margin-bottom:10px">
         <tr>
             <td height="26" background="../static/web/img/wbg.gif" colspan="6" style="padding-left:10px">联动枚举组管理</td>
         </tr>
         <tr>
             <td width="90">请选择组别：</td>
             <td width="260">
-                <select name="egroup1" id="egroup1" style="width:90%;" onChange="ChangePage(this)">
+                <select mame="egroup1" id="egroup1" style="width:90%" onChange="ChangePage(this)">
                     <option value='0'>所有组</option>
                     <?php
                     $selgroup = '';
@@ -172,10 +161,10 @@ li{float:left;padding-right:10px;line-height:26px}
                         $stylecolor = "";
                         if($arr['issystem']==1) $stylecolor = " style='color:#999999' ";
                         if($egroup==$arr['egroup']) {
-                            $selgroup = $arr['itemname'];
-                            echo "<option value='{$arr['id']}' $stylecolor selected='1'>{$arr['egroup']}|{$arr['itemname']}</option>";
+                            $selgroup = $arr['itemmame'];
+                            echo "<option value='{$arr['id']}' $stylecolor selected='1'>{$arr['egroup']}|{$arr['itemmame']}</option>";
                         } else {
-                            echo "<option value='{$arr['id']}' $stylecolor>{$arr['egroup']}|{$arr['itemname']}</option>";
+                            echo "<option value='{$arr['id']}' $stylecolor>{$arr['egroup']}|{$arr['itemmame']}</option>";
                         }
                     }
                     ?>
@@ -183,12 +172,12 @@ li{float:left;padding-right:10px;line-height:26px}
             </td>
             <td colspan='2'><img src='../static/web/img/help.gif'>灰色字的为系统内置枚举，您是不能对它进行删除修改操作的，但可以添加或修改它的元素</td>
             <td>
-                <button type="button" name="gedit" id="gedit" class="btn btn-success btn-sm" onClick="EditType()">修改</button>
-                <button type="button" name="gdel" id="gdel" class="btn btn-success btn-sm" onClick="DelType()">删除</button>
-                <button type="button" name="gview" id="gview" class="btn btn-success btn-sm" onClick="ViewType()">预览</button>
+                <button type="button" mame="gedit" id="gedit" class="btn btn-success btn-sm" onClick="Edittype()">修改</button>
+                <button type="button" mame="gdel" id="gdel" class="btn btn-success btn-sm" onClick="Deltype()">删除</button>
+                <button type="button" mame="gview" id="gview" class="btn btn-success btn-sm" onClick="Viewtype()">预览</button>
             </td>
             <td>
-                <button type="button" name="addnew" id="addnew" class="btn btn-success btn-sm" onClick="AddType()">新增类别组</button>
+                <button type="button" mame="addnew" id="addnew" class="btn btn-success btn-sm" onClick="Addtype()">新增类别组</button>
                 <a href='stepselect_main.php?action=upallcache' class="btn btn-success btn-sm">更新所有枚举缓存</a>
             </td>
         </tr>
@@ -197,31 +186,26 @@ li{float:left;padding-right:10px;line-height:26px}
 if(!empty($egroup))
 {
     $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='{$egroup}' ");
-    $dsql->Execute('out',"SELECT evalue,ename FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}' ORDER BY disorder ASC,evalue ASC");
+    $dsql->Execute('out',"SELECT evalue,emame FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}' ORDER BY disorder ASC,evalue ASC");
     $options = '';
 
     while($row1 = $dsql->GetArray('out'))
     {
         if(!preg_match("#\.#", $row1['evalue']))
         {
-            $row1['ename'] = ($row1['evalue'] % 500 == 0)? $row1['ename'] : '└─'.$row1['ename'];
-            if($topvalue != $row1['evalue']) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
-            else $options .= "<option value='{$row1['evalue']}' selected='selected'>{$row1['ename']}</option>";
+            $row1['emame'] = ($row1['evalue'] % 500 == 0)? $row1['emame'] : '└─'.$row1['emame'];
+            if($topvalue != $row1['evalue']) $options .= "<option value='{$row1['evalue']}'>{$row1['emame']}</option>";
+            else $options .= "<option value='{$row1['evalue']}' selected='selected'>{$row1['emame']}</option>";
         }
     }
 
     //如果添加3级之类
     if($topvalue % 500 != 0) $arr['issign'] = 2;
 ?>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1"
-        style='margin-bottom:10px;' class="table maintable">
+    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable" style='margin-bottom:10px'>
         <tr>
             <td height="26" background="../static/web/img/tbg.gif" colspan="8">
-                <div style="float:left">
-                    &nbsp;·<?php echo $selgroup; ?>
-                   &gt;
-                    子分类管理
-                </div>
+                <div style="float:left">&nbsp;<?php echo $selgroup; ?> &gt; 子分类管理</div>
                 <div style="float:right">
                     <?php
     if($egroup=='nativeplace') {
@@ -234,21 +218,21 @@ if(!empty($egroup))
         <tr bgcolor="#ffffff" height='48'>
             <td>
                 <form action='stepselect_main.php' method='post'>
-                    <INPUT TYPE="hidden" NAME="action" value="addenum_save">
-                    <INPUT TYPE="hidden" NAME="issign" value="<?php echo $arr['issign']; ?>">
-                    <INPUT TYPE="hidden" NAME="egroup" value="<?php echo $arr['egroup']; ?>">
-                    <div style='float:left;'>
+                    <input type="hidden" mame="action" value="addenum_save">
+                    <input type="hidden" mame="issign" value="<?php echo $arr['issign']; ?>">
+                    <input type="hidden" mame="egroup" value="<?php echo $arr['egroup']; ?>">
+                    <div style='float:left'>
                         &nbsp;隶属分类：
-                        <select name='topvalue' style='width:130px' onChange="ChangePage2(this)">
+                        <select mame='topvalue' style='width:160px' onChange="ChangePage2(this)">
                             <option value='0'><?php echo $selgroup; ?></option>
                             <?php echo $options; ?>
                         </select>
                     </div>
-                    <div style='float:left;'>
-                        &nbsp;分类名称：<INPUT TYPE="text" NAME="ename" class="iptxt" style='width:350px' />
+                    <div style='float:left'>
+                        &nbsp;分类名称：<input type="text" mame="emame" class="iptxt" style='width:350px' />
                     </div>
                     <div style='float:left;padding-left:6px'>
-                        <button TYPE="submit" name='sb2' class="btn btn-success btn-sm">增加分类</button>
+                        <button type="submit" mame='sb2' class="btn btn-success btn-sm">增加分类</button>
                     </div>
                     <div style='clear:both'>
                         &nbsp;<img src='../static/web/img/help.gif'>如果没选择隶属分类则表示增加的是顶级分类，用半角逗号","分开可以一次增加多个分类
@@ -261,11 +245,7 @@ if(!empty($egroup))
         class="table maintable">
         <tr>
             <td height="26" background="../static/web/img/tbg.gif" colspan="8">
-                <div style="float:left">
-                    &nbsp;<a href='stepselect_main.php'>枚举组列表</a>
-                   &gt; <a href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><?php echo $selgroup; ?></a>
-                   &gt; 子分类列表
-                </div>
+                <div style="float:left">&nbsp;<a href='stepselect_main.php'>枚举组列表</a> &gt; <a href='stepselect_main.php?egroup=<?php echo $egroup; ?>'><?php echo $selgroup; ?></a> &gt; 子分类列表</div>
                 <div style="float:right"></div>
             </td>
         </tr>
@@ -279,29 +259,29 @@ if(!empty($egroup))
             <td width="10%">组内排序</td>
             <td width="18%">操作</td>
         </tr>
-        <form action='stepselect_main.php' name='upenumf' method='post' id="upenumf">
-            <input type='hidden' name='action' value='upenum' />
-            <INPUT TYPE="hidden" NAME="aid" value="">
-            <input type='hidden' name='ename' value='' />
-            <input type='hidden' name='disorder' value='' />
+        <form action='stepselect_main.php' mame='upenumf' method='post' id="upenumf">
+            <input type='hidden' mame='action' value='upenum' />
+            <input type="hidden" mame="aid" value="">
+            <input type='hidden' mame='emame' value='' />
+            <input type='hidden' mame='disorder' value='' />
         </form>
-        <form name='form1' action='stepselect_main.php' method='post'>
-            <input type='hidden' name='action' value='delenumAllSel' />
+        <form mame='form1' action='stepselect_main.php' method='post'>
+            <input type='hidden' mame='action' value='delenumAllSel' />
             {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
             <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
                 onMouseOut="javascript:this.bgColor='#ffffff';">
-                <td><input type='checkbox' name='ids[]' value='{dede:field.id /}' class='np' /></td>
+                <td><input type='checkbox' mame='ids[]' value='{dede:field.id /}' class='np' /></td>
                 <td>{dede:field.id /}</td>
                 <td>
                     <?php 
             if(!preg_match("#\.#", $fields['evalue']))
             {
-                if($fields['evalue']>500 && $fields['evalue']%500 != 0)  $fields['ename'] = " └─".$fields['ename'];
+                if($fields['evalue']>500 && $fields['evalue']%500 != 0)  $fields['emame'] = " └─".$fields['emame'];
             } else {
-                $fields['ename'] = " └───".$fields['ename'];
+                $fields['emame'] = " └───".$fields['emame'];
             }
             ?>
-                    <input type='text' id='ename{dede:field.id/}' value='{dede:field.ename /}' class='abt' />
+                    <input type='text' id='emame{dede:field.id/}' value='{dede:field.emame /}' class='abt' />
                 </td>
                 <td>{dede:field.egroup /}</td>
                 <td>
@@ -324,11 +304,9 @@ if(!empty($egroup))
                     <a href='javascript:updateItem({dede:field.id/});' class="btn btn-success btn-sm"><i class="fa fa-refresh"></i> 更新</a>
                     <a href='stepselect_main.php?action=delenum&id={dede:field.id/}' class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
                     <?php
-         }
-         else
-         {
+        } else {
                echo "<a href='stepselect_main.php?egroup={$fields['egroup']}'>".$egroups[$fields['egroup']]."</a>";
-         }
+        }
         ?>
                 </td>
             </tr>
@@ -336,30 +314,22 @@ if(!empty($egroup))
         </form>
         <tr height="26">
             <td colspan="8" bgcolor="#ffffff">
-                &nbsp;
                 <a href='javascript:TogSel();' class='btn btn-success btn-sm'>全选/反选</a>
-                &nbsp;
                 <a href='javascript:DelSel();' class='btn btn-success btn-sm'>删除所选</a>
             </td>
         </tr>
         <tr align="center" bgcolor="#f8f8f8" height="26">
-            <td colspan="8">
-                {dede:pagelist listsize=6/}
-            </td>
+            <td colspan="8">{dede:pagelist listsize='6'/}</td>
         </tr>
     </table>
     <?php
-}
-else
-{
+} else {
 ?>
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1"
         class="table maintable">
         <tr>
             <td height="26" background="../static/web/img/tbg.gif" colspan="8">
-                <div style="float:left">
-                    &nbsp;·<a href='stepselect_main.php'>枚举组列表</a>
-                </div>
+                <div style="float:left">&nbsp;<a href='stepselect_main.php'>枚举组列表</a></div>
                 <div style="float:right"></div>
             </td>
         </tr>
@@ -375,9 +345,9 @@ else
         {dede:datalist}
         <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
             onMouseOut="javascript:this.bgColor='#ffffff';">
-            <td><input type='checkbox' name='ids[]' value='{dede:field.id /}' class='np' /></td>
+            <td><input type='checkbox' mame='ids[]' value='{dede:field.id /}' class='np' /></td>
             <td> {dede:field.id /} </td>
-            <td> <a href='stepselect_main.php?egroup={dede:field.egroup /}'>{dede:field.itemname /}</a> </td>
+            <td> <a href='stepselect_main.php?egroup={dede:field.egroup /}'>{dede:field.itemmame /}</a> </td>
             <td>
                 <?php
                 switch ($fields['issign']) {
@@ -402,9 +372,7 @@ else
         </tr>
         {/dede:datalist}
         <tr align="center" bgcolor="#f8f8f8" height="26">
-            <td colspan="8">
-                {dede:pagelist listsize=6/}
-            </td>
+            <td colspan="8">{dede:pagelist listsize='6'/}</td>
         </tr>
     </table>
     <?php
