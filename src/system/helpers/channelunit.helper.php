@@ -148,13 +148,15 @@ if (!function_exists('GetFileName')) {
         //伪静态文档，Nginx伪静态规则参考：
         //rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;
         //rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
-        if ($cfg_rewrite == 'Y') {
-            //目录版return "/article/".$aid."";
-            //网页版
-            return $GLOBALS['cfg_cmspath'].'/'.$aid.".html";
-        }
+
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
-            return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
+            if ($cfg_rewrite == 'Y') {
+                //目录版return "/article/".$aid."";
+                //网页版
+                return $GLOBALS['cfg_cmspath'].'/'.$aid.".html";
+            } else {
+                return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
+            }
         } else {
             $articleDir = MfTypedir($typedir);
             $articleRule = strtolower($namerule);
