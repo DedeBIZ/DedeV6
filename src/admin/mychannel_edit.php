@@ -126,7 +126,7 @@ else if ($dopost == "exportin") {
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
-    $win->AddTitle("输入规则内容：(导入模型会和原有模型冲突，不过可以在导入后修改)");
+    $win->AddTitle("输入规则内容：导入模型会和原有模型冲突，不过可以在导入后修改");
     $win->AddMsgItem("<textarea name='exconfig' style='width:98%;height:450px;word-wrap: break-word;word-break:break-all;'></textarea>");
     $winform = $win->GetWindow("ok");
     $win->Display();

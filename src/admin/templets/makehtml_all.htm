@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="<?php echo $cfg_soft_lang; ?>">
-<title>一键更新</title>
+<title>更新整站</title>
 <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 <link rel="stylesheet" rel="stylesheet" href="../static/web/css/admin.css">
@@ -62,11 +62,11 @@ function SelUp(){
         <form name="form1" action="makehtml_all.php" target="stafrm" method="post">
             <input type="hidden" name="action" value="make">
             <tr>
-                <td height="30" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">一键更新网站</td>
+                <td height="30" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">更新整站</td>
             </tr>
             <tr>
                 <td width="30%" height="30" bgcolor="#ffffff">更新选项：</td>
-                <td valign="top" bgcolor="#ffffff">
+                <td bgcolor="#ffffff">
                   <label><input name="uptype" id="uptype1" type="radio" value="time" onClick="SelUp()" checked="checked">&nbsp;指定时间的所有更新</label>
                   <label><input name="uptype" id="uptype2" type="radio" onClick="SelUp()" value="id">&nbsp;指定ID文档的所有更新</label>
                   <label><input name="uptype" id="uptype3" type="radio" onClick="SelUp()" value="mkall">&nbsp;更新所有</label>

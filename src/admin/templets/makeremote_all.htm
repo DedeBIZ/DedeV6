@@ -43,13 +43,13 @@ function changeDopost(postval)
       </td>
     </tr>
     <tr>
-      <td width="61" valign="top" bgcolor="#ffffff">
+      <td width="61" bgcolor="#ffffff">
         <label><input type="checkbox" name="remoteiterm" id="remoteiterm"  onChange="javascript:checkAll()"></label>&nbsp;选择
       </td>
-      <td width="185" align="center" valign="top" bgcolor="#ffffff">项目（站点根目录）</td>
-      <td width="265" align="center" valign="top" bgcolor="#ffffff">项目说明</td>
-      <td width="195" align="center" valign="top" bgcolor="#ffffff">选择服务器</td>
-      <td width="196" align="center" valign="top" bgcolor="#ffffff">状态</td>
+      <td width="185" align="center" bgcolor="#ffffff">项目（站点根目录）</td>
+      <td width="265" align="center" bgcolor="#ffffff">项目说明</td>
+      <td width="195" align="center" bgcolor="#ffffff">选择服务器</td>
+      <td width="196" align="center" bgcolor="#ffffff">状态</td>
     </tr>
     <?php
     foreach($remotefile as $key => $value)
@@ -57,11 +57,11 @@ function changeDopost(postval)
     $bgcolor = ($key % 2 == 0)? '#E6F3CD' : '#ffffff';
     ?>
     <tr>
-      <td width="60" align="center" valign="top" bgcolor="<?php echo $bgcolor; ?>"><input name="Iterm[<?php echo $key; ?>]" type="checkbox" id="Iterm" value="<?php echo $value['filedir'] ; ?>"></td>
-      <td width="185" align="left" valign="top" bgcolor="<?php echo $bgcolor; ?>"><?php echo $value['filedir'] ; ?><?php echo ($value['issystem']==1)? '<span style='color:#dc3545'>[系统]</span>' : '' ; ?></td>
-      <td width="260" valign="top" bgcolor="<?php echo $bgcolor; ?>"><?php echo $value['description'] ; ?></td>
-      <td width="190" align="center" valign="top" bgcolor="<?php echo $bgcolor; ?>"><label></label></td>
-      <td width="190" align="center" valign="top" bgcolor="<?php echo $bgcolor; ?>"><?php echo GetState($value['state']) ; ?></td>
+      <td width="60" align="center" bgcolor="<?php echo $bgcolor; ?>"><input name="Iterm[<?php echo $key; ?>]" type="checkbox" id="Iterm" value="<?php echo $value['filedir'] ; ?>"></td>
+      <td width="185" align="left" bgcolor="<?php echo $bgcolor; ?>"><?php echo $value['filedir'] ; ?><?php echo ($value['issystem']==1)? '<span style='color:#dc3545'>[系统]</span>' : '' ; ?></td>
+      <td width="260" bgcolor="<?php echo $bgcolor; ?>"><?php echo $value['description'] ; ?></td>
+      <td width="190" align="center" bgcolor="<?php echo $bgcolor; ?>"><label></label></td>
+      <td width="190" align="center" bgcolor="<?php echo $bgcolor; ?>"><?php echo GetState($value['state']) ; ?></td>
     </tr>
     <?php
     }

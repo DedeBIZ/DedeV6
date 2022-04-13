@@ -35,7 +35,7 @@ require(DEDEADMIN.'/inc/inc_menu_func.php');
 <body>
 	<table width='100%' height="100%" border='0' cellspacing='0' cellpadding='0'>
 		<tr>
-			<td style='padding-left:3px;padding-top:8px' valign="top">
+			<td>
 				<?php
 				GetMenus($cuserLogin->getUserRank(), 'module');
 				?>

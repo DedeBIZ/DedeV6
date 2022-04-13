@@ -14,13 +14,13 @@
       </td>
     </tr>
     <tr>
-      <td height="200" bgcolor="#ffffff" valign="top">
+      <td height="200" bgcolor="#ffffff">
         <table width="80%" border="0" cellspacing="2" cellpadding="2">
           <tr bgcolor="#EBF2DB">
             <td width="100%" bgcolor="#EBF2DB">在封面或主页模板中使用的标记：</td>
           </tr>
           <tr>
-            <td valign="top">
+            <td>
               <table width="600" border="0" cellspacing="0" cellpadding="0">
                 <form name="form1" action="tag_test_action.php" target="stafrm" method="post">
                   <input type="hidden" name="showsource" value="no">
@@ -34,7 +34,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td height="53" align="center" valign="top">
+                    <td height="53" align="center">
                       <button type="submit" name="Submit" class="btn btn-success">提交测试</button>
                     </td>
                   </tr>
@@ -46,7 +46,7 @@
             <td bgcolor="#EBF2DB">在封面或主页模板中使用的JS：</td>
           </tr>
           <tr>
-            <td height="200" valign="top">
+            <td height="200">
               <textarea name="htmlf" cols="60" rows="5" id="htmlf"><script language="javascript" src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea>
             </td>
           </tr>
@@ -54,7 +54,7 @@
             <td bgcolor="#EBF2DB">默认生成的表单HTML：</td>
           </tr>
           <tr>
-            <td height="200" valign="top">
+            <td height="200">
               <textarea name="htmlf" cols="60" rows="10" id="htmlf">
               <?php
               $vt = new DedeVote($aid);

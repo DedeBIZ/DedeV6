@@ -14,7 +14,7 @@
         $('#tagid').select2({
           language: "zh-CN",
           allowClear: true,
-          placeholder:"请选择一个标签",
+          placeholder:"请输入一个标签",
           ajax: {
             url: 'makehtml_taglist.php?action=search',
             delay: 500,
@@ -55,8 +55,8 @@
         $row = $dsql->GetOne("Select tag From `#@__tagindex` where id = '$tagid' ");
       ?>
       <tr>
-        <td width="300" valign="top" bgcolor="#ffffff">输入标签：</td>
-        <td width="380" valign="top" bgcolor="#ffffff">
+        <td width="300" bgcolor="#ffffff">输入标签：</td>
+        <td width="380" bgcolor="#ffffff">
           <input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php">重新选择</a>
         </td>
       </tr>
@@ -64,29 +64,28 @@
       } else {
       ?>
       <tr>
-        <td width="300" valign="top" bgcolor="#ffffff">输入标签：</td>
-        <td width="380" valign="top" bgcolor="#ffffff">
-          <select id='tagid' name='tagid' style='width:260px'></select>（请输入标签搜索）
+        <td width="300" bgcolor="#ffffff">输入标签：</td>
+        <td width="380" bgcolor="#ffffff">
+          <select id='tagid' name='tagid' style='width:260px'></select>
         </td>
       </tr>
       <?php
       }
       ?>
       <tr>
-        <td height="26" valign="top" bgcolor="#ffffff">生成位置：</td>
-        <td height="26" valign="top" bgcolor="#ffffff"><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php" class="text-success">【系统设置】</a>-【其他选项】中“TAGS生成目录”项进行调整</td>
+        <td height="26" bgcolor="#ffffff">生成位置：</td>
+        <td height="26" bgcolor="#ffffff"><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“TAGS生成目录”项进行调整</td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#ffffff">每次最大创建页数：</td>
-        <td height="26" valign="top" bgcolor="#ffffff"><input name="maxpagesize" type="text" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
+        <td height="26" bgcolor="#ffffff">每次最大创建页数：</td>
+        <td height="26" bgcolor="#ffffff"><input name="maxpagesize" type="text" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#ffffff">说明：</td>
-        <td height="26" valign="top" bgcolor="#ffffff">
-          更新所有Tag将会智能更新在[Tag标签管理]中重新获取更新的内容<br>
+        <td height="26" bgcolor="#ffffff">标签说明：</td>
+        <td height="26" bgcolor="#ffffff">
+          生成静态文件后，访问动态文件则直接跳转到静态文件，如果需要动态访问，删除对应文件即可<br>
           Tag首页模板文件：<?php echo $cfg_templets_dir; ?>/<?php echo $cfg_df_style?>/tag.htm<br>
           Tag列表页模板文件：<?php echo $cfg_templets_dir; ?>/<?php echo $cfg_df_style?>/taglist.htm<br>
-          生成静态文件后，访问动态文件则直接跳转到静态文件，如果需要动态访问，删除对应文件即可
         </td>
       </tr>
       <tr>

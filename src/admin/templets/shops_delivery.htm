@@ -79,7 +79,7 @@
                   <input name="m_dname<?php echo $rs['pid']; ?>" type="text" value="<?php echo $rs['dname']; ?>">
                   <a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid']; ?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a>
                 </td>
-                <td width="70%" align="left" valign="top">
+                <td width="70%" align="left">
                   手续费：<input name="m_price<?php echo $rs['pid']; ?>" type="text" id="m_price<?php echo $rs['pid']; ?>" value="<?php echo $rs['price']; ?>" style="width:60px">
                   元
                   <textarea name="m_des<?php echo $rs['pid']; ?>" id="m_des<?php echo $rs['pid']; ?>" style="width:360px;height:50px"><?php echo $rs['des']; ?></textarea>

@@ -42,7 +42,7 @@
     <td height="26" background="../static/web/img/tbg.gif"> <a href="sys_admin_user.php" style="padding-left:10px">管理员帐号</a> &gt; 编辑绩效统计</td>
 </tr>
 <tr>
-  <td valign="top" bgcolor="#ffffff">
+  <td bgcolor="#ffffff">
   <?php
   $dsql->Execute('me', 'Select * From `#@__admin` order by id asc');
   while( $arr = $dsql->GetArray('me') )

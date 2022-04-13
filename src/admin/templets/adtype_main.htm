@@ -12,8 +12,8 @@
       <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px"><input type="hidden" name="dopost" value="save"/>广告分类管理&nbsp;<a href="ad_main.php">[广告管理]</a></td>
     </tr>
     <tr bgcolor="#FBFCE2">
-      <td width="9%" height="26" align="center" valign="top">类型ID</td>
-      <td width="55%" align="center" valign="top">广告分类</td>
+      <td width="9%" height="26" align="center">类型ID</td>
+      <td width="55%" align="center">广告分类</td>
       <td width="36%" align="center">状态</td>
     </tr>
     <?php
@@ -25,8 +25,8 @@
       $k++;
 	?>
     <tr align="center" bgcolor="#ffffff">
-      <td height="26" valign="top"><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"/><?php echo $row->id; ?></td>
-      <td height="26" valign="top"><input name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" type="text" id="pname_<?php echo $k?>" class='pubinputs' style="width:90%"></td>
+      <td height="26"><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"/><?php echo $row->id; ?></td>
+      <td height="26"><input name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" type="text" id="pname_<?php echo $k?>" class='pubinputs' style="width:90%"></td>
       <td><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>"  value="1" checked='1' class='np' /> 保留</td>
     </tr>
     <?php
@@ -34,10 +34,10 @@
 	?>
     <input type="hidden" name="idend" value="<?php echo $k?>">
     <tr bgcolor="#F8FCF1">
-      <td height="26" colspan="5" valign="top" bgcolor="#f8f8f8">新增一个广告类型：</td>
+      <td height="26" colspan="5" bgcolor="#f8f8f8">新增一个广告类型：</td>
     </tr>
     <tr height="26" align="center" bgcolor="#ffffff">
-      <td colspan="2" valign="top"><input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%"></td>
+      <td colspan="2"><input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%"></td>
       <td align="center" bgcolor="#ffffff"><input name="check_new" type="checkbox"  id="check_new" value="1" checked='1' class='np' /> 新增 </td>
     </tr>
     <tr>

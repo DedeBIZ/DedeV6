@@ -29,8 +29,8 @@
         </td>
       </tr>
       <tr>
-        <td width="108" valign="top" bgcolor="#ffffff">选择栏目：</td>
-        <td width="380" valign="top" bgcolor="#ffffff">
+        <td width="108" bgcolor="#ffffff">选择栏目：</td>
+        <td width="380" bgcolor="#ffffff">
         <?php
         if(empty($cid)) $cid="0";
         $tl = new TypeLink($cid);
@@ -49,14 +49,14 @@
         </td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#ffffff">模板文件：</td>
-        <td height="26" valign="top" bgcolor="#ffffff"><input name="templet" type="text" id="templet" value="plus/js.htm" style="width:260px">
+        <td height="26" bgcolor="#ffffff">模板文件：</td>
+        <td height="26" bgcolor="#ffffff"><input name="templet" type="text" id="templet" value="plus/js.htm" style="width:260px">
           <button type="button" class="btn btn-success btn-sm" name="set4" onClick="SelectTemplets('form1.templet');">浏览</button>
         </td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#ffffff">更新选项：</td>
-        <td height="26" valign="top" bgcolor="#ffffff">
+        <td height="26" bgcolor="#ffffff">更新选项：</td>
+        <td height="26" bgcolor="#ffffff">
           <label><input type="radio" name="uptype" value="all" class="np">
           更新所有栏目</label>
           <label><input name="uptype" type="radio" value="onlyme" class="np" checked>
