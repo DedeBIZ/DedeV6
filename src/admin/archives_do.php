@@ -343,19 +343,19 @@ else if ($dopost == 'moveArchives') {
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
         echo "<table width='100%' style='display:inline-block;z-index:9000'>";
         ?>
-        <tr height='26'>
-            <td width="86" class='bline'>&nbsp;目标栏目：</td>
-            <td class='bline'><?php echo $typeOptions; ?></td>
+        <tr>
+            <td width="86" height="26" class="bline">&nbsp;目标栏目：</td>
+            <td class="bline"><?php echo $typeOptions; ?></td>
         </tr>
-        <tr height='26'>
-            <td width="86" class='bline'>&nbsp;文档ID：</td>
-            <td class='bline'>
+        <tr>
+            <td width="86" height="26" class="bline">&nbsp;文档ID：</td>
+            <td class="bline">
                 <input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'>
                 <br>移动到的目标栏目必须和选定的文档频道类型一致，否则程序会自动勿略不符合的文档
             </td>
         </tr>
-        <tr height='36'>
-            <td colspan='2' align='center' class='py-3'>
+        <tr>
+            <td colspan="2" align="center" class="py-3">
                 <button type='submit' class='btn btn-success'>保存</button>
                 <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
             </td>
@@ -548,9 +548,9 @@ else if ($dopost == 'quickEdit') {
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
     ?>
-    <tr height='26'>
-        <td width="86" class='bline'>&nbsp;所属栏目：</td>
-        <td class='bline'>
+    <tr>
+        <td width="86" height="26" class="bline">&nbsp;所属栏目：</td>
+        <td class="bline">
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
             echo "<select name='typeid' style='width:320px'>";
@@ -560,9 +560,9 @@ else if ($dopost == 'quickEdit') {
             ?>
         </td>
     </tr>
-    <tr height='26'>
-        <td width="86" class='bline'>&nbsp;属性：</td>
-        <td class='bline'>
+    <tr>
+        <td width="86" height="26" class="bline">&nbsp;属性：</td>
+        <td class="bline">
             <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -577,17 +577,17 @@ else if ($dopost == 'quickEdit') {
             ?>
         </td>
     </tr>
-    <tr height='26'>
-        <td width="86" class='bline'>&nbsp;标题：</td>
-        <td class='bline'><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
+    <tr>
+        <td width="86" height="26" class="bline">&nbsp;标题：</td>
+        <td class="bline"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
     </tr>
-    <tr height='26'>
-        <td width="86" class='bline'>&nbsp;简略标题：</td>
-        <td class='bline'><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
+    <tr>
+        <td width="86" height="26" class="bline">&nbsp;简略标题：</td>
+        <td class="bline"><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
     </tr>
-    <tr height='26'>
-        <td width="86" class='bline'>&nbsp;阅读权限：</td>
-        <td class='bline'>
+    <tr>
+        <td width="86" height="26" class="bline">&nbsp;阅读权限：</td>
+        <td class="bline">
             <select name="arcrank" id="arcrank" style="width:100px">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>
                 <?php echo $arcRow["rankname"] ?> </option>
@@ -603,12 +603,12 @@ else if ($dopost == 'quickEdit') {
             需要金币：<input name="money" type="text" id="money" value="<?php echo $arcRow["money"]; ?>" style="width:100px">
         </td>
     </tr>
-    <tr height='26'>
-        <td width="86" class='bline'>&nbsp;关键词：</td>
-        <td class='bline'><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
+    <tr>
+        <td width="86" height="26" class="bline">&nbsp;关键词：</td>
+        <td class="bline"><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
-    <tr height='36'>
-        <td colspan='2' align='center' class='py-3'>
+    <tr>
+        <td colspan="2" align="center" class="py-3">
             <button type='submit' class='btn btn-success'>保存</button>
             <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
         </td>
@@ -865,9 +865,9 @@ else if ($dopost == 'attsDlg') {
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
 ?>
-    <tr height='26'>
-        <td width="86" class='bline'>&nbsp;属性：</td>
-        <td class='bline'>
+    <tr>
+        <td width="86" height="26" class="bline">&nbsp;属性：</td>
+        <td class="bline">
             <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -879,12 +879,12 @@ else if ($dopost == 'attsDlg') {
             ?>
         </td>
     </tr>
-    <tr height='26'>
-        <td width="86" class='bline'>&nbsp;文档ID：</td>
-        <td class='bline'><input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'></td>
+    <tr>
+        <td width="86" height="26" class="bline">&nbsp;文档ID：</td>
+        <td class="bline"><input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'></td>
     </tr>
-    <tr height='36'>
-        <td colspan='2' align='center' class='py-3'>
+    <tr>
+        <td colspan="2" align="center" class="py-3">
             <button type='submit' class='btn btn-success'>保存</button>
             <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
         </td>

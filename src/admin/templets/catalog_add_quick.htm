@@ -118,8 +118,8 @@
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>
-              <td width="160" class='bline' height="26" style="padding-left:10px">是否支持投稿：</td>
-              <td class='bline'>
+              <td width="160" class="bline" height="26" style="padding-left:10px">是否支持投稿：</td>
+              <td class="bline">
                 <label><input type='radio' name='issend' value='0' class='np' />
                 不支持</label>
                 &nbsp;
@@ -127,8 +127,8 @@
                 支持</label> </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px">目录保存位置：</td>
-              <td class='bline'>
+              <td class="bline" height="26" style="padding-left:10px">目录保存位置：</td>
+              <td class="bline">
                 <input name="referpath" type="radio" id="truepath1" class="np" value="parent" checked='1' />
                 <label for="truepath1">默认HMTL目录（
                 <?php
@@ -145,8 +145,8 @@
                 </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px">隶属栏目：</td>
-              <td class='bline'>
+              <td class="bline" height="26" style="padding-left:10px">隶属栏目：</td>
+              <td class="bline">
                 <select name='reid' onchange="showSeltype(this)">
                   <option value='0'>选择所属目录</option>
                   <?php echo $typeOptions; ?>
@@ -154,8 +154,8 @@
               </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px">内容模型：&nbsp; </td>
-              <td class='bline'><select name="channeltype" id="channeltype" style="width:260px" onChange="ParTemplet(this)">
+              <td class="bline" height="26" style="padding-left:10px">内容模型：&nbsp; </td>
+              <td class="bline"><select name="channeltype" id="channeltype" style="width:260px" onChange="ParTemplet(this)">
                 <?php
                 foreach($channelArray as $k=>$arr)
                 {
@@ -167,8 +167,8 @@
               </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px">栏目列表选项：</td>
-              <td class='bline'>
+              <td class="bline" height="26" style="padding-left:10px">栏目列表选项：</td>
+              <td class="bline">
                 <label><input type='radio' name='isdefault' value='1' class='np' checked='1' />
                 链接到默认页</label>
                 <label><input type='radio' name='isdefault' value='0' class='np' />
@@ -178,8 +178,8 @@
               </td>
             </tr>
             <tr>
-              <td class='bline' height="26" style="padding-left:10px">默认页的名称：</td>
-              <td class='bline'><input name="defaultname" type="text" value="index.html" class="pubinputs"></td>
+              <td class="bline" height="26" style="padding-left:10px">默认页的名称：</td>
+              <td class="bline"><input name="defaultname" type="text" value="index.html" class="pubinputs"></td>
             </tr>
             <tr id='helpvar2' style='display:none'>
               <td height="26" bgcolor="#F3F7EA" style="padding-left:10px">支持变量：</td>
@@ -193,8 +193,8 @@
               </td>
             </tr>
             <tr>
-              <td height="26" class='bline' style="padding-left:10px">文章命名规则：</td>
-              <td class='bline'><input name="namerule" type="text" id="namerule" value="{typedir}/{Y}{M}{D}/{aid}.html"
+              <td height="26" class="bline" style="padding-left:10px">文章命名规则：</td>
+              <td class="bline"><input name="namerule" type="text" id="namerule" value="{typedir}/{Y}{M}{D}/{aid}.html"
                   size="40" class="pubinputs">
                 <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:pointer" onClick="ShowHide('helpvar2')"></td>
             </tr>
