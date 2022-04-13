@@ -59,7 +59,7 @@ class SiteMap
             if ($maptype == "site") {
                 $typelink = GetTypeUrl($row->id, MfTypedir($row->typedir), $row->isdefault, $row->defaultname, $row->ispart, $row->namerule2, $row->moresite, $row->siteurl, $row->sitepath);
             } else {
-                $typelink = $GLOBALS['cfg_cmsurl']."/data/rss/".$row->id.".xml";
+                $typelink = $GLOBALS['cfg_cmsurl']."/static/rss/".$row->id.".xml";
             }
             $mapString .= "<div class=\"linkbox\">\r\n<h3><a href='$typelink'>".$row->typename."</a></h3>";
             $mapString .= "\t<ul class=\"f6\">\t\t\r".$this->LogicListAllSunType($row->id, $maptype)."\t\n</ul></div>\r\n";
@@ -88,7 +88,7 @@ class SiteMap
             if ($maptype == "site") {
                 $typelink = GetTypeUrl($row->id, MfTypedir($row->typedir), $row->isdefault, $row->defaultname, $row->ispart, $row->namerule2, $row->moresite, $row->siteurl, $row->sitepath);
             } else {
-                $typelink = $GLOBALS['cfg_cmsurl']."/data/rss/".$row->id.".xml";
+                $typelink = $GLOBALS['cfg_cmsurl']."/static/rss/".$row->id.".xml";
             }
             $mapString .= "<li><a href='$typelink'>".$row->typename."</a></li>\n\t\t";
             $mapString .= $this->LogicListAllSunType($row->id, $maptype);

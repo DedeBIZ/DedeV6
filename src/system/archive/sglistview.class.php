@@ -81,7 +81,7 @@ class SgListView
             $this->ListFields = explode(',', $listfield);
             //设置一些全局参数的值
             foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
-            $this->Fields['rsslink'] = $GLOBALS['cfg_cmsurl']."/data/rss/".$this->TypeID.".xml";
+            $this->Fields['rsslink'] = $GLOBALS['cfg_cmsurl']."/static/rss/".$this->TypeID.".xml";
             //设置环境变量
             SetSysEnv($this->TypeID, $this->Fields['typename'], 0, '', 'list');
             $this->Fields['typeid'] = $this->TypeID;

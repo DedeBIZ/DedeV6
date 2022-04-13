@@ -87,7 +87,7 @@ class RssView
      */
     function MakeRss($isremote = 0)
     {
-        $murl = $GLOBALS['cfg_cmspath']."/data/rss/".$this->TypeID.".xml";
+        $murl = $GLOBALS['cfg_cmspath']."/static/rss/".$this->TypeID.".xml";
         $mfile = $GLOBALS['cfg_basedir'].$murl;
         $this->dtp->SaveTo($mfile);
         return $murl;
