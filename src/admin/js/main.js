@@ -157,11 +157,9 @@ function SelectKeywords(f) {
 function InitPage() {
 	var selsource = $Obj('selsource');
 	var selwriter = $Obj('selwriter');
-	var titlechange = $Obj('title');
 	var colorbt = $Obj('color');
 	if (selsource) { selsource.onmousedown = function (e) { SelectSource(e); } }
 	if (selwriter) { selwriter.onmousedown = function (e) { SelectWriter(e); } }
-	if (titlechange) { titlechange.onchange = function (e) { TestHasTitle(e); } }
 }
 function OpenMyWin(surl) {
 	var pos = GetWinPos(800,600);
@@ -255,9 +253,6 @@ function LoadNewDiv(e, surl, oname) {
 	if (newobj.innerHTML.length < 10) {
 		fetch(surl).then(resp => resp.text()).then((d) => { newobj.innerHTML = d });
 	}
-}
-function TestHasTitle(e) {
-	LoadNewDiv2(e, 'article_test_title.php?t=' + $Obj('title').value, 'mytitle', "dlgTesttitle");
 }
 function LoadNewDiv2(e, surl, oname, dlgcls) {
 	var posLeft = 300;

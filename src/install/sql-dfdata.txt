@@ -4004,7 +4004,6 @@ INSERT INTO `#@__sysconfig` VALUES
 ('60','cfg_arc_autopic','提取第一张图片作为缩略图','7','bool','Y'),
 ('61','cfg_arc_autokeyword','自动提取关键词','7','bool','N'),
 ('62','cfg_title_maxlen','文档标题最大长度，变量后需要手工修改数据表','7','number','250'),
-('63','cfg_check_title','是否检测发布文档时重复标题','7','bool','Y'),
 ('64','cfg_album_row','图集多行多列样式默认行数','3','number','3'),
 ('65','cfg_album_col','图集多行多列样式默认列数','3','number','4'),
 ('66','cfg_album_pagesize','图集多页多图每页显示最大数','3','number','12'),

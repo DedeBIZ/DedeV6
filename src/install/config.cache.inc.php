@@ -60,7 +60,6 @@ $cfg_arc_autopic = 'Y';
 $cfg_arc_autokeyword = 'Y';
 $cfg_title_maxlen = 60;
 $cfg_album_width = 800;
-$cfg_check_title = 'Y';
 $cfg_album_row = 3;
 $cfg_album_col = 4;
 $cfg_album_pagesize = 12;
