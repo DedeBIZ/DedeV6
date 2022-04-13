@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 错误提交
  *
  * @version        $Id: erraddsave.php$
@@ -11,7 +10,6 @@
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 require_once(DEDEINC.'/memberlogin.class.php');
-
 $dopost = isset($dopost) ? $dopost : "";
 $aid = isset($aid) ? intval($aid) : 0;
 if (empty($aid)) {
@@ -22,7 +20,6 @@ if (empty($aid)) {
     ));
     exit;
 }
-
 if ($dopost == "saveedit") {
     $cfg_ml = new MemberLogin();
     $title = HtmlReplace($title);
@@ -39,10 +36,9 @@ if ($dopost == "saveedit") {
         ));
         exit;
     }
-
     $time = time();
     $query = "INSERT INTO `#@__erradd`(aid,mid,title,type,errtxt,oktxt,sendtime)
-                  VALUES ('$aid','$mid','$title','$type','$err','$oktxt','$time'); ";
+        VALUES ('$aid','$mid','$title','$type','$err','$oktxt','$time'); ";
     $dsql->ExecuteNoneQuery($query);
     if (!empty($format)) {
         echo json_encode(array(
@@ -52,7 +48,6 @@ if ($dopost == "saveedit") {
     } else {
         ShowMsg("谢谢您对本网站的支持，我们会尽快处理您的建议", "javascript:window.close();");
     }
-
     exit();
 } else {
     echo json_encode(array(

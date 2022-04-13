@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 广告JS调用方式
  *
  * @version        $Id: ad_js.php 1 20:30 2010年7月8日Z tianya $
@@ -10,11 +9,9 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
-
 if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 if ($aid == 0) die('dedebiz');
-
 $cacheFile = DEDEDATA.'/cache/myad-'.$aid.'.htm';
 if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile) > $cfg_puccache_time) {
     $row = $dsql->GetOne("SELECT * FROM `#@__myad` WHERE aid='$aid' ");

@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 信息推荐
  *
  * @version        $Id: recommend.php$
@@ -16,12 +15,10 @@ unset($_FILES);
 if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid) ? $aid : 0);
 $type = (!isset($type) ? "" : $type);
-
 if (empty($aid)) {
     ShowMsg("文档ID不能为空!", "-1");
     exit();
 }
-
 //读取文档信息
 if ($action == '') {
     //读取文档信息
@@ -32,7 +29,6 @@ if ($action == '') {
     }
     extract($arcRow, EXTR_OVERWRITE);
 }
-
 //发送推荐信息
 else if ($action == 'send') {
     if (!CheckEmail($email)) {

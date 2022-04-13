@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 高级搜索
  *
  * @version        $Id: advancedsearch.php 1 15:38 2010年7月8日Z tianya $
@@ -13,7 +12,6 @@ require_once(dirname(__FILE__)."/../system/common.inc.php");
 require_once(DEDEINC."/datalistcp.class.php");
 $timestamp = time();
 @session_start();
-
 //限制同时搜索数量
 $timelock = DEDEDATA.'/time.lock';
 if ($cfg_allsearch_limit < 1) {
@@ -28,12 +26,10 @@ if (file_exists($timelock)) {
 @touch($timelock, $timestamp);
 $mid = isset($mid) && is_numeric($mid) ? $mid : 0;
 $sqlhash = isset($sqlhash) && preg_match("/^[A-Za-z0-9]+$/", $sqlhash) ? $sqlhash : '';
-
 if ($mid == 0) {
     showmsg('参数不正确，高级自定义搜索必须指定模型id', 'javascript');
     exit();
 }
-
 $query = "SELECT maintable, mainfields, addontable, addonfields, template FROM `#@__advancedsearch` WHERE mid='$mid'";
 $searchinfo = $dsql->GetOne($query);
 if (!is_array($searchinfo)) {
@@ -42,7 +38,6 @@ if (!is_array($searchinfo)) {
 }
 $template = $searchinfo['template'] != '' ?  $searchinfo['template'] : 'advancedsearch.htm';
 $sql = empty($_SESSION[$sqlhash]) ? '' : $_SESSION[$sqlhash];
-
 if (empty($sql)) {
     //主表字段处理
     $q = stripslashes($q);
@@ -62,11 +57,9 @@ if (empty($sql)) {
     $enddate = isset($enddate) ? trim($enddate) : '';
     if ($startdate != '') $starttime = strtotime($startdate);
     else $starttime = 0;
-
     if ($enddate != '') $endtime = strtotime($enddate);
     else $endtime = 0;
     $where = ' WHERE main.arcrank>-1 ';
-
     if ($q != '') $where .= " AND main.title LIKE '%$q%' ";
     if ($iscommend == 1) $where .= " AND FIND_IN_SET('c', main.flag)>0 ";
     if (!empty($typeid)) {
@@ -100,7 +93,6 @@ if (empty($sql)) {
     $mainfieldsarr = explode(',', $mainfields);
     $addonfieldsarr = explode(',', $addonfields);
     array_pop($addonfieldsarr); //弹出
-
     $intarr = array('int', 'float');
     $textarr = array('textdata', 'textchar', 'text', 'htmltext', 'multitext');
     foreach ($addonfieldsarr as $addonfield) {
@@ -185,12 +177,10 @@ if (empty($sql)) {
     $sql = urldecode($sql);
     $query = $sql;
 }
-
 $sql = urlencode($sql);
 //生成sql的唯一序列化字符串,并将sql语句记录到session中去
 $sqlhash = md5($sql);
 $_SESSION[$sqlhash] = $sql;
-
 $dlist = new DataListCP();
 $dlist->pageSize = 20;
 $dlist->SetParameter("hash", $sqlhash);
@@ -203,7 +193,6 @@ if (file_exists(DEDEROOT."/theme/templets/$template")) {
 $dlist->SetTemplate($templatefile);
 $dlist->SetSource($query);
 require_once(DEDEINC."/channelunit.class.php");
-
 //获得一个指定档案的链接
 function GetArcUrl($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $artdir = '', $money = 0)
 {

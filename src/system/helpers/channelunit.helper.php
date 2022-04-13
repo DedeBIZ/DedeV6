@@ -140,15 +140,14 @@ if (!function_exists('GetFileName')) {
     function GetFileName($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '', $money = 0, $filename = '')
     {
         global $cfg_rewrite, $cfg_cmspath, $cfg_arcdir, $cfg_special, $cfg_arc_dirname;
-        //没指定栏目时用固定规则（专题）
+        //没指定栏目时用固定专题规则
         if (empty($namerule)) {
-            $namerule = $cfg_special.'/arc-{aid}.html';
+            $namerule = $cfg_special.'/{aid}.html';
             $typeid = -1;
         }
         //伪静态文档，Nginx伪静态规则参考：
         //rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;
         //rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
-
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
             if ($cfg_rewrite == 'Y') {
                 //目录版return "/article/".$aid."";
@@ -215,7 +214,6 @@ if (!function_exists('GetTypeUrl')) {
             //网页版
             return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
         }
-
         if($isdefault==-1) {
             //动态
             $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;

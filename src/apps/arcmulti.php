@@ -2,13 +2,10 @@
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 require_once(DEDEINC.'/channelunit.class.php');
 require_once(DEDEINC.'/taglib/arcpagelist.lib.php');
-
 $mtype = empty($mtype)? 0 : intval(preg_replace("/[^\d]/",'', $mtype));
 $pnum = empty($pnum)? 0 : intval(preg_replace("/[^\d]/",'', $pnum));
 $tagid = empty($tagid)? '' : (preg_replace("/[^a-z0-9]/",'', $tagid));
-
 if($tagid=='' || $pnum==0) die("dedebiz");
-
 if($tagid !='')
 {
     $row = $dsql->GetOne("SELECT * FROM `#@__arcmulti` WHERE tagid='$tagid'");
@@ -17,21 +14,18 @@ if($tagid !='')
     //取出属性并解析为变量
     $attarray = unserialize($row['attstr']);
     extract($attarray, EXTR_SKIP);
-
     $artlist = '';
     //通过页面及总数解析当前页面数据范围
     $strnum = ($pnum-1) * $row['pagesize'];
     $limitsql = " LIMIT $strnum,{$row['pagesize']} ";
-    
     if($mtype == 0)
     {
       //处理列表内容项
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,
-            tp.moresite,tp.siteurl,tp.sitepath
-            {$row['addfieldsSql']}
-             FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-             {$row['addfieldsSqlJoin']}
-          WHERE arc.id IN({$row['arcids']}) {$row['ordersql']} $limitsql";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+        {$row['addfieldsSql']}
+            FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
+            {$row['addfieldsSqlJoin']}
+            WHERE arc.id IN({$row['arcids']}) {$row['ordersql']} $limitsql";
         $dsql->SetQuery($query);
         $dsql->Execute('al');
         $dtp2 = new DedeTagParse();
@@ -39,7 +33,6 @@ if($tagid !='')
         $dtp2->LoadString($row['innertext']);
         $GLOBALS['autoindex'] = 0;
         $ids = array();
-    
         for($i=0; $i<$line; $i++)
         {
             if($col>1) $artlist .= "<tr>\r\n";
@@ -52,18 +45,14 @@ if($tagid !='')
                     //处理一些特殊字段
                     $row['info'] = $row['infos'] = cn_substr($row['description'],$infolen);
                     $row['id'] =  $row['id'];
-
                     if($row['corank'] > 0 && $row['arcrank']==0)
                     {
                         $row['arcrank'] = $row['corank'];
                     }
-
                     $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'],$row['typeid'],$row['senddate'],$row['title'],$row['ismake'],
                     $row['arcrank'],$row['namerule'],$row['typedir'],$row['money'],$row['filename'],$row['moresite'],$row['siteurl'],$row['sitepath']);
-
                     $row['typeurl'] = GetTypeUrl($row['typeid'],$row['typedir'],$row['isdefault'],$row['defaultname'],$row['ispart'],
                     $row['namerule2'],$row['moresite'],$row['siteurl'],$row['sitepath']);
-
                     if($row['litpic'] == '-' || $row['litpic'] == '')
                     {
                         $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/defaultpic.jpg';
@@ -82,13 +71,10 @@ if($tagid !='')
                     if($row['color']!='') $row['title'] = "<span style='color:".$row['color']."'>".$row['title']."</span>";
                     if(preg_match('#b#', $row['flag'])) $row['title'] = "".$row['title']."";
                     //$row['title'] = "".$row['title']."";
-
                     $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
-
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
-
                     if(is_array($dtp2->CTags))
                     {
                         foreach($dtp2->CTags as $k=>$ctag)
@@ -116,15 +102,13 @@ if($tagid !='')
         }//loop line
         if($col>1) $artlist .= "    </table>\r\n";
         $dsql->FreeResult("al");    
-    } else 
-    {
+    } else {
         //处理分页字段
         $artlist .= '<div id="page_'.$tagid.'">';
         $artlist .= multipage($totalnum, $pnum, $row['pagesize'], $tagid);
         $artlist .= '</div>';
     }
 }
-
 AjaxHead();
 echo $artlist;
 exit();

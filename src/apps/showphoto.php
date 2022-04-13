@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 显示图片
  *
  * @version        $Id: showphoto.php$
@@ -11,17 +10,14 @@
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 require_once(DEDEINC."/channelunit.class.php");
-
 if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 if ($aid == 0) die("dedebiz");
-
 //读取文档信息
 $arctitle = '';
 $arcurl = '';
 $topid = 0;
-$arcRow = $dsql->GetOne("SELECT arc.title,arc.senddate,arc.arcrank,arc.ismake,arc.money,arc.typeid,tp.topid,tp.typedir,tp.namerule,
-                 tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc  LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.id='$aid'");
+$arcRow = $dsql->GetOne("SELECT arc.title,arc.senddate,arc.arcrank,arc.ismake,arc.money,arc.typeid,tp.topid,tp.typedir,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc  LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.id='$aid'");
 if (is_array($arcRow)) {
     $arctitle = $arcRow['title'];
     $topid = $arcRow['topid'];

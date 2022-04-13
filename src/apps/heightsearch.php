@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 高级搜索
  *
  * @version        $Id: heightsearch.php$

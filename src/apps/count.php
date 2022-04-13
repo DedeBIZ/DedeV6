@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 文档统计
  *
  * 如果想显示点击次数,请增加view参数,即把下面ＪＳ调用放到文档模板适当位置
@@ -16,15 +15,12 @@
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 if (isset($aid)) $arcID = $aid;
-
 $cid = empty($cid) ? 1 : intval($cid);
 $arcID = $aid = empty($arcID) ? 0 : intval($arcID);
 $format = isset($format) ? $format : "";
-
 $maintable = '#@__archives';
 $idtype = 'id';
 if ($aid == 0) exit();
-
 //获得频道模型ID
 if ($cid < 0) {
     $row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$cid' AND issystem='-1';");
@@ -32,7 +28,6 @@ if ($cid < 0) {
     $idtype = 'aid';
 }
 $mid = (isset($mid) && is_numeric($mid)) ? $mid : 0;
-
 //UpdateStat();
 if (!empty($maintable)) {
     $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET click=click+1 WHERE {$idtype}='$aid' ");

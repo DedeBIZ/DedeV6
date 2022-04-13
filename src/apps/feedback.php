@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 评论
  *
  * @version        $Id: feedback.php$
@@ -43,9 +42,6 @@ if (empty($aid) && empty($fid)) {
 include_once(DEDEINC."/memberlogin.class.php");
 $cfg_ml = new MemberLogin();
 //查看评论
-/*
-function __ViewFeedback(){ }
-*/
 if ($action == '' || $action == 'show') {
     //读取文档信息
     $arcRow = GetOneArchive($aid);
@@ -83,9 +79,6 @@ if ($action == '' || $action == 'show') {
     exit;
 }
 //发表评论
-/*
-function __SendFeedback(){ }
-*/
 else if ($action == 'send') {
     //读取文档信息
     $arcRow = GetOneArchive($aid);

@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 自定义表单
  *
  * @version        $Id: diy.php$
