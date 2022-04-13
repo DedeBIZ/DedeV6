@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>站内新闻发布</title>
-<link rel='stylesheet' href='../static/web/css/admin.css'>
+<link rel="stylesheet" href="../static/web/css/admin.css">
 <script>
 function checkSubmit()
 {
@@ -71,7 +71,7 @@ function checkSubmit()
             <td  align="left"><input name="sdate" type="text" id="sdate" size="25" value="<?php echo GetDateTimeMk($myNews['senddate'])?>"></td>
           </tr>
           <tr> 
-            <td height="172" valign="top" align="right">信息内容：</td>
+            <td height="172" align="right">信息内容：</td>
             <td height="172"> 
               <?php
 	GetEditor("body",$myNews['body'],250,"Small");

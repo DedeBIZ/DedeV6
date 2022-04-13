@@ -25,8 +25,8 @@
         </td>
       </tr>
       <tr bgcolor="#FBFCE2">
-        <td width="22%" height="26" align="center" valign="top">产品名称</td>
-        <td width="23%" align="center" valign="top">会员级别</td>
+        <td width="22%" height="26" align="center">产品名称</td>
+        <td width="23%" align="center">会员级别</td>
         <td width="21%" align="center">产品价格</td>
         <td width="18%" align="center">会员期限(天)</td>
         <td width="16%" align="center">状态</td>
@@ -41,10 +41,10 @@
 	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
       <tr align="center" bgcolor="#ffffff">
-        <td height="26" valign="top">
+        <td height="26">
           <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" style="width:90%" class='pubinputs' />
         </td>
-        <td height="26" valign="top">
+        <td height="26">
           <select name='rank_<?php echo $k?>' id='rank_<?php echo $k?>' style='width:90%' />
           <?php
           foreach($arcranks as $kkk=>$vvv){
@@ -79,13 +79,13 @@
 	?>
       <input type="hidden" name="idend" value="<?php echo $k?>">
       <tr bgcolor="#f8f8f8">
-        <td height="26" colspan="5" valign="top">&nbsp;新增一个会员产品类型：</td>
+        <td height="26" colspan="5">&nbsp;新增一个会员产品类型：</td>
       </tr>
       <tr height="26" align="center" bgcolor="#ffffff">
-        <td valign="top">
+        <td>
           <input name="pname_new" type="text" id="pname_new" style="width:90%" class='pubinputs' />
         </td>
-        <td valign="top">
+        <td>
           <select name='rank_new' id='rank_new' style='width:90%'>
             <?php
           foreach($arcranks as $kkk=>$vvv){
@@ -94,11 +94,11 @@
 	   	?>
           </select>
         </td>
-        <td valign="top">
+        <td>
           <input name="money_new" type="text" id="money_new" style='width:80%' value="100" class='pubinputs' />
           （元）
         </td>
-        <td valign="top">
+        <td>
           <select name='exptime_new' id='exptime_new' style='width:90%'>
             <?php
           foreach($times as $kkk=>$vvv){
@@ -116,8 +116,8 @@
         <td height="26" colspan="5" bgcolor="#ffffff"></td>
       </tr>
       <tr>
-        <td height="30" colspan="5" align="center" bgcolor="#f8f8f8">
-          <button type="submit" class="btn btn-success">确定</button>
+        <td bgcolor="#f8f8f8" colspan="5" align="center" class="py-3">
+          <button type="submit" class="btn btn-success">保存</button>
         </td>
       </tr>
     </form>

@@ -50,7 +50,7 @@
       <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="vote_main.php">投票管理</a> &gt; 增加投票&nbsp;&nbsp;</td>
     </tr>
     <tr>
-      <td height="200" bgcolor="#ffffff" valign="top">
+      <td height="200" bgcolor="#ffffff">
         <form name="form1" method="post" action="vote_edit.php">
           <input type="hidden" name="dopost" value="saveedit">
           <input type="hidden" name="aid" value="<?php echo $aid?>">
@@ -58,8 +58,7 @@
           <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
             <tr>
               <td width="15%" align="center">投票名称：</td>
-              <td width="85%"> <input name="votename" type="text" id="votename" value="<?php echo $row['votename']?>">
-              </td>
+              <td width="85%"><input name="votename" type="text" id="votename" value="<?php echo $row['votename']?>"></td>
             </tr>
             <tr>
               <td align="center">投票总人数：</td>
@@ -75,38 +74,38 @@
             </tr>
             <tr>
               <td align="center">是否允许游客投票：</td>
-              <td> <label><input name="isallow" type="radio" class="np" value="0"
-                  <?php if($row['isallow']==0) echo " checked"; ?>>
+              <td>
+                <label><input name="isallow" type="radio" class="np" value="0" <?php if($row['isallow']==0) echo " checked"; ?>>
                 是</label> 　
-                <label><input type="radio" name="isallow" class="np" value="1"
-                  <?php if($row['isallow']==1) echo " checked"; ?>>
+                <label><input type="radio" name="isallow" class="np" value="1" <?php if($row['isallow']==1) echo " checked"; ?>>
                 否</label></td>
             </tr>
             <tr>
               <td align="center">是否允许查看投票：</td>
-              <td> <label><input name="view" type="radio" class="np" value="0" <?php if($row['view']==0) echo " checked"; ?>>
+              <td>
+                <label><input name="view" type="radio" class="np" value="0" <?php if($row['view']==0) echo " checked"; ?>>
                 是</label> 　
                 <label><input type="radio" name="view" class="np" value="1" <?php if($row['view']==1) echo " checked"; ?>>
-                否</label></td>
+                否</label>
+              </td>
             </tr>
             <tr>
               <td align="center">投票时间间隔：</td>
-              <td><input name="spec" type="text" value="<?php echo $row['spec'] ?>" class="spec">
-                (N天后可再次投票，0 表示此IP地址只能投一次)</td>
+              <td><input name="spec" type="text" value="<?php echo $row['spec'] ?>" class="spec">（N天后可再次投票，0 表示此IP地址只能投一次）</td>
             </tr>
             <tr>
               <td align="center">是否多选：</td>
-              <td> <label><input name="ismore" type="radio" class="np" value="0"
-                  <?php if($row['ismore']==0) echo " checked"; ?>>
+              <td>
+                <label><input name="ismore" type="radio" class="np" value="0" <?php if($row['ismore']==0) echo " checked"; ?>>
                 单选</label>
                 <label><input type="radio" name="ismore" class="np" value="1" <?php if($row['ismore']==1) echo " checked"; ?>>
-                多选</label> </td>
+                多选</label>
+              </td>
             </tr>
             <tr>
               <td align="center">投 票 项：<br>
-                (请按相同的形式来增加或修改节点，其中属性：id不能重复) </td>
-              <td><textarea name="votenote" rows="8" id="votenote" style="width:80%"><?php echo $row['votenote']?></textarea>
-              </td>
+              （请按相同的形式来增加或修改节点，其中属性：id不能重复）</td>
+              <td><textarea name="votenote" rows="8" id="votenote" style="width:80%"><?php echo $row['votenote']?></textarea></td>
             </tr>
             <tr>
               <td align="center">是否启用：</td>
@@ -116,11 +115,11 @@
                 是</label> 　
                 <label><input type="radio" name="isenable" class="np" value="1"
                   <?php if($row['isenable']==1) echo " checked"; ?>>
-                否</label></td>
+                否</label>
+              </td>
             </tr>
             <tr>
-              <td height="36"></td>
-              <td>
+              <td align="center" class="py-3">
                 <button type="submit" name="Submit" class="btn btn-success">保存投票数据</button>
                 <button type="button" onclick="history.back()" name="Submit" class="btn btn-success">返回</button>
               </td>

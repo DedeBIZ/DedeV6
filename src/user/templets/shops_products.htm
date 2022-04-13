@@ -41,55 +41,55 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td width="15%" align="right" valign="top">订单号：</td>
+                        <td width="15%" align="right">订单号：</td>
                         <td><?php echo $oid?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">支付方式：</td>
+                        <td align="right">支付方式：</td>
                         <td><?php echo GetSta($row['state'],$oid)?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">单价（元/单位）：</td>
+                        <td align="right">单价（元/单位）：</td>
                         <td><?php echo $row['uprice']?>元</td>
                       </tr>
                        <tr>
-                        <td align="right" valign="top">数量：</td>
+                        <td align="right">数量：</td>
                         <td><?php echo $row['cartcount']?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">配送：</td>
+                        <td align="right">配送：</td>
                         <td><?echo $row['dname'];?> 费用:<?php echo $row['dprice']?>元</td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">总计：</td>
+                        <td align="right">总计：</td>
                         <td><?php echo $row['priceCount']?>元</td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">发生时间：</td>
+                        <td align="right">发生时间：</td>
                         <td><?php echo GetDateTimeMk($row['stime'])?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">收货人：</td>
+                        <td align="right">收货人：</td>
                         <td><?php echo $row['consignee']?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">地址：</td>
+                        <td align="right">地址：</td>
                         <td><?php echo $row['address']?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">邮编：</td>
+                        <td align="right">邮编：</td>
                         <td><?php echo $row['zip']?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">联系电话：</td>
+                        <td align="right">联系电话：</td>
                         <td><?php echo $row['tel']?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">邮箱：</td>
+                        <td align="right">邮箱：</td>
                         <td><?php echo $row['email']?></td>
                       </tr>
                       <tr>
-                        <td align="right" valign="top">留言：</td>
+                        <td align="right">留言：</td>
                         <td><?php echo $row['des']?></td>
                       </tr>
                     </tbody>

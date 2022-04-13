@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 搜索页
  *
  * @version        $Id: search.php$

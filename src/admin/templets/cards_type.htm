@@ -15,8 +15,8 @@
         <td height="26" colspan="4" background="../static/web/img/tbg.gif">点卡产品分类</td>
       </tr>
       <tr bgcolor="#FBFCE2">
-        <td width="30%" height="26" align="center" valign="top">产品名称</td>
-        <td width="27%" align="center" valign="top">点数(金币数)</td>
+        <td width="30%" height="26" align="center">产品名称</td>
+        <td width="27%" align="center">点数(金币数)</td>
         <td width="30%" align="center">价格</td>
         <td width="17%" align="center">状态</td>
       </tr>
@@ -30,10 +30,10 @@
 	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
       <tr align="center" bgcolor="#ffffff">
-        <td height="26" valign="top">
+        <td height="26">
           <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" class='pubinputs' style="width:90%">
         </td>
-        <td height="26" valign="top">
+        <td height="26">
           <input name="num_<?php echo $k?>" value="<?php echo $row->num?>" type="text" id="num_<?php echo $k?>" class='pubinputs' style="width:80%">
         </td>
         <td>
@@ -51,17 +51,17 @@
 	?>
       <input type="hidden" name="idend" value="<?php echo $k?>">
       <tr bgcolor="#F8FCF1">
-        <td height="26" colspan="4" valign="top" bgcolor="#f8f8f8" style="padding-left:10px">
+        <td height="26" colspan="4" bgcolor="#f8f8f8" style="padding-left:10px">
           新增一个点卡产品类型：</td>
       </tr>
       <tr height="26" align="center" bgcolor="#ffffff">
-        <td valign="top">
+        <td>
           <input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%">
         </td>
-        <td valign="top">
+        <td>
           <input name="num_new" value="100" type="text" id="num_new" class='pubinputs' style="width:80%">
         </td>
-        <td valign="top">
+        <td>
           <input name="money_new" type="text" id="money_new" class='pubinputs' style='width:80%' value="30">
           （元）
         </td>
@@ -70,8 +70,8 @@
           新增 </td>
       </tr>
       <tr>
-        <td height="30" colspan="4" align="center" bgcolor="#f8f8f8">
-          <button type="submit" class="btn btn-success">确定</button>
+        <td colspan="4" align="center" bgcolor="#f8f8f8" class="py-3">
+          <button type="submit" class="btn btn-success">保存</button>
         </td>
       </tr>
     </form>

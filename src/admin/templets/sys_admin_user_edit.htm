@@ -13,14 +13,14 @@
       <td height="26" background="../static/web/img/tbg.gif">
         <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
           <tr>
-            <td width="24%" style="padding-left:10px">修改帐号 </td>
-            <td width="76%" align="right"><a href="sys_admin_user.php" class="btn btn-success btn-sm">管理帐号</a></td>
+            <td width="30%" style="padding-left:10px">修改帐号 </td>
+            <td width="70%" align="right"><a href="sys_admin_user.php" class="btn btn-success btn-sm">管理帐号</a></td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td height="215" align="center" valign="top" bgcolor="#ffffff">
+      <td height="215" align="center" bgcolor="#ffffff">
         <form name="form1" action="sys_admin_user_edit.php" method="post">
           <input type="hidden" name="dopost" value="saveedit">
           <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
@@ -79,8 +79,7 @@
               </td>
             </tr>
             <tr>
-              <td height="36"></td>
-              <td>
+              <td colspan="2" class="py-3">
                 <button type="submit" name="Submit" class="btn btn-success btn-sm">保存用户</button>
                 <button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm">不理返回</button>
               </td>

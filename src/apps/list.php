@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 栏目列表/频道动态页
  *
  * @version        $Id: list.php$

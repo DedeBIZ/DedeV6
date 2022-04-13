@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 增加友情链接
  *
  * @version        $Id: flink_add.php$

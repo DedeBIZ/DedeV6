@@ -59,8 +59,8 @@
       <td height="26" colspan="4" background="../static/web/img/tbg.gif">
         <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
           <tr>
-            <td width="24%">数据还原</td>
-            <td width="76%" align="right">
+            <td width="30%">数据还原</td>
+            <td width="70%" align="right">
               <a href="sys_data.php" class="btn btn-success btn-sm">数据备份</a>
               <a href="sys_sql_query.php" class="btn btn-success btn-sm">SQL命令行工具</a>
             </td>
@@ -72,7 +72,7 @@
       <input type='hidden' name='dopost' value='redat' />
       <input type='hidden' name='bakfiles' value='' />
       <tr bgcolor="#F7F8ED">
-        <td height="26" colspan="4" valign="top">
+        <td height="26" colspan="4">
           发现的备份文件：
           <?php if(count($filelists)==0) echo " 没找到任何备份文件 "; ?>
         </td>
@@ -111,7 +111,7 @@
         </td>
       </tr>
       <tr bgcolor="#F7F8ED">
-        <td height="26" colspan="4" valign="top">
+        <td height="26" colspan="4">
           附加参数：
         </td>
       </tr>

@@ -23,13 +23,13 @@
       </tr>
       <tr>
         <td width="108" height="26" bgcolor="#ffffff">&nbsp;&nbsp;起始ID：</td>
-        <td width="380" height="26" valign="top" bgcolor="#ffffff"><input name="startid" type="text" id="startid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>
+        <td width="380" height="26" bgcolor="#ffffff"><input name="startid" type="text" id="startid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>
           （空或0表示从头开始）
         </td>
       </tr>
       <tr>
-        <td height="26" valign="top" bgcolor="#ffffff">&nbsp;&nbsp;结束ID：</td>
-        <td height="26" valign="top" bgcolor="#ffffff">
+        <td height="26" bgcolor="#ffffff">&nbsp;&nbsp;结束ID：</td>
+        <td height="26" bgcolor="#ffffff">
           &nbsp;&nbsp;
           <input name="endid" type="text" id="endid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>
           （空或0表示直到结束ID）
@@ -41,8 +41,8 @@
       </tr>
       <tr>
         <td height="36" colspan="2" bgcolor="#ffffff" align="center">
-            <button type="button" onClick="document.form1.submit();"  class="btn btn-success">开始更新</button>
-          &nbsp; </td>
+          <button type="button" onClick="document.form1.submit();"  class="btn btn-success">开始更新</button>
+        </td>
       </tr>
     </form>
     <tr>
@@ -57,7 +57,8 @@
                   else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
                 }
               </script>
-              [<a href='javascript:;' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='javascript:;' onClick="ResizeDiv('mdv','-');">缩小</a>]
+              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
             </td>
           </tr>
         </table>

@@ -302,7 +302,7 @@ table{border-collapse:separate}
         <td height="26" class="bline2"> 专题节点列表：（文章列表用ID1,ID2,ID3这样形式分开，系统会自动排除不同节点的相同文章）<br>关于单条记录模板里的[field:fieldname /]标记的使用，请参考关于系统帮助关于 arclist 标记的说明</td>
       </tr>
       <tr>
-        <td height="26" valign="top">
+        <td height="26">
           <table width="800" border="0" cellspacing="2" cellpadding="2">
             <?php
 		  $speclisttmp = GetSysTemplets("spec_arclist.htm");
@@ -365,7 +365,7 @@ table{border-collapse:separate}
               </td>
             </tr>
             <tr>
-              <td height="50" rowspan="2" valign="top">节点布局：</td>
+              <td height="50" rowspan="2">节点布局：</td>
               <td colspan="2">列数：<input name="col<?php echo $i?>" type="text" id="col<?php echo $i?>" value="<?php echo $col?>" size="3">
                 图片宽：<input name="imgwidth<?php echo $i?>" type="text" id="imgwidth<?php echo $i?>" value="<?php echo $imgwidth?>" size="3">
                 图片高：<input name="imgheight<?php echo $i?>" type="text" id="imgheight<?php echo $i?>" value="<?php echo $imgheight?>" size="3">
@@ -421,7 +421,7 @@ table{border-collapse:separate}
               </td>
             </tr>
             <tr>
-              <td height="50" rowspan="2" valign="top">节点布局：<br></td>
+              <td height="50" rowspan="2">节点布局：<br></td>
               <td colspan="2">列数：<input name="col<?php echo $i?>" type="text" id="col<?php echo $i?>" value="1" size="3">
                 图片高：<input name="imgheight<?php echo $i?>" type="text" id="imgheight<?php echo $i?>" value="90" size="3">
                 图片宽：<input name="imgwidth<?php echo $i?>" type="text" id="imgwidth<?php echo $i?>" value="120" size="3">
@@ -444,8 +444,8 @@ table{border-collapse:separate}
       </tr>
     </table>
     <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
-      <tr height="36">
-        <td align="center" style="padding:.6rem">
+      <tr>
+        <td align="center" class="py-3">
           <button type="submit" class="btn btn-success">保存</button>
           <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
         </td>

@@ -69,18 +69,18 @@
       background: url(../static/web/img/adtype_act.gif) no-repeat scroll 0px 0px;
     }
     .i_table {
-      border: 1px solid #CCC;
+      border: 1px solid #eee;
     }
   </style>
 </head>
 <body>
   <form action="ad_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
       <tr>
-        <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="ad_main.php">广告管理</a> &gt; 增加广告位置 </td>
+        <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="ad_main.php">广告管理</a> &gt; 增加广告位置</td>
       </tr>
       <tr>
-        <td height="200" bgcolor="#ffffff" valign="top">
+        <td height="200" bgcolor="#ffffff">
           <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
             <input name="normbody[style]" type="hidden" value="code" id="adstyle">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
@@ -89,52 +89,55 @@
               <td height="26" colspan="3">广告代码的调用方法：{dede:myad name='广告位标识'/} </td>
             </tr>
             <tr>
-              <td height="26" align="center">广告位标识：</td>
-              <td colspan="2"><input name="tagname" type="text" id="tagname" class='iptxt' />
-                （使用英文或数字表示的简洁标识）</td>
+              <td width="160" height="26">广告位标识：</td>
+              <td colspan="2"><input name="tagname" type="text" id="tagname" class="iptxt" style="width:260px">（使用英文或数字表示的简洁标识）</td>
             </tr>
             <tr>
-              <td height="26" align="center">广告分类：</td>
-              <td colspan="2"><select name='clsid' style='width:150px' id="clsid">
+              <td height="26">广告分类：</td>
+              <td colspan="2">
+                <select name='clsid' id="clsid" style='width:160px'>
                   <option value='0'>默认分类</option>
                   <?php echo $option; ?>
-                </select></td>
-            </tr>
-            <tr>
-              <td width="15%" height="26" align="center">广告投放范围：</td>
-              <td colspan="2"><?php
-			$tl = new TypeLink(0);
-			$typeOptions = $tl->GetOptionArray(0,0,0);
-			echo "<select name='typeid' style='width:260px'>\r\n";
-			echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>\r\n";
-			echo $typeOptions;
-			echo "</select>";
-			?>
-                <br>
-                （如果在所选栏目找不到指定标识的广告内容，系统会自动搜索父栏目）</td>
-            </tr>
-            <tr>
-              <td height="26" align="center">广告位名称：</td>
-              <td colspan="2"><input name="adname" type="text" id="adname" size="30" class='iptxt' /></td>
-            </tr>
-            <tr>
-              <td height="26" align="center">时间限制：</td>
-              <td colspan="2"><input name="timeset" type="radio" class="np" value="0" checked='1' id="notimelimit">
-                <label for="notimelimit">永不过期</label>
-                <input type="radio" name="timeset" class="np" value="1" id="timelimit">
-                <label for="timelimit">在设内时间内有效</label></td>
-            </tr>
-            <tr>
-              <td height="26" align="center">投放时间：</td>
-              <td colspan="2">从
-                <input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" class='iptxt datepicker' />
-                到
-                <input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" class='iptxt datepicker' />
+                </select>
               </td>
             </tr>
             <tr>
-              <td height="80" align="center">广告内容：</td>
-              <td width="76%">
+              <td height="26">广告投放范围：</td>
+              <td colspan="2"><?php
+      $tl = new TypeLink(0);
+      $typeOptions = $tl->GetOptionArray(0,0,0);
+      echo "<select name='typeid' style='width:160px'>\r\n";
+      echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>\r\n";
+      echo $typeOptions;
+      echo "</select>";
+      ?>
+                <br>
+              （如果在所选栏目找不到指定标识的广告内容，系统会自动搜索父栏目）</td>
+            </tr>
+            <tr>
+              <td height="26">广告位名称：</td>
+              <td colspan="2"><input name="adname" type="text" id="adname" class="iptxt" style="width:260px"></td>
+            </tr>
+            <tr>
+              <td height="26">时间限制：</td>
+              <td colspan="2">
+                <input name="timeset" type="radio" class="np" value="0" checked='1' id="notimelimit">
+                <label for="notimelimit">永不过期</label>
+                <input type="radio" name="timeset" class="np" value="1" id="timelimit">
+                <label for="timelimit">在设内时间内有效</label>
+              </td>
+            </tr>
+            <tr>
+              <td height="26">投放时间：</td>
+              <td colspan="2">从
+                <input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" class='iptxt datepicker' style="width:160px">
+                到
+                <input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" class='iptxt datepicker' style="width:160px">
+              </td>
+            </tr>
+            <tr>
+              <td height="80">广告内容：</td>
+              <td width="70%">
                 <div class="typetab">
                   <ul id="changeTab">
                     <li id="t_code" class="act">代码</li>
@@ -144,100 +147,93 @@
                   </ul>
                   <div style="clear:both"></div>
                 </div>
-                <div id='advert'>
-
-                </div>
+                <div id='advert'></div>
               </td>
               <td width="9%"></td>
             </tr>
             <tr>
-              <td height="80" align="center">过期显示内容：</td>
+              <td height="80">过期显示内容：</td>
               <td><textarea name="expbody" rows="10" id="expbody" style="width:80%;height:100px"></textarea></td>
               <td></td>
             </tr>
             <tr>
-              <td height="53" align="center"></td>
-              <td colspan="2">
-                <button type="submit" class="btn btn-success">确定</button>
-                </td>
+              <td colspan="3" align="center" class="py-3"><button type="submit" class="btn btn-success">保存</button></td>
             </tr>
-
           </table>
         </td>
       </tr>
     </table>
   </form>
   <div style="display:none" id="formtxt">
-    <div class="content" id="code" style="display:none;">
+    <div class="content" id="code" style="display:none">
       <table width="80%" cellpadding="3" cellspacing="1" class="i_table">
         <tr class="b">
-          <td width="30%">广告代码:<br>
+          <td width="160">广告代码:<br>
             请填写广告代码，支持html代码</td>
-          <td><textarea name="normbody[htmlcode]" rows="5" cols="50"></textarea></td>
+          <td><textarea name="normbody[htmlcode]" style="width:380px;height:100px"></textarea></td>
         </tr>
       </table>
     </div>
-    <div class="content" id="txt" style="display:none;">
+    <div class="content" id="txt" style="display:none">
       <table width="80%" cellpadding=3 cellspacing=1 class='i_table'>
         <tr>
-          <td class="b" width="30%">文字内容*</td>
-          <td class="b"><input type="text" size="70" name="normbody[title]" value="" class='iptxt' /></td>
+          <td class="b" width="160">文字内容 *</td>
+          <td class="b"><input type="text" name="normbody[title]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
-          <td class="b">文字链接*</td>
-          <td class="b"><input type="text" size="70" name="normbody[link]" value="" class='iptxt' /></td>
+          <td class="b">文字链接 *</td>
+          <td class="b"><input type="text" name="normbody[link]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
-          <td class="b">文字颜色(例如:red,#EF8684)</td>
-          <td class="b"><input type="text" size="10" name="normbody[color]" value="" class='iptxt' /></td>
+          <td class="b">文字颜色</td>
+          <td class="b"><input type="text" name="normbody[color]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
-          <td class="b">文字大小(例如:4px,12px)</td>
-          <td class="b"><input type="text" size="10" name="normbody[size]" value="" class='iptxt' /></td>
+          <td class="b">文字大小</td>
+          <td class="b"><input type="text" name="normbody[size]" value="" class="iptxt" style="width:360px"></td>
         </tr>
       </table>
     </div>
-    <div class="content" id="img" style="display:none;">
+    <div class="content" id="img" style="display:none">
       <table width="80%" cellpadding=3 cellspacing=1 class='i_table'>
         <tr>
-          <td class="b" width="30%">图片地址*</td>
-          <td class="b"><input type="text" size="40" name="normbody[url]" value="" class='iptxt' /></td>
+          <td class="b" width="160">图片地址 *</td>
+          <td class="b"><input type="text" name="normbody[url]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
-          <td class="b">图片链接*</td>
-          <td class="b"><input type="text" size="40" name="normbody[link]" value="" class='iptxt' /></td>
+          <td class="b">图片链接 *</td>
+          <td class="b"><input type="text" name="normbody[link]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
           <td class="b">图片宽度</td>
-          <td class="b"><input type="text" size="10" name="normbody[width]" value="" class='iptxt' /></td>
+          <td class="b"><input type="text" name="normbody[width]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
           <td class="b">图片高度</td>
-          <td class="b"><input type="text" size="10" name="normbody[height]" value="" class='iptxt' /></td>
+          <td class="b"><input type="text" name="normbody[height]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
           <td class="b">图片描述</td>
-          <td class="b"><input type="text" size="40" name="normbody[descrip]" value="" class='iptxt' /></td>
+          <td class="b"><input type="text" name="normbody[descrip]" value="" class="iptxt" style="width:360px"></td>
         </tr>
       </table>
     </div>
-    <div class="content" id="flash" style="display:none;">
+    <div class="content" id="flash" style="display:none">
       <table width="80%" cellpadding=3 cellspacing=1 class='i_table'>
         <tr>
-          <td class="b" width="30%">flash链接</td>
-          <td class="b"><input type="text" size="40" name="normbody[link]" value="" class='iptxt' /></td>
+          <td class="b" width="160">flash链接</td>
+          <td class="b"><input type="text" name="normbody[link]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
           <td class="b">flash宽度</td>
-          <td class="b"><input type="text" size="40" name="normbody[width]" value="" class='iptxt' /></td>
+          <td class="b"><input type="text" name="normbody[width]" value="" class="iptxt" style="width:360px"></td>
         </tr>
         <tr>
           <td class="b">flash高度</td>
-          <td class="b"><input type="text" size="40" name="normbody[height]" value="" class='iptxt' /></td>
+          <td class="b"><input type="text" name="normbody[height]" value="" class="iptxt" style="width:360px"></td>
         </tr>
       </table>
     </div>
-
   </div>
   <script language="JavaScript">
       (function ($) {
@@ -245,9 +241,7 @@
           $("#advert").html("").html($("#formtxt>#" + idName).html());
           $("#adstyle").val(idName);
         }
-
         showcode('code');
-
         $("#changeTab>li").click(function () {
           var tabLi = $(this);
           var thistab = tabLi[0].id;

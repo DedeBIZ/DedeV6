@@ -16,11 +16,10 @@
   <center>
     <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
       <tr>
-        <td height="26" background="../static/web/img/tbg.gif"><a href="sys_payment.php">支付接口列表</a> &gt; 
-          安装支付接口 </td>
+        <td height="26" background="../static/web/img/tbg.gif"><a href="sys_payment.php">支付接口列表</a> &gt; 安装支付接口</td>
       </tr>
       <tr>
-        <td height="200" bgcolor="#ffffff" valign="top">
+        <td height="200" bgcolor="#ffffff">
           <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
             <form action="sys_payment.php" method="post" enctype="multipart/form-data" name="form1">
               <input type='hidden' name='pid' value='<?php echo $row['id']; ?>'>
@@ -48,10 +47,7 @@
                 <td><?php echo ($row['online']==0)? '否':'是'; ?></td>
               </tr>
               <tr>
-                <td height="53" align="center"></td>
-                <td>
-                  <button type="submit" class="btn btn-success">确定</button>
-                </td>
+                <td colspan="2" align="center" class="py-3"><button type="submit" class="btn btn-success">保存</button></td>
               </tr>
             </form>
           </table>

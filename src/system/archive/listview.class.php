@@ -937,7 +937,7 @@ class ListView
         }
         $maininfo = "<li class='d-none d-sm-block page-item disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $purl = $this->GetCurUrl();
-        //如果开启为静态,则对规则进行替换
+        //如果开启为静态，则对规则进行替换
         if ($cfg_rewrite == 'Y') {
             $nowurls = preg_replace("/\-/", ".php?", $purl);
             $nowurls = explode("?", $nowurls);

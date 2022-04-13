@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 收藏
  *
  * @version        $Id: stow.php$
@@ -10,14 +9,12 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
-
 $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 $type = empty($type) ? "" : HtmlReplace($type, 1);
 if ($aid == 0) {
     ShowMsg('文档id不能为空!', 'javascript:window.close();');
     exit();
 }
-
 require_once(DEDEINC."/memberlogin.class.php");
 $ml = new MemberLogin();
 
@@ -25,7 +22,6 @@ if ($ml->M_ID == 0) {
     ShowMsg('只有会员才允许收藏操作', 'javascript:window.close();');
     exit();
 }
-
 //读取文档信息
 $arcRow = GetOneArchive($aid);
 if ($arcRow['aid'] == '') {
@@ -48,9 +44,7 @@ if ($type == '') {
         $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_stow`(mid,aid,title,addtime,type) VALUES ('".$ml->M_ID."','$aid','$title','$addtime','$type'); ");
     }
 }
-
 //更新用户统计
 $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='{$ml->M_ID}' ");
 $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `stow`='{$row['nums']}' WHERE `mid`='".$ml->M_ID."'");
-
 ShowMsg('成功收藏一篇文档', 'javascript:window.close();');

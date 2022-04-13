@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * RSS列表页
  *
  * @version        $Id: rss.php$

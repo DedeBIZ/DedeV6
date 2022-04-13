@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/../config.php");
 $cuserLogin = new userLogin();
 //后台功能操作配置项
 $actionSearch[0] = array(
-    'toptitle' => '核心',
+    'toptitle' => '运维',
     'title'  => '常规操作',
     'description' => '站点档案常规功能操作',
     'soniterm' =>  array(
@@ -42,14 +42,14 @@ $actionSearch[0] = array(
         ),
         4  =>  array(
             'title' => '内容回收站',
-            'description' => '如果在"系统配置变量"的"核心设置"中开启了"文章回收站(是/否)开启功能",后台删除的文档将会存放在此处',
+            'description' => '如果在"系统配置变量"的"核心设置"中开启了"文章回收站是否开启功能"，后台删除的文档将会存放在此处',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'recycling.php'
         )
     )
 );
 $actionSearch[1] = array(
-    'toptitle' => '核心',
+    'toptitle' => '运维',
     'title' => '内容管理',
     'description' => '网站对应内容模型的文档管理',
     'soniterm' => array(
@@ -62,13 +62,13 @@ $actionSearch[1] = array(
     )
 );
 $actionSearch[2] = array(
-    'toptitle' => '核心',
+    'toptitle' => '运维',
     'title' => '附件管理',
     'description' => '所有上传的附件管理',
     'soniterm' => array(
         0  =>  array(
             'title' => '上传新文件 ',
-            'description' => '通过这可以上传图片、FLASH、视频/音频、附件/其它等附件 ',
+            'description' => '通过这可以上传图片、FLASH、视频音频、附件其它等附件 ',
             'purview' => '',
             'linkurl' => 'media_add.php'
         ),
@@ -87,7 +87,7 @@ $actionSearch[2] = array(
     )
 );
 $actionSearch[3] = array(
-    'toptitle' => '核心',
+    'toptitle' => '运维',
     'title' => '频道模型',
     'description' => '所有上传的附件管理',
     'soniterm' => array(
@@ -124,7 +124,7 @@ $actionSearch[3] = array(
     )
 );
 $actionSearch[4] = array(
-    'toptitle' => '核心',
+    'toptitle' => '运维',
     'title' => '批量维护',
     'description' => '对一些东西进行批量的删除，添加等等',
     'soniterm' => array(
@@ -266,17 +266,53 @@ $actionSearch[6] = array(
 );
 $actionSearch[7] = array(
     'toptitle' => '生成',
-    'title' => '自动任务',
+    'title' => '更新任务',
     'description' => '一键生成静态管理',
     'soniterm' => array(
         0  =>  array(
-            'title' => '一键更新网站',
+            'title' => '更新网站',
             'description' => '可以一键生成所有静态页面',
             'purview' => 'sys_MakeHtml',
             'linkurl' => 'makehtml_all.php'
         ),
         1  =>  array(
-            'title' => '更新系统缓存',
+            'title' => '更新主页',
+            'description' => '生成网站主页面',
+            'purview' => 'sys_MakeHtml',
+            'linkurl' => 'makehtml_homepage.php'
+        ),
+        2  =>  array(
+            'title' => '更新栏目',
+            'description' => '对每个栏目进行静态页面的生成',
+            'purview' => 'sys_MakeHtml',
+            'linkurl' => 'makehtml_list.php'
+        ),
+        3  =>  array(
+            'title' => '更新文档',
+            'description' => '对每个栏目下的文档进行静态页面的生成',
+            'purview' => 'sys_MakeHtml',
+            'linkurl' => 'makehtml_archives.php'
+        ),
+        4  =>  array(
+            'title' => '更新专题',
+            'description' => '对专题进行静态页面的生成',
+            'purview' => 'sys_MakeHtml',
+            'linkurl' => 'makehtml_spec.php'
+        ),
+        5  =>  array(
+            'title' => '更新订阅',
+            'description' => '对全站的RSS进行更新',
+            'purview' => 'sys_MakeHtml',
+            'linkurl' => 'makehtml_rss.php'
+        ),
+        6  =>  array(
+            'title' => '更新脚本',
+            'description' => '可以获取某个栏目的脚本连接',
+            'purview' => 'sys_MakeHtml',
+            'linkurl' => 'makehtml_js.php'
+        ),
+        7  =>  array(
+            'title' => '更新缓存',
             'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员访问历史、删除过期短信 ',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_cache_up.php'
@@ -284,49 +320,6 @@ $actionSearch[7] = array(
     )
 );
 $actionSearch[8] = array(
-    'toptitle' => '生成',
-    'title' => 'HTML更新',
-    'description' => '针对主页、栏目、文档、专题等等进行更新',
-    'soniterm' => array(
-        0  =>  array(
-            'title' => '更新主页',
-            'description' => '生成网站主页面',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_homepage.php'
-        ),
-        1  =>  array(
-            'title' => '更新栏目 HTML',
-            'description' => '对每个栏目进行静态页面的生成',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_list.php'
-        ),
-        2  =>  array(
-            'title' => '更新文档H',
-            'description' => '对每个栏目下的文档进行静态页面的生成',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_archives.php'
-        ),
-        3  =>  array(
-            'title' => '更新订阅',
-            'description' => '对全站的RSS进行更新',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_rss.php'
-        ),
-        4  =>  array(
-            'title' => '更新脚本',
-            'description' => '可以获取某个栏目的脚本连接',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_js.php'
-        ),
-        5  =>  array(
-            'title' => '更新专题',
-            'description' => '对专题进行静态页面的生成',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_spec.php'
-        ),
-    )
-);
-$actionSearch[9] = array(
     'toptitle' => '模板',
     'title' => '模板管理',
     'description' => '针对主页、栏目、文档、专题等等进行更新',
@@ -363,7 +356,7 @@ $actionSearch[9] = array(
         ),
     )
 );
-$actionSearch[10] = array(
+$actionSearch[9] = array(
     'toptitle' => '系统',
     'title' => '系统设置',
     'description' => '对网站的一些基本信息和配置进行管理',
@@ -423,7 +416,7 @@ $actionSearch[10] = array(
             'linkurl' => 'article_template_rand.php'
         ),
         11  =>  array(
-            'title' => '数据库备份/还原',
+            'title' => '数据库备份还原',
             'description' => '对数据库进行备份和还原',
             'purview' => 'sys_data',
             'linkurl' => 'sys_data.php'
@@ -435,13 +428,13 @@ $actionSearch[10] = array(
             'linkurl' => 'sys_sql_query.php'
         ),
         14  =>  array(
-            'title' => '病毒扫描[S]',
+            'title' => '病毒扫描',
             'description' => '以DedeBIZ开发模式为标准对现有的文件进行扫描并进行判断',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_safetest.php'
         ),
         15  =>  array(
-            'title' => '系统错误修复[S]',
+            'title' => '系统错误修复',
             'description' => '由于手动升级时用户没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理',
             'purview' => 'sys_verifies',
             'linkurl' => 'sys_repair.php'

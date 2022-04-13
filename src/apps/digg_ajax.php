@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 文档digg处理ajax文件
  *
  * @version        $Id: digg_ajax.php$
@@ -14,9 +13,7 @@ $action = isset($action) ? trim($action) : '';
 $format = isset($format) ? $format : '';
 $id = empty($id) ? 0 : intval($id);
 $cid = empty($cid) ? 1 : intval($cid);
-
 helper('cache');
-
 if ($id < 1) {
 	exit();
 }
@@ -28,11 +25,9 @@ if ($cid < 0) {
 	$maintable = empty($row['addtable']) ? '' : $row['addtable'];
 	$idtype = 'aid';
 }
-
 $prefix = 'diggCache';
 $key = 'aid-'.$id;
 $row = GetCache($prefix, $key);
-
 if (!is_array($row) || $cfg_digg_update == 0) {
 	$row = $dsql->GetOne("SELECT goodpost,badpost,scores FROM `$maintable` WHERE $idtype='$id' ");
 	if ($cfg_digg_update == 0) {
@@ -66,8 +61,6 @@ if (!is_array($row) || $cfg_digg_update == 0) {
 	}
 	SetCache($prefix, $key, $row, 0);
 }
-
-
 $digg = '';
 if (!is_array($row)) exit();
 
@@ -77,7 +70,6 @@ if ($row['goodpost'] + $row['badpost'] == 0) {
 	$row['goodper'] = number_format($row['goodpost'] / ($row['goodpost'] + $row['badpost']), 3) * 100;
 	$row['badper'] = 100 - $row['goodper'];
 }
-
 if (empty($formurl)) $formurl = '';
 if ($formurl == 'caicai') {
 	if ($action == 'good') $digg = $row['goodpost'];
@@ -85,7 +77,6 @@ if ($formurl == 'caicai') {
 } else {
 	$row['goodper'] = trim(sprintf("%4.2f", $row['goodper']));
 	$row['badper'] = trim(sprintf("%4.2f", $row['badper']));
-
 	if (!empty($format)) {
 		//输出JSON API的方式
 		$result = array(

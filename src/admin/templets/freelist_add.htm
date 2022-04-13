@@ -80,7 +80,7 @@
       <form action="freelist_add.php" method="post" name="form1" onSubmit="return CheckSubmit();">
         <input type="hidden" name="dopost" value="save">
         <tr>
-          <td height="265" valign="top" bgcolor="#ffffff">
+          <td height="265" bgcolor="#ffffff">
             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" class="table-borderless">
               <tr>
                 <td height="56">
@@ -232,7 +232,7 @@
               </tr>
               <tr>
                 <td height="26" align="left">排列顺序：
-                  <select name="orderby" id="orderby" style="width:120">
+                  <select name="orderby" id="orderby" style="width:160px">
                     <option value="sortrank">置顶权限值</option>
                     <option value="pubdate" selected>发布时间</option>
                     <option value="senddate">录入时间</option>
@@ -241,19 +241,18 @@
                     <option value="lastpost">最后评论时间</option>
                     <option value="postnum">评论总数</option>
                   </select>
-                  　
                   <label><input name="order" type="radio" value="desc" checked>
                   由高到低</label>
                   <label><input type="radio" name="order" value="asc">
-                  由低到高</label></td>
+                  由低到高</label>
+                </td>
               </tr>
               <tr>
                 <td height="26" align="left">循环内的单行记录样式(InnerText)：[<a href='javascript:ShowHide("innervar");'><img src="../static/web/img/help.gif" border="0">底层变量field参考</a>]</td>
               </tr>
               <tr>
-                <td height="99" align="left"> <textarea name="innertext" cols="80" rows="6" id="myinnertext" style="width:80%;height:120px"></textarea>
-                  <script
-                    language="javascript">document.form1.innertext.value = document.getElementById("list4").innerHTML.toLowerCase();</script>
+                <td height="99" align="left"><textarea name="innertext" cols="80" rows="6" id="myinnertext" style="width:80%;height:120px"></textarea>
+                  <script language="javascript">document.form1.innertext.value = document.getElementById("list4").innerHTML.toLowerCase();</script>
                 </td>
               </tr>
               <tr>
@@ -262,17 +261,14 @@
                 </td>
               </tr>
               <tr>
-                <td height="50" align="left"> &nbsp; 
-                  <button name="Submit2" type="submit" id="Submit2" class="btn btn-success">保存一个列表</button>
+                <td align="center" class="py-3">
+                  <button name="Submit2" type="submit" id="Submit2" class="btn btn-success">保存</button>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
       </form>
-      <tr>
-        <td valign="top" bgcolor="#f8f8f8"></td>
-      </tr>
     </table>
   </center>
   <script type="text/javascript">

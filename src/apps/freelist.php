@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 自由列表
  *
  * @version        $Id: freelist.php$

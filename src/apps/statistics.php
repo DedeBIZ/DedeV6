@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 统计程序
  *
  * @version        $Id: statistics.php$
@@ -11,10 +10,8 @@
  */
 require_once(dirname(__FILE__)."/../system/common.inc.php");
 require_once(DEDEINC."/libraries/statistics.class.php");
-
 if (empty($dopost)) $dopost = '';
 $stat = new DedeStatistics;
-
 if ($dopost == "stat") {
     $rs = $stat->Record();
     $result = array(

@@ -113,7 +113,7 @@ td,th{padding:.25rem}
 <body onLoad="ContextMenu.intializeContextMenu()">
 <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3">
 <tr>
-  <td height="26" style="background:#f8f8f8">
+  <td height="26" style="background:#f8f8f8;border: 1px solid #dee2e6">
     <span style="float:left;padding-left:10px;line-height:26px" class="py-3">网站栏目管理</span>
     <span style="float:right;padding-right:10px" class="py-3">
    	  <a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
@@ -140,7 +140,7 @@ td,th{padding:.25rem}
 </tr>
 <form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
 <tr>
-<td bgcolor="#ffffff" valign="top">
+<td bgcolor="#ffffff">
 <?php
 if(empty($opendir)) $opendir=-1;
 if($userChannel>0) $opendir=$userChannel;
@@ -151,7 +151,7 @@ $tu->ListAllType($userChannel,$opendir);
 </tr>
 </form>
 <tr>
-  <td height="36" align="right" class="py-3" style="padding-right:10px;background:#f8f8f8">
+  <td align="right" class="py-3" style="padding-right:10px;background:#f8f8f8;border: 1px solid #dee2e6">
     <button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
     <button type="button" name="sb4" class="btn btn-success btn-sm" onClick="location='makehtml_js.php';">更新脚本</button>
 		<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>

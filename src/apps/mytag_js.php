@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * 自定义标签js调用方式
  *
  * @version        $Id: mytag_js.php$
@@ -11,11 +10,9 @@
  */
 require_once(dirname(__FILE__).'/../system/common.inc.php');
 require_once(DEDEINC.'/archive/partview.class.php');
-
 if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 if ($aid == 0) die(" document.write('Request Error!'); ");
-
 $cacheFile = DEDEDATA.'/cache/mytag-'.$aid.'.htm';
 if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile) > $cfg_puccache_time) {
     $pv = new PartView();
@@ -41,11 +38,6 @@ if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile
         $myvalues = str_replace("\n", "\\n", $myvalues);
         $myvalues =  "<!--\r\ndocument.write(\"{$myvalues}\");\r\n-->\r\n";
         file_put_contents($cacheFile, $myvalues);
-        /* 使用 file_put_contents替换下列代码提高执行效率
-        $fp = fopen($cacheFile, 'w');
-        fwrite($fp, $myvalues);
-        fclose($fp);
-        */
     }
 }
 include $cacheFile;

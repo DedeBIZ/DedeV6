@@ -36,7 +36,7 @@
               <form name='form1' action="article_keywords_main.php">
                 <td width="75%" align="right">
                   搜索：<input type='text' name='keyword' size='20' />&nbsp;
-                  <button type='submit' name='sb' value='' class="btn btn-success btn-sm">确定</button>
+                  <button type='submit' name='sb' value='' class="btn btn-success btn-sm">保存</button>
                   <button class="btn btn-success btn-sm" name="n1" type="button" id="n1" onClick="location='article_keywords_make.php';">分析系统内的关键词</button>
                   <button class="btn btn-success btn-sm" name="n11" type="button" id="n11" onClick="location='search_keywords_main.php';">管理搜索的关键词</button>
                 </td>
@@ -100,14 +100,14 @@
         </tr>
         {/dede:datalist}
         <tr bgcolor="#ffffff">
-          <td height="26" colspan="6">
+          <td colspan="6" class="py-3">
             <button type="button" name="dl1" class="btn btn-success btn-sm" onClick="selAll()">反选</button>
-            <button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存修改</button>
+            <button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存保存</button>
           </td>
         </tr>
       </form>
       <tr align="center" bgcolor="#f8f8f8">
-        <td height="26" colspan="6">{dede:pagelist listsize='6'/}</td>
+        <td height="36" colspan="6">{dede:pagelist listsize='6'/}</td>
       </tr>
     </table>
   </div>
