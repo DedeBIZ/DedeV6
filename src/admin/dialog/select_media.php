@@ -80,7 +80,7 @@ a{text-decoration:none!important}
                     <input type="hidden" name="job" value="upload">
                     <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>">
                     上传：<input type="file" name="uploadfile" style="width:50%;border:none">
-                    <button type="submit" name="sb1" class="btn btn-success btn-sm">确定</button>
+                    <button type="submit" name="sb1" class="btn btn-success btn-sm">保存</button>
                 </form>
             </td>
         </tr>

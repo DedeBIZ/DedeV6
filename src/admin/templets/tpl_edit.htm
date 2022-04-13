@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-	<title>文件编辑</title>
+	<title>修改新建模板</title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -54,7 +54,7 @@
 		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 		<table width='98%' border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3">
 			<tr bgcolor='#EEF4EA'>
-				<td colspan="2" height="26" background="../static/web/img/wbg.gif" style="padding-left:10px">修改/新建模板</td>
+				<td colspan="2" height="26" background="../static/web/img/wbg.gif" style="padding-left:10px">修改新建模板</td>
 			</tr>
 			<tr bgcolor='#ffffff'>
 				<td>文件名称</td>
@@ -97,9 +97,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" bgcolor="#f8f8f8" class="py-3">
+				<td bgcolor="#f8f8f8" colspan="2" class="py-3">
 					<button type="submit" name='B1' class="btn btn-success btn-sm">保存</button>
-					<button type="reset" name='B2' class="btn btn-success btn-sm">取消修改</button>
+					<button type="reset" name='B2' class="btn btn-success btn-sm">取消保存</button>
 					<button type="button" name='B4' class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">不理返回</button>
 				</td>
 			</tr>

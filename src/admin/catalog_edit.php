@@ -232,7 +232,7 @@ if ($dopost == 'time') {
                 </td>
             </tr>
             <tr>
-                <td align="center" colspan="2" height="50" bgcolor='#FAFEE0'>
+                <td align="center" colspan="2" height="36" bgcolor='#FAFEE0'>
                     <button onclick='getSelCat("<?php echo $targetid; ?>");' class='btn btn-success'>保存</button>
                     <button type='button' onclick='CloseMsg()' class='btn btn-success'>关闭</button>
                 </td>
