@@ -42,16 +42,11 @@
 		  foreach($Scores as $v){	
 		  ?>
       <tr bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+        <td align="center"><input name="Ids-<?php echo $v['id']?>" type="checkbox" id="Ids-<?php echo $v['id']?>" value="1" class='np' /></td>
+        <td align="center"><input name="integral-<?php echo $v['id']?>" type="text" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" style="width:160px"></td>
+        <td align="center"><input name="icon-<?php echo $v['id']?>" type="text" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" style="width:60px"></td>
+        <td align="center"><input name="titles-<?php echo $v['id']?>" type="text" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" style="width:160px"></td>
         <td align="center">
-          <input name="Ids-<?php echo $v['id']?>" type="checkbox" id="Ids-<?php echo $v['id']?>" value="1" class='np' />
-        </td>
-        <td align="left">
-          <input name="integral-<?php echo $v['id']?>" type="text" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" size="10"></td>
-        <td align="left">
-          <input name="icon-<?php echo $v['id']?>" type="text" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" size="3"></td>
-        <td align="left">
-          <input name="titles-<?php echo $v['id']?>" type="text" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" size="20"></td>
-        <td align="left">
           <select name="isdefault-<?php echo $v['id']?>" id="isdefault-<?php echo $v['id']?>">
             <option value="1" <?php if($v['isdefault']) echo " selected='selected'"; ?>>是</option>
             <option value="0" <?php if(!$v['isdefault']) echo " selected='selected'"; ?>>否</option>
@@ -63,10 +58,10 @@
 		  ?>
       <tr bgcolor="#f8f8f8">
         <td>新增：</td>
-        <td><input name="add_integral" type="text" id="add_integral" size="10"></td>
-        <td><input name="add_icon" type="text" id="add_icon" size="3"></td>
-        <td><input name="add_titles" type="text" id="add_titles" size="20"></td>
-        <td>
+        <td align="center"><input name="add_integral" type="text" id="add_integral" style="width:160px"></td>
+        <td align="center"><input name="add_icon" type="text" id="add_icon" style="width:60px"></td>
+        <td align="center"><input name="add_titles" type="text" id="add_titles" style="width:160px"></td>
+        <td align="center">
           <select name="add_isdefault" id="add_isdefault">
             <option value="1">是</option>
             <option value="0">否</option>
@@ -74,7 +69,7 @@
         </td>
       </tr>
       <tr>
-        <td height="36" colspan="5" align="center">
+        <td colspan="5" align="center" class="py-3">
           <button type="submit" class="btn btn-success">提交</button>
         </td>
       </tr>
