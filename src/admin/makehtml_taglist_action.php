@@ -13,10 +13,13 @@ CheckPurview('sys_MakeHtml');
 require_once(DEDEINC."/archive/taglist.class.php");
 
 if (empty($pageno)) $pageno = 0;
+if (empty($mktime)) $mktime = time();
 if (empty($mkpage)) $mkpage = 1;
 if (empty($upall)) $upall = 0; //是否更新全部 0为更新单个 1为更新全部
 if (empty($ctagid)) $ctagid = 0; //当前处理的tagid
 if (empty($maxpagesize)) $maxpagesize = 50;
+$startid = isset($startid) ? intval($startid) : 0;
+$endid = isset($endid) ? intval($endid) : 0;
 $tagid = isset($tagid) ? intval($tagid) : 0;
 $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
 // 生成
@@ -27,10 +30,12 @@ if ($tagid > 0) {
     $upall = 1; //更新全部模式
 }
 $allfinish = false; //是否全部完成
+$gwhere = ($startid == 0 ? "WHERE 1=1" : "WHERE id>=$startid");
+if ($endid > $startid && $startid > 0) $gwhere .= " AND id <= $endid ";
 // 判断生成模式
 if ($upall == 1 && $ctagid == 0) {
-    $rr = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE mktime <> uptime OR mktime = 0 LIMIT 1");
-    if (!empty($rr) && count($rr) > 0) {
+    $rr = $dsql->GetOne("SELECT * FROM `#@__tagindex` $gwhere AND mktime <> {$mktime} LIMIT 1");
+    if (isset($rr['id']) && $rr['id'] > 0) {
         $ctagid = $rr['id'];
     } else {
         $allfinish = true;
@@ -83,20 +88,19 @@ if (is_array($tag) && count($tag) > 0) {
         if ($finishType) {
             //完成了一个跳到下一个
             if ($upall == 1) {
-                $now = time();
-                $query = "UPDATE `#@__tagindex` SET uptime={$now} WHERE id='$ctagid' ";
-                $dsql->ExecuteNoneQuery($query);
-                $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
+                $query = "UPDATE `#@__tagindex` SET mktime={$mktime} WHERE id='$ctagid' ";
                 $dsql->ExecuteNoneQuery($query);
                 $ctagid = 0;
                 $nextpage = 0;
             }
-            $gourl = "makehtml_taglist_action.php?maxpagesize=$maxpagesize&tagid=$tagid&pageno=$nextpage&upall=$upall&ctagid=$ctagid";
+            $gourl = "makehtml_taglist_action.php?maxpagesize=$maxpagesize&tagid=$tagid&pageno=$nextpage&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
+            var_dump_cli($gourl);
             ShowMsg("成功生成TAG：[".$tag['tag']."]，继续进行操作", $gourl, 0, 100);
             exit();
         } else {
             //继续当前这个
-            $gourl = "makehtml_taglist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&tagid=$tagid&pageno=$pageno&upall=$upall&ctagid=$ctagid";
+            $gourl = "makehtml_taglist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&tagid=$tagid&pageno=$pageno&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
+            var_dump_cli($gourl);
             ShowMsg("成功生成TAG：[".$tag['tag']."]，继续进行操作", $gourl, 0, 100);
             exit();
         }

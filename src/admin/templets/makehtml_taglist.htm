@@ -10,29 +10,9 @@
   <script language="javascript" src="../static/web/js/select2.full.min.js"></script>
   <script language="javascript" src="../static/web/js/i18n/zh-CN.js"></script>
   <script>
-    $(function(){
-        $('#tagid').select2({
-          language: "zh-CN",
-          allowClear: true,
-          placeholder:"请输入一个标签",
-          ajax: {
-            url: 'makehtml_taglist.php?action=search',
-            delay: 500,
-            data: function (params) {
-              var query = {
-                search: params.term,
-              }
-              return query;
-            },
-            processResults: function (data) {
-              data = JSON.parse(data);
-              return {
-                results: data.data
-              };
-            }
-          }
-        });
-    });
+    function onTagSubmit() {
+      document.form1.submit();
+    }
   </script>
 </head>
 <body>
@@ -55,7 +35,7 @@
         $row = $dsql->GetOne("Select tag From `#@__tagindex` where id = '$tagid' ");
       ?>
       <tr>
-        <td width="300" bgcolor="#ffffff">输入标签：</td>
+        <td width="200" bgcolor="#ffffff">输入标签：</td>
         <td width="380" bgcolor="#ffffff">
           <input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php">重新选择</a>
         </td>
@@ -64,24 +44,26 @@
       } else {
       ?>
       <tr>
-        <td width="300" bgcolor="#ffffff">输入标签：</td>
-        <td width="380" bgcolor="#ffffff">
-          <select id='tagid' name='tagid' style='width:260px'></select>
-        </td>
+        <td width="200" height="26" bgcolor="#ffffff">起始ID：</td>
+        <td height="26" bgcolor="#ffffff"><input name="startid" type="text" id="startid" style="width:60px">（空或0表示从头开始）</td>
+      </tr>
+      <tr>
+        <td width="200" height="26" bgcolor="#ffffff">结束ID：</td>
+        <td height="26" bgcolor="#ffffff"><input name="endid" type="text" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
       </tr>
       <?php
       }
       ?>
       <tr>
-        <td height="26" bgcolor="#ffffff">生成位置：</td>
+        <td width="200" height="26" bgcolor="#ffffff">生成位置：</td>
         <td height="26" bgcolor="#ffffff"><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“TAGS生成目录”项进行调整</td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#ffffff">每次最大创建页数：</td>
+        <td width="200" height="26" bgcolor="#ffffff">每次最大创建页数：</td>
         <td height="26" bgcolor="#ffffff"><input name="maxpagesize" type="text" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#ffffff">标签说明：</td>
+        <td width="200" height="26" bgcolor="#ffffff">标签说明：</td>
         <td height="26" bgcolor="#ffffff">
           生成静态文件后，访问动态文件则直接跳转到静态文件，如果需要动态访问，删除对应文件即可<br>
           Tag首页模板文件：<?php echo $cfg_templets_dir; ?>/<?php echo $cfg_df_style?>/tag.htm<br>
@@ -90,7 +72,7 @@
       </tr>
       <tr>
         <td height="26" colspan="2" bgcolor="#FAFAF1" align="center">
-          <button name="b112" type="button" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';document.form1.submit();">生成标签</button>
+          <button name="b112" type="button" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">生成标签</button>
         </td>
       </tr>
     </form>
