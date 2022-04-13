@@ -58,7 +58,7 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='Tag标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
     <m:item name='数据库内容替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />
 </m:top>
-<m:top mapitem='3' item='1_' name='附件管理' display='block' rank='sys_Upload,sys_MyUpload,plus_文件管理器'>
+<m:top mapitem='3' item='1_' name='附件管理' display='none' rank='sys_Upload,sys_MyUpload,plus_文件管理器'>
     <m:item name='上传新文件' link='media_add.php' rank='' target='main' />
     <m:item name='附件数据管理' link='media_main.php' rank='sys_Upload,sys_MyUpload' target='main' />
     <m:item name='文件式管理器' link='media_main.php?dopost=filemanager' rank='plus_文件管理器' target='main' />

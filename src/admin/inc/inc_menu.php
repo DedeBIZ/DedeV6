@@ -85,7 +85,7 @@ $menusMain = "<m:top item='1_' name='常用操作' display='block'>
     $addset
     <m:item name='专题管理' ischannel='1' link='content_s_list.php' linkadd='spec_add.php' channelid='-1' rank='spec_New' target='main' />
 </m:top>
-<m:top item='1_' name='附件管理' display='block' rank='sys_Upload,sys_MyUpload,plus_文件管理器'>
+<m:top item='1_' name='附件管理' display='none' rank='sys_Upload,sys_MyUpload,plus_文件管理器'>
     <m:item name='上传新文件' link='media_add.php' rank='' target='main' />
     <m:item name='附件数据管理' link='media_main.php' rank='sys_Upload,sys_MyUpload' target='main' />
     <m:item name='文件式管理器' link='media_main.php?dopost=filemanager' rank='plus_文件管理器' target='main' />
@@ -101,7 +101,7 @@ $adminMenu1
     <m:item name='Tag标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
     <m:item name='数据库内容替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />
 </m:top>
-<m:top item='5_' name='更新任务' notshowall='1' display='block' rank='sys_MakeHtml'>
+<m:top item='5_' name='更新任务' display='block' notshowall='1' rank='sys_MakeHtml'>
     <m:item name='更新整站' link='makehtml_all.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新首页' link='makehtml_homepage.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新栏目' link='makehtml_list.php' rank='sys_MakeHtml' target='main' />
