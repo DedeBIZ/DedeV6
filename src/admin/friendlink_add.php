@@ -46,6 +46,14 @@ if ($dopost == "add") {
         $typeid = 0;
         $dsql->ExecuteNoneQuery("ALTER TABLE `#@__flinktype` CHANGE `ID` `id` MEDIUMINT( 8 ) UNSIGNED DEFAULT NULL AUTO_INCREMENT; ");
     }
+    $sortrank = isset($sortrank)? intval($sortrank) : 1;
+    $url = isset($url)? HtmlReplace($url, -1) : '';
+    $imgurl = isset($imgurl)? HtmlReplace($imgurl, -1) : '';
+    $webname = isset($webname)? HtmlReplace($webname, -1) : '';
+    $msg = isset($msg)? HtmlReplace($msg, -1) : '';
+    $email = isset($email)? HtmlReplace($email, -1) : '';
+    $typeid = isset($typeid)? intval($typeid) : 0;
+    $ischeck = isset($ischeck)? intval($ischeck) : 0;
     $query = "INSERT INTO `#@__flink`(sortrank,url,webname,logo,msg,email,typeid,dtime,ischeck)
         VALUES('$sortrank','$url','$webname','$imgurl','$msg','$email','$typeid','$dtime','$ischeck'); ";
     $rs = $dsql->ExecuteNoneQuery($query);

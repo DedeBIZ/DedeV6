@@ -16,9 +16,11 @@ if (empty($ischeck)) {
     $ischeck = 0;
     $ischeckSql = '';
 } else {
+    $ischeck = intval($ischeck);
     if ($ischeck == -1) $ischeckSql = " And ischeck < 1 ";
     else $ischeckSql = " And ischeck='$ischeck' ";
 }
+$keyword = HtmlReplace($keyword, -1);
 $selCheckArr = array(0 => '不限类型', -1 => '未审核', 1 => '内页', 2 => '首页');
 $sql = "SELECT * FROM `#@__flink` WHERE  CONCAT(`url`,`webname`,`email`) LIKE '%$keyword%' $ischeckSql ORDER BY dtime desc";
 $dlist = new DataListCP();

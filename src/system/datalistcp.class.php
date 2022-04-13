@@ -168,7 +168,7 @@ class DataListCP
     {
         global $cfg_soft_lang;
         if ($cfg_soft_lang == 'gb2312') $val = gb2utf8($val);
-        $val = preg_replace('/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/', '', $val);
+        $val = preg_replace('/([\x00-\x08|\x0b-\x0c|\x0e-\x19])/', '', $val);
         $search = 'abcdefghijklmnopqrstuvwxyz';
         $search .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $search .= '1234567890!@#$%^&*()';
@@ -183,6 +183,8 @@ class DataListCP
         $val = str_replace(",", "，", $val);
         $val = str_replace("(", "（", $val);
         $val = str_replace(")", "）", $val);
+        $val = str_replace("flink", "fl*&k", $val);
+
         $ra1 = array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 'style', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base');
         $ra2 = array('onabort', 'onactivate', 'onafterprint', 'onafterupdate', 'onbeforeactivate', 'onbeforecopy', 'onbeforecut', 'onbeforedeactivate', 'onbeforeeditfocus', 'onbeforepaste', 'onbeforeprint', 'onbeforeunload', 'onbeforeupdate', 'onblur', 'onbounce', 'oncellchange', 'onchange', 'onclick', 'oncontextmenu', 'oncontrolselect', 'oncopy', 'oncut', 'ondataavailable', 'ondatasetchanged', 'ondatasetcomplete', 'ondblclick', 'ondeactivate', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onerror', 'onerrorupdate', 'onfilterchange', 'onfinish', 'onfocus', 'onfocusin', 'onfocusout', 'onhelp', 'onkeydown', 'onkeypress', 'onkeyup', 'onlayoutcomplete', 'onload', 'onlosecapture', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onmove', 'onmoveend', 'onmovestart', 'onpaste', 'onpropertychange', 'onreadystatechange', 'onreset', 'onresize', 'onresizeend', 'onresizestart', 'onrowenter', 'onrowexit', 'onrowsdelete', 'onrowsinserted', 'onscroll', 'onselect', 'onselectionchange', 'onselectstart', 'onstart', 'onstop', 'onsubmit', 'onunload');
         $ra = array_merge($ra1, $ra2);
@@ -209,6 +211,7 @@ class DataListCP
                 }
             }
         }
+        $val = str_replace("fl*&k","flink", $val);
         if ($cfg_soft_lang == 'gb2312') $val = utf82gb($val);
         return $val;
     }

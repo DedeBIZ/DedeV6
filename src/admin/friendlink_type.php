@@ -16,8 +16,8 @@ if ($dopost == "save") {
     $endID = $idend;
     for (; $startID <= $endID; $startID++) {
         $query = '';
-        $tid = ${'ID_'.$startID};
-        $pname =   ${'pname_'.$startID};
+        $tid = intval(${'ID_'.$startID});
+        $pname =  HtmlReplace(${'pname_'.$startID},-1);
         if (isset(${'check_'.$startID})) {
             if ($pname != '') {
                 $query = "UPDATE `#@__flinktype` SET typename='$pname' WHERE id='$tid' ";
@@ -30,6 +30,7 @@ if ($dopost == "save") {
     }
     //增加新记录
     if (isset($check_new) && $pname_new != '') {
+        $pname_new = HtmlReplace($pname_new, -1);
         $query = "INSERT INTO `#@__flinktype`(typename) VALUES('{$pname_new}');";
         $dsql->ExecuteNoneQuery($query);
     }
