@@ -2,11 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>系统配置变量 - 图片水印设置</title>
+  <title>图片水印设置</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
- <!--  <style>.table td, .table th{    border: 1px solid #dee2e6;}</style> -->
 </head>
 <body>
   <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
@@ -14,10 +13,10 @@
       <input type="hidden" name="action" value="save">
       <input type="hidden" name="get_photo_markimg" value="<?php echo $photo_markimg?>">
       <tr>
-        <td height="26" colspan="2" bgcolor="#ffffff" background="../static/web/img/tbg.gif" style="padding-left:10px">系统配置变量 - 图片水印设置 </td>
+        <td height="26" colspan="2" bgcolor="#ffffff" background="../static/web/img/tbg.gif" style="padding-left:10px">图片水印设置</td>
       </tr>
       <tr bgcolor="#ffffff">
-        <td width="41%" height="26">上传的图片是否使用图片水印功能：<br> </td>
+        <td width="41%" height="26">上传的图片是否使用图片水印功能：<br></td>
         <td width="59%">
           <label><input class="np" type="radio" value="1" name="get_photo_markup" <?php if($photo_markup=='1') echo ' checked'; ?>> 开启 </label>
           <label><input class="np" type="radio" value="0" name="get_photo_markup" <?php if($photo_markup=='0') echo ' checked'; ?>> 关闭</label>
