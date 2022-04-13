@@ -170,7 +170,7 @@ $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
 $cfg_member_dir = $cfg_cmspath.'/user';
 $cfg_memberurl = $cfg_mainsite.$cfg_member_dir;
 //专题列表的存放路径
-$cfg_special = $cfg_cmspath.'/apps/special';
+$cfg_special = $cfg_cmspath.'/a/special';
 $cfg_specialurl = $cfg_mainsite.$cfg_special;
 //附件目录
 $cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;
