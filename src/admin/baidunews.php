@@ -9,7 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-
+$filename = str_replace("..", "", $filename);
+$filename = str_replace("{cmspath}", $cfg_cmspath, $filename);
 if (empty($do)) {
     include DEDEADMIN.'/templets/baidunews.htm';
 } else {
@@ -25,9 +26,9 @@ if (empty($do)) {
     }
 
     $query = "SELECT maintable.*, addtable.body, arctype.typename
-    FROM #@__archives maintable
-    LEFT JOIN #@__addonarticle addtable ON addtable.aid=maintable.id
-    LEFT JOIN #@__arctype arctype ON arctype.ID=maintable.typeid
+    FROM `#@__archives` maintable
+    LEFT JOIN `#@__addonarticle` addtable ON addtable.aid=maintable.id
+    LEFT JOIN `#@__arctype` arctype ON arctype.ID=maintable.typeid
     WHERE maintable.channel=1 and maintable.arcrank!=-1 ORDER BY maintable.pubdate DESC LIMIT $limit
     ";
     $dsql->SetQuery($query);
@@ -69,9 +70,9 @@ if (empty($do)) {
         $baidunews .= "</item>\n";
     }
     $baidunews .= "</document>\n";
-
-    $fp = fopen(dirname(__FILE__).'/'.$filename, 'w');
+    $fname = str_replace("//","/",DEDEROOT.$filename) ;
+    $fp = fopen($fname, 'w');
     fwrite($fp, $baidunews);
     fclose($fp);
-    showmsg("<a href='{$filename}' target=\"_blank\">{$filename} make success</a>", 'javascript:;');
+    showmsg("<a href='{$filename}' target=\"_blank\">{$filename}生成成功</a>", 'javascript:;');
 }
