@@ -86,7 +86,7 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">验证码</label>
                         <div class="col-sm-10">
-                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt" style='width:100px;text-transform:uppercase;'>
+                          <input name="vdcode" type="text" id="vdcode" class="form-control" style="display:inline-block;width:260px;text-transform:uppercase">
                           <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer" onclick="this.src=this.src+'?'">
                         </div>
                       </div>
@@ -112,17 +112,14 @@
         document.addcontent.title.focus();
         return false;
       }
-
       if (document.addcontent.typeid.value == 0) {
         ShowMsg("隶属栏目必须选择");
         return false;
       }
-
       if (document.addcontent.typeid.options && document.addcontent.typeid.options[document.addcontent.typeid.selectedIndex].className != 'option3') {
         ShowMsg("隶属栏目必须选择白色背景的项目");
         return false;
       }
-
       if (document.addcontent.vdcode.value == "") {
         document.addcontent.vdcode.focus();
         ShowMsg("验证码不能为空");

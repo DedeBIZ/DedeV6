@@ -148,11 +148,11 @@ function addImage(src, pid) {
 	newImgDiv.className = 'albCt';
 	newImgDiv.id = 'albCt' + albImg;
 	document.getElementById("thumbnails").appendChild(newImgDiv);
-	newImgDiv.innerHTML = '<img src="' + src + '" style="width:120px">' + delstr;
+	newImgDiv.innerHTML = '<img src="' + src + '" style="width:160px">' + delstr;
 	if (typeof arctype != 'undefined' && arctype == 'article') {
 		iptwidth = 100;
 		if (pid != 0) {
-			newImgDiv.innerHTML = '<img src="' + src + '" style="width:120px" onClick="addtoEdit(' + pid + ')">' + delstr;
+			newImgDiv.innerHTML = '<img src="' + src + '" style="width:160px" onClick="addtoEdit(' + pid + ')">' + delstr;
 		}
 	}
 	newImgDiv.innerHTML += '<div style="margin-top:10px">注释：<input type="text" name="picinfo' + albImg + '" value="" style="width:' + iptwidth + 'px;"></div>';

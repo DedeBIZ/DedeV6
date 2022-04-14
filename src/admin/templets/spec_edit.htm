@@ -66,7 +66,7 @@ table{border-collapse:separate}
     <input type="hidden" name="dopost" value="save">
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
-        <td width="85%" height="30"><i class="fa fa-book" aria-hidden="true"></i> <a href="content_s_list.php">专题列表</a><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"></a> &gt; 修改专题</td>
+        <td width="85%" height="30"><i class="fa fa-book"></i> <a href="content_s_list.php">专题列表</a><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"></a> &gt; 修改专题</td>
         <td width="10%" align="right"><a href="makehtml_spec.php" class="btn btn-success btn-sm">更新HTML</a></td>
       </tr>
     </table>
@@ -162,7 +162,7 @@ table{border-collapse:separate}
           <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;内容排序：</td>
-              <td width="250">
+              <td width="260">
                 <select name="sortup" id="sortup" style="width:160px">
                   <?php
                   $subday = SubDay($arcRow["sortrank"],$arcRow["senddate"]);
@@ -177,7 +177,7 @@ table{border-collapse:separate}
                 </select>
               </td>
               <td width="90">标题颜色：</td>
-              <td width="130"><input name="color" type="text" id="color" style="width:120px" value="<?php echo $arcRow['color']?>"></td>
+              <td width="130"><input name="color" type="text" id="color" style="width:160px" value="<?php echo $arcRow['color']?>"></td>
               <td><button name="modcolor" type="button" id="modcolor" value="" onClick="ShowColor(event,this)" class="btn btn-success btn-sm">选取</button></td>
             </tr>
           </table>
@@ -226,8 +226,8 @@ table{border-collapse:separate}
         <td height="26" colspan="4" class="bline">
           <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="26" width="250">&nbsp;评论选项：</td>
-              <td width="250">
+              <td width="90" height="26" width="260">&nbsp;评论选项：</td>
+              <td width="260">
                 <label><input type='radio' name='notpost' class='np' value='0' <?php if($arcRow['notpost']==0) echo " checked='1' "; ?> /> 允许评论 </label>
                 &nbsp;
                 <label><input type='radio' name='notpost' class='np' value='1' <?php if($arcRow['notpost']==1) echo " checked='1' "; ?> /> 禁止评论 </label>
@@ -247,12 +247,12 @@ table{border-collapse:separate}
           <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;专题模板：</td>
-              <td width="250">
+              <td width="260">
                 <input name="templet" type="text" id="templet" value="<?php echo $addRow['templet']?>" style="width:160px">
                 <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
               </td>
               <td width="90">&nbsp;文件名称：</td>
-              <td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" style="width:120px">（不包括后缀名如.html等）</td>
+              <td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" style="width:160px">（不包括后缀名如.html等）</td>
             </tr>
           </table>
         </td>
@@ -277,14 +277,14 @@ table{border-collapse:separate}
           <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;更新时间：</td>
-              <td width="250">
+              <td width="260">
               <?php
 			        $nowtime = GetDateTimeMk($arcRow["pubdate"]);
 			        echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker' style='width:160px'>";
 		          ?>
               </td>
               <td width="90">浏览次数：</td>
-              <td><input type="text" name="click" value="<?php echo $arcRow['click']; ?>" style="width:120px"></td>
+              <td><input type="text" name="click" value="<?php echo $arcRow['click']; ?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -336,7 +336,7 @@ table{border-collapse:separate}
                 <?php echo $i?>
                 名称：</td>
               <td colspan="2">
-                <table width="600" border="0" cellspacing="0" cellpadding="0">
+                <table width="900" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="310"><input name="notename<?php echo $i?>" type="text" id="notename<?php echo $i?>" style="width:300px" value="<?php echo $notename?>"></td>
                     <td width="90" align="center">节点标识：</td>
@@ -392,7 +392,7 @@ table{border-collapse:separate}
                 <?php echo $i?>
                 名称：</td>
               <td colspan="2">
-                <table width="600" border="0" cellspacing="0" cellpadding="0">
+                <table width="900" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="310"><input name="notename<?php echo $i?>" type="text" id="notename<?php echo $i?>" style="width:300px"></td>
                     <td width="90" align="center">节点标识：</td>

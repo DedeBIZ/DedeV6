@@ -42,7 +42,7 @@ require(DEDEADMIN.'/inc/inc_menu_func.php');
 			</td>
 		</tr>
 	</table>
-	<table width="120" border="0" align="center" cellpadding="0" cellspacing="0">
+	<table width="260" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr>
 			<td height="6"></td>
 		</tr>
