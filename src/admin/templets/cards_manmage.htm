@@ -38,7 +38,7 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" colspan="7" background="../static/web/img/tbg.gif">
         <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
@@ -69,7 +69,7 @@
     </tr>
     <form name="form1">
       {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-      <tr align="center" bgcolor="#ffffff" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+      <tr align="center" height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type='checkbox' name='aids' value='{dede:field.aid/}' class='np'></td>
         <td>{dede:field.cardid/}</td>
         <td><?php echo $TypeNames[$fields['ctid']]?></td>
@@ -81,7 +81,7 @@
       {/dede:datalist}
     </form>
     <tr>
-      <td height="30" colspan="7" bgcolor="#ffffff">&nbsp;
+      <td height="30" colspan="7">&nbsp;
         <button type="button" onClick="ReSel();" class="btn btn-success btn-sm">反选</button>
         <button type="button" onClick="DelSel();" class="btn btn-success btn-sm">删除</button>
         　　　　 </td>

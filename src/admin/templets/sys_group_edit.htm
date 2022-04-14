@@ -9,18 +9,18 @@
 </head>
 <body>
   <center>
-    <table width="98%" border="0" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3">
+    <table width="98%" border="0" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <form name='form1' action='sys_group_edit.php' method='post'>
         <input type='hidden' name='dopost' value='save'>
         <tr>
           <td height="26" background="../static/web/img/tbg.gif" align="left" style="padding-left:10px"><a href='sys_group.php'>系统用户组管理</a> &gt; 修改用户组</td>
         </tr>
         <tr>
-          <td bgcolor="#ffffff" align="center">
+          <td align="center">
             <table width="98%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
                 <td width="9%" height="30">组名称：</td>
-                <td width="91%" style="text-align:left"> <input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>">
+                <td width="91%" style="text-align:left"><input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>" style="width:260px">
                 </td>
               </tr>
               <tr>
@@ -83,7 +83,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2" align="center" class="py-3"><button type="submit" class="btn btn-success" class="coolbg np">保存</button></td>
+          <td colspan="2" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm" class="coolbg np">保存</button></td>
         </tr>
     </table>
     </td>

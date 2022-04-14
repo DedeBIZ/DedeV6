@@ -30,26 +30,26 @@
                 </span>
               </nav>
               <form name="addcontent" action="album_add.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
-                <input type="hidden" name="dopost" value="save" />
-                <input type="hidden" name="channelid" value="<?php echo $channelid; ?>" />
-                <input type="hidden" name="imagebody" id="imagebody" value='' />
+                <input type="hidden" name="dopost" value="save">
+                <input type="hidden" name="channelid" value="<?php echo $channelid; ?>">
+                <input type="hidden" name="imagebody" id="imagebody" value=''>
                 <div id="mainCp">
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><?php echo $cInfos['titlename']; ?></label>
                     <div class="col-sm-10">
-                      <input name="title" type="text" id="title" class="form-control" placeholder="请输入内容主题" />
+                      <input name="title" type="text" id="title" class="form-control" placeholder="请输入内容主题">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">标签Tag</label>
                     <div class="col-sm-10">
-                      <input name="tags" type="text" id="tags" class="form-control" />
+                      <input name="tags" type="text" id="tags" class="form-control">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">作者</label>
                     <div class="col-sm-10">
-                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control" />
+                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -78,10 +78,10 @@
                   <!-- 表单操作区域 -->
                   <label>图集内容</label>
                   <div class="contentShow postForm">
-                    <input name="maxwidth" type="hidden" id="maxwidth" value="<?php echo $cfg_album_width; ?>" />
-                    <input name="prow" type="hidden" value="<?php echo $cfg_album_row; ?>" />
-                    <input name="pcol" type="hidden" value="<?php echo $cfg_album_col; ?>" />
-                    <input name="ddmaxwidth" type="hidden" value="<?php echo $cfg_album_ddwidth; ?>" />
+                    <input name="maxwidth" type="hidden" id="maxwidth" value="<?php echo $cfg_album_width; ?>">
+                    <input name="prow" type="hidden" value="<?php echo $cfg_album_row; ?>">
+                    <input name="pcol" type="hidden" value="<?php echo $cfg_album_col; ?>">
+                    <input name="ddmaxwidth" type="hidden" value="<?php echo $cfg_album_ddwidth; ?>">
                     <p class="cellBg">
                       <label>表现方式：</label>
                       <label><input name="pagestyle" type="radio" id="pagestyle1" onclick="checkMuList()" value="1"
@@ -91,12 +91,12 @@
                       <label><input name="pagestyle" type="radio" id="pagestyle3" onclick="checkMuList()" value="3"
                         <?php if($cfg_album_style==3) echo " checked='checked'"; ?> />多行多列显示(缩略图)</label>
                     <div id='spagelist' style='display:none' class="mTB10"> 每页图片数：
-                      <input name='pagpicnum' id='pagpicnum' size='10' class="text" value='<?php echo $cfg_album_pagesize; ?>' />
+                      <input name='pagpicnum' id='pagpicnum' size='10' class="text" value='<?php echo $cfg_album_pagesize; ?>'>
                     </div>
                     </p>
                     <p>
                       <label>手工上传：</label>
-                      图片数目：<input name="picnum" type="text" id="picnum" size="6" value="3" maxlength="100" class="intxt" />
+                      图片数目：<input name="picnum" type="text" id="picnum" size="6" value="3" maxlength="100" class="intxt">
                       <button class="btn btn-success btn-sm" name='kkkup' type='button' id='kkkup2' onclick="MakeUpload(0);">增加</button>（最大60幅）
                     </p>
                     <p>
@@ -110,13 +110,13 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">验证码</label>
                         <div class="col-sm-10">
-                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt" style='width:100px;text-transform:uppercase;' />
-                          <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer" onclick="this.src=this.src+'?'" />
+                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt" style='width:100px;text-transform:uppercase;'>
+                          <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer" onclick="this.src=this.src+'?'">
                         </div>
                       </div>
                     <?php }?>
                     <p>
-                      <button class="btn btn-success" type="submit">提交</button>
+                      <button class="btn btn-success btn-sm" type="submit">提交</button>
                       <button class="btn btn-secondary" type="reset" onclick="location.reload();">重置</button>
                     </p>
                   </div>

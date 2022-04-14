@@ -11,8 +11,8 @@
 	<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 	<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 	<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
-	<meta name="keywords" content="{dede:field.keywords/}" />
-	<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+	<meta name="keywords" content="{dede:field.keywords/}">
+	<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
 	<script>
 		var shortname = "{dede:global.art_shortname/}";
 		var npage = {dede:field name='nowpage' /};
@@ -94,10 +94,10 @@
 						else if(@me==2) {
 						@me = "
 						<div class='mt-3 mb-3 text-center'>
-							<a href='javascript:dPlayBig();' class='btn btn-success'>原始图片</a>\r\n
-							<a href='javascript:dPlayPre();' class='btn btn-success'>上一张</a>\r\n
-							<a href='javascript:dPlayNext();' class='btn btn-success'>下一张</a>\r\n
-							<a href='javascript:dStopPlay();' class='btn btn-success'>自动 / 暂停播放</a>\r\n
+							<a href='javascript:dPlayBig();' class='btn btn-success btn-sm'>原始图片</a>\r\n
+							<a href='javascript:dPlayPre();' class='btn btn-success btn-sm'>上一张</a>\r\n
+							<a href='javascript:dPlayNext();' class='btn btn-success btn-sm'>下一张</a>\r\n
+							<a href='javascript:dStopPlay();' class='btn btn-success btn-sm'>自动 / 暂停播放</a>\r\n
 						</div>
 						";
 						} else {

@@ -8,21 +8,21 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="sys_cache_up.php" method="get" target='stafrm'>
       <input type="hidden" name="dopost" value="ok">
       <tr>
         <td height="26" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18" style="padding-left:10px">更新系统缓存</td>
+              <td width="30%" style="padding-left:10px">更新系统缓存</td>
               <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#ffffff" style="line-height:20px;">
+        <td height="26" style="line-height:20px;">
           本程序作默认会执行下面的操作：
           <br>
           1、更新栏目缓存
@@ -36,8 +36,8 @@
         </td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#ffffff" align="center">
-          <button name="b112" type="button" class="btn btn-success" value="" onClick="document.form1.submit();">开始执行</button>
+        <td height="26" align="center">
+          <button name="b112" type="button" class="btn btn-success btn-sm" value="" onClick="document.form1.submit();">开始执行</button>
         </td>
       </tr>
     </form>
@@ -45,7 +45,7 @@
       <td height="26">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="70%">进行状态：</td>
+            <td width="70%">结果：</td>
             <td width="30%" align="right">
               <script language='javascript'>
               function ResizeDiv(obj, ty) {
@@ -60,7 +60,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#ffffff">
+    <tr>
       <td id="mtd">
         <div id="mdv" style="width:100%;height:300px"> 
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>

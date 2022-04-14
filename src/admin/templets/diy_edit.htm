@@ -25,7 +25,7 @@
     }
   </script>
   <style>
-    .STYLE1 {
+    .style1 {
       color: #dc3545
     }
 
@@ -35,57 +35,55 @@
       line-height: 150%;
     }
 
-    .STYLE2 {
+    .style2 {
       color: #424b51;
       display: none;
     }
   </style>
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
       <input type='hidden' name='diyid' value='<?php echo $diyid; ?>'>
       <input type='hidden' name='dopost' value='save'>
       <tr>
-        <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">
-          <a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）
-        </td>
+        <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单</td>
       </tr>
       <tr>
-        <td width="170" height="26" align="left" bgcolor="#ffffff">自定义表单 diyid：<br>
-          <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span></td>
-        <td bgcolor="#ffffff">
+        <td width="260" height="26">自定义表单 diyid：<br>
+          <span class="style2" id='help1'>数字，创建后不可修改，并具有唯一性</span>
+        </td>
+        <td>
           <?php echo $diyid; ?>
           <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help1')">
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#f8f8f8">自定义表单名称：<br>
-          <span class="STYLE2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
-        <td bgcolor="#f8f8f8">
-          <input name="name" type="text" id="name" value="<?php echo $row['name']?>" style="width:180px" class='alltxt' />
-          *<img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help3')">
+        <td height="26">自定义表单名称：（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）<br>
+          <span class="style2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
+        <td>
+          <input name="name" type="text" id="name" value="<?php echo $row['name']?>" style="width:160px" class='alltxt'> * <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help3')">
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#ffffff">数据表：<br>
-          <span class="STYLE2" id="help5">自定义表单数据表创建后不可修改表名</span></td>
-        <td bgcolor="#ffffff">
-          <input name="table" type="text" id="table" style="width:180px" value="<?php echo $row['table']; ?>" class='alltxt' disabled='1' />
-          *<img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')">
+        <td height="26">数据表：<br>
+          <span class="style2" id="help5">自定义表单数据表创建后不可修改表名</span>
+        </td>
+        <td>
+          <input name="table" type="text" id="table" style="width:160px" value="<?php echo $row['table']; ?>" class='alltxt' disabled='1'> * <img src="../static/web/img/help.gif" alt="帮助" border="0" style="cursor:hand" onClick="showHide2('help5')">
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#f8f8f8">模型字段配置：<br>
-          信息索引类字段系统已经加入，<br>
-          您只需要增加其它个性化字段即可</td>
+        <td height="26" bgcolor="#f8f8f8">模型字段配置：<br>
+          信息索引类字段系统已经加入，您只需要增加其它个性化字段即可
+        </td>
         <td bgcolor="#f8f8f8">
           <button name="fset" type="button" id="fset" onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid; ?>'" class="btn btn-success btn-sm"
            >添加新字段</button>
         </td>
       </tr>
       <tr>
-        <td colspan='2' bgcolor="#ffffff">
+        <td colspan='2'>
           <table width="100%" border="0" cellpadding="1" cellspacing="1" align="center">
             <tr align="center" bgcolor="#FBFCE2" height="26">
               <td width="28%">表单提示文字</td>
@@ -95,7 +93,6 @@
               <td>维护</td>
             </tr>
             <?php 
-
 $ds = file(DedeInclude('/inc/fieldtype.txt'));
 foreach($ds as $d){
 	$dds = explode(',',trim($d));
@@ -108,7 +105,7 @@ $dtp->LoadSource($fieldset);
 if(is_array($dtp->CTags)){
 foreach($dtp->CTags as $ctag)
 {
-?> <tr align="center" bgcolor="#ffffff" height="26">
+?> <tr align="center" height="26">
               <td>
                 <?php 
 			$itname = $ctag->GetAtt('itemname');
@@ -140,50 +137,34 @@ foreach($dtp->CTags as $ctag)
             </tr>
             <?php 
  }}
- 
 ?>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#ffffff">列表模板：</td>
-        <td bgcolor="#ffffff">
-          <input name="listtemplate" type="text" id="listtemplate" style="width:180px" value="<?php echo $row['listtemplate']; ?>" class='alltxt' />
+        <td height="26">列表模板：</td>
+        <td><input name="listtemplate" type="text" id="listtemplate" style="width:160px" value="<?php echo $row['listtemplate']; ?>" class='alltxt'></td>
+      </tr>
+      <tr>
+        <td height="26">内容模板：</td>
+        <td><input name="viewtemplate" type="text" id="viewtemplate" style="width:160px" value="<?php echo $row['viewtemplate']; ?>" class='alltxt'></td>
+      </tr>
+      <tr>
+        <td height="26">发布模板：</td>
+        <td><input name="posttemplate" type="text" id="posttemplate" style="width:160px" value="<?php echo $row['posttemplate']; ?>" class='alltxt'></td>
+      </tr>
+      <tr>
+        <td height="26">前台列表和内容页公开：</td>
+        <td>
+          <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?> class='np'> 完全公开 </label>
+          <label><input name="public" type="radio" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?> class='np'> 公开审核过的 </label>
+          <label><input name="public" type="radio" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?> class='np'> 不公开 </label>
         </td>
       </tr>
       <tr>
-        <td height="26" align="left" bgcolor="#ffffff">内容模板：</td>
-        <td bgcolor="#ffffff">
-          <input name="viewtemplate" type="text" id="viewtemplate" style="width:180px" value="<?php echo $row['viewtemplate']; ?>" class='alltxt' />
-        </td>
-      </tr>
-      <tr>
-        <td height="26" align="left" bgcolor="#ffffff">发布模板：</td>
-        <td bgcolor="#ffffff">
-          <input name="posttemplate" type="text" id="posttemplate" style="width:180px" value="<?php echo $row['posttemplate']; ?>" class='alltxt' />
-        </td>
-      </tr>
-      <tr>
-        <td height="26" align="left" bgcolor="#ffffff">前台列表和内容页公开：</td>
-        <td bgcolor="#ffffff">
-          <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?>
-              class='np' /> 完全公开 </label>
-          <label><input name="public" type="radio" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?>
-              class='np' /> 公开审核过的 </label>
-          <label><input name="public" type="radio" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?>
-              class='np' /> 不公开 </label>
-        </td>
-      </tr>
-      <tr bgcolor="#f8f8f8">
-        <td height="26" colspan="2">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
-            <tr>
-              <td align="center" class="py-3">
-                <button type="submit" name="button" id="button" class='btn btn-success'>保存</button>
-                <button type="button" class='btn btn-success' id="button2" onclick="location='diy_main.php';">返回</button>
-              </td>
-            </tr>
-          </table>
+        <td bgcolor="#f8f8f8" colspan="2" align="center" class="py-3">
+          <button type="submit" name="button" id="button" class='btn btn-success btn-sm'>保存</button>
+          <button type="button" class='btn btn-success btn-sm' id="button2" onclick="location='diy_main.php';">返回</button>
         </td>
       </tr>
     </form>

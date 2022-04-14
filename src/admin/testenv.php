@@ -287,7 +287,6 @@ $action = isset($action) ? $action : '';
 						if (is_dir(DEDEROOT.$key)) {
 					?><?php echo $key; ?>|<?php
 											$rs = TestExecuteable(DEDEROOT.$key, $cfg_basehost, $cfg_cmspath);
-
 											if ($rs === -1) {
 												echo "<span style='color:#dc3545'>无法判断</span>";
 											} else {
@@ -319,9 +318,9 @@ $action = isset($action) ? $action : '';
 																	else
 																		echo is_writable(DEDEROOT.$key) != $val['write'] ? "<span style='color:#dc3545'>错误(可写)</span>" : "<span style='color:#28a745'>正常(不可写)</span>";
 																	?><dedecms><?php
-															}
-														}
-																?>";
+																				}
+																				}
+																				?>";
 		var n = 0;
 		var timer = 0;
 		log = log.split('<dedecms>');
@@ -345,7 +344,7 @@ $action = isset($action) ? $action : '';
 			if (item == '') {
 				return false;
 			}
-			var tempvar = '<tr>\r				        <td width="40%" height="26" bgcolor="#ffffff">' + item[0] + '</td>\r		            <td width="20%" height="26" align="center" bgcolor="#FEF7C5">' + item[1] + '</td>\r				        <td width="20%" height="26" align="center" bgcolor="#ffffff">\r						' + item[2] + '</td>\r				        <td width="20%" height="26" align="center" bgcolor="#ffffff">\r						' + item[3] + '</td>\r			      </tr>  ';
+			var tempvar = '<tr>\r<td width="40%" height="26">' + item[0] + '</td>\r<td width="20%" height="26" align="center" bgcolor="#FEF7C5">' + item[1] + '</td>\r				        <td width="20%" height="26" align="center">\r' + item[2] + '</td>\r<td width="20%" height="26" align="center">\r' + item[3] + '</td>\r			      </tr>';
 
 			//chiledelem.innerHTML = tempvar;
 			//document.getElementById("mainList").appendChild(chiledelem);

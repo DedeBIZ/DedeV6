@@ -13,7 +13,7 @@
       </td>
     </tr>
     <tr> 
-    <td height="250" colspan="2" align="center" bgcolor="#ffffff">
+    <td height="250" colspan="2" align="center">
 	   <table width="98%" border="0" cellspacing="0" cellpadding="0">
         <tr><td height="10"></td></tr>
       </table>
@@ -21,15 +21,15 @@
         <tr> 
           <td>综合信息统计：</td>
           <td><table width="300" border="0" cellpadding="1" cellspacing="1" bgcolor="#996666">
-              <tr bgcolor="#ffffff"> 
+              <tr> 
                 <td width="140" bgcolor="#F3ECDA">&nbsp;文档总数：</td>
-                <td width="160">[<?php echo $row1['dd']?>]</td>
+                <td width="260">[<?php echo $row1['dd']?>]</td>
               </tr>
-              <tr bgcolor="#ffffff"> 
+              <tr> 
                 <td bgcolor="#F3ECDA">&nbsp;评论总数：</td>
                 <td>[<?php echo $row2['dd']?>]</td>
               </tr>
-              <tr bgcolor="#ffffff"> 
+              <tr> 
                 <td bgcolor="#F3ECDA">&nbsp;会员总数：</td>
                 <td>[<?php echo $row3['dd']?>]</td>
               </tr>
@@ -54,7 +54,7 @@
               $dsql->Execute("me","Select id,typename From `#@__channeltype`");
               while($row = $dsql->GetObject()){
               ?>
-              <tr align="center" bgcolor="#ffffff"> 
+              <tr align="center"> 
                 <td><?php echo $row->typename?></td>
                 <td>
                 ［<?php echo (isset($arcs[$row->id]) ? $arcs[$row->id] : 0 ); ?>］

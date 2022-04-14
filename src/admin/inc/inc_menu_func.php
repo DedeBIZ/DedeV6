@@ -57,19 +57,15 @@ function GetMenus($userrank, $topos = 'main')
                         } else {
                             $addalt = '录入新内容';
                         }
-
                         if ($ctag2->GetAtt('addico') != '') {
                             $addico = $ctag2->GetAtt('addico');
                         } else {
                             $addico = '../static/web/img/gtk-sadd.png';
                         }
-                        //an add icos , small items use att ischannel='1' addico='ico' addalt='msg' linkadd=''
-                        $link = "        <div class='items'>
-            <div class='fllct'>$link</div>
-            <div class='flrct'>
-                <a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><img src='$addico' alt='$addalt' title='$addalt'/></a>
-            </div>
-        </div>";
+                        $link = "<div class='items'>
+                        <div class='fllct'>$link</div>
+                        <div class='flrct'><a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><img src='$addico' alt='$addalt' title='$addalt'/></a></div>
+                        </div>";
                     } else {
                         $link .= "";
                     }
@@ -78,7 +74,7 @@ function GetMenus($userrank, $topos = 'main')
                 }
             }
             echo $footTemplet;
-            echo "<!-- Item ".($m + 1)." End -->";
+            echo "<!--Item".($m + 1)."End-->";
         }
     }
 }//End Function

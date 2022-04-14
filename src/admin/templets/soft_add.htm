@@ -148,12 +148,12 @@ table{border-collapse:separate}
               <td width="90">&nbsp;缩略图：</td>
               <td>
                 <input name="picname" type="text" id="picname" style="width:300px">
-                <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' />&nbsp;远程</label>
+                <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote'>&nbsp;远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class='btn btn-success btn-sm'>选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
               </td>
-              <td width="160" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
+              <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
             </tr>
           </table>
         </td>
@@ -212,7 +212,7 @@ table{border-collapse:separate}
               <td width="90">&nbsp;副栏目：</td>
               <td>
                 <span id='typeid2ct'></span>
-                <input type='text' name='typeid2' id='typeid2' value='' style='width:260px;' />
+                <input type='text' name='typeid2' id='typeid2' value='' style='width:260px;'>
                 <img src='../static/web/img/menusearch2.gif' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2')" title='选择副栏目' style='cursor:pointer'>
               </td>
             </tr>
@@ -540,8 +540,8 @@ table{border-collapse:separate}
     <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr>
         <td align="center" class="py-3">
-          <button type="submit" class="btn btn-success">保存</button>
-          <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
+          <button type="submit" class="btn btn-success btn-sm">保存</button>
+          <button type="button" onClick="location.reload();" class="btn btn-success btn-sm">重置</button>
         </td>
       </tr>
     </table>

@@ -56,7 +56,7 @@
               </ul>
               <div class="table-responsive">
                 <form action="pm.php" method="post" name="form1">
-                  <input type='hidden' name='dopost' value='del' />
+                  <input type='hidden' name='dopost' value='del'>
                   <div id="feedback-alert">
                   </div>
                   <table class="table">
@@ -75,7 +75,7 @@
                     <tbody>
                       {dede:datalist}
                       <tr>
-                        <td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}" style="margin-left:5px" /></td>
+                        <td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}" style="margin-left:5px"></td>
                         <td><?php
                         if($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
                         else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";

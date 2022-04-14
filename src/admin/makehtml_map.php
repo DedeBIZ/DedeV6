@@ -32,5 +32,5 @@ $dtp->LoadTemplet($tmpfile);
 $dtp->SaveTo($cfg_basedir.$murl);
 $dtp->Clear();
 echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-echo "<div class=\"alert alert-success\" role=\"alert\">成功更新文件: $murl <a href='$murl' target='_blank' class='btn btn-success'>浏览</a></div>";
+echo "<div class=\"alert alert-success\" role=\"alert\">成功更新文件: $murl <a href='$murl' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
 exit();

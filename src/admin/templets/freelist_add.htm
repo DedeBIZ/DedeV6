@@ -33,9 +33,10 @@
       <li class="media border-bottom-dashed mt-2 py-2">
           <div class="media-body row">
               <div class="col-12 title">
-                [[field:typelink/]] <a href="[field:arcurl/]">
-                      <h4 class="mt-0 mb-3">[field:title/]</h4>
-                  </a>
+                [[field:typelink/]]
+                <a href="[field:arcurl/]">
+                  <h4 class="mt-0 mb-3">[field:title/]</h4>
+                </a>
               </div>
           </div>
       </li>
@@ -52,7 +53,6 @@
     </div>
     <div style="display:none" id="list4">
       <li class="media border-bottom-dashed mt-2 py-2">
-          <a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" title="[field:title/]" class="mr-3" ></a>
           <div class="media-body row">
               <div class="col-12 title">
                   <a href="[field:arcurl/]">
@@ -60,19 +60,15 @@
                   </a>
               </div>
               <div class="col-12 description py-2">
-                  <a href="[field:arcurl/]">
-                      [field:description/]
-                  </a>
+                  <a href="[field:arcurl/]">[field:description/]</a>
               </div>
-              <div class="col-12 addinfo">
-              日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 点击：[field:click/] 好评：[field:scores/]
-              </div>
+              <div class="col-12 addinfo">日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 点击：[field:click/] 好评：[field:scores/]</div>
           </div>
       </li>
     </div>
-    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" style="border:1px solid #dee2e6;border-bottom:none" class="table-borderless mt-3">
+    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table-borderless mt-3" style="border:1px solid #dee2e6;border-bottom:none">
       <tr>
-        <td align="left" background="../static/web/img/tbg.gif" style="padding-left:10px" class="py-3"><a href="freelist_main.php">自由列表管理</a> &gt; 增加一个列表</td>
+        <td align="left" background="../static/web/img/tbg.gif" class="py-3" style="padding-left:10px"><a href="freelist_main.php">自由列表管理</a> &gt; 增加一个列表</td>
         <td align="right" background="../static/web/img/tbg.gif"></td>
       </tr>
     </table>
@@ -80,56 +76,57 @@
       <form action="freelist_add.php" method="post" name="form1" onSubmit="return CheckSubmit();">
         <input type="hidden" name="dopost" value="save">
         <tr>
-          <td height="265" bgcolor="#ffffff">
-            <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" class="table-borderless">
+          <td style="padding:0">
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="table-borderless">
               <tr>
-                <td height="56">
+                <td style="padding:0">
                   <table width="100%" border="0" cellspacing="1" cellpadding="0">
                     <tr>
                       <td height="26" colspan="2" align="left"><img src="../static/web/img/help.gif">自由列表标记的说明：自由列表标记(freelist)的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成Google Map、生成按自定义排序规则的文章列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成HTML或访问速度</td>
                     </tr>
                     <tr>
-                      <td width="16%" height="26" align="left">自由列表标题：</td>
-                      <td width="84%" align="left"><input name="title" type="text" id="title" style="width:35%"></td>
+                      <td width="260" height="26" align="left">自由列表标题：</td>
+                      <td align="left"><input name="title" type="text" id="title" style="width:260px"></td>
                     </tr>
                     <tr>
                       <td height="26" align="left">列表HTML存放目录：</td>
-                      <td align="left"><input name="listdir" type="text" id="listdir" style="width:35%" value="{cmspath}/freelist/">
+                      <td align="left"><input name="listdir" type="text" id="listdir" value="{cmspath}/freelist/" style="width:260px">
                         {listdir}变量的值</td>
                     </tr>
                     <tr>
                       <td height="26" align="left">目录默认页名称：</td>
-                      <td align="left"> <input name="defaultpage" type="text" id="defaultpage" style="width:35%" value="index.html">
-                        <label><input name="nodefault" type="checkbox" id="nodefault" value="1">
-                        不使用目录默认主页</label> </td>
-                    </tr>
-                    <tr>
-                      <td height="26" align="left">命名规则：</td>
-                      <td align="left"><input name="namerule" type="text" id="namerule" style="width:35%" value="{listdir}/index_{listid}_{page}.html"></td>
-                    </tr>
-                    <tr>
-                      <td height="30" align="left">列表模板：</td>
-                      <td align="left"><input name="templet" type="text" id="templet" style="width:300px" value="{style}/list_free.htm">
-                        <button type="button" name="set4" style="width:60px" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button></td>
-                    </tr>
-                    <tr>
-                      <td height="30" align="left">最大列出页数：</td>
                       <td align="left">
-                        <input name="maxpage" type="text" id="maxpage" style="width:100px" value="100">
+                        <input name="defaultpage" type="text" id="defaultpage" value="index.html" style="width:260px">
+                        <label><input name="nodefault" type="checkbox" id="nodefault" value="1">
+                        不使用目录默认主页</label>
                       </td>
                     </tr>
                     <tr>
+                      <td height="26" align="left">命名规则：</td>
+                      <td align="left"><input name="namerule" type="text" id="namerule" value="{listdir}/index_{listid}_{page}.html" style="width:260px"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left">列表模板：</td>
+                      <td align="left">
+                        <input name="templet" type="text" id="templet" value="{style}/list_free.htm" style="width:260px">
+                        <button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left">最大列出页数：</td>
+                      <td align="left"><input name="maxpage" type="text" id="maxpage" value="100" style="width:60px"></td>
+                    </tr>
+                    <tr>
                       <td height="26" align="left"></td>
-                      <td align="left">以下选项用于模板里的 &lt;meta name=&quot;keywords|description&quot;
-                        content=&quot;&quot;&gt; 描述</td>
+                      <td align="left">以下选项用于模板里的 &lt;meta name=&quot;keywords|description&quot; content=&quot;&quot;&gt; 描述</td>
                     </tr>
                     <tr>
                       <td height="26" align="left">关键词：</td>
-                      <td align="left"><input name="keywords" type="text" id="keywords" style="width:60%"></td>
+                      <td align="left"><input name="keywords" type="text" id="keywords" style="width:260px"></td>
                     </tr>
                     <tr>
                       <td height="26" align="left">列表描述：</td>
-                      <td align="left"><textarea name="description" id="description" style="width:60%;height:50px"></textarea></td>
+                      <td align="left"><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
                     </tr>
                   </table>
                 </td>
@@ -138,7 +135,7 @@
                 <td height="26" align="left" style="background:#FBFCE2;"><img src="../static/web/img/file_tt.gif">列表样式：（这里是定义自由列表模板里的{dede:freelist/}标记的样式和属性）</td>
               </tr>
               <tr>
-                <td height="72" align="left">
+                <td align="left">
                   <table width="99%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%" height="126">
@@ -155,15 +152,15 @@
                       </td>
                       <td>
                         <label><img src="../static/web/img/g_t4.jpg"> <input name="liststyle" type="radio" onClick="ChangeListStyle()" value="4" checked></label>
-                        </td>
+                      </td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td height="26" align="left"> 限定栏目：
+                <td height="26" align="left">限定栏目：
                   <?php
-                 echo "<select name='typeid' style='width:100px'>\r\n";
+                 echo "<select name='typeid' style='width:160px'>\r\n";
                  echo "<option value='0'>不限栏目</option>\r\n";
                 $dsql->SetQuery("Select ID,typename, channeltype From #@__arctype");
                 $dsql->Execute();
@@ -179,9 +176,9 @@
 		?> </td>
               </tr>
               <tr>
-                <td height="26" align="left"> 限定频道：
+                <td height="26" align="left">限定频道：
                   <?php
-       echo "<select name='channel' style='width:100px'>\r\n";
+       echo "<select name='channel' style='width:160px'>\r\n";
        echo "<option value='0' selected>不限</option>\r\n";
        $dsql->SetQuery("Select ID,typename From #@__channeltype where ID>0");
 	   $dsql->Execute();
@@ -196,7 +193,7 @@
               <tr>
                 <td height="26" align="left">附加属性：
                   <?php
-       echo "<select name='att' style='width:100px'>\r\n";
+       echo "<select name='att' style='width:160px'>\r\n";
        echo "<option value='0' selected>不限</option>\r\n";
        $dsql->SetQuery("Select * From #@__arcatt");
 	   $dsql->Execute();
@@ -206,18 +203,17 @@
 	   }
        echo "</select>";
 		?>
-                  文档发布时间：
-                  <input name="subday" type="text" id="subday2" value="0" size="6">
-                  天以内 （0 表示不限）</td>
+                  文档发布时间：<input name="subday" type="text" id="subday2" value="0" style="width:60px"> 天以内（0表示不限）
+                </td>
               </tr>
               <tr>
                 <td height="26" align="left">每页记录数：
-                  <input name="pagesize" type="text" id="pagesize" value="30" size="4">
-                  　显示列数：
-                  <input name="col" type="text" id="col3" value="1" size="4">
+                  <input name="pagesize" type="text" id="pagesize" value="30" style="width:60px">
+                  显示列数：
+                  <input name="col" type="text" id="col3" value="1" style="width:60px">
                   标题长度：
-                  <input name="titlelen" type="text" id="titlelen" value="60" size="4">
-                  （1 字节 = 0.5个中文字）</td>
+                  <input name="titlelen" type="text" id="titlelen" value="60" style="width:60px"（1字节 = 0.5个中文字）
+                </td>
               </tr>
               <tr>
                 <td height="26" align="left"> 高级筛选：
@@ -227,8 +223,8 @@
                   推荐</label>
                   <label><input name="types[]" type="checkbox" id="type3" value="spec">
                   专题</label>　关键词：
-                  <input name="keywordarc" type="text" id="keywordarc">
-                  （&quot;,&quot;逗号分开）</td>
+                  <input name="keywordarc" type="text" id="keywordarc">（&quot;,&quot;逗号分开）
+                </td>
               </tr>
               <tr>
                 <td height="26" align="left">排列顺序：
@@ -248,7 +244,7 @@
                 </td>
               </tr>
               <tr>
-                <td height="26" align="left">循环内的单行记录样式(InnerText)：[<a href='javascript:ShowHide("innervar");'><img src="../static/web/img/help.gif" border="0">底层变量field参考</a>]</td>
+                <td height="26" align="left">循环内的单行记录样式(InnerText)：[<a href='javascript:ShowHide("innervar");'><img src="../static/web/img/help.gif">底层变量field参考</a>]</td>
               </tr>
               <tr>
                 <td height="99" align="left"><textarea name="innertext" cols="80" rows="6" id="myinnertext" style="width:80%;height:120px"></textarea>
@@ -262,7 +258,7 @@
               </tr>
               <tr>
                 <td align="center" class="py-3">
-                  <button name="Submit2" type="submit" id="Submit2" class="btn btn-success">保存</button>
+                  <button name="Submit2" type="submit" id="Submit2" class="btn btn-success btn-sm">保存</button>
                 </td>
               </tr>
             </table>

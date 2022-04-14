@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-<table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
+<table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr> 
       <td height="26" background="../static/web/img/tbg.gif">
         <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
           <tr> 
-            <td width="30%" height="18" style="padding-left:10px">关键词维护：</td>
+            <td width="30%" style="padding-left:10px">关键词维护</td>
             <td width="70%" align="right">
               <button class="btn btn-success btn-sm" name="kw" type="button" id="kw" onClick="location='article_keywords_main.php';">返回关键词管理页</button>
             </td>
@@ -22,13 +22,13 @@
       </td>
     </tr>
     <tr> 
-      <td height="36" bgcolor="#ffffff">本向导帮助自动分析您系统内的关键词，并统计关键词的数量，对其进行排序，您可以清理掉错误的关键词或无意义的关键词，以提高文档关连和搜索的准确性，本分析器是直接在内存中对关键词进行分析排序后加入到数据库的，因此本操作比较占用内存，如果您的文档数量很大并且使用的又是虚拟主机，可能无法完成本操作<br>
+      <td height="36">本向导帮助自动分析您系统内的关键词，并统计关键词的数量，对其进行排序，您可以清理掉错误的关键词或无意义的关键词，以提高文档关连和搜索的准确性，本分析器是直接在内存中对关键词进行分析排序后加入到数据库的，因此本操作比较占用内存，如果您的文档数量很大并且使用的又是虚拟主机，可能无法完成本操作<br>
       本程序只分析文章频道的关键词数据，其它频道或自定义频道请自行手工指定内容的关系字<br>
       如果您的文章是采集回来的，请先用“自动获取关键词”的功能对未有关键词的文章进行分词索引，然后再检测关键词
       </td>
   </tr>
   <tr> 
-    <td height="30" bgcolor="#ffffff" align="center">
+    <td height="30" align="center">
 	   <a href="article_keywords_make.php?dopost=analyse" target="stafrm" class="btn btn-success btn-sm">检测已有的关键词</a>&nbsp;
 	   <a href="article_keywords_make.php?dopost=fetch" target="stafrm" class="btn btn-success btn-sm">自动获取关键词</a>
 	  </td>
@@ -52,7 +52,7 @@
       </table>
     </td>
   </tr>
-  <tr bgcolor="#ffffff"> 
+  <tr> 
     <td id="mtd">
       <div id="mdv" style="width:100%;height:300px"> 
         <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>

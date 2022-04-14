@@ -44,12 +44,12 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1"  align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1"  align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="ad_main.php">广告管理</a> &gt; 修改广告</td>
     </tr>
     <tr>
-      <td height="200" bgcolor="#ffffff">
+      <td>
         <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
           <form action="ad_edit.php" method="post" enctype="multipart/form-data" name="form1">
             <input type='hidden' name='aid' value='<?php echo $aid?>'>
@@ -68,7 +68,7 @@
                 </select></td>
             </tr>
             <tr>
-              <td width="15%" height="26">广告投放范围：</td>
+              <td height="26">广告投放范围：</td>
               <td colspan="2"><?php
            	$tl = new TypeLink(0);
            	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
@@ -105,7 +105,7 @@
               <td height="80">正常显示内容：</td>
               <td width="70%"><textarea name="normbody" rows="10" id="normbody" style="width:80%;height:100px"><?php echo dede_htmlspecialchars(stripslashes($row['normbody']))?></textarea>
               </td>
-              <td width="9%"></td>
+              <td width="10%"></td>
             </tr>
             <tr>
               <td height="80">过期显示内容：</td>
@@ -113,7 +113,7 @@
               <td></td>
             </tr>
             <tr>
-              <td colspan="3" align="center" class="py-3"><button type="submit" class="btn btn-success">保存</button></td>
+              <td colspan="3" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
             </tr>
           </form>
         </table>

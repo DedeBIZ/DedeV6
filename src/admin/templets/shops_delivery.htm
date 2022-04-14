@@ -23,39 +23,39 @@
         <tr align="center" height="26">
           <td height="30" colspan="2" align="left" background="../static/web/img/tbg.gif" style="padding-left:10px">增加一个配送方式</td>
         </tr>
-        <tr align="center" height="26" bgcolor="#ffffff">
-          <td width="10%" height="30" align="right" bgcolor="#ffffff">
+        <tr align="center" height="26">
+          <td width="10%" height="30" align="right">
             &nbsp;&nbsp;名称：
           </td>
-          <td align="left" bgcolor="#ffffff"><input name="dname" type="text" id="dname" style="width:160px">
+          <td align="left"><input name="dname" type="text" id="dname" style="width:160px">
             &nbsp;*此处填写配送方式名称</td>
         </tr>
-        <tr align="center" height="26" bgcolor="#ECF8FF">
-          <td width="10%" height="30" align="right" bgcolor="#ffffff">
+        <tr align="center" height="26">
+          <td width="10%" height="30" align="right">
             &nbsp;&nbsp;手续费：
           </td>
-          <td align="left" bgcolor="#ffffff">
+          <td align="left">
             <input name="price" type="text" id="price" value="0.00" style="width:60px">
             元
             &nbsp;*发货时所用的手续费，若要收取，请填写(精确到小数位两位)
           </td>
         </tr>
-        <tr align="center" height="26" bgcolor="#ECF8FF">
-          <td width="10%" height="30" align="right" bgcolor="#ffffff">
+        <tr align="center" height="26">
+          <td width="10%" height="30" align="right">
             &nbsp;&nbsp;简要说明：
           </td>
-          <td align="left" bgcolor="#ffffff">
+          <td align="left">
             <textarea name="des" id="des" style="width:360px;height:50px"></textarea>
             &nbsp;最多100个文字内，简要说明一下
           </td>
         </tr>
-        <tr bgcolor="#F3FFDD">
-          <td height="50" colspan="3" align="center" bgcolor="#ffffff">
+        <tr>
+          <td height="50" colspan="3" align="center">
             <table width="200" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
               <tr align="center">
                 <td>
-                  <button type="submit" class='btn btn-success'>添加</button>
-                  <button type="reset" name="button" class='btn btn-success'>重置</button>
+                  <button type="submit" class='btn btn-success btn-sm'>添加</button>
+                  <button type="reset" name="button" class='btn btn-success btn-sm'>重置</button>
                 </td>
               </tr>
             </table>
@@ -65,12 +65,12 @@
     </form>
     <form action="shops_delivery.php" method="post" name="form2">
       <input type="hidden" name="do" value="edit">
-      <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle">
+      <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3"> 
         <tr>
           <td height="26" colspan="3" align="left" background="../static/web/img/tbg.gif">已有配送方式列表</td>
         </tr>
-        <tr bgcolor="#F3FFDD">
-          <td colspan="3" align="center" bgcolor="#ffffff">
+        <tr>
+          <td colspan="3" align="center" style="border-top:0">
             <table width="100%" border="0" cellpadding="1" cellspacing="2" class="table">
               <?php foreach($deliveryarr as $rs) { ?>
               <input type="hidden" name="pid[]" value="<?php echo $rs['pid']; ?>">
@@ -89,9 +89,9 @@
             </table>
           </td>
         </tr>
-        <tr bgcolor="#F3FFDD">
+        <tr>
           <td bgcolor="#f8f8f8" colspan="3" align="center" class="py-3">
-            <button name="imageField2" type="submit" class="btn btn-success">保存</button>
+            <button name="imageField2" type="submit" class="btn btn-success btn-sm">保存</button>
           </td>
         </tr>
       </table>

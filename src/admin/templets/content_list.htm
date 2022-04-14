@@ -15,7 +15,7 @@
 <script src="js/list.js"></script>
 </head>
 <body onLoad="ContextMenu.intializeContextMenu()">
-	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3">
+	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
 		<tr>
 			<td>
 				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
@@ -88,7 +88,7 @@
 				<td width="10%">操作</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="10"><center>暂无内容</center></td></tr>'}
-			<tr align="center" bgcolor="#ffffff" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+			<tr align="center" height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
 				<td align="left"><span id="arc{dede:field.id/}"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'{dede:field.title function="str_replace('\'','',@me)"/}')">{dede:field.title/}</a></span>{dede:field.flag function='IsCommendArchives(@me)'/}</td>
@@ -120,7 +120,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td height="36" colspan="10" align="center" style="background:#f8f8f8">{dede:pagelist listsize='6'/}</td>
+				<td bgcolor="#f8f8f8" height="36" colspan="10" align="center">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</form>

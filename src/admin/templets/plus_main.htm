@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr height="30" background="../static/web/img/tbg.gif" style="padding-left:10px">
       <td width='30%' colspan="3">插件管理</td>
       <td align='right'>[<a href="module_main.php?moduletype=plus">安装新插件</a>]</td>
@@ -21,7 +21,7 @@
       <td width="30%">管理</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="4"><center>暂无内容</center></td></tr>'}
-    <tr align="center" bgcolor="#ffffff" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+    <tr align="center" height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid /}</td>
       <td>{dede:field.plusname /}</td>
       <td>{dede:field.writer /}</td>

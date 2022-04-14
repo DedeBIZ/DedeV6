@@ -143,7 +143,7 @@ else if ($action == 'setup') {
     foreach ($prvdirs as $k => $v) {
         if ($v) $cw = '√';
         else $cw = '<span style="color:#dc3545">×</span>';
-        $prvdir .= "<tr bgcolor='#ffffff'><td>$k</td>";
+        $prvdir .= "<tr><td>$k</td>";
         $prvdir .= "<td align='center'>$cw</td></tr>\r\n";
     }
     $prvdir .= "</table>";
@@ -162,11 +162,11 @@ else if ($action == 'setup') {
     $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt; 安装模块：{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
-    $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
+    $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
   <tr>
-    <td width='20%' height='26' class='dtb'>模块名称：</td>
-    <td width='80%' class='dtb'>{$infos['name']}</td>
+    <td width='260' height='26' class='dtb'>模块名称：</td>
+    <td class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
     <td height='26' class='dtb'>语言：</td>
@@ -189,16 +189,16 @@ else if ($action == 'setup') {
     <td class='dtb'><a href='module_main.php?action=showreadme&hash={$hash}' target='_blank' class='btn btn-success btn-sm'>浏览</a></td>
   </tr>
   <tr>
-    <td height='30' class='dtb' colspan='2'>
+    <td height='26' class='dtb' colspan='2'>
     <div class='alert alert-danger'>注意事项：安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限</div>
     </td>
   </tr>
   <tr>
-    <td height='30'>目录权限检测：<br> ../ 为根目录 <br> ./ 表示当前目录</td>
+    <td height='26'>目录权限检测：<br> ../ 为根目录 <br> ./ 表示当前目录</td>
     <td>$prvdir</td>
   </tr>
   <tr>
-    <td height='30'>模块包含的所有文件列表：</td>
+    <td height='26'>模块包含的所有文件列表：</td>
     <td></td>
   </tr>
   <tr>
@@ -297,11 +297,11 @@ else if ($action == 'del') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 删除模块：{$infos['name']}");
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
-    $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
+    $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
     <tr>
-      <td width='20%' height='26' class='dtb'>模块名称：</td>
-      <td width='80%' class='dtb'>{$infos['name']}</td>
+      <td width='260' height='26' class='dtb'>模块名称：</td>
+      <td class='dtb'>{$infos['name']}</td>
     </tr>
     <tr>
       <td height='26' class='dtb'>语言：</td>
@@ -362,11 +362,11 @@ else if ($action == 'uninstall') {
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 卸载模块：{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
-    $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
+    $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
   <tr>
-    <td width='20%' height='26' class='dtb'>模块名称：</td>
-    <td width='80%' class='dtb'>{$infos['name']}</td>
+    <td width='260' height='26' class='dtb'>模块名称：</td>
+    <td class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
     <td height='26' class='dtb'>语言：</td>
@@ -503,11 +503,11 @@ else if ($action == 'view') {
     $win->Init("", "js/blank.js", "");
     $wecome_info = "模块管理";
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 模块详情：{$infos['name']}");
-    $msg = "<style>.dtb{border-bottom:1px dotted #ccc}</style>
+    $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
     <table width='98%' border='0' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='20%' height='26' class='dtb'>模块名称：</td>
-    <td width='80%' class='dtb'>{$infos['name']}</td>
+    <td width='260' height='26' class='dtb'>模块名称：</td>
+    <td class='dtb'>{$infos['name']}</td>
   </tr>
   <tr>
     <td height='26' class='dtb'>语言：</td>

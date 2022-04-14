@@ -105,7 +105,7 @@ function noSelAll() {
 </script>
 </head>
 <body onLoad="ContextMenu.intializeContextMenu()">
-	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3">
+	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
 		<tr>
 			<td>
 				<button type="button" class="btn btn-success btn-sm" onClick="location='makehtml_spec.php';">更新专题</button>
@@ -154,7 +154,7 @@ function noSelAll() {
 				<td width="10%">属性</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
-			<tr align="center" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';" height="26" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">
+			<tr align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';" height="26" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
 				<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">{dede:field.title/}</a></td>
@@ -180,7 +180,7 @@ function noSelAll() {
 			</tr>
 		</form>
 		<tr>
-			<td height="36" colspan="9" align="center" style="background:#f8f8f8">{dede:pagelist listsize='6'/}</td>
+			<td bgcolor="#f8f8f8" height="36" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 </body>

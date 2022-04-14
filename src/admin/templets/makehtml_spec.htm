@@ -8,25 +8,25 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="makehtml_spec.php" method="get" target='stafrm'>
       <input type="hidden" name="dopost" value="ok">
       <tr>
         <td height="26" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18" style="padding-left:10px">更新专题</td>
+              <td width="30%" style="padding-left:10px">更新专题</td>
               <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#ffffff">为了安全起见，专题目录建议设置仅可读写权限，发布专题后需要手动更新，默认文件为：<?php echo $cfg_cmspath.$cfg_special."/index.html"?></td>
+        <td height="26">为了安全起见，专题目录建议设置仅可读写权限，发布专题后需要手动更新，默认文件为：<?php echo $cfg_cmspath.$cfg_special."/index.html"?></td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#ffffff" align="center"> 
-          <button name="b112" type="button" class="btn btn-success" onClick="document.form1.submit();">开始更新</button>
+        <td height="26" align="center"> 
+          <button name="b112" type="button" class="btn btn-success btn-sm" onClick="document.form1.submit();">开始更新</button>
         </td>
       </tr>
     </form>
@@ -34,7 +34,7 @@
       <td height="26">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="70%">进行状态：</td>
+            <td width="70%">结果：</td>
             <td width="30%" align="right">
               <script language='javascript'>
               function ResizeDiv(obj, ty) {
@@ -49,7 +49,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#ffffff">
+    <tr>
       <td id="mtd">
         <div id="mdv" style="width:100%;height:300px"> 
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>

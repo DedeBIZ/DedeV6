@@ -90,7 +90,7 @@ function DoRand(jobname)
 <div id='loading' style='position:absolute;top:160;display:none;z-index:3000'>
     <img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中
 </div>
-<table width='98%' align='center'>
+<table width='100%' align='center'>
 <tr>
     <td height='26'>
     如果您想对旧的文章应用随机模板设置，请点击此对旧文章进行处理（必须设置好模板项）
@@ -98,9 +98,6 @@ function DoRand(jobname)
     <a href='javascript:;' onclick='DoRand(\"clearold\")' class='btn btn-success btn-sm'>取消全部</a>
     <span id='tmpct' style='color:#dc3545;font-weight:bold'>$okmsg</span>
     </td>
-</tr>
-<tr>
-    <td bgcolor='#f8f8f8'>请按说明修改设置：</td>
 </tr>
 <tr>
     <td><textarea name='templates' id='templates' style='width:100%;height:250px'>$templates</textarea></td>

@@ -18,7 +18,7 @@ function DelTpl(filename) {
 </script>
 </head>
 <body>
-	<table width="98%" border="0" cellspacing="1" cellpadding="0" align="center" class="table maintable mt-3">
+	<table width="98%" border="0" cellspacing="1" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
 		<tr height="30" align="center">
 			<td width="25%" background="../static/web/img/wbg.gif">文件名</td>
 			<td width="30%" background="../static/web/img/wbg.gif">文件描述</td>
@@ -50,7 +50,7 @@ function DelTpl(filename) {
 			$filetime = MyDate("Y-m-d H:i",$filetime);
 			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 		?>
-		<tr height="26" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+		<tr height="26" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
 			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename; ?></a></td>
 			<td><?php echo $fileinfo; ?></td>
 			<td align="center"><?php echo $filetime; ?></td>
@@ -70,8 +70,8 @@ function DelTpl(filename) {
 		?>
 		<tr>
 			<td bgcolor="#f8f8f8" colspan="4" class="py-3">
-				<a class="btn btn-success" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>
-				<a class="btn btn-success" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
+				<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>
+				<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
 			</td>
 		</tr>
 	</table>

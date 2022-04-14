@@ -104,7 +104,7 @@ else if ($dopost == 2) {
         }
     }
     $msg .= "※总有效记录数：{$allarcnum} <br> ";
-    $errall = "<a href='index_body.php' class='btn btn-success'>完成修正</a>";
+    $errall = "<a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>";
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
     $msg .= "※微统计表记录数：{$row['dd']}<br>";
     if ($row['dd'] == $allarcnum) {
@@ -206,7 +206,7 @@ else if ($dopost == 3) {
     完成所有修复操作，移除错误记录 {$errnum} 条
     <hr />
     <br>
-    <a href='index_body.php' class='btn btn-success'>完成修正</a>
+    <a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>
     </td>
   </tr>
  </table>

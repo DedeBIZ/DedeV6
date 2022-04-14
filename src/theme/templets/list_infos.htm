@@ -9,8 +9,8 @@
 	<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 	<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
     <title>{dede:field.title/}-{dede:pagelist listsize='0' listitem='pageno' function='html2text(@me)' runphp='yes'} if(@me>1) @me='第'.trim(@me).'页-';else @me='';{/dede:pagelist}{dede:global.cfg_webname/}</title>
-	<meta name="keywords" content="{dede:field.keywords/}" />
-	<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+	<meta name="keywords" content="{dede:field.keywords/}">
+	<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
 	<style>
 		.dedeinfolink a {
 			color: #28a745;
@@ -102,8 +102,8 @@
 						<form name='infoguide' method='get' action='/apps/list.php'>
 							[field:nativeplace /]
 							[field:infotype /]
-							<input type='hidden' name='tid' value='[field:typeid /]' />
-							<input type='hidden' name='channelid' value='-8' />
+							<input type='hidden' name='tid' value='[field:typeid /]'>
+							<input type='hidden' name='channelid' value='-8'>
 							<div class="form-group">
 								<label for="iptKeyword">关键词</label>
 								<input type="text" name="keyword" class="form-control" id="iptKeyword">

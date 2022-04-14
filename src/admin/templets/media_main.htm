@@ -62,7 +62,7 @@
     </a>
   </div>
   <SCRIPT src="js/float.js"></SCRIPT>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" colspan="7" background="../static/web/img/tbg.gif">
         <table width='96%' cellpadding='0' cellspacing='0' style="padding-left:10px" class="table-borderless">
@@ -75,7 +75,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#ffffff" height="26">
+    <tr height="26">
       <td colspan="7">
         <table width="800" border="0" cellspacing="0" cellpadding="0" class="table-borderless">
           <form name='forms' method='post' action='media_main.php'>
@@ -101,7 +101,7 @@
                 </select>
               </td>
               <td>
-                  <button type="submit" class="btn btn-success">搜索</button>
+                  <button type="submit" class="btn btn-success btn-sm">搜索</button>
               </td>
             </tr>
           </form>
@@ -119,9 +119,9 @@
     </tr>
     <form name='form1'>
       {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-      <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+      <tr align="center" height="26" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td>
-          <input type='checkbox' name='aids' id='aids{dede:field.aid/}' value='{dede:field.aid/}' class='np' />
+          <input type='checkbox' name='aids' id='aids{dede:field.aid/}' value='{dede:field.aid/}' class='np'>
         </td>
         <td>
           <a href='{dede:field.url/}' title='{dede:field.url/}' target='_blank'>
@@ -138,7 +138,7 @@
         </td>
       </tr>
       {/dede:datalist}
-      <tr bgcolor="#ffffff" height="26">
+      <tr height="26">
         <td colspan="7">
           <button type="button" name="b4" class="btn btn-success btn-sm" onClick="AllSel();">全选</button>
           <button type="button" name="b5" class="btn btn-success btn-sm" onClick="NoneSel();">取消</button>

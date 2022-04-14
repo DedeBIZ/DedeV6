@@ -17,7 +17,7 @@ var channelArray = new Array();
 <?php    
 $i = 0;
 foreach($channelArray as $k=> $arr){
-  echo "channelArray[$k] = \"{$arr['nid']}\";\r\n";
+  echo "channelArray[$k] = \"{$arr['nid']}\";";
 }
 ?>
 function Nav() {
@@ -163,7 +163,7 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6" class="table mb-0">
+          <table width="100%" border="0" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6" class="table">
             <tr>
               <td width="160" class="bline" height="26" style="padding-left:10px">是否支持投稿：</td>
               <td class="bline">
@@ -185,8 +185,8 @@ function CheckCross() {
                 <?php    
                 foreach($channelArray as $k=>$arr)
                 {
-                  if($k==$channelid) echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
-                  else  echo " <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                  if($k==$channelid) echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
+                  else  echo " <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
                 }
                 ?>
                 </select>
@@ -194,58 +194,60 @@ function CheckCross() {
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">中文名称：</td>
-              <td class="bline"><input name="typename" type="text" size="40" value="<?php echo $myrow['typename']?>" class="iptxt"></td>
+              <td class="bline"><input name="typename" type="text" value="<?php echo $myrow['typename']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">中文概况：</td>
-              <td class="bline"><input name="namegk" type="text" size="40" value="<?php echo $myrow['namegk']?>" class="iptxt"></td>
+              <td class="bline"><input name="namegk" type="text" value="<?php echo $myrow['namegk']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">英文名称：</td>
-              <td class="bline"><input name="enname" type="text" size="40" value="<?php echo $myrow['enname']?>" class="iptxt"></td>
+              <td class="bline"><input name="enname" type="text" value="<?php echo $myrow['enname']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">英文概况：</td>
-              <td class="bline"><input name="ennamegk" type="text" size="40" value="<?php echo $myrow['ennamegk']?>" class="iptxt"></td>
+              <td class="bline"><input name="ennamegk" type="text" value="<?php echo $myrow['ennamegk']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">栏目大图：</td>
               <td>
-                <input name="bigpic" type="text" class="alltxt" size="40" value="<?php echo $myrow['bigpic']?>">
+                <input name="bigpic" type="text" class="alltxt" value="<?php echo $myrow['bigpic']?>" style="width:260px">
                 <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
               </td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">栏目小图：</td>
               <td>
-                <input name="litimg" type="text" class="alltxt" size="40" value="<?php echo $myrow['litimg']?>">
+                <input name="litimg" type="text" class="alltxt" value="<?php echo $myrow['litimg']?>" style="width:260px">
                 <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
               </td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">排列顺序：</td>
-              <td class="bline"> <input name="sortrank" type="text" value="<?php echo $myrow['sortrank']?>" class="iptxt" style="width:100px">（由低 &gt; 高）</td>
+              <td class="bline"><input name="sortrank" type="text" value="<?php echo $myrow['sortrank']?>" class="iptxt" style="width:60px">（由低 &gt; 高）</td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">浏览权限：</td>
-              <td class="bline"> <select name="corank" id="corank" style="width:100px">
+              <td class="bline">
+                <select name="corank" id="corank" style="width:160px">
                 <?php
                 $dsql->SetQuery("Select * from #@__arcrank where `rank` >= 0");
                 $dsql->Execute('cc');
                 while($row = $dsql->GetObject('cc'))
                 {
                   if($myrow['corank']==$row->rank)
-                  echo "<option value='".$row->rank."' selected>".$row->membername."</option>\r\n";
+                  echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
                   else
-                  echo "<option value='".$row->rank."'>".$row->membername."</option>\r\n";
+                  echo "<option value='".$row->rank."'>".$row->membername."</option>";
                 }
                 ?>
-                </select>（仅限制栏目里的文档浏览权限）
+                </select>
+                （仅限制栏目里的文档浏览权限）
               </td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">文件保存目录：</td>
-              <td class="bline"><input name="typedir" type="text" id="typedir" value="<?php echo $myrow['typedir']?>" size="40" class="iptxt">（填写{cmspath}/a/b/c生成目录“域名/a/b/c”标签{cmspath}必填）</td>
+              <td class="bline"><input name="typedir" type="text" id="typedir" value="<?php echo $myrow['typedir']?>" class="iptxt" style="width:260px">（填写{cmspath}/a/b/c生成目录“域名/a/b/c”标签{cmspath}必填）</td>
             </tr>
             <tr>
               <td height="26" style="padding-left:10px">栏目列表选项：</td>
@@ -257,7 +259,7 @@ function CheckCross() {
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">默认页的名称：</td>
-              <td class="bline"><input name="defaultname" type="text" value="<?php echo $myrow['defaultname']?>" class="iptxt" style="width:100px"></td>
+              <td class="bline"><input name="defaultname" type="text" value="<?php echo $myrow['defaultname']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td height="26" class="bline" style="padding-left:10px">栏目属性：</td>
@@ -268,24 +270,24 @@ function CheckCross() {
               </td>
             </tr>
             <tr id='helpvarco' style='display:none'>
-              <td height="80" bgcolor="#F3F7EA" style="padding-left:10px">栏目交叉说明：</td>
-              <td bgcolor="#F3F7EA">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>例如：网站上有大栏目——智能手机、音乐手机，另外又有栏目——诺基亚&gt;智能手机、诺基亚&gt;音乐手机，这样顶级的大栏目就和另一个大栏目的子栏目形成了交叉，这样只需要在大栏目中指定交叉的栏目即可<br>注：会自动索引交叉栏目的内容，但不会索引交叉栏目下级栏目的内容，这种应用也适用于按地区划分资讯的站点
+              <td height="80" bgcolor="#f8f8f8" style="padding-left:10px">栏目交叉说明：</td>
+              <td bgcolor="#f8f8f8">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>例如：网站上有大栏目——智能手机、音乐手机，另外又有栏目——诺基亚&gt;智能手机、诺基亚&gt;音乐手机，这样顶级的大栏目就和另一个大栏目的子栏目形成了交叉，这样只需要在大栏目中指定交叉的栏目即可<br>注：会自动索引交叉栏目的内容，但不会索引交叉栏目下级栏目的内容，这种应用也适用于按地区划分资讯的站点
               </td>
             </tr>
             <tr>
-              <td style="padding-left:10px">栏目交叉：<img src="../static/web/img/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvarco')"><br>仅适用[最终列表栏目]</td>
+              <td style="padding-left:10px">栏目交叉：<img src="../static/web/img/help.gif" style="cursor:pointer" onClick="ShowHide('helpvarco')"><br>仅适用[最终列表栏目]</td>
               <td class="bline">
                 <label><input name="cross" type="radio" id="cross0" onClick="CheckCross()" value="0" class='np' <?php if($myrow['cross']==0) echo " checked='1' "; ?>>&nbsp;不交叉</label>
                 <label><input name="cross" type="radio" id="cross1" onClick="CheckCross()" value="1" class='np' <?php if($myrow['cross']==1) echo " checked='1' "; ?>>&nbsp;自动获取同名栏目内容</label>
-                <label><input name="cross" type="radio" id="cross2" onClick="CheckCross()" value="2" class='np' <?php if($myrow['cross']==2) echo " checked='1' "; ?>>&nbsp;手工指定交叉栏目ID(用逗号分开)</label>
+                <label><input name="cross" type="radio" id="cross2" onClick="CheckCross()" value="2" class='np' <?php if($myrow['cross']==2) echo " checked='1' "; ?>>&nbsp;手工指定交叉栏目ID（用逗号分开）</label>
                 <br>
-                <textarea name="crossid" cols="50" rows="3" id="crossid" style="<?php if($myrow['cross']!=2) echo'display:none'; ?>" class="alltxt"><?php echo $myrow['crossid']; ?></textarea>
+                <textarea name="crossid" id="crossid" style="<?php if($myrow['cross']!=2) echo'display:none'; ?>" class="alltxt" style="width:360px;height:50px"><?php echo $myrow['crossid']; ?></textarea>
               </td>
             </tr>
             <tr id='smclass' style='<?php echo ($channelid<0 ? '' : 'display:none'); ?>'>
               <td class="bline" style="padding-left:10px">绑定小分类：<br>仅适用[分类信息模型]</td>
               <td class="bline">
-                <select name='smalltype[]' size='5' style='width:120px;height:auto' multiple='yes'>
+                <select name='smalltype[]' multiple='yes' style='width:160px'>
                   <?php
                   $smtypes = explode(',',trim($myrow['smalltypes']));
                   $sql = "Select * From `#@__sys_enum` where egroup like 'infotype' order by disorder asc, id desc ";
@@ -298,13 +300,13 @@ function CheckCross() {
                       $selstr = '';
                     }
                     if($arr['evalue']%500==0) {
-                      echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>\r\n";
+                      echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
                     }
                     else if(preg_match("#\.#", $arr['evalue']))
                     {
-                      echo "<option value='{$arr['evalue']}'{$selstr}> └───{$arr['ename']}</option>\r\n";
+                      echo "<option value='{$arr['evalue']}'{$selstr}> └───{$arr['ename']}</option>";
                     } else {
-                      echo "<option value='{$arr['evalue']}'{$selstr}> └─{$arr['ename']}</option>\r\n";
+                      echo "<option value='{$arr['evalue']}'{$selstr}> └─{$arr['ename']}</option>";
                     }
                   }
                   ?>
@@ -312,7 +314,7 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="display:none;border:1px solid #dee2e6" id="adset" class="table mb-0">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="display:none;border:1px solid #dee2e6" id="adset" class="table">
             <tr>
               <td class="bline" width="160" height="26" style="padding-left:10px">多站点支持：</td>
               <td class="bline">
@@ -326,7 +328,7 @@ function CheckCross() {
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">绑定域名：</td>
-              <td class="bline"> <input name="siteurl" type="text" id="siteurl" size="40" value="<?php echo $myrow['siteurl']?>" class="iptxt">（需加 http://，一级或二级域名的根网址）</td>
+              <td class="bline"><input name="siteurl" type="text" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="iptxt" style="width:260px">（需加 http://，一级或二级域名的根网址）</td>
             </tr>
             <tr>
               <td class="bline" height="26" style="padding-left:10px">站点根目录：</td>
@@ -350,22 +352,22 @@ function CheckCross() {
             <tr>
               <td height="26" style="padding-left:10px">封面模板：</td>
               <td>
-                <input name="tempindex" type="text" value="<?php echo $myrow['tempindex']?>" size="40" class="iptxt">
+                <input name="tempindex" type="text" value="<?php echo $myrow['tempindex']?>" class="iptxt" style="width:260px">
                 <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
-                <img src="../static/web/img/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar1')">
+                <img src="../static/web/img/help.gif" style="cursor:pointer" onClick="ShowHide('helpvar1')">
               </td>
             </tr>
             <tr>
               <td height="26" style="padding-left:10px">列表模板：</td>
               <td>
-                <input name="templist" type="text" value="<?php echo $myrow['templist']?>" size="40" class="iptxt">
+                <input name="templist" type="text" value="<?php echo $myrow['templist']?>" class="iptxt" style="width:260px">
                 <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
               </td>
             </tr>
             <tr>
               <td height="26" style="padding-left:10px">文章模板：</td>
               <td>
-                <input name="temparticle" type="text" value="<?php echo $myrow['temparticle']?>" size="40" class="iptxt">
+                <input name="temparticle" type="text" value="<?php echo $myrow['temparticle']?>" class="iptxt" style="width:260px">
                 <button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
               </td>
             </tr>
@@ -378,14 +380,14 @@ function CheckCross() {
                 {pinyin} 拼音+文章ID<br>
                 {py} 拼音部首+文章ID<br>
                 {typedir} 栏目目录 <br>
-                {cc} 日期+ID混编后用转换为适合的字母 <br>
+                {cc} 日期+ID混编后用转换为适合的字母
               </td>
             </tr>
             <tr>
               <td height="26" style="padding-left:10px">文章命名规则：</td>
               <td>
-                <input name="namerule" type="text" id="namerule" value="<?php echo $myrow['namerule']?>" size="40" class="iptxt">
-                <img src="../static/web/img/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar2')">
+                <input name="namerule" type="text" id="namerule" value="<?php echo $myrow['namerule']?>" class="iptxt" style="width:260px">
+                <img src="../static/web/img/help.gif" style="cursor:pointer" onClick="ShowHide('helpvar2')">
               </td>
             </tr>
             <tr id='helpvar3' style='display:none'>
@@ -395,21 +397,21 @@ function CheckCross() {
             <tr>
               <td height="26" style="padding-left:10px">列表命名规则：</td>
               <td>
-                <input name="namerule2" type="text" id="namerule2" value="<?php echo $myrow['namerule2']?>" size="40" class="iptxt">
-                <img src="../static/web/img/help.gif" alt="帮助" width="16" height="16" border="0" style="cursor:pointer" onClick="ShowHide('helpvar3')">
+                <input name="namerule2" type="text" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="iptxt" style="width:260px">
+                <img src="../static/web/img/help.gif" style="cursor:pointer" onClick="ShowHide('helpvar3')">
               </td>
             </tr>
             <tr>
               <td height="60" style="padding-left:10px">SEO标题：</td>
-              <td><input name="seotitle" type="text" id="seotitle" value="<?php echo $myrow['seotitle']?>" size="40" class="alltxt">（栏目模板里用{dede:field.seotitle /}调用）</td>
+              <td><input name="seotitle" type="text" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="alltxt" style="width:260px">（栏目模板里用{dede:field.seotitle /}调用）</td>
             </tr>
             <tr>
               <td height="60" style="padding-left:10px">关键词：</td>
-              <td><textarea name="keywords" cols="70" rows="4" id="keywords" class="alltxt"><?php echo $myrow['keywords']?></textarea></td>
+              <td><textarea name="keywords" cid="keywords" class="alltxt" style="width:360px;height:50px"><?php echo $myrow['keywords']?></textarea></td>
             </tr>
             <tr>
               <td height="60" style="padding-left:10px">栏目描述：</td>
-              <td height="60"><textarea name="description" cols="70" rows="4" id="description" class="alltxt"><?php echo $myrow['description']?></textarea></td>
+              <td height="60"><textarea name="description" id="description" class="alltxt" style="width:360px;height:50px"><?php echo $myrow['description']?></textarea></td>
             </tr>
             <tr>
               <td height="36" style="padding-left:10px">继承选项：</td>
@@ -418,12 +420,12 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="display:none;border:1px solid #dee2e6" id="ctset" class="table mb-0">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="display:none;border:1px solid #dee2e6" id="ctset" class="table">
             <tr>
               <td height="26">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</td>
             </tr>
             <tr>
-              <td style="padding:10px">
+              <td>
                 <?php
                 GetEditor("content",$myrow['content'],"450","Default","print","false");
                 ?>
@@ -433,8 +435,8 @@ function CheckCross() {
           <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
             <tr>
               <td align="center" class="py-3">
-                <button type="submit" class="btn btn-success">保存</button>
-                <a href="catalog_main.php" class="btn btn-success">返回</a>
+                <button type="submit" class="btn btn-success btn-sm">保存</button>
+                <a href="catalog_main.php" class="btn btn-success btn-sm">返回</a>
               </td>
             </tr>
           </table>

@@ -165,7 +165,7 @@ function ErrorAddSave(id, title) {
     </div>
         `;
     let footer = `
-        <button type="button" id="btnSubmit" class="btn btn-success" onClick="ErrAddSaveDo('DedeModal~modalID~')">提交</button>
+        <button type="button" id="btnSubmit" class="btn btn-success btn-sm" onClick="ErrAddSaveDo('DedeModal~modalID~')">提交</button>
         <button type="button" class="btn btn-outline-success" onClick="CloseModal('DedeModal~modalID~')">确定</button>
         `;
     ShowMsg(content, {

@@ -75,7 +75,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
     while($row = $dsql->GetArray())
     {
         $listurl = GetFreeListUrl($row['aid'],$row['namerule'],$row['listdir'],$row['defaultpage'],$row['nodefault']);
-        $line = "<tr align='center' bgcolor='#ffffff' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
+        $line = "<tr align='center' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
         <td>{$row['aid']}</td>
         <td> <a href='$listurl' target='_blank'>{$row['title']}</a> </td>
         <td> {$row['templet']} </td>

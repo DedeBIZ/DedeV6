@@ -50,17 +50,17 @@ function Post()
 <input type="hidden" name="actiondo" value="<?php echo $action; ?>">
 <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 <input type="hidden" name="action" value="savetagfile">
-	<table width='98%'  border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3">
+	<table width='98%'  border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3 mb-3">
 		<tr bgcolor='#EEF4EA'>
 			<td colspan="2" height="26" background="../static/web/img/wbg.gif" style="padding-left:10px">
 					<span><?php echo $title; ?>（修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份）</span>
 			</td>
 		</tr>
-		<tr bgcolor='#ffffff'>
+		<tr>
   		<td>文件名称</td>
   		<td><input name=filename size=40 value="<?php echo $filename; ?>"/>（不允许用 “..” 形式的路径）</td>
 		</tr>
-		<tr bgcolor='#ffffff'>
+		<tr>
   		<td>标签格式说明 </td>
   		<td>
   			标签文件名为：标签名.lib.php <br>
@@ -68,14 +68,14 @@ function Post()
   			修改标签时为了防止出错，您也可以修改它的名称(同时修改文件名和函数名)，这样等同继承了原来标签的代码建立一个新的标签
   		</td>
 		</tr>
-    <tr bgcolor='#ffffff'>
+    <tr>
       <td colspan='2'><textarea id="content" name="content" cols="150" rows="24" style="width:98%;height:450px"><?php echo $democode; ?></textarea></td>
     </tr>
     <tr>
       <td bgcolor="#f8f8f8" colspan="2" class="py-3">
-          <button type="submit" name='B1' class="btn btn-success">保存</button>
-          <button type="reset" name='B2' class="btn btn-success">重置</button>
-          <button type="button" name='B4' class="btn btn-success" onClick="javascript:history.go(-1);">返回</button>
+          <button type="submit" name='B1' class="btn btn-success btn-sm">保存</button>
+          <button type="reset" name='B2' class="btn btn-success btn-sm">重置</button>
+          <button type="button" name='B4' class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
       </td>
     </tr>
 </table> 

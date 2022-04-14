@@ -81,9 +81,9 @@ table{border-collapse:separate}
             while($trow = $dsql->GetObject())
             {
               if(preg_match("#".$trow->att."#", $addRow['flag']))
-              echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked' /> {$trow->attname}[{$trow->att}]</label> ";
+              echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
               else
-              echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' /> {$trow->attname}[{$trow->att}]</label> ";
+              echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
             }
             ?>
             </td>
@@ -132,7 +132,7 @@ table{border-collapse:separate}
     </tr>
     <?php if($cInfos['dfcid']>0)
     {
-      echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}' />";
+      echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}'>";
     } else {
     ?>
     <tr>
@@ -166,8 +166,8 @@ table{border-collapse:separate}
   <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
     <tr>
       <td align="center" class="py-3">
-        <button type="submit" class="btn btn-success">保存</button>
-        <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
+        <button type="submit" class="btn btn-success btn-sm">保存</button>
+        <button type="button" onClick="location.reload();" class="btn btn-success btn-sm">重置</button>
       </td>
     </tr>
   </table>

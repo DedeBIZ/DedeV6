@@ -79,7 +79,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $line = "
-      <tr align='center' bgcolor='#ffffff' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
+      <tr align='center' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
       <td height='26'><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
       <td height='26'>{$row['aid']}</td>
       <td style='padding:6px;'><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
@@ -95,7 +95,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     ";
         echo $line;
     }
-    echo "<tr align='left' bgcolor='#ffffff' height='30'>
+    echo "<tr align='left' height='30'>
             <td colspan='8' style='padding-left:10px;'>
             <a href='javascript:selAll()' class='btn btn-success btn-sm'>反选</a>
             <a href='javascript:noselAll()' class='btn btn-success btn-sm'>取消</a>

@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title><?php echo $diy->name; ?> - Powered by DedeBIZ</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
 <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
@@ -21,7 +21,7 @@
             <h3><?php echo $diy->name; ?>内容列表</h3>
            </li>
          </ul>
-         <span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success">发布信息</a></span>
+         <span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
       </nav>
 		</div>
 		<div class="cbox mceneter">
@@ -39,11 +39,11 @@
 						if($fields[$field]=='') continue;
 						if($fielddata[1]=='img')
 						{
-							$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif' border='0' /> 图片附件</a>\r\n";
+							$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif' border='0'> 图片附件</a>\r\n";
 						}
 						else if($fielddata[1]=='addon')
 						{
-							$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif' border='0' /> 其它附件</a>";
+							$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif' border='0'> 其它附件</a>";
 						} else {
 							if($fielddata[1]=='htmltext') $fields[$field] = html2text($fields[$field]);
 							else $fields[$field] = dede_htmlspecialchars($fields[$field]);
@@ -52,17 +52,17 @@
 								$fields[$field] = cn_substr( $fields[$field], 250).'';
 							}
 						}
-						echo "<tr><td bgcolor='#ffffff'>{$fielddata[0]}</td><td bgcolor='#ffffff'>{$fields[$field]}</td></tr>\r\n";
+						echo "<tr><td>{$fielddata[0]}</td><td>{$fields[$field]}</td></tr>\r\n";
 					}
 					echo '</tbody>';
 			} else {
-				echo "<tr><td bgcolor='#ffffff'>暂无记录</td></tr>";
+				echo "<tr><td>暂无记录</td></tr>";
 			}
 			?>
 			</table>
 			{/dede:datalist}
 			<table class='listtable' cellspacing="2">
-				<tr><td bgcolor="#ffffff">{dede:pagelist listsize='6'/}</td></tr>
+				<tr><td>{dede:pagelist listsize='6'/}</td></tr>
 			</table>
 			</div>
 		</div>

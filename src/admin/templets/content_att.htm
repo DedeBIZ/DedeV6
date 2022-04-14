@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="0" cellspacing="1" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="0" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="content_att.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
@@ -16,16 +16,16 @@
         </td>
       </tr>
       <tr>
-        <td height="30" colspan="3" bgcolor="#ffffff">
+        <td height="30" colspan="3">
           自定义属性的意义和使用说明：<br>
           在以往的版本中，网站主页、频道封面的设计，都只能单调的用 arclist 标记把某栏目最新或按特定排序方式的文档无选择的读出来，这样做法存在很大的不足，例如，我希望在最顶部的地方显示我想要的文档，在以往的版本中是无法做到的，但使用自定义属性之后，只要给arclist 标记加上 att='自定义属性的ID' 的属性，然后在发布的时候对适合的文档选择专门的属性，那么使用arclist的地方就会按您的意愿显示指定的文档<br>
           注意事项：这个版本中att对应的字段是SET类型字段,因此为了数据安全起见不允许用户增加其它类型,但调用时允许使用组合条件,如:att='c,p'表示推荐图片新闻
         </td>
       </tr>
-      <tr bgcolor="#FBFCE2" align="center">
-        <td width="15%" height="26">ID</td>
-        <td width="15%" height="26">排序</td>
-        <td width="70%" align="left">属性名称</td>
+      <tr bgcolor="#FBFCE2">
+        <td width="15%" height="26" align="center">ID</td>
+        <td width="15%">排序</td>
+        <td width="70%">属性名称</td>
       </tr>
       <?php
 	$dsql->SetQuery(" Select * From `#@__arcatt` order by sortid asc ");
@@ -36,27 +36,18 @@
 	  $k++;
 	?>
       <input type="hidden" name="att_<?php echo $k?>" value="<?php echo $row->att?>">
-      <tr bgcolor="#ffffff" height="26">
-        <td align="center">
-          <?php echo $row->att; ?>
-        </td>
-        <td>
-          <input name="sortid_<?php echo $k?>" value="<?php echo $row->sortid; ?>" type="text" id="sortid_<?php echo $k?>" class='pubinputs' style='width:50%' />
-        </td>
-        <td style="padding-left:5px;">
-          <input name="attname_<?php echo $k?>" value="<?php echo $row->attname; ?>" type="text" id="attname_<?php echo $k?>" size="30" class='pubinputs' />
-        </td>
+      <tr height="26">
+        <td align="center"><?php echo $row->att; ?></td>
+        <td><input name="sortid_<?php echo $k?>" value="<?php echo $row->sortid; ?>" type="text" id="sortid_<?php echo $k?>" class='pubinputs' style='width:50%'></td>
+        <td><input name="attname_<?php echo $k?>" value="<?php echo $row->attname; ?>" type="text" id="attname_<?php echo $k?>" size="30" class='pubinputs'></td>
       </tr>
       <?php
 	}
 	?>
       <input type="hidden" name="idend" value="<?php echo $k?>">
       <tr>
-        <td height="26" colspan="3" bgcolor="#f8f8f8"></td>
-      </tr>
-      <tr>
-        <td bgcolor="#ffffff" colspan="3" align="center" class="py-3">
-          <button type="submit" class="btn btn-success">保存</button>
+        <td colspan="3" align="center" class="py-3">
+          <button type="submit" class="btn btn-success btn-sm">保存</button>
         </td>
       </tr>
     </form>

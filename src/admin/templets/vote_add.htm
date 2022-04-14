@@ -69,32 +69,32 @@
 </script>
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href='vote_main.php'>投票管理</a> &gt; 增加投票</td>
     </tr>
     <tr>
-      <td height="200" bgcolor="#ffffff">
+      <td height="200">
         <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
           <form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
             <input type='hidden' name='dopost' value='save'>
             <input type="hidden" name="isarc" value="<?php echo $isarc; ?>">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
-              <td width="15%" align="center">投票名称：</td>
-              <td width="85%"><input name="votename" type="text" id="votename"></td>
+              <td width="260" height="26">投票名称：</td>
+              <td height="26"><input name="votename" type="text" id="votename" style="width:260px"></td>
             </tr>
             <tr>
-              <td align="center">开始时间：</td>
-              <td><input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" class="dateico datepicker1"></td>
+              <td height="26">开始时间：</td>
+              <td height="26"><input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" class="dateico datepicker1" style="width:260px"></td>
             </tr>
             <tr>
-              <td align="center">结束时间：</td>
-              <td><input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" class="dateico datepicker1"></td>
+              <td height="26">结束时间：</td>
+              <td height="26"><input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" class="dateico datepicker1" style="width:260px"></td>
             </tr>
             <tr>
-              <td align="center">是否允许游客投票：</td>
-              <td> 
+              <td height="26">是否允许游客投票：</td>
+              <td height="26"> 
                 <label><input name="isallow" type="radio" class="np" value="0">
                 是</label>
                 <label><input type="radio" name="isallow" class="np" value="1" checked>
@@ -102,8 +102,8 @@
               </td>
             </tr>
             <tr>
-              <td align="center">是否允许查看投票：</td>
-              <td> 
+              <td height="26">是否允许查看投票：</td>
+              <td height="26"> 
                 <label><input name="view" type="radio" class="np" value="0">
                 是</label>
                 <label><input type="radio" name="view" class="np" value="1" checked>
@@ -111,12 +111,12 @@
               </td>
             </tr>
             <tr>
-              <td align="center">投票时间间隔：</td>
-              <td><input name="spec" type="text" value="" class="spec">（N天后可再次投票，0 表示此IP地址只能投一次）</td>
+              <td height="26">投票时间间隔：</td>
+              <td height="26"><input name="spec" type="text" value="" class="spec" style="width:260px">（N天后可再次投票，0 表示此IP地址只能投一次）</td>
             </tr>
             <tr>
-              <td align="center">是否多选：</td>
-              <td> 
+              <td height="26">是否多选：</td>
+              <td height="26"> 
                 <label><input name="ismore" type="radio" class="np" value="0" checked>
                 单选</label>
                 <label><input type="radio" name="ismore" class="np" value="1">
@@ -124,23 +124,23 @@
               </td>
             </tr>
             <tr>
-              <td align="center">投票项：</td>
-              <td>
+              <td height="26">投票项：</td>
+              <td height="26">
                 <button type="button" name="bbb" class="btn btn-success btn-sm" onClick="AddItem();">增加投票选项</button>
                 <button type="button" name="bbb2" class="btn btn-success btn-sm" onClick="ResetItem();">重置投票选项</button>
               </td>
             </tr>
             <tr>
-              <td></td>
-              <td>
+              <td height="26"></td>
+              <td height="26">
                 <div id="voteitem">
-                  选项1：<input name="voteitem1" type="text" id="voteitem1" size="30">
+                  选项1：<input name="voteitem1" type="text" size="30" id="voteitem1">
                 </div>
               </td>
             </tr>
             <tr>
-              <td align="center">是否启用：</td>
-              <td> 
+              <td height="26">是否启用：</td>
+              <td height="26"> 
                 <label><input name="isenable" type="radio" class="np" value="0" checked>
                 是</label>
                 <label><input type="radio" name="isenable" class="np" value="1">
@@ -148,15 +148,12 @@
               </td>
             </tr>
             <tr>
-              <td align="center" class="py-3">
-                <button type="submit" name="Submit" class="btn btn-success">保存投票数据</button>
-                <button type="button" onclick="history.back()" name="Submit" class="btn btn-success">返回</button>
+              <td colspan="2" align="center" class="py-3">
+                <button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
+                <button type="button" onclick="history.back()" name="Submit" class="btn btn-success btn-sm">返回</button>
               </td>
             </tr>
-            <tr>
-            </tr>
           </form>
-          <td colspan="2"></td>
         </table>
       </td>
     </tr>

@@ -47,7 +47,7 @@
 	</script>
 </head>
 <body>
-	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3">
+	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3 mb-3">
 		<tr bgcolor="#E7E7E7">
 			<td height="26" colspan="9" background="../static/web/img/tbg.gif">文章列表</td>
 		</tr>
@@ -64,7 +64,7 @@
 				<td width="13%">属性</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
-			<tr align='center' bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+			<tr align='center'
 				onMouseOut="javascript:this.bgColor='#ffffff';" height="26">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
@@ -96,15 +96,15 @@
 				<td>
 					<table width='600' border='0' cellpadding='0' cellspacing='0'>
 						<tr>
-							<td width='160' align='center'>请选择类目：</td>
-							<td width='160'>
+							<td width='260' align='center'>请选择类目：</td>
+							<td width='260'>
 								<select name='cid' style='width:160px'>
 									<option value='0'>选择分类</option>
 									<?php echo $optionarr?>
 								</select>
 							</td>
 							<td width='100'>关键词：</td>
-							<td width='160'><input type='text' name='keyword' value='<?php echo $keyword?>' style='width:160px'></td>
+							<td width='260'><input type='text' name='keyword' value='<?php echo $keyword?>' style='width:160px'></td>
 							<td width='100'><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 						</tr>
 					</table>

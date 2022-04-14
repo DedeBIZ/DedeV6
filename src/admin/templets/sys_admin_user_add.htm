@@ -31,25 +31,25 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" background="../static/web/img/tbg.gif">
         <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
           <tr>
-            <td width="30%" style="padding-left:10px">新增帐号</td>
-            <td width="70%" align="right"><a href="sys_admin_user.php" class="btn btn-success btn-sm">管理帐号</a></td>
+            <td width="24%" style="padding-left:10px">新增帐号</td>
+            <td width="76%" align="right"><a href="sys_admin_user.php" class="btn btn-success btn-sm">管理帐号</a></td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td height="215" align="center" bgcolor="#ffffff">
+      <td height="215" align="center">
         <form name="form1" action="sys_admin_user_add.php" onSubmit="return checkSubmit();" method="post">
           <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
           <input type="hidden" name="dopost" value="add">
           <table width="98%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
-              <td width="160" height="26" class="bline">用户登录ID：</td>
+              <td width="260" height="26" class="bline">用户登录ID：</td>
               <td><input name="userid" type="text" id="userid" size="16" style="width:260px">（只能用'0-9'、'a-z'、'A-Z'、'.'、'@'、'_'、'-'、'!'以内范围的字符）</td>
             </tr>
             <tr>
@@ -83,7 +83,8 @@
                 <select name="typeids[]" id="typeid" style="width:260px;height:200px" multiple="true">
                   <option value="0" class='alltype' selected>所有频道</option>
                   <?php echo $typeOptions?>
-                </select>（按Ctrl可以进行多选）
+                </select>
+                （按Ctrl可以进行多选）
               </td>
             </tr>
             <tr>
@@ -102,8 +103,8 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2" class="py-3">
-                <button type="submit" class="btn btn-success" onClick="DoSubmit('gettag')" class="coolbg np">增加用户</button>
+              <td colspan="2" align="center" class="py-3">
+                <button type="submit" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" class="coolbg np">保存</button>
               </td>
             </tr>
           </table>

@@ -3,10 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>修改插件</title>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-<table width="98%"  border="0" align="center" cellpadding="3" cellspacing="1">
+<table width="98%"  border="0" cellpadding="3" cellspacing="1"  align="center" class="table maintable mt-3 mb-3">
   <form name="form1" action="plus_edit.php" method="post">
    <input type='hidden' name='dopost' value='saveedit'>
    <input type='hidden' name='aid' value='<?php echo $aid?>'>
@@ -14,36 +16,26 @@
       <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="plus_main.php">插件管理</a> &gt; 修改插件</td>
     </tr>
     <tr> 
-      <td width="20%" align="center" bgcolor="#ffffff">插件名称</td>
-      <td width="80%" bgcolor="#ffffff">
-      	<input type='text' name='plusname' style='width:180px' value='<?php echo $row['plusname']?>'>
-      </td>
+      <td width="260" height="26">插件名称</td>
+      <td height="26"><input type='text' name='plusname' style='width:160px' value='<?php echo $row['plusname']?>'></td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#ffffff">作者</td>
-      <td bgcolor="#ffffff"><?php echo $row['writer']?></td>
+      <td height="26">作者</td>
+      <td height="26"><?php echo $row['writer']?></td>
     </tr>
      <tr> 
-      <td align="center" bgcolor="#ffffff">菜单配置</td>
-      <td bgcolor="#ffffff">
-      	<textarea name="menustring" rows="6" id="menustring" style="width:80%"><?php echo $row['menustring']?></textarea>
-      </td>
+      <td height="26">菜单配置</td>
+      <td height="26"><textarea name="menustring" rows="6" id="menustring" style="width:80%"><?php echo $row['menustring']?></textarea></td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#ffffff">文件列表</td>
-      <td bgcolor="#ffffff">文件用&quot;,&quot;分开，路径相对于管理目录（当前目录）<br>
+      <td height="26">文件列表</td>
+      <td height="26">文件用&quot;,&quot;分开，路径相对于管理目录（当前目录）<br>
         <textarea name="filelist" rows="8" id="filelist" style="width:80%"><?php echo $row['filelist']?></textarea>
       </td>
     </tr>
-    <tr bgcolor="#F9FDF0"> 
-      <td height="26" colspan="2">
-      	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr> 
-            <td width="30%"></td>
-            <td width="15%"><input name="imageField" class="np" type="image" src="../static/web/img/button_ok.gif"></td>
-            <td width="59%"><img src="../static/web/img/button_back.gif" width="60" height="26" onClick="location='plus_main.php';" style="cursor:pointer"></td>
-          </tr>
-        </table>
+    <tr> 
+      <td bgcolor="#f8f8f8" colspan="2" align="center" class="py-3">
+        <button type="submit" class="btn btn-success btn-sm">确定</button>
       </td>
     </tr>
   </form>

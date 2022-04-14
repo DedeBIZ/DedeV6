@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title>购物车 - 下单购买{dede:var.carts.orders_id/}</title>
-  <meta http-equiv="Content-Type" content="text/html; charset={dede:global.cfg_soft_lang/}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset={dede:global.cfg_soft_lang/}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
@@ -66,10 +66,9 @@
             </tr>
           </thead>
           <tbody>
-
             {dede:array.shops_deliveryarr}
             <tr>
-              <td width="10%" class="td1"><input type="radio" name="pid" value="{dede:value.pid/}" /></td>
+              <td width="10%" class="td1"><input type="radio" name="pid" value="{dede:value.pid/}"></td>
               <td width="90%">
                 <p>{dede:value.dname/} <span class="fc-f90">手续费：{dede:value.price/}元</span>
                   <small>{dede:value.des/}.</small> </p>
@@ -77,7 +76,6 @@
             </tr>
             {/dede:array}
           </tbody>
-
         </table>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
           <thead>
@@ -93,16 +91,14 @@
               <td align="center">手续费</td>
             </tr>
             {dede:array.shops_paymentarr}
-
             <tr onMouseMove="javascript:this.bgColor='#f8f8f8';" onMouseOut="javascript:this.bgColor='#ffffff';">
-              <td width="10%" align="right" style="vertical-align:middle;"><input name="paytype" type="radio" value="{dede:value.id/}" /></td>
+              <td width="10%" align="right" style="vertical-align:middle;"><input name="paytype" type="radio" value="{dede:value.id/}"></td>
               <td width="20%" valign="middle" style="vertical-align:middle;"> {dede:value.name/} </td>
               <td width="60%"> {dede:value.description/} </td>
               <td width="10%" align="center"> <span class="fc-f60">{dede:value.fee/}元</span></td>
             </tr>
             {/dede:array}
           </tbody>
-
         </table>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
           <thead>
@@ -113,27 +109,27 @@
           <tbody>
             <tr>
               <td width="180" class="td1">街道地址</td>
-              <td><input name="address" id="address" type="text" class="ipt-txt" size="50" />
+              <td><input name="address" id="address" type="text" class="ipt-txt" size="50">
                 <span class="red">*</span><small>请填写街道地址，不能为空!</small></td>
             </tr>
             <tr>
               <td width="180" class="td1">收货人</td>
-              <td><input name="postname" id="postname" type="text" class="ipt-txt" size="20" />
+              <td><input name="postname" id="postname" type="text" class="ipt-txt" size="20">
                 <span class="red">*</span><small>请填写收货人姓名</small></td>
             </tr>
             <tr>
               <td width="180" class="td1">E-Mail</td>
-              <td><input name="email" id="email" type="text" class="ipt-txt" size="30" />
+              <td><input name="email" id="email" type="text" class="ipt-txt" size="30">
                 <small>可选，联系您的电子邮箱</small></td>
             </tr>
             <tr>
               <td width="180" class="td1">手机/电话</td>
-              <td><input name="tel" id="tel" type="text" class="ipt-txt" size="30" />
+              <td><input name="tel" id="tel" type="text" class="ipt-txt" size="30">
                 <span class="red">*</span><small>请填写可以联系到您的电话</small></td>
             </tr>
             <tr>
               <td width="180" class="td1">邮编</td>
-              <td><input name="zip" id="zip" type="text" class="ipt-txt" size="30" />
+              <td><input name="zip" id="zip" type="text" class="ipt-txt" size="30">
                 <span class="red">*</span><small>请填写格式如：300030</small></td>
             </tr>
           </tbody>
@@ -153,16 +149,16 @@
             </tr>
             <tr>
               <td width="180" class="td1">验证码</td>
-              <td><a name="mate_vdimgck" />
+              <td><a name="mate_vdimgck">
                 <input name="vdcode" id="vdcode" type="text" class="ipt-txt" size="10"
-                  style="text-transform:uppercase" />
-                <a href="#mate_vdimgck"><img id="vdimgck_img" src="../apps/vdimgck.php" hspace="6" align="absmiddle" onClick="vdimgck();" title="看不清换一张" /></a> <a href="#mate_vdimgck" onClick="vdimgck();">看不清换一张</a>
+                  style="text-transform:uppercase">
+                <a href="#mate_vdimgck"><img id="vdimgck_img" src="../apps/vdimgck.php" hspace="6" align="absmiddle" onClick="vdimgck();" title="看不清换一张"></a> <a href="#mate_vdimgck" onClick="vdimgck();">看不清换一张</a>
               </td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="2"><button type="submit" class="btn btn-success">确认下单</button></td>
+              <td colspan="2"><button type="submit" class="btn btn-success btn-sm">确认下单</button></td>
             </tr>
           </tfoot>
         </table>
@@ -176,5 +172,4 @@
   </script>
   <?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
 </body>
-
 </html>

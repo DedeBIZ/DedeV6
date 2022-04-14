@@ -17,7 +17,6 @@ if (isset($dopost) && $dopost == 'getone') {
     $y = intval(MyDate('Y', time()));
     $m = intval(MyDate('m', time()));
     $d = intval(MyDate('d', time()));
-
     //全部
     $sql = "SELECT addtable FROM `#@__channeltype` WHERE issystem='-1'";
     $dsql->Execute('me', $sql);
@@ -31,7 +30,6 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE mid='$uid'; ");
     $dd = $row['dd'] + $dd;
     $cc = $row['cc'] + $cc;
-
     //季度
     $starttime = 0;
     if (preg_match("#[123]#", $m) && $m < 10) $starttime = $y."-01-01 00:00:00";
@@ -51,7 +49,6 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
     $dds = $row['dd'] + $dds;
     $ccs = $row['cc'] + $ccs;
-
     //当月
     $starttime = $y."-{$m}-01 00:00:00";
     $istarttime = GetMkTime($starttime);
@@ -67,7 +64,6 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
     $ddm = $row['dd'] + $ddm;
     $ccm = $row['cc'] + $ccm;
-
     //本周
     $starttime = $y."-{$m}-{$d} 00:00:00";
     $istarttime = GetMkTime($starttime) - (7 * 24 * 3600);
@@ -83,7 +79,6 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
     $ddw = $row['dd'] + $ddw;
     $ccw = $row['cc'] + $ccw;
-
     //当天
     $starttime = $y."-{$m}-{$d} 00:00:00";
     $istarttime = GetMkTime($starttime);
@@ -99,7 +94,6 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
     $ddd = $row['dd'] + $ddd;
     $ccd = $row['cc'] + $ccd;
-
     $msg = "<table width='100%' border='0' align='center' cellpadding='3' cellspacing='1'>
     <tr align='center' bgcolor='#FBFCE2'>
       <td width='18%' height='26'>管理员::统计信息</td>
@@ -109,7 +103,7 @@ if (isset($dopost) && $dopost == 'getone') {
       <td width='16%'>近七天</td>
       <td width='16%'>当天</td>
     </tr>
-    <tr align='center' bgcolor='#ffffff'>
+    <tr align='center'>
       <td height='26'>{$userid}</td>
       <td>{$dd} | {$cc}</td>
       <td>{$dds} | {$ccs}</td>
@@ -122,5 +116,4 @@ if (isset($dopost) && $dopost == 'getone') {
     echo $msg;
     exit();
 }
-
 include DedeInclude('templets/sys_admin_user_tj.htm');

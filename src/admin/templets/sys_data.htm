@@ -84,7 +84,7 @@
   </script>
 </head>
 <body>
-  <table width="99%" align="center" border="0" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="99%" align="center" border="0" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" colspan="8" background="../static/web/img/tbg.gif">
         <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
@@ -99,7 +99,7 @@
       </td>
     </tr>
     <form name="form1" onSubmit="checkSubmit()" action="sys_data_done.php?dopost=bak" method="post" target="stafrm">
-      <input type='hidden' name='tablearr' value='' />
+      <input type='hidden' name='tablearr' value=''>
       <tr bgcolor="#F7F8ED">
         <td height="26" colspan="8">系统默认表：</td>
       </tr>
@@ -117,7 +117,7 @@
       for($i=0; isset($dedeSysTables[$i]); $i++)
       { 
         $t = $dedeSysTables[$i];
-        echo "<tr align='center'  bgcolor='#ffffff'>";
+        echo "<tr align='center' >";
       ?>
       <td height="26"><input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" checked /></td>
       <td><?php echo $t; ?></td>
@@ -164,7 +164,7 @@
       for($i=0; isset($otherTables[$i]); $i++)
       { 
         $t = $otherTables[$i];
-        echo "<tr align='center' bgcolor='#ffffff'>";
+        echo "<tr align='center'>";
       ?>
       <td height="26"><input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np"></td>
       <td><?php echo $t; ?></td>
@@ -194,7 +194,7 @@
       echo "</tr>";
       }
       ?>
-      <tr bgcolor="#ffffff">
+      <tr>
         <td height="26" colspan="8">
           <button name="b1" type="button" id="b1" class="btn btn-success btn-sm" onClick="SelAll()">全选</button>
           <button name="b2" type="button" id="b2" class="btn btn-success btn-sm" onClick="ReSel()">反选</button>
@@ -204,7 +204,7 @@
       <tr bgcolor="#f8f8f8">
         <td height="26" colspan="8">数据备份选项：</td>
       </tr>
-      <tr align="center" bgcolor="#ffffff">
+      <tr align="center">
         <td height="50" colspan="8">
           <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
@@ -212,10 +212,10 @@
             </tr>
             <tr>
               <td height="30">分卷大小：<input name="fsize" type="text" id="fsize" value="2048" style="width:60px">&nbsp;K
-                <label><input name="isstruct" type="checkbox" class="np" id="isstruct" value="1" checked='1' />
+                <label><input name="isstruct" type="checkbox" class="np" id="isstruct" value="1" checked='1'>
                   备份表结构信息</label>
                 <?php if(@function_exists('gzcompress') && false) { ?>
-                <input name="iszip" type="checkbox" class="np" id="iszip" value="1" checked='1' />
+                <input name="iszip" type="checkbox" class="np" id="iszip" value="1" checked='1'>
                 完成后压缩成ZIP
                 <?php } ?>
                 <button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
@@ -226,9 +226,9 @@
       </tr>
     </form>
     <tr bgcolor="#f8f8f8">
-      <td height="26" colspan="8">进行状态：</td>
+      <td height="26" colspan="8">结果：</td>
     </tr>
-    <tr bgcolor="#ffffff">
+    <tr>
       <td height="180" colspan="8">
         <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
       </td>

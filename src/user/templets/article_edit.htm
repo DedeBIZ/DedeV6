@@ -29,17 +29,17 @@
                 </span>
               </nav>
               <form name="addcontent" action="article_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
-                <input type="hidden" name="dopost" value="save" />
-                <input type="hidden" name="aid" value="<?php echo $row['id']; ?>" />
-                <input type="hidden" name="idhash" value="<?php echo hash('sha256', $row['id'].$cfg_cookie_encode); ?>" />
-                <input type="hidden" name="channelid" value="<?php echo $row['channel']; ?>" />
-                <input type="hidden" name="oldlitpic" value="<?php echo $row['litpic']; ?>" />
-                <input type="hidden" name="sortrank" value="<?php echo $row['sortrank']; ?>" />
+                <input type="hidden" name="dopost" value="save">
+                <input type="hidden" name="aid" value="<?php echo $row['id']; ?>">
+                <input type="hidden" name="idhash" value="<?php echo hash('sha256', $row['id'].$cfg_cookie_encode); ?>">
+                <input type="hidden" name="channelid" value="<?php echo $row['channel']; ?>">
+                <input type="hidden" name="oldlitpic" value="<?php echo $row['litpic']; ?>">
+                <input type="hidden" name="sortrank" value="<?php echo $row['sortrank']; ?>">
                 <div id="mainCp">
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">标题</label>
                     <div class="col-sm-10">
-                      <input name="title" type="text" id="title" class="form-control" value="<?php echo $row['title']?>" placeholder="请输入内容主题" />
+                      <input name="title" type="text" id="title" class="form-control" value="<?php echo $row['title']?>" placeholder="请输入内容主题">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -51,7 +51,7 @@
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">作者</label>
                     <div class="col-sm-10">
-                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control" />
+                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -89,13 +89,13 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">验证码</label>
                         <div class="col-sm-10">
-                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt" style='width:100px;text-transform:uppercase;' />
-                          <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer" onclick="this.src=this.src+'?'" />
+                          <input name="vdcode" type="text" id="vdcode" maxlength="100" class="intxt" style='width:100px;text-transform:uppercase;'>
+                          <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer" onclick="this.src=this.src+'?'">
                         </div>
                       </div>
                     <?php }?>
                     <p>
-                      <button class="btn btn-success" type="submit">提交</button>
+                      <button class="btn btn-success btn-sm" type="submit">提交</button>
                       <button class="btn btn-secondary" type="reset" onclick="location.reload();">重置</button>
                     </p>
                   </div>
