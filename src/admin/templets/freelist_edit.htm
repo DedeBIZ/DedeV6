@@ -125,8 +125,8 @@
                 <td height="26" align="left">限定栏目：
                   <?php
                $typeid = $ctag->GetAtt('typeid');
-               echo "<select name='typeid' style='width:160px'>\r\n";
-               echo "<option value='0'>不限栏目</option>\r\n";
+               echo "<select name='typeid' style='width:160px'>";
+               echo "<option value='0'>不限栏目</option>";
                $dsql->SetQuery("Select id,typename, channeltype From #@__arctype");
                $dsql->Execute();
                while($lrow = $dsql->GetObject()){
@@ -135,8 +135,8 @@
                	{
                		$disable = 'disabled';
                	}
-               	if($lrow->id==$typeid) echo "<option value='{$lrow->id}' selected $disable>{$lrow->typename}</option>\r\n";
-               	else echo "<option value='{$lrow->id}' $disable>{$lrow->typename}</option>\r\n";
+               	if($lrow->id==$typeid) echo "<option value='{$lrow->id}' selected $disable>{$lrow->typename}</option>";
+               	else echo "<option value='{$lrow->id}' $disable>{$lrow->typename}</option>";
                }
                echo "</select>";
 		?></td>
@@ -145,13 +145,13 @@
                 <td height="26" align="left">限定频道：
                   <?php
                 $channel  = $ctag->GetAtt('channel');
-                echo "<select name='channel' style='width:160px'><option value='0'>不限</option>\r\n";
+                echo "<select name='channel' style='width:160px'><option value='0'>不限</option>";
                 $dsql->SetQuery("Select id,typename From #@__channeltype where id>0");
                 $dsql->Execute();
                 while($nrow = $dsql->GetObject())
                 {
-                	if($nrow->id==$channel) echo "<option value='{$nrow->id}' selected>{$nrow->typename}</option>\r\n";
-                	else echo "<option value='{$nrow->id}'>{$nrow->typename}</option>\r\n";
+                	if($nrow->id==$channel) echo "<option value='{$nrow->id}' selected>{$nrow->typename}</option>";
+                	else echo "<option value='{$nrow->id}'>{$nrow->typename}</option>";
                 }
                 echo "</select>";
 		?>
@@ -161,17 +161,17 @@
                 <td height="26" align="left">附加属性：
                   <?php
                 $att  = $ctag->GetAtt('att');
-                echo "<select name='att' style='width:160px'>\r\n";
-                echo "<option value='0'>不限</option>\r\n";
+                echo "<select name='att' style='width:160px'>";
+                echo "<option value='0'>不限</option>";
                 $dsql->SetQuery("Select * From #@__arcatt");
                 $dsql->Execute();
                 while($nrow = $dsql->GetObject())
                 {
                 	if($att==$nrow->att)
                 	{
-                		echo "<option value='{$nrow->att}' selected>{$nrow->attname}</option>\r\n";
+                		echo "<option value='{$nrow->att}' selected>{$nrow->attname}</option>";
                 	} else {
-                		echo "<option value='{$nrow->att}'>{$nrow->attname}</option>\r\n";
+                		echo "<option value='{$nrow->att}'>{$nrow->attname}</option>";
                 	}
                 }
                 echo "</select>";
@@ -219,7 +219,7 @@
                 ?>
                   <select name="orderby" id="orderby" style="width:160px">
                     <?php
-                	echo "<option value=\"$orderby\" selected>{$sortarrs[$orderby]}</option>\r\n";
+                	echo "<option value=\"$orderby\" selected>{$sortarrs[$orderby]}</option>";
                 	?>
                     <option value="sortrank">置顶权限值</option>
                     <option value="pubdate">发布时间</option>

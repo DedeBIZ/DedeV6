@@ -119,7 +119,7 @@
               $dsql->Execute();
               while($row2 = $dsql->GetObject())
               {
-              	echo "<option value='".$row2->rank."'>".$row2->membername."</option>\r\n";
+              	echo "<option value='".$row2->rank."'>".$row2->membername."</option>";
               }
           ?>
           </select>
@@ -133,7 +133,7 @@
         $dsql->Execute();
         while($row3 = $dsql->GetObject())
         {
-          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name." </label>\r\n";
+          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name." </label>";
         }
        ?>
        <label><input name="usertype" class="np" type="radio" value="" checked='1'> 不限</label>

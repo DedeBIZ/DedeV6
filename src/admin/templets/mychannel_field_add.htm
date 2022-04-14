@@ -61,7 +61,7 @@ function GetFields()
   }
 	revalue =  "<field:"+fieldname+" itemname=\""+itemname+"\" autofield=\""+autofield+"\" notsend=\""+notsend+"\" type=\""+dtype+"\"";
 	revalue += relstr + " isnull=\""+sisnull+"\" islist=\""+islist+"\" default=\""+vdefault+"\" ";
-	revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">\r\n"+vinnertext+"</field:"+fieldname+">\r\n";
+	revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">"+vinnertext+"</field:"+fieldname+">";
 	document.form1.fieldstring.value = revalue;
   return true;
 }
@@ -188,9 +188,9 @@ $(document).ready(function () {
             {
               if($k==$channelid) {
                   $nid = $arr['nid'];
-                  echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                  echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
               } else {
-                  echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>\r\n";
+                  echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
               }
             }
           ?>

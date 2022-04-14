@@ -47,7 +47,7 @@
   $dsql->Execute('me', 'Select * From `#@__admin` order by id asc');
   while( $arr = $dsql->GetArray('me') )
   {
-  	echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在载入</p></div>\r\n<script language='javascript'>LoadUser({$arr['id']});</script>\r\n";
+  	echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在载入</p></div><script language='javascript'>LoadUser({$arr['id']});</script>";
   }
   ?>
   </td>

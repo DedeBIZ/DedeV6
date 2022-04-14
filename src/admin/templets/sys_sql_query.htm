@@ -53,7 +53,7 @@ while($row = $dsql->GetArray('t',MYSQL_BOTH))
 	$dsql->Execute('n');
 	$row2 = $dsql->GetArray('n',MYSQL_BOTH);
 	$dd = $row2[0];
-	echo "<option value='".$row[0]."'>".$row[0]."(".$dd.")</option>\r\n";
+	echo "<option value='".$row[0]."'>".$row[0]."(".$dd.")</option>";
 }
 ?>
                       </select>

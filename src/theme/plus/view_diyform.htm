@@ -31,7 +31,7 @@ foreach($fieldlist as $field=>$fielddata)
 	if($row[$field]=='') continue;
 	if($fielddata[1]=='img')
 	{
-			$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='{$row[$field]}'/></a>\r\n";
+			$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='{$row[$field]}'/></a>";
 	}
 	else if($fielddata[1]=='addon')
 	{

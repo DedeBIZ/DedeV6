@@ -39,7 +39,7 @@
 						if($fields[$field]=='') continue;
 						if($fielddata[1]=='img')
 						{
-							$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif' border='0'> 图片附件</a>\r\n";
+							$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif' border='0'> 图片附件</a>";
 						}
 						else if($fielddata[1]=='addon')
 						{
@@ -52,7 +52,7 @@
 								$fields[$field] = cn_substr( $fields[$field], 250).'';
 							}
 						}
-						echo "<tr><td>{$fielddata[0]}</td><td>{$fields[$field]}</td></tr>\r\n";
+						echo "<tr><td>{$fielddata[0]}</td><td>{$fields[$field]}</td></tr>";
 					}
 					echo '</tbody>';
 			} else {

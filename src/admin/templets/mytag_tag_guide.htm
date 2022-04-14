@@ -81,8 +81,8 @@
                   <?php
        $tl = new TypeLink(0);
        $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-       echo "<select name='typeid' style='width:284px'>\r\n";
-       echo "<option value='0' selected>不限栏目</option>\r\n";
+       echo "<select name='typeid' style='width:284px'>";
+       echo "<option value='0' selected>不限栏目</option>";
        echo $typeOptions;
        echo "</select>";
 		?> </td>
@@ -90,25 +90,25 @@
               <tr>
                 <td height="26"> 限定频道：
                   <?php
-     echo "<select name='channel' style='width:100px'>\r\n";
-     echo "<option value='0' selected>不限频道</option>\r\n";
+     echo "<select name='channel' style='width:100px'>";
+     echo "<option value='0' selected>不限频道</option>";
      $tl->dsql->SetQuery("Select id,typename From #@__channeltype where id>0");
 	   $tl->dsql->Execute();
 	   while($row = $tl->dsql->GetObject())
 	   {
-	      echo "<option value='{$row->id}'>{$row->typename}</option>\r\n";
+	      echo "<option value='{$row->id}'>{$row->typename}</option>";
 	   }
        echo "</select>";
 		?>
                   附加属性：
                   <?php
-       echo "<select name='att' style='width:100px'>\r\n";
-       echo "<option value='0' selected>不限</option>\r\n";
+       echo "<select name='att' style='width:100px'>";
+       echo "<option value='0' selected>不限</option>";
        $tl->dsql->SetQuery("Select * From #@__arcatt");
 	   $tl->dsql->Execute();
 	   while($row = $tl->dsql->GetObject())
 	   {
-	      echo "<option value='{$row->att}'>{$row->attname}</option>\r\n";
+	      echo "<option value='{$row->att}'>{$row->attname}</option>";
 	   }
        echo "</select>";
 		?> </td>

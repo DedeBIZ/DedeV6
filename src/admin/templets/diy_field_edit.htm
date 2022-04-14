@@ -36,7 +36,7 @@ function GetFields()
 	if(spage=="no") spage = "";
 	revalue =  "<field:"+fieldname+" itemname=\""+itemname+"\" autofield=\"1\" type=\""+dtype+"\"";
 	revalue += " isnull=\""+sisnull+"\" default=\""+vdefault+"\" ";
-	revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">\r\n"+vinnertext+"</field:"+fieldname+">\r\n";
+	revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">"+vinnertext+"</field:"+fieldname+">";
 	document.form1.fieldstring.value = revalue;
   return true;
   
@@ -90,10 +90,10 @@ td{ padding:6px; padding-left:6px; }
           $dtype = $ctag->GetAtt('type');
           if($dtype!='' && isset($fieldtypes[$dtype]))
           {
-          	echo "<option value='{$dtype}'>{$fieldtypes[$dtype]}</option>\r\n";
+          	echo "<option value='{$dtype}'>{$fieldtypes[$dtype]}</option>";
           	$canchange = true;
           } else {
-          	echo "<option value='{$dtype}'>系统专用类型</option>\r\n";
+          	echo "<option value='{$dtype}'>系统专用类型</option>";
           	$canchange = false;
           }
           if($canchange)

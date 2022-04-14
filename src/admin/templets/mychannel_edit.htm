@@ -156,8 +156,8 @@
             $dsql->Execute();
             while($row2 = $dsql->GetObject())
             {
-              if($row2->rank==$row['sendrank']) echo "<option value='".$row2->rank."' selected>".$row2->membername."</option>\r\n";
-				      else echo "<option value='".$row2->rank."'>".$row2->membername."</option>\r\n";
+              if($row2->rank==$row['sendrank']) echo "<option value='".$row2->rank."' selected>".$row2->membername."</option>";
+				      else echo "<option value='".$row2->rank."'>".$row2->membername."</option>";
             }
             ?>
           </select>
@@ -171,7 +171,7 @@
         $dsql->Execute();
         while($row3 = $dsql->GetObject())
         {
-          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name."</label> \r\n";
+          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name."</label> ";
         }
         ?>
        <label><input name="usertype" class="np" type="radio" value="" <?php if($row['usertype']=='') echo " checked='1' "; ?>>

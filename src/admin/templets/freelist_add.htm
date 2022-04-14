@@ -160,8 +160,8 @@
               <tr>
                 <td height="26" align="left">限定栏目：
                   <?php
-                 echo "<select name='typeid' style='width:160px'>\r\n";
-                 echo "<option value='0'>不限栏目</option>\r\n";
+                 echo "<select name='typeid' style='width:160px'>";
+                 echo "<option value='0'>不限栏目</option>";
                 $dsql->SetQuery("Select ID,typename, channeltype From #@__arctype");
                 $dsql->Execute();
                 while($lrow = $dsql->GetObject()){
@@ -170,7 +170,7 @@
                	{
                		$disable = 'disabled';
                	}
-		 echo "<option value='{$lrow->ID}' $disable>{$lrow->typename}</option>\r\n";
+		 echo "<option value='{$lrow->ID}' $disable>{$lrow->typename}</option>";
                 }
 		echo "</select>";
 		?> </td>
@@ -178,13 +178,13 @@
               <tr>
                 <td height="26" align="left">限定频道：
                   <?php
-       echo "<select name='channel' style='width:160px'>\r\n";
-       echo "<option value='0' selected>不限</option>\r\n";
+       echo "<select name='channel' style='width:160px'>";
+       echo "<option value='0' selected>不限</option>";
        $dsql->SetQuery("Select ID,typename From #@__channeltype where ID>0");
 	   $dsql->Execute();
 	   while($row = $dsql->GetObject())
 	   {
-	      echo "<option value='{$row->ID}'>{$row->typename}</option>\r\n";
+	      echo "<option value='{$row->ID}'>{$row->typename}</option>";
 	   }
        echo "</select>";
 		?>
@@ -193,13 +193,13 @@
               <tr>
                 <td height="26" align="left">附加属性：
                   <?php
-       echo "<select name='att' style='width:160px'>\r\n";
-       echo "<option value='0' selected>不限</option>\r\n";
+       echo "<select name='att' style='width:160px'>";
+       echo "<option value='0' selected>不限</option>";
        $dsql->SetQuery("Select * From #@__arcatt");
 	   $dsql->Execute();
 	   while($row = $dsql->GetObject())
 	   {
-	      echo "<option value='{$row->att}'>{$row->attname}</option>\r\n";
+	      echo "<option value='{$row->att}'>{$row->attname}</option>";
 	   }
        echo "</select>";
 		?>

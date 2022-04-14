@@ -67,7 +67,7 @@
    $row['mancon'] = ($row['mancon']=='' ? 'content_list.php?channelid='.$row['id'] : $row['mancon'].'?channelid='.$row['id']);
    $checkbox = ($row['isdefault']==0 ? '' : ' checked');
    if($checkbox!=''){
-   	 echo "<script language='javascript'>selCheckbox='cid{$i}';</script>\r\n";
+   	 echo "<script language='javascript'>selCheckbox='cid{$i}';</script>";
    }
    $catnum = GetCatalogs($dsql,$row['id']);
    ?>   

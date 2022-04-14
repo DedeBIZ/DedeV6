@@ -20,7 +20,7 @@
       for (startNum; startNum <= endNum; startNum++) {
         upfield.innerHTML += "<label>软件地址" + startNum + "：</label><input type='text' name='softurl" + startNum + "' value='http://' maxlength='100' class='form-control'> ";
         upfield.innerHTML += " ";
-        upfield.innerHTML += "服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'>\r\n";
+        upfield.innerHTML += "服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'>";
       }
     }
     function ShowHideAddr() {
@@ -44,7 +44,7 @@
                   </li>
                 </ol>
                 <span class="navbar-text">
-                  <a href="javascript:history.back(-1);" class="btn btn-sm">返回</a>
+                  <a href="javascript:history.back(-1);" class="btn btn-success btn-sm">返回</a>
                 </span>
               </nav>
               <form name="addcontent" action="soft_edit.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
@@ -77,7 +77,7 @@
                     <div class="col-sm-10">
                       <?php
                         $typeOptions = GetOptionList($row["typeid"],$row["channel"]);
-                        echo "<select class='form-control' name='typeid' size='1'>\r\n";
+                        echo "<select class='form-control' name='typeid' size='1'>";
                         echo $typeOptions;
                         echo "</select>";
                       ?>
@@ -89,7 +89,7 @@
                       <label for="filetype">文件类型</label>
                       <select name="filetype" id="filetype" class='form-control'>
                         <?php
-                          if($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\" selected>".$addRow["filetype"]."</option>\r\n";
+                          if($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\" selected>".$addRow["filetype"]."</option>";
                         ?>
                         <option value=".exe">.exe</option>
                         <option value=".zip">.zip</option>
@@ -103,7 +103,7 @@
                       <label for="language">界面语言</label>
                       <select name="language" id="language" class='form-control'>
                         <?php
-                          if($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\" selected>".$addRow["language"]."</option>\r\n";
+                          if($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\" selected>".$addRow["language"]."</option>";
                         ?>
                         <option value="简体中文">简体中文</option>
                         <option value="英文软件">英文软件</option>
@@ -117,7 +117,7 @@
                       <label for="softtype">软件类型</label>
                       <select name="softtype" id="softtype" class='form-control'>
                         <?php
-      					          if($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\" selected>".$addRow["softtype"]."</option>\r\n";
+      					          if($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\" selected>".$addRow["softtype"]."</option>";
                		      ?>
                         <option value="国产软件" selected="selected">国产软件</option>
                         <option value="国外软件">国外软件</option>
@@ -128,7 +128,7 @@
                       <label for="accredit">授权方式</label>
                       <select name="accredit" id="accredit" class='form-control'>
                         <?php
-                          if($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\" selected>".$addRow["accredit"]."</option>\r\n";
+                          if($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\" selected>".$addRow["accredit"]."</option>";
                         ?>
                         <option value="共享软件">共享软件</option>
                         <option value="免费软件">免费软件</option>
@@ -149,7 +149,7 @@
                       <label for="softrank">软件等级</label>
                       <select name="softrank" id="softrank" class='form-control'>
                         <?php
-                          if($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\" selected>".$addRow["softrank"]."星</option>\r\n";
+                          if($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\" selected>".$addRow["softrank"]."星</option>";
                         ?>
                         <option value="1">一星</option>
                         <option value="2">二星</option>
@@ -227,7 +227,7 @@
                     <?php }?>
                     <p>
                       <button class="btn btn-success btn-sm" type="submit">提交</button>
-                      <button class="btn btn-secondary" type="reset" onclick="location.reload();">重置</button>
+                      <button class="btn btn-secondary btn-sm" type="reset" onclick="location.reload();">重置</button>
                     </p>
                   </div>
                 </div>

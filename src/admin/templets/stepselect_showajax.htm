@@ -37,7 +37,7 @@ $dsql->Execute('out',"Select evalue,ename from `#@__sys_enum` where egroup='{$ar
 $options = '';
 if($arr['issign']==0)
 {
-  while($row1 = $dsql->GetArray('out')) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>\r\n";
+  while($row1 = $dsql->GetArray('out')) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
 }
 ?>
 <!--新增枚举表单-->
@@ -68,9 +68,9 @@ if($arr['issign']==0)
   {
   	if($row1['evalue']%500==0 || $arr['issign']==1)
   	{
-  		$options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>\r\n";
+  		$options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
   	} else {
-  		$options .= "<option value='{$row1['evalue']}'>  └─{$row1['ename']}</option>\r\n";
+  		$options .= "<option value='{$row1['evalue']}'>  └─{$row1['ename']}</option>";
   	}
   }
 ?>

@@ -21,7 +21,7 @@
 
         upfield.innerHTML += "<label>软件地址" + startNum + "：</label><input type='text' name='softurl" + startNum + "' value='http://' maxlength='100' class='form-control'> ";
         upfield.innerHTML += " ";
-        upfield.innerHTML += "服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'>\r\n";
+        upfield.innerHTML += "服务器名称：<input type='text' name='servermsg" + startNum + "' class='form-control'>";
 
       }
     }
@@ -47,7 +47,7 @@
                   </li>
                 </ol>
                 <span class="navbar-text">
-                  <a href="javascript:history.back(-1);" class="btn btn-sm">返回</a>
+                  <a href="javascript:history.back(-1);" class="btn btn-success btn-sm">返回</a>
                 </span>
               </nav>
               <form name="addcontent" action="soft_add.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
@@ -77,8 +77,8 @@
                     <div class="col-sm-10">
                       <?php
                         $typeOptions = GetOptionList(0,$channelid);
-                        echo "<select class='form-control' name='typeid' size='1'>\r\n";
-                        echo "<option value='0' selected>请选择栏目</option>\r\n";
+                        echo "<select class='form-control' name='typeid' size='1'>";
+                        echo "<option value='0' selected>请选择栏目</option>";
                         echo $typeOptions;
                         echo "</select>";
                       ?>
@@ -217,7 +217,7 @@
                     <?php }?>
                     <p>
                       <button class="btn btn-success btn-sm" type="submit">提交</button>
-                      <button class="btn btn-secondary" type="reset" onclick="location.reload();">重置</button>
+                      <button class="btn btn-secondary btn-sm" type="reset" onclick="location.reload();">重置</button>
                     </p>
                   </div>
                 </div>

@@ -80,11 +80,11 @@
       <?php
     for($i=0;$i<count($filelists);$i++)
     {
-    	echo "<tr  align='center' height='26'>\r\n";
+    	echo "<tr  align='center' height='26'>";
       $mtd = "<td width='10%'>
              <input name='bakfile' id='bakfile' type='checkbox' class='np' value='".$filelists[$i]."' checked='1'> 
              </td>
-             <td width='40%'>{$filelists[$i]}</td>\r\n";
+             <td width='40%'>{$filelists[$i]}</td>";
       echo $mtd;
       if(isset($filelists[$i+1]))
       {
@@ -92,12 +92,12 @@
       	$mtd = "<td width='10%'>
               <input name='bakfile' id='bakfile' type='checkbox' class='np' value='".$filelists[$i]."' checked='1'> 
               </td>
-              <td width='40%'>{$filelists[$i]}</td>\r\n";
+              <td width='40%'>{$filelists[$i]}</td>";
         echo $mtd;
       } else {
-      	echo "<td></td><td></td>\r\n";
+      	echo "<td></td><td></td>";
       }
-      echo "</tr>\r\n";
+      echo "</tr>";
     }
     ?>
       <tr align="center" bgcolor="#FDFDEA">

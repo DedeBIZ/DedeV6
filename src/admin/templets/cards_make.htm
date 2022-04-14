@@ -35,7 +35,7 @@
 $dsql->SetQuery("Select * From #@__moneycard_type");
 $dsql->Execute();
 while($row=$dsql->GetArray()){
-  echo "  <option value='{$row['tid']}'>{$row['pname']}</option>\r\n";
+  echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";
 }
 $dsql->Close();
 ?>

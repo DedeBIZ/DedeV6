@@ -48,8 +48,8 @@
           <select name='rank_<?php echo $k?>' id='rank_<?php echo $k?>' style='width:90%'>
           <?php
           foreach($arcranks as $kkk=>$vvv){
-          	if($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>\r\n";
-          	else echo "<option value='{$kkk}'>{$vvv}</option>\r\n";
+          	if($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+          	else echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	?>
           </select>
@@ -62,8 +62,8 @@
           <select name='exptime_<?php echo $k?>' id='exptime_<?php echo $k?>' style='width:90%'>
             <?php
           foreach($times as $kkk=>$vvv){
-          	if($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>\r\n";
-          	else echo "<option value='{$kkk}'>{$vvv}</option>\r\n";
+          	if($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+          	else echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	?>
           </select>
@@ -89,7 +89,7 @@
           <select name='rank_new' id='rank_new' style='width:90%'>
             <?php
           foreach($arcranks as $kkk=>$vvv){
-          	echo "<option value='{$kkk}'>{$vvv}</option>\r\n";
+          	echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	?>
           </select>
@@ -102,7 +102,7 @@
           <select name='exptime_new' id='exptime_new' style='width:90%'>
             <?php
           foreach($times as $kkk=>$vvv){
-          	echo "<option value='{$kkk}'>{$vvv}</option>\r\n";
+          	echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	?>
           </select>

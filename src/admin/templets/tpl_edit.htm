@@ -68,7 +68,7 @@
 					<?php
 					foreach ($helps as $key => $help)
 					{
-						echo '<div class="coolbg np selbt" title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"> '.$key.' </a></div>'."\r\n";
+						echo '<div class="coolbg np selbt" title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"> '.$key.' </a></div>'."";
 					}
 					?>
 				</td>
@@ -78,7 +78,7 @@
 					<?php
 						foreach ($helps as $key => $help)
 						{
-							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."\r\n";
+							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
 							{
@@ -86,7 +86,7 @@
 								if($parameter == '') continue;
 								else echo $parameter,'<br>';
 							}
-						echo '</div>'."\r\n";
+						echo '</div>'."";
 					}
 					?>
 				</td>
