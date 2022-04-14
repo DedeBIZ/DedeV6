@@ -76,14 +76,14 @@ class ListView
             $this->Fields['position'] = $this->TypeLink->GetPositionLink(true);
             $this->Fields['title'] = preg_replace("/[<>]/", " / ", $this->TypeLink->GetPositionLink(false));
             //添加联动多筛选
-			if (isset($_REQUEST['tid']))
-			{
-				foreach($_GET as $key => $value) {
-					if ($key!="tid" && $key!="TotalResult" && $key!="PageNo") {
-						$this->Fields[string_filter($key)] = string_filter(urldecode($value));
-					}
-				}
-			}
+            if (isset($_REQUEST['tid']))
+            {
+                foreach($_GET as $key => $value) {
+                    if ($key!="tid" && $key!="TotalResult" && $key!="PageNo") {
+                        $this->Fields[string_filter($key)] = string_filter(urldecode($value));
+                    }
+                }
+            }
             //设置一些全局参数的值
             foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
             $this->Fields['rsslink'] = $GLOBALS['cfg_cmsurl']."/static/rss/".$this->TypeID.".xml";
@@ -131,48 +131,48 @@ class ListView
     {
         global $cfg_list_son,$cfg_need_typeid2,$cfg_cross_sectypeid;
         if(empty($cfg_need_typeid2)) $cfg_need_typeid2 = 'N';
-		//获得附加表的相关信息
-		$addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
+        //获得附加表的相关信息
+        $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
         $filtersql = '';
-		if($addtable!="")
-		{
-			$addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
-			$addField = '';
-			$fields = explode(',',$this->ChannelUnit->ChannelInfos['listfields']);
-			foreach($fields as $k=>$v)
-			{
-				$nfields[$v] = $k;
-			}
-			if(is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
-			{
-				foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
-				{
-					if(isset($nfields[$k]))
-					{
-						if(!empty($arr['rename'])) {
-							$addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
-						}
-						else {
-							$addField .= ','.$addtable.'.'.$k;
-						}
-					}
-				}
-			}
-			if (isset($_REQUEST['tid']))
-			{
-				foreach($_GET as $key => $value) {
-					$value1 = explode("|", $value);
-					foreach ($value1 as $valuea)
-					{
-						$filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND find_in_set('".string_filter(urldecode($valuea))."', ".$addtable.".".string_filter($key).")" : '';
-					}
-				}
-			}
-		} else {
-			$addField = '';
-			$addJoin = '';
-		}
-		//统计数据库记录
+        if($addtable!="")
+        {
+            $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
+            $addField = '';
+            $fields = explode(',',$this->ChannelUnit->ChannelInfos['listfields']);
+            foreach($fields as $k=>$v)
+            {
+                $nfields[$v] = $k;
+            }
+            if(is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
+            {
+                foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
+                {
+                    if(isset($nfields[$k]))
+                    {
+                        if(!empty($arr['rename'])) {
+                            $addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
+                        }
+                        else {
+                            $addField .= ','.$addtable.'.'.$k;
+                        }
+                    }
+                }
+            }
+            if (isset($_REQUEST['tid']))
+            {
+                foreach($_GET as $key => $value) {
+                    $value1 = explode("|", $value);
+                    foreach ($value1 as $valuea)
+                    {
+                        $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND find_in_set('".string_filter(urldecode($valuea))."', ".$addtable.".".string_filter($key).")" : '';
+                    }
+                }
+            }
+        } else {
+            $addField = '';
+            $addJoin = '';
+        }
+        //统计数据库记录
         $this->TotalResult = -1;
         if (isset($GLOBALS['TotalResult'])) $this->TotalResult = $GLOBALS['TotalResult'];
         if (isset($GLOBALS['PageNo'])) $this->PageNo = $GLOBALS['PageNo'];
@@ -633,46 +633,46 @@ class ListView
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }
         $filtersql = '';
-		//获得附加表的相关信息
-		$addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
-		if($addtable!="")
-		{
-			$addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
-			$addField = '';
-			$fields = explode(',',$this->ChannelUnit->ChannelInfos['listfields']);
-			foreach($fields as $k=>$v)
-			{
-				$nfields[$v] = $k;
-			}
-			if(is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
-			{
-				foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
-				{
-					if(isset($nfields[$k]))
-					{
-						if(!empty($arr['rename'])) {
-							$addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
-						}
-						else {
-							$addField .= ','.$addtable.'.'.$k;
-						}
-					}
-				}
-			}
-			if (isset($_REQUEST['tid']))
-			{
-				foreach($_GET as $key => $value) {
-					$value1 = explode("|", $value);
-					foreach ($value1 as $valuea)
-					{
-						$filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND find_in_set('".string_filter(urldecode($valuea))."', ".$addtable.".".string_filter($key).")" : '';
-					}
-				}
-			}
-		} else {
-			$addField = '';
-			$addJoin = '';
-		}
+        //获得附加表的相关信息
+        $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
+        if($addtable!="")
+        {
+            $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
+            $addField = '';
+            $fields = explode(',',$this->ChannelUnit->ChannelInfos['listfields']);
+            foreach($fields as $k=>$v)
+            {
+                $nfields[$v] = $k;
+            }
+            if(is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
+            {
+                foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
+                {
+                    if(isset($nfields[$k]))
+                    {
+                        if(!empty($arr['rename'])) {
+                            $addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
+                        }
+                        else {
+                            $addField .= ','.$addtable.'.'.$k;
+                        }
+                    }
+                }
+            }
+            if (isset($_REQUEST['tid']))
+            {
+                foreach($_GET as $key => $value) {
+                    $value1 = explode("|", $value);
+                    foreach ($value1 as $valuea)
+                    {
+                        $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND find_in_set('".string_filter(urldecode($valuea))."', ".$addtable.".".string_filter($key).")" : '';
+                    }
+                }
+            }
+        } else {
+            $addField = '';
+            $addJoin = '';
+        }
         //如果不用默认的sortrank或id排序，使用联合查询（数据量大时非常缓慢）
         if (preg_match('/hot|click|lastpost/', $orderby)) {
             $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,
@@ -716,7 +716,7 @@ class ListView
         $GLOBALS['autoindex'] = 0;
         for ($i = 0; $i < $row; $i++) {
             if ($col > 1) {
-                $artlist .= "<div>\r\n";
+                $artlist .= "<div>";
             }
             for ($j = 0; $j < $col; $j++) {
                 if ($row = $this->dsql->GetArray("al")) {
@@ -805,7 +805,7 @@ class ListView
             }//Loop Col
             if ($col > 1) {
                 $i += $col - 1;
-                $artlist .= "    </div>\r\n";
+                $artlist .= "</div>";
             }
         }//Loop Line
         $t3 = ExecTime();
@@ -899,16 +899,6 @@ class ListView
         if (preg_match('/end/i', $listitem)) $plist .= $endpage;
         if (preg_match('/option/i', $listitem)) $plist .= $optionlist;
         if (preg_match('/info/i', $listitem)) $plist .= $maininfo;
-        //伪静态分页处理
-        if ($cfg_rewrite == 'Y')
-        {
-            $plist = str_replace('/apps/', $cfg_cmspath.'/', $plist);
-            $plist = str_replace('.php?tid=','-',$plist);
-            $plist = preg_replace("/&TotalResult=(\d+)/i","",$plist);//去掉总结果数值
-            //目录版
-            $plist = preg_replace("/&PageNo=(\d+)/i",'-\\1',$plist);
-            //网页版$plist = preg_replace("/&PageNo=(\d+)/i",'-\\1.html',$plist);
-        }
         return $plist;
     }
     /**
@@ -991,11 +981,14 @@ class ListView
         if (preg_match('/end/i', $listitem)) $plist .= $endpage;
         if (preg_match('/option/i', $listitem)) $plist .= $optionlist;
         if (preg_match('/info/i', $listitem)) $plist .= $maininfo;
-        if ($cfg_rewrite == 'Y') {
-            $plist = str_replace('/apps/', $cfg_cmspath.'/', $plist);
-            $plist = str_replace('.php?tid=', '-', $plist);
-            $plist = str_replace('&TotalResult=', '-', $plist);
-            $plist = preg_replace("/&PageNo=(\d+)/i", '-\\1.html', $plist);
+        //伪静态分页
+        if ($cfg_rewrite == 'Y')
+        {
+            $plist = str_replace('.php?tid=','-',$plist);
+            $plist = preg_replace("/&TotalResult=(\d+)/i","",$plist);//去掉总结果数值
+            //目录版
+            $plist = preg_replace("/&PageNo=(\d+)/i",'-\\1',$plist);
+            //网页版$plist = preg_replace("/&PageNo=(\d+)/i",'-\\1.html',$plist);
         }
         return $plist;
     }
