@@ -114,7 +114,7 @@ EOT;
             $row['info'] = preg_replace("#{$keywords}#", '<span style="color:#dc3545">'.$keywords.'</span>', $row['info']);
             $row['varname'] = preg_replace("#{$keywords}#", '<span style="color:#dc3545">'.$keywords.'</span>', $row['varname']);
 ?>
-            <tr align="center" height="26" bgcolor="<?php echo $bgcolor ?>">
+            <tr height="26" align="center" bgcolor="<?php echo $bgcolor ?>">
                 <td width="300"><?php echo $row['info']; ?>：</td>
                 <td align="left" style="padding:6px;">
                     <?php

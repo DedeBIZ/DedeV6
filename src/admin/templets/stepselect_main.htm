@@ -268,7 +268,7 @@ if(!empty($egroup))
         <form mame='form1' action='stepselect_main.php' method='post'>
             <input type='hidden' mame='action' value='delenumAllSel'>
             {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-            <tr align="center" height="26"
+            <tr height="26" align="center"
                 onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
                 <td><input type='checkbox' mame='ids[]' value='{dede:field.id /}' class='np'></td>
                 <td>{dede:field.id /}</td>
@@ -343,7 +343,7 @@ if(!empty($egroup))
             <td>操作</td>
         </tr>
         {dede:datalist}
-        <tr align="center" height="26"
+        <tr height="26" align="center"
             onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
             <td><input type='checkbox' mame='ids[]' value='{dede:field.id /}' class='np'></td>
             <td> {dede:field.id /} </td>
