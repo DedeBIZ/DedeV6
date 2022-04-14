@@ -23,30 +23,25 @@
       </tr>
       <tr>
         <td height="26">&nbsp;&nbsp;起始ID：</td>
-        <td height="26"><input name="startid" type="text" id="startid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>（空或0表示从头开始）
-        </td>
+        <td height="26"><input name="startid" type="text" id="startid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>（空或0表示从头开始）</td>
       </tr>
       <tr>
         <td height="26">&nbsp;&nbsp;结束ID：</td>
-        <td height="26">
-          &nbsp;&nbsp;
-          <input name="endid" type="text" id="endid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>
-          （空或0表示直到结束ID）
-        </td>
+        <td height="26"><input name="endid" type="text" id="endid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>（空或0表示直到结束ID）</td>
       </tr>
       <tr>
         <td height="26">&nbsp;&nbsp;每批生成：</td>
         <td height="26"><input name="pagesize" type="text" id="pagesize" value="100" size="8"> 个文件</td>
       </tr>
       <tr>
-        <td height="36" colspan="2" align="center">
+        <td height="30" bgcolor="#F9FCEF" colspan="2" align="center">
           <button type="button" onClick="document.form1.submit();"  class="btn btn-success btn-sm">开始更新</button>
         </td>
       </tr>
     </form>
     <tr>
-      <td width="24%">结果：</td>
-      <td width="76%" align="right">
+      <td width="30%">结果：</td>
+      <td width="70%" align="right">
         <script language='javascript'>
           function ResizeDiv(obj, ty) {
             if (ty == "+") document.all[obj].style.pixelHeight += 50;
@@ -59,7 +54,7 @@
     </tr>
     <tr>
       <td colspan="2" id="mtd">
-        <div id='mdv' style='width:100%;height:100;'>
+        <div id="mdv" style="width:100%;height:300px">
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
         </div>
         <script language="JavaScript">
