@@ -79,20 +79,21 @@ if ($action == 'upload') {
     $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块";
     $win->AddTitle('请选择要上传的文件：');
     $win->AddHidden("action", 'upload');
-    $msg = "<table width='600' border='0' cellspacing='0' cellpadding='0'>
+    $msg = "<table width='900' border='0' cellspacing='0' cellpadding='0'>
   <tr>
-    <td height='26'>文件格式：</td>
-    <td>
+    <td width='260' height='26'>文件格式：</td>
+    <td height='26'>
       <label><input name='filetype' type='radio' value='0' checked='checked' /> 正常的模块包</label>
-      <label><input type='radio' name='filetype' value='1' /> 经过 zip 压缩的模块包</label></td>
+      <label><input type='radio' name='filetype' value='1' /> 经过 zip 压缩的模块包</label>
+    </td>
   </tr>
   <tr>
     <td height='26'>已有模块：</td>
-    <td><label><input name='delhas' type='checkbox' id='delhas' value='1' /> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label></td>
+    <td height='26'><label><input name='delhas' type='checkbox' id='delhas' value='1' /> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label></td>
   </tr>
   <tr>
-    <td width='96' height='60'>请选择文件：</td>
-    <td width='504'><input name='upfile' type='file' id='upfile' style='width:380px' /></td>
+    <td height='26'>请选择文件：</td>
+    <td height='26'><input name='upfile' type='file' id='upfile' style='width:380px' /></td>
   </tr>
  </table>";
     $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
