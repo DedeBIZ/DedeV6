@@ -62,7 +62,7 @@
     <input type='hidden' name='id' value='<?php echo $id?>'>
     <input type='hidden' name='dopost' value='save'>
     <input type='hidden' name='issystem' value='<?php echo $row['issystem']; ?>'>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable mt-3 mb-3">
+    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center"style="margin-bottom:10px" class="table maintable mt-3 mb-3">
       <tr>
         <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mychannel_main.php">内容模型管理</a> &gt; 修改内容模型</td>
       </tr>
@@ -91,7 +91,7 @@
         </td>
       </tr>
     </table>
-    <table width="98%" id='needset' border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable" style="display:block">
+    <table width="98%" id='needset' border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable" style="display:block">
       <?php
 	    if($row['issystem'] == 1)
 	    {
@@ -262,7 +262,7 @@
         </td>
       </tr>
     </table>
-    <table width="98%" id='adset' border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable" style='display:none'>
+    <table width="98%" id='adset' border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable" style='display:none'>
       <tr>
         <td height="26">模型字段配置（可视化模式）</td>
         <td><button name="fset" type="button" id="fset" onClick="location.href='mychannel_field_add.php?id=<?php echo $id; ?>'" class="btn btn-success btn-sm">添加新字段</button></td>
@@ -359,7 +359,7 @@ if($ft==1)
         <td width="65%"><textarea name="fieldset" style="width:98%;height:300px" rows="10" id="fieldset"><?php echo stripslashes($row['fieldset']); ?></textarea></td>
       </tr>
     </table>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr bgcolor="#f8f8f8">
         <td colspan="2" align="center" class="py-3">
           <button type="submit" class="btn btn-success btn-sm">保存</button>

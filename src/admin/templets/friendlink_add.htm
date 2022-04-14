@@ -29,7 +29,7 @@ function CheckSubmit()
 <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+<table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
     <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="friendlink_main.php">友情链接管理</a> &gt; 增加链接</td>
 </tr>
@@ -37,7 +37,7 @@ function CheckSubmit()
     <td>
 	<form action="friendlink_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return CheckSubmit();";>
 	<input type="hidden" name="dopost" value="add">
-	<table width="80%"  border="0" cellspacing="1" cellpadding="3" class="table table-borderless">
+	<table width="80%" border="0" cellspacing="1" cellpadding="3" class="table table-borderless">
 	  <tr>
         <td width="260" height="26">网址：</td>
         <td height="26"><input name="url" type="text" id="url" value="http://" class='pubinputs' style="width:260px"></td>
