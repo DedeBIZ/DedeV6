@@ -289,7 +289,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26">
-          <table width="900" border="0" cellspacing="2" cellpadding="2">
+          <table width="98%" border="0" cellspacing="2" cellpadding="2">
             <?php
             $speclisttmp = GetSysTemplets("spec_arclist.htm");
             $nodename = $nodeid = '';
@@ -304,7 +304,7 @@ table{border-collapse:separate}
 		  		  }
 		        ?>
             <tr bgcolor="#FBFCE2">
-              <td width="113">节点 <?php echo $i?> 名称：</td>
+              <td width="260">节点<?php echo $i?>名称：</td>
               <td colspan="2">
                 <table width="900" border="0" cellspacing="0" cellpadding="0">
                   <tr>
@@ -317,8 +317,8 @@ table{border-collapse:separate}
             </tr>
             <tr>
               <td>节点文章列表：</td>
-              <td width="479"><textarea name="arcid<?php echo $i?>" onblur='CheckVal(<?php echo $i ?>)' rows="3" id="arcid<?php echo $i?>" style="width:90%"></textarea></td>
-              <td width="188"><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文章</button></td>
+              <td><textarea name="arcid<?php echo $i?>" onblur='CheckVal(<?php echo $i ?>)' rows="3" id="arcid<?php echo $i?>" style="width:90%"></textarea></td>
+              <td><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文章</button></td>
             </tr>
             <tr>
               <td>文档来源：</td>
@@ -329,8 +329,7 @@ table{border-collapse:separate}
                 自动获取文档</label>
                 &nbsp;
                 <label>关键词：
-                <input name="keywords<?php echo $i?>" type="text" id="keywords<?php echo $i?>" value="" size="16">
-                (逗号分开)</label>
+                <input name="keywords<?php echo $i?>" type="text" id="keywords<?php echo $i?>" value="" size="16">（逗号分开）</label>
                 栏目ID：
                 <label><input name="typeid<?php echo $i?>" type="text" id="_typeid<?php echo $i?>" value="0" size="4"></label>
               </td>
