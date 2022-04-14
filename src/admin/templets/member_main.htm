@@ -94,7 +94,7 @@
         <td><a href="../user/index.php?uid={dede:field.userid/}" target='_blank'>
           <?php
           echo ''.$fields['userid'].'';
-          if($fields['spacesta']==-2) echo "<span style='color:#e74d58'>[禁言]</span>";
+          if($fields['spacesta']==-2) echo "<span style='color:#dc3545'>[禁言]</span>";
           if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>[未审核]</span>";
           if(!empty($fields['face'])) {
             echo "<br><img src='{$fields['face']}' alt='浏览会员空间' style='max-width:80px;height:auto'>";
@@ -131,7 +131,7 @@
         </td>
       </tr>
       <tr>
-        <td height="36" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+        <td height="36" bgcolor="f8f8f8" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
       </tr>
     </table>
   </form>

@@ -13,7 +13,7 @@
 </head>
 <body>
   <form action="member_pm.php" name="form1" method="get">
-    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-borderless mt-3" style="margin-bottom:10px">
+    <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-borderless mt-3 mb-3">
       <tr>
         <td height="36" bgcolor="#f8f8f8">
           <table border="0" cellpadding="0" cellspacing="0">
@@ -44,7 +44,7 @@
     <tr bgcolor="#FBFCE2" height="26">
       <td width="10%" align="center">发送时间</td>
       <td width="20%" align="center">标题</td>
-      <td width="5%" align="center">已读?</td>
+      <td width="5%" align="center">已读</td>
       <td width="10%" align="center">{dede:global name='postuser'/}</td>
       <td width="36%" align="center">内容</td>
       <td width="9%" align="center">文件夹</td>
@@ -68,7 +68,7 @@
     </tr>
     {/dede:datalist}
     <tr>
-      <td height="36" colspan="9" align="center"> {dede:pagelist listsize='6'/}</td>
+      <td height="36" bgcolor="f8f8f8" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
 </body>
