@@ -209,14 +209,16 @@ if (!function_exists('GetTypeUrl')) {
         //伪静态栏目，Nginx伪静态规则参考：
         //rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;
         //rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
-        if ($cfg_rewrite == 'Y') {
-            //目录版return "/article/".$aid."";
-            //网页版
-            return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
-        }
+
         if($isdefault==-1) {
             //动态
-            $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
+            if ($cfg_rewrite == 'Y') {
+                //目录版return "/article/".$aid."";
+                //网页版
+                return $GLOBALS['cfg_cmspath']."/list-".$typeid."";
+            } else {
+                $reurl = $GLOBALS['cfg_phpurl']."/list.php?tid=".$typeid;
+            }
         } else if ($ispart == 2) {
             //跳转网址
             $reurl = $typedir;

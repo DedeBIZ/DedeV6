@@ -16,7 +16,7 @@ if ($dopost == "save") {
     CheckCSRF();
     //timeset tagname typeid normbody expbody
     $tagname = trim($tagname);
-    $row = $dsql->GetOne("SELECT typeid FROM #@__myad WHERE typeid='$typeid' AND tagname LIKE '$tagname'");
+    $row = $dsql->GetOne("SELECT typeid FROM `#@__myad` WHERE typeid='$typeid' AND tagname LIKE '$tagname'");
     if (is_array($row)) {
         ShowMsg("在相同栏目下已经存在同名的标记", "-1");
         exit();

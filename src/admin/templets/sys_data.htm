@@ -6,38 +6,24 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
+  <script src="../static/web/js/jquery.min.js"></script>
+  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
   <script language="javascript" src="../static/web/js/webajax.js"></script>
   <script language="javascript">
-    var newobj;
     var posLeft = 200;
     var posTop = 150;
     function LoadUrl(surl) {
-      newobj = document.getElementById('_mydatainfo');
-      if (!newobj) {
-        newobj = document.createElement("DIV");
-        newobj.id = '_mydatainfo';
-        newobj.style.position = 'absolute';
-        newobj.className = "dlg";
-        newobj.style.top = posTop;
-        newobj.style.left = posLeft;
-        document.body.appendChild(newobj);
-      } else {
-        newobj.style.display = "block";
-      }
       fetch("sys_data.php?" + surl).then(resp=>{
 				if (resp.ok) {
 					return resp.text()
 				}
 				throw new Error('x');
 			}).then((d)=>{
-				newobj.innerHTML = d;
+        ShowMsg(d,{size:"modal-lg"});
 			}).catch((error) => {
-				newobj.innerHTML = errMsg;
+				ShowMsg("操作失败");
 			});
-    }
-    function HideObj(objname) {
-      var obj = document.getElementById(objname);
-      obj.style.display = "none";
     }
     //获得选中文件的数据表
     function getCheckboxItem() {

@@ -531,6 +531,7 @@ function guid() {
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
 	title = "系统提示";
+	size = "";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
@@ -543,6 +544,9 @@ function ShowMsg(content, ...args) {
 		if (typeof args[0].footer !== 'undefined' && args[0].footer != "") {
 			footer = args[0].footer;
 		}
+		if (typeof args[0].size !== 'undefined' && args[0].size != "") {
+			size = args[0].size;
+		}
 		if (typeof args[0].noClose !== 'undefined' && args[0].noClose == true) {
 			noClose = true;
 		}
@@ -550,7 +554,7 @@ function ShowMsg(content, ...args) {
 	footer = footer.replaceAll("~modalID~", modalID);
 	content = content.replaceAll("~modalID~", modalID);
 	var modal = `<div id="GKModal${modalID}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="GKModalLabel${modalID}">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog ${size}" role="document">
 <div class="modal-content"><div class="modal-header">
 <h5 class="modal-title" id="GKModalLabel${modalID}">${title}</h5>`;
 	if (!noClose) {
