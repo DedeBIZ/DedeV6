@@ -64,9 +64,9 @@
 		    $file = DEDEDATA."/module/{$v['hash']}.xml";
 		    if(file_exists($file)) {
 			    if(file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
-				    echo "<a href='module_main.php?action=uninstall&hash={$v['hash']}'>卸载</a>";
+				    echo "已安装 <a class='btn btn-success btn-sm' href='module_main.php?action=uninstall&hash={$v['hash']}'>卸载</a>";
 			    } else {
-				    echo "<a href='module_main.php?action=setup&hash={$v['hash']}'>安装</a>";
+				    echo "未安装 <a class='btn btn-success btn-sm' href='module_main.php?action=setup&hash={$v['hash']}'>安装</a>";
 			    }
 		    } else {
 			    echo "<div id=\"status_{$v['hash']}\"><a href=\"javascript:getmodule('download','{$v['hash']}')\">下载</a></div>";
