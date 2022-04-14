@@ -11,7 +11,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 //弱不存在缓存文件则写入缓存
 if (!file_exists(DEDEDATA.'/enums/system.php')) WriteEnumsCache();
-
 /**
  *  更新枚举缓存
  *

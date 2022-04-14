@@ -38,16 +38,16 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='评论管理' link='feedback_main.php' rank='sys_Feedback' target='main' />
     <m:item name='文档回收站' link='recycling.php' ischannel='1' addalt='清空回收站' addico='../static/web/img/gtk-del.png' linkadd='archives_do.php?dopost=clear&aid=no' rank='a_List' target='main' />
 </m:top>
-<m:top mapitem='1' item='1_' name='内容管理' display='block'>
-    $addset
-    <m:item name='专题管理' ischannel='1' link='content_s_list.php' linkadd='spec_add.php' channelid='-1' rank='spec_New' target='main' />
-</m:top>
-<m:top mapitem='2' item='1_7_' name='频道模型' display='block' rank='t_List,t_AccList,c_List,temp_One'>
+<m:top mapitem='1' item='1_7_' name='频道模型' display='block' rank='t_List,t_AccList,c_List,temp_One'>
     <m:item name='内容模型管理' link='mychannel_main.php' rank='c_List' target='main' />
     <m:item name='单页文档管理' link='templets_one.php' rank='temp_One' target='main' />
     <m:item name='联动类别管理' link='stepselect_main.php' rank='c_Stepseclect' target='main' />
     <m:item name='自由列表管理' link='freelist_main.php' rank='c_List' target='main' />
     <m:item name='自定义表单' link='diy_main.php' rank='c_List' target='main' />
+</m:top>
+<m:top mapitem='1' item='1_' name='内容管理' display='block'>
+    $addset
+    <m:item name='专题管理' ischannel='1' link='content_s_list.php' linkadd='spec_add.php' channelid='-1' rank='spec_New' target='main' />
 </m:top>
 <m:top mapitem='3' item='1_' name='批量维护' display='block'>
     <m:item name='更新系统缓存' link='sys_cache_up.php' rank='sys_ArcBatch' target='main' />
@@ -63,7 +63,7 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='附件数据管理' link='media_main.php' rank='sys_Upload,sys_MyUpload' target='main' />
     <m:item name='文件式管理器' link='media_main.php?dopost=filemanager' rank='plus_文件管理器' target='main' />
 </m:top>
-<m:top mapitem='1' item='5_' name='更新任务' display='block' notshowall='1' rank='sys_MakeHtml'>
+<m:top mapitem='4' item='5_' name='更新任务' display='block' notshowall='1' rank='sys_MakeHtml'>
     <m:item name='更新整站' link='makehtml_all.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新首页' link='makehtml_homepage.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新栏目' link='makehtml_list.php' rank='sys_MakeHtml' target='main' />
@@ -89,7 +89,7 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='支付接口设置' link='sys_payment.php' .php' rank='sys_Data' target='main' />
     <m:item name='配货方式设置' link='shops_delivery.php' rank='sys_Data' target='main' />
 </m:top>
-<m:top mapitem='1' item='7_' name='模板管理' display='block' rank='temp_One,temp_Other,temp_MyTag,temp_test,temp_All'>
+<m:top mapitem='4' item='7_' name='模板管理' display='block' rank='temp_One,temp_Other,temp_MyTag,temp_test,temp_All'>
     <m:item name='默认模板管理' link='templets_main.php' rank='temp_All' target='main' />
     <m:item name='标签源码管理' link='templets_tagsource.php' rank='temp_All' target='main' />
     <m:item name='自定义宏标记' link='mytag_main.php' rank='temp_MyTag' target='main' />
