@@ -45,23 +45,23 @@
     <form id="postall" method="post" action="member_pmone.php">
     <input name="action" type="hidden" value="post">
     <table width="100%" border="0" cellpadding="1" cellspacing="1">
-    <tr>
+      <tr>
         <td width="260" height="26">发送到：</td>
-        <td height="26"><input name="msgtoid" type="text" class="text" value="<?php echo empty($touid)? '' : $touid?>"> 填写用户的登录id（网址uid=后面跟的id）</td>
+        <td height="26"><input name="msgtoid" type="text" class="text" value="<?php echo empty($touid)? '' : $touid?>" style="width:260px"> 填写用户登录的ID（网址uid=后面跟着的ID）</td>
       </tr>
       <tr>
         <td height="26">标题：</td>
-        <td height="26"><input name="subject" type="text" id="subject" class="company_manage_form_label"> 标题少于70个字符内</td>
+        <td height="26"><input name="subject" type="text" id="subject" class="company_manage_form_label" style="width:260px">（标题少于70个字符内）</td>
       </tr>
       <tr>
         <td height="26"><label for="pm_textarea">内容：</label></td>
-        <td><textarea name="message" id="message" class="company_manage_form_label1" style="width:360px;height:50px"></textarea> 1000个字符以内</td>
+        <td><textarea name="message" id="message" class="company_manage_form_label1" style="width:360px;height:50px"></textarea>（1000个字符以内）</td>
       </tr>
       <tr>
         <td colspan="2" align="center" class="py-3"><input type="submit" value="提交" class="button01"></td>
       </tr>
     </table>
-     </form>
+    </form>
     </td>
   </tr>
 </table>
