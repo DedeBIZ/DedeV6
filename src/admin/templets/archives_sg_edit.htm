@@ -37,7 +37,7 @@ table{border-collapse:separate}
 <body>
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
-      <td width="65%" height="30"><img src="../static/web/img/book1.gif"><a href="content_sg_list.php?cid=<?php echo $addRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 修改分类</td>
+      <td width="70%" height="30"><img src="../static/web/img/book1.gif"><a href="content_sg_list.php?cid=<?php echo $addRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 修改分类</td>
       <td width="30%" align='right'><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
     </tr>
   </table>
@@ -58,10 +58,10 @@ table{border-collapse:separate}
 <input type="hidden" name="id" value="<?php echo $aid; ?>">
 <input type="hidden" name="sortrank" value="<?php echo $addRow['senddate']; ?>">
 <input type="hidden" name="dopost" value="save">
-  <table width="98%"  border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff;">
+  <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff;">
     <tr>
       <td height="26" class="bline">
-        <table width="800" border="0" cellspacing="0" cellpadding="0">
+        <table width="900" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;<?php echo $cInfos['titlename']; ?>：</td>
             <td><input name="title" type="text" id="title" value="<?php echo $addRow['title']; ?>" style="width:380px"></td>
@@ -71,7 +71,7 @@ table{border-collapse:separate}
     </tr>
     <tr>
       <td width="400%" height="26" class="bline">
-      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+      	<table width="900" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;自定义属性：</td>
             <td>
@@ -81,9 +81,9 @@ table{border-collapse:separate}
             while($trow = $dsql->GetObject())
             {
               if(preg_match("#".$trow->att."#", $addRow['flag']))
-              echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked' /> {$trow->attname}[{$trow->att}]</label> ";
+              echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
               else
-              echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' /> {$trow->attname}[{$trow->att}]</label> ";
+              echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
             }
             ?>
             </td>
@@ -93,7 +93,7 @@ table{border-collapse:separate}
     </tr>
     <tr>
       <td height="26" class="bline">
-      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+      	<table width="900" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;浏览权限：</td>
             <td>
@@ -115,7 +115,7 @@ table{border-collapse:separate}
     </tr>
     <tr id="pictable" style='<?php if($cInfos['needpic']==0) echo 'display:none'; ?>'>
       <td height="26" class="bline">
-      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+      	<table width="900" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;缩略图：</td>
             <td>
@@ -132,12 +132,12 @@ table{border-collapse:separate}
     </tr>
     <?php if($cInfos['dfcid']>0)
     {
-      echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}' />";
+      echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}'>";
     } else {
     ?>
     <tr>
       <td height="26" class="bline">
-        <table width="800" border="0" cellspacing="0" cellpadding="0">
+        <table width="900" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90">&nbsp;发布栏目：</td>
             <td>
@@ -166,8 +166,8 @@ table{border-collapse:separate}
   <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
     <tr>
       <td align="center" class="py-3">
-        <button type="submit" class="btn btn-success">保存</button>
-        <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
+        <button type="submit" class="btn btn-success btn-sm">保存</button>
+        <button type="button" onClick="location.reload();" class="btn btn-success btn-sm">重置</button>
       </td>
     </tr>
   </table>

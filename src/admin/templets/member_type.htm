@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="member_type.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
@@ -17,8 +17,8 @@
             <tr>
               <td width="30%" style="padding-left:10px">会员产品分类</td>
               <td align="right" style="padding-top:10px">
-                <button type="button" class="btn btn-success" onClick="location='member_rank.php';">会员级别管理</button>
-                <button type="button" class="btn btn-success" onClick="location='member_operations.php';">会员业务记录</button>
+                <button type="button" class="btn btn-success btn-sm" onClick="location='member_rank.php';">会员级别管理</button>
+                <button type="button" class="btn btn-success btn-sm" onClick="location='member_operations.php';">会员业务记录</button>
               </td>
             </tr>
           </table>
@@ -40,37 +40,37 @@
     	$k++;
 	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
-      <tr align="center" bgcolor="#ffffff">
+      <tr align="center">
         <td height="26">
-          <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" style="width:90%" class='pubinputs' />
+          <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" style="width:90%" class='pubinputs'>
         </td>
         <td height="26">
-          <select name='rank_<?php echo $k?>' id='rank_<?php echo $k?>' style='width:90%' />
+          <select name='rank_<?php echo $k?>' id='rank_<?php echo $k?>' style='width:90%'>
           <?php
           foreach($arcranks as $kkk=>$vvv){
-          	if($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>\r\n";
-          	else echo "<option value='{$kkk}'>{$vvv}</option>\r\n";
+          	if($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+          	else echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	?>
           </select>
         </td>
         <td>
-          <input name="money_<?php echo $k?>" value="<?php echo $row->money?>" type="text" id="money_<?php echo $k?>" style="width:80%" class='pubinputs' />
+          <input name="money_<?php echo $k?>" value="<?php echo $row->money?>" type="text" id="money_<?php echo $k?>" style="width:80%" class='pubinputs'>
           （元）
         </td>
         <td>
           <select name='exptime_<?php echo $k?>' id='exptime_<?php echo $k?>' style='width:90%'>
             <?php
           foreach($times as $kkk=>$vvv){
-          	if($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>\r\n";
-          	else echo "<option value='{$kkk}'>{$vvv}</option>\r\n";
+          	if($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+          	else echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	?>
           </select>
         </td>
         <td>
           <input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" value="1" checked='1'
-            class='np' />
+            class='np'>
           保留
         </td>
       </tr>
@@ -78,46 +78,46 @@
     }
 	?>
       <input type="hidden" name="idend" value="<?php echo $k?>">
-      <tr bgcolor="#f8f8f8">
+      <tr>
         <td height="26" colspan="5">&nbsp;新增一个会员产品类型：</td>
       </tr>
-      <tr height="26" align="center" bgcolor="#ffffff">
+      <tr height="26" align="center">
         <td>
-          <input name="pname_new" type="text" id="pname_new" style="width:90%" class='pubinputs' />
+          <input name="pname_new" type="text" id="pname_new" style="width:90%" class='pubinputs'>
         </td>
         <td>
           <select name='rank_new' id='rank_new' style='width:90%'>
             <?php
           foreach($arcranks as $kkk=>$vvv){
-          	echo "<option value='{$kkk}'>{$vvv}</option>\r\n";
+          	echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	?>
           </select>
         </td>
         <td>
-          <input name="money_new" type="text" id="money_new" style='width:80%' value="100" class='pubinputs' />
+          <input name="money_new" type="text" id="money_new" style='width:80%' value="100" class='pubinputs'>
           （元）
         </td>
         <td>
           <select name='exptime_new' id='exptime_new' style='width:90%'>
             <?php
           foreach($times as $kkk=>$vvv){
-          	echo "<option value='{$kkk}'>{$vvv}</option>\r\n";
+          	echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	?>
           </select>
         </td>
-        <td align="center" bgcolor="#ffffff">
-          <input name="check_new" type="checkbox" id="check_new" value="1" checked='1' class='np' />
+        <td align="center">
+          <input name="check_new" type="checkbox" id="check_new" value="1" checked='1' class='np'>
           新增
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="5" bgcolor="#ffffff"></td>
+        <td height="26" colspan="5"></td>
       </tr>
       <tr>
         <td bgcolor="#f8f8f8" colspan="5" align="center" class="py-3">
-          <button type="submit" class="btn btn-success">保存</button>
+          <button type="submit" class="btn btn-success btn-sm">保存</button>
         </td>
       </tr>
     </form>

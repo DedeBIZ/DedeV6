@@ -43,7 +43,7 @@
 <body>
 <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" style="border:1px solid #dee2e6;" class="table maintable table-borderless mt-3">
   <tr align="center">
-    <td height="120" align="left" bgcolor="#ffffff">
+    <td height="120" align="left">
 	<table width="100%" border="0" cellspacing="0" cellpadding="6">
       <tr>
         <td>内容发布说明<br>
@@ -67,11 +67,11 @@
    $row['mancon'] = ($row['mancon']=='' ? 'content_list.php?channelid='.$row['id'] : $row['mancon'].'?channelid='.$row['id']);
    $checkbox = ($row['isdefault']==0 ? '' : ' checked');
    if($checkbox!=''){
-   	 echo "<script language='javascript'>selCheckbox='cid{$i}';</script>\r\n";
+   	 echo "<script language='javascript'>selCheckbox='cid{$i}';</script>";
    }
    $catnum = GetCatalogs($dsql,$row['id']);
    ?>   
-     <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+     <tr height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type="checkbox" name="cid<?php echo $i; ?>" id="cid<?php echo $i; ?>" onClick="ResetBox('cid<?php echo $i; ?>')" value="<?php echo $row['id']; ?>" class="np" <?php echo $checkbox; ?>/></td>
 		    <td><?php echo $row['id']; ?></td>
         <td><?php echo $row['typename']; ?></td>

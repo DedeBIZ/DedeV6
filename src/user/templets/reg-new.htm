@@ -18,16 +18,16 @@
             <div class="login-area">
                 <h4 class="text-center py-2">会员注册</h4>
                 <form method="post" action="reg_new.php" id="regUser" name="form2" onsubmit="return CheckSubmit();">
-                    <input type="hidden" value="regbase" name="dopost" />
-                    <input type="hidden" value="1" name="step" />
-                    <input type="hidden" value="个人" name="mtype" />
+                    <input type="hidden" value="regbase" name="dopost">
+                    <input type="hidden" value="1" name="step">
+                    <input type="hidden" value="个人" name="mtype">
                     <div class="input-group mb-3">
                         <input id="iptUserid" name="userid" type="text" class="form-control" placeholder="输入用户名">
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <input name="vdcode" placeholder="输入图形验证码" type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
-                            <img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onClick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片" />
+                            <img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onClick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片">
                         </div>
                     </div>
                     <div class="form-group">
@@ -44,7 +44,7 @@
                         <input type="checkbox" class="form-check-input" id="iptLicence">
                         <label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《用户注册条款》</a>、<a href="">《隐私保护条例》</a></label>
                     </div>
-                    <button type="submit" class="btn btn-success btnLogin">注 册</button>
+                    <button type="submit" class="btn btn-success btnLogin btn-sm">注 册</button>
                     <a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btnLogin mt-2">登 录</a>
                 </form>
             </div>

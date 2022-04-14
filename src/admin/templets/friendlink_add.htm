@@ -29,67 +29,53 @@ function CheckSubmit()
 <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+<table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
     <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="friendlink_main.php">友情链接管理</a> &gt; 增加链接</td>
 </tr>
 <tr>
-    <td height="200" bgcolor="#ffffff">
+    <td>
 	<form action="friendlink_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return CheckSubmit();";>
 	<input type="hidden" name="dopost" value="add">
-	<table width="80%"  border="0" cellspacing="1" cellpadding="3" class="table table-borderless">
+	<table width="80%" border="0" cellspacing="1" cellpadding="3" class="table table-borderless">
 	  <tr>
-        <td width="20%" height="26">网址：</td>
-        <td width="80%">
-        	<input name="url" type="text" id="url" value="http://" size="30" class='pubinputs' />
-        </td>
+        <td width="260" height="26">网址：</td>
+        <td height="26"><input name="url" type="text" id="url" value="http://" class='pubinputs' style="width:260px"></td>
       </tr>
       <tr>
         <td height="26">网站名称：</td>
-        <td>
-        	<input name="webname" type="text" id="webname" size="30" class='pubinputs' />
-        </td>
+        <td><input name="webname" type="text" id="webname" size="30" class='pubinputs' style="width:260px"></td>
       </tr>
       <tr>
-        <td width="20%" height="26">排列位置：</td>
-        <td width="80%">
-        <input name="sortrank" type="text" id="sortrank" value="1" size="10" class='pubinputs' style='width:60px' />
-        (由小到大排列)
-        </td>
+        <td height="26">排列位置：</td>
+        <td><input name="sortrank" type="text" id="sortrank" value="1" class='pubinputs' style='width:60px'>（由小到大排列）</td>
       </tr>
       <tr>
         <td height="26">网站Logo：</td>
-        <td>
-        	<input name="logo" type="text" id="logo" size="30" class='pubinputs' />
-          (88*31 gif或jpg)
-        </td>
+        <td><input name="logo" type="text" id="logo" size="30" class='pubinputs' style="width:260px">（88*31 gif或jpg）</td>
       </tr>
       <tr>
         <td height="26">上传Logo：</td>
-        <td>
-        	<input name="logoimg" type="file" id="logoimg" size="30">
-        </td>
+        <td><input name="logoimg" type="file" id="logoimg" style="width:260px"></td>
       </tr>
       <tr>
         <td height="26">网站简况：</td>
-        <td><textarea name="msg" cols="50" rows="4" id="msg"></textarea></td>
+        <td><textarea name="msg" id="msg" style="width:360px;height:50px"></textarea></td>
       </tr>
       <tr>
         <td height="26">站长Email：</td>
-        <td>
-        	<input name="email" type="text" id="email" size="30" class='pubinputs' />
-        </td>
+        <td><input name="email" type="text" id="email" class='pubinputs' style="width:260px"></td>
       </tr>
       <tr>
         <td height="26">网站类型：</td>
         <td>
-        <select name="typeid" id="typeid">
+        <select name="typeid" id="typeid" style="width:160px">
         <?php
         $dsql->SetQuery("select * from #@__flinktype");
         $dsql->Execute();
         while($row=$dsql->GetObject())
         {
-        	echo " <option value='".$row->id."'>".$row->typename."</option>\r\n";
+        	echo " <option value='".$row->id."'>".$row->typename."</option>";
         }
         ?>
         </select>
@@ -98,16 +84,15 @@ function CheckSubmit()
       <tr>
         <td height="26">链接位置：</td>
         <td>
-        <label><input type='radio' name='ischeck' value="1" checked='1' /> 内页</label>
+        <label><input type='radio' name='ischeck' value="1" checked='1'> 内页</label>
         <label><input type='radio' name='ischeck' value="2"/> 首页 </label>
         </td>
       </tr>
       <tr>
-        <td height="50"></td>
-        <td>
-        	<button type="submit" name="Submit" class="btn btn-success"> 提 交 </button>
-          <button type="reset" name="Submit" class="btn btn-success"> 重 置 </button>
-         </td>
+        <td colspan="2" align="center" class="py-3">
+          <button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
+          <button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';" class="btn btn-success btn-sm">返回</button>
+        </td>
       </tr>
     </table>
 	</form>

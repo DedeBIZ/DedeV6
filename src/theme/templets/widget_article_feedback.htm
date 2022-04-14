@@ -16,19 +16,19 @@
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
 						<input type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
-						<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片" />
+						<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片">
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="form-check">
-					<input type="checkbox" value="1" name="notuser" id="iptAny" class="form-check-input" />
+					<input type="checkbox" value="1" name="notuser" id="iptAny" class="form-check-input">
 					<label class="form-check-label" for="iptAny">匿名评论</label>
 				</div>
 			</div>
 		</div>
 		<div class="dcmp-submit">
-			<button class="btn btn-success" type="button" onClick='SendFeedback()'>发表评论</button>
+			<button class="btn btn-success btn-sm" type="button" onClick='SendFeedback()'>发表评论</button>
 		</div>
 	</div>
 	<div class="feedbacks">

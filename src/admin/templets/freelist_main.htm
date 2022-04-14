@@ -108,9 +108,9 @@
 			<td class="tbtitletxt" background="../static/web/img/tbg.gif">
 				<table width='100%' border="0" cellpadding='0' cellspacing='0'>
 					<tr>
-						<td width='36%' class="py-3" style="padding-left:10px">自由列表管理&nbsp;<a href="freelist_add.php" class="btn btn-success btn-sm">增加列表</a></td>
+						<td width='36%' class="py-3" style="padding-left:10px">自由列表管理</td>
 						<td width="30%"></td>
-						<td width="34%"></td>
+						<td width="34%" align="right" style="padding-right:10px"><a href="freelist_add.php" class="btn btn-success btn-sm">增加列表</a></td>
 					</tr>
 				</table>
 			</td>
@@ -121,10 +121,12 @@
 	GetTagList($dsql,$pageno,$pagesize,$orderby);
 	?>
 	</div>
-	<div id='pagelist' class="mb-3 mt-3"><script language='javascript'>ReloadPageNum(1);</script></div>
-	<table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" style="border:1px solid #dee2e6;line-height:31px;margin:auto;" class="table table-borderless maintable mb-3">
+	<div id='pagelist' class="mt-3 mb-3">
+		<script language='javascript'>ReloadPageNum(1);</script>
+	</div>
+	<table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" style="margin:auto;border:1px solid #dee2e6" class="table table-borderless maintable mb-3">
 		<tr>
-			<td height="36" align="center" style="background:#f8f8f8">
+			<td bgcolor="#f8f8f8" height="36" align="center">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
 					<form action="freelist_main.php" name="form1" id="form1">
 						<tr>

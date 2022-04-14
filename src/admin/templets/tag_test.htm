@@ -25,7 +25,7 @@
   <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="tag_test_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="make">
       <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
@@ -33,49 +33,49 @@
         <td height="26" colspan="2" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18" style="padding-left:10px">全局标记测试</td>
+              <td width="30%" style="padding-left:10px">全局标记测试</td>
               <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td colspan="2" bgcolor="#ffffff">全局标记指的是应用在网站主页、单独页面、频道封面使用的单独的模板标记，在列表或文章模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文章或列表所在的栏目，如果您要测试的标记是在列表或文章中使用，请指定环境变量（栏目ＩＤ）<br>
+        <td colspan="2">全局标记指的是应用在网站主页、单独页面、频道封面使用的单独的模板标记，在列表或文章模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文章或列表所在的栏目，如果您要测试的标记是在列表或文章中使用，请指定环境变量（栏目ＩＤ）<br>
         各标记的具体含义和用途，请在<a href="https://www.dedebiz.com/help" target="_blank">模板标记参考</a>一章查阅</td>
       </tr>
       <tr>
-        <td colspan="2" bgcolor="#ffffff">输入要测试的局部代码：</td>
+        <td colspan="2">输入要测试的局部代码：</td>
       </tr>
       <tr>
-        <td height="62" colspan="2" bgcolor="#ffffff">
+        <td height="62" colspan="2">
           <textarea name="partcode" id="partcode" style="width:98%;height:120px"></textarea>
         </td>
       </tr>
       <tr>
-        <td width="103" height="26" bgcolor="#ffffff">环境变量：</td>
-        <td width="865" height="26" bgcolor="#ffffff">&nbsp;
+        <td width="103" height="26">环境变量：</td>
+        <td width="865" height="26">&nbsp;
           <?php
        if(empty($cid)) $cid="0";
        $tl = new TypeLink($cid);
        $typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
-       echo "<select name='typeid' style='width:260px'>\r\n";
-       if($cid=="0") echo "<option value='0' selected>不使用环境ID</option>\r\n";
+       echo "<select name='typeid' style='width:260px'>";
+       if($cid=="0") echo "<option value='0' selected>不使用环境ID</option>";
        echo $typeOptions;
        echo "</select>";
 		?>
         </td>
       </tr>
       <tr>
-        <td height="30" colspan="2" bgcolor="#FAFAF1" align="center">
-          <button type="submit" class="btn btn-success" onClick="DoSubmit('gettag')" class="coolbg np">提交测试</button>
+        <td height="30" bgcolor="#F8FCF1" colspan="2" align="center">
+          <button type="submit" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" class="coolbg np">提交测试</button>
         </td>
       </tr>
     </form>
-    <tr bgcolor="#f8f8f8">
+    <tr>
       <td height="26" colspan="2">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="70%">进行状态：</td>
+            <td width="70%">结果：</td>
             <td width="30%" align="right">
               <script language='javascript'>
               function ResizeDiv(obj, ty) {
@@ -90,7 +90,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#ffffff">
+    <tr>
       <td colspan="2" id="mtd">
         <div id="mdv" style="width:100%;height:300px"> 
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>

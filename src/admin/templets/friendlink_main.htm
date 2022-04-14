@@ -35,7 +35,7 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" background="../static/web/img/tbg.gif" colspan="8" style="padding-left:10px">
         <div style="float:left">
@@ -53,21 +53,21 @@
         <form action="friendlink_main.php" name="form1" method="get">
           <table border="0" cellspacing="0" cellpadding="3" class="table table-borderless">
             <tr>
-              <td>关键词：</td>
-              <td><input name="keyword" type="text" id="keyword" size="12" style="width:250px" value="<?php echo $keyword; ?>"></td>
-              <td>
-                <select name="ischeck" id="ischeck">
+              <td width="90px">关键词：</td>
+              <td width="270"><input name="keyword" type="text" id="keyword" style="width:260px" value="<?php echo $keyword; ?>"></td>
+              <td width="170">
+                <select name="ischeck" id="ischeck" style="width:160px">
                   <?php
         			foreach($selCheckArr as $k=>$v)
         			{
-        				if($k==$ischeck) echo "<option value='$k' selected>$v</option>\r\n";
-        				else echo "<option value='$k'>$v</option>\r\n";
+        				if($k==$ischeck) echo "<option value='$k' selected>$v</option>";
+        				else echo "<option value='$k'>$v</option>";
         			}
         			?>
                 </select>
               </td>
               <td>
-                <button type="submit" class="btn btn-success">搜索</button>
+                <button type="submit" class="btn btn-success btn-sm">搜索</button>
               </td>
             </tr>
           </table>
@@ -75,8 +75,8 @@
       </td>
     </tr>
     <form name='form1' method='post' action='friendlink_edit.php' onSubmit='return checkSubmit();'>
-      <input type='hidden' name='dopost' value='delall' />
-      <input type='hidden' name='allid' value='' />
+      <input type='hidden' name='dopost' value='delall'>
+      <input type='hidden' name='allid' value=''>
       <tr align="center" bgcolor="#FBFCE2" height="26">
         <td width="6%">选择</td>
         <td width="23%">网站名称</td>
@@ -88,7 +88,7 @@
         <td width="15%">管理</td>
       </tr>
       {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-      <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+      <tr height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type='checkbox' name='aids' value='{dede:field.id/}' class='np'></td>
         <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i>地址：{dede:field.url/}</i> </td>
         <td>{dede:field.logo function="GetPic(@me)"/}</td>
@@ -103,7 +103,7 @@
       </tr>
       {/dede:datalist}
     </form>
-    <tr bgcolor="#ffffff" height="26">
+    <tr>
       <td colspan="8">
         <a href='javascript:;' onclick='Sel("all")' class="btn btn-success btn-sm">全选</a>
         <a href='javascript:;' onclick='Sel("none")' class="btn btn-success btn-sm">取消</a>

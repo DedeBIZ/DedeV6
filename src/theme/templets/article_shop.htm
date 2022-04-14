@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 	<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 	<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
-	<meta name="keywords" content="{dede:field.keywords/}" />
-	<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+	<meta name="keywords" content="{dede:field.keywords/}">
+	<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
 </head>
 <body>
 	{dede:include filename='top.htm'/}
@@ -40,10 +40,10 @@
 					<p><small>上架日期：</small><span>{dede:field.pubdate function="MyDate('y-m-d H:i',@me)"/}</span></p>
 					<p><small>人气：</small><span id="_count">...</span></p>
 					<form id="formcar" name="formcar" method="post" action="{dede:field name='phpurl'/}/posttocar.php">
-						<input type="hidden" name="id" value="{dede:field.id/}" />
-						<input type="hidden" name="title" value="{dede:field.title/}" />
-						<input type="hidden" name="price" value="{dede:field.trueprice/}" />
-						<input type="hidden" name="units" value="{dede:field.units/}" />
+						<input type="hidden" name="id" value="{dede:field.id/}">
+						<input type="hidden" name="title" value="{dede:field.title/}">
+						<input type="hidden" name="price" value="{dede:field.trueprice/}">
+						<input type="hidden" name="units" value="{dede:field.units/}">
 						<p><small>购物车：</small><span><a href="{dede:field name='phpurl'/}/car.php" target="_blank">查看购物车</a></span></p>
 						<p><small>购买：</small><span><button type="submit" name="button" class="btn btn-warning">放入购物车</button></span></p>
 					</form>

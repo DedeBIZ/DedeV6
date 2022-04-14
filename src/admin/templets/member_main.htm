@@ -88,13 +88,13 @@
         <td>操作</td>
       </tr>
       {dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
-      <tr height="26" align="center" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+      <tr height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input name="mid" type="checkbox" id="mid" value="{dede:field.mid/}" class="np"></td>
         <td>{dede:field.mid/}</td>
         <td><a href="../user/index.php?uid={dede:field.userid/}" target='_blank'>
           <?php
           echo ''.$fields['userid'].'';
-          if($fields['spacesta']==-2) echo "<span style='color:#e74d58'>[禁言]</span>";
+          if($fields['spacesta']==-2) echo "<span style='color:#dc3545'>[禁言]</span>";
           if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>[未审核]</span>";
           if(!empty($fields['face'])) {
             echo "<br><img src='{$fields['face']}' alt='浏览会员空间' style='max-width:80px;height:auto'>";
@@ -123,15 +123,15 @@
         </td>
       </tr>
       {/dede:datalist}
-      <tr bgcolor="#ffffff">
+      <tr>
         <td colspan="9" class="py-3">
           <button type="button" onClick="selAll();" class="btn btn-success btn-sm">全选</button>
           <button type="button" onClick="noSelAll();" class="btn btn-success btn-sm">取消</button>
           <button type="button" onClick="delArc(0);" class="btn btn-success btn-sm">删除</button>（如果已经整合了论坛的用户请不要使用批量删除功能）
         </td>
       </tr>
-      <tr bgcolor="#f8f8f8">
-        <td height="36" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+      <tr>
+        <td height="36" bgcolor="f8f8f8" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
       </tr>
     </table>
   </form>

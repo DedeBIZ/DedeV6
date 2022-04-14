@@ -124,7 +124,7 @@ td,th{padding:.25rem}
   </td>
 </tr>
 <tr>
-  <td height="26" bgcolor="#ffffff">
+  <td height="26">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td style="padding-left:10px">
@@ -140,7 +140,7 @@ td,th{padding:.25rem}
 </tr>
 <form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
 <tr>
-<td bgcolor="#ffffff">
+<td>
 <?php
 if(empty($opendir)) $opendir=-1;
 if($userChannel>0) $opendir=$userChannel;
@@ -151,7 +151,7 @@ $tu->ListAllType($userChannel,$opendir);
 </tr>
 </form>
 <tr>
-  <td align="right" class="py-3" style="padding-right:10px;background:#f8f8f8;border: 1px solid #dee2e6">
+  <td align="right" class="py-3" style="padding-right:10px;background:#f8f8f8;border-top:1px solid #dee2e6">
     <button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
     <button type="button" name="sb4" class="btn btn-success btn-sm" onClick="location='makehtml_js.php';">更新脚本</button>
 		<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>

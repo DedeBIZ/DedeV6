@@ -62,7 +62,7 @@
     <input type='hidden' name='id' value='<?php echo $id?>'>
     <input type='hidden' name='dopost' value='save'>
     <input type='hidden' name='issystem' value='<?php echo $row['issystem']; ?>'>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin-bottom:10px" class="table maintable mt-3">
+    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center"style="margin-bottom:10px" class="table maintable mt-3 mb-3">
       <tr>
         <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mychannel_main.php">内容模型管理</a> &gt; 修改内容模型</td>
       </tr>
@@ -79,34 +79,34 @@
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" id="head2" cellpadding="0" style="display:none" align="center">
+    <table width="98%" border="0" cellspacing="0" id="head2" cellpadding="0" align="center" style="display:none" >
       <tr>
         <td colspan="2">
           <table border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="86" height="26" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;" onClick="ShowItem1()">基本设置</a></td>
+              <td width="86" height="26" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem1()">基本设置</a></td>
               <td width="86" align="center" background="../static/web/img/itemnote1.gif">字段管理</td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-    <table width="98%" id='needset' border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable" style="display:block">
+    <table width="98%" id='needset' border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable" style="display:block">
       <?php
 	    if($row['issystem'] == 1)
 	    {
       ?>
       <tr>
-        <td colspan="2" bgcolor="#ffffff" style="color:#dc3545;border-top:0">您目前所展开的是系统模型，系统模型一般对发布程序和管理程序已经固化，如果您胡乱修改系统模型将会导致使用这种内容类型的频道可能崩溃</td>
+        <td colspan="2" style="color:#dc3545;border-top:0">您目前所展开的是系统模型，系统模型一般对发布程序和管理程序已经固化，如果您胡乱修改系统模型将会导致使用这种内容类型的频道可能崩溃</td>
       </tr>
       <?php
       }
       ?>
       <tr>
-        <td bgcolor="#ffffff">模型性质<br>
-          <span class="STYLE2" id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid、栏目ID、发布时间、文档标题</span>
+        <td style="border-top:0">模型性质<br>
+          <span class="style2" id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid、栏目ID、发布时间、文档标题</span>
         </td>
-        <td bgcolor="#ffffff">
+        <td style="border-top:0">
         <?php
         if($row['issystem']==0) echo "自动模型";
         else if($row['issystem']==1) echo "系统模型";
@@ -115,30 +115,30 @@
         </td>
       </tr>
       <tr>
-        <td width="35%" bgcolor="#ffffff">频道ID<br>
-          <span class="STYLE2" id='help1'>数字，创建后不可修改，并具有唯一性</span>
+        <td width="30%">频道ID<br>
+          <span class="style2" id='help1'>数字，创建后不可修改，并具有唯一性</span>
         </td>
-        <td width="65%" bgcolor="#ffffff"><?php echo $row['id']; ?></td>
+        <td width="70%"><?php echo $row['id']; ?></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">名字标识<br>
-          <span class="STYLE2" id="help2">与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，频道默认文档模板是“default/article_名字标识.htm”，列表模板、封面模板类推 </span>
+        <td>名字标识<br>
+          <span class="style2" id="help2">与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，频道默认文档模板是“default/article_名字标识.htm”，列表模板、封面模板类推 </span>
         </td>
-        <td bgcolor="#ffffff"><?php echo $row['nid']; ?></td>
+        <td><?php echo $row['nid']; ?></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">频道名称<br><span class="STYLE2" id="help3">频道的中文名称，在后台管理，前台发布等均使用此名字</span></td>
-        <td bgcolor="#ffffff"><input name="typename" type="text" id="typename" value="<?php echo $row['typename']; ?>" class="pubinputs"></td>
+        <td>频道名称<br><span class="style2" id="help3">频道的中文名称，在后台管理，前台发布等均使用此名字</span></td>
+        <td><input name="typename" type="text" id="typename" value="<?php echo $row['typename']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">附加表<br>
-          <span class="STYLE2" id="help4">频道除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性（推荐、会员权限等），也可以使用完全以附加表作为存储数据</span>
+        <td>附加表<br>
+          <span class="style2" id="help4">频道除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性（推荐、会员权限等），也可以使用完全以附加表作为存储数据</span>
         </td>
-        <td bgcolor="#ffffff"><input name="addtable" type="text" id="addtable" value="<?php echo $row['addtable']; ?>" class="pubinputs">（#@__ 是表示数据表前缀）</td>
+        <td><input name="addtable" type="text" id="addtable" value="<?php echo $row['addtable']; ?>" class="pubinputs">（#@__ 是表示数据表前缀）</td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">是否支持会员投稿</td>
-        <td bgcolor="#ffffff">
+        <td>是否支持会员投稿</td>
+        <td>
           <label><input name="issend" type="radio" class="np" value="0" <?php if($row['issend']==0) echo " checked='1' "; ?> /> 
           不支持 </label>
           <label><input type="radio" name="issend" class="np" value="1" <?php if($row['issend']==1) echo " checked='1' "; ?> />
@@ -146,8 +146,8 @@
          </td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">会员许可投稿级别</td>
-        <td bgcolor="#ffffff">
+        <td>会员许可投稿级别</td>
+        <td>
           <select name="sendrank" id="sendrank" style="width:160px">
             <option value='0'>游客</option>
             <?php
@@ -156,22 +156,22 @@
             $dsql->Execute();
             while($row2 = $dsql->GetObject())
             {
-              if($row2->rank==$row['sendrank']) echo "<option value='".$row2->rank."' selected>".$row2->membername."</option>\r\n";
-				      else echo "<option value='".$row2->rank."'>".$row2->membername."</option>\r\n";
+              if($row2->rank==$row['sendrank']) echo "<option value='".$row2->rank."' selected>".$row2->membername."</option>";
+				      else echo "<option value='".$row2->rank."'>".$row2->membername."</option>";
             }
             ?>
           </select>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">许可投稿会员组</td>
-        <td bgcolor="#ffffff">
+        <td>许可投稿会员组</td>
+        <td>
         <?php
         $dsql->SetQuery("Select * from `#@__member_model`");
         $dsql->Execute();
         while($row3 = $dsql->GetObject())
         {
-          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name."</label> \r\n";
+          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name."</label> ";
         }
         ?>
        <label><input name="usertype" class="np" type="radio" value="" <?php if($row['usertype']=='') echo " checked='1' "; ?>>
@@ -179,8 +179,8 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">会员稿件默认状态</td>
-        <td bgcolor="#ffffff">
+        <td>会员稿件默认状态</td>
+        <td>
           <label><input name="arcsta" class="np" type="radio" value="-1" <?php if($row['arcsta']==-1) echo " checked='1' "; ?>>
            未审核</label> 
           <label><input name="arcsta" class="np" type="radio" value="0" <?php if($row['arcsta']==0) echo " checked='1' "; ?>>
@@ -190,43 +190,43 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">档案发布程序</td>
-        <td bgcolor="#ffffff"><input name="addcon" type="text" id="addcon" value="<?php echo $row['addcon']; ?>" class="pubinputs"></td>
+        <td>档案发布程序</td>
+        <td><input name="addcon" type="text" id="addcon" value="<?php echo $row['addcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">档案修改程序</td>
-        <td bgcolor="#ffffff"><input name="editcon" type="text" id="editcon" value="<?php echo $row['editcon']; ?>" class="pubinputs"></td>
+        <td>档案修改程序</td>
+        <td><input name="editcon" type="text" id="editcon" value="<?php echo $row['editcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">档案管理程序</td>
-        <td bgcolor="#ffffff"><input name="mancon" type="text" id="mancon" value="<?php echo $row['mancon']; ?>" class="pubinputs"></td>
+        <td>档案管理程序</td>
+        <td><input name="mancon" type="text" id="mancon" value="<?php echo $row['mancon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">前台会员发布程序</td>
-        <td bgcolor="#ffffff"><input name="useraddcon" type="text" id="useraddcon" value="<?php echo $row['useraddcon']; ?>" class="pubinputs"></td>
+        <td>前台会员发布程序</td>
+        <td><input name="useraddcon" type="text" id="useraddcon" value="<?php echo $row['useraddcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">前台会员修改程序</td>
-        <td bgcolor="#ffffff"><input name="usereditcon" type="text" id="usereditcon" value="<?php echo $row['usereditcon']; ?>" class="pubinputs"></td>
+        <td>前台会员修改程序</td>
+        <td><input name="usereditcon" type="text" id="usereditcon" value="<?php echo $row['usereditcon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">前台会员管理程序</td>
-        <td bgcolor="#ffffff"><input name="usermancon" type="text" id="usermancon" value="<?php echo $row['usermancon']; ?>" class="pubinputs"></td>
+        <td>前台会员管理程序</td>
+        <td><input name="usermancon" type="text" id="usermancon" value="<?php echo $row['usermancon']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">列表附加字段<br>
-          <span class="STYLE2" id="help6">用&quot;,&quot;分开，可以在列表模板{dede:list}{/dede:list}中用[field:name/]调用</span></td>
-        <td bgcolor="#ffffff"><input name="listfields" type="text" id="listfields" size="50" value="<?php echo $row['listfields']; ?>" class="pubinputs" style="width:80%"></td>
+        <td>列表附加字段<br>
+          <span class="style2" id="help6">用&quot;,&quot;分开，可以在列表模板{dede:list}{/dede:list}中用[field:name/]调用</span></td>
+        <td><input name="listfields" type="text" id="listfields" size="50" value="<?php echo $row['listfields']; ?>" class="pubinputs" style="width:80%"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">投稿标题使用名称</td>
-        <td bgcolor="#ffffff"><input name="titlename" type="text" id="titlename" value="<?php echo $row['titlename']; ?>" class="pubinputs"></td>
+        <td>投稿标题使用名称</td>
+        <td><input name="titlename" type="text" id="titlename" value="<?php echo $row['titlename']; ?>" class="pubinputs"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">投稿是否使用摘要<br>
-          <span class="STYLE2">如果不使用主表（独立模型）缩略图设置同</span>
+        <td>投稿是否使用摘要<br>
+          <span class="style2">如果不使用主表（独立模型）缩略图设置同</span>
         </td>
-        <td bgcolor="#ffffff">
+        <td>
           <label><input name="needdes" type="radio" class="np" value="1" <?php if($row['needdes']==1) echo " checked='1'"; ?>>
           使用</label>
           <label><input name="needdes" type="radio" class="np" value="0" <?php if($row['needdes']==0) echo " checked='1'"; ?>>
@@ -234,8 +234,8 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">投稿是否使用缩图</td>
-        <td bgcolor="#ffffff">
+        <td>投稿是否使用缩图</td>
+        <td>
           <label><input name="needpic" type="radio" class="np" value="1"
             <?php if($row['needpic']==1) echo " checked='1'"; ?> />
           使用 </label>
@@ -245,14 +245,14 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">默认栏目ID<br><span class="STYLE2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span></td>
-        <td bgcolor="#ffffff"><input name="dfcid" type="text" id="dfcid" value="<?php echo $row['dfcid']; ?>" class="pubinputs" style="width:120px"></td>
+        <td>默认栏目ID<br><span class="style2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span></td>
+        <td><input name="dfcid" type="text" id="dfcid" value="<?php echo $row['dfcid']; ?>" class="pubinputs" style="width:120px"></td>
       </tr>
       <tr>
-        <td bgcolor="#ffffff">投稿具有唯一性<br>
-          <span class="STYLE2" id="help9">如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单</span>
+        <td>投稿具有唯一性<br>
+          <span class="style2" id="help9">如果投稿是唯一会员只能在这个模型对应的栏目中发布单篇文档，其作用相当于自定义表单</span>
         </td>
-        <td bgcolor="#ffffff">
+        <td>
           <label><input name="onlyone" type="radio" class="np" value="1"
             <?php if($row['onlyone']==1) echo " checked='1'"; ?> />
           是 </label>
@@ -262,13 +262,13 @@
         </td>
       </tr>
     </table>
-    <table width="98%" id='adset' border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable" style='display:none'>
+    <table width="98%" id='adset' border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable" style='display:none'>
       <tr>
-        <td height="26" bgcolor="#ffffff">模型字段配置（可视化模式）</td>
-        <td bgcolor="#ffffff"><button name="fset" type="button" id="fset" onClick="location.href='mychannel_field_add.php?id=<?php echo $id; ?>'" class="btn btn-success btn-sm">添加新字段</button></td>
+        <td height="26">模型字段配置（可视化模式）</td>
+        <td><button name="fset" type="button" id="fset" onClick="location.href='mychannel_field_add.php?id=<?php echo $id; ?>'" class="btn btn-success btn-sm">添加新字段</button></td>
       </tr>
       <tr>
-        <td colspan='2' bgcolor="#ffffff">
+        <td colspan='2'>
           <table width="100%" border="0" cellpadding="1" cellspacing="1" align="center">
             <tr align="center" bgcolor="#FBFCE2" height="26">
               <td width="28%">表单提示文字</td>
@@ -281,13 +281,13 @@
 if($row['issystem']==-1)
 {
 ?>
-            <tr bgcolor="#ffffff" height="26">
+            <tr>
               <td colspan='5'>aid 和 typeid 是强制使用字段，这里不列出</td>
             </tr>
             <?php
 } else {
 ?>
-            <tr bgcolor="#ffffff" height="26">
+            <tr>
               <td colspan='5'>下面列出的字段是附加表的字段，除此外，它还包含主表dede_archives的所有字段</td>
             </tr>
             <?php
@@ -304,7 +304,7 @@ $dtp->LoadSource($fieldset);
 if(is_array($dtp->CTags)){
 foreach($dtp->CTags as $ctag)
 {
-?> <tr align="center" bgcolor="#ffffff" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';" height="26">
+?> <tr height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';" height="26">
               <td>
                 <?php
 			$itname = $ctag->GetAtt('itemname');
@@ -352,24 +352,18 @@ if($ft==1)
         </td>
       </tr>
       <tr>
-        <td height="26" width="35%" bgcolor="#ffffff">
+        <td height="26" width="35%">
           模型字段配置（文本模式）<br>
           修改配置文本可调整字段顺序，但不会修改字段属性
         </td>
-        <td width="65%" bgcolor="#ffffff"><textarea name="fieldset" style="width:98%;height:300px" rows="10" id="fieldset"><?php echo stripslashes($row['fieldset']); ?></textarea></td>
+        <td width="65%"><textarea name="fieldset" style="width:98%;height:300px" rows="10" id="fieldset"><?php echo stripslashes($row['fieldset']); ?></textarea></td>
       </tr>
     </table>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="mt-3 mb-3">
-      <tr bgcolor="#f8f8f8">
-        <td height="36" colspan="2">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td align="center" class="py-3">
-                <button type="submit" class="btn btn-success">保存</button>
-                <button type="button" onClick="location='mychannel_main.php';" class="btn btn-success">返回</button>
-              </td>
-            </tr>
-          </table>
+    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+      <tr>
+        <td colspan="2" align="center" class="py-3">
+          <button type="submit" class="btn btn-success btn-sm">保存</button>
+          <button type="button" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">返回</button>
         </td>
       </tr>
     </table>

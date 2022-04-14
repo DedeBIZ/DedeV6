@@ -25,58 +25,56 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="templets_one.php">单独页面管理</a> &gt; 增加新页面</td>
+      <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="templets_one.php">单独页面管理</a> &gt; 增加自定义页面</td>
     </tr>
     <tr>
-      <td height="200" bgcolor="#ffffff">
-        <table width="100%" border="0" cellspacing="4" cellpadding="2" class="table table-borderless mb-0">
+      <td height="200">
+        <table width="100%" border="0" cellspacing="4" cellpadding="2" class="table table-borderless">
           <form action="templets_one_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
             <input type='hidden' name='dopost' value='save'>
             <tr>
               <td colspan="2">单独页面管理仅适用于页面较少的情况（建议小于500个页面）大量文档的用文章模型进行管理</td>
             </tr>
             <tr>
-              <td width="15%" height="26" align="center">页面标题：</td>
-              <td><input name="title" type="text" id="title" size="30"></td>
+              <td width="260" height="26">页面标题：</td>
+              <td><input name="title" type="text" id="title" style="width:260px"></td>
             </tr>
             <tr>
-              <td height="26" align="center">页面关键词：</td>
-              <td><input name="keywords" type="text" id="keywords" size="30">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
+              <td height="26">页面关键词：</td>
+              <td><input name="keywords" type="text" id="keywords" style="width:260px">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
             </tr>
             <tr>
-              <td height="26" align="center">页面摘要信息：</td>
-              <td><textarea name="description" cols="50" id="description"></textarea>（100字左右{dede:field name='description'/}）</td>
+              <td height="26">页面摘要信息：</td>
+              <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea>（100字左右{dede:field name='description'/}）</td>
             </tr>
             <tr>
-              <td height="26" align="center">关联标识：</td>
+              <td height="26">关联标识：</td>
               <td>
-                <input name="likeid" type="text" id="likeid" value="" size="10">
+                <input name="likeid" type="text" id="likeid" value="" style="width:260px">
                 <?php
-            	echo "<select name='likeidsel' id='likeidsel'>\r\n";
+            	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
             	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
-            	echo "<option value='default'>default</option>\r\n";
+            	echo "<option value='default'>default</option>";
             	while($arr = $dsql->GetArray('s'))
             	{
-            		echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>\r\n";
+            		echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
             	}
-            	echo "</select>\r\n";
-            	?>
-                <br>
-              （通过这个标识来识别类同页面，模板中用{dede:likesgpage id='标识'/}调用有相同标识的页面）
+            	echo "</select>";
+            	?>（通过这个标识来识别类同页面，模板中用{dede:likesgpage id='标识'/}调用有相同标识的页面）
               </td>
             </tr>
             <tr>
-              <td height="26" align="center">文件名：</td>
-              <td><input name="nfilename" type="text" id="nfilename" value="<?php echo $cfg_arcdir.'/newfile{$nowid}.html'; ?>" size="30">（相对于CMS安装目录）</td>
+              <td height="26">文件名：</td>
+              <td><input name="nfilename" type="text" id="nfilename" value="<?php echo $cfg_arcdir.'/newfile{$nowid}.html'; ?>" style="width:260px">（相对于CMS安装目录）</td>
             </tr>
             <tr>
-              <td height="26" align="center">模板文件名：</td>
-              <td><input name="template" type="text" id="template" value="{style}/singlepage.htm" size="30"></td>
+              <td height="26">模板文件名：</td>
+              <td><input name="template" type="text" id="template" value="{style}/singlepage.htm" style="width:260px"></td>
             </tr>
             <tr>
-              <td height="26" align="center">是否编译内容：</td>
+              <td height="26">是否编译内容：</td>
               <td>
                 <label><input name="ismake" type="radio" value="1">
                 含模板标记，要编译</label>
@@ -90,16 +88,16 @@
               </td>
           </tr>
           <tr> 
-            <td height=" 80" colspan="2" align="center">
+            <td height="80" colspan="2">
               <?php
-	              GetEditor("body","","500","Default","print","false");
+	              GetEditor("body","","450","Default","print","false");
 	            ?>
               </td>
             </tr>
             <tr>
               <td colspan="2" align="center" class="py-3">
-                <button type="submit" name="button1" id="button1" class="btn btn-success">保存</button>
-                <button type="button" onClick="document.form1.reset();" class="btn btn-success">重置</button>
+                <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
+                <button type="button" onClick="document.form1.reset();" class="btn btn-success btn-sm">重置</button>
               </td>
             </tr>
           </form>

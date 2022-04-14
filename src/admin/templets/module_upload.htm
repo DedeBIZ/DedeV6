@@ -3,45 +3,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>模块打包</title>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-<table width="96%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
+<table width="96%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <form name="form1" action="plus_add.php" method="post">
    <input type='hidden' name='dopost' value='save'>
     <tr> 
       <td height="26" colspan="2" style="padding-left:10px"><a href="plus_main.php">模块管理</a> &gt; 模块打包</td>
     </tr>
     <tr> 
-      <td width="20%" align="center" bgcolor="#ffffff">插件名称</td>
-      <td width="80%" bgcolor="#ffffff"><input name="plusname" type="text" id="plusname"> 
-      </td>
+      <td width="260" height="26">插件名称</td>
+      <td height="26"><input name="plusname" type="text" id="plusname"> </td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#ffffff">作者</td>
-      <td bgcolor="#ffffff"> <input name="writer" type="text" id="writer"></td>
+      <td height="26">作者</td>
+      <td height="26"><input name="writer" type="text" id="writer"></td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#ffffff">主程序文件</td>
-      <td bgcolor="#ffffff"><input name="link" type="text" id="link" size="30"></td>
+      <td height="26">主程序文件</td>
+      <td height="26"><input name="link" type="text" id="link" size="30"></td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#ffffff">目标框架</td>
-      <td bgcolor="#ffffff"><input name="target" type="text" id="target" value="main"></td>
+      <td height="26">目标框架</td>
+      <td height="26"><input name="target" type="text" id="target" value="main"></td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#ffffff">文件列表</td>
-      <td bgcolor="#ffffff">文件用&quot;,&quot;分开，路径相对于管理目录（当前目录）<br>
+      <td height="26">文件列表</td>
+      <td height="26">文件用&quot;,&quot;分开，路径相对于管理目录（当前目录）<br>
         <textarea name="filelist" rows="8" id="filelist" style="width:60%"></textarea></td>
     </tr>
-    <tr bgcolor="#F9FDF0"> 
-      <td height="26" colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr> 
-            <td width="30%"></td>
-            <td><input name="imageField" type="submit" class="coolbg np" value="提交"></td>
-            <td><input type="button" name="button" id="button" value="返回" onClick="location='plus_main.php';" class="coolbg np"></td>
-          </tr>
-        </table>
+    <tr> 
+      <td bgcolor="#f8f8f8" colspan="2" align="center" class="py-3">
+        <button type="submit" class="btn btn-success btn-sm">确定</button>
       </td>
     </tr>
   </form>

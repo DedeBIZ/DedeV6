@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title><?php echo $cfg_webname;?>_申请友情链接</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
 <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
@@ -22,14 +22,14 @@
 			  </li>
 			</ul>
 			<span class="navbar-text">
-			  <a href="<?php echo "$cfg_phpurl/flink.php"; ?>" class="btn btn-success">查看链接</a>
+			  <a href="<?php echo "$cfg_phpurl/flink.php"; ?>" class="btn btn-success btn-sm">查看链接</a>
 			</span>
 		</nav>
 	</div>
 	<div class="formbox">
 		  <form name="form1" method="post" action="flink.php">
 		  	<input type='hidden' name='dopost' value='save'>
-		      <table width="100%"  border="0" cellspacing="1" cellpadding="3" class="table">
+		      <table width="100%" border="0" cellspacing="1" cellpadding="3" class="table">
                 <tr> 
                   <td height="26">网址：</td>
                   <td><input name="url" type="text" id="url" value="http://" size="30" class="ipt-txt"></td>
@@ -59,20 +59,20 @@
         $dsql->Execute();
         while($row=$dsql->GetObject())
         {
-        	echo " <option value='".$row->id."'>".$row->typename."</option>\r\n";
+        	echo " <option value='".$row->id."'>".$row->typename."</option>";
         }
         ?>
                     </select> </td>
                 </tr>
                 <tr>
                   <td height="26">验证码：</td>
-                  <td><input name="validate" type="text" id="vdcode2" size="10" class="ipt-txt" style="text-transform: uppercase;"><img src='../apps/vdimgck.php' style="cursor:pointer" onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片" /></td>
+                  <td><input name="validate" type="text" id="vdcode2" size="10" class="ipt-txt" style="text-transform: uppercase;"><img src='../apps/vdimgck.php' style="cursor:pointer" onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片"></td>
                 </tr>
                 <tr> 
                   <td height="51"></td>
                   <td>
-                    <button type="submit" name="Submit" class="btn btn-success"> 提 交 </button>
-                    <button type="reset" name="Submit" class="btn btn-success"> 重 置 </button> </td>
+                    <button type="submit" name="Submit" class="btn btn-success btn-sm"> 提 交 </button>
+                    <button type="reset" name="Submit" class="btn btn-success btn-sm"> 重 置 </button> </td>
                 </tr>
               </table>
 		  </form>

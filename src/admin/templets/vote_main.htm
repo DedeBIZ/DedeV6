@@ -9,12 +9,9 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">
-        投票管理&nbsp;
-        <a href="vote_add.php" class="btn btn-success btn-sm">增加一组投票</a>
-      </td>
+      <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">投票管理<a href="vote_add.php" class="btn btn-success btn-sm ml-3">增加一组投票</a></td>
     </tr>
     <tr align="center" bgcolor="#FBFCE2" height="26">
       <td width="8%">投票ID</td>
@@ -26,7 +23,7 @@
       <td width="20%">管理</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-    <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+    <tr height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid /}</td>
       <td>
         <a href='{dede:global name="cfg_phpurl" /}/vote.php?aid={dede:field.aid/}&dopost=view' target='_blank'>

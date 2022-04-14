@@ -18,7 +18,7 @@ li{float:left;padding-right:10px;line-height:26px}
     <script src="../static/web/js/bootstrap.bundle.min.js"></script>
     <script language='javascript' src='js/main.js'></script>
     <SCRIPT LANGUAGE="JavaScript">
-        var loadhtml = "<center><img src='../static/web/img/loadinglit.gif' style='padding:30px' /></center>";
+        var loadhtml = "<center><img src='../static/web/img/loadinglit.gif' style='padding:30px'></center>";
         function updateItem(aid) {
             var upenumf = document.getElementById('upenumf');
             upenumf.emame.value = $DE('emame' + aid).value;
@@ -145,7 +145,7 @@ li{float:left;padding-right:10px;line-height:26px}
     <div id='edsta'>
         <center><img src='../static/web/img/loadinglit.gif'></center>
     </div>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3" style="margin-bottom:10px">
+    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3" style="margin-bottom:10px">
         <tr>
             <td height="26" background="../static/web/img/wbg.gif" colspan="6" style="padding-left:10px">联动枚举组管理</td>
         </tr>
@@ -202,7 +202,7 @@ if(!empty($egroup))
     //如果添加3级之类
     if($topvalue % 500 != 0) $arr['issign'] = 2;
 ?>
-    <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable" style='margin-bottom:10px'>
+    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable" style='margin-bottom:10px'>
         <tr>
             <td height="26" background="../static/web/img/tbg.gif" colspan="8">
                 <div style="float:left">&nbsp;<?php echo $selgroup; ?> &gt; 子分类管理</div>
@@ -215,7 +215,7 @@ if(!empty($egroup))
                 </div>
             </td>
         </tr>
-        <tr bgcolor="#ffffff" height='48'>
+        <tr height='48'>
             <td>
                 <form action='stepselect_main.php' method='post'>
                     <input type="hidden" mame="action" value="addenum_save">
@@ -229,7 +229,7 @@ if(!empty($egroup))
                         </select>
                     </div>
                     <div style='float:left'>
-                        &nbsp;分类名称：<input type="text" mame="emame" class="iptxt" style='width:350px' />
+                        &nbsp;分类名称：<input type="text" mame="emame" class="iptxt" style='width:360px'>
                     </div>
                     <div style='float:left;padding-left:6px'>
                         <button type="submit" mame='sb2' class="btn btn-success btn-sm">增加分类</button>
@@ -260,17 +260,17 @@ if(!empty($egroup))
             <td width="18%">操作</td>
         </tr>
         <form action='stepselect_main.php' mame='upenumf' method='post' id="upenumf">
-            <input type='hidden' mame='action' value='upenum' />
+            <input type='hidden' mame='action' value='upenum'>
             <input type="hidden" mame="aid" value="">
-            <input type='hidden' mame='emame' value='' />
-            <input type='hidden' mame='disorder' value='' />
+            <input type='hidden' mame='emame' value=''>
+            <input type='hidden' mame='disorder' value=''>
         </form>
         <form mame='form1' action='stepselect_main.php' method='post'>
-            <input type='hidden' mame='action' value='delenumAllSel' />
+            <input type='hidden' mame='action' value='delenumAllSel'>
             {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-            <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-                onMouseOut="javascript:this.bgColor='#ffffff';">
-                <td><input type='checkbox' mame='ids[]' value='{dede:field.id /}' class='np' /></td>
+            <tr height="26" align="center"
+                onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
+                <td><input type='checkbox' mame='ids[]' value='{dede:field.id /}' class='np'></td>
                 <td>{dede:field.id /}</td>
                 <td>
                     <?php 
@@ -281,7 +281,7 @@ if(!empty($egroup))
                 $fields['emame'] = " └───".$fields['emame'];
             }
             ?>
-                    <input type='text' id='emame{dede:field.id/}' value='{dede:field.emame /}' class='abt' />
+                    <input type='text' id='emame{dede:field.id/}' value='{dede:field.emame /}' class='abt'>
                 </td>
                 <td>{dede:field.egroup /}</td>
                 <td>
@@ -295,7 +295,7 @@ if(!empty($egroup))
             }
             ?></td>
                 <td>{dede:field.evalue /}</td>
-                <td><input type='text' id='disorder{dede:field.id/}' value='{dede:field.disorder /}' class='abt' /></td>
+                <td><input type='text' id='disorder{dede:field.id/}' value='{dede:field.disorder /}' class='abt'></td>
                 <td>
                     <?php
                 if(!empty($egroup))
@@ -312,8 +312,8 @@ if(!empty($egroup))
             </tr>
             {/dede:datalist}
         </form>
-        <tr height="26">
-            <td colspan="8" bgcolor="#ffffff">
+        <tr>
+            <td colspan="8">
                 <a href='javascript:TogSel();' class='btn btn-success btn-sm'>全选/反选</a>
                 <a href='javascript:DelSel();' class='btn btn-success btn-sm'>删除所选</a>
             </td>
@@ -343,9 +343,9 @@ if(!empty($egroup))
             <td>操作</td>
         </tr>
         {dede:datalist}
-        <tr align="center" bgcolor="#ffffff" height="26" onMouseMove="javascript:this.bgColor='#FCFDEE';"
-            onMouseOut="javascript:this.bgColor='#ffffff';">
-            <td><input type='checkbox' mame='ids[]' value='{dede:field.id /}' class='np' /></td>
+        <tr height="26" align="center"
+            onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
+            <td><input type='checkbox' mame='ids[]' value='{dede:field.id /}' class='np'></td>
             <td> {dede:field.id /} </td>
             <td> <a href='stepselect_main.php?egroup={dede:field.egroup /}'>{dede:field.itemmame /}</a> </td>
             <td>

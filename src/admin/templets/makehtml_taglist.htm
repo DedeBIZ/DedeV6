@@ -16,13 +16,13 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="makehtml_tag_action_list.php" method="get" target='stafrm'>
       <tr>
         <td height="26" colspan="2" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18">更新标签</td>
+              <td width="30%" style="padding-left:10px">更新标签</td>
               <td width="70%" align="right">
                 <a href="tags_main.php" class="btn btn-success btn-sm">标签管理</a>
               </td>
@@ -35,8 +35,8 @@
         $row = $dsql->GetOne("Select tag From `#@__tagindex` where id = '$tagid' ");
       ?>
       <tr>
-        <td width="200" bgcolor="#ffffff">输入标签：</td>
-        <td width="380" bgcolor="#ffffff">
+        <td width="260" height="26">输入标签：</td>
+        <td height="26">
           <input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php">重新选择</a>
         </td>
       </tr>
@@ -44,43 +44,43 @@
       } else {
       ?>
       <tr>
-        <td width="200" height="26" bgcolor="#ffffff">起始ID：</td>
-        <td height="26" bgcolor="#ffffff"><input name="startid" type="text" id="startid" style="width:60px">（空或0表示从头开始）</td>
+        <td width="260" height="26">起始ID：</td>
+        <td height="26"><input name="startid" type="text" id="startid" style="width:60px">（空或0表示从头开始）</td>
       </tr>
       <tr>
-        <td width="200" height="26" bgcolor="#ffffff">结束ID：</td>
-        <td height="26" bgcolor="#ffffff"><input name="endid" type="text" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
+        <td height="26">结束ID：</td>
+        <td height="26"><input name="endid" type="text" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
       </tr>
       <?php
       }
       ?>
       <tr>
-        <td width="200" height="26" bgcolor="#ffffff">生成位置：</td>
-        <td height="26" bgcolor="#ffffff"><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“TAGS生成目录”项进行调整</td>
+        <td height="26">生成位置：</td>
+        <td height="26"><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“TAGS生成目录”项进行调整</td>
       </tr>
       <tr>
-        <td width="200" height="26" bgcolor="#ffffff">每次最大创建页数：</td>
-        <td height="26" bgcolor="#ffffff"><input name="maxpagesize" type="text" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
+        <td height="26">每次最大创建页数：</td>
+        <td height="26"><input name="maxpagesize" type="text" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
       </tr>
       <tr>
-        <td width="200" height="26" bgcolor="#ffffff">标签说明：</td>
-        <td height="26" bgcolor="#ffffff">
+        <td height="26">标签说明：</td>
+        <td height="26">
           生成静态文件后，访问动态文件则直接跳转到静态文件，如果需要动态访问，删除对应文件即可<br>
           Tag首页模板文件：<?php echo $cfg_templets_dir; ?>/<?php echo $cfg_df_style?>/tag.htm<br>
           Tag列表页模板文件：<?php echo $cfg_templets_dir; ?>/<?php echo $cfg_df_style?>/taglist.htm<br>
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="2" bgcolor="#FAFAF1" align="center">
+        <td height="30" bgcolor="#F8FCF1" colspan="2" align="center">
           <button name="b112" type="button" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">生成标签</button>
         </td>
       </tr>
     </form>
-    <tr bgcolor="#f8f8f8">
+    <tr>
       <td height="26" colspan="2">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="70%">进行状态：</td>
+            <td width="70%">结果：</td>
             <td width="30%" align="right">
               <script language='javascript'>
                 function ResizeDiv(obj, ty) {
@@ -95,7 +95,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#ffffff">
+    <tr>
       <td colspan="2" id="mtd">
         <div id="mdv" style="width:100%;height:300px"> 
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>

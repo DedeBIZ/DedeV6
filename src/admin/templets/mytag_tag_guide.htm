@@ -44,14 +44,14 @@
         </tr>
       </table>
     </span>
-    <table width="98%" border="0" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3">
+    <table width="98%" border="0" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <form action="mytag_tag_guide_ok.php" method="post" target="stafrm" name="form1">
         <input type="hidden" name="dopost" value="gettag">
         <tr>
           <td height="26" align="left" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mytag_main.php" align="left">自定义标记管理</a> &gt; 智能标记生成向导</td>
         </tr>
         <tr>
-          <td height="265" bgcolor="#ffffff">
+          <td height="265">
             <table width="99%" border="0" align="right" cellpadding="0" cellspacing="0" style="text-align:left" class="table table-borderless">
               <tr>
                 <td height="26">列表样式：</td>
@@ -62,7 +62,7 @@
                     <tr>
                       <td width="25%" height="126">
                         <label><img src="../static/web/img/g_t2.jpg" width="130" height="100">
-                        <input name="liststyle" class="np" type="radio" onClick="ChangeListStyle()" value="1" checked='1' /></label> </td>
+                        <input name="liststyle" class="np" type="radio" onClick="ChangeListStyle()" value="1" checked='1'></label> </td>
                       <td width="25%">
                         <label><img src="../static/web/img/g_t1.jpg">
                         <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2"></label></td>
@@ -81,8 +81,8 @@
                   <?php
        $tl = new TypeLink(0);
        $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-       echo "<select name='typeid' style='width:284px'>\r\n";
-       echo "<option value='0' selected>不限栏目</option>\r\n";
+       echo "<select name='typeid' style='width:284px'>";
+       echo "<option value='0' selected>不限栏目</option>";
        echo $typeOptions;
        echo "</select>";
 		?> </td>
@@ -90,25 +90,25 @@
               <tr>
                 <td height="26"> 限定频道：
                   <?php
-     echo "<select name='channel' style='width:100px'>\r\n";
-     echo "<option value='0' selected>不限频道</option>\r\n";
+     echo "<select name='channel' style='width:100px'>";
+     echo "<option value='0' selected>不限频道</option>";
      $tl->dsql->SetQuery("Select id,typename From #@__channeltype where id>0");
 	   $tl->dsql->Execute();
 	   while($row = $tl->dsql->GetObject())
 	   {
-	      echo "<option value='{$row->id}'>{$row->typename}</option>\r\n";
+	      echo "<option value='{$row->id}'>{$row->typename}</option>";
 	   }
        echo "</select>";
 		?>
                   附加属性：
                   <?php
-       echo "<select name='att' style='width:100px'>\r\n";
-       echo "<option value='0' selected>不限</option>\r\n";
+       echo "<select name='att' style='width:100px'>";
+       echo "<option value='0' selected>不限</option>";
        $tl->dsql->SetQuery("Select * From #@__arcatt");
 	   $tl->dsql->Execute();
 	   while($row = $tl->dsql->GetObject())
 	   {
-	      echo "<option value='{$row->att}'>{$row->attname}</option>\r\n";
+	      echo "<option value='{$row->att}'>{$row->attname}</option>";
 	   }
        echo "</select>";
 		?> </td>
@@ -146,7 +146,7 @@
                     <option value="rand">随机获取</option>
                   </select>
                   　
-                  <label><input name="order" type="radio" class="np" value="desc" checked='1' />
+                  <label><input name="order" type="radio" class="np" value="desc" checked='1'>
                   由高到低</label>
                   <label><input type="radio" name="order" class="np" value="asc">
                   由低到高</label></td>
@@ -181,19 +181,18 @@
               </tr>
               <tr>
                 <td height="36">
-                  <button name="Submit1" type="button" id="Submit1" class="btn btn-success" onClick="DoSubmit('gettag')" value="" class="coolbg np">生成模板调用标记</button>
-                  &nbsp;
-                  <button name="Submit2" type="button" id="Submit2" class="btn btn-success" onClick="DoSubmit('savetag')" value="保存为自定义标记" class="coolbg np">生成模板调用标记</button></td>
+                  <button name="Submit1" type="button" id="Submit1" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" value="" class="coolbg np">生成模板调用标记</button>
+                  <button name="Submit2" type="button" id="Submit2" class="btn btn-success btn-sm" onClick="DoSubmit('savetag')" value="保存为自定义标记" class="coolbg np">生成模板调用标记</button></td>
               </tr>
             </table>
           </td>
         </tr>
       </form>
       <tr>
-        <td height="26" bgcolor="#f8f8f8" align="left">输出结果：</td>
+        <td height="26" bgcolor="#f8f8f8" align="left">结果：</td>
       </tr>
       <tr>
-        <td height="150" bgcolor="#ffffff">
+        <td height="150">
           <div id='mdv' style='width:100%;height:130;'>
             <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
           </div>

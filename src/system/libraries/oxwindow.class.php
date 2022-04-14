@@ -78,9 +78,9 @@ class OxWindow
      */
     function AddItem($iname, $ivalue)
     {
-        $this->myWinItem .= "<tr bgcolor='#ffffff'>";
-        $this->myWinItem .= "<td width='30%'>$iname</td>";
-        $this->myWinItem .= "<td width='70%'>$ivalue</td>";
+        $this->myWinItem .= "<tr>";
+        $this->myWinItem .= "<td width='260'>$iname</td>";
+        $this->myWinItem .= "<td>$ivalue</td>";
         $this->myWinItem .= "</tr>";
     }
     /**
@@ -104,7 +104,7 @@ class OxWindow
         } else {
             $colspan = "";
         }
-        $this->myWinItem .= "<tr bgcolor='#ffffff'>";
+        $this->myWinItem .= "<tr>";
         $this->myWinItem .= "<td $colspan $height>$ivalue</td>";
         $this->myWinItem .= "</tr>";
     }
@@ -190,10 +190,10 @@ class OxWindow
             if ($wintype != "hand") {
                 $this->myWin .= "
 <tr>
-<td colspan='2' height='30'>
-<button type='submit' class='btn btn-success'>$tt</button>
-<button type='button' class='btn btn-success' onClick='this.form.reset();return false;'>重置</button>
-<button type='button' class='btn btn-success' onClick='history.go(-1);'>返回</button>
+<td align='center' colspan='2' class='py-3'>
+<button type='submit' class='btn btn-success btn-sm'>$tt</button>
+<button type='button' class='btn btn-success btn-sm' onClick='this.form.reset();return false;'>重置</button>
+<button type='button' class='btn btn-success btn-sm' onClick='history.go(-1);'>返回</button>
 </td>
 </tr>";
             } else {

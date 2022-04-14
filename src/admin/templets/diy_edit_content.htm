@@ -10,12 +10,12 @@
 <script src="../static/web/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<table class="table maintable mt-3" width="98%"  border="0" align="center" cellpadding="1" cellspacing="1">
+<table class="table maintable mt-3" width="98%" border="0" align="center" cellpadding="1" cellspacing="1">
   <tr>
     <td width="100%" height="26" colspan="2" background="../static/web/img/tbg.gif"><a href="<?php echo $ENV_GOBACK_URL; ?>">表单管理</a> &gt; 编辑评论</td>
   </tr>
   <tr>
-    <td height="167" colspan="2" align="center" bgcolor="#ffffff">
+    <td height="167" colspan="2" align="center">
 	<form name="form1" method="post" enctype="multipart/form-data" action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
 	<input type="hidden" name="dopost" value="edit">
 	<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -28,26 +28,26 @@
 			if($row[$field]=='') continue;
 			if($fielddata[1]=='img')
 			{
-				$row[$field] = "<input name='photo' type='file' />  <a href='{$row[$field]}' target='_blank'><img src='../static/web/img/channeladd.gif' border='0' /> 浏览原图</a> <a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field'>删除原图</a>\r\n";
+				$row[$field] = "<input name='photo' type='file'>  <a href='{$row[$field]}' target='_blank'><img src='../static/web/img/channeladd.gif' border='0'> 浏览原图</a> <a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field'>删除原图</a>";
 			}
 			else if($fielddata[1]=='addon')
 			{
-				$row[$field] = "<input name='file' type='file' />  <a href='{$row[$field]}' target='_blank'><img src='../static/web/img/channeladd.gif' border='0' /> 浏览原附件</a> <a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field'>删除原附件</a>";
+				$row[$field] = "<input name='file' type='file'>  <a href='{$row[$field]}' target='_blank'><img src='../static/web/img/channeladd.gif' border='0'> 浏览原附件</a> <a href='diy_list.php?action=delete&diyid=$diy->diyid&id=$row[id]&do=1&name=$field'>删除原附件</a>";
 			} else {
 				if(!in_array($fielddata[1],$allowhtml)){
 					$row[$field] = dede_htmlspecialchars($row[$field]);
 					$row[$field] = "<input type='text' name='".$field."' value='".$row[$field]."'/>";
 				}
 			}
-			echo '<tr bgcolor="#ffffff"><td width="20%" height="26">'.$fielddata[0].':'.'</td><td width="80%">'.$row[$field].'</td></tr>';
+			echo '<tr><td width="20%" height="26">'.$fielddata[0].':'.'</td><td width="80%">'.$row[$field].'</td></tr>';
 			$formfields .= 	$formfields == ''? $field.','.$fielddata[1] : ';'.$field.','.$fielddata[1];	
 		}
 		echo "<input type='hidden' name='dede_fields' value='".$formfields."'>";
 		?>
-          <tr bgcolor="#ffffff"> 
+          <tr> 
             <td align="center" class="py-3">
-               <button type="submit" name="Submit1" class='btn btn-success'>保存保存</button>
-               <button type="button" name="Submit2" class='btn btn-success' onClick="location='<?php echo $ENV_GOBACK_URL; ?>';">不理返回</button>
+               <button type="submit" name="Submit1" class='btn btn-success btn-sm'>保存</button>
+               <button type="button" name="Submit2" class='btn btn-success btn-sm' onClick="location='<?php echo $ENV_GOBACK_URL; ?>';">返回</button>
 			 				</td>
           </tr>
         </table>

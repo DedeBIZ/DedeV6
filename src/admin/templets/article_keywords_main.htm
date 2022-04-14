@@ -27,7 +27,7 @@
 </head>
 <body>
   <div class="main">
-    <table width="98%" border="0" cellpadding="1" align='center' cellspacing="1" class="table maintable mt-3">
+    <table width="98%" border="0" cellpadding="1" align='center' cellspacing="1" class="table maintable mt-3 mb-3">
       <tr>
         <td height="26" colspan="6" background="../static/web/img/tbg.gif">
           <table width="96%" border="0" class="table table-borderless">
@@ -35,7 +35,7 @@
               <td width="25%" style="padding-left:10px">文档关键词维护</td>
               <form name='form1' action="article_keywords_main.php">
                 <td width="75%" align="right">
-                  搜索：<input type='text' name='keyword' size='20' />&nbsp;
+                  搜索：<input type='text' name='keyword' size='20'>&nbsp;
                   <button type='submit' name='sb' value='' class="btn btn-success btn-sm">保存</button>
                   <button class="btn btn-success btn-sm" name="n1" type="button" id="n1" onClick="location='article_keywords_make.php';">分析系统内的关键词</button>
                   <button class="btn btn-success btn-sm" name="n11" type="button" id="n11" onClick="location='search_keywords_main.php';">管理搜索的关键词</button>
@@ -46,8 +46,8 @@
         </td>
       </tr>
       <form name='form2' action="article_keywords_main.php">
-        <input type='hidden' name='dopost' value='add' />
-        <tr align="center" bgcolor="#ffffff">
+        <input type='hidden' name='dopost' value='add'>
+        <tr align="center">
           <td width="100%" height="30" colspan="6">
             <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
@@ -71,38 +71,38 @@
         <td width="22%">管理</td>
       </tr>
       <form name='form3' action="article_keywords_main.php" method="post">
-        <input type='hidden' name='dopost' value='saveall' />
+        <input type='hidden' name='dopost' value='saveall'>
         {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
-        <tr align="center" bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+        <tr align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
           <td height="26">
-            <input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1' />
+            <input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1'>
           </td>
           <td>
-            <input type='hidden' value='{dede:field.keyword/}' name='keyword_{dede:field.aid/}' />
+            <input type='hidden' value='{dede:field.keyword/}' name='keyword_{dede:field.aid/}'>
             {dede:field.keyword/}
           </td>
           <td style="padding:6px 0;">
-            <input type='hidden' value='{dede:field.rpurl/}' name='rpurlold_{dede:field.aid/}' />
+            <input type='hidden' value='{dede:field.rpurl/}' name='rpurlold_{dede:field.aid/}'>
             <input type='text' style='width:90%' class='nnpp' value='{dede:field.rpurl/}'
-              name='rpurl_{dede:field.aid/}' />
+              name='rpurl_{dede:field.aid/}'>
           </td>
           <td>
-            <input type='text' size='5' class='nnpp' value='{dede:field.rank/}' name='rank_{dede:field.aid/}' />
+            <input type='text' size='5' class='nnpp' value='{dede:field.rank/}' name='rank_{dede:field.aid/}'>
           </td>
           <td>
-            <input type='hidden' name='staold_{dede:field.aid/}' value='{dede:field.sta/}' />
+            <input type='hidden' name='staold_{dede:field.aid/}' value='{dede:field.sta/}'>
             <label><input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta function="GetSta(@me)" /} />
             禁用</label>
             &nbsp;
-            <label><input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1' />
+            <label><input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1'>
             删除</label>
           </td>
         </tr>
         {/dede:datalist}
-        <tr bgcolor="#ffffff">
+        <tr>
           <td colspan="6" class="py-3">
             <button type="button" name="dl1" class="btn btn-success btn-sm" onClick="selAll()">反选</button>
-            <button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存保存</button>
+            <button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存</button>
           </td>
         </tr>
       </form>

@@ -35,15 +35,15 @@ $dedebizUrl = DEDEBIZURL;
 $adminMenu1 = $adminMenu2 = '';
 if ($cuserLogin->getUserType() >= 10) {
     $adminMenu1 = "<m:top item='7_' name='模板管理' display='block' rank='temp_One,temp_Other,temp_MyTag,temp_test,temp_All'>
-    <m:item name='默认模板管理' link='templets_main.php' rank='temp_All' target='main'/>
-    <m:item name='标签源码管理' link='templets_tagsource.php' rank='temp_All' target='main'/>
-    <m:item name='自定义宏标记' link='mytag_main.php' rank='temp_MyTag' target='main'/>
-    <m:item name='智能标记向导' link='mytag_tag_guide.php' rank='temp_Other' target='main'/>
-    <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main'/>
+    <m:item name='默认模板管理' link='templets_main.php' rank='temp_All' target='main' />
+    <m:item name='标签源码管理' link='templets_tagsource.php' rank='temp_All' target='main' />
+    <m:item name='自定义宏标记' link='mytag_main.php' rank='temp_MyTag' target='main' />
+    <m:item name='智能标记向导' link='mytag_tag_guide.php' rank='temp_Other' target='main' />
+    <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main' />
 </m:top>
 <m:top item='1_7_' name='频道模型' display='block' rank='t_List,t_AccList,c_List,temp_One'>
     <m:item name='内容模型管理' link='mychannel_main.php' rank='c_List' target='main' />
-    <m:item name='单页文档管理' link='templets_one.php' rank='temp_One' target='main'/>
+    <m:item name='单页文档管理' link='templets_one.php' rank='temp_One' target='main' />
     <m:item name='联动类别管理' link='stepselect_main.php' rank='c_Stepseclect' target='main' />
     <m:item name='自由列表管理' link='freelist_main.php' rank='c_List' target='main' />
     <m:item name='自定义表单' link='diy_main.php' rank='c_List' target='main' />

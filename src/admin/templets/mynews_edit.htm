@@ -32,7 +32,7 @@ function checkSubmit()
         </table></td>
 </tr>
 <tr>
-    <td height="127" align="center" bgcolor="#ffffff"> 
+    <td height="130" align="center"> 
       <table width="98%" border="0" cellspacing="2" cellpadding="0">
           <tr> 
             <td height="26" colspan="2"  align="left">说明：站内新闻是为了方便站长发布站点公告而设置的一种小功能，由于要读取包括text字段的信息，应定期删除太旧的信息，否则可能会让模板解析速度变慢如果没有选择显示频道，则在这个频道中使用这个标记时会被“所有位置”的标记内容代替</td>
@@ -54,10 +54,10 @@ function checkSubmit()
 			  $dsql->Execute();
 			  while($row = $dsql->GetObject())
 			  {
-			     echo "<option value='".$row->id."'>".$row->typename."</option>\r\n";
+			     echo "<option value='".$row->id."'>".$row->typename."</option>";
 			  }
-			  if($myNews['typeid']=="0") echo "<option value=\"0\" selected>所有位置</option>\r\n";
-			  else echo "<option value=\"0\">所有位置</option>\r\n";
+			  if($myNews['typeid']=="0") echo "<option value=\"0\" selected>所有位置</option>";
+			  else echo "<option value=\"0\">所有位置</option>";
 			  ?>
         </select>
 			   </td>

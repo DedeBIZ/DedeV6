@@ -31,7 +31,7 @@
     <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable">
       <tr>
         <td width="6%" align="center" valign="middle" bgcolor="#FEFCEF">
-          <input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)" class='np' />
+          <input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)" class='np'>
           删</td>
         <td width="23%" align="center" bgcolor="#FEFCEF">积分大于</td>
         <td width="30%" align="center" bgcolor="#FEFCEF">星星数</td>
@@ -41,8 +41,8 @@
       <?php
 		  foreach($Scores as $v){	
 		  ?>
-      <tr bgcolor="#ffffff" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
-        <td align="center"><input name="Ids-<?php echo $v['id']?>" type="checkbox" id="Ids-<?php echo $v['id']?>" value="1" class='np' /></td>
+      <tr onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
+        <td align="center"><input name="Ids-<?php echo $v['id']?>" type="checkbox" id="Ids-<?php echo $v['id']?>" value="1" class='np'></td>
         <td align="center"><input name="integral-<?php echo $v['id']?>" type="text" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" style="width:160px"></td>
         <td align="center"><input name="icon-<?php echo $v['id']?>" type="text" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" style="width:60px"></td>
         <td align="center"><input name="titles-<?php echo $v['id']?>" type="text" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" style="width:160px"></td>
@@ -56,7 +56,7 @@
       <?php
 		  }
 		  ?>
-      <tr bgcolor="#f8f8f8">
+      <tr>
         <td>新增：</td>
         <td align="center"><input name="add_integral" type="text" id="add_integral" style="width:160px"></td>
         <td align="center"><input name="add_icon" type="text" id="add_icon" style="width:60px"></td>
@@ -70,7 +70,7 @@
       </tr>
       <tr>
         <td colspan="5" align="center" class="py-3">
-          <button type="submit" class="btn btn-success">提交</button>
+          <button type="submit" class="btn btn-success btn-sm">提交</button>
         </td>
       </tr>
     </table>

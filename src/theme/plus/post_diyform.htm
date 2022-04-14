@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 	<title><?php echo $diy->name;?> - Powered by DedeBIZ</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
 	<link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
@@ -20,18 +20,18 @@
 			<div class="cbox mceneter">
 				<div class="maplist">
 					<form action="<?php echo $cfg_cmspath;?>/apps/diy.php" enctype="multipart/form-data" method="post">
-						<input type="hidden" name="action" value="post" />
-						<input type="hidden" name="diyid" value="<?php echo $diyid;?>" />
-						<input type="hidden" name="do" value="2" />
+						<input type="hidden" name="action" value="post">
+						<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
+						<input type="hidden" name="do" value="2">
 						<table style="width:97%;" cellpadding="0" cellspacing="1" class="table">
 							<?php
 								echo $postform;
 							?>
 						</table>
 						<div align='center'>
-							<button type="submit" name="submit" class='btn btn-success'>提 交</button>
+							<button type="submit" name="submit" class='btn btn-success btn-sm'>提 交</button>
 							&nbsp;
-							<button type="reset" name="reset" class='btn btn-success'>重 置</button>
+							<button type="reset" name="reset" class='btn btn-success btn-sm'>重 置</button>
 						</div>
 					</form>
 				</div>
@@ -42,5 +42,4 @@
 	<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
 
 </body>
-
 </html>

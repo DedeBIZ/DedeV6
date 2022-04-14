@@ -1,11 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
-  <title>
-    <?php echo $msgtitle; ?>
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+  <title><?php echo $msgtitle; ?></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
   <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
@@ -13,9 +11,7 @@
   <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
 </head>
 <body class="flinkpage">
-
   <?php include("plus_header.htm") ;?>
-
   <div class="container">
     <div class="sp-title">
       <span class="more">
@@ -31,7 +27,7 @@
         <tr bgcolor="#EFF4EA">
           <td height="26" colspan="2">&#160;错误具体提示信息：</td>
         </tr>
-        <tr bgcolor="#ffffff">
+        <tr>
           <td height="60" colspan="2" align="center">
             <?php echo $moremsg; ?>
           </td>
@@ -45,7 +41,7 @@
             <?php echo $arcLinktitle; ?>
           </td>
         </tr>
-        <tr bgcolor="#ffffff">
+        <tr>
           <td height="26" align="center">
             发布时间：
           </td>
@@ -54,7 +50,7 @@
             <?php echo $pubdate; ?>
           </td>
         </tr>
-        <tr bgcolor="#ffffff">
+        <tr>
           <td height="70" align="center">
             文档简介：
           </td>
@@ -71,5 +67,4 @@
   <?php include("plus_footer.htm") ;?>
 
 </body>
-
 </html>

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="cards_type.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
@@ -29,7 +29,7 @@
 	  $k++;
 	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
-      <tr align="center" bgcolor="#ffffff">
+      <tr align="center">
         <td height="26">
           <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" class='pubinputs' style="width:90%">
         </td>
@@ -42,7 +42,7 @@
         </td>
         <td>
           <input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" value="1" checked='1'
-            class='np' />
+            class='np'>
           保留
         </td>
       </tr>
@@ -54,7 +54,7 @@
         <td height="26" colspan="4" bgcolor="#f8f8f8" style="padding-left:10px">
           新增一个点卡产品类型：</td>
       </tr>
-      <tr height="26" align="center" bgcolor="#ffffff">
+      <tr height="26" align="center">
         <td>
           <input name="pname_new" type="text" id="pname_new" class='pubinputs' style="width:90%">
         </td>
@@ -65,13 +65,13 @@
           <input name="money_new" type="text" id="money_new" class='pubinputs' style='width:80%' value="30">
           （元）
         </td>
-        <td align="center" bgcolor="#ffffff">
-          <input name="check_new" type="checkbox" id="check_new" value="1" checked='1' class='np' />
+        <td align="center">
+          <input name="check_new" type="checkbox" id="check_new" value="1" checked='1' class='np'>
           新增 </td>
       </tr>
       <tr>
         <td colspan="4" align="center" bgcolor="#f8f8f8" class="py-3">
-          <button type="submit" class="btn btn-success">保存</button>
+          <button type="submit" class="btn btn-success btn-sm">保存</button>
         </td>
       </tr>
     </form>

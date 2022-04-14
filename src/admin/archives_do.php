@@ -356,8 +356,8 @@ else if ($dopost == 'moveArchives') {
         </tr>
         <tr>
             <td colspan="2" align="center" class="py-3">
-                <button type='submit' class='btn btn-success'>保存</button>
-                <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
+                <button type='submit' class='btn btn-success btn-sm'>保存</button>
+                <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success btn-sm'>关闭</button>
             </td>
         </tr>
         </table>
@@ -609,8 +609,8 @@ else if ($dopost == 'quickEdit') {
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-3">
-            <button type='submit' class='btn btn-success'>保存</button>
-            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
+            <button type='submit' class='btn btn-success btn-sm'>保存</button>
+            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success btn-sm'>关闭</button>
         </td>
     </tr>
     </table>
@@ -885,8 +885,8 @@ else if ($dopost == 'attsDlg') {
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-3">
-            <button type='submit' class='btn btn-success'>保存</button>
-            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
+            <button type='submit' class='btn btn-success btn-sm'>保存</button>
+            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success btn-sm'>关闭</button>
         </td>
     </tr>
     </table>
@@ -911,8 +911,8 @@ else if ($dopost == 'getCatMap') {
     <form name='quicksel' action='javascript:;' method='get'>
         <div class='quicksel'><?php $tus->ListAllType($channelid); ?></div>
         <div align='center' class='quickselfoot'>
-            <button onclick='getSelCat("<?php echo $targetid; ?>");' class='btn btn-success'>保存</button>
-            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success'>关闭</button>
+            <button onclick='getSelCat("<?php echo $targetid; ?>");' class='btn btn-success btn-sm'>保存</button>
+            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success btn-sm'>关闭</button>
         </div>
     </form>
 <?php

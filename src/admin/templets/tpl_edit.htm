@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../static/web/css/admin.css">
 	<style>
 .selbt{float:left;display:inline-block;padding:6px;margin:0 6px 6px 0;text-align:center}
-.helpdiv{float:left;display:none;border:1px dashed #749F4D;background-color:#f8f8f8;width:100%;padding:6px}
+.helpdiv{float:left;display:none;border:1px solid #28a745;background-color:#f8f8f8;width:100%;padding:6px}
 	</style>
 	<link rel="stylesheet" href="css/codemirror.css">
 	<script type="text/javascript" src="js/codemirror.js"></script>
@@ -52,33 +52,33 @@
 		<input type="hidden" name="action" value="saveedit">
 		<input type="hidden" name="acdir" value="<?php echo $acdir; ?>">
 		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
-		<table width='98%' border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3">
+		<table width='98%' border='0' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3 mb-3">
 			<tr bgcolor='#EEF4EA'>
 				<td colspan="2" height="26" background="../static/web/img/wbg.gif" style="padding-left:10px">修改新建模板</td>
 			</tr>
-			<tr bgcolor='#ffffff'>
+			<tr>
 				<td>文件名称</td>
-				<td><input name=filename size=40 value="<?php echo $filename; ?>">（不允许用 “..” 形式的路径）</td>
+				<td><input name=filename value="<?php echo $filename; ?>" style="width:260px">（不允许用 “..” 形式的路径）</td>
 			</tr>
-			<tr bgcolor="#f8f8f8">
+			<tr>
 				<td colspan='2' hieght="30" style="padding-left:10px">参考标签：</td>
 			</tr>
-			<tr bgcolor='#ffffff'>
+			<tr>
 				<td colspan='2'>
 					<?php
 					foreach ($helps as $key => $help)
 					{
-						echo '<div class="coolbg np selbt" title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"> '.$key.' </a></div>'."\r\n";
+						echo '<div class="coolbg np selbt" title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"> '.$key.' </a></div>'."";
 					}
 					?>
 				</td>
 			</tr>
 			<tr>
-				<td colspan='2' bgcolor='#ffffff' style="border-top:1px solid #fff">
+				<td colspan='2' style="border-top:1px solid #fff">
 					<?php
 						foreach ($helps as $key => $help)
 						{
-							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."\r\n";
+							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
 							{
@@ -86,21 +86,21 @@
 								if($parameter == '') continue;
 								else echo $parameter,'<br>';
 							}
-						echo '</div>'."\r\n";
+						echo '</div>'."";
 					}
 					?>
 				</td>
 			</tr>
-			<tr bgcolor='#ffffff'>
+			<tr>
 				<td colspan='2'>
-					<textarea id="content" name="content" cols="150" rows="24" style="width:100%;height:450px"><?php echo $content; ?></textarea>
+					<textarea id="content" name="content" style="width:100%;height:450px"><?php echo $content; ?></textarea>
 				</td>
 			</tr>
 			<tr>
-				<td bgcolor="#f8f8f8" colspan="2" class="py-3">
+				<td bgcolor="#f8f8f8" colspan="2" align="center" class="py-3">
 					<button type="submit" name='B1' class="btn btn-success btn-sm">保存</button>
-					<button type="reset" name='B2' class="btn btn-success btn-sm">取消保存</button>
-					<button type="button" name='B4' class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">不理返回</button>
+					<button type="reset" name='B2' class="btn btn-success btn-sm">重置</button>
+					<button type="button" name='B4' class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
 				</td>
 			</tr>
 		</table>

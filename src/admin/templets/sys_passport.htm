@@ -11,7 +11,7 @@
 <td height="26" background="../static/web/img/tbg.gif">通行证设置：</td>
 </tr>
 <tr> 
-<td bgcolor="#ffffff">
+<td>
 <table width="100%" border="0" cellspacing="1" cellpadding="1">
 <form action="sys_passport.php" method="post" name="form1">
 <input type="hidden" name="dopost" value="save">
@@ -19,15 +19,15 @@
 <td width="25%">参数说明</td>
 <td width="75%">参数值</td>
 </tr>
-<tr align="center" height="26" bgcolor="#F4FCDC"> 
-<td bgcolor="#ffffff"> 是否使用通行证：</td>
-<td align="left" bgcolor="#ffffff">
+<tr height="26" align="center" bgcolor="#F4FCDC"> 
+<td> 是否使用通行证：</td>
+<td align="left">
 <input type='radio' class='np' name='edit___cfg_pp_need' value='Y'<?php if($cfg_pp_need=='Y') echo " checked"; ?>>
 是 
 <input type='radio' class='np' name='edit___cfg_pp_need' value='N'<?php if($cfg_pp_need=='N') echo " checked"; ?>>
 否</td>
 </tr>
-<tr align="center" height="26" bgcolor="#F4FCDC"> 
+<tr height="26" align="center" bgcolor="#F4FCDC"> 
 <td> 通行证加密码：</td>
 <td align="left">
 	<?php
@@ -36,22 +36,22 @@
 	<input type='text' name='edit___cfg_pp_encode' id='edit___cfg_pp_encode' style='width:80%' value='<?php echo $cfg_pp_encode?>'>
 </td>
 </tr>
-<tr align="center" height="26" bgcolor="#ffffff"> 
+<tr height="26" align="center"> 
 <td> 登录通行证网址：</td>
 <td align="left"> 
 <input type='text' name='edit___cfg_pp_login' id='edit___cfg_pp_login' style='width:80%' value='<?php echo $cfg_pp_login?>'></td>
 </tr>
-<tr align="center" height="26" bgcolor="#F4FCDC">
+<tr height="26" align="center" bgcolor="#F4FCDC">
 <td>退出通行证网址：</td>
 <td align="left"><input name="edit___cfg_pp_exit" type='text' id="edit___cfg_pp_exit" style='width:80%' value='<?php echo $cfg_pp_exit?>'></td>
 </tr>
-<tr align="center" height="26" bgcolor="#ffffff"> 
+<tr height="26" align="center"> 
 <td>注册通行证帐号网址：</td>
 <td align="left"> 
 <input type='text' name='edit___cfg_pp_reg' id='edit___cfg_pp_reg' style='width:80%' value='<?php echo $cfg_pp_reg?>'> 
 </td>
 </tr>
-<tr bgcolor="#F3FFDD"> 
+<tr> 
 <td height="50" colspan="2"> <table width="98%" border="0" cellspacing="1" cellpadding="1">
 <tr> 
 <td width="11%"></td>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>文档批量管理</title>
+  <title>文档批量维护</title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -55,47 +55,48 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center"  class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center"  class="table maintable mt-3 mb-3">
     <form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="go">
       <tr>
         <td height="26" colspan="2" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="180" height="18" style="padding-left:10px">文档批量管理</td>
+              <td width="30%" style="padding-left:10px">文档批量维护</td>
               <td align="right"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td width="180" align="center" bgcolor="#ffffff">选定栏目：</td>
-        <td bgcolor="#ffffff">
+        <td width="260">选定栏目：</td>
+        <td>
           <?php
        $tl = new TypeLink(0);
        $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-       echo "<select name='typeid' style='width:260px'>\r\n";
-       echo "<option value='0' selected>不限栏目</option>\r\n";
+       echo "<select name='typeid' style='width:260px'>";
+       echo "<option value='0' selected>不限栏目</option>";
        echo $typeOptions;
        echo "</select>";
 		?>
         </td>
       </tr>
       <tr>
-        <td height="26" align="center" bgcolor="#ffffff">起始ID：</td>
-        <td height="26" bgcolor="#ffffff">开始：
+        <td height="26">起始ID：</td>
+        <td height="26">开始：
           <input name="startid" type="text" id="startid" size="10">
           结束：
           <input name="endid" type="text" id="endid" size="10"></td>
       </tr>
       <tr>
-        <td height="26" align="center" bgcolor="#ffffff">档案发布时间：</td>
-        <td height="26" bgcolor="#ffffff">
-          <table width="500" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
+        <td height="26">档案发布时间：</td>
+        <td height="26">
+          <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td colspan="2"> <label>
-                  <input name="seltime" type="checkbox" class="np" id="seltime" value="1" onClick="ShowHideTime()">
-                  启用时间筛选（仅移动或删除文档可用该选项）</label></td>
+              <td colspan="2">
+                <label><input name="seltime" type="checkbox" class="np" id="seltime" value="1" onClick="ShowHideTime()">
+                  启用时间筛选（仅移动或删除文档可用该选项）</label>
+              </td>
             </tr>
             <tr id='seltimeField' style='display:none' height='26'>
               <td width="250">开始：
@@ -111,14 +112,14 @@
         </td>
       </tr>
       <tr>
-        <td height="26" align="center" bgcolor="#ffffff">用户的登录id：</td>
-        <td height="26" bgcolor="#ffffff"><input name="userid" type="text" id="userid" size="20">（网址uid=后面跟的id）</td>
+        <td height="26">用户的登录id：</td>
+        <td height="26"><input name="userid" type="text" id="userid" size="20">（网址uid=后面跟的id）</td>
       </tr>
       <tr>
-        <td height="26" align="center" bgcolor="#ffffff">操作：</td>
-        <td height="26" bgcolor="#ffffff">
+        <td height="26">操作：</td>
+        <td height="26">
           <label><input name="action" type="radio" class="np" id="checkradio" onClick="ShowHideMove()" value="check"
-            checked='1' />
+            checked='1'>
           审核文档</label>
           <label><input name="action" type="radio" class="np" value="makehtml" id="makehtmlradio" onClick="ShowHideMove()">
           更新HTML</label>
@@ -127,12 +128,12 @@
           <label><input name="action" type="radio" class="np" id="delradio" value="del" onClick="ShowHideMove()">
           删除文档</label></td>
       </tr>
-      <tr height="26" bgcolor="#ffffff">
-        <td height="26" align="center" bgcolor="#ffffff">移动选项：</td>
-        <td height="26" bgcolor="#ffffff">
+      <tr>
+        <td height="26" align="center">移动选项：</td>
+        <td height="26">
           <?php
        echo "<span id='moveField' style='display:none'>新位置：";
-       echo "<select name='newtypeid' style='width:250px'>\r\n";
+       echo "<select name='newtypeid' style='width:260px'>";
        echo $typeOptions;
        echo "</select>";
        echo "<hr>";
@@ -141,16 +142,16 @@
         </td>
       </tr>
       <tr>
-        <td height="30" colspan="2" bgcolor="#ffffff" align="center">
-          <button name="b112" type="button" onClick="document.form1.submit();" class="btn btn-success">开始操作</button>
+        <td height="30" bgcolor="#F8FCF1" colspan="2" align="center">
+          <button name="b112" type="button" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button>
         </td>
       </tr>
     </form>
-    <tr bgcolor="#f8f8f8">
+    <tr>
       <td height="26" colspan="2">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="70%">进行状态：</td>
+            <td width="70%">结果：</td>
             <td width="30%" align="right">
               <script language='javascript'>
               function ResizeDiv(obj, ty) {
@@ -165,7 +166,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#ffffff">
+    <tr>
       <td colspan="2" id="mtd">
         <div id="mdv" style="width:100%;height:300px"> 
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
@@ -178,25 +179,25 @@
         <td height="26" colspan="2" background="../static/web/img/tbg.gif">
           <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" height="18" style="padding-left:10px">错误文档修正：</td>
+              <td width="30%" style="padding-left:10px">错误文档修正</td>
               <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr height="26" bgcolor="#ffffff">
-        <td height="26" colspan="2" align="center" bgcolor="#ffffff">
-          <label><input type='radio' value='delnulltitle' name='action' class='np' />
+      <tr>
+        <td height="26" colspan="2" align="center">
+          <label><input type='radio' value='delnulltitle' name='action' class='np'>
            删除空标题的文章</label>
-          <label><input type='radio' value='delnullbody' name='action' class='np' />
+          <label><input type='radio' value='delnullbody' name='action' class='np'>
            删除内容为空的文章</label>
-          <label><input type='radio' value='modddpic' name='action' class='np' />
+          <label><input type='radio' value='modddpic' name='action' class='np'>
            更正缩图错误</label>
         </td>
       </tr>
       <tr>
         <td height="30" colspan="2" bgcolor="#f8f8f8" align="center">
-          <button name="b112" type="button" onClick="document.form2.submit();" class="btn btn-success">开始操作</button>
+          <button name="b112" type="button" onClick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button>
         </td>
       </tr>
     </form>

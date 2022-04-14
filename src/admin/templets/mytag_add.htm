@@ -54,15 +54,15 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3">
+  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mytag_main.php">自定义标记管理</a> &gt; 增加新标记</td>
     </tr>
     <tr>
-      <td height="200" bgcolor="#ffffff">
+      <td height="200">
         <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
           <form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
-            <input type='hidden' name='dopost' value='save' />
+            <input type='hidden' name='dopost' value='save'>
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
               <td height="26" colspan="3">自定义标记的调用方法：<br>
@@ -77,8 +77,8 @@
                 <?php
            	$tl = new TypeLink(0);
            	$typeOptions = $tl->GetOptionArray(0,0,0);
-            echo "<select name='typeid' style='width:260px'>\r\n";
-            echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>\r\n";
+            echo "<select name='typeid' style='width:260px'>";
+            echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
             echo $typeOptions;
             echo "</select>";
 			?>
@@ -91,7 +91,7 @@
             <tr>
               <td height="26" align="center">时间限制：</td>
               <td colspan="2">
-                <label><input name="timeset" type="radio" value="0" checked='1' />
+                <label><input name="timeset" type="radio" value="0" checked='1'>
                 永不过期</label>
                 <label><input type="radio" name="timeset" value="1">
                 在设内时间内有效</label>
@@ -117,7 +117,7 @@
             </tr>
             <tr>
               <td colspan="3" align="center" class="py-3">
-                <button type="submit" class="btn btn-success">保存</button>
+                <button type="submit" class="btn btn-success btn-sm">保存</button>
               </td>
             </tr>
           </form>

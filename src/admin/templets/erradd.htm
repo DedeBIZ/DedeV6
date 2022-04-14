@@ -55,7 +55,7 @@
 	</script>
 	<form name="form2">
 		<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1"
-			class="table maintable mt-3">
+			class="table maintable mt-3 mb-3">
 			<tr>
 				<td height="26" background="../static/web/img/tbg.gif" colspan="8" style="padding-left:10px">文章错误管理</td>
 			</tr>
@@ -70,8 +70,8 @@
 				<td width="15%">修改建议</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-			<tr align="center" bgcolor="#ffffff" height="26" align="center"
-				onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#ffffff';">
+			<tr height="26" align="center"
+				onMouseMove="javascript:this.bgColor='#FCFDEE';" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td><input name="id" type="checkbox" id="id" value="{dede:field.id/}" class="np"></td>
 				<td>{dede:field.id /}</td>
 				<td>{dede:field.mid function='username(@me)'/}</td>
@@ -82,7 +82,7 @@
 				<td>{dede:field.oktxt /}</td>
 			</tr>
 			{/dede:datalist}
-			<tr align="left" bgcolor="#ffffff" height="26">
+			<tr align="left" height="26">
 				<td colspan="8">
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>

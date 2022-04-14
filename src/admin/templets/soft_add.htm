@@ -89,7 +89,7 @@ table{border-collapse:separate}
     <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff;">
       <tr>
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;软件名称：</td>
               <td width="400"><input name="title" type="text" id="title" style="width:380px"></td>
@@ -101,7 +101,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td width="400%" height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;自定义属性：</td>
               <td><?php
@@ -121,7 +121,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" class="bline" id="redirecturltr" style="display:none">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;跳转网址：</td>
               <td><input name="redirecturl" type="text" id="redirecturl" value="" style="width:300px"></td>
@@ -131,7 +131,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td width="400%" height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;Tag标签：</td>
               <td><input name="tags" type="text" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
@@ -143,24 +143,24 @@ table{border-collapse:separate}
       </tr>
       <tr id="pictable">
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;缩略图：</td>
               <td>
                 <input name="picname" type="text" id="picname" style="width:300px">
-                <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote' />&nbsp;远程</label>
+                <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote'>&nbsp;远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class='btn btn-success btn-sm'>选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
               </td>
-              <td width="160" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
+              <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;来源：</td>
               <td width="250">
@@ -207,12 +207,12 @@ table{border-collapse:separate}
       </tr>
       <tr id='typeid2tr' style='display:none'>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;副栏目：</td>
               <td>
                 <span id='typeid2ct'></span>
-                <input type='text' name='typeid2' id='typeid2' value='' style='width:260px;' />
+                <input type='text' name='typeid2' id='typeid2' value='' style='width:260px;'>
                 <img src='../static/web/img/menusearch2.gif' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2')" title='选择副栏目' style='cursor:pointer'>
               </td>
             </tr>
@@ -221,7 +221,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键词：</td>
               <td>
@@ -237,7 +237,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;描述：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
@@ -303,7 +303,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;运行环境：</td>
               <td><input type='text' name='os' value='Win2003,WinXP,Win2000,Win9X' style='width:260px'></td>
@@ -313,7 +313,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;官方网址：</td>
               <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="http://" style="width:300px"></td>
@@ -325,7 +325,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;软件大小：</td>
               <td>
@@ -362,7 +362,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;本地地址：</td>
               <td>
@@ -417,7 +417,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0" class="bline">
+          <table width="900" border="0" cellspacing="0" cellpadding="0" class="bline">
             <tr>
               <td width="90">&nbsp;其它地址：</td>
               <td>
@@ -434,7 +434,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;附加选项：</td>
               <td>
@@ -459,7 +459,7 @@ table{border-collapse:separate}
     <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="adset" style="display:none;border:1px solid #dee2e6;background:#ffffff;">
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="26" width="250">&nbsp;评论选项：</td>
               <td width="250">
@@ -480,7 +480,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="26">&nbsp;文章排序：</td>
               <td width="250">
@@ -504,7 +504,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;阅读权限：</td>
               <td width="250">
@@ -521,7 +521,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;发布时间：</td>
               <td width="250">
@@ -540,8 +540,8 @@ table{border-collapse:separate}
     <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr>
         <td align="center" class="py-3">
-          <button type="submit" class="btn btn-success">保存</button>
-          <button type="button" onClick="location.reload();" class="btn btn-success">重置</button>
+          <button type="submit" class="btn btn-success btn-sm">保存</button>
+          <button type="button" onClick="location.reload();" class="btn btn-success btn-sm">重置</button>
         </td>
       </tr>
     </table>
