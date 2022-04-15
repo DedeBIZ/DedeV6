@@ -11,10 +11,10 @@
   <script type="text/javascript" src="js/mode/sql/sql.js"></script>
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" background="../static/web/img/tbg.gif">
-        <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
+        <table width="96%" cellspacing="1" cellpadding="1" class="table table-borderless">
           <tr>
             <td width="30%" style="padding-left:10px">SQL命令行工具</td>
             <td width="70%" align="right">
@@ -27,14 +27,14 @@
     </tr>
     <tr>
       <td>
-        <table width="100%" border="0" cellspacing="4" cellpadding="2" class="table table-borderless">
+        <table width="100%" cellspacing="4" cellpadding="2" class="table table-borderless">
           <form action="sys_sql_query.php" method="post" name="infoform" target="stafrm">
             <input type='hidden' name='dopost' value='viewinfo'>
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
               <td width="260" height="26">系统的表信息：</td>
               <td>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <table width="100%" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="30%">
                       <select name="tablename" id="tablename" style="width:100%;height:auto" size="12">

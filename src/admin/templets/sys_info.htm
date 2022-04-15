@@ -60,7 +60,7 @@ function resetCookieEncode() {
 </head>
 <body>
   <div style="min-width:780px">
-    <table width="98%" border="0" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+    <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr>
         <td height="30" background="../static/web/img/tbg.gif" style="padding-left:10px">系统配置变量</td>
       </tr>
@@ -90,7 +90,7 @@ function resetCookieEncode() {
           <form name="fadd" action="sys_info.php" method="post">
             <input type='hidden' name='dopost' value='add'>
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <table width="100%" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="12%" height="26">变量名称</td>
                 <td width="38%" align="left"><input name="nvarname" type="text" id="nvarname" class="npvar" style="width:80%"></td>
@@ -132,7 +132,7 @@ function resetCookieEncode() {
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellpadding="0" cellspacing="0" align="center" class="table maintable mt-3 mb-3">
+    <table width="98%" cellpadding="0" cellspacing="0" align="center" class="table maintable mt-3 mb-3">
       <tr>
         <td height="26" align="right" background="../static/web/img/tbg.gif">
           <span style="line-height:26px">配置搜索：</span>
@@ -158,7 +158,7 @@ function resetCookieEncode() {
               $dls = explode(',',$dl);
               $n++;
             ?>
-            <table width="100%" border="0" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none'; ?>">
+            <table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none'; ?>">
               <tr align="center" bgcolor="#FBFCE2">
                 <td width="360" style="border-top:0">变量说明</td>
                 <td style="border-top:0">变量值</td>
@@ -212,7 +212,7 @@ function resetCookieEncode() {
             }
             ?>
             </div>
-            <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#f8f8f8" class="table mb-0" style="border:none">
+            <table width="100%" cellspacing="1" cellpadding="1" bgcolor="#f8f8f8" class="table mb-0" style="border:none">
               <tr>
                 <td align="center" class="py-3">
                   <button type="submit" class="btn btn-success btn-sm">保存</button>

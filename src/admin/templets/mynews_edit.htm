@@ -17,13 +17,13 @@ function checkSubmit()
 </script>
 </head>
 <body>
-<table width="98%" border="0" align="center" cellpadding="2" cellspacing="1">
+<table width="98%" align="center" cellpadding="2" cellspacing="1">
   <form action="mynews_edit.php" method="post" name="form1" onSubmit="return checkSubmit();">
   <input type="hidden" name="dopost" value="editsave">
   <input type="hidden" name="aid" value="<?php echo $myNews['aid']?>">
   <tr>
       <td height="26" background="../static/web/img/tbg.gif">
-        <table width="99%" border="0" cellspacing="0" cellpadding="0">
+        <table width="99%" cellspacing="0" cellpadding="0">
           <tr> 
             <td>站内新闻管理 &gt; 增加消息</td>
             <td align="right"> <a href="mynews_main.php"><img src="../static/web/img/file_edit.gif">返回管理页</a> 
@@ -33,7 +33,7 @@ function checkSubmit()
 </tr>
 <tr>
     <td height="130" align="center"> 
-      <table width="98%" border="0" cellspacing="2" cellpadding="0">
+      <table width="98%" cellspacing="2" cellpadding="0">
           <tr> 
             <td height="26" colspan="2"  align="left">说明：站内新闻是为了方便站长发布站点公告而设置的一种小功能，由于要读取包括text字段的信息，应定期删除太旧的信息，否则可能会让模板解析速度变慢如果没有选择显示频道，则在这个频道中使用这个标记时会被“所有位置”的标记内容代替</td>
           </tr>

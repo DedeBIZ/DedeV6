@@ -54,7 +54,7 @@ else if ($action == 'editload') {
   <form name='addform' action='article_coonepage_rule.php' method='post'>
     <input type='hidden' name='id' value='<?php echo $id; ?>' />
     <input type='hidden' name='action' value='editsave' />
-    <table width="430" border="0" cellspacing="0" cellpadding="0">
+    <table width="430" cellspacing="0" cellpadding="0">
       <tr>
         <td width="102" height="30">网站名称：</td>
         <td width="302"><input name="title" type="text" id="title" style="width:200px" value="<?php echo $row['title']; ?>" /></td>

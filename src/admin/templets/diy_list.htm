@@ -10,7 +10,7 @@
 <body>
 	<form action="diy_list.php" method="post">
 		<input type="hidden" name="diyid" value="<?php echo $diyid; ?>">
-		<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr>
 				<td colspan="3" height="26" background="../static/web/img/tbg.gif">
 					<div style="float:left"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name; ?></div>
@@ -23,7 +23,7 @@
 			{
 				$allowhtml = array('htmltext');
 				$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
-				echo '<tr bgcolor="#F8FDE3" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><img src="../static/web/img/feedback-edit.gif" border="0" width="46" height="18"></a></td></tr>';
+				echo '<tr bgcolor="#F8FDE3" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><img src="../static/web/img/feedback-edit.gif" width="46" height="18"></a></td></tr>';
 				foreach($fieldlist as $field=>$fielddata)
 				{
 					if($fields[$field]=='') continue;

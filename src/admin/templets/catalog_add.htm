@@ -113,10 +113,10 @@ function CheckCross() {
 </script>
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
+  <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
       <td width="100%" height="26">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <table width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td height="30"><i class="fa fa-book"></i> <a href="catalog_main.php">栏目管理</a> &gt; 增加栏目</td>
           </tr>
@@ -127,7 +127,7 @@ function CheckCross() {
       <td width="100%" height="1" background="../static/web/img/sp_bg.gif"></td>
     </tr>
   </table>
-  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <table width="98%" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
         <input type="hidden" name="dopost" value="save">
@@ -142,10 +142,10 @@ function CheckCross() {
         }
         ?>
         <td height="90" align="center" bgcolor="#fff">
-          <table width="100%" border="0" cellspacing="0" id="head1" cellpadding="0">
+          <table width="100%" cellspacing="0" id="head1" cellpadding="0">
             <tr>
               <td colspan="2" bgcolor="#fff" align="left">
-                <table border="0" cellpadding="0" cellspacing="0">
+                <table cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规选项</td>
                     <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
@@ -155,10 +155,10 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" id="head2" cellpadding="0" style="display:none">
+          <table width="100%" cellspacing="0" id="head2" cellpadding="0" style="display:none">
             <tr>
               <td colspan="2" bgcolor="#fff" style="text-align:left">
-                <table height="26" border="0" cellpadding="0" cellspacing="0">
+                <table height="26" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="86" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
                     <td width="86" align="center" background="../static/web/img/itemnote1.gif">高级选项</td>
@@ -168,10 +168,10 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" id="head3" cellpadding="0" style="display:none">
+          <table width="100%" cellspacing="0" id="head3" cellpadding="0" style="display:none">
             <tr>
               <td colspan="2" bgcolor="#fff" style="text-align:left">
-                <table height="26" border="0" cellpadding="0" cellspacing="0">
+                <table height="26" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="86" align="center" background="../static/web/img/itemnote2.gif" bgcolor="#F2F7DF"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
                     <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
@@ -181,7 +181,7 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6" class="table">
+          <table width="100%" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6" class="table">
             <tr>
               <td width="260" class="bline" height="26" style="padding-left:10px">是否支持投稿：</td>
               <td class="bline">
@@ -283,7 +283,7 @@ function CheckCross() {
             <tr>
               <td height="26" style="padding-left:10px">文件保存目录：</td>
               <td style="padding:0">
-                <table border="0" cellspacing="1" cellpadding="1" class="table-borderless">
+                <table cellspacing="1" cellpadding="1" class="table-borderless">
                   <tr >
                     <td><input name="typedir" type="text" id="typedir" class="pubinputs" style="width:260px"></td>
                     <td><input name="upinyin" type="checkbox" id="upinyin" class="np" value="1" onClick="CheckTypeDir()"><label for="upinyin">&nbsp;拼音</label></td>
@@ -374,7 +374,7 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="display:none;border:1px solid #dee2e6" id="adset" class="table">
+          <table width="100%" cellspacing="0" cellpadding="0" style="display:none;border:1px solid #dee2e6" id="adset" class="table">
             <?php
             if($id==0)
             {
@@ -485,7 +485,7 @@ function CheckCross() {
               <td height="60"><textarea name="description" id="description" class="alltxt" style="width:360px;height:50px"></textarea></td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="display:none;border:1px solid #dee2e6" id="ctset" class="table">
+          <table width="100%" cellspacing="0" cellpadding="0" style="display:none;border:1px solid #dee2e6" id="ctset" class="table">
             <tr>
               <td height="26" style="padding-left:10px">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</td>
             </tr>
@@ -497,7 +497,7 @@ function CheckCross() {
               </td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
+          <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
             <tr>
               <td align="center" class="py-3">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>

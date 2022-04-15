@@ -42,12 +42,12 @@ function AddNewKw()
 </head>
 <body>
 <div class="main">
-  <table width="100%" align="center" border="0" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="100%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
    <form name='form1' action="article_keywords_main.php">
    <input type='hidden' name='dopost' value='add'>
     <tr id="addnew" style="display:none">
         <td width="100%" height="26" colspan="2" align="center" bgcolor="#009900">
-          <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
+          <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td width="90" align="center">关键词：</td>
               <td width="270"><input name="keyword" type="text" id="keyword" style="width:260px"></td>
@@ -64,7 +64,7 @@ function AddNewKw()
 	<form name='form2'>
       <tr>
         <td width="100%" height="26" colspan="2" background="../static/web/img/tbg.gif">
-          <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
+          <table width="100%" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="31%">选择关键词</td>
               <td width="69%" align="right">
@@ -84,7 +84,7 @@ function AddNewKw()
       </tr>
       <tr>
         <td height="26" bgcolor="#E4FAC7" style="line-height:180%">
-        <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
+        <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td width="260">已选的关键词：</td>
               <td width="320"><input name="keywords" type="text" id="keywords" style="width:300px" value="<?php echo $keywords?>"></td>

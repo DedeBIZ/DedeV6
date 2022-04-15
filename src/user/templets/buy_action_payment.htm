@@ -40,7 +40,7 @@
                     <input type="hidden" name="pd_encode" value="<?php echo $pr_encode;?>">
                     <input type="hidden" name="pd_verify" value="<?php echo $pr_verify;?>">
                      <input type="hidden" name="aid" value="<?php echo $buyid;?>">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                    <table width="100%" cellpadding="0" cellspacing="0" class="table">
                       <tbody>
                         <tr>
                           <td width="15%" align="right">订单编号：</td>
@@ -60,7 +60,7 @@
                         </tr>
                         <tr>
                           <td align="right"><span class="td1">支付方式：</span></td>
-                          <td><table border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
+                          <td><table cellpadding="0" cellspacing="0" class="table table-borderless">
                               {dede:array.payment_list}
                               <tr onMouseMove="javascript:this.bgColor='#f8f8f8';" onMouseOut="javascript:this.bgColor='#ffffff';">
                                 <td width="10%" align="right" style="vertical-align:middle;">{dede:if value.code=="cod" || value.code=="bank"} <input name="paytype" type="radio" value="{dede:value.id/}"  disabled="disabled"/>{else}<input name="paytype" type="radio" value="{dede:value.id/}"/>{/dede:if}</td>

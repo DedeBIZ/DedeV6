@@ -163,7 +163,7 @@ if ($dopost == 'time') {
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <input type="hidden" name="topid" value="<?php echo $myrow['topid']; ?>">
         <input type="hidden" name="moresite" value="<?php echo $myrow['moresite']; ?>">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <td width="260" class="bline" height="26" align="center">是否支持投稿：</td>
                 <td class="bline">

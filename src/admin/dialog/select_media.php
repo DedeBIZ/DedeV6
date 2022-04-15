@@ -71,7 +71,7 @@ a{text-decoration:none!important}
         window.close();
     }
     </script>
-    <table width="100%" border="0" align="center" cellspacing="0" cellpadding="2" class="table table-borderless">
+    <table width="100%" align="center" cellspacing="0" cellpadding="2" class="table table-borderless">
         <tr>
             <td colspan="3" height="30">
                 <form action="select_media_post.php" method="POST" enctype="multipart/form-data" name="myform">

@@ -12,10 +12,10 @@
 </head>
 <body>
 <form action="member_pm.php" name="form1" method="get">
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable table-borderless mt-3 mb-3">
+  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable table-borderless mt-3 mb-3">
     <tr>
       <td height="36" bgcolor="#f8f8f8">
-        <table border="0" cellpadding="0" cellspacing="0">
+        <table cellpadding="0" cellspacing="0">
           <tr>
             <td>关键词：</td>
             <td><input name="keyword" type="text" id="keyword" style="margin-right:10px;width:260px"></td>
@@ -34,30 +34,28 @@
     </tr>
   </table>
 </form>
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable">
+<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable">
   <tr>
-    <td height="30" colspan="9" background="../static/web/img/tbg.gif">
-    	<a href='member_pm.php'>短信列表</a> <span class="current" id="cate_1">群发短信</span> <a href='member_pmone.php'>单独短信</a>
-    </td>
+    <td height="30" colspan="7" background="../static/web/img/tbg.gif"><a href="member_pm.php">短信列表</a> <span class="current" id="cate_1">群发短信</span> <a href="member_pmone.php">单独短信</a></td>
   </tr>
   <tr>
-    <td colspan="7" align="left">
-    <form id="postall" method="post" action="member_pmall.php">
-    <input name="action" type="hidden" value="post">
-    <table width="100%" border="0" cellpadding="1" cellspacing="1">
-      <tr>
-        <td width="260" height="26">标题：</td>
-        <td height="26"><input name="subject" type="text" id="subject" class="company_manage_form_label" style="width:260px">（标题少于70个字符内）</td>
-      </tr>
-      <tr>
-        <td height="26"><label for="pm_textarea">内容：</label></td>
-        <td><textarea name="message" id="message" class="company_manage_form_label1" style="width:360px;height:100px"></textarea>（1000个字符以内）</td>
-      </tr>
-      <tr>
-        <td colspan="2" align="center" class="py-3"><input type="submit" value="提交" class="button01"></td>
-      </tr>
-    </table>
-     </form>
+    <td colspan="7">
+      <form id="postall" method="post" action="member_pmall.php">
+        <input name="action" type="hidden" value="post">
+        <table width="100%" cellpadding="1" cellspacing="1">
+          <tr>
+            <td width="260" height="26">标题：</td>
+            <td height="26"><input name="subject" type="text" id="subject" class="company_manage_form_label" style="width:260px">（标题少于70个字符内）</td>
+          </tr>
+          <tr>
+            <td height="26"><label for="pm_textarea">内容：</label></td>
+            <td><textarea name="message" id="message" class="company_manage_form_label1" style="width:360px;height:100px"></textarea>（1000个字符以内）</td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center" class="py-3"><input type="submit" value="提交" class="button01"></td>
+          </tr>
+        </table>
+      </form>
     </td>
   </tr>
 </table>
