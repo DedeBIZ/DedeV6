@@ -14,7 +14,7 @@
 			<tr>
 				<td colspan="3" height="26" background="../static/web/img/tbg.gif">
 					<div style="float:left"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name; ?></div>
-					<div style="float:right;padding-right:10px"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid; ?>" target="_blank"><img src="../static/web/img/gtk-tmp.png" align="left" title="前台预览">前台预览</a></div>
+					<div style="float:right;padding-right:10px"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid; ?>" target="_blank"><i class='fa fa-globe' aria-hidden='true' alt='前台预览' title='前台预览'></i> 前台预览</a></div>
 				</td>
 			</tr>
 			{dede:datalist}
@@ -23,7 +23,7 @@
 			{
 				$allowhtml = array('htmltext');
 				$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
-				echo '<tr bgcolor="#F8FDE3" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><img src="../static/web/img/feedback-edit.gif" width="46" height="18"></a></td></tr>';
+				echo '<tr bgcolor="#F8FDE3" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><i class="fa fa-pencil-square-o" aria-hidden="true" title="修改" alt="修改"></i></a></td></tr>';
 				foreach($fieldlist as $field=>$fielddata)
 				{
 					if($fields[$field]=='') continue;

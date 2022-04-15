@@ -60,11 +60,11 @@ function GetMenus($userrank, $topos = 'main')
                         if ($ctag2->GetAtt('addico') != '') {
                             $addico = $ctag2->GetAtt('addico');
                         } else {
-                            $addico = '../static/web/img/gtk-sadd.png';
+                            $addico = 'fa-plus-square';
                         }
                         $link = "<div class='items'>
                         <div class='fllct'>$link</div>
-                        <div class='flrct'><a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><img src='$addico' alt='$addalt' title='$addalt'/></a></div>
+                        <div class='flrct'><a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><i class='fa $addico' aria-hidden='true' alt='$addalt' title='$addalt'></i></a></div>
                         </div>";
                     } else {
                         $link .= "";
