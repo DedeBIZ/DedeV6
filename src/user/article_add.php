@@ -27,7 +27,7 @@ if (empty($dopost)) {
     if ($cInfos['sendrank'] > 0 || $cInfos['usertype'] != '') CheckRank(0, 0);
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-        $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE rank='".$cInfos['sendrank']."' ");
+        $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
         ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
         exit();
     }
@@ -79,7 +79,7 @@ else if ($dopost == 'save') {
         exit();
     }
     //保存到主表
-    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
+    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,`money`,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
     VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();

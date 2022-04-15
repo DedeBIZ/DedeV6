@@ -536,7 +536,7 @@ else if ($dopost == 'quickEdit') {
     $query = "SELECT ch.typename as channelname,ch.addtable,ar.membername as rankname,arc.*
     FROM `#@__archives` arc
     LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
-    LEFT JOIN `#@__arcrank` ar ON ar.rank=arc.arcrank WHERE arc.id='$aid' ";
+    LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($query);
     $divname = 'quickEdit';
     echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">";

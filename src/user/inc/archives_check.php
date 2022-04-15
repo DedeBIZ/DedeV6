@@ -37,7 +37,7 @@ if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] 
 }
 //检查频道设定的投稿许可权限
 if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-    $row = $dsql->GetOne("Select membername From #@__arcrank where rank='".$cInfos['sendrank']."' ");
+    $row = $dsql->GetOne("Select membername From #@__arcrank where `rank`='".$cInfos['sendrank']."' ");
     ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
     exit();
 }

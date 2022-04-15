@@ -23,14 +23,14 @@ function _ShowForm(){  }
 if (empty($dopost)) {
     //读取归档信息
     $arcQuery = "SELECT
-    #@__channeltype.typename as channelname,
-    #@__arcrank.membername as rankname,
-    #@__channeltype.arcsta,
-    #@__archives.*
-    FROM #@__archives
-    LEFT JOIN #@__channeltype ON #@__channeltype.id=#@__archives.channel
-    LEFT JOIN #@__arcrank ON #@__arcrank.rank=#@__archives.arcrank
-    WHERE #@__archives.id='$aid'";
+    `#@__channeltype`.typename as channelname,
+    `#@__arcrank`.membername as rankname,
+    `#@__channeltype`.arcsta,
+    `#@__archives`.*
+    FROM `#@__archives`
+    LEFT JOIN `#@__channeltype` ON `#@__channeltype`.id=`#@__archives`.channel
+    LEFT JOIN `#@__arcrank` ON `#@__arcrank`.`rank`=`#@__archives`.arcrank
+    WHERE `#@__archives`.id='$aid'";
     $dsql->SetQuery($arcQuery);
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {

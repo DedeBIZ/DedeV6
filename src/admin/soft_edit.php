@@ -24,10 +24,10 @@ if ($dopost != 'save') {
     #@__channeltype.typename as channelname,
     #@__arcrank.membername as rankname,
     #@__archives.*
-    FROM #@__archives
-    LEFT JOIN #@__channeltype ON #@__channeltype.id=#@__archives.channel
-    LEFT JOIN #@__arcrank ON #@__arcrank.rank=#@__archives.arcrank
-    WHERE #@__archives.id='$aid'";
+    FROM `#@__archives`
+    LEFT JOIN `#@__channeltype` ON `#@__channeltype`.id=`#@__archives`.channel
+    LEFT JOIN `#@__arcrank` ON `#@__arcrank`.`rank`=`#@__archives`.arcrank
+    WHERE `#@__archives`.id='$aid'";
     $dsql->SetQuery($arcQuery);
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
@@ -177,7 +177,7 @@ else if ($dopost == 'save') {
         click='$click',
         ismake='$ismake',
         arcrank='$arcrank',
-        money='$money',
+        `money`='$money',
         title='$title',
         color='$color',
         source='$source',
