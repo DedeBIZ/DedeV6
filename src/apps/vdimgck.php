@@ -87,7 +87,7 @@ function echo_validate_image($config = array())
             $rndstring .= $c;
         }
     } else {
-        $chars = 'abcdefghigklmnopqrstuvwxwyABCDEFGHIGKLMNOPQRSTUVWXWY0123456789';
+        $chars = 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789';
         $rndstring = '';
         $length = rand(4, 4);
         $max = strlen($chars) - 1;
