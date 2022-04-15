@@ -15,7 +15,7 @@
 function LoadSuns(ctid,tid)
 { 
   if($DE(ctid).innerHTML.length < 10){
-    $DE('img'+tid).src = '../static/web/img/dedecontract.gif';
+    $DE('img'+tid).className = 'fa fa-minus-square-o';
     fetch('catalog_do.php?dopost=GetSunLists&cid='+tid).then(resp=>resp.text()).then((d)=>{
       $DE(ctid).innerHTML = d;
 		});
@@ -27,10 +27,10 @@ function showHide(objname,tid)
 {
   if($DE(objname).style.display=="none")
   {
-    $DE('img'+tid).src = '../static/web/img/dedecontract.gif';
+    $DE('img'+tid).className = 'fa fa-minus-square-o';
     $DE(objname).style.display = BROWSER.firefox? "" : "block";
   } else {
-    $DE('img'+tid).src = '../static/web/img/dedeexplode.gif';
+    $DE('img'+tid).className = 'fa fa-plus-square-o';
     $DE(objname).style.display="none";
   }
 }
@@ -108,6 +108,7 @@ td,th{padding:.25rem}
 .nbline{border-bottom:1px solid #eee;background-color:#ffffff}
 .bline2{border-bottom:1px solid #eee;background-color:#f8f8f8}
 .maintable{border:1px solid #DEE2E6}
+.fa{font-size: 14px;margin-left: 5px;}
 </style>
 </head>
 <body onLoad="ContextMenu.intializeContextMenu()">
