@@ -36,7 +36,7 @@ td{padding-left:8px}
 </style>
 </head>
 <body>
-<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
    <input type='hidden' name='action' value='edit'>
    <input type='hidden' name='dev_id' value='<?php echo $dev_id; ?>'>
@@ -102,7 +102,7 @@ td{padding-left:8px}
     <tr>
       <td>使用说明文件：</td>
       <td>
-      	<table width="80%" border="0" cellpadding="5" cellspacing="1">
+      	<table width="80%" cellpadding="5" cellspacing="1">
           <tr>
             <td width="75%" bgcolor="#F3FDE1">使用协议或说明：<br>
               如果需要带HTML格式，请编译后点击修改时使用HTML
@@ -126,7 +126,7 @@ td{padding-left:8px}
       	<input name="setup" type="file" id="setup" style="width:360px">
      </div>
      <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none'; ?>" id="autosetupct">
-      	<table width="80%" border="0" cellpadding="5" cellspacing="1">
+      	<table width="80%" cellpadding="5" cellspacing="1">
           <tr>
             <td width="75%" bgcolor="#F3FDE1">
             	请使用MySQL4.0版本格式的SQL语句:<br>
@@ -153,7 +153,7 @@ td{padding-left:8px}
       	  <input name="uninstall" type="file" id="uninstall" style="width:360px">
         </div>
       	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none'; ?>' id='autodelct'>
-      	<table width="80%" border="0" cellpadding="5" cellspacing="1">
+      	<table width="80%" cellpadding="5" cellspacing="1">
           <tr>
             <td width="75%" bgcolor="#F3FDE1">卸载时执行的SQL语句：<br>
             （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）

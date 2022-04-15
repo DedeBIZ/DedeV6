@@ -55,12 +55,12 @@
   </script>
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center"  class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center"  class="table maintable mt-3 mb-3">
     <form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="go">
       <tr>
         <td height="26" colspan="2" background="../static/web/img/tbg.gif">
-          <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
+          <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="30%" style="padding-left:10px">文档批量维护</td>
               <td align="right"></td>
@@ -91,7 +91,7 @@
       <tr>
         <td height="26">档案发布时间：</td>
         <td height="26">
-          <table border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
+          <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td colspan="2">
                 <label><input name="seltime" type="checkbox" class="np" id="seltime" value="1" onClick="ShowHideTime()">
@@ -99,11 +99,11 @@
               </td>
             </tr>
             <tr id='seltimeField' style='display:none' height='26'>
-              <td width="250">开始：
+              <td width="260">开始：
                 <?php $nowtime = GetDateTimeMk(time()-(24*3600*30)); ?>
                 <input name="starttime" value="<?php echo $nowtime; ?>" type="text" id="starttime" class="datepicker">
               </td>
-              <td width="250">结束：
+              <td width="260">结束：
                 <?php $nowtime = GetDateTimeMk(time()); ?>
                 <input name="endtime" value="<?php echo $nowtime; ?>" type="text" id="endtime" class="datepicker">
               </td>
@@ -177,7 +177,7 @@
       <input type="hidden" name="dopost" value="go">
       <tr>
         <td height="26" colspan="2" background="../static/web/img/tbg.gif">
-          <table width="98%" border="0" cellpadding="0" cellspacing="0" class="table table-borderless">
+          <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
               <td width="30%" style="padding-left:10px">错误文档修正</td>
               <td width="70%" align="right"></td>

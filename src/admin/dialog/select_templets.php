@@ -57,7 +57,7 @@ a{text-decoration:none!important}
         window.close();
     }
     </script>
-    <table width="100%" border="0" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
+    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
         <tr>
             <td colspan="3" height="30">
                 <form action="select_templets_post.php" method="POST" enctype="multipart/form-data" name="myform">

@@ -76,7 +76,7 @@ a{text-decoration:none!important}
         window.close();
     }
     </script>
-    <table width="100%" border="0" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
+    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
         <tr>
             <td colspan="3" height="30">
                 <form action="select_soft_post.php" method="POST" enctype="multipart/form-data" name='myform'>
@@ -91,7 +91,7 @@ a{text-decoration:none!important}
         </tr>
         <tr>
             <td colspan="3">
-                <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                <table width="100%" cellspacing="0" cellpadding="2">
                     <tr>
                         <td width="45%" class="linerow">选择文件</td>
                         <td width="25%" class="linerow">文件大小</td>

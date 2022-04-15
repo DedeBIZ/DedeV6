@@ -41,16 +41,16 @@ table{border-collapse:separate}
 </style>
 </head>
 <body>
-  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="mt-3">
+  <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
-      <td width="60%" height="30"><i class="fa fa-book" aria-hidden="true"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文章列表</a> &gt; 发布文章</td>
+      <td width="60%" height="30"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文章列表</a> &gt; 发布文章</td>
       <td width="30%" align="right"><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
     </tr>
   </table>
-  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1">
+  <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
     <tr>
       <td colspan="2">
-        <table width="800" border="0" cellpadding="0" cellspacing="0">
+        <table width="900" cellpadding="0" cellspacing="0">
           <tr>
             <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规信息</td>
             <td><a href="javascript:;" class="btn btn-success btn-sm" onClick="ShowHide('getone')">单页采集</a></td>
@@ -59,15 +59,15 @@ table{border-collapse:separate}
       </td>
     </tr>
   </table>
-  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FBFCE2" id="getone" class="table table-borderless" style="<?php if(empty($geturl)) echo 'display:none'; ?>;margin:0">
+  <table width="100%" align="center" cellpadding="0" cellspacing="0" bgcolor="#FBFCE2" id="getone" class="table table-borderless" style="<?php if(empty($geturl)) echo 'display:none'; ?>;margin:0">
     <form name="getonepage" action="article_add.php" method="get">
       <input type="hidden" name="channelid" value="<?php echo $channelid; ?>">
       <input type="hidden" name="cid" value="<?php echo $cid; ?>">
       <tr>
         <td colspan="2">
-          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="160" height="30"><a name="downurl"></a>采集单个网页：</td>
+              <td width="260" height="30"><a name="downurl"></a>采集单个网页：</td>
               <td width="360" align="center"><input name="geturl" type="text" id="geturl" style="width:260px" value="<?php echo $geturl; ?>"></td>
               <td>
                 <button type="submit" class='btn btn-success btn-sm' name="Submit3">抓取</button>
@@ -82,10 +82,10 @@ table{border-collapse:separate}
   <form name="form1" action="article_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit()">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
     <input type="hidden" name="dopost" value="save">
-    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;background:#ffffff">
       <tr>
         <td height="26" colspan="5" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文章标题：</td>
               <td width="400"><input name="title" type="text" id="title" value="<?php echo $title; ?>" style="width:380px"></td>
@@ -97,7 +97,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="5" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;自定义属性：</td>
               <td align="left">
@@ -119,7 +119,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="5" class="bline" id="redirecturltr" style="display:none">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;跳转网址：</td>
               <td><input name="redirecturl" type="text" id="redirecturl" value="" style="width:300px"></td>
@@ -129,7 +129,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td width="400%" height="26" colspan="2" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;Tag标签：</td>
               <td><input name="tags" type="text" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
@@ -141,7 +141,7 @@ table{border-collapse:separate}
       </tr>
       <tr id="pictable">
         <td height="26" colspan="5" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;缩略图：</td>
               <td>
@@ -151,17 +151,17 @@ table{border-collapse:separate}
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
               </td>
-              <td width="160" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
+              <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
         <td height="26" colspan="5" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;来源：</td>
-              <td width="250">
+              <td width="260">
                 <input name="source" type="text" id="source" value="<?php echo $source; ?>" style="width:160px">
                 <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
               </td>
@@ -176,18 +176,18 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="5" class="bline">
-          <table width="600" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;发布栏目：</td>
-              <td>
+              <td width="360">
                 <span id="typeidct">
-                  <?php
-                  $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
-                  echo "<select name='typeid' id='typeid' style='width:160px'>";
-                  echo "<option value='0'>请选择栏目</option>";
-                  echo $typeOptions;
-                  echo "</select>";
-                  ?>
+                <?php
+                $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
+                echo "<select name='typeid' id='typeid' style='width:160px'>";
+                echo "<option value='0'>请选择栏目</option>";
+                echo $typeOptions;
+                echo "</select>";
+                ?>
                 </span>
                 <img src="../static/web/img/menusearch.gif" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title="快捷选择">
                 <?php
@@ -198,14 +198,14 @@ table{border-collapse:separate}
                 ?>
               </td>
               <td width="90">消费金币：</td>
-              <td><input name="money" type="text" id="money" value="0" style="width:120px"></td>
+              <td><input name="money" type="text" id="money" value="0" style="width:160px"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="typeid2tr" style="display:none">
         <td height="26" colspan="5" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;副栏目：</td>
               <td>
@@ -219,7 +219,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="5" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键词：</td>
               <td>
@@ -235,7 +235,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="5" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;描述：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $description; ?></textarea></td>
@@ -248,7 +248,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td width="100%" height="26" colspan="2" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;附加选项：</td>
               <td>
@@ -264,7 +264,7 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td width="100%" height="26" colspan="2" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;分页方式：</td>
               <td>
@@ -282,14 +282,14 @@ table{border-collapse:separate}
         GetEditor("body",$body,450);
         ?>
         </td>
-        <td width="250" align="center" bgcolor="#FFFFCC" id="mPic" style="display:none"></td>
+        <td width="260" align="center" bgcolor="#FFFFCC" id="mPic" style="display:none"></td>
       </tr>
     </table>
     <!--高级参数-->
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" id="head1" style="margin-top:10px">
+    <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1" style="margin-top:10px">
       <tr>
         <td>
-          <table border="0" cellpadding="0" cellspacing="0">
+          <table cellpadding="0" cellspacing="0">
             <tr>
               <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif"><a href='javascript:ShowHideT("adset")'>高级参数</a></td>
             </tr>
@@ -297,18 +297,18 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;background:#ffffff">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;background:#ffffff">
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="26">&nbsp;评论选项：</td>
-              <td width="250">
+              <td width="260">
                 <label><input type="radio" name="notpost" class="np" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>>&nbsp;允许评论&nbsp;</label>
                 <label><input type="radio" name="notpost" class="np" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>>&nbsp;禁止评论&nbsp;</label>
               </td>
               <td width="90">发布选项：</td>
-              <td width="380">
+              <td>
                 <label><input name="ishtml" type="radio" class="np" value="1" checked="1">&nbsp;生成HTML&nbsp;</label>
                 <label><input type="radio" name="ishtml" class="np" value="0">&nbsp;仅动态浏览</label>
               </td>
@@ -318,10 +318,10 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="26">&nbsp;文章排序：</td>
-              <td width="250">
+              <td width="260">
                 <select name="sortup" id="sortup" style="width:160px">
                   <option value="0" selected>默认排序</option>
                   <option value="7">置顶一周</option>
@@ -332,7 +332,7 @@ table{border-collapse:separate}
                 </select> </td>
               <td width="90">标题颜色：</td>
               <td>
-                <input name="color" type="text" id="color" style="width:120px">
+                <input name="color" type="text" id="color" style="width:160px">
                 <button class="btn btn-success btn-sm" name="modcolor" type="button" id="modcolor" onClick="ShowColor(event, this)">选取</button>
               </td>
             </tr>
@@ -341,10 +341,10 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;阅读权限：</td>
-              <td width="250">
+              <td width="260">
                 <select name="arcrank" id="arcrank" style="width:160px">
                 <?php
                 $urank = $cuserLogin->getUserRank();
@@ -358,7 +358,7 @@ table{border-collapse:separate}
                 </select>
               </td>
               <td width="90">文件名称：</td>
-              <td><input type="text" name="filename" id="filename" style="width:120px">（不包括后缀名如.html等）</td>
+              <td><input type="text" name="filename" id="filename" style="width:160px">（不包括后缀名如.html等）</td>
               <td>
                 <?php
                 if(isset($cfg_tamplate_rand) && $cfg_tamplate_rand==1)
@@ -387,23 +387,23 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="800" border="0" cellspacing="0" cellpadding="0">
+          <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;发布时间：</td>
-              <td width="250">
+              <td width="260">
                 <?php
                 $nowtime = GetDateTimeMk(time());
                 echo "<input  type='text' name='pubdate' value='$nowtime'id='pubdate' class='datepicker' style='width:160px'>";
                 ?>
               </td>
               <td width="90">浏览次数：</td>
-              <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50, 200) : $cfg_arc_click); ?>" style="width:120px"></td>
+              <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50, 200) : $cfg_arc_click); ?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
+    <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr>
         <td align="center" class="py-3">
           <button type="submit" class="btn btn-success">保存</button>

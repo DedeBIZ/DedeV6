@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="../static/web/css/admin.css">
 <script language="javascript" src="../static/web/js/jquery.min.js"></script>
 <script language="javascript" src="../static/web/js/bootstrap.bundle.min.js"></script>
-<script language='javascript'src='../data/enums/area.js'></script>
 <script language="javascript" src="js/main.js"></script>
 <script>
 function checkSubmit()
@@ -29,7 +28,7 @@ function checkSubmit()
 </script>
 </head>
 <body>
-<table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
     <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href='<?php echo $ENV_GOBACK_URL; ?>'>会员管理</a> &gt; 查看会员</td>
   </tr>
@@ -38,7 +37,7 @@ function checkSubmit()
 	<?php
 	if($row['matt']==10) echo "<span style='color:#dc3545'>当前用户是网站管理员关连的帐号，请小心操作</span>";
 	?>
-	<table width="98%" border="0" cellspacing="0" cellpadding="6" class="table table-borderless">
+	<table width="98%" cellspacing="0" cellpadding="6" class="table table-borderless">
         <form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
           <input type="hidden" name="dopost" value="edituser">
           <input type="hidden" name="id" value="<?php echo $id?>">
@@ -171,9 +170,9 @@ function checkSubmit()
           <tr> 
             <td height="26" class="bline">特殊操作：</td>
             <td height="26" class="bline">
-              <a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>&jumpurl=../user/edit_fullinfo.php" target="_blank">查看/修改详细资料</a>
-              <a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>" target="_blank">登录到此用户控制面板</a>
-              <a href="../user/index.php?uid=<?php echo $row['userid']; ?>" target="_blank">浏览此用户的空间</a>
+              <a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>&jumpurl=../user/edit_fullinfo.php" target="_blank" class="btn btn-success btn-sm">修改资料</a>
+              <a href="member_do.php?dopost=memberlogin&id=<?php echo $row['mid']; ?>" target="_blank" class="btn btn-success btn-sm">登录此用户面板</a>
+              <a href="../user/index.php?uid=<?php echo $row['userid']; ?>" target="_blank" class="btn btn-success btn-sm">浏览此用户</a>
             </td> 
           </tr>
           <tr> 

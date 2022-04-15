@@ -75,13 +75,13 @@
 </head>
 <body>
   <form action="ad_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
-    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr>
         <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="ad_main.php">广告管理</a> &gt; 增加广告位置</td>
       </tr>
       <tr>
         <td>
-          <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table table-borderless">
+          <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
             <input name="normbody[style]" type="hidden" value="code" id="adstyle">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <input type='hidden' name='dopost' value='save'>

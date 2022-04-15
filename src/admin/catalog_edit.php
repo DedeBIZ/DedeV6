@@ -163,9 +163,9 @@ if ($dopost == 'time') {
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <input type="hidden" name="topid" value="<?php echo $myrow['topid']; ?>">
         <input type="hidden" name="moresite" value="<?php echo $myrow['moresite']; ?>">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
-                <td width="160" class="bline" height="26" align="center">是否支持投稿：</td>
+                <td width="260" class="bline" height="26" align="center">是否支持投稿：</td>
                 <td class="bline">
                     <label><input type='radio' name='issend' value='0' class='np' <?php if ($myrow['issend'] == "0") echo " checked='1' "; ?>>&nbsp;不支持</label>
                     <label><input type='radio' name='issend' value='1' class='np' <?php if ($myrow['issend'] == "1") echo " checked='1' "; ?>>&nbsp;支持</label>

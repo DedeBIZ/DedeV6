@@ -21,7 +21,7 @@
 </head>
 <body>
   <div class="alert alert-info maintable" style="margin:12px auto">DedeBIZV6开始启动<a href="<?php echo $cfg_biz_dedebizUrl; ?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，为了保障系统及技术服务安全，请认准DedeBIZ商业认证开发者</div>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable">
+  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable">
     <form name="form1" action="plus_add.php" method="post">
       <input type='hidden' name='dopost' value='save'>
       <tr>
@@ -64,12 +64,12 @@
 		    $file = DEDEDATA."/module/{$v['hash']}.xml";
 		    if(file_exists($file)) {
 			    if(file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
-				    echo "已安装 <a class='btn btn-success btn-sm' href='module_main.php?action=uninstall&hash={$v['hash']}'>卸载</a>";
+				    echo "<a class='text-danger' href='module_main.php?action=uninstall&hash={$v['hash']}'>卸载</a>";
 			    } else {
-				    echo "未安装 <a class='btn btn-success btn-sm' href='module_main.php?action=setup&hash={$v['hash']}'>安装</a>";
+				    echo "<a class='text-success' href='module_main.php?action=setup&hash={$v['hash']}'>安装</a>";
 			    }
 		    } else {
-			    echo "<div id=\"status_{$v['hash']}\"><a href=\"javascript:getmodule('download','{$v['hash']}')\">下载</a></div>";
+			    echo "<div id=\"status_{$v['hash']}\"><a class=\"text-danger\" href=\"javascript:getmodule('download','{$v['hash']}')\">下载</a></div>";
         }
         ?>
         </td>

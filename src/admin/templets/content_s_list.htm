@@ -108,10 +108,10 @@ function noSelAll() {
 	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
 		<tr>
 			<td>
-				<button type="button" class="btn btn-success btn-sm" onClick="location='makehtml_spec.php';">更新专题</button>
 				<button type="button" class="btn btn-success btn-sm" onClick="location='spec_add.php';">添加专题</button>
 				<?php echo $CheckUserSend?>
 				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_main.php';">频道管理</button>
+				<button type="button" class="btn btn-success btn-sm" onClick="location='makehtml_spec.php';">更新专题</button>
 			</td>
 		</tr>
 	</table>
@@ -120,10 +120,10 @@ function noSelAll() {
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="mt-3 mb-3" style="border:1px solid #dee2e6">
 			<tr>
 				<td height="36" bgcolor="#f8f8f8">
-					<table border="0" cellpadding="0" cellspacing="0">
+					<table cellpadding="0" cellspacing="0">
 						<tr>
 							<td>
-								<select name="cid" style="margin:0 10px;width:160px">
+								<select name="cid" style="width:160px">
 									<option value="0">选择分类</option>
 									<?php echo $optionarr?>
 								</select>

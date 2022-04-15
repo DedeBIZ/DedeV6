@@ -654,7 +654,7 @@ class DedeTagParse
      */
     function SaveTo($filename)
     {
-        $fp = @fopen($filename, "w") or die("请检查栏目文件保存目录是否填写正确");
+        $fp = @fopen($filename, "w") or die("请检查文件保存目录是否填写正确，目录文件是否存在");
         fwrite($fp, $this->GetResult());
         fclose($fp);
     }

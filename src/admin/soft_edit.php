@@ -263,7 +263,7 @@ else if ($dopost == 'save') {
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新软件</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>继续修改</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>查看软件</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布软件管理</a><a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>";
+    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新软件</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>查看软件</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布软件管理</a><a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>";
     $wintitle = "成功修改一个软件";
     $wecome_info = "文章管理::修改软件";
     $win = new OxWindow();

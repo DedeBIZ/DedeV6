@@ -1,7 +1,7 @@
 连载图书最新内容调用
 >>dede>>
 {dede:bookcontentlist row='12' booktype='-1' orderby='lastpost' author='' keyword=''}
-<table width="100%" border="0" cellspacing="2" cellpadding="2">
+<table width="100%" cellspacing="2" cellpadding="2">
 <tr>
 <td width='40%'>
 [[field:cataloglink/]] [field:booklink/]</td>

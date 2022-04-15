@@ -54,10 +54,10 @@
   </script>
 </head>
 <body>
-  <table width="99%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="99%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" colspan="4" background="../static/web/img/tbg.gif">
-        <table width="96%" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
+        <table width="96%" cellspacing="1" cellpadding="1" class="table table-borderless">
           <tr>
             <td width="30%" style="padding-left:10px">数据还原</td>
             <td width="70%" align="right">
@@ -110,31 +110,28 @@
           <button name="b3" type="button" id="b3" onClick="NoneSel()" class="btn btn-success btn-sm">取消</button>
         </td>
       </tr>
-      <tr bgcolor="#F7F8ED">
-        <td height="26" colspan="4">
-          附加参数：
-        </td>
+      <tr>
+        <td height="26" colspan="4">附加参数：</td>
       </tr>
       <tr>
         <td height="26" colspan="4">
-          <label><input name="structfile" type="checkbox" class="np" id="structfile" value="<?php echo $structfile?>"
-            checked='1'>
-          还原表结构信息(<?php echo $structfile?>)</label>
+          <label><input name="structfile" type="checkbox" class="np" id="structfile" value="<?php echo $structfile?>" checked='1'>
+          还原表结构信息（<?php echo $structfile?>）</label>
           <label><input name="delfile" type="checkbox" class="np" id="delfile" value="1">
-          还原后删除备份文件</label></td>
+          还原后删除备份文件</label>
+        </td>
       </tr>
       <tr bgcolor="#FBFCE2">
         <td height="30" colspan="4">
-          &nbsp;
           <button type="submit" name="Submit" class="btn btn-success btn-sm">开始还原数据</button>
         </td>
       </tr>
     </form>
-    <tr bgcolor="#F7F8ED">
+    <tr>
       <td height="26" colspan="4">结果：</td>
     </tr>
     <tr>
-      <td height="180" colspan="4">
+      <td height="200" colspan="4">
         <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
       </td>
     </tr>

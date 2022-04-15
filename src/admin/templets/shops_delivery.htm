@@ -19,7 +19,7 @@
   <center>
     <form action="shops_delivery.php" method="post" name="form1">
       <input type="hidden" name="do" value="add">
-      <table width="100%" border="0" cellpadding="1" cellspacing="1" class="table maintable mt-3 sysinfo">
+      <table width="100%" cellpadding="1" cellspacing="1" class="table maintable mt-3 sysinfo">
         <tr height="26" align="center">
           <td height="30" colspan="2" align="left" background="../static/web/img/tbg.gif" style="padding-left:10px">增加一个配送方式</td>
         </tr>
@@ -51,7 +51,7 @@
         </tr>
         <tr>
           <td height="50" colspan="3" align="center">
-            <table width="200" border="0" cellspacing="1" cellpadding="1" class="table table-borderless">
+            <table width="200" cellspacing="1" cellpadding="1" class="table table-borderless">
               <tr align="center">
                 <td>
                   <button type="submit" class='btn btn-success btn-sm'>添加</button>
@@ -65,13 +65,13 @@
     </form>
     <form action="shops_delivery.php" method="post" name="form2">
       <input type="hidden" name="do" value="edit">
-      <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3"> 
+      <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3"> 
         <tr>
           <td height="26" colspan="3" align="left" background="../static/web/img/tbg.gif">已有配送方式列表</td>
         </tr>
         <tr>
           <td colspan="3" align="center" style="border-top:0">
-            <table width="100%" border="0" cellpadding="1" cellspacing="2" class="table">
+            <table width="100%" cellpadding="1" cellspacing="2" class="table">
               <?php foreach($deliveryarr as $rs) { ?>
               <input type="hidden" name="pid[]" value="<?php echo $rs['pid']; ?>">
               <tr>

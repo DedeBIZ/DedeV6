@@ -62,15 +62,15 @@
     <input type='hidden' name='id' value='<?php echo $id?>'>
     <input type='hidden' name='dopost' value='save'>
     <input type='hidden' name='issystem' value='<?php echo $row['issystem']; ?>'>
-    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center"style="margin-bottom:10px" class="table maintable mt-3 mb-3">
+    <table width="98%" cellpadding="3" cellspacing="1" align="center"style="margin-bottom:10px" class="table maintable mt-3 mb-3">
       <tr>
         <td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mychannel_main.php">内容模型管理</a> &gt; 修改内容模型</td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" id="head1" cellpadding="0" align="center" style="display:block">
+    <table width="98%" cellspacing="0" id="head1" cellpadding="0" align="center" style="display:block">
       <tr>
         <td colspan="2">
-          <table border="0" cellpadding="0" cellspacing="0">
+          <table cellpadding="0" cellspacing="0">
             <tr>
               <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">基本设置</td>
               <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">字段管理</a></td>
@@ -79,10 +79,10 @@
         </td>
       </tr>
     </table>
-    <table width="98%" border="0" cellspacing="0" id="head2" cellpadding="0" align="center" style="display:none" >
+    <table width="98%" cellspacing="0" id="head2" cellpadding="0" align="center" style="display:none" >
       <tr>
         <td colspan="2">
-          <table border="0" cellpadding="0" cellspacing="0">
+          <table cellpadding="0" cellspacing="0">
             <tr>
               <td width="86" height="26" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem1()">基本设置</a></td>
               <td width="86" align="center" background="../static/web/img/itemnote1.gif">字段管理</td>
@@ -91,7 +91,7 @@
         </td>
       </tr>
     </table>
-    <table width="98%" id='needset' border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable" style="display:block">
+    <table width="98%" id='needset' cellpadding="3" cellspacing="1" align="center" class="table maintable" style="display:block">
       <?php
 	    if($row['issystem'] == 1)
 	    {
@@ -246,7 +246,7 @@
       </tr>
       <tr>
         <td>默认栏目ID<br><span class="style2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span></td>
-        <td><input name="dfcid" type="text" id="dfcid" value="<?php echo $row['dfcid']; ?>" class="pubinputs" style="width:120px"></td>
+        <td><input name="dfcid" type="text" id="dfcid" value="<?php echo $row['dfcid']; ?>" class="pubinputs" style="width:160px"></td>
       </tr>
       <tr>
         <td>投稿具有唯一性<br>
@@ -262,14 +262,14 @@
         </td>
       </tr>
     </table>
-    <table width="98%" id='adset' border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable" style='display:none'>
+    <table width="98%" id='adset' cellpadding="3" cellspacing="1" align="center" class="table maintable" style='display:none'>
       <tr>
         <td height="26">模型字段配置（可视化模式）</td>
         <td><button name="fset" type="button" id="fset" onClick="location.href='mychannel_field_add.php?id=<?php echo $id; ?>'" class="btn btn-success btn-sm">添加新字段</button></td>
       </tr>
       <tr>
         <td colspan='2'>
-          <table width="100%" border="0" cellpadding="1" cellspacing="1" align="center">
+          <table width="100%" cellpadding="1" cellspacing="1" align="center">
             <tr align="center" bgcolor="#FBFCE2" height="26">
               <td width="28%">表单提示文字</td>
               <td width="18%">数据字段名</td>
@@ -359,7 +359,7 @@ if($ft==1)
         <td width="65%"><textarea name="fieldset" style="width:98%;height:300px" rows="10" id="fieldset"><?php echo stripslashes($row['fieldset']); ?></textarea></td>
       </tr>
     </table>
-    <table width="98%" border="0" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr>
         <td colspan="2" align="center" class="py-3">
           <button type="submit" class="btn btn-success btn-sm">保存</button>

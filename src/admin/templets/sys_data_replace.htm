@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
       <input type='hidden' name='action' value='apply'>
       <tr>
@@ -50,7 +50,7 @@
       </tr>
       <tr>
         <td>
-          <table width="100%" border="0" cellpadding="2" cellspacing="2" class="table table-borderless">
+          <table width="100%" cellpadding="2" cellspacing="2" class="table table-borderless">
             <tr>
               <td colspan="2">
                 <div class="alert alert-info mb-0">程序用于批量替换数据库中某字段的内容，此操作极为危险，请小心使用</div>
@@ -59,7 +59,7 @@
             <tr id='datasel'>
               <td width="15%" height="60">&nbsp;选择数据表与字段：</td>
               <td>
-                <table width="98%" border="0" cellspacing="0" cellpadding="0">
+                <table width="98%" cellspacing="0" cellpadding="0">
                   <tr>
                     <td id="tables">
                       <?php
