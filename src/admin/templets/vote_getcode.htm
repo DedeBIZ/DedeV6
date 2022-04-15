@@ -13,27 +13,27 @@
       <td height="26" background="../static/web/img/tbg.gif"><a href="vote_main.php">投票管理</a> &gt; 获取代码</td>
     </tr>
     <tr>
-      <td height="200">
-        <table width="80%" cellspacing="2" cellpadding="2">
+      <td>
+        <table width="98%" cellspacing="2" cellpadding="2">
           <tr bgcolor="#EBF2DB">
             <td width="100%" bgcolor="#EBF2DB">在封面或主页模板中使用的标记：</td>
           </tr>
           <tr>
             <td>
-              <table width="900" cellspacing="0" cellpadding="0">
+              <table width="100%" cellspacing="0" cellpadding="0">
                 <form name="form1" action="tag_test_action.php" target="stafrm" method="post">
                   <input type="hidden" name="showsource" value="no">
                   <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
                   <tr>
-                    <td width="370" height="153" align="center">
+                    <td>
                       <textarea name="partcode" cols="45" rows="6" id="partcode">{dede:vote id='<?php echo $aid?>' lineheight='26' tablewidth='100%' titlebgcolor='#EDEDE2' titlebackground='' tablebgcolor='#ffffff'}{/dede:vote}</textarea>
                     </td>
-                    <td width="230" rowspan="2">
+                    <td rowspan="2">
                       <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
                     </td>
                   </tr>
                   <tr>
-                    <td height="53" align="center">
+                    <td height="36" align="center">
                       <button type="submit" name="Submit" class="btn btn-success btn-sm">提交测试</button>
                     </td>
                   </tr>
@@ -45,7 +45,7 @@
             <td bgcolor="#EBF2DB">在封面或主页模板中使用的JS：</td>
           </tr>
           <tr>
-            <td height="200">
+            <td>
               <textarea name="htmlf" cols="60" rows="5" id="htmlf"><script language="javascript" src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea>
             </td>
           </tr>
@@ -53,7 +53,7 @@
             <td bgcolor="#EBF2DB">默认生成的表单HTML：</td>
           </tr>
           <tr>
-            <td height="200">
+            <td>
               <textarea name="htmlf" cols="60" rows="10" id="htmlf">
               <?php
               $vt = new DedeVote($aid);
