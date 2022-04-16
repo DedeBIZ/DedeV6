@@ -275,7 +275,7 @@ function CheckCross() {
               </td>
             </tr>
             <tr>
-              <td style="padding-left:10px">栏目交叉：<img src="../static/web/img/help.gif" style="cursor:pointer" onClick="ShowHide('helpvarco')"><br>仅适用[最终列表栏目]</td>
+              <td style="padding-left:10px">栏目交叉：<i class="fa fa-question-circle" style="cursor:pointer" onClick="ShowHide('helpvarco')"></i><br>仅适用[最终列表栏目]</td>
               <td class="bline">
                 <label><input name="cross" type="radio" id="cross0" onClick="CheckCross()" value="0" class='np' <?php if($myrow['cross']==0) echo " checked='1' "; ?>>&nbsp;不交叉</label>
                 <label><input name="cross" type="radio" id="cross1" onClick="CheckCross()" value="1" class='np' <?php if($myrow['cross']==1) echo " checked='1' "; ?>>&nbsp;自动获取同名栏目内容</label>
@@ -354,7 +354,7 @@ function CheckCross() {
               <td>
                 <input name="tempindex" type="text" value="<?php echo $myrow['tempindex']?>" class="iptxt" style="width:260px">
                 <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
-                <img src="../static/web/img/help.gif" style="cursor:pointer" onClick="ShowHide('helpvar1')">
+                <i class="fa fa-question-circle" style="cursor:pointer" onClick="ShowHide('helpvar1')"></i>
               </td>
             </tr>
             <tr>
@@ -387,7 +387,7 @@ function CheckCross() {
               <td height="26" style="padding-left:10px">文章命名规则：</td>
               <td>
                 <input name="namerule" type="text" id="namerule" value="<?php echo $myrow['namerule']?>" class="iptxt" style="width:260px">
-                <img src="../static/web/img/help.gif" style="cursor:pointer" onClick="ShowHide('helpvar2')">
+                <i class="fa fa-question-circle" style="cursor:pointer" onClick="ShowHide('helpvar2')"></i>
               </td>
             </tr>
             <tr id='helpvar3' style='display:none'>
@@ -398,7 +398,7 @@ function CheckCross() {
               <td height="26" style="padding-left:10px">列表命名规则：</td>
               <td>
                 <input name="namerule2" type="text" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="iptxt" style="width:260px">
-                <img src="../static/web/img/help.gif" style="cursor:pointer" onClick="ShowHide('helpvar3')">
+                <i class="fa fa-question-circle" style="cursor:pointer" onClick="ShowHide('helpvar3')"></i>
               </td>
             </tr>
             <tr>

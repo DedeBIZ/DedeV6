@@ -36,7 +36,7 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='等审核的档案' link='content_list.php?arcrank=-1' rank='a_Check,a_AccCheck' target='main' />
     <m:item name='我发布的文档' link='content_list.php?mid=".$cuserLogin->getUserID()."' rank='a_List,a_AccList,a_MyList' target='main' />
     <m:item name='评论管理' link='feedback_main.php' rank='sys_Feedback' target='main' />
-    <m:item name='文档回收站' link='recycling.php' ischannel='1' addalt='清空回收站' addico='fa-minus-square' linkadd='archives_do.php?dopost=clear&aid=no' rank='a_List' target='main' />
+    <m:item name='文档回收站' link='recycling.php' ischannel='1' addalt='清空回收站' addico='fa-minus-circle' linkadd='archives_do.php?dopost=clear&aid=no' rank='a_List' target='main' />
 </m:top>
 <m:top mapitem='1' item='1_7_' name='频道模型' display='block' rank='t_List,t_AccList,c_List,temp_One'>
     <m:item name='内容模型管理' link='mychannel_main.php' rank='c_List' target='main' />

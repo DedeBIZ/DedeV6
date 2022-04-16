@@ -60,7 +60,7 @@ function GetMenus($userrank, $topos = 'main')
                         if ($ctag2->GetAtt('addico') != '') {
                             $addico = $ctag2->GetAtt('addico');
                         } else {
-                            $addico = 'fa-plus-square';
+                            $addico = 'fa-plus-circle';
                         }
                         $link = "<div class='items'>
                         <div class='fllct'>$link</div>
