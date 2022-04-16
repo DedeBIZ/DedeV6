@@ -134,16 +134,6 @@ function SelectImage(fname, stype, imgsel) {
 	if (!stype) stype = '';
 	window.open("./dialog/select_images.php?f=" + fname + "&noeditor=yes&imgstick=" + stype + imgsel, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
 }
-function imageCut(fname) {
-	var pos = GetWinPos(800,600);
-	if (!fname) fname = 'picname';
-	file = document.getElementById(fname).value;
-	if (file == '') {
-		alert('请先选择网站内已上传的图片');
-		return false;
-	}
-	window.open("imagecut.php?f=" + fname + "&file=" + file, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-}
 function SelectImageN(fname, stype, vname) {
 	var pos = GetWinPos(800,600);
 	if (!fname) fname = 'form1.picname';
