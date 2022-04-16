@@ -17,7 +17,6 @@
     }
   </style>
   <script>
-    function ChangeImage(surl) { document.getElementById('picview').src = surl; }
     //获得选中文件的文件名
     function getCheckboxItem() {
       var allSel = "";
@@ -56,12 +55,6 @@
   </script>
 </head>
 <body>
-  <div id="floater" class="napisdiv">
-    <a href="javascript:;" onClick="ChangeImage('../static/web/img/picviewnone.gif');">
-      <img src='../static/web/img/picviewnone.gif' id='picview' name='picview' border='0' alt='单击关闭预览' style='z-index:10000'>
-    </a>
-  </div>
-  <SCRIPT src="js/float.js"></SCRIPT>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td height="26" colspan="7" background="../static/web/img/tbg.gif">

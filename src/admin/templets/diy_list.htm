@@ -28,10 +28,10 @@
 				{
 					if($fields[$field]=='') continue;
 					if($fielddata[1]=='img'){
-					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='../static/web/img/channeladd.gif' border='0'>图片附件</a>";
+					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><i class='fa fa-picture-o'></i> 图片附件</a>";
 					}
 					else if($fielddata[1]=='addon'){
-					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='../static/web/img/channeladd.gif' border='0'>其它附件</a>";
+					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><i class='fa fa-file-text-o'></i> 其它附件</a>";
 					} else {
 						if(!in_array($fielddata[1],$allowhtml)){
 							$fields[$field] = dede_htmlspecialchars($fields[$field]);
