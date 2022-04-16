@@ -39,6 +39,12 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
             return mysqli_close($link);
         }
     }
+    if (!function_exists('mysql_free_result') and function_exists('mysqli_free_result')) {
+        function mysql_free_result($result)
+        {
+            return mysqli_free_result($result);
+        }
+    }
     if (!function_exists('split')) {
         function split($pattern, $string)
         {

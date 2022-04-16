@@ -43,7 +43,7 @@ function lib_sql(&$ctag, &$refObj)
         //链接数据库
         $linkid = @mysql_connect($config['dbhost'], $config['dbuser'], $config['dbpwd']);
         if (!$linkid) return '';
-        @mysql_select_db($config['dbname']);
+        @mysql_select_db($config['dbname'], $linkid);
         $mysqlver = explode('.', $dsql->GetVersion());
         $mysqlver = $mysqlver[0].'.'.$mysqlver[1];
         //设定数据库编码及长连接
