@@ -129,7 +129,7 @@ class DedeSqli
         if (version_compare($serverinfo, '4.1', ">=") && $GLOBALS['cfg_db_language']) {
             mysqli_query($this->linkID, "SET character_set_connection=".$GLOBALS['cfg_db_language'].",character_set_results=".$GLOBALS['cfg_db_language'].",character_set_client=binary");
         }
-        if ($serverinfo > '5.0') {
+        if (version_compare($serverinfo, '5.0', ">")) {
             mysqli_query($this->linkID, "SET sql_mode=''");
         }
         if ($this->dbName && !@mysqli_select_db($this->linkID, $this->dbName)) {
