@@ -79,7 +79,7 @@ if ($action == 'upload') {
     $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块";
     $win->AddTitle('请选择要上传的文件：');
     $win->AddHidden("action", 'upload');
-    $msg = "<table width='900' border='0' cellspacing='0' cellpadding='0'>
+    $msg = "<table width='900' cellspacing='0' cellpadding='0'>
   <tr>
     <td width='260' height='26'>文件格式：</td>
     <td height='26'>

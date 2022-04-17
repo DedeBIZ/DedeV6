@@ -176,7 +176,7 @@ class RssView
             $row["info"] = $row["description"];
             $row["filename"] = $row["arcurl"];
             $row["stime"] = GetDateMK($row["pubdate"]);
-            $row["image"] = "<img src='".$row["picname"]."' border='0'>";
+            $row["image"] = "<img src='".$row["picname"]."'>";
             $row["fullurl"] = $GLOBALS["cfg_basehost"].$row["arcurl"];
             if ($GLOBALS['cfg_multi_site'] == 'Y') $row["fullurl"] = $row["arcurl"];
             $row["phpurl"] = $GLOBALS["cfg_plus_dir"];

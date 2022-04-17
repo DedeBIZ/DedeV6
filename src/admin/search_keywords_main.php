@@ -60,7 +60,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $start = ($pageno - 1) * $pagesize;
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
-    <table width='98%' border='0' cellpadding='1' cellspacing='1' style='margin-bottom:10px' align='center' class='table maintable'>
+    <table width='98%' cellpadding='1' cellspacing='1' style='margin-bottom:10px' align='center' class='table maintable'>
     <tr align='center' bgcolor='#FBFCE2' height='26'>
       <td width='5%'>选择</td>
       <td width='6%' height='26'><a href='javascript:;' onclick=\"ReloadPage('aid')\">ID</a></td>
@@ -95,7 +95,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     ";
         echo $line;
     }
-    echo "<tr align='left' height='30'>
+    echo "<tr align='left' height='26'>
             <td colspan='8' style='padding-left:10px;'>
             <a href='javascript:selAll()' class='btn btn-success btn-sm'>反选</a>
             <a href='javascript:noselAll()' class='btn btn-success btn-sm'>取消</a>

@@ -83,7 +83,7 @@ function lib_likearticle(&$ctag, &$refObj)
     $dsql->Execute('al');
     $artlist = '';
     if ($col > 1) {
-        $artlist = "<table width='$tablewidth' border='0' cellspacing='0' cellpadding='0'>\r\n";
+        $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
     }
     $dtp2 = new DedeTagParse();
     $dtp2->SetNameSpace('field', '[', ']');
@@ -137,7 +137,7 @@ function lib_likearticle(&$ctag, &$refObj)
                 $row['picname'] = $row['litpic'];
                 $row['stime'] = GetDateMK($row['pubdate']);
                 $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
-                $row['image'] = "<img src='".$row['picname']."' border='0' width='$imgwidth' height='$imgheight' alt='".preg_replace("#['><]#", "", $row['title'])."'>";
+                $row['image'] = "<img src='".$row['picname']."' width='$imgwidth' height='$imgheight' alt='".preg_replace("#['><]#", "", $row['title'])."'>";
                 $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);

@@ -127,7 +127,7 @@ a{text-decoration:none!important}
     </script>
     <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
         <tr>
-            <td colspan="4" height="30">
+            <td colspan="4" height="26">
                 <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
                     <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor; ?>
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">

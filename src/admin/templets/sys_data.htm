@@ -181,7 +181,7 @@
       }
       ?>
       <tr>
-        <td height="30" colspan="8" align="center">
+        <td height="26" colspan="8" align="center">
           <button name="b1" type="button" id="b1" class="btn btn-success btn-sm" onClick="SelAll()">全选</button>
           <button name="b2" type="button" id="b2" class="btn btn-success btn-sm" onClick="ReSel()">反选</button>
           <button name="b3" type="button" id="b3" class="btn btn-success btn-sm" onClick="NoneSel()">取消</button>
@@ -194,10 +194,10 @@
         <td height="50" colspan="8">
           <table width="90%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td height="30">当前数据库版本：<?php echo $mysql_version?></td>
+              <td height="26">当前数据库版本：<?php echo $mysql_version?></td>
             </tr>
             <tr>
-              <td height="30">分卷大小：<input name="fsize" type="text" id="fsize" value="2048" style="width:60px">&nbsp;K
+              <td height="26">分卷大小：<input name="fsize" type="text" id="fsize" value="2048" style="width:60px">&nbsp;K
                 <label><input name="isstruct" type="checkbox" class="np" id="isstruct" value="1" checked='1'>
                   备份表结构信息</label>
                 <?php if(@function_exists('gzcompress') && false) { ?>

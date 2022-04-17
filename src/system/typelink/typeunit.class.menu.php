@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 栏目单元,主要用户管理后台管理菜单处
+ * 栏目单元，主要用户管理后台管理菜单处
  *
  * @version        $Id: typeunit.class.menu.php 1 15:21 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 /**
- * 栏目单元,主要用户管理后台管理菜单处
+ * 栏目单元，主要用户管理后台管理菜单处
  *
  * @package          TypeUnit
  * @subpackage       DedeBIZ.Libraries
@@ -55,7 +55,7 @@ class TypeUnit
     {
     }
     /**
-     *  读出所有分类,在类目管理页(list_type)中使用
+     *  读出所有分类，在类目管理页(list_type)中使用
      *
      * @access    public
      * @param     int   $channel  频道ID
@@ -87,7 +87,6 @@ class TypeUnit
             if ($cfg_admin_channel == 'array' && !in_array($row->id, $admin_catalogs)) {
                 continue;
             }
-
             $typeDir = $row->typedir;
             $typeName = $row->typename;
             $ispart = $row->ispart;
@@ -112,8 +111,8 @@ class TypeUnit
                 $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
             }
             echo "<dl class='topcc'>\r\n";
-            echo "  <dd class='dlf'><img style='cursor:pointer' onClick=\"LoadSuns('suns{$id}',{$id});\" src='/static/web/img/tree_explode.gif'></dd>\r\n";
-            echo "  <dd class='dlr'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></dd>\r\n";
+            echo "<dd class='dlf'><img style='cursor:pointer' onClick=\"LoadSuns('suns{$id}',{$id});\" src='/static/web/img/tree_explode.gif'></dd>\r\n";
+            echo "<dd class='dlr'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></dd>\r\n";
             echo "</dl>\r\n";
             echo "<div id='suns".$id."' class='sunct'>";
             if ($lastid == $id || $cfg_admin_channel == 'array') {
@@ -177,11 +176,11 @@ class TypeUnit
                         $timg = " <img src='/static/web/img/tree_page.gif'>";
                         $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
                     }
-                    echo "  <table class='sunlist'>\r\n";
-                    echo "   <tr>\r\n";
-                    echo "     <td align='left'>".$step.$timg."<a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></td>\r\n";
-                    echo "   </tr>\r\n";
-                    echo "  </table>\r\n";
+                    echo "<table class='sunlist'>\r\n";
+                    echo "<tr>\r\n";
+                    echo "<td align='left'>".$step.$timg."<a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></td>\r\n";
+                    echo "</tr>\r\n";
+                    echo "</table>\r\n";
                     $this->LogicListAllSunType($id, $step."　", false);
                 }
             }

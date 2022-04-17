@@ -163,7 +163,7 @@ else if ($action == 'setup') {
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
     $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
-    <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
+    <table width='98%' cellspacing='0' cellpadding='0' class='table'>
   <tr>
     <td width='260' height='26' class='dtb'>模块名称：</td>
     <td class='dtb'>{$infos['name']}</td>
@@ -298,7 +298,7 @@ else if ($action == 'del') {
     $win->AddHidden('hash', $hash);
     $win->AddHidden('action', 'delok');
     $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
-    <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
+    <table width='98%' cellspacing='0' cellpadding='0' class='table'>
     <tr>
       <td width='260' height='26' class='dtb'>模块名称：</td>
       <td class='dtb'>{$infos['name']}</td>
@@ -363,7 +363,7 @@ else if ($action == 'uninstall') {
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'uninstallok');
     $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
-    <table width='98%' border='0' cellspacing='0' cellpadding='0' class='table'>
+    <table width='98%' cellspacing='0' cellpadding='0' class='table'>
   <tr>
     <td width='260' height='26' class='dtb'>模块名称：</td>
     <td class='dtb'>{$infos['name']}</td>
@@ -504,7 +504,7 @@ else if ($action == 'view') {
     $wecome_info = "模块管理";
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 模块详情：{$infos['name']}");
     $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
-    <table width='98%' border='0' cellspacing='0' cellpadding='0'>
+    <table width='98%' cellspacing='0' cellpadding='0'>
   <tr>
     <td width='260' height='26' class='dtb'>模块名称：</td>
     <td class='dtb'>{$infos['name']}</td>

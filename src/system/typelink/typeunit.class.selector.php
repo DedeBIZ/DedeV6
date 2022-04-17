@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 栏目单元,选择框
+ * 栏目单元，选择框
  *
  * @version        $Id: typeunit.class.selector.php 1 15:21 2010年7月5日Z tianya $
  * @package        DedeBIZ.Libraries
@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 /**
- * 栏目单元,选择框
+ * 栏目单元，选择框
  *
  * @package          TypeUnitSelector
  * @subpackage       DedeBIZ.Libraries

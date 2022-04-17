@@ -60,7 +60,7 @@ else if ($dopost == "copystart") {
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
     $msg = "
-        <table width='460' border='0' cellspacing='0' cellpadding='0'>
+        <table width='460' cellspacing='0' cellpadding='0'>
         <tr>
         <td width='170' height='26' align='center'>新频道id：</td>
         <td width='230'><input name='newid' type='text' id='newid' size='6' value='{$newid}' /></td>

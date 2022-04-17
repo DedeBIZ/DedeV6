@@ -35,7 +35,7 @@ foreach($fieldlist as $field=>$fielddata)
 	}
 	else if($fielddata[1]=='addon')
 	{
-			$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='img/addon.gif' border='0'> 相关附件</a>";
+			$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='img/addon.gif'> 相关附件</a>";
 	} else {
 		if(!in_array($fielddata[1], $allowhtml))
 		{
