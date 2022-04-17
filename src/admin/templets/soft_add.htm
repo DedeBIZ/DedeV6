@@ -191,7 +191,7 @@ table{border-collapse:separate}
                 echo "</select>";
                 ?>
                 </span>
-                <i class='btn fa fa-search'  style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid')" title='快捷选择'></i>
+                <i class='btn btn-sm fa fa-search'  style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid')" title='快捷选择'></i>
                 <?php
                 if($cfg_need_typeid2=='Y')
                 {
@@ -213,7 +213,7 @@ table{border-collapse:separate}
               <td>
                 <span id='typeid2ct'></span>
                 <input type='text' name='typeid2' id='typeid2' value='' style='width:260px;'>
-                <i class='btn fa fa-search'  onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2')" title='选择副栏目' style='cursor:pointer'></i>
+                <i class='btn btn-sm fa fa-search'  onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2')" title='选择副栏目' style='cursor:pointer'></i>
               </td>
             </tr>
           </table>
