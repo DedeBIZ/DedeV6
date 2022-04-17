@@ -25,7 +25,7 @@
 				$DE('messagetd').innerHTML = d;
         $Obj('loaddiv').style.display = 'none';
 			}).catch((error) => {
-				$DE('messagetd').innerHTML = errMsg;
+				console.log(error);
 			});
     }
     function LoadCtClear() {
@@ -76,6 +76,9 @@
     </tr>
     <tr>
       <td height="26" colspan="2" bgcolor="#f8f8f8">检测结果：结果仅供参考，请务必查看源码后才删除非法文件</td>
+    </tr>
+    <tr>
+      <td height="300" colspan="2" id="messagetd" valign="top" bgcolor="#FFFFFF"></td>
     </tr>
   </table>
 </body>
