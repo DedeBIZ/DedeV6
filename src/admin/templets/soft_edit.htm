@@ -238,10 +238,10 @@ table{border-collapse:separate}
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
-          <table width="1100" cellspacing="0" cellpadding="0">
+          <table width="1300" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文件类型：</td>
-              <td>
+              <td width="170">
                 <select name="filetype" id="filetype" style="width:160px">
                   <?php
                   if($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\">".$addRow['filetype']."</option>";
@@ -254,7 +254,8 @@ table{border-collapse:separate}
                   <option value="其它">其它</option>
                 </select></td>
               <td width="90">软件等级：</td>
-              <td><select name="softrank" id="softrank" style="width:160px">
+              <td width="170">
+                <select name="softrank" id="softrank" style="width:160px">
                   <?php
                   if($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\">".$addRow['softrank']."星</option>";
                   ?>
@@ -265,8 +266,8 @@ table{border-collapse:separate}
                   <option value="5">五星</option>
                 </select>
               </td>
-              <td width="90">&nbsp;软件类型：</td>
-              <td>
+              <td width="90">软件类型：</td>
+              <td width="170">
                 <select name="softtype" id="softtype" style="width:160px">
                   <?php
                   if($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\">".$addRow['softtype']."</option>";
@@ -277,7 +278,7 @@ table{border-collapse:separate}
                 </select>
               </td>
               <td width="90">界面语言：</td>
-              <td>
+              <td width="170">
                 <select name="language" id="language" style="width:160px">
                   <?php
                   if($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\">".$addRow['language']."</option>";
@@ -289,7 +290,7 @@ table{border-collapse:separate}
                 </select>
               </td>
               <td width="90">授权方式：</td>
-              <td>
+              <td width="170">
                 <select name="accredit" id="accredit" style="width:160px">
                   <?php
                   if($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\">".$addRow['accredit']."</option>";
