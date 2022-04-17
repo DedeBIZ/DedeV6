@@ -20,7 +20,6 @@ $errmsg = '';
 if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
     mysqli_report(MYSQLI_REPORT_OFF);
 }
-$moduleCacheFile = dirname(__FILE__).'/modules.tmp.inc';
 define('DEDEINC',dirname(__FILE__).'/../system');
 define('DEDEDATA',dirname(__FILE__).'/../data');
 define('DEDEROOT',preg_replace("#[\\\\\/]install#", '', dirname(__FILE__)));

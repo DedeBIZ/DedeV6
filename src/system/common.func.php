@@ -329,12 +329,15 @@ function AddFilter($channelid, $type=1, $fieldsnamef="", $defaulttid=0, $loadtyp
 {
     global $tid,$dsql,$id;
     $tid = $defaulttid ? $defaulttid : $tid;
+    $id = intval($id);
+    $tid = intval($tid);
+    $channelid = intval($channelid);
     if ($id!="")
     {
         $tidsq = $dsql->GetOne("SELECT typeid FROM `#@__archives` WHERE id='$id' ");
         $tid = $tidsq["typeid"];
     }
-    $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".$_REQUEST['PageNo'] : '');
+    $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".(int)$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".(int)$_REQUEST['PageNo'] : '');
     $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
     $cInfos = $dsql->GetOne("SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
     $fieldset=stripslashes($cInfos['fieldset']);
