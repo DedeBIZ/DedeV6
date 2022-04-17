@@ -17,7 +17,7 @@ $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
 $cfg_version_detail = '6.1.8'; //详细版本号
 $errmsg = '';
-if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
+if (version_compare(PHP_VERSION, '8.0.0', '>=') && function_exists("mysqli_report")) {
     mysqli_report(MYSQLI_REPORT_OFF);
 }
 define('DEDEINC',dirname(__FILE__).'/../system');
@@ -54,6 +54,9 @@ if($step==1)
     }
     if (!function_exists('mysqli_connect')) {
         $arrMsg[] = "MySQL不支持，将无法使用本系统";
+    }
+    if (!extension_loaded("sqlite3")) {
+        $arrMsg[] = "SQLite3未开启，将无法正常使用SQLite数据库";
     }
     if (!extension_loaded("gd")) {
         $arrMsg[] = "GD未开启，将无法使用验证码、二维码、图片水印等功能";
