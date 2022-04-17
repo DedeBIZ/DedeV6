@@ -75,7 +75,7 @@
 			<tr>
 				<td height="26" colspan="10" style="margin-left:10px;background:#f8f8f8">{dede:global.positionname/}文档列表（使用鼠标右键进行常用操作）</td>
 			</tr>
-			<tr align="center" bgcolor="#FBFCE2" height="26">
+			<tr align="center" bgcolor="#F8FCF1" height="26">
 				<td width="6%">ID</td>
 				<td width="6%">选择</td>
 				<td width="30%">文章标题</td>
@@ -88,7 +88,7 @@
 				<td width="10%">操作</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="10"><center>暂无内容</center></td></tr>'}
-			<tr height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
+			<tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
 				<td align="left"><span id="arc{dede:field.id/}"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'{dede:field.title function="str_replace('\'','',@me)"/}')">{dede:field.title/}</a></span>{dede:field.flag function='IsCommendArchives(@me)'/}</td>

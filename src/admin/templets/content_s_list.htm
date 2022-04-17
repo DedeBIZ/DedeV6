@@ -142,7 +142,7 @@ function noSelAll() {
 			<td height="26" colspan="10" style="margin-left:10px;background:#f8f8f8">文章列表（在文章标题处使用鼠标右键进行常用操作）</td>
 		</tr>
 		<form name="form2">
-			<tr align="center" bgcolor="#FBFCE2" height="26">
+			<tr align="center" bgcolor="#F8FCF1" height="26">
 				<td width="6%">ID</td>
 				<td width="4%">选择</td>
 				<td width="30%">文章标题</td>
@@ -154,7 +154,7 @@ function noSelAll() {
 				<td width="10%">属性</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
-			<tr align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';" height="26" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">
+			<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';" height="26" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
 				<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">{dede:field.title/}</a></td>

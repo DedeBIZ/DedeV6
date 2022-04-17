@@ -139,7 +139,7 @@ else if ($action == 'setup') {
         }
     }
     $prvdir = "<table cellpadding='1' cellspacing='1' width='350' style='margin-top:10px'>\r\n";
-    $prvdir .= "<tr style='background:#FBFCE2'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
+    $prvdir .= "<tr style='background:#F8FCF1'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
     foreach ($prvdirs as $k => $v) {
         if ($v) $cw = '√';
         else $cw = '<span style="color:#dc3545">×</span>';

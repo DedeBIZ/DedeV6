@@ -61,7 +61,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
     <table width='98%' cellpadding='1' cellspacing='1' style='margin-bottom:10px' align='center' class='table maintable'>
-    <tr align='center' bgcolor='#FBFCE2' height='26'>
+    <tr align='center' bgcolor='#F8FCF1' height='26'>
       <td width='5%'>选择</td>
       <td width='6%' height='26'><a href='javascript:;' onclick=\"ReloadPage('aid')\">ID</a></td>
       <td width='20%'>关键词</td>
@@ -79,7 +79,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         $line = "
-      <tr align='center' onMouseMove=\"javascript:this.bgColor='#FCFDEE';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
+      <tr align='center' onMouseMove=\"javascript:this.bgColor='#F8FCF1';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
       <td height='26'><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
       <td height='26'>{$row['aid']}</td>
       <td style='padding:6px;'><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>

@@ -52,7 +52,7 @@
       </tr>
   </table>
 	<table width="100%" cellpadding="3" cellspacing="1"  class="table">
-    <tr height="26" align="center" bgcolor="#FBFCE2">
+    <tr height="26" align="center" bgcolor="#F8FCF1">
         <td width="8%" >选择</td>
 		    <td width="8%">频道ID</td>
         <td width="20%">频道内容模型</td>
@@ -71,7 +71,7 @@
    }
    $catnum = GetCatalogs($dsql,$row['id']);
    ?>   
-     <tr height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
+     <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type="checkbox" name="cid<?php echo $i; ?>" id="cid<?php echo $i; ?>" onClick="ResetBox('cid<?php echo $i; ?>')" value="<?php echo $row['id']; ?>" class="np" <?php echo $checkbox; ?>/></td>
 		    <td><?php echo $row['id']; ?></td>
         <td><?php echo $row['typename']; ?></td>

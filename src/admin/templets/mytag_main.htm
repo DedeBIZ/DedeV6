@@ -13,7 +13,7 @@
     <tr>
       <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">自定义标记管理<a class="btn btn-success btn-sm ml-3" href="mytag_add.php">增加一个标记</a><a class="btn btn-success btn-sm" href="mytag_tag_guide.php">智能标记向导</a></td>
     </tr>
-    <tr align="center" bgcolor="#FBFCE2" height="26">
+    <tr align="center" bgcolor="#F8FCF1" height="26">
       <td width="10%">编号</td>
       <td width="20%">标记名称</td>
       <td width="15%">所属栏目</td>
@@ -22,7 +22,7 @@
       <td width="20%">管理</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
-    <tr height="26" align="center" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
+    <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid /}</td>
       <td>{dede:field.tagname /}</td>
       <td>{dede:field.typename function='TestType(@me)'/}</td>
