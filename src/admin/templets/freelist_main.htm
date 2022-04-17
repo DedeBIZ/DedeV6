@@ -131,16 +131,13 @@
 					<form action="freelist_main.php" name="form1" id="form1">
 						<tr>
 							<td width="170" align="center">
-								<input type="text" name="keyword" id="keyword" class='alltxt' style="width:160px" value="<?php echo $keyword?>">
-							</td>
-							<td width="60" align="left">
-								<button type="submit" name="Submit2" class="btn btn-success btn-sm">搜索</button>
+								<input type="text" name="keyword" id="keyword" class='alltxt' value="<?php echo $keyword?>" style="width:160px">
 							</td>
 							<td>
+								<button type="submit" name="Submit2" class="btn btn-success btn-sm">搜索</button>
 								<button type="button" name="bt1" onclick="location='freelist_add.php';" class="btn btn-success btn-sm">增加列表</button>
 								<button type="button" name="bt2" onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm">更新所有列表</button>
 							</td>
-							<td width="200"></td>
 						</tr>
 					</form>
 				</table>

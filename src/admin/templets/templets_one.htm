@@ -26,9 +26,7 @@
          <td bgcolor="#f6f6f6" colspan="6" style="padding-left:10px">
             <form action='templets_one.php' name='sss'>
                <ul>
-                  <li>关键词：</li>
-                  <li><input type='text' name='keyword' value="<?php if(!empty($keyword)) $keyword = ''; ?>" style='width:160px'></li>
-                  <li>标识：</li>
+                  <li><input type='text' name='keyword' value="<?php if(!empty($keyword)) $keyword = ''; ?>" placeholder="请输入关键词" style="width:260px"></li>
                   <li><?php
      $likeid = (!isset($likeid) ? '' : $likeid);
      echo "<select name='likeid' id='likeid' style='width:160px'>";

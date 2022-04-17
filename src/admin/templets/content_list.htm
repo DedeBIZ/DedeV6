@@ -39,16 +39,15 @@
 				<td height="36" bgcolor="#f8f8f8">
 					<table cellpadding="0" cellspacing="0">
 						<tr>
-							<td>
+							<td width="180" align="center">
 								<select name="cid" style="width:160px">
 									<option value="0">选择栏目</option>
 									{dede:global.optionarr/}
 								</select>
 							</td>
-							<td>关键词：</td>
-							<td><input name="keyword" type="text" value="{dede:global.keyword/}" style="margin-right:10px;width:260px"></td>
-							<td>
-								<select name="orderby" style="margin-right:10px;width:160px">
+							<td width="270"><input name="keyword" type="text" placeholder="请输入关键词" value="{dede:global.keyword/}" style="width:260px"></td>
+							<td width="170">
+								<select name="orderby" style="width:160px">
 									<option value="id">选择排序</option>
 									<option value="pubdate">更新时间</option>
 									<option value="sortrank">置顶权值</option>
@@ -57,8 +56,8 @@
 									<option value="lastpost">最后评论</option>
 								</select>
 							</td>
-							<td>
-								<select name="flag" style="margin-right:10px;width:160px">
+							<td width="170">
+								<select name="flag" style="width:160px">
 									<option value="">选择属性</option>
 									{dede:global.flagsArr/}
 								</select>
@@ -73,7 +72,7 @@
 	<form name="form2">
 		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable" style="margin-top:10px">
 			<tr>
-				<td height="26" colspan="10" style="margin-left:10px;background:#f8f8f8">{dede:global.positionname/}文档列表（使用鼠标右键进行常用操作）</td>
+				<td height="26" colspan="10" style="background:#f8f8f8">{dede:global.positionname/}文档列表（使用鼠标右键进行常用操作）</td>
 			</tr>
 			<tr align="center" bgcolor="#F8FCF1" height="26">
 				<td width="6%">ID</td>

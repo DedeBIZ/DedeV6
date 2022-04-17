@@ -19,15 +19,13 @@
           <input type="hidden" name="dopost" value="listArchives">
           <table class="table-borderless">
             <tr>
-              <td width="90">请选择分类：</td>
-              <td width="170">
+              <td width="180" align="center">
                 <select name="clsid" id="clsid" style="width:160px">
                   <option value="0">默认分类</option>
                   <?php echo $option; ?>
                 </select>
               </td>
-              <td width="90">关键词：</td>
-              <td width="170"><input type="text" name="keyword" style="width:160px"></td>
+              <td width="270"><input type="text" name="keyword" placeholder="请输入关键词" style="width:260px"></td>
               <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
             </tr>
           </table>

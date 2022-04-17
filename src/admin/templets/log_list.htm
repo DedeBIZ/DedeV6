@@ -57,15 +57,14 @@
         <table width="100%" cellspacing="0" cellpadding="0" class="table-borderless">
           <form name='formsearch'>
             <tr>
-              <td>
-                管理员：
+              <td width="180" align="center">
                 <select name="adminid" id="adminid" style="width:160px">
                   <option value="0" selected>全部</option>
                   <?php echo $adminlist?>
                 </select>
-                IP地址：
-                <input name="cip" type="text" id="cip" size="15" style="width:160px">
-                时间：
+              </td>
+              <td width="170"><input name="cip" type="text" id="cip" size="15" style="width:160px"></td>
+              <td width="170">
                 <select name="dtime" id="dtime" style="width:160px">
                   <option value="0" selected>全部</option>
                   <option value="7">一周内</option>
@@ -73,9 +72,8 @@
                   <option value="30">30天以内</option>
                   <option value="60">60天以内</option>
                 </select>
-                &nbsp;
-                <button type="submit" class="btn btn-success btn-sm">搜索</button>
               </td>
+              <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
             </tr>
           </form>
         </table>
