@@ -29,7 +29,7 @@
   <div class="main">
     <table width="98%" cellpadding="1" align='center' cellspacing="1" class="table maintable mt-3 mb-3">
       <tr>
-        <td height="26" colspan="6" background="../static/web/img/tbg.gif">
+        <td height="26" colspan="5" background="../static/web/img/tbg.gif">
           <table width="96%" class="table table-borderless">
             <tr>
               <td width="25%" style="padding-left:10px">文档关键词维护</td>
@@ -48,7 +48,7 @@
       <form name='form2' action="article_keywords_main.php">
         <input type='hidden' name='dopost' value='add'>
         <tr align="center">
-          <td width="100%" height="26" colspan="6">
+          <td width="100%" height="26" colspan="5">
             <table cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
                 <td width="280" align="center"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" style="width:260px"></td>
@@ -78,10 +78,9 @@
             <input type='hidden' value='{dede:field.keyword/}' name='keyword_{dede:field.aid/}'>
             {dede:field.keyword/}
           </td>
-          <td style="padding:6px 0;">
+          <td>
             <input type='hidden' value='{dede:field.rpurl/}' name='rpurlold_{dede:field.aid/}'>
-            <input type='text' style='width:90%' class='nnpp' value='{dede:field.rpurl/}'
-              name='rpurl_{dede:field.aid/}'>
+            <input type='text' style='width:90%' class='nnpp' value='{dede:field.rpurl/}' name='rpurl_{dede:field.aid/}'>
           </td>
           <td>
             <input type='text' size='5' class='nnpp' value='{dede:field.rank/}' name='rank_{dede:field.aid/}'>
@@ -97,14 +96,14 @@
         </tr>
         {/dede:datalist}
         <tr>
-          <td colspan="6" class="py-3">
+          <td colspan="5" class="py-3">
             <button type="button" name="dl1" class="btn btn-success btn-sm" onClick="selAll()">反选</button>
             <button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存</button>
           </td>
         </tr>
       </form>
       <tr align="center" bgcolor="#f8f8f8">
-        <td height="36" colspan="6">{dede:pagelist listsize='6'/}</td>
+        <td height="36" colspan="5">{dede:pagelist listsize='6'/}</td>
       </tr>
     </table>
   </div>
