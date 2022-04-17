@@ -187,7 +187,7 @@ else if ($dopost == "exportinok") {
                 `arcrank` SMALLINT NOT NULL DEFAULT '0',
                 `mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
                 `click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',
-                `title` varchar(60) NOT NULL default '',
+                `title` varchar(255) NOT NULL default '',
                 `senddate` int(11) NOT NULL default '0',
                 `flag` set('c','h','p','f','s','j','a','b') default NULL,";
     }

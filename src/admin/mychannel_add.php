@@ -34,7 +34,7 @@ if ($action == 'add') {
     if ($issystem == -1 && $id > 0) $id = $id * -1;
 
     //检查id是否重复
-    $row = $dsql->GetOne("SELECT * FROM #@__channeltype WHERE id='$id' OR nid LIKE '$nid' OR addtable LIKE '$addtable'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' OR nid LIKE '$nid' OR addtable LIKE '$addtable'");
     if (is_array($row)) {
         ShowMsg("可能‘频道id’、‘频道名称标识’、‘附加表名称’在数据库已存在，不能重复使用", "-1");
         exit();
@@ -63,7 +63,7 @@ if ($action == 'add') {
                     `arcrank` SMALLINT NOT NULL DEFAULT '0',
                     `mid` MEDIUMINT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
                     `click` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',
-                    `title` varchar(60) NOT NULL default '',
+                    `title` varchar(255) NOT NULL default '',
                     `senddate` int(11) NOT NULL default '0',
                     `flag` set('c','h','p','f','s','j','a','b') default NULL,
                     `litpic` varchar(60) NOT NULL default '',
