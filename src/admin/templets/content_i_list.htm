@@ -69,7 +69,7 @@ img{margin-right:0}
 	</form>
 	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable" style="margin-top:10px">
 		<tr>
-			<td height="30" colspan="10" style="margin-left:10px;background:#f8f8f8">{dede:global.positionname/}文档列表（使用鼠标右键进行常用操作）</td>
+			<td height="26" colspan="10" style="margin-left:10px;background:#f8f8f8">{dede:global.positionname/}文档列表（使用鼠标右键进行常用操作）</td>
 		</tr>
 		<tr align="center" bgcolor="#FBFCE2" height="26">
 			<td width="12%">文档图片</td>
@@ -89,7 +89,7 @@ img{margin-right:0}
 				<td width="32%" class="pl-3">
 					<p>
 						<input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np">
-						<i class="fa fa-cogs" aria-hidden="true" title="编辑属性" onClick="QuickEdit({dede:field.id/},event,this);" style="cursor:pointer"></i>
+						<i class="fa fa-cogs" title="编辑属性" onClick="QuickEdit({dede:field.id/},event,this);" style="cursor:pointer"></i>
 						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'{dede:field.title function=" str_replace('\'', '' , @me)" /}')">{dede:field.title/}&nbsp;{dede:field.flag function='IsCommendArchives(@me)'/}</a>
 					</p>
 					<span>发布时间：{dede:field.senddate function='GetDateTimeMk(@me)'/}</span>

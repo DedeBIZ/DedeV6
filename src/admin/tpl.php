@@ -124,7 +124,7 @@ else if ($action == 'upload') {
     $win->AddTitle('请选择要上传的文件：');
     $win->AddHidden("action", 'uploadok');
     $msg = "
-    <table width='600' border='0' cellspacing='0' cellpadding='0'>
+    <table width='600' cellspacing='0' cellpadding='0'>
   <tr>
     <td width='96' height='60'>请选择文件：</td>
     <td width='504'>

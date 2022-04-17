@@ -94,7 +94,7 @@ if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
     $ddd = $row['dd'] + $ddd;
     $ccd = $row['cc'] + $ccd;
-    $msg = "<table width='100%' border='0' align='center' cellpadding='3' cellspacing='1'>
+    $msg = "<table width='100%' align='center' cellpadding='3' cellspacing='1'>
     <tr align='center' bgcolor='#FBFCE2'>
       <td width='18%' height='26'>管理员::统计信息</td>
       <td width='18%'>全部(文档|点击)</td>

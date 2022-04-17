@@ -59,7 +59,7 @@ a{text-decoration:none!important}
     </script>
     <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
         <tr>
-            <td colspan="3" height="30">
+            <td colspan="3" height="26">
                 <form action="select_templets_post.php" method="POST" enctype="multipart/form-data" name="myform">
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">

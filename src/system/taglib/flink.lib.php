@@ -42,12 +42,12 @@ function lib_flink(&$ctag, &$refObj)
         if ($type == 'text' || $type == 'textall') {
             $link = "<a href='".$dbrow->url."' target='_blank'>".cn_substr($dbrow->webname, $titlelen)."</a> ";
         } else if ($type == 'image') {
-            $link = "<a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' width='88' height='30' border='0'></a> ";
+            $link = "<a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' width='88' height='26'></a> ";
         } else {
             if ($dbrow->logo == '') {
                 $link = "<a href='".$dbrow->url."' target='_blank'>".cn_substr($dbrow->webname, $titlelen)."</a> ";
             } else {
-                $link = "<a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' width='88' height='30' border='0'></a> ";
+                $link = "<a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' width='88' height='26'></a> ";
             }
         }
         $rbtext = preg_replace("/\[field:url([\/\s]{0,})\]/isU", $dbrow->url, $innertext);

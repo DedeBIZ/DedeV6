@@ -58,7 +58,7 @@ table{border-collapse:separate}
     <input type="hidden" name="cid" value="<?php echo $cid; ?>">
     <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
-        <td width="60%" height="30"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">软件列表</a> &gt; 发布软件</td>
+        <td width="60%" height="26"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">软件列表</a> &gt; 发布软件</td>
         <td align="right"><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a><a href="soft_config.php" class="btn btn-success btn-sm">下载频道参数设定</a></td>
       </tr>
     </table>
@@ -191,7 +191,7 @@ table{border-collapse:separate}
                 echo "</select>";
                 ?>
                 </span>
-                <i class='fa fa-search' aria-hidden='true'  style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid')" title='快捷选择'></i>
+                <i class='btn fa fa-search'  style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid')" title='快捷选择'></i>
                 <?php
                 if($cfg_need_typeid2=='Y')
                 {
@@ -213,7 +213,7 @@ table{border-collapse:separate}
               <td>
                 <span id='typeid2ct'></span>
                 <input type='text' name='typeid2' id='typeid2' value='' style='width:260px;'>
-                <i class='fa fa-search' aria-hidden='true'  onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2')" title='选择副栏目' style='cursor:pointer'></i>
+                <i class='btn fa fa-search'  onClick="ShowCatMap(event, this, <?php echo $channelid; ?>, 'typeid2')" title='选择副栏目' style='cursor:pointer'></i>
               </td>
             </tr>
           </table>

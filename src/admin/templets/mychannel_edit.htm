@@ -334,9 +334,9 @@ foreach($dtp->CTags as $ctag)
 if($ft==1)
 {
 ?>
-                <a href='mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&issystem=<?php echo $row['issystem']; ?>'><i class='fa fa-pencil-square-o' aria-hidden='true' title='修改' alt='修改'></i></a>
+                <a href='mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&issystem=<?php echo $row['issystem']; ?>'><i class='fa fa-pencil-square-o' title='修改' alt='修改'></i></a>
                 <?php if($row['issystem']!=1){ ?>
-                | <a href='javascript:;' onClick='javascript:DelNote("mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&action=delete");'><i class='fa fa-trash' aria-hidden='true' alt='删除' title='删除'></i></a>
+                | <a href='javascript:;' onClick='javascript:DelNote("mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&action=delete");'><i class='fa fa-trash' alt='删除' title='删除'></i></a>
                 <?php } ?>
                 <?php
 } else {

@@ -545,7 +545,7 @@ class SearchView
         $this->dsql->Execute("al");
         $artlist = "";
         if ($col > 1) {
-            $artlist = "<table width='$tablewidth' border='0' cellspacing='0' cellpadding='0'>\r\n";
+            $artlist = "<table width='$tablewidth' cellspacing='0' cellpadding='0'>\r\n";
         }
         $this->dtp2->LoadSource($innertext);
         for ($i = 0; $i < $row; $i++) {
@@ -597,8 +597,8 @@ class SearchView
                     $row["stime"] = GetDateMK($row["pubdate"]);
                     $row["textlink"] = "<a href='".$row["filename"]."'>".$row["title"]."</a>";
                     $row["typelink"] = "[<a href='".$row["typeurl"]."'>".$row["typename"]."</a>]";
-                    $row["imglink"] = "<a href='".$row["filename"]."'><img src='".$row["picname"]."' border='0' width='$imgwidth' height='$imgheight'></a>";
-                    $row["image"] = "<img src='".$row["picname"]."' border='0' width='$imgwidth' height='$imgheight'>";
+                    $row["imglink"] = "<a href='".$row["filename"]."'><img src='".$row["picname"]."' width='$imgwidth' height='$imgheight'></a>";
+                    $row["image"] = "<img src='".$row["picname"]."' width='$imgwidth' height='$imgheight'>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
@@ -713,7 +713,7 @@ class SearchView
             }
         }
         $plist = "";
-        //$plist  =  "<table border='0' cellpadding='0' cellspacing='0'>\r\n";
+        //$plist  =  "<table cellpadding='0' cellspacing='0'>\r\n";
         //$plist .= "<tr align='center' style='font-size:10pt'>\r\n";
         $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
         $plist .= "<ul class=\"pagination justify-content-center pt-3\">";

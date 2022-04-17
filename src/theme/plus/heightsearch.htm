@@ -15,8 +15,8 @@
       <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#cccccc" class='table'>
         <form name="form1" action="search.php" method="get">
           <tr>
-            <td height="30" align="center" width="20%">网站栏目：</td>
-            <td height="30">
+            <td height="26" align="center" width="20%">网站栏目：</td>
+            <td height="26">
               <?php
               $tl = new TypeLink(0);
               $typeOptions = $tl->GetOptionArray(0,0,0);
@@ -28,12 +28,12 @@
             </td>
           </tr>
           <tr>
-            <td height="30" align="center">关 键 字：</td>
-            <td width="490" height="30"><input name="q" type="text" id="q" class="form-control"></td>
+            <td height="26" align="center">关 键 字：</td>
+            <td width="490" height="26"><input name="q" type="text" id="q" class="form-control"></td>
           </tr>
           <tr>
-            <td height="30" align="center">发布时间：</td>
-            <td height="30"><select name="starttime" id="starttime">
+            <td height="26" align="center">发布时间：</td>
+            <td height="26"><select name="starttime" id="starttime">
                 <option value="-1" selected>不限</option>
                 <option value="7">一周以内</option>
                 <option value="30">一个月内</option>
@@ -42,8 +42,8 @@
               </select></td>
           </tr>
           <tr>
-            <td height="30" align="center">内容类型：</td>
-            <td height="30"> <select name="channeltype" id="channeltype" class="form-control">
+            <td height="26" align="center">内容类型：</td>
+            <td height="26"> <select name="channeltype" id="channeltype" class="form-control">
                 <option value="0" selected>不限</option>
                 <?php
 					 
@@ -57,8 +57,8 @@
               </select> </td>
           </tr>
           <tr>
-            <td height="30" align="center">排序方式：</td>
-            <td height="30"> <select name="orderby" id="orderby" class="form-control">
+            <td height="26" align="center">排序方式：</td>
+            <td height="26"> <select name="orderby" id="orderby" class="form-control">
                 <option value="sortrank" selected>默认</option>
                 <option value="senddate">收录时间</option>
                 <option value="pubdate">发布时间</option>
@@ -66,20 +66,20 @@
               </select> </td>
           </tr>
           <tr>
-            <td height="30" align="center">显示条数：</td>
-            <td height="30"><input name="pagesize" type="text" id="pagesize" value="10" size="4" class="form-control"></td>
+            <td height="26" align="center">显示条数：</td>
+            <td height="26"><input name="pagesize" type="text" id="pagesize" value="10" size="4" class="form-control"></td>
           </tr>
           <tr>
-            <td height="30" align="center">关键词模式：</td>
-            <td height="30">
+            <td height="26" align="center">关键词模式：</td>
+            <td height="26">
               <label><input name="kwtype" type="radio" value="1" checked>
               或</label>
               <label><input type="radio" name="kwtype" value="0">
               与</label></td>
           </tr>
           <tr>
-            <td height="30" align="center">搜索内容：</td>
-            <td height="30">
+            <td height="26" align="center">搜索内容：</td>
+            <td height="26">
               <select name="searchtype" id="searchtype" class="form-control">
                 <option value="titlekeyword" selected>默认搜索</option>
                 <option value="title">仅搜索标题</option>
@@ -87,8 +87,8 @@
             </td>
           </tr>
           <tr bgcolor="#F4FCE4">
-            <td height="30" align="center"></td>
-            <td height="30">
+            <td height="26" align="center"></td>
+            <td height="26">
               <button type="submit" class="btn btn-success btn-sm">搜索</button>
               <button type="reset" class="btn btn-outline-success">重置</button></td>
           </tr>

@@ -20,7 +20,7 @@ if (empty($dopost)) {
     $wecome_info = "<a href='index_body.php'>系统主页</a> &gt; 系统错误修复工具";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
-    <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
+    <table width='98%' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
     <br>
@@ -54,7 +54,7 @@ else if ($dopost == 1) {
     $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt; 检测数据结构";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
-    <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
+    <table width='98%' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
     <span style='color:#28a745'>已完成数据结构完整性检测</span>
@@ -139,7 +139,7 @@ else if ($dopost == 2) {
     $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt; 检测微表正确性";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
-    <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
+    <table width='98%' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
     {$msg}
@@ -200,7 +200,7 @@ else if ($dopost == 3) {
     $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt; 高级综合检测修复";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
-    <table width='98%' border='0' cellspacing='0' cellpadding='0' align='center'>
+    <table width='98%' cellspacing='0' cellpadding='0' align='center'>
   <tr>
     <td height='250' valign='top'>
     完成所有修复操作，移除错误记录 {$errnum} 条
