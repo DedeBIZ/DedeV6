@@ -118,7 +118,7 @@ else if ($dopost == 'save') {
     $wintitle = "成功发布文章";
     $wecome_info = "文章管理::发布文章";
     $win = new OxWindow();
-    $win->AddTitle("成功发布文章：");
+    $win->AddTitle("成功发布文章");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();
