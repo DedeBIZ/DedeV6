@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 @set_time_limit(0);
 class DedeHttpDown
 {
-    var $m_ch = '';
+    var $m_ch = null;
     var $m_url = '';
     var $m_urlpath = '';
     var $m_scheme = 'http';
@@ -268,6 +268,12 @@ class DedeHttpDown
         @fclose($this->m_fp);
         return $this->m_html;
     }
+    /**
+     *  获取请求解析后的JSON数据
+     *
+     * @access    public
+     * @return    mixed
+     */
     function GetJSON()
     {
         if ($this->m_html != '') {
@@ -284,6 +290,25 @@ class DedeHttpDown
         }
         @fclose($this->m_fp);
         return json_decode($this->m_html);
+    }
+    /**
+     *  判断当前是否是https站点
+     *
+     * @access    public
+     * @return    bool
+     */
+    function IsSSL()
+    {
+        if ($_SERVER['HTTPS'] && ('1' == $_SERVER['HTTPS'] || 'on' == strtolower($_SERVER['HTTPS']))) {
+            return true;
+        } elseif ('https' == $_SERVER['REQUEST_SCHEME']) {
+            return true;
+        } elseif ('443' == $_SERVER['SERVER_PORT']) {
+            return true;
+        } elseif ('https' == $_SERVER['HTTP_X_FORWARDED_PROTO']) {
+            return true;
+        }
+        return false;
     }
     /**
      *  开始HTTP会话
@@ -555,16 +580,17 @@ class DedeHttpDown
             return "";
         }
         $pos = strpos($surl, "#");
+        $proto = $this->IsSSL()? "https://" : "http://";
         if ($pos > 0) {
             $surl = substr($surl, 0, $pos);
         }
         if ($surl[0] == "/") {
-            $okurl = "http://".$this->HomeUrl.$surl;
+            $okurl = $proto .$this->HomeUrl.$surl;
         } else if ($surl[0] == ".") {
             if (strlen($surl) <= 1) {
                 return "";
             } else if ($surl[1] == "/") {
-                $okurl = "http://".$this->BaseUrlPath."/".substr($surl, 2, strlen($surl) - 2);
+                $okurl =  $proto.$this->BaseUrlPath."/".substr($surl, 2, strlen($surl) - 2);
             } else {
                 $urls = explode("/", $surl);
                 foreach ($urls as $u) {
@@ -581,7 +607,7 @@ class DedeHttpDown
                 if (count($urls) <= $pathStep) {
                     return "";
                 } else {
-                    $pstr = "http://";
+                    $pstr = $proto;
                     for ($i = 0; $i < count($urls) - $pathStep; $i++) {
                         $pstr .= $urls[$i]."/";
                     }
@@ -590,15 +616,17 @@ class DedeHttpDown
             }
         } else {
             if (strlen($surl) < 7) {
-                $okurl = "http://".$this->BaseUrlPath."/".$surl;
+                $okurl = $proto .$this->BaseUrlPath."/".$surl;
             } else if (strtolower(substr($surl, 0, 7)) == "http://") {
                 $okurl = $surl;
+            } else if (strtolower(substr($surl, 0, 8)) == "https://") {
+                $okurl = $surl;
             } else {
-                $okurl = "http://".$this->BaseUrlPath."/".$surl;
+                $okurl = $proto.$this->BaseUrlPath."/".$surl;
             }
         }
-        $okurl = preg_replace("/^(http:\/\/)/i", "", $okurl);
+        $okurl = preg_replace("/^((http|https):\/\/)/i", "", $okurl);
         $okurl = preg_replace("/\/{1,}/", "/", $okurl);
-        return "http://".$okurl;
+        return $proto.$okurl;
     }
 }//End Class

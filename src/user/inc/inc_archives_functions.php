@@ -27,7 +27,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
     include_once(DEDEINC."/dedecollection.func.php");
     if (empty($ddmaxwidth)) $ddmaxwidth = 240;
     $rsimg = '';
-    $basehost = "http://".$_SERVER["HTTP_HOST"];
+    $basehost = IsSSL()? "https://".$_SERVER["HTTP_HOST"] : "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
     preg_match_all("/(src)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
     $img_array = array_unique($img_array[2]);
@@ -300,7 +300,7 @@ function GetCurContent(&$body)
     global $cfg_multi_site, $cfg_basehost, $cfg_basedir, $cfg_user_dir, $title, $cfg_ml;
     include_once(DEDEINC."/dedecollection.func.php");
     $htd = new DedeHttpDown();
-    $basehost = "http://".$_SERVER["HTTP_HOST"];
+    $basehost = IsSSL()? "https://".$_SERVER["HTTP_HOST"] : "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
     preg_match_all("/(src|SRC)=[\"|'| ]{0,}(http[s]?:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
     $img_array = array_unique($img_array[2]);
@@ -318,7 +318,7 @@ function GetCurContent(&$body)
         if ($cfg_basehost != $basehost && preg_match("#".$cfg_basehost."#i", $value)) {
             continue;
         }
-        if (!preg_match("#^http:\/\/#i", $value)) {
+        if (!preg_match("#^(http|https):\/\/#i", $value)) {
             continue;
         }
         $htd->OpenUrl($value);

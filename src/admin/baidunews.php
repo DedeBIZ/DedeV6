@@ -33,11 +33,12 @@ if (empty($do)) {
     ";
     $dsql->SetQuery($query);
     $dsql->Execute();
+    $proto = IsSSL()? "https://" : "http://";
     while ($row = $dsql->GetArray()) {
         $title = dede_htmlspecialchars($row['title']);
         $row1 = GetOneArchive($row['id']);
-        if (strpos($row1['arcurl'], 'http://') === false) {
-            $link = ($cfg_basehost == '' ? 'http://'.$_SERVER["HTTP_HOST"].$cfg_cmspath : $cfg_basehost).$row1['arcurl'];
+        if ((strpos($row1['arcurl'], 'http://') === false) || (strpos($row1['arcurl'], 'https://') === false)) {
+            $link = ($cfg_basehost == '' ? $proto.$_SERVER["HTTP_HOST"].$cfg_cmspath : $cfg_basehost).$row1['arcurl'];
         } else {
             $link = $row1['arcurl'];
         }
@@ -45,8 +46,8 @@ if (empty($do)) {
         $description = dede_htmlspecialchars(strip_tags($row['description']));
         $text = dede_htmlspecialchars(strip_tags($row['body']));
         $image = $row['litpic'] == '' ? '' : $row['litpic'];
-        if ($image != '' && strpos($image, 'http://') === false) {
-            $image = ($cfg_basehost == '' ? 'http://'.$_SERVER["HTTP_HOST"].$cfg_cmspath : $cfg_basehost).$image;
+        if ($image != '' && (strpos($image, 'http://') === false) || (strpos($image, 'https://') === false)) {
+            $image = ($cfg_basehost == '' ? $proto.$_SERVER["HTTP_HOST"].$cfg_cmspath : $cfg_basehost).$image;
         }
         //$headlineimg = '';
         $keywords = dede_htmlspecialchars($row['keywords']);

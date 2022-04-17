@@ -35,6 +35,7 @@ if(empty($step))
 {
     $step = 1;
 }
+$proto = IsSSL()? "https://" : "http://";
 /*------------------------
 使用协议书
 function _1_Agreement()
@@ -62,10 +63,11 @@ if($step==1)
     else
     $scriptName = $_SERVER['PHP_SELF'];
     $basepath = preg_replace("#\/install(.*)$#i", '', $scriptName);
+
     if(!empty($_SERVER['HTTP_HOST']))
-        $baseurl = 'http://'.$_SERVER['HTTP_HOST'];
+        $baseurl = $proto.$_SERVER['HTTP_HOST'];
     else
-        $baseurl = "http://".$_SERVER['SERVER_NAME'];
+        $baseurl = $proto.$_SERVER['SERVER_NAME'];
     $chars='abcdefghigklmnopqrstuvwxwyABCDEFGHIGKLMNOPQRSTUVWXWY0123456789';
     $rnd_cookieEncode='';
     $length = rand(28,32);
@@ -89,9 +91,9 @@ else if($step==2)
         die("当前数据库类型不支持");
     }
     if(!empty($_SERVER['HTTP_HOST']))
-        $dfbaseurl = 'http://'.$_SERVER['HTTP_HOST'];
+        $dfbaseurl = $proto.$_SERVER['HTTP_HOST'];
     else
-        $dfbaseurl = "http://".$_SERVER['SERVER_NAME'];
+        $dfbaseurl = $proto.$_SERVER['SERVER_NAME'];
     $dfbasepath = preg_replace("#\/install(.*)$#i", '', $scriptName);
     $dbhost = empty($dbhost)? "localhost" : $dbhost;
     $dbuser = empty($dbuser)? "root" : $dbuser;

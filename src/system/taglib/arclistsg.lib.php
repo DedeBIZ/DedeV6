@@ -185,7 +185,7 @@ function lib_arclistsg(&$ctag, &$refObj)
                 if ($row['litpic'] == '-' || $row['litpic'] == '') {
                     $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/defaultpic.jpg';
                 }
-                if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                if (!preg_match("#^(http|https):\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                     $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
                 }
                 $row['picname'] = $row['litpic'];

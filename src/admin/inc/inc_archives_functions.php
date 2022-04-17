@@ -34,7 +34,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
     $rsimg = '';
     $cfg_uploaddir = $GLOBALS['cfg_image_dir'];
     $cfg_basedir = $GLOBALS['cfg_basedir'];
-    $basehost = 'http://'.$_SERVER['HTTP_HOST'];
+    $basehost = IsSSL()? "https://".$_SERVER["HTTP_HOST"] : "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
     preg_match_all("/(src)=[\"|'| ]{0,}(http:\/\/([^>]*)\.(gif|jpg|png))/isU", $body, $img_array);
     $img_array = array_unique($img_array[2]);
@@ -99,7 +99,7 @@ function GetCurContent($body)
     global $cfg_multi_site, $cfg_basehost, $cfg_basedir, $cfg_image_dir, $arcID, $cuserLogin, $dsql;
     $cfg_uploaddir = $cfg_image_dir;
     $htd = new DedeHttpDown();
-    $basehost = "http://".$_SERVER["HTTP_HOST"];
+    $basehost = IsSSL()? "https://".$_SERVER["HTTP_HOST"] : "http://".$_SERVER["HTTP_HOST"];
     $img_array = array();
     preg_match_all("/src=[\"|'|\s]([^\"|^\'|^\s]*?)/isU", $body, $img_array);
     $img_array = array_unique($img_array[1]);

@@ -58,8 +58,8 @@ foreach ($dtp->CTags as $ctag) {
 }
 unset($dtp);
 if ($cfg_multi_site == 'Y') {
-    if (!preg_match("/^http:/i", $preSrc) && !empty($preSrc)) $preSrc = $cfg_basehost.$preSrc;
-    if (!preg_match("/^http:/i", $nextSrc) && !empty($nextSrc)) $nextSrc = $cfg_basehost.$nextSrc;
+    if (!preg_match("/^(http|https):/i", $preSrc) && !empty($preSrc)) $preSrc = $cfg_basehost.$preSrc;
+    if (!preg_match("/^(http|https):/i", $nextSrc) && !empty($nextSrc)) $nextSrc = $cfg_basehost.$nextSrc;
 }
 if ($preSrc != '') {
     $pageGuide .= "<a href='showphoto.php?aid={$aid}&src=".urlencode($preSrc)."&npos=".($npos - 1)."'>&lt;&lt;上一幅图片</a> ";

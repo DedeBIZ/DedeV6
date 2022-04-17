@@ -286,6 +286,20 @@ function IndexActive($idx)
         return '';
     }
 }
+//是否是HTTPS
+function IsSSL()
+{
+    if ($_SERVER['HTTPS'] && ('1' == $_SERVER['HTTPS'] || 'on' == strtolower($_SERVER['HTTPS']))) {
+        return true;
+    } elseif ('https' == $_SERVER['REQUEST_SCHEME']) {
+        return true;
+    } elseif ('443' == $_SERVER['SERVER_PORT']) {
+        return true;
+    } elseif ('https' == $_SERVER['HTTP_X_FORWARDED_PROTO']) {
+        return true;
+    }
+    return false;
+}
 //自定义函数接口
 //这里主要兼容早期的用户扩展,v5.7之后我们建议使用小助手helper进行扩展
 if (file_exists(DEDEINC.'/extend.func.php')) {

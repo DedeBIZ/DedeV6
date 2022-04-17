@@ -24,14 +24,15 @@ if ($fmdo == 'sendMail') {
     $userhash = md5($cfg_cookie_encode.'--'.$cfg_ml->fields['mid'].'--'.$cfg_ml->fields['email']);
     $url = $cfg_basehost.(empty($cfg_cmspath) ? '/' : $cfg_cmspath)."/user/index_do.php?fmdo=checkMail&mid={$cfg_ml->fields['mid']}&userhash={$userhash}&do=1";
     $url = preg_replace("#http:\/\/#i", '', $url);
-    $url = 'http://'.preg_replace("#\/\/#i", '/', $url);
+    $proto = IsSSL()? "https://" : "http://";
+    $url = $proto.preg_replace("#\/\/#i", '/', $url);
     $mailtitle = "{$cfg_webname}--会员邮件验证通知";
     $mailbody = '';
     $mailbody .= "尊敬的用户[{$cfg_ml->fields['uname']}]，您好：\r\n";
     $mailbody .= "欢迎注册成为[{$cfg_webname}]的会员\r\n";
     $mailbody .= "要通过注册，还必须进行最后一步操作，请点击或复制下面链接到地址栏访问这地址：\r\n\r\n";
     $mailbody .= "{$url}\r\n\r\n";
-    $mailbody .= "Power by DedeBIZ内容管理系统\r\n";
+    $mailbody .= "Powered by DedeBIZ内容管理系统\r\n";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
         $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
