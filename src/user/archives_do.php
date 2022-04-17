@@ -18,12 +18,16 @@ function delStow()
 ------------------*/
 if ($dopost == "delStow") {
     CheckRank(0, 0);
-    $type = empty($type) ? 'sys' : trim($type);
+    $type = empty($type) ? '' : HtmlReplace(trim($type), -1);
+    $tupdate = '';
+    if (!empty($type)) {
+        $tupdate = " AND type = '$type'";
+    }
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "mystow.php" : $_COOKIE['ENV_GOBACK_URL'];
-    $dsql->ExecuteNoneQuery("DELETE FROM #@__member_stow WHERE aid='$aid' AND mid='".$cfg_ml->M_ID."' AND type='$type';");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE aid='$aid' AND mid='".$cfg_ml->M_ID."'$tupdate;");
     //更新用户统计
     $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_stow` WHERE `mid`='".$cfg_ml->M_ID."' ");
-    $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET `stow`='$row[nums]' WHERE `mid`='".$cfg_ml->M_ID."'");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET `stow`='$row[nums]' WHERE `mid`='".$cfg_ml->M_ID."'");
 
     ShowMsg("成功删除一条收藏记录", $ENV_GOBACK_URL);
     exit();
