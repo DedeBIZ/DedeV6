@@ -49,7 +49,7 @@ function DelTpl(filename) {
 			$filetime = MyDate("Y-m-d H:i",$filetime);
 			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 		?>
-		<tr height="26" onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#ffffff';">
+		<tr height="26" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename; ?></a></td>
 			<td><?php echo $fileinfo; ?></td>
 			<td align="center"><?php echo $filetime; ?></td>
