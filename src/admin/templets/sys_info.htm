@@ -65,7 +65,7 @@ function resetCookieEncode() {
         <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px">系统配置变量</td>
       </tr>
       <tr>
-        <td height="26" align="left">
+        <td height="26">
         <?php
         $ds = file(DEDEADMIN.'/inc/configgroup.txt');
         $totalGroup = count($ds);
@@ -88,18 +88,19 @@ function resetCookieEncode() {
       <tr id="addvar" style="display:none">
         <td height="26" align="center">
           <form name="fadd" action="sys_info.php" method="post">
-            <input type='hidden' name='dopost' value='add'>
+            <input type="hidden" name="dopost" value="add">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <table width="100%" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="12%" height="26">变量名称</td>
-                <td width="38%" align="left"><input name="nvarname" type="text" id="nvarname" class="npvar" style="width:80%"></td>
-                <td width="12%" align="center">变量值</td>
-                <td width="38%" align="left"><input name="nvarvalue" type="text" id="nvarvalue" class="npvar" style="width:80%"></td>
+                <td width="90" height="26" style="border-top:0">变量说明</td>
+                <td width="270" style="border-top:0"><input type="text" name="varmsg" id="varmsg" class="npvar" style="width:260px"></td>
+                <td width="90" style="border-top:0">变量值</td>
+                <td width="270" style="border-top:0"><input name="nvarvalue" type="text" id="nvarvalue" class="npvar" style="width:260px"></td>
               </tr>
               <tr>
-                <td width="10%" height="26">变量类型</td>
-                <td colspan='3' align="left"><input name="vartype" type="radio" value="string" class='np' checked='checked'>
+                <td width="90" height="26">变量类型</td>
+                <td colspan="3">
+                  <input name="vartype" type="radio" value="string" class='np' checked='checked'>
                   文本
                   <input name="vartype" type="radio" value="number" class='np'>
                   数字
@@ -110,12 +111,12 @@ function resetCookieEncode() {
                 </td>
               </tr>
               <tr>
-                <td height="26">变量说明</td>
-                <td align="left"><input type="text" name="varmsg" id="varmsg" class="npvar" style="width:80%"></td>
-                <td align="center">所属组</td>
-                <td align="left">
+                <td width="90" height="26">变量名称</td>
+                <td width="270"><input name="nvarname" type="text" id="nvarname" class="npvar" style="width:260px"></td>
+                <td width="90">所属组</td>
+                <td>
                 <?php
-                echo "<select name='vargroup' class='npvar' style='width:160px'>";
+                echo "<select name='vargroup' class='npvar' style='margin-right:10px;width:160px'>";
                 foreach($ds as $dl){
                   $dl = trim($dl);
                   if(empty($dl)) continue;
@@ -162,7 +163,7 @@ function resetCookieEncode() {
               <tr align="center" bgcolor="#F8FCF1">
                 <td width="360" style="border-top:0">变量说明</td>
                 <td style="border-top:0">变量值</td>
-                <td width="260" style="border-top:0">变量名</td>
+                <td width="260" style="border-top:0">变量名称</td>
               </tr>
               <?php
               $dsql->SetQuery("Select * From `#@__sysconfig` where groupid='{$dls[0]}' order by aid asc");
@@ -179,7 +180,7 @@ function resetCookieEncode() {
                 $i++;
               ?>
               <tr align="center" bgcolor="<?php echo $bgcolor?>">
-                <td width="300"><?php echo $row['info']; ?></td>
+                <td><?php echo $row['info']; ?></td>
                 <td align="left">
                 <?php
                 if($row['type']=='bool')
@@ -190,7 +191,7 @@ function resetCookieEncode() {
                   echo "<label><input type='radio' name='edit___{$row['varname']}' class='np' value='Y'$c1> 是 </label> ";
                   echo "<label><input type='radio' name='edit___{$row['varname']}' class='np' value='N'$c2> 否 </label> ";
                 } else if($row['type']=='bstring') {
-                  echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:100%;height:40px'>".dede_htmlspecialchars($row['value'])."</textarea>";
+                  echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
                 } else if($row['type']=='number') {
                   echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
                 } else {
@@ -212,7 +213,7 @@ function resetCookieEncode() {
             }
             ?>
             </div>
-            <table width="100%" cellspacing="1" cellpadding="1" bgcolor="#f8f8f8" class="table mb-0" style="border:none">
+            <table width="100%" cellspacing="1" cellpadding="1" bgcolor="#f8f8f8" class="table">
               <tr>
                 <td align="center" class="py-3">
                   <button type="submit" class="btn btn-success btn-sm">保存</button>
