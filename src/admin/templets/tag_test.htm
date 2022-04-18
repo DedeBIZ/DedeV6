@@ -1,25 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>主页更新向导</title>
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="../static/web/js/jquery.min.js" language="javascript" type="text/javascript"></script>
-  <script language='javascript' src='js/main.js'></script>
-  <script language="javascript">
-    function SelectTemplets(fname) {
-      var pos = GetWinPos(800,600);
-      window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-    }
-  </script>
-  <link rel="stylesheet" href="css/codemirror.css">
-  <script type="text/javascript" src="js/codemirror.js"></script>
-  <script type="text/javascript" src="js/mode/xml/xml.js"></script>
-  <script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
-  <script type="text/javascript" src="js/mode/css/css.js"></script>
-  <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>主页更新向导</title>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
+<script src="../static/web/js/jquery.min.js" language="javascript" type="text/javascript"></script>
+<script language='javascript' src='js/main.js'></script>
+<script language="javascript">
+  function SelectTemplets(fname) {
+    var pos = GetWinPos(800,600);
+    window.open("./dialog/select_templets.php?f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+  }
+</script>
+<link rel="stylesheet" href="css/codemirror.css">
+<script type="text/javascript" src="js/codemirror.js"></script>
+<script type="text/javascript" src="js/mode/xml/xml.js"></script>
+<script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
+<script type="text/javascript" src="js/mode/css/css.js"></script>
+<script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">

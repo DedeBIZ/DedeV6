@@ -1,52 +1,52 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>增加图片集</title>
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <link rel="stylesheet" href="css/albumupload.css">
-  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
-  <script language="javascript" src="../static/web/js/jquery.min.js"></script>
-  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="../static/web/js/webajax.js"></script>
-  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-  <script type="text/javascript" src="../static/web/js/moment.min.js"></script>
-  <script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/album.js"></script>
-  <script type="text/javascript" src="js/handlers.js"></script>
-  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
-  <script src="../static/web/js/cropper.min.js"></script>
-  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
-  <script language="javascript">
-    var swfu = null;
-    var vcc = 0;
-    var albums = [];
-    $(document).ready(function () {
-      //添加图片
-      $("#iptAlbumImages").change(function (event) {
-        var files = event.target.files;
-        for (var i = 0, f; f = files[i]; i++) {
-          //如果不是图片忽略
-          if (!f.type.match('image.*')) {
-            continue;
-          }
-          //将图片渲染到浏览器
-          var reader = new FileReader();
-          reader.onload = (function (theFile) {
-            return function (e) {
-              litpicImgSrc = e.target.result;
-              addImage(litpicImgSrc, 0);
-            };
-          })(f);
-          reader.readAsDataURL(f);
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>增加图片集</title>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
+<link rel="stylesheet" href="css/albumupload.css">
+<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+<script language="javascript" src="../static/web/js/jquery.min.js"></script>
+<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../static/web/js/webajax.js"></script>
+<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+<script type="text/javascript" src="../static/web/js/moment.min.js"></script>
+<script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/album.js"></script>
+<script type="text/javascript" src="js/handlers.js"></script>
+<link rel="stylesheet" href="../static/web/css/cropper.min.css">
+<script src="../static/web/js/cropper.min.js"></script>
+<link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+<script language="javascript">
+  var swfu = null;
+  var vcc = 0;
+  var albums = [];
+  $(document).ready(function () {
+    //添加图片
+    $("#iptAlbumImages").change(function (event) {
+      var files = event.target.files;
+      for (var i = 0, f; f = files[i]; i++) {
+        //如果不是图片忽略
+        if (!f.type.match('image.*')) {
+          continue;
         }
-        $("#iptAlbumImages").val("");
-      });
+        //将图片渲染到浏览器
+        var reader = new FileReader();
+        reader.onload = (function (theFile) {
+          return function (e) {
+            litpicImgSrc = e.target.result;
+            addImage(litpicImgSrc, 0);
+          };
+        })(f);
+        reader.readAsDataURL(f);
+      }
+      $("#iptAlbumImages").val("");
     });
-  </script>
+  });
+</script>
 <style>
 body{background:#fff}
 img{vertical-align:baseline}

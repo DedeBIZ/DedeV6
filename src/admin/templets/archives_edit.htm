@@ -1,31 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>修改商品</title>
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
-  <script src="../static/web/js/jquery.min.js"></script>
-  <script language="javascript" src="../static/web/js/webajax.js"></script>
-  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
-  <script language="javascript" src="js/main.js"></script>
-  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-  <script type="text/javascript" src="../static/web/js/moment.min.js"></script>
-  <script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
-  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
-  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
-  <script src="../static/web/js/cropper.min.js"></script>
-  <script language="javascript">
-    function checkSubmit() {
-      if (document.form1.title.value == "") {
-        ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
-        document.form1.title.focus();
-        return false;
-      }
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>修改商品</title>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
+<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+<script src="../static/web/js/jquery.min.js"></script>
+<script language="javascript" src="../static/web/js/webajax.js"></script>
+<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+<script language="javascript" src="js/main.js"></script>
+<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+<script type="text/javascript" src="../static/web/js/moment.min.js"></script>
+<script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
+<link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+<link rel="stylesheet" href="../static/web/css/cropper.min.css">
+<script src="../static/web/js/cropper.min.js"></script>
+<script language="javascript">
+  function checkSubmit() {
+    if (document.form1.title.value == "") {
+      ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
+      document.form1.title.focus();
+      return false;
     }
-  </script>
+  }
+</script>
 <style>
 body{background:#fff}
 img{vertical-align:baseline}

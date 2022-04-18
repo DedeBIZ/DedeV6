@@ -1,19 +1,20 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>更新标签</title>
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/select2.min.css">
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script language="javascript" src="../static/web/js/jquery.min.js"></script>
-  <script language="javascript" src="../static/web/js/select2.full.min.js"></script>
-  <script language="javascript" src="../static/web/js/i18n/zh-CN.js"></script>
-  <script>
-    function onTagSubmit() {
-      document.form1.submit();
-    }
-  </script>
+<meta charset="<?php echo $cfg_soft_lang; ?>">
+<title>更新标签</title>
+<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/web/css/select2.min.css">
+<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/web/css/admin.css">
+<script language="javascript" src="../static/web/js/jquery.min.js"></script>
+<script language="javascript" src="../static/web/js/select2.full.min.js"></script>
+<script language="javascript" src="../static/web/js/i18n/zh-CN.js"></script>
+<script>
+  function onTagSubmit() {
+    document.form1.submit();
+  }
+</script>
 </head>
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
@@ -36,9 +37,7 @@
       ?>
       <tr>
         <td width="260" height="26">输入标签：</td>
-        <td height="26">
-          <input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php">重新选择</a>
-        </td>
+        <td height="26"><input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php">重新选择</a></td>
       </tr>
       <?php
       } else {
