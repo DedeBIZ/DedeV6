@@ -148,12 +148,12 @@ table{border-collapse:separate}
               <td width="90">&nbsp;缩略图：</td>
               <td>
                 <input name="picname" type="text" id="picname" style="width:300px">
-                <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote'>&nbsp;远程</label>
+                <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="np">&nbsp;远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class='btn btn-success btn-sm'>选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
               </td>
-              <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
+              <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="max-width:100px;max-height:80px"></td>
             </tr>
           </table>
         </td>
@@ -317,9 +317,9 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;官方网址：</td>
-              <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="http://" style="width:300px"></td>
+              <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="http://" style="width:260px"></td>
               <td width="90">演示地址：</td>
-              <td><input name="officialDemo" type="text" id="officialDemo" value="http://" style="width:300px"></td>
+              <td><input name="officialDemo" type="text" id="officialDemo" value="http://" style="width:260px"></td>
             </tr>
           </table>
         </td>
@@ -367,7 +367,7 @@ table{border-collapse:separate}
             <tr>
               <td width="90">&nbsp;本地地址：</td>
               <td>
-                <input name="softurl1" type="text" id="softurl1" style="width:300px">
+                <input name="softurl1" type="text" id="softurl1" style="width:260px">
                 <button class='btn btn-success btn-sm' name="sel1" type="button" id="sel1" onClick="SelectSoft('form1.softurl1')">选取</button>
               </td>
               <td width="90">服务器名称：</td>

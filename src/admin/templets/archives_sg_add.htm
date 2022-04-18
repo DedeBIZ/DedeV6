@@ -97,12 +97,12 @@ table{border-collapse:separate}
             <td width="90">&nbsp;缩略图：</td>
             <td>
               <input name="picname" type="text" id="picname" style="width:300px">
-              <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote'>&nbsp;远程</label>
+              <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="np">&nbsp;远程</label>
               <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
               <button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
               <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
              </td>
-            <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
+            <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="max-width:100px;max-height:80px"></td>
           </tr>
         </table>
       </td>
