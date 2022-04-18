@@ -59,8 +59,6 @@ class TagList
         $this->Fields['tag'] = $keyword;
         if (empty($keyword)) {
             $this->Fields['title'] = "TAGS列表";
-        } else {
-            $this->Fields['title'] = $keyword;
         }
         $this->TempletsFile = '';
         //设置一些全局参数的值
@@ -73,7 +71,7 @@ class TagList
                 ShowMsg($msg, "-1");
                 exit();
             }
-            $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->Fields['title'] : $this->TagInfos['title'];
+            $this->Fields['title'] = empty($this->TagInfos['title']) ? $this->TagInfos['tag'] : $this->TagInfos['title'];
             $this->Fields['keywords'] = empty($this->TagInfos['keywords']) ? $this->Fields['keywords'] : $this->TagInfos['keywords'];
             $this->Fields['description'] = empty($this->TagInfos['description']) ? $this->Fields['description'] : $this->TagInfos['description'];
         }
