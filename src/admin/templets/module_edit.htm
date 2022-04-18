@@ -31,9 +31,6 @@ function ShowHideMb(rbox1,nid)
 </script>
 <title>模块打包</title>
 <link rel="stylesheet" href="../static/web/css/admin.css">
-<style>
-td{padding-left:8px}
-</style>
 </head>
 <body>
 <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
@@ -68,7 +65,7 @@ td{padding-left:8px}
       <td>模块识别码：</td>
       <td>
       <input type='hidden' name='hash' value='<?php echo $hash; ?>'>
-      <input type='text' disabled name='hashv' value='<?php echo $hash; ?>' style="width:280px" class='alltxt'>（不可改）
+      <input type='text' disabled name='hashv' value='<?php echo $hash; ?>' style="width:260px" class='alltxt'>（不可改）
       </td>
     </tr>
     <tr>
@@ -87,31 +84,28 @@ td{padding-left:8px}
       <br>
 导航使用网址：
 <input name="indexurl" type="text" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>" class='alltxt'>
-(用相对于会员中心的网址，如：../ask)
+（用相对于会员中心的网址，如：../ask）
 </div>
       </td>
     </tr>
     <tr>
       <td>后台管理菜单：</td>
       <td>
-      	<textarea name="menustring" rows="8" id="menustring" style="width:80%"><?php echo $menustring; ?></textarea>
-      	<br>
+      	<textarea name="menustring" id="menustring" style="width:98%;height:160px"><?php echo $menustring; ?></textarea><br>
       	（普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php）
       </td>
     </tr>
     <tr>
       <td>使用说明文件：</td>
       <td>
-      	<table width="80%" cellpadding="5" cellspacing="1">
+      	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
-            <td width="75%" bgcolor="#F3FDE1">使用协议或说明：<br>
+            <td bgcolor="#F3FDE1">使用协议或说明：<br>
               如果需要带HTML格式，请编译后点击修改时使用HTML
             </td>
           </tr>
           <tr>
-            <td>
-            	<textarea name="readmetxt" rows="10" id="readmetxt" style="width:98%"><?php echo $readmetxt; ?></textarea>
-            </td>
+            <td><textarea name="readmetxt" id="readmetxt" style="width:98%;height:160px"><?php echo $readmetxt; ?></textarea></td>
           </tr>
         </table>
       </td>
@@ -126,18 +120,16 @@ td{padding-left:8px}
       	<input name="setup" type="file" id="setup" style="width:360px">
      </div>
      <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none'; ?>" id="autosetupct">
-      	<table width="80%" cellpadding="5" cellspacing="1">
+      	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
-            <td width="75%" bgcolor="#F3FDE1">
+            <td bgcolor="#F3FDE1">
             	请使用MySQL4.0版本格式的SQL语句:<br>
             	MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=* ，改为 TYPE=MyISAM ，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束<br>
             	如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php
             </td>
           </tr>
           <tr>
-            <td>
-            	<textarea name="setupsql40" rows="10" id="setupsql40" style="width:98%"><?php echo $setupsql40; ?></textarea>
-            </td>
+            <td><textarea name="setupsql40" id="setupsql40" style="width:98%;height:160px"><?php echo $setupsql40; ?></textarea></td>
           </tr>
         </table>
       </div>
@@ -153,16 +145,14 @@ td{padding-left:8px}
       	  <input name="uninstall" type="file" id="uninstall" style="width:360px">
         </div>
       	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none'; ?>' id='autodelct'>
-      	<table width="80%" cellpadding="5" cellspacing="1">
+      	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
-            <td width="75%" bgcolor="#F3FDE1">卸载时执行的SQL语句：<br>
+            <td bgcolor="#F3FDE1">卸载时执行的SQL语句：<br>
             （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）
             </td>
           </tr>
           <tr>
-            <td>
-              <textarea name="delsql" rows="10" id="delsql" style="width:98%"><?php echo $delsql; ?></textarea>
-            </td>
+            <td><textarea name="delsql" id="delsql" style="width:98%;height:160px"><?php echo $delsql; ?></textarea></td>
           </tr>
         </table>
       </div>
@@ -180,13 +170,13 @@ td{padding-left:8px}
       <td>每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
         如：如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录，<br>
         对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中 <br>
-        <textarea name="filelist" rows="8" id="filelist" style="width:80%"><?php echo $filelist; ?></textarea>
+        <textarea name="filelist" id="filelist" style="width:98%;height:160px"><?php echo $filelist; ?></textarea>
       </td>
     </tr>
     <tr>
       <td>开发者私钥：</td>
       <td>开发者认证后获取的私钥<br>
-        <textarea name="priv" rows="8" id="priv" style="width:80%"></textarea>
+        <textarea name="priv" id="priv" style="width:98%;height:160px"></textarea>
       </td>
     </tr>
     <tr>
