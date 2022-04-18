@@ -3,7 +3,7 @@ ALTER TABLE `#@__archives` MODIFY COLUMN `title` varchar(255) NOT NULL DEFAULT '
 ALTER TABLE `#@__arctype` MODIFY COLUMN `typename` varchar(255) NOT NULL DEFAULT '' AFTER `sortrank`;
 
 -- 6.1.8
-INSERT INTO `#@__sysconfig` VALUES ('151', 'cfg_tags_dir', 'TAGS生成目录', 7, 'string', '{cmspath}/a/tags');
+INSERT INTO `#@__sysconfig` VALUES ('710', 'cfg_tags_dir', 'TAGS生成目录', 7, 'string', '{cmspath}/a/tags');
 ALTER TABLE `#@__tagindex` DROP COLUMN `tag_pinyin`;
 
 -- 6.1.7
