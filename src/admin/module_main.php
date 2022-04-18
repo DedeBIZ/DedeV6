@@ -203,7 +203,7 @@ else if ($action == 'setup') {
   </tr>
   <tr>
     <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' style='width:90%;height:200px'>{$filelist}</textarea>
+     <textarea name='filelists' id='filelists' style='width:98%;height:160px'>{$filelist}</textarea>
     </td>
   </tr>
   <tr>
@@ -394,7 +394,7 @@ else if ($action == 'uninstall') {
   </tr>
   <tr>
     <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' style='width:90%;height:200px'>{$filelist}</textarea>
+     <textarea name='filelists' id='filelists' style='width:98%;height:160px'>{$filelist}</textarea>
     </td>
   </tr>
   <tr>
@@ -535,7 +535,7 @@ else if ($action == 'view') {
   </tr>
   <tr>
     <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' style='width:90%;height:200px'>{$filelist}</textarea>
+     <textarea name='filelists' id='filelists' style='width:98%;height:160px'>{$filelist}</textarea>
     </td>
   </tr>
 </table>";
