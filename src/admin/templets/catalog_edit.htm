@@ -281,7 +281,7 @@ function CheckCross() {
                 <label><input name="cross" type="radio" id="cross1" onClick="CheckCross()" value="1" class='np' <?php if($myrow['cross']==1) echo " checked='1' "; ?>>&nbsp;自动获取同名栏目内容</label>
                 <label><input name="cross" type="radio" id="cross2" onClick="CheckCross()" value="2" class='np' <?php if($myrow['cross']==2) echo " checked='1' "; ?>>&nbsp;手工指定交叉栏目ID（用逗号分开）</label>
                 <br>
-                <textarea name="crossid" id="crossid" style="<?php if($myrow['cross']!=2) echo'display:none'; ?>" class="alltxt" style="width:360px;height:50px"><?php echo $myrow['crossid']; ?></textarea>
+                <textarea name="crossid" id="crossid" class="alltxt" style="<?php if($myrow['cross']!=2) echo'display:none'; ?>"><?php echo $myrow['crossid']; ?></textarea>
               </td>
             </tr>
             <tr id='smclass' style='<?php echo ($channelid<0 ? '' : 'display:none'); ?>'>
