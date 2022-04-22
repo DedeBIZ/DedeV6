@@ -115,7 +115,10 @@ class smtp
             return $this->smtp_error("sending HELO command");
         }
         if ($this->auth) {
-            if (!$this->smtp_putcmd("AUTH LOGIN", base64_encode($this->user))) {
+            if (!$this->smtp_putcmd("AUTH LOGIN")) {
+                return $this->smtp_error("sending AUTH LOGIN command");
+            }
+            if (!$this->smtp_putcmd("", base64_encode($this->user))) {
                 return $this->smtp_error("sending HELO command");
             }
             if (!$this->smtp_putcmd("", base64_encode($this->pass))) {
