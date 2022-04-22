@@ -89,7 +89,7 @@ else if ($dopost == 2) {
             if (!isset($shtables[$addtable])) {
                 $shtables[$addtable] = 1;
                 $row = $dsql->GetOne("SELECT COUNT(aid) AS dd FROM `$addtable` ");
-                $msg .= "·{$addtable} 表总记录数：{$row['dd']} <br>";
+                $msg .= "{$addtable} 表总记录数：{$row['dd']} <br>";
                 $allarcnum += $row['dd'];
             }
         }
@@ -101,7 +101,7 @@ else if ($dopost == 2) {
     if ($row['dd'] == $allarcnum) {
         $msg .= "<span style='color:#28a745'>两者记录一致，无需修正</span><br>";
     } else {
-        $sql = " TRUNCATE TABLE `#@__arctiny`";
+        $sql = "TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
         $msg .= "<span style='color:#dc3545'>两者记录不一致，尝试进行简单修正</span><br>";
         //导入普通模型微数据
@@ -111,7 +111,7 @@ else if ($dopost == 2) {
         //导入单表模型微数据
         foreach ($shtables as $tb => $v) {
             $sql = "INSERT INTO `#@__arctiny`(id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid)  
-                    SELECT aid, typeid, 0, arcrank, channel, senddate, 0, mid FROM `$tb` ";
+                SELECT aid, typeid, 0, arcrank, channel, senddate, 0, mid FROM `$tb` ";
             $rs = $dsql->ExecuteNoneQuery($sql);
             $doarray[$tb]  = 1;
         }
@@ -157,7 +157,7 @@ else if ($dopost == 3) {
     $dsql->Execute('me', $sql);
     while ($row = $dsql->GetArray('me')) {
         $sql = "INSERT INTO `#@__arctiny`(id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid)
-            VALUES('{$row['id']}','{$row['typeid']}','{$row['typeid2']}','{$row['arcrank']}', '{$row['channel']}','{$row['senddate']}','{$row['sortrank']}','{$row['mid']}');  ";
+            VALUES('{$row['id']}','{$row['typeid']}','{$row['typeid2']}','{$row['arcrank']}', '{$row['channel']}','{$row['senddate']}','{$row['sortrank']}','{$row['mid']}'); ";
         $rs = $dsql->ExecuteNoneQuery($sql);
         if (!$rs) {
             $addtable = trim($addtable);
