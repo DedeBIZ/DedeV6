@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 文档关键词生成
  *
@@ -15,7 +16,7 @@ CheckPurview('sys_Keyword');
 if (empty($dopost)) $dopost = '';
 //分析已存在的关键词（适用于默认的文章模型）
 if ($dopost == 'analyse') {
-    echo "正在读取关键词数据库<br>\r\n";
+    echo "正在读取关键词数据库...<br>\r\n";
     flush();
     $ws = $wserr = $wsnew = "";
     $dsql->SetQuery("SELECT * FROM `#@__keywords`");
@@ -26,7 +27,7 @@ if ($dopost == 'analyse') {
     }
     echo "完成关键词数据库的载入<br>\r\n";
     flush();
-    echo "读取档案数据库，并对禁用的关键词和生字进行处理<br>\r\n";
+    echo "读取档案数据库，并对禁用的关键词和生字进行处理...<br>\r\n";
     flush();
     $dsql->SetQuery("SELECT id,keywords FROM `#@__archives`");
     $dsql->Execute();
@@ -57,10 +58,10 @@ if ($dopost == 'analyse') {
     echo "完成档案数据库的处理<br>\r\n";
     flush();
     if (is_array($wsnew)) {
-        echo "对关键词进行排序<br>\r\n";
+        echo "对关键词进行排序...<br>\r\n";
         flush();
         arsort($wsnew);
-        echo "把关键词保存到数据库<br>\r\n";
+        echo "把关键词保存到数据库...<br>\r\n";
         flush();
         foreach ($wsnew as $k => $v) {
             if (strlen($k) > 20) {
@@ -92,13 +93,11 @@ else if ($dopost == 'fetch') {
     if (empty($totalnum)) {
         $totalnum = 0;
     }
-
     //统计记录总数
     if ($totalnum == 0) {
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__archives` WHERE channel='1' ");
         $totalnum = $row['dd'];
     }
-
     //获取记录，并分析关键词
     if ($totalnum > $startdd + $pagesize) {
         $limitSql = " LIMIT $startdd,$pagesize";
@@ -110,10 +109,9 @@ else if ($dopost == 'fetch') {
     $tjnum = $startdd;
     if ($limitSql != '') {
         $fquery = "SELECT arc.id,arc.title,arc.keywords,addon.body FROM `#@__archives` arc
-              LEFT JOIN `#@__addonarticle` addon ON addon.aid=arc.id WHERE arc.channel='1' $limitSql ";
+            LEFT JOIN `#@__addonarticle` addon ON addon.aid=arc.id WHERE arc.channel='1' $limitSql ";
         $dsql->SetQuery($fquery);
         $dsql->Execute();
-
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
             $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
             $client->appid = $cfg_bizcore_appid;
@@ -143,13 +141,10 @@ else if ($dopost == 'fetch') {
                 $tjnum++;
                 $id = $row->id;
                 $keywords = "";
-
                 $sp->SetSource($row->title, $cfg_soft_lang, $cfg_soft_lang);
                 $sp->SetResultType(2);
                 $sp->StartAnalysis(TRUE);
-
                 $titleindexs = $sp->GetFinallyIndex();
-
                 $sp->SetSource(Html2Text($row->body), $cfg_soft_lang, $cfg_soft_lang);
                 $sp->SetResultType(2);
                 $sp->StartAnalysis(TRUE);
@@ -180,17 +175,13 @@ else if ($dopost == 'fetch') {
             }
             unset($sp);
         }
-    } //end if limit
-
-
+    }//end if limit
     //返回提示信息
     if ($totalnum > 0) $tjlen = ceil(($tjnum / $totalnum) * 100);
     else $tjlen = 100;
-
     $dvlen = $tjlen * 2;
-    $tjsta = "<div style='width:200px;height:16px;border:1px solid #898989;text-align:left'><div style='width:200px;height:16px;background-color:#829D83'></div></div>";
+    $tjsta = "<div style='width:200px;height:16px;border:1px solid #28a745;text-align:left'><div style='width:$dvlen;height:16px;background:#28a745'></div></div>";
     $tjsta .= "<br>完成处理文档总数的：$tjlen %，位置：{$startdd}，继续执行任务";
-
     if ($tjnum < $totalnum) {
         $nurl = "article_keywords_make.php?dopost=fetch&totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize";
         ShowMsg($tjsta, $nurl, 0, 500);

@@ -81,8 +81,8 @@ if ($dojob == '') {
                 exit();
             }
             $dvlen = $tjlen * 2;
-            $tjsta = "<div style='width:200px;height:16px;border:1px solid #898989;text-align:left'><div style='width:200px;height:16px;background-color:#829D83'></div></div>";
-            $tjsta .= "<br>完成处理文档总数的：$tjlen %，继续执行任务";
+            $tjsta = "<div style='width:200px;height:16px;border:1px solid #28a745;text-align:left'><div style='width:$dvlen;height:16px;background:#28a745'></div></div>";           
+            $tjsta .= "<br>完成处理文档总数的：$tjlen %，继续执行任务...";
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd={$startdd}&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
             exit();
@@ -90,11 +90,10 @@ if ($dojob == '') {
             ShowMsg('完成所有任务', 'javascript:;');
             exit();
         }
-    } //获取自动摘要代码结束
+    }//获取自动摘要代码结束
     //更新自动分页
     if ($dojob == 'page') {
         require_once(DEDEADMIN."/inc/inc_archives_functions.php");
-
         $addquery  = "";
         if ($sid != 0) {
             $addquery  .= " and aid>='$sid' ";
@@ -134,7 +133,7 @@ if ($dojob == '') {
                     $dsql->ExecuteNoneQuery("UPDATE $table SET $field='$body' WHERE aid='$aid' ; ");
                 }
             }
-        } //end if limit
+        }//end if limit
         //返回进度提示
         if ($totalnum > 0) {
             $tjlen = ceil(($tjnum / $totalnum) * 100);
@@ -142,9 +141,8 @@ if ($dojob == '') {
             $tjlen = 100;
         }
         $dvlen = $tjlen * 2;
-        $tjsta = "<div style='width:200px;height:16px;border:1px solid #898989;text-align:left'><div style='width:200px;height:16px;background-color:#829D83'></div></div>";
+        $tjsta = "<div style='width:200px;height:16px;border:1px solid #28a745;text-align:left'><div style='width:$dvlen;height:16px;background:#28a745'></div></div>";
         $tjsta .= "<br>完成处理文档总数的：$tjlen %，继续执行任务";
-
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
