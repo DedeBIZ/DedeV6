@@ -64,7 +64,7 @@ function GetMenus($userrank, $topos = 'main')
                         }
                         $link = "<div class='items'>
                         <div class='fllct'>$link</div>
-                        <div class='flrct'><a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><i class='fa $addico' alt='$addalt' title='$addalt'></i></a></div>
+                        <div class='flrct'><a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><i class='fa $addico' title='$addalt'></i></a></div>
                         </div>";
                     } else {
                         $link .= "";

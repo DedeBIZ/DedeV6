@@ -125,7 +125,7 @@ function lib_relation(&$ctag, &$refObj)
                 $row['pubdate'] = isset($row['pubdate']) ? $row['pubdate'] : $row['senddate'];
                 $row['stime'] = GetDateMK($row['pubdate']);
                 $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
-                $row['image'] = "<img src='".$row['picname']."' alt='".preg_replace("#['><]#", "", $row['title'])."'>";
+                $row['image'] = "<img src='".$row['picname']."' title='".preg_replace("#['><]#", "", $row['title'])."'>";
                 $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);

@@ -561,8 +561,8 @@ class FreeList
                     $row['stime'] = GetDateMK($row['pubdate']);
                     $row['textlink'] = "<a href='".$row['filename']."' title='".str_replace("'", "", $row['title'])."'>".$row['title']."</a>";
                     $row['typelink'] = "<a href='".$row['typeurl']."'>[".$row['typename']."]</a>";
-                    $row['imglink'] = "<a href='".$row['filename']."'><img src='".$row['picname']."' width='$imgwidth' height='$imgheight' alt='".str_replace("'", "", $row['title'])."'></a>";
-                    $row['image'] = "<img src='".$row['picname']."' width='$imgwidth' height='$imgheight' alt='".str_replace("'", "", $row['title'])."'>";
+                    $row['imglink'] = "<a href='".$row['filename']."'><img src='".$row['picname']."' width='$imgwidth' height='$imgheight' title='".str_replace("'", "", $row['title'])."'></a>";
+                    $row['image'] = "<img src='".$row['picname']."' width='$imgwidth' height='$imgheight' title='".str_replace("'", "", $row['title'])."'>";
                     $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
                     $row['memberurl'] = $GLOBALS['cfg_memberurl'];
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];

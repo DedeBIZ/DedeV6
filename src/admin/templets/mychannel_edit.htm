@@ -236,11 +236,9 @@
       <tr>
         <td>投稿是否使用缩图</td>
         <td>
-          <label><input name="needpic" type="radio" class="np" value="1"
-            <?php if($row['needpic']==1) echo " checked='1'"; ?> />
+          <label><input name="needpic" type="radio" class="np" value="1" <?php if($row['needpic']==1) echo " checked='1'"; ?> />
           使用 </label>
-          <label><input name="needpic" type="radio" class="np" value="0"
-            <?php if($row['needpic']==0) echo " checked='1'"; ?> />
+          <label><input name="needpic" type="radio" class="np" value="0" <?php if($row['needpic']==0) echo " checked='1'"; ?> />
           不使用 </label>
         </td>
       </tr>
@@ -275,88 +273,90 @@
               <td width="18%">数据字段名</td>
               <td width="20%">数据类型</td>
               <td width="18%">表单类型</td>
-              <td>维护</td>
+              <td>操作</td>
             </tr>
             <?php
-if($row['issystem']==-1)
-{
-?>
+            if($row['issystem']==-1)
+            {
+            ?>
             <tr>
               <td colspan='5'>aid 和 typeid 是强制使用字段，这里不列出</td>
             </tr>
             <?php
-} else {
-?>
+            } else {
+            ?>
             <tr>
               <td colspan='5'>下面列出的字段是附加表的字段，除此外，它还包含主表dede_archives的所有字段</td>
             </tr>
             <?php
-}
-$ds = file(DEDEADMIN."/inc/fieldtype.txt");
-foreach($ds as $d){
-	$dds = explode(',',trim($d));
-	$fieldtypes[$dds[0]] = $dds[1];
-}
-$fieldset = stripslashes($row['fieldset']);
-$dtp = new DedeTagParse();
-$dtp->SetNameSpace("field","<",">");
-$dtp->LoadSource($fieldset);
-if(is_array($dtp->CTags)){
-foreach($dtp->CTags as $ctag)
-{
-?> <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';" height="26">
-              <td>
+            }
+            $ds = file(DEDEADMIN."/inc/fieldtype.txt");
+            foreach($ds as $d){
+              $dds = explode(',',trim($d));
+              $fieldtypes[$dds[0]] = $dds[1];
+            }
+            $fieldset = stripslashes($row['fieldset']);
+            $dtp = new DedeTagParse();
+            $dtp->SetNameSpace("field","<",">");
+              $dtp->LoadSource($fieldset);
+              if(is_array($dtp->CTags)){
+                foreach($dtp->CTags as $ctag)
+                {
+                ?>
+                <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';" height="26">
+                  <td>
+                  <?php
+                  $itname = $ctag->GetAtt('itemname');
+                  if($itname=='') echo "没指定";
+                  else echo $itname;
+                  ?>
+                  </td>
+                  <td><?php echo $ctag->GetTagName(); ?></td>
+                  <td>
+                  <?php
+                  $ft = $ctag->GetAtt('type');
+                  if(isset($fieldtypes[$ft])) echo $fieldtypes[$ft];
+                  else  echo "系统专用类型";
+                  ?>
+                  </td>
+                  <td>
+                  <?php
+                  $ft = $ctag->GetAtt('autofield');
+                  if($ft=='' || $ft==0) {
+                  echo "固化字段";
+                  } else {
+                    echo "自动表单";
+                  }
+                  ?>
+                </td>
+                <td>
                 <?php
-			$itname = $ctag->GetAtt('itemname');
-			if($itname=='') echo "没指定";
-			else echo $itname;
-			?></td>
-              <td><?php echo $ctag->GetTagName(); ?></td>
-              <td>
-                <?php
-			$ft = $ctag->GetAtt('type');
-			if(isset($fieldtypes[$ft])) echo $fieldtypes[$ft];
-			else  echo "系统专用类型";
-			?></td>
-              <td>
-                <?php
-			$ft = $ctag->GetAtt('autofield');
-			if($ft=='' || $ft==0) {
-				echo "固化字段";
-			}
-			else {
-				echo "自动表单";
-			}
-		 ?>
-              </td>
-              <td>
-                <?php
-if($ft==1)
-{
-?>
-                <a href='mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&issystem=<?php echo $row['issystem']; ?>'><i class='fa fa-pencil-square-o' title='修改' alt='修改'></i></a>
+                if($ft==1)
+                {
+                ?>
+                <a href="mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&issystem=<?php echo $row['issystem']; ?>"><i class="btn btn-sm fa fa-pencil-square-o" title="修改"></i></a>
                 <?php if($row['issystem']!=1){ ?>
-                | <a href='javascript:;' onClick='javascript:DelNote("mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&action=delete");'><i class='fa fa-trash' alt='删除' title='删除'></i></a>
+                <a href="javascript:;" onClick="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&action=delete');"><i class="btn btn-sm fa fa-trash" title="删除"></i></a>
                 <?php } ?>
                 <?php
-} else {
-	echo "禁止修改";
-}
-?>
+                } else {
+                  echo "禁止修改";
+                }
+                ?>
               </td>
             </tr>
             <?php
- }}
-?>
+            }
+            }
+            ?>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" width="35%">
-          模型字段配置（文本模式）<br>
+        <td height="26" width="30%">模型字段配置（文本模式）<br>
           修改配置文本可调整字段顺序，但不会修改字段属性
         </td>
-        <td width="65%"><textarea name="fieldset" style="width:98%;height:300px" rows="10" id="fieldset"><?php echo stripslashes($row['fieldset']); ?></textarea></td>
+        <td width="70%"><textarea name="fieldset" style="width:98%;height:300px" rows="10" id="fieldset"><?php echo stripslashes($row['fieldset']); ?></textarea></td>
       </tr>
     </table>
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">

@@ -137,7 +137,7 @@ function lib_likearticle(&$ctag, &$refObj)
                 $row['picname'] = $row['litpic'];
                 $row['stime'] = GetDateMK($row['pubdate']);
                 $row['typelink'] = "<a href='".$row['typeurl']."'>".$row['typename']."</a>";
-                $row['image'] = "<img src='".$row['picname']."' width='$imgwidth' height='$imgheight' alt='".preg_replace("#['><]#", "", $row['title'])."'>";
+                $row['image'] = "<img src='".$row['picname']."' width='$imgwidth' height='$imgheight' title='".preg_replace("#['><]#", "", $row['title'])."'>";
                 $row['imglink'] = "<a href='".$row['filename']."'>".$row['image']."</a>";
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'], $titlelen);

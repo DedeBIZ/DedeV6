@@ -72,7 +72,7 @@ a{text-decoration:none!important}
 </head>
 <body class="bg">
     <div id="floater" class="napisdiv">
-        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/picviewnone.gif" id="picview" alt="关闭预览"></a>
+        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/picviewnone.gif" id="picview" title="关闭预览"></a>
     </div>
     <script src="../js/float.js"></script>
     <script>
