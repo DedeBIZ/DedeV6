@@ -32,11 +32,11 @@
         <td height="26" colspan="5" background="../static/web/img/tbg.gif">
           <table width="96%" class="table table-borderless">
             <tr>
-              <td width="25%" style="padding-left:10px">文档关键词维护</td>
-              <form name='form1' action="article_keywords_main.php">
-                <td width="75%" align="right">
-                  搜索：<input type='text' name='keyword' size='20'>&nbsp;
-                  <button type='submit' name='sb' value='' class="btn btn-success btn-sm">保存</button>
+              <td width="30%" style="padding-left:10px">文档关键词维护</td>
+              <form name="form1" action="article_keywords_main.php">
+                <td width="78%" align="right">
+                  搜索：<input type="text" name="keyword" style="width:160px">&nbsp;
+                  <button type="submit" name="sb" value="" class="btn btn-success btn-sm">保存</button>
                   <button class="btn btn-success btn-sm" name="n1" type="button" id="n1" onClick="location='article_keywords_make.php';">分析系统内的关键词</button>
                   <button class="btn btn-success btn-sm" name="n11" type="button" id="n11" onClick="location='search_keywords_main.php';">管理搜索的关键词</button>
                 </td>
@@ -45,8 +45,8 @@
           </table>
         </td>
       </tr>
-      <form name='form2' action="article_keywords_main.php">
-        <input type='hidden' name='dopost' value='add'>
+      <form name="form2" action="article_keywords_main.php">
+        <input type="hidden" name="dopost" value="add">
         <tr align="center">
           <td width="100%" height="26" colspan="5">
             <table cellspacing="0" cellpadding="0" class="table table-borderless">
@@ -83,13 +83,12 @@
             <input type='text' style='width:90%' class='nnpp' value='{dede:field.rpurl/}' name='rpurl_{dede:field.aid/}'>
           </td>
           <td>
-            <input type='text' size='5' class='nnpp' value='{dede:field.rank/}' name='rank_{dede:field.aid/}'>
+            <input type='text' size='6' class='nnpp' value='{dede:field.rank/}' name='rank_{dede:field.aid/}'>
           </td>
           <td>
             <input type='hidden' name='staold_{dede:field.aid/}' value='{dede:field.sta/}'>
             <label><input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta function="GetSta(@me)" /} />
             禁用</label>
-            &nbsp;
             <label><input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1'>
             删除</label>
           </td>

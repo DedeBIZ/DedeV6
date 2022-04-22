@@ -82,9 +82,9 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
       <tr align='center' onMouseMove=\"javascript:this.bgColor='#F8FCF1';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
       <td height='26'><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
       <td height='26'>{$row['aid']}</td>
-      <td style='padding:6px;'><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
-      <td style='padding:6px;'><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:95%;'></td>
-      <td style='padding:6px;'><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
+      <td><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
+      <td><input name='spwords' type='text' id='spwords{$row['aid']}' value='{$row['spwords']}' style='width:95%;'></td>
+      <td><input name='count' type='text' id='count{$row['aid']}' value='{$row['count']}' size='5'></td>
       <td><a href='{$cfg_phpurl}/search.php?kwtype=0&keyword=".urlencode($row['keyword'])."&searchtype=titlekeyword' target='_blank'>{$row['result']}</a></td>
       <td>".MyDate("Y-m-d H:i:s", $row['lasttime'])."</td>
       <td>
