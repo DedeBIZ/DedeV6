@@ -11,8 +11,6 @@
 require_once(dirname(__FILE__).'/config.php');
 CheckPurview('sys_ArcBatch');
 require_once(DEDEINC.'/libraries/oxwindow.class.php');
-//ShowMsg("目前暂不需要此工具，以后有需要系统会进行自动升级这个程序<br><a href='index_body.php'>&lt;&lt;点击返回</a>", "javascript:;");
-//exit();
 if (empty($dopost)) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
