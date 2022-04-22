@@ -1,18 +1,16 @@
 <footer class="bg-success mt-3">
     <div class="copyright py-5">
         <p class="text-center">
-            Powered by <a href="https://www.dedebiz.com" title="DedeBIZ内容管理系统-国内流行的内容管理系统多端全媒体解决方案" target="_blank">DedeBIZ<?php echo $cfg_version;?></a> &copy; 2022 <a href="https://www.dedebiz.com" target="_blank" title="DedeBIZ商业技术支持，提供更专业强大的站点应用开发技术">DedeBIZ技术支持</a><br>
-            <?php echo $cfg_powerby;?>&nbsp;&nbsp;<?php echo $cfg_beian;?>
+            {dede:global.cfg_powerby/} {dede:global.cfg_beian/} Powered by <a href="https://www.dedebiz.com" title="DedeBIZ内容管理系统-国内流行的内容管理系统多端全媒体解决方案" target="_blank">DedeBIZ{dede:global.cfg_version/}</a>
         </p>
     </div>
 </footer>
 <!-- /footer -->
 <div class="scroll-top">
-    <button onclick="gotop()" id="btnScrollTop" title="返回顶部">
+    <button onclick="gotop()" id="btnScrollTop">
         <i class="fa fa-chevron-up"></i> 
     </button>
 </div>
 <!-- /.scroll-top -->
-
 <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/bootstrap.bundle.min.js"></script>
 <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/style.js"></script>

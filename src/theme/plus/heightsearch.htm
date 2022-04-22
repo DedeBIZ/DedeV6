@@ -5,7 +5,7 @@
   <title><?php echo $cfg_webname;?>_高级搜索</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-  <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
 </head>
 <body class="flinkpage">
@@ -33,20 +33,22 @@
           </tr>
           <tr>
             <td height="26" align="center">发布时间：</td>
-            <td height="26"><select name="starttime" id="starttime">
+            <td height="26">
+              <select name="starttime" id="starttime">
                 <option value="-1" selected>不限</option>
                 <option value="7">一周以内</option>
                 <option value="30">一个月内</option>
                 <option value="90">三个月内</option>
                 <option value="180">半年以内</option>
-              </select></td>
+              </select>
+            </td>
           </tr>
           <tr>
             <td height="26" align="center">内容类型：</td>
-            <td height="26"> <select name="channeltype" id="channeltype" class="form-control">
+            <td height="26">
+              <select name="channeltype" id="channeltype" class="form-control">
                 <option value="0" selected>不限</option>
                 <?php
-					 
 					 $dsql->SetQuery("Select id,typename From #@__channeltype order by id desc");
 					 $dsql->Execute();
 					 while($row = $dsql->GetObject())
@@ -54,16 +56,19 @@
 					   echo "<option value='".$row->id."'>".$row->typename."</option>";
 					 }
 					 ?>
-              </select> </td>
+              </select>
+            </td>
           </tr>
           <tr>
             <td height="26" align="center">排序方式：</td>
-            <td height="26"> <select name="orderby" id="orderby" class="form-control">
+            <td height="26">
+              <select name="orderby" id="orderby" class="form-control">
                 <option value="sortrank" selected>默认</option>
                 <option value="senddate">收录时间</option>
                 <option value="pubdate">发布时间</option>
                 <option value="id">文档ID</option>
-              </select> </td>
+              </select>
+            </td>
           </tr>
           <tr>
             <td height="26" align="center">显示条数：</td>
@@ -75,7 +80,8 @@
               <label><input name="kwtype" type="radio" value="1" checked>
               或</label>
               <label><input type="radio" name="kwtype" value="0">
-              与</label></td>
+              与</label>
+            </td>
           </tr>
           <tr>
             <td height="26" align="center">搜索内容：</td>
@@ -86,11 +92,11 @@
               </select>
             </td>
           </tr>
-          <tr bgcolor="#F4FCE4">
-            <td height="26" align="center"></td>
-            <td height="26">
+          <tr>
+            <td height="30" bgcolor="#F4FCE4" colspan="2" align="center"></td>
               <button type="submit" class="btn btn-success btn-sm">搜索</button>
-              <button type="reset" class="btn btn-outline-success">重置</button></td>
+              <button type="reset" class="btn btn-outline-success">重置</button>
+            </td>
           </tr>
         </form>
       </table>

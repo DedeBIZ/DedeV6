@@ -5,7 +5,7 @@
 	<title><?php echo $diy->name;?> - Powered by DedeBIZ</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-	<link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
 	<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
 	<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
@@ -23,23 +23,20 @@
 						<input type="hidden" name="action" value="post">
 						<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 						<input type="hidden" name="do" value="2">
-						<table style="width:97%;" cellpadding="0" cellspacing="1" class="table">
+						<table style="width:98%" cellpadding="0" cellspacing="1" class="table">
 							<?php
 								echo $postform;
 							?>
 						</table>
-						<div align='center'>
-							<button type="submit" name="submit" class='btn btn-success btn-sm'>提 交</button>
-							&nbsp;
-							<button type="reset" name="reset" class='btn btn-success btn-sm'>重 置</button>
+						<div align="center">
+							<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
+							<button type="reset" name="reset" class="btn btn-success btn-sm">重置</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
-
 </body>
 </html>

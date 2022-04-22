@@ -5,7 +5,7 @@
 <title><?php echo $diy->name;?> - powered by dedebiz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-<link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
 <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
 <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
@@ -21,10 +21,10 @@
 		<div class="cbox mceneter">
 			<div class="maplist">
 			<br>
-<table class='table' cellspacing="1">
+<table cellspacing="1" class="table">
 <?php
 echo '<tbody>';
-echo '<tr><td bgcolor="#eeeeee" width="20%">id</td><td bgcolor="#eeeeee">'.$row['id'].'</td></tr>';
+echo '<tr><td bgcolor="#f8f8f8" width="20%">id</td><td bgcolor="#f8f8f8">'.$row['id'].'</td></tr>';
 $allowhtml = array('htmltext');
 foreach($fieldlist as $field=>$fielddata)
 {
@@ -51,8 +51,6 @@ echo '</tbody>';
 		</div>
 	</div>
 </div>
-
 <?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
-
 </body>
 </html>

@@ -5,22 +5,23 @@
   <title><?php echo $cfg_webname?>_投票结果</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-  <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
   <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
   <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
 </head>
 <body class="flinkpage">
   <?php include("plus_header.htm") ;?>
-
   <div class="container">
     <div class="sp-title">
       <h3><?php echo $voname?></h3>
-      <p><span class="more">
+      <p>
+        <span class="more">
           投票开始时间：<?php echo $starttime;?>　
           投票结束时间:<?php echo $endtime;?>
           投票人数：<?php echo $totalcount;?>
-        </span></p>
+        </span>
+      </p>
     </div>
     <div class="formbox">
       <?php echo $rsmsg;?>
@@ -29,8 +30,6 @@
       <?php echo $votelist;?>
     </div>
   </div>
-
   <?php include("plus_footer.htm") ;?>
-
 </body>
 </html>

@@ -16,8 +16,7 @@
 		<div class="sp-title">
 			<h2>购物车</h2>
 		</div>
-		<div id="errorChickCookie" class="clear center mt1"
-			style="font-style:inherit;color:#424b51;font-weight:normal;padding-top:8px;padding-bottom:8px;text-align:center;">
+		<div id="errorChickCookie" class="clear center mt1" style="font-style:inherit;color:#424b51;font-weight:normal;padding-top:8px;padding-bottom:8px;text-align:center;">
 		</div>
 		<div class="buycar">
 			<h3>我的购物车 - <em id="carId">{dede:var.carts.orders_id/}</em>订单号</h3>
@@ -57,10 +56,8 @@
 					<tfoot>
 						<tr>
 							<td colspan="6" align="right">
-								<div style="float:left">
-									共 <span style='color:#dc3545'>{dede:var.carts.cart_count/}</span> 件商品，合计: <span style='color:#dc3545'>
-										{dede:var.carts.price_count/}</span>元 </div>
-								<div style="float:right; height:33px;">
+								<div style="float:left">共 <span style="color:#dc3545">{dede:var.carts.cart_count/}</span> 件商品，合计: <span style='color:#dc3545'>{dede:var.carts.price_count/}</span> 元</div>
+								<div style="float:right">
 									<!--<input type="button" value="打印购物车" class="btn-2" onclick="printPage(1)"/>-->
 									<input type="button" value="更新订单号" class="btn btn-success btn-sm" onClick="makeCarId()">
 									<input type="button" value="删除已选定" class="btn btn-success btn-sm" onClick="DelPost()">
@@ -120,7 +117,7 @@
 	<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
 	<script language="JavaScript" type="text/javascript">
 		if (!navigator.cookieEnabled) {
-			$('#errorChickCookie').html('您浏览器的 cookie 功能被禁用,请启用此功能!');
+			$('#errorChickCookie').html('您浏览器的 cookie 功能被禁用，请启用此功能');
 			$('.buycar').hide();
 		}
 	</script>
