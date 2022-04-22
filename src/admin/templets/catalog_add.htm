@@ -8,9 +8,6 @@
 <link rel="stylesheet" href="../static/web/css/admin.css">
 <script src="../static/web/js/jquery.min.js"></script>
 <script src="js/main.js"></script>
-<style>
-textarea{min-height:30px}
-</style>
 <script>
 var channelArray = new Array();
 <?php
@@ -353,7 +350,7 @@ function CheckCross() {
             <tr id='smclass' style='<?php echo ($channelid<0 ? '' : 'display:none'); ?>'>
               <td class="bline" style="padding-left:10px">绑定小分类：<br>仅适用[分类信息模型]</td>
               <td class="bline">
-                <select name='smalltype[]' multiple='yes' style='width:160px'>
+                <select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
                   <?php
                   $sql = "SELECT * FROM `#@__sys_enum` WHERE egroup LIKE 'infotype' ORDER BY disorder ASC, id DESC ";
                   $dsql->Execute('s',$sql);
