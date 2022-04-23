@@ -315,9 +315,9 @@ class SearchView
                 continue;
             }
             //这里不区分大小写进行关键词替换
-            $fstr = str_ireplace($k, "<span style='color:#dc3545'>$k</span>", $fstr);
+            $fstr = str_ireplace($k, "<span class='text-danger'>$k</span>", $fstr);
             //速度更快,效率更高
-            //$fstr = str_replace($k, "<span style='color:#dc3545'>$k</span>", $fstr);
+            //$fstr = str_replace($k, "<span class='text-danger'>$k</span>", $fstr);
         }
         return $fstr;
     }

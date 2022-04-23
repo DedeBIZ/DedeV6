@@ -46,7 +46,7 @@ function IsCommendArchives($iscommend)
     }
     $sn = trim($sn);
     if ($sn == '') return '';
-    else return "<span style='color:#dc3545'>[$sn]</span>";
+    else return "<span class='text-danger'>[$sn]</span>";
 }
 //获得推荐的标题
 function GetCommendTitle($title, $iscommend)
@@ -81,7 +81,7 @@ function IsHtmlArchives($ismake)
     } else if ($ismake == -1) {
         return "仅动态";
     } else {
-        return "<span style='color:#dc3545'>未生成</span>";
+        return "<span class='text-danger'>未生成</span>";
     }
 }
 //获得内容的限定级别名称
@@ -105,7 +105,7 @@ function GetRankName($arcrank)
 function IsPicArchives($picname)
 {
     if ($picname != '') {
-        return "<span style='color:#dc3545'>[图]</span>";
+        return "<span class='text-danger'>[图]</span>";
     } else {
         return '';
     }

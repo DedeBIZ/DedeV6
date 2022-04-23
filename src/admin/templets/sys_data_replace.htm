@@ -66,7 +66,7 @@
                       $dsql->SetQuery("Show Tables");
                       $dsql->Execute('t');
                       if($dsql->GetError()!=''){
-                        echo "<span style='color:#dc3545'>找不到您所指定的数据库 $dbname</span><br>";
+                        echo "<span class='text-danger'>找不到您所指定的数据库 $dbname</span><br>";
                         echo $qbutton;
                       }
                       echo "<select name='exptable' id='exptable' size='10' style='width:60%;height:220px' onchange='ShowFields()'>";

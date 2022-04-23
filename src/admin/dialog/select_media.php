@@ -132,7 +132,7 @@ a{text-decoration:none!important}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                if ($file == $comeback) $lstyle = " class='text-danger' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='../../static/web/img/flash.gif'>$file</a></td>
@@ -144,7 +144,7 @@ a{text-decoration:none!important}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                if ($file == $comeback) $lstyle = " class='text-danger' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='../../static/web/img/wmv.gif'>$file</a></td>
@@ -156,7 +156,7 @@ a{text-decoration:none!important}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                if ($file == $comeback) $lstyle = " class='text-danger' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='../../static/web/img/rm.gif'>$file</a></td>
@@ -168,7 +168,7 @@ a{text-decoration:none!important}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " style='color:#dc3545' ";
+                if ($file == $comeback) $lstyle = " class='text-danger' ";
                 else  $lstyle = "";
                 $line = "<tr>
                 <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\"><img src='../../static/web/img/mp3.gif'>$file</a></td>

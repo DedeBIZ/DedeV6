@@ -35,10 +35,10 @@ function GetSta($sta, $oid)
     if ($sta == 0) {
         return $payname['name']." 手续费:".$payname['fee']."元";
     } else if ($sta == 1) {
-        return '<span style="color:#dc3545">已付款,等发货</span>';
+        return '<span class="text-danger">已付款,等发货</span>';
     } else if ($sta == 2) {
         return '<a href="shops_products.php?do=ok&oid='.$oid.'">确认</a>';
     } else {
-        return '<span style="color:#dc3545">已完成</span>';
+        return '<span class="text-danger">已完成</span>';
     }
 }

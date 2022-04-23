@@ -35,7 +35,7 @@ function checkSubmit()
 <tr>
 <td height="200" align='center'>
 	<?php
-	if($row['matt']==10) echo "<span style='color:#dc3545'>当前用户是网站管理员关连的帐号，请小心操作</span>";
+	if($row['matt']==10) echo "<span class='text-danger'>当前用户是网站管理员关连的帐号，请小心操作</span>";
 	?>
 	<table width="98%" cellspacing="0" cellpadding="6" class="table table-borderless">
         <form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
@@ -130,7 +130,7 @@ function checkSubmit()
             <td height="26" class="bline">会员天数：</td>
             <td height="26" class="bline"><input type="text" name="exptime" value="<?php echo $row['exptime']?>" id="exptime" style="width:60px">（如果您要升级会员，会员天数必须大于0）</td>
           </tr>
-          <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span style="color:#dc3545">该会员已经到期</span>'; ?>
+          <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span class="text-danger">该会员已经到期</span>'; ?>
           <tr> 
             <td height="26" class="bline">会员剩余天数：</td>
             <td height="26" class="bline"><?php echo $mhasDay; ?></td>

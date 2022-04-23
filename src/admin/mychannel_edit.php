@@ -55,7 +55,7 @@ else if ($dopost == "copystart") {
     $wecome_info = "&nbsp;<a href='mychannel_main.php'>频道管理</a>::模型复制";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
-    $win->AddTitle("&nbsp;被复制频道：[<span style='color:#dc3545'>".$row['typename']."</span>]");
+    $win->AddTitle("&nbsp;被复制频道：[<span class='text-danger'>".$row['typename']."</span>]");
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');

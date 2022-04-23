@@ -90,7 +90,7 @@
         <td><a href="../user/index.php?uid={dede:field.userid/}" target='_blank'>
           <?php
           echo ''.$fields['userid'].'';
-          if($fields['spacesta']==-2) echo "<span style='color:#dc3545'>[禁言]</span>";
+          if($fields['spacesta']==-2) echo "<span class='text-danger'>[禁言]</span>";
           if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>[未审核]</span>";
           if(!empty($fields['face'])) {
             echo "<br><img src='{$fields['face']}' title='浏览会员空间' style='max-width:80px;height:auto'>";

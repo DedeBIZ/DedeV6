@@ -52,7 +52,7 @@ else if ($dopost == 1) {
     <table>
     <tr>
     <td>
-    <span style='color:#28a745'>已完成数据结构完整性检测</span>
+    <span class='text-dark'>已完成数据结构完整性检测</span>
     <br>
     如果您系统有下面几种问题之一，请检测微表正确性：<br>
     1、无法获得主键，因此无法进行后续操作<br>
@@ -99,11 +99,11 @@ else if ($dopost == 2) {
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
     $msg .= "微统计表记录数：{$row['dd']}<br>";
     if ($row['dd'] == $allarcnum) {
-        $msg .= "<span style='color:#28a745'>两者记录一致，无需修正</span><br>";
+        $msg .= "<span class='text-dark'>两者记录一致，无需修正</span><br>";
     } else {
         $sql = "TRUNCATE TABLE `#@__arctiny`";
         $dsql->ExecuteNoneQuery($sql);
-        $msg .= "<span style='color:#dc3545'>两者记录不一致，尝试进行简单修正</span><br>";
+        $msg .= "<span class='text-danger'>两者记录不一致，尝试进行简单修正</span><br>";
         //导入普通模型微数据
         $sql = "INSERT INTO `#@__arctiny`(id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid)  
             SELECT id, typeid, typeid2, arcrank, channel, senddate, sortrank, mid FROM `#@__archives` ";
@@ -117,9 +117,9 @@ else if ($dopost == 2) {
         }
         $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
         if ($row['dd'] == $allarcnum) {
-            $msg .= "<span style='color:#28a745'>修正记录成功</span><br>";
+            $msg .= "<span class='text-dark'>修正记录成功</span><br>";
         } else {
-            $msg .= "<span style='color:#dc3545'>修正记录失败，建议进行高级综合检测</span><br>";
+            $msg .= "<span class='text-danger'>修正记录失败，建议进行高级综合检测</span><br>";
             $errall = "<a href='sys_repair.php?dopost=3' class='btn btn-danger'>结合性检测</a> ";
         }
     }

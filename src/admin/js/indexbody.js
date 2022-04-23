@@ -85,7 +85,7 @@ function LoadServer() {
                 infoStr += `
                 <tr>
                     <td style="width:50%">授权域名：</td>
-                    <td>${rsp.result.domain} <a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" class="btn btn-success btn-sm">查看</a></td>
+                    <td>${rsp.result.domain} <a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" class="btn btn-success btn-sm">证书</a></td>
                 </tr>
                 `;
             }
@@ -118,7 +118,7 @@ function LoadServer() {
                 infoStr += `
                 <tr>
                     <td style="width:50%">版本组件：</td>
-                    <td><a href="${cfg_biz_dedebizUrl}/start?code=-1008" target="_blank" class="btn btn-danger btn-sm">如何启动组件</a></td>
+                    <td><a href="${cfg_biz_dedebizUrl}/start?code=-1008" target="_blank" class="btn btn-danger btn-sm">启动组件</a></td>
                 </tr>
                 `;
             } else {
@@ -126,7 +126,7 @@ function LoadServer() {
                 infoStr += `
                 <tr>
                     <td style="width:50%">版本组件：</td>
-                    <td><a href="javascript:ViewDedeBIZ()" class="btn btn-success btn-sm">查看组件信息</a></td>
+                    <td><a href="javascript:ViewDedeBIZ()" class="btn btn-success btn-sm">组件信息</a></td>
                 </tr>
                 `;
             }
@@ -137,11 +137,11 @@ function LoadServer() {
             <table width="100%" class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td style="width:60%">尚未启动商业版服务，原因：${rsp.msg}</td>
-                        <td style="text-align:right">当前版本：社区版<a href="${cfg_biz_dedebizUrl}/start?code=${rsp.code}" target="_blank" class="btn btn-success btn-sm" style="margin-left:10px">升级商业版</a></td>
+                        <td style="width:60%">尚未启动商业版组件，原因：${rsp.msg}</td>
+                        <td style="text-align:right">当前版本：社区版<a href="${cfg_biz_dedebizUrl}/start?code=${rsp.code}" target="_blank" class="btn btn-success btn-sm ml-3">升级商业版</a></td>
                     </tr>
                     <tr>
-                        <td colspan="2">如果您已购买商业版授权，您可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系，谢谢。</td>
+                        <td colspan="2">如果您已购买商业版授权，可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系，谢谢。</td>
                     </tr>
                 </tbody>
             </table>
@@ -230,10 +230,6 @@ async function LoadStatChart() {
             plugins: {
                 legend: {
                     position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: `${cfg_webname}流量统计图`
                 }
             }
         },

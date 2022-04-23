@@ -89,29 +89,29 @@
 						{dede:datalist empty='<tr><td><center>暂无内容</center></td></tr>'}
 						<tr>
 							<td style="padding:0">
-								<table width="100%" cellpadding="0" cellspacing="1" class="table table-borderless" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+								<table width="100%" cellpadding="0" cellspacing="1" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';"  class="table table-borderless">
 									<tr>
-										<td width="9%">选择 <input name="fid" type="checkbox" class="np" id="fid" value="{dede:field.id/}"></td>
-										<td width="12%">用户：{dede:field.username/}</td>
-										<td width="20%">
+										<td width="8%">选择 <input name="fid" type="checkbox" class="np" id="fid" value="{dede:field.id/}"></td>
+										<td width="10%">用户：{dede:field.username/}</td>
+										<td width="30%">
 											文档：<a href='feedback_main.php?aid={dede:field.aid/}'>{dede:field.arctitle function="RemoveXSS(@me)"/}</a> (<a href="archives_do.php?aid={dede:field.aid/}&dopost=viewArchives" target="_blank">浏览</a>)
 											<?php if($fields['replycount'] > 0) { ?><a href='feedback_main.php?fid={dede:field.id/}'>（{dede:field.replycount/}条回复）</a>
 											<?php } ?>
 										</td>
-										<td width="18%" align="center">IP地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
-										<td width="15%">时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}</td>
-										<td width="20%" align="center">
+										<td width="12%" align="center">IP地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
+										<td width="12%">时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}</td>
+										<td align="center">
 											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'>编辑评论</a>
 											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新评论</a>
 										</td>
 									</tr>
 									<tr align="center">
 										<td height="26" colspan="6">
-											<table width="98%" cellspacing="0" cellpadding="0">
+											<table width="100%" cellspacing="0" cellpadding="0">
 												<tr>
 													<td align="left">
-														{dede:field.ischeck function="IsCheck(@me)" /}
-														{dede:field.msg function='cn_substr(Text2Html(@me), 150)'/}
+														{dede:field.ischeck function="IsCheck(@me)"/}
+														{dede:field.msg function='cn_substr(Text2Html(@me),280)'/}
 													</td>
 												</tr>
 											</table>

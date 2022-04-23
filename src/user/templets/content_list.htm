@@ -73,7 +73,7 @@
                       <td align="center"><?php
         if($fields['arcrank']>=0) echo "已审核";
         else if($fields['arcrank']==-2) echo "<span style='color:#007bff'>被退回</span>";
-        else echo "<span style='color:#dc3545'>未审核</span>";
+        else echo "<span class='text-danger'>未审核</span>";
         ?></td>
                       <td align="center"><?php echo $fields['click']; ?></td>
                       <td><?php echo GetDateMk($fields['senddate']); ?></td>

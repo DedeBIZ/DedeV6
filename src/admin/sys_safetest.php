@@ -76,7 +76,7 @@ if ($action == 'test') {
     $message = '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css"><link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">';
     AjaxHead();
     TestSafe(DEDEROOT);
-    if ($message == '') $message = "<span style='color:#28a745'>没发现可疑文件</span>";
+    if ($message == '') $message = "<span class='text-dark'>没发现可疑文件</span>";
     echo $message;
     exit();
 } else if ($action == 'viewdiff') {
@@ -113,7 +113,7 @@ else if ($action == 'clear') {
             @unlink($d.'/'.$filename);
         }
     }
-    $message = "<span style='color:#28a745'>成功清空模板缓存</span>";
+    $message = "<span class='text-dark'>成功清空模板缓存</span>";
     echo $message;
     exit();
 }
