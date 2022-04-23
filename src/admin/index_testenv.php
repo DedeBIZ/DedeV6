@@ -128,6 +128,9 @@ if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
 if (IsWritable(DEDEDATA.'/common.inc.php')) {
 	$safeMsg[] = '数据安全data/common.inc.php文件，强烈建议以管理员级别设置为644或只读';
 }
+if (!IsSSL()) {
+	$safeMsg[] = '当前站点尚未启用HTTPS，强烈建议您启用';
+}
 $rs = TestAdminPWD();
 if ($rs < 0) {
 	$linkurl = "<a href='sys_admin_user.php' class='btn btn-success btn-sm'>修改</a>";
