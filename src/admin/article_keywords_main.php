@@ -24,13 +24,11 @@ if ($dopost == 'saveall') {
         $rpurl = ${'rpurl_'.$aid};
         $rpurlold = ${'rpurlold_'.$aid};
         $keyword = ${'keyword_'.$aid};
-
         //删除项目
         if (!empty(${'isdel_'.$aid})) {
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__keywords` WHERE aid='$aid'");
             continue;
         }
-
         //禁用项目
         $staold = ${'staold_'.$aid};
         $sta = empty(${'isnouse_'.$aid}) ? 1 : 0;
@@ -39,7 +37,6 @@ if ($dopost == 'saveall') {
             $dsql->ExecuteNoneQuery($query1);
             continue;
         }
-
         //更新链接网址
         if ($rpurl != $rpurlold) {
             $query1 = "UPDATE `#@__keywords` SET rpurl='$rpurl' WHERE aid='$aid' ";
@@ -74,15 +71,13 @@ if (empty($keyword)) {
 } else {
     $addquery = " WHERE keyword LIKE '%$keyword%' ";
 }
-
 $sql = "SELECT * FROM `#@__keywords` $addquery ORDER BY `rank` DESC";
 $dlist = new DataListCP();
-$dlist->pageSize = 20;
+$dlist->pageSize = 30;
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetTemplate(DEDEADMIN."/templets/article_keywords_main.htm");
 $dlist->SetSource($sql);
 $dlist->Display();
-
 function GetSta($sta)
 {
     if ($sta == 1) return '';

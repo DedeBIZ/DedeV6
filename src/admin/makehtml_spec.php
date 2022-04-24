@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
 if (empty($dopost)) $dopost = "";
-
 if ($dopost == "ok") {
     require_once(DEDEINC."/archive/specview.class.php");
     $sp = new SpecView();

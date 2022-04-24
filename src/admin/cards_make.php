@@ -12,7 +12,6 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Card');
 if (empty($dopost)) $dopost = '';
 if ($dopost == '') include(DEDEADMIN."/templets/cards_make.htm");
-
 //生成点卡
 elseif ($dopost == 'make') {
     $row = $dsql->GetOne("SELECT * FROM #@__moneycard_record ORDER BY aid DESC");
@@ -25,9 +24,7 @@ elseif ($dopost == 'make') {
     $ctid = $cardtype;
     $startid++;
     $endid = $startid + $mnum;
-
     header("Content-Type: text/html; charset={$cfg_soft_lang}");
-
     for (; $startid < $endid; $startid++) {
         $cardid = $snprefix.$startid.'-';
         for ($p = 0; $p < $pwdgr; $p++) {

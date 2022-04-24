@@ -39,10 +39,8 @@ if (empty($action)) {
     } else {
         $query = "SHOW TABLES";
     }
-    
     $dsql->SetQuery($query);
     $dsql->Execute("biz");
-
     while ($row = $dsql->GetArray("biz")) {
         if (empty($row[0])) $row[0] = '';
         if ($table == $row[0]) {

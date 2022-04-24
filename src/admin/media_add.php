@@ -9,10 +9,8 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-
 //增加权限检查
 if (empty($dopost)) $dopost = "";
-
 //上传
 if ($dopost == "upload") {
     CheckCSRF();
@@ -23,14 +21,12 @@ if ($dopost == "upload") {
     $uptime = time();
     $adminid = $cuserLogin->getUserID();
     $width = $height = '';
-
     for ($i = 0; $i <= 40; $i++) {
         if (isset(${"upfile".$i}) && is_uploaded_file(${"upfile".$i})) {
             $filesize = ${"upfile".$i."_size"};
             $upfile_type = ${"upfile".$i."_type"};
             $upfile_name = ${"upfile".$i."_name"};
             $dpath = MyDate("ymd", $uptime);
-
             if (in_array($upfile_type, $sparr_image)) {
                 $mediatype = 1;
                 $savePath = $cfg_image_dir."/".$dpath;
@@ -57,8 +53,8 @@ if ($dopost == "upload") {
                 CloseFtp();
             }
             /*
-			dedecms后台文件任意上传漏洞
-			漏洞描述：dedecms早期版本后台存在大量的富文本编辑器，该控件提供了一些文件上传接口，同时dedecms对上传文件的后缀类型未进行严格的限制，这导致了黑客可以上传WEBSHELL，获取网站后台权限
+			后台文件任意上传漏洞
+			漏洞描述：早期版本后台存在大量的富文本编辑器，该控件提供了一些文件上传接口，同时对上传文件的后缀类型未进行严格的限制，这导致了黑客可以上传WEBSHELL，获取网站后台权限
 			*/
             if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
                 ShowMsg("您指定的文件名被系统禁止", "javascript:;");
@@ -74,7 +70,6 @@ if ($dopost == "upload") {
                 ShowMsg("仅支持媒体文件及应用程序上传", -1);
                 exit;
             }
-            
             if ($mediatype == 1) {
                 @move_uploaded_file(${"upfile".$i}, $fullfilename);
                 $info = '';
@@ -91,7 +86,7 @@ if ($dopost == "upload") {
                 $ntitle = $title;
             }
             $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-       VALUES ('$ntitle','$filename','$mediatype','$width','$height','$playtime','$filesize','$uptime','$adminid'); ";
+				VALUES ('$ntitle','$filename','$mediatype','$width','$height','$playtime','$filesize','$uptime','$adminid'); ";
             $okdd++;
             $dsql->ExecuteNoneQuery($inquery);
         }

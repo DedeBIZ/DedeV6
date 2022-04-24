@@ -12,10 +12,8 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
 require_once(DEDEINC."/archive/partview.class.php");
 if (empty($typeid)) $typeid = 0;
-
 if (empty($templet)) $templet = "plus/js.htm";
 if (empty($uptype)) $uptype = "all";
-
 if ($uptype == "all") {
     $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE id>'$typeid' AND ispart<>2 ORDER BY id ASC LIMIT 0,1;");
     if (!is_array($row)) {

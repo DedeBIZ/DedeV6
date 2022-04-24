@@ -34,8 +34,7 @@ if (isset($idArray[$pageno])) {
 $lv = new FreeList($lid);
 $ntotalpage = $lv->TotalPage;
 if (empty($mkpage)) $mkpage = 1;
-if (empty($maxpagesize)) $maxpagesize = 50;
-
+if (empty($maxpagesize)) $maxpageSize = 30;
 //如果栏目的文档太多，分多批次更新
 if ($ntotalpage <= $maxpagesize) {
     $lv->MakeHtml();

@@ -14,17 +14,15 @@ require_once(DEDEINC.'/datalistcp.class.php');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, '/');
 make_hash();
 $sql = "SELECT myt.aid,myt.tagname,tp.typename,myt.timeset,myt.endtime
-        FROM `#@__mytag` myt LEFT JOIN `#@__arctype` tp ON tp.id=myt.typeid ORDER BY myt.aid DESC ";
+    FROM `#@__mytag` myt LEFT JOIN `#@__arctype` tp ON tp.id=myt.typeid ORDER BY myt.aid DESC ";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN.'/templets/mytag_main.htm');
 $dlist->SetSource($sql);
 $dlist->display();
-
 function TestType($tname)
 {
     return $tname == '' ? '所有栏目' : $tname;
 }
-
 function TimeSetValue($ts)
 {
     return $ts == 0 ? '不限时间' : '限时标记';

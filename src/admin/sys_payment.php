@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC.'/datalistcp.class.php');
 CheckPurview('sys_Data');
-
 $dopost = (empty($dopost)) ? '' : $dopost;
 $pid = (empty($pid)) ? 0 : intval($pid);
 /*
@@ -33,18 +32,14 @@ $pid = (empty($pid)) ? 0 : intval($pid);
   将上述的格式传入到数组中去,然后进行解析:
   1.声明类,并创建数组
   $af = new Array2form($config);
-  
   2.设置一个表单模板(可选,如果不设置载入默认)
   $af->SetDefaultTpl($templets); $templets:为一个底册模板文件
   表单模板格式为:
   <p>~title~:~form~<small>~description~</small></p>
-  
   3.获取特定项目表单
   $af->GetIterm('alipay', 1) //1.表示获取一个默认模板下的完整表单,2.仅获取一个表单项
-  
   4.获取所有表单内容
   $af->GetAll() //获取表单所有解析后的内容
-  
 */
 class Array2form
 {
@@ -59,15 +54,6 @@ class Array2form
             $this->SetDefaultTpl();
         }
     }
-
-    //析构函数,兼容PHP4
-    /*
-    function Array2form($formarray = array())
-    {
-        $this->__construct($formarray);
-    }
-    */
-
     //获取一个特定项目的表单
     function GetIterm($itermid = '', $itermtype = 1)
     {
@@ -93,7 +79,6 @@ class Array2form
         }
         return empty($reval) ? '' : $reval;
     }
-
     function GetForm($key, $formarry = array(), $formtype = 'text')
     {
         switch ($formtype) {
@@ -126,8 +111,6 @@ class Array2form
         }
         return $reval_form;
     }
-
-
     //获取所有的表单内容
     function GetAll()
     {
@@ -141,7 +124,6 @@ class Array2form
             return FALSE;
         }
     }
-
     //获取一个特定项目的表单
     function SetDefaultTpl($tplname = '')
     {
@@ -159,7 +141,6 @@ $tplstring = "
               <td>~form~ <small>~description~</small></td>
             </tr>
 ";
-
 //安装支付接口
 if ($dopost == 'install') {
     $row = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$pid'");
@@ -210,7 +191,6 @@ else if ($dopost == 'config') {
     } else {
         $config = serialize($config);
     }
-
     $query = "UPDATE `#@__payment` SET name = '$pay_name',fee='$pay_fee',description='$pay_desc',config='$config',enabled='1' WHERE id='$pid'";
     $dsql->ExecuteNoneQuery($query);
     if ($pm == 'edit') $msg = "保存修改成功";
@@ -218,7 +198,6 @@ else if ($dopost == 'config') {
     ShowMsg($msg, "sys_payment.php");
     exit();
 }
-
 //删除支付接口
 else if ($dopost == 'uninstall') {
     $row = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$pid'");

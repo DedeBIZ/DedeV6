@@ -11,11 +11,9 @@
 require(dirname(__FILE__)."/config.php");
 CheckPurview('temp_Other');
 require_once(DEDEINC."/typelink/typelink.class.php");
-
 if (empty($dopost)) $dopost = '';
 $aid = intval($aid);
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'mytag_main.php' : $_COOKIE['ENV_GOBACK_URL'];
-
 if ($dopost == 'delete') {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__mytag` WHERE aid='$aid'");
     ShowMsg("成功删除一个自定义标记", $ENV_GOBACK_URL);

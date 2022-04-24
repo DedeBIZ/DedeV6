@@ -143,7 +143,7 @@ EOT;
         exit;
     }
     if ($i == 1) {
-        echo '      <tr align="center" bgcolor="#f8f8f8" height="26">
+        echo '<tr height="26" bgcolor="#f8f8f8" align="center">
            <td colspan="3">没有找到搜索的内容</td>
           </tr></table>';
     }

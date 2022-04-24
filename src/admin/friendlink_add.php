@@ -11,7 +11,6 @@
 require(dirname(__FILE__)."/config.php");
 CheckPurview('plus_友情链接模块');
 if (empty($dopost)) $dopost = "";
-
 if ($dopost == "add") {
     $dtime = time();
     if (is_uploaded_file($logoimg)) {

@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Type');
 if (empty($dopost)) $dopost = "";
-
 //保存修改
 if ($dopost == "save") {
     $startID = 1;
@@ -34,7 +33,6 @@ if ($dopost == "save") {
             $dsql->ExecuteNoneQuery($query);
         }
     }
-
     //增加新记录
     if (isset($check_new) && $pname_new != '') {
         $query = "INSERT INTO `#@__member_type`(`rank`,pname,money,exptime) VALUES('{$rank_new}','{$pname_new}','{$money_new}','{$exptime_new}');";
@@ -49,7 +47,6 @@ $dsql->Execute();
 while ($row = $dsql->GetArray()) {
     $arcranks[$row['rank']] = $row['membername'];
 }
-
 $times = array();
 $times[7] = '一周';
 $times[30] = '一个月';
@@ -57,5 +54,4 @@ $times[90] = '三个月';
 $times[183] = '半年';
 $times[366] = '一年';
 $times[32767] = '终身';
-
 require_once(DEDEADMIN."/templets/member_type.htm");

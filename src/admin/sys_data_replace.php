@@ -15,7 +15,6 @@ if (empty($action)) {
     require_once(DEDEADMIN."/templets/sys_data_replace.htm");
     exit();
 }
-
 /*-------------------------------
 //列出数据库表里的字段
 function __getfields()

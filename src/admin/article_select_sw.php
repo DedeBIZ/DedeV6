@@ -10,7 +10,6 @@ require(dirname(__FILE__)."/config.php");
 header("Pragma:no-cache");
 header("Cache-Control:no-cache");
 header("Expires:0");
-
 //来源列表
 if ($t == 'source') {
     $m_file = DEDEDATA."/admin/source.txt";

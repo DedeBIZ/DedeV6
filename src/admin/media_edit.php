@@ -9,12 +9,10 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-
 //权限检查
 CheckPurview('sys_Upload,sys_MyUpload');
 if (empty($dopost)) $dopost = "";
 $backurl = isset($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : "javascript:history.go(-1);";
-
 /*---------------------------
 function __del_file() //删除附件
 -----------------------------*/
@@ -50,7 +48,6 @@ if ($dopost == 'del') {
         }
         $dsql->SetQuery("SELECT aid,url FROM `#@__uploads` $idquery ");
         $dsql->Execute();
-
         while ($myrow = $dsql->GetArray()) {
             $truefile = $cfg_basedir.$myrow['url'];
             $rs = 0;
@@ -78,7 +75,6 @@ else if ($dopost == 'save') {
     if ($myrow['mid'] != $cuserLogin->getUserID()) {
         CheckPurview('sys_Upload');
     }
-
     //检测文件类型
     $addquery = "";
     if (is_uploaded_file($upfile)) {
@@ -109,7 +105,6 @@ else if ($dopost == 'save') {
                 exit();
             }
         }
-
         //保存文件
         $nowtime = time();
         $oldfile = $myrow['url'];
@@ -129,7 +124,6 @@ else if ($dopost == 'save') {
             ShowMsg("仅支持媒体文件及应用程序上传", -1);
             exit;
         }
-
         @move_uploaded_file($upfile, $fullfilename);
         if ($mediatype == 1) {
             require_once(DEDEINC."/image.func.php");
@@ -156,7 +150,6 @@ else if ($dopost == 'save') {
     } else {
         $fileurl = $filename;
     }
-
     //写入数据库
     $query = " UPDATE #@__uploads SET title='$title',mediatype='$mediatype',playtime='$playtime'";
     $query .= "$addquery WHERE aid='$aid' ";
@@ -164,7 +157,6 @@ else if ($dopost == 'save') {
     ShowMsg('成功修改一则附件数据', 'media_edit.php?aid='.$aid);
     exit();
 }
-
 //读取档案信息
 $myrow = $dsql->GetOne("SELECT * FROM #@__uploads WHERE aid='".$aid."'");
 if (!is_array($myrow)) {

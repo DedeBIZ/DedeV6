@@ -16,7 +16,7 @@ if (empty($mktime)) $mktime = time();
 if (empty($mkpage)) $mkpage = 1;
 if (empty($upall)) $upall = 0; //是否更新全部 0为更新单个 1为更新全部
 if (empty($ctagid)) $ctagid = 0; //当前处理的tagid
-if (empty($maxpagesize)) $maxpagesize = 50;
+if (empty($maxpagesize)) $maxpageSize = 30;
 $startid = isset($startid) ? intval($startid) : 0;
 $endid = isset($endid) ? intval($endid) : 0;
 $tagid = isset($tagid) ? intval($tagid) : 0;
@@ -66,7 +66,6 @@ if (is_array($tag) && count($tag) > 0) {
         $mkpage = $mkpage + $maxpagesize;
         if ($mkpage >= ($ntotalpage + 1)) $finishType = TRUE;
     }
-
     $nextpage = $pageno + 1;
     $onefinish = $nextpage >= $ntotalpage && $finishType;
     if (($upall == 0 && $onefinish) || ($upall == 1 && $allfinish && $onefinish)) {

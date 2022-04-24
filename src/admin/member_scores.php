@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Scores');
 if (!isset($action)) $action = '';
-
 if ($action == 'save') {
     if (!empty($add_integral) && !empty($add_icon) && !empty($add_titles)) {
         $integral = preg_replace("#[^0-9]#", "", $add_integral);
@@ -35,7 +34,6 @@ if ($action == 'save') {
         }
     }
 }
-
 $Scores = array();
 $dsql->SetQuery("SELECT * FROM `#@__scores` ORDER BY id ASC");
 $dsql->Execute();

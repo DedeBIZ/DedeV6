@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Type');
 if (empty($dopost)) $dopost = '';
-
 //保存修改
 if ($dopost == 'save') {
     $startID = 1;
@@ -45,7 +44,6 @@ if ($dopost == 'del') {
     ShowMsg("删除成功", "member_rank.php");
     exit();
 }
-
 $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank`>0 ORDER BY `rank`");
 $dsql->Execute();
 include DedeInclude('templets/member_rank.htm');

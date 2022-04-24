@@ -20,7 +20,6 @@ if (empty($dopost)) {
         echo 'ERROR: Upload Error! ';
         exit(0);
     }
-
     //把文件移动到临时目录
     $tmpdir = DEDEDATA.'/uploadtmp';
     if (!is_dir($tmpdir)) {
@@ -31,10 +30,8 @@ if (empty($dopost)) {
             exit(0);
         }
     }
-
     $FiledataNew = str_replace("\\", '/', $Filedata);
     $FiledataNew = $tmpdir.'/'.preg_replace("/(.*)[\/]/isU", "", $FiledataNew);
-
     $mime = get_mime_type($Filedata);
     if (preg_match("#^unknow#", $mime)) {
         echo "ERROR: Create {$tmpdir} dir Error! ";
@@ -45,7 +42,6 @@ if (empty($dopost)) {
         exit;
     }
     move_uploaded_file($Filedata, $FiledataNew);
-
     $info = $ftype = $sname = '';
     $srcInfo = GetImageSize($FiledataNew, $info);
     //检测文件类型
@@ -78,7 +74,6 @@ if (empty($dopost)) {
         echo "ERROR: Image type Error! ";
         exit(0);
     }
-
     //保存原图
     $filedir = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, time());
     if (!is_dir(DEDEROOT.$filedir)) {
@@ -103,30 +98,25 @@ if (empty($dopost)) {
     }
     //WaterImg($cfg_basedir.$fileurl, 'up');
     $title = $filename.$sname;
-
     $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
         VALUES ('$title','$fileurl','$ftype','0','0','0','".filesize($cfg_basedir.$fileurl)."','".time()."','".$cuserLogin->getUserID()."'); ";
     if (!empty($arcid)) {
         $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid)
         VALUES ('$arcid','$title','$fileurl','$ftype','0','0','0','".filesize($cfg_basedir.$fileurl)."','".time()."','".$cuserLogin->getUserID()."'); ";
     }
-
     $dsql->ExecuteNoneQuery($inquery);
     $fid = $dsql->GetLastID();
     AddMyAddon($fid, $fileurl);
-
     //生成缩略图
     ob_start();
     ImageResizeNew($cfg_basedir.$fileurl, $cfg_ddimg_width, $cfg_ddimg_height, '', false);
     $imagevariable = ob_get_contents();
     ob_end_clean();
-
     //保存信息到 session
     if (!isset($_SESSION['file_info'])) $_SESSION['file_info'] = array();
     if (!isset($_SESSION['bigfile_info'])) $_SESSION['bigfile_info'] = array();
     if (!isset($_SESSION['fileid'])) $_SESSION['fileid'] = 1;
     else $_SESSION['fileid']++;
-
     $_SESSION['bigfile_info'][$_SESSION['fileid']] = $fileurl;
     $_SESSION['file_info'][$_SESSION['fileid']] = $imagevariable;
     echo "FILEID:".$_SESSION['fileid'];

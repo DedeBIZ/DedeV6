@@ -11,7 +11,6 @@ class ActionSearch
     var $keyword;
     var $asarray = array();
     var $result    = array();
-
     function __construct($keyword)
     {
         $this->asarray = $this->GetSearchstr();

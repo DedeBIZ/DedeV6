@@ -11,7 +11,6 @@
 require(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = "";
-
 //查看表结构
 if ($dopost == "viewinfo") {
     CheckCSRF();
@@ -61,7 +60,7 @@ else if ($dopost == "repair") {
     } else {
         $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
         if ($rs) echo "修复表：$tablename  OK";
-        else echo "修复表：$tablename  失败，原因是：".$dsql->GetError();
+        else echo "修复表：$tablename 失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -75,7 +74,7 @@ else if ($dopost == "repairAll") {
         if ($rs) {
             echo "修复表: {$row[0]} ok!<br>\r\n";
         } else {
-            echo "修复表: {$row[0]} 失败! 原因是: ".$dsql->GetError()."<br>\r\n";
+            echo "修复表: {$row[0]} 失败，原因是: ".$dsql->GetError()."<br>\r\n";
         }
     }
     exit();
@@ -85,7 +84,7 @@ else if ($dopost == "query") {
     CheckCSRF();
     $sqlquery = trim(stripslashes($sqlquery));
     if (preg_match("#drop(.*)table#i", $sqlquery) || preg_match("#drop(.*)database#", $sqlquery)) {
-        echo "<span style='font-size:10pt'>删除'数据表'或'数据库'的语句不允许在这里执行</span>";
+        echo "<span>删除数据表或数据库的语句不允许在这里执行</span>";
         exit();
     }
     //运行查询语句

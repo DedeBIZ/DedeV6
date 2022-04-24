@@ -32,7 +32,6 @@ if ($action == "save") {
     }
     if (is_uploaded_file($newimg)) {
         $imgfile_type = strtolower(trim($newimg_type));
-
         if (!in_array($imgfile_type, $allow_mark_types)) {
             ShowMsg("上传的图片格式错误，请使用 gif、png格式的其中一种", "-1");
             exit();

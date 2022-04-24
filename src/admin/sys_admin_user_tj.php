@@ -10,7 +10,6 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_User');
-
 if (isset($dopost) && $dopost == 'getone') {
     $row = $dsql->GetOne("SELECT userid FROM `#@__admin` WHERE id='$uid'; ");
     $userid = $row['userid'];

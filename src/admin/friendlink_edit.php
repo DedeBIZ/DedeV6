@@ -13,7 +13,6 @@ CheckPurview('plus_友情链接模块');
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'friendlink_main.php' : $_COOKIE['ENV_GOBACK_URL'];
 if (empty($dopost)) $dopost = "";
 $id = isset($id)? intval($id) : 0;
-
 if (isset($allid)) {
     $aids = explode(',', $allid);
     if (count($aids) == 1) {

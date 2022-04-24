@@ -11,14 +11,12 @@
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/channelunit.func.php");
 $action = (empty($action) ? '' : $action);
-
 if ($action == '') {
     require_once(DEDEADMIN."/templets/makehtml_all.htm");
     exit();
 } else if ($action == 'make') {
     //step = 1 更新主页、step = 2 更新内容、step = 3 更新栏目
     if (empty($step)) $step = 1;
-
     //更新文档前优化数据
     /*-------------------
     function _1_OptimizeData1()
@@ -83,7 +81,6 @@ else if ($step == 4) {
             while ($row = $dsql->GetArray()) {
                 $typeids[$row['typeid']] = 1;
             }
-
             foreach ($typeids as $k => $v) {
                 $vs = array();
                 $vs = GetParentIds($k);
@@ -128,10 +125,9 @@ else if ($step == 10) {
         OptimizeData($dsql);
         ShowMsg("完成所有文件的更新", "javascript:;");
         exit();
-    } //make step
+    }//make step
 
-} //action=='make'
-
+}//action=='make'
 /**
  *  优化数据
  *

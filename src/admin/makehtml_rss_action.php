@@ -11,10 +11,8 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_MakeHtml');
 require_once(DEDEINC."/archive/rssview.class.php");
-
 if (empty($tid)) $tid = 0;
 if (empty($maxrecord)) $maxrecord = 50;
-
 $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE id>'$tid' AND ispart<>2 ORDER BY id ASC LIMIT 0,1;");
 if (!is_array($row)) {
     echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";

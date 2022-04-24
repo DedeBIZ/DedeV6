@@ -13,7 +13,7 @@ CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete','excel')) ? $action : '';
 if (empty($diyid)) {
-    showMsg("非法操作!", 'javascript:;');
+    showMsg("非法操作", 'javascript:;');
     exit();
 }
 require_once DEDEINC.'/diyform.class.php';
@@ -69,7 +69,7 @@ if ($action == 'post') {
     include_once DEDEINC.'/datalistcp.class.php';
     $query = "SELECT * FROM {$diy->table} ORDER BY id DESC";
     $datalist = new DataListCP();
-    $datalist->pageSize = 10;
+    $datalist->pageSize = 30;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
     $datalist->SetTemplate(DEDEADMIN.'/templets/diy_list.htm');

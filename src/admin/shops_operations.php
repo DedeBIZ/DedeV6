@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('shops_Operations');
 require_once(DEDEINC.'/datalistcp.class.php');
-
 if (isset($dopost)) {
     CheckPurview('shops_Operations_cpanel');
     if ($dopost == 'up') {
@@ -60,7 +59,6 @@ if (isset($dopost)) {
     ShowMsg("成功修改指定的订单记录", $ENV_GOBACK_URL);
     exit();
 }
-
 $addsql = '';
 if (empty($oid)) $oid = 0;
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
@@ -72,17 +70,14 @@ if (isset($sta)) {
     $addsql = "WHERE s.`state`='$sta'";
 }
 $sql = "SELECT s.`oid`,s.`cartcount`,s.`price`,s.`state`,s.`stime`,s.priceCount,s.dprice,s.paytype,u.`consignee`,u.`tel`,s.`userid` FROM `#@__shops_orders` AS s LEFT JOIN `#@__shops_userinfo` AS u ON s.oid=u.oid $addsql ORDER BY `stime` DESC";
-
 $dlist = new DataListCP();
 $dlist->SetParameter("oid", $oid);
 if (isset($sta)) $dlist->SetParameter("sta", $sta);
 $tplfile = DEDEADMIN."/templets/shops_operations.htm";
-
 //这两句的顺序不能更换
 $dlist->SetTemplate($tplfile);      //载入模板
 $dlist->SetSource($sql);            //设定查询SQLexit('dd');
 $dlist->Display();
-
 function GetSta($sta)
 {
     if ($sta == 0) {
@@ -97,7 +92,6 @@ function GetSta($sta)
         return '已完成';
     }
 }
-
 function GetsType($pid)
 {
     global $dsql;
@@ -109,7 +103,6 @@ function GetsType($pid)
         return '-';
     }
 }
-
 function GetMemberID($mid)
 {
     global $dsql;

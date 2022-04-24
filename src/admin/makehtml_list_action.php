@@ -18,7 +18,7 @@ if (empty($pageno)) $pageno = 0;
 if (empty($mkpage)) $mkpage = 1;
 if (empty($typeid)) $typeid = 0;
 if (!isset($uppage)) $uppage = 0;
-if (empty($maxpagesize)) $maxpagesize = 50;
+if (empty($maxpagesize)) $maxpageSize = 30;
 $adminID = $cuserLogin->getUserID();
 //检测获取所有栏目ID
 //普通生成或一键更新时更新所有栏目

@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('member_Pm');
 if (!isset($action)) $action = '';
-
 if ($action == "post") {
     $floginid = 'admin';
     $fromid = 0;
@@ -28,7 +27,6 @@ if ($action == "post") {
         ShowMsg('请填写短信内容!', '-1');
         exit();
     }
-
     $rs = $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_pms`(floginid,fromid,toid,tologinid,folder,hasview,subject,sendtime,writetime,message,isadmin) VALUES('$floginid','$fromid','$toid','$tologinid','outbox','0','$subject','$sendtime','$writetime','$message','1');");
     ShowMsg('短信已成功发送', '-1');
     exit();

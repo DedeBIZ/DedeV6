@@ -12,12 +12,9 @@ require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/libraries/oxwindow.class.php');
 CheckPurview('sys_Writer');
 if (empty($dopost)) $dopost = '';
-
 if (empty($allwriter)) $allwriter = '';
 else $allwriter = stripslashes($allwriter);
-
 $m_file = DEDEDATA."/admin/writer.txt";
-
 //保存
 if ($dopost == "save") {
     $fp = fopen($m_file, 'w');
@@ -26,7 +23,6 @@ if ($dopost == "save") {
     fclose($fp);
     echo "<script>alert('Save OK!');</script>";
 }
-
 //读出
 if (empty($allwriter) && filesize($m_file) > 0) {
     $fp = fopen($m_file, 'r');

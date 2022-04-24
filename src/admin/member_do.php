@@ -42,7 +42,6 @@ if ($dopost == "delmember") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_space` WHERE mid='$id' LIMIT 1");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_company` WHERE mid='$id' LIMIT 1");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_person` WHERE mid='$id' LIMIT 1");
-
                 //删除用户相关数据
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE mid='$id' ");
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_flink` WHERE mid='$id' ");
@@ -182,7 +181,6 @@ else if ($dopost == 'edituser') {
             WHERE mid='$id' ";
         $rs = $dsql->ExecuteNoneQuery2($query);
     }
-
     ShowMsg('成功修改会员资料', 'member_view.php?id='.$id);
     exit();
 }

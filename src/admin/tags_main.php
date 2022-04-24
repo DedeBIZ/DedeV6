@@ -18,7 +18,6 @@ if (empty($action)) {
     $orderway = isset($orderway) && $orderway == 'asc' ? 'asc' : 'desc';
     if (!empty($tag)) $where = " where tag like '%$tag%'";
     else $where = '';
-
     $neworderway = ($orderway == 'desc' ? 'asc' : 'desc');
     $query = "SELECT * FROM `#@__tagindex` $where ORDER BY $orderby $orderway";
     $dlist = new DataListCP();
@@ -26,7 +25,7 @@ if (empty($action)) {
     $dlist->SetParameter("tag", $tag);
     $dlist->SetParameter("orderway", $orderway);
     $dlist->SetParameter("orderby", $orderby);
-    $dlist->pageSize = 20;
+    $dlist->pageSize = 30;
     $dlist->SetTemplet(DEDEADMIN."/templets/tags_main.htm");
     $dlist->SetSource($query);
     $dlist->Display();
@@ -39,7 +38,7 @@ else if ($action == 'update') {
     $tid = (empty($tid) ? 0 : intval($tid));
     $count = (empty($count) ? 0 : intval($count));
     if (empty($tid)) {
-        ShowMsg('没有选择要删除的tag!', '-1');
+        ShowMsg('没有选择要删除的tag', '-1');
         exit();
     }
     $query = "UPDATE `#@__tagindex` SET `count`='$count' WHERE id='$tid' ";
@@ -63,9 +62,9 @@ else if ($action == 'delete') {
     if ($dsql->ExecuteNoneQuery($query)) {
         $query = "DELETE FROM `#@__taglist` WHERE tid IN ($stringids)";
         $dsql->ExecuteNoneQuery($query);
-        ShowMsg("删除tags[ $stringids ]成功", 'tags_main.php');
+        ShowMsg("删除tags [$stringids] 成功", 'tags_main.php');
     } else {
-        ShowMsg("删除tags[ $stringids ]失败", 'tags_main.php');
+        ShowMsg("删除tags [$stringids] 失败", 'tags_main.php');
     }
     exit();
 } else if ($action == 'get_one') {

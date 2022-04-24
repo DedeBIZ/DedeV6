@@ -15,7 +15,7 @@ CheckPurview('sys_Keyword');
 if (empty($dopost)) $dopost = '';
 //分析已存在的关键词（适用于默认的文章模型）
 if ($dopost == 'analyse') {
-    echo "正在读取关键词数据库...<br>\r\n";
+    echo "正在读取关键词数据库<br>\r\n";
     flush();
     $ws = $wserr = $wsnew = "";
     $dsql->SetQuery("SELECT * FROM `#@__keywords`");
@@ -26,7 +26,7 @@ if ($dopost == 'analyse') {
     }
     echo "完成关键词数据库的载入<br>\r\n";
     flush();
-    echo "读取档案数据库，并对禁用的关键词和生字进行处理...<br>\r\n";
+    echo "读取档案数据库，并对禁用的关键词和生字进行处理<br>\r\n";
     flush();
     $dsql->SetQuery("SELECT id,keywords FROM `#@__archives`");
     $dsql->Execute();
@@ -57,10 +57,10 @@ if ($dopost == 'analyse') {
     echo "完成档案数据库的处理<br>\r\n";
     flush();
     if (is_array($wsnew)) {
-        echo "对关键词进行排序...<br>\r\n";
+        echo "对关键词进行排序<br>\r\n";
         flush();
         arsort($wsnew);
-        echo "把关键词保存到数据库...<br>\r\n";
+        echo "把关键词保存到数据库<br>\r\n";
         flush();
         foreach ($wsnew as $k => $v) {
             if (strlen($k) > 20) {
@@ -87,7 +87,7 @@ else if ($dopost == 'fetch') {
         $startdd = 0;
     }
     if (empty($pagesize)) {
-        $pagesize = 20;
+        $pageSize = 30;
     }
     if (empty($totalnum)) {
         $totalnum = 0;

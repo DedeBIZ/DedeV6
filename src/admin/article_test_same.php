@@ -30,24 +30,19 @@ if ($dopost == 'analyse') {
 else if ($dopost == 'delsel') {
     require_once(DEDEINC."/typelink/typelink.class.php");
     require_once(dirname(__FILE__)."/inc/inc_batchup.php");
-
     if (empty($titles)) {
         header("Content-Type: text/html; charset={$cfg_ver_lang}");
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset={$cfg_ver_lang}\">\r\n";
         echo "没有指定删除的文档";
         exit();
     }
-
     $titless = split('`', $titles);
-
     if ($channelid < -1) {
         $orderby = ($deltype == 'delnew' ? " ORDER BY aid DESC " : " ORDER BY aid ASC ");
     } else {
         $orderby = ($deltype == 'delnew' ? " ORDER BY id DESC " : " ORDER BY id ASC ");
     }
-
     $totalarc = 0;
-
     foreach ($titless as $title) {
         $title = trim($title);
         $title = addslashes($title == '' ? '' : urldecode($title));
@@ -71,10 +66,9 @@ else if ($dopost == 'delsel') {
         }
     }
     $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `$maintable`; ");
-    ShowMsg("一共删除了[{$totalarc}]篇重复的文档", "javascript:;");
+    ShowMsg("一共删除了 [{$totalarc}] 篇重复的文档", "javascript:;");
     exit();
 }
-
 //向导页
 $channelinfos = array();
 $dsql->setquery("SELECT id,typename,maintable,addtable FROM `#@__channeltype` ");

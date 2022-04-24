@@ -25,25 +25,21 @@ if ($dopost == "delete") {
 } else {
     $addsql = '';
     if (isset($isexp)) $addsql = " WHERE isexp='$isexp' ";
-
     $sql = "SELECT * FROM #@__moneycard_record $addsql ORDER BY aid DESC";
     $dlist = new DataListCP();
-    $dlist->pageSize = 25; //设定每页显示记录数（默认25条）
+    $dlist->pageSize = 30;//设定每页显示记录数
     if (isset($isexp)) $dlist->SetParameter("isexp", $isexp);
-
     $dlist->dsql->SetQuery("SELECT * FROM #@__moneycard_type ");
     $dlist->dsql->Execute('ts');
     while ($rw = $dlist->dsql->GetArray('ts')) {
         $TypeNames[$rw['tid']] = $rw['pname'];
     }
     $tplfile = DEDEADMIN."/templets/cards_manmage.htm";
-
     //这两句的顺序不能更换
     $dlist->SetTemplate($tplfile);      //载入模板
     $dlist->SetSource($sql);            //设定查询SQL
     $dlist->Display();                  //显示
 }
-
 function GetMemberID($mid)
 {
     global $dsql;
@@ -52,7 +48,6 @@ function GetMemberID($mid)
     if (is_array($row)) return "<a href='member_view.php?mid={$mid}'>".$row['userid']."</a>";
     else return '0';
 }
-
 function GetUseDate($time = 0)
 {
     if (!empty($time)) return GetDateMk($time);

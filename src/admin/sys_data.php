@@ -11,12 +11,10 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
-
 if ($cfg_dbtype == 'sqlite') {
     showMsg('备份系统根目录下/data/'.$cfg_dbname.'.db文件即可', 'javascript:;');
     exit();
 }
-
 if ($dopost == "viewinfo") //查看表结构
 {
     echo "<xmp>";
@@ -62,7 +60,6 @@ if ($dopost == "viewinfo") //查看表结构
     echo '</xmp>';
     exit();
 }
-
 //获取系统存在的表信息
 $otherTables = array();
 $dedeSysTables = array();
@@ -83,7 +80,6 @@ while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
 }
 $mysql_version = $dsql->GetVersion();
 include DedeInclude('templets/sys_data.htm');
-
 function TjCount($tbname, &$dsql)
 {
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM $tbname");

@@ -19,7 +19,6 @@ if ($dopost != 'save') {
     ClearMyAddon();
     $channelid = -1;
     $cid = isset($cid) && is_numeric($cid) ? $cid : 0;
-
     //获得频道模型信息
     $cInfos = $dsql->GetOne(" SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
     include DedeInclude("templets/spec_add.htm");

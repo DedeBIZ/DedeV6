@@ -12,12 +12,9 @@ require_once(dirname(__FILE__).'/config.php');
 require_once(DEDEINC.'/libraries/oxwindow.class.php');
 CheckPurview('sys_StringMix');
 if (empty($dopost)) $dopost = '';
-
 if (empty($allsource)) $allsource = '';
 else $allsource = stripslashes($allsource);
-
 $m_file = DEDEDATA."/downmix.data.inc";
-
 //保存
 if ($dopost == "save") {
     CheckCSRF();
@@ -27,7 +24,6 @@ if ($dopost == "save") {
     fclose($fp);
     echo "<script>alert('Save OK!');</script>";
 }
-
 //读出
 if (empty($allsource) && filesize($m_file) > 0) {
     $fp = fopen($m_file, 'r');

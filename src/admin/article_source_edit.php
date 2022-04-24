@@ -14,9 +14,7 @@ CheckPurview('sys_Source');
 if (empty($dopost)) $dopost = '';
 if (empty($allsource)) $allsource = '';
 else $allsource = stripslashes($allsource);
-
 $m_file = DEDEDATA."/admin/source.txt";
-
 //保存
 if ($dopost == 'save') {
     $fp = fopen($m_file, 'w');

@@ -11,12 +11,10 @@
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/sitemap.class.php");
 require_once(DEDEINC."/dedetag.class.php");
-
 if (empty($dopost)) {
-    ShowMsg("参数错误!", "-1");
+    ShowMsg("参数错误", "-1");
     exit();
 }
-
 $serviterm = empty($serviterm) ? "" : $serviterm;
 $sm = new SiteMap();
 $maplist = $sm->GetSiteMap($dopost);

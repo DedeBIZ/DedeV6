@@ -10,7 +10,6 @@
  */
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('temp_Other');
-
 //根据条件生成标记
 $attlist = "";
 $attlist .= " row='".$row."'";
@@ -23,7 +22,6 @@ if ($channel > 0) $attlist .= " channelid='".$channel."'";
 if ($att > 0) $attlist .= " att='".$att."'";
 if ($col > 1) $attlist .= " col='".$col."'";
 if ($subday > 0) $attlist .= " subday='".$subday."'";
-
 if (!empty($types)) {
     $attlist .= " type='";
     foreach ($types as $v) {

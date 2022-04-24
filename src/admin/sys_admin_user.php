@@ -14,7 +14,6 @@ require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($rank)) $rank = '';
 else $rank = " WHERE CONCAT(#@__admin.usertype)='$rank' ";
-
 $dsql->SetQuery("SELECT `rank`,typename FROM `#@__admintype` ");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
@@ -25,14 +24,12 @@ $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/sys_admin_user.htm");
 $dlist->SetSource($query);
 $dlist->Display();
-
 function GetUserType($trank)
 {
     global $adminRanks;
     if (isset($adminRanks[$trank])) return $adminRanks[$trank];
     else return "错误类型";
 }
-
 function GetChannel($c)
 {
     if ($c == "" || $c == 0) return "所有频道";

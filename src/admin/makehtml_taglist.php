@@ -12,7 +12,6 @@ require_once(dirname(__FILE__)."/config.php");
 $tagid = isset($tagid)? (int)$tagid : 0;
 $action = isset($action)? $action : '';
 $search = isset($search)? HtmlReplace($search, 0)  : '';
-
 if ($action == "search") {
     if (!empty($search)) {
         $sql="select * from #@__tagindex where tag like '%$search%' order by id desc"; 
@@ -36,5 +35,4 @@ if ($action == "search") {
     echo json_encode($result);
     exit;
 }
-
 include DedeInclude('templets/makehtml_taglist.htm');

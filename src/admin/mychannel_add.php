@@ -14,7 +14,6 @@ require_once(DEDEINC."/dedetag.class.php");
 if (empty($ismake)) $ismake = 0;
 if (empty($isdel)) $isdel = 0;
 if (empty($action)) $action = '';
-
 if ($action == 'add') {
     //检查输入
     if (empty($id) || preg_match("#[^0-9-]#", $id)) {
@@ -30,9 +29,7 @@ if ($action == 'add') {
         exit();
     }
     $trueTable2 = str_replace("#@__", $cfg_dbprefix, $addtable);
-
     if ($issystem == -1 && $id > 0) $id = $id * -1;
-
     //检查id是否重复
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' OR nid LIKE '$nid' OR addtable LIKE '$addtable'");
     if (is_array($row)) {
@@ -40,7 +37,6 @@ if ($action == 'add') {
         exit();
     }
     $mysql_version = $dsql->GetVersion();
-
     //创建附加表
     if ($trueTable2 != '') {
         $istb = $dsql->IsTable($trueTable2);
@@ -49,7 +45,7 @@ if ($action == 'add') {
             $dsql->ExecuteNoneQuery("DROP TABLE IF EXISTS `{$trueTable2}`;");
             if ($issystem != -1) {
                 $tabsql = "CREATE TABLE `$trueTable2`(
-                      `aid` int(11) NOT NULL default '0',
+                    `aid` int(11) NOT NULL default '0',
                     `typeid` int(11) NOT NULL default '0',
                     `redirecturl` varchar(255) NOT NULL default '',
                     `templet` varchar(30) NOT NULL default '',
@@ -86,7 +82,6 @@ if ($action == 'add') {
             }
         }
     }
-
     $listfields = $fieldset = '';
     if ($issystem == -1) {
         $fieldset = "<field:channel itemname=\"频道id\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\"  maxlength=\"10\" page=\"\"></field:channel>
@@ -104,7 +99,6 @@ if ($action == 'add') {
 <field:badpost itemname=\"差评数\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\"  maxlength=\"8\" page=\"\"></field:badpost>\r\n";
         $listfields = 'channel,arcrank,mid,click,title,senddate,flag,listpic,lastpost,scores,goodpost,badpost';
     }
-
     $inQuery = "INSERT INTO `#@__channeltype`(id,nid,typename,addtable,addcon,mancon,editcon,useraddcon,usermancon,usereditcon,fieldset,listfields,issystem,issend,arcsta,usertype,sendrank,needdes,needpic,titlename,onlyone,dfcid)
     VALUES ('$id','$nid','$typename','$addtable','$addcon','$mancon','$editcon','$useraddcon','$usermancon','$usereditcon','$fieldset','$listfields','$issystem','$issend','$arcsta','$usertype','$sendrank','$needdes','$needpic','$titlename','$onlyone','$dfcid');";
     $dsql->ExecuteNoneQuery($inQuery);
@@ -114,5 +108,4 @@ if ($action == 'add') {
 $row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id DESC LIMIT 0,1 ");
 $newid = $row['id'] + 1;
 if ($newid < 10) $newid = $newid + 10;
-
 require_once(DEDEADMIN."/templets/mychannel_add.htm");

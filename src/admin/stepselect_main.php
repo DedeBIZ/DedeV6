@@ -28,7 +28,6 @@ if (empty($action)) {
         $etypes[] = $arr;
         $egroups[$arr['egroup']] = $arr['itemname'];
     }
-
     if ($egroup != '') {
         $orderby = 'ORDER BY disorder ASC, evalue ASC';
         if (!empty($topvalue)) {
@@ -80,20 +79,16 @@ else if ($action == 'del') {
 } else if ($action == 'delenumAllSel') {
     if (isset($ids) && is_array($ids)) {
         $id = join(',', $ids);
-
         $groups = array();
         $dsql->Execute('me', "SELECT egroup FROM `#@__sys_enum` WHERE id IN($id) GROUP BY egroup");
         while ($row = $dsql->GetArray('me')) {
             $groups[] = $row['egroup'];
         }
-
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__sys_enum` WHERE id IN($id); ");
-
         //更新缓存
         foreach ($groups as $egropu) {
             WriteEnumsCache($egroup);
         }
-
         ShowMsg("成功删除选中的枚举分类", $ENV_GOBACK_URL);
     } else {
         ShowMsg("您没选择任何分类", "-1");
@@ -151,7 +146,7 @@ else if ($action == 'exarea') {
     while ($row = $dsql->GetArray()) {
         $bigtypes[$row['id']] = $evalue = $disorder = $n * 500;
         $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum`(`ename`,`evalue`,`egroup`,`disorder`,`issign`)
-                                 VALUES('{$row['name']}','$evalue','nativeplace','$disorder','0'); ");
+            VALUES('{$row['name']}','$evalue','nativeplace','$disorder','0'); ");
         $n++;
     }
     $stypes = array();
@@ -162,7 +157,7 @@ else if ($action == 'exarea') {
         while ($row = $dsql->GetArray()) {
             $stypes[$row['id']] = $evalue = $disorder = $v + $n;
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum`(`ename`,`evalue`,`egroup`,`disorder`,`issign`)
-                                   VALUES('{$row['name']}','$evalue','nativeplace','$disorder','0'); ");
+                VALUES('{$row['name']}','$evalue','nativeplace','$disorder','0'); ");
             $n++;
         }
     }
@@ -193,9 +188,8 @@ else if ($action == 'addenum_save') {
             $arr = $dsql->GetOne("SELECT * FROM `#@__sys_enum` WHERE egroup='$egroup' AND (evalue MOD 500)=0 ORDER BY disorder DESC ");
             if (!is_array($arr)) $disorder = $evalue = ($issign == 1 ? 1 : 500);
             else $disorder = $evalue = $arr['disorder'] + ($issign == 1 ? 1 : 500);
-
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum`(`ename`,`evalue`,`egroup`,`disorder`,`issign`) 
-                                    VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ");
+                VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ");
         }
         WriteEnumsCache($egroup);
         ShowMsg("成功添加枚举分类".$dsql->GetError(), $ENV_GOBACK_URL);
@@ -217,7 +211,7 @@ else if ($action == 'addenum_save') {
                 $evalue = $matchs[1].'.'.$addvalue;
             }
             $sql = "INSERT INTO `#@__sys_enum`(`ename`,`evalue`,`egroup`,`disorder`,`issign`) 
-                                    VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ";
+                VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ";
             //echo $sql;exit;
             $dsql->ExecuteNoneQuery($sql);
         }
@@ -238,7 +232,7 @@ else if ($action == 'addenum_save') {
                 $evalue = $arr['evalue'] + 1;
             }
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum`(`ename`,`evalue`,`egroup`,`disorder`,`issign`) 
-                          VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ");
+                VALUES('$ename','$evalue','$egroup','$disorder','$issign'); ");
         }
         WriteEnumsCache($egroup);
         ShowMsg("成功添加枚举分类", $ENV_GOBACK_URL);

@@ -19,12 +19,10 @@ if (empty($do)) {
     $baidunews .= "<webSite>$cfg_webname </webSite>\n";
     $baidunews .= "<webMaster>$cfg_adminemail </webMaster>\n";
     $baidunews .= "<updatePeri>$cfg_updateperi </updatePeri>\n";
-
     $limit = $cfg_baidunews_limit;
     if ($limit > 100 || $limit < 1) {
         $limit = 100;
     }
-
     $query = "SELECT maintable.*, addtable.body, arctype.typename
     FROM `#@__archives` maintable
     LEFT JOIN `#@__addonarticle` addtable ON addtable.aid=maintable.id
@@ -55,7 +53,6 @@ if (empty($do)) {
         $author = dede_htmlspecialchars($row['writer']);
         $source = dede_htmlspecialchars($row['source']);
         $pubdate = dede_htmlspecialchars(gmdate('Y-m-d H:i', $row['pubdate'] + $cfg_cli_time * 3600));
-
         $baidunews .= "<item>\n";
         $baidunews .= "<title>$title </title>\n";
         $baidunews .= "<link>$link </link>\n";

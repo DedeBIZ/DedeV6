@@ -27,7 +27,6 @@ if ($dopost == "save") {
     if ($normbody['style'] == 'code') {
         $normbody = addslashes($normbody['htmlcode']);
     } else if ($normbody['style'] == 'txt') {
-
         $normbody = "<a href=\"{$link}\" font-size=\"{$normbody['size']}\" color=\"{$normbody['color']}\">{$normbody['title']}</a>";
     } else if ($normbody['style'] == 'img') {
         if (empty($normbody['width'])) {

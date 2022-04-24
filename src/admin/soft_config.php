@@ -11,7 +11,6 @@
 require_once(dirname(__FILE__)."/config.php");
 CheckPurview('sys_SoftConfig');
 if (empty($dopost)) $dopost = '';
-
 //保存
 if ($dopost == "save") {
     if ($dfrank > 0 || $dfywboy > 0) $gotojump = 1;

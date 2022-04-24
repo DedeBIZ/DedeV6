@@ -23,10 +23,8 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = true)
     if ($cfg_md_idurl == 'Y' && preg_match("#[^a-z0-9]#i", $uid)) {
         return $msgtitle.'必须由英文字母或数字组成';
     }
-
     if ($cfg_soft_lang == 'utf-8') $ck_uid = utf82gb($uid);
     else $ck_uid = $uid;
-
     for ($i = 0; isset($ck_uid[$i]); $i++) {
         if (ord($ck_uid[$i]) > 0x80) {
             if (isset($ck_uid[$i + 1]) && ord($ck_uid[$i + 1]) > 0x40) {
@@ -46,7 +44,6 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = true)
     }
     return 'ok';
 }
-
 if (!isset($action)) $action = '';
 if ($action == "post") {
     $floginid = $cuserLogin->getUserName();
@@ -68,11 +65,9 @@ if ($action == "post") {
     $subject = cn_substrR(HtmlReplace($subject, 1), 60);
     $message = cn_substrR(HtmlReplace($message, 0), 1024);
     $sendtime = $writetime = time();
-
     //发给收件人(收件人可管理)
     $inquery = "INSERT INTO `#@__member_pms` (`floginid`,`fromid`,`toid`,`tologinid`,`folder`,`subject`,`sendtime`,`writetime`,`hasview`,`isadmin`,`message`)
-      VALUES ('$floginid','$fromid','{$row['mid']}','{$row['userid']}','inbox','$subject','$sendtime','$writetime','0','0','$message'); ";
-
+		VALUES ('$floginid','$fromid','{$row['mid']}','{$row['userid']}','inbox','$subject','$sendtime','$writetime','0','0','$message'); ";
     $dsql->ExecuteNoneQuery($inquery);
     ShowMsg('短信已成功发送', 'member_pmone.php');
     exit();
