@@ -87,7 +87,7 @@ else if ($dopost == 'fetch') {
         $startdd = 0;
     }
     if (empty($pagesize)) {
-        $pageSize = 30;
+        $pagesize = 30;
     }
     if (empty($totalnum)) {
         $totalnum = 0;

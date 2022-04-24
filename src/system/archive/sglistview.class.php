@@ -28,7 +28,7 @@ class SgListView
     var $PageNo;
     var $TotalPage;
     var $TotalResult;
-    var $PageSize;
+    var $pagesize;
     var $ChannelUnit;
     var $ListType;
     var $Fields;
@@ -195,15 +195,15 @@ class SgListView
             $ctag = $this->dtp->GetTag("list");
         }
         if (!is_object($ctag)) {
-            $this->PageSize = 20;
+            $this->pagesize = 20;
         } else {
             if ($ctag->GetAtt('pagesize') != '') {
-                $this->PageSize = $ctag->GetAtt('pagesize');
+                $this->pagesize = $ctag->GetAtt('pagesize');
             } else {
-                $this->PageSize = 20;
+                $this->pagesize = 20;
             }
         }
-        $this->TotalPage = ceil($this->TotalResult / $this->PageSize);
+        $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
     }
     /**
      *  列表创建HTML
@@ -231,7 +231,7 @@ class SgListView
         if (empty($this->TotalResult)) $this->CountRecord();
         //初步给固定值的标记赋值
         $this->ParseTempletsFirst();
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage == 0) {
             $totalpage = 1;
         }
@@ -450,8 +450,8 @@ class SgListView
         }
         foreach ($this->dtp->CTags as $tagid => $ctag) {
             if ($ctag->GetName() == "list") {
-                $limitstart = ($this->PageNo - 1) * $this->PageSize;
-                $row = $this->PageSize;
+                $limitstart = ($this->PageNo - 1) * $this->pagesize;
+                $row = $this->pagesize;
                 if (trim($ctag->GetInnerText()) == "") {
                     $InnerText = GetSysTemplets("list_fulllist.htm");
                 } else {
@@ -706,7 +706,7 @@ class SgListView
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
             $list_len = 3;
         }
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
             return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }
@@ -814,7 +814,7 @@ class SgListView
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
             $list_len = 3;
         }
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
             return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }

@@ -38,7 +38,7 @@ function GetSta($sta, $oid)
 if ($dopost == '') {
     $sql = "SELECT * FROM `#@__shops_orders` WHERE userid='".$cfg_ml->M_ID."' ORDER BY stime DESC";
     $dl = new DataListCP();
-    $dl->pageSize = 20;
+    $dl->pagesize = 30;
     //这两句的顺序不能更换
     $dl->SetTemplate(dirname(__FILE__)."/templets/shops_orders.htm");      //载入模板
     $dl->SetSource($sql);            //设定查询SQL

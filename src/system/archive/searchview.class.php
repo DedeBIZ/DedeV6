@@ -33,7 +33,7 @@ class SearchView
     var $PageNo;
     var $TotalPage;
     var $TotalResult;
-    var $PageSize;
+    var $pagesize;
     var $ChannelType;
     var $TempInfos;
     var $Fields;
@@ -84,7 +84,7 @@ class SearchView
         $this->Keyword = $keyword;
         $this->OrderBy = $orderby;
         $this->KType = $kwtype;
-        $this->PageSize = (int)$upagesize;
+        $this->pagesize = (int)$upagesize;
         $this->StartTime = $starttime;
         $this->ChannelType = $achanneltype;
         $this->SearchMax = $cfg_search_max;
@@ -121,10 +121,10 @@ class SearchView
         $this->dtp->LoadTemplate($tempfile);
         $this->TempInfos['tags'] = $this->dtp->CTags;
         $this->TempInfos['source'] = $this->dtp->SourceString;
-        if ($this->PageSize == "") {
-            $this->PageSize = 20;
+        if ($this->pagesize == "") {
+            $this->pagesize = 30;
         }
-        $this->TotalPage = ceil($this->TotalResult / $this->PageSize);
+        $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
         if ($this->PageNo == 1) {
             $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET result='".$this->TotalResult."' WHERE keyword='".addslashes($keyword)."'; ");
         }
@@ -408,8 +408,8 @@ class SearchView
         foreach ($this->dtp->CTags as $tagid => $ctag) {
             $tagname = $ctag->GetName();
             if ($tagname == "list") {
-                $limitstart = ($this->PageNo - 1) * $this->PageSize;
-                $row = $this->PageSize;
+                $limitstart = ($this->PageNo - 1) * $this->pagesize;
+                $row = $this->pagesize;
                 if (trim($ctag->GetInnerText()) == "") {
                     $InnerText = GetSysTemplets("list_fulllist.htm");
                 } else {
@@ -651,7 +651,7 @@ class SearchView
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
             $list_len = 3;
         }
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
             return "<ul class='pagination justify-content-center pt-3'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li></ul>";
         }
@@ -662,7 +662,7 @@ class SearchView
         $oldkeyword = (empty($oldkeyword) ? $this->Keyword : $oldkeyword);
         //当结果超过限制时，重设结果页数
         if ($this->TotalResult > $this->SearchMaxRc) {
-            $totalpage = ceil($this->SearchMaxRc / $this->PageSize);
+            $totalpage = ceil($this->SearchMaxRc / $this->pagesize);
         }
         $infos = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
         $geturl = "keyword=".urlencode($oldkeyword)."&searchtype=".$this->SearchType;
@@ -670,9 +670,9 @@ class SearchView
         $geturl .= "&channeltype=".$this->ChannelType."&orderby=".$this->OrderBy;
         $hidenform .= "<input type='hidden' name='channeltype' value='".$this->ChannelType."'>\r\n";
         $hidenform .= "<input type='hidden' name='orderby' value='".$this->OrderBy."'>\r\n";
-        $geturl .= "&kwtype=".$this->KType."&pagesize=".$this->PageSize;
+        $geturl .= "&kwtype=".$this->KType."&pagesize=".$this->pagesize;
         $hidenform .= "<input type='hidden' name='kwtype' value='".$this->KType."'>\r\n";
-        $hidenform .= "<input type='hidden' name='pagesize' value='".$this->PageSize."'>\r\n";
+        $hidenform .= "<input type='hidden' name='pagesize' value='".$this->pagesize."'>\r\n";
         $geturl .= "&typeid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
         $hidenform .= "<input type='hidden' name='typeid' value='".$this->TypeID."'>\r\n";
         $hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";

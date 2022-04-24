@@ -27,7 +27,7 @@ class FreeList
     var $PageNo;
     var $TotalPage;
     var $TotalResult;
-    var $PageSize;
+    var $pagesize;
     var $ChannelUnit;
     var $Fields;
     var $PartView;
@@ -52,9 +52,9 @@ class FreeList
         $ndtp->SetNameSpace("dede", "{", "}");
         $ndtp->LoadString($liststr);
         $this->ListObj = $ndtp->GetTag('list');
-        $this->PageSize = $this->ListObj->GetAtt('pagesize');
-        if (empty($this->PageSize)) {
-            $this->PageSize = 30;
+        $this->pagesize = $this->ListObj->GetAtt('pagesize');
+        if (empty($this->pagesize)) {
+            $this->pagesize = 30;
         }
         $channelid = $this->ListObj->GetAtt('channel');
         /*
@@ -174,10 +174,10 @@ class FreeList
                 $this->TotalResult = 0;
             }
         }
-        $this->TotalPage = ceil($this->TotalResult / $this->PageSize);
+        $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
         if ($this->TotalPage > $this->FLInfos['maxpage']) {
             $this->TotalPage = $this->FLInfos['maxpage'];
-            $this->TotalResult = $this->TotalPage * $this->PageSize;
+            $this->TotalResult = $this->TotalPage * $this->pagesize;
         }
     }
     /**
@@ -213,7 +213,7 @@ class FreeList
             $startpage = 1;
         }
         $this->ParseTempletsFirst();
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage == 0) {
             $totalpage = 1;
         }
@@ -331,7 +331,7 @@ class FreeList
     {
         foreach ($this->dtp->CTags as $tagid => $ctag) {
             if ($ctag->GetName() == "freelist") {
-                $limitstart = ($this->PageNo - 1) * $this->PageSize;
+                $limitstart = ($this->PageNo - 1) * $this->pagesize;
                 if ($this->PageNo > $this->FLInfos['maxpage']) $this->dtp->Assign($tagid, '已经超过了最大允许列出的页面');
                 else $this->dtp->Assign($tagid, $this->GetList($limitstart, $ismake));
             } else if ($ctag->GetName() == "pagelist") {
@@ -495,7 +495,7 @@ class FreeList
         FROM {$this->maintable} arc
         LEFT JOIN #@__arctype tp ON arc.typeid=tp.id
         $addJoin
-        WHERE $orwhere $ordersql LIMIT $limitstart,".$this->PageSize;
+        WHERE $orwhere $ordersql LIMIT $limitstart,".$this->pagesize;
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
         $artlist = "";
@@ -506,7 +506,7 @@ class FreeList
         $indtp->SetNameSpace("field", "[", "]");
         $indtp->LoadSource($innertext);
         $GLOBALS['autoindex'] = 0;
-        for ($i = 0; $i < $this->PageSize; $i++) {
+        for ($i = 0; $i < $this->pagesize; $i++) {
             if ($col > 1) {
                 $artlist .= "<tr>\r\n";
             }
@@ -641,7 +641,7 @@ class FreeList
         if ($list_len == "" || preg_match("#[^0-9]#", $list_len)) {
             $list_len = 3;
         }
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
             return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }
@@ -743,7 +743,7 @@ class FreeList
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
             $list_len = 3;
         }
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
             return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }

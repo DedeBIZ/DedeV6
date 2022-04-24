@@ -5,7 +5,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * 说明:数据量不大的数据分页,使得数据分页处理变得更加简单化
  * 使用方法:
  *     $dl = new DataListCP();  //初始化动态列表类
- *     $dl->pageSize = 25;      //设定每页显示记录数（默认25条）
+ *     $dl->pagesize = 30;      //设定每页显示记录数（默认25条）
  *     $dl->SetParameter($key,$value);  //设定get字符串的变量
  *     //这两句的顺序不能更换
  *     $dl->SetTemplate($tplfile);      //载入模板
@@ -44,7 +44,7 @@ class DataListCP
     var $pageNO;
     var $totalPage;
     var $totalResult;
-    var $pageSize;
+    var $pagesize;
     var $getValues;
     var $sourceSql;
     var $isQuery;
@@ -60,7 +60,7 @@ class DataListCP
     {
         global $dsql;
         $this->sourceSql = '';
-        $this->pageSize = 25;
+        $this->pagesize = 30;
         $this->queryTime = 0;
         $this->getValues = array();
         $this->isQuery = false;
@@ -121,9 +121,9 @@ class DataListCP
         $this->pageNO = $pageno;
         $this->totalResult = $totalresult;
         if (isset($this->tpl->tpCfgs['pagesize'])) {
-            $this->pageSize = $this->tpl->tpCfgs['pagesize'];
+            $this->pagesize = $this->tpl->tpCfgs['pagesize'];
         }
-        $this->totalPage = ceil($this->totalResult / $this->pageSize);
+        $this->totalPage = ceil($this->totalResult / $this->pagesize);
         if ($this->totalResult == 0) {
             $countQuery = preg_replace("#SELECT[ \r\n\t](.*)[ \r\n\t]FROM#is", 'SELECT COUNT(*) AS dd FROM', $this->sourceSql);
             $countQuery = preg_replace("#ORDER[ \r\n\t]{1,}BY(.*)#is", '', $countQuery);
@@ -131,9 +131,9 @@ class DataListCP
             $row = $this->dsql->GetOne($countQuery);
             if (!is_array($row)) $row['dd'] = 0;
             $this->totalResult = isset($row['dd']) ? $row['dd'] : 0;
-            $this->sourceSql .= " LIMIT 0,".$this->pageSize;
+            $this->sourceSql .= " LIMIT 0,".$this->pagesize;
         } else {
-            $this->sourceSql .= " LIMIT ".(($this->pageNO - 1) * $this->pageSize).",".$this->pageSize;
+            $this->sourceSql .= " LIMIT ".(($this->pageNO - 1) * $this->pagesize).",".$this->pagesize;
         }
     }
     //设置网址的Get参数键值
@@ -225,7 +225,7 @@ class DataListCP
         while ($arr = $this->dsql->GetArray('dlist')) {
             $i++;
             $rsArray[$i]  =  $this->XSSClean($arr);
-            if ($i >= $this->pageSize) {
+            if ($i >= $this->pagesize) {
                 break;
             }
         }
@@ -247,8 +247,8 @@ class DataListCP
         if (!isset($atts['listitem'])) {
             $atts['listitem'] = "info,index,end,pre,next,pageno";
         }
-        $totalpage = ceil($this->totalResult / $this->pageSize);
-        //echo " {$totalpage}=={$this->totalResult}=={$this->pageSize}";
+        $totalpage = ceil($this->totalResult / $this->pagesize);
+        //echo " {$totalpage}=={$this->totalResult}=={$this->pagesize}";
         //无结果或只有一页的情况
         if ($totalpage <= 1 && $this->totalResult > 0) {
             return "<ul class='pagination justify-content-center'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$lang_total}1{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";

@@ -182,7 +182,7 @@ $sql = urlencode($sql);
 $sqlhash = md5($sql);
 $_SESSION[$sqlhash] = $sql;
 $dlist = new DataListCP();
-$dlist->pageSize = 20;
+$dlist->pagesize = 30;
 $dlist->SetParameter("hash", $sqlhash);
 $dlist->SetParameter("mid", $mid);
 if (file_exists(DEDEROOT."/theme/templets/$template")) {

@@ -8243,8 +8243,8 @@ function findPosH(doc, pos, dir, unit, visually) {
 function findPosV(cm, pos, dir, unit) {
   var doc = cm.doc, x = pos.left, y
   if (unit == "page") {
-    var pageSize = Math.min(cm.display.wrapper.clientHeight, window.innerHeight || document.documentElement.clientHeight)
-    var moveAmount = Math.max(pageSize - .5 * textHeight(cm.display), 3)
+    var pagesize = Math.min(cm.display.wrapper.clientHeight, window.innerHeight || document.documentElement.clientHeight)
+    var moveAmount = Math.max(pagesize - .5 * textHeight(cm.display), 3)
     y = (dir > 0 ? pos.bottom : pos.top) + dir * moveAmount
 
   } else if (unit == "line") {

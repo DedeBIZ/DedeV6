@@ -17,7 +17,7 @@ if (empty($oid)) exit("<a href='javascript:window.close()'>无效订单号!</a>"
 $row = $dsql->GetOne("SELECT * FROM `#@__shops_userinfo` WHERE oid='$oid'");
 $sql = "SELECT o.*,p.title,p.price as uprice,d.dname FROM `#@__shops_orders` as o left join `#@__shops_products` as p on o.oid=p.oid left join `#@__shops_delivery` as d on d.pid=o.pid WHERE o.oid='$oid'";
 $dlist = new DataListCP();
-$dlist->pageSize = 30;
+$dlist->pagesize = 30;
 $dlist->SetParameter("oid", $oid);
 $dlist->SetTemplate(DEDEADMIN."/templets/shops_operations_cart.htm");
 $dlist->SetSource($sql);

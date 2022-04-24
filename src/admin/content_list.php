@@ -149,7 +149,7 @@ ORDER BY $orderbyField DESC";
 if (empty($f) || !preg_match("#form#", $f)) $f = 'form1.arcid1';
 //初始化
 $dlist = new DataListCP();
-$dlist->pageSize = 30;
+$dlist->pagesize = 30;
 //GET参数
 $dlist->SetParameter('dopost', 'listArchives');
 $dlist->SetParameter('keyword', $keyword);

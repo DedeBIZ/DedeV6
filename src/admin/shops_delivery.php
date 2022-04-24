@@ -69,7 +69,7 @@ while ($row = $dsql->GetArray()) {
     $deliveryarr[] = $row;
 }
 $dlist = new DataListCP();
-$dlist->pageSize = 30;//设定每页显示记录数
+$dlist->pagesize = 30;//设定每页显示记录数
 //这两句的顺序不能更换
 $dlist->SetTemplate(DEDEADMIN."/templets/shops_delivery.htm");//载入模板
 $dlist->SetSource("SELECT `pid`,`dname`,`price`,`des` FROM `#@__shops_delivery` ORDER BY `orders` ASC");//设定查询SQL

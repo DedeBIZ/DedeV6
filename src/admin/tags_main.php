@@ -25,7 +25,7 @@ if (empty($action)) {
     $dlist->SetParameter("tag", $tag);
     $dlist->SetParameter("orderway", $orderway);
     $dlist->SetParameter("orderby", $orderby);
-    $dlist->pageSize = 30;
+    $dlist->pagesize = 30;
     $dlist->SetTemplet(DEDEADMIN."/templets/tags_main.htm");
     $dlist->SetSource($query);
     $dlist->Display();

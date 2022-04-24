@@ -61,7 +61,7 @@ $query = "SELECT arc.aid,arc.aid as id,arc.typeid,arc.senddate,arc.channel,arc.c
     $whereSql
     ORDER BY arc.aid desc ";
 $dlist = new DataListCP();
-$dlist->pageSize = 20;
+$dlist->pagesize = 30;
 $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);

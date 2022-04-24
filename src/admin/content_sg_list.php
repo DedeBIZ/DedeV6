@@ -66,7 +66,7 @@ LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
 $whereSql
 ORDER BY arc.aid DESC";
 $dlist = new DataListCP();
-$dlist->pageSize = 30;
+$dlist->pagesize = 30;
 $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);

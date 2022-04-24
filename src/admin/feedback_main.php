@@ -100,7 +100,7 @@ else {
     $querystring = "SELECT * FROM `#@__feedback` WHERE msg LIKE '%$keyword%' $addsql ORDER BY dtime DESC";
 
     $dlist = new DataListCP();
-    $dlist->pageSize = 30;
+    $dlist->pagesize = 30;
     $dlist->SetParameter('aid', $aid);
     $dlist->SetParameter('ip', $ip);
     $dlist->SetParameter('typeid', $typeid);

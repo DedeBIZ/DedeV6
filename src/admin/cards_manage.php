@@ -27,7 +27,7 @@ if ($dopost == "delete") {
     if (isset($isexp)) $addsql = " WHERE isexp='$isexp' ";
     $sql = "SELECT * FROM #@__moneycard_record $addsql ORDER BY aid DESC";
     $dlist = new DataListCP();
-    $dlist->pageSize = 30;//设定每页显示记录数
+    $dlist->pagesize = 30;//设定每页显示记录数
     if (isset($isexp)) $dlist->SetParameter("isexp", $isexp);
     $dlist->dsql->SetQuery("SELECT * FROM #@__moneycard_type ");
     $dlist->dsql->Execute('ts');

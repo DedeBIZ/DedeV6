@@ -595,7 +595,7 @@ class Mobile_Detect
         // http://www.tolino.de/de/vergleichen/
         'TolinoTablet'  => 'tolino tab [0-9.]+|tolino shine',
         // AudioSonic - a Kmart brand
-        // http://www.kmart.com.au/webapp/wcs/stores/servlet/Search?langId=-1&storeId=10701&catalogId=10001&categoryId=193001&pageSize=72&currentPage=1&searchCategory=193001%2b4294965664&sortBy=p_MaxPrice%7c1
+        // http://www.kmart.com.au/webapp/wcs/stores/servlet/Search?langId=-1&storeId=10701&catalogId=10001&categoryId=193001&pagesize=72&currentPage=1&searchCategory=193001%2b4294965664&sortBy=p_MaxPrice%7c1
         'AudioSonicTablet' => '\bC-22Q|T7-QC|T-17B|T-17P\b',
         // AMPE Tablets - http://www.ampe.com.my/product-category/tablets/
         // @todo: add them gradually to avoid conflicts.

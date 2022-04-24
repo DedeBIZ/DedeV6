@@ -40,15 +40,15 @@ function lib_arcpagelist(&$ctag, &$refObj)
  * @access    public
  * @param     string  $allItemTotal  所有记录
  * @param     string  $currPageNum  当前页面数
- * @param     string  $pageSize  显示条数
+ * @param     string  $pagesize  显示条数
  * @param     string  $tagid  标签ID
  * @return    string
  */
-function multipage($allItemTotal, $currPageNum, $pageSize, $tagid = '')
+function multipage($allItemTotal, $currPageNum, $pagesize, $tagid = '')
 {
   if ($allItemTotal == 0) return "";
   //计算总页数
-  $pagesNum = ceil($allItemTotal / $pageSize);
+  $pagesNum = ceil($allItemTotal / $pagesize);
   //第一页显示
   $firstPage = ($currPageNum <= 1) ? $currPageNum."&lt;&lt;" : "<a href='javascript:multi(1,\"{$tagid}\")' title='第1页'>1&lt;&lt;</a>";
   //最后一页显示

@@ -29,7 +29,7 @@ class SpecView
     var $PageNo;
     var $TotalPage;
     var $TotalResult;
-    var $PageSize;
+    var $pagesize;
     var $ChannelUnit;
     var $ListType;
     var $TempInfos;
@@ -75,15 +75,15 @@ class SpecView
         $this->TempInfos['source'] = $this->dtp->SourceString;
         $ctag = $this->dtp->GetTag("page");
         if (!is_object($ctag)) {
-            $this->PageSize = 20;
+            $this->pagesize = 20;
         } else {
             if ($ctag->GetAtt("pagesize") != "") {
-                $this->PageSize = $ctag->GetAtt("pagesize");
+                $this->pagesize = $ctag->GetAtt("pagesize");
             } else {
-                $this->PageSize = 20;
+                $this->pagesize = 20;
             }
         }
-        $this->TotalPage = ceil($this->TotalResult / $this->PageSize);
+        $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
     }
     //php4构造函数
     function SpecView($starttime = 0)
@@ -140,8 +140,8 @@ class SpecView
         $this->ParseTempletsFirst();
         foreach ($this->dtp->CTags as $tagid => $ctag) {
             if ($ctag->GetName() == "list") {
-                $limitstart = ($this->PageNo - 1) * $this->PageSize;
-                $row = $this->PageSize;
+                $limitstart = ($this->PageNo - 1) * $this->pagesize;
+                $row = $this->pagesize;
                 if (trim($ctag->GetInnerText()) == "") {
                     $InnerText = GetSysTemplets("list_fulllist.htm");
                 } else {
@@ -184,7 +184,7 @@ class SpecView
     {
         //初步给固定值的标记赋值
         $this->ParseTempletsFirst();
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage == 0) {
             $totalpage = 1;
         }
@@ -193,8 +193,8 @@ class SpecView
         for ($this->PageNo = 1; $this->PageNo <= $totalpage; $this->PageNo++) {
             foreach ($this->dtp->CTags as $tagid => $ctag) {
                 if ($ctag->GetName() == "list") {
-                    $limitstart = ($this->PageNo - 1) * $this->PageSize;
-                    $row = $this->PageSize;
+                    $limitstart = ($this->PageNo - 1) * $this->pagesize;
+                    $row = $this->pagesize;
                     if (trim($ctag->GetInnerText()) == "") {
                         $InnerText = GetSysTemplets("spec_list.htm");
                     } else {
@@ -442,7 +442,7 @@ class SpecView
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
             $list_len = 3;
         }
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
             return "<span class='pageinfo'>1页".$this->TotalResult."条</span>";
         }
@@ -506,7 +506,7 @@ class SpecView
         if ($list_len == "" || preg_match("/[^0-9]/", $list_len)) {
             $list_len = 3;
         }
-        $totalpage = ceil($this->TotalResult / $this->PageSize);
+        $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
             return "<span class='pageinfo'>1页".$this->TotalResult."条</span>";
         }

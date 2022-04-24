@@ -74,7 +74,7 @@ $query = "SELECT arc.id,arc.typeid,arc.senddate,arc.flag,arc.ismake,arc.channel,
     left join `#@__channeltype` ch on ch.id=arc.channel
     $whereSql order by arc.senddate desc ";
 $dlist = new DataListCP();
-$dlist->pageSize = 20;
+$dlist->pagesize = 30;
 $dlist->SetParameter("dopost", "listArchives");
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("cid", $cid);

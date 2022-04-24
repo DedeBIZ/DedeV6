@@ -46,7 +46,7 @@ LEFT JOIN `#@__admin` a ON  a.id = u.mid
 LEFT JOIN `#@__member` m ON m.mid = u.mid
 $addsql ORDER BY u.aid DESC";
 $dlist = new DataListCP();
-$dlist->pageSize = 30;
+$dlist->pagesize = 30;
 $dlist->SetParameter("mediatype", $mediatype);
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetParameter("membertype", $membertype);

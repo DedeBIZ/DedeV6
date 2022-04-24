@@ -28,7 +28,7 @@ class TagList
     var $PageNo;
     var $TotalPage;
     var $TotalResult;
-    var $PageSize;
+    var $pagesize;
     var $ListType;
     var $Fields;
     var $Tag;
@@ -139,15 +139,15 @@ class TagList
             $ctag = $this->dtp->GetTag("list");
         }
         if (!is_object($ctag)) {
-            $this->PageSize = 25;
+            $this->pagesize = 30;
         } else {
             if ($ctag->GetAtt("pagesize") != '') {
-                $this->PageSize = $ctag->GetAtt("pagesize");
+                $this->pagesize = $ctag->GetAtt("pagesize");
             } else {
-                $this->PageSize = 25;
+                $this->pagesize = 30;
             }
         }
-        $this->TotalPage = ceil($this->TotalResult / $this->PageSize);
+        $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
     }
     /**
      *  显示列表
@@ -201,11 +201,11 @@ class TagList
     {
         foreach ($this->dtp->CTags as $tagid => $ctag) {
             if ($ctag->GetName() == "list") {
-                $limitstart = (intval($this->PageNo) - 1) * $this->PageSize;
+                $limitstart = (intval($this->PageNo) - 1) * $this->pagesize;
                 if ($limitstart < 0) {
                     $limitstart = 0;
                 }
-                $row = $this->PageSize;
+                $row = $this->pagesize;
                 if (trim($ctag->GetInnerText()) == "") {
                     $InnerText = GetSysTemplets("list_fulllist.htm");
                 } else {
@@ -314,7 +314,7 @@ class TagList
             FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id WHERE $orwhere $ordersql ";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
-        $row = $this->PageSize / $col;
+        $row = $this->pagesize / $col;
         $artlist = '';
         $this->dtp2->LoadSource($innertext);
         $GLOBALS['autoindex'] = 0;
@@ -587,7 +587,7 @@ class TagList
             MkdirAll($this->GetTruePath().$this->tagsDir, $cfg_dir_purview);
             $this->dtp->SaveTo($this->GetTruePath().$this->tagsDir."/index.html");
         } else {
-            $totalpage = ceil($this->TotalResult / $this->PageSize);
+            $totalpage = ceil($this->TotalResult / $this->pagesize);
             if ($totalpage == 0) {
                 $totalpage = 1;
             }

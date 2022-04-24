@@ -18,7 +18,7 @@ if ($dojob == '') {
     exit();
 } else {
     if (empty($startdd)) $startdd = 0;
-    if (empty($pagesize)) $pageSize = 30;
+    if (empty($pagesize)) $pagesize = 30;
     if (empty($totalnum)) $totalnum = 0;
     if (empty($sid)) $sid = 0;
     if (empty($eid)) $eid = 0;

@@ -69,7 +69,7 @@ if ($action == 'post') {
     include_once DEDEINC.'/datalistcp.class.php';
     $query = "SELECT * FROM {$diy->table} ORDER BY id DESC";
     $datalist = new DataListCP();
-    $datalist->pageSize = 30;
+    $datalist->pagesize = 30;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
     $datalist->SetTemplate(DEDEADMIN.'/templets/diy_list.htm');

@@ -90,7 +90,7 @@ else {
     }
     $query = "SELECT * FROM `#@__member_pms` WHERE $wsql ORDER BY sendtime DESC";
     $dlist = new DataListCP();
-    $dlist->pageSize = 20;
+    $dlist->pagesize = 30;
     $dlist->SetParameter("dopost", $dopost);
     $dlist->SetTemplate(DEDEMEMBER.'/templets/pm-main.htm');
     $dlist->SetSource($query);

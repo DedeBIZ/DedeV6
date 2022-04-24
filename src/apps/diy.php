@@ -99,7 +99,7 @@ else if ($action == 'list') {
     else
         $query = "SELECT * FROM `{$diy->table}` WHERE ifcheck=1 ORDER BY id DESC";
     $datalist = new DataListCP();
-    $datalist->pageSize = 10;
+    $datalist->pagesize = 10;
     $datalist->SetParameter('action', 'list');
     $datalist->SetParameter('diyid', $diyid);
     $datalist->SetTemplate(DEDEINC."/../theme/plus/{$diy->listTemplate}");
