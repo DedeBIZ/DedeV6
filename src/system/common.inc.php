@@ -245,7 +245,6 @@ if (!defined('MYSQL_NUM')) {
 }
 //全局常用函数
 require_once(DEDEINC.'/common.func.php');
-
 if ($GLOBALS['cfg_dbtype'] == 'mysql' || $GLOBALS['cfg_dbtype'] == 'mysqli') {
     require_once(DEDEINC.'/database/dedesqli.class.php');
 } else {
