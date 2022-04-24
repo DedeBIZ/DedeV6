@@ -18,9 +18,7 @@ if (DEDE_ENVIRONMENT == 'production') {
     if (version_compare(PHP_VERSION, '5.3', '>='))
     {
         error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
-    }
-    else
-    {
+    } else {
         error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
     }
 } else {
@@ -43,7 +41,7 @@ oqzeepye5I4mWyO4A8/V2ougO+xDK426MIf1dq+W59NVZj8k+zeZrbPh7+fPFw4u
 PwAMpkTJJ9nwNOO6saH2eMGaQ3oxZIQ+SmminDB8miI/+hwIn2hNmaHFuur0OGlB
 NQabUzX9JoYtXqPcpZRT7ymHrppU0KFdUSEJiW0utTWJo0HrDOBIT5qWlM0MP9p/
 PwIDAQAB
------END PUBLIC KEY-----'); //DedeBIZ系统公钥
+-----END PUBLIC KEY-----');//DedeBIZ系统公钥
 define('DEDECDNURL', 'https://cdn.dedebiz.com'); //默认静态资源地址
 if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
     if (!function_exists('session_register')) {
@@ -162,7 +160,6 @@ $cfg_plus_dir = $cfg_cmspath.'/apps';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
 $cfg_static_dir = $cfg_cmspath.'/static';
 $cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
-$cfg_mobile_dir = $cfg_cmspath.'/m';
 $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
 $cfg_data_dir = $cfg_cmspath.'/data';
 $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
@@ -177,8 +174,6 @@ $cfg_medias_dir = $cfg_cmspath.$cfg_medias_dir;
 $cfg_mediasurl = $cfg_mainsite.$cfg_medias_dir;
 //上传的普通图片的路径,建议按默认
 $cfg_image_dir = $cfg_medias_dir.'/allimg';
-//上传的缩略图
-$ddcfg_image_dir = $cfg_medias_dir.'/litimg';
 //用户投稿图片存放目录
 $cfg_user_dir = $cfg_medias_dir.'/userup';
 //上传的软件目录
@@ -202,8 +197,8 @@ if (isset($cfg_ftp_mkdir) && $cfg_ftp_mkdir == 'Y') {
 } else {
     $cfg_dir_purview = 0755;
 }
-//会员是否使用精简模式（已禁用）
-$cfg_mb_lit = 'N';
+//会员是否使用精简模式
+$cfg_mb_lit = 'Y';
 //特殊全局变量
 $_sys_globals['curfile'] = '';
 $_sys_globals['typeid'] = 0;

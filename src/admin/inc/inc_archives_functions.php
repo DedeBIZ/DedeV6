@@ -383,7 +383,7 @@ function GetDDImgFromBody(&$body)
  */
 function GetDDImage($litpic, $picname, $isremote)
 {
-    global $cuserLogin, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir, $ddcfg_image_dir, $cfg_addon_savetype;
+    global $cuserLogin, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir, $cfg_image_dir, $cfg_addon_savetype;
     $ntime = time();
     if (($litpic != 'none' || $litpic != 'ddfirst') && !empty($_FILES[$litpic]['tmp_name']) && is_uploaded_file($_FILES[$litpic]['tmp_name'])
     ) {
@@ -395,7 +395,7 @@ function GetDDImage($litpic, $picname, $isremote)
             ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种", "-1");
             exit();
         }
-        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
         $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         if (strtolower($_FILES[$litpic]['type']) == "image/gif") {
