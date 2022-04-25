@@ -973,7 +973,7 @@ class ListView
                 $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j' class='page-link'>".$j."</a></li>\r\n";
             }
         }
-        $plist = '';
+        $plist = "";
         if (preg_match('/index/i', $listitem)) $plist .= $indexpage;
         if (preg_match('/pre/i', $listitem)) $plist .= $prepage;
         if (preg_match('/pageno/i', $listitem)) $plist .= $listdd;

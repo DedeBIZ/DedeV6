@@ -541,7 +541,7 @@ class TagList
                 $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."/$j/'>".$j."</a></li>\r\n";
             }
         }
-        $plist  =  '';
+        $plist = "";
         if (preg_match('/info/i', $listitem)) {
             $plist .= $maininfo.' ';
         }

@@ -185,7 +185,7 @@ class RssView
                 $row["source"] = $GLOBALS['cfg_webname'];
             }
             if ($row["writer"] == '') {
-                $row["writer"] = "秩名";
+                $row["writer"] = "张生";
             }
             foreach ($row as $k => $v) {
                 $row[$k] = dede_htmlspecialchars($v);

@@ -707,14 +707,12 @@ class SearchView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><a class='page-link'>$j&nbsp;</a></li>\r\n";
+                $listdd .= "<li class='page-item active'><a class='page-link'>$j</a></li>\r\n";
             } else {
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a>&nbsp;</li>\r\n";
+                $listdd .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$j'>".$j."</a></li>\r\n";
             }
         }
-        $plist = "";
-        //$plist  =  "<table cellpadding='0' cellspacing='0'>\r\n";
-        //$plist .= "<tr align='center' style='font-size:10pt'>\r\n";
+		$plist = "";
         $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
         $plist .= "<ul class=\"pagination justify-content-center pt-3\">";
         $plist .= $infos;
@@ -723,11 +721,6 @@ class SearchView
         $plist .= $listdd;
         $plist .= $nextpage;
         $plist .= $endpage;
-        //if($totalpage>$total_list)
-        //{
-        //  $plist.="<td width='38'><input type='text' name='PageNo' style='width:28px;height:14px' value='".$this->PageNo."' /></td>\r\n";
-        //  $plist.="<td width='30'><input type='submit' name='plistgo' value='GO' style='width:30px;height:22px;font-size:9pt' /></td>\r\n";
-        //}
         $plist .= "</ul></form>\r\n";
         return $plist;
     }
