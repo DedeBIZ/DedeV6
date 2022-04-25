@@ -138,11 +138,11 @@ else if ($action == 'setup') {
             $prvdirs[$prvdir][1] = TestWriteAble($prvdir);
         }
     }
-    $prvdir = "<table cellpadding='1' cellspacing='1' width='350' style='margin-top:10px'>\r\n";
+    $prvdir = "<table cellpadding='1' cellspacing='1'>\r\n";
     $prvdir .= "<tr style='background:#F8FCF1'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
     foreach ($prvdirs as $k => $v) {
         if ($v) $cw = '√';
-        else $cw = '<span class="text-danger">×</span>';
+        else $cw = "<span class='text-danger'>×</span>";
         $prvdir .= "<tr><td>$k</td>";
         $prvdir .= "<td align='center'>$cw</td></tr>\r\n";
     }
