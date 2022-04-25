@@ -33,13 +33,13 @@ function lib_channelartlist(&$ctag, &$refObj)
     if (empty($totalnum)) $totalnum = 20;
     //获得类别ID总数的信息
     $typeids = array();
-    if ($typeid == 0 || $typeid == 'top') {
-        $tpsql = " reid=0 AND ispart<>2 AND ishidden<>1 AND channeltype>0 ";
+    if($typeid==0 || $typeid=='top') {
+        $tpsql = " reid=0 AND channeltype>0 AND ishidden<>1 ";
     } else {
-        if (!preg_match('#,#', $typeid)) {
-            $tpsql = " reid='$typeid' AND ispart<>2 AND ishidden<>1 ";
+        if(!preg_match('#,#', $typeid)) {
+            $tpsql = " reid='$typeid' AND ishidden<>1 ";
         } else {
-            $tpsql = " id IN($typeid) AND ispart<>2 AND ishidden<>1 ";
+            $tpsql = " id IN($typeid) AND ishidden<>1 ";
         }
     }
     //否定指定栏目
@@ -59,18 +59,13 @@ function lib_channelartlist(&$ctag, &$refObj)
         $pv = new PartView($typeids[$i]['id']);
         $pv->Fields['typeurl'] = GetOneTypeUrlA($typeids[$i]);
         //栏目高亮
-        if (!is_null($refObj->TypeLink->TypeInfos)) {
-            if($typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['id'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['reid'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['topid'] || $typeids[$i]['id'] == GetTopid($refObj->TypeLink->TypeInfos['id']) )
-            {
-                $pv->Fields['currentstyle'] = $currentstyle ? $currentstyle : 'current';
-            } else {
-                $pv->Fields['currentstyle'] = '';
-            }
+        if($typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['id'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['reid'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['topid'] || $typeids[$i]['id'] == GetTopid($refObj->TypeLink->TypeInfos['id']) )
+        {
+            $pv->Fields['currentstyle'] = $currentstyle ? $currentstyle : 'current';
         } else {
             $pv->Fields['currentstyle'] = '';
         }
-		
-        $pv->SetTemplet($innertext, 'string');
+        $pv->SetTemplet($innertext,'string');
         $artlist .= $pv->GetResult();
         $GLOBALS['itemparity'] = ($GLOBALS['itemparity'] == 1 ? 2 : 1);
     }
