@@ -567,14 +567,12 @@ class TagList
         $truepath = $GLOBALS["cfg_basedir"];
         return $truepath;
     }
-
     function SetTagsDir($dir = '')
     {
         global $cfg_tags_dir,$cfg_cmspath;
         if ($dir == "") $dir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
         $this->tagsDir = $dir;
     }
-
     //生成静态Tag
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
