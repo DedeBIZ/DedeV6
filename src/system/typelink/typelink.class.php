@@ -243,7 +243,7 @@ class TypeLink
     {
         global $cfg_admin_channel;
         if (empty($cfg_admin_channel)) $cfg_admin_channel = 'all';
-        $this->dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid='".$id."' AND ispart<>2 ORDER BY sortrank ASC");
+        $this->dsql->SetQuery("SELECT id,typename,ispart FROM `#@__arctype` WHERE reid='".$id."' ORDER BY sortrank ASC");
         $this->dsql->Execute($id);
         while ($row = $this->dsql->GetObject($id)) {
             if (is_array($oper) && $cfg_admin_channel != 'all') {
