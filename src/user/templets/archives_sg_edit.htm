@@ -1,114 +1,121 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-  <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
-  <title>修改<?php echo $cInfos['typename']; ?> - 会员中心 - <?php echo $cfg_webname; ?></title>
-</head>
-<body>
-  <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-  <main class="member">
-    <div class="container-fluid pannel">
-      <div class="container">
-        <div class="row">
-          <div class="pannel-main col-md-12 mt-3 mb-3">
-            <div class="pannel-main-container">
-              <nav class="navbar navbar-expand-lg pr-0 pl-0">
-                <ol class="breadcrumb mb-0 mr-auto">
-                  <li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
-                  <li class="breadcrumb-item">修改：<?php echo $cInfos['typename']; ?></li>
-                  </li>
-                </ol>
-                <span class="navbar-text">
-                  <a href="javascript:history.back(-1);" class="btn btn-success btn-sm">返回</a>
-                </span>
-              </nav>
-              <form name="addcontent" action="archives_sg_edit.php?aid=<?php echo $aid;?>" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
-                <input type="hidden" name="dopost" value="save">
-                <input type="hidden" name="channelid" value="<?php echo $channelid; ?>">
-                <div id="mainCp">
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">标题</label>
-                    <div class="col-sm-10">
-                      <input name="title" type="text" id="title" value="<?php echo $addRow['title']?>" class="form-control" placeholder="请输入内容主题">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">作者</label>
-                    <div class="col-sm-10">
-                      <input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">隶属栏目</label>
-                    <div class="col-sm-10">
-                      <?php
-                        $typeOptions = GetOptionList($addRow["typeid"],$addRow["channel"]);
-                        echo "<select class='form-control' name='typeid' size='1'>";
-                        echo $typeOptions;
-                        echo "</select>";
-                      ?>
-                      <span style="color:#F00">*</span>（不能选择带颜色的分类）
-                    </div>
-                  </div>
-                  <?php
-                    //自定义字段
-                    PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']), $addRow, 'autofield');
-                  ?>
-                  <!-- 表单操作区域 -->
-                  <div class="contentShow postForm">
-            <?php
-              //游客强制加验证码，会员则判断后台开关
-              if(preg_match("/3/",$safe_gdopen)){
-            ?>
-                      <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">验证码</label>
-                        <div class="col-sm-10">
-                          <input name="vdcode" type="text" id="vdcode" class="form-control" style="display:inline-block;width:260px;text-transform:uppercase">
-                          <img src="../apps/vdimgck.php" alt="看不清点击更换" align="absmiddle" style="cursor:pointer" onclick="this.src=this.src+'?'">
-                        </div>
-                      </div>
-                    <?php }?>
-                    <p>
-                      <button class="btn btn-success btn-sm" type="submit">提交</button>
-                      <button class="btn btn-secondary btn-sm" type="reset" onclick="location.reload();">重置</button>
-                    </p>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
-  <script type="text/javascript">
-    function checkSubmit() {
-      if (document.addcontent.title.value == "") {
-        ShowMsg("名称不能为空");
-        document.addcontent.title.focus();
-        return false;
-      }
-      if (document.addcontent.typeid.value == 0) {
-        ShowMsg("隶属栏目必须选择");
-        return false;
-      }
-      if (document.addcontent.typeid.options && document.addcontent.typeid.options[document.addcontent.typeid.selectedIndex].className != 'option3') {
-        ShowMsg("隶属栏目必须选择白色背景的项目");
-        return false;
-      }
-      if (document.addcontent.vdcode.value == "") {
-        document.addcontent.vdcode.focus();
-        ShowMsg("验证码不能为空");
-        return false;
-      }
-    }
-  </script>
-</body>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>修改<?php echo $cInfos['typename']; ?>-会员中心-<?php echo $cfg_webname; ?></title>
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+	</head>
+	<body>
+		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<main class="member">
+			<div class="container-fluid pannel">
+				<div class="container">
+					<div class="row">
+						<div class="pannel-main col-md-12 mt-3 mb-3">
+							<div class="pannel-main-container">
+								<nav class="navbar navbar-expand-lg pr-0 pl-0">
+									<ol class="breadcrumb mb-0 mr-auto">
+										<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
+										<li class="breadcrumb-item">修改<?php echo $cInfos['typename']; ?></li></li>
+									</ol>
+									<span class="navbar-text">
+										<a href="javascript:history.back(-1);" class="btn btn-success btn-sm">返回</a>
+									</span>
+								</nav>
+								<form name="addcontent" action="archives_sg_edit.php?aid=<?php echo $aid;?>" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
+									<input type="hidden" name="dopost" value="save">
+									<input type="hidden" name="channelid" value="<?php echo $channelid; ?>">
+									<div id="mainCp">
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">标题</label>
+											<div class="col-sm-10">
+												<input name="title" type="text" id="title" value="<?php echo $addRow['title']?>" class="form-control" placeholder="请输入标题">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">作者</label>
+											<div class="col-sm-10">
+												<input name="writer" type="text" id="writer" value="<?php echo $cfg_ml->M_UserName?>" class="form-control">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">发布栏目</label>
+											<div class="col-sm-10">
+												<?php
+												$typeOptions = GetOptionList($addRow["typeid"],$addRow["channel"]);
+												echo "<select class='form-control' name='typeid' size='1'>";
+												echo $typeOptions;
+												echo "</select>";
+												?>
+												<span style="color:#F00">*</span>（不能选择带颜色的分类）
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">描述</label>
+											<div class="col-sm-10">
+												<textarea class="form-control" name="description" id="description"><?php echo $row["description"]; ?></textarea>（内容的简要说明）
+											</div>
+										</div>
+										<?php
+										//自定义字段
+										PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']), $addRow, 'autofield');
+										?>
+										<div class="contentShow postForm">
+											<?php
+											//游客强制加验证码，会员则判断后台开关
+											if(preg_match("/3/",$safe_gdopen)){
+											?>
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">验证码</label>
+												<div class="col-sm-10">
+													<input name="vdcode" type="text" id="vdcode" class="form-control" style="display:inline-block;width:260px;text-transform:uppercase">
+													<img src="../apps/vdimgck.php" alt="验证码" title="验证码" onclick="this.src=this.src+'?'" style="cursor:pointer">
+												</div>
+											</div>
+											<?php
+											}
+											?>
+											<p>
+												<button type="submit" class="btn btn-success btn-sm">提交</button>
+												<button type="reset" class="btn btn-secondary btn-sm" onclick="location.reload();">重置</button>
+											</p>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<script type="text/javascript">
+			function checkSubmit() {
+				if (document.addcontent.title.value == "") {
+					ShowMsg("名称不能为空");
+					document.addcontent.title.focus();
+					return false;
+				}
+				if (document.addcontent.typeid.value == 0) {
+					ShowMsg("隶属栏目必须选择");
+					return false;
+				}
+				if (document.addcontent.typeid.options && document.addcontent.typeid.options[document.addcontent.typeid
+						.selectedIndex].className != 'option3') {
+					ShowMsg("隶属栏目必须选择白色背景的项目");
+					return false;
+				}
+				if (document.addcontent.vdcode.value == "") {
+					document.addcontent.vdcode.focus();
+					ShowMsg("验证码不能为空");
+					return false;
+				}
+			}
+		</script>
+	</body>
 </html>

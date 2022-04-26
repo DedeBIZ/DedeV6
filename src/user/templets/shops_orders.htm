@@ -1,117 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-  <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
-  <title>商城订单 - 会员中心 - <?php echo $cfg_webname; ?></title>
-</head>
-<body>
-  <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-  <main class="member">
-    <div class="container-fluid pannel">
-      <div class="container">
-        <div class="row">
-          <?php
-          $_menu_order = true; //展开编辑信息
-          $_menu_orderstate = 1;
-          ?>
-          <?php include(DEDEMEMBER."/templets/menu.htm"); ?>
-          <div class="pannel-main col-md-9 mt-3 mb-3">
-            <div class="pannel-main-container">
-              <div id="mainCp">
-                <!--内容消息提示 -->
-                <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="shops_orders.php">商品订单</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="shops_products.php">已购商品</a>
-                  </li>
-                </ul>
-                <div class="postForm mt-3" style="padding-bottom: 0px;">
-                  <form name="form3" action="shops_products.php" method="get">
-                    <div class="input-group" style="margin-top:3px; padding-left: 130px;"> 订单号：
-                      <input class="form-control" type='text' name='oid' size="40" value=''>
-                      <div class="input-group-append">
-                        <button class="btn btn-success btn-sm" type="submit">搜索</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <table width="100%" cellpadding="0" cellspacing="0" class="table mt-3">
-                    <thead>
-                      <tr>
-                        <th colspan="2" width="25%">订单号</th>
-                        <th>状态</th>
-                        <th width="10%">数量</th>
-                        <th width="10%">总计(元)</th>
-                        <th width="20%">时间</th>
-                      </tr>
-                    </thead>
-                    <form name='form1' action="shops_orders.php" method="post">
-                    <input type='hidden' name='dopost' value='del'>
-                    <tbody>
-                    {dede:datalist}
-                    <tr>
-                      <td align="center"><input type="checkbox" name="deleteid" value="{dede:field.oid/}"/></td>
-                      <td align="center"><a href="shops_products.php?do=show&oid={dede:field.oid/}">{dede:field.oid/}</a></td>
-                      <td align="center"><?php echo GetSta($fields["state"],$fields["oid"])?></td>
-                      <td align="center">{dede:field.cartcount/}</td>
-                      <td align="center">{dede:field.priceCount/}</td>
-                      <td align="center">{dede:field.stime function="Mydate('Y-m-d h:i:s',@me)"/}</td>
-                    </tr>
-                    {/dede:datalist}
-                    <tr>
-                    <td colspan="6"><button id="checkedClick" type="button" class="btn btn-success btn-sm">全选</button>
-                      <button type="button" onclick="DoSubmit()" class="btn btn-success btn-sm">删除选中</button></td></tr></tbody>
-                    </form>
-                </table>
-                <nav>{dede:pagelist listsize='6'/}</nav>
-              </div>
-              <!--主操作区域 -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
-  <script type="text/javascript">
-	//获得选中文件的文件名
-	function GetCheckfolderItem()
-	{
-		var allSel='';
-		if(document.form1.deleteid.value) return document.form1.deleteid.value;
-		for(i=0;i<document.form1.deleteid.length;i++)
-		{
-			if(document.form1.deleteid[i].checked)
-			{
-				if(allSel=='')
-				allSel=document.form1.deleteid[i].value;
-				else
-				allSel=allSel+","+document.form1.deleteid[i].value;
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>商城订单-会员中心-<?php echo $cfg_webname; ?></title>
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+	</head>
+	<body>
+		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<main class="member">
+			<div class="container-fluid pannel">
+				<div class="container">
+					<div class="row">
+						<?php
+						$_menu_order = true;
+						$_menu_orderstate = 1;
+						?>
+						<?php include(DEDEMEMBER."/templets/menu.htm"); ?>
+						<div class="pannel-main col-md-9 mt-3 mb-3">
+							<div class="pannel-main-container">
+								<div id="mainCp">
+									<ul class="nav nav-tabs">
+										<li class="nav-item">
+											<a class="nav-link active" href="shops_orders.php">商品订单</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="shops_products.php">已购商品</a>
+										</li>
+									</ul>
+									<div class="postForm mt-3" style="padding-bottom: 0px;">
+										<form name="form3" action="shops_products.php" method="get">
+											<div class="input-group" style="padding-left:120px">
+												订单号：<input class="form-control" type="text" name="oid" size="40" value="">
+												<div class="input-group-append">
+													<button class="btn btn-success btn-sm" type="submit">搜索</button>
+												</div>
+											</div>
+										</form>
+									</div>
+									<table width="100%" cellpadding="0" cellspacing="0" class="table mt-3">
+										<thead>
+											<tr>
+												<th colspan="2" width="25%">订单号</th>
+												<th>状态</th>
+												<th width="10%">数量</th>
+												<th width="10%">总计(元)</th>
+												<th width="20%">时间</th>
+											</tr>
+										</thead>
+										<form name="form1" action="shops_orders.php" method="post">
+											<input type="hidden" name="dopost" value="del">
+											<tbody>
+												{dede:datalist}
+												<tr>
+													<td align="center"><input type="checkbox" name="deleteid" value="{dede:field.oid/}" /></td>
+													<td align="center"><a href="shops_products.php?do=show&oid={dede:field.oid/}">{dede:field.oid/}</a></td>
+													<td align="center"><?php echo GetSta($fields["state"],$fields["oid"])?></td>
+													<td align="center">{dede:field.cartcount/}</td>
+													<td align="center">{dede:field.priceCount/}</td>
+													<td align="center">{dede:field.stime function="Mydate('Y-m-d h:i:s',@me)"/}</td>
+												</tr>
+												{/dede:datalist}
+												<tr>
+													<td colspan="6">
+														<button id="checkedClick" type="button" class="btn btn-success btn-sm">全选</button>
+														<button type="button" onclick="DoSubmit()" class="btn btn-success btn-sm">删除选中</button>
+													</td>
+												</tr>
+											</tbody>
+										</form>
+									</table>
+									<nav>{dede:pagelist listsize='6'/}</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<script type="text/javascript">
+			//获得选中文件的文件名
+			function GetCheckfolderItem() {
+				var allSel = '';
+				if (document.form1.deleteid.value) return document.form1.deleteid.value;
+				for (i = 0; i < document.form1.deleteid.length; i++) {
+					if (document.form1.deleteid[i].checked) {
+						if (allSel == '')
+							allSel = document.form1.deleteid[i].value;
+						else
+							allSel = allSel + "," + document.form1.deleteid[i].value;
+					}
+				}
+				return allSel;
 			}
-		}
-		return allSel;
-	}
-	
-	function DoSubmit()
-	{
-		var selid = GetCheckfolderItem();
-		if(selid=='') {
-			alert("您没选中任何信息");
-			return false;
-		}
-		if(window.confirm("您确定要删除这些消息吗"))
-		{
-			location = "shops_orders.php?dopost=del&ids="+selid;
-		}
-	}
-    </script>
-</body>
+			function DoSubmit() {
+				var selid = GetCheckfolderItem();
+				if (selid == '') {
+					alert("您没选中任何信息");
+					return false;
+				}
+				if (window.confirm("您确定要删除这些消息吗")) {
+					location = "shops_orders.php?dopost=del&ids=" + selid;
+				}
+			}
+		</script>
+	</body>
 </html>

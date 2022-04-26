@@ -1,94 +1,91 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="<?php echo $cfg_soft_lang; ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-    <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-    <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
-    <title><?php echo $cfg_webname; ?> - 会员注册</title>
-</head>
-<body>
-    <?php include(DEDEMEMBER."/templets/top.htm"); ?>
-    <?php include(DEDEMEMBER."/templets/header.htm"); ?>
-    <main class="login-from">
-        <div class="container">
-            <div class="login-area">
-                <h4 class="text-center py-2">会员注册</h4>
-                <form method="post" action="reg_new.php" id="regUser" name="form2" onsubmit="return CheckSubmit();">
-                    <input type="hidden" value="regbase" name="dopost">
-                    <input type="hidden" value="1" name="step">
-                    <input type="hidden" value="个人" name="mtype">
-                    <div class="input-group mb-3">
-                        <input id="iptUserid" name="userid" type="text" class="form-control" placeholder="输入用户名">
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input name="vdcode" placeholder="输入图形验证码" type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
-                            <img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onClick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="点击我更换图片" alt="点击我更换图片">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input placeholder="登录密码" name="userpwd" type="password" class="form-control" id="iptUserpwd" style="text-transform:uppercase">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input placeholder="确认密码" name="userpwdok" type="password" class="form-control" id="iptUserpwdok" style="text-transform:uppercase">
-                        </div>
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="iptLicence">
-                        <label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《用户注册条款》</a>、<a href="">《隐私保护条例》</a></label>
-                    </div>
-                    <button type="submit" class="btn btn-success btnLogin btn-sm">注 册</button>
-                    <a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btnLogin mt-2">登 录</a>
-                </form>
-            </div>
-        </div>
-    </main>
-    <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
-    <script>
-      //CheckSubmit 校验注册提交表单
-      function CheckSubmit() {
-        let formCheck = [
-          {
-            elem : "#iptUserid",
-            condition : $("#iptUserid").val() === "",
-          },
-          {
-            elem : "#iptLicence",
-            condition : !$("#iptLicence").is(':checked'),
-          },
-          {
-            elem : "#iptValidate",
-            condition : $("#iptValidate").val() === "",
-          },
-          {
-            elem : "#iptUserpwd",
-            condition : $("#iptUserpwd").val() === "",
-          },
-          {
-            elem : "#iptUserpwdok",
-            condition : $("#iptUserpwdok").val() !== $("#iptUserpwd").val(),
-          },
-        ];
-
-        for (let i = 0; i < formCheck.length; i++) {
-          const fc = formCheck[i];
-          if (fc.condition) {
-            $(fc.elem).addClass("is-invalid");
-            return false
-          } else {
-            $(fc.elem).removeClass("is-invalid");
-          }
-        }
-
-        return true
-      }
-    </script>
-</body>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title><?php echo $cfg_webname; ?>-会员注册</title>
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+	</head>
+	<body>
+		<?php include(DEDEMEMBER."/templets/top.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/header.htm"); ?>
+		<main class="login-from">
+			<div class="container">
+				<div class="login-area">
+					<h4 class="text-center py-2">会员注册</h4>
+					<form method="post" action="reg_new.php" id="regUser" name="form2" onsubmit="return CheckSubmit();">
+						<input type="hidden" value="regbase" name="dopost">
+						<input type="hidden" value="1" name="step">
+						<input type="hidden" value="个人" name="mtype">
+						<div class="input-group mb-3">
+							<input id="iptUserid" name="userid" type="text" class="form-control" placeholder="输入用户名">
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input name="vdcode" placeholder="输入图形验证码" type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
+								<img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" onClick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" alt="验证码" style="cursor:pointer">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input placeholder="登录密码" name="userpwd" type="password" class="form-control" id="iptUserpwd" style="text-transform:uppercase">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input placeholder="确认密码" name="userpwdok" type="password" class="form-control" id="iptUserpwdok" style="text-transform:uppercase">
+							</div>
+						</div>
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" id="iptLicence">
+							<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《用户注册条款》</a>、<a href="">《隐私保护条例》</a></label>
+						</div>
+						<button type="submit" class="btn btn-success btnLogin btn-sm">注册</button>
+						<a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btnLogin mt-2">登录</a>
+					</form>
+				</div>
+			</div>
+		</main>
+		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<script>
+			//CheckSubmit 校验注册提交表单
+			function CheckSubmit() {
+				let formCheck = [{
+						elem: "#iptUserid",
+						condition: $("#iptUserid").val() === "",
+					},
+					{
+						elem: "#iptLicence",
+						condition: !$("#iptLicence").is(':checked'),
+					},
+					{
+						elem: "#iptValidate",
+						condition: $("#iptValidate").val() === "",
+					},
+					{
+						elem: "#iptUserpwd",
+						condition: $("#iptUserpwd").val() === "",
+					},
+					{
+						elem: "#iptUserpwdok",
+						condition: $("#iptUserpwdok").val() !== $("#iptUserpwd").val(),
+					},
+				];
+				for (let i = 0; i < formCheck.length; i++) {
+					const fc = formCheck[i];
+					if (fc.condition) {
+						$(fc.elem).addClass("is-invalid");
+						return false
+					} else {
+						$(fc.elem).removeClass("is-invalid");
+					}
+				}
+				return true
+			}
+		</script>
+	</body>
 </html>

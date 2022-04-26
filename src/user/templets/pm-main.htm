@@ -1,143 +1,152 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-  <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
-  <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/bootstrap.bundle.min.js"></script>
-  <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/style.js"></script>
-  <title>消息管理 - 会员中心 - <?php echo $cfg_webname; ?></title>
-  <script>
-    //阅读消息
-    function ReadMsg(id) {
-      $.get(`<?php echo $cfg_memberurl?>/pm.php?dopost=read&id=${id}`, function (data) {
-        let result = JSON.parse(data);
-        if (result.code === 200) {
-          ShowMsg(`标题：<p>${result.data.subject}</p>
-          时间：<p>${result.data.sendtime}</p>
-          内容<p>${result.data.subject}</p>`,{
-            title : "查看短消息",
-          });
-          $(`.pm-read-status[for='${id}']`).html("已阅读");
-        } else {
-          ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
-        }
-      })
-    }
-  </script>
-</head>
-<body>
-  <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-  <main class="member">
-    <div class="container-fluid pannel">
-      <div class="container">
-        <div class="row">
-          <?php
-          $_menu_pmex = true; //展开短消息菜单
-          $_menu_pmstate = $state; //当前活动菜单项目
-          ?>
-          <?php include(DEDEMEMBER."/templets/menu.htm"); ?>
-          <div class="pannel-main col-md-9 mt-3 mb-3">
-            <div class="pannel-main-container">
-              <ul class="nav mt-2">
-                <li class="nav-item">
-                  <a class="nav-link<?php if($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link<?php if($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link<?php if($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a>
-                </li>
-              </ul>
-              <div class="table-responsive">
-                <form action="pm.php" method="post" name="form1">
-                  <input type='hidden' name='dopost' value='del'>
-                  <div id="feedback-alert">
-                  </div>
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">&nbsp;</th>
-                        <th scope="col">标题</th>
-                        <th scope="col"><?php
-                        if($folder == "inbox") echo "发件人";
-                        else echo "收件人";
-                        ?></th>
-                        <th scope="col">状态</th>
-                        <th scope="col">发布时间</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {dede:datalist}
-                      <tr>
-                        <td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}" style="margin-left:5px"></td>
-                        <td><?php
-                        if($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
-                        else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
-                        ?></td>
-                        <td><?php 
-                        if($folder == "inbox") { 
-                          echo $fields['floginid']; 
-                        } else {  
-                          echo $fields['tologinid']; 
-                        }?>
-                        </td>
-                        <td>
-                          <div class="pm-read-status" for="<?php echo $fields['id'];?>">
-                            <?php
-                            $readmsg = ($fields['hasview']==0 ? "<span class='text-danger'>未阅读</span>" : '已阅读');
-                            echo $readmsg;
-                            ?>
-                          </div>
-                        </td>
-                        <td><?php
-                        echo MyDate('Y-m-d H:i:s',$fields['sendtime']);
-                        ?></td>
-                      </tr>
-                      {/dede:datalist}
-                    </tbody>
-                  </table>
-                </form>
-              </div>
-              <nav><button type="button" onclick="DoSubmit('<?php echo $folder; ?>')" class="btn btn-success btn-sm" >删除选中</button> {dede:pagelist listsize='6'/}</nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
-  <script type="text/javascript">
-    //获得选中文件的文件名
-    function GetCheckfolderItem() {
-      var allSel = '';
-      if (document.form1.deleteid.value) return document.form1.deleteid.value;
-      for (i = 0; i < document.form1.deleteid.length; i++) {
-        if (document.form1.deleteid[i].checked) {
-          if (allSel == '')
-            allSel = document.form1.deleteid[i].value;
-          else
-            allSel = allSel + "," + document.form1.deleteid[i].value;
-        }
-      }
-      return allSel;
-    }
-
-    function DoSubmit(myfolder) {
-      var selid = GetCheckfolderItem();
-      if (selid == '') {
-        ShowMsg("您没选中任何信息");
-        return false;
-      }
-      if (window.confirm("您确定要删除这些消息吗")) {
-        location = "pm.php?dopost=del&ids=" + selid + "&folder=" + myfolder;
-      }
-    }
-  </script>
-</body>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>消息管理-会员中心-<?php echo $cfg_webname; ?></title>
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/style.js"></script>
+		<script>
+			//阅读消息
+			function ReadMsg(id) {
+				$.get(`<?php echo $cfg_memberurl?>/pm.php?dopost=read&id=${id}`, function(data) {
+					let result = JSON.parse(data);
+					if (result.code === 200) {
+						ShowMsg(`标题：<p>${result.data.subject}</p>
+							时间：<p>${result.data.sendtime}</p>
+							内容<p>${result.data.subject}</p>`, {
+							title: "查看短消息",
+						});
+						$(`.pm-read-status[for='${id}']`).html("已阅读");
+					} else {
+						ShowAlert("#feedback-alert", `评论失败：${result.msg}`, "danger");
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<main class="member">
+			<div class="container-fluid pannel">
+				<div class="container">
+					<div class="row">
+						<?php
+						$_menu_pmex = true;
+						$_menu_pmstate = $state;
+						?>
+						<?php include(DEDEMEMBER."/templets/menu.htm"); ?>
+						<div class="pannel-main col-md-9 mt-3 mb-3">
+							<div class="pannel-main-container">
+								<ul class="nav mt-2">
+									<li class="nav-item">
+										<a class="nav-link<?php if($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link<?php if($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link<?php if($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a>
+									</li>
+								</ul>
+								<div class="table-responsive">
+									<form action="pm.php" method="post" name="form1">
+										<input type='hidden' name='dopost' value='del'>
+										<div id="feedback-alert">
+										</div>
+										<table class="table">
+											<thead>
+												<tr>
+													<th scope="col">&nbsp;</th>
+													<th scope="col">标题</th>
+													<th scope="col">
+														<?php
+														if($folder == "inbox") echo "发件人";
+														else echo "收件人";
+														?>
+													</th>
+													<th scope="col">状态</th>
+													<th scope="col">发布时间</th>
+												</tr>
+											</thead>
+											<tbody>
+												{dede:datalist}
+												<tr>
+													<td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}"></td>
+													<td>
+														<?php
+														if($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
+														else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
+														?>
+													</td>
+													<td>
+														<?php 
+														if($folder == "inbox") { 
+														echo $fields['floginid']; 
+														} else {  
+															echo $fields['tologinid']; 
+														}?>
+													</td>
+													<td>
+														<div class="pm-read-status" for="<?php echo $fields['id']; ?>">
+														<?php
+														$readmsg = ($fields['hasview']==0 ? "<span class='text-danger'>未阅读</span>" : '已阅读');
+														echo $readmsg;
+														?>
+														</div>
+													</td>
+													<td>
+														<?php
+														echo MyDate('Y-m-d H:i:s',$fields['sendtime']);
+														?>
+													</td>
+												</tr>
+												{/dede:datalist}
+											</tbody>
+										</table>
+									</form>
+								</div>
+								<nav>
+									<button type="button" onclick="DoSubmit('<?php echo $folder; ?>')" class="btn btn-success btn-sm">删除选中</button>
+									{dede:pagelist listsize='6'/}
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<script type="text/javascript">
+			//获得选中文件的文件名
+			function GetCheckfolderItem() {
+				var allSel = '';
+				if (document.form1.deleteid.value) return document.form1.deleteid.value;
+				for (i = 0; i < document.form1.deleteid.length; i++) {
+					if (document.form1.deleteid[i].checked) {
+						if (allSel == '')
+							allSel = document.form1.deleteid[i].value;
+						else
+							allSel = allSel + "," + document.form1.deleteid[i].value;
+					}
+				}
+				return allSel;
+			}
+			function DoSubmit(myfolder) {
+				var selid = GetCheckfolderItem();
+				if (selid == '') {
+					ShowMsg("您没选中任何信息");
+					return false;
+				}
+				if (window.confirm("您确定要删除这些消息吗")) {
+					location = "pm.php?dopost=del&ids=" + selid + "&folder=" + myfolder;
+				}
+			}
+		</script>
+	</body>
 </html>

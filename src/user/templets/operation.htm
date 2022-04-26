@@ -1,99 +1,95 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-  <link href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-  <link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
-  <title>金币订单 - 会员中心 - <?php echo $cfg_webname; ?></title>
-</head>
-<body>
-  <?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
-  <main class="member">
-    <div class="container-fluid pannel">
-      <div class="container">
-        <div class="row">
-          <?php
-          $_menu_order = true; //展开编辑信息
-          $_menu_orderstate = 2;
-          ?>
-          <?php include(DEDEMEMBER."/templets/menu.htm"); ?>
-          <div class="pannel-main col-md-9 mt-3 mb-3">
-            <div class="pannel-main-container">
-              <div class="table-responsive">
-                <table width="100%" cellpadding="0" cellspacing="0" class="table">
-                  <thead>
-                      <tr>
-                        <th width="25%" colspan="2">订单号</th>
-                        <th width="25%">产品</th>
-                        <th>详细状态信息</th>
-                        <th width="15%">状态</th>
-                        <th width="10%">时间</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <form name='form1' action="operation.php" method="post">
-                    <input type='hidden' name='ftype' value='del'>
-                    {dede:datalist}
-                    <tr>
-                      <td align="center"><input type="checkbox" name="deleteid" value="{dede:field.aid/}"/></td>
-                      <td>{dede:field.buyid/}</td>
-                      <td><?php echo $fields['pname']; ?></td>
-                      <td align="center"><?php	echo $fields['oldinfo']; ?></td>
-                      <td align="center">{dede:field.sta function="GetSta(@me)" /}</td>
-                      <td align="center">{dede:field.mtime function="GetDateMk(@me)" /}</td>
-                    </tr>
-                    {/dede:datalist}
-                    <tr>
-                    <td colspan="6">
-                      <button id="checkedClick" type="button" class="btn btn-success btn-sm">全选</button>
-                      <button type="button" onclick="DoSubmit()" class="btn btn-success btn-sm">删除选中</button></td></tr>
-                    </form>
-                  </tbody>
-                </table>
-              </div>
-              <nav>{dede:pagelist listsize='6'/}</nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <?php include(DEDEMEMBER."/templets/footer.htm"); ?>
-  <script type="text/javascript">
-    //获得选中文件的文件名
-    function GetCheckfolderItem()
-    {
-      var allSel='';
-      if(document.form1.deleteid.value) return document.form1.deleteid.value;
-      for(i=0;i<document.form1.deleteid.length;i++)
-      {
-        if(document.form1.deleteid[i].checked)
-        {
-          if(allSel=='')
-          allSel=document.form1.deleteid[i].value;
-          else
-          allSel=allSel+","+document.form1.deleteid[i].value;
-        }
-      }
-      return allSel;
-    }
-    
-    function DoSubmit()
-    {
-      var selid = GetCheckfolderItem();
-      if(selid=='') {
-        ShowMsg("您没选中任何信息");
-        return false;
-      }
-      if(window.confirm("您确定要删除这些消息吗"))
-      {
-        location = "operation.php?dopost=del&ids="+selid;
-      }
-    }
-    </script>
-</body>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>订单列表-会员中心-<?php echo $cfg_webname; ?></title>
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+	</head>
+	<body>
+		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<main class="member">
+			<div class="container-fluid pannel">
+				<div class="container">
+					<div class="row">
+						<?php
+						$_menu_order = true;
+						$_menu_orderstate = 2;
+						?>
+						<?php include(DEDEMEMBER."/templets/menu.htm"); ?>
+						<div class="pannel-main col-md-9 mt-3 mb-3">
+							<div class="pannel-main-container">
+								<div class="table-responsive">
+									<table width="100%" cellpadding="0" cellspacing="0" class="table">
+										<thead>
+											<tr>
+												<th width="25%" colspan="2">订单号</th>
+												<th width="25%">产品</th>
+												<th>详细状态信息</th>
+												<th width="15%">状态</th>
+												<th width="10%">时间</th>
+											</tr>
+										</thead>
+										<tbody>
+											<form name="form1" action="operation.php" method="post">
+												<input type="hidden" name="ftype" value="del">
+												{dede:datalist}
+												<tr>
+													<td align="center"><input type="checkbox" name="deleteid" value="{dede:field.aid/}" /></td>
+													<td>{dede:field.buyid/}</td>
+													<td><?php echo $fields['pname']; ?></td>
+													<td align="center"><?php	echo $fields['oldinfo']; ?></td>
+													<td align="center">{dede:field.sta function="GetSta(@me)" /}</td>
+													<td align="center">{dede:field.mtime function="GetDateMk(@me)" /}</td>
+												</tr>
+												{/dede:datalist}
+												<tr>
+													<td colspan="6">
+														<button id="checkedClick" type="button" class="btn btn-success btn-sm">全选</button>
+														<button type="button" onclick="DoSubmit()" class="btn btn-success btn-sm">删除选中</button>
+													</td>
+												</tr>
+											</form>
+										</tbody>
+									</table>
+								</div>
+								<nav>{dede:pagelist listsize='6'/}</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<script type="text/javascript">
+			//获得选中文件的文件名
+			function GetCheckfolderItem() {
+				var allSel = '';
+				if (document.form1.deleteid.value) return document.form1.deleteid.value;
+				for (i = 0; i < document.form1.deleteid.length; i++) {
+					if (document.form1.deleteid[i].checked) {
+						if (allSel == '')
+							allSel = document.form1.deleteid[i].value;
+						else
+							allSel = allSel + "," + document.form1.deleteid[i].value;
+					}
+				}
+				return allSel;
+			}
+			function DoSubmit() {
+				var selid = GetCheckfolderItem();
+				if (selid == '') {
+					ShowMsg("您没选中任何信息");
+					return false;
+				}
+				if (window.confirm("您确定要删除这些消息吗")) {
+					location = "operation.php?dopost=del&ids=" + selid;
+				}
+			}
+		</script>
+	</body>
 </html>

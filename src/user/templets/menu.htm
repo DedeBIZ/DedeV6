@@ -1,5 +1,4 @@
 <?php
-//这里读取channel用于显示菜单
 $dsql->Execute('addmod', "SELECT id,nid,typename,useraddcon,usermancon,issend,issystem,usertype,isshow FROM `#@__channeltype` ");
 $channels = array();
 while ($channel = $dsql->GetArray('addmod')) {
@@ -22,8 +21,12 @@ while ($channel = $dsql->GetArray('addmod')) {
                         <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_conex) && $channelid == $channel['id']) echo ' active';?>">
                             <a href="<?php echo $cfg_memberurl;?>/<?php echo $channel['usermancon'];?>?channelid=<?php echo $channel['id'];?>"><?php echo $channel['typename'];?></a>
                         </li>
-                        <?php } ?>
-                    <?php } ?>
+                        <?php
+						}
+						?>
+                    <?php
+					}
+					?>
                 </ul>
             </div>
         </li>
@@ -84,4 +87,4 @@ while ($channel = $dsql->GetArray('addmod')) {
             </div>
         </li>
     </ul>
-</div> <!-- /.member-menu -->
+</div>
