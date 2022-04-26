@@ -26,14 +26,15 @@ if (DEDE_ENVIRONMENT == 'production') {
     ini_set('display_errors', 1);
 }
 define('DEDEINC', str_replace("\\", '/', dirname(__FILE__)));
-define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6))); // 站点根目录
+define('DEDEROOT', str_replace("\\", '/', substr(DEDEINC, 0, -6))); //站点根目录
 define('DEDEDATA', substr(DEDEINC, 0, -6).'data');
 define('DEDESTATIC', DEDEROOT.'/static');
 define('DEDEMEMBER', DEDEROOT.'/user');
 define('DEDETEMPLATE', DEDEROOT.'/theme');
-define('DEDEBIZURL', "https://www.dedebiz.com");//Dede商业支持
+define('DEDEBIZURL', "https://www.dedebiz.com");//DedeBiz商业支持
 define('DEDEVER', 6);//当前系统大版本
-define('DEDEPUB', '-----BEGIN PUBLIC KEY-----
+define('DEDEPUB', '
+-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvupO2Lixns34bBqwTzK0
 9wA9sfGBdgc03zh1sUacieJBikx08e7xmkJbMF81jb/YfNGW/+iJ3qHULdc9Dtd3
 +FsnHG+tUDnzjkPnVVmnrjucQqfHRRVKKAgXOWxtuRKUVF3NDjiJtDAf5Y2BMAhw
@@ -41,8 +42,9 @@ oqzeepye5I4mWyO4A8/V2ougO+xDK426MIf1dq+W59NVZj8k+zeZrbPh7+fPFw4u
 PwAMpkTJJ9nwNOO6saH2eMGaQ3oxZIQ+SmminDB8miI/+hwIn2hNmaHFuur0OGlB
 NQabUzX9JoYtXqPcpZRT7ymHrppU0KFdUSEJiW0utTWJo0HrDOBIT5qWlM0MP9p/
 PwIDAQAB
------END PUBLIC KEY-----');//DedeBIZ系统公钥
-define('DEDECDNURL', 'https://cdn.dedebiz.com'); //默认静态资源地址
+-----END PUBLIC KEY-----
+');//DedeBIZ系统公钥
+define('DEDECDNURL', 'https://cdn.dedebiz.com');//默认静态资源地址
 if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
     if (!function_exists('session_register')) {
         function session_register()
@@ -160,6 +162,7 @@ $cfg_plus_dir = $cfg_cmspath.'/apps';
 $cfg_phpurl = $cfg_mainsite.$cfg_plus_dir;
 $cfg_static_dir = $cfg_cmspath.'/static';
 $cfg_staticurl = $cfg_mainsite.$cfg_static_dir;
+$cfg_mobile_dir = $cfg_cmspath.'/m';
 $cfg_mobileurl = $cfg_mainsite.$cfg_mobile_dir;
 $cfg_data_dir = $cfg_cmspath.'/data';
 $cfg_dataurl = $cfg_mainsite.$cfg_data_dir;
@@ -180,7 +183,7 @@ $cfg_user_dir = $cfg_medias_dir.'/userup';
 $cfg_soft_dir = $cfg_medias_dir.'/soft';
 //上传的多媒体文件目录
 $cfg_other_medias = $cfg_medias_dir.'/media';
-//软件摘要信息，****请不要删除本项**** 否则系统无法正确接收系统漏洞或升级信息
+//软件摘要信息，请不要删除，否则系统无法正确接收系统漏洞或升级信息
 $cfg_version = 'V6';
 $cfg_version_detail = '6.1.9beta'; //详细版本号
 $cfg_soft_lang = 'utf-8';
