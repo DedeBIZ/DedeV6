@@ -41,7 +41,7 @@ function ShowMsg(content, ...args) {
     title = "系统提示";
     if (typeof content == "undefined") content = "";
     modalID = guid();
-    var footer = `<button type="button" class="btn btn-outline-success" onClick="CloseModal(\'DedeModal${modalID}\')">确定</button>`;
+    var footer = `<button type="button" class="btn btn-outline-success btn-sm" onClick="CloseModal(\'DedeModal${modalID}\')">确定</button>`;
     var noClose = false;
     if (args.length == 1) {
         // 存在args参数
@@ -166,7 +166,7 @@ function ErrorAddSave(id, title) {
         `;
     let footer = `
         <button type="button" id="btnSubmit" class="btn btn-success btn-sm" onClick="ErrAddSaveDo('DedeModal~modalID~')">提交</button>
-        <button type="button" class="btn btn-outline-success" onClick="CloseModal('DedeModal~modalID~')">确定</button>
+        <button type="button" class="btn btn-outline-success btn-sm" onClick="CloseModal('DedeModal~modalID~')">确定</button>
         `;
     ShowMsg(content, {
         'footer': footer,
