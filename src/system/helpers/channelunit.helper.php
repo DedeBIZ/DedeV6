@@ -152,7 +152,7 @@ if (!function_exists('GetFileName')) {
             if ($cfg_rewrite == 'Y') {
                 //目录版return "/article/".$aid."";
                 //网页版
-                return $GLOBALS['cfg_cmspath'].'/'.$aid.".html";
+                return "/".$aid.".html";
             } else {
                 return $GLOBALS['cfg_phpurl']."/view.php?aid=$aid";
             }
