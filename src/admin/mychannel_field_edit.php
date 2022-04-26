@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义模型,字段编辑
+ * 自定义模型字段编辑
  *
  * @version        $Id: mychannel_field_edit.php 1 15:22 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
