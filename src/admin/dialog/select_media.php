@@ -90,10 +90,10 @@ a{text-decoration:none!important}
             <td width="30%" align="center" class="linerow">最后修改时间</td>
         </tr>
         <?php
-        $dh = dir($inpath);
+        $dh = scandir($inpath);
         $ty1 = "";
         $ty2 = "";
-        while ($file = $dh->read()) {
+        foreach ($dh as $file) {
             //计算文件大小和创建时间
             if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
                 $filesize = filesize("$inpath/$file");
@@ -178,7 +178,6 @@ a{text-decoration:none!important}
                 echo "$line";
             }
         }//End Loop
-        $dh->close();
         ?>
     </table>
 </body>

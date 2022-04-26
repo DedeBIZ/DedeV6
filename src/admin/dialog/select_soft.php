@@ -98,9 +98,9 @@ a{text-decoration:none!important}
                         <td width="30%" class="linerow">修改时间</td>
                     </tr>
                     <?php
-                    $dh = dir($inpath);
-                    $ty1 = $ty2 = '';
-                    while ($file = $dh->read()) {
+					$dh = scandir($inpath);
+					$ty1 = $ty2 = "";
+					foreach ($dh as $file) {
                         //计算文件大小和创建时间
                         if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
                             $filesize = filesize("$inpath/$file");
@@ -161,7 +161,6 @@ a{text-decoration:none!important}
                             echo "$line";
                         }
                     }//End Loop
-                    $dh->close();
                     ?>
                 </table>
             </td>

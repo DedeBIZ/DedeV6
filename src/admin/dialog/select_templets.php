@@ -76,10 +76,10 @@ a{text-decoration:none!important}
             <td width="30%" class="linerow">修改时间</td>
         </tr>
         <?php
-        $dh = dir($inpath);
+        $dh = scandir($inpath);
         $ty1 = "";
         $ty2 = "";
-        while ($file = $dh->read()) {
+        foreach ($dh as $file) {
             //计算文件大小和创建时间
             if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
                 $filesize = filesize("$inpath/$file");
@@ -102,7 +102,7 @@ a{text-decoration:none!important}
                     $tmp = preg_replace("#[\/][^\/]*$#", "", $activepath);
                     $line = "<tr>
                     <td class='linerow'><a href='select_templets.php?f=$f&activepath=".urlencode($tmp)."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
-                    <td colspan='2' class='linerow'>当前目录:$activepath</td>
+                    <td colspan='2' class='linerow'>当前目录：$activepath</td>
                     </tr>\r\n";
                       echo $line;
                 } else if (is_dir("$inpath/$file")) {
@@ -187,7 +187,6 @@ a{text-decoration:none!important}
                     echo "$line";
                 }
             }//End Loop
-            $dh->close();
             ?>
         </table>
     </body>

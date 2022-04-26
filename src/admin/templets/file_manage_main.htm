@@ -22,11 +22,11 @@
       <td width="30%" background="../static/web/img/wbg.gif">操作</td>
     </tr>
     <?php
-$dh = dir($inpath);
-$ty1="";
-$ty2="";
+$dh = scandir($inpath);
+$ty1 = "";
+$ty2 = "";
 $files = $dirs = array();
-while(($file = $dh->read()) !== false)
+foreach ($dh as $file)
 {
 	if($file!="." && $file!=".." && !is_dir("$inpath/$file"))
 	{
@@ -58,10 +58,7 @@ while(($file = $dh->read()) !== false)
   <td height='26'>
   <a href=file_manage_main.php?activepath=".urlencode($tmp)."><img src='../static/web/img/dir2.gif'>上级目录</a>
   </td>
-  <td colspan='3'>
-   当前目录:$activepath &nbsp;
-
-   </td>
+  <td colspan='3'>当前目录：$activepath</td>
   </tr>";
 		$dirs[] = $line;
 	}
@@ -72,8 +69,8 @@ while(($file = $dh->read()) !== false)
 		$line = "\n<tr height='26' onMouseMove=\"javascript:this.bgColor='#F8FCF1';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
    <td>
     <a href=file_manage_main.php?activepath=".urlencode("$activepath/$file")."><img src='../static/web/img/dir.gif'>$file</a></td>
-   <td>　</td>
-   <td>　</td>
+   <td></td>
+   <td></td>
    <td>
    <a href=file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&fmdo=rename class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
    <a href=file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&type=dir&fmdo=del class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
@@ -300,7 +297,6 @@ while(($file = $dh->read()) !== false)
 		$files[] = $line;
 	}
 }
-$dh->close();
 foreach ($dirs as $dir)
 {
 	echo $dir;
@@ -317,7 +313,7 @@ foreach ($files as $file)
         <a href='file_manage_view.php?fmdo=newdir&activepath=<?php echo urlencode($activepath)?>' class="btn btn-success btn-sm">新建目录</a>
         <a href='file_manage_view.php?fmdo=upload&activepath=<?php echo urlencode($activepath)?>' class="btn btn-success btn-sm">文件上传</a>
         <a href='file_manage_control.php?fmdo=space&activepath=<?php echo urlencode($activepath)?>' class="btn btn-success btn-sm">空间检查</a>
-        &nbsp;&nbsp;</td>
+      </td>
     </tr>
   </table>
 </body>

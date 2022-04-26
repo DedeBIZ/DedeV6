@@ -155,10 +155,10 @@ a{text-decoration:none!important}
             <td class="linerow" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
         </tr>
         <?php
-        $dh = dir($inpath);
+        $dh = scandir($inpath);
         $ty1 = "";
         $ty2 = "";
-        while ($file = $dh->read()) {
+        foreach ($dh as $file) {
             //计算文件大小和创建时间
             if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
                 $filesize = filesize("$inpath/$file");
@@ -181,7 +181,7 @@ a{text-decoration:none!important}
                 $line = "<tr>
                 <td class='linerow' colspan='2'>
                 <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
-                <td colspan='2' class='linerow'>当前目录:$activepath</td>
+                <td colspan='2' class='linerow'>当前目录：$activepath</td>
                 </tr>";
                 echo $line;
             } else if (is_dir("$inpath/$file")) {
@@ -222,7 +222,6 @@ a{text-decoration:none!important}
                 echo "$line";
             }
         }//End Loop
-        $dh->close();
         ?>
         </tr>
     </table>

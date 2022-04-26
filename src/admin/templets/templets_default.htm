@@ -27,8 +27,7 @@ function DelTpl(filename) {
 		<tr>
 			<td colspan="4" height="26" bgcolor="#f8f8f8">
 				<span style="float:left;line-height:26px">
-				当前位置：
-				<?php
+				当前位置：<?php
       			if($acdir=='plus') echo '插件模板';
       			else if($acdir=='system') echo '底层模板';
       			else echo '核心模板 &gt; '.$acdir;
@@ -43,8 +42,7 @@ function DelTpl(filename) {
 		<?php
 		$files = scandir($templetdird);
 		foreach ($files as $filename){
-			if(!preg_match("#\.htm#", $filename))
-			continue;
+			if(!preg_match("#\.htm#", $filename)) continue;
 			$filetime = filemtime($templetdird.'/'.$filename);
 			$filetime = MyDate("Y-m-d H:i",$filetime);
 			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
