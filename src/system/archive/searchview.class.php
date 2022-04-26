@@ -653,10 +653,10 @@ class SearchView
         }
         $totalpage = ceil($this->TotalResult / $this->pagesize);
         if ($totalpage <= 1 && $this->TotalResult > 0) {
-            return "<ul class='pagination justify-content-center pt-3'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li></ul>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>1页".$this->TotalResult."条</span></li>";
         }
         if ($this->TotalResult == 0) {
-            return "<ul class='pagination justify-content-center pt-3'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li></ul>";
+            return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
         $purl = $this->GetCurUrl();
         $oldkeyword = (empty($oldkeyword) ? $this->Keyword : $oldkeyword);
@@ -714,7 +714,7 @@ class SearchView
         }
 		$plist = "";
         $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
-        $plist .= "<ul class=\"pagination justify-content-center pt-3\">";
+        $plist .= "<ul class='pagination justify-content-center pt-3'>";
         $plist .= $infos;
         $plist .= $indexpage;
         $plist .= $prepage;
