@@ -201,7 +201,7 @@ if (isset($cfg_ftp_mkdir) && $cfg_ftp_mkdir == 'Y') {
     $cfg_dir_purview = 0755;
 }
 //会员是否使用精简模式
-$cfg_mb_lit = 'Y';
+$cfg_mb_lit = 'N';
 //特殊全局变量
 $_sys_globals['curfile'] = '';
 $_sys_globals['typeid'] = 0;
