@@ -80,7 +80,7 @@ function LoadServer() {
     $.get("index_body.php?dopost=system_info", function (data) {
         let rsp = JSON.parse(data);
         if (rsp.code === 200) {
-            let infoStr = `<table width="100%" class="table table-borderless"><tbody>`;
+            let infoStr = `<table class="table table-borderless"><tbody>`;
             if (typeof rsp.result.domain !== "undefined") {
                 infoStr += `
                 <tr>

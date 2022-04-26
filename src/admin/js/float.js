@@ -30,7 +30,6 @@ function heartBeat() {
 		if (NS) document.floater.left += percent;
 		lastScrollX = lastScrollX + percent;
 	}
-
 }
 function checkFocus(x, y) {
 	stalkerx = document.floater.pageX;

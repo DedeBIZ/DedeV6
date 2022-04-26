@@ -35,7 +35,6 @@ function fileQueueError(file, errorCode, message) {
 	} catch (ex) {
 		this.debug(ex);
 	}
-
 }
 function fileDialogComplete(numFilesSelected, numFilesQueued) {
 	try {
@@ -131,7 +130,6 @@ function uploadError(file, errorCode, message) {
 	} catch (ex3) {
 		this.debug(ex3);
 	}
-
 }
 var albImg = 0;
 function addImage(src, pid) {
@@ -152,10 +150,10 @@ function addImage(src, pid) {
 	if (typeof arctype != 'undefined' && arctype == 'article') {
 		iptwidth = 100;
 		if (pid != 0) {
-			newImgDiv.innerHTML = '<img src="' + src + '" style="width:160px" onClick="addtoEdit(' + pid + ')">' + delstr;
+			newImgDiv.innerHTML = '<img src="' + src + '" onClick="addtoEdit(' + pid + ')" style="width:160px">' + delstr;
 		}
 	}
-	newImgDiv.innerHTML += '<div style="margin-top:10px">注释：<input type="text" name="picinfo' + albImg + '" value="" style="width:' + iptwidth + 'px;"></div>';
+	newImgDiv.innerHTML += '<div style="margin-top:10px">注释：<input type="text" name="picinfo' + albImg + '" value="" style="width:' + iptwidth + 'px"></div>';
 }
 /* ******************************************
  *	FileProgress Object
@@ -221,7 +219,6 @@ FileProgress.prototype.setCancelled = function () {
 FileProgress.prototype.setStatus = function (status) {
 	this.fileProgressElement.childNodes[2].innerHTML = status;
 };
-
 FileProgress.prototype.toggleCancel = function (show, swfuploadInstance) {
 	this.fileProgressElement.childNodes[0].style.visibility = show ? "visible" : "hidden";
 	if (swfuploadInstance) {

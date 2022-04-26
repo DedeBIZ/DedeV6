@@ -28,7 +28,7 @@ function insertHtm(op, code, isStart) {
 ContextMenu.WebFX_PopUp = null;
 ContextMenu.WbFX_PopUpcss = null;
 ContextMenu.intializeContextMenu = function () {
-	insertHtm(document.body, '<iframe src="#" scrolling="no" class="WebFX-ContextMenu" marginwidth="0" marginheight="0" frameborder="0" style="position:absolute;display:none;z-index:50000000;" id="WebFX_PopUp"></iframe>', true);
+	insertHtm(document.body, '<iframe src="" scrolling="no" class="WebFX-ContextMenu" marginwidth="0" marginheight="0" frameborder="0" style="position:absolute;display:none;z-index:50000000;" id="WebFX_PopUp"></iframe>', true);
 	if (curNav() == 'IE') WebFX_PopUp = document.frames['WebFX_PopUp'];
 	else WebFX_PopUp = document.getElementById('WebFX_PopUp');
 	WebFX_PopUpcss = document.getElementById('WebFX_PopUp');
@@ -38,7 +38,6 @@ ContextMenu.intializeContextMenu = function () {
 	else document.addEventListener("onblur", function () { WebFX_PopUpcss.style.display = "none" }, false);
 	if (curNav() == 'IE') document.attachEvent("onblur", function () { WebFX_PopUpcss.style.display = "none" });
 	else document.addEventListener("onblur", function () { WebFX_PopUpcss.style.display = "none" }, false);
-
 }
 function ContextSeperator() { }
 function ContextMenu() { }

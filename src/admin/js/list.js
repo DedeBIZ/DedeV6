@@ -46,7 +46,6 @@ function adArc(aid){
 	if(aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=commendArchives&qstr="+qstr;
 }
-
 function cAtts(jname, e, obj)
 {
 	var qstr=getCheckboxItem();
@@ -56,16 +55,14 @@ function cAtts(jname, e, obj)
 		ShowMsg('必须选择一个或多个文档');
 		return;
 	}
-	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr='+qstr+'&dojob='+jname+'&rnd='+Math.random(), 'attsDlg', '450px', '160px');
+	LoadQuickDiv(e, 'archives_do.php?dopost=attsDlg&qstr='+qstr+'&dojob='+jname+'&rnd='+Math.random(), 'attsDlg', '450px', '180px');
 	ChangeFullDiv('show', screeheight);
 }
-
 function delArc(aid){
 	var qstr=getCheckboxItem();
 	if(aid==0) aid = getOneItem();
 	location="archives_do.php?qstr="+qstr+"&aid="+aid+"&dopost=delArchives";
 }
-
 function QuickEdit(aid, e, obj)
 {
 	LoadQuickDiv(e, 'archives_do.php?dopost=quickEdit&aid='+aid+'&rnd='+Math.random(), 'quickEdit', 'auto', '300px');
@@ -77,7 +74,7 @@ function ShowMenu(evt,obj,aid,atitle)
   var popupoptions
   popupoptions = [
     new ContextItem("浏览文档",function(){ viewArc(aid); }),
-		new ContextItem("编辑属性",function(){ QuickEdit(aid, evt, obj); }),
+	new ContextItem("编辑属性",function(){ QuickEdit(aid, evt, obj); }),
     new ContextItem("编辑文档",function(){ editArc(aid); }),
     new ContextSeperator(),
     new ContextItem("更新HTML",function(){ updateArc(aid); }),

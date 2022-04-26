@@ -6,20 +6,16 @@ var nForm = null;
 var nFrame = null;
 var picnameObj = null;
 var vImg = null;
-
 function GetWinPos(w, h) {
 	var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
 	var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
-
 	var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
 	var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
-
 	var systemZoom = width / window.screen.availWidth;
 	var left = (width - w) / 2 / systemZoom + dualScreenLeft;
 	var top = (height - h) / 2 / systemZoom + dualScreenTop;
 	return { left: left, top: top };
 }
-
 function $Nav() {
 	if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
 	else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';

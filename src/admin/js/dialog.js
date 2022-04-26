@@ -19,9 +19,9 @@ function AlertMsg(title, id) {
 	//弹出窗口设置
 	msgw = 600;//窗口宽度 
 	msgbg = "#FFF";//内容背景
-	msgcolor = "#000";//内容颜色
+	msgcolor = "#333";//内容颜色
 	titlecolor = "#254015";//标题颜色
-	titlebg = "#369 url(../../static/web/img/tbg.gif)";//标题背景
+	titlebg = "url(../../static/web/img/tbg.gif)";//标题背景
 	//遮罩背景设置  	
 	content = "<div id=show_news>对不起，载入失败</div>";
 	var sWidth, sHeight;
@@ -39,7 +39,7 @@ function AlertMsg(title, id) {
 	maskObj.style.left = "0";
 	maskObj.style.background = "#666";
 	maskObj.style.filter = "Alpha(opacity=30);";
-	maskObj.style.opacity = "0.3";
+	maskObj.style.opacity = "0.2";
 	maskObj.style.width = sWidth + "px";
 	maskObj.style.height = sHeight + "px";
 	maskObj.style.zIndex = "10000";
