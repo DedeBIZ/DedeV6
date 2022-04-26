@@ -1,56 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-<title><?php echo $diy->name;?> - powered by dedebiz</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
-<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-</head>
-<body>
-<div class="main mceneter">
-	<?php include(DEDETEMPLATE."/plus/plus_header.htm") ;?>
-	<div class="container">
-		<div class="ctitle">
-			<h3><?php echo $diy->name;?>详细内容</h3>
-			<span></span>
-		</div>
-		<div class="cbox mceneter">
-			<div class="maplist">
-			<br>
-<table cellspacing="1" class="table">
-<?php
-echo '<tbody>';
-echo '<tr><td bgcolor="#f8f8f8" width="20%">id</td><td bgcolor="#f8f8f8">'.$row['id'].'</td></tr>';
-$allowhtml = array('htmltext');
-foreach($fieldlist as $field=>$fielddata)
-{
-	if($row[$field]=='') continue;
-	if($fielddata[1]=='img')
-	{
-			$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='{$row[$field]}'/></a>";
-	}
-	else if($fielddata[1]=='addon')
-	{
-			$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='img/addon.gif'> 相关附件</a>";
-	} else {
-		if(!in_array($fielddata[1], $allowhtml))
-		{
-			$row[$field] = htmlspecialchars($row[$field]);
-		}
-	}
-	echo '<tr><td>'.$fielddata[0].'</td><td>'.$row[$field].'</td></tr>';
-}
-echo '</tbody>';
-?>
-</table>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{dede:global.cfg_soft_lang/}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title><?php echo $diy->name;?>-Powered by DedeBIZ</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="main mceneter">
+			<?php include(DEDETEMPLATE."/plus/plus_header.htm") ;?>
+			<div class="container">
+				<div class="ctitle">
+					<h3><?php echo $diy->name;?>详细内容</h3>
+					<span></span>
+				</div>
+				<div class="cbox mceneter">
+					<div class="maplist">
+						<br>
+						<table cellspacing="1" class="table">
+							<?php
+							echo '<tbody>';
+							echo '<tr><td bgcolor="#f8f8f8" width="20%">id</td><td bgcolor="#f8f8f8">'.$row['id'].'</td></tr>';
+							$allowhtml = array('htmltext');
+							foreach($fieldlist as $field=>$fielddata)
+							{
+								if($row[$field]=='') continue;
+								if($fielddata[1]=='img')
+								{
+									$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='{$row[$field]}'/></a>";
+									}
+									else if($fielddata[1]=='addon')
+									{
+										$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='img/addon.gif'> 相关附件</a>";
+									} else {
+										if(!in_array($fielddata[1], $allowhtml))
+										{
+											$row[$field] = htmlspecialchars($row[$field]);
+										}
+									}
+									echo '<tr><td>'.$fielddata[0].'</td><td>'.$row[$field].'</td></tr>';
+								}
+								echo '</tbody>';
+							?>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
-</body>
+		<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
+	</body>
 </html>

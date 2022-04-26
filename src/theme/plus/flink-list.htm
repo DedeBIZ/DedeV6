@@ -1,56 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-<title><?php echo $cfg_webname;?>_所有链接</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
-<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-</head>
-<body class="flinkpage">
-<?php include("plus_header.htm") ;?>
-<div class="container">
-	<div class="sp-title">
-		<nav class="navbar navbar-expand-lg">
-			<ul class="navbar-nav mr-auto mt-2">
-			  <li class="nav-item">
-				<h3>友情链接</h3>
-			  </li>
-			</ul>
-			<span class="navbar-text">
-			  <a href="flink_add.php" class="btn btn-success btn-sm">申请链接</a>
-			</span>
-		</nav>
-	</div>
-	<div class="flinkbox">
-		<ul class="f5">
-		  <?php
-		  $row = 180;
-		  $titlelen = 50;
-		  $dsql->SetQuery("Select * from `#@__flink` where ischeck>0 order by sortrank asc");
-		  $dsql->Execute();
-		$revalue = "";
-		for($i=1;$i<=$row;$i++)
-		{
-
-				if($dbrow=$dsql->GetObject())
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{dede:global.cfg_soft_lang/}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title><?php echo $cfg_webname;?>-所有链接</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
+	</head>
+	<body class="flinkpage">
+		<?php include("plus_header.htm") ;?>
+		<div class="container">
+			<div class="sp-title">
+				<nav class="navbar navbar-expand-lg">
+					<ul class="navbar-nav mr-auto mt-2">
+						<li class="nav-item">
+							<h3>友情链接</h3>
+						</li>
+					</ul>
+					<span class="navbar-text">
+						<a href="flink_add.php" class="btn btn-success btn-sm">申请链接</a>
+					</span>
+				</nav>
+			</div>
+			<div class="flinkbox">
+				<ul class="f5">
+				<?php
+				$row = 180;
+				$titlelen = 50;
+				$dsql->SetQuery("Select * from `#@__flink` where ischeck>0 order by sortrank asc");
+				$dsql->Execute();
+				$revalue = "";
+				for($i=1;$i<=$row;$i++)
 				{
-					$wtitle = cn_substr($dbrow->webname,$titlelen);
-					if($dbrow->logo=="")
+					if($dbrow=$dsql->GetObject())
+					{
+						$wtitle = cn_substr($dbrow->webname,$titlelen);
+						if($dbrow->logo=="")
 						$revalue.= "<li><a href='".$dbrow->url."' target='_blank'>$wtitle</a></li>";
 					else
 						$revalue.= "<li><a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' width='88' height='26' alt='$wtitle'></a></li>";
+					}
+					if(!$dbrow) break;
 				}
-			if(!$dbrow) break;
-		}
-		echo  $revalue;
-		  ?>
-		</ul>
-	</div>
-</div>
-<?php include("plus_footer.htm") ;?>
-</body>
+				echo  $revalue;
+				?>
+				</ul>
+			</div>
+		</div>
+		<?php include("plus_footer.htm") ;?>
+	</body>
 </html>

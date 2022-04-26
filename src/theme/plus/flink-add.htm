@@ -1,82 +1,89 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-<title><?php echo $cfg_webname;?>_申请友情链接</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
-<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-</head>
-<body class="flinkpage">
-<?php include("plus_header.htm") ;?>
-<div class="container">
-	<div class="sp-title">
-		<nav class="navbar navbar-expand-lg">
-			<ul class="navbar-nav mr-auto mt-2">
-			  <li class="nav-item">
-				<h3>申请链接</h3>
-			  </li>
-			</ul>
-			<span class="navbar-text">
-			  <a href="<?php echo '$cfg_phpurl/flink.php'; ?>" class="btn btn-success btn-sm">查看链接</a>
-			</span>
-		</nav>
-	</div>
-	<div class="formbox">
-		  <form name="form1" method="post" action="flink.php">
-		  	<input type='hidden' name='dopost' value='save'>
-		      <table width="100%" cellspacing="1" cellpadding="3" class="table">
-                <tr> 
-                  <td height="26">网址：</td>
-                  <td><input name="url" type="text" id="url" value="http://" size="30" class="ipt-txt"></td>
-                </tr>
-                <tr> 
-                  <td height="26">网站名称：</td>
-                  <td><input name="webname" type="text" id="webname" size="30" class="ipt-txt"></td>
-                </tr>
-                <tr> 
-                  <td height="26">网站Logo：</td>
-                  <td><input name="logo" type="text" id="logo" size="30" class="ipt-txt">（88*31 gif或jpg）</td>
-                </tr>
-                <tr> 
-                  <td height="26">网站简况：</td>
-                  <td><textarea name="msg" cols="40" rows="4" id="msg" class="ipt-txt"></textarea></td>
-                </tr>
-                <tr> 
-                  <td height="26">站长Email：</td>
-                  <td><input name="email" type="text" id="email" size="30" class="ipt-txt"></td>
-                </tr>
-                <tr> 
-                  <td height="26">网站类型：</td>
-                  <td> <select name="typeid" id="typeid" >
-                      <?php
-        $dsql->SetQuery("select * from #@__flinktype");
-        $dsql->Execute();
-        while($row=$dsql->GetObject())
-        {
-        	echo " <option value='".$row->id."'>".$row->typename."</option>";
-        }
-        ?>
-                    </select> </td>
-                </tr>
-                <tr>
-                  <td height="26">验证码：</td>
-                  <td><input name="validate" type="text" id="vdcode2" size="10" class="ipt-txt" style="text-transform: uppercase;"><img src='../apps/vdimgck.php' style="cursor:pointer" onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片"></td>
-                </tr>
-                <tr> 
-                  <td height="51"></td>
-                  <td>
-                    <button type="submit" name="Submit" class="btn btn-success btn-sm"> 提 交 </button>
-                    <button type="reset" name="Submit" class="btn btn-success btn-sm"> 重 置 </button> </td>
-                </tr>
-              </table>
-		  </form>
-	</div>
-</div>
-<?php include("plus_footer.htm") ;?>
-</body>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{dede:global.cfg_soft_lang/}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><?php echo $cfg_webname;?>-申请友情链接</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/index.css">
+		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
+	</head>
+	<body class="flinkpage">
+		<?php include("plus_header.htm") ;?>
+		<div class="container">
+			<div class="sp-title">
+				<nav class="navbar navbar-expand-lg">
+					<ul class="navbar-nav mr-auto mt-2">
+						<li class="nav-item">
+							<h3>申请链接</h3>
+						</li>
+					</ul>
+					<span class="navbar-text">
+						<a href="<?php echo '$cfg_phpurl/flink.php'; ?>" class="btn btn-success btn-sm">查看链接</a>
+					</span>
+				</nav>
+			</div>
+			<div class="formbox">
+				<form name="form1" method="post" action="flink.php">
+					<input type='hidden' name='dopost' value='save'>
+		 		<table width="100%" cellspacing="1" cellpadding="3" class="table">
+						<tr>
+							<td height="26">网址：</td>
+							<td><input name="url" type="text" id="url" value="http://" size="30" class="ipt-txt"></td>
+						</tr>
+						<tr>
+							<td height="26">网站名称：</td>
+							<td><input name="webname" type="text" id="webname" size="30" class="ipt-txt"></td>
+						</tr>
+						<tr>
+							<td height="26">网站Logo：</td>
+							<td><input name="logo" type="text" id="logo" size="30" class="ipt-txt">（88*31 gif或jpg）</td>
+						</tr>
+						<tr>
+							<td height="26">网站简况：</td>
+							<td><textarea name="msg" cols="40" rows="4" id="msg" class="ipt-txt"></textarea></td>
+						</tr>
+						<tr>
+							<td height="26">站长Email：</td>
+							<td><input name="email" type="text" id="email" size="30" class="ipt-txt"></td>
+						</tr>
+						<tr>
+							<td height="26">网站类型：</td>
+							<td>
+								<select name="typeid" id="typeid">
+								<?php
+								$dsql->SetQuery("select * from #@__flinktype");
+								$dsql->Execute();
+								while($row=$dsql->GetObject())
+								{
+									echo " <option value='".$row->id."'>".$row->typename."</option>";
+								}
+								?>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td height="26">验证码：</td>
+							<td>
+								<input name="validate" type="text" id="vdcode2" size="10" class="ipt-txt" style="text-transform: uppercase;">
+								<img src="../apps/vdimgck.php" style="cursor:pointer" onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片">
+							</td>
+						</tr>
+						<tr>
+							<td height="36"></td>
+							<td>
+								<button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
+								<button type="reset" name="Submit" class="btn btn-success btn-sm">重置</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<?php include("plus_footer.htm") ;?>
+	</body>
 </html>

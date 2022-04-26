@@ -1,133 +1,132 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="{dede:global.cfg_soft_lang/}">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/index.css">
-    <link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-    <script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
-    <title>{dede:global.cfg_webname/}</title>
-    <meta name="keywords" content="{dede:global.cfg_keywords/}">
-    <meta name="description" content="{dede:global.cfg_description/}">
-</head>
-<body>
-    {dede:include filename='top.htm'/}
-    {dede:include filename='header.htm'/}
-    {dede:include filename='navbar.htm'/}
-    <main class="container mt-3">
-        <div class="index-main">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-12 col-lg-8 litpics mb-3">
-                        <div id="carouselIndex" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                {dede:arclist channelid=1 flag='f' row=6}
-                                <li data-target="#carouselIndex"  data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
-                                {/dede:arclist}
-                            </ol>
-                            <div class="carousel-inner">
-                                {dede:arclist channelid=1 flag='f' row=6}
-                                <div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
-                                    <a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" class="mr-3" alt="[field:fulltitle/]"></a>
-                                </div>
-                                {/dede:arclist}
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselIndex" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon"></span>
-                                <span class="sr-only">上一个</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselIndex" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon"></span>
-                                <span class="sr-only">下一个</span>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- /.litpics -->
-                    <div class="col-12 col-lg-4 toutiao mb-3 mb-md-3">
-                        <div class="card ddcard-normal">
-                            <div class="card-header">
-                                <div class="row">
-                                    <div class="col-8 caption"><span>推荐头条</span></div>
-                                </div>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                {dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
-                                <li><i class="fa fa-bookmark-o"></i> <a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
-                                </li>
-                                {/dede:arclist}
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /.toutiao -->
-                </div>
-            </div>
-        </div><!-- /.index-main -->
-        <div class="row">
-            <div class="col-12 col-lg-9 index-left">
-                <div class="spec row">
-                    <div class="col-md-12">
-                        <div class="dede-title">
-                            <h4 class="dede">图文资讯</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-3">
-                        <div class="row row-cols-2 row-cols-md-4">
-                            {dede:arclist row=4 orderby=pubdate type='image.'}
-                            <div class="col">
-                                <div class="card border-0 image-item">
-                                    <a href="[field:arcurl/]" title="[field:fulltitle/]"
-                                        class="text-body stretched-link"><img src="[field:litpic/]" class="card-img-top"
-                                            alt="[field:fulltitle/]">
-                                        <div class="card-body">
-                                            <h6 class="card-title">[field:title/]</h6>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            {/dede:arclist}
-                        </div>
-                    </div>
-                </div><!-- /.spec -->
-                <div class="row">
-                    {dede:channelartlist}
-                    <div class="col-md-6 mt-3">
-                        <div class="card ddcard-normal">
-                            <div class="card-header">
-                                <div class="row">
-                                    <div class="col-6 caption"><span><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></span></div>
-                                    <div class="col-6 d-flex justify-content-end more">
-                                        <a href="{dede:field name='typeurl'/}">更多</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                {dede:arclist titlelen='60' row='8'}
-                                <li><i class="fa fa-bookmark-o"></i> <a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
-                                </li>
-                                {/dede:arclist}
-                            </ul>
-                        </div>
-                    </div>
-                    {/dede:channelartlist}
-                </div>
-            </div><!-- /.index-left -->
-            <aside class="col-12 col-lg-3">
-                {dede:include comment='推荐内容' filename="widget_recommend.htm"/}
-                {dede:include comment='热点内容' filename="widget_hot.htm"/}
-                {dede:include comment='投票' filename="widget_vote.htm"/}
-                {dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
-            </aside><!-- /aside -->
-        </div>
-    </main>
-    <!-- /main -->
-    <div class="container-fluid flink mt-3">
-        <div class="container py-3">
-            友情连接：{dede:flink row='24'/}
-        </div>
-    </div>
-    {dede:include filename="footer.htm"/}
-</body>
+	<head>
+		<meta charset="{dede:global.cfg_soft_lang/}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>{dede:global.cfg_webname/}</title>
+		<meta name="keywords" content="{dede:global.cfg_keywords/}">
+		<meta name="description" content="{dede:global.cfg_description/}">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/index.css">
+		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
+		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
+	</head>
+	<body>
+		{dede:include filename='top.htm'/}
+		{dede:include filename='header.htm'/}
+		{dede:include filename='navbar.htm'/}
+		<main class="container mt-3">
+			<div class="index-main">
+				<div class="col-12">
+					<div class="row">
+						<div class="col-12 col-lg-8 litpics mb-3">
+							<div id="carouselIndex" class="carousel slide" data-ride="carousel">
+								<ol class="carousel-indicators">
+									{dede:arclist channelid=1 flag='f' row=6}
+									<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
+									{/dede:arclist}
+								</ol>
+								<div class="carousel-inner">
+									{dede:arclist channelid=1 flag='f' row=6}
+									<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
+										<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" class="mr-3" alt="[field:fulltitle/]"></a>
+									</div>
+									{/dede:arclist}
+								</div>
+								<a class="carousel-control-prev" href="#carouselIndex" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon"></span>
+									<span class="sr-only">上一个</span>
+								</a>
+								<a class="carousel-control-next" href="#carouselIndex" role="button" data-slide="next">
+									<span class="carousel-control-next-icon"></span>
+									<span class="sr-only">下一个</span>
+								</a>
+							</div>
+						</div>
+						<div class="col-12 col-lg-4 toutiao mb-3 mb-md-3">
+							<div class="card ddcard-normal">
+								<div class="card-header">
+									<div class="row">
+										<div class="col-8 caption"><span>推荐头条</span></div>
+									</div>
+								</div>
+								<ul class="list-group list-group-flush">
+									{dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
+									<li>
+										<i class="fa fa-bookmark-o"></i>
+										<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
+									</li>
+									{/dede:arclist}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-lg-9 index-left">
+					<div class="spec row">
+						<div class="col-md-12">
+							<div class="dede-title">
+								<h4 class="dede">图文资讯</h4>
+							</div>
+						</div>
+						<div class="col-md-12 mt-3">
+							<div class="row row-cols-2 row-cols-md-4">
+								{dede:arclist row=4 orderby=pubdate type='image.'}
+								<div class="col">
+									<div class="card border-0 image-item">
+										<a href="[field:arcurl/]" title="[field:fulltitle/]" class="text-body stretched-link"><img src="[field:litpic/]" class="card-img-top" alt="[field:fulltitle/]">
+											<div class="card-body">
+												<h6 class="card-title">[field:title/]</h6>
+											</div>
+										</a>
+									</div>
+								</div>
+								{/dede:arclist}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						{dede:channelartlist}
+						<div class="col-md-6 mt-3">
+							<div class="card ddcard-normal">
+								<div class="card-header">
+									<div class="row">
+										<div class="col-6 caption">
+											<span><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></span>
+										</div>
+										<div class="col-6 d-flex justify-content-end more">
+											<a href="{dede:field name='typeurl'/}">更多</a>
+										</div>
+									</div>
+								</div>
+								<ul class="list-group list-group-flush">
+									{dede:arclist titlelen='60' row='8'}
+									<li>
+										<i class="fa fa-bookmark-o"></i>
+										<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
+									</li>
+									{/dede:arclist}
+								</ul>
+							</div>
+						</div>
+						{/dede:channelartlist}
+					</div>
+				</div>
+				<aside class="col-12 col-lg-3">
+					{dede:include comment='推荐内容' filename="widget_recommend.htm"/}
+					{dede:include comment='热点内容' filename="widget_hot.htm"/}
+					{dede:include comment='投票' filename="widget_vote.htm"/}
+					{dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
+				</aside>
+			</div>
+		</main>
+		<div class="container-fluid flink mt-3">
+			<div class="container py-3">友情连接：{dede:flink row='24'/}</div>
+		</div>
+		{dede:include filename="footer.htm"/}
+	</body>
 </html>

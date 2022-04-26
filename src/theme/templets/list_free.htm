@@ -1,55 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
-    <link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
-    <title>{dede:field.title/}-{dede:pagelist listsize='0' listitem='pageno' function='html2text(@me)' runphp='yes'} if(@me>1) @me='第'.trim(@me).'页-';else @me='';{/dede:pagelist}{dede:global.cfg_webname/}</title>
-    <meta name="keywords" content="{dede:field.keywords/}">
-    <meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-</head>
-<body>
-    {dede:include filename='top.htm'/}
-    {dede:include filename='header.htm'/}
-    {dede:include filename='navbar.htm'/}
-    <div class="container">
-        <div class="position">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mt-3">
-                    <li class="breadcrumb-item">当前位置</li>
-                    {dede:field name='position'/}
-                </ol>
-            </nav>
-        </div>
-        <!-- /.position -->
-    </div>
-    <main class="container">
-        <div class="row">
-            <div class="col-md-8 list-main">
-                <ul class="list-unstyled items">
-                    {dede:freelist/}
-                </ul>
-                <nav>
-                    <ul class="pagination justify-content-center py-3">
-                        {dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="1"/}
-                    </ul>
-                </nav>
-            </div>
-            <!-- /.list-main -->
-            <aside class="col-md-4 article-sidebar">
-                {dede:include comment='栏目列表' filename="widget_channels.htm"/}
-                {dede:include comment='推荐内容' filename="widget_recommend.htm"/}
-                {dede:include comment='热点内容' filename="widget_hot.htm"/}
-                {dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
-            </aside>
-            <!-- /.article-sidebar -->
-        </div>
-    </main>
-    <!-- /main -->
-    {dede:include filename="footer.htm"/}
-</body>
+	<head>
+		<meta charset="{dede:global.cfg_soft_lang/}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<title>{dede:field.title/}-{dede:pagelist listsize='0' listitem='pageno' function='html2text(@me)' runphp='yes'}if (@me>1) @me='第'.trim(@me).'页-';else @me='';{/dede:pagelist}{dede:global.cfg_webname/}</title>
+		<meta name="keywords" content="{dede:field.keywords/}">
+		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
+		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
+		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
+	</head>
+	<body>
+		{dede:include filename='top.htm'/}
+		{dede:include filename='header.htm'/}
+		{dede:include filename='navbar.htm'/}
+		<div class="container">
+			<div class="position">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb mt-3">
+						<li class="breadcrumb-item">当前位置</li>
+						{dede:field name='position'/}
+					</ol>
+				</nav>
+			</div>
+		</div>
+		<main class="container">
+			<div class="row">
+				<div class="col-md-8 list-main">
+					<ul class="list-unstyled items">
+						{dede:freelist/}
+					</ul>
+					<nav>
+						<ul class="pagination justify-content-center py-3">
+							{dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="1"/}
+						</ul>
+					</nav>
+				</div>
+				<aside class="col-md-4 article-sidebar">
+					{dede:include comment='栏目列表' filename="widget_channels.htm"/}
+					{dede:include comment='推荐内容' filename="widget_recommend.htm"/}
+					{dede:include comment='热点内容' filename="widget_hot.htm"/}
+					{dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
+				</aside>
+			</div>
+		</main>
+		{dede:include filename="footer.htm"/}
+	</body>
 </html>
