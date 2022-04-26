@@ -293,20 +293,6 @@ class SgListView
             return;
         }
         $this->CountRecord();
-        /*
-        if((empty($this->PageNo) || $this->PageNo==1) && $this->TypeLink->TypeInfos['ispart']==1)
-        {
-            $tmpdir = $GLOBALS['cfg_basedir'].$GLOBALS['cfg_templets_dir'];
-            $tempfile = str_replace("{tid}",$this->TypeID,$this->Fields['tempindex']);
-            $tempfile = str_replace("{cid}",$this->ChannelUnit->ChannelInfos['nid'],$tempfile);
-            $tempfile = $tmpdir."/".$tempfile;
-            if(!file_exists($tempfile))
-            {
-                $tempfile = $tmpdir."/".$GLOBALS['cfg_df_style']."/index_default_sg.htm";
-            }
-            $this->dtp->LoadTemplate($tempfile);
-        }
-        */
         $this->ParseTempletsFirst();
         $this->ParseDMFields($this->PageNo, 0);
         $this->dtp->Display();

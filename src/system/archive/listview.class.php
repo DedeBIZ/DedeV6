@@ -245,12 +245,12 @@ class ListView
             $ctag = $this->dtp->GetTag("list");
         }
         if (!is_object($ctag)) {
-            $this->pagesize = 20;
+            $this->pagesize = 30;
         } else {
             if ($ctag->GetAtt("pagesize") != "") {
                 $this->pagesize = $ctag->GetAtt("pagesize");
             } else {
-                $this->pagesize = 20;
+                $this->pagesize = 30;
             }
         }
         $this->TotalPage = ceil($this->TotalResult / $this->pagesize);
