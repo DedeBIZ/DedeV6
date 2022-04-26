@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
   <title>发布专题</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -136,12 +136,12 @@ table{border-collapse:separate}
               <td width="90">&nbsp;缩略图：</td>
               <td>
                 <input name="picname" type="text" id="picname" style="width:300px">
-                <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="np">&nbsp;远程</label>
+                <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote'>&nbsp;远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
               </td>
-              <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="max-width:100px;max-height:80px"></td>
+              <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="height:80px"></td>
             </tr>
           </table>
         </td>
@@ -279,7 +279,7 @@ table{border-collapse:separate}
         <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
       </tr>
     </table>
-    <table width="98%" align="center" cellpadding="2" style="border:1px solid #dee2e6display:none;" cellspacing="2" id="adset">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="display:none;border:1px solid #dee2e6">
       <tr>
         <td height="26" class="bline2">专题节点列表： <br>
           1、文章列表用ID1,ID2,ID3这样形式分开，系统会自动排除不同节点的相同文章；<br>
@@ -309,8 +309,8 @@ table{border-collapse:separate}
                 <table width="900" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="310"><input name="notename<?php echo $i?>" type="text" value="<?php echo $nodename; ?>" id="notename<?php echo $i?>" style="width:300px"></td>
-                    <td width="90" align="center">节点标识：</td>
-                    <td width="200"><input name="noteid<?php echo $i?>" type="text" value="<?php echo $nodeid; ?>" id="noteid<?php echo $i?>" style="width:100px"></td>
+                    <td width="90">节点标识：</td>
+                    <td><input name="noteid<?php echo $i?>" type="text" value="<?php echo $nodeid; ?>" id="noteid<?php echo $i?>" style="width:160px"></td>
                   </tr>
                 </table>
               </td>
@@ -367,7 +367,7 @@ table{border-collapse:separate}
         </td>
       </tr>
     </table>
-    <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
+    <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0">
       <tr>
         <td align="center" class="py-3">
           <button type="submit" class="btn btn-success btn-sm">保存</button>

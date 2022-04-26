@@ -91,28 +91,6 @@ table{border-collapse:separate}
         </table>
       </td>
     </tr>
-    <tr>
-      <td height="26" class="bline">
-      	<table width="900" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="90">&nbsp;浏览权限：</td>
-            <td>
-              <select name="arcrank" id="arcrank" style="width:160px">
-              <option value='<?php echo $addRow["arcrank"]; ?>'><?php echo $addRow["rankname"]; ?></option>
-              <?php
-              $urank = $cuserLogin->getUserRank();
-              $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank' And `rank`<>'{$addRow["arcrank"]}' ");
-              $dsql->Execute();
-              while($row = $dsql->GetObject()) {
-              	echo "<option value='".$row->rank."'>".$row->membername."</option>";
-              }
-              ?>
-              </select>
-            </td>
-          </tr>
-        </table>
-       </td>
-    </tr>
     <tr id="pictable" style='<?php if($cInfos['needpic']==0) echo 'display:none'; ?>'>
       <td height="26" class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
@@ -143,16 +121,38 @@ table{border-collapse:separate}
             <td>
             <?php
             $typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
-            echo "<select name='typeid' id='typeid' style='width:240px'>";
+            echo "<select name='typeid' id='typeid' style='width:160px'>";
             if($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
             echo $typeOptions;
             echo "</select>";
 			     ?>
 			     <i class='btn btn-sm fa fa-search'  onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid','<?php echo $addRow['typeid']; ?>')" title='快捷选择' style='cursor:pointer'></i>
-			     </td>
+			</td>
           </tr>
-      </table>
-    </td>
+        </table>
+	  </td>
+    </tr>
+    <tr>
+      <td height="26" class="bline">
+      	<table width="900" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="90">&nbsp;浏览权限：</td>
+            <td>
+              <select name="arcrank" id="arcrank" style="width:160px">
+              <option value='<?php echo $addRow["arcrank"]; ?>'><?php echo $addRow["rankname"]; ?></option>
+              <?php
+              $urank = $cuserLogin->getUserRank();
+              $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank' And `rank`<>'{$addRow["arcrank"]}' ");
+              $dsql->Execute();
+              while($row = $dsql->GetObject()) {
+              	echo "<option value='".$row->rank."'>".$row->membername."</option>";
+              }
+              ?>
+              </select>
+            </td>
+          </tr>
+        </table>
+       </td>
     </tr>
     <?php
     }
