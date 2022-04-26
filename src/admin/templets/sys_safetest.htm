@@ -15,39 +15,37 @@
       var filetype = $Obj('filetype').value;
       var info = $Obj('info').value;
       $Obj('loaddiv').style.display = 'block';
-
       fetch('sys_safetest.php?action=test&filetype=' + filetype + "&info=" + info).then(resp=>{
-				if (resp.ok) {
-					return resp.text()
-				}
-				throw new Error('系统错误，无法获取数据');
-			}).then((d)=>{
-				$DE('messagetd').innerHTML = d;
-        $Obj('loaddiv').style.display = 'none';
-			}).catch((error) => {
-				console.log(error);
-			});
+		if (resp.ok) {
+			return resp.text()
+		}
+			throw new Error('系统错误，无法获取数据');
+		}).then((d)=>{
+			$DE('messagetd').innerHTML = d;
+			$Obj('loaddiv').style.display = 'none';
+		}).catch((error) => {
+			console.log(error);
+		});
     }
     function LoadCtClear() {
       $Obj('loaddiv').style.display = 'block';
-
       fetch('sys_safetest.php?action=clear').then(resp=>{
-				if (resp.ok) {
-					return resp.text()
-				}
-				throw new Error('系统错误，无法获取数据');
-			}).then((d)=>{
-				$DE('messagetd').innerHTML = d;
-        $Obj('loaddiv').style.display = 'none';
-			}).catch((error) => {
-				$DE('messagetd').innerHTML = errMsg;
-			});
+			if (resp.ok) {
+				return resp.text()
+			}
+			throw new Error('系统错误，无法获取数据');
+		}).then((d)=>{
+			$DE('messagetd').innerHTML = d;
+			$Obj('loaddiv').style.display = 'none';
+		}).catch((error) => {
+			$DE('messagetd').innerHTML = errMsg;
+		});
     }
   </script>
 </head>
 <body>
-  <div id='loaddiv' style='display:none'>
-    <p align='center' style='padding-top:200px'><img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中</p>
+  <div id="loaddiv" style="display:none">
+    <p align="center" style="padding-top:200px"><img src="../static/web/img/loadinglit.gif">请稍后，正在操作中</p>
   </div>
   <?php echo $alter; ?>
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
