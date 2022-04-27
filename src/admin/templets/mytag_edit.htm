@@ -13,8 +13,8 @@
   <td height="26" background="../static/web/img/tbg.gif"  style="padding-left:10px"><a href="mytag_main.php">自定义标记管理</a> &gt; 修改标记</td>
 </tr>
 <tr>
-    <td height="200">
-	<table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
+  <td height="200">
+	  <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
         <form action="mytag_edit.php" method="post" enctype="multipart/form-data" name="form1">
           <input type='hidden' name='aid' value='<?php echo $aid?>'>
           <input type='hidden' name='dopost' value='saveedit'>
@@ -22,15 +22,15 @@
           <tr> 
             <td width="15%" height="26" align="center">所属栏目：</td>
             <td colspan="2">
-			<?php
+			      <?php
            	$tl = new TypeLink(0);
            	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
             echo "<select name='typeid' style='width:260px'>";
             echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
             echo $typeOptions;
             echo "</select>";
-			?>
-			</td>
+			      ?>
+			      </td>
           </tr>
           <tr> 
             <td height="26" align="center">标记名称：</td>
@@ -53,16 +53,12 @@
           </tr>
           <tr> 
             <td height="80" align="center">正常显示内容：</td>
-            <td width="70%">
-			<textarea name="normbody" id="normbody" style="width:80%;height:100px"><?php echo $row['normbody']?></textarea> 
-            </td>
+            <td width="70%"><textarea name="normbody" id="normbody" style="width:80%;height:100px"><?php echo $row['normbody']?></textarea></td>
             <td width="9%"></td>
           </tr>
           <tr> 
             <td height="80" align="center">过期显示内容：</td>
-            <td>
-			<textarea name="expbody" id="expbody" style="width:80%;height:100px"><?php echo $row['expbody']?></textarea> 
-            </td>
+            <td><textarea name="expbody" id="expbody" style="width:80%;height:100px"><?php echo $row['expbody']?></textarea> </td>
             <td></td>
           </tr>
           <tr> 

@@ -4,30 +4,30 @@
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>友情链接管理</title>
-  <script src="../static/web/js/jquery.min.js" language="javascript" type="text/javascript"></script>
+  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script language="javascript" src="js/main.js"></script>
-<script language='javascript'>
-function CheckSubmit()
-{
-	if(document.form1.url.value=="http://"||document.form1.url.value=="")
-	{
-   		document.form1.url.focus();
-   		ShowMsg("网址不能为空");
-   		return false;
-	}
-	if(document.form1.webname.value=="")
-	{
-   		document.form1.webname.focus();
-   		ShowMsg("网站名称不能为空");
-   		return false;
-	}
-	return true;
-}
-</script>
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
+  <script language='javascript'>
+  function CheckSubmit()
+  {
+  	if(document.form1.url.value=="http://"||document.form1.url.value=="")
+  	{
+     		document.form1.url.focus();
+     		ShowMsg("网址不能为空");
+     		return false;
+  	}
+  	if(document.form1.webname.value=="")
+  	{
+     		document.form1.webname.focus();
+     		ShowMsg("网站名称不能为空");
+     		return false;
+  	}
+  	return true;
+  }
+  </script>
 </head>
 <body>
 <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
