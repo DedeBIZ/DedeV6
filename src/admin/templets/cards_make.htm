@@ -33,13 +33,13 @@
               <td>
                 <select name='cardtype' style='width:120px'>
                   <?php
-$dsql->SetQuery("Select * From #@__moneycard_type");
-$dsql->Execute();
-while($row=$dsql->GetArray()){
-  echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";
-}
-$dsql->Close();
-?>
+                  $dsql->SetQuery("Select * From #@__moneycard_type");
+                  $dsql->Execute();
+                  while($row=$dsql->GetArray()){
+                    echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";
+                  }
+                  $dsql->Close();
+                  ?>
                 </select>
               </td>
               <td width="90">生成数量：</td>

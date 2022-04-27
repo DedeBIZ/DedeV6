@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <script language="javascript" src="../static/web/js/webajax.js"></script>
   <script language="javascript" src="js/main.js"></script>
-<script language="javascript">
-function SelectTemplets(fname){
-  var pos = GetWinPos(800,600);
-  window.open("dialog/select_templets.php?f="+fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+", top="+pos.top);
-}
-</script>
+  <script language="javascript">
+  function SelectTemplets(fname){
+    var pos = GetWinPos(800,600);
+    window.open("dialog/select_templets.php?f="+fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+pos.left+", top="+pos.top);
+  }
+  </script>
 </head>
 <body>
 <form name="form1" action="diy_list.php" method="post" >

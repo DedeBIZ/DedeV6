@@ -143,7 +143,7 @@ a{text-decoration:none!important}
                     <label><input type="checkbox" name="resize" value="1" class="np"> 缩小 </label>
                     宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:46px">
                     高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" style="width:46px">
-                    <button type="submit" name="sb1" class="btn btn-success btn-sm">保存</button>
+                    <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
                 </form>
             </td>
         </tr>

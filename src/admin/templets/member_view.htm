@@ -3,30 +3,30 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-<title>查看会员</title>
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
-<script language="javascript" src="../static/web/js/jquery.min.js"></script>
-<script language="javascript" src="../static/web/js/bootstrap.bundle.min.js"></script>
-<script language="javascript" src="js/main.js"></script>
-<script>
-function checkSubmit()
-{
-  if(document.form2.email.value=="")
+  <title>查看会员</title>
+  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <script language="javascript" src="../static/web/js/jquery.min.js"></script>
+  <script language="javascript" src="../static/web/js/bootstrap.bundle.min.js"></script>
+  <script language="javascript" src="js/main.js"></script>
+  <script>
+  function checkSubmit()
   {
-    document.form2.email.focus();
-    ShowMsg("Email不能为空");
-    return false;
+    if(document.form2.email.value=="")
+    {
+      document.form2.email.focus();
+      ShowMsg("Email不能为空");
+      return false;
+    }
+    if(document.form2.uname.value=="")
+    {
+      document.form2.uname.focus();
+      ShowMsg("用户昵称不能为空");
+      return false;
+    }
   }
-  if(document.form2.uname.value=="")
-  {
-    document.form2.uname.focus();
-    ShowMsg("用户昵称不能为空");
-    return false;
-  }
-}
-</script>
+  </script>
 </head>
 <body>
 <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">

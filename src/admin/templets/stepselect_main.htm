@@ -8,17 +8,11 @@
     <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/web/css/admin.css">
-    <style>
-li{float:left;padding-right:10px;line-height:26px}
-.abt{width:90%;border:1px #ffffff solid}
-#edsta{position:absolute;top:70px;left:110px;width:280px;height:200px;background:#f8f8f8;border:1px solid #dedede;display:none;padding:6px}
-#edsta div{margin:6px}
-    </style>
-    <SCRIPT LANGUAGE="JavaScript" src="../static/web/js/webajax.js"></SCRIPT>
+    <script language="JavaScript" src="../static/web/js/webajax.js"></script>
     <script language="javascript" src="../static/web/js/jquery.min.js"></script>
     <script src="../static/web/js/bootstrap.bundle.min.js"></script>
-    <script language='javascript' src='js/main.js'></script>
-    <SCRIPT LANGUAGE="JavaScript">
+    <script language="javascript" src='js/main.js'></script>
+    <script language="JavaScript">
         var loadhtml = "<center><img src='../static/web/img/loadinglit.gif' style='padding:30px' /></center>";
         function updateItem(aid) {
             var upenumf = document.getElementById('upenumf');
@@ -138,7 +132,13 @@ li{float:left;padding-right:10px;line-height:26px}
                 location.href = 'stepselect_main.php?egroup=<?php echo $egroup; ?>&topvalue=' + nv;
             }
         }
-    </SCRIPT>
+    </script>
+    <style>
+li{float:left;padding-right:10px;line-height:26px}
+.abt{width:90%;border:1px #ffffff solid}
+#edsta{position:absolute;top:70px;left:110px;width:280px;height:200px;background:#f8f8f8;border:1px solid #dedede;display:none;padding:6px}
+#edsta div{margin:6px}
+    </style>
 </head>
 <body>
     <div id="edsta">

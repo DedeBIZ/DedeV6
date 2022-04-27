@@ -28,7 +28,7 @@
       <td colspan="4" height="26">
         <div style="float:left;line-height:26px">当前位置：标签源码碎片管理（文件存放在 ../system/taglib 文件夹）</div>
         <div style="float:right;padding-right:10px">
-          <a href='tpl.php?action=addnewtag' class="btn btn-success btn-sm">增加一个新的标签</a>
+          <a href="tpl.php?action=addnewtag" class="btn btn-success btn-sm">增加一个新的标签</a>
         </div>
       </td>
     </tr>
@@ -38,27 +38,19 @@
       </td>
     </tr>
     <?php
-   $dh = dir($libdir);
-   while($filename=$dh->read())
-   {
+     $dh = dir($libdir);
+     while($filename=$dh->read())
+     {
    	  if(!preg_match("#\.php$#", $filename)) continue;
    	  $filetime = filemtime($libdir.'/'.$filename);
       $filetime = MyDate("Y-m-d H:i",$filetime);
       $fileinfo = GetHelpInfo(str_replace('.lib.php','',$filename));
-   ?>
+    ?>
     <tr height="26" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td>
-        <img src='../static/web/img/htm.gif' align='absmiddle'> <?php echo $filename; ?>
-      </td>
-      <td>
-        <?php echo $fileinfo; ?>
-      </td>
-      <td align='center'>
-        <?php echo $filetime; ?>
-      </td>
-      <td align='center'>
-        <a href='tpl.php?action=edittag&filename=<?php echo $filename; ?>' class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a>
-      </td>
+      <td><img src="../static/web/img/htm.gif"><?php echo $filename; ?></td>
+      <td><?php echo $fileinfo; ?></td>
+      <td align="center"><?php echo $filetime; ?></td>
+      <td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a></td>
     </tr>
     <?php } ?>
   </table>

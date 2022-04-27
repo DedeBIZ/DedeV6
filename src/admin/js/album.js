@@ -9,11 +9,11 @@
  */
 function checkSubmitAlb() {
 	if (document.form1.title.value == '') {
-		ShowMsg("档案标题不能为空");
+		ShowMsg("标题不能为空");
 		return false;
 	}
 	if (document.form1.typeid.value == 0) {
-		ShowMsg("请选择档案的主类别");
+		ShowMsg("请选择主类别");
 		return false;
 	}
 	document.form1.imagebody.value = $Obj('copyhtml').innerHTML;
