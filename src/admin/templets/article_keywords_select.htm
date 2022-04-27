@@ -44,31 +44,28 @@
 <body>
 <div class="main">
   <table width="100%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
-   <form name='form1' action="article_keywords_main.php">
-   <input type='hidden' name='dopost' value='add'>
-    <tr id="addnew" style="display:none">
-        <td width="100%" height="26" colspan="2" align="center" bgcolor="#009900">
+    <form name="form1" action="article_keywords_main.php">
+      <input type="hidden" name="dopost" value="add">
+      <tr id="addnew" style="display:none">
+        <td height="26" align="center" colspan="2" style="border-top:0">
           <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="90" align="center">关键词：</td>
-              <td width="270"><input name="keyword" type="text" id="keyword" style="width:260px"></td>
-              <td width="60">链接：</td>
-              <td width="270"><input name="rpurl" type="text" id="rpurl" style="width:260px"></td>
-              <td width="60">频率：</td>
-              <td width="70"><input name="rank" type="text" id="rank" style="width:60px"></td>
-              <td><input type="submit" name="Submit" value="保存" class="np"></td>
+              <td width="170"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" style="width:160px"></td>
+              <td width="170"><input name="rpurl" type="text" id="rpurl" placeholder="请输入链接" style="width:160px"></td>
+              <td width="170"><input name="rank" type="text" id="rank" placeholder="请输入频率" style="width:160px"></td>
+              <td><input type="submit" name="Submit" value="保存" class="btn btn-success btn-sm"></td>
             </tr>
           </table>
         </td>
-     </tr>
-	 </form>
-	<form name='form2'>
+      </tr>
+    </form>
+    <form name="form2">
       <tr>
         <td width="100%" height="26" colspan="2" background="../static/web/img/tbg.gif">
           <table width="100%" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="31%">选择关键词</td>
-              <td width="69%" align="right">
+              <td width="30%">选择关键词</td>
+              <td width="70%" align="right">
                 <button class="btn btn-success btn-sm" type="button" name="kwa" onClick="AddNewKw()">新增关键词</button>
                 <button class="btn btn-success btn-sm" type="button" name="kwm" onClick="location='article_keywords_main.php';">关键词管理</button>
               </td>
@@ -77,29 +74,27 @@
         </td>
       </tr>
       <tr>
-        <td>
-        	{dede:datalist empty='<center>暂无内容</center>'}
-        	 <a href='javascript:SelKw("{dede:field.keyword/}")'>{dede:field.keyword/}</a>
+        <td colspan="2">
+      	  {dede:datalist empty='<center>暂无内容</center>'}
+      	  <a href="javascript:SelKw('{dede:field.keyword/}')">{dede:field.keyword/}</a>
           {/dede:datalist}
-          </td>
+        </td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#E4FAC7" style="line-height:180%">
-        <table cellspacing="0" cellpadding="0" class="table table-borderless">
+        <td height="26" colspan="2">
+          <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="260">已选的关键词：</td>
-              <td width="320"><input name="keywords" type="text" id="keywords" style="width:300px" value="<?php echo $keywords?>"></td>
-              <td width="93"><button type="button" class="btn btn-success btn-sm" name="Submit" onClick="ReturnValue()"> 选用 </button></td>
+              <td width="270"><input name="keywords" type="text" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" style="width:260px"></td>
+              <td><button type="button" class="btn btn-success btn-sm" name="Submit" onClick="ReturnValue()">选用</button></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr align="center">
-        <td height="36" bgcolor="#f8f8f8">{dede:pagelist listsize='6'/}</td>
+        <td height="36" bgcolor="#f8f8f8" colspan="2">{dede:pagelist listsize='6'/}</td>
       </tr>
     </form>
   </table>
-  <div class="tbbottom" style="text-align:right;width:98%" align="left"></div>
 </div>
 </body>
 </html>
