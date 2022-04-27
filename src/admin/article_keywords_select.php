@@ -16,7 +16,7 @@ if (empty($keywords)) $keywords = "";
 $sql = "SELECT * FROM `#@__keywords` ORDER BY `rank` DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplate(DEDEADMIN."/templets/article_keywords_select.htm");
-$dlist->pageSize = 300;
+$dlist->pagesize = 30;
 $dlist->SetParameter("f", $f);
 $dlist->SetSource($sql);
 $dlist->Display();
