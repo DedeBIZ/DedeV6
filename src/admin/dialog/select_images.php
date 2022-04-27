@@ -46,9 +46,11 @@ if (!empty($noeditor)) {
     $addparm .= '&noeditor=yes';
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="<?php echo $cfg_soft_lang; ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>选择图片</title>
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
