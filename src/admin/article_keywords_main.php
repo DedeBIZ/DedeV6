@@ -73,7 +73,7 @@ if (empty($keyword)) {
 }
 $sql = "SELECT * FROM `#@__keywords` $addquery ORDER BY `rank` DESC";
 $dlist = new DataListCP();
-$dlist->pageSize = 20;
+$dlist->pagesize = 30;
 $dlist->SetParameter("keyword", $keyword);
 $dlist->SetTemplate(DEDEADMIN."/templets/article_keywords_main.htm");
 $dlist->SetSource($sql);
