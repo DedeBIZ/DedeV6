@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="<?php echo $cfg_soft_lang; ?>">
-<title>增加商品</title>
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
-<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
-<script language="javascript" src="../static/web/js/jquery.min.js"></script>
-<script language="javascript" src="../static/web/js/webajax.js"></script>
-<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-<script type="text/javascript" src="../static/web/js/moment.min.js"></script>
-<script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
-<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-<script language='javascript' src="js/main.js"></script>
-<link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
-<link rel="stylesheet" href="../static/web/css/cropper.min.css">
-<script src="../static/web/js/cropper.min.js"></script>
-<script language="javascript">
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <title>增加商品</title>
+  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+  <script language="javascript" src="../static/web/js/jquery.min.js"></script>
+  <script language="javascript" src="../static/web/js/webajax.js"></script>
+  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+  <script type="text/javascript" src="../static/web/js/moment.min.js"></script>
+  <script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
+  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
+  <script language='javascript' src="js/main.js"></script>
+  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <script src="../static/web/js/cropper.min.js"></script>
+  <script language="javascript">
   function checkSubmit() {
     if (document.form1.title.value == "") {
       ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
@@ -28,13 +29,13 @@
       return false;
     }
   }
-</script>
-<style>
+  </script>
+  <style>
 body{background:#fff}
 img{vertical-align:baseline}
 table{border-collapse:separate}
 .form-control{display:inline-block;margin-right:10px;width:160px}
-</style>
+  </style>
 </head>
 <body>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">

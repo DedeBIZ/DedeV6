@@ -1,12 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-<title>管理员帐号 - 绩效统计</title>
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
-<script language='javascript' src='../static/web/js/webajax.js'></script>
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <title>绩效统计</title>
+  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <script language='javascript' src='../static/web/js/webajax.js'></script>
 <script language='javascript'>
 	//gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDisplay
 	function LoadUser(uid)
@@ -40,18 +41,18 @@
 <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
     <td height="26" background="../static/web/img/tbg.gif"> <a href="sys_admin_user.php" style="padding-left:10px">管理员帐号</a> &gt; 编辑绩效统计</td>
-</tr>
-<tr>
-  <td>
-  <?php
-  $dsql->Execute('me', 'Select * From `#@__admin` order by id asc');
-  while( $arr = $dsql->GetArray('me') )
-  {
-  	echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在载入</p></div><script language='javascript'>LoadUser({$arr['id']});</script>";
-  }
-  ?>
-  </td>
-</tr>
+  </tr>
+  <tr>
+    <td>
+    <?php
+    $dsql->Execute('me', 'Select * From `#@__admin` order by id asc');
+    while( $arr = $dsql->GetArray('me') )
+    {
+  	  echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在载入</p></div><script language='javascript'>LoadUser({$arr['id']});</script>";
+    }
+    ?>
+    </td>
+  </tr>
 </table>
 </body>
 </html>

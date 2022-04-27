@@ -1,141 +1,157 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="<?php echo $cfg_soft_lang; ?>">
-<title>系统概况</title>
-<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<base target="_self">
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
-<link rel="stylesheet" href="css/indexbody.css">
-<script>const cfg_biz_dedebizUrl = '<?php echo $cfg_biz_dedebizUrl; ?>';const cfg_webname = '<?php echo $cfg_webname; ?>';</script>
-<script src="../static/web/js/jquery.min.js"></script>
-<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-<script src="../static/web/js/webajax.js"></script>
-<script src="../static/web/js/chart.min.js"></script>
-<script src="js/indexbody.js"></script>
-<script src="js/main.js"></script>
-<style>
-table.stattable td{padding:.6rem;border-bottom:1px solid #dee2e6;text-align:right;vertical-align:middle}
-.stattable{width:100%}
-.table{margin-bottom:0}
-.web-info{padding:10px;background:#f8f8f8;border-radius:.2rem;text-align:center}
-.web-info p{margin-bottom:10px}
-#text{font-size:0}
-</style>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div id="tips" class="col-md-12"></div>
-            <div class="col-md-12 mt-3 mb-3">
-                <div class="card">
-                    <div class="card-header"><a href="#statChart" title="查看流量统计图"><i class="fa fa-line-chart"></i> 流量统计表</a></div>
-                    <div class="card-body">
-                        <table class="stattable">
-                            <tbody>
-                                <tr class="title">
-                                    <td width="10%"></td>
-                                    <td width="20%">浏览次数(PV)</td>
-                                    <td width="20%">独立访客(UV)</td>
-                                    <td width="20%">IP</td>
-                                    <td width="18%" >访问次数</td>
-                                </tr>
-                                <tr class="bg-white">
-                                    <td class="today">今日</td>
-                                    <td class="today" id="today_pv">0</td>
-                                    <td class="today" id="today_uv">0</td>
-                                    <td class="today" id="today_ip">0</td>
-                                    <td class="today" id="today_vv">0</td>
-                                </tr>
-                                <tr class="bg-white">
-                                    <td>昨日</td>
-                                    <td id="yestoday_pv">0</td>
-                                    <td id="yestoday_uv">0</td>
-                                    <td id="yestoday_ip">0</td>
-                                    <td id="yestoday_vv">0</td>
-                                </tr>
-                                <tr class="bg-white grey9 hide" style="display:table-row">
-                                    <td>历史累计</td>
-                                    <td id="total_pv">0</td>
-                                    <td id="total_uv">0</td>
-                                    <td id="total_ip">0</td>
-                                    <td id="total_vv">0</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3 mb-3 updatenews">
-                <div class="card">
-                    <div class="card-header">
-                        <a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a>
-                        <span id="text">Dede:<?php echo $cfg_version_detail; ?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?></span>
-                    </div>
-                    <div class="card-body">
-                        <div id="updateinfos">
-                            <?php echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' style='width:98%;height:70px;padding:.6rem'></iframe>"; ?>
-                        </div>
-                        <table width="98%" class="table table-borderless">
-                            <tr>
-                                <td>
-                                    <div class="web-info">
-                                        <p>操作系统</p>
-                                        <span><?php echo PHP_OS; ?></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="web-info">
-                                        <p>Web服务器</p>
-                                        <span><?php echo $_SERVER['SERVER_SOFTWARE']; ?></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="web-info">
-                                        <p>服务器IP</p>
-                                        <span><?php echo gethostbyname($_SERVER['SERVER_NAME']); ?></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="web-info">
-                                        <p>PHP版本</p>
-                                        <span><?php echo @phpversion(); ?></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="web-info">
-                                        <p>数据库版本</p>
-                                        <span><?php echo $dsql->GetVersion(); ?></span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3 mb-3">
-                <div class="card">
-                    <div class="card-header"><i class="fa fa-database"></i> 版本授权</div>
-                    <div class="card-body" id="_systeminfo">正在载入</div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3 mb-3">
-                <div class="card">
-                    <div class="card-header"><a name="statChart"><i class="fa fa-bar-chart"></i> 流量统计图</a></div>
-                    <div class="card-body">
-                        <canvas id="statChart"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3 mb-3">
-                <div class="card">
-                    <div class="card-header"><i class="fa fa-file-word-o"></i> 最新文档</div>
-                    <div class="card-body" id="newarticles">正在载入</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>系统概况</title>
+		<base target="_self">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="css/indexbody.css">
+		<script>const cfg_biz_dedebizUrl = '<?php echo $cfg_biz_dedebizUrl; ?>';const cfg_webname = '<?php echo $cfg_webname; ?>';</script>
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="../static/web/js/webajax.js"></script>
+		<script src="../static/web/js/chart.min.js"></script>
+		<script src="js/indexbody.js"></script>
+		<script src="js/main.js"></script>
+		<style>
+			table.stattable td {
+				padding: .6rem;
+				border-bottom: 1px solid #dee2e6;
+				text-align: right;
+				vertical-align: middle
+			}
+			.stattable {
+				width: 100%
+			}
+			.table {
+				margin-bottom: 0
+			}
+			.web-info {
+				padding: 10px;
+				background: #f8f8f8;
+				border-radius: .2rem;
+				text-align: center
+			}
+			.web-info p {
+				margin-bottom: 10px
+			}
+			#text {
+				font-size: 0
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div id="tips" class="col-md-12"></div>
+				<div class="col-md-12 mt-3 mb-3">
+					<div class="card">
+						<div class="card-header"><a href="#statChart" title="查看流量统计图"><i class="fa fa-line-chart"></i> 流量统计表</a></div>
+						<div class="card-body">
+							<table class="stattable">
+								<tbody>
+									<tr class="title">
+										<td width="10%"></td>
+										<td width="20%">浏览次数(PV)</td>
+										<td width="20%">独立访客(UV)</td>
+										<td width="20%">IP</td>
+										<td width="18%">访问次数</td>
+									</tr>
+									<tr class="bg-white">
+										<td class="today">今日</td>
+										<td class="today" id="today_pv">0</td>
+										<td class="today" id="today_uv">0</td>
+										<td class="today" id="today_ip">0</td>
+										<td class="today" id="today_vv">0</td>
+									</tr>
+									<tr class="bg-white">
+										<td>昨日</td>
+										<td id="yestoday_pv">0</td>
+										<td id="yestoday_uv">0</td>
+										<td id="yestoday_ip">0</td>
+										<td id="yestoday_vv">0</td>
+									</tr>
+									<tr class="bg-white grey9 hide" style="display:table-row">
+										<td>历史累计</td>
+										<td id="total_pv">0</td>
+										<td id="total_uv">0</td>
+										<td id="total_ip">0</td>
+										<td id="total_vv">0</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mt-3 mb-3 updatenews">
+					<div class="card">
+						<div class="card-header">
+							<a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a>
+							<span id="text">V:<?php echo $cfg_version_detail; ?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?></span>
+						</div>
+						<div class="card-body">
+							<div id="updateinfos"><?php echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' style='width:98%;height:70px;padding:.6rem'></iframe>"; ?></div>
+							<table width="98%" class="table table-borderless">
+								<tr>
+									<td>
+										<div class="web-info">
+											<p>操作系统</p>
+											<span><?php echo PHP_OS; ?></span>
+										</div>
+									</td>
+									<td>
+										<div class="web-info">
+											<p>Web服务器</p>
+											<span><?php echo $_SERVER['SERVER_SOFTWARE']; ?></span>
+										</div>
+									</td>
+									<td>
+										<div class="web-info">
+											<p>服务器IP</p>
+											<span><?php echo gethostbyname($_SERVER['SERVER_NAME']); ?></span>
+										</div>
+									</td>
+									<td>
+										<div class="web-info">
+											<p>PHP版本</p>
+											<span><?php echo @phpversion(); ?></span>
+										</div>
+									</td>
+									<td>
+										<div class="web-info">
+											<p>数据库版本</p>
+											<span><?php echo $dsql->GetVersion(); ?></span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mt-3 mb-3">
+					<div class="card">
+						<div class="card-header"><i class="fa fa-database"></i> 版本授权</div>
+						<div class="card-body" id="_systeminfo">正在载入</div>
+					</div>
+				</div>
+				<div class="col-md-6 mt-3 mb-3">
+					<div class="card">
+						<div class="card-header"><a name="statChart"><i class="fa fa-bar-chart"></i> 流量统计图</a></div>
+						<div class="card-body">
+							<canvas id="statChart"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mt-3 mb-3">
+					<div class="card">
+						<div class="card-header"><i class="fa fa-file-word-o"></i> 最新文档</div>
+						<div class="card-body" id="newarticles">正在载入</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

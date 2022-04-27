@@ -23,7 +23,7 @@
 						<td style="color:#F00">您好，欢迎来到本网站，请 <a href="../user/login.php?gourl=<?php echo urlencode(GetCurUrl());?>">登录</a> 或 <a href="../user/index_do.php?fmdo=user&dopost=regnew">注册</a></td>
 					</tr>
 				</table>
-				<?php }?>
+				<?php } ?>
 				<form id="fixupformid" name="fixupform" action="carbuyaction.php" method="post">
 					<input name="do" type="hidden" value="clickout">
 					<table cellpadding="0" cellspacing="0" class="table">
@@ -71,9 +71,7 @@
 								<td width="10%" class="td1"><input type="radio" name="pid" value="{dede:value.pid/}">
 								</td>
 								<td width="90%">
-									<p>{dede:value.dname/} <span class="fc-f90">手续费：{dede:value.price/}元</span>
-										<small>{dede:value.des/}.</small>
-									</p>
+									<p>{dede:value.dname/} <span class="fc-f90">手续费：{dede:value.price/}元</span> <small>{dede:value.des/}.</small></p>
 								</td>
 							</tr>
 							{/dede:array}
@@ -163,7 +161,7 @@
 							<tr>
 								<td width="180" class="td1">验证码</td>
 								<td>
-									<input name="validate" type="text" id="vdcode2" size="10" class="ipt-txt" style="text-transform: uppercase;">
+									<input name="validate" type="text" id="vdcode2" size="10" class="ipt-txt" style="text-transform:uppercase">
 									<img src="../apps/vdimgck.php" style="cursor:pointer" onclick="this.src=this.src+'?'" title="验证码" alt="验证码">
 								</td>
 							</tr>

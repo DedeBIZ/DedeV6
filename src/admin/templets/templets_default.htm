@@ -1,76 +1,81 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="<?php echo $cfg_soft_lang; ?>">
-<title>模板管理器</title>
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
-<style>
-.linerow{border-bottom:1px solid #CBD8AC}
-</style>
-<script>
-function DelTpl(filename) {
-	if (window.confirm('您确定要删除这篇文档吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=' + filename;
-	else return false;
-}
-</script>
-</head>
-<body>
-	<table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
-		<tr height="26" align="center">
-			<td width="25%" background="../static/web/img/wbg.gif">文件名</td>
-			<td width="30%" background="../static/web/img/wbg.gif">文件描述</td>
-			<td width="25%" background="../static/web/img/wbg.gif">修改时间</td>
-			<td width="20%" background="../static/web/img/wbg.gif">操作</td>
-		</tr>
-		<tr>
-			<td colspan="4" height="26" bgcolor="#f8f8f8">
-				<span style="float:left;line-height:26px">
-				当前位置：<?php
-      			if($acdir=='plus') echo '插件模板';
-      			else if($acdir=='system') echo '底层模板';
-      			else echo '核心模板 &gt; '.$acdir;
-      			?>
-				</span>
-				<span style="float:right;padding-right:10px">
-					<a class="btn btn-success btn-sm" href="templets_main.php">默认模板目录</a>
-					<a class="btn btn-success btn-sm" href="templets_main.php?acdir=plus">插件模板目录</a>
-				</span>
-			</td>
-		</tr>
-		<?php
-		$files = scandir($templetdird);
-		foreach ($files as $filename){
-			if(!preg_match("#\.htm#", $filename)) continue;
-			$filetime = filemtime($templetdird.'/'.$filename);
-			$filetime = MyDate("Y-m-d H:i",$filetime);
-			$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
-		?>
-		<tr height="26" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-			<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename; ?></a></td>
-			<td><?php echo $fileinfo; ?></td>
-			<td align="center"><?php echo $filetime; ?></td>
-			<td align="center">
-				<a href="tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a>
-				<?php
-				if(!isset($fileinfos[$filename])){
-				?>
-				<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash"></i></a>
-				<?php
-		   		}
-				?>
-			</td>
-		</tr>
-		<?php
-		}
-		?>
-		<tr>
-			<td bgcolor="#f8f8f8" align="center" colspan="4" class="py-3">
-				<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>
-				<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
-			</td>
-		</tr>
-	</table>
-</body>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>模板管理器</title>
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<style>
+			.linerow {
+				border-bottom: 1px solid #CBD8AC
+			}
+		</style>
+		<script>
+			function DelTpl(filename) {
+				if (window.confirm('您确定要删除这篇文档吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=' +
+					filename;
+				else return false;
+			}
+		</script>
+	</head>
+	<body>
+		<table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
+			<tr height="26" align="center">
+				<td width="25%" background="../static/web/img/wbg.gif">文件名</td>
+				<td width="30%" background="../static/web/img/wbg.gif">文件描述</td>
+				<td width="25%" background="../static/web/img/wbg.gif">修改时间</td>
+				<td width="20%" background="../static/web/img/wbg.gif">操作</td>
+			</tr>
+			<tr>
+				<td colspan="4" height="26" bgcolor="#f8f8f8">
+					<span style="float:left;line-height:26px">
+						当前位置：
+						<?php
+						if($acdir=='plus') echo '插件模板';
+						else if($acdir=='system') echo '底层模板';
+						else echo '核心模板 &gt; '.$acdir;
+						?>
+					</span>
+					<span style="float:right;padding-right:10px">
+						<a class="btn btn-success btn-sm" href="templets_main.php">默认模板目录</a>
+						<a class="btn btn-success btn-sm" href="templets_main.php?acdir=plus">插件模板目录</a>
+					</span>
+				</td>
+			</tr>
+			<?php
+			$files = scandir($templetdird);
+			foreach ($files as $filename){
+				if(!preg_match("#\.htm#", $filename)) continue;
+				$filetime = filemtime($templetdird.'/'.$filename);
+				$filetime = MyDate("Y-m-d H:i",$filetime);
+				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
+			?>
+			<tr height="26" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename; ?></a></td>
+				<td><?php echo $fileinfo; ?></td>
+				<td align="center"><?php echo $filetime; ?></td>
+				<td align="center">
+					<a href="tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a>
+					<?php
+					if(!isset($fileinfos[$filename])){
+					?>
+					<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash"></i></a>
+					<?php
+					}
+					?>
+				</td>
+			</tr>
+			<?php
+			}
+			?>
+			<tr>
+				<td bgcolor="#f8f8f8" align="center" colspan="4" class="py-3">
+					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>
+					<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>

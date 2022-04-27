@@ -1,81 +1,98 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-	<title>修改新建模板</title>
-	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../static/web/css/admin.css">
-	<style>
-.selbt{float:left;display:inline-block;margin:0 6px 6px 0;padding:8px;text-align:center;border-radius:.2rem}
-.helpdiv{float:left;display:none;padding:10px;width:100%;background:#f8f8f8;border:1px solid #28a745;border-radius:.2rem}
-	</style>
-	<link rel="stylesheet" href="css/codemirror.css">
-	<script type="text/javascript" src="js/codemirror.js"></script>
-	<script type="text/javascript" src="js/mode/xml/xml.js"></script>
-	<script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
-	<script type="text/javascript" src="js/mode/css/css.js"></script>
-	<script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
-	<script language="javascript">
-		function Post() {
-			if (document.form1.filename.value == "") {
-				alert("文件名不能为空");
-				document.form1.filename.focus();
-				return false;
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>修改新建模板</title>
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<style>
+			.selbt {
+				float: left;
+				display: inline-block;
+				margin: 0 6px 6px 0;
+				padding: 8px;
+				text-align: center;
+				border-radius: .2rem
 			}
-		}
-		function showdiv(id) {
-			hideobj = GETNAMES("help111");
-			for (i = 0; i < hideobj.length; i++) {
-				hideobj[i].style.display = "none";
+			.helpdiv {
+				float: left;
+				display: none;
+				padding: 10px;
+				width: 100%;
+				background: #f8f8f8;
+				border: 1px solid #28a745;
+				border-radius: .2rem
 			}
-			if (id != '') {
-				document.getElementById(id).style.display = "block";
-			}
-		}
-		function GETNAMES(name) {
-			var returns = document.getElementsByName(name);
-			if (returns.length > 0) return returns;
-			returns = new Array();
-			var e = document.getElementsByTagName('div');
-			for (i = 0; i < e.length; i++) {
-				if (e[i].getAttribute("name") == name) {
-					returns[returns.length] = e[i];
+		</style>
+		<link rel="stylesheet" href="css/codemirror.css">
+		<script type="text/javascript" src="js/codemirror.js"></script>
+		<script type="text/javascript" src="js/mode/xml/xml.js"></script>
+		<script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
+		<script type="text/javascript" src="js/mode/css/css.js"></script>
+		<script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
+		<script language="javascript">
+			function Post() {
+				if (document.form1.filename.value == "") {
+					alert("文件名不能为空");
+					document.form1.filename.focus();
+					return false;
 				}
 			}
-			return returns;
-		}
-	</script>
-</head>
-<body>
-	<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
-		<input type="hidden" name="action" value="saveedit">
-		<input type="hidden" name="acdir" value="<?php echo $acdir; ?>">
-		<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
-		<table width='98%' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3 mb-3">
-			<tr bgcolor='#EEF4EA'>
-				<td colspan="2" height="26" background="../static/web/img/wbg.gif" style="padding-left:10px">修改新建模板</td>
-			</tr>
-			<tr>
-				<td>文件名称</td>
-				<td><input name=filename value="<?php echo $filename; ?>" style="width:260px">（不允许用 “..” 形式的路径）</td>
-			</tr>
-			<tr>
-				<td colspan='2' hieght="30" style="padding-left:10px">参考标签：</td>
-			</tr>
-			<tr>
-				<td colspan='2'>
+			function showdiv(id) {
+				hideobj = GETNAMES("help111");
+				for (i = 0; i < hideobj.length; i++) {
+					hideobj[i].style.display = "none";
+				}
+				if (id != '') {
+					document.getElementById(id).style.display = "block";
+				}
+			}
+			function GETNAMES(name) {
+				var returns = document.getElementsByName(name);
+				if (returns.length > 0) return returns;
+				returns = new Array();
+				var e = document.getElementsByTagName('div');
+				for (i = 0; i < e.length; i++) {
+					if (e[i].getAttribute("name") == name) {
+						returns[returns.length] = e[i];
+					}
+				}
+				return returns;
+			}
+		</script>
+	</head>
+	<body>
+		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
+			<input type="hidden" name="action" value="saveedit">
+			<input type="hidden" name="acdir" value="<?php echo $acdir; ?>">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+			<table width='98%' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3 mb-3">
+				<tr bgcolor='#EEF4EA'>
+					<td colspan="2" height="26" background="../static/web/img/wbg.gif" style="padding-left:10px">修改新建模板
+					</td>
+				</tr>
+				<tr>
+					<td>文件名称</td>
+					<td><input name=filename value="<?php echo $filename; ?>" style="width:260px">（不允许用 “..” 形式的路径）</td>
+				</tr>
+				<tr>
+					<td colspan='2' hieght="30" style="padding-left:10px">参考标签：</td>
+				</tr>
+				<tr>
+					<td colspan='2'>
 					<?php
 					foreach ($helps as $key => $help)
 					{
 						echo '<div class="coolbg np selbt" title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"> '.$key.' </a></div>'."";
 					}
 					?>
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2' style="border-top:1px solid #fff">
-					<?php
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2' style="border-top:1px solid #fff">
+						<?php
 						foreach ($helps as $key => $help)
 						{
 							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
@@ -89,28 +106,28 @@
 						echo '</div>'."";
 					}
 					?>
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2'>
-					<textarea id="content" name="content" style="width:100%;height:450px"><?php echo $content; ?></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td bgcolor="#f8f8f8" colspan="2" align="center" class="py-3">
-					<button type="submit" name='B1' class="btn btn-success btn-sm">保存</button>
-					<button type="reset" name='B2' class="btn btn-success btn-sm">重置</button>
-					<button type="button" name='B4' class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
-				</td>
-			</tr>
-		</table>
-	</form>
-	<script type="text/javascript">
-		var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
-			lineNumbers: true,
-			lineWrapping: true,
-			mode: 'text/html'
-		});
-	</script>
-</body>
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2'>
+						<textarea id="content" name="content" style="width:100%;height:450px"><?php echo $content; ?></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#f8f8f8" colspan="2" align="center" class="py-3">
+						<button type="submit" name='B1' class="btn btn-success btn-sm">保存</button>
+						<button type="reset" name='B2' class="btn btn-success btn-sm">重置</button>
+						<button type="button" name='B4' class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<script type="text/javascript">
+			var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
+				lineNumbers: true,
+				lineWrapping: true,
+				mode: 'text/html'
+			});
+		</script>
+	</body>
 </html>

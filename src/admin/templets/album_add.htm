@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="<?php echo $cfg_soft_lang; ?>">
-<title>增加图片集</title>
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
-<link rel="stylesheet" href="css/albumupload.css">
-<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
-<script language="javascript" src="../static/web/js/jquery.min.js"></script>
-<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="../static/web/js/webajax.js"></script>
-<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-<script type="text/javascript" src="../static/web/js/moment.min.js"></script>
-<script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/album.js"></script>
-<script type="text/javascript" src="js/handlers.js"></script>
-<link rel="stylesheet" href="../static/web/css/cropper.min.css">
-<script src="../static/web/js/cropper.min.js"></script>
-<link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
-<script language="javascript">
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <title>增加图片集</title>
+  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="css/albumupload.css">
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+  <script language="javascript" src="../static/web/js/jquery.min.js"></script>
+  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../static/web/js/webajax.js"></script>
+  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+  <script type="text/javascript" src="../static/web/js/moment.min.js"></script>
+  <script type="text/javascript" src="../static/web/js/daterangepicker.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/album.js"></script>
+  <script type="text/javascript" src="js/handlers.js"></script>
+  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <script src="../static/web/js/cropper.min.js"></script>
+  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+  <script language="javascript">
   var swfu = null;
   var vcc = 0;
   var albums = [];
@@ -46,12 +47,12 @@
       $("#iptAlbumImages").val("");
     });
   });
-</script>
-<style>
+  </script>
+  <style>
 body{background:#fff}
 img{vertical-align:baseline}
 table{border-collapse:separate}
-</style>
+  </style>
 </head>
 <body>
   <form name="form1" action="album_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmitAlb();">
@@ -457,7 +458,7 @@ table{border-collapse:separate}
                 <?php
                 $nowtime = GetDateTimeMk(time());
                 echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker' style='width:160px'>";
-			          ?>
+			    ?>
               </td>
               <td width="90">浏览次数：</td>
               <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click); ?>" style="width:160px"></td>

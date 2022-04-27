@@ -1,10 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>配送方式配置</title>
-	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <style>
@@ -24,30 +25,16 @@
           <td height="26" colspan="2" align="left" background="../static/web/img/tbg.gif" style="padding-left:10px">增加一个配送方式</td>
         </tr>
         <tr height="26" align="center">
-          <td width="10%" height="26" align="right">
-            &nbsp;&nbsp;名称：
-          </td>
-          <td align="left"><input name="dname" type="text" id="dname" style="width:160px">
-            &nbsp;*此处填写配送方式名称</td>
+          <td width="10%" height="26" align="right">名称：</td>
+          <td align="left"><input name="dname" type="text" id="dname" style="width:160px"> * 此处填写配送方式名称</td>
         </tr>
         <tr height="26" align="center">
-          <td width="10%" height="26" align="right">
-            &nbsp;&nbsp;手续费：
-          </td>
-          <td align="left">
-            <input name="price" type="text" id="price" value="0.00" style="width:60px">
-            元
-            &nbsp;*发货时所用的手续费，若要收取，请填写(精确到小数位两位)
-          </td>
+          <td width="10%" height="26" align="right">手续费：</td>
+          <td align="left"><input name="price" type="text" id="price" value="0.00" style="width:60px"> 元 * 发货时所用的手续费，若要收取，请填写（精确到小数位两位）</td>
         </tr>
         <tr height="26" align="center">
-          <td width="10%" height="26" align="right">
-            &nbsp;&nbsp;简要说明：
-          </td>
-          <td align="left">
-            <textarea name="des" id="des" style="width:360px;height:50px"></textarea>
-            &nbsp;最多100个文字内，简要说明一下
-          </td>
+          <td width="10%" height="26" align="right">简要说明：</td>
+          <td align="left"><textarea name="des" id="des" style="width:360px;height:50px"></textarea></td>
         </tr>
         <tr>
           <td height="50" colspan="2" align="center">
@@ -80,12 +67,11 @@
                   <a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid']; ?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a>
                 </td>
                 <td width="70%" align="left">
-                  手续费：<input name="m_price<?php echo $rs['pid']; ?>" type="text" id="m_price<?php echo $rs['pid']; ?>" value="<?php echo $rs['price']; ?>" style="width:60px">
-                  元
-                  <textarea name="m_des<?php echo $rs['pid']; ?>" id="m_des<?php echo $rs['pid']; ?>" style="width:360px;height:50px"><?php echo $rs['des']; ?></textarea>
+                  <span>手续费：<input name="m_price<?php echo $rs['pid']; ?>" type="text" id="m_price<?php echo $rs['pid']; ?>" value="<?php echo $rs['price']; ?>" style="width:60px"> 元</span>
+				  <textarea name="m_des<?php echo $rs['pid']; ?>" id="m_des<?php echo $rs['pid']; ?>" style="width:360px;height:50px"><?php echo $rs['des']; ?></textarea>
                 </td>
               </tr>
-              <?php }?>
+              <?php } ?>
             </table>
           </td>
         </tr>

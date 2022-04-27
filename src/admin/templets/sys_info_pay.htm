@@ -1,9 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-<title>支付接口配置</title>
-<link rel="stylesheet" href="../static/web/css/admin.css">
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <title>支付接口配置</title>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 <script language='javascript'>
 var _key = 0;
 var payment_regurl = new Array(
@@ -101,7 +102,7 @@ foreach($payment_arr as $value){
 <li style="float:left; width:160px;">
 <input name="payment_select[<?php echo $k; ?>]" type="checkbox" value="<?php echo $cfg_pay_info['type'][$k]; ?>" Onclick="if(this.checked == true) ShowReg(<?php echo $k; ?>);" <?php if(in_array($cfg_pay_info['type'][$k],$payment_select)) echo 'checked'; ?>> <span onClick="ShowReg(<?php echo $k; ?>);" style="cursor:pointer"><?php echo $val; ?></span>
 </li>
-<?php }?>
+<?php } ?>
 </div>
 </td>
 </tr>

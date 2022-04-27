@@ -1,110 +1,146 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="<?php echo $cfg_soft_lang; ?>">
-<meta name="robots" content="noindex,nofollow">
-<title><?php echo $cfg_webname; ?>后台管理</title>
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/frame.css">
-<script src="../static/web/js/jquery.min.js"></script>
-<script src="js/frame.js"></script>
-<style>
-#skinlist{display:block;height:10px;margin-top:10px;overflow:hidden;width:86px}
-#skin div{float:left}
-#skin li{float:left;width:14px;height:10px;cursor:pointer}
-#def div,#s1 div,#s2 div,#s3 div,#s4 div{background-image:url(images/skinbutton.png)no-repeat}
-#s1 div{background-position:0 0px}
-#s2 div{background-position:0 -11px}
-#s3 div{background-position:0 -22px}
-#s4 div{background-position:0 -33px}
-#s1 div.sel{background:url(images/skinbutton.png)no-repeat scroll -14px top transparent}
-#s2 div.sel{background:url(images/skinbutton.png)no-repeat scroll -14px -11px transparent}
-#s3 div.sel{background:url(images/skinbutton.png)no-repeat scroll -14px -22px transparent}
-#s4 div.sel{background:url(images/skinbutton.png)no-repeat scroll -14px -33px transparent}
-</style>
-</head>
-<body class="showmenu">
-    <?php
-    if(preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){
-    ?>
-    <div id="browsehappy" style="padding:20px 30px;font-size:14px;line-height:16px;color:#856404;background:#fff3cd;border-radius:.25rem;border:none">
-        <a onclick="document.getElementById('browsehappy').style.display='none';" style="float:right;cursor:pointer">×</a>
-        <span>您正在使用一个过时的浏览器，请您<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，以提高您对后台体验</span>
-    </div>
-    <?php
-    }
-    ?>
-    <div class="pagemask"></div>
-    <iframe class="iframemask"></iframe>
-    <div class="allmenu">
-        <div class="allmenu-box">
-            <?php
-            echo $mapstring;
-            ?>
-            <br style="clear:both">
-        </div>
-    </div>
-    <div class="head">
-        <div class="top">
-            <div class="top_logo"><a target="main" href="index_body.php"><?php echo $cfg_webname; ?>系统</a></div>
-            <div class="top_version">V<?php echo $cfg_version_detail; ?></div>
-            <div class="top_link">
-                <ul>
-                    <li class="welcome">
-                        <a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10) {echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a>
-                        <a href="exit.php">退出</a>
-                    </li>
-                    <?php
-                    if($cuserLogin->getUserType()>=10){
-                    ?>
-                    <li><a target="main" href="sys_info.php">系统配置</a></li>
-                    <li><a target="main" href="catalog_main.php">栏目管理</a></li>
-                    <li><a target="main" href="file_manage_main.php">文件管理</a></li>
-                    <li><a target="main" href="templets_main.php">模板管理</a></li>
-                    <?php
-                    }
-                    ?>
-                    <li><a target="main" href="public_guide.php">发布文档</a></li>
-                    <li><a target="main" href="makehtml_all.php">更新整站</a></li>
-                    <?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank">会员中心</a></li>':''; ?>
-                    <li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="topnav">
-            <div class="menuact">
-                <a href="javascript:;" id="togglemenu"><i class="fa fa-bars"></i> 隐藏菜单</a>
-                <a href="javascript:;" id="allmenu"><i class="fa fa-map-marker"></i> 功能地图</a>
-            </div>
-            <div id="skin"></div>
-            <div class="nav" id="nav"></div>
-            <div class="sysmsg">
-                <div class="scroll">
-                    <form action="action_search.php" method="post" target="main">
-                        <input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
-                        <button type="submit" class="np">搜索</button>
-                        <a href="<?php echo $cfg_biz_gitUrl; ?>" target="_blank"><i class="fa fa-code"></i> 代码托管</a>
-                        <a href="<?php echo $cfg_biz_helpUrl; ?>" target="_blank"><i class="fa fa-question-circle"></i> 帮助中心</a>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="left">
-        <div class="menu" id="menu">
-            <iframe src="index_menu.php" id="menufra" name="menu" frameborder="0"></iframe>
-        </div>
-    </div>
-    <div class="right">
-        <div class="main">
-            <iframe src="index_body.php" id="main" name="main" frameborder="0"></iframe>
-        </div>
-    </div>
-    <script>
-    function JumpFrame(url1, url2) {
-        jQuery('#menufra').get(0).src = url1;
-        jQuery('#main').get(0).src = url2;
-    }
-    </script>
-</body>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta name="robots" content="noindex,nofollow">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title><?php echo $cfg_webname; ?>后台管理</title>
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/frame.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="js/frame.js"></script>
+		<style>
+			#skinlist {
+				display: block;
+				height: 10px;
+				margin-top: 10px;
+				overflow: hidden;
+				width: 86px
+			}
+			#skin div {
+				float: left
+			}
+			#skin li {
+				float: left;
+				width: 14px;
+				height: 10px;
+				cursor: pointer
+			}
+			#def div,
+			#s1 div,
+			#s2 div,
+			#s3 div,
+			#s4 div {
+				background-image: url(images/skinbutton.png)no-repeat
+			}
+			#s1 div {
+				background-position: 0 0px
+			}
+			#s2 div {
+				background-position: 0 -11px
+			}
+			#s3 div {
+				background-position: 0 -22px
+			}
+			#s4 div {
+				background-position: 0 -33px
+			}
+			#s1 div.sel {
+				background: url(images/skinbutton.png)no-repeat scroll -14px top transparent
+			}
+			#s2 div.sel {
+				background: url(images/skinbutton.png)no-repeat scroll -14px -11px transparent
+			}
+			#s3 div.sel {
+				background: url(images/skinbutton.png)no-repeat scroll -14px -22px transparent
+			}
+			#s4 div.sel {
+				background: url(images/skinbutton.png)no-repeat scroll -14px -33px transparent
+			}
+		</style>
+	</head>
+	<body class="showmenu">
+		<?php
+		if(preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){
+		?>
+		<div id="browsehappy" style="padding:20px 30px;font-size:14px;line-height:16px;color:#856404;background:#fff3cd;border-radius:.25rem;border:none">
+			<a onclick="document.getElementById('browsehappy').style.display='none';" style="float:right;cursor:pointer">×</a>
+			<span>您正在使用一个过时的浏览器，请您<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，以提高您对后台体验</span>
+		</div>
+		<?php
+		}
+		?>
+		<div class="pagemask"></div>
+		<iframe class="iframemask"></iframe>
+		<div class="allmenu">
+			<div class="allmenu-box">
+				<?php
+				echo $mapstring;
+				?>
+				<br style="clear:both">
+			</div>
+		</div>
+		<div class="head">
+			<div class="top">
+				<div class="top_logo"><a target="main" href="index_body.php"><?php echo $cfg_webname; ?>系统</a></div>
+				<div class="top_version">V<?php echo $cfg_version_detail; ?></div>
+				<div class="top_link">
+					<ul>
+						<li class="welcome">
+							<a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10) {echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a>
+							<a href="exit.php">退出</a>
+						</li>
+						<?php
+						if($cuserLogin->getUserType()>=10) {
+						?>
+						<li><a target="main" href="sys_info.php">系统配置</a></li>
+						<li><a target="main" href="catalog_main.php">栏目管理</a></li>
+						<li><a target="main" href="file_manage_main.php">文件管理</a></li>
+						<li><a target="main" href="templets_main.php">模板管理</a></li>
+						<?php
+						}
+						?>
+						<li><a target="main" href="public_guide.php">发布文档</a></li>
+						<li><a target="main" href="makehtml_all.php">更新整站</a></li>
+						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank">会员中心</a></li>':''; ?>
+						<li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="topnav">
+				<div class="menuact">
+					<a href="javascript:;" id="togglemenu"><i class="fa fa-bars"></i> 隐藏菜单</a>
+					<a href="javascript:;" id="allmenu"><i class="fa fa-map-marker"></i> 功能地图</a>
+				</div>
+				<div id="skin"></div>
+				<div class="nav" id="nav"></div>
+				<div class="sysmsg">
+					<div class="scroll">
+						<form action="action_search.php" method="post" target="main">
+							<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
+							<button type="submit" class="np">搜索</button>
+							<a href="<?php echo $cfg_biz_gitUrl; ?>" target="_blank"><i class="fa fa-code"></i> 代码托管</a>
+							<a href="<?php echo $cfg_biz_helpUrl; ?>" target="_blank"><i class="fa fa-question-circle"></i> 帮助中心</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="left">
+			<div class="menu" id="menu">
+				<iframe src="index_menu.php" id="menufra" name="menu" frameborder="0"></iframe>
+			</div>
+		</div>
+		<div class="right">
+			<div class="main">
+				<iframe src="index_body.php" id="main" name="main" frameborder="0"></iframe>
+			</div>
+		</div>
+		<script>
+			function JumpFrame(url1, url2) {
+				jQuery('#menufra').get(0).src = url1;
+				jQuery('#main').get(0).src = url2;
+			}
+		</script>
+	</body>
 </html>

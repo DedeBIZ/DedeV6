@@ -1,108 +1,100 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
-  <title>文档关键词维护</title>
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <style>
-    .nnpp {
-      border-bottom: 1px solid #424b51;
-      border-top: 1px solid #ffffff;
-      border-left: 1px solid #ffffff;
-      border-right: 1px solid #ffffff;
-      filter: alpha(opacity=50);
-    }
-  </style>
-  <script language='javascript'>
-    function selAll() {
-      var celements = document.getElementsByName('aids[]');
-      for (i = 0; i < celements.length; i++) {
-        if (!celements[i].checked) celements[i].checked = true;
-        else celements[i].checked = false;
-      }
-    }
-  </script>
-</head>
-<body>
-  <div class="main">
-    <table width="98%" cellpadding="1" align='center' cellspacing="1" class="table maintable mt-3 mb-3">
-      <tr>
-        <td height="26" colspan="5" background="../static/web/img/tbg.gif">
-          <table width="96%" class="table table-borderless">
-            <tr>
-              <td width="30%" style="padding-left:10px">文档关键词维护</td>
-              <form name="form1" action="article_keywords_main.php">
-                <td width="70%" align="right">
-				  <input type="text" name="keyword" placeholder="请输入搜索词" style="width:160px">&nbsp;
-                  <button type="submit" name="sb" value="" class="btn btn-success btn-sm">保存</button>
-                </td>
-              </form>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <form name="form2" action="article_keywords_main.php">
-        <input type="hidden" name="dopost" value="add">
-        <tr align="center">
-          <td width="100%" height="26" colspan="5">
-            <table cellspacing="0" cellpadding="0" class="table table-borderless">
-              <tr>
-                <td width="280" align="center"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" style="width:260px"></td>
-                <td width="270"><input name="rpurl" type="text" id="rpurl" placeholder="请输入链接" style="width:260px"></td>
-                <td width="70"><input name="rank" type="text" id="rank" value="30" style="width:60px"></td>
-                <td><button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button></td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </form>
-      <tr align="center" bgcolor="#F8FCF1" height="26">
-        <td width="8%">选择</td>
-        <td width="25%">关键词</td>
-        <td width="35%">链接网址</td>
-        <td width="10%">频率</td>
-        <td width="22%">管理</td>
-      </tr>
-      <form name='form3' action="article_keywords_main.php" method="post">
-        <input type='hidden' name='dopost' value='saveall'>
-        {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
-        <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-          <td height="26">
-            <input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1'>
-          </td>
-          <td>
-            <input type='hidden' value='{dede:field.keyword/}' name='keyword_{dede:field.aid/}'>
-            {dede:field.keyword/}
-          </td>
-          <td>
-            <input type='hidden' value='{dede:field.rpurl/}' name='rpurlold_{dede:field.aid/}'>
-            <input type='text' style='width:90%' class='nnpp' value='{dede:field.rpurl/}' name='rpurl_{dede:field.aid/}'>
-          </td>
-          <td>
-            <input type='text' size='6' class='nnpp' value='{dede:field.rank/}' name='rank_{dede:field.aid/}'>
-          </td>
-          <td>
-            <input type='hidden' name='staold_{dede:field.aid/}' value='{dede:field.sta/}'>
-            <label><input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta function="GetSta(@me)" /} />
-            禁用</label>
-            <label><input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1'>
-            删除</label>
-          </td>
-        </tr>
-        {/dede:datalist}
-        <tr>
-          <td colspan="5" class="py-3">
-            <button type="button" name="dl1" class="btn btn-success btn-sm" onClick="selAll()">反选</button>
-            <button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存</button>
-          </td>
-        </tr>
-      </form>
-      <tr bgcolor="#f8f8f8" align="center">
-        <td height="36" colspan="5">{dede:pagelist listsize='6'/}</td>
-      </tr>
-    </table>
-  </div>
-</body>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>文档关键词维护</title>
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<style>
+			.nnpp {
+				border-bottom: 1px solid #424b51;
+				border-top: 1px solid #ffffff;
+				border-left: 1px solid #ffffff;
+				border-right: 1px solid #ffffff;
+				filter: alpha(opacity=50);
+			}
+		</style>
+		<script language='javascript'>
+			function selAll() {
+				var celements = document.getElementsByName('aids[]');
+				for (i = 0; i < celements.length; i++) {
+					if (!celements[i].checked) celements[i].checked = true;
+					else celements[i].checked = false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="main">
+			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+				<tr>
+					<td height="26" colspan="5" background="../static/web/img/tbg.gif">
+						<table width="96%" class="table table-borderless">
+							<tr>
+								<td width="30%" style="padding-left:10px">文档关键词维护</td>
+								<form name="form1" action="article_keywords_main.php">
+									<td width="70%" align="right">
+										<input type="text" name="keyword" placeholder="请输入搜索词" style="width:160px">&nbsp;
+										<button type="submit" name="sb" value="" class="btn btn-success btn-sm">保存</button>
+									</td>
+								</form>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<form name="form2" action="article_keywords_main.php">
+					<input type="hidden" name="dopost" value="add">
+					<tr align="center">
+						<td width="100%" height="26" colspan="5">
+							<table cellspacing="0" cellpadding="0" class="table table-borderless">
+								<tr>
+									<td width="280" align="center"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" style="width:260px"></td>
+									<td width="270"><input name="rpurl" type="text" id="rpurl" placeholder="请输入链接" style="width:260px"></td>
+									<td width="70"><input name="rank" type="text" id="rank" value="30" style="width:60px"></td>
+									<td><button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</form>
+				<tr align="center" bgcolor="#F8FCF1" height="26">
+					<td width="8%">选择</td>
+					<td width="25%">关键词</td>
+					<td width="35%">链接网址</td>
+					<td width="10%">频率</td>
+					<td width="22%">管理</td>
+				</tr>
+				<form name='form3' action="article_keywords_main.php" method="post">
+					<input type='hidden' name='dopost' value='saveall'>
+					{dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
+					<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+						<td height="26"><input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1'></td>
+						<td><input type='hidden' value='{dede:field.keyword/}' name='keyword_{dede:field.aid/}'> {dede:field.keyword/}</td>
+						<td>
+							<input type='hidden' value='{dede:field.rpurl/}' name='rpurlold_{dede:field.aid/}'>
+							<input type='text' style='width:90%' class='nnpp' value='{dede:field.rpurl/}' name='rpurl_{dede:field.aid/}'>
+						</td>
+						<td><input type='text' size='6' class='nnpp' value='{dede:field.rank/}' name='rank_{dede:field.aid/}'></td>
+						<td>
+							<input type='hidden' name='staold_{dede:field.aid/}' value='{dede:field.sta/}'>
+							<label><input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta function="GetSta(@me)"/}> 禁用 </label>
+							<label><input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1'> 删除</label>
+						</td>
+					</tr>
+					{/dede:datalist}
+					<tr>
+						<td colspan="5" class="py-3">
+							<button type="button" name="dl1" class="btn btn-success btn-sm" onClick="selAll()">反选</button>
+							<button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存</button>
+						</td>
+					</tr>
+				</form>
+				<tr bgcolor="#f8f8f8" align="center">
+					<td height="36" colspan="5">{dede:pagelist listsize='6'/}</td>
+				</tr>
+			</table>
+		</div>
+	</body>
 </html>

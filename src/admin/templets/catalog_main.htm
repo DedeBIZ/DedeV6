@@ -1,161 +1,216 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="<?php echo $cfg_soft_lang; ?>">
-<title>栏目管理</title>
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
-<script src="js/global.js"></script>
-<script src="js/context_menu.js"></script>
-<script src="js/ieemu.js"></script>
-<script src="js/dialog.js"></script>
-<script src="../static/web/js/webajax.js"></script>
-<script>
-function LoadSuns(ctid,tid)
-{ 
-  if($DE(ctid).innerHTML.length < 10){
-    $DE('img'+tid).className = 'fa fa-minus-square-o';
-    fetch('catalog_do.php?dopost=GetSunLists&cid='+tid).then(resp=>resp.text()).then((d)=>{
-      $DE(ctid).innerHTML = d;
-		});
-  } else {
-    showHide(ctid,tid); 
-  }
-}
-function showHide(objname,tid)
-{
-  if($DE(objname).style.display=="none")
-  {
-    $DE('img'+tid).className = 'fa fa-minus-square-o';
-    $DE(objname).style.display = BROWSER.firefox? "" : "block";
-  } else {
-    $DE('img'+tid).className = 'fa fa-plus-square-o';
-    $DE(objname).style.display="none";
-  }
-}
-if(moz) {
-	extendEventObject();
-	extendElementModel();
-	emulateAttachEvent();
-}
-//普通栏目
-function CommonMenu(eobj,obj,tid,tname)
-{
-  var popupoptions
-  popupoptions = [
-    new ContextItem("增加内容",function(){location="catalog_do.php?cid="+tid+"&dopost=addArchives";}),
-    new ContextItem("管理内容",function(){location="catalog_do.php?cid="+tid+"&dopost=listArchives";}),
-    new ContextSeperator(),
-    new ContextItem("预览分类",function(){ window.open("<?php echo $cfg_phpurl; ?>/list.php?tid="+tid); }),
-    new ContextItem("更新HTML",function(){ location="makehtml_list.php?cid="+tid; }),
-    new ContextItem("获取JS文件",function(){ location="catalog_do.php?cid="+tid+"&dopost=GetJs"; }),
-    new ContextSeperator(),
-    new ContextItem("增加子类",function(){location="catalog_add.php?id="+tid;}),
-    new ContextItem("修改栏目",function(){location="catalog_edit.php?id="+tid;}),
-    new ContextSeperator(),
-    new ContextItem("合并栏目",function(){location='catalog_do.php?dopost=unitCatalog&typeid='+tid}),
-    new ContextItem("移动栏目",function(){location='catalog_do.php?dopost=moveCatalog&typeid='+tid}),
-    new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
-    new ContextSeperator(),
-    new ContextItem("向上排前一级",function(){ location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-    new ContextItem("关闭菜单(C)",function(){})
-  ]
-  ContextMenu.display(eobj,popupoptions)
-}
-//封面模板
-function CommonMenuPart(eobj,obj,tid,tname)
-{
-  var popupoptions
-  popupoptions = [
-    new ContextItem("管理内容",function(){location="catalog_do.php?cid="+tid+"&dopost=listArchives";}),
-    new ContextSeperator(),
-    new ContextItem("预览分类",function(){ window.open("<?php echo $cfg_phpurl; ?>/list.php?tid="+tid); }),
-    new ContextItem("更新HTML",function(){ location="makehtml_list.php?cid="+tid; }),
-    new ContextItem("获取JS文件",function(){ location="catalog_do.php?cid="+tid+"&dopost=GetJs"; }),
-    new ContextSeperator(),
-    new ContextItem("增加子类",function(){location="catalog_add.php?id="+tid;}),
-    new ContextItem("修改栏目",function(){location="catalog_edit.php?id="+tid;}),
-    new ContextSeperator(),
-    new ContextItem("移动栏目",function(){location='catalog_move.php?job=movelist&typeid='+tid}),
-    new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
-    new ContextSeperator(),
-    new ContextItem("向上排前一级",function(){ location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-    new ContextItem("关闭菜单(C)",function(){})
-  ]
-  ContextMenu.display(eobj,popupoptions)
-}
-//跳转栏目
-function SingleMenu(eobj,obj,tid,tname)
-{
-  var popupoptions
-  popupoptions = [
-    new ContextItem("修改栏目",function(){location="catalog_edit.php?id="+tid;}),
-    new ContextSeperator(),
-    new ContextItem("移动栏目",function(){location='catalog_move.php?job=movelist&typeid='+tid}),
-    new ContextItem("删除栏目",function(){location="catalog_del.php?id="+tid+"&typeoldname="+tname;}),
-    new ContextSeperator(),
-    new ContextItem("向上排前一级",function(){ window.location="catalog_do.php?cid="+tid+"&dopost=upRank"; }),
-  new ContextItem("关闭菜单(C)",function(){})
-  ]
-  ContextMenu.display(eobj,popupoptions)
-}
-</script>
-<style>
-td,th{padding:.375rem}
-.bline2,.nbline{border-bottom:1px solid #eee}
-.coolbg2,.coolbt2,.maintable{border:1px solid #dee2e6}
-.fa{color:#424b51}
-</style>
-</head>
-<body onLoad="ContextMenu.intializeContextMenu()">
-<table width="98%" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3">
-<tr>
-  <td height="26" style="background:#f8f8f8;border: 1px solid #dee2e6">
-    <span style="float:left;padding-left:10px;line-height:26px" class="py-3">网站栏目管理</span>
-    <span style="float:right;padding-right:10px" class="py-3">
-   	  <a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
-      <a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量增加栏目</a>
-   	  <a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新栏目缓存</a>
-   	  <a href="makehtml_list.php" class="btn btn-success btn-sm">更新栏目</a></a>
-    </span>
-  </td>
-</tr>
-<tr>
-  <td height="26">
-    <table width="100%" cellspacing="0" cellpadding="0">
-      <tr>
-        <td style="padding-left:10px">
-          <?php if(!isset($exallct)) { ?>
-          <a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
-          <?php } else { ?>
-          <a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
-          <?php } ?>
-        </td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
-<tr>
-<td>
-<?php
-if(empty($opendir)) $opendir=-1;
-if($userChannel>0) $opendir=$userChannel;
-$tu = new TypeUnit();
-$tu->ListAllType($userChannel,$opendir);
-?>
-</td>
-</tr>
-</form>
-<tr>
-  <td align="right" class="py-3" style="padding-right:10px;background:#f8f8f8;border-top:1px solid #dee2e6">
-    <button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
-    <button type="button" name="sb4" class="btn btn-success btn-sm" onClick="location='makehtml_js.php';">更新脚本</button>
-		<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>
-    <button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';">更新文档</button>
-  </td>
-</tr>
-</table>
-</body>
+	<head>
+		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>栏目管理</title>
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<script src="js/global.js"></script>
+		<script src="js/context_menu.js"></script>
+		<script src="js/ieemu.js"></script>
+		<script src="js/dialog.js"></script>
+		<script src="../static/web/js/webajax.js"></script>
+		<script>
+			function LoadSuns(ctid, tid) {
+				if ($DE(ctid).innerHTML.length < 10) {
+					$DE('img' + tid).className = 'fa fa-minus-square-o';
+					fetch('catalog_do.php?dopost=GetSunLists&cid=' + tid).then(resp => resp.text()).then((d) => {
+						$DE(ctid).innerHTML = d;
+					});
+				} else {
+					showHide(ctid, tid);
+				}
+			}
+			function showHide(objname, tid) {
+				if ($DE(objname).style.display == "none") {
+					$DE('img' + tid).className = 'fa fa-minus-square-o';
+					$DE(objname).style.display = BROWSER.firefox ? "" : "block";
+				} else {
+					$DE('img' + tid).className = 'fa fa-plus-square-o';
+					$DE(objname).style.display = "none";
+				}
+			}
+			if (moz) {
+				extendEventObject();
+				extendElementModel();
+				emulateAttachEvent();
+			}
+			//普通栏目
+			function CommonMenu(eobj, obj, tid, tname) {
+				var popupoptions
+				popupoptions = [
+					new ContextItem("增加内容", function() {
+						location = "catalog_do.php?cid=" + tid + "&dopost=addArchives";
+					}),
+					new ContextItem("管理内容", function() {
+						location = "catalog_do.php?cid=" + tid + "&dopost=listArchives";
+					}),
+					new ContextSeperator(),
+					new ContextItem("预览分类", function() {
+						window.open("<?php echo $cfg_phpurl; ?>/list.php?tid=" + tid);
+					}),
+					new ContextItem("更新HTML", function() {
+						location = "makehtml_list.php?cid=" + tid;
+					}),
+					new ContextItem("获取JS文件", function() {
+						location = "catalog_do.php?cid=" + tid + "&dopost=GetJs";
+					}),
+					new ContextSeperator(),
+					new ContextItem("增加子类", function() {
+						location = "catalog_add.php?id=" + tid;
+					}),
+					new ContextItem("修改栏目", function() {
+						location = "catalog_edit.php?id=" + tid;
+					}),
+					new ContextSeperator(),
+					new ContextItem("合并栏目", function() {
+						location = 'catalog_do.php?dopost=unitCatalog&typeid=' + tid
+					}),
+					new ContextItem("移动栏目", function() {
+						location = 'catalog_do.php?dopost=moveCatalog&typeid=' + tid
+					}),
+					new ContextItem("删除栏目", function() {
+						location = "catalog_del.php?id=" + tid + "&typeoldname=" + tname;
+					}),
+					new ContextSeperator(),
+					new ContextItem("向上排前一级", function() {
+						location = "catalog_do.php?cid=" + tid + "&dopost=upRank";
+					}),
+					new ContextItem("关闭菜单(C)", function() {})
+				]
+				ContextMenu.display(eobj, popupoptions)
+			}
+			//封面模板
+			function CommonMenuPart(eobj, obj, tid, tname) {
+				var popupoptions
+				popupoptions = [
+					new ContextItem("管理内容", function() {
+						location = "catalog_do.php?cid=" + tid + "&dopost=listArchives";
+					}),
+					new ContextSeperator(),
+					new ContextItem("预览分类", function() {
+						window.open("<?php echo $cfg_phpurl; ?>/list.php?tid=" + tid);
+					}),
+					new ContextItem("更新HTML", function() {
+						location = "makehtml_list.php?cid=" + tid;
+					}),
+					new ContextItem("获取JS文件", function() {
+						location = "catalog_do.php?cid=" + tid + "&dopost=GetJs";
+					}),
+					new ContextSeperator(),
+					new ContextItem("增加子类", function() {
+						location = "catalog_add.php?id=" + tid;
+					}),
+					new ContextItem("修改栏目", function() {
+						location = "catalog_edit.php?id=" + tid;
+					}),
+					new ContextSeperator(),
+					new ContextItem("移动栏目", function() {
+						location = 'catalog_move.php?job=movelist&typeid=' + tid
+					}),
+					new ContextItem("删除栏目", function() {
+						location = "catalog_del.php?id=" + tid + "&typeoldname=" + tname;
+					}),
+					new ContextSeperator(),
+					new ContextItem("向上排前一级", function() {
+						location = "catalog_do.php?cid=" + tid + "&dopost=upRank";
+					}),
+					new ContextItem("关闭菜单(C)", function() {})
+				]
+				ContextMenu.display(eobj, popupoptions)
+			}
+			//跳转栏目
+			function SingleMenu(eobj, obj, tid, tname) {
+				var popupoptions
+				popupoptions = [
+					new ContextItem("修改栏目", function() {
+						location = "catalog_edit.php?id=" + tid;
+					}),
+					new ContextSeperator(),
+					new ContextItem("移动栏目", function() {
+						location = 'catalog_move.php?job=movelist&typeid=' + tid
+					}),
+					new ContextItem("删除栏目", function() {
+						location = "catalog_del.php?id=" + tid + "&typeoldname=" + tname;
+					}),
+					new ContextSeperator(),
+					new ContextItem("向上排前一级", function() {
+						window.location = "catalog_do.php?cid=" + tid + "&dopost=upRank";
+					}),
+					new ContextItem("关闭菜单(C)", function() {})
+				]
+				ContextMenu.display(eobj, popupoptions)
+			}
+		</script>
+		<style>
+			td,
+			th {
+				padding: .375rem
+			}
+			.bline2,
+			.nbline {
+				border-bottom: 1px solid #eee
+			}
+			.coolbg2,
+			.coolbt2,
+			.maintable {
+				border: 1px solid #dee2e6
+			}
+			.fa {
+				color: #424b51
+			}
+		</style>
+	</head>
+	<body onLoad="ContextMenu.intializeContextMenu()">
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3">
+			<tr>
+				<td height="26" style="background:#f8f8f8;border: 1px solid #dee2e6">
+					<span style="float:left;padding-left:10px;line-height:26px" class="py-3">网站栏目管理</span>
+					<span style="float:right;padding-right:10px" class="py-3">
+						<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
+						<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量增加栏目</a>
+						<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新栏目缓存</a>
+						<a href="makehtml_list.php" class="btn btn-success btn-sm">更新栏目</a></a>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td height="26">
+					<table width="100%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="padding-left:10px">
+								<?php if(!isset($exallct)) { ?>
+								<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
+								<?php } else { ?>
+								<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
+								<?php } ?>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
+				<tr>
+					<td>
+						<?php
+						if(empty($opendir)) $opendir=-1;
+						if($userChannel>0) $opendir=$userChannel;
+						$tu = new TypeUnit();
+						$tu->ListAllType($userChannel,$opendir);
+						?>
+					</td>
+				</tr>
+			</form>
+			<tr>
+				<td align="right" class="py-3" style="padding-right:10px;background:#f8f8f8;border-top:1px solid #dee2e6">
+					<button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
+					<button type="button" name="sb4" class="btn btn-success btn-sm" onClick="location='makehtml_js.php';">更新脚本</button>
+					<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>
+					<button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';">更新文档</button>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>

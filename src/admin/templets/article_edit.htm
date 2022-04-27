@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="<?php echo $cfg_soft_lang; ?>">
-<title>修改文章</title>
-<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-<link rel="stylesheet" href="../static/web/css/admin.css">
-<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-<link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
-<link rel="stylesheet" href="../static/web/css/cropper.min.css">
-<script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
-<script src="../static/web/js/jquery.min.js"></script>
-<script src="../static/web/js/webajax.js"></script>
-<script src="../static/web/js/moment.min.js"></script>
-<script src="../static/web/js/daterangepicker.js"></script>
-<script src="js/main.js"></script>
-<script src="js/handlers.js"></script>
-<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-<script src="../static/web/js/cropper.min.js"></script>
-<script>
-var swfu = null;
-var arctype = 'article';
-function checkSubmit() {
-  if (document.form1.title.value == '') {
-    ShowMsg('文章标题不能为空');
-    document.form1.title.focus();
-    return false;
+  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <title>修改文章</title>
+  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+  <script src="../static/web/js/jquery.min.js"></script>
+  <script src="../static/web/js/webajax.js"></script>
+  <script src="../static/web/js/moment.min.js"></script>
+  <script src="../static/web/js/daterangepicker.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/handlers.js"></script>
+  <script src="../static/web/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/web/js/cropper.min.js"></script>
+  <script>
+  var swfu = null;
+  var arctype = 'article';
+  function checkSubmit() {
+    if (document.form1.title.value == '') {
+      ShowMsg('文章标题不能为空');
+      document.form1.title.focus();
+      return false;
+    }
   }
-}
-</script>
-<style>
+  </script>
+  <style>
 body{background:#fff}
 img{vertical-align:baseline}
 table{border-collapse:separate}
 .albCt img{cursor:pointer}
 .multipic{border:1px dashed #FC6}
 .albCt{border-bottom:1px dashed #FC0;margin-bottom:10px;padding-bottom:10px}
-</style>
+  </style>
 </head>
 <body>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
