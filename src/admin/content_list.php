@@ -125,7 +125,7 @@ if (!empty($mid)) {
     $whereSql .= " AND arc.mid = '$mid' ";
 }
 if ($keyword != '') {
-    $whereSql .= " AND ( CONCAT(arc.title,arc.writer) LIKE '%$keyword%') ";
+    $whereSql .= " AND ( CONCAT(arc.id,arc.title,arc.writer) LIKE '%$keyword%') ";
 }
 if ($flag != '') {
     $whereSql .= " AND FIND_IN_SET('$flag', arc.flag) ";
