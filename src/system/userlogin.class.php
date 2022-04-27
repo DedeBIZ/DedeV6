@@ -217,16 +217,24 @@ class userLogin
         $row = $dsql->GetObject();
         if (!isset($row->pwd)) {
             return -1;
-        } else if ($pwd != $row->pwd) {
+        } else if (!empty($row->pwd_new) && !password_verify($this->userPwd, $row->pwd_new)) {
             return -2;
-        } else {
+        } else if (!empty($row->pwd) && $pwd != $row->pwd) {
+            return -2;
+        }else {
+            $upsql = "";
+            if (empty($row->pwd_new) && function_exists('password_hash')) {
+                // 升级密码
+                $newpwd = password_hash($this->userPwd, PASSWORD_BCRYPT);
+                $upsql .= ",pwd='',pwd_new='{$newpwd}'";
+            }
             $loginip = GetIP();
             $this->userID = $row->id;
             $this->userType = $row->usertype;
             $this->userChannel = $row->typeid;
             $this->userName = $row->uname;
             $this->userPurview = $row->purviews;
-            $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='".time()."' WHERE id='".$row->id."'";
+            $inquery = "UPDATE `#@__admin` SET loginip='$loginip',logintime='".time()."'{$upsql} WHERE id='".$row->id."'";
             $dsql->ExecuteNoneQuery($inquery);
             $sql = "UPDATE `#@__member` SET logintime=".time().", loginip='$loginip' WHERE mid=".$row->id;
             $dsql->ExecuteNoneQuery($sql);

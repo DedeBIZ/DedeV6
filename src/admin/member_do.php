@@ -146,6 +146,9 @@ else if ($dopost == 'edituser') {
     CheckPurview('member_Edit');
     if (!isset($_POST['id'])) exit('dedebiz');
     $pwdsql = empty($pwd) ? '' : ",pwd='".md5($pwd)."'";
+    if (function_exists('password_hash')) {
+        $pwdsql = empty($pwd) ? '' : ",pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";
+    }
     if (empty($sex)) $sex = '男';
     $uptime = GetMkTime($uptime);
     if ($matt == 10 && $oldmatt != 10) {

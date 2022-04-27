@@ -389,11 +389,19 @@ class MemberLogin
             return '0';
         }
         //matt=10 是管理员关连的前台帐号，为了安全起见，这个帐号只能从后台登录，不能直接从前台登录
-        $row = $dsql->GetOne("SELECT mid,matt,pwd,logintime FROM `#@__member` WHERE userid LIKE '$loginuser' ");
+        $row = $dsql->GetOne("SELECT mid,matt,pwd,pwd_new,logintime FROM `#@__member` WHERE userid LIKE '$loginuser' ");
         if (is_array($row)) {
-            if ($this->GetShortPwd($row['pwd']) != $this->GetEncodePwd($loginpwd)) {
+            if (!empty($row['pwd_new']) && !password_verify($loginpwd, $row['pwd_new'])) {
+                return -1;
+            }else if (!empty($row['pwd']) && $this->GetShortPwd($row['pwd']) != $this->GetEncodePwd($loginpwd)) {
                 return -1;
             } else {
+                if (empty($row['pwd_new']) && function_exists('password_hash')) {
+                    // 升级密码
+                    $newpwd = password_hash($loginpwd, PASSWORD_BCRYPT);
+                    $inquery = "UPDATE `#@__member` SET pwd='',pwd_new='{$newpwd}' WHERE mid='".$row['mid']."'";
+                    $dsql->ExecuteNoneQuery($inquery);
+                }
                 //管理员帐号不允许从前台登录
                 if ($row['matt'] == 10) {
                     return -2;
@@ -419,7 +427,7 @@ class MemberLogin
         global $cfg_login_adds, $dsql;
         //登录增加积分(上一次登录时间必须大于两小时)
         if (time() - $logintime > 7200 && $cfg_login_adds > 0) {
-            $dsql->ExecuteNoneQuery("Update `#@__member` set `scores`=`scores`+{$cfg_login_adds} where mid='$uid' ");
+            $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=`scores`+{$cfg_login_adds} where mid='$uid' ");
         }
         $this->M_ID = $uid;
         $this->M_LoginTime = time();

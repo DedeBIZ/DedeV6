@@ -28,12 +28,19 @@ if ($dopost == 'add') {
         ShowMsg('用户名已存在', '-1');
         exit();
     }
+    $pfd = "pwd";
     $mpwd = md5($pwd);
     $pwd = substr(md5($pwd), 5, 20);
+    if (function_exists('password_hash')) {
+        $pfd = "pwd_new";
+        $mpwd = password_hash($pwd, PASSWORD_BCRYPT);
+        $pwd = password_hash($pwd, PASSWORD_BCRYPT);
+    }
+
     $typeid = join(',', $typeids);
     if ($typeid == '0') $typeid = '';
     //关连前台会员帐号
-    $adminquery = "INSERT INTO `#@__member` (`mtype`,`userid`,`pwd`,`uname`,`sex`,`rank`,`money`,`email`, `scores` ,`matt` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
+    $adminquery = "INSERT INTO `#@__member` (`mtype`,`userid`,`$pfd`,`uname`,`sex`,`rank`,`money`,`email`, `scores` ,`matt` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
         VALUES ('个人','$userid','$mpwd','$uname','男','100','0','$email','1000','10','','0','','0','','0',''); ";
     $dsql->ExecuteNoneQuery($adminquery);
     $mid = $dsql->GetLastID();
@@ -41,7 +48,7 @@ if ($dopost == 'add') {
         die($dsql->GetError().' 数据库出错');
     }
     //后台管理员
-    $inquery = "INSERT INTO `#@__admin`(id,usertype,userid,pwd,uname,typeid,tname,email)
+    $inquery = "INSERT INTO `#@__admin`(id,usertype,userid,$pfd,uname,typeid,tname,email)
         VALUES('$mid','$usertype','$userid','$pwd','$uname','$typeid','$tname','$email'); ";
     $rs = $dsql->ExecuteNoneQuery($inquery);
     $adminquery = "INSERT INTO `#@__member_person` (`mid`,`onlynet`,`sex`,`uname`,`qq`,`msn`,`tel`,`mobile`,`place`,`oldplace`,`birthday`,`star`, `income` , `education` , `height` , `bodytype` , `blood` , `vocation` , `smoke` , `marital` , `house` ,`drink` , `datingtype` , `language` , `nature` , `lovemsg` , `address`,`uptime`)

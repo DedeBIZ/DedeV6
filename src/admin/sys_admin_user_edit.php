@@ -29,6 +29,10 @@ if ($dopost == 'saveedit') {
     if ($pwd != '') {
         $pwdm = ",pwd='".md5($pwd)."'";
         $pwd = ",pwd='".substr(md5($pwd), 5, 20)."'";
+        if (function_exists('password_hash')) {
+            $pwdm = ",pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";
+            $pwd = ",pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";
+        }
     }
     if (empty($typeids)) {
         $typeid = '';
