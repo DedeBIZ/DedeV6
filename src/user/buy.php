@@ -17,7 +17,7 @@ $dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $row->money = sprintf("%01.2f", $row->money);
-    $moneycards .= "<tr align='center'>
+    $moneycards .= "<tr>
     <td><input type='radio' name='pid' value='{$row->tid}'></td>
     <td>{$row->pname}</td>
     <td>{$row->num}个</td>
@@ -29,7 +29,7 @@ $dsql->SetQuery("SELECT `#@__member_type`.*,`#@__arcrank`.membername,`#@__arcran
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $row->money = sprintf("%01.2f", $row->money);
-    $membertypes .= "<tr align='center'>
+    $membertypes .= "<tr>
     <td><input type='radio' name='pid' value='{$row->aid}'></td>
     <td>{$row->pname}</td>
     <td>{$row->membername}</td>

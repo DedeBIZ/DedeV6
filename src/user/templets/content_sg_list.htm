@@ -57,27 +57,27 @@
 										<thead>
 											<tr>
 												<th width="30%">文章标题</th>
-												<th width="10%">类目</th>
+												<th width="12%">类目</th>
 												<th width="10%">状态</th>
 												<th width="10%">点击</th>
-												<th width="10%">时间</th>
-												<th>操作</th>
+												<th width="16%">时间</th>
+												<th align="center">操作</th>
 											</tr>
 										</thead>
 										<tbody>
 											{dede:datalist}
 											<tr>
 												<td class="tabTitle"><a href="<?php echo $cfg_phpurl; ?>/view.php?aid=<?php echo $fields['aid']; ?>" target="_blank"><?php echo $fields['title']; ?></a></td>
-												<td align="center"><?php echo $fields['typename']; ?></td>
-												<td align="center">
+												<td><?php echo $fields['typename']; ?></td>
+												<td>
 													<?php
 													if($fields['arcrank']>=0) echo "已审核";
 													else if($fields['arcrank']==-2) echo "<span style='color:#007bff'>审核失败</span>";
 													else echo "<span class='text-danger'>未审核</span>";
 													?>
 												</td>
-												<td align="center"><?php echo $fields['click']; ?></td>
-												<td align="center"><?php echo GetDateMk($fields['senddate']); ?></td>
+												<td><?php echo $fields['click']; ?></td>
+												<td><?php echo GetDateMk($fields['senddate']); ?></td>
 												<td align="center" class="doPost">
 													<a href="javascript:editArc(<?php echo $fields['aid']?>,<?php echo $fields['channel']?>);" class="btn btn-success btn-sm">修改</a>
 													<a href="javascript:delArc(<?php echo $fields['aid']?>);" class="btn btn-success btn-sm">删除</a>
