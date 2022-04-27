@@ -33,7 +33,7 @@ function GetMenus($userrank, $topos = 'main')
         if ($ctag->GetName() == 'top' && ($ctag->GetAtt('rank') == '' || TestPurview($ctag->GetAtt('rank')))) {
             if ($openitem != 999 && !preg_match("#".$openitem.'_'."#", $ctag->GetAtt('item')) && $openitem != 100) continue;
             $m++;
-            echo "<!-- Item ".($m + 1)." Strat -->";
+            echo "<!--".($m + 1)."-->";
             $htmp = str_replace("~channelname~", $ctag->GetAtt("name"), $headTemplet);
             if (empty($openitem) || $openitem == 100) {
                 if ($ctag->GetAtt('notshowall') == '1') continue;
@@ -74,7 +74,7 @@ function GetMenus($userrank, $topos = 'main')
                 }
             }
             echo $footTemplet;
-            echo "<!--Item".($m + 1)."End-->";
+            echo "<!--".($m + 1)."-->";
         }
     }
 }//End Function

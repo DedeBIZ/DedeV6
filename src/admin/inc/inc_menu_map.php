@@ -50,7 +50,6 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='专题管理' ischannel='1' link='content_s_list.php' linkadd='spec_add.php' channelid='-1' rank='spec_New' target='main' />
 </m:top>
 <m:top mapitem='3' item='1_' name='批量维护' display='block'>
-    <m:item name='更新系统缓存' link='sys_cache_up.php' rank='sys_ArcBatch' target='main' />
     <m:item name='文档批量维护' link='content_batch_up.php' rank='sys_ArcBatch' target='main' />
     <m:item name='搜索关键词维护' link='search_keywords_main.php' rank='sys_Keyword' target='main' />
     <m:item name='文档关键词维护' link='article_keywords_main.php' rank='sys_Keyword' target='main' />
