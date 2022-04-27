@@ -7,9 +7,8 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script language='javascript' src='../static/web/js/webajax.js'></script>
-<script language='javascript'>
-	//gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDisplay
+  <script language="javascript" src="../static/web/js/webajax.js"></script>
+	<script language="javascript">
 	function LoadUser(uid)
 	{
 		var loadhtml = $DE('loaddiv').innerHTML;
@@ -25,18 +24,18 @@
 			ajaxdiv.innerHTML = errMsg;
 		});
 	}
-</script>
-<style>
+	</script>
+	<style>
 .userct {
 	margin:10px 0;
 	width:100%;
 	height:auto;
 }
-</style>
+	</style>
 </head>
 <body>
-<div id='loaddiv' style='display:none'>
-	<p align='center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在载入</p>
+<div id="loaddiv" style="display:none">
+	<p style="text-align:center"><img src="../static/web/img/loadinglit.gif">请稍后，正在载入</p>
 </div>
 <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
