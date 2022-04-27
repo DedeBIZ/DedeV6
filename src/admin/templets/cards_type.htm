@@ -22,13 +22,13 @@
         <td width="17%" align="center">状态</td>
       </tr>
       <?php
-	$dsql->SetQuery("Select * From #@__moneycard_type");
-	$dsql->Execute();
-	$k=0;
-	while($row = $dsql->GetObject())
-	{
-	  $k++;
-	?>
+    	$dsql->SetQuery("Select * From #@__moneycard_type");
+    	$dsql->Execute();
+    	$k=0;
+    	while($row = $dsql->GetObject())
+    	{
+    	  $k++;
+    	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
       <tr align="center">
         <td height="26">

@@ -5,30 +5,30 @@ $sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); 
 if($arr['issystem']==0) $sbjs = '';
 ?>
 <!--编辑表单-->
-<div style='float:left'>修改类别</div>
-<div style='float:right'><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
-<br style='clear:both'>
-<form action='stepselect_main.php' method='post'<?php echo $sbjs; ?>>
+<div style="float:left">修改类别</div>
+<div style="float:right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
+<br style="clear:both">
+<form action="stepselect_main.php" method="post" <?php echo $sbjs; ?>>
 <input type="hidden" name="action" value="edit_save">
 <input type="hidden" name="id" value="<?php echo $arr['id']; ?>">
-<div>类 别 名：<input type="text" name="itemname" class="iptxt" style='width:160px' value="<?php echo $arr['itemname']; ?>"></div>
-<div>缓存组名：<input type="text" name="egroup" class="iptxt" style='width:160px' value="<?php echo $arr['egroup']; ?>"></div>
+<div>类 别 名：<input type="text" name="itemname" class="iptxt" value="<?php echo $arr['itemname']; ?>" style="width:160px"></div>
+<div>缓存组名：<input type="text" name="egroup" class="iptxt" value="<?php echo $arr['egroup']; ?>" style="width:160px"></div>
 <div>缓存组名必须为英文或数字组合</div>
-<div><button type="submit" class="btn btn-success btn-sm">确定增加</button></div>
+<div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
 <?php
 } else if($action=='addnew') {
 ?>
 <!--新增类别表单-->
-<div style='float:left'>新增类别</div>
-<div style='float:right'><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
-<br style='clear:both'>
-<form action='stepselect_main.php' method='post'>
+<div style="float:left">新增类别</div>
+<div style="float:right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
+<br style="clear:both">
+<form action="stepselect_main.php" method="post">
 <input type="hidden" name="action" value="addnew_save">
-<div>类 别 名：<input type="text" name="itemname" class="iptxt" style='width:160px'></div>
-<div>缓存组名：<input type="text" name="egroup" class="iptxt" style='width:160px'></div>
+<div>类 别 名：<input type="text" name="itemname" class="iptxt" style="width:160px"></div>
+<div>缓存组名：<input type="text" name="egroup" class="iptxt" style="width:160px"></div>
 <div>缓存组名必须为英文或数字组合</div>
-<div><button type="submit" class="btn btn-success btn-sm">确定增加</button></div>
+<div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
 <?php
 } else if($action=='addenum') {
@@ -41,23 +41,23 @@ if($arr['issign']==0)
 }
 ?>
 <!--新增枚举表单-->
-<div style='float:left'>添加枚举</div>
-<div style='float:right'><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
-<br style='clear:both'>
-<form action='stepselect_main.php' method='post'>
+<div style="float:left">添加枚举</div>
+<div style="float:right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
+<br style="clear:both">
+<form action="stepselect_main.php" method="post">
 <input type="hidden" name="action" value="addenum_save">
 <input type="hidden" name="issign" value="<?php echo $arr['issign']; ?>">
 <input type="hidden" name="egroup" value="<?php echo $arr['egroup']; ?>">
 <div>
-隶属枚举：<select name='topvalue' style='width:160px'>
-<option value='0'>增加一级枚举</option>
+隶属枚举：<select name="topvalue" style="width:160px">
+<option value="0">保存一级枚举</option>
 <?php echo $options; ?>
 </select>
 </div>
-<div>枚举名：<input type="text" name="ename" class="iptxt" style='width:160px'></div>
-<div>排序值：<input type="text" name="disorder" class="iptxt" style='width:160px'></div>
+<div>枚举名：<input type="text" name="ename" class="iptxt" style="width:160px"></div>
+<div>排序值：<input type="text" name="disorder" class="iptxt" style="width:160px"></div>
 <div>如果不指定，默认以枚举添加先后来排序</div>
-<div><input type="submit" value="确定增加" class="np coolbg"/></div>
+<div><input type="submit" value="保存" class="np coolbg"/></div>
 </form>
 <?php
 } else if($action=='view') {
@@ -70,25 +70,24 @@ if($arr['issign']==0)
   	{
   		$options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
   	} else {
-  		$options .= "<option value='{$row1['evalue']}'>  └─{$row1['ename']}</option>";
+  		$options .= "<option value='{$row1['evalue']}'>└─{$row1['ename']}</option>";
   	}
   }
 ?>
 <!--预览联动表单-->
-<div style='float:left'>预览联动表单</div>
-<div style='float:right'><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
-<br style='clear:both'>
+<div style="float:left">预览联动表单</div>
+<div style="float:right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
+<br style="clear:both">
 <div>
 类别关系：
-<select name='topvalue' style='width:160px'>
-<option value='0'>请选择</option>
+<select name="topvalue" style="width:160px">
+<option value="0">请选择</option>
 <?php echo $options; ?>
 </select>
 <br>
-<br>
 这里仅显示数据关系，实际应用中，二级联动生成的表单是支持级连的，并非全部列出
 </div>
-<br style='clear:both'>
+<br style="clear:both">
 <?php
 }
 ?>

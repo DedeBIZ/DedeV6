@@ -28,17 +28,17 @@
                <ul>
                   <li><input type='text' name='keyword' value="<?php if(!empty($keyword)) $keyword = ''; ?>" placeholder="请输入关键词" style="width:260px"></li>
                   <li><?php
-     $likeid = (!isset($likeid) ? '' : $likeid);
-     echo "<select name='likeid' id='likeid' style='width:160px'>";
-     $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
-     echo "<option value=''>不限</option>";
-     while($arr = $dsql->GetArray('s'))
-     {
-        if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
-        else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
-     }
-     echo "</select>";
-  ?></li>
+                       $likeid = (!isset($likeid) ? '' : $likeid);
+                       echo "<select name='likeid' id='likeid' style='width:160px'>";
+                       $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
+                       echo "<option value=''>不限</option>";
+                       while($arr = $dsql->GetArray('s'))
+                       {
+                          if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
+                          else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+                       }
+                       echo "</select>";
+                    ?></li>
                   <li><button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button></li>
                </ul>
             </form>

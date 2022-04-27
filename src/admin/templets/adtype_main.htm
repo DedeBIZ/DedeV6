@@ -20,21 +20,21 @@
       <td width="36%" align="center">状态</td>
     </tr>
     <?php
-	$dsql->SetQuery("Select * From #@__myadtype");
-	$dsql->Execute();
-	$k=0;
-	while($row = $dsql->GetObject())
-	{
-      $k++;
-	?>
+  	$dsql->SetQuery("Select * From #@__myadtype");
+  	$dsql->Execute();
+  	$k=0;
+  	while($row = $dsql->GetObject())
+  	{
+        $k++;
+  	?>
     <tr align="center">
       <td height="26"><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"/><?php echo $row->id; ?></td>
       <td height="26"><input name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" type="text" id="pname_<?php echo $k?>" class='pubinputs' style="width:90%"></td>
       <td><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>"  value="1" checked='1' class='np'> 保留</td>
     </tr>
     <?php
-	}
-	?>
+  	}
+  	?>
     <input type="hidden" name="idend" value="<?php echo $k?>">
     <tr bgcolor="#F8FCF1">
       <td height="26" colspan="5" bgcolor="#f8f8f8">新增一个广告类型：</td>
