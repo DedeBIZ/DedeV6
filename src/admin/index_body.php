@@ -33,7 +33,7 @@ else if ($dopost == 'setskin') {
     exit;
 } elseif($dopost == 'get_articles'){
 ?>
-<table width="100%" class="table table-borderless">
+<table class="table table-borderless">
     <?php
     $query = "SELECT arc.id, arc.arcrank, arc.title, arc.typeid, arc.pubdate, arc.channel, ch.editcon, tp.typename  FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id = arc.channel LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank<>-2 ORDER BY arc.id DESC LIMIT 0,12";
     $arcArr = array();

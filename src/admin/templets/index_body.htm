@@ -17,18 +17,6 @@
 		<script src="js/indexbody.js"></script>
 		<script src="js/main.js"></script>
 		<style>
-			table.stattable td {
-				padding: .6rem;
-				border-bottom: 1px solid #dee2e6;
-				text-align: right;
-				vertical-align: middle
-			}
-			.stattable {
-				width: 100%
-			}
-			.table {
-				margin-bottom: 0
-			}
 			.web-info {
 				padding: 10px;
 				background: #f8f8f8;
@@ -51,14 +39,14 @@
 					<div class="card">
 						<div class="card-header"><a href="#statChart" title="查看流量统计图"><i class="fa fa-line-chart"></i> 流量统计表</a></div>
 						<div class="card-body">
-							<table class="stattable">
+							<table class="table">
 								<tbody>
 									<tr class="title">
-										<td width="10%"></td>
-										<td width="20%">浏览次数(PV)</td>
-										<td width="20%">独立访客(UV)</td>
-										<td width="20%">IP</td>
-										<td width="18%">访问次数</td>
+										<td width="20%" style="border-top:0"></td>
+										<td width="20%" style="border-top:0">浏览次数(PV)</td>
+										<td width="20%" style="border-top:0">独立访客(UV)</td>
+										<td width="20%" style="border-top:0">IP</td>
+										<td width="20%" style="border-top:0">访问次数</td>
 									</tr>
 									<tr class="bg-white">
 										<td class="today">今日</td>
@@ -74,7 +62,7 @@
 										<td id="yestoday_ip">0</td>
 										<td id="yestoday_vv">0</td>
 									</tr>
-									<tr class="bg-white grey9 hide" style="display:table-row">
+									<tr class="bg-white">
 										<td>历史累计</td>
 										<td id="total_pv">0</td>
 										<td id="total_uv">0</td>
@@ -89,8 +77,7 @@
 				<div class="col-md-6 mt-3 mb-3 updatenews">
 					<div class="card">
 						<div class="card-header">
-							<a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a>
-							<span id="text">V:<?php echo $cfg_version_detail; ?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?></span>
+							<a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a><span id="text">V:<?php echo $cfg_version_detail; ?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?></span>
 						</div>
 						<div class="card-body">
 							<div id="updateinfos"><?php echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' style='width:98%;height:70px;padding:.6rem'></iframe>"; ?></div>
