@@ -15,10 +15,9 @@
 			.selbt {
 				float: left;
 				display: inline-block;
-				margin: 0 6px 6px 0;
-				padding: 8px;
+				margin: 2px;
 				text-align: center;
-				border-radius: .2rem
+				border-radius: .25rem
 			}
 			.helpdiv {
 				float: left;
@@ -27,7 +26,7 @@
 				width: 100%;
 				background: #f8f8f8;
 				border: 1px solid #28a745;
-				border-radius: .2rem
+				border-radius: .25rem
 			}
 		</style>
 		<script language="javascript">
@@ -71,13 +70,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan='2'><textarea id="content" name="content" cols="150" rows="24" style="width:98%;height:450px"><?php echo $democode; ?></textarea></td>
+					<td colspan="2"><textarea id="content" name="content" cols="150" rows="24" style="width:98%;height:450px"><?php echo $democode; ?></textarea></td>
 				</tr>
 				<tr>
 					<td bgcolor="#f8f8f8" colspan="2" class="py-3">
-						<button type="submit" name='B1' class="btn btn-success btn-sm">保存</button>
-						<button type="reset" name='B2' class="btn btn-success btn-sm">重置</button>
-						<button type="button" name='B4' class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
+						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
+						<button type="reset" name="B2" class="btn btn-success btn-sm">重置</button>
+						<button type="button" name="B4" class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
 					</td>
 				</tr>
 			</table>

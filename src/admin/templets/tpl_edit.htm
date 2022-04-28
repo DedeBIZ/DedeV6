@@ -11,10 +11,9 @@
 			.selbt {
 				float: left;
 				display: inline-block;
-				margin: 0 6px 6px 0;
-				padding: 8px;
+				margin: 2px;
 				text-align: center;
-				border-radius: .2rem
+				border-radius: .25rem
 			}
 			.helpdiv {
 				float: left;
@@ -23,7 +22,7 @@
 				width: 100%;
 				background: #f8f8f8;
 				border: 1px solid #28a745;
-				border-radius: .2rem
+				border-radius: .25rem
 			}
 		</style>
 		<link rel="stylesheet" href="css/codemirror.css">
@@ -82,8 +81,7 @@
 				<tr>
 					<td hieght="26" colspan="2">
 					<?php
-					foreach ($helps as $key => $help)
-					{
+					foreach ($helps as $key => $help) {
 						echo '<div class="coolbg np selbt" title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"> '.$key.' </a></div>'."";
 					}
 					?>
@@ -92,8 +90,7 @@
 				<tr>
 					<td colspan="2" style="border-top:1px solid #fff">
 						<?php
-						foreach ($helps as $key => $help)
-						{
+						foreach ($helps as $key => $help) {
 							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
@@ -114,9 +111,9 @@
 				</tr>
 				<tr>
 					<td bgcolor="#f8f8f8" colspan="2" align="center" class="py-3">
-						<button type="submit" name='B1' class="btn btn-success btn-sm">保存</button>
-						<button type="reset" name='B2' class="btn btn-success btn-sm">重置</button>
-						<button type="button" name='B4' class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
+						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
+						<button type="reset" name="B2" class="btn btn-success btn-sm">重置</button>
+						<button type="button" name="B4" class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
 					</td>
 				</tr>
 			</table>
