@@ -31,7 +31,6 @@ $dsql = $dsqli = $db = new DedeSqli(FALSE);
  * @subpackage     DedeBIZ.Libraries
  * @link           https://www.dedebiz.com
  */
-
 class DedeSqli
 {
     var $linkID;
