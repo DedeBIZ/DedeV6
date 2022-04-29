@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="js/main.js" language="javascript"></script>
-		<script language="javascript">
+		<script src="js/main.js"></script>
+		<script>
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800, 600);
 				window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir.'/plus')?>&f=" +
@@ -47,7 +47,7 @@
 				<tr>
 					<td height="26">JS文件：</td>
 					<td height="26">
-						<span><?php echo "&lt;script src='".$cfg_cmspath."/static/js/".$cid.".js' language='javascript'&gt;&lt;/script&gt;"; ?></span>
+						<span><?php echo "&lt;script src='".$cfg_cmspath."/static/js/".$cid.".js'&gt;&lt;/script&gt;"; ?></span>
 					</td>
 				</tr>
 				<tr>
@@ -75,7 +75,7 @@
 						<tr>
 							<td width="70%">结果：</td>
 							<td width="30%" align="right">
-								<script language='javascript'>
+								<script>
 									function ResizeDiv(obj, ty) {
 										if (ty == "+") document.all[obj].style.pixelHeight += 50;
 										else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;

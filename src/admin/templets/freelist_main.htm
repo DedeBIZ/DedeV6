@@ -7,10 +7,10 @@
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../static/web/css/admin.css">
-	<script language="javascript" src="../static/web/js/jquery.min.js"></script>
-	<script language="javascript" src="../static/web/js/webajax.js"></script>
-	<script language="javascript" src="js/main.js"></script>
-	<script language="JavaScript">
+	<script src="../static/web/js/jquery.min.js"></script>
+	<script src="../static/web/js/webajax.js"></script>
+	<script src="js/main.js"></script>
+	<script>
 		var pageno = 1;
 		var totalrow = <?php echo $totalRow; ?>;
 		var pagesize = <?php echo $pagesize; ?>;
@@ -123,7 +123,7 @@
 	?>
 	</div>
 	<div id='pagelist' class="mt-3 mb-3">
-		<script language='javascript'>ReloadPageNum(1);</script>
+		<script>ReloadPageNum(1);</script>
 	</div>
 	<table width="98%" cellpadding="5" cellspacing="1" align="center" style="margin:auto;border:1px solid #dee2e6" class="table table-borderless maintable mb-3">
 		<tr>

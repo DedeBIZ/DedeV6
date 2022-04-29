@@ -43,9 +43,9 @@ if ($dopost == "ok") {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_pms` WHERE sendtime<'$oldtime' ");
         echo "成功清理过期短信，准备修正错误文档，这可能要占较长的时间";
         if ($uparc == 1) {
-            echo "<script language='javascript'>location='sys_cache_up.php?dopost=ok&step=9';</script>";
+            echo "<script>location='sys_cache_up.php?dopost=ok&step=9';</script>";
         } else {
-            echo "<script language='javascript'>location='sys_cache_up.php?dopost=ok&step=-1&uparc=$uparc';</script>";
+            echo "<script>location='sys_cache_up.php?dopost=ok&step=-1&uparc=$uparc';</script>";
         }
         exit();
     }

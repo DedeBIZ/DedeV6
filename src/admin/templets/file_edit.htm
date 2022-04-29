@@ -7,10 +7,10 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script language="javascript" src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script language='javascript' src='js/main.js'></script>
-		<script language="javascript">
+		<script src='js/main.js'></script>
+		<script>
 			function Post() {
 				if (document.form1.filename.value == "") {
 					ShowMsg("文件名不能为空");
@@ -20,13 +20,13 @@
 			}
 		</script>
 		<link rel="stylesheet" href="css/codemirror.css">
-		<script type="text/javascript" src="js/codemirror.js"></script>
-		<script type="text/javascript" src="js/mode/xml/xml.js"></script>
-		<script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
-		<script type="text/javascript" src="js/mode/css/css.js"></script>
-		<script type="text/javascript" src="js/mode/php/php.js"></script>
-		<script type="text/javascript" src="js/mode/clike/clike.js"></script>
-		<script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="js/codemirror.js"></script>
+		<script src="js/mode/xml/xml.js"></script>
+		<script src="js/mode/javascript/javascript.js"></script>
+		<script src="js/mode/css/css.js"></script>
+		<script src="js/mode/php/php.js"></script>
+		<script src="js/mode/clike/clike.js"></script>
+		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
 		<form method="POST" action="file_manage_control.php" name=form1 onSubmit="return Post()">
@@ -57,7 +57,7 @@
 				</tr>
 			</table>
 		</form>
-		<script type="text/javascript">
+		<script>
 			var editor = CodeMirror.fromTextArea(document.getElementById('str'), {
 				lineNumbers: true,
 				lineWrapping: true,

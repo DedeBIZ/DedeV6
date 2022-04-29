@@ -7,9 +7,9 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script src="../static/web/js/jquery.min.js" language="javascript" type="text/javascript"></script>
-		<script language='javascript' src='js/main.js'></script>
-		<script language="javascript">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src='js/main.js'></script>
+		<script>
 			function SelectTemplets(fname) {
 				var pos = GetWinPos(800, 600);
 				window.open("./dialog/select_templets.php?f=" + fname, "poptempWin",
@@ -17,11 +17,11 @@
 			}
 		</script>
 		<link rel="stylesheet" href="css/codemirror.css">
-		<script type="text/javascript" src="js/codemirror.js"></script>
-		<script type="text/javascript" src="js/mode/xml/xml.js"></script>
-		<script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
-		<script type="text/javascript" src="js/mode/css/css.js"></script>
-		<script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="js/codemirror.js"></script>
+		<script src="js/mode/xml/xml.js"></script>
+		<script src="js/mode/javascript/javascript.js"></script>
+		<script src="js/mode/css/css.js"></script>
+		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
 		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
@@ -78,7 +78,7 @@
 						<tr>
 							<td width="70%">结果：</td>
 							<td width="30%" align="right">
-								<script language='javascript'>
+								<script>
 									function ResizeDiv(obj, ty) {
 										if (ty == "+") document.all[obj].style.pixelHeight += 50;
 										else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight + 50;
@@ -99,7 +99,7 @@
 				</td>
 			</tr>
 		</table>
-		<script type="text/javascript">
+		<script>
 			var editor = CodeMirror.fromTextArea(document.getElementById('partcode'), {
 				lineNumbers: true,
 				lineWrapping: true,

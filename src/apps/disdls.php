@@ -3,7 +3,7 @@
  * 下载次数统计
  *
  * 如果想显示下载次数,即把下面ＪＳ调用放到文档模板适当位置
- * <script src="{dede:global name='cfg_phpurl'/}/disdls.php?aid={dede:field name='id'/}" language="javascript"></script>
+ * <script src="{dede:global name='cfg_phpurl'/}/disdls.php?aid={dede:field name='id'/}"></script>
  *
  * @version        $Id: disdls.php$
  * @package        DedeBIZ.Site

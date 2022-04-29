@@ -8,16 +8,16 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<link rel="stylesheet" href="css/codemirror.css">
-		<script language="javascript" src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script language="javascript" src="js/main.js"></script>
+		<script src="js/main.js"></script>
 		<style>
 			.selbt {
 				float: left;
 				display: inline-block;
 				margin: 2px;
 				text-align: center;
-				border-radius: .25rem
+				border-radius: .2rem
 			}
 			.helpdiv {
 				float: left;
@@ -25,11 +25,11 @@
 				padding: 10px;
 				width: 100%;
 				background: #f8f8f8;
-				border: 1px solid #28a745;
-				border-radius: .25rem
+				border: 1px solid #dee2e6;
+				border-radius: .2rem
 			}
 		</style>
-		<script language="javascript">
+		<script>
 			function Post() {
 				if (document.form1.filename.value == "") {
 					ShowMsg("文件名不能为空");
@@ -38,13 +38,13 @@
 				}
 			}
 		</script>
-		<script type="text/javascript" src="js/codemirror.js"></script>
-		<script type="text/javascript" src="js/mode/xml/xml.js"></script>
-		<script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
-		<script type="text/javascript" src="js/mode/css/css.js"></script>
-		<script type="text/javascript" src="js/mode/php/php.js"></script>
-		<script type="text/javascript" src="js/mode/clike/clike.js"></script>
-		<script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="js/codemirror.js"></script>
+		<script src="js/mode/xml/xml.js"></script>
+		<script src="js/mode/javascript/javascript.js"></script>
+		<script src="js/mode/css/css.js"></script>
+		<script src="js/mode/php/php.js"></script>
+		<script src="js/mode/clike/clike.js"></script>
+		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
 	</head>
 	<body>
 		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
@@ -52,14 +52,14 @@
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 			<input type="hidden" name="action" value="savetagfile">
 			<table width='98%' cellpadding='3' cellspacing='1' align="center" class="table maintable mt-3 mb-3">
-				<tr bgcolor='#EEF4EA'>
+				<tr>
 					<td colspan="2" height="26" background="../static/web/img/wbg.gif" style="padding-left:10px">
 						<span><?php echo $title; ?>（修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>文件名称</td>
-					<td><input name=filename size=40 value="<?php echo $filename; ?>" />（不允许用“..”形式的路径）</td>
+					<td><input name="filename" value="<?php echo $filename; ?>" style="width:260px">（不允许用“..”形式的路径）</td>
 				</tr>
 				<tr>
 					<td>标签格式说明 </td>
@@ -81,7 +81,7 @@
 				</tr>
 			</table>
 		</form>
-		<script type="text/javascript">
+		<script>
 			var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
 				lineNumbers: true,
 				lineWrapping: true,

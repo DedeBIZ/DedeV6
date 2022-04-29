@@ -36,13 +36,13 @@ function lib_qrcode(&$ctag, &$refObj)
     }
     $reval = <<<EOT
   <a href='https://www.dedebiz.com/' id='__dedeqrcode_{$GLOBALS['qrcode_id']}'>二维码生成</a>
-  <script type="text/javascript">
+  <script>
   	var __dedeqrcode_id={$GLOBALS['qrcode_id']};
   	var __dedeqrcode_aid={$id};
   	var __dedeqrcode_type='{$type}';
   	var __dedeqrcode_dir='{$GLOBALS['cfg_plus_dir']}';
   </script>
-  <script language="javascript" type="text/javascript" src="{$GLOBALS['cfg_static_dir']}/web/js/qrcode.js"></script>
+  <script src="{$GLOBALS['cfg_static_dir']}/web/js/qrcode.js"></script>
 EOT;
     $GLOBALS['qrcode_id']++;
     return $reval;

@@ -7,11 +7,11 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<script language="javascript" src="../static/web/js/jquery.min.js"></script>
-		<script language="javascript" src="../static/web/js/bootstrap.bundle.min.js"></script>
-		<script language="javascript" src="js/main.js"></script>
-		<script language='javascript' src='../static/web/js/webajax.js'></script>
-		<script language='javascript'>
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src='../static/web/js/webajax.js'></script>
+		<script>
 			function ShowFields() {
 				var exptable = $DE('exptable').options[$DE('exptable').selectedIndex].value;
 				var queryUrl = "sys_data_replace.php?exptable=" + exptable + "&action=getfields";
@@ -130,7 +130,7 @@
 						<tr>
 							<td width="70%">结果：</td>
 							<td width="30%" align="right">
-								<script language='javascript'>
+								<script>
 									function ResizeDiv(obj, ty) {
 										if (ty == "+") document.all[obj].style.pixelHeight += 50;
 										else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;

@@ -15,7 +15,7 @@ $cuserLogin->exitUser();
 if (empty($needclose)) {
     header('location:index.php');
 } else {
-    $msg = "<script language='javascript'>
+    $msg = "<script>
     if(document.all) window.opener=true;
     window.close();
     </script>";

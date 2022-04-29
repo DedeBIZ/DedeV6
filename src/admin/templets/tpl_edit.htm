@@ -13,7 +13,7 @@
 				display: inline-block;
 				margin: 2px;
 				text-align: center;
-				border-radius: .25rem
+				border-radius: .2rem
 			}
 			.helpdiv {
 				float: left;
@@ -21,17 +21,17 @@
 				padding: 10px;
 				width: 100%;
 				background: #f8f8f8;
-				border: 1px solid #28a745;
-				border-radius: .25rem
+				border: 1px solid #dee2e6;
+				border-radius: .2rem
 			}
 		</style>
 		<link rel="stylesheet" href="css/codemirror.css">
-		<script type="text/javascript" src="js/codemirror.js"></script>
-		<script type="text/javascript" src="js/mode/xml/xml.js"></script>
-		<script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
-		<script type="text/javascript" src="js/mode/css/css.js"></script>
-		<script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
-		<script language="javascript">
+		<script src="js/codemirror.js"></script>
+		<script src="js/mode/xml/xml.js"></script>
+		<script src="js/mode/javascript/javascript.js"></script>
+		<script src="js/mode/css/css.js"></script>
+		<script src="js/mode/htmlmixed/htmlmixed.js"></script>
+		<script>
 			function Post() {
 				if (document.form1.filename.value == "") {
 					alert("文件名不能为空");
@@ -68,7 +68,7 @@
 			<input type="hidden" name="acdir" value="<?php echo $acdir; ?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-				<tr bgcolor='#EEF4EA'>
+				<tr>
 					<td hieght="26" colspan="2" background="../static/web/img/wbg.gif" style="padding-left:10px">修改新建模板</td>
 				</tr>
 				<tr>
@@ -91,7 +91,7 @@
 					<td colspan="2" style="border-top:1px solid #fff">
 						<?php
 						foreach ($helps as $key => $help) {
-							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" cols="50" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
+							echo '<div name="help111" id="'.$key.'" class="helpdiv" ><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
 							{
@@ -118,7 +118,7 @@
 				</tr>
 			</table>
 		</form>
-		<script type="text/javascript">
+		<script>
 			var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
 				lineNumbers: true,
 				lineWrapping: true,

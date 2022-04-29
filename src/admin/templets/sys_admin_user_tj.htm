@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script language="javascript" src="../static/web/js/webajax.js"></script>
-	<script language="javascript">
+  <script src="../static/web/js/webajax.js"></script>
+	<script>
 	function LoadUser(uid)
 	{
 		var loadhtml = $DE('loaddiv').innerHTML;
@@ -47,7 +47,7 @@
     $dsql->Execute('me', 'Select * From `#@__admin` order by id asc');
     while( $arr = $dsql->GetArray('me') )
     {
-  	  echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在载入</p></div><script language='javascript'>LoadUser({$arr['id']});</script>";
+  	  echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在载入</p></div><script>LoadUser({$arr['id']});</script>";
     }
     ?>
     </td>

@@ -273,7 +273,7 @@ else if ($action == 'setupstart') {
             if (trim($sql) != '') $dsql->ExecuteNoneQuery($sql);
         }
         ReWriteConfigAuto();
-        $rflwft = "<script language='javascript' type='text/javascript'>\r\n";
+        $rflwft = "<script>\r\n";
         $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu_module.php';\r\n";
         $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu_module.php';\r\n";
         $rflwft .= "</script>";
@@ -439,7 +439,7 @@ else if ($action == 'uninstallok') {
             }
         }
         ReWriteConfigAuto();
-        $rflwft = "<script language='javascript' type='text/javascript'>\r\n";
+        $rflwft = "<script>\r\n";
         $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu_module.php';\r\n";
         $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu_module.php';\r\n";
         $rflwft .= "</script>";

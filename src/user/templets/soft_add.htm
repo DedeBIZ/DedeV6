@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
-		<script type="text/javascript">
+		<script>
 			var startNum = 2;
 			function MakeUpload() {
 				var upfield = document.getElementById("uploadfield");
@@ -222,7 +222,7 @@
 			</div>
 		</main>
 		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
-		<script type="text/javascript">
+		<script>
 			function checkSubmit() {
 				if (document.addcontent.title.value == "") {
 					ShowMsg("名称不能为空");

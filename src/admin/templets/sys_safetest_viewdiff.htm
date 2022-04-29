@@ -5,9 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>查看差异</title>
 		<link rel="stylesheet" href="../static/web/css/diffview.css">
-		<script type="text/javascript" src="../static/web/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../static/web/js/diffview.js"></script>
-		<script type="text/javascript" src="../static/web/js/difflib.js"></script>
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/diffview.js"></script>
+		<script src="../static/web/js/difflib.js"></script>
 		<style>
 			body {
 				font-size: 12px;
@@ -46,7 +46,7 @@
 				width: 100%;
 			}
 		</style>
-		<script type="text/javascript">
+		<script>
 			function diffUsingJS(viewType) {
 				"use strict";
 				var base = difflib.stringAsLines($("#baseText").val()),

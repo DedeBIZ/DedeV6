@@ -73,9 +73,9 @@ $wecome_info = "随机模板防采集设置";
 make_hash();
 $msg = "
 <link rel='stylesheet' href='../static/web/css/admin.css'>
-<script language='javascript' src='js/main.js'></script>
-<script language='javascript' src='../static/web/js/webajax.js'></script>
-<script language='javascript'>
+<script src='js/main.js'></script>
+<script src='../static/web/js/webajax.js'></script>
+<script>
 function DoRand(jobname)
 {
     ChangeFullDiv('show');

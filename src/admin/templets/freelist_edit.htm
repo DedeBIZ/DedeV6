@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script language="javascript" src="../static/web/js/jquery.min.js"></script>
+  <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js" language="javascript"></script>
-  <script language="JavaScript">
+  <script src="js/main.js"></script>
+  <script>
     function ChangeListStyle() {
       var itxt = document.getElementById("myinnertext");
       var myems = document.getElementsByName("liststyle");
@@ -42,11 +42,11 @@
     }
   </script>
   <link rel="stylesheet" href="css/codemirror.css">
-  <script type="text/javascript" src="js/codemirror.js"></script>
-  <script type="text/javascript" src="js/mode/xml/xml.js"></script>
-  <script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
-  <script type="text/javascript" src="js/mode/css/css.js"></script>
-  <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
+  <script src="js/codemirror.js"></script>
+  <script src="js/mode/xml/xml.js"></script>
+  <script src="js/mode/javascript/javascript.js"></script>
+  <script src="js/mode/css/css.js"></script>
+  <script src="js/mode/htmlmixed/htmlmixed.js"></script>
 </head>
 <body>
   <center>
@@ -260,7 +260,7 @@
       </form>
     </table>
   </center>
-  <script type="text/javascript">
+  <script>
     var editor = CodeMirror.fromTextArea(document.getElementById('myinnertext'), {
       lineNumbers: true,
       lineWrapping: true,

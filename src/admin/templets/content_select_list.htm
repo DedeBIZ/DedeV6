@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../static/web/css/admin.css">
-	<script language="javascript">
+	<script>
 		//获得选中文件的文件名
 		function getCheckboxItem() {
 			var allSel = "";
@@ -49,7 +49,7 @@
 </head>
 <body>
 	<table width="100%" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3 mb-3">
-		<tr bgcolor="#E7E7E7">
+		<tr>
 			<td height="26" colspan="9" background="../static/web/img/tbg.gif">文章列表</td>
 		</tr>
 		<form name="form2">
@@ -91,7 +91,7 @@
 		</tr>
 	</table>
 	<table width='100%' align="center" cellpadding='1' cellspacing='1' bgcolor='#CBD8AC' class="table maintable table-borderless">
-		<tr bgcolor='#EEF4EA'>
+		<tr>
 			<form name='form3' action='content_select_list.php' method='get'>
 				<input type='hidden' name='f' value='<?php echo $f?>'>
 				<td>

@@ -249,9 +249,9 @@ class Archives
         if (isset($this->Fields['voteid']) && !empty($this->Fields['voteid'])) {
             $this->Fields['vote'] = '';
             $voteid = $this->Fields['voteid'];
-            $this->Fields['vote'] = "<script language='javascript' src='{$GLOBALS['cfg_cmspath']}/data/vote/vote_{$voteid}.js'></script>";
+            $this->Fields['vote'] = "<script src='{$GLOBALS['cfg_cmspath']}/data/vote/vote_{$voteid}.js'></script>";
             if ($GLOBALS['cfg_multi_site'] == 'Y') {
-                $this->Fields['vote'] = "<script language='javascript' src='{$GLOBALS['cfg_mainsite']}/data/vote/vote_{$voteid}.js'></script>";
+                $this->Fields['vote'] = "<script src='{$GLOBALS['cfg_mainsite']}/data/vote/vote_{$voteid}.js'></script>";
             }
         }
         if (isset($this->Fields['goodpost']) && isset($this->Fields['badpost'])) {

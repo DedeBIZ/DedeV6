@@ -71,7 +71,7 @@
 			</div>
 		</div>
 		<!--购物车列表操作javascript请不要随意改动-->
-		<script language="JavaScript" type="text/javascript">
+		<script>
 			//遍历checkbox使之全选中,或反选
 			function CheckAll() {
 				for (var i = 0; i < document.form1.elements.length; i++) {
@@ -119,7 +119,7 @@
 			}
 		</script>
 		<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
-		<script language="JavaScript" type="text/javascript">
+		<script>
 			if (!navigator.cookieEnabled) {
 				$('#errorChickCookie').html('您浏览器的 cookie 功能被禁用，请启用此功能');
 				$('.buycar').hide();

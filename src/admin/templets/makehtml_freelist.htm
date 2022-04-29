@@ -43,7 +43,7 @@
     <tr>
       <td width="30%">结果：</td>
       <td width="70%" align="right">
-        <script language='javascript'>
+        <script>
           function ResizeDiv(obj, ty) {
             if (ty == "+") document.all[obj].style.pixelHeight += 50;
             else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
@@ -58,7 +58,7 @@
         <div id="mdv" style="width:100%;height:360px">
           <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
         </div>
-        <script language="JavaScript">
+        <script>
           document.all.mdv.style.pixelHeight = screen.height - 360;
         </script>
       </td>

@@ -24,7 +24,7 @@ require(DEDEADMIN.'/inc/inc_menu_func.php');
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
 	<base target="main" />
 </head>
-<script language="javascript">
+<script>
 	function showHide(objname) {
 		var obj = document.getElementById(objname);
 		if (obj.style.display == 'block' || obj.style.display == '') obj.style.display = 'none';

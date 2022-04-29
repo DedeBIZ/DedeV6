@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="css/codemirror.css">
-  <script type="text/javascript" src="js/codemirror.js"></script>
-  <script type="text/javascript" src="js/mode/xml/xml.js"></script>
-  <script type="text/javascript" src="js/mode/javascript/javascript.js"></script>
-  <script type="text/javascript" src="js/mode/css/css.js"></script>
-  <script type="text/javascript" src="js/mode/htmlmixed/htmlmixed.js"></script>
-  <script language="javascript">
+  <script src="js/codemirror.js"></script>
+  <script src="js/mode/xml/xml.js"></script>
+  <script src="js/mode/javascript/javascript.js"></script>
+  <script src="js/mode/css/css.js"></script>
+  <script src="js/mode/htmlmixed/htmlmixed.js"></script>
+  <script>
     function Nav() {
       if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
       else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
@@ -370,7 +370,7 @@
   <?php
 if(!empty($openfield))
 {
-	echo "<script language='javascript'>ShowItem2();</script>";
+	echo "<script>ShowItem2();</script>";
 }
 ?>
 </body>
