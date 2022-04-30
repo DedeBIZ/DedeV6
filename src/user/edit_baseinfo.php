@@ -22,19 +22,39 @@ if ($dopost == 'save') {
         ShowMsg('验证码错误', '-1');
         exit();
     }
-    if (!is_array($row) || $row['pwd'] != md5($oldpwd)) {
-        ShowMsg('您输入的旧密码错误或没填写，不允许修改资料', '-1');
-        exit();
+    if (function_exists('password_hash')) {
+        if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
+            ShowMsg('您输入的旧密码错误或没填写，不允许修改资料', '-1');
+            exit();
+        }
+    } else {
+        if (!is_array($row) || $row['pwd'] != md5($oldpwd)) {
+            ShowMsg('您输入的旧密码错误或没填写，不允许修改资料', '-1');
+            exit();
+        }
     }
     if ($userpwd != $userpwdok) {
         ShowMsg('您两次输入的新密码不一致', '-1');
         exit();
     }
+    $pp = "pwd";
     if ($userpwd == '') {
-        $pwd = $row['pwd'];
+        if (function_exists('password_hash')) {
+            $pp = "pwd_new";
+            $pwd = $row['pwd_new'];
+        } else {
+            $pwd = $row['pwd'];
+        }
     } else {
-        $pwd = md5($userpwd);
-        $pwd2 = substr(md5($userpwd), 5, 20);
+        if (function_exists('password_hash')) 
+        {
+            $pp = "pwd_new";
+            $pwd = password_hash($userpwd, PASSWORD_BCRYPT);
+            $pwd2 = password_hash($userpwd, PASSWORD_BCRYPT);
+        } else {
+            $pwd = md5($userpwd);
+            $pwd2 = substr(md5($userpwd), 5, 20);
+        }
     }
     $addupquery = '';
     //修改安全问题或Email
@@ -78,11 +98,11 @@ if ($dopost == 'save') {
         ShowMsg('请选择正常的性别', '-1');
         exit();
     }
-    $query1 = "UPDATE `#@__member` SET pwd='$pwd',sex='$sex'{$addupquery} where mid='".$cfg_ml->M_ID."' ";
+    $query1 = "UPDATE `#@__member` SET $pp='$pwd',sex='$sex'{$addupquery} where mid='".$cfg_ml->M_ID."' ";
     $dsql->ExecuteNoneQuery($query1);
     //如果是管理员，修改其后台密码
     if ($cfg_ml->fields['matt'] == 10 && $pwd2 != "") {
-        $query2 = "UPDATE `#@__admin` SET pwd='$pwd2' where id='".$cfg_ml->M_ID."' ";
+        $query2 = "UPDATE `#@__admin` SET $pp='$pwd2' where id='".$cfg_ml->M_ID."' ";
         $dsql->ExecuteNoneQuery($query2);
     }
     //清除会员缓存

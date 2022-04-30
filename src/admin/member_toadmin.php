@@ -32,17 +32,30 @@ if ($dopost == "toadmin") {
     $pwdm = '';
     if ($pwd != '') {
         $inputpwd = ",pwd";
-        $inputpwdv = ",'".substr(md5($pwd), 5, 20)."'";
-        $pwdm = ",pwd='".md5($pwd)."'";
+        if (function_exists('password_hash')) {
+            $inputpwd = ",pwd_new";
+            $inputpwdv = ",'".password_hash($pwd, PASSWORD_BCRYPT)."'";
+            $pwdm = ",pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";
+        } else {
+            $inputpwdv = ",'".substr(md5($pwd), 5, 20)."'";
+            $pwdm = ",pwd='".md5($pwd)."'";
+        }
     } else {
-        $row = $dsql->GetOne("SELECT * FROM #@__member WHERE mid='$id'");
-        $password = $row['pwd'];
-        $inputpwd = ",pwd";
-        $pwd = substr($password, 5, 20);
-        $inputpwdv = ",'".$pwd."'";
-        $pwdm = ",pwd='".$password."'";
+        $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$id'");
+        if (function_exists('password_hash')) {
+            $password = $row['pwd_new'];
+            $inputpwd = ",pwd_new";
+            $inputpwdv = ",'".$password."'";
+            $pwdm = ",pwd_new='".$password."'";
+        } else {
+            $password = $row['pwd'];
+            $inputpwd = ",pwd";
+            $pwd = substr($password, 5, 20);
+            $inputpwdv = ",'".$pwd."'";
+            $pwdm = ",pwd='".$password."'";
+        }
     }
-    $typeids = (empty($typeids)) ? "" : $typeids;
+    $typeids = (empty($typeids)) ? array() : $typeids;
     if ($typeids == '') {
         ShowMsg("请为该管理员指定管理栏目", "member_toadmin.php?id={$id}");
         exit();
@@ -83,11 +96,11 @@ $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart=
 $dsql->Execute('op');
 while ($nrow = $dsql->GetObject('op')) {
     $typeOptions .= "<option value='{$nrow->id}' class='btype'".(in_array($nrow->id, $typeids) ? ' selected' : '').">{$nrow->typename}</option>\r\n";
-    $dsql->SetQuery("SELECT id,typename FROM #@__arctype WHERE reid={$nrow->id} AND (ispart=0 OR ispart=1)");
+    $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid={$nrow->id} AND (ispart=0 OR ispart=1)");
     $dsql->Execute('s');
     while ($nrow = $dsql->GetObject('s')) {
         $typeOptions .= "<option value='{$nrow->id}' class='stype'".(in_array($nrow->id, $typeids) ? ' selected' : '').">—{$nrow->typename}</option>\r\n";
     }
 }
-$row = $dsql->GetOne("SELECT * FROM #@__member WHERE mid='$id'");
+$row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$id'");
 include DedeInclude('templets/member_toadmin.htm');

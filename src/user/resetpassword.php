@@ -93,20 +93,26 @@ if ($dopost == "") {
         if ($row['pwd'] == $sn) {
             if ($pwd != "") {
                 if ($pwd == $pwdok) {
-                    $pwdok = md5($pwdok);
+                    $pp = "pwd";
+                    if (function_exists('password_hash')) {
+                        $pp = "pwd_new";
+                        $pwdok = password_hash($pwdok, PASSWORD_BCRYPT);
+                    } else {
+                        $pwdok = md5($pwdok);
+                    }
                     $sql = "DELETE FROM `#@__pwd_tmp` WHERE `mid` = '$id';";
                     $db->executenonequery($sql);
-                    $sql = "UPDATE `#@__member` SET `pwd` = '$pwdok' WHERE `mid` = '$id';";
+                    $sql = "UPDATE `#@__member` SET `$pp` = '$pwdok' WHERE `mid` = '$id';";
                     if ($db->executenonequery($sql)) {
-                        showmsg('修改密码成功，请牢记新密码', 'login.php');
+                        ShowMsg('修改密码成功，请牢记新密码', 'login.php');
                         exit;
                     }
                 }
             }
-            showmsg('对不起，新密码为空或填写不一致', '-1');
+            ShowMsg('对不起，新密码为空或填写不一致', '-1');
             exit;
         }
-        showmsg('对不起，临时密码错误', '-1');
+        ShowMsg('对不起，临时密码错误', '-1');
         exit;
     }
 }

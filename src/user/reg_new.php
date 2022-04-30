@@ -67,11 +67,17 @@ if ($step == 1) {
         $logintime = time();
         $joinip = GetIP();
         $loginip = GetIP();
-        $pwd = password_hash($userpwd, PASSWORD_BCRYPT);
+        $pp = "pwd";
+        if (function_exists('password_hash')) {
+            $pp = "pwd_new";
+            $pwd = password_hash($userpwd, PASSWORD_BCRYPT);
+        } else {
+            $pwd = md5($userpwd);
+        }
         $mtype = '个人';
         $spaceSta = ($cfg_mb_spacesta < 0 ? $cfg_mb_spacesta : 0);
-        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`pwd`, `pwd_new` ,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
-        VALUES ('$mtype','$userid','','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip'); ";
+        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`$pp`,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
+        VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip'); ";
         if ($dsql->ExecuteNoneQuery($inQuery)) {
             $mid = $dsql->GetLastID();
             //写入默认会员详细资料

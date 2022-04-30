@@ -88,7 +88,7 @@
       <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input name="mid" type="checkbox" id="mid" value="{dede:field.mid/}" class="np"></td>
         <td>{dede:field.mid/}</td>
-        <td><a href="../user/index.php?uid={dede:field.userid/}" target='_blank'>
+        <td>
           <?php
           echo ''.$fields['userid'].'';
           if($fields['spacesta']==-2) echo "<span class='text-danger'>[禁言]</span>";
@@ -97,7 +97,6 @@
             echo "<br><img src='{$fields['face']}' title='浏览会员空间' style='max-width:80px;height:auto'>";
           }
           ?>
-          </a>
         </td>
         <td>{dede:field.email/}<br>
           昵称：{dede:field.uname/}

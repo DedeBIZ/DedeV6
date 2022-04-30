@@ -46,7 +46,7 @@ if ($format === 'json') {
     </div>
     <div class="uclink">
         <a href="<?php echo $cfg_memberurl; ?>/index.php">会员中心</a> |
-        <a href="<?php echo $cfg_memberurl; ?>/edit_fullinfo.php">资料</a> |
+        <a href="<?php echo $cfg_memberurl; ?>/edit_baseinfo.php">资料</a> |
         <a href="<?php echo $cfg_memberurl; ?>/index_do.php?fmdo=login&dopost=exit">退出登录</a>
     </div>
 </div><!-- /userinfo -->
