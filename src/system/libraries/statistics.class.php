@@ -161,9 +161,9 @@ EOT;
         $ip = $dsql->GetOne("SELECT COUNT(DISTINCT ip) as total FROM `#@__statistics_detail` WHERE created_date = $d");
         $vv = $dsql->GetOne("SELECT COUNT(DISTINCT ssid) as total FROM `#@__statistics_detail` WHERE created_date = $d");
         if ($d < intval($today)) {
+            // 缓存数据
             $insql = "INSERT INTO `#@__statistics`(`sdate`,`pv`,`uv`,`ip`,`vv`) VALUES ('$d', '{$pv['total']}','{$uv['total']}','{$ip['total']}','{$vv['total']}')";
-            // var_dump($insql);
-            return $dsql->ExecuteNoneQuery($insql);
+            $dsql->ExecuteNoneQuery($insql);
         }
         return array(
             "sdate" => $d,
