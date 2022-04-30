@@ -433,10 +433,11 @@ class SearchView
                 );
             } else if ($tagname == "pagelist") {
                 $list_len = trim($ctag->GetAtt("listsize"));
+                $ctag->GetAtt("listitem") == "" ? $listitem = "index,pre,pageno,next,end,option" : $listitem = $ctag->GetAtt("listitem");
                 if ($list_len == "") {
                     $list_len = 3;
                 }
-                $this->dtp->Assign($tagid, $this->GetPageListDM($list_len));
+                $this->dtp->Assign($tagid, $this->GetPageListDM($list_len, $listitem));
             } else if ($tagname == "likewords") {
                 $this->dtp->Assign($tagid, $this->GetLikeWords($ctag->GetAtt('num')));
             } else if ($tagname == "hotwords") {
@@ -641,7 +642,7 @@ class SearchView
      * @param     string  $list_len  列表宽度
      * @return    string
      */
-    function GetPageListDM($list_len)
+    function GetPageListDM($list_len, $listitem = "index,end,pre,next,pageno")
     {
         global $oldkeyword;
         $prepage = "";
@@ -715,12 +716,12 @@ class SearchView
 		$plist = "";
         $plist .= "<form name='pagelist' action='".$this->GetCurUrl()."'>$hidenform";
         $plist .= "<ul class='pagination justify-content-center pt-3'>";
-        $plist .= $infos;
-        $plist .= $indexpage;
-        $plist .= $prepage;
-        $plist .= $listdd;
-        $plist .= $nextpage;
-        $plist .= $endpage;
+        $plist .=  preg_match('/info/i', $listitem)? $infos : "";
+        $plist .= preg_match('/index/i', $listitem)? $indexpage : "";
+        $plist .= preg_match('/pre/i', $listitem)? $prepage : "";
+        $plist .= preg_match('/pageno/i', $listitem)? $listdd : "";
+        $plist .= preg_match('/next/i', $listitem)? $nextpage : "";
+        $plist .= preg_match('/end/i', $listitem)? $endpage : "";
         $plist .= "</ul></form>\r\n";
         return $plist;
     }
