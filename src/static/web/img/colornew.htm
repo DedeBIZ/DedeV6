@@ -4,7 +4,7 @@
     <td bgcolor="#0000FF" onClick="ColorSel('#0000FF', 'color');" width="20%">&nbsp;</td>
     <td bgcolor="#006600" onClick="ColorSel('#006600', 'color');" width="20%">&nbsp;</td>
     <td bgcolor="#333333" onClick="ColorSel('#333333', 'color');" width="20%">&nbsp;</td>
-    <td bgcolor="#FFFF00" onClick="ColorSel('#FFFF00', 'color');" width="20%">&nbsp;</td>
+    <td bgcolor="#ffffff" onClick="ColorSel('', 'color');" align="center">X</td>
   </tr>
   <tr> 
     <td bgcolor="#CC0000" onClick="ColorSel('#CC0000', 'color');">&nbsp;</td>
@@ -25,6 +25,9 @@
     <td bgcolor="#330099" onClick="ColorSel('#330099', 'color');">&nbsp;</td>
     <td bgcolor="#66FF00" onClick="ColorSel('#66FF00', 'color');">&nbsp;</td>
     <td bgcolor="#CCCCCC" onClick="ColorSel('#CCCCCC', 'color');">&nbsp;</td>
-    <td bgcolor="#ffffff" onClick="ColorSel('', 'color');" align="center">N</td>
+    <td bgcolor="#FFFF00" onClick="ColorSel('#FFFF00', 'color');" width="20%">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td colspan="5">自定义：<input type="color" id="selColor" style="width: 50px;padding: 0;"> <button class="btn btn-sm btn-success" onclick="ColorSel(document.querySelector('#selColor').value, 'color')">确定</button></td>
   </tr>
 </table>
