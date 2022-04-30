@@ -128,6 +128,16 @@ EOT;
         return substr(bin2hex($bytes), 0, $lenght);
     }
 
+    function GetInfoByDateMulti($ds = array())
+    {
+        $results = array();
+        foreach ($ds as $d) {
+            $vv = $this->GetInfoByDate($d);
+            $result[] = $vv;
+        }
+        return $result;
+    }
+
     // 获取某天的统计信息
     function GetInfoByDate($d=0)
     {

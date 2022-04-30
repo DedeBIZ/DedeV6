@@ -204,6 +204,7 @@ function LoadStat() {
 async function LoadStatChart() {
     const ctx = document.getElementById('statChart').getContext('2d');
     let labels = [];
+    let dates = [];
     let pvs = [];
     let ips = [];
     let uvs = [];
@@ -214,14 +215,17 @@ async function LoadStatChart() {
         var s = d.Format("yyyy-MM-dd");
         labels.push(d.Format("MM-dd"));
         s = s.replaceAll("-", "");
-        let resp = await fetch("index_body.php?dopost=get_statistics&sdate=" + s);
-        let data = await resp.json();
-        if (data.code == 200) {
-            pvs.push(typeof data.result.pv == "undefined" ? 0 : data.result.pv);
-            ips.push(typeof data.result.ip == "undefined" ? 0 : data.result.ip);
-            uvs.push(typeof data.result.uv == "undefined" ? 0 : data.result.uv);
-            vvs.push(typeof data.result.vv == "undefined" ? 0 : data.result.vv);
-        }
+        dates.push(s);
+    }
+    let resp = await fetch("index_body.php?dopost=get_statistics_multi&sdates=" + dates.join(","));
+    let data = await resp.json();
+    if (data.code == 200) {
+        data.result.forEach(e => {
+            pvs.push(typeof e.pv == "undefined" ? 0 : e.pv);
+            ips.push(typeof e.ip == "undefined" ? 0 : e.ip);
+            uvs.push(typeof e.uv == "undefined" ? 0 : e.uv);
+            vvs.push(typeof e.vv == "undefined" ? 0 : e.vv);
+        });
     }
     const myChart = new Chart(ctx, {
         type: 'line',

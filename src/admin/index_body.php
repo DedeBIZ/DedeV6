@@ -119,5 +119,17 @@ else if ($dopost == 'setskin') {
         "result" => $rs,
     ));
     exit;
+}  elseif ($dopost == 'get_statistics_multi') {
+    require_once(DEDEINC."/libraries/statistics.class.php");
+    //获取统计信息
+    $sdates = empty($sdates) ? array() : explode(",",preg_replace("[^\d\,]","",$sdates)) ;
+    $stat = new DedeStatistics;
+    $rs = $stat->GetInfoByDateMulti($sdates);
+    echo json_encode(array(
+        "code" => 200,
+        "msg" => "",
+        "result" => $rs,
+    ));
+    exit;
 } 
 ?>
