@@ -58,7 +58,7 @@ if (is_array($tag) && count($tag) > 0) {
     $ntotalpage = $dlist->TotalPage;
 
     if ($ntotalpage <= $maxpagesize) {
-        $dlist->MakeHtml('', '');
+        $dlist->MakeHtml();
         $finishType = TRUE; //生成一个TAG完成
     } else {
         $reurl = $dlist->MakeHtml($mkpage, $maxpagesize);

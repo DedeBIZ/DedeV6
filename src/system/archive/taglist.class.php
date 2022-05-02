@@ -160,20 +160,14 @@ class TagList
         global $cfg_cmspath,$cfg_tags_dir;
         $tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
         $makeDir = empty($this->Tag) ? $this->GetTruePath().$tagsDir."/index.html" : $this->GetTruePath().$tagsDir."/".$this->Tag."/index.html";
-        if (file_exists($makeDir)) {
-            header('HTTP/1.1 301 Moved Permanently');
-            if (!empty($this->Tag)) {
-                header('Location:..'.$tagsDir.'/'.GetPinyin($this->Tag)."/");
-            } else {
-                header('Location:..'.$tagsDir.'/');
-            }
-            exit;
-        }
         if ($this->Tag != '') {
             $this->CountRecord();
         }
         $this->ParseTempletsFirst();
         if ($this->Tag != '') {
+            if ($this->PageNo == 0) {
+                $this->PageNo = 1;
+            }
             $this->ParseDMFields($this->PageNo, 0);
         }
         $this->dtp->Display();
@@ -503,9 +497,7 @@ class TagList
             return "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>0页".$this->TotalResult."条</span></li>";
         }
         $maininfo = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$totalpage}页".$this->TotalResult."条</span></li>\r\n";
-        //$purl = $this->GetCurUrl();
-        $purl = "/a/tags/".GetPinyin($this->Tag);
-        //var_dump($purl);
+        $purl = $this->tagsDir.'/'.$this->TagInfos['id'];
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."/$prepagenum/'>上一页</a></li>\r\n";
