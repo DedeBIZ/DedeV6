@@ -131,6 +131,9 @@ if (IsWritable(DEDEDATA.'/common.inc.php')) {
 if (!IsSSL()) {
 	$safeMsg[] = '当前站点尚未启用HTTPS，强烈建议您启用';
 }
+if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+	$safeMsg[] = "PHP请升级到5.3及以上版本，低版本PHP环境将无法正常使用本系统";
+}
 $rs = TestAdminPWD();
 if ($rs < 0) {
 	$linkurl = "<a href='sys_admin_user.php' class='btn btn-success btn-sm'>修改</a>";

@@ -11,7 +11,7 @@ error_reporting(E_ALL || ~E_NOTICE);
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
 if(file_exists(INSLOCKFILE))
 {
-    exit("程序已运行安装，如果您确定要重新安装，请先删除 /install/install_lock.txt");
+    die("<div style='width:98%;margin:1rem auto;color:#842029;background:#f8d7da;border-color:#842029;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem'>程序已运行安装，如果您确定要重新安装，请先删除 /install/install_lock.txt</div>\r\n");
 }
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
@@ -43,6 +43,9 @@ function _1_Agreement()
 if($step==1)
 {
     $arrMsg = array();
+    if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+        $arrMsg[] = "PHP请升级到5.3及以上版本，低版本PHP环境将无法正常使用本系统";
+    }
     if (!extension_loaded("openssl")) {
         $arrMsg[] = "OpenSSL未开启，将无法完成<a href='https://www.dedebiz.com' target='_blank'>DedeBIZ商业支持</a>";
     }
