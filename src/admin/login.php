@@ -27,8 +27,6 @@ if (is_dir(dirname(__FILE__).'/../install')) {
         fclose($fp);
     }
 }
-//更新服务器
-require_once(DEDEDATA.'/admin/config_update.php');
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if (preg_match('/admin\/login/i', $cururl)) {

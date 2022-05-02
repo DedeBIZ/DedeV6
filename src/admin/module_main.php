@@ -13,7 +13,6 @@ CheckPurview('sys_module');
 require_once(DEDEINC."/dedemodule.class.php");
 require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($action)) $action = '';
-require_once(DEDEDATA."/admin/config_update.php");
 $mdir = DEDEDATA.'/module';
 $mdurl = "";
 function TestWriteAble($d)
