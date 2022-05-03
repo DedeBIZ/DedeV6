@@ -103,12 +103,12 @@ else if ($dopost == 'save') {
         $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新文章</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>查看修改</a><a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看文章</a><a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理文章</a>";
+    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新文章</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>查看修改</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文章</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理文章</a>";
     $wintitle = "成功修改文章";
     $wecome_info = "文章管理::修改文章";
     $win = new OxWindow();
     $win->AddTitle("成功修改文章");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
-    $win->Display();
+    $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }

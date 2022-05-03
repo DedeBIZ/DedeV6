@@ -158,7 +158,7 @@ else if ($dopost == 'save') {
     $artUrl = MakeArt($aid, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-secondary btn-sm'>发布新图集</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-secondary btn-sm'>修改图集</a><a href='$artUrl' target='_blank' class='btn btn-secondary btn-sm'>查看图集</a><a href='content_list.php?channelid=$channelid' class='btn btn-secondary btn-sm'>管理图集</a> ";
+    $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新图集</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>修改图集</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看图集</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理图集</a> ";
     //提交后返回提交页面
     $wintitle = "成功修改图集";
     $wecome_info = "图集管理::修改图集";
@@ -166,5 +166,5 @@ else if ($dopost == 'save') {
     $win->AddTitle("成功修改图集");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
-    $win->Display();
+    $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
