@@ -257,12 +257,22 @@ else if($step==2)
     $dbtype == 'sqlite'?  $db->exec($cquery) : mysql_query($cquery,$conn);
     $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$adminmail}' WHERE varname='cfg_adminemail';";
     $dbtype == 'sqlite'?  $db->exec($cquery) : mysql_query($cquery,$conn);
+
+    $pfd = "pwd";
+    $apwd = substr(md5($adminpwd),5,20);
+    $upwd = md5($adminpwd);
+    if (function_exists('password_hash')) {
+        $pfd = "pwd_new";
+        $apwd = password_hash($adminpwd, PASSWORD_BCRYPT);
+        $upwd = password_hash($adminpwd, PASSWORD_BCRYPT);
+    }
+
     //增加管理员帐号
-    $adminquery = "INSERT INTO `{$dbprefix}admin` VALUES (1, 10, '$adminuser', '".substr(md5($adminpwd),5,20)."', 'admin', '', '', 0, '".time()."', '127.0.0.1');";
+    $adminquery = "INSERT INTO `{$dbprefix}admin` (`id`, `usertype`, `userid`, `$pfd`, `uname`, `tname`, `email`, `typeid`, `logintime`, `loginip`) VALUES (1, 10, '$adminuser', '".$apwd."', 'admin', '', '', 0, '".time()."', '127.0.0.1');";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
     //关连前台会员帐号
-    $adminquery = "INSERT INTO `{$dbprefix}member` (`mid`,`mtype`,`userid`,`pwd`,`uname`,`sex`,`rank`,`money`,`email`,`scores` ,`matt` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
-        VALUES ('1','个人','$adminuser','".md5($adminpwd)."','$adminuser','男','100','0','','10000','10','','0','','".time()."','','0',''); ";
+    $adminquery = "INSERT INTO `{$dbprefix}member` (`mid`,`mtype`,`userid`,`{$pfd}`,`uname`,`sex`,`rank`,`money`,`email`,`scores` ,`matt` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
+        VALUES ('1','个人','$adminuser','".$upwd."','$adminuser','男','100','0','','10000','10','','0','','".time()."','','0',''); ";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
     $adminquery = "INSERT INTO `{$dbprefix}member_person` (`mid`,`onlynet`,`sex`,`uname`,`qq`,`msn`,`tel`,`mobile`,`place`,`oldplace`,`birthday`,`star`,`income` , `education` , `height` , `bodytype` , `blood` , `vocation` , `smoke` , `marital` , `house` ,`drink` , `datingtype` , `language` , `nature` , `lovemsg` , `address`,`uptime`)
         VALUES ('1', '1', '男', '{$adminuser}', '', '', '', '', '0', '0','1980-01-01', '1', '0', '0', '160', '0', '0', '0', '0', '0', '0','0', '0', '', '', '', '','0'); ";
