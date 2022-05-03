@@ -20,9 +20,10 @@
     }
     function ShowHideMove() {
       var selBox = document.getElementById('moveradio');
-      var obj = document.getElementById('moveField');
-      if (selBox.checked) obj.style.display = "block";
-      else obj.style.display = "none";
+      var obj = document.querySelectorAll('.moveField').forEach(v=>{
+        if (selBox.checked) v.style.display = "block";
+        else v.style.display = "none";
+      })
     }
     $(document).ready(function () {
       $('.datepicker').daterangepicker({
@@ -130,10 +131,10 @@
           删除文档</label></td>
       </tr>
       <tr>
-        <td height="26" align="center">移动选项：</td>
+        <td height="26" align="center"><span class='moveField' style='display:none'>移动选项：</span></td>
         <td height="26">
           <?php
-       echo "<span id='moveField' style='display:none'>新位置：";
+       echo "<span class='moveField' style='display:none'>新位置：";
        echo "<select name='newtypeid' style='width:260px'>";
        echo $typeOptions;
        echo "</select>";
