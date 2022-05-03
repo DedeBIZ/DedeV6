@@ -30,8 +30,8 @@ if ($dopost != 'save') {
     //获得频道模型信息
     $cInfos = $dsql->GetOne(" SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
     $channelid = $cInfos['id'];
-    //获取文章最大id以确定当前权重
-    $maxWright = $dsql->GetOne("SELECT COUNT(*) AS cc FROM #@__archives");
+    //获取文章最大id+1以确定当前权重
+    $maxWright = $dsql->GetOne("SELECT id+1 AS cc FROM `#@__archives` ORDER BY id DESC LIMIT 1");
     include DedeInclude("templets/soft_add.htm");
     exit();
 }
