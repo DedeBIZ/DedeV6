@@ -38,8 +38,7 @@
 									<table width="100%" cellspacing="0" cellpadding="0">
 										<tr>
 											<td width="30%">
-												<select name="tablename" id="tablename" style="width:100%;height:auto"
-													size="12">
+												<select name="tablename" id="tablename" style="width:100%;height:auto" size="12">
 													<?php
 													if ($cfg_dbtype=="sqlite") {
 														$query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
