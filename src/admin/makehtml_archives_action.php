@@ -73,6 +73,8 @@ while ($row = $dsql->GetObject('out')) {
     $ac = new Archives($id);
     $rurl = $ac->MakeHtml(0);
 }
+$t2 = ExecTime();
+$t2 = ($t2 - $est1);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
 $tjsta .= "到达位置：".($startdd + $pagesize)."，继续执行任务<br>完成创建文件总数 $tjlen %";

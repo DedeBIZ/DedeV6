@@ -133,6 +133,11 @@ if ($dojob == '') {
             }
         }//end if limit
         //返回进度提示
+        if ($totalnum > 0) {
+            $tjlen = ceil(($tjnum / $totalnum) * 100);
+        } else {
+            $tjlen = 100;
+        }
         $tjsta .= "完成处理文档总数 $tjlen %";
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
