@@ -79,8 +79,10 @@ if ($dojob == '') {
                 $tjlen = 100;
                 ShowMsg('完成所有任务', 'javascript:;');
                 exit();
-            }        
-            $tjsta .= "完成处理文档总数 $tjlen %";
+            }
+            $dvlen = $tjlen * 2;
+            $tjsta = "<div style='width:260px;height:16px;border:1px solid #28a745;text-align:left'><div style='width:$dvlen;height:16px;background:#28a745'></div></div>";           
+            $tjsta .= "<br>完成处理文档总数的 $tjlen %";
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd={$startdd}&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
             exit();
@@ -138,7 +140,9 @@ if ($dojob == '') {
         } else {
             $tjlen = 100;
         }
-        $tjsta .= "完成处理文档总数 $tjlen %";
+        $dvlen = $tjlen * 2;
+        $tjsta = "<div style='width:260px;height:16px;border:1px solid #28a745;text-align:left'><div style='width:$dvlen;height:16px;background:#28a745'></div></div>";
+        $tjsta .= "<br>完成处理文档总数的 $tjlen %";
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
@@ -147,5 +151,5 @@ if ($dojob == '') {
             ShowMsg('完成所有任务', 'javascript:;');
             exit();
         }
-    } //更新自动分页处理代码结束
+    }//更新自动分页处理代码结束
 }
