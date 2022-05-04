@@ -50,7 +50,8 @@ if ($ctagid == 0 && $allfinish) {
 }
 $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
 // 创建TAGS目录
-MkdirAll($cfg_basedir.$cfg_tags_dir, $cfg_dir_purview);
+$tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
+MkdirAll($cfg_basedir.$tagsDir, $cfg_dir_purview);
 if (is_array($tag) && count($tag) > 0) {
     $dlist = new TagList($tag['id'], 'taglist.htm');
     $dlist->CountRecord();
