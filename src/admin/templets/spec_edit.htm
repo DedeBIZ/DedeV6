@@ -235,7 +235,7 @@ table{border-collapse:separate}
               <td width="90">发布选项：</td>
               <td>
                 <label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked='1'"; ?>> 
-                生成HTML </label>
+                生成网页 </label>
                 <label><input type="radio" name="ishtml" class="np" value="0" <?php if($arcRow["ismake"]==-1) echo " checked='1'"; ?>> 
                 仅动态浏览 </label>
               </td>
@@ -266,7 +266,7 @@ table{border-collapse:separate}
               <td>
               <?php
 			        $addtime = GetDateTimeMk($arcRow["senddate"]);
-			        echo "$addtime (标准排序和生成HTML名称的依据时间) <input type='hidden' name='senddate' value='".$arcRow["senddate"]."' style='width:160px'>";
+			        echo "$addtime (标准排序和生成网页名称的依据时间) <input type='hidden' name='senddate' value='".$arcRow["senddate"]."' style='width:160px'>";
 			        ?>
               </td>
             </tr>

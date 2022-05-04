@@ -305,13 +305,13 @@ table{border-collapse:separate}
             <tr>
               <td width="90" height="26">&nbsp;评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" class="np" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>>&nbsp;允许评论&nbsp;</label>
-                <label><input type="radio" name="notpost" class="np" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>>&nbsp;禁止评论&nbsp;</label>
+                <label><input type="radio" name="notpost" class="np" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>> 允许评论</label>
+                <label><input type="radio" name="notpost" class="np" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
-                <label><input name="ishtml" type="radio" class="np" value="1" checked="1">&nbsp;生成HTML&nbsp;</label>
-                <label><input type="radio" name="ishtml" class="np" value="0">&nbsp;仅动态浏览</label>
+                <label><input name="ishtml" type="radio" class="np" value="1" checked="1"> 生成网页</label>
+                <label><input type="radio" name="ishtml" class="np" value="0"> 仅动态浏览</label>
               </td>
             </tr>
           </table>

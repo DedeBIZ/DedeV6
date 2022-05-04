@@ -389,16 +389,13 @@ table{border-collapse:separate}
             <tr>
               <td width="90" height="26" width="260">&nbsp;评论选项：</td>
               <td width="260">
-                <label><input type='radio' name='notpost' class='np' value='0' <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> /> 允许评论</label>
-                &nbsp;
-                <label><input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> /> 禁止评论</label>
+                <label><input type='radio' name='notpost' class='np' value='0' <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>> 允许评论</label>
+                <label><input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
-                <label><input name="ishtml" type="radio" class="np" value="1" checked>
-                生成HTML</label>
-                <label><input type="radio" name="ishtml" class="np" value="0">
-                仅动态浏览</label>
+                <label><input name="ishtml" type="radio" class="np" value="1" checked> 生成网页</label>
+                <label><input type="radio" name="ishtml" class="np" value="0"> 仅动态浏览</label>
               </td>
             </tr>
           </table>
@@ -458,7 +455,7 @@ table{border-collapse:separate}
                 <?php
                 $nowtime = GetDateTimeMk(time());
                 echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker' style='width:160px'>";
-			    ?>
+			          ?>
               </td>
               <td width="90">浏览次数：</td>
               <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click); ?>" style="width:160px"></td>

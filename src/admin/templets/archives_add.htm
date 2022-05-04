@@ -250,17 +250,13 @@ table{border-collapse:separate}
             <tr>
               <td width="90">&nbsp;附加选项：</td>
               <td>
-                <label><input name="remote" type="checkbox" class="np" id="remote" value="1"
-                  <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?> />
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?>>
                 下载远程图片和资源</label>
-                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1"
-                  <?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?> />
+                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?>>
                 删除非站内链接</label>
-                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"
-                  <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?> />
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>>
                 提取第一个图片为缩略图</label>
-                <label><input type='checkbox' name='needwatermark' value='1' class='np'
-                  <?php if($photo_markup=='1') echo ' checked="1" '; ?> />
+                <label><input type='checkbox' name='needwatermark' value='1' class='np' <?php if($photo_markup=='1') echo ' checked="1" '; ?>>
                 图片是否加水印</label>
               </td>
             </tr>
@@ -279,16 +275,13 @@ table{border-collapse:separate}
             <tr>
               <td width="90" height="26" width="260">&nbsp;评论选项：</td>
               <td width="260">
-                <label><input type='radio' name='notpost' class='np' value='0' <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> /> 允许评论</label>
-                &nbsp;
-                <label><input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> /> 禁止评论</label>
+                <label><input type='radio' name='notpost' class='np' value='0' <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>> 允许评论</label>
+                <label><input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
-                <label><input name="ishtml" type="radio" class="np" value="1" checked> 
-                生成HTML</label>
-                <label><input type="radio" name="ishtml" class="np" value="0"> 
-                仅动态浏览</label>
+                <label><input name="ishtml" type="radio" class="np" value="1" checked> 生成网页</label>
+                <label><input type="radio" name="ishtml" class="np" value="0"> 仅动态浏览</label>
               </td>
             </tr>
           </table>
