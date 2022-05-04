@@ -17,31 +17,20 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @param     string  $svar 过滤值
  * @return    string
  */
-$magic_quotes_gpc = ini_get('magic_quotes_gpc');
 function _FilterAll($fk, &$svar)
 {
-    global $cfg_notallowstr, $cfg_replacestr, $magic_quotes_gpc;
+    global $cfg_notallowstr, $cfg_replacestr;
     if (is_array($svar)) {
         foreach ($svar as $_k => $_v) {
             $svar[$_k] = _FilterAll($fk, $_v);
         }
     } else {
         if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $svar)) {
-            ShowMsg(" $fk has not allow words!", '-1');
+            ShowMsg("{$fk}字段中包含禁用词!", '-1');
             exit();
         }
         if ($cfg_replacestr != '') {
             $svar = preg_replace('/'.$cfg_replacestr.'/i', "***", $svar);
-        }
-    }
-    if (!$magic_quotes_gpc) {
-        //var_dump($svar);
-        if (is_array($svar)) {
-            foreach ($svar as $key => $value) {
-                $svar[$key] = addslashes($svar[$key]);
-            }
-        } else {
-            $svar = addslashes($svar);
         }
     }
     return $svar;
