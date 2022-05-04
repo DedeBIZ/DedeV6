@@ -236,14 +236,7 @@ table{border-collapse:separate}
       }
       ?>
       <tr>
-        <td>
-        <?php
-        PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow);
-        ?>
-        </td>
-      </tr>
-      <tr>
-        <td width="400%" height="26">
+        <td width="900" height="26">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;附加选项：</td>
@@ -257,9 +250,12 @@ table{border-collapse:separate}
           </table>
         </td>
       </tr>
+      <tr>
+        <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow); ?></td>
+      </tr>
     </table>
     <!--高级参数-->
-    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6display:none">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;display:none">
       <tr>
         <td height="26" colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
@@ -331,7 +327,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="70" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;更新时间：</td>

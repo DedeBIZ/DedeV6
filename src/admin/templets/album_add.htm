@@ -198,7 +198,7 @@ table{border-collapse:separate}
                 echo "<option value='0'>请选择栏目</option>";
                 echo $typeOptions;
                 echo "</select>";
-			    ?>
+			          ?>
                 </span>
                 <i class='btn btn-sm fa fa-search'  onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title='快捷选择' style='cursor:pointer'></i>
                 <?php
@@ -253,9 +253,6 @@ table{border-collapse:separate}
             </tr>
           </table>
         </td>
-      </tr>
-      <tr>
-        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
       </tr>
       <tr>
         <td height="26" colspan="4" class="bline">
@@ -349,6 +346,9 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
+        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
+      </tr>
+      <tr>
         <td width="100%" height="26" colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
@@ -360,7 +360,7 @@ table{border-collapse:separate}
       </tr>
       <tr id="handfield">
         <td colspan="4" class="bline" style="background:url(../static/web/img/albviewbg.jpg) #fff 0 20px no-repeat;">
-          <table width='100%' height='160' style="margin:0 0 20px 0">
+          <table width="100%" height="160">
             <tr>
               <td>
                 <div id="divFileProgressContainer"></div>

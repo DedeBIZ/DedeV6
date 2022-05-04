@@ -291,11 +291,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td>
-        <?php
-        PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');
-        ?>
-        </td>
+        <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield'); ?></td>
       </tr>
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="display:none;border:1px solid #dee2e6">
@@ -306,32 +302,32 @@ table{border-collapse:separate}
         <td height="26">
           <table width="98%" cellspacing="2" cellpadding="2">
             <?php
-		  $speclisttmp = GetSysTemplets("spec_arclist.htm");
-		  $i = 1;
-		  $dtp = new DedeTagParse();
-      $dtp->LoadSource($addRow["note"]);
-      if(is_array($dtp->CTags)){
-      foreach($dtp->CTags as $tagid=>$ctag)
-      {
-      	if($ctag->GetName()!="specnote") continue;
-      	$notename = $ctag->GetAtt('name');
-      	$col = $ctag->GetAtt('col');
-      	$idlist = $ctag->GetAtt('idlist');
-      	$imgwidth = $ctag->GetAtt('imgwidth');
-      	$imgheight = $ctag->GetAtt('imgheight');
-      	$titlelen = $ctag->GetAtt('titlelen');
-      	$infolen = $ctag->GetAtt('infolen');
-      	$temp = trim($ctag->GetInnerText());
-      	$noteid = $ctag->GetAtt('noteid');
-      	if(empty($noteid)) $noteid = $i;
-      	$isauto = $ctag->GetAtt('isauto');
-      	if(empty($isauto)) $isauto = 0;
-      	$keywords = $ctag->GetAtt('keywords');
-      	$typeid = $ctag->GetAtt('typeid');
-      	if(empty($typeid)) $typeid = 0;
-      	$rownum = $ctag->GetAtt('rownum');
-      	if(empty($rownum)) $rownum = 40;
-      ?>
+      		  $speclisttmp = GetSysTemplets("spec_arclist.htm");
+      		  $i = 1;
+      		  $dtp = new DedeTagParse();
+            $dtp->LoadSource($addRow["note"]);
+            if(is_array($dtp->CTags)){
+            foreach($dtp->CTags as $tagid=>$ctag)
+            {
+            	if($ctag->GetName()!="specnote") continue;
+            	$notename = $ctag->GetAtt('name');
+            	$col = $ctag->GetAtt('col');
+            	$idlist = $ctag->GetAtt('idlist');
+            	$imgwidth = $ctag->GetAtt('imgwidth');
+            	$imgheight = $ctag->GetAtt('imgheight');
+            	$titlelen = $ctag->GetAtt('titlelen');
+            	$infolen = $ctag->GetAtt('infolen');
+            	$temp = trim($ctag->GetInnerText());
+            	$noteid = $ctag->GetAtt('noteid');
+            	if(empty($noteid)) $noteid = $i;
+            	$isauto = $ctag->GetAtt('isauto');
+            	if(empty($isauto)) $isauto = 0;
+            	$keywords = $ctag->GetAtt('keywords');
+            	$typeid = $ctag->GetAtt('typeid');
+            	if(empty($typeid)) $typeid = 0;
+            	$rownum = $ctag->GetAtt('rownum');
+            	if(empty($rownum)) $rownum = 40;
+            ?>
             <tr bgcolor="#F8FCF1">
               <td width="260">节点<?php echo $i?>名称：</td>
               <td colspan="2">

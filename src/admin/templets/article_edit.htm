@@ -238,13 +238,6 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td colspan="2">
-          <?php
-          PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');
-          ?>
-        </td>
-      </tr>
-      <tr>
         <td width="400%" height="26" colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
@@ -258,12 +251,15 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
+        <td colspan="2"><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield'); ?></td>
+      </tr>
+      <tr>
         <td width="100%"><?php GetEditor("body",stripcslashes($addRow['body']),450); ?></td>
-        <td width="260" align="center" bgcolor="#FFFFCC" id="mPic" style="display:none"></td>
+        <td width="260" align="center" id="mPic" style="display:none"></td>
       </tr>
     </table>
     <!--高级参数-->
-    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6display:none">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;display:none">
       <tr>
         <td height="26" colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">

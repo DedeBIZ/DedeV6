@@ -194,7 +194,7 @@ table{border-collapse:separate}
                 <?php
                 if($cfg_need_typeid2=='Y')
                 {
-					echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
+					        echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
                 }
                 ?>
               </td>
@@ -245,9 +245,6 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td colspan="2"><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
-      </tr>
-      <tr>
         <td width="100%" height="26" colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
@@ -278,12 +275,15 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
+        <td colspan="2"><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
+      </tr>
+      <tr>
         <td width="100%" id="arcBody">
         <?php
         GetEditor("body",$body,450);
         ?>
         </td>
-        <td width="260" align="center" bgcolor="#FFFFCC" id="mPic" style="display:none"></td>
+        <td width="260" align="center" id="mPic" style="display:none"></td>
       </tr>
     </table>
     <!--高级参数-->
