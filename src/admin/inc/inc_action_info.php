@@ -306,12 +306,6 @@ $actionSearch[7] = array(
             'linkurl' => 'makehtml_rss.php'
         ),
         6  =>  array(
-            'title' => '更新脚本',
-            'description' => '可以获取某个栏目的脚本连接',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_js.php'
-        ),
-        7  =>  array(
             'title' => '更新缓存',
             'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员访问历史、删除过期短信 ',
             'purview' => 'sys_ArcBatch',
