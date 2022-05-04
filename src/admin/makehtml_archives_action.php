@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 生成文档操作
  *
@@ -74,15 +73,9 @@ while ($row = $dsql->GetObject('out')) {
     $ac = new Archives($id);
     $rurl = $ac->MakeHtml(0);
 }
-$t2 = ExecTime();
-$t2 = ($t2 - $est1);
-$ttime = time() - $sstime;
-$ttime = number_format(($ttime / 60), 2);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
-$dvlen = $tjlen * 2;
-$tjsta = "<div style='width:200px;height:16px;border:1px solid #28a745;text-align:left'><div style='width:$dvlen;height:16px;background:#28a745'></div></div>";
-$tjsta .= "<br>本次用时：".number_format($t2, 2)."，总用时：$ttime 分钟，到达位置：".($startdd + $pagesize)."<br>完成创建文件总数的：$tjlen %，继续执行任务";
+$tjsta .= "到达位置：".($startdd + $pagesize)."，继续执行任务<br>完成创建文件总数 $tjlen %";
 //速度测试
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";
@@ -92,12 +85,12 @@ if ($tjnum < $totalnum) {
     exit();
 } else {
     if ($typeid != '') {
-        ShowMsg("生成文件：$totalnum 总用时：{$ttime} 分钟，现转向当前栏目更新", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
+        ShowMsg("生成文件：$totalnum，现转向当前栏目更新", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
     } else {
         if ($uptype == '') {
-            ShowMsg("完成所有创建任务，生成文件：$totalnum 总用时：{$ttime} 分钟", "javascript:;");
+            ShowMsg("完成所有任务", "javascript:;");
         } else {
-            ShowMsg("完成文档HTML更新任务，现在开始进行主页更新", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
+            ShowMsg("完成文档更新任务，现在开始进行主页更新", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
         }
     }
 }

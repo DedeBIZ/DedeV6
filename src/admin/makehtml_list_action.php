@@ -95,7 +95,7 @@ if ($nextpage >= $totalpage && $finishType) {
         if (empty($reurl)) {
             $reurl = '../apps/list.php?tid='.$tid;
         }
-        ShowMsg("完成所有栏目列表更新<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
+        ShowMsg("完成所有栏目列表更新，<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
         ShowMsg("完成所有栏目列表更新，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
@@ -104,11 +104,11 @@ if ($nextpage >= $totalpage && $finishType) {
 } else {
     if ($finishType) {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage";
-        ShowMsg("成功创建栏目：".$tid."，继续进行操作", $gourl, 0, 100);
+        ShowMsg("创建栏目：".$tid."，继续执行任务", $gourl, 0, 100);
         exit();
     } else {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
-        ShowMsg("栏目：".$tid."，继续进行操作", $gourl, 0, 100);
+        ShowMsg("创建栏目：".$tid."，继续执行任务", $gourl, 0, 100);
         exit();
     }
 }

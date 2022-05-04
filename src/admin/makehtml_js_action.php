@@ -25,7 +25,7 @@ if ($uptype == "all") {
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($cfg_basedir.$cfg_cmspath."/static/js/".$row['id'].".js", 0);
         $typeid = $row['id'];;
-        ShowMsg("成功更新".$cfg_cmspath."/static/js/".$row['id'].".js，继续进行操作", "makehtml_js_action.php?typeid=$typeid", 0, 100);
+        ShowMsg("成功更新".$cfg_cmspath."/static/js/".$row['id'].".js，继续执行任务", "makehtml_js_action.php?typeid=$typeid", 0, 100);
         exit();
     }
 } else {

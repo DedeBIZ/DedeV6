@@ -15,11 +15,11 @@ if (empty($tid)) $tid = 0;
 if (empty($maxrecord)) $maxrecord = 50;
 $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE id>'$tid' AND ispart<>2 ORDER BY id ASC LIMIT 0,1;");
 if (!is_array($row)) {
-    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-    echo "<div class=\"alert alert-success\" role=\"alert\">完成所有文件更新</div>";
+    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static}</style>";
+    echo "<div class=\"alert alert-success\">完成所有文件更新</div>";
 } else {
     $rv = new RssView($row['id'], $maxrecord);
     $rssurl = $rv->MakeRss(0);
     $tid = $row['id'];
-    ShowMsg("成功更新".$rssurl."，继续进行操作", "makehtml_rss_action.php?tid=$tid&maxrecord=$maxrecord", 0, 100);
+    ShowMsg("成功更新".$rssurl."，继续执行任务", "makehtml_rss_action.php?tid=$tid&maxrecord=$maxrecord", 0, 100);
 }

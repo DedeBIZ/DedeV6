@@ -79,10 +79,8 @@ if ($dojob == '') {
                 $tjlen = 100;
                 ShowMsg('完成所有任务', 'javascript:;');
                 exit();
-            }
-            $dvlen = $tjlen * 2;
-            $tjsta = "<div style='width:200px;height:16px;border:1px solid #28a745;text-align:left'><div style='width:$dvlen;height:16px;background:#28a745'></div></div>";           
-            $tjsta .= "<br>完成处理文档总数的：$tjlen %，继续执行任务";
+            }        
+            $tjsta .= "完成处理文档总数 $tjlen %";
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd={$startdd}&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
             exit();
@@ -135,14 +133,7 @@ if ($dojob == '') {
             }
         }//end if limit
         //返回进度提示
-        if ($totalnum > 0) {
-            $tjlen = ceil(($tjnum / $totalnum) * 100);
-        } else {
-            $tjlen = 100;
-        }
-        $dvlen = $tjlen * 2;
-        $tjsta = "<div style='width:200px;height:16px;border:1px solid #28a745;text-align:left'><div style='width:$dvlen;height:16px;background:#28a745'></div></div>";
-        $tjsta .= "<br>完成处理文档总数的：$tjlen %，继续执行任务";
+        $tjsta .= "完成处理文档总数 $tjlen %";
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);

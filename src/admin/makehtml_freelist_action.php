@@ -54,10 +54,10 @@ if ($nextpage == $totalpage) {
 } else {
     if ($finishType) {
         $gourl = "makehtml_freelist_action.php?maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$nextpage";
-        ShowMsg("成功创建列表：".$tid."，继续进行操作", $gourl, 0, 100);
+        ShowMsg("创建列表：".$tid."，继续执行任务", $gourl, 0, 100);
     } else {
         $gourl = "makehtml_freelist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$pageno";
-        ShowMsg("列表：".$tid."，继续进行操作", $gourl, 0, 100);
+        ShowMsg("创建列表：".$tid."，继续执行任务", $gourl, 0, 100);
     }
 }
 $dsql->ExecuteNoneQuery("Update `#@__freelist` set  nodefault='1' where aid='$startid';");
