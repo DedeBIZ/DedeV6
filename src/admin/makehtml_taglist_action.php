@@ -93,12 +93,12 @@ if (is_array($tag) && count($tag) > 0) {
                 $nextpage = 0;
             }
             $gourl = "makehtml_taglist_action.php?maxpagesize=$maxpagesize&tagid=$tagid&pageno=$nextpage&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
-            ShowMsg("成功生成TAG：".$tag['tag']."，继续进行操作", $gourl, 0, 100);
+            ShowMsg("成功生成TAG：".$tag['tag']."，继续执行任务", $gourl, 0, 100);
             exit();
         } else {
             //继续当前这个
             $gourl = "makehtml_taglist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&tagid=$tagid&pageno=$pageno&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
-            ShowMsg("成功生成TAG：".$tag['tag']."，继续进行操作", $gourl, 0, 100);
+            ShowMsg("成功生成TAG：".$tag['tag']."，继续执行任务", $gourl, 0, 100);
             exit();
         }
     }

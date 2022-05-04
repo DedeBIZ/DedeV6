@@ -70,7 +70,6 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='更新标签' link='makehtml_taglist.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新专题' link='makehtml_spec.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新订阅' link='makehtml_rss.php' rank='sys_MakeHtml' target='main' />
-    <m:item name='更新脚本' link='makehtml_js.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新缓存' link='sys_cache_up.php' rank='sys_ArcBatch' target='main' />
 </m:top>
 <m:top mapitem='5' item='6_' name='会员管理' display='block' rank='member_List,member_Type'>
