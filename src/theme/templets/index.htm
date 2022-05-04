@@ -22,44 +22,48 @@
 				<div class="col-12">
 					<div class="row">
 						<div class="col-12 col-lg-8 litpics mb-3">
-							<div id="carouselIndex" class="carousel slide" data-ride="carousel">
-								<ol class="carousel-indicators">
-									{dede:arclist channelid=1 flag='f' row=6}
-									<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
-									{/dede:arclist}
-								</ol>
-								<div class="carousel-inner">
-									{dede:arclist channelid=1 flag='f' row=6}
-									<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
-										<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" class="mr-3" alt="[field:fulltitle/]"></a>
+							<div class="row">
+								<div id="carouselIndex" class="carousel slide" data-ride="carousel">
+									<ol class="carousel-indicators">
+										{dede:arclist channelid='1' flag='f' row='6'}
+										<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
+										{/dede:arclist}
+									</ol>
+									<div class="carousel-inner">
+										{dede:arclist channelid='1' flag='f' row='6'}
+										<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
+											<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" class="mr-3" alt="[field:fulltitle/]"></a>
+										</div>
+										{/dede:arclist}
 									</div>
-									{/dede:arclist}
+									<a class="carousel-control-prev" href="#carouselIndex" role="button" data-slide="prev">
+										<span class="carousel-control-prev-icon"></span>
+										<span class="sr-only">上一个</span>
+									</a>
+									<a class="carousel-control-next" href="#carouselIndex" role="button" data-slide="next">
+										<span class="carousel-control-next-icon"></span>
+										<span class="sr-only">下一个</span>
+									</a>
 								</div>
-								<a class="carousel-control-prev" href="#carouselIndex" role="button" data-slide="prev">
-									<span class="carousel-control-prev-icon"></span>
-									<span class="sr-only">上一个</span>
-								</a>
-								<a class="carousel-control-next" href="#carouselIndex" role="button" data-slide="next">
-									<span class="carousel-control-next-icon"></span>
-									<span class="sr-only">下一个</span>
-								</a>
 							</div>
 						</div>
 						<div class="col-12 col-lg-4 toutiao mb-3 mb-md-3">
-							<div class="card ddcard-normal">
-								<div class="card-header">
-									<div class="row">
-										<div class="col-8 caption"><span>推荐头条</span></div>
+							<div class="row">
+								<div class="card ddcard-normal">
+									<div class="card-header">
+										<div class="row">
+											<div class="col-8 caption"><span>推荐头条</span></div>
+										</div>
 									</div>
+									<ul class="list-group list-group-flush">
+										{dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
+										<li>
+											<i class="fa fa-bookmark-o"></i>
+											<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
+										</li>
+										{/dede:arclist}
+									</ul>
 								</div>
-								<ul class="list-group list-group-flush">
-									{dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
-									<li>
-										<i class="fa fa-bookmark-o"></i>
-										<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
-									</li>
-									{/dede:arclist}
-								</ul>
 							</div>
 						</div>
 					</div>
@@ -75,7 +79,7 @@
 						</div>
 						<div class="col-md-12 mt-3">
 							<div class="row row-cols-2 row-cols-md-4">
-								{dede:arclist row=4 orderby=pubdate type='image.'}
+								{dede:arclist row='4' orderby='pubdate' type='image.'}
 								<div class="col">
 									<div class="card border-0 image-item">
 										<a href="[field:arcurl/]" title="[field:fulltitle/]" class="text-body stretched-link"><img src="[field:litpic/]" class="card-img-top" alt="[field:fulltitle/]">

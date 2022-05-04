@@ -39,20 +39,16 @@
 									</a>
 								</div>
 								<div class="col-12 description">
-									<a href="[field:arcurl/]">
-										[field:description/]...
-									</a>
+									<a href="[field:arcurl/]">[field:description/]...</a>
 								</div>
-								<div class="col-12 source text-right">
-									发布时间：[field:pubdate function="MyDate('y-m-d',@me)"/]
-								</div>
+								<div class="col-12 source text-right">发布时间：[field:pubdate function="MyDate('y-m-d',@me)"/]</div>
 							</div>
 						</li>
 						{/dede:list}
 					</ul>
 					<nav>
 						<ul class="pagination justify-content-center py-3">
-							{dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="1"/}
+							{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
 						</ul>
 					</nav>
 				</div>
