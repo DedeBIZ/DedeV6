@@ -22,7 +22,7 @@ if ($dopost == 'save') {
         ShowMsg('验证码错误', '-1');
         exit();
     }
-    if (function_exists('password_hash')) {
+    if (function_exists('password_hash') && !empty($row['pwd_new'])) {
         if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
             ShowMsg('您输入的旧密码错误或没填写，不允许修改资料', '-1');
             exit();
@@ -37,11 +37,15 @@ if ($dopost == 'save') {
         ShowMsg('您两次输入的新密码不一致', '-1');
         exit();
     }
+    $addupquery = '';
+    $admaddupquery = '';
     $pp = "pwd";
+    $pwd = '';
     if ($userpwd == '') {
         if (function_exists('password_hash')) {
             $pp = "pwd_new";
             $pwd = $row['pwd_new'];
+            $addupquery = ',pwd=\'\'';
         } else {
             $pwd = $row['pwd'];
         }
@@ -51,12 +55,14 @@ if ($dopost == 'save') {
             $pp = "pwd_new";
             $pwd = password_hash($userpwd, PASSWORD_BCRYPT);
             $pwd2 = password_hash($userpwd, PASSWORD_BCRYPT);
+            $addupquery = ',pwd=\'\'';
+            $admaddupquery = ',pwd=\'\'';
         } else {
             $pwd = md5($userpwd);
             $pwd2 = substr(md5($userpwd), 5, 20);
         }
     }
-    $addupquery = '';
+    
     //修改安全问题或Email
     if ($email != $row['email'] || ($newsafequestion != 0 && $newsafeanswer != '')) {
         if ($row['safequestion'] != 0 && ($row['safequestion'] != $safequestion || $row['safeanswer'] != $safeanswer)) {
@@ -102,7 +108,7 @@ if ($dopost == 'save') {
     $dsql->ExecuteNoneQuery($query1);
     //如果是管理员，修改其后台密码
     if ($cfg_ml->fields['matt'] == 10 && $pwd2 != "") {
-        $query2 = "UPDATE `#@__admin` SET $pp='$pwd2' where id='".$cfg_ml->M_ID."' ";
+        $query2 = "UPDATE `#@__admin` SET $pp='$pwd2'{$admaddupquery} where id='".$cfg_ml->M_ID."' ";
         $dsql->ExecuteNoneQuery($query2);
     }
     //清除会员缓存

@@ -27,11 +27,12 @@ if ($dopost == 'saveedit') {
     }
     $pwdm = '';
     if ($pwd != '') {
-        $pwdm = ",pwd='".md5($pwd)."'";
-        $pwd = ",pwd='".substr(md5($pwd), 5, 20)."'";
         if (function_exists('password_hash')) {
-            $pwdm = ",pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";
-            $pwd = ",pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";
+            $pwdm = ",pwd='',pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";
+            $pwd = ",pwd='',pwd_new='".password_hash($pwd, PASSWORD_BCRYPT)."'";
+        } else {
+            $pwdm = ",pwd='".md5($pwd)."'";
+            $pwd = ",pwd='".substr(md5($pwd), 5, 20)."'";
         }
     }
     if (empty($typeids)) {
