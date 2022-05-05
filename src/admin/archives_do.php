@@ -69,8 +69,7 @@ function viewArchives(){ }
 else if ($dopost == "viewArchives") {
     $aid = preg_replace("#[^0-9]#", '', $aid);
     //获取主表信息
-    $query = "SELECT arc.*,ch.maintable,ch.addtable,ch.issystem,ch.editcon,
-        tp.typedir,tp.typename,tp.corank,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.sitepath,tp.siteurl
+    $query = "SELECT arc.*,ch.maintable,ch.addtable,ch.issystem,ch.editcon,tp.typedir,tp.typename,tp.corank,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.sitepath,tp.siteurl
         FROM `#@__arctiny` arc
         LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
         LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype

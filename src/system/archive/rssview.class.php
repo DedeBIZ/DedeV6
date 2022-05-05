@@ -128,8 +128,7 @@ class RssView
         $orwhere = " arc.arcrank > -1 ";
         $orwhere .= " AND (arc.typeid in (".GetSonIds($this->TypeID, $this->TypeFields['channeltype']).") ) ";
         $ordersql = " ORDER BY arc.id desc";
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,
-        tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
         FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
         WHERE $orwhere $ordersql LIMIT 0,".$this->MaxRow;
         $this->dsql->SetQuery($query);

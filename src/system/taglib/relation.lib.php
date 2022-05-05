@@ -43,18 +43,16 @@ function lib_relation(&$ctag, &$refObj)
         $odb = " ORDER BY arc.click DESC";
     }
     if ($channelid > 0) {
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,
-    tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-    FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-    where arc.arcrank>-1 AND arc.id IN (".$refObj->Fields[$name].") $odb";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+        FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
+        where arc.arcrank>-1 AND arc.id IN (".$refObj->Fields[$name].") $odb";
     } else {
         $gquery = "SELECT addtable,listfields FROM `#@__channeltype` WHERE id='$channelid' ";
         $grow = $dsql->GetOne($gquery);
         $maintable = trim($grow['addtable']);
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,
-    tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-    FROM `{$maintable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-    where arc.arcrank>-1 AND arc.aid IN (".$refObj->Fields[$name].") $odb";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+        FROM `{$maintable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
+        where arc.arcrank>-1 AND arc.aid IN (".$refObj->Fields[$name].") $odb";
     }
     $innertext = trim($ctag->GetInnerText());
     if ($innertext == '') $innertext = GetSysTemplets('part_arclist.htm');

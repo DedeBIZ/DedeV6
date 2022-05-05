@@ -537,11 +537,9 @@ class SearchView
             }
         }
         //搜索
-        $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,
-            act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
-            FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id
-            WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
-
+        $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
+        FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id
+        WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
         $artlist = "";
