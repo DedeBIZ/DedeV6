@@ -21,7 +21,7 @@ $startid = isset($startid) ? intval($startid) : 0;
 $endid = isset($endid) ? intval($endid) : 0;
 $tagid = isset($tagid) ? intval($tagid) : 0;
 $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
-// 生成
+//生成
 if ($tagid > 0) {
     $upall = 0; //更新单个模式
     $ctagid = $tagid;
@@ -31,7 +31,7 @@ if ($tagid > 0) {
 $allfinish = false; //是否全部完成
 $gwhere = ($startid == 0 ? "WHERE 1=1" : "WHERE id>=$startid");
 if ($endid > $startid && $startid > 0) $gwhere .= " AND id <= $endid ";
-// 判断生成模式
+//判断生成模式
 if ($upall == 1 && $ctagid == 0) {
     $rr = $dsql->GetOne("SELECT * FROM `#@__tagindex` $gwhere AND mktime <> {$mktime} LIMIT 1");
     if (isset($rr['id']) && $rr['id'] > 0) {
@@ -49,7 +49,7 @@ if ($ctagid == 0 && $allfinish) {
     exit;
 }
 $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
-// 创建TAGS目录
+//创建TAGS目录
 $tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
 MkdirAll($cfg_basedir.$tagsDir, $cfg_dir_purview);
 if (is_array($tag) && count($tag) > 0) {

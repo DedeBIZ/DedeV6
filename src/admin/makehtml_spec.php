@@ -16,7 +16,7 @@ if ($dopost == "ok") {
     $sp = new SpecView();
     $rurl = $sp->MakeHtml(0);
     echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-    echo "<div class=\"alert alert-success\" role=\"alert\">成功生成所有专题列表 <a href='$rurl' target='_blank' class='btn btn-success btn-sm'>预览</a></div>";
+    echo "<div class=\"alert alert-success\">成功生成所有专题列表 <a href='$rurl' target='_blank' class='btn btn-success btn-sm'>预览</a></div>";
     exit();
 }
 include DedeInclude('templets/makehtml_spec.htm');

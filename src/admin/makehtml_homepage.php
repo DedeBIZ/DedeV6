@@ -31,28 +31,28 @@ if ($dopost == "view") {
                 //设定dedebiz admin密码
                 if ($dedebiz_admin == "" || $dedebiz_admin !== $re_dedebiz_admin) {
                     echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-                    echo "<div class=\"alert alert-danger\" role=\"alert\">DedeBIZ操作密码为空或两次指定的密码不符</div><br>";
+                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空或两次指定的密码不符</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminPWDCreate($dedebiz_admin);
                 if ($data->data != "ok") {
                     echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-                    echo "<div class=\"alert alert-danger\" role=\"alert\">DedeBIZ设定操作密码失败：${$data}</div><br>";
+                    echo "<div class=\"alert alert-danger\">DedeBIZ设定操作密码失败：${$data}</div><br>";
                     $client->Close();
                     exit;
                 }
             } else {
                 if ($dedebiz_admin == "") {
                     echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-                    echo "<div class=\"alert alert-danger\" role=\"alert\">DedeBIZ操作密码为空</div><br>";
+                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminSetIndexLockState($dedebiz_admin, $lockindex);
                 if ($data->data != "ok") {
                     echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-                    echo "<div class=\"alert alert-danger\" role=\"alert\">DedeBIZ操作密码失败，填写正确的操作密码</div><br>";
+                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码失败，填写正确的操作密码</div><br>";
                     $client->Close();
                     exit;
                 }
@@ -84,12 +84,12 @@ if ($dopost == "view") {
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-        echo "<div class=\"alert alert-success\" role=\"alert\">成功更新首页：".$homeFile." <a href='{$position}' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
+        echo "<div class=\"alert alert-success\">成功更新首页：".$position." <a href='{$position}' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
     } else {
         //动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-        echo "<div class=\"alert alert-success\" role=\"alert\">采用动态浏览：<a href='../index.php' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
+        echo "<div class=\"alert alert-success\">采用动态浏览：<a href='../index.php' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
     }
     $iquery = "UPDATE `#@__homepageset` SET showmod='$showmod'";
     $dsql->ExecuteNoneQuery($iquery);
