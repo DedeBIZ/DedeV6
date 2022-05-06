@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="js/global.js"></script>
-		<script src="js/context_menu.js"></script>
 		<script src="js/ieemu.js"></script>
 		<script src="js/dialog.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
@@ -37,112 +36,6 @@
 				extendElementModel();
 				emulateAttachEvent();
 			}
-			//普通栏目
-			function CommonMenu(eobj, obj, tid, tname) {
-				var popupoptions
-				popupoptions = [
-					new ContextItem("增加内容", function() {
-						location = "catalog_do.php?cid=" + tid + "&dopost=addArchives";
-					}),
-					new ContextItem("管理内容", function() {
-						location = "catalog_do.php?cid=" + tid + "&dopost=listArchives";
-					}),
-					new ContextSeperator(),
-					new ContextItem("预览分类", function() {
-						window.open("<?php echo $cfg_phpurl; ?>/list.php?tid=" + tid);
-					}),
-					new ContextItem("更新HTML", function() {
-						location = "makehtml_list.php?cid=" + tid;
-					}),
-					new ContextItem("获取JS文件", function() {
-						location = "catalog_do.php?cid=" + tid + "&dopost=GetJs";
-					}),
-					new ContextSeperator(),
-					new ContextItem("增加子类", function() {
-						location = "catalog_add.php?id=" + tid;
-					}),
-					new ContextItem("修改栏目", function() {
-						location = "catalog_edit.php?id=" + tid;
-					}),
-					new ContextSeperator(),
-					new ContextItem("合并栏目", function() {
-						location = 'catalog_do.php?dopost=unitCatalog&typeid=' + tid
-					}),
-					new ContextItem("移动栏目", function() {
-						location = 'catalog_do.php?dopost=moveCatalog&typeid=' + tid
-					}),
-					new ContextItem("删除栏目", function() {
-						location = "catalog_del.php?id=" + tid + "&typeoldname=" + tname;
-					}),
-					new ContextSeperator(),
-					new ContextItem("向上排前一级", function() {
-						location = "catalog_do.php?cid=" + tid + "&dopost=upRank";
-					}),
-					new ContextItem("关闭菜单(C)", function() {})
-				]
-				ContextMenu.display(eobj, popupoptions)
-			}
-			//封面模板
-			function CommonMenuPart(eobj, obj, tid, tname) {
-				var popupoptions
-				popupoptions = [
-					new ContextItem("管理内容", function() {
-						location = "catalog_do.php?cid=" + tid + "&dopost=listArchives";
-					}),
-					new ContextSeperator(),
-					new ContextItem("预览分类", function() {
-						window.open("<?php echo $cfg_phpurl; ?>/list.php?tid=" + tid);
-					}),
-					new ContextItem("更新HTML", function() {
-						location = "makehtml_list.php?cid=" + tid;
-					}),
-					new ContextItem("获取JS文件", function() {
-						location = "catalog_do.php?cid=" + tid + "&dopost=GetJs";
-					}),
-					new ContextSeperator(),
-					new ContextItem("增加子类", function() {
-						location = "catalog_add.php?id=" + tid;
-					}),
-					new ContextItem("修改栏目", function() {
-						location = "catalog_edit.php?id=" + tid;
-					}),
-					new ContextSeperator(),
-					new ContextItem("移动栏目", function() {
-						location = 'catalog_move.php?job=movelist&typeid=' + tid
-					}),
-					new ContextItem("删除栏目", function() {
-						location = "catalog_del.php?id=" + tid + "&typeoldname=" + tname;
-					}),
-					new ContextSeperator(),
-					new ContextItem("向上排前一级", function() {
-						location = "catalog_do.php?cid=" + tid + "&dopost=upRank";
-					}),
-					new ContextItem("关闭菜单(C)", function() {})
-				]
-				ContextMenu.display(eobj, popupoptions)
-			}
-			//跳转栏目
-			function SingleMenu(eobj, obj, tid, tname) {
-				var popupoptions
-				popupoptions = [
-					new ContextItem("修改栏目", function() {
-						location = "catalog_edit.php?id=" + tid;
-					}),
-					new ContextSeperator(),
-					new ContextItem("移动栏目", function() {
-						location = 'catalog_move.php?job=movelist&typeid=' + tid
-					}),
-					new ContextItem("删除栏目", function() {
-						location = "catalog_del.php?id=" + tid + "&typeoldname=" + tname;
-					}),
-					new ContextSeperator(),
-					new ContextItem("向上排前一级", function() {
-						window.location = "catalog_do.php?cid=" + tid + "&dopost=upRank";
-					}),
-					new ContextItem("关闭菜单(C)", function() {})
-				]
-				ContextMenu.display(eobj, popupoptions)
-			}
 		</script>
 		<style>
 			td,
@@ -163,7 +56,7 @@
 			}
 		</style>
 	</head>
-	<body onLoad="ContextMenu.intializeContextMenu()">
+	<body>
 		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3 mb-3">
 			<tr>
 				<td height="26" style="background:#f8f8f8;border: 1px solid #dee2e6">

@@ -300,12 +300,6 @@ $actionSearch[7] = array(
             'linkurl' => 'makehtml_spec.php'
         ),
         5  =>  array(
-            'title' => '更新订阅',
-            'description' => '对全站的RSS进行更新',
-            'purview' => 'sys_MakeHtml',
-            'linkurl' => 'makehtml_rss.php'
-        ),
-        6  =>  array(
             'title' => '更新缓存',
             'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员访问历史、删除过期短信 ',
             'purview' => 'sys_ArcBatch',

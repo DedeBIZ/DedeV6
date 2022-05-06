@@ -68,31 +68,6 @@ function QuickEdit(aid, e, obj)
 	LoadQuickDiv(e, 'archives_do.php?dopost=quickEdit&aid='+aid+'&rnd='+Math.random(), 'quickEdit', 'auto', '300px');
 	ChangeFullDiv('show');
 }
-//上下文菜单
-function ShowMenu(evt,obj,aid,atitle)
-{
-  var popupoptions
-  popupoptions = [
-    new ContextItem("浏览文档",function(){ viewArc(aid); }),
-	new ContextItem("编辑属性",function(){ QuickEdit(aid, evt, obj); }),
-    new ContextItem("编辑文档",function(){ editArc(aid); }),
-    new ContextSeperator(),
-    new ContextItem("更新HTML",function(){ updateArc(aid); }),
-    new ContextItem("审核文档",function(){ checkArc(aid); }),
-    new ContextItem("推荐文档",function(){ adArc(aid); }),
-    new ContextItem("删除文档",function(){ delArc(aid); }),
-    new ContextSeperator(),
-    new ContextItem("复制(C)",function(){ copyToClipboard(atitle); }),
-    new ContextItem("重载页面",function(){ location.reload(); }),
-    new ContextSeperator(),
-    new ContextItem("全部选择",function(){ selAll(); }),
-    new ContextItem("取消选择",function(){ noSelAll(); }),
-    new ContextSeperator(),
-    new ContextItem("关闭菜单",function(){})
-  ]
-  ContextMenu.display(evt,popupoptions);
-  //location="catalog_main.php";
-}
 //获得选中文件的文件名
 function getCheckboxItem()
 {

@@ -107,7 +107,6 @@ $adminMenu1
     <m:item name='更新文档' link='makehtml_archives.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新标签' link='makehtml_taglist.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新专题' link='makehtml_spec.php' rank='sys_MakeHtml' target='main' />
-    <m:item name='更新订阅' link='makehtml_rss.php' rank='sys_MakeHtml' target='main' />
     <m:item name='更新缓存' link='sys_cache_up.php' rank='sys_ArcBatch' target='main' />
 </m:top>
 <m:top item='6_' name='会员管理' display='block' rank='member_List,member_Type'>

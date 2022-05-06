@@ -82,7 +82,7 @@
 					<td width="10%">操作</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-				<tr align="center" onMouseOut="javascript:this.bgColor='#ffffff';" height="26" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'{dede:field.title function='urlencode(@me)'/}')">
+				<tr align="center" onMouseOut="javascript:this.bgColor='#ffffff';" height="26">
 					<td>{dede:field.id/}</td>
 					<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>

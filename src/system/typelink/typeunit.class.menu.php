@@ -22,7 +22,6 @@ class TypeUnit
     var $dsql;
     var $aChannels;
     var $isAdminAll;
-
     //php5构造函数
     function __construct($catlogs = '')
     {
@@ -94,21 +93,16 @@ class TypeUnit
             $channeltype = $row->channeltype;
             //普通栏目
             if ($ispart == 0) {
-                $smenu = " oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\"";
             }
             //封面频道
             else if ($ispart == 1) {
-                $smenu = " oncontextmenu=\"CommonMenuPart(event,this,$id,'".urlencode($typeName)."')\"";
             }
             //独立页面
-            //else if($ispart==2)
-            //{
-            //$smenu = " oncontextmenu=\"SingleMenu(event,this,$id,'".urlencode($typeName)."')\"";
-            //}
+            else if($ispart==2) {
+            }
             //跳转网址
             else {
                 continue;
-                $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
             }
             echo "<dl class='topcc'>\r\n";
             echo "<dd class='dlf'><img style='cursor:pointer' onClick=\"LoadSuns('suns{$id}',{$id});\" src='/static/web/img/tree_explode.gif'></dd>\r\n";
@@ -156,25 +150,16 @@ class TypeUnit
                 if (in_array($id, $this->aChannels) || $needcheck === false || $this->isAdminAll === true) {
                     //普通列表
                     if ($ispart == 0 || empty($ispart)) {
-                        $smenu = " oncontextmenu=\"CommonMenu(event,this,$id,'".urlencode($typeName)."')\"";
-                        $timg = " <img src='images/tree_page.gif'>";
                     }
                     //封面频道
                     else if ($ispart == 1) {
-                        $smenu = " oncontextmenu=\"CommonMenuPart(event,this,$id,'".urlencode($typeName)."')\"";
-                        $timg = " <img src='/static/web/img/tree_part.gif'>";
                     }
                     //独立页面
-                    //else if($ispart==2)
-                    //{
-                    //$timg = " <img src='/static/web/img/tree_page.gif'>";
-                    //$smenu = " oncontextmenu=\"SingleMenu(event,this,$id,'".urlencode($typeName)."')\" ";
-                    //}
+                    else if($ispart==2) {
+                    }
                     //跳转网址
                     else {
                         continue;
-                        $timg = " <img src='/static/web/img/tree_page.gif'>";
-                        $smenu = " oncontextmenu=\"JumpMenu(event,this,$id,'".urlencode($typeName)."')\" ";
                     }
                     echo "<table class='sunlist'>\r\n";
                     echo "<tr>\r\n";

@@ -11,7 +11,6 @@
 	<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 	<script src="../static/web/js/webajax.js"></script>
 	<script src="js/ieemu.js"></script>
-	<script src="js/context_menu.js"></script>
 	<script src="js/main.js"></script>
 	<script>
 		if (moz) {
@@ -64,29 +63,6 @@
 			}
 			LoadQuickDiv(e, 'archives_do.php?dopost=moveArchives&qstr=' + qstr + '&channelid=' + cid + '&rnd=' + Math.random(), 'moveArchives', '450px', '180px');
 			ChangeFullDiv('show');
-		}
-		//上下文菜单
-		function ShowMenu(evt, obj, aid, atitle) {
-			var popupoptions
-			popupoptions = [
-				new ContextItem("浏览文档", function () { viewArc(aid); }),
-				new ContextItem("编辑文档", function () { editArc(aid); }),
-				new ContextSeperator(),
-				new ContextItem("更新HTML", function () { updateArc(aid); }),
-				new ContextItem("审核文档", function () { checkArc(aid); }),
-				new ContextItem("推荐文档", function () { adArc(aid); }),
-				new ContextItem("删除文档", function () { delArc(aid); }),
-				new ContextSeperator(),
-				new ContextItem("复制(C)", function () { copyToClipboard(atitle); }),
-				new ContextItem("重载页面", function () { location.reload(); }),
-				new ContextSeperator(),
-				new ContextItem("全部选择", function () { selAll(); }),
-				new ContextItem("取消选择", function () { noSelAll(); }),
-				new ContextSeperator(),
-				new ContextItem("关闭菜单", function () { })
-			]
-			ContextMenu.display(evt, popupoptions);
-			//location="catalog_main.php";
 		}
 		//获得选中文件的文件名
 		function getCheckboxItem() {
@@ -143,7 +119,7 @@
 		}
 	</script>
 </head>
-<body onLoad="ContextMenu.intializeContextMenu()">
+<body>
 	<table width="98%" align="center" cellspacing="0" cellpadding="0" class="table maintable mt-3 mb-3">
 		<tr>
 			<td>
@@ -183,7 +159,7 @@
 	</form>
 	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
 		<tr>
-			<td height="26" colspan="9" background="../static/web/img/tbg.gif" style="padding-left:10px">{dede:global.positionname/}文档列表（文章标题处右键进行常用操作）</td>
+			<td height="26" colspan="9" background="../static/web/img/tbg.gif" style="padding-left:10px">{dede:global.positionname/}文档列表</td>
 		</tr>
 		<form name="form2">
 			<tr align="center" bgcolor="#F8FCF1" height="26">
@@ -201,9 +177,7 @@
 			<tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.aid/}" class="np"></td>
-				<td align='left'>
-					<a href='archives_do.php?aid={dede:field.aid/}&dopost=editArchives' oncontextmenu="ShowMenu(event,this,{dede:field.aid/},'{dede:field.title function=" str_replace('\'', '' , @me)" /}')">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a>
-				</td>
+				<td align="left"><a href="archives_do.php?aid={dede:field.aid/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a></td>
 				<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 				<td>{dede:field.typename/}</td>
 				<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>

@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <script src="js/context_menu.js"></script>
   <script src="js/ieemu.js"></script>
 	<script>
 	if (moz) {
@@ -42,26 +41,6 @@
 		var qstr = getCheckboxItem();
 		if (aid == 0) aid = getOneItem();
 		location = "archives_do.php?qstr=" + qstr + "&aid=" + aid + "&dopost=delArchives";
-	}
-	//上下文菜单
-	function ShowMenu(evt, obj, aid, atitle) {
-		var eobj, popupoptions
-		popupoptions = [
-			new ContextItem("浏览文档", function () { viewArc(aid); }),
-			new ContextItem("编辑文档", function () { editArc(aid); }),
-			new ContextSeperator(),
-			new ContextItem("更新HTML", function () { updateArc(aid); }),
-			new ContextItem("审核文档", function () { checkArc(aid); }),
-			new ContextItem("推荐文档", function () { adArc(aid); }),
-			new ContextSeperator(),
-			new ContextItem("删除文档", function () { delArc(aid); }),
-			new ContextSeperator(),
-			new ContextItem("全部选择", function () { selAll(); }),
-			new ContextItem("取消选择", function () { noSelAll(); }),
-			new ContextSeperator(),
-			new ContextItem("关闭菜单", function () { })
-		]
-		ContextMenu.display(evt, popupoptions)
 	}
 	//获得选中文件的文件名
 	function getCheckboxItem() {
@@ -105,7 +84,7 @@
 	}
 	</script>
 </head>
-<body onLoad="ContextMenu.intializeContextMenu()">
+<body>
 	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
 		<tr>
 			<td>
@@ -139,7 +118,7 @@
 	</form>
 	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
 		<tr>
-			<td height="26" colspan="9" style="margin-left:10px;background:#f8f8f8">文章列表（文章标题处右键进行常用操作）</td>
+			<td height="26" colspan="9" style="margin-left:10px;background:#f8f8f8">文章列表</td>
 		</tr>
 		<form name="form2">
 			<tr align="center" bgcolor="#F8FCF1" height="26">
@@ -154,10 +133,10 @@
 				<td width="10%">属性</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
-			<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';" height="26" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">
+			<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';" height="26">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
-				<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives" oncontextmenu="ShowMenu(event,this,{dede:field.id/},'<?php echo urlencode($fields['title'])?>')">{dede:field.title/}</a></td>
+				<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
 				<td><?php echo MyDate("Y-m-d H:i",$fields['senddate'])?></td>
 				<td>{dede:field.typeid function='GetTypename(@me)'/}</td>
 				<td>{dede:field.click/}</td>
