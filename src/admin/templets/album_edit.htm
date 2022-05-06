@@ -8,19 +8,19 @@
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="css/albumupload.css">
+  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
-  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <script src="../static/web/js/moment.min.js"></script>
   <script src="../static/web/js/daterangepicker.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/album.js"></script>
   <script src="js/handlers.js"></script>
-  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <script src="../static/web/js/cropper.min.js"></script>
-  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <script>
   var swfu = null;
   var vcc = 0;
@@ -50,7 +50,7 @@
   </script>
   <style>
 body{background:#fff}
-img{vertical-align:baseline}
+img{margin:0 10px;vertical-align:baseline}
 table{border-collapse:separate}
 .albEdit {height:auto}
   </style>
@@ -449,7 +449,7 @@ table{border-collapse:separate}
     </tr>
     <tr>
       <td height="26" colspan="4" class="bline">
-        <table width='100%'>
+        <table width="100%">
           <tr>
             <td>
               <div id="thumbnailsEdit">
@@ -476,8 +476,8 @@ table{border-collapse:separate}
                         $fhtml .= "<input type='hidden' name='imgurl{$j}' value='{$bigimg}'>";
                         $fhtml .= "<input type='hidden' name='imgddurl{$j}' value='{$litimg}'>";
                         $fhtml .= "<img src='{$litimg}'style='width:120px'><a href=\"javascript:delAlbPicOld('$bigimg',$j)\" class=\"btn btn-success btn-sm\">删除</a>";
-                        $fhtml .= "<div style='margin-top:10px'>注释：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."' style='width:160px'></div>";
-                        $fhtml .= "<div style='margin-top:10px'>更换：<input type='file' name='imgfile{$j}' size='18' style='width:160px'></div>";
+                        $fhtml .= "<div style='margin-top:10px'>名称：<input type='text' name='imgmsg{$j}' value='".$ctag->GetAtt('text')."'></div>";
+                        $fhtml .= "<div style='margin-top:10px'>更换：<input type='file' name='imgfile{$j}' style='width:160px'></div>";
                       $fhtml .= "</div>";
                       echo $fhtml;
                       $j++;
@@ -504,11 +504,11 @@ table{border-collapse:separate}
       </td>
     </tr>
     <tr>
-      <td colspan="4" style="background:#fff url(../static/web/img/albviewbg.jpg) 0 20px no-repeat;">
-        <table width='100%' height='160' style="margin:0 0 20px 0">
+      <td colspan="4">
+        <table width="100%">
           <tr>
             <td>
-              <div id="divFileProgressContainer" style="height:70px;"></div>
+              <div id="divFileProgressContainer"></div>
               <div id="thumbnails"></div>
             </td>
           </tr>

@@ -6,7 +6,7 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-document.write("<style type=\"text/css\">.close{float:right;font-size:14px;cursor:pointer}</style>")
+document.write("<style>.close{float:right;font-size:14px;cursor:pointer}</style>")
 function editTitle(aid) {
 	var show = document.getElementById("show_news");
 	fetch("catalog_edit.php?dopost=time&id=" + aid).then(resp=>resp.text()).then((d)=>{
