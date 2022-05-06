@@ -309,7 +309,7 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
-        $win->AddTitle("您确定要删除 $qstr 这些文档");
+        $win->AddTitle("您确定要删除 $qstr 文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -517,9 +517,8 @@ else if ($dopost == 'del') {
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
-        $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确定要永久删除 $qstr 和 $aid 这些文档");
+        $win->AddTitle("您确定要删除 $qstr 文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
