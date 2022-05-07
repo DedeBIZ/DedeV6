@@ -273,48 +273,6 @@ else if ($dopost == "checkArchives") {
     ShowMsg("成功审核指定的文档", $ENV_GOBACK_URL);
     exit();
 }
-/*--------------------------
-//删除文档
-function delArchives(){ }
----------------------------*/
-else if ($dopost == "delArchives") {
-    CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
-    require_once(DEDEINC."/libraries/oxwindow.class.php");
-    if (empty($fmdo)) $fmdo = '';
-
-    if ($fmdo == 'yes') {
-        if (!empty($aid) && empty($qstr)) {
-            $qstr = $aid;
-        }
-        if ($qstr == '') {
-            ShowMsg("参数无效", $ENV_GOBACK_URL);
-            exit();
-        }
-        $qstrs = explode("`", $qstr);
-        $okaids = array();
-        foreach ($qstrs as $aid) {
-            if (!isset($okaids[$aid])) {
-                DelArc($aid);
-            } else {
-                $okaids[$aid] = 1;
-            }
-        }
-        ShowMsg("成功删除指定的文档", $ENV_GOBACK_URL);
-        exit();
-    } else {
-        $wintitle = "文档管理-删除文档";
-        $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a>::删除文档";
-        $win = new OxWindow();
-        $win->Init("archives_do.php", "js/blank.js", "POST");
-        $win->AddHidden("fmdo", "yes");
-        $win->AddHidden("dopost", $dopost);
-        $win->AddHidden("qstr", $qstr);
-        $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确定要删除，序号[$qstr]文档");
-        $winform = $win->GetWindow("ok");
-        $win->Display();
-    }
-}
 /*-----------------------------
 function moveArchives(){ }
 ------------------------------*/
@@ -349,14 +307,14 @@ else if ($dopost == 'moveArchives') {
         <tr>
             <td width="86" height="26" class="bline">&nbsp;文档ID：</td>
             <td class="bline">
-                <input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'>
+                <input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden">
                 <br>移动到的目标栏目必须和选定的文档频道类型一致，否则程序会自动勿略不符合的文档
             </td>
         </tr>
         <tr>
             <td colspan="2" align="center" class="py-3">
-                <button type='submit' class='btn btn-success btn-sm'>保存</button>
-                <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success btn-sm'>关闭</button>
+                <button type="submit" class="btn btn-success btn-sm">保存</button>
+                <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
             </td>
         </tr>
         </table>
@@ -429,6 +387,48 @@ else if ($dopost == 'return') {
     ShowMsg("成功还原指定的文档", "recycling.php");
     exit();
 }
+/*--------------------------
+//删除文档
+function delArchives(){ }
+---------------------------*/
+else if ($dopost == "delArchives") {
+    CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
+    require_once(DEDEINC."/libraries/oxwindow.class.php");
+    if (empty($fmdo)) $fmdo = '';
+
+    if ($fmdo == 'yes') {
+        if (!empty($aid) && empty($qstr)) {
+            $qstr = $aid;
+        }
+        if ($qstr == '') {
+            ShowMsg("参数无效", $ENV_GOBACK_URL);
+            exit();
+        }
+        $qstrs = explode("`", $qstr);
+        $okaids = array();
+        foreach ($qstrs as $aid) {
+            if (!isset($okaids[$aid])) {
+                DelArc($aid);
+            } else {
+                $okaids[$aid] = 1;
+            }
+        }
+        ShowMsg("成功删除指定的文档", $ENV_GOBACK_URL);
+        exit();
+    } else {
+        $wintitle = "文档管理-删除文档";
+        $wecome_info = "<a href='".$ENV_GOBACK_URL."'>文档管理</a>::删除文档";
+        $win = new OxWindow();
+        $win->Init("archives_do.php", "js/blank.js", "POST");
+        $win->AddHidden("fmdo", "yes");
+        $win->AddHidden("dopost", $dopost);
+        $win->AddHidden("qstr", $qstr);
+        $win->AddHidden("recycle", $recycle);
+        $win->AddTitle("您确定要删除，序号 $qstr 文档");
+        $winform = $win->GetWindow("ok");
+        $win->Display();
+    }
+}
 /*-----------------------------
 //清空文档
 function RbClearArchives(){ }
@@ -478,7 +478,7 @@ else if ($dopost == 'clear') {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("本次操作将清空回收站所有共 $num 篇文档<br>您确定要删除，序号[$qstr]文档");
+        $win->AddTitle("本次操作将清空回收站 $num 篇文档<br>您确定要删除，序号 $qstr 文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -518,7 +518,7 @@ else if ($dopost == 'del') {
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确定要删除，序号[$qstr]文档");
+        $win->AddTitle("您确定要删除，序号 $qstr 文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -560,7 +560,7 @@ else if ($dopost == 'quickEdit') {
     <tr>
         <td width="86" height="26" class="bline">&nbsp;属性：</td>
         <td class="bline">
-            <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
+            <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag']; ?>">
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
@@ -606,8 +606,8 @@ else if ($dopost == 'quickEdit') {
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-3">
-            <button type='submit' class='btn btn-success btn-sm'>保存</button>
-            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success btn-sm'>关闭</button>
+            <button type="submit" class="btn btn-success btn-sm">保存</button>
+            <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
         </td>
     </tr>
     </table>
@@ -878,12 +878,12 @@ else if ($dopost == 'attsDlg') {
     </tr>
     <tr>
         <td width="86" height="26" class="bline">&nbsp;文档ID：</td>
-        <td class="bline"><input type='text' name='tmpids' value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'></td>
+        <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-3">
-            <button type='submit' class='btn btn-success btn-sm'>保存</button>
-            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success btn-sm'>关闭</button>
+            <button type="submit" class="btn btn-success btn-sm">保存</button>
+            <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
         </td>
     </tr>
     </table>
@@ -905,11 +905,11 @@ else if ($dopost == 'getCatMap') {
     echo "</div>";
     $tus = new TypeUnitSelector();
     ?>
-    <form name='quicksel' action='javascript:;' method='get'>
-        <div class='quicksel'><?php $tus->ListAllType($channelid); ?></div>
-        <div align='center' class='quickselfoot'>
-            <button onclick='getSelCat("<?php echo $targetid; ?>");' class='btn btn-success btn-sm'>保存</button>
-            <button type='button' onclick='HideObj("<?php echo $divname; ?>");ChangeFullDiv("hide");' class='btn btn-success btn-sm'>关闭</button>
+    <form name="quicksel" action="javascript:;" method="get">
+        <div class="quicksel"><?php $tus->ListAllType($channelid); ?></div>
+        <div align="center" class="quickselfoot">
+            <button onclick="getSelCat('<?php echo $targetid; ?>');" class="btn btn-success btn-sm">保存</button>
+            <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
         </div>
     </form>
 <?php
