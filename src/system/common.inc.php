@@ -122,11 +122,6 @@ require_once(DEDEDATA.'/common.inc.php');
 if (!isset($cfg_dbtype)) {
     $cfg_dbtype = 'mysql';
 }
-//载入系统验证安全配置
-if (file_exists(DEDEDATA.'/safe/inc_safe_config.php')) {
-    require_once(DEDEDATA.'/safe/inc_safe_config.php');
-    if (!empty($safe_faqs)) $safefaqs = unserialize($safe_faqs);
-}
 //Session跨域设置
 if (!empty($cfg_domain_cookie)) {
     @session_set_cookie_params(0, '/', $cfg_domain_cookie);
@@ -227,6 +222,11 @@ if (!isset($cfg_NotPrintHead)) {
         header("Content-Type: text/html; charset={$cfg_soft_lang}");
     }
 }
+//安全提示
+$safe_gdopen = '1,2,3,4,5,6,7';
+$safe_codetype = '3';
+$safe_wwidth = '80';
+$safe_wheight = '36';
 //自动加载类库处理
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     require_once(DEDEINC.'/autoload7.inc.php');
@@ -268,6 +268,7 @@ $cfg_helper_autoload = array(
     'archive',    /* 文档小助手 */
     'upload',     /* 上传小助手 */
     'extend',     /* 扩展小助手 */
+    'code',       /* 代码小助手 */
 );
 //初始化小助手
 helper($cfg_helper_autoload);
