@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="{dede:global name='cfg_soft_lang'/}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title><?php echo $msgtitle; ?></title>
+		<title><?php echo $msgtitle; ?>-<?php echo $cfg_webname; ?></title>
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
@@ -48,7 +48,7 @@
 			<div class="footer_body">
 				<span class="gotop"><a href="javascript:scroll(0,0)"><img src="<?php echo $cfg_templets_skin; ?>/images/top.gif"></a></span>
 				<p class="powered">
-					{dede:global.cfg_powerby/} {dede:global.cfg_beian/} Powered by <a href="https://www.dedebiz.com" title="DedeBIZ内容管理系统-国内流行的内容管理系统多端全媒体解决方案" target="_blank">DedeBIZ{dede:global.cfg_version/}</a>
+					<?php echo $cfg_powerby; ?> <?php echo $cfg_beian; ?> Powered by <a href="https://www.dedebiz.com" title="DedeBIZ内容管理系统-国内流行的内容管理系统多端全媒体解决方案" target="_blank">DedeBIZ<?php echo $cfg_version; ?></a>
 				</p>
 			</div>
 		</div>

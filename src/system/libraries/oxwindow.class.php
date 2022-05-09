@@ -192,7 +192,6 @@ class OxWindow
 <tr>
 <td align='center' colspan='2' class='py-3'>
 <button type='submit' class='btn btn-success btn-sm'>$tt</button>
-<button type='button' class='btn btn-success btn-sm' onClick='this.form.reset();return false;'>重置</button>
 <button type='button' class='btn btn-success btn-sm' onClick='history.go(-1);'>返回</button>
 </td>
 </tr>";

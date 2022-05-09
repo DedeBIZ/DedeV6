@@ -51,31 +51,27 @@ else if ($action == 'editload') {
   $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE id='$id' ");
   AjaxHead();
 ?>
-  <form name='addform' action='article_coonepage_rule.php' method='post'>
-    <input type='hidden' name='id' value='<?php echo $id; ?>' />
-    <input type='hidden' name='action' value='editsave' />
+  <form name="addform" action="article_coonepage_rule.php" method="post">
+    <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <input type="hidden" name="action" value="editsave">
     <table width="430" cellspacing="0" cellpadding="0">
       <tr>
         <td width="102" height="26">网站名称：</td>
-        <td width="302"><input name="title" type="text" id="title" style="width:200px" value="<?php echo $row['title']; ?>" /></td>
+        <td width="302"><input name="title" type="text" id="title" style="width:200px" value="<?php echo $row['title']; ?>"></td>
         <td width="26" align="center"><a href="javascript:CloseEditNode()" class="mr-3"><i class="fa fa-window-close-o"></i></a></td>
       </tr>
       <tr>
         <td height="26">原内容编码：</td>
         <td colspan="2">
-          <label><input type="radio" name="lang" value="utf-8" <?php echo ($row['lang'] == 'utf-8' ? ' checked="checked" ' : ''); ?> />
-            UTF-8</label>
-          <label><input type="radio" name="lang" value="gb2312" <?php echo ($row['lang'] == 'gb2312' ? ' checked="checked" ' : ''); ?> />
-            GB2312/GBK</label>
+          <label><input type="radio" name="lang" value="utf-8" <?php echo ($row['lang'] == 'utf-8' ? ' checked="checked" ' : ''); ?>> UTF-8</label>
+          <label><input type="radio" name="lang" value="gb2312" <?php echo ($row['lang'] == 'gb2312' ? ' checked="checked" ' : ''); ?>> GB2312/GBK</label>
         </td>
       </tr>
       <tr>
         <td height="26">用作文章来源：</td>
         <td colspan="2">
-          <label><input type="radio" name="issource" value="0" <?php echo ($row['issource'] == 0 ? ' checked="checked" ' : ''); ?> />
-            否</label>
-          <label><input name="issource" type="radio" value="1" <?php echo ($row['issource'] == 1 ? ' checked="checked" ' : ''); ?> />
-            是</label>
+          <label><input type="radio" name="issource" value="0" <?php echo ($row['issource'] == 0 ? ' checked="checked" ' : ''); ?>> 否</label>
+          <label><input name="issource" type="radio" value="1" <?php echo ($row['issource'] == 1 ? ' checked="checked" ' : ''); ?>> 是</label>
         </td>
       </tr>
       <tr>
@@ -101,8 +97,10 @@ else if ($action == 'editload') {
       </tr>
       <tr>
         <td height="26"></td>
-        <td colspan="2"><button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存规则</button>
-          <button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button></td>
+        <td colspan="2">
+          <button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存</button>
+          <button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button>
+        </td>
       </tr>
     </table>
   </form>

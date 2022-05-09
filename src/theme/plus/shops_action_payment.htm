@@ -3,15 +3,14 @@
 	<head>
 		<meta charset="{dede:global name='cfg_soft_lang'/}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>下单购买-{dede:var.carts.orders_id/}</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>下单购买{dede:var.carts.orders_id/}-<?php echo $cfg_webname; ?></title>
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="buycarpage">
-		<?php include(DEDETEMPLATE."/plus/plus_header.htm") ;?>
+		<?php include(DEDETEMPLATE."/plus/plus_header.htm"); ?>
 		<div class="container">
 			<div class="sp-title">
 				<h3>商品购买</h3>
@@ -67,6 +66,6 @@
 				</table>
 			</div>
 		</div>
-		<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
+		<?php include(DEDETEMPLATE."/plus/plus_footer.htm"); ?>
 	</body>
 </html>

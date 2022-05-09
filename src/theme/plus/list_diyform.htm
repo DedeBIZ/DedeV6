@@ -3,8 +3,7 @@
 	<head>
 		<meta charset="{dede:global name='cfg_soft_lang'/}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title><?php echo $diy->name; ?>-Powered by DedeBIZ</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><?php echo $diy->name; ?>-<?php echo $cfg_webname; ?></title>
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
@@ -12,7 +11,7 @@
 	</head>
 	<body>
 		<div class="main mceneter">
-			<?php include(DEDETEMPLATE."/plus/plus_header.htm") ;?>
+			<?php include(DEDETEMPLATE."/plus/plus_header.htm"); ?>
 			<div class="container">
 				<div class="ctitle">
 					<nav class="navbar navbar-expand-lg">
@@ -21,13 +20,13 @@
 								<h3><?php echo $diy->name; ?>内容列表</h3>
 							</li>
 						</ul>
-						<span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
+						<span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid; ?>" class="btn btn-success btn-sm">发布信息</a></span>
 					</nav>
 				</div>
 				<div class="cbox mceneter">
 					<div class="maplist">
 						{dede:datalist}
-						<table class='table' cellspacing="1">
+						<table class="table" cellspacing="1">
 							<?php
 							if(!empty($fields))
 							{
@@ -70,6 +69,6 @@
 				</div>
 			</div>
 		</div>
-		<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
+		<?php include(DEDETEMPLATE."/plus/plus_footer.htm"); ?>
 	</body>
 </html>

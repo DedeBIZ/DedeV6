@@ -3,8 +3,7 @@
 	<head>
 		<meta charset="{dede:global name='cfg_soft_lang'/}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title><?php echo $diy->name;?>-Powered by DedeBIZ</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><?php echo $diy->name;?>-<?php echo $cfg_webname; ?></title>
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
@@ -12,15 +11,14 @@
 	</head>
 	<body>
 		<div class="main mceneter">
-			<?php include(DEDETEMPLATE."/plus/plus_header.htm") ;?>
+			<?php include(DEDETEMPLATE."/plus/plus_header.htm"); ?>
 			<div class="container">
 				<div class="ctitle">
-					<h3><?php echo $diy->name;?>发布</h3>
+					<h3><?php echo $diy->name; ?>发布</h3>
 				</div>
 				<div class="cbox mceneter">
 					<div class="maplist">
-						<form action="<?php echo $cfg_cmspath;?>/apps/diy.php" enctype="multipart/form-data"
-							method="post">
+						<form action="<?php echo $cfg_cmspath;?>/apps/diy.php" enctype="multipart/form-data" method="post">
 							<input type="hidden" name="action" value="post">
 							<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 							<input type="hidden" name="do" value="2">
@@ -38,6 +36,6 @@
 				</div>
 			</div>
 		</div>
-		<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
+		<?php include(DEDETEMPLATE."/plus/plus_footer.htm"); ?>
 	</body>
 </html>

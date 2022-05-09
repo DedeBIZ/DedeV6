@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="{dede:global name='cfg_soft_lang'/}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>购物车-下单购买{dede:var.carts.orders_id/}</title>
+		<title>下单购买{dede:var.carts.orders_id/}-购物车-<?php echo $cfg_webname; ?></title>
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="buycarpage">
-		<?php include(DEDETEMPLATE."/plus/plus_header.htm") ;?>
+		<?php include(DEDETEMPLATE."/plus/plus_header.htm"); ?>
 		<div class="container">
 			<div class="sp-title">
 				<h3>商品购买</h3>
@@ -19,7 +19,7 @@
 				<?php if(!$cfg_ml->IsLogin()){ ?>
 				<table cellpadding="0" cellspacing="0" class="table">
 					<tr>
-						<td style="color:#F00">您好，欢迎来到本网站，请 <a href="../user/login.php?gourl=<?php echo urlencode(GetCurUrl());?>">登录</a> 或 <a href="../user/index_do.php?fmdo=user&dopost=regnew">注册</a></td>
+						<td style="color:#F00">欢迎来到本网站，请 <a href="../user/login.php?gourl=<?php echo urlencode(GetCurUrl());?>">登录</a> 或 <a href="../user/index_do.php?fmdo=user&dopost=regnew">注册</a></td>
 					</tr>
 				</table>
 				<?php } ?>
@@ -179,6 +179,6 @@
 				document.getElementById("vdimgck_img").src = '../apps/vdimgck.php?' + Math.random();
 			}
 		</script>
-		<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
+		<?php include(DEDETEMPLATE."/plus/plus_footer.htm"); ?>
 	</body>
 </html>
