@@ -412,10 +412,15 @@ function FormatScript($atme)
 function FillAttsDefault(&$atts, $attlist)
 {
     $attlists = explode(',', (string)$attlist);
-    for ($i = 0; isset($attlists[$i]); $i++) {
-        list($k, $v) = explode('|', $attlists[$i]);
-        if (!isset($atts[$k])) {
-            $atts[$k] = $v;
+    if (is_array($attlists)) {
+        for ($i = 0; isset($attlists[$i]); $i++) {
+            if (empty($attlists[$i])) {
+                continue;
+            }
+            list($k, $v) = explode('|', $attlists[$i]);
+            if (!isset($atts[$k])) {
+                $atts[$k] = $v;
+            }
         }
     }
 }

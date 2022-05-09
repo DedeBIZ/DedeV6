@@ -6,45 +6,39 @@
 		<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
 		<meta name="keywords" content="{dede:field.keywords/}">
 		<meta name="description" content="{dede:field.description function='html2text(@me)'/}">
-		<link href="{dede:global.cfg_templets_skin/}/style/dedecms.css" rel="stylesheet" media="screen">
-		<script>
-			function checkSubmit() {
-				if (document.feedback.msg.value != '') document.feedback.submit();
-				else alert("评论内容不能为空");
-			}
-		</script>
+		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
+		<link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/static/web/img/favicon.ico">
 	</head>
 	<body class="articleview">
-		{dede:include filename="head.htm"/}
-		<div class="w960 center clear mt1">
-			<div class="pleft">
-				<div class="place">
-					当前位置: <a href="/">主页</a> &gt; {dede:field name='title'/}
-				</div>
-				<div class="viewbox">
-					<div class="title">
-						<h2>{dede:field.title/}</h2>
-					</div>
-					<div class="content">
-						　{dede:field.body/}
-					</div>
-				</div>
-			</div>
-			<div class="pright">
-				<div class="hot mt1">
-					<dl class="tbox">
-						<dt>相关页面</dt>
-						<dd>
-							<ul class="c1 ico2">
-								{dede:likesgpage}
-								<li><a href="[field:url/]">[field:title/]</a></li>
-								{/dede:likesgpage}
-							</ul>
-						</dd>
-					</dl>
-				</div>
+		{dede:include filename='top.htm'/}
+		{dede:include filename='header.htm'/}
+		{dede:include filename='navbar.htm'/}
+		<div class="container">
+			<div class="position">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb mt-3">
+						<li class="breadcrumb-item">当前位置</li>
+						<li class="breadcrumb-item"><a href="{dede:global.cfg_cmsurl/}/">主页</a></li>
+						<li class="breadcrumb-item">{dede:field name='title'/}</li>
+					</ol>
+				</nav>
 			</div>
 		</div>
+		<main class="container">
+			<div class="row">
+				<div class="col-12 article-main">
+					<h2 class="mt-0 mb-3 zixue">{dede:field.title/}</h2>
+					<div class="body py-2">{dede:field.body/}</div>
+					<nav>
+						<ul class="pagination justify-content-center py-3">{dede:pagebreak/}</ul>
+					</nav>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</main>
 		{dede:include filename="footer.htm"/}
 	</body>
 </html>

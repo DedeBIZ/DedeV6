@@ -6,12 +6,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//生产环境使用production，如果采用dev模式，会有一些php的报错信息提示，便于开发调试
+//生产环境使用`production`，如果采用`dev`模式，会有一些php的报错信息提示，便于开发调试
 if (!defined('DEDE_ENVIRONMENT')) {
-    define('DEDE_ENVIRONMENT', 'production');
+    define('DEDE_ENVIRONMENT', 'dev');
 }
 if (!defined('DEBUG_LEVEL')) {
-    define('DEBUG_LEVEL', FALSE);//如果设置为TRUE则会打印执行SQL的时间和标签加载时间方便调试
+    if (DEDE_ENVIRONMENT == 'production') {
+        define('DEBUG_LEVEL', FALSE);
+    } else {
+        define('DEBUG_LEVEL', TRUE);
+    }
 }
 if (DEDE_ENVIRONMENT == 'production') {
     ini_set('display_errors', 0);

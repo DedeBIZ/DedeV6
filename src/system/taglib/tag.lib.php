@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * TAG调用标签
  *
