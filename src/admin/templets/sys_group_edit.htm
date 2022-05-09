@@ -20,76 +20,73 @@
           <td align="center">
             <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
-                <td width="9%" height="26">组名称：</td>
-                <td width="91%" style="text-align:left"><input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>" style="width:260px">
-                </td>
+                <td width="10%" height="26">组名称：</td>
+                <td width="90%"><input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>" style="width:260px"></td>
               </tr>
               <tr>
-                <td width="9%" height="26">级别值：</td>
-                <td width="91%" style="text-align:left">
+                <td width="10%" height="26">级别值：</td>
+                <td width="90%">
                   <input name="rank" type="hidden" id="rank" value="<?php echo $groupSet['rank']?>">
                   <?php echo $groupSet['rank']?>
                 </td>
               </tr>
               <?php
-        $start = 0;
-        $k = 0;
-        $gouplists = file(DEDEADMIN.'/inc/grouplist.txt');
-        foreach($gouplists as $line)
-        {
-        	$line = trim($line);
-        	if($line=="") continue;
-        	if(preg_match("#^>>#", $line))
-        	{
-        		if($start>0) echo "</td></tr>";
-        		$start++;
-        		$lhead = "
-        	 <tr> 
-           <td height='26' colspan='2' bgcolor='#F9FAF3' style='text-align:left'>{$start}、".str_replace('>>','',$line)."</td></tr>
-           <tr><td height='26' colspan='2' style='text-align:left'>
-        		"; 
-        		echo $lhead;
-        	}
-        	else if(preg_match("#^>#", $line))
-        	{
-        		$ls = explode('>',$line);
-        		$tag = $ls[1];
-        		$tagname = str_replace('[br]','<br>',$ls[2]);
-        		if(!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";
-        		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
-        		echo "<label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label>";
-        	  $k++;
-        	}
-        }
-        $start++;
-        ?>
+              $start = 0;
+              $k = 0;
+              $gouplists = file(DEDEADMIN.'/inc/grouplist.txt');
+              foreach($gouplists as $line)
+              {
+              	$line = trim($line);
+              	if($line=="") continue;
+              	if(preg_match("#^>>#", $line))
+              	{
+              		if($start>0) echo "</td></tr>";
+              		$start++;
+              		$lhead = "
+              	 <tr> 
+                 <td height='26' colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr>
+                 <tr><td height='26' colspan='2'>
+              		"; 
+              		echo $lhead;
+              	}
+              	else if(preg_match("#^>#", $line))
+              	{
+              		$ls = explode('>',$line);
+              		$tag = $ls[1];
+              		$tagname = str_replace('[br]','<br>',$ls[2]);
+              		if(!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";
+              		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
+              		echo " <label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label> ";
+              	  $k++;
+              	}
+              }
+              $start++;
+              ?>
+              <tr>
+                <td height="26" colspan="2"><?php echo $start?>、插件权限</td>
+              </tr>
+              <tr>
+                <td height="26" colspan="2">
+                  <?php
+                  $l = 0;
+                  $dsql->SetQuery('SELECT plusname FROM #@__plus');
+                  $dsql->Execute();
+                  while($row=$dsql->GetObject()){
+                   	echo " <label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='plus_{$row->plusname}'".CRank("plus_{$row->plusname}")."> {$row->plusname}</label> ";
+                  	$k++;
+                  	$l++;
+                  	if($l % 6 == 0) echo "<br>";
+                  }
+                  ?>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm" class="coolbg np">保存</button></td>
+              </tr>
+            </table>
           </td>
         </tr>
-        <tr>
-          <td height='26' colspan='2' bgcolor='#F9FAF3' style="text-align:left"><?php echo $start?>、插件权限</td>
-        </tr>
-        <tr>
-          <td height='26' colspan='2' style="text-align:left">
-            <?php
-         $l = 0;
-         $dsql->SetQuery('SELECT plusname FROM #@__plus');
-         $dsql->Execute();
-         while($row=$dsql->GetObject()){
-         	 echo " <label></label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='plus_{$row->plusname}'".CRank("plus_{$row->plusname}")."> {$row->plusname}</label>";
-        	 $k++;
-        	 $l++;
-        	 if($l % 6 == 0) echo "<br>";
-         }
-         ?>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm" class="coolbg np">保存</button></td>
-        </tr>
-    </table>
-    </td>
-    </tr>
-    </form>
+      </form>
     </table>
   </center>
 </body>

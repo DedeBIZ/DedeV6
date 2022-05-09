@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="{dede:global name='cfg_soft_lang'/}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title><?php echo $arctitle; ?></title>
-		<link href="<?php echo $cfg_templets_skin; ?>/style/search.css" rel="stylesheet" media="screen">
+		<title><?php echo $arctitle; ?>-<?php echo $cfg_webname; ?></title>
+		<link rel="stylesheet" href="<?php echo $cfg_templets_skin; ?>/style/search.css">
 	</head>
 	<body>
 		<div class="header">
@@ -18,10 +18,8 @@
 		<table width="100%" cellpadding="2" cellspacing="1">
 			<tr>
 				<td align="center">
-					<a href="<?php echo $nextlink; ?>">
-						<img src="<?php echo $src?>">
-					</a>
-					<div style="line-height:32px">
+					<a href="<?php echo $nextlink; ?>"><img src="<?php echo $src?>"></a>
+					<div style="line-height:30px">
 						<a href="<?php echo $src; ?>" target="_blank">[查看原图]</a>
 					</div>
 					<div style="line-height:32px;border-top:1px dashed #BED6A7">

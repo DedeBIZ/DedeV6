@@ -3,19 +3,19 @@
 	<head>
 		<meta charset="{dede:global name='cfg_soft_lang'/}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>购物车-{dede:var.carts.orders_id/}订单号</title>
+		<title>订单号{dede:var.carts.orders_id/}-购物车-<?php echo $cfg_webname; ?></title>
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="buycarpage">
-		<?php include(DEDETEMPLATE."/plus/plus_header.htm") ;?>
+		<?php include(DEDETEMPLATE."/plus/plus_header.htm"); ?>
 		<div class="container">
 			<div class="sp-title">
 				<h2>购物车</h2>
 			</div>
-			<div id="errorChickCookie" class="clear center mt1" style="font-style:inherit;color:#424b51;font-weight:normal;padding-top:8px;padding-bottom:8px;text-align:center;">
+			<div id="errorChickCookie" class="clear center mt1" style="font-style:inherit;color:#424b51;font-weight:normal;padding:10px 0;text-align:center">
 			</div>
 			<div class="buycar">
 				<h3>我的购物车 - <em id="carId">{dede:var.carts.orders_id/}</em>订单号</h3>
@@ -117,7 +117,7 @@
 				}
 			}
 		</script>
-		<?php include(DEDETEMPLATE."/plus/plus_footer.htm") ;?>
+		<?php include(DEDETEMPLATE."/plus/plus_footer.htm"); ?>
 		<script>
 			if (!navigator.cookieEnabled) {
 				$('#errorChickCookie').html('您浏览器的 cookie 功能被禁用，请启用此功能');
