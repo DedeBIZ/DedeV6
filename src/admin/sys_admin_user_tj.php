@@ -95,8 +95,8 @@ if (isset($dopost) && $dopost == 'getone') {
     $ccd = $row['cc'] + $ccd;
     $msg = "<table width='100%' align='center' cellpadding='3' cellspacing='1'>
     <tr align='center' bgcolor='#F8FCF1'>
-      <td width='18%' height='26'>管理员::统计信息</td>
-      <td width='18%'>全部(文档|点击)</td>
+      <td width='18%' height='26'>管理员</td>
+      <td width='18%'>文档与点击</td>
       <td width='16%'>季度</td>
       <td width='16%'>当月</td>
       <td width='16%'>近七天</td>
@@ -110,7 +110,7 @@ if (isset($dopost) && $dopost == 'getone') {
       <td>{$ddw} | {$ccw}</td>
       <td>{$ddd} | {$ccd}</td>
     </tr>
-    </table><br style='clear:both'/>\r\n";
+    </table>";
     AjaxHead();
     echo $msg;
     exit();
