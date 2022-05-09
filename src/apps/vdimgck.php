@@ -9,7 +9,6 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__).'/../system/common.inc.php');
-require_once(DEDEDATA.'/safe/inc_safe_config.php');
 require_once(DEDEDATA.'/config.cache.inc.php');
 $config = array(
     'font_size'   => 20,
