@@ -1,10 +1,10 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-// 允许的函数
+//允许的函数
 $GLOBALS['allowedCalls'] = array(
-    // 系统
+    //系统
     'var_dump',
-    // 数学
+    //数学
     'ceil',
     'floor',
     'fmod',
@@ -15,7 +15,7 @@ $GLOBALS['allowedCalls'] = array(
     'rand',
     'sqrt',
     'srand',
-    // 变量
+    //变量
     'empty',
     'floatval',
     'intval',
@@ -36,7 +36,7 @@ $GLOBALS['allowedCalls'] = array(
     'isset',
     'strval',
     'unset',
-    // 数组
+    //数组
     'array_change_key_case',
     'array_chunk',
     'array_combine',
@@ -92,7 +92,7 @@ $GLOBALS['allowedCalls'] = array(
     'shuffle',
     'sizeof',
     'sort',
-    // 字符串
+    //字符串
     'json_encode',
     'json_decode',
     'json_last_error',
@@ -156,7 +156,7 @@ $GLOBALS['allowedCalls'] = array(
     'ucfirst',
     'ucwords',
     'wordwrap',
-    // dede内置
+    //dede内置
     'html2text',
     'removexss',
     'htmlreplace',
@@ -179,7 +179,7 @@ $GLOBALS['allowedCalls'] = array(
     'gb2big5',
     'litimgurls',
     'split',
-    // 时间
+    //时间
     'strtotime',
     'date',
     'idate',
@@ -228,7 +228,7 @@ $GLOBALS['allowedCalls'] = array(
     'date_sunrise',
     'date_sunset',
     'date_sun_info',
-    // mb字符串处理
+    //mb字符串处理
     'mb_convert_case',
     'mb_strtoupper',
     'mb_strtolower',
@@ -288,7 +288,7 @@ $GLOBALS['allowedCalls'] = array(
     'mb_ereg_search_getpos',
     'mb_ereg_search_setpos',
 );
-// 允许的语法
+//允许的语法
 $GLOBALS['allowedTokens'] = array(
     'T_AND_EQUAL',
     'T_ARRAY',
@@ -300,7 +300,6 @@ $GLOBALS['allowedTokens'] = array(
     'T_BREAK',
     'T_CASE',
     'T_CHARACTER',
-
     'T_CONCAT_EQUAL',
     'T_CONSTANT_ENCAPSED_STRING',
     'T_CONTINUE',
@@ -313,7 +312,6 @@ $GLOBALS['allowedTokens'] = array(
     'T_DO',
     'T_DOUBLE_ARROW',
     'T_DOUBLE_CAST',
-
     'T_ELSE',
     'T_ELSEIF',
     'T_EMPTY',
@@ -340,7 +338,6 @@ $GLOBALS['allowedTokens'] = array(
     'T_LOGICAL_OR',
     'T_LOGICAL_XOR',
     'T_MINUS_EQUAL',
-
     'T_MOD_EQUAL',
     'T_MUL_EQUAL',
     'T_NUM_STRING',
@@ -362,29 +359,28 @@ $GLOBALS['allowedTokens'] = array(
     'T_WHITESPACE',
     'T_XOR_EQUAL',
 );
-// 禁止的表达式
+//禁止的表达式
 $GLOBALS['disallowedExpressions'] = array(
     '/`/',
     '/\$\W/',
     '/(\]|\})\s*\(/',
     '/\$\w\w*\s*\(/',
 );
-// 执行脚本
+//执行脚本
 function evalCode($code)
 {
     ob_start();
-    $code = eval('if(0){' . "\n" . $code . "\n" . '}');
+    $code = eval('if(0){'."\n".$code."\n".'}');
     ob_end_clean();
     return $code !== false;
 }
-// 校验脚本
+//校验脚本
 function checkCode($code)
 {
     global $allowedCalls;
     global $allowedTokens;
     global $disallowedExpressions;
-
-    $tokens = token_get_all('<?php ' . $code . ' ?>');
+    $tokens = token_get_all('<?php '.$code.' ?>');
     $errors = array();
     $braces = 0;
     foreach ($tokens as $token) {
@@ -421,13 +417,13 @@ function checkCode($code)
                 switch ($id) {
                     case ('T_STRING'):
                         if (in_array(strtolower($token[1]), $allowedCalls) === false) {
-                            $errors[$i]['name'] = 'Illegal function: ' . $token[1];
+                            $errors[$i]['name'] = 'Illegal function: '.$token[1];
                             $errors[$i]['line'] = $token[2];
                         }
                         break;
                     default:
                         if (in_array($id, $allowedTokens) === false) {
-                            $errors[$i]['name'] = 'Illegal token: ' . $token[1];
+                            $errors[$i]['name'] = 'Illegal token: '.$token[1];
                             $errors[$i]['line'] = $token[2];
                         }
                         break;
@@ -439,18 +435,18 @@ function checkCode($code)
         return $errors;
     }
 }
-// 错误提示
+//错误提示
 function htmlErrors($errors = null)
 {
     if ($errors) {
         $errorsHTML = "<div style='width:98%;margin:1rem auto;color:#842029;background:#f8d7da;border-color:#842029;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem'>";
-        $errorsHTML .= 'PHP内嵌脚本错误：';
+        $errorsHTML .= '内嵌脚本缺失，请添加该函数：';
         $errorsHTML .= '<dl>';
         foreach ($errors as $error) {
             if ($error['line']) {
-                $errorsHTML .= '<dt>Line ' . $error['line'] . '</dt>';
+                $errorsHTML .= '<dt>Line '.$error['line'].'</dt>';
             }
-            $errorsHTML .= '<dd>' . $error['name'] . '</dd>';
+            $errorsHTML .= '<dd>'.$error['name'].'</dd>';
         }
         $errorsHTML .= '</dl>';
         $errorsHTML .= "</div>\r\n";
