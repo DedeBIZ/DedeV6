@@ -420,7 +420,7 @@ function checkCode($code)
                 $id = token_name($token[0]);
                 switch ($id) {
                     case ('T_STRING'):
-                        if (in_array($token[1], $allowedCalls) === false) {
+                        if (in_array(strtolower($token[1]), $allowedCalls) === false) {
                             $errors[$i]['name'] = 'Illegal function: ' . $token[1];
                             $errors[$i]['line'] = $token[2];
                         }
