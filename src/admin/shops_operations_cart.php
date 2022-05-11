@@ -11,9 +11,9 @@
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/datalistcp.class.php");
 CheckPurview('shops_Operations');
-if (!isset($oid)) exit("<a href='javascript:window.close()'>无效操作!</a>");
+if (!isset($oid)) exit("<a href='javascript:window.close()'>无效操作</a>");
 $oid = preg_replace("#[^-0-9A-Z]#", "", $oid);
-if (empty($oid)) exit("<a href='javascript:window.close()'>无效订单号!</a>");
+if (empty($oid)) exit("<a href='javascript:window.close()'>无效订单号</a>");
 $row = $dsql->GetOne("SELECT * FROM `#@__shops_userinfo` WHERE oid='$oid'");
 $sql = "SELECT o.*,p.title,p.price as uprice,d.dname FROM `#@__shops_orders` as o left join `#@__shops_products` as p on o.oid=p.oid left join `#@__shops_delivery` as d on d.pid=o.pid WHERE o.oid='$oid'";
 $dlist = new DataListCP();

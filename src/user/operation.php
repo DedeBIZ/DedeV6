@@ -27,7 +27,6 @@ function GetSta($sta)
     else if ($sta == 1) return '已付款';
     else return '已完成';
 }
-
 if ($dopost == '') {
     $sql = "SELECT * FROM `#@__member_operation` WHERE mid='".$cfg_ml->M_ID."' AND product<>'archive' ORDER BY aid DESC";
     $dlist = new DataListCP();

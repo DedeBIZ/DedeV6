@@ -8,11 +8,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 require_once(DEDEINC."/libraries/fixtures/crawlers.php");
 require_once(DEDEINC."/libraries/fixtures/exclusions.php");
 require_once(DEDEINC."/libraries/fixtures/headers.php");
-
 class CrawlerDetect
 {
     /**
@@ -21,56 +19,48 @@ class CrawlerDetect
      * @var string|null
      */
     protected $userAgent;
-
     /**
      * Headers that contain a user agent.
      *
      * @var array
      */
     protected $httpHeaders = array();
-
     /**
      * Store regex matches.
      *
      * @var array
      */
     protected $matches = array();
-
     /**
      * Crawlers object.
      *
      * @var \Jaybizzle\CrawlerDetect\Fixtures\Crawlers
      */
     protected $crawlers;
-
     /**
      * Exclusions object.
      *
      * @var \Jaybizzle\CrawlerDetect\Fixtures\Exclusions
      */
     protected $exclusions;
-
     /**
      * Headers object.
      *
      * @var \Jaybizzle\CrawlerDetect\Fixtures\Headers
      */
     protected $uaHttpHeaders;
-
     /**
      * The compiled regex string.
      *
      * @var string
      */
     protected $compiledRegex;
-
     /**
      * The compiled exclusions regex string.
      *
      * @var string
      */
     protected $compiledExclusions;
-
     /**
      * Class constructor.
      */
@@ -79,14 +69,11 @@ class CrawlerDetect
         $this->crawlers = new Crawlers();
         $this->exclusions = new Exclusions();
         $this->uaHttpHeaders = new Headers();
-
         $this->compiledRegex = $this->compileRegex($this->crawlers->getAll());
         $this->compiledExclusions = $this->compileRegex($this->exclusions->getAll());
-
         $this->setHttpHeaders($headers);
         $this->setUserAgent($userAgent);
     }
-
     /**
      * Compile the regex patterns into one regex string.
      *
@@ -98,7 +85,6 @@ class CrawlerDetect
     {
         return '('.implode('|', $patterns).')';
     }
-
     /**
      * Set HTTP headers.
      *
@@ -106,23 +92,20 @@ class CrawlerDetect
      */
     public function setHttpHeaders($httpHeaders)
     {
-        // Use global _SERVER if $httpHeaders aren't defined.
+        //Use global _SERVER if $httpHeaders aren't defined.
         if (! is_array($httpHeaders) || ! count($httpHeaders)) {
             $httpHeaders = $_SERVER;
         }
-
-        // Clear existing headers.
+        //Clear existing headers.
         $this->httpHeaders = array();
-
-        // Only save HTTP headers. In PHP land, that means
-        // only _SERVER vars that start with HTTP_.
+        //Only save HTTP headers. In PHP land, that means
+        //only _SERVER vars that start with HTTP_.
         foreach ($httpHeaders as $key => $value) {
             if (strpos($key, 'HTTP_') === 0) {
                 $this->httpHeaders[$key] = $value;
             }
         }
     }
-
     /**
      * Return user agent headers.
      *
@@ -132,7 +115,6 @@ class CrawlerDetect
     {
         return $this->uaHttpHeaders->getAll();
     }
-
     /**
      * Set the user agent.
      *
@@ -150,7 +132,6 @@ class CrawlerDetect
 
         return $this->userAgent = $userAgent;
     }
-
     /**
      * Check user agent string against the regex.
      *
@@ -172,7 +153,6 @@ class CrawlerDetect
 
         return (bool) preg_match("/{$this->compiledRegex}/i", $agent, $this->matches);
     }
-
     /**
      * Return the matches.
      *

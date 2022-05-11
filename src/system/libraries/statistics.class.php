@@ -1,8 +1,6 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-
 require_once(DEDEINC."/libraries/agent.class.php");
-
 /**
  * 流量统计
  * 一个轻量级流量统计功能
@@ -13,13 +11,11 @@ require_once(DEDEINC."/libraries/agent.class.php");
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-
 class DedeStatistics {
     function __construct()
     {
     }
-
-    // 获取统计JS
+    //获取统计JS
     function GetStat()
     {
         global $envs,$cfg_cookie_encode;
@@ -66,7 +62,7 @@ class DedeStatistics {
                 var xhr;
                 if (window.XMLHttpRequest) {
                   xhr = new XMLHttpRequest();
-                } else if (window.ActiveXObject) { // IE
+                } else if (window.ActiveXObject) { //IE
                   try {
                     xhr = new ActiveXObject('Msxml2.XMLHTTP');
                   } catch (e) {
@@ -83,14 +79,13 @@ class DedeStatistics {
                 fetch(u);
             }
         })();
-EOT;
+    EOT;
     }
-
-    // 统计
+    //统计
     function Record()
     {
         global $dsql,$cfg_cookie_encode;
-        // 进行统计
+        //进行统计
         $pm = array('dduuid','ssid','browser','device','device_type','os','t','created_date','created_hour','url_type','typeid','aid','value','sign');
         $pmvalue = array();
         foreach ($pm as $v) {
@@ -115,8 +110,7 @@ EOT;
         $insql = "INSERT INTO `#@__statistics_detail`(".implode(",",$kstr).") VALUES (".implode(",",$vstr).")";
         return $dsql->ExecuteNoneQuery($insql);
     }
-
-    // 生成uuid
+    //生成uuid
     function _uniqidReal($lenght = 13) {
         if (function_exists("random_bytes")) {
             $bytes = random_bytes(ceil($lenght / 2));
@@ -127,7 +121,6 @@ EOT;
         }
         return substr(bin2hex($bytes), 0, $lenght);
     }
-
     function GetInfoByDateMulti($ds = array())
     {
         $results = array();
@@ -137,8 +130,7 @@ EOT;
         }
         return $result;
     }
-
-    // 获取某天的统计信息
+    //获取某天的统计信息
     function GetInfoByDate($d=0)
     {
         global $dsql;
@@ -160,9 +152,8 @@ EOT;
             $d = $today;
         }
         $d = intval($d);
-        // 如果统计数据中存在，则直接查询统计表
+        //如果统计数据中存在，则直接查询统计表
         $info = $dsql->GetOne("SELECT * FROM `#@__statistics` WHERE sdate = $d");
-        
         if (is_array($info)) {
             return $info;
         }
@@ -171,7 +162,7 @@ EOT;
         $ip = $dsql->GetOne("SELECT COUNT(DISTINCT ip) as total FROM `#@__statistics_detail` WHERE created_date = $d");
         $vv = $dsql->GetOne("SELECT COUNT(DISTINCT ssid) as total FROM `#@__statistics_detail` WHERE created_date = $d");
         if ($d < intval($today)) {
-            // 缓存数据
+            //缓存数据
             $insql = "INSERT INTO `#@__statistics`(`sdate`,`pv`,`uv`,`ip`,`vv`) VALUES ('$d', '{$pv['total']}','{$uv['total']}','{$ip['total']}','{$vv['total']}')";
             $dsql->ExecuteNoneQuery($insql);
         }
