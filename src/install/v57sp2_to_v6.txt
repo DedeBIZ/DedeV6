@@ -1,3 +1,9 @@
+-- 6.1.10
+ALTER TABLE `#@__arctype` CHANGE `namegk` `cnoverview` CHAR(255) NOT NULL DEFAULT '';
+ALTER TABLE `#@__arctype` CHANGE `ennamegk` `enoverview` CHAR(255) NOT NULL DEFAULT '';
+DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_disable_funs';
+DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_disable_tags';
+
 -- 6.1.9
 ALTER TABLE `#@__archives` MODIFY COLUMN `title` varchar(255) NOT NULL DEFAULT '' AFTER `money`;
 ALTER TABLE `#@__arctype` MODIFY COLUMN `typename` varchar(255) NOT NULL DEFAULT '' AFTER `sortrank`;
@@ -53,7 +59,7 @@ ALTER TABLE `#@__log` MODIFY COLUMN `cip` char(46) NOT NULL DEFAULT '' AFTER `qu
 ALTER TABLE `#@__member` MODIFY COLUMN `joinip` char(46) NOT NULL DEFAULT '' AFTER `jointime`,MODIFY COLUMN `loginip` char(46) NOT NULL DEFAULT '' AFTER `logintime`;
 ALTER TABLE `#@__shops_orders` MODIFY COLUMN `ip` char(46) NOT NULL DEFAULT '' AFTER `state`;
 ALTER TABLE `#@__dl_log` MODIFY COLUMN `ip` char(46) NOT NULL AFTER `id`;
-ALTER TABLE `#@__arctype` CHANGE COLUMN `litpic` `bigpic` char(255) NOT NULL DEFAULT '' AFTER `ennamegk`;
+ALTER TABLE `#@__arctype` CHANGE `litpic` `bigpic` CHAR(255) NOT NULL DEFAULT '';
 ALTER TABLE `#@__addoninfos` MODIFY COLUMN `nativeplace` char(20) NOT NULL DEFAULT 0 AFTER `badpost`;
 
 -- 6.1.0
