@@ -9,24 +9,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-/**
- *  这个函数用于定义任意名称的块使用的接口
- *  返回值应是一个二维数组
- *  块调用对应的文件为 include/taglib/plus_blockname.php
- *  ----------------------------------------------------------------
- *  由于标记一般存在默认属性，在编写块函数时，应该在块函数中进行给属性赋省缺值处理，如：
- *  $attlist = "titlelen=30,catalogid=0,modelid=0,flag=,addon=,row=8,ids=,orderby=id,orderway=desc,limit=,subday=0";
- *  给属性赋省缺值
- *  FillAtts($atts,$attlist);
- *  处理属性中使用的系统变量 var、global、field 类型(不支持多维数组)
- *  FillFields($atts,$fields,$refObj);
- *
- * @access    public
- * @param     array  $atts  属性
- * @param     object  $refObj  所属对象
- * @param     array  $fields  字段
- * @return    string
- */
 function MakePublicTag($atts = array(), $refObj = '', $fields = array())
 {
     $atts['tagname'] = preg_replace("/[0-9]{1,}$/", "", $atts['tagname']);
