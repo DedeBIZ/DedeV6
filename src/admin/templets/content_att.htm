@@ -29,13 +29,13 @@
         <td width="70%">属性名称</td>
       </tr>
       <?php
-	$dsql->SetQuery(" Select * From `#@__arcatt` order by sortid asc ");
-	$dsql->Execute();
-	$k=0;
-	while($row = $dsql->GetObject())
-	{
-	  $k++;
-	?>
+    	$dsql->SetQuery(" Select * From `#@__arcatt` order by sortid asc ");
+    	$dsql->Execute();
+    	$k=0;
+    	while($row = $dsql->GetObject())
+    	{
+    	  $k++;
+    	?>
       <input type="hidden" name="att_<?php echo $k?>" value="<?php echo $row->att?>">
       <tr>
         <td align="center"><?php echo $row->att; ?></td>
@@ -43,13 +43,11 @@
         <td><input name="attname_<?php echo $k?>" value="<?php echo $row->attname; ?>" type="text" id="attname_<?php echo $k?>" size="30" class='pubinputs'></td>
       </tr>
       <?php
-	}
-	?>
+    	}
+    	?>
       <input type="hidden" name="idend" value="<?php echo $k?>">
       <tr>
-        <td colspan="3" align="center" class="py-3">
-          <button type="submit" class="btn btn-success btn-sm">保存</button>
-        </td>
+        <td colspan="3" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
       </tr>
     </form>
   </table>

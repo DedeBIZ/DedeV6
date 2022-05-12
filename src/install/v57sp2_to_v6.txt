@@ -11,11 +11,10 @@ ALTER TABLE `#@__admin` ADD COLUMN `pwd_new` varchar(120) NOT NULL DEFAULT '' AF
 ALTER TABLE `#@__member` ADD COLUMN `pwd_new` varchar(120) NOT NULL DEFAULT '' AFTER `pwd`;
 
 -- 6.1.8
-INSERT INTO `#@__sysconfig` VALUES ('710', 'cfg_tags_dir', 'TAGS生成目录', 7, 'string', '{cmspath}/a/tags');
+INSERT INTO `#@__sysconfig` VALUES ('151', 'cfg_tags_dir', 'TAGS生成目录', 7, 'string', '{cmspath}/a/tags');
 ALTER TABLE `#@__tagindex` DROP COLUMN `tag_pinyin`;
 
 -- 6.1.7
-DROP TABLE IF EXISTS `#@__statistics`;
 CREATE TABLE `#@__statistics` (
   `id` int NOT NULL AUTO_INCREMENT,
   `sdate` int DEFAULT NULL COMMENT '记录日期',
@@ -24,8 +23,7 @@ CREATE TABLE `#@__statistics` (
   `ip` int DEFAULT NULL COMMENT 'IP',
   `vv` int DEFAULT NULL COMMENT 'vv',
   PRIMARY KEY (`id`)
-) TYPE=MyISAM;
-DROP TABLE IF EXISTS `#@__statistics_detail`;
+) ENGINE=MyISAM;
 CREATE TABLE `#@__statistics_detail` (
   `id` int NOT NULL AUTO_INCREMENT,
   `t` int DEFAULT NULL COMMENT 'unixtime',
@@ -46,7 +44,7 @@ CREATE TABLE `#@__statistics_detail` (
   KEY `idx_created_date_dduuid` (`created_date`,`dduuid`),
   KEY `idx_created_date_ip` (`created_date`,`ip`),
   KEY `idx_created_date_ssid` (`created_date`,`ssid`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 ALTER TABLE `#@__addonarticle` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
 ALTER TABLE `#@__addonimages` MODIFY COLUMN `userip` char(46) NOT NULL DEFAULT '' AFTER `templet`;
 ALTER TABLE `#@__addoninfos` MODIFY COLUMN `userip` varchar(46) NOT NULL DEFAULT '' AFTER `litpic`;
@@ -79,7 +77,7 @@ ALTER TABLE `#@__feedback`
 ALTER TABLE `#@__feedback`
   ADD COLUMN `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `dtime`;
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200');
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_auth_code', '商业版授权码)', 1, 'bstring', '');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_auth_code', '商业版授权码', 1, 'string', '');
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_hostname', 'DedeBIZ Core地址', 1, 'string', '127.0.0.1');
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_port', 'DedeBIZ Core端口', 1, 'number', '8181');
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_appid', 'DedeBIZ Core应用ID', 1, 'string', '');
@@ -90,12 +88,12 @@ CREATE TABLE `#@__feedback_goodbad` (
   `fid` INT(11) NOT NULL DEFAULT '0',
   `fgtype` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '0:good 1:bad',
   PRIMARY KEY (`fgid`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 CREATE TABLE `#@__search_limits` (
   `ip` VARCHAR(200) NOT NULL,
   `searchtime` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ip`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 -- 6.0.2
 ALTER TABLE `#@__tagindex` ADD COLUMN `keywords` VARCHAR(255) NULL DEFAULT NULL AFTER `tag`;

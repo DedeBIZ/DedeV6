@@ -2,14 +2,14 @@ INSERT INTO `#@__admintype` VALUES('1','信息发布员','1','t_AccList a_AccNew
 ('5','频道管理员','1','t_AccList t_AccNew t_AccEdit t_AccDel a_AccNew a_AccList a_AccEdit a_AccDel a_AccCheck a_MyList a_MyEdit a_MyDel a_MyCheck spec_New spec_List spec_Edit sys_MdPwd sys_Log sys_ArcTj sys_Source sys_Writer sys_Keyword sys_MakeHtml sys_Feedback sys_Upload sys_MyUpload member_List member_Edit plus_站内新闻发布 plus_友情链接模块 plus_留言簿模块 plus_投票模块 plus_广告管理 '),
 ('10','超级管理员','1','admin_AllowAll ');
 
-INSERT INTO `#@__arcatt` VALUES('5','s','滚动'),
-('1','h','头条'),
-('3','f','幻灯'),
+INSERT INTO `#@__arcatt` VALUES('1','h','头条'),
 ('2','c','推荐'),
-('7','p','图片'),
-('8','j','跳转'),
+('3','f','幻灯'),
 ('4','a','特荐'),
-('6','b','加粗');
+('5','s','滚动'),
+('6','b','加粗'),
+('7','p','图片'),
+('8','j','跳转');
 
 INSERT INTO `#@__arcrank` VALUES('1','0','开放浏览','5','0','0',''),
 ('2','-1','待审核稿件','0','0','0',''),
@@ -502,21 +502,21 @@ INSERT INTO `#@__area` VALUES('1','北京市','0','0'),
 ('33','澳门区','0','0'),
 ('35','台湾省','0','0');
 
-INSERT INTO `#@__channeltype` VALUES('1','article','普通文章','#@__archives','#@__addonarticle','article_add.php','content_list.php','article_edit.php','article_add.php','content_list.php','article_edit.php','<field:body itemname="文章内容" autofield="1" notsend="0" type="htmltext" isnull="true" islist="1" maxlength="" page="split">\t\n</field:body>\t\n','','','1','1','1','-1','','10','0','1','1','标题','0','0'),
-('2','image','图片集','#@__archives','#@__addonimages','album_add.php','content_i_list.php','album_edit.php','album_add.php','content_list.php','album_edit.php','<field:pagestyle itemname="页面风格" type="number" isnull="true" default="2" rename="" notsend="1" />\t\n<field:imgurls itemname="图片集合" type="img" isnull="true" rename="" page="split" />\t\n<field:body itemname="图集内容" autofield="1" notsend="0" type="htmltext" isnull="true" islist="0" maxlength="250" page=""></field:body>','','','1','1','1','-1','','10','0','1','1','标题','0','0'),
+INSERT INTO `#@__channeltype` VALUES('1','article','普通文章','#@__archives','#@__addonarticle','article_add.php','content_list.php','article_edit.php','article_add.php','content_list.php','article_edit.php','<field:body itemname="文章内容" autofield="0" notsend="0" type="htmltext" isnull="true" islist="1" maxlength="" page="split">\t\n</field:body>\t\n','','','1','1','1','-1','','10','0','1','1','标题','0','0'),
+('2','image','图片集','#@__archives','#@__addonimages','album_add.php','content_i_list.php','album_edit.php','album_add.php','content_list.php','album_edit.php','<field:pagestyle itemname="页面风格" type="number" isnull="true" default="2" rename="" notsend="1" />\t\n<field:imgurls itemname="图片集合" type="img" isnull="true" rename="" page="split" />\t\n<field:body itemname="图集内容" autofield="0" notsend="0" type="htmltext" isnull="true" islist="0" maxlength="250" page=""></field:body>','','','1','1','1','-1','','10','0','1','1','标题','0','0'),
 ('3','soft','软件','#@__archives','#@__addonsoft','soft_add.php','content_i_list.php','soft_edit.php','','','','<field:filetype islist="1" itemname="文件类型" type="text" isnull="true" rename="" />\t\n<field:language islist="1" itemname="语言" type="text" isnull="true" rename="" />\t\n<field:softtype islist="1" itemname="软件类型" type="text" isnull="true" rename="" />\t\n<field:accredit islist="1" itemname="授权方式" type="text" isnull="true" rename="" />\t\n<field:os islist="1" itemname="操作系统" type="text" isnull="true" rename="" />\t\n<field:softrank islist="1" itemname="软件等级" type="int" isnull="true" default="3" rename="" function="GetRankStar(@me)" notsend="1" />\t\n<field:officialUrl itemname="官方网址" type="text" isnull="true" rename="" />\t\n<field:officialDemo itemname="演示网址" type="text" isnull="true" rename="" />\t\n<field:softsize itemname="软件大小" type="text" isnull="true" rename="" />\t\n<field:softlinks itemname="软件地址" type="softlinks" isnull="true" rename="" />\t\n<field:introduce itemname="详细介绍" type="htmltext" isnull="trnue" rename="" />\t\n<field:daccess islist="1" itemname="下载级别" type="int" isnull="true" default="0" rename="" function="" notsend="1" />\t\n<field:needmoney islist="1" itemname="需要金币" type="int" isnull="true" default="0" rename="" function="" notsend="1" />','filetype,language,softtype,os,accredit,softrank','','1','1','1','-1','','10','0','1','1','标题','0','0'),
-('-1','spec','专题','#@__archives','#@__addonspec','spec_add.php','content_s_list.php','spec_edit.php','','','','<field:note type="specialtopic" isnull="true" rename="" />','','','1','1','0','-1','','10','0','1','1','标题','0','0'),
 ('6','shop','商品','#@__archives','#@__addonshop','archives_add.php','content_list.php','archives_edit.php','archives_add.php','content_list.php','archives_edit.php','<field:body itemname="详细介绍" autofield="1" notsend="0" type="htmltext" isnull="true" islist="0" maxlength="" page="split">\t\n</field:body>\t\n<field:price itemname="市场价" autofield="1" notsend="0" type="float" isnull="true" islist="1" maxlength="" page="">\t\n</field:price>\t\n<field:trueprice itemname="优惠价" autofield="1" notsend="0" type="float" isnull="true" islist="1" maxlength="" page="">\t\n</field:trueprice>\t\n<field:brand itemname="品牌" autofield="1" notsend="0" type="text" isnull="true" islist="1" maxlength="250" page="">\t\n</field:brand>\t\n<field:units itemname="计量单位" autofield="1" notsend="0" type="text" isnull="true" islist="1" maxlength="250" page="">\t\n</field:units>\t\n\n\t\n\n<field:vocation itemname="行业" autofield="1" notsend="0" type="stepselect" isnull="true" islist="0" maxlength="250" page="">\t\n</field:vocation>\t\n\n<field:infotype itemname="信息类型" autofield="1" notsend="0" type="stepselect" isnull="true" islist="0" maxlength="250" page="">\t\n</field:infotype>\t\n\n<field:uptime itemname="上架时间" autofield="1" notsend="0" type="datetime" isnull="true" islist="0" maxlength="250" page="">\t\n</field:uptime>\t\n','price,trueprice,brand,units','','0','1','1','-1','','10','0','1','1','商品名称','0','0'),
-('-8','infos','分类信息','#@__archives','#@__addoninfos','archives_sg_add.php','content_sg_list.php','archives_sg_edit.php','archives_sg_add.php','content_sg_list.php','archives_sg_edit.php','<field:channel itemname="频道id" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="10" page=""></field:channel>\t\n<field:arcrank itemname="浏览权限" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="5" page=""></field:arcrank>\t\n<field:mid itemname="会员id" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="8" page=""></field:mid>\t\n<field:click itemname="点击" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="10" page=""></field:click>\t\n<field:title itemname="标题" autofield="1" notsend="0" type="text" isnull="true" islist="1" default="0" maxlength="60" page=""></field:title>\t\n<field:senddate itemname="发布时间" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="10" page=""></field:senddate>\t\n<field:flag itemname="推荐属性" autofield="1" notsend="0" type="checkbox" isnull="true" islist="1" default="0" maxlength="10" page=""></field:flag>\t\n<field:litpic itemname="缩略图" autofield="1" notsend="0" type="text" isnull="true" islist="1" default="0" maxlength="60" page=""></field:litpic>\t\n<field:userip itemname="会员IP" autofield="1" notsend="0" type="text" isnull="true" islist="0" default="0" maxlength="15" page=""></field:userip>\t\n<field:lastpost itemname="最后评论时间" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="10" page=""></field:lastpost>\t\n<field:scores itemname="评论积分" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="8" page=""></field:scores>\t\n<field:goodpost itemname="好评数" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="8" page=""></field:goodpost>\t\n<field:badpost itemname="差评数" autofield="1" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="8" page=""></field:badpost>\t\n<field:nativeplace itemname="地区" autofield="1" notsend="0" type="stepselect" isnull="true" islist="1" default="0" maxlength="250" page="">\t\n</field:nativeplace>\t\n<field:infotype itemname="信息类型" autofield="1" notsend="0" type="stepselect" isnull="true" islist="1" default="0" maxlength="250" page="">\t\n</field:infotype>\t\n<field:body itemname="信息内容" autofield="1" notsend="0" type="htmltext" isnull="true" islist="0" maxlength="250" page="">\t\n</field:body>\t\n<field:endtime itemname="截止日期" autofield="1" notsend="0" type="datetime" isnull="true" islist="1" maxlength="250" page="">\t\n</field:endtime>\t\n<field:linkman itemname="联系人" autofield="1" notsend="0" type="text" isnull="true" islist="0" maxlength="50" page="">\t\n</field:linkman>\t\n<field:tel itemname="联系电话" autofield="1" notsend="0" type="text" isnull="true" islist="0" maxlength="50" page="">\t\n</field:tel>\t\n<field:email itemname="电子邮箱" autofield="1" notsend="0" type="text" isnull="true" islist="0" maxlength="50" page="">\t\n</field:email>\t\n<field:address itemname="地址" autofield="1" notsend="0" type="text" isnull="true" islist="0" maxlength="100" page="">\t\n</field:address>\t\n','channel,arcrank,mid,click,title,senddate,flag,litpic,lastpost,scores,goodpost,badpost,nativeplace,infotype,endtime','','-1','1','1','-1','','0','0','0','1','信息标题','0','0');
+('-1','spec','专题','#@__archives','#@__addonspec','spec_add.php','content_s_list.php','spec_edit.php','','','','<field:note type="specialtopic" isnull="true" rename="" />','','','1','1','0','-1','','10','0','1','1','标题','0','0'),
+('-8','infos','分类信息','#@__archives','#@__addoninfos','archives_sg_add.php','content_sg_list.php','archives_sg_edit.php','archives_sg_add.php','content_sg_list.php','archives_sg_edit.php','<field:channel itemname="频道id" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="10" page=""></field:channel>\t\n<field:arcrank itemname="浏览权限" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="5" page=""></field:arcrank>\t\n<field:mid itemname="会员id" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="8" page=""></field:mid>\t\n<field:click itemname="点击" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="10" page=""></field:click>\t\n<field:title itemname="标题" autofield="0" notsend="0" type="text" isnull="true" islist="1" default="0" maxlength="60" page=""></field:title>\t\n<field:senddate itemname="发布时间" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="10" page=""></field:senddate>\t\n<field:flag itemname="推荐属性" autofield="0" notsend="0" type="checkbox" isnull="true" islist="1" default="0" maxlength="10" page=""></field:flag>\t\n<field:litpic itemname="缩略图" autofield="0" notsend="0" type="text" isnull="true" islist="1" default="0" maxlength="60" page=""></field:litpic>\t\n<field:userip itemname="会员IP" autofield="0" notsend="0" type="text" isnull="true" islist="0" default="0" maxlength="15" page=""></field:userip>\t\n<field:lastpost itemname="最后评论时间" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="10" page=""></field:lastpost>\t\n<field:scores itemname="评论积分" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="8" page=""></field:scores>\t\n<field:goodpost itemname="好评数" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="8" page=""></field:goodpost>\t\n<field:badpost itemname="差评数" autofield="0" notsend="0" type="int" isnull="true" islist="1" default="0" maxlength="8" page=""></field:badpost>\t\n<field:nativeplace itemname="地区" autofield="1" notsend="0" type="stepselect" isnull="true" islist="1" default="0" maxlength="250" page="">\t\n</field:nativeplace>\t\n<field:infotype itemname="信息类型" autofield="1" notsend="0" type="stepselect" isnull="true" islist="1" default="0" maxlength="250" page="">\t\n</field:infotype>\t\n<field:body itemname="信息内容" autofield="1" notsend="0" type="htmltext" isnull="true" islist="0" maxlength="250" page="">\t\n</field:body>\t\n<field:endtime itemname="截止日期" autofield="1" notsend="0" type="datetime" isnull="true" islist="1" maxlength="250" page="">\t\n</field:endtime>\t\n<field:linkman itemname="联系人" autofield="1" notsend="0" type="text" isnull="true" islist="0" maxlength="50" page="">\t\n</field:linkman>\t\n<field:tel itemname="联系电话" autofield="1" notsend="0" type="text" isnull="true" islist="0" maxlength="50" page="">\t\n</field:tel>\t\n<field:email itemname="电子邮箱" autofield="1" notsend="0" type="text" isnull="true" islist="0" maxlength="50" page="">\t\n</field:email>\t\n<field:address itemname="地址" autofield="1" notsend="0" type="text" isnull="true" islist="0" maxlength="100" page="">\t\n</field:address>\t\n','channel,arcrank,mid,click,title,senddate,flag,litpic,lastpost,scores,goodpost,badpost,nativeplace,infotype,endtime','','-1','1','1','-1','','0','0','0','1','信息标题','0','0');
 
 INSERT INTO `#@__co_onepage` VALUES('5','www.dedebiz.com','DedeBIZ','1','gb2312','<div class="content">{@body}<div class="cupage">'),
 ('4','www.techweb.com.cn','Techweb','1','gb2312','<div class="content_txt">{@body}</div>\t\n'),
 ('6','tw.news.yahoo.com','台湾雅虎','1','big5','<div id="ynwsartcontent">{@body}</div>\t\n');
 
-INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com', 'DedeBIZ', '', '', '', 1226375403, 1, 2);
-INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com/help', '帮助中心', '', '', '', 1227772717, 1, 2);
-INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (1, 'https://www.dedebiz.com/auth', '授权中心', '', '', '', 1227772703, 1, 2);
-INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES (3, 'https://www.dedebiz.com/git', '代码托管', '', '', '', 1603767210, 1, 1);
+INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES(1, 'https://www.dedebiz.com', 'DedeBIZ', '', '', '', 1226375403, 1, 2);
+INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES(1, 'https://www.dedebiz.com/help', '帮助中心', '', '', '', 1227772717, 1, 2);
+INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES(1, 'https://www.dedebiz.com/auth', '授权中心', '', '', '', 1227772703, 1, 2);
+INSERT INTO `#@__flink` (`sortrank`, `url`, `webname`, `msg`, `email`, `logo`, `dtime`, `typeid`, `ischeck`) VALUES(3, 'https://www.dedebiz.com/git', '代码托管', '', '', '', 1603767210, 1, 1);
 
 INSERT INTO `#@__flinktype` VALUES('1','综合网站'),
 ('2','娱乐类'),
@@ -528,7 +528,7 @@ INSERT INTO `#@__flinktype` VALUES('1','综合网站'),
 ('8','其它类型');
 
 INSERT INTO `#@__freelist` VALUES('1','测试内容','{listdir}/index_{listid}_{page}.html','{cmspath}/freelist/','index.html','1','{style}/list_free.htm','1289712633','100','0','{dede:list pagesize="30" col="1" titlelen="60" orderby="pubdate" orderway="desc" typeid="1" channel="1" }<li>[field:imglink/] [field:textlink/] <span class=info><small>日期：</small>[field:pubdate function="getdatemk(@me)"/] <small>点击：</small>[field:click/] <small>好评：</small>[field:scores/] </span>\t\n<p class=intro>[field:description/]</p></li>{/dede:list}','测试','测试内容'),
-('10','Google SiteMap 生成器','{listdir}googlemap_{page}.xml','{cmspath}','index.html','1','{style}/googlemap.htm','1226884666','100','0','{dede:list pagesize="500" col="1" titlelen="60" orderby="pubdate" orderway="desc"\t\nchannel="1" keyword="" }<url>\t\n<loc>[field:arcurl function="Gmapurl(@me)"/]</loc>\t\n<title>[field:title function="HtmlReplace(@me)"/]</title>\t\n<news:news>\t\n <news:keywords>[field:keywords/]</news:keywords>\t\n<news:publication_date>[field:senddate function="strftime('%Y-%m-%d',@me)"/]</news:publication_date>\t\n</news:news>\t\n</url>{/dede:list}','','');
+('10','Google SiteMap 生成器','{listdir}googlemap_{page}.xml','{cmspath}','index.html','1','{style}/googlemap.htm','1226884666','100','0','{dede:list pagesize="500" col="1" titlelen="60" orderby="pubdate" orderway="desc"\t\nchannel="1" keyword=""}<url>\t\n<loc>[field:arcurl function="Gmapurl(@me)"/]</loc>\t\n<title>[field:title function="HtmlReplace(@me)"/]</title>\t\n<news:news>\t\n<news:keywords>[field:keywords/]</news:keywords>\t\n<news:publication_date>[field:senddate function="strftime('%Y-%m-%d',@me)"/]</news:publication_date>\t\n</news:news>\t\n</url>{/dede:list}','','');
 
 INSERT INTO `#@__member_type` VALUES('1','50','中级会员半年','100','7');
 
@@ -3941,13 +3941,12 @@ INSERT INTO `#@__sys_enum` VALUES('139','cms制作','503','vocation','503','0'),
 ('16795','东城区','1001','nativeplace','1001','1'),
 ('16794','北京市','1000','nativeplace','1000','0');
 
-INSERT INTO `#@__sysconfig` VALUES
-('1','cfg_basehost','站点网址','1','string',''),
+INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点网址','1','string',''),
 ('2','cfg_cmspath','安装目录','2','string',''),
 ('3','cfg_cookie_encode','Cookies加密码','2','string',''),
-('4','cfg_indexurl','首页链接','1','string','/'),
+('4','cfg_indexurl','主页链接','1','string','/'),
 ('5','cfg_backup_dir','数据备份目录，存data文件夹里','2','string','backupdata'),
-('6','cfg_indexname','首页链接名','1','string','首页'),
+('6','cfg_indexname','主页链接名','1','string','网站主页'),
 ('7','cfg_webname','网站名称','1','string','某某公司'),
 ('8','cfg_adminemail','网站发信邮箱','2','string','support@dedebiz.com'),
 ('9','cfg_html_editor','富文本，默认CKEditor可自行更换其它富文本','2','string','ckeditor'),
@@ -3969,7 +3968,7 @@ INSERT INTO `#@__sysconfig` VALUES
 ('25','cfg_multi_site','是否支持多站点，开启此项后附件栏目连接arclist内容启用绝对网址','2','bool','N'),
 ('26','cfg_rm_remote','远程图片本地化','7','bool','Y'),
 ('27','cfg_dede_log','是否开启管理日志','2','bool','N'),
-('28','cfg_powerby','网站版权信息','1','bstring','Copyright &copy; 2022 DedeBIZ 版权所有'),
+('28','cfg_powerby','网站版权信息','1','bstring','Copyright © 2022 DedeBIZ 版权所有'),
 ('29','cfg_jump_once','跳转网址是否直接跳转否则显示中转页','7','bool','Y'),
 ('30','cfg_task_pwd','系统计划任务客户端许可密码，需要客户端，通常不会太重要','7','string',''),
 ('31','cfg_arcsptitle','是否开启分页标题，开启影响文档生成速度','6','bool','N'),
@@ -3992,7 +3991,7 @@ INSERT INTO `#@__sysconfig` VALUES
 ('48','cfg_cli_time','服务器时区设置','2','number','8'),
 ('49','cfg_mb_addontype','会员附件许可的类型','4','bstring','swf|rm|rmvb|mpg|mp3|mp4|wmv|wma|wav|mid|mov|zip|rar|doc|xsl|ppt|wps'),
 ('50','cfg_mb_max','会员附件总大小限制：MB','4','number','500'),
-('51','cfg_replacestr','替换词语，词语会被替换成**用“|”分开，但不要在结尾加“|”','5','bstring','他妈的|傻逼'),
+('51','cfg_replacestr','替换词语，词语会被替换成*用“|”分开，但不要在结尾加“|”','5','bstring','他妈的|傻逼'),
 ('52','cfg_makeindex','发布文章后马上更新网站主页','6','bool','N'),
 ('53','cfg_keyword_like','使用关键词关连文章','6','bool','Y'),
 ('54','cfg_index_max','首页调用函数最大索引文档数，不适用于经常单栏目采集过多内容网站，不启用本项此值设置为0即可','6','number','10000'),
@@ -4057,7 +4056,7 @@ INSERT INTO `#@__sysconfig` VALUES
 ('113','cfg_feedback_forbid','是否禁止所有评论，包括禁止顶踩等','5','bool','N'),
 ('114','cfg_addon_domainbind','是否绑定附件目录为指定的二级域名','7','bool','N'),
 ('115','cfg_addon_domain','附件目录的二级域名','7','string',''),
-('116','cfg_df_dutyadmin','默认责任编辑名称','7','string','网站管理员'),
+('116','cfg_df_dutyadmin','默认责任编辑名称','7','string','管理员'),
 ('118','cfg_mb_allowncarc','是否允许用户空间显示未审核文章','4','bool','Y'),
 ('119','cfg_mb_spaceallarc','会员空间中所有文档的频道ID（不限为0）','4','number','0'),
 ('120','cfg_face_adds','上传头像增加积分','5','number','10'),
@@ -4092,13 +4091,13 @@ INSERT INTO `#@__sysconfig` VALUES
 ('149', 'cfg_bizcore_key', 'DedeBIZ Core通信密钥', 1, 'string', ''),
 ('150', 'cfg_tags_dir', 'TAGS生成目录', 7, 'string', '{cmspath}/a/tags');
 
-INSERT INTO `#@__sys_module` VALUES (1, '1f35620fb42d452fa2bdc1dee1690f92', '文件管理器', '', '', 0, ''),
+INSERT INTO `#@__sys_module` VALUES(1, '1f35620fb42d452fa2bdc1dee1690f92', '文件管理器', '', '', 0, ''),
 (2, 'b437d85a7a7bc778c9c79b5ec36ab9aa', '友情链接', '', '', 0, ''),
 (3, '72ffa6fabe3c236f9238a2b281bc0f93', '广告管理', '', '', 0, ''),
 (4, 'acb8b88eb4a6d4bfc375c18534f9439e', '投票模块', '', '', 0, ''),
 (5, '572606600345b1a4bb8c810bbae434cc', '挑错管理', '', '', 0, '');
 
-INSERT INTO `#@__plus` VALUES (1, '文件管理器', '<m:item name=''文件管理器'' link=''file_manage_main.php'' rank=''plus_文件管理器'' target=''main'' />', '', 'DedeBIZ', 1, ''),
+INSERT INTO `#@__plus` VALUES(1, '文件管理器', '<m:item name=''文件管理器'' link=''file_manage_main.php'' rank=''plus_文件管理器'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (2, '友情链接模块', '<m:item name=''友情链接'' link=''friendlink_main.php'' rank=''plus_友情链接'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (3, '广告管理', '<m:item name=''广告管理'' link=''ad_main.php'' rank=''plus_广告管理'' target=''main'' />', '', 'DedeBIZ', 1, ''),
 (4, '投票模块', '<m:item name=''投票模块'' link=''vote_main.php'' rank=''plus_投票模块'' target=''main'' />', '', 'DedeBIZ', 1, ''),

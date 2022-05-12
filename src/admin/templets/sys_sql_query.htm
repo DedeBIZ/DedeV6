@@ -38,7 +38,7 @@
 									<table width="100%" cellspacing="0" cellpadding="0">
 										<tr>
 											<td width="30%">
-												<select name="tablename" id="tablename" style="width:100%;height:auto" size="12">
+												<select name="tablename" id="tablename" style="width:100%;height:auto" size="16">
 													<?php
 													if ($cfg_dbtype=="sqlite") {
 														$query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
@@ -61,15 +61,12 @@
 											<td width="2%"></td>
 											<td width="63%" valign="bottom">
 												<div style="float:left;margin-right:20px">
-													<button type="Submit" name="Submit1" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimize';">优化选中表</button>
-													<br>
-													<button type="Submit" name="Submit2" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repair';" style="margin-top:10px">修复选中表</button>
-													<br>
+													<button type="Submit" name="Submit1" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimize';">优化选中表</button><br>
+													<button type="Submit" name="Submit2" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repair';" style="margin-top:10px">修复选中表</button><br>
 													<button type="Submit" name="Submit3" class="btn btn-success btn-sm" onClick="this.form.dopost.value='viewinfo';" style="margin-top:10px">查看表结构</button>
 												</div>
 												<div style="float:left">
-													<button type="Submit" name="Submit5" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimizeAll';">优化全部表</button>
-													<br>
+													<button type="Submit" name="Submit5" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimizeAll';">优化全部表</button><br>
 													<button type="Submit" name="Submit6" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repairAll';" style="margin-top:10px">修复全部表</button>
 												</div>
 											</td>
@@ -94,13 +91,10 @@
 								</td>
 							</tr>
 							<tr>
-								<td height="110" colspan="2" style="border:1px solid #ddd">
-									<textarea id="sqlquery" name="sqlquery" cols="60" rows="10" id="sqlquery" style="width:90%"></textarea>
-								</td>
+								<td height="110" colspan="2" style="border:1px solid #ddd"><textarea id="sqlquery" name="sqlquery" cols="60" rows="10" id="sqlquery" style="width:90%"></textarea></td>
 							</tr>
 							<tr>
-								<td colspan="2" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm">保存</button>
-								</td>
+								<td colspan="2" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 							</tr>
 						</form>
 					</table>

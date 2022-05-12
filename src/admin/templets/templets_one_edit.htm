@@ -30,12 +30,12 @@ function checkSubmit()
 </head>
 <body>
 <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-<tr>
+  <tr>
     <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="templets_one.php">单独页面管理</a> &gt; 修改自定义页面</td>
-</tr>
-<tr>
-  <td height="200">
-    <table width="100%" cellspacing="4" cellpadding="2" class="table table-borderless">
+  </tr>
+  <tr>
+    <td height="200">
+      <table width="100%" cellspacing="4" cellpadding="2" class="table table-borderless">
         <form action="templets_one_edit.php" method="post" name="form1" onSubmit="return checkSubmit()">
           <input type='hidden' name='dopost' value='saveedit'>
           <input type='hidden' name='aid' value='<?php echo $aid?>'>
