@@ -3,6 +3,7 @@ ALTER TABLE `#@__arctype` CHANGE `namegk` `cnoverview` CHAR(255) NOT NULL DEFAUL
 ALTER TABLE `#@__arctype` CHANGE `ennamegk` `enoverview` CHAR(255) NOT NULL DEFAULT '';
 DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_disable_funs';
 DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_disable_tags';
+DELETE FROM `#@__sysconfig` WHERE `#@__sysconfig`.`varname` = 'cfg_vdcode_member';
 
 -- 6.1.9
 ALTER TABLE `#@__archives` MODIFY COLUMN `title` varchar(255) NOT NULL DEFAULT '' AFTER `money`;
