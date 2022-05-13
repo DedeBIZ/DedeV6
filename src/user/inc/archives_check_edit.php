@@ -14,12 +14,6 @@ require_once(DEDEINC."/libraries/oxwindow.class.php");
 $flag = '';
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $userip = GetIP();
-$svali = GetCkVdValue();
-if (strtolower($vdcode) != $svali || $svali == '') {
-    ResetVdValue();
-    ShowMsg('验证码错误', '-1');
-    exit();
-}
 if ($typeid == 0) {
     ShowMsg('请指定文档隶属的栏目', '-1');
     exit();

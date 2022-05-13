@@ -50,8 +50,9 @@ function _SaveArticle(){  }
 else if ($dopost == 'save') {
     include_once(DEDEINC."/image.func.php");
     include_once(DEDEINC."/libraries/oxwindow.class.php");
-    $svali = GetCkVdValue();
-    if (preg_match("/3/", $safe_gdopen)) {
+    // 游客需要校验验证码
+    if ($cfg_ml->M_ID === 0) {
+        $svali = GetCkVdValue();
         if (strtolower($vdcode) != $svali || $svali == '') {
             ResetVdValue();
             ShowMsg('验证码错误', '-1');

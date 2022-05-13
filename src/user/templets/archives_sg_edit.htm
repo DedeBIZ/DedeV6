@@ -66,21 +66,7 @@
 										PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']), $addRow, 'autofield');
 										?>
 										<div class="contentShow postForm">
-											<?php
-											//游客强制加验证码，会员则判断后台开关
-											if(preg_match("/3/",$safe_gdopen)){
-											?>
-											<div class="form-group row">
-												<label class="col-sm-2 col-form-label">验证码</label>
-												<div class="col-sm-10">
-													<input name="vdcode" type="text" id="vdcode" class="form-control" style="display:inline-block;width:260px;text-transform:uppercase">
-													<img src="../apps/vdimgck.php" alt="验证码" title="验证码" onclick="this.src=this.src+'?'" style="cursor:pointer">
-												</div>
-											</div>
-											<?php
-											}
-											?>
-											<p>
+											<p class="mt-3">
 												<button type="submit" class="btn btn-success btn-sm">提交</button>
 												<button type="reset" class="btn btn-secondary btn-sm" onclick="location.reload();">重置</button>
 											</p>

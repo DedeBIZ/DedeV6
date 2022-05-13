@@ -11,18 +11,21 @@
 if (!defined('DEDEMEMBER'))    exit('dedebiz');
 include_once(DEDEINC.'/image.func.php');
 include_once(DEDEINC.'/libraries/oxwindow.class.php');
-$svali = GetCkVdValue();
-if (strtolower($vdcode) != $svali || $svali == '') {
-    ResetVdValue();
-    ShowMsg('验证码错误', '-1');
-    exit();
+// 游客需要校验验证码
+if ($cfg_ml->M_ID === 0) {
+    $svali = GetCkVdValue();
+    if (strtolower($vdcode) != $svali || $svali == '') {
+        ResetVdValue();
+        ShowMsg('验证码错误', '-1');
+        exit();
+    }
 }
+
 //校验CSRF
 CheckCSRF();
 $flag = '';
 $autokey = $remote = $dellink = $autolitpic = 0;
 $userip = GetIP();
-
 if ($typeid == 0) {
     ShowMsg('请指定文档隶属的栏目', '-1');
     exit();

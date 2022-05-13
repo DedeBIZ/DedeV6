@@ -48,15 +48,6 @@ else if ($dopost == 'save') {
     $flag = '';
     $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
     $userip = GetIP();
-
-    $svali = GetCkVdValue();
-    if (preg_match("/3/", $safe_gdopen)) {
-        if (strtolower($vdcode) != $svali || $svali == '') {
-            ResetVdValue();
-            ShowMsg('验证码错误', '-1');
-            exit();
-        }
-    }
     if ($typeid == 0) {
         ShowMsg('请指定文档隶属的栏目', '-1');
         exit();

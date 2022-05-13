@@ -20,12 +20,10 @@ if ($step == 1) {
     }
     if ($dopost == 'regbase') {
         $svali = GetCkVdValue();
-        if (preg_match("/1/", $safe_gdopen)) {
-            if (strtolower($vdcode) != $svali || $svali == '') {
-                ResetVdValue();
-                ShowMsg('验证码错误', '-1');
-                exit();
-            }
+        if (strtolower($vdcode) != $svali || $svali == '') {
+            ResetVdValue();
+            ShowMsg('验证码错误', '-1');
+            exit();
         }
         $userid = $uname = trim($userid);
         $pwd = trim($userpwd);

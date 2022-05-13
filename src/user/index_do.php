@@ -173,12 +173,10 @@ else if ($fmdo == 'login') {
             $vdcode = '';
         }
         $svali = GetCkVdValue();
-        if (preg_match("/2/", $safe_gdopen)) {
-            if (strtolower($vdcode) != $svali || $svali == '') {
-                ResetVdValue();
-                ShowMsg('验证码错误', 'index.php');
-                exit();
-            }
+        if (strtolower($vdcode) != $svali || $svali == '') {
+            ResetVdValue();
+            ShowMsg('验证码错误', 'index.php');
+            exit();
         }
         if (CheckUserID($userid, '', false) != 'ok') {
             ResetVdValue();

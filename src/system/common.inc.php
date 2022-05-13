@@ -226,11 +226,6 @@ if (!isset($cfg_NotPrintHead)) {
         header("Content-Type: text/html; charset={$cfg_soft_lang}");
     }
 }
-//安全提示
-$safe_gdopen = '1,2,3,4,5,6,7';
-$safe_codetype = '3';
-$safe_wwidth = '80';
-$safe_wheight = '36';
 //自动加载类库处理
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     require_once(DEDEINC.'/autoload7.inc.php');

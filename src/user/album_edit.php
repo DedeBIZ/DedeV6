@@ -59,14 +59,6 @@ if (empty($dopost)) {
 function _Save(){  }
 ------------------------------*/
 else if ($dopost == 'save') {
-    $svali = GetCkVdValue();
-    if (preg_match("/1/", $safe_gdopen)) {
-        if (strtolower($vdcode) != $svali || $svali == '') {
-            ResetVdValue();
-            ShowMsg('验证码错误', '-1');
-            exit();
-        }
-    }
     $cInfos = $dsql->GetOne("Select * From `#@__channeltype`  where id='$channelid'; ");
     $maxwidth = isset($maxwidth) && is_numeric($maxwidth) ? $maxwidth : 800;
     $pagepicnum = isset($pagepicnum) && is_numeric($pagepicnum) ? $pagepicnum : 12;
