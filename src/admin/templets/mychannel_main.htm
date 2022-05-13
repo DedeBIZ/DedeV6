@@ -1,4 +1,4 @@
-{dede:config name='pagesize' value='30' /}
+{dede:config name='pagesize' value='30'/}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -56,9 +56,7 @@
 			</tr>'}
 			<tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id /}</td>
-				<td>
-					<a href='mychannel_edit.php?id={dede:field.id/}&dopost=edit'>{dede:field.typename /}</a>
-				</td>
+				<td><a href='mychannel_edit.php?id={dede:field.id/}&dopost=edit'>{dede:field.typename /}</a></td>
 				<td>{dede:field.nid /}</td>
 				<td>{dede:field.addtable function="str_replace('#@__',$cfg_dbprefix,@me)" /}</td>
 				<td>{dede:field.isshow function="GetSta(@me,$fields['id'])" /}</td>

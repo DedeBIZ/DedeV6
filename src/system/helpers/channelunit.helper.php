@@ -375,7 +375,7 @@ function GetSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
  */
 function MfTypedir($typedir)
 {
-    if (preg_match("/^http:|^ftp:/i", $typedir)) return $typedir;
+    if (preg_match("/^(http|https|ftp):/i", $typedir)) return $typedir;
     $typedir = str_replace("{cmspath}", $GLOBALS['cfg_cmspath'], $typedir);
     $typedir = preg_replace("/\/{1,}/", "/", $typedir);
     return $typedir;

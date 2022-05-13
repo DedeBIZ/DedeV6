@@ -14,11 +14,11 @@ if (empty($uploadfile)) {
     $uploadfile = "";
 }
 if (!is_uploaded_file($uploadfile)) {
-    ShowMsg("您没有选择上传的文件!", "-1");
+    ShowMsg("您没有选择上传的文件", "-1");
     exit();
 }
 if (!preg_match("#^text#", $uploadfile_type)) {
-    ShowMsg("您上传的不是文本类型附件!", "-1");
+    ShowMsg("您上传的不是文本类型附件", "-1");
     exit();
 }
 if (!preg_match("#\.(".$cfg_txttype.")#i", $uploadfile_name)) {
