@@ -3,7 +3,7 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>支付接口配置</title>
+  <title>支付接口设置</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -17,24 +17,23 @@
   <center>
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr>
-        <td height="26" background="../static/web/img/tbg.gif" colspan="4" class="table table-borderless">
-          <table width="100%" cellspacing="0" cellpadding="0">
+        <td bgcolor="#f8f8f8" colspan="4">
+          <table width="100%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td style="padding-left:10px">支付接口列表</td>
-              <td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank">[查看更多接口]</a></span>
-              </td>
+              <td>支付接口列表</td>
+              <td align="right"><span><a href="https://www.dedebiz.com/help" target="_blank" class="btn btn-success btn-sm">更多接口</a></span></td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr align="center" bgcolor="#F8FCF1" height="26">
+      <tr bgcolor="#F8FCF1" align="center">
         <td width="20%">支付方式</td>
         <td width="40%">描述</td>
         <td width="10%">排序</td>
         <td width="20%">管理</td>
       </tr>
       {dede:datalist empty='<tr><td colspan="4"><center>暂无内容</center></td></tr>'}
-      <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+      <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td>{dede:field.name /}</td>
         <td align="left">{dede:field.description /}</td>
         <td>{dede:field.rank /}</td>
@@ -55,12 +54,9 @@
         </td>
       </tr>
       {/dede:datalist}
-      <tr align="center" bgcolor="#f8f8f8" height="36">
+      <tr height="36" bgcolor="#f8f8f8" align="center">
         <td colspan="4">{dede:pagelist listsize='6'/}</td>
       </tr>
-    </table>
-    </td>
-    </tr>
     </table>
   </center>
 </body>

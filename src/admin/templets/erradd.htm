@@ -55,12 +55,11 @@
 		}
 	</script>
 	<form name="form2">
-		<table width="98%" align="center" cellpadding="3" cellspacing="1"
-			class="table maintable mt-3 mb-3">
+		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 			<tr>
-				<td height="26" background="../static/web/img/tbg.gif" colspan="8" style="padding-left:10px">文章错误管理</td>
+				<td bgcolor="#f8f8f8" colspan="8">文章错误管理</td>
 			</tr>
-			<tr align="center" bgcolor="#F8FCF1" height="26">
+			<tr bgcolor="#F8FCF1" align="center">
 				<td width="5%">选择</td>
 				<td width="7%">编号</td>
 				<td width="12%">挑错人</td>
@@ -71,8 +70,7 @@
 				<td width="15%">修改建议</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-			<tr height="26" align="center"
-				onMouseMove="javascript:this.bgColor='#F8FCF1';" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+			<tr align="center" onMouseMove="javascript:this.bgColor='#F8FCF1';" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td><input name="id" type="checkbox" id="id" value="{dede:field.id/}" class="np"></td>
 				<td>{dede:field.id /}</td>
 				<td>{dede:field.mid function='username(@me)'/}</td>
@@ -83,14 +81,14 @@
 				<td>{dede:field.oktxt /}</td>
 			</tr>
 			{/dede:datalist}
-			<tr align="left" height="26">
+			<tr align="left" >
 				<td colspan="8">
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
-					<a href="javascript:delArc(0)" class="btn btn-success btn-sm">删除</a>
+					<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
 				</td>
 			</tr>
-			<tr align="center" bgcolor="#f8f8f8" height="36">
+			<tr height="36" bgcolor="#f8f8f8" align="center">
 				<td colspan="8">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>

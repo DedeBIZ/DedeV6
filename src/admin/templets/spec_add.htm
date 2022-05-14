@@ -69,8 +69,8 @@ table{border-collapse:separate}
     <input type="hidden" name="source" value="本站">
     <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
-        <td width="85%" height="26"><i class="fa fa-book"></i> <a href="content_s_list.php">专题列表</a><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"></a> &gt; 发布专题</td>
-        <td width="10%" align="right"> <a href="makehtml_spec.php" class="btn btn-success btn-sm">更新HTML</a></td>
+        <td width="85%" ><i class="fa fa-book"></i> <a href="content_s_list.php">专题列表</a><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"></a> &gt; 发布专题</td>
+        <td width="10%" align="right"> <a href="makehtml_spec.php" class="btn btn-success btn-sm">更新专题</a></td>
       </tr>
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -78,7 +78,7 @@ table{border-collapse:separate}
         <td colspan="2">
           <table width="168" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规参数</td>
+              <td width="86" height="28" align="center" background="../static/web/img/itemnote1.gif">常规参数</td>
               <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">专题文档</a></td>
             </tr>
           </table>
@@ -88,10 +88,10 @@ table{border-collapse:separate}
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head2" style="display:none">
       <tr>
         <td colspan="2">
-          <table width="168" height="26" cellpadding="0" cellspacing="0">
+          <table width="168"  cellpadding="0" cellspacing="0">
             <tr>
               <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem1()">常规参数</a></td>
-              <td width="86" align="center" background="../static/web/img/itemnote1.gif">专题文档</td>
+              <td width="86" height="28" align="center" background="../static/web/img/itemnote1.gif">专题文档</td>
             </tr>
           </table>
         </td>
@@ -99,11 +99,11 @@ table{border-collapse:separate}
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6">
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;专题名称：</td>
-              <td width='400'><input name="title" type="text" id="title" value="" style="width:380px"></td>
+              <td width="400"><input name="title" type="text" id="title" value="" style="width:380px"></td>
               <td width="90">&nbsp;简略标题：</td>
               <td><input name="shorttitle" type="text" id="shorttitle" style="width:160px"></td>
             </tr>
@@ -111,7 +111,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;自定义属性：</td>
@@ -131,13 +131,13 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr id="pictable">
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;缩略图：</td>
               <td>
                 <input name="picname" type="text" id="picname" style="width:300px">
-                <label><input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote'>&nbsp;远程</label>
+                <label><input type="checkbox" class="np" name="ddisremote" value="1" id="ddisremote">&nbsp;远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
@@ -148,7 +148,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;责任编辑：</td>
@@ -158,10 +158,10 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="26">&nbsp;内容排序：</td>
+              <td width="90" >&nbsp;内容排序：</td>
               <td width="260">
                 <select name="sortup" id="sortup" style="width:160px">
                   <option value="0" selected>默认排序</option>
@@ -173,14 +173,16 @@ table{border-collapse:separate}
                 </select>
               </td>
               <td width="90">标题颜色：</td>
-              <td width="130"><input name="color" type="text" id="color" style="width:160px"></td>
-              <td><button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button></td>
+              <td>
+                <input name="color" type="text" id="color" style="width:160px">
+                <button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
+              </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;主分类：</td>
@@ -192,19 +194,19 @@ table{border-collapse:separate}
                 echo $typeOptions;
                 echo "</select>";
 					      ?>
-                <i class='btn btn-sm fa fa-search'  onClick="ShowCatMap(event,this,0,'typeid')" title='快捷选择' style='cursor:pointer'></i>
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,0,'typeid')" title="快捷选择" style="cursor:pointer"></i>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键词：</td>
               <td>
-                <input type='text' name="keywords" id="keywords" value="" style="width:360px">
+                <input type="text" name="keywords" id="keywords" value="" style="width:360px">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
               <td><label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />自动获取，手动填写用","分开</label></td>
@@ -213,7 +215,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;专题简介：</td>
@@ -223,30 +225,25 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="26" width="260">&nbsp;评论选项：</td>
+              <td width="90"  width="260">&nbsp;评论选项：</td>
               <td width="260">
-                <label><input type='radio' name='notpost' class='np' value='0' <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?> />
-                 允许评论 </label>
-                &nbsp;
-                <label><input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?> />
-                 禁止评论 </label>
+                <label><input type="radio" name="notpost" class="np" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>> 允许评论</label>
+                <label><input type="radio" name="notpost" class="np" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
-                <label><input name="ishtml" type="radio" class="np" value="1" checked='1'> 
-                生成网页 </label>
-                <label><input type="radio" name="ishtml" class="np" value="0">
-                仅动态浏览 </label>
+                <label><input name="ishtml" type="radio" class="np" value="1" checked="1"> 生成网页</label>
+                <label><input type="radio" name="ishtml" class="np" value="0"> 仅动态浏览</label>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;专题模板：</td>
@@ -261,7 +258,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;发布时间：</td>
@@ -282,14 +279,14 @@ table{border-collapse:separate}
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="display:none;border:1px solid #dee2e6">
       <tr>
-        <td height="26" class="bline2">专题节点列表： <br>
+        <td class="bline2">专题节点列表： <br>
           1、文章列表用ID1,ID2,ID3这样形式分开，系统会自动排除不同节点的相同文章；<br>
           2、关于单条记录模板里的[field:fieldname /]标记的使用，请参考关于系统帮助关于 arclist 标记的说明；<br>
           3、节点ID是节点的唯一标识，专题模板中用{dede:field.note noteid='标识'/}这样来表示单个节点，不指定noteid时为所有节点列表<br>
           4、正常的情况下，每个节点显示的是“节点文章列表”里的文档，如果您指定为“自动获取模式”，那么必须指定关键词和栏目ID </td>
       </tr>
       <tr>
-        <td height="26">
+        <td>
           <table width="98%" cellspacing="2" cellpadding="2">
             <?php
             $speclisttmp = GetSysTemplets("spec_arclist.htm");
@@ -324,31 +321,22 @@ table{border-collapse:separate}
             <tr>
               <td>文档来源：</td>
               <td colspan="2">
-                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="0" class="np" checked>
-                按文章列表</label>
-                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1" class="np">
-                自动获取文档</label>
-                &nbsp;
-                <label>关键词：
-                <input name="keywords<?php echo $i?>" type="text" id="keywords<?php echo $i?>" value="" size="16">（逗号分开）</label>
-                栏目ID：
-                <label><input name="typeid<?php echo $i?>" type="text" id="_typeid<?php echo $i?>" value="0" size="4"></label>
+                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="0" class="np" checked> 按文章列表</label>
+                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1" class="np"> 自动获取文档</label>
+                <label>关键词：<input name="keywords<?php echo $i?>" type="text" id="keywords<?php echo $i?>" value="" size="16">（逗号分开）</label>
+                栏目ID：<label><input name="typeid<?php echo $i?>" type="text" id="_typeid<?php echo $i?>" value="0" size="4"></label>
               </td>
             </tr>
             <tr>
               <td height="50" rowspan="2">节点布局：</td>
-              <td colspan="2"> 列数：
-                <input name="col<?php echo $i?>" type="text" id="col<?php echo $i?>" value="1" size="3">
-                图片宽：
-                <input name="imgwidth<?php echo $i?>" type="text" id="imgwidth<?php echo $i?>" value="120" size="3">
-                图片高：
-                <input name="imgheight<?php echo $i?>" type="text" id="imgheight<?php echo $i?>" value="90" size="3">
-                标题长：
-                <input name="titlelen<?php echo $i?>" type="text" id="titlelen<?php echo $i?>" value="60" size="3">
-                简介长：
-                <input name="infolen<?php echo $i?>" type="text" id="infolen<?php echo $i?>" value="160" size="3">
-                文档数：
-                <input name="rownum<?php echo $i?>" type="text" id="rownum<?php echo $i?>" value="10" size="3"></td>
+              <td colspan="2">
+                列数：<input name="col<?php echo $i?>" type="text" id="col<?php echo $i?>" value="1" size="3">
+                图片宽：<input name="imgwidth<?php echo $i?>" type="text" id="imgwidth<?php echo $i?>" value="120" size="3">
+                图片高：<input name="imgheight<?php echo $i?>" type="text" id="imgheight<?php echo $i?>" value="90" size="3">
+                标题长：<input name="titlelen<?php echo $i?>" type="text" id="titlelen<?php echo $i?>" value="60" size="3">
+                简介长：<input name="infolen<?php echo $i?>" type="text" id="infolen<?php echo $i?>" value="160" size="3">
+                文档数：<input name="rownum<?php echo $i?>" type="text" id="rownum<?php echo $i?>" value="10" size="3">
+              </td>
             </tr>
             <tr>
               <td colspan="2">单条记录的模板：<br>

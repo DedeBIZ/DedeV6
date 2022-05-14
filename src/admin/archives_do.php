@@ -38,7 +38,7 @@ if ($dopost == 'editArchives') {
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
-        $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
+        $savepath = $ddcfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
         $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         $fullUrl = $fullUrl.".png";
@@ -148,7 +148,7 @@ else if ($dopost == "uploadLitpic") {
     if ($upfile == '-1') {
         $msg = "<script>
                 parent.document.getElementById('uploadwait').style.display = 'none';
-                alert('您没指定要上传的文件或文件大小超过限制');
+                alert('您没指定要上传文件或文件大小超过限制');
             </script>";
     } else if ($upfile == '-2') {
         $msg = "<script>
@@ -215,7 +215,7 @@ else if ($dopost == "commendArchives") {
             $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
-    ShowMsg("成功把所选的文档设为推荐", $ENV_GOBACK_URL);
+    ShowMsg("成功把所选文档设为推荐", $ENV_GOBACK_URL);
     exit();
 }
 /*--------------------------
@@ -270,7 +270,7 @@ else if ($dopost == "checkArchives") {
         $dsql->ExecuteNoneQuery("UPDATE `#@__taglist` SET arcrank='0' WHERE aid='$aid' ");
         $pageurl = MakeArt($aid, false);
     }
-    ShowMsg("成功审核指定的文档", $ENV_GOBACK_URL);
+    ShowMsg("成功审核指定文档", $ENV_GOBACK_URL);
     exit();
 }
 /*-----------------------------
@@ -286,29 +286,26 @@ else if ($dopost == 'moveArchives') {
         $tl = new TypeLink($aid);
         $typeOptions = $tl->GetOptionArray(0, $admin_catalogs, $channelid);
         $typeOptions = "<select name='totype' style='width:320px'>
-        <option value='0'>请选择移动到的位置</option>
+        <option value='0'>请选择移动位置</option>
         $typeOptions
         </select>";
         //输出AJAX可移动窗体
         $divname = 'moveArchives';
-        echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">";
-        echo "<div class='titLeft'>移动文档</div>";
-        echo "<div class='titRight'><img src='../static/web/img/ico-close.gif' style='cursor:pointer' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
-        echo "</div>";
+        echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">移动文档</div>";
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
         echo "<table width='100%' style='display:inline-block;z-index:9000'>";
         ?>
         <tr>
-            <td width="86" height="26" class="bline">&nbsp;目标栏目：</td>
+            <td width="90" class="bline">&nbsp;目标栏目：</td>
             <td class="bline"><?php echo $typeOptions; ?></td>
         </tr>
         <tr>
-            <td width="86" height="26" class="bline">&nbsp;文档ID：</td>
+            <td width="90" class="bline">&nbsp;文档ID：</td>
             <td class="bline">
                 <input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden">
-                <br>移动到的目标栏目必须和选定的文档频道类型一致，否则程序会自动勿略不符合的文档
+                <br>移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
             </td>
         </tr>
         <tr>
@@ -330,7 +327,7 @@ else if ($dopost == 'moveArchives') {
             exit();
         }
         if ($typeInfos['ispart'] != 0) {
-            ShowMsg('文档保存的栏目必须为最终列表栏目', '-1');
+            ShowMsg('文档保存栏目必须为最终列表栏目', '-1');
             exit();
         }
         if (empty($typeInfos['addtable'])) {
@@ -379,12 +376,12 @@ else if ($dopost == 'return') {
         ShowMsg("参数无效", "recycling.php");
         exit();
     }
-    $qstrs = explode("`", $qstr);
+    $qstrs = explode('`', $qstr);
     foreach ($qstrs as $aid) {
         $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET arcrank='-1',ismake='0' WHERE id='$aid'");
         $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET `arcrank` = '-1' WHERE id = '$aid'; ");
     }
-    ShowMsg("成功还原指定的文档", "recycling.php");
+    ShowMsg("成功还原指定文档", "recycling.php");
     exit();
 }
 /*--------------------------
@@ -395,7 +392,6 @@ else if ($dopost == "delArchives") {
     CheckPurview('a_Del,a_AccDel,a_MyDel,sys_ArcBatch');
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     if (empty($fmdo)) $fmdo = '';
-
     if ($fmdo == 'yes') {
         if (!empty($aid) && empty($qstr)) {
             $qstr = $aid;
@@ -404,7 +400,7 @@ else if ($dopost == "delArchives") {
             ShowMsg("参数无效", $ENV_GOBACK_URL);
             exit();
         }
-        $qstrs = explode("`", $qstr);
+        $qstrs = explode('`', $qstr);
         $okaids = array();
         foreach ($qstrs as $aid) {
             if (!isset($okaids[$aid])) {
@@ -413,7 +409,7 @@ else if ($dopost == "delArchives") {
                 $okaids[$aid] = 1;
             }
         }
-        ShowMsg("成功删除指定的文档", $ENV_GOBACK_URL);
+        ShowMsg("成功删除指定文档", $ENV_GOBACK_URL);
         exit();
     } else {
         $wintitle = "文档管理-删除文档";
@@ -423,8 +419,8 @@ else if ($dopost == "delArchives") {
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
-        $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确定要删除，序号 $qstr 文档");
+        $win->AddHidden("aid", $aid);
+        $win->AddTitle("您确定删除，序号 $qstr 文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -438,14 +434,13 @@ else if ($dopost == 'clear') {
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     if (empty($fmdo)) $fmdo = '';
     $recycle = empty($recycle) ? "" : $recycle;
-
     if ($fmdo == 'yes') {
         if (!empty($aid) && empty($qstr)) $qstr = $aid;
         if ($qstr == '') {
             ShowMsg("参数无效", "recycling.php");
             exit();
         }
-        $qstrs = explode(",", $qstr);
+        $qstrs = explode('`', $qstr);
         $okaids = array();
         foreach ($qstrs as $qstr) {
             if (!isset($okaids[$qstr])) {
@@ -455,14 +450,14 @@ else if ($dopost == 'clear') {
                 $okaids[$qstr] = 1;
             }
         }
-        ShowMsg("成功删除指定的文档", "recycling.php");
+        ShowMsg("成功删除指定文档", "recycling.php");
         exit();
     } else {
         $dsql->SetQuery("SELECT id FROM `#@__archives` WHERE `arcrank` = '-2'");
         $dsql->Execute();
         $qstr = '';
         while ($row = $dsql->GetArray()) {
-            $qstr .= $row['id'].",";
+            $qstr .= $row['id'].'`';
             $aid = $row['id'];
         }
         $num = $dsql->GetTotalRow();
@@ -477,8 +472,9 @@ else if ($dopost == 'clear') {
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
+        $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("本次操作将清空回收站 $num 篇文档<br>您确定要删除，序号 $qstr 文档");
+        $win->AddTitle("回收站将清空 $num 篇文档<br>您确定删除，序号 $qstr 文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -498,7 +494,7 @@ else if ($dopost == 'del') {
             ShowMsg("参数无效", "recycling.php");
             exit();
         }
-        $qstrs = explode("`", $qstr);
+        $qstrs = explode('`', $qstr);
         $okaids = array();
         foreach ($qstrs as $aid) {
             if (!isset($okaids[$aid])) {
@@ -507,7 +503,7 @@ else if ($dopost == 'del') {
                 $okaids[$aid] = 1;
             }
         }
-        ShowMsg("成功删除指定的文档", "recycling.php");
+        ShowMsg("成功删除指定文档", "recycling.php");
         exit();
     } else {
         $wintitle = "文档管理-删除文档";
@@ -517,8 +513,9 @@ else if ($dopost == 'del') {
         $win->AddHidden("fmdo", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("qstr", $qstr);
+        $win->AddHidden("aid", $aid);
         $win->AddHidden("recycle", $recycle);
-        $win->AddTitle("您确定要删除，序号 $qstr 文档");
+        $win->AddTitle("您确要删除，序号 $qstr 文档");
         $winform = $win->GetWindow("ok");
         $win->Display();
     }
@@ -536,17 +533,14 @@ else if ($dopost == 'quickEdit') {
     LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($query);
     $divname = 'quickEdit';
-    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">";
-    echo "<div class='titLeft'>快速属性编辑</div>";
-    echo "<div class='titRight'><img src='../static/web/img/ico-close.gif' style='cursor:pointer' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
-    echo "</div>";
+    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">快速属性编辑</div>";
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
     ?>
     <tr>
-        <td width="86" height="26" class="bline">&nbsp;所属栏目：</td>
+        <td width="90" class="bline">&nbsp;所属栏目：</td>
         <td class="bline">
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
@@ -558,7 +552,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="86" height="26" class="bline">&nbsp;属性：</td>
+        <td width="90" class="bline">&nbsp;属性：</td>
         <td class="bline">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag']; ?>">
             <?php
@@ -575,15 +569,15 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="86" height="26" class="bline">&nbsp;标题：</td>
+        <td width="90" class="bline">&nbsp;标题：</td>
         <td class="bline"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
     </tr>
     <tr>
-        <td width="86" height="26" class="bline">&nbsp;简略标题：</td>
+        <td width="90" class="bline">&nbsp;简略标题：</td>
         <td class="bline"><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
     </tr>
     <tr>
-        <td width="86" height="26" class="bline">&nbsp;阅读权限：</td>
+        <td width="90" class="bline">&nbsp;阅读权限：</td>
         <td class="bline">
             <select name="arcrank" id="arcrank" style="width:100px">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>
@@ -601,7 +595,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="86" height="26" class="bline">&nbsp;关键词：</td>
+        <td width="90" class="bline">&nbsp;关键词：</td>
         <td class="bline"><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
     <tr>
@@ -616,7 +610,7 @@ else if ($dopost == 'quickEdit') {
 //AJAX窗体结束
 }
 /*-----------------------------
-//保存快速编辑的内容
+//保存快速编辑内容
 function quickEditSave(){ }
 ------------------------------*/
 else if ($dopost == 'quickEditSave') {
@@ -624,7 +618,7 @@ else if ($dopost == 'quickEditSave') {
     //权限检测
     if (!TestPurview('a_Edit')) {
         if (TestPurview('a_AccEdit')) {
-            CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的文档权限");
+            CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 文档权限");
         } else {
             CheckArcAdmin($aid, $cuserLogin->getUserID());
         }
@@ -664,7 +658,7 @@ else if ($dopost == 'quickEditSave') {
     //更新HTML
     $artUrl = MakeArt($aid, TRUE, TRUE);
     $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '-1';
-    ShowMsg('成功更新一篇文档的基本信息', $backurl);
+    ShowMsg('成功更新一篇文档基本信息', $backurl);
     exit();
 }
 /*--------------------------
@@ -687,7 +681,7 @@ else if ($dopost == "makekw") {
         $client->appid = $cfg_bizcore_appid;
         $client->key = $cfg_bizcore_key;
         while ($row = $dsql->GetArray()) {
-            //跳过已经有关键词的内容
+            //跳过已经有关键词内容
             if (trim($row['keywords']) != '') continue;
             $aid = $row['id'];
             $keywords = '';
@@ -710,7 +704,7 @@ else if ($dopost == "makekw") {
         include_once(DEDEINC.'/libraries/splitword.class.php');
         $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
         while ($row = $dsql->GetArray()) {
-            //跳过已经有关键词的内容
+            //跳过已经有关键词内容
             if (trim($row['keywords']) != '') continue;
             $aid = $row['id'];
             $keywords = '';
@@ -752,7 +746,7 @@ else if ($dopost == "makekw") {
         }
         $sp = null;
     }
-    ShowMsg("成功分析指定文档的关键词", $ENV_GOBACK_URL);
+    ShowMsg("成功分析指定文档关键词", $ENV_GOBACK_URL);
     exit();
 }
 /*--------------------------
@@ -767,7 +761,7 @@ else if ($dopost == 'attsAdd') {
         exit();
     }
     if (empty($flagname)) {
-        ShowMsg("必须指定要添加的属性", $ENV_GOBACK_URL);
+        ShowMsg("必须指定要添加属性", $ENV_GOBACK_URL);
         exit();
     }
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
@@ -791,7 +785,7 @@ else if ($dopost == 'attsAdd') {
             $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET `flag`='$flag' WHERE aid='{$aid}' ");
         }
     }
-    ShowMsg("成功对选中文档增加指定的属性", $ENV_GOBACK_URL);
+    ShowMsg("成功对选中文档增加指定属性", $ENV_GOBACK_URL);
     exit();
 }
 /*--------------------------
@@ -806,7 +800,7 @@ else if ($dopost == 'attsDel') {
         exit();
     }
     if (empty($flagname)) {
-        ShowMsg("必须指定要删除的属性", $ENV_GOBACK_URL);
+        ShowMsg("必须指定要删除属性", $ENV_GOBACK_URL);
         exit();
     }
     $arcids = preg_replace("#[^0-9,]#", '', preg_replace("#`#", ',', $qstr));
@@ -840,11 +834,11 @@ else if ($dopost == 'attsDel') {
         $flag = trim(join(',', $okflags));
         $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET `flag`='$flag' WHERE {$idname}='{$aid}' ");
     }
-    ShowMsg("成功对选中文档删除指定的属性", $ENV_GOBACK_URL);
+    ShowMsg("成功对选中文档删除指定属性", $ENV_GOBACK_URL);
     exit();
 }
 /*--------------------------
-//获得批量属性处理的AJAX窗体
+//获得批量属性处理AJAX窗体
 function attsDlg(){ }
 ---------------------------*/
 else if ($dopost == 'attsDlg') {
@@ -853,19 +847,16 @@ else if ($dopost == 'attsDlg') {
     AjaxHead();
     //输出AJAX可移动窗体
     $divname = 'attsDlg';
-    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 225);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">";
-    echo "<div class='titLeft'>{$dojobname}</div>";
-    echo "<div class='titRight'><img src='../static/web/img/ico-close.gif' style='cursor:pointer' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
-    echo "</div>";
+    echo "<div class='title' onmousemove=\"DropMoveHand('{$divname}', 260);\" onmousedown=\"DropStartHand();\" onmouseup=\"DropStopHand();\">{$dojobname}</div>";
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
 ?>
     <tr>
-        <td width="86" height="26" class="bline">&nbsp;属性：</td>
+        <td width="90" class="bline">&nbsp;属性：</td>
         <td class="bline">
-            <input type='hidden' name='oldflag' value='<?php echo $arcRow['flag']; ?>'>
+            <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag']; ?>">
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
@@ -877,8 +868,8 @@ else if ($dopost == 'attsDlg') {
         </td>
     </tr>
     <tr>
-        <td width="86" height="26" class="bline">&nbsp;文档ID：</td>
-        <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr; ?>" style='width:320px;overflow:hidden'></td>
+        <td width="90" class="bline">&nbsp;文档ID：</td>
+        <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-3">
@@ -899,10 +890,7 @@ else if ($dopost == 'getCatMap') {
     AjaxHead();
     //输出AJAX可移动窗体
     $divname = 'getCatMap';
-    echo "<div class='title' style='cursor:default'>";
-    echo "<div class='titLeft'>栏目快速选择器</div>";
-    echo "<div class='titRight'><img src='../static/web/img/ico-close.gif' style='cursor:pointer' onclick='HideObj(\"{$divname}\");ChangeFullDiv(\"hide\");' title='关闭'></div>";
-    echo "</div>";
+    echo "<div class='title' style='cursor:default'>栏目快速选择器</div>";
     $tus = new TypeUnitSelector();
     ?>
     <form name="quicksel" action="javascript:;" method="get">

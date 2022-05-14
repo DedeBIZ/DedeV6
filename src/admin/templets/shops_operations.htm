@@ -85,20 +85,18 @@
   </form>
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
     <tr>
-      <td height="26" colspan="11" background="../static/web/img/tbg.gif">
+      <td bgcolor="#f8f8f8" colspan="11">
         <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr>
-            <td width="30%" style="padding-left:10px">商店订单记录</td>
-            <td width="45%" align="right" style="padding-top:10px">
+            <td width="30%">商店订单记录</td>
+            <td width="45%" align="right">
               <button type="button" onClick="location='shops_operations.php?sta=0'" class="btn btn-success btn-sm">未付款</button>
               <button type="button" onClick="location='shops_operations.php?sta=1';" class="btn btn-success btn-sm">已付款</button>
               <button type="button" onClick="location='shops_operations.php?sta=2';" class="btn btn-success btn-sm">已发货</button>
               <button type="button" onClick="location='shops_operations.php?sta=4';" class="btn btn-success btn-sm">已完成</button>
               <button type="button" onClick="location='shops_operations.php';" class="btn btn-success btn-sm">全部</button>
             </td>
-            <td width="25%" align="right" style="padding-top:10px">
-              <button type="button" onClick="location='shops_operations.php';" class="btn btn-success btn-sm">订单管理</button>
-            </td>
+            <td width="25%" align="right"><button type="button" onClick="location='shops_operations.php';" class="btn btn-success btn-sm">订单管理</button></td>
           </tr>
         </table>
       </td>
@@ -118,58 +116,35 @@
     </tr>
     <form name="form1">
       {dede:datalist empty='<tr><td colspan="11"><center>暂无内容</center></td></tr>'}
-      <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td align="center">
-          <input type='checkbox' name='aids' value='<?php echo $fields['oid']?>' class='np'></td>
-        <td align="center">
-          <?php echo $fields['oid']; ?>
-        </td>
-        <td align="center">
-          <a href="javascript:OpenMyWinN('shops_operations_userinfo.php?oid=<?php echo $fields['oid']?>',800,600);"><?php echo $fields['consignee']?></a>
-        </td>
+      <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+        <td align="center"><input type='checkbox' name='aids' value='<?php echo $fields['oid']?>' class='np'></td>
+        <td align="center"><?php echo $fields['oid']; ?></td>
+        <td align="center"><a href="javascript:OpenMyWinN('shops_operations_userinfo.php?oid=<?php echo $fields['oid']?>',800,600);"><?php echo $fields['consignee']?></a></td>
         <td align="center">
           <?php echo $fields['cartcount']?>
           <a class="btn btn-success btn-sm" href="javascript:OpenMyWinN('shops_operations_cart.php?oid=<?php echo $fields['oid']?>',800,600);">详情</a>
         </td>
-        <td align="center">
-          <?php echo GetDateTimeMk($fields['stime'])?>
-          (<span>{dede:field.stime function="floorTime(time()-@me,@me)"/}</span>)
-        </td>
-        <td align="center">
-          <?php echo $fields['price']?>
-        </td>
-        <td align="center">
-          <?php echo $fields['dprice']?>
-        </td>
-        <td align="center">
-          <?php echo $fields['priceCount']?>
-        </td>
-        <td align="center">
-          <?php echo GetsType($fields['paytype'])?>
-        </td>
-        <td align="center">
-          <?php echo GetSta($fields['state'])?>
-        </td>
-
-        <td align="center">
-          <?php echo GetMemberID($fields['userid'])?>
-        </td>
+        <td align="center"><?php echo GetDateTimeMk($fields['stime'])?>（{dede:field.stime function="floorTime(time()-@me,@me)"/}）</td>
+        <td align="center"><?php echo $fields['price']?></td>
+        <td align="center"><?php echo $fields['dprice']?></td>
+        <td align="center"><?php echo $fields['priceCount']?></td>
+        <td align="center"><?php echo GetsType($fields['paytype'])?></td>
+        <td align="center"><?php echo GetSta($fields['state'])?></td>
+        <td align="center"><?php echo GetMemberID($fields['userid'])?></td>
       </tr>
       {/dede:datalist}
     </form>
     <tr>
-      <td height="26" colspan="11" bgcolor="#FCFDF7" style="padding-top:10px">&nbsp;
+      <td colspan="11" bgcolor="#f8f8f8" style="padding-top:10px">&nbsp;
         <button type="button" onClick="ReSel();" class="btn btn-success btn-sm">反选</button>
-        <button type="button" onClick="DelSel();" class="btn btn-success btn-sm">删除</button>
+        <button type="button" onClick="DelSel();" class="btn btn-danger btn-sm">删除</button>
         <button type="button" onClick="UpSel();" class="btn btn-success btn-sm">设为已付款状态</button>
         <button type="button" onClick="PushSel();" class="btn btn-success btn-sm">设为已发货状态</button>
         <button type="button" onClick="OkSel();" class="btn btn-success btn-sm">设为已完成状态</button>
       </td>
     </tr>
     <tr>
-      <td height="36" colspan="11" bgcolor="#f8f8f8" align="center">
-        {dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="5"/}
-      </td>
+      <td height="36" colspan="11" bgcolor="#f8f8f8" align="center">{dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="6"/}</td>
     </tr>
   </table>
 </body>

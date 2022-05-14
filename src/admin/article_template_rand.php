@@ -92,7 +92,7 @@ function DoRand(jobname)
 </div>
 <table width='100%' align='center'>
 <tr>
-    <td height='26'>
+    <td>
     如果您想对旧的文章应用随机模板设置，请点击此对旧文章进行处理（必须设置好模板项）
     <a href='javascript:;' onclick='DoRand(\"makeold\")' class='btn btn-success btn-sm'>设置全部</a>
     <a href='javascript:;' onclick='DoRand(\"clearold\")' class='btn btn-success btn-sm'>取消全部</a>

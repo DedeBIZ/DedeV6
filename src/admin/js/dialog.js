@@ -21,7 +21,7 @@ function AlertMsg(title, id) {
 	msgbg = "#FFF";//内容背景
 	msgcolor = "#333";//内容颜色
 	titlecolor = "#254015";//标题颜色
-	titlebg = "url(../../static/web/img/tbg.gif)";//标题背景
+	titlebg = "#f8f8f8";
 	//遮罩背景设置  	
 	content = "<div id=show_news>对不起，载入失败</div>";
 	var sWidth, sHeight;

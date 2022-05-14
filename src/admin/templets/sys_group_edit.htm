@@ -11,20 +11,20 @@
 <body>
   <center>
     <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-      <form name='form1' action='sys_group_edit.php' method='post'>
-        <input type='hidden' name='dopost' value='save'>
+      <form name="form1" action="sys_group_edit.php" method="post">
+        <input type="hidden" name="dopost" value="save">
         <tr>
-          <td height="26" background="../static/web/img/tbg.gif" align="left" style="padding-left:10px"><a href='sys_group.php'>系统用户组管理</a> &gt; 修改用户组</td>
+          <td bgcolor="#f8f8f8" align="left"><a href="sys_group.php">系统用户组管理</a> &gt; 修改用户组</td>
         </tr>
         <tr>
           <td align="center">
             <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
-                <td width="10%" height="26">组名称：</td>
+                <td width="10%" >组名称：</td>
                 <td width="90%"><input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>" style="width:260px"></td>
               </tr>
               <tr>
-                <td width="10%" height="26">级别值：</td>
+                <td width="10%" >级别值：</td>
                 <td width="90%">
                   <input name="rank" type="hidden" id="rank" value="<?php echo $groupSet['rank']?>">
                   <?php echo $groupSet['rank']?>
@@ -44,8 +44,8 @@
               		$start++;
               		$lhead = "
               	 <tr> 
-                 <td height='26' colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr>
-                 <tr><td height='26' colspan='2'>
+                 <td colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr>
+                 <tr><td colspan='2'>
               		"; 
               		echo $lhead;
               	}
@@ -63,10 +63,10 @@
               $start++;
               ?>
               <tr>
-                <td height="26" colspan="2"><?php echo $start?>、插件权限</td>
+                <td colspan="2"><?php echo $start?>、插件权限</td>
               </tr>
               <tr>
-                <td height="26" colspan="2">
+                <td colspan="2">
                   <?php
                   $l = 0;
                   $dsql->SetQuery('SELECT plusname FROM #@__plus');

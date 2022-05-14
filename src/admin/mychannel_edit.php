@@ -62,23 +62,23 @@ else if ($dopost == "copystart") {
     $msg = "
         <table width='460' cellspacing='0' cellpadding='0'>
         <tr>
-        <td width='170' height='26' align='center'>新频道id：</td>
+        <td width='170' align='center'>新频道id：</td>
         <td width='230'><input name='newid' type='text' id='newid' size='6' value='{$newid}' /></td>
         </tr>
         <tr>
-        <td height='26' align='center'>新频道名称：</td>
+        <td align='center'>新频道名称：</td>
         <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' style='width:250px' /></td>
         </tr>
         <tr>
-        <td height='26' align='center'>新频道标识：</td>
+        <td align='center'>新频道标识：</td>
         <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' style='width:250px' /></td>
         </tr>
         <tr>
-        <td height='26' align='center'>新附加表：</td>
+        <td align='center'>新附加表：</td>
         <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' style='width:250px' /></td>
         </tr>
         <tr>
-        <td height='26' align='center'>复制模板：</td>
+        <td align='center'>复制模板：</td>
         <td>
         <label><input name='copytemplet' type='radio' id='copytemplet' value='1' class='np' checked='checked' /> 复制</label>
         &nbsp;

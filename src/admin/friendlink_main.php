@@ -32,7 +32,7 @@ $dlist->display();
 function GetPic($pic)
 {
     if ($pic == '') return '无图标';
-    else return "<img src='$pic' width='88' height='26' />";
+    else return "<img src='$pic' width='88'  />";
 }
 function GetSta($sta)
 {

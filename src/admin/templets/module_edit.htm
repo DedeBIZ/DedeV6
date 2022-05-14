@@ -36,18 +36,18 @@
 <body>
 <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
-   <input type='hidden' name='action' value='edit'>
-   <input type='hidden' name='dev_id' value='<?php echo $dev_id; ?>'>
+   <input type="hidden" name="action" value="edit">
+   <input type="hidden" name="dev_id" value="<?php echo $dev_id; ?>">
     <tr>
-      <td height="26" colspan="2" background='../static/web/img/wbg.gif' style="padding-left:10px"><a href="module_main.php">模块管理</a> &gt; 模块修改</td>
+      <td bgcolor="#f8f8f8" colspan="2"><a href="module_main.php">模块管理</a> &gt; 模块修改</td>
     </tr>
     <tr>
       <td width="260">模块名称：</td>
-      <td><input name="modulname" type="text" id="modulname" style="width:160px" value="<?php echo $name; ?>" class='alltxt'/></td>
+      <td><input name="modulname" type="text" id="modulname" style="width:160px" value="<?php echo $name; ?>"></td>
     </tr>
     <tr>
       <td>开发者ID：</td>
-      <td><input name="dev_id2" type="text" id="dev_id2" style="width:160px" value="<?php echo $dev_id; ?>" class='alltxt' disabled/> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
+      <td><input name="dev_id2" type="text" id="dev_id2" style="width:160px" value="<?php echo $dev_id; ?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
     </tr>
     <tr>
       <td>语言编码：</td>
@@ -56,37 +56,32 @@
     <tr>
       <td>封装类型：</td>
       <td>
-      	<label><input name="moduletype" type="radio" id="moduletype1" class='np' value='soft'<?php if($moduletype=='soft') echo " checked='1' "; ?>/> 模块</label>
-      	<label><input name="moduletype" type="radio" id="moduletype2" class='np' value='templets'<?php if($moduletype=='templets') echo " checked='1' "; ?>/> 模板</label>
-      	<label><input name="moduletype" type="radio" id="moduletype3" class='np' value='plus'<?php if($moduletype=='plus') echo " checked='1' "; ?>/> 小插件</label>
-      	<label><input name="moduletype" type="radio" id="moduletype3" class='np' value='patch'<?php if($moduletype=='patch') echo " checked='1' "; ?>/> 补丁</label>
+      	<label><input name="moduletype" type="radio" id="moduletype1" class="np" value="soft" <?php if($moduletype=='soft') echo " checked='1' "; ?>> 模块</label>
+      	<label><input name="moduletype" type="radio" id="moduletype2" class="np" value="templets" <?php if($moduletype=='templets') echo " checked='1' "; ?>> 模板</label>
+      	<label><input name="moduletype" type="radio" id="moduletype3" class="np" value="plus" <?php if($moduletype=='plus') echo " checked='1' "; ?>> 小插件</label>
+      	<label><input name="moduletype" type="radio" id="moduletype3" class="np" value="patch" <?php if($moduletype=='patch') echo " checked='1' "; ?>> 补丁</label>
       </td>
     </tr>
     <tr>
       <td>模块识别码：</td>
       <td>
-      <input type='hidden' name='hash' value='<?php echo $hash; ?>'>
-      <input type='text' disabled name='hashv' value='<?php echo $hash; ?>' style="width:260px" class='alltxt'>（不可改）
+        <input type="hidden" name="hash" value="<?php echo $hash; ?>">
+        <input type="text" name="hashv" value="<?php echo $hash; ?>" style="width:260px" disabled>（不可改）
       </td>
     </tr>
     <tr>
       <td>发布时间：</td>
-      <td><input name="mtime" type="text" id="mtime" style="width:160px" value="<?php echo $time; ?>" class='alltxt'/></td>
+      <td><input name="mtime" type="text" id="mtime" style="width:160px" value="<?php echo $time; ?>"></td>
     </tr>
     <tr>
       <td>是否涉及会员系统：</td>
       <td>
-<label><input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo " checked='1' "; ?>>
-不涉及</label>
-<label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class='np' <?php if($ismember=='1') echo " checked='1' "; ?>> 涉及</label>
-<div id='rboxct' style='display:<?php echo ($ismember=='0' ? 'none' : 'block'); ?>'>
-   	  导航使用名称：
-      <input name="indexname" type="text" id="indexname" style="width:160px" value="<?php echo $indexname; ?>" class='alltxt'/>
-      <br>
-导航使用网址：
-<input name="indexurl" type="text" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>" class='alltxt'>
-（用相对于会员中心的网址，如：../ask）
-</div>
+        <label><input name="ismember" type="radio" class="np" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo " checked='1' "; ?>> 不涉及</label>
+        <label><input name="ismember" type="radio" class="np" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo " checked='1' "; ?>> 涉及</label>
+        <div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block'); ?>">
+          导航使用名称：<input name="indexname" type="text" id="indexname" style="width:160px" value="<?php echo $indexname; ?>"><br>
+          导航使用网址：<input name="indexurl" type="text" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>">（用相对于会员中心的网址，如：../ask）
+        </div>
       </td>
     </tr>
     <tr>
@@ -102,8 +97,7 @@
       	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
             <td bgcolor="#F3FDE1">使用协议或说明：<br>
-              如果需要带HTML格式，请编译后点击修改时使用HTML
-            </td>
+              如果需要带HTML格式，请编译后点击修改时使用HTML</td>
           </tr>
           <tr>
             <td><textarea name="readmetxt" id="readmetxt" style="width:98%;height:160px"><?php echo $readmetxt; ?></textarea></td>
@@ -114,43 +108,35 @@
     <tr>
       <td>程序安装：</td>
       <td>
-      <label><input type="checkbox" name="autosetup" id="autosetup" value='1' class="np" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if(isset($autosetup) && $autosetup==1) echo " checked='1'"; ?> />
-      	自动生成（由系统自动处理安装）</label>
-      	<br>
-     <div style="display:<?php if(!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none'; ?>" id="autosetupinput">
-      	<input name="setup" type="file" id="setup" style="width:360px">
-     </div>
-     <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none'; ?>" id="autosetupct">
-      	<table width="100%" cellpadding="5" cellspacing="1">
-          <tr>
-            <td bgcolor="#F3FDE1">
-            	请使用MySQL4.0版本格式的SQL语句:<br>
-            	MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=* ，改为 TYPE=MyISAM ，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束<br>
-            	如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php
-            </td>
-          </tr>
-          <tr>
-            <td><textarea name="setupsql40" id="setupsql40" style="width:98%;height:160px"><?php echo $setupsql40; ?></textarea></td>
-          </tr>
-        </table>
-      </div>
+        <label><input type="checkbox" name="autosetup" id="autosetup" value="1" class="np" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if(isset($autosetup) && $autosetup==1) echo " checked='1'"; ?>> 自动生成（由系统自动处理安装）</label><br>
+        <div style="display:<?php if(!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none'; ?>" id="autosetupinput"><input name="setup" type="file" id="setup" style="width:360px"></div>
+       <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none'; ?>" id="autosetupct">
+        	<table width="100%" cellpadding="5" cellspacing="1">
+            <tr>
+              <td bgcolor="#F3FDE1">
+              	请使用MySQL4.0版本格式的SQL语句:<br>
+              	MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=* ，改为 TYPE=MyISAM ，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束<br>
+              	如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php
+              </td>
+            </tr>
+            <tr>
+              <td><textarea name="setupsql40" id="setupsql40" style="width:98%;height:160px"><?php echo $setupsql40; ?></textarea></td>
+            </tr>
+          </table>
+        </div>
       </td>
     </tr>
     <tr>
       <td>删除程序：</td>
       <td>
-        <label><input type="checkbox" name="autodel" id="autodel" value='1' class="np" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if(isset($autodel) && $autodel==1) echo " checked='1' "; ?> />
-      	自动生成（由系统自动处理卸载）</label>
+        <label><input type="checkbox" name="autodel" id="autodel" value="1" class="np" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if(isset($autodel) && $autodel==1) echo " checked='1' "; ?>> 自动生成（由系统自动处理卸载）</label>
       	<br>
-      	<div style='display:<?php if(!isset($autodel) || $autodel==0) echo 'block'; else echo 'none'; ?>' id='autodelinput'>
-      	  <input name="uninstall" type="file" id="uninstall" style="width:360px">
-        </div>
+      	<div style="display:<?php if(!isset($autodel) || $autodel==0) echo 'block'; else echo 'none'; ?>" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
       	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none'; ?>' id='autodelct'>
       	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
             <td bgcolor="#F3FDE1">卸载时执行的SQL语句：<br>
-            （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）
-            </td>
+            （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）</td>
           </tr>
           <tr>
             <td><textarea name="delsql" id="delsql" style="width:98%;height:160px"><?php echo $delsql; ?></textarea></td>
@@ -162,8 +148,8 @@
     <tr>
       <td>模块文件选项：</td>
       <td>
-      	<label><input name="rebuild" type="radio" id="rebuild1" class='np' value='yes' checked='1'/> 重新编译所有文件</label>
-      	<label><input name="rebuild" type="radio" id="rebuild2" class='np' value='no'/> 不对[文件列表]内文件重编译</label>
+      	<label><input name="rebuild" type="radio" id="rebuild1" class="np" value="yes" checked="1"> 重新编译所有文件</label>
+      	<label><input name="rebuild" type="radio" id="rebuild2" class="np" value="no"> 不对[文件列表]内文件重编译</label>
       </td>
     </tr>
     <tr>

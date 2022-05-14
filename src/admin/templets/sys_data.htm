@@ -73,12 +73,12 @@
 		</script>
 	</head>
 	<body>
-		<table width="99%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 			<tr>
-				<td height="26" colspan="8" background="../static/web/img/tbg.gif">
-					<table width="96%" cellspacing="1" cellpadding="1" class="table table-borderless">
+				<td bgcolor="#f8f8f8" colspan="8">
+					<table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
 						<tr>
-							<td width="30%" style="padding-left:10px">数据库管理</td>
+							<td width="30%">数据库管理</td>
 							<td width="70%" align="right">
 								<a href="sys_data_revert.php" class="btn btn-success btn-sm">数据还原</a>
 								<a href="sys_sql_query.php" class="btn btn-success btn-sm">SQL命令行工具</a>
@@ -90,10 +90,10 @@
 			<form name="form1" onSubmit="checkSubmit()" action="sys_data_done.php?dopost=bak" method="post" target="stafrm">
 				<input type="hidden" name="tablearr" value="">
 				<tr>
-					<td height="26" colspan="8">系统默认表：</td>
+					<td colspan="8">系统默认表：</td>
 				</tr>
 				<tr bgcolor="#F8FCF1" align="center">
-					<td width="5%" height="26">选择</td>
+					<td width="5%" >选择</td>
 					<td width="20%">表名</td>
 					<td width="8%">记录数</td>
 					<td width="17%">操作</td>
@@ -108,8 +108,7 @@
 					$t = $dedeSysTables[$i];
 					echo "<tr align='center' >";
 				?>
-				<td height="26"><input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" checked />
-				</td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" checked></td>
 				<td><?php echo $t; ?></td>
 				<td><?php echo TjCount($t,$dsql); ?></td>
 				<td>
@@ -122,12 +121,12 @@
 				if(isset($dedeSysTables[$i])) {
 					$t = $dedeSysTables[$i];
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" checked /></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np" checked></td>
 				<td><?php echo $t; ?></td>
 				<td><?php echo TjCount($t,$dsql); ?></td>
 				<td>
 					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">优化</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');"  class="btn btn-success btn-sm">修复</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">修复</a>
 					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">结构</a>
 				</td>
 				<?php
@@ -138,10 +137,10 @@
 				}
 				?>
 				<tr>
-					<td height="26" colspan="8">其它数据表：</td>
+					<td colspan="8">其它数据表：</td>
 				</tr>
 				<tr bgcolor="#F8FCF1" align="center">
-					<td width="5%" height="26">选择</td>
+					<td width="5%" >选择</td>
 					<td width="20%">表名</td>
 					<td width="8%">记录数</td>
 					<td width="17%">操作</td>
@@ -156,7 +155,7 @@
 					$t = $otherTables[$i];
 					echo "<tr align='center'>";
 				?>
-				<td height="26"><input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np"></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t; ?>" class="np"></td>
 				<td><?php echo $t; ?></td>
 				<td><?php echo TjCount($t,$dsql); ?></td>
 				<td>
@@ -185,7 +184,7 @@
 				}
 				?>
 				<tr>
-					<td height="26" colspan="8">
+					<td colspan="8">
 						分卷大小：<input name="fsize" type="text" id="fsize" value="2048" style="width:60px"> K
 						<input name="isstruct" type="checkbox" class="np" id="isstruct" value="1" checked="1"> 备份结构
 						<?php if(@function_exists('gzcompress') && false) { ?>
@@ -199,7 +198,7 @@
 				</tr>
 			</form>
 			<tr>
-				<td height="26" colspan="8">结果：</td>
+				<td colspan="8">结果：</td>
 			</tr>
 			<tr>
 				<td height="360" colspan="8">

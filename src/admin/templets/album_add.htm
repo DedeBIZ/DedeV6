@@ -64,8 +64,8 @@ table{border-collapse:separate}
     <input type="hidden" id="albums" name="albums" value="">
     <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
-        <td width="70%" height="26"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">图集列表</a> &gt; 发布图集</td>
-        <td width="30%" align='right'><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
+        <td width="70%"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">图集列表</a> &gt; 发布图集</td>
+        <td width="30%" align="right"><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
       </tr>
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -73,7 +73,7 @@ table{border-collapse:separate}
         <td colspan="2">
           <table width="168" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规内容</td>
+              <td width="86" height="28" align="center" background="../static/web/img/itemnote1.gif">常规内容</td>
               <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">高级参数</a></td>
             </tr>
           </table>
@@ -83,10 +83,10 @@ table{border-collapse:separate}
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head2" style="display:none">
       <tr>
         <td colspan="2">
-          <table width="168" height="26" cellpadding="0" cellspacing="0">
+          <table width="168"  cellpadding="0" cellspacing="0">
             <tr>
               <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem1()">常规内容</a></td>
-              <td width="86" align="center" background="../static/web/img/itemnote1.gif">高级参数</td>
+              <td width="86" height="28" align="center" background="../static/web/img/itemnote1.gif">高级参数</td>
             </tr>
           </table>
         </td>
@@ -94,7 +94,7 @@ table{border-collapse:separate}
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;">
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;图集标题：</td>
@@ -106,7 +106,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td width="400%" height="26" colspan="4" class="bline">
+        <td width="100%" colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;自定义属性：</td>
@@ -128,7 +128,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr id="redirecturltr" style="display:none">
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;跳转网址：</td>
@@ -138,7 +138,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td width="400%" height="26" class="bline">
+        <td width="100%" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;Tag标签：</td>
@@ -150,7 +150,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr id="pictable">
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;缩略图：</td>
@@ -160,7 +160,7 @@ table{border-collapse:separate}
                   <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                   <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
                   <button id="btnClearAll" type="button" class="btn btn-sm btn-success delete">清空</button>
-                  <label><input type='checkbox' class='np' name='ddisfirst' value='1'>&nbsp;使用图集的第一幅图</label>
+                  <label><input type="checkbox" class="np" name="ddisfirst" value="1">&nbsp;使用图集的第一幅图</label>
               </td>
               <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="max-width:100px;max-height:80px"></td>
             </tr>
@@ -168,7 +168,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;来源：</td>
@@ -186,12 +186,12 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;发布栏目：</td>
               <td width="360">
-                <span id='typeidct'>
+                <span id="typeidct">
                 <?php
                 $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
                 echo "<select name='typeid' id='typeid' style='width:160px'>";
@@ -200,7 +200,7 @@ table{border-collapse:separate}
                 echo "</select>";
 			          ?>
                 </span>
-                <i class='btn btn-sm fa fa-search'  onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title='快捷选择' style='cursor:pointer'></i>
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title="快捷选择" style="cursor:pointer"></i>
                 <?php
                 if($cfg_need_typeid2=='Y')
                 {
@@ -214,22 +214,22 @@ table{border-collapse:separate}
           </table>
         </td>
       </tr>
-      <tr id='typeid2tr' style='display:none'>
-        <td height="26" colspan="4" class="bline">
+      <tr id="typeid2tr" style="display:none">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;副栏目：</td>
               <td>
-                <span id='typeid2ct'></span>
-                <input type='text' name='typeid2' id='typeid2' value='' style='width:160px'>
-                <i class='btn btn-sm fa fa-search'  style='cursor:pointer' onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2')" title='选择副栏目'></i>
+                <span id="typeid2ct"></span>
+                <input type="text" name="typeid2" id="typeid2" value="" style="width:160px">
+                <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2')" title='选择副栏目'></i>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键词：</td>
@@ -245,7 +245,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;描述：</td>
@@ -255,29 +255,24 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;表现方式：</td>
               <td>
-                <label><input name="pagestyle" class="np" type="radio" id="pagestyle1" onClick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'"; ?> />
-                <img src='../static/web/img/alb2.jpg' title='单页多图样式'></label>
-                &nbsp;&nbsp;
-                <label><input name="pagestyle" class="np" type="radio" id="pagestyle2" onClick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'"; ?> />
-                <img src='../static/web/img/alb1.jpg' title='幻灯片样式'></label>
-                &nbsp;&nbsp;
-                <label><input name="pagestyle" class="np" type="radio" id="pagestyle3" onClick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'"; ?> />
-                <img src='../static/web/img/alb3.jpg' title='多缩略图样式'></label>
+                <label><input name="pagestyle" class="np" type="radio" id="pagestyle1" onClick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'"; ?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
+                <label><input name="pagestyle" class="np" type="radio" id="pagestyle2" onClick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'"; ?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
+                <label><input name="pagestyle" class="np" type="radio" id="pagestyle3" onClick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'"; ?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
               </td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr id='cfgmulist' style='display:none'>
-        <td height="26" colspan="4" class="bline">
+      <tr id="cfgmulist" style="display:none">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="26">&nbsp;多列式参数：</td>
+              <td>&nbsp;多列式参数：</td>
               <td>
                 行&nbsp;<input name="row" type="text" id="row" value="<?php echo $cfg_album_row; ?>" size="6">
                 列&nbsp;<input name="col" type="text" id="col" value="<?php echo $cfg_album_col; ?>" size="6">
@@ -285,24 +280,24 @@ table{border-collapse:separate}
               </td>
             </tr>
             <tr>
-              <td width="86" height="26"></td>
+              <td width="86" ></td>
               <td>（系统仅是每页输出&quot;行x列&quot;张图片，实现需自行控制样式表）</td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr id='spagelist' style='display:none'>
-        <td height="26" colspan="4" class="bline">
+      <tr id="spagelist" style="display:none">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;每页图片数：</td>
-              <td><input name='pagepicnum' type='text' id='pagpicnum' size='10' value='<?php echo $cfg_album_pagesize; ?>'>&nbsp;单页多图显示需要设置此参数，这种模式下系统不会为每张图单独生成缩略图</td>
+              <td><input name="pagepicnum" type="text" id="pagpicnum" size="10" value="<?php echo $cfg_album_pagesize; ?>">&nbsp;单页多图显示需要设置此参数，这种模式下系统不会为每张图单独生成缩略图</td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;上传方式：</td>
@@ -322,8 +317,8 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0" height="100">
             <tr>
               <td width="90">&nbsp;压缩包文件：</td>
-              <td><input type='text' name='zipfile' id='zipfile' style='width:260px'>
-                <button name='addon_bt' type='button' onClick="SelectSoft('form1.zipfile')" class="btn btn-success btn-sm">浏览</button>
+              <td><input type="text" name="zipfile" id="zipfile" style="width:260px">
+                <button name="addon_bt" type="button" onClick="SelectSoft('form1.zipfile')" class="btn btn-success btn-sm">浏览</button>
                 <label><input name="delzip" type="checkbox" id="delzip" value="1" checked="checked">
                 处理后删除压缩文件</label></td>
             </tr>
@@ -331,15 +326,15 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr id="htmlfield" style="display:none">
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;网上复制：</td>
-              <td>复制的源网址：<input name='copysource' type='text' value='http://' style='width:260px'>（防盗链网站需填写您复制图片的其中一个网页网址）<br>
+              <td>复制的源网址：<input name="copysource" type="text" value="http://" style="width:260px">（防盗链网站需填写您复制图片的其中一个网页网址）<br>
                 把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片
                 <input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()">
                 <br>
-                <div id='copyhtml' style='margin-top:6px;margin-bottom:6px;border:solid 1px #CCCCCC;width:96%;padding:6px;height:260px;width:100%' contenteditable="true">粘贴到这里</div>
+                <div id="copyhtml" style="margin-top:6px;margin-bottom:6px;border:solid 1px #CCCCCC;width:96%;padding:6px;height:260px;width:100%" contenteditable="true">粘贴到这里</div>
               </td>
             </tr>
           </table>
@@ -349,7 +344,7 @@ table{border-collapse:separate}
         <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
       </tr>
       <tr>
-        <td width="100%" height="26" colspan="4" class="bline">
+        <td width="100%" colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="36">&nbsp;手工上传：</td>
@@ -371,7 +366,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4">
+        <td colspan="4">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;图集内容：</td>
@@ -384,13 +379,13 @@ table{border-collapse:separate}
     <!--高级参数-->
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;display:none">
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="26" width="260">&nbsp;评论选项：</td>
+              <td width="90"  width="260">&nbsp;评论选项：</td>
               <td width="260">
-                <label><input type='radio' name='notpost' class='np' value='0' <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>> 允许评论</label>
-                <label><input type='radio' name='notpost' class='np' value='1' <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" class="np" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>> 允许评论</label>
+                <label><input type="radio" name="notpost" class="np" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
@@ -402,10 +397,10 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="26">&nbsp;图集排序：</td>
+              <td width="90" >&nbsp;图集排序：</td>
               <td width="260"> <select name="sortup" id="sortup" style="width:160px">
                   <option value="0" selected>默认排序</option>
                   <option value="7">置顶一周</option>
@@ -424,7 +419,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;阅读权限：</td>
@@ -447,7 +442,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;发布时间：</td>

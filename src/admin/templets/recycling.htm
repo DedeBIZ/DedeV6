@@ -69,10 +69,10 @@
 	<body>
 		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr>
-				<td height="26" colspan="7" background="../static/web/img/tbg.gif" style="padding-left:10px">文档回收站</td>
+				<td bgcolor="#f8f8f8" colspan="7">文档回收站</td>
 			</tr>
 			<form name="form2">
-				<tr align="center" bgcolor="#F8FCF1" height="26">
+				<tr bgcolor="#F8FCF1" align="center">
 					<td width="6%">ID</td>
 					<td width="4%">选择</td>
 					<td width="28%">文章标题</td>
@@ -82,7 +82,7 @@
 					<td width="10%">操作</td>
 				</tr>
 				{dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-				<tr align="center" onMouseOut="javascript:this.bgColor='#ffffff';" height="26">
+				<tr align="center" onMouseOut="javascript:this.bgColor='#ffffff';" >
 					<td>{dede:field.id/}</td>
 					<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
 					<td align="left"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></td>
@@ -96,7 +96,7 @@
 				</tr>
 				{/dede:datalist}
 				<tr>
-					<td height="26" colspan="7">
+					<td colspan="7">
 						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
 						<a href="javascript:moveArc(0)" class="btn btn-success btn-sm">还原</a>

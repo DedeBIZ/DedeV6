@@ -13,7 +13,7 @@
 		<input type="hidden" name="diyid" value="<?php echo $diyid; ?>">
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr>
-				<td colspan="3" height="26" background="../static/web/img/tbg.gif">
+				<td bgcolor="#f8f8f8" colspan="3">
 					<div style="float:left"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name; ?></div>
 					<div style="float:right;padding-right:10px"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid; ?>" target="_blank"><i class="fa fa-globe" title="前台预览"></i> 前台预览</a></div>
 				</td>
@@ -24,7 +24,7 @@
 			{
 				$allowhtml = array('htmltext');
 				$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
-				echo '<tr bgcolor="#F8FCF1" height="26"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><i class="btn btn-sm fa fa-pencil-square-o" title="修改"></i></a></td></tr>';
+				echo '<tr bgcolor="#F8FCF1" ><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'" class="np"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><i class="btn btn-sm fa fa-pencil-square-o" title="修改"></i></a></td></tr>';
 				foreach($fieldlist as $field=>$fielddata)
 				{
 					if($fields[$field]=='') continue;
@@ -46,14 +46,14 @@
 			?>
 			{/dede:datalist}
 			<tr>
-				<td colspan="3" height="26" bgcolor="#fff">{dede:pagelist listsize='6'/}</td>
+				<td colspan="3" bgcolor="#fff">{dede:pagelist listsize='6'/}</td>
 			</tr>
 			<tr>
 				<td bgcolor="#f8f8f8" colspan="3" class="py-3">
 					<input type="button" name="select" onClick="selAll()" class="btn btn-success btn-sm" value="全选">
-					<input type="button" name="select" onClick="noSelAll()" class="btn btn-success btn-sm" value="取消">&nbsp;
-					<label><input type="radio" name="action" value="check">&nbsp;审核</label>
-					<label><input type="radio" name="action" value="delete">&nbsp;删除</label>
+					<input type="button" name="select" onClick="noSelAll()" class="btn btn-success btn-sm" value="取消">
+					<label><input type="radio" name="action" value="check"> 审核</label>
+					<label><input type="radio" name="action" value="delete"> 删除</label>
 					<input type="submit" name="submit" class="btn btn-success btn-sm" value="提交">
 				</td>
 			</tr>

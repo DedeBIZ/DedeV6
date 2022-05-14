@@ -38,15 +38,15 @@
 							</tr>
 							{dede:array.Items}
 							<tr>
-								<td height="26"><input type="checkbox" name="ids[]" value="{dede:value.id/}"></td>
-								<td height="26">{dede:value.id/}</td>
-								<td height="26"><a href="view.php?aid={dede:value.id/}"	target="_bank">{dede:value.title/}</a></td>
-								<td height="26">
+								<td><input type="checkbox" name="ids[]" value="{dede:value.id/}"></td>
+								<td>{dede:value.id/}</td>
+								<td><a href="view.php?aid={dede:value.id/}"	target="_bank">{dede:value.title/}</a></td>
+								<td>
 									<input name="buynum{dede:value.id/}" type="text" id="buynum{dede:value.id/}" value="{dede:value.buynum/}" size="5" maxlength="5" class="ipt-txt">
 									<small>{dede:value.units/}</small>
 								</td>
-								<td height="26">{dede:value.price/}</td>
-								<td height="26"><a href="posttocar.php?do=del&ids={dede:value.id/}">删除</a></td>
+								<td>{dede:value.price/}</td>
+								<td><a href="posttocar.php?do=del&ids={dede:value.id/}">删除</a></td>
 							</tr>
 							{/dede:array}
 						</tbody>

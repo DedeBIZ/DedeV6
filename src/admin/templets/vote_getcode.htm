@@ -11,13 +11,13 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif"><a href="vote_main.php">投票管理</a> &gt; 获取代码</td>
+      <td bgcolor="#f8f8f8"><a href="vote_main.php">投票管理</a> &gt; 获取代码</td>
     </tr>
     <tr>
       <td>
         <table width="98%" cellspacing="2" cellpadding="2">
-          <tr bgcolor="#EBF2DB">
-            <td width="100%" bgcolor="#EBF2DB">在封面或主页模板中使用的标记：</td>
+          <tr>
+            <td width="100%" bgcolor="#f8f8f8">在封面或主页模板中使用的标记：</td>
           </tr>
           <tr>
             <td>
@@ -27,7 +27,7 @@
                   <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
                   <tr>
                     <td>
-                      <textarea name="partcode" cols="45" rows="6" id="partcode">{dede:vote id='<?php echo $aid?>' lineheight='26' tablewidth='100%' titlebgcolor='#EDEDE2' titlebackground='' tablebgcolor='#ffffff'}{/dede:vote}</textarea>
+                      <textarea name="partcode" cols="45" rows="6" id="partcode">{dede:vote id='<?php echo $aid?>' line tablewidth='100%' titlebgcolor='#EDEDE2' titlebackground='' tablebgcolor='#ffffff'}{/dede:vote}</textarea>
                     </td>
                     <td rowspan="2">
                       <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
@@ -42,16 +42,16 @@
               </table>
             </td>
           </tr>
-          <tr bgcolor="#EBF2DB">
-            <td bgcolor="#EBF2DB">在封面或主页模板中使用的JS：</td>
+          <tr>
+            <td bgcolor="#f8f8f8">在封面或主页模板中使用的JS：</td>
           </tr>
           <tr>
             <td>
               <textarea name="htmlf" cols="60" rows="5" id="htmlf"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea>
             </td>
           </tr>
-          <tr bgcolor="#EBF2DB">
-            <td bgcolor="#EBF2DB">默认生成的表单HTML：</td>
+          <tr>
+            <td bgcolor="#f8f8f8">默认生成的表单HTML：</td>
           </tr>
           <tr>
             <td>

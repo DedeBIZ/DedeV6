@@ -24,26 +24,24 @@
 <body>
   <form action="member_scores.php" method="post">
     <input name="action" type="hidden" value="save">
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="tbtitle mt-3 mb-3" style="border:1px solid #dee2e6;border-bottom:0">
+    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="tbtitle mt-3 mb-3" style="border:1px solid #dee2e6">
       <tr>
-        <td width="100%" height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="member_main.php">会员管理</a> &gt; 积分头衔设置</td>
+        <td width="100%" bgcolor="#f8f8f8"><a href="member_main.php">会员管理</a> &gt; 积分头衔设置</td>
       </tr>
     </table>
     <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable">
       <tr>
-        <td width="6%" align="center" valign="middle" bgcolor="#FEFCEF">
-          <input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)" class='np'>
-          删</td>
-        <td width="23%" align="center" bgcolor="#FEFCEF">积分大于</td>
-        <td width="30%" align="center" bgcolor="#FEFCEF">星星数</td>
-        <td width="23%" align="center" bgcolor="#FEFCEF">级别头衔</td>
-        <td width="30%" align="center" bgcolor="#FEFCEF">是否默认</td>
+        <td width="6%" align="center" valign="middle" bgcolor="#f8f8f8"><input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)" class='np'> 删</td>
+        <td width="23%" align="center" bgcolor="#f8f8f8">积分大于</td>
+        <td width="30%" align="center" bgcolor="#f8f8f8">星星数</td>
+        <td width="23%" align="center" bgcolor="#f8f8f8">级别头衔</td>
+        <td width="30%" align="center" bgcolor="#f8f8f8">是否默认</td>
       </tr>
       <?php
 		  foreach($Scores as $v){	
 		  ?>
       <tr onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td align="center"><input name="Ids-<?php echo $v['id']?>" type="checkbox" id="Ids-<?php echo $v['id']?>" value="1" class='np'></td>
+        <td align="center"><input name="Ids-<?php echo $v['id']?>" type="checkbox" id="Ids-<?php echo $v['id']?>" value="1" class="np"></td>
         <td align="center"><input name="integral-<?php echo $v['id']?>" type="text" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" style="width:160px"></td>
         <td align="center"><input name="icon-<?php echo $v['id']?>" type="text" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" style="width:60px"></td>
         <td align="center"><input name="titles-<?php echo $v['id']?>" type="text" id="titles-<?php echo $v['id']?>" value="<?php echo $v['titles']?>" style="width:160px"></td>

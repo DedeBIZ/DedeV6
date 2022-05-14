@@ -92,7 +92,7 @@
 <body>
 	<table width="100%" cellpadding="2" align="center" cellspacing="1" class="table maintable mt-3 mb-3">
 		<tr bgcolor="#f8f8f8">
-			<td height="26" colspan="6">
+			<td colspan="6">
 				<div style="float:left;padding-left:6px">单页采集规则管理：</div>
 				<div style="float:right;padding-right:10px"><a href='javascript:ShowAddNode();'
 						class="btn btn-success btn-sm">增加新网址</a>
@@ -100,7 +100,7 @@
 			</td>
 		</tr>
 		<form name="form2">
-			<tr align="center" bgcolor="#F8FCF1" height="26">
+			<tr bgcolor="#F8FCF1" align="center">
 				<td width="8%">ID</td>
 				<td width="8%">选择</td>
 				<td width="20%">网址</td>
@@ -109,13 +109,10 @@
 				<td width="12%">操作</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
-			<tr align='center'
-				onMouseOut="javascript:this.bgColor='#ffffff';" height="26">
+			<tr align="center" onMouseOut="javascript:this.bgColor='#ffffff';" >
 				<td><?php echo $fields['id']?></td>
 				<td><input name="ids" type="checkbox" id="ids" value="<?php echo $fields['id']?>" class="np"></td>
-				<td align='left'>
-					<?php echo $fields['url']; ?>
-				</td>
+				<td align="left"><?php echo $fields['url']; ?></td>
 				<td><?php echo $fields['lang']; ?></td>
 				<td><?php echo $fields['title']; ?></td>
 				<td>
@@ -125,7 +122,7 @@
 			</tr>
 			{/dede:datalist}
 			<tr bgcolor="#F8FCF1">
-				<td height="26" colspan="6">
+				<td colspan="6">
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
 					<a href="javascript:DelNode(0)" class="btn btn-success btn-sm">删除</a>
@@ -138,43 +135,42 @@
 	</table>
 	<!--下面是隐藏的栏目增加修改表单-->
 	<div id="editNode">
-		<span id='editNodeBody'>请稍候，正在载入</span>
+		<span id="editNodeBody">正在加载</span>
 	</div>
-
 	<div id="addNode">
-		<form name='addform' action='article_coonepage_rule.php' method='post'>
-			<input type='hidden' name='action' value='add'>
+		<form name="addform" action="article_coonepage_rule.php" method="post">
+			<input type="hidden" name="action" value="add">
 			<table width="430" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="102" height="26">网站名称：</td>
+					<td width="102" >网站名称：</td>
 					<td width="302"><input name="title" type="text" id="title" style="width:260px"></td>
 					<td width="26" align="center"><a href="javascript:CloseAddNode()" class="mr-3"><i class="fa fa-window-close-o"></i></a></td>
 				</tr>
 				<tr>
-					<td height="26">原内容编码：</td>
+					<td>原内容编码：</td>
 					<td colspan="2">
 						<label><input type="radio" name="lang" value="utf-8" checked="checked"> UTF-8 </label>
 						<label><input type="radio" name="lang" value="gb2312"> GB2312/GBK</label>
 					</td>
 				</tr>
 				<tr>
-					<td height="26">用作文章来源：</td>
+					<td>用作文章来源：</td>
 					<td colspan="2">
 						<label><input type="radio" name="issource" value="0"> 否 </label>
 						<label><input name="issource" type="radio" value="1" checked="checked"> 是</label>
 					</td>
 				</tr>
 				<tr>
-					<td height="26">网站网址：</td>
+					<td>网站网址：</td>
 					<td colspan="2"><input name="url" type="text" id="url" style="width:260px"></td>
 				</tr>
 				<tr>
-					<td height="26"></td>
+					<td></td>
 					<td colspan="2">使用不带http及任何附加目录的网址<br>
 						如：news.dedebiz.com</td>
 				</tr>
 				<tr>
-					<td height="26">采集规则：</td>
+					<td>采集规则：</td>
 					<td colspan="2">仅针对文章内容，格式：前面HTML{@body}后面HMTL</td>
 				</tr>
 				<tr>

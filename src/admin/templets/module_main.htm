@@ -24,10 +24,10 @@
 		<div class="alert alert-info maintable" style="margin:12px auto">DedeBIZV6开始启动<a href="<?php echo $cfg_biz_dedebizUrl; ?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，为了保障系统及技术服务安全，请认准DedeBIZ商业认证开发者</div>
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable">
 			<form name="form1" action="plus_add.php" method="post">
-				<input type='hidden' name='dopost' value='save'>
+				<input type="hidden" name="dopost" value="save">
 				<tr>
-					<td height="26" colspan="6" background="../static/web/img/tbg.gif" style="padding-left:10px">
-						<div style="float:left"><a href='module_main.php'>模块管理</a> &gt; 模块列表</div>
+					<td bgcolor="#f8f8f8" colspan="6">
+						<div style="float:left"><a href="module_main.php">模块管理</a> &gt; 模块列表</div>
 						<div style="float:right;padding-right:10px">
 							<a class="btn btn-success btn-sm" href="module_main.php">全部</a>
 							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=soft">模块</a>
@@ -50,8 +50,7 @@
 				foreach($modules as $k=>$v)
 				{
 				?>
-				<tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';"
-					onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><?php echo $v['name']; ?></td>
 					<td><?php echo $v['time']; ?></td>
 					<td>

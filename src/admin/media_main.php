@@ -60,9 +60,9 @@ function MediaType($tid, $nurl)
     } else if ($tid == 2) {
         return "FLASH";
     } else if ($tid == 3) {
-        return "视频/音频";
+        return "视频音频";
     } else {
-        return "附件/其它";
+        return "附件其它";
     }
 }
 function GetFileSize($fs)

@@ -81,19 +81,19 @@ if ($action == 'upload') {
     $win->AddHidden("action", 'upload');
     $msg = "<table width='900' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='260' height='26'>文件格式：</td>
-    <td height='26'>
+    <td width='260' >文件格式：</td>
+    <td>
       <label><input name='filetype' type='radio' value='0' checked='checked' /> 正常的模块包</label>
       <label><input type='radio' name='filetype' value='1' /> 经过 zip 压缩的模块包</label>
     </td>
   </tr>
   <tr>
-    <td height='26'>已有模块：</td>
-    <td height='26'><label><input name='delhas' type='checkbox' id='delhas' value='1' /> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label></td>
+    <td>已有模块：</td>
+    <td><label><input name='delhas' type='checkbox' id='delhas' value='1' /> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label></td>
   </tr>
   <tr>
-    <td height='26'>请选择文件：</td>
-    <td height='26'><input name='upfile' type='file' id='upfile' style='width:380px' /></td>
+    <td>请选择文件：</td>
+    <td><input name='upfile' type='file' id='upfile' style='width:380px' /></td>
   </tr>
  </table>";
     $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");

@@ -9,15 +9,15 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center"  class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form action="cards_make.php" name="form1" target="stafrm">
       <input type="hidden" name="dopost" value="make">
       <tr>
-        <td height="26" background="../static/web/img/tbg.gif">
+        <td bgcolor="#f8f8f8">
           <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%" style="padding-left:10px">点卡生成向导：</td>
-              <td align="right">
+              <td width="30%">点卡生成向导：</td>
+              <td width="70%" align="right">
                 <button type="button" name="ss1" onClick="location='cards_type.php';" class='btn btn-success btn-sm'>点卡产品分类</button>
                 <button type="button" name="ss2" onClick="location='cards_manage.php';" class='btn btn-success btn-sm'>点卡使用记录</button>
               </td>
@@ -31,7 +31,7 @@
             <tr>
               <td width="90">点卡类型：</td>
               <td>
-                <select name='cardtype' style='width:120px'>
+                <select name="cardtype" style="width:160px">
                   <?php
                   $dsql->SetQuery("Select * From #@__moneycard_type");
                   $dsql->Execute();
@@ -43,45 +43,39 @@
                 </select>
               </td>
               <td width="90">生成数量：</td>
-              <td>
-                <input name="mnum" type="text" id="mnum" style='width:120px' value="100" class='pubinputs'>
-              </td>
+              <td><input name="mnum" type="text" id="mnum" style="width:160px" value="100" class="pubinputs"></td>
             </tr>
             <tr>
               <td>点卡前缀：</td>
-              <td>
-                <input name="snprefix" type="text" id="snprefix" style='width:120px' value="SN" class='pubinputs'>
-              </td>
+              <td><input name="snprefix" type="text" id="snprefix" style="width:160px" value="SN" class="pubinputs"></td>
               <td>密码长度：</td>
-              <td><input name="pwdlen" type="text" id="pwdlen" style='width:120px' value="4" class='pubinputs'>
+              <td><input name="pwdlen" type="text" id="pwdlen" style="width:160px" value="4" class="pubinputs">
               </td>
             </tr>
             <tr>
               <td>密码类型：</td>
               <td>
-                <label><input type="radio" name="ctype" value="1" class='np'>
-                纯数字</label>
-                <label><input name="ctype" type="radio" value="2" checked='1' class='np'>
-                大写字母</label></td>
-              <td>密码组数：</td>
-              <td><input name="pwdgr" type="text" id="pwdgr" style='width:120px' value="3" class='np'>
+                <label><input type="radio" name="ctype" value="1" class="np"> 纯数字</label>
+                <label><input name="ctype" type="radio" value="2" checked="1" class="np"> 大写字母</label>
               </td>
+              <td>密码组数：</td>
+              <td><input name="pwdgr" type="text" id="pwdgr" style="width:160px" value="3" class="np"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#F8FCF1" align="center">
-          <button type="submit" name="Submit" class='btn btn-success btn-sm'>开始生成点卡</button>
+        <td bgcolor="#F8FCF1" align="center">
+          <button type="submit" name="Submit" class="btn btn-success btn-sm">开始生成点卡</button>
         </td>
       </tr>
     </form>
     <tr>
-      <td height="26">
+      <td>
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="70%">结果：</td>
-            <td width="30%" align="right">
+            <td width="30%">结果：</td>
+            <td width="70%" align="right">
               <script>
               function ResizeDiv(obj, ty) {
                 if (ty == "+") document.all[obj].style.pixelHeight += 50;

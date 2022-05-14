@@ -95,7 +95,7 @@ if (isset($dopost) && $dopost == 'getone') {
     $ccd = $row['cc'] + $ccd;
     $msg = "<table width='100%' align='center' cellpadding='3' cellspacing='1'>
     <tr align='center' bgcolor='#F8FCF1'>
-      <td width='18%' height='26'>管理员</td>
+      <td width='18%' >管理员</td>
       <td width='18%'>文档与点击</td>
       <td width='16%'>季度</td>
       <td width='16%'>当月</td>
@@ -103,7 +103,7 @@ if (isset($dopost) && $dopost == 'getone') {
       <td width='16%'>当天</td>
     </tr>
     <tr align='center'>
-      <td height='26'>{$userid}</td>
+      <td>{$userid}</td>
       <td>{$dd} | {$cc}</td>
       <td>{$dds} | {$ccs}</td>
       <td>{$ddm} | {$ccm}</td>

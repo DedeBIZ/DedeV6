@@ -9,35 +9,33 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center"  class="table maintable mt-3 mb-3">
-    <form name="form1" action="makehtml_freelist_action.php" method="get" target='stafrm'>
+  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+    <form name="form1" action="makehtml_freelist_action.php" method="get" target="stafrm">
       <tr>
-        <td colspan="2" background="../static/web/img/tbg.gif">
+        <td bgcolor="#f8f8f8" colspan="2">
           <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="24%" style="padding-left:10px">更新自由列表</td>
-              <td width="76%" align="right"><button type="button" name="b113" onClick="location='freelist_main.php';" class="btn btn-success btn-sm">管理自由列表</button>
+              <td width="30%">更新自由列表</td>
+              <td width="70%" align="right"><button type="button" name="b113" onClick="location='freelist_main.php';" class="btn btn-success btn-sm">管理自由列表</button>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26">&nbsp;&nbsp;起始ID：</td>
-        <td height="26"><input name="startid" type="text" id="startid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>（空或0表示从头开始）</td>
+        <td>起始ID：</td>
+        <td><input name="startid" type="text" id="startid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>（空或0表示从头开始）</td>
       </tr>
       <tr>
-        <td height="26">&nbsp;&nbsp;结束ID：</td>
-        <td height="26"><input name="endid" type="text" id="endid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>（空或0表示直到结束ID）</td>
+        <td>结束ID：</td>
+        <td><input name="endid" type="text" id="endid" size="10" <?php if(!empty($aid)) echo " value='$aid'"; ?>>（空或0表示直到结束ID）</td>
       </tr>
       <tr>
-        <td height="26">&nbsp;&nbsp;每批生成：</td>
-        <td height="26"><input name="pagesize" type="text" id="pagesize" value="100" size="8"> 个文件</td>
+        <td>每批生成：</td>
+        <td><input name="pagesize" type="text" id="pagesize" value="100" size="8"> 个文件</td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#F8FCF1" colspan="2" align="center">
-          <button type="button" onClick="document.form1.submit();"  class="btn btn-success btn-sm">开始更新</button>
-        </td>
+        <td bgcolor="#F8FCF1" colspan="2" align="center"><button type="button" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始更新</button></td>
       </tr>
     </form>
     <tr>

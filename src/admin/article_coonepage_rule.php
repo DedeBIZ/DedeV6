@@ -56,39 +56,39 @@ else if ($action == 'editload') {
     <input type="hidden" name="action" value="editsave">
     <table width="430" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="102" height="26">网站名称：</td>
+        <td width="102" >网站名称：</td>
         <td width="302"><input name="title" type="text" id="title" style="width:200px" value="<?php echo $row['title']; ?>"></td>
         <td width="26" align="center"><a href="javascript:CloseEditNode()" class="mr-3"><i class="fa fa-window-close-o"></i></a></td>
       </tr>
       <tr>
-        <td height="26">原内容编码：</td>
+        <td>原内容编码：</td>
         <td colspan="2">
           <label><input type="radio" name="lang" value="utf-8" <?php echo ($row['lang'] == 'utf-8' ? ' checked="checked" ' : ''); ?>> UTF-8</label>
           <label><input type="radio" name="lang" value="gb2312" <?php echo ($row['lang'] == 'gb2312' ? ' checked="checked" ' : ''); ?>> GB2312/GBK</label>
         </td>
       </tr>
       <tr>
-        <td height="26">用作文章来源：</td>
+        <td>用作文章来源：</td>
         <td colspan="2">
           <label><input type="radio" name="issource" value="0" <?php echo ($row['issource'] == 0 ? ' checked="checked" ' : ''); ?>> 否</label>
           <label><input name="issource" type="radio" value="1" <?php echo ($row['issource'] == 1 ? ' checked="checked" ' : ''); ?>> 是</label>
         </td>
       </tr>
       <tr>
-        <td height="26">网站网址：</td>
+        <td>网站网址：</td>
         <td colspan="2">
           <input name="url" type="text" id="url" value="<?php echo $row['url']; ?>" style="width:200px" />
         </td>
       </tr>
       <tr>
-        <td height="26"></td>
+        <td></td>
         <td colspan="2">
           使用不带http及任何附加目录的网址<br>
           如：news.dedebiz.com
         </td>
       </tr>
       <tr>
-        <td height="26">采集规则：</td>
+        <td>采集规则：</td>
         <td colspan="2">仅针对文章内容，格式：前面HTML{@body}后面HMTL</td>
       </tr>
       <tr>
@@ -96,7 +96,7 @@ else if ($action == 'editload') {
         <td colspan="2"><textarea name="rule" style="width:300px;height:80px"><?php echo $row['rule']; ?></textarea></td>
       </tr>
       <tr>
-        <td height="26"></td>
+        <td></td>
         <td colspan="2">
           <button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存</button>
           <button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button>

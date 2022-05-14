@@ -12,10 +12,10 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">广告管理<a href="ad_add.php" class="btn btn-success btn-sm ml-3">增加一个新广告</a><a href="adtype_main.php" class="btn btn-success btn-sm">广告分类管理</a></td>
+      <td bgcolor="#f8f8f8" colspan="7">广告管理<a href="ad_add.php" class="btn btn-success btn-sm ml-3">增加一个新广告</a><a href="adtype_main.php" class="btn btn-success btn-sm">广告分类管理</a></td>
     </tr>
     <tr>
-      <td height="26" colspan="7" style="padding-left:10px">
+      <td colspan="7">
         <form action="ad_main.php" method="get" name="form3" id="form3">
           <input type="hidden" name="dopost" value="listArchives">
           <table class="table-borderless">
@@ -33,7 +33,7 @@
         </form>
       </td>
     </tr>
-    <tr align="center" bgcolor="#F8FCF1" height="26">
+    <tr bgcolor="#F8FCF1" align="center">
       <td width="8%">编号</td>
       <td width="20%">分类</td>
       <td width="20%">广告名称</td>
@@ -43,7 +43,7 @@
       <td width="18%">管理</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-    <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+    <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid /}</td>
       <td>{dede:field.clsname function='TestType(@me,1)'/}</td>
       <td>{dede:field.adname /}</td>
@@ -51,9 +51,9 @@
       <td>{dede:field.timeset function='TimeSetValue(@me)'/}</td>
       <td>{dede:field.endtime function='GetDateMk(@me)'/}</td>
       <td>
-        <a href='ad_edit.php?aid={dede:field.aid /}&dopost=gettag' class="btn btn-success btn-sm">代码</a>
-        <a href='ad_edit.php?aid={dede:field.aid /}&dopost=edit' class="btn btn-success btn-sm">修改</a>
-        <a href='ad_edit.php?aid={dede:field.aid /}&dopost=delete' class="btn btn-success btn-sm">删除</a>
+        <a href="ad_edit.php?aid={dede:field.aid /}&dopost=gettag" class="btn btn-success btn-sm">代码</a>
+        <a href="ad_edit.php?aid={dede:field.aid /}&dopost=edit" class="btn btn-success btn-sm">修改</a>
+        <a href="ad_edit.php?aid={dede:field.aid /}&dopost=delete" class="btn btn-success btn-sm">删除</a>
       </td>
     </tr>
     {/dede:datalist}

@@ -42,7 +42,7 @@ table{border-collapse:separate}
 <body>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
-      <td width="60%" height="26"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文章列表</a> &gt; 修改文章</td>
+      <td width="60%" ><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文章列表</a> &gt; 修改文章</td>
       <td width="30%" align="right"><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
     </tr>
   </table>
@@ -51,7 +51,7 @@ table{border-collapse:separate}
       <td colspan="2">
         <table cellpadding="0" cellspacing="0">
           <tr>
-            <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规信息</td>
+            <td width="86" height="28" align="center" background="../static/web/img/itemnote1.gif">常规信息</td>
             <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">高级参数</a></td>
           </tr>
         </table>
@@ -61,10 +61,10 @@ table{border-collapse:separate}
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head2" style="display:none">
     <tr>
       <td colspan="2">
-        <table height="26" cellpadding="0" cellspacing="0">
+        <table  cellpadding="0" cellspacing="0">
           <tr>
             <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem1()">常规信息</a></td>
-            <td width="86" align="center" background="../static/web/img/itemnote1.gif">高级参数</td>
+            <td width="86" height="28" align="center" background="../static/web/img/itemnote1.gif">高级参数</td>
           </tr>
         </table>
       </td>
@@ -76,7 +76,7 @@ table{border-collapse:separate}
     <input type="hidden" name="id" value="<?php echo $aid?>">
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6">
       <tr>
-        <td height="26" colspan="2" class="bline">
+        <td colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文章标题：</td>
@@ -88,7 +88,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td width="400%" height="26" colspan="2" class="bline">
+        <td width="100%" colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;自定义属性：</td>
@@ -118,7 +118,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="2" class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
+        <td colspan="2" class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;跳转网址：</td>
@@ -128,7 +128,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td width="400%" height="26" colspan="2" class="bline">
+        <td width="100%" colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;Tag标签：</td>
@@ -140,7 +140,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr id="pictable">
-        <td height="26" colspan="2" class="bline">
+        <td colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;缩略图：</td>
@@ -159,7 +159,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="2" class="bline">
+        <td colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;来源：</td>
@@ -177,7 +177,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="2" class="bline">
+        <td colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;发布栏目：</td>
@@ -189,7 +189,7 @@ table{border-collapse:separate}
                 echo $typeOptions;
                 echo "</select>";
                 ?>
-                <i class='btn btn-sm fa fa-search' onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid','<?php echo $arcRow['typeid']; ?>')" title="快捷选择" style="cursor:pointer"></i>
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid','<?php echo $arcRow['typeid']; ?>')" title="快捷选择" style="cursor:pointer"></i>
               </td>
               <td width="90">消费金币：</td>
               <td><input name="money" type="text" id="money" value="<?php echo $arcRow['money']?>" style="width:160px"></td>
@@ -201,14 +201,14 @@ table{border-collapse:separate}
       if($cfg_need_typeid2=='Y') {
       ?>
       <tr>
-        <td height="26" colspan="2" class="bline">
+        <td colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;副栏目：</td>
               <td>
                 <span id="typeid2ct"></span>
                 <input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0'?'':$arcRow['typeid2']); ?>" style="width:160px">
-                <i class='btn btn-sm fa fa-search' style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title="选择副栏目"></i>
+                <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title="选择副栏目"></i>
               </td>
             </tr>
           </table>
@@ -218,7 +218,7 @@ table{border-collapse:separate}
       }
       ?>
       <tr>
-        <td height="26" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;关键词：</td>
@@ -228,7 +228,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;描述：</td>
@@ -238,13 +238,13 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td width="400%" height="26" colspan="2" class="bline">
+        <td width="100%" colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;附加选项：</td>
               <td>
-                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?>>&nbsp;下载远程图片和资源&nbsp;</label>
-                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>>&nbsp;提取第一个图片为缩略图</label>
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?>> 下载远程图片和资源</label>
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>> 提取第一个图片为缩略图</label>
               </td>
             </tr>
           </table>
@@ -261,10 +261,10 @@ table{border-collapse:separate}
     <!--高级参数-->
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;display:none">
       <tr>
-        <td height="26" colspan="4" class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="26">&nbsp;评论选项：</td>
+              <td width="90" >&nbsp;评论选项：</td>
               <td width="260">
                 <label><input type="radio" name="notpost" class="np" value="0" <?php if($arcRow['notpost']==0) echo " checked='1' "; ?>> 允许评论</label>
                 <label><input type="radio" name="notpost" class="np" value="1" <?php if($arcRow['notpost']==1) echo " checked='1' "; ?>> 禁止评论</label>
@@ -279,7 +279,7 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;文章排序：</td>
@@ -307,13 +307,13 @@ table{border-collapse:separate}
         </td>
       </tr>
       <tr>
-        <td height="26" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90">&nbsp;阅读权限：</td>
               <td width="260">
                 <select name="arcrank" id="arcrank" style="width:160px">
-                  <option value='<?php echo $arcRow["arcrank"]?>'> <?php echo $arcRow["rankname"]?> </option>
+                  <option value="<?php echo $arcRow['arcrank']?>"><?php echo $arcRow["rankname"]?></option>
                   <?php
                   $urank = $cuserLogin->getUserRank();
                   $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank'");

@@ -13,34 +13,30 @@
 			<form name="form1" action="sys_cache_up.php" method="get" target='stafrm'>
 				<input type="hidden" name="dopost" value="ok">
 				<tr>
-					<td height="26" background="../static/web/img/tbg.gif">
+					<td bgcolor="#f8f8f8">
 						<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
 							<tr>
-								<td width="30%" style="padding-left:10px">更新系统缓存</td>
+								<td width="30%">更新系统缓存</td>
 								<td width="70%" align="right"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td height="26" style="line-height:20px;">
-						本程序作默认会执行下面的操作：1.更新栏目缓存 2.更新枚举缓存 3.清理arclist调用缓存 4.清理过期会员访问历史 5.删除过期短信<br>
-						<label><input name="uparc" type="checkbox" class="np" value="1">&nbsp;检测并清理错误文档</label>
-						（该项操作很占资源，如果没有出现页码不正确、无法解析文档等情况，不要执行本操作）
+					<td>本程序作默认会执行下面的操作：1.更新栏目缓存 2.更新枚举缓存 3.清理arclist调用缓存 4.清理过期会员访问历史 5.删除过期短信<br>
+						<label><input name="uparc" type="checkbox" class="np" value="1">&nbsp;检测并清理错误文档</label>（该项操作很占资源，如果没有出现页码不正确、无法解析文档等情况，不要执行本操作）
 					</td>
 				</tr>
 				<tr>
-					<td height="26" bgcolor="#F8FCF1" align="center">
-						<button name="b112" type="button" class="btn btn-success btn-sm" value="" onClick="document.form1.submit();">开始执行</button>
-					</td>
+					<td bgcolor="#F8FCF1" align="center"><button name="b112" type="button" class="btn btn-success btn-sm" value="" onClick="document.form1.submit();">开始执行</button></td>
 				</tr>
 			</form>
 			<tr>
-				<td height="26">
+				<td>
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="70%">结果：</td>
-							<td width="30%" align="right">
+							<td width="30%">结果：</td>
+							<td width="70%" align="right">
 								<script>
 									function ResizeDiv(obj, ty) {
 										if (ty == "+") document.all[obj].style.pixelHeight += 50;

@@ -10,67 +10,65 @@
 <body>
 <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 <tr>
-  <td height="26" background="../static/web/img/tbg.gif"  style="padding-left:10px"><a href="mytag_main.php">自定义标记管理</a> &gt; 修改标记</td>
+  <td bgcolor="#f8f8f8"><a href="mytag_main.php">自定义标记管理</a> &gt; 修改标记</td>
 </tr>
 <tr>
-  <td height="200">
+  <td>
 	  <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
-        <form action="mytag_edit.php" method="post" enctype="multipart/form-data" name="form1">
-          <input type='hidden' name='aid' value='<?php echo $aid?>'>
-          <input type='hidden' name='dopost' value='saveedit'>
-          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
-          <tr> 
-            <td width="15%" height="26" align="center">所属栏目：</td>
-            <td colspan="2">
-			      <?php
-           	$tl = new TypeLink(0);
-           	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
-            echo "<select name='typeid' style='width:260px'>";
-            echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
-            echo $typeOptions;
-            echo "</select>";
-			      ?>
-			      </td>
-          </tr>
-          <tr> 
-            <td height="26" align="center">标记名称：</td>
-            <td colspan="2"><?php echo $row['tagname']?></td>
-          </tr>
-          <tr> 
-            <td height="26" align="center">时间限制：</td>
-            <td colspan="2"><input name="timeset" type="radio" value="0"<?php if($row['timeset']==0) echo " checked"; ?>>
-              永不过期 
-              <input type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo " checked"; ?>>
-              在设内时间内有效</td>
-          </tr>
-          <tr> 
-            <td height="26" align="center">开始时间：</td>
-            <td colspan="2"><input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>"></td>
-          </tr>
-          <tr> 
-            <td height="26" align="center">结束时间：</td>
-            <td colspan="2"><input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>"></td>
-          </tr>
-          <tr> 
-            <td height="80" align="center">正常显示内容：</td>
-            <td width="70%"><textarea name="normbody" id="normbody" style="width:80%;height:100px"><?php echo $row['normbody']?></textarea></td>
-            <td width="9%"></td>
-          </tr>
-          <tr> 
-            <td height="80" align="center">过期显示内容：</td>
-            <td><textarea name="expbody" id="expbody" style="width:80%;height:100px"><?php echo $row['expbody']?></textarea> </td>
-            <td></td>
-          </tr>
-          <tr> 
-            <td height="53" align="center"></td>
-            <td colspan="2">
-              <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
-            </td>
-          </tr>
-        </form>
-      </table>
+      <form action="mytag_edit.php" method="post" enctype="multipart/form-data" name="form1">
+        <input type="hidden" name="aid" value="<?php echo $aid?>">
+        <input type="hidden" name="dopost" value="saveedit">
+        <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+        <tr> 
+          <td width="15%" align="center">所属栏目：</td>
+          <td colspan="2">
+		      <?php
+         	$tl = new TypeLink(0);
+         	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
+          echo "<select name='typeid' style='width:260px'>";
+          echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
+          echo $typeOptions;
+          echo "</select>";
+		      ?>
+		      </td>
+        </tr>
+        <tr> 
+          <td align="center">标记名称：</td>
+          <td colspan="2"><?php echo $row['tagname']?></td>
+        </tr>
+        <tr> 
+          <td align="center">时间限制：</td>
+          <td colspan="2">
+            <input name="timeset" type="radio" value="0"<?php if($row['timeset']==0) echo " checked"; ?>> 永不过期 
+            <input type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo " checked"; ?>> 在设内时间内有效
+          </td>
+        </tr>
+        <tr> 
+          <td align="center">开始时间：</td>
+          <td colspan="2"><input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>"></td>
+        </tr>
+        <tr> 
+          <td align="center">结束时间：</td>
+          <td colspan="2"><input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>"></td>
+        </tr>
+        <tr> 
+          <td height="80" align="center">正常显示内容：</td>
+          <td width="70%"><textarea name="normbody" id="normbody" style="width:80%;height:100px"><?php echo $row['normbody']?></textarea></td>
+          <td width="9%"></td>
+        </tr>
+        <tr> 
+          <td height="80" align="center">过期显示内容：</td>
+          <td><textarea name="expbody" id="expbody" style="width:80%;height:100px"><?php echo $row['expbody']?></textarea> </td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td align="center"></td>
+          <td colspan="2"><button type="submit" name="B1" class="btn btn-success btn-sm">确定</button></td>
+        </tr>
+      </form>
+    </table>
 	 </td>
-</tr>
+  </tr>
 </table>
 </body>
 </html>

@@ -136,8 +136,8 @@
 			</td>
 		</tr>
 	</table>
-	<form name='form3' action='content_sg_list.php' method='get'>
-		<input type='hidden' name='dopost' value='listArchives'>
+	<form name="form3" action="content_sg_list.php" method="get">
+		<input type="hidden" name="dopost" value="listArchives">
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="mb-3" style="border:1px solid #dee2e6">
 			<tr>
 				<td height="36" bgcolor="#f8f8f8">
@@ -159,10 +159,10 @@
 	</form>
 	<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
 		<tr>
-			<td height="26" colspan="9" background="../static/web/img/tbg.gif" style="padding-left:10px">{dede:global.positionname/}文档列表</td>
+			<td bgcolor="#f8f8f8" colspan="9">{dede:global.positionname/}文档列表</td>
 		</tr>
 		<form name="form2">
-			<tr align="center" bgcolor="#F8FCF1" height="26">
+			<tr bgcolor="#F8FCF1" align="center">
 				<td width="6%">ID</td>
 				<td width="6%">选择</td>
 				<td width="30%">文章标题</td>
@@ -174,7 +174,7 @@
 				<td width="10%">操作</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
-			<tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+			<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.aid/}" class="np"></td>
 				<td align="left"><a href="archives_do.php?aid={dede:field.aid/}&dopost=editArchives">{dede:field.title/}{dede:field.flag function='IsCommendArchives(@me)'/}</a></td>
@@ -197,7 +197,7 @@
 					<a class="btn btn-success btn-sm" href="javascript:checkArc(0)" class="coolbg">审核</a>
 					<a class="btn btn-success btn-sm" href="javascript:adArc(0)" class="coolbg">推荐</a>
 					<a class="btn btn-success btn-sm" href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid); ?>)" class="coolbg">移动</a>
-					<a class="btn btn-success btn-sm" href="javascript:delArc(0)" class="coolbg">删除</a>
+					<a class="btn btn-danger btn-sm" href="javascript:delArc(0)" class="coolbg">删除</a>
 					<?php
 					if(!empty($f)) {
 					?>

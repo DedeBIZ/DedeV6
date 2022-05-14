@@ -65,35 +65,34 @@
 			<form name="form1" action="makehtml_all.php" target="stafrm" method="post">
 				<input type="hidden" name="action" value="make">
 				<tr>
-					<td height="26" colspan="2" background="../static/web/img/tbg.gif" style="padding-left:10px">更新整站
-					</td>
+					<td bgcolor="#f8f8f8" colspan="2">更新整站</td>
 				</tr>
 				<tr>
-					<td width="260" height="26">更新选项：</td>
-					<td height="26">
+					<td width="260">更新选项：</td>
+					<td>
 						<label><input name="uptype" id="uptype1" type="radio" value="time" onClick="SelUp()" checked="checked">&nbsp;指定时间的所有更新</label>
 						<label><input name="uptype" id="uptype2" type="radio" onClick="SelUp()" value="id">&nbsp;指定ID文档的所有更新</label>
 						<label><input name="uptype" id="uptype3" type="radio" onClick="SelUp()" value="mkall">&nbsp;更新所有</label>
 					</td>
 				</tr>
 				<tr id="seltime">
-					<td height="26">起始时间：</td>
-					<td height="26"><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time()); ?>" class="datepicker" style="width:160px"></td>
+					<td>起始时间：</td>
+					<td><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time()); ?>" class="datepicker" style="width:160px"></td>
 				</tr>
 				<tr id="selid" style="display:none">
-					<td height="26">起始ID：</td>
-					<td height="26"><input name="startid" type="text" id="startid" value="0" style="width:60px"></td>
+					<td>起始ID：</td>
+					<td><input name="startid" type="text" id="startid" value="0" style="width:60px"></td>
 				</tr>
 				<tr>
-					<td height="26" bgcolor="#F8FCF1" colspan="2" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">开始更新</button></td>
+					<td bgcolor="#F8FCF1" colspan="2" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">开始更新</button></td>
 				</tr>
 			</form>
 			<tr>
-				<td height="26" colspan="2">
+				<td colspan="2">
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="70%">结果：</td>
-							<td width="30%" align="right">
+							<td width="30%">结果：</td>
+							<td width="70%" align="right">
 								<script>
 									function ResizeDiv(obj, ty) {
 										if (ty == "+") document.all[obj].style.pixelHeight += 50;

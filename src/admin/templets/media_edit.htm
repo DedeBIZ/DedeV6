@@ -28,65 +28,58 @@
 	</script>
 </head>
 <body>
-	<table width="99%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+	<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 		<tr>
-			<td height="26" background="../static/web/img/tbg.gif">
+			<td bgcolor="#f8f8f8">
 				<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
 					<tr>
-						<td width="70%">修改媒体</td>
-						<td width="30%" align="right"><a href='media_main.php' class="btn btn-success btn-sm">附件媒体数据管理</a></td>
+						<td width="30%">修改媒体</td>
+						<td width="70%" align="right"><a href="media_main.php" class="btn btn-success btn-sm">附件媒体数据管理</a></td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 		<tr>
-			<td height="26">
+			<td>
 				<div class="alert alert-info mb-0">图片类型仅支持jpg、png、gif、wbmp格式，flash为.swf格式，视音频和附件为限定扩展名的类型（可在系统参数中修改）</div>
 			</td>
 		</tr>
 		<tr>
-			<td height="70" align="center">
+			<td align="center">
 				<table width="100%" cellpadding="0" cellspacing="0">
-					<form enctype="multipart/form-data" name='form1' action="media_edit.php" method="POST"
-						onSubmit="return CheckSubmit();">
+					<form enctype="multipart/form-data" name="form1" action="media_edit.php" method="POST" onSubmit="return CheckSubmit();">
 						<input type="hidden" name="dopost" value="save">
 						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 						<input type="hidden" name="aid" value="<?php echo $aid?>">
 						<tr>
-							<td width="15%" height="26" align="left" class="bline">媒体类型：</td>
-							<td width="85%" height="26" align="left" class="bline">
-								<label><input type="radio" name="mediatype" class="np" value="1" <?php if($myrow['mediatype']==1) echo " checked"; ?>>
-								图片</label>
-								<label><input type="radio" name="mediatype" class="np" value="2" <?php if($myrow['mediatype']==2) echo " checked"; ?>>
-								FLASH</label>
-								<label><input type="radio" name="mediatype" class="np" value="3" <?php if($myrow['mediatype']==3) echo " checked"; ?>>
-								视频/音频</label>
-								<label><input type="radio" name="mediatype" class="np" value="4" <?php if($myrow['mediatype']==4) echo " checked"; ?>>
-								附件/其它</label>
+							<td width="15%" align="left" class="bline">媒体类型：</td>
+							<td width="85%" align="left" class="bline">
+								<label><input type="radio" name="mediatype" class="np" value="1" <?php if($myrow['mediatype']==1) echo " checked"; ?>> 图片</label>
+								<label><input type="radio" name="mediatype" class="np" value="2" <?php if($myrow['mediatype']==2) echo " checked"; ?>> FLASH</label>
+								<label><input type="radio" name="mediatype" class="np" value="3" <?php if($myrow['mediatype']==3) echo " checked"; ?>> 视频音频</label>
+								<label><input type="radio" name="mediatype" class="np" value="4" <?php if($myrow['mediatype']==4) echo " checked"; ?>> 附件其它</label>
 							</td>
 						</tr>
 						<tr>
-							<td height="26" class="bline">说明标题：</td>
-							<td height="26" class="bline">
-								<input name="title" type="text" id="title" size="30" value="<?php echo $myrow['title']?>">
+							<td class="bline">说明标题：</td>
+							<td class="bline"><input name="title" type="text" id="title" value="<?php echo $myrow['title']?>" style="width:300px"></td>
+						</tr>
+						<tr>
+							<td class="bline">参数说明：</td>
+							<td class="bline" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
+						</tr>
+						<tr>
+							<td class="bline">附加参数：</td>
+							<td class="bline">
+								宽：<input name="mediawidth" type="text" id="mediawidth" value="<?php echo $myrow['width']?>" style="width:60px">（像素）
+								高：<input name="mediaheight" type="text" id="mediaheight" value="<?php echo $myrow['height']?>" style="width:60px">（像素）
+								播放时间：<input name="playtime" type="text" id="playtime" value="<?php echo $myrow['playtime']?>" style="width:60px">（分钟）
 							</td>
 						</tr>
 						<tr>
-							<td height="26" class="bline">参数说明：</td>
-							<td height="26" class="bline" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
-						</tr>
-						<tr>
-							<td height="26" class="bline">附加参数：</td>
-							<td height="26" class="bline">
-								宽：<input name="mediawidth" type="text" id="mediawidth" size="5" value="<?php echo $myrow['width']?>">（像素）
-								高：<input name="mediaheight" type="text" id="mediaheight" size="5" value="<?php echo $myrow['height']?>">（像素）
-								播放时间：<input name="playtime" type="text" id="playtime" size="5" value="<?php echo $myrow['playtime']?>">（分钟）
-							</td>
-						</tr>
-						<tr>
-							<td height="26" class="bline">原文件：</td>
-							<td height="26" class="bline">
-								<input name="filename" type="text" id="filename" style='width:260px' value="<?php echo $myrow['url']?>">
+							<td class="bline">原文件：</td>
+							<td class="bline">
+								<input name="filename" type="text" id="filename" value="<?php echo $myrow['url']?>" style="width:260px">
 								<a href="<?php echo $myrow['url']?>" target="_blank">[查看]</a>
 							</td>
 						</tr>
@@ -102,16 +95,14 @@
 									else $w = $sizes[0];
 						?>
 						<tr>
-							<td height="26" class="bline">预览：</td>
-							<td height="26" class="bline">
-								<a href="<?php echo $myrow['url']?>" target="_blank"><img src="<?php echo $myrow['url'].'?q='.time()?>" width="<?php echo $w?>" id="picview"></a>
-							</td>
+							<td class="bline">预览：</td>
+							<td class="bline"><a href="<?php echo $myrow['url']?>" target="_blank"><img src="<?php echo $myrow['url'].'?q='.time()?>" width="<?php echo $w?>" id="picview"></a></td>
 						</tr>
 						<?php } } } ?>
 						<tr>
-							<td height="26" class="bline">修改文件：</td>
-							<td height="26" class="bline">
-								<input name="upfile" type="file" id="upfile" style='width:260px'>
+							<td class="bline">修改文件：</td>
+							<td class="bline">
+								<input name="upfile" type="file" id="upfile" style="width:260px">
 							</td>
 						</tr>
 						<tr>

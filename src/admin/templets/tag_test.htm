@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="<?php echo $cfg_soft_lang; ?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>主页更新向导</title>
+		<title>全局标记测试</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
@@ -29,10 +29,10 @@
 				<input type="hidden" name="dopost" value="make">
 				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 				<tr>
-					<td height="26" colspan="2" background="../static/web/img/tbg.gif">
+					<td bgcolor="#f8f8f8" colspan="2">
 						<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
 							<tr>
-								<td width="30%" style="padding-left:10px">全局标记测试</td>
+								<td width="30%">全局标记测试</td>
 								<td width="70%" align="right"></td>
 							</tr>
 						</table>
@@ -48,13 +48,13 @@
 					<td colspan="2">输入要测试的局部代码：</td>
 				</tr>
 				<tr>
-					<td height="62" colspan="2">
+					<td height="60" colspan="2">
 						<textarea name="partcode" id="partcode" style="width:98%;height:120px"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td width="103" height="26">环境变量：</td>
-					<td width="865" height="26">&nbsp;
+					<td>环境变量：</td>
+					<td>
 						<?php
 						if(empty($cid)) $cid="0";
 						$tl = new TypeLink($cid);
@@ -67,17 +67,17 @@
 					</td>
 				</tr>
 				<tr>
-					<td height="26" bgcolor="#F8FCF1" colspan="2" align="center">
+					<td bgcolor="#F8FCF1" colspan="2" align="center">
 						<button type="submit" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" class="coolbg np">提交测试</button>
 					</td>
 				</tr>
 			</form>
 			<tr>
-				<td height="26" colspan="2">
+				<td colspan="2">
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="70%">结果：</td>
-							<td width="30%" align="right">
+							<td width="30%">结果：</td>
+							<td width="70%" align="right">
 								<script>
 									function ResizeDiv(obj, ty) {
 										if (ty == "+") document.all[obj].style.pixelHeight += 50;

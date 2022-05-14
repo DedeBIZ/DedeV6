@@ -46,7 +46,7 @@ else if ($fmdo == "newdir") {
     $win->AddHidden("activepath", $activepath);
     $win->AddHidden("token", make_hash());
     $win->AddTitle("当前目录 $activepathname ");
-    $win->AddItem("新目录：", "<input name='newpath' type='input' class='alltxt' id='newpath'>");
+    $win->AddItem("新目录：", "<input name='newpath' type='input' id='newpath'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
@@ -62,7 +62,7 @@ else if ($fmdo == "move") {
     $win->AddTitle("新位置前面不加'/'表示相对于当前位置，加'/'表示相对于根目录");
     $win->AddItem("被移动文件：", $filename);
     $win->AddItem("当前位置：", $activepath);
-    $win->AddItem("新位置：", "<input name='newpath' type='input' class='alltxt' id='newpath' size='40'>");
+    $win->AddItem("新位置：", "<input name='newpath' type='input' id='newpath' size='40'>");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }

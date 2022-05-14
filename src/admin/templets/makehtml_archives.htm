@@ -10,25 +10,23 @@
 	</head>
 	<body>
 		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-			<form name='form2' action='content_list.php' method="get" target='stafrm'>
-				<input type='hidden' name='nullfield' value='ok'>
+			<form name="form2" action="content_list.php" method="get" target="stafrm">
+				<input type="hidden" name="nullfield" value="ok">
 			</form>
-			<form name="form1" action="makehtml_archives_action.php" method="get" target='stafrm'>
+			<form name="form1" action="makehtml_archives_action.php" method="get" target="stafrm">
 				<tr>
-					<td height="26" colspan="2" background="../static/web/img/tbg.gif">
+					<td bgcolor="#f8f8f8" colspan="2">
 						<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
 							<tr>
-								<td width="30%" style="padding-left:10px">更新文档</td>
-								<td width="70%" align="right">
-									<a href="makehtml_list.php?typeid=<?php echo (isset($typeid) ? $typeid : 0); ?>" class="btn btn-success btn-sm">更新栏目</a>
-								</td>
+								<td width="30%">更新文档</td>
+								<td width="70%" align="right"><a href="makehtml_list.php?typeid=<?php echo (isset($typeid) ? $typeid : 0); ?>" class="btn btn-success btn-sm">更新栏目</a></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td width="260" height="26">选择栏目：</td>
-					<td height="26">
+					<td width="260">选择栏目：</td>
+					<td>
 						<?php
 						if(empty($cid)) $cid="0";
 						$tl = new TypeLink($cid);
@@ -41,30 +39,30 @@
 					</td>
 				</tr>
 				<tr>
-					<td height="26">起始ID：</td>
-					<td height="26"><input name="startid" type="text" id="startid" style="width:60px">（空或0表示从头开始）</td>
+					<td>起始ID：</td>
+					<td><input name="startid" type="text" id="startid" style="width:60px">（空或0表示从头开始）</td>
 				</tr>
 				<tr>
-					<td height="26">结束ID：</td>
-					<td height="26"><input name="endid" type="text" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
+					<td>结束ID：</td>
+					<td><input name="endid" type="text" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
 				</tr>
 				<tr>
-					<td height="26">每页生成：</td>
-					<td height="26"> <input name="pagesize" type="text" id="pagesize" value="20" style="width:60px"> 个文件</td>
+					<td>每页生成：</td>
+					<td> <input name="pagesize" type="text" id="pagesize" value="20" style="width:60px"> 个文件</td>
 				</tr>
 				<tr>
-					<td height="26" bgcolor="#F8FCF1" colspan="2" align="center">
+					<td bgcolor="#F8FCF1" colspan="2" align="center">
 						<button name="b112" type="button" class="btn btn-success btn-sm" onClick="document.form1.submit();">开始更新</button>
 						<button type="button" name="b113" class="btn btn-success btn-sm" onClick="document.form2.submit();">查看所有文档</button>
 					</td>
 				</tr>
 			</form>
 			<tr>
-				<td height="26" colspan="2">
+				<td colspan="2">
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="70%">结果：</td>
-							<td width="30%" align="right">
+							<td width="30%">结果：</td>
+							<td width="70%" align="right">
 								<script>
 									function ResizeDiv(obj, ty) {
 										if (ty == "+") document.all[obj].style.pixelHeight += 50;

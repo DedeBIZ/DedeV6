@@ -104,35 +104,14 @@
 	</script>
 </head>
 <body>
-	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="maintable mt-3" style="border:1px solid #dee2e6;border-bottom:none">
+	<table width="98%" cellpadding="5" cellspacing="1" align="center" class="table table-borderless maintable mt-3 mb-3">
 		<tr>
-			<td class="tbtitletxt" background="../static/web/img/tbg.gif">
-				<table width='100%' cellpadding='0' cellspacing='0'>
-					<tr>
-						<td width='36%' class="py-3" style="padding-left:10px">自由列表管理</td>
-						<td width="30%"></td>
-						<td width="34%" align="right" style="padding-right:10px"><a href="freelist_add.php" class="btn btn-success btn-sm">增加列表</a></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</table>
-	<div id='rslist'>
-	<?php
-	GetTagList($dsql,$pageno,$pagesize,$orderby);
-	?>
-	</div>
-	<div id='pagelist' class="mt-3 mb-3">
-		<script>ReloadPageNum(1);</script>
-	</div>
-	<table width="98%" cellpadding="5" cellspacing="1" align="center" style="margin:auto;border:1px solid #dee2e6" class="table table-borderless maintable mb-3">
-		<tr>
-			<td bgcolor="#f8f8f8" height="36" align="center">
-				<table width="100%" cellpadding="0" cellspacing="0" class="table">
+			<td bgcolor="#f8f8f8" align="center">
+				<table cellpadding="0" cellspacing="0" class="table">
 					<form action="freelist_main.php" name="form1" id="form1">
 						<tr>
 							<td width="170" align="center">
-								<input type="text" name="keyword" id="keyword" class='alltxt' value="<?php echo $keyword?>" style="width:160px">
+								<input type="text" name="keyword" id="keyword" value="<?php echo $keyword?>" style="width:160px">
 							</td>
 							<td>
 								<button type="submit" name="Submit2" class="btn btn-success btn-sm">搜索</button>
@@ -145,5 +124,25 @@
 			</td>
 		</tr>
 	</table>
+	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="maintable mb-3">
+		<tr>
+			<td bgcolor="#f8f8f8">
+				<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="30%" class="py-3">自由列表管理</td>
+						<td width="70%" align="right"><a href="freelist_add.php" class="btn btn-success btn-sm">增加列表</a></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<div id="rslist">
+	<?php
+	GetTagList($dsql,$pageno,$pagesize,$orderby);
+	?>
+	</div>
+	<div id="pagelist" class=" mb-3">
+		<script>ReloadPageNum(1);</script>
+	</div>
 </body>
 </html>

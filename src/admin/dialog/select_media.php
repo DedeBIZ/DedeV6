@@ -50,7 +50,7 @@ if (!empty($noeditor)) {
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>
-html{background:#f6f6f6}
+html{background:#f8f8f8}
 table{background:#fff}
 a{text-decoration:none!important}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
@@ -75,7 +75,7 @@ a{text-decoration:none!important}
     </script>
     <table width="100%" align="center" cellspacing="0" cellpadding="2" class="table table-borderless">
         <tr>
-            <td colspan="3" height="26">
+            <td colspan="3" >
                 <form action="select_media_post.php" method="POST" enctype="multipart/form-data" name="myform">
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">

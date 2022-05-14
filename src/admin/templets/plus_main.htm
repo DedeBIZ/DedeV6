@@ -11,25 +11,25 @@
 </head>
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-    <tr height="26"background="../static/web/img/tbg.gif" style="padding-left:10px">
+    <tr bgcolor="#f8f8f8">
       <td width="30%" colspan="2">插件管理</td>
       <td align="right" colspan="2">[<a href="module_main.php?moduletype=plus">安装新插件</a>]</td>
     </tr>
-    <tr align="center" bgcolor="#F8FCF1" height="26">
+    <tr bgcolor="#F8FCF1" align="center">
       <td width="10%">ID号</td>
       <td width="40%">插件名称</td>
       <td width="20%">插件作者</td>
       <td width="30%">管理</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="4"><center>暂无内容</center></td></tr>'}
-    <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+    <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid /}</td>
       <td>{dede:field.plusname /}</td>
       <td>{dede:field.writer /}</td>
       <td>{dede:field.isshow function="GetSta(@me,$fields['aid'],$fields['plusname'])"/}</td>
     </tr>
     {/dede:datalist}
-    <tr align="center" bgcolor="#f8f8f8" height="36">
+    <tr height="36" bgcolor="#f8f8f8" align="center">
       <td colspan="4">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>

@@ -28,8 +28,6 @@ function showHide(objname)
 			if(ckstrs[i]==objname){  ischange = true;  }
 			else okstr += (okstr=='' ? ckstrs[i] : ','+ckstrs[i] );
 		}
-		if(ischange) setCookie('menuitems',okstr,7);
-        objsun.className = 'bitem2';
 	} else {
 		obj.style.display = 'block';
 		ischange = true;
@@ -42,7 +40,6 @@ function showHide(objname)
 			ckstr = (ckstr==null ? objname : ckstr+','+objname);
 			setCookie('menuitems',ckstr,7);
 		}
-        objsun.className = 'bitem';
 	}
 }
 //读写cookie函数

@@ -142,7 +142,7 @@ class TypeUnit
             }
             //独立页面
             else if ($ispart == 2) {
-                echo "<tr height='26' bgcolor='#F8FCF1'>";
+                echo "<tr  bgcolor='#F8FCF1'>";
                 echo "<td class='bline2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o' style='cursor:pointer'></i><input class='np' type='checkbox' name='tids[]' value='{$id}' style='margin:0 10px'><a href='catalog_edit.php?id=".$id."'>{$nss}".$typeName."[ID:".$id."]</a><a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$typeDir}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
@@ -198,7 +198,7 @@ class TypeUnit
                 }
                 //普通列表
                 if ($ispart == 0) {
-                    echo "<tr height='26'>";
+                    echo "<tr >";
                     echo "<td class='nbline'>";
                     echo "<table width='98%' cellspacing='0' cellpadding='0'>";
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#F8FCF1';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\"><td width='50%'>";
@@ -214,7 +214,7 @@ class TypeUnit
                 }
                 //封面频道
                 else if ($ispart == 1) {
-                    echo "<tr height='26'>";
+                    echo "<tr >";
                     echo "<td class='nbline'><table width='98%' cellspacing='0' cellpadding='0'><tr onMouseMove=\"javascript:this.bgColor='#F8FCF1';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\"><td width='50%'>";
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o' style='cursor:pointer'></i><input class='np' type='checkbox' name='tids[]' value='{$id}' style='margin:0 10px'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'>{$nss}".$typeName."[ID:".$id."]</a><a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                     echo "</td><td align='right'>";
@@ -228,7 +228,7 @@ class TypeUnit
                 }
                 //独立页面
                 else if ($ispart == 2) {
-                    echo "<tr height='26'>";
+                    echo "<tr >";
                     echo "<td class='bline2'><table width='98%' cellspacing='0' cellpadding='0'>";
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#F8FCF1';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\"><td width='50%'>";
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o' style='cursor:pointer'></i><input class='np' type='checkbox' name='tids[]' value='{$id}' style='margin:0 10px'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'>{$nss}".$typeName."[ID:".$id."]</a><a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";

@@ -41,17 +41,17 @@
 <body>
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" colspan="7" background="../static/web/img/tbg.gif">
+      <td bgcolor="#f8f8f8" colspan="7">
         <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr>
-            <td width="30%" style="padding-left:10px">点卡业务管理</td>
-            <td width="45%" align="right" style="padding-top:10px">
+            <td width="30%">点卡业务管理</td>
+            <td width="45%" align="right">
               <button type="button" onClick="location='cards_manage.php?isexp=0';" class="btn btn-success btn-sm">未使用</button>
               <button type="button" onClick="location='cards_manage.php?isexp=1';" class="btn btn-success btn-sm">已售出</button>
               <button type="button" onClick="location='cards_manage.php?isexp=-1';" class="btn btn-success btn-sm">已使用</button>
               <button type="button" onClick="location='cards_manage.php';" class="btn btn-success btn-sm">全部</button>
             </td>
-            <td width="25%" align="right" style="padding-top:10px">
+            <td width="25%" align="right">
               <button type="button" onClick="location='cards_make.php';" class="btn btn-success btn-sm">生成点卡</button>
               <button type="button" onClick="location='cards_type.php';" class="btn btn-success btn-sm">点卡产品分类</button>
             </td>
@@ -59,7 +59,7 @@
         </table>
       </td>
     </tr>
-    <tr align="center" bgcolor="#F8FCF1">
+    <tr bgcolor="#F8FCF1" align="center">
       <td width="8%">选择</td>
       <td width="28%">卡号</td>
       <td width="18%">点卡类型</td>
@@ -70,8 +70,8 @@
     </tr>
     <form name="form1">
       {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-      <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td><input type='checkbox' name='aids' value='{dede:field.aid/}' class='np'></td>
+      <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+        <td><input type="checkbox" name="aids" value="{dede:field.aid/}" class="np"></td>
         <td>{dede:field.cardid/}</td>
         <td><?php echo $TypeNames[$fields['ctid']]?></td>
         <td>{dede:field.mtime function='GetDateMk(@me)'/}</td>
@@ -82,14 +82,14 @@
       {/dede:datalist}
     </form>
     <tr>
-      <td height="26" colspan="7">&nbsp;
+      <td colspan="7">
         <button type="button" onClick="ReSel();" class="btn btn-success btn-sm">反选</button>
-        <button type="button" onClick="DelSel();" class="btn btn-success btn-sm">删除</button>
-        　　　　 </td>
+        <button type="button" onClick="DelSel();" class="btn btn-danger btn-sm">删除</button>
+      </td>
     </tr>
     <tr>
       <td height="36" colspan="7" align="center" bgcolor="#f8f8f8">
-        {dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="5"/}
+        {dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}
       </td>
     </tr>
   </table>

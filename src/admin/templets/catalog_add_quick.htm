@@ -84,10 +84,10 @@
     <input type="hidden" name="savetype" value="" id="savetype">
     <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
       <tr>
-        <td width="100%" height="26">
+        <td width="100%">
           <table width="100%" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="26"><i class="fa fa-book"></i> <a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目</td>
+              <td><i class="fa fa-book"></i> <a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目</td>
             </tr>
           </table>
         </td>
@@ -107,7 +107,7 @@
               <td colspan="2">
                 <table width="86" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规选项</td>
+                    <td width="86" height="28" align="center" background="../static/web/img/itemnote1.gif">常规选项</td>
                   </tr>
                 </table>
               </td>
@@ -115,23 +115,20 @@
           </table>
           <table width="100%" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6" class="table">
             <tr>
-              <td height="26" bgcolor="#f8f8f8" style="padding-left:10px">公用参数：</td>
+              <td bgcolor="#f8f8f8" style="padding-left:10px">公用参数：</td>
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>
-              <td width="260" class="bline" height="26" style="padding-left:10px">是否支持投稿：</td>
+              <td width="260" class="bline" style="padding-left:10px">是否支持投稿：</td>
               <td class="bline">
-                <label><input type='radio' name='issend' value='0' class='np' />
-                不支持</label>
-                &nbsp;
-                <label><input type='radio' name='issend' value='1' class='np' checked='1' />
-                支持</label>
+                <label><input type="radio" name="issend" value="0" class="np"> 不支持</label>
+                <label><input type="radio" name="issend" value="1" class="np" checked="1"> 支持</label>
               </td>
             </tr>
             <tr>
-              <td class="bline" height="26" style="padding-left:10px">目录保存位置：</td>
+              <td class="bline" style="padding-left:10px">目录保存位置：</td>
               <td class="bline">
-                <input name="referpath" type="radio" id="truepath1" class="np" value="parent" checked='1' />
+                <input name="referpath" type="radio" id="truepath1" class="np" value="parent" checked="1">
                 <label for="truepath1">默认HMTL目录（
                 <?php
                 $pardir = '{cmspath}'.$cfg_arcdir;
@@ -146,16 +143,16 @@
               </td>
             </tr>
             <tr>
-              <td class="bline" height="26" style="padding-left:10px">隶属栏目：</td>
+              <td class="bline" style="padding-left:10px">隶属栏目：</td>
               <td class="bline">
-                <select name='reid' onchange="showSeltype(this)" style="width:160px">
-                  <option value='0'>选择所属目录</option>
+                <select name="reid" onchange="showSeltype(this)" style="width:160px">
+                  <option value="0">选择所属目录</option>
                   <?php echo $typeOptions; ?>
                 </select>（默认为顶级栏目）
               </td>
             </tr>
             <tr>
-              <td class="bline" height="26" style="padding-left:10px">内容模型：</td>
+              <td class="bline" style="padding-left:10px">内容模型：</td>
               <td class="bline"><select name="channeltype" id="channeltype" onChange="ParTemplet(this)" style="width:160px">
                 <?php
                 foreach($channelArray as $k=>$arr)
@@ -168,23 +165,20 @@
               </td>
             </tr>
             <tr>
-              <td class="bline" height="26" style="padding-left:10px">栏目列表选项：</td>
+              <td class="bline" style="padding-left:10px">栏目列表选项：</td>
               <td class="bline">
-                <label><input type='radio' name='isdefault' value='1' class='np' checked='1' />
-                链接到默认页</label>
-                <label><input type='radio' name='isdefault' value='0' class='np' />
-                链接到列表第一页</label>
-                <label><input type='radio' name='isdefault' value='-1' class='np' />
-                使用动态页</label>
+                <label><input type="radio" name="isdefault" value="1" class="np" checked="1"> 链接到默认页</label>
+                <label><input type="radio" name="isdefault" value="0" class="np"> 链接到列表第一页</label>
+                <label><input type="radio" name="isdefault" value="-1" class="np"> 使用动态页</label>
               </td>
             </tr>
             <tr>
-              <td class="bline" height="26" style="padding-left:10px">默认页的名称：</td>
+              <td class="bline" style="padding-left:10px">默认页的名称：</td>
               <td class="bline"><input name="defaultname" type="text" value="index.html" class="pubinputs" style="width:260px"></td>
             </tr>
-            <tr id='helpvar2' style='display:none'>
-              <td height="26" bgcolor="#f8f8f8" style="padding-left:10px">支持变量：</td>
-              <td height="26" bgcolor="#f8f8f8"> {Y}、{M}、{D} 年月日<br>
+            <tr id="helpvar2" style="display:none">
+              <td bgcolor="#f8f8f8" style="padding-left:10px">支持变量：</td>
+              <td bgcolor="#f8f8f8"> {Y}、{M}、{D} 年月日<br>
                 {timestamp} INT类型的UNIX时间戳<br>
                 {aid} 文章ID<br>
                 {pinyin} 拼音+文章ID<br>
@@ -194,48 +188,48 @@
               </td>
             </tr>
             <tr>
-              <td height="26" class="bline" style="padding-left:10px">文章命名规则：</td>
+              <td class="bline" style="padding-left:10px">文章命名规则：</td>
               <td class="bline">
                 <input name="namerule" type="text" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i>
               </td>
             </tr>
-            <tr id='helpvar3' style='display:none'>
-              <td height="26" bgcolor="#f8f8f8" style="padding-left:10px">支持变量：</td>
+            <tr id="helpvar3" style="display:none">
+              <td bgcolor="#f8f8f8" style="padding-left:10px">支持变量：</td>
               <td bgcolor="#f8f8f8">{page} 列表的页码</td>
             </tr>
             <tr>
-              <td height="26" style="padding-left:10px">列表命名规则：</td>
+              <td style="padding-left:10px">列表命名规则：</td>
               <td>
                 <input name="namerule2" type="text" id="namerule2" value="{typedir}/{tid}-{page}.html" class="pubinputs" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr>
-              <td height="26" bgcolor="#f8f8f8" style="padding-left:10px">栏目填写：</td>
+              <td bgcolor="#f8f8f8" style="padding-left:10px">栏目填写：</td>
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>
-              <td colspan='2'>
+              <td colspan="2">
                 <table id="addQuick" width="850" cellpadding="3" cellspacing="1">
                   <tbody>
                     <tr bgcolor="#F8FCF1">
-                      <td width="60" height="26">排序</td>
+                      <td width="60" >排序</td>
                       <td width="170">顶级栏目名称</td>
                       <td width="370">子栏目（用&quot;目录名称1,目录名称2&quot;这样表示多个栏目）</td>
                       <td align="center"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
                     </tr>
-                    <tr height="26" align="center">
+                    <tr align="center">
                       <td class="rank">
                         <input type="hidden" name="posttype" value="" class="pubinputs">
                         <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px">
                       </td>
-                      <td align='center'><input type="text" name="toptype" id="toptype" class="pubinputs" style="width:160px"></td>
+                      <td align="center"><input type="text" name="toptype" id="toptype" class="pubinputs" style="width:160px"></td>
                       <td><input type="text" name="sontype" id="sontype" class="pubinputs" style="width:360px"></td>
                       <td align="center"><button name="" type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
-                    <tr height="26" class="repeat" align="center">
+                    <tr  class="repeat" align="center">
                       <td class="rank">
                         <input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>">
                         <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:60px">
@@ -250,11 +244,11 @@
                 <table id="addQuickRel" width="302" cellpadding="3" cellspacing="1" style="display:none">
                   <tbody>
                     <tr bgcolor="#F8FCF1" align="center">
-                      <td width="60" height="26">排序</td>
+                      <td width="60" >排序</td>
                       <td width="170">栏目名称</td>
                       <td align="center"><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
                     </tr>
-                    <tr height="26" align="center">
+                    <tr align="center">
                       <td class="rank">
                         <input type="hidden" name="posttype" value="" class="pubinputs">
                         <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px">
@@ -263,7 +257,7 @@
                       <td align="center"><button name="" type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
-                    <tr height="26" class="repeat" align="center">
+                    <tr  class="repeat" align="center">
                       <td class="rank">
                         <input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>">
                         <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:60px">

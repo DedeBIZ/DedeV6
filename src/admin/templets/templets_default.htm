@@ -22,14 +22,14 @@
 	</head>
 	<body>
 		<table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
-			<tr height="26" align="center">
-				<td width="25%" background="../static/web/img/wbg.gif">文件名</td>
-				<td width="30%" background="../static/web/img/wbg.gif">文件描述</td>
-				<td width="25%" background="../static/web/img/wbg.gif">修改时间</td>
-				<td width="20%" background="../static/web/img/wbg.gif">操作</td>
+			<tr align="center">
+				<td width="25%" bgcolor="#f8f8f8">文件名</td>
+				<td width="30%" bgcolor="#f8f8f8">文件描述</td>
+				<td width="25%" bgcolor="#f8f8f8">修改时间</td>
+				<td width="20%" bgcolor="#f8f8f8">操作</td>
 			</tr>
 			<tr>
-				<td colspan="4" height="26" bgcolor="#f8f8f8">
+				<td colspan="4" bgcolor="#f8f8f8">
 					<span style="float:left;line-height:26px">
 						当前位置：
 						<?php
@@ -52,7 +52,7 @@
 				$filetime = MyDate("Y-m-d H:i",$filetime);
 				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 			?>
-			<tr height="26" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+			<tr onMouseMove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename; ?></a></td>
 				<td><?php echo $fileinfo; ?></td>
 				<td align="center"><?php echo $filetime; ?></td>

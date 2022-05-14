@@ -25,20 +25,20 @@
       ·[field:typelink/] [field:textlink/]<br>
     </span>
     <span style="display:none" id="list3">
-      <table width='98%' cellspacing='2' cellpadding='0'>
+      <table width="98%" cellspacing="2" cellpadding="0">
         <tr>
-          <td align='center'>[field:imglink/]</td>
+          <td align="center">[field:imglink/]</td>
         </tr>
         <tr>
-          <td align='center'>[field:textlink/]</td>
+          <td align="center">[field:textlink/]</td>
         </tr>
       </table>
     </span>
     <span style="display:none" id="list4">
-      <table width='100%' cellspacing='2' cellpadding='2'>
+      <table width="100%" cellspacing="2" cellpadding="2">
         <tr>
-          <td width='30%' rowspan='2' align='center'>[field:imglink/]</td>
-          <td width='70%'><a href='[field:filename/]'>[field:title/]</a></td>
+          <td width="30%" rowspan="2" align="center">[field:imglink/]</td>
+          <td width="70%"><a href="[field:filename/]">[field:title/]</a></td>
         </tr>
         <tr>
           <td>[field:info/]</td>
@@ -49,93 +49,94 @@
       <form action="mytag_tag_guide_ok.php" method="post" target="stafrm" name="form1">
         <input type="hidden" name="dopost" value="gettag">
         <tr>
-          <td height="26" align="left" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mytag_main.php" align="left">自定义标记管理</a> &gt; 智能标记生成向导</td>
+          <td bgcolor="#f8f8f8" align="left"><a href="mytag_main.php">自定义标记管理</a> &gt; 智能标记生成向导</td>
         </tr>
         <tr>
-          <td height="265">
-            <table width="99%" align="right" cellpadding="0" cellspacing="0" style="text-align:left" class="table table-borderless">
+          <td>
+            <table width="98%" align="right" cellpadding="0" cellspacing="0" style="text-align:left" class="table table-borderless">
               <tr>
-                <td height="26">列表样式：</td>
+                <td>列表样式：</td>
               </tr>
               <tr>
-                <td height="72">
-                  <table width="99%" cellspacing="0" cellpadding="0">
+                <td>
+                  <table width="98%" cellspacing="0" cellpadding="0">
                     <tr>
-                      <td width="25%" height="126">
-                        <label><img src="../static/web/img/g_t2.jpg" width="130" height="100">
-                        <input name="liststyle" class="np" type="radio" onClick="ChangeListStyle()" value="1" checked='1'></label> </td>
+                      <td width="25%">
+                        <label><img src="../static/web/img/g_t2.jpg">
+                        <input name="liststyle" class="np" type="radio" onClick="ChangeListStyle()" value="1" checked="1"></label>
+                      </td>
                       <td width="25%">
                         <label><img src="../static/web/img/g_t1.jpg">
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2"></label></td>
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2"></label>
+                      </td>
                       <td width="25%">
                         <label><img src="../static/web/img/g_t3.jpg">
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="3"></label></td>
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="3"></label>
+                      </td>
                       <td>
                         <label><img src="../static/web/img/g_t4.jpg">
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="4"></label></td>
+                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="4"></label>
+                      </td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td height="26">调用栏目：
+                <td>调用栏目：
                   <?php
-       $tl = new TypeLink(0);
-       $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-       echo "<select name='typeid' style='width:284px'>";
-       echo "<option value='0' selected>不限栏目</option>";
-       echo $typeOptions;
-       echo "</select>";
-		?> </td>
+                  $tl = new TypeLink(0);
+                  $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
+                  echo "<select name='typeid' style='width:160px'>";
+                  echo "<option value='0' selected>不限栏目</option>";
+                  echo $typeOptions;
+                  echo "</select>";
+            		  ?>
+                </td>
               </tr>
               <tr>
-                <td height="26"> 限定频道：
+                <td>限定频道：
                   <?php
-     echo "<select name='channel' style='width:100px'>";
-     echo "<option value='0' selected>不限频道</option>";
-     $tl->dsql->SetQuery("Select id,typename From #@__channeltype where id>0");
-	   $tl->dsql->Execute();
-	   while($row = $tl->dsql->GetObject())
-	   {
-	      echo "<option value='{$row->id}'>{$row->typename}</option>";
-	   }
-       echo "</select>";
-		?>
+                  echo "<select name='channel' style='width:160px'>";
+                  echo "<option value='0' selected>不限频道</option>";
+                  $tl->dsql->SetQuery("Select id,typename From #@__channeltype where id>0");
+              	  $tl->dsql->Execute();
+              	  while($row = $tl->dsql->GetObject())
+              	  {
+              	    echo "<option value='{$row->id}'>{$row->typename}</option>";
+              	  }
+                    echo "</select>";
+              		?>
                   附加属性：
                   <?php
-       echo "<select name='att' style='width:100px'>";
-       echo "<option value='0' selected>不限</option>";
-       $tl->dsql->SetQuery("Select * From #@__arcatt");
-	   $tl->dsql->Execute();
-	   while($row = $tl->dsql->GetObject())
-	   {
-	      echo "<option value='{$row->att}'>{$row->attname}</option>";
-	   }
-       echo "</select>";
-		?> </td>
+                  echo "<select name='att' style='width:160px'>";
+                  echo "<option value='0' selected>不限</option>";
+                  $tl->dsql->SetQuery("Select * From #@__arcatt");
+            	    $tl->dsql->Execute();
+            	    while($row = $tl->dsql->GetObject())
+            	    {
+            	      echo "<option value='{$row->att}'>{$row->attname}</option>";
+            	    }
+                  echo "</select>";
+            		  ?>
+                </td>
               </tr>
               <tr>
-                <td height="26">调用记录条数：
-                  <input name="row" type="text" id="row" value="10" size="4">
-                  　显示列数：
-                  <input name="col" type="text" id="col" value="1" size="4">
-                  　标题长度：
-                  <input name="titlelen" type="text" id="titlelen" value="24" size="4">
-                  （1 字节 = 0.5个中文字）</td>
+                <td>
+                  调用记录条数：<input name="row" type="text" id="row" value="10" size="4">
+                  显示列数：<input name="col" type="text" id="col" value="1" size="4">
+                  标题长度：<input name="titlelen" type="text" id="titlelen" value="24" size="4">（1 字节 = 0.5个中文字）
+                </td>
               </tr>
               <tr>
-                <td height="26"> 高级筛选：
-                  <label><input name="types[]" type="checkbox" id="type[]" value="image" class="np">
-                  带缩略图</label>
-                  <label><input name="types[]" type="checkbox" id="type[]" value="commend" class="np">
-                  推荐</label>
-                  <label><input name="types[]" type="checkbox" id="type[]" value="spec" class="np">
-                  专题</label>　关键词：
-                  <input name="keyword" type="text" id="keyword">
-                  （&quot;,&quot;逗号分开）</td>
+                <td>高级筛选：
+                  <label><input name="types[]" type="checkbox" id="type[]" value="image" class="np"> 带缩略图</label>
+                  <label><input name="types[]" type="checkbox" id="type[]" value="commend" class="np"> 推荐</label>
+                  <label><input name="types[]" type="checkbox" id="type[]" value="spec" class="np"> 专题</label>
+                  关键词：<input name="keyword" type="text" id="keyword">（&quot;,&quot;逗号分开）
+                </td>
               </tr>
               <tr>
-                <td height="26">排列顺序：
+                <td>排列顺序：
                   <select name="orderby" id="orderby" style="width:160px">
                     <option value="sortrank">置顶权限值</option>
                     <option value="pubdate" selected>发布时间</option>
@@ -146,55 +147,43 @@
                     <option value="scores">评论积分</option>
                     <option value="rand">随机获取</option>
                   </select>
-                  　
-                  <label><input name="order" type="radio" class="np" value="desc" checked='1'>
-                  由高到低</label>
-                  <label><input type="radio" name="order" class="np" value="asc">
-                  由低到高</label></td>
+                  <label><input name="order" type="radio" class="np" value="desc" checked='1'> 由高到低</label>
+                  <label><input type="radio" name="order" class="np" value="asc"> 由低到高</label>
+                </td>
               </tr>
               <tr>
-                <td height="26">文档发布时间：
-                  <input name="subday" type="text" id="subday" value="0" size="6">
-                  天以内 （0 表示不限）</td>
+                <td>文档发布时间：<input name="subday" type="text" id="subday" value="0" size="6">天以内（0 表示不限）</td>
               </tr>
               <tr>
-                <td height="26">提取特定文档：<button class="btn btn-success btn-sm" type="button" id="selarc" onClick="SelectArcList('form1.arcid');">选择节点文章</button>&nbsp;&nbsp;
+                <td>提取特定文档：<button class="btn btn-success btn-sm" type="button" id="selarc" onClick="SelectArcList('form1.arcid');">选择节点文章</button>
                   <textarea name="arcid" rows="3" id="arcid" style="width:90%" class="mt-3"></textarea>
                 </td>
               </tr>
               <tr>
-                <td height="26">单条记录样式(InnerText)：</td>
+                <td>单条记录样式(InnerText)：</td>
               </tr>
               <tr>
-                <td height="99"><textarea name="innertext" cols="80" rows="6"
-                    id="myinnertext">·[field:textlink/]([field:pubdate function=MyDate('m-d',@me)/])<br></textarea>
-                </td>
+                <td><textarea name="innertext" cols="80" rows="6" id="myinnertext">·[field:textlink/]([field:pubdate function=MyDate('m-d',@me)/])<br></textarea></td>
               </tr>
               <tr>
-                <td height="80">
-                  <span>
-                    支持字段：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,
-                    <br>
-                    stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image
-                    普通字段直接用[field:字段名/]表示<br>
-                    ·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y-m-d H:i:s',@me)/] </span>
-                </td>
+                <td>支持字段：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</td>
               </tr>
               <tr>
                 <td height="36">
                   <button name="Submit1" type="button" id="Submit1" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" value="" class="coolbg np">生成模板调用标记</button>
-                  <button name="Submit2" type="button" id="Submit2" class="btn btn-success btn-sm" onClick="DoSubmit('savetag')" value="保存为自定义标记" class="coolbg np">生成模板调用标记</button></td>
+                  <button name="Submit2" type="button" id="Submit2" class="btn btn-success btn-sm" onClick="DoSubmit('savetag')" value="保存为自定义标记" class="coolbg np">生成模板调用标记</button>
+                </td>
               </tr>
             </table>
           </td>
         </tr>
       </form>
       <tr>
-        <td height="26" bgcolor="#f8f8f8" align="left">结果：</td>
+        <td bgcolor="#f8f8f8" align="left">结果：</td>
       </tr>
       <tr>
         <td>
-          <div id="mdv" style='width:100%;height:360px'>
+          <div id="mdv" style="width:100%;height:360px">
             <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
           </div>
         </td>

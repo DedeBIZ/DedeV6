@@ -13,12 +13,12 @@
     <input type="hidden" name="dopost" value="save">
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr>
-        <td colspan="6" background="../static/web/img/tbg.gif">会员管理 &gt; 会员级别设置</td>
+        <td bgcolor="#f8f8f8" colspan="6">会员管理 &gt; 会员级别设置</td>
       </tr>
-      <tr bgcolor="#F8FCF1" height="26">
+      <tr bgcolor="#F8FCF1" >
         <td colspan="6">级别名称和级别值：（注册会员这个级别不能删除，否则会员系统将会无法正常使用某些功能）</td>
       </tr>
-      <tr bgcolor="#FDFEE9" height="26" align="center">
+      <tr align="center">
         <td width="20%">级别名称</td>
         <td width="18%">会员等级值</td>
         <td width="15%">默认金币</td>
@@ -27,37 +27,35 @@
         <td width="16%">状态</td>
       </tr>
       <?php
-	$k=0;
-	while($row = $dsql->GetObject())
-	{
-	  $k++;
-	?>
-
-      <tr height="26" align="center">
+    	$k=0;
+    	while($row = $dsql->GetObject())
+    	{
+    	  $k++;
+    	?>
+      <tr align="center">
         <td>
           <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id; ?>">
-          <input name="name_<?php echo $k?>" value="<?php echo $row->membername; ?>" type="text" id="name_<?php echo $k?>" class='autoinput alltxt'>
+          <input name="name_<?php echo $k?>" value="<?php echo $row->membername; ?>" type="text" id="name_<?php echo $k?>">
         </td>
-        <td><input name="rank_<?php echo $k?>" value="<?php echo $row->rank; ?>" type="text" id="rank_<?php echo $k?>" class='autoinput alltxt'></td>
-        <td><input name="money_<?php echo $k?>" value="<?php echo $row->money; ?>" type="text" id="money_<?php echo $k?>" class='autoinput alltxt'></td>
-        <td><input name="scores_<?php echo $k?>" value="<?php echo $row->scores; ?>" type="text" id="scores_<?php echo $k?>" class='autoinput alltxt'></td>
+        <td><input name="rank_<?php echo $k?>" value="<?php echo $row->rank; ?>" type="text" id="rank_<?php echo $k?>"></td>
+        <td><input name="money_<?php echo $k?>" value="<?php echo $row->money; ?>" type="text" id="money_<?php echo $k?>"></td>
+        <td><input name="scores_<?php echo $k?>" value="<?php echo $row->scores; ?>" type="text" id="scores_<?php echo $k?>"></td>
         <td align="center">
           <?php
-	  if($row->id<=5) { echo "系统"; }
-      else { echo "用户"; }
-      ?></td>
-        <td><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>"
-            <?php if($row->id == 3) echo 'disabled="disabled"'; ?> class="np" value="1" checked='checked'>
-          正在使用 </td>
+      	  if($row->id<=5) { echo "系统"; }
+          else { echo "用户"; }
+          ?>
+        </td>
+        <td><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" <?php if($row->id == 3) echo 'disabled="disabled"'; ?> class="np" value="1" checked="checked"> 正在使用</td>
       </tr>
       <?php
-	}
-	?>
+    	}
+    	?>
       <input type="hidden" name="idend" value="<?php echo $k; ?>">
-      <tr bgcolor="#F8FCF1" height="26">
-        <td colspan="6">新增一个级别：由于会员升级是以级别值由低向高升级的，因此增加组别时需注意此值的设置，<span style='color:#e74d58'> 如果您增加新的会员组的级别值低于10，将自动被视为普通的注册会员</span></td>
+      <tr bgcolor="#F8FCF1" >
+        <td colspan="6">新增一个级别：由于会员升级是以级别值由低向高升级的，因此增加组别时需注意此值的设置，如果您增加新的会员组的级别值低于10，将自动被视为普通的注册会员</td>
       </tr>
-      <tr height="26" align="center">
+      <tr align="center">
         <td> 级别名称 </td>
         <td> 级别值（待审为0，注册会员为10）</td>
         <td> 默认金币 </td>
@@ -65,12 +63,12 @@
         <td> 操作设置 </td>
         <td></td>
       </tr>
-      <tr height="26" align="center">
-        <td><input name="name_new" type="text" id="name_new" class='autoinput alltxt'></td>
-        <td><input name="rank_new" type="text" id="rank_new" value='20' class='autoinput alltxt'></td>
-        <td><input name="money_new" type="text" id="money_new" value='0' class='autoinput alltxt'></td>
-        <td><input name="scores_new" type="text" id="scores_new" value='100' class='autoinput alltxt'></td>
-        <td><input name="check_new" type="checkbox" id="check_new" class="np" value="1" checked /> 增加等级</td>
+      <tr align="center">
+        <td><input name="name_new" type="text" id="name_new"></td>
+        <td><input name="rank_new" type="text" id="rank_new" value="20"></td>
+        <td><input name="money_new" type="text" id="money_new" value="0"></td>
+        <td><input name="scores_new" type="text" id="scores_new" value="100"></td>
+        <td><input name="check_new" type="checkbox" id="check_new" class="np" value="1" checked> 增加等级</td>
         <td></td>
       </tr>
       <tr>

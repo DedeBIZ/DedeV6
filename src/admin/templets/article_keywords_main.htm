@@ -30,16 +30,16 @@
 		<div class="main">
 			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 				<tr>
-					<td height="26" colspan="5" background="../static/web/img/tbg.gif">
-						<table width="96%" class="table table-borderless">
+					<td bgcolor="#f8f8f8" colspan="5">
+						<table width="98%" class="table table-borderless">
 							<tr>
-								<td width="30%" style="padding-left:10px">文档关键词维护</td>
-								<form name="form1" action="article_keywords_main.php">
-									<td width="70%" align="right">
+								<td width="30%">文档关键词维护</td>
+								<td width="70%" align="right">
+									<form name="form1" action="article_keywords_main.php">
 										<input type="text" name="keyword" placeholder="请输入搜索词" style="width:160px">&nbsp;
 										<button type="submit" name="sb" value="" class="btn btn-success btn-sm">保存</button>
-									</td>
-								</form>
+									</form>
+								</td>
 							</tr>
 						</table>
 					</td>
@@ -47,7 +47,7 @@
 				<form name="form2" action="article_keywords_main.php">
 					<input type="hidden" name="dopost" value="add">
 					<tr align="center">
-						<td width="100%" height="26" colspan="5">
+						<td width="100%" colspan="5">
 							<table cellspacing="0" cellpadding="0" class="table table-borderless">
 								<tr>
 									<td width="280" align="center"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" style="width:260px"></td>
@@ -59,28 +59,28 @@
 						</td>
 					</tr>
 				</form>
-				<tr align="center" bgcolor="#F8FCF1" height="26">
+				<tr bgcolor="#F8FCF1" align="center">
 					<td width="8%">选择</td>
 					<td width="25%">关键词</td>
 					<td width="35%">链接网址</td>
 					<td width="10%">频率</td>
 					<td width="22%">管理</td>
 				</tr>
-				<form name='form3' action="article_keywords_main.php" method="post">
-					<input type='hidden' name='dopost' value='saveall'>
+				<form name="form3" action="article_keywords_main.php" method="post">
+					<input type="hidden" name="dopost" value="saveall">
 					{dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
 					<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-						<td height="26"><input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1'></td>
-						<td><input type='hidden' value='{dede:field.keyword/}' name='keyword_{dede:field.aid/}'> {dede:field.keyword/}</td>
+						<td><input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1'></td>
+						<td><input type="hidden" value="{dede:field.keyword/}" name="keyword_{dede:field.aid/}"> {dede:field.keyword/}</td>
 						<td>
-							<input type='hidden' value='{dede:field.rpurl/}' name='rpurlold_{dede:field.aid/}'>
-							<input type='text' style='width:90%' class='nnpp' value='{dede:field.rpurl/}' name='rpurl_{dede:field.aid/}'>
+							<input type="hidden" value="{dede:field.rpurl/}" name="rpurlold_{dede:field.aid/}">
+							<input type="text" style="width:90%" class="nnpp" value="{dede:field.rpurl/}" name="rpurl_{dede:field.aid/}">
 						</td>
-						<td><input type='text' size='6' class='nnpp' value='{dede:field.rank/}' name='rank_{dede:field.aid/}'></td>
+						<td><input type="text" size="6" class="nnpp" value="{dede:field.rank/}" name="rank_{dede:field.aid/}"></td>
 						<td>
-							<input type='hidden' name='staold_{dede:field.aid/}' value='{dede:field.sta/}'>
-							<label><input type='checkbox' name='isnouse_{dede:field.aid/}' class='np' value='1' {dede:field.sta function="GetSta(@me)"/}> 禁用 </label>
-							<label><input type='checkbox' name='isdel_{dede:field.aid/}' class='np' value='1'> 删除</label>
+							<input type="hidden" name="staold_{dede:field.aid/}" value="{dede:field.sta/}">
+							<label><input type="checkbox" name="isnouse_{dede:field.aid/}" class="np" value="1" {dede:field.sta function="GetSta(@me)"/}> 禁用</label>
+							<label><input type="checkbox" name="isdel_{dede:field.aid/}" class="np" value="1"> 删除</label>
 						</td>
 					</tr>
 					{/dede:datalist}

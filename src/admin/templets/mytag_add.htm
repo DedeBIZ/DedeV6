@@ -55,53 +55,51 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href="mytag_main.php">自定义标记管理</a> &gt; 增加新标记</td>
+      <td bgcolor="#f8f8f8"><a href="mytag_main.php">自定义标记管理</a> &gt; 增加新标记</td>
     </tr>
     <tr>
-      <td height="200">
+      <td>
         <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
           <form action="mytag_add.php" method="post" enctype="multipart/form-data" name="form1" onSubmit="return checkSubmit()">
-            <input type='hidden' name='dopost' value='save'>
+            <input type="hidden" name="dopost" value="save">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <tr>
-              <td height="26" colspan="3">自定义标记的调用方法：<br>
+              <td colspan="3">自定义标记的调用方法：<br>
                 {dede:mytag name='标记名称' ismake='是否含板块代码（yes 或 no）' typeid='栏目ID'/}<br>
                 1、name 标记名称，该项是必须的属性，以下 2、3是可选属性；<br>
                 2、ismake 默认是 no 表示设定的纯HTML代码， yes 表示含板块标记的代码；<br>
                 3、typeid 表示所属栏目的ID，默认为 0 ，表示所有栏目通用的显示内容，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目ＩＤ</td>
             </tr>
             <tr>
-              <td width="15%" height="26" align="center">所属栏目：</td>
+              <td width="15%" align="center">所属栏目：</td>
               <td colspan="2">
                 <?php
-           	$tl = new TypeLink(0);
-           	$typeOptions = $tl->GetOptionArray(0,0,0);
-            echo "<select name='typeid' style='width:260px'>";
-            echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
-            echo $typeOptions;
-            echo "</select>";
-			?>
+               	$tl = new TypeLink(0);
+               	$typeOptions = $tl->GetOptionArray(0,0,0);
+                echo "<select name='typeid' style='width:260px'>";
+                echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
+                echo $typeOptions;
+                echo "</select>";
+    			      ?>
               </td>
             </tr>
             <tr>
-              <td height="26" align="center">标记名称：</td>
+              <td align="center">标记名称：</td>
               <td colspan="2"><input name="tagname" type="text" id="tagname"></td>
             </tr>
             <tr>
-              <td height="26" align="center">时间限制：</td>
+              <td align="center">时间限制：</td>
               <td colspan="2">
-                <label><input name="timeset" type="radio" value="0" checked='1'>
-                永不过期</label>
-                <label><input type="radio" name="timeset" value="1">
-                在设内时间内有效</label>
+                <label><input name="timeset" type="radio" value="0" checked="1"> 永不过期</label>
+                <label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
               </td>
             </tr>
             <tr>
-              <td height="26" align="center">开始时间：</td>
+              <td align="center">开始时间：</td>
               <td colspan="2"><input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" class="datepicker"></td>
             </tr>
             <tr>
-              <td height="26" align="center">结束时间：</td>
+              <td align="center">结束时间：</td>
               <td colspan="2"><input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" class="datepicker"></td>
             </tr>
             <tr>
@@ -115,9 +113,7 @@
               <td></td>
             </tr>
             <tr>
-              <td colspan="3" align="center" class="py-3">
-                <button type="submit" class="btn btn-success btn-sm">保存</button>
-              </td>
+              <td colspan="3" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
             </tr>
           </form>
         </table>

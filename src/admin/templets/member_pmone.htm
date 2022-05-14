@@ -35,7 +35,7 @@
 </form>
 <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
   <tr>
-    <td height="26" colspan="7" background="../static/web/img/tbg.gif"><a href="member_pm.php">短信列表</a> <a href="member_pmall.php">群发短信</a> <span class="current" id="cate_1">单独短信</span></td>
+    <td bgcolor="#f8f8f8" colspan="7"><a href="member_pm.php">短信列表</a> <a href="member_pmall.php">群发短信</a> <span class="current" id="cate_1">单独短信</span></td>
   </tr>
   <tr>
     <td colspan="7">
@@ -43,19 +43,19 @@
         <input name="action" type="hidden" value="post">
         <table width="100%" cellpadding="1" cellspacing="1">
           <tr>
-            <td width="260" height="26">发送到：</td>
-            <td height="26"><input name="msgtoid" type="text" class="text" value="<?php echo empty($touid)? '' : $touid?>" style="width:260px"> 填写用户登录的ID（网址uid=后面跟着的ID）</td>
+            <td width="260">发送到：</td>
+            <td><input name="msgtoid" type="text" class="text" value="<?php echo empty($touid)? '' : $touid?>" style="width:260px"> 填写用户登录的ID（网址uid=后面跟着的ID）</td>
           </tr>
           <tr>
-            <td height="26">标题：</td>
-            <td height="26"><input name="subject" type="text" id="subject" class="company_manage_form_label" style="width:260px">（标题少于70个字符内）</td>
+            <td>标题：</td>
+            <td><input name="subject" type="text" id="subject" class="company_manage_form_label" style="width:260px">（标题少于70个字符内）</td>
           </tr>
           <tr>
-            <td height="26"><label for="pm_textarea">内容：</label></td>
+            <td><label for="pm_textarea">内容：</label></td>
             <td><textarea name="message" id="message" class="company_manage_form_label1" style="width:360px;height:50px"></textarea>（1000个字符以内）</td>
           </tr>
           <tr>
-            <td colspan="2" align="center" class="py-3"><input type="submit" value="提交" class="button01"></td>
+            <td colspan="2" align="center" class="py-3"><input type="submit" value="提交" class="btn btn-success btn-sm"></td>
           </tr>
         </table>
       </form>

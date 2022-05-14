@@ -57,15 +57,15 @@
   </script>
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center"  class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="go">
       <tr>
-        <td height="26" colspan="2" background="../static/web/img/tbg.gif">
+        <td bgcolor="#f8f8f8" colspan="2">
           <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" style="padding-left:10px">文档批量维护</td>
-              <td align="right"></td>
+              <td width="30%">文档批量维护</td>
+              <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>
@@ -74,39 +74,36 @@
         <td width="260">选定栏目：</td>
         <td>
           <?php
-       $tl = new TypeLink(0);
-       $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-       echo "<select name='typeid' style='width:260px'>";
-       echo "<option value='0' selected>不限栏目</option>";
-       echo $typeOptions;
-       echo "</select>";
-		?>
+          $tl = new TypeLink(0);
+          $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
+          echo "<select name='typeid' style='width:260px'>";
+          echo "<option value='0' selected>不限栏目</option>";
+          echo $typeOptions;
+          echo "</select>";
+    		  ?>
         </td>
       </tr>
       <tr>
-        <td height="26">起始ID：</td>
-        <td height="26">开始：
-          <input name="startid" type="text" id="startid" size="10">
-          结束：
-          <input name="endid" type="text" id="endid" size="10"></td>
+        <td>起始ID：</td>
+        <td>
+          开始：<input name="startid" type="text" id="startid" size="10">
+          结束：<input name="endid" type="text" id="endid" size="10">
+        </td>
       </tr>
       <tr>
-        <td height="26">档案发布时间：</td>
-        <td height="26">
+        <td>档案发布时间：</td>
+        <td>
           <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td colspan="2">
-                <label><input name="seltime" type="checkbox" class="np" id="seltime" value="1" onClick="ShowHideTime()">
-                  启用时间筛选（仅移动或删除文档可用该选项）</label>
+                <label><input name="seltime" type="checkbox" class="np" id="seltime" value="1" onClick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
               </td>
             </tr>
-            <tr id='seltimeField' style='display:none' height='26'>
-              <td width="260">开始：
-                <?php $nowtime = GetDateTimeMk(time()-(24*3600*30)); ?>
+            <tr id="seltimeField" style="display:none">
+              <td width="260">开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30)); ?>
                 <input name="starttime" value="<?php echo $nowtime; ?>" type="text" id="starttime" class="datepicker">
               </td>
-              <td width="260">结束：
-                <?php $nowtime = GetDateTimeMk(time()); ?>
+              <td width="260">结束：<?php $nowtime = GetDateTimeMk(time()); ?>
                 <input name="endtime" value="<?php echo $nowtime; ?>" type="text" id="endtime" class="datepicker">
               </td>
             </tr>
@@ -114,47 +111,43 @@
         </td>
       </tr>
       <tr>
-        <td height="26">用户的登录id：</td>
-        <td height="26"><input name="userid" type="text" id="userid" size="20">（网址uid=后面跟的id）</td>
+        <td>用户的登录id：</td>
+        <td><input name="userid" type="text" id="userid" size="20">（网址uid=后面跟的id）</td>
       </tr>
       <tr>
-        <td height="26">操作：</td>
-        <td height="26">
-          <label><input name="action" type="radio" class="np" id="checkradio" onClick="ShowHideMove()" value="check"
-            checked='1'>
-          审核文档</label>
-          <label><input name="action" type="radio" class="np" value="makehtml" id="makehtmlradio" onClick="ShowHideMove()">
-          更新HTML</label>
-          <label><input name="action" type="radio" class="np" value="move" id="moveradio" onClick="ShowHideMove()">
-          移动文档</label>
-          <label><input name="action" type="radio" class="np" id="delradio" value="del" onClick="ShowHideMove()">
-          删除文档</label></td>
-      </tr>
-      <tr>
-        <td height="26" align="center"><span class='moveField' style='display:none'>移动选项：</span></td>
-        <td height="26">
-          <?php
-       echo "<span class='moveField' style='display:none'>新位置：";
-       echo "<select name='newtypeid' style='width:260px'>";
-       echo $typeOptions;
-       echo "</select>";
-       echo "<hr>";
-       echo "标题关键词：<input id='movekeyword' type='text' name='keyword' value='' ></span>";
-	  ?>
+        <td>操作：</td>
+        <td>
+          <label><input name="action" type="radio" class="np" id="checkradio" onClick="ShowHideMove()" value="check" checked="1"> 审核文档</label>
+          <label><input name="action" type="radio" class="np" value="makehtml" id="makehtmlradio" onClick="ShowHideMove()"> 更新HTML</label>
+          <label><input name="action" type="radio" class="np" value="move" id="moveradio" onClick="ShowHideMove()"> 移动文档</label>
+          <label><input name="action" type="radio" class="np" id="delradio" value="del" onClick="ShowHideMove()"> 删除文档</label>
         </td>
       </tr>
       <tr>
-        <td height="26" bgcolor="#F8FCF1" colspan="2" align="center">
+        <td align="center"><span class="moveField" style="display:none">移动选项：</span></td>
+        <td>
+          <?php
+          echo "<span class='moveField' style='display:none'>新位置：";
+          echo "<select name='newtypeid' style='width:260px'>";
+          echo $typeOptions;
+          echo "</select>";
+          echo "<hr>";
+          echo "标题关键词：<input id='movekeyword' type='text' name='keyword' value='' ></span>";
+    	    ?>
+        </td>
+      </tr>
+      <tr>
+        <td bgcolor="#F8FCF1" colspan="2" align="center">
           <button name="b112" type="button" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button>
         </td>
       </tr>
     </form>
     <tr>
-      <td height="26" colspan="2">
+      <td colspan="2">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="70%">结果：</td>
-            <td width="30%" align="right">
+            <td width="30%">结果：</td>
+            <td width="70%" align="right">
               <script>
               function ResizeDiv(obj, ty) {
                 if (ty == "+") document.all[obj].style.pixelHeight += 50;
@@ -178,27 +171,24 @@
     <form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="go">
       <tr>
-        <td height="26" colspan="2" background="../static/web/img/tbg.gif">
+        <td bgcolor="#f8f8f8" colspan="2">
           <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%" style="padding-left:10px">错误文档修正</td>
+              <td width="30%">错误文档修正</td>
               <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="2" align="center">
-          <label><input type='radio' value='delnulltitle' name='action' class='np'>
-           删除空标题的文章</label>
-          <label><input type='radio' value='delnullbody' name='action' class='np'>
-           删除内容为空的文章</label>
-          <label><input type='radio' value='modddpic' name='action' class='np'>
-           更正缩图错误</label>
+        <td colspan="2" align="center">
+          <label><input type="radio" value="delnulltitle" name="action" class="np"> 删除空标题的文章</label>
+          <label><input type="radio" value="delnullbody" name="action" class="np"> 删除内容为空的文章</label>
+          <label><input type="radio" value="modddpic" name="action" class="np"> 更正缩图错误</label>
         </td>
       </tr>
       <tr>
-        <td height="26" colspan="2" bgcolor="#f8f8f8" align="center">
+        <td colspan="2" bgcolor="#f8f8f8" align="center">
           <button name="b112" type="button" onClick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button>
         </td>
       </tr>

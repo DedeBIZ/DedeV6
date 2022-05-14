@@ -28,10 +28,10 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px"><a href='<?php echo $ENV_GOBACK_URL; ?>'>会员管理</a> &gt; 提升为管理员</td>
+      <td bgcolor="#f8f8f8"><a href="<?php echo $ENV_GOBACK_URL; ?>">会员管理</a> &gt; 提升为管理员</td>
     </tr>
     <tr>
-      <td height="200" align='center'>
+      <td align="center">
         <?php
         if($row['matt']==10) 
         {
@@ -45,26 +45,26 @@
             <input type="hidden" name="id" value="<?php echo $id?>">
             <tr>
               <td width="260" class="bline">用户名：</td>
-              <td class="bline" height="26" class="bline">
+              <td class="bline" class="bline">
               <?php
               echo "".$row['userid']."";
               if($row['face']!='') {
-                echo "<br><img src='{$row['face']}' width='80'/>";
+                echo "<img src='{$row['face']}' width='80'>";
               }
               ?>
             </td>
             </tr>
             <tr>
-              <td height="26" class="bline">用户笔名：</td>
-              <td height="26" class="bline"><input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文章后显示责任编辑的名字）</td>
+              <td class="bline">用户笔名：</td>
+              <td class="bline"><input name="uname" type="text" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文章后显示责任编辑的名字）</td>
             </tr>
             <tr>
-              <td height="26" class="bline">用户密码：</td>
-              <td height="26" class="bline"><input name="pwd" type="text" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
+              <td class="bline">用户密码：</td>
+              <td class="bline"><input name="pwd" type="text" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
             </tr>
             <tr>
-              <td height="26" class="bline">用户类型：</td>
-              <td height="26" class="bline">
+              <td class="bline">用户类型：</td>
+              <td class="bline">
                 <select name='usertype' style='width:160px'>
                 <?php
                 $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
@@ -79,8 +79,8 @@
               </td>
             </tr>
             <tr>
-              <td height="26" class="bline">负责频道：</td>
-              <td height="26" class="bline">
+              <td class="bline">负责频道：</td>
+              <td class="bline">
                 <select name="typeids[]" id="typeid" style="width:260px;height:200px" multiple="true">
                   <option value="0" class='alltype'>所有频道</option>
                   <?php echo $typeOptions?>
@@ -88,16 +88,16 @@
               </td>
             </tr>
             <tr>
-              <td height="26" class="bline">真实姓名：</td>
-              <td height="26" class="bline"><input name="tname" type="text" id="tname" size="16" style="width:260px" value=""></td>
+              <td class="bline">真实姓名：</td>
+              <td class="bline"><input name="tname" type="text" id="tname" size="16" style="width:260px" value=""></td>
             </tr>
             <tr>
-              <td height="26" class="bline">电子邮箱：</td>
-              <td height="26" class="bline"><input name="email" type="text" id="email" size="16" style="width:260px" value="<?php echo $row['email']?>"></td>
+              <td class="bline">电子邮箱：</td>
+              <td class="bline"><input name="email" type="text" id="email" size="16" style="width:260px" value="<?php echo $row['email']?>"></td>
             </tr>
             <tr>
-              <td height="26" class="bline">安全验证串：</td>
-              <td height="26" class="bline">
+              <td class="bline">安全验证串：</td>
+              <td class="bline">
                 <input name="safecode" type="text" id="safecode" size="16" style="width:260px"> 
                 <input name="randcode" type="hidden" value="<?php echo $randcode; ?>">（复制本代码：<span style='color:#e74d58'><?php echo $safecode; ?></span>）</td>
             </tr>

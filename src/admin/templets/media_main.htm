@@ -58,13 +58,11 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" colspan="7" background="../static/web/img/tbg.gif">
-        <table width='96%' cellpadding='0' cellspacing='0' style="padding-left:10px" class="table-borderless">
+      <td bgcolor="#f8f8f8" colspan="7">
+        <table width="98%" cellpadding="0" cellspacing="0" class="table-borderless">
           <tr>
-            <td width='30%'>附件数据管理</td>
-            <td align='right'>
-              <a href="media_add.php" class="btn btn-success btn-sm">上传新文件</a>
-            </td>
+            <td width="30%">附件数据管理</td>
+            <td width="70%" align="right"><a href="media_add.php" class="btn btn-success btn-sm">上传新文件</a></td>
           </tr>
         </table>
       </td>
@@ -72,25 +70,25 @@
     <tr>
       <td colspan="7">
         <table width="900" cellspacing="0" cellpadding="0" class="table-borderless">
-          <form name='forms' method='post' action='media_main.php'>
+          <form name="forms" method="post" action="media_main.php">
             <tr>
               <td width="280" align="center">
                 <input name="keyword" type="text" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" style="width:260px">
               </td>
               <td width="170">
-                <select name='mediatype' style='width:160px'>
-                  <option value='0'>文件类型</option>
-                  <option value='1' <?php if($mediatype==1) echo " selected"?>>图片</option>
-                  <option value='2' <?php if($mediatype==2) echo " selected"?>>FLASH</option>
-                  <option value='3' <?php if($mediatype==3) echo " selected"?>>视频/音频</option>
-                  <option value='4' <?php if($mediatype==4) echo " selected"?>>其它附件</option>
+                <select name="mediatype" style="width:160px">
+                  <option value="0">文件类型</option>
+                  <option value="1" <?php if($mediatype==1) echo " selected"?>>图片</option>
+                  <option value="2" <?php if($mediatype==2) echo " selected"?>>FLASH</option>
+                  <option value="3" <?php if($mediatype==3) echo " selected"?>>视频音频</option>
+                  <option value="4" <?php if($mediatype==4) echo " selected"?>>其它附件</option>
                 </select>
               </td>
               <td width="170">
-                <select name='membertype' style='width:160px'>
-                  <option value='0'>用户组</option>
-                  <option value='1' <?php if($membertype==1) echo " selected"?>>管理员</option>
-                  <option value='2' <?php if($membertype==2) echo " selected"?>>外部会员</option>
+                <select name="membertype" style="width:160px">
+                  <option value="0">用户组</option>
+                  <option value="1" <?php if($membertype==1) echo " selected"?>>管理员</option>
+                  <option value="2" <?php if($membertype==2) echo " selected"?>>外部会员</option>
                 </select>
               </td>
               <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
@@ -99,7 +97,7 @@
         </table>
       </td>
     </tr>
-    <tr bgcolor="#F8FCF1" height="26" align="center">
+    <tr bgcolor="#F8FCF1" align="center">
       <td width="8%">选择</td>
       <td width="28%">文件标题</td>
       <td width="10%">文件大小</td>
@@ -108,24 +106,18 @@
       <td width="9%">文件类型</td>
       <td width="15%">管理</td>
     </tr>
-    <form name='form1'>
+    <form name="form1">
       {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-      <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td>
-          <input type='checkbox' name='aids' id='aids{dede:field.aid/}' value='{dede:field.aid/}' class='np'>
-        </td>
-        <td>
-          <a href='{dede:field.url/}' title='{dede:field.url/}' target='_blank'>
-            {dede:field.title/}
-          </a>
-        </td>
+      <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+        <td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}" class="np"></td>
+        <td><a href="{dede:field.url/}" title="{dede:field.url/}" target="_blank">{dede:field.title/}</a></td>
         <td>{dede:field.filesize function='GetFileSize(@me)'/}</td>
         <td>{dede:field.adminname function="UploadAdmin(@me,$fields['membername'])"/}</td>
         <td>{dede:field.uptime function="MyDate('Y-m-d H:i',@me)"/}</td>
         <td>{dede:field.mediatype function="MediaType(@me,$fields['url'])"/}</td>
         <td>
-          <a href='media_edit.php?aid={dede:field.aid/}&dopost=edit' class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
-          <a href='media_edit.php?aid={dede:field.aid/}&dopost=del' class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
+          <a href="media_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+          <a href="media_edit.php?aid={dede:field.aid/}&dopost=del" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
         </td>
       </tr>
       {/dede:datalist}
@@ -133,16 +125,13 @@
         <td colspan="7">
           <button type="button" name="b4" class="btn btn-success btn-sm" onClick="AllSel();">全选</button>
           <button type="button" name="b5" class="btn btn-success btn-sm" onClick="NoneSel();">取消</button>
-          <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除所选</button>
+          <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除</button>
         </td>
       </tr>
-      <tr bgcolor="#f8f8f8" height="36">
+      <tr height="36" bgcolor="#f8f8f8">
         <td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
       </tr>
     </form>
-  </table>
-  </td>
-  </tr>
   </table>
 </body>
 </html>

@@ -14,10 +14,10 @@
 	<body>
 		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr>
-				<td height="26" background="../static/web/img/tbg.gif">
-					<table width="96%" cellspacing="1" cellpadding="1" class="table table-borderless">
+				<td bgcolor="#f8f8f8">
+					<table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
 						<tr>
-							<td width="30%" style="padding-left:10px">SQL命令行工具</td>
+							<td width="30%">SQL命令行工具</td>
 							<td width="70%" align="right">
 								<a href="sys_data.php" class="btn btn-success btn-sm">数据备份</a>
 								<a href="sys_data_revert.php" class="btn btn-success btn-sm">数据还原</a>
@@ -30,10 +30,10 @@
 				<td>
 					<table width="100%" cellspacing="4" cellpadding="2" class="table table-borderless">
 						<form action="sys_sql_query.php" method="post" name="infoform" target="stafrm">
-							<input type='hidden' name='dopost' value='viewinfo'>
+							<input type="hidden" name="dopost" value="viewinfo">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 							<tr>
-								<td width="260" height="26">系统的表信息：</td>
+								<td width="260">系统的表信息：</td>
 								<td>
 									<table width="100%" cellspacing="0" cellpadding="0">
 										<tr>
@@ -75,23 +75,21 @@
 								</td>
 							</tr>
 							<tr>
-								<td height="200">返回信息：</td>
-								<td>
-									<iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
-								</td>
+								<td height="120">返回信息：</td>
+								<td><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
 							</tr>
 						</form>
 						<form action="sys_sql_query.php" method="post" name="form1" target="stafrm">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
-							<input type='hidden' name='dopost' value='query'>
+							<input type="hidden" name="dopost" value="query">
 							<tr>
-								<td height="26" colspan="2" bgcolor="#f8f8f8">运行SQL命令行：
+								<td colspan="2" bgcolor="#f8f8f8">运行SQL命令行：
 									<label><input name="querytype" type="radio" class="np" value="0"> 单行命令（支持简单查询）</label>
 									<label><input name="querytype" type="radio" class="np" value="2" checked> 多行命令</label>
 								</td>
 							</tr>
 							<tr>
-								<td height="110" colspan="2" style="border:1px solid #ddd"><textarea id="sqlquery" name="sqlquery" cols="60" rows="10" id="sqlquery" style="width:90%"></textarea></td>
+								<td colspan="2"><textarea id="sqlquery" name="sqlquery" cols="20" rows="5" id="sqlquery" style="width:90%"></textarea></td>
 							</tr>
 							<tr>
 								<td colspan="2" align="center" class="py-3"><button type="submit" class="btn btn-success btn-sm">保存</button></td>

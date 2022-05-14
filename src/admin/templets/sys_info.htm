@@ -63,10 +63,10 @@
 		<div style="min-width:780px">
 			<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 				<tr>
-					<td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px">系统配置变量</td>
+					<td bgcolor="#f8f8f8">系统配置变量</td>
 				</tr>
 				<tr>
-					<td height="26">
+					<td>
 						<?php
 						$ds = file(DEDEADMIN.'/inc/configgroup.txt');
 						$totalGroup = count($ds);
@@ -87,32 +87,28 @@
 					</td>
 				</tr>
 				<tr id="addvar" style="display:none">
-					<td height="26" align="center">
+					<td align="center">
 						<form name="fadd" action="sys_info.php" method="post">
 							<input type="hidden" name="dopost" value="add">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
 							<table width="100%" cellspacing="0" cellpadding="0">
 								<tr>
-									<td width="90" height="26" style="border-top:0">变量说明</td>
+									<td width="90" style="border-top:0">变量说明</td>
 									<td width="270" style="border-top:0"><input type="text" name="varmsg" id="varmsg" class="npvar" style="width:260px"></td>
 									<td width="90" style="border-top:0">变量值</td>
 									<td width="270" style="border-top:0"><input name="nvarvalue" type="text" id="nvarvalue" class="npvar" style="width:260px"></td>
 								</tr>
 								<tr>
-									<td width="90" height="26">变量类型</td>
+									<td width="90" >变量类型</td>
 									<td colspan="3">
-										<input name="vartype" type="radio" value="string" class='np' checked='checked'>
-										文本
-										<input name="vartype" type="radio" value="number" class='np'>
-										数字
-										<input type="radio" name="vartype" value="bool" class='np'>
-										布尔(Y/N)
-										<input type="radio" name="vartype" value="bstring" class='np'>
-										多行文本
+										<input name="vartype" type="radio" value="string" class="np" checked="checked"> 文本
+										<input name="vartype" type="radio" value="number" class="np"> 数字
+										<input type="radio" name="vartype" value="bool" class="np"> 布尔(Y/N)
+										<input type="radio" name="vartype" value="bstring" class="np"> 多行文本
 									</td>
 								</tr>
 								<tr>
-									<td width="90" height="26">变量名称</td>
+									<td width="90" >变量名称</td>
 									<td width="270"><input name="nvarname" type="text" id="nvarname" class="npvar" style="width:260px"></td>
 									<td width="90">所属组</td>
 									<td>
@@ -136,7 +132,7 @@
 			</table>
 			<table width="98%" cellpadding="0" cellspacing="0" align="center" class="table maintable mt-3 mb-3">
 				<tr>
-					<td height="26" align="right" background="../static/web/img/tbg.gif">
+					<td bgcolor="#f8f8f8" align="right">
 						<input type="text" name="keywds" id="keywds" placeholder="请输入配置" style="width:260px">
 						<button type="button" onclick="getSearch()" class="btn btn-success btn-sm">搜索</button>
 						<span id="_searchback"></span>
@@ -161,7 +157,7 @@
 								?>
 								<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table"
 									style="<?php if($n!=$gp) echo 'display:none'; ?>">
-									<tr align="center" bgcolor="#F8FCF1">
+									<tr bgcolor="#F8FCF1" align="center">
 										<td width="360" style="border-top:0">变量说明</td>
 										<td style="border-top:0">变量值</td>
 										<td width="260" style="border-top:0">变量名称</td>

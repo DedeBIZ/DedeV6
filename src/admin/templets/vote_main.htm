@@ -12,9 +12,9 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td height="26" background="../static/web/img/tbg.gif" colspan="7" style="padding-left:10px">投票管理<a href="vote_add.php" class="btn btn-success btn-sm ml-3">增加一组投票</a></td>
+      <td bgcolor="#f8f8f8" colspan="7">投票管理<a href="vote_add.php" class="btn btn-success btn-sm ml-3">增加一组投票</a></td>
     </tr>
-    <tr align="center" bgcolor="#F8FCF1" height="26">
+    <tr bgcolor="#F8FCF1" align="center">
       <td width="8%">投票ID</td>
       <td width="22%">投票名称</td>
       <td width="15%">开始时间</td>
@@ -24,10 +24,10 @@
       <td width="20%">管理</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-    <tr height="26" align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+    <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid /}</td>
       <td>
-        <a href='{dede:global name="cfg_phpurl" /}/vote.php?aid={dede:field.aid/}&dopost=view' target='_blank'>
+        <a href="{dede:global name='cfg_phpurl' /}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank">
           {dede:field.votename /}
         </a>
       </td>
@@ -36,13 +36,13 @@
       <td>{dede:field.totalcount /}</td>
       <td><?php if($fields['isenable'] == 1){echo "<span style='color:#e74d58'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
       <td>
-        <a title="获取代码" href='vote_getcode.php?aid={dede:field.aid /}' class="btn btn-success btn-sm">代码</a>
-        <a href='vote_edit.php?aid={dede:field.aid /}&dopost=edit' class="btn btn-success btn-sm">修改</a>
-        <a href='vote_edit.php?aid={dede:field.aid /}&dopost=delete' class="btn btn-success btn-sm">删除</a>
+        <a href="vote_getcode.php?aid={dede:field.aid /}" class="btn btn-success btn-sm">代码</a>
+        <a href="vote_edit.php?aid={dede:field.aid /}&dopost=edit" class="btn btn-success btn-sm">修改</a>
+        <a href="vote_edit.php?aid={dede:field.aid /}&dopost=delete" class="btn btn-success btn-sm">删除</a>
       </td>
     </tr>
     {/dede:datalist}
-    <tr align="center" bgcolor="#f8f8f8" height="36">
+    <tr height="36" bgcolor="#f8f8f8" align="center">
       <td colspan="7">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>

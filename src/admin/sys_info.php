@@ -97,7 +97,7 @@ else if ($dopost == 'search') {
     $configstr = <<<EOT
  <table width="100%" cellspacing="1" cellpadding="1" id="tdSearch">
   <tbody>
-   <tr height="26" bgcolor="#F8FCF1" align="center">
+   <tr bgcolor="#F8FCF1" align="center">
     <td width="300">参数说明</td>
     <td>参数值</td>
     <td width="220">变量名</td>
@@ -114,7 +114,7 @@ EOT;
             $row['info'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['info']);
             $row['varname'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['varname']);
 ?>
-            <tr height="26" align="center" bgcolor="<?php echo $bgcolor ?>">
+            <tr align="center" bgcolor="<?php echo $bgcolor ?>">
                 <td width="300"><?php echo $row['info']; ?>：</td>
                 <td align="left" style="padding:6px;">
                     <?php
@@ -143,7 +143,7 @@ EOT;
         exit;
     }
     if ($i == 1) {
-        echo '<tr height="26" bgcolor="#f8f8f8" align="center">
+        echo '<tr bgcolor="#f8f8f8" align="center">
            <td colspan="3">没有找到搜索的内容</td>
           </tr></table>';
     }

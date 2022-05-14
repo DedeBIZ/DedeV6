@@ -3,7 +3,7 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>会员类型管理</title>
+  <title>会员产品分类</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -13,11 +13,11 @@
     <form name="form1" action="member_type.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
-        <td height="26" colspan="5" background="../static/web/img/tbg.gif">
+        <td bgcolor="#f8f8f8" colspan="5">
           <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%" style="padding-left:10px">会员产品分类</td>
-              <td align="right" style="padding-top:10px">
+              <td width="30%">会员产品分类</td>
+              <td width="70%" align="right">
                 <button type="button" class="btn btn-success btn-sm" onClick="location='member_rank.php';">会员级别管理</button>
                 <button type="button" class="btn btn-success btn-sm" onClick="location='member_operations.php';">会员业务记录</button>
               </td>
@@ -26,95 +26,78 @@
         </td>
       </tr>
       <tr bgcolor="#F8FCF1">
-        <td width="22%" height="26" align="center">产品名称</td>
+        <td width="22%" align="center">产品名称</td>
         <td width="23%" align="center">会员级别</td>
         <td width="21%" align="center">产品价格</td>
         <td width="18%" align="center">会员期限(天)</td>
         <td width="16%" align="center">状态</td>
       </tr>
       <?php
-    $dsql->SetQuery("Select * From #@__member_type");
-    $dsql->Execute();
-    $k=0;
-    while($row = $dsql->GetObject())
-    {
-    	$k++;
-	?>
+      $dsql->SetQuery("Select * From #@__member_type");
+      $dsql->Execute();
+      $k=0;
+      while($row = $dsql->GetObject())
+      {
+      	$k++;
+    	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
       <tr align="center">
-        <td height="26">
-          <input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" style="width:90%" class='pubinputs'>
-        </td>
-        <td height="26">
-          <select name='rank_<?php echo $k?>' id='rank_<?php echo $k?>' style='width:90%'>
+        <td><input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" style="width:90%" class="pubinputs"></td>
+        <td>
+          <select name="rank_<?php echo $k?>" id="rank_<?php echo $k?>" style="width:90%">
           <?php
           foreach($arcranks as $kkk=>$vvv){
           	if($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
           	else echo "<option value='{$kkk}'>{$vvv}</option>";
           }
-	   	?>
+	   	    ?>
           </select>
         </td>
+        <td><input name="money_<?php echo $k?>" value="<?php echo $row->money?>" type="text" id="money_<?php echo $k?>" style="width:80%" class="pubinputs">（元）</td>
         <td>
-          <input name="money_<?php echo $k?>" value="<?php echo $row->money?>" type="text" id="money_<?php echo $k?>" style="width:80%" class='pubinputs'>
-          （元）
-        </td>
-        <td>
-          <select name='exptime_<?php echo $k?>' id='exptime_<?php echo $k?>' style='width:90%'>
+          <select name="exptime_<?php echo $k?>" id="exptime_<?php echo $k?>" style="width:90%">
             <?php
-          foreach($times as $kkk=>$vvv){
-          	if($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
-          	else echo "<option value='{$kkk}'>{$vvv}</option>";
-          }
-	   	?>
+            foreach($times as $kkk=>$vvv){
+            	if($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+            	else echo "<option value='{$kkk}'>{$vvv}</option>";
+            }
+  	   	    ?>
           </select>
         </td>
-        <td>
-          <input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" value="1" checked='1'
-            class='np'>
-          保留
-        </td>
+        <td><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" value="1" checked="1" class="np"> 保留</td>
       </tr>
       <?php
-    }
-	?>
+      }
+    	?>
       <input type="hidden" name="idend" value="<?php echo $k?>">
       <tr>
-        <td height="26" colspan="5">&nbsp;新增一个会员产品类型：</td>
+        <td colspan="5">&nbsp;新增一个会员产品类型：</td>
       </tr>
-      <tr height="26" align="center">
+      <tr align="center">
+        <td><input name="pname_new" type="text" id="pname_new" style="width:90%" class="pubinputs"></td>
         <td>
-          <input name="pname_new" type="text" id="pname_new" style="width:90%" class='pubinputs'>
-        </td>
-        <td>
-          <select name='rank_new' id='rank_new' style='width:90%'>
+          <select name="rank_new" id="rank_new" style="width:90%">
             <?php
-          foreach($arcranks as $kkk=>$vvv){
-          	echo "<option value='{$kkk}'>{$vvv}</option>";
-          }
-	   	?>
+            foreach($arcranks as $kkk=>$vvv){
+            	echo "<option value='{$kkk}'>{$vvv}</option>";
+            }
+  	   	    ?>
           </select>
         </td>
+        <td><input name="money_new" type="text" id="money_new" style="width:80%" value="100" class="pubinputs">（元）</td>
         <td>
-          <input name="money_new" type="text" id="money_new" style='width:80%' value="100" class='pubinputs'>
-          （元）
-        </td>
-        <td>
-          <select name='exptime_new' id='exptime_new' style='width:90%'>
+          <select name="exptime_new" id="exptime_new" style="width:90%">
             <?php
-          foreach($times as $kkk=>$vvv){
-          	echo "<option value='{$kkk}'>{$vvv}</option>";
-          }
-	   	?>
+            foreach($times as $kkk=>$vvv){
+            	echo "<option value='{$kkk}'>{$vvv}</option>";
+            }
+  	   	    ?>
           </select>
         </td>
-        <td align="center">
-          <input name="check_new" type="checkbox" id="check_new" value="1" checked='1' class='np'>
-          新增
-        </td>
+        <td align="center"><input name="check_new" type="checkbox" id="check_new" value="1" checked="1" class="np"> 新增</td>
       </tr>
       <tr>
-        <td height="26" colspan="5"></td>
+        <td colspan="5"></td>
       </tr>
       <tr>
         <td bgcolor="#f8f8f8" colspan="5" align="center" class="py-3">

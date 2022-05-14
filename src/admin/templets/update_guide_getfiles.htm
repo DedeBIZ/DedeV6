@@ -9,23 +9,21 @@
 <body>
 <table width="98%" cellpadding="3" cellspacing="1" align="center">
  <tr> 
-    <td height="26" colspan="2" background="../static/web/img/tbg.gif">
+    <td bgcolor="#f8f8f8" colspan="2">
       <div style="float:left">自动更新程序::下载更新文件</div>
-  	 	<div style="float:right;padding-right:10px">
-  	 		<a href='index_body.php' class='np coolbg'>返回系统主页</a>
-    	</div>
+  	 	<div style="float:right;padding-right:10px"><a href='index_body.php' class='np coolbg'>返回系统主页</a></div>
     </td>
   </tr>
   <tr> 
-    <td height="26" colspan="2">下载的文件临时存放在文件夹<span class='text-danger'>../data/<?php echo $tmpdir; ?></span>内，如果某些基础类有重要的改动导致更新中途中错，您可以从这文件夹提取文件手工更新</td>
+    <td colspan="2">下载的文件临时存放在文件夹<span class='text-danger'>../data/<?php echo $tmpdir; ?></span>内，如果某些基础类有重要的改动导致更新中途中错，您可以从这文件夹提取文件手工更新</td>
   </tr>
   <?php echo $dirinfos; ?>
-  <tr bgcolor="#F8FEDA"> 
-    <td height="26" colspan="2">
+  <tr bgcolor="#f8f8f8"> 
+    <td colspan="2">
     	<table width="100%">
         <tr> 
-          <td width="70%">结果：</td>
-          <td width="30%" align="right">
+          <td width="30%">结果：</td>
+          <td width="70%" align="right">
           	<script>
             function ResizeDiv(obj,ty) {
             	if(ty=="+") document.all[obj].style.pixelHeight += 50;

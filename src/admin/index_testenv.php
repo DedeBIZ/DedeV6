@@ -129,7 +129,7 @@ if (IsWritable(DEDEDATA.'/common.inc.php')) {
 	$safeMsg[] = '数据安全data/common.inc.php文件，强烈建议以管理员级别设置为644或只读';
 }
 if (!IsSSL()) {
-	$safeMsg[] = '当前站点尚未启用HTTPS，强烈建议您启用';
+	$safeMsg[] = '当前站点尚未启用https，强烈建议您启用';
 }
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 	$safeMsg[] = "PHP请升级到5.3及以上版本，低版本PHP环境将无法正常使用本系统";

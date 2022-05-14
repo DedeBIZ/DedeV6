@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title><?php echo $cfg_webname; ?>后台管理</title>
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/frame.css">
 		<script src="../static/web/js/jquery.min.js"></script>
@@ -83,8 +84,12 @@
 		</div>
 		<div class="head">
 			<div class="top">
-				<div class="top_logo"><a target="main" href="index_body.php"><?php echo $cfg_webname; ?>系统</a></div>
-				<div class="top_version">V<?php echo $cfg_version_detail; ?></div>
+				<div class="top_logo">
+					<span class="top_dedebiz"><a target="main" href="index_body.php"><?php echo $cfg_webname; ?>系统</a></span>
+					<span class="top_version">V<?php echo $cfg_version_detail; ?></span>
+					<span class="btn btn-primary btn-sm">安全</span>
+					<!-- <span class="btn btn-warning btn-sm">非安全</span> -->
+				</div>
 				<div class="top_link">
 					<ul>
 						<li class="welcome">

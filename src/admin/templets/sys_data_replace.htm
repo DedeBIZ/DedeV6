@@ -45,9 +45,9 @@
 	<body>
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
-				<input type='hidden' name='action' value='apply'>
+				<input type="hidden" name="action" value="apply">
 				<tr>
-					<td height="26" background="../static/web/img/tbg.gif" style="padding-left:10px">数据库内容替换</td>
+					<td bgcolor="#f8f8f8">数据库内容替换</td>
 				</tr>
 				<tr>
 					<td>
@@ -83,35 +83,35 @@
 											<td id='fields'></td>
 										</tr>
 										<tr>
-											<td height="26">要替换的字段：<input name="rpfield" type="text" id="rpfield" class="alltxt"></td>
+											<td>要替换的字段：<input name="rpfield" type="text" id="rpfield"></td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 							<tr bgcolor="#F8FCF1">
-								<td height="26">替换方式：</td>
+								<td>替换方式：</td>
 								<td>
-									<label><input name="rptype" type="radio" id="ot1" value="replace" checked='1' class='np'> 普通替换 </label>
-									<label><input type="radio" name="rptype" id="ot2" value="regex" class='np'> 正则表达式 </label>
-									主键字段：<input name="keyfield" type="text" id="keyfield" size="12" class="alltxt">（正则模式必须指定）
+									<label><input name="rptype" type="radio" id="ot1" value="replace" class="np" checked="1"> 普通替换</label>
+									<label><input type="radio" name="rptype" id="ot2" value="regex" class="np"> 正则表达式</label>
+									主键字段：<input name="keyfield" type="text" id="keyfield" size="12">（正则模式必须指定）
 								</td>
 							</tr>
 							<tr>
-								<td height="26">被替换内容：</td>
-								<td><textarea name="rpstring" id="rpstring" class="alltxt" style="width:60%;height:50px"></textarea></td>
+								<td>被替换内容：</td>
+								<td><textarea name="rpstring" id="rpstring" style="width:60%;height:50px"></textarea></td>
 							</tr>
 							<tr>
-								<td height="26">替换为：</td>
-								<td><textarea name="tostring" id="tostring" class="alltxt" style="width:60%;height:50px"></textarea></td>
+								<td>替换为：</td>
+								<td><textarea name="tostring" id="tostring" style="width:60%;height:50px"></textarea></td>
 							</tr>
 							<tr>
-								<td height="26">替换条件：</td>
-								<td><input name="condition" type="text" id="condition" style="width:60%" class="alltxt">（空完全替换）</td>
+								<td>替换条件：</td>
+								<td><input name="condition" type="text" id="condition" style="width:60%">（空完全替换）</td>
 							</tr>
 							<tr>
-								<td height="26">安全确认码：</td>
+								<td>安全确认码：</td>
 								<td>
-									<input type="text" name="validate" class="alltxt" style="width:80px;text-transform:uppercase">
+									<input type="text" name="validate" style="width:80px;text-transform:uppercase">
 									<img src="../apps/vdimgck.php" style="vertical-align:middle;cursor:pointer" onClick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 								</td>
 							</tr>
@@ -119,17 +119,17 @@
 					</td>
 				</tr>
 				<tr>
-					<td height="26" bgcolor="#F8FCF1" align="center" class="py-3">
+					<td bgcolor="#F8FCF1" align="center" class="py-3">
 						<button type="submit" name="Submit" class="btn btn-success btn-sm">开始替换数据</button>
 					</td>
 				</tr>
 			</form>
 			<tr>
-				<td height="26">
+				<td>
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="70%">结果：</td>
-							<td width="30%" align="right">
+							<td width="30%">结果：</td>
+							<td width="70%" align="right">
 								<script>
 									function ResizeDiv(obj, ty) {
 										if (ty == "+") document.all[obj].style.pixelHeight += 50;
