@@ -75,7 +75,7 @@ a{text-decoration:none!important}
     </script>
     <table width="100%" align="center" cellspacing="0" cellpadding="2" class="table table-borderless">
         <tr>
-            <td colspan="3" >
+            <td colspan="3">
                 <form action="select_media_post.php" method="POST" enctype="multipart/form-data" name="myform">
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">

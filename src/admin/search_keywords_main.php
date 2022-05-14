@@ -63,7 +63,7 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     <table width='98%' cellpadding='1' cellspacing='1' style='margin-bottom:10px' align='center' class='table maintable'>
     <tr align='center' bgcolor='#F8FCF1' >
       <td width='5%'>选择</td>
-      <td width='6%' ><a href='javascript:;' onclick=\"ReloadPage('aid')\">ID</a></td>
+      <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('aid')\">ID</a></td>
       <td width='20%'>关键词</td>
       <td width='30%'>分词结果</td>
       <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('count')\">频率</a></td>

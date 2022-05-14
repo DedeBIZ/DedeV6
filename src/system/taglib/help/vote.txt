@@ -1,9 +1,9 @@
 投票标签
 >>dede>>
-{dede:vote id='' line tablewidth='100%' titlebgcolor='#EDEDE2' titlebackground='' tablebgcolor='#ffffff'/}
+{dede:vote id='' lineheight='26' tablewidth='100%' titlebgcolor='#EDEDE2' titlebackground='' tablebgcolor='#ffffff'/}
 >>dede>>
 id='' 数字，当前投票ID
-line 表格高度
+lineheight='26' 表格高度
 tablewidth='100%' 表格宽度
 titlebgcolor='#EDEDE2' 投票标题背景色
 titlebackground=''

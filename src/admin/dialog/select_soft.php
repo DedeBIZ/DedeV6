@@ -80,7 +80,7 @@ a{text-decoration:none!important}
     </script>
     <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
         <tr>
-            <td colspan="3" >
+            <td colspan="3">
                 <form action="select_soft_post.php" method="POST" enctype="multipart/form-data" name='myform'>
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
@@ -168,7 +168,7 @@ a{text-decoration:none!important}
             </td>
         </tr>
         <tr>
-            <td colspan="3" >点击选择的文件，红色字样的为刚上传的文件</td>
+            <td colspan="3">点击选择的文件，红色字样的为刚上传的文件</td>
         </tr>
     </table>
 </body>
