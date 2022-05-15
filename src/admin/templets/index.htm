@@ -84,14 +84,13 @@
 		</div>
 		<div class="head">
 			<div class="top">
-				<div class="top_logo">
-					<span class="top_dedebiz"><a target="main" href="index_body.php"><?php echo $cfg_webname; ?>系统</a></span>
-					<span class="top_version">V<?php echo $cfg_version_detail; ?></span>
-					<span class="btn btn-primary btn-sm">安全</span>
-					<!-- <span class="btn btn-warning btn-sm">非安全</span> -->
+				<div class="top_logo"><a target="main" href="index_body.php"><?php echo $cfg_webname; ?>系统</a></div>
+				<div class="top_version">
+					<span class="btn btn-primary btn-sm">V<?php echo $cfg_version_detail; ?><span class="ml-1">安全<span></span>
+					<!-- <span class="btn btn-warning btn-sm">V<?php echo $cfg_version_detail; ?><span class="ml-1">非安全<span></span> -->
 				</div>
 				<div class="top_link">
-					<ul>
+					<ul class="mb-0">
 						<li class="welcome">
 							<a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10) {echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a>
 							<a href="exit.php">退出</a>
