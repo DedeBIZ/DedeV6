@@ -17,6 +17,7 @@ if (empty($imgstick)) {
     $imgstick = '';
 }
 $noeditor = isset($noeditor) ? $noeditor : '';
+$iseditor = isset($iseditor) ? $iseditor : '';
 $activepath = str_replace('.', '', $activepath);
 $activepath = preg_replace("#\/{1,}#", '/', $activepath);
 if (strlen($activepath) < strlen($cfg_image_dir)) {
@@ -44,6 +45,9 @@ if (!empty($CKEditorFuncNum)) {
 }
 if (!empty($noeditor)) {
     $addparm .= '&noeditor=yes';
+}
+if (!empty($iseditor)) {
+    $addparm .= '&iseditor='.$iseditor;
 }
 ?>
 <!DOCTYPE html>
@@ -98,31 +102,37 @@ a{text-decoration:none!important}
     }
     function ReturnImg(reimg) {
         var funcNum = getUrlParam('CKEditorFuncNum');
+        var iseditor = parseInt(getUrlParam('iseditor'));
         if (funcNum > 1) {
             var fileUrl = reimg;
             window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
         }
-        if (window.opener.document.<?php echo $f ?> != null) {
-            window.opener.document.<?php echo $f ?>.value = reimg;
-            if (window.opener.document.getElementById('div<?php echo $v ?>')) {
-                if (TNav() == 'IE') {
-                    //window.opener.document.getElementById('div<?php echo $v ?>').filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = reimg;
-                    window.opener.document.getElementById('div<?php echo $v ?>').src = reimg;
-                    window.opener.document.getElementById('div<?php echo $v ?>').style.width = '150px';
-                    window.opener.document.getElementById('div<?php echo $v ?>').style.height = '100px';
-                } else
-                    window.opener.document.getElementById('div<?php echo $v ?>').style.backgroundImage = "url(" + reimg + ")";
-                } else if (window.opener.document.getElementById('<?php echo $v ?>')) {
-                window.opener.document.getElementById('<?php echo $v ?>').src = reimg;
-            }
-            //适配新的缩略图
-            if (window.opener.document.getElementById('litPic')) {
-                window.opener.document.getElementById('litPic').src = reimg;
-            }
-            if (document.all) window.opener = true;
-        } else if (typeof window.opener.CKEDITOR.instances["<?php echo $f ?>"] !== "undefined") {
+        if (iseditor==1) {
             let addonHTML = `<img src='${reimg}'>`;
             window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
+        } else {
+            if (window.opener.document.<?php echo $f ?> != null) {
+                window.opener.document.<?php echo $f ?>.value = reimg;
+                if (window.opener.document.getElementById('div<?php echo $v ?>')) {
+                    if (TNav() == 'IE') {
+                        //window.opener.document.getElementById('div<?php echo $v ?>').filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = reimg;
+                        window.opener.document.getElementById('div<?php echo $v ?>').src = reimg;
+                        window.opener.document.getElementById('div<?php echo $v ?>').style.width = '150px';
+                        window.opener.document.getElementById('div<?php echo $v ?>').style.height = '100px';
+                    } else
+                        window.opener.document.getElementById('div<?php echo $v ?>').style.backgroundImage = "url(" + reimg + ")";
+                    } else if (window.opener.document.getElementById('<?php echo $v ?>')) {
+                    window.opener.document.getElementById('<?php echo $v ?>').src = reimg;
+                }
+                //适配新的缩略图
+                if (window.opener.document.getElementById('litPic')) {
+                    window.opener.document.getElementById('litPic').src = reimg;
+                }
+                if (document.all) window.opener = true;
+            } else if (typeof window.opener.CKEDITOR.instances["<?php echo $f ?>"] !== "undefined") {
+                let addonHTML = `<img src='${reimg}'>`;
+                window.opener.CKEDITOR.instances["<?php echo $f ?>"].insertHtml(addonHTML);
+            }
         }
         window.close();
     }
