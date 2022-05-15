@@ -217,7 +217,7 @@ class DedeSqli
             if (PHP_SAPI === 'cli') {
                 echo "执行SQL：".$this->queryString."，执行时间：{$queryTime}\r\n";
             } else {
-                echo "<div style='width:98%;margin:1rem auto;color:#155724;background:#d4edda;border-color:#c3e6cb;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem'>执行SQL：".$this->queryString."，执行时间：{$queryTime}</div>\r\n";
+                echo DedeAlert("执行SQL：".$this->queryString."，执行时间：{$queryTime}", ALERT_SUCCESS);
             }
         }
         return $rs;
@@ -254,7 +254,7 @@ class DedeSqli
             if (PHP_SAPI === 'cli') {
                 echo "执行SQL：".$this->queryString."，执行时间：{$queryTime}\r\n";
             } else {
-                echo "<div style='width:98%;margin:1rem auto;color:#155724;background:#d4edda;border-color:#c3e6cb;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem'>执行SQL：".$this->queryString."，执行时间：{$queryTime}</div>\r\n";
+                echo DedeAlert("执行SQL：".$this->queryString."，执行时间：{$queryTime}", ALERT_SUCCESS);
             }
         }
         return mysqli_affected_rows($this->linkID);
@@ -304,7 +304,7 @@ class DedeSqli
             if (PHP_SAPI === 'cli') {
                 echo "执行SQL：".$this->queryString."，执行时间：{$queryTime}\r\n";
             } else {
-                echo "<div style='width:98%;margin:1rem auto;color:#155724;background:#d4edda;border-color:#c3e6cb;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem'>执行SQL：".$this->queryString."，执行时间：{$queryTime}</div>\r\n";
+                echo DedeAlert("执行SQL：".$this->queryString."，执行时间：{$queryTime}", ALERT_SUCCESS);
             }
         }
         if ($this->result[$id] === FALSE) {

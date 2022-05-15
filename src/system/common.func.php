@@ -1,5 +1,33 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
+// 显示类似BS的提示信息
+define('ALERT_PRIMARY', 1);
+define('ALERT_SECONDARY', 2);
+define('ALERT_SUCCESS', 3);
+define('ALERT_DANGER', 4);
+define('ALERT_WARNING', 5);
+define('ALERT_INFO', 6);
+define('ALERT_LIGHT', 7);
+define('ALERT_DARK', 8);
+define('ALERT_COLORS', array(
+    ALERT_PRIMARY => array('#cfe2ff','#b6d4fe','#084298'),
+    ALERT_SECONDARY => array('#e2e3e5','#d3d6d8','#41464b'),
+    ALERT_SUCCESS => array('#d1e7dd','#badbcc','#0f5132'),
+    ALERT_DANGER => array('#f8d7da','#f5c2c7','#842029'),
+    ALERT_WARNING => array('#fff3cd','#ffecb5','#664d03'),
+    ALERT_INFO => array('#cff4fc','#b6effb','#055160'),
+    ALERT_LIGHT => array('#fefefe','#fdfdfe','#636464'),
+    ALERT_DARK => array('#d3d3d4','#bcbebf','#141619'),
+));
+define("ALERT_TPL", '<div style="width: 98%;margin: 0 auto;"><div style="font-size:12px;margin:1rem auto;color:~color~;background:~background~;border-color:~border~;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem">~content~</div></div>');
+// $content:内容 $type:alert类型
+function DedeAlert($content, $type = ALERT_PRIMARY)
+{
+    $content = htmlspecialchars($content);
+    $colors = isset(ALERT_COLORS[$type])? ALERT_COLORS[$type] : ALERT_COLORS[ALERT_PRIMARY];
+    list($background, $border, $color) = $colors;
+    return str_replace(array('~color~','~background~','~border~', '~content~'),array($color,$background,$border,$content),ALERT_TPL);
+}
 /**
  * 系统核心函数存放文件
  * @version        $Id: common.func.php 4 16:39 2010年7月6日Z tianya $
@@ -53,15 +81,15 @@ if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
     }
 }
 // 一个支持在PHP Cli Server打印的方法
-function var_dump_cli($val){
+function var_dump_cli($val)
+{
     ob_start();
     var_dump($val);
     error_log(ob_get_clean(), 4);
 }
 function get_mime_type($filename)
 {
-    if (! function_exists('finfo_open'))
-    {
+    if (!function_exists('finfo_open')) {
         return 'unknow/octet-stream';
     }
 
@@ -70,9 +98,10 @@ function get_mime_type($filename)
     finfo_close($finfo);
     return $mimeType;
 }
-function is_all_numeric(array $array){
-    foreach($array as $item){
-        if(!is_numeric($item)) return false;
+function is_all_numeric(array $array)
+{
+    foreach ($array as $item) {
+        if (!is_numeric($item)) return false;
     }
     return true;
 }
@@ -144,13 +173,13 @@ function helper($helpers)
     if (isset($_helpers[$helpers])) {
         return;
     }
-    if (file_exists(DEDEINC.'/helpers/'.$helpers.'.helper.php')) {
-        include_once(DEDEINC.'/helpers/'.$helpers.'.helper.php');
+    if (file_exists(DEDEINC . '/helpers/' . $helpers . '.helper.php')) {
+        include_once(DEDEINC . '/helpers/' . $helpers . '.helper.php');
         $_helpers[$helpers] = TRUE;
     }
     //无法载入小助手
     if (!isset($_helpers[$helpers])) {
-        exit('Unable to load the requested file: helpers/'.$helpers.'.helper.php');
+        exit('Unable to load the requested file: helpers/' . $helpers . '.helper.php');
     }
 }
 function dede_htmlspecialchars($str)
@@ -192,7 +221,7 @@ if (!function_exists('file_put_contents')) {
  */
 function UpdateStat()
 {
-    include_once(DEDEINC."/inc/inc_stat.php");
+    include_once(DEDEINC . "/inc/inc_stat.php");
     return SpUpdateStat();
 }
 $arrs1 = array();
@@ -209,7 +238,7 @@ $arrs2 = array();
 function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
 {
     global $cfg_soft_lang, $cfg_cmsurl;
-    if(empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
+    if (empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
     $htmlhead  = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>提示信息</title><base target='_self'></head>";
     $htmlhead .= "<body><center><script>";
     $htmlfoot  = "</script></center></body></html>";
@@ -220,7 +249,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         $gourl = "javascript:history.go(-1);";
     }
     if ($gourl == '' || $onlymsg == 1) {
-        $msg = "<script>alert(\"".str_replace("\"", "“", $msg)."\");</script>";
+        $msg = "<script>alert(\"" . str_replace("\"", "“", $msg) . "\");</script>";
     } else {
         //当网址为:close::objname 时, 关闭父框架的id=objname元素
         if (preg_match('/close::/', $gourl)) {
@@ -234,12 +263,10 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         $rmsg .= "document.write(\"<div class='tips'>";
         $rmsg .= "<div class='tips-head'><p>提示信息</p></div>\");";
         $rmsg .= "document.write(\"<div class='tips-box'>\");";
-        $rmsg .= "document.write(\"".str_replace("\"","“",$msg)."\");";
+        $rmsg .= "document.write(\"" . str_replace("\"", "“", $msg) . "\");";
         $rmsg .= "document.write(\"";
-        if($onlymsg==0)
-        {
-            if( $gourl != 'javascript:;' && $gourl != '')
-            {
+        if ($onlymsg == 0) {
+            if ($gourl != 'javascript:;' && $gourl != '') {
                 $rmsg .= "<div class='btn'><a href='{$gourl}'>点击反应</a></div>\");";
                 $rmsg .= "setTimeout('JumpUrl()',$litime);";
             } else {
@@ -248,7 +275,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         } else {
             $rmsg .= "</div>\");";
         }
-        $msg  = $htmlhead.$rmsg.$htmlfoot;
+        $msg  = $htmlhead . $rmsg . $htmlfoot;
     }
     echo $msg;
 }
@@ -302,116 +329,111 @@ function IsSSL()
 }
 //自定义函数接口
 //这里主要兼容早期的用户扩展,v5.7之后我们建议使用小助手helper进行扩展
-if (file_exists(DEDEINC.'/extend.func.php')) {
-    require_once(DEDEINC.'/extend.func.php');
+if (file_exists(DEDEINC . '/extend.func.php')) {
+    require_once(DEDEINC . '/extend.func.php');
 }
 /**
  * 添加多选联动筛选
  * 
  * @return    string
  */
-function litimgurls($imgid=0)
+function litimgurls($imgid = 0)
 {
-    global $lit_imglist,$dsql;
+    global $lit_imglist, $dsql;
     $row = $dsql->GetOne("SELECT c.addtable FROM `#@__archives` AS a LEFT JOIN `#@__channeltype` AS c ON a.channel=c.id where a.id='$imgid'");
     $addtable = trim($row['addtable']);
     $row = $dsql->GetOne("Select imgurls From `$addtable` where aid='$imgid'");
-    $ChannelUnit = new ChannelUnit(2,$imgid);
+    $ChannelUnit = new ChannelUnit(2, $imgid);
     $lit_imglist = $ChannelUnit->GetlitImgLinks($row['imgurls']);
     return $lit_imglist;
 }
 //字符过滤函数，用于安全
-function string_filter($str,$stype="inject") {
-    if ($stype=="inject") {
-        $str = str_replace (
-            array ("select", "insert", "update", "delete", "alter", "cas", "union", "into", "load_file", "outfile", "create", "join", "where", "like", "drop", "modify", "rename", "'", "/*", "*", "../", "./"),
-            array ("","","","","","","","","","","","","","","","","","","","","",""),
-        $str);
-    } else if ($stype=="xss") {
-        $farr = array ("/\s+/" , "/<(\/?)(script|META|STYLE|HTML|HEAD|BODY|STYLE |i?frame|b|strong|style|html|img|P|o:p|iframe|u|em|strike|BR|div|a|TABLE|TBODY|object|tr|td|st1:chsdate|FONT|span|MARQUEE|body|title|\r\n|link|meta|\?|\%)([^>]*?)>/isU", "/(<[^>]*)on[a-zA-Z]+\s*=([^>]*>)/isU",);
-        $tarr = array (" ","","\\1\\2",); 
-        $str = preg_replace ($farr, $tarr, $str);
-        $str = str_replace (
-            array( "<", ">", "'", "\"", ";", "/*", "*", "../", "./"),
-            array("&lt;","&gt;","","","","","","",""),
-        $str);
+function string_filter($str, $stype = "inject")
+{
+    if ($stype == "inject") {
+        $str = str_replace(
+            array("select", "insert", "update", "delete", "alter", "cas", "union", "into", "load_file", "outfile", "create", "join", "where", "like", "drop", "modify", "rename", "'", "/*", "*", "../", "./"),
+            array("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""),
+            $str
+        );
+    } else if ($stype == "xss") {
+        $farr = array("/\s+/", "/<(\/?)(script|META|STYLE|HTML|HEAD|BODY|STYLE |i?frame|b|strong|style|html|img|P|o:p|iframe|u|em|strike|BR|div|a|TABLE|TBODY|object|tr|td|st1:chsdate|FONT|span|MARQUEE|body|title|\r\n|link|meta|\?|\%)([^>]*?)>/isU", "/(<[^>]*)on[a-zA-Z]+\s*=([^>]*>)/isU",);
+        $tarr = array(" ", "", "\\1\\2",);
+        $str = preg_replace($farr, $tarr, $str);
+        $str = str_replace(
+            array("<", ">", "'", "\"", ";", "/*", "*", "../", "./"),
+            array("&lt;", "&gt;", "", "", "", "", "", "", ""),
+            $str
+        );
     }
     return $str;
 }
 //载入自定义表单，用于发布
-function AddFilter($channelid, $type=1, $fieldsnamef="", $defaulttid=0, $loadtype='autofield')
+function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $loadtype = 'autofield')
 {
-    global $tid,$dsql,$id;
+    global $tid, $dsql, $id;
     $tid = $defaulttid ? $defaulttid : $tid;
     $id = intval($id);
     $tid = intval($tid);
     $channelid = intval($channelid);
-    if ($id!="")
-    {
+    if ($id != "") {
         $tidsq = $dsql->GetOne("SELECT typeid FROM `#@__archives` WHERE id='$id' ");
         $tid = $tidsq["typeid"];
     }
-    $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".(int)$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".(int)$_REQUEST['PageNo'] : '');
-    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
+    $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=" . (int)$_REQUEST['TotalResult'] : '') . (isset($_REQUEST['PageNo']) ? "&PageNo=" . (int)$_REQUEST['PageNo'] : '');
+    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl'] . "/apps/list.php?tid=" . $tid);
     $cInfos = $dsql->GetOne("SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
-    $fieldset=stripslashes($cInfos['fieldset']);
+    $fieldset = stripslashes($cInfos['fieldset']);
     $dtp = new DedeTagParse();
-    $dtp->SetNameSpace('field','<','>');
+    $dtp->SetNameSpace('field', '<', '>');
     $dtp->LoadSource($fieldset);
     $dede_addonfields = '';
-    if(is_array($dtp->CTags))
-    {
-        foreach($dtp->CTags as $tida=>$ctag)
-        {
+    if (is_array($dtp->CTags)) {
+        foreach ($dtp->CTags as $tida => $ctag) {
             $fieldsname = $fieldsnamef ? explode(",", $fieldsnamef) : explode(",", $ctag->GetName());
-            if(($loadtype!='autofield' || ($loadtype=='autofield' && $ctag->GetAtt('autofield')==1)) && in_array($ctag->GetName(), $fieldsname) )
-            {
-                $href1 = explode($ctag->GetName().'=', $filterarr);
+            if (($loadtype != 'autofield' || ($loadtype == 'autofield' && $ctag->GetAtt('autofield') == 1)) && in_array($ctag->GetName(), $fieldsname)) {
+                $href1 = explode($ctag->GetName() . '=', $filterarr);
                 $href2 = explode('&', $href1[1]);
                 $fields_value = $href2[0];
                 $fields_value1 = explode('|', $fields_value);
-                $dede_addonfields .= ''.$ctag->GetAtt('itemname').'：';
+                $dede_addonfields .= '' . $ctag->GetAtt('itemname') . '：';
                 switch ($type) {
                     case 1:
-                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#28a745;border-color:#28a745;border-radius:.2rem">全部</a>' : '<span style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">全部</span>').'&nbsp;';
-                        $addonfields_items = explode(",",$ctag->GetAtt('default'));
-                        for ($i=0; $i<count($addonfields_items); $i++)
-                        {
-                            $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".$fields_value."|".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
+                        $dede_addonfields .= (preg_match("/&" . $ctag->GetName() . "=/is", $filterarr, $regm) ? '<a href="' . str_replace("&" . $ctag->GetName() . "=" . $fields_value, "", $filterarr) . '" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#28a745;border-color:#28a745;border-radius:.2rem">全部</a>' : '<span style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">全部</span>') . '&nbsp;';
+                        $addonfields_items = explode(",", $ctag->GetAtt('default'));
+                        for ($i = 0; $i < count($addonfields_items); $i++) {
+                            $href = stripos($filterarr, $ctag->GetName() . '=') ? str_replace("=" . $fields_value, "=" . $fields_value . "|" . urlencode($addonfields_items[$i]), $filterarr) : $filterarr . '&' . $ctag->GetName() . '=' . urlencode($addonfields_items[$i]);
                             $is_select = in_array(urlencode($addonfields_items[$i]), $fields_value1) ? 1 : 0;
                             $fields_value2 = "";
-                            for ($j=0; $j<count($fields_value1); $j++)
-                            {
-                                $fields_value2 .= $fields_value1[$j] != urlencode($addonfields_items[$i]) ? $fields_value1[$j].($j<count($fields_value1)-1 ? "|" : "") : "";
+                            for ($j = 0; $j < count($fields_value1); $j++) {
+                                $fields_value2 .= $fields_value1[$j] != urlencode($addonfields_items[$i]) ? $fields_value1[$j] . ($j < count($fields_value1) - 1 ? "|" : "") : "";
                             }
                             $fields_value2 = rtrim($fields_value2, "|");
-                            $href3 = str_replace(array("&".$ctag->GetName()."=".$fields_value,$ctag->GetName()."=".$fields_value, "&".$ctag->GetName()."=&"), array("&".$ctag->GetName()."=".$fields_value2,$ctag->GetName()."=".$fields_value2, "&"), $filterarr);
-                            $href3 = !end(explode("=", $href3)) ? str_replace("&".end(explode("&", $href3)), "", $href3) : $href3;
-                            
-                            $dede_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) && $is_select!=1 ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#28a745;border-color:#28a745;border-radius:.2rem">'.$addonfields_items[$i].'</a>' : '<a title="'.$addonfields_items[$i].'" href="'.$href3.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">'.$addonfields_items[$i].'<span style="margin-left:6px;color:#fff">×</span></a>')."&nbsp;";
+                            $href3 = str_replace(array("&" . $ctag->GetName() . "=" . $fields_value, $ctag->GetName() . "=" . $fields_value, "&" . $ctag->GetName() . "=&"), array("&" . $ctag->GetName() . "=" . $fields_value2, $ctag->GetName() . "=" . $fields_value2, "&"), $filterarr);
+                            $href3 = !end(explode("=", $href3)) ? str_replace("&" . end(explode("&", $href3)), "", $href3) : $href3;
+
+                            $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<a title="' . $addonfields_items[$i] . '" href="' . $href . '" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#28a745;border-color:#28a745;border-radius:.2rem">' . $addonfields_items[$i] . '</a>' : '<a title="' . $addonfields_items[$i] . '" href="' . $href3 . '" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">' . $addonfields_items[$i] . '<span style="margin-left:6px;color:#fff">×</span></a>') . "&nbsp;";
                         }
                         $dede_addonfields .= '<br><br>';
-                    break;
+                        break;
                     case 2:
-                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'">全部</a>' : '<span>全部</span>').'&nbsp;';
-                        $addonfields_items = explode(",",$ctag->GetAtt('default'));
-                        for ($i=0; $i<count($addonfields_items); $i++)
-                        {
-                            $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".$fields_value."|".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
+                        $dede_addonfields .= (preg_match("/&" . $ctag->GetName() . "=/is", $filterarr, $regm) ? '<a href="' . str_replace("&" . $ctag->GetName() . "=" . $fields_value, "", $filterarr) . '">全部</a>' : '<span>全部</span>') . '&nbsp;';
+                        $addonfields_items = explode(",", $ctag->GetAtt('default'));
+                        for ($i = 0; $i < count($addonfields_items); $i++) {
+                            $href = stripos($filterarr, $ctag->GetName() . '=') ? str_replace("=" . $fields_value, "=" . $fields_value . "|" . urlencode($addonfields_items[$i]), $filterarr) : $filterarr . '&' . $ctag->GetName() . '=' . urlencode($addonfields_items[$i]);
                             $is_select = in_array(urlencode($addonfields_items[$i]), $fields_value1) ? 1 : 0;
                             $fields_value2 = "";
-                            for ($j=0; $j<count($fields_value1); $j++)
-                            {
-                                $fields_value2 .= $fields_value1[$j] != urlencode($addonfields_items[$i]) ? $fields_value1[$j].($j<count($fields_value1)-1 ? "|" : "") : "";
+                            for ($j = 0; $j < count($fields_value1); $j++) {
+                                $fields_value2 .= $fields_value1[$j] != urlencode($addonfields_items[$i]) ? $fields_value1[$j] . ($j < count($fields_value1) - 1 ? "|" : "") : "";
                             }
                             $fields_value2 = rtrim($fields_value2, "|");
-                            $href3 = str_replace(array("&".$ctag->GetName()."=".$fields_value,$ctag->GetName()."=".$fields_value, "&".$ctag->GetName()."=&"), array("&".$ctag->GetName()."=".$fields_value2,$ctag->GetName()."=".$fields_value2, "&"), $filterarr);
-                            $href3 = !end(explode("=", $href3)) ? str_replace("&".end(explode("&", $href3)), "", $href3) : $href3;
-                            
-                            $dede_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) && $is_select!=1 ? '<input type="checkbox" title="'.$addonfields_items[$i].'" value="'.$href.'" onclick="window.location=this.value">&nbsp;<a title="'.$addonfields_items[$i].'" href="'.$href.'">'.$addonfields_items[$i].'</a>' : '<input type="checkbox" checked="checked" title="'.$addonfields_items[$i].'" value="'.$href3.'" onclick="window.location=this.value">&nbsp;<a title="'.$addonfields_items[$i].'" href="'.$href3.'" class="cur">'.$addonfields_items[$i].'</a>')."&nbsp;";
+                            $href3 = str_replace(array("&" . $ctag->GetName() . "=" . $fields_value, $ctag->GetName() . "=" . $fields_value, "&" . $ctag->GetName() . "=&"), array("&" . $ctag->GetName() . "=" . $fields_value2, $ctag->GetName() . "=" . $fields_value2, "&"), $filterarr);
+                            $href3 = !end(explode("=", $href3)) ? str_replace("&" . end(explode("&", $href3)), "", $href3) : $href3;
+
+                            $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<input type="checkbox" title="' . $addonfields_items[$i] . '" value="' . $href . '" onclick="window.location=this.value">&nbsp;<a title="' . $addonfields_items[$i] . '" href="' . $href . '">' . $addonfields_items[$i] . '</a>' : '<input type="checkbox" checked="checked" title="' . $addonfields_items[$i] . '" value="' . $href3 . '" onclick="window.location=this.value">&nbsp;<a title="' . $addonfields_items[$i] . '" href="' . $href3 . '" class="cur">' . $addonfields_items[$i] . '</a>') . "&nbsp;";
                         }
                         $dede_addonfields .= '<br><br>';
-                    break;
+                        break;
                 }
             }
         }

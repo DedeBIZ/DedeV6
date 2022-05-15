@@ -490,7 +490,7 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
                 if (PHP_SAPI === 'cli') {
                     echo '标签：'.$tagname.'载入花费时间：'.$queryTime."\r\n";
                 } else {
-                    echo '<div style="color:#856404;background-color:#fff3cd;border-color:#ffeeba;position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem" class="alert alert-warning">标签：'.$tagname.'载入花费时间：'.$queryTime."</div>\r\n";
+                    echo DedeAlert('标签：'.$tagname.'载入花费时间：'.$queryTime, ALERT_WARNING);
                 }
                 
             }

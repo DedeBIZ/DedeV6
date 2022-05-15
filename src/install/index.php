@@ -9,10 +9,7 @@
 @set_time_limit(0);
 error_reporting(E_ALL || ~E_NOTICE);
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
-if(file_exists(INSLOCKFILE))
-{
-    die("<div style='width:98%;margin:1rem auto;color:#842029;background:#f8d7da;border-color:#842029;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem'>程序已运行安装，如果您确定要重新安装，请先删除 /install/install_lock.txt</div>\r\n");
-}
+
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
 $cfg_version_detail = '6.1.10beta'; //详细版本号
@@ -31,6 +28,10 @@ foreach(Array('_GET','_POST','_COOKIE') as $_request)
     foreach($$_request as $_k => $_v) ${$_k} = RunMagicQuotes($_v);
 }
 require_once(DEDEINC.'/common.func.php');
+if(file_exists(INSLOCKFILE))
+{
+    die(DedeAlert("程序已运行安装，如果您确定要重新安装，请先删除 /install/install_lock.txt",ALERT_DANGER));
+}
 if(empty($step))
 {
     $step = 1;
