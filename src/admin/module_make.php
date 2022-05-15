@@ -11,6 +11,9 @@
 @set_time_limit(0);
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC."/dedemodule.class.php");
+if (DEDEBIZ_SAFE_MODE) {
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
+}
 CheckPurview('sys_module');
 if (empty($action)) $action = '';
 if ($action == '') {

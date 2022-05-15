@@ -307,18 +307,18 @@ $actionSearch[7] = array(
         ),
     )
 );
-$actionSearch[8] = array(
+$actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
     'toptitle' => '模板',
     'title' => '模板管理',
     'description' => '针对主页、栏目、文档、专题等等进行更新',
     'soniterm' => array(
-        0  =>  array(
+        0  => array(
             'title' => '默认模板管理 ',
             'description' => '对网站正在采用的模板文件进行管理',
             'purview' => 'temp_All',
             'linkurl' => 'templets_main.php'
         ),
-        1  =>  array(
+        1  => array(
             'title' => '标签源码管理 ',
             'description' => '对现有的标签文件进行修改、添加',
             'purview' => 'temp_All',
@@ -409,7 +409,7 @@ $actionSearch[9] = array(
             'purview' => 'sys_data',
             'linkurl' => 'sys_data.php'
         ),
-        12  =>  array(
+        12  => DEDEBIZ_SAFE_MODE? null : array(
             'title' => 'SQL命令行工具',
             'description' => '可以在针对每张数据表执行单行或者多行的SQL语句',
             'purview' => 'sys_data',

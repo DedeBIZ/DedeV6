@@ -132,7 +132,10 @@ if (!IsSSL()) {
 	$safeMsg[] = '当前站点尚未启用https，强烈建议您启用';
 }
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	$safeMsg[] = "PHP请升级到5.3及以上版本，低版本PHP环境将无法正常使用本系统";
+	$safeMsg[] = 'PHP请升级到5.3及以上版本，低版本PHP环境将无法正常使用本系统';
+}
+if (!DEDEBIZ_SAFE_MODE) {
+	$safeMsg[] = '当前系统运行环境为【非安全模式】，强烈建议启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-sm">查看</a>';
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {

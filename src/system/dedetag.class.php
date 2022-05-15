@@ -567,14 +567,6 @@ class DedeTagParse
             $phpcode = $refObj->GetInnerText();
         }
         $phpcode = preg_replace("/'@me'|\"@me\"|@me/i", '$DedeMeValue', $phpcode);
-        // 校验代码安全
-        // $error = checkCode($phpcode);
-        // if ($error) {
-        //     if (DEBUG_LEVEL) {
-        //         echo htmlErrors($error);
-        //     }
-        //     return;
-        // }
         try {
             @eval($phpcode); 
             $this->CTags[$i]->TagValue = $DedeMeValue;
@@ -815,13 +807,6 @@ class DedeTagParse
         $functionname = str_replace("\"}", "\"]", $functionname);
         $functionname = preg_replace("/'@me'|\"@me\"|@me/i", '$DedeFieldValue', $functionname);
         $functionname = "\$DedeFieldValue = ".$functionname;
-        // $error = checkCode($functionname);
-        // if ($error) {
-        //     if (DEBUG_LEVEL) {
-        //         echo htmlErrors($error);
-        //     }
-        //     return "";
-        // }
         try {
             @eval($functionname.";"); 
             if (empty($DedeFieldValue)) {

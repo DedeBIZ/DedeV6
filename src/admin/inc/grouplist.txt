@@ -42,16 +42,16 @@
 >a_MyCheck>审核我发布的文档
 >a_Recycling>管理回收站
 
->>模板管理
+>>模板管理>unsafe
 
->temp_All>管理所有模板
->temp_New>新建模板
->temp_Edit>修改模板
->temp_Del>删除模板
->temp_One>单页模板管理
->temp_MyTag>自定义标记
->temp_Test>测试标记
->temp_Other>模板其它管理
+>temp_All>管理所有模板>unsafe
+>temp_New>新建模板>unsafe
+>temp_Edit>修改模板>unsafe
+>temp_Del>删除模板>unsafe
+>temp_One>单页模板管理>unsafe
+>temp_MyTag>自定义标记>unsafe
+>temp_Test>测试标记>unsafe
+>temp_Other>模板其它管理>unsafe
 
 >>专题管理
 
@@ -68,7 +68,7 @@
 >sys_Edit>修改系统参数
 >sys_Log>管理日志
 >sys_plus>插件管理
->sys_Data>数据备份还原
+>sys_Data>数据备份还原>unsafe
 >sys_Att>自定义文档属性
 >sys_ArcBatch>文档批量维护
 >sys_ArcTj>文档信息统计

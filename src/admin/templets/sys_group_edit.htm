@@ -41,17 +41,25 @@
               	if(preg_match("#^>>#", $line))
               	{
               		if($start>0) echo "</td></tr>";
+                  $line = str_replace('>>','',$line);
+                  $ls = explode('>',$line);
+                  if(DEDEBIZ_SAFE_MODE && $ls[1]==="unsafe") {
+                    continue;
+                  }
               		$start++;
               		$lhead = "
               	 <tr> 
-                 <td colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr>
+                 <td colspan='2'>{$start}、".$ls[0]."</td></tr>
                  <tr><td colspan='2'>
-              		"; 
-              		echo $lhead;
+              		";
+              		echo  $lhead;
               	}
               	else if(preg_match("#^>#", $line))
               	{
               		$ls = explode('>',$line);
+                  if(DEDEBIZ_SAFE_MODE && $ls[3]==="unsafe") {
+                    continue;
+                  }
               		$tag = $ls[1];
               		$tagname = str_replace('[br]','<br>',$ls[2]);
               		if(!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";

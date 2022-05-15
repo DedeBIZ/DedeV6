@@ -34,13 +34,13 @@ $gitUrl = DEDEBIZURL."/git";
 $dedebizUrl = DEDEBIZURL;
 $adminMenu1 = $adminMenu2 = '';
 if ($cuserLogin->getUserType() >= 10) {
-    $adminMenu1 = "<m:top item='7_' name='模板管理' display='block' rank='temp_One,temp_Other,temp_MyTag,temp_test,temp_All'>
+    $adminMenu1 = (DEDEBIZ_SAFE_MODE? "" : "<m:top item='7_' name='模板管理' display='block' rank='temp_One,temp_Other,temp_MyTag,temp_test,temp_All'>
     <m:item name='默认模板管理' link='templets_main.php' rank='temp_All' target='main' />
     <m:item name='标签源码管理' link='templets_tagsource.php' rank='temp_All' target='main' />
     <m:item name='自定义宏标记' link='mytag_main.php' rank='temp_MyTag' target='main' />
     <m:item name='智能标记向导' link='mytag_tag_guide.php' rank='temp_Other' target='main' />
     <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main' />
-</m:top>
+</m:top>")."
 <m:top item='1_7_' name='频道模型' display='block' rank='t_List,t_AccList,c_List,temp_One'>
     <m:item name='内容模型管理' link='mychannel_main.php' rank='c_List' target='main' />
     <m:item name='单页文档管理' link='templets_one.php' rank='temp_One' target='main' />
@@ -67,8 +67,8 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='软件频道设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
     <m:item name='防采集串混淆' link='article_string_mix.php' rank='sys_StringMix' target='main' />
     <m:item name='随机模板设置' link='article_template_rand.php' rank='sys_StringMix' target='main' />
-    <m:item name='数据备份还原' link='sys_data.php' rank='sys_Data' target='main' />
-    <m:item name='SQL命令行工具' link='sys_sql_query.php' rank='sys_Data' target='main' />
+    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据备份还原' link='sys_data.php' rank='sys_Data' target='main' />")."
+    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='SQL命令行工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
     <m:item name='病毒文件扫描' link='sys_safetest.php' rank='sys_verify' target='main' />
     <m:item name='系统错误修复' link='sys_repair.php' rank='sys_verify' target='main' />
 </m:top>";
@@ -98,7 +98,7 @@ $adminMenu1
     <m:item name='重复文档检测' link='article_test_same.php' rank='sys_ArcBatch' target='main' />
     <m:item name='自动摘要分页' link='article_description_main.php' rank='sys_Keyword' target='main' />
     <m:item name='Tag标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
-    <m:item name='数据库内容替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />
+    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据库内容替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
 </m:top>
 <m:top item='5_' name='更新任务' display='block' notshowall='1' rank='sys_MakeHtml'>
     <m:item name='更新整站' link='makehtml_all.php' rank='sys_MakeHtml' target='main' />

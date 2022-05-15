@@ -55,7 +55,7 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='文档关键词维护' link='article_keywords_main.php' rank='sys_Keyword' target='main' />
     <m:item name='自动摘要分页' link='article_description_main.php' rank='sys_Keyword' target='main' />
     <m:item name='Tag标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
-    <m:item name='数据库内容替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />
+    ".(DEDEBIZ_SAFE_MODE? "" :"<m:item name='数据库内容替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
 </m:top>
 <m:top mapitem='3' item='1_' name='附件管理' display='none' rank='sys_Upload,sys_MyUpload,plus_文件管理器'>
     <m:item name='上传新文件' link='media_add.php' rank='' target='main' />
@@ -86,13 +86,13 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='支付接口设置' link='sys_payment.php' .php' rank='sys_Data' target='main' />
     <m:item name='配货方式设置' link='shops_delivery.php' rank='sys_Data' target='main' />
 </m:top>
-<m:top mapitem='4' item='7_' name='模板管理' display='block' rank='temp_One,temp_Other,temp_MyTag,temp_test,temp_All'>
+".(DEDEBIZ_SAFE_MODE? "" : "<m:top mapitem='4' item='7_' name='模板管理' display='block' rank='temp_One,temp_Other,temp_MyTag,temp_test,temp_All'>
     <m:item name='默认模板管理' link='templets_main.php' rank='temp_All' target='main' />
     <m:item name='标签源码管理' link='templets_tagsource.php' rank='temp_All' target='main' />
     <m:item name='自定义宏标记' link='mytag_main.php' rank='temp_MyTag' target='main' />
     <m:item name='智能标记向导' link='mytag_tag_guide.php' rank='temp_Other' target='main' />
     <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main' />
-</m:top>
+</m:top>")."
 <m:top mapitem='2' item='10_' name='系统设置' display='block' rank='sys_User,sys_Group,sys_Edit,sys_Log,sys_Data'>
     <m:item name='系统配置变量' link='sys_info.php' rank='sys_Edit' target='main' />
     <m:item name='系统用户管理' link='sys_admin_user.php' rank='sys_User' target='main' />
@@ -103,8 +103,8 @@ $menusMain = "<m:top mapitem='1' item='1_' name='常用操作' display='block'>
     <m:item name='软件频道设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
     <m:item name='防采集串混淆' link='article_string_mix.php' rank='sys_StringMix' target='main' />
     <m:item name='随机模板设置' link='article_template_rand.php' rank='sys_StringMix' target='main' />
-    <m:item name='数据库备份还原' link='sys_data.php' rank='sys_Data' target='main' />
-    <m:item name='SQL命令行工具' link='sys_sql_query.php' rank='sys_Data' target='main' />
+    ".(DEDEBIZ_SAFE_MODE? "" :"<m:item name='数据库备份还原' link='sys_data.php' rank='sys_Data' target='main' />")."
+    ".(DEDEBIZ_SAFE_MODE? "" :"<m:item name='SQL命令行工具' link='sys_sql_query.php' rank='sys_Data' target='main' />")."
     <m:item name='病毒文件扫描' link='sys_safetest.php' rank='sys_verify' target='main' />
     <m:item name='系统错误修复' link='sys_repair.php' rank='sys_verify' target='main' />
 </m:top>";
@@ -115,12 +115,11 @@ $dsql->Execute();
 while ($row = $dsql->GetObject()) {
   $plusset .= $row->menustring."";
 }
-$menusMain .= "
-<m:top mapitem='6' name='模块管理' c='6,' display='block'>
+$menusMain .= (DEDEBIZ_SAFE_MODE? "" :"<m:top mapitem='6' name='模块管理' c='6,' display='block'>
     <m:item name='模块管理' link='module_main.php' rank='sys_module' target='main' />
     <m:item name='上传新模块' link='module_upload.php' rank='sys_module' target='main' />
     <m:item name='模块打包' link='module_make.php' rank='sys_module' target='main' />
-</m:top>
+</m:top>")."
 <m:top mapitem='6' item='7' name='辅助插件' display='block'>
     <m:item name='插件管理器' link='plus_main.php' rank='10' target='main' />
     $plusset

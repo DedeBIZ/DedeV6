@@ -40,6 +40,9 @@ class ActionSearch
     {
         $i = 0; //数组序列索引
         foreach ($this->asarray as $key => $value) {
+            if (is_null($value)) {
+                continue;
+            }
             //对二级项目进行匹配
             if (is_array($this->asarray[$key]['soniterm'])) {
                 foreach ($this->asarray[$key]['soniterm'] as $k => $val) {

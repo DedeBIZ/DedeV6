@@ -309,7 +309,7 @@ foreach ($dh as $file)
   ?>
     <tr>
       <td colspan="4" bgcolor="#f8f8f8">
-        <a href="file_manage_main.php" class="btn btn-success btn-sm">根目录</a>
+        <?php if(!DEDEBIZ_SAFE_MODE) { ?><a href="file_manage_main.php" class="btn btn-success btn-sm">根目录</a><?php } ?>
         <a href="file_manage_view.php?fmdo=newfile&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">新建文件</a>
         <a href="file_manage_view.php?fmdo=newdir&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">新建目录</a>
         <a href="file_manage_view.php?fmdo=upload&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">文件上传</a>

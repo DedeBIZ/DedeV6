@@ -15,13 +15,6 @@ function lib_php(&$ctag, &$refObj)
     $phpcode = trim($ctag->GetInnerText());
     if ($phpcode == '')
     return '';
-    // $error = checkCode($phpcode);
-    // if ($error) {
-    //     if (DEBUG_LEVEL) {
-    //         echo htmlErrors($error);
-    //     }
-    //     return "";
-    // }
     ob_start();
     extract($GLOBALS, EXTR_SKIP);
     @eval($phpcode);
