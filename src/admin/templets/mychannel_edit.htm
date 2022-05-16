@@ -167,7 +167,7 @@
         $dsql->Execute();
         while($row3 = $dsql->GetObject())
         {
-          echo "<label><input name='usertype' class='np' type='radio' value=".$row3->name."> ".$row3->name."</label> ";
+          echo "<label><input name='usertype' class='np' type='radio' value='".$row3->name."'".($row['usertype']==$row3->name? "checked" : "")."> ".$row3->name."</label> ";
         }
         ?>
        <label><input name="usertype" class="np" type="radio" value="" <?php if($row['usertype']=='') echo " checked='1' "; ?>> 不限</label>
