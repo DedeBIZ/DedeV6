@@ -561,9 +561,9 @@ else if ($dopost == 'quickEdit') {
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
                 if (preg_match("#".$trow->att."#", $arcRow['flag']))
-                echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'>&nbsp;{$trow->attname}{$trow->att}[{$trow->att}]</label>&nbsp;";
+                echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}] ";
                 else
-                echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'>&nbsp;{$trow->attname}[{$trow->att}]</label>&nbsp;";
+                echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] ";
             }
             ?>
         </td>
@@ -862,7 +862,7 @@ else if ($dopost == 'attsDlg') {
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
-                echo "<label><input class='np' type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'>&nbsp;{$trow->attname}[{$trow->att}]</label>&nbsp;";
+                echo "<input class='np' type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] ";
             }
             ?>
         </td>
