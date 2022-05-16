@@ -13,7 +13,7 @@ function lib_tag(&$ctag, &$refObj)
 {
     global $dsql, $envs, $cfg_cmsurl,$cfg_tags_dir;
     //属性处理
-    $attlist = "row|30,sort|new,getall|0,typeid|0";
+    $attlist = "row|30,sort|new,getall|0,typeid|0,ishtml|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $InnerText = $ctag->GetInnerText();
@@ -53,7 +53,7 @@ function lib_tag(&$ctag, &$refObj)
     while ($row = $dsql->GetArray()) {
         $row['keyword'] = $row['tag'];
         $row['tag'] = dede_htmlspecialchars($row['tag']);
-        if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {
+        if (isset($envs['makeTag']) && $envs['makeTag'] == 1 || $ishtml == 1) {
             $row['link'] = $cfg_cmsurl.$tagsdir."/".$row['id']."/";
         } else {
             $row['link'] = $cfg_cmsurl."/apps/tags.php?/".$row['id']."/";
