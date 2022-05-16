@@ -98,7 +98,7 @@ class DedeVote
     {
         //省略参数
         if ($lineheight == "") {
-            $lineheight = 24;
+            $lineheight = 26;
         }
         if ($tablewidth == "") {
             $tablewidth = "100%";

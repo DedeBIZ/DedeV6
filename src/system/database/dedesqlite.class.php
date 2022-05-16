@@ -123,7 +123,7 @@ class DedeSqlite
     //为了防止采集等需要较长运行时间的程序超时，在运行这类程序时设置系统等待和交互时间
     function SetLongLink()
     {
-        // @mysqli_query("SET interactive_timeout=3600, wait_timeout=3600 ;", $this->linkID);
+        //@mysqli_query("SET interactive_timeout=3600, wait_timeout=3600 ;", $this->linkID);
     }
     //获得错误描述
     function GetError()

@@ -23,7 +23,7 @@ if (!function_exists('GetCache')) {
         global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
 
         $key = md5($key);
-        // 商业组件缓存
+        //商业组件缓存
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
             $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
             $client->appid = $cfg_bizcore_appid;
@@ -62,8 +62,7 @@ if (!function_exists('SetCache')) {
     {
         global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
         $key = md5($key);
-
-        // 商业组件缓存
+        //商业组件缓存
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
             $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
             $client->appid = $cfg_bizcore_appid;
@@ -94,10 +93,8 @@ if (!function_exists('DelCache')) {
     function DelCache($prefix, $key)
     {
         global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
-
         $key = md5($key);
-
-        // 商业组件缓存
+        //商业组件缓存
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
             $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
             $client->appid = $cfg_bizcore_appid;

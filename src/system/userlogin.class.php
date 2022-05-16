@@ -90,7 +90,7 @@ function CheckCatalog($cid, $msg)
         return TRUE;
     }
     if (!in_array($cid, $admin_catalogs)) {
-        ShowMsg(" $msg <br><br><a href='javascript:history.go(-1);'>点击此返回上一页&gt;</a>", 'javascript:;');
+        ShowMsg(" $msg <br><br><a href='javascript:history.go(-1);'>点击返回上一页</a>", 'javascript:;');
         exit();
     }
     return TRUE;
@@ -224,7 +224,7 @@ class userLogin
         }else {
             $upsql = "";
             if (empty($row->pwd_new) && function_exists('password_hash')) {
-                // 升级密码
+                //升级密码
                 $newpwd = password_hash($this->userPwd, PASSWORD_BCRYPT);
                 $upsql .= ",pwd='',pwd_new='{$newpwd}'";
             }

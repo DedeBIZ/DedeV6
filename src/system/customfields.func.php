@@ -68,7 +68,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         foreach ($items as $v) {
             $v = trim($v);
             if ($v != '') {
-                $myformItem .= ($i == 0 ? "<div class='form-check'><label><input type='radio' name='$fieldname' class='np form-check-input' value='$v' checked> $v</label></div>" : "<div class='form-check'><label><input type='radio' name='$fieldname' class='np form-check-input' value='$v'> $v</label></div>");
+                $myformItem .= ($i == 0 ? "<div class='form-check form-check-inline'><input type='radio' name='$fieldname' class='form-check-input' value='$v' checked><label class='form-check-label'>$v</label></div>" : "<div class='form-check form-check-inline'><input type='radio' name='$fieldname' class='form-check-input' value='$v'><label class='form-check-label'>'$v</label></div>");
                 $i++;
             }
         }
@@ -80,9 +80,9 @@ function GetFormItem($ctag, $admintype = 'admin')
             $v = trim($v);
             if ($v != '') {
                 if ($admintype == 'membermodel') {
-                    $myformItem .= "<div class='form-check'><label><input type='checkbox' name='{$fieldname}[]' class='np form-check-input' value='$v'> $v</label></div>";
+                    $myformItem .= "<div class='form-check form-check-inline'><input type='checkbox' name='{$fieldname}[]' class='form-check-input' value='$v'><label class='form-check-label'>$v</label></div>";
                 } else {
-                    $myformItem .= "<div class='form-check'><label><input type='checkbox' name='{$fieldname}[]' class='np form-check-input' value='$v'> $v</label></div>";
+                    $myformItem .= "<div class='form-check form-check-inline'><input type='checkbox' name='{$fieldname}[]' class='form-check-input' value='$v'><label class='form-check-label'>$v</label></div>";
                 }
             }
         }
@@ -352,7 +352,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             foreach ($items as $v) {
                 $v = trim($v);
                 if ($v == '') continue;
-                $myformItem .= ($fvalue == $v ? "<div class='form-check'><label><input type='radio' name='$fieldname' class='np form-check-input' value='$v' checked='checked' /> $v</label></div>" : "<div class='form-check'><label><input type='radio' name='$fieldname' class='np form-check-input' value='$v' /> $v</label></div>");
+                $myformItem .= ($fvalue == $v ? "<div class='form-check form-check-inline'><input type='radio' name='$fieldname' class='form-check-input' value='$v' checked='checked'><label class='form-check-label'>$v</label></div>" : "<div class='form-check form-check-inline'><input type='radio' name='$fieldname' class='form-check-input' value='$v'><label class='form-check-label'>$v</label></div>");
             }
         }
         $innertext = $myformItem;
@@ -368,9 +368,9 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
                     continue;
                 }
                 if (in_array($v, $fvalues)) {
-                    $myformItem .= "<div class='form-check'><label><input type='checkbox' name='{$fieldname}[]' class='np form-check-input' value='$v' checked='checked' /> $v</label></div>";
+                    $myformItem .= "<div class='form-check form-check-inline'><input type='checkbox' name='{$fieldname}[]' class='form-check-input' value='$v' checked='checked'><label class='form-check-label'>$v</label></div>";
                 } else {
-                    $myformItem .= "<div class='form-check'><label><input type='checkbox' name='{$fieldname}[]' class='np form-check-input' value='$v' /> $v</label></div>";
+                    $myformItem .= "<div class='form-check form-check-inline'><input type='checkbox' name='{$fieldname}[]' class='form-check-input' value='$v'><label class='form-check-label'>$v</label></div>";
                 }
             }
         }

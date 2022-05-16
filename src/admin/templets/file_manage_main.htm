@@ -65,7 +65,7 @@ foreach ($dh as $file)
 	}
 	else if(is_dir("$inpath/$file"))
 	{
-		if(preg_match("#^_(.*)$#i",$file)) continue; #屏蔽FrontPage扩展目录和linux隐蔽目录
+		if(preg_match("#^_(.*)$#i",$file)) continue;
 		if(preg_match("#^\.(.*)$#i",$file)) continue;
 		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#F8FCF1';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
    <td>

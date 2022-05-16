@@ -171,7 +171,7 @@ class TagList
             $this->ParseDMFields($this->PageNo, 0);
         }
         $this->dtp->Display();
-        // $this->Close();
+        //$this->Close();
     }
     /**
      *  解析模板，对固定的标记进行初始给值

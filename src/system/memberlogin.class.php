@@ -397,7 +397,7 @@ class MemberLogin
                 return -1;
             } else {
                 if (empty($row['pwd_new']) && function_exists('password_hash')) {
-                    // 升级密码
+                    //升级密码
                     $newpwd = password_hash($loginpwd, PASSWORD_BCRYPT);
                     $inquery = "UPDATE `#@__member` SET pwd='',pwd_new='{$newpwd}' WHERE mid='".$row['mid']."'";
                     $dsql->ExecuteNoneQuery($inquery);

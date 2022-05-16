@@ -44,7 +44,7 @@ if ($dopost == '') {
     }
     $sql = "SELECT * FROM `#@__shops_products` WHERE userid='".$cfg_ml->M_ID."' $addsql ORDER BY aid ASC";
     $dl = new DataListCP();
-    $dl->pagesize = 30;
+    $dl->pagesize = 10;
     if (!empty($oid)) $dl->SetParameter('oid', $oid);
     //这两句的顺序不能更换
     $dl->SetTemplate(dirname(__FILE__)."/templets/shops_products.htm");      //载入模板

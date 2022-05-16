@@ -30,7 +30,7 @@ function GetSta($sta)
 if ($dopost == '') {
     $sql = "SELECT * FROM `#@__member_operation` WHERE mid='".$cfg_ml->M_ID."' AND product<>'archive' ORDER BY aid DESC";
     $dlist = new DataListCP();
-    $dlist->pagesize = 30;
+    $dlist->pagesize = 10;
     $dlist->SetTemplate(DEDEMEMBER."/templets/operation.htm");
     $dlist->SetSource($sql);
     $dlist->Display();
