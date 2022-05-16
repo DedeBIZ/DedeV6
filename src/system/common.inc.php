@@ -7,7 +7,9 @@
  * @link           https://www.dedebiz.com
  */
 // V6安全模式，如果启用安全模式，后台将禁用例如：模板管理、标签管理、数据库管理等存在较高安全风险的功能
-define('DEDEBIZ_SAFE_MODE', TRUE);
+define('DEDEBIZ_SAFE_MODE', TRUE); // 启用安全模式
+// define('DEDEBIZ_SAFE_MODE', FALSE); 关闭安全模式
+
 //生产环境使用`production`，如果采用`dev`模式，会有一些php的报错信息提示，便于开发调试
 if (!defined('DEDE_ENVIRONMENT')) {
     define('DEDE_ENVIRONMENT', 'production');
