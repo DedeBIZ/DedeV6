@@ -135,7 +135,7 @@
 					<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 						<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id']; ?>" class='np'></td>
 						<td>{dede:field.id/}</td>
-						<td><a href="../apps/tags.php?/<?php echo urlencode($fields['tag']); ?>/" target="_blank">{dede:field.tag/}</a></td>
+						<td><a href="../apps/tags.php?/<?php echo $fields['id']; ?>/" target="_blank">{dede:field.tag/}</a></td>
 						<td><input type="text" value="<?php echo $fields['count']; ?>" id="count<?php echo $fields['id']; ?>" size='5'></td>
 						<td><?php echo $fields['total']; ?></td>
 						<td><?php echo $fields['addtime']; ?></td>

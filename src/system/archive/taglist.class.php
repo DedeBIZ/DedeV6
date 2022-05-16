@@ -46,7 +46,7 @@ class TagList
      */
     function __construct($keyword, $templet)
     {
-        global $dsql,$envs;
+        global $dsql,$envs,$cfg_cmsurl;
         $this->Templet = $templet;
         $this->Tag = (int)$keyword;
         $this->dsql = $dsql;
@@ -60,6 +60,7 @@ class TagList
         if (empty($keyword)) {
             $this->Fields['title'] = "TAGS列表";
         }
+        $this->Fields['position'] = $cfg_cmsurl."/apps/tags.php";
         $this->TempletsFile = '';
         //设置一些全局参数的值
         foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
@@ -568,8 +569,12 @@ class TagList
     //生成静态Tag
     function MakeHtml($startpage = 1, $makepagesize = 0)
     {
-        global $cfg_dir_purview, $envs;
+        global $cfg_dir_purview,$envs,$cfg_cmspath,$cfg_tags_dir,$cfg_cmsurl;
         $envs['makeTag'] = 1;
+        $tagsdir = str_replace("{cmspath}", $cfg_cmspath, $cfg_tags_dir);
+        if (isset($envs['makeTag']) && $envs['makeTag'] == 1) {
+            $this->Fields['position'] = $cfg_cmsurl.$tagsdir."/";
+        }
         if (empty($this->TotalResult) && $this->Tag != "") $this->CountRecord();
         //初步给固定值的标记赋值
         $this->ParseTempletsFirst();
