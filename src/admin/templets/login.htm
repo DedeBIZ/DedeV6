@@ -81,7 +81,7 @@
 		</header>
 		<main class="container login-from mt-5">
 			<?php echo $redmsg; ?>
-			<div class="login-area">
+			<div class="login-area shadow-sm">
 				<h4 class="mb-4 text-center">后台登录</h4>
 				<form name="form1" method="post" action="login.php">
 					<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage); ?>">
