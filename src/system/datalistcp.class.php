@@ -2,15 +2,6 @@
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 动态分页类
- * 说明:数据量不大的数据分页,使得数据分页处理变得更加简单化
- * 使用方法:
- *     $dl = new DataListCP();  //初始化动态列表类
- *     $dl->pagesize = 30;      //设定每页显示记录数（默认25条）
- *     $dl->SetParameter($key,$value);  //设定get字符串的变量
- *     //这两句的顺序不能更换
- *     $dl->SetTemplate($tplfile);      //载入模板
- *     $dl->SetSource($sql);            //设定查询SQL
- *     $dl->Display();                  //显示
  *
  * @version        $Id: datalistcp.class.php 3 17:02 2010年7月9日Z tianya $
  * @package        DedeBIZ.Libraries

@@ -12,10 +12,6 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/frame.js"></script>
 		<style>
-			.safemode {
-				padding: 2px 5px!important;
-				transform:scale(0.8);
-			}
 			#skinlist {
 				display: block;
 				height: 10px;
@@ -92,9 +88,9 @@
 					<span class="top_dedebiz"><a target="main" href="index_body.php"><?php echo $cfg_webname; ?>系统</a></span>
 					<span class="top_version">V<?php echo $cfg_version_detail; ?></span>
 					<?php if(DEDEBIZ_SAFE_MODE) {?>
-					<a target="main" class="btn btn-primary btn-sm safemode" href="index_body.php?dopost=safe_mode">安全</a>
+					<a target="main" class="btn btn-primary btn-sm" href="index_body.php?dopost=safe_mode">安全</a>
 					<?php } else {?>
-					<a target="main" class="btn btn-warning btn-sm safemode" href="index_body.php?dopost=safe_mode">非安全</a>
+					<a target="main" class="btn btn-warning btn-sm" href="index_body.php?dopost=safe_mode">非安全</a>
 					<?php }?>
 				</div>
 				<div class="top_link">

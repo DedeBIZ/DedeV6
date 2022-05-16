@@ -18,7 +18,7 @@ if (!isset($dopost)) $dopost = '';
 if ($dopost == '') {
     $query = "SELECT * FROM `#@__member_operation` WHERE mid='".$cfg_ml->M_ID."' And product='archive' order by aid desc";
     $dlist = new DataListCP();
-    $dlist->pagesize = 30;
+    $dlist->pagesize = 10;
     $dlist->SetTemplate(DEDEMEMBER.'/templets/mypay.htm');
     $dlist->SetSource($query);
     $dlist->Display();

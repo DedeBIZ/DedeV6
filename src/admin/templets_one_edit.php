@@ -17,7 +17,7 @@ if ($dopost == "saveedit") {
     $uptime = time();
     $body = str_replace('&quot;', '\\"', $body);
     $filename = preg_replace("#^\/#", "", $nfilename);
-    if (DEDEBIZ_SAFE_MODE) $ismake = 0; // 安全模式不允许编译
+    if (DEDEBIZ_SAFE_MODE) $ismake = 0; //安全模式不允许编译
     if (!preg_match('#\.htm$#i', trim($template))) {
         ShowMsg("您指定的文件名被系统禁止", "javascript:;");
         exit();

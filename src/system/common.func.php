@@ -19,7 +19,7 @@ define('ALERT_COLORS', array(
     ALERT_LIGHT => array('#fefefe','#fdfdfe','#636464'),
     ALERT_DARK => array('#d3d3d4','#bcbebf','#141619'),
 ));
-define("ALERT_TPL", '<div style="width: 98%;margin: 0 auto;"><div style="font-size:12px;margin:1rem auto;color:~color~;background:~background~;border-color:~border~;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem">~content~</div></div>');
+define("ALERT_TPL", '<div style="width:98%;margin:0 auto"><div style="font-size:12px;margin:1rem auto;color:~color~;background:~background~;border-color:~border~;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.2rem">~content~</div></div>');
 //$content:内容 $type:alert类型
 function DedeAlert($content, $type = ALERT_PRIMARY)
 {
@@ -92,7 +92,6 @@ function get_mime_type($filename)
     if (!function_exists('finfo_open')) {
         return 'unknow/octet-stream';
     }
-
     $finfo    = finfo_open(FILEINFO_MIME_TYPE);
     $mimeType = finfo_file($finfo, $filename);
     finfo_close($finfo);

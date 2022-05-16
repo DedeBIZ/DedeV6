@@ -106,7 +106,7 @@ else if ($fmdo == "upload") {
         $upfile = ${$upfile};
         $upfile_name = ${$upfile_name};
         if (is_uploaded_file($upfile)) {
-            // 检查文件类型
+            //检查文件类型
             $mime = get_mime_type($upfile);
             if (preg_match("#^unknow#", $mime)) {
                 ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);

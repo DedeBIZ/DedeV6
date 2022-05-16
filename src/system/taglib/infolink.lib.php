@@ -64,14 +64,14 @@ function lib_infolink(&$ctag, &$refObj)
             $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
         }
     } else {
-        $sontype = (($nativeplace % 500 != 0) ? $nativeplace : 0); // 子集
-        $toptype = (($nativeplace % 500 == 0) ? (int)$nativeplace : (int)($nativeplace - ($nativeplace % 500))); // 顶级联动分类
+        $sontype = (($nativeplace % 500 != 0) ? $nativeplace : 0); //子集
+        $toptype = (($nativeplace % 500 == 0) ? (int)$nativeplace : (int)($nativeplace - ($nativeplace % 500))); //顶级联动分类
         $fields['nativeplace'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$toptype}&infotype={$infotype}'> {$em_nativeplaces[$toptype]}</a> &gt;";
         if ($nativeplace % 500 == 0) {
-            // 1级分类
+            //1级分类
             foreach ($em_nativeplaces as $eid => $em) {
                 if ($eid < $toptype + 1 || $eid > $toptype + 499) continue;
-                if (is_str_float($eid)) continue; // 仅显示2级
+                if (is_str_float($eid)) continue; //仅显示2级
                 if ($eid == $nativeplace) {
                     $fields['nativeplace'] .= " {$em}\r\n";
                 } else {
@@ -79,7 +79,7 @@ function lib_infolink(&$ctag, &$refObj)
                 }
             }
         } else if(!is_str_float($nativeplace)) {
-            // 2级分类
+            //2级分类
             $fields['nativeplace'] .= "<span> {$em_nativeplaces[$sontype]}</span>";
             $i = 0;
             $ff = "";
@@ -99,7 +99,7 @@ function lib_infolink(&$ctag, &$refObj)
             if($i > 0) $fields['nativeplace'] .= " &gt; ";
             $fields['nativeplace'] .= $ff;
         } else {
-            // 3级分类
+            //3级分类
             $t = intval($nativeplace);
             $fields['nativeplace'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$t}&infotype={$infotype}'> {$em_nativeplaces[$t]}</a> &gt;";
             foreach ($em_nativeplaces as $eid => $em) {
@@ -131,10 +131,10 @@ function lib_infolink(&$ctag, &$refObj)
         $fields['infotype'] = "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&infotype={$toptype}&nativeplace={$nativeplace}'>{$em_infotypes[$toptype]}</a> &gt; ";
         
         if ($infotype % 500 == 0) {
-            // 1级分类
+            //1级分类
             foreach ($em_infotypes as $eid => $em) {
                 if ($eid < $toptype + 1 || $eid > $toptype + 499) continue;
-                if (is_str_float($eid)) continue; // 仅显示2级
+                if (is_str_float($eid)) continue; //仅显示2级
                 if ($eid == $infotype) {
                     $fields['infotype'] .= " {$em}\r\n";
                 } else {
@@ -142,7 +142,7 @@ function lib_infolink(&$ctag, &$refObj)
                 }
             }
         } else if(!is_str_float($infotype)) {
-            // 2级分类
+            //2级分类
             $fields['infotype'] .= "<span> {$em_infotypes[$sontype]}</span>";
             $i = 0;
             $ff = "";
@@ -162,7 +162,7 @@ function lib_infolink(&$ctag, &$refObj)
             if($i > 0) $fields['infotype'] .= " &gt; ";
             $fields['infotype'] .= $ff;
         } else {
-            // 3级分类
+            //3级分类
             $t = intval($infotype);
             $fields['infotype'] .= "<a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$t}'> {$em_infotypes[$t]}</a> &gt;";
             foreach ($em_infotypes as $eid => $em) {
