@@ -239,7 +239,7 @@ class TypeUnit
                     echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
                     echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;height:26px;text-align:center'></td></tr></table></td></tr>";
                 }
-                echo "<tr><td id='suns".$id."' style='display:none'><table width='100%' cellspacing='0' cellpadding='0'>";
+                echo "<tr><td id='suns".$id."' style='".($GLOBALS['exallct']? "" : "display:none")."'><table width='100%' cellspacing='0' cellpadding='0'>";
                 $this->LogicListAllSunType($id, $step."　");
                 echo "</table></td></tr>";
             }
