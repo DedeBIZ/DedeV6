@@ -10,33 +10,61 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 		<?php echo "<script>var curopenItem = '$openitem';</script>"; ?>
 		<script src="js/leftmenu.js"></script>
+		<base target="main">
 		<style>
 			body {
 				margin: 0;
+				padding: 0 2px;
 				background: #f8f8f8;
-				padding-left: 6px;
 				overflow: scroll;
 				overflow-x: hidden
 			}
-			img {
-				margin-right: 0;
-				border-radius: 0;
-				vertical-align: top
+			.mleft {
+				padding-top: 12px
 			}
-			div {
-				margin: 0;
-				padding: 0
+			.mright {
+				padding-top: 12px;
+				width: 100%;
+				background: #fff;
+				border: 1px solid #dee2e6;
+				border-radius: 0 0 .2rem .2rem
+			}
+			a.mmac div {
+				margin-bottom: 2px;
+				padding: 8px 0;
+				width: 50px;
+				color: #fff;
+				background: #4f7632;
+				border-bottom: 1px solid #dee2e6;
+				border-radius: .2rem 0 0 .2rem;
+				text-align: center
+			}
+			a.mm div {
+				margin-bottom: 2px;
+				padding: 8px 0;
+				width: 50px;
+				color: #424b51;
+				background: #fff;
+				border-bottom: 1px solid #dee2e6;
+				border-radius: .2rem 0 0 .2rem;
+				text-align: center;
+				cursor: pointer
+			}
+			a.mm:hover div {
+				color: #fff;
+				background: #4f7632
 			}
 			dl.bitem {
-				margin: 0 0 2px 10px;
-				width: 140px;
-				background: url(../static/web/img/menunewbg.gif)repeat-x;
+				margin: 0 10px 10px 10px;
 				clear: both
 			}
 			dl.bitem dt {
 				padding-left: 30px;
 				height: 26px;
 				line-height: 26px;
+				background: #f6f6f6;
+				border-radius: .2rem;
+				border-bottom: 1px solid #dee2e6;
 				cursor: pointer
 			}
 			dl.bitem dd {
@@ -45,27 +73,6 @@
 			}
 			dl.bitem dt b {
 				color: #4f7632
-			}
-			a.mm div {
-				padding: 6px 4px 4px 10px;
-				height: 40px;
-				color: #424b51;
-				background: url(../static/web/img/leftmbg1.gif)no-repeat;
-				cursor: pointer
-			}
-			a.mm:hover div {
-				color: #4f7632;
-				background: url(../static/web/img/leftbg2.gif)no-repeat
-			}
-			a.mmac div {
-				padding: 6px 4px 4px 10px;
-				height: 40px;
-				color: #4f7632;
-				background: url(../static/web/img/leftbg2.gif)no-repeat
-			}
-			#mainct {
-				padding-top: 12px;
-				background: url(../static/web/img/idnbg1.gif)repeat-y
 			}
 			.sitemu li {
 				padding: 0 0 0 20px;
@@ -86,12 +93,11 @@
 				color: #28a745
 			}
 		</style>
-		<base target="main">
 	</head>
-	<body target="main" onLoad="CheckOpenMenu();">
+	<body>
 		<table cellspacing="0" cellpadding="0">
 			<tr>
-				<td width="28" valign="top" style="padding-top:10px">
+				<td valign="top" class="mleft">
 					<a id="link1" class="mmac">
 						<div onClick="ShowMainMenu(1)"><b>运维<b></div>
 					</a>
@@ -117,12 +123,8 @@
 					}
 					?>
 				</td>
-				<td width="170" valign="top" id="mainct">
-					<div id="ct1">
-						<?php
-						GetMenus($cuserLogin->getUserRank(),'main');
-						?>
-					</div>
+				<td valign="top" class="mright">
+					<div id="ct1"><?php GetMenus($cuserLogin->getUserRank(),'main'); ?></div>
 					<div id="ct100"></div>
 					<div id="ct3"></div>
 					<div id="ct5"></div>
@@ -131,10 +133,6 @@
 					<div id="ct20"></div>
 					<div id="ct10"></div>
 				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><img src="../static/web/img/idnbgfoot.gif"></td>
 			</tr>
 		</table>
 		<?php
