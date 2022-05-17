@@ -56,9 +56,8 @@ else if ($action == 'editload') {
     <input type="hidden" name="action" value="editsave">
     <table width="430" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="102" >网站名称：</td>
-        <td width="302"><input name="title" type="text" id="title" style="width:200px" value="<?php echo $row['title']; ?>"></td>
-        <td width="26" align="center"><a href="javascript:CloseEditNode()" class="mr-3"><i class="fa fa-window-close-o"></i></a></td>
+        <td width="90">网站名称：</td>
+        <td width="270"><input name="title" type="text" id="title" style="width:260px" value="<?php echo $row['title']; ?>"></td>
       </tr>
       <tr>
         <td>原内容编码：</td>
@@ -98,8 +97,8 @@ else if ($action == 'editload') {
       <tr>
         <td></td>
         <td colspan="2">
-          <button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存</button>
-          <button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button>
+          <button class="btn btn-success btn-sm" type="submit" name="Submit">保存</button>
+          <button class="btn btn-success btn-sm" name="Submit2" onclick="javascript:CloseEditNode();">关闭</button>
         </td>
       </tr>
     </table>

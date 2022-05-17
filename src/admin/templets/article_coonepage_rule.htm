@@ -69,11 +69,11 @@
 			position: absolute;
 			left: 20px;
 			top: 20px;
+			padding: 6px;
 			width: 430px;
 			z-index: 2;
-			background: #F2FDDB;
-			border: 1px solid #889D8F;
-			padding: 6px;
+			background: #fff;
+			border: 1px solid #dee2e6;
 			display: none
 		}
 		#editNode {
@@ -81,10 +81,10 @@
 			left: 20px;
 			top: 20px;
 			width: 430px;
-			z-index: 1;
-			background: #F2FDDB;
-			border: 1px solid #889D8F;
 			padding: 6px;
+			z-index: 1;
+			background: #fff;
+			border: 1px solid #dee2e6;
 			display: none
 		}
 	</style>
@@ -93,9 +93,8 @@
 	<table width="100%" cellpadding="2" align="center" cellspacing="1" class="table maintable mt-3 mb-3">
 		<tr bgcolor="#f8f8f8">
 			<td colspan="6">
-				<div style="float:left;padding-left:6px">单页采集规则管理：</div>
-				<div style="float:right;padding-right:10px"><a href='javascript:ShowAddNode();'
-						class="btn btn-success btn-sm">增加新网址</a>
+				<div style="float:left;padding-left:6px">单页采集规则管理</div>
+				<div style="float:right;padding-right:10px"><a href="javascript:ShowAddNode();" class="btn btn-success btn-sm">增加新网址</a>
 				</div>
 			</td>
 		</tr>
@@ -121,7 +120,7 @@
 				</td>
 			</tr>
 			{/dede:datalist}
-			<tr bgcolor="#F8FCF1">
+			<tr>
 				<td colspan="6">
 					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
 					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
@@ -142,9 +141,8 @@
 			<input type="hidden" name="action" value="add">
 			<table width="430" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="102" >网站名称：</td>
-					<td width="302"><input name="title" type="text" id="title" style="width:260px"></td>
-					<td width="26" align="center"><a href="javascript:CloseAddNode()" class="mr-3"><i class="fa fa-window-close-o"></i></a></td>
+			        <td width="90">网站名称：</td>
+			        <td width="270"><input name="title" type="text" id="title" style="width:260px" value="<?php echo $row['title']; ?>"></td>
 				</tr>
 				<tr>
 					<td>原内容编码：</td>
@@ -179,8 +177,8 @@
 				</tr>
 				<tr>
 					<td colspan="3" align="center" class="py-3">
-						<button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存</button>
-						<button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button>
+			            <button class="btn btn-success btn-sm" type="submit" name="Submit">保存</button>
+			            <button class="btn btn-success btn-sm" name="Submit2" onclick="javascript:CloseEditNode();">关闭</button>
 					</td>
 				</tr>
 			</table>
