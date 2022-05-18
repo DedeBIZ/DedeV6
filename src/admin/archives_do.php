@@ -298,11 +298,11 @@ else if ($dopost == 'moveArchives') {
         echo "<table width='100%' style='display:inline-block;z-index:9000'>";
         ?>
         <tr>
-            <td width="90" class="bline">&nbsp;目标栏目：</td>
+            <td width="90" class="bline"> 目标栏目：</td>
             <td class="bline"><?php echo $typeOptions; ?></td>
         </tr>
         <tr>
-            <td width="90" class="bline">&nbsp;文档ID：</td>
+            <td width="90" class="bline"> 文档ID：</td>
             <td class="bline">
                 <input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden">
                 <br>移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
@@ -540,7 +540,7 @@ else if ($dopost == 'quickEdit') {
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
     ?>
     <tr>
-        <td width="90" class="bline">&nbsp;所属栏目：</td>
+        <td width="90" class="bline"> 所属栏目：</td>
         <td class="bline">
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
@@ -552,7 +552,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline">&nbsp;属性：</td>
+        <td width="90" class="bline"> 属性：</td>
         <td class="bline">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag']; ?>">
             <?php
@@ -561,23 +561,23 @@ else if ($dopost == 'quickEdit') {
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
                 if (preg_match("#".$trow->att."#", $arcRow['flag']))
-                echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}] ";
+                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}] </label>";
                 else
-                echo "<input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] ";
+                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] </label>";
             }
             ?>
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline">&nbsp;标题：</td>
+        <td width="90" class="bline"> 标题：</td>
         <td class="bline"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
     </tr>
     <tr>
-        <td width="90" class="bline">&nbsp;简略标题：</td>
+        <td width="90" class="bline"> 简略标题：</td>
         <td class="bline"><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
     </tr>
     <tr>
-        <td width="90" class="bline">&nbsp;阅读权限：</td>
+        <td width="90" class="bline"> 阅读权限：</td>
         <td class="bline">
             <select name="arcrank" id="arcrank" style="width:100px">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>
@@ -595,7 +595,7 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline">&nbsp;关键词：</td>
+        <td width="90" class="bline"> 关键词：</td>
         <td class="bline"><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
     <tr>
@@ -854,7 +854,7 @@ else if ($dopost == 'attsDlg') {
     echo "<table width='100%' style='display:inline-block;z-index:9000'>";
 ?>
     <tr>
-        <td width="90" class="bline">&nbsp;属性：</td>
+        <td width="90" class="bline"> 属性：</td>
         <td class="bline">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag']; ?>">
             <?php
@@ -862,13 +862,13 @@ else if ($dopost == 'attsDlg') {
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
-                echo "<input class='np' type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] ";
+                echo "<label><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] <label>";
             }
             ?>
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline">&nbsp;文档ID：</td>
+        <td width="90" class="bline"> 文档ID：</td>
         <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden"></td>
     </tr>
     <tr>

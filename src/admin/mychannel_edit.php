@@ -67,22 +67,21 @@ else if ($dopost == "copystart") {
         </tr>
         <tr>
         <td align='center'>新频道名称：</td>
-        <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' style='width:250px' /></td>
+        <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' style='width:260px' /></td>
         </tr>
         <tr>
         <td align='center'>新频道标识：</td>
-        <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' style='width:250px' /></td>
+        <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' style='width:260px' /></td>
         </tr>
         <tr>
         <td align='center'>新附加表：</td>
-        <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' style='width:250px' /></td>
+        <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' style='width:260px' /></td>
         </tr>
         <tr>
         <td align='center'>复制模板：</td>
         <td>
-        <label><input name='copytemplet' type='radio' id='copytemplet' value='1' class='np' checked='checked' /> 复制</label>
-        &nbsp;
-        <label><input name='copytemplet' type='radio' id='copytemplet' class='np' value='0' /> 不复制</label>
+        <label><input type='radio' name='copytemplet' id='copytemplet' value='1' checked='checked'> 复制</label>
+        <label><input type='radio' name='copytemplet' id='copytemplet' value='0'> 不复制</label>
         </td>
         </tr>
         </table>
@@ -443,11 +442,11 @@ else if ($dopost == 'modifysearch') {
         $c3 = in_array('writer', $searchinfo['mainfields']) ? 'checked' : '';
         $c4 = in_array('source', $searchinfo['mainfields']) ? 'checked' : '';
         $c5 = in_array('senddate', $searchinfo['mainfields']) ? 'checked' : '';
-        $mainfields = '<label><input type="checkbox" name="mainfields[]" '.$c1.' value="iscommend" class="np" /> 是否推荐</label> ';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c2.' value="typeid" class="np" /> 栏目</label> ';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c3.' value="writer" class="np" /> 作者</label> ';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c4.' value="source" class="np" /> 来源</label> ';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c5.' value="senddate" class="np" /> 发布时间</label> ';
+        $mainfields = '<label><input type="checkbox" name="mainfields[]" '.$c1.' value="iscommend" /> 是否推荐</label> ';
+        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c2.' value="typeid" /> 栏目</label> ';
+        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c3.' value="writer" /> 作者</label> ';
+        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c4.' value="source" /> 来源</label> ';
+        $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c5.' value="senddate" /> 发布时间</label> ';
         /*
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="description" />摘要</label>';
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="keywords" />关键词</label>';
@@ -464,9 +463,9 @@ else if ($dopost == 'modifysearch') {
         $dtp->LoadSource($channel['fieldset']);
         if ($channel['issystem'] < 0) {
             $checked = in_array('typeid', $addonfieldsarr) ? 'checked' : '';
-            $addonfields .= '<label><input type="checkbox" name="addonfields[]" '.$checked.' value="typeid" class="np" /> 栏目</label> ';
+            $addonfields .= '<label><input type="checkbox" name="addonfields[]" '.$checked.' value="typeid" /> 栏目</label> ';
             $checked = in_array('senddate', $addonfieldsarr) ? 'checked' : '';
-            $addonfields .= '<label><input type="checkbox" name="addonfields[]" '.$checked.' value="senddate" class="np" /> 发布时间</label> ';
+            $addonfields .= '<label><input type="checkbox" name="addonfields[]" '.$checked.' value="senddate" /> 发布时间</label> ';
         }
         if (is_array($dtp->CTags) && !empty($dtp->CTags)) {
             foreach ($dtp->CTags as $ctag) {
@@ -479,7 +478,7 @@ else if ($dopost == 'modifysearch') {
                 $label = $ctag->GetAtt('itemname');
                 if (in_array($datatype, $searchtype)) {
                     $checked = in_array($value, $addonfieldsarr) ? 'checked' : '';
-                    $addonfields .= "<label><input type=\"checkbox\" name=\"addonfields[]\" $checked value=\"$value\" class='np' /> $label</label> ";
+                    $addonfields .= "<label><input type=\"checkbox\" name=\"addonfields[]\" $checked value=\"$value\" /> $label</label> ";
                 }
             }
         }
@@ -583,9 +582,9 @@ else if ($dopost == 'modifysearch') {
                 } else if ($type == 'radio') {
                     $values = explode(',', $valuearr[$k]);
                     if (is_array($values) && !empty($values)) {
-                        $forms .= "<br>$itemname : <label><input type=\"radio\" name=\"".$name."\" value=\"\" checked />不限</label>";
+                        $forms .= "<br>$itemname : <label><input type=\"radio\" name=\"".$name."\" value=\"\" checked> 不限</label>";
                         foreach ($values as $value) {
-                            $forms .= "<label><input type=\"radio\" name=\"".$name."\" value=\"$value\" />$value</label>";
+                            $forms .= "<label><input type=\"radio\" name=\"".$name."\" value=\"$value\"> $value</label>";
                         }
                     }
                 } else if ($type == 'checkbox') {
@@ -593,7 +592,7 @@ else if ($dopost == 'modifysearch') {
                     if (is_array($values) && !empty($values)) {
                         $forms .= "<br>$itemname : ";
                         foreach ($values as $value) {
-                            $forms .= "<label><input type=\"checkbox\" name=\"".$name."[]\" value=\"$value\" />$value</label>";
+                            $forms .= "<label><input type=\"checkbox\" name=\"".$name."[]\" value=\"$value\"> $value</label>";
                         }
                     }
                 } elseif ($type == 'datetime') {
@@ -611,7 +610,7 @@ else if ($dopost == 'modifysearch') {
         $dsql->ExecuteNoneQuery($query);
         $formshtml = dede_htmlspecialchars($forms);
         echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';
-        echo "下面为生成的html表单，请自行复制，根据自己需求修改样式后粘贴到对应的模板中<br><br><textarea cols=\"100\"  rows=\"10\">".$forms."</textarea>";
+        echo "下面为生成的html表单，请自行复制，根据自己需求修改样式后粘贴到对应的模板中<br><br><textarea cols=\"100\" rows=\"10\">".$forms."</textarea>";
         echo '<br>预览：<br><hr>';
         echo $forms;
     }

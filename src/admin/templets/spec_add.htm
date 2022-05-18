@@ -102,9 +102,9 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;专题名称：</td>
+              <td width="90"> 专题名称：</td>
               <td width="400"><input name="title" type="text" id="title" value="" style="width:380px"></td>
-              <td width="90">&nbsp;简略标题：</td>
+              <td width="90"> 简略标题：</td>
               <td><input name="shorttitle" type="text" id="shorttitle" style="width:160px"></td>
             </tr>
           </table>
@@ -114,7 +114,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义属性：</td>
+              <td width="90"> 自定义属性：</td>
               <td><?php
             	$dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
             	$dsql->Execute();
@@ -122,7 +122,7 @@ table{border-collapse:separate}
             	{
             		if($trow->att!='j')
             		{
-            			echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] </label> ";
+            			echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] </label> ";
             		}
             	}
             	?></td>
@@ -134,10 +134,10 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;缩略图：</td>
+              <td width="90"> 缩略图：</td>
               <td>
                 <input name="picname" type="text" id="picname" style="width:300px">
-                <label><input type="checkbox" class="np" name="ddisremote" value="1" id="ddisremote">&nbsp;远程</label>
+                <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
@@ -151,7 +151,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;责任编辑：</td>
+              <td width="90"> 责任编辑：</td>
               <td><input name="writer" type="text" id="writer" style="width:160px"></td>
             </tr>
           </table>
@@ -185,7 +185,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;主分类：</td>
+              <td width="90"> 主分类：</td>
               <td>
                 <?php
                 $typeOptions = GetOptionList($cid, $cuserLogin->getUserChannel(), 0);
@@ -204,12 +204,12 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;关键词：</td>
+              <td width="90"> 关键词：</td>
               <td>
                 <input type="text" name="keywords" id="keywords" value="" style="width:360px">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
-              <td><label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" ; class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?> />自动获取，手动填写用","分开</label></td>
+              <td><label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo 'checked="1"'; ?> />自动获取，手动填写用","分开</label></td>
             </tr>
           </table>
         </td>
@@ -218,7 +218,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;专题简介：</td>
+              <td width="90"> 专题简介：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
             </tr>
           </table>
@@ -228,15 +228,15 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"  width="260">&nbsp;评论选项：</td>
+              <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" class="np" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>> 允许评论</label>
-                <label><input type="radio" name="notpost" class="np" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'"; ?>> 允许评论</label>
+                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'"; ?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
-                <label><input name="ishtml" type="radio" class="np" value="1" checked="1"> 生成网页</label>
-                <label><input type="radio" name="ishtml" class="np" value="0"> 仅动态浏览</label>
+                <label><input name="ishtml" type="radio" value="1" checked="1"> 生成网页</label>
+                <label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
               </td>
             </tr>
           </table>
@@ -246,7 +246,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;专题模板：</td>
+              <td width="90"> 专题模板：</td>
               <td  width="260">
                 <input name="templet" type="text" id="templet" value="<?php echo $cfg_df_style?>/article_spec.htm" style="width:160px">
                 <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
@@ -261,7 +261,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;发布时间：</td>
+              <td width="90"> 发布时间：</td>
               <td  width="260"><?php
               $nowtime = GetDateTimeMk(time());
               echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker' style='width:160px'>";
@@ -321,8 +321,8 @@ table{border-collapse:separate}
             <tr>
               <td>文档来源：</td>
               <td colspan="2">
-                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="0" class="np" checked> 按文章列表</label>
-                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1" class="np"> 自动获取文档</label>
+                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="0" checked> 按文章列表</label>
+                <label><input name="isauto<?php echo $i?>" type="radio" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
                 <label>关键词：<input name="keywords<?php echo $i?>" type="text" id="keywords<?php echo $i?>" value="" size="16">（逗号分开）</label>
                 栏目ID：<label><input name="typeid<?php echo $i?>" type="text" id="_typeid<?php echo $i?>" value="0" size="4"></label>
               </td>

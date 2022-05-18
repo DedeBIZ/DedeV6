@@ -133,7 +133,7 @@
 					$fields['tag'] = dede_htmlspecialchars($fields['tag']);
 					?>
 					<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-						<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id']; ?>" class='np'></td>
+						<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id']; ?>"></td>
 						<td>{dede:field.id/}</td>
 						<td><a href="../apps/tags.php?/<?php echo $fields['id']; ?>/" target="_blank">{dede:field.tag/}</a></td>
 						<td><input type="text" value="<?php echo $fields['count']; ?>" id="count<?php echo $fields['id']; ?>" size='5'></td>
@@ -150,7 +150,7 @@
 					{/dede:datalist}
 					<tr>
 						<td align="center" class="py-3">
-							<input type="checkbox" onclick="checkall(this.form,'ids')" name="all" class="np"> 全选
+							<label><input type="checkbox" onclick="checkall(this.form,'ids')" name="all"> 全选</label>
 							<button type="button" onclick="document.form3.submit()" class="btn btn-danger btn-sm">删除</button>
 						</td>
 						<td colspan="7" align="center">{dede:pagelist/}</td>

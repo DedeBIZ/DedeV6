@@ -71,7 +71,7 @@
 			</tr>
 			{dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
 			<tr align="center" onMouseMove="javascript:this.bgColor='#F8FCF1';" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-				<td><input name="id" type="checkbox" id="id" value="{dede:field.id/}" class="np"></td>
+				<td><input type="checkbox" name="id" id="id" value="{dede:field.id/}"></td>
 				<td>{dede:field.id /}</td>
 				<td>{dede:field.mid function='username(@me)'/}</td>
 				<td><a href='archives_do.php?dopost=editArchives&aid={dede:field.aid/}'>{dede:field.title /}</a></td>

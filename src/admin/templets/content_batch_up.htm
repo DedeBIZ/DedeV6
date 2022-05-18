@@ -96,7 +96,7 @@
           <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td colspan="2">
-                <label><input name="seltime" type="checkbox" class="np" id="seltime" value="1" onClick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
+                <label><input type="checkbox" name="seltime" id="seltime" value="1" onClick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
               </td>
             </tr>
             <tr id="seltimeField" style="display:none">
@@ -117,10 +117,10 @@
       <tr>
         <td>操作：</td>
         <td>
-          <label><input name="action" type="radio" class="np" id="checkradio" onClick="ShowHideMove()" value="check" checked="1"> 审核文档</label>
-          <label><input name="action" type="radio" class="np" value="makehtml" id="makehtmlradio" onClick="ShowHideMove()"> 更新HTML</label>
-          <label><input name="action" type="radio" class="np" value="move" id="moveradio" onClick="ShowHideMove()"> 移动文档</label>
-          <label><input name="action" type="radio" class="np" id="delradio" value="del" onClick="ShowHideMove()"> 删除文档</label>
+          <label><input type="radio" name="action" value="check" onClick="ShowHideMove()" checked="1"> 审核文档</label>
+          <label><input type="radio" name="action" value="makehtml" onClick="ShowHideMove()"> 更新HTML</label>
+          <label><input type="radio" name="action" value="move" onClick="ShowHideMove()"> 移动文档</label>
+          <label><input type="radio" name="action" value="del" onClick="ShowHideMove()"> 删除文档</label>
         </td>
       </tr>
       <tr>
@@ -182,9 +182,9 @@
       </tr>
       <tr>
         <td colspan="2" align="center">
-          <label><input type="radio" value="delnulltitle" name="action" class="np"> 删除空标题的文章</label>
-          <label><input type="radio" value="delnullbody" name="action" class="np"> 删除内容为空的文章</label>
-          <label><input type="radio" value="modddpic" name="action" class="np"> 更正缩图错误</label>
+          <label><input type="radio" value="delnulltitle" name="action"> 删除空标题的文章</label>
+          <label><input type="radio" value="delnullbody" name="action"> 删除内容为空的文章</label>
+          <label><input type="radio" value="modddpic" name="action"> 更正缩图错误</label>
         </td>
       </tr>
       <tr>

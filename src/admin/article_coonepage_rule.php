@@ -62,22 +62,20 @@ else if ($action == 'editload') {
       <tr>
         <td>原内容编码：</td>
         <td colspan="2">
-          <label><input type="radio" name="lang" value="utf-8" <?php echo ($row['lang'] == 'utf-8' ? ' checked="checked" ' : ''); ?>> UTF-8</label>
-          <label><input type="radio" name="lang" value="gb2312" <?php echo ($row['lang'] == 'gb2312' ? ' checked="checked" ' : ''); ?>> GB2312/GBK</label>
+          <label><input type="radio" name="lang" value="utf-8" <?php echo ($row['lang'] == 'utf-8' ? 'checked="checked"' : ''); ?>> UTF-8</label>
+          <label><input type="radio" name="lang" value="gb2312" <?php echo ($row['lang'] == 'gb2312' ? 'checked="checked"' : ''); ?>> GB2312/GBK</label>
         </td>
       </tr>
       <tr>
         <td>用作文章来源：</td>
         <td colspan="2">
-          <label><input type="radio" name="issource" value="0" <?php echo ($row['issource'] == 0 ? ' checked="checked" ' : ''); ?>> 否</label>
-          <label><input name="issource" type="radio" value="1" <?php echo ($row['issource'] == 1 ? ' checked="checked" ' : ''); ?>> 是</label>
+          <label><input type="radio" name="issource" value="0" <?php echo ($row['issource'] == 0 ? 'checked="checked"' : ''); ?>> 否</label>
+          <label><input type="radio" name="issource" value="1" <?php echo ($row['issource'] == 1 ? 'checked="checked"' : ''); ?>> 是</label>
         </td>
       </tr>
       <tr>
         <td>网站网址：</td>
-        <td colspan="2">
-          <input name="url" type="text" id="url" value="<?php echo $row['url']; ?>" style="width:200px" />
-        </td>
+        <td colspan="2"><input name="url" type="text" id="url" value="<?php echo $row['url']; ?>" style="width:260px"></td>
       </tr>
       <tr>
         <td></td>

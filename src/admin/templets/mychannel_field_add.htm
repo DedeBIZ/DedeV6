@@ -120,15 +120,15 @@
     <tr>
       <td>字段类型：</td>
       <td>
-	      <label><input name="autofield" type="radio" value="1" class="np" checked="checked"> 系统自动生成表单字段</label>
-        <label><input type="radio" name="autofield" class="np" value="0"> 已经固化在发布表单中字段</label>
+	      <label><input type="radio" name="autofield" value="1" checked="checked"> 系统自动生成表单字段</label>
+        <label><input type="radio" name="autofield" value="0"> 已经固化在发布表单中字段</label>
       </td>
     </tr>
     <tr>
       <td>前台参数：</td>
       <td>
-        <label><input name="islist" type="checkbox" class="np" id="islist" value="1"> 使字段可以在列表的底层模板中获得(自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择)</label><br>
-        <label><input name="notsend" type="checkbox" class="np" id="notsend" value="1"> 前台投稿及采集规则禁用本字段</label>
+        <label><input type="checkbox" name="islist" id="islist" value="1"> 使字段可以在列表的底层模板中获得(自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择)</label><br>
+        <label><input type="checkbox" name="notsend" id="notsend" value="1"> 前台投稿及采集规则禁用本字段</label>
      </td>
     </tr>
     <tr> 
@@ -136,34 +136,34 @@
         <span class="style2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td>
       	<input name="isnull" type="hidden" value="1">
-        <label><input name="spage" type="radio"  value="split" class="np"> 是</label>
-        <label><input name="spage" type="radio"  value="no" class="np" checked="1"> 否</label>
+        <label><input type="radio" name="spage" value="split"> 是</label>
+        <label><input type="radio" name="spage" value="no" checked="1"> 否</label>
      </td>
     </tr>
     <tr> 
       <td>数据类型：</td>
       <td id="dataType">
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype1" value="text" checked='1'> 单行文本(varchar) </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype2" value="textchar"> 单行文本(char) </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype3" value="multitext"> 多行文本 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype4" value="htmltext"> HTML文本 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype1" value="text" checked='1'> 单行文本(varchar) </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype2" value="textchar"> 单行文本(char) </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype3" value="multitext"> 多行文本 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype4" value="htmltext"> HTML文本 </label></div>
         <br class="cls">
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype5" value="textdata"> 文本保存HTML数据 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype6" value="int"> 整数类型 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype7" value="float"> 小数类型 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype8" value="datetime"> 时间类型 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype5" value="textdata"> 文本保存HTML数据 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype6" value="int"> 整数类型 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype7" value="float"> 小数类型 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype8" value="datetime"> 时间类型 </label></div>
         <br class="cls">
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype9" value="img"> 图片 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype10" value="imgfile"> 图片(仅网址) </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype11" value="media"> 多媒体文件 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype12" value="addon"> 附件类型 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype9" value="img"> 图片 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype10" value="imgfile"> 图片(仅网址) </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype11" value="media"> 多媒体文件 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype12" value="addon"> 附件类型 </label></div>
         <br class="cls">
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype13" value="select"> 使用option下拉框 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype14" value="radio"> 使用radio选项卡 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype15" value="checkbox"> Checkbox多选框 </label></div>
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype16" value="stepselect"> 联动类型 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype13" value="select"> 使用option下拉框 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype14" value="radio"> 使用radio选项卡 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype15" value="checkbox"> Checkbox多选框 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype16" value="stepselect"> 联动类型 </label></div>
         <br class="cls">
-        <div class="nw"><label><input type="radio" class="np" name="dtype" id="dtype16" value="relation"> 关联内容 </label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype16" value="relation"> 关联内容 </label></div>
        </td>
     </tr>
     <tr id="_relation" style="display:none"> 
@@ -185,7 +185,7 @@
             }
           ?>
         </select>
-        <label><input name="relation_automake" type="checkbox" class="np" id="relation_automake" value="1"> 发布时候自动更新关联内容HTML</label>
+        <label><input type="checkbox" name="relation_automake" id="relation_automake" value="1"> 发布时候自动更新关联内容HTML</label>
       </td>
     </tr>
     <tr> 

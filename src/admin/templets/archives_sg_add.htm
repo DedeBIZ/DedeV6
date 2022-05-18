@@ -66,7 +66,7 @@ table{border-collapse:separate}
       <td colspan="4" class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;<?php echo $cInfos['titlename']; ?>：</td>
+            <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
             <td><input name="title" type="text" id="title" value="" style="width:380px"></td>
           </tr>
         </table>
@@ -76,14 +76,14 @@ table{border-collapse:separate}
       <td colspan="4" class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;自定义属性：</td>
+            <td width="90"> 自定义属性：</td>
             <td>
             	<?php
             	$dsql->SetQuery("Select * From `#@__arcatt` where att<>'j' And att<>'p' order by sortid asc");
             	$dsql->Execute();
             	while($trow = $dsql->GetObject())
             	{
-            		echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
+            		echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
             	}
             	?>
             </td>
@@ -95,10 +95,10 @@ table{border-collapse:separate}
       <td colspan="4" class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;缩略图：</td>
+            <td width="90"> 缩略图：</td>
             <td>
               <input name="picname" type="text" id="picname" style="width:300px">
-              <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="np">&nbsp;远程</label>
+              <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
               <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
               <button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
               <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
@@ -117,7 +117,7 @@ table{border-collapse:separate}
       <td colspan="4" class="bline">
         <table width="900" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="90">&nbsp;发布栏目：</td>
+          <td width="90"> 发布栏目：</td>
           <td>
             <span id="typeidct">
             <?php
@@ -140,7 +140,7 @@ table{border-collapse:separate}
       <td colspan="4" class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;浏览权限：</td>
+            <td width="90"> 浏览权限：</td>
             <td>
             	<select name="arcrank" id="arcrank" style="width:160px">
               <?php

@@ -36,7 +36,7 @@
 								<td width="30%">文档关键词维护</td>
 								<td width="70%" align="right">
 									<form name="form1" action="article_keywords_main.php">
-										<input type="text" name="keyword" placeholder="请输入搜索词" style="width:160px">&nbsp;
+										<input type="text" name="keyword" placeholder="请输入搜索词" style="width:160px"> 
 										<button type="submit" name="sb" value="" class="btn btn-success btn-sm">保存</button>
 									</form>
 								</td>
@@ -70,7 +70,7 @@
 					<input type="hidden" name="dopost" value="saveall">
 					{dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
 					<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-						<td><input name="aids[]" type="checkbox" value="{dede:field.aid/}" class="np" checked='1'></td>
+						<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked='1'></td>
 						<td><input type="hidden" value="{dede:field.keyword/}" name="keyword_{dede:field.aid/}"> {dede:field.keyword/}</td>
 						<td>
 							<input type="hidden" value="{dede:field.rpurl/}" name="rpurlold_{dede:field.aid/}">
@@ -79,8 +79,8 @@
 						<td><input type="text" size="6" class="nnpp" value="{dede:field.rank/}" name="rank_{dede:field.aid/}"></td>
 						<td>
 							<input type="hidden" name="staold_{dede:field.aid/}" value="{dede:field.sta/}">
-							<label><input type="checkbox" name="isnouse_{dede:field.aid/}" class="np" value="1" {dede:field.sta function="GetSta(@me)"/}> 禁用</label>
-							<label><input type="checkbox" name="isdel_{dede:field.aid/}" class="np" value="1"> 删除</label>
+							<label><input type="checkbox" name="isnouse_{dede:field.aid/}" value="1" {dede:field.sta function="GetSta(@me)"/}> 禁用</label>
+							<label><input type="checkbox" name="isdel_{dede:field.aid/}" value="1"> 删除</label>
 						</td>
 					</tr>
 					{/dede:datalist}

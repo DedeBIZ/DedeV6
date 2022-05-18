@@ -150,9 +150,9 @@
       <tr>
         <td>前台列表和内容页公开：</td>
         <td>
-          <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?> class='np'> 完全公开 </label>
-          <label><input name="public" type="radio" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?> class='np'> 公开审核过的 </label>
-          <label><input name="public" type="radio" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?> class='np'> 不公开 </label>
+          <label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?>> 完全公开 </label>
+          <label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?>> 公开审核过的 </label>
+          <label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?>> 不公开 </label>
         </td>
       </tr>
       <tr>

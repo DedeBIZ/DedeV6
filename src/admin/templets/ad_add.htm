@@ -122,18 +122,15 @@
             <tr>
               <td>时间限制：</td>
               <td colspan="2">
-                <input name="timeset" type="radio" class="np" value="0" checked="1" id="notimelimit">
-                <label for="notimelimit"> 永不过期</label>
-                <input type="radio" name="timeset" class="np" value="1" id="timelimit">
-                <label for="timelimit"> 在设内时间内有效</label>
+                <label><input type="radio" name="timeset" value="0" checked="1"> 永不过期</label>
+                <label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
               </td>
             </tr>
             <tr>
               <td>投放时间：</td>
-              <td colspan="2">从
-                <input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" style="width:160px">
-                到
-                <input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" style="width:160px">
+              <td colspan="2">
+                从：<input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" style="width:160px">
+                到：<input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" style="width:160px">
               </td>
             </tr>
             <tr>

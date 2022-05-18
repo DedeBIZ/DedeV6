@@ -91,9 +91,9 @@
 							</tr>
 							{dede:array.shops_paymentarr}
 							<tr onMouseMove="javascript:this.bgColor='#f8f8f8';" onMouseOut="javascript:this.bgColor='#ffffff';">
-								<td width="10%" align="right" style="vertical-align:middle;"><input name="paytype" type="radio" value="{dede:value.id/}"></td>
-								<td width="20%" valign="middle" style="vertical-align:middle;"> {dede:value.name/} </td>
-								<td width="60%"> {dede:value.description/} </td>
+								<td width="10%" align="right" style="vertical-align:middle"><input type="radio" name="paytype" value="{dede:value.id/}"></td>
+								<td width="20%" valign="middle" style="vertical-align:middle">{dede:value.name/}</td>
+								<td width="60%">{dede:value.description/}</td>
 								<td width="10%" align="center"> <span class="fc-f60">{dede:value.fee/}元</span></td>
 							</tr>
 							{/dede:array}

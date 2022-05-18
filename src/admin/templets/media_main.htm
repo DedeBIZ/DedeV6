@@ -109,7 +109,7 @@
     <form name="form1">
       {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
       <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}" class="np"></td>
+        <td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}"></td>
         <td><a href="{dede:field.url/}" title="{dede:field.url/}" target="_blank">{dede:field.title/}</a></td>
         <td>{dede:field.filesize function='GetFileSize(@me)'/}</td>
         <td>{dede:field.adminname function="UploadAdmin(@me,$fields['membername'])"/}</td>

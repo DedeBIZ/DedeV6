@@ -110,7 +110,7 @@
 			{dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
 			<tr align="center" onMouseOut="javascript:this.bgColor='#ffffff';" >
 				<td><?php echo $fields['id']?></td>
-				<td><input name="ids" type="checkbox" id="ids" value="<?php echo $fields['id']?>" class="np"></td>
+				<td><input type="checkbox" name="ids" id="ids" value="<?php echo $fields['id']?>"></td>
 				<td align="left"><?php echo $fields['url']; ?></td>
 				<td><?php echo $fields['lang']; ?></td>
 				<td><?php echo $fields['title']; ?></td>
@@ -147,15 +147,15 @@
 				<tr>
 					<td>原内容编码：</td>
 					<td colspan="2">
-						<label><input type="radio" name="lang" value="utf-8" checked="checked"> UTF-8 </label>
+						<label><input type="radio" name="lang" value="utf-8" checked="checked"> UTF-8</label>
 						<label><input type="radio" name="lang" value="gb2312"> GB2312/GBK</label>
 					</td>
 				</tr>
 				<tr>
 					<td>用作文章来源：</td>
 					<td colspan="2">
-						<label><input type="radio" name="issource" value="0"> 否 </label>
-						<label><input name="issource" type="radio" value="1" checked="checked"> 是</label>
+						<label><input type="radio" name="issource" value="0"> 否</label>
+						<label><input type="radio" name="issource" value="1" checked="checked"> 是</label>
 					</td>
 				</tr>
 				<tr>

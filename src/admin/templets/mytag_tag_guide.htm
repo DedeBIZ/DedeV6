@@ -62,20 +62,16 @@
                   <table width="98%" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t2.jpg">
-                        <input name="liststyle" class="np" type="radio" onClick="ChangeListStyle()" value="1" checked="1"></label>
+                        <label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="1" checked="1"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t1.jpg">
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="2"></label>
+                        <label><img src="../static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="2"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t3.jpg">
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="3"></label>
+                        <label><img src="../static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="3"></label>
                       </td>
                       <td>
-                        <label><img src="../static/web/img/g_t4.jpg">
-                        <input type="radio" class="np" onClick="ChangeListStyle()" name="liststyle" value="4"></label>
+                        <label><img src="../static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="4"></label>
                       </td>
                     </tr>
                   </table>
@@ -129,10 +125,10 @@
               </tr>
               <tr>
                 <td>高级筛选：
-                  <label><input name="types[]" type="checkbox" id="type[]" value="image" class="np"> 带缩略图</label>
-                  <label><input name="types[]" type="checkbox" id="type[]" value="commend" class="np"> 推荐</label>
-                  <label><input name="types[]" type="checkbox" id="type[]" value="spec" class="np"> 专题</label>
-                  关键词：<input name="keyword" type="text" id="keyword">（&quot;,&quot;逗号分开）
+                  <label><input type="checkbox" name="types[]" id="type[]" value="image"> 带缩略图</label>
+                  <label><input type="checkbox" name="types[]" id="type[]" value="commend"> 推荐</label>
+                  <label><input type="checkbox" name="types[]" id="type[]" value="spec"> 专题</label>
+                  关键词：<input type="text" name="keyword" id="keyword">（&quot;,&quot;逗号分开）
                 </td>
               </tr>
               <tr>
@@ -147,8 +143,8 @@
                     <option value="scores">评论积分</option>
                     <option value="rand">随机获取</option>
                   </select>
-                  <label><input name="order" type="radio" class="np" value="desc" checked='1'> 由高到低</label>
-                  <label><input type="radio" name="order" class="np" value="asc"> 由低到高</label>
+                  <label><input type="radio" name="order" value="desc" checked='1'> 由高到低</label>
+                  <label><input type="radio" name="order" value="asc"> 由低到高</label>
                 </td>
               </tr>
               <tr>

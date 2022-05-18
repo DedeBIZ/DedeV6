@@ -183,15 +183,15 @@
             <tr>
               <td width="260" class="bline" style="padding-left:10px">是否支持投稿：</td>
               <td class="bline">
-                <label><input type="radio" name="issend" value="0" class="np" <?php if($issend==0) echo " checked='checked' "; ?>> 不支持</label>
-                <label><input type="radio" name="issend" value="1" class="np" <?php if($issend==1) echo " checked='checked' "; ?>> 支持</label>
+                <label><input type="radio" name="issend" value="0" <?php if($issend==0) echo " checked='checked' "; ?>> 不支持</label>
+                <label><input type="radio" name="issend" value="1" <?php if($issend==1) echo " checked='checked' "; ?>> 支持</label>
               </td>
             </tr>
             <tr>
               <td width="260" class="bline" style="padding-left:10px">是否隐藏栏目：</td>
               <td class="bline">
-                <label><input type="radio" name="ishidden" value="0" class="np" checked="checked"> 显示</label>
-                <label><input type="radio" name="ishidden" value="1" class="np"> 隐藏</label>
+                <label><input type="radio" name="ishidden" value="0" checked="checked"> 显示</label>
+                <label><input type="radio" name="ishidden" value="1"> 隐藏</label>
               </td>
             </tr>
             <tr>
@@ -283,8 +283,8 @@
               <td style="padding:0">
                 <table cellspacing="1" cellpadding="1" class="table-borderless">
                   <tr >
-                    <td><input name="typedir" type="text" id="typedir" class="pubinputs" style="width:260px"></td>
-                    <td><input name="upinyin" type="checkbox" id="upinyin" class="np" value="1" onClick="CheckTypeDir()"><label for="upinyin">&nbsp;拼音</label></td>
+                    <td><input type="text" name="typedir" id="typedir" class="pubinputs" style="width:260px"></td>
+                    <td><input type="checkbox" name="upinyin" id="upinyin" value="1" onClick="CheckTypeDir()"><label for="upinyin"> 拼音</label></td>
                   </tr>
                 </table>
               </td>
@@ -292,27 +292,21 @@
             <tr>
               <td class="bline" style="padding-left:10px">目录相对位置：</td>
               <td class="bline">
-                <input name="referpath" type="radio" id="truepath1" class="np" value="parent" checked="chekced">
-                <label for="truepath1">上级目录</label>
+                <label><input name="referpath" type="radio" value="parent" checked="chekced"> 上级目录</label>
                 <?php
                 if($moresite==0){
                 ?>
-                <input name="referpath" type="radio" id="truepath2" class="np" value="cmspath">
-                <label for="truepath2">CMS根目录</label>
-                <input name="referpath" type="radio" id="truepath3" class="np" value="basepath">
-                <label for="truepath3">站点根目录</label>
+                <label><input name="referpath" type="radio" value="cmspath"> CMS根目录</label>
+                <label><input name="referpath" type="radio" value="basepath"> 站点根目录</label>
                 <?php } ?>
               </td>
             </tr>
             <tr>
               <td style="padding-left:10px">栏目列表选项：</td>
               <td>
-                <input type="radio" name="isdefault" id="isdefault1" value="1" class="np" checked="checked">
-                <label for="isdefault1">链接到默认页</label>
-                <input type="radio" name="isdefault" id="isdefault0" value="0" class="np">
-                <label for="isdefault0">链接到列表第一页</label>
-                <input type="radio" name="isdefault" id="isdefault-1" value="-1" class="np">
-                <label for="isdefault-1">使用动态页</label>
+                <label><input type="radio" name="isdefault" value="1" checked="checked"> 链接到默认页</label>
+                <label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
+                <label><input type="radio" name="isdefault" value="-1"> 使用动态页</label>
               </td>
             </tr>
             <tr>
@@ -322,12 +316,9 @@
             <tr>
               <td class="bline" style="padding-left:10px">栏目属性：</td>
               <td class="bline">
-                <input name="ispart" type="radio" id="ispart0" value="0" class="np" checked="checked">
-                <label for="ispart0">最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                <input name="ispart" type="radio" id="ispart1" value="1" class="np">
-                <label for="ispart1">频道封面（栏目本身不允许发布文档）</label> <br>
-                <input name="ispart" type="radio" id="ispart2" value="2" class="np">
-                <label for="ispart2">外部连接（在"文件保存目录"处填写网址）</label>
+                <label><input type="radio" name="ispart" value="0" checked="checked"> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+                <label><input type="radio" name="ispart" value="1"> 频道封面（栏目本身不允许发布文档）</label> <br>
+                <label><input type="radio" name="ispart" id="ispart2" value="2"> 外部连接（在"文件保存目录"处填写网址）</label>
               </td>
             </tr>
             <tr id="helpvarco" style="display:none">
@@ -338,12 +329,9 @@
             <tr>
               <td style="padding-left:10px">栏目交叉：<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvarco')" style="cursor:pointer"></i> 仅适用[最终列表栏目]</td>
               <td>
-                <input name="cross" type="radio" id="cross0" value="0" class='np' onClick="CheckCross()" checked='1'>
-                <label for="cross0">不交叉</label>
-                <input name="cross" type="radio" id="cross1" value="1" class='np' onClick="CheckCross()">
-                <label for="cross1">自动获取同名栏目内容</label>
-                <input name="cross" type="radio" id="cross2" value="2" class='np' onClick="CheckCross()">
-                <label for="cross2">手工指定交叉栏目ID（用逗号分开）</label>
+                <label><input type="radio" name="cross" id="cross0" value="0" onClick="CheckCross()" checked="1"> 不交叉</label>
+                <label><input type="radio" name="cross" id="cross1" value="1" onClick="CheckCross()"> 自动获取同名栏目内容</label>
+                <label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()"> 手工指定交叉栏目ID（用逗号分开）</label>
                 <br>
                 <textarea name="crossid" id="crossid" style="display:none"></textarea>
               </td>
@@ -380,8 +368,8 @@
             <tr>
               <td class="bline" width="260" style="padding-left:10px">多站点支持：</td>
               <td class="bline">
-                <label><input name="moresite" type="radio" class="np" value="0" checked="checked">&nbsp;不启用&nbsp;</label>
-                <label><input type="radio" name="moresite" class="np" value="1">&nbsp;启用</label>
+                <label><input type="radio" name="moresite" value="0" checked="checked"> 不启用</label>
+                <label><input type="radio" name="moresite" value="1"> 启用</label>
               </td>
             </tr>
             <tr>

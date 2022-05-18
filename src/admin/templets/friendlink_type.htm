@@ -36,8 +36,8 @@
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>">
       <tr align="center">
         <td><?php echo $row->id; ?></td>
-        <td><input name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" type="text" id="pname_<?php echo $k?>" style="width:90%"></td>
-        <td><label><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" value="1" checked='1' class='np'> 保留</label></td>
+        <td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" id="pname_<?php echo $k?>" style="width:90%"></td>
+        <td><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked='1'> 保留</label></td>
       </tr>
       <?php
     	}
@@ -47,8 +47,8 @@
         <td colspan="3" bgcolor="#f8f8f8">新增一个网站类型：</td>
       </tr>
       <tr align="center">
-        <td colspan="2"><input name="pname_new" type="text" id="pname_new" class="pubinputs" style="width:90%"></td>
-        <td align="center"><label><input name="check_new" type="checkbox" id="check_new" value="1" checked="1" class="np"> 新增</label></td>
+        <td colspan="2"><input type="text" name="pname_new" id="pname_new" class="pubinputs" style="width:90%"></td>
+        <td align="center"><label><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> 新增</label></td>
       </tr>
       <tr>
         <td colspan="3" align="center" bgcolor="#f8f8f8"><input name="imageField" type="submit" class="np coolbg" value="确定"></td>

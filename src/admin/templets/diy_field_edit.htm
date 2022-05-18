@@ -121,8 +121,8 @@ td{ padding:6px; padding-left:6px; }
         <span class="style2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td>
       	<input name="isnull" type="hidden" value="1">
-        <label><input name="spage" type="radio"  value="split"<?php if($ctag->GetAtt('page')=='split') echo " checked='1' "; ?> class='np'> 是</label>
-        <label><input name="spage" type="radio"  value="no"<?php if($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo " checked='1' "; ?> class='np'> 否</label>
+        <label><input type="radio" name="spage" value="split"<?php if($ctag->GetAtt('page')=='split') echo "checked='1'"; ?>> 是</label>
+        <label><input type="radio" name="spage" value="no"<?php if($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'"; ?>> 否</label>
       </td>
     </tr>
     <tr> 

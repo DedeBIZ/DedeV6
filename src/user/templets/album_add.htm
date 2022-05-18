@@ -82,9 +82,9 @@
 											<input name="ddmaxwidth" type="hidden" value="<?php echo $cfg_album_ddwidth; ?>">
 											<p class="cellBg">
 												<label>表现方式：</label>
-												<label><input name="pagestyle" type="radio" id="pagestyle1" onclick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'"; ?>> 多页多图显示（适用于QQ表情等）</label>
-												<label><input name="pagestyle" type="radio" id="pagestyle2" onclick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'"; ?>> 多页单图显示（幻灯）</label>
-												<label><input name="pagestyle" type="radio" id="pagestyle3" onclick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'"; ?>> 多行多列显示（缩略图）</label>
+												<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'"; ?>> 多页多图显示（适用于QQ表情等）</label>
+												<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'"; ?>> 多页单图显示（幻灯）</label>
+												<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'"; ?>> 多行多列显示（缩略图）</label>
 												<div id="spagelist" class="mTB10" style="display:none">每页图片数：<input name='pagpicnum' id='pagpicnum' size='10' class="text" value='<?php echo $cfg_album_pagesize; ?>'></div>
 											</p>
 											<p>

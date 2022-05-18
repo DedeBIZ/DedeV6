@@ -204,9 +204,7 @@ else if ($action == 'setup') {
     <td></td>
   </tr>
   <tr>
-    <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' style='width:98%;height:160px'>{$filelist}</textarea>
-    </td>
+    <td height='160' colspan='2'><textarea name='filelists' id='filelists' style='width:98%;height:160px'>{$filelist}</textarea></td>
   </tr>
   <tr>
     <td>对于已存在文件处理方法：</td>

@@ -97,7 +97,7 @@
                       <td align="left">目录默认页名称：</td>
                       <td align="left">
                         <input name="defaultpage" type="text" id="defaultpage" value="index.html" style="width:260px">
-                        <label><input name="nodefault" type="checkbox" id="nodefault" value="1"> 不使用目录默认主页</label>
+                        <label><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认主页</label>
                       </td>
                     </tr>
                     <tr>
@@ -138,16 +138,16 @@
                   <table width="98%" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%" height="126">
-                        <label><img src="../static/web/img/g_t2.jpg"><input name="liststyle" type="radio" onClick="ChangeListStyle()" value="1"></label>
+                        <label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="1"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t1.jpg"><input type="radio" onClick="ChangeListStyle()" name="liststyle" value="2"></label>
+                        <label><img src="../static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="2"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t3.jpg"><input type="radio" onClick="ChangeListStyle()" name="liststyle" value="3"></label>
+                        <label><img src="../static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="3"></label>
                       </td>
                       <td>
-                        <label><img src="../static/web/img/g_t4.jpg"><input name="liststyle" type="radio" onClick="ChangeListStyle()" value="4" checked></label>
+                        <label><img src="../static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="4" checked></label>
                       </td>
                     </tr>
                   </table>
@@ -212,10 +212,10 @@
               </tr>
               <tr>
                 <td align="left">高级筛选：
-                  <label><input name="types[]" type="checkbox" id="type1" value="image"> 带缩略图</label>
-                  <label><input name="types[]" type="checkbox" id="type2" value="commend"> 推荐</label>
-                  <label><input name="types[]" type="checkbox" id="type3" value="spec"> 专题</label>
-                  关键词：<input name="keywordarc" type="text" id="keywordarc">（&quot;,&quot;逗号分开）
+                  <label><input type="checkbox" name="types[]" id="type1" value="image"> 带缩略图</label>
+                  <label><input type="checkbox" name="types[]" id="type2" value="commend"> 推荐</label>
+                  <label><input type="checkbox" name="types[]" id="type3" value="spec"> 专题</label>
+                  关键词：<input type="text" name="keywordarc" id="keywordarc">（&quot;,&quot;逗号分开）
                 </td>
               </tr>
               <tr>

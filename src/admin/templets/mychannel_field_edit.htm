@@ -120,14 +120,14 @@
       <tr>
         <td>字段类型：</td>
         <td>
-          <label><input name="autofield" type="radio" class="np" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");  ?>> 系统自动生成表单字段</label>
-          <label><input name="autofield" type="radio" class="np" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");  ?>> 已经固化在发布表单中字段</label></td>
+          <label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");  ?>> 系统自动生成表单字段</label>
+          <label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");  ?>> 已经固化在发布表单中字段</label></td>
       </tr>
       <tr>
         <td>前台参数：</td>
         <td>
-          <label><input name="islist" type="checkbox" class="np" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");  ?>> 使字段可以在列表的底层模板中获得（自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择）</label><br>
-          <label><input name="notsend" type="checkbox" class="np" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");  ?> /> 前台投稿及采集规则禁用本字段</label>
+          <label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");  ?>> 使字段可以在列表的底层模板中获得（自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择）</label><br>
+          <label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");  ?> /> 前台投稿及采集规则禁用本字段</label>
         </td>
       </tr>
       <tr>
@@ -189,7 +189,7 @@
               }
             ?>
           </select>
-          <label><input name="relation_automake" type="checkbox" class="np" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : ""; ?>> 发布时候自动更新关联内容HTML</label>
+          <label><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : ""; ?>> 发布时候自动更新关联内容HTML</label>
         </td>
       </tr>
       <tr>
@@ -197,8 +197,8 @@
           <span class="style2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
         <td>
           <input name="isnull" type="hidden" value="1">
-          <label><input name="spage" type="radio" value="split" <?php if($ctag->GetAtt('page')=='split') echo " checked='1' "; ?> class='np'> 是</label>
-          <label><input name="spage" type="radio" value="no" <?php if($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo " checked='1' "; ?> class='np'> 否</label>
+          <label><input type="radio" name="spage" value="split" <?php if($ctag->GetAtt('page')=='split') echo "checked='1'"; ?>> 是</label>
+          <label><input type="radio" name="spage" value="no" <?php if($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'"; ?>> 否</label>
         </td>
       </tr>
       <tr>

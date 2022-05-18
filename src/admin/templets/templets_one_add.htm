@@ -77,19 +77,17 @@
             <tr>
               <td>是否编译内容：</td>
               <td>
-                <?php if(!DEDEBIZ_SAFE_MODE) { ?> <label><input name="ismake" type="radio" value="1"> 含模板标记，要编译</label> <?php } ?>
-                <label><input name="ismake" type="radio" value="0" checked> 不含模板标记，不需要编译</label>
+                <?php if(!DEDEBIZ_SAFE_MODE) { ?> <label><input type="radio" name="ismake" value="1"> 含模板标记，要编译</label> <?php } ?>
+                <label><input type="radio" name="ismake" value="0" checked> 不含模板标记，不需要编译</label>
               </td>
             </tr>
             <tr>
               <td colspan="2">
                 <div class="alert alert-warning mb-0">内容：模板里用{dede:field name='body'/}来获得</div>
               </td>
-          </tr>
-          <tr> 
-            <td colspan="2">
-              <?php GetEditor("body","","450","Default","print","false"); ?>
-              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"><?php GetEditor("body","","450","Default","print","false"); ?></td>
             </tr>
             <tr>
               <td colspan="2" align="center" class="py-3">

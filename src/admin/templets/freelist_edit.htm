@@ -85,7 +85,7 @@
                       <td align="left">目录默认页名称：</td>
                       <td align="left">
                         <input name="defaultpage" type="text" id="defaultpage" value="<?php echo $row['defaultpage']?>" style="width:260px">
-                        <label><input name="nodefault" type="checkbox" id="nodefault" value="1" <?php if($row['nodefault']==1) echo " checked"; ?>> 不使用目录默认主页</label>
+                        <label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if($row['nodefault']==1) echo "checked"; ?>> 不使用目录默认主页</label>
                       </td>
                     </tr>
                     <tr>
@@ -194,9 +194,9 @@
                 	if($setype=='') $setype = 'X';
                 	?>
                   高级筛选：
-                  <label><input name="types[]" type="checkbox" id="type1" value="image" <?php if(preg_match("#image#i",$setype)) echo ' checked'; ?>> 带缩略图</label>
-                  <label><input name="types[]" type="checkbox" id="type2" value="commend" <?php if(preg_match("#commend#i", $setype)) echo ' checked'; ?>> 推荐</label>
-                  <label><input name="types[]" type="checkbox" id="type3" value="spec" class="inputbut" <?php if(preg_match("#spec#i", $setype)) echo ' checked'; ?>> 专题</label>
+                  <label><input type="checkbox" name="types[]" id="type1" value="image" <?php if(preg_match("#image#i",$setype)) echo ' checked'; ?>> 带缩略图</label>
+                  <label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if(preg_match("#commend#i", $setype)) echo ' checked'; ?>> 推荐</label>
+                  <label><input type="checkbox" name="types[]" id="type3" value="spec" class="inputbut" <?php if(preg_match("#spec#i", $setype)) echo ' checked'; ?>> 专题</label>
                   关键词：<input name="keywordarc" type="text" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（&quot;,&quot;逗号分开）
                 </td>
               </tr>
@@ -225,8 +225,8 @@
                     <option value="lastpost">最后评论时间</option>
                     <option value="postnum">评论总数</option>
                   </select>
-                  <label><input name="order" type="radio" value="desc" <?php if($ctag->GetAtt('orderway')=='desc') echo " checked"; ?>> 由高到低</label>
-                  <label><input type="radio" name="order" value="asc" <?php if($ctag->GetAtt('orderway')=='asc') echo " checked"; ?>> 由低到高</label>
+                  <label><input type="radio" name="order" value="desc" <?php if($ctag->GetAtt('orderway')=='desc') echo "checked"; ?>> 由高到低</label>
+                  <label><input type="radio" name="order" value="asc" <?php if($ctag->GetAtt('orderway')=='asc') echo "checked"; ?>> 由低到高</label>
                 </td>
               </tr>
               <tr>
