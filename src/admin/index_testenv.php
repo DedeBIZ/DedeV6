@@ -129,10 +129,10 @@ if (IsWritable(DEDEDATA.'/common.inc.php')) {
 	$safeMsg[] = '数据配置data/common.inc.php文件，强烈建议以管理员权限设置禁止写入和执行';
 }
 if (!IsSSL()) {
-	$safeMsg[] = '站点尚未启用https，强烈建议您做安全证书';
+	$safeMsg[] = '站点尚未启用HTTPS，强烈建议您配置HTTPS证书';
 }
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	$safeMsg[] = 'php版本过低会无法正常使用系统，强烈建议升级到php7.x';
+	$safeMsg[] = 'PHP版本过低会无法正常使用系统，强烈建议升级到PHP7.X';
 }
 if (!DEDEBIZ_SAFE_MODE) {
 	$safeMsg[] = '系统运行环境为：非安全模式，强烈建议启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-sm">查看</a>';
