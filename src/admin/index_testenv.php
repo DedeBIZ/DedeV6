@@ -135,7 +135,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 	$safeMsg[] = 'php版本过低会无法正常使用系统，强烈建议升级到php7.x';
 }
 if (!DEDEBIZ_SAFE_MODE) {
-	$safeMsg[] = '系统运行环境为【非安全模式】，强烈建议启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-sm">查看</a>';
+	$safeMsg[] = '系统运行环境为：非安全模式，强烈建议启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-sm">查看</a>';
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
