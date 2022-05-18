@@ -862,7 +862,7 @@ else if ($dopost == 'attsDlg') {
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
-                echo "<label class='mr-1'><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]<label>";
+                echo "<label class='mr-1'><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
             }
             ?>
         </td>
