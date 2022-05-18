@@ -20,6 +20,7 @@
 		}
 		function CloseEditNode() {
 			$DE('editNode').style.display = 'none';
+			$DE('addNode').style.display = 'none';
 		}
 		//编辑
 		function EditNode(nid) {
@@ -179,8 +180,8 @@
 				</tr>
 				<tr>
 					<td colspan="3" align="center" class="py-3">
-						<button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存</button>
-						<button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button>
+			            <button class="btn btn-success btn-sm" type="submit" name="Submit">保存</button>
+			            <button class="btn btn-success btn-sm" type="button" name="Submit2" onclick="javascript:CloseEditNode();">关闭</button>
 					</td>
 				</tr>
 			</table>

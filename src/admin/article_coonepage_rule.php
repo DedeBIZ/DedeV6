@@ -98,8 +98,8 @@ else if ($action == 'editload') {
       <tr>
         <td></td>
         <td colspan="2">
-          <button class="btn btn-success btn-sm" type="submit" name="Submit" value="">保存</button>
-          <button type="reset" class="btn btn-success btn-sm" name="Submit2">重置</button>
+          <button class="btn btn-success btn-sm" type="submit" name="Submit">保存</button>
+          <button class="btn btn-success btn-sm" type="button" name="Submit2" onclick="javascript:CloseEditNode();">关闭</button>
         </td>
       </tr>
     </table>
