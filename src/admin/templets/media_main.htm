@@ -73,22 +73,22 @@
           <form name="forms" method="post" action="media_main.php">
             <tr>
               <td width="280" align="center">
-                <input name="keyword" type="text" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" style="width:260px">
+                <input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" style="width:260px">
               </td>
               <td width="170">
                 <select name="mediatype" style="width:160px">
                   <option value="0">文件类型</option>
-                  <option value="1" <?php if($mediatype==1) echo " selected"?>>图片</option>
-                  <option value="2" <?php if($mediatype==2) echo " selected"?>>FLASH</option>
-                  <option value="3" <?php if($mediatype==3) echo " selected"?>>视频音频</option>
-                  <option value="4" <?php if($mediatype==4) echo " selected"?>>其它附件</option>
+                  <option value="1" <?php if($mediatype==1) echo "selected"?>>图片</option>
+                  <option value="2" <?php if($mediatype==2) echo "selected"?>>FLASH</option>
+                  <option value="3" <?php if($mediatype==3) echo "selected"?>>视频音频</option>
+                  <option value="4" <?php if($mediatype==4) echo "selected"?>>其它附件</option>
                 </select>
               </td>
               <td width="170">
                 <select name="membertype" style="width:160px">
                   <option value="0">用户组</option>
-                  <option value="1" <?php if($membertype==1) echo " selected"?>>管理员</option>
-                  <option value="2" <?php if($membertype==2) echo " selected"?>>外部会员</option>
+                  <option value="1" <?php if($membertype==1) echo "selected"?>>管理员</option>
+                  <option value="2" <?php if($membertype==2) echo "selected"?>>外部会员</option>
                 </select>
               </td>
               <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
@@ -109,7 +109,7 @@
     <form name="form1">
       {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
       <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}" class="np"></td>
+        <td><input type="checkbox" name="aids" id="aids{dede:field.aid/}" value="{dede:field.aid/}"></td>
         <td><a href="{dede:field.url/}" title="{dede:field.url/}" target="_blank">{dede:field.title/}</a></td>
         <td>{dede:field.filesize function='GetFileSize(@me)'/}</td>
         <td>{dede:field.adminname function="UploadAdmin(@me,$fields['membername'])"/}</td>

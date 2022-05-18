@@ -21,12 +21,12 @@
             <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
                 <td width="10%" >组名称：</td>
-                <td width="90%"><input name="typename" type="text" id="typename" value="<?php echo $groupSet['typename']?>" style="width:260px"></td>
+                <td width="90%"><input type="text" name="typename" id="typename" value="<?php echo $groupSet['typename']?>" style="width:260px"></td>
               </tr>
               <tr>
                 <td width="10%" >级别值：</td>
                 <td width="90%">
-                  <input name="rank" type="hidden" id="rank" value="<?php echo $groupSet['rank']?>">
+                  <input type="hidden" name="rank" id="rank" value="<?php echo $groupSet['rank']?>">
                   <?php echo $groupSet['rank']?>
                 </td>
               </tr>
@@ -64,7 +64,7 @@
               		$tagname = str_replace('[br]','<br>',$ls[2]);
               		if(!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";
               		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
-              		echo " <label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label> ";
+              		echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label> ";
               	  $k++;
               	}
               }
@@ -80,7 +80,7 @@
                   $dsql->SetQuery('SELECT plusname FROM #@__plus');
                   $dsql->Execute();
                   while($row=$dsql->GetObject()){
-                   	echo " <label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='plus_{$row->plusname}'".CRank("plus_{$row->plusname}")."> {$row->plusname}</label> ";
+                   	echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'".CRank("plus_{$row->plusname}")."> {$row->plusname}</label> ";
                   	$k++;
                   	$l++;
                   	if($l % 6 == 0) echo "<br>";

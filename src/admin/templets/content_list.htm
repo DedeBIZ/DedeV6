@@ -45,7 +45,7 @@
 									{dede:global.optionarr/}
 								</select>
 							</td>
-							<td width="270"><input name="keyword" type="text" placeholder="请输入关键词" value="{dede:global.keyword/}" style="width:260px"></td>
+							<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" value="{dede:global.keyword/}" style="width:260px"></td>
 							<td width="170">
 								<select name="orderby" style="width:160px">
 									<option value="id">选择排序</option>
@@ -89,7 +89,7 @@
 			{dede:datalist empty='<tr><td colspan="10"><center>暂无内容</center></td></tr>'}
 			<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
-				<td><input name="arcID" type="checkbox" id="arcID" value="{dede:field.id/}" class="np"></td>
+				<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
 				<td align="left"><span id="arc{dede:field.id/}"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></span>{dede:field.flag function='IsCommendArchives(@me)'/}</td>
 				<td>{dede:field.senddate function='GetDateMk(@me)'/}</td>
 				<td><a href="content_list.php?cid={dede:field.typeid/}">{dede:field.typeid function='GetTypename(@me)'/}</a></td>

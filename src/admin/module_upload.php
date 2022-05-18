@@ -86,17 +86,17 @@ if ($action == 'upload') {
   <tr>
     <td width='260' >文件格式：</td>
     <td>
-      <label><input name='filetype' type='radio' value='0' checked='checked' /> 正常的模块包</label>
-      <label><input type='radio' name='filetype' value='1' /> 经过 zip 压缩的模块包</label>
+      <label><input type='radio' name='filetype' value='0' checked='checked'> 正常的模块包</label>
+      <label><input type='radio' name='filetype' value='1'> 经过zip压缩的模块包</label>
     </td>
   </tr>
   <tr>
     <td>已有模块：</td>
-    <td><label><input name='delhas' type='checkbox' id='delhas' value='1' /> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label></td>
+    <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label></td>
   </tr>
   <tr>
     <td>请选择文件：</td>
-    <td><input name='upfile' type='file' id='upfile' style='width:380px' /></td>
+    <td><input name='upfile' type='file' id='upfile' style='width:380px'></td>
   </tr>
  </table>";
     $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");

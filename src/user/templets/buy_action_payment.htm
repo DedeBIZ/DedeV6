@@ -63,9 +63,9 @@
 																<tr onMouseMove="javascript:this.bgColor='#f8f8f8';" onMouseOut="javascript:this.bgColor='#ffffff';">
 																	<td width="10%" align="right">
 																		{dede:if value.code=="cod" || value.code=="bank"}
-																		<input name="paytype" type="radio" value="{dede:value.id/}" disabled="disabled" />
+																		<input type="radio" name="paytype" value="{dede:value.id/}" disabled="disabled" />
 																		{else}
-																		<input name="paytype" type="radio" value="{dede:value.id/}" />{/dede:if}
+																		<input type="radio" name="paytype" value="{dede:value.id/}" />{/dede:if}
 																	</td>
 																	<td width="20%">{dede:value.name/}</td>
 																	<td width="60%">{dede:value.description/}</td>

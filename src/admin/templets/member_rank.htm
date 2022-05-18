@@ -35,18 +35,18 @@
       <tr align="center">
         <td>
           <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id; ?>">
-          <input name="name_<?php echo $k?>" value="<?php echo $row->membername; ?>" type="text" id="name_<?php echo $k?>">
+          <input type="text" name="name_<?php echo $k?>" value="<?php echo $row->membername; ?>" id="name_<?php echo $k?>">
         </td>
-        <td><input name="rank_<?php echo $k?>" value="<?php echo $row->rank; ?>" type="text" id="rank_<?php echo $k?>"></td>
-        <td><input name="money_<?php echo $k?>" value="<?php echo $row->money; ?>" type="text" id="money_<?php echo $k?>"></td>
-        <td><input name="scores_<?php echo $k?>" value="<?php echo $row->scores; ?>" type="text" id="scores_<?php echo $k?>"></td>
+        <td><input type="text" name="rank_<?php echo $k?>" value="<?php echo $row->rank; ?>" id="rank_<?php echo $k?>"></td>
+        <td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money; ?>" id="money_<?php echo $k?>"></td>
+        <td><input type="text" name="scores_<?php echo $k?>" value="<?php echo $row->scores; ?>" id="scores_<?php echo $k?>"></td>
         <td align="center">
           <?php
       	  if($row->id<=5) { echo "系统"; }
           else { echo "用户"; }
           ?>
         </td>
-        <td><input name="check_<?php echo $k?>" type="checkbox" id="check_<?php echo $k?>" <?php if($row->id == 3) echo 'disabled="disabled"'; ?> class="np" value="1" checked="checked"> 正在使用</td>
+        <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if($row->id == 3) echo 'disabled="disabled"'; ?> value="1" checked="checked"> 正在使用</td>
       </tr>
       <?php
     	}
@@ -56,19 +56,19 @@
         <td colspan="6">新增一个级别：由于会员升级是以级别值由低向高升级的，因此增加组别时需注意此值的设置，如果您增加新的会员组的级别值低于10，将自动被视为普通的注册会员</td>
       </tr>
       <tr align="center">
-        <td> 级别名称 </td>
-        <td> 级别值（待审为0，注册会员为10）</td>
-        <td> 默认金币 </td>
-        <td> 默认积分 </td>
-        <td> 操作设置 </td>
+        <td>级别名称</td>
+        <td>级别值（待审为0，注册会员为10）</td>
+        <td>默认金币</td>
+        <td>默认积分</td>
+        <td>操作设置</td>
         <td></td>
       </tr>
       <tr align="center">
-        <td><input name="name_new" type="text" id="name_new"></td>
-        <td><input name="rank_new" type="text" id="rank_new" value="20"></td>
-        <td><input name="money_new" type="text" id="money_new" value="0"></td>
-        <td><input name="scores_new" type="text" id="scores_new" value="100"></td>
-        <td><input name="check_new" type="checkbox" id="check_new" class="np" value="1" checked> 增加等级</td>
+        <td><input type="text" name="name_new" id="name_new"></td>
+        <td><input type="text" name="rank_new" id="rank_new" value="20"></td>
+        <td><input type="text" name="money_new" id="money_new" value="0"></td>
+        <td><input type="text" name="scores_new" id="scores_new" value="100"></td>
+        <td><input type="checkbox" name="check_new" id="check_new" value="1" checked> 增加等级</td>
         <td></td>
       </tr>
       <tr>

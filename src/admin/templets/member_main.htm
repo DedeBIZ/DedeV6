@@ -18,7 +18,7 @@
         <td height="36" bgcolor="#f8f8f8">
           <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="280" align="center"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" style="width:260px"></td>
+              <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="{dede:global name='keyword'/}" style="width:260px"></td>
               <td width="170">
                 <select name="sortkey" id="sortkey" style="width:160px">
                   {dede:global name='sortform'/}
@@ -86,7 +86,7 @@
       </tr>
       {dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
       <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td><input name="mid" type="checkbox" id="mid" value="{dede:field.mid/}" class="np"></td>
+        <td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
         <td>{dede:field.mid/}</td>
         <td>
           <?php

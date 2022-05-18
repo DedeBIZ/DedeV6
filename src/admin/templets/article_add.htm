@@ -69,7 +69,7 @@ table{border-collapse:separate}
           <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
               <td width="260"><a name="downurl"></a>采集单个网页：</td>
-              <td width="360" align="center"><input name="geturl" type="text" id="geturl" style="width:260px" value="<?php echo $geturl; ?>"></td>
+              <td width="360" align="center"><input type="text" name="geturl" id="geturl" style="width:260px" value="<?php echo $geturl; ?>"></td>
               <td>
                 <button type="submit" class="btn btn-success btn-sm" name="Submit3">抓取</button>
                 <button type="button" class="btn btn-success btn-sm" name="setrule" onClick="OpenMyWinCoOne('article_coonepage_rule.php')">规则管理</button>
@@ -88,10 +88,10 @@ table{border-collapse:separate}
         <td colspan="5" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;文章标题：</td>
-              <td width="400"><input name="title" type="text" id="title" value="<?php echo $title; ?>" style="width:380px"></td>
-              <td width="90">&nbsp;简略标题：</td>
-              <td><input name="shorttitle" type="text" id="shorttitle" style="width:160px"></td>
+              <td width="90"> 文章标题：</td>
+              <td width="400"><input type="text" name="title" id="title" value="<?php echo $title; ?>" style="width:380px"></td>
+              <td width="90"> 简略标题：</td>
+              <td><input type="text" name="shorttitle" id="shorttitle" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -100,7 +100,7 @@ table{border-collapse:separate}
         <td colspan="5" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;自定义属性：</td>
+              <td width="90"> 自定义属性：</td>
               <td align="left">
               <?php
             	$dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
@@ -108,9 +108,9 @@ table{border-collapse:separate}
             	while($trow = $dsql->GetObject())
             	{
             		if($trow->att=='j')
-            		echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'>&nbsp;{$trow->attname}[{$trow->att}]</label>&nbsp;";
+            		echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label>";
             		else
-            		echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'>&nbsp;{$trow->attname}[{$trow->att}]</label>&nbsp;";
+            		echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
             	}
             	?>
               </td>
@@ -122,8 +122,8 @@ table{border-collapse:separate}
         <td colspan="5" class="bline" id="redirecturltr" style="display:none">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;跳转网址：</td>
-              <td><input name="redirecturl" type="text" id="redirecturl" value="" style="width:300px"></td>
+              <td width="90"> 跳转网址：</td>
+              <td><input type="text" name="redirecturl" id="redirecturl" value="" style="width:300px"></td>
             </tr>
           </table>
         </td>
@@ -132,10 +132,10 @@ table{border-collapse:separate}
         <td width="100%" colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;Tag标签：</td>
-              <td><input name="tags" type="text" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
+              <td width="90"> Tag标签：</td>
+              <td><input type="text" name="tags"id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
               <td width="60">权重：</td>
-              <td><input name="weight" type="text" id="weight" value="<?php echo $maxWright['cc']; ?>" style="width:60px">（越小越靠前）</td>
+              <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc']; ?>" style="width:60px">（越小越靠前）</td>
             </tr>
           </table>
         </td>
@@ -144,13 +144,13 @@ table{border-collapse:separate}
         <td colspan="5" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;缩略图：</td>
+              <td width="90"> 缩略图：</td>
               <td>
-                <input name="picname" type="text" id="picname" style="width:300px">
-                <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="np">&nbsp;远程</label>
+                <input type="text" name="picname" id="picname" style="width:300px">
+                <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
-                <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
+                <button type="button" id="btnClearAll" class="btn btn-success btn-sm delete">清空</button>
               </td>
               <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="max-width:100px;max-height:80px"></td>
             </tr>
@@ -161,15 +161,15 @@ table{border-collapse:separate}
         <td colspan="5" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;来源：</td>
+              <td width="90"> 来源：</td>
               <td width="260">
-                <input name="source" type="text" id="source" value="<?php echo $source; ?>" style="width:160px">
-                <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
+                <input type="text" name="source" id="source" value="<?php echo $source; ?>" style="width:160px">
+                <button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
               </td>
-              <td width="60">&nbsp;作者：</td>
+              <td width="60"> 作者：</td>
               <td>
-                <input name="writer" type="text" id="writer" value="<?php echo $writer; ?>" style="width:160px">
-                <button name="selwriter" type="button" id="selwriter" class="btn btn-success btn-sm">选择</button>
+                <input type="text" name="writer" id="writer" value="<?php echo $writer; ?>" style="width:160px">
+                <button type="button" name="selwriter" id="selwriter" class="btn btn-success btn-sm">选择</button>
               </td>
             </tr>
           </table>
@@ -179,7 +179,7 @@ table{border-collapse:separate}
         <td colspan="5" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;发布栏目：</td>
+              <td width="90"> 发布栏目：</td>
               <td width="360">
                 <span id="typeidct">
                 <?php
@@ -199,7 +199,7 @@ table{border-collapse:separate}
                 ?>
               </td>
               <td width="90">消费金币：</td>
-              <td><input name="money" type="text" id="money" value="0" style="width:160px"></td>
+              <td><input type="text" name="money" id="money" value="0" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -208,7 +208,7 @@ table{border-collapse:separate}
         <td colspan="5" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;副栏目：</td>
+              <td width="90"> 副栏目：</td>
               <td>
                 <span id="typeid2ct"></span>
                 <input type="text" name="typeid2" id="typeid2" value="" style="width:260px">
@@ -222,13 +222,13 @@ table{border-collapse:separate}
         <td colspan="5" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;关键词：</td>
+              <td width="90"> 关键词：</td>
               <td>
                 <input type="text" name="keywords" id="keywords" value="<?php echo $keywords; ?>" style="width:360px">
                 <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览</button>
               </td>
               <td>
-                <label><input name="autokey" type="checkbox" onClick="ShowHide('keywords');" class="np" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked="1" '; ?>>&nbsp;自动获取，手动填写用","分开</label>
+                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo 'checked="1"'; ?>> 自动获取，手动填写用","分开</label>
               </td>
             </tr>
           </table>
@@ -238,7 +238,7 @@ table{border-collapse:separate}
         <td colspan="5" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;描述：</td>
+              <td width="90"> 描述：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $description; ?></textarea></td>
             </tr>
           </table>
@@ -248,13 +248,13 @@ table{border-collapse:separate}
         <td width="100%" colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;附加选项：</td>
+              <td width="90"> 附加选项：</td>
               <td>
-                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?>> 下载远程图片和资源</label>
-                <label><input name="dellink" type="checkbox" class="np" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?>> 删除非站内链接</label>
+                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo 'checked="1"'; ?>> 下载远程图片和资源</label>
+                <label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo 'checked="1"'; ?>> 删除非站内链接</label>
                 <a href="javascript:OpenMyWin('article_allowurl_edit.php')" class="btn btn-success btn-sm">设置</a>
-                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>> 提取第一个图片为缩略图</label>
-                <label><input type="checkbox" name="needwatermark" value="1" class="np" <?php if($photo_markup=='1') echo "checked"; ?>> 图片是否加水印</label>
+                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo 'checked="1"'; ?>> 提取第一个图片为缩略图</label>
+                <label><input type="checkbox" name="needwatermark" value="1" <?php if($photo_markup=='1') echo "checked"; ?>> 图片是否加水印</label>
               </td>
             </tr>
           </table>
@@ -264,10 +264,10 @@ table{border-collapse:separate}
         <td width="100%" colspan="2" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;分页方式：</td>
+              <td width="90"> 分页方式：</td>
               <td>
-                <label><input name="sptype" type="radio" class="np" value="hand" <?php if($cfg_arcautosp=='N') echo " checked='1' "?>> 手动</label>
-                <label><input type="radio" name="sptype" value="auto" class="np" <?php if($cfg_arcautosp=='Y') echo " checked='1' "?>> 自动</label>
+                <label><input type="radio" name="sptype" value="hand" <?php if($cfg_arcautosp=='N') echo "checked='1'"?>> 手动</label>
+                <label><input type="radio" name="sptype" value="auto" <?php if($cfg_arcautosp=='Y') echo "checked='1'"?>> 自动</label>
                 大小：<input name="spsize" type="text" id="spsize" value="<?php echo $cfg_arcautosp_size?>" style="width:60px"> K（分页符为：#p#分页标题#e#）
               </td>
             </tr>
@@ -299,15 +299,15 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" >&nbsp;评论选项：</td>
+              <td width="90"> 评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" class="np" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1' "; ?>> 允许评论</label>
-                <label><input type="radio" name="notpost" class="np" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1' "; ?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'"; ?>> 允许评论</label>
+                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'"; ?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
-                <label><input name="ishtml" type="radio" class="np" value="1" checked="1"> 生成网页</label>
-                <label><input type="radio" name="ishtml" class="np" value="0"> 仅动态浏览</label>
+                <label><input type="radio" name="ishtml" value="1" checked="1"> 生成网页</label>
+                <label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
               </td>
             </tr>
           </table>
@@ -317,7 +317,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" >&nbsp;文章排序：</td>
+              <td width="90"> 文章排序：</td>
               <td width="260">
                 <select name="sortup" id="sortup" style="width:160px">
                   <option value="0" selected>默认排序</option>
@@ -329,8 +329,8 @@ table{border-collapse:separate}
                 </select> </td>
               <td width="90">标题颜色：</td>
               <td>
-                <input name="color" type="text" id="color" style="width:160px">
-                <button class="btn btn-success btn-sm" name="modcolor" type="button" id="modcolor" onClick="ShowColor(event, this)">选取</button>
+                <input type="text" name="color" id="color" style="width:160px">
+                <button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event, this)">选取</button>
               </td>
             </tr>
           </table>
@@ -340,7 +340,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;阅读权限：</td>
+              <td width="90"> 阅读权限：</td>
               <td width="260">
                 <select name="arcrank" id="arcrank" style="width:160px">
                 <?php
@@ -386,7 +386,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90">&nbsp;发布时间：</td>
+              <td width="90"> 发布时间：</td>
               <td width="260">
                 <?php
                 $nowtime = GetDateTimeMk(time());

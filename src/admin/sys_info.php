@@ -122,8 +122,8 @@ EOT;
                         $c1 = '';
                         $c2 = '';
                         $row['value'] == 'Y' ? $c1 = " checked" : $c2 = " checked";
-                        echo "<label><input type='radio' class='np' name='edit___{$row['varname']}' value='Y'$c1> 是</label>";
-                        echo "<label><input type='radio' class='np' name='edit___{$row['varname']}' value='N'$c2> 否</label>";
+                        echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是</label>";
+                        echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否</label>";
                     } else if ($row['type'] == 'bstring') {
                         echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
                     } else if ($row['type'] == 'number') {

@@ -68,7 +68,7 @@
 				   if($row['dd']==1 ) break;
 				?>
 				<tr align="center" onMouseMove="javascript:this.bgColor='#EFEFEF';" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-					<td><input name="arcTitles" type="checkbox" id="arcTitle" value="<?php echo urlencode($row['title'])?>" class="np"></td>
+					<td><input type="checkbox" name="arcTitles" id="arcTitle" value="<?php echo urlencode($row['title'])?>"></td>
 					<td>
 						<?php
 						$allarc += $row['dd'];

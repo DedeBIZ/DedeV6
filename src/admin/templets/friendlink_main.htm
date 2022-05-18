@@ -52,7 +52,7 @@
         <form action="friendlink_main.php" name="form1" method="get">
           <table cellspacing="0" cellpadding="3" class="table table-borderless">
             <tr>
-              <td width="280" align="center"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword; ?>" style="width:260px"></td>
+              <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword; ?>" style="width:260px"></td>
               <td width="170">
                 <select name="ischeck" id="ischeck" style="width:160px">
                   <?php
@@ -85,7 +85,7 @@
       </tr>
       {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
       <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td><input type='checkbox' name='aids' value='{dede:field.id/}' class='np'></td>
+        <td><input type='checkbox' name='aids' value='{dede:field.id/}'></td>
         <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i>地址：{dede:field.url/}</i> </td>
         <td>{dede:field.logo function="GetPic(@me)"/}</td>
         <td>{dede:field.email/}</td>

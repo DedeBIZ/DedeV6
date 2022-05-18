@@ -40,11 +40,11 @@
             </tr>
             <tr>
               <td width="260">页面标题：</td>
-              <td><input name="title" type="text" id="title" style="width:260px"></td>
+              <td><input type="text" name="title" id="title" style="width:260px"></td>
             </tr>
             <tr>
               <td>页面关键词：</td>
-              <td><input name="keywords" type="text" id="keywords" style="width:260px">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
+              <td><input type="text" name="keywords" id="keywords" style="width:260px">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
             </tr>
             <tr>
               <td>页面摘要信息：</td>
@@ -53,7 +53,7 @@
             <tr>
               <td>关联标识：</td>
               <td>
-                <input name="likeid" type="text" id="likeid" value="" style="width:260px">
+                <input type="text" name="likeid" id="likeid" value="" style="width:260px">
                 <?php
               	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
               	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
@@ -68,28 +68,26 @@
             </tr>
             <tr>
               <td>文件名：</td>
-              <td><input name="nfilename" type="text" id="nfilename" value="<?php echo $cfg_arcdir.'/newfile{$nowid}.html'; ?>" style="width:260px">（相对于CMS安装目录）</td>
+              <td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/newfile{$nowid}.html'; ?>" style="width:260px">（相对于CMS安装目录）</td>
             </tr>
             <tr>
               <td>模板文件名：</td>
-              <td><input name="template" type="text" id="template" value="{style}/singlepage.htm" style="width:260px"></td>
+              <td><input type="text" name="template" id="template" value="{style}/singlepage.htm" style="width:260px"></td>
             </tr>
             <tr>
               <td>是否编译内容：</td>
               <td>
-                <?php if(!DEDEBIZ_SAFE_MODE) { ?> <label><input name="ismake" type="radio" value="1"> 含模板标记，要编译</label> <?php } ?>
-                <label><input name="ismake" type="radio" value="0" checked> 不含模板标记，不需要编译</label>
+                <?php if(!DEDEBIZ_SAFE_MODE) { ?> <label><input type="radio" name="ismake" value="1"> 含模板标记，要编译</label> <?php } ?>
+                <label><input type="radio" name="ismake" value="0" checked> 不含模板标记，不需要编译</label>
               </td>
             </tr>
             <tr>
               <td colspan="2">
                 <div class="alert alert-warning mb-0">内容：模板里用{dede:field name='body'/}来获得</div>
               </td>
-          </tr>
-          <tr> 
-            <td colspan="2">
-              <?php GetEditor("body","","450","Default","print","false"); ?>
-              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"><?php GetEditor("body","","450","Default","print","false"); ?></td>
             </tr>
             <tr>
               <td colspan="2" align="center" class="py-3">

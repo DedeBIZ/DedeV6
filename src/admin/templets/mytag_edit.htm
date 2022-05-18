@@ -39,17 +39,17 @@
         <tr> 
           <td align="center">时间限制：</td>
           <td colspan="2">
-            <input name="timeset" type="radio" value="0"<?php if($row['timeset']==0) echo " checked"; ?>> 永不过期 
-            <input type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo " checked"; ?>> 在设内时间内有效
+            <input name="timeset" type="radio" value="0"<?php if($row['timeset']==0) echo "checked"; ?>> 永不过期 
+            <input type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo "checked"; ?>> 在设内时间内有效
           </td>
         </tr>
         <tr> 
           <td align="center">开始时间：</td>
-          <td colspan="2"><input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>"></td>
+          <td colspan="2"><input type="text" name="starttime" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>"></td>
         </tr>
         <tr> 
           <td align="center">结束时间：</td>
-          <td colspan="2"><input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>"></td>
+          <td colspan="2"><input type="text" name="endtime" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>"></td>
         </tr>
         <tr> 
           <td height="80" align="center">正常显示内容：</td>

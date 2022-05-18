@@ -84,21 +84,20 @@
             </tr>
             <tr>
               <td>广告位名称：</td>
-              <td colspan="2"><input name="adname" type="text" id="adname" value="<?php echo $row['adname']?>" class="iptxt" style="width:260px"></td>
+              <td colspan="2"><input type="text" name="adname" id="adname" value="<?php echo $row['adname']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td>时间限制：</td>
               <td colspan="2">
-                <label><input class="np" name="timeset" type="radio" value="0" <?php if($row['timeset']==0) echo " checked='1' "; ?>> 永不过期</label>
-                <label><input class="np" type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo " checked='1' "; ?>> 在设内时间内有效</label>
+                <label><input type="radio" name="timeset" value="0" <?php if($row['timeset']==0) echo "checked='1'"; ?>> 永不过期</label>
+                <label><input type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo "checked='1'"; ?>> 在设内时间内有效</label>
               </td>
             </tr>
             <tr>
               <td>投放时间：</td>
-              <td colspan="2">从
-                <input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" style="width:160px">
-                到
-                <input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" style="width:160px">
+              <td colspan="2">
+                从：<input type="text" name="starttime" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" style="width:160px">
+                到：<input type="text" name="endtime" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" style="width:160px">
               </td>
             </tr>
             <tr>

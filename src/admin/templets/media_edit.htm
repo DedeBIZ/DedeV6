@@ -54,15 +54,15 @@
 						<tr>
 							<td width="15%" align="left" class="bline">媒体类型：</td>
 							<td width="85%" align="left" class="bline">
-								<label><input type="radio" name="mediatype" class="np" value="1" <?php if($myrow['mediatype']==1) echo " checked"; ?>> 图片</label>
-								<label><input type="radio" name="mediatype" class="np" value="2" <?php if($myrow['mediatype']==2) echo " checked"; ?>> FLASH</label>
-								<label><input type="radio" name="mediatype" class="np" value="3" <?php if($myrow['mediatype']==3) echo " checked"; ?>> 视频音频</label>
-								<label><input type="radio" name="mediatype" class="np" value="4" <?php if($myrow['mediatype']==4) echo " checked"; ?>> 附件其它</label>
+								<label><input type="radio" name="mediatype" value="1" <?php if($myrow['mediatype']==1) echo "checked"; ?>> 图片</label>
+								<label><input type="radio" name="mediatype" value="2" <?php if($myrow['mediatype']==2) echo "checked"; ?>> FLASH</label>
+								<label><input type="radio" name="mediatype" value="3" <?php if($myrow['mediatype']==3) echo "checked"; ?>> 视频音频</label>
+								<label><input type="radio" name="mediatype" value="4" <?php if($myrow['mediatype']==4) echo "checked"; ?>> 附件其它</label>
 							</td>
 						</tr>
 						<tr>
 							<td class="bline">说明标题：</td>
-							<td class="bline"><input name="title" type="text" id="title" value="<?php echo $myrow['title']?>" style="width:300px"></td>
+							<td class="bline"><input type="text" name="title" id="title" value="<?php echo $myrow['title']?>" style="width:300px"></td>
 						</tr>
 						<tr>
 							<td class="bline">参数说明：</td>
@@ -71,15 +71,15 @@
 						<tr>
 							<td class="bline">附加参数：</td>
 							<td class="bline">
-								宽：<input name="mediawidth" type="text" id="mediawidth" value="<?php echo $myrow['width']?>" style="width:60px">（像素）
-								高：<input name="mediaheight" type="text" id="mediaheight" value="<?php echo $myrow['height']?>" style="width:60px">（像素）
-								播放时间：<input name="playtime" type="text" id="playtime" value="<?php echo $myrow['playtime']?>" style="width:60px">（分钟）
+								宽：<input type="text" name="mediawidth" id="mediawidth" value="<?php echo $myrow['width']?>" style="width:60px">（像素）
+								高：<input type="text" name="mediaheight" id="mediaheight" value="<?php echo $myrow['height']?>" style="width:60px">（像素）
+								播放时间：<input type="text" name="playtime" id="playtime" value="<?php echo $myrow['playtime']?>" style="width:60px">（分钟）
 							</td>
 						</tr>
 						<tr>
 							<td class="bline">原文件：</td>
 							<td class="bline">
-								<input name="filename" type="text" id="filename" value="<?php echo $myrow['url']?>" style="width:260px">
+								<input type="text" name="filename" id="filename" value="<?php echo $myrow['url']?>" style="width:260px">
 								<a href="<?php echo $myrow['url']?>" target="_blank">[查看]</a>
 							</td>
 						</tr>

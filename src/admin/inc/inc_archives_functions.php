@@ -12,7 +12,7 @@ require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
 require_once(DEDEINC.'/image.func.php');
 require_once(DEDEINC.'/archive/partview.class.php');
 $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '';
-$backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn btn-success btn-sm'>记忆的列表页</a> &nbsp;" : '';
+$backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn btn-success btn-sm'>记忆的列表页</a>" : '';
 if (!isset($_NOT_ARCHIVES)) {
     require_once(DEDEINC.'/customfields.func.php');
 }
@@ -800,7 +800,7 @@ function GetUpdateTest()
         if ($cfg_make_andcat == 'Y') $dolist .= empty($dolist) ? 'makeparenttype' : ',makeparenttype';
         $dolists = explode(',', $dolist);
         $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=".preg_replace("#".$dolists[0]."[,]{0,1}#", '', $dolist);
-        $revalue = "<table width='80%' style='border:1px dashed #cdcdcd;margin-left:20px;margin-bottom:15px' id='tgtable' align='left'><tr><td bgcolor='#EBF5C9'>&nbsp;正在进行相关内容更新，请完成前不要进行其它操作：\r\n</td></tr>\r\n";
+        $revalue = "<table width='80%' style='border:1px dashed #cdcdcd;margin-left:20px;margin-bottom:15px' id='tgtable' align='left'><tr><td bgcolor='#EBF5C9'> 正在进行相关内容更新，请完成前不要进行其它操作：\r\n</td></tr>\r\n";
         $revalue .= "<tr><td>\r\n<iframe name='stafrm' frameborder='0' id='stafrm' width='100%' height='200px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
         $revalue .= "</table>";
     } else {

@@ -38,37 +38,37 @@
       </tr>
       <tr>
         <td width="260">模块名称：</td>
-        <td><input name="modulname" type="text" id="modulname" style="width:160px"> </td>
+        <td><input type="text" name="modulname" id="modulname" style="width:160px"> </td>
       </tr>
       <tr>
         <td>语言编码：</td>
-        <td><?php echo $cfg_soft_lang; ?>（不同编码模块可以使用，但不能在此打包）<input name="lang" type="hidden" value="<?php echo $cfg_soft_lang; ?>"></td>
+        <td><?php echo $cfg_soft_lang; ?>（不同编码模块可以使用，但不能在此打包）<input type="hidden" name="lang" value="<?php echo $cfg_soft_lang; ?>"></td>
       </tr>
       <tr>
         <td>封装类型：</td>
         <td>
-          <label><input name="moduletype" type="radio" id="moduletype1" class="np" value="soft" checked="1"> 模块</label>
-          <label><input name="moduletype" type="radio" id="moduletype2" class="np" value="templets"> 模板</label>
-          <label><input name="moduletype" type="radio" id="moduletype3" class="np" value="plus"> 小插件</label>
-          <label><input name="moduletype" type="radio" id="moduletype3" class="np" value="patch"> 补丁</label>
+          <label><input type="radio" name="moduletype" value="soft" checked="1"> 模块</label>
+          <label><input type="radio" name="moduletype" value="templets"> 模板</label>
+          <label><input type="radio" name="moduletype" value="plus"> 小插件</label>
+          <label><input type="radio" name="moduletype" value="patch"> 补丁</label>
         </td>
       </tr>
       <tr>
         <td>开发者ID：</td>
-        <td><input name="dev_id" type="text" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
+        <td><input type="text" name="dev_id" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
       </tr>
       <tr>
         <td>发布时间：</td>
-        <td><input name="mtime" type="text" id="mtime" style="width:160px" value="<?php echo GetDateMk(time()); ?>"> </td>
+        <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo GetDateMk(time()); ?>"> </td>
       </tr>
       <tr>
         <td>是否涉及会员系统：</td>
         <td>
-          <label><input name="ismember" type="radio" class='np' id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked"> 不涉及</label>
-          <label><input name="ismember" type="radio" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" class="np"> 涉及</label>
+          <label><input type="radio" name="ismember" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked"> 不涉及</label>
+          <label><input type="radio" name="ismember" value="1" onclick="ShowHideMb('ismember0','rboxct')"> 涉及</label>
           <div id="rboxct" style="display:none">
-            导航使用名称：<input name="indexname" type="text" id="indexname" style="width:160px" value=""><br>
-            导航使用网址：<input name="indexurl" type="text" id="indexurl" style="width:160px" value="">
+            导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value=""><br>
+            导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="">
             （用相对于会员中心的网址，如：../ask）
           </div>
         </td>
@@ -83,7 +83,7 @@
       <tr>
         <td>使用说明文件：</td>
         <td>
-          <label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" class="np" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')"> 直接填写</label>
+          <label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')"> 直接填写</label>
           <br>
           <div style="display:block" id="autoreadmeinput">
             <input name="readme" type="file" id="readme" style="width:360px">
@@ -105,7 +105,7 @@
       <tr>
         <td>程序安装：</td>
         <td>
-          <label><input type="checkbox" name="autosetup" value='1' id="autosetup" class="np" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"> 自动生成（由系统自动处理安装）</label>
+          <label><input type="checkbox" name="autosetup" value='1' id="autosetup" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"> 自动生成（由系统自动处理安装）</label>
           <br>
           <div style="display:block" id="autosetupinput">
             <input name="setup" type="file" id="setup" style="width:360px">
@@ -129,7 +129,7 @@
       <tr>
         <td>删除程序：</td>
         <td>
-          <label><input type="checkbox" name="autodel" value='1' id="autodel" class="np" onclick="ShowHideField('autodel','autodelinput','autodelct')"> 自动生成（由系统自动处理卸载）</label>
+          <label><input type="checkbox" name="autodel" value='1' id="autodel" onclick="ShowHideField('autodel','autodelinput','autodelct')"> 自动生成（由系统自动处理卸载）</label>
           <br>
           <div style="display:block" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
           <div style="margin:5px 0px 5px 5px;display:none" id="autodelct">

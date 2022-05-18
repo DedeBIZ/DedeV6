@@ -43,22 +43,22 @@
 				?>
 				<tr>
 					<td width="260">起始ID：</td>
-					<td><input name="startid" type="text" id="startid" style="width:60px">（空或0表示从头开始）</td>
+					<td><input type="text" name="startid" id="startid" style="width:60px">（空或0表示从头开始）</td>
 				</tr>
 				<tr>
 					<td>结束ID：</td>
-					<td><input name="endid" type="text" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
+					<td><input type="text" name="endid" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
 				</tr>
 				<?php
 				}
 				?>
 				<tr>
 					<td>生成位置：</td>
-					<td><input name="tagsdir" type="text" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“TAGS生成目录”项进行调整</td>
+					<td><input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“TAGS生成目录”项进行调整</td>
 				</tr>
 				<tr>
 					<td>每次最大创建页数：</td>
-					<td><input name="maxpagesize" type="text" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
+					<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
 				</tr>
 				<tr>
 					<td>标签说明：</td>
@@ -69,7 +69,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#F8FCF1" colspan="2" align="center"><button name="b112" type="button" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">生成标签</button></td>
+					<td bgcolor="#F8FCF1" colspan="2" align="center"><button type="button" name="b112" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">生成标签</button></td>
 				</tr>
 			</form>
 			<tr>

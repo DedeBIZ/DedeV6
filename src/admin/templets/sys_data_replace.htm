@@ -83,7 +83,7 @@
 											<td id='fields'></td>
 										</tr>
 										<tr>
-											<td>要替换的字段：<input name="rpfield" type="text" id="rpfield"></td>
+											<td>要替换的字段：<input type="text" name="rpfield" id="rpfield"></td>
 										</tr>
 									</table>
 								</td>
@@ -91,9 +91,9 @@
 							<tr bgcolor="#F8FCF1">
 								<td>替换方式：</td>
 								<td>
-									<label><input name="rptype" type="radio" id="ot1" value="replace" class="np" checked="1"> 普通替换</label>
-									<label><input type="radio" name="rptype" id="ot2" value="regex" class="np"> 正则表达式</label>
-									主键字段：<input name="keyfield" type="text" id="keyfield" size="12">（正则模式必须指定）
+									<label><input type="radio" name="rptype" id="ot1" value="replace" checked="1"> 普通替换</label>
+									<label><input type="radio" name="rptype" id="ot2" value="regex"> 正则表达式</label>
+									主键字段：<input type="text" name="keyfield" id="keyfield" size="12">（正则模式必须指定）
 								</td>
 							</tr>
 							<tr>
@@ -106,7 +106,7 @@
 							</tr>
 							<tr>
 								<td>替换条件：</td>
-								<td><input name="condition" type="text" id="condition" style="width:60%">（空完全替换）</td>
+								<td><input type="text" name="condition" id="condition" style="width:60%">（空完全替换）</td>
 							</tr>
 							<tr>
 								<td>安全确认码：</td>

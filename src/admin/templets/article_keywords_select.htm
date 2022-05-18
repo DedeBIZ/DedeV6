@@ -50,9 +50,9 @@
         <td align="center" colspan="2" style="border-top:0">
           <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="170"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" style="width:160px"></td>
-              <td width="170"><input name="rpurl" type="text" id="rpurl" placeholder="请输入链接" style="width:160px"></td>
-              <td width="170"><input name="rank" type="text" id="rank" placeholder="请输入频率" style="width:160px"></td>
+              <td width="170"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" style="width:160px"></td>
+              <td width="170"><input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" style="width:160px"></td>
+              <td width="170"><input type="text" name="rank" id="rank" placeholder="请输入频率" style="width:160px"></td>
               <td><input type="submit" name="Submit" value="保存" class="btn btn-success btn-sm"></td>
             </tr>
           </table>
@@ -66,8 +66,8 @@
             <tr>
               <td width="30%">选择关键词</td>
               <td width="70%" align="right">
-                <button class="btn btn-success btn-sm" type="button" name="kwa" onClick="AddNewKw()">新增关键词</button>
-                <button class="btn btn-success btn-sm" type="button" name="kwm" onClick="location='article_keywords_main.php';">关键词管理</button>
+                <button type="button" class="btn btn-success btn-sm" name="kwa" onClick="AddNewKw()">新增关键词</button>
+                <button type="button"class="btn btn-success btn-sm" name="kwm" onClick="location='article_keywords_main.php';">关键词管理</button>
               </td>
             </tr>
           </table>
@@ -84,7 +84,7 @@
         <td colspan="2">
           <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="270"><input name="keywords" type="text" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" style="width:260px"></td>
+              <td width="270"><input type="text" name="keywords" id="keywords" value="<?php echo $keywords?>" placeholder="请输入关键词" style="width:260px"></td>
               <td><button type="button" class="btn btn-success btn-sm" name="Submit" onClick="ReturnValue()">选用</button></td>
             </tr>
           </table>

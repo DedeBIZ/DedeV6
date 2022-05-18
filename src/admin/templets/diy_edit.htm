@@ -59,20 +59,20 @@
         <td>自定义表单名称：（修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改）<br>
           <span class="style2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
         <td>
-          <input name="name" type="text" id="name" value="<?php echo $row['name']?>" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')" style="cursor:hand"></i>
+          <input type="text" name="name" id="name" value="<?php echo $row['name']?>" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')" style="cursor:hand"></i>
         </td>
       </tr>
       <tr>
         <td>数据表：<br>
           <span class="style2" id="help5">自定义表单数据表创建后不可修改表名</span></td>
         <td>
-          <input name="table" type="text" id="table" value="<?php echo $row['table']; ?>" disabled="1" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')" style="cursor:hand"></i>
+          <input type="text" name="table" id="table" value="<?php echo $row['table']; ?>" disabled="1" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')" style="cursor:hand"></i>
         </td>
       </tr>
       <tr>
         <td bgcolor="#f8f8f8">模型字段配置：信息索引类字段系统已经加入，您只需要增加其它个性化字段即可</td>
         <td bgcolor="#f8f8f8">
-          <button name="fset" type="button" id="fset" onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid; ?>'" class="btn btn-success btn-sm"
+          <button type="button" name="fset" id="fset" onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid; ?>'" class="btn btn-success btn-sm"
            >添加新字段</button>
         </td>
       </tr>
@@ -137,22 +137,22 @@
       </tr>
       <tr>
         <td>列表模板：</td>
-        <td><input name="listtemplate" type="text" id="listtemplate" style="width:160px" value="<?php echo $row['listtemplate']; ?>"></td>
+        <td><input type="text" name="listtemplate" id="listtemplate" style="width:160px" value="<?php echo $row['listtemplate']; ?>"></td>
       </tr>
       <tr>
         <td>内容模板：</td>
-        <td><input name="viewtemplate" type="text" id="viewtemplate" style="width:160px" value="<?php echo $row['viewtemplate']; ?>"></td>
+        <td><input type="text" name="viewtemplate" id="viewtemplate" style="width:160px" value="<?php echo $row['viewtemplate']; ?>"></td>
       </tr>
       <tr>
         <td>发布模板：</td>
-        <td><input name="posttemplate" type="text" id="posttemplate" style="width:160px" value="<?php echo $row['posttemplate']; ?>"></td>
+        <td><input type="text" name="posttemplate" id="posttemplate" style="width:160px" value="<?php echo $row['posttemplate']; ?>"></td>
       </tr>
       <tr>
         <td>前台列表和内容页公开：</td>
         <td>
-          <label><input name="public" type="radio" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?> class='np'> 完全公开 </label>
-          <label><input name="public" type="radio" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?> class='np'> 公开审核过的 </label>
-          <label><input name="public" type="radio" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?> class='np'> 不公开 </label>
+          <label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?>> 完全公开 </label>
+          <label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?>> 公开审核过的 </label>
+          <label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?>> 不公开 </label>
         </td>
       </tr>
       <tr>

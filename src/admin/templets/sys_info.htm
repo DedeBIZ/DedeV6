@@ -96,20 +96,20 @@
 									<td width="90" style="border-top:0">变量说明</td>
 									<td width="270" style="border-top:0"><input type="text" name="varmsg" id="varmsg" class="npvar" style="width:260px"></td>
 									<td width="90" style="border-top:0">变量值</td>
-									<td width="270" style="border-top:0"><input name="nvarvalue" type="text" id="nvarvalue" class="npvar" style="width:260px"></td>
+									<td width="270" style="border-top:0"><input type="text" name="nvarvalue" id="nvarvalue" class="npvar" style="width:260px"></td>
 								</tr>
 								<tr>
-									<td width="90" >变量类型</td>
+									<td width="90">变量类型</td>
 									<td colspan="3">
-										<input name="vartype" type="radio" value="string" class="np" checked="checked"> 文本
-										<input name="vartype" type="radio" value="number" class="np"> 数字
-										<input type="radio" name="vartype" value="bool" class="np"> 布尔(Y/N)
-										<input type="radio" name="vartype" value="bstring" class="np"> 多行文本
+										<input type="radio" name="vartype" value="string" checked="checked"> 文本
+										<input type="radio" name="vartype" value="number"> 数字
+										<input type="radio" name="vartype" value="bool"> 布尔(Y/N)
+										<input type="radio" name="vartype" value="bstring"> 多行文本
 									</td>
 								</tr>
 								<tr>
-									<td width="90" >变量名称</td>
-									<td width="270"><input name="nvarname" type="text" id="nvarname" class="npvar" style="width:260px"></td>
+									<td width="90">变量名称</td>
+									<td width="270"><input type="text" name="nvarname" id="nvarname" class="npvar" style="width:260px"></td>
 									<td width="90">所属组</td>
 									<td>
 										<?php
@@ -182,8 +182,8 @@
 												$c1='';
 												$c2 = '';
 												$row['value']=='Y' ? $c1=" checked" : $c2=" checked";
-												echo "<label><input type='radio' name='edit___{$row['varname']}' class='np' value='Y'$c1> 是 </label> ";
-												echo "<label><input type='radio' name='edit___{$row['varname']}' class='np' value='N'$c2> 否 </label> ";
+												echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是 </label> ";
+												echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否 </label> ";
 											} else if($row['type']=='bstring') {
 												$row['value'] = stripslashes($row['value']);
 												echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";

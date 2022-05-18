@@ -11,55 +11,6 @@
 		<link rel="stylesheet" href="css/frame.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/frame.js"></script>
-		<style>
-			#skinlist {
-				display: block;
-				height: 10px;
-				margin-top: 10px;
-				overflow: hidden;
-				width: 86px
-			}
-			#skin div {
-				float: left
-			}
-			#skin li {
-				float: left;
-				width: 14px;
-				height: 10px;
-				cursor: pointer
-			}
-			#def div,
-			#s1 div,
-			#s2 div,
-			#s3 div,
-			#s4 div {
-				background-image: url(images/skinbutton.png)no-repeat
-			}
-			#s1 div {
-				background-position: 0 0px
-			}
-			#s2 div {
-				background-position: 0 -11px
-			}
-			#s3 div {
-				background-position: 0 -22px
-			}
-			#s4 div {
-				background-position: 0 -33px
-			}
-			#s1 div.sel {
-				background: url(images/skinbutton.png)no-repeat scroll -14px top transparent
-			}
-			#s2 div.sel {
-				background: url(images/skinbutton.png)no-repeat scroll -14px -11px transparent
-			}
-			#s3 div.sel {
-				background: url(images/skinbutton.png)no-repeat scroll -14px -22px transparent
-			}
-			#s4 div.sel {
-				background: url(images/skinbutton.png)no-repeat scroll -14px -33px transparent
-			}
-		</style>
 	</head>
 	<body class="showmenu">
 		<?php
@@ -100,15 +51,13 @@
 							<a href="exit.php">退出</a>
 						</li>
 						<?php
-						if($cuserLogin->getUserType()>=10) {
+						if($cuserLogin->getUserType()>=10){
 						?>
 						<li><a target="main" href="sys_info.php">系统配置</a></li>
 						<li><a target="main" href="catalog_main.php">栏目管理</a></li>
 						<li><a target="main" href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE? '?activepath='.$cfg_medias_dir : '';?>">文件管理</a></li>
-						<?php if(!DEDEBIZ_SAFE_MODE) { ?><li><a target="main" href="templets_main.php">模板管理</a></li><?php } ?>
-						<?php
-						}
-						?>
+						<?php }?>
+						<?php if(!DEDEBIZ_SAFE_MODE){ ?><li><a target="main" href="templets_main.php">模板管理</a></li><?php }?>
 						<li><a target="main" href="makehtml_all.php">更新整站</a></li>
 						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank">会员中心</a></li>':''; ?>
 						<li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
@@ -126,7 +75,7 @@
 					<div class="scroll">
 						<form action="action_search.php" method="post" target="main">
 							<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
-							<button type="submit" class="np">搜索</button>
+							<button type="submit" class="search">搜索</button>
 							<a href="<?php echo $cfg_biz_gitUrl; ?>" target="_blank"><i class="fa fa-code"></i> 代码托管</a>
 							<a href="<?php echo $cfg_biz_helpUrl; ?>" target="_blank"><i class="fa fa-question-circle"></i> 帮助中心</a>
 						</form>

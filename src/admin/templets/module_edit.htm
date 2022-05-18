@@ -43,11 +43,11 @@
     </tr>
     <tr>
       <td width="260">模块名称：</td>
-      <td><input name="modulname" type="text" id="modulname" style="width:160px" value="<?php echo $name; ?>"></td>
+      <td><input type="text" name="modulname" id="modulname" style="width:160px" value="<?php echo $name; ?>"></td>
     </tr>
     <tr>
       <td>开发者ID：</td>
-      <td><input name="dev_id2" type="text" id="dev_id2" style="width:160px" value="<?php echo $dev_id; ?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
+      <td><input type="text" name="dev_id2" id="dev_id2" style="width:160px" value="<?php echo $dev_id; ?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
     </tr>
     <tr>
       <td>语言编码：</td>
@@ -56,10 +56,10 @@
     <tr>
       <td>封装类型：</td>
       <td>
-      	<label><input name="moduletype" type="radio" id="moduletype1" class="np" value="soft" <?php if($moduletype=='soft') echo " checked='1' "; ?>> 模块</label>
-      	<label><input name="moduletype" type="radio" id="moduletype2" class="np" value="templets" <?php if($moduletype=='templets') echo " checked='1' "; ?>> 模板</label>
-      	<label><input name="moduletype" type="radio" id="moduletype3" class="np" value="plus" <?php if($moduletype=='plus') echo " checked='1' "; ?>> 小插件</label>
-      	<label><input name="moduletype" type="radio" id="moduletype3" class="np" value="patch" <?php if($moduletype=='patch') echo " checked='1' "; ?>> 补丁</label>
+      	<label><input type="radio" name="moduletype" value="soft" <?php if($moduletype=='soft') echo "checked='1'"; ?>> 模块</label>
+      	<label><input type="radio" name="moduletype" value="templets" <?php if($moduletype=='templets') echo "checked='1'"; ?>> 模板</label>
+      	<label><input type="radio" name="moduletype" value="plus" <?php if($moduletype=='plus') echo "checked='1'"; ?>> 小插件</label>
+      	<label><input type="radio" name="moduletype" value="patch" <?php if($moduletype=='patch') echo "checked='1'"; ?>> 补丁</label>
       </td>
     </tr>
     <tr>
@@ -71,16 +71,16 @@
     </tr>
     <tr>
       <td>发布时间：</td>
-      <td><input name="mtime" type="text" id="mtime" style="width:160px" value="<?php echo $time; ?>"></td>
+      <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo $time; ?>"></td>
     </tr>
     <tr>
       <td>是否涉及会员系统：</td>
       <td>
-        <label><input name="ismember" type="radio" class="np" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo " checked='1' "; ?>> 不涉及</label>
-        <label><input name="ismember" type="radio" class="np" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo " checked='1' "; ?>> 涉及</label>
+        <label><input type="radio" name="ismember" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo "checked='1'"; ?>> 不涉及</label>
+        <label><input type="radio" name="ismember" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo "checked='1'"; ?>> 涉及</label>
         <div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block'); ?>">
-          导航使用名称：<input name="indexname" type="text" id="indexname" style="width:160px" value="<?php echo $indexname; ?>"><br>
-          导航使用网址：<input name="indexurl" type="text" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>">（用相对于会员中心的网址，如：../ask）
+          导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value="<?php echo $indexname; ?>"><br>
+          导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>">（用相对于会员中心的网址，如：../ask）
         </div>
       </td>
     </tr>
@@ -108,7 +108,7 @@
     <tr>
       <td>程序安装：</td>
       <td>
-        <label><input type="checkbox" name="autosetup" id="autosetup" value="1" class="np" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if(isset($autosetup) && $autosetup==1) echo " checked='1'"; ?>> 自动生成（由系统自动处理安装）</label><br>
+        <label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if(isset($autosetup) && $autosetup==1) echo "checked='1'"; ?>> 自动生成（由系统自动处理安装）</label><br>
         <div style="display:<?php if(!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none'; ?>" id="autosetupinput"><input name="setup" type="file" id="setup" style="width:360px"></div>
        <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none'; ?>" id="autosetupct">
         	<table width="100%" cellpadding="5" cellspacing="1">
@@ -129,7 +129,7 @@
     <tr>
       <td>删除程序：</td>
       <td>
-        <label><input type="checkbox" name="autodel" id="autodel" value="1" class="np" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if(isset($autodel) && $autodel==1) echo " checked='1' "; ?>> 自动生成（由系统自动处理卸载）</label>
+        <label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if(isset($autodel) && $autodel==1) echo "checked='1'"; ?>> 自动生成（由系统自动处理卸载）</label>
       	<br>
       	<div style="display:<?php if(!isset($autodel) || $autodel==0) echo 'block'; else echo 'none'; ?>" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
       	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none'; ?>' id='autodelct'>
@@ -148,8 +148,8 @@
     <tr>
       <td>模块文件选项：</td>
       <td>
-      	<label><input name="rebuild" type="radio" id="rebuild1" class="np" value="yes" checked="1"> 重新编译所有文件</label>
-      	<label><input name="rebuild" type="radio" id="rebuild2" class="np" value="no"> 不对[文件列表]内文件重编译</label>
+      	<label><input type="radio" name="rebuild" value="yes" checked="1"> 重新编译所有文件</label>
+      	<label><input type="radio" name="rebuild" value="no"> 不对[文件列表]内文件重编译</label>
       </td>
     </tr>
     <tr>

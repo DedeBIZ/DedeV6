@@ -20,11 +20,11 @@
           <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td width="10%" >组名称：</td>
-              <td width="90%" style="text-align:left"><input name="groupname" type="text" id="groupname"></td>
+              <td width="90%" style="text-align:left"><input type="text" name="groupname" id="groupname"></td>
             </tr>
             <tr>
               <td width="10%" >级别值：</td>
-              <td width="90%" style="text-align:left"><input name="rankid" type="text" id="rankid" size="6">（数字，系统已占用的级别值：
+              <td width="90%" style="text-align:left"><input type="text" name="rankid" id="rankid" size="6">（数字，系统已占用的级别值：
                 <?php $dsql->SetQuery("Select `rank` From `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo '<span style=\'color:#e74d58\'>'.$row->rank.'</span>'; ?>，级别值必须小于10，超过或等于10所有权限设置将无效(超级管理员)，如果10个组不能完全满足您的要求，允许使用小数）</td>
             </tr>
             <?php
@@ -53,7 +53,7 @@
             		$tagname = str_replace('[br]', '<br>', $ls[2]);
             		if(!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
             		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
-            		echo " <label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='$tag'> $tagname</label> ";
+            		echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'> $tagname</label> ";
             	  $k++;
             	}
             }
@@ -69,7 +69,7 @@
               $dsql->SetQuery('Select plusname From #@__plus');
               $dsql->Execute();
               while($row=$dsql->GetObject()){
-               	echo " <label><input name='purviews[]' type='checkbox' class='np' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label> ";
+               	echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label> ";
               	$k++;
               	$l++;
               	if($l%6==0) echo "<br>";

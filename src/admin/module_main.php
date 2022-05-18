@@ -161,7 +161,7 @@ else if ($action == 'setup') {
     if (($devInfo['dev_id'] == $infos['dev_id']) && !empty($devInfo['dev_id'])) {
       $s = "已认证";
     }
-    $win->AddTitle("&nbsp;<a href='module_main.php'>模块管理</a> &gt; 安装模块：{$infos['name']}");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 安装模块：{$infos['name']}");
     $win->AddHidden("hash", $hash);
     $win->AddHidden("action", 'setupstart');
     $msg = "<style>.dtb{border-bottom:1px dotted #eee}</style>
@@ -204,15 +204,13 @@ else if ($action == 'setup') {
     <td></td>
   </tr>
   <tr>
-    <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' style='width:98%;height:160px'>{$filelist}</textarea>
-    </td>
+    <td height='160' colspan='2'><textarea name='filelists' id='filelists' style='width:98%;height:160px'>{$filelist}</textarea></td>
   </tr>
   <tr>
     <td>对于已存在文件处理方法：</td>
     <td>
-    <label><input name='isreplace' type='radio' value='1' checked='checked'> 覆盖</label>
-    <label><input name='isreplace' type='radio' value='3'> 覆盖，保留副本</label>
+    <label><input type='radio' name='isreplace' value='1' checked='checked'> 覆盖</label>
+    <label><input type='radio' name='isreplace' value='3'> 覆盖，保留副本</label>
     <label><input type='radio' name='isreplace' value='0'> 保留旧文件</label>
    </td>
   </tr>
@@ -347,7 +345,7 @@ function UnInstall();
 else if ($action == 'uninstall') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
-    if ($infos['url'] == '') $infos['url'] = '&nbsp;';
+    if ($infos['url'] == '') $infos['url'] = ' ';
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
     $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';
@@ -403,7 +401,7 @@ else if ($action == 'uninstall') {
     <td>对于模块的文件处理方法：</td>
     <td>
     <label><input type='radio' name='isreplace' value='0' checked='checked'> 手工删除文件，仅运行卸载程序</label>
-    <label><input name='isreplace' type='radio' value='2'> 删除模块的所有文件</label>
+    <label><input type='radio' name='isreplace' value='2'> 删除模块的所有文件</label>
    </td>
   </tr>
 </table>";
@@ -474,7 +472,7 @@ function ViewOne();
 else if ($action == 'view') {
     $dm = new DedeModule($mdir);
     $infos = $dm->GetModuleInfo($hash);
-    if ($infos['url'] == '') $infos['url'] = '&nbsp;';
+    if ($infos['url'] == '') $infos['url'] = ' ';
     $alertMsg = ($infos['lang'] == $cfg_soft_lang ? '' : '<br>（这个模块的语言编码与您系统的编码不一致，请向开发者确认它的兼容性）');
     $filelists = (array)$dm->GetFileLists($hash);
     $filelist = '';

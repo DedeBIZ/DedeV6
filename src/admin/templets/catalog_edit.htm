@@ -164,15 +164,15 @@
             <tr>
               <td width="260" class="bline" style="padding-left:10px">是否支持投稿：</td>
               <td class="bline">
-                <label><input type="radio" name="issend" value="0" class="np" <?php if($myrow['issend']=="0") echo " checked='1' "; ?>> 不支持</label>
-                <label><input type="radio" name="issend" value="1" class="np" <?php if($myrow['issend']=="1") echo " checked='1' "; ?>> 支持</label>
+                <label><input type="radio" name="issend" value="0" <?php if($myrow['issend']=="0") echo "checked='1'"; ?>> 不支持</label>
+                <label><input type="radio" name="issend" value="1" <?php if($myrow['issend']=="1") echo "checked='1'"; ?>> 支持</label>
               </td>
             </tr>
             <tr>
               <td width="260" class="bline" style="padding-left:10px">是否隐藏栏目：</td>
               <td class="bline">
-                <label><input type="radio" name="ishidden" value="0" class="np" <?php if($myrow['ishidden']=="0") echo " checked='1' "; ?>> 显示</label>
-                <label><input type="radio" name="ishidden" value="1" class="np" <?php if($myrow['ishidden']=="1") echo " checked='1' "; ?>> 隐藏</label>
+                <label><input type="radio" name="ishidden" value="0" <?php if($myrow['ishidden']=="0") echo "checked='1'"; ?>> 显示</label>
+                <label><input type="radio" name="ishidden" value="1" <?php if($myrow['ishidden']=="1") echo "checked='1'"; ?>> 隐藏</label>
               </td>
             </tr>
             <tr>
@@ -191,37 +191,37 @@
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">中文名称：</td>
-              <td class="bline"><input name="typename" type="text" value="<?php echo $myrow['typename']?>" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="typename" value="<?php echo $myrow['typename']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">中文概述：</td>
-              <td class="bline"><input name="cnoverview" type="text" value="<?php echo $myrow['cnoverview']?>" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="cnoverview" value="<?php echo $myrow['cnoverview']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">英文名称：</td>
-              <td class="bline"><input name="enname" type="text" value="<?php echo $myrow['enname']?>" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="enname" value="<?php echo $myrow['enname']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">英文概述：</td>
-              <td class="bline"><input name="enoverview" type="text" value="<?php echo $myrow['enoverview']?>" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="enoverview" value="<?php echo $myrow['enoverview']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">栏目大图：</td>
               <td>
-                <input name="bigpic" type="text" value="<?php echo $myrow['bigpic']?>" style="width:260px">
+                <input type="text" name="bigpic" value="<?php echo $myrow['bigpic']?>" style="width:260px">
                 <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
               </td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">栏目小图：</td>
               <td>
-                <input name="litimg" type="text" value="<?php echo $myrow['litimg']?>" style="width:260px">
+                <input type="text" name="litimg" value="<?php echo $myrow['litimg']?>" style="width:260px">
                 <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
               </td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">排列顺序：</td>
-              <td class="bline"><input name="sortrank" type="text" value="<?php echo $myrow['sortrank']?>" class="iptxt" style="width:60px">（由低 &gt; 高）</td>
+              <td class="bline"><input type="text" name="sortrank" value="<?php echo $myrow['sortrank']?>" class="iptxt" style="width:60px">（由低 &gt; 高）</td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">浏览权限：</td>
@@ -244,26 +244,26 @@
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">文件保存目录：</td>
-              <td class="bline"><input name="typedir" type="text" id="typedir" value="<?php echo $myrow['typedir']?>" class="iptxt" style="width:260px">（标签“{cmspath}”必填，请勿删除）</td>
+              <td class="bline"><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" class="iptxt" style="width:260px">（标签“{cmspath}”必填，请勿删除）</td>
             </tr>
             <tr>
               <td style="padding-left:10px">栏目列表选项：</td>
               <td>
-                <label><input type="radio" name="isdefault" value="1" class="np" <?php if($myrow['isdefault']==1) echo " checked='1' "; ?>> 链接到默认页</label>
-                <label><input type="radio" name="isdefault" value="0" class="np" <?php if($myrow['isdefault']==0) echo " checked='1' "; ?>> 链接到列表第一页</label>
-                <label><input type="radio" name="isdefault" value="-1" class="np" <?php if($myrow['isdefault']==-1) echo " checked='1' "; ?>> 使用动态页</label>
+                <label><input type="radio" name="isdefault" value="1" <?php if($myrow['isdefault']==1) echo "checked='1'"; ?>> 链接到默认页</label>
+                <label><input type="radio" name="isdefault" value="0" <?php if($myrow['isdefault']==0) echo "checked='1'"; ?>> 链接到列表第一页</label>
+                <label><input type="radio" name="isdefault" value="-1" <?php if($myrow['isdefault']==-1) echo "checked='1'"; ?>> 使用动态页</label>
               </td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">默认页的名称：</td>
-              <td class="bline"><input name="defaultname" type="text" value="<?php echo $myrow['defaultname']?>" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">栏目属性：</td>
               <td class="bline">
-                <label><input name="ispart" type="radio" id="radio" value="0" class='np' <?php if($myrow['ispart']==0) echo " checked='1' "; ?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                <label><input name="ispart" type="radio" id="radio2" value="1" class='np' <?php if($myrow['ispart']==1) echo " checked='1' "; ?>> 频道封面（栏目本身不允许发布文档）</label><br>
-                <label><input name="ispart" type="radio" id="radio3" value="2" class='np' <?php if($myrow['ispart']==2) echo " checked='1' "; ?>> 外部连接（在"文件保存目录"处填写网址）</label>
+                <label><input type="radio" name="ispart" value="0" <?php if($myrow['ispart']==0) echo "checked='1'"; ?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+                <label><input type="radio" name="ispart" value="1" <?php if($myrow['ispart']==1) echo "checked='1'"; ?>> 频道封面（栏目本身不允许发布文档）</label><br>
+                <label><input type="radio" name="ispart" value="2" <?php if($myrow['ispart']==2) echo "checked='1'"; ?>> 外部连接（在"文件保存目录"处填写网址）</label>
               </td>
             </tr>
             <tr id="helpvarco" style="display:none">
@@ -274,9 +274,9 @@
             <tr>
               <td style="padding-left:10px">栏目交叉：<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvarco')" style="cursor:pointer"></i> 仅适用[最终列表栏目]</td>
               <td class="bline">
-                <label><input name="cross" type="radio" id="cross0" onClick="CheckCross()" value="0" class='np' <?php if($myrow['cross']==0) echo " checked='1' "; ?>> 不交叉</label>
-                <label><input name="cross" type="radio" id="cross1" onClick="CheckCross()" value="1" class='np' <?php if($myrow['cross']==1) echo " checked='1' "; ?>> 自动获取同名栏目内容</label>
-                <label><input name="cross" type="radio" id="cross2" onClick="CheckCross()" value="2" class='np' <?php if($myrow['cross']==2) echo " checked='1' "; ?>> 手工指定交叉栏目ID（用逗号分开）</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if($myrow['cross']==0) echo "checked='1'"; ?>> 不交叉</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if($myrow['cross']==1) echo "checked='1'"; ?>> 自动获取同名栏目内容</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if($myrow['cross']==2) echo "checked='1'"; ?>> 手工指定交叉栏目ID（用逗号分开）</label>
                 <br>
                 <textarea name="crossid" id="crossid" style="<?php if($myrow['cross']!=2) echo'display:none'; ?>"><?php echo $myrow['crossid']; ?></textarea>
               </td>
@@ -315,8 +315,8 @@
             <tr>
               <td class="bline" width="260" style="padding-left:10px">多站点支持：</td>
               <td class="bline">
-                <label><input name="moresite" type="radio" class="np" value="0" <?php if($myrow['moresite']==0) echo " checked='1' "; ?>> 不启用</label>
-                <label><input type="radio" name="moresite" class="np" value="1" <?php if($myrow['moresite']==1) echo " checked='1' "; ?>> 启用</label>
+                <label><input type="radio" name="moresite" value="0" <?php if($myrow['moresite']==0) echo "checked='1'"; ?>> 不启用</label>
+                <label><input type="radio" name="moresite" value="1" <?php if($myrow['moresite']==1) echo "checked='1'"; ?>> 启用</label>
               </td>
             </tr>
             <tr>
@@ -325,7 +325,7 @@
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">绑定域名：</td>
-              <td class="bline"><input name="siteurl" type="text" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="iptxt" style="width:260px">（需加 http://，一级或二级域名的根网址）</td>
+              <td class="bline"><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" class="iptxt" style="width:260px">（需加 http://，一级或二级域名的根网址）</td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">站点根目录：</td>
@@ -349,7 +349,7 @@
             <tr>
               <td style="padding-left:10px">封面模板：</td>
               <td>
-                <input name="tempindex" type="text" value="<?php echo $myrow['tempindex']?>" class="iptxt" style="width:260px">
+                <input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" class="iptxt" style="width:260px">
                 <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar1')" style="cursor:pointer"></i>
               </td>
@@ -357,14 +357,14 @@
             <tr>
               <td style="padding-left:10px">列表模板：</td>
               <td>
-                <input name="templist" type="text" value="<?php echo $myrow['templist']?>" class="iptxt" style="width:260px">
+                <input type="text" name="templist" value="<?php echo $myrow['templist']?>" class="iptxt" style="width:260px">
                 <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
               </td>
             </tr>
             <tr>
               <td style="padding-left:10px">文章模板：</td>
               <td>
-                <input name="temparticle" type="text" value="<?php echo $myrow['temparticle']?>" class="iptxt" style="width:260px">
+                <input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" class="iptxt" style="width:260px">
                 <button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
               </td>
             </tr>
@@ -383,7 +383,7 @@
             <tr>
               <td style="padding-left:10px">文章命名规则：</td>
               <td>
-                <input name="namerule" type="text" id="namerule" value="<?php echo $myrow['namerule']?>" class="iptxt" style="width:260px">
+                <input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" class="iptxt" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i>
               </td>
             </tr>
@@ -394,13 +394,13 @@
             <tr>
               <td style="padding-left:10px">列表命名规则：</td>
               <td>
-                <input name="namerule2" type="text" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="iptxt" style="width:260px">
+                <input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" class="iptxt" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr>
               <td height="60" style="padding-left:10px">SEO标题：</td>
-              <td><input name="seotitle" type="text" id="seotitle" value="<?php echo $myrow['seotitle']?>" style="width:260px">（栏目模板里用{dede:field.seotitle /}调用）</td>
+              <td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" style="width:260px">（栏目模板里用{dede:field.seotitle /}调用）</td>
             </tr>
             <tr>
               <td height="60" style="padding-left:10px">关键词：</td>
@@ -413,7 +413,7 @@
             <tr>
               <td height="36" style="padding-left:10px">继承选项：</td>
               <td>
-                <label><input name="upnext" type="checkbox" id="upnext" value="1" class="np">同时修改下级栏目的浏览权限、内容类型、模板风格、命名规则等通用属性</label>
+                <label><input type="checkbox" name="upnext" id="upnext" value="1">同时修改下级栏目的浏览权限、内容类型、模板风格、命名规则等通用属性</label>
               </td>
             </tr>
           </table>

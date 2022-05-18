@@ -34,6 +34,6 @@ $win->AddHidden('id', $id);
 $win->AddHidden('dopost', 'ok');
 $win->AddTitle("您要确定要删除栏目：[{$row['typename']}] 吗");
 $win->AddItem('栏目的文件保存目录：', $row['typedir']);
-$win->AddItem('是否删除文件：', "<label><input type='radio' name='delfile' class='np' value='no' checked='1' /> 否</label> <label>&nbsp;<input type='radio' name='delfile' class='np' value='yes' /> 是</label>");
+$win->AddItem('是否删除文件：', "<label><input type='radio' name='delfile' value='no' checked='1'> 否</label> <label><input type='radio' name='delfile' value='yes'> 是</label>");
 $winform = $win->GetWindow('ok');
 $win->Display();

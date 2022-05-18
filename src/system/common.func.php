@@ -429,7 +429,7 @@ function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $l
                             $href3 = str_replace(array("&".$ctag->GetName()."=".$fields_value, $ctag->GetName()."=".$fields_value, "&".$ctag->GetName()."=&"), array("&".$ctag->GetName()."=".$fields_value2, $ctag->GetName()."=".$fields_value2, "&"), $filterarr);
                             $href3 = !end(explode("=", $href3)) ? str_replace("&".end(explode("&", $href3)), "", $href3) : $href3;
 
-                            $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<input type="checkbox" title="'.$addonfields_items[$i].'" value="'.$href.'" onclick="window.location=this.value">&nbsp;<a title="'.$addonfields_items[$i].'" href="'.$href.'">'.$addonfields_items[$i].'</a>' : '<input type="checkbox" checked="checked" title="'.$addonfields_items[$i].'" value="'.$href3.'" onclick="window.location=this.value">&nbsp;<a title="'.$addonfields_items[$i].'" href="'.$href3.'" class="cur">'.$addonfields_items[$i].'</a>')."&nbsp;";
+                            $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<input type="checkbox" title="'.$addonfields_items[$i].'" value="'.$href.'" onclick="window.location=this.value"> <a title="'.$addonfields_items[$i].'" href="'.$href.'">'.$addonfields_items[$i].'</a>' : '<input type="checkbox" checked="checked" title="'.$addonfields_items[$i].'" value="'.$href3.'" onclick="window.location=this.value"> <a title="'.$addonfields_items[$i].'" href="'.$href3.'" class="cur">'.$addonfields_items[$i].'</a>')."&nbsp;";
                         }
                         $dede_addonfields .= '<br><br>';
                         break;

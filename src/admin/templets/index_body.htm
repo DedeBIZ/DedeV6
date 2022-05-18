@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="<?php echo $cfg_soft_lang; ?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>系统概况</title>
+		<title>系统主页</title>
 		<base target="_self">
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
@@ -80,7 +80,7 @@
 							<a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a><span id="text">V:<?php echo $cfg_version_detail; ?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?></span>
 						</div>
 						<div class="card-body">
-							<div id="updateinfos"><?php echo "<iframe name='stafrm' src='{$offUrl}&uptime={$oktime}' frameborder='0' id='stafrm' style='width:98%;height:70px;padding:.6rem'></iframe>"; ?></div>
+							<div id="updateinfos"><?php echo "<iframe src='{$offUrl}&uptime={$oktime}' name='stafrm' id='stafrm' style='width:98%;height:70px;padding:.6rem;border:0'></iframe>"; ?></div>
 							<table width="98%" class="table table-borderless">
 								<tr>
 									<td>

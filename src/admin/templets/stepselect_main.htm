@@ -258,7 +258,7 @@ li{float:left;padding-right:10px;line-height:26px}
             <input type="hidden" name="action" value="delenumAllSel">
             {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
             <tr align="center" onMouseMove="javascript:this.bgColor='#F8FCF1';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-                <td><input type="checkbox" name="ids[]" value="{dede:field.id /}" class="np"></td>
+                <td><input type="checkbox" name="ids[]" value="{dede:field.id /}"></td>
                 <td>{dede:field.id /}</td>
                 <td>
                     <?php 
@@ -301,7 +301,7 @@ li{float:left;padding-right:10px;line-height:26px}
             </tr>
             {/dede:datalist}
         </form>
-        <tr >
+        <tr>
             <td colspan="8">
                 <a href="javascript:TogSel();" class="btn btn-success btn-sm">选择</a>
                 <a href="javascript:DelSel();" class="btn btn-success btn-sm">删除</a>
@@ -332,7 +332,7 @@ li{float:left;padding-right:10px;line-height:26px}
         </tr>
         {dede:datalist}
         <tr align="center" onMouseMove="javascript:this.bgColor='#F8FCF1';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-            <td><input type="checkbox" name="ids[]" value="{dede:field.id /}" class="np"></td>
+            <td><input type="checkbox" name="ids[]" value="{dede:field.id /}"></td>
             <td>{dede:field.id /}</td>
             <td><a href="stepselect_main.php?egroup={dede:field.egroup /}">{dede:field.itemname /}</a></td>
             <td>
