@@ -118,9 +118,9 @@
               </tr>
               <tr>
                 <td>
-                  调用记录条数：<input name="row" type="text" id="row" value="10" size="4">
-                  显示列数：<input name="col" type="text" id="col" value="1" size="4">
-                  标题长度：<input name="titlelen" type="text" id="titlelen" value="24" size="4">（1 字节 = 0.5个中文字）
+                  调用记录条数：<input type="text" name="row" id="row" value="10" size="4">
+                  显示列数：<input type="text" name="col" id="col" value="1" size="4">
+                  标题长度：<input type="text" name="titlelen" id="titlelen" value="24" size="4">（1 字节 = 0.5个中文字）
                 </td>
               </tr>
               <tr>
@@ -148,10 +148,10 @@
                 </td>
               </tr>
               <tr>
-                <td>文档发布时间：<input name="subday" type="text" id="subday" value="0" size="6">天以内（0 表示不限）</td>
+                <td>文档发布时间：<input type="text" name="subday" id="subday" value="0" size="6">天以内（0 表示不限）</td>
               </tr>
               <tr>
-                <td>提取特定文档：<button class="btn btn-success btn-sm" type="button" id="selarc" onClick="SelectArcList('form1.arcid');">选择节点文章</button>
+                <td>提取特定文档：<button  type="button"class="btn btn-success btn-sm" id="selarc" onClick="SelectArcList('form1.arcid');">选择节点文章</button>
                   <textarea name="arcid" rows="3" id="arcid" style="width:90%" class="mt-3"></textarea>
                 </td>
               </tr>
@@ -166,8 +166,8 @@
               </tr>
               <tr>
                 <td height="36">
-                  <button name="Submit1" type="button" id="Submit1" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" value="" class="coolbg np">生成模板调用标记</button>
-                  <button name="Submit2" type="button" id="Submit2" class="btn btn-success btn-sm" onClick="DoSubmit('savetag')" value="保存为自定义标记" class="coolbg np">生成模板调用标记</button>
+                  <butto type="button"n name="Submit1" id="Submit1" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" value="" class="coolbg np">生成模板调用标记</button>
+                  <button type="button" name="Submit2" id="Submit2" class="btn btn-success btn-sm" onClick="DoSubmit('savetag')" value="保存为自定义标记" class="coolbg np">生成模板调用标记</button>
                 </td>
               </tr>
             </table>

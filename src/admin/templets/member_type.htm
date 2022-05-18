@@ -42,7 +42,7 @@
     	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->aid?>">
       <tr align="center">
-        <td><input name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" type="text" id="pname_<?php echo $k?>" style="width:90%" class="pubinputs"></td>
+        <td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" style="width:90%" class="pubinputs"></td>
         <td>
           <select name="rank_<?php echo $k?>" id="rank_<?php echo $k?>" style="width:90%">
           <?php
@@ -53,7 +53,7 @@
 	   	    ?>
           </select>
         </td>
-        <td><input name="money_<?php echo $k?>" value="<?php echo $row->money?>" type="text" id="money_<?php echo $k?>" style="width:80%" class="pubinputs">（元）</td>
+        <td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" style="width:80%" class="pubinputs">（元）</td>
         <td>
           <select name="exptime_<?php echo $k?>" id="exptime_<?php echo $k?>" style="width:90%">
             <?php
@@ -74,7 +74,7 @@
         <td colspan="5"> 新增一个会员产品类型：</td>
       </tr>
       <tr align="center">
-        <td><input name="pname_new" type="text" id="pname_new" style="width:90%" class="pubinputs"></td>
+        <td><input type="text" name="pname_new" id="pname_new" style="width:90%" class="pubinputs"></td>
         <td>
           <select name="rank_new" id="rank_new" style="width:90%">
             <?php
@@ -84,7 +84,7 @@
   	   	    ?>
           </select>
         </td>
-        <td><input name="money_new" type="text" id="money_new" style="width:80%" value="100" class="pubinputs">（元）</td>
+        <td><input type="text" name="money_new" id="money_new" style="width:80%" value="100" class="pubinputs">（元）</td>
         <td>
           <select name="exptime_new" id="exptime_new" style="width:90%">
             <?php

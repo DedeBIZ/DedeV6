@@ -184,11 +184,11 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="bline" align="center">栏目名称：</td>
-            <td class="bline"><input name="typename" type="text" id="typename" value="<?php echo $myrow['typename'] ?>" style="width:260px" class="iptxt"></td>
+            <td class="bline"><input type="text" name="typename" value="<?php echo $myrow['typename'] ?>" style="width:260px" class="iptxt"></td>
         </tr>
         <tr>
             <td class="bline" align="center"> 排列顺序：</td>
-            <td class="bline"> <input name="sortrank" type="text" value="<?php echo $myrow['sortrank'] ?>" style="width:100px" class="iptxt">（由低 &gt; 高）</td>
+            <td class="bline"> <input type="text" name="sortrank" value="<?php echo $myrow['sortrank'] ?>" style="width:100px" class="iptxt">（由低 &gt; 高）</td>
         </tr>
         <tr>
             <td class="bline" align="center">浏览权限：</td>
@@ -209,7 +209,7 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="bline" align="center">文件保存目录：</td>
-            <td class="bline"><input name="typedir" type="text" id="typedir" value="<?php echo $myrow['typedir'] ?>" style="width:260px"class="iptxt"></td>
+            <td class="bline"><input type="text" name="typedir" value="<?php echo $myrow['typedir'] ?>" style="width:260px" class="iptxt"></td>
         </tr>
         <tr>
             <td align="center" class="bline">栏目列表选项：</td>
@@ -221,14 +221,14 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="bline" align="center">默认页的名称：</td>
-            <td class="bline"><input name="defaultname" type="text" value="<?php echo $myrow['defaultname'] ?>" style="width:260px" class="iptxt"></td>
+            <td class="bline"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname'] ?>" style="width:260px" class="iptxt"></td>
         </tr>
         <tr>
             <td class="bline" align="center">栏目属性：</td>
             <td class="bline">
-                <label><input name="ispart" type="radio" id="radio" value="0" <?php if ($myrow['ispart'] == 0) echo "checked='1'"; ?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                <label><input name="ispart" type="radio" id="radio2" value="1" <?php if ($myrow['ispart'] == 1) echo "checked='1'"; ?>> 频道封面（栏目本身不允许发布文档）</label><br>
-                <label><input name="ispart" type="radio" id="radio3" value="2" <?php if ($myrow['ispart'] == 2) echo "checked='1'"; ?>> 外部连接（在"文件保存目录"处填写网址）</label>
+                <label><input name="ispart" type="radio" value="0" <?php if ($myrow['ispart'] == 0) echo "checked='1'"; ?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+                <label><input name="ispart" type="radio" value="1" <?php if ($myrow['ispart'] == 1) echo "checked='1'"; ?>> 频道封面（栏目本身不允许发布文档）</label><br>
+                <label><input name="ispart" type="radio" value="2" <?php if ($myrow['ispart'] == 2) echo "checked='1'"; ?>> 外部连接（在"文件保存目录"处填写网址）</label>
             </td>
         </tr>
         <tr>

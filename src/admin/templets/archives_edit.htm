@@ -75,9 +75,9 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
-              <td width="400"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:380px"></td>
+              <td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title']; ?>" style="width:380px"></td>
               <td width="90"> 简略标题：</td>
-              <td><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:160px"></td>
+              <td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -96,9 +96,9 @@ table{border-collapse:separate}
                   if($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
                   else $jumpclick = '';
                   if(preg_match("#".$trow->att."#", $arcRow['flag']))
-                  echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
+                  echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label>";
                   else
-                  echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label> ";
+                  echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label>";
                 }
                 ?>
               </td>
@@ -111,7 +111,7 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
-              <td><input name="redirecturl" type="text" id="redirecturl" value="<?php echo $addRow['redirecturl']; ?>" style="width:300px"></td>
+              <td><input type="text" name="redirecturl" id="redirecturl" value="<?php echo $addRow['redirecturl']; ?>" style="width:300px"></td>
             </tr>
           </table>
         </td>
@@ -121,9 +121,9 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
-              <td><input name="tags" type="text" id="tags" value="<?php echo $tags; ?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
+              <td><input type="text" name="tags" id="tags" value="<?php echo $tags; ?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
               <td width="60">权重：</td>
-              <td><input name="weight" type="text" id="weight" value="<?php echo $arcRow['weight']; ?>" style="width:60px">（越小越靠前）</td>
+              <td><input type="text" name="weight" id="weight" value="<?php echo $arcRow['weight']; ?>" style="width:60px">（越小越靠前）</td>
             </tr>
           </table>
         </td>
@@ -134,11 +134,11 @@ table{border-collapse:separate}
             <tr>
               <td width="90" height="80"> 缩略图：</td>
               <td>
-                <input name="picname" type="text" id="picname" value="<?php echo $arcRow['litpic']?>" style="width:300px">
+                <input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" style="width:300px">
                 <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
-                <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
+                <button  type="button"id="btnClearAll" class="btn btn-success btn-sm delete">清空</button>
               </td>
               <td align="center">
                 <img id="litPic" src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg'; ?>" style="max-width:100px;max-height:80px">
@@ -153,13 +153,13 @@ table{border-collapse:separate}
             <tr>
               <td width="90"> 来源：</td>
               <td width="260">
-                <input name="source" type="text" id="source" value="<?php echo $arcRow['source']?>" style="width:160px">
-                <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
+                <input type="text" name="source" id="source" value="<?php echo $arcRow['source']?>" style="width:160px">
+                <button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
               </td>
               <td width="60">作者：</td>
               <td>
-                <input name="writer" type="text" id="writer" value="<?php echo $arcRow['writer']?>" style="width:160px">
-                <button class="btn btn-success btn-sm" name="selwriter" type="button" id="selwriter">选择</button>
+                <input type="text" name="writer" id="writer" value="<?php echo $arcRow['writer']?>" style="width:160px">
+                <button type="button" class="btn btn-success btn-sm" name="selwriter" id="selwriter">选择</button>
               </td>
             </tr>
           </table>
@@ -188,7 +188,7 @@ table{border-collapse:separate}
                 <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title="快捷选择" style="cursor:pointer"></i>
               </td>
               <td width="90">消费金币：</td>
-              <td><input name="money" type="text" id="money" value="<?php echo $arcRow['money']?>" style="width:160px"></td>
+              <td><input type="text" name="money" id="money" value="<?php echo $arcRow['money']?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -291,8 +291,8 @@ table{border-collapse:separate}
               </td>
               <td width="90">标题颜色：</td>
               <td>
-                <input name="color" type="text" id="color" value="<?php echo $arcRow['color']?>" style="width:160px">
-                <button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
+                <input type="text" name="color" id="color" value="<?php echo $arcRow['color']?>" style="width:160px">
+                <button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
               </td>
             </tr>
           </table>

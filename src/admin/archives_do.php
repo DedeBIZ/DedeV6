@@ -561,20 +561,20 @@ else if ($dopost == 'quickEdit') {
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
                 if (preg_match("#".$trow->att."#", $arcRow['flag']))
-                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}] </label>";
+                echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}{$trow->att}[{$trow->att}]</label>";
                 else
-                echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] </label>";
+                echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
             }
             ?>
         </td>
     </tr>
     <tr>
         <td width="90" class="bline"> 标题：</td>
-        <td class="bline"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
+        <td class="bline"><input type="text" name="title" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
     </tr>
     <tr>
         <td width="90" class="bline"> 简略标题：</td>
-        <td class="bline"><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
+        <td class="bline"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
     </tr>
     <tr>
         <td width="90" class="bline"> 阅读权限：</td>
@@ -591,12 +591,12 @@ else if ($dopost == 'quickEdit') {
                 }
                 ?>
             </select>
-            需要金币：<input name="money" type="text" id="money" value="<?php echo $arcRow["money"]; ?>" style="width:100px">
+            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"]; ?>" style="width:100px">
         </td>
     </tr>
     <tr>
         <td width="90" class="bline"> 关键词：</td>
-        <td class="bline"><input name="keywords" type="text" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
+        <td class="bline"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-3">
@@ -862,7 +862,7 @@ else if ($dopost == 'attsDlg') {
             $dsql->Execute();
             while ($trow = $dsql->GetObject()) {
                 if ($trow->att == 'j' || $trow->att == 'p') continue;
-                echo "<label><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}] <label>";
+                echo "<label class='mr-1'><input type='radio' name='flagname' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]<label>";
             }
             ?>
         </td>

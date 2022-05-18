@@ -19,55 +19,55 @@
   </tr>
    <tr>
     <td align="right">商品名称：</td>
-    <td>&nbsp;{dede:field.title/}</td>
+    <td> {dede:field.title/}</td>
   </tr>
    <tr>
     <td align="right">单价（元/单位）:</td>
-    <td>&nbsp;{dede:field.uprice/}</td>
+    <td> {dede:field.uprice/}</td>
   </tr>
    <tr>
     <td align="right">数量：</td>
-    <td>&nbsp;{dede:field.cartcount/}</td>
+    <td> {dede:field.cartcount/}</td>
   </tr>
   <tr>
     <td align="right">支付方式：</td>
-    <td>&nbsp;<?php echo GetSta($fields['state'],$oid)?></td>
+    <td> <?php echo GetSta($fields['state'],$oid)?></td>
   </tr>
   <tr>
     <td align="right">配送：</td>
-    <td>&nbsp;{dede:field.dname/} 费用:{dede:field.dprice/}元</td>
+    <td> {dede:field.dname/} 费用:{dede:field.dprice/}元</td>
   </tr>
    <tr>
     <td align="right">购买时间：</td>
-    <td>&nbsp;{dede:field.stime function=GetDateTimeMk(@me)/}</td>
+    <td> {dede:field.stime function=GetDateTimeMk(@me)/}</td>
   </tr>
    <tr>
     <td align="right">收货人：</td>
-    <td>&nbsp;<?php echo $row['consignee']?></td>
+    <td> <?php echo $row['consignee']?></td>
   </tr>
   <tr>
     <td align="right">地址：</td>
-    <td>&nbsp;<?php echo $row['address']?></td>
+    <td> <?php echo $row['address']?></td>
   </tr>
   <tr>
     <td align="right">邮编：</td>
-    <td>&nbsp;<?php echo $row['zip']?></td>
+    <td> <?php echo $row['zip']?></td>
   </tr>
   <tr>
     <td align="right">联系电话：</td>
-    <td>&nbsp;<?php echo $row['tel']?></td>
+    <td> <?php echo $row['tel']?></td>
   </tr>
   <tr>
     <td align="right">邮箱：</td>
-    <td>&nbsp;<?php echo $row['email']?></td>
+    <td> <?php echo $row['email']?></td>
   </tr>
   <tr>
     <td align="right">留言：</td>
-    <td>&nbsp;<?php echo $row['des']?></td>
+    <td> <?php echo $row['des']?></td>
   </tr>
   <tr>
     <td align="right">合计（元）：</td>
-    <td>&nbsp;{dede:field.priceCount/}元</td>
+    <td> {dede:field.priceCount/}元</td>
   </tr>
 {/dede:datalist}
   <tr>

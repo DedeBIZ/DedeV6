@@ -89,20 +89,20 @@
     <tr> 
       <td width="30%">表单提示文字：<br>
         <span class="style2">发布内容时显示的提示文字</span></td>
-      <td><input name="itemname" type="text" id="itemname" class="pubinputs"> *</td>
+      <td><input type="text" name="itemname" id="itemname" class="pubinputs"> *</td>
     </tr>
     <tr> 
       <td>字段名称：<br>
         <span class="style2">只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的<a href="stepselect_main.php" target="_blank">[组名称]</a></span></td>
-      <td><input name="fieldname" type="text" id="fieldname" class="pubinputs"> *</td>
+      <td><input type="text" name="fieldname" id="fieldname" class="pubinputs"> *</td>
     </tr>
     <tr> 
       <td>内容是否需要分页符：<br>
         <span class="style2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td>
-      	<input name="isnull" type="hidden" value="1">
-        <label><input name="spage" type="radio"  value="split"> 是</label>
-         <label><input name="spage" type="radio"  value="no" checked="1"> 否</label>
+      	<input type="hidden" name="isnull" value="1">
+        <label><input type="radio" name="spage" value="split"> 是</label>
+        <label><input type="radio" name="spage" value="no" checked="1"> 否</label>
       </td>
     </tr>
     <tr> 
@@ -127,12 +127,12 @@
     <tr> 
       <td>默认值：<br>
         <span class="style2">如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（用“,”分开，如“男,女,人妖”）</span></td>
-      <td><textarea name="vdefault" type="text" id="vdefault" style="width:70%;height:60px"></textarea></td>
+      <td><textarea name="vdefault" id="vdefault" style="width:70%;height:60px"></textarea></td>
     </tr>
     <tr> 
       <td>最大长度：<br>
         <span class="style2">文本数据必须填写，大于255为text类型</span></td>
-      <td><input name="maxlength" type="text" id="maxlength" class="pubinputs" value="250" style="width:80px"></td>
+      <td><input type="text" name="maxlength" id="maxlength" class="pubinputs" value="250" style="width:80px"></td>
     </tr>
     <tr>
       <td>自定义表单HTML：</td>

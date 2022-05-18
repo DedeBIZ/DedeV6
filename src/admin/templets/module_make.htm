@@ -38,11 +38,11 @@
       </tr>
       <tr>
         <td width="260">模块名称：</td>
-        <td><input name="modulname" type="text" id="modulname" style="width:160px"> </td>
+        <td><input type="text" name="modulname" id="modulname" style="width:160px"> </td>
       </tr>
       <tr>
         <td>语言编码：</td>
-        <td><?php echo $cfg_soft_lang; ?>（不同编码模块可以使用，但不能在此打包）<input name="lang" type="hidden" value="<?php echo $cfg_soft_lang; ?>"></td>
+        <td><?php echo $cfg_soft_lang; ?>（不同编码模块可以使用，但不能在此打包）<input type="hidden" name="lang" value="<?php echo $cfg_soft_lang; ?>"></td>
       </tr>
       <tr>
         <td>封装类型：</td>
@@ -55,11 +55,11 @@
       </tr>
       <tr>
         <td>开发者ID：</td>
-        <td><input name="dev_id" type="text" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
+        <td><input type="text" name="dev_id" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
       </tr>
       <tr>
         <td>发布时间：</td>
-        <td><input name="mtime" type="text" id="mtime" style="width:160px" value="<?php echo GetDateMk(time()); ?>"> </td>
+        <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo GetDateMk(time()); ?>"> </td>
       </tr>
       <tr>
         <td>是否涉及会员系统：</td>
@@ -67,8 +67,8 @@
           <label><input type="radio" name="ismember" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked"> 不涉及</label>
           <label><input type="radio" name="ismember" value="1" onclick="ShowHideMb('ismember0','rboxct')"> 涉及</label>
           <div id="rboxct" style="display:none">
-            导航使用名称：<input name="indexname" type="text" id="indexname" style="width:160px" value=""><br>
-            导航使用网址：<input name="indexurl" type="text" id="indexurl" style="width:160px" value="">
+            导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value=""><br>
+            导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="">
             （用相对于会员中心的网址，如：../ask）
           </div>
         </td>

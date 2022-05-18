@@ -214,37 +214,37 @@
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">中文名称：</td>
-              <td class="bline"><input name="typename" type="text" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="typename" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">中文概述：</td>
-              <td class="bline"><input name="cnoverview" type="text" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="cnoverview" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">英文名称：</td>
-              <td class="bline"><input name="enname" type="text" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="enname" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">英文概述：</td>
-              <td class="bline"><input name="enoverview" type="text" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="enoverview" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">栏目大图：</td>
               <td>
-                <input name="bigpic" type="text" style="width:260px">
+                <input type="text" name="bigpic" style="width:260px">
                 <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
               </td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">栏目小图：</td>
               <td>
-                <input name="litimg" type="text" style="width:260px">
+                <input type="text" name="litimg" style="width:260px">
                 <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
               </td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">排列顺序：</td>
-              <td class="bline"><input name="sortrank" type="text" class="pubinputs" style="width:60px">（由低 &gt; 高）</td>
+              <td class="bline"><input type="text" name="sortrank" class="pubinputs" style="width:60px">（由低 &gt; 高）</td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">浏览权限：</td>
@@ -275,7 +275,7 @@
                 $pardir = preg_replace("#\/{1,}#", '/', $pardir);
                 echo $pardir;
                 ?>
-                <input name="nextdir" type="hidden" id="nextdir" value="<?php echo $pardir?>">
+                <input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir?>">
               </td>
             </tr>
             <tr>
@@ -292,12 +292,12 @@
             <tr>
               <td class="bline" style="padding-left:10px">目录相对位置：</td>
               <td class="bline">
-                <label><input name="referpath" type="radio" value="parent" checked="chekced"> 上级目录</label>
+                <label><input type="radio" name="referpath" value="parent" checked="chekced"> 上级目录</label>
                 <?php
                 if($moresite==0){
                 ?>
-                <label><input name="referpath" type="radio" value="cmspath"> CMS根目录</label>
-                <label><input name="referpath" type="radio" value="basepath"> 站点根目录</label>
+                <label><input type="radio" name="referpath" value="cmspath"> CMS根目录</label>
+                <label><input type="radio" name="referpath" value="basepath"> 站点根目录</label>
                 <?php } ?>
               </td>
             </tr>
@@ -311,7 +311,7 @@
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">默认页的名称：</td>
-              <td class="bline"><input name="defaultname" type="text" value="index.html" class="iptxt" style="width:260px"></td>
+              <td class="bline"><input type="text" name="defaultname" value="index.html" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">栏目属性：</td>
@@ -378,7 +378,7 @@
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">绑定域名：</td>
-              <td class="bline"><input name="siteurl" type="text" id="siteurl" onChange="CheckPathSet();" style="width:260px">（需加 http://，一级或二级域名的根网址）</td>
+              <td class="bline"><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" style="width:260px">（需加 http://，一级或二级域名的根网址）</td>
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">站点根目录：</td>
@@ -409,7 +409,7 @@
             <tr>
               <td style="padding-left:10px">封面模板：</td>
               <td>
-                <input name="tempindex" type="text" value="{style}/index_<?php echo $nid?>.htm" style="width:260px">
+                <input type="text" name="tempindex" value="{style}/index_<?php echo $nid?>.htm" style="width:260px">
                 <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar1')" style="cursor:pointer"></i>
               </td>
@@ -417,14 +417,14 @@
             <tr>
               <td style="padding-left:10px">列表模板：</td>
               <td>
-                <input name="templist" type="text" value="{style}/list_<?php echo $nid?>.htm" style="width:260px">
+                <input type="text" name="templist" value="{style}/list_<?php echo $nid?>.htm" style="width:260px">
                 <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
               </td>
             </tr>
             <tr>
               <td style="padding-left:10px">文章模板：</td>
               <td>
-                <input name="temparticle" type="text" value="{style}/article_<?php echo $nid?>.htm" style="width:260px">
+                <input type="text" name="temparticle" value="{style}/article_<?php echo $nid?>.htm" style="width:260px">
                 <button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
               </td>
             </tr>
@@ -443,7 +443,7 @@
             <tr>
               <td style="padding-left:10px">文章命名规则：</td>
               <td>
-                <input name="namerule" type="text" id="namerule" value="<?php echo $cfg_df_namerule; ?>" style="width:260px">
+                <input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule; ?>" style="width:260px">
                 <i class="fa fa-question-circle"  title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i>
               </td>
             </tr>
@@ -454,13 +454,13 @@
             <tr>
               <td style="padding-left:10px">列表命名规则：</td>
               <td>
-                <input name="namerule2" type="text" id="namerule2" value="{typedir}/{tid}-{page}.html" style="width:260px">
+                <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" style="width:260px">
                 <i class="fa fa-question-circle"  title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr>
               <td height="60" style="padding-left:10px">SEO标题：</td>
-              <td><input name="seotitle" type="text" id="seotitle" style="width:260px">（栏目模板里用{dede:field.seotitle /}调用）</td>
+              <td><input type="text" name="seotitle" id="seotitle" style="width:260px">（栏目模板里用{dede:field.seotitle /}调用）</td>
             </tr>
             <tr>
               <td height="60" style="padding-left:10px">关键词：</td>
@@ -476,11 +476,7 @@
               <td style="padding-left:10px">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</td>
             </tr>
             <tr>
-              <td>
-                <?php
-                GetEditor("content","","450","Default","print","false");
-                ?>
-              </td>
+              <td><?php GetEditor("content","","450","Default","print","false"); ?></td>
             </tr>
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">

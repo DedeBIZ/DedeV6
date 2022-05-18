@@ -43,11 +43,11 @@
     </tr>
     <tr>
       <td width="260">模块名称：</td>
-      <td><input name="modulname" type="text" id="modulname" style="width:160px" value="<?php echo $name; ?>"></td>
+      <td><input type="text" name="modulname" id="modulname" style="width:160px" value="<?php echo $name; ?>"></td>
     </tr>
     <tr>
       <td>开发者ID：</td>
-      <td><input name="dev_id2" type="text" id="dev_id2" style="width:160px" value="<?php echo $dev_id; ?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
+      <td><input type="text" name="dev_id2" id="dev_id2" style="width:160px" value="<?php echo $dev_id; ?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者ID</a></td>
     </tr>
     <tr>
       <td>语言编码：</td>
@@ -71,7 +71,7 @@
     </tr>
     <tr>
       <td>发布时间：</td>
-      <td><input name="mtime" type="text" id="mtime" style="width:160px" value="<?php echo $time; ?>"></td>
+      <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo $time; ?>"></td>
     </tr>
     <tr>
       <td>是否涉及会员系统：</td>
@@ -79,8 +79,8 @@
         <label><input type="radio" name="ismember" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo "checked='1'"; ?>> 不涉及</label>
         <label><input type="radio" name="ismember" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo "checked='1'"; ?>> 涉及</label>
         <div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block'); ?>">
-          导航使用名称：<input name="indexname" type="text" id="indexname" style="width:160px" value="<?php echo $indexname; ?>"><br>
-          导航使用网址：<input name="indexurl" type="text" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>">（用相对于会员中心的网址，如：../ask）
+          导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value="<?php echo $indexname; ?>"><br>
+          导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>">（用相对于会员中心的网址，如：../ask）
         </div>
       </td>
     </tr>

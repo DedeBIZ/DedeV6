@@ -77,11 +77,11 @@
           </tr>
           <tr> 
             <td class="bline">电子邮箱：</td>
-            <td class="bline"><input name="email" type="text" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
+            <td class="bline"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
           </tr>
           <tr> 
             <td class="bline">昵称：</td>
-            <td class="bline"><input name="uname" type="text" value="<?php echo $row['uname']?>" id="uname" style="width:260px"></td>
+            <td class="bline"><input type="text" name="uname" value="<?php echo $row['uname']?>" id="uname" style="width:260px"></td>
           </tr>
           <tr> 
             <td class="bline">性别：</td>
@@ -94,8 +94,8 @@
           <tr> 
             <td class="bline">金币 ：</td>
             <td class="bline">
-              <input name="money" type="text" id="money" value="<?php echo $row['money']; ?>" style="width:60px"> 
-              积分：<input name="scores" type="text" id="scores" value="<?php echo $row['scores']; ?>" style="width:60px">
+              <input type="text" name="money" id="money" value="<?php echo $row['money']; ?>" style="width:60px"> 
+              积分：<input type="text" name="scores" id="scores" value="<?php echo $row['scores']; ?>" style="width:60px">
             </td>
           </tr>
           <tr> 
@@ -137,7 +137,7 @@
           <?php } ?>
             <td class="bline">推荐级别：</td>
             <td class="bline">
-              <input name="oldmatt" type="hidden" id="oldmatt" value="<?php echo $row['matt']?>" style="width:60px">
+              <input type="hidden" name="oldmatt" id="oldmatt" value="<?php echo $row['matt']?>" style="width:60px">
               <input name="matt" type="text" id="matt" value="<?php echo $row['matt']?>" style="width:60px">（0为普通，1为推荐，10为管理员不能在前台登录非管理员ID是严格使用10属性的，要新建管理在<a href='sys_admin_user_add.php' target='_blank'>系统帐号</a>地方增加）
             </td>
           </tr>

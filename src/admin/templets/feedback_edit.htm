@@ -25,7 +25,7 @@
             </tr>
             <tr>
               <td>评论人：</td>
-              <td><input name="username" type="text" id="username" size="20" value="<?php echo $row['username']; ?>"></td>
+              <td><input type="text" name="username" id="username" size="20" value="<?php echo $row['username']; ?>"></td>
             </tr>
             <tr>
               <td>评论发布时间：</td>
@@ -54,7 +54,7 @@
             <tr>
               <td colspan="2" align="center" class="py-3">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
-                <button onClick="location='<?php echo $ENV_GOBACK_URL; ?>';" type="button" class="btn btn-success btn-sm">返回</button>
+                <button type="button" onClick="location='<?php echo $ENV_GOBACK_URL; ?>';" class="btn btn-success btn-sm">返回</button>
               </td>
             </tr>
           </table>

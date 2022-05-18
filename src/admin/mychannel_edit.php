@@ -52,10 +52,10 @@ else if ($dopost == "copystart") {
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
     $wintitle = "频道管理-模型复制";
-    $wecome_info = "&nbsp;<a href='mychannel_main.php'>频道管理</a>::模型复制";
+    $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::模型复制";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
-    $win->AddTitle("&nbsp;被复制频道：[<span class='text-danger'>".$row['typename']."</span>]");
+    $win->AddTitle("被复制频道：[<span class='text-danger'>".$row['typename']."</span>]");
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
@@ -328,11 +328,11 @@ function __GetTemplate()
 else if ($dopost == "gettemplets") {
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
-    $wintitle = "&nbsp;频道管理-查看模板";
+    $wintitle = "频道管理-查看模板";
     $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::查看模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
-    $win->AddTitle("&nbsp;频道[".$row['typename']."]默认模板文件说明：");
+    $win->AddTitle("频道[".$row['typename']."]默认模板文件说明：");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "
         文档模板：{$defaulttemplate}/article_{$row['nid']}.htm

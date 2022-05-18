@@ -18,8 +18,8 @@
       <td height="36" bgcolor="#f8f8f8">
         <table cellpadding="0" cellspacing="0">
           <tr>
-            <td width="280" align="center"><input name="keyword" type="text" id="keyword" placeholder="请输入关键词" style="width:260px"></td>
-            <td width="270"><input name="username" type="text" id="username" placeholder="请输入用户名" style="width:260px"></td>
+            <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" style="width:260px"></td>
+            <td width="270"><input type="text" name="username" id="username" placeholder="请输入用户名" style="width:260px"></td>
             <td width="170">
               <select name="folder" id="folder" style="width:160px">
                 <option value="inbox">收件箱</option>
@@ -40,15 +40,15 @@
   <tr>
     <td colspan="7">
       <form id="postall" method="post" action="member_pmone.php">
-        <input name="action" type="hidden" value="post">
+        <input type="hidden" name="action" value="post">
         <table width="100%" cellpadding="1" cellspacing="1">
           <tr>
             <td width="260">发送到：</td>
-            <td><input name="msgtoid" type="text" class="text" value="<?php echo empty($touid)? '' : $touid?>" style="width:260px"> 填写用户登录的ID（网址uid=后面跟着的ID）</td>
+            <td><input type="text" name="msgtoid" class="text" value="<?php echo empty($touid)? '' : $touid?>" style="width:260px"> 填写用户登录的ID（网址uid=后面跟着的ID）</td>
           </tr>
           <tr>
             <td>标题：</td>
-            <td><input name="subject" type="text" id="subject" class="company_manage_form_label" style="width:260px">（标题少于70个字符内）</td>
+            <td><input type="text" name="subject" id="subject" class="company_manage_form_label" style="width:260px">（标题少于70个字符内）</td>
           </tr>
           <tr>
             <td><label for="pm_textarea">内容：</label></td>

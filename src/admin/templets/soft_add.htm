@@ -93,9 +93,9 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 软件名称：</td>
-              <td width="400"><input name="title" type="text" id="title" style="width:380px"></td>
+              <td width="400"><input type="text" name="title" id="title" style="width:380px"></td>
               <td width="90"> 简略标题：</td>
-              <td><input name="shorttitle" type="text" id="shorttitle" style="width:160px"></td>
+              <td><input type="text" name="shorttitle" id="shorttitle" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -111,9 +111,9 @@ table{border-collapse:separate}
               while($trow = $dsql->GetObject())
               {
           	    if($trow->att=='j')
-          	    echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label> ";
+          	    echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label>";
           	    else
-          	    echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
+          	    echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
               }
             	?></td>
             </tr>
@@ -125,7 +125,7 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
-              <td><input name="redirecturl" type="text" id="redirecturl" value="" style="width:300px"></td>
+              <td><input type="text" name="redirecturl" id="redirecturl" value="" style="width:300px"></td>
             </tr>
           </table>
         </td>
@@ -135,9 +135,9 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
-              <td><input name="tags" type="text" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
+              <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
               <td width="60">权重：</td>
-              <td><input name="weight" type="text" id="weight" value="<?php echo $maxWright['cc']; ?>" style="width:60px">（越小越靠前）</td>
+              <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc']; ?>" style="width:60px">（越小越靠前）</td>
             </tr>
           </table>
         </td>
@@ -148,11 +148,11 @@ table{border-collapse:separate}
             <tr>
               <td width="90"> 缩略图：</td>
               <td>
-                <input name="picname" type="text" id="picname" style="width:300px">
+                <input type="text" name="picname" id="picname" style="width:300px">
                 <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class='btn btn-success btn-sm'>选择图片</button>
-                <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
+                <button type="button" id="btnClearAll" class="btn btn-success btn-sm delete">清空</button>
               </td>
               <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="max-width:100px;max-height:80px"></td>
             </tr>
@@ -165,13 +165,13 @@ table{border-collapse:separate}
             <tr>
               <td width="90"> 来源：</td>
               <td width="260">
-                <input name="source" type="text" id="source" style="width:160px">
-                <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
+                <input type="text" name="source" id="source" style="width:160px">
+                <button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
               </td>
               <td width="60">作者：</td>
               <td>
-                <input name="writer" type="text" id="writer" style="width:160px">
-                <button name="selwriter" type="button" id="selwriter" class="btn btn-success btn-sm">选择</button>
+                <input type="text" name="writer" id="writer" style="width:160px">
+                <button type="button" name="selwriter" id="selwriter" class="btn btn-success btn-sm">选择</button>
               </td>
             </tr>
           </table>
@@ -201,7 +201,7 @@ table{border-collapse:separate}
                 ?>
               </td>
               <td width="90" align="center">消费金币：</td>
-              <td><input name="needmoney" type="text" id="needmoney" value="<?php echo $softconfig['dfywboy']; ?>" style="width:160px"></td>
+              <td><input type="text" name="needmoney" id="needmoney" value="<?php echo $softconfig['dfywboy']; ?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -318,9 +318,9 @@ table{border-collapse:separate}
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 官方网址：</td>
-              <td width="310"><input name="officialUrl" type="text" id="officialUrl" value="http://" style="width:260px"></td>
+              <td width="310"><input type="text" name="officialUrl" id="officialUrl" value="http://" style="width:260px"></td>
               <td width="90">演示地址：</td>
-              <td><input name="officialDemo" type="text" id="officialDemo" value="http://" style="width:260px"></td>
+              <td><input type="text" name="officialDemo" id="officialDemo" value="http://" style="width:260px"></td>
             </tr>
           </table>
         </td>
@@ -331,7 +331,7 @@ table{border-collapse:separate}
             <tr>
               <td width="90"> 软件大小：</td>
               <td>
-                <input name="softsize" type="text" id="softsize" style="width:60px">
+                <input type="text" name="softsize" id="softsize" style="width:60px">
                 <select name="unit" id="unit">
                   <option value="MB" selected>MB</option>
                   <option value="KB">KB</option>
@@ -368,11 +368,11 @@ table{border-collapse:separate}
             <tr>
               <td width="90"> 本地地址：</td>
               <td>
-                <input name="softurl1" type="text" id="softurl1" style="width:260px">
-                <button class="btn btn-success btn-sm" name="sel1" type="button" id="sel1" onClick="SelectSoft('form1.softurl1')">选取</button>
+                <input type="text" name="softurl1" id="softurl1" style="width:260px">
+                <button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm" onClick="SelectSoft('form1.softurl1')">选取</button>
               </td>
               <td width="90">服务器名称：</td>
-              <td><input name="servermsg1" type="text" id="servermsg1" value="本地下载" style="width:160px"></td>
+              <td><input type="text" name="servermsg1" id="servermsg1" value="本地下载" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -477,7 +477,7 @@ table{border-collapse:separate}
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" >&nbsp;文章排序：</td>
+              <td width="90"> 文章排序：</td>
               <td width="260">
                 <select name="sortup" id="sortup" style="width:160px">
                   <option value="0" selected>默认排序</option>
@@ -490,8 +490,8 @@ table{border-collapse:separate}
               </td>
               <td width="90">标题颜色：</td>
               <td>
-                <input name="color" type="text" id="color" style="width:160px">
-                <button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
+                <input type="text" name="color" id="color" style="width:160px">
+                <button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
               </td>
             </tr>
           </table>

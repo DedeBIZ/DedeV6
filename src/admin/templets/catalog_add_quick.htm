@@ -172,7 +172,7 @@
             </tr>
             <tr>
               <td class="bline" style="padding-left:10px">默认页的名称：</td>
-              <td class="bline"><input name="defaultname" type="text" value="index.html" class="pubinputs" style="width:260px"></td>
+              <td class="bline"><input type="text" name="defaultname" value="index.html" class="pubinputs" style="width:260px"></td>
             </tr>
             <tr id="helpvar2" style="display:none">
               <td bgcolor="#f8f8f8" style="padding-left:10px">支持变量：</td>
@@ -188,7 +188,7 @@
             <tr>
               <td class="bline" style="padding-left:10px">文章命名规则：</td>
               <td class="bline">
-                <input name="namerule" type="text" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" style="width:260px">
+                <input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i>
               </td>
             </tr>
@@ -199,7 +199,7 @@
             <tr>
               <td style="padding-left:10px">列表命名规则：</td>
               <td>
-                <input name="namerule2" type="text" id="namerule2" value="{typedir}/{tid}-{page}.html" class="pubinputs" style="width:260px">
+                <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="pubinputs" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i>
               </td>
             </tr>
@@ -224,7 +224,7 @@
                       </td>
                       <td align="center"><input type="text" name="toptype" id="toptype" class="pubinputs" style="width:160px"></td>
                       <td><input type="text" name="sontype" id="sontype" class="pubinputs" style="width:360px"></td>
-                      <td align="center"><button name="" type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
+                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr  class="repeat" align="center">
@@ -234,7 +234,7 @@
                       </td>
                       <td><input type="text" name="toptype<?php echo $i; ?>" id="toptype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
                       <td><input type="text" name="sontype<?php echo $i; ?>" id="sontype<?php echo $i; ?>" class="pubinputs" style="width:360px"></td>
-                      <td align="center"><button name="" type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
+                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php } ?>
                   </tbody>
@@ -252,7 +252,7 @@
                         <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px">
                       </td>
                       <td><input type="text" name="reltype" id="reltype" class="pubinputs" style="width:160px"></td>
-                      <td align="center"><button name="" type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
+                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm del">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr  class="repeat" align="center">

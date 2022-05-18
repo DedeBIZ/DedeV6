@@ -67,7 +67,7 @@ table{border-collapse:separate}
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
-            <td><input name="title" type="text" id="title" value="" style="width:380px"></td>
+            <td><input type="text" name="title" id="title" value="" style="width:380px"></td>
           </tr>
         </table>
       </td>
@@ -83,7 +83,7 @@ table{border-collapse:separate}
             	$dsql->Execute();
             	while($trow = $dsql->GetObject())
             	{
-            		echo "<label><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label> ";
+            		echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
             	}
             	?>
             </td>
@@ -97,11 +97,11 @@ table{border-collapse:separate}
           <tr>
             <td width="90"> 缩略图：</td>
             <td>
-              <input name="picname" type="text" id="picname" style="width:300px">
+              <input type="text" name="picname" id="picname" style="width:300px">
               <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
               <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
               <button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
-              <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
+              <button  type="button"id="btnClearAll" class="btn btn-success btn-sm delete">清空</button>
              </td>
             <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="max-width:100px;max-height:80px"></td>
           </tr>

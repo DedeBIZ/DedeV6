@@ -82,6 +82,6 @@ function GetMemberName($rank, $mt)
 function GetMAtt($m)
 {
     if ($m < 1) return '';
-    else if ($m == 10) return "&nbsp;<span class='text-danger'>[管理员]</span>";
-    else return "&nbsp;<i class=\"fa fa-user-o\" aria-hidden=\"true\"></i> <span class='text-danger'>[荐]</span>";
+    else if ($m == 10) return " <span class='text-danger'>[管理员]</span>";
+    else return " <i class=\"fa fa-user-o\" aria-hidden=\"true\"></i> <span class='text-danger'>[荐]</span>";
 }

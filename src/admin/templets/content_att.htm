@@ -38,8 +38,8 @@
       <input type="hidden" name="att_<?php echo $k?>" value="<?php echo $row->att?>">
       <tr>
         <td align="center"><?php echo $row->att; ?></td>
-        <td><input name="sortid_<?php echo $k?>" value="<?php echo $row->sortid; ?>" type="text" id="sortid_<?php echo $k?>" class="pubinputs" style="width:50%"></td>
-        <td><input name="attname_<?php echo $k?>" value="<?php echo $row->attname; ?>" type="text" id="attname_<?php echo $k?>" size="30" class="pubinputs"></td>
+        <td><input type="text" name="sortid_<?php echo $k?>" value="<?php echo $row->sortid; ?>" id="sortid_<?php echo $k?>" class="pubinputs" style="width:50%"></td>
+        <td><input type="text" name="attname_<?php echo $k?>" value="<?php echo $row->attname; ?>" id="attname_<?php echo $k?>" size="30" class="pubinputs"></td>
       </tr>
       <?php
     	}

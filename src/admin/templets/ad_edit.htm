@@ -84,7 +84,7 @@
             </tr>
             <tr>
               <td>广告位名称：</td>
-              <td colspan="2"><input name="adname" type="text" id="adname" value="<?php echo $row['adname']?>" class="iptxt" style="width:260px"></td>
+              <td colspan="2"><input type="text" name="adname" id="adname" value="<?php echo $row['adname']?>" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td>时间限制：</td>
@@ -96,8 +96,8 @@
             <tr>
               <td>投放时间：</td>
               <td colspan="2">
-                从：<input name="starttime" type="text" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" style="width:160px">
-                到：<input name="endtime" type="text" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" style="width:160px">
+                从：<input type="text" name="starttime" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" style="width:160px">
+                到：<input type="text" name="endtime" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" style="width:160px">
               </td>
             </tr>
             <tr>

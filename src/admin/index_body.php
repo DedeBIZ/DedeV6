@@ -51,7 +51,7 @@ else if ($dopost == 'setskin') {
             if(trim($row['editcon'])==''){
                 $row['editcon'] = 'archives_edit.php';
             }
-            $rowarcrank = $row['arcrank']==-1? "&nbsp;<span class='text-danger'>[未审核]</span>":"";
+            $rowarcrank = $row['arcrank']==-1? " <span class='text-danger'>[未审核]</span>":"";
             $pubdate = GetDateMk($row['pubdate']);
             echo "<tr><td><a href='{$row['editcon']}?aid={$row['id']}&channelid={$row['channel']}'>{$row['title']}</a>{$rowarcrank}</td><td width='90'>{$pubdate}</td></tr>";
         }

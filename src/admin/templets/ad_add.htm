@@ -83,7 +83,7 @@
       <tr>
         <td>
           <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
-            <input name="normbody[style]" type="hidden" value="code" id="adstyle">
+            <input type="hidden" name="normbody[style]" value="code" id="adstyle">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
             <input type="hidden" name="dopost" value="save">
             <tr>
@@ -91,7 +91,7 @@
             </tr>
             <tr>
               <td>广告位标识：</td>
-              <td colspan="2"><input name="tagname" type="text" id="tagname" class="iptxt" style="width:260px">（使用英文或数字表示的简洁标识）</td>
+              <td colspan="2"><input type="text" name="tagname" id="tagname" class="iptxt" style="width:260px">（使用英文或数字表示的简洁标识）</td>
             </tr>
             <tr>
               <td>广告分类：</td>
@@ -117,7 +117,7 @@
             </tr>
             <tr>
               <td>广告位名称：</td>
-              <td colspan="2"><input name="adname" type="text" id="adname" class="iptxt" style="width:260px"></td>
+              <td colspan="2"><input type="text" name="adname" id="adname" class="iptxt" style="width:260px"></td>
             </tr>
             <tr>
               <td>时间限制：</td>
@@ -129,8 +129,8 @@
             <tr>
               <td>投放时间：</td>
               <td colspan="2">
-                从：<input name="starttime" type="text" id="starttime" value="<?php echo $startDay?>" style="width:160px">
-                到：<input name="endtime" type="text" id="endtime" value="<?php echo $endDay?>" style="width:160px">
+                从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" style="width:160px">
+                到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" style="width:160px">
               </td>
             </tr>
             <tr>
