@@ -20,7 +20,7 @@ if ($dopost == 'add') {
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecode != $safecodeok) {
-        ShowMsg('请填写安全验证串', '-1', 0, 3000);
+        ShowMsg('请填写验证安全码', '-1', 0, 3000);
         exit();
     }
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__member` WHERE userid LIKE '$userid' ");

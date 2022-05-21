@@ -23,7 +23,7 @@ if ($dopost == "delmember") {
         $id = preg_replace("#[^0-9]#", '', $id);
         $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
         if ($safecodeok != $safecode) {
-            ShowMsg("请填写正确的安全验证串", "member_do.php?id={$id}&dopost=delmember");
+            ShowMsg("请填写正确的验证安全码", "member_do.php?id={$id}&dopost=delmember");
             exit();
         }
         if (!empty($id)) {
@@ -70,7 +70,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
     $win->AddTitle("您确定要删除会员ID:".$id." 吗");
-    $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' style='width:260px'>（复制本代码：<span class='text-danger'>$safecode</span>）", "30");
+    $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' style='width:260px'>（安全码：<span class='text-danger'>$safecode</span>）", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 } else if ($dopost == "delmembers") {
@@ -78,7 +78,7 @@ if ($dopost == "delmember") {
     if ($fmdo == 'yes') {
         $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
         if ($safecodeok != $safecode) {
-            ShowMsg("请填写正确的安全验证串", "member_do.php?id={$id}&dopost=delmembers");
+            ShowMsg("请填写正确的验证安全码", "member_do.php?id={$id}&dopost=delmembers");
             exit();
         }
         if (!empty($id)) {
@@ -117,7 +117,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
     $win->AddTitle("您确定要删除(ID:".$id.")这个会员?");
-    $win->AddMsgItem(" 安全验证串：<input name='safecode' type='text' id='safecode' size='16' style='width:260px' /> (复制本代码：<span class='text-danger'>$safecode</span>)", "30");
+    $win->AddMsgItem(" 验证安全码：<input name='safecode' type='text' id='safecode' size='16' style='width:260px' /> (安全码：<span class='text-danger'>$safecode</span>)", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }
