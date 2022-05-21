@@ -16,6 +16,8 @@ $cfg_photo_type['gif'] = FALSE;
 $cfg_photo_type['jpeg'] = FALSE;
 $cfg_photo_type['png'] = FALSE;
 $cfg_photo_type['wbmp'] = FALSE;
+$cfg_photo_type['bmp'] = FALSE;
+$cfg_photo_type['webp'] = FALSE;
 $cfg_photo_typenames = array();
 $cfg_photo_support = '';
 if (function_exists("imagecreatefromgif") && function_exists("imagegif")) {
@@ -39,6 +41,16 @@ if (function_exists("imagecreatefromwbmp") && function_exists("imagewbmp")) {
     $cfg_photo_type["wbmp"] = TRUE;
     $cfg_photo_typenames[] = "image/wbmp";
     $cfg_photo_support .= "WBMP ";
+}
+if (function_exists("imagecreatefrombmp") && function_exists("imagebmp")) {
+    $cfg_photo_type["bmp"] = TRUE;
+    $cfg_photo_typenames[] = "image/bmp";
+    $cfg_photo_support .= "BMP ";
+}
+if (function_exists("imagecreatefromwebp") && function_exists("imagewebp")) {
+    $cfg_photo_type["webp"] = TRUE;
+    $cfg_photo_typenames[] = "image/webp";
+    $cfg_photo_support .= "WEBP ";
 }
 //引入图像处理小助手
 helper('image');

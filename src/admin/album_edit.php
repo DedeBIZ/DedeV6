@@ -276,11 +276,21 @@ else if ($dopost == 'save') {
         for ($i = 0; $i <= count($albumsArr) - 1; $i++) {
             $album = $albumsArr[$i];
             $data = explode(',', $album['img']);
+            $ext = ".png";
+            if(strpos($data[0], "data:image/jpeg") === 0){
+                $ext = ".jpg";
+            } elseif (strpos($data[0], "data:image/gif") === 0) {
+                $ext = ".gif";
+            } elseif (strpos($data[0], "data:image/webp") === 0) {
+                $ext = ".webp";
+            } elseif (strpos($data[0], "data:image/bmp") === 0) {
+                $ext = ".bmp";
+            }
             $ntime = time();
             $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
             CreateDir($savepath);
             $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
-            $fullUrl = $fullUrl.".png";
+            $fullUrl = $fullUrl.$ext;
             file_put_contents($cfg_basedir.$fullUrl, base64_decode($data[1]));
             $info = '';
             $imginfos = GetImageSize($cfg_basedir.$fullUrl, $info);

@@ -93,7 +93,7 @@ if (!function_exists('ImageResize')) {
             }
             imagedestroy($im);
             return true;
-        } catch(Throwable $th) {
+        } catch (Throwable $th) {
             return false;
         } catch (Exception $e) {
             return false;
@@ -141,8 +141,8 @@ if (!function_exists('gdversion')) {
 if (!function_exists('WaterImg')) {
     function WaterImg($srcFile, $fromGo = 'up')
     {
-        include(DEDEDATA.'/mark/inc_photowatermark_config.php');
-        require_once(DEDEINC.'/image.class.php');
+        include(DEDEDATA . '/mark/inc_photowatermark_config.php');
+        require_once(DEDEINC . '/image.class.php');
         if (isset($GLOBALS['needwatermark'])) {
             $photo_markup = $photo_markdown = empty($GLOBALS['needwatermark']) ? '0' : '1';
         }
@@ -162,7 +162,7 @@ if (!function_exists('WaterImg')) {
         if ($fromGo == 'down' && $photo_markdown == '0') {
             return;
         }
-        $TRUEMarkimg = DEDEDATA.'/mark/'.$photo_markimg;
+        $TRUEMarkimg = DEDEDATA . '/mark/' . $photo_markimg;
         if (!file_exists($TRUEMarkimg) || empty($photo_markimg)) {
             $TRUEMarkimg = "";
         }
@@ -171,8 +171,8 @@ if (!function_exists('WaterImg')) {
         }
         $cfg_watermarktext = array();
         if ($photo_marktype == '2') {
-            if (file_exists(DEDEDATA.'/mark/simhei.ttf')) {
-                $cfg_watermarktext['fontpath'] =  DEDEDATA.'/mark/simhei.ttf';
+            if (file_exists(DEDEDATA . '/mark/simhei.ttf')) {
+                $cfg_watermarktext['fontpath'] =  DEDEDATA . '/mark/simhei.ttf';
             } else {
                 return;
             }
@@ -220,9 +220,17 @@ if (!function_exists('ImageResizeNew')) {
                 if (!$cfg_photo_type['png']) return FALSE;
                 $img = imagecreatefrompng($srcFile);
                 break;
+            case 8:
+                if (!$cfg_photo_type['wbmp']) return FALSE;
+                $img = imagecreatefromwbmp($srcFile);
+                break;
             case 6:
                 if (!$cfg_photo_type['bmp']) return FALSE;
-                $img = imagecreatefromwbmp($srcFile);
+                $img = imagecreatefrombmp($srcFile);
+                break;
+            case 18:
+                if (!$cfg_photo_type['webp']) return FALSE;
+                $img = imagecreatefromwebp($srcFile);
                 break;
         }
         $width = imageSX($img);
@@ -247,7 +255,7 @@ if (!function_exists('ImageResizeNew')) {
         if ($new_width > $target_width) {
             $new_height = $target_width;
         }
-        $new_img = ImageCreateTrueColor($target_width, $target_height);
+        $new_img = imagecreatetruecolor($target_width, $target_height);
         $alpha = imagecolorallocatealpha($new_img, 0, 0, 0, 127);
         imagefill($new_img, 0, 0, $alpha);
         imagealphablending($new_img, true);
@@ -275,6 +283,9 @@ if (!function_exists('ImageResizeNew')) {
                 case 6:
                     imagebmp($new_img, $toFile);
                     break;
+                case 18:
+                    imagewebp($new_img, $toFile);
+                    break;
                 default:
                     return FALSE;
             }
@@ -293,6 +304,9 @@ if (!function_exists('ImageResizeNew')) {
                     break;
                 case 6:
                     imagebmp($new_img);
+                    break;
+                case 18:
+                    imagewebp($new_img);
                     break;
                 default:
                     return FALSE;
