@@ -65,7 +65,7 @@ table{border-collapse:separate}
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
-            <td><input type="text" name="title" id="title" value="<?php echo $addRow['title']; ?>" style="width:380px"></td>
+            <td><input type="text" name="title" id="title" value="<?php echo $addRow['title']; ?>" style="width:390px"></td>
           </tr>
         </table>
       </td>
@@ -126,9 +126,9 @@ table{border-collapse:separate}
             if($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
             echo $typeOptions;
             echo "</select>";
-			     ?>
-			     <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid','<?php echo $addRow['typeid']; ?>')" title="快捷选择" style="cursor:pointer"></i>
-			</td>
+			      ?>
+			      <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid','<?php echo $addRow['typeid']; ?>')" title="快捷选择" style="cursor:pointer"></i>
+			      </td>
           </tr>
         </table>
 	  </td>
