@@ -5,6 +5,7 @@ $cfg_cookie_encode = '~cookieEncode~';
 $cfg_indexurl = '~indexurl~';
 $cfg_backup_dir = 'backupdata';
 $cfg_indexname = '网站主页';
+$cfg_indexseo = '~indexseo~';
 $cfg_webname = '~webname~';
 $cfg_adminemail = '~adminmail~';
 $cfg_html_editor = 'ckeditor';
