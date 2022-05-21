@@ -9,8 +9,7 @@ function showHide(objname, o)
 		{	
 			obj.style.display = 'none';
 			o.querySelector("i").className = "fa fa-angle-right"
-		}
-		else{
+		} else {
 			obj.style.display = 'block';
 			o.querySelector("i").className = "fa fa-angle-down"
 		}
@@ -111,8 +110,8 @@ function ShowMainMenu(n)
 	{
 		curCt.style.display = 'none';
 		targetCt.style.display = 'block';
-		curLink.className = 'mm';
-		targetLink.className = 'mmac';
+		curLink.className = 'menu-item';
+		targetLink.className = 'menu-active';
 		curitem = n;
 	} else {
 		fetch("index_menu_load.php?openitem="+n).then(resp=>resp.text()).then((d)=>{
@@ -121,8 +120,8 @@ function ShowMainMenu(n)
 			{
 				curCt.style.display = 'none';
 				targetCt.style.display = 'block';
-				curLink.className = 'mm';
-				targetLink.className = 'mmac';
+				curLink.className = 'menu-item';
+				targetLink.className = 'menu-active';
 				curitem = n;
 			}
 		});

@@ -6,120 +6,43 @@
 		<title>系统菜单</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="css/frame.css">
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/jquery.min.js"></script>
-		<?php echo "<script>var curopenItem = '$openitem';</script>"; ?>
 		<script src="js/leftmenu.js"></script>
+		<?php echo "<script>var curopenItem = '$openitem';</script>"; ?>
 		<base target="main">
-		<style>
-			body {
-				margin: 0;
-				padding: 0 6px;
-				background: #f8f8f8;
-				overflow: scroll;
-				overflow-x: hidden
-			}
-			.mleft {
-				padding-top: 1rem
-			}
-			.mright {
-				width: 100%;
-				background: #fff;
-				box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
-				border-radius: 0 0 .2rem .2rem
-			}
-			a.mmac div {
-				margin-bottom: 6px;
-				padding: 6px 0;
-				width: 50px;
-				color: #fff;
-				background: #424b51;
-				box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
-				border-radius: .2rem 0 0 .2rem;
-				text-align: center
-			}
-			a.mm div {
-				margin-bottom: 6px;
-				padding: 6px 0;
-				width: 50px;
-				color: #424b51;
-				background: #fff;
-				box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
-				border-radius: .2rem 0 0 .2rem;
-				text-align: center;
-				cursor: pointer
-			}
-			a.mm:hover div {
-				color: #fff;
-				background: #424b51;
-				transition: all .2s
-			}
-			dl.bitem {
-				margin: 1rem 0 10px 0;
-				padding: 0 10px
-			}
-			dl.bitem dt {
-				margin-bottom: 10px;
-				padding-left: 10px;
-				height: 28px;
-				line-height: 28px;
-				background: #f8f8f8;
-				border-radius: .2rem;
-				cursor: pointer
-			}
-			dl.bitem dt b {
-				color: #424b51
-			}
-			.sitemu li {
-				padding: 0 0 0 10px;
-				display: block;
-				height: 26px;
-				line-height: 26px
-			}
-			.fllct {
-				float: left
-			}
-			.flrct {
-				float: right
-			}
-			.fa-minus-circle {
-				color: #dc3545
-			}
-			.fa-plus-circle {
-				color: #28a745
-			}
-		</style>
 	</head>
-	<body onLoad="CheckOpenMenu();">
+	<body class="menu-box">
 		<table cellspacing="0" cellpadding="0">
 			<tr>
-				<td valign="top" class="mleft">
-					<a id="link1" class="mmac">
+				<td valign="top" class="menu-left">
+					<a id="link1" class="menu-active">
 						<div onClick="ShowMainMenu(1)"><b>运维</b></div>
 					</a>
-					<a id="link100" class="mm">
+					<a id="link100" class="menu-item">
 						<div onClick="ShowMainMenu(100)"><b>插件</b></div>
 					</a>
-					<a id="link5" class="mm">
+					<a id="link5" class="menu-item">
 						<div onClick="ShowMainMenu(5)"><b>更新</b></div>
 					</a>
-					<a id="link6" class="mm">
+					<a id="link6" class="menu-item">
 						<div onClick="ShowMainMenu(6)"><b>会员</b></div>
 					</a>
 					<?php
 					if($cuserLogin->getUserType()>=10) {
 					?>
-					<a id="link7" class="mm">
+					<a id="link7" class="menu-item">
 						<div onClick="ShowMainMenu(7)"><b>模板</b></div>
 					</a>
-					<a id="link10" class="mm">
+					<a id="link10" class="menu-item">
 						<div onClick="ShowMainMenu(10)"><b>系统</b></div>
 					</a>
 					<?php
 					}
 					?>
 				</td>
-				<td valign="top" class="mright">
+				<td valign="top" class="menu-right">
 					<div id="ct1"><?php GetMenus($cuserLogin->getUserRank(),'main'); ?></div>
 					<div id="ct100"></div>
 					<div id="ct3"></div>
