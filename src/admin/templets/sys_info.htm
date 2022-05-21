@@ -183,8 +183,8 @@
 												$c1 = '';
 												$c2 = '';
 												$row['value']=='Y' ? $c1="checked" : $c2="checked";
-												echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是 </label>";
-												echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否 </label>";
+												echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是 </label> ";
+												echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否 </label> ";
 											} else if($row['type']=='bstring') {
 												$row['value'] = stripslashes($row['value']);
 												echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
