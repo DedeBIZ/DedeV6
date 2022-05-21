@@ -351,7 +351,7 @@ $actionSearch[9] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '系统配置变量',
-            'description' => '包含站点设置、核心设置 、附件设置、会员设置、互动设置、性能选项、其它选项、模块设置、添加新变量等分类，其中有网站基本信息和网站的基本设置选项',
+            'description' => '包含站点设置、核心设置 、附件设置、会员设置、互动设置、性能选项、其它选项、添加新变量等分类，其中有网站基本信息和网站的基本设置选项',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info.php'
         ),
