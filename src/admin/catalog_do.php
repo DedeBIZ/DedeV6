@@ -28,7 +28,7 @@ if ($dopost == "addArchives") {
     }
     if (!empty($channelid)) {
         //根据模型调用发布表单
-        $row = $dsql->GetOne("SELECT addcon FROM #@__channeltype WHERE id='$channelid'");
+        $row = $dsql->GetOne("SELECT addcon FROM `#@__channeltype` WHERE id='$channelid'");
     } else {
         //根据栏目调用发布表单
         $row = $dsql->GetOne("SELECT ch.addcon FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id='$cid' ");
@@ -57,7 +57,7 @@ else if ($dopost == "listArchives") {
         exit();
     }
     if ($cid > 0) {
-        $row = $dsql->GetOne("SELECT #@__arctype.typename,#@__channeltype.typename AS channelname,#@__channeltype.id,#@__channeltype.mancon FROM #@__arctype LEFT JOIN #@__channeltype on #@__channeltype.id=#@__arctype.channeltype WHERE #@__arctype.id='$cid'");
+        $row = $dsql->GetOne("SELECT `#@__arctype`.typename,`#@__channeltype`.typename AS channelname,`#@__channeltype`.id,`#@__channeltype`.mancon FROM `#@__arctype` LEFT JOIN `#@__channeltype` on `#@__channeltype`.id=`#@__arctype`.channeltype WHERE `#@__arctype`.id='$cid'");
         $gurl = $row["mancon"];
         $channelid = $row["id"];
         $typename = $row["typename"];
@@ -67,7 +67,7 @@ else if ($dopost == "listArchives") {
             exit();
         }
     } else if ($channelid > 0) {
-        $row = $dsql->GetOne("SELECT typename,id,mancon FROM #@__channeltype WHERE id='$channelid'");
+        $row = $dsql->GetOne("SELECT typename,id,mancon FROM `#@__channeltype` WHERE id='$channelid'");
         $gurl = $row["mancon"];
         $channelid = $row["id"];
         $typename = "";
@@ -106,13 +106,13 @@ else if ($dopost == "upRank") {
     CheckPurview('t_Edit,t_AccEdit');
     //检查栏目操作许可
     CheckCatalog($cid, "您无权修改本栏目");
-    $row = $dsql->GetOne("SELECT reid,sortrank FROM #@__arctype WHERE id='$cid'");
+    $row = $dsql->GetOne("SELECT reid,sortrank FROM `#@__arctype` WHERE id='$cid'");
     $reid = $row['reid'];
     $sortrank = $row['sortrank'];
-    $row = $dsql->GetOne("SELECT sortrank FROM #@__arctype WHERE sortrank<=$sortrank AND reid=$reid ORDER BY sortrank DESC ");
+    $row = $dsql->GetOne("SELECT sortrank FROM `#@__arctype` WHERE sortrank<=$sortrank AND reid=$reid ORDER BY sortrank DESC ");
     if (is_array($row)) {
         $sortrank = $row['sortrank'] - 1;
-        $dsql->ExecuteNoneQuery("UPDATE #@__arctype SET sortrank='$sortrank' WHERE id='$cid'");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET sortrank='$sortrank' WHERE id='$cid'");
     }
     UpDateCatCache();
     ShowMsg("操作成功，返回目录", "catalog_main.php");
@@ -120,12 +120,12 @@ else if ($dopost == "upRank") {
 } else if ($dopost == "upRankAll") {
     //检查权限许可
     CheckPurview('t_Edit');
-    $row = $dsql->GetOne("SELECT id FROM #@__arctype ORDER BY id DESC");
+    $row = $dsql->GetOne("SELECT id FROM `#@__arctype` ORDER BY id DESC");
     if (is_array($row)) {
         $maxID = $row['id'];
         for ($i = 1; $i <= $maxID; $i++) {
             if (isset(${'sortrank'.$i})) {
-                $dsql->ExecuteNoneQuery("UPDATE #@__arctype SET sortrank='".(${'sortrank'.$i})."' WHERE id='{$i}';");
+                $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET sortrank='".(${'sortrank'.$i})."' WHERE id='{$i}';");
             }
         }
     }
@@ -296,7 +296,8 @@ else if ($dopost == 'moveCatalog') {
             ShowMsg('不能从父类移动到子类', 'catalog_main.php');
             exit();
         }
-        $dsql->ExecuteNoneQuery(" UPDATE `#@__arctype` SET reid='$movetype' WHERE id='$typeid' ");
+        $topid = GetTopid($movetype);
+        $dsql->ExecuteNoneQuery("UPDATE `#@__arctype` SET reid='$movetype',topid='$topid' WHERE id='$typeid' ");
         UpDateCatCache();
         ShowMsg('成功移动目录', 'catalog_main.php');
         exit();
