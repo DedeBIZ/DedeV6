@@ -19,7 +19,7 @@
 					if (result.code === 200) {
 						ShowMsg(`标题：<p>${result.data.subject}</p>
 							时间：<p>${result.data.sendtime}</p>
-							内容<p>${result.data.subject}</p>`, {
+							内容<p>${result.data.message}</p>`, {
 							title: "查看短消息",
 						});
 						$(`.pm-read-status[for='${id}']`).html("已阅读");

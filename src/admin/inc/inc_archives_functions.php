@@ -220,40 +220,6 @@ function GetRemoteImage($url, $uid = 0)
     return ($ok ? $revalues : '');
 }
 /**
- *  获取远程flash
- *
- * @access    public
- * @param     string  $url  地址
- * @param     int  $uid  用户id
- * @return    string
- */
-function GetRemoteFlash($url, $uid = 0)
-{
-    global $cfg_addon_savetype, $cfg_media_dir, $cfg_basedir;
-    $cfg_uploaddir = $cfg_media_dir;
-    $revalues = '';
-    $sparr = 'application/x-shockwave-flash';
-    $htd = new DedeHttpDown();
-    $htd->OpenUrl($url);
-    if ($htd->GetHead("content-type") != $sparr) {
-        return '';
-    } else {
-        $imgUrl = $cfg_uploaddir.'/'.MyDate($cfg_addon_savetype, time());
-        $imgPath = $cfg_basedir.$imgUrl;
-        CreateDir($imgUrl);
-        $itype = '.swf';
-        $milliSecond = $uid.'_'.MyDate('mdHis', time());
-        $rndFileName = $imgPath.'/'.$milliSecond.$itype;
-        $fileurl = $imgUrl.'/'.$milliSecond.$itype;
-        $ok = $htd->SaveToBin($rndFileName);
-        if ($ok) {
-            $revalues = $fileurl;
-        }
-    }
-    $htd->Close();
-    return $revalues;
-}
-/**
  *  检测频道ID
  *
  * @access    public
@@ -726,9 +692,9 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '$handurl' ");
             $fullUrl = preg_replace("#\.([a-z]*)$#i", "", $handurl);
         } else {
-            $savepath = $cfg_image_dir.'/'.strftime("%Y-%m", $ntime);
+            $savepath = $cfg_image_dir.'/'.date("%Y-%m", $ntime);
             CreateDir($savepath);
-            $fullUrl = $savepath.'/'.strftime("%d", $ntime).dd2char(strftime("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000, 9999));
+            $fullUrl = $savepath.'/'.date("%d", $ntime).dd2char(date("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000, 9999));
         }
         if (strtolower($_FILES[$upname]['type']) == "image/gif") {
             $fullUrl = $fullUrl.".gif";
