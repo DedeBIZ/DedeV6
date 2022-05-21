@@ -23,33 +23,20 @@
 		<?php
 		}
 		?>
-		<div class="pagemask"></div>
-		<iframe class="iframemask"></iframe>
-		<div class="allmenu">
-			<div class="allmenu-box">
-				<?php
-				echo $mapstring;
-				?>
-				<br style="clear:both">
-			</div>
-		</div>
 		<div class="head">
 			<div class="top">
-				<div class="top_logo">
-					<span class="top_dedebiz"><a target="main" href="index_body.php"><?php echo $cfg_webname; ?>系统</a></span>
-					<span class="top_version">V<?php echo $cfg_version_detail; ?></span>
+				<div class="top-logo">
+					<span class="top-dedebiz"><a target="main" href="index_body.php"><?php echo cn_substr($cfg_webname,8); ?></a></span>
+					<span class="top-version">V<?php echo $cfg_version_detail; ?></span>
 					<?php if(DEDEBIZ_SAFE_MODE) {?>
 					<a target="main" class="btn btn-primary btn-sm" href="index_body.php?dopost=safe_mode">安全</a>
 					<?php } else {?>
 					<a target="main" class="btn btn-warning btn-sm" href="index_body.php?dopost=safe_mode">非安全</a>
 					<?php }?>
 				</div>
-				<div class="top_link">
+				<div class="top-item">
 					<ul class="mb-0">
-						<li class="welcome">
-							<a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10) {echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a>
-							<a href="exit.php">退出</a>
-						</li>
+						<li class="pl-0"><a href="javascript:;" id="togglemenu"><i class="fa fa-dedent"></i></li>
 						<?php
 						if($cuserLogin->getUserType()>=10){
 						?>
@@ -61,34 +48,28 @@
 						<li><a target="main" href="makehtml_all.php">更新整站</a></li>
 						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank">会员中心</a></li>':''; ?>
 						<li><a href="../index.php?upcache=1" target="_blank">网站主页</a></li>
+						<li>
+							<form action="action_search.php" method="post" target="main">
+								<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
+								<button type="submit" class="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+							</form>
+						</li>
+					</ul>
+				</div>
+				<div class="top-admin">
+					<ul class="mb-0">
+						<li class="welcome"><a target="main" href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10) {echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a></li>
+						<li><a href="exit.php">退出</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="topnav">
-				<div class="menuact">
-					<a href="javascript:;" id="togglemenu"><i class="fa fa-bars"></i> 隐藏菜单</a>
-					<a href="javascript:;" id="allmenu"><i class="fa fa-map-marker"></i> 功能地图</a>
-				</div>
-				<div id="skin"></div>
-				<div class="nav" id="nav"></div>
-				<div class="sysmsg">
-					<div class="scroll">
-						<form action="action_search.php" method="post" target="main">
-							<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
-							<button type="submit" class="search">搜索</button>
-							<a href="<?php echo $cfg_biz_gitUrl; ?>" target="_blank"><i class="fa fa-code"></i> 代码托管</a>
-							<a href="<?php echo $cfg_biz_helpUrl; ?>" target="_blank"><i class="fa fa-question-circle"></i> 帮助中心</a>
-						</form>
-					</div>
-				</div>
-			</div>
 		</div>
-		<div class="left">
+		<div class="body-left">
 			<div class="menu" id="menu">
 				<iframe src="index_menu.php" id="menufra" name="menu" frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="right">
+		<div class="body-right">
 			<div class="main">
 				<iframe src="index_body.php" id="main" name="main" frameborder="0"></iframe>
 			</div>

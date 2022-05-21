@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-$headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\", this)'><b><i class='fa fa-angle-down'></i> ~channelname~</b></dt><dd style='display:~display~' class='sitem' id='items~cc~'><ul class='sitemu'>";
+$headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\",this)'><b><i class='fa fa-angle-down'></i>~channelname~</b></dt><dd style='display:~display~' class='sitem' id='items~cc~'><ul class='sitemu'>";
 $footTemplet = "</ul></dd></dl>";
 $itemTemplet = "<li>~link~</li>";
 function GetMenus($userrank, $topos = 'main')

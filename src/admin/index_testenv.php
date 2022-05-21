@@ -135,11 +135,11 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 	$safeMsg[] = 'PHP版本过低会无法正常使用系统，强烈建议升级到PHP7.X';
 }
 if (!DEDEBIZ_SAFE_MODE) {
-	$safeMsg[] = '系统运行环境为：非安全模式，强烈建议启用安全模式 <a href="index_body.php?dopost=safe_mode" class="btn btn-success btn-sm">查看</a>';
+	$safeMsg[] = '系统运行环境为：非安全模式，强烈建议启用安全模式 <a href="index_body.php?dopost=safe_mode" class="text-danger">[查看]</a>';
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
-	$linkurl = '<a href="sys_admin_user.php" class="btn btn-success btn-sm">修改</a>';
+	$linkurl = '<a href="sys_admin_user.php" class="text-danger">[修改]</span>';
 	switch ($rs) {
 		case -1:
 			$msg = "默认管理员名称admin没有修改，建议您修改 {$linkurl}";
