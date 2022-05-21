@@ -25,7 +25,7 @@ if ($dopost != 'save') {
     if (empty($geturl)) $geturl = '';
     $keywords = $writer = $source = $body = $description = $title = '';
     //采集单个网页
-    if (preg_match("#^http:\/\/#", $geturl)) {
+    if (preg_match("#^(http|https):\/\/#", $geturl)) {
         require_once(DEDEADMIN."/inc/inc_coonepage.php");
         $redatas = CoOnePage($geturl);
         extract((array)$redatas);

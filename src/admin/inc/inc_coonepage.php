@@ -20,7 +20,7 @@ function CoOnePage($gurl)
 {
     global $dsql, $cfg_auot_description, $cfg_soft_lang;
     $redatas = array('title' => '', 'body' => '', 'source' => '', 'writer' => '', 'description' => '', 'keywords' => '');
-    $redatas['source'] = preg_replace("/http:\/\//i", "", $gurl);
+    $redatas['source'] = preg_replace("/(http|https):\/\//i", "", $gurl);
     $redatas['source'] = preg_replace("/\/(.*)$/i", "", $redatas['source']);
     $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '".$redatas['source']."' ");
     $s = $e = '';

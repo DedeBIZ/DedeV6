@@ -61,7 +61,7 @@ function XSSClean($val)
 {
     if (is_array($val)) {
         foreach ($val as $key => $v) {
-            if (in_array($key, array('tags', 'body', 'dede_fields', 'dede_addonfields', 'dopost', 'introduce'))) continue;
+            if (in_array($key, array('tags', 'body', 'dede_fields', 'dede_addonfields', 'dopost', 'introduce', 'geturl'))) continue;
             $val[$key] = XSSClean($val[$key]);
         }
         return $val;

@@ -324,7 +324,7 @@ class DedeHttpDown
         }
         if (function_exists('curl_init') && function_exists('curl_exec')) {
             $this->m_ch = curl_init();
-            curl_setopt($this->m_ch, CURLOPT_URL, $this->m_scheme.'://'.$this->m_host.':'.$this->m_port.$this->m_path);
+            curl_setopt($this->m_ch, CURLOPT_URL, $this->m_scheme.'://'.$this->m_host.':'.$this->m_port.$this->m_path.'?'.$this->m_query);
             curl_setopt($this->m_ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($this->m_ch, CURLOPT_FOLLOWLOCATION, 1);
             if ($requestType == "POST") {
