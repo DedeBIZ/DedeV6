@@ -153,7 +153,7 @@ function SpGetEditor($fname, $fvalue, $nheight = "350", $etype = "Basic", $gtype
             if ($GLOBALS['cfg_db_language']=="utf8mb4") {
                 $emoji = ",emoji";
             }
-            $addConfig = ",{allowedContent:true,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,dedepagebreak,ddfilebrowser,mimage,textindent,codesnippet{$emoji}',codeSnippet_theme: 'default'}";
+            $addConfig = ",{allowedContent:true,pasteFilter:null,filebrowserImageUploadUrl:'./dialog/select_images_post.php',filebrowserUploadUrl:'./dialog/select_media_post.php?ck=1',extraPlugins:'html5video,dedepagebreak,ddfilebrowser,mimage,textindent,codesnippet{$emoji}',codeSnippet_theme: 'default'}";
         }
         $code = <<<EOT
 <script src="{$GLOBALS['cfg_static_dir']}/ckeditor/ckeditor.js"></script>
