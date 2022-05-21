@@ -1,4 +1,4 @@
-function showHide(objname)
+function showHide(objname, o)
 {
 	//只对主菜单设置cookie
 	var obj = document.getElementById(objname);
@@ -6,9 +6,14 @@ function showHide(objname)
 	if(objname.indexOf('_1')<0 || objname.indexOf('_10')>0)
 	{
 		if(obj.style.display == 'block' || obj.style.display =='')
+		{	
 			obj.style.display = 'none';
-		else
+			o.querySelector("i").className = "fa fa-angle-right"
+		}
+		else{
 			obj.style.display = 'block';
+			o.querySelector("i").className = "fa fa-angle-down"
+		}
 		return true;
 	}
   	//正常设置cookie
@@ -28,6 +33,7 @@ function showHide(objname)
 			if(ckstrs[i]==objname){  ischange = true;  }
 			else okstr += (okstr=='' ? ckstrs[i] : ','+ckstrs[i] );
 		}
+		o.querySelector("i").className = "fa fa-angle-right"
 	} else {
 		obj.style.display = 'block';
 		ischange = true;
@@ -40,6 +46,7 @@ function showHide(objname)
 			ckstr = (ckstr==null ? objname : ckstr+','+objname);
 			setCookie('menuitems',ckstr,7);
 		}
+		o.querySelector("i").className = "fa fa-angle-down"
 	}
 }
 //读写cookie函数
