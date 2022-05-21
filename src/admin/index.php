@@ -16,6 +16,5 @@ if (preg_match("#PHP (.*) Development Server#", $_SERVER['SERVER_SOFTWARE'])) {
 }
 require_once(dirname(__FILE__)."/config.php");
 require_once(DEDEINC.'/dedetag.class.php');
-require(DEDEADMIN.'/inc/inc_menu_map.php');
 include(DEDEADMIN.'/templets/index.htm');
 exit();
