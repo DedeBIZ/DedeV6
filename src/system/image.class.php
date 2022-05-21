@@ -54,7 +54,7 @@ class image
                 $this->imagecreatefromfunc = function_exists('imagecreatefrompng') ? 'imagecreatefrompng' : '';
                 $this->imagefunc = function_exists('imagepng') ? 'imagepng' : '';
                 break;
-        }//为空则匹配类型的函数不存在
+        } //为空则匹配类型的函数不存在
         $this->attach['size'] = empty($this->attach['size']) ? @filesize($targetfile) : $this->attach['size'];
         if ($this->attachinfo['mime'] == 'image/gif') {
             $fp = fopen($targetfile, 'rb');
@@ -76,8 +76,19 @@ class image
     {
         $this->thumb_gd($thumbwidth, $thumbheight, $preview);
         if ($this->thumbstatus == 2 && $this->watermarkstatus) {
-            $this->image($this->targetfile, $this->attach,$this->watermarktext,$this->watermarkstatus,$this->watermarktrans,$this->watermarkminheight
-        ,$this->watermarkminwidth,$this->watermarktype,$this->watermarktrans,true,$this->attach);
+            $this->image(
+                $this->targetfile,
+                $this->attach,
+                $this->watermarktext,
+                $this->watermarkstatus,
+                $this->watermarktrans,
+                $this->watermarkminheight,
+                $this->watermarkminwidth,
+                $this->watermarktype,
+                $this->watermarktrans,
+                true,
+                $this->attach
+            );
             $this->attach['size'] = filesize($this->targetfile);
         }
     }
@@ -121,8 +132,12 @@ class image
                     $thumb['width'] = ceil($y_ratio * $imagewidth);
                     $thumb['height'] = $thumbheight;
                 }
-                $targetfile = !$preview ? ($this->thumbstatus == 1 ? $this->targetfile.'.thumb.jpg' : $this->targetfile) : './watermark_tmp.jpg';
+                $targetfile = !$preview ? ($this->thumbstatus == 1 ? $this->targetfile . '.thumb.jpg' : $this->targetfile) : './watermark_tmp.jpg';
                 $thumb_photo = imagecreatetruecolor($thumb['width'], $thumb['height']);
+                $alpha = imagecolorallocatealpha($thumb_photo, 0, 0, 0, 127);
+                imagefill($thumb_photo, 0, 0, $alpha);
+                imagealphablending($thumb_photo, true);
+                imagesavealpha($thumb_photo, true);
                 imagecopyresampled($thumb_photo, $attach_photo, 0, 0, 0, 0, $thumb['width'], $thumb['height'], $imagewidth, $imageheight);
                 if ($this->attachinfo['mime'] == 'image/jpeg') {
                     $imagefunc($thumb_photo, $targetfile, 100);
@@ -147,7 +162,7 @@ class image
             $imagefunc = $this->imagefunc;
             list($imagewidth, $imageheight) = $this->attachinfo;
             if ($this->watermarktype < 2) {
-                $watermark_file = $this->watermarktype == 1 ? DEDEDATA.'/mark/mark.png' : DEDEDATA.'/mark/mark.gif';
+                $watermark_file = $this->watermarktype == 1 ? DEDEDATA . '/mark/mark.png' : DEDEDATA . '/mark/mark.gif';
                 $watermarkinfo = @getimagesize($watermark_file);
                 $watermark_logo = $this->watermarktype == 1 ? @imagecreatefrompng($watermark_file) : @imagecreatefromgif($watermark_file);
                 if (!$watermark_logo) {
@@ -203,6 +218,10 @@ class image
                         break;
                 }
                 $dst_photo = @imagecreatetruecolor($imagewidth, $imageheight);
+                $alpha = imagecolorallocatealpha($dst_photo, 0, 0, 0, 127);
+                imagefill($dst_photo, 0, 0, $alpha);
+                imagealphablending($dst_photo, true);
+                imagesavealpha($dst_photo, true);
                 $target_photo = $imagecreatefunc($this->targetfile);
                 imagecopy($dst_photo, $target_photo, 0, 0, 0, 0, $imagewidth, $imageheight);
                 if ($this->watermarktype == 1) {

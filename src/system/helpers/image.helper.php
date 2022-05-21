@@ -71,6 +71,8 @@ if (!function_exists('ImageResize')) {
                     $ni = imagecreate($ftoW, $ftoH);
                     imagecopyresized($ni, $im, 0, 0, 0, 0, $ftoW, $ftoH, $srcW, $srcH);
                 }
+                $alpha = imagecolorallocatealpha($ni, 0, 0, 0, 127);
+                imagefill($ni, 0, 0, $alpha);
                 switch ($srcInfo[2]) {
                     case 1:
                         imagegif($ni, $toFile);
@@ -246,6 +248,10 @@ if (!function_exists('ImageResizeNew')) {
             $new_height = $target_width;
         }
         $new_img = ImageCreateTrueColor($target_width, $target_height);
+        $alpha = imagecolorallocatealpha($new_img, 0, 0, 0, 127);
+        imagefill($new_img, 0, 0, $alpha);
+        imagealphablending($new_img, true);
+        imagesavealpha($new_img, true);
         if ($cfg_ddimg_bgcolor == 0) $bgcolor = ImageColorAllocate($new_img, 0xff, 0xff, 0xff);
         else $bgcolor = 0;
         if (!@imagefilledrectangle($new_img, 0, 0, $target_width - 1, $target_height - 1, $bgcolor)) {
