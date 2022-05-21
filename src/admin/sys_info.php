@@ -17,7 +17,7 @@ function ReWriteConfig()
 {
     global $dsql, $configfile;
     if (!is_writeable($configfile)) {
-        echo "配置文件'{$configfile}'不支持写入，无法修改系统配置参数";
+        echo "配置文件{$configfile}不支持写入，无法修改系统配置参数";
         exit();
     }
     $fp = fopen($configfile, 'w');
@@ -64,7 +64,7 @@ else if ($dopost == 'add') {
         exit();
     }
     if (trim($nvarname) == '' || preg_match("#[^a-z_]#i", $nvarname)) {
-        ShowMsg("变量名不能为空并且必须为[a-z_]组成!", "-1");
+        ShowMsg("变量名不能为空并且必须为[a-z_]组成", "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT varname FROM `#@__sysconfig` WHERE varname LIKE '$nvarname' ");
@@ -95,57 +95,53 @@ else if ($dopost == 'search') {
     $keywords = isset($keywords) ? strip_tags($keywords) : '';
     $i = 1;
     $configstr = <<<EOT
- <table width="100%" cellspacing="1" cellpadding="1" id="tdSearch">
-  <tbody>
-   <tr bgcolor="#F8FCF1" align="center">
-    <td width="300">参数说明</td>
-    <td>参数值</td>
-    <td width="220">变量名</td>
-   </tr>
+<table width="100%" cellspacing="1" cellpadding="1" id="tdSearch">
+    <tbody>
+        <tr bgcolor="#F8FCF1" align="center">
+            <td width="300">参数说明</td>
+            <td>参数值</td>
+            <td width="220">变量名</td>
+        </tr>
 EOT;
     echo $configstr;
     if ($keywords) {
-
         $dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE info LIKE '%$keywords%' OR varname LIKE '%$keywords%' order by aid asc");
         $dsql->Execute();
-
         while ($row = $dsql->GetArray()) {
             $bgcolor = ($i++ % 2 == 0) ? "#f8f8f8" : "#ffffff";
             $row['info'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['info']);
             $row['varname'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['varname']);
+    ?>
+    <tr align="center" bgcolor="<?php echo $bgcolor ?>">
+        <td width="300"><?php echo $row['info']; ?>：</td>
+        <td align="left" style="padding:6px;">
+            <?php
+            if ($row['type'] == 'bool') {
+                $c1 = '';
+                $c2 = '';
+                $row['value'] == 'Y' ? $c1 = " checked" : $c2 = " checked";
+                echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是 </label>";
+                echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否</label>";
+            } else if ($row['type'] == 'bstring') {
+                echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
+            } else if ($row['type'] == 'number') {
+                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
+            } else {
+                echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'>";
+            }
+            ?>
+        </td>
+        <td><?php echo $row['varname'] ?></td>
+    </tr>
+<?php
+}
 ?>
-            <tr align="center" bgcolor="<?php echo $bgcolor ?>">
-                <td width="300"><?php echo $row['info']; ?>：</td>
-                <td align="left" style="padding:6px;">
-                    <?php
-                    if ($row['type'] == 'bool') {
-                        $c1 = '';
-                        $c2 = '';
-                        $row['value'] == 'Y' ? $c1 = " checked" : $c2 = " checked";
-                        echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是</label>";
-                        echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否</label>";
-                    } else if ($row['type'] == 'bstring') {
-                        echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
-                    } else if ($row['type'] == 'number') {
-                        echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
-                    } else {
-                        echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'>";
-                    }
-                    ?>
-                </td>
-                <td><?php echo $row['varname'] ?></td>
-            </tr>
-        <?php
-        }
-        ?>
-        </table>
+</table>
 <?php
         exit;
     }
     if ($i == 1) {
-        echo '<tr bgcolor="#f8f8f8" align="center">
-           <td colspan="3">没有找到搜索的内容</td>
-          </tr></table>';
+        echo '<tr bgcolor="#f8f8f8" align="center"><td colspan="3">没有找到搜索的内容</td></tr></table>';
     }
     exit;
 } else if ($dopost == 'make_encode') {

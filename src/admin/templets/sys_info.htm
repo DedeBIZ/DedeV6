@@ -101,10 +101,10 @@
 								<tr>
 									<td width="90">变量类型</td>
 									<td colspan="3">
-										<input type="radio" name="vartype" value="string" checked="checked"> 文本
-										<input type="radio" name="vartype" value="number"> 数字
-										<input type="radio" name="vartype" value="bool"> 布尔(Y/N)
-										<input type="radio" name="vartype" value="bstring"> 多行文本
+										<label><input type="radio" name="vartype" value="string" checked="checked"> 文本</label>
+										<label><input type="radio" name="vartype" value="number"> 数字</label>
+										<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
+										<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
 									</td>
 								</tr>
 								<tr>
@@ -132,8 +132,8 @@
 			</table>
 			<table width="98%" cellpadding="0" cellspacing="0" align="center" class="table maintable mt-3 mb-3">
 				<tr>
-					<td bgcolor="#f8f8f8" align="right">
-						<input type="text" name="keywds" id="keywds" placeholder="请输入配置" style="width:260px">
+					<td width="170" bgcolor="#f8f8f8" align="right">
+						<input type="text" name="keywds" id="keywds" placeholder="请输入配置" style="width:160px">
 						<button type="button" onclick="getSearch()" class="btn btn-success btn-sm">搜索</button>
 						<span id="_searchback"></span>
 					</td>
