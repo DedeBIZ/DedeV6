@@ -147,7 +147,7 @@ class DedeVote
      */
     function SaveVote($voteitem)
     {
-        global $ENV_GOBACK_URL, $file, $memberID, $row, $content;
+        global $ENV_GOBACK_URL, $memberID, $row;
         if (empty($voteitem)) {
             return '您没选中任何项目';
         }
@@ -155,7 +155,6 @@ class DedeVote
         //检查投票是否已过期
         $nowtime = time();
         if ($nowtime > $this->VoteInfos['endtime']) {
-
             ShowMsg('投票已经过期', $ENV_GOBACK_URL);
             exit();
         }
@@ -176,7 +175,7 @@ class DedeVote
         }
         //检查用户是否已投过票
         $nowtime = time();
-        $VoteMem = $this->dsql->GetOne("SELECT * FROM #@__vote_member WHERE voteid = '$this->VoteID' and userid='$memberID'");
+        $VoteMem = $this->dsql->GetOne("SELECT * FROM `#@__vote_member` WHERE voteid = '$this->VoteID' and userid='$memberID'");
         if (!empty($memberID)) {
             if (isset($VoteMem['id'])) {
                 $voteday = date("Y-m-d", $VoteMem['uptime']);
@@ -186,14 +185,14 @@ class DedeVote
                     ShowMsg('在'.$row['spec'].'天内不能重复投票', $ENV_GOBACK_URL);
                     exit();
                 } else {
-                    $query = "UPDATE #@__vote_member SET uptime='$nowtime' WHERE voteid='$this->VoteID' AND userid='$memberID'";
+                    $query = "UPDATE `#@__vote_member` SET uptime='$nowtime' WHERE voteid='$this->VoteID' AND userid='$memberID'";
                     if ($this->dsql->ExecuteNoneQuery($query) == false) {
                         ShowMsg('插入数据过程中出现错误', $ENV_GOBACK_URL);
                         exit();
                     }
                 }
             } else {
-                $query = "INSERT INTO #@__vote_member(id,voteid,userid,uptime) VALUES('','$this->VoteID','$memberID','$nowtime')";
+                $query = "INSERT INTO `#@__vote_member`(id,voteid,userid,uptime) VALUES('','$this->VoteID','$memberID','$nowtime')";
                 if ($this->dsql->ExecuteNoneQuery($query) == false) {
                     ShowMsg('插入数据过程中出现错误', $ENV_GOBACK_URL);
                     exit();

@@ -14,9 +14,6 @@ require(DEDEINC."/memberlogin.class.php");
 require(DEDEINC."/userlogin.class.php");
 $member = new MemberLogin;
 $memberID = $member->M_LoginID;
-$time = time();
-$content = $memberID.'|'.$time;
-$file = DEDEDATA.'/cache/vote_'.$aid.'_'.$member->M_ID.'.inc'; //存放会员投票记录的缓存文件
 $loginurl = $cfg_basehost."/user";
 $ENV_GOBACK_URL = empty($_SERVER['HTTP_REFERER']) ? '' : $_SERVER['HTTP_REFERER'];
 if (empty($dopost)) $dopost = '';
@@ -37,7 +34,6 @@ if ($row['isallow'] == 1) {
     }
 }
 if ($dopost == 'send') {
-
     if (!empty($voteitem)) {
         $rsmsg = "<br>您方才的投票状态：".$vo->SaveVote($voteitem)."<br>";
     } else {

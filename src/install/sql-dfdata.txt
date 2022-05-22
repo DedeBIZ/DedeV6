@@ -591,7 +591,7 @@ INSERT INTO `#@__sys_set` VALUES('1','nature','性格外向,性格内向,活泼�
 ('2','language','普通话,上海话,广东话,英语,日语,韩语,法语,意大利语,德语,西班牙语,俄语,阿拉伯语');
 
 
-INSERT INTO `#@__vote` VALUES('1','您是从哪儿得知本站的','1266336000','1584547200','0','0','1','1','0','0','<v:note id="1" count="1">朋友介绍</v:note>rn<v:note id="2" count="0">门户网站的搜索引擎</v:note>rn<v:note id="3" count="2">Google或百度搜索</v:note>rn<v:note id="4" count="2">别的网站上的链接</v:note>rn<v:note id="5" count="1">其它途径</v:note>rn');
+INSERT INTO `#@__vote` VALUES('1','您是从哪儿得知本站的','1266336000','1584547200','0','0','1','1','0','0','<v:note id="1" count="1">朋友介绍</v:note><v:note id="2" count="0">门户网站的搜索引擎</v:note><v:note id="3" count="2">Google或百度搜索</v:note><v:note id="4" count="2">别的网站上的链接</v:note><v:note id="5" count="1">其它途径</v:note>');
 
 INSERT INTO `#@__sys_enum` VALUES('139','cms制作','503','vocation','503','0'),
 ('39','租房','1','house','0','1'),
