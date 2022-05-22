@@ -55,7 +55,7 @@
 				</div>
 				<div class="top-admin">
 					<ul class="mb-0">
-						<li class="welcome"><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit" target="main"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10){echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a></li>
+						<li><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit" target="main"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10){echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a></li>
 						<li><a href="exit.php" title="退出系统"><i class="fa fa-power-off"></i></a></li>
 					</ul>
 				</div>
