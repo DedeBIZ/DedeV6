@@ -132,7 +132,7 @@ class image
                     $thumb['width'] = ceil($y_ratio * $imagewidth);
                     $thumb['height'] = $thumbheight;
                 }
-                $targetfile = !$preview ? ($this->thumbstatus == 1 ? $this->targetfile . '.thumb.jpg' : $this->targetfile) : './watermark_tmp.jpg';
+                $targetfile = !$preview ? ($this->thumbstatus == 1 ? $this->targetfile.'.thumb.jpg' : $this->targetfile) : './watermark_tmp.jpg';
                 $thumb_photo = imagecreatetruecolor($thumb['width'], $thumb['height']);
                 $alpha = imagecolorallocatealpha($thumb_photo, 0, 0, 0, 127);
                 imagefill($thumb_photo, 0, 0, $alpha);
@@ -162,7 +162,7 @@ class image
             $imagefunc = $this->imagefunc;
             list($imagewidth, $imageheight) = $this->attachinfo;
             if ($this->watermarktype < 2) {
-                $watermark_file = $this->watermarktype == 1 ? DEDEDATA . '/mark/mark.png' : DEDEDATA . '/mark/mark.gif';
+                $watermark_file = $this->watermarktype == 1 ? DEDEDATA.'/mark/mark.png' : DEDEDATA.'/mark/mark.gif';
                 $watermarkinfo = @getimagesize($watermark_file);
                 $watermark_logo = $this->watermarktype == 1 ? @imagecreatefrompng($watermark_file) : @imagecreatefromgif($watermark_file);
                 if (!$watermark_logo) {

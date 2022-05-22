@@ -120,7 +120,7 @@ class TypeUnit
                 echo "<td style='background:#F8FCF1;' class='bline'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o' style='cursor:pointer'></i><input type='checkbox' name='tids[]' value='{$id}' style='margin:0 10px'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'>{$nss}".$typeName."[ID:".$id."]</a>（文档：".$this->GetTotalArc($id)."）<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
-                echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-list'></i></a>";
+                echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
                 echo "<a href='catalog_add.php?id={$id}' title='增加子类'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
@@ -133,7 +133,7 @@ class TypeUnit
                 echo "<td style='background:#F8FCF1;' class='bline'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o' style='cursor:pointer'></i><input type='checkbox' name='tids[]' value='{$id}' style='margin:0 10px'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'>{$nss}".$typeName."[ID:".$id."]</a>  <a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
-                echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-list'></i></a>";
+                echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
                 echo "<a href='catalog_add.php?id={$id}' title='增加子类'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                 echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
@@ -205,7 +205,7 @@ class TypeUnit
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o' style='cursor:pointer'></i><input type='checkbox' name='tids[]' value='{$id}' style='margin:0 10px'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'>{$nss}".$typeName."[ID:".$id."]</a>（文档：".$this->GetTotalArc($id)."）<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                     echo "</td><td align='right'>";
                     echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
-                    echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-list'></i></a>";
+                    echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
                     echo "<a href='catalog_add.php?id={$id}' title='增加子类'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                     echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";
@@ -219,7 +219,7 @@ class TypeUnit
                     echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o' style='cursor:pointer'></i><input type='checkbox' name='tids[]' value='{$id}' style='margin:0 10px'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'>{$nss}".$typeName."[ID:".$id."]</a><a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                     echo "</td><td align='right'>";
                     echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
-                    echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-list'></i></a>";
+                    echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
                     echo "<a href='catalog_add.php?id={$id}' title='增加子类'><i class='btn btn-sm fa fa-plus-circle'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
                     echo "<a href='catalog_do.php?dopost=moveCatalog&typeid={$id}' title='移动'><i class='btn btn-sm fa fa-share-square'></i></a>";

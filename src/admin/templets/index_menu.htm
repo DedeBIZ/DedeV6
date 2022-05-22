@@ -29,18 +29,14 @@
 					<a id="link6" class="menu-item">
 						<div onClick="ShowMainMenu(6)"><b>会员</b></div>
 					</a>
-					<?php
-					if($cuserLogin->getUserType()>=10) {
-					?>
+					<?php if($cuserLogin->getUserType()>=10){ ?>
 					<a id="link7" class="menu-item">
 						<div onClick="ShowMainMenu(7)"><b>模板</b></div>
 					</a>
 					<a id="link10" class="menu-item">
 						<div onClick="ShowMainMenu(10)"><b>系统</b></div>
 					</a>
-					<?php
-					}
-					?>
+					<?php }?>
 				</td>
 				<td valign="top" class="menu-right">
 					<div id="ct1"><?php GetMenus($cuserLogin->getUserRank(),'main'); ?></div>
