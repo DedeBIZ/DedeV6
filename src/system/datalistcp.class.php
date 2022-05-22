@@ -10,19 +10,14 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC.'/dedetemplate.class.php');
-$codefile = (isset($needCode) ? $needCode : $cfg_soft_lang);
-$codefile = preg_replace("#[^\w-]#", '', $codefile);
-if (file_exists(DEDEINC.'/code/datalist.'.$codefile.'.inc')) {
-    require_once(DEDEINC.'/code/datalist.'.$codefile.'.inc');
-} else {
-    $lang_pre_page = '上页';
-    $lang_next_page = '下页';
-    $lang_index_page = '首页';
-    $lang_end_page = '末页';
-    $lang_record_number = '篇';
-    $lang_page = '页';
-    $lang_total = '共';
-}
+// 分页说明
+$lang_pre_page = '上页';
+$lang_next_page = '下页';
+$lang_index_page = '首页';
+$lang_end_page = '末页';
+$lang_record_number = '条';
+$lang_page = '页';
+$lang_total = '共';
 /**
  * DataListCP
  *
