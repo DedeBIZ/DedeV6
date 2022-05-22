@@ -96,7 +96,7 @@ if ($action == 'upload') {
   </tr>
   <tr>
     <td>请选择文件：</td>
-    <td><input name='upfile' type='file' id='upfile' style='width:380px'></td>
+    <td><input name='upfile' type='file' id='upfile' style='width:390px'></td>
   </tr>
  </table>";
     $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");

@@ -30,7 +30,7 @@ if (is_dir(dirname(__FILE__).'/../install')) {
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if (preg_match('/admin\/login/i', $cururl)) {
-    $redmsg = '<div class="alert alert-warning"><div class=\"safe-tips\">您的管理目录的名称中包含默认名称admin，建议在FTP里把它修改为其它名称，那样会更安全</div></div>';
+    $redmsg = '<div class="alert alert-warning"><div class="safe-tips">您的管理目录的名称中包含默认名称admin，建议在FTP里把它修改为其它名称，那样会更安全</div></div>';
 } else {
     $redmsg = '';
 }

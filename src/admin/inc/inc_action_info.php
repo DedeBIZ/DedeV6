@@ -68,7 +68,7 @@ $actionSearch[2] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '上传新文件 ',
-            'description' => '通过这可以上传图片、FLASH、视频音频、附件其它等附件 ',
+            'description' => '通过这可以上传图片、FLASH、视频音频、附件其它等附件',
             'purview' => '',
             'linkurl' => 'media_add.php'
         ),
@@ -185,25 +185,25 @@ $actionSearch[5] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '注册会员列表',
-            'description' => '所有注册会员的管理项,其中包含修改,删除,查看会员文档以及提升管理员等操作',
+            'description' => '所有注册会员的管理项，其中包含修改删除，查看会员文档以及提升管理员等操作',
             'purview' => 'member_List',
             'linkurl' => 'member_main.php'
         ),
         1  =>  array(
             'title' => '会员级别设置',
-            'description' => '设置会员的级别,可以通过设计不同会员的访问权限来对会员级别进行一个扩展',
+            'description' => '设置会员的级别，可以通过设计不同会员的访问权限来对会员级别进行一个扩展',
             'purview' => 'member_Type',
             'linkurl' => 'member_rank.php'
         ),
         2  =>  array(
             'title' => '积分头衔设置',
-            'description' => '会员积分等级设置,根据会员活动积分对会员进行头衔划分',
+            'description' => '会员积分等级设置，根据会员活动积分对会员进行头衔划分',
             'purview' => 'member_Type',
             'linkurl' => 'member_scores.php'
         ),
         4  =>  array(
             'title' => '会员短信管理',
-            'description' => '会员之间发送的短消息管理,其中包含群发短消息和对单个会员发送短消息两种',
+            'description' => '会员之间发送的短消息管理，其中包含群发短消息和对单个会员发送短消息两种',
             'purview' => 'member_Type',
             'linkurl' => 'member_pm.php'
         ),
@@ -212,23 +212,23 @@ $actionSearch[5] = array(
 $actionSearch[6] = array(
     'toptitle' => '会员',
     'title' => '支付工具',
-    'description' => '站点财务相关设置,包含点卡,商店订单等操作',
+    'description' => '站点财务相关设置，包含点卡，商店订单等操作',
     'soniterm' => array(
         0  =>  array(
             'title' => '点卡产品分类',
-            'description' => '网站点卡产品分类,可以添加不同点数的点卡产品类型',
+            'description' => '网站点卡产品分类，可以添加不同点数的点卡产品类型',
             'purview' => 'sys_Data',
             'linkurl' => 'cards_type.php'
         ),
         1  =>  array(
             'title' => '点卡产品管理',
-            'description' => '管理网站点卡,可以在这里生成点卡以及查看点卡的当前状态',
+            'description' => '管理网站点卡，可以在这里生成点卡以及查看点卡的当前状态',
             'purview' => 'sys_Data',
             'linkurl' => 'cards_manage.php'
         ),
         2  =>  array(
             'title' => '会员产品分类',
-            'description' => '可以将会员类型进行产品划分,比如出售高级会员1年这种,在这里可以对会员产品进行定义',
+            'description' => '可以将会员类型进行产品划分，比如出售高级会员1年这种，在这里可以对会员产品进行定义',
             'purview' => 'sys_Data',
             'linkurl' => 'member_type.php'
         ),
@@ -246,7 +246,7 @@ $actionSearch[6] = array(
         ),
         5  =>  array(
             'title' => '支付接口设置',
-            'description' => '商店以及会员产品付款用到的在线付款方式需要设置的支付接口，这里含有常用的接口，例如：支付宝，易宝等',
+            'description' => '商店以及会员产品付款用到的在线付款方式需要设置的支付接口，这里含有常用的接口',
             'purview' => 'sys_Data',
             'linkurl' => 'sys_payment.php'
         ),
@@ -258,7 +258,7 @@ $actionSearch[6] = array(
         ),
         7  =>  array(
             'title' => '汇款账号设置',
-            'description' => '银行付款的账号设置,用户可以查看到您的银行付款账号方便支付',
+            'description' => '银行付款的账号设置，用户可以查看到您的银行付款账号方便支付',
             'purview' => 'sys_Data',
             'linkurl' => 'shops_bank.php'
         ),
@@ -320,7 +320,7 @@ $actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
         ),
         1  => array(
             'title' => '标签源码管理 ',
-            'description' => '对现有的标签文件进行修改、添加',
+            'description' => '对现有的标签文件进行修改添加',
             'purview' => 'temp_All',
             'linkurl' => 'templets_tagsource.php'
         ),
@@ -351,7 +351,7 @@ $actionSearch[9] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '系统配置变量',
-            'description' => '包含站点设置、核心设置 、附件设置、会员设置、互动设置、性能选项、其它选项、模块设置、添加新变量等分类，其中有网站基本信息和网站的基本设置选项',
+            'description' => '包含站点设置、核心设置 、附件设置、会员设置、互动设置、性能选项、其它选项、添加新变量等分类，其中有网站基本信息和网站的基本设置选项',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info.php'
         ),

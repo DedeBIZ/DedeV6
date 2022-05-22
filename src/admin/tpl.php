@@ -133,7 +133,7 @@ else if ($action == 'upload') {
     <td width='504'>
         <input name='acdir' type='hidden' value='$acdir'  />
         <input name='token' type='hidden' value='{$_SESSION['token']}'  />
-        <input name='upfile' type='file' id='upfile' style='width:380px' />
+        <input name='upfile' type='file' id='upfile' style='width:390px' />
       </td>
   </tr>
  </table>

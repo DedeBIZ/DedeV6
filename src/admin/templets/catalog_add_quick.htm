@@ -115,18 +115,18 @@
           </table>
           <table width="100%" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6" class="table">
             <tr>
-              <td bgcolor="#f8f8f8" style="padding-left:10px">公用参数：</td>
+              <td bgcolor="#f8f8f8">公用参数：</td>
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>
-              <td width="260" class="bline" style="padding-left:10px">是否支持投稿：</td>
+              <td width="260" class="bline">是否支持投稿：</td>
               <td class="bline">
                 <label><input type="radio" name="issend" value="0"> 不支持</label>
                 <label><input type="radio" name="issend" value="1" checked="1"> 支持</label>
               </td>
             </tr>
             <tr>
-              <td class="bline" style="padding-left:10px">目录保存位置：</td>
+              <td class="bline">目录保存位置：</td>
               <td class="bline">
                 <label><input type="radio" name="referpath" value="parent" checked="1"> 默认HMTL目录（
                 <?php
@@ -141,7 +141,7 @@
               </td>
             </tr>
             <tr>
-              <td class="bline" style="padding-left:10px">隶属栏目：</td>
+              <td class="bline">隶属栏目：</td>
               <td class="bline">
                 <select name="reid" onchange="showSeltype(this)" style="width:160px">
                   <option value="0">选择所属目录</option>
@@ -150,7 +150,7 @@
               </td>
             </tr>
             <tr>
-              <td class="bline" style="padding-left:10px">内容模型：</td>
+              <td class="bline">内容模型：</td>
               <td class="bline"><select name="channeltype" id="channeltype" onChange="ParTemplet(this)" style="width:160px">
                 <?php
                 foreach($channelArray as $k=>$arr)
@@ -163,7 +163,7 @@
               </td>
             </tr>
             <tr>
-              <td class="bline" style="padding-left:10px">栏目列表选项：</td>
+              <td class="bline">栏目列表选项：</td>
               <td class="bline">
                 <label><input type="radio" name="isdefault" value="1" checked="1"> 链接到默认页</label>
                 <label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
@@ -171,11 +171,11 @@
               </td>
             </tr>
             <tr>
-              <td class="bline" style="padding-left:10px">默认页的名称：</td>
+              <td class="bline">默认页的名称：</td>
               <td class="bline"><input type="text" name="defaultname" value="index.html" class="pubinputs" style="width:260px"></td>
             </tr>
             <tr id="helpvar2" style="display:none">
-              <td bgcolor="#f8f8f8" style="padding-left:10px">支持变量：</td>
+              <td bgcolor="#f8f8f8">支持变量：</td>
               <td bgcolor="#f8f8f8"> {Y}、{M}、{D} 年月日<br>
                 {timestamp} INT类型的UNIX时间戳<br>
                 {aid} 文章ID<br>
@@ -186,25 +186,25 @@
               </td>
             </tr>
             <tr>
-              <td class="bline" style="padding-left:10px">文章命名规则：</td>
+              <td class="bline">文章命名规则：</td>
               <td class="bline">
                 <input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr id="helpvar3" style="display:none">
-              <td bgcolor="#f8f8f8" style="padding-left:10px">支持变量：</td>
+              <td bgcolor="#f8f8f8">支持变量：</td>
               <td bgcolor="#f8f8f8">{page} 列表的页码</td>
             </tr>
             <tr>
-              <td style="padding-left:10px">列表命名规则：</td>
+              <td>列表命名规则：</td>
               <td>
                 <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="pubinputs" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr>
-              <td bgcolor="#f8f8f8" style="padding-left:10px">栏目填写：</td>
+              <td bgcolor="#f8f8f8">栏目填写：</td>
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>

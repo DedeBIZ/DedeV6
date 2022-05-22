@@ -22,7 +22,7 @@ if ($dopost == 'saveedit') {
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
-        ShowMsg("请填写正确的安全验证串", "sys_admin_user_edit.php?id={$id}&dopost=edit");
+        ShowMsg("请填写正确的验证安全码", "sys_admin_user_edit.php?id={$id}&dopost=edit");
         exit();
     }
     $pwdm = '';
@@ -68,14 +68,14 @@ if ($dopost == 'saveedit') {
         $win->AddHidden("id", $id);
         $win->AddTitle("系统提示");
         $win->AddMsgItem("您确定要删除用户：$userid 吗", "50");
-        $win->AddMsgItem("安全验证串：<input name='safecode' type='text' id='safecode' style='width:260px'>（复制本代码：<span class='text-danger'>$safecode</span>）", "30");
+        $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' style='width:260px'>（安全码：<span class='text-danger'>$safecode</span>）", "30");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
-        ShowMsg("请填写正确的安全验证串", "sys_admin_user.php");
+        ShowMsg("请填写正确的验证安全码", "sys_admin_user.php");
         exit();
     }
     //不能删除id为1的创建人帐号，不能删除自己

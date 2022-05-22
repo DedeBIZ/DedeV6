@@ -860,7 +860,7 @@ class DedeTagParse
         } else if (file_exists(DEDEROOT.'/theme/'.$cfg_df_style.'/'.$filename)) {
             $okfile = DEDEROOT.'/theme/'.$cfg_df_style.'/'.$filename;
         } else {
-            return "无法在这个位置找到：$filename";
+            return "主题模板不存在：$filename";
         }
         //编译
         if ($ismake != "no") {

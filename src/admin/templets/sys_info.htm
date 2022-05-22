@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="js/main.js"></script>
 		<script>
 			var searchconfig = false;
 			function Nav() {
@@ -105,6 +106,7 @@
 										<label><input type="radio" name="vartype" value="number"> 数字</label>
 										<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
 										<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
+										<label><input type="radio" name="vartype" value="img"> 图片</label>
 									</td>
 								</tr>
 								<tr>
@@ -155,8 +157,7 @@
 									$dls = explode(',',$dl);
 									$n++;
 								?>
-								<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table"
-									style="<?php if($n!=$gp) echo 'display:none'; ?>">
+								<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none'; ?>">
 									<tr bgcolor="#F8FCF1" align="center">
 										<td width="360" style="border-top:0">变量说明</td>
 										<td style="border-top:0">变量值</td>
@@ -179,22 +180,29 @@
 										<td align="left">
 											<?php
 											if($row['type']=='bool') {
-												$c1='';
+												$c1 = '';
 												$c2 = '';
-												$row['value']=='Y' ? $c1=" checked" : $c2=" checked";
-												echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y'$c1> 是 </label> ";
-												echo "<label><input type='radio' name='edit___{$row['varname']}' value='N'$c2> 否 </label> ";
+												$row['value']=='Y' ? $c1="checked" : $c2="checked";
+												echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是 </label> ";
+												echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否 </label> ";
 											} else if($row['type']=='bstring') {
 												$row['value'] = stripslashes($row['value']);
-												echo "<textarea name='edit___{$row['varname']}' row='4' id='edit___{$row['varname']}' class='textarea_info' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
+												echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
 											} else if($row['type']=='number') {
 												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
+											} else if($row['type']=='img') {
+												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'> <input type='button' name='set9' value='选择' onClick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." class='btn btn-success btn-sm'>";
+													if($row['value']){
+														echo " <img src=".$row['value']." id='idd_{$row['varname']}' style='max-width:100px;vertical-align:middle'>";
+													} else {
+													echo " <img src='../static/web/img/defaultpic.jpg' id='idd_{$row['varname']}' style='max-width:100px;vertical-align:middle'>";
+												}
 											} else {
 												$addstr='';
 												if ($row['varname']=='cfg_cookie_encode') {
-													$addstr=' <a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">重新生成</a>';
+													$addstr='<a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">重新生成</a>';
 												}
-												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'>{$addstr}";
+												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'> {$addstr}";
 											}
 											?>
 										</td>

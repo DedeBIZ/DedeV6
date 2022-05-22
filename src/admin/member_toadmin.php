@@ -26,7 +26,7 @@ if ($dopost == "toadmin") {
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
-        ShowMsg("请填写正确的安全验证串", "member_toadmin.php?id={$id}");
+        ShowMsg("请填写正确的验证安全码", "member_toadmin.php?id={$id}");
         exit();
     }
     $pwdm = '';
