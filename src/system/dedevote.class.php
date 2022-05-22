@@ -124,15 +124,15 @@ class DedeVote
         if ($this->VoteCount > 0) {
             foreach ($this->VoteNotes as $k => $arr) {
                 if ($this->VoteInfos['ismore'] == 0) {
-                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#424b51'><label><input type='radio' name='voteitem' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
+                    $items .= "<tr><td height='$lineheight' bgcolor='$itembgcolor'><label><input type='radio' name='voteitem' value='$k'> ".$arr['name']."</label></td></tr>\r\n";
                 } else {
-                    $items .= "<tr><td height=$lineheight bgcolor=$itembgcolor style='color:#424b51'><label><input type=checkbox name='voteitem[]' value='$k' /> ".$arr['name']."</label></td></tr>\r\n";
+                    $items .= "<tr><td height='$lineheight' bgcolor='$itembgcolor'><label><input type=checkbox name='voteitem[]' value='$k'> ".$arr['name']."</label></td></tr>\r\n";
                 }
             }
             $items .= "<tr><td height='$lineheight'>\r\n";
-            $items .= "<input type='submit' class='btn btn-success btn-sm' name='vbt1' value='投票' />\r\n";
-            $items .= "<input type='button' class='btn  btn-success btn-sm' name='vbt2' ";
-            $items .= "value='查看结果' onClick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."'); /></td></tr>\r\n";
+            $items .= "<input type='submit' class='btn btn-success btn-sm' name='vbt1' value='投票'>\r\n";
+            $items .= "<input type='button' class='btn  btn-success btn-sm' name='vbt2' value='查看结果' onClick=window.open('".$GLOBALS['cfg_phpurl']."/vote.php?dopost=view&aid=".$this->VoteID."');>";
+            $items .= "</td></tr>\r\n";
         }
         $items .= "</form>\r\n</table>\r\n";
         return $items;
