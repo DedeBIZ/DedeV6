@@ -34,12 +34,12 @@ function DedeCopyToClipboard(text) {
 $(function () {
     $.get("index_testenv.php", function (data) {
         if (data !== '') {
-            $("#tips").html(data);
+            $("#body-tips").html(data);
         }
     });
     $.get("index_body.php?dopost=get_articles", function (data) {
         if (data !== '') {
-            $("#newarticles").html(data);
+            $("#system-word").html(data);
         }
     });
 });
@@ -131,9 +131,9 @@ function LoadServer() {
                 `;
             }
             infoStr += "</tbody></table>";
-            $("#_systeminfo").html(infoStr);
+            $("#system-info").html(infoStr);
         } else {
-            $("#_systeminfo").html(`
+            $("#system-info").html(`
             <table width="100%" class="table table-borderless">
                 <tbody>
                     <tr>
