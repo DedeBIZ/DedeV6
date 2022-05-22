@@ -45,13 +45,16 @@
       ShowObj('head1'); ShowObj('needset');
       HideObj('head2'); HideObj('adset');
     }
+    var editor = null;
     function ShowItem2() {
       setTimeout(() => {
-        var editor = CodeMirror.fromTextArea(document.getElementById('fieldset'), {
-        lineNumbers: true,
-        lineWrapping: true,
-        mode: 'text/html'
-      });
+        if (!editor) {
+          editor = CodeMirror.fromTextArea(document.getElementById('fieldset'), {
+          lineNumbers: true,
+          lineWrapping: true,
+          mode: 'text/html'
+        });
+        }
       }, 100);
       ShowObj('head2'); ShowObj('adset');
       HideObj('head1'); HideObj('needset');
