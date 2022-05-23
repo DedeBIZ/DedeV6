@@ -69,16 +69,16 @@
          <input type="hidden" name="dopost" value="mksel">
          {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
          <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-            <td><input type="checkbox" name="ids[]" value="{dede:field.aid /}"></td>
-            <td>{dede:field.aid /}</td>
-            <td><a href="templets_one_edit.php?aid={dede:field.aid /}&dopost=edit">{dede:field.title /}</a></td>
+            <td><input type="checkbox" name="ids[]" value="{dede:field.aid/}"></td>
+            <td>{dede:field.aid/}</td>
+            <td><a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit">{dede:field.title/}</a></td>
             <td>{dede:field.ismake function='GetIsMake(@me)'/}</td>
-            <td>{dede:field.likeid /}</td>
+            <td>{dede:field.likeid/}</td>
             <td>{dede:field.uptime function='GetDateMk(@me)'/}</td>
             <td>
-               <a href="templets_one_edit.php?aid={dede:field.aid /}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
-               <a href="templets_one_edit.php?aid={dede:field.aid /}&dopost=view" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 预览</a>
-               <a href="templets_one_edit.php?aid={dede:field.aid /}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
+               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=view" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 预览</a>
+               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
             </td>
          </tr>
          {/dede:datalist}

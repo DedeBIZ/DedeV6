@@ -18,20 +18,20 @@ function AlertMsg(title, id) {
 	var msgw, msgh, msgbg, msgcolor, titlecolor, titlebg, content;
 	//弹出窗口设置
 	msgw = 600;//窗口宽度 
-	msgbg = "#FFF";//内容背景
-	msgcolor = "#333";//内容颜色
+	msgbg = "#fff";//内容背景
+	msgcolor = "#545b62";//内容颜色
 	titlecolor = "#254015";//标题颜色
 	titlebg = "#f8f8f8";
-	//遮罩背景设置  	
-	content = "<div id=show_news>对不起，载入失败</div>";
+	//遮罩背景设置
+	content = "<div id=show_news>载入失败</div>";
 	var sWidth, sHeight;
 	sWidth = screen.availWidth;
 	if (screen.availHeight > document.body.scrollHeight) {
 		sHeight = screen.availHeight;//少于一屏
 	} else {
-		sHeight = document.body.scrollHeight;//多于一屏 
+		sHeight = document.body.scrollHeight;//多于一屏
 	}
-	//创建遮罩背景 
+	//创建遮罩背景
 	var maskObj = document.createElement("div");
 	maskObj.setAttribute('id', 'maskdiv');
 	maskObj.style.position = "absolute";

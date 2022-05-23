@@ -1,4 +1,4 @@
 下载说明标签
 >>dede>>
-{dede:softmsg /}
+{dede:softmsg/}
 >>dede>>

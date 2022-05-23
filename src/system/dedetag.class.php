@@ -718,7 +718,7 @@ class DedeTagParse
                 $e1 = strpos($this->SourceString, $eTagEndWord, $i);
                 $e2 = strpos($this->SourceString, $FullTagStartWord, $i);
                 $e3 = strpos($this->SourceString, $fullTagEndWordThis, $i);
-                //$eTagEndWord = /} $FullTagStartWord = {tag: $fullTagEndWordThis = {/tag:xxx]
+                //$eTagEndWord =/} $FullTagStartWord = {tag: $fullTagEndWordThis = {/tag:xxx]
                 $e1 = trim($e1);
                 $e2 = trim($e2);
                 $e3 = trim($e3);

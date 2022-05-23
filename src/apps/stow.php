@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/../system/common.inc.php");
 $aid = (isset($aid) && is_numeric($aid)) ? $aid : 0;
 $type = empty($type) ? "" : HtmlReplace($type, 1);
 if ($aid == 0) {
-    ShowMsg('文档id不能为空!', 'javascript:window.close();');
+    ShowMsg('文档id不能为空', 'javascript:window.close();');
     exit();
 }
 require_once(DEDEINC."/memberlogin.class.php");
@@ -25,7 +25,7 @@ if ($ml->M_ID == 0) {
 //读取文档信息
 $arcRow = GetOneArchive($aid);
 if ($arcRow['aid'] == '') {
-    ShowMsg("无法收藏未知文档!", "javascript:window.close();");
+    ShowMsg("无法收藏未知文档", "javascript:window.close();");
     exit();
 }
 extract($arcRow, EXTR_SKIP);

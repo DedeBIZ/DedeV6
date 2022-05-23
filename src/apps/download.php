@@ -17,7 +17,7 @@ if ($open == 0) {
     if ($aid == 0) exit('dedebiz');
     $arcRow = GetOneArchive($aid);
     if ($arcRow['aid'] == '') {
-        ShowMsg('无法获取未知文档的信息!', '-1');
+        ShowMsg('无法获取未知文档的信息', '-1');
         exit();
     }
     extract($arcRow, EXTR_SKIP);

@@ -47,7 +47,7 @@ if ($needMoney > 0 || $needRank > 1) {
         }
         $memberTypes[0] = "游客或没权限会员";
         $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-        $moremsg = "这篇文档需要 <span class='text-danger'>".$memberTypes[$needRank]."</span> 才能访问，您目前是：<span class='text-danger'>".$memberTypes[$cfg_ml->M_Rank]."</span> ";
+        $moremsg = "这篇文档需要 <span class='text-danger'>".$memberTypes[$needRank]."</span> 才能访问，您目前是：<span class='text-danger'>".$memberTypes[$cfg_ml->M_Rank]."</span>";
         include_once(DEDETEMPLATE.'/plus/view_msg.htm');
         exit();
     }
@@ -59,7 +59,7 @@ if ($needMoney > 0 || $needRank > 1) {
         if (!is_array($row)) {
             if ($cfg_ml->M_Money == '' || $needMoney > $cfg_ml->M_Money) {
                 $msgtitle = "您没有权限浏览文档：{$arctitle} ";
-                $moremsg = "这篇文档需要 <span class='text-danger'>".$needMoney." 金币</span> 才能访问，您目前拥有金币：<span class='text-danger'>".$cfg_ml->M_Money." 个</span> ";
+                $moremsg = "这篇文档需要 <span class='text-danger'>".$needMoney." 金币</span> 才能访问，您目前拥有金币：<span class='text-danger'>".$cfg_ml->M_Money." 个</span>";
                 include_once(DEDETEMPLATE.'/plus/view_msg.htm');
                 $arc->Close();
                 exit();
@@ -76,7 +76,7 @@ if ($needMoney > 0 || $needRank > 1) {
                         showmsg('购买成功，购买扣点不会重扣金币，谢谢', '/plus/view.php?aid='.$aid);
                         exit;
                     } else {
-                        showmsg('购买失败, 请返回', -1);
+                        showmsg('购买失败，请返回', -1);
                         exit;
                     }
                 }

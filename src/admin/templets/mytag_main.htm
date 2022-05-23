@@ -24,15 +24,15 @@
     </tr>
     {dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
     <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td>{dede:field.aid /}</td>
-      <td>{dede:field.tagname /}</td>
+      <td>{dede:field.aid/}</td>
+      <td>{dede:field.tagname/}</td>
       <td>{dede:field.typename function='TestType(@me)'/}</td>
       <td>{dede:field.timeset function='TimeSetValue(@me)'/}</td>
       <td>{dede:field.endtime function='GetDateMk(@me)'/}</td>
       <td>
-        <a href="mytag_edit.php?aid={dede:field.aid /}&dopost=edit">修改</a> |
-        <a href="mytag_edit.php?aid={dede:field.aid /}&dopost=delete">删除</a> |
-        <a href="mytag_edit.php?aid={dede:field.aid /}&dopost=getjs">JS调用</a>
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=edit">修改</a> |
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=delete">删除</a> |
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=getjs">JS调用</a>
       </td>
     </tr>
     {/dede:datalist}

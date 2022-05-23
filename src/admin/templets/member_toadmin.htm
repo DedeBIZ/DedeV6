@@ -35,7 +35,7 @@
         <?php
         if($row['matt']==10) 
         {
-          echo "<span style='color:#e74d58'>已经是管理员了，不要再提升了</span>";
+          echo "<span class='text-danger'>已经是管理员了，不要再提升了</span>";
         } else {
         ?>
         <table width="98%" cellspacing="0" cellpadding="6" class="table table-borderless">
@@ -99,7 +99,7 @@
               <td class="bline">验证安全码：</td>
               <td class="bline">
                 <input type="text" name="safecode" id="safecode" size="16" style="width:260px"> 
-                <input type="hidden" name="randcode" value="<?php echo $randcode; ?>">（安全码：<span style='color:#e74d58'><?php echo $safecode; ?></span>）</td>
+                <input type="hidden" name="randcode" value="<?php echo $randcode; ?>">（安全码：<span class='text-danger'><?php echo $safecode; ?></span>）</td>
             </tr>
             <tr>
               <td colspan="2" align="center" class="py-3">

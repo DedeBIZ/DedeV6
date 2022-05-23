@@ -12,14 +12,14 @@ require_once(dirname(__FILE__).'/../system/common.inc.php');
 require_once(DEDEDATA.'/config.cache.inc.php');
 //安全提示
 $config = array(
-    'font_size'   => 20,
-    'img_height'  => '36',
-    'word_type'  => 3,
-    'img_width'   => '80',
-    'use_boder'   => TRUE,
-    'font_file'   => DEDEINC.'/data/fonts/'.mt_rand(1, 6).'.ttf',
-    'wordlist_file'   => DEDEINC.'/data/words/words.txt',
-    'filter_type' => 5
+    'font_size'      => 20,
+    'img_height'     => '36',
+    'word_type'      => 3,
+    'img_width'      => '80',
+    'use_boder'      => TRUE,
+    'font_file'      => DEDEINC.'/data/fonts/'.mt_rand(1, 6).'.ttf',
+    'wordlist_file'  => DEDEINC.'/data/words/words.txt',
+    'filter_type'    => 5
 );
 $enkey = substr(md5(substr($cfg_cookie_encode, 0, 5)), 0, 10);
 $sessSavePath = DEDEDATA."/sessions_{$enkey}";

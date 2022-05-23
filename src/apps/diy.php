@@ -13,7 +13,7 @@ $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'view')) ? $action : 'post';
 $id = isset($id) && is_numeric($id) ? $id : 0;
 if (empty($diyid)) {
-    showMsg('非法操作!', 'javascript:;');
+    showMsg('非法操作', 'javascript:;');
     exit();
 }
 require_once DEDEINC.'/diyform.class.php';

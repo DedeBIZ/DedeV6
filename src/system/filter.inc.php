@@ -26,7 +26,7 @@ function _FilterAll($fk, &$svar)
         }
     } else {
         if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $svar)) {
-            ShowMsg("{$fk}字段中包含禁用词!", '-1');
+            ShowMsg("{$fk}字段中包含禁用词", '-1');
             exit();
         }
         if ($cfg_replacestr != '') {

@@ -76,7 +76,7 @@
 						<input type="text" name="keyword" placeholder="请输入关键词" style="width:160px">
 						<select name="typeid" style="margin-left:10px;width:160px">
 							<option value="0">请选择</option>
-							{dede:global.openarray /}
+							{dede:global.openarray/}
 						</select>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</form>
@@ -100,7 +100,7 @@
 											<?php } ?>
 										</td>
 										<td width="12%" align="center">IP地址：<a href='feedback_main.php?ip={dede:field.ip/}'>{dede:field.ip/}</a></td>
-										<td width="12%">时间：{dede:field.dtime function="GetDateTimeMK(@me)" /}</td>
+										<td width="12%">时间：{dede:field.dtime function="GetDateTimeMK(@me)"/}</td>
 										<td align="center">
 											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}'>编辑评论</a>
 											<a class="btn btn-success btn-sm" href='feedback_edit.php?id={dede:field.id/}&dopost=makehtml'>更新评论</a>

@@ -140,7 +140,7 @@ class Archives
      */
     function ParAddTable()
     {
-        //读取附加表信息，并把附加表的资料经过编译处理后导入到$this->Fields中，以方便在模板中用 {dede:field name='fieldname' /} 标记统一调用
+        //读取附加表信息，并把附加表的资料经过编译处理后导入到$this->Fields中，以方便在模板中用 {dede:field name='fieldname'/} 标记统一调用
         if ($this->ChannelUnit->ChannelInfos['addtable'] != '') {
             $row = $this->addTableRow;
             if ($this->ChannelUnit->ChannelInfos['issystem'] == -1) {

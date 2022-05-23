@@ -34,7 +34,7 @@ function lib_flink(&$ctag, &$refObj)
         $wsql .= " And logo='' ";
     }
     $equery = "SELECT * FROM `#@__flink` $wsql order by sortrank asc limit 0,$totalrow";
-    if (trim($ctag->GetInnerText()) == '') $innertext = "[field:link /] ";
+    if (trim($ctag->GetInnerText()) == '') $innertext = "[field:link/] ";
     else $innertext = $ctag->GetInnerText();
     $dsql->SetQuery($equery);
     $dsql->Execute();

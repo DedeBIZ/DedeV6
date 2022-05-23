@@ -258,8 +258,8 @@ li{float:left;padding-right:10px;line-height:26px}
             <input type="hidden" name="action" value="delenumAllSel">
             {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
             <tr align="center" onMouseMove="javascript:this.bgColor='#F8FCF1';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-                <td><input type="checkbox" name="ids[]" value="{dede:field.id /}"></td>
-                <td>{dede:field.id /}</td>
+                <td><input type="checkbox" name="ids[]" value="{dede:field.id/}"></td>
+                <td>{dede:field.id/}</td>
                 <td>
                     <?php 
                     if(!preg_match("#\.#", $fields['evalue']))
@@ -269,9 +269,9 @@ li{float:left;padding-right:10px;line-height:26px}
                         $fields['ename'] = " └───".$fields['ename'];
                     }
                     ?>
-                    <input type='text' id='ename{dede:field.id/}' value='{dede:field.ename /}' class='abt'>
+                    <input type='text' id='ename{dede:field.id/}' value='{dede:field.ename/}' class='abt'>
                 </td>
-                <td>{dede:field.egroup /}</td>
+                <td>{dede:field.egroup/}</td>
                 <td>
                     <?php
                     if(!preg_match("#\.#", $fields['evalue']))
@@ -283,8 +283,8 @@ li{float:left;padding-right:10px;line-height:26px}
                     }
                     ?>
                 </td>
-                <td>{dede:field.evalue /}</td>
-                <td><input type='text' id='disorder{dede:field.id/}' value='{dede:field.disorder /}' class='abt'></td>
+                <td>{dede:field.evalue/}</td>
+                <td><input type='text' id='disorder{dede:field.id/}' value='{dede:field.disorder/}' class='abt'></td>
                 <td>
                     <?php
                     if(!empty($egroup))
@@ -332,9 +332,9 @@ li{float:left;padding-right:10px;line-height:26px}
         </tr>
         {dede:datalist}
         <tr align="center" onMouseMove="javascript:this.bgColor='#F8FCF1';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-            <td><input type="checkbox" name="ids[]" value="{dede:field.id /}"></td>
-            <td>{dede:field.id /}</td>
-            <td><a href="stepselect_main.php?egroup={dede:field.egroup /}">{dede:field.itemname /}</a></td>
+            <td><input type="checkbox" name="ids[]" value="{dede:field.id/}"></td>
+            <td>{dede:field.id/}</td>
+            <td><a href="stepselect_main.php?egroup={dede:field.egroup/}">{dede:field.itemname/}</a></td>
             <td>
                 <?php
                 switch ($fields['issign']) {
@@ -350,8 +350,8 @@ li{float:left;padding-right:10px;line-height:26px}
                 }
                 ?>
             </td>
-            <td> {dede:field.issystem function="@me==1 ? '是' : '否'" /} </td>
-            <td>{dede:field.egroup /}</td>
+            <td> {dede:field.issystem function="@me==1 ? '是' : '否'"/} </td>
+            <td>{dede:field.egroup/}</td>
             <td>
                 <a href="stepselect_main.php?action=upallcache&egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-refresh"></i> 更新缓存</a>
                 <a href="stepselect_main.php?egroup={dede:field.egroup/}" class="btn btn-success btn-sm"><i class="fa fa-bars-ul"></i> 查看子分类</a>

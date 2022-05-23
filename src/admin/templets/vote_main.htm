@@ -25,20 +25,16 @@
     </tr>
     {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
     <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td>{dede:field.aid /}</td>
+      <td>{dede:field.aid/}</td>
+      <td><a href="{dede:global name='cfg_phpurl'/}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank"> {dede:field.votename/}</a></td>
+      <td>{dede:field.starttime function="GetDateMk(@me)"/}</td>
+      <td>{dede:field.endtime function="GetDateMk(@me)"/}</td>
+      <td>{dede:field.totalcount/}</td>
+      <td><?php if($fields['isenable'] == 1){echo "<span class='text-danger'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
       <td>
-        <a href="{dede:global name='cfg_phpurl' /}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank">
-          {dede:field.votename /}
-        </a>
-      </td>
-      <td>{dede:field.starttime function="GetDateMk(@me)" /}</td>
-      <td>{dede:field.endtime function="GetDateMk(@me)" /}</td>
-      <td>{dede:field.totalcount /}</td>
-      <td><?php if($fields['isenable'] == 1){echo "<span style='color:#e74d58'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
-      <td>
-        <a href="vote_getcode.php?aid={dede:field.aid /}" class="btn btn-success btn-sm">代码</a>
-        <a href="vote_edit.php?aid={dede:field.aid /}&dopost=edit" class="btn btn-success btn-sm">修改</a>
-        <a href="vote_edit.php?aid={dede:field.aid /}&dopost=delete" class="btn btn-success btn-sm">删除</a>
+        <a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-success btn-sm">代码</a>
+        <a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
+        <a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-success btn-sm">删除</a>
       </td>
     </tr>
     {/dede:datalist}

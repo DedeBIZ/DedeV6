@@ -39,8 +39,8 @@
     </tr>
     {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
     <tr align="center">
-      <td rowspan="2">{dede:field.userid /}</td>
-      <td rowspan="2">{dede:field.uname /}<br> </td>
+      <td rowspan="2">{dede:field.userid/}</td>
+      <td rowspan="2">{dede:field.uname/}<br> </td>
       <td>{dede:field.usertype function="GetUserType(@me)"/}</td>
       <td>{dede:field.typename function="GetChannel(@me)"/}</td>
       <td rowspan="2">
@@ -51,7 +51,7 @@
     </tr>
     <tr>
       <td colspan="2" align="center">
-        登录时间：{dede:field.logintime function="GetDateTimeMk(@me)" /}
+        登录时间：{dede:field.logintime function="GetDateTimeMk(@me)"/}
         登录IP：{dede:field.loginip/}
       </td>
     </tr>

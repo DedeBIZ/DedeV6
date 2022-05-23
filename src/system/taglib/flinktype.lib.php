@@ -19,7 +19,7 @@ function lib_flinktype(&$ctag, &$refObj)
     $totalrow = $row;
     $revalue = '';
     $equery = "SELECT * FROM `#@__flinktype` order by id asc limit 0,$totalrow";
-    if (trim($ctag->GetInnerText()) == '') $innertext = "<li>[field:typename /]</li>";
+    if (trim($ctag->GetInnerText()) == '') $innertext = "<li>[field:typename/]</li>";
     else $innertext = $ctag->GetInnerText();
     if (!isset($type)) $type = '';
     $dtp = new DedeTagParse();

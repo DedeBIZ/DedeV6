@@ -92,7 +92,7 @@
           <?php
           echo ''.$fields['userid'].'';
           if($fields['spacesta']==-2) echo "<span class='text-danger'>[禁言]</span>";
-          if($fields['spacesta']==-1) echo "<span style='color:#e74d58'>[未审核]</span>";
+          if($fields['spacesta']==-1) echo "<span class='text-danger'>[未审核]</span>";
           if(!empty($fields['face'])) {
             echo "<br><img src='{$fields['face']}' title='浏览会员空间' style='max-width:80px;height:auto'>";
           }
@@ -100,12 +100,12 @@
         </td>
         <td>{dede:field.email/}<br>
           昵称：{dede:field.uname/}</td>
-        <td>{dede:field.sex /}</td>
+        <td>{dede:field.sex/}</td>
         <td><a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a></td>
-        <td>{dede:field.mtype /} 用户 {dede:field.matt function="GetMAtt(@me)" /}<br>
-          金币：{dede:field.money /} 积分：{dede:field.scores /}</td>
-        <td>{dede:field.logintime function="MyDate('y-m-d H:i',@me)" /}<br>
-          {dede:field.loginip /}</td>
+        <td>{dede:field.mtype/} 用户 {dede:field.matt function="GetMAtt(@me)"/}<br>
+          金币：{dede:field.money/} 积分：{dede:field.scores/}</td>
+        <td>{dede:field.logintime function="MyDate('y-m-d H:i',@me)"/}<br>
+          {dede:field.loginip/}</td>
         <td align="center">
           <a href="member_view.php?id={dede:field.mid/}" class="btn btn-success btn-sm">修改</a>
           <a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-success btn-sm">删除</a>

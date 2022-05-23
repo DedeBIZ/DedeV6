@@ -34,20 +34,20 @@
       </tr>
       {dede:datalist empty='<tr><td colspan="4"><center>暂无内容</center></td></tr>'}
       <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-        <td>{dede:field.name /}</td>
-        <td align="left">{dede:field.description /}</td>
-        <td>{dede:field.rank /}</td>
+        <td>{dede:field.name/}</td>
+        <td align="left">{dede:field.description/}</td>
+        <td>{dede:field.rank/}</td>
         <td>
           <?php
           if($fields['enabled'] == 0) {
           ?>
-          <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=install&pid={dede:field.id /}'>安装</a>
+          <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=install&pid={dede:field.id/}'>安装</a>
           <?php
           }
           if($fields['enabled'] == 1) {
           ?>
-          <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=install&pid={dede:field.id /}&pm=edit'>修改</a>
-          <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=uninstall&pid={dede:field.id /}'>删除</a>
+          <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=install&pid={dede:field.id/}&pm=edit'>修改</a>
+          <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=uninstall&pid={dede:field.id/}'>删除</a>
           <?php
           }
           ?>

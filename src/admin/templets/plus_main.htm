@@ -23,9 +23,9 @@
     </tr>
     {dede:datalist empty='<tr><td colspan="4"><center>暂无内容</center></td></tr>'}
     <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td>{dede:field.aid /}</td>
-      <td>{dede:field.plusname /}</td>
-      <td>{dede:field.writer /}</td>
+      <td>{dede:field.aid/}</td>
+      <td>{dede:field.plusname/}</td>
+      <td>{dede:field.writer/}</td>
       <td>{dede:field.isshow function="GetSta(@me,$fields['aid'],$fields['plusname'])"/}</td>
     </tr>
     {/dede:datalist}

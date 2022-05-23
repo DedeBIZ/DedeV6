@@ -37,16 +37,16 @@
 						<p><small>信息类型：</small><span>{dede:field.infotype/}</span></p>
 						<p><small>点击数：</small><span id="_count">...</span></p>
 						<p><small>发布时间：</small><span>{dede:field.pubdate function="MyDate('y-m-d H:i',@me)"/} </span></p>
-						<p><small>截止日期：</small><span>{dede:field.endtime function="MyDate('Y-m-d H:m',@me)" /} </span></p>
-						<p><small>联系人：</small><span>{dede:field.linkman /}</span></p>
-						<p><small>联系电话：</small><span>{dede:field.tel /}</span></p>
+						<p><small>截止日期：</small><span>{dede:field.endtime function="MyDate('Y-m-d H:m',@me)"/} </span></p>
+						<p><small>联系人：</small><span>{dede:field.linkman/}</span></p>
+						<p><small>联系电话：</small><span>{dede:field.tel/}</span></p>
 						<p><small>电子邮箱：</small><span>{dede:field.email/}</span></p>
-						<p><small>地址：</small><span>{dede:field.address /}</span></p>
+						<p><small>地址：</small><span>{dede:field.address/}</span></p>
 						<p>信息描述</p>
 						<div>{dede:field.body/}</div>
 					</div>
 					<div class="clearfix"></div>
-					{dede:include comment='文档顶踩模块' filename="widget_article_digg.htm"/}
+					{dede:include comment='文档顶踩模块' filename='widget_article_digg.htm'/}
 					<div class="row">
 						<div class="col-md-4 prenext pt-2">
 							<div class="pagination-previous">{dede:prenext get='pre'/}</div>
@@ -75,16 +75,16 @@
 							</div>
 						</div>
 					</div>
-					{dede:include comment='文档评论模块' file='widget_article_feedback.htm' /}
+					{dede:include comment='文档评论模块' file='widget_article_feedback.htm'/}
 				</div>
 				<aside class="col-md-4 article-sidebar">
-					{dede:include comment='推荐内容' filename="widget_recommend_sg.htm"/}
-					{dede:include comment='热点内容' filename="widget_hot_sg.htm"/}
-					{dede:include comment='QR二维码' filename="widget_qrcode.htm"/}
+					{dede:include comment='推荐内容' filename='widget_recommend_sg.htm'/}
+					{dede:include comment='热点内容' filename='widget_hot_sg.htm'/}
+					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
 				</aside>
 			</div>
 		</main>
-		{dede:include filename="footer.htm"/}
+		{dede:include filename='footer.htm'/}
 		<script>
 			//页面加载触发
 			$(document).ready(function() {
