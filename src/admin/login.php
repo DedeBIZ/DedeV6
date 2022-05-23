@@ -55,7 +55,7 @@ if ($dopost == 'login') {
                     ShowMsg('成功登录，正在转向管理管理主页', $gotopage);
                     exit();
                 } else {
-                    ShowMsg('成功登录，正在转向管理管理主页', "index.php");
+                    ShowMsg('成功登录，正在转向管理管理主页', 'index.php');
                     exit();
                 }
             }
