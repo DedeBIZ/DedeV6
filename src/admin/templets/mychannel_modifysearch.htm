@@ -13,11 +13,6 @@
     .style1 {
       color: #dc3545
     }
-    td {
-      padding: 2px;
-      padding-left: 6px;
-      line-height: 150%;
-    }
     .style2 {
       color: #545b62;
     }
@@ -33,8 +28,8 @@
       <input type="hidden" name="dopost" value="modifysearch">
       <tr>
         <td bgcolor="#f8f8f8" colspan="2">
-          <div style="float:right"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid; ?>">删除自定义搜索</a></div>
           <a href="mychannel_main.php">内容模型管理</a> &gt; 自定义搜索管理（自定义搜索在方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索）
+          <span class="float-right mr-2"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid; ?>">删除自定义搜索</a></span>
         </td>
       </tr>
       <tr>

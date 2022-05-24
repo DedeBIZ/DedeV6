@@ -24,11 +24,6 @@
     .style1 {
       color: #dc3545
     }
-    td {
-      padding: 2px;
-      padding-left: 6px;
-      line-height: 150%;
-    }
     .style2 {
       color: #545b62;
       display: none;
@@ -39,9 +34,7 @@
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="diy_add.php?action=add" method="post" onSubmit="return checkSubmit();">
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2">
-          <a href="diy_main.php">自定义表单管理</a> &gt; 新增自定义表单
-        </td>
+        <td bgcolor="#f8f8f8" colspan="2"><a href="diy_main.php">自定义表单管理</a> &gt; 新增自定义表单</td>
       </tr>
       <tr>
         <td width="260" align="left">diyid：<span class="style2" id="help1">数字，创建后不可修改，并具有唯一性推荐使用默认值</span></td>
@@ -53,7 +46,7 @@
         <td align="left">自定义表单名称：<br>
           <span class="style2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
         <td>
-          <input type="text" name="name" id="name" value="自定义表单<?php echo $newdiyid; ?>" class="pubinputs" style="width:160px" > * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')" style="cursor:hand"></i>
+          <input type="text" name="name" id="name" value="自定义表单<?php echo $newdiyid; ?>" class="pubinputs" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')" style="cursor:hand"></i>
         </td>
       </tr>
       <tr>

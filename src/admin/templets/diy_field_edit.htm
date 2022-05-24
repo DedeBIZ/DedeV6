@@ -40,11 +40,9 @@
   	revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">"+vinnertext+"</field:"+fieldname+">";
   	document.form1.fieldstring.value = revalue;
     return true;
-    
   }
   </script>
   <style>
-td{ padding:6px; padding-left:6px; }
 .style1 {color: #FF3300}
 .style2 {color: #545b62}
 .nw { float:left; width:150px; }
@@ -64,9 +62,7 @@ td{ padding:6px; padding-left:6px; }
         <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
             <td width="30%"><a href="diy_main.php">自定义表单管理</a> &gt; 修改字段</td>
-            <td width="70%" align="right">
-			        <button type="button" name="ss1" onClick="location='diy_edit.php?diyid=<?php echo $diyid; ?>&dopost=edit';" class="btn btn-success btn-sm">当前表单信息</button>
-            </td>
+            <td width="70%" align="right"><button type="button" name="ss1" onClick="location='diy_edit.php?diyid=<?php echo $diyid; ?>&dopost=edit';" class="btn btn-success btn-sm">当前表单信息</button></td>
           </tr>
         </table>
       </td>

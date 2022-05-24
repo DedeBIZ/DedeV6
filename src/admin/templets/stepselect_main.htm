@@ -150,8 +150,8 @@ li{float:left;padding-right:10px;line-height:26px}
         </tr>
         <tr>
             <td width="90">请选择组别：</td>
-            <td width="260">
-                <select name="egroup1" id="egroup1" onChange="ChangePage(this)" style="width:90%">
+            <td width="270">
+                <select name="egroup1" id="egroup1" onChange="ChangePage(this)" style="width:260px">
                     <option value='0'>所有组</option>
                     <?php
                     $selgroup = '';
@@ -170,12 +170,10 @@ li{float:left;padding-right:10px;line-height:26px}
                 </select>
             </td>
             <td colspan="2"><i class="fa fa-question-circle" title="帮助"></i> 灰色字的为系统内置枚举，您是不能对它进行删除修改操作的，但可以添加或修改它的元素</td>
-            <td>
+            <td colspan="2" align="right">
                 <button type="button" name="gedit" id="gedit" class="btn btn-success btn-sm" onClick="EditType()">修改</button>
                 <button type="button" name="gdel" id="gdel" class="btn btn-success btn-sm" onClick="DelType()">删除</button>
                 <button type="button" name="gview" id="gview" class="btn btn-success btn-sm" onClick="ViewType()">预览</button>
-            </td>
-            <td>
                 <button type="button" name="addnew" id="addnew" class="btn btn-success btn-sm" onClick="AddType()">新增类别组</button>
                 <a href="stepselect_main.php?action=upallcache" class="btn btn-success btn-sm">更新所有枚举缓存</a>
             </td>
@@ -202,14 +200,14 @@ li{float:left;padding-right:10px;line-height:26px}
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
         <tr>
             <td bgcolor="#f8f8f8" colspan="8">
-                <div style="float:left"><?php echo $selgroup; ?> &gt; 子分类管理</div>
-                <div style="float:right">
+                <span class="float-left"><?php echo $selgroup; ?> &gt; 子分类管理</span>
+                <span class="float-right">
                 <?php
                 if($egroup=='nativeplace') {
                     echo "<a href='stepselect_main.php?action=exarea' class='btn btn-success btn-sm'>把默认省市地区表导入</a>";
                 }
                 ?>
-                </div>
+                </span>
             </td>
         </tr>
         <tr>
@@ -218,15 +216,14 @@ li{float:left;padding-right:10px;line-height:26px}
                     <input type="hidden" name="action" value="addenum_save">
                     <input type="hidden" name="issign" value="<?php echo $arr['issign']; ?>">
                     <input type="hidden" name="egroup" value="<?php echo $arr['egroup']; ?>">
-                    <div style="float:left;margin-right:10px">隶属分类：
+                    <span class="float-left ml-2">隶属分类：
                         <select name="topvalue" onChange="ChangePage2(this)" style="width:160px">
                             <option value="0"><?php echo $selgroup; ?></option>
                             <?php echo $options; ?>
                         </select>
-                    </div>
-                    <div style="float:left;margin-right:10px">分类名称：<input type="text" name="ename" class="iptxt" style="width:260px"></div>
-                    <div style="float:left"><button type="submit" name="sb2" class="btn btn-success btn-sm">增加分类</button></div>
-                    <div style="clear:both"><i class="fa fa-question-circle" title="帮助"></i> 如果没选择隶属分类则表示增加的是顶级分类，用半角逗号","分开可以一次增加多个分类</div>
+                    </span>
+                    <span class="float-left ml-2">分类名称：<input type="text" name="ename" class="iptxt" style="width:260px"></span>
+                    <span class="float-left ml-2"><button type="submit" name="sb2" class="btn btn-success btn-sm">增加分类</button></span>
                 </form>
             </td>
         </tr>
@@ -234,8 +231,7 @@ li{float:left;padding-right:10px;line-height:26px}
     <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable">
         <tr>
             <td bgcolor="#f8f8f8" colspan="8">
-                <div style="float:left"><a href="stepselect_main.php">枚举组列表</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup; ?>"><?php echo $selgroup; ?></a> &gt; 子分类列表</div>
-                <div style="float:right"></div>
+                <span class="float-left"><a href="stepselect_main.php">枚举组列表</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup; ?>"><?php echo $selgroup; ?></a> &gt; 子分类列表</span>
             </td>
         </tr>
         <tr bgcolor="#F8FCF1" align="center">
@@ -317,8 +313,7 @@ li{float:left;padding-right:10px;line-height:26px}
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
         <tr>
             <td bgcolor="#f8f8f8" colspan="8">
-                <div style="float:left"><a href="stepselect_main.php">枚举组列表</a></div>
-                <div style="float:right"></div>
+                <span class="float-left"><a href="stepselect_main.php">枚举组列表</a></span>
             </td>
         </tr>
         <tr bgcolor="#F8FCF1" align="center">

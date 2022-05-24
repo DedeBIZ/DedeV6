@@ -91,7 +91,7 @@
 					<td colspan="2" style="border-top:1px solid #fff">
 						<?php
 						foreach ($helps as $key => $help) {
-							echo '<div name="help111" id="'.$key.'" class="helpdiv"><div style="float:right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></div>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
+							echo '<div name="help111" id="'.$key.'" class="helpdiv"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></span>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
 							$parameters = explode("\n", $help[2]);
 							foreach($parameters as $parameter)
 							{

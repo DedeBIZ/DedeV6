@@ -4,9 +4,8 @@ $arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
 $sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); return false;\" ";
 if($arr['issystem']==0) $sbjs = '';
 ?>
-<!--编辑表单-->
-<div style="float:left">修改类别</div>
-<div style="float:right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
+<span class="float-left">修改类别</span>
+<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
 <br style="clear:both">
 <form action="stepselect_main.php" method="post" <?php echo $sbjs; ?>>
 <input type="hidden" name="action" value="edit_save">
@@ -19,9 +18,8 @@ if($arr['issystem']==0) $sbjs = '';
 <?php
 } else if($action=='addnew') {
 ?>
-<!--新增类别表单-->
-<div style="float:left">新增类别</div>
-<div style="float:right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
+<span class="float-left">新增类别</span>
+<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
 <br style="clear:both">
 <form action="stepselect_main.php" method="post">
 <input type="hidden" name="action" value="addnew_save">
@@ -40,9 +38,8 @@ if($arr['issign']==0)
   while($row1 = $dsql->GetArray('out')) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
 }
 ?>
-<!--新增枚举表单-->
-<div style="float:left">添加枚举</div>
-<div style="float:right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
+<span class="float-left">添加枚举</span>
+<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
 <br style="clear:both">
 <form action="stepselect_main.php" method="post">
 <input type="hidden" name="action" value="addenum_save">
@@ -74,9 +71,8 @@ if($arr['issign']==0)
   	}
   }
 ?>
-<!--预览联动表单-->
-<div style="float:left">预览联动表单</div>
-<div style="float:right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></div>
+<span class="float-left">预览联动表单</span>
+<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
 <br style="clear:both">
 <div>
 类别关系：

@@ -167,8 +167,8 @@ if ($dopost == 'time') {
         <tr>
             <td width="160" class="bline" align="center">是否支持投稿：</td>
             <td class="bline">
-                <label><input type="radio" name="issend" value="0" <?php if ($myrow['issend'] == "0") echo "checked='1'"; ?>> 不支持</label>
                 <label><input type="radio" name="issend" value="1" <?php if ($myrow['issend'] == "1") echo "checked='1'"; ?>> 支持</label>
+                <label><input type="radio" name="issend" value="0" <?php if ($myrow['issend'] == "0") echo "checked='1'"; ?>> 不支持</label>
             </td>
         </tr>
         <tr>

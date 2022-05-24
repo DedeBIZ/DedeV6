@@ -8,17 +8,6 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <style>
-    ul {
-        padding: 0px;
-        margin: 0px;
-    }
-    li {
-        float: left;
-        padding-right: 8px;
-        line-height: 26px;
-    }
-  </style>
 </head>
 <body>
    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
@@ -27,7 +16,8 @@
             <form action="templets_one.php" name="sss">
                <ul>
                   <li><input type="text" name="keyword" value="<?php if(!empty($keyword)) $keyword = ''; ?>" placeholder="请输入关键词" style="width:260px"></li>
-                  <li><?php
+                  <li>
+                     <?php
                        $likeid = (!isset($likeid) ? '' : $likeid);
                        echo "<select name='likeid' id='likeid' style='width:160px'>";
                        $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
@@ -38,7 +28,8 @@
                           else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
                        }
                        echo "</select>";
-                    ?></li>
+                     ?>
+                  </li>
                   <li><button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button></li>
                </ul>
             </form>
@@ -48,12 +39,12 @@
    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
       <tr>
          <td bgcolor="#f8f8f8" colspan="7">
-            <div style="float:left">单独页面管理</div>
-            <div style="float:right">
+            <span class="float-left py-2">单独页面管理</span>
+            <span class="float-right mr-2">
                <a href="templets_one_add.php" class="btn btn-success btn-sm">增加一个页面</a>
                <a href="javascript:;" onClick="document.form1.submit();" class="btn btn-success btn-sm">更新选中页面</a>
                <a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm">更新所有页面</a>
-            </div>
+            </span>
          </td>
       </tr>
       <tr bgcolor="#F8FCF1" align="center">

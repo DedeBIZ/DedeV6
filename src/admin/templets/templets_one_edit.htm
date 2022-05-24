@@ -54,18 +54,18 @@
           <tr>
             <td>关联标识：</td>
             <td>
-            <input type="text" name="likeid" id="likeid" value="<?php echo $row['likeid']; ?>" style="width:260px">
-            <input type="hidden" name="oldlikeid" id="oldlikeid" value="<?php echo $row['likeid']; ?>">
-            <?php
-            	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
-            	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
-            	echo "<option value='{$row['likeid']}' selected>{$row['likeid']}</option>";
-            	while($arr = $dsql->GetArray('s'))
-            	{
-            		if($arr['likeid']!=$row['likeid']) echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
-            	}
-            	echo "</select>";
-            ?>
+              <input type="text" name="likeid" id="likeid" value="<?php echo $row['likeid']; ?>" style="width:260px">
+              <input type="hidden" name="oldlikeid" id="oldlikeid" value="<?php echo $row['likeid']; ?>">
+              <?php
+              	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
+              	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
+              	echo "<option value='{$row['likeid']}' selected>{$row['likeid']}</option>";
+              	while($arr = $dsql->GetArray('s'))
+              	{
+              		if($arr['likeid']!=$row['likeid']) echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+              	}
+              	echo "</select>";
+              ?>
             </td>
           </tr>
           <tr>
