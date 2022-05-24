@@ -59,13 +59,17 @@
 	<body>
 		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3 mb-3">
 			<tr>
-				<td style="background:#f8f8f8;border: 1px solid #dee2e6">
-					<span style="float:left;padding-left:10px;line-height:26px" class="py-3">网站栏目管理</span>
-					<span style="float:right;padding-right:10px" class="py-3">
-						<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
-						<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量增加栏目</a>
-						<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新栏目缓存</a>
-					</span>
+				<td style="background:#f8f8f8;border-bottom:1px solid #dee2e6">
+					<table width="100%" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>网站栏目管理</td>
+							<td align="right">
+								<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
+								<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量增加栏目</a>
+								<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新栏目缓存</a>
+							</td>
+						</tr>
+					</table>
 				</td>
 			</tr>
 			<tr>
@@ -96,7 +100,7 @@
 				</tr>
 			</form>
 			<tr>
-				<td align="right" class="py-3" style="padding-right:10px;background:#f8f8f8;border-top:1px solid #dee2e6">
+				<td align="right" class="py-2" style="padding-right:10px;background:#f8f8f8;border-top:1px solid #dee2e6">
 					<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>
 					<button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';">更新文档</button>
 					<button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>

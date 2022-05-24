@@ -70,17 +70,17 @@
 	<table width="98%" cellpadding="3" align="center" cellspacing="1" class="table maintable mt-3 mb-3">
 		<tr>
 			<td bgcolor="#f8f8f8">
-				<div style="float:left">评论管理</div>
-				<div style="float:right;padding-right:10px">
+				<span class="float-left py-2">评论管理</span>
+				<span class="float-right mr-2">
 					<form name="form1">
 						<input type="text" name="keyword" placeholder="请输入关键词" style="width:160px">
-						<select name="typeid" style="margin-left:10px;width:160px">
+						<select name="typeid" style="margin:0 10px;width:160px">
 							<option value="0">请选择</option>
 							{dede:global.openarray/}
 						</select>
 						<button type="submit" class="btn btn-success btn-sm">搜索</button>
 					</form>
-				</div>
+				</span>
 			</td>
 		</tr>
 		<form name="feedback">
@@ -123,8 +123,8 @@
 						</tr>
 						{/dede:datalist}
 						<tr>
-							<td height="36">
-								<table width="98%">
+							<td>
+								<table width="100%">
 									<tr>
 										<td width="30%">
 											<button type="button" name="kk1" onClick="selAll()" class="btn btn-success btn-sm">全选</button>

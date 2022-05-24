@@ -29,8 +29,8 @@
 				<td width="20%" bgcolor="#f8f8f8">操作</td>
 			</tr>
 			<tr>
-				<td colspan="4" bgcolor="#f8f8f8">
-					<span style="float:left;line-height:26px">
+				<td colspan="4">
+					<span class="float-left py-2">
 						当前位置：
 						<?php
 						if($acdir=='plus') echo '插件模板';
@@ -38,7 +38,7 @@
 						else echo '核心模板 &gt; '.$acdir;
 						?>
 					</span>
-					<span style="float:right;padding-right:10px">
+					<span class="float-right mr-2">
 						<a class="btn btn-success btn-sm" href="templets_main.php">默认模板目录</a>
 						<a class="btn btn-success btn-sm" href="templets_main.php?acdir=plus">插件模板目录</a>
 					</span>
@@ -71,7 +71,7 @@
 			}
 			?>
 			<tr>
-				<td bgcolor="#f8f8f8" align="center" colspan="4" class="py-3">
+				<td bgcolor="#f8f8f8" align="center" colspan="4" class="py-2">
 					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>
 					<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
 				</td>

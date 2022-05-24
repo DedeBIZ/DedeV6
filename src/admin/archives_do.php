@@ -309,7 +309,7 @@ else if ($dopost == 'moveArchives') {
             </td>
         </tr>
         <tr>
-            <td colspan="2" align="center" class="py-3">
+            <td colspan="2" align="center" class="py-2">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
                 <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
             </td>
@@ -599,7 +599,7 @@ else if ($dopost == 'quickEdit') {
         <td class="bline"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
     </tr>
     <tr>
-        <td colspan="2" align="center" class="py-3">
+        <td colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
         </td>
@@ -872,7 +872,7 @@ else if ($dopost == 'attsDlg') {
         <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden"></td>
     </tr>
     <tr>
-        <td colspan="2" align="center" class="py-3">
+        <td colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
             <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
         </td>
