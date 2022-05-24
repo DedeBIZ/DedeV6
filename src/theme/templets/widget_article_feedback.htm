@@ -170,22 +170,22 @@
 		}, function (data) {
 			let result = JSON.parse(data);
 			let tpl = `
-<div class="media">
-	<img class="face" src="~face~">
-	<div class="media-body">
-		<div class="feedback-content">~msg~</div>
-		<div class="feedback-infos">
-			<span class="feedback-basic">
-				~username~
-				<small>~dtimestr~</small>
-			</span>
-			<div class="feedback-action">
-				<a href="javascript:GoodFeedback(~id~, ~good~)"><span id="feedbackGood~id~">~good~</span><i class="fa fa-thumbs-up"></i></a>
+			<div class="media">
+				<img class="face" src="~face~">
+				<div class="media-body">
+					<div class="feedback-content">~msg~</div>
+					<div class="feedback-infos">
+						<span class="feedback-basic">
+							~username~
+							<small>~dtimestr~</small>
+						</span>
+						<div class="feedback-action">
+							<a href="javascript:GoodFeedback(~id~, ~good~)"><span id="feedbackGood~id~">~good~</span><i class="fa fa-thumbs-up"></i></a>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-</div>
-`;
+			`;
 			if (result.code === 200) {
 				$(`.feedback_replies[for="${fid}"]`).html("");
 				for (let i = 0; i < result.data.length; i++) {
