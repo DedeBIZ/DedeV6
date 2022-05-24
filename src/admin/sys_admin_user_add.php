@@ -70,7 +70,7 @@ $dsql->SetQuery(" SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart
 $dsql->Execute('op');
 while ($row = $dsql->GetObject('op')) {
     $topc = $row->id;
-    $typeOptions .= "<option value='{$row->id}' class='btype'>{$row->typename}</option>\r\n";
+    $typeOptions .= "<option value='{$row->id}' class='btype'>—{$row->typename}</option>\r\n";
     $dsql->SetQuery(" SELECT id,typename FROM `#@__arctype` WHERE reid={$row->id} AND (ispart=0 OR ispart=1) ");
     $dsql->Execute('s');
     while ($row = $dsql->GetObject('s')) {
