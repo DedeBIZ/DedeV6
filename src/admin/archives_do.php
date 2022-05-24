@@ -295,7 +295,7 @@ else if ($dopost == 'moveArchives') {
         echo "<form name='quickeditform' action='archives_do.php' method='post'>";
         echo "<input type='hidden' name='dopost' value='{$dopost}'>";
         echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-        echo "<table width='100%' style='display:inline-block;z-index:9000'>";
+        echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
         ?>
         <tr>
             <td width="90" class="bline"> 目标栏目：</td>
@@ -304,8 +304,8 @@ else if ($dopost == 'moveArchives') {
         <tr>
             <td width="90" class="bline"> 文档ID：</td>
             <td class="bline">
-                <input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden">
-                <br>移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
+                <input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden"><br>
+                移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
             </td>
         </tr>
         <tr>
@@ -537,7 +537,7 @@ else if ($dopost == 'quickEdit') {
     echo "<form name='quickeditform' action='archives_do.php?dopost=quickEditSave&aid={$aid}' method='post'>";
     echo "<input type='hidden' name='addtable' value='{$arcRow['addtable']}'>";
     echo "<input type='hidden' name='oldtypeid' value='{$arcRow['typeid']}'>";
-    echo "<table width='100%' style='display:inline-block;z-index:9000'>";
+    echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
     ?>
     <tr>
         <td width="90" class="bline"> 所属栏目：</td>
@@ -851,7 +851,7 @@ else if ($dopost == 'attsDlg') {
     echo "<form name='quickeditform' action='archives_do.php' method='post'>";
     echo "<input type='hidden' name='dopost' value='{$dojob}'>";
     echo "<input type='hidden' name='qstr' value='{$qstr}'>";
-    echo "<table width='100%' style='display:inline-block;z-index:9000'>";
+    echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
 ?>
     <tr>
         <td width="90" class="bline"> 属性：</td>
