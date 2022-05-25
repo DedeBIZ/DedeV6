@@ -115,7 +115,7 @@
 						</table>
 					</td>
 				</tr>
-				<tr align="center" bgcolor="#F8FCF1">
+				<tr align="center" bgcolor="#FBFCE2">
 					<td width="8%">选择</td>
 					<td width="5%">ID</td>
 					<td width="30%">标签</td>
@@ -132,7 +132,7 @@
 					$fields['uptime'] = GetDateMk($fields['uptime']);
 					$fields['tag'] = dede_htmlspecialchars($fields['tag']);
 					?>
-					<tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+					<tr align="center" onmousemove="javascript:this.bgColor='#FBFCE2';" onmouseout="javascript:this.bgColor='#ffffff';">
 						<td><input type="checkbox" name="ids[]" value="<?php echo $fields['id']; ?>"></td>
 						<td>{dede:field.id/}</td>
 						<td><a href="../apps/tags.php?/<?php echo $fields['id']; ?>/" target="_blank">{dede:field.tag/}</a></td>

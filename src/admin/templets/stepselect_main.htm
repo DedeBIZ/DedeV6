@@ -234,7 +234,7 @@ li{float:left;padding-right:10px;line-height:26px}
                 <span class="float-left"><a href="stepselect_main.php">枚举组列表</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup; ?>"><?php echo $selgroup; ?></a> &gt; 子分类列表</span>
             </td>
         </tr>
-        <tr bgcolor="#F8FCF1" align="center">
+        <tr bgcolor="#FBFCE2" align="center">
             <td width="6%">选择</td>
             <td width="6%">编号</td>
             <td width="20%">枚举名</td>
@@ -253,7 +253,7 @@ li{float:left;padding-right:10px;line-height:26px}
         <form name="form1" action="stepselect_main.php" method="post">
             <input type="hidden" name="action" value="delenumAllSel">
             {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-            <tr align="center" onMouseMove="javascript:this.bgColor='#F8FCF1';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+            <tr align="center" onMouseMove="javascript:this.bgColor='#FBFCE2';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
                 <td><input type="checkbox" name="ids[]" value="{dede:field.id/}"></td>
                 <td>{dede:field.id/}</td>
                 <td>
@@ -316,7 +316,7 @@ li{float:left;padding-right:10px;line-height:26px}
                 <span class="float-left"><a href="stepselect_main.php">枚举组列表</a></span>
             </td>
         </tr>
-        <tr bgcolor="#F8FCF1" align="center">
+        <tr bgcolor="#FBFCE2" align="center">
             <td width="6%">选择</td>
             <td width="6%">编号</td>
             <td width="28%">组类别名</td>
@@ -326,7 +326,7 @@ li{float:left;padding-right:10px;line-height:26px}
             <td>操作</td>
         </tr>
         {dede:datalist}
-        <tr align="center" onMouseMove="javascript:this.bgColor='#F8FCF1';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <tr align="center" onMouseMove="javascript:this.bgColor='#FBFCE2';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
             <td><input type="checkbox" name="ids[]" value="{dede:field.id/}"></td>
             <td>{dede:field.id/}</td>
             <td><a href="stepselect_main.php?egroup={dede:field.egroup/}">{dede:field.itemname/}</a></td>

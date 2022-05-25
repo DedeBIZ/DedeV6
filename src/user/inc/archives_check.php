@@ -20,7 +20,6 @@ if ($cfg_ml->M_ID === 0) {
         exit();
     }
 }
-
 //校验CSRF
 CheckCSRF();
 $flag = '';

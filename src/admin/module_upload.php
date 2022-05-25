@@ -84,7 +84,7 @@ if ($action == 'upload') {
     $win->AddHidden("action", 'upload');
     $msg = "<table width='900' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='260' >文件格式：</td>
+    <td width='260'>文件格式：</td>
     <td>
       <label><input type='radio' name='filetype' value='0' checked='checked'> 正常的模块包</label>
       <label><input type='radio' name='filetype' value='1'> 经过zip压缩的模块包</label>

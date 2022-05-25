@@ -14,7 +14,7 @@
     <tr>
       <td bgcolor="#f8f8f8" colspan="7">投票管理<a href="vote_add.php" class="btn btn-success btn-sm ml-2">增加一组投票</a></td>
     </tr>
-    <tr bgcolor="#F8FCF1" align="center">
+    <tr bgcolor="#FBFCE2" align="center">
       <td width="8%">投票ID</td>
       <td width="22%">投票名称</td>
       <td width="15%">开始时间</td>
@@ -24,7 +24,7 @@
       <td width="20%">管理</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-    <tr align="center" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+    <tr align="center" onmousemove="javascript:this.bgColor='#FBFCE2';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid/}</td>
       <td><a href="{dede:global name='cfg_phpurl'/}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank"> {dede:field.votename/}</a></td>
       <td>{dede:field.starttime function="GetDateMk(@me)"/}</td>

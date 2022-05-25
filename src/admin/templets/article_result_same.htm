@@ -55,7 +55,7 @@
 				<input type="hidden" name="channelid" value="<?php echo $channelid; ?>">
 				<input type="hidden" name="maintable" value="<?php echo $maintable; ?>">
 				<input type="hidden" name="titles" value="">
-				<tr bgcolor="#F8FCF1" align="center">
+				<tr bgcolor="#FBFCE2" align="center">
 					<td width="10%">选择</td>
 					<td width="10%">重复数量</td>
 					<td width="80%">文档标题</td>
@@ -65,7 +65,7 @@
 				{
 				   if($row['dd']==1 ) break;
 				?>
-				<tr align="center" onMouseMove="javascript:this.bgColor='#EFEFEF';" onmousemove="javascript:this.bgColor='#F8FCF1';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center" onMouseMove="javascript:this.bgColor='#EFEFEF';" onmousemove="javascript:this.bgColor='#FBFCE2';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><input type="checkbox" name="arcTitles" id="arcTitle" value="<?php echo urlencode($row['title'])?>"></td>
 					<td>
 						<?php

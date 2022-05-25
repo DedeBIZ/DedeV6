@@ -196,5 +196,5 @@
       "[tag ol][qualifier .roman] { [property list-style]: [variable simple-roman]; }");
 
    MT("counter-style-symbols",
-      "[tag ol] { [property list-style]: [atom symbols]([atom cyclic] [string \"*\"] [string \"\\2020\"] [string \"\\2022\"] [string \"\\A7\"]); }");
+      "[tag ol] { [property list-style]: [atom symbols]([atom cyclic] [string \"*\"] [string \"\\2020\"] [string \"\\2021\"] [string \"\\A7\"]); }");
 })();
