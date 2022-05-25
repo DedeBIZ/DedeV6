@@ -56,10 +56,10 @@
     <tr>
       <td>封装类型：</td>
       <td>
-      	<label><input type="radio" name="moduletype" value="soft" <?php if($moduletype=='soft') echo "checked='1'"; ?>> 模块</label>
-      	<label><input type="radio" name="moduletype" value="templets" <?php if($moduletype=='templets') echo "checked='1'"; ?>> 模板</label>
-      	<label><input type="radio" name="moduletype" value="plus" <?php if($moduletype=='plus') echo "checked='1'"; ?>> 小插件</label>
-      	<label><input type="radio" name="moduletype" value="patch" <?php if($moduletype=='patch') echo "checked='1'"; ?>> 补丁</label>
+      	<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if($moduletype=='soft') echo "checked='1'"; ?>> 模块</label>
+      	<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if($moduletype=='templets') echo "checked='1'"; ?>> 模板</label>
+      	<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if($moduletype=='plus') echo "checked='1'"; ?>> 小插件</label>
+      	<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if($moduletype=='patch') echo "checked='1'"; ?>> 补丁</label>
       </td>
     </tr>
     <tr>
@@ -76,8 +76,8 @@
     <tr>
       <td>是否涉及会员系统：</td>
       <td>
-        <label><input type="radio" name="ismember" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo "checked='1'"; ?>> 不涉及</label>
-        <label><input type="radio" name="ismember" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo "checked='1'"; ?>> 涉及</label>
+        <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo "checked='1'"; ?>> 涉及</label>
+        <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo "checked='1'"; ?>> 不涉及</label>
         <div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block'); ?>">
           导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value="<?php echo $indexname; ?>"><br>
           导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>">（用相对于会员中心的网址，如：../ask）
@@ -96,7 +96,7 @@
       <td>
       	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
-            <td bgcolor="#F3FDE1">使用协议或说明：<br>
+            <td bgcolor="#FBFCE2">使用协议或说明：<br>
               如果需要带HTML格式，请编译后点击修改时使用HTML</td>
           </tr>
           <tr>
@@ -113,7 +113,7 @@
        <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none'; ?>" id="autosetupct">
         	<table width="100%" cellpadding="5" cellspacing="1">
             <tr>
-              <td bgcolor="#F3FDE1">
+              <td bgcolor="#FBFCE2">
               	请使用MySQL4.0版本格式的SQL语句:<br>
               	MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=* ，改为 TYPE=MyISAM ，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束<br>
               	如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php
@@ -135,7 +135,7 @@
       	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none'; ?>' id='autodelct'>
       	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
-            <td bgcolor="#F3FDE1">卸载时执行的SQL语句：<br>
+            <td bgcolor="#FBFCE2">卸载时执行的SQL语句：<br>
             （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）</td>
           </tr>
           <tr>

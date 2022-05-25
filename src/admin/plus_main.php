@@ -20,8 +20,8 @@ $dlist->display();
 function GetSta($sta, $id, $title)
 {
     if ($sta == 1) {
-        return "<a href='plus_edit.php?dopost=edit&aid=$id'>修改</a> 启用 &gt; <a href='plus_edit.php?dopost=hide&aid=$id'>禁用</a> <a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."'>删除</a>";
+        return "启用 &gt; <a href='plus_edit.php?dopost=hide&aid=$id' class='text-danger'>禁用</a> <a href='plus_edit.php?dopost=edit&aid=$id'>修改</a> <a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."'>删除</a>";
     } else {
-        return "<a href='plus_edit.php?aid=$id'>修改</a> 禁用 &gt; <a href='plus_edit.php?dopost=show&aid=$id'>启用</a> <a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."'>册除</a>";
+        return "禁用 &gt; <a href='plus_edit.php?dopost=show&aid=$id' class='text-success'>启用</a> <a href='plus_edit.php?aid=$id'>修改</a> <a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."'>册除</a>";
     }
 }
