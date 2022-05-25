@@ -4,4 +4,4 @@
 <a href="[field:typelink/]">[field:typename/]</a>
 {/dede:type}
 >>dede>>
-typeid='' 指定栏目ID
+typeid='' 指定栏目id

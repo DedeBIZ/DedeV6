@@ -34,7 +34,7 @@ $fid = isset($fid) ? intval($fid) : 0; //用来标记回复评论的变量
 if (empty($aid) && empty($fid)) {
     echo json_encode(array(
         "code" => -1,
-        "msg" => "文档ID不能为空",
+        "msg" => "文档id不能为空",
         "data" => null,
     ));
     exit();

@@ -15,7 +15,7 @@ $mid = isset($mid) ? intval($mid) : 0;
 if (!isset($keyword)) $keyword = '';
 if (!isset($arcrank)) $arcrank = '';
 if (empty($cid) && empty($channelid)) {
-    ShowMsg("该页面必须指定栏目ID或内容模型ID才能浏览", "javascript:;");
+    ShowMsg("该页面必须指定栏目id或内容模型ID才能浏览", "javascript:;");
     exit();
 }
 //检查权限许可，总权限

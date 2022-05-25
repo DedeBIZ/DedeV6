@@ -32,7 +32,7 @@ class PartView
      *  php5构造函数
      *
      * @access    public
-     * @param     int  $typeid  栏目ID
+     * @param     int  $typeid  栏目id
      * @param     int  $needtypelink  是否需要栏目连接
      * @return    void
      */

@@ -31,7 +31,7 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname = '')
             $keywords = '';
             $stypeid = 0;
             if (empty($rownum)) $rownum = 40;
-            //通过关键词和栏目ID自动获取模式
+            //通过关键词和栏目id自动获取模式
             if ($isauto == 1) {
                 $idlist = '';
                 $keywords = trim($ctag->GetAtt('keywords'));

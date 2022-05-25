@@ -124,7 +124,7 @@ function GetFormItem($ctag)
  * @access    public
  * @param     string  $dvalue  值
  * @param     string  $dtype  类型
- * @param     int  $aid  文档ID
+ * @param     int  $aid  文档id
  * @param     string  $job  操作类型
  * @param     string  $addvar  增加值
  * @return    string

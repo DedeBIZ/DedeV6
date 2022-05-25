@@ -119,7 +119,7 @@ class TypeUnit
      *  获得子类目的递归调用
      *
      * @access    public
-     * @param     int  $id  栏目ID
+     * @param     int  $id  栏目id
      * @param     string  $step  层级标志
      * @param     bool  $needcheck  权限
      * @return    string

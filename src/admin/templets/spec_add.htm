@@ -281,7 +281,7 @@ table{border-collapse:separate}
           1、文章列表用ID1,ID2,ID3这样形式分开，系统会自动排除不同节点的相同文章；<br>
           2、关于单条记录模板里的[field:fieldname/]标记的使用，请参考关于系统帮助关于 arclist 标记的说明；<br>
           3、节点ID是节点的唯一标识，专题模板中用{dede:field.note noteid='标识'/}这样来表示单个节点，不指定noteid时为所有节点列表<br>
-          4、正常的情况下，每个节点显示的是“节点文章列表”里的文档，如果您指定为“自动获取模式”，那么必须指定关键词和栏目ID </td>
+          4、正常的情况下，每个节点显示的是“节点文章列表”里的文档，如果您指定为“自动获取模式”，那么必须指定关键词和栏目id </td>
       </tr>
       <tr>
         <td>
@@ -322,7 +322,7 @@ table{border-collapse:separate}
                 <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文章列表</label>
                 <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
                 <label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" value="" size="16">（逗号分开）</label>
-                栏目ID：<label><input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" size="4"></label>
+                栏目id：<label><input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" size="4"></label>
               </td>
             </tr>
             <tr>

@@ -224,7 +224,7 @@ function GetRemoteImage($url, $uid = 0)
  *  检测频道ID
  *
  * @access    public
- * @param     int  $typeid  栏目ID
+ * @param     int  $typeid  栏目id
  * @param     int  $channelid  频道ID
  * @return    bool
  */
@@ -306,7 +306,7 @@ function SpLongBody($mybody, $spsize, $sptag)
  *  创建指定ID的文档
  *
  * @access    public
- * @param     string  $aid  文档ID
+ * @param     string  $aid  文档id
  * @param     string  $ismakesign  生成标志
  * @param     int  $isremote  是否远程
  * @return    string

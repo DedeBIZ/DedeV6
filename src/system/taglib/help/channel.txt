@@ -4,8 +4,8 @@
  <li><a href='[field:typelink/]'>[field:typename/]</a> </li>
 {/dede:channel}
 >>dede>>
-typeid = '0' 栏目ID
-reid = '0' 上级栏目ID
+typeid = '0' 栏目id
+reid = '0' 上级栏目id
 row = '100' 调用栏目数 
 col = '1'  分多少列显示（默认为单列）
 type = 'son' son表示下级栏目,self表示同级栏目,top顶级栏目

@@ -44,7 +44,7 @@ class ListView
      *  php5构造函数
      *
      * @access    public
-     * @param     int  $typeid  栏目ID
+     * @param     int  $typeid  栏目id
      * @param     int  $uppage  上一页
      * @return    string
      */
@@ -90,7 +90,7 @@ class ListView
             //设置环境变量
             SetSysEnv($this->TypeID, $this->Fields['typename'], 0, '', 'list');
             $this->Fields['typeid'] = $this->TypeID;
-            //获得交叉栏目ID
+            //获得交叉栏目id
             if ($this->TypeLink->TypeInfos['cross'] > 0 && $this->TypeLink->TypeInfos['ispart'] == 0) {
                 $selquery = '';
                 if ($this->TypeLink->TypeInfos['cross'] == 1) {
@@ -544,7 +544,7 @@ class ListView
      *  获得要创建的文件名称规则
      *
      * @access    public
-     * @param     int  $typeid  栏目ID
+     * @param     int  $typeid  栏目id
      * @param     string  $wname
      * @param     string  $typedir  栏目目录
      * @param     string  $defaultname  默认名称

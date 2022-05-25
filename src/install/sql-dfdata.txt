@@ -4047,7 +4047,7 @@ INSERT INTO `#@__sysconfig` VALUES('1','cfg_basehost','站点网址','1','string
 ('105','cfg_beian','网站备案号','1','string',''),
 ('106','cfg_need_typeid2','是否启用副栏目','6','bool','Y'),
 ('107','cfg_mb_pwdtype','前台密码验证类型：默认32—32位md5，可选：l16—前16位、r16—后16位、m16—中间16位','4','string','32'),
-('108','cfg_cache_type','id 文档ID，content标签最终内容，修改此变量后必须更新系统缓存','6','string','id'),
+('108','cfg_cache_type','id 文档id，content标签最终内容，修改此变量后必须更新系统缓存','6','string','id'),
 ('109','cfg_max_face','会员上传头像大小限制KB','3','number','100'),
 ('110','cfg_typedir_df','栏目网址使用目录名（不显示默认页，则是/a/b/c形式）','2','bool','Y'),
 ('111','cfg_make_andcat','发表文章后马上更新相关栏目','6','bool','N'),

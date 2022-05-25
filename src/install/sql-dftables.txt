@@ -959,7 +959,7 @@ CREATE TABLE `#@__statistics_detail` (
   `device_type` varchar(10) DEFAULT NULL COMMENT '设备类型',
   `os` varchar(20) DEFAULT NULL COMMENT '操作系统',
   `url_type` tinyint DEFAULT NULL COMMENT '访问地址类型：0:未知 1:列表 2:内容 3:搜索 4:TAG',
-  `typeid` int DEFAULT NULL COMMENT '栏目ID',
+  `typeid` int DEFAULT NULL COMMENT '栏目id',
   `aid` int DEFAULT NULL COMMENT '内容ID',
   `value` varchar(50) DEFAULT NULL COMMENT '值',
   PRIMARY KEY (`id`),

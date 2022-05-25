@@ -12,7 +12,7 @@
  *  删除文档信息
  *
  * @access    public
- * @param     string  $aid  文档ID
+ * @param     string  $aid  文档id
  * @param     string  $type  类型
  * @param     string  $onlyfile  删除数据库记录
  * @return    string

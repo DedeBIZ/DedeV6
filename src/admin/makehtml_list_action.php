@@ -20,7 +20,7 @@ if (empty($typeid)) $typeid = 0;
 if (!isset($uppage)) $uppage = 0;
 if (empty($maxpagesize)) $maxpagesize = 30;
 $adminID = $cuserLogin->getUserID();
-//检测获取所有栏目ID
+//检测获取所有栏目id
 //普通生成或一键更新时更新所有栏目
 if ($gotype == '' || $gotype == 'mkallct') {
     if ($upnext == 1 || $typeid == 0) {

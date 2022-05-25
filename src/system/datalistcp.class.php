@@ -36,7 +36,7 @@ class DataListCP
     var $isQuery;
     var $queryTime;
     /**
-     *  用指定的文档ID进行初始化
+     *  用指定的文档id进行初始化
      *
      * @access    public
      * @param     string  $tplfile  模板文件

@@ -16,7 +16,7 @@ if (isset($arcID)) $aid = $arcID;
 $arcID = $aid = (isset($aid) && is_numeric($aid) ? $aid : 0);
 $type = (!isset($type) ? "" : $type);
 if (empty($aid)) {
-    ShowMsg("文档ID不能为空", "-1");
+    ShowMsg("文档id不能为空", "-1");
     exit();
 }
 //读取文档信息

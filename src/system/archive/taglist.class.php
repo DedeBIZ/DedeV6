@@ -615,7 +615,7 @@ class TagList
      *  获得一个指定的频道的链接
      *
      * @access    private
-     * @param     int  $typeid  栏目ID
+     * @param     int  $typeid  栏目id
      * @param     string  $typedir  栏目目录
      * @param     int  $isdefault  是否为默认
      * @param     string  $defaultname  默认名称
@@ -632,8 +632,8 @@ class TagList
      *  获得一个指定档案的链接
      *
      * @access    private
-     * @param     int  $aid  文档ID
-     * @param     int  $typeid  栏目ID
+     * @param     int  $aid  文档id
+     * @param     int  $typeid  栏目id
      * @param     int  $timetag  时间戳
      * @param     string  $title  标题
      * @param     int  $ismake  是否生成静态

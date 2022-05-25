@@ -204,7 +204,7 @@
                 <td>排列顺序：
                   <?php
                   $orderby = $ctag->GetAtt('orderby');
-                  $sorta = "sortrank,置顶权限值;pubdate,发布时间;senddate,录入时间;click,点击量;id,文档ID,lastpost,最后评论时间;postnum,评论总数;rand,随机获取";
+                  $sorta = "sortrank,置顶权限值;pubdate,发布时间;senddate,录入时间;click,点击量;id,文档id,lastpost,最后评论时间;postnum,评论总数;rand,随机获取";
                   $sortas = explode(';',$sorta);
                   foreach($sortas as $v)
                   {
@@ -221,7 +221,7 @@
                     <option value="pubdate">发布时间</option>
                     <option value="senddate">录入时间</option>
                     <option value="click">点击量</option>
-                    <option value="id">文档ID</option>
+                    <option value="id">文档id</option>
                     <option value="lastpost">最后评论时间</option>
                     <option value="postnum">评论总数</option>
                   </select>

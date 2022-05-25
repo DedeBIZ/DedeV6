@@ -234,7 +234,7 @@ class TypeLink
      *  逻辑递归
      *
      * @access    public
-     * @param     int   $id   栏目ID
+     * @param     int   $id   栏目id
      * @param     int   $step   步进标志
      * @param     int   $oper   操作权限
      * @return    string
@@ -262,7 +262,7 @@ class TypeLink
      *  $typetype 的值为：sun 下级分类 self 同级分类 top 顶级分类
      *
      * @access    public
-     * @param     int   $typeid   栏目ID
+     * @param     int   $typeid   栏目id
      * @param     int   $reid   所属ID
      * @param     int   $row   栏目行数
      * @param     string   $typetype   栏目类型

@@ -45,7 +45,7 @@ class Archives
      *  php5构造函数
      *
      * @access    public
-     * @param     int  $aid  文档ID
+     * @param     int  $aid  文档id
      * @return    string
      */
     function __construct($aid)
@@ -516,7 +516,7 @@ class Archives
         if ($this->TempSource == '') {
             $tempfile = $this->GetTempletFile();
             if (!file_exists($tempfile) || !is_file($tempfile)) {
-                echo "文档ID：{$this->Fields['id']} - {$this->TypeLink->TypeInfos['typename']} - {$this->Fields['title']}<br>";
+                echo "文档id：{$this->Fields['id']} - {$this->TypeLink->TypeInfos['typename']} - {$this->Fields['title']}<br>";
                 echo "模板文件不存在，无法解析文档";
                 exit();
             }

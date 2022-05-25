@@ -34,8 +34,8 @@ if (!function_exists('GetRankStar')) {
  *  GetFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)
  *  即是不指定站点参数则返回相当对根目录的真实路径
  *
- * @param     int  $aid  文档ID
- * @param     int  $typeid  栏目ID
+ * @param     int  $aid  文档id
+ * @param     int  $typeid  栏目id
  * @param     int  $timetag  时间戳
  * @param     string  $title  标题
  * @param     int  $ismake  是否生成
@@ -85,8 +85,8 @@ if (!function_exists('GetFileUrl')) {
 /**
  *  获得新文件名(本函数会自动创建目录)
  *
- * @param     int  $aid  文档ID
- * @param     int  $typeid  栏目ID
+ * @param     int  $aid  文档id
+ * @param     int  $typeid  栏目id
  * @param     int  $timetag  时间戳
  * @param     string  $title  标题
  * @param     int  $ismake  是否生成
@@ -124,8 +124,8 @@ if (!function_exists('GetFileNewName')) {
 /**
  *  获得文件相对于主站点根目录的物理文件名(动态网址返回url)
  *
- * @param     int  $aid  文档ID
- * @param     int  $typeid  栏目ID
+ * @param     int  $aid  文档id
+ * @param     int  $typeid  栏目id
  * @param     int  $timetag  时间戳
  * @param     string  $title  标题
  * @param     int  $ismake  是否生成
@@ -189,7 +189,7 @@ if (!function_exists('GetFileName')) {
  *  获得指定类目的URL链接
  *  对于使用封面文件和单独页面的情况，强制使用默认页名称
  *
- * @param     int  $typeid  栏目ID
+ * @param     int  $typeid  栏目id
  * @param     string  $typedir  栏目目录
  * @param     int  $isdefault  是否默认
  * @param     string  $defaultname  默认名称
@@ -266,7 +266,7 @@ if (!function_exists('MagicVar')) {
 /**
  *  获取某个类目的所有上级栏目id
  *
- * @param     int  $tid  栏目ID
+ * @param     int  $tid  栏目id
  * @return    string
  */
 if (!function_exists('GetTopids')) {
@@ -280,7 +280,7 @@ if (!function_exists('GetTopids')) {
  *  获取上级ID列表
  *
  * @access    public
- * @param     string  $tid  栏目ID
+ * @param     string  $tid  栏目id
  * @return    string
  */
 if (!function_exists('GetParentIds')) {
@@ -316,7 +316,7 @@ if (!function_exists('IsParent')) {
 /**
  *  获取一个类目的顶级类目id
  *
- * @param     string  $tid  栏目ID
+ * @param     string  $tid  栏目id
  * @return    string
  */
 if (!function_exists('GetTopid')) {
@@ -520,9 +520,9 @@ function GetOneTypeUrlA($typeinfos)
 /**
  *  设置全局环境变量
  *
- * @param     int  $typeid  栏目ID
+ * @param     int  $typeid  栏目id
  * @param     string  $typename  栏目名称
- * @param     string  $aid  文档ID
+ * @param     string  $aid  文档id
  * @param     string  $title  标题
  * @param     string  $curfile  当前文件
  * @return    string

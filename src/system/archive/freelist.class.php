@@ -800,8 +800,8 @@ class FreeList
      *  获得一个指定档案的链接
      *
      * @access    public
-     * @param     int  $aid  文档ID
-     * @param     int  $typeid  栏目ID
+     * @param     int  $aid  文档id
+     * @param     int  $typeid  栏目id
      * @param     int  $timetag  时间戳
      * @param     string  $title  标题
      * @param     int  $ismake  是否生成

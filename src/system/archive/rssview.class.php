@@ -33,7 +33,7 @@ class RssView
      *  php5构造函数
      *
      * @access    public
-     * @param     int  $typeid  栏目ID
+     * @param     int  $typeid  栏目id
      * @param     int  $max_row  最大显示行数
      * @return    string
      */

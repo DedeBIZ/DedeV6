@@ -328,7 +328,7 @@
               <td>
                 <label><input type="radio" name="cross" id="cross0" value="0" onClick="CheckCross()" checked="1"> 不交叉</label>
                 <label><input type="radio" name="cross" id="cross1" value="1" onClick="CheckCross()"> 自动获取同名栏目内容</label>
-                <label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()"> 手工指定交叉栏目ID（用逗号分开）</label>
+                <label><input type="radio" name="cross" id="cross2" value="2" onClick="CheckCross()"> 手工指定交叉栏目id（用逗号分开）</label>
                 <br>
                 <textarea name="crossid" id="crossid" style="display:none"></textarea>
               </td>
@@ -387,7 +387,7 @@
             <tr id="helpvar1" style="display:none">
               <td bgcolor="#f8f8f8">支持变量：</td>
               <td bgcolor="#f8f8f8">
-                {tid}表示栏目ID，<br>
+                {tid}表示栏目id，<br>
                 {cid}表示频道模型的'名字ID'（
                 <?php
                 foreach($channelArray as $k=>$arr)

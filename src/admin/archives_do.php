@@ -302,7 +302,7 @@ else if ($dopost == 'moveArchives') {
             <td class="bline"><?php echo $typeOptions; ?></td>
         </tr>
         <tr>
-            <td width="90" class="bline"> 文档ID：</td>
+            <td width="90" class="bline"> 文档id：</td>
             <td class="bline">
                 <input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden"><br>
                 移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
@@ -868,7 +868,7 @@ else if ($dopost == 'attsDlg') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline"> 文档ID：</td>
+        <td width="90" class="bline"> 文档id：</td>
         <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden"></td>
     </tr>
     <tr>

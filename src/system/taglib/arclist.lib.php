@@ -83,7 +83,7 @@ function lib_arclist(&$ctag, &$refObj)
  * @access    public
  * @param     object  $refObj  引用对象
  * @param     object  $ctag  标签
- * @param     int  $typeid  栏目ID
+ * @param     int  $typeid  栏目id
  * @param     int  $row  调用行数
  * @param     int  $titlelen  字符串长度
  * @param     int  $infolen  描述信息长度
@@ -93,7 +93,7 @@ function lib_arclist(&$ctag, &$refObj)
  * @param     string  $orderby  排列顺序
  * @param     string  $keyword  关键词
  * @param     string  $innertext  底层模板
- * @param     int  $arcid  文档ID
+ * @param     int  $arcid  文档id
  * @param     string  $idlist  ID列表
  * @param     int  $channelid  频道ID
  * @param     string  $limit  限制

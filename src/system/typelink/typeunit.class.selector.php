@@ -93,7 +93,7 @@ class TypeUnitSelector
      *  获得子类目的递归调用
      *
      * @access    public
-     * @param     int   $id  栏目ID
+     * @param     int   $id  栏目id
      * @param     int   $channel  频道ID
      * @param     int   $soncat  子级分类
      * @return    string

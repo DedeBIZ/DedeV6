@@ -14,7 +14,7 @@ require_once(DEDEINC."/channelunit.func.php");
  *  删除文档
  *
  * @access    public
- * @param     int  $aid  文档ID
+ * @param     int  $aid  文档id
  * @return    bool
  */
 function DelArc($aid)
@@ -122,7 +122,7 @@ function DelArc($aid)
  *  删除不带主表内容模型的数据
  *
  * @access    public
- * @param     int  $aid  文档ID
+ * @param     int  $aid  文档id
  * @return    string
  */
 function DelArcSg($aid)

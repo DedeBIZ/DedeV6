@@ -158,7 +158,7 @@ EOT;
  * @access    public
  * @param     string  $dvalue  默认值
  * @param     string  $dtype  默认类型
- * @param     int  $aid  文档ID
+ * @param     int  $aid  文档id
  * @param     string  $job  操作类型
  * @param     string  $addvar  值
  * @param     string  $admintype  管理类型

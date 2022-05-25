@@ -54,7 +54,7 @@ class SearchView
      *  php5构造函数
      *
      * @access    public
-     * @param     int  $typeid  栏目ID
+     * @param     int  $typeid  栏目id
      * @param     string  $keyword  关键词
      * @param     string  $orderby  排序
      * @param     string  $achanneltype  频道类型

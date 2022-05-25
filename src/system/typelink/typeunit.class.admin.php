@@ -44,7 +44,7 @@ class TypeUnit
     function Close()
     {
     }
-    //获取所有栏目的文档ID数
+    //获取所有栏目的文档id数
     function UpdateCatalogNum()
     {
         $this->dsql->SetQuery("SELECT typeid,count(typeid) as dd FROM `#@__arctiny` WHERE arcrank <>-2 group by typeid");
@@ -165,7 +165,7 @@ class TypeUnit
      *  获得子类目的递归调用
      *
      * @access    public
-     * @param     int  $id  栏目ID
+     * @param     int  $id  栏目id
      * @param     string  $step  层级标志
      * @return    void
      */
@@ -249,7 +249,7 @@ class TypeUnit
      *  返回与某个目相关的下级目录的类目ID列表(删除类目或文章时调用)
      *
      * @access    public
-     * @param     int   $id  栏目ID
+     * @param     int   $id  栏目id
      * @param     int   $channel  频道ID
      * @return    array
      */
@@ -276,7 +276,7 @@ class TypeUnit
      *  删除类目
      *
      * @access    public
-     * @param     int   $id  栏目ID
+     * @param     int   $id  栏目id
      * @param     bool   $isDelFile  是否删除文件
      * @return    string
      */

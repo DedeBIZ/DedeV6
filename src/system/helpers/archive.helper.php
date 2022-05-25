@@ -121,7 +121,7 @@ if (!function_exists('GetTags')) {
  *
  * @access    public
  * @param     string  $arcrank  权限值
- * @param     int  $typeid  栏目ID
+ * @param     int  $typeid  栏目id
  * @param     int  $sortrank  排序ID
  * @param     int  $channelid  模型ID
  * @param     int  $senddate  发布日期
@@ -149,9 +149,9 @@ if (!function_exists('GetIndexKey')) {
  *  更新微表key及Tag
  *
  * @access    public
- * @param     int  $id  文档ID
+ * @param     int  $id  文档id
  * @param     string  $arcrank  权限值
- * @param     int  $typeid  栏目ID
+ * @param     int  $typeid  栏目id
  * @param     int  $sortrank  排序ID
  * @param     string  $tags  tag标签
  * @return    string

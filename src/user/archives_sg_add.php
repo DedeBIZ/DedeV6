@@ -130,7 +130,7 @@ else if ($dopost == 'save') {
             exit();
         }
     }
-    //生成文档ID
+    //生成文档id
     $arcID = GetIndexKey($arcrank, $typeid, $sortrank, $channelid, $senddate, $mid);
     if (empty($arcID)) {
         ShowMsg("无法获得主键，因此无法进行后续操作", "-1");
