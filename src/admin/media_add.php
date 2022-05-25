@@ -34,7 +34,7 @@ if ($dopost == "upload") {
                 $mediatype = 2;
                 $savePath = $cfg_other_medias."/".$dpath;
             }
-            //2011-6-2 修复附件无法上传的错误(by:tianya)
+            //修复附件无法上传的错误
             else if (preg_match('#audio|media|video#i', $upfile_type) && preg_match("#\.".$cfg_mediatype."$#i", $upfile_name)) {
                 $mediatype = 3;
                 $savePath = $cfg_other_medias."/".$dpath;
@@ -52,10 +52,7 @@ if ($dopost == "upload") {
                 MkdirAll($cfg_basedir.$savePath, 777);
                 CloseFtp();
             }
-            /*
-			后台文件任意上传漏洞
-			漏洞描述：早期版本后台存在大量的富文本编辑器，该控件提供了一些文件上传接口，同时对上传文件的后缀类型未进行严格的限制，这导致了黑客可以上传WEBSHELL，获取网站后台权限
-			*/
+			//后台文件任意上传漏洞：早期版本后台存在大量的富文本编辑器，该控件提供了一些文件上传接口，同时对上传文件的后缀类型未进行严格的限制，这导致了黑客可以上传WEBSHELL，获取网站后台权限
             if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
                 ShowMsg("您指定的文件名被系统禁止", "javascript:;");
                 exit();

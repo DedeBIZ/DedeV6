@@ -93,7 +93,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(jpg)#i",$file))
     	{
@@ -108,7 +108,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(swf|fla|fly)#i",$file))
     	{
@@ -123,7 +123,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(zip|rar|tar.gz)#i",$file))
     	{
@@ -138,7 +138,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(exe)#i",$file))
     	{
@@ -153,7 +153,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(mp3|wma)#i",$file))
     	{
@@ -168,7 +168,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(wmv|api)#i",$file))
     	{
@@ -183,7 +183,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(rm|rmvb)#i",$file))
     	{
@@ -198,7 +198,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(txt|inc|pl|cgi|asp|xml|xsl|aspx|cfm)#",$file))
     	{
@@ -215,7 +215,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(htm|html)#i",$file))
     	{
@@ -232,7 +232,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(php)#i",$file))
     	{
@@ -249,7 +249,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(js)#i",$file))
     	{
@@ -266,7 +266,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	}
     	else if(preg_match("#\.(css)#i",$file))
     	{
@@ -283,7 +283,7 @@
        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
        </td>
        </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	} else {
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#FBFCE2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
         <td><a href='$activeurl/$file' target='_blank'>$file</td>
@@ -295,7 +295,7 @@
         <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
         </td>
         </tr>";
-    		$files[] = $line;
+    	 $files[] = $line;
     	  }
       }
       foreach ($dirs as $dir)
