@@ -192,7 +192,6 @@ class RssView
             if (is_array($dtp2->CTags)) {
                 foreach ($dtp2->CTags as $k => $ctag) {
                     if ($ctag->GetName() == 'array') {
-
                         //传递整个数组，在runphp模式中有特殊作用
                         $dtp2->Assign($k, $row);
                     } else {

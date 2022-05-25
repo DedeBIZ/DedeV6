@@ -42,6 +42,6 @@ if (empty($dopost)) {
         VALUES ('$title','$namerule','$listdir','$defaultpage','$nodefault','$templet','$edtime', '$maxpage','0','$listTag','$keywords','$description');
     ";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功增加一个自由列表!", "freelist_main.php");
+    ShowMsg("成功增加一个自由列表", "freelist_main.php");
     exit();
 }

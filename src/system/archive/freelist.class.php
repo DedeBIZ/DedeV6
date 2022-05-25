@@ -148,7 +148,7 @@ class FreeList
             if ($channelid > 0 && !preg_match("#spec#i", $listtype)) {
                 $addSql .= " AND channel = '$channelid' ";
             }
-            //推荐文档 带缩略图  专题文档
+            //推荐文档，带缩略图，专题文档
             if (preg_match("#commend#i", $listtype)) {
                 $addSql .= " AND FIND_IN_SET('c',flag) > 0  ";
             }
@@ -164,6 +164,7 @@ class FreeList
             }
             $keyword = $this->ListObj->GetAtt('keyword');
             if (!empty($keyword)) {
+                $keyword = str_replace(',', '|', $keyword);
                 $addSql .= " AND CONCAT(title,keywords) REGEXP '$keyword' ";
             }
             $cquery = "SELECT COUNT(*) AS dd FROM `{$this->maintable}` WHERE $addSql";
@@ -428,7 +429,7 @@ class FreeList
         if ($channelid > 0 && !preg_match("#spec#i", $listtype)) {
             $orwhere .= " AND arc.channel = '$channelid' ";
         }
-        //推荐文档 带缩略图  专题文档
+        //推荐文档，带缩略图，专题文档
         if (preg_match("#commend#i", $listtype)) {
             $orwhere .= " AND FIND_IN_SET('c',flag) > 0  ";
         }
@@ -444,6 +445,7 @@ class FreeList
         }
         $keyword = $this->ListObj->GetAtt('keyword');
         if (!empty($keyword)) {
+            $keyword = str_replace(',', '|', $keyword);
             $orwhere .= " AND CONCAT(arc.title,arc.keywords) REGEXP '$keyword' ";
         }
         $orderby = $this->ListObj->GetAtt('orderby');
@@ -659,10 +661,10 @@ class FreeList
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
-        //下一页,未页的链接
+        //下一页和未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<a href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a>\r\n";
-            $endpage = "<a href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>\r\n";
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
@@ -758,14 +760,14 @@ class FreeList
         $purl .= "?".$geturl;
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a>\r\n";
+            $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$prepagenum'>上一页</a></li>\r\n";
             $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=1'>首页</a>\r\n";
         } else {
             $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a>\r\n";
-            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a>\r\n";
+            $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$nextpagenum'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a class='page-link' href='".$purl."PageNo=$totalpage'>末页</a></li>\r\n";
         } else {
             $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }

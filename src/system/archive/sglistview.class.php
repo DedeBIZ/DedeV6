@@ -710,7 +710,7 @@ class SgListView
         } else {
             $indexpage = "<li class='page-item'>首页</li>\r\n";
         }
-        //下一页,未页的链接
+        //下一页和未页的链接
         if ($this->PageNo != $totalpage && $totalpage > 1) {
             $nextpage .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $nextpagenum, $tnamerule)."'>下一页</a></li>\r\n";
             $endpage = "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $totalpage, $tnamerule)."'>末页</a></li>\r\n";
