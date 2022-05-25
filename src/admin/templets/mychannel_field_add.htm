@@ -10,6 +10,21 @@
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
+  <style>
+    .style1 {
+      color: #FF3300
+    }
+    .style2 {
+      color: #545b62
+    }
+    .nw {
+      float: left;
+      width: 150px;
+    }
+    .cls {
+      clear: both;
+    }
+  </style>
   <script>
   var notAllow = " <?php echo $f; ?> ";
   function GetFields()
@@ -76,12 +91,6 @@
     })
   });
   </script>
-  <style>
-.style1 {color: #FF3300}
-.style2 {color: #545b62}
-.nw { float:left; width:150px; }
-.cls { clear:both; }
-  </style>
 </head>
 <body>
 <form name="form1" action="mychannel_field_add.php" method="post" onSubmit="return GetFields();">

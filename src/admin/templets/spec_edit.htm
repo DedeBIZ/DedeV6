@@ -18,6 +18,10 @@
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script src="../static/web/js/cropper.min.js"></script>
+  <style>
+  table{border-collapse:separate}
+  .form-control{display:inline-block;margin-right:10px;width:160px}
+  </style>
   <script>
     function SelectTemplets(fname) {
       var pos = GetWinPos(800,600);
@@ -51,9 +55,6 @@
       }
     }
   </script>
-  <style>
-table{border-collapse:separate}
-  </style>
 </head>
 <body>
   <form name="form1" action="spec_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">

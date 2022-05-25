@@ -11,15 +11,6 @@
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/diy.js"></script>
-  <script>
-    function checkSubmit() {
-      if (document.form1.name.value == '') {
-        ShowMsg("自定义表单名称不能为空");
-        return false;
-      }
-      return true;
-    }
-  </script>
   <style>
     .style1 {
       color: #dc3545
@@ -29,6 +20,15 @@
       display: none;
     }
   </style>
+  <script>
+    function checkSubmit() {
+      if (document.form1.name.value == '') {
+        ShowMsg("自定义表单名称不能为空");
+        return false;
+      }
+      return true;
+    }
+  </script>
 </head>
 <body>
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">

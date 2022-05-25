@@ -18,6 +18,10 @@
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script src="../static/web/js/cropper.min.js"></script>
+  <style>
+  table{border-collapse:separate}
+  .form-control{display:inline-block;margin-right:10px;width:160px}
+  </style>
   <script>
     function checkSubmit() {
       if (document.form1.title.value == "") {
@@ -55,9 +59,6 @@
       }
     }
   </script>
-  <style>
-table{border-collapse:separate}
-  </style>
 </head>
 <body>
   <form name="form1" action="spec_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
