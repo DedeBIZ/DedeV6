@@ -43,7 +43,7 @@ if ($dopost != 'save') {
     $cInfos = $dsql->GetOne(" Select * From  `#@__channeltype` where id='$channelid' ");
     //获取文章最大id+1以确定当前权重
     $maxWright = $dsql->GetOne("SELECT id+1 AS cc FROM `#@__archives` ORDER BY id DESC LIMIT 1");
-
+    $maxWright = empty($maxWright)? array('cc'=>1) : $maxWright;
     include DedeInclude("templets/article_add.htm");
     exit();
 }

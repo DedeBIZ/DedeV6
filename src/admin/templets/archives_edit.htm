@@ -7,21 +7,17 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
-  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
+  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <script src="../static/web/js/moment.min.js"></script>
   <script src="../static/web/js/daterangepicker.js"></script>
+  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <script src="../static/web/js/cropper.min.js"></script>
-  <style>
-  table{border-collapse:separate}
-  .form-control{display:inline-block;margin-right:10px;width:160px}
-  </style>
   <script>
   function checkSubmit() {
     if (document.form1.title.value == "") {
@@ -31,12 +27,18 @@
     }
   }
   </script>
+  <style>
+body{background:#fff}
+img{vertical-align:baseline}
+table{border-collapse:separate}
+.form-control{display:inline-block;margin-right:10px;width:160px}
+  </style>
 </head>
 <body>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
     <tr>
-      <td width="70%"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 修改商品</td>
-      <td width="30%" align="right"><?php echo $backurl; ?><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a></td>
+      <td width="70%" height="26"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 修改商品</td>
+      <td width="30%" align='right'><?php echo $backurl; ?><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a></td>
     </tr>
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -44,8 +46,8 @@
       <td colspan="2">
         <table cellpadding="0" cellspacing="0">
           <tr>
-            <td width="84" height="28" align="center" bgcolor="#FBFCE2">常规信息</td>
-            <td width="84" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem2()">高级参数</a></td>
+            <td width="86" height="26" align="center" background="../static/web/img/itemnote1.gif">常规信息</td>
+            <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem2()">高级参数</a></td>
           </tr>
         </table>
       </td>
@@ -54,10 +56,10 @@
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head2" style="display:none">
     <tr>
       <td colspan="2">
-        <table  cellpadding="0" cellspacing="0">
+        <table height="26" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="84" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">常规信息</a></td>
-            <td width="84" height="28" align="center" bgcolor="#FBFCE2">高级参数</td>
+            <td width="86" align="center" background="../static/web/img/itemnote2.gif"><a href="javascript:;" onClick="ShowItem1()">常规信息</a></td>
+            <td width="86" align="center" background="../static/web/img/itemnote1.gif">高级参数</td>
           </tr>
         </table>
       </td>
@@ -69,22 +71,22 @@
     <input type="hidden" name="dopost" value="save">
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6">
       <tr>
-        <td class="bline">
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
-              <td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title']; ?>" style="width:390px"></td>
-              <td width="90"> 简略标题：</td>
-              <td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:160px"></td>
+              <td width="90">&nbsp;<?php echo $cInfos['titlename']; ?>：</td>
+              <td width="400"><input name="title" type="text" id="title" value="<?php echo $arcRow['title']; ?>" style="width:380px"></td>
+              <td width="90">&nbsp;简略标题：</td>
+              <td><input name="shorttitle" type="text" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td width="100%" class="bline">
+        <td width="400%" height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 自定义属性：</td>
+              <td width="90">&nbsp;自定义属性：</td>
               <td>
                 <?php
                 $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -94,9 +96,9 @@
                   if($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
                   else $jumpclick = '';
                   if(preg_match("#".$trow->att."#", $arcRow['flag']))
-                  echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label>";
+                  echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
                   else
-                  echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label>";
+                  echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label> ";
                 }
                 ?>
               </td>
@@ -105,38 +107,39 @@
         </td>
       </tr>
       <tr>
-        <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
+        <td height="26" class="bline" id="redirecturltr"
+          style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 跳转网址：</td>
-              <td><input type="text" name="redirecturl" id="redirecturl" value="<?php echo $addRow['redirecturl']; ?>" style="width:300px"></td>
+              <td width="90">&nbsp;跳转网址：</td>
+              <td><input name="redirecturl" type="text" id="redirecturl" value="<?php echo $addRow['redirecturl']; ?>" style="width:300px"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td width="100%" class="bline">
+        <td width="400%" height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> Tag标签：</td>
-              <td><input type="text" name="tags" id="tags" value="<?php echo $tags; ?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
+              <td width="90">&nbsp;Tag标签：</td>
+              <td><input name="tags" type="text" id="tags" value="<?php echo $tags; ?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
               <td width="60">权重：</td>
-              <td><input type="text" name="weight" id="weight" value="<?php echo $arcRow['weight']; ?>" style="width:60px">（越小越靠前）</td>
+              <td><input name="weight" type="text" id="weight" value="<?php echo $arcRow['weight']; ?>" style="width:60px">（越小越靠前）</td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr id="pictable" style="<?php if($cInfos['needpic']==0) echo 'display:none'; ?>">
-        <td class="bline">
+      <tr id="pictable" style='<?php if($cInfos['needpic']==0) echo 'display:none'; ?>'>
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" height="80"> 缩略图：</td>
+              <td width="90" height="80">&nbsp;缩略图：</td>
               <td>
-                <input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" style="width:300px">
-                <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
+                <input name="picname" type="text" id="picname" value="<?php echo $arcRow['litpic']?>" style="width:300px">
+                <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote" class="np">&nbsp;远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
-                <button  type="button"id="btnClearAll" class="btn btn-success btn-sm delete">清空</button>
+                <button id="btnClearAll" type="button" class="btn btn-success btn-sm delete">清空</button>
               </td>
               <td align="center">
                 <img id="litPic" src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg'; ?>" style="max-width:100px;max-height:80px">
@@ -146,18 +149,18 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 来源：</td>
+              <td width="90">&nbsp;来源：</td>
               <td width="260">
-                <input type="text" name="source" id="source" value="<?php echo $arcRow['source']?>" style="width:160px">
-                <button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
+                <input name="source" type="text" id="source" value="<?php echo $arcRow['source']?>" style="width:160px">
+                <button name="selsource" type="button" id="selsource" class="btn btn-success btn-sm">选择</button>
               </td>
               <td width="60">作者：</td>
               <td>
-                <input type="text" name="writer" id="writer" value="<?php echo $arcRow['writer']?>" style="width:160px">
-                <button type="button" class="btn btn-success btn-sm" name="selwriter" id="selwriter">选择</button>
+                <input name="writer" type="text" id="writer" value="<?php echo $arcRow['writer']?>" style="width:160px">
+                <button class="btn btn-success btn-sm" name="selwriter" type="button" id="selwriter">选择</button>
               </td>
             </tr>
           </table>
@@ -171,10 +174,10 @@
       } else {
       ?>
       <tr>
-        <td class="bline">
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 发布栏目：</td>
+              <td width="90">&nbsp;发布栏目：</td>
               <td width="360">
                 <?php
                 $typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
@@ -183,10 +186,10 @@
                 echo $typeOptions;
                 echo "</select>";
 			          ?>
-                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title="快捷选择" style="cursor:pointer"></i>
+                <i class='btn btn-sm fa fa-search'  onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title='快捷选择' style='cursor:pointer'></i>
               </td>
               <td width="90">消费金币：</td>
-              <td><input type="text" name="money" id="money" value="<?php echo $arcRow['money']?>" style="width:160px"></td>
+              <td><input name="money" type="text" id="money" value="<?php echo $arcRow['money']?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -195,34 +198,34 @@
       if($cfg_need_typeid2=='Y') {
       ?>
       <tr>
-        <td class="bline">
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 副栏目：</td>
+              <td width="90">&nbsp;副栏目：</td>
               <td>
-                <span id="typeid2ct"></span>
-                <input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>" style="width:260px">
-                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title="选择副栏目" style="cursor:pointer"></i>
+                <span id='typeid2ct'></span>
+                <input type='text' name='typeid2' id='typeid2' value='<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>' style='width:260px;'>
+                <i class='btn btn-sm fa fa-search'  onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title='选择副栏目' style='cursor:pointer'></i>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 关键词：</td>
+              <td width="90">&nbsp;关键词：</td>
               <td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']?>" style="width:360px"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 描述：</td>
+              <td width="90">&nbsp;描述：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $arcRow['description']?></textarea></td>
             </tr>
           </table>
@@ -233,47 +236,55 @@
       }
       ?>
       <tr>
-        <td width="900">
+        <td>
+        <?php
+        PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow);
+        ?>
+        </td>
+      </tr>
+      <tr>
+        <td width="400%" height="26">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 附加选项：</td>
+              <td width="90">&nbsp;附加选项：</td>
               <td>
-                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo 'checked="1"'; ?>> 下载远程图片和资源</label>
-                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo 'checked="1"'; ?>> 提取第一个图片为缩略图</label>
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?>>
+                下载远程图片和资源</label>
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?>>
+                提取第一个图片为缩略图</label>
               </td>
             </tr>
           </table>
         </td>
-      </tr>
-      <tr>
-        <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow); ?></td>
       </tr>
     </table>
     <!--高级参数-->
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;display:none">
       <tr>
-        <td colspan="4" class="bline">
+        <td height="26" colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"  width="260"> 评论选项：</td>
+              <td width="90" height="26" width="260">&nbsp;评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" value="0" <?php if($arcRow['notpost']==0) echo "checked='1'"; ?>> 允许评论</label>
-                <label><input type="radio" name="notpost" value="1" <?php if($arcRow['notpost']==1) echo "checked='1'"; ?>> 禁止评论</label>
+                <label><input type='radio' name='notpost' class='np' value='0' <?php if($arcRow['notpost']==0) echo " checked='1' "; ?> /> 允许评论</label>
+                &nbsp;
+                <label><input type='radio' name='notpost' class='np' value='1' <?php if($arcRow['notpost']==1) echo " checked='1' "; ?> /> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
-              <td>
-                <label><input type="radio" name="ishtml" value="1" <?php if($arcRow["ismake"]!=-1) echo "checked"; ?>> 生成网页</label>
-                <label><input type="radio" name="ishtml" value="0" <?php if($arcRow["ismake"]==-1) echo "checked"; ?>> 仅动态浏览</label>
+              <td><label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked"; ?>>
+                生成HTML</label>
+                <label><input type="radio" name="ishtml" class="np" value="0" <?php if($arcRow["ismake"]==-1) echo " checked"; ?>>
+                仅动态浏览</label>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 文档排序：</td>
+              <td width="90">&nbsp;文档排序：</td>
               <td width="260"><select name="sortup" id="sortup" style="width:160px">
                 <?php
                 $subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
@@ -289,18 +300,18 @@
               </td>
               <td width="90">标题颜色：</td>
               <td>
-                <input type="text" name="color" id="color" value="<?php echo $arcRow['color']?>" style="width:160px">
-                <button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
+                <input name="color" type="text" id="color" value="<?php echo $arcRow['color']?>" style="width:160px">
+                <button name="modcolor" type="button" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td height="26" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 阅读权限：</td>
+              <td width="90">&nbsp;阅读权限：</td>
               <td width="260"><select name="arcrank" id="arcrank" style="width:160px">
                 <option value='<?php echo $arcRow["arcrank"]?>'><?php echo $arcRow["rankname"]?></option>
                 <?php
@@ -320,10 +331,10 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td height="70" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 更新时间：</td>
+              <td width="90">&nbsp;更新时间：</td>
               <td width="260"><?php
 			        $nowtime = GetDateTimeMk(time());
 			        echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker' style='width:160px'>";
@@ -338,7 +349,7 @@
     </table>
     <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
       <tr>
-        <td align="center" class="py-2">
+        <td align="center" class="py-3">
           <button type="submit" class="btn btn-success btn-sm">保存</button>
           <button type="button" onClick="location.reload();" class="btn btn-success btn-sm">重置</button>
         </td>

@@ -2,7 +2,7 @@
 /**
  * 图片选择
  *
- * @version        $Id: select_images.php 1 9:43 2010年7月8日Z tianya $
+ * @version        $Id: select_images.php 2022-07-01 tianya $
  * @package        DedeBIZ.Dialog
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -60,7 +60,7 @@ if (!empty($iseditor)) {
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>
-html{background:#f8f8f8}
+html{background:#f6f6f6}
 table{background:#fff}
 a{text-decoration:none!important}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
@@ -139,7 +139,7 @@ a{text-decoration:none!important}
     </script>
     <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
         <tr>
-            <td colspan="4">
+            <td colspan="4" height="26">
                 <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
                     <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor; ?>
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
@@ -149,8 +149,8 @@ a{text-decoration:none!important}
                     <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>">
                     <input type="hidden" name="job" value="upload">
                     上传：<input type="file" name="imgfile" style="width:50%;border:none">
-                    <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked"; ?> /> 水印 </label>
-                    <label><input type="checkbox" name="resize" value="1"> 缩小 </label>
+                    <label><input type="checkbox" name="needwatermark" value="1" class="np" <?php if ($photo_markup == '1') echo "checked"; ?> /> 水印 </label>
+                    <label><input type="checkbox" name="resize" value="1" class="np"> 缩小 </label>
                     宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:46px">
                     高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" style="width:46px">
                     <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
@@ -177,10 +177,10 @@ a{text-decoration:none!important}
                 $filesize = $filesize / 1024;
                 if ($filesize != "")
                     if ($filesize < 0.1) {
-                        @list($ty1, $ty2) = split("\.", $filesize);
+                        @list($ty1, $ty2) = explode("\.", $filesize);
                         $filesize = $ty1.".".substr($ty2, 0, 2);
                     } else {
-                        @list($ty1, $ty2) = split("\.", $filesize);
+                        @list($ty1, $ty2) = explode("\.", $filesize);
                         $filesize = $ty1.".".substr($ty2, 0, 1);
                     }
                 $filetime = filemtime("$inpath/$file");
