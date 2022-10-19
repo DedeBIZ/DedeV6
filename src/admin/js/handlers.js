@@ -28,5 +28,5 @@ function addImage(src, pid) {
 			newImgDiv.innerHTML = '<img src="' + src + '" onClick="addtoEdit(' + pid + ')">' + delstr;
 		}
 	}
-	newImgDiv.innerHTML += '<div style="margin-top:10px">名称：<input type="text" name="picinfo' + albImg + '" value="" style="width:' + iptwidth + 'px"></div>';
+	newImgDiv.innerHTML += '<div class="mt-1">名称：<input type="text" name="picinfo' + albImg+ '" value="" style="width:' + iptwidth + 'px"></div>';
 }

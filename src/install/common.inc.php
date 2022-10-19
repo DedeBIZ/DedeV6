@@ -1,10 +1,9 @@
 <?php
-//数据库连接信息
-$cfg_dbtype = '~dbtype~';
-$cfg_dbhost = '~dbhost~';
-$cfg_dbname = '~dbname~';
-$cfg_dbuser = '~dbuser~';
-$cfg_dbpwd = '~dbpwd~';
-$cfg_dbprefix = '~dbprefix~';
-$cfg_db_language = '~dblang~';
+$cfg_dbtype = '~dbtype~';      //数据库类型
+$cfg_dbhost = '~dbhost~';      //数据库地址
+$cfg_dbname = '~dbname~';      //数据库名称
+$cfg_dbuser = '~dbuser~';      //数据库用户
+$cfg_dbpwd = '~dbpwd~';        //数据库密码
+$cfg_dbprefix = '~dbprefix~';  //数据库前缀
+$cfg_db_language = '~dblang~'; //数据库编码
 ?>

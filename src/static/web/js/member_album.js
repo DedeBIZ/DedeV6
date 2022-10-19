@@ -6,12 +6,12 @@ function checkSubmit()
 		return false;
 	}
 	if(document.form1.typeid.value==0) {
-		alert("隶属栏目必须选择");
+		alert("所属栏目必须选择");
 		return false;
 	}
 	if(document.form1.typeid.options[document.form1.typeid.selectedIndex].className!='option3')
 	{
-		alert("隶属栏目必须选择白色背景的项目");
+		alert("所属栏目必须选择白色背景的项目");
 		return false;
 	}
 	document.form1.imagebody.value = document.getElementById('copyhtml').innerHTML;

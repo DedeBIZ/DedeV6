@@ -24,23 +24,23 @@
 <body>
   <form action="member_scores.php" method="post">
     <input name="action" type="hidden" value="save">
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="tbtitle mt-3 mb-3" style="border:1px solid #dee2e6">
+    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="tbtitle biz-border mt-3 mb-3">
       <tr>
         <td width="100%" bgcolor="#f8f8f8"><a href="member_main.php">会员管理</a> &gt; 积分头衔设置</td>
       </tr>
     </table>
     <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable">
       <tr>
-        <td width="6%" align="center" bgcolor="#FBFCE2"><input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)"> 删</td>
-        <td width="23%" align="center" bgcolor="#FBFCE2">积分大于</td>
-        <td width="30%" align="center" bgcolor="#FBFCE2">星星数</td>
-        <td width="23%" align="center" bgcolor="#FBFCE2">级别头衔</td>
-        <td width="30%" align="center" bgcolor="#FBFCE2">是否默认</td>
+        <td width="6%" align="center" bgcolor="#fbfce2"><input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)"> 删</td>
+        <td width="23%" align="center" bgcolor="#fbfce2">积分大于</td>
+        <td width="30%" align="center" bgcolor="#fbfce2">星星数</td>
+        <td width="23%" align="center" bgcolor="#fbfce2">级别头衔</td>
+        <td width="30%" align="center" bgcolor="#fbfce2">是否默认</td>
       </tr>
       <?php
 		  foreach($Scores as $v){	
 		  ?>
-      <tr onmousemove="javascript:this.bgColor='#FBFCE2';" onmouseout="javascript:this.bgColor='#ffffff';">
+      <tr onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td align="center"><input type="checkbox" name="Ids-<?php echo $v['id']?>" id="Ids-<?php echo $v['id']?>" value="1"></td>
         <td align="center"><input type="text" name="integral-<?php echo $v['id']?>" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" style="width:160px"></td>
         <td align="center"><input type="text" name="icon-<?php echo $v['id']?>" id="icon-<?php echo $v['id']?>" value="<?php echo $v['icon']?>" style="width:60px"></td>

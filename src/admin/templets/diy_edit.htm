@@ -47,21 +47,21 @@
         <td width="260">自定义表单 diyid：<span class="style2" id="help1">数字，创建后不可修改，并具有唯一性</span></td>
         <td>
           <?php echo $diyid; ?>
-          <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help1')" style="cursor:hand"></i>
+          <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help1')" style="cursor:hand"></i> 
         </td>
       </tr>
       <tr>
         <td>自定义表单名称：修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改<br>
           <span class="style2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
         <td>
-          <input type="text" name="name" id="name" value="<?php echo $row['name']?>" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')" style="cursor:hand"></i>
+          <input type="text" name="name" id="name" value="<?php echo $row['name']?>" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')" style="cursor:hand"></i> 
         </td>
       </tr>
       <tr>
         <td>数据表：<br>
           <span class="style2" id="help5">自定义表单数据表创建后不可修改表名</span></td>
         <td>
-          <input type="text" name="table" id="table" value="<?php echo $row['table']; ?>" disabled="1" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')" style="cursor:hand"></i>
+          <input type="text" name="table" id="table" value="<?php echo $row['table']; ?>" disabled="1" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')" style="cursor:hand"></i> 
         </td>
       </tr>
       <tr>
@@ -74,7 +74,7 @@
       <tr>
         <td colspan="2">
           <table width="100%" cellpadding="1" cellspacing="1" align="center">
-            <tr bgcolor="#FBFCE2" align="center">
+            <tr bgcolor="#fbfce2" align="center">
               <td width="28%">表单提示文字</td>
               <td width="18%">数据字段名</td>
               <td width="20%">数据类型</td>
@@ -145,9 +145,9 @@
       <tr>
         <td>前台列表和内容页公开：</td>
         <td>
-          <label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?>> 完全公开 </label>
-          <label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?>> 公开审核过的 </label>
-          <label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?>> 不公开 </label>
+          <label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?>> 完全公开</label>
+          <label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?>> 公开审核过的</label>
+          <label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?>> 不公开</label>
         </td>
       </tr>
       <tr>

@@ -21,12 +21,6 @@
   <script src="js/album.js"></script>
   <script src="js/handlers.js"></script>
   <script src="../static/web/js/cropper.min.js"></script>
-  <style>
-  img{margin:0 10px;vertical-align:baseline}
-  table{border-collapse:separate}
-  .albEdit {height:auto}
-  .form-control{display:inline-block;margin-right:10px;width:160px}
-  </style>
   <script>
   var swfu = null;
   var vcc = 0;
@@ -63,37 +57,24 @@
     <input type="hidden" name="dopost" value="save">
     <input type="hidden" name="maxwidth" id="maxwidth" size="10" value="<?php echo $cfg_album_width; ?>">
     <input type="hidden" id="albums" name="albums" value="">
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
+    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
       <tr>
-        <td width="70%"><i class="fa fa-book"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">图集列表</a> &gt; 发布图集</td>
+        <td width="70%"><i class="fa fa-map"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">图集列表</a> &gt; 发布图集</td>
         <td width="30%" align="right"><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
       </tr>
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
       <tr>
         <td colspan="2">
-          <table width="168" cellpadding="0" cellspacing="0">
+          <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="84" height="28" align="center" bgcolor="#FBFCE2">常规内容</td>
-              <td width="84" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem2()">高级参数</a></td>
+              <td width="80" height="28" align="center" bgcolor="#fbfce2">常规内容</td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head2" style="display:none">
-      <tr>
-        <td colspan="2">
-          <table width="168"  cellpadding="0" cellspacing="0">
-            <tr>
-              <td width="84" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">常规内容</a></td>
-              <td width="84" height="28" align="center" bgcolor="#FBFCE2">高级参数</td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6;">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
@@ -163,7 +144,7 @@
                   <button type="button" id="btnClearAll" class="btn btn-sm btn-success delete">清空</button>
                   <label><input type="checkbox" name="ddisfirst" value="1"> 使用图集的第一幅图</label>
               </td>
-              <td width="260" align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" style="max-width:100px;max-height:80px"></td>
+              <td align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" class="thumbnail"></td>
             </tr>
           </table>
         </td>
@@ -201,7 +182,7 @@
                 echo "</select>";
 			          ?>
                 </span>
-                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title="快捷选择" style="cursor:pointer"></i>
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title="快捷选择" style="cursor:pointer"></i> 
                 <?php
                 if($cfg_need_typeid2=='Y')
                 {
@@ -223,7 +204,7 @@
               <td>
                 <span id="typeid2ct"></span>
                 <input type="text" name="typeid2" id="typeid2" value="" style="width:160px">
-                <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2')" title='选择副栏目'></i>
+                <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2')" title='选择副栏目'></i> 
               </td>
             </tr>
           </table>
@@ -275,13 +256,13 @@
             <tr>
               <td> 多列式参数：</td>
               <td>
-                行&nbsp;<input type="text" name="row" id="row" value="<?php echo $cfg_album_row; ?>" size="6">
-                列&nbsp;<input type="text" name="col" id="col" value="<?php echo $cfg_album_col; ?>" size="6">
+                行 <input type="text" name="row" id="row" value="<?php echo $cfg_album_row; ?>" size="6">
+                列 <input type="text" name="col" id="col" value="<?php echo $cfg_album_col; ?>" size="6">
                 缩略图宽度限制：<input type="text" name="ddmaxwidth" id="ddmaxwidth" value="<?php echo $cfg_album_ddwidth; ?>" size="6"> 像素
               </td>
             </tr>
             <tr>
-              <td width="84"></td>
+              <td width="80"></td>
               <td>（系统仅是每页输出&quot;行x列&quot;张图片，实现需自行控制样式表）</td>
             </tr>
           </table>
@@ -336,7 +317,7 @@
                 把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片
                 <input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()">
                 <br>
-                <div id="copyhtml" style="margin-top:6px;margin-bottom:6px;border:solid 1px #CCCCCC;width:96%;padding:6px;height:260px;width:100%" contenteditable="true">粘贴到这里</div>
+                <div id="copyhtml" style="margin-top:10px;margin-bottom:10px;padding:10px;width:96%;height:260px;border:solid 1px #ccc" contenteditable="true">粘贴到这里</div>
               </td>
             </tr>
           </table>
@@ -368,7 +349,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 图集内容：</td>
@@ -377,9 +358,6 @@
           </table>
         </td>
       </tr>
-    </table>
-    <!--高级参数-->
-    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="border:1px solid #dee2e6;display:none">
       <tr>
         <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
@@ -461,7 +439,7 @@
         </td>
       </tr>
     </table>
-    <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
+    <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">
       <tr>
         <td align="center" class="py-2">
           <button type="submit" class="btn btn-success btn-sm">保存</button>

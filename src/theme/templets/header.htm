@@ -1,20 +1,46 @@
-<div class="container header">
-    <header class="pt-3">
+<div class="site-nav bg-light py-3">
+    <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-6 logo"><a href="{dede:global.cfg_cmsurl/}/"><img src="{dede:global.cfg_cmsurl/}/static/web/img/logo.png" alt="{dede:global.cfg_webname/}"></a></div>
-            <div class="col-12 col-sm-6 d-flex justify-content-end">
-                <div class="input-group py-3">
-                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
-                        <input type="hidden" name="kwtype" value="0">
-                        <input name="q" type="text" class="form-control" placeholder="输入搜索关键词">
-                        <div class="input-group-append ml-1">
-                            <button class="btn btn-success btn-sm" type="submit">
-                                <i class="fa fa-search"></i> 
-                            </button>
-                        </div>
-                    </form>
-                </div>
+            <div class="col-12 d-flex justify-content-end user" id="_login">
+                <a href="{dede:global.cfg_memberurl/}/login.php">登录</a>
+                <a class="ml-3" href="{dede:global.cfg_memberurl/}/index_do.php?fmdo=user&dopost=regnew">注册</a>
             </div>
         </div>
-    </header>
+    </div>
 </div>
+<header class="container">
+    <div class="row py-3">  
+        <div class="col-12 col-sm-6 logo"><a href="{dede:global.cfg_cmsurl/}/"><img src="{dede:global.cfg_cmsurl/}/static/web/img/logo.png" alt="{dede:global.cfg_webname/}"></a></div>
+        <div class="col-12 col-sm-6 d-flex justify-content-end">
+            <div class="input-group py-3">
+                <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
+                    <input type="hidden" name="kwtype" value="0">
+                    <input name="q" type="text" class="form-control" placeholder="输入搜索关键词">
+                    <div class="input-group-append ml-1">
+                        <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav class="navbar navbar-expand-md navbar-dark bg-success zixue">
+    <div class="container">
+        <a class="navbar-brand" href="javascript:;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="展开导航">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbars">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{dede:global.cfg_cmsurl/}/">首页</a>
+                </li>
+                {dede:channel type='top' row='10' currentstyle="<li class='nav-item'><a class='nav-link active' href='~typelink~' ~rel~><span>~typename~</span></a></li>"}
+                <li class="nav-item">
+                    <a class="nav-link" href="[field:typeurl/]">[field:typename/]</a>
+                </li>
+                {/dede:channel}
+            </ul>
+        </div>
+    </div>
+</nav>

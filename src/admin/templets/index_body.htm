@@ -22,16 +22,18 @@
 				<div id="body-tips" class="col-md-12"></div>
 				<div class="col-md-12 mt-3 mb-3">
 					<div class="card">
-						<div class="card-header"><a href="#statChart" title="查看流量统计图"><i class="fa fa-bar-chart"></i> 流量统计表</a></div>
+						<div class="card-header">
+							<a href="#statChart" title="查看流量统计图"><i class="fa fa-bar-chart"></i> 流量统计表</a>
+						</div>
 						<div class="card-body">
 							<table class="table">
 								<tbody>
 									<tr class="title">
-										<td width="20%" style="border-top:0"></td>
-										<td width="20%" style="border-top:0">浏览次数(PV)</td>
-										<td width="20%" style="border-top:0">独立访客(UV)</td>
-										<td width="20%" style="border-top:0">IP</td>
-										<td width="20%" style="border-top:0">访问次数</td>
+										<td width="20%" class="border-top-0"></td>
+										<td width="20%" class="border-top-0">浏览次数(PV)</td>
+										<td width="20%" class="border-top-0">独立访客(UV)</td>
+										<td width="20%" class="border-top-0">独立IP(IP)</td>
+										<td width="20%" class="border-top-0">访问次数(VV)</td>
 									</tr>
 									<tr class="bg-white">
 										<td class="today">今日</td>
@@ -62,11 +64,11 @@
 				<div class="col-md-6 mt-3 mb-3 updatenews">
 					<div class="card">
 						<div class="card-header">
-							<a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a><span id="text">V:<?php echo $cfg_version_detail; ?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?></span>
+							<a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a>
+							<span id="text">V:<?php echo $cfg_version_detail; ?>|操作系统:<?php echo PHP_OS; ?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE']; ?>|PHP版本:<?php echo @phpversion(); ?>|数据库版本:<?php echo $dsql->GetVersion(); ?></span>
 						</div>
 						<div class="card-body">
-							<div id="updateinfos"><?php echo "<iframe src='{$offUrl}&uptime={$oktime}' name='stafrm' id='stafrm' style='width:98%;height:70px;padding:.6rem;border:0'></iframe>"; ?></div>
-							<table width="98%" class="table table-borderless">
+							<table class="table table-borderless">
 								<tr>
 									<td>
 										<div class="web-info">
@@ -105,7 +107,10 @@
 				</div>
 				<div class="col-md-6 mt-3 mb-3">
 					<div class="card">
-						<div class="card-header"><i class="fa fa-database"></i> 版本授权</div>
+						<div class="card-header">
+							<span><i class="fa fa-database"></i> 版本授权</span>
+							<a href="" class="float-right">软件更新</a>
+						</div>
 						<div class="card-body" id="system-info">正在加载</div>
 					</div>
 				</div>
@@ -119,7 +124,9 @@
 				</div>
 				<div class="col-md-6 mt-3 mb-3">
 					<div class="card">
-						<div class="card-header"><i class="fa fa-file-word-o"></i> 最新文档</div>
+						<div class="card-header">
+							<span><i class="fa fa-file-word-o"></i> 最新文档</span>
+						</div>
 						<div class="card-body" id="system-word">正在加载</div>
 					</div>
 				</div>

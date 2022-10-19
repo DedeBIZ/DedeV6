@@ -348,7 +348,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
         }
         $func .= "var pgo=0;function JumpUrl(){if (pgo==0){location='$gourl'; pgo=1;}}";
         $rmsg = $func;
-        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f8f8f8}a{color:#28a745;text-decoration:none}.tips{margin:70px auto 0;padding:0;width:430px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:16px 0;border-bottom:1px solid #f8f8f8}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-box{padding:20px;min-height:120px;color:#545b62}.btn a{display:inline-block;margin:20px auto 0;padding:.375rem .75rem;font-size:12px;color:#fff;background:#28a745;border-radius:.2rem;text-align:center;transition:all .6s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5)}@media (max-width:768px){body{padding:0 15px}.tips{width:100%}}</style>\");";
+        $rmsg .= "document.write(\"<style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f8f8f8}a{color:#28a745;text-decoration:none}.tips{margin:70px auto 0;padding:0;width:500px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:16px 0;border-bottom:1px solid #f8f8f8}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-box{padding:20px;min-height:120px;color:#545b62}.btn a{display:inline-block;margin:20px auto 0;padding:.375rem .75rem;font-size:12px;color:#fff;background:#28a745;border-radius:.2rem;text-align:center;transition:all .6s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5)}@media (max-width:768px){body{padding:0 15px}.tips{width:100%}}</style>\");";
         $rmsg .= "document.write(\"<div class='tips'>";
         $rmsg .= "<div class='tips-head'><p>提示信息</p></div>\");";
         $rmsg .= "document.write(\"<div class='tips-box'>\");";
@@ -416,16 +416,17 @@ function IsSSL()
     }
     return false;
 }
-//自定义函数接口
-//这里主要兼容早期的用户扩展,v5.7之后我们建议使用小助手helper进行扩展
-if (file_exists(DEDEINC.'/extend.func.php')) {
-    require_once(DEDEINC.'/extend.func.php');
+/*调用前台主题模板<?php pasterTempletDiy('header.htm');?>*/
+if (!function_exists('pasterTempletDiy')) {
+    function pasterTempletDiy($path) {
+        global $cfg_basedir,$cfg_templets_dir,$cfg_df_style;
+        $tmpfile = $cfg_basedir.$cfg_templets_dir.'/'.$cfg_df_style.'/'.$path;
+        $dtp = new PartView();
+        $dtp->SetTemplet($tmpfile);
+        $dtp->Display();
+    }
 }
-/**
- * 添加多选联动筛选
- * 
- * @return    string
- */
+//多选联动筛选功能{dede:php}AddFilter(模型id,类型,"字段1,字段2,字段3");{/dede:php}
 function litimgurls($imgid = 0)
 {
     global $lit_imglist, $dsql;
@@ -436,7 +437,7 @@ function litimgurls($imgid = 0)
     $lit_imglist = $ChannelUnit->GetlitImgLinks($row['imgurls']);
     return $lit_imglist;
 }
-//字符过滤函数，用于安全
+//字符过滤函数安全
 function string_filter($str, $stype = "inject")
 {
     if ($stype == "inject") {
@@ -457,7 +458,7 @@ function string_filter($str, $stype = "inject")
     }
     return $str;
 }
-//载入自定义表单，用于发布
+//联动筛选载入自定义表单发布
 function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $loadtype = 'autofield')
 {
     global $tid, $dsql, $id;
@@ -466,12 +467,12 @@ function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $l
     $tid = intval($tid);
     $channelid = intval($channelid);
     if ($id != "") {
-        $tidsq = $dsql->GetOne("SELECT typeid FROM `#@__archives` WHERE id='$id' ");
+        $tidsq = $dsql->GetOne("SELECT typeid FROM `#@__archives` WHERE id='$id'");
         $tid = $tidsq["typeid"];
     }
     $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".(int)$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".(int)$_REQUEST['PageNo'] : '');
     $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
-    $cInfos = $dsql->GetOne("SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'");
     $fieldset = stripslashes($cInfos['fieldset']);
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('field', '<', '>');
@@ -488,7 +489,7 @@ function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $l
                 $dede_addonfields .= ''.$ctag->GetAtt('itemname').'：';
                 switch ($type) {
                     case 1:
-                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is", $filterarr, $regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value, "", $filterarr).'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#28a745;border-color:#28a745;border-radius:.2rem">全部</a>' : '<span style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">全部</span>').'&nbsp;';
+                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is", $filterarr, $regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value, "", $filterarr).'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#1eb867;border-color:#1eb867;border-radius:.2rem">全部</a>' : '<span style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">全部</span>').'&nbsp;';
                         $addonfields_items = explode(",", $ctag->GetAtt('default'));
                         for ($i = 0; $i < count($addonfields_items); $i++) {
                             $href = stripos($filterarr, $ctag->GetName().'=') ? str_replace("=".$fields_value, "=".$fields_value."|".urlencode($addonfields_items[$i]), $filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
@@ -501,9 +502,9 @@ function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $l
                             $href3 = str_replace(array("&".$ctag->GetName()."=".$fields_value, $ctag->GetName()."=".$fields_value, "&".$ctag->GetName()."=&"), array("&".$ctag->GetName()."=".$fields_value2, $ctag->GetName()."=".$fields_value2, "&"), $filterarr);
                             $href3 = !end(explode("=", $href3)) ? str_replace("&".end(explode("&", $href3)), "", $href3) : $href3;
 
-                            $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#28a745;border-color:#28a745;border-radius:.2rem">'.$addonfields_items[$i].'</a>' : '<a title="'.$addonfields_items[$i].'" href="'.$href3.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">'.$addonfields_items[$i].'<span style="margin-left:6px;color:#fff">×</span></a>')."&nbsp;";
+                            $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#1eb867;border-color:#1eb867;border-radius:.2rem">'.$addonfields_items[$i].'</a>' : '<a title="'.$addonfields_items[$i].'" href="'.$href3.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">'.$addonfields_items[$i].'<span style="margin-left:6px;color:#fff">×</span></a>')."&nbsp;";
                         }
-                        $dede_addonfields .= '<br><br>';
+                        $dede_addonfields .= '<br>';
                         break;
                     case 2:
                         $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is", $filterarr, $regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value, "", $filterarr).'">全部</a>' : '<span>全部</span>').'&nbsp;';
@@ -521,11 +522,15 @@ function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $l
 
                             $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<input type="checkbox" title="'.$addonfields_items[$i].'" value="'.$href.'" onclick="window.location=this.value"> <a title="'.$addonfields_items[$i].'" href="'.$href.'">'.$addonfields_items[$i].'</a>' : '<input type="checkbox" checked="checked" title="'.$addonfields_items[$i].'" value="'.$href3.'" onclick="window.location=this.value"> <a title="'.$addonfields_items[$i].'" href="'.$href3.'" class="cur">'.$addonfields_items[$i].'</a>')."&nbsp;";
                         }
-                        $dede_addonfields .= '<br><br>';
+                        $dede_addonfields .= '<br>';
                         break;
                 }
             }
         }
     }
     echo $dede_addonfields;
+}
+//自定义函数接口
+if (file_exists(DEDEINC.'/extend.func.php')) {
+    require_once(DEDEINC.'/extend.func.php');
 }

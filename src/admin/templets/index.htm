@@ -12,16 +12,12 @@
 		<script src="../static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="showmenu">
-		<?php
-		if(preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){
-		?>
-		<div id="browsehappy" style="padding:20px 30px;font-size:14px;line-height:16px;color:#856404;background:#fff3cd;border-radius:.25rem;border:none">
-			<a onclick="document.getElementById('browsehappy').style.display='none';" style="float:right;cursor:pointer">×</a>
+		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){?>
+		<div id="browsehappy">
 			<span>您正在使用一个过时的浏览器，请您<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，以提高您对后台体验</span>
+			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
 		</div>
-		<?php
-		}
-		?>
+		<?php }?>
 		<div class="head">
 			<div class="top">
 				<div class="top-logo">
@@ -35,20 +31,20 @@
 				</div>
 				<div class="top-item">
 					<ul class="mb-0">
-						<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
+						<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i> </a></li>
 						<?php if($cuserLogin->getUserType()>=10){ ?>
-						<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i></a></li>
-						<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
-						<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:''; ?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
+						<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i> </a></li>
+						<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i> </a></li>
+						<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:''; ?>" target="main" title="文件管理"><i class="fa fa-folder"></i> </a></li>
 						<?php }?>
-						<?php if(!DEDEBIZ_SAFE_MODE){ ?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i></a></li><?php }?>
-						<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
-						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':''; ?>
-						<li><a href="../" target="_blank" title="预览主页"><i class="fa fa-eye"></i></a></li>
+						<?php if(!DEDEBIZ_SAFE_MODE){ ?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i> </a></li><?php }?>
+						<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i> </a></li>
+						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i> </a></li>':''; ?>
+						<li><a href="../" target="_blank" title="预览主页"><i class="fa fa-eye"></i> </a></li>
 						<li>
 							<form action="action_search.php" method="post" target="main">
 								<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
-								<button type="submit" class="search"><i class="fa fa-search"></i></button>
+								<button type="submit" class="search"><i class="fa fa-search"></i> </button>
 							</form>
 						</li>
 					</ul>
@@ -56,7 +52,7 @@
 				<div class="top-admin">
 					<ul class="mb-0">
 						<li><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID(); ?>&dopost=edit" target="main"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName(); ?>"><?php echo $cuserLogin->getUserName(); ?><?php if($cuserLogin->getUserType()==10){echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a></li>
-						<li><a href="exit.php" title="退出系统"><i class="fa fa-power-off"></i></a></li>
+						<li><a href="exit.php" title="退出系统">退了</a></li>
 					</ul>
 				</div>
 			</div>
@@ -79,10 +75,10 @@
 			$("#togglemenu").click(function () {
 				if ($("body").attr("class") == "showmenu") {
 					$("body").attr("class", "hidemenu");
-					$(this).html('<i class="fa fa-indent"></i>');
+					$(this).html('<i class="fa fa-indent"></i> ');
 				} else {
 					$("body").attr("class", "showmenu");
-					$(this).html('<i class="fa fa-dedent"></i>');
+					$(this).html('<i class="fa fa-dedent"></i> ');
 				}
 			});
 		}

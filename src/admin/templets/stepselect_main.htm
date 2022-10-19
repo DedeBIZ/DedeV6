@@ -134,7 +134,6 @@
         }
     </script>
     <style>
-li{float:left;padding-right:10px;line-height:26px}
 .abt{width:90%;border:1px #ffffff solid}
 #edsta{position:absolute;top:70px;left:110px;width:280px;height:200px;background:#f8f8f8;border:1px solid #dedede;display:none;padding:6px}
 #edsta div{margin:6px}
@@ -149,7 +148,7 @@ li{float:left;padding-right:10px;line-height:26px}
             <td bgcolor="#f8f8f8" colspan="6">联动枚举组管理</td>
         </tr>
         <tr>
-            <td width="90">请选择组别：</td>
+            <td width="90">选择组别：</td>
             <td width="270">
                 <select name="egroup1" id="egroup1" onChange="ChangePage(this)" style="width:260px">
                     <option value='0'>所有组</option>
@@ -234,7 +233,7 @@ li{float:left;padding-right:10px;line-height:26px}
                 <span class="float-left"><a href="stepselect_main.php">枚举组列表</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup; ?>"><?php echo $selgroup; ?></a> &gt; 子分类列表</span>
             </td>
         </tr>
-        <tr bgcolor="#FBFCE2" align="center">
+        <tr bgcolor="#fbfce2" align="center">
             <td width="6%">选择</td>
             <td width="6%">id</td>
             <td width="20%">枚举名</td>
@@ -253,7 +252,7 @@ li{float:left;padding-right:10px;line-height:26px}
         <form name="form1" action="stepselect_main.php" method="post">
             <input type="hidden" name="action" value="delenumAllSel">
             {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-            <tr align="center" onMouseMove="javascript:this.bgColor='#FBFCE2';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+            <tr align="center" onMouseMove="javascript:this.bgColor='#fbfce2';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
                 <td><input type="checkbox" name="ids[]" value="{dede:field.id/}"></td>
                 <td>{dede:field.id/}</td>
                 <td>
@@ -312,11 +311,11 @@ li{float:left;padding-right:10px;line-height:26px}
     ?>
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
         <tr>
-            <td bgcolor="#f8f8f8" colspan="8">
+            <td bgcolor="#f8f8f8" colspan="7">
                 <span class="float-left"><a href="stepselect_main.php">枚举组列表</a></span>
             </td>
         </tr>
-        <tr bgcolor="#FBFCE2" align="center">
+        <tr bgcolor="#fbfce2" align="center">
             <td width="6%">选择</td>
             <td width="6%">id</td>
             <td width="28%">组类别名</td>
@@ -326,7 +325,7 @@ li{float:left;padding-right:10px;line-height:26px}
             <td>操作</td>
         </tr>
         {dede:datalist}
-        <tr align="center" onMouseMove="javascript:this.bgColor='#FBFCE2';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <tr align="center" onMouseMove="javascript:this.bgColor='#fbfce2';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
             <td><input type="checkbox" name="ids[]" value="{dede:field.id/}"></td>
             <td>{dede:field.id/}</td>
             <td><a href="stepselect_main.php?egroup={dede:field.egroup/}">{dede:field.itemname/}</a></td>
@@ -354,7 +353,7 @@ li{float:left;padding-right:10px;line-height:26px}
         </tr>
         {/dede:datalist}
         <tr bgcolor="#f8f8f8" align="center"  class="py-2">
-            <td colspan="8">{dede:pagelist listsize='6'/}</td>
+            <td colspan="7">{dede:pagelist listsize='6'/}</td>
         </tr>
     </table>
     <?php

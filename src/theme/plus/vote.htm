@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
 		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
 	</head>
-	<body class="flinkpage">
-		<?php include("plus_header.htm"); ?>
+	<body>
+		<?php pasterTempletDiy('header.htm');?>
 		<div class="container">
 			<div class="sp-title">
 				<h3><?php echo $voname?></h3>
@@ -29,6 +29,6 @@
 				<?php echo $votelist; ?>
 			</div>
 		</div>
-		<?php include("plus_footer.htm"); ?>
+		<?php pasterTempletDiy('footer.htm');?>
 	</body>
 </html>

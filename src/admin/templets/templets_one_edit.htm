@@ -82,7 +82,7 @@
           <tr> 
             <td>是否编译内容：</td>
             <td>
-            	<?php if(!DEDEBIZ_SAFE_MODE) { ?> <label><input type="radio" name="ismake" value="1"<?php if($row['ismake']==1) echo "checked"; ?>> 含模板标记，要编译 </label> <?php } ?>
+            	<?php if(!DEDEBIZ_SAFE_MODE) { ?> <label><input type="radio" name="ismake" value="1"<?php if($row['ismake']==1) echo "checked"; ?>> 含模板标记，要编译</label> <?php } ?>
               <label><input type="radio" name="ismake" value="0"<?php if($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo "checked"; ?>> 不含模板标记，不需要编译</label>
             </td>
           </tr>

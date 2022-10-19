@@ -34,38 +34,32 @@
 	</table>
 	<form name="form3" action="content_list.php" method="get">
 		<input type="hidden" name="dopost" value="listArchives">
-		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="mt-3 mb-3" style="border:1px solid #dee2e6">
-			<tr>
-				<td height="36" bgcolor="#f8f8f8">
-					<table cellpadding="0" cellspacing="0">
-						<tr>
-							<td width="180" align="center">
-								<select name="cid" style="width:160px">
-									<option value="0">选择栏目</option>
-									{dede:global.optionarr/}
-								</select>
-							</td>
-							<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" value="{dede:global.keyword/}" style="width:260px"></td>
-							<td width="170">
-								<select name="orderby" style="width:160px">
-									<option value="id">选择排序</option>
-									<option value="pubdate">更新时间</option>
-									<option value="sortrank">置顶权值</option>
-									<option value="click">点击量</option>
-									<option value="scores">评论积分</option>
-									<option value="lastpost">最后评论</option>
-								</select>
-							</td>
-							<td width="170">
-								<select name="flag" style="width:160px">
-									<option value="">选择属性</option>
-									{dede:global.flagsArr/}
-								</select>
-							</td>
-							<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
-						</tr>
-					</table>
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+			<tr bgcolor="#f8f8f8">
+				<td width="180" align="center">
+					<select name="cid" style="width:160px">
+						<option value="0">选择栏目</option>
+						{dede:global.optionarr/}
+					</select>
 				</td>
+				<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" value="{dede:global.keyword/}" style="width:260px"></td>
+				<td width="170">
+					<select name="orderby" style="width:160px">
+						<option value="id">选择排序</option>
+						<option value="pubdate">更新时间</option>
+						<option value="sortrank">置顶权值</option>
+						<option value="click">点击量</option>
+						<option value="scores">评论积分</option>
+						<option value="lastpost">最后评论</option>
+					</select>
+				</td>
+				<td width="170">
+					<select name="flag" style="width:160px">
+						<option value="">选择属性</option>
+						{dede:global.flagsArr/}
+					</select>
+				</td>
+				<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 			</tr>
 		</table>
 	</form>
@@ -74,7 +68,7 @@
 			<tr>
 				<td colspan="10" style="background:#f8f8f8">{dede:global.positionname/}文档列表</td>
 			</tr>
-			<tr bgcolor="#FBFCE2" align="center">
+			<tr bgcolor="#fbfce2" align="center">
 				<td width="6%">id</td>
 				<td width="6%">选择</td>
 				<td width="30%">文章标题</td>
@@ -87,7 +81,7 @@
 				<td width="10%">操作</td>
 			</tr>
 			{dede:datalist empty='<tr><td colspan="10"><center>暂无内容</center></td></tr>'}
-			<tr align="center" onmousemove="javascript:this.bgColor='#FBFCE2';" onmouseout="javascript:this.bgColor='#ffffff';">
+			<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
 				<td align="left"><span id="arc{dede:field.id/}"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></span>{dede:field.flag function='IsCommendArchives(@me)'/}</td>
@@ -98,9 +92,9 @@
 				<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
 				<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 				<td>
-					<a href="javascript:;" title="属性" class="btn btn-success btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-cogs"></i></a>
-					<a href="javascript:;" title="编辑" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i></a>
-					<a href="javascript:;" title="预览" class="btn btn-success btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-globe"></i></a>
+					<a href="javascript:;" title="属性" class="btn btn-success btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-cogs"></i> </a>
+					<a href="javascript:;" title="编辑" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i> </a>
+					<a href="javascript:;" title="预览" class="btn btn-success btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-globe"></i> </a>
 				</td>
 			</tr>
 			{/dede:datalist}

@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/static/web/css/style.css">
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
-	<body class="buycarpage">
-		<?php include(DEDETEMPLATE."/plus/plus_header.htm"); ?>
+	<body>
+		<?php pasterTempletDiy('header.htm');?>
 		<div class="container">
 			<div class="sp-title">
 				<h3>商品购买</h3>
@@ -174,11 +174,11 @@
 				</form>
 			</div>
 		</div>
+		<?php pasterTempletDiy('footer.htm');?>
 		<script>
 			function vdimgck() {
 				document.getElementById("vdimgck_img").src = '../apps/vdimgck.php?' + Math.random();
 			}
 		</script>
-		<?php include(DEDETEMPLATE."/plus/plus_footer.htm"); ?>
 	</body>
 </html>

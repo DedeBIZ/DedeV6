@@ -68,7 +68,7 @@ else if ($dopost == 'setskin') {
     if (!extension_loaded("openssl")) {
         echo json_encode(array(
             "code" => -1001,
-            "msg" => "PHP不支持OpenSSL，无法完成商业版授权",
+            "msg" => "PHP不支持OpenSSL，无法完成商业版授权。",
             "result" => null,
         ));
         exit;
@@ -76,7 +76,7 @@ else if ($dopost == 'setskin') {
     if (empty($cfg_auth_code)) {
         echo json_encode(array(
             "code" => -1002,
-            "msg" => "当前站点尚未升级商业版授权",
+            "msg" => "无法启动商业版组件<a href='https://www.dedebiz.com/auth'>《商业版授权》</a>",
             "result" => null,
         ));
         exit;

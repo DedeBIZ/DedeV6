@@ -76,8 +76,8 @@
         <td colspan="2">
           <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="84" height="28" align="center" bgcolor="#FBFCE2">基本设置</td>
-              <td width="84" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem2()">字段管理</a></td>
+              <td width="80" height="28" align="center" bgcolor="#fbfce2">基本设置</td>
+              <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem2()">字段管理</a></td>
             </tr>
           </table>
         </td>
@@ -88,8 +88,8 @@
         <td colspan="2">
           <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="84" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">基本设置</a></td>
-              <td width="84" height="28" align="center" bgcolor="#FBFCE2">字段管理</td>
+              <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">基本设置</a></td>
+              <td width="80" height="28" align="center" bgcolor="#fbfce2">字段管理</td>
             </tr>
           </table>
         </td>
@@ -101,16 +101,16 @@
 	    {
       ?>
       <tr>
-        <td colspan="2" style="color:#dc3545;border-top:0">您目前所展开的是系统模型，系统模型一般对发布程序和管理程序已经固化，如果您胡乱修改系统模型将会导致使用这种内容类型的频道可能崩溃</td>
+        <td colspan="2" class="border-top-0">您目前所展开的是系统模型，系统模型一般对发布程序和管理程序已经固化，如果您胡乱修改系统模型将会导致使用这种内容类型的频道可能崩溃</td>
       </tr>
       <?php
       }
       ?>
       <tr>
-        <td style="border-top:0">模型性质<br>
+        <td class="border-top-0">模型性质<br>
           <span class="style2" id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid、栏目id、发布时间、文档标题</span>
         </td>
-        <td style="border-top:0">
+        <td class="border-top-0">
         <?php
         if($row['issystem']==0) echo "自动模型";
         else if($row['issystem']==1) echo "系统模型";
@@ -253,7 +253,7 @@
       <tr>
         <td colspan='2'>
           <table width="100%" cellpadding="1" cellspacing="1" align="center">
-            <tr bgcolor="#FBFCE2" align="center">
+            <tr bgcolor="#fbfce2" align="center">
               <td width="28%">表单提示文字</td>
               <td width="18%">数据字段名</td>
               <td width="20%">数据类型</td>
@@ -288,7 +288,7 @@
                 foreach($dtp->CTags as $ctag)
                 {
                 ?>
-                <tr align="center" onmousemove="javascript:this.bgColor='#FBFCE2';" onmouseout="javascript:this.bgColor='#ffffff';">
+                <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
                   <td>
                   <?php
                   $itname = $ctag->GetAtt('itemname');
@@ -319,9 +319,9 @@
                 if($ft==1)
                 {
                 ?>
-                <a href="mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&issystem=<?php echo $row['issystem']; ?>"><i class="btn btn-sm fa fa-pencil-square-o" title="修改"></i></a>
+                <a href="mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&issystem=<?php echo $row['issystem']; ?>"><i class="btn btn-sm fa fa-pencil-square-o" title="修改"></i> </a>
                 <?php if($row['issystem']!=1){ ?>
-                <a href="javascript:;" onClick="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&action=delete');"><i class="btn btn-sm fa fa-trash" title="删除"></i></a>
+                <a href="javascript:;" onClick="javascript:DelNote('mychannel_field_edit.php?id=<?php echo $id; ?>&fname=<?php echo $ctag->GetTagName(); ?>&action=delete');"><i class="btn btn-sm fa fa-trash" title="删除"></i> </a>
                 <?php } ?>
                 <?php
                 } else {

@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
 	</head>
-	<body class="flinkpage">
-		<?php include("plus_header.htm"); ?>
+	<body>
+		<?php pasterTempletDiy('header.htm');?>
 		<div class="container">
 			<div class="formbox mt-3">
 				<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#cccccc" class='table'>
@@ -101,6 +101,6 @@
 				<br>
 			</div>
 		</div>
-		<?php include("plus_footer.htm"); ?>
+		<?php pasterTempletDiy('footer.htm');?>
 	</body>
 </html>

@@ -11,30 +11,26 @@
 </head>
 <body>
    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-      <tr>
-         <td bgcolor="#f8f8f8" colspan="6">
-            <form action="templets_one.php" name="sss">
-               <ul>
-                  <li><input type="text" name="keyword" value="<?php if(!empty($keyword)) $keyword = ''; ?>" placeholder="请输入关键词" style="width:260px"></li>
-                  <li>
-                     <?php
-                       $likeid = (!isset($likeid) ? '' : $likeid);
-                       echo "<select name='likeid' id='likeid' style='width:160px'>";
-                       $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
-                       echo "<option value=''>不限</option>";
-                       while($arr = $dsql->GetArray('s'))
-                       {
-                          if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
-                          else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
-                       }
-                       echo "</select>";
-                     ?>
-                  </li>
-                  <li><button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button></li>
-               </ul>
-            </form>
-         </td>
-      </tr> 
+      <tr bgcolor="#f8f8f8">
+         <form action="templets_one.php" name="sss">
+            <td width="170" align="center"><input type="text" name="keyword" value="<?php if(!empty($keyword)) $keyword = ''; ?>" placeholder="请输入关键词" style="width:260px"></td>
+            <td width="170">
+               <?php
+                 $likeid = (!isset($likeid) ? '' : $likeid);
+                 echo "<select name='likeid' id='likeid' style='width:160px'>";
+                 $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
+                 echo "<option value=''>不限</option>";
+                 while($arr = $dsql->GetArray('s'))
+                 {
+                    if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
+                    else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+                 }
+                 echo "</select>";
+               ?>
+            </td>
+            <td><button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button></td>
+         </form>
+      </tr>
    </table>
    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
       <tr>
@@ -47,7 +43,7 @@
             </span>
          </td>
       </tr>
-      <tr bgcolor="#FBFCE2" align="center">
+      <tr bgcolor="#fbfce2" align="center">
          <td width="6%">选择</td>
          <td width="6%">id</td>
          <td width="30%">页面名称</td>
@@ -59,7 +55,7 @@
       <form name="form1" action="templets_one_edit.php">
          <input type="hidden" name="dopost" value="mksel">
          {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-         <tr align="center" onmousemove="javascript:this.bgColor='#FBFCE2';" onmouseout="javascript:this.bgColor='#ffffff';">
+         <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
             <td><input type="checkbox" name="ids[]" value="{dede:field.aid/}"></td>
             <td>{dede:field.aid/}</td>
             <td><a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit">{dede:field.title/}</a></td>

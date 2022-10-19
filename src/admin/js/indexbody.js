@@ -57,19 +57,19 @@ function ViewDedeBIZ() {
     <table width="100%" class="table table-borderless">
         <tbody>
             <tr>
-                <td style="width:50%">版本号：</td>
+                <td width="160">版本号：</td>
                 <td>V${dedebizInfo.result.server_version}</td>
             </tr>
             <tr>
-                <td style="width:50%">运行时间：</td>
+                <td width="160">运行时间：</td>
                 <td>${dedebizInfo.result.server_run_time}</td>
             </tr>
             <tr>
-                <td style="width:50%">服务器系统：</td>
+                <td width="160">服务器系统：</td>
                 <td>${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}）</td>
             </tr>
             <tr>
-                <td style="width:50%">内存占用：</td>
+                <td width="160">内存占用：</td>
                 <td>${dedebizInfo.result.server_memory_usage}%</td>
             </tr>
         </tbody>
@@ -84,32 +84,24 @@ function LoadServer() {
             if (typeof rsp.result.domain !== "undefined") {
                 infoStr += `
                 <tr>
-                    <td style="width:50%">授权域名：</td>
-                    <td>${rsp.result.domain} <a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" class="btn btn-success btn-sm">证书</a></td>
+                    <td width="160">授权域名：</td>
+                    <td>${rsp.result.domain}</td>
                 </tr>
                 `;
             }
             if (typeof rsp.result.title !== "undefined") {
                 infoStr += `
                 <tr>
-                    <td style="width:50%">站点名称：</td>
-                    <td>${rsp.result.title}</td>
-                </tr>
-                `;
-            }
-            if (typeof rsp.result.stype !== "undefined") {
-                infoStr += `
-                <tr>
-                    <td style="width:50%">站点类型：</td>
-                    <td>${rsp.result.stype}</td>
+                    <td width="160">站点名称：</td>
+                    <td><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}">${rsp.result.title}（${rsp.result.stype}）</a></td>
                 </tr>
                 `;
             }
             if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined") {
                 infoStr += `
                 <tr>
-                    <td style="width:50%">授权版本：</td>
-                    <td>V${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
+                    <td width="160">授权版本：</td>
+                    <td>${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
                 </tr>
                 `;
             }
@@ -117,15 +109,15 @@ function LoadServer() {
                 //下面是DedeBIZ Core组件信息
                 infoStr += `
                 <tr>
-                    <td style="width:50%">版本组件：</td>
-                    <td><a href="${cfg_biz_dedebizUrl}/start?code=-1008" target="_blank" class="btn btn-danger btn-sm">启动组件</a></td>
+                    <td width="160">版本组件：</td>
+                    <td><a href="${cfg_biz_dedebizUrl}/start?code=-1008" target="_blank" class="btn btn-warning btn-sm">启动组件</a></td>
                 </tr>
                 `;
             } else {
                 dedebizInfo = JSON.parse(rsp.result.core.data);
                 infoStr += `
                 <tr>
-                    <td style="width:50%">版本组件：</td>
+                    <td width="160">版本组件：</td>
                     <td><a href="javascript:ViewDedeBIZ()" class="btn btn-success btn-sm">组件信息</a></td>
                 </tr>
                 `;
@@ -137,11 +129,10 @@ function LoadServer() {
             <table width="100%" class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td style="width:60%">尚未启动商业版组件，原因：${rsp.msg}</td>
-                        <td style="text-align:right">当前版本：社区版<a href="${cfg_biz_dedebizUrl}/start?code=${rsp.code}" target="_blank" class="btn btn-success btn-sm ml-3">升级商业版</a></td>
+                        <td>当前站点为社区版，${rsp.msg}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">如果您已购买商业版授权，可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系，谢谢。</td>
+                        <td>如果您已购买商业版授权，可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系。</td>
                     </tr>
                 </tbody>
             </table>
@@ -233,7 +224,7 @@ async function LoadStatChart() {
             responsive: true,
             plugins: {
                 legend: {
-                    position: 'top',
+                    position: 'right',
                 }
             }
         },
@@ -260,7 +251,7 @@ async function LoadStatChart() {
                     borderWidth: 1
                 }
                 , {
-                    label: '访问次数',
+                    label: 'VV',
                     data: vvs,
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',

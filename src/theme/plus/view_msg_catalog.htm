@@ -9,24 +9,11 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
 		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
 	</head>
-	<body class="flinkpage">
-		<div class="header">
-			<div class="top w960 center">
-				<div class="title">
-					<h1><a href="<?php echo $cfg_basehost;?>"><img src="<?php echo $cfg_templets_skin; ?>/images/logo.gif"></a></h1>
-				</div>
-			</div>
-		</div>
-		<div class="w960 clear center mt1 cmt-box">
-			<div class="sp-title">
-				<h2>提示信息</h2>
-				<span class="more">
-					<a href="../user">[会员中心]</a> |
-					<a href="../">[返回首页]</a>
-				</span>
-			</div>
-			<div class="formbox" style="width:960px">
-				<table width="100%" cellpadding="3" cellspacing="1" bgcolor="#DDEAC8">
+	<body>
+		<?php pasterTempletDiy('header.htm');?>
+		<div class="container">
+			<div class="formbox">
+				<table width="100%" cellpadding="3" cellspacing="1" bgcolor="#DDEAC8" class="table">
 					<tr bgcolor="#EFF4EA">
 						<td colspan="2">错误具体提示信息：</td>
 					</tr>
@@ -44,13 +31,6 @@
 				</table>
 			</div>
 		</div>
-		<div class="footer w960 center mt1 clear">
-			<div class="footer_body">
-				<span class="gotop"><a href="javascript:scroll(0,0)"><img src="<?php echo $cfg_templets_skin; ?>/images/top.gif"></a></span>
-				<p class="powered">
-					<?php echo $cfg_powerby; ?> <?php echo $cfg_beian; ?> Powered by <a href="https://www.dedebiz.com" title="DedeBIZ内容管理系统-国内流行的内容管理系统多端全媒体解决方案" target="_blank">DedeBIZ<?php echo $cfg_version; ?></a>
-				</p>
-			</div>
-		</div>
+		<?php pasterTempletDiy('footer.htm');?>
 	</body>
 </html>

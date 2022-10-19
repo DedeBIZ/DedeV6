@@ -11,55 +11,53 @@
 		<link rel="stylesheet" href="css/login.css">
 	</head>
 	<body>
-		<?php
-		if(preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){
-		?>
-		<div id="browsehappy" style="padding:20px 30px;font-size:14px;line-height:16px;color:#856404;background:#fff3cd;border-radius:.25rem;border:none">
-			<a onclick="document.getElementById('browsehappy').style.display='none';" style="float:right;cursor:pointer">×</a>
+		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){?>
+		<div id="browsehappy">
 			<span>您正在使用一个过时的浏览器，请您<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，以提高您对后台体验</span>
+			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
 		</div>
-		<?php
-		}
-		?>
-		<header>
-			<div class="container top">
+		<?php }?>
+		<div class="d-flex flex-md-row align-items-center shadow-sm biz-head mb-5">
+			<div class="container">
 				<div class="row">
-					<div class="col-10">
-						<div class="logo"><img src="../static/web/img/admin-logo.png" title="<?php echo $cfg_soft_enname; ?>"></div>
+					<div class="col-6 text-left">
+						<div class="logo"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
 					</div>
-					<div class="col-2 d-flex justify-content-end goindex">
-						<a href="../index.php" target="_blank"><i class="fa fa-home"></i></a>
+					<div class="col-6 text-right d-flex justify-content-end biz-nav">
+						<a href="/" target="_blank" class="biz-nav-a"><i class="fa fa-home"></i> 网站首页</a>
 					</div>
 				</div>
 			</div>
-		</header>
-		<main class="container login-from mt-5">
-			<?php echo $redmsg; ?>
-			<div class="login-area shadow-sm">
-				<h4 class="mb-4 text-center">后台登录</h4>
-				<form name="form1" method="post" action="login.php">
-					<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage); ?>">
-					<input type="hidden" name="dopost" value="login">
-					<input type="hidden" name="adminstyle" value="newDedeBIZ">
-					<div class="form-group">
-						<label for="iptUserid">用户名</label>
-						<input type="text" name="userid" class="form-control" id="iptUserid">
-					</div>
-					<div class="form-group">
-						<label for="iptPassword">密码</label>
-						<input type="password" name="pwd" class="form-control" id="iptPassword">
-					</div>
-					<div class="form-group">
-						<label for="iptValidate">验证码</label>
-						<div class="input-group">
-							<input type="text" name="validate" class="form-control" id="iptValidate" style="text-transform:uppercase">
-							<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg" style="cursor:pointer">
+		</div>
+		<div class="container">
+			<div class="login-from">
+				<?php echo $redmsg;?>
+				<div class="login-area shadow-sm">
+					<h2 class="mb-4 text-center">后台登录</h2>
+					<form name="form1" method="post" action="login.php">
+						<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage);?>">
+						<input type="hidden" name="dopost" value="login">
+						<input type="hidden" name="adminstyle" value="newDedeBIZ">
+						<div class="form-group">
+							<label for="iptUserid">用户名</label>
+							<input type="text" name="userid" id="iptUserid" class="form-control">
 						</div>
-					</div>
-					<button type="submit" class="btn btn-success btnLogin btn-sm">登录</button>
-					<div class="login-power"><?php echo $cfg_powerby; ?></div>
-				</form>
+						<div class="form-group">
+							<label for="iptPassword">密码</label>
+							<input type="password" name="pwd" id="iptPassword" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="iptValidate">验证码</label>
+							<div class="input-group">
+								<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase">
+								<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
+							</div>
+						</div>
+						<div><button type="submit" class="btn btn-success w-100">登录</button></div>
+						<div class="login-power"><?php echo $cfg_powerby; ?></div>
+					</form>
+				</div>
 			</div>
-		</main>
+		</div>
 	</body>
 </html>

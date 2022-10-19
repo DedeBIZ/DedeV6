@@ -34,32 +34,26 @@
 	</table>
 	<form name="form3" action="content_i_list.php" method="get">
 		<input type="hidden" name="dopost" value="listArchives">
-		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="mt-3 mb-3" style="border:1px solid #dee2e6">
-			<tr>
-				<td height="36" bgcolor="#f8f8f8">
-					<table cellpadding="0" cellspacing="0">
-						<tr>
-							<td width="180" align="center">
-								<select name="cid" style="width:160px">
-									<option value="0">选择栏目</option>
-									{dede:global.optionarr/}
-								</select>
-							</td>
-							<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" value="{dede:global.keyword/}" style="width:260px"></td>
-							<td width="170">
-								<select name="orderby" style="width:160px">
-									<option value="id">排序</option>
-									<option value="pubdate">更新时间</option>
-									<option value="sortrank">置顶权值</option>
-									<option value="click">点击量</option>
-									<option value="scores">评论积分</option>
-									<option value="lastpost">最后评论</option>
-								</select>
-							</td>
-							<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
-						</tr>
-					</table>
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+			<tr bgcolor="#f8f8f8">
+				<td width="180" align="center">
+					<select name="cid" style="width:160px">
+						<option value="0">选择栏目</option>
+						{dede:global.optionarr/}
+					</select>
 				</td>
+				<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" value="{dede:global.keyword/}" style="width:260px"></td>
+				<td width="170">
+					<select name="orderby" style="width:160px">
+						<option value="id">排序</option>
+						<option value="pubdate">更新时间</option>
+						<option value="sortrank">置顶权值</option>
+						<option value="click">点击量</option>
+						<option value="scores">评论积分</option>
+						<option value="lastpost">最后评论</option>
+					</select>
+				</td>
+				<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 			</tr>
 		</table>
 	</form>
@@ -67,7 +61,7 @@
 		<tr>
 			<td colspan="7" style="margin-left:10px;background:#f8f8f8">{dede:global.positionname/}文档列表</td>
 		</tr>
-		<tr bgcolor="#FBFCE2" align="center">
+		<tr bgcolor="#fbfce2" align="center">
 			<td width="12%">文档图片</td>
 			<td width="32%">文档标题</td>
 			<td width="16%">类目</td>
@@ -85,8 +79,8 @@
 				<td width="32%" align="left" class="pl-3">
 					<p>
 						<input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}">
-						<i class="btn btn-sm fa fa-cogs" onClick="QuickEdit({dede:field.id/},event,this);" title="编辑属性" style="cursor:pointer"></i>
-						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}&nbsp;{dede:field.flag function='IsCommendArchives(@me)'/}</a>
+						<i class="btn btn-sm fa fa-cogs" onClick="QuickEdit({dede:field.id/},event,this);" title="编辑属性" style="cursor:pointer"></i> 
+						<a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/} {dede:field.flag function='IsCommendArchives(@me)'/}</a>
 					</p>
 					<span>时间：{dede:field.senddate function='GetDateTimeMk(@me)'/}</span>
 				</td>

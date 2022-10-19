@@ -82,12 +82,12 @@
   <form name="form1" action="catalog_add.php" method="post">
     <input type="hidden" name="dopost" value="savequick">
     <input type="hidden" name="savetype" value="" id="savetype">
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
+    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
       <tr>
         <td width="100%">
           <table width="100%" cellspacing="0" cellpadding="0">
             <tr>
-              <td><i class="fa fa-book"></i> <a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目</td>
+              <td><i class="fa fa-map"></i> <a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目</td>
             </tr>
           </table>
         </td>
@@ -102,15 +102,15 @@
           <table width="100%" cellspacing="0" id="head1" cellpadding="0">
             <tr>
               <td colspan="2">
-                <table width="84" cellpadding="0" cellspacing="0">
+                <table width="80" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="84" height="28" align="center" bgcolor="#FBFCE2">常规选项</td>
+                    <td width="80" height="28" align="center" bgcolor="#fbfce2">常规选项</td>
                   </tr>
                 </table>
               </td>
             </tr>
           </table>
-          <table width="100%" id="needset" cellspacing="0" cellpadding="0" style="border:1px solid #dee2e6" class="table">
+          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="biz-border table">
             <tr>
               <td bgcolor="#f8f8f8">公用参数：</td>
               <td bgcolor="#f8f8f8"></td>
@@ -134,11 +134,11 @@
                 ?>）</label>
                 <label><input type="radio" name="referpath" value="cmspath"> CMS根目录</label>
                 <input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir; ?>">
-                <span id="pathtype" style="display:none"><input type="radio" name="referpath" id="truepath3" value="typepath">隶属栏目所属的目录</span>
+                <span id="pathtype" style="display:none"><input type="radio" name="referpath" id="truepath3" value="typepath">所属栏目所属的目录</span>
               </td>
             </tr>
             <tr>
-              <td class="bline">隶属栏目：</td>
+              <td class="bline">所属栏目：</td>
               <td class="bline">
                 <select name="reid" onchange="showSeltype(this)" style="width:160px">
                   <option value="0">选择所属目录</option>
@@ -186,7 +186,7 @@
               <td class="bline">文章命名规则：</td>
               <td class="bline">
                 <input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" style="width:260px">
-                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i>
+                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i> 
               </td>
             </tr>
             <tr id="helpvar3" style="display:none">
@@ -197,7 +197,7 @@
               <td>列表命名规则：</td>
               <td>
                 <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="pubinputs" style="width:260px">
-                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i>
+                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i> 
               </td>
             </tr>
             <tr>
@@ -206,13 +206,13 @@
             </tr>
             <tr>
               <td colspan="2">
-                <table id="addQuick" width="850" cellpadding="3" cellspacing="1">
+                <table id="addQuick" width="98%" cellpadding="3" cellspacing="1">
                   <tbody>
-                    <tr bgcolor="#FBFCE2">
+                    <tr bgcolor="#fbfce2">
                       <td width="60">排序</td>
-                      <td width="170">顶级栏目名称</td>
-                      <td width="370">子栏目（用&quot;目录名称1,目录名称2&quot;这样表示多个栏目）</td>
-                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
+                      <td width="260">顶级栏目名称</td>
+                      <td>子栏目（用&quot;目录名称1,目录名称2&quot;这样表示多个栏目）</td>
+                      <td width="60" align="center"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
                     </tr>
                     <tr align="center">
                       <td class="rank">
@@ -220,8 +220,8 @@
                         <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px">
                       </td>
                       <td align="center"><input type="text" name="toptype" id="toptype" class="pubinputs" style="width:160px"></td>
-                      <td><input type="text" name="sontype" id="sontype" class="pubinputs" style="width:360px"></td>
-                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm del">删除</button></td>
+                      <td><input type="text" name="sontype" id="sontype" class="pubinputs" style="width:100%"></td>
+                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr  class="repeat" align="center">
@@ -230,15 +230,15 @@
                         <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:60px">
                       </td>
                       <td><input type="text" name="toptype<?php echo $i; ?>" id="toptype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
-                      <td><input type="text" name="sontype<?php echo $i; ?>" id="sontype<?php echo $i; ?>" class="pubinputs" style="width:360px"></td>
-                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm del">删除</button></td>
+                      <td><input type="text" name="sontype<?php echo $i; ?>" id="sontype<?php echo $i; ?>" class="pubinputs" style="width:100%"></td>
+                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm">删除</button></td>
                     </tr>
                     <?php } ?>
                   </tbody>
                 </table>
                 <table id="addQuickRel" width="302" cellpadding="3" cellspacing="1" style="display:none">
                   <tbody>
-                    <tr bgcolor="#FBFCE2" align="center">
+                    <tr bgcolor="#fbfce2" align="center">
                       <td width="60">排序</td>
                       <td width="170">栏目名称</td>
                       <td align="center"><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
@@ -249,7 +249,7 @@
                         <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px">
                       </td>
                       <td><input type="text" name="reltype" id="reltype" class="pubinputs" style="width:160px"></td>
-                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm del">删除</button></td>
+                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr  class="repeat" align="center">
@@ -258,7 +258,7 @@
                         <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:60px">
                       </td>
                       <td><input type="text" name="reltype<?php echo $i; ?>" id="reltype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
-                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm del">删除</button></td>
+                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm">删除</button></td>
                     </tr>
                     <?php } ?>
                   </tbody>
@@ -266,7 +266,7 @@
               </td>
             </tr>
           </table>
-          <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0" class="mb-3">
+          <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">
             <tr>
               <td align="center" class="py-2">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>

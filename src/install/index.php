@@ -9,7 +9,6 @@
 @set_time_limit(0);
 error_reporting(E_ALL || ~E_NOTICE);
 define('INSLOCKFILE', dirname(__FILE__).'/install_lock.txt');
-
 $verMsg = 'V6';
 $dfDbname = 'DedeBIZ';
 $cfg_version_detail = '6.1.10beta'; //详细版本号
@@ -83,7 +82,7 @@ if($step==1)
         $rnd_cookieEncode .= $chars[mt_rand(0, $max)];
     }
     $module_local = DEDEDATA.'/module/';
-    include('./templates/step-1.html');
+    include('./install.html');
     exit();
 }
 /*------------------------
@@ -237,7 +236,6 @@ else if($step==2)
                 if($mysqlVersion < 4.1) $rs = mysql_query($query,$conn);
                 else $rs = mysql_query(str_replace('#~lang~#',$dblang,$query),$conn);
             }
-    
             $query='';
         } else if(!preg_match("#^(\/\/|--)#", $line))
         {
@@ -258,7 +256,6 @@ else if($step==2)
     $dbtype == 'sqlite'?  $db->exec($cquery) : mysql_query($cquery,$conn);
     $cquery = "UPDATE `{$dbprefix}sysconfig` SET value='{$adminmail}' WHERE varname='cfg_adminemail';";
     $dbtype == 'sqlite'?  $db->exec($cquery) : mysql_query($cquery,$conn);
-
     $pfd = "pwd";
     $apwd = substr(md5($adminpwd),5,20);
     $upwd = md5($adminpwd);
@@ -267,7 +264,6 @@ else if($step==2)
         $apwd = password_hash($adminpwd, PASSWORD_BCRYPT);
         $upwd = password_hash($adminpwd, PASSWORD_BCRYPT);
     }
-
     //增加管理员帐号
     $adminquery = "INSERT INTO `{$dbprefix}admin` (`id`, `usertype`, `userid`, `$pfd`, `uname`, `tname`, `email`, `typeid`, `logintime`, `loginip`) VALUES (1, 10, '$adminuser', '".$apwd."', 'admin', '', '', 0, '".time()."', '127.0.0.1');";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);

@@ -67,7 +67,7 @@
           </div>
       </li>
     </div>
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table-borderless mt-3" style="border:1px solid #dee2e6;border-bottom:0">
+    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table-borderless biz-border mt-3 mb-3">
       <tr>
         <td bgcolor="#f8f8f8" class="py-2"><a href="freelist_main.php" class="ml-2">自由列表管理</a> &gt; 增加一个列表</td>
         <td align="right" bgcolor="#f8f8f8"></td>
@@ -77,10 +77,10 @@
       <form action="freelist_add.php" method="post" name="form1" onSubmit="return CheckSubmit();">
         <input type="hidden" name="dopost" value="save">
         <tr>
-          <td style="padding:0">
+          <td class="p-0">
             <table width="100%" align="center" cellpadding="0" cellspacing="1" class="table-borderless">
               <tr>
-                <td style="padding:0">
+                <td class="p-0">
                   <table width="100%" cellspacing="1" cellpadding="0">
                     <tr>
                       <td colspan="2"><i class="fa fa-question-circle" title="帮助"></i> 自由列表标记的说明：自由列表标记（freelist）的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成按自定义排序规则的文章列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成网页或访问速度</td>
@@ -131,7 +131,7 @@
                 </td>
               </tr>
               <tr>
-                <td style="background:#FBFCE2">列表样式：这里是定义自由列表模板里的{dede:freelist/}标记的样式和属性</td>
+                <td style="background:#fbfce2">列表样式：这里是定义自由列表模板里的{dede:freelist/}标记的样式和属性</td>
               </tr>
               <tr>
                 <td>

@@ -18,10 +18,6 @@
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script src="../static/web/js/cropper.min.js"></script>
-  <style>
-  table{border-collapse:separate}
-  .form-control{display:inline-block;margin-right:10px;width:160px}
-  </style>
   <script>
     function SelectTemplets(fname) {
       var pos = GetWinPos(800,600);
@@ -63,19 +59,19 @@
     <input type="hidden" name="arcrank" value="<?php echo $arcRow['arcrank']?>">
     <input type="hidden" name="source" value="本站">
     <input type="hidden" name="dopost" value="save">
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3">
+    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
       <tr>
-        <td width="85%"><i class="fa fa-book"></i> <a href="content_s_list.php">专题列表</a><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"></a> &gt; 修改专题</td>
-        <td width="10%" align="right"><a href="makehtml_spec.php" class="btn btn-success btn-sm">更新专题</a></td>
+        <td width="70%"><i class="fa fa-map"></i> <a href="content_s_list.php">专题列表</a><a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"></a> &gt; 修改专题</td>
+        <td width="30%" align="right"><a href="makehtml_spec.php" class="btn btn-success btn-sm">更新专题</a></td>
       </tr>
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
       <tr>
         <td colspan="2">
-          <table width="168" cellpadding="0" cellspacing="0">
+          <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="84" height="28" align="center" bgcolor="#FBFCE2">常规参数</td>
-              <td width="84" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem2()">专题文档</a></td>
+              <td width="80" height="28" align="center" bgcolor="#fbfce2">常规参数</td>
+              <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem2()">专题文档</a></td>
             </tr>
           </table>
         </td>
@@ -84,16 +80,16 @@
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head2" style="display:none">
       <tr>
         <td colspan="2">
-          <table width="168"  cellpadding="0" cellspacing="0">
+          <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="84" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">常规参数</a></td>
-              <td width="84" height="28" align="center" bgcolor="#FBFCE2">专题文档</td>
+              <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">常规参数</a></td>
+              <td width="80" height="28" align="center" bgcolor="#fbfce2">专题文档</td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" style="border:1px solid #dee2e6">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
         <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
@@ -139,9 +135,9 @@
                 <label><input type="checkbox" name="ddisremote" value='1'> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
-                <button type="button" id="btnClearAll" class="btn btn-success btn-sm delete">清空</button>
+                <button type="button" id="btnClearAll" class="btn btn-success btn-smete">清空</button>
               </td>
-              <td align="center"><img id="litPic" src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg'; ?>" style="height:80px"></td>
+              <td align="center"><img id="litPic" src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg'; ?>" id="litPic" class="thumbnail"></td>
             </tr>
           </table>
         </td>
@@ -197,7 +193,7 @@
                 echo $typeOptions;
                 echo "</select>";
 			          ?>
-                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,0,'typeid')" title="快捷选择" style="cursor:pointer"></i>
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,0,'typeid')" title="快捷选择" style="cursor:pointer"></i> 
               </td>
             </tr>
           </table>
@@ -291,7 +287,7 @@
         <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield'); ?></td>
       </tr>
     </table>
-    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" style="display:none;border:1px solid #dee2e6">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" class="biz-border" style="display:none">
       <tr>
         <td class="bline2"> 专题节点列表：文章列表用ID1,ID2,ID3这样形式分开，系统会自动排除不同节点的相同文章<br>关于单条记录模板里的[field:fieldname/]标记的使用，请参考关于系统帮助关于arclist标记的说明</td>
       </tr>
@@ -325,7 +321,7 @@
             	$rownum = $ctag->GetAtt('rownum');
             	if(empty($rownum)) $rownum = 40;
             ?>
-            <tr bgcolor="#FBFCE2">
+            <tr bgcolor="#fbfce2">
               <td width="260">节点<?php echo $i?>名称：</td>
               <td colspan="2">
                 <table width="900" cellspacing="0" cellpadding="0">
@@ -372,7 +368,7 @@
 		        for($i;$i<=$cfg_specnote;$i++)
 		        {
 		        ?>
-            <tr bgcolor="#FBFCE2">
+            <tr bgcolor="#fbfce2">
               <td width="90">节点<?php echo $i?>名称：</td>
               <td colspan="2">
                 <table width="900" cellspacing="0" cellpadding="0">
@@ -418,7 +414,7 @@
         </td>
       </tr>
     </table>
-    <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" style="border:1px solid #dee2e6;border-top:0">
+    <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">
       <tr>
         <td align="center" class="py-2">
           <button type="submit" class="btn btn-success btn-sm">保存</button>
