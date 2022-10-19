@@ -141,7 +141,7 @@ else if ($action == 'setup') {
         }
     }
     $prvdir = "<table cellpadding='1' cellspacing='1'>\r\n";
-    $prvdir .= "<tr style='background:#fbfce2'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
+    $prvdir .= "<tr bgcolor='#fbfce2'><th width='270'>目录</td><th align='center'>可写</td></tr>\r\n";
     foreach ($prvdirs as $k => $v) {
         if ($v) $cw = '√';
         else $cw = "<span class='text-danger'>×</span>";
@@ -215,7 +215,7 @@ else if ($action == 'setup') {
    </td>
   </tr>
 </table>";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -327,7 +327,7 @@ else if ($action == 'del') {
       <td colspan='2'>删除模块仅删除这个模块的安装包文件，如果您已经安装，请执行<a href='module_main.php?hash={$hash}&action=uninstall'>卸载程序</a>来删除</td>
     </tr>
 </table>";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -405,7 +405,7 @@ else if ($action == 'uninstall') {
    </td>
   </tr>
 </table>";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     $dm->Clear();
@@ -461,7 +461,7 @@ else if ($action == 'showreadme') {
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
     $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 使用说明：");
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("hand");
     $win->Display();
     exit();
@@ -539,7 +539,7 @@ else if ($action == 'view') {
     </td>
   </tr>
 </table>";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     $dm->Clear();

@@ -86,7 +86,7 @@ else if ($dopost == "copystart") {
         </tr>
         </table>
         ";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("ok", "");
     $win->Display();
     exit();
@@ -343,7 +343,7 @@ else if ($dopost == "gettemplets") {
         频道封面模板：{$defaulttemplate}/index_{$row['nid']}.htm
         <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm'>[修改]</a>
     ";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("hand", "");
     $win->Display();
     exit();

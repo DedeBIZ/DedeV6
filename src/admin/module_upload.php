@@ -99,7 +99,7 @@ if ($action == 'upload') {
     <td><input name='upfile' type='file' id='upfile' style='width:390px'></td>
   </tr>
  </table>";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('ok', '');
     $win->Display();
     exit();

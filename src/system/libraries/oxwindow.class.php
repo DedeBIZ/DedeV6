@@ -249,7 +249,7 @@ function ShowMsgWin($msg, $title)
     $win->Init();
     $win->mainTitle = "系统提示：";
     $win->AddTitle($title);
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("hand");
     $win->Display();
 }

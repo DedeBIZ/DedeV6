@@ -33,7 +33,7 @@ if (empty($dopost)) {
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     exit();
@@ -64,7 +64,7 @@ else if ($dopost == 1) {
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     exit();
@@ -140,7 +140,7 @@ else if ($dopost == 2) {
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     exit();
@@ -197,7 +197,7 @@ else if ($dopost == 3) {
   </tr>
  </table>
     ";
-    $win->AddMsgItem("<div style='line-height:26px'>$msg</div>");
+    $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');
     $win->Display();
     exit();
