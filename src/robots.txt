@@ -1,5 +1,4 @@
 User-agent: * 
-Disallow: /apps
 Disallow: /data
 Disallow: /system
 Disallow: /theme
