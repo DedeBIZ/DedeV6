@@ -3,13 +3,14 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>增加商品</title>
+  <title>发布商品</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
@@ -40,8 +41,8 @@
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
     <tr>
-      <td colspan="2">
-        <table width="900" cellpadding="0" cellspacing="0">
+      <td>
+        <table cellpadding="0" cellspacing="0">
           <tr>
             <td width="80" height="28" align="center" bgcolor="#fbfce2">常规信息</td>
           </tr>
@@ -55,7 +56,7 @@
     <input type="hidden" name="dopost" value="save">
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
@@ -67,7 +68,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
@@ -89,7 +90,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline" id="redirecturltr" style="display:none">
+        <td class="bline" id="redirecturltr" style="display:none">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
@@ -99,7 +100,7 @@
         </td>
       </tr>
       <tr>
-        <td width="100%" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
@@ -111,7 +112,7 @@
         </td>
       </tr>
       <tr id="pictable" style='<?php if($cInfos['needpic']==0) echo 'display:none'; ?>'>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
@@ -128,7 +129,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 来源：</td>
@@ -153,7 +154,7 @@
       } else {
       ?>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布栏目：</td>
@@ -182,7 +183,7 @@
         </td>
       </tr>
       <tr id="typeid2tr" style="display:none">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 副栏目：</td>
@@ -196,7 +197,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
@@ -212,7 +213,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 描述：</td>
@@ -225,7 +226,7 @@
       }
       ?>
       <tr>
-        <td width="100%">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 附加选项：</td>
@@ -240,10 +241,10 @@
         </td>
       </tr>
       <tr>
-        <td class="bline"><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset'])); ?></td>
+        <td class="bline"><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']));?></td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
@@ -261,7 +262,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文档排序：</td>
@@ -284,7 +285,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 阅读权限：</td>
@@ -306,7 +307,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布时间：</td>

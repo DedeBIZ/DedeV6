@@ -3,7 +3,7 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>增加图片集</title>
+  <title>发布图集</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
@@ -65,7 +66,7 @@
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
       <tr>
-        <td colspan="2">
+        <td>
           <table cellpadding="0" cellspacing="0">
             <tr>
               <td width="80" height="28" align="center" bgcolor="#fbfce2">常规内容</td>
@@ -76,7 +77,7 @@
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 图集标题：</td>
@@ -88,7 +89,7 @@
         </td>
       </tr>
       <tr>
-        <td width="100%" colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
@@ -110,7 +111,7 @@
         </td>
       </tr>
       <tr id="redirecturltr" style="display:none">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
@@ -120,7 +121,7 @@
         </td>
       </tr>
       <tr>
-        <td width="100%" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
@@ -132,7 +133,7 @@
         </td>
       </tr>
       <tr id="pictable">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
@@ -150,7 +151,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 来源：</td>
@@ -168,7 +169,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布栏目：</td>
@@ -197,7 +198,7 @@
         </td>
       </tr>
       <tr id="typeid2tr" style="display:none">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 副栏目：</td>
@@ -211,7 +212,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
@@ -227,7 +228,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 描述：</td>
@@ -237,7 +238,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 表现方式：</td>
@@ -251,7 +252,7 @@
         </td>
       </tr>
       <tr id="cfgmulist" style="display:none">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 多列式参数：</td>
@@ -269,7 +270,7 @@
         </td>
       </tr>
       <tr id="spagelist" style="display:none">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 每页图片数：</td>
@@ -279,7 +280,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 上传方式：</td>
@@ -295,28 +296,28 @@
         </td>
       </tr>
       <tr id="zipff" style="display:none">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0" height="100">
             <tr>
               <td width="90"> 压缩包文件：</td>
               <td>
                 <input type="text" name="zipfile" id="zipfile" style="width:260px">
                 <button name="addon_bt" type="button" onClick="SelectSoft('form1.zipfile')" class="btn btn-success btn-sm">浏览</button>
-                <label><input type="checkbox" name="delzip" id="delzip" value="1" checked="checked">
-                处理后删除压缩文件</label></td>
+                <label><input type="checkbox" name="delzip" id="delzip" value="1" checked="checked"> 处理后删除压缩文件</label>
+              </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="htmlfield" style="display:none">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 网上复制：</td>
-              <td>复制的源网址：<input type="text" name="copysource" value="http://" style="width:260px">（防盗链网站需填写您复制图片的其中一个网页网址）<br>
+              <td>
+                复制的源网址：<input type="text" name="copysource" value="http://" style="width:260px">（防盗链网站需填写您复制图片的其中一个网页网址）<br>
                 把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片
-                <input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()">
-                <br>
+                <input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()"><br>
                 <div id="copyhtml" style="margin-top:10px;margin-bottom:10px;padding:10px;width:96%;height:260px;border:solid 1px #ccc" contenteditable="true">粘贴到这里</div>
               </td>
             </tr>
@@ -324,10 +325,10 @@
         </td>
       </tr>
       <tr>
-        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
+        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?></td>
       </tr>
       <tr>
-        <td width="100%" colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="36"> 手工上传：</td>
@@ -337,7 +338,7 @@
         </td>
       </tr>
       <tr id="handfield">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="100%">
             <tr>
               <td>
@@ -349,17 +350,17 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 图集内容：</td>
-              <td> <?php GetEditor("body","",450,"Diy"); ?></td>
+              <td><?php GetEditor("body","",450,"Diy");?></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
@@ -377,7 +378,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 图集排序：</td>
@@ -399,7 +400,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 阅读权限：</td>
@@ -422,7 +423,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布时间：</td>

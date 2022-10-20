@@ -47,7 +47,7 @@ class TypeUnit
     //获取所有栏目的文档id数
     function UpdateCatalogNum()
     {
-        $this->dsql->SetQuery("SELECT typeid,count(typeid) as dd FROM `#@__arctiny` WHERE arcrank <>-2 group by typeid");
+        $this->dsql->SetQuery("SELECT typeid,count(typeid) as dd FROM `#@__arctiny` WHERE arcrank <>-3 group by typeid");
         $this->dsql->Execute();
         while ($row = $this->dsql->GetArray()) {
             $this->CatalogNums[$row['typeid']] = $row['dd'];
@@ -109,7 +109,7 @@ class TypeUnit
             $id = $row->id;
             $rank = $row->sortrank;
             if ($row->ishidden == '1') {
-                $nss = "<span class='text-danger mr-2'>[隐藏]</span>";
+                $nss = "<span class='btn btn-secondary btn-xs'>隐藏</span>";
             } else {
                 $nss = '';
             }
@@ -117,7 +117,7 @@ class TypeUnit
             //普通列表
             if ($ispart == 0) {
                 echo "<tr>";
-                echo "<td class='bline' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-2 ml-2'><span class='text-success mr-2'>[列表]</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-2'>".$typeName."</span></a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                echo "<td class='bline' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
@@ -130,7 +130,7 @@ class TypeUnit
             //带封面的频道
             else if ($ispart == 1) {
                 echo "<tr>";
-                echo "<td class='bline' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-2 ml-2'><span class='text-warning mr-2'>[封面]</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-2'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                echo "<td class='bline' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
@@ -143,7 +143,7 @@ class TypeUnit
             //独立页面
             else if ($ispart == 2) {
                 echo "<tr>";
-                echo "<td class='bline2' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-2 ml-2'><span class='text-danger mr-2'>[外部]</span>{$nss}<a href='catalog_edit.php?id=".$id."'><span class='mr-2'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                echo "<td class='bline2' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$typeDir}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
@@ -192,7 +192,7 @@ class TypeUnit
                 }
                 $rank = $row->sortrank;
                 if ($row->ishidden == '1') {
-                    $nss = "<span class='text-danger mr-2'>[隐藏]</span>";
+                    $nss = "<span class='btn btn-secondary btn-xs'>[隐藏]</span>";
                 } else {
                     $nss = '';
                 }
@@ -202,7 +202,7 @@ class TypeUnit
                     echo "<td class='nbline'>";
                     echo "<table width='98%' cellspacing='0' cellpadding='0'>";
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\"><td width='50%'>";
-                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-2 ml-2'><span class='text-success mr-2'>[列表]</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-2'>".$typeName."</span></a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                     echo "</td><td align='right'>";
                     echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
@@ -216,7 +216,7 @@ class TypeUnit
                 else if ($ispart == 1) {
                     echo "<tr>";
                     echo "<td class='nbline'><table width='98%' cellspacing='0' cellpadding='0'><tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\"><td width='50%'>";
-                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-2 ml-2'><span class='text-warning mr-2'>[封面]</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-2'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                     echo "</td><td align='right'>";
                     echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                     echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
@@ -231,7 +231,7 @@ class TypeUnit
                     echo "<tr>";
                     echo "<td class='bline2'><table width='98%' cellspacing='0' cellpadding='0'>";
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\"><td width='50%'>";
-                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-2 ml-2'><span class='text-danger mr-2'>[外部]</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-2'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                    echo "$step<i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                     echo "</td><td align='right'>";
                     echo "<a href='{$typeDir}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                     echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";

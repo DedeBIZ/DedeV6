@@ -38,7 +38,7 @@
 			{
 				$allowhtml = array('htmltext');
 				$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
-				echo '<tr bgcolor="#fbfce2"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><i class="btn btn-sm fa fa-pencil-square-o" title="修改"></i> </a></td></tr>';
+				echo '<tr bgcolor="#fbfce2"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><i class="btn btn-sm fa fa-pencil-square-o" title="修改"></i></a></td></tr>';
 				foreach($fieldlist as $field=>$fielddata)
 				{
 					if($fields[$field]=='') continue;

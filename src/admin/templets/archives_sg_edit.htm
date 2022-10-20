@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
@@ -38,7 +39,7 @@
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
     <tr>
-      <td colspan="2">
+      <td>
         <table cellpadding="0" cellspacing="0">
           <tr>
             <td width="80" height="28" align="center" bgcolor="#fbfce2">常规信息</td>
@@ -64,7 +65,7 @@
       </td>
     </tr>
     <tr>
-      <td width="100%" class="bline">
+      <td class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 自定义属性：</td>
@@ -152,9 +153,7 @@
     }
     ?>
     <tr>
-     <td>
-      <?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield'); ?>
-     </td>
+      <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
    </tr>
   </table>
   <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">

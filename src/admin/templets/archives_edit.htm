@@ -7,16 +7,17 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
+  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
+  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <script src="../static/web/js/moment.min.js"></script>
   <script src="../static/web/js/daterangepicker.js"></script>
-  <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
-  <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <script src="../static/web/js/cropper.min.js"></script>
   <script>
   function checkSubmit() {
@@ -37,7 +38,7 @@
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
     <tr>
-      <td colspan="2">
+      <td>
         <table cellpadding="0" cellspacing="0">
           <tr>
             <td width="80" height="28" align="center" bgcolor="#fbfce2">常规信息</td>
@@ -64,7 +65,7 @@
         </td>
       </tr>
       <tr>
-        <td width="400%" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
@@ -88,8 +89,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline" id="redirecturltr"
-          style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
+        <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
@@ -99,7 +99,7 @@
         </td>
       </tr>
       <tr>
-        <td width="400%" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
@@ -218,7 +218,7 @@
         <td class="bline"><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow);?></td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 附加选项：</td>
@@ -233,14 +233,13 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type='radio' name='notpost' class='np' value='0' <?php if($arcRow['notpost']==0) echo " checked='1' "; ?> /> 允许评论</label>
-                 
-                <label><input type='radio' name='notpost' class='np' value='1' <?php if($arcRow['notpost']==1) echo " checked='1' "; ?> /> 禁止评论</label>
+                <label><input type='radio' name='notpost' class='np' value='0' <?php if($arcRow['notpost']==0) echo " checked='1' "; ?>> 允许评论</label>
+                <label><input type='radio' name='notpost' class='np' value='1' <?php if($arcRow['notpost']==1) echo " checked='1' "; ?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td><label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked"; ?>>
@@ -303,7 +302,7 @@
         </td>
       </tr>
       <tr>
-        <td height="70" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 更新时间：</td>

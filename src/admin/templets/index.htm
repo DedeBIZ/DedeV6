@@ -8,6 +8,7 @@
 		<title><?php echo $cfg_webname; ?>后台管理</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<link rel="stylesheet" href="css/menu.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 	</head>
@@ -24,23 +25,23 @@
 					<span class="top-dedebiz"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8); ?></a></span>
 					<span class="top-version">V<?php echo $cfg_version_detail; ?></span>
 					<?php if(DEDEBIZ_SAFE_MODE){ ?>
-					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-sm">安全</a>
+					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs">安全</a>
 					<?php } else { ?>
-					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-sm">开发</a>
+					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs">开发</a>
 					<?php }?>
 				</div>
 				<div class="top-item">
 					<ul class="mb-0">
-						<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i> </a></li>
+						<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
 						<?php if($cuserLogin->getUserType()>=10){ ?>
-						<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i> </a></li>
-						<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i> </a></li>
-						<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:''; ?>" target="main" title="文件管理"><i class="fa fa-folder"></i> </a></li>
+						<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i></a></li>
+						<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
+						<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:''; ?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
 						<?php }?>
-						<?php if(!DEDEBIZ_SAFE_MODE){ ?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i> </a></li><?php }?>
-						<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i> </a></li>
-						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i> </a></li>':''; ?>
-						<li><a href="../" target="_blank" title="预览主页"><i class="fa fa-eye"></i> </a></li>
+						<?php if(!DEDEBIZ_SAFE_MODE){ ?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i></a></li><?php }?>
+						<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
+						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':''; ?>
+						<li><a href="../" target="_blank" title="预览主页"><i class="fa fa-eye"></i></a></li>
 						<li>
 							<form action="action_search.php" method="post" target="main">
 								<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">

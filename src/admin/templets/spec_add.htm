@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
@@ -70,7 +71,7 @@
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
       <tr>
-        <td colspan="2">
+        <td>
           <table cellpadding="0" cellspacing="0">
             <tr>
               <td width="80" height="28" align="center" bgcolor="#fbfce2">常规参数</td>
@@ -82,7 +83,7 @@
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head2" style="display:none">
       <tr>
-        <td colspan="2">
+        <td>
           <table cellpadding="0" cellspacing="0">
             <tr>
               <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">常规参数</a></td>
@@ -94,7 +95,7 @@
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 专题名称：</td>
@@ -106,7 +107,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
@@ -126,7 +127,7 @@
         </td>
       </tr>
       <tr id="pictable">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
@@ -143,7 +144,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 责任编辑：</td>
@@ -153,7 +154,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 内容排序：</td>
@@ -177,7 +178,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 主分类：</td>
@@ -196,7 +197,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
@@ -210,7 +211,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 专题简介：</td>
@@ -220,7 +221,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
@@ -238,7 +239,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 专题模板：</td>
@@ -253,7 +254,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布时间：</td>
@@ -269,7 +270,7 @@
         </td>
       </tr>
       <tr>
-        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
+        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?></td>
       </tr>
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" class="biz-border" style="display:none">
@@ -298,7 +299,7 @@
 		        ?>
             <tr bgcolor="#fbfce2">
               <td width="260">节点<?php echo $i?>名称：</td>
-              <td colspan="2">
+              <td>
                 <table width="900" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="310"><input type="text" name="notename<?php echo $i?>" value="<?php echo $nodename; ?>" id="notename<?php echo $i?>" style="width:300px"></td>
@@ -315,7 +316,7 @@
             </tr>
             <tr>
               <td>文档来源：</td>
-              <td colspan="2">
+              <td>
                 <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文章列表</label>
                 <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
                 <label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" value="" size="16">（逗号分开）</label>
@@ -324,7 +325,7 @@
             </tr>
             <tr>
               <td height="50" rowspan="2">节点布局：</td>
-              <td colspan="2">
+              <td>
                 列数：<input type="text" name="col<?php echo $i?>" id="col<?php echo $i?>" value="1" size="3">
                 图片宽：<input type="text" name="imgwidth<?php echo $i?>" id="imgwidth<?php echo $i?>" value="120" size="3">
                 图片高：<input type="text" name="imgheight<?php echo $i?>" id="imgheight<?php echo $i?>" value="90" size="3">
@@ -334,12 +335,12 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2">单条记录的模板：<br>
+              <td>单条记录的模板：<br>
                 <textarea name="listtmp<?php echo $i?>" rows="3" id="listtmp<?php echo $i?>" style="width:60%"><?php echo $speclisttmp?></textarea></td>
             </tr>
             <tr>
               <td>节点容器模板：</td>
-              <td colspan="2">
+              <td>
                 <input type="text" name="notetemplet<?php echo $i?>" id="notetemplet<?php echo $i?>" value="system/channel_spec_note.htm" style="width:300px">
                 <button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.notetemplet<?php echo $i?>');">浏览</button>
               </td>

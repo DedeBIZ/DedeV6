@@ -26,17 +26,12 @@
 							<td align="right">您的留言：</td>
 							<td align="left">
 								<textarea name="msg" cols="80" rows="16" id="msg" class="form-control">
-								您好，我在 [<?php echo $cfg_webname; ?>] 发现了一个很好的东东：
-								您不妨去看看吧
-								文档的名称是：<?php echo $title; ?>
-								网址是：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?>
+								我在 [<?php echo $cfg_webname; ?>] 发现了一个很好的东东，文档的名称是：<?php echo $title; ?>，网址是：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?>
 								</textarea>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2" align="left">
-								<button type="submit" class="btn btn-success btn-sm">发送</button>
-							</td>
+							<td colspan="2" align="center"><button type="submit" class="btn btn-success btn-sm">发送</button></td>
 						</tr>
 					</table>
 				</form>

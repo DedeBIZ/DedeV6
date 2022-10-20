@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
@@ -32,7 +33,7 @@
       var endNum = parseInt(document.form1.picnum.value) + startNum;
       if (endNum > 30) endNum = 30;
       for (startNum; startNum < endNum; startNum++) {
-        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:260px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
+        upfield.innerHTML += "<div>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:260px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
       }
     }
     function ShowHideAddr() {
@@ -54,7 +55,7 @@
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
       <tr>
-        <td colspan="2">
+        <td>
           <table cellpadding="0" cellspacing="0">
             <tr>
               <td width="80" height="28" align="center" bgcolor="#fbfce2">常规参数</td>
@@ -65,7 +66,7 @@
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文章标题：</td>
@@ -77,7 +78,7 @@
         </td>
       </tr>
       <tr>
-        <td width="100%" colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
@@ -101,7 +102,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
+        <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
@@ -111,7 +112,7 @@
         </td>
       </tr>
       <tr>
-        <td width="100%" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
@@ -123,7 +124,7 @@
         </td>
       </tr>
       <tr id="pictable">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="80"> 缩略图：</td>
@@ -140,7 +141,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 来源：</td>
@@ -158,7 +159,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布栏目：</td>
@@ -189,7 +190,7 @@
               <td>
                 <span id="typeid2ct"></span>
                 <input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>" style="width:160px">
-                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title="选择副栏目" style="cursor:pointer"></i> </td>
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title="选择副栏目" style="cursor:pointer"></i></td>
             </tr>
           </table>
         </td>
@@ -218,8 +219,8 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
-          <table width="1300" cellspacing="0" cellpadding="0">
+        <td class="bline">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文件类型：</td>
               <td width="170">
@@ -289,7 +290,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 运行环境：</td>
@@ -299,7 +300,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 官方网址：</td>
@@ -311,11 +312,11 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 软件大小：</td>
-              <td><input name="softsize" type="text" id="softsize" value="<?php echo $addRow['softsize']?>" style="width:60px"></td>
+              <td width="310"><input name="softsize" type="text" id="softsize" value="<?php echo $addRow['softsize']?>" style="width:260px"></td>
               <td width="90"> 需会员权限：</td>
               <td>
                 <select name="daccess" id="daccess" style="width:160px">
@@ -337,13 +338,10 @@
         </td>
       </tr>
       <tr>
-        <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield'); ?></td>
+        <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
       </tr>
       <tr>
-        <td colspan="4" bgcolor="#f8f8f8" class="bline2"> 软件链接列表：</td>
-      </tr>
-      <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 其它地址：</td>
@@ -357,7 +355,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <?php
           echo $nForm;
 	        ?>
@@ -367,7 +365,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 附加选项：</td>
@@ -380,10 +378,10 @@
         </td>
       </tr>
       <tr>
-        <td class="bline"><?php GetEditor("body",$addRow["introduce"],250,"Small"); ?></td>
+        <td class="bline"><?php GetEditor("body",$addRow["introduce"],450,"Small");?></td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"  width="260"> 评论选项：</td>

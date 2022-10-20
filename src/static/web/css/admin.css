@@ -372,8 +372,13 @@ span.page-link {
 a.btn {
 	color:#fff!important
 }
+.btn-xs {
+	padding:2px;
+	line-height:12px;
+	font-size:12px
+}
 .btn+.btn,.btn-text+.btn-text {
-	margin-left:10px
+	margin-left:1rem
 }
 .fa {
 	font-size:14px!important;

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
@@ -40,7 +41,7 @@
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
     <tr>
-      <td colspan="2">
+      <td>
         <table cellpadding="0" cellspacing="0">
           <tr>
             <td width="80" height="28" align="center" bgcolor="#fbfce2">常规信息</td>
@@ -55,7 +56,7 @@
     <input type="hidden" name="id" value="<?php echo $aid?>">
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
-        <td colspan="2" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文章标题：</td>
@@ -67,7 +68,7 @@
         </td>
       </tr>
       <tr>
-        <td width="400%" colspan="2" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
@@ -97,7 +98,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2" class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
+        <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
@@ -107,7 +108,7 @@
         </td>
       </tr>
       <tr>
-        <td width="400%" colspan="2" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
@@ -119,7 +120,7 @@
         </td>
       </tr>
       <tr id="pictable">
-        <td colspan="2" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
@@ -136,7 +137,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 来源：</td>
@@ -154,7 +155,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布栏目：</td>
@@ -178,7 +179,7 @@
       if($cfg_need_typeid2=='Y') {
       ?>
       <tr>
-        <td colspan="2" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 副栏目：</td>
@@ -215,14 +216,10 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2">
-          <?php
-          PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');
-          ?>
-        </td>
+        <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
       </tr>
       <tr>
-        <td width="400%" colspan="2" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 附加选项：</td>
@@ -235,11 +232,11 @@
         </td>
       </tr>
       <tr>
-        <td class="bline"><?php GetEditor("body",stripcslashes($addRow['body']),450); ?></td>
+        <td class="bline"><?php GetEditor("body",stripcslashes($addRow['body']),450);?></td>
         <td id="mPic" style="display:none"></td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 评论选项：</td>
@@ -330,7 +327,7 @@
         </td>
       </tr>
       <tr>
-        <td height="70" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 更新时间：</td>

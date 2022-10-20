@@ -3,13 +3,14 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang; ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>增加软件集</title>
+  <title>发布软件</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
+  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
@@ -36,7 +37,7 @@
       var endNum = parseInt(document.form1.picnum.value) + startNum - 1;
       if (endNum > 30) endNum = 30;
       for (startNum; startNum <= endNum; startNum++) {
-        upfield.innerHTML += "<div style='line-height:36px'>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:260px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
+        upfield.innerHTML += "<div>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:260px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
       }
     }
     function ShowHideAddr() {
@@ -59,7 +60,7 @@
     </table>
     <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
       <tr>
-        <td colspan="2">
+        <td>
           <table cellpadding="0" cellspacing="0">
             <tr>
               <td width="80" height="28" align="center" bgcolor="#fbfce2">常规信息</td>
@@ -82,7 +83,7 @@
         </td>
       </tr>
       <tr>
-        <td width="100%" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
@@ -112,7 +113,7 @@
         </td>
       </tr>
       <tr>
-        <td width="100%" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
@@ -188,7 +189,7 @@
         </td>
       </tr>
       <tr id="typeid2tr" style="display:none">
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 副栏目：</td>
@@ -202,7 +203,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
@@ -218,7 +219,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 描述：</td>
@@ -229,7 +230,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="1300" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文件类型：</td>
               <td width="170">
@@ -311,14 +312,14 @@
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 软件大小：</td>
-              <td>
-                <input type="text" name="softsize" id="softsize" style="width:60px">
+              <td width="310">
+                <input type="text" name="softsize" id="softsize" style="width:160px">
                 <select name="unit" id="unit">
                   <option value="MB" selected>MB</option>
                   <option value="KB">KB</option>
                   <option value="GB">GB</option>
                 </select>
-                <label><input type="checkbox" name="autosize" id="autosize" value="1" checked>自动获得（必须包含一个本地软件）</label> 
+                <label><input type="checkbox" name="autosize" id="autosize" value="1" checked>自动获取</label> 
               </td>
               <td width="90">需会员权限：</td>
               <td align="left">
@@ -341,7 +342,7 @@
         </td>
       </tr>
       <tr>
-        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield'); ?></td>
+        <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?></td>
       </tr>
       <tr>
         <td class="bline">
@@ -363,10 +364,7 @@
       {
       ?>
       <tr>
-        <td bgcolor="#f8f8f8" class="bline2"> 预设的镜像服务器：</td>
-      </tr>
-      <tr class="bline">
-        <td>（服务器地址 + 软件地址 = 软件真实地址）</a><br>
+        <td class="bline">（服务器地址 + 软件地址 = 软件真实地址）</a><br>
           <?php
     	    $sites = explode("\n", $softconfig['sites']);
     	    $startNum = 2;
@@ -395,9 +393,6 @@
       <?php
       }
       ?>
-      <tr>
-        <td bgcolor="#f8f8f8" class="bline2"> 手动指定地址：</td>
-      </tr>
       <tr>
         <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0" class="bline">
@@ -434,7 +429,7 @@
         <td class="bline"><?php GetEditor('body','',450,'Small');?></td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
@@ -452,7 +447,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文章排序：</td>
@@ -476,7 +471,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 阅读权限：</td>
@@ -493,7 +488,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="4" class="bline">
+        <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布时间：</td>

@@ -27,26 +27,26 @@
 			<div class="formbox">
 				<form name="form1" method="post" action="flink.php">
 					<input type='hidden' name='dopost' value='save'>
-		 		<table width="100%" cellspacing="1" cellpadding="3" class="table">
+		 			<table width="100%" cellspacing="1" cellpadding="3" class="table">
 						<tr>
 							<td>网址：</td>
-							<td><input name="url" type="text" id="url" value="http://" size="30" class="ipt-txt"></td>
+							<td><input name="url" type="text" id="url" value="http://" size="30"></td>
 						</tr>
 						<tr>
 							<td>网站名称：</td>
-							<td><input name="webname" type="text" id="webname" size="30" class="ipt-txt"></td>
+							<td><input name="webname" type="text" id="webname" size="30"></td>
 						</tr>
 						<tr>
 							<td>网站Logo：</td>
-							<td><input name="logo" type="text" id="logo" size="30" class="ipt-txt">（88*31 gif或jpg）</td>
+							<td><input name="logo" type="text" id="logo" size="30">（88*31 gif或jpg）</td>
 						</tr>
 						<tr>
 							<td>网站简况：</td>
-							<td><textarea name="msg" cols="40" rows="4" id="msg" class="ipt-txt"></textarea></td>
+							<td><textarea name="msg" cols="40" rows="4" id="msg"></textarea></td>
 						</tr>
 						<tr>
 							<td>站长Email：</td>
-							<td><input name="email" type="text" id="email" size="30" class="ipt-txt"></td>
+							<td><input name="email" type="text" id="email" size="30"></td>
 						</tr>
 						<tr>
 							<td>网站类型：</td>
@@ -66,13 +66,12 @@
 						<tr>
 							<td>验证码：</td>
 							<td>
-								<input name="validate" type="text" id="vdcode2" size="10" class="ipt-txt" style="text-transform:uppercase">
-								<img src="../apps/vdimgck.php" style="cursor:pointer" onclick="this.src=this.src+'?'" title="验证码" alt="验证码">
+								<input name="validate" type="text" id="vdcode2" size="10" style="text-transform:uppercase">
+								<img src="../apps/vdimgck.php" onclick="this.src=this.src+'?'" title="验证码" alt="验证码" style="cursor:pointer">
 							</td>
 						</tr>
 						<tr>
-							<td height="36"></td>
-							<td>
+							<td colspan="2" align="center">
 								<button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
 								<button type="reset" name="Submit" class="btn btn-success btn-sm">重置</button>
 							</td>
