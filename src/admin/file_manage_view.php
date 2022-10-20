@@ -100,7 +100,7 @@ else if ($fmdo == "edit") {
         fclose($fp);
         $content = dede_htmlspecialchars($content);
     }
-    $contentView = "<textarea name='str' id='str' style='width:98%;height:450px;background:#ffffff;'>$content</textarea>\r\n";
+    $contentView = "<textarea name='str' id='str' style='width:98%;height:300px;background:#ffffff;'>$content</textarea>\r\n";
     $GLOBALS['filename'] = $filename;
     $path_parts  = pathinfo($filename);
     if ($path_parts['extension'] == 'php') {

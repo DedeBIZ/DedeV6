@@ -314,10 +314,10 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	}
 	if (posTop > 500) posTop = 500;
 	if (posLeft < 50) posLeft = 50;
-	newobj.style.minWidth = "450px";
+	newobj.style.minWidth = "460px";
 	newobj.style.top = posTop + "px";
 	newobj.style.left = posLeft + "px";
-	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="../../static/web/img/loadinglit.gif">Loading...</div>';
+	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
 	newobj.style.display = 'block';
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;

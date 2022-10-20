@@ -112,7 +112,7 @@ else if ($dopost == "export") {
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友：");
-    $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:98%;height:450px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
+    $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:98%;height:300px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
 }
@@ -126,7 +126,7 @@ else if ($dopost == "exportin") {
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
     $win->AddTitle("输入规则内容：导入模型会和原有模型冲突，不过可以在导入后修改");
-    $win->AddMsgItem("<textarea name='exconfig' style='width:98%;height:450px;word-wrap: break-word;word-break:break-all;'></textarea>");
+    $win->AddMsgItem("<textarea name='exconfig' style='width:98%;height:300px;word-wrap: break-word;word-break:break-all;'></textarea>");
     $winform = $win->GetWindow("ok");
     $win->Display();
     exit();
