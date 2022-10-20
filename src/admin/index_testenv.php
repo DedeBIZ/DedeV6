@@ -154,7 +154,7 @@ if ($rs < 0) {
 <?php
 if (count($safeMsg) > 0) {
 ?>
-	<div class="alert alert-danger mt-3 mb-3">
+	<div class="alert alert-danger mt-3">
 		<?php
 		$i = 1;
 		foreach ($safeMsg as $key => $val) {
