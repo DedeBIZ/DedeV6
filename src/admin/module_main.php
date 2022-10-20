@@ -274,8 +274,8 @@ else if ($action == 'setupstart') {
         }
         ReWriteConfigAuto();
         $rflwft = "<script>\r\n";
-        $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu_module.php';\r\n";
-        $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu_module.php';\r\n";
+        $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu.php';\r\n";
+        $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu.php';\r\n";
         $rflwft .= "</script>";
         echo $rflwft;
         UpDateCatCache();
@@ -440,8 +440,8 @@ else if ($action == 'uninstallok') {
         }
         ReWriteConfigAuto();
         $rflwft = "<script>\r\n";
-        $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu_module.php';\r\n";
-        $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu_module.php';\r\n";
+        $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu.php';\r\n";
+        $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu.php';\r\n";
         $rflwft .= "</script>";
         echo $rflwft;
         ShowMsg('模块卸载完成', 'module_main.php');

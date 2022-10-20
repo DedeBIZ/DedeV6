@@ -1,16 +1,3 @@
-body {
-	line-height:1.5;
-	font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
-	color:#545b62;
-	background:#fff
-}
-main.login-from {
-	background-image:url('../img/member_bg.jpg');
-	background-repeat:no-repeat;
-	background-position:top center;
-	height:620px;
-	padding-top:5rem
-}
 .login-area {
 	background-color:white;
 	max-width:500px;

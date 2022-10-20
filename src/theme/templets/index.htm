@@ -15,64 +15,59 @@
 	<body>
 		{dede:include filename='header.htm'/}
 		<main class="container mt-3">
-			<div class="col-12">
-				<div class="row">
-					<div class="col-12 col-lg-9 litpics mb-3">
-						<div class="row">
-							<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
-								<ol class="carousel-indicators">
-									{dede:arclist channelid='1' flag='f' row='6'}
-									<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
-									{/dede:arclist}
-								</ol>
-								<div class="carousel-inner">
-									{dede:arclist channelid='1' flag='f' row='6'}
-									<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
-										<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" class="mr-3" alt="[field:fulltitle/]"></a>
-									</div>
-									{/dede:arclist}
+			<div class="row">
+				<div class="col-12 col-lg-9 litpics mb-3">
+					<div class="row">
+						<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								{dede:arclist channelid='1' flag='f' row='6'}
+								<li data-target="#carouselIndex" data-slide-to="[field:global.autoindex function='trim(IndexSub(@me,1))'/]" class="[field:global.autoindex function='IndexActive(@me)'/]"></li>
+								{/dede:arclist}
+							</ol>
+							<div class="carousel-inner">
+								{dede:arclist channelid='1' flag='f' row='6'}
+								<div class="carousel-item[field:global.autoindex function='IndexActive(@me)'/]">
+									<a href="[field:arcurl/]" title="[field:fulltitle/]"><img src="[field:litpic/]" alt="[field:fulltitle/]"></a>
 								</div>
-								<a class="carousel-control-prev" href="#carouselIndex" role="button" data-slide="prev">
-									<span class="carousel-control-prev-icon"></span>
-									<span class="sr-only">上一个</span>
-								</a>
-								<a class="carousel-control-next" href="#carouselIndex" role="button" data-slide="next">
-									<span class="carousel-control-next-icon"></span>
-									<span class="sr-only">下一个</span>
-								</a>
+								{/dede:arclist}
 							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-3 toutiao mb-3 mb-md-3">
-						<div class="row">
-							<div class="col-12 card ddcard-normal">
-								<div class="card-header">
-									<div class="row">
-										<div class="col-8 caption"><span>推荐头条</span></div>
-									</div>
-								</div>
-								<ul class="list-group list-group-flush">
-									{dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
-									<li>
-										<i class="fa fa-bookmark-o"></i>
-										<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
-									</li>
-									{/dede:arclist}
-								</ul>
-							</div>
+							<a class="carousel-control-prev" href="#carouselIndex" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon"></span>
+								<span class="sr-only">上一个</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselIndex" role="button" data-slide="next">
+								<span class="carousel-control-next-icon"></span>
+								<span class="sr-only">下一个</span>
+							</a>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 col-lg-9 index-left">
-					<div class="spec row">
+				<div class="col-12 col-lg-3 toutiao mb-3">
+					<div class="row">
+						<div class="col-12 card ddcard-normal">
+							<div class="card-header">
+								<div class="col-8 caption"><span>推荐头条</span></div>
+							
+							</div>
+							<ul class="list-group list-group-flush">
+								{dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
+								<li>
+									<i class="fa fa-bookmark-o"></i>
+									<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
+								</li>
+								{/dede:arclist}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-9">
+					<div class="row spec">
 						<div class="col-md-12">
-							<div class="dede-title">
+							<div class="dede-title mb-3">
 								<h4 class="dede">图文资讯</h4>
 							</div>
 						</div>
-						<div class="col-md-12 mt-3">
+						<div class="col-md-12 mb-3">
 							<div class="row row-cols-2 row-cols-md-4">
 								{dede:arclist row='4' orderby='pubdate' type='image.'}
 								<div class="col">
@@ -90,7 +85,7 @@
 					</div>
 					<div class="row">
 						{dede:channelartlist}
-						<div class="col-md-6 mt-3">
+						<div class="col-md-6 mb-3">
 							<div class="card ddcard-normal">
 								<div class="card-header">
 									<div class="row">

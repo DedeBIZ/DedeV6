@@ -1,7 +1,42 @@
 body {
 	line-height:1.5;
 	font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
+	color:#545b62;
+	letter-spacing:.6px
+}
+a {
 	color:#545b62
+}
+a:hover {
+	color:#ff8400;
+	text-decoration:none
+}
+img {
+	max-width:100%;
+	border-radius:.25rem
+}
+ul,ol {
+	margin:0;
+	padding:0;
+	list-style:none
+}
+h1,h2,h3,h4,h5,h6 {
+	margin:0;
+	line-height:1.5;
+	font-weight:600;
+	color:#393d49
+}
+h1 {
+	font-size:32px
+}
+h2 {
+	font-size:24px
+}
+h3,h4 {
+	font-size:18px
+}
+h5,h6 {
+	font-size:16px
 }
 .flink,.flink a,.copyright,.copyright a {
 	color:white
@@ -486,8 +521,7 @@ nav.location .dede li.active .nav-link {
 	line-height:1.5rem
 }
 .article-meta small {
-	color:#868686;
-	margin-left:1rem
+	color:#868686
 }
 .article-main .body {
 	word-break:break-all
