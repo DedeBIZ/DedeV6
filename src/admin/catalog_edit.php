@@ -184,11 +184,11 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="bline" align="center">栏目名称：</td>
-            <td class="bline"><input type="text" name="typename" value="<?php echo $myrow['typename'] ?>" style="width:260px" class="iptxt"></td>
+            <td class="bline"><input type="text" name="typename" value="<?php echo $myrow['typename'] ?>" style="width:260px"></td>
         </tr>
         <tr>
             <td class="bline" align="center"> 排列顺序：</td>
-            <td class="bline"> <input type="text" name="sortrank" value="<?php echo $myrow['sortrank'] ?>" style="width:100px" class="iptxt">（由低 &gt; 高）</td>
+            <td class="bline"> <input type="text" name="sortrank" value="<?php echo $myrow['sortrank'] ?>" style="width:100px">（由低 &gt; 高）</td>
         </tr>
         <tr>
             <td class="bline" align="center">浏览权限：</td>
@@ -209,7 +209,7 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="bline" align="center">文件保存目录：</td>
-            <td class="bline"><input type="text" name="typedir" value="<?php echo $myrow['typedir'] ?>" style="width:260px" class="iptxt"></td>
+            <td class="bline"><input type="text" name="typedir" value="<?php echo $myrow['typedir'] ?>" style="width:260px"></td>
         </tr>
         <tr>
             <td align="center" class="bline">栏目列表选项：</td>
@@ -221,7 +221,7 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="bline" align="center">默认页的名称：</td>
-            <td class="bline"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname'] ?>" style="width:260px" class="iptxt"></td>
+            <td class="bline"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname'] ?>" style="width:260px"></td>
         </tr>
         <tr>
             <td class="bline" align="center">栏目属性：</td>

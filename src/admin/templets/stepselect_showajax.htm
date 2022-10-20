@@ -10,8 +10,8 @@ if($arr['issystem']==0) $sbjs = '';
 <form action="stepselect_main.php" method="post" <?php echo $sbjs; ?>>
 <input type="hidden" name="action" value="edit_save">
 <input type="hidden" name="id" value="<?php echo $arr['id']; ?>">
-<div>类 别 名：<input type="text" name="itemname" class="iptxt" value="<?php echo $arr['itemname']; ?>" style="width:160px"></div>
-<div>缓存组名：<input type="text" name="egroup" class="iptxt" value="<?php echo $arr['egroup']; ?>" style="width:160px"></div>
+<div>类 别 名：<input type="text" name="itemname" value="<?php echo $arr['itemname']; ?>" style="width:160px"></div>
+<div>缓存组名：<input type="text" name="egroup" value="<?php echo $arr['egroup']; ?>" style="width:160px"></div>
 <div>缓存组名必须为英文或数字组合</div>
 <div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
@@ -23,8 +23,8 @@ if($arr['issystem']==0) $sbjs = '';
 <br style="clear:both">
 <form action="stepselect_main.php" method="post">
 <input type="hidden" name="action" value="addnew_save">
-<div>类 别 名：<input type="text" name="itemname" class="iptxt" style="width:160px"></div>
-<div>缓存组名：<input type="text" name="egroup" class="iptxt" style="width:160px"></div>
+<div>类 别 名：<input type="text" name="itemname" style="width:160px"></div>
+<div>缓存组名：<input type="text" name="egroup" style="width:160px"></div>
 <div>缓存组名必须为英文或数字组合</div>
 <div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
@@ -51,8 +51,8 @@ if($arr['issign']==0)
 <?php echo $options; ?>
 </select>
 </div>
-<div>枚举名：<input type="text" name="ename" class="iptxt" style="width:160px"></div>
-<div>排序值：<input type="text" name="disorder" class="iptxt" style="width:160px"></div>
+<div>枚举名：<input type="text" name="ename" style="width:160px"></div>
+<div>排序值：<input type="text" name="disorder" style="width:160px"></div>
 <div>如果不指定，默认以枚举添加先后来排序</div>
 <div><input type="submit" value="保存" class="np coolbg"/></div>
 </form>
