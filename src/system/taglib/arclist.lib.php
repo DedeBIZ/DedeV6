@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 文章列表调用标记
+ * 文档列表调用标记
  *
  * 9:19 2010年7月13日:修正对isweight属性的支持
  *
@@ -151,7 +151,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             $wmid =  isset($refObj->Fields['mid']) ? $refObj->Fields['mid'] : 0;
             $orwheres[] = " arc.mid = '$wmid' ";
         }
-        //时间限制(用于调用最近热门文章、热门评论之类)，这里的时间只能计算到天，否则缓存功能将无效
+        //时间限制(用于调用最近热门文档、热门评论之类)，这里的时间只能计算到天，否则缓存功能将无效
         if ($subday > 0) {
             $ntime = gmmktime(0, 0, 0, gmdate('m'), gmdate('d'), gmdate('Y'));
             $limitday = $ntime - ($subday * 24 * 3600);

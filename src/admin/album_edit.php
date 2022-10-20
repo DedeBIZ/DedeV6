@@ -371,7 +371,7 @@ else if ($dopost == 'save') {
     //返回成功信息
     $msg = "请选择您的后续操作：<a href='album_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布图集</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改图集</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>预览图集</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理已发布图集</a>$backurl";
     $wintitle = "成功修改图集";
-    $wecome_info = "文章管理::修改图集";
+    $wecome_info = "文档管理::修改图集";
     $win = new OxWindow();
     $win->AddTitle("成功修改一个图集：");
     $win->AddMsgItem($msg);

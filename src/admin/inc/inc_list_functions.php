@@ -101,7 +101,7 @@ function GetRankName($arcrank)
         return "不限";
     }
 }
-//判断内容是否为图片文章
+//判断内容是否为图片文档
 function IsPicArchives($picname)
 {
     if ($picname != '') {

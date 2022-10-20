@@ -289,7 +289,7 @@ function AnalyseHtmlBody($body, &$description, $dtype = '')
     return $body;
 }
 /**
- *  获得文章body里的外部资源
+ *  获得文档body里的外部资源
  *
  * @access    public
  * @param     string  $body  内容

@@ -1,7 +1,7 @@
 <?php
 /**
- * 关于文章权限设置的说明
- * 文章权限设置限制形式如下：
+ * 关于文档权限设置的说明
+ * 文档权限设置限制形式如下：
  * 如果指定了会员等级，那么必须到达这个等级才能浏览
  * 如果指定了金币，浏览时会扣指点的点数，并保存记录到用户业务记录中
  * 如果两者同时指定，那么必须同时满足两个条件
@@ -28,10 +28,10 @@ $needRank = $arc->Fields['arcrank'];
 require_once(DEDEINC.'/memberlogin.class.php');
 $cfg_ml = new MemberLogin();
 if ($needRank < 0 && $arc->Fields['mid'] != $cfg_ml->M_ID) {
-    ShowMsg('文章尚未审核，非作者本人无权查看', 'javascript:;');
+    ShowMsg('文档尚未审核，非作者本人无权查看', 'javascript:;');
     exit();
 }
-//设置了权限限制的文章
+//设置了权限限制的文档
 //arctitle msgtitle moremsg
 if ($needMoney > 0 || $needRank > 1) {
     $arctitle = $arc->Fields['title'];
@@ -55,7 +55,7 @@ if ($needMoney > 0 || $needRank > 1) {
     if ($needMoney > 0  && $arc->Fields['mid'] != $cfg_ml->M_ID) {
         $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE".$aid."' AND mid='".$cfg_ml->M_ID."'";
         $row = $dsql->GetOne($sql);
-        //未购买过此文章
+        //未购买过此文档
         if (!is_array($row)) {
             if ($cfg_ml->M_Money == '' || $needMoney > $cfg_ml->M_Money) {
                 $msgtitle = "您没有权限浏览文档：{$arctitle} ";

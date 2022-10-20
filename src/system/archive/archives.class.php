@@ -193,7 +193,7 @@ class Archives
             //设置全局环境变量
             $this->Fields['typename'] = $this->TypeLink->TypeInfos['typename'];
             @SetSysEnv($this->Fields['typeid'], $this->Fields['typename'], $this->Fields['id'], $this->Fields['title'], 'archives');
-            //文章图片注释替换为标题，利于优化
+            //文档图片注释替换为标题，利于优化
             $this->Fields['body'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['body']);
             $this->Fields['body'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['body']);
             $this->Fields['body'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\" ",$this->Fields['body']);
@@ -201,7 +201,7 @@ class Archives
             $this->Fields['imgurls'] = str_ireplace(array('alt=""','alt=\'\''),'',$this->Fields['imgurls']);
             $this->Fields['imgurls'] = preg_replace("@ [\s]{0,}alt[\s]{0,}=[\"'\s]{0,}[\s\S]{0,}[\"'\s] @isU","",$this->Fields['imgurls']);
             $this->Fields['imgurls'] = str_ireplace("<img","<img alt=\"".$this->Fields['title']."\" title=\"".$this->Fields['title']."\"",$this->Fields['imgurls']);
-            //清除文章图片的宽度和高度，适配自适应网站
+            //清除文档图片的宽度和高度，适配自适应网站
             $this->Fields['body'] = preg_replace("/style=\"width\:(.*)\"/","",$this->Fields['body']);
         }
         //完成附加表信息读取
@@ -343,7 +343,7 @@ class Archives
             $this->TypeLink->TypeInfos['sitepath']
         );
         $this->Fields['arcurl'] = $this->Fields['fullname'] = $filenameFull;
-        //对于已设置不生成HTML的文章直接返回网址
+        //对于已设置不生成HTML的文档直接返回网址
         if (
             $this->Fields['ismake'] == -1 || $this->Fields['arcrank'] != 0 || $this->Fields['money'] > 0 || ($this->Fields['typeid'] == 0 && $this->Fields['channel'] != -1)) {
             return $this->GetTrueUrl($filename);

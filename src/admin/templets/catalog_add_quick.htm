@@ -175,15 +175,15 @@
               <td bgcolor="#f8f8f8">支持变量：</td>
               <td bgcolor="#f8f8f8"> {Y}、{M}、{D} 年月日<br>
                 {timestamp} INT类型的UNIX时间戳<br>
-                {aid} 文章ID<br>
-                {pinyin} 拼音+文章ID<br>
-                {py} 拼音部首+文章ID<br>
+                {aid} 文档id<br>
+                {pinyin} 拼音+文档id<br>
+                {py} 拼音部首+文档id<br>
                 {typedir} 栏目目录 <br>
                 {cc} 日期+ID混编后用转换为适合的字母 <br>
               </td>
             </tr>
             <tr>
-              <td class="bline">文章命名规则：</td>
+              <td class="bline">文档命名规则：</td>
               <td class="bline">
                 <input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i> 

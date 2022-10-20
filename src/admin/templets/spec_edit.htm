@@ -290,7 +290,7 @@
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="adset" class="biz-border" style="display:none">
       <tr>
-        <td class="bline2"> 专题节点列表：文章列表用ID1,ID2,ID3这样形式分开，系统会自动排除不同节点的相同文章<br>关于单条记录模板里的[field:fieldname/]标记的使用，请参考关于系统帮助关于arclist标记的说明</td>
+        <td class="bline2"> 专题节点列表：文档列表用ID1,ID2,ID3这样形式分开，系统会自动排除不同节点的相同文档<br>关于单条记录模板里的[field:fieldname/]标记的使用，请参考关于系统帮助关于arclist标记的说明</td>
       </tr>
       <tr>
         <td>
@@ -335,14 +335,14 @@
               </td>
             </tr>
             <tr>
-              <td>节点文章列表：</td>
+              <td>节点文档列表：</td>
               <td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" style="width:90%"><?php echo $idlist?></textarea></td>
-              <td><button type="button" class="btn btn-success btn-sm"  name="selarc<?php echo $i?>" id="selarc<?php echo $i?>2" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文章</button></td>
+              <td><button type="button" class="btn btn-success btn-sm"  name="selarc<?php echo $i?>" id="selarc<?php echo $i?>2" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
             </tr>
             <tr>
               <td>文档来源：</td>
               <td>
-                <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" <?php if($isauto==0) echo "checked"; ?>> 按文章列表</label>
+                <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" <?php if($isauto==0) echo "checked"; ?>> 按文档列表</label>
                 <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1" <?php if($isauto==1) echo "checked"; ?>> 自动获取文档</label>
                 <label>关键词：<input type="text" name="keywords<?php echo $i?>" value="<?php echo $keywords?>" id="keywords<?php echo $i?>" value="" size="16">（逗号分开）</label>
                 <label>栏目id：<input type="text" name="typeid<?php echo $i?>" value="<?php echo $typeid?>" id="typeid<?php echo $i?>" value="0" size="4"></label>
@@ -382,14 +382,14 @@
               </td>
             </tr>
             <tr>
-              <td>节点文章列表：</td>
+              <td>节点文档列表：</td>
               <td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" style="width:90%"></textarea></td>
-              <td><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文章</button></td>
+              <td><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
             </tr>
             <tr>
               <td>文档来源：</td>
               <td>
-                <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文章列表</label>
+                <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="0" checked> 按文档列表</label>
                 <label><input type="radio" name="isauto<?php echo $i?>" id="isauto<?php echo $i?>" value="1"> 自动获取文档</label>
                 <label>关键词：<input type="text" name="keywords<?php echo $i?>" id="keywords<?php echo $i?>" value="" size="16">（空格分开）</label>
                 <label>栏目id：<input type="text" name="typeid<?php echo $i?>" id="_typeid<?php echo $i?>" value="0" size="4"></label>

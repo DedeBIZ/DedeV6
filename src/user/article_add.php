@@ -1,6 +1,6 @@
 <?php
 /**
- * 发布文章
+ * 发布文档
  * 
  * @version        $Id: article_add.php 1 8:38 2010年7月9日Z tianya $
  * @package        DedeBIZ.User
@@ -114,11 +114,11 @@ else if ($dopost == 'save') {
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     ClearMyAddon($arcID, $title);
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文章</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文章</a><a href='article_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改文章</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>已发布文章管理</a>";
-    $wintitle = "成功发布文章";
-    $wecome_info = "文章管理::发布文章";
+    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a><a href='article_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success btn-sm'>修改文档</a><a href='content_list.php?channelid={$channelid}' class='btn btn-success btn-sm'>已发布文档管理</a>";
+    $wintitle = "成功发布文档";
+    $wecome_info = "文档管理::发布文档";
     $win = new OxWindow();
-    $win->AddTitle("成功发布文章");
+    $win->AddTitle("成功发布文档");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

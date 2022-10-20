@@ -42,7 +42,7 @@ $actionSearch[0] = array(
         ),
         4  =>  array(
             'title' => '内容回收站',
-            'description' => '如果在"系统配置变量"的"核心设置"中开启了"文章回收站是否开启功能"，后台删除的文档将会存放在此处',
+            'description' => '如果在"系统配置变量"的"核心设置"中开启了"文档回收站是否开启功能"，后台删除的文档将会存放在此处',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'recycling.php'
         )
@@ -93,7 +93,7 @@ $actionSearch[3] = array(
     'soniterm' => array(
         0  =>  array(
             'title' => '内容模型管理 ',
-            'description' => '可以对现有商品、软件、图片集、普通文章、专题、分类信息等模型就行管理，也可以创建新的内容模型',
+            'description' => '可以对现有商品、软件、图片集、普通文档、专题、分类信息等模型就行管理，也可以创建新的内容模型',
             'purview' => 'c_List',
             'linkurl' => 'mychannel_main.php'
         ),
@@ -399,7 +399,7 @@ $actionSearch[9] = array(
         ),
         9  =>  array(
             'title' => '随机模板设置',
-            'description' => '本设置仅适用于系统默认的文章模型，设置后发布文章时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可',
+            'description' => '本设置仅适用于系统默认的文档模型，设置后发布文档时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可',
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_template_rand.php'
         ),

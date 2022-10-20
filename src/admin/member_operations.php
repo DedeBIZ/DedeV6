@@ -47,7 +47,7 @@ function GetMemberID($mid)
 function GetPType($tname)
 {
     if ($tname == 'card') return '点数卡';
-    else if ($tname == 'archive') return '购买文章';
+    else if ($tname == 'archive') return '购买文档';
     else if ($tname == 'stc') return '兑换金币';
     else return '会员升级';
 }

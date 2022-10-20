@@ -87,7 +87,7 @@ else if ($dopost == "edit") {
 }
 /*--------------------
 function delArchives()
-删除文章
+删除文档
 --------------------*/
 else if ($dopost == "delArc") {
     CheckRank(0, 0);
@@ -147,7 +147,7 @@ else if ($dopost == "delArc") {
 }
 /*-----------------
 function viewArchives()
-查看文章
+查看文档
 ------------------*/
 else if ($dopost == "viewArchives") {
     CheckRank(0, 0);

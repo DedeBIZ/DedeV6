@@ -190,7 +190,7 @@ function GetHostInfo($gurl)
  *  HTML里的网址格式转换
  *
  * @access    public
- * @param     string  $body  文章内容
+ * @param     string  $body  文档内容
  * @return    string
  */
 function TurnLinkTag(&$body)

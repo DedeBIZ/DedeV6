@@ -30,7 +30,7 @@ if ($dopost != 'save') {
     //获得频道模型信息
     $cInfos = $dsql->GetOne(" SELECT * FROM  `#@__channeltype` WHERE id='$channelid' ");
     $channelid = $cInfos['id'];
-    //获取文章最大id+1以确定当前权重
+    //获取文档最大id+1以确定当前权重
     $maxWright = $dsql->GetOne("SELECT id+1 AS cc FROM `#@__archives` ORDER BY id DESC LIMIT 1");
     $maxWright = empty($maxWright)? array('cc'=>1) : $maxWright;
     include DedeInclude("templets/soft_add.htm");
@@ -237,7 +237,7 @@ else if ($dopost == 'save') {
     $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>继续发布软件</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>查看软件</a><a href='archives_do.php?aid=".$arcID."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布软件管理</a><a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>";
     $msg = "<div style=\"line-height:36px;height:36px\">{$msg}</div>".GetUpdateTest();
     $wintitle = "成功发布一个软件";
-    $wecome_info = "文章管理::发布软件";
+    $wecome_info = "文档管理::发布软件";
     $win = new OxWindow();
     $win->AddTitle("成功发布软件：");
     $win->AddMsgItem($msg);

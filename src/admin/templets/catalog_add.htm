@@ -419,7 +419,7 @@
               </td>
             </tr>
             <tr>
-              <td>文章模板：</td>
+              <td>文档模板：</td>
               <td>
                 <input type="text" name="temparticle" value="{style}/article_<?php echo $nid?>.htm" style="width:260px">
                 <button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
@@ -430,9 +430,9 @@
               <td bgcolor="#f8f8f8">
                 {Y}、{M}、{D} 年月日<br>
                 {timestamp} INT类型的UNIX时间戳<br>
-                {aid} 文章ID<br>
-                {pinyin} 拼音+文章ID<br>
-                {py} 拼音部首+文章ID<br>
+                {aid} 文档id<br>
+                {pinyin} 拼音+文档id<br>
+                {py} 拼音部首+文档id<br>
                 {typedir} 栏目目录<br>
                 {cc} 日期+ID混编后用转换为适合的字母<br>
                 Nginx伪静态默认规则<br>
@@ -441,7 +441,7 @@
               </td>
             </tr>
             <tr>
-              <td>文章命名规则：</td>
+              <td>文档命名规则：</td>
               <td>
                 <input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule; ?>" style="width:260px">
                 <i class="fa fa-question-circle"  title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i> 

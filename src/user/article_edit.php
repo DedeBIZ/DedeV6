@@ -1,6 +1,6 @@
 <?php
 /**
- * 编辑文章
+ * 编辑文档
  * 
  * @version        $Id: article_edit.php 1 13:52 2010年7月9日Z tianya $
  * @package        DedeBIZ.User
@@ -28,7 +28,7 @@ if (empty($dopost)) {
         WHERE arc.id='$aid' And arc.mid='".$cfg_ml->M_ID."'; ";
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
-        ShowMsg("读取文章信息出错!", "-1");
+        ShowMsg("读取文档信息出错!", "-1");
         exit();
     } else if ($row['arcrank'] >= 0) {
         $dtime = time();
@@ -103,11 +103,11 @@ else if ($dopost == 'save') {
         $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新文章</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>查看修改</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文章</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理文章</a>";
-    $wintitle = "成功修改文章";
-    $wecome_info = "文章管理::修改文章";
+    $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success btn-sm'>查看修改</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success btn-sm'>管理文档</a>";
+    $wintitle = "成功修改文档";
+    $wecome_info = "文档管理::修改文档";
     $win = new OxWindow();
-    $win->AddTitle("成功修改文章");
+    $win->AddTitle("成功修改文档");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

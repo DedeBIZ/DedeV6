@@ -55,7 +55,7 @@ if (!empty($heightdone)) $action = $heightdone;
 //指量审核
 if ($action == 'check') {
     if (empty($startid) || empty($endid) || $endid < $startid) {
-        ShowMsg('该操作必须指定起始ID', 'javascript:;');
+        ShowMsg('该操作必须指定起始id', 'javascript:;');
         exit();
     }
     $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
@@ -75,7 +75,7 @@ if ($action == 'check') {
 //批量删除
 else if ($action == 'del') {
     if (empty($startid) || empty($endid) || $endid < $startid) {
-        ShowMsg('该操作必须指定起始ID', 'javascript:;');
+        ShowMsg('该操作必须指定起始id', 'javascript:;');
         exit();
     }
     $dsql->SetQuery("SELECT id FROM `#@__archives` $gwhere");
@@ -98,7 +98,7 @@ else if ($action == 'delnulltitle') {
     ShowMsg("成功删除 $tdd 条记录", "javascript:;");
     exit();
 }
-//删除空内容文章
+//删除空内容文档
 else if ($action == 'delnullbody') {
     $dsql->SetQuery("SELECT aid FROM `#@__addonarticle` WHERE LENGTH(body) < 10 ");
     $dsql->Execute('x');

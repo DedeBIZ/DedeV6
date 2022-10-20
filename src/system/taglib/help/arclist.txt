@@ -1,4 +1,4 @@
-文章列表调用标记
+文档列表调用标记
 >>dede>>
 {dede:arclist  flag='h' typeid='' row='' col='' titlelen='' infolen='' 
 imgwidth='' imgheight='' listtype='' orderby='' keyword='' limit='0,1'}
@@ -19,7 +19,7 @@ orderby='sortrank' 文档排序方式
 	§ orderby='near' 
 	§ orderby=='lastpost' 按最后评论时间
 	§ orderby=='scores' 按得分排序
-	§ orderby='id' 按文章ID排序
+	§ orderby='id' 按文档id排序
 	§ orderby='rand' 随机获得指定条件的文档列表
 keyword='' 含有指定关键词的文档列表，多个关键词用","分
 innertext = '' 单条记录样式

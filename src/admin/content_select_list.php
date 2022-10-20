@@ -1,6 +1,6 @@
 <?php
 /**
- * 选择文章
+ * 选择文档
  *
  * @version        $Id: content_select_list.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator

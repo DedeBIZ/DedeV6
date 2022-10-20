@@ -67,7 +67,7 @@ else if ($action == 'editload') {
         </td>
       </tr>
       <tr>
-        <td>用作文章来源：</td>
+        <td>用作文档来源：</td>
         <td colspan="2">
           <label><input type="radio" name="issource" value="0" <?php echo ($row['issource'] == 0 ? 'checked="checked"' : ''); ?>> 否</label>
           <label><input type="radio" name="issource" value="1" <?php echo ($row['issource'] == 1 ? 'checked="checked"' : ''); ?>> 是</label>
@@ -86,7 +86,7 @@ else if ($action == 'editload') {
       </tr>
       <tr>
         <td>采集规则：</td>
-        <td colspan="2">仅针对文章内容，格式：前面HTML{@body}后面HMTL</td>
+        <td colspan="2">仅针对文档内容，格式：前面HTML{@body}后面HMTL</td>
       </tr>
       <tr>
         <td height="90"></td>

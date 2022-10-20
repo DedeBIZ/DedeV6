@@ -1,4 +1,4 @@
-单表模型的文章列表调用标记
+单表模型的文档列表调用标记
 >>dede>>
 {dede:arclistsg  flag='h' typeid='' row='' col='' titlelen='' orderway='' keyword='' limit='0,1'}
 <a href='[field:arcurl/]'>[field:title/]</a>

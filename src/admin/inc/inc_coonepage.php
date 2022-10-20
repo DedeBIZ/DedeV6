@@ -1,6 +1,6 @@
 <?php
 /**
- * 采集指定页面作为文章发布源
+ * 采集指定页面作为文档发布源
  *
  * @version        $Id: inc_coonepage.php 1 10:32 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator

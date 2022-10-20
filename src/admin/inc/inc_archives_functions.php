@@ -88,7 +88,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
     return $rsimg;
 }
 /**
- * 获得文章body里的外部资源
+ * 获得文档body里的外部资源
  *
  * @access    public
  * @param     string  $body  文档内容

@@ -1,6 +1,6 @@
 <?php
 /**
- * 文章作者管理
+ * 文档作者管理
  *
  * @version        $Id: article_writer_edit.php 1 14:31 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
@@ -29,8 +29,8 @@ if (empty($allwriter) && filesize($m_file) > 0) {
     $allwriter = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wintitle = "文章作者管理";
-$wecome_info = "文章作者管理";
+$wintitle = "文档作者管理";
+$wecome_info = "文档作者管理";
 $win = new OxWindow();
 $win->Init('article_writer_edit.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');

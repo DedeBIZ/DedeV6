@@ -21,7 +21,7 @@ $channelid = empty($channelid) ? 0 : intval($channelid);
 function addArchives();
 ---------------------------*/
 if ($dopost == "addArchives") {
-    //默认文章调用发布表单
+    //默认文档调用发布表单
     if (empty($cid) && empty($channelid)) {
         header("location:article_add.php");
         exit();

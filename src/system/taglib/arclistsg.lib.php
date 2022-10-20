@@ -1,6 +1,6 @@
 <?php
 /**
- * 单表模型的文章列表调用标记
+ * 单表模型的文档列表调用标记
  *
  * @version        $Id: arclistsg.lib.php 1 9:29 2010年7月6日Z tianya $
  * @package        DedeBIZ.Taglib
@@ -62,7 +62,7 @@ function lib_arclistsg(&$ctag, &$refObj)
         if ($orderby == 'near' && $cfg_keyword_like == 'N') {
             $keyword = '';
         }
-        //时间限制(用于调用最近热门文章、热门评论之类)
+        //时间限制(用于调用最近热门文档、热门评论之类)
         if ($subday > 0) {
             //这里的时间只能计算到天，否则缓存功能将无效
             $ntime = gmmktime(0, 0, 0, gmdate('m'), gmdate('d'), gmdate('Y'));

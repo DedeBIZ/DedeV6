@@ -29,7 +29,7 @@ if (!function_exists('GetRankStar')) {
     }
 }
 /**
- *  获得文章网址
+ *  获得文档网址
  *  如果要获得文件的路径，直接用
  *  GetFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)
  *  即是不指定站点参数则返回相当对根目录的真实路径
@@ -461,7 +461,7 @@ function MakeOneTag(&$dtp, &$refObj, $parfield = 'Y')
             }
             continue;
         }
-        //由于考虑兼容性，原来文章调用使用的标记别名统一保留，这些标记实际调用的解析文件为inc_arclist.php
+        //由于考虑兼容性，原来文档调用使用的标记别名统一保留，这些标记实际调用的解析文件为inc_arclist.php
         if (preg_match("/^(artlist|likeart|hotart|imglist|imginfolist|coolart|specart|autolist)$/", $tagname)) {
             $tagname = 'arclist';
         }

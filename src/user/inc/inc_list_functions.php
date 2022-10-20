@@ -113,7 +113,7 @@ function GetRankName($arcrank)
     }
 }
 /**
- *  判断内容是否为图片文章
+ *  判断内容是否为图片文档
  *
  * @param     string  $picname  图片名称
  * @return    string

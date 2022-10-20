@@ -12,7 +12,7 @@ heightsearch.htm,高级搜索
 js.htm,JS调用默认模板
 list_diyform.htm,自定义表单默认内容列表
 post_diyform.htm,自定义表单发送内容页
-recommend.htm,文章推荐
+recommend.htm,文档推荐
 rss.htm,RSS模板
 rssmap.htm,RSS地图模板
 shops_action_alipay.htm,支付宝支付模板

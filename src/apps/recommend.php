@@ -37,7 +37,7 @@ else if ($action == 'send') {
     }
     $mailbody = '';
     $msg = RemoveXSS(dede_htmlspecialchars($msg));
-    $mailtitle = "您的好友给您推荐了一篇文章";
+    $mailtitle = "您的好友给您推荐了一篇文档";
     $mailbody .= "$msg \r\n\r\n";
     $mailbody .= "Powered by DedeBIZ";
     $headers = "From: ".$cfg_adminemail."\r\nReply-To: ".$cfg_adminemail;
@@ -58,7 +58,7 @@ else if ($action == 'send') {
             @mail($email, $mailtitle, $mailbody, $headers);
         }
     }
-    ShowMsg("成功推荐一篇文章", $arcurl);
+    ShowMsg("成功推荐一篇文档", $arcurl);
     exit();
 }
 $arcRow = GetOneArchive($aid);

@@ -177,11 +177,11 @@ else if ($open == 2) {
             exit();
         }
         //以下为正常情况，自动扣点数
-        //如果文章需要金币，检查用户是否浏览过本文档
+        //如果文档需要金币，检查用户是否浏览过本文档
         if ($needMoney > 0  && $mid != $cfg_ml->M_ID) {
             $sql = "SELECT aid,money FROM `#@__member_operation` WHERE buyid='ARCHIVE".$id."' AND mid='".$cfg_ml->M_ID."'";
             $row = $dsql->GetOne($sql);
-            //未购买过此文章
+            //未购买过此文档
             if (!is_array($row)) {
                 //没有足够的金币
                 if ($needMoney > $cfg_ml->M_Money || $cfg_ml->M_Money == '') {

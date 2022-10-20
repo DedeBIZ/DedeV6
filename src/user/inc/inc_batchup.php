@@ -36,9 +36,9 @@ function DelArc($aid)
     //删除数据库的内容
     $dsql->ExecuteNoneQuery(" DELETE FROM `#@__arctiny` WHERE id='$aid' ");
     if ($arcRow['addtable'] != '') {
-        //判断删除文章附件变量是否开启；
+        //判断删除文档附件变量是否开启；
         if ($cfg_upload_switch == 'Y') {
-            //判断文章属性；
+            //判断文档属性；
             switch ($arcRow['nid']) {
                 case "image":
                     $nid = "imgurls";
@@ -66,7 +66,7 @@ function DelArc($aid)
                     }
                 }
                 $tmpname = '/(\\'.$cfg_medias_dir.'.+?)(\"| )/';
-                //取出文章附件
+                //取出文档附件
                 preg_match_all("$tmpname", $row["$nid"], $delname);
                 //移出重复附件
                 $delname = array_unique($delname['1']);

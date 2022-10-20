@@ -84,7 +84,7 @@
         </td>
       </tr>
       <tr>
-        <td>起始ID：</td>
+        <td>起始id：</td>
         <td>
           开始：<input name="startid" type="text" id="startid" size="10">
           结束：<input name="endid" type="text" id="endid" size="10">
@@ -124,21 +124,24 @@
         </td>
       </tr>
       <tr>
-        <td align="center"><span class="moveField" style="display:none">移动选项：</span></td>
+        <td colspan="2" bgcolor="#fbfce2" align="center">
+          <button type="button" name="b112" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button>
+        </td>
+      </tr>
+    </form>
+    <form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
+      <input type="hidden" name="dopost" value="go">
+      <tr>
+        <td>操作：</td>
         <td>
-          <?php
-          echo "<span class='moveField' style='display:none'>新位置：";
-          echo "<select name='newtypeid' style='width:260px'>";
-          echo $typeOptions;
-          echo "</select>";
-          echo "<hr>";
-          echo "标题关键词：<input id='movekeyword' type='text' name='keyword' value=''></span>";
-    	    ?>
+          <label><input type="radio" value="delnulltitle" name="action"> 删除空标题的文档</label>
+          <label><input type="radio" value="delnullbody" name="action"> 删除内容为空的文档</label>
+          <label><input type="radio" value="modddpic" name="action"> 更正缩图错误</label>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#fbfce2" colspan="2" align="center">
-          <button type="button" name="b112" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button>
+        <td colspan="2" bgcolor="#fbfce2" align="center">
+          <button type="button" name="b112" onClick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button>
         </td>
       </tr>
     </form>
@@ -168,31 +171,6 @@
         </div>
       </td>
     </tr>
-    <form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
-      <input type="hidden" name="dopost" value="go">
-      <tr>
-        <td bgcolor="#f8f8f8" colspan="2">
-          <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
-            <tr>
-              <td width="30%">错误文档修正</td>
-              <td width="70%" align="right"></td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" align="center">
-          <label><input type="radio" value="delnulltitle" name="action"> 删除空标题的文章</label>
-          <label><input type="radio" value="delnullbody" name="action"> 删除内容为空的文章</label>
-          <label><input type="radio" value="modddpic" name="action"> 更正缩图错误</label>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" bgcolor="#f8f8f8" align="center">
-          <button type="button" name="b112" onClick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button>
-        </td>
-      </tr>
-    </form>
   </table>
 </body>
 </html>
