@@ -433,8 +433,11 @@
                 {aid} 文章ID<br>
                 {pinyin} 拼音+文章ID<br>
                 {py} 拼音部首+文章ID<br>
-                {typedir} 栏目目录 <br>
-                {cc} 日期+ID混编后用转换为适合的字母
+                {typedir} 栏目目录<br>
+                {cc} 日期+ID混编后用转换为适合的字母<br>
+                Nginx伪静态默认规则<br>
+                rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
+                rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
               </td>
             </tr>
             <tr>
@@ -446,7 +449,12 @@
             </tr>
             <tr id="helpvar3" style="display:none">
               <td bgcolor="#f8f8f8">支持变量：</td>
-              <td bgcolor="#f8f8f8">{page} 列表的页码</td>
+              <td bgcolor="#f8f8f8">
+                {page} 列表的页码<br>
+                Nginx伪静态默认规则<br>
+                rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
+                rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
+              </td>
             </tr>
             <tr>
               <td>列表命名规则：</td>
