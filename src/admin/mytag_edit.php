@@ -46,7 +46,7 @@ if ($dopost == 'delete') {
     $wecome_info = "<a href='mytag_main.php'>宏标记定义</a>::获取JS";
     $win = new OxWindow();
     $win->Init();
-    $win->AddTitle('以下为选定宏标记的JS调用代码：');
+    $win->AddTitle('以下为选定宏标记的js调用代码：');
     $winform = $win->GetWindow('hand', $showhtml);
     $win->Display();
     exit();

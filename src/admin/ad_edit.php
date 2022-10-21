@@ -36,7 +36,7 @@ if ($dopost == 'delete') {
     $win->AddTitle("织梦CMS标签调用代码：");
     $winform = $win->GetWindow("hand", $showtag);
     $win->myWinItem = '';
-    $win->AddTitle("以下为选定广告的JS调用代码：");
+    $win->AddTitle("以下为选定广告的js调用代码：");
     $winform = $win->GetWindow("hand", $showhtml);
     $win->Display();
     exit();

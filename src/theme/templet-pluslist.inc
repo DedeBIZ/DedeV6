@@ -5,11 +5,11 @@ erraddsave.htm,挑错处理
 feedback_confirm.htm,评论重确认页面
 feedback_quote.htm,评论回复页面
 feedback_templet.htm,评论页
-feedback_templet_js.htm,评论JS调用模板
+feedback_templet_js.htm,评论js调用模板
 flink-add.htm,增加友情链接
 flink-list.htm,友情链接列表
 heightsearch.htm,高级搜索
-js.htm,JS调用默认模板
+js.htm,js调用默认模板
 list_diyform.htm,自定义表单默认内容列表
 post_diyform.htm,自定义表单发送内容页
 recommend.htm,文档推荐

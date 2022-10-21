@@ -1,6 +1,6 @@
 <?php
 /**
- * 广告JS调用方式
+ * 广告js调用方式
  *
  * @version        $Id: ad_js.php 1 20:30 2010年7月8日Z tianya $
  * @package        DedeBIZ.Site
