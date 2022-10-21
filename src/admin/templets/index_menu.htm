@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>系统菜单</title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<link rel="stylesheet" href="css/menu.css">
-		<?php echo "<script>var curopenItem = '$openitem';</script>"; ?>
+		<?php echo "<script>var curopenItem = '$openitem';</script>";?>
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/leftmenu.js"></script>
@@ -39,7 +39,7 @@
 					<?php }?>
 				</td>
 				<td valign="top" class="menu-right">
-					<div id="ct1"><?php GetMenus($cuserLogin->getUserRank(),'main'); ?></div>
+					<div id="ct1"><?php GetMenus($cuserLogin->getUserRank(),'main');?></div>
 					<div id="ct100"></div>
 					<div id="ct3"></div>
 					<div id="ct5"></div>

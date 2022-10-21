@@ -37,11 +37,6 @@
 	margin-left:1em;
 	line-height:64px
 }
-main.member {
-	background:url("../img/member_home_bg.jpg");
-	background-repeat:no-repeat;
-	background-position:top center
-}
 .member .member-rank a {
 	color:white
 }
@@ -90,8 +85,9 @@ option.option2 {
 	float:none;
 	margin:auto
 }
-}.btn+.btn,.btn-text+.btn-text {
-	margin-left:10px
+}
+.btn+.btn,.btn-text+.btn-text {
+	margin-left:1rem
 }
 .fa {
 	font-size:14px!important;
@@ -100,10 +96,6 @@ option.option2 {
 .table {
 	color:#545b62
 }
-.table td,.table th {
-	padding:.6rem;
-	vertical-align:middle
-}
-.table th img,.table td img {
-	vertical-align:text-bottom
+.user-meter i {
+	font-size:24px!important
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>修改分类</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <style>table{border-collapse:inherit}</style>
-  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
   <script src="../static/web/js/moment.min.js"></script>
@@ -23,7 +23,7 @@
   function checkSubmit()
   {
 	if(document.form1.title.value==""){
-	  ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
+	  ShowMsg("<?php echo $cInfos['titlename'];?>不能为空");
 	  document.form1.title.focus();
 	  return false;
 	}
@@ -34,7 +34,7 @@
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
     <tr>
       <td width="70%"><i class="fa fa-map"></i> <a href="content_sg_list.php?cid=<?php echo $addRow['typeid']?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 修改分类</td>
-      <td width="30%" align="right"><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
+      <td width="30%" align="right"><?php echo $backurl;?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
     </tr>
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -49,17 +49,17 @@
     </tr>
   </table>
 <form name="form1" action="archives_sg_edit.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit();">
-<input type="hidden" name="channelid" value="<?php echo $channelid; ?>">
-<input type="hidden" name="id" value="<?php echo $aid; ?>">
-<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate']; ?>">
+<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
+<input type="hidden" name="id" value="<?php echo $aid;?>">
+<input type="hidden" name="sortrank" value="<?php echo $addRow['senddate'];?>">
 <input type="hidden" name="dopost" value="save">
   <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
     <tr>
       <td class="bline">
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
-            <td><input type="text" name="title" id="title" value="<?php echo $addRow['title']; ?>" style="width:390px"></td>
+            <td width="90"> <?php echo $cInfos['titlename'];?>：</td>
+            <td><input type="text" name="title" id="title" value="<?php echo $addRow['title'];?>" style="width:390px"></td>
           </tr>
         </table>
       </td>
@@ -86,7 +86,7 @@
         </table>
       </td>
     </tr>
-    <tr id="pictable" style="<?php if($cInfos['needpic']==0) echo 'display:none'; ?>">
+    <tr id="pictable" style="<?php if($cInfos['needpic']==0) echo 'display:none';?>">
       <td class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
@@ -98,7 +98,7 @@
               <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
               <button type="button" id="btnClearAll" class="btn btn-success btn-smete">清空</button>
             </td>
-            <td align="center"><img src="<?php if($addRow['litpic']!='') echo $addRow['litpic']; else echo '../static/web/img/defaultpic.jpg'; ?>" id="litPic" class="thumbnail"></td>
+            <td align="center"><img src="<?php if($addRow['litpic']!='') echo $addRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
           </tr>
         </table>
       </td>
@@ -121,7 +121,7 @@
             echo $typeOptions;
             echo "</select>";
 			      ?>
-			      <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid','<?php echo $addRow['typeid']; ?>')" title="快捷选择" style="cursor:pointer"></i> 
+			      <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $addRow['typeid'];?>')" title="快捷选择" style="cursor:pointer"></i> 
 			      </td>
           </tr>
         </table>
@@ -134,7 +134,7 @@
             <td width="90"> 浏览权限：</td>
             <td>
               <select name="arcrank" id="arcrank" style="width:160px">
-              <option value='<?php echo $addRow["arcrank"]; ?>'><?php echo $addRow["rankname"]; ?></option>
+              <option value='<?php echo $addRow["arcrank"];?>'><?php echo $addRow["rankname"];?></option>
               <?php
               $urank = $cuserLogin->getUserRank();
               $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank' And `rank`<>'{$addRow["arcrank"]}' ");

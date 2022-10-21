@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>模板管理器</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -14,7 +14,7 @@
 		</style>
 		<script>
 			function DelTpl(filename) {
-				if (window.confirm('您确定要删除这篇文档吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir; ?>&filename=' +
+				if (window.confirm('您确定要删除这篇文档吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir;?>&filename=' +
 					filename;
 				else return false;
 			}
@@ -53,15 +53,15 @@
 				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 			?>
 			<tr onMouseMove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-				<td><a href="<?php echo $templeturld.'/'.$filename; ?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename; ?></a></td>
-				<td><?php echo $fileinfo; ?></td>
-				<td align="center"><?php echo $filetime; ?></td>
+				<td><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename;?></a></td>
+				<td><?php echo $fileinfo;?></td>
+				<td align="center"><?php echo $filetime;?></td>
 				<td align="center">
-					<a href="tpl.php?action=edit&acdir=<?php echo $acdir; ?>&filename=<?php echo $filename; ?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a>
+					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a>
 					<?php
 					if(!isset($fileinfos[$filename])){
 					?>
-					<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename; ?>');" title="删除"><i class="fa fa-trash"></i></a>
+					<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename;?>');" title="删除"><i class="fa fa-trash"></i></a>
 					<?php
 					}
 					?>
@@ -72,8 +72,8 @@
 			?>
 			<tr>
 				<td bgcolor="#f8f8f8" align="center" colspan="4" class="py-2">
-					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir; ?>">新建模板</a>
-					<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir; ?>">上传模板</a>
+					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir;?>">新建模板</a>
+					<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir;?>">上传模板</a>
 				</td>
 			</tr>
 		</table>

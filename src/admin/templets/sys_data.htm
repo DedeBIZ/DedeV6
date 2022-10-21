@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>数据库维护</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -108,26 +108,26 @@
 					$t = $dedeSysTables[$i];
 					echo "<tr align='center'>";
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t; ?>" checked></td>
-				<td><?php echo $t; ?></td>
-				<td><?php echo TjCount($t,$dsql); ?></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked></td>
+				<td><?php echo $t;?></td>
+				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
-					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">优化</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">修复</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">结构</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">优化</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">修复</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">结构</a>
 				</td>
 				<?php
 				$i++;
 				if(isset($dedeSysTables[$i])) {
 					$t = $dedeSysTables[$i];
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t; ?>" checked></td>
-				<td><?php echo $t; ?></td>
-				<td><?php echo TjCount($t,$dsql); ?></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked></td>
+				<td><?php echo $t;?></td>
+				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
-					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">优化</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">修复</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">结构</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">优化</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">修复</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">结构</a>
 				</td>
 				<?php
 				} else {
@@ -155,26 +155,26 @@
 					$t = $otherTables[$i];
 					echo "<tr align='center'>";
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t; ?>"></td>
-				<td><?php echo $t; ?></td>
-				<td><?php echo TjCount($t,$dsql); ?></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t;?>"></td>
+				<td><?php echo $t;?></td>
+				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
-					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">优化</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">修复</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">结构</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">优化</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">修复</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">结构</a>
 				</td>
 				<?php
 				$i++;
 				if(isset($otherTables[$i])) {
 					$t = $otherTables[$i];
 				?>
-				<td><input type="checkbox" name="tables" value="<?php echo $t; ?>"></td>
-				<td><?php echo $t; ?></td>
-				<td><?php echo TjCount($t,$dsql); ?></td>
+				<td><input type="checkbox" name="tables" value="<?php echo $t;?>"></td>
+				<td><?php echo $t;?></td>
+				<td><?php echo TjCount($t,$dsql);?></td>
 				<td>
-					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">优化</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">修复</a>
-					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t; ?>');" class="btn btn-success btn-sm">结构</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=opimize&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">优化</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=repair&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">修复</a>
+					<a href="javascript:;" onClick="LoadUrl('dopost=viewinfo&tablename=<?php echo $t;?>');" class="btn btn-success btn-sm">结构</a>
 				</td>
 				<?php
 				} else {

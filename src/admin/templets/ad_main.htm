@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>广告管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
               <td width="180" align="center">
                 <select name="clsid" id="clsid" style="width:160px">
                   <option value="0">默认分类</option>
-                  <?php echo $option; ?>
+                  <?php echo $option;?>
                 </select>
               </td>
               <td width="270"><input type="text" name="keyword" placeholder="请输入关键词" style="width:260px"></td>
@@ -57,7 +57,7 @@
       </td>
     </tr>
     {/dede:datalist}
-    <tr height="36" bgcolor="#f8f8f8" align="center">
+    <tr class="py-2" bgcolor="#f8f8f8" align="center">
       <td colspan="7">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>

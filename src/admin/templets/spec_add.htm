@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>发布专题</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <style>table{border-collapse:inherit}</style>
-  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
   <script src="../static/web/js/moment.min.js"></script>
@@ -205,7 +205,7 @@
                 <input type="text" name="keywords" id="keywords" value="" style="width:360px">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
-              <td><label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo 'checked="1"'; ?> />自动获取，手动填写用","分开</label></td>
+              <td><label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo 'checked="1"';?> />自动获取，手动填写用","分开</label></td>
             </tr>
           </table>
         </td>
@@ -226,8 +226,8 @@
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'"; ?>> 允许评论</label>
-                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'"; ?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
+                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
@@ -264,7 +264,7 @@
               ?>
               </td>
               <td width="90">浏览次数：</td>
-              <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click); ?>" style="width:160px"></td>
+              <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click);?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
@@ -302,9 +302,9 @@
               <td>
                 <table width="900" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="310"><input type="text" name="notename<?php echo $i?>" value="<?php echo $nodename; ?>" id="notename<?php echo $i?>" style="width:300px"></td>
+                    <td width="310"><input type="text" name="notename<?php echo $i?>" value="<?php echo $nodename;?>" id="notename<?php echo $i?>" style="width:300px"></td>
                     <td width="90">节点标识：</td>
-                    <td><input type="text" name="noteid<?php echo $i?>" value="<?php echo $nodeid; ?>" id="noteid<?php echo $i?>" style="width:160px"></td>
+                    <td><input type="text" name="noteid<?php echo $i?>" value="<?php echo $nodeid;?>" id="noteid<?php echo $i?>" style="width:160px"></td>
                   </tr>
                 </table>
               </td>

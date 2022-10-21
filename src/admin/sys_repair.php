@@ -19,19 +19,17 @@ if (empty($dopost)) {
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table>
-    <tr>
-    <td>
-    由于手动升级时用户没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理<br>
-    本工具目前主要执行下面动作：<br>
-    1、修复/优化数据表；<br>
-    2、更新系统缓存；<br>
-    3、检测系统变量一致性<br>
-    4、检测微表与主表数据一致性<br>
-    <br>
-    <a href='sys_repair.php?dopost=1' class='btn btn-danger'>常规检测</a>
-    </td>
-  </tr>
- </table>
+        <tr>
+            <td>
+                由于手动升级时用户没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
+                1、修复/优化数据表；<br>
+                2、更新系统缓存；<br>
+                3、检测系统变量一致性<br>
+                4、检测微表与主表数据一致性<br>
+                <br><a href='sys_repair.php?dopost=1' class='btn btn-danger btn-sm'>常规检测</a>
+            </td>
+        </tr>
+    </table>
     ";
     $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');
@@ -50,19 +48,17 @@ else if ($dopost == 1) {
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table>
-    <tr>
-    <td>
-    <span class='text-dark'>已完成数据结构完整性检测</span>
-    <br>
-    如果您系统有下面几种问题之一，请检测微表正确性：<br>
-    1、无法获得主键，因此无法进行后续操作<br>
-    2、更新数据库archives表时出错<br>
-    3、列表显示数据目与实际文档数不一致<br>
-    <br>
-    <a href='sys_repair.php?dopost=2' class='btn btn-danger'>检测数据</a>
-    </td>
-  </tr>
- </table>
+        <tr>
+            <td>
+            <span class='text-dark'>已完成数据结构完整性检测</span>
+            如果您系统有下面几种问题之一，请检测微表正确性：<br>
+            1、无法获得主键，因此无法进行后续操作<br>
+            2、更新数据库archives表时出错<br>
+            3、列表显示数据目与实际文档数不一致<br>
+            <br><a href='sys_repair.php?dopost=2' class='btn btn-danger btn-sm'>检测数据</a>
+            </td>
+        </tr>
+    </table>
     ";
     $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');
@@ -78,7 +74,7 @@ else if ($dopost == 2) {
     $allarcnum = 0;
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__archives` ");
     $allarcnum = $arcnum = $row['dd'];
-    $msg .= "#@__archives 表总记录数：{$arcnum} <br>";
+    $msg .= "#@__archives 表总记录数：{$arcnum}<br>";
     $shtables = array();
     $dsql->Execute('me', " SELECT addtable FROM `#@__channeltype` WHERE id < -1 ");
     while ($row = $dsql->GetArray('me')) {
@@ -94,7 +90,7 @@ else if ($dopost == 2) {
             }
         }
     }
-    $msg .= "总有效记录数：{$allarcnum} <br> ";
+    $msg .= "总有效记录数：{$allarcnum}<br>";
     $errall = "<a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>";
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
     $msg .= "微统计表记录数：{$row['dd']}<br>";
@@ -120,7 +116,7 @@ else if ($dopost == 2) {
             $msg .= "<span class='text-dark'>修正记录成功</span><br>";
         } else {
             $msg .= "<span class='text-danger'>修正记录失败，建议进行高级综合检测</span><br>";
-            $errall = "<a href='sys_repair.php?dopost=3' class='btn btn-danger'>结合性检测</a> ";
+            $errall = "<a href='sys_repair.php?dopost=3' class='btn btn-danger btn-sm'>结合性检测</a> ";
         }
     }
     UpDateCatCache();
@@ -131,14 +127,13 @@ else if ($dopost == 2) {
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table>
-    <tr>
-    <td>
-    {$msg}
-    <br>
-    {$errall}
-    </td>
-  </tr>
- </table>
+        <tr>
+            <td>
+                {$msg}<br>
+                {$errall}
+            </td>
+        </tr>
+    </table>
     ";
     $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');
@@ -146,7 +141,7 @@ else if ($dopost == 2) {
     exit();
 }
 /*-------------------
-高级方式修复微表(会删除不合法主键的内容)
+高级方式修复微表，会删除不合法主键的内容
 function 3_re_arctiny() {  }
 --------------------*/
 else if ($dopost == 3) {
@@ -189,13 +184,12 @@ else if ($dopost == 3) {
     $msg = "
     <table>
     <tr>
-    <td>
-    完成所有修复操作，移除错误记录 {$errnum} 条
-    <br>
-    <a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>
-    </td>
-  </tr>
- </table>
+        <td>
+            完成所有修复操作，移除错误记录{$errnum}条<br>
+            <br><a href='index_body.php' class='btn btn-success btn-sm'>完成修正</a>
+        </td>
+    </tr>
+    </table>
     ";
     $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow('hand', '');

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>发布商品</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <style>table{border-collapse:inherit}</style>
-  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
   <script src="../static/web/js/moment.min.js"></script>
@@ -22,7 +22,7 @@
   <script>
   function checkSubmit() {
     if (document.form1.title.value == "") {
-      ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
+      ShowMsg("<?php echo $cInfos['titlename'];?>不能为空");
       return false;
     }
     if (document.form1.typeid.value == 0) {
@@ -36,7 +36,7 @@
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
     <tr>
       <td width="70%"><i class="fa fa-map"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 发布商品</td>
-      <td width="30%" align="right"><?php echo $backurl; ?><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a></td>
+      <td width="30%" align="right"><?php echo $backurl;?><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a></td>
     </tr>
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -59,7 +59,7 @@
         <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
+              <td width="90"> <?php echo $cInfos['titlename'];?>：</td>
               <td width="400"><input type="text" name="title" id="title" value="" style="width:390px"></td>
               <td width="90"> 简略标题：</td>
               <td><input type="text" name="shorttitle" id="shorttitle" style="width:160px"></td>
@@ -106,12 +106,12 @@
               <td width="90"> Tag标签：</td>
               <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
               <td width="60">权重：</td>
-              <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc']; ?>" style="width:60px">（越小越靠前）</td>
+              <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc'];?>" style="width:60px">（越小越靠前）</td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr id="pictable" style='<?php if($cInfos['needpic']==0) echo 'display:none'; ?>'>
+      <tr id="pictable" style='<?php if($cInfos['needpic']==0) echo 'display:none';?>'>
         <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
@@ -168,7 +168,7 @@
                 echo "</select>";
 			          ?>
                 </span>
-                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title="快捷选择" style="cursor:pointer"></i> 
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择" style="cursor:pointer"></i> 
                 <?php
 			          if($cfg_need_typeid2=='Y')
 			          {
@@ -190,7 +190,7 @@
               <td>
                 <span id="typeid2ct"></span>
                 <input type="text" name="typeid2" id="typeid2" value="" style="width:160px">
-                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2')" title="选择副栏目" style="cursor:pointer"></i> 
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2')" title="选择副栏目" style="cursor:pointer"></i> 
               </td>
             </tr>
           </table>
@@ -206,7 +206,7 @@
                 <button type="button" name="Submit" value="" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
               <td>
-                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked'; ?>> 自动获取，手动填写用","分开</label>
+                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked';?>> 自动获取，手动填写用","分开</label>
               </td>
             </tr>
           </table>
@@ -231,10 +231,10 @@
             <tr>
               <td width="90"> 附加选项：</td>
               <td>
-                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo 'checked="1"'; ?>> 下载远程图片和资源</label>
-                <label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo 'checked="1"'; ?>> 删除非站内链接</label>
-                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo 'checked="1"'; ?>> 提取第一个图片为缩略图</label>
-                <label><input type="checkbox" name="needwatermark" value="1" <?php if($photo_markup=='1') echo 'checked="1"'; ?>> 图片是否加水印</label>
+                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo 'checked="1"';?>> 下载远程图片和资源</label>
+                <label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo 'checked="1"';?>> 删除非站内链接</label>
+                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo 'checked="1"';?>> 提取第一个图片为缩略图</label>
+                <label><input type="checkbox" name="needwatermark" value="1" <?php if($photo_markup=='1') echo 'checked="1"';?>> 图片是否加水印</label>
               </td>
             </tr>
           </table>
@@ -249,8 +249,8 @@
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'"; ?>> 允许评论</label>
-                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'"; ?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
+                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
@@ -318,7 +318,7 @@
 			          ?>
               </td>
               <td width="90">浏览次数：</td>
-              <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click); ?>" style="width:160px"></td>
+              <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click);?>" style="width:160px"></td>
             </tr>
           </table>
         </td>

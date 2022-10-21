@@ -43,7 +43,7 @@ if (!empty($noeditor)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="<?php echo $cfg_soft_lang; ?>">
+    <meta charset="<?php echo $cfg_soft_lang;?>">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>选择多媒体</title>
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
@@ -66,7 +66,7 @@ a{text-decoration:none!important}
         if (window.opener.document.<?php echo $f ?> != null) {
             window.opener.document.<?php echo $f ?>.value = reimg;
         }
-        var funcNum = <?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>;
+        var funcNum = <?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>;
         if (window.opener.CKEDITOR != null && funcNum != 1) {
             window.opener.CKEDITOR.tools.callFunction(funcNum, reimg);
         }
@@ -80,7 +80,7 @@ a{text-decoration:none!important}
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="job" value="upload">
-                    <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>">
+                    <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
                     上传：<input type="file" name="uploadfile" style="width:50%;border:none">
                     <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
                 </form>

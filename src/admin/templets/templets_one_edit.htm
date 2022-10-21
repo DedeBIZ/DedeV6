@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>修改自定义页面</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -41,21 +41,21 @@
           <input type="hidden" name="aid" value="<?php echo $aid?>">
           <tr> 
             <td width="260">页面标题：</td>
-            <td><input type="text" name="title" id="title" value="<?php echo $row['title']; ?>" style="width:260px"></td>
+            <td><input type="text" name="title" id="title" value="<?php echo $row['title'];?>" style="width:260px"></td>
           </tr>
           <tr> 
             <td>页面关键词：</td>
-            <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords']; ?>" style="width:260px">（用&quot;,&quot;分开）</td>
+            <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" style="width:260px">（用&quot;,&quot;分开）</td>
           </tr>
           <tr>
             <td>页面摘要信息：</td>
-            <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $row['description']; ?></textarea>（100字左右）</td>
+            <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $row['description'];?></textarea>（100字左右）</td>
           </tr>
           <tr>
             <td>关联标识：</td>
             <td>
-              <input type="text" name="likeid" id="likeid" value="<?php echo $row['likeid']; ?>" style="width:260px">
-              <input type="hidden" name="oldlikeid" id="oldlikeid" value="<?php echo $row['likeid']; ?>">
+              <input type="text" name="likeid" id="likeid" value="<?php echo $row['likeid'];?>" style="width:260px">
+              <input type="hidden" name="oldlikeid" id="oldlikeid" value="<?php echo $row['likeid'];?>">
               <?php
               	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
               	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
@@ -70,20 +70,20 @@
           </tr>
           <tr>
             <td>模板文件名：</td>
-            <td><input type="text" name="template" id="template" value="<?php echo $row['template']; ?>" style="width:260px"></td>
+            <td><input type="text" name="template" id="template" value="<?php echo $row['template'];?>" style="width:260px"></td>
           </tr>
           <tr> 
             <td>文件名：</td>
             <td>
-			       <input type="hidden" name="oldfilename" id="oldfilename" value="<?php echo $row['filename']; ?>" style="width:260px">
-			       <input type="text" name="nfilename" id="nfilename" value="<?php echo $row['filename']; ?>" style="width:260px">（相对于CMS安装目录）
+			       <input type="hidden" name="oldfilename" id="oldfilename" value="<?php echo $row['filename'];?>" style="width:260px">
+			       <input type="text" name="nfilename" id="nfilename" value="<?php echo $row['filename'];?>" style="width:260px">（相对于CMS安装目录）
             </td>
           </tr>
           <tr> 
             <td>是否编译内容：</td>
             <td>
-            	<?php if(!DEDEBIZ_SAFE_MODE) { ?> <label><input type="radio" name="ismake" value="1"<?php if($row['ismake']==1) echo "checked"; ?>> 含模板标记，要编译</label> <?php } ?>
-              <label><input type="radio" name="ismake" value="0"<?php if($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo "checked"; ?>> 不含模板标记，不需要编译</label>
+            	<?php if(!DEDEBIZ_SAFE_MODE) { ?> <label><input type="radio" name="ismake" value="1"<?php if($row['ismake']==1) echo "checked";?>> 含模板标记，要编译</label> <?php } ?>
+              <label><input type="radio" name="ismake" value="0"<?php if($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo "checked";?>> 不含模板标记，不需要编译</label>
             </td>
           </tr>
           <tr> 
@@ -92,7 +92,7 @@
             </td>
           </tr>
           <tr> 
-            <td height="80" colspan="2"> <?php GetEditor("body",$row['body'],"450","Default","print","false"); ?></td>
+            <td height="80" colspan="2"> <?php GetEditor("body",$row['body'],"450","Default","print","false");?></td>
           </tr>
           <tr> 
             <td colspan="2" align="center" class="py-2">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>栏目管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -126,8 +126,8 @@
     <tr>
       <form name="form1" action="catalog_add.php" method="post" onSubmit="return checkSubmit()">
         <input type="hidden" name="dopost" value="save">
-        <input type="hidden" name="reid" id="reid" value="<?php echo $id; ?>">
-        <input type="hidden" name="topid" id="topid" value="<?php echo $topid; ?>">
+        <input type="hidden" name="reid" id="reid" value="<?php echo $id;?>">
+        <input type="hidden" name="topid" id="topid" value="<?php echo $topid;?>">
         <?php
         if($id>0)
         {
@@ -180,8 +180,8 @@
             <tr>
               <td width="260" class="bline">是否支持投稿：</td>
               <td class="bline">
-                <label><input type="radio" name="issend" value="1" <?php if($issend==1) echo " checked='checked' "; ?>> 支持</label>
-                <label><input type="radio" name="issend" value="0" <?php if($issend==0) echo " checked='checked' "; ?>> 不支持</label>
+                <label><input type="radio" name="issend" value="1" <?php if($issend==1) echo " checked='checked' ";?>> 支持</label>
+                <label><input type="radio" name="issend" value="0" <?php if($issend==0) echo " checked='checked' ";?>> 不支持</label>
               </td>
             </tr>
             <tr>
@@ -333,7 +333,7 @@
                 <textarea name="crossid" id="crossid" style="display:none"></textarea>
               </td>
             </tr>
-            <tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none'); ?>">
+            <tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
               <td class="bline">绑定小分类：<br>仅适用[分类信息模型]</td>
               <td class="bline">
                 <select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
@@ -443,7 +443,7 @@
             <tr>
               <td>文档命名规则：</td>
               <td>
-                <input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule; ?>" style="width:260px">
+                <input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule;?>" style="width:260px">
                 <i class="fa fa-question-circle"  title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i> 
               </td>
             </tr>
@@ -481,7 +481,7 @@
               <td>说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</td>
             </tr>
             <tr>
-              <td><?php GetEditor("content","","450","Default","print","false"); ?></td>
+              <td><?php GetEditor("content","","450","Default","print","false");?></td>
             </tr>
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>配送方式配置</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -60,15 +60,15 @@
           <td colspan="2" align="center" class="border-top-0">
             <table width="100%" cellpadding="1" cellspacing="2" class="table">
               <?php foreach($deliveryarr as $rs) { ?>
-              <input type="hidden" name="pid[]" value="<?php echo $rs['pid']; ?>">
+              <input type="hidden" name="pid[]" value="<?php echo $rs['pid'];?>">
               <tr>
                 <td width="30%" align="left">
-                  <input type="text" name="m_dname<?php echo $rs['pid']; ?>" value="<?php echo $rs['dname']; ?>">
-                  <a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid']; ?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a>
+                  <input type="text" name="m_dname<?php echo $rs['pid'];?>" value="<?php echo $rs['dname'];?>">
+                  <a class="btn btn-success btn-sm" href="shops_delivery.php?do=del&id=<?php echo $rs['pid'];?>" onClick="return(confirm('删除后无法恢复，您确定删除吗'))">删除</a>
                 </td>
                 <td width="70%" align="left">
-                  <span>手续费：<input type="text" name="m_price<?php echo $rs['pid']; ?>" id="m_price<?php echo $rs['pid']; ?>" value="<?php echo $rs['price']; ?>" style="width:60px"> 元</span>
-                  <textarea name="m_des<?php echo $rs['pid']; ?>" id="m_des<?php echo $rs['pid']; ?>" style="width:360px;height:50px"><?php echo $rs['des']; ?></textarea>
+                  <span>手续费：<input type="text" name="m_price<?php echo $rs['pid'];?>" id="m_price<?php echo $rs['pid'];?>" value="<?php echo $rs['price'];?>" style="width:60px"> 元</span>
+                  <textarea name="m_des<?php echo $rs['pid'];?>" id="m_des<?php echo $rs['pid'];?>" style="width:360px;height:50px"><?php echo $rs['des'];?></textarea>
                 </td>
               </tr>
               <?php } ?>

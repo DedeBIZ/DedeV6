@@ -125,7 +125,7 @@ class OxWindow
             $colspan = "";
         }
         $this->myWinItem .= "<tr>";
-        $this->myWinItem .= "<td $colspan style='height:26px;color:#545b62'>$title</td>";
+        $this->myWinItem .= "<td $colspan>$title</td>";
         $this->myWinItem .= "</tr>";
     }
     /**
@@ -190,7 +190,7 @@ class OxWindow
             if ($wintype != "hand") {
                 $this->myWin .= "
 <tr>
-<td align='center' colspan='2' class='py-3'>
+<td colspan='2' align='center' class='py-2'>
 <button type='submit' class='btn btn-success btn-sm'>$tt</button>
 <button type='button' class='btn btn-success btn-sm' onClick='history.go(-1);'>返回</button>
 </td>

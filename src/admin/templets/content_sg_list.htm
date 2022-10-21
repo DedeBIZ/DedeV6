@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="<?php echo $cfg_soft_lang; ?>">
+	<meta charset="<?php echo $cfg_soft_lang;?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<title>文档管理</title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -127,12 +127,12 @@
 				{dede:if $adminid==$mid }
 				<button type='button' class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=0';">全部文档</button>
 				{else}
-				<button type='button' class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID(); ?>';">我的文档</button>
+				<button type='button' class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID();?>';">我的文档</button>
 				{/dede:if}
 				<button type='button' class="btn btn-success btn-sm" onClick="location='catalog_main.php';">栏目管理</button>
 				<button type='button' class="btn btn-success btn-sm" name='bb1' onClick="location='makehtml_list.php?cid={dede:global.cid/}';">更新列表</button>
 				<button type='button' class="btn btn-success btn-sm" name='bb2' onClick="location='makehtml_archives.php?cid={dede:global.cid/}';">更新文档</button>
-				<?php echo $CheckUserSend; ?>
+				<?php echo $CheckUserSend;?>
 			</td>
 		</tr>
 	</table>
@@ -190,7 +190,7 @@
 					<a class="btn btn-success btn-sm" href="javascript:updateArc(0)" class="coolbg">更新</a>
 					<a class="btn btn-success btn-sm" href="javascript:checkArc(0)" class="coolbg">审核</a>
 					<a class="btn btn-success btn-sm" href="javascript:adArc(0)" class="coolbg">推荐</a>
-					<a class="btn btn-success btn-sm" href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid); ?>)" class="coolbg">移动</a>
+					<a class="btn btn-success btn-sm" href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid) ? 0 : $channelid);?>)" class="coolbg">移动</a>
 					<a class="btn btn-danger btn-sm" href="javascript:delArc(0)" class="coolbg">删除</a>
 					<?php
 					if(!empty($f)) {
@@ -203,7 +203,7 @@
 			</tr>
 		</form>
 		<tr>
-			<td height="36" bgcolor="#f8f8f8" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
+			<td class="py-2" bgcolor="#f8f8f8" colspan="9" align="center">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 </body>

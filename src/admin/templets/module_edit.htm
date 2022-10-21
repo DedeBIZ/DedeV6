@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>模块打包</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -37,57 +37,57 @@
 <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
    <input type="hidden" name="action" value="edit">
-   <input type="hidden" name="dev_id" value="<?php echo $dev_id; ?>">
+   <input type="hidden" name="dev_id" value="<?php echo $dev_id;?>">
     <tr>
       <td bgcolor="#f8f8f8" colspan="2"><a href="module_main.php">模块管理</a> &gt; 模块修改</td>
     </tr>
     <tr>
       <td width="260">模块名称：</td>
-      <td><input type="text" name="modulname" id="modulname" style="width:160px" value="<?php echo $name; ?>"></td>
+      <td><input type="text" name="modulname" id="modulname" style="width:160px" value="<?php echo $name;?>"></td>
     </tr>
     <tr>
       <td>开发者ID：</td>
-      <td><input type="text" name="dev_id2" id="dev_id2" style="width:160px" value="<?php echo $dev_id; ?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
+      <td><input type="text" name="dev_id2" id="dev_id2" style="width:160px" value="<?php echo $dev_id;?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
     </tr>
     <tr>
       <td>语言编码：</td>
-      <td><?php echo $lang; ?></td>
+      <td><?php echo $lang;?></td>
     </tr>
     <tr>
       <td>封装类型：</td>
       <td>
-      	<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if($moduletype=='soft') echo "checked='1'"; ?>> 模块</label>
-      	<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if($moduletype=='templets') echo "checked='1'"; ?>> 模板</label>
-      	<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if($moduletype=='plus') echo "checked='1'"; ?>> 小插件</label>
-      	<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if($moduletype=='patch') echo "checked='1'"; ?>> 补丁</label>
+      	<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if($moduletype=='soft') echo "checked='1'";?>> 模块</label>
+      	<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if($moduletype=='templets') echo "checked='1'";?>> 模板</label>
+      	<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if($moduletype=='plus') echo "checked='1'";?>> 小插件</label>
+      	<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if($moduletype=='patch') echo "checked='1'";?>> 补丁</label>
       </td>
     </tr>
     <tr>
       <td>模块识别码：</td>
       <td>
-        <input type="hidden" name="hash" value="<?php echo $hash; ?>">
-        <input type="text" name="hashv" value="<?php echo $hash; ?>" style="width:260px" disabled>（不可改）
+        <input type="hidden" name="hash" value="<?php echo $hash;?>">
+        <input type="text" name="hashv" value="<?php echo $hash;?>" style="width:260px" disabled>（不可改）
       </td>
     </tr>
     <tr>
       <td>发布时间：</td>
-      <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo $time; ?>"></td>
+      <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo $time;?>"></td>
     </tr>
     <tr>
       <td>是否涉及会员系统：</td>
       <td>
-        <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo "checked='1'"; ?>> 涉及</label>
-        <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo "checked='1'"; ?>> 不涉及</label>
-        <div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block'); ?>">
-          导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value="<?php echo $indexname; ?>"><br>
-          导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="<?php echo $indexurl; ?>">（用相对于会员中心的网址，如：../ask）
+        <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo "checked='1'";?>> 涉及</label>
+        <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo "checked='1'";?>> 不涉及</label>
+        <div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block');?>">
+          导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value="<?php echo $indexname;?>"><br>
+          导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="<?php echo $indexurl;?>">（用相对于会员中心的网址，如：../ask）
         </div>
       </td>
     </tr>
     <tr>
       <td>后台管理菜单：</td>
       <td>
-      	<textarea name="menustring" id="menustring" style="width:98%;height:160px"><?php echo $menustring; ?></textarea><br>
+      	<textarea name="menustring" id="menustring" style="width:98%;height:160px"><?php echo $menustring;?></textarea><br>
       	（普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php）
       </td>
     </tr>
@@ -100,7 +100,7 @@
               如果需要带HTML格式，请编译后点击修改时使用HTML</td>
           </tr>
           <tr>
-            <td><textarea name="readmetxt" id="readmetxt" style="width:98%;height:160px"><?php echo $readmetxt; ?></textarea></td>
+            <td><textarea name="readmetxt" id="readmetxt" style="width:98%;height:160px"><?php echo $readmetxt;?></textarea></td>
           </tr>
         </table>
       </td>
@@ -108,9 +108,9 @@
     <tr>
       <td>程序安装：</td>
       <td>
-        <label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if(isset($autosetup) && $autosetup==1) echo "checked='1'"; ?>> 自动生成（由系统自动处理安装）</label><br>
-        <div style="display:<?php if(!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none'; ?>" id="autosetupinput"><input name="setup" type="file" id="setup" style="width:360px"></div>
-       <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none'; ?>" id="autosetupct">
+        <label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if(isset($autosetup) && $autosetup==1) echo "checked='1'";?>> 自动生成（由系统自动处理安装）</label><br>
+        <div style="display:<?php if(!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input name="setup" type="file" id="setup" style="width:360px"></div>
+       <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
         	<table width="100%" cellpadding="5" cellspacing="1">
             <tr>
               <td bgcolor="#fbfce2">
@@ -120,7 +120,7 @@
               </td>
             </tr>
             <tr>
-              <td><textarea name="setupsql40" id="setupsql40" style="width:98%;height:160px"><?php echo $setupsql40; ?></textarea></td>
+              <td><textarea name="setupsql40" id="setupsql40" style="width:98%;height:160px"><?php echo $setupsql40;?></textarea></td>
             </tr>
           </table>
         </div>
@@ -129,17 +129,17 @@
     <tr>
       <td>删除程序：</td>
       <td>
-        <label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if(isset($autodel) && $autodel==1) echo "checked='1'"; ?>> 自动生成（由系统自动处理卸载）</label>
+        <label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if(isset($autodel) && $autodel==1) echo "checked='1'";?>> 自动生成（由系统自动处理卸载）</label>
       	<br>
-      	<div style="display:<?php if(!isset($autodel) || $autodel==0) echo 'block'; else echo 'none'; ?>" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
-      	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none'; ?>' id='autodelct'>
+      	<div style="display:<?php if(!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
+      	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>' id='autodelct'>
       	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
             <td bgcolor="#fbfce2">卸载时执行的SQL语句：<br>
             （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）</td>
           </tr>
           <tr>
-            <td><textarea name="delsql" id="delsql" style="width:98%;height:160px"><?php echo $delsql; ?></textarea></td>
+            <td><textarea name="delsql" id="delsql" style="width:98%;height:160px"><?php echo $delsql;?></textarea></td>
           </tr>
         </table>
       </div>
@@ -157,7 +157,7 @@
       <td>每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
         如：如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录，<br>
         对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中 <br>
-        <textarea name="filelist" id="filelist" style="width:98%;height:160px"><?php echo $filelist; ?></textarea>
+        <textarea name="filelist" id="filelist" style="width:98%;height:160px"><?php echo $filelist;?></textarea>
       </td>
     </tr>
     <tr>

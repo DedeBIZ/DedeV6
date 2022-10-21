@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>修改帐号</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
       <td align="center">
         <form name="form1" action="sys_admin_user_edit.php" method="post">
           <input type="hidden" name="dopost" value="saveedit">
-          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+          <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
           <input type="hidden" name="id" value="<?php echo $row['id']?>">
           <table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
@@ -76,7 +76,7 @@
               <td class="bline">验证安全码：</td>
               <td class="bline">
                 <input type="text" name="safecode" id="safecode" style="width:260px">
-                <input type="hidden" name="randcode" value="<?php echo $randcode; ?>">（安全码：<span class='text-danger'><?php echo $safecode;  ?></span>）
+                <input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class='text-danger'><?php echo $safecode;  ?></span>）
               </td>
             </tr>
             <tr>

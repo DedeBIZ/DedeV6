@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>增加投票</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -79,8 +79,8 @@
         <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
           <form name="form1" method="post" action="vote_add.php" onSubmit="return checkSubmit()">
             <input type="hidden" name="dopost" value="save">
-            <input type="hidden" name="isarc" value="<?php echo $isarc; ?>">
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+            <input type="hidden" name="isarc" value="<?php echo $isarc;?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <tr>
               <td width="260">投票名称：</td>
               <td><input type="text" name="votename" id="votename" style="width:260px"></td>

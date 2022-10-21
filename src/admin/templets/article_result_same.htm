@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>重复文档检测</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -49,11 +49,11 @@
 				<td bgcolor="#f8f8f8" colspan="3">重复文档列表</td>
 			</tr>
 			<form name="form2" method="POST" action="article_test_same.php">
-				<input type="hidden" name="deltype" value="<?php echo $deltype; ?>">
+				<input type="hidden" name="deltype" value="<?php echo $deltype;?>">
 				<input type="hidden" name="dopost" value="delsel">
-				<input type="hidden" name="pagesize" value="<?php echo $pagesize; ?>">
-				<input type="hidden" name="channelid" value="<?php echo $channelid; ?>">
-				<input type="hidden" name="maintable" value="<?php echo $maintable; ?>">
+				<input type="hidden" name="pagesize" value="<?php echo $pagesize;?>">
+				<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
+				<input type="hidden" name="maintable" value="<?php echo $maintable;?>">
 				<input type="hidden" name="titles" value="">
 				<tr bgcolor="#fbfce2" align="center">
 					<td width="10%">选择</td>
@@ -73,7 +73,7 @@
 						echo $row['dd'];
 						?>
 					</td>
-					<td><?php echo $row['title']; ?></td>
+					<td><?php echo $row['title'];?></td>
 				</tr>
 				<?php
 				}

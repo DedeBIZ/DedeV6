@@ -8,7 +8,7 @@ while ($channel = $dsql->GetArray('addmod')) {
 <div class="member-menu col-md-3">
     <ul class="list-group list-group-flush mt-3 mb-3">
         <li class="list-group-item justify-content-between align-items-center<?php echo (isset($_menu_home) && $_menu_home===true)? ' active' : '';?>">
-            <a href="<?php echo $cfg_memberurl; ?>">会员中心</a>
+            <a href="<?php echo $cfg_memberurl;?>">会员中心</a>
         </li>
         <li class="list-group-item justify-content-between align-items-center">
             <div data-toggle="collapse" data-target="#collapseArchives">我的内容 <span class="dropdown"></span>
@@ -16,10 +16,10 @@ while ($channel = $dsql->GetArray('addmod')) {
             <div id="collapseArchives" class="collapse mt-3<?php echo (isset($_menu_conex) && $_menu_conex===true)? ' show' : '';?>">
                 <ul class="list-group list-group-flush">
                     <?php foreach($channels as $chid => $channel) { ?>
-                        <?php $channel['usermancon'] = empty($channel['usermancon'])? "content_list.php" : $channel['usermancon']; ?>
+                        <?php $channel['usermancon'] = empty($channel['usermancon'])? "content_list.php" : $channel['usermancon'];?>
                         <?php if($channel['issend'] == 1) { ?>
                         <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_conex) && $channelid == $channel['id']) echo ' active';?>">
-                            <a href="<?php echo $cfg_memberurl; ?>/<?php echo $channel['usermancon'];?>?channelid=<?php echo $channel['id'];?>"><?php echo $channel['typename'];?></a>
+                            <a href="<?php echo $cfg_memberurl;?>/<?php echo $channel['usermancon'];?>?channelid=<?php echo $channel['id'];?>"><?php echo $channel['typename'];?></a>
                         </li>
                         <?php
 						}
@@ -36,35 +36,35 @@ while ($channel = $dsql->GetArray('addmod')) {
             <div id="collapseMessage" class="mt-3 collapse<?php echo (isset($_menu_pmex) && $_menu_pmex===true)? ' show' : '';?>">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_pmstate) && $_menu_pmstate === 0) echo ' active';?>">
-                        <a href="<?php echo $cfg_memberurl; ?>/pm.php?folder=inbox">全部</a>
+                        <a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">全部</a>
                     </li>
                     <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_pmstate) && $_menu_pmstate === 1) echo ' active';?>">
-                        <a href="<?php echo $cfg_memberurl; ?>/pm.php?folder=inbox&state=1">已读</a>
+                        <a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox&state=1">已读</a>
                     </li>
                     <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_pmstate) && $_menu_pmstate === -1) echo ' active';?>">
-                        <a href="<?php echo $cfg_memberurl; ?>/pm.php?folder=inbox&state=-1">未读</a>
+                        <a href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox&state=-1">未读</a>
                     </li>
                 </ul>
             </div>
         </li>
         <li class="list-group-item justify-content-between align-items-center<?php echo (isset($_menu_stow) && $_menu_stow===true)? ' active' : '';?>">
-            <a href="<?php echo $cfg_memberurl; ?>/mystow.php">我的收藏</a>
+            <a href="<?php echo $cfg_memberurl;?>/mystow.php">我的收藏</a>
         </li>
         <li class="list-group-item justify-content-between align-items-center">
-            <a href="<?php echo $cfg_memberurl; ?>/buy.php">钱包积分</a>
+            <a href="<?php echo $cfg_memberurl;?>/buy.php">钱包积分</a>
         </li>
         <li class="list-group-item justify-content-between align-items-center">
             <div data-toggle="collapse" data-target="#collapseOrder">订单详情<span class="dropdown"></span></div>
             <div id="collapseOrder" class="collapse mt-3<?php echo (isset($_menu_order) && $_menu_order===true)? ' show' : '';?>">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_orderstate) && $_menu_orderstate === 0) echo ' active';?>">
-                        <a href="<?php echo $cfg_memberurl; ?>/mypay.php">购买内容</a>
+                        <a href="<?php echo $cfg_memberurl;?>/mypay.php">购买内容</a>
                     </li>
                     <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_orderstate) && $_menu_orderstate === 1) echo ' active';?>">
-                        <a href="<?php echo $cfg_memberurl; ?>/shops_orders.php">购买商品</a>
+                        <a href="<?php echo $cfg_memberurl;?>/shops_orders.php">购买商品</a>
                     </li>
                     <li class="list-group-item justify-content-between align-items-center<?php if(isset($_menu_orderstate) && $_menu_orderstate === 2) echo ' active';?>">
-                        <a href="<?php echo $cfg_memberurl; ?>/operation.php">金币订单</a>
+                        <a href="<?php echo $cfg_memberurl;?>/operation.php">金币订单</a>
                     </li>
                 </ul>
             </div>

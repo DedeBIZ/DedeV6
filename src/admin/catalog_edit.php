@@ -160,15 +160,15 @@ if ($dopost == 'time') {
 ?>
 <form name="form1" action="catalog_edit.php" method="post" onSubmit="return checkSubmit();">
     <input type="hidden" name="dopost" value="savetime">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
-    <input type="hidden" name="topid" value="<?php echo $myrow['topid']; ?>">
-    <input type="hidden" name="moresite" value="<?php echo $myrow['moresite']; ?>">
+    <input type="hidden" name="id" value="<?php echo $id;?>">
+    <input type="hidden" name="topid" value="<?php echo $myrow['topid'];?>">
+    <input type="hidden" name="moresite" value="<?php echo $myrow['moresite'];?>">
     <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
             <td width="160" class="bline" align="center">是否支持投稿：</td>
             <td class="bline">
-                <label><input type="radio" name="issend" value="1" <?php if ($myrow['issend'] == "1") echo "checked='1'"; ?>> 支持</label>
-                <label><input type="radio" name="issend" value="0" <?php if ($myrow['issend'] == "0") echo "checked='1'"; ?>> 不支持</label>
+                <label><input type="radio" name="issend" value="1" <?php if ($myrow['issend'] == "1") echo "checked='1'";?>> 支持</label>
+                <label><input type="radio" name="issend" value="0" <?php if ($myrow['issend'] == "0") echo "checked='1'";?>> 不支持</label>
             </td>
         </tr>
         <tr>
@@ -179,7 +179,7 @@ if ($dopost == 'time') {
                     if ($k == $channelid) echo "{$arr['typename']} | {$arr['nid']}";
                 }
                 ?>
-                <a href='catalog_edit.php?id=<?php echo $id; ?>' class='btn btn-success btn-sm'>更多模型</a>
+                <a href='catalog_edit.php?id=<?php echo $id;?>' class='btn btn-success btn-sm'>更多模型</a>
             </td>
         </tr>
         <tr>
@@ -214,9 +214,9 @@ if ($dopost == 'time') {
         <tr>
             <td align="center" class="bline">栏目列表选项：</td>
             <td class="bline">
-                <label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault'] == 1) echo "checked='1'"; ?>> 链接到默认页</label>
-                <label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault'] == 0) echo "checked='1'"; ?>> 链接到列表第一页</label>
-                <label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault'] == -1) echo "checked='1'"; ?>> 使用动态页</label>
+                <label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault'] == 1) echo "checked='1'";?>> 链接到默认页</label>
+                <label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault'] == 0) echo "checked='1'";?>> 链接到列表第一页</label>
+                <label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault'] == -1) echo "checked='1'";?>> 使用动态页</label>
             </td>
         </tr>
         <tr>
@@ -226,14 +226,14 @@ if ($dopost == 'time') {
         <tr>
             <td class="bline" align="center">栏目属性：</td>
             <td class="bline">
-                <label><input name="ispart" type="radio" value="0" <?php if ($myrow['ispart'] == 0) echo "checked='1'"; ?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                <label><input name="ispart" type="radio" value="1" <?php if ($myrow['ispart'] == 1) echo "checked='1'"; ?>> 频道封面（栏目本身不允许发布文档）</label><br>
-                <label><input name="ispart" type="radio" value="2" <?php if ($myrow['ispart'] == 2) echo "checked='1'"; ?>> 外部连接（在"文件保存目录"处填写网址）</label>
+                <label><input name="ispart" type="radio" value="0" <?php if ($myrow['ispart'] == 0) echo "checked='1'";?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+                <label><input name="ispart" type="radio" value="1" <?php if ($myrow['ispart'] == 1) echo "checked='1'";?>> 频道封面（栏目本身不允许发布文档）</label><br>
+                <label><input name="ispart" type="radio" value="2" <?php if ($myrow['ispart'] == 2) echo "checked='1'";?>> 外部连接（在"文件保存目录"处填写网址）</label>
             </td>
         </tr>
         <tr>
             <td bgcolor="#fbfce2" colspan="2" align="center" class="py-2">
-                <button onclick='getSelCat("<?php echo $targetid; ?>");' class='btn btn-success btn-sm'>保存</button>
+                <button onclick='getSelCat("<?php echo $targetid;?>");' class='btn btn-success btn-sm'>保存</button>
                 <button type='button' onclick='CloseMsg()' class='btn btn-success btn-sm'>关闭</button>
             </td>
         </tr>

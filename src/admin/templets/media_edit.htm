@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<title>修改文件</title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -49,15 +49,15 @@
 				<table width="100%" cellpadding="0" cellspacing="0">
 					<form enctype="multipart/form-data" name="form1" action="media_edit.php" method="POST" onSubmit="return CheckSubmit();">
 						<input type="hidden" name="dopost" value="save">
-						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 						<input type="hidden" name="aid" value="<?php echo $aid?>">
 						<tr>
 							<td width="15%" align="left" class="bline">媒体类型：</td>
 							<td width="85%" align="left" class="bline">
-								<label><input type="radio" name="mediatype" value="1" <?php if($myrow['mediatype']==1) echo "checked"; ?>> 图片</label>
-								<label><input type="radio" name="mediatype" value="2" <?php if($myrow['mediatype']==2) echo "checked"; ?>> FLASH</label>
-								<label><input type="radio" name="mediatype" value="3" <?php if($myrow['mediatype']==3) echo "checked"; ?>> 视频音频</label>
-								<label><input type="radio" name="mediatype" value="4" <?php if($myrow['mediatype']==4) echo "checked"; ?>> 附件其它</label>
+								<label><input type="radio" name="mediatype" value="1" <?php if($myrow['mediatype']==1) echo "checked";?>> 图片</label>
+								<label><input type="radio" name="mediatype" value="2" <?php if($myrow['mediatype']==2) echo "checked";?>> FLASH</label>
+								<label><input type="radio" name="mediatype" value="3" <?php if($myrow['mediatype']==3) echo "checked";?>> 视频音频</label>
+								<label><input type="radio" name="mediatype" value="4" <?php if($myrow['mediatype']==4) echo "checked";?>> 附件其它</label>
 							</td>
 						</tr>
 						<tr>
@@ -106,7 +106,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td height="36" colspan="2" class="bline">
+							<td class="py-2" colspan="2" class="bline">
 								<table width="100%" cellspacing="0" cellpadding="0" class="table table-borderless">
 									<tr>
 										<td align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>

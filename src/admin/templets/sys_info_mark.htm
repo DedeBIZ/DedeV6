@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>图片水印设置</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -19,15 +19,15 @@
       <tr>
         <td width="50%">上传的图片是否使用图片水印功能：<br></td>
         <td>
-          <label><input type="radio" value="1" name="get_photo_markup" <?php if($photo_markup=='1') echo ' checked'; ?>> 开启</label>
-          <label><input type="radio" value="0" name="get_photo_markup" <?php if($photo_markup=='0') echo ' checked'; ?>> 关闭</label>
+          <label><input type="radio" value="1" name="get_photo_markup" <?php if($photo_markup=='1') echo ' checked';?>> 开启</label>
+          <label><input type="radio" value="0" name="get_photo_markup" <?php if($photo_markup=='0') echo ' checked';?>> 关闭</label>
         </td>
       </tr>
       <tr>
         <td>采集的图片是否使用图片水印功能：</td>
         <td>
-          <label><input type="radio" value="1" name="get_photo_markdown" <?php if($photo_markdown=='1') echo ' checked'; ?>> 开启</label>
-          <label><input type="radio" value="0" name="get_photo_markdown" <?php if($photo_markdown=='0') echo ' checked'; ?>> 关闭</label>
+          <label><input type="radio" value="1" name="get_photo_markdown" <?php if($photo_markdown=='1') echo ' checked';?>> 开启</label>
+          <label><input type="radio" value="0" name="get_photo_markdown" <?php if($photo_markdown=='0') echo ' checked';?>> 关闭</label>
         </td>
       </tr>
       <tr>
@@ -47,13 +47,13 @@
       </tr>
       <tr>
         <td>水印图片文件名（如果不存在，则使用文字水印）：</td>
-        <td><img src="../data/mark/<?php echo $photo_markimg; ?>"></td>
+        <td><img src="../data/mark/<?php echo $photo_markimg;?>"></td>
       </tr>
       <tr>
         <td>上传新图片：</td>
         <td>
           <input name="newimg" type="file" id="newimg" style="width:260px"><br>
-          <?php echo "支持的图片格式：gif png"; ?>
+          <?php echo "支持的图片格式：gif png";?>
         </td>
       </tr>
       <tr>
@@ -79,39 +79,39 @@
       <tr>
         <td>水印位置：</td>
         <td>
-          <label><input type="radio" name="get_photo_waterpos" value="0" <?php if($photo_waterpos==0) echo ' checked'; ?>> 随机位置</label>
+          <label><input type="radio" name="get_photo_waterpos" value="0" <?php if($photo_waterpos==0) echo ' checked';?>> 随机位置</label>
           <table border="1" cellspacing="0" cellpadding="0" class="table maintable" style="width:260px!important">
             <tr>
               <td width="33%">
-                <label><input type="radio" name="get_photo_waterpos" value="1" <?php if($photo_waterpos==1) echo ' checked'; ?>> 顶部居左</label>
+                <label><input type="radio" name="get_photo_waterpos" value="1" <?php if($photo_waterpos==1) echo ' checked';?>> 顶部居左</label>
               </td>
               <td width="33%">
-                <label><input type="radio" name="get_photo_waterpos" value="2" <?php if($photo_waterpos==2) echo ' checked'; ?>> 顶部居中</label>
+                <label><input type="radio" name="get_photo_waterpos" value="2" <?php if($photo_waterpos==2) echo ' checked';?>> 顶部居中</label>
               </td>
               <td>
-                <label><input type="radio" name="get_photo_waterpos" value="3" <?php if($photo_waterpos==3) echo ' checked'; ?>> 顶部居右</label>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label><input type="radio" name="get_photo_waterpos" value="4" <?php if($photo_waterpos==4) echo ' checked'; ?>> 左边居中</label>
-              </td>
-              <td>
-                <label><input type="radio" name="get_photo_waterpos" value="5" <?php if($photo_waterpos==5) echo ' checked'; ?>> 图片中心</label>
-              </td>
-              <td>
-                <label><input type="radio" name="get_photo_waterpos" value="6" <?php if($photo_waterpos==6) echo ' checked'; ?>> 右边居中</label>
+                <label><input type="radio" name="get_photo_waterpos" value="3" <?php if($photo_waterpos==3) echo ' checked';?>> 顶部居右</label>
               </td>
             </tr>
             <tr>
               <td>
-                <label><input type="radio" name="get_photo_waterpos" value="7" <?php if($photo_waterpos==7) echo ' checked'; ?>> 底部居左</label>
+                <label><input type="radio" name="get_photo_waterpos" value="4" <?php if($photo_waterpos==4) echo ' checked';?>> 左边居中</label>
               </td>
               <td>
-                <label><input type="radio" name="get_photo_waterpos" value="8" <?php if($photo_waterpos==8) echo ' checked'; ?>> 底部居中</label>
+                <label><input type="radio" name="get_photo_waterpos" value="5" <?php if($photo_waterpos==5) echo ' checked';?>> 图片中心</label>
               </td>
               <td>
-                <label><input type="radio" name="get_photo_waterpos" value="9" <?php if($photo_waterpos==9) echo ' checked'; ?>> 底部居右</label>
+                <label><input type="radio" name="get_photo_waterpos" value="6" <?php if($photo_waterpos==6) echo ' checked';?>> 右边居中</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label><input type="radio" name="get_photo_waterpos" value="7" <?php if($photo_waterpos==7) echo ' checked';?>> 底部居左</label>
+              </td>
+              <td>
+                <label><input type="radio" name="get_photo_waterpos" value="8" <?php if($photo_waterpos==8) echo ' checked';?>> 底部居中</label>
+              </td>
+              <td>
+                <label><input type="radio" name="get_photo_waterpos" value="9" <?php if($photo_waterpos==9) echo ' checked';?>> 底部居右</label>
               </td>
             </tr>
           </table>

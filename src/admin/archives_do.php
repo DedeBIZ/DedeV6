@@ -299,19 +299,19 @@ else if ($dopost == 'moveArchives') {
         ?>
         <tr>
             <td width="90" class="bline"> 目标栏目：</td>
-            <td class="bline"><?php echo $typeOptions; ?></td>
+            <td class="bline"><?php echo $typeOptions;?></td>
         </tr>
         <tr>
             <td width="90" class="bline"> 文档id：</td>
             <td class="bline">
-                <input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden"><br>
+                <input type="text" name="tmpids" value="<?php echo $qstr;?>" style="width:320px;overflow:hidden"><br>
                 移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
             </td>
         </tr>
         <tr>
             <td colspan="2" align="center" class="py-2">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
-                <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
+                <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
             </td>
         </tr>
         </table>
@@ -554,7 +554,7 @@ else if ($dopost == 'quickEdit') {
     <tr>
         <td width="90" class="bline"> 属性：</td>
         <td class="bline">
-            <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag']; ?>">
+            <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
@@ -570,11 +570,11 @@ else if ($dopost == 'quickEdit') {
     </tr>
     <tr>
         <td width="90" class="bline"> 标题：</td>
-        <td class="bline"><input type="text" name="title" id="title" value="<?php echo $arcRow['title']; ?>" style="width:320px"></td>
+        <td class="bline"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" style="width:320px"></td>
     </tr>
     <tr>
         <td width="90" class="bline"> 简略标题：</td>
-        <td class="bline"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:320px"></td>
+        <td class="bline"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" style="width:320px"></td>
     </tr>
     <tr>
         <td width="90" class="bline"> 阅读权限：</td>
@@ -591,17 +591,17 @@ else if ($dopost == 'quickEdit') {
                 }
                 ?>
             </select>
-            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"]; ?>" style="width:100px">
+            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" style="width:100px">
         </td>
     </tr>
     <tr>
         <td width="90" class="bline"> 关键词：</td>
-        <td class="bline"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']; ?>" style="width:320px"></td>
+        <td class="bline"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" style="width:320px"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
-            <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
+            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
         </td>
     </tr>
     </table>
@@ -856,7 +856,7 @@ else if ($dopost == 'attsDlg') {
     <tr>
         <td width="90" class="bline"> 属性：</td>
         <td class="bline">
-            <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag']; ?>">
+            <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             $dsql->Execute();
@@ -869,12 +869,12 @@ else if ($dopost == 'attsDlg') {
     </tr>
     <tr>
         <td width="90" class="bline"> 文档id：</td>
-        <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr; ?>" style="width:320px;overflow:hidden"></td>
+        <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr;?>" style="width:320px;overflow:hidden"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">
             <button type="submit" class="btn btn-success btn-sm">保存</button>
-            <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
+            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
         </td>
     </tr>
     </table>
@@ -894,10 +894,10 @@ else if ($dopost == 'getCatMap') {
     $tus = new TypeUnitSelector();
     ?>
     <form name="quicksel" action="javascript:;" method="get">
-        <div class="quicksel"><?php $tus->ListAllType($channelid); ?></div>
+        <div class="quicksel"><?php $tus->ListAllType($channelid);?></div>
         <div align="center" class="quickselfoot">
-            <button onclick="getSelCat('<?php echo $targetid; ?>');" class="btn btn-success btn-sm">保存</button>
-            <button type="button" onclick="HideObj('<?php echo $divname; ?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
+            <button onclick="getSelCat('<?php echo $targetid;?>');" class="btn btn-success btn-sm">保存</button>
+            <button type="button" onclick="HideObj('<?php echo $divname;?>');ChangeFullDiv('hide');" class="btn btn-success btn-sm">关闭</button>
         </div>
     </form>
 <?php

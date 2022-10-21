@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>模块管理</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
 		</script>
 	</head>
 	<body>
-		<div class="alert alert-info maintable" style="margin:1rem auto">DedeBIZV6开始启动<a href="<?php echo $cfg_biz_dedebizUrl; ?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，为了保障系统及技术服务安全，请认准DedeBIZ商业认证开发者</div>
+		<div class="alert alert-info maintable" style="margin:1rem auto">DedeBIZV6开始启动<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，为了保障系统及技术服务安全，请认准DedeBIZ商业认证开发者</div>
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
 			<form name="form1" action="plus_add.php" method="post">
 				<input type="hidden" name="dopost" value="save">
@@ -51,15 +51,15 @@
 				{
 				?>
 				<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-					<td><?php echo $v['name']; ?></td>
-					<td><?php echo $v['time']; ?></td>
+					<td><?php echo $v['name'];?></td>
+					<td><?php echo $v['time'];?></td>
 					<td>
 						<?php
 						if($cfg_soft_lang != $v['lang']) echo "<span class='text-danger'>".$v['lang']."</span>";
 						else  echo $v['lang'];
 						?>
 					</td>
-					<td><?php echo $types[$v['moduletype']]; ?></td>
+					<td><?php echo $types[$v['moduletype']];?></td>
 					<td>
 						<?php
 						$file = DEDEDATA."/module/{$v['hash']}.xml";
@@ -75,11 +75,11 @@
 						?>
 					</td>
 					<td>
-						<div id='manager_<?php echo $v['hash']; ?>' <?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none"'?>>
-							<a class="btn btn-success btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash']; ?>">开发者</a>
-							<a class="btn btn-success btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash']; ?>">详情</a>
-							<a class="btn btn-success btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash']; ?>">修改</a>
-							<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash']; ?>">删除</a>
+						<div id='manager_<?php echo $v['hash'];?>' <?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none"'?>>
+							<a class="btn btn-success btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>">开发者</a>
+							<a class="btn btn-success btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>">详情</a>
+							<a class="btn btn-success btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>">修改</a>
+							<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash'];?>">删除</a>
 						</div>
 					</td>
 				</tr>

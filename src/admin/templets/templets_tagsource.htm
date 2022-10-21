@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>标签源码碎片管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -42,10 +42,10 @@
       $fileinfo = GetHelpInfo(str_replace('.lib.php','',$filename));
     ?>
     <tr onMouseMove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td><img src="../static/web/img/htm.gif"><?php echo $filename; ?></td>
-      <td><?php echo $fileinfo; ?></td>
-      <td align="center"><?php echo $filetime; ?></td>
-      <td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a></td>
+      <td><img src="../static/web/img/htm.gif"><?php echo $filename;?></td>
+      <td><?php echo $fileinfo;?></td>
+      <td align="center"><?php echo $filetime;?></td>
+      <td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a></td>
     </tr>
     <?php } ?>
   </table>

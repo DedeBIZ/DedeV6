@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>软件频道设置</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -36,36 +36,36 @@
       <tr>
         <td width="200">链接显示方式：</td>
         <td>
-          <label><input type="radio" name="downtype" value="0" <?php if($row['downtype']==0) echo " checked='checked' "; ?>> 直接显示地址列表</label>
-          <label><input type="radio" name="downtype" value="1" <?php if($row['downtype']==1) echo " checked='checked' "; ?>> 要求进入下载地址列表页</label>
+          <label><input type="radio" name="downtype" value="0" <?php if($row['downtype']==0) echo " checked='checked' ";?>> 直接显示地址列表</label>
+          <label><input type="radio" name="downtype" value="1" <?php if($row['downtype']==1) echo " checked='checked' ";?>> 要求进入下载地址列表页</label>
         </td>
       </tr>
       <tr>
         <td>附件下载方式：</td>
         <td>
-          <label><input type="radio" name="gotojump" value="0" <?php if($row['gotojump']==0) echo " checked='checked' "; ?>> 链接到真实软件地址</label>
-          <label><input type="radio" name="gotojump" value="1" <?php if($row['gotojump']==1) echo " checked='checked' "; ?>> 链接到跳转页面</label>
+          <label><input type="radio" name="gotojump" value="0" <?php if($row['gotojump']==0) echo " checked='checked' ";?>> 链接到真实软件地址</label>
+          <label><input type="radio" name="gotojump" value="1" <?php if($row['gotojump']==1) echo " checked='checked' ";?>> 链接到跳转页面</label>
         </td>
       </tr>
       <tr>
         <td>是否启用镜像站点：</td>
         <td>
-          <label><input type="radio" name="ismoresite" value="1" <?php if($row['ismoresite']==1) echo " checked='checked' "; ?>> 启用</label>
-          <label><input type="radio" name="ismoresite" value="0" <?php if($row['ismoresite']==0) echo " checked='checked' "; ?>> 不启用</label>
+          <label><input type="radio" name="ismoresite" value="1" <?php if($row['ismoresite']==1) echo " checked='checked' ";?>> 启用</label>
+          <label><input type="radio" name="ismoresite" value="0" <?php if($row['ismoresite']==0) echo " checked='checked' ";?>> 不启用</label>
         </td>
       </tr>
       <tr>
         <td>启用镜像站点后是否保留本地下载：</td>
         <td>
-          <label><input type="radio" name="islocal" value="1" <?php if($row['islocal']==1) echo " checked='checked' "; ?>> 保留</label>
-          <label><input type="radio" name="islocal" value="0" <?php if($row['islocal']==0) echo " checked='checked' "; ?>> 不保留</label>
+          <label><input type="radio" name="islocal" value="1" <?php if($row['islocal']==1) echo " checked='checked' ";?>> 保留</label>
+          <label><input type="radio" name="islocal" value="0" <?php if($row['islocal']==0) echo " checked='checked' ";?>> 不保留</label>
         </td>
       </tr>
       <tr>
         <td>镜像处理方式：</td>
         <td>
-          <label><input type="radio" name="moresitedo" value="1" <?php if($row['moresitedo']==1) echo " checked='checked' "; ?>> 根据本地地址和服务器列表自动生成</label>
-          <label><input type="radio" name="moresitedo" value="0" <?php if($row['moresitedo']==0) echo " checked='checked' "; ?>> 发布时按服务器生成列表由我手工填写</label>
+          <label><input type="radio" name="moresitedo" value="1" <?php if($row['moresitedo']==1) echo " checked='checked' ";?>> 根据本地地址和服务器列表自动生成</label>
+          <label><input type="radio" name="moresitedo" value="0" <?php if($row['moresitedo']==0) echo " checked='checked' ";?>> 发布时按服务器生成列表由我手工填写</label>
         </td>
       </tr>
       <tr>
@@ -91,13 +91,13 @@
       </tr>
       <tr>
         <td>下载默认金币：</td>
-        <td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy']; ?>" style="width:80px"></td>
+        <td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy'];?>" style="width:80px"></td>
       </tr>
       <tr>
         <td>参数限制方式：</td>
         <td>
-          <label><input type="radio" name="argrange" value="0" <?php if($row['argrange']==0) echo " checked='checked' "; ?>> 允许发布时重新选择权限</label> 
-          <label><input type="radio" name="argrange" value="2" <?php if($row['argrange']==1) echo " checked='checked' "; ?>> 所有软件均使用此权限</label> 
+          <label><input type="radio" name="argrange" value="0" <?php if($row['argrange']==0) echo " checked='checked' ";?>> 允许发布时重新选择权限</label> 
+          <label><input type="radio" name="argrange" value="2" <?php if($row['argrange']==1) echo " checked='checked' ";?>> 所有软件均使用此权限</label> 
         </td>
       </tr>
       <tr>
@@ -112,13 +112,13 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2"><textarea name="sites" id="sites" style="width:98%;height:150px"><?php echo $row['sites']; ?></textarea></td>
+        <td colspan="2"><textarea name="sites" id="sites" style="width:98%;height:150px"><?php echo $row['sites'];?></textarea></td>
       </tr>
       <tr>
         <td bgcolor="#f8f8f8" colspan="2">下载说明：</td>
       </tr>
       <tr>
-        <td colspan="2"><?php GetEditor('downmsg',$row['downmsg'],250); ?></td>
+        <td colspan="2"><?php GetEditor('downmsg',$row['downmsg'],250);?></td>
       </tr>
       <tr>
         <td bgcolor="#f8f8f8" colspan="2" align="center" class="py-2">

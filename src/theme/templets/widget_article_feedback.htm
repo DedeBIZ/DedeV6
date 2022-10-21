@@ -15,7 +15,7 @@
 				<div class="col-md-6 mb-3 areaValidate" style="display:none">
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
-						<input type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
+						<input type="text" class="form-control" id="iptValidate">
 						<img src="{dede:global.cfg_cmspath/}/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='{dede:global.cfg_cmspath/}/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" alt="验证码">
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 	<div class="feedbacks">
 		{dede:feedback}
 		<div class="media">
-			<img class="face" src="[field:face/]" class="mr-3">
+			<img class="face" src="[field:face/]" class="mr-2">
 			<div class="media-body">
 				<div class="feedback-content">[field:msg/]</div>
 				<div class="feedback-infos">

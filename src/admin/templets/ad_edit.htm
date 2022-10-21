@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>修改广告</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -55,17 +55,17 @@
           <form action="ad_edit.php" method="post" enctype="multipart/form-data" name="form1">
             <input type="hidden" name="aid" value="<?php echo $aid?>">
             <input type="hidden" name="dopost" value="saveedit">
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <tr>
               <td>广告位标识：</td>
-              <td colspan="2"><?php echo $row['tagname']; ?></td>
+              <td colspan="2"><?php echo $row['tagname'];?></td>
             </tr>
             <tr>
               <td>广告分类：</td>
               <td colspan="2">
                 <select name="clsid" id="clsid" style="width:160px">
                   <option value="0">默认分类</option>
-                  <?php echo $option; ?>
+                  <?php echo $option;?>
                 </select>
               </td>
             </tr>
@@ -89,8 +89,8 @@
             <tr>
               <td>时间限制：</td>
               <td colspan="2">
-                <label><input type="radio" name="timeset" value="0" <?php if($row['timeset']==0) echo "checked='1'"; ?>> 永不过期</label>
-                <label><input type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo "checked='1'"; ?>> 在设内时间内有效</label>
+                <label><input type="radio" name="timeset" value="0" <?php if($row['timeset']==0) echo "checked='1'";?>> 永不过期</label>
+                <label><input type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo "checked='1'";?>> 在设内时间内有效</label>
               </td>
             </tr>
             <tr>

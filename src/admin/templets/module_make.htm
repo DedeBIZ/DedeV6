@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>模块打包</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -42,7 +42,7 @@
       </tr>
       <tr>
         <td>语言编码：</td>
-        <td><?php echo $cfg_soft_lang; ?>（不同编码模块可以使用，但不能在此打包）<input type="hidden" name="lang" value="<?php echo $cfg_soft_lang; ?>"></td>
+        <td><?php echo $cfg_soft_lang;?>（不同编码模块可以使用，但不能在此打包）<input type="hidden" name="lang" value="<?php echo $cfg_soft_lang;?>"></td>
       </tr>
       <tr>
         <td>封装类型：</td>
@@ -55,11 +55,11 @@
       </tr>
       <tr>
         <td>开发者ID：</td>
-        <td><input type="text" name="dev_id" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl; ?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
+        <td><input type="text" name="dev_id" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
       </tr>
       <tr>
         <td>发布时间：</td>
-        <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo GetDateMk(time()); ?>"> </td>
+        <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo GetDateMk(time());?>"> </td>
       </tr>
       <tr>
         <td>是否涉及会员系统：</td>
@@ -165,7 +165,7 @@
       </tr>
       <tr>
         <td colspan="2" align="center" class="py-2">
-          <div class="alert alert-info">制作模块即表示您同意<a href="<?php echo $cfg_biz_dedebizUrl; ?>/license_developer" target="_blank">《DedeBIZ开发者协议》</a></div>
+          <div class="alert alert-info">制作模块即表示您同意<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">《DedeBIZ开发者协议》</a></div>
           <button name="imageField" type="submit" class="btn btn-success btn-sm">提交</button>
           <button type="button" name="button" id="button" onClick="location='module_main.php';" class="btn btn-success btn-sm">返回</button>
         </td>

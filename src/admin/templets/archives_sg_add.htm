@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>发布分类</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <style>table{border-collapse:inherit}</style>
-  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
@@ -23,7 +23,7 @@
   function checkSubmit()
   {
     if(document.form1.title.value==""){
-	  ShowMsg("<?php echo $cInfos['titlename']; ?>不能为空");
+	  ShowMsg("<?php echo $cInfos['titlename'];?>不能为空");
 	  return false;
     }
     if(document.form1.typeid.value==0){
@@ -37,7 +37,7 @@
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
     <tr>
       <td width="70%"><i class="fa fa-map"></i> <a href="content_sg_list.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 发布分类</td>
-      <td width="30%" align="right"><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
+      <td width="30%" align="right"><?php echo $backurl;?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
     </tr>
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -60,7 +60,7 @@
       <td class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90"> <?php echo $cInfos['titlename']; ?>：</td>
+            <td width="90"> <?php echo $cInfos['titlename'];?>：</td>
             <td><input type="text" name="title" id="title" value="" style="width:390px"></td>
           </tr>
         </table>
@@ -85,7 +85,7 @@
         </table>
        </td>
     </tr>
-    <tr id="pictable" style="<?php if($cInfos['needpic']==0) echo 'display:none'; ?>">
+    <tr id="pictable" style="<?php if($cInfos['needpic']==0) echo 'display:none';?>">
       <td class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
@@ -121,7 +121,7 @@
             echo $typeOptions;
             echo "</select>";
             ?></span>
-            <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid')" title="快捷选择" style="cursor:pointer"></i> 
+            <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择" style="cursor:pointer"></i> 
           </td>
         </tr>
       </table>

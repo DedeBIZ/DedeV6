@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>增加广告</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -83,7 +83,7 @@
         <td>
           <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
             <input type="hidden" name="normbody[style]" value="code" id="adstyle">
-            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <input type="hidden" name="dopost" value="save">
             <tr>
               <td colspan="3">广告代码的调用方法：{dede:myad name='广告位标识'/} </td>
@@ -97,7 +97,7 @@
               <td colspan="2">
                 <select name="clsid" id="clsid" style="width:160px">
                   <option value="0">默认分类</option>
-                  <?php echo $option; ?>
+                  <?php echo $option;?>
                 </select>
               </td>
             </tr>

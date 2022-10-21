@@ -34,7 +34,7 @@ if (empty($comeback)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="<?php echo $cfg_soft_lang; ?>">
+    <meta charset="<?php echo $cfg_soft_lang;?>">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>选择模板</title>
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">

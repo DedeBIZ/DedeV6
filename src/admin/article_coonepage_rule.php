@@ -52,30 +52,30 @@ else if ($action == 'editload') {
   AjaxHead();
 ?>
   <form name="addform" action="article_coonepage_rule.php" method="post">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <input type="hidden" name="id" value="<?php echo $id;?>">
     <input type="hidden" name="action" value="editsave">
     <table width="430" cellspacing="0" cellpadding="0">
       <tr>
         <td width="90">网站名称：</td>
-        <td width="270"><input type="text" name="title" id="title" style="width:260px" value="<?php echo $row['title']; ?>"></td>
+        <td width="270"><input type="text" name="title" id="title" style="width:260px" value="<?php echo $row['title'];?>"></td>
       </tr>
       <tr>
         <td>原内容编码：</td>
         <td colspan="2">
-          <label><input type="radio" name="lang" value="utf-8" <?php echo ($row['lang'] == 'utf-8' ? 'checked="checked"' : ''); ?>> UTF-8</label>
-          <label><input type="radio" name="lang" value="gb2312" <?php echo ($row['lang'] == 'gb2312' ? 'checked="checked"' : ''); ?>> GB2312/GBK</label>
+          <label><input type="radio" name="lang" value="utf-8" <?php echo ($row['lang'] == 'utf-8' ? 'checked="checked"' : '');?>> UTF-8</label>
+          <label><input type="radio" name="lang" value="gb2312" <?php echo ($row['lang'] == 'gb2312' ? 'checked="checked"' : '');?>> GB2312/GBK</label>
         </td>
       </tr>
       <tr>
         <td>用作文档来源：</td>
         <td colspan="2">
-          <label><input type="radio" name="issource" value="0" <?php echo ($row['issource'] == 0 ? 'checked="checked"' : ''); ?>> 否</label>
-          <label><input type="radio" name="issource" value="1" <?php echo ($row['issource'] == 1 ? 'checked="checked"' : ''); ?>> 是</label>
+          <label><input type="radio" name="issource" value="0" <?php echo ($row['issource'] == 0 ? 'checked="checked"' : '');?>> 否</label>
+          <label><input type="radio" name="issource" value="1" <?php echo ($row['issource'] == 1 ? 'checked="checked"' : '');?>> 是</label>
         </td>
       </tr>
       <tr>
         <td>网站网址：</td>
-        <td colspan="2"><input type="text" name="url" id="url" value="<?php echo $row['url']; ?>" style="width:260px"></td>
+        <td colspan="2"><input type="text" name="url" id="url" value="<?php echo $row['url'];?>" style="width:260px"></td>
       </tr>
       <tr>
         <td></td>
@@ -90,7 +90,7 @@ else if ($action == 'editload') {
       </tr>
       <tr>
         <td height="90"></td>
-        <td colspan="2"><textarea name="rule" style="width:300px;height:80px"><?php echo $row['rule']; ?></textarea></td>
+        <td colspan="2"><textarea name="rule" style="width:300px;height:80px"><?php echo $row['rule'];?></textarea></td>
       </tr>
       <tr>
         <td></td>

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>钱包积分-会员中心-<?php echo $cfg_webname; ?></title>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+		<title>钱包积分-会员中心-<?php echo $cfg_webname;?></title>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container">
@@ -20,7 +20,7 @@
 							<div class="pannel-main-container">
 								<nav class="navbar navbar-expand-lg pr-0 pl-0">
 									<ol class="breadcrumb mb-0 mr-auto">
-										<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl; ?>">会员中心</a></li>
+										<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>">会员中心</a></li>
 										<li class="breadcrumb-item">钱包积分</li></li>
 									</ol>
 									<span class="navbar-text">
@@ -29,7 +29,7 @@
 								</nav>
 								<div id="mainCp">
 									<div class="alert alert-success">
-										<?php echo $cfg_ml->GetSta($dsql); ?>
+										<?php echo $cfg_ml->GetSta($dsql);?>
 									</div>
 									<?php
 									if($cfg_money_scores > 0) {
@@ -38,13 +38,13 @@
 										<?php
 										$canCav = floor($cfg_ml->fields['scores'] / $cfg_money_scores);
 										?>
-										<span>用积分兑换金币（<?php echo "兑换价格：{$cfg_money_scores} 积分/个，您目前可兑换金币数量：{$canCav} 个"; ?>）</span>
+										<span>用积分兑换金币（<?php echo "兑换价格：{$cfg_money_scores} 积分/个，您目前可兑换金币数量：{$canCav} 个";?>）</span>
 										<form name="formrank" action="index_do.php?dopost=money2s&fmdo=user" method="post">
 											<table width="100%" cellpadding="0" cellspacing="0" class="table">
 												<tbody>
 													<tr>
 														<td width="20%" align="right">兑换数量：</td>
-														<td width="270"><input name="money" type="text" id="money" class="form-control" value="<?php echo $canCav; ?>" style="width:260px"></td>
+														<td width="270"><input name="money" type="text" id="money" class="form-control" value="<?php echo $canCav;?>" style="width:260px"></td>
 														<td align="left"><button class="btn btn-success btn-sm" type="submit">兑换</button></td>
 													</tr>
 												</tbody>
@@ -90,7 +90,7 @@
 													<th width="12%">购买价格</th>
 												</tr>
 												<tbody>
-													<?php echo $moneycards; ?>
+													<?php echo $moneycards;?>
 												</tbody>
 											</table>
 											<button class="btn btn-success btn-sm" type="submit">购买</button>
@@ -127,6 +127,6 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/footer.htm");?>
 	</body>
 </html>

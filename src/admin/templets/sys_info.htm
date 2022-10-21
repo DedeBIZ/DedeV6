@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>系统配置变量</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -91,7 +91,7 @@
 					<td align="center">
 						<form name="fadd" action="sys_info.php" method="post">
 							<input type="hidden" name="dopost" value="add">
-							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<table width="100%" cellspacing="0" cellpadding="0">
 								<tr>
 									<td width="90" class="border-top-0">变量说明</td>
@@ -143,7 +143,7 @@
 				<tr>
 					<td class="p-0">
 						<form action="sys_info.php" method="post" name="form1">
-							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="save">
 							<div id="_search"></div>
 							<div id="_mainsearch">
@@ -157,7 +157,7 @@
 									$dls = explode(',',$dl);
 									$n++;
 								?>
-								<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none'; ?>">
+								<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none';?>">
 									<tr bgcolor="#fbfce2" align="center">
 										<td width="360" class="border-top-0">变量说明</td>
 										<td class="border-top-0">变量值</td>
@@ -176,7 +176,7 @@
 										$i++;
 										?>
 									<tr align="center" bgcolor="<?php echo $bgcolor?>">
-										<td><?php echo $row['info']; ?></td>
+										<td><?php echo $row['info'];?></td>
 										<td align="left">
 											<?php
 											if($row['type']=='bool') {

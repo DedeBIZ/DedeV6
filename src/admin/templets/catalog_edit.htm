@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>栏目管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -115,8 +115,8 @@
     <tr>
       <form name="form1" action="catalog_edit.php" method="post" onSubmit="return checkSubmit()">
         <input type="hidden" name="dopost" value="save">
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <input type="hidden" name="topid" value="<?php echo $myrow['topid']; ?>">
+        <input type="hidden" name="id" value="<?php echo $id;?>">
+        <input type="hidden" name="topid" value="<?php echo $myrow['topid'];?>">
         <td height="90" align="center" bgcolor="#fff">
           <table width="100%" cellspacing="0" id="head1" cellpadding="0">
             <tr>
@@ -161,15 +161,15 @@
             <tr>
               <td width="260" class="bline">是否支持投稿：</td>
               <td class="bline">
-                <label><input type="radio" name="issend" value="1" <?php if($myrow['issend']=="1") echo "checked='1'"; ?>> 支持</label>
-                <label><input type="radio" name="issend" value="0" <?php if($myrow['issend']=="0") echo "checked='1'"; ?>> 不支持</label>
+                <label><input type="radio" name="issend" value="1" <?php if($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
+                <label><input type="radio" name="issend" value="0" <?php if($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
               </td>
             </tr>
             <tr>
               <td width="260" class="bline">是否隐藏栏目：</td>
               <td class="bline">
-                <label><input type="radio" name="ishidden" value="0" <?php if($myrow['ishidden']=="0") echo "checked='1'"; ?>> 显示</label>
-                <label><input type="radio" name="ishidden" value="1" <?php if($myrow['ishidden']=="1") echo "checked='1'"; ?>> 隐藏</label>
+                <label><input type="radio" name="ishidden" value="0" <?php if($myrow['ishidden']=="0") echo "checked='1'";?>> 显示</label>
+                <label><input type="radio" name="ishidden" value="1" <?php if($myrow['ishidden']=="1") echo "checked='1'";?>> 隐藏</label>
               </td>
             </tr>
             <tr>
@@ -246,9 +246,9 @@
             <tr>
               <td>栏目列表选项：</td>
               <td>
-                <label><input type="radio" name="isdefault" value="1" <?php if($myrow['isdefault']==1) echo "checked='1'"; ?>> 链接到默认页</label>
-                <label><input type="radio" name="isdefault" value="0" <?php if($myrow['isdefault']==0) echo "checked='1'"; ?>> 链接到列表第一页</label>
-                <label><input type="radio" name="isdefault" value="-1" <?php if($myrow['isdefault']==-1) echo "checked='1'"; ?>> 使用动态页</label>
+                <label><input type="radio" name="isdefault" value="1" <?php if($myrow['isdefault']==1) echo "checked='1'";?>> 链接到默认页</label>
+                <label><input type="radio" name="isdefault" value="0" <?php if($myrow['isdefault']==0) echo "checked='1'";?>> 链接到列表第一页</label>
+                <label><input type="radio" name="isdefault" value="-1" <?php if($myrow['isdefault']==-1) echo "checked='1'";?>> 使用动态页</label>
               </td>
             </tr>
             <tr>
@@ -258,9 +258,9 @@
             <tr>
               <td class="bline">栏目属性：</td>
               <td class="bline">
-                <label><input type="radio" name="ispart" value="0" <?php if($myrow['ispart']==0) echo "checked='1'"; ?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                <label><input type="radio" name="ispart" value="1" <?php if($myrow['ispart']==1) echo "checked='1'"; ?>> 频道封面（栏目本身不允许发布文档）</label><br>
-                <label><input type="radio" name="ispart" value="2" <?php if($myrow['ispart']==2) echo "checked='1'"; ?>> 外部连接（在"文件保存目录"处填写网址）</label>
+                <label><input type="radio" name="ispart" value="0" <?php if($myrow['ispart']==0) echo "checked='1'";?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+                <label><input type="radio" name="ispart" value="1" <?php if($myrow['ispart']==1) echo "checked='1'";?>> 频道封面（栏目本身不允许发布文档）</label><br>
+                <label><input type="radio" name="ispart" value="2" <?php if($myrow['ispart']==2) echo "checked='1'";?>> 外部连接（在"文件保存目录"处填写网址）</label>
               </td>
             </tr>
             <tr id="helpvarco" style="display:none">
@@ -271,14 +271,14 @@
             <tr>
               <td>栏目交叉：<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvarco')" style="cursor:pointer"></i> 仅适用[最终列表栏目]</td>
               <td class="bline">
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if($myrow['cross']==0) echo "checked='1'"; ?>> 不交叉</label>
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if($myrow['cross']==1) echo "checked='1'"; ?>> 自动获取同名栏目内容</label>
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if($myrow['cross']==2) echo "checked='1'"; ?>> 手工指定交叉栏目id（用逗号分开）</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目内容</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用逗号分开）</label>
                 <br>
-                <textarea name="crossid" id="crossid" style="<?php if($myrow['cross']!=2) echo'display:none'; ?>"><?php echo $myrow['crossid']; ?></textarea>
+                <textarea name="crossid" id="crossid" style="<?php if($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
               </td>
             </tr>
-            <tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none'); ?>">
+            <tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
               <td class="bline">绑定小分类：<br>仅适用[分类信息模型]</td>
               <td class="bline">
                 <select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
@@ -312,8 +312,8 @@
             <tr>
               <td class="bline" width="260">多站点支持：</td>
               <td class="bline">
-                <label><input type="radio" name="moresite" value="1" <?php if($myrow['moresite']==1) echo "checked='1'"; ?>> 启用</label>
-                <label><input type="radio" name="moresite" value="0" <?php if($myrow['moresite']==0) echo "checked='1'"; ?>> 不启用</label>
+                <label><input type="radio" name="moresite" value="1" <?php if($myrow['moresite']==1) echo "checked='1'";?>> 启用</label>
+                <label><input type="radio" name="moresite" value="0" <?php if($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>
               </td>
             </tr>
             <tr>
@@ -416,7 +416,7 @@
               <td height="60"><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $myrow['description']?></textarea></td>
             </tr>
             <tr>
-              <td height="36">继承选项：</td>
+              <td class="py-2">继承选项：</td>
               <td>
                 <label><input type="checkbox" name="upnext" id="upnext" value="1"> 同时修改下级栏目的浏览权限、内容类型、模板风格、命名规则等通用属性</label>
               </td>
@@ -427,7 +427,7 @@
               <td>说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</td>
             </tr>
             <tr>
-              <td><?php GetEditor("content",$myrow['content'],"450","Default","print","false"); ?></td>
+              <td><?php GetEditor("content",$myrow['content'],"450","Default","print","false");?></td>
             </tr>
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">

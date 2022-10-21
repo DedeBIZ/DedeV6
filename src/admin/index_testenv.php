@@ -159,7 +159,7 @@ if (count($safeMsg) > 0) {
 		$i = 1;
 		foreach ($safeMsg as $key => $val) {
 		?>
-		<div class="py-1"><?php echo $i; ?>.<?php echo $val; ?></div>
+		<div class="py-1"><?php echo $i;?>.<?php echo $val;?></div>
 		<?php
 		$i++;
 		}

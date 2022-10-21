@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title><?php echo $cfg_webname; ?>-会员注册</title>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+		<title><?php echo $cfg_webname;?>-会员注册</title>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top.htm"); ?>
-		<?php include(DEDEMEMBER."/templets/header.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/top.htm");?>
+		<?php include(DEDEMEMBER."/templets/header.htm");?>
 		<main class="login-from">
 			<div class="container">
 				<div class="login-area">
@@ -26,18 +26,18 @@
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<input name="vdcode" placeholder="请输入验证码" type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
-								<img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" onClick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" alt="验证码" style="cursor:pointer">
+								<input name="vdcode" placeholder="请输入验证码" type="text" class="form-control" id="iptValidate">
+								<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onClick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" alt="验证码" style="cursor:pointer">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<input placeholder="登录密码" name="userpwd" type="password" class="form-control" id="iptUserpwd" style="text-transform:uppercase">
+								<input placeholder="登录密码" name="userpwd" type="password" class="form-control" id="iptUserpwd">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<input placeholder="确认密码" name="userpwdok" type="password" class="form-control" id="iptUserpwdok" style="text-transform:uppercase">
+								<input placeholder="确认密码" name="userpwdok" type="password" class="form-control" id="iptUserpwdok">
 							</div>
 						</div>
 						<div class="form-group form-check">
@@ -45,12 +45,12 @@
 							<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《用户注册条款》</a>、<a href="">《隐私保护条例》</a></label>
 						</div>
 						<button type="submit" class="btn btn-success btnLogin btn-sm">注册</button>
-						<a href="<?php echo $cfg_memberurl; ?>login.php" class="btn btn-outline-success btnLogin mt-2 btn-sm">登录</a>
+						<a href="<?php echo $cfg_memberurl;?>login.php" class="btn btn-outline-success btnLogin mt-2 btn-sm">登录</a>
 					</form>
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/footer.htm");?>
 		<script>
 			//CheckSubmit 校验注册提交表单
 			function CheckSubmit() {

@@ -53,7 +53,7 @@ if (!empty($iseditor)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="<?php echo $cfg_soft_lang; ?>">
+    <meta charset="<?php echo $cfg_soft_lang;?>">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>选择图片</title>
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
@@ -141,15 +141,15 @@ a{text-decoration:none!important}
         <tr>
             <td colspan="4" height="26">
                 <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
-                    <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor; ?>
+                    <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="v" value="<?php echo $v ?>">
                     <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
-                    <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1; ?>">
+                    <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
                     <input type="hidden" name="job" value="upload">
                     上传：<input type="file" name="imgfile" style="width:50%;border:none">
-                    <label><input type="checkbox" name="needwatermark" value="1" class="np" <?php if ($photo_markup == '1') echo "checked"; ?> /> 水印 </label>
+                    <label><input type="checkbox" name="needwatermark" value="1" class="np" <?php if ($photo_markup == '1') echo "checked";?> /> 水印 </label>
                     <label><input type="checkbox" name="resize" value="1" class="np"> 缩小 </label>
                     宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:46px">
                     高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" style="width:46px">

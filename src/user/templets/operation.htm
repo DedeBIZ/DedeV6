@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>金币订单-会员中心-<?php echo $cfg_webname; ?></title>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+		<title>金币订单-会员中心-<?php echo $cfg_webname;?></title>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container">
@@ -20,7 +20,7 @@
 						$_menu_order = true;
 						$_menu_orderstate = 2;
 						?>
-						<?php include(DEDEMEMBER."/templets/menu.htm"); ?>
+						<?php include(DEDEMEMBER."/templets/menu.htm");?>
 						<div class="pannel-main col-md-9 mt-3 mb-3">
 							<div class="pannel-main-container">
 								<div class="table-responsive">
@@ -40,9 +40,9 @@
 												{dede:datalist}
 												<tr>
 													<td align="center"><input type="checkbox" name="deleteid" value="{dede:field.aid/}" /></td>
-													<td><?php echo $fields['pname']; ?></td>
+													<td><?php echo $fields['pname'];?></td>
 													<td>{dede:field.buyid/}</td>
-													<td align="center"><?php echo $fields['oldinfo']; ?></td>
+													<td align="center"><?php echo $fields['oldinfo'];?></td>
 													<td align="center">{dede:field.sta function="GetSta(@me)"/}</td>
 													<td align="center">{dede:field.mtime function="GetDateMk(@me)"/}</td>
 												</tr>
@@ -64,7 +64,7 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/footer.htm");?>
 		<script>
 			//获得选中文件的文件名
 			function GetCheckfolderItem() {

@@ -65,7 +65,7 @@ ul.spec > li .title .label {
 	background:#B7E9B4;
 	color:#28a745;
 	padding:0 5px;
-	border-radius:3px
+	border-radius:.25rem
 }
 ul.spec > li .description,ul.spec > li .description a {
 	color:#868686;
@@ -126,7 +126,7 @@ ul.items > li .label {
 	border:1px solid #FF8400;
 	color:#FF8400;
 	height:24px;
-	border-radius:3px;
+	border-radius:.25rem;
 	font-size:12px;
 	line-height:24px;
 	margin-left:5px;
@@ -138,7 +138,7 @@ ul.items > li .label:hover {
 	text-decoration-line:none;
 	background:#FF8400;
 	height:24px;
-	border-radius:3px;
+	border-radius:.25rem;
 	font-size:12px;
 	line-height:24px;
 	margin-left:5px;
@@ -177,7 +177,7 @@ ul.items > li .source {
 }
 .list-group-dede {
 	border:1px solid #96D6A8;
-	border-radius:10px
+	border-radius:.25rem
 }
 .list-group-dede .list-group-item {
 	position:relative;
@@ -229,17 +229,18 @@ ul.items > li .source {
 	content:" ";
 	background:#28a745;
 	padding:6px;
-	margin-right:10px
+	margin-right:10px;
+	border-radius:.2rem
 }
 .ddcard > .card-header .caption {
 	font-size:18px
 }
 .ddcard > .card-header .caption span {
+	border-radius:.2rem .2rem 0 0;
 	display:inline-block;
 	background:#28a745;
 	padding:6px 15px;
-	color:white;
-	margin-bottom:-3px
+	color:white
 }
 .ddcard > .card-header .more a,.ddcard-normal > .card-header .more a {
 	color:#28a745;
@@ -255,7 +256,7 @@ ul.items > li .source {
 	padding:6px;
 	color:#12451F;
 	background:#B6E9B4;
-	border-radius:3px;
+	border-radius:.25rem;
 	margin-left:5px
 }
 .ddcard-normal > .list-group .time {
@@ -300,7 +301,7 @@ ul.items > li .source {
 	padding:6px;
 	margin-left:-10px;
 	margin-right:10px;
-	border-radius:3px
+	border-radius:.25rem
 }
 .ddcard > ol > li:nth-child(1)::before,.ddcard-normal > ol > li:nth-child(1)::before {
 	content:"1";
@@ -309,7 +310,7 @@ ul.items > li .source {
 	padding:6px 6px;
 	margin-left:0px;
 	margin-right:10px;
-	border-radius:3px;
+	border-radius:.25rem;
 	width:6px
 }
 .ddcard > ol > li:nth-child(2)::before,.ddcard-normal > ol > li:nth-child(2)::before {
@@ -319,7 +320,7 @@ ul.items > li .source {
 	padding:6px 5px;
 	margin-left:0px;
 	margin-right:10px;
-	border-radius:3px
+	border-radius:.25rem
 }
 .ddcard > ol > li:nth-child(3)::before,.ddcard-normal > ol > li:nth-child(3)::before {
 	content:"3";
@@ -328,61 +329,14 @@ ul.items > li .source {
 	padding:6px 5px;
 	margin-left:0px;
 	margin-right:10px;
-	border-radius:3px
-}
-h1.dede::before {
-	content:" ";
-	background:#28a745;
-	padding:6px;
-	margin-right:10px
-}
-h2.dede::before {
-	content:" ";
-	background:#28a745;
-	padding:6px;
-	margin-right:10px
-}
-h3.dede::before {
-	content:" ";
-	background:#28a745;
-	padding:6px;
-	margin-right:10px
+	border-radius:.25rem
 }
 h4.dede::before {
 	content:" ";
 	background:#28a745;
 	padding:6px;
-	margin-right:10px
-}
-h5.dede::before {
-	content:" ";
-	background:#28a745;
-	padding:6px;
-	margin-right:10px
-}
-h3.dede-box::before {
-	content:" ";
-	background:#B7E9B4;
-	padding:6px;
-	margin-bottom:4px;
 	margin-right:10px;
-	display:inline-block
-}
-h4.dede-box::before {
-	content:" ";
-	background:#B7E9B4;
-	padding:6px;
-	margin-bottom:4px;
-	margin-right:10px;
-	display:inline-block
-}
-h5.dede-box::before {
-	content:" ";
-	background:#B7E9B4;
-	padding:6px;
-	margin-bottom:4px;
-	margin-right:10px;
-	display:inline-block
+	border-radius:.2rem
 }
 .nav.dede .nav-link {
 	color:#858585;
@@ -424,7 +378,7 @@ nav.navbar.dede .nav-item.active {
 nav.location {
 	padding:.5rem;
 	border:solid 1px #B5B5B5;
-	border-radius:10px;
+	border-radius:.25rem;
 	display:flex;
 	flex-direction:row
 }
@@ -465,8 +419,8 @@ nav.location .dede li.active .nav-link {
 #btnScrollTop {
 	display:none;
 	position:fixed;
-	bottom:20px;
-	right:20px;
+	bottom:1rem;
+	right:1rem;
 	z-index:99;
 	font-size:18px;
 	border:none;
@@ -474,8 +428,8 @@ nav.location .dede li.active .nav-link {
 	background:#EC982C;
 	color:white;
 	cursor:pointer;
-	padding:10px 15px;
-	border-radius:10px
+	padding:10px 12px;
+	border-radius:.25rem
 }
 #btnScrollTop:hover {
 	background:#E77817
@@ -598,7 +552,7 @@ nav.navbar.dede .navbar-brand {
 	width:200px;
 	padding:10px 20px;
 	border:1px solid #f8f8f8;
-	border-radius:20px;
+	border-radius:30px;
 	margin:0 6px;
 	cursor:pointer
 }
@@ -632,7 +586,7 @@ nav.navbar.dede .navbar-brand {
 	font-size:14px;
 	color:#a6a5a6;
 	padding:6px 14px;
-	border-radius:34px;
+	border-radius:30px;
 	border:1px solid #f0f0f0;
 	cursor:pointer
 }
@@ -679,4 +633,10 @@ nav.navbar.dede .navbar-brand {
 }
 .carousel-item img {
 	max-width:100%!important
+}
+.form-control {
+	font-size:14px
+}
+.input-group-append {
+	margin-left:-30px
 }

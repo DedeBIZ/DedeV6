@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo $diy->name; ?></title>
+  <title><?php echo $diy->name;?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -24,12 +24,12 @@
 </head>
 <body>
 	<form action="diy_list.php" method="post">
-		<input type="hidden" name="diyid" value="<?php echo $diyid; ?>">
+		<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr>
 				<td bgcolor="#f8f8f8" colspan="3">
-					<span class="float-left py-2"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name; ?></span>
-					<span class="float-right mr-2"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid; ?>" target="_blank"><i class="fa fa-globe" title="前台预览"></i> 前台预览</a></span>
+					<span class="float-left py-2"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name;?></span>
+					<span class="float-right mr-2"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank"><i class="fa fa-globe" title="前台预览"></i> 前台预览</a></span>
 				</td>
 			</tr>
 			{dede:datalist}

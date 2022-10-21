@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>修改新建模板</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -65,15 +65,15 @@
 	<body>
 		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
 			<input type="hidden" name="action" value="saveedit">
-			<input type="hidden" name="acdir" value="<?php echo $acdir; ?>">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+			<input type="hidden" name="acdir" value="<?php echo $acdir;?>">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 				<tr>
 					<td bgcolor="#f8f8f8" colspan="2">修改新建模板</td>
 				</tr>
 				<tr>
 					<td hieght="26">文件名称</td>
-					<td hieght="26"><input name=filename value="<?php echo $filename; ?>" style="width:260px">（不允许用“..”形式的路径）</td>
+					<td hieght="26"><input name=filename value="<?php echo $filename;?>" style="width:260px">（不允许用“..”形式的路径）</td>
 				</tr>
 				<tr>
 					<td hieght="26" colspan="2">参考标签：</td>
@@ -106,7 +106,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="p-0">
-						<textarea id="content" name="content" cols="150" rows="25"><?php echo $content; ?></textarea>
+						<textarea id="content" name="content" cols="150" rows="25"><?php echo $content;?></textarea>
 					</td>
 				</tr>
 				<tr>

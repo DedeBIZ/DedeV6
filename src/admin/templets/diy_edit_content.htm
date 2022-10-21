@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>编辑评论</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -13,13 +13,13 @@
 <body>
 <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
-    <td width="100%" bgcolor="#f8f8f8" colspan="2"><a href="<?php echo $ENV_GOBACK_URL; ?>">表单管理</a> &gt; 编辑评论</td>
+    <td width="100%" bgcolor="#f8f8f8" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">表单管理</a> &gt; 编辑评论</td>
   </tr>
   <tr>
     <td colspan="2" align="center">
     	<form name="form1" method="post" enctype="multipart/form-data" action="diy_list.php?action=edit&diyid=<?php echo $diy->diyid ?>&id=<?php echo $row['id'] ?>&do=2">
     		<input type="hidden" name="dopost" value="edit">
-    		<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+    		<input type="hidden" name="id" value="<?php echo $row['id'];?>">
     		<table width="100%" cellpadding="3" cellspacing="1">
 					<?php
 					$formfields = '';
@@ -48,7 +48,7 @@
           <tr> 
             <td colspan="2" align="center" class="py-2">
               <button type="submit" name="Submit1" class="btn btn-success btn-sm">保存</button>
-              <button type="button" name="Submit2" class="btn btn-success btn-sm" onClick="location='<?php echo $ENV_GOBACK_URL; ?>';">返回</button>
+              <button type="button" name="Submit2" class="btn btn-success btn-sm" onClick="location='<?php echo $ENV_GOBACK_URL;?>';">返回</button>
 			 			</td>
           </tr>
         </table>

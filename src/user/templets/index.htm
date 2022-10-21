@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>会员中心-<?php echo $cfg_webname; ?></title>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+		<title>会员中心-<?php echo $cfg_webname;?></title>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 		<style>
 			.member a.btn {
 				color: white;
@@ -16,7 +16,7 @@
 		</style>
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container">
@@ -24,69 +24,69 @@
 						<?php
 						$_menu_home = true;
 						?>
-						<?php include(DEDEMEMBER."/templets/menu.htm"); ?>
+						<?php include(DEDEMEMBER."/templets/menu.htm");?>
 						<div class="pannel-main col-md-9 mt-3 mb-3">
 							<div class="pannel-main-container">
 								<div class="media-body row">
 									<div class="col-12 col-md-3 text-center">
-										<a href="<?php echo $cfg_memberurl; ?>"><img class="member-logo" src="<?php echo $cfg_ml->fields['face']; ?>" class="mr-3" alt="<?php echo $cfg_ml->M_MbType; ?>"></a>
-										<div class="member-type"><span class="badge badge-success"><?php echo $cfg_ml->M_MbType; ?></span></div>
+										<a href="<?php echo $cfg_memberurl;?>"><img class="member-logo" src="<?php echo $cfg_ml->fields['face'];?>" class="mr-2" alt="<?php echo $cfg_ml->M_MbType;?>"></a>
+										<div class="member-type"><span class="badge badge-success"><?php echo $cfg_ml->M_MbType;?></span></div>
 									</div>
 									<div class="col-12 col-md-9 title">
-										<h3 class="mt-0 mb-3"><?php echo $cfg_ml->M_LoginID; ?></h3>
-										<p>积分：<span class="text-danger"><?php echo $cfg_ml->M_Scores;?></span> 金币：<span class="text-danger"><?php echo $cfg_ml->M_Money;?></span> <a href="<?php echo $cfg_memberurl; ?>buy.php" class="btn btn-danger btn-sm">充值</a></p>
+										<h3 class="mt-0 mb-3"><?php echo $cfg_ml->M_LoginID;?></h3>
+										<p>积分：<span class="text-danger"><?php echo $cfg_ml->M_Scores;?></span> 金币：<span class="text-danger"><?php echo $cfg_ml->M_Money;?></span> <a href="<?php echo $cfg_memberurl;?>buy.php" class="btn btn-danger btn-sm">充值</a></p>
 									</div>
 								</div>
 							</div>
 							<div class="pannel-main-container mt-3">
 								<div class="media-body py-3">
-									<ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 mb-0 list-unstyled list">
+									<ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 mb-0 list-unstyled">
 										<li class="col" data-tags="alarm clock">
-											<a class="d-block text-dark text-decoration-none" href="<?php echo $cfg_memberurl; ?>content_list.php?channelid=1">
-												<div class="p-4 mb-3 bg-light text-center rounded">
-													<i class="fa fa-list" style="font-size:24px"></i>
+											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1">
+												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
+													<i class="fa fa-list"></i>
 												</div>
-												<div class="name text-muted text-decoration-none text-center">内容管理</div>
-											</a>
-										</li>
-										<li class="col" data-tags="alarm clock">
-											<a class="d-block text-dark text-decoration-none" href="<?php echo $cfg_memberurl; ?>pm.php?folder=inbox">
-												<div class="p-4 mb-3 bg-light text-center rounded">
-													<i class="fa fa-commenting-o" style="font-size:24px"></i>
-												</div>
-												<div class="name text-muted text-decoration-none text-center">消息管理</div>
+												<div class="text-muted text-center">内容管理</div>
 											</a>
 										</li>
 										<li class="col" data-tags="alarm clock">
-											<a class="d-block text-dark text-decoration-none" href="<?php echo $cfg_memberurl; ?>buy.php">
-												<div class="p-4 mb-3 bg-light text-center rounded">
-													<i class="fa fa-credit-card-alt" style="font-size:24px"></i>
+											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">
+												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
+													<i class="fa fa-commenting-o"></i>
 												</div>
-												<div class="name text-muted text-decoration-none text-center">钱包积分</div>
+												<div class="text-muted text-center">消息管理</div>
+											</a>
+										</li>
+										<li class="col" data-tags="alarm clock">
+											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/buy.php">
+												<div class="p-4 mb-3 bg-light text-center  rounded">
+													<i class="fa fa-credit-card-alt"></i>
+												</div>
+												<div class="text-muted text-center">钱包积分</div>
 											</a>
 										</li>
 										<li class="col" data-tags="space align distribute">
-											<a class="d-block text-dark text-decoration-none" href="<?php echo $cfg_memberurl; ?>shops_orders.php">
-												<div class="p-4 mb-3 bg-light text-center rounded">
-													<i class="fa fa-shopping-cart" style="font-size:24px"></i>
+											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/shops_orders.php">
+												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
+													<i class="fa fa-shopping-cart"></i>
 												</div>
-												<div class="name text-muted text-decoration-none text-center">订单管理</div>
+												<div class="text-muted text-center">订单管理</div>
 											</a>
 										</li>
 										<li class="col" data-tags="space align distribute">
-											<a class="d-block text-dark text-decoration-none" href="<?php echo $cfg_memberurl; ?>mystow.php">
-												<div class="p-4 mb-3 bg-light text-center rounded">
-													<i class="fa fa-star" style="font-size:24px"></i>
+											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/mystow.php">
+												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
+													<i class="fa fa-star"></i>
 												</div>
-												<div class="name text-muted text-decoration-none text-center">我的收藏</div>
+												<div class="text-muted text-center">我的收藏</div>
 											</a>
 										</li>
 										<li class="col" data-tags="space align distribute">
-											<a class="d-block text-dark text-decoration-none" href="<?php echo $cfg_memberurl; ?>edit_baseinfo.php">
-												<div class="p-4 mb-3 bg-light text-center rounded">
-													<i class="fa fa-cog" style="font-size:24px"></i>
+											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">
+												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
+													<i class="fa fa-cog"></i>
 												</div>
-												<div class="name text-muted text-decoration-none text-center">账号安全</div>
+												<div class="text-muted text-center">账号安全</div>
 											</a>
 										</li>
 									</ul>
@@ -102,7 +102,7 @@
 												foreach ($archives as $archive)
 												{
 												?>
-												<li><a href="<?php echo $archive['htmlurl']; ?>" title="<?php echo $archive['title']; ?>"><?php echo $archive['title']; ?></a></li>
+												<li><a href="<?php echo $archive['htmlurl'];?>" title="<?php echo $archive['title'];?>"><?php echo $archive['title'];?></a></li>
 												<?php
 												}
 												?>
@@ -116,6 +116,6 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/footer.htm");?>
 	</body>
 </html>

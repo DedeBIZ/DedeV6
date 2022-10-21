@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>修改频道</title>
   <script src="../static/web/js/jquery.min.js"></script>
@@ -23,18 +23,18 @@
     <form name="form1" action="mychannel_edit.php" method="post" target="stafrm">
       <input type="hidden" name="mid" value="<?php echo $mid?>">
       <input type="hidden" name="maintable" value="<?php echo $channel['maintable']?>">
-      <input type="hidden" name="addontable" value="<?php echo $channel['addtable']; ?>">
+      <input type="hidden" name="addontable" value="<?php echo $channel['addtable'];?>">
       <input type="hidden" name="step" value="<?php echo $step?>">
       <input type="hidden" name="dopost" value="modifysearch">
       <tr>
         <td bgcolor="#f8f8f8" colspan="2">
           <a href="mychannel_main.php">内容模型管理</a> &gt; 自定义搜索管理（自定义搜索在方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索）
-          <span class="float-right mr-2"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid; ?>">删除自定义搜索</a></span>
+          <span class="float-right mr-2"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid;?>">删除自定义搜索</a></span>
         </td>
       </tr>
       <tr>
         <td width="260">频道ID：</td>
-        <td><?php echo $mid; ?></td>
+        <td><?php echo $mid;?></td>
       </tr>
       <tr>
         <td>频道名称：<br></td>
@@ -46,7 +46,7 @@
       <tr>
         <td>主表可供自定义搜索的字段<br>
           <span class="style2" id="help2">标题、关键词、摘要为默认选项，不用选择</span></td>
-        <td><?php echo $mainfields; ?></td>
+        <td><?php echo $mainfields;?></td>
       </tr>
       <?php 
       }    
@@ -54,12 +54,12 @@
       <tr>
         <td>附件表可供自定义搜索的字段：<br>
           <span class="style2" id="help4">这里的字段是程序依据字段类型自动选择生成的</span></td>
-        <td><?php echo $addonfields; ?></td>
+        <td><?php echo $addonfields;?></td>
       </tr>
       <tr>
         <td>自定义搜索结果页模板<br>
           <span class="style2" id="help5" style="display:none">只填写文件名，且文件必须在templets/default目录中</span></td>
-        <td><input type="text" name="template" value="<?php echo $template; ?>" style="width:260px"></td>
+        <td><input type="text" name="template" value="<?php echo $template;?>" style="width:260px"></td>
       </tr>
       <tr>
         <td align="center" colspan="2" class="py-2">

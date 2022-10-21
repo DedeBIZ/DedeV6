@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>批量增加栏目</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -133,7 +133,7 @@
                 echo $pardir;
                 ?>）</label>
                 <label><input type="radio" name="referpath" value="cmspath"> CMS根目录</label>
-                <input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir; ?>">
+                <input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir;?>">
                 <span id="pathtype" style="display:none"><input type="radio" name="referpath" id="truepath3" value="typepath">所属栏目所属的目录</span>
               </td>
             </tr>
@@ -142,7 +142,7 @@
               <td class="bline">
                 <select name="reid" onchange="showSeltype(this)" style="width:160px">
                   <option value="0">选择所属目录</option>
-                  <?php echo $typeOptions; ?>
+                  <?php echo $typeOptions;?>
                 </select>（默认为顶级栏目）
               </td>
             </tr>
@@ -226,11 +226,11 @@
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr  class="repeat" align="center">
                       <td class="rank">
-                        <input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>">
-                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:60px">
+                        <input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
+                        <input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs" style="width:60px">
                       </td>
-                      <td><input type="text" name="toptype<?php echo $i; ?>" id="toptype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
-                      <td><input type="text" name="sontype<?php echo $i; ?>" id="sontype<?php echo $i; ?>" class="pubinputs" style="width:100%"></td>
+                      <td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="pubinputs" style="width:160px"></td>
+                      <td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" class="pubinputs" style="width:100%"></td>
                       <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm">删除</button></td>
                     </tr>
                     <?php } ?>
@@ -254,10 +254,10 @@
                     <?php for($i=2;$i<=10;$i++) { ?>
                     <tr  class="repeat" align="center">
                       <td class="rank">
-                        <input type="hidden" name="posttype<?php echo $i; ?>" value="<?php echo $i; ?>">
-                        <input type="text" name="rank<?php echo $i; ?>" id="rank<?php echo $i; ?>" value="<?php echo $i; ?>" class="pubinputs" style="width:60px">
+                        <input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
+                        <input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs" style="width:60px">
                       </td>
-                      <td><input type="text" name="reltype<?php echo $i; ?>" id="reltype<?php echo $i; ?>" class="pubinputs" style="width:160px"></td>
+                      <td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="pubinputs" style="width:160px"></td>
                       <td align="center"><button type="button" id="add" class="btn btn-success btn-sm">删除</button></td>
                     </tr>
                     <?php } ?>

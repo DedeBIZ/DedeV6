@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>收藏夹-会员中心-<?php echo $cfg_webname; ?></title>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+		<title>收藏夹-会员中心-<?php echo $cfg_webname;?></title>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container">
@@ -19,7 +19,7 @@
 						<?php
 						$_menu_stow = true;
 						?>
-						<?php include(DEDEMEMBER."/templets/menu.htm"); ?>
+						<?php include(DEDEMEMBER."/templets/menu.htm");?>
 						<div class="pannel-main col-md-9 mt-3 mb-3">
 							<div class="pannel-main-container">
 								<ul class="nav nav-tabs">
@@ -46,7 +46,7 @@
 												</td>
 											</tr>
 											<tr style="border-bottom: solid 1px #ddd">
-												<td colspan="6" class="tabTitle tbBtm">收藏时间：<?php echo MyDate('Y-m-d H:i', $fields['addtime']); ?></td>
+												<td colspan="6" class="tabTitle tbBtm">收藏时间：<?php echo MyDate('Y-m-d H:i', $fields['addtime']);?></td>
 											</tr>
 											{/dede:datalist}
 										</tbody>
@@ -59,6 +59,6 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/footer.htm");?>
 	</body>
 </html>

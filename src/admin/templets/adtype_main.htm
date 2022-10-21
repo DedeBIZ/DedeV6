@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>广告分类管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -28,7 +28,7 @@
       $k++;
   	?>
     <tr align="center">
-      <td><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"/><?php echo $row->id; ?></td>
+      <td><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"/><?php echo $row->id;?></td>
       <td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" id="pname_<?php echo $k?>" class="pubinputs" style="width:90%"></td>
       <td><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> 保留</label></td>
     </tr>

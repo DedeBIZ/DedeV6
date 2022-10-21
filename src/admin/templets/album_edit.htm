@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>修改图集</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
   <style>table{border-collapse:inherit}</style>
-  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut; ?>';</script>
+  <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
   <script src="../static/web/js/moment.min.js"></script>
@@ -60,7 +60,7 @@
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
     <tr>
       <td width="70%"><i class="fa fa-map"></i> <a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&dopost=listArchives">图集列表</a> &gt; 修改图集</td>
-      <td width="30%" align="right"><?php echo $backurl; ?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
+      <td width="30%" align="right"><?php echo $backurl;?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
     </tr>
   </table>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
@@ -80,9 +80,9 @@
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 图集标题：</td>
-            <td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title']; ?>" style="width:390px"></td>
+            <td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" style="width:390px"></td>
             <td width="90"> 简略标题：</td>
-            <td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle']; ?>" style="width:160px"></td>
+            <td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" style="width:160px"></td>
           </tr>
         </table>
       </td>
@@ -111,7 +111,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block'); ?>">
+      <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 跳转网址：</td>
@@ -125,9 +125,9 @@
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> Tag标签：</td>
-            <td><input type="text" name="tags" id="tags" value="<?php echo $tags; ?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
+            <td><input type="text" name="tags" id="tags" value="<?php echo $tags;?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
             <td width="60">权重：</td>
-            <td><input type="text" name="weight" id="weight" value="<?php echo $arcRow['weight']; ?>" style="width:60px">（越小越靠前）</td>
+            <td><input type="text" name="weight" id="weight" value="<?php echo $arcRow['weight'];?>" style="width:60px">（越小越靠前）</td>
           </tr>
         </table>
       </td>
@@ -144,7 +144,7 @@
               <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
               <button type="button" id="btnClearAll" class="btn btn-success btn-smete">清空</button>
             </td>
-            <td align="center"><img src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg'; ?>" id="litPic" class="thumbnail"></td>
+            <td align="center"><img src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
           </tr>
         </table>
       </td>
@@ -180,7 +180,7 @@
               echo $typeOptions;
               echo '</select>';
 			        ?>
-              <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid','<?php echo $arcRow['typeid']; ?>')" title="快捷选择"></i> 
+              <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid','<?php echo $arcRow['typeid'];?>')" title="快捷选择"></i> 
             </td>
             <td width="90">消费金币：</td>
             <td><input type="text" name="money" id="money" value="<?php echo $arcRow['money']?>" style="width:160px"></td>
@@ -198,8 +198,8 @@
             <td width="90"> 副栏目：</td>
             <td>
               <span id="typeid2ct"></span>
-              <input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']); ?>" style="width:160px">
-              <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid; ?>,'typeid2','<?php echo $arcRow['typeid2']; ?>')" title="选择副栏目"></i> 
+              <input type="text" name="typeid2" id="typeid2" value="<?php echo ($arcRow['typeid2']=='0' ? '' : $arcRow['typeid2']);?>" style="width:160px">
+              <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2','<?php echo $arcRow['typeid2'];?>')" title="选择副栏目"></i> 
             </td>
           </tr>
         </table>
@@ -237,23 +237,23 @@
           <tr>
             <td width="90"> 表现方式：</td>
             <td>
-              <label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if($pagestyle==1) echo " checked='checked'"; ?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
-              <label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if($pagestyle==2) echo " checked='checked'"; ?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
-              <label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if($pagestyle==3) echo " checked='checked'"; ?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
+              <label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if($pagestyle==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
+              <label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if($pagestyle==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
+              <label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if($pagestyle==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
             </td>
           </tr>
         </table>
       </td>
     </tr>
-    <tr id="cfgmulist" style="<?php if($pagestyle!=3) echo 'display:none'; ?>">
+    <tr id="cfgmulist" style="<?php if($pagestyle!=3) echo 'display:none';?>">
       <td class="bline">
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 多列式参数：</td>
             <td>
-              行 <input type="text" name="row" id="row" value="<?php echo $irow; ?>" size="6">
-              列 <input type="text" name="col" id="col" value="<?php echo $icol; ?>" size="6">
-              缩略图宽度限制：<input type="text" name="ddmaxwidth" id="ddmaxwidth" value="<?php echo $ddmaxwidth; ?>" size="6"> 像素
+              行 <input type="text" name="row" id="row" value="<?php echo $irow;?>" size="6">
+              列 <input type="text" name="col" id="col" value="<?php echo $icol;?>" size="6">
+              缩略图宽度限制：<input type="text" name="ddmaxwidth" id="ddmaxwidth" value="<?php echo $ddmaxwidth;?>" size="6"> 像素
             </td>
           </tr>
           <tr>
@@ -263,12 +263,12 @@
         </table>
       </td>
     </tr>
-    <tr id="spagelist" style="<?php if($pagestyle!=1) echo 'display:none'; ?>">
+    <tr id="spagelist" style="<?php if($pagestyle!=1) echo 'display:none';?>">
       <td class="bline">
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 每页图片数：</td>
-            <td><input name="pagepicnum" id="pagpicnum" size="10" value="<?php echo $pagepicnum; ?>"> 单页多图显示需要设置此参数，这种模式下系统不会为每张图单独生成缩略图</td>
+            <td><input name="pagepicnum" id="pagpicnum" size="10" value="<?php echo $pagepicnum;?>"> 单页多图显示需要设置此参数，这种模式下系统不会为每张图单独生成缩略图</td>
           </tr>
         </table>
       </td>
@@ -408,13 +408,13 @@
         <tr>
           <td width="90"  width="260"> 评论选项：</td>
           <td width="260">
-            <label><input type="radio" name="notpost" value="0" <?php if($arcRow['notpost']==0) echo "checked='1'"; ?>> 允许评论</label>
-            <label><input type="radio" name="notpost" value="1" <?php if($arcRow['notpost']==1) echo "checked='1'"; ?>> 禁止评论</label>
+            <label><input type="radio" name="notpost" value="0" <?php if($arcRow['notpost']==0) echo "checked='1'";?>> 允许评论</label>
+            <label><input type="radio" name="notpost" value="1" <?php if($arcRow['notpost']==1) echo "checked='1'";?>> 禁止评论</label>
           </td>
           <td width="90">发布选项：</td>
           <td>
-            <label><input type="radio" name="ishtml" value="1" <?php if($arcRow["ismake"]!=-1) echo "checked"; ?>> 生成网页</label>
-            <label><input type="radio" name="ishtml" value="0" <?php if($arcRow["ismake"]==-1) echo "checked"; ?>> 仅动态浏览</label>
+            <label><input type="radio" name="ishtml" value="1" <?php if($arcRow["ismake"]!=-1) echo "checked";?>> 生成网页</label>
+            <label><input type="radio" name="ishtml" value="0" <?php if($arcRow["ismake"]==-1) echo "checked";?>> 仅动态浏览</label>
           </td>
         </tr>
       </table>
@@ -482,7 +482,7 @@
 			      ?>
             </td>
             <td width="90">浏览次数：</td>
-            <td><input type="text" name="click" value="<?php echo $arcRow['click']; ?>" style="width:160px"></td>
+            <td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" style="width:160px"></td>
           </tr>
         </table>
       </td>

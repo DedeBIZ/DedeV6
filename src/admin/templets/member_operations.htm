@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>业务管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -95,7 +95,7 @@
       <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td align="center"><input type="checkbox" name="aids" value="<?php echo $fields['aid']?>"></td>
         <td align="center"><?php echo $fields['buyid']?></td>
-        <td align="center"><?php echo $fields['pname'].'('.$fields['oldinfo'].')'; ?></td>
+        <td align="center"><?php echo $fields['pname'].'('.$fields['oldinfo'].')';?></td>
         <td align="center"><?php echo GetPType($fields['product'])?></td>
         <td align="center"><?php echo GetDateTimeMk($fields['mtime'])?>（{dede:field.mtime function="floorTime(time()-@me,@me)"/}）</td>
         <td align="center"><?php echo $fields['money']?></td>
@@ -113,7 +113,7 @@
       </td>
     </tr>
     <tr>
-      <td height="36" bgcolor="#f8f8f8" colspan="8" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
+      <td class="py-2" bgcolor="#f8f8f8" colspan="8" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
     </tr>
   </table>
 </body>

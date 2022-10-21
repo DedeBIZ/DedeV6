@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>修改自定义表单</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -38,7 +38,7 @@
 <body>
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
-      <input type="hidden" name="diyid" value="<?php echo $diyid; ?>">
+      <input type="hidden" name="diyid" value="<?php echo $diyid;?>">
       <input type="hidden" name="dopost" value="save">
       <tr>
         <td bgcolor="#f8f8f8" colspan="2"><a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单</td>
@@ -46,7 +46,7 @@
       <tr>
         <td width="260">自定义表单 diyid：<span class="style2" id="help1">数字，创建后不可修改，并具有唯一性</span></td>
         <td>
-          <?php echo $diyid; ?>
+          <?php echo $diyid;?>
           <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help1')" style="cursor:hand"></i> 
         </td>
       </tr>
@@ -61,13 +61,13 @@
         <td>数据表：<br>
           <span class="style2" id="help5">自定义表单数据表创建后不可修改表名</span></td>
         <td>
-          <input type="text" name="table" id="table" value="<?php echo $row['table']; ?>" disabled="1" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')" style="cursor:hand"></i> 
+          <input type="text" name="table" id="table" value="<?php echo $row['table'];?>" disabled="1" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')" style="cursor:hand"></i> 
         </td>
       </tr>
       <tr>
         <td bgcolor="#f8f8f8">模型字段配置：信息索引类字段系统已经加入，您只需要增加其它个性化字段即可</td>
         <td bgcolor="#f8f8f8">
-          <button type="button" name="fset" id="fset" onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid; ?>'" class="btn btn-success btn-sm"
+          <button type="button" name="fset" id="fset" onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'" class="btn btn-success btn-sm"
            >添加新字段</button>
         </td>
       </tr>
@@ -119,8 +119,8 @@
           		 ?>
               </td>
               <td>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid; ?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid; ?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 删除</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 删除</a>
               </td>
             </tr>
             <?php 
@@ -132,22 +132,22 @@
       </tr>
       <tr>
         <td>列表模板：</td>
-        <td><input type="text" name="listtemplate" id="listtemplate" style="width:160px" value="<?php echo $row['listtemplate']; ?>"></td>
+        <td><input type="text" name="listtemplate" id="listtemplate" style="width:160px" value="<?php echo $row['listtemplate'];?>"></td>
       </tr>
       <tr>
         <td>内容模板：</td>
-        <td><input type="text" name="viewtemplate" id="viewtemplate" style="width:160px" value="<?php echo $row['viewtemplate']; ?>"></td>
+        <td><input type="text" name="viewtemplate" id="viewtemplate" style="width:160px" value="<?php echo $row['viewtemplate'];?>"></td>
       </tr>
       <tr>
         <td>发布模板：</td>
-        <td><input type="text" name="posttemplate" id="posttemplate" style="width:160px" value="<?php echo $row['posttemplate']; ?>"></td>
+        <td><input type="text" name="posttemplate" id="posttemplate" style="width:160px" value="<?php echo $row['posttemplate'];?>"></td>
       </tr>
       <tr>
         <td>前台列表和内容页公开：</td>
         <td>
-          <label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : ''; ?>> 完全公开</label>
-          <label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : ''; ?>> 公开审核过的</label>
-          <label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : ''; ?>> 不公开</label>
+          <label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>> 完全公开</label>
+          <label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>> 公开审核过的</label>
+          <label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : '';?>> 不公开</label>
         </td>
       </tr>
       <tr>

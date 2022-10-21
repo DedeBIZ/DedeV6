@@ -3,20 +3,20 @@
 	<head>
 		<meta charset="{dede:global name='cfg_soft_lang'/}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>推荐<?php echo $title; ?>-<?php echo $cfg_webname; ?></title>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
+		<title>推荐<?php echo $title;?>-<?php echo $cfg_webname;?></title>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 	</head>
 	<body>
 		<?php pasterTempletDiy('header.htm');?>
 		<div class="container">
-			<div class="sp-title mt-3">推荐：<?php echo $title; ?></div>
+			<div class="sp-title mt-3">推荐：<?php echo $title;?></div>
 			<div class="formbox">
 				<form name="form1" method="post" action="recommend.php">
-					<input type="hidden" name="arcurl" value="<?php echo $arcurl; ?>">
+					<input type="hidden" name="arcurl" value="<?php echo $arcurl;?>">
 					<input type="hidden" name="action" value="send">
-					<input type="hidden" name="arcID" value="<?php echo $aid; ?>">
+					<input type="hidden" name="arcID" value="<?php echo $aid;?>">
 					<table width="100%" class="table" cellspacing="2" cellpadding="1">
 						<tr>
 							<td align="right" width="160">您好友的Email：</td>
@@ -26,7 +26,7 @@
 							<td align="right">您的留言：</td>
 							<td align="left">
 								<textarea name="msg" cols="80" rows="16" id="msg" class="form-control">
-								我在 [<?php echo $cfg_webname; ?>] 发现了一个很好的东东，文档的名称是：<?php echo $title; ?>，网址是：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?>
+								我在 [<?php echo $cfg_webname;?>] 发现了一个很好的东东，文档的名称是：<?php echo $title;?>，网址是：<?php $arcUrl = ($cfg_multi_site != 'Y' ? $cfg_basehost : '').$arcurl; echo $arcUrl;?>
 								</textarea>
 							</td>
 						</tr>

@@ -113,7 +113,7 @@ EOT;
             $row['varname'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['varname']);
     ?>
     <tr align="center" bgcolor="<?php echo $bgcolor ?>">
-        <td width="300"><?php echo $row['info']; ?>：</td>
+        <td width="300"><?php echo $row['info'];?>：</td>
         <td align="left" style="padding:6px;">
             <?php
             if ($row['type'] == 'bool') {

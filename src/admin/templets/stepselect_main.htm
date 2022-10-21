@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="<?php echo $cfg_soft_lang; ?>">
+	<meta charset="<?php echo $cfg_soft_lang;?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>联动枚举管理</title>
     <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -127,9 +127,9 @@
         function ChangePage2(sobj) {
             var nv = sobj.options[sobj.selectedIndex].value;
             if (sobj.options[sobj.selectedIndex].value == 0) {
-                location.href = 'stepselect_main.php?egroup=<?php echo $egroup; ?>';
+                location.href = 'stepselect_main.php?egroup=<?php echo $egroup;?>';
             } else {
-                location.href = 'stepselect_main.php?egroup=<?php echo $egroup; ?>&topvalue=' + nv;
+                location.href = 'stepselect_main.php?egroup=<?php echo $egroup;?>&topvalue=' + nv;
             }
         }
     </script>
@@ -199,7 +199,7 @@
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
         <tr>
             <td bgcolor="#f8f8f8" colspan="8">
-                <span class="float-left"><?php echo $selgroup; ?> &gt; 子分类管理</span>
+                <span class="float-left"><?php echo $selgroup;?> &gt; 子分类管理</span>
                 <span class="float-right">
                 <?php
                 if($egroup=='nativeplace') {
@@ -213,12 +213,12 @@
             <td>
                 <form action="stepselect_main.php" method="post">
                     <input type="hidden" name="action" value="addenum_save">
-                    <input type="hidden" name="issign" value="<?php echo $arr['issign']; ?>">
-                    <input type="hidden" name="egroup" value="<?php echo $arr['egroup']; ?>">
+                    <input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
+                    <input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
                     <span class="float-left ml-2">隶属分类：
                         <select name="topvalue" onChange="ChangePage2(this)" style="width:160px">
-                            <option value="0"><?php echo $selgroup; ?></option>
-                            <?php echo $options; ?>
+                            <option value="0"><?php echo $selgroup;?></option>
+                            <?php echo $options;?>
                         </select>
                     </span>
                     <span class="float-left ml-2">分类名称：<input type="text" name="ename" style="width:260px"></span>
@@ -230,7 +230,7 @@
     <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable">
         <tr>
             <td bgcolor="#f8f8f8" colspan="8">
-                <span class="float-left"><a href="stepselect_main.php">枚举组列表</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup; ?>"><?php echo $selgroup; ?></a> &gt; 子分类列表</span>
+                <span class="float-left"><a href="stepselect_main.php">枚举组列表</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> &gt; 子分类列表</span>
             </td>
         </tr>
         <tr bgcolor="#fbfce2" align="center">

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title><?php echo $cfg_webname; ?>-会员登录</title>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
+		<title><?php echo $cfg_webname;?>-会员登录</title>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top.htm"); ?>
-		<?php include(DEDEMEMBER."/templets/header.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/top.htm");?>
+		<?php include(DEDEMEMBER."/templets/header.htm");?>
 		<main class="login-from">
 			<div class="container">
 				<div class="login-area">
 					<h4 class="text-center py-2">欢迎登录</h4>
-					<form name='form1' method='POST' action='<?php echo $cfg_memberurl; ?>/index_do.php'>
+					<form name='form1' method='POST' action='<?php echo $cfg_memberurl;?>/index_do.php'>
 						<input type="hidden" name="fmdo" value="login">
 						<input type="hidden" name="dopost" value="login">
 						<input type="hidden" name="keeptime" value="604800">
@@ -27,22 +27,22 @@
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<input placeholder="输入密码" name="pwd" type="password" class="form-control" id="iptPwd" style="text-transform:uppercase">
+								<input placeholder="输入密码" name="pwd" type="password" class="form-control" id="iptPwd">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<input name="vdcode" placeholder="请输入验证码" type="text" class="form-control" id="iptValidate" style="text-transform:uppercase">
-								<img src="<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='<?php echo $cfg_cmsurl; ?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" alt="验证码">
+								<input name="vdcode" placeholder="请输入验证码" type="text" class="form-control" id="iptValidate">
+								<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" alt="验证码">
 							</div>
 						</div>
 						<button type="submit" class="btn btn-success btnLogin btn-sm">登录</button>
-						<a href="<?php echo $cfg_memberurl; ?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success btnLogin mt-2 btn-sm">注册</a>
-						<a href="<?php echo $cfg_memberurl; ?>resetpassword.php" class="text-dark">忘记密码</a>
+						<a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success btnLogin mt-2 btn-sm">注册</a>
+						<a href="<?php echo $cfg_memberurl;?>resetpassword.php" class="text-dark">忘记密码</a>
 					</form>
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/footer.htm");?>
 	</body>
 </html>

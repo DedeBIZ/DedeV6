@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>发布<?php echo $cInfos['typename']; ?>-会员中心-<?php echo $cfg_webname; ?></title>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/member_album.js"></script>
+		<title>发布<?php echo $cInfos['typename'];?>-会员中心-<?php echo $cfg_webname;?></title>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/member_album.js"></script>
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container">
@@ -21,8 +21,8 @@
 							<div class="pannel-main-container">
 								<nav class="navbar navbar-expand-lg pr-0 pl-0">
 									<ol class="breadcrumb mb-0 mr-auto">
-										<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl; ?>/">会员中心</a></li>
-										<li class="breadcrumb-item">发布<?php echo $cInfos['typename']; ?></li></li>
+										<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
+										<li class="breadcrumb-item">发布<?php echo $cInfos['typename'];?></li></li>
 									</ol>
 									<span class="navbar-text">
 										<a href="javascript:history.back(-1);" class="btn btn-success btn-sm">返回</a>
@@ -30,11 +30,11 @@
 								</nav>
 								<form name="addcontent" action="album_add.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
 									<input type="hidden" name="dopost" value="save">
-									<input type="hidden" name="channelid" value="<?php echo $channelid; ?>">
+									<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 									<input type="hidden" name="imagebody" id="imagebody" value="">
 									<div id="mainCp">
 										<div class="form-group row">
-											<label class="col-sm-2 col-form-label"><?php echo $cInfos['titlename']; ?></label>
+											<label class="col-sm-2 col-form-label"><?php echo $cInfos['titlename'];?></label>
 											<div class="col-sm-10">
 												<input name="title" type="text" id="title" class="form-control" placeholder="请输入标题">
 											</div>
@@ -76,16 +76,16 @@
 										?>
 										<label>正文</label>
 										<div class="contentShow postForm">
-											<input name="maxwidth" type="hidden" id="maxwidth" value="<?php echo $cfg_album_width; ?>">
-											<input name="prow" type="hidden" value="<?php echo $cfg_album_row; ?>">
-											<input name="pcol" type="hidden" value="<?php echo $cfg_album_col; ?>">
-											<input name="ddmaxwidth" type="hidden" value="<?php echo $cfg_album_ddwidth; ?>">
+											<input name="maxwidth" type="hidden" id="maxwidth" value="<?php echo $cfg_album_width;?>">
+											<input name="prow" type="hidden" value="<?php echo $cfg_album_row;?>">
+											<input name="pcol" type="hidden" value="<?php echo $cfg_album_col;?>">
+											<input name="ddmaxwidth" type="hidden" value="<?php echo $cfg_album_ddwidth;?>">
 											<p class="cellBg">
 												<label>表现方式：</label>
-												<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'"; ?>> 多页多图显示（适用于QQ表情等）</label>
-												<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'"; ?>> 多页单图显示（幻灯）</label>
-												<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'"; ?>> 多行多列显示（缩略图）</label>
-												<div id="spagelist" class="mTB10" style="display:none">每页图片数：<input name='pagpicnum' id='pagpicnum' size='10' class="text" value='<?php echo $cfg_album_pagesize; ?>'></div>
+												<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'";?>> 多页多图显示（适用于QQ表情等）</label>
+												<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'";?>> 多页单图显示（幻灯）</label>
+												<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'";?>> 多行多列显示（缩略图）</label>
+												<div id="spagelist" class="mTB10" style="display:none">每页图片数：<input name='pagpicnum' id='pagpicnum' size='10' class="text" value='<?php echo $cfg_album_pagesize;?>'></div>
 											</p>
 											<p>
 												<label>手工上传</label>
@@ -125,6 +125,6 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/footer.htm");?>
 	</body>
 </html>

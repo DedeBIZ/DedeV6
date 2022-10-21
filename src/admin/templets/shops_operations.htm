@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>商店订单记录</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -112,7 +112,7 @@
       {dede:datalist empty='<tr><td colspan="11"><center>暂无内容</center></td></tr>'}
       <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td align="center"><input type='checkbox' name='aids' value='<?php echo $fields['oid']?>'></td>
-        <td align="center"><?php echo $fields['oid']; ?></td>
+        <td align="center"><?php echo $fields['oid'];?></td>
         <td align="center"><a href="javascript:OpenMyWinN('shops_operations_userinfo.php?oid=<?php echo $fields['oid']?>',800,600);"><?php echo $fields['consignee']?></a></td>
         <td align="center">
           <?php echo $fields['cartcount']?>
@@ -138,7 +138,7 @@
       </td>
     </tr>
     <tr>
-      <td height="36" colspan="11" bgcolor="#f8f8f8" align="center">{dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="6"/}</td>
+      <td class="py-2" colspan="11" bgcolor="#f8f8f8" align="center">{dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="6"/}</td>
     </tr>
   </table>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>修改自由列表</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -85,7 +85,7 @@
                       <td>目录默认页名称：</td>
                       <td>
                         <input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" style="width:260px">
-                        <label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if($row['nodefault']==1) echo "checked"; ?>> 不使用目录默认主页</label>
+                        <label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if($row['nodefault']==1) echo "checked";?>> 不使用目录默认主页</label>
                       </td>
                     </tr>
                     <tr>
@@ -93,7 +93,7 @@
                       <td><input type="text" name="namerule" id="namerule" value="<?php echo $row['namerule']?>" style="width:260px"></td>
                     </tr>
                     <tr>
-                      <td height="36">列表模板：</td>
+                      <td class="py-2">列表模板：</td>
                       <td>
                         <input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" style="width:260px">
                         <button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
@@ -101,7 +101,7 @@
                     </tr>
                     <tr>
                       <td>最大列出页数：</td>
-                      <td><input type="text" name="maxpage" id="maxpage" value="<?php echo $row['maxpage']; ?>" style="width:60px"></td>
+                      <td><input type="text" name="maxpage" id="maxpage" value="<?php echo $row['maxpage'];?>" style="width:60px"></td>
                     </tr>
                     <tr>
                       <td></td>
@@ -109,7 +109,7 @@
                     </tr>
                     <tr>
                       <td>关键词：</td>
-                      <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords']; ?>" style="width:260px"></td>
+                      <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" style="width:260px"></td>
                     </tr>
                     <tr>
                       <td>列表描述：</td>
@@ -183,7 +183,7 @@
               <tr>
                 <td>
                   每页记录数：<input type="text" name="pagesize" id="pagesize" value="<?php echo $ctag->GetAtt('pagesize')?>" size="4">
-                  显示列数：<input type="text" name="col" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v; ?>" size="4">
+                  显示列数：<input type="text" name="col" id="col" value="<?php  $col = $ctag->GetAtt('col'); $v = ( empty($col) ? '1' :  $col ); echo $v;?>" size="4">
                   标题长度：<input type="text" name="titlelen" id="titlelen" value="<?php echo $ctag->GetAtt('titlelen')?>" size="4">（1字节 = 0.5个中文字）
                 </td>
               </tr>
@@ -194,9 +194,9 @@
                 	if($setype=='') $setype = 'X';
                 	?>
                   高级筛选：
-                  <label><input type="checkbox" name="types[]" id="type1" value="image" <?php if(preg_match("#image#i",$setype)) echo ' checked'; ?>> 带缩略图</label>
-                  <label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if(preg_match("#commend#i", $setype)) echo ' checked'; ?>> 推荐</label>
-                  <label><input type="checkbox" name="types[]" id="type3" value="spec" class="inputbut" <?php if(preg_match("#spec#i", $setype)) echo ' checked'; ?>> 专题</label>
+                  <label><input type="checkbox" name="types[]" id="type1" value="image" <?php if(preg_match("#image#i",$setype)) echo ' checked';?>> 带缩略图</label>
+                  <label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if(preg_match("#commend#i", $setype)) echo ' checked';?>> 推荐</label>
+                  <label><input type="checkbox" name="types[]" id="type3" value="spec" class="inputbut" <?php if(preg_match("#spec#i", $setype)) echo ' checked';?>> 专题</label>
                   关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（&quot;,&quot;逗号分开）
                 </td>
               </tr>
@@ -225,8 +225,8 @@
                     <option value="lastpost">最后评论时间</option>
                     <option value="postnum">评论总数</option>
                   </select>
-                  <label><input type="radio" name="order" value="desc" <?php if($ctag->GetAtt('orderway')=='desc') echo "checked"; ?>> 由高到低</label>
-                  <label><input type="radio" name="order" value="asc" <?php if($ctag->GetAtt('orderway')=='asc') echo "checked"; ?>> 由低到高</label>
+                  <label><input type="radio" name="order" value="desc" <?php if($ctag->GetAtt('orderway')=='desc') echo "checked";?>> 由高到低</label>
+                  <label><input type="radio" name="order" value="asc" <?php if($ctag->GetAtt('orderway')=='asc') echo "checked";?>> 由低到高</label>
                 </td>
               </tr>
               <tr>

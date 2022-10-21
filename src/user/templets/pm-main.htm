@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-		<title>消息管理-会员中心-<?php echo $cfg_webname; ?></title>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/style.css">
-		<link rel="stylesheet" href="<?php echo $cfg_cmsurl; ?>/static/web/css/member.css">
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/bootstrap.bundle.min.js"></script>
-		<script src="<?php echo $cfg_cmsurl; ?>/static/web/js/style.js"></script>
+		<title>消息管理-会员中心-<?php echo $cfg_webname;?></title>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
+		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/bootstrap.bundle.min.js"></script>
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/style.js"></script>
 		<script>
 			//阅读消息
 			function ReadMsg(id) {
@@ -31,7 +31,7 @@
 		</script>
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container">
@@ -40,7 +40,7 @@
 						$_menu_pmex = true;
 						$_menu_pmstate = $state;
 						?>
-						<?php include(DEDEMEMBER."/templets/menu.htm"); ?>
+						<?php include(DEDEMEMBER."/templets/menu.htm");?>
 						<div class="pannel-main col-md-9 mt-3 mb-3">
 							<div class="pannel-main-container">
 								<ul class="nav mt-2">
@@ -93,7 +93,7 @@
 														}?>
 													</td>
 													<td>
-														<div class="pm-read-status" for="<?php echo $fields['id']; ?>">
+														<div class="pm-read-status" for="<?php echo $fields['id'];?>">
 														<?php
 														$readmsg = ($fields['hasview']==0 ? "<span class='text-danger'>未阅读</span>" : '已阅读');
 														echo $readmsg;
@@ -112,7 +112,7 @@
 									</form>
 								</div>
 								<nav>
-									<button type="button" onclick="DoSubmit('<?php echo $folder; ?>')" class="btn btn-danger btn-sm">删除</button>
+									<button type="button" onclick="DoSubmit('<?php echo $folder;?>')" class="btn btn-danger btn-sm">删除</button>
 									{dede:pagelist listsize='6'/}
 								</nav>
 							</div>
@@ -121,7 +121,7 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm"); ?>
+		<?php include(DEDEMEMBER."/templets/footer.htm");?>
 		<script>
 			//获得选中文件的文件名
 			function GetCheckfolderItem() {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang; ?>">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>标签源码碎片管理</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -48,18 +48,18 @@
 	</head>
 	<body>
 		<form method="POST" action="tpl.php" name=form1 onSubmit="return Post()">
-			<input type="hidden" name="actiondo" value="<?php echo $action; ?>">
-			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token']; ?>">
+			<input type="hidden" name="actiondo" value="<?php echo $action;?>">
+			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="action" value="savetagfile">
 			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 				<tr>
 					<td bgcolor="#f8f8f8" colspan="2">
-						<span><?php echo $title; ?>（修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份）</span>
+						<span><?php echo $title;?>（修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份）</span>
 					</td>
 				</tr>
 				<tr>
 					<td>文件名称</td>
-					<td><input name="filename" value="<?php echo $filename; ?>" style="width:260px">（不允许用“..”形式的路径）</td>
+					<td><input name="filename" value="<?php echo $filename;?>" style="width:260px">（不允许用“..”形式的路径）</td>
 				</tr>
 				<tr>
 					<td>标签格式说明 </td>
@@ -70,7 +70,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea id="content" name="content" cols="150" rows="25"><?php echo $democode; ?></textarea></td>
+					<td colspan="2"><textarea id="content" name="content" cols="150" rows="25"><?php echo $democode;?></textarea></td>
 				</tr>
 				<tr>
 					<td bgcolor="#f8f8f8" colspan="2" align="center" class="py-2">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang; ?>">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>编辑评论</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -11,29 +11,29 @@
 <body>
   <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
-      <td width="100%" bgcolor="#f8f8f8" colspan="2"><a href="<?php echo $ENV_GOBACK_URL; ?>">评论管理</a> &gt; 编辑评论</td>
+      <td width="100%" bgcolor="#f8f8f8" colspan="2"><a href="<?php echo $ENV_GOBACK_URL;?>">评论管理</a> &gt; 编辑评论</td>
     </tr>
     <tr>
       <td colspan="2" align="center">
         <form name="form1" method="post" action="feedback_edit.php">
           <input type="hidden" name="dopost" value="edit">
-          <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+          <input type="hidden" name="id" value="<?php echo $row['id'];?>">
           <table width="100%" cellpadding="3" cellspacing="1" class="table table-borderless">
             <tr>
               <td width="260">评论所属文档：</td>
-              <td><?php echo RemoveXSS($row['arctitle']); ?></td>
+              <td><?php echo RemoveXSS($row['arctitle']);?></td>
             </tr>
             <tr>
               <td>评论人：</td>
-              <td><input type="text" name="username" id="username" size="20" value="<?php echo $row['username']; ?>"></td>
+              <td><input type="text" name="username" id="username" size="20" value="<?php echo $row['username'];?>"></td>
             </tr>
             <tr>
               <td>评论发布时间：</td>
-              <td><?php echo GetDateTimeMK($row['dtime']); ?></td>
+              <td><?php echo GetDateTimeMK($row['dtime']);?></td>
             </tr>
             <tr>
               <td>IP地址：</td>
-              <td><?php echo $row['ip']; ?></td>
+              <td><?php echo $row['ip'];?></td>
             </tr>
             <tr>
               <td>评论内容：</td>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
               <td height="62" align="center"></td>
-              <td height="62"><textarea name="msg" cols="60" rows="5" id="msg"><?php echo cn_substr(Text2Html($row['msg']), 250); ?></textarea></td>
+              <td height="62"><textarea name="msg" cols="60" rows="5" id="msg"><?php echo cn_substr(Text2Html($row['msg']), 250);?></textarea></td>
             </tr>
             <tr>
               <td>管理员回复：</td>
@@ -54,7 +54,7 @@
             <tr>
               <td colspan="2" align="center" class="py-2">
                 <button type="submit" class="btn btn-success btn-sm">保存</button>
-                <button type="button" onClick="location='<?php echo $ENV_GOBACK_URL; ?>';" class="btn btn-success btn-sm">返回</button>
+                <button type="button" onClick="location='<?php echo $ENV_GOBACK_URL;?>';" class="btn btn-success btn-sm">返回</button>
               </td>
             </tr>
           </table>
