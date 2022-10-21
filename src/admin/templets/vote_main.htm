@@ -12,7 +12,7 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="7">投票管理<a href="vote_add.php" class="btn btn-success btn-sm ml-2">增加一组投票</a></td>
+      <td bgcolor="#f8f8f8" colspan="7">投票管理</td>
     </tr>
     <tr bgcolor="#fbfce2" align="center">
       <td width="8%">id</td>
@@ -38,7 +38,10 @@
       </td>
     </tr>
     {/dede:datalist}
-    <tr class="py-2" bgcolor="#f8f8f8" align="center">
+    <tr>
+      <td colspan="7"><a href="vote_add.php" class="btn btn-success btn-sm">增加一组投票</a></td>
+    </tr>
+    <tr bgcolor="#f8f8f8" align="center" class="py-2">
       <td colspan="7">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>

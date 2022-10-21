@@ -10,28 +10,28 @@
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <form action="ad_main.php" method="get" name="form3" id="form3">
+    <input type="hidden" name="dopost" value="listArchives">
+    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+      <tr bgcolor="#f8f8f8">
+        <td width="180" align="center">
+          <select name="clsid" id="clsid" style="width:160px">
+            <option value="0">默认分类</option>
+            <?php echo $option;?>
+          </select>
+        </td>
+        <td width="270"><input type="text" name="keyword" placeholder="请输入关键词" style="width:260px"></td>
+        <td>
+          <button type="submit" class="btn btn-success btn-sm">搜索</button>
+          <a href="ad_add.php" class="btn btn-success btn-sm">增加一个新广告</a>
+          <a href="adtype_main.php" class="btn btn-success btn-sm">广告分类管理</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="7">广告管理<a href="ad_add.php" class="btn btn-success btn-sm ml-2">增加一个新广告</a><a href="adtype_main.php" class="btn btn-success btn-sm">广告分类管理</a></td>
-    </tr>
-    <tr>
-      <td colspan="7">
-        <form action="ad_main.php" method="get" name="form3" id="form3">
-          <input type="hidden" name="dopost" value="listArchives">
-          <table class="table-borderless">
-            <tr>
-              <td width="180" align="center">
-                <select name="clsid" id="clsid" style="width:160px">
-                  <option value="0">默认分类</option>
-                  <?php echo $option;?>
-                </select>
-              </td>
-              <td width="270"><input type="text" name="keyword" placeholder="请输入关键词" style="width:260px"></td>
-              <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
-            </tr>
-          </table>
-        </form>
-      </td>
+      <td bgcolor="#f8f8f8" colspan="7">广告管理</td>
     </tr>
     <tr bgcolor="#fbfce2" align="center">
       <td width="8%">id</td>
@@ -57,7 +57,7 @@
       </td>
     </tr>
     {/dede:datalist}
-    <tr class="py-2" bgcolor="#f8f8f8" align="center">
+    <tr bgcolor="#f8f8f8" align="center" class="py-2">
       <td colspan="7">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>

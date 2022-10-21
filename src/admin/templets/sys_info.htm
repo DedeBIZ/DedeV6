@@ -49,7 +49,6 @@
 				}).catch((error) => {
 					$Obj('_search').innerHTML = errMsg;
 				});
-				$Obj('_searchback').innerHTML = '<button class="btn btn-success btn-sm" name="searchbackBtn" type="button" id="searchbackBtn" onclick="backSearch()">返回</button>'
 				$Obj('_mainsearch').innerHTML = '';
 				searchconfig = true;
 			}
@@ -61,173 +60,166 @@
 		</script>
 	</head>
 	<body>
-		<div style="min-width:780px">
-			<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-				<tr>
-					<td bgcolor="#f8f8f8">系统配置变量</td>
-				</tr>
-				<tr>
-					<td>
-						<?php
-						$ds = file(DEDEADMIN.'/inc/configgroup.txt');
-						$totalGroup = count($ds);
-						$i = 0;
-						foreach($ds as $dl)
-						{
-							$dl = trim($dl);
-							if(empty($dl)) continue;
-							$dls = explode(',',$dl);
-							$i++;
-							if ($i>1) echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
-							else {
-								echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
-							}
+		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+			<tr bgcolor="#f8f8f8">
+				<td width="180">
+					<input type="text" name="keywds" id="keywds" placeholder="请输入配置" style="width:160px">
+				</td>
+				<td>
+					<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a><?php
+					$ds = file(DEDEADMIN.'/inc/configgroup.txt');
+					$totalGroup = count($ds);
+					$i = 0;
+					foreach($ds as $dl)
+					{
+						$dl = trim($dl);
+						if(empty($dl)) continue;
+						$dls = explode(',',$dl);
+						$i++;
+						if ($i>1) echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
+						else {
+							echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
 						}
-						?>
-						<a href="javascript:;" onClick="ShowHide('addvar')" class="btn btn-success btn-sm">添加新变量</a>
-					</td>
-				</tr>
-				<tr id="addvar" style="display:none">
-					<td align="center">
-						<form name="fadd" action="sys_info.php" method="post">
-							<input type="hidden" name="dopost" value="add">
-							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-							<table width="100%" cellspacing="0" cellpadding="0">
-								<tr>
-									<td width="90" class="border-top-0">变量说明</td>
-									<td width="270" class="border-top-0"><input type="text" name="varmsg" id="varmsg" class="npvar" style="width:260px"></td>
-									<td width="90" class="border-top-0">变量值</td>
-									<td width="270" class="border-top-0"><input type="text" name="nvarvalue" id="nvarvalue" class="npvar" style="width:260px"></td>
-								</tr>
-								<tr>
-									<td width="90">变量类型</td>
-									<td colspan="3">
-										<label><input type="radio" name="vartype" value="string" checked="checked"> 文本</label>
-										<label><input type="radio" name="vartype" value="number"> 数字</label>
-										<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
-										<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
-										<label><input type="radio" name="vartype" value="img"> 图片</label>
-									</td>
-								</tr>
-								<tr>
-									<td width="90">变量名称</td>
-									<td width="270"><input type="text" name="nvarname" id="nvarname" class="npvar" style="width:260px"></td>
-									<td width="90">所属组</td>
-									<td>
-										<?php
-										echo "<select name='vargroup' class='npvar' style='margin-right:10px;width:160px'>";
-										foreach($ds as $dl){
-											$dl = trim($dl);
-											if(empty($dl)) continue;
-											$dls = explode(',',$dl);
-											echo "<option value='{$dls[0]}'>{$dls[1]}</option>";
-										}
-										echo "</select>";
-										?>
-										<button type="submit" class="btn btn-success btn-sm">保存变量</button>
-									</td>
-								</tr>
-							</table>
-						</form>
-					</td>
-				</tr>
-			</table>
-			<table width="98%" cellpadding="0" cellspacing="0" align="center" class="table maintable mt-3 mb-3">
-				<tr>
-					<td width="170" bgcolor="#f8f8f8" align="right">
-						<input type="text" name="keywds" id="keywds" placeholder="请输入配置" style="width:160px">
-						<button type="button" onclick="getSearch()" class="btn btn-success btn-sm">搜索</button>
-						<span id="_searchback"></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="p-0">
-						<form action="sys_info.php" method="post" name="form1">
-							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-							<input type="hidden" name="dopost" value="save">
-							<div id="_search"></div>
-							<div id="_mainsearch">
-								<?php
-								$n = 0;
-								if(!isset($gp)) $gp = 1;
-								foreach($ds as $dl)
-								{
-									$dl = trim($dl);
-									if(empty($dl)) continue;
-									$dls = explode(',',$dl);
-									$n++;
-								?>
-								<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none';?>">
-									<tr bgcolor="#fbfce2" align="center">
-										<td width="360" class="border-top-0">变量说明</td>
-										<td class="border-top-0">变量值</td>
-										<td width="260" class="border-top-0">变量名称</td>
-									</tr>
+					}
+					?><a href="javascript:;" onClick="ShowHide('addvar')" class="btn btn-success btn-sm">添加新变量</a>
+				</td>
+			</tr>
+			<tr id="addvar" style="display:none">
+				<td colspan="2" align="center">
+					<form name="fadd" action="sys_info.php" method="post">
+						<input type="hidden" name="dopost" value="add">
+						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+						<table width="100%" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="90" class="border-top-0">变量说明</td>
+								<td width="270" class="border-top-0"><input type="text" name="varmsg" id="varmsg" class="npvar" style="width:260px"></td>
+								<td width="90" class="border-top-0">变量值</td>
+								<td width="270" class="border-top-0"><input type="text" name="nvarvalue" id="nvarvalue" class="npvar" style="width:260px"></td>
+							</tr>
+							<tr>
+								<td width="90">变量类型</td>
+								<td colspan="3">
+									<label><input type="radio" name="vartype" value="string" checked="checked"> 文本</label>
+									<label><input type="radio" name="vartype" value="number"> 数字</label>
+									<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
+									<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
+									<label><input type="radio" name="vartype" value="img"> 图片</label>
+								</td>
+							</tr>
+							<tr>
+								<td width="90">变量名称</td>
+								<td width="270"><input type="text" name="nvarname" id="nvarname" class="npvar" style="width:260px"></td>
+								<td width="90">所属组</td>
+								<td>
 									<?php
-									$dsql->SetQuery("Select * From `#@__sysconfig` where groupid='{$dls[0]}' order by aid asc");
-									$dsql->Execute();
-									$i = 1;
-									while($row = $dsql->GetArray()) {
-										if($i%2==0) {
-											$bgcolor = "#f8f8f8";
-										} else {
-											$bgcolor = "#ffffff";
-										}
-										$i++;
-										?>
-									<tr align="center" bgcolor="<?php echo $bgcolor?>">
-										<td><?php echo $row['info'];?></td>
-										<td align="left">
-											<?php
-											if($row['type']=='bool') {
-												$c1 = '';
-												$c2 = '';
-												$row['value']=='Y' ? $c1="checked" : $c2="checked";
-												echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
-												echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
-											} else if($row['type']=='bstring') {
-												$row['value'] = stripslashes($row['value']);
-												echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
-											} else if($row['type']=='number') {
-												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
-											} else if($row['type']=='img') {
-												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'> <input type='button' name='set9' value='选择' onClick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." class='btn btn-success btn-sm'>";
-													if($row['value']){
-														echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail'>";
-													} else {
-													echo " <img src='../static/web/img/defaultpic.jpg' id='idd_{$row['varname']}' class='thumbnail'>";
-												}
-											} else {
-												$addstr='';
-												if ($row['varname']=='cfg_cookie_encode') {
-													$addstr='<a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">重新生成</a>';
-												}
-												echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'> {$addstr}";
-											}
-											?>
-										</td>
-										<td><?php echo $row['varname']?></td>
-									</tr>
-									<?php
+									echo "<select name='vargroup' class='npvar' style='margin-right:10px;width:160px'>";
+									foreach($ds as $dl){
+										$dl = trim($dl);
+										if(empty($dl)) continue;
+										$dls = explode(',',$dl);
+										echo "<option value='{$dls[0]}'>{$dls[1]}</option>";
 									}
+									echo "</select>";
 									?>
-								</table>
+									<button type="submit" class="btn btn-success btn-sm">保存变量</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</td>
+			</tr>
+		</table>
+		<table width="98%" cellpadding="0" cellspacing="0" align="center" class="table maintable mb-3">
+			<tr>
+				<td bgcolor="#f8f8f8">系统配置变量</td>
+			</tr>
+			<tr>
+				<td class="p-0">
+					<form action="sys_info.php" method="post" name="form1">
+						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+						<input type="hidden" name="dopost" value="save">
+						<div id="_search"></div>
+						<div id="_mainsearch">
+							<?php
+							$n = 0;
+							if(!isset($gp)) $gp = 1;
+							foreach($ds as $dl)
+							{
+								$dl = trim($dl);
+								if(empty($dl)) continue;
+								$dls = explode(',',$dl);
+								$n++;
+							?>
+							<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none';?>">
+								<tr bgcolor="#fbfce2" align="center">
+									<td width="360" class="border-top-0">变量说明</td>
+									<td class="border-top-0">变量值</td>
+									<td width="260" class="border-top-0">变量名称</td>
+								</tr>
+								<?php
+								$dsql->SetQuery("Select * From `#@__sysconfig` where groupid='{$dls[0]}' order by aid asc");
+								$dsql->Execute();
+								$i = 1;
+								while($row = $dsql->GetArray()) {
+									if($i%2==0) {
+										$bgcolor = "#f8f8f8";
+									} else {
+										$bgcolor = "#ffffff";
+									}
+									$i++;
+									?>
+								<tr align="center" bgcolor="<?php echo $bgcolor?>">
+									<td><?php echo $row['info'];?></td>
+									<td align="left">
+										<?php
+										if($row['type']=='bool') {
+											$c1 = '';
+											$c2 = '';
+											$row['value']=='Y' ? $c1="checked" : $c2="checked";
+											echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
+											echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
+										} else if($row['type']=='bstring') {
+											$row['value'] = stripslashes($row['value']);
+											echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
+										} else if($row['type']=='number') {
+											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
+										} else if($row['type']=='img') {
+											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'> <input type='button' name='set9' value='选择' onClick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." class='btn btn-success btn-sm'>";
+												if($row['value']){
+													echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail'>";
+												} else {
+												echo " <img src='../static/web/img/defaultpic.jpg' id='idd_{$row['varname']}' class='thumbnail'>";
+											}
+										} else {
+											$addstr='';
+											if ($row['varname']=='cfg_cookie_encode') {
+												$addstr='<a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">重新生成</a>';
+											}
+											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'> {$addstr}";
+										}
+										?>
+									</td>
+									<td><?php echo $row['varname']?></td>
+								</tr>
 								<?php
 								}
 								?>
-							</div>
-							<table cellspacing="1" cellpadding="1" bgcolor="#f8f8f8" class="table">
-								<tr>
-									<td align="center" class="py-2">
-										<button type="submit" class="btn btn-success btn-sm">保存</button>
-										<button type="button" onClick="document.form1.reset()" class="btn btn-success btn-sm">重置</button>
-									</td>
-								</tr>
 							</table>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</div>
+							<?php
+							}
+							?>
+						</div>
+						<table cellspacing="1" cellpadding="1" bgcolor="#f8f8f8" class="table">
+							<tr>
+								<td align="center" class="py-2">
+									<button type="submit" class="btn btn-success btn-sm">保存</button>
+									<button type="button" onClick="document.form1.reset()" class="btn btn-success btn-sm">重置</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</td>
+			</tr>
+		</table>
 	</body>
 </html>

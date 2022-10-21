@@ -116,16 +116,9 @@
 			</td>
 		</tr>
 	</table>
-	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="maintable mb-3">
+	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
 		<tr>
-			<td bgcolor="#f8f8f8">
-				<table width="100%" cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="30%" class="py-2"><span class="ml-2">自由列表管理<span></td>
-						<td width="70%" align="right"><a href="freelist_add.php" class="btn btn-success btn-sm mr-2">增加列表</a></td>
-					</tr>
-				</table>
-			</td>
+			<td bgcolor="#f8f8f8">自由列表管理<span></td>
 		</tr>
 	</table>
 	<div id="rslist">
@@ -133,7 +126,7 @@
 	GetTagList($dsql,$pageno,$pagesize,$orderby);
 	?>
 	</div>
-	<div id="pagelist" class=" mb-3">
+	<div id="pagelist" class="mb-3">
 		<script>ReloadPageNum(1);</script>
 	</div>
 </body>

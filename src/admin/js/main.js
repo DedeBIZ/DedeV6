@@ -689,7 +689,7 @@ $(document).ready(function () {
 			'"0><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:150px;height:100px;overflow:hidden;"></div></div>', {
 			footer: footer,
 			noClose: false,
-			title: 'DedeBIZ缩略图裁剪',
+			title: '缩略图裁剪',
 		});
 		setTimeout(function () {
 			$("#cropImg" + mdlCropperID).cropper(optCropper);

@@ -12,8 +12,7 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr bgcolor="#f8f8f8">
-      <td width="30%" colspan="2">插件管理</td>
-      <td align="right" colspan="2">[<a href="module_main.php?moduletype=plus">安装新插件</a>]</td>
+      <td colspan="4">插件管理</td>
     </tr>
     <tr bgcolor="#fbfce2" align="center">
       <td width="10%">id</td>
@@ -29,8 +28,11 @@
       <td>{dede:field.isshow function="GetSta(@me,$fields['aid'],$fields['plusname'])"/}</td>
     </tr>
     {/dede:datalist}
-    <tr class="py-2" bgcolor="#f8f8f8" align="center">
-      <td colspan="4">{dede:pagelist listsize='6'/}</td>
+    <tr>
+      <td colspan="4"><a href="module_main.php?moduletype=plus" class="btn btn-success btn-sm">安装新插件</a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#f8f8f8" colspan="4" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
 </body>

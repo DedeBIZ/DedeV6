@@ -42,43 +42,32 @@
   </script>
 </head>
 <body>
-  <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <form name="formsearch">
+    <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+      <tr bgcolor="#f8f8f8">
+        <td width="180" align="center">
+          <select name="adminid" id="adminid" style="width:160px">
+            <option value="0" selected>全部</option>
+            <?php echo $adminlist?>
+          </select>
+        </td>
+        <td width="170"><input type="text" name="cip" id="cip" placeholder="请输入IP地址" style="width:160px"></td>
+        <td width="170">
+          <select name="dtime" id="dtime" style="width:160px">
+            <option value="0" selected>全部</option>
+            <option value="7">一周内</option>
+            <option value="15">15天内</option>
+            <option value="30">30天以内</option>
+            <option value="60">60天以内</option>
+          </select>
+        </td>
+        <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
+      </tr>
+    </table>
+  </form>
+  <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="7">
-        <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
-          <tr>
-            <td width="30%">管理系统日志</td>
-            <td width="70%" align="right"></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr align="center">
-      <td colspan="7">
-        <table width="100%" cellspacing="0" cellpadding="0" class="table-borderless">
-          <form name="formsearch">
-            <tr>
-              <td width="180" align="center">
-                <select name="adminid" id="adminid" style="width:160px">
-                  <option value="0" selected>全部</option>
-                  <?php echo $adminlist?>
-                </select>
-              </td>
-              <td width="170"><input type="text" name="cip" id="cip" placeholder="请输入IP地址" style="width:160px"></td>
-              <td width="170">
-                <select name="dtime" id="dtime" style="width:160px">
-                  <option value="0" selected>全部</option>
-                  <option value="7">一周内</option>
-                  <option value="15">15天内</option>
-                  <option value="30">30天以内</option>
-                  <option value="60">60天以内</option>
-                </select>
-              </td>
-              <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
-            </tr>
-          </form>
-        </table>
-      </td>
+      <td bgcolor="#f8f8f8" colspan="7">管理系统日志</td>
     </tr>
     <tr bgcolor="#fbfce2" align="center">
       <td width="8%">选择</td>
@@ -110,7 +99,7 @@
       </td>
     </tr>
     <tr>
-      <td class="py-2" bgcolor="#f8f8f8" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
+      <td bgcolor="#f8f8f8" class="py-2" colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
 </body>

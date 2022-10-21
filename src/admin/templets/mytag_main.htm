@@ -12,7 +12,7 @@
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="6">自定义标记管理<a class="btn btn-success btn-sm ml-2" href="mytag_add.php">增加一个标记</a><a class="btn btn-success btn-sm" href="mytag_tag_guide.php">智能标记向导</a></td>
+      <td bgcolor="#f8f8f8" colspan="6">自定义标记管理</td>
     </tr>
     <tr bgcolor="#fbfce2" align="center">
       <td width="10%">id</td>
@@ -30,14 +30,20 @@
       <td>{dede:field.timeset function='TimeSetValue(@me)'/}</td>
       <td>{dede:field.endtime function='GetDateMk(@me)'/}</td>
       <td>
-        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=edit">修改</a> |
-        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=delete">删除</a> |
-        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=getjs">JS调用</a>
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=getjs" class="btn btn-success btn-sm">JS调用</a>
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
       </td>
     </tr>
     {/dede:datalist}
-    <tr class="py-2" bgcolor="#f8f8f8" align="center">
-      <td colspan="6">{dede:pagelist listsize='6'/}</td>
+    <tr>
+      <td colspan="6">
+        <a href="mytag_add.php" class="btn btn-success btn-sm">增加一个标记</a>
+        <a href="mytag_tag_guide.php" class="btn btn-success btn-sm">智能标记向导</a>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="6" bgcolor="#f8f8f8" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
 </body>

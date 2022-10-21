@@ -32,19 +32,16 @@
       }
       return allSel;
     }
-
     function AllSel() {
       for (i = 0; i < document.form1.aids.length; i++) {
         document.form1.aids[i].checked = true;
       }
     }
-
     function NoneSel() {
       for (i = 0; i < document.form1.aids.length; i++) {
         document.form1.aids[i].checked = false;
       }
     }
-
     function DelSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
@@ -57,45 +54,37 @@
 </head>
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+    <form name="forms" method="post" action="media_main.php">
+      <tr bgcolor="#f8f8f8">
+        <td width="280" align="center">
+          <input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" style="width:260px">
+        </td>
+        <td width="170">
+          <select name="mediatype" style="width:160px">
+            <option value="0">文件类型</option>
+            <option value="1" <?php if($mediatype==1) echo "selected"?>>图片</option>
+            <option value="2" <?php if($mediatype==2) echo "selected"?>>FLASH</option>
+            <option value="3" <?php if($mediatype==3) echo "selected"?>>视频音频</option>
+            <option value="4" <?php if($mediatype==4) echo "selected"?>>其它附件</option>
+          </select>
+        </td>
+        <td width="170">
+          <select name="membertype" style="width:160px">
+            <option value="0">用户组</option>
+            <option value="1" <?php if($membertype==1) echo "selected"?>>管理员</option>
+            <option value="2" <?php if($membertype==2) echo "selected"?>>外部会员</option>
+          </select>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-success btn-sm">搜索</button>
+          <a href="media_add.php" class="btn btn-success btn-sm">上传新文件</a>
+        </td>
+      </tr>
+    </form>
+  </table>
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="7">
-        <table width="98%" cellpadding="0" cellspacing="0" class="table-borderless">
-          <tr>
-            <td width="30%">附件数据管理</td>
-            <td width="70%" align="right"><a href="media_add.php" class="btn btn-success btn-sm">上传新文件</a></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="7">
-        <table width="900" cellspacing="0" cellpadding="0" class="table-borderless">
-          <form name="forms" method="post" action="media_main.php">
-            <tr>
-              <td width="280" align="center">
-                <input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword?>" style="width:260px">
-              </td>
-              <td width="170">
-                <select name="mediatype" style="width:160px">
-                  <option value="0">文件类型</option>
-                  <option value="1" <?php if($mediatype==1) echo "selected"?>>图片</option>
-                  <option value="2" <?php if($mediatype==2) echo "selected"?>>FLASH</option>
-                  <option value="3" <?php if($mediatype==3) echo "selected"?>>视频音频</option>
-                  <option value="4" <?php if($mediatype==4) echo "selected"?>>其它附件</option>
-                </select>
-              </td>
-              <td width="170">
-                <select name="membertype" style="width:160px">
-                  <option value="0">用户组</option>
-                  <option value="1" <?php if($membertype==1) echo "selected"?>>管理员</option>
-                  <option value="2" <?php if($membertype==2) echo "selected"?>>外部会员</option>
-                </select>
-              </td>
-              <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
-            </tr>
-          </form>
-        </table>
-      </td>
+      <td bgcolor="#f8f8f8" colspan="7">附件数据管理</td>
     </tr>
     <tr bgcolor="#fbfce2" align="center">
       <td width="8%">选择</td>
@@ -128,7 +117,7 @@
           <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除</button>
         </td>
       </tr>
-      <tr class="py-2" bgcolor="#f8f8f8">
+      <tr bgcolor="#f8f8f8" class="py-2">
         <td colspan="7" align="center">{dede:pagelist listsize='6'/}</td>
       </tr>
     </form>

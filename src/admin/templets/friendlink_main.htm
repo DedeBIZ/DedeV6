@@ -36,43 +36,37 @@
   </script>
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-    <tr>
-      <td bgcolor="#f8f8f8" colspan="8">
-        <span class="float-left py-2">友情链接管理</span>
-        <span class="float-right mr-2">
+  <form action="friendlink_main.php" name="form1" method="get">
+    <table cellspacing="0" cellpadding="3" width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+      <tr bgcolor="#f8f8f8">
+        <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" style="width:260px"></td>
+        <td width="170">
+          <select name="ischeck" id="ischeck" style="width:160px">
+            <?php
+            foreach($selCheckArr as $k=>$v)
+            {
+              if($k==$ischeck) echo "<option value='$k' selected>$v</option>";
+              else echo "<option value='$k'>$v</option>";
+            }
+            ?>
+          </select>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-success btn-sm">搜索</button>
           <a href="friendlink_add.php" class="btn btn-success btn-sm">增加链接</a>
           <a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
           <a href="{dede:global name=' cfg_phpurl'/}/flink.php" target="_blank" class="btn btn-success btn-sm">友情链接预览</a>
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" colspan="8">
-        <form action="friendlink_main.php" name="form1" method="get">
-          <table cellspacing="0" cellpadding="3" class="table table-borderless">
-            <tr>
-              <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" style="width:260px"></td>
-              <td width="170">
-                <select name="ischeck" id="ischeck" style="width:160px">
-                  <?php
-            			foreach($selCheckArr as $k=>$v)
-            			{
-            				if($k==$ischeck) echo "<option value='$k' selected>$v</option>";
-            				else echo "<option value='$k'>$v</option>";
-            			}
-            			?>
-                </select>
-              </td>
-              <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
-            </tr>
-          </table>
-        </form>
-      </td>
-    </tr>
-    <form name="form1" method="post" action="friendlink_edit.php" onSubmit="return checkSubmit();">
-      <input type="hidden" name="dopost" value="delall">
-      <input type="hidden" name="allid" value="">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <form name="form1" method="post" action="friendlink_edit.php" onSubmit="return checkSubmit();">
+    <input type="hidden" name="dopost" value="delall">
+    <input type="hidden" name="allid" value="">
+    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+      <tr>
+        <td bgcolor="#f8f8f8" colspan="8">友情链接管理</td>
+      </tr>
       <tr bgcolor="#fbfce2" align="center">
         <td width="6%">选择</td>
         <td width="23%">网站名称</td>
@@ -98,17 +92,17 @@
         </td>
       </tr>
       {/dede:datalist}
-    </form>
-    <tr>
-      <td colspan="8">
-        <a href="javascript:;" onclick="Sel('all')" class="btn btn-success btn-sm">全选</a>
-        <a href="javascript:;" onclick="Sel('none')" class="btn btn-success btn-sm">取消</a>
-        <a href="javascript:;" onclick="checkSubmit()" class="btn btn-success btn-sm">批量删除</a>
-      </td>
-    </tr>
-    <tr class="py-2" bgcolor="#f8f8f8" align="center">
-      <td colspan="8">{dede:pagelist listsize='6'/}</td>
-    </tr>
-  </table>
+      <tr>
+        <td colspan="8">
+          <a href="javascript:;" onclick="Sel('all')" class="btn btn-success btn-sm">全选</a>
+          <a href="javascript:;" onclick="Sel('none')" class="btn btn-success btn-sm">取消</a>
+          <a href="javascript:;" onclick="checkSubmit()" class="btn btn-success btn-sm">批量删除</a>
+        </td>
+      </tr>
+      <tr bgcolor="#f8f8f8" align="center" class="py-2">
+        <td colspan="8">{dede:pagelist listsize='6'/}</td>
+      </tr>
+    </table>
+  </form>
 </body>
 </html>
