@@ -1,7 +1,14 @@
+main.login-from {
+	background-image:url(../img/member_bg.jpg);
+	background-repeat:no-repeat;
+	background-position:top center;
+	height:620px;
+	padding-top:5rem
+}
 .login-area {
 	background-color:white;
 	max-width:500px;
-	padding:1em;
+	padding:1rem;
 	float:right
 }
 .login-area .btnLogin {
@@ -34,7 +41,7 @@
 }
 .member-actions a {
 	color:#868686;
-	margin-left:1em;
+	margin-left:1rem;
 	line-height:64px
 }
 .member .member-rank a {
