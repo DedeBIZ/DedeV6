@@ -46,26 +46,20 @@
             ?>
           </select>
         </td>
-        <td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
+        <td>
+          <button type="submit" class="btn btn-success btn-sm">搜索</button>
+          <a href="member_main.php" class="btn btn-success btn-sm">所有会员</a>
+          <a href="member_main.php?spacesta=-2" class="btn btn-success btn-sm">被禁言用户</a>
+          <a href="member_main.php?matt=1" class="btn btn-success btn-sm">被推荐</a>
+          <a href="member_main.php?matt=0" class="btn btn-success btn-sm">普通</a>
+        </td>
       </tr>
     </table>
   </form>
   <form name="form2">
     <table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mb-3">
       <tr>
-        <td bgcolor="#f8f8f8" colspan="9">
-          <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
-            <tr>
-              <td width="30%">注册会员列表</td>
-              <td width="70%" align="right">
-                <a href="member_main.php">所有会员</a> |
-                <a href="member_main.php?spacesta=-2">被禁言用户</a> |
-                <a href="member_main.php?matt=1">被推荐</a> |
-                <a href="member_main.php?matt=0">普通</a>
-              </td>
-            </tr>
-          </table>
-        </td>
+        <td bgcolor="#f8f8f8" colspan="9">注册会员列表</td>
       </tr>
       <tr bgcolor="#fbfce2" align="center">
         <td width="6%">选择</td>

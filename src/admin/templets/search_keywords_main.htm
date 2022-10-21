@@ -139,26 +139,17 @@
     </script>
 </head>
 <body>
-    <div class="main" align="center">
-        <table width="98%" cellpadding="1" cellspacing="1" bgcolor="#f8f8f8" class="table maintable mt-3 mb-3">
-            <tr>
-                <td width="30%">搜索关键词维护</td>
-                <td width="70%" align="right"><button type="button" name="n1" id="n1" class="btn btn-success btn-sm" onClick="location='article_keywords_main.php';">文档关键词维护</button></td>
-            </tr>
-        </table>
-        <span id="rslist">
-        <?php
-        GetKeywordList($dsql,$pageno,$pagesize,$orderby);
-        ?>
-        </span>
-        <table width="98%" cellpadding="1" cellspacing="1" bgcolor="#f8f8f8" class="table maintable mt-3 mb-3">
-            <tr align="center">
-                <td colspan="5" bgcolor="#f8f8f8" class="py-2">
-                    <span id="pagelist"></span>
-                    <script>ReloadPageNum(1);</script>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
+        <tr>
+            <td colspan="8" bgcolor="#f8f8f8">搜索关键词维护</td>
+        </tr>
+        <div id="rslist"><?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?></div>
+        <tr>
+            <td colspan="8" bgcolor="#f8f8f8" align="center" class="py-2">
+                <span id="pagelist"></span>
+                <script>ReloadPageNum(1);</script>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
