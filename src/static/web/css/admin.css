@@ -381,15 +381,6 @@ span.page-link {
 	font-size:14px!important;
 	color:inherit
 }
-#text {
-	font-size:0
-}
-.web-info {
-	padding:10px;
-	background:#f8f8f8;
-	border-radius:.2rem;
-	text-align:center
-}
 .maintable {
 	width:98%!important;
 	border:1px solid #dee2e6!important
@@ -407,6 +398,10 @@ span.page-link {
 	margin-right:10px;
 	width:360px
 }
+.biz-win {
+	background:#f8f8f8;
+	border:1px solid #dee2e6
+}
 .biz-border {
 	border:1px solid #dee2e6
 }
@@ -422,11 +417,8 @@ span.page-link {
 	max-width:160px;
 	max-height:120px
 }
-.file-icon,svg {
-	margin-right:10px;
-	width:22px;
-	height:22px;
-	border-radius:.2rem
+#text {
+	font-size:0
 }
 .user-img {
 	margin-right:10px;
@@ -434,4 +426,16 @@ span.page-link {
 	height:30px;
 	border-radius:50%;
 	border:1px solid #dee2e6
+}
+.web-info {
+	padding:10px;
+	background:#f8f8f8;
+	border-radius:.2rem;
+	text-align:center
+}
+.file-icon,svg {
+	margin-right:10px;
+	width:22px;
+	height:22px;
+	border-radius:.2rem
 }
