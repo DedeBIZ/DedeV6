@@ -403,7 +403,7 @@ function GetDDImage($litpic, $picname, $isremote)
         } else {
             if ($litpic == 'ddfirst' && !preg_match("#^http:\/\/#i", $picname)) {
                 $oldpic = $cfg_basedir.$picname;
-                $litpic = str_replace('.', '-lp.', $picname);
+                $litpic = str_replace('.', '-ty.', $picname);
                 if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
                 else @ImageResize($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
                 if (!is_file($cfg_basedir.$litpic)) $litpic = '';
@@ -642,7 +642,7 @@ function GetImageMapDD($filename, $maxwidth)
 {
     global $cuserLogin, $dsql, $cfg_ddimg_height, $cfg_ddimg_full;
     $ddn = substr($filename, -3);
-    $ddpicok = preg_replace("#\.".$ddn."$#", "-lp.".$ddn, $filename);
+    $ddpicok = preg_replace("#\.".$ddn."$#", "-ty.".$ddn, $filename);
     $toFile = $GLOBALS['cfg_basedir'].$ddpicok;
     if ($cfg_ddimg_full == 'Y') ImageResizeNew($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);
     else ImageResize($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);

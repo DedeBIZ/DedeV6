@@ -95,7 +95,7 @@ function GetImageMapDD($filename, $ddm, $oldname = '')
         $ddpicok = $oldname;
     } else {
         $ddn = substr($filename, -3);
-        $ddpicok = preg_replace("#\.".$ddn."$#", "-lp.".$ddn, $filename);
+        $ddpicok = preg_replace("#\.".$ddn."$#", "-ty.".$ddn, $filename);
     }
     $toFile = $GLOBALS['cfg_basedir'].$ddpicok;
     ImageResize($GLOBALS['cfg_basedir'].$filename, $ddm, 300, $toFile);
