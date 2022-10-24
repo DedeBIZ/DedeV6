@@ -28,3 +28,4 @@ function lib_adminname(&$ctag, &$refObj)
     }
     return $dutyadmin;
 }
+?>

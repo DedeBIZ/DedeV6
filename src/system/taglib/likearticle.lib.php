@@ -66,16 +66,12 @@ function lib_likearticle(&$ctag, &$refObj)
         if (!empty($typeid)) {
             $typeid = " AND arc.typeid IN($typeid) AND arc.id<>$arcid ";
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-        FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-        where arc.arcrank>-1 AND ($keyword)  $typeid $orderquery limit 0, $row";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank>-1 AND ($keyword)  $typeid $orderquery limit 0, $row";
     } else {
         if (!empty($typeid)) {
             $typeid = " arc.typeid IN($typeid) AND arc.id<>$arcid ";
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-        FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-        WHERE arc.arcrank>-1 AND  $typeid $orderquery limit 0, $row";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.arcrank>-1 AND  $typeid $orderquery limit 0, $row";
     }
     $innertext = trim($ctag->GetInnerText());
     if ($innertext == '') $innertext = GetSysTemplets('part_arclist.htm');
@@ -175,3 +171,4 @@ function lib_likearticle(&$ctag, &$refObj)
     $dsql->FreeResult("al");
     return $artlist;
 }
+?>

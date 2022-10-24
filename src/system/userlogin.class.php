@@ -443,3 +443,4 @@ function GetSonIdsLogicUL($id, $sArr, $channel = 0, $addthis = FALSE)
         }
     }
 }
+?>

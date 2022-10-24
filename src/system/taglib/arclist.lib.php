@@ -275,11 +275,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             $addfieldsSqlJoin = " LEFT JOIN `$addtable` addf ON addf.aid = arc.id ";
         }
     }
-    $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-        $addfieldsSql
-        FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id
-        $addfieldsSqlJoin
-        $orwhere $ordersql $limitsql";
+    $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addfieldsSql FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id $addfieldsSqlJoin $orwhere $ordersql $limitsql";
     //统一hash
     $taghash = md5(serialize($ctag).$typeid);
     $needSaveCache = true;
@@ -300,11 +296,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
     }
     //指定了id或使用缓存中的id
     if ($idlist != '') {
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-        $addfieldsSql
-        FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id
-        $addfieldsSqlJoin
-        WHERE arc.id in($idlist) $ordersql ";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addfieldsSql FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id $addfieldsSqlJoin WHERE arc.id in($idlist) $ordersql ";
     }
     $dsql->SetQuery($query);
     $dsql->Execute('al');
@@ -437,8 +429,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         $attstr = addslashes(serialize($attarray));
         $innertext = addslashes($innertext);
         if (!is_array($row)) {
-            $query = "INSERT INTO `#@__arcmulti`(tagid,uptime,innertext,pagesize,arcids,ordersql,addfieldsSql,addfieldsSqlJoin,attstr)
-          VALUES('$tagid','$uptime','$innertext','$pagesize','$idsstr','$ordersql','$addfieldsSql','$addfieldsSqlJoin','$attstr');
+            $query = "INSERT INTO `#@__arcmulti` (tagid,uptime,innertext,pagesize,arcids,ordersql,addfieldsSql,addfieldsSqlJoin,attstr) VALUES ('$tagid','$uptime','$innertext','$pagesize','$idsstr','$ordersql','$addfieldsSql','$addfieldsSqlJoin','$attstr');
         ";
             $dsql->ExecuteNoneQuery($query);
         } else {
@@ -452,7 +443,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         if ($cfg_cache_type == 'content' && $idsstr != '0') {
             $idsstr = addslashes($artlist);
         }
-        $inquery = "INSERT INTO `#@__arccache`(`md5hash`,`uptime`,`cachedata`) VALUES ('".$taghash."','".time()."', '$idsstr'); ";
+        $inquery = "INSERT INTO `#@__arccache` (`md5hash`,`uptime`,`cachedata`) VALUES ('".$taghash."','".time()."', '$idsstr'); ";
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` WHERE md5hash='".$taghash."' ");
         $dsql->ExecuteNoneQuery($inquery);
     }
@@ -529,3 +520,4 @@ function list_sort_by($list, $field, $sortby = 'asc')
     }
     return false;
 }
+?>

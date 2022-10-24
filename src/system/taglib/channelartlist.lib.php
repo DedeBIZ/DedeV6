@@ -77,3 +77,4 @@ function lib_channelartlist(&$ctag, &$refObj)
     }
     return $artlist;
 }
+?>

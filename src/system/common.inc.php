@@ -273,3 +273,4 @@ $cfg_helper_autoload = array(
 );
 //初始化小助手
 helper($cfg_helper_autoload);
+?>

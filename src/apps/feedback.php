@@ -61,8 +61,7 @@ if ($action == '' || $action == 'show') {
         $where_sql .= " AND fb.aid={$aid}";
     }
     //调用20条热评
-    $querystring = "SELECT fb.*,mb.userid,mb.face as mface,mb.spacesta,mb.scores,mb.sex FROM `#@__feedback` fb
-    LEFT JOIN `#@__member` mb on mb.mid = fb.mid $where_sql AND fb.ischeck='1' ORDER BY fb.good DESC";
+    $querystring = "SELECT fb.*,mb.userid,mb.face as mface,mb.spacesta,mb.scores,mb.sex FROM `#@__feedback` fb LEFT JOIN `#@__member` mb on mb.mid = fb.mid $where_sql AND fb.ischeck='1' ORDER BY fb.good DESC";
     $dsql->Execute('fb', $querystring." LIMIT 20 ");
     $data = array();
     while ($row = $dsql->GetArray('fb')) {
@@ -185,8 +184,7 @@ else if ($action == 'send') {
         $ischeck = intval($ischeck);
         $feedbacktype = preg_replace("#[^0-9a-z]#i", "", $feedbacktype);
         if ($msg != '') {
-            $inquery = "INSERT INTO `#@__feedback`(`aid`,`typeid`,`fid`, `username`,`arctitle`,`ip`,`ischeck`,`dtime`, `mid`,`bad`,`good`,`ftype`,`face`,`msg`)
-                VALUES ('$aid','$typeid','$fid','$username','$arctitle','$ip','$ischeck','$dtime', '{$cfg_ml->M_ID}','0','0','$feedbacktype','$face','$msg'); ";
+            $inquery = "INSERT INTO `#@__feedback` (`aid`,`typeid`,`fid`, `username`,`arctitle`,`ip`,`ischeck`,`dtime`, `mid`,`bad`,`good`,`ftype`,`face`,`msg`) VALUES ('$aid','$typeid','$fid','$username','$arctitle','$ip','$ischeck','$dtime', '{$cfg_ml->M_ID}','0','0','$feedbacktype','$face','$msg'); ";
             $rs = $dsql->ExecuteNoneQuery($inquery);
             if (!$rs) {
                 echo json_encode(array(
@@ -246,3 +244,4 @@ else if ($action == 'send') {
     }
     exit();
 }
+?>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>发布图集</title>
+  <title><?php echo Lang('content_album_add');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-  <link rel="stylesheet" href="css/albumupload.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="css/albumupload.min.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
-  <style>table{border-collapse:inherit}</style>
   <script>const cfg_uplitpic_cut = '<?php echo $cfg_uplitpic_cut;?>';</script>
+  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
@@ -22,6 +22,10 @@
   <script src="js/album.js"></script>
   <script src="js/handlers.js"></script>
   <script src="../static/web/js/cropper.min.js"></script>
+  <style>
+  img{margin:0;vertical-align:baseline}
+  table{border-collapse:separate}
+  </style>
   <script>
   var swfu = null;
   var vcc = 0;
@@ -60,46 +64,35 @@
     <input type="hidden" id="albums" name="albums" value="">
     <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
       <tr>
-        <td width="70%"><i class="fa fa-map"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">图集列表</a> &gt; 发布图集</td>
-        <td width="30%" align="right"><?php echo $backurl;?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
+        <td width="70%"><i class="fa fa-map-marker"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives"><?php echo Lang('content_album_list');?></a> &gt; <?php echo Lang('content_album_add');?></td>
+        <td width="30%" align="right"><?php echo $backurl;?><a class="btn btn-success btn-sm" href="catalog_main.php"><?php echo Lang('catalog_main');?></a></td>
       </tr>
     </table>
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
+    <table width="98%" align="center" cellpadding="2" cellspacing="2" class="biz-border">
       <tr>
-        <td>
-          <table cellpadding="0" cellspacing="0">
-            <tr>
-              <td width="80" height="28" align="center" bgcolor="#fbfce2">常规内容</td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-    <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
-      <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 图集标题：</td>
+              <td width="90"><?php echo Lang('content_album_title');?>：</td>
               <td width="400"><input type="text" name="title" id="title" value="" style="width:390px"></td>
-              <td width="90"> 简略标题：</td>
+              <td width="90"><?php echo Lang('content_short_title');?>：</td>
               <td><input type="text" name="shorttitle" id="shorttitle" style="width:160px"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 自定义属性：</td>
+              <td width="90"><?php echo Lang('content_flags');?>：</td>
               <td>
               <?php
-              $dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
+              $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
               $dsql->Execute();
               while($trow = $dsql->GetObject())
               {
-          	    if($trow->att=='j')
+          	    if ($trow->att=='j')
           	    echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label>";
           	    else
           	    echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
@@ -111,10 +104,10 @@
         </td>
       </tr>
       <tr id="redirecturltr" style="display:none">
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 跳转网址：</td>
+              <td width="90"><?php echo Lang('content_redirecturl');?>：</td>
               <td><input type="text" name="redirecturl" id="redirecturl" value="" style="width:300px"></td>
             </tr>
           </table>
@@ -124,201 +117,199 @@
         <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> Tag标签：</td>
-              <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
-              <td width="60">权重：</td>
-              <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc'];?>" style="width:60px">（越小越靠前）</td>
+              <td width="90"><?php echo Lang('content_tags');?>：</td>
+              <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px"><?php echo Lang('content_tags_tip');?></td>
+              <td width="60"><?php echo Lang('content_weight');?>：</td>
+              <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc'];?>" style="width:60px"><?php echo Lang('content_weight_tip');?></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="pictable">
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 缩略图：</td>
+              <td width="90"><?php echo Lang('litpic');?>：</td>
               <td>
                   <input type="text" name="picname" id="picname" style="width:300px">
-                  <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
-                  <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
-                  <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
-                  <button type="button" id="btnClearAll" class="btn btn-sm btn-success delete">清空</button>
-                  <label><input type="checkbox" name="ddisfirst" value="1"> 使用图集的第一幅图</label>
+                  <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> <?php echo Lang('remote');?></label>
+                  <span class="btn btn-success btn-sm fileinput-button"><?php echo Lang('upload');?><input type="file" name="files[]" id="iptAddImages"></span>
+                  <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm"><?php echo Lang('select');?></button>
+                  <button type="button" id="btnClearAll" class="btn btn-sm btn-success delete"><?php echo Lang('clear');?></button>
+                  <label><input type="checkbox" name="ddisfirst" value="1"> <?php echo Lang('content_album_ddisfirst');?></label>
               </td>
-              <td align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" class="thumbnail"></td>
+              <td align="center"><img src="../static/web/img/thumbnail.jpg" id="litPic" class="thumbnail"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 来源：</td>
+              <td width="90"><?php echo Lang('source');?>：</td>
               <td width="260">
                 <input type="text" name="source" id="source" value=""style="width:160px">
-                <button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
+                <button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm"><?php echo Lang('select');?></button>
               </td>
-              <td width="60">作者：</td>
+              <td width="60"> <?php echo Lang('writer');?>：</td>
               <td>
                 <input type="text" name="writer" id="writer" value="" style="width:160px">
-                <button type="button" name="selwriter" id="selwriter" class="btn btn-success btn-sm">选择</button>
+                <button type="button" name="selwriter" id="selwriter" class="btn btn-success btn-sm"><?php echo Lang('select');?></button>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 发布栏目：</td>
+              <td width="90"><?php echo Lang('content_typeid');?>：</td>
               <td width="360">
                 <span id="typeidct">
                 <?php
-                $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
+                $typeOptions = GetOptionList($cid,$cUserLogin->getUserChannel(),$channelid);
                 echo "<select name='typeid' id='typeid' style='width:160px'>";
-                echo "<option value='0'>请选择栏目</option>";
+                echo "<option value='0'>".Lang('catalog_select')."</option>";
                 echo $typeOptions;
                 echo "</select>";
 			          ?>
                 </span>
-                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择" style="cursor:pointer"></i> 
+                <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="<?php echo Lang('quick_selection');?>" style="cursor:pointer"></i>
                 <?php
-                if($cfg_need_typeid2=='Y')
+                if ($cfg_need_typeid2=='Y')
                 {
-                  echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
+                  echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>".Lang('content_select_typeid2')."</a>";
                 }
                 ?>
               </td>
-              <td width="90">消费金币：</td>
+              <td width="90"><?php echo Lang('content_money');?>：</td>
               <td><input type="text" name="money" id="money" value="0" style="width:160px"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="typeid2tr" style="display:none">
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 副栏目：</td>
+              <td width="90"><?php echo Lang('typeid2');?>：</td>
               <td>
                 <span id="typeid2ct"></span>
                 <input type="text" name="typeid2" id="typeid2" value="" style="width:160px">
-                <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2')" title='选择副栏目'></i> 
+                <i class="btn btn-sm fa fa-search" style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid2')" title='<?php echo Lang('content_select_typeid2');?>'></i>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 关键词：</td>
+              <td width="90"><?php echo Lang('keywords');?>：</td>
               <td>
                 <input type="text" name="keywords" id="keywords" value="" style="width:360px">
-                <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览</button>
+                <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm"><?php echo Lang('browser');?></button>
               </td>
               <td>
-                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked';?>> 自动获取，手动填写用","分开</label>
+                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo ' checked';?>> <?php echo Lang('content_autokeywords_tip');?></label>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 描述：</td>
+              <td width="90"><?php echo Lang('description');?>：</td>
               <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 表现方式：</td>
+              <td width="90"><?php echo Lang('content_album_pagestyle');?>：</td>
               <td>
-                <label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
-                <label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
-                <label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
+                <label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if ($cfg_album_style==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="<?php echo Lang('content_album_pagestyle_1');?>"></label>
+                <label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if ($cfg_album_style==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="<?php echo Lang('content_album_pagestyle_2');?>"></label>
+                <label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if ($cfg_album_style==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="<?php echo Lang('content_album_pagestyle_3');?>"></label>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="cfgmulist" style="display:none">
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 多列式参数：</td>
+              <td><?php echo Lang('content_album_row_col');?>：</td>
               <td>
-                行 <input type="text" name="row" id="row" value="<?php echo $cfg_album_row;?>" size="6">
-                列 <input type="text" name="col" id="col" value="<?php echo $cfg_album_col;?>" size="6">
-                缩略图宽度限制：<input type="text" name="ddmaxwidth" id="ddmaxwidth" value="<?php echo $cfg_album_ddwidth;?>" size="6"> 像素
+                <?php echo Lang('content_album_row');?> <input type="text" name="row" id="row" value="<?php echo $cfg_album_row;?>" style="width:60px">
+                <?php echo Lang('content_album_col');?> <input type="text" name="col" id="col" value="<?php echo $cfg_album_col;?>" style="width:60px">
+                <?php echo Lang('content_album_ddmaxwidth');?>：<input type="text" name="ddmaxwidth" id="ddmaxwidth" value="<?php echo $cfg_album_ddwidth;?>" style="width:60px"> <?php echo Lang('content_album_px');?>
               </td>
             </tr>
             <tr>
-              <td></td>
-              <td>（系统仅是每页输出&quot;行x列&quot;张图片，实现需自行控制样式表）</td>
+              <td width="90"></td>
+              <td><?php echo Lang('content_album_row_col_tip');?></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="spagelist" style="display:none">
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 每页图片数：</td>
-              <td><input type="text" name="pagepicnum" id="pagpicnum" size="10" value="<?php echo $cfg_album_pagesize;?>"> 单页多图显示需要设置此参数，这种模式下系统不会为每张图单独生成缩略图</td>
+              <td width="90"><?php echo Lang('content_album_pagepicnum');?>：</td>
+              <td><input type="text" name="pagepicnum" id="pagpicnum" size="10" value="<?php echo $cfg_album_pagesize;?>"> <?php echo Lang('content_album_pagepicnum_tip');?></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 上传方式：</td>
+              <td width="90"><?php echo Lang('content_album_isrm');?>：</td>
               <td>
                 <input type="hidden" name="isrm" id="isrm" value="1">
-                <label><input type="checkbox" name="byhand" id="byhand" value="1" disabled="ture" checked />
-                手工上传</label>
-                <label><input type="checkbox" name="formzip" id="formzip" value="1" onClick="showZipField(this,'zipff','htmlfield')">
-                从ZIP压缩包中解压图片</label>
+                <label><input type="checkbox" name="byhand" id="byhand" value="1" disabled="ture" checked> <?php echo Lang('content_album_isrm_byhand');?></label>
+                <label><input type="checkbox" name="formzip" id="formzip" value="1" onClick="showZipField(this,'zipff','htmlfield')"> <?php echo Lang('content_album_isrm_zip');?></label>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="zipff" style="display:none">
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0" height="100">
             <tr>
-              <td width="90"> 压缩包文件：</td>
+              <td width="90"><?php echo Lang('content_album_zipfile');?>：</td>
               <td>
                 <input type="text" name="zipfile" id="zipfile" style="width:260px">
-                <button name="addon_bt" type="button" onClick="SelectSoft('form1.zipfile')" class="btn btn-success btn-sm">浏览</button>
-                <label><input type="checkbox" name="delzip" id="delzip" value="1" checked="checked"> 处理后删除压缩文件</label>
+                <button name="addon_bt" type="button" onClick="SelectSoft('form1.zipfile')" class="btn btn-success btn-sm"><?php echo Lang('browser');?></button>
+                <label><input type="checkbox" name="delzip" id="delzip" value="1" checked="checked"> <?php echo Lang('content_album_delzip');?></label>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="htmlfield" style="display:none">
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 网上复制：</td>
-              <td>
-                复制的源网址：<input type="text" name="copysource" value="http://" style="width:260px">（防盗链网站需填写您复制图片的其中一个网页网址）<br>
-                把图片从别的网页复制，在这里用Ctrl+V粘贴，提交后程序可直接获取这个区域的所有图片
-                <input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()"><br>
-                <div id="copyhtml" style="margin-top:10px;margin-bottom:10px;padding:10px;width:96%;height:260px;border:solid 1px #ccc" contenteditable="true">粘贴到这里</div>
+              <td width="90"><?php echo Lang('content_album_copy');?>：</td>
+              <td><?php echo Lang('content_album_copysource');?>：<input type="text" name="copysource" value="http://" style="width:260px"><?php echo Lang('content_album_copysource_tip');?><br>
+                <?php echo Lang('content_album_copysource_tip2');?>
+                <input type="button" name="button" id="button" value="预览" onClick="LoadTestDiv()">
+                <br>
+                <div id="copyhtml" style="margin-top:6px;margin-bottom:6px;border:solid 1px #CCCCCC;width:96%;padding:6px;height:260px;width:100%" contenteditable="true"><?php echo Lang('content_album_copyhtml');?></div>
               </td>
             </tr>
           </table>
@@ -328,17 +319,17 @@
         <td><?php PrintAutoFieldsAdd(stripslashes($cInfos['fieldset']),'autofield');?></td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90" class="py-2"> 手工上传：</td>
-              <td><span class="btn btn-success btn-sm fileinput-button"><i class="glyphicon glyphicon-plus"></i> 选择本地图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
+              <td width="90" height="36"> <?php echo Lang('content_album_hupload');?>：</td>
+              <td><span class="btn btn-success btn-sm fileinput-button"><i class="glyphicon glyphicon-plus"></i> <?php echo Lang('content_album_hupload_tip');?><input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr id="handfield">
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="100%">
             <tr>
               <td>
@@ -350,101 +341,103 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 图集内容：</td>
+              <td width="90"><?php echo Lang('content_album_body');?>：</td>
               <td><?php GetEditor("body","",450,"Diy");?></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"  width="260"> 评论选项：</td>
+              <td width="90"  width="260"> <?php echo Lang('comment_options');?>：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
-                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo 'checked="1"';?>> <?php echo Lang('enable');?></label>
+                <label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo 'checked="1"';?>> <?php echo Lang('disable');?></label>
               </td>
-              <td width="90">发布选项：</td>
+              <td width="90"><?php echo Lang('publish_options');?>：</td>
               <td>
-                <label><input type="radio" name="ishtml" value="1" checked> 生成网页</label>
-                <label><input type="radio" name="ishtml" value="0"> 仅动态浏览</label>
+                <label><input type="radio" name="ishtml" value="1" checked> <?php echo Lang('content_ishtml_1');?></label>
+                <label><input type="radio" name="ishtml" value="0"> <?php echo Lang('content_ishtml_0');?></label>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 图集排序：</td>
-              <td width="260"> <select name="sortup" id="sortup" style="width:160px">
-                  <option value="0" selected>默认排序</option>
-                  <option value="7">置顶一周</option>
-                  <option value="30">置顶一个月</option>
-                  <option value="90">置顶三个月</option>
-                  <option value="180">置顶半年</option>
-                  <option value="360">置顶一年</option>
-                </select> </td>
-              <td width="90">标题颜色：</td>
+              <td width="90"><?php echo Lang('content_sortup');?>：</td>
+              <td width="260">
+                <select name="sortup" id="sortup" style="width:160px">
+                  <option value="0" selected><?php echo Lang('default');?></option>
+                  <option value="7"><?php echo Lang('content_sortup_7');?></option>
+                  <option value="30"><?php echo Lang('content_sortup_30');?></option>
+                  <option value="90"><?php echo Lang('content_sortup_90');?></option>
+                  <option value="180"><?php echo Lang('content_sortup_180');?></option>
+                  <option value="360"><?php echo Lang('content_sortup_360');?></option>
+                </select>
+              </td>
+              <td width="90"><?php echo Lang('content_title_color');?>：</td>
               <td>
                 <input type="text" name="color" id="color" style="width:160px">
-                <button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
+                <button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)"><?php echo Lang('select');?></button>
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 阅读权限：</td>
+              <td width="90"><?php echo Lang('content_arcrank');?>：</td>
               <td width="260"><select name="arcrank" id="arcrank" style="width:160px">
                 <?php
-                $urank = $cuserLogin->getUserRank();
-                $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank'");
+                $urank = $cUserLogin->getUserRank();
+                $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE adminrank<='$urank'");
                 $dsql->Execute();
                 while($row = $dsql->GetObject())
                 {
-                	echo "<option value='".$row->rank."'>".$row->membername."</option>";
+                  echo "<option value='".$row->rank."'>".$row->membername."</option>";
                 }
                 ?>
                 </select>
               </td>
-              <td width="90">文件名称：</td>
-              <td><input type="text" name="filename" id="filename" style="width:160px">（不包括后缀名如.html等）</td>
+              <td width="90"><?php echo Lang('content_filename');?>：</td>
+              <td><input type="text" name="filename" id="filename" style="width:160px"><?php echo Lang('content_filename_tip');?></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td colspan="4" class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 发布时间：</td>
+              <td width="90"><?php echo Lang('content_pubdate');?>：</td>
               <td width="260">
                 <?php
                 $nowtime = GetDateTimeMk(time());
                 echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker' style='width:160px'>";
-			          ?>
+                ?>
               </td>
-              <td width="90">浏览次数：</td>
+              <td width="90"><?php echo Lang('click');?>：</td>
               <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click);?>" style="width:160px"></td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-    <table width="98%" cellspacing="0" cellpadding="0" align="center" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">
+    <table width="98%" align="center" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="mb-3 biz-border border-top-0">
       <tr>
         <td align="center" class="py-2">
-          <button type="submit" class="btn btn-success btn-sm">保存</button>
-          <button type="button" onClick="location.reload();" class="btn btn-success btn-sm">重置</button>
+          <button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+          <button type="button" onClick="location.reload();" class="btn btn-success btn-sm"><?php echo Lang('reset');?></button>
         </td>
       </tr>
     </table>

@@ -253,3 +253,4 @@ function ShowMsgWin($msg, $title)
     $winform = $win->GetWindow("hand");
     $win->Display();
 }
+?>

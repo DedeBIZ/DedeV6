@@ -22,3 +22,4 @@ if ($openitem != 100) {
     GetMenus($cuserLogin->getUserRank(), 'module');
     exit();
 }
+?>

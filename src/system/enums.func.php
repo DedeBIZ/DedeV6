@@ -174,3 +174,4 @@ function GetEnumsValue($egroup, $evalue = 0)
         return "保密";
     }
 }
+?>

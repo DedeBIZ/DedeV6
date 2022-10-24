@@ -47,3 +47,4 @@ function GetEnumsValue2($egroup, $evalue = 0)
         }
     }
 }
+?>

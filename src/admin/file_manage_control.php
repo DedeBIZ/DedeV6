@@ -8,55 +8,41 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DedeWin;
+use DedeBIZ\Login\UserLogin;
 require(dirname(__FILE__)."/config.php");
-CheckPurview('plus_文件管理器');
-require(DEDEINC."/libraries/oxwindow.class.php");
+UserLogin::CheckPurview('plus_文件管理器');
 require_once(DEDEADMIN.'/file_class.php');
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = "";
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
-//文件管理器交互与逻辑控制文件
+//显示控制层
 $fmm = new FileManagement();
 $fmm->Init();
-/*---------------
-function __rename();
-----------------*/
 if ($fmdo == "rename") {
     $fmm->RenameFile($oldfilename, $newfilename);
 }
 //新建目录
-/*---------------
-function __newdir();
-----------------*/
 else if ($fmdo == "newdir") {
     CheckCSRF();
     $fmm->NewDir($newpath);
 }
 //移动文件
-/*---------------
-function __move();
-----------------*/
 else if ($fmdo == "move") {
     $fmm->MoveFile($filename, $newpath);
 }
 //删除文件
-/*---------------
-function __delfile();
-----------------*/
 else if ($fmdo == "del") {
     $fmm->DeleteFile($filename);
 }
 //文件编辑
-/*---------------
-function __saveEdit();
-----------------*/
 else if ($fmdo == "edit") {
     CheckCSRF();
     $filename = str_replace("..", "", $filename);
     if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
-        ShowMsg("您指定的文件名被系统禁止", "javascript:;");
+        ShowMsg(Lang("media_ext_forbidden"), "javascript:;");
         exit();
     }
     $file = "$cfg_basedir$activepath/$filename";
@@ -65,16 +51,16 @@ else if ($fmdo == "edit") {
     fputs($fp, $str);
     fclose($fp);
     if (empty($backurl)) {
-        ShowMsg("成功保存一个文件", "file_manage_main.php?activepath=$activepath");
+        ShowMsg(Lang("file_success_edit_one"), "file_manage_main.php?activepath=$activepath");
     } else {
-        ShowMsg("成功保存文件", $backurl);
+        ShowMsg(Lang("file_success_edit"), $backurl);
     }
     exit();
 }
 /*
 文件编辑，可视化模式
 function __saveEditView();
-else if($fmdo=="editview")
+else if ($fmdo=="editview")
 {
     $filename = str_replace("..","",$filename);
     $file = "$cfg_basedir$activepath/$filename";
@@ -83,7 +69,7 @@ else if($fmdo=="editview")
     $fp = fopen($file,"w");
     fputs($fp,$str);
     fclose($fp);
-    if(empty($backurl))
+    if (empty($backurl))
     {
         $backurl = "file_manage_main.php?activepath=$activepath";
     }
@@ -92,9 +78,6 @@ else if($fmdo=="editview")
 }
 */
 //文件上传
-/*---------------
-function __upload();
-----------------*/
 else if ($fmdo == "upload") {
     $j = 0;
     for ($i = 1; $i <= 50; $i++) {
@@ -109,11 +92,11 @@ else if ($fmdo == "upload") {
             //检查文件类型
             $mime = get_mime_type($upfile);
             if (preg_match("#^unknow#", $mime)) {
-                ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+                ShowMsg(Lang("media_no_fileinfo"), -1);
                 exit;
             }
             if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
-                ShowMsg("仅支持媒体文件及应用程序上传", -1);
+                ShowMsg(Lang("media_only_media"), -1);
                 exit;
             }
             if (!file_exists($cfg_basedir.$activepath."/".$upfile_name)) {
@@ -123,29 +106,27 @@ else if ($fmdo == "upload") {
             $j++;
         }
     }
-    ShowMsg("成功上传 $j 个文件到: $activepath", "file_manage_main.php?activepath=$activepath");
+    ShowMsg(Lang('file_success_upload',array('j'=>$j,'activepath'=>$activepath)), "file_manage_main.php?activepath=$activepath");
     exit();
 }
 //空间检查
 else if ($fmdo == "space") {
     if ($activepath == "") {
-        $ecpath = "所有目录";
+        $ecpath = Lang("file_alldir");
     } else {
         $ecpath = $activepath;
     }
-    $titleinfo = "目录[<a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>]空间使用状况：<br>";
-    $wintitle = "文件管理";
-    $wecome_info = "文件管理::空间大小检查 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $titleinfo = Lang('dir')."[<a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>]".Lang('file_spaceinfo')."：<br>";
+    $wintitle = Lang("file_manage");
+    $wecome_info = Lang('file_manage')."::".Lang('file_sizecheck')." [<a href='file_manage_main.php?activepath=$activepath'>".Lang('file_manage')."</a>]</a>";
     $activepath = $cfg_basedir.$activepath;
     $space = new SpaceUse;
     $space->checksize($activepath);
     $total = $space->totalsize;
     $totalkb = $space->setkb($total);
     $totalmb = $space->setmb($total);
-    $win = new OxWindow();
-    $win->Init("", "js/blank.js", "POST");
-    $win->AddTitle($titleinfo);
-    $win->AddMsgItem("$totalmb M<br>$totalkb KB<br>$total 字节");
-    $winform = $win->GetWindow("");
-    $win->Display();
+    DedeWin::Instance()->Init("", "js/blank.js", "POST")->AddTitle($titleinfo)
+    ->AddMsgItem("$totalmb M<br>$totalkb KB<br>$total ".Lang('byte'))
+    ->GetWindow("")->Display();
 }
+?>

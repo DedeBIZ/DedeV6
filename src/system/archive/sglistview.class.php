@@ -546,19 +546,14 @@ class SgListView
         $addField = 'arc.'.join(',arc.', $this->ListFields);
         //如果不用默认的sortrank或id排序，使用联合查询（数据量大时非常缓慢）
         if (preg_match('/hot|click/', $orderby) || $this->sAddTable) {
-            $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,
-            tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,
-            $addField
-            FROM `{$this->AddTable}` arc
-            LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-            WHERE {$this->addSql} $ordersql LIMIT $limitstart,$row";
+            $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,$addField FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE {$this->addSql} $ordersql LIMIT $limitstart,$row";
         }
         //普通情况先从arctiny表查出ID，然后按ID查询（速度非常快）
         else {
             $t1 = ExecTime();
             $ids = array();
             $nordersql = str_replace('.aid', '.id', $ordersql);
-            $query = "SELECT id From `#@__arctiny` arc WHERE {$this->addSql} $nordersql LIMIT $limitstart,$row ";
+            $query = "SELECT id From `#@__arctiny` arc WHERE {$this->addSql} $nordersql LIMIT $limitstart,$row";
             $this->dsql->SetQuery($query);
             $this->dsql->Execute();
             while ($arr = $this->dsql->GetArray()) {
@@ -568,10 +563,7 @@ class SgListView
             if ($idstr == '') {
                 return '';
             } else {
-                $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,
-                $addField
-                FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-                WHERE arc.aid IN($idstr) AND arc.arcrank >-1 $ordersql ";
+                $query = "SELECT tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,arc.aid,arc.aid AS id,arc.typeid,$addField FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.aid IN($idstr) AND arc.arcrank >-1 $ordersql";
             }
             $t2 = ExecTime();
             //echo $t2-$t1;
@@ -871,3 +863,4 @@ class SgListView
         return $nowurl;
     }
 }//End Class
+?>

@@ -163,3 +163,4 @@ class CrawlerDetect
         return isset($this->matches[0]) ? $this->matches[0] : null;
     }
 }
+?>

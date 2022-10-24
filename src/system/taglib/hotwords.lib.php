@@ -28,3 +28,4 @@ function lib_hotwords(&$ctag, &$refObj)
     }
     return $hotword;
 }
+?>

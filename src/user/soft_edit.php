@@ -22,15 +22,7 @@ function _ShowForm(){  }
 --------------*/
 if (empty($dopost)) {
     //读取归档信息
-    $arcQuery = "SELECT
-    `#@__channeltype`.typename as channelname,
-    `#@__arcrank`.membername as rankname,
-    `#@__channeltype`.arcsta,
-    `#@__archives`.*
-    FROM `#@__archives`
-    LEFT JOIN `#@__channeltype` ON `#@__channeltype`.id=`#@__archives`.channel
-    LEFT JOIN `#@__arcrank` ON `#@__arcrank`.`rank`=`#@__archives`.arcrank
-    WHERE `#@__archives`.id='$aid'";
+    $arcQuery = "SELECT `#@__channeltype`.typename as channelname,`#@__arcrank`.membername as rankname,`#@__channeltype`.arcsta,`#@__archives`.* FROM `#@__archives` LEFT JOIN `#@__channeltype` ON `#@__channeltype`.id=`#@__archives`.channel LEFT JOIN `#@__arcrank` ON `#@__arcrank`.`rank`=`#@__archives`.arcrank WHERE `#@__archives`.id='$aid'";
     $dsql->SetQuery($arcQuery);
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
@@ -138,16 +130,7 @@ else if ($dopost == 'save') {
         }
     }
     //修改主档案表
-    $upQuery = "UPDATE `#@__archives` set
-             ismake='$ismake',
-             arcrank='$arcrank',
-             typeid='$typeid',
-             title='$title',
-             litpic='$litpic',
-             description='$description',
-             keywords='$keywords',            
-             flag='$flag'
-      WHERE id='$aid' AND mid='$mid'; ";
+    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("更新数据库archives表时出错，请检查", "-1");
         exit();
@@ -172,25 +155,10 @@ else if ($dopost == 'save') {
     //更新附加表
     $needmoney = @intval($needmoney);
     if ($needmoney > 100) $needmoney = 100;
-    $cts = $dsql->GetOne("SELECT addtable From `#@__channeltype` where id='$channelid' ");
+    $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
     $addtable = trim($cts['addtable']);
     if ($addtable != '') {
-        $inQuery = "UPDATE `$addtable`
-            set typeid ='$typeid',
-            filetype ='$filetype',
-            language ='$language',
-            softtype ='$softtype',
-            accredit ='$accredit',
-            os ='$os',
-            softrank ='$softrank',
-            officialUrl ='$officialUrl',
-            officialDemo ='$officialDemo',
-            softsize ='$softsize',
-            softlinks ='$urls',
-            userip='$userip',
-            needmoney='$needmoney',
-            introduce='$body'{$inadd_f}
-            WHERE aid='$aid'; ";
+        $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl='$officialUrl',officialDemo='$officialDemo',softsize='$softsize',softlinks='$urls',userip='$userip',needmoney='$needmoney',introduce='$body'{$inadd_f} WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
             ShowMsg("更新数据库附加表时出错，请检查原因", "-1");
             exit();
@@ -211,3 +179,4 @@ else if ($dopost == 'save') {
     $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
     $win->Display();
 }
+?>

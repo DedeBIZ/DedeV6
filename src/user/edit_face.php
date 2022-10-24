@@ -30,3 +30,4 @@ if ($dopost == 'save') {
 $face = $cfg_ml->fields['face'];
 include(DEDEMEMBER."/templets/edit_face.htm");
 exit();
+?>

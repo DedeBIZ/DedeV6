@@ -35,3 +35,4 @@ if ($dopost == 'save') {
 $email = $cfg_ml->fields['email'];
 include(DEDEMEMBER."/templets/edit_email.htm");
 exit();
+?>

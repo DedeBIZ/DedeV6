@@ -63,9 +63,7 @@ if ($product == 'member') {
     $price = $row['money'];
 }
 if (!isset($paytype)) {
-    $inquery = "INSERT INTO `#@__member_operation`(`buyid` , `pname` , `product` , `money` , `mtime` , `pid` , `mid` , `sta` ,`oldinfo`)
-   VALUES ('$buyid', '$pname', '$product' , '$price' , '$mtime' , '$pid' , '$mid' , '0' , '$ptype');
-    ";
+    $inquery = "INSERT INTO `#@__member_operation` (`buyid`,`pname`,`product`,`money`,`mtime`,`pid`,`mid`,`sta`,`oldinfo`) VALUES ('$buyid','$pname','$product','$price','$mtime','$pid','$mid','0','$ptype');";
     $isok = $dsql->ExecuteNoneQuery($inquery);
     if (!$isok) {
         echo "数据库出错，请重新尝试".$dsql->GetError();
@@ -170,3 +168,4 @@ function mchStrCode($string, $operation = 'ENCODE')
         }
     }
 }
+?>

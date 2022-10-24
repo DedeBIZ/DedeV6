@@ -127,9 +127,7 @@ function lib_arclistsg(&$ctag, &$refObj)
         $orwhere = preg_replace("#AND[ ]{1,}AND#i", 'AND ', $orwhere);
     }
     if ($orwhere != '') $orwhere = " WHERE $orwhere ";
-    $query = "SELECT $arclistquery,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-    FROM `$maintable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-    $orwhere AND arc.arcrank > -1 $ordersql $limitsql";
+    $query = "SELECT $arclistquery,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `$maintable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $orwhere AND arc.arcrank > -1 $ordersql $limitsql";
     $md5hash = md5($query);
     $needcache = TRUE;
     if ($idlist != '') $needcache = FALSE;
@@ -139,9 +137,7 @@ function lib_arclistsg(&$ctag, &$refObj)
     }
     //指定了id或使用缓存中的id
     if ($idlist != '' && $_arclistEnv != 'index') {
-        $query = "SELECT $arclistquery,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,
-            tp.moresite,tp.siteurl,tp.sitepath FROM `$maintable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-          WHERE arc.aid IN($idlist) $ordersql $limitsql";
+        $query = "SELECT $arclistquery,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `$maintable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.aid IN($idlist) $ordersql $limitsql";
     }
     $dsql->SetQuery($query);
     $dsql->Execute("al");
@@ -225,7 +221,7 @@ function lib_arclistsg(&$ctag, &$refObj)
     $idsstr = join(',', $ids);
     if ($idsstr != '' && $needcache && $cfg_index_cache > 0) {
         $mintime = time() - ($cfg_index_cache * 3600);
-        $inquery = "INSERT INTO `#@__arccache`(`md5hash`,`uptime`,`cachedata`) VALUES ('".$md5hash."', '".time()."', '$idsstr'); ";
+        $inquery = "INSERT INTO `#@__arccache` (`md5hash`,`uptime`,`cachedata`) VALUES ('".$md5hash."', '".time()."', '$idsstr'); ";
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` WHERE md5hash='".$md5hash."' or uptime < $mintime ");
         $dsql->ExecuteNoneQuery($inquery);
     }
@@ -252,7 +248,8 @@ function lib_GetAutoChannelID2($sortid, $topid)
     global $dsql;
     if (empty($sortid)) $sortid = 1;
     $getstart = $sortid - 1;
-    $row = $dsql->GetOne("SELECT id,typename From #@__arctype WHERE reid='{$topid}' AND ispart<2 AND ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
+    $row = $dsql->GetOne("SELECT id,typename From `#@__arctype` WHERE reid='{$topid}' AND ispart<2 AND ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
     if (!is_array($row)) return 0;
     else return $row['id'];
 }
+?>

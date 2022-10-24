@@ -277,8 +277,7 @@ class MemberLogin
                 $$field--;
             }
         }
-        $inquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`)
-            VALUES ('$mid','$article','$album','$archives','$homecount','$pagecount','$feedback','$friend','$stow'); ";
+        $inquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('$mid','$article','$album','$archives','$homecount','$pagecount','$feedback','$friend','$stow'); ";
         $dsql->ExecuteNoneQuery("Delete From `#@__member_tj` where mid='$mid' ");
         $dsql->ExecuteNoneQuery($inquery);
     }
@@ -467,3 +466,4 @@ class MemberLogin
         return $sta;
     }
 }//End Class
+?>

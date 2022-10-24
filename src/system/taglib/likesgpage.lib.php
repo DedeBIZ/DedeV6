@@ -39,3 +39,4 @@ function lib_likesgpage(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

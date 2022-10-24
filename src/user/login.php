@@ -13,3 +13,4 @@ if ($cfg_ml->IsLogin()) {
     exit();
 }
 require_once(dirname(__FILE__)."/templets/login.htm");
+?>

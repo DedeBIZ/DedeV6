@@ -31,9 +31,7 @@ function _ShowForm(){  }
 --------------*/
 if (empty($dopost)) {
     //读取归档信息
-    $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,ch.arcsta
-       FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
-       WHERE arc.id='$aid' AND arc.mid='".$cfg_ml->M_ID."'; ";
+    $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,ch.arcsta FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' AND arc.mid='".$cfg_ml->M_ID."'; ";
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
         ShowMsg("读取文档信息出错!", "-1");
@@ -59,7 +57,7 @@ if (empty($dopost)) {
 function _Save(){  }
 ------------------------------*/
 else if ($dopost == 'save') {
-    $cInfos = $dsql->GetOne("Select * From `#@__channeltype`  where id='$channelid'; ");
+    $cInfos = $dsql->GetOne("Select * From `#@__channeltype` WHERE id='$channelid'; ");
     $maxwidth = isset($maxwidth) && is_numeric($maxwidth) ? $maxwidth : 800;
     $pagepicnum = isset($pagepicnum) && is_numeric($pagepicnum) ? $pagepicnum : 12;
     $ddmaxwidth = isset($ddmaxwidth) && is_numeric($ddmaxwidth) ? $ddmaxwidth : 200;
@@ -113,36 +111,16 @@ else if ($dopost == 'save') {
     $description = HtmlReplace($description, -1);
     //更新数据库的SQL语句
     //更新数据库的SQL语句
-    $upQuery = "UPDATE `#@__archives` SET
-        ismake='$ismake',
-        arcrank='$arcrank',
-        typeid='$typeid',
-        title='$title',
-        description='$description',
-        keywords='$keywords',
-        mtype='$mtypesid',            
-        flag='$flag'
-        WHERE id='$aid' AND mid='$mid'; ";
+    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',description='$description',keywords='$keywords',mtype='$mtypesid',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
     }
     $isrm = 0;
     if ($addtable != '') {
-        $query = "UPDATE `$addtable`
-        set typeid='$typeid',
-        pagestyle='$pagestyle',
-        maxwidth = '$maxwidth',
-        ddmaxwidth = '$ddmaxwidth',
-        pagepicnum = '$pagepicnum',
-        imgurls='$imgurls',
-        `row`='$prow',
-        col='$pcol',
-        userip='$userip',
-        isrm='$isrm'{$inadd_f}
-        WHERE aid='$aid'; ";
+        $query = "UPDATE `$addtable` SET typeid='$typeid',pagestyle='$pagestyle',maxwidth='$maxwidth',ddmaxwidth='$ddmaxwidth',pagepicnum='$pagepicnum',imgurls='$imgurls',`row`='$prow',col='$pcol',userip='$userip',isrm='$isrm' {$inadd_f} WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($query)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员".$dsql->GetError(), "javascript:;");
+            ShowMsg("更新附加表 `$addtable` 时出错，请联系管理员".$dsql->GetError(), "javascript:;");
             exit();
         }
     }
@@ -160,3 +138,4 @@ else if ($dopost == 'save') {
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
+?>

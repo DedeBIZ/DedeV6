@@ -41,3 +41,4 @@ foreach (array('_GET', '_POST', '_COOKIE') as $_request) {
         ${$_k} = _FilterAll($_k, $_v);
     }
 }
+?>

@@ -20,3 +20,4 @@ function lib_softmsg(&$ctag, &$refObj)
     if (is_array($row)) $revalue = $row['downmsg'];
     return $revalue;
 }
+?>

@@ -162,15 +162,9 @@ if (empty($sql)) {
     if ($mid < -1) {
         $where = str_replace('main.', 'addon.', $where);
         $orderby = str_replace('main.', 'addon.', $orderby);
-        $query = "SELECT addon.*, arctype.* FROM $addontable addon 
-        LEFT JOIN `#@__arctype` arctype ON arctype.id = addon.typeid
-        $where $orderby";
+        $query = "SELECT addon.*, arctype.* FROM $addontable addon LEFT JOIN `#@__arctype` arctype ON arctype.id = addon.typeid $where $orderby";
     } else {
-        $query = "SELECT main.id AS aid,main.*,main.description AS description1, type.* 
-    FROM $maintable main 
-    LEFT JOIN `#@__arctype` type ON type.id = main.typeid 
-    LEFT JOIN $addontable addon ON addon.aid = main.id 
-    $where  $orderby";
+        $query = "SELECT main.id AS aid,main.*,main.description AS description1, type.* FROM $maintable main LEFT JOIN `#@__arctype` type ON type.id = main.typeid LEFT JOIN $addontable addon ON addon.aid = main.id $where $orderby";
     }
     $sql = $query;
 } else {
@@ -199,3 +193,4 @@ function GetArcUrl($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $nam
     return GetFileUrl($aid, $typeid, $timetag, $title, $ismake, $rank, $namerule, $artdir, $money);
 }
 $dlist->Display();
+?>

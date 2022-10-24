@@ -695,3 +695,4 @@ function WriteCacheBlock($cacheid, $str)
     $str = fwrite($fp, $str);
     fclose($fp);
 }
+?>

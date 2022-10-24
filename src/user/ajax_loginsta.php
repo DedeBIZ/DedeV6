@@ -49,4 +49,4 @@ if ($format === 'json') {
         <a href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">资料</a> |
         <a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=login&dopost=exit">退出登录</a>
     </div>
-</div><!-- /userinfo -->
+</div>

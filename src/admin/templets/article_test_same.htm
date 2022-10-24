@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>重复文档检测</title>
+		<title><?php echo Lang('article_keywords_main');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 	</head>
 	<body>
-		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+		<table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
 			<form action="article_test_same.php" name="form1" target="stafrm">
 				<input type="hidden" name="dopost" value="analyse">
 				<tr>
-					<td bgcolor="#f8f8f8">重复文档检测</td>
+					<td bgcolor="#f8f8f8">
+						<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
+							<tr>
+								<td width="30%"><?php echo Lang('article_keywords_main');?></td>
+								<td width="70%" align="right"></td>
+							</tr>
+						</table>
+					</td>
 				</tr>
 				<tr>
 					<td align="center">
 						<table width="98%" align="center" cellpadding="0" cellspacing="0"
 							class="table table-borderless">
 							<tr>
-								<td width="20%" align="left">频道类型：</td>
+								<td width="20%" align="left"><?php echo Lang('channel');?>：</td>
 								<td align="left">
 									<select name="channelid" style="width:160px">
 										<?php
-										if(!empty($channelinfos))
+										if (!empty($channelinfos))
 										{
 											foreach($channelinfos as $rs)
 											{
@@ -36,33 +43,29 @@
 								</td>
 							</tr>
 							<tr>
-								<td width="20%" align="left">删除选项：</td>
+								<td width="20%" align="left"><?php echo Lang('article_test_same_deltype');?>：</td>
 								<td align="left">
-									<label><input type="radio" name="deltype" value="delnew" checked='1'> 保留最旧的一条</label>
-									<label><input type="radio" name="deltype" value="delold"> 保留最新的一条</label>
+									<label><input type="radio" name="deltype" value="delnew" checked='1'> <?php echo Lang('article_test_same_deltype_delnew');?></label>
+									<label><input type="radio" name="deltype" value="delold"> <?php echo Lang('article_test_same_deltype_delold');?></label>
 								</td>
 							</tr>
 							<tr>
-								<td align="left">每排列出记录：</td>
-								<td align="left"><input type="text" name="pagesize" id="pagesize" value="100" style="width:160px"> 条</td>
+								<td align="left"><?php echo Lang('pagesize');?>：</td>
+								<td align="left"><input type="text" name="pagesize" id="pagesize" value="100" style="width:160px"> <?php echo Lang('record_number');?></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#fbfce2" align="center">
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">分析标题重复的文档</button>
-					</td>
+					<td align="center" bgcolor="#f8fcf2"><button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('article_test_same_do');?></button></td>
 				</tr>
 			</form>
 			<tr>
-				<td>结果：</td>
+				<td><?php echo Lang('result');?>：</td>
 			</tr>
 			<tr>
 				<td id="mtd">
-					<div id="mdv" style="width:100%;height:360px">
-						<iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
-					</div>
+					<div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

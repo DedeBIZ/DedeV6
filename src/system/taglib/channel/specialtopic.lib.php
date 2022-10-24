@@ -67,3 +67,4 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname = '')
     $dtp->Clear();
     return $rvalue;
 }
+?>

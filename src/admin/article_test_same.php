@@ -8,16 +8,17 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 @set_time_limit(0);
-CheckPurview('sys_ArcBatch');
+UserLogin::CheckPurview('sys_ArcBatch');
 if (empty($dopost)) $dopost = '';
 if ($dopost == 'analyse') {
-    $arr = $dsql->getone("SELECT maintable FROM `#@__channeltype` WHERE id='$channelid' ");
+    $arr = $dsql->getone("SELECT maintable FROM `#@__channeltype` WHERE id='$channelid'");
     if (is_array($arr)) {
         $maintable = $arr['maintable'];
     } else {
-        showmsg('频道id不正确，无法处理', 'javascript:;');
+        showmsg(Lang('article_test_same_err_id'), 'javascript:;');
         exit();
     }
     $dsql->SetQuery("SELECT COUNT(title) AS dd,title FROM `$maintable` WHERE channel='$channelid' GROUP BY title ORDER BY dd DESC LIMIT 0, $pagesize");
@@ -26,14 +27,13 @@ if ($dopost == 'analyse') {
     include DedeInclude('templets/article_result_same.htm');
     exit();
 }
-//删除选中的内容（只保留一条）
+//删除选中的内容，只保留一条
 else if ($dopost == 'delsel') {
-    require_once(DEDEINC."/typelink/typelink.class.php");
     require_once(dirname(__FILE__)."/inc/inc_batchup.php");
     if (empty($titles)) {
         header("Content-Type: text/html; charset={$cfg_ver_lang}");
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset={$cfg_ver_lang}\">\r\n";
-        echo "没有指定删除的文档";
+        echo Lang("article_test_same_err_noarticle");
         exit();
     }
     $titless = split('`', $titles);
@@ -47,9 +47,9 @@ else if ($dopost == 'delsel') {
         $title = trim($title);
         $title = addslashes($title == '' ? '' : urldecode($title));
         if ($channelid < -1) {
-            $q1 = "SELECT aid as id,title FROM `$maintable` WHERE channel='$channelid' AND title='$title' $orderby ";
+            $q1 = "SELECT aid as id,title FROM `$maintable` WHERE channel='$channelid' AND title='$title' $orderby";
         } else {
-            $q1 = "SELECT id,title FROM `$maintable` WHERE channel='$channelid' AND title='$title' $orderby ";
+            $q1 = "SELECT id,title FROM `$maintable` WHERE channel='$channelid' AND title='$title' $orderby";
         }
         $dsql->SetQuery($q1);
         $dsql->Execute();
@@ -65,13 +65,14 @@ else if ($dopost == 'delsel') {
             DelArc($naid, 'OFF');
         }
     }
-    $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `$maintable`; ");
-    ShowMsg("一共删除了 [{$totalarc}] 篇重复的文档", "javascript:;");
+    $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$maintable`;");
+    ShowMsg(Lang('article_test_same_delete_success',array('totalarc'=>$totalarc)), "javascript:;");
     exit();
 }
 //向导页
 $channelinfos = array();
-$dsql->setquery("SELECT id,typename,maintable,addtable FROM `#@__channeltype` ");
+$dsql->setquery("SELECT id,typename,maintable,addtable FROM `#@__channeltype`");
 $dsql->execute();
 while ($row = $dsql->getarray()) $channelinfos[] = $row;
 include DedeInclude('templets/article_test_same.htm');
+?>

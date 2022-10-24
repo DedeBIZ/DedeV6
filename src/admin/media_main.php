@@ -8,8 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DataListCP;
 require_once(dirname(__FILE__)."/config.php");
-require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($dopost)) $dopost = '';
@@ -18,7 +18,7 @@ if ($dopost == 'filemanager') {
     if (file_exists('./file_manage_main.php')) {
         header("location:file_manage_main.php?activepath=$cfg_medias_dir");
     } else {
-        ShowMsg("找不到文件管理器，可能已经卸载", "-1");
+        ShowMsg(Lang("media_err_nobrowser"), "-1");
     }
     exit();
 }
@@ -40,11 +40,7 @@ if (empty($mediatype)) {
 if ($mediatype > 1) {
     $addsql .= " AND u.mediatype='$membertype' ";
 }
-$sql = "SELECT u.aid,u.title,u.url,u.mediatype,u.filesize,u.mid,u.uptime,a.userid AS adminname,m.userid AS membername
-FROM `#@__uploads` u
-LEFT JOIN `#@__admin` a ON  a.id = u.mid
-LEFT JOIN `#@__member` m ON m.mid = u.mid
-$addsql ORDER BY u.aid DESC";
+$sql = "SELECT u.aid,u.title,u.url,u.mediatype,u.filesize,u.mid,u.uptime,a.userid AS adminname,m.userid AS membername FROM `#@__uploads` u LEFT JOIN `#@__admin` a ON  a.id = u.mid LEFT JOIN `#@__member` m ON m.mid = u.mid $addsql ORDER BY u.aid DESC";
 $dlist = new DataListCP();
 $dlist->pagesize = 30;
 $dlist->SetParameter("mediatype", $mediatype);
@@ -56,13 +52,13 @@ $dlist->Display();
 function MediaType($tid, $nurl)
 {
     if ($tid == 1) {
-        return "图片<a href=\"$nurl\" target=\"_blank\"><i class='fa fa-picture-o' name='picview' title='预览'></i></a>";
+        return Lang('image')."<a href=\"$nurl\" target=\"_blank\"><i class='fa fa-picture-o' name='picview' title='".Lang("view")."'></i></a>";
     } else if ($tid == 2) {
         return "FLASH";
     } else if ($tid == 3) {
-        return "视频音频";
+        return Lang("media");
     } else {
-        return "附件其它";
+        return Lang("other");
     }
 }
 function GetFileSize($fs)
@@ -75,3 +71,4 @@ function UploadAdmin($adminid, $mid)
     if ($adminid != '') return $adminid;
     else return $mid;
 }
+?>

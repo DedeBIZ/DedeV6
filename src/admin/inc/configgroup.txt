@@ -1,7 +1,7 @@
-1,站点设置
-2,核心设置
-3,附件设置
-4,会员设置
-5,互动设置
-6,性能选项
-7,其它选项
+1,config_tab_site
+2,config_tab_core
+3,config_tab_addon
+4,config_tab_user
+5,config_tab_interaction
+6,config_tab_performance
+7,config_tab_other

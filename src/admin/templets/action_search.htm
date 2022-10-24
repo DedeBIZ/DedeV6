@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>搜索结果</title>
-  <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
-</head>
-<body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-    <tr>
-      <td bgcolor="#f8f8f8">当前位置 &gt; 搜索结果</td>
-    </tr>
-    <tr bgcolor="#fbfce2" align="center">
-      <td align="left">&quot;<span class="text-danger"><?php echo $keyword;?></span>&quot;的搜索结果</td>
-    </tr>
-    <tr align="center">
-      <td align="center">
-        <?php foreach ($asresult as $row) {?>
-        <table width="98%" cellspacing="5" cellpadding="0" class="table table-borderless">
-          <tr>
-            <td align="left" bgcolor="#f8f8f8"><?php echo $row['toptitle'] ?> => <?php echo $row['title'] ?></td>
-          </tr>
-          <tr>
-            <td align="center">
-              <table width="98%" cellspacing="0" cellpadding="5">
-                <?php foreach ($row['soniterm'] as $rows) {?>
-                <tr>
-                  <td align="left"><a href="<?php echo $rows['linkurl'] ?>" target="main"><?php echo $rows['title'] ?></a><br><?php echo $rows['description'] ?></td>
-                </tr>
-                <?php }?>
-              </table>
-            </td>
-          </tr>
-        </table>
-        <?php } ?>
-      </td>
-    </tr>
-  </table>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title><?php echo Lang('action_search');?></title>
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+	</head>
+	<body>
+		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+			<tr>
+				<td bgcolor="#f8f8f8"><?php echo Lang('current_postion');?> &gt; <?php echo Lang('action_search_result');?></td>
+			</tr>
+			<tr align="center" bgcolor="#f8fcf2">
+				<td align="left">&quot;<span class="text-danger"><?php echo $keyword;?></span>&quot;<?php echo Lang('action_search_result');?></td>
+			</tr>
+			<tr align="center">
+				<td align="center">
+					<?php foreach ($asresult as $row) {?>
+					<table width="98%" cellspacing="5" cellpadding="0" class="table table-borderless">
+						<tr>
+							<td align="left" bgcolor="#f8f8f8"><?php echo $row['toptitle'] ?> => <?php echo $row['title'] ?></td>
+						</tr>
+						<tr>
+							<td align="center">
+								<table width="98%" cellspacing="0" cellpadding="5">
+									<?php foreach ($row['soniterm'] as $rows) {?>
+									<tr>
+										<td align="left"><a href="<?php echo $rows['linkurl'] ?>" target="main"><?php echo $rows['title'] ?></a><br><?php echo $rows['description'] ?></td>
+									</tr>
+									<?php }?>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<?php }?>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>

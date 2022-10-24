@@ -86,8 +86,7 @@ if (!function_exists('AdminUpload')) {
         }
         //保存信息到数据库
         $title = $filename.'.'.$file_sname;
-        $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-            VALUES ('$title','$fileurl','$filetype','0','0','0','".filesize($cfg_basedir.$fileurl)."','".time()."','".$cuserLogin->getUserID()."'); ";
+        $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$title','$fileurl','$filetype','0','0','0','".filesize($cfg_basedir.$fileurl)."','".time()."','".$cuserLogin->getUserID()."'); ";
         $dsql->ExecuteNoneQuery($inquery);
         $fid = $dsql->GetLastID();
         AddMyAddon($fid, $fileurl);
@@ -198,3 +197,4 @@ if (!function_exists('MemberUploads')) {
         }
     }
 }
+?>

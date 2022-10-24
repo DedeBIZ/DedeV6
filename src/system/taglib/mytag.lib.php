@@ -46,3 +46,4 @@ function lib_GetMyTagT(&$refObj, $typeid, $tagname, $tablename)
     }
     return $body;
 }
+?>

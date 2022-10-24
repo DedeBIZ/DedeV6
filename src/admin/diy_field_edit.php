@@ -8,9 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Template\DedeTagParse;
 require_once(dirname(__FILE__)."/config.php");
 //增加权限检查
-require_once(DEDEINC."/dedetag.class.php");
 require_once(DEDEADMIN."/inc/inc_admin_channel.php");
 if (empty($action)) $action = '';
 //获取模型信息
@@ -33,12 +33,9 @@ foreach ($ds as $d) {
     $fieldtypes[$dds[0]] = $dds[1];
 }
 //保存修改
-/*--------------------
-function _SAVE()
-----------------------*/
 if ($action == 'save') {
     if (!isset($fieldtypes[$dtype])) {
-        ShowMsg("您修改的是系统专用类型的数据，禁止操作", "-1");
+        ShowMsg(Lang("mychannel_field_err_edit"), "-1");
         exit();
     }
     //检测数据库是否存在附加表，不存在则新建一个
@@ -56,7 +53,7 @@ if ($action == 'save') {
     $fields = array();
     $rs = $dsql->SetQuery("show fields from `$trueTable`");
     $dsql->Execute('a');
-    while ($nrow = $dsql->GetArray('a', MYSQL_ASSOC)) {
+    while ($nrow = $dsql->GetArray('a', PDO::FETCH_ASSOC)) {
         $fields[strtolower($nrow['Field'])] = $nrow['Type'];
     }
     //修改字段配置信息
@@ -87,14 +84,11 @@ if ($action == 'save') {
     }
     $oksetting = $dtp->GetResultNP();
     $oksetting = addslashes($oksetting);
-    $dsql->ExecuteNoneQuery("UPDATE #@__diyforms SET info='$oksetting' WHERE diyid='$diyid' ");
-    ShowMsg("成功修改一个字段的配置", "diy_edit.php?diyid={$diyid}");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__diyforms` SET info='$oksetting' WHERE diyid='$diyid'");
+    ShowMsg(Lang("mychannel_field_success_edit"), "diy_edit.php?diyid={$diyid}");
     exit();
 }
-/*------------------
-删除字段
-function _DELETE()
--------------------*/
+//删除字段
 else if ($action == "delete") {
     //检测旧数据类型，并替换为新配置
     foreach ($dtp->CTags as $tagid => $ctag) {
@@ -103,9 +97,10 @@ else if ($action == "delete") {
         }
     }
     $oksetting = addslashes($dtp->GetResultNP());
-    $dsql->ExecuteNoneQuery("UPDATE #@__diyforms SET info='$oksetting' WHERE diyid='$diyid' ");
-    $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname` ");
-    ShowMsg("成功删除一个字段", "diy_edit.php?diyid=$diyid");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__diyforms` SET info='$oksetting' WHERE diyid='$diyid'");
+    $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname`");
+    ShowMsg(Lang("mychannel_field_delete_success"), "diy_edit.php?diyid=$diyid");
     exit();
 }
 require_once(DEDEADMIN."/templets/diy_field_edit.htm");
+?>

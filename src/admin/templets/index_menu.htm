@@ -1,64 +1,42 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>系统菜单</title>
+		<title><?php echo Lang('admin_menu');?></title>
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="css/menu.css">
-		<?php echo "<script>var curopenItem = '$openitem';</script>";?>
-		<script src="../static/web/js/webajax.js"></script>
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+		<link rel="stylesheet" href="css/top.min.css">
 		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="js/leftmenu.js"></script>
 		<base target="main">
 	</head>
-	<body class="menu-body">
-		<table cellspacing="0" cellpadding="0">
-			<tr>
-				<td valign="top" class="menu-left">
-					<a id="link1" class="menu-active">
-						<div onClick="ShowMainMenu(1)"><b>运维</b></div>
-					</a>
-					<a id="link100" class="menu-item">
-						<div onClick="ShowMainMenu(100)"><b>插件</b></div>
-					</a>
-					<a id="link5" class="menu-item">
-						<div onClick="ShowMainMenu(5)"><b>更新</b></div>
-					</a>
-					<a id="link6" class="menu-item">
-						<div onClick="ShowMainMenu(6)"><b>会员</b></div>
-					</a>
-					<?php if($cuserLogin->getUserType()>=10){ ?>
-					<a id="link7" class="menu-item">
-						<div onClick="ShowMainMenu(7)"><b>模板</b></div>
-					</a>
-					<a id="link10" class="menu-item">
-						<div onClick="ShowMainMenu(10)"><b>系统</b></div>
-					</a>
-					<?php }?>
-				</td>
-				<td valign="top" class="menu-right">
-					<div id="ct1"><?php GetMenus($cuserLogin->getUserRank(),'main');?></div>
-					<div id="ct100"></div>
-					<div id="ct3"></div>
-					<div id="ct5"></div>
-					<div id="ct6"></div>
-					<div id="ct7"></div>
-					<div id="ct20"></div>
-					<div id="ct10"></div>
-				</td>
-			</tr>
-		</table>
-		<?php
-		if(!empty($openitem) && $openitem!=1)
-		{
-		?>
+	<body class="accordion-box">
+		<ul id="accordion" class="accordion">
+			<?php
+			$openitem=100;
+			GetMenus($cUserLogin->getUserRank(),'main'); 
+			?>
+		</ul>
 		<script>
-			ShowMainMenu(100);
+		$(function() {
+			var accordion = function(el, multiple) {
+				this.el = el || {};
+				this.multiple = multiple || false;
+				var links = this.el.find('.link');
+				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+			}
+			accordion.prototype.dropdown = function(e) {
+				var $el = e.data.el;
+					$this = $(this),
+					$next = $this.next();
+					$next.slideToggle();
+					$this.parent().toggleClass('open');
+				if (!e.data.multiple) {
+					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+				};
+			}	
+			var accordion = new accordion($('#accordion'), false);
+		});
 		</script>
-		<?php
-		}
-		?>
 	</body>
 </html>

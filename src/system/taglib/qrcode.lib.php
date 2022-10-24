@@ -47,3 +47,4 @@ EOT;
     $GLOBALS['qrcode_id']++;
     return $reval;
 }
+?>

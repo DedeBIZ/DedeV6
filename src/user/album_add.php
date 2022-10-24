@@ -56,7 +56,7 @@ function _SaveArticle(){  }
 ------------------------------*/
 else if ($dopost == 'save') {
     include(DEDEMEMBER.'/inc/archives_check.php');
-    $cInfos = $dsql->GetOne("Select * From `#@__channeltype`  where id='$channelid'; ");
+    $cInfos = $dsql->GetOne("Select * From `#@__channeltype` WHERE id='$channelid'; ");
     $maxwidth = isset($maxwidth) && is_numeric($maxwidth) ? $maxwidth : 800;
     $pagepicnum = isset($pagepicnum) && is_numeric($pagepicnum) ? $pagepicnum : 12;
     $ddmaxwidth = isset($ddmaxwidth) && is_numeric($ddmaxwidth) ? $ddmaxwidth : 200;
@@ -121,10 +121,7 @@ else if ($dopost == 'save') {
     $description = HtmlReplace($description, -1);
     $mtypesid = intval($mtypesid); //对输入参数mtypesid未进行int整型转义，导致SQL注入的发生
     //保存到主表
-    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
-color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
-VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle',
-'$color','$writer','$source','','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
+    $inQuery = "INSERT INTO `#@__archives` (id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype) VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
@@ -139,8 +136,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
         ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
-        $query = "INSERT INTO `$addtable`(aid,typeid,userip,redirecturl,templet,pagestyle,maxwidth,imgurls,`row`,col,isrm,ddmaxwidth,pagepicnum{$inadd_f})
-     Values('$arcID','$typeid','$userip','','','$pagestyle','$maxwidth','$imgurls','$prow','$pcol','$isrm','$ddmaxwidth','$pagepicnum'{$inadd_v}); ";
+        $query = "INSERT INTO `$addtable`(aid,typeid,userip,redirecturl,templet,pagestyle,maxwidth,imgurls,`row`,col,isrm,ddmaxwidth,pagepicnum{$inadd_f}) VALUES ('$arcID','$typeid','$userip','','','$pagestyle','$maxwidth','$imgurls','$prow','$pcol','$isrm','$ddmaxwidth','$pagepicnum'{$inadd_v}); ";
         if (!$dsql->ExecuteNoneQuery($query)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
@@ -153,7 +149,7 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
-    //生成HTML
+    //生成网页
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, true);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
@@ -168,3 +164,4 @@ VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank'
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
+?>

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>新增自由列表</title>
+  <title><?php echo Lang('freelist_add');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
@@ -63,17 +64,17 @@
               <div class="col-12 description py-2">
                   <a href="[field:arcurl/]">[field:description/]</a>
               </div>
-              <div class="col-12 addinfo">日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 点击：[field:click/] 好评：[field:scores/]</div>
+              <div class="col-12 addinfo"><?php echo Lang('pubdate');?>：[field:pubdate function="MyDate('Y-m-d', @me)"/] <?php echo Lang('click');?>：[field:click/] <?php echo Lang('scores');?>：[field:scores/]</div>
           </div>
       </li>
     </div>
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table-borderless biz-border mt-3 mb-3">
+    <table width="98%"  align="center" cellpadding="1" cellspacing="1"class="table-borderless mt-3 biz-border border-bottom-0">
       <tr>
-        <td bgcolor="#f8f8f8" class="py-2"><a href="freelist_main.php" class="ml-2">自由列表管理</a> &gt; 增加一个列表</td>
+        <td bgcolor="#f8f8f8" class="py-2"><a href="freelist_main.php" class="ml-2"><?php echo Lang('freelist_main');?></a> &gt; <?php echo Lang('freelist_add');?></td>
         <td align="right" bgcolor="#f8f8f8"></td>
       </tr>
     </table>
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
+    <table width="98%"  align="center" cellpadding="1" cellspacing="1" class="table maintable mb-3">
       <form action="freelist_add.php" method="post" name="form1" onSubmit="return CheckSubmit();">
         <input type="hidden" name="dopost" value="save">
         <tr>
@@ -83,86 +84,86 @@
                 <td class="p-0">
                   <table width="100%" cellspacing="1" cellpadding="0">
                     <tr>
-                      <td colspan="2"><i class="fa fa-question-circle" title="帮助"></i> 自由列表标记的说明：自由列表标记（freelist）的功能基本等同于arclist标记，区别是freelist标记支持分页，这让生成按自定义排序规则的文档列表（如按标题拼音部首排序等）等轻松的实现统一化管理，并且自由列是独立编译的，不与其它模板混在一起，这样不会影响系统生成网页或访问速度</td>
+                      <td colspan="2"><i class="fa fa-question-circle" title="<?php echo Lang('help');?>"></i> <?php echo Lang('freelist_tip');?></td>
                     </tr>
                     <tr>
-                      <td width="260">自由列表标题：</td>
+                      <td width="260"><?php echo Lang('title');?>：</td>
                       <td><input type="text" name="title" id="title" style="width:260px"></td>
                     </tr>
                     <tr>
-                      <td>列表HTML存放目录：</td>
-                      <td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" style="width:260px"> {listdir}变量的值</td>
+                      <td><?php echo Lang('freelist_listdir');?>：</td>
+                      <td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" style="width:260px"><?php echo Lang('freelist_listdir_tip');?></td>
                     </tr>
                     <tr>
-                      <td>目录默认页名称：</td>
+                      <td><?php echo Lang('freelist_defaultpage');?>：</td>
                       <td>
                         <input type="text" name="defaultpage" id="defaultpage" value="index.html" style="width:260px">
-                        <label><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认主页</label>
+                        <label><input type="checkbox" name="nodefault" id="nodefault" value="1"> <?php echo Lang('freelist_defaultpage_tip');?></label>
                       </td>
                     </tr>
                     <tr>
-                      <td>命名规则：</td>
+                      <td><?php echo Lang('freelist_namerule');?>：</td>
                       <td><input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" style="width:260px"></td>
                     </tr>
                     <tr>
-                      <td>列表模板：</td>
+                      <td><?php echo Lang('template');?>：</td>
                       <td>
                         <input type="text" name="templet" id="templet" value="{style}/list_free.htm" style="width:260px">
-                        <button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
+                        <button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm"><?php echo Lang('browser');?></button>
                       </td>
                     </tr>
                     <tr>
-                      <td>最大列出页数：</td>
+                      <td><?php echo Lang('freelist_maxpage');?>：</td>
                       <td><input type="text" name="maxpage" id="maxpage" value="100" style="width:60px"></td>
                     </tr>
                     <tr>
                       <td></td>
-                      <td>以下选项用于模板里的 &lt;meta name=&quot;keywords|description&quot; content=&quot;&quot;&gt; 描述</td>
+                      <td><?php echo Lang('freelist_maxpage_tip');?></td>
                     </tr>
                     <tr>
-                      <td>关键词：</td>
+                      <td><?php echo Lang('keywords');?>：</td>
                       <td><input type="text" name="keywords" id="keywords" style="width:260px"></td>
                     </tr>
                     <tr>
-                      <td>列表描述：</td>
+                      <td><?php echo Lang('description');?>：</td>
                       <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td style="background:#fbfce2">列表样式：这里是定义自由列表模板里的{dede:freelist/}标记的样式和属性</td>
+                <td bgcolor="#f8fcf2"><?php echo Lang('freelist_style_tip');?></td>
               </tr>
               <tr>
                 <td>
                   <table width="98%" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%" height="126">
-                        <label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="1"></label>
+                        <label><img src="../static/web/img/gt2.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="1"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="2"></label>
+                        <label><img src="../static/web/img/gt1.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="2"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="3"></label>
+                        <label><img src="../static/web/img/gt3.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="3"></label>
                       </td>
                       <td>
-                        <label><img src="../static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="4" checked></label>
+                        <label><img src="../static/web/img/gt4.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="4" checked></label>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td>限定栏目：
+                <td><?php echo Lang('typeid');?>：
                   <?php
                   echo "<select name='typeid' style='width:160px'>";
-                  echo "<option value='0'>不限栏目</option>";
+                  echo "<option value='0'>".Lang('unlimited_catalog')."</option>";
                   $dsql->SetQuery("Select ID,typename, channeltype From #@__arctype");
                   $dsql->Execute();
                   while($lrow = $dsql->GetObject()){
                  	$disable = '';
-                 	if($lrow->channeltype < -1)
+                 	if ($lrow->channeltype < -1)
                  	{
                  		$disable = 'disabled';
                  	}
@@ -173,10 +174,10 @@
                 </td>
               </tr>
               <tr>
-                <td>限定频道：
+                <td><?php echo Lang('channel');?>：
                   <?php
                   echo "<select name='channel' style='width:160px'>";
-                  echo "<option value='0' selected>不限</option>";
+                  echo "<option value='0' selected>".Lang('unlimited')."</option>";
                   $dsql->SetQuery("Select ID,typename From #@__channeltype where ID>0");
             	    $dsql->Execute();
             	    while($row = $dsql->GetObject())
@@ -184,14 +185,14 @@
             	      echo "<option value='{$row->ID}'>{$row->typename}</option>";
             	    }
                    echo "</select>";
-            		  ?>（如果限定了频道内容模型，则允许使用附加表指定的列表字段作为底层变量）
+            		  ?><?php echo Lang('freelist_channel_tip');?>
                 </td>
               </tr>
               <tr>
-                <td>附加属性：
+                <td><?php echo Lang('freelist_att');?>：
                   <?php
                   echo "<select name='att' style='width:160px'>";
-                  echo "<option value='0' selected>不限</option>";
+                  echo "<option value='0' selected>".Lang('unlimited')."</option>";
                   $dsql->SetQuery("Select * From #@__arcatt");
           	      $dsql->Execute();
           	      while($row = $dsql->GetObject())
@@ -200,41 +201,41 @@
           	      }
                   echo "</select>";
           		    ?>
-                  文档发布时间：<input type="text" name="subday" id="subday2" value="0" style="width:60px"> 天以内（0表示不限）
+                  <?php echo Lang('subday');?>：<input type="text" name="subday" id="subday2" value="0" style="width:60px"> <?php echo Lang('freelist_subday_tip');?>
                 </td>
               </tr>
               <tr>
                 <td>
-                  每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" style="width:60px">
-                  显示列数： <input type="text" name="col" id="col3" value="1" style="width:60px">
-                  标题长度：<input type="text" name="titlelen" id="titlelen" value="60" style="width:60px">（1字节 = 0.5个中文字）
+                  <?php echo Lang('freelist_pagesize');?>：<input type="text" name="pagesize" id="pagesize" value="30" style="width:60px">
+                  <?php echo Lang('freelist_col');?>： <input type="text" name="col" id="col3" value="1" style="width:60px">
+                  <?php echo Lang('freelist_titlelen');?>：<input type="text" name="titlelen" id="titlelen" value="60" style="width:60px"><?php echo Lang('freelist_titlelen_tip');?>
                 </td>
               </tr>
               <tr>
-                <td>高级筛选：
-                  <label><input type="checkbox" name="types[]" id="type1" value="image"> 带缩略图</label>
-                  <label><input type="checkbox" name="types[]" id="type2" value="commend"> 推荐</label>
-                  <label><input type="checkbox" name="types[]" id="type3" value="spec"> 专题</label>
-                  关键词：<input type="text" name="keywordarc" id="keywordarc">（&quot;,&quot;逗号分开）
+                <td><?php echo Lang('advanced_filtering');?>：
+                  <label><input type="checkbox" name="types[]" id="type1" value="image"> <?php echo Lang('freelist_advfiltering_image');?></label>
+                  <label><input type="checkbox" name="types[]" id="type2" value="commend"> <?php echo Lang('freelist_advfiltering_commend');?></label>
+                  <label><input type="checkbox" name="types[]" id="type3" value="spec"> <?php echo Lang('freelist_advfiltering_spec');?></label>
+                  <?php echo Lang('keywords');?>：<input type="text" name="keywordarc" id="keywordarc"> <?php echo Lang('freelist_keywords_tip');?>
                 </td>
               </tr>
               <tr>
-                <td>排列顺序：
+                <td><?php echo Lang('sortrank');?>：
                   <select name="orderby" id="orderby" style="width:160px">
-                    <option value="sortrank">置顶权限值</option>
-                    <option value="pubdate" selected>发布时间</option>
-                    <option value="senddate">录入时间</option>
-                    <option value="click">点击量</option>
-                    <option value="id">文档id</option>
-                    <option value="lastpost">最后评论时间</option>
-                    <option value="postnum">评论总数</option>
+                    <option value="sortrank"><?php echo Lang('freelist_orderby_sortrank');?></option>
+                    <option value="pubdate" selected><?php echo Lang('freelist_orderby_pubdate');?></option>
+                    <option value="senddate"><?php echo Lang('freelist_orderby_senddate');?></option>
+                    <option value="click"><?php echo Lang('freelist_orderby_click');?></option>
+                    <option value="id"><?php echo Lang('freelist_orderby_id');?></option>
+                    <option value="lastpost"><?php echo Lang('freelist_orderby_lastpost');?></option>
+                    <option value="postnum"><?php echo Lang('freelist_orderby_postnum');?></option>
                   </select>
-                  <label><input type="radio" name="order" value="desc" checked> 由高到低</label>
-                  <label><input type="radio" name="order" value="asc"> 由低到高</label>
+                  <label><input type="radio" name="order" value="desc" checked> <?php echo Lang('freelist_orderby_desc');?></label>
+                  <label><input type="radio" name="order" value="asc"> <?php echo Lang('freelist_orderby_asc');?></label>
                 </td>
               </tr>
               <tr>
-                <td>循环内的单行记录样式(InnerText)：[<a href='javascript:ShowHide("innervar");'><i class="fa fa-question-circle" title="帮助"></i> 底层变量field参考</a>]</td>
+                <td><?php echo Lang('freelist_innervar');?>：[<a href='javascript:ShowHide("innervar");'><i class="fa fa-question-circle" title="<?php echo Lang('help');?>"></i> <?php echo Lang('freelist_innervar_tip');?></a>]</td>
               </tr>
               <tr>
                 <td>
@@ -244,11 +245,11 @@
               </tr>
               <tr>
                 <td height="80" id="innervar" style="display:none">
-                  <span><i class="fa fa-question-circle" title="帮助"></i> 支持字段(底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,<br>stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示<br>·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</span>
+                  <span><i class="fa fa-question-circle" title="<?php echo Lang('help');?>"></i> <?php echo Lang('freelist_innervar_tip_detail');?></span>
                 </td>
               </tr>
               <tr>
-                <td align="center" class="py-2"><button name="Submit2" type="submit" id="Submit2" class="btn btn-success btn-sm">保存</button></td>
+                <td align="center" class="py-2"><button name="Submit2" type="submit" id="Submit2" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></td>
               </tr>
             </table>
           </td>
@@ -269,7 +270,7 @@
       else if (myems[1].checked) editor.setValue(document.getElementById("list2").innerHTML);
       else if (myems[2].checked) editor.setValue(document.getElementById("list3").innerHTML);
       else if (myems[3].checked) editor.setValue(document.getElementById("list4").innerHTML);
-      editor.setValue(editor.getValue().replace("<BR>", "<br>"));
+      editor.setValue(editor.getValue().replace("<BR>","<br>"));
       editor.setValue(editor.getValue().toLowerCase());
     }
     function ShowHide(objname) {
@@ -281,11 +282,11 @@
     }
     function SelectTemplets(fname) {
       var pos = GetWinPos(800,600);
-      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin","scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
     }
     function CheckSubmit() {
       if (document.form1.title.value == "") {
-        ShowMsg("自由列表标题标题不能为空");
+        ShowMsg("<?php echo Lang('freelist_err_title_isempty');?>");
         document.form1.title.focus();
         return false;
       }

@@ -8,15 +8,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Archive\PartView;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
+    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
 }
-CheckPurview('temp_Test');
-require_once(DEDEINC."/archive/partview.class.php");
+UserLogin::CheckPurview('temp_Test');
 CheckCSRF();
 if (empty($partcode)) {
-    ShowMsg('错误请求', 'javascript:;');
+    ShowMsg(Lang('tag_test_err_submit'), 'javascript:;');
     exit;
 }
 $partcode = stripslashes($partcode);
@@ -26,8 +27,9 @@ if ($typeid > 0) $pv = new PartView($typeid);
 else $pv = new PartView();
 $pv->SetTemplet($partcode, "string");
 if ($showsource == "" || $showsource == "yes") {
-    echo "模板代码:";
+    echo Lang('tag_test_tcode').":";
     echo "<span class='text-danger'><pre>".dede_htmlspecialchars($partcode)."</pre></span>";
-    echo "结果:<hr size='1' width='100%'>";
+    echo Lang('result').":<hr size='1' width='100%'>";
 }
 $pv->Display();
+?>

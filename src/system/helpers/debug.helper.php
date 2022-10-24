@@ -47,9 +47,7 @@ if (!function_exists('Dump')) {
 }
 /**
  *  获取执行时间
- *  例如:$t1 = ExecTime();
- *       在一段内容处理之后:
- *       $t2 = ExecTime();
+ *  例如$t1 = ExecTime();在一段内容处理之后$t2 = ExecTime();
  *  我们可以将2个时间的差值输出:echo $t2-$t1;
  *
  *  @return    int
@@ -63,3 +61,4 @@ if (!function_exists('ExecTime')) {
         return $sec + $usec;
     }
 }
+?>

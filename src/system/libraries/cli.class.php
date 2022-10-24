@@ -367,3 +367,4 @@ class DedeCli
     }
 }
 DedeCli::init();
+?>

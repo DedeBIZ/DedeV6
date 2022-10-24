@@ -83,4 +83,4 @@ class DedeQrcode
 		}
 	}
 }
-/* end of file */
+?>

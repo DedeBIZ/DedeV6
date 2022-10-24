@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>获取代码</title>
+  <title><?php echo Lang('vote_getcode');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8"><a href="vote_main.php">投票管理</a> &gt; 获取代码</td>
+      <td bgcolor="#f8f8f8"><a href="vote_main.php"><?php echo Lang('vote_main');?></a> &gt; <?php echo Lang('vote_getcode');?></td>
     </tr>
     <tr>
       <td>
         <table width="98%" cellspacing="2" cellpadding="2">
           <tr>
-            <td width="100%" bgcolor="#f8f8f8">在封面或主页模板中使用的标记：</td>
+            <td bgcolor="#f8f8f8"><?php echo Lang('vote_getcode_tip');?></td>
           </tr>
           <tr>
             <td>
@@ -30,22 +30,20 @@
                     <td rowspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
                   </tr>
                   <tr>
-                    <td align="center" class="py-2">
-                      <button type="submit" name="Submit" class="btn btn-success btn-sm">提交测试</button>
-                    </td>
+                    <td align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('vote_getcode_submit');?></button></td>
                   </tr>
                 </form>
               </table>
             </td>
           </tr>
           <tr>
-            <td bgcolor="#f8f8f8">在封面或主页模板中使用的JS：</td>
+            <td bgcolor="#f8f8f8"><?php echo Lang('vote_getcode_htmlf');?>：</td>
           </tr>
           <tr>
             <td><textarea name="htmlf" cols="60" rows="5" id="htmlf"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
           </tr>
           <tr>
-            <td bgcolor="#f8f8f8">默认生成的表单HTML：</td>
+            <td bgcolor="#f8f8f8"><?php echo Lang('vote_getcode_htmlf_default');?>：</td>
           </tr>
           <tr>
             <td>

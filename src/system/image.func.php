@@ -54,3 +54,4 @@ if (function_exists("imagecreatefromwebp") && function_exists("imagewebp")) {
 }
 //引入图像处理小助手
 helper('image');
+?>

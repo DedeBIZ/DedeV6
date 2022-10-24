@@ -317,3 +317,4 @@ if (!function_exists('ImageResizeNew')) {
         return TRUE;
     }
 }
+?>

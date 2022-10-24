@@ -8,11 +8,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('sys_Edit');
-require_once(DEDEINC."/image.func.php");
+UserLogin::CheckPurview('sys_Edit');
+helper('image');
 if ($cfg_photo_support == '') {
-    echo "您的系统没安装GD库，不允许使用本功能";
+    echo Lang('sys_info_mark_nogd');
     exit();
 }
 $ImageWaterConfigFile = DEDEDATA."/mark/inc_photowatermark_config.php";
@@ -33,7 +34,7 @@ if ($action == "save") {
     if (is_uploaded_file($newimg)) {
         $imgfile_type = strtolower(trim($newimg_type));
         if (!in_array($imgfile_type, $allow_mark_types)) {
-            ShowMsg("上传的图片格式错误，请使用 gif、png格式的其中一种", "-1");
+            ShowMsg(Lang("sys_info_mark_err_imgtype_0"), "-1");
             exit();
         }
         if ($imgfile_type == 'image/xpng' || $imgfile_type == 'image/png') {
@@ -41,27 +42,28 @@ if ($action == "save") {
         } else if ($imgfile_type == 'image/gif') {
             $shortname = ".gif";
         } else {
-            ShowMsg("水印图片仅支持gif、png格式的其中一种", "-1");
+            ShowMsg(Lang("sys_info_mark_err_imgtype_1"), "-1");
             exit;
         }
         $photo_markimg = 'mark'.$shortname;
         $mime = get_mime_type($newimg);
         if (preg_match("#^unknow#", $mime)) {
-            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+            ShowMsg(Lang("media_no_fileinfo"), -1);
             exit;
         }
         if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
-            ShowMsg("仅支持媒体文件及应用程序上传", -1);
+            ShowMsg(Lang("media_only_media"), -1);
             exit;
         }
         @move_uploaded_file($newimg, DEDEDATA."/mark/".$photo_markimg);
     }
     $configstr .= "\$photo_markimg = '{$photo_markimg}';\r\n";
     $configstr = "<"."?php\r\n".$configstr."?".">\r\n";
-    $fp = fopen($ImageWaterConfigFile, "w") or die("写入文件 $ImageWaterConfigFile 失败，请检查权限");
+    $fp = fopen($ImageWaterConfigFile, "w") or die(Lang('sys_info_mark_err_write',array('ImageWaterConfigFile'=>$ImageWaterConfigFile)));
     fwrite($fp, $configstr);
     fclose($fp);
-    echo "<script>alert('修改配置成功');</script>\r\n";
+    echo "<script>alert('".Lang('operation_successful')."');</script>\r\n";
 }
 require_once($ImageWaterConfigFile);
 include DedeInclude('templets/sys_info_mark.htm');
+?>

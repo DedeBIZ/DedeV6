@@ -8,9 +8,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Archive\Archives;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('sys_MakeHtml');
-require_once(DEDEINC."/archive/archives.class.php");
+UserLogin::CheckPurview('sys_MakeHtml');
 $est1 = ExecTime();
 $startid  = (empty($startid)  ? -1  : $startid);
 $endid    = (empty($endid)    ? 0  : $endid);
@@ -51,9 +52,9 @@ if ($totalnum == 0) {
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` $idsql");
     $totalnum = $row['dd'];
     //清空缓存
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
 }
-//获取记录，并生成HTML
+//获取记录，并生成网页
 if ($totalnum > $startdd + $pagesize) {
     $limitSql = " LIMIT $startdd,$pagesize";
 } else {
@@ -71,7 +72,7 @@ while ($row = $dsql->GetObject('out')) {
     $tjnum++;
     $id = $row->id;
     $ac = new Archives($id);
-    $rurl = $ac->MakeHtml(0);
+    $rurl = $ac->MakeHtml();
 }
 $t2 = ExecTime();
 $t2 = ($t2 - $est1);
@@ -79,8 +80,8 @@ $ttime = time() - $sstime;
 $ttime = number_format(($ttime / 60), 2);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
-$tjsta = "<div style='width:260px;height:16px;border:1px solid #28a745;text-align:left'><div style='max-width:260px;width:$tjlen%;height:16px;background:#28a745'></div></div>";
-$tjsta .= "<br>到达位置：".($startdd + $pagesize)."，用时：$ttime 分钟<br>完成更新文档总数 $tjlen %";
+$tjsta = "<div style='width:260px;height:16px;border:1px solid #1eb867;text-align:left'><div style='max-width:260px;width:$tjlen%;height:16px;background:#1eb867'></div></div>";
+$tjsta .= Lang('makehtml_archives_status',array('postion'=>$startdd + $pagesize,'ttime'=>$ttime,'tjlen'=>$tjlen));
 //速度测试
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";
@@ -90,12 +91,13 @@ if ($tjnum < $totalnum) {
     exit();
 } else {
     if ($typeid != '') {
-        ShowMsg("更新文档：$totalnum，用时：{$ttime} 分钟，现转向当前栏目更新", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
+        ShowMsg(Lang('makehtml_archives_success',array('totalnum'=>$totalnum,'ttime'=>$ttime)), "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
     } else {
         if ($uptype == '') {
-            ShowMsg("更新文档：$totalnum，用时：{$ttime} 分钟，完成所有所有任务", "javascript:;");
+            ShowMsg(Lang('makehtml_archives_success1',array('totalnum'=>$totalnum,'ttime'=>$ttime)), "javascript:;");
         } else {
-            ShowMsg("完成更新文档任务，现在开始进行主页更新", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
+            ShowMsg(Lang("makehtml_archives_success3"), "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
         }
     }
 }
+?>

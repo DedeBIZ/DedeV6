@@ -79,7 +79,7 @@ else if ($dopost == 'save') {
         exit();
     }
     //保存到主表
-    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,`money`,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
+    $inQuery = "INSERT INTO `#@__archives` (id,typeid,sortrank,flag,ismake,channel,arcrank,click,`money`,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
     VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
@@ -95,7 +95,7 @@ else if ($dopost == 'save') {
         ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
-        $inquery = "INSERT INTO `{$addtable}`(aid,typeid,userip,redirecturl,templet,body{$inadd_f}) Values('$arcID','$typeid','$userip','','','$body'{$inadd_v})";
+        $inquery = "INSERT INTO `{$addtable}` (aid,typeid,userip,redirecturl,templet,body{$inadd_f}) VALUES ('$arcID','$typeid','$userip','','','$body'{$inadd_v})";
         if (!$dsql->ExecuteNoneQuery($inquery)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
@@ -108,7 +108,7 @@ else if ($dopost == 'save') {
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
-    //生成HTML
+    //生成网页
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, TRUE);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
@@ -123,3 +123,4 @@ else if ($dopost == 'save') {
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
+?>

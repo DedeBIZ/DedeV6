@@ -1,4 +1,13 @@
 <?php
+/**
+ * 主页安全提示
+ *
+ * @version        $Id: index_testenv.php 1 8:48 2010年7月13日Z tianya $
+ * @package        DedeBIZ.Administrator
+ * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @license        https://www.dedebiz.com/license
+ * @link           https://www.dedebiz.com
+ */
 @set_time_limit(0);
 require_once(dirname(__FILE__)."/config.php");
 AjaxHead();
@@ -83,7 +92,7 @@ if (!function_exists('TestAdminPWD')) {
 	{
 		global $dsql;
 		//查询栏目表确定栏目所在的目录
-		$sql = "SELECT usertype,userid,pwd FROM #@__admin WHERE `userid`='admin'";
+		$sql = "SELECT usertype,userid,pwd FROM `#@__admin` WHERE `userid`='admin'";
 		$row = $dsql->GetOne($sql);
 		if (is_array($row)) {
 			if ($row['pwd'] == 'f297a57a5a743894a0e4') {
@@ -123,29 +132,29 @@ if (!function_exists('IsWritable')) {
 $safeMsg = array();
 $dirname = str_replace('index_body.php', '', strtolower($_SERVER['PHP_SELF']));
 if (preg_match("#[\\|/]admin[\\|/]#", $dirname)) {
-	$safeMsg[] = '后台管理名称包默认名称admin，强烈建议您进行修改';
+	$safeMsg[] = Lang('admin_testenv_admin');
 }
 if (IsWritable(DEDEDATA.'/common.inc.php')) {
-	$safeMsg[] = '数据配置data/common.inc.php文件，强烈建议以管理员权限设置禁止写入和执行';
+	$safeMsg[] = Lang('admin_testenv_writeable');
 }
 if (!IsSSL()) {
-	$safeMsg[] = '站点尚未启用HTTPS，强烈建议您配置HTTPS证书';
+	$safeMsg[] = Lang('admin_testenv_isssl');
 }
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	$safeMsg[] = 'PHP版本过低会无法正常使用系统，强烈建议升级到PHP7.X';
+	$safeMsg[] = Lang('admin_testenv_phpver');
 }
 if (!DEDEBIZ_SAFE_MODE) {
-	$safeMsg[] = '系统运行环境为：非安全模式，强烈建议启用安全模式 <a href="index_body.php?dopost=safe_mode" class="text-danger">[查看]</a>';
+	$safeMsg[] = Lang('admin_testenv_safemode');
 }
 $rs = TestAdminPWD();
 if ($rs < 0) {
-	$linkurl = '<a href="sys_admin_user.php" class="text-danger">[修改]</span>';
+	$linkurl = '<a href="sys_admin_user.php" class="text-danger">['.Lang('edit').']</span>';
 	switch ($rs) {
 		case -1:
-			$msg = "默认管理员名称admin没有修改，建议您修改 {$linkurl}";
+			$msg = Lang('admin_testenv_name',array('link'=>$linkurl));
 			break;
 		case -2:
-			$msg = "默认管理员名称和密码没有修改，建议您修改 {$linkurl}";
+			$msg = Lang('admin_testenv_pwd',array('link'=>$linkurl));
 			break;
 	}
 	$safeMsg[] = $msg;
@@ -154,7 +163,7 @@ if ($rs < 0) {
 <?php
 if (count($safeMsg) > 0) {
 ?>
-	<div class="alert alert-danger mt-3">
+	<div class="alert alert-danger mt-3 mb-3">
 		<?php
 		$i = 1;
 		foreach ($safeMsg as $key => $val) {
@@ -165,6 +174,4 @@ if (count($safeMsg) > 0) {
 		}
 		?>
 	</div>
-<?php
-}
-?>
+<?php }?>

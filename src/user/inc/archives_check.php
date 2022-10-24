@@ -29,8 +29,7 @@ if ($typeid == 0) {
     ShowMsg('请指定文档隶属的栏目', '-1');
     exit();
 }
-$query = "Select tp.ispart,tp.channeltype,tp.issend,ch.issend as cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype
-    From `#@__arctype` tp left join `#@__channeltype` ch on ch.id=tp.channeltype where tp.id='$typeid' ";
+$query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend as cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$typeid' ";
 $cInfos = $dsql->GetOne($query);
 //检测栏目是否有投稿权限
 if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
@@ -39,7 +38,7 @@ if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] 
 }
 //检查频道设定的投稿许可权限
 if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
-    $row = $dsql->GetOne("Select membername From #@__arcrank where `rank`='".$cInfos['sendrank']."' ");
+    $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
     ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
     exit();
 }

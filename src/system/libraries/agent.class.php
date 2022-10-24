@@ -356,3 +356,4 @@ class Agent extends Mobile_Detect
         return $this->matchUAAgainstKey($key);
     }
 }
+?>

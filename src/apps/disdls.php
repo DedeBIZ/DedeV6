@@ -17,3 +17,4 @@ $row = $dsql->GetOne("SELECT SUM(downloads) AS totals FROM `#@__downloads` WHERE
 if (empty($row['totals'])) $row['totals'] = 0;
 echo "document.write('{$row['totals']}');";
 exit();
+?>

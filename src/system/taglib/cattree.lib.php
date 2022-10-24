@@ -79,3 +79,4 @@ function cattreeListSon($id, &$revalue)
     }
     if ($thisv != '') $revalue .= "    <dd>\n$thisv    </dd>\n";
 }
+?>

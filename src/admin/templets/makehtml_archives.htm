@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>更新文档</title>
+		<title><?php echo Lang('makehtml_archives');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 	</head>
 	<body>
-		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 			<form name="form2" action="content_list.php" method="get" target="stafrm">
 				<input type="hidden" name="nullfield" value="ok">
 			</form>
 			<form name="form1" action="makehtml_archives_action.php" method="get" target="stafrm">
 				<tr>
-					<td bgcolor="#f8f8f8" colspan="2">更新文档</td>
+					<td bgcolor="#f8f8f8" colspan="2">
+						<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
+							<tr>
+								<td width="30%"><?php echo Lang('makehtml_archives');?></td>
+								<td width="70%" align="right"><a href="makehtml_list.php?typeid=<?php echo (isset($typeid) ? $typeid : 0);?>" class="btn btn-success btn-sm"><?php echo Lang('makehtml_list');?></a></td>
+							</tr>
+						</table>
+					</td>
 				</tr>
 				<tr>
-					<td width="260">选择栏目：</td>
+					<td width="260"><?php echo Lang('catalog_select');?>：</td>
 					<td>
 						<?php
-						if(empty($cid)) $cid="0";
-						$tl = new TypeLink($cid);
+						if (empty($cid)) $cid="0";
+						$tl = new DedeBIZ\TypeLink\TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
 						echo "<select name='typeid' style='width:260px'>";
-						if($cid=="0") echo "<option value='0' selected>更新所有文档</option>";
+						if ($cid=="0") echo "<option value='0' selected>".Lang('makehtml_list_all')."</option>";
 						echo $typeOptions;
 						echo "</select>";
 						?>
 					</td>
 				</tr>
 				<tr>
-					<td>起始id：</td>
-					<td><input type="text" name="startid" id="startid" style="width:60px">（空或0表示从头开始）</td>
+					<td><?php echo Lang('makehtml_all_startid');?>：</td>
+					<td><input type="text" name="startid" id="startid" style="width:60px"><?php echo Lang('makehtml_all_startid_tip');?></td>
 				</tr>
 				<tr>
-					<td>结束ID：</td>
-					<td><input type="text" name="endid" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
+					<td><?php echo Lang('makehtml_all_endid');?>：</td>
+					<td><input type="text" name="endid" id="endid" style="width:60px"><?php echo Lang('makehtml_all_endid_tip');?></td>
 				</tr>
 				<tr>
-					<td>每页生成：</td>
-					<td> <input type="text" name="pagesize" id="pagesize" value="20" style="width:60px"> 个文件</td>
+					<td><?php echo Lang('makehtml_archives_pagesize');?>：</td>
+					<td> <input type="text" name="pagesize" id="pagesize" value="20" style="width:60px"> <?php echo Lang('makehtml_archives_pagesize_num');?></td>
 				</tr>
 				<tr>
-					<td bgcolor="#fbfce2" colspan="2" align="center">
-						<button type="button" name="b112" class="btn btn-success btn-sm" onClick="document.form1.submit();">开始更新</button>
-						<button type="button" name="b113" class="btn btn-success btn-sm" onClick="document.form2.submit();">查看所有文档</button>
+					<td align="center" colspan="2" bgcolor="#f8fcf2">
+						<button type="button" name="b112" class="btn btn-success btn-sm" onClick="document.form1.submit();"><?php echo Lang('makehtml_homepage_make');?></button>
+						<button type="button" name="b113" class="btn btn-success btn-sm" onClick="document.form2.submit();"><?php echo Lang('admin_view_all');?></button>
 					</td>
 				</tr>
 			</form>
@@ -54,26 +61,15 @@
 				<td colspan="2">
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="30%">结果：</td>
-							<td width="70%" align="right">
-								<script>
-									function ResizeDiv(obj, ty) {
-										if (ty == "+") document.all[obj].style.pixelHeight += 50;
-										else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-									}
-								</script>
-								<a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
-								<a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
-							</td>
+							<td width="30%"><?php echo Lang('result');?>：</td>
+							<td width="70%" align="right"></td>
 						</tr>
 					</table>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" id="mtd">
-					<div id="mdv" style="width:100%;height:360px">
-						<iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
-					</div>
+					<div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

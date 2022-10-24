@@ -453,3 +453,4 @@ function htmlErrors($errors = null)
         echo $errorsHTML;
     }
 }
+?>

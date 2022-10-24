@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>组权限设置</title>
+  <title><?php echo Lang('sys_group_add');?> - <?php echo Lang('sys_group');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
-  <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3 mb-3">
     <form name="form1" action="sys_group_add.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
-        <td bgcolor="#f8f8f8" align="left"><a href="sys_group.php">系统用户组管理</a> &gt; 增加用户组</td>
+        <td bgcolor="#f8f8f8" align="left"><a href="sys_group.php"><?php echo Lang('sys_group');?></a> &gt; <?php echo Lang('sys_group_add');?></td>
       </tr>
       <tr>
         <td align="center">
           <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="10%">组名称：</td>
-              <td width="90%" style="text-align:left"><input type="text" name="groupname" id="groupname"></td>
+              <td width="10%"><?php echo Lang('sys_group_typename');?>：</td>
+              <td width="90%" align="left"><input type="text" name="groupname" id="groupname"></td>
             </tr>
             <tr>
-              <td width="10%">级别值：</td>
-              <td width="90%" style="text-align:left"><input type="text" name="rankid" id="rankid" size="6">（数字，系统已占用的级别值：
-                <?php $dsql->SetQuery("Select `rank` From `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo '<span style=\'color:#e74d58\'>'.$row->rank.'</span>';?>，级别值必须小于10，超过或等于10所有权限设置将无效(超级管理员)，如果10个组不能完全满足您的要求，允许使用小数）</td>
+              <td width="10%"><?php echo Lang('sys_group_rankid');?>：</td>
+              <td width="90%" align="left"><input type="text" name="rankid" id="rankid" size="6">（<?php echo Lang('sys_group_rankid_tip1');?>：
+                <?php $dsql->SetQuery("SELECT `rank` FROM `#@__admintype`");$dsql->Execute();while($row = $dsql->GetObject()) echo '<span>'.$row->rank.'</span>';?>，<?php echo Lang('sys_group_rankid_tip2');?>）</td>
             </tr>
             <?php
             $start = 0;
@@ -34,24 +34,32 @@
             foreach($gouplists as $line)
             {
             	$line = trim($line);
-            	if($line=="") continue;
-            	if(preg_match("#^>>#", $line))
+            	if ($line=="") continue;
+            	if (preg_match("#^>>#", $line))
             	{
-            		if($start>0) echo "</td></tr>";
+            		if ($start>0) echo "</td></tr>";
             		$start++;
+                $line = str_replace('>>','',$line);
+                $ls = explode('>',$line);
+                if (DEDEBIZ_SAFE_MODE && $ls[1]==="unsafe") {
+                  continue;
+                }
             		$lhead = "
             	 <tr> 
-               <td colspan='2'>{$start}、".str_replace('>>','',$line)."</td></tr>
+               <td colspan='2'>{$start}、".Lang(str_replace('>>','',$ls[0]))."</td></tr>
                <tr><td colspan='2'>
             		"; 
             		echo $lhead;
             	}
-            	else if(preg_match("#^>#", $line))
+            	else if (preg_match("#^>#", $line))
             	{
             		$ls = explode('>',$line);
+                if (DEDEBIZ_SAFE_MODE && $ls[3]==="unsafe") {
+                  continue;
+                }
             		$tag = $ls[1];
-            		$tagname = str_replace('[br]', '<br>', $ls[2]);
-            		if(!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
+            		$tagname = str_replace('[br]', '<br>', Lang($ls[2]));
+            		if (!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
             		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
             		echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'> $tagname</label> ";
             	  $k++;
@@ -60,7 +68,7 @@
             $start++;
             ?>
             <tr>
-              <td colspan="2"><?php echo $start?>、插件权限</td>
+              <td colspan="2"><?php echo $start?>、<?php echo Lang('sys_group_rank_plugin');?></td>
             </tr>
             <tr>
               <td colspan="2">
@@ -72,13 +80,13 @@
                	echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label> ";
               	$k++;
               	$l++;
-              	if($l%6==0) echo "<br>";
+              	if ($l%6==0) echo "<br>";
               }
               ?>
               </td>
             </tr>
             <tr>
-              <td colspan="2" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" class="coolbg np">保存</button></td>
+              <td align="center" colspan="2" class="py-2"><button type="submit" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" class="coolbg np"><?php echo Lang('save');?></button></td>
             </tr>
           </table>
         </td>

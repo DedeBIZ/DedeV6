@@ -8,25 +8,30 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
-  }
-CheckPurview('sys_Data');
+    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
+}
+UserLogin::CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
 if ($cfg_dbtype == 'sqlite') {
-    showMsg('备份系统根目录下/data/'.$cfg_dbname.'.db文件即可', 'javascript:;');
+    showMsg( Lang('sys_data_sqlite_tip',array('cfg_dbname'=>$cfg_dbname)), 'javascript:;');
+    exit();
+}
+if ($cfg_dbtype == 'pgsql') {
+    showMsg( Lang('sys_data_pgsql_tip',array('cfg_dbname'=>$cfg_dbname)), 'javascript:;');
     exit();
 }
 if ($dopost == "viewinfo") //查看表结构
 {
     echo "<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名";
+        echo Lang("sys_data_err_table");
     } else {
         $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$tablename);
         $dsql->Execute('me');
-        $row2 = $dsql->GetArray('me', MYSQL_BOTH);
+        $row2 = $dsql->GetArray('me', PDO::FETCH_BOTH);
         $ctinfo = $row2[1];
         echo trim($ctinfo);
     }
@@ -36,13 +41,13 @@ if ($dopost == "viewinfo") //查看表结构
 {
     echo "<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名";
+        echo Lang("sys_data_err_table");
     } else {
-        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
+        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
         if ($rs) {
-            echo "执行优化表：$tablename  OK";
+            echo Lang('sys_data_opimize_ok',array('tablename'=>$tablename));
         } else {
-            echo "执行优化表：$tablename  失败，原因是：".$dsql->GetError();
+            echo Lang('sys_data_opimize_err',array('tablename'=>$tablename,'err'=>$dsql->GetError()));
         }
     }
     echo '</xmp>';
@@ -51,13 +56,13 @@ if ($dopost == "viewinfo") //查看表结构
 {
     echo "<xmp>";
     if (empty($tablename)) {
-        echo "没有指定表名";
+        echo Lang("sys_data_err_table");
     } else {
-        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
+        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
         if ($rs) {
-            echo "修复表：$tablename  OK";
+            echo Lang('sys_data_repair_ok',array('tablename'=>$tablename));
         } else {
-            echo "修复表：$tablename  失败，原因是：".$dsql->GetError();
+            echo Lang('sys_data_repair_err',array('tablename'=>$tablename,'err'=>$dsql->GetError()));
         }
     }
     echo '</xmp>';
@@ -67,14 +72,14 @@ if ($dopost == "viewinfo") //查看表结构
 $otherTables = array();
 $dedeSysTables = array();
 $channelTables = array();
-$dsql->SetQuery("SELECT addtable FROM `#@__channeltype` ");
+$dsql->SetQuery("SELECT addtable FROM `#@__channeltype`");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $channelTables[] = $row->addtable;
 }
 $dsql->SetQuery("SHOW TABLES");
 $dsql->Execute('t');
-while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
+while ($row = $dsql->GetArray('t', PDO::FETCH_BOTH)) {
     if (preg_match("#^{$cfg_dbprefix}#", $row[0]) || in_array($row[0], $channelTables)) {
         $dedeSysTables[] = $row[0];
     } else {
@@ -88,3 +93,4 @@ function TjCount($tbname, &$dsql)
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM $tbname");
     return $row['dd'];
 }
+?>

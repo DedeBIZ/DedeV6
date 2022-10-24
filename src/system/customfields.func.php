@@ -450,3 +450,4 @@ EOT;
     $formitem = str_replace('~form~', $innertext, $formitem);
     return $formitem;
 }
+?>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>标签源码碎片管理</title>
+  <title><?php echo Lang('templets_tagsource');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <style>
     .linerow {
       border-bottom: 1px solid #CBD8AC;
@@ -14,40 +14,42 @@
   </style>
 </head>
 <body>
-  <table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellspacing="1" cellpadding="0" class="table maintable mt-3 mb-3">
     <tr align="center">
-      <td width="25%" bgcolor="#f8f8f8">标签文件名</td>
-      <td width="33%" bgcolor="#f8f8f8" align="left">标签说明</td>
-      <td width="22%" bgcolor="#f8f8f8">修改时间</td>
-      <td width="20%" bgcolor="#f8f8f8">操作</td>
+      <td width="25%" bgcolor="#f8f8f8"><?php echo Lang('filename');?></td>
+      <td width="33%" bgcolor="#f8f8f8" align="left"><?php echo Lang('description');?></td>
+      <td width="22%" bgcolor="#f8f8f8"><?php echo Lang('edit_time');?></td>
+      <td width="20%" bgcolor="#f8f8f8"><?php echo Lang('operation');?></td>
     </tr>
     <tr>
       <td colspan="4">
-        <span class="float-left py-2">当前位置：标签源码碎片管理（文件存放在 ../system/taglib 文件夹）</span>
-        <span class="float-right mr-2"><a href="tpl.php?action=addnewtag" class="btn btn-success btn-sm">增加一个新的标签</a></span>
+        <span class="float-left py-2"><?php echo Lang('templets_tagsource_pos');?></span>
+        <span class="float-right mr-2"><a href="tpl.php?action=addnewtag" class="btn btn-success btn-sm"><?php echo Lang('templets_tagsource_add');?></a></span>
       </td>
     </tr>
     <tr>
       <td colspan="4">
-        <div class="alert alert-danger mb-0">修改系统标签有风险，请小心操作</div>
+        <div class="alert alert-danger mb-0"><?php echo Lang('templets_tagsource_tip');?></div>
       </td>
     </tr>
     <?php
      $dh = dir($libdir);
      while($filename=$dh->read())
      {
-   	  if(!preg_match("#\.php$#", $filename)) continue;
+   	  if (!preg_match("#\.php$#", $filename)) continue;
    	  $filetime = filemtime($libdir.'/'.$filename);
       $filetime = MyDate("Y-m-d H:i",$filetime);
       $fileinfo = GetHelpInfo(str_replace('.lib.php','',$filename));
     ?>
-    <tr onMouseMove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-      <td><img src="../static/web/img/htm.gif"><?php echo $filename;?></td>
+    <tr onMouseMove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
+      <td><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-filetype-html' viewBox='0 0 16 16'>
+        <path fill-rule='evenodd' d='M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5Zm-9.736 7.35v3.999h-.791v-1.714H1.79v1.714H1V11.85h.791v1.626h1.682V11.85h.79Zm2.251.662v3.337h-.794v-3.337H4.588v-.662h3.064v.662H6.515Zm2.176 3.337v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596H9.93L8.79 11.85h-.805v3.999h.706Zm4.71-.674h1.696v.674H12.61V11.85h.79v3.325Z'/>
+      </svg> <?php echo $filename;?></td>
       <td><?php echo $fileinfo;?></td>
       <td align="center"><?php echo $filetime;?></td>
-      <td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a></td>
+      <td align="center"><a href="tpl.php?action=edittag&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-code"></i> <?php echo Lang('edit');?></a></td>
     </tr>
-    <?php } ?>
+    <?php }?>
   </table>
 </body>
 </html>

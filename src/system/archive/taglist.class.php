@@ -305,8 +305,7 @@ class TagList
         } else {
             $ordersql = " ORDER BY se.id $orderWay";
         }
-        $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-            FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id WHERE $orwhere $ordersql ";
+        $query = "SELECT se.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` se LEFT JOIN `#@__arctype` tp ON se.typeid=tp.id WHERE $orwhere $ordersql ";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $row = $this->pagesize / $col;
@@ -666,3 +665,4 @@ class TagList
         return $nowurl;
     }
 }//End Class
+?>

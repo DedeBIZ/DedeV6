@@ -8,9 +8,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
+use DedeBIZ\Template\DedeTagParse;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('c_New');
-require_once(DEDEINC."/dedetag.class.php");
+UserLogin::CheckPurview('c_New');
 require_once(dirname(__FILE__)."/inc/inc_admin_channel.php");
 if (empty($action)) $action = '';
 $id = isset($id) && is_numeric($id) ? $id : 0;
@@ -39,25 +40,22 @@ while ($crow = $dsql->GetObject()) {
     $channelArray[$crow->id]['nid'] = $crow->nid;
 }
 //保存修改
-/*--------------------
-function _SAVE()
-----------------------*/
 if ($action == 'save') {
     if (!isset($fieldtypes[$dtype])) {
-        ShowMsg("您修改的是系统专用类型的数据，禁止操作", "-1");
+        ShowMsg(Lang("mychannel_field_err_edit"), "-1");
         exit();
     }
     $dfvalue = $vdefault;
     if (preg_match("#^(select|radio|checkbox)#", $dtype)) {
         if (!preg_match("#,#", $dfvalue)) {
-            ShowMsg("您设定了字段为 {$dtype} 类型，必须在默认值中指定元素列表，如：'a,b,c' ", "-1");
+            ShowMsg(Lang('mychannel_field_select_check',array('dtype'=>$dtype)), "-1");
             exit();
         }
     }
     if ($dtype == 'stepselect') {
-        $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='$fname' ");
+        $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='$fname'");
         if (!is_array($arr)) {
-            ShowMsg("您设定了字段为联动类型，但系统中没找到与您定义的字段名相同的联动组名!", "-1");
+            ShowMsg(Lang("mychannel_field_stepselect_check"), "-1");
             exit();
         }
     }
@@ -73,7 +71,7 @@ if ($action == 'save') {
     $fields = array();
     $rs = $dsql->SetQuery("SHOW fields FROM `{$row['addtable']}`");
     $dsql->Execute('a');
-    while ($nrow = $dsql->GetArray('a', MYSQL_ASSOC)) {
+    while ($nrow = $dsql->GetArray('a', PDO::FETCH_ASSOC)) {
         $fields[strtolower($nrow['Field'])] = $nrow['Type'];
     }
     //修改字段配置信息
@@ -104,17 +102,14 @@ if ($action == 'save') {
     $oksetting = $dtp->GetResultNP();
     $addlist = GetAddFieldList($dtp, $oksetting);
     $oksetting = addslashes($oksetting);
-    $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting',listfields='$addlist' WHERE id='$id' ");
-    ShowMsg("成功修改一个字段的配置", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting',listfields='$addlist' WHERE id='$id'");
+    ShowMsg(Lang("mychannel_field_success_edit"), "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
-/*------------------
-删除字段
-function _DELETE()
--------------------*/
+//删除字段
 else if ($action == "delete") {
     if ($row['issystem'] == 1) {
-        ShowMsg("对不起，系统模型的字段不允许删除", "-1");
+        ShowMsg(Lang("mychannel_field_err_delete"), "-1");
         exit();
     }
     //检测旧数据类型，并替换为新配置
@@ -124,9 +119,10 @@ else if ($action == "delete") {
         }
     }
     $oksetting = addslashes($dtp->GetResultNP());
-    $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting' WHERE id='$id' ");
-    $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname` ");
-    ShowMsg("成功删除一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting' WHERE id='$id'");
+    $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname`");
+    ShowMsg(Lang("mychannel_field_delete_success"), "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
 require_once(DEDEADMIN."/templets/mychannel_field_edit.htm");
+?>

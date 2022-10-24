@@ -36,3 +36,4 @@ function dede_autoloader($classname)
     }
 }
 spl_autoload_register('dede_autoloader');
+?>

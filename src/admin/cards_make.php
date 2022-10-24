@@ -8,15 +8,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('member_Card');
+UserLogin::CheckPurview('member_Card');
 if (empty($dopost)) $dopost = '';
 if ($dopost == '') include(DEDEADMIN."/templets/cards_make.htm");
 //生成点卡
 elseif ($dopost == 'make') {
-    $row = $dsql->GetOne("SELECT * FROM #@__moneycard_record ORDER BY aid DESC");
+    $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_record` ORDER BY aid DESC");
     !is_array($row) ? $startid = 100000 : $startid = $row['aid'] + 100000;
-    $row = $dsql->GetOne("SELECT * FROM #@__moneycard_type WHERE tid='$cardtype'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid='$cardtype'");
     $money = $row['money'];
     $num = $row['num'];
     $mtime = time();
@@ -24,7 +25,7 @@ elseif ($dopost == 'make') {
     $ctid = $cardtype;
     $startid++;
     $endid = $startid + $mnum;
-    header("Content-Type: text/html; charset={$cfg_soft_lang}");
+    header("Content-Type: text/html; charset=utf-8");
     for (; $startid < $endid; $startid++) {
         $cardid = $snprefix.$startid.'-';
         for ($p = 0; $p < $pwdgr; $p++) {
@@ -46,10 +47,10 @@ elseif ($dopost == 'make') {
                 $cardid .= '-';
             }
         }
-        $inquery = "INSERT INTO #@__moneycard_record(ctid,cardid,uid,isexp,mtime,utime,money,num)
-              VALUES('$ctid','$cardid','0','0','$mtime','$utime','$money','$num'); ";
+        $inquery = "INSERT INTO `#@__moneycard_record`(ct_id,cardid,uid,isexp,mtime,utime,money,num) VALUES ('$ctid','$cardid','0','0','$mtime','$utime','$money','$num');";
         $dsql->ExecuteNoneQuery($inquery);
-        echo "成功生成点卡：{$cardid}<br>";
+        echo Lang('cards_make_success',array('cardid'=>$cardid));
     }
-    echo "成功生成 {$mnum} 个点卡";
+    echo Lang('cards_make_success_1',array("mnum"=>$mnum));
 }
+?>

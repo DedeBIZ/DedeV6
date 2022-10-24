@@ -100,3 +100,4 @@ function carTime($oid)
     $row = $dsql->GetOne("SELECT stime FROM `#@__shops_orders` WHERE oid='$oid'");
     return Mydate('Y-m-d h:i:s', $row['stime']);
 }
+?>

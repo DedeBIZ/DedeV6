@@ -97,3 +97,4 @@ function lib_sql(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

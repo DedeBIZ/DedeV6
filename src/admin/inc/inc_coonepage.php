@@ -2,13 +2,14 @@
 /**
  * 采集指定页面作为文档发布源
  *
- * @version        $Id: inc_coonepage.php 1 10:32 2010年7月21日Z tianya $
+ * @version        $Id: inc_coonepage.php 2022-07-01 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-require_once(DEDEINC.'/charset.func.php');
+use DedeBIZ\libraries\DedeHttpDown;
+helper("charset");
 /**
  *  获取一个页面
  *
@@ -18,11 +19,11 @@ require_once(DEDEINC.'/charset.func.php');
  */
 function CoOnePage($gurl)
 {
-    global $dsql, $cfg_auot_description, $cfg_soft_lang;
+    global $dsql, $cfg_auot_description;
     $redatas = array('title' => '', 'body' => '', 'source' => '', 'writer' => '', 'description' => '', 'keywords' => '');
     $redatas['source'] = preg_replace("/(http|https):\/\//i", "", $gurl);
     $redatas['source'] = preg_replace("/\/(.*)$/i", "", $redatas['source']);
-    $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '".$redatas['source']."' ");
+    $row = $dsql->GetOne("SELECT * FROM `#@__co_onepage` WHERE url LIKE '".$redatas['source']."'");
     $s = $e = '';
     if (is_array($row)) {
         list($s, $e) = explode('{@body}', $row['rule']);
@@ -37,14 +38,8 @@ function CoOnePage($gurl)
     $body = $htd->GetHtml();
     if ($body != '') {
         //编码自动转换
-        if ($cfg_soft_lang == 'utf-8') {
-            if ($row['lang'] == 'gb2312') {
-                $body = gb2utf8($body);
-            }
-        } else if ($cfg_soft_lang == 'gb2312') {
-            if ($row['lang'] == 'utf-8') {
-                $body = utf82gb($body);
-            }
+        if ($row['lang'] == 'gb2312') {
+            $body = gb2utf8($body);
         }
         //获取标题
         $inarr = array();
@@ -99,3 +94,4 @@ function GetHtmlAreaA($s, $e, &$html)
         return '';
     }
 }
+?>

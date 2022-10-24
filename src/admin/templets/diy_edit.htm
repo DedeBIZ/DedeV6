@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>修改自定义表单</title>
+  <title><?php echo Lang('diy_edit');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
@@ -23,63 +24,63 @@
   <script>
     function checkSubmit() {
       if (document.form1.typename.value == '') {
-        ShowMsg("自定义表单名称不能为空");
+        ShowMsg("<?php echo Lang('diy_err_name_isempty');?>");
         return false;
       }
       return true;
     }
     //删除
     function DelNote(gourl) {
-      if (!window.confirm("您确认要删除这条记录吗")) { return false; }
+      if (!window.confirm("<?php echo Lang('diy_delete_confirm');?>")) { return false; }
       location.href = gourl;
     }
   </script>
 </head>
 <body>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
     <form name="form1" action="diy_edit.php" method="post" onSubmit="return checkSubmit();">
       <input type="hidden" name="diyid" value="<?php echo $diyid;?>">
       <input type="hidden" name="dopost" value="save">
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2"><a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单</td>
+        <td bgcolor="#f8f8f8" colspan="2"><a href="diy_main.php"><?php echo Lang('diy_main');?></a> &gt; <?php echo Lang('diy_edit');?></td>
       </tr>
       <tr>
-        <td width="260">自定义表单 diyid：<span class="style2" id="help1">数字，创建后不可修改，并具有唯一性</span></td>
+        <td width="260">diyid：<span class="style2" id="help1"><?php echo Lang('diy_diyid_tip');?></span></td>
         <td>
           <?php echo $diyid;?>
-          <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help1')" style="cursor:hand"></i> 
+          <i class="fa fa-question-circle" title="<?php echo Lang('help');?>" onClick="showHide2('help1')" style="cursor:hand"></i>
         </td>
       </tr>
       <tr>
-        <td>自定义表单名称：修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改<br>
-          <span class="style2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
+        <td><?php echo Lang('diy_name2');?><br>
+          <span class="style2" id="help3"><?php echo Lang('diy_name_tip');?></span></td>
         <td>
-          <input type="text" name="name" id="name" value="<?php echo $row['name']?>" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')" style="cursor:hand"></i> 
+          <input type="text" name="name" id="name" value="<?php echo $row['name']?>" style="width:160px"> * <i class="fa fa-question-circle" title="<?php echo Lang('help');?>" onClick="showHide2('help3')" style="cursor:hand"></i>
         </td>
       </tr>
       <tr>
-        <td>数据表：<br>
-          <span class="style2" id="help5">自定义表单数据表创建后不可修改表名</span></td>
+        <td><?php echo Lang('diy_table');?>：<br>
+          <span class="style2" id="help5"><?php echo Lang('diy_table_tip');?></span></td>
         <td>
-          <input type="text" name="table" id="table" value="<?php echo $row['table'];?>" disabled="1" style="width:160px"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')" style="cursor:hand"></i> 
+          <input type="text" name="table" id="table" value="<?php echo $row['table'];?>" disabled="1" style="width:160px"> * <i class="fa fa-question-circle" title="<?php echo Lang('help');?>" onClick="showHide2('help5')" style="cursor:hand"></i>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#f8f8f8">模型字段配置：信息索引类字段系统已经加入，您只需要增加其它个性化字段即可</td>
+        <td bgcolor="#f8f8f8"><?php echo Lang('diy_field_config');?>：<?php echo Lang('diy_field_config_tip');?></td>
         <td bgcolor="#f8f8f8">
           <button type="button" name="fset" id="fset" onClick="location.href='diy_field_add.php?diyid=<?php echo $diyid;?>'" class="btn btn-success btn-sm"
-           >添加新字段</button>
+           ><?php echo Lang('diy_add_field');?></button>
         </td>
       </tr>
       <tr>
         <td colspan="2">
-          <table width="100%" cellpadding="1" cellspacing="1" align="center">
-            <tr bgcolor="#fbfce2" align="center">
-              <td width="28%">表单提示文字</td>
-              <td width="18%">数据字段名</td>
-              <td width="20%">数据类型</td>
-              <td width="18%">表单类型</td>
-              <td>维护</td>
+          <table width="100%" align="center" cellpadding="1" cellspacing="1">
+            <tr  align="center" bgcolor="#f8fcf2">
+              <td width="28%"><?php echo Lang('diy_itemname');?></td>
+              <td width="18%"><?php echo Lang('diy_fieldname');?></td>
+              <td width="20%"><?php echo Lang('diy_fieldtype');?></td>
+              <td width="18%"><?php echo Lang('diy_formtype');?></td>
+              <td><?php echo Lang('operation');?></td>
             </tr>
             <?php 
             $ds = file(DedeInclude('/inc/fieldtype.txt'));
@@ -88,10 +89,10 @@
             	$fieldtypes[$dds[0]] = $dds[1];
             }
             $fieldset = stripslashes($row['info']);
-            $dtp = new DedeTagParse();
+            $dtp = new DedeBIZ\Template\DedeTagParse();
             $dtp->SetNameSpace("field","<",">");
             $dtp->LoadSource($fieldset);
-            if(is_array($dtp->CTags)){
+            if (is_array($dtp->CTags)){
             foreach($dtp->CTags as $ctag)
             {
             ?>
@@ -99,7 +100,7 @@
               <td>
                 <?php 
           			$itname = $ctag->GetAtt('itemname');
-          			if($itname=='') echo "没指定";
+          			if ($itname=='') echo "没指定";
           			else echo $itname;
           			?>
               </td>
@@ -107,53 +108,50 @@
               <td>
                 <?php 
           			$ft = $ctag->GetAtt('type');
-          			if(isset($fieldtypes[$ft])) echo $fieldtypes[$ft];
+          			if (isset($fieldtypes[$ft])) echo $fieldtypes[$ft];
           			else  echo "系统专用类型";
           			?>
               </td>
               <td>
                 <?php 
           			$ft = $ctag->GetAtt('autofield');
-          			if($ft==''||$ft==0) echo "固化表单";
+          			if ($ft==''||$ft==0) echo "固化表单";
           			else  echo "自动表单";
           		 ?>
               </td>
               <td>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
-                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 删除</a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-code"></i> <?php echo Lang('edit');?></a>
+                <a href="diy_field_edit.php?diyid=<?php echo $diyid;?>&action=delete&fname=<?php echo $ctag->GetTagName()?>" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> <?php echo Lang('delete');?></a>
               </td>
             </tr>
-            <?php 
-            }
-            }
-            ?>
+            <?php }}?>
           </table>
         </td>
       </tr>
       <tr>
-        <td>列表模板：</td>
+        <td><?php echo Lang('templist');?>：</td>
         <td><input type="text" name="listtemplate" id="listtemplate" style="width:160px" value="<?php echo $row['listtemplate'];?>"></td>
       </tr>
       <tr>
-        <td>内容模板：</td>
+        <td><?php echo Lang('temparticle');?>：</td>
         <td><input type="text" name="viewtemplate" id="viewtemplate" style="width:160px" value="<?php echo $row['viewtemplate'];?>"></td>
       </tr>
       <tr>
-        <td>发布模板：</td>
+        <td><?php echo Lang('posttemplate');?>：</td>
         <td><input type="text" name="posttemplate" id="posttemplate" style="width:160px" value="<?php echo $row['posttemplate'];?>"></td>
       </tr>
       <tr>
-        <td>前台列表和内容页公开：</td>
+        <td><?php echo Lang('diy_public');?>：</td>
         <td>
-          <label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>> 完全公开</label>
-          <label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>> 公开审核过的</label>
-          <label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : '';?>> 不公开</label>
+          <label><input type="radio" name="public" value="2" <?php echo $row['public'] == 2 ? 'checked' : '';?>> <?php echo Lang('diy_public_2');?></label>
+          <label><input type="radio" name="public" value="1" <?php echo $row['public'] == 1 ? 'checked' : '';?>> <?php echo Lang('diy_public_1');?></label>
+          <label><input type="radio" name="public" value="0" <?php echo $row['public'] == 0 ? 'checked' : '';?>> <?php echo Lang('diy_public_0');?></label>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2" align="center" class="py-2">
-          <button type="submit" name="button" id="button" class="btn btn-success btn-sm">保存</button>
-          <button type="button" class="btn btn-success btn-sm" id="button2" onclick="location='diy_main.php';">返回</button>
+        <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
+          <button type="submit" name="button" id="button" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+          <button type="button" class="btn btn-success btn-sm" id="button2" onclick="location='diy_main.php';"><?php echo Lang('back');?></button>
         </td>
       </tr>
     </form>

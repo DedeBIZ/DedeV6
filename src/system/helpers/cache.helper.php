@@ -108,3 +108,4 @@ if (!function_exists('DelCache')) {
         return @unlink(DEDEDATA."/cache/$prefix/$key.php");
     }
 }
+?>

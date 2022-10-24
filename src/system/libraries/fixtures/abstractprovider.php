@@ -8,7 +8,6 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 abstract class AbstractProvider
 {
     /**
@@ -17,7 +16,6 @@ abstract class AbstractProvider
      * @var array
      */
     protected $data;
-
     /**
      * Return the data set.
      *
@@ -28,3 +26,4 @@ abstract class AbstractProvider
         return $this->data;
     }
 }
+?>

@@ -41,3 +41,4 @@ while ($row = $dsql->GetObject()) {
 $tpl = new DedeTemplate();
 $tpl->LoadTemplate(DEDEMEMBER.'/templets/buy.htm');
 $tpl->Display();
+?>

@@ -25,3 +25,4 @@ $envs['aid'] = 0;
 $envs['keyword'] = '';
 $envs['idlist'] = '';
 helper('channelunit');
+?>

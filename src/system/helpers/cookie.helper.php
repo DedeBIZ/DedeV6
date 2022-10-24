@@ -61,3 +61,4 @@ if (!function_exists('GetCookie')) {
         }
     }
 }
+?>

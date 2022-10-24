@@ -268,17 +268,13 @@ else if($step==2)
     $adminquery = "INSERT INTO `{$dbprefix}admin` (`id`, `usertype`, `userid`, `$pfd`, `uname`, `tname`, `email`, `typeid`, `logintime`, `loginip`) VALUES (1, 10, '$adminuser', '".$apwd."', 'admin', '', '', 0, '".time()."', '127.0.0.1');";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
     //关连前台会员帐号
-    $adminquery = "INSERT INTO `{$dbprefix}member` (`mid`,`mtype`,`userid`,`{$pfd}`,`uname`,`sex`,`rank`,`money`,`email`,`scores` ,`matt` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
-        VALUES ('1','个人','$adminuser','".$upwd."','$adminuser','男','100','0','','10000','10','','0','','".time()."','','0',''); ";
+    $adminquery = "INSERT INTO `{$dbprefix}member` (`mid`,`mtype`,`userid`,`{$pfd}`,`uname`,`sex`,`rank`,`money`,`email`,`scores` ,`matt` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` ) VALUES ('1','个人','$adminuser','".$upwd."','$adminuser','男','100','0','','10000','10','','0','','".time()."','','0',''); ";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
-    $adminquery = "INSERT INTO `{$dbprefix}member_person` (`mid`,`onlynet`,`sex`,`uname`,`qq`,`msn`,`tel`,`mobile`,`place`,`oldplace`,`birthday`,`star`,`income` , `education` , `height` , `bodytype` , `blood` , `vocation` , `smoke` , `marital` , `house` ,`drink` , `datingtype` , `language` , `nature` , `lovemsg` , `address`,`uptime`)
-        VALUES ('1', '1', '男', '{$adminuser}', '', '', '', '', '0', '0','1980-01-01', '1', '0', '0', '160', '0', '0', '0', '0', '0', '0','0', '0', '', '', '', '','0'); ";
+    $adminquery = "INSERT INTO `{$dbprefix}member_person` (`mid`,`onlynet`,`sex`,`uname`,`qq`,`msn`,`tel`,`mobile`,`place`,`oldplace`,`birthday`,`star`,`income` , `education` , `height` , `bodytype` , `blood` , `vocation` , `smoke` , `marital` , `house` ,`drink` , `datingtype` , `language` , `nature` , `lovemsg` , `address`,`uptime`) VALUES ('1', '1', '男', '{$adminuser}', '', '', '', '', '0', '0','1980-01-01', '1', '0', '0', '160', '0', '0', '0', '0', '0', '0','0', '0', '', '', '', '','0'); ";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
-    $adminquery = "INSERT INTO `{$dbprefix}member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`)
-        VALUES ('1','0','0','0','0','0','0','0','0'); ";
+    $adminquery = "INSERT INTO `{$dbprefix}member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('1','0','0','0','0','0','0','0','0'); ";
     $dbtype == 'sqlite'?  $db->exec($adminquery): mysql_query($adminquery,$conn);
-    $adminquery = "INSERT INTO `{$dbprefix}member_space`(`mid` ,`pagesize` ,`matt` ,`spacename` ,`spacelogo` ,`spacestyle`, `sign` ,`spacenews`)
-        VALUES('1','10','0','{$adminuser}的空间','','person','',''); ";
+    $adminquery = "INSERT INTO `{$dbprefix}member_space` (`mid` ,`pagesize` ,`matt` ,`spacename` ,`spacelogo` ,`spacestyle`, `sign` ,`spacenews`) VALUES ('1','10','0','{$adminuser}的空间','','person','',''); ";
     $dbtype == 'sqlite'?  $db->exec($adminquery) : mysql_query($adminquery,$conn);
     //锁定程序安装
     $fp = fopen(INSLOCKFILE,'w');
@@ -320,3 +316,4 @@ else if($step==10)
     @mysql_close($conn);
     exit();
 }
+?>

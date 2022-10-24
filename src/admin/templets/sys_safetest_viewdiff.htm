@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>查看差异</title>
+		<title><?php echo Lang('sys_safetest_viewdiff');?></title>
 		<link rel="stylesheet" href="../static/web/css/diffview.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/diffview.js"></script>
@@ -59,8 +59,8 @@
 					baseTextLines: base,
 					newTextLines: newtxt,
 					opcodes: opcodes,
-					baseTextName: "官方服务器文件",
-					newTextName: "本地文件",
+					baseTextName: "<?php echo Lang('sys_safetest_viewdiff_off');?>",
+					newTextName: "<?php echo Lang('sys_safetest_viewdiff_local');?>",
 					viewType: 0
 				}));
 			}

@@ -2,47 +2,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>投票管理</title>
+  <title><?php echo Lang('vote_main');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="7">投票管理</td>
+      <td bgcolor="#f8f8f8" colspan="7"><?php echo Lang('vote_main');?><a href="vote_add.php" class="btn btn-success btn-sm ml-2"><?php echo Lang('vote_add');?></a></td>
     </tr>
-    <tr bgcolor="#fbfce2" align="center">
+    <tr align="center" bgcolor="#f8fcf2">
       <td width="8%">id</td>
-      <td width="22%">投票名称</td>
-      <td width="15%">开始时间</td>
-      <td width="15%">结束时间</td>
-      <td width="10%">投票总数</td>
-      <td width="10%">状态</td>
-      <td width="20%">管理</td>
+      <td width="22%"><?php echo Lang('vote_votename');?></td>
+      <td width="15%"><?php echo Lang('starttime');?></td>
+      <td width="15%"><?php echo Lang('endtime');?></td>
+      <td width="10%"><?php echo Lang('vote_totalcount');?></td>
+      <td width="10%"><?php echo Lang('status');?></td>
+      <td width="20%"><?php echo Lang('operation');?></td>
     </tr>
-    {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-    <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+    {dede:datalist empty='<tr><td colspan="7"><center>~lang:none_result~</center></td></tr>'}
+    <tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid/}</td>
       <td><a href="{dede:global name='cfg_phpurl'/}/vote.php?aid={dede:field.aid/}&dopost=view" target="_blank"> {dede:field.votename/}</a></td>
       <td>{dede:field.starttime function="GetDateMk(@me)"/}</td>
       <td>{dede:field.endtime function="GetDateMk(@me)"/}</td>
       <td>{dede:field.totalcount/}</td>
-      <td><?php if($fields['isenable'] == 1){echo "<span class='text-danger'>未启用</span>";} else {echo "<span class='text-dark'>启用</span>";} ?></td>
+      <td><?php if ($fields['isenable'] == 1){echo "<span class='text-danger'>".Lang('disable')."</span>";} else {echo "<span class='text-dark'>".Lang('enable')."</span>";}?></td>
       <td>
-        <a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-success btn-sm">代码</a>
-        <a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
-        <a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-success btn-sm">删除</a>
+        <a href="vote_getcode.php?aid={dede:field.aid/}" class="btn btn-success btn-sm"><?php echo Lang('code');?></a>
+        <a href="vote_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm"><?php echo Lang('edit');?></a>
+        <a href="vote_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-success btn-sm"><?php echo Lang('delete');?></a>
       </td>
     </tr>
     {/dede:datalist}
     <tr>
-      <td colspan="7"><a href="vote_add.php" class="btn btn-success btn-sm">增加一组投票</a></td>
-    </tr>
-    <tr bgcolor="#f8f8f8" align="center" class="py-2">
-      <td colspan="7">{dede:pagelist listsize='6'/}</td>
+      <td align="center" colspan="7" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
 </body>

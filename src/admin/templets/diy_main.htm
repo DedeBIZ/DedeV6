@@ -2,42 +2,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>自定义表单管理</title>
+  <title><?php echo Lang('diy_main');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
-	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-		<tr bgcolor="#f8f8f8">
-			<td colspan="4">自定义表单管理</td>
+	<table width="98%" align="center" cellpadding="1" cellspacing="1" class="maintable mt-3 mb-3 biz-border">
+		<tr>
+			<td bgcolor="#f8f8f8">
+				<table width="98%" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="30%" class="py-2"><a href="diy_add.php" class="btn btn-success btn-sm ml-2"><?php echo Lang('diy_add');?></a></td>
+						<td width="70%" align="right"></td>
+					</tr>
+				</table>
+			</td>
 		</tr>
-		<tr bgcolor="#fbfce2" align="center">
+	</table>
+	<table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mb-3">
+		<tr align="center" bgcolor="#f8fcf2">
 			<td>diyid</td>
-			<td>名称</td>
-			<td>表名</td>
-			<td>管理</td>
+			<td><?php echo Lang('diy_name');?></td>
+			<td><?php echo Lang('table_name');?></td>
+			<td><?php echo Lang('operation');?></td>
 		</tr>
-		{dede:datalist empty='<tr bgcolor="white"><td colspan="4"><center>暂无内容</center></td></tr>'}
-		<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+		{dede:datalist empty='<tr bgcolor="white"><td colspan="4"><center>~lang:none_result~</center></td></tr>'}
+		<tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
 			<td>{dede:field.diyid/}</td>
 			<td><a href="diy_list.php?action=list&diyid={dede:field.diyid/}">{dede:field.name/}</a></td>
 			<td>{dede:field.table/}</td>
 			<td>
-				<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
-				<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
-				<a href="diy_list.php?action=excel&diyid={dede:field.diyid/}" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-share-square"></i> 导出</a>
-				<a href="../apps/diy.php?action=list&diyid={dede:field.diyid/}" class="btn btn-success btn-sm" target="_blank"><i class="fa fa-globe"></i> 预览</a>
+				<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-code"></i> <?php echo Lang('edit');?></a>
+				<a href="diy_edit.php?diyid={dede:field.diyid/}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> <?php echo Lang('delete');?></a>
+				<a href="diy_list.php?action=excel&diyid={dede:field.diyid/}" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-share-square"></i> <?php echo Lang('export');?></a>
+				<a href="../apps/diy.php?action=list&diyid={dede:field.diyid/}" class="btn btn-success btn-sm" target="_blank"><i class="fa fa-globe"></i> <?php echo Lang('view');?></a>
 			</td>
 		</tr>
 		{/dede:datalist}
+	</table>
+	<table width="98%" align="center" cellpadding="5" cellspacing="1" class="table maintable mb-3">
 		<tr>
-			<td colspan="4"><a href="diy_add.php" class="btn btn-success btn-sm ml-2">增加新的自定义表单</a></td>
-		</tr>
-		<tr>
-			<td colspan="4" bgcolor="#f8f8f8" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
+			<td align="center" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
 		</tr>
 	</table>
 </body>

@@ -11,7 +11,7 @@ CheckRank(0, 0);
 $menutype = 'config';
 if (!isset($dopost)) $dopost = '';
 $pwd2 = (empty($pwd2)) ? "" : $pwd2;
-$row = $dsql->GetOne("SELECT  * FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."'");
+$row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."'");
 $face = $row['face'];
 if ($dopost == 'save') {
     $svali = GetCkVdValue();
@@ -62,7 +62,6 @@ if ($dopost == 'save') {
             $pwd2 = substr(md5($userpwd), 5, 20);
         }
     }
-    
     //修改安全问题或Email
     if ($email != $row['email'] || ($newsafequestion != 0 && $newsafeanswer != '')) {
         if ($row['safequestion'] != 0 && ($row['safequestion'] != $safequestion || $row['safeanswer'] != $safeanswer)) {
@@ -117,3 +116,4 @@ if ($dopost == 'save') {
     exit();
 }
 include(DEDEMEMBER."/templets/edit_baseinfo.htm");
+?>

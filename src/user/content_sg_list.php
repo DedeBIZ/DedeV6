@@ -23,7 +23,7 @@ $positionname = '';
 $menutype = 'content';
 $mid = $cfg_ml->M_ID;
 $tl = new TypeLink($cid);
-$cInfos = $tl->dsql->GetOne("SELECT arcsta,issend,issystem,usertype,typename,addtable FROM `#@__channeltype`  WHERE id='$channelid'; ");
+$cInfos = $tl->dsql->GetOne("SELECT arcsta,issend,issystem,usertype,typename,addtable FROM `#@__channeltype` WHERE id='$channelid'; ");
 if (!is_array($cInfos)) {
     ShowMsg('模型不存在', '-1');
     exit();
@@ -55,11 +55,7 @@ if ($arcrank == '1') {
 } else if ($arcrank == '-2') {
     $whereSql .= " And arc.arcrank = -2";
 }
-$query = "SELECT arc.aid,arc.aid as id,arc.typeid,arc.senddate,arc.channel,arc.click,arc.title,arc.mid,tp.typename,arc.arcrank
-    FROM `{$cInfos['addtable']}` arc
-    LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-    $whereSql
-    ORDER BY arc.aid desc ";
+$query = "SELECT arc.aid,arc.aid as id,arc.typeid,arc.senddate,arc.channel,arc.click,arc.title,arc.mid,tp.typename,arc.arcrank FROM `{$cInfos['addtable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid $whereSql ORDER BY arc.aid DESC";
 $dlist = new DataListCP();
 $dlist->pagesize = 10;
 $dlist->SetParameter("dopost", "listArchives");
@@ -69,3 +65,4 @@ $dlist->SetParameter("channelid", $channelid);
 $dlist->SetTemplate(DEDEMEMBER."/templets/content_sg_list.htm");
 $dlist->SetSource($query);
 $dlist->Display();
+?>

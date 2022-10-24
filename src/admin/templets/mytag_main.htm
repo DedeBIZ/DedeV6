@@ -2,48 +2,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>自定义标记</title>
+  <title><?php echo Lang('mytag_main');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="6">自定义标记管理</td>
+      <td bgcolor="#f8f8f8" colspan="6"><?php echo Lang('mytag_main');?><a class="btn btn-success btn-sm ml-2" href="mytag_add.php"><?php echo Lang('mytag_add');?></a><a class="btn btn-success btn-sm" href="mytag_tag_guide.php"><?php echo Lang('mytag_tag_guide');?></a></td>
     </tr>
-    <tr bgcolor="#fbfce2" align="center">
+    <tr align="center" bgcolor="#f8fcf2">
       <td width="10%">id</td>
-      <td width="20%">标记名称</td>
-      <td width="15%">所属栏目</td>
-      <td width="15%">时间限制</td>
-      <td width="20%">结束时间</td>
-      <td width="20%">管理</td>
+      <td width="20%"><?php echo Lang('mytag_tagname');?></td>
+      <td width="15%"><?php echo Lang('catalog_typename');?></td>
+      <td width="15%"><?php echo Lang('mytag_timeset');?></td>
+      <td width="20%"><?php echo Lang('mytag_endtime');?></td>
+      <td width="20%"><?php echo Lang('operation');?></td>
     </tr>
-    {dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
-    <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+    {dede:datalist empty='<tr><td colspan="6"><center>~lang:none_result~</center></td></tr>'}
+    <tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid/}</td>
       <td>{dede:field.tagname/}</td>
       <td>{dede:field.typename function='TestType(@me)'/}</td>
       <td>{dede:field.timeset function='TimeSetValue(@me)'/}</td>
       <td>{dede:field.endtime function='GetDateMk(@me)'/}</td>
       <td>
-        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
-        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=getjs" class="btn btn-success btn-sm">js调用</a>
-        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-danger btn-sm">删除</a>
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=edit"><?php echo Lang('edit');?></a> |
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=delete"><?php echo Lang('delete');?></a> |
+        <a href="mytag_edit.php?aid={dede:field.aid/}&dopost=getjs"><?php echo Lang('mytag_jscode');?></a>
       </td>
     </tr>
     {/dede:datalist}
     <tr>
-      <td colspan="6">
-        <a href="mytag_add.php" class="btn btn-success btn-sm">增加一个标记</a>
-        <a href="mytag_tag_guide.php" class="btn btn-success btn-sm">智能标记向导</a>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="6" bgcolor="#f8f8f8" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
+      <td align="center" colspan="6" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
 </body>

@@ -1,6 +1,5 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
-//orderby = logintime(login new) or mid(register new)
 /**
  * 动态模板memberlist标签
  *
@@ -20,8 +19,7 @@ function plus_memberlist(&$atts, &$refObj, &$fields)
     $rearray = array();
     $wheresql = ' WHERE mb.spacesta > -1 AND mb.matt != 10';
     if ($iscommend > 0) $wheresql .= " AND  mb.matt='$iscommend' ";
-    $sql = "SELECT mb.*,ms.spacename,ms.sign FROM `#@__member` mb
-    LEFT JOIN `#@__member_space` ms ON ms.mid = mb.mid $wheresql ORDER BY mb.{$orderby} DESC LIMIT 0,$row ";
+    $sql = "SELECT mb.*,ms.spacename,ms.sign FROM `#@__member` mb LEFT JOIN `#@__member_space` ms ON ms.mid = mb.mid $wheresql ORDER BY mb.{$orderby} DESC LIMIT 0,$row ";
     $dsql->Execute('mb', $sql);
     while ($row = $dsql->GetArray('mb')) {
         $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/user/index.php?uid='.$row['userid'];
@@ -32,3 +30,4 @@ function plus_memberlist(&$atts, &$refObj, &$fields)
     }
     return $rearray;
 }
+?>

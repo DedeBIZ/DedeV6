@@ -492,12 +492,7 @@ class FreeList
                 }
             }
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-        $addField
-        FROM {$this->maintable} arc
-        LEFT JOIN #@__arctype tp ON arc.typeid=tp.id
-        $addJoin
-        WHERE $orwhere $ordersql LIMIT $limitstart,".$this->pagesize;
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addField FROM {$this->maintable} arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $addJoin WHERE $orwhere $ordersql LIMIT $limitstart,".$this->pagesize;
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
         $artlist = "";
@@ -866,3 +861,4 @@ class FreeList
         return $nowurl;
     }
 }//End Class
+?>

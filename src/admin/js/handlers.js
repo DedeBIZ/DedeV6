@@ -14,7 +14,7 @@ function addImage(src, pid) {
 	albImg++;
 	if (pid != 0) {
 		albImg = 'ok' + pid;
-		delstr = '<a href="javascript:delAlbPic(' + pid + ')" class="btn btn-success btn-sm">删除</a>';
+		delstr = '<a href="javascript:delAlbPic(' + pid + ')" class="btn btn-success btn-sm">Lang("delete")</a>';
 	} else {
 		albImg = 'err' + albImg;
 	}
@@ -25,8 +25,8 @@ function addImage(src, pid) {
 	if (typeof arctype != 'undefined' && arctype == 'article') {
 		iptwidth = 100;
 		if (pid != 0) {
-			newImgDiv.innerHTML = '<img src="' + src + '" onClick="addtoEdit(' + pid + ')">' + delstr;
+			newImgDiv.innerHTML = '<img src="' + src + '" onClick="addtoEdit(' + pid + ')">'+delstr;
 		}
 	}
-	newImgDiv.innerHTML += '<div class="mt-1">名称：<input type="text" name="picinfo' + albImg+ '" value="" style="width:' + iptwidth + 'px"></div>';
+	newImgDiv.innerHTML += '<div class="mt-1">简介：<input type="text" name="picinfo' + albImg+ '" value="" style="width:' + iptwidth + 'px"></div>';
 }

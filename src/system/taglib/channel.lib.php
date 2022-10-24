@@ -118,3 +118,4 @@ function lib_channel(&$ctag, &$refObj)
     }
     return $likeType;
 }
+?>

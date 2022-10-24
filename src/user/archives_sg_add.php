@@ -68,8 +68,7 @@ else if ($dopost == 'save') {
         ShowMsg('请指定文档隶属的栏目', '-1');
         exit();
     }
-    $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend AS cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype
-        FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id='$typeid' ";
+    $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend AS cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id='$typeid' ";
     $cInfos = $dsql->GetOne($query);
     //检测栏目是否有投稿权限
     if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] != $channelid || $cInfos['cissend'] != 1) {
@@ -143,7 +142,7 @@ else if ($dopost == 'save') {
         ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
-        $inquery = "INSERT INTO `{$addtable}`(aid,typeid,arcrank,mid,channel,title,senddate,litpic,userip{$inadd_f}) Values('$arcID','$typeid','$arcrank','$mid','$channelid','$title','$senddate','','$userip'{$inadd_v})";
+        $inquery = "INSERT INTO `{$addtable}` (aid,typeid,arcrank,mid,channel,title,senddate,litpic,userip{$inadd_f}) VALUES ('$arcID','$typeid','$arcrank','$mid','$channelid','$title','$senddate','','$userip'{$inadd_v})";
         if (!$dsql->ExecuteNoneQuery($inquery)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
@@ -153,7 +152,7 @@ else if ($dopost == 'save') {
     }
     //增加积分
     $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
-    //生成HTML
+    //生成网页
     $artUrl = MakeArt($arcID, true);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     ClearMyAddon($arcID, $title);
@@ -167,3 +166,4 @@ else if ($dopost == 'save') {
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
+?>

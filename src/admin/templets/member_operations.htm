@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>业务管理</title>
+  <title><?php echo Lang('member_operations');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <script>
     //获得选中项
     function getCheckboxItem() {
@@ -56,36 +56,49 @@
 </head>
 <body>
   <form name="form2" method="get" action="member_operations.php">
-    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-      <tr bgcolor="#f8f8f8">
-        <td width="280" align="center"><input type="text" name="buyid" id="buyid" placeholder="请输入订单号" style="width:260px"></td>
-        <td>
-          <button type="submit" class="btn btn-success btn-sm">搜索</button>
-          <button type="button" onClick="location='member_operations.php?sta=0';" class="btn btn-success btn-sm">未付款</button>
-          <button type="button" onClick="location='member_operations.php?sta=1';" class="btn btn-success btn-sm">已付款</button>
-          <button type="button" onClick="location='member_operations.php?sta=2';" class="btn btn-success btn-sm">已完成</button>
-          <button type="button" onClick="location='member_operations.php';" class="btn btn-success btn-sm">全部</button>
+    <table width="98%" align="center" cellpadding="1" cellspacing="1" class="mt-3 mb-3 biz-border">
+      <tr>
+        <td height="36" bgcolor="#f8f8f8">
+          <table cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="280" align="center"><input type="text" name="buyid" id="buyid" placeholder="<?php echo Lang('member_operations_input_buyid');?>" style="width:260px"></td>
+              <td><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('search');?></button></td>
+            </tr>
+          </table>
         </td>
       </tr>
     </table>
   </form>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
+  <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mb-3">
     <tr>
-      <td bgcolor="f8f8f8" colspan="8">会员消费管理</td>
+      <td bgcolor="f8f8f8" colspan="8">
+        <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
+          <tr>
+            <td width="30%"><?php echo Lang('member_operations');?></td>
+            <td width="45%" align="right">
+              <button type="button" onClick="location='member_operations.php?sta=0';" class="btn btn-success btn-sm"><?php echo Lang('member_operations_sta_0');?></button>
+              <button type="button" onClick="location='member_operations.php?sta=1';" class="btn btn-success btn-sm"><?php echo Lang('member_operations_sta_1');?></button>
+              <button type="button" onClick="location='member_operations.php?sta=2';" class="btn btn-success btn-sm"><?php echo Lang('member_operations_sta_2');?></button>
+              <button type="button" onClick="location='member_operations.php';" class="btn btn-success btn-sm"><?php echo Lang('member_operations_sta_all');?></button>
+            </td>
+            <td width="25%" align="right"><button type="button" onClick="location='member_main.php';" class="btn btn-success btn-sm"><?php echo Lang('member_main');?></button></td>
+          </tr>
+        </table>
+      </td>
     </tr>
-    <tr bgcolor="#fbfce2">
-      <td width="8%" align="center">选择</td>
-      <td width="20%" align="center">订单号</td>
-      <td align="center">产品名称</td>
-      <td width="10%" align="center">产品类型</td>
-      <td width="22%" align="center">生成日期</td>
-      <td width="8%" align="center">金额</td>
-      <td width="8%" align="center">状态</td>
-      <td width="10%" align="center">会员</td>
+    <tr bgcolor="#f8fcf2">
+      <td width="8%" align="center"><?php echo Lang('select');?></td>
+      <td width="20%" align="center"><?php echo Lang('member_buyid');?></td>
+      <td align="center"><?php echo Lang('member_pname');?></td>
+      <td width="10%" align="center"><?php echo Lang('member_ptype');?></td>
+      <td width="22%" align="center"><?php echo Lang('cards_mtime');?></td>
+      <td width="8%" align="center"><?php echo Lang('member_operations_money');?></td>
+      <td width="8%" align="center"><?php echo Lang('status');?></td>
+      <td width="10%" align="center"><?php echo Lang('member');?></td>
     </tr>
     <form name="form1">
-      {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
-      <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+      {dede:datalist empty='<tr><td colspan="8"><center>~lang:none_result~</center></td></tr>'}
+      <tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td align="center"><input type="checkbox" name="aids" value="<?php echo $fields['aid']?>"></td>
         <td align="center"><?php echo $fields['buyid']?></td>
         <td align="center"><?php echo $fields['pname'].'('.$fields['oldinfo'].')';?></td>
@@ -99,14 +112,14 @@
     </form>
     <tr>
       <td colspan="8">
-        <button type="button" onClick="ReSel();" class="btn btn-success btn-sm">反选</button>
-        <button type="button" onClick="DelSel();" class="btn btn-danger btn-sm">删除</button>
-        <button type="button" onClick="UpSel();" class="btn btn-success btn-sm">设为已付款状态</button>
-        <button type="button" onClick="OkSel();" class="btn btn-success btn-sm">设为已完成状态</button>
+        <button type="button" onClick="ReSel();" class="btn btn-success btn-sm"><?php echo Lang('reverse_selection');?></button>
+        <button type="button" onClick="DelSel();" class="btn btn-danger btn-sm"><?php echo Lang('delete');?></button>
+        <button type="button" onClick="UpSel();" class="btn btn-success btn-sm"><?php echo Lang('member_operations_upsel');?></button>
+        <button type="button" onClick="OkSel();" class="btn btn-success btn-sm"><?php echo Lang('member_operations_oksel');?></button>
       </td>
     </tr>
     <tr>
-      <td bgcolor="#f8f8f8" class="py-2" colspan="8" align="center">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
+      <td align="center" colspan="8" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}</td>
     </tr>
   </table>
 </body>

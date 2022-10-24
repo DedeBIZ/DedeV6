@@ -156,3 +156,4 @@ if (!function_exists('FloorTime')) {
         return str_replace(" ", '', $times);
     }
 }
+?>

@@ -16,3 +16,4 @@ $keyword = empty($keyword) ? "" : RemoveXss($keyword);
 $actsearch = new ActionSearch($keyword);
 $asresult = $actsearch->Search();
 include DedeInclude('templets/action_search.htm');
+?>

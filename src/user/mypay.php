@@ -29,3 +29,4 @@ if ($dopost == '') {
     ShowMsg("成功删除指定的交易记录!", "mypay.php");
     exit();
 }
+?>

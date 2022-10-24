@@ -69,3 +69,4 @@ class Exclusions extends AbstractProvider
         'OCTOPUS-CORE',
     );
 }
+?>

@@ -8,10 +8,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('c_FreeList');
+UserLogin::CheckPurview('c_FreeList');
 if (empty($dopost)) {
-    require_once DEDEINC.'/typelink/typelink.class.php';
     include DedeInclude('templets/freelist_add.htm');
     exit();
 } else if ($dopost == 'save') {
@@ -21,7 +21,7 @@ if (empty($dopost)) {
     $ntype = '';
     $edtime = time();
     if (empty($channel)) {
-        showmsg('频道类型不能为空', '-1');
+        showmsg(Lang('freelist_err_channel_isempty'), '-1');
         exit();
     }
     if (is_array($types)) {
@@ -37,11 +37,10 @@ if (empty($dopost)) {
     if (!empty($innertext)) $innertext = stripslashes($innertext);
     $listTag = "{dede:list $atts}$innertext{/dede:list}";
     $listTag = addslashes($listTag);
-    $inquery = "
-        INSERT INTO `#@__freelist`(`title` , `namerule`  , `listdir` , `defaultpage` , `nodefault` , `templet` , `edtime`, `maxpage` , `click` , `listtag` , `keywords` , `description`)
-        VALUES ('$title','$namerule','$listdir','$defaultpage','$nodefault','$templet','$edtime', '$maxpage','0','$listTag','$keywords','$description');
+    $inquery = "INSERT INTO `#@__freelist` (`title`,`namerule`,`listdir`,`defaultpage`,`nodefault`,`templet`,`edtime`, `maxpage`,`click`,`listtag`,`keywords`,`description`) VALUES ('$title','$namerule','$listdir','$defaultpage','$nodefault','$templet','$edtime', '$maxpage','0','$listTag','$keywords','$description');
     ";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功增加一个自由列表", "freelist_main.php");
+    ShowMsg(Lang("freelist_add_success"), "freelist_main.php");
     exit();
 }
+?>

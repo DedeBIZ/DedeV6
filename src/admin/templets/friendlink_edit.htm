@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>友情链接修改</title>
+  <title><?php echo Lang('friendlink_main');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8"><a href="friendlink_main.php">友情链接管理</a> &gt; 链接修改</td>
+      <td bgcolor="#f8f8f8"><a href="friendlink_main.php"><?php echo Lang('friendlink_main');?></a> &gt; <?php echo Lang('friendlink_edit');?></td>
     </tr>
     <tr>
       <td>
@@ -20,48 +20,48 @@
           <input type="hidden" name="dopost" value="saveedit">
           <table width="80%" cellspacing="1" cellpadding="3" class="table table-borderless">
             <tr>
-              <td width="260">网址：</td>
+              <td width="260"><?php echo Lang('friendlink_url');?>：</td>
               <td><input type="text" name="url" id="url" value="<?php echo $myLink['url']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td width="260">排列位置：</td>
-              <td><input type="text" name="sortrank" id="sortrank" value="<?php echo $myLink['sortrank']?>" style="width:60px">（由小到大排列）</td>
+              <td width="260"><?php echo Lang('friendlink_sortrank');?>：</td>
+              <td><input type="text" name="sortrank" id="sortrank" value="<?php echo $myLink['sortrank']?>" style="width:60px"><?php echo Lang('friendlink_sortrank_tip');?></td>
             </tr>
             <tr>
-              <td>网站名称：</td>
+              <td><?php echo Lang('friendlink_webname');?>：</td>
               <td><input type="text" name="webname" id="webname" value="<?php echo $myLink['webname']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td>网站Logo：</td>
-              <td><input type="text" name="logo" id="logo" value="<?php echo $myLink['logo']?>" style="width:260px">（88*31 gif或jpg）</td>
+              <td><?php echo Lang('friendlink_logo');?>：</td>
+              <td><input type="text" name="logo" id="logo" value="<?php echo $myLink['logo']?>" style="width:260px"><?php echo Lang('friendlink_logo_tip');?></td>
             </tr>
             <tr>
-              <td>上传Logo：</td>
+              <td><?php echo Lang('friendlink_logoimg');?>：</td>
               <td><input type="text" name="logoimg" type="file" id="logoimg" style="width:260px"></td>
             </tr>
             <tr>
-              <td>网站简况：</td>
+              <td><?php echo Lang('friendlink_msg');?>：</td>
               <td><textarea name="msg" id="msg" style="width:360px;height:50px"><?php echo dede_htmlspecialchars($myLink['msg'])?></textarea></td>
             </tr>
             <tr>
-              <td>站长Email：</td>
+              <td><?php echo Lang('friendlink_email');?>：</td>
               <td><input type="text" name="email" id="email" value="<?php echo $myLink['email']?>" class="pubinputs" style="width:260px"></td>
             </tr>
             <tr>
-              <td>链接位置：</td>
+              <td><?php echo Lang('friendlink_ischeck');?>：</td>
               <td>
-                <label><input type="radio" name="ischeck" value="0" <?php if($myLink['ischeck']==0) echo "checked='1'"?>> 未审核</label>
-                <label><input type="radio" name="ischeck" value="1" <?php if($myLink['ischeck']==1) echo "checked='1'"?>> 内页</label>
-                <label><input type="radio" name="ischeck" value="2" <?php if($myLink['ischeck']==2) echo "checked='1'"?>> 首页</label>
+                <label><input type="radio" name="ischeck" value="0" <?php if ($myLink['ischeck']==0) echo 'checked="1"'?>> <?php echo Lang('friendlink_ischeck_0');?></label>
+                <label><input type="radio" name="ischeck" value="1" <?php if ($myLink['ischeck']==1) echo 'checked="1"'?>> <?php echo Lang('friendlink_ischeck_1');?></label>
+                <label><input type="radio" name="ischeck" value="2" <?php if ($myLink['ischeck']==2) echo 'checked="1"'?>> <?php echo Lang('friendlink_ischeck_2');?></label>
               </td>
             </tr>
             <tr>
-              <td>网站类型：</td>
+              <td><?php echo Lang('friendlink_typeid');?>：</td>
               <td>
                 <select name="typeid" id="typeid" style="width:160px">
                   <?php
                   echo " <option value='".$myLink['typeid']."'>".$myLink['typename']."</option>";
-                  $dsql->SetQuery("select * from #@__flinktype where id<>'".$myLink['typeid']."'");
+                  $dsql->SetQuery("SELECT * FROM `#@__flinktype` WHERE id<>'".$myLink['typeid']."'");
                   $dsql->Execute();
                   while($row=$dsql->GetObject()){
                   	echo " <option value='".$row->id."'>".$row->typename."</option>";
@@ -71,9 +71,9 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2" align="center" class="py-2">
-                <button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
-                <button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';" class="btn btn-success btn-sm">返回</button>
+              <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
+                <button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('submit');?></button>
+                <button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';" class="btn btn-success btn-sm"><?php echo Lang('back');?></button>
               </td>
             </tr>
           </table>

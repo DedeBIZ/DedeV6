@@ -8,46 +8,42 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DedeWin;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('sys_plus');
+UserLogin::CheckPurview('sys_plus');
 $aid = preg_replace("#[^0-9]#", "", $aid);
 if ($dopost == "show") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=1 WHERE aid='$aid';");
-    ShowMsg("成功启用一个插件，请刷新导航菜单", "plus_main.php");
+    ShowMsg(Lang("plus_success_show"), "plus_main.php");
     exit();
 } else if ($dopost == "hide") {
     $dsql->ExecuteNoneQuery("UPDATE `#@__plus` SET isshow=0 WHERE aid='$aid';");
-    ShowMsg("成功禁用一个插件，请刷新导航菜单", "plus_main.php");
+    ShowMsg(Lang("plus_success_hide"), "plus_main.php");
     exit();
 } else if ($dopost == "delete") {
     if (empty($job)) $job = "";
     if ($job == "") //确认提示
     {
-        require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "删除插件";
-        $wecome_info = "<a href='plus_main.php'>插件管理</a>::删除插件";
-        $win = new OxWindow();
-        $win->Init("plus_edit.php", "js/blank.js", "POST");
-        $win->AddHidden("job", "yes");
-        $win->AddHidden("dopost", $dopost);
-        $win->AddHidden("aid", $aid);
-        $win->AddTitle("您确定要删除'".$title."'这个插件");
-        $win->AddMsgItem("警告：在这里删除仅仅删除菜单项，要干净删除请在模块管理处删除<br><br><a href='module_main.php?moduletype=plus'>模块管理&gt;</a>");
-        $winform = $win->GetWindow("ok");
-        $win->Display();
+        $wintitle = Lang("plus_delete");
+        $wecome_info = "<a href='plus_main.php'>".Lang('plus_main')."</a>::".Lang('plus_delete');
+        DedeWin::Instance()->Init("plus_edit.php", "js/blank.js", "POST")->AddHidden("job", "yes")
+        ->AddHidden("dopost", $dopost)->AddHidden("aid", $aid)->AddTitle(Lang('plus_delete_title',array('title'=>$title)))
+        ->AddMsgItem(Lang("plus_delete_msg"))->GetWindow("ok")->Display();
         exit();
     } else if ($job == "yes") //操作
     {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__plus` WHERE aid='$aid';");
-        ShowMsg("成功删除一个插件,请刷新导航菜单!", "plus_main.php");
+        ShowMsg(Lang("plus_delete_success"), "plus_main.php");
         exit();
     }
 } else if ($dopost == "saveedit") //保存修改
 {
     $inquery = "UPDATE `#@__plus` SET plusname='$plusname',menustring='$menustring',filelist='$filelist' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功修改插件的配置", "plus_main.php");
+    ShowMsg(Lang("plus_saveedit_success"), "plus_main.php");
     exit();
 }
 $row = $dsql->GetOne("SELECT * FROM `#@__plus` WHERE aid='$aid'");
 include DedeInclude('templets/plus_edit.htm');
+?>

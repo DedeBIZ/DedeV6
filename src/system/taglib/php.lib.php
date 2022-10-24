@@ -22,3 +22,4 @@ function lib_php(&$ctag, &$refObj)
     ob_clean();
     return $revalue;
 }
+?>

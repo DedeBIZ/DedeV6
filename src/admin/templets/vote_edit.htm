@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>投票管理</title>
+  <title><?php echo Lang('vote_edit');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
@@ -25,18 +25,18 @@
         //"timePickerSeconds": true,
         "showCustomRangeLabel": false,
         ranges: {
-          '今日': [moment(), moment()],
-          '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          '本月': [moment().startOf('month'), moment().startOf('month')],
-          '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+          '<?php echo Lang("today");?>': [moment(), moment()],
+          '<?php echo Lang("yestoday");?>': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          '<?php echo Lang("this_month");?>': [moment().startOf('month'), moment().startOf('month')],
+          '<?php echo Lang("last_month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
         },
         "locale": {
-          format: 'YYYY-MM-DD HH:mm',
-          applyLabel: '确定',
-          cancelLabel: '取消',
-          daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
-          monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
-            '七月', '八月', '九月', '十月', '十一月', '十二月'],
+          format: 'YYYY-MM-DD HH:mm:ss',
+          applyLabel: '<?php echo Lang("ok");?>',
+          cancelLabel: '<?php echo Lang("cancel");?>',
+          daysOfWeek: ['<?php echo Lang("sun");?>','<?php echo Lang("mon");?>','<?php echo Lang("tues");?>','<?php echo Lang("wed");?>','<?php echo Lang("thur");?>','<?php echo Lang("fri");?>','<?php echo Lang("sat");?>'],
+          monthNames: ['<?php echo Lang("jan");?>','<?php echo Lang("feb");?>','<?php echo Lang("mar");?>','<?php echo Lang("apr");?>','<?php echo Lang("may");?>','<?php echo Lang("jun");?>',
+            '<?php echo Lang("jul");?>','<?php echo Lang("aug");?>','<?php echo Lang("sept");?>','<?php echo Lang("oct");?>','<?php echo Lang("nov");?>','<?php echo Lang("dec");?>'],
           firstDay: 1
         }
       }, function (start) {
@@ -46,9 +46,9 @@
   </script>
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8"><a href="vote_main.php">投票管理</a> &gt; 增加投票</td>
+      <td bgcolor="#f8f8f8"><a href="vote_main.php"><?php echo Lang('vote_main');?></a> &gt; <?php echo Lang('vote_edit');?></td>
     </tr>
     <tr>
       <td>
@@ -58,62 +58,62 @@
           <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
           <table width="100%" cellspacing="4" cellpadding="4" class="table table-borderless">
             <tr>
-              <td width="260">投票名称：</td>
+              <td width="260"><?php echo Lang('votename');?>：</td>
               <td><input type="text" name="votename" id="votename" value="<?php echo $row['votename']?>"></td>
             </tr>
             <tr>
-              <td>投票总人数：</td>
+              <td><?php echo Lang('vote_totalcount');?>：</td>
               <td><input type="text" name="totalcount" id="totalcount" value="<?php echo $row['totalcount']?>"></td>
             </tr>
             <tr>
-              <td>开始时间：</td>
+              <td><?php echo Lang('starttime');?>：</td>
               <td><input type="text" class="datepicker1" name="starttime" id="starttime" value="<?php echo GetDateMk($row['starttime'])?>"></td>
             </tr>
             <tr>
-              <td>结束时间：</td>
+              <td><?php echo Lang('endtime');?>：</td>
               <td><input type="text" class="datepicker1" name="endtime" id="endtime" value="<?php echo GetDateMk($row['endtime'])?>"></td>
             </tr>
             <tr>
-              <td>是否允许游客投票：</td>
+              <td><?php echo Lang('vote_isallow');?>：</td>
               <td>
-                <label><input type="radio" name="isallow" value="0" <?php if($row['isallow']==0) echo "checked";?>> 是</label> 　
-                <label><input type="radio" name="isallow" value="1" <?php if($row['isallow']==1) echo "checked";?>> 否</label>
+                <label><input type="radio" name="isallow" value="0" <?php if ($row['isallow']==0) echo "checked";?>> <?php echo Lang('yes');?></label> 　
+                <label><input type="radio" name="isallow" value="1" <?php if ($row['isallow']==1) echo "checked";?>> <?php echo Lang('no');?></label>
               </td>
             </tr>
             <tr>
-              <td>是否允许查看投票：</td>
+              <td><?php echo Lang('vote_view');?>：</td>
               <td>
-                <label><input type="radio" name="view" value="0" <?php if($row['view']==0) echo "checked";?>> 是</label> 　
-                <label><input type="radio" name="view" value="1" <?php if($row['view']==1) echo "checked";?>> 否</label>
+                <label><input type="radio" name="view" value="0" <?php if ($row['view']==0) echo "checked";?>> <?php echo Lang('yes');?></label> 　
+                <label><input type="radio" name="view" value="1" <?php if ($row['view']==1) echo "checked";?>> <?php echo Lang('no');?></label>
               </td>
             </tr>
             <tr>
-              <td>投票时间间隔：</td>
-              <td><input type="text" name="spec" value="<?php echo $row['spec'] ?>" class="spec">（N天后可再次投票，0 表示此IP地址只能投一次）</td>
+              <td><?php echo Lang('vote_spec');?>：</td>
+              <td><input type="text" name="spec" value="<?php echo $row['spec'] ?>" class="spec"><?php echo Lang('vote_spec_tip');?></td>
             </tr>
             <tr>
-              <td>是否多选：</td>
+              <td><?php echo Lang('vote_ismore');?>：</td>
               <td>
-                <label><input type="radio" name="ismore" value="0" <?php if($row['ismore']==0) echo "checked";?>> 单选</label>
-                <label><input type="radio" name="ismore" value="1" <?php if($row['ismore']==1) echo "checked";?>> 多选</label>
+                <label><input type="radio" name="ismore" value="0" <?php if ($row['ismore']==0) echo "checked";?>> <?php echo Lang('vote_ismore_0');?></label>
+                <label><input type="radio" name="ismore" value="1" <?php if ($row['ismore']==1) echo "checked";?>> <?php echo Lang('vote_ismore_1');?></label>
               </td>
             </tr>
             <tr>
-              <td>投票项：<br>
-              （请按相同的形式来增加或修改节点，其中属性：id不能重复）</td>
+              <td><?php echo Lang('vote_options');?>：<br>
+                <?php echo Lang('vote_options_tip');?></td>
               <td><textarea name="votenote" rows="8" id="votenote" style="width:80%"><?php echo $row['votenote']?></textarea></td>
             </tr>
             <tr>
-              <td>是否启用：</td>
+              <td><?php echo Lang('vote_isenable');?>：</td>
               <td> 
-                <label><input type="radio" name="isenable" value="0" <?php if($row['isenable']==0) echo "checked";?>> 是</label> 　
-                <label><input type="radio" name="isenable" value="1" <?php if($row['isenable']==1) echo "checked";?>> 否</label>
+                <label><input type="radio" name="isenable" value="0" <?php if ($row['isenable']==0) echo "checked";?>> <?php echo Lang('yes');?></label> 　
+                <label><input type="radio" name="isenable" value="1" <?php if ($row['isenable']==1) echo "checked";?>> <?php echo Lang('no');?></label>
               </td>
             </tr>
             <tr>
               <td colspan="2" align="center" class="py-2">
-                <button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
-                <button type="button" onclick="history.back()" name="Submit" class="btn btn-success btn-sm">返回</button>
+                <button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+                <button type="button" onclick="history.back()" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('back');?></button>
               </td>
             </tr>
           </table>

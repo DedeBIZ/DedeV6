@@ -31,3 +31,4 @@ $dsql->ExecuteNoneQuery("UPDATE `#@__moneycard_record` SET uid='".$cfg_ml->M_ID.
 $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET money=money+$hasMoney WHERE mid='".$cfg_ml->M_ID."'");
 ShowMsg("充值成功，您本次增加的金币为：{$hasMoney} 个", -1);
 exit();
+?>

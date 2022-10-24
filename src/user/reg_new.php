@@ -74,8 +74,7 @@ if ($step == 1) {
         }
         $mtype = '个人';
         $spaceSta = ($cfg_mb_spacesta < 0 ? $cfg_mb_spacesta : 0);
-        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`$pp`,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip` )
-        VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip'); ";
+        $inQuery = "INSERT INTO `#@__member` (`mtype` ,`userid` ,`$pp`,`uname` ,`sex` ,`rank` ,`money` ,`email` ,`scores` ,`matt`, `spacesta` ,`face`,`safequestion`,`safeanswer` ,`jointime` ,`joinip` ,`logintime` ,`loginip`) VALUES ('$mtype','$userid','$pwd','$uname','','10','$dfmoney','','$dfscores','0','$spaceSta','','','','$jointime','$joinip','$logintime','$loginip'); ";
         if ($dsql->ExecuteNoneQuery($inQuery)) {
             $mid = $dsql->GetLastID();
             //写入默认会员详细资料
@@ -87,15 +86,13 @@ if ($step == 1) {
                 $space = 'person';
             }
             //写入默认统计数据
-            $membertjquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`)
-                VALUES ('$mid','0','0','0','0','0','0','0','0'); ";
+            $membertjquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('$mid','0','0','0','0','0','0','0','0'); ";
             $dsql->ExecuteNoneQuery($membertjquery);
             //写入默认空间配置数据
-            $spacequery = "INSERT INTO `#@__member_space`(`mid` ,`pagesize` ,`matt` ,`spacename` ,`spacelogo` ,`spacestyle`, `sign` ,`spacenews`)
-                VALUES('{$mid}','10','0','{$uname}的空间','','$space','',''); ";
+            $spacequery = "INSERT INTO `#@__member_space` (`mid`,`pagesize`,`matt`,`spacename`,`spacelogo`,`spacestyle`,`sign`,`spacenews`) VALUES ('{$mid}','10','0','{$uname}的空间','','$space','',''); ";
             $dsql->ExecuteNoneQuery($spacequery);
             //写入其它默认数据
-            $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES('$mid','DedeBIZ','https://www.dedebiz.com'); ");
+            $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_flink`(mid,title,url) VALUES ('$mid','DedeBIZ','https://www.dedebiz.com'); ");
             //模拟登录
             $cfg_ml = new MemberLogin(7 * 3600);
             $rs = $cfg_ml->CheckUser($userid, $userpwd);
@@ -116,3 +113,4 @@ if ($step == 1) {
         exit;
     }
 }
+?>

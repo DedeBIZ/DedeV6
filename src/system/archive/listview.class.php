@@ -675,12 +675,7 @@ class ListView
         }
         //如果不用默认的sortrank或id排序，使用联合查询（数据量大时非常缓慢）
         if (preg_match('/hot|click|lastpost/', $orderby)) {
-            $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-            $addField
-            FROM `#@__archives` arc
-            LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-            $addJoin
-            WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
+            $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
         }
         //普通情况先从arctiny表查出ID，然后按ID查询（速度非常快）
         else {
@@ -696,11 +691,7 @@ class ListView
             if ($idstr == '') {
                 return '';
             } else {
-                $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-                $addField
-                FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-                $addJoin
-                WHERE arc.id in($idstr) $ordersql ";
+                $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath $addField FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id $addJoin WHERE arc.id in($idstr) $ordersql ";
             }
             $t2 = ExecTime();
             //echo $t2-$t1;
@@ -1010,3 +1001,4 @@ class ListView
         return $nowurl;
     }
 }//End Class
+?>

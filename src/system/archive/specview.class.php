@@ -331,9 +331,7 @@ class SpecView
         } else {
             $ordersql = " ORDER BY arc.sortrank desc";
         }
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,arc.money,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-            FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id
-            WHERE $orwhere $ordersql LIMIT $limitstart,$row ";
+        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.isdefault,arc.money,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE $orwhere $ordersql LIMIT $limitstart,$row ";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute('al');
         $artlist = '';
@@ -574,3 +572,4 @@ class SpecView
         return $nowurl;
     }
 }//End Class
+?>

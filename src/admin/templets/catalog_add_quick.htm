@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>批量增加栏目</title>
+  <title><?php echo Lang('catalog_quick_add');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script>
     var $ = jQuery;
@@ -84,75 +84,72 @@
     <input type="hidden" name="savetype" value="" id="savetype">
     <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
       <tr>
-        <td width="100%">
+        <td>
           <table width="100%" cellspacing="0" cellpadding="0">
             <tr>
-              <td><i class="fa fa-map"></i> <a href="catalog_main.php">栏目管理</a> &gt; 批量增加栏目</td>
+              <td><i class="fa fa-map-marker"></i> <a href="catalog_main.php"><?php echo Lang('catalog_main');?></a> &gt; <?php echo Lang('catalog_quick_add');?></td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-    <table width="98%" align="center" cellpadding="0" cellspacing="0">
-      <tr>
-        <td height="10"></td>
-      </tr>
+    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mb-3">
       <tr>
         <td height="90" align="left">
           <table width="100%" cellspacing="0" id="head1" cellpadding="0">
             <tr>
               <td colspan="2">
-                <table width="80" cellpadding="0" cellspacing="0">
+                <table width="90" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="80" height="28" align="center" bgcolor="#fbfce2">常规选项</td>
+                    <td width="90" height="28" align="center" class="biz-itemnote1"><?php echo Lang('normal_options');?></td>
                   </tr>
                 </table>
               </td>
             </tr>
           </table>
-          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="biz-border table">
+          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table biz-border">
             <tr>
-              <td bgcolor="#f8f8f8">公用参数：</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_same_setting');?>：</td>
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>
-              <td width="260" class="bline">是否支持投稿：</td>
+              <td width="260" class="bline"><?php echo Lang('support_submission');?>：</td>
               <td class="bline">
-                <label><input type="radio" name="issend" value="1" checked="1"> 支持</label>
-                <label><input type="radio" name="issend" value="0"> 不支持</label>
+                <label><input type="radio" name="issend" value="1" checked="1"> <?php echo Lang('support');?></label>
+                <label><input type="radio" name="issend" value="0"> <?php echo Lang('unsupport');?></label>
               </td>
             </tr>
             <tr>
-              <td class="bline">目录保存位置：</td>
+              <td class="bline"><?php echo Lang('catalog_referpath');?>：</td>
               <td class="bline">
-                <label><input type="radio" name="referpath" value="parent" checked="1"> 默认HMTL目录（
+                <label><input type="radio" name="referpath" value="parent" checked="1"> <?php echo Lang('catalog_parent');?>（
                 <?php
                 $pardir = '{cmspath}'.$cfg_arcdir;
-                if(!empty($typedir)) $pardir = $typedir.'/';
+                if (!empty($typedir)) $pardir = $typedir.'/';
                 $pardir = preg_replace("#\/{1,}#", '/', $pardir);
                 echo $pardir;
                 ?>）</label>
-                <label><input type="radio" name="referpath" value="cmspath"> CMS根目录</label>
+                <label><input type="radio" name="referpath" value="cmspath"> <?php echo Lang('cmspath');?></label>
                 <input type="hidden" name="nextdir" id="nextdir" value="<?php echo $pardir;?>">
-                <span id="pathtype" style="display:none"><input type="radio" name="referpath" id="truepath3" value="typepath">所属栏目所属的目录</span>
+                <span id="pathtype" style="display:none"><input type="radio" name="referpath" id="truepath3" value="typepath"><?php echo Lang('catalog_typepath');?></span>
               </td>
             </tr>
             <tr>
-              <td class="bline">所属栏目：</td>
+              <td class="bline"><?php echo Lang('catalog_reid');?>：</td>
               <td class="bline">
                 <select name="reid" onchange="showSeltype(this)" style="width:160px">
-                  <option value="0">选择所属目录</option>
+                  <option value="0"><?php echo Lang('catalog_select_reid');?></option>
                   <?php echo $typeOptions;?>
-                </select>（默认为顶级栏目）
+                </select><?php echo Lang('catalog_select_reid_tip');?>
               </td>
             </tr>
             <tr>
-              <td class="bline">内容模型：</td>
+              <td class="bline"><?php echo Lang('mychannel');?>：</td>
               <td class="bline"><select name="channeltype" id="channeltype" onChange="ParTemplet(this)" style="width:160px">
                 <?php
                 foreach($channelArray as $k=>$arr)
                 {
-            	    if($k==$channelid) echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
+            	    if ($k==$channelid) echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
                   else  echo "<option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
                 }
                 ?>
@@ -160,117 +157,110 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">栏目列表选项：</td>
+              <td class="bline"><?php echo Lang('catalog_list_option');?>：</td>
               <td class="bline">
-                <label><input type="radio" name="isdefault" value="1" checked="1"> 链接到默认页</label>
-                <label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
-                <label><input type="radio" name="isdefault" value="-1"> 使用动态页</label>
+                <label><input type="radio" name="isdefault" value="1" checked="1"> <?php echo Lang('catalog_list_option_1');?></label>
+                <label><input type="radio" name="isdefault" value="0"> <?php echo Lang('catalog_list_option_0');?></label>
+                <label><input type="radio" name="isdefault" value="-1"> <?php echo Lang('catalog_list_option_-1');?></label>
               </td>
             </tr>
             <tr>
-              <td class="bline">默认页的名称：</td>
+              <td class="bline"><?php echo Lang('catalog_default_name');?>：</td>
               <td class="bline"><input type="text" name="defaultname" value="index.html" class="pubinputs" style="width:260px"></td>
             </tr>
             <tr id="helpvar2" style="display:none">
-              <td bgcolor="#f8f8f8">支持变量：</td>
-              <td bgcolor="#f8f8f8"> {Y}、{M}、{D} 年月日<br>
-                {timestamp} INT类型的UNIX时间戳<br>
-                {aid} 文档id<br>
-                {pinyin} 拼音+文档id<br>
-                {py} 拼音部首+文档id<br>
-                {typedir} 栏目目录 <br>
-                {cc} 日期+ID混编后用转换为适合的字母 <br>
-              </td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_support_val');?>：</td>
+              <td bgcolor="#f8f8f8"> <?php echo Lang('catalog_support_val_tip');?></td>
             </tr>
             <tr>
-              <td class="bline">文档命名规则：</td>
+              <td class="bline"><?php echo Lang('catalog_namerule');?>：</td>
               <td class="bline">
                 <input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" style="width:260px">
-                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i> 
+                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr id="helpvar3" style="display:none">
-              <td bgcolor="#f8f8f8">支持变量：</td>
-              <td bgcolor="#f8f8f8">{page} 列表的页码</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_support_val');?>：</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_support_val_tip2');?></td>
             </tr>
             <tr>
-              <td>列表命名规则：</td>
+              <td><?php echo Lang('catalog_namerule2');?>：</td>
               <td>
                 <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="pubinputs" style="width:260px">
-                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i> 
+                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr>
-              <td bgcolor="#f8f8f8">栏目填写：</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_batch_edit');?>：</td>
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>
               <td colspan="2">
-                <table id="addQuick" width="98%" cellpadding="3" cellspacing="1">
+                <table id="addQuick" width="100%" cellpadding="3" cellspacing="1">
                   <tbody>
-                    <tr bgcolor="#fbfce2">
-                      <td width="60">排序</td>
-                      <td width="260">顶级栏目名称</td>
-                      <td>子栏目（用&quot;目录名称1,目录名称2&quot;这样表示多个栏目）</td>
-                      <td width="60" align="center"><button type="button" id="add" class="btn btn-success btn-sm">添加</button></td>
+                    <tr bgcolor="#f8fcf2">
+                      <td width="60"><?php echo Lang('sortrank');?></td>
+                      <td width="260"><?php echo Lang('catalog_top_typename');?></td>
+                      <td width="560"><?php echo Lang('catalog_sun_typename_tip');?></td>
+                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm"><?php echo Lang('add');?></button></td>
                     </tr>
-                    <tr align="center">
-                      <td class="rank">
+                    <tr>
+                      <td>
                         <input type="hidden" name="posttype" value="" class="pubinputs">
                         <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px">
                       </td>
-                      <td align="center"><input type="text" name="toptype" id="toptype" class="pubinputs" style="width:160px"></td>
-                      <td><input type="text" name="sontype" id="sontype" class="pubinputs" style="width:100%"></td>
-                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm">删除</button></td>
+                      <td><input type="text" name="toptype" id="toptype" class="pubinputs" style="width:160px"></td>
+                      <td><input type="text" name="sontype" id="sontype" class="pubinputs" style="width:460px"></td>
+                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm del"><?php echo Lang('delete');?></button></td>
                     </tr>
-                    <?php for($i=2;$i<=10;$i++) { ?>
-                    <tr  class="repeat" align="center">
-                      <td class="rank">
+                    <?php for($i=2;$i<=10;$i++) {?>
+                    <tr >
+                      <td>
                         <input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
                         <input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs" style="width:60px">
                       </td>
                       <td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="pubinputs" style="width:160px"></td>
-                      <td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" class="pubinputs" style="width:100%"></td>
-                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm">删除</button></td>
+                      <td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" class="pubinputs" style="width:460px"></td>
+                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm del"><?php echo Lang('delete');?></button></td>
                     </tr>
-                    <?php } ?>
+                    <?php }?>
                   </tbody>
                 </table>
-                <table id="addQuickRel" width="302" cellpadding="3" cellspacing="1" style="display:none">
+                <table id="addQuickRel" width="100%" cellpadding="3" cellspacing="1" style="display:none">
                   <tbody>
-                    <tr bgcolor="#fbfce2" align="center">
-                      <td width="60">排序</td>
-                      <td width="170">栏目名称</td>
-                      <td align="center"><button type="button" id="addrel" class="btn btn-success btn-sm">添加</button></td>
+                    <tr bgcolor="#f8fcf2">
+                      <td width="60"><?php echo Lang('sortrank');?></td>
+                      <td width="260"><?php echo Lang('catalog_typename');?></td>
+                      <td align="center"><button type="button" id="addrel" class="btn btn-success btn-sm"><?php echo Lang('add');?></button></td>
                     </tr>
-                    <tr align="center">
-                      <td class="rank">
+                    <tr>
+                      <td>
                         <input type="hidden" name="posttype" value="" class="pubinputs">
                         <input type="text" name="rank" id="rank" value="1" class="pubinputs" style="width:60px">
                       </td>
                       <td><input type="text" name="reltype" id="reltype" class="pubinputs" style="width:160px"></td>
-                      <td align="center"><button type="button" name="" id="add" class="btn btn-success btn-sm">删除</button></td>
+                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm del"><?php echo Lang('delete');?></button></td>
                     </tr>
-                    <?php for($i=2;$i<=10;$i++) { ?>
-                    <tr  class="repeat" align="center">
-                      <td class="rank">
+                    <?php for($i=2;$i<=10;$i++) {?>
+                    <tr>
+                      <td>
                         <input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
                         <input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs" style="width:60px">
                       </td>
                       <td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="pubinputs" style="width:160px"></td>
-                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm">删除</button></td>
+                      <td align="center"><button type="button" id="add" class="btn btn-success btn-sm del"><?php echo Lang('delete');?></button></td>
                     </tr>
-                    <?php } ?>
+                    <?php }?>
                   </tbody>
                 </table>
               </td>
             </tr>
           </table>
-          <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">
+          <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="mb-3 biz-border border-top-0">
             <tr>
               <td align="center" class="py-2">
-                <button type="submit" class="btn btn-success btn-sm">保存</button>
-                <a href="catalog_main.php" class="btn btn-success btn-sm">返回</a>
+                <button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+                <a href="catalog_main.php" class="btn btn-success btn-sm"><?php echo Lang('back');?></a>
               </td>
             </tr>
           </table>

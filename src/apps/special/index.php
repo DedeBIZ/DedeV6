@@ -18,3 +18,4 @@ if (file_exists($specfile)) {
   $sp = new SpecView();
   $sp->Display();
 }
+?>

@@ -199,8 +199,7 @@ class SearchView
             } else {
                 $keywords = $keyword;
             }
-            $inquery = "INSERT INTO `#@__search_keywords`(`keyword`,`spwords`,`count`,`result`,`lasttime`)
-          VALUES ('".addslashes($keyword)."', '".addslashes($keywords)."', '1', '0', '".time()."'); ";
+            $inquery = "INSERT INTO `#@__search_keywords` (`keyword`,`spwords`,`count`,`result`,`lasttime`) VALUES ('".addslashes($keyword)."', '".addslashes($keywords)."', '1', '0', '".time()."'); ";
             $this->dsql->ExecuteNoneQuery($inquery);
         } else {
             $this->dsql->ExecuteNoneQuery("UPDATE `#@__search_keywords` SET count=count+1,lasttime='".time()."' WHERE keyword='".addslashes($keyword)."'; ");
@@ -388,8 +387,7 @@ class SearchView
                 $delete = "DELETE FROM `#@__arccache` WHERE uptime<".(time() - 3600 * 24);
                 $this->dsql->SetQuery($delete);
                 $this->dsql->executenonequery();
-                $insert = "INSERT INTO `#@__arccache` (`md5hash`, `uptime`, `cachedata`)
-                 VALUES('$hascode', '$uptime', '$aids')";
+                $insert = "INSERT INTO `#@__arccache` (`md5hash`,`uptime`,`cachedata`) VALUES ('$hascode','$uptime','$aids')";
                 $this->dsql->SetQuery($insert);
                 $this->dsql->executenonequery();
                 $this->TotalResult = $nums;
@@ -537,9 +535,7 @@ class SearchView
             }
         }
         //搜索
-        $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath
-        FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id
-        WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
+        $query = "SELECT arc.*,act.typedir,act.typename,act.isdefault,act.defaultname,act.namerule,act.namerule2,act.ispart,act.moresite,act.siteurl,act.sitepath FROM `{$this->AddTable}` arc LEFT JOIN `#@__arctype` act ON arc.typeid=act.id WHERE {$this->AddSql} $ordersql LIMIT $limitstart,$row";
         $this->dsql->SetQuery($query);
         $this->dsql->Execute("al");
         $artlist = "";
@@ -741,3 +737,4 @@ class SearchView
         return $nowurl;
     }
 }//End Class
+?>

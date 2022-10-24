@@ -22,7 +22,7 @@ $menutype = 'content';
 function _ShowForm(){  }
 --------------*/
 if (empty($dopost)) {
-    $cInfos = $dsql->GetOne("Select * From `#@__channeltype`  where id='$channelid'; ");
+    $cInfos = $dsql->GetOne("Select * From `#@__channeltype` WHERE id='$channelid'; ");
     if (!is_array($cInfos)) {
         ShowMsg('模型不存在', '-1');
         exit();
@@ -91,8 +91,7 @@ else if ($dopost == 'save') {
         exit();
     }
     //保存到主表
-    $inQuery = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype)
-    VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
+    $inQuery = "INSERT INTO `#@__archives` (id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype) VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
         $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID' ");
@@ -107,7 +106,7 @@ else if ($dopost == 'save') {
         ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
-        $inquery = "INSERT INTO `{$addtable}`(aid,typeid,userip,redirecturl,templet{$inadd_f}) Values('$arcID','$typeid','$userip','',''{$inadd_v})";
+        $inquery = "INSERT INTO `{$addtable}` (aid,typeid,userip,redirecturl,templet{$inadd_f}) VALUES ('$arcID','$typeid','$userip','',''{$inadd_v})";
         if (!$dsql->ExecuteNoneQuery($inquery)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("Delete From `#@__archives` where id='$arcID'");
@@ -120,7 +119,7 @@ else if ($dopost == 'save') {
     $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} where mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
-    //生成HTML
+    //生成网页
     InsertTags($tags, $arcID);
     $artUrl = MakeArt($arcID, true);
     if ($artUrl == '') {
@@ -137,3 +136,4 @@ else if ($dopost == 'save') {
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
+?>

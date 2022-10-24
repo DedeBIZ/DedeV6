@@ -23,9 +23,7 @@ function _ShowForm(){  }
 --------------*/
 if (empty($dopost)) {
     //读取归档信息
-    $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,arc.mtype as mtypeid,ch.arcsta
-        FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
-        WHERE arc.id='$aid' And arc.mid='".$cfg_ml->M_ID."'; ";
+    $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,arc.mtype as mtypeid,ch.arcsta FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' And arc.mid='".$cfg_ml->M_ID."'; ";
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
         ShowMsg("读取文档信息出错!", "-1");
@@ -85,7 +83,7 @@ else if ($dopost == 'save') {
              mtype = '$mtypesid',
              keywords='$keywords',            
              flag='$flag'
-      WHERE id='$aid' AND mid='$mid'; ";
+     WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
@@ -93,7 +91,7 @@ else if ($dopost == 'save') {
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET typeid='$typeid',body='$body'{$inadd_f},userip='$userip' WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员", "javascript:;");
+            ShowMsg("更新附加表 `$addtable` 时出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -112,3 +110,4 @@ else if ($dopost == 'save') {
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
+?>

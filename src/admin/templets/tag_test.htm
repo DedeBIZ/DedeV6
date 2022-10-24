@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>全局标记测试</title>
+		<title><?php echo Lang('tag_test');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 		<link rel="stylesheet" href="css/codemirror.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/main.js"></script>
@@ -24,7 +24,7 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 			<form name="form1" action="tag_test_action.php" target="stafrm" method="post">
 				<input type="hidden" name="dopost" value="make">
 				<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
@@ -32,70 +32,52 @@
 					<td bgcolor="#f8f8f8" colspan="2">
 						<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
 							<tr>
-								<td width="30%">全局标记测试</td>
+								<td width="30%"><?php echo Lang('tag_test');?></td>
 								<td width="70%" align="right"></td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						全局标记指的是应用在网站主页、单独页面、频道封面使用的单独的模板标记，在列表或文档模板中，一般只允许调用channel、arclist标记（hotart、coolart、imglist等都是这个标记延伸出来的标记），但是环境变量限定为文档或列表所在的栏目，如果您要测试的标记是在列表或文档中使用，请指定环境变量（栏目id）<br>
-						各标记的具体含义和用途，请在<a href="https://www.dedebiz.com/help" target="_blank">模板标记参考</a>一章查阅
-					</td>
+					<td colspan="2"><?php echo Lang('tag_test_tip');?></td>
 				</tr>
 				<tr>
-					<td colspan="2">输入要测试的局部代码：</td>
+					<td colspan="2"><?php echo Lang('tag_test_partcode');?>：</td>
 				</tr>
 				<tr>
-					<td height="60" colspan="2">
-						<textarea name="partcode" id="partcode" style="width:98%;height:120px"></textarea>
-					</td>
+					<td height="60" colspan="2" class="p-0"><textarea name="partcode" id="partcode" style="width:98%;height:120px"></textarea></td>
 				</tr>
 				<tr>
-					<td>环境变量：</td>
+					<td><?php echo Lang('tag_test_typeid');?>：</td>
 					<td>
 						<?php
-						if(empty($cid)) $cid="0";
-						$tl = new TypeLink($cid);
+						if (empty($cid)) $cid="0";
+						$tl = new DedeBIZ\TypeLink\TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
 						echo "<select name='typeid' style='width:260px'>";
-						if($cid=="0") echo "<option value='0' selected>不使用环境ID</option>";
+						if ($cid=="0") echo "<option value='0' selected>".Lang('tag_test_typeid_0')."</option>";
 						echo $typeOptions;
 						echo "</select>";
 						?>
 					</td>
 				</tr>
 				<tr>
-					<td bgcolor="#fbfce2" colspan="2" align="center">
-						<button type="submit" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" class="coolbg np">提交测试</button>
-					</td>
+					<td  align="center"colspan="2" bgcolor="#f8fcf2"><button type="submit" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')" class="coolbg np"><?php echo Lang('tag_test_submit');?></button></td>
 				</tr>
 			</form>
 			<tr>
 				<td colspan="2">
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="30%">结果：</td>
-							<td width="70%" align="right">
-								<script>
-									function ResizeDiv(obj, ty) {
-										if (ty == "+") document.all[obj].style.pixelHeight += 50;
-										else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight + 50;
-									}
-								</script>
-								<a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
-								<a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
-							</td>
+							<td width="30%"><?php echo Lang('result');?>：</td>
+							<td width="70%" align="right"></td>
 						</tr>
 					</table>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" id="mtd">
-					<div id="mdv" style="width:100%;height:360px">
-						<iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
-					</div>
+					<div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

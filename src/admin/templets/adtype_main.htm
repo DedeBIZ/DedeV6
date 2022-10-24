@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>广告分类管理</title>
+  <title><?php echo Lang('adtype_main');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
-<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
   <form name="form1" action="adtype_main.php" method="post">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="7"><input type="hidden" name="dopost" value="save">广告分类管理<a href="ad_main.php" class="btn btn-success btn-sm ml-2">广告管理</a></td>
+      <td bgcolor="#f8f8f8" colspan="7"><input type="hidden" name="dopost" value="save"><?php echo Lang('adtype_main');?><a href="ad_main.php" class="btn btn-success btn-sm ml-2"><?php echo Lang('ad_main');?></a></td>
     </tr>
-    <tr bgcolor="#fbfce2">
+    <tr bgcolor="#f8fcf2">
       <td width="9%" align="center">id</td>
-      <td width="55%" align="center">广告分类</td>
-      <td width="36%" align="center">状态</td>
+      <td width="55%" align="center"><?php echo Lang('ad_adtype');?></td>
+      <td width="36%" align="center"><?php echo Lang('status');?></td>
     </tr>
     <?php
   	$dsql->SetQuery("Select * From #@__myadtype");
@@ -30,21 +30,19 @@
     <tr align="center">
       <td><input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->id?>"/><?php echo $row->id;?></td>
       <td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->typename?>" id="pname_<?php echo $k?>" class="pubinputs" style="width:90%"></td>
-      <td><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> 保留</label></td>
+      <td><label><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> <?php echo Lang('adtype_keep');?></label></td>
     </tr>
-    <?php
-  	}
-  	?>
+    <?php }?>
     <input type="hidden" name="idend" value="<?php echo $k?>">
-    <tr bgcolor="#fbfce2">
-      <td colspan="5" bgcolor="#f8f8f8">新增一个广告类型：</td>
+    <tr bgcolor="#f8fcf2">
+      <td colspan="5" bgcolor="#f8f8f8"><?php echo Lang('adtype_add');?></td>
     </tr>
     <tr align="center">
       <td colspan="2"><input type="text" name="pname_new" id="pname_new" class="pubinputs" style="width:90%"></td>
-      <td align="center"><label><input type="checkbox" name="check_new"  id="check_new" value="1" checked="1"> 新增</label></td>
+      <td align="center"><label><input type="checkbox" name="check_new"  id="check_new" value="1" checked="1"> <?php echo Lang('add');?></label></td>
     </tr>
     <tr>
-      <td colspan="5" align="center" bgcolor="#f8f8f8"><input name="submit" type="submit" class="btn btn-success btn-sm" value="确定"></td>
+      <td align="center" colspan="5" bgcolor="#f8f8f8"><input name="submit" type="submit" class="btn btn-success btn-sm" value="<?php echo Lang('ok');?>"></td>
     </tr>
   </form>
 </table>

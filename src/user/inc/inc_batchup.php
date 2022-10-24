@@ -24,11 +24,7 @@ function DelArc($aid)
     //读取文档信息
     $arctitle = '';
     $arcurl = '';
-    $arcQuery = "SELECT arc.*,ch.addtable,tp.typedir,tp.typename,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,ch.nid
-        FROM `#@__archives` arc
-        LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-        LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
-        WHERE arc.id='$aid' ";
+    $arcQuery = "SELECT arc.*,ch.addtable,tp.typedir,tp.typename,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath,ch.nid FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
         return false;
@@ -132,11 +128,7 @@ function DelArcSg($aid)
     //读取文档信息
     $arctitle = '';
     $arcurl = '';
-    $arcQuery = "Select arc.id,arc.typeid,arc.senddate,arc.arcrank,ch.addtable,ch.nid,tp.typedir,tp.typename,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-        from `#@__arctiny` arc
-        left join `#@__arctype` tp on tp.id=arc.typeid
-        left join `#@__channeltype` ch on ch.id=arc.channel
-        where arc.id='$aid' ";
+    $arcQuery = "SELECT arc.id,arc.typeid,arc.senddate,arc.arcrank,ch.addtable,ch.nid,tp.typedir,tp.typename,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__arctiny` arc LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid LEFT JOIN `#@__channeltype` ch on ch.id=arc.channel WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
         return FALSE;

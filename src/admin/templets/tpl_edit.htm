@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>修改新建模板</title>
+		<title><?php echo Lang('tpl_edit');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 		<style>
 			.selbt {
 				float: left;
@@ -34,7 +34,7 @@
 		<script>
 			function Post() {
 				if (document.form1.filename.value == "") {
-					alert("文件名不能为空");
+					alert("<?php echo Lang('templets_one_err_nfilename_isempty');?>");
 					document.form1.filename.focus();
 					return false;
 				}
@@ -67,19 +67,19 @@
 			<input type="hidden" name="action" value="saveedit">
 			<input type="hidden" name="acdir" value="<?php echo $acdir;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+			<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 				<tr>
-					<td bgcolor="#f8f8f8" colspan="2">修改新建模板</td>
+					<td bgcolor="#f8f8f8" colspan="2"><?php echo Lang('tpl_edit');?></td>
 				</tr>
 				<tr>
-					<td hieght="26">文件名称</td>
-					<td hieght="26"><input name=filename value="<?php echo $filename;?>" style="width:260px">（不允许用“..”形式的路径）</td>
+					<td><?php echo Lang('content_filename');?></td>
+					<td><input name=filename value="<?php echo $filename;?>" style="width:260px"><?php echo Lang('tpl_edit_filename_tip');?></td>
 				</tr>
 				<tr>
-					<td hieght="26" colspan="2">参考标签：</td>
+					<td colspan="2"><?php echo Lang('tpl_tag');?>：</td>
 				</tr>
 				<tr>
-					<td hieght="26" colspan="2">
+					<td colspan="2">
 					<?php
 					foreach ($helps as $key => $help) {
 						echo '<div class="coolbg np selbt" title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"> '.$key.' </a></div>'."";
@@ -89,30 +89,28 @@
 				</tr>
 				<tr>
 					<td colspan="2" style="border-top:1px solid #fff">
-						<?php
-						foreach ($helps as $key => $help) {
-							echo '<div name="help111" id="'.$key.'" class="helpdiv"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">关闭</a></span>标签名称：'.$key.'<br>功能说明：'.trim($help[0]).'<br>使用实例：<br><textarea rows="5" style="width:98%">'.trim($help[1]).'</textarea><br>参数说明：<br>'."";
-							$parameters = explode("\n", $help[2]);
-							foreach($parameters as $parameter)
-							{
-								$parameter = trim($parameter);
-								if($parameter == '') continue;
-								else echo $parameter,'<br>';
-							}
-						echo '</div>'."";
+					<?php
+					foreach ($helps as $key => $help) {
+						echo '<div name="help111" id="'.$key.'" class="helpdiv"><span class="float-right"><a href="javascript:;" onclick="showdiv(\'\')" class="btn btn-success btn-sm">'.Lang('close').'</a></span>'.Lang('tpl_tag_name').'：'.$key.'<br>'.Lang('tpl_tag_desc').'：'.trim($help[0]).'<br>'.Lang('tpl_tag_ues').'：<br><textarea rows="5" style="width:98%">'.trim($help[1]).'</textarea><br>'.Lang('tpl_tag_parm').'：<br>'."";
+						$parameters = explode("\n", $help[2]);
+						foreach($parameters as $parameter)
+						{
+							$parameter = trim($parameter);
+							if ($parameter == '') continue;
+							else echo $parameter,'<br>';
+						}
+					echo '</div>'."";
 					}
 					?>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" class="p-0">
-						<textarea id="content" name="content" cols="150" rows="25"><?php echo $content;?></textarea>
-					</td>
+					<td colspan="2" class="p-0"><textarea id="content" name="content" style="width:100%;height:450px"><?php echo $content;?></textarea></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f8f8f8" colspan="2" align="center" class="py-2">
-						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="B4" class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
+					<td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
+						<button type="submit" name="B1" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+						<button type="button" name="B4" class="btn btn-success btn-sm" onClick="javascript:history.go(-1);"><?php echo Lang('back');?></button>
 					</td>
 				</tr>
 			</table>

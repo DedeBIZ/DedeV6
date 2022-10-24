@@ -129,3 +129,4 @@ else if ($action == 'list') {
     $fieldlist = $diy->getFieldList();
     include DEDEROOT."/theme/plus/{$diy->viewTemplate}";
 }
+?>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>栏目管理</title>
+  <title><?php echo Lang('catalog_main');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="js/main.js"></script>
   <script>
@@ -102,16 +102,16 @@
 <body>
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
     <tr>
-      <td width="100%">
+      <td>
         <table width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td><i class="fa fa-map"></i> <a href="catalog_main.php">栏目管理</a> &gt; 修改栏目</td>
+            <td><i class="fa fa-map-marker"></i> <a href="catalog_main.php"><?php echo Lang('catalog_main');?></a> &gt; <?php echo Lang('catalog_edit');?></td>
           </tr>
         </table>
       </td>
     </tr>
   </table>
-  <table width="98%" align="center" cellpadding="0" cellspacing="0">
+  <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mb-3">
     <tr>
       <form name="form1" action="catalog_edit.php" method="post" onSubmit="return checkSubmit()">
         <input type="hidden" name="dopost" value="save">
@@ -123,9 +123,9 @@
               <td colspan="2" bgcolor="#fff" align="left">
                 <table cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="80" height="28" align="center" bgcolor="#fbfce2">常规选项</td>
-                    <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
-                    <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem3()">栏目内容</a></td>
+                    <td width="90" height="28" align="center" class="biz-itemnote1"><?php echo Lang('normal_options');?></td>
+                    <td width="90" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()"><?php echo Lang('advanced_options');?></a></td>
+                    <td width="90" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()"><?php echo Lang('catalog_content');?></a></td>
                   </tr>
                 </table>
               </td>
@@ -133,12 +133,12 @@
           </table>
           <table width="100%" cellspacing="0" id="head2" cellpadding="0" style="display:none">
             <tr>
-              <td colspan="2" bgcolor="#fff" style="text-align:left">
+              <td colspan="2" bgcolor="#fff" align="left">
                 <table  cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
-                    <td width="80" height="28" align="center" bgcolor="#fbfce2">高级选项</td>
-                    <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem3()">栏目内容</a></td>
+                    <td width="90" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()"><?php echo Lang('normal_options');?></a></td>
+                    <td width="90" height="28" align="center" class="biz-itemnote1"><?php echo Lang('advanced_options');?></td>
+                    <td width="90" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()"><?php echo Lang('catalog_content');?></a></td>
                   </tr>
                 </table>
               </td>
@@ -146,40 +146,40 @@
           </table>
           <table width="100%" cellspacing="0" id="head3" cellpadding="0" style="display:none">
             <tr>
-              <td colspan="2" bgcolor="#fff" style="text-align:left">
+              <td colspan="2" bgcolor="#fff" align="left">
                 <table  cellpadding="0" cellspacing="0">
                   <tr>
-                    <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
-                    <td width="80" align="center" bgcolor="#f8f8f8"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
-                    <td width="80" height="28" align="center" bgcolor="#fbfce2">栏目内容</td>
+                    <td width="90" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()"><?php echo Lang('normal_options');?></a></td>
+                    <td width="90" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()"><?php echo Lang('advanced_options');?></td>
+                    <td width="90" height="28" align="center" class="biz-itemnote1"><?php echo Lang('catalog_content');?></td>
                   </tr>
                 </table>
               </td>
             </tr>
           </table>
-          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="biz-border table">
+          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table biz-border">
             <tr>
-              <td width="260" class="bline">是否支持投稿：</td>
+              <td width="260" class="bline"><?php echo Lang('support_submission');?>：</td>
               <td class="bline">
-                <label><input type="radio" name="issend" value="1" <?php if($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
-                <label><input type="radio" name="issend" value="0" <?php if($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
+                <label><input type="radio" name="issend" value="1" <?php if ($myrow['issend']=="1") echo 'checked="1"';?>> <?php echo Lang('support');?></label>
+                <label><input type="radio" name="issend" value="0" <?php if ($myrow['issend']=="0") echo 'checked="1"';?>> <?php echo Lang('unsupport');?></label>
               </td>
             </tr>
             <tr>
-              <td width="260" class="bline">是否隐藏栏目：</td>
+              <td width="260" class="bline"><?php echo Lang('catalog_is_hidden');?>：</td>
               <td class="bline">
-                <label><input type="radio" name="ishidden" value="0" <?php if($myrow['ishidden']=="0") echo "checked='1'";?>> 显示</label>
-                <label><input type="radio" name="ishidden" value="1" <?php if($myrow['ishidden']=="1") echo "checked='1'";?>> 隐藏</label>
+                <label><input type="radio" name="ishidden" value="0" <?php if ($myrow['ishidden']=="0") echo 'checked="1"';?>> <?php echo Lang('show');?></label>
+                <label><input type="radio" name="ishidden" value="1" <?php if ($myrow['ishidden']=="1") echo 'checked="1"';?>> <?php echo Lang('hidden');?></label>
               </td>
             </tr>
             <tr>
-              <td class="bline">内容模型：</td>
+              <td class="bline"><?php echo Lang('mychannel');?>：</td>
               <td class="bline">
                 <select name="channeltype" id="channeltype" style="width:260px" onChange="ParTemplet(this)">
                 <?php    
                 foreach($channelArray as $k=>$arr)
                 {
-                  if($k==$channelid) echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
+                  if ($k==$channelid) echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
                   else  echo " <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
                 }
                 ?>
@@ -187,41 +187,41 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">中文名称：</td>
+              <td class="bline"><?php echo Lang('catalog_typename');?>：</td>
               <td class="bline"><input type="text" name="typename" value="<?php echo $myrow['typename']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td class="bline">中文概述：</td>
+              <td class="bline"><?php echo Lang('catalog_cnoverview');?>：</td>
               <td class="bline"><input type="text" name="cnoverview" value="<?php echo $myrow['cnoverview']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td class="bline">英文名称：</td>
+              <td class="bline"><?php echo Lang('catalog_enname');?>：</td>
               <td class="bline"><input type="text" name="enname" value="<?php echo $myrow['enname']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td class="bline">英文概述：</td>
+              <td class="bline"><?php echo Lang('catalog_enoverview');?>：</td>
               <td class="bline"><input type="text" name="enoverview" value="<?php echo $myrow['enoverview']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td class="bline">栏目大图：</td>
+              <td class="bline"><?php echo Lang('catalog_bigpic');?>：</td>
               <td>
                 <input type="text" name="bigpic" value="<?php echo $myrow['bigpic']?>" style="width:260px">
-                <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
+                <input type="button" class="btn btn-success btn-sm" value="<?php echo Lang('browser');?>" onClick="SelectImage('form1.bigpic');">
               </td>
             </tr>
             <tr>
-              <td class="bline">栏目小图：</td>
+              <td class="bline"><?php echo Lang('catalog_litimg');?>：</td>
               <td>
                 <input type="text" name="litimg" value="<?php echo $myrow['litimg']?>" style="width:260px">
-                <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
+                <input type="button" class="btn btn-success btn-sm" value="<?php echo Lang('browser');?>" onClick="SelectImage('form1.litimg');">
               </td>
             </tr>
             <tr>
-              <td class="bline">排列顺序：</td>
-              <td class="bline"><input type="text" name="sortrank" value="<?php echo $myrow['sortrank']?>" style="width:60px">（由低 &gt; 高）</td>
+              <td class="bline"><?php echo Lang('sortrank');?>：</td>
+              <td class="bline"><input type="text" name="sortrank" value="<?php echo $myrow['sortrank']?>" style="width:60px"><?php echo Lang('sortrank_msg');?></td>
             </tr>
             <tr>
-              <td class="bline">浏览权限：</td>
+              <td class="bline"><?php echo Lang('corank');?>：</td>
               <td class="bline">
                 <select name="corank" id="corank" style="width:160px">
                 <?php
@@ -229,212 +229,197 @@
                 $dsql->Execute('cc');
                 while($row = $dsql->GetObject('cc'))
                 {
-                  if($myrow['corank']==$row->rank)
+                  if ($myrow['corank']==$row->rank)
                   echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
                   else
                   echo "<option value='".$row->rank."'>".$row->membername."</option>";
                 }
                 ?>
                 </select>
-                （仅限制栏目里的文档浏览权限）
+                <?php echo Lang('corank_msg');?>
               </td>
             </tr>
             <tr>
-              <td class="bline">文件保存目录：</td>
-              <td class="bline"><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" style="width:260px">（标签“{cmspath}”必填，请勿删除）</td>
+              <td class="bline"><?php echo Lang('catalog_typedir');?>：</td>
+              <td class="bline"><input type="text" name="typedir" id="typedir" value="<?php echo $myrow['typedir']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td>栏目列表选项：</td>
+              <td><?php echo Lang('catalog_list_option');?>：</td>
               <td>
-                <label><input type="radio" name="isdefault" value="1" <?php if($myrow['isdefault']==1) echo "checked='1'";?>> 链接到默认页</label>
-                <label><input type="radio" name="isdefault" value="0" <?php if($myrow['isdefault']==0) echo "checked='1'";?>> 链接到列表第一页</label>
-                <label><input type="radio" name="isdefault" value="-1" <?php if($myrow['isdefault']==-1) echo "checked='1'";?>> 使用动态页</label>
+                <label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo 'checked="1"';?>> <?php echo Lang('catalog_list_option_1');?></label>
+                <label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo 'checked="1"';?>> <?php echo Lang('catalog_list_option_0');?></label>
+                <label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo 'checked="1"';?>> <?php echo Lang('catalog_list_option_-1');?></label>
               </td>
             </tr>
             <tr>
-              <td class="bline">默认页的名称：</td>
+              <td class="bline"><?php echo Lang('catalog_default_name');?>：</td>
               <td class="bline"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td class="bline">栏目属性：</td>
+              <td class="bline"><?php echo Lang('catalog_ispart');?>：</td>
               <td class="bline">
-                <label><input type="radio" name="ispart" value="0" <?php if($myrow['ispart']==0) echo "checked='1'";?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                <label><input type="radio" name="ispart" value="1" <?php if($myrow['ispart']==1) echo "checked='1'";?>> 频道封面（栏目本身不允许发布文档）</label><br>
-                <label><input type="radio" name="ispart" value="2" <?php if($myrow['ispart']==2) echo "checked='1'";?>> 外部连接（在"文件保存目录"处填写网址）</label>
+                <label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo 'checked="1"';?>> <?php echo Lang('catalog_ispart_0');?></label><br>
+                <label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo 'checked="1"';?>> <?php echo Lang('catalog_ispart_1');?></label><br>
+                <label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo 'checked="1"';?>> <?php echo Lang('catalog_ispart_2');?></label>
               </td>
             </tr>
             <tr id="helpvarco" style="display:none">
-              <td height="80" bgcolor="#f8f8f8">栏目交叉说明：</td>
-              <td bgcolor="#f8f8f8">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>例如：网站上有大栏目——智能手机、音乐手机，另外又有栏目——诺基亚&gt;智能手机、诺基亚&gt;音乐手机，这样顶级的大栏目就和另一个大栏目的子栏目形成了交叉，这样只需要在大栏目中指定交叉的栏目即可<br>注：会自动索引交叉栏目的内容，但不会索引交叉栏目下级栏目的内容，这种应用也适用于按地区划分资讯的站点
+              <td height="80" bgcolor="#f8f8f8"><?php echo Lang('catalog_cross_help');?>：</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_cross_help_body');?>
               </td>
             </tr>
             <tr>
-              <td>栏目交叉：<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvarco')" style="cursor:pointer"></i> 仅适用[最终列表栏目]</td>
+              <td><?php echo Lang('catalog_cross');?>：<i class="fa fa-question-circle" title="<?php echo Lang('help');?>" onClick="ShowHide('helpvarco')" style="cursor:pointer"></i> <?php echo Lang('catalog_cross_tip');?></td>
               <td class="bline">
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目内容</label>
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用逗号分开）</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if ($myrow['cross']==0) echo 'checked="1"';?>> <?php echo Lang('catalog_cross_0');?></label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if ($myrow['cross']==1) echo 'checked="1"';?>> <?php echo Lang('catalog_cross_1');?></label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if ($myrow['cross']==2) echo 'checked="1"';?>> <?php echo Lang('catalog_cross_2');?></label>
                 <br>
-                <textarea name="crossid" id="crossid" style="<?php if($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
+                <textarea name="crossid" id="crossid" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
               </td>
             </tr>
             <tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
-              <td class="bline">绑定小分类：<br>仅适用[分类信息模型]</td>
+              <td class="bline"><?php echo Lang('catalog_smalltype');?></td>
               <td class="bline">
                 <select name="smalltype[]" multiple="yes" style="width:160px;height:100px">
                   <?php
                   $smtypes = explode(',',trim($myrow['smalltypes']));
-                  $sql = "Select * From `#@__sys_enum` where egroup like 'infotype' order by disorder asc, id desc ";
+                  $sql = "SELECT * FROM `#@__sys_enum` WHERE egroup like 'infotype' ORDER BY disorder ASC, id DESC";
                   $dsql->Execute('s',$sql);
                   while($arr = $dsql->GetArray('s'))
                   {
-                    if(in_array($arr['evalue'],$smtypes)) {
+                    if (in_array($arr['evalue'],$smtypes)) {
                       $selstr = " selected='1' ";
                     } else {
                       $selstr = '';
                     }
-                    if($arr['evalue']%500==0) {
+                    if ($arr['evalue']%500==0) {
                       echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
                     }
-                    else if(preg_match("#\.#", $arr['evalue']))
+                    else if (preg_match("#\.#", $arr['evalue']))
                     {
-                      echo "<option value='{$arr['evalue']}'{$selstr}> └───{$arr['ename']}</option>";
+                      echo "<option value='{$arr['evalue']}'{$selstr}>└───{$arr['ename']}</option>";
                     } else {
-                      echo "<option value='{$arr['evalue']}'{$selstr}> └─{$arr['ename']}</option>";
+                      echo "<option value='{$arr['evalue']}'{$selstr}>└─{$arr['ename']}</option>";
                     }
                   }
                   ?>
-                </select>按 Ctrl 多选，不选系统将调用全部分类，在<a href='stepselect_main.php'>“联动类别管理”</a>中管理
+                </select><?php echo Lang('catalog_smalltype_tip');?>
               </td>
             </tr>
           </table>
-          <table width="100%" cellspacing="0" cellpadding="0" id="adset" class="biz-border table" style="display:none">
+          <table width="100%" cellspacing="0" cellpadding="0" id="adset" class="table biz-border" style="display:none">
             <tr>
-              <td class="bline" width="260">多站点支持：</td>
+              <td class="bline" width="260"><?php echo Lang('catalog_moresite');?>：</td>
               <td class="bline">
-                <label><input type="radio" name="moresite" value="1" <?php if($myrow['moresite']==1) echo "checked='1'";?>> 启用</label>
-                <label><input type="radio" name="moresite" value="0" <?php if($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>
+                <label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo 'checked="1"';?>> <?php echo Lang('enable');?></label>
+                <label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo 'checked="1"';?>> <?php echo Lang('disable');?></label>
               </td>
             </tr>
             <tr>
-              <td bgcolor="#f8f8f8">说明：</td>
-              <td bgcolor="#f8f8f8">绑名绑定仅需要在顶级栏目设定，子级栏目修改无效</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('explain');?>：</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_moresite_explain');?></td>
             </tr>
             <tr>
-              <td class="bline">绑定域名：</td>
-              <td class="bline"><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" style="width:260px">（需加 http://，一级或二级域名的根网址）</td>
+              <td class="bline"><?php echo Lang('catalog_siteurl');?>：</td>
+              <td class="bline"><input type="text" name="siteurl" id="siteurl" value="<?php echo $myrow['siteurl']?>" style="width:260px"><?php echo Lang('catalog_siteurl_tip');?></td>
             </tr>
             <tr>
-              <td class="bline">站点根目录：</td>
-              <td class="bline">为简化操作，站点根目录与当前栏目目录一致，请注意当前栏目文件保存目录的设置，域名需自行手工绑定到这个目录</td>
+              <td class="bline"><?php echo Lang('catalog_site_baseurl');?>：</td>
+              <td class="bline"><?php echo Lang('catalog_site_baseurl_tip');?></td>
             </tr>
             <tr id='helpvar1' style='display:none'>
-              <td bgcolor="#f8f8f8">支持变量：</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_rule_var');?>：</td>
               <td bgcolor="#f8f8f8">
-                {tid}表示栏目id，<br>
-                {cid}表示频道模型的'名字ID'（
                 <?php
+                $chns = "";
                 foreach($channelArray as $k=>$arr)
                 {
-                  echo "{$arr['typename']}({$arr['nid']})、";
+                  $chns .= "{$arr['typename']}({$arr['nid']})、";
                 }
-                ?>）<br>
-                模板文件的默认位置是放在模板目录 "cms安装目录<?php echo $cfg_templets_dir ?>" 内
+                echo Lang('catalog_rule_var_tip',array('channels'=>$chns,'templates_dir'=>$cfg_templets_dir));
+                ?>
                 <input type="hidden" value="{style}" name="dfstyle">
               </td>
             </tr>
             <tr>
-              <td>封面模板：</td>
+              <td><?php echo Lang('tempindex');?>：</td>
               <td>
                 <input type="text" name="tempindex" value="<?php echo $myrow['tempindex']?>" style="width:260px">
-                <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
-                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar1')" style="cursor:pointer"></i> 
+                <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')"><?php echo Lang('browser');?></button>
+                <i class="fa fa-question-circle" title="<?php echo Lang('help');?>" onClick="ShowHide('helpvar1')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr>
-              <td>列表模板：</td>
+              <td><?php echo Lang('templist');?>：</td>
               <td>
                 <input type="text" name="templist" value="<?php echo $myrow['templist']?>" style="width:260px">
-                <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
+                <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')"><?php echo Lang('browser');?></button>
               </td>
             </tr>
             <tr>
-              <td>文档模板：</td>
+              <td><?php echo Lang('temparticle');?>：</td>
               <td>
                 <input type="text" name="temparticle" value="<?php echo $myrow['temparticle']?>" style="width:260px">
-                <button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
+                <button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')"><?php echo Lang('browser');?></button>
               </td>
             </tr>
             <tr id="helpvar2" style="display:none">
-              <td bgcolor="#f8f8f8">支持变量：</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_support_val');?>：</td>
               <td bgcolor="#f8f8f8">
-                {Y}、{M}、{D} 年月日<br>
-                {timestamp} INT类型的UNIX时间戳<br>
-                {aid} 文档id<br>
-                {pinyin} 拼音+文档id<br>
-                {py} 拼音部首+文档id<br>
-                {typedir} 栏目目录<br>
-                {cc} 日期+ID混编后用转换为适合的字母<br>
-                Nginx伪静态默认规则<br>
-                rewrite ^/([0-9]+).html$ /apps/view.php?arcID=$1;<br>
-                rewrite ^/([0-9]+)-([0-9]+).html$ /apps/view.php?aid=$1&pageno=$2;
+                <?php echo Lang('catalog_support_val_tip');?>
               </td>
             </tr>
             <tr>
-              <td>文档命名规则：</td>
+              <td><?php echo Lang('catalog_namerule');?>：</td>
               <td>
                 <input type="text" name="namerule" id="namerule" value="<?php echo $myrow['namerule']?>" style="width:260px">
-                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i> 
+                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr id="helpvar3" style="display:none">
-              <td bgcolor="#f8f8f8">支持变量：</td>
-              <td bgcolor="#f8f8f8">
-                {page} 列表的页码<br>
-                Nginx伪静态默认规则<br>
-                rewrite ^/list-([0-9]+)$ /apps/list.php?tid=$1;<br>
-                rewrite ^/list-([0-9]+)-([0-9]+)$ /apps/list.php?tid=$1&PageNo=$2;
-              </td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_support_val');?>：</td>
+              <td bgcolor="#f8f8f8"><?php echo Lang('catalog_support_val_tip2');?></td>
             </tr>
             <tr>
-              <td>列表命名规则：</td>
+              <td><?php echo Lang('catalog_namerule2');?>：</td>
               <td>
                 <input type="text" name="namerule2" id="namerule2" value="<?php echo $myrow['namerule2']?>" style="width:260px">
-                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i> 
+                <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')" style="cursor:pointer"></i>
               </td>
             </tr>
             <tr>
-              <td height="60">SEO标题：</td>
-              <td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" style="width:260px">（栏目模板里用{dede:field.seotitle/}调用）</td>
+              <td height="60"><?php echo Lang('catalog_seotitle');?>：</td>
+              <td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" style="width:260px"><?php echo Lang('catalog_seotitle_tip');?></td>
             </tr>
             <tr>
-              <td height="60">关键词：</td>
+              <td height="60"><?php echo Lang('keywords');?>：</td>
               <td><textarea name="keywords" cid="keywords" style="width:360px;height:50px"><?php echo $myrow['keywords']?></textarea></td>
             </tr>
             <tr>
-              <td height="60">栏目描述：</td>
+              <td height="60"><?php echo Lang('description');?>：</td>
               <td height="60"><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $myrow['description']?></textarea></td>
             </tr>
             <tr>
-              <td>继承选项：</td>
+              <td height="36"><?php echo Lang('catalog_upnext');?>：</td>
               <td>
-                <label><input type="checkbox" name="upnext" id="upnext" value="1"> 同时修改下级栏目的浏览权限、内容类型、模板风格、命名规则等通用属性</label>
+                <label><input type="checkbox" name="upnext" id="upnext" value="1"> <?php echo Lang('catalog_upnext_tip');?></label>
               </td>
             </tr>
           </table>
-          <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="biz-border table" style="display:none">
+          <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
             <tr>
-              <td>说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</td>
+              <td><?php echo Lang('catalog_body_tip');?></td>
             </tr>
             <tr>
               <td><?php GetEditor("content",$myrow['content'],"450","Default","print","false");?></td>
             </tr>
           </table>
-          <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">
+          <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="mb-3 biz-border border-top-0">
             <tr>
               <td align="center" class="py-2">
-                <button type="submit" class="btn btn-success btn-sm">保存</button>
-                <a href="catalog_main.php" class="btn btn-success btn-sm">返回</a>
+                <button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+                <a href="catalog_main.php" class="btn btn-success btn-sm"><?php echo Lang('back');?></a>
               </td>
             </tr>
           </table>

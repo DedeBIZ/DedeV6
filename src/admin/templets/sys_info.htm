@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>系统配置变量</title>
+		<title><?php echo Lang('config_var');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 		<script src="../static/web/js/webajax.js"></script>
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="js/main.js"></script>
@@ -43,12 +43,13 @@
 					if (resp.ok) {
 						return resp.text()
 					}
-					throw new Error('系统错误，无法获取数据');
+					throw new Error('<?php echo Lang("error_fetch");?>');
 				}).then((d) => {
 					$Obj('_search').innerHTML = d;
 				}).catch((error) => {
 					$Obj('_search').innerHTML = errMsg;
 				});
+				$Obj('_searchback').innerHTML = '<button class="btn btn-success btn-sm" name="searchbackBtn" type="button" id="searchbackBtn" onclick="backSearch()">返回</button>'
 				$Obj('_mainsearch').innerHTML = '';
 				searchconfig = true;
 			}
@@ -60,68 +61,70 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-			<tr bgcolor="#f8f8f8">
-				<td width="180">
-					<input type="text" name="keywds" id="keywds" placeholder="请输入配置" style="width:160px">
-				</td>
+		<table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3 mb-3">
+			<tr>
+				<td bgcolor="#f8f8f8"><?php echo Lang('config_var');?></td>
+			</tr>
+			<tr>
 				<td>
-					<a href="javascript:getSearch();" class="btn btn-success btn-sm">搜索</a><?php
+					<?php
 					$ds = file(DEDEADMIN.'/inc/configgroup.txt');
 					$totalGroup = count($ds);
 					$i = 0;
 					foreach($ds as $dl)
 					{
 						$dl = trim($dl);
-						if(empty($dl)) continue;
+						if (empty($dl)) continue;
 						$dls = explode(',',$dl);
 						$i++;
+						$dls[1] = Lang($dls[1]);
 						if ($i>1) echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
 						else {
 							echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
 						}
 					}
-					?><a href="javascript:;" onClick="ShowHide('addvar')" class="btn btn-success btn-sm">添加新变量</a>
+					?>
+					<a href="javascript:;" onClick="ShowHide('addvar')" class="btn btn-success btn-sm"><?php echo Lang('config_tab_add');?></a>
 				</td>
 			</tr>
 			<tr id="addvar" style="display:none">
-				<td colspan="2" align="center">
+				<td align="center">
 					<form name="fadd" action="sys_info.php" method="post">
 						<input type="hidden" name="dopost" value="add">
 						<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 						<table width="100%" cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="90" class="border-top-0">变量说明</td>
+								<td width="90" class="border-top-0"><?php echo Lang('config_varmsg');?></td>
 								<td width="270" class="border-top-0"><input type="text" name="varmsg" id="varmsg" class="npvar" style="width:260px"></td>
-								<td width="90" class="border-top-0">变量值</td>
+								<td width="90" class="border-top-0"><?php echo Lang('config_varvalue');?></td>
 								<td width="270" class="border-top-0"><input type="text" name="nvarvalue" id="nvarvalue" class="npvar" style="width:260px"></td>
 							</tr>
 							<tr>
-								<td width="90">变量类型</td>
+								<td width="90"><?php echo Lang('config_vartype');?></td>
 								<td colspan="3">
-									<label><input type="radio" name="vartype" value="string" checked="checked"> 文本</label>
-									<label><input type="radio" name="vartype" value="number"> 数字</label>
-									<label><input type="radio" name="vartype" value="bool"> 布尔(Y/N)</label>
-									<label><input type="radio" name="vartype" value="bstring"> 多行文本</label>
-									<label><input type="radio" name="vartype" value="img"> 图片</label>
+									<label><input type="radio" name="vartype" value="string" checked="checked"> <?php echo Lang('config_vartype_string');?></label>
+									<label><input type="radio" name="vartype" value="number"> <?php echo Lang('config_vartype_number');?></label>
+									<label><input type="radio" name="vartype" value="bool"> <?php echo Lang('config_vartype_bool');?></label>
+									<label><input type="radio" name="vartype" value="bstring"> <?php echo Lang('config_vartype_bstring');?></label>
+									<label><input type="radio" name="vartype" value="img"> <?php echo Lang('config_vartype_img');?></label>
 								</td>
 							</tr>
 							<tr>
-								<td width="90">变量名称</td>
+								<td width="90"><?php echo Lang('config_varname');?></td>
 								<td width="270"><input type="text" name="nvarname" id="nvarname" class="npvar" style="width:260px"></td>
-								<td width="90">所属组</td>
+								<td width="90"><?php echo Lang('config_vargroup');?></td>
 								<td>
 									<?php
 									echo "<select name='vargroup' class='npvar' style='margin-right:10px;width:160px'>";
 									foreach($ds as $dl){
 										$dl = trim($dl);
-										if(empty($dl)) continue;
+										if (empty($dl)) continue;
 										$dls = explode(',',$dl);
 										echo "<option value='{$dls[0]}'>{$dls[1]}</option>";
 									}
 									echo "</select>";
 									?>
-									<button type="submit" class="btn btn-success btn-sm">保存变量</button>
+									<button type="submit" class="btn btn-success btn-sm"><?php echo Lang('config_varsave');?></button>
 								</td>
 							</tr>
 						</table>
@@ -129,9 +132,13 @@
 				</td>
 			</tr>
 		</table>
-		<table width="98%" cellpadding="0" cellspacing="0" align="center" class="table maintable mb-3">
+		<table width="98%" align="center" cellpadding="0" cellspacing="0" class="table maintable mt-3 mb-3">
 			<tr>
-				<td bgcolor="#f8f8f8">系统配置变量</td>
+				<td width="170" bgcolor="#f8f8f8" align="right">
+					<input type="text" name="keywds" id="keywds" placeholder="<?php echo Lang('config_input_item');?>" style="width:160px">
+					<button type="button" onclick="getSearch()" class="btn btn-success btn-sm"><?php echo Lang('search');?></button>
+					<span id="_searchback"></span>
+				</td>
 			</tr>
 			<tr>
 				<td class="p-0">
@@ -142,58 +149,59 @@
 						<div id="_mainsearch">
 							<?php
 							$n = 0;
-							if(!isset($gp)) $gp = 1;
+							if (!isset($gp)) $gp = 1;
 							foreach($ds as $dl)
 							{
 								$dl = trim($dl);
-								if(empty($dl)) continue;
+								if (empty($dl)) continue;
 								$dls = explode(',',$dl);
 								$n++;
 							?>
-							<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none';?>">
-								<tr bgcolor="#fbfce2" align="center">
-									<td width="360" class="border-top-0">变量说明</td>
-									<td class="border-top-0">变量值</td>
-									<td width="260" class="border-top-0">变量名称</td>
+							<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if ($n!=$gp) echo 'display:none';?>">
+								<tr align="center" bgcolor="#f8fcf2">
+									<td width="360" class="border-top-0"><?php echo Lang('config_varmsg');?></td>
+									<td class="border-top-0"><?php echo Lang('config_varvalue');?></td>
+									<td width="260" class="border-top-0"><?php echo Lang('config_varname');?></td>
 								</tr>
 								<?php
-								$dsql->SetQuery("Select * From `#@__sysconfig` where groupid='{$dls[0]}' order by aid asc");
+								$dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE groupid='{$dls[0]}' ORDER BY aid ASC");
 								$dsql->Execute();
 								$i = 1;
 								while($row = $dsql->GetArray()) {
-									if($i%2==0) {
+									if ($i%2==0) {
 										$bgcolor = "#f8f8f8";
 									} else {
 										$bgcolor = "#ffffff";
 									}
 									$i++;
+									$row['info'] = Lang($row['varname']);
 									?>
 								<tr align="center" bgcolor="<?php echo $bgcolor?>">
 									<td><?php echo $row['info'];?></td>
 									<td align="left">
 										<?php
-										if($row['type']=='bool') {
+										if ($row['type']=='bool') {
 											$c1 = '';
 											$c2 = '';
 											$row['value']=='Y' ? $c1="checked" : $c2="checked";
-											echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
-											echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
-										} else if($row['type']=='bstring') {
+											echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> ".Lang("yes")." </label> ";
+											echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> ".Lang("no")." </label> ";
+										} else if ($row['type']=='bstring') {
 											$row['value'] = stripslashes($row['value']);
 											echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
-										} else if($row['type']=='number') {
+										} else if ($row['type']=='number') {
 											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
-										} else if($row['type']=='img') {
-											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'> <input type='button' name='set9' value='选择' onClick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." class='btn btn-success btn-sm'>";
-												if($row['value']){
-													echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail'>";
+										} else if ($row['type']=='img') {
+											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'> <input type='button' name='set9' value='".Lang('select')."' onClick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." class='btn btn-success btn-sm'>";
+												if ($row['value']){
+													echo " <img src=".$row['value']." id='idd_{$row['varname']}' style='max-width:100px;vertical-align:middle'>";
 												} else {
-												echo " <img src='../static/web/img/defaultpic.jpg' id='idd_{$row['varname']}' class='thumbnail'>";
+												echo " <img src='../static/web/img/thumbnail.jpg' id='idd_{$row['varname']}' style='max-width:100px;vertical-align:middle'>";
 											}
 										} else {
 											$addstr='';
 											if ($row['varname']=='cfg_cookie_encode') {
-												$addstr='<a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">重新生成</a>';
+												$addstr='<a href="javascript:resetCookieEncode();" class="btn btn-success btn-sm">'.Lang('remake').'</a>';
 											}
 											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value=\"".dede_htmlspecialchars($row['value'])."\" style='width:80%'> {$addstr}";
 										}
@@ -212,8 +220,8 @@
 						<table cellspacing="1" cellpadding="1" bgcolor="#f8f8f8" class="table">
 							<tr>
 								<td align="center" class="py-2">
-									<button type="submit" class="btn btn-success btn-sm">保存</button>
-									<button type="button" onClick="document.form1.reset()" class="btn btn-success btn-sm">重置</button>
+									<button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+									<button type="button" onClick="document.form1.reset()" class="btn btn-success btn-sm"><?php echo Lang('reset');?></button>
 								</td>
 							</tr>
 						</table>
@@ -221,5 +229,6 @@
 				</td>
 			</tr>
 		</table>
+
 	</body>
 </html>

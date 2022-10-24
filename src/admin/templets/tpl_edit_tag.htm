@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>标签源码碎片管理</title>
+		<title><?php echo Lang('templets_tagsource');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 		<link rel="stylesheet" href="css/codemirror.css">
+		<?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 		<script src="js/main.js"></script>
@@ -51,31 +52,25 @@
 			<input type="hidden" name="actiondo" value="<?php echo $action;?>">
 			<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 			<input type="hidden" name="action" value="savetagfile">
-			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+			<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 				<tr>
-					<td bgcolor="#f8f8f8" colspan="2">
-						<span><?php echo $title;?>（修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份）</span>
-					</td>
+					<td bgcolor="#f8f8f8" colspan="2"><?php echo $title;?><?php echo Lang('templets_tagsource_code_tip');?></td>
 				</tr>
 				<tr>
-					<td>文件名称</td>
-					<td><input name="filename" value="<?php echo $filename;?>" style="width:260px">（不允许用“..”形式的路径）</td>
+					<td><?php echo Lang('content_filename');?></td>
+					<td><input name="filename" value="<?php echo $filename;?>" style="width:260px"><?php echo Lang('templets_tagsource_filename_tip');?></td>
 				</tr>
 				<tr>
-					<td>标签格式说明 </td>
-					<td>
-						标签文件名为：标签名.lib.php <br>
-						接口函数定义为：function lib_标签名(&$ctag,&$refObj)，返回值是结果字符串<br>
-						修改标签时为了防止出错，您也可以修改它的名称(同时修改文件名和函数名)，这样等同继承了原来标签的代码建立一个新的标签
-					</td>
+					<td><?php echo Lang('templets_tagsource_format');?> </td>
+					<td><?php echo Lang('templets_tagsource_format_tip');?></td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea id="content" name="content" cols="150" rows="25"><?php echo $democode;?></textarea></td>
+					<td colspan="2"><textarea id="content" name="content" cols="150" rows="24" style="width:98%;height:450px"><?php echo $democode;?></textarea></td>
 				</tr>
 				<tr>
-					<td bgcolor="#f8f8f8" colspan="2" align="center" class="py-2">
-						<button type="submit" name="B1" class="btn btn-success btn-sm">保存</button>
-						<button type="button" name="B4" class="btn btn-success btn-sm" onClick="javascript:history.go(-1);">返回</button>
+					<td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
+						<button type="submit" name="B1" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+						<button type="button" name="B4" class="btn btn-success btn-sm" onClick="javascript:history.go(-1);"><?php echo Lang('back');?></button>
 					</td>
 				</tr>
 			</table>

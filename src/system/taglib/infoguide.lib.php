@@ -74,3 +74,4 @@ function lib_infoguide(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

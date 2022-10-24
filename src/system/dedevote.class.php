@@ -192,7 +192,7 @@ class DedeVote
                     }
                 }
             } else {
-                $query = "INSERT INTO `#@__vote_member`(id,voteid,userid,uptime) VALUES('','$this->VoteID','$memberID','$nowtime')";
+                $query = "INSERT INTO `#@__vote_member` (id,voteid,userid,uptime) VALUES ('','$this->VoteID','$memberID','$nowtime')";
                 if ($this->dsql->ExecuteNoneQuery($query) == false) {
                     ShowMsg('插入数据过程中出现错误', $ENV_GOBACK_URL);
                     exit();
@@ -251,3 +251,4 @@ class DedeVote
         return $res;
     }
 }//End Class
+?>

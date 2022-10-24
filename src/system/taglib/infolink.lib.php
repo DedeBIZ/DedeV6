@@ -187,3 +187,4 @@ function lib_infolink(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>点卡生成向导</title>
+  <title><?php echo Lang('cards_make');?></title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
     <form action="cards_make.php" name="form1" target="stafrm">
       <input type="hidden" name="dopost" value="make">
       <tr>
         <td bgcolor="#f8f8f8">
           <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%">点卡生成向导</td>
+              <td width="30%"><?php echo Lang('cards_make');?></td>
               <td width="70%" align="right">
-                <button type="button" name="ss1" onClick="location='cards_type.php';" class="btn btn-success btn-sm">点卡产品分类</button>
-                <button type="button" name="ss2" onClick="location='cards_manage.php';" class="btn btn-success btn-sm">点卡使用记录</button>
+                <button type="button" name="ss1" onClick="location='cards_type.php';" class="btn btn-success btn-sm"><?php echo Lang('cards_type');?></button>
+                <button type="button" name="ss2" onClick="location='cards_manage.php';" class="btn btn-success btn-sm"><?php echo Lang('cards_manage');?></button>
               </td>
             </tr>
           </table>
@@ -29,11 +29,11 @@
         <td>
           <table width="90%" cellpadding="2" cellspacing="2" class="table table-borderless">
             <tr>
-              <td width="90">点卡类型：</td>
+              <td width="90"><?php echo Lang('cards_ctid');?>：</td>
               <td>
                 <select name="cardtype" style="width:160px">
                   <?php
-                  $dsql->SetQuery("Select * From #@__moneycard_type");
+                  $dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
                   $dsql->Execute();
                   while($row=$dsql->GetArray()){
                     echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";
@@ -42,31 +42,31 @@
                   ?>
                 </select>
               </td>
-              <td width="90">生成数量：</td>
+              <td width="90"><?php echo Lang('cards_mnum');?>：</td>
               <td><input name="mnum" type="text" id="mnum" style="width:160px" value="100" class="pubinputs"></td>
             </tr>
             <tr>
-              <td>点卡前缀：</td>
+              <td><?php echo Lang('cards_snprefix');?>：</td>
               <td><input name="snprefix" type="text" id="snprefix" style="width:160px" value="SN" class="pubinputs"></td>
-              <td>密码长度：</td>
+              <td><?php echo Lang('cards_pwdlen');?>：</td>
               <td><input name="pwdlen" type="text" id="pwdlen" style="width:160px" value="4" class="pubinputs">
               </td>
             </tr>
             <tr>
-              <td>密码类型：</td>
+              <td><?php echo Lang('cards_ctype');?>：</td>
               <td>
-                <label><input type="radio" name="ctype" value="1"> 纯数字</label>
-                <label><input type="radio" name="ctype" value="2" checked="1"> 大写字母</label>
+                <label><input type="radio" name="ctype" value="1"> <?php echo Lang('cards_ctype_1');?></label>
+                <label><input type="radio" name="ctype" value="2" checked="1"> <?php echo Lang('cards_ctype_2');?></label>
               </td>
-              <td>密码组数：</td>
+              <td><?php echo Lang('cards_pwdgr');?>：</td>
               <td><input name="pwdgr" type="text" id="pwdgr" style="width:160px" value="3"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#fbfce2" align="center">
-          <button type="submit" name="Submit" class="btn btn-success btn-sm">开始生成点卡</button>
+        <td align="center" bgcolor="#f8fcf2">
+          <button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('cards_make_do');?></button>
         </td>
       </tr>
     </form>
@@ -74,26 +74,15 @@
       <td>
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="30%">结果：</td>
-            <td width="70%" align="right">
-              <script>
-              function ResizeDiv(obj, ty) {
-                if (ty == "+") document.all[obj].style.pixelHeight += 50;
-                else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-              }
-              </script>
-              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
-              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
-            </td>
+            <td width="30%"><?php echo Lang('result');?>：</td>
+            <td width="70%" align="right"></td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
       <td id="mtd">
-        <div id="mdv" style="width:100%;height:360px"> 
-          <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
-        </div>
+        <div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
       </td>
     </tr>
   </table>

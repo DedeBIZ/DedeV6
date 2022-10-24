@@ -8,15 +8,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DataListCP;
+use DedeBIZ\Login\UserLogin;
+use DedeBIZ\TypeLink\TypeLink;
 require_once(dirname(__FILE__)."/config.php");
 //权限检查
-CheckPurview('sys_Feedback');
-require_once(DEDEINC."/datalistcp.class.php");
-require_once(DEDEINC."/typelink/typelink.class.php");
+UserLogin::CheckPurview('sys_Feedback');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 function IsCheck($st)
 {
-    return $st == 1 ? "[已审核]" : "<span class='text-danger'>[未审核]</span>";
+    return $st == 1 ? "[".Lang('reviewed')."]" : "<span class='text-danger'>[".Lang('not_approved')."]</span>";
 }
 function jsTrimjajx($str, $len)
 {
@@ -31,7 +32,7 @@ function jsTrimjajx($str, $len)
 if (!empty($job)) {
     $ids = preg_replace("#[^0-9,]#", '', $fid);
     if (empty($ids)) {
-        ShowMsg("您没选中任何选项", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+        ShowMsg(Lang('feedback_noselect'), $_COOKIE['ENV_GOBACK_URL'], 0, 500);
         exit;
     }
 } else {
@@ -48,28 +49,28 @@ function UpdateReplycount($id)
 if ($job == 'del') {
     $query = "DELETE FROM `#@__feedback` WHERE id IN($ids) ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功删除指定的评论!", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg(Lang('feedback_success_delete'), $_COOKIE['ENV_GOBACK_URL'], 0, 500);
     exit();
 }
 //删除相同IP的所有评论
 else if ($job == 'delall') {
-    $dsql->SetQuery("SELECT ip FROM `#@__feedback` WHERE id IN ($ids) ");
+    $dsql->SetQuery("SELECT ip FROM `#@__feedback` WHERE id IN ($ids)");
     $dsql->Execute();
     $ips = '';
     while ($row = $dsql->GetArray()) {
-        $ips .= ($ips == '' ? " ip = '{$row['ip']}' " : " Or ip = '{$row['ip']}' ");
+        $ips .= ($ips == '' ? " ip = '{$row['ip']}' " : " Or ip = '{$row['ip']}'");
     }
     if ($ips != '') {
         $query = "DELETE FROM `#@__feedback` WHERE $ips ";
         $dsql->ExecuteNoneQuery($query);
     }
-    ShowMsg("成功删除指定相同IP的所有评论!", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg(Lang('feedback_success_delete'), $_COOKIE['ENV_GOBACK_URL'], 0, 500);
     exit();
 }
 //审核评论
 else if ($job == 'check') {
 
-    $query = "UPDATE `#@__feedback` SET ischeck=1 WHERE id IN($ids) ";
+    $query = "UPDATE `#@__feedback` SET ischeck=1 WHERE id IN($ids)";
     $dsql->ExecuteNoneQuery($query);
 
     $dquery = "SELECT * FROM `#@__feedback` WHERE id IN($ids)";
@@ -78,7 +79,7 @@ else if ($job == 'check') {
     while ($row = $dsql->GetArray()) {
         UpdateReplycount($row['fid']);
     }
-    ShowMsg("成功审核指定评论!", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg(Lang('feedback_success_check'), $_COOKIE['ENV_GOBACK_URL'], 0, 500);
     exit();
 }
 //浏览评论
@@ -109,3 +110,4 @@ else {
     $dlist->SetSource($querystring);
     $dlist->Display();
 }
+?>

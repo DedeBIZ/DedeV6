@@ -1201,3 +1201,4 @@ function private_rt($str)
         return $rs;
     }
 }
+?>

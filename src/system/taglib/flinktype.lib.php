@@ -49,6 +49,6 @@ function lib_flinktype(&$ctag, &$refObj)
         $rs = preg_replace("/\[field:typename([\/\s]{0,})\]/isU", $value->typename, $rs);
         $revalue .= $rs;
     }
-
     return $revalue;
 }
+?>

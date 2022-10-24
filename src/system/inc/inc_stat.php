@@ -16,3 +16,4 @@ function SpUpdateStat()
     $stat = @file_get_contents($staturl);
     return $stat;
 }
+?>

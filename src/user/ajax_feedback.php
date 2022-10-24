@@ -18,3 +18,4 @@ else {
         echo "<img src='{$cfg_cmsurl}/apps/vdimgck.php' style='cursor:pointer' id='validateimg' onclick='this.src=this.src+'?'' alt='验证码' title='验证码' />\r\n";
     }
 }
+?>

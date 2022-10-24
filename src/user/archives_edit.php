@@ -23,9 +23,7 @@ function _ShowForm(){  }
 --------------*/
 if (empty($dopost)) {
     //读取归档信息
-    $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,arc.mtype as mtypeid,ch.arcsta
-        FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
-        WHERE arc.id='$aid' And arc.mid='".$cfg_ml->M_ID."'; ";
+    $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,arc.mtype as mtypeid,ch.arcsta FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' And arc.mid='".$cfg_ml->M_ID."'; ";
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
         ShowMsg("读取文档信息出错!", "-1");
@@ -39,7 +37,7 @@ if (empty($dopost)) {
         }
     }
     $addRow = $dsql->GetOne("SELECT * FROM `{$row['addtable']}` WHERE aid='$aid'; ");
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype`  WHERE id='{$row['channel']}'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='{$row['channel']}'; ");
     include(DEDEMEMBER."/templets/archives_edit.htm");
     exit();
 }
@@ -80,17 +78,7 @@ else if ($dopost == 'save') {
     //处理图片文档的自定义属性
     if ($litpic != '') $flag = 'p';
     //更新数据库的SQL语句
-    $upQuery = "UPDATE `#@__archives` SET
-        ismake='$ismake',
-        arcrank='$arcrank',
-        typeid='$typeid',
-        title='$title',
-        litpic='$litpic',
-        description='$description',
-        keywords='$keywords',  
-        mtype = '$mtypesid',        
-        flag='$flag'
-    WHERE id='$aid' And mid='$mid'; ";
+    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',mtype='$mtypesid',flag='$flag' WHERE id='$aid' And mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
@@ -98,7 +86,7 @@ else if ($dopost == 'save') {
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f}, userip='$userip' WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员", "javascript:;");
+            ShowMsg("更新附加表 `$addtable` 时出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -117,3 +105,4 @@ else if ($dopost == 'save') {
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
+?>

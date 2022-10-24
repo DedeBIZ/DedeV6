@@ -41,16 +41,13 @@ function plus_channel(&$atts, &$refObj, &$fields)
     }
     if ($type == '' || $type == 'sun') $type = 'son';
     if ($type == 'top') {
-        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-          FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
+        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
     } else if ($type == 'son') {
         if ($typeid == 0) return $reArray;
-        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-          FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
+        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
     } else if ($type == 'self') {
         if ($reid == 0) return $reArray;
-        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-            FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
+        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
     }
     //检查是否有子栏目，并返回rel提示（用于二级菜单）
     $needRel = true;
@@ -59,8 +56,7 @@ function plus_channel(&$atts, &$refObj, &$fields)
     $totalRow = $dsql->GetTotalRow('me');
     //如果用子栏目模式，当没有子栏目时显示同级栏目
     if ($type == 'son' && $reid != 0 && $totalRow == 0) {
-        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
-            FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
+        $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line ";
         $dsql->Execute('me', $sql);
     }
     $GLOBALS['autoindex'] = 0;
@@ -83,3 +79,4 @@ function plus_channel(&$atts, &$refObj, &$fields)
     $dsql->FreeResult();
     return $reArray;
 }
+?>

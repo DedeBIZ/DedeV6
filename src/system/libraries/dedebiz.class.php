@@ -261,3 +261,4 @@ class DedeBizClient
         $this->Close();
     }
 }
+?>

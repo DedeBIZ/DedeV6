@@ -19,3 +19,4 @@ if (!function_exists('CheckEmail')) {
         return FALSE;
     }
 }
+?>

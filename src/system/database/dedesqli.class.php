@@ -1,14 +1,13 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 数据库类
- * 说明:系统底层数据库核心类
- *      调用这个类前,请先设定这些外部变量
- *      $GLOBALS['cfg_dbhost'];
- *      $GLOBALS['cfg_dbuser'];
- *      $GLOBALS['cfg_dbpwd'];
- *      $GLOBALS['cfg_dbname'];
- *      $GLOBALS['cfg_dbprefix'];
+ * 系统底层数据库核心类
+ * 调用这个类前，请先设定这些外部变量
+ * $GLOBALS['cfg_dbhost'];
+ * $GLOBALS['cfg_dbuser'];
+ * $GLOBALS['cfg_dbpwd'];
+ * $GLOBALS['cfg_dbname'];
+ * $GLOBALS['cfg_dbprefix'];
  *
  * @version        $Id: dedesqli.class.php 1 15:00 2011-1-21 tianya $
  * @package        DedeBIZ.Libraries
@@ -527,3 +526,4 @@ function CopySQLiPoint(&$ndsql)
 {
     $GLOBALS['dsqli'] = $ndsql;
 }
+?>

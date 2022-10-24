@@ -1,63 +1,74 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta name="robots" content="noindex,nofollow">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo $cfg_webname;?>后台登录</title>
+		<title><?php echo $cfg_webname;?><?php echo Lang('admin_login');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/login.min.css">
+		<script src="../static/web/js/jquery.min.js"></script>
+		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){?>
 		<div id="browsehappy">
-			<span>您正在使用一个过时的浏览器，请您<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，以提高您对后台体验</span>
+			<span><?php echo Lang('browsehappy');?></span>
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
 		</div>
 		<?php }?>
-		<div class="d-flex flex-md-row align-items-center shadow-sm biz-head mb-5">
+		<header class="d-flex flex-md-row align-items-center mb-5 shadow-sm biz-head">
 			<div class="container">
 				<div class="row">
 					<div class="col-6 text-left">
 						<div class="logo"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
 					</div>
 					<div class="col-6 text-right d-flex justify-content-end biz-nav">
-						<a href="/" target="_blank" class="biz-nav-a"><i class="fa fa-home"></i> 网站首页</a>
+						<a href="https://www.dedebiz.com/help" target="_blank" class="biz-nav-a"><i class="fa fa-info-circle"></i> <?php echo Lang('help_center');?></a>
+						<a href="https://www.dedebiz.com/service" target="_blank" class="biz-nav-a"><i class="fa fa-handshake-o"></i> <?php echo Lang('service');?></a>
+			            <div class="btn-group">
+			              	<button type="button" id="btnAction" class="btn dropdown-toggle biz-btn p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe"></i> <?php echo Lang('lang');?></button>
+			              	<div class="dropdown-menu" aria-labelledby="btnAction">
+								<?php foreach($dlang->GetEnabledLang() as $k => $v){?>
+				                <a href="?lang=<?php echo $k ;?>" class="dropdown-item"><?php echo $v;?></a>
+								<?php }?>
+			            	</div>
+			            </div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="container">
+		</header>
+		<main class="container">
 			<div class="login-from">
 				<?php echo $redmsg;?>
 				<div class="login-area shadow-sm">
-					<h2 class="mb-4 text-center">后台登录</h2>
+					<h2 class="mb-3 text-center"><?php echo Lang('admin_login');?></h2>
 					<form name="form1" method="post" action="login.php">
-						<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage);?>">
+						<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
 						<input type="hidden" name="dopost" value="login">
 						<input type="hidden" name="adminstyle" value="newDedeBIZ">
 						<div class="form-group">
-							<label for="iptUserid">用户名</label>
+							<label for="iptUserid"><?php echo Lang('username');?></label>
 							<input type="text" name="userid" id="iptUserid" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="iptPassword">密码</label>
+							<label for="iptPassword"><?php echo Lang('password');?></label>
 							<input type="password" name="pwd" id="iptPassword" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="iptValidate">验证码</label>
+							<label for="iptValidate"><?php echo Lang('captcha');?></label>
 							<div class="input-group">
-								<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase">
-								<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
+								<input type="text" name="validate" id="iptValidate" class="form-control">
+								<img src="../apps/vdimgck.php" id="validateimg" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="<?php echo Lang('captcha');?>">
 							</div>
 						</div>
-						<div><button type="submit" class="btn btn-success w-100">登录</button></div>
-						<div class="login-power"><?php echo $cfg_powerby;?></div>
+						<div><button type="submit" class="btn btn-success btn-sm w-100"><?php echo Lang('login');?></button></div>
 					</form>
 				</div>
+				<div class="login-power"><?php echo $cfg_powerby;?></div>
 			</div>
-		</div>
+		</main>
 	</body>
 </html>

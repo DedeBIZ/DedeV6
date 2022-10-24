@@ -39,3 +39,4 @@ if ($action == 'get_qrcode') {
     $dtp->Display();
     exit();
 }
+?>

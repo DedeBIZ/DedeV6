@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>栏目管理</title>
+		<title><?php echo Lang('catalog_main');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+		<?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
 		<script src="js/global.js"></script>
 		<script src="js/ieemu.js"></script>
 		<script src="js/dialog.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<style>
-			td,
-			th {
+			td,th {
 				padding: .375rem
 			}
-			.bline2,
-			.nbline {
-				border-bottom: 1px solid #eee
+			.bline2,.nbline {
+				border-bottom: 1px solid #dee2e6
 			}
-			.coolbg2,
-			.coolbt2,
-			.maintable {
+			.coolbg2,.coolbt2,.maintable {
 				border: 1px solid #dee2e6
 			}
 			.fa {
@@ -57,16 +54,16 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3 mb-3">
+		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="maintable mt-3 mb-3">
 			<tr>
 				<td style="background:#f8f8f8;border-bottom:1px solid #dee2e6">
 					<table width="100%" cellspacing="0" cellpadding="0">
 						<tr>
-							<td>网站栏目管理</td>
+							<td><?php echo Lang('site_catalog_main');?></td>
 							<td align="right">
-								<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
-								<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量增加栏目</a>
-								<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新栏目缓存</a>
+								<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm"><?php echo Lang('catalog_top_add');?></a>
+								<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm"><?php echo Lang('catalog_quick_add');?></a>
+								<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm"><?php echo Lang('catalog_update_cache');?></a>
 							</td>
 						</tr>
 					</table>
@@ -77,11 +74,11 @@
 					<table width="100%" cellspacing="0" cellpadding="0">
 						<tr>
 							<td>
-								<?php if(!isset($exallct)) { ?>
-								<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
-								<?php } else { ?>
-								<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
-								<?php } ?>
+								<?php if (!isset($exallct)) {?>
+								<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm"><?php echo Lang('catalog_exall');?></a>
+								<?php } else {?>
+								<a href="catalog_main.php" class="btn btn-success btn-sm"><?php echo Lang('catalog_disexall');?></a>
+								<?php }?>
 							</td>
 						</tr>
 					</table>
@@ -91,9 +88,9 @@
 				<tr>
 					<td>
 						<?php
-						if(empty($opendir)) $opendir=-1;
-						if($userChannel>0) $opendir=$userChannel;
-						$tu = new TypeUnit();
+						if (empty($opendir)) $opendir=-1;
+						if ($userChannel>0) $opendir=$userChannel;
+						$tu = new DedeBIZ\TypeLink\TypeUnitAdmin();
 						$tu->ListAllType($userChannel,$opendir);
 						?>
 					</td>
@@ -101,9 +98,9 @@
 			</form>
 			<tr>
 				<td align="right" class="py-2" style="padding-right:10px;background:#f8f8f8;border-top:1px solid #dee2e6">
-					<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>
-					<button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';">更新文档</button>
-					<button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
+					<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';"><?php echo Lang('makehtml_list');?></button>
+					<button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';"><?php echo Lang('makehtml_archives');?></button>
+					<button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();"><?php echo Lang('catalog_update_sortrank');?></button>
 				</td>
 			</tr>
 		</table>

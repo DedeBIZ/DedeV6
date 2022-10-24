@@ -8,12 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Template\DedeTagParse;
 require_once(dirname(__FILE__)."/config.php");
 if (empty($dopost)) {
-    require_once DEDEINC.'/typelink/typelink.class.php';
-    require_once DEDEINC.'/dedetag.class.php';
     $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
-    $row = $dsql->GetOne("Select * From `#@__freelist` where aid='$aid' ");
+    $row = $dsql->GetOne("SELECT * FROM `#@__freelist` WHERE aid='$aid'");
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace("dede", "{", "}");
     $dtp->LoadSource("--".$row['listtag']."--");
@@ -39,15 +38,9 @@ if (empty($dopost)) {
     if (!empty($innertext)) $innertext = stripslashes($innertext);
     $listTag = "{dede:list $atts}$innertext{/dede:list}";
     $listTag = addslashes($listTag);
-    $inquery = "
-        UPDATE `#@__freelist` set
-        title='$title', namerule='$namerule',
-        listdir='$listdir', defaultpage='$defaultpage',
-        nodefault='$nodefault', templet='$templet',
-        edtime='$edtime', `maxpage`='$maxpage', listtag='$listTag', keywords='$keywords',
-        description='$description' WHERE aid='$aid';
-    ";
+    $inquery = "UPDATE `#@__freelist` set title='$title',namerule='$namerule',listdir='$listdir',defaultpage='$defaultpage',nodefault='$nodefault',templet='$templet',edtime='$edtime',`maxpage`='$maxpage',listtag='$listTag',keywords='$keywords',description='$description' WHERE aid='$aid';";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg("成功修改一个自由列表", "freelist_main.php");
+    ShowMsg(Lang("freelist_edit_success"), "freelist_main.php");
     exit();
 }
+?>

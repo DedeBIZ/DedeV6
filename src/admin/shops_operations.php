@@ -8,11 +8,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DataListCP;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('shops_Operations');
-require_once(DEDEINC.'/datalistcp.class.php');
+UserLogin::CheckPurview('shops_Operations');
 if (isset($dopost)) {
-    CheckPurview('shops_Operations_cpanel');
+    UserLogin::CheckPurview('shops_Operations_cpanel');
     if ($dopost == 'up') {
         $nids = explode('`', $nid);
         $wh = '';
@@ -20,7 +21,7 @@ if (isset($dopost)) {
             if ($wh == '') $wh = " WHERE oid='$n' ";
             else $wh .= " OR oid='$n' ";
         }
-        $sql = "UPDATE `#@__shops_orders` SET `state`='1' $wh ";
+        $sql = "UPDATE `#@__shops_orders` SET `state`='1' $wh";
         $dsql->ExecuteNoneQuery($sql);
     } else if ($dopost == 'push') {
         $nids = explode('`', $nid);
@@ -29,7 +30,7 @@ if (isset($dopost)) {
             if ($wh == '') $wh = " WHERE oid='$n' ";
             else $wh .= " OR oid='$n' ";
         }
-        $sql = "UPDATE `#@__shops_orders` SET `state`='2' $wh ";
+        $sql = "UPDATE `#@__shops_orders` SET `state`='2' $wh";
         $dsql->ExecuteNoneQuery($sql);
     } else if ($dopost == 'ok') {
         $nids = explode('`', $nid);
@@ -38,7 +39,7 @@ if (isset($dopost)) {
             if ($wh == '') $wh = " WHERE oid='$n' ";
             else $wh .= " OR oid='$n' ";
         }
-        $sql = "UPDATE `#@__shops_orders` SET `state`='4' $wh ";
+        $sql = "UPDATE `#@__shops_orders` SET `state`='4' $wh";
         $dsql->ExecuteNoneQuery($sql);
     } else if ($dopost == 'delete') {
         $nids = explode('`', $nid);
@@ -50,7 +51,7 @@ if (isset($dopost)) {
             $dsql->ExecuteNoneQuery($query2);
             $dsql->ExecuteNoneQuery($query3);
         }
-        ShowMsg("成功删除指定的订单记录", $ENV_GOBACK_URL);
+        ShowMsg(Lang("content_delete_success"), $ENV_GOBACK_URL);
         exit();
     } else {
         ShowMsg("不充许的操作范围", $ENV_GOBACK_URL);
@@ -107,10 +108,11 @@ function GetMemberID($mid)
 {
     global $dsql;
     if ($mid == 0) return '0';
-    $row = $dsql->GetOne("SELECT userid FROM `#@__member` WHERE mid='$mid' ");
+    $row = $dsql->GetOne("SELECT userid FROM `#@__member` WHERE mid='$mid'");
     if (is_array($row)) {
         return "<a href='member_view.php?id={$mid}'>".$row['userid']."</a>";
     } else {
         return '0';
     }
 }
+?>

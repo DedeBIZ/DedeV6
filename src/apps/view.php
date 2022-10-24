@@ -62,8 +62,7 @@ if ($needMoney > 0 || $needRank > 1) {
                 exit();
             } else {
                 if ($dopost == 'buy') {
-                    $inquery = "INSERT INTO `#@__member_operation`(mid,oldinfo,money,mtime,buyid,product,pname)
-                              VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."', 'ARCHIVE".$aid."', 'archive',''); ";
+                    $inquery = "INSERT INTO `#@__member_operation` (mid,oldinfo,money,mtime,buyid,product,pname) VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."','ARCHIVE".$aid."','archive',''); ";
                     if ($dsql->ExecuteNoneQuery($inquery)) {
                         $inquery = "UPDATE `#@__member` SET money=money-$needMoney WHERE mid='".$cfg_ml->M_ID."'";
                         if (!$dsql->ExecuteNoneQuery($inquery)) {
@@ -89,5 +88,6 @@ if ($needMoney > 0 || $needRank > 1) {
 $arc->Display();
 if (DEBUG_LEVEL === TRUE) {
     $queryTime = ExecTime() - $t1;
-    echo "<div style='width:98%;margin:1rem auto;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;position: relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.25rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
+    echo "<div style='width:98%;margin:1rem auto;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;position:relative;padding:.75rem 1.25rem;border:1px solid transparent;border-radius:.25rem'>页面加载总消耗时间：{$queryTime}</div>\r\n";
 }
+?>

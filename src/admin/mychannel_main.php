@@ -8,9 +8,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DataListCP;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('c_List');
-require_once(DEDEINC.'/datalistcp.class.php');
+UserLogin::CheckPurview('c_List');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $sql = "SELECT id,nid,typename,addtable,isshow,issystem FROM `#@__channeltype` ORDER BY id DESC";
 $dlist = new DataListCP();
@@ -20,12 +21,13 @@ $dlist->display();
 function GetSta($sta, $id)
 {
     if ($sta == 1) {
-        return ($id != -1 ? "已启用 <a href='mychannel_edit.php?dopost=hide&id=$id' class='btn btn-outline-danger btn-sm'>禁用</a>" : "固定项目");
+        return ($id != -1 ? "<span class='text-success'>".Lang('enable')."</span> &gt; <a href='mychannel_edit.php?dopost=hide&id=$id'>".Lang('disable')."</a>" : Lang("fixed_items"));
     } else {
-        return "已禁用 <a href='mychannel_edit.php?dopost=show&id=$id' class='btn btn-outline-success btn-sm'>启用</a>";
+        return "<span class='text-danger'>".Lang("disable")."</span> &gt; <a href='mychannel_edit.php?dopost=show&id=$id'>".Lang("enable")."</a>";
     }
 }
 function IsSystem($s)
 {
-    return $s == 1 ? "系统" : "自动";
+    return $s == 1 ? Lang("system") : Lang("auto");
 }
+?>

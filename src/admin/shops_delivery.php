@@ -22,7 +22,7 @@ if ($do == 'add') {
         $price = '0.00';
     }
     $des = cn_substrR($des, 255);
-    $InQuery = "INSERT INTO `#@__shops_delivery`(`dname`,`price`,`des`) VALUES ('$dname','$price','$des');";
+    $InQuery = "INSERT INTO `#@__shops_delivery` (`dname`,`price`,`des`) VALUES ('$dname','$price','$des');";
     $result = $dsql->ExecuteNoneQuery($InQuery);
     if ($result) {
         ShowMsg("成功添加一个配送方式!", "shops_delivery.php");
@@ -74,3 +74,4 @@ $dlist->pagesize = 30;//设定每页显示记录数
 $dlist->SetTemplate(DEDEADMIN."/templets/shops_delivery.htm");//载入模板
 $dlist->SetSource("SELECT `pid`,`dname`,`price`,`des` FROM `#@__shops_delivery` ORDER BY `orders` ASC");//设定查询SQL
 $dlist->Display();//显示
+?>

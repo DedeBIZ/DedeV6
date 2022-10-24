@@ -39,8 +39,7 @@ function lib_feedback(&$ctag, &$refObj)
     if (get_class($refObj) === "Archives" && isset($refObj->Fields["id"])) {
         $wsql .= " AND fb.aid='{$refObj->Fields["id"]}'";
     }
-    $equery = "SELECT fb.*,mb.userid,mb.face as mface,mb.spacesta,mb.scores,mb.sex FROM `#@__feedback` fb
-    LEFT JOIN `#@__member` mb on mb.mid = fb.mid $wsql $order LIMIT 0 , $totalrow";
+    $equery = "SELECT fb.*,mb.userid,mb.face as mface,mb.spacesta,mb.scores,mb.sex FROM `#@__feedback` fb LEFT JOIN `#@__member` mb on mb.mid = fb.mid $wsql $order LIMIT 0 , $totalrow";
     $ctp = new DedeTagParse();
     $ctp->SetNameSpace('field', '[', ']');
     $ctp->LoadSource($innertext);
@@ -64,3 +63,4 @@ function jsTrim($str, $len)
     $str = preg_replace("#['\"\r\n]#", "", $str);
     return $str;
 }
+?>

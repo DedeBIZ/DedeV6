@@ -29,13 +29,9 @@ if (!function_exists('GetOneArchive')) {
             if (empty($chRow['maintable'])) $chRow['maintable'] = '#@__archives';
         }
         if ($chRow['issystem'] != -1) {
-            $nquery = " SELECT arc.*,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath
-            FROM `{$chRow['maintable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-            WHERE arc.id='$aid' ";
+            $nquery = " SELECT arc.*,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `{$chRow['maintable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.id='$aid' ";
         } else {
-            $nquery = " SELECT arc.*,1 AS ismake,0 AS money,'' AS filename,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath
-            FROM `{$chRow['addtable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid
-            WHERE arc.aid='$aid' ";
+            $nquery = " SELECT arc.*,1 AS ismake,0 AS money,'' AS filename,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `{$chRow['addtable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.aid='$aid' ";
         }
         $arcRow = $dsql->GetOne($nquery);
         if (!is_array($arcRow)) {
@@ -137,9 +133,7 @@ if (!function_exists('GetIndexKey')) {
         if (empty($sortrank)) $sortrank = $senddate;
         $typeid2 = intval($typeid2);
         $senddate = intval($senddate);
-        $iquery = "
-            INSERT INTO `#@__arctiny` (`arcrank`,`typeid`,`typeid2`,`channel`,`senddate`, `sortrank`, `mid`)
-            VALUES ('$arcrank','$typeid','$typeid2' , '$channelid','$senddate', '$sortrank', '$mid') ";
+        $iquery = "INSERT INTO `#@__arctiny` (`arcrank`,`typeid`,`typeid2`,`channel`,`senddate`,`sortrank`,`mid`) VALUES ('$arcrank','$typeid','$typeid2','$channelid','$senddate','$sortrank','$mid') ";
         $dsql->ExecuteNoneQuery($iquery);
         $aid = $dsql->GetLastID();
         return $aid;
@@ -162,7 +156,7 @@ if (!function_exists('UpIndexKey')) {
         global $dsql, $typeid2;
         if (empty($typeid2)) $typeid2 = 0;
         $addtime = time();
-        $query = " UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank' WHERE id = '$id' ";
+        $query = "UPDATE `#@__arctiny` SET `arcrank`='$arcrank', `typeid`='$typeid', `typeid2`='$typeid2', `sortrank`='$sortrank' WHERE id = '$id' ";
         $dsql->ExecuteNoneQuery($query);
         //处理修改后的Tag
         if ($tags != '') {
@@ -236,14 +230,15 @@ if (!function_exists('InsertOneTag')) {
         $addtime = time();
         $row = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE tag LIKE '$tag' ");
         if (!is_array($row)) {
-            $rs = $dsql->ExecuteNoneQuery(" INSERT INTO `#@__tagindex`(`tag`,`typeid`,`count`,`total`,`weekcc`,`monthcc`,`weekup`,`monthup`,`addtime`) VALUES('$tag','$typeid','0','1','0','0','$addtime','$addtime','$addtime'); ");
+            $rs = $dsql->ExecuteNoneQuery("INSERT INTO `#@__tagindex` (`tag`,`typeid`,`count`,`total`,`weekcc`,`monthcc`,`weekup`,`monthup`,`addtime`) VALUES ('$tag','$typeid','0','1','0','0','$addtime','$addtime','$addtime'); ");
             $tid = $dsql->GetLastID();
         } else {
-            $rs = $dsql->ExecuteNoneQuery(" UPDATE `#@__tagindex` SET total=total+1,addtime=$addtime WHERE tag LIKE '$tag' ");
+            $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET total=total+1,addtime=$addtime WHERE tag LIKE '$tag' ");
             $tid = $row['id'];
         }
         if ($rs) {
-            $dsql->ExecuteNoneQuery("INSERT INTO `#@__taglist`(`tid`,`aid`,`arcrank`,`typeid` , `tag`) VALUES('$tid','$aid','$arcrank','$typeid' , '$tag'); ");
+            $dsql->ExecuteNoneQuery("INSERT INTO `#@__taglist` (`tid`,`aid`,`arcrank`,`typeid`,`tag`) VALUES ('$tid','$aid','$arcrank','$typeid','$tag'); ");
         }
     }
 }
+?>

@@ -128,7 +128,7 @@ function SaveUploadInfo($title, $filename, $medaitype = 1, $addinfos = '')
     $uptime = time();
     if (is_array($row)) {
         $query = "UPDATE `#@__uploads` SET title='$title',mediatype='$medaitype',width='{$addinfos[0]}',height='{$addinfos[1]}',filesize='{$addinfos[2]}',uptime='$uptime'
-            WHERE aid='{$row['aid']}'; ";
+           WHERE aid='{$row['aid']}'; ";
         $dsql->ExecuteNoneQuery($query);
     } else {
         $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)

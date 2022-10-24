@@ -1,108 +1,109 @@
-main.login-from {
-	background-image:url(../img/member_bg.jpg);
-	background-repeat:no-repeat;
-	background-position:top center;
-	height:620px;
-	padding-top:5rem
+select {
+	display:inline-block!important;
+	margin-right:10px;
+	width:260px!important
 }
-.login-area {
-	background-color:white;
-	max-width:500px;
+a.btn-success {
+	color:#fff
+}
+.login-from {
+	display:inline-block;
+	padding:6rem 0
+}
+.login-box {
+	width:500px;
 	padding:1rem;
-	float:right
+	background:#fff
 }
-.login-area .btnLogin {
-	width:100%;
-	padding:.5rem;
-	margin-left:0!important
+.login-box small.des {
+	color:#b5b5b5
 }
-.login-area small.des {
-	color:#B5B5B5
-}
-.login-area .licence a {
-	color:#28a745
+.login-box .licence a {
+	color:#1eb867
 }
 .copyright.light {
-	background-color:white
+	background:#fff
 }
 .flink,.flink a,.copyright.light,.copyright.light a {
 	color:#545b62
 }
-.member a {
-	color:#28a745
-}
-.member .member-actions {
-	font-size:16px
-}
-.member .member-logo {
-	border-radius:50%;
-	max-width:72px;
-	min-height:72px
-}
-.member-actions a {
-	color:#868686;
+.user-actions a {
 	margin-left:1rem;
-	line-height:64px
+	line-height:36px
 }
-.member .member-rank a {
-	color:white
+.user-rank a {
+	color:#fff
 }
-.member .member-info {
+.user-info {
 	padding-top:3.5rem
 }
-.member .member-type span {
+.user-type span {
 	padding:.6rem;
 	position:relative;
 	top:-12px
 }
-.member .pannel {
-	background-color:#F3F3F3
+.user-logo {
+	max-width:70px;
+	min-height:70px;
+	border-radius:50%
 }
-.member a.btn-success {
-	color:white
+.user-actions a {
+	margin-left:1rem;
+	line-height:36px
 }
-.member .pannel .dropdown {
+.user-rank a {
+	color:#fff
+}
+.user-info {
+	padding-top:3.5rem
+}
+.user-type span {
+	position:relative;
+	padding:.6rem;
+	top:-12px
+}
+.pannel .dropdown {
 	display:inline-block;
 	margin-left:.25rem;
 	vertical-align:.25rem;
 	content:"";
-	border-top:.3em solid;
-	border-right:.3em solid transparent;
+	border-top:.3rem solid;
+	border-right:.3rem solid transparent;
 	border-bottom:0;
-	border-left:.3em solid transparent
+	border-left:.3rem solid transparent
 }
-.member .pannel .pannel-main .pannel-main-container {
+.pannel .pannel-main .pannel-main-container {
 	padding:1rem;
-	background-color:white
+	background:#fff;
+	border-radius:.2rem;
+	box-shadow:0 .125rem .25rem rgba(0,0,0,.075)
 }
-.member .list-group-item.active a {
-	color:white
-}
-.member .member-menu .list-group-flush>.list-group-item {
+.user-menu .list-group-flush>.list-group-item {
 	cursor:pointer
 }
-.member .pannel-main .nav-link.active {
-	font-weight:bold
+.list-group-item.active {
+	border-radius:.2rem
 }
-option.option2 {
-	background-color:#DDD
+.list-group-item.active a {
+	color:#fff
 }
-@media only screen and (max-width:576px) {
-	.login-area {
-	float:none;
-	margin:auto
+.dropdown-item {
+	margin-left:0!important
 }
-}
-.btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
-}
-.fa {
-	font-size:14px!important;
-	color:inherit
-}
-.table {
-	color:#545b62
+.user-menu-box {
+	border-radius:.2rem;
+	box-shadow:0 0.125rem 0.25rem rgba(0,0,0,.075)
 }
 .user-meter i {
 	font-size:24px!important
+}
+.picname-img {
+	max-width:200px;
+	max-height:150px;
+	vertical-align:middle
+}
+@media only screen and (max-width:576px) {
+	.login-from,.login-box {
+	width:100%
+}
 }

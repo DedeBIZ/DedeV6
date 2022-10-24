@@ -33,3 +33,4 @@ if (isset($oid)) {
 } else {
     exit("403 Forbidden!");
 }
+?>

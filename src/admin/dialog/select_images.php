@@ -24,7 +24,7 @@ if (strlen($activepath) < strlen($cfg_image_dir)) {
     $activepath = $cfg_image_dir;
 }
 $inpath = $cfg_basedir.$activepath;
-$activeurl = '..'.$activepath;
+$activeurl = $activepath;
 if (empty($f)) {
     $f = 'form1.picname';
 }
@@ -53,19 +53,16 @@ if (!empty($iseditor)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="<?php echo $cfg_soft_lang;?>">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>选择图片</title>
+    <title><?php echo Lang('dialog_select_image');?></title>
     <link rel="stylesheet" href="../../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/web/font/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../static/web/css/admin.css">
+    <link rel="stylesheet" href="../../static/web/css/admin.min.css">
     <style>
-html{background:#f6f6f6}
-table{background:#fff}
-a{text-decoration:none!important}
-.bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+html{background:#f8f8f8}
+.bg{margin:10px;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}
 .napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}
-.linerow{border-bottom:1px solid #eee!important}
     </style>
     <script>
     function nullLink() {
@@ -77,9 +74,6 @@ a{text-decoration:none!important}
     </script>
 </head>
 <body class="bg">
-    <div id="floater" class="napisdiv">
-        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="../../static/web/img/picviewnone.gif" id="picview" title="关闭预览"></a>
-    </div>
     <script src="../js/float.js"></script>
     <script>
     function nullLink() {
@@ -96,7 +90,7 @@ a{text-decoration:none!important}
     }
     //获取地址参数
     function getUrlParam(paramName) {
-        var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i');
+        var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)','i');
         var match = window.location.search.match(reParam);
         return (match && match.length > 1) ? match[1] : '';
     }
@@ -137,9 +131,12 @@ a{text-decoration:none!important}
         window.close();
     }
     </script>
-    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
+    <div id="floater" class="napisdiv">
+        <a href="javascript:nullLink();" onClick="document.getElementById('floater').style.display='none';"><img src="" id="picview" title="关闭预览"></a>
+    </div>
+    <table width="100%" align="center" cellpadding="0" cellspacing="1" class="table table-borderless">
         <tr>
-            <td colspan="4" height="26">
+            <td colspan="4">
                 <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
                     <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
@@ -148,23 +145,22 @@ a{text-decoration:none!important}
                     <input type="hidden" name="imgstick" value="<?php echo $imgstick ?>">
                     <input type="hidden" name="CKEditorFuncNum" value="<?php echo isset($CKEditorFuncNum) ? $CKEditorFuncNum : 1;?>">
                     <input type="hidden" name="job" value="upload">
-                    上传：<input type="file" name="imgfile" style="width:50%;border:none">
-                    <label><input type="checkbox" name="needwatermark" value="1" class="np" <?php if ($photo_markup == '1') echo "checked";?> /> 水印 </label>
-                    <label><input type="checkbox" name="resize" value="1" class="np"> 缩小 </label>
-                    宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:46px">
-                    高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" style="width:46px">
-                    <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
+                    <?php echo Lang('upload');?>：<input type="file" name="imgfile" style="width:46%;border:0">
+                    <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup == '1') echo "checked";?> /> <?php echo Lang('watermark');?></label>
+                    <label><input type="checkbox" name="resize" value="1"> <?php echo Lang('zoom_out');?></label>
+                    <?php echo Lang('width');?>：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:46px">
+                    <?php echo Lang('height');?>：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" style="width:46px">
+                    <button type="submit" name="sb1" class="btn btn-success btn-sm"><?php echo Lang('upload');?></button>
                 </form>
             </td>
         </tr>
         <tr>
-            <td width="8%" class="linerow">预览</td>
-            <td width="40%" class="linerow">选择图片</td>
-            <td width="22%" class="linerow">文件大小</td>
-            <td width="30%" class="linerow">修改时间</td>
+            <td width="50%" class="linerow"><?php echo Lang('preview');?><?php echo Lang('dialog_select_image');?></td>
+            <td width="25%" class="linerow"><?php echo Lang('dialog_filesize');?></td>
+            <td width="25%" class="linerow"><?php echo Lang('edit_time');?></td>
         </tr>
         <tr>
-            <td class="linerow" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
+            <td class="linerow" colspan="4"><?php echo Lang('dialog_select_image_tip');?></td>
         </tr>
         <?php
         $dh = scandir($inpath);
@@ -191,17 +187,15 @@ a{text-decoration:none!important}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td class='linerow' colspan='2'>
-                <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
-                <td colspan='2' class='linerow'>当前目录：$activepath</td>
+                <td class='linerow' colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-folder-symlink' viewBox='0 0 18 18'><path d='m11.798 8.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742z'/><path d='m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm.694 2.09A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09l-.636 7a1 1 0 0 1-.996.91H2.826a1 1 0 0 1-.995-.91l-.637-7zM6.172 2a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z'/></svg>".Lang('parent_directory')."</a></td>
+                <td colspan='2' class='linerow'>".Lang('current_directory')."：$activepath</td>
                 </tr>";
                 echo $line;
             } else if (is_dir("$inpath/$file")) {
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td class='linerow' colspan='2'>
-                <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/dir.gif'>$file</a></td>
+                <td class='linerow' colspan='2'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-folder' viewBox='0 0 18 18'><path d='M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z'/></svg>$file</a></td>
                 <td class='linerow'></td>
                 <td class='linerow'></td>
                 </tr>";
@@ -213,8 +207,7 @@ a{text-decoration:none!important}
                 if ($file == $comeback) $lstyle = " class='text-danger' ";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='../../static/web/img/picviewnone.gif'></a></td>
-                <td class='linerow'><a href=# onclick=\"ReturnImg('$reurl');\" $lstyle><img src='../../static/web/img/gif.gif'>$file</a></td>
+                <td class='linerow'><a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$activeurl/$file' class='file-icon'></a><a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a></td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow'>$filetime</td>
                 </tr>";
@@ -226,8 +219,7 @@ a{text-decoration:none!important}
                 if ($file == $comeback) $lstyle = " class='text-danger' ";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='../../static/web/img/picviewnone.gif'></a></td>
-                <td class='linerow'><a href=# onclick=\"ReturnImg('$reurl');\" $lstyle><img src='../../static/web/img/jpg.gif'>$file</a></td>
+                <td class='linerow'><a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$activeurl/$file' class='file-icon'></a><a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a></td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow'>$filetime</td>
                 </tr>";

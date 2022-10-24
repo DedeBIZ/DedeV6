@@ -199,3 +199,4 @@ class DedeAttParse
         } //for
     } //has Attribute
 }//End DedeAttParse
+?>

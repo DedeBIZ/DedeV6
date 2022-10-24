@@ -68,3 +68,4 @@ function lib_tag(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

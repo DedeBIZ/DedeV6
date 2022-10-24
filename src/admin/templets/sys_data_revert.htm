@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>数据还原</title>
+		<title><?php echo Lang('sys_data_revert');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 		<script>
 			//获得选中文件的数据表
 			function getCheckboxItem() {
@@ -53,15 +53,15 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 			<tr>
 				<td bgcolor="#f8f8f8" colspan="4">
 					<table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
 						<tr>
-							<td width="30%">数据还原</td>
+							<td width="30%"><?php echo Lang('sys_data_revert');?></td>
 							<td width="70%" align="right">
-								<a href="sys_data.php" class="btn btn-success btn-sm">数据备份</a>
-								<a href="sys_sql_query.php" class="btn btn-success btn-sm">SQL命令行工具</a>
+								<a href="sys_data.php" class="btn btn-success btn-sm"><?php echo Lang('sys_data');?></a>
+								<a href="sys_sql_query.php" class="btn btn-success btn-sm"><?php echo Lang('sys_sql_query');?></a>
 							</td>
 						</tr>
 					</table>
@@ -71,7 +71,7 @@
 				<input type="hidden" name="dopost" value="redat">
 				<input type="hidden" name="bakfiles" value="">
 				<tr>
-					<td colspan="4">发现的备份文件：<?php if(count($filelists)==0) echo " 没找到任何备份文件 ";?></td>
+					<td colspan="4"><?php echo Lang('sys_data_revert_found');?>：<?php if (count($filelists)==0) echo Lang("sys_data_revert_found_none");?></td>
 				</tr>
 				<?php
 				for($i=0;$i<count($filelists);$i++)
@@ -79,7 +79,7 @@
 					echo "<tr align='center'>";
 				$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='1'></td><td width='40%'>{$filelists[$i]}</td>";
 				echo $mtd;
-				if(isset($filelists[$i+1]))
+				if (isset($filelists[$i+1]))
 				{
 					$i++;
 					$mtd = "<td width='10%'><input name='bakfile' id='bakfile' type='checkbox' value='".$filelists[$i]."' checked='1'></td><td width='40%'>{$filelists[$i]}</td>";
@@ -91,18 +91,18 @@
 				}
 				?>
 				<tr>
-					<td bgcolor="#fbfce2" colspan="4">
-						<label><input name="structfile" type="checkbox" id="structfile" value="<?php echo $structfile?>" checked="1"> 还原表结构信息（<?php echo $structfile?>）</label>
-						<label><input name="delfile" type="checkbox" id="delfile" value="1"> 还原后删除备份文件</label>
-						<button name="b1" type="button" id="b1" onClick="SelAll()" class="btn btn-success btn-sm">全选</button>
-						<button name="b2" type="button" id="b2" onClick="ReSel()" class="btn btn-success btn-sm">反选</button>
-						<button name="b3" type="button" id="b3" onClick="NoneSel()" class="btn btn-success btn-sm">取消</button>
-						<button type="submit" name="Submit" class="btn btn-success btn-sm">还原</button>
+					<td bgcolor="#f8fcf2" colspan="4">
+						<label><input name="structfile" type="checkbox" id="structfile" value="<?php echo $structfile?>" checked="1"> <?php echo Lang('sys_data_revert_structfile');?>（<?php echo $structfile?>）</label>
+						<label><input name="delfile" type="checkbox" id="delfile" value="1">  <?php echo Lang('sys_data_revert_delfile');?></label>
+						<button name="b1" type="button" id="b1" onClick="SelAll()" class="btn btn-success btn-sm"><?php echo Lang('select_all');?></button>
+						<button name="b2" type="button" id="b2" onClick="ReSel()" class="btn btn-success btn-sm"><?php echo Lang('reverse_selection');?></button>
+						<button name="b3" type="button" id="b3" onClick="NoneSel()" class="btn btn-success btn-sm"><?php echo Lang('cancel');?></button>
+						<button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('reduction');?></button>
 					</td>
 				</tr>
 			</form>
 			<tr>
-				<td colspan="4">结果：</td>
+				<td colspan="4"><?php echo Lang('result');?>：</td>
 			</tr>
 			<tr>
 				<td height="360" colspan="4">

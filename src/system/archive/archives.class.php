@@ -66,11 +66,7 @@ class Archives
             $this->TypeLink = new TypeLink($arr['typeid']);
             if ($this->ChannelUnit->ChannelInfos['issystem'] != -1) {
                 //如果当前文档不是系统模型，为单表模型
-                $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable
-                    FROM `#@__archives` arc
-                    LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid
-                    LEFT JOIN `#@__channeltype` as ch on arc.channel = ch.id
-                    WHERE arc.id='$aid' ";
+                $query = "SELECT arc.*,tp.reid,tp.typedir,ch.addtable FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid LEFT JOIN `#@__channeltype` as ch on arc.channel = ch.id WHERE arc.id='$aid' ";
                 $this->Fields = $this->dsql->GetOne($query);
             } else {
                 $this->Fields['title'] = '';
@@ -343,12 +339,12 @@ class Archives
             $this->TypeLink->TypeInfos['sitepath']
         );
         $this->Fields['arcurl'] = $this->Fields['fullname'] = $filenameFull;
-        //对于已设置不生成HTML的文档直接返回网址
+        //对于已设置不生成网页的文档直接返回网址
         if (
             $this->Fields['ismake'] == -1 || $this->Fields['arcrank'] != 0 || $this->Fields['money'] > 0 || ($this->Fields['typeid'] == 0 && $this->Fields['channel'] != -1)) {
             return $this->GetTrueUrl($filename);
         }
-        //循环生成HTML文件
+        //循环生成网页文件
         else {
             $seoUrls = array();
             for ($i = 1; $i <= $this->TotalPage; $i++) {
@@ -683,8 +679,7 @@ class Archives
             $nextR = $this->dsql->GetOne("Select id From `#@__arctiny` where id>$aid And arcrank>-1 And typeid='{$this->Fields['typeid']}' order by id asc");
             $next = (is_array($nextR) ? " where arc.id={$nextR['id']} " : ' where 1>2 ');
             $pre = (is_array($preR) ? " where arc.id={$preR['id']} " : ' where 1>2 ');
-            $query = "Select arc.id,arc.title,arc.shorttitle,arc.typeid,arc.ismake,arc.senddate,arc.arcrank,arc.money,arc.filename,arc.litpic,t.typedir,t.typename,t.namerule,t.namerule2,t.ispart,t.moresite,t.siteurl,t.sitepath
-            from `#@__archives` arc left join #@__arctype t on arc.typeid=t.id ";
+            $query = "SELECT arc.id,arc.title,arc.shorttitle,arc.typeid,arc.ismake,arc.senddate,arc.arcrank,arc.money,arc.filename,arc.litpic,t.typedir,t.typename,t.namerule,t.namerule2,t.ispart,t.moresite,t.siteurl,t.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` t on arc.typeid=t.id ";
             $nextRow = $this->dsql->GetOne($query.$next);
             $preRow = $this->dsql->GetOne($query.$pre);
             if (is_array($preRow)) {
@@ -1033,3 +1028,4 @@ function _highlight($string, $words, $result, $pre)
     }
     return $pre.$string;
 }
+?>

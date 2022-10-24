@@ -493,3 +493,4 @@ function GetUrlFromListRule($regxurl = '', $handurl = '', $startid = 0, $endid =
     }
     return $lists;
 }//End
+?>

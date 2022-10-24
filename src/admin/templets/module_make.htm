@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>模块打包</title>
+  <title><?php echo Lang("module_make");?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <script src="../static/web/js/webajax.js"></script>
   <script>
     function ShowHideField(cbox, vid, nid) {
@@ -30,60 +30,60 @@
   </script>
 </head>
 <body>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
     <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
       <input type="hidden" name="action" value="make">
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2"><a href="module_main.php">模块管理</a> &gt; 模块打包</td>
+        <td bgcolor="#f8f8f8" colspan="2"><a href="module_main.php"><?php echo Lang("module_main");?></a> &gt; <?php echo Lang("module_make");?></td>
       </tr>
       <tr>
-        <td width="260">模块名称：</td>
+        <td width="260"><?php echo Lang("module_name");?>：</td>
         <td><input type="text" name="modulname" id="modulname" style="width:160px"> </td>
       </tr>
       <tr>
-        <td>语言编码：</td>
-        <td><?php echo $cfg_soft_lang;?>（不同编码模块可以使用，但不能在此打包）<input type="hidden" name="lang" value="<?php echo $cfg_soft_lang;?>"></td>
+        <td><?php echo Lang("module_lang");?>：</td>
+        <td>utf-8<?php echo Lang("module_lang_tip2");?><input type="hidden" name="lang" value="utf-8"></td>
       </tr>
       <tr>
-        <td>封装类型：</td>
+        <td><?php echo Lang("module_moduletype");?>：</td>
         <td>
-          <label><input type="radio" name="moduletype" id="moduletype1" value="soft" checked="1"> 模块</label>
-          <label><input type="radio" name="moduletype" id="moduletype2" value="templets"> 模板</label>
-          <label><input type="radio" name="moduletype" id="moduletype3" value="plus"> 小插件</label>
-          <label><input type="radio" name="moduletype" id="moduletype4" value="patch"> 补丁</label>
+          <label><input type="radio" name="moduletype" id="moduletype1" value="soft" checked="1"> <?php echo Lang('module_soft');?></label>
+          <label><input type="radio" name="moduletype" id="moduletype2" value="templets"> <?php echo Lang('template');?></label>
+          <label><input type="radio" name="moduletype" id="moduletype3" value="plus"> <?php echo Lang('module_plus');?></label>
+          <label><input type="radio" name="moduletype" id="moduletype4" value="patch"> <?php echo Lang('module_patch');?></label>
         </td>
       </tr>
       <tr>
-        <td>开发者ID：</td>
-        <td><input type="text" name="dev_id" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
+        <td><?php echo Lang("module_dev_id");?>：</td>
+        <td><input type="text" name="dev_id" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success"><?php echo Lang('module_howto_get_devid');?></a></td>
       </tr>
       <tr>
-        <td>发布时间：</td>
+        <td><?php echo Lang("module_time");?>：</td>
         <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo GetDateMk(time());?>"> </td>
       </tr>
       <tr>
-        <td>是否涉及会员系统：</td>
+        <td><?php echo Lang("module_ismember");?>：</td>
         <td>
-          <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')"> 涉及</label>
-          <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked"> 不涉及</label>
+          <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')"> <?php echo Lang("yes");?></label>
+          <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked"> <?php echo Lang("no");?></label>
           <div id="rboxct" style="display:none">
-            导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value=""><br>
-            导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="">
-            （用相对于会员中心的网址，如：../ask）
+            <?php echo Lang("module_indexname");?>：<input type="text" name="indexname" id="indexname" style="width:160px" value=""><br>
+            <?php echo Lang("module_indexurl");?>：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="">
+            <?php echo Lang("module_indexurl_tip");?>
           </div>
         </td>
       </tr>
       <tr>
-        <td>后台管理菜单：</td>
+        <td><?php echo Lang("module_menustring");?>：</td>
         <td>
           <textarea name="menustring" id="menustring" style="width:98%;height:160px"></textarea><br>
-          （普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php）
+          <?php echo Lang("module_menustring_tip");?>
         </td>
       </tr>
       <tr>
-        <td>使用说明文件：</td>
+        <td><?php echo Lang("module_autoreadme");?>：</td>
         <td>
-          <label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')"> 直接填写</label>
+          <label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')"> <?php echo Lang("module_dwrite");?></label>
           <br>
           <div style="display:block" id="autoreadmeinput">
             <input name="readme" type="file" id="readme" style="width:360px">
@@ -91,9 +91,7 @@
           <div style="margin:5px 0px 5px 5px;display:none" id="autoreadmect">
             <table width="100%" cellpadding="5" cellspacing="1">
               <tr>
-                <td bgcolor="#fbfce2">
-                  填写使用协议或说明：<br>
-                  如果需要带HTML格式，请编译后点击修改时使用HTML</td>
+                <td bgcolor="#f8fcf2"><?php echo Lang("module_autoreadme_tip");?></td>
               </tr>
               <tr>
                 <td><textarea name="readmetxt" id="readmetxt" style="width:98%;height:160px"></textarea></td>
@@ -103,9 +101,9 @@
         </td>
       </tr>
       <tr>
-        <td>程序安装：</td>
+        <td><?php echo Lang("module_autosetup");?>：</td>
         <td>
-          <label><input type="checkbox" name="autosetup" value='1' id="autosetup" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"> 自动生成（由系统自动处理安装）</label>
+          <label><input type="checkbox" name="autosetup" value='1' id="autosetup" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"> <?php echo Lang("module_dmake");?></label>
           <br>
           <div style="display:block" id="autosetupinput">
             <input name="setup" type="file" id="setup" style="width:360px">
@@ -113,11 +111,7 @@
           <div style="margin:5px 0px 5px 5px;display:none" id="autosetupct">
             <table width="100%" cellpadding="5" cellspacing="1">
               <tr>
-                <td bgcolor="#fbfce2">
-                  请使用MySQL4.0版本格式的SQL语句:<br>
-                  MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=* ，改为 TYPE=MyISAM ，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束<br>
-                  如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php
-                </td>
+                <td bgcolor="#f8fcf2"><?php echo Lang("module_autosetup_tip");?></td>
               </tr>
               <tr>
                 <td><textarea name="setupsql40" id="setupsql40" style="width:98%;height:160px"></textarea></td>
@@ -127,16 +121,15 @@
         </td>
       </tr>
       <tr>
-        <td>删除程序：</td>
+        <td><?php echo Lang("module_autodel");?>：</td>
         <td>
-          <label><input type="checkbox" name="autodel" value='1' id="autodel" onclick="ShowHideField('autodel','autodelinput','autodelct')"> 自动生成（由系统自动处理卸载）</label>
+          <label><input type="checkbox" name="autodel" value='1' id="autodel" onclick="ShowHideField('autodel','autodelinput','autodelct')"> <?php echo Lang("module_autodel_input");?></label>
           <br>
           <div style="display:block" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
           <div style="margin:5px 0px 5px 5px;display:none" id="autodelct">
             <table width="100%" cellpadding="5" cellspacing="1">
               <tr>
-                <td bgcolor="#fbfce2">卸载时执行的SQL语句：<br>
-                （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）
+                <td bgcolor="#f8fcf2"><?php echo Lang("module_autodel_tip");?>
                 </td>
               </tr>
               <tr>
@@ -147,27 +140,25 @@
         </td>
       </tr>
       <tr>
-        <td>文件列表：</td>
+        <td><?php echo Lang("module_filelist3");?>：</td>
         <td>
           <p>
-            每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
-            如：如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录<br>
-            对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中<br>
+            <?php echo Lang("module_filelist3_tip");?><br>
             <textarea name="filelist" id="filelist" style="width:98%;height:160px"></textarea>
           </p>
         </td>
       </tr>
       <tr>
-        <td>开发者私钥：</td>
-        <td>开发者认证后获取的私钥<br>
+        <td><?php echo Lang("module_priv");?>：</td>
+        <td><?php echo Lang("module_priv_tip");?><br>
           <textarea name="priv" id="priv" style="width:98%;height:160px"></textarea>
         </td>
       </tr>
       <tr>
-        <td colspan="2" align="center" class="py-2">
-          <div class="alert alert-info">制作模块即表示您同意<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">《DedeBIZ开发者协议》</a></div>
-          <button name="imageField" type="submit" class="btn btn-success btn-sm">提交</button>
-          <button type="button" name="button" id="button" onClick="location='module_main.php';" class="btn btn-success btn-sm">返回</button>
+        <td align="center" colspan="2" class="py-2">
+          <div class="alert alert-info"><?php echo Lang('module_dev_agree',array('link'=>$cfg_biz_dedebizUrl.'/license_developer'));?></div>
+          <button name="imageField" type="submit" class="btn btn-success btn-sm"><?php echo Lang("submit");?></button>
+          <button type="button" name="button" id="button" onClick="location='module_main.php';" class="btn btn-success btn-sm"><?php echo Lang("back");?></button>
         </td>
       </tr>
     </form>

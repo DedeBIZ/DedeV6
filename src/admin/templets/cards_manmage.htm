@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>点卡业务记录</title>
+  <title><?php echo Lang('cards_manage');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <script>
     //获得选中项
     function getCheckboxItem() {
@@ -31,7 +31,7 @@
     function DelSel() {
       var nid = getCheckboxItem();
       if (nid == "") {
-        alert("请选择要删除的卡");
+        alert("<?php echo Lang('cards_confirm_delete');?>");
         return;
       }
       location.href = "cards_manage.php?dopost=delete&aids=" + nid;
@@ -39,39 +39,41 @@
   </script>
 </head>
 <body>
-  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
     <tr>
       <td bgcolor="#f8f8f8" colspan="7">
         <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr>
-            <td width="30%">点卡业务管理</td>
-            <td width="70%" align="right">
-              <button type="button" onClick="location='cards_manage.php?isexp=0';" class="btn btn-success btn-sm">未使用</button>
-              <button type="button" onClick="location='cards_manage.php?isexp=1';" class="btn btn-success btn-sm">已售出</button>
-              <button type="button" onClick="location='cards_manage.php?isexp=-1';" class="btn btn-success btn-sm">已使用</button>
-              <button type="button" onClick="location='cards_manage.php';" class="btn btn-success btn-sm">全部</button>
-              <button type="button" onClick="location='cards_make.php';" class="btn btn-success btn-sm">生成点卡</button>
-              <button type="button" onClick="location='cards_type.php';" class="btn btn-success btn-sm">点卡产品分类</button>
+            <td width="30%"><?php echo Lang('cards_manage');?></td>
+            <td width="45%" align="right">
+              <button type="button" onClick="location='cards_manage.php?isexp=0';" class="btn btn-success btn-sm"><?php echo Lang('cards_manage_isexp_0');?></button>
+              <button type="button" onClick="location='cards_manage.php?isexp=1';" class="btn btn-success btn-sm"><?php echo Lang('cards_manage_isexp_1');?></button>
+              <button type="button" onClick="location='cards_manage.php?isexp=-1';" class="btn btn-success btn-sm"><?php echo Lang('cards_manage_isexp_-1');?></button>
+              <button type="button" onClick="location='cards_manage.php';" class="btn btn-success btn-sm"><?php echo Lang('cards_manage_isexp_all');?></button>
+            </td>
+            <td width="25%" align="right">
+              <button type="button" onClick="location='cards_make.php';" class="btn btn-success btn-sm"><?php echo Lang('cards_make');?></button>
+              <button type="button" onClick="location='cards_type.php';" class="btn btn-success btn-sm"><?php echo Lang('cards_type');?></button>
             </td>
           </tr>
         </table>
       </td>
     </tr>
-    <tr bgcolor="#fbfce2" align="center">
-      <td width="8%">选择</td>
-      <td width="28%">卡号</td>
-      <td width="18%">点卡类型</td>
-      <td width="12%">生成日期</td>
-      <td width="12%">使用日期</td>
-      <td width="8%">状态</td>
-      <td width="14%">使用会员</td>
+    <tr align="center" bgcolor="#f8fcf2">
+      <td width="8%"><?php echo Lang('select');?></td>
+      <td width="28%"><?php echo Lang('cards_cardid');?></td>
+      <td width="18%"><?php echo Lang('cards_ctid');?></td>
+      <td width="12%"><?php echo Lang('cards_mtime');?></td>
+      <td width="12%"><?php echo Lang('cards_utime');?></td>
+      <td width="8%"><?php echo Lang('cards_isexp');?></td>
+      <td width="14%"><?php echo Lang('cards_uid');?></td>
     </tr>
     <form name="form1">
-      {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
-      <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+      {dede:datalist empty='<tr><td colspan="7"><center>~lang:none_result~</center></td></tr>'}
+      <tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type="checkbox" name="aids" value="{dede:field.aid/}"></td>
         <td>{dede:field.cardid/}</td>
-        <td><?php echo $TypeNames[$fields['ctid']]?></td>
+        <td><?php echo $TypeNames[$fields['ct_id']]?></td>
         <td>{dede:field.mtime function='GetDateMk(@me)'/}</td>
         <td>{dede:field.utime function='GetUseDate(@me)'/}</td>
         <td>{dede:field.isexp function='GetSta(@me)'/}</td>
@@ -81,12 +83,12 @@
     </form>
     <tr>
       <td colspan="7">
-        <button type="button" onClick="ReSel();" class="btn btn-success btn-sm">反选</button>
-        <button type="button" onClick="DelSel();" class="btn btn-danger btn-sm">删除</button>
+        <button type="button" onClick="ReSel();" class="btn btn-success btn-sm"><?php echo Lang('reverse_selection');?></button>
+        <button type="button" onClick="DelSel();" class="btn btn-danger btn-sm"><?php echo Lang('delete');?></button>
       </td>
     </tr>
     <tr>
-      <td class="py-2" colspan="7" align="center" bgcolor="#f8f8f8">
+      <td align="center" colspan="7" bgcolor="#f8f8f8" class="py-2">
         {dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='6'/}
       </td>
     </tr>

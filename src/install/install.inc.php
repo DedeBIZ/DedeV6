@@ -102,3 +102,4 @@ function IsDownLoad($url)
         return false;
     }
 }
+?>

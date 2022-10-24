@@ -285,13 +285,7 @@ class TypeUnit
         $this->idCounter = 0;
         $this->idArray = array();
         $this->GetSunTypes($id);
-        $query = "
-        SELECT #@__arctype.*,#@__channeltype.typename AS ctypename,
-        #@__channeltype.addtable
-        FROM `#@__arctype` LEFT JOIN #@__channeltype
-        ON #@__channeltype.id=#@__arctype.channeltype
-        WHERE #@__arctype.id='$id'
-        ";
+        $query = "SELECT `#@__arctype`.*,`#@__channeltype`.typename AS ctypename, `#@__channeltype`.addtable FROM `#@__arctype` LEFT JOIN `#@__channeltype` ON `#@__channeltype`.id=`#@__arctype`.channeltype WHERE `#@__arctype`.id='$id' ";
         $typeinfos = $this->dsql->GetOne($query);
         $topinfos = $this->dsql->GetOne("SELECT moresite,siteurl FROM `#@__arctype` WHERE id='".$typeinfos['topid']."'");
         if (!is_array($typeinfos)) {
@@ -369,3 +363,4 @@ class TypeUnit
         return (1);
     }
 }//End Class
+?>

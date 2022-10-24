@@ -2,7 +2,7 @@
 /**
  * 多媒体发送
  *
- * @version        $Id: select_media_post.php 1 9:43 2010年7月8日Z tianya $
+ * @version        $Id: select_media_post.php 2022-07-01 tianya $
  * @package        DedeBIZ.Dialog
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -12,8 +12,7 @@ include_once(dirname(__FILE__).'/config.php');
 $cfg_softtype = $cfg_mediatype."|mp4";
 $cfg_soft_dir = $cfg_other_medias;
 $bkurl = 'select_media.php';
-$uploadmbtype = "多媒体文件类型";
-
+$uploadmbtype = Lang("dialog_media_post");
 if (empty($activepath)) {
     $activepath = '';
     $activepath = str_replace('.', '', $activepath);
@@ -23,3 +22,4 @@ if (empty($activepath)) {
     }
 }
 require_once(dirname(__FILE__)."/select_soft_post.php");
+?>

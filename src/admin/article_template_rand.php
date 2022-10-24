@@ -8,12 +8,13 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DedeWin;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
-require_once(DEDEINC.'/libraries/oxwindow.class.php');
-CheckPurview('sys_StringMix');
+UserLogin::CheckPurview('sys_StringMix');
 if (empty($dopost)) $dopost = '';
 $templates = empty($templates) ? '' : stripslashes($templates);
-$m_file = DEDEDATA.'/template.rand.php';
+$m_file = DEDEDATA.'/template.rand.txt';
 $okmsg = '';
 //保存配置
 if ($dopost == 'save') {
@@ -22,7 +23,7 @@ if ($dopost == 'save') {
     flock($fp, 3);
     fwrite($fp, $templates);
     fclose($fp);
-    $okmsg = '成功保存配置信息 AT:('.MyDate('H:i:s', time()).')';
+    $okmsg = Lang('article_template_rand_success_save');
 }
 //对旧文档进行随机模板处理
 else if ($dopost == 'makeold') {
@@ -30,36 +31,43 @@ else if ($dopost == 'makeold') {
     set_time_limit(3600);
     if (!file_exists($m_file)) {
         AjaxHead();
-        echo "配置文件不存在";
+        echo Lang("article_template_rand_err_filenotexists");
         exit();
     }
-    require_once($m_file);
+    $fileData = file_get_contents($m_file);
+    $arrs = preg_split("#[\t\r\n]#", $fileData);
+    $cfg_tamplate_arr = array();
+    foreach ($arrs as $value) {
+        if (trim($value) !== "") {
+            $cfg_tamplate_arr[] = trim($value);
+        }
+    }
     if ($cfg_tamplate_rand == 0) {
         AjaxHead();
-        echo "系统没开启允许随机模板的选项";
+        echo Lang("article_template_rand_err_cfg");
         exit();
     }
     $totalTmp = count($cfg_tamplate_arr) - 1;
     if ($totalTmp < 1) {
         AjaxHead();
-        echo "随机模板的数量必须为2个或以上";
+        echo Lang("article_template_rand_err_tt");
         exit();
     }
     for ($i = 0; $i < 10; $i++) {
         $temp = $cfg_tamplate_arr[mt_rand(0, $totalTmp)];
-        $dsql->ExecuteNoneQuery(" Update `#@__addonarticle` set templet='$temp' where RIGHT(aid, 1)='$i' ");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__addonarticle` set templet='$temp' where RIGHT(aid, 1)='$i'");
     }
     AjaxHead();
-    echo "全部随机操作成功";
+    echo Lang("article_template_rand_success");
     exit();
 }
 //清除全部的指定模板
 else if ($dopost == 'clearold') {
     CheckCSRF();
-    $dsql->ExecuteNoneQuery(" Update `#@__addonarticle` set templet='' ");
-    $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `#@__addonarticle` ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__addonarticle` set templet=''");
+    $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `#@__addonarticle`");
     AjaxHead();
-    echo "全部清除操作成功";
+    echo Lang("article_template_rand_success");
     exit();
 }
 //读出
@@ -68,11 +76,11 @@ if (empty($templates) && filesize($m_file) > 0) {
     $templates = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wintitle = "随机模板防采集设置";
-$wecome_info = "随机模板防采集设置";
+$wintitle = Lang("article_template_rand");
+$wecome_info = Lang("article_template_rand");
 make_hash();
 $msg = "
-<link rel='stylesheet' href='../static/web/css/admin.css'>
+<link rel='stylesheet' href='../static/web/css/admin.min.css'>
 <script src='js/main.js'></script>
 <script src='../static/web/js/webajax.js'></script>
 <script>
@@ -88,26 +96,25 @@ function DoRand(jobname)
 }
 </script>
 <div id='loading' style='position:absolute;top:160;display:none;z-index:3000'>
-    <img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中
+    <img src='../static/web/img/load.gif'>".Lang('article_template_rand_doing')."
 </div>
 <table width='100%' align='center'>
 <tr>
     <td>
-    如果您想对旧的文档应用随机模板设置，请点击此对旧文档进行处理（必须设置好模板项）
-    <a href='javascript:;' onclick='DoRand(\"makeold\")' class='btn btn-success btn-sm'>设置全部</a>
-    <a href='javascript:;' onclick='DoRand(\"clearold\")' class='btn btn-success btn-sm'>取消全部</a>
-    <span id='tmpct'>$okmsg</span>
+    ".Lang('article_template_rand_tip')."
+    <a href='javascript:;' onclick='DoRand(\"makeold\")' class='btn btn-success btn-sm'>".Lang('article_template_rand_makeold')."</a>
+    <a href='javascript:;' onclick='DoRand(\"clearold\")' class='btn btn-success btn-sm'>".Lang('article_template_rand_clearold')."</a>
+    <span id='tmpct' style='color:#dc3545;font-weight:bold'>$okmsg</span>
     </td>
 </tr>
 <tr>
     <td><textarea name='templates' id='templates' style='width:100%;height:250px'>$templates</textarea></td>
 </tr>
 </table>";
-$win = new OxWindow();
-$win->Init('article_template_rand.php', 'js/blank.js', 'POST');
-$win->AddHidden('dopost', 'save');
-$win->AddHidden('token', $_SESSION['token']);
-$win->AddTitle("本设置仅适用于系统默认的文档模型，设置后发布文档时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可");
-$win->AddMsgItem($msg);
-$winform = $win->GetWindow('ok');
-$win->Display();
+DedeWin::Instance()->Init('article_template_rand.php', 'js/blank.js', 'POST')
+->AddHidden('dopost', 'save')
+->AddHidden('token', $_SESSION['token'])
+->AddTitle(Lang("article_template_rand_title"))
+->AddMsgItem($msg)
+->GetWindow('ok')->Display();
+?>

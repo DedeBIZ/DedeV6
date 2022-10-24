@@ -112,3 +112,4 @@ if ($formurl == 'caicai') {
 AjaxHead();
 echo $digg;
 exit();
+?>

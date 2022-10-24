@@ -41,3 +41,4 @@ function lib_loop(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

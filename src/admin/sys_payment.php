@@ -8,16 +8,13 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DataListCP;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-require_once(DEDEINC.'/datalistcp.class.php');
-CheckPurview('sys_Data');
+UserLogin::CheckPurview('sys_Data');
 $dopost = (empty($dopost)) ? '' : $dopost;
 $pid = (empty($pid)) ? 0 : intval($pid);
-/*
-下面数数组格式的例子:
-*/
-//一个简单的[数组<->表单]解析类
-/*数组结构应该为:
+/*一个简单的[数组<->表单]解析类，数组结构应该为:
   array(
     [name]=>array(
         [title]=>'当前表单项的名称',
@@ -26,7 +23,6 @@ $pid = (empty($pid)) ? 0 : intval($pid);
         [iterm]=>'1:使用标准双接口,使用担保交易接口', //如果含有":",则前面为value值,后面为显示内容
         [value]=>'使用担保交易接口',
     ),
-    
   )
   使用方法:
   将上述的格式传入到数组中去,然后进行解析:
@@ -145,11 +141,7 @@ $tplstring = "
 if ($dopost == 'install') {
     $row = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$pid'");
     if (is_array($row)) {
-        if ($cfg_soft_lang == 'utf-8') {
-            $config_row = AutoCharset(unserialize(utf82gb($row['config'])));
-        } else if ($cfg_soft_lang == 'gb2312') {
-            $config_row = unserialize($row['config']);
-        }
+        $config_row = AutoCharset(unserialize(utf82gb($row['config'])));
         //print_r($config_row);exit;
         $af = new Array2form($config_row);
         $af->SetDefaultTpl($tplstring);
@@ -161,15 +153,11 @@ if ($dopost == 'install') {
 //配置支付接口
 else if ($dopost == 'config') {
     if ($pay_name == "" || $pay_desc == "" || $pay_fee == "") {
-        ShowMsg("您有未填写的项目", "-1");
+        ShowMsg(Lang("sys_payment_parms_empty"), "-1");
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$pid'");
-    if ($cfg_soft_lang == 'utf-8') {
-        $config = AutoCharset(unserialize(utf82gb($row['config'])));
-    } else if ($cfg_soft_lang == 'gb2312') {
-        $config = unserialize($row['config']);
-    }
+    $config = AutoCharset(unserialize(utf82gb($row['config'])));
     $payments = "'code' => '".$row['code']."',";
     foreach ($config as $key => $v) {
         $config[$key]['value'] = ${$key};
@@ -184,13 +172,9 @@ else if ($dopost == 'config') {
         fwrite($fp, $configstr);
         fclose($fp);
     }
-    if ($cfg_soft_lang == 'utf-8') {
-        $config = AutoCharset($config, 'utf-8', 'gb2312');
-        $config = serialize($config);
-        $config = gb2utf8($config);
-    } else {
-        $config = serialize($config);
-    }
+    $config = AutoCharset($config, 'utf-8', 'gb2312');
+    $config = serialize($config);
+    $config = gb2utf8($config);
     $query = "UPDATE `#@__payment` SET name = '$pay_name',fee='$pay_fee',description='$pay_desc',config='$config',enabled='1' WHERE id='$pid'";
     $dsql->ExecuteNoneQuery($query);
     if ($pm == 'edit') $msg = "保存修改成功";
@@ -201,25 +185,17 @@ else if ($dopost == 'config') {
 //删除支付接口
 else if ($dopost == 'uninstall') {
     $row = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$pid'");
-    if ($cfg_soft_lang == 'utf-8') {
-        $config = AutoCharset(unserialize(utf82gb($row['config'])));
-    } else if ($cfg_soft_lang == 'gb2312') {
-        $config = unserialize($row['config']);
-    }
+    $config = AutoCharset(unserialize(utf82gb($row['config'])));
     foreach ($config as $key => $v) $config[$key]['value'] = "";
-    if ($cfg_soft_lang == 'utf-8') {
-        $config = AutoCharset($config, 'utf-8', 'gb2312');
-        $config = serialize($config);
-        $config = gb2utf8($config);
-    } else {
-        $config = serialize($config);
-    }
+    $config = AutoCharset($config, 'utf-8', 'gb2312');
+    $config = serialize($config);
+    $config = gb2utf8($config);
     $query = "UPDATE `#@__payment` SET fee='',config='$config',enabled='0' WHERE id='$pid'";
     $dsql->ExecuteNoneQuery($query);
     //同时需要删除对应的缓存
     $m_file = DEDEDATA."/payment/".$row['code'].".php";
     @unlink($m_file);
-    ShowMsg("删除成功", "sys_payment.php");
+    ShowMsg(Lang("member_success_edituser_del"), "sys_payment.php");
     exit();
 }
 $sql = "SELECT * FROM `#@__payment` ORDER BY `rank` ASC";
@@ -227,3 +203,4 @@ $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/sys_payment.htm");
 $dlist->SetSource($sql);
 $dlist->display();
+?>

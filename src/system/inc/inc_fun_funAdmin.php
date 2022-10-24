@@ -194,3 +194,4 @@ function SpGetNewInfo()
     $offUrl = DEDEBIZURL."/version?version={$cfg_version_detail}&formurl={$nurl}&phpver={$phpv}&os={$sp_os}&mysqlver={$mysql_ver}{$add_query}";
     return $offUrl;
 }
+?>

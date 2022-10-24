@@ -8,20 +8,21 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DedeVote;
+use DedeBIZ\Login\UserLogin;
 require(dirname(__FILE__)."/config.php");
-CheckPurview('plus_投票模块');
-require_once(DEDEINC."/dedetag.class.php");
+UserLogin::CheckPurview('plus_投票模块');
 if (empty($dopost)) $dopost = "";
 $aid = isset($aid) && is_numeric($aid) ? $aid : 0;
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "vote_main.php" : $_COOKIE['ENV_GOBACK_URL'];
 if ($dopost == "delete") {
     if ($dsql->ExecuteNoneQuery("DELETE FROM `#@__vote` WHERE aid='$aid'")) {
         if ($dsql->ExecuteNoneQuery("DELETE FROM `#@__vote_member` WHERE voteid='$aid'")) {
-            ShowMsg('成功删除一组投票!', $ENV_GOBACK_URL);
+            ShowMsg(Lang('vote_delete_success_one'), $ENV_GOBACK_URL);
             exit;
         }
     } else {
-        ShowMsg('指定删除投票不存在!', $ENV_GOBACK_URL);
+        ShowMsg(Lang('vote_delete_err_no_exists'), $ENV_GOBACK_URL);
         exit;
     }
 } else if ($dopost == "saveedit") {
@@ -38,7 +39,7 @@ if ($dopost == "delete") {
         view='$view',
         spec='$spec',
         isenable='$isenable'
-        WHERE aid='$aid'";
+       WHERE aid='$aid'";
     if ($dsql->ExecuteNoneQuery($query)) {
         $vt = new DedeVote($aid);
         $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
@@ -46,15 +47,16 @@ if ($dopost == "delete") {
         $vote_content = preg_replace(array("#/#", "#([\r\n])[\s]+#"), array("\/", " "), $vote_content);        //取出内容中的空白字符并进行转义
         $vote_content = 'document.write("'.$vote_content.'");';
         file_put_contents($vote_file, $vote_content);
-        ShowMsg('成功修改一组投票!', $ENV_GOBACK_URL);
+        ShowMsg(Lang('vote_edit_success_one'), $ENV_GOBACK_URL);
     } else {
-        ShowMsg('修改一组投票失败!', $ENV_GOBACK_URL);
+        ShowMsg(Lang('vote_edit_err_one'), $ENV_GOBACK_URL);
     }
 } else {
-    $row = $dsql->GetOne("SELECT * FROM #@__vote WHERE aid='$aid'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__vote` WHERE aid='$aid'");
     if (!is_array($row)) {
-        ShowMsg('指定投票不存在', '-1');
+        ShowMsg(Lang('vote_err_no_exists'), '-1');
         exit();
     }
     include DedeInclude('templets/vote_edit.htm');
 }
+?>

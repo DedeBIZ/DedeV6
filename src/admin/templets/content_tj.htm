@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	<title>文档信息统计</title>
-	<link rel="stylesheet" href="../static/web/css/admin.css">
+	<title><?php echo Lang('content_tj');?></title>
+	<link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center">
+  <table width="98%" align="center" cellpadding="3" cellspacing="1">
     <tr> 
-      <td bgcolor="#f8f8f8" colspan="2">文档信息统计</td>
+      <td bgcolor="#f8f8f8" colspan="2"><?php echo Lang('content_tj');?></td>
     </tr>
     <tr> 
-    <td colspan="2" align="center">
+    <td  align="center" colspan="2">
       <table width="98%" cellspacing="0" cellpadding="0">
         <tr> 
-          <td>综合信息统计：</td>
+          <td><?php echo Lang('content_all_tj');?>：</td>
           <td>
             <table width="300" cellpadding="1" cellspacing="1">
               <tr> 
-                <td width="140" bgcolor="#F3ECDA">文档总数：</td>
+                <td width="140" bgcolor="#F3ECDA"><?php echo Lang('content_tj_archives');?>：</td>
                 <td width="260">[<?php echo $row1['dd']?>]</td>
               </tr>
               <tr> 
-                <td bgcolor="#F3ECDA">评论总数：</td>
+                <td bgcolor="#F3ECDA"><?php echo Lang('content_tj_comments');?>：</td>
                 <td>[<?php echo $row2['dd']?>]</td>
               </tr>
               <tr> 
-                <td bgcolor="#F3ECDA">会员总数：</td>
+                <td bgcolor="#F3ECDA"><?php echo Lang('content_tj_users');?>：</td>
                 <td>[<?php echo $row3['dd']?>]</td>
               </tr>
             </table>
           </td>
         </tr>
         <tr> 
-          <td width="16%" height="80">频道信息统计：</td>
+          <td width="16%" height="80"><?php echo Lang('content_channel_tj');?>：</td>
           <td width="84%">
             <table width="300" cellpadding="1" cellspacing="1">
               <tr align="center" bgcolor="#E8E6D7"> 
-                <td width="140" bgcolor="#E8E6D7">频道名称</td>
-                <td>文档总数</td>
+                <td width="140" bgcolor="#E8E6D7"><?php echo Lang('mychannel_typename');?></td>
+                <td><?php echo Lang('content_tj_archives');?></td>
               </tr>
               <?php
               $arcs = array();
@@ -52,7 +52,7 @@
                 <td><?php echo $row->typename?></td>
                 <td>[<?php echo (isset($arcs[$row->id]) ? $arcs[$row->id] : 0 );?>]</td>
               </tr>
-              <?php } ?>
+              <?php }?>
             </table>
           </td>
         </tr>

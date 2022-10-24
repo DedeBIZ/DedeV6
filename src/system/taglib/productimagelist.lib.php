@@ -47,3 +47,4 @@ function lib_productimagelist(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

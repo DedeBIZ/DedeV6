@@ -35,3 +35,4 @@ if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile
     fclose($fp);
 }
 include $cacheFile;
+?>

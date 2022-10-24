@@ -534,3 +534,4 @@ function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $l
 if (file_exists(DEDEINC.'/extend.func.php')) {
     require_once(DEDEINC.'/extend.func.php');
 }
+?>

@@ -96,7 +96,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
         }
     } elseif ($type == 'UPDATE') {
         $key = md5($randval);
-        $sql = "UPDATE `#@__pwd_tmp` SET `pwd` = '$key',mailtime = '$mailtime'  WHERE `mid` ='$mid';";
+        $sql = "UPDATE `#@__pwd_tmp` SET `pwd` = '$key',mailtime = '$mailtime' WHERE `mid` ='$mid';";
         if ($db->ExecuteNoneQuery($sql)) {
             if ($send === 'Y') {
                 sendmail($mailto, $mailtitle, $mailbody, $headers);

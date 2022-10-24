@@ -276,3 +276,4 @@ if (!function_exists('rand_color')) {
         return '#'.sprintf("%02X", mt_rand(0, 255)).sprintf("%02X", mt_rand(0, 255)).sprintf("%02X", mt_rand(0, 255));
     }
 }
+?>

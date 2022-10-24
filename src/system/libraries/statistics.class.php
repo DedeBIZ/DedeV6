@@ -163,7 +163,7 @@ class DedeStatistics {
         $vv = $dsql->GetOne("SELECT COUNT(DISTINCT ssid) as total FROM `#@__statistics_detail` WHERE created_date = $d");
         if ($d < intval($today)) {
             //缓存数据
-            $insql = "INSERT INTO `#@__statistics`(`sdate`,`pv`,`uv`,`ip`,`vv`) VALUES ('$d', '{$pv['total']}','{$uv['total']}','{$ip['total']}','{$vv['total']}')";
+            $insql = "INSERT INTO `#@__statistics` (`sdate`,`pv`,`uv`,`ip`,`vv`) VALUES ('$d', '{$pv['total']}','{$uv['total']}','{$ip['total']}','{$vv['total']}')";
             $dsql->ExecuteNoneQuery($insql);
         }
         return array(
@@ -175,3 +175,4 @@ class DedeStatistics {
         );
     }
 }
+?>

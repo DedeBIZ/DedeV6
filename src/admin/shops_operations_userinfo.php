@@ -8,8 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('shops_Operations');
+UserLogin::CheckPurview('shops_Operations');
 if (!isset($oid)) exit("<a href='javascript:window.close()'>无效操作</a>");
 $oid = preg_replace("#[^-0-9A-Z]#", "", $oid);
 if (empty($oid)) exit("<a href='javascript:window.close()'>无效订单号</a>");
@@ -27,3 +28,4 @@ if (is_array($row)) {
 $rows['des'] = stripslashes($rows['des']);
 include DEDEADMIN."/templets/shops_operations_userinfo.htm";
 unset($rows);
+?>

@@ -14,3 +14,4 @@ function lib_likepage(&$ctag, &$refObj)
 {
     return lib_likesgpage($ctag, $refObj);
 }
+?>

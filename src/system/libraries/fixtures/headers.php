@@ -33,3 +33,4 @@ class Headers extends AbstractProvider
         'HTTP_X_SCANNER', //Seen in use by Netsparker
     );
 }
+?>

@@ -23,8 +23,7 @@ function _ShowForm(){  }
 --------------*/
 if (empty($dopost)) {
     //读取归档信息
-    $arcQuery = "SELECT ch.*,arc.* FROM `#@__arctiny` arc
-    LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
+    $arcQuery = "SELECT ch.*,arc.* FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $cInfos = $dsql->GetOne($arcQuery);
     if (!is_array($cInfos)) {
         ShowMsg("读取文档信息出错!", "-1");
@@ -52,8 +51,7 @@ else if ($dopost == 'save') {
         ShowMsg('请指定文档隶属的栏目', '-1');
         exit();
     }
-    $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend AS cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype
-        FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id='$typeid' ";
+    $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend AS cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id='$typeid' ";
     $cInfos = $dsql->GetOne($query);
     $addtable = $cInfos['addtable'];
     //检测栏目是否有投稿权限
@@ -106,7 +104,7 @@ else if ($dopost == 'save') {
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET `title`='$title',`typeid`='$typeid',`arcrank`='$arcrank',userip='$userip'{$inadd_f} WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("更新附加表 `$addtable`  时出错，请联系管理员", "javascript:;");
+            ShowMsg("更新附加表 `$addtable` 时出错，请联系管理员", "javascript:;");
             exit();
         }
     }
@@ -123,3 +121,4 @@ else if ($dopost == 'save') {
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");
 }
+?>

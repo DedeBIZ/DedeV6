@@ -76,3 +76,4 @@ if ($nextSrc != '') {
 }
 require_once(DEDETEMPLATE.'/plus/showphoto.htm');
 exit();
+?>

@@ -146,3 +146,4 @@ if (!function_exists('FilterSearch')) {
         return $restr;
     }
 }
+?>

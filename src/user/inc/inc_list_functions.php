@@ -75,7 +75,7 @@ function CheckPic($picname)
     }
 }
 /**
- *  判断内容是否生成HTML
+ *  判断内容是否生成网页
  *
  * @param     int  $ismake  是否生成
  * @return    string

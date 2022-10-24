@@ -8,43 +8,37 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DedeWin;
+use DedeBIZ\Login\UserLogin;
+use DedeBIZ\Template\DedeTagParse;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
-require_once(DEDEINC."/customfields.func.php");
+UserLogin::CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
 require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 if (empty($dopost)) $dopost = '';
 if ($dopost != 'save') {
     require_once(DEDEADMIN."/inc/inc_catalog_options.php");
-    require_once(DEDEINC."/dedetag.class.php");
-    ClearMyAddon();
+    UserLogin::ClearMyAddon();
     $aid = intval($aid);
     $channelid = -1;
     //读取归档信息
-    $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.*
-    FROM `#@__archives` arc
-    LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel
-    LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
+    $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid'";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取档案基本信息出错!", "-1");
+        ShowMsg(Lang("content_err_archive"), "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='-1'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取频道配置信息出错!", "javascript:;");
+        ShowMsg(Lang("content_err_channel"), "javascript:;");
         exit();
     }
     $addRow = $dsql->GetOne("SELECT * FROM `#@__addonspec` WHERE aid='$aid'");
     $tags = GetTags($aid);
     include DedeInclude("templets/spec_edit.htm");
 }
-/*--------------------------------
-function __save(){  }
--------------------------------*/
 else if ($dopost == 'save') {
-    require_once(DEDEINC.'/image.func.php');
-    require_once(DEDEINC.'/libraries/oxwindow.class.php');
+    helper('image');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (!isset($tags)) $tags = '';
@@ -67,12 +61,11 @@ else if ($dopost == 'save') {
     $description = cn_substrR($description, $cfg_auot_description);
     $keywords = trim(cn_substrR($keywords, 60));
     $filename = trim(cn_substrR($filename, 40));
-    $isremote  = 0;
     $serviterm = empty($serviterm) ? "" : $serviterm;
-    if (!TestPurview('a_Check,a_AccCheck,a_MyCheck')) {
+    if (!UserLogin::TestPurview('a_Check,a_AccCheck,a_MyCheck')) {
         $arcrank = -1;
     }
-    $adminid = $cuserLogin->getUserID();
+    $adminid = $cUserLogin->getUserID();
     //处理上传的缩略图
     if (empty($ddisremote)) {
         $ddisremote = 0;
@@ -91,7 +84,7 @@ else if ($dopost == 'save') {
                     continue;
                 }
                 $vs = explode(',', $v);
-                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //HTML文本特殊处理
+                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //网页文本特殊处理
                 {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $litpic, $keywords, $vs[1]);
                 } else {
@@ -108,27 +101,9 @@ else if ($dopost == 'save') {
     if ($litpic != '' && !preg_match('#p#', $flag)) {
         $flag = ($flag == '' ? 'p' : $flag.',p');
     }
-    $inQuery = "UPDATE `#@__archives` SET
-        typeid='$typeid',
-        sortrank='$sortrank',
-        flag='$flag',
-        ismake='$ismake',
-        arcrank='$arcrank',
-        click='$click',
-        title='$title',
-        color='$color',
-        writer='$writer',
-        source='$source',
-        litpic='$litpic',
-        pubdate='$pubdate',
-        notpost='$notpost',
-        description='$description',
-        keywords='$keywords',
-        shorttitle='$shorttitle',
-        filename='$filename'
-        WHERE id='$id'; ";
+    $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',sortrank='$sortrank',flag='$flag',ismake='$ismake',arcrank='$arcrank',click='$click',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库archives表时出错，请检查", "-1");
+        ShowMsg(Lang('content_err_update_archive'), "-1");
         exit();
     }
     //专题节点列表
@@ -186,45 +161,37 @@ else if ($dopost == 'save') {
                     }
                 }
             }
-            $notelist .= "{dede:specnote imgheight=\\'$imgheight\\' imgwidth=\\'$imgwidth\\'
-                infolen=\\'$infolen\\' titlelen=\\'$titlelen\\' col=\\'$col\\' idlist=\\'$okids\\'
-                name=\\'$notename\\' noteid=\\'$noteid\\' isauto=\'$isauto\' rownum=\\'$rownum\\'
-                keywords=\\'$keywords\\' typeid=\\'$ttypeid\\'}
-                $listtmp
-                {/dede:specnote}\r\n";
+            $notelist .= "{dede:specnote imgheight=\\'$imgheight\\' imgwidth=\\'$imgwidth\\' infolen=\\'$infolen\\' titlelen=\\'$titlelen\\' col=\\'$col\\' idlist=\\'$okids\\' name=\\'$notename\\' noteid=\\'$noteid\\' isauto=\'$isauto\' rownum=\\'$rownum\\' keywords=\\'$keywords\\' typeid=\\'$ttypeid\\'}$listtmp{/dede:specnote}\r\n";
         }
     }
     //更新附加表
     $inQuery = "UPDATE `#@__addonspec` SET typeid ='$typeid',note='$notelist'{$inadd_f},templet='$templet' WHERE aid='$id';";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库附加表 addonspec 时出错，请检查原因", "-1");
+        ShowMsg(Lang('content_err_update_addon',array('addtable'=>'addonspec')), "-1");
         exit();
     }
-    //生成HTML
+    //生成网页
     UpIndexKey($id, $arcrank, $typeid, $sortrank, $tags);
-    $artUrl = MakeArt($id, TRUE, TRUE, $isremote);
+    $artUrl = MakeArt($id, TRUE, TRUE);
     if ($artUrl == '') {
         $artUrl = $cfg_phpurl."/view.php?aid=$id";
     }
-    ClearMyAddon($id, $title);
+    UserLogin::ClearMyAddon($id, $title);
     //自动更新关联内容
-    if (is_array($automake)) {
+    if (isset($automake) && is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {
                 $ids = explode(",", ${$key});
                 foreach ($ids as $id) {
-                    MakeArt($id, true, true, $isremote);
+                    MakeArt($id, true, true);
                 }
             }
         }
     }
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新专题</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改专题</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看专题</a><a href='content_s_list.php' class='btn btn-success btn-sm'>已发布专题管理</a> ";
-    $wintitle = "成功修改一个专题";
-    $wecome_info = "专题管理::修改专题";
-    $win = new OxWindow();
-    $win->AddTitle("成功修改专题");
-    $win->AddMsgItem($msg);
-    $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
-    $win->Display();
+    $msg = Lang('more_actions')."：<a href='spec_add.php?cid=$typeid' class='btn btn-success btn-sm'>".Lang('content_continue_publish')."</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>".Lang('content_edit')."</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>".Lang('content_view')."</a><a href='content_s_list.php' class='btn btn-success btn-sm'>".Lang('content_published_main')."</a> ";
+    $wintitle = Lang("content_success_edit");
+    $wecome_info = Lang('content_main')."::".Lang('content_edit');
+    DedeWin::Instance()->AddTitle(Lang("content_success_edit")."：")->AddMsgItem($msg)->GetWindow("hand", "&nbsp;", FALSE)->Display();
 }
+?>

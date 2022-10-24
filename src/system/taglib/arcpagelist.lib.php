@@ -67,3 +67,4 @@ function multipage($allItemTotal, $currPageNum, $pagesize, $tagid = '')
   $returnUrl = $listNums;
   return $returnUrl;
 }
+?>

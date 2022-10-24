@@ -53,3 +53,4 @@ function lib_arccontent(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

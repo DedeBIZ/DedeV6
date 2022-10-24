@@ -1,4 +1,4 @@
-//选择地区的二级分类(非通用调用)
+//选择地区的二级分类（非通用调用）
 function selNext(oj, v)
 {
     var newobj = oj.options;
@@ -34,7 +34,7 @@ function selNext(oj, v)
 //子类改变事件
 function ChangeSon()
 {
-    //由于支持3级联动,所以这里需要对自己改变进行重构
+    //由于支持3级联动，所以这里需要对自己改变进行重构
     var emname = this.name.replace('_son', '');
     if( document.getElementById(emname+'_sec') )
     {
@@ -161,7 +161,7 @@ function MakeTopSelect(emname, selvalue)
     {
         topvalue = selvalue;
     }
-    //如果是小数,则依次取出顶级数值,二级数值以及三级数值
+    //如果是小数，则依次取出顶级数值，二级数值以及三级数值
     else if(!!(selvalue % 1))
     {
         secvalue = selvalue;

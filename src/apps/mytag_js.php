@@ -16,7 +16,7 @@ if ($aid == 0) die(" document.write('Request Error!'); ");
 $cacheFile = DEDEDATA.'/cache/mytag-'.$aid.'.htm';
 if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile) > $cfg_puccache_time) {
     $pv = new PartView();
-    $row = $pv->dsql->GetOne(" SELECT * FROM `#@__mytag` WHERE aid='$aid' ");
+    $row = $pv->dsql->GetOne("SELECT * FROM `#@__mytag` WHERE aid='$aid' ");
     if (!is_array($row)) {
         $myvalues = "<!--\r\ndocument.write('Not found input!');\r\n-->";
     } else {
@@ -41,3 +41,4 @@ if (isset($nocache) || !file_exists($cacheFile) || time() - filemtime($cacheFile
     }
 }
 include $cacheFile;
+?>

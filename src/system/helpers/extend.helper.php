@@ -78,3 +78,4 @@ if (!function_exists('dede_strip_tags')) {
         return strip_tags($res);
     }
 }
+?>

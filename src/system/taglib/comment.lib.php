@@ -13,3 +13,4 @@ function lib_comment(&$ctag, &$refObj)
 {
     return "";   
 }
+?>

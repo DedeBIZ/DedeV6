@@ -8,10 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 @ob_start();
 @set_time_limit(3600);
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('sys_Keyword');
+UserLogin::CheckPurview('sys_Keyword');
 if (empty($dojob)) $dojob = '';
 if ($dojob == '') {
     include DedeInclude("templets/article_description_main.htm");
@@ -38,21 +39,19 @@ if ($dojob == '') {
             if ($eid != 0) {
                 $addquery  .= " AND id<='$eid' ";
             }
-            $tjQuery = "SELECT COUNT(*) AS dd FROM #@__archives WHERE channel='{$channel}' $addquery";
+            $tjQuery = "SELECT COUNT(*) AS dd FROM `#@__archives` WHERE channel='{$channel}' $addquery";
             $row = $dsql->GetOne($tjQuery);
             $totalnum = $row['dd'];
         }
         if ($totalnum > 0) {
             $addquery  = "";
             if ($sid != 0) {
-                $addquery  .= " AND #@__archives.id>='$sid' ";
+                $addquery  .= " AND `#@__archives`.id>='$sid' ";
             }
             if ($eid != 0) {
-                $addquery  .= " AND #@__archives.id<='$eid' ";
+                $addquery  .= " AND `#@__archives`.id<='$eid' ";
             }
-            $fquery = "SELECT #@__archives.id,#@__archives.title,#@__archives.description,{$table}.{$field}
-              FROM #@__archives LEFT JOIN {$table} ON {$table}.aid=#@__archives.id
-              WHERE #@__archives.channel='{$channel}' $addquery LIMIT $startdd,$pagesize ; ";
+            $fquery = "SELECT `#@__archives`.id,`#@__archives`.title,`#@__archives`.description,{$table}.{$field} FROM `#@__archives` LEFT JOIN {$table} ON {$table}.aid=`#@__archives`.id WHERE `#@__archives`.channel='{$channel}' $addquery LIMIT $startdd,$pagesize;";
             $dsql->SetQuery($fquery);
             $dsql->Execute();
             while ($row = $dsql->GetArray()) {
@@ -69,7 +68,7 @@ if ($dojob == '') {
                 if (strlen($des) < 3) {
                     $des = "-";
                 }
-                $dsql->ExecuteNoneQuery("UPDATE #@__archives SET description='{$des}' WHERE id='{$row['id']}';");
+                $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET description='{$des}' WHERE id='{$row['id']}';");
             }
             //返回进度信息
             $startdd = $startdd + $pagesize;
@@ -77,17 +76,17 @@ if ($dojob == '') {
                 $tjlen = ceil(($startdd / $totalnum) * 100);
             } else {
                 $tjlen = 100;
-                ShowMsg('完成所有任务', 'javascript:;');
+                ShowMsg(Lang('article_description_success'), 'javascript:;');
                 exit();
             }
             $dvlen = $tjlen * 1;
-            $tjsta = "<div style='width:260px;height:16px;border:1px solid #28a745;text-align:left'><div style='max-width:260px;width:$dvlen%;height:16px;background:#28a745'></div></div>";  
-            $tjsta .= "<br>完成处理文档总数 $tjlen %";
+            $tjsta = "<div style='width:260px;height:16px;border:1px solid #1eb867;text-align:left'><div style='max-width:260px;width:$dvlen%;height:16px;background:#1eb867'></div></div>";  
+            $tjsta .= "<br>".Lang('article_description_success_arcnum')." $tjlen %";
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd={$startdd}&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
             exit();
         } else {
-            ShowMsg('完成所有任务', 'javascript:;');
+            ShowMsg(Lang('article_description_success'), 'javascript:;');
             exit();
         }
     }//获取自动摘要代码结束
@@ -130,7 +129,7 @@ if ($dojob == '') {
                 if (!preg_match("/#p#/iU", $body)) {
                     $body = SpLongBody($body, $cfg_arcautosp_size * 1024, "#p#分页标题#e#");
                     $body = addslashes($body);
-                    $dsql->ExecuteNoneQuery("UPDATE $table SET $field='$body' WHERE aid='$aid' ; ");
+                    $dsql->ExecuteNoneQuery("UPDATE $table SET $field='$body' WHERE aid='$aid';");
                 }
             }
         }//end if limit
@@ -141,15 +140,16 @@ if ($dojob == '') {
             $tjlen = 100;
         }
         $dvlen = $tjlen * 1;
-        $tjsta = "<div style='width:260px;height:16px;border:1px solid #28a745;text-align:left'><div style='max-width:260px;width:$dvlen%;height:16px;background:#28a745'></div></div>";
-        $tjsta .= "<br>完成处理文档总数 $tjlen %";
+        $tjsta = "<div style='width:260px;height:16px;border:1px solid #1eb867;text-align:left'><div style='max-width:260px;width:$dvlen%;height:16px;background:#1eb867'></div></div>";
+        $tjsta .= "<br>".Lang('article_description_success_arcnum')." $tjlen %";
         if ($tjnum < $totalnum) {
             $nurl = "article_description_main.php?totalnum=$totalnum&startdd=".($startdd + $pagesize)."&pagesize=$pagesize&table={$table}&field={$field}&dsize={$dsize}&msize={$msize}&channel={$channel}&dojob={$dojob}";
             ShowMsg($tjsta, $nurl, 0, 500);
             exit();
         } else {
-            ShowMsg('完成所有任务', 'javascript:;');
+            ShowMsg(Lang('article_description_success'), 'javascript:;');
             exit();
         }
     }//更新自动分页处理代码结束
 }
+?>

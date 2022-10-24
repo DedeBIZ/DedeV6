@@ -131,3 +131,4 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
     }
     return $revalue;
 }
+?>

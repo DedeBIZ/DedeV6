@@ -8,8 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DataListCP;
+use DedeBIZ\libraries\DedeWin;
 require_once(dirname(__FILE__).'/config.php');
-require_once(DEDEINC.'/datalistcp.class.php');
 require_once(DEDEINC.'/common.func.php');
 if (empty($dopost)) $dopost = '';
 if (empty($fmdo)) $fmdo = '';
@@ -17,7 +18,7 @@ function username($mid)
 {
     global $dsql;
     if (!isset($mid) || empty($mid)) {
-        return "游客";
+        return Lang("tourist");
         exit();
     } else {
         $sql = "SELECT uname FROM `#@__member` WHERE `mid` = '$mid'";
@@ -31,34 +32,34 @@ function typename($me)
 {
     switch ($me) {
         case $me == 1:
-            return $me = "错别字";
+            return $me = Lang("erraddsave_type_1");
             break;
         case $me == 2:
-            return $me = "成语运用不当";
+            return $me = Lang("erraddsave_type_2");
             break;
         case $me == 3:
-            return $me = "专业术语写法不规则";
+            return $me = Lang("erraddsave_type_3");
             break;
         case $me == 4:
-            return $me = "产品与图片不符";
+            return $me = Lang("erraddsave_type_4");
             break;
         case $me == 5:
-            return $me = "事实年代以及内容错误";
+            return $me = Lang("erraddsave_type_5");
             break;
         case $me == 6:
-            return $me = "事实年代以及内容错误";
+            return $me = Lang("erraddsave_type_6");
             break;
         case $me == 7:
-            return $me = "其他错误";
+            return $me = Lang("erraddsave_type_7");
             break;
         default:
-            return $me = "未知错误";
+            return $me = Lang("erraddsave_type_unknow");
             break;
     }
 }
 if ($dopost == "delete") {
     if ($id == '') {
-        ShowMsg("参数无效", "-1");
+        ShowMsg(Lang("invalid_parameter"), "-1");
         exit();
     }
     if ($fmdo == 'yes') {
@@ -67,26 +68,25 @@ if ($dopost == "delete") {
             $query = "DELETE FROM `#@__erradd` WHERE `id` = '$var'";
             $dsql->ExecuteNoneQuery($query);
         }
-        ShowMsg("成功删除指定的文档", "erraddsave.php");
+        ShowMsg(Lang("content_delete_success"), "erraddsave.php");
         exit();
     } else {
-        require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "删除";
-        $wecome_info = "<a href='erraddsave.php'>错误管理</a>::删除错误";
-        $win = new OxWindow();
-        $win->Init("erraddsave.php", "js/blank.js", "POST");
-        $win->AddHidden("fmdo", "yes");
-        $win->AddHidden("dopost", $dopost);
-        $win->AddHidden("id", $id);
-        $win->AddTitle("您确定要删除“ $id ”这些错误提示");
-        $winform = $win->GetWindow("ok");
-        $win->Display();
+        $wintitle = Lang("delete");
+        $wecome_info = "<a href='erraddsave.php'>".Lang('erraddsave')."</a>::".Lang('erraddsave_delete');
+        DedeWin::Instance()->Init("erraddsave.php", "js/blank.js", "POST")
+        ->AddHidden("fmdo", "yes")
+        ->AddHidden("dopost", $dopost)
+        ->AddHidden("id", $id)
+        ->AddTitle(Lang('content_delete_confirm',array('qstr'=>$id)))
+        ->GetWindow("ok")
+        ->Display();
         exit();
     }
     exit();
 }
-$sql = "SELECT * FROM `#@__erradd` ORDER BY id desc";
+$sql = "SELECT * FROM `#@__erradd` ORDER BY id DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/erradd.htm");
 $dlist->SetSource($sql);
 $dlist->display();
+?>

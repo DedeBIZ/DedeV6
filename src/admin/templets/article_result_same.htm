@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>重复文档检测</title>
+		<title><?php echo Lang('article_keywords_main');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 		<script>
 			//获得选中文件的文件名
 			function getCheckboxItem() {
@@ -46,7 +46,7 @@
 	<body>
 		<table width="100%" cellpadding="2" cellspacing="1" class="table maintable">
 			<tr>
-				<td bgcolor="#f8f8f8" colspan="3">重复文档列表</td>
+				<td bgcolor="#f8f8f8" colspan="3"><?php echo Lang('article_keywords_main');?></td>
 			</tr>
 			<form name="form2" method="POST" action="article_test_same.php">
 				<input type="hidden" name="deltype" value="<?php echo $deltype;?>">
@@ -55,17 +55,17 @@
 				<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
 				<input type="hidden" name="maintable" value="<?php echo $maintable;?>">
 				<input type="hidden" name="titles" value="">
-				<tr bgcolor="#fbfce2" align="center">
-					<td width="10%">选择</td>
-					<td width="10%">重复数量</td>
-					<td width="80%">文档标题</td>
+				<tr align="center" bgcolor="#f8fcf2">
+					<td width="10%"><?php echo Lang('select');?></td>
+					<td width="10%"><?php echo Lang('numbers');?></td>
+					<td width="80%"><?php echo Lang('title');?></td>
 				</tr>
 				<?php
 				while($row = $dsql->GetArray())
 				{
-				   if($row['dd']==1 ) break;
+				   if ($row['dd']==1 ) break;
 				?>
-				<tr align="center" onMouseMove="javascript:this.bgColor='#EFEFEF';" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center" onMouseMove="javascript:this.bgColor='#EFEFEF';" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><input type="checkbox" name="arcTitles" id="arcTitle" value="<?php echo urlencode($row['title'])?>"></td>
 					<td>
 						<?php
@@ -75,14 +75,12 @@
 					</td>
 					<td><?php echo $row['title'];?></td>
 				</tr>
-				<?php
-				}
-				?>
+				<?php }?>
 				<tr>
 					<td colspan="3">
-						<input type="button" name="bt1" onclick="selAll()" value="全选" class="btn btn-success btn-sm">
-						<input type="button" name="bt2" onclick="noSelAll()" value="反选" class="btn btn-success btn-sm">
-						<input type="button" name="bt3" onclick="delArc()" value="删除" class="btn btn-success btn-sm">
+						<input type="button" name="bt1" onclick="selAll()" value="<?php echo Lang('select_all');?>" class="btn btn-success btn-sm">
+						<input type="button" name="bt2" onclick="noSelAll()" value="<?php echo Lang('reverse_selection');?>" class="btn btn-success btn-sm">
+						<input type="button" name="bt3" onclick="delArc()" value="<?php echo Lang('delete');?>" class="btn btn-success btn-sm">
 					</td>
 				</tr>
 			</form>

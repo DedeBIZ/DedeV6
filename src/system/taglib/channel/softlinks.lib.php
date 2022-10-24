@@ -124,3 +124,4 @@ function getDownloads($url)
     }
     return $downloads;
 }
+?>

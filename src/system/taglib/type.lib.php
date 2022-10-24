@@ -39,3 +39,4 @@ function lib_type(&$ctag, &$refObj)
         return $revalue;
     }
 }
+?>

@@ -56,7 +56,7 @@ else if ($open == 1) {
     $hash = md5($link);
     $rs = $dsql->ExecuteNoneQuery2("UPDATE `#@__downloads` SET downloads = downloads + 1 WHERE hash='$hash' ");
     if ($rs <= 0) {
-        $query = " INSERT INTO `#@__downloads`(`hash`,`id`,`downloads`) VALUES('$hash','$id',1); ";
+        $query = " INSERT INTO `#@__downloads` (`hash`,`id`,`downloads`) VALUES ('$hash','$id',1); ";
         $dsql->ExecNoneQuery($query);
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
@@ -191,8 +191,7 @@ else if ($open == 2) {
                     exit(0);
                 }
                 //有足够金币，记录用户信息
-                $inquery = "INSERT INTO `#@__member_operation`(mid,oldinfo,money,mtime,buyid,product,pname,sta)
-                  VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."', 'ARCHIVE".$id."', 'archive','下载软件', 2); ";
+                $inquery = "INSERT INTO `#@__member_operation` (mid,oldinfo,money,mtime,buyid,product,pname,sta) VALUES ('".$cfg_ml->M_ID."','$arctitle','$needMoney','".time()."', 'ARCHIVE".$id."', 'archive','下载软件', 2); ";
                 //记录定单
                 if (!$dsql->ExecuteNoneQuery($inquery)) {
                     ShowMsg('记录定单失败, 请返回', '-1');
@@ -207,9 +206,10 @@ else if ($open == 2) {
     $hash = md5($softUrl);
     $rs = $dsql->ExecuteNoneQuery2("UPDATE `#@__downloads` SET downloads = downloads+1 WHERE hash='$hash' ");
     if ($rs <= 0) {
-        $query = " INSERT INTO `#@__downloads`(`hash`, `id`, `downloads`) VALUES('$hash', '$id', 1); ";
+        $query = "INSERT INTO `#@__downloads` (`hash`, `id`, `downloads`) VALUES ('$hash', '$id', 1); ";
         $dsql->ExecNoneQuery($query);
     }
     header("location:{$softUrl}");
     exit();
 }//opentype=2
+?>

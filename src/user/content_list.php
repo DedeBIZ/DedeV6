@@ -23,7 +23,7 @@ $positionname = '';
 $menutype = 'content';
 $mid = $cfg_ml->M_ID;
 $tl = new TypeLink($cid);
-$cInfos = $tl->dsql->GetOne("SELECT arcsta,issend,issystem,usertype FROM `#@__channeltype`  WHERE id='$channelid'; ");
+$cInfos = $tl->dsql->GetOne("SELECT arcsta,issend,issystem,usertype FROM `#@__channeltype` WHERE id='$channelid'; ");
 if (!is_array($cInfos)) {
     ShowMsg('模型不存在', '-1');
     exit();
@@ -68,11 +68,7 @@ while ($row = $dsql->GetArray()) {
 if ($mtypesid != 0) {
     $whereSql .= " And arc.mtype = '$mtypesid'";
 }
-$query = "SELECT arc.id,arc.typeid,arc.senddate,arc.flag,arc.ismake,arc.channel,arc.arcrank,arc.click,arc.title,arc.color,arc.litpic,arc.pubdate,arc.mid,tp.typename,ch.typename as channelname
-    from `#@__archives` arc
-    left join `#@__arctype` tp on tp.id=arc.typeid
-    left join `#@__channeltype` ch on ch.id=arc.channel
-    $whereSql order by arc.senddate desc ";
+$query = "SELECT arc.id,arc.typeid,arc.senddate,arc.flag,arc.ismake,arc.channel,arc.arcrank,arc.click,arc.title,arc.color,arc.litpic,arc.pubdate,arc.mid,tp.typename,ch.typename as channelname FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp on tp.id=arc.typeid LEFT JOIN `#@__channeltype` ch on ch.id=arc.channel $whereSql ORDER BY arc.senddate DESC";
 $dlist = new DataListCP();
 $dlist->pagesize = 10;
 $dlist->SetParameter("dopost", "listArchives");
@@ -82,3 +78,4 @@ $dlist->SetParameter("channelid", $channelid);
 $dlist->SetTemplate(DEDEMEMBER."/templets/content_list.htm");
 $dlist->SetSource($query);
 $dlist->Display();
+?>

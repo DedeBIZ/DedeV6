@@ -8,15 +8,13 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
+use DedeBIZ\Template\DedeTagParse;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('c_New');
+UserLogin::CheckPurview('c_New');
 require_once(DEDEADMIN."/inc/inc_admin_channel.php");
-require_once(DEDEINC."/dedetag.class.php");
 if (empty($action)) $action = '';
 $mysql_version = $dsql->GetVersion();
-/*----------------------
-function Save()
----------------------*/
 if ($action == 'save') {
     //修改字段配置信息
     $dfvalue = trim($vdefault);
@@ -24,14 +22,14 @@ if ($action == 'save') {
     $mxlen = $maxlength;
     if (preg_match("#^(select|radio|checkbox)$#i", $dtype)) {
         if (!preg_match("#,#", $dfvalue)) {
-            ShowMsg("您设定了字段为 {$dtype} 类型，必须在默认值中指定元素列表，如：'a,b,c' ", "-1");
+            ShowMsg(Lang('mychannel_field_select_check',array('dtype'=>$dtype)), "-1");
             exit();
         }
     }
     if ($dtype == 'stepselect') {
-        $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='$fieldname' ");
+        $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='$fieldname'");
         if (!is_array($arr)) {
-            ShowMsg("您设定了字段为联动类型，但系统中没找到与您定义的字段名相同的联动组名", "-1");
+            ShowMsg(Lang("mychannel_field_stepselect_check"), "-1");
             exit();
         }
     }
@@ -49,7 +47,7 @@ if ($action == 'save') {
     $rs = $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` ADD $ntabsql ");
     if (!$rs) {
         $gerr = $dsql->GetError();
-        ShowMsg("增加字段失败，错误提示为：".$gerr, "javascript:;");
+        ShowMsg(Lang('mychannel_field_err_add',array('err'=>$gerr)), "javascript:;");
         exit();
     }
     //检测旧配置信息，并替换为新配置
@@ -69,18 +67,15 @@ if ($action == 'save') {
     }
     $addlist = GetAddFieldList($dtp, $oksetting);
     $oksetting = addslashes($oksetting);
-    $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting',listfields='$addlist' WHERE id='$id' ");
+    $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__channeltype` SET fieldset='$oksetting',listfields='$addlist' WHERE id='$id'");
     if (!$rs) {
         $grr = $dsql->GetError();
-        ShowMsg("保存节点配置出错".$grr, "javascript:;");
+        ShowMsg(Lang('mychannel_field_err_savenode',array('err'=>$grr)), "javascript:;");
         exit();
     }
-    ShowMsg("成功增加一个字段", "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
+    ShowMsg(Lang("mychannel_field_add_success"), "mychannel_edit.php?id={$id}&dopost=edit&openfield=1");
     exit();
 }
-/*----------------------
-function ShowPage()
----------------------*/
 //检测模型相关信息，并初始化相关数据
 $row = $dsql->GetOne("SELECT '#@__archives' AS maintable,addtable FROM `#@__channeltype` WHERE id='$id'");
 $trueTable = $row['addtable'];
@@ -97,14 +92,14 @@ $fields = array();
 if (empty($row['maintable'])) $row['maintable'] = '#@__archives';
 $rs = $dsql->SetQuery("SHOW fields FROM `{$row['maintable']}`");
 $dsql->Execute('a');
-while ($nrow = $dsql->GetArray('a', MYSQL_ASSOC)) {
+while ($nrow = $dsql->GetArray('a', PDO::FETCH_ASSOC)) {
     if ($cfg_dbtype == 'sqlite') {
         $nrow['Field'] = $nrow['name'];
     }
     $fields[strtolower($nrow['Field'])] = 1;
 }
 $dsql->Execute("a", "SHOW fields FROM `{$row['addtable']}`");
-while ($nrow = $dsql->GetArray('a', MYSQL_ASSOC)) {
+while ($nrow = $dsql->GetArray('a', PDO::FETCH_ASSOC)) {
     if ($cfg_dbtype == 'sqlite') {
         $nrow['Field'] = $nrow['name'];
     }
@@ -124,3 +119,4 @@ while ($row = $dsql->GetObject()) {
     $channelArray[$row->id]['nid'] = $row->nid;
 }
 require_once(DEDEADMIN."/templets/mychannel_field_add.htm");
+?>

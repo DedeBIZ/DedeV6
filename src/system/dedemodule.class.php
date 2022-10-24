@@ -585,3 +585,4 @@ class DedeModule
         unset($this->fileListNames);
     }
 }//End Class
+?>

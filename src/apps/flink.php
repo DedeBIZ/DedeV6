@@ -24,15 +24,15 @@ if ($dopost == 'save') {
     $logo = RemoveXSS(dede_htmlspecialchars($logo));
     $typeid = intval($typeid);
     $dtime = time();
-    $query = "INSERT INTO `#@__flink`(sortrank,url,webname,logo,msg,email,typeid,dtime,ischeck)
-                    VALUES('50','$url','$webname','$logo','$msg','$email','$typeid','$dtime','0')";
+    $query = "INSERT INTO `#@__flink` (sortrank,url,webname,logo,msg,email,typeid,dtime,ischeck) VALUES ('50','$url','$webname','$logo','$msg','$email','$typeid','$dtime','0')";
     $dsql->ExecuteNoneQuery($query);
     ShowMsg('成功增加一个链接，但需要审核后才能显示', 'flink.php');
     exit;
 } elseif ($dopost == 'add') {
-    //显示模板(简单PHP文件)
+    //显示模板简单PHP文件
     include_once(DEDETEMPLATE.'/plus/flink-add.htm');
     exit;
 }
 //显示模板简单PHP文件
 include_once(DEDETEMPLATE.'/plus/flink-list.htm');
+?>

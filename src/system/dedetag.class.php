@@ -1036,3 +1036,4 @@ class DedeAttributeParse
         //print_r($this->cAttributes->Items);
     } //end func
 }
+?>

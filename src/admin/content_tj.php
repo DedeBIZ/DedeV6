@@ -8,11 +8,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('sys_ArcTj');
-$row1 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny` ");
-$row2 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__feedback` ");
-$row3 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__member` ");
+UserLogin::CheckPurview('sys_ArcTj');
+$row1 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__arctiny`");
+$row2 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__feedback`");
+$row3 = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__member`");
 /**
  *  获取文档
  *
@@ -33,17 +34,18 @@ function GetArchives($dsql, $ordertype)
     } else {
         $ordersql = " ORDER BY click DESC ";
     }
-    $query = "SELECT id,title,click,scores FROM #@__archives $swhere $ordersql LIMIT 0,20 ";
+    $query = "SELECT id,title,click,scores FROM `#@__archives` $swhere $ordersql LIMIT 0,20";
     $dsql->SetQuery($query);
     $dsql->Execute('ga');
     while ($row = $dsql->GetObject('ga')) {
         if (preg_match("#feedback#i", $ordertype)) {
-            $moreinfo = "[<a target='_blank' href='".$GLOBALS['cfg_phpurl']."/feedback.php?aid={$row->id}'>评论：{$row->scores}</a>]";
+            $moreinfo = "[<a target='_blank' href='".$GLOBALS['cfg_phpurl']."/feedback.php?aid={$row->id}'>".Lang('feedback')."：{$row->scores}</a>]";
         } else {
-            $moreinfo = "[点击：{$row->click}]";
+            $moreinfo = "[".Lang('click')."：{$row->click}]";
         }
         echo "·<a href='archives_do.php?aid={$row->id}&dopost=viewArchives' target='_blank'>";
         echo cn_substr($row->title, 30)."</a>{$moreinfo}<br>\r\n";
     }
 }
 include DedeInclude('templets/content_tj.htm');
+?>

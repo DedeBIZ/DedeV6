@@ -46,8 +46,7 @@ class TypeLink
         $this->typeDir = '';
         $this->OptionArrayList = '';
         //载入类目信息
-        $query = "SELECT tp.*,ch.typename as ctypename,ch.addtable,ch.issystem FROM `#@__arctype` tp left join `#@__channeltype` ch
-        on ch.id=tp.channeltype  WHERE tp.id='$typeid' ";
+        $query = "SELECT tp.*,ch.typename as ctypename,ch.addtable,ch.issystem FROM `#@__arctype` tp left join `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$typeid' ";
         if ($typeid > 0) {
             $this->TypeInfos = $this->dsql->GetOne($query);
             if (is_array($this->TypeInfos)) {
@@ -76,10 +75,7 @@ class TypeLink
         $this->typeDir = "";
         $this->OptionArrayList = "";
         //载入类目信息
-        $query = "
-        SELECT #@__arctype.*,#@__channeltype.typename as ctypename
-        FROM #@__arctype left join #@__channeltype
-        on #@__channeltype.id=#@__arctype.channeltype WHERE #@__arctype.id='$typeid' ";
+        $query = " SELECT `#@__arctype`.*,`#@__channeltype`.typename as ctypename FROM `#@__arctype` LEFT JOIN `#@__channeltype` on `#@__channeltype`.id=`#@__arctype`.channeltype WHERE `#@__arctype`.id='$typeid' ";
         $this->dsql->SetQuery($query);
         $this->TypeInfos = $this->dsql->GetOne();
     }
@@ -302,14 +298,11 @@ class TypeLink
         }
         $likeType = "";
         if ($typetype == "top") {
-            $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl
-          FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
+            $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         } else if ($typetype == "sun" || $typetype == "son") {
-            $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl
-          FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
+            $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         } else if ($typetype == "self") {
-            $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl
-            FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
+            $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC limit 0,$row";
         }
         //AND ID<>'$typeid'
         $dtp2 = new DedeTagParse();
@@ -369,3 +362,4 @@ class TypeLink
         return $likeType;
     } //GetChannel
 }//End Class
+?>

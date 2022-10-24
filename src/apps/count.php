@@ -30,13 +30,13 @@ if ($cid < 0) {
 $mid = (isset($mid) && is_numeric($mid)) ? $mid : 0;
 //UpdateStat();
 if (!empty($maintable)) {
-    $dsql->ExecuteNoneQuery(" UPDATE `{$maintable}` SET click=click+1 WHERE {$idtype}='$aid' ");
+    $dsql->ExecuteNoneQuery("UPDATE `{$maintable}` SET click=click+1 WHERE {$idtype}='$aid' ");
 }
 if (!empty($mid)) {
-    $dsql->ExecuteNoneQuery(" UPDATE `#@__member_tj` SET pagecount=pagecount+1 WHERE mid='$mid' ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET pagecount=pagecount+1 WHERE mid='$mid' ");
 }
 if (!empty($view)) {
-    $row = $dsql->GetOne(" SELECT click FROM `{$maintable}` WHERE {$idtype}='$aid' ");
+    $row = $dsql->GetOne("SELECT click FROM `{$maintable}` WHERE {$idtype}='$aid' ");
     if (is_array($row)) {
         if (!empty($format)) {
             $result = array(
@@ -52,3 +52,4 @@ if (!empty($view)) {
     }
 }
 exit();
+?>

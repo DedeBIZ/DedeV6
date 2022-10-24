@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>增加广告</title>
+  <title><?php echo Lang('ad_add');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/moment.min.js"></script>
@@ -14,7 +14,7 @@
   <script>
     function checkSubmit() {
       if (document.form1.tagname.value == "") {
-        alert("广告标识不能为空");
+        alert("<?php echo Lang('ad_tagname_empty');?>");
         document.form1.tagname.focus();
         return false;
       }
@@ -30,18 +30,18 @@
         //"timePickerSeconds": true,
         "showCustomRangeLabel": false,
         ranges: {
-          '今日': [moment(), moment()],
-          '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          '本月': [moment().startOf('month'), moment().startOf('month')],
-          '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+          '<?php echo Lang("today");?>': [moment(), moment()],
+          '<?php echo Lang("yestoday");?>': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          '<?php echo Lang("this_month");?>': [moment().startOf('month'), moment().startOf('month')],
+          '<?php echo Lang("last_month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
         },
         "locale": {
-          format: 'YYYY-MM-DD HH:mm',
-          applyLabel: '确定',
-          cancelLabel: '取消',
-          daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
-          monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
-            '七月', '八月', '九月', '十月', '十一月', '十二月'],
+          format: 'YYYY-MM-DD HH:mm:ss',
+          applyLabel: '<?php echo Lang("ok");?>',
+          cancelLabel: '<?php echo Lang("cancel");?>',
+          daysOfWeek: ['<?php echo Lang("sun");?>','<?php echo Lang("mon");?>','<?php echo Lang("tues");?>','<?php echo Lang("wed");?>','<?php echo Lang("thur");?>','<?php echo Lang("fri");?>','<?php echo Lang("sat");?>'],
+          monthNames: ['<?php echo Lang("jan");?>','<?php echo Lang("feb");?>','<?php echo Lang("mar");?>','<?php echo Lang("apr");?>','<?php echo Lang("may");?>','<?php echo Lang("jun");?>',
+            '<?php echo Lang("jul");?>','<?php echo Lang("aug");?>','<?php echo Lang("sept");?>','<?php echo Lang("oct");?>','<?php echo Lang("nov");?>','<?php echo Lang("dec");?>'],
           firstDay: 1
         }
       }, function (start) {
@@ -58,7 +58,7 @@
     }
     .typetab ul li {
       float: left;
-      width: 64px;
+      width: 90px;
       height: 26px;
       line-height: 26px;
       background: #f8f8f8;
@@ -66,7 +66,7 @@
       cursor: pointer;
     }
     .typetab ul .act {
-      background:#fbfce2;
+      background:#f8fcf2;
     }
     .i_table {
       border: 1px solid #eee;
@@ -75,9 +75,9 @@
 </head>
 <body>
   <form action="ad_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
-    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+    <table width="98%"align="center"  cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
       <tr>
-        <td bgcolor="#f8f8f8"><a href="ad_main.php">广告管理</a> &gt; 增加广告位置</td>
+        <td bgcolor="#f8f8f8"><a href="ad_main.php"><?php echo Lang('ad_main');?></a> &gt; <?php echo Lang('ad_add');?></td>
       </tr>
       <tr>
         <td>
@@ -86,61 +86,61 @@
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <input type="hidden" name="dopost" value="save">
             <tr>
-              <td colspan="3">广告代码的调用方法：{dede:myad name='广告位标识'/} </td>
+              <td colspan="3"><?php echo Lang('ad_tip');?></td>
             </tr>
             <tr>
-              <td>广告位标识：</td>
-              <td colspan="2"><input type="text" name="tagname" id="tagname" style="width:260px">（使用英文或数字表示的简洁标识）</td>
+              <td><?php echo Lang('ad_tagname');?>：</td>
+              <td colspan="2"><input type="text" name="tagname" id="tagname" style="width:260px"><?php echo Lang('ad_tagname_tip');?></td>
             </tr>
             <tr>
-              <td>广告分类：</td>
+              <td><?php echo Lang('ad_clsid');?>：</td>
               <td colspan="2">
                 <select name="clsid" id="clsid" style="width:160px">
-                  <option value="0">默认分类</option>
+                  <option value="0"><?php echo Lang('ad_clsid_default');?></option>
                   <?php echo $option;?>
                 </select>
               </td>
             </tr>
             <tr>
-              <td>广告投放范围：</td>
+              <td><?php echo Lang('ad_typeid');?>：</td>
               <td colspan="2">
                 <?php
-                $tl = new TypeLink(0);
+                $tl = new DedeBIZ\TypeLink\TypeLink(0);
                 $typeOptions = $tl->GetOptionArray(0,0,0);
                 echo "<select name='typeid' style='width:160px'>";
-                echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>";
+                echo "<option value='0' selected>".Lang('ad_typeid_0')."</option>";
                 echo $typeOptions;
                 echo "</select>";
-                ?>（如果在所选栏目找不到指定标识的广告内容，系统会自动搜索父栏目）
+                ?><?php echo Lang('ad_typeid_tip');?>
               </td>
             </tr>
             <tr>
-              <td>广告位名称：</td>
+              <td><?php echo Lang('ad_adname');?>：</td>
               <td colspan="2"><input type="text" name="adname" id="adname" style="width:260px"></td>
             </tr>
             <tr>
-              <td>时间限制：</td>
+              <td><?php echo Lang('ad_timeset');?>：</td>
               <td colspan="2">
-                <label><input type="radio" name="timeset" value="0" checked="1"> 永不过期</label>
-                <label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
+                <label><input type="radio" name="timeset" value="0" checked="1"> <?php echo Lang('ad_timeset_0');?></label>
+                <label><input type="radio" name="timeset" value="1"> <?php echo Lang('ad_timeset_1');?></label>
               </td>
             </tr>
             <tr>
-              <td>投放时间：</td>
+              <td><?php echo Lang('ad_time');?>：</td>
               <td colspan="2">
-                从：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" style="width:160px">
-                到：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" style="width:160px">
+                <?php echo Lang('ad_from');?>：<input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" style="width:160px">
+                <?php echo Lang('ad_to');?>：<input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" style="width:160px">
               </td>
             </tr>
             <tr>
-              <td height="80">广告内容：</td>
+              <td height="80"><?php echo Lang('ad_normbody');?>：</td>
               <td width="70%">
                 <div class="typetab">
                   <ul id="changeTab">
-                    <li id="t_code" class="act">代码</li>
-                    <li id="t_txt">文字</li>
-                    <li id="t_img">图片</li>
-                    <li id="t_flash">Flash</li>
+                    <li id="t_code" class="act"><?php echo Lang('ad_t_code');?></li>
+                    <li id="t_txt"><?php echo Lang('ad_t_txt');?></li>
+                    <li id="t_img"><?php echo Lang('ad_t_img');?></li>
+                    <li id="t_flash"><?php echo Lang('ad_t_flash');?></li>
                   </ul>
                   <div style="clear:both"></div>
                 </div>
@@ -149,24 +149,24 @@
               <td width="10%"></td>
             </tr>
             <tr>
-              <td height="80">过期显示内容：</td>
+              <td height="80"><?php echo Lang('ad_expbody');?>：</td>
               <td><textarea name="expbody" rows="10" id="expbody" style="width:80%;height:100px"></textarea></td>
               <td></td>
             </tr>
             <tr>
-              <td colspan="3" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+              <td align="center" colspan="3" class="py-2"><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
   </form>
-  <div style="display:none" id="formtxt">
+  <div id="formtxt" style="display:none">
     <div class="content" id="code" style="display:none">
       <table width="80%" cellpadding="3" cellspacing="1" class="i_table">
         <tr>
-          <td width="260">广告代码:<br>
-            请填写广告代码，支持html代码</td>
+          <td width="260"><?php echo Lang('ad_normbody_code');?>:<br>
+            <?php echo Lang('ad_normbody_code_tip');?></td>
           <td><textarea name="normbody[htmlcode]" style="width:390px;height:100px"></textarea></td>
         </tr>
       </table>
@@ -174,19 +174,19 @@
     <div class="content" id="txt" style="display:none">
       <table width="80%" cellpadding="3" cellspacing="1" class="i_table">
         <tr>
-          <td width="260">文字内容 *</td>
+          <td width="260"><?php echo Lang('ad_normbody_title');?> *</td>
           <td><input type="text" name="normbody[title]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>文字链接 *</td>
+          <td><?php echo Lang('ad_normbody_link');?> *</td>
           <td><input type="text" name="normbody[link]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>文字颜色</td>
+          <td><?php echo Lang('ad_normbody_color');?></td>
           <td><input type="text" name="normbody[color]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>文字大小</td>
+          <td><?php echo Lang('ad_normbody_size');?></td>
           <td><input type="text" name="normbody[size]" value="" style="width:360px"></td>
         </tr>
       </table>
@@ -194,23 +194,23 @@
     <div class="content" id="img" style="display:none">
       <table width="80%" cellpadding="3" cellspacing="1" class="i_table">
         <tr>
-          <td width="260">图片地址 *</td>
+          <td width="260"><?php echo Lang('ad_normbody_img_url');?> *</td>
           <td><input type="text" name="normbody[url]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>图片链接 *</td>
+          <td><?php echo Lang('ad_normbody_img_link');?> *</td>
           <td><input type="text" name="normbody[link]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>图片宽度</td>
+          <td><?php echo Lang('ad_normbody_img_width');?></td>
           <td><input type="text" name="normbody[width]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>图片高度</td>
+          <td><?php echo Lang('ad_normbody_img_height');?></td>
           <td><input type="text" name="normbody[height]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>图片描述</td>
+          <td><?php echo Lang('ad_normbody_img_descrip');?></td>
           <td><input type="text" name="normbody[descrip]" value="" style="width:360px"></td>
         </tr>
       </table>
@@ -218,15 +218,15 @@
     <div class="content" id="flash" style="display:none">
       <table width="80%" cellpadding="3" cellspacing="1" class="i_table">
         <tr>
-          <td width="260">flash链接</td>
+          <td width="260"><?php echo Lang('ad_normbody_flash_link');?></td>
           <td><input type="text" name="normbody[link]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>flash宽度</td>
+          <td><?php echo Lang('ad_normbody_flash_width');?></td>
           <td><input type="text" name="normbody[width]" value="" style="width:360px"></td>
         </tr>
         <tr>
-          <td>flash高度</td>
+          <td><?php echo Lang('ad_normbody_flash_height');?></td>
           <td><input type="text" name="normbody[height]" value="" style="width:360px"></td>
         </tr>
       </table>

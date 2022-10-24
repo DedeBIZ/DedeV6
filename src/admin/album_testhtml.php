@@ -18,3 +18,4 @@ echo "<div class='coolbg62'><xmp>";
 echo "捕获的图片：\r\n";
 print_r($img_array);
 echo "</xmp></div>\r\n";
+?>

@@ -102,7 +102,7 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 		newobj.style.left = 100;
 		newobj.style.display = 'block';
 		document.body.appendChild(newobj);
-		newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif" alit="" />上传中...';
+		newobj.innerHTML = '<img src="../../static/web/img/load.gif">上传中...';
 	}
 	newobj.style.display = 'block';
 	//提交后还原form的action等参数
@@ -177,7 +177,6 @@ function PutVote(str) {
 		parent.document.form1.voteid.value = str;
 		tb_remove(true);
 	}
-
 }
 function ClearDivCt(objname) {
 	if (!$Obj(objname)) return;
@@ -213,7 +212,7 @@ function LoadNewDiv(e, surl, oname) {
 	if ($Nav() == 'IE') {
 		var posLeft = window.event.clientX - 20;
 		var posTop = window.event.clientY - 30;
-		// IE下scrollTop的兼容性问题
+		//IE下scrollTop的兼容性问题
 		var scrollTop = document.documentElement.scrollTop || window.pageYOffset;
 		if (typeof (scrollTop) == 'undefined') scrollTop = document.body.scrollTop;
 		posTop += scrollTop;
@@ -314,10 +313,10 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	}
 	if (posTop > 500) posTop = 500;
 	if (posLeft < 50) posLeft = 50;
-	newobj.style.minWidth = "460px";
+	newobj.style.minWidth = "450px";
 	newobj.style.top = posTop + "px";
 	newobj.style.left = posLeft + "px";
-	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
+	newobj.innerHTML = '<div style="margin-top:10px;margin-left:10px;"><img src="../../static/web/img/load.gif">Loading...</div>';
 	newobj.style.display = 'block';
 	fetch(surl).then(resp => resp.text()).then((d) => {
 		newobj.innerHTML = d;
@@ -343,14 +342,14 @@ function getEvent() {
 	}
 	return null;
 }
-//模拟ondrop事件相关代码
-/*----------------------------
+/*
+模拟ondrop事件相关代码
 leftLeaning = 300;
 如果对象内容固定，用onmousedown=DropStart去除底下的DropStop
 newobj.ondblclick =  DropStart;
 newobj.onmousemove = DropMove;
 newobj.onmousedown = DropStop;
-----------------------------*/
+*/
 function DropStart() {
 	this.style.cursor = 'move';
 }
@@ -371,12 +370,12 @@ function DropMove() {
 	this.style.top = posTop;
 	this.style.left = posLeft - leftLeaning;
 }
-//对指定的元素绑定move事件
-/*-----------------------------
+/*
+对指定的元素绑定move事件
 onmousemove="DropMoveHand('divname', 225);"
 onmousedown="DropStartHand();"
 onmouseup="DropStopHand();"
------------------------------*/
+*/
 function DropStartHand() {
 	canMove = (canMove ? false : true);
 }
@@ -512,18 +511,18 @@ function guid() {
 	}
 	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-// 函数会返回一个modalID，通过这个ID可自已定义一些方法
-// 这里用到了一个展开语法
-// https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+//函数会返回一个modalID，通过这个ID可自已定义一些方法
+//这里用到了一个展开语法
+//https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
-	title = "系统提示";
+	title = typeof dedeLang==="function"? dedeLang("msg_title") : '信息提示';
 	size = "";
 	if (typeof content == "undefined") content = "";
 	modalID = guid();
 	var footer = `<button type="button" class="btn btn-primary" onClick="CloseModal(\'GKModal${modalID}\')">Ok</button>`;
 	var noClose = false;
 	if (args.length == 1) {
-		// 存在args参数
+		//存在args参数
 		if (typeof args[0].title !== 'undefined' && args[0].title != "") {
 			title = args[0].title;
 		}
@@ -642,7 +641,7 @@ $(document).ready(function () {
 		litpicImgSrc = "";
 		litpicImg = "";
 		$("#picname").val(litpicImg);
-		$("#litPic").attr("src", "../../static/web/img/defaultpic.jpg");
+		$("#litPic").attr("src", "../../static/web/img/thumbnail.jpg");
 	})
 	//添加图片
 	$("#iptAddImages").change(function (event) {
@@ -689,7 +688,7 @@ $(document).ready(function () {
 			'"0><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:150px;height:100px;overflow:hidden;"></div></div>', {
 			footer: footer,
 			noClose: false,
-			title: '缩略图裁剪',
+			title: 'DedeBIZ缩略图裁剪',
 		});
 		setTimeout(function () {
 			$("#cropImg" + mdlCropperID).cropper(optCropper);

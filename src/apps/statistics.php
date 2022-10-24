@@ -23,3 +23,4 @@ if ($dopost == "stat") {
 }
 $v = $stat->GetStat();
 echo $v;
+?>

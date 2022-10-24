@@ -8,21 +8,22 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DedeWin;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
-CheckPurview('sys_User');
-require_once(DEDEINC.'/typelink/typelink.class.php');
+UserLogin::CheckPurview('sys_User');
 if (empty($dopost)) $dopost = '';
 $id = preg_replace("#[^0-9]#", '', $id);
 if ($dopost == 'saveedit') {
     CheckCSRF();
     $pwd = trim($pwd);
     if ($pwd != '' && preg_match("#[^0-9a-zA-Z_@!\.-]#", $pwd)) {
-        ShowMsg('密码不合法，请使用[0-9a-zA-Z_@!.-]内的字符', '-1', 0, 3000);
+        ShowMsg(Lang('sys_admin_err_pwd_check'), '-1', 0, 3000);
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
-        ShowMsg("请填写正确的验证安全码", "sys_admin_user_edit.php?id={$id}&dopost=edit");
+        ShowMsg(Lang("sys_admin_err_safecodeok_check"), "sys_admin_user_edit.php?id={$id}&dopost=edit");
         exit();
     }
     $pwdm = '';
@@ -49,43 +50,40 @@ if ($dopost == 'saveedit') {
     $dsql->ExecuteNoneQuery($query);
     $query = "UPDATE `#@__member` SET uname='$uname',email='$email'$pwdm WHERE mid='$id'";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功修改一个帐户", "sys_admin_user.php");
+    ShowMsg(Lang("sys_admin_user_edit_success"), "sys_admin_user.php");
     exit();
 } else if ($dopost == 'delete') {
     if (empty($userok)) $userok = "";
     if ($userok != "yes") {
         $randcode = mt_rand(10000, 99999);
         $safecode = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
-        require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "删除用户";
-        $wecome_info = "<a href='sys_admin_user.php'>系统帐号管理</a>::删除用户";
-        $win = new OxWindow();
-        $win->Init("sys_admin_user_edit.php", "js/blank.js", "POST");
-        $win->AddHidden("dopost", $dopost);
-        $win->AddHidden("userok", "yes");
-        $win->AddHidden("randcode", $randcode);
-        $win->AddHidden("safecode", $safecode);
-        $win->AddHidden("id", $id);
-        $win->AddTitle("系统提示");
-        $win->AddMsgItem("您确定要删除用户：$userid 吗", "50");
-        $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' style='width:260px'>（安全码：<span class='text-danger'>$safecode</span>）", "30");
-        $winform = $win->GetWindow("ok");
-        $win->Display();
+        $wintitle = Lang("sys_admin_user_delete");
+        $wecome_info = "<a href='sys_admin_user.php'>".Lang('sys_admin_user')."</a>::".Lang("sys_admin_user_delete");
+        DedeWin::Instance()->Init("sys_admin_user_edit.php", "js/blank.js", "POST")
+        ->AddHidden("dopost", $dopost)
+        ->AddHidden("userok", "yes")
+        ->AddHidden("randcode", $randcode)
+        ->AddHidden("safecode", $safecode)
+        ->AddHidden("id", $id)
+        ->AddTitle(Lang("message_info"))
+        ->AddMsgItem(Lang('sys_admin_user_delete_confirm',array('userid'=>$userid)), "50")
+        ->AddMsgItem(Lang('safecode')."：<input name='safecode' type='text' id='safecode' style='width:260px'>（".Lang('safecode')."：<span class='text-danger'>$safecode</span>）", "30")
+        ->GetWindow("ok")->Display();
         exit();
     }
     $safecodeok = substr(md5($cfg_cookie_encode.$randcode), 0, 24);
     if ($safecodeok != $safecode) {
-        ShowMsg("请填写正确的验证安全码", "sys_admin_user.php");
+        ShowMsg(Lang("sys_admin_err_safecodeok_check"), "sys_admin_user.php");
         exit();
     }
     //不能删除id为1的创建人帐号，不能删除自己
-    $rs = $dsql->ExecuteNoneQuery2("DELETE FROM `#@__admin` WHERE id='$id' AND id<>1 AND id<>'".$cuserLogin->getUserID()."' ");
+    $rs = $dsql->ExecuteNoneQuery2("DELETE FROM `#@__admin` WHERE id='$id' AND id<>1 AND id<>'".$cUserLogin->getUserID()."'");
     if ($rs > 0) {
         //更新前台用户信息
         $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET matt='0' WHERE mid='$id' LIMIT 1");
-        ShowMsg("成功删除一个帐户", "sys_admin_user.php");
+        ShowMsg(Lang("sys_admin_user_delete_success"), "sys_admin_user.php");
     } else {
-        ShowMsg("不能删除id为1的创建人帐号，不能删除自己", "sys_admin_user.php", 0, 3000);
+        ShowMsg(Lang("sys_admin_user_err_delete_admin"), "sys_admin_user.php", 0, 3000);
     }
     exit();
 }
@@ -107,3 +105,4 @@ while ($nrow = $dsql->GetObject('op')) {
 }
 make_hash();
 include DedeInclude('templets/sys_admin_user_edit.htm');
+?>

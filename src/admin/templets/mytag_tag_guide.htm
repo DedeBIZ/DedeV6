@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>智能标记向导</title>
+  <title><?php echo Lang('mytag_tag_guide');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
   <link rel="stylesheet" href="css/codemirror.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="js/main.js"></script>
@@ -33,7 +33,7 @@
     <span style="display:none" id="list4">
       <table width="100%" cellspacing="2" cellpadding="2">
         <tr>
-          <td width="30%" rowspan="2" align="center">[field:imglink/]</td>
+          <td width="30%" align="center" rowspan="2">[field:imglink/]</td>
           <td width="70%"><a href="[field:filename/]">[field:title/]</a></td>
         </tr>
         <tr>
@@ -41,55 +41,55 @@
         </tr>
       </table>
     </span>
-    <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+    <table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3 mb-3">
       <form action="mytag_tag_guide_ok.php" method="post" target="stafrm" name="form1">
         <input type="hidden" name="dopost" value="gettag">
         <tr>
-          <td bgcolor="#f8f8f8" align="left"><a href="mytag_main.php">自定义标记管理</a> &gt; 智能标记生成向导</td>
+          <td bgcolor="#f8f8f8" align="left"><a href="mytag_main.php"><?php echo Lang('mytag_main');?></a> &gt; <?php echo Lang('mytag_tag_guide');?></td>
         </tr>
         <tr>
           <td>
-            <table width="98%" align="right" cellpadding="0" cellspacing="0" style="text-align:left" class="table table-borderless">
+            <table width="98%" align="right" cellpadding="0" cellspacing="0" class="table table-borderless">
               <tr>
-                <td>列表样式：</td>
+                <td><?php echo Lang('mytag_tag_guide_liststyle');?>：</td>
               </tr>
               <tr>
                 <td>
                   <table width="98%" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t2.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="1" checked="1"></label>
+                        <label><img src="../static/web/img/gt2.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="1" checked="1"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t1.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="2"></label>
+                        <label><img src="../static/web/img/gt1.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="2"></label>
                       </td>
                       <td width="25%">
-                        <label><img src="../static/web/img/g_t3.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="3"></label>
+                        <label><img src="../static/web/img/gt3.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="3"></label>
                       </td>
                       <td>
-                        <label><img src="../static/web/img/g_t4.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="4"></label>
+                        <label><img src="../static/web/img/gt4.jpg"><input type="radio" name="liststyle" onClick="ChangeListStyle()" value="4"></label>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td>调用栏目：
+                <td><?php echo Lang('catalog_select');?>：
                   <?php
-                  $tl = new TypeLink(0);
+                  $tl = new DedeBIZ\TypeLink\TypeLink(0);
                   $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
                   echo "<select name='typeid' style='width:160px'>";
-                  echo "<option value='0' selected>不限栏目</option>";
+                  echo "<option value='0' selected>".Lang('catalog_nolimit')."</option>";
                   echo $typeOptions;
                   echo "</select>";
             		  ?>
                 </td>
               </tr>
               <tr>
-                <td>限定频道：
+                <td><?php echo Lang('mytag_channel');?>：
                   <?php
                   echo "<select name='channel' style='width:160px'>";
-                  echo "<option value='0' selected>不限频道</option>";
+                  echo "<option value='0' selected>".Lang('mychannel_nolimit')."</option>";
                   $tl->dsql->SetQuery("Select id,typename From #@__channeltype where id>0");
               	  $tl->dsql->Execute();
               	  while($row = $tl->dsql->GetObject())
@@ -98,10 +98,10 @@
               	  }
                     echo "</select>";
               		?>
-                  附加属性：
+                  <?php echo Lang('freelist_att');?>：
                   <?php
                   echo "<select name='att' style='width:160px'>";
-                  echo "<option value='0' selected>不限</option>";
+                  echo "<option value='0' selected>".Lang('unlimited')."</option>";
                   $tl->dsql->SetQuery("Select * From #@__arcatt");
             	    $tl->dsql->Execute();
             	    while($row = $tl->dsql->GetObject())
@@ -114,56 +114,56 @@
               </tr>
               <tr>
                 <td>
-                  调用记录条数：<input type="text" name="row" id="row" value="10" size="4">
-                  显示列数：<input type="text" name="col" id="col" value="1" size="4">
-                  标题长度：<input type="text" name="titlelen" id="titlelen" value="24" size="4">（1 字节 = 0.5个中文字）
+                  <?php echo Lang('mytag_tag_guide_row');?>：<input type="text" name="row" id="row" value="10" style="width:60px">
+                  <?php echo Lang('mytag_tag_guide_col');?>：<input type="text" name="col" id="col" value="1" style="width:60px">
+                  <?php echo Lang('mytag_tag_guide_titlelen');?>：<input type="text" name="titlelen" id="titlelen" value="24" style="width:60px"><?php echo Lang('mytag_tag_guide_titlelen_tip');?>
                 </td>
               </tr>
               <tr>
-                <td>高级筛选：
-                  <label><input type="checkbox" name="types[]" id="type[]" value="image"> 带缩略图</label>
-                  <label><input type="checkbox" name="types[]" id="type[]" value="commend"> 推荐</label>
-                  <label><input type="checkbox" name="types[]" id="type[]" value="spec"> 专题</label>
-                  关键词：<input type="text" name="keyword" id="keyword">（&quot;,&quot;逗号分开）
+                <td><?php echo Lang('mytag_tag_guide_type');?>：
+                  <label><input type="checkbox" name="types[]" id="type[]" value="image"> <?php echo Lang('mytag_tag_guide_type_image');?></label>
+                  <label><input type="checkbox" name="types[]" id="type[]" value="commend"> <?php echo Lang('mytag_tag_guide_type_commend');?></label>
+                  <label><input type="checkbox" name="types[]" id="type[]" value="spec"> <?php echo Lang('mytag_tag_guide_type_spec');?></label>
+                  <?php echo Lang('keywords');?>：<input type="text" name="keyword" id="keyword"><?php echo Lang('mytag_tag_guide_type_keyword_tip');?>
                 </td>
               </tr>
               <tr>
-                <td>排列顺序：
+                <td><?php echo Lang('mytag_tag_guide_orderby');?>：
                   <select name="orderby" id="orderby" style="width:160px">
-                    <option value="sortrank">置顶权限值</option>
-                    <option value="pubdate" selected>发布时间</option>
-                    <option value="senddate">录入时间</option>
-                    <option value="click">点击量</option>
-                    <option value="id">文档id</option>
-                    <option value="lastpost">最后评论时间</option>
-                    <option value="scores">评论积分</option>
-                    <option value="rand">随机获取</option>
+                    <option value="sortrank"><?php echo Lang('mytag_tag_guide_orderby_sortrank');?></option>
+                    <option value="pubdate" selected><?php echo Lang('mytag_tag_guide_orderby_pubdate');?></option>
+                    <option value="senddate"><?php echo Lang('mytag_tag_guide_orderby_senddate');?></option>
+                    <option value="click"><?php echo Lang('mytag_tag_guide_orderby_click');?></option>
+                    <option value="id"><?php echo Lang('mytag_tag_guide_orderby_id');?></option>
+                    <option value="lastpost"><?php echo Lang('mytag_tag_guide_orderby_lastpost');?></option>
+                    <option value="scores"><?php echo Lang('mytag_tag_guide_orderby_scores');?></option>
+                    <option value="rand"><?php echo Lang('mytag_tag_guide_orderby_rand');?></option>
                   </select>
-                  <label><input type="radio" name="order" value="desc" checked='1'> 由高到低</label>
-                  <label><input type="radio" name="order" value="asc"> 由低到高</label>
+                  <label><input type="radio" name="order" value="desc" checked='1'> <?php echo Lang('freelist_orderby_desc');?></label>
+                  <label><input type="radio" name="order" value="asc"> <?php echo Lang('freelist_orderby_asc');?></label>
                 </td>
               </tr>
               <tr>
-                <td>文档发布时间：<input type="text" name="subday" id="subday" value="0" size="6">天以内（0 表示不限）</td>
+                <td><?php echo Lang('subday');?>：<input type="text" name="subday" id="subday" value="0" style="width:60px"> <?php echo Lang('freelist_subday_tip');?></td>
               </tr>
               <tr>
-                <td>提取特定文档：<button  type="button"class="btn btn-success btn-sm" id="selarc" onClick="SelectArcList('form1.arcid');">选择节点文档</button>
-                  <textarea name="arcid" rows="3" id="arcid" style="width:90%" class="mt-3 mb-3"></textarea>
+                <td><?php echo Lang('mytag_tag_guide_selarc');?>：<button  type="button"class="btn btn-success btn-sm" id="selarc" onClick="SelectArcList('form1.arcid');"><?php echo Lang('mytag_tag_guide_selarc_1');?></button>
+                  <textarea name="arcid" rows="3" id="arcid" style="width:100%" class="mt-3"></textarea>
                 </td>
               </tr>
               <tr>
-                <td>单条记录样式(InnerText)：</td>
+                <td><?php echo Lang('spec_node_listtmp');?>：</td>
               </tr>
               <tr>
                 <td><textarea name="innertext" cols="80" rows="6" id="myinnertext">·[field:textlink/]([field:pubdate function=MyDate('m-d',@me)/])<br></textarea></td>
               </tr>
               <tr>
-                <td>支持字段：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示·Pubdate发布时间的调用参数[field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</td>
+                <td><?php echo Lang('mytag_tag_guide_field_tip');?></td>
               </tr>
               <tr>
-                <td>
-                  <button type="button" name="Submit1" id="Submit1" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')">生成模板调用标记</button>
-                  <button type="button" name="Submit2" id="Submit2" class="btn btn-success btn-sm" onClick="DoSubmit('savetag')">生成模板调用标签</button>
+                <td height="36">
+                  <button type="button" name="Submit1" id="Submit1" class="btn btn-success btn-sm" onClick="DoSubmit('gettag')"><?php echo Lang('mytag_tag_guide_gettag');?></button>
+                  <button type="button" name="Submit2" id="Submit2" class="btn btn-success btn-sm" onClick="DoSubmit('savetag')"><?php echo Lang('mytag_tag_guide_savetag');?></button>
                 </td>
               </tr>
             </table>
@@ -171,13 +171,11 @@
         </tr>
       </form>
       <tr>
-        <td bgcolor="#f8f8f8" align="left">结果：</td>
+        <td bgcolor="#f8f8f8" align="left"><?php echo Lang('result');?>：</td>
       </tr>
       <tr>
         <td>
-          <div id="mdv" style="width:100%;height:360px">
-            <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
-          </div>
+          <div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
         </td>
       </tr>
     </table>

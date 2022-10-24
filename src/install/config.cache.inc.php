@@ -149,3 +149,4 @@ $cfg_bizcore_hostname = '127.0.0.1';
 $cfg_bizcore_port = 8181;
 $cfg_bizcore_appid = '';
 $cfg_bizcore_key = '';
+?>

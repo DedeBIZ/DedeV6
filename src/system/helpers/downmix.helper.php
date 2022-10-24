@@ -92,3 +92,4 @@ if (!function_exists('RndString')) {
         return $reString;
     } //函数结束
 }
+?>

@@ -28,7 +28,7 @@ function lib_autochannel(&$ctag, &$refObj)
     else $typeid = $row['id'];
     if (trim($innertext) == '') $innertext = GetSysTemplets('part_autochannel.htm');
     $row = $dsql->GetOne("SELECT id,typedir,isdefault,defaultname,ispart,namerule2,typename,moresite,siteurl,sitepath 
-        FROM `#@__arctype` WHERE id='$typeid' ");
+       FROM `#@__arctype` WHERE id='$typeid' ");
     if (!is_array($row)) return '';
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('field', '[', ']');
@@ -55,3 +55,4 @@ function lib_autochannel(&$ctag, &$refObj)
         return $revalue;
     }
 }
+?>

@@ -26,3 +26,4 @@ function lib_vote(&$ctag, &$refObj)
     $vt = new DedeVote($id);
     return $vt->GetVoteForm($lineheight, $tablewidth, $titlebgcolor, $titlebackgroup, $tablebg);
 }
+?>

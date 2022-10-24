@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="<?php echo $cfg_soft_lang;?>">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title>文档关键词维护</title>
+		<title><?php echo Lang('article_keywords_main');?></title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="../static/web/css/admin.min.css">
 		<style>
 			.nnpp {
 				border-bottom: 1px solid #545b62;
@@ -27,56 +27,74 @@
 		</script>
 	</head>
 	<body>
-		<form name="form2" action="article_keywords_main.php">
-			<input type="hidden" name="dopost" value="add">
-			<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-				<tr bgcolor="#f8f8f8">
-					<td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" style="width:260px"></td>
-					<td width="270"><input type="text" name="rpurl" id="rpurl" placeholder="请输入链接" style="width:260px"></td>
-					<td width="70"><input type="text" name="rank" id="rank" value="30" style="width:60px"></td>
-					<td><button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button></td>
+		<div class="main">
+			<table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+				<tr>
+					<td bgcolor="#f8f8f8" colspan="5">
+						<table width="98%" class="table table-borderless">
+							<tr>
+								<td width="30%"><?php echo Lang('article_keywords_main');?></td>
+								<td width="70%" align="right">
+									<form name="form1" action="article_keywords_main.php">
+										<input type="text" name="keyword" placeholder="<?php echo Lang('input_keywords_tip');?>" style="width:160px"> 
+										<button type="submit" name="sb" value="" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+									</form>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<form name="form2" action="article_keywords_main.php">
+					<input type="hidden" name="dopost" value="add">
+					<tr align="center">
+						<td colspan="5">
+							<table cellspacing="0" cellpadding="0" class="table table-borderless">
+								<tr>
+									<td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="<?php echo Lang('input_keywords_tip');?>" style="width:260px"></td>
+									<td width="270"><input type="text" name="rpurl" id="rpurl" placeholder="<?php echo Lang('input_url_tip');?>" style="width:260px"></td>
+									<td width="70"><input type="text" name="rank" id="rank" value="30" style="width:60px"></td>
+									<td><button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</form>
+				<tr align="center" bgcolor="#f8fcf2">
+					<td width="8%"><?php echo Lang('select');?></td>
+					<td width="25%"><?php echo Lang('keywords');?></td>
+					<td width="35%"><?php echo Lang('url_link');?></td>
+					<td width="10%"><?php echo Lang('frequency');?></td>
+					<td width="22%"><?php echo Lang('operation');?></td>
+				</tr>
+				<form name="form3" action="article_keywords_main.php" method="post">
+					<input type="hidden" name="dopost" value="saveall">
+					{dede:datalist empty='<tr><td colspan="5"><center>~lang:none_result~</center></td></tr>'}
+					<tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
+						<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked='1'></td>
+						<td><input type="hidden" value="{dede:field.keyword/}" name="keyword_{dede:field.aid/}"> {dede:field.keyword/}</td>
+						<td>
+							<input type="hidden" value="{dede:field.rpurl/}" name="rpurlold_{dede:field.aid/}">
+							<input type="text" style="width:90%" class="nnpp" value="{dede:field.rpurl/}" name="rpurl_{dede:field.aid/}">
+						</td>
+						<td><input type="text" size="6" class="nnpp" value="{dede:field.rank/}" name="rank_{dede:field.aid/}"></td>
+						<td>
+							<input type="hidden" name="staold_{dede:field.aid/}" value="{dede:field.sta/}">
+							<label><input type="checkbox" name="isnouse_{dede:field.aid/}" value="1" {dede:field.sta function="GetSta(@me)"/}> <?php echo Lang('disabled');?></label>
+							<label><input type="checkbox" name="isdel_{dede:field.aid/}" value="1"> <?php echo Lang('delete');?></label>
+						</td>
+					</tr>
+					{/dede:datalist}
+					<tr>
+						<td colspan="5" class="py-2">
+							<button type="button" name="dl1" class="btn btn-success btn-sm" onClick="selAll()"><?php echo Lang('reverse_selection');?></button>
+							<button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();"><?php echo Lang('save');?></button>
+						</td>
+					</tr>
+				</form>
+				<tr>
+					<td align="center" colspan="5" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
 				</tr>
 			</table>
-		</form>
-		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-			<tr>
-				<td bgcolor="#f8f8f8" colspan="5">文档关键词维护</td>
-			</tr>
-			<tr bgcolor="#fbfce2" align="center">
-				<td width="8%">选择</td>
-				<td width="25%">关键词</td>
-				<td width="35%">链接网址</td>
-				<td width="10%">频率</td>
-				<td width="22%">管理</td>
-			</tr>
-			<form name="form3" action="article_keywords_main.php" method="post">
-				<input type="hidden" name="dopost" value="saveall">
-				{dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
-				<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
-					<td><input type="checkbox" name="aids[]" value="{dede:field.aid/}" checked='1'></td>
-					<td><input type="hidden" value="{dede:field.keyword/}" name="keyword_{dede:field.aid/}"> {dede:field.keyword/}</td>
-					<td>
-						<input type="hidden" value="{dede:field.rpurl/}" name="rpurlold_{dede:field.aid/}">
-						<input type="text" style="width:90%" class="nnpp" value="{dede:field.rpurl/}" name="rpurl_{dede:field.aid/}">
-					</td>
-					<td><input type="text" size="6" class="nnpp" value="{dede:field.rank/}" name="rank_{dede:field.aid/}"></td>
-					<td>
-						<input type="hidden" name="staold_{dede:field.aid/}" value="{dede:field.sta/}">
-						<label><input type="checkbox" name="isnouse_{dede:field.aid/}" value="1" {dede:field.sta function="GetSta(@me)"/}> 禁用</label>
-						<label><input type="checkbox" name="isdel_{dede:field.aid/}" value="1"> 删除</label>
-					</td>
-				</tr>
-				{/dede:datalist}
-				<tr>
-					<td colspan="5">
-						<button type="button" name="dl1" class="btn btn-success btn-sm" onClick="selAll()">反选</button>
-						<button type="button" name="dl2" class="btn btn-success btn-sm" onClick="this.form.submit();">保存</button>
-					</td>
-				</tr>
-			</form>
-			<tr>
-				<td colspan="5" bgcolor="#f8f8f8"  align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
-			</tr>
-		</table>
+		</div>
 	</body>
 </html>

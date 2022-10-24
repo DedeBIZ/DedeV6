@@ -152,11 +152,10 @@ else if ($fmdo == 'user') {
         $litmitscores = $cfg_ml->fields['scores'] - $needscores;
         //保存记录
         $mtime = time();
-        $inquery = "INSERT INTO `#@__member_operation`(`buyid` , `pname` , `product` , `money` , `mtime` , `pid` , `mid` , `sta` ,`oldinfo`)
-           VALUES ('ScoresToMoney', '积分换金币操作', 'stc' , '0' , '$mtime' , '0' , '{$cfg_ml->M_ID}' , '0' , '用 {$needscores} 积分兑了换金币：{$money} 个'); ";
+        $inquery = "INSERT INTO `#@__member_operation` (`buyid`,`pname`,`product`,`money`,`mtime`,`pid`,`mid`,`sta` ,`oldinfo`) VALUES ('ScoresToMoney','积分换金币操作','stc' ,'0' ,'$mtime' ,'0' ,'{$cfg_ml->M_ID}','0' ,'用 {$needscores} 积分兑了换金币：{$money} 个'); ";
         $dsql->ExecuteNoneQuery($inquery);
         //修改积分与金币值
-        $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=$litmitscores, money= money + $money  WHERE mid='".$cfg_ml->M_ID."' ");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=$litmitscores, money= money + $money WHERE mid='".$cfg_ml->M_ID."' ");
         //清除会员缓存
         $cfg_ml->DelCache($cfg_ml->M_ID);
         ShowMsg('成功兑换指定量的金币', 'operation.php');
@@ -223,3 +222,4 @@ else if ($fmdo == 'login') {
 } else {
     ShowMsg("本页面禁止返回", "index.php");
 }
+?>

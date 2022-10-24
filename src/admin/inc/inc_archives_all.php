@@ -330,3 +330,4 @@ function GetFormItemValue($ctag, $fvalue)
         return $formitem;
     }
 }
+?>

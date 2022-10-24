@@ -21,9 +21,7 @@ function lib_memberlist(&$ctag, &$refObj)
     if (empty($innerText)) $innerText = GetSysTemplets('memberlist.htm');
     $wheresql = ' WHERE mb.spacesta>-1 AND mb.matt<10 ';
     if ($iscommend > 0) $wheresql .= " AND  mb.matt='$iscommend' ";
-    $sql = "SELECT mb.*,ms.spacename,ms.sign FROM `#@__member` mb
-    LEFT JOIN `#@__member_space` ms ON ms.mid = mb.mid
-    $wheresql order by mb.{$orderby} DESC LIMIT 0,$row ";
+    $sql = "SELECT mb.*,ms.spacename,ms.sign FROM `#@__member` mb LEFT JOIN `#@__member_space` ms ON ms.mid = mb.mid $wheresql order by mb.{$orderby} DESC LIMIT 0,$row ";
     $ctp = new DedeTagParse();
     $ctp->SetNameSpace('field', '[', ']');
     $ctp->LoadSource($innerText);
@@ -42,3 +40,4 @@ function lib_memberlist(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

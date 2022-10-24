@@ -37,8 +37,7 @@ if ($dopost == "saveedit") {
         exit;
     }
     $time = time();
-    $query = "INSERT INTO `#@__erradd`(aid,mid,title,type,errtxt,oktxt,sendtime)
-        VALUES ('$aid','$mid','$title','$type','$err','$oktxt','$time'); ";
+    $query = "INSERT INTO `#@__erradd` (aid,mid,title,type,errtxt,oktxt,sendtime) VALUES ('$aid','$mid','$title','$type','$err','$oktxt','$time'); ";
     $dsql->ExecuteNoneQuery($query);
     if (!empty($format)) {
         echo json_encode(array(
@@ -57,3 +56,4 @@ if ($dopost == "saveedit") {
     ));
     exit;
 }
+?>

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 织梦HTTP下载类
+ * HTTP下载类
  *
  * @version        $Id: dedehttpdown.class.php 1 11:42 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
@@ -630,3 +630,4 @@ class DedeHttpDown
         return $proto.$okurl;
     }
 }//End Class
+?>

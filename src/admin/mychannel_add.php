@@ -8,24 +8,24 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('c_New');
-require_once(DEDEINC."/dedetag.class.php");
+UserLogin::CheckPurview('c_New');
 if (empty($ismake)) $ismake = 0;
 if (empty($isdel)) $isdel = 0;
 if (empty($action)) $action = '';
 if ($action == 'add') {
     //检查输入
     if (empty($id) || preg_match("#[^0-9-]#", $id)) {
-        ShowMsg("<span class='text-danger'>'频道id'</span>必须为数字", "-1");
+        ShowMsg(Lang("mychannel_id_tip"), "-1");
         exit();
     }
     if (preg_match("#[^a-z0-9]#i", $nid) || $nid == "") {
-        ShowMsg("<span class='text-danger'>'频道名字标识'</span>必须为英文字母或与数字混合字符串", "-1");
+        ShowMsg(Lang("mychannel_addtable_namerule_tip"), "-1");
         exit();
     }
     if ($addtable == "") {
-        ShowMsg("附加表不能为空", "-1");
+        ShowMsg(Lang("mychannel_addtable_err_isempty"), "-1");
         exit();
     }
     $trueTable2 = str_replace("#@__", $cfg_dbprefix, $addtable);
@@ -33,7 +33,7 @@ if ($action == 'add') {
     //检查id是否重复
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id' OR nid LIKE '$nid' OR addtable LIKE '$addtable'");
     if (is_array($row)) {
-        ShowMsg("可能‘频道id’、‘频道名称标识’、‘附加表名称’在数据库已存在，不能重复使用", "-1");
+        ShowMsg(Lang("mychannel_add_err_issame"), "-1");
         exit();
     }
     $mysql_version = $dsql->GetVersion();
@@ -77,7 +77,7 @@ if ($action == 'add') {
             }
             $rs = $dsql->ExecuteNoneQuery($tabsql);
             if (!$rs) {
-                ShowMsg("创建附加表失败!".$dsql->GetError(), "javascript:;");
+                ShowMsg(Lang('mychannel_add_err_create',array('err'=>$dsql->GetError())), "javascript:;");
                 exit();
             }
         }
@@ -97,15 +97,15 @@ if ($action == 'add') {
 <field:scores itemname=\"评论积分\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\"  maxlength=\"8\" page=\"\"></field:scores>
 <field:goodpost itemname=\"好评数\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\"  maxlength=\"8\" page=\"\"></field:goodpost>
 <field:badpost itemname=\"差评数\" autofield=\"0\" notsend=\"0\" type=\"int\" isnull=\"true\" islist=\"1\" default=\"0\"  maxlength=\"8\" page=\"\"></field:badpost>\r\n";
-        $listfields = 'channel,arcrank,mid,click,title,senddate,flag,listpic,lastpost,scores,goodpost,badpost';
+        $listfields = 'channel,arcrank,mid,click,title,senddate,flag,litpic,lastpost,scores,goodpost,badpost';
     }
-    $inQuery = "INSERT INTO `#@__channeltype`(id,nid,typename,addtable,addcon,mancon,editcon,useraddcon,usermancon,usereditcon,fieldset,listfields,issystem,issend,arcsta,usertype,sendrank,needdes,needpic,titlename,onlyone,dfcid)
-    VALUES ('$id','$nid','$typename','$addtable','$addcon','$mancon','$editcon','$useraddcon','$usermancon','$usereditcon','$fieldset','$listfields','$issystem','$issend','$arcsta','$usertype','$sendrank','$needdes','$needpic','$titlename','$onlyone','$dfcid');";
+    $inQuery = "INSERT INTO `#@__channeltype`(id,nid,typename,addtable,addcon,mancon,editcon,useraddcon,usermancon,usereditcon,fieldset,listfields,issystem,issend,arcsta,usertype,sendrank,needdes,needpic,titlename,onlyone,dfcid) VALUES ('$id','$nid','$typename','$addtable','$addcon','$mancon','$editcon','$useraddcon','$usermancon','$usereditcon','$fieldset','$listfields','$issystem','$issend','$arcsta','$usertype','$sendrank','$needdes','$needpic','$titlename','$onlyone','$dfcid');";
     $dsql->ExecuteNoneQuery($inQuery);
-    ShowMsg("成功增加一个频道模型", "mychannel_edit.php?id=".$id);
+    ShowMsg(Lang("mychannel_add_create_success"), "mychannel_edit.php?id=".$id);
     exit();
 }
-$row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id DESC LIMIT 0,1 ");
+$row = $dsql->GetOne("SELECT id FROM `#@__channeltype` ORDER BY id DESC LIMIT 0,1");
 $newid = $row['id'] + 1;
 if ($newid < 10) $newid = $newid + 10;
 require_once(DEDEADMIN."/templets/mychannel_add.htm");
+?>

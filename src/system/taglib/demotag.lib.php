@@ -21,3 +21,4 @@ function lib_demotag(&$ctag, &$refObj)
     $revalue = 'Hello Word!';
     return $revalue;
 }
+?>

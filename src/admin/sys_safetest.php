@@ -8,11 +8,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DedeHttpDown;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
-require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
-CheckPurview('sys_Edit');
+UserLogin::CheckPurview('sys_Edit');
 if (empty($action)) $action = '';
-if (empty($message)) $message = '尚未进行检测……';
+if (empty($message)) $message = Lang('sys_safetest_no_testing');
 if (empty($filetype)) $filetype = 'php|inc';
 if (empty($info)) $info = 'eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode';
 $fileHashURL = "https://cdn.dedebiz.com/release/{$cfg_version_detail}.json";
@@ -25,7 +26,7 @@ foreach ($filelist as $key => $ff) {
 }
 $alter = "";
 if (count($offFiles) == 0) {
-    $alter = DedeAlert('无法同官方网站文件服务器通信，校验时候无法保证本地文件是否同官方服务器文件是否一致', ALERT_DANGER);
+    $alter = DedeAlert(Lang('sys_safetest_offical'), ALERT_DANGER);
 }
 function TestOneFile($f)
 {
@@ -48,10 +49,10 @@ function TestOneFile($f)
             return 0;
         }
         $message .= "<div style='clear:both;'>
-        <div style='width:350px;float:left'>可疑文件：{$trfile}</div>
-        <a class='btn btn-success btn-sm' href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank'>修改记录</a>
-        <a class='btn btn-success btn-sm' href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank'>删除</a>
-        <a class='btn btn-success btn-sm' href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank'>查看源码</a>
+        <div style='width:350px;float:left'>".Lang('sys_safetest_trfile')."：{$trfile}</div>
+        <a class='btn btn-success btn-sm' href='sys_safetest.php?action=viewdiff&filename=$oldTrfile' target='_blank'>".Lang('sys_safetest_viewdiff')."</a>
+        <a class='btn btn-success btn-sm' href='file_manage_view.php?fmdo=del&filename=$oldTrfile&activepath=' target='_blank'>".Lang('delete')."</a>
+        <a class='btn btn-success btn-sm' href='file_manage_view.php?fmdo=edit&filename=$oldTrfile&activepath=' target='_blank'>".Lang('sys_safetest_edit')."</a>
         </div></div><hr>\r\n";
         return 1;
     }
@@ -76,13 +77,13 @@ if ($action == 'test') {
     $message = '<link rel="stylesheet" href="../static/web/css/bootstrap.min.css"><link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">';
     AjaxHead();
     TestSafe(DEDEROOT);
-    if ($message == '') $message = "<span class='text-dark'>没发现可疑文件</span>";
+    if ($message == '') $message = "<span class='text-dark'>".Lang('sys_safetest_notrfile')."</span>";
     echo $message;
     exit();
 } else if ($action == 'viewdiff') {
     $filename = isset($filename) ? $filename : "";
     if (empty($filename)) {
-        ShowMsg("没有选择对应的文件", "-1");
+        ShowMsg(Lang("sys_safetest_no_file"), "-1");
         exit;
     }
     $baseFile = "https://cdn.dedebiz.com/release/{$cfg_version_detail}$filename";
@@ -113,7 +114,7 @@ else if ($action == 'clear') {
             @unlink($d.'/'.$filename);
         }
     }
-    $message = "<span class='text-dark'>成功清空模板缓存</span>";
+    $message = "<span class='text-dark'>".Lang('sys_safetest_clearcache')."</span>";
     echo $message;
     exit();
 }

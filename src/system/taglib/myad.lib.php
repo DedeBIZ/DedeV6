@@ -18,3 +18,4 @@ function lib_myad(&$ctag, &$refObj)
     $body = lib_GetMyTagT($refObj, $typeid, $name, '#@__myad');
     return $body;
 }
+?>

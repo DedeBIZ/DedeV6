@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>组权限设置</title>
+  <title><?php echo Lang('sys_group_edit');?> - <?php echo Lang('sys_group');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
   <center>
-    <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+    <table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3 mb-3">
       <form name="form1" action="sys_group_edit.php" method="post">
         <input type="hidden" name="dopost" value="save">
         <tr>
-          <td bgcolor="#f8f8f8" align="left"><a href="sys_group.php">系统用户组管理</a> &gt; 修改用户组</td>
+          <td bgcolor="#f8f8f8" align="left"><a href="sys_group.php"><?php echo Lang('sys_group');?></a> &gt; <?php echo Lang('sys_group_edit');?></td>
         </tr>
         <tr>
           <td align="center">
             <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
-                <td width="10%">组名称：</td>
+                <td width="10%"><?php echo Lang('sys_group_typename');?>：</td>
                 <td width="90%"><input type="text" name="typename" id="typename" value="<?php echo $groupSet['typename']?>" style="width:260px"></td>
               </tr>
               <tr>
-                <td width="10%">级别值：</td>
+                <td width="10%"><?php echo Lang('sys_group_rankid');?>：</td>
                 <td width="90%">
                   <input type="hidden" name="rank" id="rank" value="<?php echo $groupSet['rank']?>">
                   <?php echo $groupSet['rank']?>
@@ -37,13 +37,13 @@
               foreach($gouplists as $line)
               {
               	$line = trim($line);
-              	if($line=="") continue;
-              	if(preg_match("#^>>#", $line))
+              	if ($line=="") continue;
+              	if (preg_match("#^>>#", $line))
               	{
-              		if($start>0) echo "</td></tr>";
+              		if ($start>0) echo "</td></tr>";
                   $line = str_replace('>>','',$line);
                   $ls = explode('>',$line);
-                  if(DEDEBIZ_SAFE_MODE && $ls[1]==="unsafe") {
+                  if (DEDEBIZ_SAFE_MODE && $ls[1]==="unsafe") {
                     continue;
                   }
               		$start++;
@@ -54,15 +54,15 @@
               		";
               		echo  $lhead;
               	}
-              	else if(preg_match("#^>#", $line))
+              	else if (preg_match("#^>#", $line))
               	{
               		$ls = explode('>',$line);
-                  if(DEDEBIZ_SAFE_MODE && $ls[3]==="unsafe") {
+                  if (DEDEBIZ_SAFE_MODE && $ls[3]==="unsafe") {
                     continue;
                   }
               		$tag = $ls[1];
               		$tagname = str_replace('[br]','<br>',$ls[2]);
-              		if(!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";
+              		if (!preg_match("#<br>#", $tagname) ) $tagname .= "<span>($tag)</span>";
               		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
               		echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'".CRank($tag)."> $tagname</label> ";
               	  $k++;
@@ -71,25 +71,25 @@
               $start++;
               ?>
               <tr>
-                <td colspan="2"><?php echo $start?>、插件权限</td>
+                <td colspan="2"><?php echo $start?>、<?php echo Lang('sys_group_rank_plugin');?></td>
               </tr>
               <tr>
                 <td colspan="2">
                   <?php
                   $l = 0;
-                  $dsql->SetQuery('SELECT plusname FROM #@__plus');
+                  $dsql->SetQuery('SELECT plusname FROM `#@__plus`');
                   $dsql->Execute();
                   while($row=$dsql->GetObject()){
                    	echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'".CRank("plus_{$row->plusname}")."> {$row->plusname}</label> ";
                   	$k++;
                   	$l++;
-                  	if($l % 6 == 0) echo "<br>";
+                  	if ($l % 6 == 0) echo "<br>";
                   }
                   ?>
                 </td>
               </tr>
               <tr>
-                <td colspan="2" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm" class="coolbg np">保存</button></td>
+                <td align="center" colspan="2" class="py-2"><button type="submit" class="btn btn-success btn-sm" class="coolbg np"><?php echo Lang('save');?></button></td>
               </tr>
             </table>
           </td>

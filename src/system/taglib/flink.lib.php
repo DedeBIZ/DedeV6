@@ -58,3 +58,4 @@ function lib_flink(&$ctag, &$refObj)
     }
     return $revalue;
 }
+?>

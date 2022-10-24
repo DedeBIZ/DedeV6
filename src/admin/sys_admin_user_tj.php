@@ -8,10 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('sys_User');
+UserLogin::CheckPurview('sys_User');
 if (isset($dopost) && $dopost == 'getone') {
-    $row = $dsql->GetOne("SELECT userid FROM `#@__admin` WHERE id='$uid'; ");
+    $row = $dsql->GetOne("SELECT userid FROM `#@__admin` WHERE id='$uid';");
     $userid = $row['userid'];
     $y = intval(MyDate('Y', time()));
     $m = intval(MyDate('m', time()));
@@ -22,11 +23,11 @@ if (isset($dopost) && $dopost == 'getone') {
     while ($frow = $dsql->GetArray('me')) {
         $dd = empty($dd) ? "0" : $dd;
         $cc = empty($cc) ? "0" : $cc;
-        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE mid='$uid'; ");
+        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE mid='$uid';");
         $dd += $row['dd'];
         $cc += $row['cc'];
     }
-    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE mid='$uid'; ");
+    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE mid='$uid';");
     $dd = $row['dd'] + $dd;
     $cc = $row['cc'] + $cc;
     //季度
@@ -41,11 +42,11 @@ if (isset($dopost) && $dopost == 'getone') {
     while ($frow = $dsql->GetArray('me')) {
         $dds = empty($dds) ? "0" : $dds;
         $ccs = empty($ccs) ? "0" : $ccs;
-        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE senddate>$istarttime AND mid='$uid'; ");
+        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE senddate>$istarttime AND mid='$uid';");
         $dds += $row['dd'];
         $ccs += $row['cc'];
     }
-    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
+    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid';");
     $dds = $row['dd'] + $dds;
     $ccs = $row['cc'] + $ccs;
     //当月
@@ -56,11 +57,11 @@ if (isset($dopost) && $dopost == 'getone') {
     while ($frow = $dsql->GetArray('me')) {
         $ddm = empty($ddm) ? "0" : $ddm;
         $ccm = empty($ccm) ? "0" : $ccm;
-        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE senddate>$istarttime AND mid='$uid'; ");
+        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE senddate>$istarttime AND mid='$uid';");
         $ddm += $row['dd'];
         $ccm += $row['cc'];
     }
-    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
+    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid';");
     $ddm = $row['dd'] + $ddm;
     $ccm = $row['cc'] + $ccm;
     //本周
@@ -71,11 +72,11 @@ if (isset($dopost) && $dopost == 'getone') {
     while ($frow = $dsql->GetArray('me')) {
         $ddw = empty($ddw) ? "0" : $ddw;
         $ccw = empty($ccw) ? "0" : $ccw;
-        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE senddate>$istarttime AND mid='$uid'; ");
+        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE senddate>$istarttime AND mid='$uid';");
         $ddw += $row['dd'];
         $ccw += $row['cc'];
     }
-    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
+    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid';");
     $ddw = $row['dd'] + $ddw;
     $ccw = $row['cc'] + $ccw;
     //当天
@@ -86,21 +87,21 @@ if (isset($dopost) && $dopost == 'getone') {
     while ($frow = $dsql->GetArray('me')) {
         $ddd = empty($ddd) ? "0" : $ddd;
         $ccd = empty($ccd) ? "0" : $ccd;
-        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE senddate>$istarttime AND mid='$uid'; ");
+        $row = $dsql->GetOne("SELECT COUNT(aid) AS dd,SUM(click) AS cc FROM `{$frow['addtable']}` WHERE senddate>$istarttime AND mid='$uid';");
         $ddd += $row['dd'];
         $ccd += $row['cc'];
     }
-    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid'; ");
+    $row = $dsql->GetOne("SELECT COUNT(id) AS dd,SUM(click) AS cc FROM `#@__archives` WHERE senddate>$istarttime AND mid='$uid';");
     $ddd = $row['dd'] + $ddd;
     $ccd = $row['cc'] + $ccd;
     $msg = "<table width='100%' align='center' cellpadding='3' cellspacing='1'>
-    <tr align='center' bgcolor='#fbfce2'>
-      <td width='18%'>管理员</td>
-      <td width='18%'>文档与点击</td>
-      <td width='16%'>季度</td>
-      <td width='16%'>当月</td>
-      <td width='16%'>近七天</td>
-      <td width='16%'>当天</td>
+    <tr align='center' bgcolor='#f8fcf2'>
+      <td width='18%'>".Lang('administrator')."</td>
+      <td width='18%'>".Lang('sys_admin_user_tj_docandclick')."</td>
+      <td width='16%'>".Lang('quarter')."</td>
+      <td width='16%'>".Lang('current_month')."</td>
+      <td width='16%'>".Lang('sys_admin_user_n7day')."</td>
+      <td width='16%'>".Lang('today')."</td>
     </tr>
     <tr align='center'>
       <td>{$userid}</td>
@@ -116,3 +117,4 @@ if (isset($dopost) && $dopost == 'getone') {
     exit();
 }
 include DedeInclude('templets/sys_admin_user_tj.htm');
+?>

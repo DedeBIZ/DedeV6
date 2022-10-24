@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="<?php echo $cfg_soft_lang;?>">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>修改标记</title>
+  <title><?php echo Lang('mytag_edit');?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="../static/web/css/admin.min.css">
 </head>
 <body>
 <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
 <tr>
-  <td bgcolor="#f8f8f8"><a href="mytag_main.php">自定义标记管理</a> &gt; 修改标记</td>
+  <td bgcolor="#f8f8f8"><a href="mytag_main.php"><?php echo Lang('mytag_main');?></a> &gt; <?php echo Lang('mytag_edit');?></td>
 </tr>
 <tr>
   <td>
@@ -20,50 +20,50 @@
         <input type="hidden" name="dopost" value="saveedit">
         <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
         <tr> 
-          <td width="15%" align="center">所属栏目：</td>
+          <td width="15%" align="center"><?php echo Lang('catalog_select');?>：</td>
           <td colspan="2">
 		      <?php
-         	$tl = new TypeLink(0);
+         	$tl = new DedeBIZ\TypeLink\TypeLink(0);
          	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
           echo "<select name='typeid' style='width:260px'>";
-          echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
+          echo "<option value='0' selected>".Lang('mytag_typeid_0')."</option>";
           echo $typeOptions;
           echo "</select>";
 		      ?>
 		      </td>
         </tr>
         <tr> 
-          <td align="center">标记名称：</td>
+          <td align="center"><?php echo Lang('mytag_tagname');?>：</td>
           <td colspan="2"><?php echo $row['tagname']?></td>
         </tr>
         <tr> 
-          <td align="center">时间限制：</td>
+          <td align="center"><?php echo Lang('mytag_timeset');?>：</td>
           <td colspan="2">
-            <input name="timeset" type="radio" value="0"<?php if($row['timeset']==0) echo "checked";?>> 永不过期 
-            <input type="radio" name="timeset" value="1" <?php if($row['timeset']==1) echo "checked";?>> 在设内时间内有效
+            <input name="timeset" type="radio" value="0" <?php if ($row['timeset']==0) echo "checked";?>> <?php echo Lang('mytag_timeset_0');?>
+            <input type="radio" name="timeset" value="1" <?php if ($row['timeset']==1) echo "checked";?>> <?php echo Lang('mytag_timeset_1');?>
           </td>
         </tr>
         <tr> 
-          <td align="center">开始时间：</td>
+          <td align="center"><?php echo Lang('startdate');?>：</td>
           <td colspan="2"><input type="text" name="starttime" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>"></td>
         </tr>
         <tr> 
-          <td align="center">结束时间：</td>
+          <td align="center"><?php echo Lang('enddate');?>：</td>
           <td colspan="2"><input type="text" name="endtime" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>"></td>
         </tr>
         <tr> 
-          <td height="80" align="center">正常显示内容：</td>
+          <td height="80" align="center"><?php echo Lang('mytag_normbody');?>：</td>
           <td width="70%"><textarea name="normbody" id="normbody" style="width:80%;height:100px"><?php echo $row['normbody']?></textarea></td>
           <td width="9%"></td>
         </tr>
         <tr> 
-          <td height="80" align="center">过期显示内容：</td>
+          <td height="80" align="center"><?php echo Lang('mytag_expbody');?>：</td>
           <td><textarea name="expbody" id="expbody" style="width:80%;height:100px"><?php echo $row['expbody']?></textarea> </td>
           <td></td>
         </tr>
         <tr> 
-          <td align="center"></td>
-          <td colspan="2"><button type="submit" name="B1" class="btn btn-success btn-sm">确定</button></td>
+          <td></td>
+          <td colspan="2"><button type="submit" name="B1" class="btn btn-success btn-sm"><?php echo Lang('ok');?></button></td>
         </tr>
       </form>
     </table>

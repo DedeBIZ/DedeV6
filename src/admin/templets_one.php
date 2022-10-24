@@ -8,9 +8,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
+use DedeBIZ\libraries\DataListCP;
+use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-CheckPurview('temp_One');
-require_once(DEDEINC."/datalistcp.class.php");
+UserLogin::CheckPurview('temp_One');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $addquery = '';
 $keyword = (!isset($keyword) ? '' : $keyword);
@@ -23,5 +24,6 @@ $dlist->SetSource($sql);
 $dlist->display();
 function GetIsMake($im)
 {
-    return $im == 1 ? '需编译' : '不编译';
+    return $im == 1 ? Lang('needmake') : Lang('nomake');
 }
+?>

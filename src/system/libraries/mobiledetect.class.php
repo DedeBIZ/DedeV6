@@ -884,7 +884,7 @@ class Mobile_Detect
      * @param array  $headers   Specify the headers as injection. Should be PHP _SERVER flavored.
      *                          If left empty, will use the global _SERVER['HTTP_*'] vars instead.
      * @param string $userAgent Inject the User-Agent header. If null, will use HTTP_USER_AGENT
-     *                          from the $headers array instead.
+     *                         FROM the $headers array instead.
      */
     public function __construct(
         array $headers = null,
@@ -1691,3 +1691,4 @@ class Mobile_Detect
         return self::MOBILE_GRADE_C;
     }
 }
+?>

@@ -14,3 +14,4 @@ $tid = isset($tid) && is_numeric($tid) ? $tid : 0;
 if ($tid == 0) die("dedebiz");
 $rv = new RssView($tid);
 $rv->Display();
+?>
