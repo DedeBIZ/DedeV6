@@ -134,7 +134,7 @@ function GetFormItem($ctag, $admintype = 'admin')
         }
         $innertext .= <<<EOT
 <script>
-if(typeof SelectArcList === "undefined") {
+if (typeof SelectArcList === "undefined") {
     function SelectArcList(fname,cid) {
     var posLeft = 10;
     var posTop = 10;
@@ -434,7 +434,7 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
         }
         $innertext .= <<<EOT
 <script>
-if(typeof SelectArcList === "undefined") {
+if (typeof SelectArcList === "undefined") {
     function SelectArcList(fname,cid) {
     var posLeft = 10;
     var posTop = 10;

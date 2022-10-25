@@ -74,7 +74,7 @@ else if ($fmdo == "edit") {
 /*
 文件编辑，可视化模式
 function __saveEditView();
-else if($fmdo=="editview")
+else if ($fmdo=="editview")
 {
     $filename = str_replace("..","",$filename);
     $file = "$cfg_basedir$activepath/$filename";
@@ -83,7 +83,7 @@ else if($fmdo=="editview")
     $fp = fopen($file,"w");
     fputs($fp,$str);
     fclose($fp);
-    if(empty($backurl))
+    if (empty($backurl))
     {
         $backurl = "file_manage_main.php?activepath=$activepath";
     }

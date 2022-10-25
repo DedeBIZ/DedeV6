@@ -46,7 +46,7 @@
 					<td align="center" width="26%">管理</td>
 				</tr>
 				<?php
-				if(count($modules)>0)
+				if (count($modules)>0)
 				foreach($modules as $k=>$v)
 				{
 				?>
@@ -55,7 +55,7 @@
 					<td><?php echo $v['time'];?></td>
 					<td>
 						<?php
-						if($cfg_soft_lang != $v['lang']) echo "<span class='text-danger'>".$v['lang']."</span>";
+						if ($cfg_soft_lang != $v['lang']) echo "<span class='text-danger'>".$v['lang']."</span>";
 						else  echo $v['lang'];
 						?>
 					</td>
@@ -63,8 +63,8 @@
 					<td>
 						<?php
 						$file = DEDEDATA."/module/{$v['hash']}.xml";
-						if(file_exists($file)) {
-							if(file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
+						if (file_exists($file)) {
+							if (file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
 								echo "已安装 <a href='module_main.php?action=uninstall&hash={$v['hash']}' class='btn btn-outline-danger btn-sm'>卸载</a>";
 							} else {
 								echo "未安装 <a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
@@ -75,7 +75,7 @@
 						?>
 					</td>
 					<td>
-						<div id='manager_<?php echo $v['hash'];?>' <?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none"'?>>
+						<div id='manager_<?php echo $v['hash'];?>' <?php if (!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none"'?>>
 							<a class="btn btn-success btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>">开发者</a>
 							<a class="btn btn-success btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>">详情</a>
 							<a class="btn btn-success btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>">修改</a>

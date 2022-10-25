@@ -114,22 +114,22 @@ button+button{margin-left:10px}
     document.addEventListener('drop', (e)=>{
         e.stopPropagation();
         e.preventDefault();
-        if(!e.dataTransfer.files){return false;}
+        if (!e.dataTransfer.files){return false;}
         var dropfiles = e.dataTransfer.files;
-        if(!(dropfiles.length>0)){return false;}
+        if (!(dropfiles.length>0)){return false;}
         var exts=axupimgs.axupimgs_filetype.replace(/(\s)+/g,'').toLowerCase().split(',');
         var files=[];
         for( let file of dropfiles ){
             ext = file.name.split('.');
             ext = '.'+ext[ext.length-1];
             for(let s of exts){
-                if(s==ext){
+                if (s==ext){
                     files.push(file);
                     break;
                 }
             }
         }
-        if(files.length>0){ addList(files) }
+        if (files.length>0){ addList(files) }
     });
     //添加文件
     document.querySelector('#topbar .addfile').addEventListener('click',()=>{
@@ -147,7 +147,7 @@ button+button{margin-left:10px}
 	function upAllFiles(n){
 		var len = axupimgs.res.length;
 		file_i = n;
-		if(len == n){
+		if (len == n){
 			file_i=0;
             document.querySelector('#topbar .upall').innerText='全部上传';
             //返回
@@ -159,17 +159,17 @@ button+button{margin-left:10px}
             window.close();
 			return true;
 		}
-		if( axupimgs.res[n].url!='' ){
+		if ( axupimgs.res[n].url!='' ){
 			n++;
 			upAllFiles(n)
 		} else {
 			blobInfo.file=axupimgs.res[n].file;
             blobInfo.isWater = document.querySelector('#isWater').checked;
 			upload_handler(blobInfo,function(url){
-				if(upload_base_path){
-					if(upload_base_path.slice(-1)=='/' && url.substr(0,1)=='/' ){
+				if (upload_base_path){
+					if (upload_base_path.slice(-1)=='/' && url.substr(0,1)=='/' ){
 						url = upload_base_path + url.slice(1);
-					}else if(upload_base_path.slice(-1)!='/' && url.substr(0,1)!='/' ){
+					}else if (upload_base_path.slice(-1)!='/' && url.substr(0,1)!='/' ){
 						url = upload_base_path + '/' + url;
 					} else {
 						url = upload_base_path + url;
@@ -192,8 +192,8 @@ button+button{margin-left:10px}
 		}	
 	}
     document.querySelector('#topbar .upall').addEventListener('click',(e)=>{
-        if(e.target.innerText!='全部上传'){return false;}
-        if(axupimgs.res.length>0){
+        if (e.target.innerText!='全部上传'){return false;}
+        if (axupimgs.res.length>0){
             document.querySelectorAll('#file_list li.up-no').forEach((el,i)=>{
                 el.classList ? el.classList.add('up-now') : el.className+=' up-now';
             });
@@ -202,7 +202,7 @@ button+button{margin-left:10px}
         }
     });
     var observ_flist = new MutationObserver( (muList,observe)=>{
-        if(muList[0].addedNodes.length>0){
+        if (muList[0].addedNodes.length>0){
             muList[0].addedNodes.forEach((el)=>{
                 el.querySelector('.remove').addEventListener('click',(e)=>{
                     var li = e.target.parentNode.parentNode;

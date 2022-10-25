@@ -73,7 +73,7 @@
 					foreach($ds as $dl)
 					{
 						$dl = trim($dl);
-						if(empty($dl)) continue;
+						if (empty($dl)) continue;
 						$dls = explode(',',$dl);
 						$i++;
 						if ($i>1) echo "<a href='javascript:ShowConfig($i,$totalGroup)' class='btn btn-success btn-sm'>{$dls[1]}</a>";
@@ -115,7 +115,7 @@
 									echo "<select name='vargroup' class='npvar' style='margin-right:10px;width:160px'>";
 									foreach($ds as $dl){
 										$dl = trim($dl);
-										if(empty($dl)) continue;
+										if (empty($dl)) continue;
 										$dls = explode(',',$dl);
 										echo "<option value='{$dls[0]}'>{$dls[1]}</option>";
 									}
@@ -142,15 +142,15 @@
 						<div id="_mainsearch">
 							<?php
 							$n = 0;
-							if(!isset($gp)) $gp = 1;
+							if (!isset($gp)) $gp = 1;
 							foreach($ds as $dl)
 							{
 								$dl = trim($dl);
-								if(empty($dl)) continue;
+								if (empty($dl)) continue;
 								$dls = explode(',',$dl);
 								$n++;
 							?>
-							<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if($n!=$gp) echo 'display:none';?>">
+							<table width="100%" cellspacing="1" cellpadding="1" id="td<?php echo $n?>" class="table" style="<?php if ($n!=$gp) echo 'display:none';?>">
 								<tr bgcolor="#fbfce2" align="center">
 									<td width="360" class="border-top-0">变量说明</td>
 									<td class="border-top-0">变量值</td>
@@ -161,7 +161,7 @@
 								$dsql->Execute();
 								$i = 1;
 								while($row = $dsql->GetArray()) {
-									if($i%2==0) {
+									if ($i%2==0) {
 										$bgcolor = "#f8f8f8";
 									} else {
 										$bgcolor = "#ffffff";
@@ -172,20 +172,20 @@
 									<td><?php echo $row['info'];?></td>
 									<td align="left">
 										<?php
-										if($row['type']=='bool') {
+										if ($row['type']=='bool') {
 											$c1 = '';
 											$c2 = '';
 											$row['value']=='Y' ? $c1="checked" : $c2="checked";
 											echo "<label><input type='radio' name='edit___{$row['varname']}' value='Y' $c1> 是</label> ";
 											echo "<label><input type='radio' name='edit___{$row['varname']}' value='N' $c2> 否</label> ";
-										} else if($row['type']=='bstring') {
+										} else if ($row['type']=='bstring') {
 											$row['value'] = stripslashes($row['value']);
 											echo "<textarea name='edit___{$row['varname']}' id='edit___{$row['varname']}' style='width:98%;height:50px'>".dede_htmlspecialchars($row['value'])."</textarea>";
-										} else if($row['type']=='number') {
+										} else if ($row['type']=='number') {
 											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'>";
-										} else if($row['type']=='img') {
+										} else if ($row['type']=='img') {
 											echo "<input type='text' name='edit___{$row['varname']}' id='edit___{$row['varname']}' value='{$row['value']}' style='width:30%'> <input type='button' name='set9' value='选择' onClick="."SelectImageN('form1.edit___{$row['varname']}','','idd_{$row['varname']}');"." class='btn btn-success btn-sm'>";
-												if($row['value']){
+												if ($row['value']){
 													echo " <img src=".$row['value']." id='idd_{$row['varname']}' class='thumbnail'>";
 												} else {
 												echo " <img src='../static/web/img/defaultpic.jpg' id='idd_{$row['varname']}' class='thumbnail'>";

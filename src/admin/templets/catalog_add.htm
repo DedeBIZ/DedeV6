@@ -124,7 +124,7 @@
         <input type="hidden" name="reid" id="reid" value="<?php echo $id;?>">
         <input type="hidden" name="topid" id="topid" value="<?php echo $topid;?>">
         <?php
-        if($id>0)
+        if ($id>0)
         {
           echo " <input type='hidden' name='moresite' value='{$myrow['moresite']}'>";
           echo " <input type='hidden' name='siteurl' value='{$myrow['siteurl']}'>";
@@ -175,8 +175,8 @@
             <tr>
               <td width="260" class="bline">是否支持投稿：</td>
               <td class="bline">
-                <label><input type="radio" name="issend" value="1" <?php if($issend==1) echo " checked='checked' ";?>> 支持</label>
-                <label><input type="radio" name="issend" value="0" <?php if($issend==0) echo " checked='checked' ";?>> 不支持</label>
+                <label><input type="radio" name="issend" value="1" <?php if ($issend==1) echo " checked='checked' ";?>> 支持</label>
+                <label><input type="radio" name="issend" value="0" <?php if ($issend==0) echo " checked='checked' ";?>> 不支持</label>
               </td>
             </tr>
             <tr>
@@ -193,7 +193,7 @@
                   <?php
                   foreach($channelArray as $k=>$arr)
                   {
-                    if($k==$channelid) {
+                    if ($k==$channelid) {
                       $nid = $arr['nid'];
                       echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
                     } else {
@@ -246,9 +246,9 @@
                   $dsql->SetQuery("Select * from `#@__arcrank` where `rank` >= 0");
                   $dsql->Execute('cc');
                   while($row = $dsql->GetObject('cc')){
-                    if($corank==$row->rank) echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
+                    if ($corank==$row->rank) echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
                     else {
-                      if($corank==0){
+                      if ($corank==0){
                         echo "<option value='".$row->rank."'>".$row->membername."</option>";
                       }
                     }
@@ -263,7 +263,7 @@
               <td class="bline">
                 <?php
                 $pardir = '{cmspath}'.$cfg_arcdir;
-                if(!empty($typedir)) $pardir = $typedir.'/';
+                if (!empty($typedir)) $pardir = $typedir.'/';
                 $pardir = preg_replace("#\/{1,}#", '/', $pardir);
                 echo $pardir;
                 ?>
@@ -286,7 +286,7 @@
               <td class="bline">
                 <label><input type="radio" name="referpath" value="parent" checked="chekced"> 上级目录</label>
                 <?php
-                if($moresite==0){
+                if ($moresite==0){
                 ?>
                 <label><input type="radio" name="referpath" value="cmspath"> CMS根目录</label>
                 <label><input type="radio" name="referpath" value="basepath"> 站点根目录</label>
@@ -337,10 +337,10 @@
                   $dsql->Execute('s',$sql);
                   while($arr = $dsql->GetArray('s'))
                   {
-                    if($arr['evalue']%500==0) {
+                    if ($arr['evalue']%500==0) {
                       echo "<option value='{$arr['evalue']}'>{$arr['ename']}</option>";
                     }
-                    else if(preg_match("#\.#", $arr['evalue']))
+                    else if (preg_match("#\.#", $arr['evalue']))
                     {
                       echo "<option value='{$arr['evalue']}'>└───{$arr['ename']}</option>";
                     } else {
@@ -354,7 +354,7 @@
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" id="adset" class="biz-border table" style="display:none">
             <?php
-            if($id==0)
+            if ($id==0)
             {
             ?>
             <tr>

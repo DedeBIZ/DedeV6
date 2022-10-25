@@ -146,7 +146,7 @@ else if ($dopost == 'save') {
         if (!$dsql->ExecuteNoneQuery($inquery)) {
             $gerr = $dsql->GetError();
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
-            ShowMsg("把数据保存到数据库附加表 `{$addtable}` 时出错，请联系管理员", "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "javascript:;");
             exit();
         }
     }

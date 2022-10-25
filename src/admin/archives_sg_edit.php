@@ -103,7 +103,7 @@ else if ($dopost == 'save') {
     if ($addtable != '') {
         $iquery = "UPDATE `$addtable` SET typeid='$typeid',arcrank='$arcrank',title='$title',flag='$flag',litpic='$litpic'{$inadd_f} WHERE aid='$id' ";
         if (!$dsql->ExecuteNoneQuery($iquery)) {
-            ShowMsg("更新附加表 `$addtable` 时出错，请检查原因", "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "javascript:;");
             exit();
         }
     }

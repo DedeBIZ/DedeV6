@@ -131,11 +131,11 @@ function GetCurContent($body)
         } else if ($itype == 'audio/mpeg'){
             $itype = ".mp3";
             $isImage = false;
-        } else if($itype == 'image/jpeg') {
+        } else if ($itype == 'image/jpeg') {
             $itype = '.jpg';
-        } else if($itype == 'image/bmp') {
+        } else if ($itype == 'image/bmp') {
             $itype = '.bmp';
-        } else if($itype == 'image/svg+xml') {
+        } else if ($itype == 'image/svg+xml') {
             $itype = '.svg';
             $isImage = false;
         } else {

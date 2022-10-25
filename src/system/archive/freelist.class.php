@@ -58,7 +58,7 @@ class FreeList
         }
         $channelid = $this->ListObj->GetAtt('channel');
         /*
-        if(empty($channelid))
+        if (empty($channelid))
         {
             showmsg('必须指定频道','-1');exit();
         } else {

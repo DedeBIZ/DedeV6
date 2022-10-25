@@ -235,7 +235,7 @@ function GetSafequestion($selid=0,$formname='safequestion')
 	$safequestions_form = "<select class='form-control' name='$formname' id='$formname'>";
 	foreach($safequestions as $k=>$v)
 	{
-	 	if($k==$selid) $safequestions_form .= "<option value='$k' selected>$v</option>\r\n";
+	 	if ($k==$selid) $safequestions_form .= "<option value='$k' selected>$v</option>\r\n";
 	 	else $safequestions_form .= "<option value='$k'>$v</option>\r\n";
 	}
 	$safequestions_form .= "</select>\r\n";

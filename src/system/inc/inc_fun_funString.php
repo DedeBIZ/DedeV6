@@ -7,18 +7,18 @@ function SpHtml2Text($str)
 	$start = 1;
 	for($i=0;$i<strlen($str);$i++)
 	{
-		if($start==0 && $str[$i]==">")
+		if ($start==0 && $str[$i]==">")
 		{
 			$start = 1;
 		}
-		else if($start==1)
+		else if ($start==1)
 		{
-			if($str[$i]=="<")
+			if ($str[$i]=="<")
 			{
 				$start = 0;
 				$alltext .= " ";
 			}
-			else if(ord($str[$i])>31)
+			else if (ord($str[$i])>31)
 			{
 				$alltext .= $str[$i];
 			}

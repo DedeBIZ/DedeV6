@@ -175,7 +175,7 @@ function edittag() { }
 else if ($action == 'edittag' || $action == 'addnewtag') {
     if ($action == 'addnewtag') {
         $democode = '<'."?php
-if(!defined('DEDEINC'))
+if (!defined('DEDEINC'))
 {
     exit(\"Request Error!\");
 }

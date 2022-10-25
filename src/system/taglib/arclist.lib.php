@@ -227,12 +227,12 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             }
         }
         $orwheres[] = 'arc.arcrank > -1';
-        if(!empty($notypeid))
+        if (!empty($notypeid))
         {
             $orwheres[] = "and arc.typeid NOT IN (".GetSonIds($notypeid).")";
         }
         //由于这个条件会导致缓存功能失去意义，因此取消
-        //if($arcid!=0) $orwheres[] = " arc.id<>'$arcid' ";
+        //if ($arcid!=0) $orwheres[] = " arc.id<>'$arcid' ";
     }
     //文档排序的方式
     $ordersql = '';

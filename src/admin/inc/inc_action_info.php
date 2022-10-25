@@ -136,7 +136,7 @@ $actionSearch[4] = array(
         ),
         1  =>  array(
             'title' => '文档批量维护 ',
-            'description' => '批量的对某个栏目或者全部栏目的内容进行审核文档、更新HTML、移动文档、删除文档',
+            'description' => '批量的对某个栏目或者全部栏目的内容进行审核文档、更新网页、移动文档、删除文档',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'content_batch_up.php'
         ),

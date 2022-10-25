@@ -42,11 +42,11 @@
         <td><input type="text" name="scores_<?php echo $k?>" value="<?php echo $row->scores;?>" id="scores_<?php echo $k?>"></td>
         <td align="center">
           <?php
-      	  if($row->id<=5) { echo "系统"; }
+      	  if ($row->id<=5) { echo "系统"; }
           else { echo "用户"; }
           ?>
         </td>
-        <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if($row->id == 3) echo 'disabled="disabled"';?> value="1" checked="checked"> 正在使用</td>
+        <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if ($row->id == 3) echo 'disabled="disabled"';?> value="1" checked="checked"> 正在使用</td>
       </tr>
       <?php }?>
       <input type="hidden" name="idend" value="<?php echo $k;?>">

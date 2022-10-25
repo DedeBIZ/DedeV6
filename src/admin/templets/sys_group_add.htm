@@ -34,10 +34,10 @@
             foreach($gouplists as $line)
             {
             	$line = trim($line);
-            	if($line=="") continue;
-            	if(preg_match("#^>>#", $line))
+            	if ($line=="") continue;
+            	if (preg_match("#^>>#", $line))
             	{
-            		if($start>0) echo "</td></tr>";
+            		if ($start>0) echo "</td></tr>";
             		$start++;
             		$lhead = "
             	 <tr> 
@@ -46,12 +46,12 @@
             		"; 
             		echo $lhead;
             	}
-            	else if(preg_match("#^>#", $line))
+            	else if (preg_match("#^>#", $line))
             	{
             		$ls = explode('>',$line);
             		$tag = $ls[1];
             		$tagname = str_replace('[br]', '<br>', $ls[2]);
-            		if(!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
+            		if (!preg_match("#<br \/>#", $tagname) ) $tagname .= "<span>($tag)</span>";
             		else $tagname = str_replace('<br>', "<span>($tag)</span><br>", $tagname);
             		echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='$tag'> $tagname</label> ";
             	  $k++;
@@ -72,7 +72,7 @@
                	echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label> ";
               	$k++;
               	$l++;
-              	if($l%6==0) echo "<br>";
+              	if ($l%6==0) echo "<br>";
               }
               ?>
               </td>

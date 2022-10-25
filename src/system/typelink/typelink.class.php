@@ -67,7 +67,7 @@ class TypeLink
     {
     }
     //重设类目ID
-    function SetTypeID($typeid)
+    function SETtypeid($typeid)
     {
         $this->TypeID = $typeid;
         $this->valuePosition = "";

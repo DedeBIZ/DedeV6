@@ -30,7 +30,7 @@ if ($dopost == 'editArchives') {
     if ($gurl == '') $gurl = 'article_edit.php';
     header("location:{$gurl}?aid=$aid");
     exit();
-} else if($dopost == 'upload_base64_image') {
+} else if ($dopost == 'upload_base64_image') {
     if ($litpic_b64 != "") {
         $data = explode(',', $litpic_b64);
         $ntime = time();
@@ -155,7 +155,7 @@ else if ($dopost == "uploadLitpic") {
             $msg = "<script>
                     parent.document.getElementById('uploadwait').style.display = 'none';
                     parent.document.getElementById('picname').value = '{$upfile}';
-                    if(parent.document.getElementById('divpicview'))
+                    if (parent.document.getElementById('divpicview'))
                     {
                         parent.document.getElementById('divpicview').style.width = '150px';
                         parent.document.getElementById('divpicview').innerHTML = \"<img src='{$upfile}?n' width='150'>\";
@@ -330,14 +330,14 @@ else if ($dopost == 'moveArchives') {
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
             if ($row['typeid'] != $totype) {
-                $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny`  SET typeid='$totype' WHERE id='{$row[$idtype]}' ");
+                $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET typeid='$totype' WHERE id='{$row[$idtype]}' ");
                 $dsql->ExecuteNoneQuery("UPDATE `{$typeInfos['maintable']}` SET typeid='$totype' WHERE id='{$row[$idtype]}' ");
                 $dsql->ExecuteNoneQuery("UPDATE `{$typeInfos['addtable']}` SET typeid='$totype' WHERE aid='{$row[$idtype]}' ");
                 $okids[] = $row[$idtype];
                 $j++;
             }
         }
-        //更新HTML
+        //更新网页
         foreach ($okids as $aid) {
             $arc = new Archives($aid);
             $arc->MakeHtml();
@@ -615,16 +615,7 @@ else if ($dopost == 'quickEditSave') {
         if (preg_match("#p#", $oldflag)) $flag .= ',p';
         if (preg_match("#j#", $oldflag)) $flag .= ',j';
     }
-    $query = "UPDATE `#@__archives` SET
-    typeid = '$typeid',
-    flag = '$flag',
-    arcrank = '$arcrank',
-    money = '$money',
-    title = '$title', 
-    shorttitle = '$shorttitle',
-    keywords = '$keywords',
-    dutyadmin = '$adminid'
-   WHERE id = '$aid'; ";
+    $query = "UPDATE `#@__archives` SET typeid='$typeid',flag='$flag',arcrank='$arcrank',money='$money',title='$title',shorttitle='$shorttitle',keywords='$keywords',dutyadmin='$adminid' WHERE id='$aid'; ";
     //更新主表
     $dsql->ExecuteNoneQuery($query);
     //更新微表
@@ -636,7 +627,7 @@ else if ($dopost == 'quickEditSave') {
         else $addtable = preg_replace("#[^a-z0-9__#@-]#i", "", $addtable);
         $dsql->ExecuteNoneQuery("UPDATE `$addtable` SET typeid='$typeid' WHERE aid='$aid' ");
     }
-    //更新HTML
+    //更新网页
     $artUrl = MakeArt($aid, TRUE, TRUE);
     $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '-1';
     ShowMsg('成功更新一篇文档基本信息', $backurl);

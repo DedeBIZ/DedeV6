@@ -60,7 +60,7 @@ if ($dopost == "add") {
         ShowMsg("成功增加一个链接", $burl, 0, 500);
         exit();
     } else {
-        ShowMsg("增加链接时出错，请向官方反馈，原因：".$dsql->GetError(), "javascript:;");
+        ShowMsg("增加链接时出错，原因：".$dsql->GetError(), "javascript:;");
         exit();
     }
 }

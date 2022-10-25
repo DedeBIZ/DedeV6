@@ -139,9 +139,9 @@ else if ($dopost == 'save') {
     //跳转网址的文档强制为动态
     if (preg_match("#j#", $flag)) $ismake = -1;
     //更新数据库的SQL语句
-    $query = "UPDATE `#@__archives` SETtypeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight'WHERE id='$id'; ";
+    $query = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight'WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($query)) {
-        ShowMsg('更新数据库 archives 表时出错，请检查', -1);
+        ShowMsg('数据保存到数据库主表`#@__archives`时出错，请检查数据库字段', -1);
         exit();
     }
     $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
@@ -151,7 +151,7 @@ else if ($dopost == 'save') {
         $templet = empty($templet) ? '' : $templet;
         $iquery = "UPDATE `$addtable` SET typeid='$typeid',body='$body'{$inadd_f},redirecturl='$redirecturl',templet='$templet',userip='$useip' WHERE aid='$id'";
         if (!$dsql->ExecuteNoneQuery($iquery)) {
-            ShowMsg("更新附加表 `$addtable` 时出错，请检查原因", "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "javascript:;");
             exit();
         }
     }

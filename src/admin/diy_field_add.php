@@ -60,7 +60,7 @@ if ($action == 'save') {
     }
     $addlist = GetAddFieldList($dtp, $oksetting);
     $oksetting = addslashes($oksetting);
-    $rs = $dsql->ExecuteNoneQuery("Update #@__diyforms set `info`='$oksetting' where diyid='$diyid' ");
+    $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__diyforms` SET `info`='$oksetting' WHERE diyid='$diyid' ");
     if (!$rs) {
         $grr = $dsql->GetError();
         ShowMsg("保存节点配置出错".$grr, "javascript:;");

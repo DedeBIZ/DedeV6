@@ -49,11 +49,11 @@
 					<td>环境变量：</td>
 					<td>
 						<?php
-						if(empty($cid)) $cid="0";
+						if (empty($cid)) $cid="0";
 						$tl = new TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
 						echo "<select name='typeid' style='width:260px'>";
-						if($cid=="0") echo "<option value='0' selected>不使用环境ID</option>";
+						if ($cid=="0") echo "<option value='0' selected>不使用环境ID</option>";
 						echo $typeOptions;
 						echo "</select>";
 						?>

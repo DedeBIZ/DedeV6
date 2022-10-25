@@ -162,7 +162,7 @@
                   $dsql->Execute();
                   while($lrow = $dsql->GetObject()){
                  	$disable = '';
-                 	if($lrow->channeltype < -1)
+                 	if ($lrow->channeltype < -1)
                  	{
                  		$disable = 'disabled';
                  	}

@@ -171,7 +171,7 @@ if ($action == 'post') {
         }
     }
 } 
-elseif($action == 'excel') {
+elseif ($action == 'excel') {
     ob_end_clean();//清除缓冲区,避免乱码
     header("Content-type:application/vnd.ms-excel");
     header("Content-Disposition:attachment;filename={$diy->name}_".date("Y-m-d").".xls");

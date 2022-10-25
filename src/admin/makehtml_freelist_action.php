@@ -60,5 +60,5 @@ if ($nextpage == $totalpage) {
         ShowMsg("创建列表：".$tid."，继续执行任务", $gourl, 0, 100);
     }
 }
-$dsql->ExecuteNoneQuery("Update `#@__freelist` set  nodefault='1' where aid='$startid';");
+$dsql->ExecuteNoneQuery("UPDATE `#@__freelist` SET nodefault='1' where aid='$startid';");
 ?>

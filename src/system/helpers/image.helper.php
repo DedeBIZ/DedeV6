@@ -31,7 +31,7 @@ if (!function_exists('ImageResize')) {
             switch ($srcInfo[2]) {
                 case 1:
                     if (!$cfg_photo_type['gif']) return FALSE;
-                    $im = imagecreatefromgif($srcFile);
+                    $im = imagecreatefromgif ($srcFile);
                     break;
                 case 2:
                     if (!$cfg_photo_type['jpeg']) return FALSE;
@@ -75,7 +75,7 @@ if (!function_exists('ImageResize')) {
                 imagefill($ni, 0, 0, $alpha);
                 switch ($srcInfo[2]) {
                     case 1:
-                        imagegif($ni, $toFile);
+                        imagegif ($ni, $toFile);
                         break;
                     case 2:
                         imagejpeg($ni, $toFile, 85);
@@ -210,7 +210,7 @@ if (!function_exists('ImageResizeNew')) {
         switch ($srcInfo[2]) {
             case 1:
                 if (!$cfg_photo_type['gif']) return FALSE;
-                $img = imagecreatefromgif($srcFile);
+                $img = imagecreatefromgif ($srcFile);
                 break;
             case 2:
                 if (!$cfg_photo_type['jpeg']) return FALSE;
@@ -272,7 +272,7 @@ if (!function_exists('ImageResizeNew')) {
         if ($issave) {
             switch ($srcInfo[2]) {
                 case 1:
-                    imagegif($new_img, $toFile);
+                    imagegif ($new_img, $toFile);
                     break;
                 case 2:
                     imagejpeg($new_img, $toFile, 100);
@@ -294,7 +294,7 @@ if (!function_exists('ImageResizeNew')) {
         else {
             switch ($srcInfo[2]) {
                 case 1:
-                    imagegif($new_img);
+                    imagegif ($new_img);
                     break;
                 case 2:
                     imagejpeg($new_img);

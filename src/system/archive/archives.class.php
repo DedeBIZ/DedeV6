@@ -589,10 +589,10 @@ class Archives
                     $this->dtp->Assign($i, $this->GetPreNext($ctag->GetAtt('get')));
                 }
                 //二次开发上一篇下一篇{dede:prenextdiy get='pre'}{/dede:prenextdiy}{dede:prenextdiy get='next'}{/dede:prenextdiy} 
-                else if($ctag->GetName()=='prenextdiy')
+                else if ($ctag->GetName()=='prenextdiy')
                 {
                     $innertext = trim($ctag->GetInnerText());
-                    if($innertext)
+                    if ($innertext)
                     {
                         $get = $ctag->GetAtt('get');
                         $diys['diy'] = $this->GetPreNext('diy');
@@ -604,14 +604,14 @@ class Archives
                         {
                             foreach($dtp2->CTags as $tid=>$ctag2)
                             {
-                                if(isset($row[$get][$ctag2->GetName()]))
+                                if (isset($row[$get][$ctag2->GetName()]))
                                 {
                                     $dtp2->Assign($tid,$row[$get][$ctag2->GetName()]);
                                 }
                             }
                             $revalue .= $dtp2->GetResult();
                         }
-                        if($row[$get]['id']) $this->dtp->Assign($i,$revalue);
+                        if ($row[$get]['id']) $this->dtp->Assign($i,$revalue);
                     }
                 }
                 else if ($ctag->GetName() == 'fieldlist') {
@@ -742,11 +742,11 @@ class Archives
             }
         }
         //二次开发上一篇下一篇
-        if($gtype=='diy')
+        if ($gtype=='diy')
         {
             return $this->PreNext['diy'];
         }
-        if($gtype=='pre')
+        if ($gtype=='pre')
         {
             $rs =  $this->PreNext['pre'];
         } else if ($gtype == 'preimg') {

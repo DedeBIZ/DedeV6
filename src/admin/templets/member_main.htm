@@ -40,7 +40,7 @@
             <?php
             foreach($staArr as $k=>$v)
             {
-              if($spacesta==$k) echo "<option value='$k' selected>$v</option>";
+              if ($spacesta==$k) echo "<option value='$k' selected>$v</option>";
             else echo "<option value='$k'>$v</option>";
             }
             ?>
@@ -78,10 +78,10 @@
         <td>{dede:field.mid/}</td>
         <td>
           <?php
-          if(!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};
+          if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};
           echo ''.$fields['userid'].'';
-          if($fields['spacesta']==-2) echo "<span class='text-danger'>[禁言]</span>";
-          if($fields['spacesta']==-1) echo "<span class='text-danger'>[未审核]</span>";
+          if ($fields['spacesta']==-2) echo "<span class='text-danger'>[禁言]</span>";
+          if ($fields['spacesta']==-1) echo "<span class='text-danger'>[未审核]</span>";
           ?>
         </td>
         <td>{dede:field.email/}<br>

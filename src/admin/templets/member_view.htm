@@ -13,13 +13,13 @@
   <script>
   function checkSubmit()
   {
-    if(document.form2.email.value=="")
+    if (document.form2.email.value=="")
     {
       document.form2.email.focus();
       ShowMsg("Email不能为空");
       return false;
     }
-    if(document.form2.uname.value=="")
+    if (document.form2.uname.value=="")
     {
       document.form2.uname.focus();
       ShowMsg("用户昵称不能为空");
@@ -35,7 +35,7 @@
   </tr>
 <tr>
 <td align="center">
-	<?php	if($row['matt']==10) echo "<span class='text-danger'>当前用户是网站管理员关连的帐号，请小心操作</span>";?>
+	<?php	if ($row['matt']==10) echo "<span class='text-danger'>当前用户是网站管理员关连的帐号，请小心操作</span>";?>
 	<table width="98%" cellspacing="0" cellpadding="6" class="table table-borderless">
         <form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
           <input type="hidden" name="dopost" value="edituser">
@@ -44,7 +44,7 @@
             <td width="260" class="bline">用户名：</td>
             <td class="bline">
               <?php
-              if($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};
+              if ($row['face']!='') {echo "<img src='{$row['face']}' class='user-img'>";};
               echo "".$row['userid']."";
               ?>
             </td>
@@ -82,9 +82,9 @@
           <tr> 
             <td class="bline">性别：</td>
             <td class="bline">
-              <label><input type="radio" name="sex" value="男"<?php if($row['sex']=="男" ) echo" checked='1'" ;?>> 男</label>
-              <label><input type="radio" name="sex" value="女"<?php if($row['sex']=="女" ) echo" checked='1'" ;?>> 女</label>
-              <label><input type="radio" name="sex" value=""<?php if($row['sex']=="" ) echo" checked='1'" ;?>> 保密</label>
+              <label><input type="radio" name="sex" value="男"<?php if ($row['sex']=="男" ) echo" checked='1'" ;?>> 男</label>
+              <label><input type="radio" name="sex" value="女"<?php if ($row['sex']=="女" ) echo" checked='1'" ;?>> 女</label>
+              <label><input type="radio" name="sex" value=""<?php if ($row['sex']=="" ) echo" checked='1'" ;?>> 保密</label>
              </td>
           </tr>
           <tr> 
@@ -108,7 +108,7 @@
               $options = "<select name='rank' style='width:160px'>";
               foreach($MemberTypes as $k=>$v)
               {
-  	            if($k!=$row['rank']) $options .= "<option value='$k'>$v</option>";
+  	            if ($k!=$row['rank']) $options .= "<option value='$k'>$v</option>";
   	            else $options .= "<option value='$k' selected>$v</option>";
               }
               $options .= "</select>";
@@ -124,7 +124,7 @@
             <td class="bline">会员天数：</td>
             <td class="bline"><input type="text" name="exptime" value="<?php echo $row['exptime']?>" id="exptime" style="width:60px">（如果您要升级会员，会员天数必须大于0）</td>
           </tr>
-          <?php if($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span class="text-danger">该会员已经到期</span>';?>
+          <?php if ($mhasDay!=0){ $mhasDay=($mhasDay>0)? $mhasDay : '<span class="text-danger">该会员已经到期</span>';?>
           <tr> 
             <td class="bline">会员剩余天数：</td>
             <td class="bline"><?php echo $mhasDay;?></td>
@@ -144,7 +144,7 @@
            		<?php
            		foreach($staArr as $k=>$v)
            		{
-           			if($row['spacesta']==$k) echo "<option value='$k' selected>$v</option>";
+           			if ($row['spacesta']==$k) echo "<option value='$k' selected>$v</option>";
            			else echo "<option value='$k'>$v</option>";
            		}
            		?>

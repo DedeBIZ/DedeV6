@@ -64,7 +64,7 @@
 					$client->appid = $cfg_bizcore_appid;
 					$client->key = $cfg_bizcore_key;
 					$data = $client->AdminPWDExists();
-					if($data->code == -1){
+					if ($data->code == -1){
 				?>
 				<tr>
 					<td colspan="2">尚未开启DedeBIZ商业组件 <a class="btn btn-danger btn-sm" target="_blank" href="https://www.dedebiz.com/start?code=-1008">如何启动组件</a></td>
@@ -73,7 +73,7 @@
 				} else {
 					$data = json_decode($data->data);
 					$rs = (array)($data->result);
-					if($rs["admin_pwd_exists"] == "false") {
+					if ($rs["admin_pwd_exists"] == "false") {
 				?>
 				<tr>
 					<td>设置操作密码：</td>

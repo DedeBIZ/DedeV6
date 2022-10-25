@@ -118,7 +118,7 @@
 				</td>
 				<?php
 				$i++;
-				if(isset($dedeSysTables[$i])) {
+				if (isset($dedeSysTables[$i])) {
 					$t = $dedeSysTables[$i];
 				?>
 				<td><input type="checkbox" name="tables" value="<?php echo $t;?>" checked></td>
@@ -165,7 +165,7 @@
 				</td>
 				<?php
 				$i++;
-				if(isset($otherTables[$i])) {
+				if (isset($otherTables[$i])) {
 					$t = $otherTables[$i];
 				?>
 				<td><input type="checkbox" name="tables" value="<?php echo $t;?>"></td>
@@ -187,7 +187,7 @@
 					<td colspan="8">
 						分卷大小：<input name="fsize" type="text" id="fsize" value="2048" style="width:60px"> K
 						<label><input type="checkbox" name="isstruct" id="isstruct" value="1" checked="1"> 备份结构</label>
-						<?php if(@function_exists('gzcompress') && false) {?>
+						<?php if (@function_exists('gzcompress') && false) {?>
 						<label><input type="checkbox" name="iszip" id="iszip" value="1" checked="1"> 完成后压缩成ZIP</label>
 						<?php }?>
 						<button name="b1" type="button" id="b1" class="btn btn-success btn-sm" onClick="SelAll()">全选</button>

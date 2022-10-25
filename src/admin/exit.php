@@ -16,7 +16,7 @@ if (empty($needclose)) {
     header('location:index.php');
 } else {
     $msg = "<script>
-    if(document.all) window.opener=true;
+    if (document.all) window.opener=true;
     window.close();
     </script>";
     echo $msg;

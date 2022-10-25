@@ -164,7 +164,7 @@ class image
             if ($this->watermarktype < 2) {
                 $watermark_file = $this->watermarktype == 1 ? DEDEDATA.'/mark/mark.png' : DEDEDATA.'/mark/mark.gif';
                 $watermarkinfo = @getimagesize($watermark_file);
-                $watermark_logo = $this->watermarktype == 1 ? @imagecreatefrompng($watermark_file) : @imagecreatefromgif($watermark_file);
+                $watermark_logo = $this->watermarktype == 1 ? @imagecreatefrompng($watermark_file) : @imagecreatefromgif ($watermark_file);
                 if (!$watermark_logo) {
                     return;
                 }

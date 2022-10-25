@@ -116,7 +116,7 @@
             	$dsql->Execute();
             	while($trow = $dsql->GetObject())
             	{
-            		if($trow->att!='j')
+            		if ($trow->att!='j')
             		{
             			echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
             		}
@@ -205,7 +205,7 @@
                 <input type="text" name="keywords" id="keywords" value="" style="width:360px">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
-              <td><label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo 'checked="1"';?> />自动获取，手动填写用","分开</label></td>
+              <td><label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="1"';?> />自动获取，手动填写用","分开</label></td>
             </tr>
           </table>
         </td>
@@ -226,8 +226,8 @@
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
-                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
+                <label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
@@ -289,7 +289,7 @@
             $nodename = $nodeid = '';
             for($i=1;$i<=$cfg_specnote;$i++)
             {
-		  			 if($i==1)
+		  			 if ($i==1)
 		  			 {
 		  				$nodename = '默认节点';
 		  				$nodeid = 'default';

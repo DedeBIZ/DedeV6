@@ -98,9 +98,9 @@
             $dsql->Execute();
             while($trow = $dsql->GetObject())
             {
-              if($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
+              if ($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
               else $jumpclick = '';
-              if(preg_match("#".$trow->att."#", $arcRow['flag']))
+              if (preg_match("#".$trow->att."#", $arcRow['flag']))
               echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label>";
               else
               echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label>";
@@ -144,7 +144,7 @@
               <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
               <button type="button" id="btnClearAll" class="btn btn-success btn-smete">清空</button>
             </td>
-            <td align="center"><img src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
+            <td align="center"><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
           </tr>
         </table>
       </td>
@@ -176,7 +176,7 @@
               <?php
            	  $typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
            	  echo "<select name='typeid' id='typeid' style='width:160px'>";
-              if($arcRow['typeid']=='0') echo "<option value='0' selected>请选择主分类</option>";
+              if ($arcRow['typeid']=='0') echo "<option value='0' selected>请选择主分类</option>";
               echo $typeOptions;
               echo '</select>';
 			        ?>
@@ -189,7 +189,7 @@
       </td>
     </tr>
     <?php
-    if($cfg_need_typeid2=='Y') {
+    if ($cfg_need_typeid2=='Y') {
     ?>
     <tr>
       <td class="bline">
@@ -235,15 +235,15 @@
           <tr>
             <td width="90"> 表现方式：</td>
             <td>
-              <label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if($pagestyle==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
-              <label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if($pagestyle==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
-              <label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if($pagestyle==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
+              <label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if ($pagestyle==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
+              <label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if ($pagestyle==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
+              <label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if ($pagestyle==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
             </td>
           </tr>
         </table>
       </td>
     </tr>
-    <tr id="cfgmulist" style="<?php if($pagestyle!=3) echo 'display:none';?>">
+    <tr id="cfgmulist" style="<?php if ($pagestyle!=3) echo 'display:none';?>">
       <td class="bline">
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
@@ -261,7 +261,7 @@
         </table>
       </td>
     </tr>
-    <tr id="spagelist" style="<?php if($pagestyle!=1) echo 'display:none';?>">
+    <tr id="spagelist" style="<?php if ($pagestyle!=1) echo 'display:none';?>">
       <td class="bline">
         <table width="900" cellspacing="0" cellpadding="0">
           <tr>
@@ -330,17 +330,17 @@
               <div id="thumbnailsEdit">
                 <?php
                 $j = 1;
-                if($imgurls!=""){
+                if ($imgurls!=""){
                   $dtp = new DedeTagParse();
                   $dtp->LoadSource($imgurls);
-                  if(is_array($dtp->CTags))
+                  if (is_array($dtp->CTags))
                   {
                     foreach($dtp->CTags as $ctag)
                     {
-                      if($ctag->GetName()=="img")
+                      if ($ctag->GetName()=="img")
                       {
                         $bigimg = trim($ctag->GetInnerText());
-                        if($ctag->GetAtt('ddimg') != $bigimg && $ctag->GetAtt('ddimg')!='')
+                        if ($ctag->GetAtt('ddimg') != $bigimg && $ctag->GetAtt('ddimg')!='')
                         {
                           $litimg = $ctag->GetAtt('ddimg');
                         } else {
@@ -406,13 +406,13 @@
         <tr>
           <td width="90"  width="260"> 评论选项：</td>
           <td width="260">
-            <label><input type="radio" name="notpost" value="0" <?php if($arcRow['notpost']==0) echo "checked='1'";?>> 允许评论</label>
-            <label><input type="radio" name="notpost" value="1" <?php if($arcRow['notpost']==1) echo "checked='1'";?>> 禁止评论</label>
+            <label><input type="radio" name="notpost" value="0" <?php if ($arcRow['notpost']==0) echo "checked='1'";?>> 允许评论</label>
+            <label><input type="radio" name="notpost" value="1" <?php if ($arcRow['notpost']==1) echo "checked='1'";?>> 禁止评论</label>
           </td>
           <td width="90">发布选项：</td>
           <td>
-            <label><input type="radio" name="ishtml" value="1" <?php if($arcRow["ismake"]!=-1) echo "checked";?>> 生成网页</label>
-            <label><input type="radio" name="ishtml" value="0" <?php if($arcRow["ismake"]==-1) echo "checked";?>> 仅动态浏览</label>
+            <label><input type="radio" name="ishtml" value="1" <?php if ($arcRow["ismake"]!=-1) echo "checked";?>> 生成网页</label>
+            <label><input type="radio" name="ishtml" value="0" <?php if ($arcRow["ismake"]==-1) echo "checked";?>> 仅动态浏览</label>
           </td>
         </tr>
       </table>
@@ -427,7 +427,7 @@
                 <?php
                 $subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
                 echo "<option value='0'>正常排序</option>";
-                if($subday>0) echo "<option value='$subday' selected>置顶 $subday 天</option>";
+                if ($subday>0) echo "<option value='$subday' selected>置顶 $subday 天</option>";
                 ?>
                 <option value="7">置顶一周</option>
                 <option value="30">置顶一个月</option>

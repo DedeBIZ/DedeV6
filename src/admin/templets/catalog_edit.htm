@@ -156,15 +156,15 @@
             <tr>
               <td width="260" class="bline">是否支持投稿：</td>
               <td class="bline">
-                <label><input type="radio" name="issend" value="1" <?php if($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
-                <label><input type="radio" name="issend" value="0" <?php if($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
+                <label><input type="radio" name="issend" value="1" <?php if ($myrow['issend']=="1") echo "checked='1'";?>> 支持</label>
+                <label><input type="radio" name="issend" value="0" <?php if ($myrow['issend']=="0") echo "checked='1'";?>> 不支持</label>
               </td>
             </tr>
             <tr>
               <td width="260" class="bline">是否隐藏栏目：</td>
               <td class="bline">
-                <label><input type="radio" name="ishidden" value="0" <?php if($myrow['ishidden']=="0") echo "checked='1'";?>> 显示</label>
-                <label><input type="radio" name="ishidden" value="1" <?php if($myrow['ishidden']=="1") echo "checked='1'";?>> 隐藏</label>
+                <label><input type="radio" name="ishidden" value="0" <?php if ($myrow['ishidden']=="0") echo "checked='1'";?>> 显示</label>
+                <label><input type="radio" name="ishidden" value="1" <?php if ($myrow['ishidden']=="1") echo "checked='1'";?>> 隐藏</label>
               </td>
             </tr>
             <tr>
@@ -174,7 +174,7 @@
                 <?php    
                 foreach($channelArray as $k=>$arr)
                 {
-                  if($k==$channelid) echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
+                  if ($k==$channelid) echo " <option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
                   else  echo " <option value='{$k}'>{$arr['typename']}|{$arr['nid']}</option>";
                 }
                 ?>
@@ -224,7 +224,7 @@
                 $dsql->Execute('cc');
                 while($row = $dsql->GetObject('cc'))
                 {
-                  if($myrow['corank']==$row->rank)
+                  if ($myrow['corank']==$row->rank)
                   echo "<option value='".$row->rank."' selected>".$row->membername."</option>";
                   else
                   echo "<option value='".$row->rank."'>".$row->membername."</option>";
@@ -241,9 +241,9 @@
             <tr>
               <td>栏目列表选项：</td>
               <td>
-                <label><input type="radio" name="isdefault" value="1" <?php if($myrow['isdefault']==1) echo "checked='1'";?>> 链接到默认页</label>
-                <label><input type="radio" name="isdefault" value="0" <?php if($myrow['isdefault']==0) echo "checked='1'";?>> 链接到列表第一页</label>
-                <label><input type="radio" name="isdefault" value="-1" <?php if($myrow['isdefault']==-1) echo "checked='1'";?>> 使用动态页</label>
+                <label><input type="radio" name="isdefault" value="1" <?php if ($myrow['isdefault']==1) echo "checked='1'";?>> 链接到默认页</label>
+                <label><input type="radio" name="isdefault" value="0" <?php if ($myrow['isdefault']==0) echo "checked='1'";?>> 链接到列表第一页</label>
+                <label><input type="radio" name="isdefault" value="-1" <?php if ($myrow['isdefault']==-1) echo "checked='1'";?>> 使用动态页</label>
               </td>
             </tr>
             <tr>
@@ -253,9 +253,9 @@
             <tr>
               <td class="bline">栏目属性：</td>
               <td class="bline">
-                <label><input type="radio" name="ispart" value="0" <?php if($myrow['ispart']==0) echo "checked='1'";?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
-                <label><input type="radio" name="ispart" value="1" <?php if($myrow['ispart']==1) echo "checked='1'";?>> 频道封面（栏目本身不允许发布文档）</label><br>
-                <label><input type="radio" name="ispart" value="2" <?php if($myrow['ispart']==2) echo "checked='1'";?>> 外部连接（在"文件保存目录"处填写网址）</label>
+                <label><input type="radio" name="ispart" value="0" <?php if ($myrow['ispart']==0) echo "checked='1'";?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+                <label><input type="radio" name="ispart" value="1" <?php if ($myrow['ispart']==1) echo "checked='1'";?>> 频道封面（栏目本身不允许发布文档）</label><br>
+                <label><input type="radio" name="ispart" value="2" <?php if ($myrow['ispart']==2) echo "checked='1'";?>> 外部连接（在"文件保存目录"处填写网址）</label>
               </td>
             </tr>
             <tr id="helpvarco" style="display:none">
@@ -266,11 +266,11 @@
             <tr>
               <td>栏目交叉：<i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvarco')" style="cursor:pointer"></i> 仅适用[最终列表栏目]</td>
               <td class="bline">
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目内容</label>
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用逗号分开）</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目内容</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用逗号分开）</label>
                 <br>
-                <textarea name="crossid" id="crossid" style="<?php if($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
+                <textarea name="crossid" id="crossid" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
               </td>
             </tr>
             <tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
@@ -283,15 +283,15 @@
                   $dsql->Execute('s',$sql);
                   while($arr = $dsql->GetArray('s'))
                   {
-                    if(in_array($arr['evalue'],$smtypes)) {
+                    if (in_array($arr['evalue'],$smtypes)) {
                       $selstr = " selected='1' ";
                     } else {
                       $selstr = '';
                     }
-                    if($arr['evalue']%500==0) {
+                    if ($arr['evalue']%500==0) {
                       echo "<option value='{$arr['evalue']}'{$selstr}>{$arr['ename']}</option>";
                     }
-                    else if(preg_match("#\.#", $arr['evalue']))
+                    else if (preg_match("#\.#", $arr['evalue']))
                     {
                       echo "<option value='{$arr['evalue']}'{$selstr}> └───{$arr['ename']}</option>";
                     } else {
@@ -307,8 +307,8 @@
             <tr>
               <td class="bline" width="260">多站点支持：</td>
               <td class="bline">
-                <label><input type="radio" name="moresite" value="1" <?php if($myrow['moresite']==1) echo "checked='1'";?>> 启用</label>
-                <label><input type="radio" name="moresite" value="0" <?php if($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>
+                <label><input type="radio" name="moresite" value="1" <?php if ($myrow['moresite']==1) echo "checked='1'";?>> 启用</label>
+                <label><input type="radio" name="moresite" value="0" <?php if ($myrow['moresite']==0) echo "checked='1'";?>> 不启用</label>
               </td>
             </tr>
             <tr>

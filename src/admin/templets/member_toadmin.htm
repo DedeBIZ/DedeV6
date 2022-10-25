@@ -33,7 +33,7 @@
     <tr>
       <td align="center">
         <?php
-        if($row['matt']==10) 
+        if ($row['matt']==10) 
         {
           echo "<span class='text-danger'>已经是管理员了，不要再提升了</span>";
         } else {
@@ -48,7 +48,7 @@
               <td class="bline" class="bline">
               <?php
               echo "".$row['userid']."";
-              if($row['face']!='') {
+              if ($row['face']!='') {
                 echo "<img src='{$row['face']}' style='max-width:80px;height:auto'>";
               }
               ?>
@@ -71,7 +71,7 @@
                 $dsql->Execute("ut");
                 while($myrow = $dsql->GetObject("ut"))
                 {
-                  if($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+                  if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
                   else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
                 }
                 ?>

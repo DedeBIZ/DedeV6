@@ -29,13 +29,13 @@
     $files = $dirs = array();
     foreach ($dh as $file)
     {
-    	if($file!="." && $file!=".." && !is_dir("$inpath/$file"))
+    	if ($file!="." && $file!=".." && !is_dir("$inpath/$file"))
     	{
     		@$filesize = filesize("$inpath/$file");
     		@$filesize=$filesize/1024;
     		@$filetime = filemtime("$inpath/$file");
     		@$filetime = MyDate("Y-m-d H:i:s",$filetime);
-    		if($filesize<0.1)
+    		if ($filesize<0.1)
     		{
     			@list($ty1,$ty2)=explode(".",$filesize);
     			$filesize=$ty1.".".substr($ty2,0,2);
@@ -44,13 +44,13 @@
     			$filesize=$ty1.".".substr($ty2,0,1);
     		}
     	}
-    	if($file == ".")
+    	if ($file == ".")
     	{
     		continue;
     	}
-    	else if($file == "..")
+    	else if ($file == "..")
     	{
-    		if($activepath == "")
+    		if ($activepath == "")
     		{
     			continue;
     		}
@@ -63,10 +63,10 @@
       </tr>";
     		$dirs[] = $line;
     	}
-    	else if(is_dir("$inpath/$file"))
+    	else if (is_dir("$inpath/$file"))
     	{
-    		if(preg_match("#^_(.*)$#i",$file)) continue;
-    		if(preg_match("#^\.(.*)$#i",$file)) continue;
+    		if (preg_match("#^_(.*)$#i",$file)) continue;
+    		if (preg_match("#^\.(.*)$#i",$file)) continue;
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
         <a href='file_manage_main.php?activepath=".urlencode("$activepath/$file")."'><img src='../static/web/img/dir.gif'>$file</a></td>
@@ -80,7 +80,7 @@
        </tr>";
     		$dirs[] = $line;
     	}
-    	else if(preg_match("#\.(gif|png)#i",$file))
+    	else if (preg_match("#\.(gif|png)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
@@ -95,7 +95,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(jpg)#i",$file))
+    	else if (preg_match("#\.(jpg)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
@@ -110,7 +110,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(swf|fla|fly)#i",$file))
+    	else if (preg_match("#\.(swf|fla|fly)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
@@ -125,7 +125,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(zip|rar|tar.gz)#i",$file))
+    	else if (preg_match("#\.(zip|rar|tar.gz)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
@@ -140,7 +140,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(exe)#i",$file))
+    	else if (preg_match("#\.(exe)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
@@ -155,7 +155,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(mp3|wma)#i",$file))
+    	else if (preg_match("#\.(mp3|wma)#i",$file))
     	{
     		$line = "\n<tr   onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
@@ -170,7 +170,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(wmv|api)#i",$file))
+    	else if (preg_match("#\.(wmv|api)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
@@ -185,7 +185,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(rm|rmvb)#i",$file))
+    	else if (preg_match("#\.(rm|rmvb)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
        <td>
@@ -200,7 +200,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(txt|inc|pl|cgi|asp|xml|xsl|aspx|cfm)#",$file))
+    	else if (preg_match("#\.(txt|inc|pl|cgi|asp|xml|xsl|aspx|cfm)#",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
@@ -217,7 +217,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(htm|html)#i",$file))
+    	else if (preg_match("#\.(htm|html)#i",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#F9FBF0';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
@@ -234,7 +234,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(php)#i",$file))
+    	else if (preg_match("#\.(php)#i",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
@@ -251,7 +251,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(js)#i",$file))
+    	else if (preg_match("#\.(js)#i",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
@@ -268,7 +268,7 @@
        </tr>";
     	 $files[] = $line;
     	}
-    	else if(preg_match("#\.(css)#i",$file))
+    	else if (preg_match("#\.(css)#i",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
@@ -309,7 +309,7 @@
       ?>
     <tr>
       <td colspan="4" bgcolor="#f8f8f8">
-        <?php if(!DEDEBIZ_SAFE_MODE) {?><a href="file_manage_main.php" class="btn btn-success btn-sm">根目录</a><?php }?>
+        <?php if (!DEDEBIZ_SAFE_MODE) {?><a href="file_manage_main.php" class="btn btn-success btn-sm">根目录</a><?php }?>
         <a href="file_manage_view.php?fmdo=newfile&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">新建文件</a>
         <a href="file_manage_view.php?fmdo=newdir&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">新建目录</a>
         <a href="file_manage_view.php?fmdo=upload&activepath=<?php echo urlencode($activepath)?>" class="btn btn-success btn-sm">文件上传</a>

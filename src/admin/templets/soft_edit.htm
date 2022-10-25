@@ -88,9 +88,9 @@
 		          $dsql->Execute();
 		          while($trow = $dsql->GetObject())
 		          {
-		    	      if($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
+		    	      if ($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
 		    	      else $jumpclick = '';
-		    	      if(preg_match("#".$trow->att."#",$arcRow['flag']))
+		    	      if (preg_match("#".$trow->att."#",$arcRow['flag']))
 		    	      echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label>";
                 else
                 echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label>";
@@ -135,7 +135,7 @@
                 <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
                 <button type="button" id="btnClearAll" class="btn btn-success btn-smete">清空</button>
               </td>
-              <td align="center"><img src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
+              <td align="center"><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
             </tr>
           </table>
         </td>
@@ -167,7 +167,7 @@
                 <?php
                 $typeOptions = GetOptionList($arcRow["typeid"],$cuserLogin->getUserChannel(),$channelid);
                 echo "<select name='typeid' id='typeid' style='width:160px'>";
-                if($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择主分类</option>";
+                if ($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择主分类</option>";
                 echo $typeOptions;
                 echo "</select>";
 			          ?>
@@ -179,7 +179,7 @@
           </table>
         </td>
       </tr>
-      <?php if($cfg_need_typeid2=='Y') {?>
+      <?php if ($cfg_need_typeid2=='Y') {?>
       <tr>
         <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
@@ -222,7 +222,7 @@
               <td width="170">
                 <select name="filetype" id="filetype" style="width:160px">
                   <?php
-                  if($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\">".$addRow['filetype']."</option>";
+                  if ($addRow["filetype"]!="") echo "<option value=\"".$addRow["filetype"]."\">".$addRow['filetype']."</option>";
                   ?>
                   <option value=".exe">.exe</option>
                   <option value=".zip">.zip</option>
@@ -235,7 +235,7 @@
               <td width="170">
                 <select name="softrank" id="softrank" style="width:160px">
                   <?php
-                  if($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\">".$addRow['softrank']."星</option>";
+                  if ($addRow["softrank"]!="") echo "<option value=\"".$addRow["softrank"]."\">".$addRow['softrank']."星</option>";
                   ?>
                   <option value="1">一星</option>
                   <option value="2">二星</option>
@@ -248,7 +248,7 @@
               <td width="170">
                 <select name="softtype" id="softtype" style="width:160px">
                   <?php
-                  if($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\">".$addRow['softtype']."</option>";
+                  if ($addRow["softtype"]!="") echo "<option value=\"".$addRow["softtype"]."\">".$addRow['softtype']."</option>";
                   ?>
                   <option value="国产软件">国产软件</option>
                   <option value="国外软件">国外软件</option>
@@ -259,7 +259,7 @@
               <td width="170">
                 <select name="language" id="language" style="width:160px">
                   <?php
-                  if($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\">".$addRow['language']."</option>";
+                  if ($addRow["language"]!="") echo "<option value=\"".$addRow["language"]."\">".$addRow['language']."</option>";
                   ?>
                   <option value="简体中文">简体中文</option>
                   <option value="英文软件">英文软件</option>
@@ -271,7 +271,7 @@
               <td width="170">
                 <select name="accredit" id="accredit" style="width:160px">
                   <?php
-                  if($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\">".$addRow['accredit']."</option>";
+                  if ($addRow["accredit"]!="") echo "<option value=\"".$addRow["accredit"]."\">".$addRow['accredit']."</option>";
                   ?>
                   <option value="共享软件">共享软件</option>
                   <option value="免费软件">免费软件</option>
@@ -321,8 +321,8 @@
                 $dsql->Execute();
                 while($row = $dsql->GetArray())
                 {
-                  if($row['rank']==0) $row['membername'] = "不限会员";
-                  if($row['rank'] == $daccess) echo "<option value='{$row['rank']}' selected>{$row['membername']}</option>";
+                  if ($row['rank']==0) $row['membername'] = "不限会员";
+                  if ($row['rank'] == $daccess) echo "<option value='{$row['rank']}' selected>{$row['membername']}</option>";
                   else echo "<option value='{$row['rank']}'>{$row['membername']}</option>";
                 }
                 ?>
@@ -366,8 +366,8 @@
             <tr>
               <td width="90"> 附加选项：</td>
               <td>
-                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo 'checked="1"';?>> 下载远程图片和资源</label>
-                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo 'checked="1"';?>> 提取第一个图片为缩略图</label>
+                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo 'checked="1"';?>> 下载远程图片和资源</label>
+                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked="1"';?>> 提取第一个图片为缩略图</label>
               </td>
             </tr>
           </table>
@@ -382,13 +382,13 @@
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type='radio' name='notpost' value='0' <?php if($arcRow['notpost']==0) echo "checked='1'";?>> 允许评论</label>
-                <label><input type='radio' name='notpost' value='1' <?php if($arcRow['notpost']==1) echo "checked='1'";?>> 禁止评论</label>
+                <label><input type='radio' name='notpost' value='0' <?php if ($arcRow['notpost']==0) echo "checked='1'";?>> 允许评论</label>
+                <label><input type='radio' name='notpost' value='1' <?php if ($arcRow['notpost']==1) echo "checked='1'";?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
-                <label><input type="radio" name="ishtml" value="1" <?php if($arcRow["ismake"]!=-1) echo "checked";?>> 生成网页</label>
-                <label><input type="radio" name="ishtml" value="0" <?php if($arcRow["ismake"]==-1) echo "checked";?>> 仅动态浏览</label>
+                <label><input type="radio" name="ishtml" value="1" <?php if ($arcRow["ismake"]!=-1) echo "checked";?>> 生成网页</label>
+                <label><input type="radio" name="ishtml" value="0" <?php if ($arcRow["ismake"]==-1) echo "checked";?>> 仅动态浏览</label>
               </td>
             </tr>
           </table>
@@ -404,7 +404,7 @@
                 <?php
                 $subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
                 echo "<option value='0'>正常排序</option>";
-                if($subday>0) echo "<option value='$subday' selected>置顶 $subday 天</option>";
+                if ($subday>0) echo "<option value='$subday' selected>置顶 $subday 天</option>";
                 ?>
                   <option value="7">置顶一周</option>
                   <option value="30">置顶一个月</option>

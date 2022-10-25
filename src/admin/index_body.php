@@ -31,7 +31,7 @@ else if ($dopost == 'setskin') {
 } elseif ($dopost == 'get_seo') {
     //直接采用DedeBIZ重写方法
     exit;
-} elseif($dopost == 'get_articles'){
+} elseif ($dopost == 'get_articles'){
 ?>
 <table class="table table-borderless">
     <?php
@@ -44,11 +44,11 @@ else if ($dopost == 'setskin') {
     }
     ?>
     <?php
-    if(count($arcArr) > 1)
+    if (count($arcArr) > 1)
     {
         foreach($arcArr as $row)
         {
-            if(trim($row['editcon'])==''){
+            if (trim($row['editcon'])==''){
                 $row['editcon'] = 'archives_edit.php';
             }
             $rowarcrank = $row['arcrank']==-1? " <span class='text-danger'>[未审核]</span>":"";

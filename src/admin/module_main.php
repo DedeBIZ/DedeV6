@@ -45,7 +45,7 @@ function ReWriteConfigAuto()
     $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
-        if(empty($row['value']) && $row['type'] == 'number') $row['value'] = 0;
+        if (empty($row['value']) && $row['type'] == 'number') $row['value'] = 0;
         if ($row['type'] == 'number') fwrite($fp, "\${$row['varname']} = ".$row['value'].";\r\n");
         else fwrite($fp, "\${$row['varname']} = '".str_replace("'", '', $row['value'])."';\r\n");
       }
@@ -273,7 +273,7 @@ else if ($action == 'setupstart') {
         }
         ReWriteConfigAuto();
         $rflwft = "<script>\r\n";
-        $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu.php';\r\n";
+        $rflwft .= "if (window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu.php';\r\n";
         $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu.php';\r\n";
         $rflwft .= "</script>";
         echo $rflwft;
@@ -439,7 +439,7 @@ else if ($action == 'uninstallok') {
         }
         ReWriteConfigAuto();
         $rflwft = "<script>\r\n";
-        $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu.php';\r\n";
+        $rflwft .= "if (window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu.php';\r\n";
         $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu.php';\r\n";
         $rflwft .= "</script>";
         echo $rflwft;

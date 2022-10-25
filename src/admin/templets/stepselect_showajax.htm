@@ -1,8 +1,8 @@
 <?php
-if($action=='edit') {
+if ($action=='edit') {
 $arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
 $sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); return false;\" ";
-if($arr['issystem']==0) $sbjs = '';
+if ($arr['issystem']==0) $sbjs = '';
 ?>
 <span class="float-left">修改类别</span>
 <span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
@@ -16,7 +16,7 @@ if($arr['issystem']==0) $sbjs = '';
 <div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
 <?php
-} else if($action=='addnew') {
+} else if ($action=='addnew') {
 ?>
 <span class="float-left">新增类别</span>
 <span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
@@ -29,11 +29,11 @@ if($arr['issystem']==0) $sbjs = '';
 <div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
 <?php
-} else if($action=='addenum') {
+} else if ($action=='addenum') {
 $arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
 $dsql->Execute('out',"Select evalue,ename from `#@__sys_enum` where egroup='{$arr['egroup']}' And (evalue mod 500)=0  order by disorder asc,evalue asc");
 $options = '';
-if($arr['issign']==0)
+if ($arr['issign']==0)
 {
   while($row1 = $dsql->GetArray('out')) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
 }
@@ -57,13 +57,13 @@ if($arr['issign']==0)
 <div><input type="submit" value="保存" class="np coolbg"/></div>
 </form>
 <?php
-} else if($action=='view') {
+} else if ($action=='view') {
 	$arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
 	$dsql->Execute('out',"Select * From `#@__sys_enum` where egroup like '{$arr['egroup']}' order by disorder asc, evalue asc");
 	$options = '';
   while($row1 = $dsql->GetArray('out')) 
   {
-  	if($row1['evalue']%500==0 || $arr['issign']==1)
+  	if ($row1['evalue']%500==0 || $arr['issign']==1)
   	{
   		$options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
   	} else {

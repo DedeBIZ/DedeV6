@@ -54,10 +54,10 @@
 						<tr>
 							<td width="15%" align="left" class="bline">媒体类型：</td>
 							<td width="85%" align="left" class="bline">
-								<label><input type="radio" name="mediatype" value="1" <?php if($myrow['mediatype']==1) echo "checked";?>> 图片</label>
-								<label><input type="radio" name="mediatype" value="2" <?php if($myrow['mediatype']==2) echo "checked";?>> FLASH</label>
-								<label><input type="radio" name="mediatype" value="3" <?php if($myrow['mediatype']==3) echo "checked";?>> 视频音频</label>
-								<label><input type="radio" name="mediatype" value="4" <?php if($myrow['mediatype']==4) echo "checked";?>> 附件其它</label>
+								<label><input type="radio" name="mediatype" value="1" <?php if ($myrow['mediatype']==1) echo "checked";?>> 图片</label>
+								<label><input type="radio" name="mediatype" value="2" <?php if ($myrow['mediatype']==2) echo "checked";?>> FLASH</label>
+								<label><input type="radio" name="mediatype" value="3" <?php if ($myrow['mediatype']==3) echo "checked";?>> 视频音频</label>
+								<label><input type="radio" name="mediatype" value="4" <?php if ($myrow['mediatype']==4) echo "checked";?>> 附件其它</label>
 							</td>
 						</tr>
 						<tr>
@@ -84,14 +84,14 @@
 							</td>
 						</tr>
 						<?php
-						if($myrow['mediatype']==1)
+						if ($myrow['mediatype']==1)
 						{
 							$fullfilename = $cfg_basedir.$myrow['url'];
-							if(file_exists($fullfilename)){
+							if (file_exists($fullfilename)){
 								$info = "";
 								$sizes = getimagesize($fullfilename,$info);
-								if(is_array($sizes)){
-									if($sizes[0]>200) $w=200;
+								if (is_array($sizes)){
+									if ($sizes[0]>200) $w=200;
 									else $w = $sizes[0];
 						?>
 						<tr>

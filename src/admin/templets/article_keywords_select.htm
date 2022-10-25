@@ -11,7 +11,7 @@
   //获得选中文件的文件名
   function SelKw(kw)
   {
-  	if(document.form2.keywords.value)
+  	if (document.form2.keywords.value)
   	{
   		document.form2.keywords.value += ","+kw;
   	} else {
@@ -20,7 +20,7 @@
   }
   function ReturnValue()
   {
-  	if(window.opener.document.<?php echo $f?>.value)
+  	if (window.opener.document.<?php echo $f?>.value)
   	{
   		window.opener.document.<?php echo $f?>.value += ','+document.form2.keywords.value;
   	} else {
@@ -32,7 +32,7 @@
   function showHide(objname)
   {
   	var obj = document.getElementById(objname);
-  	if(obj.style.display=="none") obj.style.display = "block";
+  	if (obj.style.display=="none") obj.style.display = "block";
   	else obj.style.display="none";
   }
   function AddNewKw()

@@ -647,7 +647,7 @@ class DedeTemplate
             $this->ParseTemplate();
         }
         $addset = '';
-        $addset .= '<'.'?php'."\r\n".'if(!isset($GLOBALS[\'_vars\'])) $GLOBALS[\'_vars\'] = array(); '."\r\n".'$fields = array();'."\r\n".'?'.'>';
+        $addset .= '<'.'?php'."\r\n".'if (!isset($GLOBALS[\'_vars\'])) $GLOBALS[\'_vars\'] = array(); '."\r\n".'$fields = array();'."\r\n".'?'.'>';
         return preg_replace("/\?".">[ \r\n\t]{0,}<"."\?php/", "", $addset.$this->sourceString);
     }
     /**
@@ -717,7 +717,7 @@ class DedeTemplate
                 $cTag->tagValue = '<'.'?php echo $'.$tagname.'; ?'.'>';
             }
         } else if (preg_match("/^if[0-9]{0,}$/", $tagname)) {
-            $cTag->tagValue = $this->CompilerIf($cTag);
+            $cTag->tagValue = $this->Compilerif ($cTag);
         } else if ($tagname == 'echo') {
             if (trim($cTag->GetInnerText()) == '') $cTag->tagValue = $cTag->GetAtt('code');
             else {
@@ -774,10 +774,10 @@ class DedeTemplate
             $rsvalue = '<'.'?php'."\r\n".'$atts = array();'."\r\n".$rsvalue;
             $rsvalue .= '$blockValue = $this->refObj->GetArcList($atts,$this->refObj,$fields); '."\r\n";
             $rsvalue .= '$total = $this->refObj->totalResult;'."\r\n";
-            $rsvalue .= 'if(is_array($blockValue)){'."\r\n";
+            $rsvalue .= 'if (is_array($blockValue)){'."\r\n";
             $rsvalue .= 'foreach( $blockValue as $key=>$fields )'."\r\n{\r\n".'?'.">";
             $rsvalue .= $cTag->GetInnerText();
-            $rsvalue .= '<'.'?php'."\r\n}if(\$total==0 && !empty(\$atts['empty'])) echo \$atts['empty'];\r\n}".'?'.'>';
+            $rsvalue .= '<'.'?php'."\r\n}if (\$total==0 && !empty(\$atts['empty'])) echo \$atts['empty'];\r\n}".'?'.'>';
             $cTag->tagValue = $rsvalue;
         } else if ($tagname == 'pagelist') {
             //生成属性数组
@@ -814,7 +814,7 @@ class DedeTemplate
             if ($rstype == 'string') {
                 $rsvalue .= 'echo $blockValue;'."\r\n".'?'.">";
             } else {
-                $rsvalue .= 'if(is_array($blockValue) && count($blockValue) > 0){'."\r\n";
+                $rsvalue .= 'if (is_array($blockValue) && count($blockValue) > 0){'."\r\n";
                 $rsvalue .= 'foreach( $blockValue as $key=>$fields )'."\r\n{\r\n".'?'.">";
                 $rsvalue .= $cTag->GetInnerText();
                 $rsvalue .= '<'.'?php'."\r\n}\r\n}\r\n".'?'.'>';
@@ -886,7 +886,7 @@ class DedeTemplate
      * @param     string  $cTag  标签
      * @return    string
      */
-    function CompilerIf($cTag)
+    function Compilerif ($cTag)
     {
         $condition = trim($cTag->GetAtt('condition'));
         if ($condition == '') {
@@ -898,7 +898,7 @@ class DedeTemplate
         } else {
             $condition = preg_replace("/((var\.|field\.|cfg\.|global\.|key[0-9]{0,}\.|value[0-9]{0,}\.)[\._a-z0-9]+)/ies", "private_rt('\\1')", $condition);
         }
-        $rsvalue = '<'.'?php if('.$condition.'){ ?'.'>';
+        $rsvalue = '<'.'?php if ('.$condition.'){ ?'.'>';
         $rsvalue .= $cTag->GetInnerText();
         $rsvalue .= '<'.'?php } ?'.'>';
         return $rsvalue;

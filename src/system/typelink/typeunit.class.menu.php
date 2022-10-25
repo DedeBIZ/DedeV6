@@ -36,7 +36,7 @@ class TypeUnit
                     $this->dsql->SetQuery("Select id,ispart From `#@__arctype` where reid=$cid");
                     $this->dsql->Execute();
                     while ($row = $this->dsql->GetObject()) {
-                        //if($row->ispart==1)
+                        //if ($row->ispart==1)
                         $this->aChannels[] = $row->id;
                     }
                 }
@@ -98,7 +98,7 @@ class TypeUnit
             else if ($ispart == 1) {
             }
             //独立页面
-            else if($ispart==2) {
+            else if ($ispart==2) {
             }
             //跳转网址
             else {
@@ -155,7 +155,7 @@ class TypeUnit
                     else if ($ispart == 1) {
                     }
                     //独立页面
-                    else if($ispart==2) {
+                    else if ($ispart==2) {
                     }
                     //跳转网址
                     else {

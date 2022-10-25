@@ -205,7 +205,7 @@ if (!function_exists('GetTypeUrl')) {
         $typedir = MfTypedir($typedir);
         $sitepath = MfTypedir($sitepath);
         //伪静态栏目
-        if($isdefault==-1) {
+        if ($isdefault==-1) {
             //动态
             if ($cfg_rewrite == 'Y') {
                 //目录版return "/article/".$aid."";

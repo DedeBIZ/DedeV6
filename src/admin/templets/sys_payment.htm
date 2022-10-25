@@ -35,12 +35,12 @@
         <td>{dede:field.rank/}</td>
         <td>
           <?php
-          if($fields['enabled'] == 0) {
+          if ($fields['enabled'] == 0) {
           ?>
           <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=install&pid={dede:field.id/}'>安装</a>
           <?php
           }
-          if($fields['enabled'] == 1) {
+          if ($fields['enabled'] == 1) {
           ?>
           <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=install&pid={dede:field.id/}&pm=edit'>修改</a>
           <a class='btn btn-success btn-sm' href='sys_payment.php?dopost=uninstall&pid={dede:field.id/}'>删除</a>

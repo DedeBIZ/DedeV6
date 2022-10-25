@@ -84,7 +84,7 @@ function ch_img($fvalue, &$arcTag, &$refObj, $fname = '')
             if (empty($fields['width'])) {
                 $fields['width'] = $maxwidth;
             }
-            //if($fields['text']=='')
+            //if ($fields['text']=='')
             //{
             //$fields['text'] = '图片'.($GLOBAL['photoid']+1);
             //}

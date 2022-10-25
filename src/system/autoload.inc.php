@@ -11,7 +11,7 @@ function __autoload($classname)
 {
     $classname = preg_replace("/[^0-9a-z_]/i", '', $classname);
     $classname = strtolower($classname);
-    if( class_exists ( $classname ) )
+    if ( class_exists ( $classname ) )
     {
         return TRUE;
     }

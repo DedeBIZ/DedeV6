@@ -64,11 +64,11 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $rs = null;
             
             //Check parameter ranges
-            if($symsize < 0 || $symsize > 8)                     return $rs;
-            if($fcr < 0 || $fcr >= (1<<$symsize))                return $rs;
-            if($prim <= 0 || $prim >= (1<<$symsize))             return $rs;
-            if($nroots < 0 || $nroots >= (1<<$symsize))          return $rs; //Can't have more roots than symbol values!
-            if($pad < 0 || $pad >= ((1<<$symsize) -1 - $nroots)) return $rs; //Too much padding
+            if ($symsize < 0 || $symsize > 8)                     return $rs;
+            if ($fcr < 0 || $fcr >= (1<<$symsize))                return $rs;
+            if ($prim <= 0 || $prim >= (1<<$symsize))             return $rs;
+            if ($nroots < 0 || $nroots >= (1<<$symsize))          return $rs; //Can't have more roots than symbol values!
+            if ($pad < 0 || $pad >= ((1<<$symsize) -1 - $nroots)) return $rs; //Too much padding
 
             $rs = new QRrsItem();
             $rs->mm = $symsize;
@@ -91,13 +91,13 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $rs->index_of[$sr] = $i;
                 $rs->alpha_to[$i] = $sr;
                 $sr <<= 1;
-                if($sr & (1<<$symsize)) {
+                if ($sr & (1<<$symsize)) {
                     $sr ^= $gfpoly;
                 }
                 $sr &= $rs->nn;
             }
             
-            if($sr != 1){
+            if ($sr != 1){
                 //field generator polynomial is not primitive!
                 $rs = NULL;
                 return $rs;
@@ -160,7 +160,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             for($i=0; $i< ($NN-$NROOTS-$PAD); $i++) {
                 
                 $feedback = $INDEX_OF[$data[$i] ^ $parity[0]];
-                if($feedback != $A0) {      
+                if ($feedback != $A0) {      
                     //feedback term is non-zero
             
                     //This line is unnecessary when GENPOLY[NROOTS] is unity, as it must
@@ -174,7 +174,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 
                 //Shift 
                 array_shift($parity);
-                if($feedback != $A0) {
+                if ($feedback != $A0) {
                     array_push($parity, $ALPHA_TO[$this->modnn($feedback + $GENPOLY[0])]);
                 } else {
                     array_push($parity, 0);
@@ -193,12 +193,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
         public static function init_rs($symsize, $gfpoly, $fcr, $prim, $nroots, $pad)
         {
             foreach(self::$items as $rs) {
-                if($rs->pad != $pad)       continue;
-                if($rs->nroots != $nroots) continue;
-                if($rs->mm != $symsize)    continue;
-                if($rs->gfpoly != $gfpoly) continue;
-                if($rs->fcr != $fcr)       continue;
-                if($rs->prim != $prim)     continue;
+                if ($rs->pad != $pad)       continue;
+                if ($rs->nroots != $nroots) continue;
+                if ($rs->mm != $symsize)    continue;
+                if ($rs->gfpoly != $gfpoly) continue;
+                if ($rs->fcr != $fcr)       continue;
+                if ($rs->prim != $prim)     continue;
 
                 return $rs;
             }

@@ -69,7 +69,7 @@
         <td bgcolor="#f8f8f8" colspan="2">
           <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%"><a href="mychannel_main.php">频道管理</a> &gt; 查看修改字段</td>
+              <td width="30%"><a href="mychannel_main.php">内容模型管理</a> &gt; 查看修改字段</td>
               <td width="70%" align="right">
                 <button type="button" name="ss1" class="btn btn-success btn-sm" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';">当前模型信息</button>
                 <button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">内容模型管理</button>
@@ -78,7 +78,7 @@
           </table>
         </td>
       </tr>
-      <?php if($row['issystem']==1){?>
+      <?php if ($row['issystem']==1){?>
       <tr>
         <td colspan="2">
           <span class="style1">您当前操作的字段属于系统模型字段：修改系统模型有风险，请不要随便改动系统模型的字段相关的属性</span>
@@ -91,9 +91,9 @@
         <td><input type="text" name="itemname" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>" class="pubinputs"> *（发布内容时显示的项名字）</td>
       </tr>
       <tr>
-        <td width="28%">字段名称：<br>
+        <td width="30%">字段名称：<br>
           <span class="style2">只能用英文字母或数字，数据表的真实字段名</span></td>
-        <td width="72%" style="table-layout:fixed;word-break:break-all"><?php echo $fname?></td>
+        <td width="70%" style="table-layout:fixed;word-break:break-all"><?php echo $fname?></td>
       </tr>
       <tr>
         <td>字段类型：</td>
@@ -114,7 +114,7 @@
           <select name="dtype" id="type" style="width:260px">
             <?php 
             $dtype = $ctag->GetAtt('type');
-            if($dtype!='' && isset($fieldtypes[$dtype]))
+            if ($dtype!='' && isset($fieldtypes[$dtype]))
             {
             	echo "<option value='{$dtype}'>{$fieldtypes[$dtype]}</option>";
             	$canchange = true;
@@ -122,7 +122,7 @@
             	echo "<option value='{$dtype}'>系统专用类型</option>";
             	$canchange = false;
             }
-            if($canchange)
+            if ($canchange)
             {
             ?>
             <option value="text">单行文本(varchar)</option>
@@ -156,7 +156,7 @@
               
               foreach($channelArray as $k=>$arr)
               {
-                if($k==$channelid) {
+                if ($k==$channelid) {
                     $nid = $arr['nid'];
                     echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
                 } else {
@@ -173,19 +173,19 @@
           <span class="style2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
         <td>
           <input name="isnull" type="hidden" value="1">
-          <label><input type="radio" name="spage" value="split" <?php if($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
-          <label><input type="radio" name="spage" value="no" <?php if($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
+          <label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
+          <label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
         </td>
       </tr>
       <tr>
         <td>默认值：<br>
           <span class="style2">如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（用“,”分开，如“男,女,人妖”）如果为联动选框，这里填写联动选框项目名称</span></td>
-        <td><textarea name="vdefault" id="vdefault" style="width:70%;height:60px"><?php echo $ctag->GetAtt('default');?></textarea></td>
+        <td><textarea name="vdefault" id="vdefault" class="biz-textarea"><?php echo $ctag->GetAtt('default');?></textarea></td>
       </tr>
       <tr>
         <td>最大长度：<br>
           <span class="style2"> 文本数据必须填写，大于255为text类型 </span></td>
-        <td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" style="width:80px;height:24px;padding-top:3px;"></td>
+        <td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" style="width:80px"></td>
       </tr>
       <tr>
         <td>自定义表单HTML：</td>
@@ -193,7 +193,7 @@
       </tr>
       <tr>
         <td align="center"><br> </td>
-        <td><textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%;height:120px"><?php echo $ctag->GetInnerText();?></textarea></td>
+        <td><textarea name="vinnertext" id="vinnertext" class="biz-textarea"><?php echo $ctag->GetInnerText();?></textarea></td>
       </tr>
       <tr>
         <td colspan="2" bgcolor="#f8f8f8" align="center" class="py-2">

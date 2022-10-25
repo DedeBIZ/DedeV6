@@ -33,17 +33,17 @@ function lib_channelartlist(&$ctag, &$refObj)
     if (empty($totalnum)) $totalnum = 20;
     //获得类别ID总数的信息
     $typeids = array();
-    if($typeid==0 || $typeid=='top') {
+    if ($typeid==0 || $typeid=='top') {
         $tpsql = " reid=0 AND channeltype>0 AND ishidden<>1 ";
     } else {
-        if(!preg_match('#,#', $typeid)) {
+        if (!preg_match('#,#', $typeid)) {
             $tpsql = " reid='$typeid' AND ishidden<>1 ";
         } else {
             $tpsql = " id IN($typeid) AND ishidden<>1 ";
         }
     }
     //否定指定栏目
-    if($notypeid!=0) {
+    if ($notypeid!=0) {
         $tpsql = $tpsql."and not(id in($notypeid))";
     }
     $dsql->SetQuery("SELECT * FROM `#@__arctype` WHERE $tpsql ORDER BY sortrank ASC LIMIT $totalnum");
@@ -59,7 +59,7 @@ function lib_channelartlist(&$ctag, &$refObj)
         $pv = new PartView($typeids[$i]['id']);
         $pv->Fields['typeurl'] = GetOneTypeUrlA($typeids[$i]);
         //栏目高亮
-        if($typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['id'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['reid'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['topid'] || $typeids[$i]['id'] == GetTopid($refObj->TypeLink->TypeInfos['id']) )
+        if ($typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['id'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['reid'] || $typeids[$i]['id'] == $refObj->TypeLink->TypeInfos['topid'] || $typeids[$i]['id'] == GetTopid($refObj->TypeLink->TypeInfos['id']) )
         {
             $pv->Fields['currentstyle'] = $currentstyle ? $currentstyle : 'current';
         } else {

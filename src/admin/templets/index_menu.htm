@@ -29,7 +29,7 @@
 					<a id="link6" class="menu-item">
 						<div onClick="ShowMainMenu(6)"><b>会员</b></div>
 					</a>
-					<?php if($cuserLogin->getUserType()>=10){?>
+					<?php if ($cuserLogin->getUserType()>=10){?>
 					<a id="link7" class="menu-item">
 						<div onClick="ShowMainMenu(7)"><b>模板</b></div>
 					</a>
@@ -50,7 +50,7 @@
 				</td>
 			</tr>
 		</table>
-		<?php if(!empty($openitem) && $openitem!=1){?>
+		<?php if (!empty($openitem) && $openitem!=1){?>
 		<script>
 			ShowMainMenu(100);
 		</script>

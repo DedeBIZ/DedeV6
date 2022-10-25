@@ -107,7 +107,7 @@ else if ($dopost == 'save') {
     }
     $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',sortrank='$sortrank',flag='$flag',ismake='$ismake',arcrank='$arcrank',click='$click',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库 archives 表时出错，请检查", "-1");
+        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段", "-1");
         exit();
     }
     //专题节点列表
@@ -176,7 +176,7 @@ else if ($dopost == 'save') {
     //更新附加表
     $inQuery = "UPDATE `#@__addonspec` SET typeid ='$typeid',note='$notelist'{$inadd_f},templet='$templet' WHERE aid='$id';";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库附加表 addonspec 时出错，请检查原因", "-1");
+        ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "-1");
         exit();
     }
     //生成网页

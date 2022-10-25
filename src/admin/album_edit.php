@@ -124,7 +124,7 @@ else if ($dopost == 'save') {
     $query = "
     UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($query)) {
-        ShowMsg("更新数据库 archives 表时出错，请检查".$dsql->GetError(), "javascript:;");
+        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段".$dsql->GetError(), "javascript:;");
         exit();
     }
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$row' col='$col' value='$pagestyle'/}\r\n";
@@ -251,7 +251,7 @@ else if ($dopost == 'save') {
             $album = $albumsArr[$i];
             $data = explode(',', $album['img']);
             $ext = ".png";
-            if(strpos($data[0], "data:image/jpeg") === 0){
+            if (strpos($data[0], "data:image/jpeg") === 0){
                 $ext = ".jpg";
             } elseif (strpos($data[0], "data:image/gif") === 0) {
                 $ext = ".gif";
@@ -305,22 +305,9 @@ else if ($dopost == 'save') {
     $addtable = trim($cts['addtable']);
     if ($addtable != '') {
         $useip = GetIP();
-        $query = "Update `$addtable`
-        set typeid='$typeid',
-        pagestyle='$pagestyle',
-        body='$body',
-        maxwidth = '$maxwidth',
-        ddmaxwidth = '$ddmaxwidth',
-        pagepicnum = '$pagepicnum',
-        imgurls='$imgurls',
-        `row`='$row',
-        col='$col',
-        isrm='$isrm'{$inadd_f},
-        redirecturl='$redirecturl',
-        userip = '$useip'
-        WHERE aid='$id'; ";
+        $query = "UPDATE `$addtable` SET typeid='$typeid',pagestyle='$pagestyle',body='$body',maxwidth='$maxwidth',ddmaxwidth='$ddmaxwidth',pagepicnum='$pagepicnum',imgurls='$imgurls',`row`='$row',col='$col',isrm='$isrm'{$inadd_f},redirecturl='$redirecturl',userip='$useip' WHERE aid='$id'; ";
         if (!$dsql->ExecuteNoneQuery($query)) {
-            ShowMsg("更新附加表 `$addtable` 时出错，请检查原因".$dsql->GetError(), "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段".$dsql->GetError(), "javascript:;");
             exit();
         }
     }

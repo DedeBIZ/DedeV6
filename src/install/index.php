@@ -27,11 +27,11 @@ foreach(Array('_GET','_POST','_COOKIE') as $_request)
     foreach($$_request as $_k => $_v) ${$_k} = RunMagicQuotes($_v);
 }
 require_once(DEDEINC.'/common.func.php');
-if(file_exists(INSLOCKFILE))
+if (file_exists(INSLOCKFILE))
 {
     die(DedeAlert("程序已运行安装，如果您确定要重新安装，请先删除 /install/install_lock.txt",ALERT_DANGER));
 }
-if(empty($step))
+if (empty($step))
 {
     $step = 1;
 }
@@ -40,7 +40,7 @@ $proto = IsSSL()? "https://" : "http://";
 使用协议书
 function _1_Agreement()
 ------------------------*/
-if($step==1)
+if ($step==1)
 {
     $arrMsg = array();
     if (version_compare(PHP_VERSION, '5.3.0', '<')) {
@@ -64,13 +64,13 @@ if($step==1)
     if (!extension_loaded("gd")) {
         $arrMsg[] = "GD未开启，将无法使用验证码、二维码、图片水印等功能";
     }
-    if(!empty($_SERVER['REQUEST_URI']))
+    if (!empty($_SERVER['REQUEST_URI']))
     $scriptName = $_SERVER['REQUEST_URI'];
     else
     $scriptName = $_SERVER['PHP_SELF'];
     $basepath = preg_replace("#\/install(.*)$#i", '', $scriptName);
 
-    if(!empty($_SERVER['HTTP_HOST']))
+    if (!empty($_SERVER['HTTP_HOST']))
         $baseurl = $proto.$_SERVER['HTTP_HOST'];
     else
         $baseurl = $proto.$_SERVER['SERVER_NAME'];
@@ -89,14 +89,14 @@ if($step==1)
 普通安装
 function _2_Setup()
 ------------------------*/
-else if($step==2)
+else if ($step==2)
 {
     $dbtype = empty($dbtype)? "mysql" : $dbtype;
     $dblang = "utf8";
     if (!in_array($dbtype,array("mysql", "sqlite"))) {
         die("当前数据库类型不支持");
     }
-    if(!empty($_SERVER['HTTP_HOST']))
+    if (!empty($_SERVER['HTTP_HOST']))
         $dfbaseurl = $proto.$_SERVER['HTTP_HOST'];
     else
         $dfbaseurl = $proto.$_SERVER['SERVER_NAME'];
@@ -146,8 +146,8 @@ else if($step==2)
     fclose($fp);
     //config.cache.inc.php
     $cmspath = trim(preg_replace("#\/{1,}#", '/', $cmspath));
-    if($cmspath!='' && !preg_match("#^\/#", $cmspath)) $cmspath = '/'.$cmspath;
-    if($cmspath=='') $indexUrl = '/';
+    if ($cmspath!='' && !preg_match("#^\/#", $cmspath)) $cmspath = '/'.$cmspath;
+    if ($cmspath=='') $indexUrl = '/';
     else $indexUrl = $cmspath;
     $configStr2 = str_replace("~baseurl~",$baseurl,$configStr2);
     $configStr2 = str_replace("~basepath~",$cmspath,$configStr2);
@@ -161,7 +161,7 @@ else if($step==2)
     $fp = fopen(DEDEDATA.'/config.cache.bak.php','w');
     fwrite($fp,$configStr2);
     fclose($fp);
-    if($mysqlVersion >= 4.1)
+    if ($mysqlVersion >= 4.1)
     {
         $sql4tmp = "ENGINE=MyISAM DEFAULT CHARSET=".$dblang;
     }
@@ -171,7 +171,7 @@ else if($step==2)
     while(!feof($fp))
     {
         $line = rtrim(fgets($fp,1024));
-        if(preg_match("#;$#", $line))
+        if (preg_match("#;$#", $line))
         {
             $query .= $line."\n";
             $query = str_replace('#@__',$dbprefix,$query);
@@ -197,11 +197,11 @@ else if($step==2)
                 }
                 $db->exec($query);
             } else {
-                if($mysqlVersion < 4.1)
+                if ($mysqlVersion < 4.1)
                 {
                     $rs = mysql_query($query,$conn);
                 } else {
-                    if(preg_match('#CREATE#i', $query))
+                    if (preg_match('#CREATE#i', $query))
                     {
                         $rs = mysql_query(preg_replace("#TYPE=MyISAM#i",$sql4tmp,$query),$conn);
                     } else {
@@ -210,7 +210,7 @@ else if($step==2)
                 }
             }
             $query='';
-        } else if(!preg_match("#^(\/\/|--)#", $line))
+        } else if (!preg_match("#^(\/\/|--)#", $line))
         {
             $query .= $line;
         }
@@ -222,7 +222,7 @@ else if($step==2)
     while(!feof($fp))
     {
         $line = rtrim(fgets($fp, 1024));
-        if(preg_match("#;$#", $line))
+        if (preg_match("#;$#", $line))
         {
             if ( $dbtype == 'sqlite' )
             {
@@ -233,11 +233,11 @@ else if($step==2)
             } else {
                 $query .= $line;
                 $query = str_replace('#@__',$dbprefix,$query);
-                if($mysqlVersion < 4.1) $rs = mysql_query($query,$conn);
+                if ($mysqlVersion < 4.1) $rs = mysql_query($query,$conn);
                 else $rs = mysql_query(str_replace('#~lang~#',$dblang,$query),$conn);
             }
             $query='';
-        } else if(!preg_match("#^(\/\/|--)#", $line))
+        } else if (!preg_match("#^(\/\/|--)#", $line))
         {
             $query .= $line;
         }
@@ -287,16 +287,16 @@ else if($step==2)
 检测数据库是否有效
 function _10_TestDbPwd()
 ------------------------*/
-else if($step==10)
+else if ($step==10)
 {
     header("Pragma:no-cache\r\n");
     header("Cache-Control:no-cache\r\n");
     header("Expires:0\r\n");
     $conn = @mysql_connect($dbhost,$dbuser,$dbpwd);
     $info = "";
-    if($conn)
+    if ($conn)
     {
-		if(empty($dbname)){
+		if (empty($dbname)){
 			$info = "信息正确";
 		} else {
 			$info = mysql_select_db($dbname,$conn)? "数据库已经存在，系统将覆盖数据库": "数据库不存在，系统将自动创建";

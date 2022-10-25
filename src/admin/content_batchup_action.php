@@ -66,7 +66,7 @@ if ($action == 'check') {
             $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET arcrank=0 WHERE id='{$row->id}'");
         }
     }
-    ShowMsg("完成数据库的审核处理，准备更新HTML", $jumpurl);
+    ShowMsg("完成数据库的审核处理，准备更新网页", $jumpurl);
     exit();
 }
 //批量删除

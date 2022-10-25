@@ -398,14 +398,6 @@ span.page-link {
 	margin-right:10px;
 	width:360px
 }
-.biz-win {
-	background:#f8f8f8;
-	border:1px solid #dee2e6
-}
-.biz-win-iframe {
-	width:100%;
-	height:360px
-}
 .biz-updates {
 	display:inline-block;
 	position:absolute;
@@ -416,8 +408,20 @@ span.page-link {
 	background:#dc3545;
 	border-radius:50%
 }
+.biz-win {
+	background:#f8f8f8;
+	border:1px solid #dee2e6
+}
+.biz-win-iframe {
+	width:100%;
+	height:360px
+}
 .biz-border {
 	border:1px solid #dee2e6
+}
+.biz-textarea {
+	width:98%;
+	height:90px
 }
 .biz-itemnote1 {
 	background:#f8fcf2;

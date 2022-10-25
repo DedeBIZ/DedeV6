@@ -34,15 +34,15 @@
 				$revalue = "";
 				for($i=1;$i<=$row;$i++)
 				{
-					if($dbrow=$dsql->GetObject())
+					if ($dbrow=$dsql->GetObject())
 					{
 						$wtitle = cn_substr($dbrow->webname,$titlelen);
-						if($dbrow->logo=="")
+						if ($dbrow->logo=="")
 						$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'>$wtitle</a></li>";
 					else
 						$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' alt='$wtitle' style='max-width:80px;max-height:60px'></a></li>";
 					}
-					if(!$dbrow) break;
+					if (!$dbrow) break;
 				}
 				echo  $revalue;
 				?>

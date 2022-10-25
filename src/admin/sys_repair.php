@@ -53,7 +53,7 @@ else if ($dopost == 1) {
             <span class='text-dark'>已完成数据结构完整性检测</span>
             如果您系统有下面几种问题之一，请检测微表正确性：<br>
             1、无法获得主键，因此无法进行后续操作<br>
-            2、更新数据库 archives 表时出错<br>
+            2、更新数据库#@__archivess表时出错<br>
             3、列表显示数据目与实际文档数不一致<br>
             <br><a href='sys_repair.php?dopost=2' class='btn btn-danger btn-sm'>检测数据</a>
             </td>

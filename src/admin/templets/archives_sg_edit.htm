@@ -22,7 +22,7 @@
   <script>
   function checkSubmit()
   {
-	if(document.form1.title.value==""){
+	if (document.form1.title.value==""){
 	  ShowMsg("<?php echo $cInfos['titlename'];?>不能为空");
 	  document.form1.title.focus();
 	  return false;
@@ -75,7 +75,7 @@
               $dsql->Execute();
               while($trow = $dsql->GetObject())
               {
-                if(preg_match("#".$trow->att."#", $addRow['flag']))
+                if (preg_match("#".$trow->att."#", $addRow['flag']))
                 echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' checked='checked'> {$trow->attname}[{$trow->att}]</label>";
                 else
                 echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
@@ -86,7 +86,7 @@
         </table>
       </td>
     </tr>
-    <tr id="pictable" style="<?php if($cInfos['needpic']==0) echo 'display:none';?>">
+    <tr id="pictable" style="<?php if ($cInfos['needpic']==0) echo 'display:none';?>">
       <td class="bline">
       	<table width="900" cellspacing="0" cellpadding="0">
           <tr>
@@ -98,12 +98,12 @@
               <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
               <button type="button" id="btnClearAll" class="btn btn-success btn-smete">清空</button>
             </td>
-            <td align="center"><img src="<?php if($addRow['litpic']!='') echo $addRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
+            <td align="center"><img src="<?php if ($addRow['litpic']!='') echo $addRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
           </tr>
         </table>
       </td>
     </tr>
-    <?php if($cInfos['dfcid']>0)
+    <?php if ($cInfos['dfcid']>0)
     {
       echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}'>";
     } else {
@@ -117,7 +117,7 @@
             <?php
             $typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
             echo "<select name='typeid' id='typeid' style='width:160px'>";
-            if($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
+            if ($addRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
             echo $typeOptions;
             echo "</select>";
 			      ?>

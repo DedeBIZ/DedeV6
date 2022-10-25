@@ -22,7 +22,7 @@
   	var enums = document.getElementsByName('dtype');
   	for(i=0;i<enums.length;i++)
   	{
-  		if(enums[i].checked) dtype = enums[i].value;
+  		if (enums[i].checked) dtype = enums[i].value;
   	}
   	var isnull = theform.isnull.value;
   	var vdefault = theform.vdefault.value;
@@ -34,29 +34,29 @@
   	var islist = (theform.islist.checked ? 1 : 0);
     var notsend = (theform.notsend.checked ? 1 : 0);
     var automake = theform.relation_automake.checked ? 1 : 0;
-  	if(itemname=="")
+  	if (itemname=="")
   	{
   		ShowMsg("表单提示名称不能为空");
   		theform.itemname.focus();
   		return false;
   	}
-  	if(fieldname=="") 
+  	if (fieldname=="") 
   	{
   		ShowMsg("字段名称不能为空");
   		theform.fieldname.focus();
   		return false;
   	}
-  	if(notAllow.indexOf(" "+fieldname+" ") >-1 ) 
+  	if (notAllow.indexOf(" "+fieldname+" ") >-1 ) 
   	{
   		ShowMsg("字段名称不合法，如下字段名已经存在，建议在名称后加上数字以区分：\n"+notAllow);
   		return false;
   	}
-  	if((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
+  	if ((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
   	{
   		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）");
   		return false;
   	}
-    if(spage=="no") spage = "";
+    if (spage=="no") spage = "";
     relstr = "";
     if (dtype==="relation") {
       relstr = " automake=\""+automake+"\" channel=\""+$("#channeltype").val()+"\"";
@@ -88,7 +88,7 @@
       <td bgcolor="#f8f8f8" colspan="2">
         <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
-            <td width="30%"><a href="mychannel_main.php">频道管理</a> &gt; 增加新字段</td>
+            <td width="30%"><a href="mychannel_main.php">内容模型管理</a> &gt; 增加新字段</td>
             <td width="70%" align="right">
 							<button type="button" name="ss1" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';" class="btn btn-success btn-sm">当前模型信息</button>
 							<button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">内容模型管理</button>
@@ -171,7 +171,7 @@
             $channelid = 1;
             foreach($channelArray as $k=>$arr)
             {
-              if($k==$channelid) {
+              if ($k==$channelid) {
                   $nid = $arr['nid'];
                   echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
               } else {
@@ -186,7 +186,7 @@
     <tr> 
       <td>默认值：<br>
         <span class="style2">如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（用“,”分开，如“男,女,人妖”）</span></td>
-      <td><textarea name="vdefault" id="vdefault" style="width:70%;height:60px"></textarea></td>
+      <td><textarea name="vdefault" id="vdefault" class="biz-textarea"></textarea></td>
     </tr>
     <tr> 
       <td>最大长度：<br>
@@ -199,7 +199,7 @@
     </tr>
     <tr> 
       <td align="center"></td>
-      <td><textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%;height:120px"></textarea></td>
+      <td><textarea name="vinnertext" id="vinnertext" class="biz-textarea"></textarea></td>
     </tr>
     <tr> 
       <td colspan="2" bgcolor="#f8f8f8" align="center" class="py-2">

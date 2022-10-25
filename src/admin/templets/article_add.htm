@@ -53,7 +53,7 @@
       </td>
     </tr>
   </table>
-  <table width="98%" align="center" cellpadding="0" cellspacing="0" id="getone" class="table table-borderless" style="<?php if(empty($geturl)) echo 'display:none';?>">
+  <table width="98%" align="center" cellpadding="0" cellspacing="0" id="getone" class="table table-borderless" style="<?php if (empty($geturl)) echo 'display:none';?>">
     <form name="getonepage" action="article_add.php" method="get">
       <input type="hidden" name="channelid" value="<?php echo $channelid;?>">
       <input type="hidden" name="cid" value="<?php echo $cid;?>">
@@ -100,7 +100,7 @@
             	$dsql->Execute();
             	while($trow = $dsql->GetObject())
             	{
-            		if($trow->att=='j')
+            		if ($trow->att=='j')
             		echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label>";
             		else
             		echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
@@ -185,7 +185,7 @@
                 </span>
                 <i class='btn btn-sm fa fa-search' style="cursor:pointer" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择"></i> 
                 <?php
-                if($cfg_need_typeid2=='Y')
+                if ($cfg_need_typeid2=='Y')
                 {
 					        echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
                 }
@@ -221,7 +221,7 @@
                 <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览</button>
               </td>
               <td>
-                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo 'checked="1"';?>> 自动获取，手动填写用","分开</label>
+                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo 'checked="1"';?>> 自动获取，手动填写用","分开</label>
               </td>
             </tr>
           </table>
@@ -243,11 +243,11 @@
             <tr>
               <td width="90"> 附加选项：</td>
               <td>
-                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo 'checked="1"';?>> 下载远程图片和资源</label>
-                <label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo 'checked="1"';?>> 删除非站内链接</label>
+                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo 'checked="1"';?>> 下载远程图片和资源</label>
+                <label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if ($cfg_arc_dellink=='Y') echo 'checked="1"';?>> 删除非站内链接</label>
                 <a href="javascript:OpenMyWin('article_allowurl_edit.php')" class="btn btn-success btn-sm">设置</a>
-                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo 'checked="1"';?>> 提取第一个图片为缩略图</label>
-                <label><input type="checkbox" name="needwatermark" value="1" <?php if($photo_markup=='1') echo "checked";?>> 图片是否加水印</label>
+                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo 'checked="1"';?>> 提取第一个图片为缩略图</label>
+                <label><input type="checkbox" name="needwatermark" value="1" <?php if ($photo_markup=='1') echo "checked";?>> 图片是否加水印</label>
               </td>
             </tr>
           </table>
@@ -259,8 +259,8 @@
             <tr>
               <td width="90"> 分页方式：</td>
               <td>
-                <label><input type="radio" name="sptype" value="hand" <?php if($cfg_arcautosp=='N') echo "checked='1'"?>> 手动</label>
-                <label><input type="radio" name="sptype" value="auto" <?php if($cfg_arcautosp=='Y') echo "checked='1'"?>> 自动</label>
+                <label><input type="radio" name="sptype" value="hand" <?php if ($cfg_arcautosp=='N') echo "checked='1'"?>> 手动</label>
+                <label><input type="radio" name="sptype" value="auto" <?php if ($cfg_arcautosp=='Y') echo "checked='1'"?>> 自动</label>
                 大小：<input name="spsize" type="text" id="spsize" value="<?php echo $cfg_arcautosp_size?>" style="width:60px"> K（分页符为：#p#分页标题#e#）
               </td>
             </tr>
@@ -280,8 +280,8 @@
             <tr>
               <td width="90"> 评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
-                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
+                <label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>
@@ -337,7 +337,7 @@
               <td><input type="text" name="filename" id="filename" style="width:160px">（不包括后缀名如.html等）</td>
               <td>
                 <?php
-                if(isset($cfg_tamplate_rand) && $cfg_tamplate_rand==1)
+                if (isset($cfg_tamplate_rand) && $cfg_tamplate_rand==1)
                 {
                 ?>
                 随机选择模板：

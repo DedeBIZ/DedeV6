@@ -71,8 +71,8 @@
 												<td><?php echo $fields['typename'];?></td>
 												<td>
 													<?php
-													if($fields['arcrank']>=0) echo "已审核";
-													else if($fields['arcrank']==-2) echo "<span style='color:#007bff'>审核失败</span>";
+													if ($fields['arcrank']>=0) echo "已审核";
+													else if ($fields['arcrank']==-2) echo "<span style='color:#007bff'>审核失败</span>";
 													else echo "<span class='text-danger'>未审核</span>";
 													?>
 												</td>
@@ -80,7 +80,7 @@
 												<td><?php echo GetDateMk($fields['senddate']);?></td>
 												<td align="center" class="doPost">
 													<?php
-													if($fields['arcrank']<0 || $dtime - $fields['senddate'] < $maxtime)
+													if ($fields['arcrank']<0 || $dtime - $fields['senddate'] < $maxtime)
 													{
 													?>
 													<a href="javascript:editArc(<?php echo $fields['id']?>,<?php echo $fields['channel']?>);" class="btn btn-success btn-sm">修改</a>

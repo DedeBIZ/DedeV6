@@ -427,7 +427,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
             for($i=1; $i<= QRSPEC_VERSION_MAX; $i++) {
                 $words  = self::$capacity[$i][QRCAP_WORDS] - self::$capacity[$i][QRCAP_EC][$level];
-                if($words >= $size) 
+                if ($words >= $size) 
                     return $i;
             }
 
@@ -463,12 +463,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public static function maximumWords($mode, $version)
         {
-            if($mode == QR_MODE_STRUCTURE) 
+            if ($mode == QR_MODE_STRUCTURE) 
                 return 3;
                 
-            if($version <= 9) {
+            if ($version <= 9) {
                 $l = 0;
-            } else if($version <= 26) {
+            } else if ($version <= 26) {
                 $l = 1;
             } else {
                 $l = 2;
@@ -477,7 +477,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $bits = self::$lengthTableBits[$mode][$l];
             $words = (1 << $bits) - 1;
             
-            if($mode == QR_MODE_KANJI) {
+            if ($mode == QR_MODE_KANJI) {
                 $words *= 2; //the number of bytes is required
             }
 
@@ -546,7 +546,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $data = self::getDataLength($version, $level);
             $ecc  = self::getECCLength($version, $level);
 
-            if($b2 == 0) {
+            if ($b2 == 0) {
                 $spec[0] = $b1;
                 $spec[1] = (int)($data / $b1);
                 $spec[2] = (int)($ecc / $b1);
@@ -610,17 +610,17 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public static function putAlignmentPattern($version, &$frame, $width)
         {
-            if($version < 2)
+            if ($version < 2)
                 return;
 
             $d = self::$alignmentPattern[$version][1] - self::$alignmentPattern[$version][0];
-            if($d < 0) {
+            if ($d < 0) {
                 $w = 2;
             } else {
                 $w = (int)(($width - self::$alignmentPattern[$version][0]) / $d + 2);
             }
 
-            if($w * $w - 3 == 1) {
+            if ($w * $w - 3 == 1) {
                 $x = self::$alignmentPattern[$version][0];
                 $y = self::$alignmentPattern[$version][0];
                 self::putAlignmentMarker($frame, $x, $y);
@@ -663,7 +663,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public static function getVersionPattern($version)
         {
-            if($version < 7 || $version > QRSPEC_VERSION_MAX)
+            if ($version < 7 || $version > QRSPEC_VERSION_MAX)
                 return 0;
 
             return self::$versionPattern[$version -7];
@@ -681,10 +681,10 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
         public static function getFormatInfo($mask, $level)
         {
-            if($mask < 0 || $mask > 7)
+            if ($mask < 0 || $mask > 7)
                 return 0;
                 
-            if($level < 0 || $level > 3)
+            if ($level < 0 || $level > 3)
                 return 0;                
 
             return self::$formatInfo[$level][$mask];
@@ -769,7 +769,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             self::putAlignmentPattern($version, $frame, $width);
             
             //Version information 
-            if($version >= 7) {
+            if ($version >= 7) {
                 $vinf = self::getVersionPattern($version);
 
                 $v = $vinf;
@@ -865,10 +865,10 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public static function newFrame($version)
         {
-            if($version < 1 || $version > QRSPEC_VERSION_MAX) 
+            if ($version < 1 || $version > QRSPEC_VERSION_MAX) 
                 return null;
 
-            if(!isset(self::$frames[$version])) {
+            if (!isset(self::$frames[$version])) {
                 
                 $fileName = QR_CACHE_DIR.'frame_'.$version.'.dat';
                 
@@ -884,7 +884,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 }
             }
             
-            if(is_null(self::$frames[$version]))
+            if (is_null(self::$frames[$version]))
                 return null;
 
             return self::$frames[$version];
@@ -946,7 +946,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 Header("Content-type: image/png");
                 ImagePng($image);
             } else {
-                if($saveandprint===TRUE){
+                if ($saveandprint===TRUE){
                     ImagePng($image, $filename);
                     header("Content-type: image/png");
                     ImagePng($image);
@@ -1056,7 +1056,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $setData = array_merge($setData, array_fill(0,$size-count($setData),0));
             }
         
-            if(!QRinput::check($mode, $size, $setData)) {
+            if (!QRinput::check($mode, $size, $setData)) {
                 throw new Exception('Error m:'.$mode.',s:'.$size.',d:'.join(',',$setData));
                 return null;
             }
@@ -1086,10 +1086,10 @@ if (!defined('DEDEINC')) exit('dedebiz');
                     $bs->appendNum(10, $val);
                 }
 
-                if($this->size - $words * 3 == 1) {
+                if ($this->size - $words * 3 == 1) {
                     $val = ord($this->data[$words*3]) - ord('0');
                     $bs->appendNum(4, $val);
-                } else if($this->size - $words * 3 == 2) {
+                } else if ($this->size - $words * 3 == 2) {
                     $val  = (ord($this->data[$words*3  ]) - ord('0')) * 10;
                     $val += (ord($this->data[$words*3+1]) - ord('0'));
                     $bs->appendNum(7, $val);
@@ -1120,7 +1120,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                     $bs->appendNum(11, $val);
                 }
 
-                if($this->size & 1) {
+                if ($this->size & 1) {
                     $val = QRinput::lookAnTable(ord($this->data[$words * 2]));
                     $bs->appendNum(6, $val);
                 }
@@ -1166,7 +1166,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
                 for($i=0; $i<$this->size; $i+=2) {
                     $val = (ord($this->data[$i]) << 8) | ord($this->data[$i+1]);
-                    if($val <= 0x9ffc) {
+                    if ($val <= 0x9ffc) {
                         $val -= 0x8140;
                     } else {
                         $val -= 0xc140;
@@ -1210,7 +1210,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         {
             $bits = 0;
 
-            if($version == 0) 
+            if ($version == 0) 
                 $version = 1;
 
             switch($this->mode) {
@@ -1240,7 +1240,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 unset($this->bstream);
                 $words = QRspec::maximumWords($this->mode, $version);
                 
-                if($this->size > $words) {
+                if ($this->size > $words) {
                 
                     $st1 = new QRinputItem($this->mode, $words, $this->data);
                     $st2 = new QRinputItem($this->mode, $this->size - $words, array_slice($this->data, $words));
@@ -1270,7 +1270,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                             break;
                     }
                     
-                    if($ret < 0)
+                    if ($ret < 0)
                         return -1;
                 }
 
@@ -1312,7 +1312,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public function setVersion($version)
         {
-            if($version < 0 || $version > QRSPEC_VERSION_MAX) {
+            if ($version < 0 || $version > QRSPEC_VERSION_MAX) {
                 throw new Exception('Invalid version no');
                 return -1;
             }
@@ -1331,7 +1331,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public function setErrorCorrectionLevel($level)
         {
-            if($level > QR_ECLEVEL_H) {
+            if ($level > QR_ECLEVEL_H) {
                 throw new Exception('Invalid ECLEVEL');
                 return -1;
             }
@@ -1363,11 +1363,11 @@ if (!defined('DEDEINC')) exit('dedebiz');
         
         public function insertStructuredAppendHeader($size, $index, $parity)
         {
-            if( $size > MAX_STRUCTURED_SYMBOLS ) {
+            if ( $size > MAX_STRUCTURED_SYMBOLS ) {
                 throw new Exception('insertStructuredAppendHeader wrong size');
             }
             
-            if( $index <= 0 || $index > MAX_STRUCTURED_SYMBOLS ) {
+            if ( $index <= 0 || $index > MAX_STRUCTURED_SYMBOLS ) {
                 throw new Exception('insertStructuredAppendHeader wrong index');
             }
 
@@ -1388,7 +1388,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $parity = 0;
             
             foreach($this->items as $item) {
-                if($item->mode != QR_MODE_STRUCTURE) {
+                if ($item->mode != QR_MODE_STRUCTURE) {
                     for($i=$item->size-1; $i>=0; $i--) {
                         $parity ^= $item->data[$i];
                     }
@@ -1402,7 +1402,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         public static function checkModeNum($size, $data)
         {
             for($i=0; $i<$size; $i++) {
-                if((ord($data[$i]) < ord('0')) || (ord($data[$i]) > ord('9'))){
+                if ((ord($data[$i]) < ord('0')) || (ord($data[$i]) > ord('9'))){
                     return false;
                 }
             }
@@ -1466,7 +1466,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $w = (int)($size / 2);
             $bits = $w * 11;
             
-            if($size & 1) {
+            if ($size & 1) {
                 $bits += 6;
             }
 
@@ -1488,12 +1488,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public static function checkModeKanji($size, $data)
         {
-            if($size & 1)
+            if ($size & 1)
                 return false;
 
             for($i=0; $i<$size; $i+=2) {
                 $val = (ord($data[$i]) << 8) | ord($data[$i+1]);
-                if( $val < 0x8140 
+                if ( $val < 0x8140 
                 || ($val > 0x9ffc && $val < 0xe040) 
                 || $val > 0xebbf) {
                     return false;
@@ -1509,7 +1509,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
         public static function check($mode, $size, $data)
         {
-            if($size <= 0) 
+            if ($size <= 0) 
                 return false;
 
             switch($mode) {
@@ -1565,9 +1565,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
                     $chunks = (int)($payload / 10);
                     $remain = $payload - $chunks * 10;
                     $size = $chunks * 3;
-                    if($remain >= 7) {
+                    if ($remain >= 7) {
                         $size += 2;
-                    } else if($remain >= 4) {
+                    } else if ($remain >= 4) {
                         $size += 1;
                     }
                     break;
@@ -1575,7 +1575,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                     $chunks = (int)($payload / 11);
                     $remain = $payload - $chunks * 11;
                     $size = $chunks * 2;
-                    if($remain >= 6) 
+                    if ($remain >= 6) 
                         $size++;
                     break;
                 case QR_MODE_8:
@@ -1593,8 +1593,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
             }
             
             $maxsize = QRspec::maximumWords($mode, $version);
-            if($size < 0) $size = 0;
-            if($size > $maxsize) $size = $maxsize;
+            if ($size < 0) $size = 0;
+            if ($size > $maxsize) $size = $maxsize;
 
             return $size;
         }
@@ -1607,7 +1607,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             foreach($this->items as $item) {
                 $bits = $item->encodeBitStream($this->version);
                 
-                if($bits < 0) 
+                if ($bits < 0) 
                     return -1;
                     
                 $total += $bits;
@@ -1620,21 +1620,21 @@ if (!defined('DEDEINC')) exit('dedebiz');
         public function convertData()
         {
             $ver = $this->estimateVersion();
-            if($ver > $this->getVersion()) {
+            if ($ver > $this->getVersion()) {
                 $this->setVersion($ver);
             }
 
             for(;;) {
                 $bits = $this->createBitStream();
                 
-                if($bits < 0) 
+                if ($bits < 0) 
                     return -1;
                     
                 $ver = QRspec::getMinimumVersion((int)(($bits + 7) / 8), $this->level);
-                if($ver < 0) {
+                if ($ver < 0) {
                     throw new Exception('WRONG VERSION');
                     return -1;
-                } else if($ver > $this->getVersion()) {
+                } else if ($ver > $this->getVersion()) {
                     $this->setVersion($ver);
                 } else {
                     break;
@@ -1665,12 +1665,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $padding = new QRbitstream();
             $ret = $padding->appendNum($words * 8 - $bits + 4, 0);
             
-            if($ret < 0) 
+            if ($ret < 0) 
                 return $ret;
 
             $padlen = $maxwords - $words;
             
-            if($padlen > 0) {
+            if ($padlen > 0) {
                 
                 $padbuf = array();
                 for($i=0; $i<$padlen; $i++) {
@@ -1679,7 +1679,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 
                 $ret = $padding->appendBytes($padlen, $padbuf);
                 
-                if($ret < 0)
+                if ($ret < 0)
                     return $ret;
                 
             }
@@ -1692,7 +1692,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public function mergeBitStream()
         {
-            if($this->convertData() < 0) {
+            if ($this->convertData() < 0) {
                 return null;
             }
 
@@ -1700,7 +1700,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             
             foreach($this->items as $item) {
                 $ret = $bstream->append($item->bstream);
-                if($ret < 0) {
+                if ($ret < 0) {
                     return null;
                 }
             }
@@ -1714,12 +1714,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
             $bstream = $this->mergeBitStream();
             
-            if($bstream == null) {
+            if ($bstream == null) {
                 return null;
             }
             
             $ret = $this->appendPaddingBit($bstream);
-            if($ret < 0) {
+            if ($ret < 0) {
                 return null;
             }
 
@@ -1730,7 +1730,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         public function getByteStream()
         {
             $bstream = $this->getBitStream();
-            if($bstream == null) {
+            if ($bstream == null) {
                 return null;
             }
             
@@ -1799,7 +1799,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             
             $mask = 1 << ($bits - 1);
             for($i=0; $i<$bits; $i++) {
-                if($num & $mask) {
+                if ($num & $mask) {
                     $bstream->data[$i] = 1;
                 } else {
                     $bstream->data[$i] = 0;
@@ -1820,7 +1820,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             for($i=0; $i<$size; $i++) {
                 $mask = 0x80;
                 for($j=0; $j<8; $j++) {
-                    if($data[$i] & $mask) {
+                    if ($data[$i] & $mask) {
                         $bstream->data[$p] = 1;
                     } else {
                         $bstream->data[$p] = 0;
@@ -1840,11 +1840,11 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 return -1;
             }
             
-            if($arg->size() == 0) {
+            if ($arg->size() == 0) {
                 return 0;
             }
             
-            if($this->size() == 0) {
+            if ($this->size() == 0) {
                 $this->data = $arg->data;
                 return 0;
             }
@@ -1862,7 +1862,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
             $b = QRbitstream::newFromNum($bits, $num);
             
-            if(is_null($b))
+            if (is_null($b))
                 return -1;
 
             $ret = $this->append($b);
@@ -1879,7 +1879,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
             $b = QRbitstream::newFromBytes($size, $data);
             
-            if(is_null($b))
+            if (is_null($b))
                 return -1;
 
             $ret = $this->append($b);
@@ -1894,7 +1894,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         
             $size = $this->size();
 
-            if($size == 0) {
+            if ($size == 0) {
                 return array();
             }
             
@@ -1913,7 +1913,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $data[$i] = $v;
             }
             
-            if($size & 7) {
+            if ($size & 7) {
                 $v = 0;
                 for($j=0; $j<($size & 7); $j++) {
                     $v = $v << 1;
@@ -2007,17 +2007,17 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 
             $c = $this->dataStr[$pos];
             
-            if(self::isdigitat($this->dataStr, $pos)) {
+            if (self::isdigitat($this->dataStr, $pos)) {
                 return QR_MODE_NUM;
-            } else if(self::isalnumat($this->dataStr, $pos)) {
+            } else if (self::isalnumat($this->dataStr, $pos)) {
                 return QR_MODE_AN;
-            } else if($this->modeHint == QR_MODE_KANJI) {
+            } else if ($this->modeHint == QR_MODE_KANJI) {
             
                 if ($pos+1 < strlen($this->dataStr)) 
                 {
                     $d = $this->dataStr[$pos+1];
                     $word = (ord($c) << 8) | ord($d);
-                    if(($word >= 0x8140 && $word <= 0x9ffc) || ($word >= 0xe040 && $word <= 0xebbf)) {
+                    if (($word >= 0x8140 && $word <= 0x9ffc) || ($word >= 0xe040 && $word <= 0xebbf)) {
                         return QR_MODE_KANJI;
                     }
                 }
@@ -2039,25 +2039,25 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $run = $p;
             $mode = $this->identifyMode($p);
             
-            if($mode == QR_MODE_8) {
+            if ($mode == QR_MODE_8) {
                 $dif = QRinput::estimateBitsModeNum($run) + 4 + $ln
                      + QRinput::estimateBitsMode8(1)         //+ 4 + l8
                      - QRinput::estimateBitsMode8($run + 1); //- 4 - l8
-                if($dif > 0) {
+                if ($dif > 0) {
                     return $this->eat8();
                 }
             }
-            if($mode == QR_MODE_AN) {
+            if ($mode == QR_MODE_AN) {
                 $dif = QRinput::estimateBitsModeNum($run) + 4 + $ln
                      + QRinput::estimateBitsModeAn(1)        //+ 4 + la
                      - QRinput::estimateBitsModeAn($run + 1);//- 4 - la
-                if($dif > 0) {
+                if ($dif > 0) {
                     return $this->eatAn();
                 }
             }
             
             $ret = $this->input->append(QR_MODE_NUM, $run, str_split($this->dataStr));
-            if($ret < 0)
+            if ($ret < 0)
                 return -1;
 
             return $run;
@@ -2072,7 +2072,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $p = 0;
             
             while(self::isalnumat($this->dataStr, $p)) {
-                if(self::isdigitat($this->dataStr, $p)) {
+                if (self::isdigitat($this->dataStr, $p)) {
                     $q = $p;
                     while(self::isdigitat($this->dataStr, $q)) {
                         $q++;
@@ -2082,7 +2082,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                          + QRinput::estimateBitsModeNum($q - $p) + 4 + $ln
                          - QRinput::estimateBitsModeAn($q); //- 4 - la
                          
-                    if($dif < 0) {
+                    if ($dif < 0) {
                         break;
                     } else {
                         $p = $q;
@@ -2094,17 +2094,17 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
             $run = $p;
 
-            if(!self::isalnumat($this->dataStr, $p)) {
+            if (!self::isalnumat($this->dataStr, $p)) {
                 $dif = QRinput::estimateBitsModeAn($run) + 4 + $la
                      + QRinput::estimateBitsMode8(1) //+ 4 + l8
                       - QRinput::estimateBitsMode8($run + 1); //- 4 - l8
-                if($dif > 0) {
+                if ($dif > 0) {
                     return $this->eat8();
                 }
             }
 
             $ret = $this->input->append(QR_MODE_AN, $run, str_split($this->dataStr));
-            if($ret < 0)
+            if ($ret < 0)
                 return -1;
 
             return $run;
@@ -2120,7 +2120,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             }
             
             $ret = $this->input->append(QR_MODE_KANJI, $p, str_split($this->dataStr));
-            if($ret < 0)
+            if ($ret < 0)
                 return -1;
 
             return $run;
@@ -2138,10 +2138,10 @@ if (!defined('DEDEINC')) exit('dedebiz');
             while($p < $dataStrLen) {
                 
                 $mode = $this->identifyMode($p);
-                if($mode == QR_MODE_KANJI) {
+                if ($mode == QR_MODE_KANJI) {
                     break;
                 }
-                if($mode == QR_MODE_NUM) {
+                if ($mode == QR_MODE_NUM) {
                     $q = $p;
                     while(self::isdigitat($this->dataStr, $q)) {
                         $q++;
@@ -2149,12 +2149,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
                     $dif = QRinput::estimateBitsMode8($p) //+ 4 + l8
                          + QRinput::estimateBitsModeNum($q - $p) + 4 + $ln
                          - QRinput::estimateBitsMode8($q); //- 4 - l8
-                    if($dif < 0) {
+                    if ($dif < 0) {
                         break;
                     } else {
                         $p = $q;
                     }
-                } else if($mode == QR_MODE_AN) {
+                } else if ($mode == QR_MODE_AN) {
                     $q = $p;
                     while(self::isalnumat($this->dataStr, $q)) {
                         $q++;
@@ -2162,7 +2162,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                     $dif = QRinput::estimateBitsMode8($p)  //+ 4 + l8
                          + QRinput::estimateBitsModeAn($q - $p) + 4 + $la
                          - QRinput::estimateBitsMode8($q); //- 4 - l8
-                    if($dif < 0) {
+                    if ($dif < 0) {
                         break;
                     } else {
                         $p = $q;
@@ -2175,7 +2175,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $run = $p;
             $ret = $this->input->append(QR_MODE_8, $run, str_split($this->dataStr));
             
-            if($ret < 0)
+            if ($ret < 0)
                 return -1;
 
             return $run;
@@ -2186,7 +2186,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         {
             while (strlen($this->dataStr) > 0)
             {
-                if($this->dataStr == '')
+                if ($this->dataStr == '')
                     return 0;
 
                 $mode = $this->identifyMode(0);
@@ -2203,8 +2203,8 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 
                 }
 
-                if($length == 0) return 0;
-                if($length < 0)  return -1;
+                if ($length == 0) return 0;
+                if ($length < 0)  return -1;
                 
                 $this->dataStr = substr($this->dataStr, $length);
             }
@@ -2218,7 +2218,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             
             while ($p<$stringLen) {
                 $mode = self::identifyMode(substr($this->dataStr, $p), $this->modeHint);
-                if($mode == QR_MODE_KANJI) {
+                if ($mode == QR_MODE_KANJI) {
                     $p += 2;
                 } else {
                     if (ord($this->dataStr[$p]) >= ord('a') && ord($this->dataStr[$p]) <= ord('z')) {
@@ -2234,13 +2234,13 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public static function splitStringToQRinput($string, QRinput $input, $modeHint, $casesensitive = true)
         {
-            if(is_null($string) || $string == '\0' || $string == '') {
+            if (is_null($string) || $string == '\0' || $string == '') {
                 throw new Exception('empty string!!!');
             }
 
             $split = new QRsplit($string, $input, $modeHint);
             
-            if(!$casesensitive)
+            if (!$casesensitive)
                 $split->toUpper();
                 
             return $split->splitString();
@@ -2318,11 +2318,11 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $rs = null;
             
             //Check parameter ranges
-            if($symsize < 0 || $symsize > 8)                     return $rs;
-            if($fcr < 0 || $fcr >= (1<<$symsize))                return $rs;
-            if($prim <= 0 || $prim >= (1<<$symsize))             return $rs;
-            if($nroots < 0 || $nroots >= (1<<$symsize))          return $rs; //Can't have more roots than symbol values!
-            if($pad < 0 || $pad >= ((1<<$symsize) -1 - $nroots)) return $rs; //Too much padding
+            if ($symsize < 0 || $symsize > 8)                     return $rs;
+            if ($fcr < 0 || $fcr >= (1<<$symsize))                return $rs;
+            if ($prim <= 0 || $prim >= (1<<$symsize))             return $rs;
+            if ($nroots < 0 || $nroots >= (1<<$symsize))          return $rs; //Can't have more roots than symbol values!
+            if ($pad < 0 || $pad >= ((1<<$symsize) -1 - $nroots)) return $rs; //Too much padding
 
             $rs = new QRrsItem();
             $rs->mm = $symsize;
@@ -2345,13 +2345,13 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $rs->index_of[$sr] = $i;
                 $rs->alpha_to[$i] = $sr;
                 $sr <<= 1;
-                if($sr & (1<<$symsize)) {
+                if ($sr & (1<<$symsize)) {
                     $sr ^= $gfpoly;
                 }
                 $sr &= $rs->nn;
             }
             
-            if($sr != 1){
+            if ($sr != 1){
                 //field generator polynomial is not primitive!
                 $rs = NULL;
                 return $rs;
@@ -2414,7 +2414,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             for($i=0; $i< ($NN-$NROOTS-$PAD); $i++) {
                 
                 $feedback = $INDEX_OF[$data[$i] ^ $parity[0]];
-                if($feedback != $A0) {      
+                if ($feedback != $A0) {      
                     //feedback term is non-zero
             
                     //This line is unnecessary when GENPOLY[NROOTS] is unity, as it must
@@ -2428,7 +2428,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 
                 //Shift 
                 array_shift($parity);
-                if($feedback != $A0) {
+                if ($feedback != $A0) {
                     array_push($parity, $ALPHA_TO[$this->modnn($feedback + $GENPOLY[0])]);
                 } else {
                     array_push($parity, 0);
@@ -2447,12 +2447,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
         public static function init_rs($symsize, $gfpoly, $fcr, $prim, $nroots, $pad)
         {
             foreach(self::$items as $rs) {
-                if($rs->pad != $pad)       continue;
-                if($rs->nroots != $nroots) continue;
-                if($rs->mm != $symsize)    continue;
-                if($rs->gfpoly != $gfpoly) continue;
-                if($rs->fcr != $fcr)       continue;
-                if($rs->prim != $prim)     continue;
+                if ($rs->pad != $pad)       continue;
+                if ($rs->nroots != $nroots) continue;
+                if ($rs->mm != $symsize)    continue;
+                if ($rs->gfpoly != $gfpoly) continue;
+                if ($rs->fcr != $fcr)       continue;
+                if ($rs->prim != $prim)     continue;
 
                 return $rs;
             }
@@ -2519,7 +2519,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $format =  QRspec::getFormatInfo($mask, $level);
 
             for($i=0; $i<8; $i++) {
-                if($format & 1) {
+                if ($format & 1) {
                     $blacks += 2;
                     $v = 0x85;
                 } else {
@@ -2527,7 +2527,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 }
                 
                 $frame[8][$width - 1 - $i] = chr($v);
-                if($i < 6) {
+                if ($i < 6) {
                     $frame[$i][8] = chr($v);
                 } else {
                     $frame[$i + 1][8] = chr($v);
@@ -2536,7 +2536,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             }
             
             for($i=0; $i<7; $i++) {
-                if($format & 1) {
+                if ($format & 1) {
                     $blacks += 2;
                     $v = 0x85;
                 } else {
@@ -2544,7 +2544,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 }
                 
                 $frame[$width - 7 + $i][8] = chr($v);
-                if($i == 0) {
+                if ($i == 0) {
                     $frame[8][7] = chr($v);
                 } else {
                     $frame[8][6 - $i] = chr($v);
@@ -2573,7 +2573,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             
             for($y=0; $y<$width; $y++) {
                 for($x=0; $x<$width; $x++) {
-                    if(ord($frame[$y][$x]) & 0x80) {
+                    if (ord($frame[$y][$x]) & 0x80) {
                         $bitMask[$y][$x] = 0;
                     } else {
                         $maskFunc = call_user_func(array($this, 'mask'.$maskNo), $x, $y);
@@ -2637,7 +2637,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
             for($y=0; $y<$width; $y++) {
                 for($x=0; $x<$width; $x++) {
-                    if($bitMask[$y][$x] == 1) {
+                    if ($bitMask[$y][$x] == 1) {
                         $d[$y][$x] = chr(ord($s[$y][$x]) ^ (int)$bitMask[$y][$x]);
                     }
                     $b += (int)(ord($d[$y][$x]) & 1);
@@ -2664,19 +2664,19 @@ if (!defined('DEDEINC')) exit('dedebiz');
 
             for($i=0; $i<$length; $i++) {
                 
-                if($this->runLength[$i] >= 5) {
+                if ($this->runLength[$i] >= 5) {
                     $demerit += (N1 + ($this->runLength[$i] - 5));
                 }
-                if($i & 1) {
-                    if(($i >= 3) && ($i < ($length-2)) && ($this->runLength[$i] % 3 == 0)) {
+                if ($i & 1) {
+                    if (($i >= 3) && ($i < ($length-2)) && ($this->runLength[$i] % 3 == 0)) {
                         $fact = (int)($this->runLength[$i] / 3);
-                        if(($this->runLength[$i-2] == $fact) &&
+                        if (($this->runLength[$i-2] == $fact) &&
                            ($this->runLength[$i-1] == $fact) &&
                            ($this->runLength[$i+1] == $fact) &&
                            ($this->runLength[$i+2] == $fact)) {
-                            if(($this->runLength[$i-3] < 0) || ($this->runLength[$i-3] >= (4 * $fact))) {
+                            if (($this->runLength[$i-3] < 0) || ($this->runLength[$i-3] >= (4 * $fact))) {
                                 $demerit += N3;
-                            } else if((($i+3) >= $length) || ($this->runLength[$i+3] >= (4 * $fact))) {
+                            } else if ((($i+3) >= $length) || ($this->runLength[$i+3] >= (4 * $fact))) {
                                 $demerit += N3;
                             }
                         }
@@ -2702,20 +2702,20 @@ if (!defined('DEDEINC')) exit('dedebiz');
                     $frameYM = $frame[$y-1];
                 
                 for($x=0; $x<$width; $x++) {
-                    if(($x > 0) && ($y > 0)) {
+                    if (($x > 0) && ($y > 0)) {
                         $b22 = ord($frameY[$x]) & ord($frameY[$x-1]) & ord($frameYM[$x]) & ord($frameYM[$x-1]);
                         $w22 = ord($frameY[$x]) | ord($frameY[$x-1]) | ord($frameYM[$x]) | ord($frameYM[$x-1]);
                         
-                        if(($b22 | ($w22 ^ 1))&1) {                                                                     
+                        if (($b22 | ($w22 ^ 1))&1) {                                                                     
                             $demerit += N2;
                         }
                     }
-                    if(($x == 0) && (ord($frameY[$x]) & 1)) {
+                    if (($x == 0) && (ord($frameY[$x]) & 1)) {
                         $this->runLength[0] = -1;
                         $head = 1;
                         $this->runLength[$head] = 1;
-                    } else if($x > 0) {
-                        if((ord($frameY[$x]) ^ ord($frameY[$x-1])) & 1) {
+                    } else if ($x > 0) {
+                        if ((ord($frameY[$x]) ^ ord($frameY[$x-1])) & 1) {
                             $head++;
                             $this->runLength[$head] = 1;
                         } else {
@@ -2732,12 +2732,12 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $this->runLength[0] = 1;
                 
                 for($y=0; $y<$width; $y++) {
-                    if($y == 0 && (ord($frame[$y][$x]) & 1)) {
+                    if ($y == 0 && (ord($frame[$y][$x]) & 1)) {
                         $this->runLength[0] = -1;
                         $head = 1;
                         $this->runLength[$head] = 1;
-                    } else if($y > 0) {
-                        if((ord($frame[$y][$x]) ^ ord($frame[$y-1][$x])) & 1) {
+                    } else if ($y > 0) {
+                        if ((ord($frame[$y][$x]) ^ ord($frame[$y-1][$x])) & 1) {
                             $head++;
                             $this->runLength[$head] = 1;
                         } else {
@@ -2786,7 +2786,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $demerit = (int)((int)(abs($blacks - 50) / 5) * N4);
                 $demerit += $this->evaluateSymbol($width, $mask);
                 
-                if($demerit < $minDemerit) {
+                if ($demerit < $minDemerit) {
                     $minDemerit = $demerit;
                     $bestMask = $mask;
                     $bestMaskNum = $i;
@@ -2869,7 +2869,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $spec = array(0,0,0,0,0);
             
             $this->datacode = $input->getByteStream();
-            if(is_null($this->datacode)) {
+            if (is_null($this->datacode)) {
                 throw new Exception('null imput string');
             }
 
@@ -2883,7 +2883,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $this->blocks = QRspec::rsBlockNum($spec);
             
             $ret = $this->init($spec);
-            if($ret < 0) {
+            if ($ret < 0) {
                 throw new Exception('block alloc error');
                 return null;
             }
@@ -2912,14 +2912,14 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $blockNo++;
             }
 
-            if(QRspec::rsBlockNum2($spec) == 0)
+            if (QRspec::rsBlockNum2($spec) == 0)
                 return 0;
 
             $dl = QRspec::rsDataCodes2($spec);
             $el = QRspec::rsEccCodes2($spec);
             $rs = QRrs::init_rs(8, 0x11d, 0, 1, $el, 255 - $dl - $el);
             
-            if($rs == NULL) return -1;
+            if ($rs == NULL) return -1;
             
             for($i=0; $i<QRspec::rsBlockNum2($spec); $i++) {
                 $ecc = array_slice($this->ecccode,$eccPos);
@@ -2939,14 +2939,14 @@ if (!defined('DEDEINC')) exit('dedebiz');
         {
             $ret;
 
-            if($this->count < $this->dataLength) {
+            if ($this->count < $this->dataLength) {
                 $row = $this->count % $this->blocks;
                 $col = $this->count / $this->blocks;
-                if($col >= $this->rsblocks[0]->dataLength) {
+                if ($col >= $this->rsblocks[0]->dataLength) {
                     $row += $this->b1;
                 }
                 $ret = $this->rsblocks[$row]->data[$col];
-            } else if($this->count < $this->dataLength + $this->eccLength) {
+            } else if ($this->count < $this->dataLength + $this->eccLength) {
                 $row = ($this->count - $this->dataLength) % $this->blocks;
                 $col = ($this->count - $this->dataLength) / $this->blocks;
                 $ret = $this->rsblocks[$row]->ecc[$col];
@@ -2970,10 +2970,10 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public function encodeMask(QRinput $input, $mask)
         {
-            if($input->getVersion() < 0 || $input->getVersion() > QRSPEC_VERSION_MAX) {
+            if ($input->getVersion() < 0 || $input->getVersion() > QRSPEC_VERSION_MAX) {
                 throw new Exception('wrong version');
             }
-            if($input->getErrorCorrectionLevel() > QR_ECLEVEL_H) {
+            if ($input->getErrorCorrectionLevel() > QR_ECLEVEL_H) {
                 throw new Exception('wrong level');
             }
 
@@ -2986,7 +2986,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             $frame = QRspec::newFrame($version);
             
             $filler = new FrameFiller($width, $frame);
-            if(is_null($filler)) {
+            if (is_null($filler)) {
                 return NULL;
             }
 
@@ -3018,7 +3018,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
             
             //masking
             $maskObj = new QRmask();
-            if($mask < 0) {
+            if ($mask < 0) {
             
                 if (QR_FIND_BEST_MASK) {
                     $masked = $maskObj->mask($width, $frame, $input->getErrorCorrectionLevel());
@@ -3029,7 +3029,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $masked = $maskObj->makeMask($width, $frame, $mask, $input->getErrorCorrectionLevel());
             }
             
-            if($masked == NULL) {
+            if ($masked == NULL) {
                 return NULL;
             }
             
@@ -3051,16 +3051,16 @@ if (!defined('DEDEINC')) exit('dedebiz');
         //----------------------------------------------------------------------
         public function encodeString8bit($string, $version, $level)
         {
-            if(string == NULL) {
+            if (string == NULL) {
                 throw new Exception('empty string!');
                 return NULL;
             }
 
             $input = new QRinput($version, $level);
-            if($input == NULL) return NULL;
+            if ($input == NULL) return NULL;
 
             $ret = $input->append($input, QR_MODE_8, strlen($string), str_split($string));
-            if($ret < 0) {
+            if ($ret < 0) {
                 unset($input);
                 return NULL;
             }
@@ -3071,16 +3071,16 @@ if (!defined('DEDEINC')) exit('dedebiz');
         public function encodeString($string, $version, $level, $hint, $casesensitive)
         {
 
-            if($hint != QR_MODE_8 && $hint != QR_MODE_KANJI) {
+            if ($hint != QR_MODE_8 && $hint != QR_MODE_KANJI) {
                 throw new Exception('bad hint');
                 return NULL;
             }
 
             $input = new QRinput($version, $level);
-            if($input == NULL) return NULL;
+            if ($input == NULL) return NULL;
 
             $ret = QRsplit::splitStringToQRinput($string, $input, $hint, $casesensitive);
-            if($ret < 0) {
+            if ($ret < 0) {
                 return NULL;
             }
 
@@ -3148,7 +3148,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         {
             do {
             
-                if($this->bit == -1) {
+                if ($this->bit == -1) {
                     $this->bit = 0;
                     return array('x'=>$this->x, 'y'=>$this->y);
                 }
@@ -3157,7 +3157,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 $y = $this->y;
                 $w = $this->width;
 
-                if($this->bit == 0) {
+                if ($this->bit == 0) {
                     $x--;
                     $this->bit++;
                 } else {
@@ -3166,28 +3166,28 @@ if (!defined('DEDEINC')) exit('dedebiz');
                     $this->bit--;
                 }
 
-                if($this->dir < 0) {
-                    if($y < 0) {
+                if ($this->dir < 0) {
+                    if ($y < 0) {
                         $y = 0;
                         $x -= 2;
                         $this->dir = 1;
-                        if($x == 6) {
+                        if ($x == 6) {
                             $x--;
                             $y = 9;
                         }
                     }
                 } else {
-                    if($y == $w) {
+                    if ($y == $w) {
                         $y = $w - 1;
                         $x -= 2;
                         $this->dir = -1;
-                        if($x == 6) {
+                        if ($x == 6) {
                             $x--;
                             $y -= 8;
                         }
                     }
                 }
-                if($x < 0 || $y < 0) return null;
+                if ($x < 0 || $y < 0) return null;
 
                 $this->x = $x;
                 $this->y = $y;
@@ -3255,7 +3255,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         {
             $code = new QRcode();
 
-            if($this->eightbit) {
+            if ($this->eightbit) {
                 $code->encodeString8bit($intext, $this->version, $this->level);
             } else {
                 $code->encodeString($intext, $this->version, $this->level, $this->hint, $this->casesensitive);
@@ -3269,7 +3269,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
         {
             $code = new QRcode();
 
-            if($this->eightbit) {
+            if ($this->eightbit) {
                 $code->encodeString8bit($intext, $this->version, $this->level);
             } else {
                 $code->encodeString($intext, $this->version, $this->level, $this->hint, $this->casesensitive);

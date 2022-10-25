@@ -153,8 +153,8 @@
                     foreach($etypes as $arr)
                     {
                         $stylecolor = "";
-                        if($arr['issystem']==1) $stylecolor = " style='color:#999999' ";
-                        if($egroup==$arr['egroup']) {
+                        if ($arr['issystem']==1) $stylecolor = " style='color:#999999' ";
+                        if ($egroup==$arr['egroup']) {
                             $selgroup = $arr['itemname'];
                             echo "<option value='{$arr['id']}' $stylecolor selected='1'>{$arr['egroup']}|{$arr['itemname']}</option>";
                         } else {
@@ -175,22 +175,22 @@
         </tr>
     </table>
     <?php
-    if(!empty($egroup))
+    if (!empty($egroup))
     {
         $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='{$egroup}' ");
         $dsql->Execute('out',"SELECT evalue,ename FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}' ORDER BY disorder ASC,evalue ASC");
         $options = '';
         while($row1 = $dsql->GetArray('out'))
         {
-            if(!preg_match("#\.#", $row1['evalue']))
+            if (!preg_match("#\.#", $row1['evalue']))
             {
                 $row1['ename'] = ($row1['evalue'] % 500 == 0)? $row1['ename'] : '└─'.$row1['ename'];
-                if($topvalue != $row1['evalue']) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
+                if ($topvalue != $row1['evalue']) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
                 else $options .= "<option value='{$row1['evalue']}' selected='selected'>{$row1['ename']}</option>";
             }
         }
         //如果添加3级之类
-        if($topvalue % 500 != 0) $arr['issign'] = 2;
+        if ($topvalue % 500 != 0) $arr['issign'] = 2;
     ?>
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
         <tr>
@@ -201,7 +201,7 @@
                 <span class="float-left"><?php echo $selgroup;?> &gt; 子分类管理</span>
                 <span class="float-right">
                 <?php
-                if($egroup=='nativeplace') {
+                if ($egroup=='nativeplace') {
                     echo "<a href='stepselect_main.php?action=exarea' class='btn btn-success btn-sm'>把默认省市地区表导入</a>";
                 }
                 ?>
@@ -256,9 +256,9 @@
                 <td>{dede:field.id/}</td>
                 <td>
                     <?php 
-                    if(!preg_match("#\.#", $fields['evalue']))
+                    if (!preg_match("#\.#", $fields['evalue']))
                     {
-                        if($fields['evalue']>500 && $fields['evalue']%500 != 0)  $fields['ename'] = " └─".$fields['ename'];
+                        if ($fields['evalue']>500 && $fields['evalue']%500 != 0)  $fields['ename'] = " └─".$fields['ename'];
                     } else {
                         $fields['ename'] = " └───".$fields['ename'];
                     }
@@ -268,9 +268,9 @@
                 <td>{dede:field.egroup/}</td>
                 <td>
                     <?php
-                    if(!preg_match("#\.#", $fields['evalue']))
+                    if (!preg_match("#\.#", $fields['evalue']))
                     {
-                        if($fields['evalue']>500 && $fields['evalue']%500 != 0)  echo '二级选择';
+                        if ($fields['evalue']>500 && $fields['evalue']%500 != 0)  echo '二级选择';
                         else echo '一级选择';
                     } else {
                         echo "三级选择";
@@ -281,7 +281,7 @@
                 <td><input type='text' id='disorder{dede:field.id/}' value='{dede:field.disorder/}' class='abt'></td>
                 <td>
                     <?php
-                    if(!empty($egroup))
+                    if (!empty($egroup))
                     {
                     ?>
                     <a href='javascript:updateItem({dede:field.id/});' class='btn btn-success btn-sm'><i class='fa fa-refresh'></i> 更新</a>

@@ -104,7 +104,7 @@ else if ($action == 'make') {
     }
     if (trim($setupsql40) == '') $setupsql40 = '';
     else $setupsql40 = base64_encode(trim($setupsql40));
-    //if(trim($setupsql41)=='') $setupsql41 = '';
+    //if (trim($setupsql41)=='') $setupsql41 = '';
     //else $setupsql41 = base64_encode(trim($setupsql41));
     if (trim($delsql) == '') $delsql = '';
     else $delsql = base64_encode(trim($delsql));
@@ -244,7 +244,7 @@ else if ($action == 'edit') {
     }
     if (trim($setupsql40) == '') $setupsql40 = '';
     else $setupsql40 = base64_encode(htmlspecialchars_decode(trim($setupsql40)));
-    //if(trim($setupsql41)=='') $setupsql41 = '';
+    //if (trim($setupsql41)=='') $setupsql41 = '';
     //else $setupsql41 = base64_encode(trim($setupsql41));
     if (trim($delsql) == '') $delsql = '';
     else $delsql = base64_encode(strip_tags(trim($delsql)));

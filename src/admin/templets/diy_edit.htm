@@ -83,7 +83,7 @@
             $dtp = new DedeTagParse();
             $dtp->SetNameSpace("field","<",">");
             $dtp->LoadSource($fieldset);
-            if(is_array($dtp->CTags)){
+            if (is_array($dtp->CTags)){
             foreach($dtp->CTags as $ctag)
             {
             ?>
@@ -91,7 +91,7 @@
               <td>
                 <?php 
           			$itname = $ctag->GetAtt('itemname');
-          			if($itname=='') echo "没指定";
+          			if ($itname=='') echo "没指定";
           			else echo $itname;
           			?>
               </td>
@@ -99,14 +99,14 @@
               <td>
                 <?php 
           			$ft = $ctag->GetAtt('type');
-          			if(isset($fieldtypes[$ft])) echo $fieldtypes[$ft];
+          			if (isset($fieldtypes[$ft])) echo $fieldtypes[$ft];
           			else  echo "系统专用类型";
           			?>
               </td>
               <td>
                 <?php 
           			$ft = $ctag->GetAtt('autofield');
-          			if($ft==''||$ft==0) echo "固化表单";
+          			if ($ft==''||$ft==0) echo "固化表单";
           			else  echo "自动表单";
           		 ?>
               </td>

@@ -22,7 +22,7 @@
   	var enums = document.getElementsByName('dtype');
   	for(i=0;i<enums.length;i++)
   	{
-  		if(enums[i].checked) dtype = enums[i].value;
+  		if (enums[i].checked) dtype = enums[i].value;
   	}
   	var isnull = theform.isnull.value;
   	var vdefault = theform.vdefault.value;
@@ -30,29 +30,29 @@
   	var vinnertext = theform.vinnertext.value;
   	var spage = (theform.spage[0].checked ? theform.spage[0].value : theform.spage[1].value);
   	var sisnull = (isnull==0 ? "false" : "true");
-  	if(itemname=="")
+  	if (itemname=="")
   	{
   		ShowMsg("表单提示名称不能为空");
   		theform.itemname.focus();
   		return false;
   	}
-  	if(fieldname=="") 
+  	if (fieldname=="") 
   	{
   		ShowMsg("字段名称不能为空");
   		theform.fieldname.focus();
   		return false;
   	}
-  	if(notAllow.indexOf(" "+fieldname+" ") >-1 ) 
+  	if (notAllow.indexOf(" "+fieldname+" ") >-1 ) 
   	{
   		ShowMsg("字段名称不合法，如下字段名已经存在，建议在名称后加上数字以区分：\n"+notAllow);
   		return false;
   	}
-  	if((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
+  	if ((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
   	{
   		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）");
   		return false;
   	}
-  	if(spage=="no") spage = "";
+  	if (spage=="no") spage = "";
   	revalue =  "<field:"+fieldname+" itemname=\""+itemname+"\" autofield=\"1\" type=\""+dtype+"\" isnull=\""+sisnull+"\" default=\""+vdefault+"\" ";
   	revalue += " maxlength=\""+maxlength+"\" page=\""+spage+"\">"+vinnertext+"</field:"+fieldname+">";
   	document.form1.fieldstring.value = revalue;
@@ -122,7 +122,7 @@
     <tr> 
       <td>默认值：<br>
         <span class="style2">如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（用“,”分开，如“男,女,人妖”）</span></td>
-      <td><textarea name="vdefault" id="vdefault" style="width:70%;height:60px"></textarea></td>
+      <td><textarea name="vdefault" id="vdefault" class="biz-textarea"></textarea></td>
     </tr>
     <tr> 
       <td>最大长度：<br>
@@ -135,7 +135,7 @@
     </tr>
     <tr> 
       <td align="center"></td>
-      <td><textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%;height:120px"></textarea></td>
+      <td><textarea name="vinnertext" id="vinnertext" class="biz-textarea"></textarea></td>
     </tr>
     <tr> 
       <td colspan="2" bgcolor="#f8f8f8" align="center" class="py-2">

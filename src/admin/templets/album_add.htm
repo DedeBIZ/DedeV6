@@ -99,7 +99,7 @@
               $dsql->Execute();
               while($trow = $dsql->GetObject())
               {
-          	    if($trow->att=='j')
+          	    if ($trow->att=='j')
           	    echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label>";
           	    else
           	    echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
@@ -185,7 +185,7 @@
                 </span>
                 <i class="btn btn-sm fa fa-search" onClick="ShowCatMap(event,this,<?php echo $channelid;?>,'typeid')" title="快捷选择" style="cursor:pointer"></i> 
                 <?php
-                if($cfg_need_typeid2=='Y')
+                if ($cfg_need_typeid2=='Y')
                 {
                   echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
                 }
@@ -221,7 +221,7 @@
                 <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览</button>
               </td>
               <td>
-                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked';?>> 自动获取，手动填写用","分开</label>
+                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo ' checked';?>> 自动获取，手动填写用","分开</label>
               </td>
             </tr>
           </table>
@@ -243,9 +243,9 @@
             <tr>
               <td width="90"> 表现方式：</td>
               <td>
-                <label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
-                <label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
-                <label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
+                <label><input type="radio" name="pagestyle" id="pagestyle1" onClick="checkMuList()" value="1" <?php if ($cfg_album_style==1) echo " checked='checked'";?>> <img src="../static/web/img/alb2.jpg" title="单页多图样式"></label>
+                <label><input type="radio" name="pagestyle" id="pagestyle2" onClick="checkMuList()" value="2" <?php if ($cfg_album_style==2) echo " checked='checked'";?>> <img src="../static/web/img/alb1.jpg" title="幻灯片样式"></label>
+                <label><input type="radio" name="pagestyle" id="pagestyle3" onClick="checkMuList()" value="3" <?php if ($cfg_album_style==3) echo " checked='checked'";?>> <img src="../static/web/img/alb3.jpg" title="多缩略图样式"></label>
               </td>
             </tr>
           </table>
@@ -365,8 +365,8 @@
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
-                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
+                <label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>

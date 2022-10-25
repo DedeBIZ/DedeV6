@@ -45,13 +45,13 @@
 							<div class="pannel-main-container">
 								<ul class="nav mt-2">
 									<li class="nav-item">
-										<a class="nav-link<?php if($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a>
+										<a class="nav-link<?php if ($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link<?php if($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a>
+										<a class="nav-link<?php if ($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link<?php if($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a>
+										<a class="nav-link<?php if ($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a>
 									</li>
 								</ul>
 								<div class="table-responsive">
@@ -66,7 +66,7 @@
 													<th scope="col">标题</th>
 													<th scope="col">
 														<?php
-														if($folder == "inbox") echo "发件人";
+														if ($folder == "inbox") echo "发件人";
 														else echo "收件人";
 														?>
 													</th>
@@ -80,13 +80,13 @@
 													<td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}"></td>
 													<td>
 														<?php
-														if($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
+														if ($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
 														else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
 														?>
 													</td>
 													<td>
 														<?php 
-														if($folder == "inbox") { 
+														if ($folder == "inbox") { 
 														echo $fields['floginid']; 
 														} else {  
 															echo $fields['tologinid']; 

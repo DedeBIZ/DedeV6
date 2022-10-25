@@ -90,10 +90,10 @@
 					</div>
 					<div class="picbox">
 						{dede:field name='pagestyle' alt='根据不同的页面风格输出不同的头信息' runphp='yes'}
-						if(@me==3) {
+						if (@me==3) {
 						@me = '<ul class="e8">';
 							}
-							else if(@me==2) {
+							else if (@me==2) {
 							@me = "
 							<div class='mt-3 mb-3 text-center'>
 								<a href='javascript:dPlayBig();' class='btn btn-success btn-sm'>原始图片</a>
@@ -118,11 +118,11 @@
 								[field:pagestyle runphp='yes'] @me = (@me==3 ? '</li>' : ''); [/field:pagestyle]
 							{/dede:field}
 							{dede:field name='pagestyle' alt='根据不同的风格输出不同的结尾信息' runphp='yes'}
-							if(@me==3) {
+							if (@me==3) {
 							@me = '
 						</ul>';
 						}
-						else if(@me==2) {
+						else if (@me==2) {
 						@me = "
 						<script>
 							dStartPlay();

@@ -12,11 +12,11 @@ require_once(dirname(__FILE__)."/config.php");
 CheckPurview('c_FreeList');
 require_once DEDEINC.'/channelunit.func.php';
 setcookie("ENV_GOBACK_URL",$dedeNowurl,time()+3600,"/");
-if(empty($pagesize)) $pagesize = 30;
-if(empty($pageno)) $pageno = 1;
-if(empty($dopost)) $dopost = '';
-if(empty($orderby)) $orderby = 'aid';
-if(empty($keyword))
+if (empty($pagesize)) $pagesize = 30;
+if (empty($pageno)) $pageno = 1;
+if (empty($dopost)) $dopost = '';
+if (empty($orderby)) $orderby = 'aid';
+if (empty($keyword))
 {
     $keyword = '';
     $addget = '';
@@ -26,14 +26,14 @@ if(empty($keyword))
     $addsql = " where title like '%$keyword%' ";
 }
 //重载列表
-if($dopost=='getlist')
+if ($dopost=='getlist')
 {
     AjaxHead();
     GetTagList($dsql,$pageno,$pagesize,$orderby);
     exit();
 }
 //删除字段
-else if($dopost=='del')
+else if ($dopost=='del')
 {
     $aid = preg_replace("#[^0-9]#", "", $aid);
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__freelist` WHERE aid='$aid'; ");
@@ -42,7 +42,7 @@ else if($dopost=='del')
     exit();
 }
 //第一次进入这个页面
-if($dopost=='')
+if ($dopost=='')
 {
     $row = $dsql->GetOne("SELECT COUNT(*) AS dd FROM `#@__freelist` $addsql ");
     $totalRow = $row['dd'];

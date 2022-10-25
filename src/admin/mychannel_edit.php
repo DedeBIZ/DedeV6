@@ -255,7 +255,7 @@ else if ($dopost == "copysave") {
         $row = $dsql->GetArray('me', MYSQL_BOTH);
         $tableStruct = $row[1];
         $tb = str_replace('#@__', $cfg_dbprefix, $addtable);
-        $tableStruct = preg_replace("/CREATE TABLE `$addtable`/iU", "CREATE TABLE `$newaddtable`", $tableStruct);
+        $tableStruct = preg_replace("/CREATE TABLE `$addtable` /iU", "CREATE TABLE `$newaddtable`", $tableStruct);
         $dsql->ExecuteNoneQuery($tableStruct);
     }
     if ($copytemplet == 1) {
@@ -280,27 +280,7 @@ function __SaveEdit()
 else if ($dopost == "save") {
     $fieldset = preg_replace("#[\r\n]{1,}#", "\r\n", $fieldset);
     $usertype = empty($usertype) ? '' : $usertype;
-    $query = "Update `#@__channeltype` set
-    typename = '$typename',
-    addtable = '$addtable',
-    addcon = '$addcon',
-    mancon = '$mancon',
-    editcon = '$editcon',
-    useraddcon = '$useraddcon',
-    usermancon = '$usermancon',
-    usereditcon = '$usereditcon',
-    fieldset = '$fieldset',
-    listfields = '$listfields',
-    issend = '$issend',
-    arcsta = '$arcsta',
-    usertype = '$usertype',
-    sendrank = '$sendrank',
-    needdes = '$needdes',
-    needpic = '$needpic',
-    titlename = '$titlename',
-    onlyone = '$onlyone',
-    dfcid = '$dfcid'
-   WHERE id='$id' ";
+    $query = "UPDATE `#@__channeltype` SET typename='$typename',addtable='$addtable',addcon='$addcon',mancon='$mancon',editcon='$editcon',useraddcon='$useraddcon',usermancon='$usermancon',usereditcon='$usereditcon',fieldset='$fieldset',listfields='$listfields',issend='$issend',arcsta='$arcsta',usertype='$usertype',sendrank='$sendrank',needdes='$needdes',needpic='$needpic',titlename='$titlename',onlyone='$onlyone',dfcid='$dfcid' WHERE id='$id' ";
     if (trim($fieldset) != '') {
         $dtp = new DedeTagParse();
         $dtp->SetNameSpace("field", "<", ">");
@@ -312,7 +292,7 @@ else if ($dopost == "save") {
     }
     $trueTable = str_replace("#@__", $cfg_dbprefix, $addtable);
     if (!$dsql->IsTable($trueTable)) {
-        ShowMsg("系统找不到您所指定的表 $trueTable ，请手工创建这个表", "-1");
+        ShowMsg("系统找不到您所指定的表`$trueTable`，请手工创建这个表", "-1");
         exit();
     }
     $dsql->ExecuteNoneQuery($query);
@@ -444,13 +424,6 @@ else if ($dopost == 'modifysearch') {
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c3.' value="writer" /> 作者</label> ';
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c4.' value="source" /> 来源</label> ';
         $mainfields .= '<label><input type="checkbox" name="mainfields[]" '.$c5.' value="senddate" /> 发布时间</label> ';
-        /*
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="description" />摘要</label>';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="keywords" />关键词</label>';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="smalltypeid" />小分类</label>';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="area" />地区</label>';
-        $mainfields .= '<label><input type="checkbox" name="mainfields[]" value="sector" />行业</label>';
-        */
         $query = "SELECT * FROM `#@__channeltype` WHERE id='$mid'";
         $channel = $dsql->GetOne($query);
         $searchtype = array('int', 'datetime', 'float', 'textdata', 'textchar', 'text', 'htmltext', 'multitext', 'select', 'radio', 'checkbox');

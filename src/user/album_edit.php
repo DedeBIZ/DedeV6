@@ -113,14 +113,14 @@ else if ($dopost == 'save') {
     //更新数据库的SQL语句
     $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',description='$description',keywords='$keywords',mtype='$mtypesid',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
+        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
     }
     $isrm = 0;
     if ($addtable != '') {
         $query = "UPDATE `$addtable` SET typeid='$typeid',pagestyle='$pagestyle',maxwidth='$maxwidth',ddmaxwidth='$ddmaxwidth',pagepicnum='$pagepicnum',imgurls='$imgurls',`row`='$prow',col='$pcol',userip='$userip',isrm='$isrm' {$inadd_f} WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($query)) {
-            ShowMsg("更新附加表 `$addtable` 时出错，请联系管理员".$dsql->GetError(), "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请联系管理员".$dsql->GetError(), "javascript:;");
             exit();
         }
     }

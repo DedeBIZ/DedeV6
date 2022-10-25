@@ -370,7 +370,7 @@ $GLOBALS['disallowedExpressions'] = array(
 function evalCode($code)
 {
     ob_start();
-    $code = eval('if(0){'."\n".$code."\n".'}');
+    $code = eval('if (0){'."\n".$code."\n".'}');
     ob_end_clean();
     return $code !== false;
 }

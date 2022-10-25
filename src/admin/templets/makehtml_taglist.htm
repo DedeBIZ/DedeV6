@@ -24,7 +24,7 @@
 					<td bgcolor="#f8f8f8" colspan="2">更新标签</td>
 				</tr>
 				<?php
-				if($tagid > 0) {
+				if ($tagid > 0) {
 					$row = $dsql->GetOne("Select tag From `#@__tagindex` where id = '$tagid' ");
 				?>
 				<tr>

@@ -92,7 +92,7 @@
               $dsql->Execute();
               while($trow = $dsql->GetObject())
               {
-          	    if($trow->att=='j')
+          	    if ($trow->att=='j')
           	    echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' onclick='ShowUrlTr()'> {$trow->attname}[{$trow->att}]</label>";
           	    else
           	    echo "<label class='mr-1'><input type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'> {$trow->attname}[{$trow->att}]</label>";
@@ -176,7 +176,7 @@
                 </span>
                 <i class='btn btn-sm fa fa-search' style='cursor:pointer' onClick="ShowCatMap(event, this, <?php echo $channelid;?>, 'typeid')" title='快捷选择'></i> 
                 <?php
-                if($cfg_need_typeid2=='Y')
+                if ($cfg_need_typeid2=='Y')
                 {
                   echo "<a href='javascript:AddTypeid2();' class='btn btn-success btn-sm'>选择副栏目</a>";
                 }
@@ -212,7 +212,7 @@
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
               <td>
-                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if($cfg_arc_autokeyword=='Y') echo ' checked';?>> 自动获取，手动填写用","分开</label>
+                <label><input type="checkbox" name="autokey" onClick="ShowHide('keywords');" ; id="autokey" value="1" <?php if ($cfg_arc_autokeyword=='Y') echo ' checked';?>> 自动获取，手动填写用","分开</label>
               </td>
             </tr>
           </table>
@@ -329,8 +329,8 @@
                 $dsql->Execute();
                 while($row = $dsql->GetArray())
                 {
-                  if($row['rank']==0) $row['membername'] = "不限会员";
-                  if($row['rank'] == $softconfig['dfrank']) echo "<option value='{$row['rank']}' selected>{$row['membername']}</option>";
+                  if ($row['rank']==0) $row['membername'] = "不限会员";
+                  if ($row['rank'] == $softconfig['dfrank']) echo "<option value='{$row['rank']}' selected>{$row['membername']}</option>";
                   else echo "<option value='{$row['rank']}'>{$row['membername']}</option>";
                 }
                 ?>
@@ -360,7 +360,7 @@
         </td>
       </tr>
       <?php
-      if($softconfig['moresitedo'] == 0 && trim($softconfig['sites']) != '')
+      if ($softconfig['moresitedo'] == 0 && trim($softconfig['sites']) != '')
       {
       ?>
       <tr>
@@ -371,7 +371,7 @@
     	    foreach($sites as $site)
     	    {
     		  $site = trim($site);
-    		  if(empty($site)) continue;
+    		  if (empty($site)) continue;
     		  list($siteurl, $sitename) = explode('|', $site);
     		  $siteurl = trim($siteurl);
     		  $sitename = trim($sitename);
@@ -414,10 +414,10 @@
             <tr>
               <td width="90"> 附加选项：</td>
               <td>
-                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked';?>> 下载远程图片和资源</label>
-                <label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if($cfg_arc_dellink=='Y') echo ' checked';?>> 删除非站内链接</label>
+                <label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo ' checked';?>> 下载远程图片和资源</label>
+                <label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if ($cfg_arc_dellink=='Y') echo ' checked';?>> 删除非站内链接</label>
                 <a href="javascript:OpenMyWin('article_allowurl_edit.php');" class="btn btn-success btn-sm">设置</a>
-                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked';?>> 提取第一个图片为缩略图</label>
+                <label><input type="checkbox" name="autolitpic" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo ' checked';?>> 提取第一个图片为缩略图</label>
               </td>
             </tr>
           </table>
@@ -432,8 +432,8 @@
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type="radio" name="notpost" value="0" <?php if($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
-                <label><input type="radio" name="notpost" value="1" <?php if($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
+                <label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
+                <label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
               <td>

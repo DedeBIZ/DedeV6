@@ -50,7 +50,7 @@
 								<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
 								<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量增加栏目</a>
 								<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新栏目缓存</a>
-								<?php if(!isset($exallct)) {?>
+								<?php if (!isset($exallct)) {?>
 								<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
 								<?php } else {?>
 								<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
@@ -64,8 +64,8 @@
 				<tr>
 					<td>
 						<?php
-						if(empty($opendir)) $opendir=-1;
-						if($userChannel>0) $opendir=$userChannel;
+						if (empty($opendir)) $opendir=-1;
+						if ($userChannel>0) $opendir=$userChannel;
 						$tu = new TypeUnit();
 						$tu->ListAllType($userChannel,$opendir);
 						?>

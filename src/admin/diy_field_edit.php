@@ -87,7 +87,7 @@ if ($action == 'save') {
     }
     $oksetting = $dtp->GetResultNP();
     $oksetting = addslashes($oksetting);
-    $dsql->ExecuteNoneQuery("UPDATE #@__diyforms SET info='$oksetting' WHERE diyid='$diyid' ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__diyforms` SET info='$oksetting' WHERE diyid='$diyid' ");
     ShowMsg("成功修改一个字段的配置", "diy_edit.php?diyid={$diyid}");
     exit();
 }
@@ -103,7 +103,7 @@ else if ($action == "delete") {
         }
     }
     $oksetting = addslashes($dtp->GetResultNP());
-    $dsql->ExecuteNoneQuery("UPDATE #@__diyforms SET info='$oksetting' WHERE diyid='$diyid' ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__diyforms SET` info='$oksetting' WHERE diyid='$diyid' ");
     $dsql->ExecuteNoneQuery("ALTER TABLE `$trueTable` DROP `$fname` ");
     ShowMsg("成功删除一个字段", "diy_edit.php?diyid=$diyid");
     exit();

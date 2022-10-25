@@ -28,25 +28,25 @@
 						{dede:datalist}
 						<table class="table" cellspacing="1">
 							<?php
-							if(!empty($fields))
+							if (!empty($fields))
 							{
 								echo '<tbody>';
 								echo '<tr><td bgcolor="#eeeeee" width="20%">id</td>';
 								echo '<td bgcolor="#eeeeee"><div class="left">'.$fields['id'].'</div><div class="right"><a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank">详细</a></div></td></tr>';
 								foreach($fieldlist as $field=>$fielddata)
 								{
-									if($fields[$field]=='') continue;
-									if($fielddata[1]=='img')
+									if ($fields[$field]=='') continue;
+									if ($fielddata[1]=='img')
 									{
 										$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif'> 图片附件</a>";
 									}
-									else if($fielddata[1]=='addon')
+									else if ($fielddata[1]=='addon')
 									{
 										$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif'> 其它附件</a>";
 									} else {
-										if($fielddata[1]=='htmltext') $fields[$field] = html2text($fields[$field]);
+										if ($fielddata[1]=='htmltext') $fields[$field] = html2text($fields[$field]);
 										else $fields[$field] = dede_htmlspecialchars($fields[$field]);
-										if( strlen($fields[$field]) > 250 )
+										if ( strlen($fields[$field]) > 250 )
 										{
 											$fields[$field] = cn_substr( $fields[$field], 250).'';
 										}

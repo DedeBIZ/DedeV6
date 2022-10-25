@@ -104,7 +104,7 @@ else if ($dopost == 'save') {
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET `title`='$title',`typeid`='$typeid',`arcrank`='$arcrank',userip='$userip'{$inadd_f} WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("更新附加表 `$addtable` 时出错，请联系管理员", "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "javascript:;");
             exit();
         }
     }

@@ -35,7 +35,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
                 Header("Content-type: image/png");
                 ImagePng($image);
             } else {
-                if($saveandprint===TRUE){
+                if ($saveandprint===TRUE){
                     ImagePng($image, $filename);
                     header("Content-type: image/png");
                     ImagePng($image);

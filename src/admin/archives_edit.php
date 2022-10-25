@@ -128,7 +128,7 @@ else if ($dopost == 'save') {
     //更新数据库的SQL语句
     $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',notpost='$notpost',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库 archives 表时出错，请检查", "-1");
+        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段", "-1");
         exit();
     }
     $cts = $dsql->GetOne("SELECT addtable From `#@__channeltype` WHERE id='$channelid' ");
@@ -137,7 +137,7 @@ else if ($dopost == 'save') {
         $useip = GetIP();
         $iquery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f},redirecturl='$redirecturl',userip='$useip' WHERE aid='$id' ";
         if (!$dsql->ExecuteNoneQuery($iquery)) {
-            ShowMsg("更新附加表 `$addtable` 时出错，请检查原因", "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段", "javascript:;");
             exit();
         }
     }

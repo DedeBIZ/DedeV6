@@ -85,10 +85,10 @@
 											<input name="ddmaxwidth" type="hidden" value="<?php echo $abinfo->GetAtt('ddmaxwidth');?>">
 											<p class="cellBg">
 												<label>表现方式：</label>
-												<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if($cfg_album_style==1) echo " checked='checked'";?>> 多页多图显示（适用于QQ表情等）</label>
-												<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if($cfg_album_style==2) echo " checked='checked'";?>> 多页单图显示（幻灯）</label>
-												<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if($cfg_album_style==3) echo " checked='checked'";?>> 多行多列显示（缩略图）</label>
-												<div id="spagelist" style="<?php if($abinfo->GetAtt('value')!=2) echo 'display:none';?>" class="mTB10">每页图片数：<input name="pagpicnum" id="pagpicnum size="10 class="text" value="<?php echo $abinfo->GetAtt('pagpicnum');?>"></div>
+												<label><input type="radio" name="pagestyle" id="pagestyle1" onclick="checkMuList()" value="1" <?php if ($cfg_album_style==1) echo " checked='checked'";?>> 多页多图显示（适用于QQ表情等）</label>
+												<label><input type="radio" name="pagestyle" id="pagestyle2" onclick="checkMuList()" value="2" <?php if ($cfg_album_style==2) echo " checked='checked'";?>> 多页单图显示（幻灯）</label>
+												<label><input type="radio" name="pagestyle" id="pagestyle3" onclick="checkMuList()" value="3" <?php if ($cfg_album_style==3) echo " checked='checked'";?>> 多行多列显示（缩略图）</label>
+												<div id="spagelist" style="<?php if ($abinfo->GetAtt('value')!=2) echo 'display:none';?>" class="mTB10">每页图片数：<input name="pagpicnum" id="pagpicnum size="10 class="text" value="<?php echo $abinfo->GetAtt('pagpicnum');?>"></div>
 											</p>
 											<p>
 												<label>手工上传</label>
@@ -99,10 +99,10 @@
 											<div id="uploadfield"></div>
 											<?php
 											$j = 1;
-											if(is_array($dtp->CTags))
+											if (is_array($dtp->CTags))
 											{
 												foreach($dtp->CTags as $ctag){
-													if($ctag->GetName()=="img"){
+													if ($ctag->GetName()=="img"){
 											?>
 											<table width="98%" align="center">
 												<tr>

@@ -2,7 +2,7 @@
 function SpUpdateStat()
 {
     global $cfg_version;
-    if(empty($cfg_version))
+    if (empty($cfg_version))
     {
         $cfg_version = 'notknow';
     }

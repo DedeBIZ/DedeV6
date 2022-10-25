@@ -155,33 +155,10 @@ else if ($dopost == 'edituser') {
         ShowMsg("对不起，为安全起见，不支持直接把前台会员转为管理的操作", "-1");
         exit();
     }
-    $query = "UPDATE `#@__member` SET
-            email = '$email',
-            uname = '$uname',
-            sex = '$sex',
-            matt = '$matt',
-            money = '$money',
-            scores = '$scores',
-            `rank` = '$rank',
-            spacesta='$spacesta',
-            uptime='$uptime',
-            exptime='$exptime'
-            $pwdsql
-           WHERE mid='$id' AND matt<>10 ";
+    $query = "UPDATE `#@__member` SET email='$email',uname='$uname',sex='$sex',matt='$matt',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' AND matt<>10 ";
     $rs = $dsql->ExecuteNoneQuery2($query);
     if ($rs == 0) {
-        $query = "UPDATE `#@__member` SET
-            email = '$email',
-            uname = '$uname',
-            sex = '$sex',
-            money = '$money',
-            scores = '$scores',
-            `rank` = '$rank',
-            spacesta='$spacesta',
-            uptime='$uptime',
-            exptime='$exptime'
-            $pwdsql
-           WHERE mid='$id' ";
+        $query = "UPDATE `#@__member` SET email='$email',uname='$uname',sex='$sex',money='$money',scores='$scores',`rank`='$rank',spacesta='$spacesta',uptime='$uptime',exptime='$exptime'$pwdsql WHERE mid='$id' ";
         $rs = $dsql->ExecuteNoneQuery2($query);
     }
     ShowMsg('成功修改会员资料', 'member_view.php?id='.$id);

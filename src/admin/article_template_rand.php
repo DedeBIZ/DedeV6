@@ -47,7 +47,7 @@ else if ($dopost == 'makeold') {
     }
     for ($i = 0; $i < 10; $i++) {
         $temp = $cfg_tamplate_arr[mt_rand(0, $totalTmp)];
-        $dsql->ExecuteNoneQuery("UPDATE `#@__addonarticle` set templet='$temp' where RIGHT(aid, 1)='$i' ");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__addonarticle` SET templet='$temp' where RIGHT(aid, 1)='$i' ");
     }
     AjaxHead();
     echo "全部随机操作成功";
@@ -56,7 +56,7 @@ else if ($dopost == 'makeold') {
 //清除全部的指定模板
 else if ($dopost == 'clearold') {
     CheckCSRF();
-    $dsql->ExecuteNoneQuery("UPDATE `#@__addonarticle` set templet='' ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__addonarticle` SET templet='' ");
     $dsql->ExecuteNoneQuery(" OPTIMIZE TABLE `#@__addonarticle` ");
     AjaxHead();
     echo "全部清除操作成功";

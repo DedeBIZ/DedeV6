@@ -13,13 +13,13 @@
   <script>
   function checkSubmit()
   {
-  	if(document.form1.title.value=="")
+  	if (document.form1.title.value=="")
   	{
   		ShowMsg("页面名称不能为空");
   		document.form1.title.focus();
   		return false;
   	}
-  	if(document.form1.nfilename.value=="")
+  	if (document.form1.nfilename.value=="")
   	{
   		ShowMsg("文件名不能为空");
   		document.form1.nfilename.focus();
@@ -62,7 +62,7 @@
               	echo "<option value='{$row['likeid']}' selected>{$row['likeid']}</option>";
               	while($arr = $dsql->GetArray('s'))
               	{
-              		if($arr['likeid']!=$row['likeid']) echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+              		if ($arr['likeid']!=$row['likeid']) echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
               	}
               	echo "</select>";
               ?>
@@ -82,8 +82,8 @@
           <tr> 
             <td>是否编译内容：</td>
             <td>
-            	<?php if(!DEDEBIZ_SAFE_MODE) {?> <label><input type="radio" name="ismake" value="1"<?php if($row['ismake']==1) echo "checked";?>> 含模板标记，要编译</label> <?php }?>
-              <label><input type="radio" name="ismake" value="0"<?php if($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo "checked";?>> 不含模板标记，不需要编译</label>
+            	<?php if (!DEDEBIZ_SAFE_MODE) {?> <label><input type="radio" name="ismake" value="1"<?php if ($row['ismake']==1) echo "checked";?>> 含模板标记，要编译</label> <?php }?>
+              <label><input type="radio" name="ismake" value="0"<?php if ($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo "checked";?>> 不含模板标记，不需要编译</label>
             </td>
           </tr>
           <tr> 

@@ -52,12 +52,12 @@ if ($action == 'post') {
                         ${$fieldinfo[0]} = addslashes(${$fieldinfo[0]});
                     } 
                     //获取地址，表单添加text数据类型ip字段型后模板用<input type="hidden" name="ip" value="">
-                    if($fieldinfo[0] == 'ip')
+                    if ($fieldinfo[0] == 'ip')
                     {
                         ${$fieldinfo[0]}=GetIP();
                     }
                     //获取时间，表单添加text数据类型sj字段型后模板用<input type="hidden" name="sj" value="">
-                    if($fieldinfo[0] == 'sj')
+                    if ($fieldinfo[0] == 'sj')
                     {
                         ${$fieldinfo[0]}=date("Y-m-d H:i");
                     } else {

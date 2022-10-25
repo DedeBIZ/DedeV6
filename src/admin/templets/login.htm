@@ -35,7 +35,7 @@
 				<div class="login-area shadow-sm">
 					<h2 class="mb-4 text-center">后台登录</h2>
 					<form name="form1" method="post" action="login.php">
-						<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage);?>">
+						<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
 						<input type="hidden" name="dopost" value="login">
 						<input type="hidden" name="adminstyle" value="newDedeBIZ">
 						<div class="form-group">

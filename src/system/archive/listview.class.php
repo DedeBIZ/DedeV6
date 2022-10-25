@@ -130,11 +130,11 @@ class ListView
     function CountRecord()
     {
         global $cfg_list_son,$cfg_need_typeid2,$cfg_cross_sectypeid;
-        if(empty($cfg_need_typeid2)) $cfg_need_typeid2 = 'N';
+        if (empty($cfg_need_typeid2)) $cfg_need_typeid2 = 'N';
         //获得附加表的相关信息
         $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
         $filtersql = '';
-        if($addtable!="")
+        if ($addtable!="")
         {
             $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
             $addField = '';
@@ -143,13 +143,13 @@ class ListView
             {
                 $nfields[$v] = $k;
             }
-            if(is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
+            if (is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
             {
                 foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
                 {
-                    if(isset($nfields[$k]))
+                    if (isset($nfields[$k]))
                     {
-                        if(!empty($arr['rename'])) {
+                        if (!empty($arr['rename'])) {
                             $addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
                         }
                         else {
@@ -218,7 +218,7 @@ class ListView
                 }
             }
         }
-        if($this->TotalResult==-1)
+        if ($this->TotalResult==-1)
         {
             $cquery = "SELECT COUNT(*) AS dd FROM `#@__arctiny` arc $addJoin WHERE ".$this->addSql.$filtersql;
             $row = $this->dsql->GetOne($cquery);
@@ -635,7 +635,7 @@ class ListView
         $filtersql = '';
         //获得附加表的相关信息
         $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
-        if($addtable!="")
+        if ($addtable!="")
         {
             $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
             $addField = '';
@@ -644,13 +644,13 @@ class ListView
             {
                 $nfields[$v] = $k;
             }
-            if(is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
+            if (is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
             {
                 foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
                 {
-                    if(isset($nfields[$k]))
+                    if (isset($nfields[$k]))
                     {
-                        if(!empty($arr['rename'])) {
+                        if (!empty($arr['rename'])) {
                             $addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
                         }
                         else {

@@ -75,9 +75,9 @@
                 $dsql->Execute();
                 while($trow = $dsql->GetObject())
                 {
-                  if($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
+                  if ($trow->att=='j') $jumpclick = " onclick='ShowUrlTr()'";
                   else $jumpclick = '';
-                  if(preg_match("#".$trow->att."#", $arcRow['flag']))
+                  if (preg_match("#".$trow->att."#", $arcRow['flag']))
                   echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}' {$jumpclick} checked='checked'> {$trow->attname}[{$trow->att}]</label> ";
                   else
                   echo "<label><input class='np' type='checkbox' name='flags[]' id='flags{$trow->att}' value='{$trow->att}'{$jumpclick} /> {$trow->attname}[{$trow->att}]</label> ";
@@ -110,7 +110,7 @@
           </table>
         </td>
       </tr>
-      <tr id="pictable" style='<?php if($cInfos['needpic']==0) echo 'display:none';?>'>
+      <tr id="pictable" style='<?php if ($cInfos['needpic']==0) echo 'display:none';?>'>
         <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
@@ -122,7 +122,7 @@
                 <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
                 <button id="btnClearAll" type="button" class="btn btn-success btn-smete">清空</button>
               </td>
-              <td align="center"><img src="<?php if($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
+              <td align="center"><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
             </tr>
           </table>
         </td>
@@ -146,7 +146,7 @@
           <script>InitPage();</script>
         </td>
       </tr>
-      <?php if($cInfos['dfcid']>0)
+      <?php if ($cInfos['dfcid']>0)
       {
       	echo "<input type='hidden' name='typeid' value='{$cInfos['dfcid']}'>";
       	echo "<input type='hidden' name='typeid2' value=''>";
@@ -161,7 +161,7 @@
                 <?php
                 $typeOptions = GetOptionList($arcRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
                 echo "<select name='typeid' id='typeid' style='width:160px'>";
-                if($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
+                if ($arcRow["typeid"]=="0") echo "<option value='0' selected>请选择栏目</option>";
                 echo $typeOptions;
                 echo "</select>";
 			          ?>
@@ -173,7 +173,7 @@
           </table>
         </td>
       </tr>
-      <?php if($cfg_need_typeid2=='Y') {?>
+      <?php if ($cfg_need_typeid2=='Y') {?>
       <tr>
         <td class="bline">
           <table width="900" cellspacing="0" cellpadding="0">
@@ -221,9 +221,9 @@
             <tr>
               <td width="90"> 附加选项：</td>
               <td>
-                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if($cfg_rm_remote=='Y') echo ' checked="1" ';?>>
+                <label><input name="remote" type="checkbox" class="np" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo ' checked="1" ';?>>
                 下载远程图片和资源</label>
-                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if($cfg_arc_autopic=='Y') echo ' checked="1" ';?>>
+                <label><input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1" <?php if ($cfg_arc_autopic=='Y') echo ' checked="1" ';?>>
                 提取第一个图片为缩略图</label>
               </td>
             </tr>
@@ -236,13 +236,13 @@
             <tr>
               <td width="90" width="260"> 评论选项：</td>
               <td width="260">
-                <label><input type='radio' name='notpost' class='np' value='0' <?php if($arcRow['notpost']==0) echo " checked='1' ";?>> 允许评论</label>
-                <label><input type='radio' name='notpost' class='np' value='1' <?php if($arcRow['notpost']==1) echo " checked='1' ";?>> 禁止评论</label>
+                <label><input type='radio' name='notpost' class='np' value='0' <?php if ($arcRow['notpost']==0) echo " checked='1' ";?>> 允许评论</label>
+                <label><input type='radio' name='notpost' class='np' value='1' <?php if ($arcRow['notpost']==1) echo " checked='1' ";?>> 禁止评论</label>
               </td>
               <td width="90">发布选项：</td>
-              <td><label><input name="ishtml" type="radio" class="np" value="1" <?php if($arcRow["ismake"]!=-1) echo " checked";?>>
+              <td><label><input name="ishtml" type="radio" class="np" value="1" <?php if ($arcRow["ismake"]!=-1) echo " checked";?>>
                 生成网页</label>
-                <label><input type="radio" name="ishtml" class="np" value="0" <?php if($arcRow["ismake"]==-1) echo " checked";?>>
+                <label><input type="radio" name="ishtml" class="np" value="0" <?php if ($arcRow["ismake"]==-1) echo " checked";?>>
                 仅动态浏览</label>
               </td>
             </tr>
@@ -258,7 +258,7 @@
                 <?php
                 $subday = SubDay($arcRow["sortrank"],$arcRow["pubdate"]);
                 echo "<option value='0'>正常排序</option>";
-                if($subday>0) echo "<option value='$subday' selected>置顶 $subday 天</option>";
+                if ($subday>0) echo "<option value='$subday' selected>置顶 $subday 天</option>";
                 ?>
                   <option value="7">置顶一周</option>
                   <option value="30">置顶一个月</option>

@@ -53,8 +53,8 @@ if (empty($dopost)) {
         if (is_array($dtp->CTags)) {
             foreach ($dtp->CTags as $ctag) {
                 if ($ctag->GetName() == 'link') {
-                    $nForm .= "软件地址".$newRowStart."：<input class='form-control' type='text' name='softurl".$newRowStart."'  value='".trim($ctag->GetInnerText())."' />
-            服务器名称：<input class='form-control' type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."'  />
+                    $nForm .= "软件地址".$newRowStart."：<input class='form-control' type='text' name='softurl".$newRowStart."' value='".trim($ctag->GetInnerText())."' />
+            服务器名称：<input class='form-control' type='text' name='servermsg".$newRowStart."' value='".$ctag->GetAtt("text")."' />
             <br>";
                     $newRowStart++;
                 }
@@ -132,7 +132,7 @@ else if ($dopost == 'save') {
     //修改主档案表
     $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("更新数据库 archives 表时出错，请检查", "-1");
+        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员", "-1");
         exit();
     }
     //软件链接列表
@@ -158,9 +158,9 @@ else if ($dopost == 'save') {
     $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
     $addtable = trim($cts['addtable']);
     if ($addtable != '') {
-        $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl='$officialUrl',officialDemo='$officialDemo',softsize='$softsize',softlinks='$urls',userip='$userip',needmoney='$needmoney',introduce='$body'{$inadd_f} WHERE aid='$aid'; ";
+        $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl='$officialUrl',officialDemo='$officialDemo',softsize='$softsize',softlinks='$urls',userip='$userip',needmoney='$needmoney',introduce='$body' {$inadd_f} WHERE aid='$aid'; ";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
-            ShowMsg("更新数据库附加表时出错，请检查原因", "-1");
+            ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "-1");
             exit();
         }
     }

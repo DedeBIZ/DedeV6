@@ -85,13 +85,13 @@ else if ($dopost == 'save') {
              flag='$flag'
      WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("把数据保存到数据库主表时出错，请联系管理员".$dsql->GetError(), "-1");
+        ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();
     }
     if ($addtable != '') {
         $upQuery = "UPDATE `$addtable` SET typeid='$typeid',body='$body'{$inadd_f},userip='$userip' WHERE aid='$aid' ";
         if (!$dsql->ExecuteNoneQuery($upQuery)) {
-            ShowMsg("更新附加表 `$addtable` 时出错，请联系管理员", "javascript:;");
+            ShowMsg("数据保存到数据库附加表时出错，请联系管理员", "javascript:;");
             exit();
         }
     }

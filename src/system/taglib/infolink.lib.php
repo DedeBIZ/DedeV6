@@ -78,7 +78,7 @@ function lib_infolink(&$ctag, &$refObj)
                     $fields['nativeplace'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$eid}&infotype={$infotype}'>{$em}</a>\r\n";
                 }
             }
-        } else if(!is_str_float($nativeplace)) {
+        } else if (!is_str_float($nativeplace)) {
             //2级分类
             $fields['nativeplace'] .= "<span> {$em_nativeplaces[$sontype]}</span>";
             $i = 0;
@@ -96,7 +96,7 @@ function lib_infolink(&$ctag, &$refObj)
                     }
                 }
             }
-            if($i > 0) $fields['nativeplace'] .= " &gt; ";
+            if ($i > 0) $fields['nativeplace'] .= " &gt; ";
             $fields['nativeplace'] .= $ff;
         } else {
             //3级分类
@@ -141,7 +141,7 @@ function lib_infolink(&$ctag, &$refObj)
                     $fields['infotype'] .= " <a href='{$baseurl}apps/list.php?channelid={$channelid}&tid={$typeid}&nativeplace={$nativeplace}&infotype={$eid}'>{$em}</a>\r\n";
                 }
             }
-        } else if(!is_str_float($infotype)) {
+        } else if (!is_str_float($infotype)) {
             //2级分类
             $fields['infotype'] .= "<span> {$em_infotypes[$sontype]}</span>";
             $i = 0;
@@ -159,7 +159,7 @@ function lib_infolink(&$ctag, &$refObj)
                     }
                 }
             }
-            if($i > 0) $fields['infotype'] .= " &gt; ";
+            if ($i > 0) $fields['infotype'] .= " &gt; ";
             $fields['infotype'] .= $ff;
         } else {
             //3级分类
