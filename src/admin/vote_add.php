@@ -8,11 +8,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeVote;
-use DedeBIZ\Login\UserLogin;
 require(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/dedevote.class.php");
 require_once(DEDEINC."/helpers/filter.helper.php");
-UserLogin::CheckPurview('plus_投票模块');
+CheckPurview('plus_投票模块');
 if (empty($dopost)) $dopost = "";
 if (empty($isarc))  $isarc = 0;
 if ($dopost == "save" && $isarc == 0) {
@@ -27,9 +26,9 @@ if ($dopost == "save" && $isarc == 0) {
             $voteitems .= "<v:note id=\\'$j\\' count=\\'0\\'>".${"voteitem".$i}."</v:note>\r\n";
         }
     }
-    $inQuery = "INSERT INTO `#@__vote`(votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable');";
+    $inQuery = "INSERT INTO `#@__vote`(votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg(Lang("vote_add_err_data"), "-1");
+        ShowMsg("增加投票失败，请检查数据是否非法", "-1");
         exit();
     }
     $aid = $dsql->GetLastID();
@@ -39,7 +38,7 @@ if ($dopost == "save" && $isarc == 0) {
     $vote_content = 'document.write("'.$vote_content.'");';
     $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
     file_put_contents($vote_file, $vote_content);
-    ShowMsg(Lang("vote_add_success_one"), "vote_main.php");
+    ShowMsg("成功增加一组投票", "vote_main.php");
     exit();
 } else if ($dopost == "save" && $isarc == 1) {
     $starttime = GetMkTime($starttime);
@@ -52,9 +51,9 @@ if ($dopost == "save" && $isarc == 0) {
             $voteitems .= "<v:note id=\\'$j\\' count=\\'0\\'>".${"voteitem".$i}."</v:note>\r\n";
         }
     }
-    $inQuery = "INSERT INTO `#@__vote`(votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable');";
+    $inQuery = "INSERT INTO `#@__vote`(votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg(Lang("vote_add_err_data"), "-1");
+        ShowMsg("增加投票失败，请检查数据是否非法", "-1");
         exit();
     }
     $aid = $dsql->GetLastID();
@@ -65,7 +64,7 @@ if ($dopost == "save" && $isarc == 0) {
 
     $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
     file_put_contents($vote_file, $vote_content);
-    ShowMsg(Lang("vote_add_success_one"), "vote_main.php?issel=1&aid=".$aid);
+    ShowMsg("成功增加一组投票", "vote_main.php?issel=1&aid=".$aid);
     exit();
 }
 $startDay = time();

@@ -8,9 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_Group');
+CheckPurview('sys_Group');
 if (empty($dopost)) $dopost = "";
 include DedeInclude('templets/sys_group.htm');
 ?>

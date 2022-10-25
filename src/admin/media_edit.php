@@ -8,15 +8,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 //权限检查
-UserLogin::CheckPurview('sys_Upload,sys_MyUpload');
+CheckPurview('sys_Upload,sys_MyUpload');
 if (empty($dopost)) $dopost = "";
 $backurl = isset($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : "javascript:history.go(-1);";
-//删除附件
+/*---------------------------
+function __del_file() //删除附件
+-----------------------------*/
 if ($dopost == 'del') {
-    UserLogin::CheckPurview('sys_DelUpload');
+    CheckPurview('sys_DelUpload');
     if (empty($ids)) {
         $ids = "";
     }
@@ -30,7 +31,7 @@ if ($dopost == 'del') {
             $rs = @unlink($truefile);
         }
         if ($rs == 1) {
-            $msg = Lang("media_success_delete");
+            $msg = "成功删除一个附件";
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE aid='".$aid."'");
         }
         ShowMsg($msg, $backurl);
@@ -59,18 +60,20 @@ if ($dopost == 'del') {
                 $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE aid='".$myrow['aid']."'");
             }
         }
-        ShowMsg(Lang('media_success_select_delete'), $backurl);
+        ShowMsg('成功删除选定的文件', $backurl);
         exit();
     }
 }
-//保存修改
+/*--------------------------------
+function __save_edit() //保存修改
+-----------------------------------*/
 else if ($dopost == 'save') {
     if ($aid == "") exit();
     CheckCSRF();
     //检查是否有修改权限
     $myrow = $dsql->GetOne("SELECT * FROM `#@__uploads` WHERE aid='".$aid."'");
-    if ($myrow['mid'] != $cUserLogin->getUserID()) {
-        UserLogin::CheckPurview('sys_Upload');
+    if ($myrow['mid'] != $cuserLogin->getUserID()) {
+        CheckPurview('sys_Upload');
     }
     //检测文件类型
     $addquery = "";
@@ -78,27 +81,27 @@ else if ($dopost == 'save') {
         if ($mediatype == 1) {
             $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp");
             if (!in_array($upfile_type, $sparr)) {
-                ShowMsg(Lang("media_not_image"), "javascript:history.go(-1);");
+                ShowMsg("您上传的不是图片类型的文件", "javascript:history.go(-1);");
                 exit();
             }
         } else if ($mediatype == 2) {
             $sparr = array("application/x-shockwave-flash");
             if (!in_array($upfile_type, $sparr)) {
-                ShowMsg(Lang("media_not_flash"), "javascript:history.go(-1);");
+                ShowMsg("您上传的不是Flash类型的文件", "javascript:history.go(-1);");
                 exit();
             }
         } else if ($mediatype == 3) {
             if (!preg_match('#audio|media|video#i', $upfile_type)) {
-                ShowMsg(Lang("media_not_video_audio"), "javascript:history.go(-1);");
+                ShowMsg("您上传的为不正确类型的影音文件", "javascript:history.go(-1);");
                 exit();
             }
             if (!preg_match("#\.".$cfg_mediatype."#", $upfile_name)) {
-                ShowMsg(Lang("media_not_allow_ext"), "javascript:history.go(-1);");
+                ShowMsg("您上传的影音文件扩展名无法被识别，请修改系统配置的参数", "javascript:history.go(-1);");
                 exit();
             }
         } else {
             if (!preg_match("#\.".$cfg_softtype."#", $upfile_name)) {
-                ShowMsg(Lang("media_not_allow_ext_soft"), "javascript:history.go(-1);");
+                ShowMsg("您上传的附件扩展名无法被识别，请修改系统配置的参数", "javascript:history.go(-1);");
                 exit();
             }
         }
@@ -114,16 +117,16 @@ else if ($dopost == 'save') {
         }
         $mime = get_mime_type($upfile);
         if (preg_match("#^unknow#", $mime)) {
-            ShowMsg(Lang("media_no_fileinfo"), -1);
+            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
             exit;
         }
         if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
-            ShowMsg(Lang("media_only_media"), -1);
+            ShowMsg("仅支持媒体文件及应用程序上传", -1);
             exit;
         }
         @move_uploaded_file($upfile, $fullfilename);
         if ($mediatype == 1) {
-            helper('image');
+            require_once(DEDEINC."/image.func.php");
             if (in_array($upfile_type, $cfg_photo_typenames)) {
                 WaterImg($fullfilename, 'up');
             }
@@ -140,24 +143,24 @@ else if ($dopost == 'save') {
             $imgh = $sizes[1];
         }
         if ($imgw > 0) {
-            $addquery = " ,width='$imgw',height='$imgh',filesize='$filesize' ";
+            $addquery = ",width='$imgw',height='$imgh',filesize='$filesize' ";
         } else {
-            $addquery = " ,filesize='$filesize' ";
+            $addquery = ",filesize='$filesize' ";
         }
     } else {
         $fileurl = $filename;
     }
     //写入数据库
-    $query = " UPDATE `#@__uploads` SET title='$title',mediatype='$mediatype',playtime='$playtime'";
-    $query .= "$addquery WHERE aid='$aid'";
+    $query = "UPDATE `#@__uploads` SET title='$title',mediatype='$mediatype',playtime='$playtime'";
+    $query .= "$addquery WHERE aid='$aid' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg(Lang('media_success_edit'), 'media_edit.php?aid='.$aid);
+    ShowMsg('成功修改一则附件数据', 'media_edit.php?aid='.$aid);
     exit();
 }
 //读取档案信息
 $myrow = $dsql->GetOne("SELECT * FROM `#@__uploads` WHERE aid='".$aid."'");
 if (!is_array($myrow)) {
-    ShowMsg(Lang('media_err_nofile'), 'javascript:;');
+    ShowMsg('错误，找不到此编号的档案', 'javascript:;');
     exit();
 }
 include DedeInclude('templets/media_edit.htm');

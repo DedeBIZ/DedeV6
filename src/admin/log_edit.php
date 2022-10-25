@@ -8,17 +8,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_Log');
+CheckPurview('sys_Log');
 if (empty($dopost)) {
-    ShowMsg(Lang("log_list_err_noparms"), "javascript:;");
+    ShowMsg("您没指定任何参数", "javascript:;");
     exit();
 }
 //清空所有日志
 if ($dopost == "clear") {
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__log`");
-    ShowMsg(Lang("log_list_success_clearall"), "log_list.php");
+    $dsql->ExecuteNoneQuery("DELETE FROM #@__log");
+    ShowMsg("成功清空所有日志", "log_list.php");
     exit();
 } else if ($dopost == "del") {
     $bkurl = isset($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : "log_list.php";
@@ -32,11 +31,11 @@ if ($dopost == "clear") {
         }
     }
     if ($dquery != "") $dquery = " where ".$dquery;
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__log` $dquery");
-    ShowMsg(Lang("content_delete_success"), $bkurl);
+    $dsql->ExecuteNoneQuery("DELETE FROM #@__log $dquery");
+    ShowMsg("成功删除指定的日志", $bkurl);
     exit();
 } else {
-    ShowMsg(Lang("log_list_err_nomethod"), "javascript:;");
+    ShowMsg("无法识别您的请求", "javascript:;");
     exit();
 }
 ?>

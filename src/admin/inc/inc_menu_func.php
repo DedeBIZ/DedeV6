@@ -2,17 +2,16 @@
 /**
  * 管理菜单函数
  *
- * @version        $Id: inc_menu_func.php 2022-07-01 tianya $
+ * @version        $Id: inc_menu_func.php 1 10:32 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
-use DedeBIZ\Template\DedeTagParse;
 require_once(dirname(__FILE__)."/../config.php");
-$headTemplet = '<li><div class="link"><i class="fa ~icon~"></i>~channelname~<i class="fa fa-angle-down"></i></div><ul class="submenu">';
-$footTemplet = "</ul></li>";
+require_once(DEDEINC."/dedetag.class.php");
+$headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\",this)'><b><i class='fa fa-angle-down'></i>~channelname~</b></dt><dd style='display:~display~' class='sitem' id='items~cc~'><ul class='sitemu'>";
+$footTemplet = "</ul></dd></dl>";
 $itemTemplet = "<li>~link~</li>";
 function GetMenus($userrank, $topos = 'main')
 {
@@ -31,9 +30,11 @@ function GetMenus($userrank, $topos = 'main')
     $dtp2->SetNameSpace('m', '<', '>');
     $m = 0;
     foreach ($dtp->CTags as $i => $ctag) {
-        if ($ctag->GetName() == 'top' && ($ctag->GetAtt('rank') == '' || UserLogin::TestPurview($ctag->GetAtt('rank')))) {
+        if ($ctag->GetName() == 'top' && ($ctag->GetAtt('rank') == '' || TestPurview($ctag->GetAtt('rank')))) {
             if ($openitem != 999 && !preg_match("#".$openitem.'_'."#", $ctag->GetAtt('item')) && $openitem != 100) continue;
-            $htmp = str_replace("~channelname~", Lang($ctag->GetAtt("name")), $headTemplet);
+            $m++;
+            echo "<!--".($m + 1)."-->";
+            $htmp = str_replace("~channelname~", $ctag->GetAtt("name"), $headTemplet);
             if (empty($openitem) || $openitem == 100) {
                 if ($ctag->GetAtt('notshowall') == '1') continue;
                 $htmp = str_replace('~display~', $ctag->GetAtt('display'), $htmp);
@@ -43,21 +44,16 @@ function GetMenus($userrank, $topos = 'main')
                 else
                     $htmp = str_replace('~display~', 'none', $htmp);
             }
-            $icon = 'fa-plug';
-            if ($ctag->GetAtt('icon') != '') {
-                $icon = $ctag->GetAtt('icon');
-            }
-            $htmp = str_replace('~icon~', $icon, $htmp);
             $htmp = str_replace('~cc~', $m.'_'.$openitem, $htmp);
             echo $htmp;
             $dtp2->LoadSource($ctag->InnerText);
             foreach ($dtp2->CTags as $j => $ctag2) {
                 $ischannel = trim($ctag2->GetAtt('ischannel'));
-                if ($ctag2->GetName() == 'item' && ($ctag2->GetAtt('rank') == '' || UserLogin::TestPurview($ctag2->GetAtt('rank')))) {
-                    $link = "<a href='".$ctag2->GetAtt('link')."' target='".$ctag2->GetAtt('target')."'>".Lang($ctag2->GetAtt('name'))."</a>";
+                if ($ctag2->GetName() == 'item' && ($ctag2->GetAtt('rank') == '' || TestPurview($ctag2->GetAtt('rank')))) {
+                    $link = "<a href='".$ctag2->GetAtt('link')."' target='".$ctag2->GetAtt('target')."'>".$ctag2->GetAtt('name')."</a>";
                     if ($ischannel == '1') {
                         if ($ctag2->GetAtt('addalt') != '') {
-                            $addalt = Lang($ctag2->GetAtt('addalt'));
+                            $addalt = $ctag2->GetAtt('addalt');
                         } else {
                             $addalt = '录入新内容';
                         }
@@ -66,7 +62,10 @@ function GetMenus($userrank, $topos = 'main')
                         } else {
                             $addico = 'fa-plus-circle';
                         }
-                        $link = "$link<a href='".$ctag2->GetAtt('linkadd')."' class='submenu-right' target='".$ctag2->GetAtt('target')."'><span class='fa $addico' title='$addalt'></span></a>";
+                        $link = "<div class='items'>
+                        <div class='fllct'>$link</div>
+                        <div class='flrct'><a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><i class='fa $addico' title='$addalt'></i></a></div>
+                        </div>";
                     } else {
                         $link .= "";
                     }
@@ -75,6 +74,7 @@ function GetMenus($userrank, $topos = 'main')
                 }
             }
             echo $footTemplet;
+            echo "<!--".($m + 1)."-->";
         }
     }
 }//End Function

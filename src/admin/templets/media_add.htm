@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang("media_upload_new");?></title>
+  <title>上传新文件</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
@@ -25,7 +24,7 @@
   <script>
     function CheckSubmit() {
       if (document.form1.title.value == "") {
-        ShowMsg("<?php echo Lang('err_title_isempty');?>");
+        ShowMsg("请设置标题");
         document.form1.title.focus();
         return false;
       }
@@ -52,14 +51,14 @@
       <td bgcolor="#f8f8f8">
         <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
           <tr>
-            <td width="30%"><?php echo Lang("media_upload_new");?></td>
-            <td width="70%" align="right"><a href="media_main.php" class="btn btn-success btn-sm"><?php echo Lang("media_main");?></a></td>
+            <td width="30%">上传新文件</td>
+            <td width="70%" align="right"><a href="media_main.php" class="btn btn-success btn-sm">附件媒体数据管理</a></td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td><i class="fa fa-question-circle" title="<?php echo Lang("help");?>"></i> <?php echo Lang("media_upload_tip");?></td>
+      <td><i class="fa fa-question-circle" title="帮助"></i> 提示：图片类型仅支持jpg、png、gif、wbmp格式，flash为.swf格式，视音频和附件为限定扩展名的类型（可在系统参数中修改）</td>
     </tr>
     <tr>
       <td align="center">
@@ -68,36 +67,36 @@
             <input type="hidden" name="dopost" value="upload">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <tr>
-              <td width="260" class="bline"><?php echo Lang("media_type");?>：</td>
+              <td width="260" class="bline">媒体类型：</td>
               <td class="bline">
-                <label><input type="radio" name="mediatype" value="1" checked="1"> <?php echo Lang("media_type_1");?></label>
-                <label><input type="radio" name="mediatype" value="2"> <?php echo Lang("media_type_2");?></label>
-                <label><input type="radio" name="mediatype" value="3"> <?php echo Lang("media_type_3");?></label>
-                <label><input type="radio" name="mediatype" value="4"> <?php echo Lang("media_type_4");?></label>
+                <label><input type="radio" name="mediatype" value="1" checked="1"> 图片</label>
+                <label><input type="radio" name="mediatype" value="2"> FLASH</label>
+                <label><input type="radio" name="mediatype" value="3"> 视频音频</label>
+                <label><input type="radio" name="mediatype" value="4"> 附件其它</label>
               </td>
             </tr>
             <tr>
-              <td class="bline"><?php echo Lang("title");?>：</td>
+              <td class="bline">说明标题：</td>
               <td class="bline"><input type="text" name="title" id="title" size="30" style="width:300px"></td>
             </tr>
             <tr>
-              <td class="bline"><?php echo Lang("description");?>：</td>
-              <td class="bline" colspan="2"><?php echo Lang('media_description_tip');?></td>
+              <td class="bline">参数说明：</td>
+              <td class="bline" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
             </tr>
             <tr>
-              <td class="bline"><?php echo Lang('media_add_parms');?>：</td>
+              <td class="bline">附加参数：</td>
               <td class="bline">
-                <?php echo Lang('width');?>：<input type="text" name="mediawidth" id="mediawidth" style="width:60px">（<?php echo Lang('pixel');?>）
-                <?php echo Lang('height');?>：<input type="text" name="mediaheight" id="mediaheight" style="width:60px">（<?php echo Lang('pixel');?>）
-                <?php echo Lang('play_time');?>：<input type="text" name="playtime" id="mediawidth3" style="width:60px">（<?php echo Lang('minute');?>）
+                宽：<input type="text" name="mediawidth" id="mediawidth" style="width:60px">（像素）
+                高：<input type="text" name="mediaheight" id="mediaheight" style="width:60px">（像素）
+                播放时间：<input type="text" name="playtime" id="mediawidth3" style="width:60px">（分钟）
               </td>
             </tr>
             <tr>
-              <td class="bline"><?php echo Lang('media_upload');?>：</td>
+              <td class="bline">上传文件：</td>
               <td class="bline">
-                <?php echo Lang('quantity');?>：<input type="text" name="picnum" id="picnum" value="5" style="width:60px">
-                <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="MakeUpload()"><?php echo Lang('add');?></button>
-                <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="ResetUpload()"><?php echo Lang('reset');?></button>
+                数量：<input type="text" name="picnum" id="picnum" value="5" style="width:60px">
+                <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="MakeUpload()">增加</button>
+                <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="ResetUpload()">恢复</button>
               </td>
             </tr>
             <tr>
@@ -112,7 +111,13 @@
               </td>
             </tr>
             <tr>
-              <td align="center" colspan="2" class="py-2"><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></td>
+              <td colspan="2">
+                <table width="100%" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
+                  </tr>
+                </table>
+              </td>
             </tr>
           </form>
         </table>

@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员短消息，发布所有消息
+ * 会员短消息,发布所有消息
  *
  * @version        $Id: member_pmall.php 1 11:24 2010年7月20日Z tianya $
  * @package        DedeBIZ.Administrator
@@ -8,9 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('member_Pm');
+CheckPurview('member_Pm');
 if (!isset($action)) $action = '';
 if ($action == "post") {
     $floginid = 'admin';
@@ -22,14 +21,14 @@ if ($action == "post") {
     $subject = cn_substrR(HtmlReplace($subject), 70);
     $message = cn_substrR(HtmlReplace($message), 1000);
     if (!isset($subject) || empty($subject)) {
-        ShowMsg(Lang("member_post_title_isempty"), '-1');
+        ShowMsg('短信标题不能为空!', '-1');
         exit();
     } else if (!isset($message) || empty($message)) {
-        ShowMsg(Lang('member_post_content_isempty'), '-1');
+        ShowMsg('请填写短信内容!', '-1');
         exit();
     }
-    $rs = $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_pms`(floginid,fromid,toid,tologinid,folder,hasview,subject,sendtime,writetime,message,isadmin) VALUES ('$floginid','$fromid','$toid','$tologinid','outbox','0','$subject','$sendtime','$writetime','$message','1');");
-    ShowMsg(Lang('member_post_success'), '-1');
+    $rs = $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_pms` (floginid,fromid,toid,tologinid,folder,hasview,subject,sendtime,writetime,message,isadmin) VALUES ('$floginid','$fromid','$toid','$tologinid','outbox','0','$subject','$sendtime','$writetime','$message','1');");
+    ShowMsg('短信已成功发送', '-1');
     exit();
 }
 require_once(DEDEADMIN."/templets/member_pmall.htm");

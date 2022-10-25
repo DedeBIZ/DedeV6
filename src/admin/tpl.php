@@ -8,13 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeWin;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
-UserLogin::CheckPurview('plus_文件管理器');
+CheckPurview('plus_文件管理器');
 $action = isset($action) ? trim($action) : '';
 if (empty($acdir)) $acdir = $cfg_df_style;
 $templetdir = $cfg_basedir.$cfg_templets_dir;
@@ -26,16 +24,20 @@ if (preg_match("#\.#", $acdir)) {
     ShowMsg('Not Allow dir '.$acdir.'!', '-1');
     exit();
 }
-//编辑模板
+/*
+function edit_new_tpl() { }
+编辑模板
+*/
 if ($action == 'edit' || $action == 'newfile') {
     if ($filename == '' && $action == 'edit') {
-        ShowMsg(Lang('tpl_err_edit'), '-1');
+        ShowMsg('未指定要编辑的文件', '-1');
         exit();
     }
     if (!file_exists($templetdird.'/'.$filename)  && $action == 'edit') {
         $action = 'newfile';
     }
     //读取文件内容
+    //$content = dede_htmlspecialchars(trim(file_get_contents($truePath.$filename)));
     if ($action == 'edit') {
         $fp = fopen($templetdird.'/'.$filename, 'r');
         $content = fread($fp, filesize($templetdird.'/'.$filename));
@@ -70,15 +72,18 @@ if ($action == 'edit' || $action == 'newfile') {
     include DEDEADMIN.'/templets/tpl_edit.htm';
     exit();
 }
-//保存编辑模板
+/*---------------------------
+function save_tpl() { }
+保存编辑模板
+--------------------------*/
 else if ($action == 'saveedit') {
     CheckCSRF();
     if ($filename == '') {
-        ShowMsg(Lang('tpl_err_saveedit'), '-1');
+        ShowMsg('未指定要编辑的文件或文件名不合法', '-1');
         exit();
     }
     if (!preg_match("#\.htm$#", $filename)) {
-        ShowMsg(Lang('tpl_err_saveedit_ext'), '-1');
+        ShowMsg('DEDE模板文件，文件名必须用.htm结尾', '-1');
         exit();
     }
     $content = stripslashes($content);
@@ -90,109 +95,130 @@ else if ($action == 'saveedit') {
     $fp = fopen($truefile, 'w');
     fwrite($fp, $content);
     fclose($fp);
-    ShowMsg(Lang('tpl_success_saveedit'), 'templets_main.php?acdir='.$acdir);
+    ShowMsg('成功修改或新建文件', 'templets_main.php?acdir='.$acdir);
     exit();
 }
-//删除模板
+/*---------------------------
+function del_tpl() { }
+删除模板
+--------------------------*/
 else if ($action == 'del') {
     $truefile = $templetdird.'/'.$filename;
     if (unlink($truefile)) {
-        ShowMsg(Lang('tpl_success_del'), 'templets_main.php?acdir='.$acdir);
+        ShowMsg('删除文件成功', 'templets_main.php?acdir='.$acdir);
         exit();
     } else {
-        ShowMsg(Lang('tpl_err_del'), '-1');
+        ShowMsg('删除文件失败', '-1');
         exit();
     }
 }
-//上传新模板
+/*----------------------
+function _upload() {}
+上传新模板
+-----------------------*/
 else if ($action == 'upload') {
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $acdir = str_replace('.', '', $acdir);
+    $win = new OxWindow();
     make_hash();
-    $wecome_info = "<a href='templets_main.php'>".Lang('tpl_main')."</a> &gt; ".Lang('tpl_upload');
+    $win->Init("tpl.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
+    $win->mainTitle = "模块管理";
+    $wecome_info = "<a href='templets_main.php'>模板管理</a> &gt; 上传模板";
+    $win->AddTitle('请选择要上传的文件：');
+    $win->AddHidden("action", 'uploadok');
     $msg = "
     <table width='600' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='96' height='60'>".Lang('tpl_upload_select')."</td>
+    <td width='96' height='60'>请选择文件：</td>
     <td width='504'>
-        <input name='acdir' type='hidden' value='$acdir' />
-        <input name='token' type='hidden' value='{$_SESSION['token']}' />
+        <input name='acdir' type='hidden' value='$acdir'  />
+        <input name='token' type='hidden' value='{$_SESSION['token']}'  />
         <input name='upfile' type='file' id='upfile' style='width:390px' />
       </td>
   </tr>
  </table>
     ";
-    DedeWin::Instance()->Init("tpl.php", "js/blank.js", "POST' enctype='multipart/form-data' ")
-    ->AddTitle(Lang('tpl_upload_title'))
-    ->AddHidden("action", 'uploadok')->AddMsgItem("<div>$msg</div>")
-    ->GetWindow('ok', '')->Display();
+    $win->AddMsgItem("<div>$msg</div>");
+    $winform = $win->GetWindow('ok', '');
+    $win->Display();
     exit();
 }
-//上传新模板
+/*----------------------
+function _upload() {}
+上传新模板
+-----------------------*/
 else if ($action == 'uploadok') {
     CheckCSRF();
     if (!is_uploaded_file($upfile)) {
-        ShowMsg(Lang("tpl_upload_empty"), "javascript:;");
+        ShowMsg("貌似您什么都没有上传哦", "javascript:;");
         exit();
     } else {
-        if (!preg_match("#\.htm$#", $upfile_name)) {
-            ShowMsg(Lang('tpl_err_saveedit_ext'), "-1");
+        if (!preg_match("#\.(htm|html)$#", $upfile_name)) {
+            ShowMsg("DedeBIZ模板只能用 .htm 或 .html扩展名", "-1");
             exit();
         }
         if (preg_match("#[\\\\\/]#", $upfile_name)) {
-            ShowMsg(Lang("tpl_upload_err_charset"), "-1");
+            ShowMsg("模板文件名有非法字符，禁止上传", "-1");
             exit();
         }
         move_uploaded_file($upfile, $templetdird.'/'.$upfile_name);
         @unlink($upfile);
-        ShowMsg(Lang("tpl_upload_success"), "templets_main.php?acdir=$acdir");
+        ShowMsg("成功上传一个模板", "templets_main.php?acdir=$acdir");
         exit();
     }
     exit();
 }
-//修改标签碎片
+/*---------------------------
+function edittag() { }
+修改标签碎片
+--------------------------*/
 else if ($action == 'edittag' || $action == 'addnewtag') {
     if ($action == 'addnewtag') {
         $democode = '<'."?php
-if (!defined('DEDEINC'))
+if(!defined('DEDEINC'))
 {
     exit(\"Request Error!\");
 }
 function lib_demotag(&\$ctag,&\$refObj)
 {
     global \$dsql,\$envs;
-    //".Lang('templets_tagsource_attr')."
+    //属性处理
     \$attlist=\"row|12,titlelen|24\";
     FillAttsDefault(\$ctag->CAttribute->Items,\$attlist);
     extract(\$ctag->CAttribute->Items, EXTR_SKIP);
     \$revalue = '';
-    //".Lang('templets_tagsource_code_tip')."
+    //您需编写的代码，不能用echo之类语法，把最终返回值传给\$revalue
     \$revalue = 'Hello Word!';
     return \$revalue;
 }
 ?".'>';
         $filename = "demotag.lib.php";
-        $title = Lang("templets_tagsource_add");
+        $title = "新建标签";
     } else {
         if (!preg_match("#^[a-z0-9_-]{1,}\.lib\.php$#i", $filename)) {
-            ShowMsg(Lang('templets_tagsource_notallow'), '-1');
+            ShowMsg('文件不是标准的标签碎片文件，不允许在此编辑', '-1');
             exit();
         }
         $fp = fopen(DEDEINC.'/taglib/'.$filename, 'r');
         $democode = fread($fp, filesize(DEDEINC.'/taglib/'.$filename));
         fclose($fp);
-        $title = Lang("templets_tagsource_edit");
+        $title = "修改标签";
     }
     make_hash();
     include DEDEADMIN.'/templets/tpl_edit_tag.htm';
     exit();
 }
-//保存标签碎片修改
+/*---------------------------
+function savetagfile() { }
+保存标签碎片修改
+--------------------------*/
 else if ($action == 'savetagfile') {
     CheckCSRF();
     if (!preg_match("#^[a-z0-9_-]{1,}\.lib\.php$#i", $filename)) {
-        ShowMsg(Lang('tpl_upload_err_filename'), '-1');
+        ShowMsg('文件名不合法，不允许进行操作', '-1');
         exit();
     }
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $tagname = preg_replace("#\.lib\.php$#i", "", $filename);
     $content = stripslashes($content);
     $truefile = DEDEINC.'/taglib/'.$filename;
@@ -202,14 +228,18 @@ else if ($action == 'savetagfile') {
     $msg = "
     <form name='form1' action='tag_test_action.php' target='blank' method='post'>
       <input type='hidden' name='dopost' value='make' />
-        ".Lang('tpl_upload_savetagfile')."<br>
+        测试标签：(需要使用环境变量的不能在此测试)<br>
         <textarea name='partcode' cols='150' rows='6' style='width:90%;'>{dede:{$tagname} }{/dede:{$tagname}}</textarea><br>
-        <button type='submit' name='B1' class='btn btn-success btn-sm'>".Lang('ok')."</button>
+        <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
     </form>
     ";
-    $wintitle = Lang("tpl_savetagfile_title");
-    $wecome_info = "<a href='templets_tagsource.php'>".Lang('tpl_templets_tagsource')."</a> &gt; ".Lang('tpl_templets_new');
-    DedeWin::Instance()->AddTitle(Lang('tpl_templets_new')."：")->AddMsgItem($msg)->GetWindow("hand", "&nbsp;", false)->Display();
+    $wintitle = "成功修改/创建文件";
+    $wecome_info = "<a href='templets_tagsource.php'>标签源码碎片管理</a> &gt; 修改/新建标签";
+    $win = new OxWindow();
+    $win->AddTitle("修改/新建标签：");
+    $win->AddMsgItem($msg);
+    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $win->Display();
     exit();
 }
 ?>

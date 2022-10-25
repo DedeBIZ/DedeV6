@@ -2,7 +2,7 @@
 /**
  * 栏目选项函数
  *
- * @version        $Id: inc_catalog_options.php 2022-07-01 tianya $
+ * @version        $Id: inc_catalog_options.php 1 10:32 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -20,7 +20,7 @@
 function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
 {
     global $OptionArrayList, $channels, $dsql, $cfg_admin_channel, $admin_catalogs;
-    $dsql->SetQuery("SELECT id,typename FROM `#@__channeltype`");
+    $dsql->SetQuery("SELECT id,typename FROM `#@__channeltype` ");
     $dsql->Execute('dd');
     $channels = array();
     while ($row = $dsql->GetObject('dd')) $channels[$row->id] = $row->typename;
@@ -34,10 +34,10 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
     //是否限定用户管理的栏目
     if ($cfg_admin_channel == 'array') {
         if (count($admin_catalogs) == 0) {
-            $query = "SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE 1=2";
+            $query = "SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE 1=2 ";
         } else {
             $admin_catalog = join(',', $admin_catalogs);
-            $dsql->SetQuery("SELECT reid FROM `#@__arctype` WHERE id IN($admin_catalog) GROUP BY reid");
+            $dsql->SetQuery("SELECT reid FROM `#@__arctype` WHERE id IN($admin_catalog) GROUP BY reid ");
             $dsql->Execute('qq');
             $topidstr = '';
             while ($row = $dsql->GetObject('qq')) {
@@ -49,10 +49,10 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
             $admin_catalogs = array_unique($admin_catalogs);
             $admin_catalog = join(',', $admin_catalogs);
             $admin_catalog = preg_replace("#,$#", '', $admin_catalog);
-            $query = "SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE id in($admin_catalog) And reid=0";
+            $query = "Select id,typename,ispart,channeltype From `#@__arctype` where id in($admin_catalog) And reid=0";
         }
     } else {
-        $query = "SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE reid=0 ORDER BY sortrank ASC";
+        $query = "Select id,typename,ispart,channeltype From `#@__arctype` where reid=0 order by sortrank asc";
     }
     $dsql->SetQuery($query);
     $dsql->Execute('cc');
@@ -61,7 +61,7 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
         LogicGetOptionArray($row->id, '─', $channeltype, $dsql, $sonCats);
         if ($sonCats != '') {
             if ($row->ispart == 1) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."-封面频道</option>";
-            else if ($row->ispart == 2) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."-外部连接</option>";
+            else if($row->ispart == 2) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."-外部连接</option>";
             else if (empty($channeltype) && $row->ispart != 0) $OptionArrayList .= "<option value='".$row->id."' class='option2'>".$row->typename."(".$channels[$row->channeltype].")</option>";
             else $OptionArrayList .= "<option value='".$row->id."' class='option3'>".$row->typename."</option>";
             $OptionArrayList .= $sonCats;
@@ -78,7 +78,7 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
 function LogicGetOptionArray($id, $step, $channeltype, &$dsql, &$sonCats)
 {
     global $OptionArrayList, $channels, $cfg_admin_channel, $admin_catalogs;
-    $dsql->SetQuery("SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE reid='".$id."' ORDER BY sortrank ASC");
+    $dsql->SetQuery("Select id,typename,ispart,channeltype From `#@__arctype` where reid='".$id."' order by sortrank asc");
     $dsql->Execute($id);
     while ($row = $dsql->GetObject($id)) {
         if ($cfg_admin_channel != 'all' && !in_array($row->id, $admin_catalogs)) {

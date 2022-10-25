@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang('makehtml_taglist');?></title>
+		<title>更新标签</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../static/web/css/select.min.css">
+		<link rel="stylesheet" href="../static/web/css/select2.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/select2.min.js"></script>
+		<script src="../static/web/js/select2.full.min.js"></script>
 		<script src="../static/web/js/i18n/zh-CN.js"></script>
 		<script>
 			function onTagSubmit() {
@@ -18,67 +18,73 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<form name="form1" action="makehtml_tag_action_list.php" method="get" target="stafrm">
 				<tr>
-					<td bgcolor="#f8f8f8" colspan="2">
-						<table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
-							<tr>
-								<td width="30%"><?php echo Lang('makehtml_taglist');?></td>
-								<td width="70%" align="right"><a href="tags_main.php" class="btn btn-success btn-sm"><?php echo Lang('tags_main');?></a></td>
-							</tr>
-						</table>
-					</td>
+					<td bgcolor="#f8f8f8" colspan="2">更新标签</td>
 				</tr>
 				<?php
-				if ($tagid > 0) {
-					$row = $dsql->GetOne("SELECT tag FROM `#@__tagindex` WHERE id = '$tagid'");
+				if($tagid > 0) {
+					$row = $dsql->GetOne("Select tag From `#@__tagindex` where id = '$tagid' ");
 				?>
 				<tr>
-					<td width="260"><?php echo Lang('makehtml_taglist_tagid');?>：</td>
-					<td><input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php"><?php echo Lang('makehtml_taglist_reselect');?></a></td>
+					<td width="260">输入标签：</td>
+					<td><input type="hidden" name="tagid" value="<?php echo $tagid;?>"><?php echo $row['tag'];?> <a class="text-success" href="makehtml_taglist.php">重新选择</a></td>
 				</tr>
 				<?php
 				} else {
 				?>
 				<tr>
-					<td width="260"><?php echo Lang('makehtml_all_startid');?>：</td>
-					<td><input type="text" name="startid" id="startid" style="width:60px"><?php echo Lang('makehtml_all_startid_tip');?></td>
+					<td width="260">起始id：</td>
+					<td><input type="text" name="startid" id="startid" style="width:60px">（空或0表示从头开始）</td>
 				</tr>
 				<tr>
-					<td><?php echo Lang('makehtml_all_endid');?>：</td>
-					<td><input type="text" name="endid" id="endid" style="width:60px"><?php echo Lang('makehtml_all_endid_tip');?></td>
+					<td>结束ID：</td>
+					<td><input type="text" name="endid" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
 				</tr>
 				<?php }?>
 				<tr>
-					<td><?php echo Lang('makehtml_taglist_tagsdir');?>：</td>
-					<td><input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php"><?php echo Lang('setting');?></a><?php echo Lang('makehtml_taglist_tagsdir_tip');?></td>
+					<td>生成位置：</td>
+					<td><input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“TAGS生成目录”项进行调整</td>
 				</tr>
 				<tr>
-					<td><?php echo Lang('makehtml_list_maxpagesize');?>：</td>
-					<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" style="width:60px"> <?php echo Lang('makehtml_archives_pagesize_num');?></td>
+					<td>每次最大创建页数：</td>
+					<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
 				</tr>
 				<tr>
-					<td><?php echo Lang('makehtml_taglist_des');?>：</td>
-					<td><?php echo Lang('makehtml_taglist_des_tip',array('dir'=>$cfg_templets_dir,'style'=>$cfg_df_style));?></td>
+					<td>标签说明：</td>
+					<td>
+						生成静态文件后，访问动态文件则直接跳转到静态文件，如果需要动态访问，删除对应文件即可<br>
+						Tag首页模板文件：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/tag.htm<br>
+						Tag列表页模板文件：<?php echo $cfg_templets_dir;?>/<?php echo $cfg_df_style?>/taglist.htm<br>
+					</td>
 				</tr>
 				<tr>
-					<td align="center" colspan="2" bgcolor="#f8fcf2"><button type="button" name="b112" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();"><?php echo Lang('makehtml_taglist_make');?></button></td>
+					<td bgcolor="#fbfce2" colspan="2" align="center"><button type="button" name="b112" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">生成标签</button></td>
 				</tr>
 			</form>
 			<tr>
 				<td colspan="2">
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="30%"><?php echo Lang('result');?>：</td>
-							<td width="70%" align="right"></td>
+							<td width="30%">结果：</td>
+							<td width="70%" align="right">
+								<script>
+									function ResizeDiv(obj, ty) {
+										if (ty == "+") document.all[obj].style.pixelHeight += 50;
+										else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+									}
+								</script>
+								<a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+								<a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
+							</td>
 						</tr>
 					</table>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" id="mtd">
-					<div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					<div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

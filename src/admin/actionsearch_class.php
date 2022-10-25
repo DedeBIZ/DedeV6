@@ -1,13 +1,11 @@
 <?php
 /**
- * 
  * @version        $Id: actionsearch_class.php 1 8:26 2010年7月12日Z tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 class ActionSearch
 {
     var $keyword;
@@ -49,7 +47,7 @@ class ActionSearch
             if (is_array($this->asarray[$key]['soniterm'])) {
                 foreach ($this->asarray[$key]['soniterm'] as $k => $val) {
                     //进行权限判断
-                    if (UserLogin::TestPurview($val['purview'])) {
+                    if (TestPurview($val['purview'])) {
                         //如果有操作权限
                         if ($this->_strpos($val['title'], $this->keyword) !== false || $this->_strpos($val['description'], $this->keyword) !== false) {
                             //一级项目匹配
@@ -77,7 +75,7 @@ class ActionSearch
         if (is_array($text)) {
             foreach ($text as $key => $value) {
                 if ($key == 'title' || $key == 'description') {
-                    //仅对title，description进行数组替换
+                    //仅对title,description进行数组替换
                     $text[$key] = str_replace($this->keyword, '<span class="text-danger">'.$this->keyword.'</span>', $text[$key]);
                 }
             }

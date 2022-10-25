@@ -8,13 +8,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Archive\ListView;
-use DedeBIZ\Archive\SgListView;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_MakeHtml');
+CheckPurview('sys_MakeHtml');
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
-require_once(DEDEINC."/channel/channelunit.func.php");
+require_once(DEDEINC."/channelunit.func.php");
 if (!isset($upnext)) $upnext = 1;
 if (empty($gotype)) $gotype = '';
 if (empty($pageno)) $pageno = 0;
@@ -22,7 +19,7 @@ if (empty($mkpage)) $mkpage = 1;
 if (empty($typeid)) $typeid = 0;
 if (!isset($uppage)) $uppage = 0;
 if (empty($maxpagesize)) $maxpagesize = 30;
-$adminID = $cUserLogin->getUserID();
+$adminID = $cuserLogin->getUserID();
 //检测获取所有栏目id
 //普通生成或一键更新时更新所有栏目
 if ($gotype == '' || $gotype == 'mkallct') {
@@ -51,28 +48,30 @@ if (isset($idArray[$pageno])) {
     $tid = $idArray[$pageno];
 } else {
     if ($gotype == '') {
-        ShowMsg(Lang("makehtml_list_success"), "javascript:;");
+        ShowMsg("完成所有列表更新", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg(Lang("makehtml_list_success_2"), "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目列表更新，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 }
 if ($pageno == 0 && $mkpage == 1) //清空缓存
 {
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache`");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` ");
 }
 $reurl = '';
 //更新数组所记录的栏目
 if (!empty($tid)) {
     if (!isset($cfg_Cs[$tid])) {
-        ShowMsg(Lang('makehtml_list_err_cache'), 'javascript:;');
+        ShowMsg('没有该栏目数据, 可能缓存文件(/data/cache/inc_catalog_base.inc)没有更新, 请检查是否有写入权限', 'javascript:;');
         exit();
     }
     if ($cfg_Cs[$tid][1] > 0) {
+        require_once(DEDEINC."/archive/listview.class.php");
         $lv = new ListView($tid);
         $position = MfTypedir($lv->Fields['typedir']);
     } else {
+        require_once(DEDEINC."/archive/sglistview.class.php");
         $lv = new SgListView($tid);
     }
     //这里统一统计
@@ -81,10 +80,10 @@ if (!empty($tid)) {
     else $ntotalpage = 1;
     //如果栏目的文档太多，分多批次更新
     if ($ntotalpage <= $maxpagesize || $lv->TypeLink->TypeInfos['ispart'] != 0 || $lv->TypeLink->TypeInfos['isdefault'] == -1) {
-        $reurl = $lv->MakeHtml('', '');
+        $reurl = $lv->MakeHtml('', '', 0);
         $finishType = TRUE;
     } else {
-        $reurl = $lv->MakeHtml($mkpage, $maxpagesize);
+        $reurl = $lv->MakeHtml($mkpage, $maxpagesize, 0);
         $finishType = FALSE;
         $mkpage = $mkpage + $maxpagesize;
         if ($mkpage >= ($ntotalpage + 1)) $finishType = TRUE;
@@ -96,20 +95,20 @@ if ($nextpage >= $totalpage && $finishType) {
         if (empty($reurl)) {
             $reurl = '../apps/list.php?tid='.$tid;
         }
-        ShowMsg(Lang('makehtml_list_success_view', array('reurl'=>$reurl)), "javascript:;");
+        ShowMsg("完成所有栏目列表更新，<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg(Lang("makehtml_list_success_mkall"), "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目列表更新，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 } else {
     if ($finishType) {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage";
-        ShowMsg(Lang("makehtml_list_success_tid",array('tid'=>$tid)), $gourl, 0, 100);
+        ShowMsg("创建栏目：".$tid."，继续执行任务", $gourl, 0, 100);
         exit();
     } else {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
-        ShowMsg(Lang("makehtml_list_success_tid",array('tid'=>$tid)), $gourl, 0, 100);
+        ShowMsg("创建栏目：".$tid."，继续执行任务", $gourl, 0, 100);
         exit();
     }
 }

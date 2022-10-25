@@ -8,24 +8,26 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 @ob_start();
 @set_time_limit(0);
 ini_set('memory_limit', '-1');
 require_once(dirname(__FILE__).'/config.php');
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
-}
-UserLogin::CheckPurview('sys_Data');
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
+  }
+CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = '';
 $bkdir = DEDEDATA.'/'.$cfg_backup_dir;
 //跳转到一下页的js
 $gotojs = "function GotoNextPage(){document.gonext."."submit();}"."\r\nset"."Timeout('GotoNextPage()',500);";
 $dojs = "<script>$gotojs</script>";
-//备份数据
+/*--------------------
+备份数据
+function __bak_data();
+--------------------*/
 if ($dopost == 'bak') {
     if (empty($tablearr)) {
-        ShowMsg(Lang('sys_data_err_select_db'), 'javascript:;');
+        ShowMsg('您没选中数据表', 'javascript:;');
         exit();
     }
     if (!is_dir($bkdir)) {
@@ -64,7 +66,7 @@ if ($dopost == 'bak') {
             }
         }
         $dh->close();
-        $tmsg .= Lang("sys_data_success_backup");
+        $tmsg .= "清除备份目录旧数据完成";
         if ($isstruct == 1) {
             $bkfile = $bkdir."/tables_struct_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
             $mysql_version = $dsql->GetVersion();
@@ -73,7 +75,7 @@ if ($dopost == 'bak') {
                 fwrite($fp, "DROP TABLE IF EXISTS `$t`;\r\n\r\n");
                 $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$t);
                 $dsql->Execute('me');
-                $row = $dsql->GetArray('me', PDO::FETCH_BOTH);
+                $row = $dsql->GetArray('me', MYSQL_BOTH);
                 //去除AUTO_INCREMENT
                 $row[1] = preg_replace("#AUTO_INCREMENT=([0-9]{1,})[ \r\n\t]{1,}#i", "", $row[1]);
                 $eng1 = "#ENGINE=MyISAM[ \r\n\t]{1,}DEFAULT[ \r\n\t]{1,}CHARSET=".$cfg_db_language."#i";
@@ -81,9 +83,9 @@ if ($dopost == 'bak') {
                 fwrite($fp, ''.$tableStruct.";\r\n\r\n");
             }
             fclose($fp);
-            $tmsg .= Lang("sys_data_success_backup_struct");
+            $tmsg .= "备份数据表结构信息完成";
         }
-        $tmsg .= Lang("sys_data_running");
+        $tmsg .= "正在进行数据备份初始化工作，请稍后";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php'>
            <input type='hidden' name='isstruct' value='$isstruct' />
            <input type='hidden' name='dopost' value='bak' />
@@ -101,15 +103,16 @@ if ($dopost == 'bak') {
         $fs = array();
         $bakStr = '';
         //分析表里的字段信息
-        $it = $dsql->GetTableFields($nowtable);
-        $intable = "INSERT INTO `$nowtable` VALUES (";
-        foreach ($it as $row) {
-            $fs[$j] = trim($row->name);
+        $dsql->GetTableFields($nowtable);
+        $intable = "INSERT INTO `$nowtable` VALUES(";
+        while ($r = $dsql->GetFieldObject()) {
+
+            $fs[$j] = trim($r->name);
             $j++;
         }
         $fsd = $j - 1;
         //读取表的内容
-        $dsql->SetQuery("SELECT * FROM `$nowtable`");
+        $dsql->SetQuery("SELECT * FROM `$nowtable` ");
         $dsql->Execute();
         $m = 0;
         $bakfilename = "$bkdir/{$nowtable}_{$startpos}_".substr(md5(time().mt_rand(1000, 5000).$cfg_cookie_encode), 0, 16).".txt";
@@ -123,7 +126,7 @@ if ($dopost == 'bak') {
                 $fp = fopen($bakfilename, "w");
                 fwrite($fp, $bakStr);
                 fclose($fp);
-                $tmsg = Lang('sys_data_success_finish',array('m'=>$m,'nowtable'=>$nowtable));
+                $tmsg = "完成到{$m}条数据备份，继续备份{$nowtable}";
                 $doneForm = "<form name='gonext' method='post' action='sys_data_done.php'>
                 <input type='hidden' name='isstruct' value='$isstruct' />
                 <input type='hidden' name='dopost' value='bak' />
@@ -160,12 +163,12 @@ if ($dopost == 'bak') {
                     $startpos = 0;
                     break;
                 } else {
-                    PutInfo(Lang("sys_data_success_finish_all"), "");
+                    PutInfo("完成所有数据备份", "");
                     exit();
                 }
             }
         }
-        $tmsg = Lang('sys_data_success_finish',array('m'=>$m,'nowtable'=>$nowtable));
+        $tmsg = "完成到{$m}条数据备份，继续备份{$nowtable}";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=bak'>
           <input type='hidden' name='isstruct' value='$isstruct' />
           <input type='hidden' name='fsize' value='$fsize' />
@@ -174,12 +177,16 @@ if ($dopost == 'bak') {
           <input type='hidden' name='startpos' value='$startpos'>\r\n</form>\r\n{$dojs}\r\n";
         PutInfo($tmsg, $doneForm);
         exit();
-    }//分页备份代码结束
+    }
+    //分页备份代码结束
 }
-//还原数据
+/*-------------------------
+还原数据
+function __re_data();
+-------------------------*/ 
 else if ($dopost == 'redat') {
     if ($bakfiles == '') {
-        ShowMsg(Lang('sys_data_err_redat'), 'javascript:;');
+        ShowMsg('没指定任何要还原数据', 'javascript:;');
         exit();
     }
     $bakfilesTmp = $bakfiles;
@@ -208,7 +215,7 @@ else if ($dopost == 'redat') {
         if ($delfile == 1) {
             @unlink("$bkdir/$structfile");
         }
-        $tmsg = Lang("sys_data_success_redat");
+        $tmsg = "完成数据表还原，继续还原数据";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=redat'>
         <input type='hidden' name='startgo' value='1' />
         <input type='hidden' name='delfile' value='$delfile' />
@@ -234,10 +241,10 @@ else if ($dopost == 'redat') {
             @unlink("$bkdir/$nowfile");
         }
         if ($bakfilesTmp == "") {
-            ShowMsg(Lang('sys_data_success_redat_all'), 'javascript:;');
+            ShowMsg('成功还原所有的文件数据', 'javascript:;');
             exit();
         }
-        $tmsg = Lang('sys_data_success_redat_finish',array('nowfile'=>$nowfile,'oknum'=>$oknum));
+        $tmsg = "成功还原{$nowfile}文件{$oknum}条数据，正在继续还原其它数据";
         $doneForm = "<form name='gonext' method='post' action='sys_data_done.php?dopost=redat'>
         <input type='hidden' name='startgo' value='1' />
         <input type='hidden' name='delfile' value='$delfile' />
@@ -249,7 +256,8 @@ else if ($dopost == 'redat') {
 }
 function PutInfo($msg1, $msg2)
 {
-    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>".Lang('message_info')."</title><style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f8f8f8}a{color:#1eb867;text-decoration:none}.tips{margin:70px auto 0;padding:0;width:500px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:16px 0;border-bottom:1px solid #f8f8f8}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-box{padding:20px;min-height:120px;color:#545b62}.btn a{display:inline-block;margin:20px auto 0;padding:.375rem .75rem;font-size:12px;color:#fff;background:#1eb867;border-radius:.2rem;text-align:center;transition:all .6s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5)}@media (max-width:768px){body{padding:0 15px}.tips{width:100%}}</style></head><body><center><div class='tips'><div class='tips-head'><p>".Lang('message_info')."</p></div><div class='tips-box'>{$msg1}{$msg2}</div></div>";
+    global $cfg_soft_lang;
+    $msginfo = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'><title>提示信息</title><style>body{margin:0;line-height:1.5;font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;color:#545b62;background:#f8f8f8}a{color:#28a745;text-decoration:none}.tips{margin:70px auto 0;padding:0;width:500px;height:auto;background:#fff;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}.tips-head{margin:0 20px;padding:16px 0;border-bottom:1px solid #f8f8f8}.tips-head p{margin:0;padding-left:10px;line-height:16px;text-align:left;border-left:3px solid #dc3545}.tips-box{padding:20px;min-height:130px;color:#545b62}.btn a{display:inline-block;margin:20px auto 0;padding:.375rem .75rem;font-size:12px;color:#fff;background:#28a745;border-radius:.2rem;text-align:center;transition:all .6s}.btn a:focus{background:#006829;border-color:#005b24;box-shadow:0 0 0 0.2rem rgba(38,159,86,.5)}@media (max-width:768px){body{padding:0 15px}.tips{width:100%}}</style></head><body><center><div class='tips'><div class='tips-head'><p>提示信息</p></div><div class='tips-box'>{$msg1}{$msg2}</div></div>";
     echo $msginfo."</center></body></html>";
 }
 function RpLine($str)

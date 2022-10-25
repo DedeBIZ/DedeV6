@@ -8,13 +8,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('c_List');
+CheckPurview('c_List');
+require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
-$sql = "SELECT `diyid`,`name`,`table` FROM `#@__diyforms` ORDER BY diyid ASC";
+$sql = "Select `diyid`,`name`,`table` From #@__diyforms order by diyid asc";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/diy_main.htm");
 $dlist->SetSource($sql);

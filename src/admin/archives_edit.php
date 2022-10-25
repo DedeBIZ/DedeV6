@@ -8,27 +8,27 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeWin;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
+CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
+require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 if (empty($dopost)) $dopost = '';
 if ($dopost != 'save') {
     require_once(DEDEADMIN."/inc/inc_catalog_options.php");
-    UserLogin::ClearMyAddon();
+    require_once(DEDEINC."/dedetag.class.php");
+    ClearMyAddon();
     $aid = intval($aid);
     //读取归档信息
     $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid'";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg(Lang("content_err_archive"), "-1");
+        ShowMsg("读取档案基本信息出错!", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg(Lang("content_err_channel"), "javascript:;");
+        ShowMsg("读取频道配置信息出错!", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -38,8 +38,12 @@ if ($dopost != 'save') {
     include DedeInclude("templets/archives_edit.htm");
     exit();
 }
+/*--------------------------------
+function __save(){  }
+-------------------------------*/
 else if ($dopost == 'save') {
-    helper('image');
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (empty($typeid2)) $typeid2 = 0;
@@ -49,22 +53,22 @@ else if ($dopost == 'save') {
     if (!isset($autolitpic)) $autolitpic = 0;
     if (!isset($writer)) $writer = '';
     if ($typeid == 0) {
-        ShowMsg(Lang('content_error_typeid_isempty'), "-1");
+        ShowMsg("请指定文档的栏目", "-1");
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg(Lang('content_error_channelid_isempty'), "-1");
+        ShowMsg("文档为非指定的类型，请检查您发布内容的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg(Lang('content_error_channelid_check_failed'), "-1");
+        ShowMsg("您所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
         exit();
     }
-    if (!UserLogin::TestPurview('a_Edit')) {
-        if (UserLogin::TestPurview('a_AccEdit')) {
-            UserLogin::CheckCatalog($typeid, Lang('content_error_channelid_check_failed',array('typeid'=>$typeid)));
+    if (!TestPurview('a_Edit')) {
+        if (TestPurview('a_AccEdit')) {
+            CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的文档权限");
         } else {
-            CheckArcAdmin($id, $cUserLogin->getUserID());
+            CheckArcAdmin($id, $cuserLogin->getUserID());
         }
     }
     //对保存的内容进行处理
@@ -79,9 +83,10 @@ else if ($dopost == 'save') {
     $description = cn_substrR($description, $cfg_auot_description);
     $keywords = trim(cn_substrR($keywords, 60));
     $filename = trim(cn_substrR($filename, 40));
+    $isremote  = 0;
     $serviterm = empty($serviterm) ? "" : $serviterm;
-    if (!UserLogin::TestPurview('a_Check,a_AccCheck,a_MyCheck')) $arcrank = -1;
-    $adminid = $cUserLogin->getUserID();
+    if (!TestPurview('a_Check,a_AccCheck,a_MyCheck')) $arcrank = -1;
+    $adminid = $cuserLogin->getUserID();
     //处理上传的缩略图
     if (empty($ddisremote)) $ddisremote = 0;
     $litpic = GetDDImage('none', $picname, $ddisremote);
@@ -98,7 +103,7 @@ else if ($dopost == 'save') {
                     continue;
                 }
                 $vs = explode(',', $v);
-                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //网页文本特殊处理
+                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //HTML文本特殊处理
                 {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $litpic, $keywords, $vs[1]);
                 } else {
@@ -121,65 +126,47 @@ else if ($dopost == 'save') {
     //跳转网址的文档强制为动态
     if (preg_match("#j#", $flag)) $ismake = -1;
     //更新数据库的SQL语句
-    $inQuery = "UPDATE `#@__archives` SET
-    typeid='$typeid',
-    typeid2='$typeid2',
-    sortrank='$sortrank',
-    flag='$flag',
-    notpost='$notpost',
-    click='$click',
-    ismake='$ismake',
-    arcrank='$arcrank',
-    money='$money',
-    title='$title',
-    color='$color',
-    writer='$writer',
-    source='$source',
-    litpic='$litpic',
-    pubdate='$pubdate',
-   DESCription='$description',
-    keywords='$keywords',
-    shorttitle='$shorttitle',
-    filename='$filename',
-    dutyadmin='$adminid',
-    weight='$weight'
-   WHERE id='$id'; ";
+    $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',notpost='$notpost',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg(Lang('content_err_update_archive'), "-1");
+        ShowMsg("更新数据库archives表时出错，请检查", "-1");
         exit();
     }
-    $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid'");
+    $cts = $dsql->GetOne("SELECT addtable From `#@__channeltype` WHERE id='$channelid' ");
     $addtable = trim($cts['addtable']);
     if ($addtable != '') {
         $useip = GetIP();
-        $iquery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f},redirecturl='$redirecturl',userip='$useip' WHERE aid='$id'";
+        $iquery = "UPDATE `$addtable` SET typeid='$typeid'{$inadd_f},redirecturl='$redirecturl',userip='$useip' WHERE aid='$id' ";
         if (!$dsql->ExecuteNoneQuery($iquery)) {
-            ShowMsg(Lang('content_err_update_addon',array('addtable'=>$addtable)), "javascript:;");
+            ShowMsg("更新附加表 `$addtable` 时出错，请检查原因", "javascript:;");
             exit();
         }
     }
     //生成网页
     UpIndexKey($id, $arcrank, $typeid, $sortrank, $tags);
-    $artUrl = MakeArt($id, TRUE, TRUE);
+    $artUrl = MakeArt($id, TRUE, TRUE, $isremote);
     if ($artUrl == '') {
         $artUrl = $cfg_phpurl."/view.php?aid=$id";
     }
-    UserLogin::ClearMyAddon($id, $title);
+    ClearMyAddon($id, $title);
     //自动更新关联内容
-    if (isset($automake) && is_array($automake)) {
+    if (is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {
                 $ids = explode(",", ${$key});
                 foreach ($ids as $id) {
-                    MakeArt($id, true, true);
+                    MakeArt($id, true, true, $isremote);
                 }
             }
         }
     }
     //返回成功信息
-    $msg = Lang('more_actions')."：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>".Lang('content_continue_publish')."</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>".Lang('content_edit')."</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>".Lang('content_view')."</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>".Lang('content_published_main')."</a>$backurl";
-    $wintitle = Lang("content_success_edit");
-    $wecome_info = Lang('content_main')."::".Lang('content_edit');
-    DedeWin::Instance()->AddTitle(Lang("content_success_edit")."：")->AddMsgItem($msg)->GetWindow("hand", "&nbsp;", false)->Display();
+    $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新商品</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改商品</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看商品</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理商品</a>$backurl";
+    $wintitle = "成功修改商品";
+    $wecome_info = "文档管理::修改商品";
+    $win = new OxWindow();
+    $win->AddTitle("成功修改商品：");
+    $win->AddMsgItem($msg);
+    $winform = $win->GetWindow("hand", "&nbsp;", false);
+    $win->Display();
 }
 ?>

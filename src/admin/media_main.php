@@ -8,8 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
 require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($dopost)) $dopost = '';
@@ -18,7 +18,7 @@ if ($dopost == 'filemanager') {
     if (file_exists('./file_manage_main.php')) {
         header("location:file_manage_main.php?activepath=$cfg_medias_dir");
     } else {
-        ShowMsg(Lang("media_err_nobrowser"), "-1");
+        ShowMsg("找不到文件管理器，可能已经卸载", "-1");
     }
     exit();
 }
@@ -52,13 +52,13 @@ $dlist->Display();
 function MediaType($tid, $nurl)
 {
     if ($tid == 1) {
-        return Lang('image')."<a href=\"$nurl\" target=\"_blank\"><i class='fa fa-picture-o' name='picview' title='".Lang("view")."'></i></a>";
+        return "图片<a href=\"$nurl\" target=\"_blank\"><i class='fa fa-picture-o' name='picview' title='预览'></i></a>";
     } else if ($tid == 2) {
         return "FLASH";
     } else if ($tid == 3) {
-        return Lang("media");
+        return "视频音频";
     } else {
-        return Lang("other");
+        return "附件其它";
     }
 }
 function GetFileSize($fs)

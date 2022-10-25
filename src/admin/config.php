@@ -8,10 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 define('DEDEADMIN', str_replace("\\", '/', dirname(__FILE__)));
-define('LANGSECTION', 'admin');
 require_once(DEDEADMIN.'/../system/common.inc.php');
+require_once(DEDEINC.'/userlogin.class.php');
 header('Cache-Control:private');
 $dsql->safeCheck = FALSE;
 $dsql->SetLongLink();
@@ -48,8 +47,8 @@ $dedeNowurl = GetCurUrl();
 $dedeNowurls = explode('?', $dedeNowurl);
 $s_scriptName = $dedeNowurls[0];
 //检验用户登录状态
-$cUserLogin = new UserLogin();
-if ($cUserLogin->getUserID() == -1) {
+$cuserLogin = new userLogin();
+if ($cuserLogin->getUserID() == -1) {
     if (preg_match("#PHP (.*) Development Server#", $_SERVER['SERVER_SOFTWARE'])) {
         $dirname = dirname($_SERVER['SCRIPT_NAME']);
         header("location:{$dirname}/login.php?gotopage=".urlencode($dedeNowurl));
@@ -78,7 +77,7 @@ if ($cfg_dede_log == 'Y') {
     $s_scriptNames = $s_scriptNames[count($s_scriptNames) - 1];
     $s_userip = GetIP();
     if ($s_method == 'POST' || (!preg_match("#".$s_nologfile."#i", $s_scriptNames) && $s_query != '') || preg_match("#".$s_needlogfile."#i", $s_scriptNames)) {
-        $inquery = "INSERT INTO `#@__log`(adminid,filename,method,query,cip,dtime) VALUES ('".$cUserLogin->getUserID()."','{$s_scriptNames}','{$s_method}','".addslashes($s_query)."','{$s_userip}','".time()."');";
+        $inquery = "INSERT INTO `#@__log` (adminid,filename,method,query,cip,dtime) VALUES ('".$cuserLogin->getUserID()."','{$s_scriptNames}','{$s_method}','".addslashes($s_query)."','{$s_userip}','".time()."');";
         $dsql->ExecuteNoneQuery($inquery);
     }
 }
@@ -88,7 +87,7 @@ if (file_exists(DEDEDATA."/downmix.data.php")) {
 //管理缓存管理员频道缓存
 $cache1 = DEDEDATA.'/cache/inc_catalog_base.inc';
 if (!file_exists($cache1)) UpDateCatCache();
-$cacheFile = DEDEDATA.'/cache/admincat_'.$cUserLogin->userID.'.inc';
+$cacheFile = DEDEDATA.'/cache/admincat_'.$cuserLogin->userID.'.inc';
 if (file_exists($cacheFile)) require_once($cacheFile);
 /**
  *  更新栏目缓存
@@ -98,7 +97,7 @@ if (file_exists($cacheFile)) require_once($cacheFile);
  */
 function UpDateCatCache()
 {
-    global $dsql, $cache1, $cUserLogin;
+    global $dsql, $cache1, $cuserLogin;
     $cache2 = DEDEDATA.'/cache/channelsonlist.inc';
     $cache3 = DEDEDATA.'/cache/channeltoplist.inc';
     $dsql->SetQuery("SELECT id,reid,channeltype,issend,typename FROM `#@__arctype`");
@@ -114,7 +113,7 @@ function UpDateCatCache()
     }
     fwrite($fp1, "{$phph}>");
     fclose($fp1);
-    $cUserLogin->ReWriteAdminChannel();
+    $cuserLogin->ReWriteAdminChannel();
     @unlink($cache2);
     @unlink($cache3);
 }
@@ -156,9 +155,9 @@ if (!function_exists('GetMemberName')) {
     {
         global $dsql;
         if (empty($mid)) {
-            return Lang("administrator");
+            return "管理员";
         }
-        $rs = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}'");
+        $rs = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}' ");
         return $rs['uname'];
     }
 }

@@ -1,51 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang('sys_safetest_viewdiff');?></title>
+		<title>查看差异</title>
 		<link rel="stylesheet" href="../static/web/css/diffview.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/diffview.js"></script>
 		<script src="../static/web/js/difflib.js"></script>
-		<style>
-			body {
-				font-size: 12px;
-				font-family: Sans-Serif;
-			}
-			h2 {
-				margin: 0.5em 0 0.1em;
-				text-align: center;
-			}
-			.top {
-				text-align: center;
-			}
-			.textInput {
-				display: block;
-				width: 50%;
-				float: left;
-			}
-			textarea {
-				width: 100%;
-				height: 300px;
-			}
-			label:hover {
-				text-decoration: underline;
-				cursor: pointer;
-			}
-			.spacer {
-				margin-left: 10px;
-			}
-			.viewType {
-				font-size: 16px;
-				clear: both;
-				text-align: center;
-				padding: 1em;
-			}
-			#diffoutput {
-				width: 100%;
-			}
-		</style>
+		<style>body{font-size:12px}h2{margin:0.5em 0 0.1em;text-align:center}.top{text-align:center}.textInput{display:block;width:50%;float:left}textarea{width:100%;height:300px}label:hover{text-decoration:underline;cursor:pointer}.spacer{margin-left:10px}.viewType{font-size:16px;clear:both;text-align:center;padding:1em}#diffoutput{width:100%}</style>
 		<script>
 			function diffUsingJS(viewType) {
 				"use strict";
@@ -59,8 +22,8 @@
 					baseTextLines: base,
 					newTextLines: newtxt,
 					opcodes: opcodes,
-					baseTextName: "<?php echo Lang('sys_safetest_viewdiff_off');?>",
-					newTextName: "<?php echo Lang('sys_safetest_viewdiff_local');?>",
+					baseTextName: "官方服务器文件",
+					newTextName: "本地文件",
 					viewType: 0
 				}));
 			}

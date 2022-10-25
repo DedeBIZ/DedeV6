@@ -1,89 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('soft_config');?></title>
+  <title>软件频道设置</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script>
     function AddServer() {
-      if (document.form1.serverurl.value == "" || document.form1.serverurl.value == "http://") { ShowMsg('<?php echo Lang("soft_config_err_serverurl_isempty");?>'); return; }
-      if (document.form1.servername.value == "") { ShowMsg('<?php echo Lang("soft_config_err_servername_isempty");?>'); return; }
-      if (document.form1.servertype.value == "") { ShowMsg('<?php echo Lang("soft_config_err_servertype_isempty");?>'); return; }
+      if (document.form1.serverurl.value == "" || document.form1.serverurl.value == "http://") { ShowMsg('服务器网址不能为空'); return; }
+      if (document.form1.servername.value == "") { ShowMsg('服务器名称不能为空'); return; }
+      if (document.form1.servertype.value == "") { ShowMsg('服务器类型不能为空'); return; }
       document.form1.sites.value += document.form1.serverurl.value + " | " + document.form1.servername.value + " | " + document.form1.servertype.value + "";
     }
   </script>
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="soft_config.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
         <td bgcolor="#f8f8f8" colspan="2">
           <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
             <tr>
-              <td width="30%"><?php echo Lang('soft_config');?></td>
+              <td width="30%">软件频道设置</td>
               <td width="70%" align="right"></td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td width="200"><?php echo Lang('soft_config_downtype');?>：</td>
+        <td width="200">链接显示方式：</td>
         <td>
-          <label><input type="radio" name="downtype" value="0" <?php if ($row['downtype']==0) echo " checked='checked' ";?>> <?php echo Lang('soft_config_downtype_0');?></label>
-          <label><input type="radio" name="downtype" value="1" <?php if ($row['downtype']==1) echo " checked='checked' ";?>> <?php echo Lang('soft_config_downtype_1');?></label>
+          <label><input type="radio" name="downtype" value="0" <?php if($row['downtype']==0) echo " checked='checked' ";?>> 直接显示地址列表</label>
+          <label><input type="radio" name="downtype" value="1" <?php if($row['downtype']==1) echo " checked='checked' ";?>> 要求进入下载地址列表页</label>
         </td>
       </tr>
       <tr>
-        <td><?php echo Lang('soft_config_gotojump');?>：</td>
+        <td>附件下载方式：</td>
         <td>
-          <label><input type="radio" name="gotojump" value="0" <?php if ($row['gotojump']==0) echo " checked='checked' ";?>> <?php echo Lang('soft_config_gotojump_0');?></label>
-          <label><input type="radio" name="gotojump" value="1" <?php if ($row['gotojump']==1) echo " checked='checked' ";?>> <?php echo Lang('soft_config_gotojump_1');?></label>
+          <label><input type="radio" name="gotojump" value="0" <?php if($row['gotojump']==0) echo " checked='checked' ";?>> 链接到真实软件地址</label>
+          <label><input type="radio" name="gotojump" value="1" <?php if($row['gotojump']==1) echo " checked='checked' ";?>> 链接到跳转页面</label>
         </td>
       </tr>
       <tr>
-        <td><?php echo Lang('soft_config_ismoresite');?>：</td>
+        <td>是否启用镜像站点：</td>
         <td>
-          <label><input type="radio" name="ismoresite" value="1" <?php if ($row['ismoresite']==1) echo " checked='checked' ";?>> <?php echo Lang('enable');?></label>
-          <label><input type="radio" name="ismoresite" value="0" <?php if ($row['ismoresite']==0) echo " checked='checked' ";?>> <?php echo Lang('disable');?></label>
+          <label><input type="radio" name="ismoresite" value="1" <?php if($row['ismoresite']==1) echo " checked='checked' ";?>> 启用</label>
+          <label><input type="radio" name="ismoresite" value="0" <?php if($row['ismoresite']==0) echo " checked='checked' ";?>> 不启用</label>
         </td>
       </tr>
       <tr>
-        <td><?php echo Lang('soft_config_islocal');?>：</td>
+        <td>启用镜像站点后是否保留本地下载：</td>
         <td>
-          <label><input type="radio" name="islocal" value="1" <?php if ($row['islocal']==1) echo " checked='checked' ";?>> <?php echo Lang('soft_config_islocal_1');?></label>
-          <label><input type="radio" name="islocal" value="0" <?php if ($row['islocal']==0) echo " checked='checked' ";?>> <?php echo Lang('soft_config_islocal_0');?></label>
+          <label><input type="radio" name="islocal" value="1" <?php if($row['islocal']==1) echo " checked='checked' ";?>> 保留</label>
+          <label><input type="radio" name="islocal" value="0" <?php if($row['islocal']==0) echo " checked='checked' ";?>> 不保留</label>
         </td>
       </tr>
       <tr>
-        <td><?php echo Lang('soft_config_moresitedo');?>：</td>
+        <td>镜像处理方式：</td>
         <td>
-          <label><input type="radio" name="moresitedo" value="1" <?php if ($row['moresitedo']==1) echo " checked='checked' ";?>> <?php echo Lang('soft_config_moresitedo_1');?></label>
-          <label><input type="radio" name="moresitedo" value="0" <?php if ($row['moresitedo']==0) echo " checked='checked' ";?>> <?php echo Lang('soft_config_moresitedo_0');?></label>
+          <label><input type="radio" name="moresitedo" value="1" <?php if($row['moresitedo']==1) echo " checked='checked' ";?>> 根据本地地址和服务器列表自动生成</label>
+          <label><input type="radio" name="moresitedo" value="0" <?php if($row['moresitedo']==0) echo " checked='checked' ";?>> 发布时按服务器生成列表由我手工填写</label>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2"><?php echo Lang('soft_config_tip');?></td>
+        <td bgcolor="#f8f8f8" colspan="2">不管是全局，还是具体某软件设置了下面的参数，附件下载方式都必须链接到中转页，否则无效</td>
       </tr>
       <tr>
-        <td><?php echo Lang('soft_config_dfrank');?>：</td>
+        <td>下载默认等级：</td>
         <td>
           <select name="dfrank" id="dfrank" style="width:160px">
             <?php
-              $urank = $cUserLogin->getUserRank();
-              $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank`>=0");
+              $urank = $cuserLogin->getUserRank();
+              $dsql->SetQuery("Select * from `#@__arcrank` where `rank`>=0 ");
               $dsql->Execute();
               while($nrow = $dsql->GetArray())
               {
-                if ($nrow['rank']==0) $nrow['membername'] = Lang("soft_config_downrank_0");
-                if ($nrow['rank']==$row['dfrank']) echo "<option value='{$nrow['rank']}' selected>{$nrow['membername']}</option>";
+                if($nrow['rank']==0) $nrow['membername'] = "开放下载";
+                if($nrow['rank']==$row['dfrank']) echo "<option value='{$nrow['rank']}' selected>{$nrow['membername']}</option>";
                 else echo "<option value='{$nrow['rank']}'>{$nrow['membername']}</option>";
               }
 			      ?>
@@ -91,40 +90,40 @@
         </td>
       </tr>
       <tr>
-        <td><?php echo Lang('soft_config_dfywboy');?>：</td>
+        <td>下载默认金币：</td>
         <td><input type="text" name="dfywboy" value="<?php echo $row['dfywboy'];?>" style="width:80px"></td>
       </tr>
       <tr>
-        <td><?php echo Lang('soft_config_argrange');?>：</td>
+        <td>参数限制方式：</td>
         <td>
-          <label><input type="radio" name="argrange" value="0" <?php if ($row['argrange']==0) echo " checked='checked' ";?>> <?php echo Lang('soft_config_argrange_0');?></label> 
-          <label><input type="radio" name="argrange" value="2" <?php if ($row['argrange']==1) echo " checked='checked' ";?>> <?php echo Lang('soft_config_argrange_2');?></label> 
+          <label><input type="radio" name="argrange" value="0" <?php if($row['argrange']==0) echo " checked='checked' ";?>> 允许发布时重新选择权限</label> 
+          <label><input type="radio" name="argrange" value="2" <?php if($row['argrange']==1) echo " checked='checked' ";?>> 所有软件均使用此权限</label> 
         </td>
       </tr>
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2"><?php echo Lang('soft_config_server_list');?>：</td>
+        <td bgcolor="#f8f8f8" colspan="2">镜像服务器列表：</td>
       </tr>
       <tr>
         <td colspan="2">
-          <?php echo Lang('soft_config_serverurl');?>：<input type="text" name="serverurl" id="serverurl" value="http://">
-          <?php echo Lang('soft_config_servername');?>：<input type="text" name="servername" id="servername">
-          <?php echo Lang('soft_config_servertype');?>：<input type="text" name="servertype" id="servertype" value="<?php echo Lang('default');?>">
-          <button type="button" name="Submit" onClick="AddServer()" class="btn btn-success btn-sm"><?php echo Lang('soft_config_addserver');?></button>
+          服务器网址：<input type="text" name="serverurl" id="serverurl" value="http://">
+          服务器名称：<input type="text" name="servername" id="servername">
+          服务器类型：<input type="text" name="servertype" id="servertype" value="默认">
+          <button type="button" name="Submit" onClick="AddServer()" class="btn btn-success btn-sm">增加一项</button>
         </td>
       </tr>
       <tr>
         <td colspan="2"><textarea name="sites" id="sites" style="width:98%;height:150px"><?php echo $row['sites'];?></textarea></td>
       </tr>
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2"><?php echo Lang('soft_config_info');?>：</td>
+        <td bgcolor="#f8f8f8" colspan="2">下载说明：</td>
       </tr>
       <tr>
         <td colspan="2"><?php GetEditor('downmsg',$row['downmsg'],250);?></td>
       </tr>
       <tr>
-        <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
-          <button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
-          <button type="reset" name="rset" id="rset" class="btn btn-success btn-sm"><?php echo Lang('reset');?></button>
+        <td bgcolor="#f8f8f8" colspan="2" align="center" class="py-2">
+          <button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
+          <button type="reset" name="rset" id="rset" class="btn btn-success btn-sm">重置</button>
         </td>
       </tr>
     </form>

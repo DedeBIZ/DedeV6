@@ -2,7 +2,7 @@
 /**
  * 模块菜单
  *
- * @version        $Id: inc_menu_module.php 2022-07-01 tianya $
+ * @version        $Id: inc_menu_module.php 1 10:32 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -34,17 +34,17 @@ while ($row = $dsql->GetObject()) {
     $plusset .= $row->menustring."\r\n";
 }
 $adminMenu = '';
-if ($cUserLogin->getUserType() >= 10) {
-    $adminMenu = DEDEBIZ_SAFE_MODE? "" : "<m:top name='module_main' c='6,' icon='fa-database'>
-    <m:item name='module_main' link='module_main.php' rank='sys_module' target='main' />
-    <m:item name='module_upload' link='module_upload.php' rank='sys_module' target='main' />
-    <m:item name='module_make' link='module_make.php' rank='sys_module' target='main' />
+if ($cuserLogin->getUserType() >= 10) {
+    $adminMenu = DEDEBIZ_SAFE_MODE? "" : "<m:top name='模块管理' c='6,' display='block'>
+    <m:item name='模块管理' link='module_main.php' rank='sys_module' target='main' />
+    <m:item name='上传新模块' link='module_upload.php' rank='sys_module' target='main' />
+    <m:item name='模块打包' link='module_make.php' rank='sys_module' target='main' />
     </m:top>";
 }
 $menusMoudle = "
 $adminMenu
-<m:top item='7' name='plus_main' icon='fa-plug'>
-    <m:item name='plus_main' link='plus_main.php' rank='10' target='main' />
+<m:top item='7' name='辅助插件' display='block'>
+    <m:item name='插件管理器' link='plus_main.php' rank='10' target='main' />
     $plusset
 </m:top>
 $moduleset

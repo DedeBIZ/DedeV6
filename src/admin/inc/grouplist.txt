@@ -1,88 +1,88 @@
->>gl_spec
+>>特别权限(仅超级管理员使用)
 
->admin_AllowAll>gl_admin_AllowAll
+>admin_AllowAll>可以进行任意操作
 
->>gl_channel
+>>频道管理
 
->c_List>gl_c_List
->c_New>gl_c_New
->c_Edit>gl_c_Edit
->c_Del>gl_c_Del
->c_Stepselect>gl_c_Stepselect
+>c_List>列出频道
+>c_New>新建频道
+>c_Edit>修改频道
+>c_Del>删除频道
+>c_Stepselect>联动类别管理
 
->>gl_typename
+>>栏目管理
 
->t_List>gl_t_List
->t_New>gl_t_New
->t_Edit>gl_t_Edit
->t_Move>gl_t_Move
->t_Del>gl_t_Del
->t_AccList>gl_t_AccList
->t_AccNew>gl_t_AccNew
->t_AccEdit>gl_t_AccEdit
->t_AccDel>gl_t_AccDel
+>t_List>列出任意栏目
+>t_New>新建任意栏目
+>t_Edit>修改任意栏目
+>t_Move>移动任意栏目
+>t_Del>删除任意栏目
+>t_AccList>列出授权栏目
+>t_AccNew>新建授权子栏目
+>t_AccEdit>修改授权子栏目
+>t_AccDel>删除授权子栏目
 
->>gl_content
+>>内容管理
 
->a_List>gl_a_List
->a_New>gl_a_New
->a_Edit>gl_a_Edit
->a_Del>gl_a_Del
->a_Commend>gl_a_Commend
->a_Check>gl_a_Check
->a_AccNew>gl_a_AccNew
->a_AccList>gl_a_AccList
->a_AccEdit>gl_a_AccEdit
->a_AccDel>gl_a_AccDel
->a_AccCheck>gl_a_AccCheck
->a_MyList>gl_a_MyList
->a_MyEdit>gl_a_MyEdit
->a_MyDel>gl_a_MyDel
->a_MyCheck>gl_a_MyCheck
->a_Recycling>gl_a_Recycling
+>a_List>列出内容
+>a_New>发布任意文档
+>a_Edit>修改任意文档
+>a_Del>删除任意文档
+>a_Commend>推荐任意文档
+>a_Check>审核任意文档
+>a_AccNew>发布授权文档
+>a_AccList>列出授权文档
+>a_AccEdit>修改授权文档
+>a_AccDel>删除授权文档
+>a_AccCheck>审核授权文档
+>a_MyList>列出我发布的文档
+>a_MyEdit>修改我发布的文档
+>a_MyDel>删除我发布的文档
+>a_MyCheck>审核我发布的文档
+>a_Recycling>管理回收站
 
->>gl_template>unsafe
+>>模板管理>unsafe
 
->temp_All>gl_temp_All>unsafe
->temp_New>gl_temp_New>unsafe
->temp_Edit>gl_temp_Edit>unsafe
->temp_Del>gl_temp_Del>unsafe
->temp_One>gl_temp_One>unsafe
->temp_MyTag>gl_temp_MyTag>unsafe
->temp_Test>gl_temp_Test>unsafe
->temp_Other>gl_temp_Other>unsafe
+>temp_All>管理所有模板>unsafe
+>temp_New>新建模板>unsafe
+>temp_Edit>修改模板>unsafe
+>temp_Del>删除模板>unsafe
+>temp_One>单页模板管理>unsafe
+>temp_MyTag>自定义标记>unsafe
+>temp_Test>测试标记>unsafe
+>temp_Other>模板其它管理>unsafe
 
->>gl_special
+>>专题管理
 
->spec_New>gl_spec_New
->spec_List>gl_spec_List
->spec_Edit>gl_spec_Edit
+>spec_New>新建专题
+>spec_List>列出专题
+>spec_Edit>修改专题
 
->>gl_system
+>>系统管理权限
 
->sys_User>gl_sys_User
->sys_Group>gl_sys_Group
->sys_MdPwd>gl_sys_MdPwd
->sys_DelUpload>gl_sys_DelUpload
->sys_Edit>gl_sys_Edit
->sys_Log>gl_sys_Log
->sys_plus>gl_sys_plus
->sys_Data>gl_sys_Data>unsafe
->sys_Att>gl_sys_Att
->sys_ArcBatch>gl_sys_ArcBatch
->sys_ArcTj>gl_sys_ArcTj
->sys_Source>gl_sys_Source
->sys_Writer>gl_sys_Writer
->sys_SoftConfig>gl_sys_SoftConfig
->sys_Keyword>gl_sys_Keyword
->sys_MakeHtml>gl_sys_MakeHtml
->sys_Feedback>gl_sys_Feedback
->sys_Upload>gl_sys_Upload
->sys_MyUpload>gl_sys_MyUpload
+>sys_User>系统用户管理
+>sys_Group>系统组管理
+>sys_MdPwd>修改个人密码
+>sys_DelUpload>删除附件
+>sys_Edit>修改系统参数
+>sys_Log>管理日志
+>sys_plus>插件管理
+>sys_Data>数据备份还原>unsafe
+>sys_Att>自定义文档属性
+>sys_ArcBatch>文档批量维护
+>sys_ArcTj>文档信息统计
+>sys_Source>新闻来源
+>sys_Writer>作者管理
+>sys_SoftConfig>软件频道参数
+>sys_Keyword>关键词管理
+>sys_MakeHtml>更新HTML
+>sys_Feedback>评论管理
+>sys_Upload>管理任意上传
+>sys_MyUpload>管理我的上传
 
->>gl_user
+>>会员管理
 
->member_Type>gl_member_Type
->member_List>gl_member_List
->member_Edit>gl_member_Edit
->member_Del>gl_member_Del
+>member_Type>会员类型管理
+>member_List>列出会员
+>member_Edit>修改会员
+>member_Del>删除会员

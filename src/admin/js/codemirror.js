@@ -1543,7 +1543,7 @@
       var toCmp = cmp(found.to, to) || extraRight(sp.marker) - extraRight(marker);
       if (fromCmp >= 0 && toCmp <= 0 || fromCmp <= 0 && toCmp >= 0) { continue }
       if (fromCmp <= 0 && (sp.marker.inclusiveRight && marker.inclusiveLeft ? cmp(found.to, from) >= 0 : cmp(found.to, from) > 0) ||
-          fromCmp >= 0 && (sp.marker.inclusiveRight && marker.inclusiveLeft ? cmp(found.from, to) <= 0 : cmp(found.from, to) < 0))
+         FROMCmp >= 0 && (sp.marker.inclusiveRight && marker.inclusiveLeft ? cmp(found.from, to) <= 0 : cmp(found.from, to) < 0))
         { return true }
     } }
   }
@@ -3423,10 +3423,10 @@
     if (viewport && viewport.ensure) {
       var ensureFrom = viewport.ensure.from.line, ensureTo = viewport.ensure.to.line;
       if (ensureFrom < from) {
-        from = ensureFrom;
+       FROM = ensureFrom;
         to = lineAtHeight(doc, heightAtLine(getLine(doc, ensureFrom)) + display.wrapper.clientHeight);
       } else if (Math.min(ensureTo, doc.lastLine()) >= to) {
-        from = lineAtHeight(doc, heightAtLine(getLine(doc, ensureTo)) - display.wrapper.clientHeight);
+       FROM = lineAtHeight(doc, heightAtLine(getLine(doc, ensureTo)) - display.wrapper.clientHeight);
         to = ensureTo;
       }
     }
@@ -4130,7 +4130,7 @@
     if (display.viewFrom < from && from - display.viewFrom < 20) { from = Math.max(doc.first, display.viewFrom); }
     if (display.viewTo > to && display.viewTo - to < 20) { to = Math.min(end, display.viewTo); }
     if (sawCollapsedSpans) {
-      from = visualLineNo(cm.doc, from);
+     FROM = visualLineNo(cm.doc, from);
       to = visualLineEndNo(cm.doc, to);
     }
 
@@ -5276,7 +5276,7 @@
   function filterChange(doc, change, update) {
     var obj = {
       canceled: false,
-      from: change.from,
+     FROM: change.from,
       to: change.to,
       text: change.text,
       origin: change.origin,
@@ -5515,7 +5515,7 @@
     var changesHandler = hasHandler(cm, "changes"), changeHandler = hasHandler(cm, "change");
     if (changeHandler || changesHandler) {
       var obj = {
-        from: from, to: to,
+       FROM: from, to: to,
         text: change.text,
         removed: change.removed,
         origin: change.origin
@@ -5911,7 +5911,7 @@
       var line = this.lines[i];
       var span = getMarkedSpanFor(line.markedSpans, this);
       if (span.from != null) {
-        from = Pos(lineObj ? line : lineNo(line), span.from);
+       FROM = Pos(lineObj ? line : lineNo(line), span.from);
         if (side == -1) { return from }
       }
       if (span.to != null) {
@@ -5989,7 +5989,7 @@
     }
     if (marker.collapsed) {
       if (conflictingCollapsedRange(doc, from.line, from, to, marker) ||
-          from.line != to.line && conflictingCollapsedRange(doc, to.line, from, to, marker))
+         FROM.line != to.line && conflictingCollapsedRange(doc, to.line, from, to, marker))
         { throw new Error("Inserting collapsed marker partially overlapping an existing one") }
       seeCollapsedSpans();
     }
@@ -6169,7 +6169,7 @@
       setSelection(this, simpleSelection(top), sel_dontScroll);
     }),
     replaceRange: function(code, from, to, origin) {
-      from = clipPos(this, from);
+     FROM = clipPos(this, from);
       to = to ? clipPos(this, to) : from;
       replaceRange(this, code, from, to, origin);
     },
@@ -6413,7 +6413,7 @@
       return markers
     },
     findMarks: function(from, to, filter) {
-      from = clipPos(this, from); to = clipPos(this, to);
+     FROM = clipPos(this, from); to = clipPos(this, to);
       var found = [], lineNo = from.line;
       this.iter(from.line, to.line + 1, function (line) {
         var spans = line.markedSpans;
@@ -6997,11 +6997,11 @@
       }
     }); },
     deleteLine: function (cm) { return deleteNearSelection(cm, function (range) { return ({
-      from: Pos(range.from().line, 0),
+     FROM: Pos(range.from().line, 0),
       to: clipPos(cm.doc, Pos(range.to().line + 1, 0))
     }); }); },
     delLineLeft: function (cm) { return deleteNearSelection(cm, function (range) { return ({
-      from: Pos(range.from().line, 0), to: range.from()
+     FROM: Pos(range.from().line, 0), to: range.from()
     }); }); },
     delWrappedLineLeft: function (cm) { return deleteNearSelection(cm, function (range) {
       var top = cm.charCoords(range.head, "div").top + 5;
@@ -9073,11 +9073,11 @@
 
     var fromIndex, fromLine, fromNode;
     if (from.line == display.viewFrom || (fromIndex = findViewIndex(cm, from.line)) == 0) {
-      fromLine = lineNo(display.view[0].line);
-      fromNode = display.view[0].node;
+     FROMLine = lineNo(display.view[0].line);
+     FROMNode = display.view[0].node;
     } else {
-      fromLine = lineNo(display.view[fromIndex].line);
-      fromNode = display.view[fromIndex - 1].node.nextSibling;
+     FROMLine = lineNo(display.view[fromIndex].line);
+     FROMNode = display.view[fromIndex - 1].node.nextSibling;
     }
     var toIndex = findViewIndex(cm, to.line);
     var toLine, toNode;
@@ -9254,7 +9254,7 @@
     for (;;) {
       walk(from);
       if (from == to) { break }
-      from = from.nextSibling;
+     FROM = from.nextSibling;
       extraLinebreak = false;
     }
     return text

@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成标签操作
+ * 生成Tag操作
  *
  * @version        $Id: makehtml_taglist_action.php 1 11:17 2020年8月19日Z tianya $
  * @package        DedeBIZ.Administrator
@@ -8,10 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Archive\TagList;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_MakeHtml');
+CheckPurview('sys_MakeHtml');
+require_once(DEDEINC."/archive/taglist.class.php");
 if (empty($pageno)) $pageno = 0;
 if (empty($mktime)) $mktime = time();
 if (empty($mkpage)) $mkpage = 1;
@@ -46,11 +45,11 @@ if ($ctagid == 0 && $allfinish) {
     $dlist->SetTagsDir($tagsdir);
     $dlist->MakeHtml(1, 10);
     $reurl = '..'.$tagsdir;
-    ShowMsg(Lang('makehtml_taglist_make_success')."，<a href='$reurl' target='_blank'>".Lang('makehtml_taglist_view')."</a>", "javascript:;");
+    ShowMsg("更新完成TAG，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
     exit;
 }
 $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
-//创建标签目录
+//创建TAGS目录
 $tagsDir = str_replace("{cmspath}",$cfg_cmspath,$cfg_tags_dir);
 MkdirAll($cfg_basedir.$tagsDir, $cfg_dir_purview);
 if (is_array($tag) && count($tag) > 0) {
@@ -76,30 +75,30 @@ if (is_array($tag) && count($tag) > 0) {
         $dlist->MakeHtml(1, 10);
         $reurl = '..'.$tagsdir;
         if ($upall == 1) {
-            ShowMsg(Lang('makehtml_taglist_make_success')."<a href='$reurl' target='_blank'>".Lang('makehtml_taglist_view')."</a>", "javascript:;");
+            ShowMsg("完成TAG更新<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
         } else {
-            $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid'";
+            $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
             $dsql->ExecuteNoneQuery($query);
             $reurl .= '/'.$ctagid;
-            ShowMsg(Lang('makehtml_taglist_make_success')."：".$tag['tag']."，<a href='$reurl' target='_blank'>".Lang('makehtml_taglist_view')."</a>", "javascript:;");
+            ShowMsg("更新完成TAG：".$tag['tag']."，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
         }
         exit();
     } else {
         if ($finishType) {
             //完成了一个跳到下一个
             if ($upall == 1) {
-                $query = "UPDATE `#@__tagindex` SET mktime={$mktime} WHERE id='$ctagid'";
+                $query = "UPDATE `#@__tagindex` SET mktime={$mktime} WHERE id='$ctagid' ";
                 $dsql->ExecuteNoneQuery($query);
                 $ctagid = 0;
                 $nextpage = 0;
             }
             $gourl = "makehtml_taglist_action.php?maxpagesize=$maxpagesize&tagid=$tagid&pageno=$nextpage&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
-            ShowMsg(Lang('makehtml_taglist_success_makeone',array('tag'=>$tag['tag'])), $gourl, 0, 100);
+            ShowMsg("成功生成TAG：".$tag['tag']."，继续执行任务", $gourl, 0, 100);
             exit();
         } else {
             //继续当前这个
             $gourl = "makehtml_taglist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&tagid=$tagid&pageno=$pageno&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
-            ShowMsg(Lang('makehtml_taglist_success_makeone',array('tag'=>$tag['tag'])), $gourl, 0, 100);
+            ShowMsg("成功生成TAG：".$tag['tag']."，继续执行任务", $gourl, 0, 100);
             exit();
         }
     }

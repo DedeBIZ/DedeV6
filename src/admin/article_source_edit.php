@@ -8,10 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeWin;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_Source');
+require_once(DEDEINC."/libraries/oxwindow.class.php");
+CheckPurview('sys_Source');
 if (empty($dopost)) $dopost = '';
 if (empty($allsource)) $allsource = '';
 else $allsource = stripslashes($allsource);
@@ -30,8 +29,13 @@ if (empty($allsource) && filesize($m_file) > 0) {
     $allsource = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wintitle = Lang("content_source_main");
-$wecome_info = Lang("content_source_main");
-DedeWin::Instance()->Init('article_source_edit.php', 'js/blank.js', 'POST')->AddHidden('dopost', 'save')
-->AddTitle(Lang("content_source_main_title"))->AddMsgItem("<textarea name='allsource' id='allsource' style='width:100%;height:300px'>$allsource</textarea>")->GetWindow('ok')->Display();
+$wintitle = "文档来源管理";
+$wecome_info = "文档来源管理";
+$win = new OxWindow();
+$win->Init('article_source_edit.php', 'js/blank.js', 'POST');
+$win->AddHidden('dopost', 'save');
+$win->AddTitle("每行保存一个来源：");
+$win->AddMsgItem("<textarea name='allsource' id='allsource' style='width:100%;height:300px'>$allsource</textarea>");
+$winform = $win->GetWindow('ok');
+$win->Display();
 ?>

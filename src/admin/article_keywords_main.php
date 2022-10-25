@@ -8,17 +8,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_Keyword');
+CheckPurview('sys_Keyword');
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (empty($dopost)) $dopost = '';
 //保存批量修改
 if ($dopost == 'saveall') {
     $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? "article_keywords_main.php" : $_COOKIE['ENV_GOBACK_URL'];
     if (!isset($aids)) {
-        ShowMsg(Lang("article_keywords_err_select"), $ENV_GOBACK_URL);
+        ShowMsg("您没有选择要修改的内容", $ENV_GOBACK_URL);
         exit();
     }
     foreach ($aids as $aid) {
@@ -34,17 +33,17 @@ if ($dopost == 'saveall') {
         $staold = ${'staold_'.$aid};
         $sta = empty(${'isnouse_'.$aid}) ? 1 : 0;
         if ($staold != $sta) {
-            $query1 = "UPDATE `#@__keywords` SET sta='$sta',rpurl='$rpurl' WHERE aid='$aid'";
+            $query1 = "UPDATE `#@__keywords` SET sta='$sta',rpurl='$rpurl' WHERE aid='$aid' ";
             $dsql->ExecuteNoneQuery($query1);
             continue;
         }
         //更新链接网址
         if ($rpurl != $rpurlold) {
-            $query1 = "UPDATE `#@__keywords` SET rpurl='$rpurl' WHERE aid='$aid'";
+            $query1 = "UPDATE `#@__keywords` SET rpurl='$rpurl' WHERE aid='$aid' ";
             $dsql->ExecuteNoneQuery($query1);
         }
     }
-    ShowMsg(Lang("article_keywords_edit_success"), $ENV_GOBACK_URL);
+    ShowMsg("完成指定的修改", $ENV_GOBACK_URL);
     exit();
 }
 //增加关键词
@@ -53,24 +52,24 @@ else if ($dopost == 'add') {
     $keyword = trim($keyword);
     $rank = preg_replace("#[^0-9]#", '', $rank);
     if ($keyword == '') {
-        ShowMsg(Lang("article_keywords_err_isempty"), -1);
+        ShowMsg("关键词不能为空", -1);
         exit();
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__keywords` WHERE keyword LIKE '$keyword'");
     if (is_array($row)) {
-        ShowMsg(Lang("article_keywords_err_isexists"), "-1");
+        ShowMsg("关键词已存在库中", "-1");
         exit();
     }
     $inquery = "INSERT INTO `#@__keywords`(keyword,`rank`,sta,rpurl) VALUES ('$keyword','$rank','1','$rpurl');";
     $dsql->ExecuteNoneQuery($inquery);
-    ShowMsg(Lang("article_keywords_add_success"), $ENV_GOBACK_URL);
+    ShowMsg("成功增加一个关键词", $ENV_GOBACK_URL);
     exit();
 }
 if (empty($keyword)) {
     $keyword = '';
     $addquery = '';
 } else {
-    $addquery = "WHERE keyword LIKE '%$keyword%'";
+    $addquery = " WHERE keyword LIKE '%$keyword%' ";
 }
 $sql = "SELECT * FROM `#@__keywords` $addquery ORDER BY `rank` DESC";
 $dlist = new DataListCP();

@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('member_rank');?></title>
+  <title>会员权限管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
   <form name="form1" action="member_rank.php" method="post">
     <input type="hidden" name="dopost" value="save">
-    <table width="98%" align="center"  cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr>
-        <td bgcolor="#f8f8f8" colspan="6"><?php echo Lang('member_main');?> &gt; <?php echo Lang('member_rank');?></td>
+        <td bgcolor="#f8f8f8" colspan="6">会员管理 &gt; 会员级别设置</td>
       </tr>
-      <tr bgcolor="#f8fcf2">
-        <td colspan="6"><?php echo Lang('member_rank_tip');?></td>
+      <tr bgcolor="#fbfce2">
+        <td colspan="6">级别名称和级别值：注册会员这个级别不能删除，否则会员系统将会无法正常使用某些功能</td>
       </tr>
       <tr align="center">
-        <td width="20%"><?php echo Lang('member_name_new');?></td>
-        <td width="18%"><?php echo Lang('member_rank_new');?></td>
-        <td width="15%"><?php echo Lang('member_money_new');?></td>
-        <td width="15%"><?php echo Lang('member_scores_new');?></td>
-        <td width="16%"><?php echo Lang('member_type');?></td>
-        <td width="16%"><?php echo Lang('member_status');?></td>
+        <td width="20%">级别名称</td>
+        <td width="18%">会员等级值</td>
+        <td width="15%">默认金币</td>
+        <td width="15%">默认积分</td>
+        <td width="16%">类型</td>
+        <td width="16%">状态</td>
       </tr>
       <?php
     	$k=0;
@@ -42,23 +42,23 @@
         <td><input type="text" name="scores_<?php echo $k?>" value="<?php echo $row->scores;?>" id="scores_<?php echo $k?>"></td>
         <td align="center">
           <?php
-      	  if ($row->id<=5) { echo Lang("member_system"); }
-          else { echo Lang("member_user"); }
+      	  if($row->id<=5) { echo "系统"; }
+          else { echo "用户"; }
           ?>
         </td>
-        <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if ($row->id == 3) echo 'disabled="disabled"';?> value="1" checked="checked"> <?php echo Lang('member_using');?></td>
+        <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" <?php if($row->id == 3) echo 'disabled="disabled"';?> value="1" checked="checked"> 正在使用</td>
       </tr>
       <?php }?>
       <input type="hidden" name="idend" value="<?php echo $k;?>">
-      <tr bgcolor="#f8fcf2">
-        <td colspan="6"><?php echo Lang('member_rank_tip2');?></td>
+      <tr bgcolor="#fbfce2">
+        <td colspan="6">新增一个级别：由于会员升级是以级别值由低向高升级的，因此增加组别时需注意此值的设置，如果您增加新的会员组的级别值低于10，将自动被视为普通的注册会员</td>
       </tr>
       <tr align="center">
-        <td><?php echo Lang('member_name_new');?></td>
-        <td><?php echo Lang('member_rank_new');?></td>
-        <td><?php echo Lang('member_money_new');?></td>
-        <td><?php echo Lang('member_scores_new');?></td>
-        <td><?php echo Lang('member_opandset');?></td>
+        <td>级别名称</td>
+        <td>级别值（待审为0，注册会员为10）</td>
+        <td>默认金币</td>
+        <td>默认积分</td>
+        <td>操作设置</td>
         <td></td>
       </tr>
       <tr align="center">
@@ -66,11 +66,11 @@
         <td><input type="text" name="rank_new" id="rank_new" value="20"></td>
         <td><input type="text" name="money_new" id="money_new" value="0"></td>
         <td><input type="text" name="scores_new" id="scores_new" value="100"></td>
-        <td><input type="checkbox" name="check_new" id="check_new" value="1" checked> <?php echo Lang('member_add_rank');?></td>
+        <td><input type="checkbox" name="check_new" id="check_new" value="1" checked> 增加等级</td>
         <td></td>
       </tr>
       <tr>
-        <td align="center" colspan="6" class="py-2"><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></td>
+        <td colspan="6" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
       </tr>
     </table>
   </form>

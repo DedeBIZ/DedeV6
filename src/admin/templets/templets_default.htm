@@ -1,75 +1,73 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang('templets_main');?></title>
+		<title>模板管理器</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.min.css">
-		<style>
-			.linerow {
-				border-bottom: 1px solid #CBD8AC
-			}
-		</style>
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<style>.linerow{border-bottom:1px solid #CBD8AC}</style>
 		<script>
 			function DelTpl(filename) {
-				if (window.confirm('<?php echo Lang("templets_main_confirm_delete");?>')) location = 'tpl.php?action=del&acdir=<?php echo $acdir;?>&filename=' +
+				if (window.confirm('您确定要删除这篇文档吗')) location = 'tpl.php?action=del&acdir=<?php echo $acdir;?>&filename=' +
 					filename;
 				else return false;
 			}
 		</script>
 	</head>
 	<body>
-		<table width="98%" align="center" cellspacing="1" cellpadding="0" class="table maintable mt-3 mb-3">
+		<table width="98%" cellspacing="1" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
 			<tr align="center">
-				<td width="25%" bgcolor="#f8f8f8"><?php echo Lang('filename');?></td>
-				<td width="30%" bgcolor="#f8f8f8"><?php echo Lang('description');?></td>
-				<td width="25%" bgcolor="#f8f8f8"><?php echo Lang('edit_time');?></td>
-				<td width="20%" bgcolor="#f8f8f8"><?php echo Lang('operation');?></td>
+				<td width="25%" bgcolor="#f8f8f8">文件名</td>
+				<td width="30%" bgcolor="#f8f8f8">文件描述</td>
+				<td width="25%" bgcolor="#f8f8f8">修改时间</td>
+				<td width="20%" bgcolor="#f8f8f8">操作</td>
 			</tr>
 			<tr>
 				<td colspan="4">
 					<span class="float-left py-2">
-						<?php echo Lang('current_postion');?>：
+						当前位置：
 						<?php
-						if ($acdir=='plus') echo Lang('templets_main_plus');
-						else if ($acdir=='system') echo Lang('templets_main_system');
-						else echo Lang('templets_main_other').' &gt; '.$acdir;
+						if($acdir=='plus') echo '插件模板';
+						else if($acdir=='system') echo '底层模板';
+						else echo '核心模板 &gt; '.$acdir;
 						?>
 					</span>
 					<span class="float-right mr-2">
-						<a class="btn btn-success btn-sm" href="templets_main.php"><?php echo Lang('templets_main_default_dir');?></a>
-						<a class="btn btn-success btn-sm" href="templets_main.php?acdir=apps"><?php echo Lang('templets_main_apps_dir');?></a>
+						<a class="btn btn-success btn-sm" href="templets_main.php">默认模板目录</a>
+						<a class="btn btn-success btn-sm" href="templets_main.php?acdir=plus">插件模板目录</a>
 					</span>
 				</td>
 			</tr>
 			<?php
 			$files = scandir($templetdird);
 			foreach ($files as $filename){
-				if (!preg_match("#\.htm#", $filename)) continue;
+				if(!preg_match("#\.htm#", $filename)) continue;
 				$filetime = filemtime($templetdird.'/'.$filename);
 				$filetime = MyDate("Y-m-d H:i",$filetime);
 				$fileinfo = (isset($fileinfos[$filename]) ? $fileinfos[$filename]:'未知模板');
 			?>
-			<tr onMouseMove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
-				<td><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='bi bi-filetype-html' viewBox='0 0 16 16'>
-					<path fill-rule='evenodd' d='M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5Zm-9.736 7.35v3.999h-.791v-1.714H1.79v1.714H1V11.85h.791v1.626h1.682V11.85h.79Zm2.251.662v3.337h-.794v-3.337H4.588v-.662h3.064v.662H6.515Zm2.176 3.337v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596H9.93L8.79 11.85h-.805v3.999h.706Zm4.71-.674h1.696v.674H12.61V11.85h.79v3.325Z'/>
-				  </svg> <?php echo $filename;?></a></td>
+			<tr onMouseMove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<td><a href="<?php echo $templeturld.'/'.$filename;?>" target="_blank"><img src="../static/web/img/htm.gif"><?php echo $filename;?></a></td>
 				<td><?php echo $fileinfo;?></td>
 				<td align="center"><?php echo $filetime;?></td>
 				<td align="center">
-					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-code"></i> <?php echo Lang('edit');?></a>
-					<?php if (!isset($fileinfos[$filename])) {?>
-					<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename;?>');"><i class="fa fa-trash"></i> <?php echo Lang('delete');?></a>
+					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a>
+					<?php
+					if(!isset($fileinfos[$filename])){
+					?>
+					<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename;?>');" title="删除"><i class="fa fa-trash"></i></a>
 					<?php }?>
 				</td>
 			</tr>
-			<?php }?>
+			<?php
+			}
+			?>
 			<tr>
-				<td align="center" colspan="4" bgcolor="#f8f8f8" class="py-2">
-					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir;?>"><?php echo Lang('templets_main_new');?></a>
-					<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir;?>"><?php echo Lang('templets_main_upload');?></a>
+				<td bgcolor="#f8f8f8" align="center" colspan="4" class="py-2">
+					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir;?>">新建模板</a>
+					<a class="btn btn-success btn-sm" href="tpl.php?action=upload&acdir=<?php echo $acdir;?>">上传模板</a>
 				</td>
 			</tr>
 		</table>

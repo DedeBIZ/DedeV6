@@ -14,7 +14,7 @@ function browserVersion(types) {
 			var matches = re.exec(USERAGENT);
 			var ver = matches != null ? matches[2] : 0;
 			other = ver !== 0 ? 0 : other;
-		} else {
+		}else {
 			var ver = 0;
 		}
 		eval('BROWSER.' + i + '= ver');

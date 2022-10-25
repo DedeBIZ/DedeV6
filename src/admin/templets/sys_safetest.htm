@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('sys_safetest');?></title>
+  <title>病毒文件扫描</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
   <script src="js/main.js"></script>
@@ -19,7 +19,7 @@
 		    if (resp.ok) {
 			   return resp.text()
 		    }
-		    throw new Error('<?php echo Lang("error_fetch");?>');
+		    throw new Error('系统错误，无法获取数据');
 		  }).then((d)=>{
 			  $DE('messagetd').innerHTML = d;
 			  $Obj('loaddiv').style.display = 'none';
@@ -33,7 +33,7 @@
 			  if (resp.ok) {
 				  return resp.text()
 			  }
-			  throw new Error('<?php echo Lang("error_fetch");?>');
+			  throw new Error('系统错误，无法获取数据');
 		  }).then((d)=>{
 			  $DE('messagetd').innerHTML = d;
 			  $Obj('loaddiv').style.display = 'none';
@@ -45,32 +45,35 @@
 </head>
 <body>
   <div id="loaddiv" style="display:none">
-    <p align="center" style="padding-top:160px"><img src="../static/web/img/load.gif" style="vertical-align:middle">请稍后，正在操作中</p>
+    <p align="center" style="padding-top:160px"><img src="../static/web/img/loadinglit.gif" style="vertical-align:middle">请稍后，正在操作中</p>
   </div>
   <?php echo $alter;?>
-  <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="2"><?php echo Lang('sys_safetest');?></td>
+      <td width="100%" bgcolor="#f8f8f8" colspan="2">木马自检程序</td>
     </tr>
     <tr>
       <td colspan="2">
-       <?php echo Lang('sys_safetest_tip');?>
+        安全建议：<br>
+        1、有条件的用户把data、system、theme修改为不可对外访问，static、a目录设置为不允许执行脚本，其它目录禁止写入，系统将更安全；<br>
+        2、本检测程以开发模式为标准，如果您的网站目录包含其它系统，此检测程序可能会产生错误判断；<br>
+        3、检测程序会跳过对模板缓存目录的检测，为了安全起见，检测完成后建议清空模板缓存
       </td>
     </tr>
     <tr>
       <td colspan="2">
-        <p><?php echo Lang('sys_safetest_filetype');?>：<input type="text" name="filetype" id="filetype" value="php|inc" style="width:390px"> <?php echo Lang('sys_safetest_filetype_tip');?></p>
-        <p><?php echo Lang('sys_safetest_info');?>：<input type="text" name="info" id="info" value="eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode" style="width:390px"> <?php echo Lang('sys_safetest_info_tip');?></p>
+        <p>文件类型：<input type="text" name="filetype" id="filetype" value="php|inc" style="width:390px"> 要检查的文件类型</p>
+        <p>代码特征：<input type="text" name="info" id="info" value="eval|cmd|system|exec|_GET|_POST|_REQUEST|base64_decode" style="width:390px"> 特征代码</p>
       </td>
     </tr>
     <tr>
-      <td align="center" colspan="2" bgcolor="#f8fcf2" class="py-2">
-        <button type="button" name="bt1" class="btn btn-success btn-sm" onclick="LoadCtTest();"><?php echo Lang('sys_safetest_test');?></button>
-        <button type="button" name="bt2" class="btn btn-success btn-sm" onclick="LoadCtClear();"><?php echo Lang('sys_safetest_clear');?></button>
+      <td colspan="2" align="center" class="py-2">
+        <button type="button" name="bt1" class="btn btn-success btn-sm" onclick="LoadCtTest();">开始检测</button>
+        <button type="button" name="bt2" class="btn btn-success btn-sm" onclick="LoadCtClear();">清空模板缓存</button>
       </td>
     </tr>
     <tr>
-      <td colspan="2"><?php echo Lang('sys_safetest_rs');?></td>
+      <td colspan="2" bgcolor="#f8f8f8">检测结果：结果仅供参考，请务必查看源码后才删除非法文件</td>
     </tr>
     <tr>
       <td height="360" colspan="2" id="messagetd" valign="top"></td>

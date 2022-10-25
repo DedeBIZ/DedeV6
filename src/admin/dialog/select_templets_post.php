@@ -2,7 +2,7 @@
 /**
  * 模板发送
  *
- * @version        $Id: select_templets_post.php 2022-07-01 tianya $
+ * @version        $Id: select_templets_post.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeBIZ.Dialog
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -14,15 +14,15 @@ if (empty($uploadfile)) {
     $uploadfile = "";
 }
 if (!is_uploaded_file($uploadfile)) {
-    ShowMsg(Lang("friendlink_err_imglogo_empty"), "-1");
+    ShowMsg("您没有选择上传的文件", "-1");
     exit();
 }
 if (!preg_match("#^text#", $uploadfile_type)) {
-    ShowMsg(Lang("dialog_template_err_upload"), "-1");
+    ShowMsg("您上传的不是文本类型附件", "-1");
     exit();
 }
 if (!preg_match("#\.(".$cfg_txttype.")#i", $uploadfile_name)) {
-    ShowMsg(Lang("dialog_template_err_format"), "-1");
+    ShowMsg("您所上传的模板文件类型不能被识别，只允许htm、html、tpl、txt扩展名", "-1");
     exit();
 }
 if ($filename =='') {
@@ -30,12 +30,12 @@ if ($filename =='') {
 }
 $filename = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $filename));
 if ($filename == '' || !preg_match("#\.(".$cfg_txttype.")#i", $filename)) {
-    ShowMsg(Lang("dialog_template_err_ftype"), "-1");
+    ShowMsg("您所上传的文件存在问题，请检查文件类型是否适合", "-1");
     exit();
 }
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
-move_uploaded_file($uploadfile, $fullfilename) or die(Lang('media_err_upload',array('filename'=>$fullfilename)));
+move_uploaded_file($uploadfile, $fullfilename) or die("上传文件到 $fullfilename 失败");
 @unlink($uploadfile);
-ShowMsg(Lang("dialog_soft_success_upload"), "select_templets.php?comeback=".urlencode($filename)."&f=$f&activepath=".urlencode($activepath)."&d=".time());
+ShowMsg("成功上传文件", "select_templets.php?comeback=".urlencode($filename)."&f=$f&activepath=".urlencode($activepath)."&d=".time());
 exit();
 ?>

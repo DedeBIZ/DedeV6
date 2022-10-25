@@ -1,4 +1,5 @@
 <?php
+if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文件管理逻辑类
  *
@@ -12,7 +13,8 @@ class FileManagement
 {
     var $baseDir = "";
     var $activeDir = "";
-    //是否允许文件管理器删除目录，默认为不允许0，如果希望可能管理整个目录，请把值设为1
+    //是否允许文件管理器删除目录；
+    //默认为不允许 0 ,如果希望可能管理整个目录,请把值设为 1 ；
     var $allowDeleteDir = 0;
     //初始化系统
     function Init()
@@ -28,9 +30,10 @@ class FileManagement
         $newname = $this->baseDir.$this->activeDir."/".$newname;
         $oldext = pathinfo($oldname)['extension'];
         $newext = pathinfo($newname)['extension'];
+
         if ($oldext != $newext) {
             if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($newname))) {
-                ShowMsg(Lang("media_ext_forbidden"), "javascript:;");
+                ShowMsg("您指定的文件名被系统禁止", "javascript:;");
                 exit();
             }
         }
@@ -38,7 +41,7 @@ class FileManagement
         if (($newname != $oldname) && is_writable($oldname)) {
             rename($oldname, $newname);
         }
-        ShowMsg(Lang("file_success_rename"), "file_manage_main.php?activepath=".$this->activeDir);
+        ShowMsg("成功修改一个文件名", "file_manage_main.php?activepath=".$this->activeDir);
         return 0;
     }
     //创建新目录
@@ -49,10 +52,10 @@ class FileManagement
         if (is_writable($this->baseDir.$this->activeDir)) {
             MkdirAll($dirname, $GLOBALS['cfg_dir_purview']);
             CloseFtp();
-            ShowMsg(Lang("file_success_newdir"), "file_manage_main.php?activepath=".$this->activeDir."/".$newdir);
+            ShowMsg("成功创建一个新目录", "file_manage_main.php?activepath=".$this->activeDir."/".$newdir);
             return 1;
         } else {
-            ShowMsg(Lang("file_err_newdir"), "file_manage_main.php?activepath=".$this->activeDir);
+            ShowMsg("创建新目录失败，因为这个位置不允许写入", "file_manage_main.php?activepath=".$this->activeDir);
             return 0;
         }
     }
@@ -83,14 +86,14 @@ class FileManagement
                     copy($oldfile, $truepath."/$mfile");
                 }
                 unlink($oldfile);
-                ShowMsg(Lang("file_success_move"), "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("成功移动文件", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 1;
             } else {
-                ShowMsg(Lang('file_err_move',array('oldfile'=>$oldfile,'truepath'=>$truepath,'mfile'=>$mfile)), "file_manage_main.php?activepath=$mpath", 0, 1000);
+                ShowMsg("移动文件 $oldfile &gt; $truepath/$mfile 失败，可能是某个位置权限不足", "file_manage_main.php?activepath=$mpath", 0, 1000);
                 return 0;
             }
         } else {
-            ShowMsg(Lang("file_err_path"), "-1", 0, 5000);
+            ShowMsg("对不起，您移动的路径不合法", "-1", 0, 5000);
             return 0;
         }
     }
@@ -99,7 +102,7 @@ class FileManagement
      *
      * @param unknown_type $indir
      */
-    function RmDirFiles($indir='')
+    function RmDirFiles($indir)
     {
         if (!is_dir($indir)) {
             return;
@@ -124,7 +127,7 @@ class FileManagement
      * @param unknown_type $fileexp
      * @param unknown_type $filearr
      */
-    function GetMatchFiles($indir='', $fileexp='', &$filearr)
+    function GetMatchFiles($indir, $fileexp, &$filearr)
     {
         $dh = dir($indir);
         while ($filename = $dh->read()) {
@@ -150,18 +153,18 @@ class FileManagement
         $filename = $this->baseDir.$this->activeDir."/$filename";
         if (is_file($filename)) {
             @unlink($filename);
-            $t = Lang("file");
+            $t = "文件";
         } else {
-            $t = Lang("dir");
+            $t = "目录";
             if ($this->allowDeleteDir == 1) {
                 $this->RmDirFiles($filename);
             } else {
                 //完善用户体验，by:sumic
-                ShowMsg(Lang("file_err_delete").$t, "file_manage_main.php?activepath=".$this->activeDir);
+                ShowMsg("系统禁止删除".$t."", "file_manage_main.php?activepath=".$this->activeDir);
                 exit;
             }
         }
-        ShowMsg(Lang("file_success_delete").$t, "file_manage_main.php?activepath=".$this->activeDir);
+        ShowMsg("成功删除一个".$t."", "file_manage_main.php?activepath=".$this->activeDir);
         return 0;
     }
 }

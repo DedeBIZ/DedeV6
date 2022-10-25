@@ -2,27 +2,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('plus_main');?></title>
+  <title>插件管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr bgcolor="#f8f8f8">
-      <td width="30%" colspan="2"><?php echo Lang('plus_main');?></td>
-      <td align="right" colspan="2">[<a href="module_main.php?moduletype=plus"><?php echo Lang('plus_install');?></a>]</td>
+      <td colspan="4">插件管理</td>
     </tr>
-    <tr align="center" bgcolor="#f8fcf2">
+    <tr bgcolor="#fbfce2" align="center">
       <td width="10%">id</td>
-      <td width="40%"><?php echo Lang('plus_plusname');?></td>
-      <td width="20%"><?php echo Lang('writer');?></td>
-      <td width="30%"><?php echo Lang('operation');?></td>
+      <td width="40%">插件名称</td>
+      <td width="20%">插件作者</td>
+      <td width="30%">管理</td>
     </tr>
-    {dede:datalist empty='<tr><td colspan="4"><center>~lang:none_result~</center></td></tr>'}
-    <tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
+    {dede:datalist empty='<tr><td colspan="4"><center>暂无内容</center></td></tr>'}
+    <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.aid/}</td>
       <td>{dede:field.plusname/}</td>
       <td>{dede:field.writer/}</td>
@@ -30,7 +29,10 @@
     </tr>
     {/dede:datalist}
     <tr>
-      <td align="center" colspan="4" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
+      <td colspan="4"><a href="module_main.php?moduletype=plus" class="btn btn-success btn-sm">安装新插件</a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#f8f8f8" colspan="4" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
 </body>

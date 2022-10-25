@@ -8,11 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Archive\PartView;
-use DedeBIZ\libraries\DedeBIZ;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_MakeHtml');
+CheckPurview('sys_MakeHtml');
+require_once(DEDEINC."/archive/partview.class.php");
 if (empty($dopost)) $dopost = '';
 if ($dopost == "view") {
     $pv = new PartView();
@@ -22,7 +20,7 @@ if ($dopost == "view") {
     exit();
 } else if ($dopost == "make") {
     if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
-        $client = new DedeBIZ($cfg_bizcore_hostname, $cfg_bizcore_port);
+        $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
         $client->appid = $cfg_bizcore_appid;
         $client->key = $cfg_bizcore_key;
         $data = $client->AdminPWDExists();
@@ -32,25 +30,29 @@ if ($dopost == "view") {
             if ($rs["admin_pwd_exists"] == "false") {
                 //设定dedebiz admin密码
                 if ($dedebiz_admin == "" || $dedebiz_admin !== $re_dedebiz_admin) {
-                    echo DedeAlert(Lang("admin_auth_pwd_not_same"),ALERT_DANGER);
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空或两次指定的密码不符</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminPWDCreate($dedebiz_admin);
                 if ($data->data != "ok") {
-                    echo DedeAlert(Lang("admin_auth_err_pwd",array('data'=>$data)),ALERT_DANGER);
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<div class=\"alert alert-danger\">DedeBIZ设定操作密码失败：${$data}</div><br>";
                     $client->Close();
                     exit;
                 }
             } else {
                 if ($dedebiz_admin == "") {
-                    echo DedeAlert(Lang("admin_auth_err_pwd_isempty"),ALERT_DANGER);
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码为空</div><br>";
                     $client->Close();
                     exit;
                 }
                 $data = $client->AdminSetIndexLockState($dedebiz_admin, $lockindex);
                 if ($data->data != "ok") {
-                    echo DedeAlert(Lang("admin_auth_err_pwd_failed"),ALERT_DANGER);
+                    echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
+                    echo "<div class=\"alert alert-danger\">DedeBIZ操作密码失败，填写正确的操作密码</div><br>";
                     $client->Close();
                     exit;
                 }
@@ -61,16 +63,16 @@ if ($dopost == "view") {
     $remotepos = empty($remotepos) ? '/index.html' : $remotepos;
     $serviterm = empty($serviterm) ? "" : $serviterm;
     if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($position))) {
-        ShowMsg(Lang("media_ext_forbidden"), "javascript:;");
+        ShowMsg("您指定的文件名被系统禁止", "javascript:;");
         exit();
     }
     $homeFile = DEDEADMIN."/".$position;
     $homeFile = str_replace("\\", "/", $homeFile);
     $homeFile = str_replace("//", "/", $homeFile);
-    $fp = fopen($homeFile, "w") or die(DedeAlert(Lang('makehtml_homepage_err_filename'),ALERT_DANGER));
+    $fp = fopen($homeFile, "w") or die("您指定的文件名有问题，无法创建文件");
     fclose($fp);
     if ($saveset == 1) {
-        $iquery = "UPDATE `#@__homepageset` SET templet='$templet',position='$position'";
+        $iquery = "UPDATE `#@__homepageset` SET templet='$templet',position='$position' ";
         $dsql->ExecuteNoneQuery($iquery);
     }
     //判断首页生成模式
@@ -82,12 +84,12 @@ if ($dopost == "view") {
         $pv->SetTemplet($cfg_basedir.$cfg_templets_dir."/".$templet);
         $pv->SaveToHtml($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-        echo "<div class=\"alert alert-success\">".Lang('makehtml_homepage_success_make')."：".$position." <a href='{$position}' target='_blank' class='btn btn-success btn-sm'>".Lang('browser')."</a></div>";
+        echo "<div class=\"alert alert-success\">成功更新首页：".$position." <a href='{$position}' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
     } else {
         //动态浏览
         if (file_exists($homeFile)) @unlink($homeFile);
         echo "<link rel=\"stylesheet\" href=\"{$cfg_cmsurl}/static/web/css/bootstrap.min.css\"><style>.modal {position: static;}</style>";
-        echo "<div class=\"alert alert-success\">".Lang('makehtml_homepage_success_nomake')."：<a href='../index.php' target='_blank' class='btn btn-success btn-sm'>".Lang('browser')."</a></div>";
+        echo "<div class=\"alert alert-success\">采用动态浏览：<a href='../index.php' target='_blank' class='btn btn-success btn-sm'>浏览</a></div>";
     }
     $iquery = "UPDATE `#@__homepageset` SET showmod='$showmod'";
     $dsql->ExecuteNoneQuery($iquery);

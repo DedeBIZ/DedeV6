@@ -8,74 +8,82 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeWin;
-use DedeBIZ\Login\UserLogin;
-use DedeBIZ\Template\DedeTagParse;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('plus_文件管理器');
+CheckPurview('plus_文件管理器');
+require_once(DEDEINC."/libraries/oxwindow.class.php");
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if ($activepath == "/") $activepath = "";
 if ($activepath == "") $inpath = $cfg_basedir;
 else $inpath = $cfg_basedir.$activepath;
 //显示控制层
+//修改文件名
 if ($fmdo == "rename") {
-    if ($activepath == "") $ndirstring = Lang("root_directory");
+    if ($activepath == "") $ndirstring = "根目录";
     $ndirstring = $activepath;
-    $wintitle = Lang("file_manage");
-    $wecome_info = Lang("file_manage")."::".Lang('file_rename')." [<a href='file_manage_main.php?activepath=$activepath'>".Lang("file_manage")."</a>]</a>";
-    DedeWin::Instance()->Init("file_manage_control.php", "js/blank.js", "POST")
-    ->AddHidden("fmdo", $fmdo)
-    ->AddHidden("activepath", $activepath)
-    ->AddHidden("filename", $filename)
-    ->AddTitle(Lang("file_rename_title",array('ndirstring'=>$ndirstring)))
-    ->AddItem(Lang("file_rename_oldname"), "<input name='oldfilename' type='input' id='oldfilename' size='40' value='$filename'>")
-    ->AddItem(Lang("file_rename_newname"), "<input name='newfilename' type='input' size='40' id='newfilename'>")
-    ->GetWindow("ok")->Display();
+    $wintitle = "文件管理";
+    $wecome_info = "文件管理::修改文件名 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $win = new OxWindow();
+    $win->Init("file_manage_control.php", "js/blank.js", "POST");
+    $win->AddHidden("fmdo", $fmdo);
+    $win->AddHidden("activepath", $activepath);
+    $win->AddHidden("filename", $filename);
+    $win->AddTitle("修改文件名，当前路径：$ndirstring");
+    $win->AddItem("旧名称：", "<input name='oldfilename' type='input' id='oldfilename' size='40' value='$filename'>");
+    $win->AddItem("新名称：", "<input name='newfilename' type='input' size='40' id='newfilename'>");
+    $winform = $win->GetWindow("ok");
+    $win->Display();
 }
 //新建目录
 else if ($fmdo == "newdir") {
-    if ($activepath == "") $activepathname = Lang("root_directory");
+    if ($activepath == "") $activepathname = "根目录";
     else $activepathname = $activepath;
-    $wintitle = Lang("file_manage");
-    $wecome_info = Lang("file_manage")."::".Lang('file_rename_newdir')." [<a href='file_manage_main.php?activepath=$activepath'>".Lang("file_manage")."</a>]</a>";
-    DedeWin::Instance()->Init("file_manage_control.php", "js/blank.js", "POST")
-    ->AddHidden("fmdo", $fmdo)
-    ->AddHidden("activepath", $activepath)
-    ->AddHidden("token", make_hash())
-    ->AddTitle(Lang("file_rename_newdir_title",array('activepathname'=>$activepathname)))
-    ->AddItem(Lang('new_directory')."：", "<input name='newpath' type='input' id='newpath'>")
-    ->GetWindow("ok")
-    ->Display();
+    $wintitle = "文件管理";
+    $wecome_info = "文件管理::新建目录 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $win = new OxWindow();
+    $win->Init("file_manage_control.php", "js/blank.js", "POST");
+    $win->AddHidden("fmdo", $fmdo);
+    $win->AddHidden("activepath", $activepath);
+    $win->AddHidden("token", make_hash());
+    $win->AddTitle("当前目录 $activepathname ");
+    $win->AddItem("新目录：", "<input name='newpath' type='input' id='newpath'>");
+    $winform = $win->GetWindow("ok");
+    $win->Display();
 }
 //移动文件
 else if ($fmdo == "move") {
-    $wintitle = Lang("file_manage");
-    $wecome_info = Lang("file_manage")."::".Lang('file_rename_move')." [<a href='file_manage_main.php?activepath=$activepath'>".Lang("file_manage")."</a>]</a>";
-    DedeWin::Instance()->Init("file_manage_control.php", "js/blank.js", "POST")
-    ->AddHidden("fmdo", $fmdo)
-    ->AddHidden("activepath", $activepath)
-    ->AddHidden("filename", $filename)
-    ->AddTitle(Lang("file_rename_move_title"))
-    ->AddItem(Lang("file_rename_move_src"), $filename)
-    ->AddItem(Lang("file_rename_move_curr"), $activepath)
-    ->AddItem(Lang("file_rename_move_new"), "<input name='newpath' type='input' id='newpath' size='40'>")
-    ->GetWindow("ok")
-    ->Display();
+    $wintitle = "文件管理";
+    $wecome_info = "文件管理::移动文件 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $win = new OxWindow();
+    $win->Init("file_manage_control.php", "js/blank.js", "POST");
+    $win->AddHidden("fmdo", $fmdo);
+    $win->AddHidden("activepath", $activepath);
+    $win->AddHidden("filename", $filename);
+    $win->AddTitle("新位置前面不加'/'表示相对于当前位置，加'/'表示相对于根目录");
+    $win->AddItem("被移动文件：", $filename);
+    $win->AddItem("当前位置：", $activepath);
+    $win->AddItem("新位置：", "<input name='newpath' type='input' id='newpath' size='40'>");
+    $winform = $win->GetWindow("ok");
+    $win->Display();
 }
 //删除文件
 else if ($fmdo == "del") {
-    $wintitle = Lang("file_manage");
-    $wecome_info = Lang("file_manage")."::".Lang('file_rename_del')." [<a href='file_manage_main.php?activepath=$activepath'>".Lang("file_manage")."</a>]</a>";
-    $wmsg = Lang('content_delete_confirm',array('qstr'=>$filename));
-    DedeWin::Instance()->Init("file_manage_control.php", "js/blank.js", "POST")
-    ->AddHidden("fmdo", $fmdo)
-    ->AddHidden("activepath", $activepath)
-    ->AddHidden("filename", $filename)
-    ->AddTitle(Lang("file_rename_del_title"))
-    ->AddMsgItem($wmsg, "50")
-    ->GetWindow("ok")
-    ->Display();
+    $wintitle = "文件管理";
+    $wecome_info = "文件管理::删除文件 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $win = new OxWindow();
+    $win->Init("file_manage_control.php", "js/blank.js", "POST");
+    $win->AddHidden("fmdo", $fmdo);
+    $win->AddHidden("activepath", $activepath);
+    $win->AddHidden("filename", $filename);
+    if (@is_dir($cfg_basedir.$activepath."/$filename")) {
+        $wmsg = "您确定要删除目录：$filename 吗";
+    } else {
+        $wmsg = "您确定要删除文件：$filename 吗";
+    }
+    $win->AddTitle("删除文件确认");
+    $win->AddMsgItem($wmsg, "50");
+    $winform = $win->GetWindow("ok");
+    $win->Display();
 }
 //编辑文件
 else if ($fmdo == "edit") {
@@ -92,7 +100,7 @@ else if ($fmdo == "edit") {
         fclose($fp);
         $content = dede_htmlspecialchars($content);
     }
-    $contentView = "<textarea name='str' id='str' style='width:98%;height:450px;background:#ffffff;'>$content</textarea>\r\n";
+    $contentView = "<textarea name='str' id='str' style='width:98%;height:300px;background:#ffffff;'>$content</textarea>\r\n";
     $GLOBALS['filename'] = $filename;
     $path_parts  = pathinfo($filename);
     if ($path_parts['extension'] == 'php') {

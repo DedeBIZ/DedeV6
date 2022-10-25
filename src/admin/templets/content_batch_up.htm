@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('content_batch_up');?></title>
+  <title>文档批量维护</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/moment.min.js"></script>
@@ -36,18 +36,18 @@
         "timePickerSeconds": true,
         "showCustomRangeLabel": false,
         ranges: {
-          '<?php echo Lang("today");?>': [moment(), moment()],
-          '<?php echo Lang("yestoday");?>': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          '<?php echo Lang("this_month");?>': [moment().startOf('month'), moment().startOf('month')],
-          '<?php echo Lang("last_month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+          '今日': [moment(), moment()],
+          '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          '本月': [moment().startOf('month'), moment().startOf('month')],
+          '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
         },
         "locale": {
           format: 'YYYY-MM-DD HH:mm:ss',
-          applyLabel: '<?php echo Lang("ok");?>',
-          cancelLabel: '<?php echo Lang("cancel");?>',
-          daysOfWeek: ['<?php echo Lang("sun");?>','<?php echo Lang("mon");?>','<?php echo Lang("tues");?>','<?php echo Lang("wed");?>','<?php echo Lang("thur");?>','<?php echo Lang("fri");?>','<?php echo Lang("sat");?>'],
-          monthNames: ['<?php echo Lang("jan");?>','<?php echo Lang("feb");?>','<?php echo Lang("mar");?>','<?php echo Lang("apr");?>','<?php echo Lang("may");?>','<?php echo Lang("jun");?>',
-            '<?php echo Lang("jul");?>','<?php echo Lang("aug");?>','<?php echo Lang("sept");?>','<?php echo Lang("oct");?>','<?php echo Lang("nov");?>','<?php echo Lang("dec");?>'],
+          applyLabel: '确定',
+          cancelLabel: '取消',
+          daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+          monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+            '七月', '八月', '九月', '十月', '十一月', '十二月'],
           firstDay: 1
         }
       }, function (start) {
@@ -57,112 +57,109 @@
   </script>
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="content_batchup_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="go">
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2">
-          <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
-            <tr>
-              <td width="30%"><?php echo Lang('content_batch_up');?></td>
-              <td width="70%" align="right"></td>
-            </tr>
-          </table>
-        </td>
+        <td bgcolor="#f8f8f8" colspan="2">文档批量维护</td>
       </tr>
       <tr>
-        <td width="260"><?php echo Lang('select_typeid');?>：</td>
+        <td width="260">选定栏目：</td>
         <td>
           <?php
-          $tl = new DedeBIZ\TypeLink\TypeLink(0);
+          $tl = new TypeLink(0);
           $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
           echo "<select name='typeid' style='width:260px'>";
-          echo "<option value='0' selected>".Lang('unlimited_catalog')."</option>";
+          echo "<option value='0' selected>不限栏目</option>";
           echo $typeOptions;
           echo "</select>";
     		  ?>
         </td>
       </tr>
       <tr>
-        <td>id：</td>
+        <td>起始id：</td>
         <td>
-          <?php echo Lang('start');?>：<input name="startid" type="text" id="startid" size="10">
-          <?php echo Lang('end');?>：<input name="endid" type="text" id="endid" size="10">
+          开始：<input name="startid" type="text" id="startid" size="10">
+          结束：<input name="endid" type="text" id="endid" size="10">
         </td>
       </tr>
       <tr>
-        <td><?php echo Lang('subday');?>：</td>
+        <td>档案发布时间：</td>
         <td>
           <table cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
               <td colspan="2">
-                <label><input type="checkbox" name="seltime" id="seltime" value="1" onClick="ShowHideTime()"> <?php echo Lang('content_batchup_seltime_tip');?></label>
+                <label><input type="checkbox" name="seltime" id="seltime" value="1" onClick="ShowHideTime()"> 启用时间筛选（仅移动或删除文档可用该选项）</label>
               </td>
             </tr>
             <tr id="seltimeField" style="display:none">
-              <td width="260"><?php echo Lang('start');?>：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?> <input type="text" name="starttime" id="starttime" value="<?php echo $nowtime;?>"></td>
-              <td width="260"><?php echo Lang('end');?>：<?php $nowtime = GetDateTimeMk(time());?> <input type="text" name="endtime" id="endtime" value="<?php echo $nowtime;?>"></td>
+              <td width="260">开始：<?php $nowtime = GetDateTimeMk(time()-(24*3600*30));?>
+                <input name="starttime" value="<?php echo $nowtime;?>" type="text" id="starttime" class="datepicker">
+              </td>
+              <td width="260">结束：<?php $nowtime = GetDateTimeMk(time());?>
+                <input name="endtime" value="<?php echo $nowtime;?>" type="text" id="endtime" class="datepicker">
+              </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td><?php echo Lang('uid');?>：</td>
-        <td><input name="userid" type="text" id="userid" size="20"><?php echo Lang('content_uid_tip');?></td>
+        <td>用户的登录id：</td>
+        <td><input name="userid" type="text" id="userid" size="20">（网址uid=后面跟的id）</td>
       </tr>
       <tr>
-        <td><?php echo Lang('action');?>：</td>
+        <td>操作：</td>
         <td>
-          <label><input type="radio" name="action" value="check" onClick="ShowHideMove()" checked="1"> <?php echo Lang('content_action_check');?></label>
-          <label><input type="radio" name="action" value="makehtml" onClick="ShowHideMove()"> <?php echo Lang('content_action_makehtml');?></label>
-          <label><input type="radio" name="action" value="move" onClick="ShowHideMove()"> <?php echo Lang('content_action_move');?></label>
-          <label><input type="radio" name="action" value="del" onClick="ShowHideMove()"> <?php echo Lang('content_action_del');?></label>
+          <label><input type="radio" name="action" value="check" onClick="ShowHideMove()" checked="1"> 审核文档</label>
+          <label><input type="radio" name="action" value="makehtml" onClick="ShowHideMove()"> 更新HTML</label>
+          <label><input type="radio" name="action" value="move" onClick="ShowHideMove()"> 移动文档</label>
+          <label><input type="radio" name="action" value="del" onClick="ShowHideMove()"> 删除文档</label>
         </td>
       </tr>
       <tr>
-        <td align="center"><span class="moveField" style="display:none"><?php echo Lang('content_move_field');?>：</span></td>
-        <td>
-          <?php
-          echo "<span class='moveField' style='display:none'>".Lang('new_postion')."：";
-          echo "<select name='newtypeid' style='width:260px'>";
-          echo $typeOptions;
-          echo "</select>";
-          echo "<hr>";
-          echo Lang('keywords')."：<input id='movekeyword' type='text' name='keyword' value=''></span>";
-    	    ?>
+        <td colspan="2" bgcolor="#fbfce2" align="center">
+          <button type="button" name="b112" onClick="document.form1.submit();" class="btn btn-success btn-sm">开始操作</button>
         </td>
-      </tr>
-      <tr>
-        <td align="center" colspan="2" bgcolor="#f8fcf2"><button type="button" name="b112" onClick="document.form1.submit();" class="btn btn-success btn-sm"><?php echo Lang('start_action');?></button></td>
       </tr>
     </form>
     <form name="form2" action="content_batchup_action.php" target="stafrm" method="post">
       <input type="hidden" name="dopost" value="go">
       <tr>
-        <td><?php echo Lang('content_error_docfix');?></td>
-        <td align="left">
-          <label><input type="radio" value="delnulltitle" name="action"> <?php echo Lang('content_error_docfix_delnulltitle');?></label>
-          <label><input type="radio" value="delnullbody" name="action"> <?php echo Lang('content_error_docfix_delnullbody');?></label>
-          <label><input type="radio" value="modddpic" name="action"> <?php echo Lang('content_error_docfix_modddpic');?></label>
+        <td>操作：</td>
+        <td>
+          <label><input type="radio" value="delnulltitle" name="action"> 删除空标题的文档</label>
+          <label><input type="radio" value="delnullbody" name="action"> 删除内容为空的文档</label>
+          <label><input type="radio" value="modddpic" name="action"> 更正缩图错误</label>
         </td>
       </tr>
       <tr>
-        <td align="center" colspan="2" bgcolor="#f8fcf2"><button type="button" name="b112" onClick="document.form2.submit();" class="btn btn-success btn-sm"><?php echo Lang('start_action');?></button></td>
+        <td colspan="2" bgcolor="#fbfce2" align="center">
+          <button type="button" name="b112" onClick="document.form2.submit();" class="btn btn-success btn-sm">开始操作</button>
+        </td>
       </tr>
     </form>
     <tr>
       <td colspan="2">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="30%"><?php echo Lang('result');?>：</td>
-            <td width="70%" align="right"></td>
+            <td width="30%">结果：</td>
+            <td width="70%" align="right">
+              <script>
+              function ResizeDiv(obj, ty) {
+                if (ty == "+") document.all[obj].style.pixelHeight += 50;
+                else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+              }
+              </script>
+              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
+            </td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
       <td colspan="2" id="mtd">
-        <div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+        <div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
       </td>
     </tr>
   </table>

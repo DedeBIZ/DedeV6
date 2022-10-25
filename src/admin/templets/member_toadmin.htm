@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('member_toadmin');?></title>
+  <title>提升为管理员</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
@@ -15,64 +14,64 @@
     function checkSubmit() {
       if (document.form2.email.value == "") {
         document.form2.email.focus();
-        ShowMsg("<?php echo Lang('member_toadmin_err_email_isempty');?>");
+        ShowMsg("Email不能为空");
         return false;
       }
       if (document.form2.uname.value == "") {
         document.form2.uname.focus();
-        ShowMsg("<?php echo Lang('member_toadmin_err_uname_isempty');?>");
+        ShowMsg("用户昵称不能为空");
         return false;
       }
     }
   </script>
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8"><a href="<?php echo $ENV_GOBACK_URL;?>"><?php echo Lang('user_main');?></a> &gt; <?php echo Lang('member_toadmin');?></td>
+      <td bgcolor="#f8f8f8"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 提升为管理员</td>
     </tr>
     <tr>
-      <td class="p-0">
+      <td align="center">
         <?php
-        if ($row['matt']==10) 
+        if($row['matt']==10) 
         {
-          echo "<span class='text-danger'>".Lang('member_toadmin_isadmin_tip')."</span>";
+          echo "<span class='text-danger'>已经是管理员了，不要再提升了</span>";
         } else {
         ?>
-        <table width="98%" cellspacing="0" cellpadding="6" class="table">
+        <table width="98%" cellspacing="0" cellpadding="6" class="table table-borderless">
           <form name="form2" action="member_toadmin.php" method="post" onSubmit="return checkSubmit();">
             <input type="hidden" name="dopost" value="toadmin">
             <input type="hidden" name="userid" value="<?php echo $row['userid']?>">
             <input type="hidden" name="id" value="<?php echo $id?>">
             <tr>
-              <td width="260"  class="border-top-0"><?php echo Lang('member_toadmin_userid');?>：</td>
-              <td class="border-top-0">
+              <td width="260" class="bline">用户名：</td>
+              <td class="bline" class="bline">
               <?php
-              if ($row['face']!='') {
-                echo "<img src='{$row['face']}' class='user-img'>";
-              };
               echo "".$row['userid']."";
+              if($row['face']!='') {
+                echo "<img src='{$row['face']}' style='max-width:80px;height:auto'>";
+              }
               ?>
-              </td>
+            </td>
             </tr>
             <tr>
-              <td><?php echo Lang('member_toadmin_uname');?>：</td>
-              <td><input type="text" name="uname" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px"><?php echo Lang('member_toadmin_uname_tip');?></td>
+              <td class="bline">用户笔名：</td>
+              <td class="bline"><input type="text" name="uname" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文档后显示责任编辑的名字）</td>
             </tr>
             <tr>
-              <td><?php echo Lang('member_toadmin_pwd');?>：</td>
-              <td><input type="text" name="pwd" id="pwd" size="16" style="width:260px"><?php echo Lang('member_toadmin_pwd_tip');?></td>
+              <td class="bline">用户密码：</td>
+              <td class="bline"><input type="text" name="pwd" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
             </tr>
             <tr>
-              <td><?php echo Lang('member_toadmin_usertype');?>：</td>
-              <td>
+              <td class="bline">用户类型：</td>
+              <td class="bline">
                 <select name='usertype' style='width:160px'>
                 <?php
-                $dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
+                $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
                 $dsql->Execute("ut");
                 while($myrow = $dsql->GetObject("ut"))
                 {
-                  if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+                  if($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
                   else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
                 }
                 ?>
@@ -80,32 +79,32 @@
               </td>
             </tr>
             <tr>
-              <td><?php echo Lang('member_toadmin_typeids');?>：</td>
-              <td>
+              <td class="bline">负责频道：</td>
+              <td class="bline">
                 <select name="typeids[]" id="typeid" style="width:260px;height:200px" multiple="true">
-                  <option value="0" class='alltype'><?php echo Lang('member_toadmin_alltype');?></option>
+                  <option value="0" class='alltype'>所有频道</option>
                   <?php echo $typeOptions?>
-                </select><?php echo Lang('member_toadmin_typeids_tip');?>
+                </select>（按 Ctrl 可以进行多选）
               </td>
             </tr>
             <tr>
-              <td><?php echo Lang('member_toadmin_tname');?>：</td>
-              <td><input type="text" name="tname" id="tname" size="16" style="width:260px" value=""></td>
+              <td class="bline">真实姓名：</td>
+              <td class="bline"><input type="text" name="tname" id="tname" size="16" style="width:260px" value=""></td>
             </tr>
             <tr>
-              <td><?php echo Lang('member_toadmin_email');?>：</td>
-              <td><input type="text" name="email" id="email" size="16" style="width:260px" value="<?php echo $row['email']?>"></td>
+              <td class="bline">电子邮箱：</td>
+              <td class="bline"><input type="text" name="email" id="email" size="16" style="width:260px" value="<?php echo $row['email']?>"></td>
             </tr>
             <tr>
-              <td><?php echo Lang('member_toadmin_safecode');?>：</td>
-              <td>
+              <td class="bline">验证安全码：</td>
+              <td class="bline">
                 <input type="text" name="safecode" id="safecode" size="16" style="width:260px"> 
-                <input type="hidden" name="randcode" value="<?php echo $randcode;?>">（<?php echo Lang('safecode');?>：<span class='text-danger'><?php echo $safecode;?></span>）</td>
+                <input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class='text-danger'><?php echo $safecode;?></span>）</td>
             </tr>
             <tr>
-              <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
-                <button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
-                <button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm"><?php echo Lang('back');?></button>
+              <td colspan="2" align="center" class="py-2">
+                <button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
+                <button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm">返回</button>
               </td>
             </tr>
           </form>

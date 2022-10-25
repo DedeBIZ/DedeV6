@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title>模块打包</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-<table width="98%"  align="center" cellpadding="1" cellspacing="1"class="table maintable mt-3 mb-3">
+<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <form name="form1" action="plus_add.php" method="post">
    <input type="hidden" name="dopost" value="save">
     <tr> 
@@ -20,7 +20,7 @@
       <td><input type="text" name="plusname" id="plusname"> </td>
     </tr>
     <tr> 
-      <td><?php echo Lang('writer');?></td>
+      <td>作者</td>
       <td><input type="text" name="writer" id="writer"></td>
     </tr>
     <tr> 
@@ -37,7 +37,7 @@
         <textarea name="filelist" rows="8" id="filelist" style="width:60%"></textarea></td>
     </tr>
     <tr> 
-      <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2"><button type="submit" class="btn btn-success btn-sm">确定</button></td>
+      <td bgcolor="#f8f8f8" colspan="2" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">确定</button></td>
     </tr>
   </form>
 </table>

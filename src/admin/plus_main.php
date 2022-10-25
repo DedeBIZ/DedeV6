@@ -8,10 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_plus');
+CheckPurview('sys_plus');
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $sql = "SELECT aid,plusname,writer,isshow FROM `#@__plus` ORDER BY aid ASC";
 $dlist = new DataListCP();
@@ -21,9 +20,9 @@ $dlist->display();
 function GetSta($sta, $id, $title)
 {
     if ($sta == 1) {
-        return Lang('enable')." &gt; <a href='plus_edit.php?dopost=hide&aid=$id' class='text-danger'>".Lang('disable')."</a> <a href='plus_edit.php?dopost=edit&aid=$id'>".Lang('edit')."</a> <a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."'>".Lang('delete')."</a>";
+        return "已启用 <a href='plus_edit.php?dopost=hide&aid=$id' class='btn btn-outline-danger btn-sm'>禁用</a><a href='plus_edit.php?dopost=edit&aid=$id' class='btn btn-outline-success btn-sm'>修改</a><a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."' class='btn btn-outline-danger btn-sm'>删除</a>";
     } else {
-        return Lang('disable')." &gt; <a href='plus_edit.php?dopost=show&aid=$id' class='text-success'>".Lang('enable')."</a> <a href='plus_edit.php?aid=$id'>".Lang('edit')."</a> <a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."'>".Lang('delete')."</a>";
+        return "已禁用 <a href='plus_edit.php?dopost=show&aid=$id' class='btn btn-outline-success btn-sm'>启用</a><a href='plus_edit.php?aid=$id' class='btn btn-outline-success btn-sm' class='btn btn-outline-success btn-sm'>修改</a><a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."' class='btn btn-outline-danger btn-sm'>册除</a>";
     }
 }
 ?>

@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('content_att');?></title>
+  <title>自定义属性管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="0" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="0" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="content_att.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
-        <td bgcolor="#f8f8f8" colspan="3"><?php echo Lang('content_att');?></td>
+        <td bgcolor="#f8f8f8" colspan="3">文档自定义属性管理</td>
       </tr>
       <tr>
         <td colspan="3">
-          <?php echo Lang('content_att_tip');?>
+          自定义属性的意义和使用说明：<br>
+          在以往的版本中，网站主页、频道封面的设计，都只能单调的用 arclist 标记把某栏目最新或按特定排序方式的文档无选择的读出来，这样做法存在很大的不足，例如，我希望在最顶部的地方显示我想要的文档，在以往的版本中是无法做到的，但使用自定义属性之后，只要给arclist 标记加上 att='自定义属性的ID' 的属性，然后在发布的时候对适合的文档选择专门的属性，那么使用arclist的地方就会按您的意愿显示指定的文档<br>
+          注意事项：这个版本中att对应的字段是SET类型字段,因此为了数据安全起见不允许用户增加其它类型,但调用时允许使用组合条件,如:att='c,p'表示推荐图片新闻
         </td>
       </tr>
-      <tr bgcolor="#f8fcf2">
+      <tr bgcolor="#fbfce2">
         <td width="15%" align="center">id</td>
-        <td width="15%"><?php echo Lang('sortrank');?></td>
-        <td width="70%"><?php echo Lang('attribute');?></td>
+        <td width="15%">排序</td>
+        <td width="70%">属性名称</td>
       </tr>
       <?php
-    	$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
+    	$dsql->SetQuery("SELECT * From `#@__arcatt` order by sortid asc ");
     	$dsql->Execute();
     	$k=0;
     	while($row = $dsql->GetObject())
@@ -42,7 +44,7 @@
       <?php }?>
       <input type="hidden" name="idend" value="<?php echo $k?>">
       <tr>
-        <td align="center" colspan="3" bgcolor="#f8f8f8" class="py-2"><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></td>
+        <td colspan="3" bgcolor="#f8f8f8" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
       </tr>
     </form>
   </table>

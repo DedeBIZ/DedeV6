@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('templets_one_edit');?></title>
+  <title>修改自定义页面</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script>
   function checkSubmit()
   {
-  	if (document.form1.title.value=="")
+  	if(document.form1.title.value=="")
   	{
-  		ShowMsg("<?php echo Lang('templets_one_err_title_isempty');?>");
+  		ShowMsg("页面名称不能为空");
   		document.form1.title.focus();
   		return false;
   	}
-  	if (document.form1.nfilename.value=="")
+  	if(document.form1.nfilename.value=="")
   	{
-  		ShowMsg("<?php echo Lang('templets_one_err_nfilename_isempty');?>");
+  		ShowMsg("文件名不能为空");
   		document.form1.nfilename.focus();
   		return false;
   	}
@@ -30,9 +29,9 @@
   </script>
 </head>
 <body>
-<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
-    <td bgcolor="#f8f8f8"><a href="templets_one.php"><?php echo Lang('templets_one');?></a> &gt; <?php echo Lang('templets_one_edit');?></td>
+    <td bgcolor="#f8f8f8"><a href="templets_one.php">单独页面管理</a> &gt; 修改自定义页面</td>
   </tr>
   <tr>
     <td>
@@ -41,64 +40,64 @@
           <input type="hidden" name="dopost" value="saveedit">
           <input type="hidden" name="aid" value="<?php echo $aid?>">
           <tr> 
-            <td width="260"><?php echo Lang('title');?>：</td>
+            <td width="260">页面标题：</td>
             <td><input type="text" name="title" id="title" value="<?php echo $row['title'];?>" style="width:260px"></td>
           </tr>
           <tr> 
-            <td><?php echo Lang('keywords');?>：</td>
-            <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" style="width:260px"><?php echo Lang('templets_one_keywords_tip');?></td>
+            <td>页面关键词：</td>
+            <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" style="width:260px">（用&quot;,&quot;分开）</td>
           </tr>
           <tr>
-            <td><?php echo Lang('description');?>：</td>
-            <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $row['description'];?></textarea><?php echo Lang('templets_one_description_tip');?></td>
+            <td>页面摘要信息：</td>
+            <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $row['description'];?></textarea>（100字左右）</td>
           </tr>
           <tr>
-            <td><?php echo Lang('templets_one_likeid');?>：</td>
+            <td>关联标识：</td>
             <td>
               <input type="text" name="likeid" id="likeid" value="<?php echo $row['likeid'];?>" style="width:260px">
               <input type="hidden" name="oldlikeid" id="oldlikeid" value="<?php echo $row['likeid'];?>">
               <?php
               	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
-              	$dsql->Execute('s',"SELECT likeid FROM `#@__sgpage` GROUP BY likeid");
+              	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
               	echo "<option value='{$row['likeid']}' selected>{$row['likeid']}</option>";
               	while($arr = $dsql->GetArray('s'))
               	{
-              		if ($arr['likeid']!=$row['likeid']) echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+              		if($arr['likeid']!=$row['likeid']) echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
               	}
               	echo "</select>";
               ?>
             </td>
           </tr>
           <tr>
-            <td><?php echo Lang('template');?>：</td>
+            <td>模板文件名：</td>
             <td><input type="text" name="template" id="template" value="<?php echo $row['template'];?>" style="width:260px"></td>
           </tr>
           <tr> 
-            <td><?php echo Lang('filename');?>：</td>
+            <td>文件名：</td>
             <td>
 			       <input type="hidden" name="oldfilename" id="oldfilename" value="<?php echo $row['filename'];?>" style="width:260px">
-			       <input type="text" name="nfilename" id="nfilename" value="<?php echo $row['filename'];?>" style="width:260px"><?php echo Lang('templets_one_filename_tip');?>
+			       <input type="text" name="nfilename" id="nfilename" value="<?php echo $row['filename'];?>" style="width:260px">（相对于CMS安装目录）
             </td>
           </tr>
           <tr> 
-            <td><?php echo Lang('ismake');?>：</td>
+            <td>是否编译内容：</td>
             <td>
-            	<?php if (!DEDEBIZ_SAFE_MODE) {?> <label><input type="radio" name="ismake" value="1" <?php if ($row['ismake']==1) echo "checked";?>> <?php echo Lang('templets_one_ismake_yes');?></label> <?php }?>
-              <label><input type="radio" name="ismake" value="0" <?php if ($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo "checked";?>> <?php echo Lang('templets_one_ismake_no');?></label>
+            	<?php if(!DEDEBIZ_SAFE_MODE) {?> <label><input type="radio" name="ismake" value="1"<?php if($row['ismake']==1) echo "checked";?>> 含模板标记，要编译</label> <?php }?>
+              <label><input type="radio" name="ismake" value="0"<?php if($row['ismake']==0  || DEDEBIZ_SAFE_MODE) echo "checked";?>> 不含模板标记，不需要编译</label>
             </td>
           </tr>
           <tr> 
             <td colspan="2">
-              <div class="alert alert-warning mb-0"><?php echo Lang('templets_one_body_tip');?></div>
+              <div class="alert alert-warning mb-0">内容：模板里用{dede:field name='body'/}来获得文件内容</div>
             </td>
           </tr>
           <tr> 
             <td height="80" colspan="2"> <?php GetEditor("body",$row['body'],"450","Default","print","false");?></td>
           </tr>
           <tr> 
-            <td align="center" colspan="2" class="py-2">
-              <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
-              <button type="button" onClick="document.form1.reset();" class="btn btn-success btn-sm"><?php echo Lang('reset');?></button>
+            <td colspan="2" align="center" class="py-2">
+              <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
+              <button type="button" onClick="document.form1.reset();" class="btn btn-success btn-sm">重置</button>
             </td>
           </tr>
         </form>

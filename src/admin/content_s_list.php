@@ -8,9 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('spec_List');
+CheckPurview('spec_List');
 $s_tmplets = "templets/content_s_list.htm";
 $channelid = -1;
 include(dirname(__FILE__)."/content_list.php");

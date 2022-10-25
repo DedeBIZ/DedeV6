@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang('makehtml_all');?></title>
+		<title>更新整站</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<link rel="stylesheet" href="../static/web/css/daterangepicker.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/moment.min.js"></script>
 		<script src="../static/web/js/daterangepicker.js"></script>
 		<script>
-			$(document).ready(function () {
+			$(document).ready(function() {
 				$('.datepicker').daterangepicker({
 					"singleDatePicker": true,
 					"autoApply": true,
@@ -20,25 +20,25 @@
 					"linkedCalendars": false,
 					"timePicker": true,
 					"timePicker24Hour": true,
-					"timePickerSeconds": true,
 					"showCustomRangeLabel": false,
 					ranges: {
-					'<?php echo Lang("today");?>': [moment(), moment()],
-					'<?php echo Lang("yestoday");?>': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-					'<?php echo Lang("this_month");?>': [moment().startOf('month'), moment().startOf('month')],
-					'<?php echo Lang("last_month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+						'今日': [moment(), moment()],
+						'昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+						'本月': [moment().startOf('month'), moment().startOf('month')],
+						'上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
+							.startOf('month')
+						]
 					},
 					"locale": {
-					format: 'YYYY-MM-DD HH:mm:ss',
-					applyLabel: '<?php echo Lang("ok");?>',
-					cancelLabel: '<?php echo Lang("cancel");?>',
-					daysOfWeek: ['<?php echo Lang("sun");?>','<?php echo Lang("mon");?>','<?php echo Lang("tues");?>','<?php echo Lang("wed");?>','<?php echo Lang("thur");?>','<?php echo Lang("fri");?>','<?php echo Lang("sat");?>'],
-					monthNames: ['<?php echo Lang("jan");?>','<?php echo Lang("feb");?>','<?php echo Lang("mar");?>','<?php echo Lang("apr");?>','<?php echo Lang("may");?>','<?php echo Lang("jun");?>',
-						'<?php echo Lang("jul");?>','<?php echo Lang("aug");?>','<?php echo Lang("sept");?>','<?php echo Lang("oct");?>','<?php echo Lang("nov");?>','<?php echo Lang("dec");?>'],
-					firstDay: 1
+						format: 'YYYY-MM-DD HH:mm',
+						applyLabel: '确定',
+						cancelLabel: '取消',
+						daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+						monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+						firstDay: 1
 					}
-				}, function (start) {
-					$(this).val(start.format("YYYY-MM-DD HH:mm:ss"));
+				}, function(start) {
+					$(this).val(start.format("YYYY-MM-DD HH:mm"));
 				});
 			})
 		</script>
@@ -61,45 +61,57 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<form name="form1" action="makehtml_all.php" target="stafrm" method="post">
 				<input type="hidden" name="action" value="make">
 				<tr>
-					<td bgcolor="#f8f8f8" colspan="2"><?php echo Lang('makehtml_all');?></td>
+					<td bgcolor="#f8f8f8" colspan="2">更新整站</td>
 				</tr>
 				<tr>
-					<td width="260"><?php echo Lang('makehtml_all_uptype');?>：</td>
+					<td width="260">更新选项：</td>
 					<td>
-						<label><input type="radio" name="uptype" id="uptype1" onClick="SelUp()" value="time" checked="checked"> <?php echo Lang('makehtml_all_uptype_time');?></label>
-						<label><input type="radio" name="uptype" id="uptype2" onClick="SelUp()" value="id"> <?php echo Lang('makehtml_all_uptype_id');?></label>
-						<label><input type="radio" name="uptype" id="uptype3" onClick="SelUp()" value="mkall"> <?php echo Lang('makehtml_all_uptype_mkall');?></label>
+						<label><input type="radio" name="uptype" id="uptype1" onClick="SelUp()" value="time" checked="checked"> 指定时间的所有更新</label>
+						<label><input type="radio" name="uptype" id="uptype2" onClick="SelUp()" value="id"> 指定ID文档的所有更新</label>
+						<label><input type="radio" name="uptype" id="uptype3" onClick="SelUp()" value="mkall"> 更新所有</label>
 					</td>
 				</tr>
 				<tr id="seltime">
-					<td><?php echo Lang('makehtml_all_starttime');?>：</td>
+					<td>起始时间：</td>
 					<td><input type="text" name="starttime" id="starttime" value="<?php echo GetDateMk(time());?>" class="datepicker" style="width:160px"></td>
 				</tr>
 				<tr id="selid" style="display:none">
-					<td><?php echo Lang('makehtml_all_startid');?>：</td>
+					<td>起始id：</td>
 					<td><input type="text" name="startid" id="startid" value="0" style="width:60px"></td>
 				</tr>
 				<tr>
-					<td align="center" colspan="2" bgcolor="#f8fcf2"><button type="submit" name="Submit" class="btn btn-success btn-sm">开始<?php echo Lang('update');?></button></td>
+					<td bgcolor="#fbfce2" colspan="2" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">开始更新</button></td>
 				</tr>
 			</form>
 			<tr>
 				<td colspan="2">
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="30%"><?php echo Lang('result');?>：</td>
-							<td width="70%" align="right"></td>
+							<td width="30%">结果：</td>
+							<td width="70%" align="right">
+								<script>
+									function ResizeDiv(obj, ty) {
+										if (ty == "+") document.all[obj].style.pixelHeight += 50;
+										else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+									}
+								</script>
+								<a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+								<a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
+							</td>
 						</tr>
 					</table>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" id="mtd">
-					<div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="360px"></iframe></div>
+					<div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="360px"></iframe></div>
+					<script>
+						document.all.mdv.style.pixelHeight = screen.height - 360;
+					</script>
 				</td>
 			</tr>
 		</table>

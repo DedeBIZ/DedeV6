@@ -2,24 +2,20 @@
 /**
  * 文档操作相关函数
  *
- * @version        $Id: inc_archives_functions.php 2022-07-01 tianya $
+ * @version        $Id: inc_archives_functions.php 1 9:56 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Archive\Archives;
-use DedeBIZ\Database\DedeSql;
-use DedeBIZ\libraries\DedeBIZ;
-use DedeBIZ\libraries\DedeHttpDown;
-use DedeBIZ\libraries\SplitWord;
-use DedeBIZ\Login\UserLogin;
-use DedeBIZ\Template\DedeTagParse;
-helper('dedecollection');
-helper('customfields');
-helper('image');
+require_once(DEDEINC.'/libraries/dedehttpdown.class.php');
+require_once(DEDEINC.'/image.func.php');
+require_once(DEDEINC.'/archive/partview.class.php');
 $backurl = !empty($_COOKIE['ENV_GOBACK_URL']) ? $_COOKIE['ENV_GOBACK_URL'] : '';
-$backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn btn-success btn-sm'>".Lang('content_list_remeber')."</a>" : '';
+$backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn btn-success btn-sm'>记忆的列表页</a>" : '';
+if (!isset($_NOT_ARCHIVES)) {
+    require_once(DEDEINC.'/customfields.func.php');
+}
 /**
  * 获得HTML里的外部资源，针对图集
  *
@@ -32,7 +28,8 @@ $backurl = preg_match("#content_#", $backurl) ? "<a href='$backurl' class='btn b
 function GetCurContentAlbum($body, $rfurl, &$firstdd)
 {
     global $dsql, $cfg_multi_site, $cfg_basehost, $cfg_ddimg_width;
-    global $cfg_basedir, $pagestyle, $cUserLogin, $cfg_addon_savetype;
+    global $cfg_basedir, $pagestyle, $cuserLogin, $cfg_addon_savetype;
+    require_once(DEDEINC.'/dedecollection.func.php');
     if (empty($cfg_ddimg_width))    $cfg_ddimg_width = 320;
     $rsimg = '';
     $cfg_uploaddir = $GLOBALS['cfg_image_dir'];
@@ -68,10 +65,10 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
             $fsize = filesize($rndFileName);
             $filename = $milliSecond.'-'.$key.$itype;
             //保存图片附件信息
-            $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','$iurl','1','{$imginfos[0]}','$imginfos[1]','0','$fsize','".time()."','".$cUserLogin->getUserID()."');";
+            $inquery = "INSERT INTO `#@__uploads` (arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','$iurl','1','{$imginfos[0]}','$imginfos[1]','0','$fsize','".time()."','".$cuserLogin->getUserID()."'); ";
             $dsql->ExecuteNoneQuery($inquery);
             $fid = $dsql->GetLastID();
-            UserLogin::AddMyAddon($fid, $iurl);
+            AddMyAddon($fid, $iurl);
             if ($pagestyle > 2) {
                 $litpicname = GetImageMapDD($iurl, $cfg_ddimg_width);
             } else {
@@ -98,7 +95,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
  */
 function GetCurContent($body)
 {
-    global $cfg_multi_site, $cfg_basehost, $cfg_basedir, $cfg_image_dir, $arcID, $cUserLogin, $dsql;
+    global $cfg_multi_site, $cfg_basehost, $cfg_basedir, $cfg_image_dir, $arcID, $cuserLogin, $dsql;
     $cfg_uploaddir = $cfg_image_dir;
     $htd = new DedeHttpDown();
     $basehost = IsSSL()? "https://".$_SERVER["HTTP_HOST"] : "http://".$_SERVER["HTTP_HOST"];
@@ -124,6 +121,7 @@ function GetCurContent($body)
             continue;
         }
         $htd->OpenUrl($value);
+
         $itype = $htd->GetHead("content-type");
         $isImage = true;
         if ($itype == 'image/gif') {
@@ -133,11 +131,11 @@ function GetCurContent($body)
         } else if ($itype == 'audio/mpeg'){
             $itype = ".mp3";
             $isImage = false;
-        } else if ($itype == 'image/jpeg') {
+        } else if($itype == 'image/jpeg') {
             $itype = '.jpg';
-        } else if ($itype == 'image/bmp') {
+        } else if($itype == 'image/bmp') {
             $itype = '.bmp';
-        } else if ($itype == 'image/svg+xml') {
+        } else if($itype == 'image/svg+xml') {
             $itype = '.svg';
             $isImage = false;
         } else {
@@ -156,10 +154,10 @@ function GetCurContent($body)
             }
             $fsize = filesize($rndFileName);
             //保存图片附件信息
-            $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('{$arcID}','$rndFileName','$fileurl','1','{$imginfos[0]}','$imginfos[1]','0','$fsize','".time()."','".$cUserLogin->getUserID()."');";
+            $inquery = "INSERT INTO `#@__uploads` (arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('{$arcID}','$rndFileName','$fileurl','1','{$imginfos[0]}','$imginfos[1]','0','$fsize','".time()."','".$cuserLogin->getUserID()."'); ";
             $dsql->ExecuteNoneQuery($inquery);
             $fid = $dsql->GetLastID();
-            UserLogin::AddMyAddon($fid, $fileurl);
+            AddMyAddon($fid, $fileurl);
             if ($cfg_multi_site == 'Y') {
                 $fileurl = $cfg_basehost.$fileurl;
             }
@@ -232,7 +230,7 @@ function CheckChannel($typeid, $channelid)
 {
     global $dsql;
     if ($typeid == 0) return TRUE;
-    $row = $dsql->GetOne("SELECT ispart,channeltype FROM `#@__arctype` WHERE id='$typeid'");
+    $row = $dsql->GetOne("SELECT ispart,channeltype FROM `#@__arctype` WHERE id='$typeid' ");
     if ($row['ispart'] != 0 || $row['channeltype'] != $channelid) return FALSE;
     else return TRUE;
 }
@@ -247,7 +245,7 @@ function CheckChannel($typeid, $channelid)
 function CheckArcAdmin($aid, $adminid)
 {
     global $dsql;
-    $row = $dsql->GetOne("SELECT mid FROM `#@__archives` WHERE id='$aid'");
+    $row = $dsql->GetOne("SELECT mid FROM `#@__archives` WHERE id='$aid' ");
     if ($row['mid'] != $adminid) return FALSE;
     else return TRUE;
 }
@@ -308,14 +306,16 @@ function SpLongBody($mybody, $spsize, $sptag)
  * @access    public
  * @param     string  $aid  文档id
  * @param     string  $ismakesign  生成标志
+ * @param     int  $isremote  是否远程
  * @return    string
  */
-function MakeArt($aid, $mkindex = FALSE, $ismakesign = FALSE)
+function MakeArt($aid, $mkindex = FALSE, $ismakesign = FALSE, $isremote = 0)
 {
     global $envs, $typeid;
+    require_once(DEDEINC.'/archive/archives.class.php');
     if ($ismakesign) $envs['makesign'] = 'yes';
     $arc = new Archives($aid);
-    $reurl = $arc->MakeHtml();
+    $reurl = $arc->MakeHtml($isremote);
     return $reurl;
 }
 /**
@@ -348,7 +348,7 @@ function GetDDImgFromBody(&$body)
  */
 function GetDDImage($litpic, $picname, $isremote)
 {
-    global $cUserLogin, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir, $cfg_image_dir, $cfg_addon_savetype;
+    global $cuserLogin, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir, $cfg_image_dir, $cfg_addon_savetype;
     $ntime = time();
     if (($litpic != 'none' || $litpic != 'ddfirst') && !empty($_FILES[$litpic]['tmp_name']) && is_uploaded_file($_FILES[$litpic]['tmp_name'])
     ) {
@@ -357,12 +357,12 @@ function GetDDImage($litpic, $picname, $isremote)
         $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png");
         $_FILES[$litpic]['type'] = strtolower(trim($_FILES[$litpic]['type']));
         if (!in_array($_FILES[$litpic]['type'], $sparr)) {
-            ShowMsg(Lang("dialog_err_imageformat"), "-1");
+            ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种", "-1");
             exit();
         }
         $savepath = $cfg_image_dir.'/'.MyDate($cfg_addon_savetype, $ntime);
         CreateDir($savepath);
-        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cUserLogin->getUserID().mt_rand(1000, 9999));
+        $fullUrl = $savepath.'/'.dd2char(MyDate('mdHis', $ntime).$cuserLogin->getUserID().mt_rand(1000, 9999));
         if (strtolower($_FILES[$litpic]['type']) == "image/gif") {
             $fullUrl = $fullUrl.".gif";
         } else if (strtolower($_FILES[$litpic]['type']) == "image/png") {
@@ -372,11 +372,11 @@ function GetDDImage($litpic, $picname, $isremote)
         }
         $mime = get_mime_type($_FILES[$litpic]['tmp_name']);
         if (preg_match("#^unknow#", $mime)) {
-            ShowMsg(Lang("media_no_fileinfo"), -1);
+            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
             exit;
         }
         if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
-            ShowMsg(Lang("media_only_media"), -1);
+            ShowMsg("仅支持媒体文件及应用程序上传", -1);
             exit;
         }
         @move_uploaded_file($_FILES[$litpic]['tmp_name'], $cfg_basedir.$fullUrl);
@@ -388,7 +388,7 @@ function GetDDImage($litpic, $picname, $isremote)
         $picname = trim($picname);
         if ($isremote == 1 && preg_match("#^http:\/\/#i", $picname)) {
             $litpic = $picname;
-            $ddinfos = GetRemoteImage($litpic, $cUserLogin->getUserID());
+            $ddinfos = GetRemoteImage($litpic, $cuserLogin->getUserID());
             if (!is_array($ddinfos)) {
                 $litpic = '';
             } else {
@@ -401,7 +401,7 @@ function GetDDImage($litpic, $picname, $isremote)
         } else {
             if ($litpic == 'ddfirst' && !preg_match("#^http:\/\/#i", $picname)) {
                 $oldpic = $cfg_basedir.$picname;
-                $litpic = str_replace('.', '-icon.', $picname);
+                $litpic = str_replace('.', '-ty.', $picname);
                 if ($GLOBALS['cfg_ddimg_full'] == 'Y') @ImageResizeNew($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
                 else @ImageResize($oldpic, $cfg_ddimg_width, $cfg_ddimg_height, $cfg_basedir.$litpic);
                 if (!is_file($cfg_basedir.$litpic)) $litpic = '';
@@ -519,7 +519,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
  */
 function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = '')
 {
-    global $autolitpic, $remote, $dellink, $autokey, $cfg_basehost, $cfg_auot_description, $id, $title;
+    global $autolitpic, $remote, $dellink, $autokey, $cfg_basehost, $cfg_auot_description, $id, $title, $cfg_soft_lang;
     global $cfg_bizcore_appid, $cfg_bizcore_key, $cfg_bizcore_hostname, $cfg_bizcore_port;
     $autolitpic = (empty($autolitpic) ? '' : $autolitpic);
     $body = stripslashes($body);
@@ -547,25 +547,26 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
         $litpic = GetDDImgFromBody($body);
     }
     //自动获取关键词
-    if ($autokey == 1 && $keywords == '') {
+    if ($autokey == 2 && $keywords == '') {
         $subject = $title;
         $message = $body;
         //采用DedeBIZ Core分词组件分词
         if (!empty($cfg_bizcore_appid) && !empty($cfg_bizcore_key)) {
             $keywords = '';
-            $client = new DedeBIZ($cfg_bizcore_hostname, $cfg_bizcore_port);
+            $client = new DedeBizClient($cfg_bizcore_hostname, $cfg_bizcore_port);
             $client->appid = $cfg_bizcore_appid;
             $client->key = $cfg_bizcore_key;
             $data = $client->Spliteword($subject.Html2Text($message));
             $keywords = $data->data;
             $client->Close();
         } else {
+            include_once(DEDEINC.'/libraries/splitword.class.php');
             $keywords = '';
-            $sp = new SplitWord();
-            $sp->SetSource($subject);
+            $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
+            $sp->SetSource($subject, $cfg_soft_lang, $cfg_soft_lang);
             $sp->StartAnalysis();
             $titleindexs = preg_replace("/#p#|#e#/", '', $sp->GetFinallyIndex());
-            $sp->SetSource(Html2Text($message));
+            $sp->SetSource(Html2Text($message), $cfg_soft_lang, $cfg_soft_lang);
             $sp->StartAnalysis();
             $allindexs = preg_replace("/#p#|#e#/", '', $sp->GetFinallyIndex());
             if (is_array($allindexs) && is_array($titleindexs)) {
@@ -637,9 +638,9 @@ function Replace_Links(&$body, $allow_urls = array())
  */
 function GetImageMapDD($filename, $maxwidth)
 {
-    global $cUserLogin, $dsql, $cfg_ddimg_height, $cfg_ddimg_full;
+    global $cuserLogin, $dsql, $cfg_ddimg_height, $cfg_ddimg_full;
     $ddn = substr($filename, -3);
-    $ddpicok = preg_replace("#\.".$ddn."$#", "-icon.".$ddn, $filename);
+    $ddpicok = preg_replace("#\.".$ddn."$#", "-ty.".$ddn, $filename);
     $toFile = $GLOBALS['cfg_basedir'].$ddpicok;
     if ($cfg_ddimg_full == 'Y') ImageResizeNew($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);
     else ImageResize($GLOBALS['cfg_basedir'].$filename, $maxwidth, $cfg_ddimg_height, $toFile);
@@ -647,11 +648,103 @@ function GetImageMapDD($filename, $maxwidth)
     $fsize = filesize($toFile);
     $ddpicoks = explode('/', $ddpicok);
     $filename = $ddpicoks[count($ddpicoks) - 1];
-    $inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','$ddpicok','1','0','0','0','$fsize','".time()."','".$cUserLogin->getUserID()."');";
+    $inquery = "INSERT INTO `#@__uploads` (arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','$ddpicok','1','0','0','0','$fsize','".time()."','".$cuserLogin->getUserID()."'); ";
     $dsql->ExecuteNoneQuery($inquery);
     $fid = $dsql->GetLastID();
-    UserLogin::AddMyAddon($fid, $ddpicok);
+    AddMyAddon($fid, $ddpicok);
     return $ddpicok;
+}
+/**
+ *  上传一个未经处理的图片
+ *
+ * @access    public
+ * @param     string  $upname 上传框名称
+ * @param     string  $handurl 手工填写的网址
+ * @param     string  $ddisremote 是否下载远程图片 0 不下, 1 下载
+ * @param     string  $ntitle 注解文字 如果表单有 title 字段可不管
+ * @return    mixed
+ */
+function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
+{
+    global $cuserLogin, $cfg_basedir, $cfg_image_dir, $title, $dsql;
+    if ($ntitle != '') {
+        $title = $ntitle;
+    }
+    $ntime = time();
+    $filename = '';
+    $isrm_up = FALSE;
+    $handurl = trim($handurl);
+    //如果用户自行上传了图片
+    if (!empty($_FILES[$upname]['tmp_name']) && is_uploaded_file($_FILES[$upname]['tmp_name'])) {
+        $istype = 0;
+        $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png");
+        $_FILES[$upname]['type'] = strtolower(trim($_FILES[$upname]['type']));
+        if (!in_array($_FILES[$upname]['type'], $sparr)) {
+            ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG格式的其中一种", "-1");
+            exit();
+        }
+        if (!empty($handurl) && !preg_match("#^http:\/\/#i", $handurl) && file_exists($cfg_basedir.$handurl)) {
+            if (!is_object($dsql)) {
+                $dsql = new DedeSqli();
+            }
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__uploads` WHERE url LIKE '$handurl' ");
+            $fullUrl = preg_replace("#\.([a-z]*)$#i", "", $handurl);
+        } else {
+            $savepath = $cfg_image_dir.'/'.date("%Y-%m", $ntime);
+            CreateDir($savepath);
+            $fullUrl = $savepath.'/'.date("%d", $ntime).dd2char(date("%H%M%S", $ntime).'0'.$cuserLogin->getUserID().'0'.mt_rand(1000, 9999));
+        }
+        if (strtolower($_FILES[$upname]['type']) == "image/gif") {
+            $fullUrl = $fullUrl.".gif";
+        } else if (strtolower($_FILES[$upname]['type']) == "image/png") {
+            $fullUrl = $fullUrl.".png";
+        } else {
+            $fullUrl = $fullUrl.".jpg";
+        }
+        $mime = get_mime_type($_FILES[$upname]['tmp_name']);
+        if (preg_match("#^unknow#", $mime)) {
+            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
+            exit;
+        }
+        if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
+            ShowMsg("仅支持媒体文件及应用程序上传", -1);
+            exit;
+        }
+        //保存
+        @move_uploaded_file($_FILES[$upname]['tmp_name'], $cfg_basedir.$fullUrl);
+        $filename = $fullUrl;
+        //水印
+        @WaterImg($cfg_basedir.$fullUrl, 'up');
+        $isrm_up = TRUE;
+    }
+    //远程或选择本地图片
+    else {
+        if ($handurl == '') {
+            return '';
+        }
+        //远程图片并要求本地化
+        if ($isremote == 1 && preg_match("#^http[s]?:\/\/#i", $handurl)) {
+            $ddinfos = GetRemoteImage($handurl, $cuserLogin->getUserID());
+            if (!is_array($ddinfos)) {
+                $litpic = "";
+            } else {
+                $filename = $ddinfos[0];
+            }
+            $isrm_up = TRUE;
+            //本地图片或远程不要求本地化
+        } else {
+            $filename = $handurl;
+        }
+    }
+    $imgfile = $cfg_basedir.$filename;
+    if (is_file($imgfile) && $isrm_up && $filename != '') {
+        $info = "";
+        $imginfos = GetImageSize($imgfile, $info);
+        //把新上传的图片信息保存到媒体文档管理档案中
+        $inquery = "INSERT INTO `#@__uploads` (title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$title','$filename','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".time()."','".$cuserLogin->getUserID()."');";
+        $dsql->ExecuteNoneQuery($inquery);
+    }
+    return $filename;
 }
 /**
  *  获取更新测试信息

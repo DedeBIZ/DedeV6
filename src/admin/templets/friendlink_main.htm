@@ -2,13 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('friendlink_main');?></title>
+  <title>友情链接管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css" type='text/css'>
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+  <link rel="stylesheet" href="../static/web/css/admin.css" type='text/css'>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
@@ -28,7 +27,7 @@
         }
       }
       if (str == '') {
-        ShowMsg('<?php echo Lang("feedback_noselect");?>');
+        ShowMsg('您没选择任何内容');
         return false;
       } else {
         location = "friendlink_edit.php?aids=" + str + "&dopost=delall";
@@ -37,79 +36,73 @@
   </script>
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
-    <tr>
-      <td bgcolor="#f8f8f8" colspan="8">
-        <span class="float-left py-2"><?php echo Lang('friendlink_main');?></span>
-        <span class="float-right mr-2">
-          <a href="friendlink_add.php" class="btn btn-success btn-sm"><?php echo Lang('friendlink_add');?></a>
-          <a href="friendlink_type.php" class="btn btn-success btn-sm"><?php echo Lang('friendlink_type');?></a>
-          <a href="{dede:global name=' cfg_phpurl'/}/flink.php" target="_blank" class="btn btn-success btn-sm"><?php echo Lang('friendlink_view');?></a>
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" colspan="8">
-        <form action="friendlink_main.php" name="form1" method="get">
-          <table cellspacing="0" cellpadding="3" class="table table-borderless">
-            <tr>
-              <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="<?php echo Lang('input_keywords_tip');?>" value="<?php echo $keyword;?>" style="width:260px"></td>
-              <td width="170">
-                <select name="ischeck" id="ischeck" style="width:160px">
-                  <?php
-            			foreach($selCheckArr as $k=>$v)
-            			{
-            				if ($k==$ischeck) echo "<option value='$k' selected>$v</option>";
-            				else echo "<option value='$k'>$v</option>";
-            			}
-            			?>
-                </select>
-              </td>
-              <td><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('search');?></button></td>
-            </tr>
-          </table>
-        </form>
-      </td>
-    </tr>
-    <form name="form1" method="post" action="friendlink_edit.php" onSubmit="return checkSubmit();">
-      <input type="hidden" name="dopost" value="delall">
-      <input type="hidden" name="allid" value="">
-      <tr align="center" bgcolor="#f8fcf2">
-        <td width="6%"><?php echo Lang('select');?></td>
-        <td width="23%"><?php echo Lang('friendlink_webname');?></td>
-        <td width="12%"><?php echo Lang('friendlink_logo');?></td>
-        <td width="15%"><?php echo Lang('friendlink_email');?></td>
-        <td width="15%"><?php echo Lang('friendlink_dtime');?></td>
-        <td width="8%"><?php echo Lang('friendlink_ischeck');?></td>
-        <td width="8%"><?php echo Lang('friendlink_sortrank');?></td>
-        <td width="15%"><?php echo Lang('operation');?></td>
+  <form action="friendlink_main.php" name="form1" method="get">
+    <table cellspacing="0" cellpadding="3" width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+      <tr bgcolor="#f8f8f8">
+        <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" value="<?php echo $keyword;?>" style="width:260px"></td>
+        <td width="170">
+          <select name="ischeck" id="ischeck" style="width:160px">
+            <?php
+            foreach($selCheckArr as $k=>$v)
+            {
+              if($k==$ischeck) echo "<option value='$k' selected>$v</option>";
+              else echo "<option value='$k'>$v</option>";
+            }
+            ?>
+          </select>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-success btn-sm">搜索</button>
+          <a href="friendlink_add.php" class="btn btn-success btn-sm">增加链接</a>
+          <a href="friendlink_type.php" class="btn btn-success btn-sm">网站类型管理</a>
+          <a href="{dede:global name=' cfg_phpurl'/}/flink.php" target="_blank" class="btn btn-success btn-sm">友情链接预览</a>
+        </td>
       </tr>
-      {dede:datalist empty='<tr><td colspan="8"><center>~lang:none_result~</center></td></tr>'}
-      <tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
+    </table>
+  </form>
+  <form name="form1" method="post" action="friendlink_edit.php" onSubmit="return checkSubmit();">
+    <input type="hidden" name="dopost" value="delall">
+    <input type="hidden" name="allid" value="">
+    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+      <tr>
+        <td bgcolor="#f8f8f8" colspan="8">友情链接管理</td>
+      </tr>
+      <tr bgcolor="#fbfce2" align="center">
+        <td width="6%">选择</td>
+        <td width="23%">网站名称</td>
+        <td width="12%">网站Logo</td>
+        <td width="15%">站长Email</td>
+        <td width="15%">时间</td>
+        <td width="8%">状态</td>
+        <td width="8%">顺序</td>
+        <td width="15%">管理</td>
+      </tr>
+      {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
+      <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type='checkbox' name='aids' value='{dede:field.id/}'></td>
-        <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i><?php echo Lang('friendlink_url');?>：{dede:field.url/}</i> </td>
+        <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i>地址：{dede:field.url/}</i></td>
         <td>{dede:field.logo function="GetPic(@me)"/}</td>
         <td>{dede:field.email/}</td>
         <td>{dede:field.dtime function="MyDate('Y-m-d',@me)"/}</td>
         <td>{dede:field.ischeck function="GetSta(@me)"/}</td>
         <td>{dede:field.sortrank/}</td>
         <td>
-          <a href="friendlink_edit.php?id={dede:field.id/}&dopost=getedit" class="btn btn-success btn-sm"><?php echo Lang('edit');?></a>
-          <a href="friendlink_edit.php?id={dede:field.id/}&dopost=delete"class="btn btn-success btn-sm"><?php echo Lang('delete');?></a>
+          <a href="friendlink_edit.php?id={dede:field.id/}&dopost=getedit" class="btn btn-success btn-sm">修改</a>
+          <a href="friendlink_edit.php?id={dede:field.id/}&dopost=delete"class="btn btn-success btn-sm">删除</a>
         </td>
       </tr>
       {/dede:datalist}
-    </form>
-    <tr>
-      <td colspan="8">
-        <a href="javascript:;" onclick="Sel('all')" class="btn btn-success btn-sm"><?php echo Lang('select_all');?></a>
-        <a href="javascript:;" onclick="Sel('none')" class="btn btn-success btn-sm"><?php echo Lang('cancel');?></a>
-        <a href="javascript:;" onclick="checkSubmit()" class="btn btn-success btn-sm"><?php echo Lang('batch_delete');?></a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" colspan="8" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
-    </tr>
-  </table>
+      <tr>
+        <td colspan="8">
+          <a href="javascript:;" onclick="Sel('all')" class="btn btn-success btn-sm">全选</a>
+          <a href="javascript:;" onclick="Sel('none')" class="btn btn-success btn-sm">取消</a>
+          <a href="javascript:;" onclick="checkSubmit()" class="btn btn-success btn-sm">批量删除</a>
+        </td>
+      </tr>
+      <tr bgcolor="#f8f8f8" align="center" class="py-2">
+        <td colspan="8">{dede:pagelist listsize='6'/}</td>
+      </tr>
+    </table>
+  </form>
 </body>
 </html>

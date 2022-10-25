@@ -8,11 +8,10 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('member_Operations');
+CheckPurview('member_Operations');
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
+require_once(DEDEINC.'/datalistcp.class.php');
 if (empty($buyid)) $buyid = '';
 $addsql = " WHERE buyid LIKE '%$buyid%' ";
 if (isset($sta)) $addsql .= " AND sta='$sta' ";
@@ -22,7 +21,7 @@ $dlist = new DataListCP();
 $dlist->pagesize = 30;
 $dlist->SetParameter("buyid", $buyid);
 if (isset($sta)) $dlist->SetParameter("sta", $sta);
-$dlist->dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
+$dlist->dsql->SetQuery("SELECT * FROM #@__moneycard_type ");
 $dlist->dsql->Execute('ts');
 while ($rw = $dlist->dsql->GetArray('ts')) {
     $TypeNames[$rw['tid']] = $rw['pname'];
@@ -38,7 +37,7 @@ function GetMemberID($mid)
     if ($mid == 0) {
         return '0';
     }
-    $row = $dsql->GetOne("SELECT userid FROM `#@__member` WHERE mid='$mid'");
+    $row = $dsql->GetOne("SELECT userid FROM #@__member WHERE mid='$mid' ");
     if (is_array($row)) {
         return "<a href='member_view.php?id={$mid}'>".$row['userid']."</a>";
     } else {
@@ -47,19 +46,19 @@ function GetMemberID($mid)
 }
 function GetPType($tname)
 {
-    if ($tname == 'card') return Lang('member_ptype_card');
-    else if ($tname == 'archive') return Lang('member_ptype_archive');
-    else if ($tname == 'stc') return Lang('member_ptype_stc');
-    else return Lang('member_ptype_other');
+    if ($tname == 'card') return '点数卡';
+    else if ($tname == 'archive') return '购买文档';
+    else if ($tname == 'stc') return '兑换金币';
+    else return '会员升级';
 }
 function GetSta($sta)
 {
     if ($sta == 0) {
-        return Lang('member_operations_sta_0');
+        return '未付款';
     } else if ($sta == 1) {
-        return Lang('member_operations_sta_1');
+        return '已付款';
     } else {
-        return Lang('member_operations_sta_2');
+        return '已完成';
     }
 }
 ?>

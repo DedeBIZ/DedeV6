@@ -8,15 +8,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/../system/common.inc.php');
-$cUserLogin = new UserLogin();
-$cUserLogin->exitUser();
+require_once(DEDEINC.'/userlogin.class.php');
+$cuserLogin = new userLogin();
+$cuserLogin->exitUser();
 if (empty($needclose)) {
     header('location:index.php');
 } else {
     $msg = "<script>
-    if (document.all) window.opener=true;
+    if(document.all) window.opener=true;
     window.close();
     </script>";
     echo $msg;

@@ -8,20 +8,18 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 //增加权限检查
 if (empty($dopost)) $dopost = "";
 //上传
 if ($dopost == "upload") {
-    UserLogin::CheckPurview('sys_Upload');
     CheckCSRF();
-    helper('image');
+    require_once(DEDEINC."/image.func.php");
     $sparr_image = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/x-png", "image/wbmp");
     $sparr_flash = array("application/xshockwaveflash");
     $okdd = 0;
     $uptime = time();
-    $adminid = $cUserLogin->getUserID();
+    $adminid = $cuserLogin->getUserID();
     $width = $height = '';
     for ($i = 0; $i <= 40; $i++) {
         if (isset(${"upfile".$i}) && is_uploaded_file(${"upfile".$i})) {
@@ -56,17 +54,17 @@ if ($dopost == "upload") {
             }
 			//后台文件任意上传漏洞：早期版本后台存在大量的富文本编辑器，该控件提供了一些文件上传接口，同时对上传文件的后缀类型未进行严格的限制，这导致了黑客可以上传WEBSHELL，获取网站后台权限
             if (preg_match('#\.(php|pl|cgi|asp|aspx|jsp|php5|php4|php3|shtm|shtml)$#i', trim($filename))) {
-                ShowMsg(Lang("media_ext_forbidden"), "javascript:;");
+                ShowMsg("您指定的文件名被系统禁止", "javascript:;");
                 exit();
             }
             $fullfilename = $cfg_basedir.$filename;
             $mime = get_mime_type(${"upfile".$i});
             if (preg_match("#^unknow#", $mime)) {
-                ShowMsg(Lang("media_no_fileinfo"), -1);
+                ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
                 exit;
             }
             if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
-                ShowMsg(Lang("media_only_media"), -1);
+                ShowMsg("仅支持媒体文件及应用程序上传", -1);
                 exit;
             }
             if ($mediatype == 1) {
@@ -84,12 +82,12 @@ if ($dopost == "upload") {
             } else {
                 $ntitle = $title;
             }
-            $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$ntitle','$filename','$mediatype','$width','$height','$playtime','$filesize','$uptime','$adminid');";
+            $inquery = "INSERT INTO `#@__uploads` (title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$ntitle','$filename','$mediatype','$width','$height','$playtime','$filesize','$uptime','$adminid'); ";
             $okdd++;
             $dsql->ExecuteNoneQuery($inquery);
         }
     }
-    ShowMsg(Lang("media_success_upload",array('okdd'=>$okdd)), "media_main.php");
+    ShowMsg("成功上传 {$okdd} 个文件", "media_main.php");
     exit();
 }
 include DedeInclude('templets/media_add.htm');

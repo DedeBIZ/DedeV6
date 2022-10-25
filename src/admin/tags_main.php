@@ -8,10 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
-UserLogin::CheckPurview('sys_Keyword');
+CheckPurview('sys_Keyword');
+require_once(DEDEINC.'/datalistcp.class.php');
 $timestamp = time();
 if (empty($tag)) $tag = '';
 if (empty($action)) {
@@ -32,34 +31,40 @@ if (empty($action)) {
     $dlist->Display();
     exit();
 }
+/*
+function update()
+*/
 else if ($action == 'update') {
     $tid = (empty($tid) ? 0 : intval($tid));
     $count = (empty($count) ? 0 : intval($count));
     if (empty($tid)) {
-        ShowMsg(Lang('tags_err_update'), '-1');
+        ShowMsg('没有选择要删除的tag', '-1');
         exit();
     }
-    $query = "UPDATE `#@__tagindex` SET `count`='$count' WHERE id='$tid'";
+    $query = "UPDATE `#@__tagindex` SET `count`='$count' WHERE id='$tid' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg(Lang("tags_success_update"), 'tags_main.php');
+    ShowMsg("成功保存标签的点击信息", 'tags_main.php');
     exit();
 }
+/*
+function delete()
+*/
 else if ($action == 'delete') {
     if (@is_array($ids)) {
         $stringids = implode(',', $ids);
     } else if (!empty($ids)) {
         $stringids = $ids;
     } else {
-        ShowMsg(Lang('tags_err_delete'), '-1');
+        ShowMsg('没有选择要删除的tag', '-1');
         exit();
     }
     $query = "DELETE FROM `#@__tagindex` WHERE id IN ($stringids)";
     if ($dsql->ExecuteNoneQuery($query)) {
         $query = "DELETE FROM `#@__taglist` WHERE tid IN ($stringids)";
         $dsql->ExecuteNoneQuery($query);
-        ShowMsg(Lang('tags_delete_success',array('stringids'=>$stringids)), 'tags_main.php');
+        ShowMsg("删除tags [$stringids] 成功", 'tags_main.php');
     } else {
-        ShowMsg(Lang('tags_delete_failed',array('stringids'=>$stringids)), 'tags_main.php');
+        ShowMsg("删除tags [$stringids] 失败", 'tags_main.php');
     }
     exit();
 } else if ($action == 'get_one') {
@@ -76,6 +81,9 @@ else if ($action == 'delete') {
     $dsql->ExecuteNoneQuery("UPDATE `#@__tagindex` SET title='{$title}',keywords='{$kw}',`description`='{$des}',`uptime`='{$now}' WHERE id = {$tid}");
     echo json_encode(array('code' => 200, 'result' => true));
 }
+/*
+function fetch()
+*/
 else if ($action == 'fetch') {
     $wheresql = '';
     $start = isset($start) && is_numeric($start) ? $start : 0;
@@ -118,11 +126,11 @@ else if ($action == 'fetch') {
                     $trow = $dsql->GetOne("SELECT COUNT(*) as dd FROM `#@__taglist` WHERE tag LIKE '$keyword'");
                     if (intval($trow['dd']) != $row['total']) {
 
-                        $query = "UPDATE `#@__tagindex` SET `total`=".$trow['dd'].",uptime=$now WHERE id='$tid'";
+                        $query = "UPDATE `#@__tagindex` SET `total`=".$trow['dd'].",uptime=$now WHERE id='$tid' ";
                         $dsql->ExecuteNoneQuery($query);
                     }
                 } else {
-                    $query = " INSERT INTO `#@__tagindex` (`tag`,`count`,`total`,`weekcc`,`monthcc`,`weekup`,`monthup`,`addtime`,`uptime`) VALUES ('$keyword','0','1','0','0','$timestamp','$timestamp','$timestamp','$now');";
+                    $query = "INSERT INTO `#@__tagindex` (`tag`,`count`,`total`,`weekcc`,`monthcc`,`weekup`,`monthup`,`addtime`,`uptime`) VALUES ('$keyword','0','1','0','0','$timestamp','$timestamp','$timestamp','$now');";
                     $dsql->ExecuteNoneQuery($query);
                     $tid = $dsql->GetLastID();
                 }
@@ -133,12 +141,12 @@ else if ($action == 'fetch') {
         $complete = FALSE;
     }
     if ($complete) {
-        ShowMsg(Lang("tags_success_get"), 'tags_main.php');
+        ShowMsg("tags获取完成", 'tags_main.php');
         exit();
     }
     $start = $start + 100;
     $goto = "tags_main.php?action=fetch&startaid=$startaid&endaid=$endaid&start=$start";
-    ShowMsg(Lang('tags_success_get_continue'), $goto, 0, 500);
+    ShowMsg('继续获取tags ', $goto, 0, 500);
     exit();
 }
 ?>

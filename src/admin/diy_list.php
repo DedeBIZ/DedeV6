@@ -8,18 +8,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Archive\DiyForm;
-use DedeBIZ\libraries\DataListCP;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('c_New');
+CheckPurview('c_New');
 $diyid = isset($diyid) && is_numeric($diyid) ? $diyid : 0;
 $action = isset($action) && in_array($action, array('post', 'list', 'edit', 'check', 'delete','excel')) ? $action : '';
 if (empty($diyid)) {
-    showMsg(Lang("illegal_operation"), 'javascript:;');
+    showMsg("非法操作", 'javascript:;');
     exit();
 }
-$diy = new DiyForm($diyid);
+require_once DEDEINC.'/diyform.class.php';
+$diy = new diyform($diyid);
 if ($action == 'post') {
     if (empty($do)) {
         $postform = $diy->getForm('post', '', 'admin');
@@ -29,13 +27,13 @@ if ($action == 'post') {
         $dede_fieldshash = empty($dede_fieldshash) ? '' : trim($dede_fieldshash);
         if (!empty($dede_fields)) {
             if ($dede_fieldshash != md5($dede_fields.$cfg_cookie_encode)) {
-                showMsg(Lang("diy_err_checkdata"), '-1');
+                showMsg("数据校验不对，程序返回", '-1');
                 exit();
             }
         }
         $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         if (!is_array($diyform)) {
-            showmsg(Lang("diy_err_not_exists"), '-1');
+            showmsg("自定义表单不存在", '-1');
             exit();
         }
         $addvar = $addvalue = '';
@@ -59,15 +57,16 @@ if ($action == 'post') {
                 }
             }
         }
-        $query = "INSERT INTO `{$diy->table}` (`id`, `ifcheck` $addvar) VALUES (NULL, 0 $addvalue)";
+        $query = "INSERT INTO `{$diy->table}` (`id`, `ifcheck` $addvar)  VALUES (NULL, 0 $addvalue)";
         if ($dsql->ExecuteNoneQuery($query)) {
             $goto = "diy_list.php?action=list&diyid={$diy->diyid}";
-            showmsg(Lang('diy_success_send'), $goto);
+            showmsg('发布成功', $goto);
         } else {
-            showmsg(Lang('diy_err_send'), '-1');
+            showmsg('对不起，发布不成功', '-1');
         }
     }
 } else if ($action == 'list') {
+    include_once DEDEINC.'/datalistcp.class.php';
     $query = "SELECT * FROM {$diy->table} ORDER BY id DESC";
     $datalist = new DataListCP();
     $datalist->pagesize = 30;
@@ -81,13 +80,13 @@ if ($action == 'post') {
     if (empty($do)) {
         $id = isset($id) && is_numeric($id) ? $id : 0;
         if (empty($id)) {
-            showMsg(Lang('diy_err_no_select'), 'javascript:;');
+            showMsg('非法操作未指定id', 'javascript:;');
             exit();
         }
         $query = "SELECT * FROM {$diy->table} WHERE id=$id";
         $row = $dsql->GetOne($query);
         if (!is_array($row)) {
-            showmsg(Lang("diy_err_not_exists"), '-1');
+            showmsg("您访问的记录不存在或未经审核", '-1');
             exit();
         }
         $postform = $diy->getForm('edit', $row, 'admin');
@@ -100,7 +99,7 @@ if ($action == 'post') {
         $diyform = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid=$diyid");
         $diyco = $dsql->GetOne("SELECT * FROM `$diy->table` WHERE id='$id'");
         if (!is_array($diyform)) {
-            showmsg(Lang("diy_err_not_exists"), '-1');
+            showmsg("自定义表单不存在", '-1');
             exit();
         }
         $addsql = '';
@@ -129,50 +128,50 @@ if ($action == 'post') {
         $query = "UPDATE `$diy->table` SET $addsql WHERE id=$id";
         if ($dsql->ExecuteNoneQuery($query)) {
             $goto = "diy_list.php?action=list&diyid={$diy->diyid}";
-            showmsg(Lang('operation_successful'), $goto);
+            showmsg('编辑成功', $goto);
         } else {
-            showmsg(Lang('operation_successful'), '-1');
+            showmsg('编辑成功', '-1');
         }
     }
 } elseif ($action == 'check') {
     if (is_array($id) && is_all_numeric($id)) {
         $ids = implode(',', $id);
     } else {
-        showmsg(Lang('diy_err_no_select'), '-1');
+        showmsg('未选中要操作的内容', '-1');
         exit();
     }
     $query = "UPDATE `$diy->table` SET ifcheck=1 WHERE id IN ($ids)";
     if ($dsql->ExecuteNoneQuery($query)) {
-        showmsg(Lang('operation_successful'), "diy_list.php?action=list&diyid={$diy->diyid}");
+        showmsg('审核成功', "diy_list.php?action=list&diyid={$diy->diyid}");
     } else {
-        showmsg(Lang('operation_failed'), "diy_list.php?action=list&diyid={$diy->diyid}");
+        showmsg('审核失败', "diy_list.php?action=list&diyid={$diy->diyid}");
     }
 } elseif ($action == 'delete') {
     if (empty($do)) {
         if (is_array($id)) {
             $ids = implode(',', $id);
         } else {
-            showmsg(Lang('diy_err_no_select'), '-1');
+            showmsg('未选中要操作的内容', '-1');
             exit();
         }
         $query = "DELETE FROM `$diy->table` WHERE id IN ($ids)";
         if ($dsql->ExecuteNoneQuery($query)) {
-            showmsg(Lang('operation_successful'), "diy_list.php?action=list&diyid={$diy->diyid}");
+            showmsg('删除成功', "diy_list.php?action=list&diyid={$diy->diyid}");
         } else {
-            showmsg(Lang('operation_failed'), "diy_list.php?action=list&diyid={$diy->diyid}");
+            showmsg('删除失败', "diy_list.php?action=list&diyid={$diy->diyid}");
         }
     } else if ($do = 1) {
         $row = $dsql->GetOne("SELECT * FROM `$diy->table` WHERE id='$id'");
         if (file_exists($cfg_basedir.$row[$name])) {
             unlink($cfg_basedir.$row[$name]);
             $dsql->ExecuteNoneQuery("UPDATE `$diy->table` SET $name='' WHERE id='$id'");
-            showmsg(Lang('operation_successful'), "diy_list.php?action=list&diyid={$diy->diyid}");
+            showmsg('文件删除成功', "diy_list.php?action=list&diyid={$diy->diyid}");
         } else {
-            showmsg(Lang('diy_err_file_notexists'), '-1');
+            showmsg('文件不存在', '-1');
         }
     }
 } 
-elseif ($action == 'excel') {
+elseif($action == 'excel') {
     ob_end_clean();//清除缓冲区,避免乱码
     header("Content-type:application/vnd.ms-excel");
     header("Content-Disposition:attachment;filename={$diy->name}_".date("Y-m-d").".xls");
@@ -183,7 +182,7 @@ elseif ($action == 'excel') {
     {
         echo "<th>{$fielddata[0]}</th>";
     }
-    echo "<th>".Lang('status')."</th>";
+    echo "<th>状态</th>";
     echo "</tr>";
     $sql = "SELECT * FROM {$diy->table} ORDER BY id DESC";
     $dsql->SetQuery($sql);
@@ -195,12 +194,12 @@ elseif ($action == 'excel') {
         {
             echo "<td>".$arr[$key]."</td>";
         }
-    $status = $arr['ifcheck'] == 1 ? Lang('reviewed') : Lang('not_approved');
+    $status = $arr['ifcheck'] == 1 ? '已审核' : '未审核';
     echo "<td>".$status."</td>";
     echo "</tr>";
     }
     echo "</table>";
 } else {
-    showmsg(Lang("illegal_operation"), "-1");
+    showmsg('未定义操作', "-1");
 }
 ?>

@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('sys_group');?></title>
+  <title>系统用户组管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="content_att.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
         <td bgcolor="#f8f8f8" colspan="3">
           <table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
-              <td width="30%"><?php echo Lang('sys_group');?> </td>
+              <td width="30%">系统用户组管理 </td>
               <td width="70%" align="right">
-                <a href="sys_group_add.php" class="btn btn-success btn-sm"><?php echo Lang('sys_group_add');?></a>
-                <a href="sys_admin_user.php" class="btn btn-success btn-sm"><?php echo Lang('sys_admin_user');?></a>
+                <a href="sys_group_add.php" class="btn btn-success btn-sm">增加一个用户组</a>
+                <a href="sys_admin_user.php" class="btn btn-success btn-sm">管理系统用户</a>
               </td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr align="center" bgcolor="#f8fcf2">
-        <td width="20%"><?php echo Lang('rank');?></td>
-        <td width="45%"><?php echo Lang('sys_group_typename');?></td>
-        <td width="35%"><?php echo Lang('operation');?></td>
+      <tr bgcolor="#fbfce2" align="center">
+        <td width="20%">等级</td>
+        <td width="45%">组名称</td>
+        <td width="35%">管理</td>
       </tr>
       <?php
     	$dsql->SetQuery("Select `rank`,typename,`system` From #@__admintype");
@@ -40,9 +40,9 @@
         <td><?php echo $row->rank?></td>
         <td><?php echo $row->typename?></td>
         <td>
-          <a href="sys_group_edit.php?rank=<?php echo $row->rank?>" class="btn btn-success btn-sm"><?php echo Lang('sys_group_edit');?></a>
-          <a href="sys_admin_user.php?rank=<?php echo $row->rank?>" class="btn btn-success btn-sm"><?php echo Lang('sys_admin_user_group');?></a>
-          <?php if ($row->system==0){?><a href='sys_group_edit.php?dopost=del&rank=<?php echo $row->rank;?>'>[<?php echo Lang('sys_admin_user_group_delete');?>)>]</a><?php }?>
+          <a href="sys_group_edit.php?rank=<?php echo $row->rank?>" class="btn btn-success btn-sm">权限设定</a>
+          <a href="sys_admin_user.php?rank=<?php echo $row->rank?>" class="btn btn-success btn-sm">组用户</a>
+          <?php if($row->system==0){?><a href='sys_group_edit.php?dopost=del&rank=<?php echo $row->rank;?>'>[删除组]</a><?php }?>
         </td>
       </tr>
       <?php }?>

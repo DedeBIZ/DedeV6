@@ -8,8 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
 require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 $f = RemoveXSS($f);
 if (empty($keywords)) $keywords = "";
@@ -22,12 +22,12 @@ $dlist->SetSource($sql);
 $dlist->Display();
 function GetSta($sta)
 {
-    if ($sta == 1) return Lang("enable");
-    else return "<span class='text-danger'>".Lang('disable')."</span>";
+    if ($sta == 1) return "正常";
+    else return "<span class='text-danger'>禁用</span>";
 }
 function GetMan($sta)
 {
-    if ($sta == 1) return Lang("disable");
-    else return Lang("enable");
+    if ($sta == 1) return "禁用";
+    else return "启用";
 }
 ?>

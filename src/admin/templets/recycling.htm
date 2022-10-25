@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang('recycling');?></title>
+		<title>文档回收站</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script>
 			function moveArc(aid) {
 				var qstr = getCheckboxItem();
@@ -67,21 +67,21 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3 mb-3">
+		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr>
-				<td bgcolor="#f8f8f8" colspan="7"><?php echo Lang('recycling');?></td>
+				<td bgcolor="#f8f8f8" colspan="7">文档回收站</td>
 			</tr>
 			<form name="form2">
-				<tr align="center" bgcolor="#f8fcf2">
+				<tr bgcolor="#fbfce2" align="center">
 					<td width="6%">id</td>
-					<td width="4%"><?php echo Lang('select');?></td>
-					<td width="28%"><?php echo Lang('title');?></td>
-					<td width="10%"><?php echo Lang('senddate');?></td>
-					<td width="10%"><?php echo Lang('typename');?></td>
-					<td width="8%"><?php echo Lang('click');?></td>
-					<td width="10%"><?php echo Lang('operation');?></td>
+					<td width="4%">选择</td>
+					<td width="28%">文档标题</td>
+					<td width="10%">更新时间</td>
+					<td width="10%">类目</td>
+					<td width="8%">点击</td>
+					<td width="10%">操作</td>
 				</tr>
-				{dede:datalist empty='<tr><td colspan="7"><center>~lang:none_result~</center></td></tr>'}
+				{dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
 				<tr align="center" onMouseOut="javascript:this.bgColor='#ffffff';">
 					<td>{dede:field.id/}</td>
 					<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
@@ -90,22 +90,22 @@
 					<td>{dede:field.typename/}</td>
 					<td>{dede:field.click/}</td>
 					<td>
-						<a href="javascript:moveArc({dede:field.id/})" class="btn btn-success btn-sm"><?php echo Lang('reduction');?></a>
-						<a href="javascript:delArc({dede:field.id/})" class="btn btn-success btn-sm"><?php echo Lang('delete');?></a>
+						<a href="javascript:moveArc({dede:field.id/})" class="btn btn-success btn-sm">还原</a>
+						<a href="javascript:delArc({dede:field.id/})" class="btn btn-success btn-sm">删除</a>
 					</td>
 				</tr>
 				{/dede:datalist}
 				<tr>
 					<td colspan="7">
-						<a href="javascript:selAll()" class="btn btn-success btn-sm"><?php echo Lang('select_all');?></a>
-						<a href="javascript:noSelAll()" class="btn btn-success btn-sm"><?php echo Lang('cancel');?></a>
-						<a href="javascript:moveArc(0)" class="btn btn-success btn-sm"><?php echo Lang('reduction');?></a>
-						<a href="javascript:delArc(0)" class="btn btn-success btn-sm"><?php echo Lang('delete');?></a>
+						<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
+						<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
+						<a href="javascript:moveArc(0)" class="btn btn-success btn-sm">还原</a>
+						<a href="javascript:delArc(0)" class="btn btn-success btn-sm">删除</a>
 					</td>
 				</tr>
 			</form>
-			<tr>
-				<td align="center" colspan="7" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
+			<t>
+				<td colspan="7" bgcolor="#f8f8f8" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</body>

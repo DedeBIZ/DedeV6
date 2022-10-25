@@ -8,9 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
-use DedeBIZ\TypeLink\TypeLink;
 require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/typelink/typelink.class.php");
 if (empty($listtype)) $listtype = '';
 if (empty($dopost)) $dopost = '';
 if (empty($upinyin)) $upinyin = 0;
@@ -20,11 +19,11 @@ $id = empty($id) ? 0 : intval($id);
 $reid = empty($reid) ? 0 : intval($reid);
 $nid = 'article';
 if ($id == 0 && $reid == 0) {
-    UserLogin::CheckPurview('t_New');
+    CheckPurview('t_New');
 } else {
     $checkID = empty($id) ? $reid : $id;
-    UserLogin::CheckPurview('t_AccNew');
-    UserLogin::CheckCatalog($checkID, Lang('catalog_err_addsub'));
+    CheckPurview('t_AccNew');
+    CheckCatalog($checkID, '您无权在本栏目下创建子类');
 }
 if (empty($myrow)) $myrow = array();
 $dsql->SetQuery("SELECT id,typename,nid FROM `#@__channeltype` WHERE id<>-1 AND isshow=1 ORDER BY id");
@@ -42,13 +41,16 @@ if ($dopost == 'quick') {
     include DedeInclude('templets/catalog_add_quick.htm');
     exit();
 }
+/*---------------------
+function action_savequick(){ }
+---------------------*/
 else if ($dopost == 'savequick') {
     if (!isset($savetype)) $savetype = '';
     $isdefault = isset($isdefault) ? $isdefault : 0;
     $tempindex = "{style}/index_{$nid}.htm";
     $templist = "{style}/list_{$nid}.htm";
     $temparticle = "{style}/article_{$nid}.htm";
-    $queryTemplate = "INSERT INTO `#@__arctype`(reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`iscross`,`crossid`,`content`,`smalltypes`) VALUES ('~reid~','~topid~','~rank~','~typename~','','','','','','~typedir~','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','0','0','','','~typename~','0','','','0','0','0','','')";
+    $queryTemplate = "INSERT INTO `#@__arctype` (reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`) VALUES ('~reid~','~topid~','~rank~','~typename~','','','','','','~typedir~','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','0','0','','','~typename~','0','','','0','0','0','','')";
     if (empty($savetype)) {
         foreach ($_POST as $k => $v) {
             if (preg_match("#^posttype#", $k)) {
@@ -122,9 +124,12 @@ else if ($dopost == 'savequick') {
         }
     }
     UpDateCatCache();
-    ShowMsg(Lang('catalog_quickadd_success'), 'catalog_main.php');
+    ShowMsg('成功增加指定栏目', 'catalog_main.php');
     exit();
 }
+/*---------------------
+function action_save(){ }
+---------------------*/
 else if ($dopost == 'save') {
     $smalltypes = '';
     if (empty($smalltype)) $smalltype = '';
@@ -134,7 +139,6 @@ else if ($dopost == 'save') {
     if ($ispart != 0) $cross = 0;
     $description = Html2Text($description, 1);
     $keywords = Html2Text($keywords, 1);
-    $sortrank = empty($sortrank)? 0 : $sortrank;
     if ($ispart != 2) {
         //栏目的参照目录
         if ($referpath == 'cmspath') $nextdir = '{cmspath}';
@@ -152,12 +156,12 @@ else if ($dopost == 'save') {
         //检测二级网址
         if ($siteurl != '') {
             $siteurl = preg_replace("#\/$#", "", $siteurl);
-            if (!preg_match("#(http|https):\/\/#i", $siteurl)) {
-                ShowMsg(Lang("catalog_err_site_url"), "-1");
+            if (!preg_match("#http:\/\/#i", $siteurl)) {
+                ShowMsg("您绑定的二级域名无效，请用(http://host)的形式", "-1");
                 exit();
             }
             if (preg_match("#".$cfg_basehost."#i", $siteurl)) {
-                ShowMsg(Lang("catalog_err_site_same"), "-1");
+                ShowMsg("您绑定的二级域名与当前站点是同一个域，不需要绑定", "-1");
                 exit();
             }
         }
@@ -167,20 +171,20 @@ else if ($dopost == 'save') {
         $true_typedir = str_replace("{cmspath}", $cfg_cmspath, $typedir);
         $true_typedir = preg_replace("#\/{1,}#", "/", $true_typedir);
         if (!CreateDir($true_typedir)) {
-            ShowMsg(Lang("catalog_err_create",array('true_typedir'=>$true_typedir)), "-1");
+            ShowMsg("创建目录 {$true_typedir} 失败，请检查您的路径是否存在问题", "-1");
             exit();
         }
     }
-    $in_query = "INSERT INTO `#@__arctype`(reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`iscross`,`crossid`,`content`,`smalltypes`) VALUES ('$reid','$topid','$sortrank','$typename','$cnoverview','$enname','$enoverview','$bigpic','$litimg','$typedir','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','$ispart','$corank','$description','$keywords','$seotitle','$moresite','$siteurl','$sitepath','$ishidden','$cross','$crossid','$content','$smalltypes')";
+    $in_query = "INSERT INTO `#@__arctype` (reid,topid,sortrank,typename,cnoverview,enname,enoverview,bigpic,litimg,typedir,isdefault,defaultname,issend,channeltype,tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`) VALUES ('$reid','$topid','$sortrank','$typename','$cnoverview','$enname','$enoverview','$bigpic','$litimg','$typedir','$isdefault','$defaultname','$issend','$channeltype','$tempindex','$templist','$temparticle','default','$namerule','$namerule2','$ispart','$corank','$description','$keywords','$seotitle','$moresite','$siteurl','$sitepath','$ishidden','$cross','$crossid','$content','$smalltypes')";
     if (!$dsql->ExecuteNoneQuery($in_query)) {
-        ShowMsg(Lang("catalog_err_save"), "-1");
+        ShowMsg("保存目录数据时失败，请检查您的输入资料是否存在问题", "-1");
         exit();
     }
     UpDateCatCache();
     if ($reid > 0) {
         PutCookie('lastCid', GetTopid($reid), 3600 * 24, '/');
     }
-    ShowMsg(Lang("catalog_success_save"), "catalog_main.php");
+    ShowMsg("成功创建一个分类", "catalog_main.php");
     exit();
 }//End dopost==save
 //获取从父目录继承的默认参数
@@ -193,7 +197,7 @@ if ($dopost == '') {
     $typedir = '';
     $moresite = 0;
     if ($id > 0) {
-        $myrow = $dsql->GetOne("SELECT tp.*,ch.typename AS ctypename FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id=$id");
+        $myrow = $dsql->GetOne("SELECT tp.*,ch.typename AS ctypename FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch ON ch.id=tp.channeltype WHERE tp.id=$id ");
         $channelid = $myrow['channeltype'];
         $issennd = $myrow['issend'];
         $corank = $myrow['corank'];

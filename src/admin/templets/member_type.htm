@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('member_type');?></title>
+  <title>会员产品分类</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="member_type.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
         <td bgcolor="#f8f8f8" colspan="5">
           <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%"><?php echo Lang('member_type');?></td>
+              <td width="30%">会员产品分类</td>
               <td width="70%" align="right">
-                <button type="button" class="btn btn-success btn-sm" onClick="location='member_rank.php';"><?php echo Lang('member_rank');?></button>
-                <button type="button" class="btn btn-success btn-sm" onClick="location='member_operations.php';"><?php echo Lang('member_operations');?></button>
+                <button type="button" class="btn btn-success btn-sm" onClick="location='member_rank.php';">会员级别管理</button>
+                <button type="button" class="btn btn-success btn-sm" onClick="location='member_operations.php';">会员业务记录</button>
               </td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr bgcolor="#f8fcf2">
-        <td width="22%" align="center"><?php echo Lang('member_type_pname');?></td>
-        <td width="23%" align="center"><?php echo Lang('member_type_rank');?></td>
-        <td width="21%" align="center"><?php echo Lang('member_type_money');?></td>
-        <td width="18%" align="center"><?php echo Lang('member_type_exptime');?></td>
-        <td width="16%" align="center"><?php echo Lang('member_type_status');?></td>
+      <tr bgcolor="#fbfce2">
+        <td width="22%" align="center">产品名称</td>
+        <td width="23%" align="center">会员级别</td>
+        <td width="21%" align="center">产品价格</td>
+        <td width="18%" align="center">会员期限(天)</td>
+        <td width="16%" align="center">状态</td>
       </tr>
       <?php
-      $dsql->SetQuery("SELECT * FROM `#@__member_type`");
+      $dsql->SetQuery("Select * From #@__member_type");
       $dsql->Execute();
       $k=0;
       while($row = $dsql->GetObject())
@@ -47,29 +47,31 @@
           <select name="rank_<?php echo $k?>" id="rank_<?php echo $k?>" style="width:90%">
           <?php
           foreach($arcranks as $kkk=>$vvv){
-          	if ($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+          	if($row->rank==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
           	else echo "<option value='{$kkk}'>{$vvv}</option>";
           }
 	   	    ?>
           </select>
         </td>
-        <td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" style="width:80%" class="pubinputs">（<?php echo Lang('cards_type_yuan');?>）</td>
+        <td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" style="width:80%" class="pubinputs">（元）</td>
         <td>
           <select name="exptime_<?php echo $k?>" id="exptime_<?php echo $k?>" style="width:90%">
             <?php
             foreach($times as $kkk=>$vvv){
-            	if ($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
+            	if($row->exptime==$kkk) echo "<option value='{$kkk}' selected>{$vvv}</option>";
             	else echo "<option value='{$kkk}'>{$vvv}</option>";
             }
   	   	    ?>
           </select>
         </td>
-        <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> <?php echo Lang('retain');?></td>
+        <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> 保留</td>
       </tr>
-      <?php }?>
+      <?php
+      }
+    	?>
       <input type="hidden" name="idend" value="<?php echo $k?>">
       <tr>
-        <td colspan="5"> <?php echo Lang('member_pname_new');?>：</td>
+        <td colspan="5"> 新增一个会员产品类型：</td>
       </tr>
       <tr align="center">
         <td><input type="text" name="pname_new" id="pname_new" style="width:90%" class="pubinputs"></td>
@@ -82,7 +84,7 @@
   	   	    ?>
           </select>
         </td>
-        <td><input type="text" name="money_new" id="money_new" style="width:80%" value="100" class="pubinputs">（<?php echo Lang('cards_type_yuan');?>）</td>
+        <td><input type="text" name="money_new" id="money_new" style="width:80%" value="100" class="pubinputs">（元）</td>
         <td>
           <select name="exptime_new" id="exptime_new" style="width:90%">
             <?php
@@ -92,14 +94,14 @@
   	   	    ?>
           </select>
         </td>
-        <td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> <?php echo Lang('add');?></td>
+        <td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> 新增</td>
       </tr>
       <tr>
         <td colspan="5"></td>
       </tr>
       <tr>
-        <td align="center" colspan="5" bgcolor="#f8f8f8" class="py-2">
-          <button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
+        <td bgcolor="#f8f8f8" colspan="5" align="center" class="py-2">
+          <button type="submit" class="btn btn-success btn-sm">保存</button>
         </td>
       </tr>
     </form>

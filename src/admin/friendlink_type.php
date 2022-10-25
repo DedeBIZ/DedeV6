@@ -20,22 +20,22 @@ if ($dopost == "save") {
         $pname =  HtmlReplace(${'pname_'.$startID},-1);
         if (isset(${'check_'.$startID})) {
             if ($pname != '') {
-                $query = "UPDATE `#@__flinktype` SET typename='$pname' WHERE id='$tid'";
+                $query = "UPDATE `#@__flinktype` SET typename='$pname' WHERE id='$tid' ";
                 $dsql->ExecuteNoneQuery($query);
             }
         } else {
-            $query = "DELETE FROM `#@__flinktype` WHERE id='$tid'";
+            $query = "DELETE FROM `#@__flinktype` WHERE id='$tid' ";
             $dsql->ExecuteNoneQuery($query);
         }
     }
     //增加新记录
     if (isset($check_new) && $pname_new != '') {
         $pname_new = HtmlReplace($pname_new, -1);
-        $query = "INSERT INTO `#@__flinktype`(typename) VALUES ('{$pname_new}');";
+        $query = "INSERT INTO `#@__flinktype` (typename) VALUES ('{$pname_new}');";
         $dsql->ExecuteNoneQuery($query);
     }
-    header("Content-Type: text/html; charset=utf-8");
-    echo "<script> alert('".Lang('friendlink_success_updatetype')."'); </script>";
+    header("Content-Type: text/html; charset={$cfg_soft_lang}");
+    echo "<script> alert('成功更新友情链接网站分类表'); </script>";
 }
 include DedeInclude('templets/friendlink_type.htm');
 ?>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('mychannel_modifysearch');?></title>
+  <title>修改频道</title>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="js/main.js"></script>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <style>
     .style1 {
       color: #dc3545
@@ -19,7 +19,7 @@
   </style>
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <form name="form1" action="mychannel_edit.php" method="post" target="stafrm">
       <input type="hidden" name="mid" value="<?php echo $mid?>">
       <input type="hidden" name="maintable" value="<?php echo $channel['maintable']?>">
@@ -28,59 +28,68 @@
       <input type="hidden" name="dopost" value="modifysearch">
       <tr>
         <td bgcolor="#f8f8f8" colspan="2">
-          <a href="mychannel_main.php"><?php echo Lang('mychannel_main');?></a> &gt; <?php echo Lang('mychannel_modifysearch_tip');?>
-          <span class="float-right mr-2"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid;?>"><?php echo Lang('mychannel_modifysearch_del');?></a></span>
+          <a href="mychannel_main.php">内容模型管理</a> &gt; 自定义搜索管理（自定义搜索在方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索）
+          <span class="float-right mr-2"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid;?>">删除自定义搜索</a></span>
         </td>
       </tr>
       <tr>
-        <td width="260"><?php echo Lang('mychannel_modifysearch_mid');?>：</td>
+        <td width="260">频道ID：</td>
         <td><?php echo $mid;?></td>
       </tr>
       <tr>
-        <td><?php echo Lang('mychannel_modifysearch_typename');?>：<br></td>
+        <td>频道名称：<br></td>
         <td><?php echo $channel['typename']?></td>
       </tr>
       <?php
-      if ($channel['issystem'] >= 0) {
+      if($channel['issystem'] >= 0) {
       ?>
       <tr>
-        <td><?php echo Lang('mychannel_modifysearch_issystem_0');?><br>
-          <span class="style2" id="help2"><?php echo Lang('mychannel_modifysearch_issystem_0_tip');?></span></td>
+        <td>主表可供自定义搜索的字段<br>
+          <span class="style2" id="help2">标题、关键词、摘要为默认选项，不用选择</span></td>
         <td><?php echo $mainfields;?></td>
       </tr>
       <?php 
       }    
       ?>
       <tr>
-        <td><?php echo Lang('mychannel_modifysearch_help_1');?><br>
-          <span class="style2" id="help4"><?php echo Lang('mychannel_modifysearch_help_1_tip');?></span></td>
+        <td>附件表可供自定义搜索的字段：<br>
+          <span class="style2" id="help4">这里的字段是程序依据字段类型自动选择生成的</span></td>
         <td><?php echo $addonfields;?></td>
       </tr>
       <tr>
-        <td><?php echo Lang('mychannel_modifysearch_help_2');?><br>
-          <span class="style2" id="help5" style="display:none"><?php echo Lang('mychannel_modifysearch_help_2_tip');?></span></td>
+        <td>自定义搜索结果页模板<br>
+          <span class="style2" id="help5" style="display:none">只填写文件名，且文件必须在templets/default目录中</span></td>
         <td><input type="text" name="template" value="<?php echo $template;?>" style="width:260px"></td>
       </tr>
       <tr>
         <td align="center" colspan="2" class="py-2">
-          <button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
-          <button type="button" onclick="location='mychannel_main.php';" class="btn btn-success btn-sm"><?php echo Lang('back');?></button>
+          <button type="submit" class="btn btn-success btn-sm">保存</button>
+          <button type="button" onclick="location='mychannel_main.php';" class="btn btn-success btn-sm">返回</button>
         </td>
       </tr>
     </form>
     <tr>
-      <td colspan="2" bgcolor="#f8f8f8">
+      <td colspan="2">
         <table width="100%" class="table table-borderless">
           <tr>
-            <td width="30%"><?php echo Lang('result');?>：</td>
-            <td width="70%" align="right"></td>
+            <td width="30%">结果：</td>
+            <td width="70%" align="right">
+              <script>
+              function ResizeDiv(obj, ty) {
+                if (ty == "+") document.all[obj].style.pixelHeight += 50;
+                else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+              }
+              </script>
+              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
+            </td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
       <td colspan="2" id="mtd">
-        <div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+        <div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
       </td>
     </tr>
   </table>

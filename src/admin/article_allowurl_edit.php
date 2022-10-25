@@ -8,10 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeWin;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_Source');
+require_once(DEDEINC."/libraries/oxwindow.class.php");
+CheckPurview('sys_Source');
 if (empty($dopost)) $dopost = '';
 if (empty($allurls)) $allsource = '';
 else $allurls = stripslashes($allurls);
@@ -31,7 +30,12 @@ if (empty($allurls) && filesize($m_file) > 0) {
     fclose($fp);
 }
 $wintitle = "";
-$wecome_info = Lang("content_allowurl_edit");
-DedeWin::Instance()->Init('article_allowurl_edit.php', 'js/blank.js', 'POST')->AddHidden('dopost', 'save')
-->AddTitle(Lang("content_allowurl_edit_title"))->AddMsgItem("<textarea name='allurls' id='allurls' style='width:100%;height:300px'>$allurls</textarea>")->GetWindow('ok')->Display();
+$wecome_info = "允许的超链接";
+$win = new OxWindow();
+$win->Init('article_allowurl_edit.php', 'js/blank.js', 'POST');
+$win->AddHidden('dopost', 'save');
+$win->AddTitle("每行保存一个超链接：");
+$win->AddMsgItem("<textarea name='allurls' id='allurls' style='width:100%;height:300px'>$allurls</textarea>");
+$winform = $win->GetWindow('ok');
+$win->Display();
 ?>

@@ -8,40 +8,40 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Archive\Sgpage;
-use DedeBIZ\Login\UserLogin;
 require(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('temp_One');
+CheckPurview('temp_One');
 if (empty($dopost)) $dopost = "";
 if ($dopost == "save") {
+    require_once(DEDEINC."/archive/partview.class.php");
     $uptime = time();
     $body = str_replace('&quot;', '\\"', $body);
     $filename = preg_replace("#^\/#", "", $nfilename);
     if (DEDEBIZ_SAFE_MODE) $ismake = 0; //安全模式不允许编译
     if (!preg_match('#\.htm$#i', trim($template))) {
-        ShowMsg(Lang("media_ext_forbidden"), "javascript:;");
+        ShowMsg("您指定的文件名被系统禁止", "javascript:;");
         exit();
     }
     if ($likeid == '') {
         $likeid = $likeidsel;
     }
-    $row = $dsql->GetOne("SELECT filename FROM `#@__sgpage` WHERE likeid='$likeid' AND filename LIKE '$filename'");
+    $row = $dsql->GetOne("SELECT filename FROM `#@__sgpage` WHERE likeid='$likeid' AND filename LIKE '$filename' ");
     if (is_array($row)) {
-        ShowMsg(Lang("templets_one_name_exists"), "-1");
+        ShowMsg("已经存在相同的文件名，请修改为其它文件名", "-1");
         exit();
     }
-    $inQuery = "INSERT INTO `#@__sgpage`(title,keywords,description,template,likeid,ismake,filename,uptime,body) VALUES ('$title','$keywords','$description','$template','$likeid','$ismake','$filename','$uptime','$body');";
+    $inQuery = "INSERT INTO `#@__sgpage`(title,keywords,description,template,likeid,ismake,filename,uptime,body) VALUES ('$title','$keywords','$description','$template','$likeid','$ismake','$filename','$uptime','$body'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg(Lang("templets_one_err_add"), "-1");
+        ShowMsg("增加页面失败，请检内容是否有问题", "-1");
         exit();
     }
     $id = $dsql->GetLastID();
-    $sg = new Sgpage($id);
+    include_once(DEDEINC."/archive/sgpage.class.php");
+    $sg = new sgpage($id);
     $sg->SaveToHtml();
-    ShowMsg(Lang("templets_one_add_success"), "templets_one.php");
+    ShowMsg("成功增加一个页面", "templets_one.php");
     exit();
 }
-$row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage`");
+$row = $dsql->GetOne("SELECT MAX(aid) AS aid FROM `#@__sgpage` ");
 $nowid = is_array($row) ? $row['aid'] + 1 : '';
 include_once(DEDEADMIN."/templets/templets_one_add.htm");
 ?>

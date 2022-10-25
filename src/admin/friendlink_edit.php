@@ -8,9 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('plus_友情链接模块');
+CheckPurview('plus_友情链接模块');
 $ENV_GOBACK_URL = empty($_COOKIE['ENV_GOBACK_URL']) ? 'friendlink_main.php' : $_COOKIE['ENV_GOBACK_URL'];
 if (empty($dopost)) $dopost = "";
 $id = isset($id)? intval($id) : 0;
@@ -23,7 +22,7 @@ if (isset($allid)) {
 }
 if ($dopost == "delete") {
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__flink` WHERE id='$id'");
-    ShowMsg(Lang("friendlink_success_delete"), $ENV_GOBACK_URL);
+    ShowMsg("成功删除一个链接", $ENV_GOBACK_URL);
     exit();
 } else if ($dopost == "delall") {
     $aids = explode(',', $aids);
@@ -32,10 +31,10 @@ if ($dopost == "delete") {
             $aid = intval($aid);
             $dsql->ExecuteNoneQuery("DELETE FROM `#@__flink` WHERE id='$aid'");
         }
-        ShowMsg(Lang("content_delete_success"), $ENV_GOBACK_URL);
+        ShowMsg("成功删除指定链接", $ENV_GOBACK_URL);
         exit();
     } else {
-        ShowMsg(Lang("friendlink_select_none"), $ENV_GOBACK_URL);
+        ShowMsg("您没选定任何链接", $ENV_GOBACK_URL);
         exit();
     }
 } else if ($dopost == "saveedit") {
@@ -45,21 +44,21 @@ if ($dopost == "delete") {
     }
     if (!empty($logoimg)) {
         if (!is_uploaded_file($logoimg)) {
-            ShowMsg(Lang("friendlink_err_imglogo_empty",array('file'=>$logoimg)), "-1");
+            ShowMsg("您没有选择上传的文件".$logoimg, "-1");
             exit();
         }
         $mime = get_mime_type($logoimg);
         if (preg_match("#^unknow#", $mime)) {
-            ShowMsg(Lang("media_no_fileinfo"), -1);
+            ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
             exit;
         }
         if (!preg_match("#^(image)#i", $mime)) {
-            ShowMsg(Lang("media_only_image"), -1);
+            ShowMsg("仅支持上传图片文件", -1);
             exit;
         }
         $logoimg_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $logoimg_name));
         $fullfilename = DEDEROOT.'static/flink/'.$logoimg_name;
-        move_uploaded_file($logoimg, $fullfilename) or die(Lang('media_err_upload',array('filename'=>$fullfilename)));
+        move_uploaded_file($logoimg, $fullfilename) or die("上传文件到 $fullfilename 失败");
         @unlink($logoimg);
         $logo = $cfg_cmspath.'/static/flink/'.$logoimg_name;
     }
@@ -70,9 +69,9 @@ if ($dopost == "delete") {
     $email = isset($email)? HtmlReplace($email, -1) : '';
     $typeid = isset($typeid)? intval($typeid) : 0;
     $ischeck = isset($ischeck)? intval($ischeck) : 0;
-    $query = "UPDATE `#@__flink` SET sortrank='$sortrank',url='$url',webname='$webname',logo='$logo',msg='$msg', email='$email',typeid='$typeid',ischeck='$ischeck' WHERE id='$id'";
+    $query = "UPDATE `#@__flink` SET sortrank='$sortrank',url='$url',webname='$webname',logo='$logo',msg='$msg', email='$email',typeid='$typeid',ischeck='$ischeck' WHERE id='$id' ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg(Lang("friendlink_success_saveedit"), $ENV_GOBACK_URL);
+    ShowMsg("成功修改一个链接", $ENV_GOBACK_URL);
     exit();
 }
 $myLink = $dsql->GetOne("SELECT `#@__flink`.*,`#@__flinktype`.typename FROM `#@__flink` LEFT JOIN `#@__flinktype` ON `#@__flink`.typeid=`#@__flinktype`.id WHERE `#@__flink`.id=$id");

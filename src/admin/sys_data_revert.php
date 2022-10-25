@@ -6,16 +6,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
-}
-UserLogin::CheckPurview('sys_Data');
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
+  }
+CheckPurview('sys_Data');
 $bkdir = DEDEDATA."/".$cfg_backup_dir;
 $filelists = array();
 $dh = dir($bkdir);
-$structfile = Lang("sys_data_revert_no_structfile");
+$structfile = "没找到数据结构文件";
 while (($filename = $dh->read()) !== false) {
     if (!preg_match("#txt$#", $filename)) {
         continue;

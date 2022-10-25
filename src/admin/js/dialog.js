@@ -23,7 +23,7 @@ function AlertMsg(title, id) {
 	titlecolor = "#254015";//标题颜色
 	titlebg = "#f8f8f8";
 	//遮罩背景设置
-	content = "<div id=show_news>"+dedeLang('load_failed')+"</div>";
+	content = "<div id=show_news>载入失败</div>";
 	var sWidth, sHeight;
 	sWidth = screen.availWidth;
 	if (screen.availHeight > document.body.scrollHeight) {
@@ -65,7 +65,7 @@ function AlertMsg(title, id) {
 	thObj.style.color = titlecolor;
 	thObj.style.fontWeight = 'bold';
 	thObj.style.background = titlebg;
-	var titleStr = "<a class='close' onclick='CloseMsg()'>"+dedeLang('close')+"</a>" + "<span>" + title + "</span>";
+	var titleStr = "<a class='close' onclick='CloseMsg()'>关闭</a>" + "<span>" + title + "</span>";
 	thObj.innerHTML = titleStr;
 	//创建内容
 	var bodyObj = document.createElement("div");

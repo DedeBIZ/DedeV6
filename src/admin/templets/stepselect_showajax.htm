@@ -1,69 +1,69 @@
 <?php
-if ($action=='edit') {
-$arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id'");
-$sbjs = " onsubmit=\"alert('".Lang('stepselect_err_issystem')."'); return false;\" ";
-if ($arr['issystem']==0) $sbjs = '';
+if($action=='edit') {
+$arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
+$sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); return false;\" ";
+if($arr['issystem']==0) $sbjs = '';
 ?>
-<span class="float-left"><?php echo Lang('stepselect_edit_type');?></span>
-<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();"><?php echo Lang('close');?></a></span>
+<span class="float-left">修改类别</span>
+<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
 <br style="clear:both">
 <form action="stepselect_main.php" method="post" <?php echo $sbjs;?>>
 <input type="hidden" name="action" value="edit_save">
 <input type="hidden" name="id" value="<?php echo $arr['id'];?>">
-<div><?php echo Lang('stepselect_itemname');?>：<input type="text" name="itemname" value="<?php echo $arr['itemname'];?>" style="width:160px"></div>
-<div><?php echo Lang('egroup');?>：<input type="text" name="egroup" value="<?php echo $arr['egroup'];?>" style="width:160px"></div>
-<div><?php echo Lang('stepselect_egroup_tip');?></div>
-<div><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></div>
+<div>类 别 名：<input type="text" name="itemname" value="<?php echo $arr['itemname'];?>" style="width:160px"></div>
+<div>缓存组名：<input type="text" name="egroup" value="<?php echo $arr['egroup'];?>" style="width:160px"></div>
+<div>缓存组名必须为英文或数字组合</div>
+<div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
 <?php
-} else if ($action=='addnew') {
+} else if($action=='addnew') {
 ?>
-<span class="float-left"><?php echo Lang('stepselect_add_type');?></span>
-<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();"><?php echo Lang('close');?></a></span>
+<span class="float-left">新增类别</span>
+<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
 <br style="clear:both">
 <form action="stepselect_main.php" method="post">
 <input type="hidden" name="action" value="addnew_save">
-<div><?php echo Lang('stepselect_itemname');?>：<input type="text" name="itemname" style="width:160px"></div>
-<div><?php echo Lang('egroup');?>：<input type="text" name="egroup" style="width:160px"></div>
-<div><?php echo Lang('stepselect_egroup_tip');?></div>
-<div><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></div>
+<div>类 别 名：<input type="text" name="itemname" style="width:160px"></div>
+<div>缓存组名：<input type="text" name="egroup" style="width:160px"></div>
+<div>缓存组名必须为英文或数字组合</div>
+<div><button type="submit" class="btn btn-success btn-sm">保存</button></div>
 </form>
 <?php
-} else if ($action=='addenum') {
-$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id'");
-$dsql->Execute('out',"SELECT evalue,ename FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}' AND (evalue mod 500)=0 ORDER BY disorder ASC,evalue ASC");
+} else if($action=='addenum') {
+$arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
+$dsql->Execute('out',"Select evalue,ename from `#@__sys_enum` where egroup='{$arr['egroup']}' And (evalue mod 500)=0  order by disorder asc,evalue asc");
 $options = '';
-if ($arr['issign']==0)
+if($arr['issign']==0)
 {
   while($row1 = $dsql->GetArray('out')) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
 }
 ?>
-<span class="float-left"><?php echo Lang('stepselect_add_enum');?></span>
-<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();"><?php echo Lang('close');?></a></span>
+<span class="float-left">添加枚举</span>
+<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
 <br style="clear:both">
 <form action="stepselect_main.php" method="post">
 <input type="hidden" name="action" value="addenum_save">
 <input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
 <input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
 <div>
-<?php echo Lang('stepselect_topvalue：');?><select name="topvalue" style="width:160px">
-<option value="0"><?php echo Lang('save');?><?php echo Lang('stepselect_etype_1');?></option>
+隶属枚举：<select name="topvalue" style="width:160px">
+<option value="0">保存一级枚举</option>
 <?php echo $options;?>
 </select>
 </div>
-<div><?php echo Lang('ename');?>：<input type="text" name="ename" style="width:160px"></div>
-<div><?php echo Lang('disorder');?>：<input type="text" name="disorder" style="width:160px"></div>
-<div><?php echo Lang('stepselect_disorder_tip');?></div>
-<div><input type="submit" value="<?php echo Lang('save');?>" class="np coolbg"/></div>
+<div>枚举名：<input type="text" name="ename" style="width:160px"></div>
+<div>排序值：<input type="text" name="disorder" style="width:160px"></div>
+<div>如果不指定，默认以枚举添加先后来排序</div>
+<div><input type="submit" value="保存" class="np coolbg"/></div>
 </form>
 <?php
-} else if ($action=='view') {
-	$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id'");
-	$dsql->Execute('out',"SELECT * FROM `#@__sys_enum` WHERE egroup like '{$arr['egroup']}' ORDER BY disorder ASC, evalue ASC");
+} else if($action=='view') {
+	$arr = $dsql->GetOne("Select * from `#@__stepselect` where id='$id' ");
+	$dsql->Execute('out',"Select * From `#@__sys_enum` where egroup like '{$arr['egroup']}' order by disorder asc, evalue asc");
 	$options = '';
   while($row1 = $dsql->GetArray('out')) 
   {
-  	if ($row1['evalue']%500==0 || $arr['issign']==1)
+  	if($row1['evalue']%500==0 || $arr['issign']==1)
   	{
   		$options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
   	} else {
@@ -71,17 +71,19 @@ if ($arr['issign']==0)
   	}
   }
 ?>
-<span class="float-left"><?php echo Lang('stepselect_preview');?></span>
-<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();"><?php echo Lang('close');?></a></span>
+<span class="float-left">预览联动表单</span>
+<span class="float-right"><a class="btn btn-success btn-sm" href="javascript:;" onclick="javascript:CloseTWin();">关闭</a></span>
 <br style="clear:both">
 <div>
-<?php echo Lang('stepselect_topvalue');?>：
+类别关系：
 <select name="topvalue" style="width:160px">
-<option value="0"><?php echo Lang('select');?>...</option>
+<option value="0">请选择</option>
 <?php echo $options;?>
 </select>
 <br>
-<?php echo Lang('stepselect_preview_tip');?>
+这里仅显示数据关系，实际应用中，二级联动生成的表单是支持级连的，并非全部列出
 </div>
 <br style="clear:both">
-<?php }?>
+<?php
+}
+?>

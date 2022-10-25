@@ -1,31 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang('catalog_main');?></title>
+		<title>栏目管理</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.min.css">
-		<?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="js/global.js"></script>
 		<script src="js/ieemu.js"></script>
 		<script src="js/dialog.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
-		<style>
-			td,th {
-				padding: .375rem
-			}
-			.bline2,.nbline {
-				border-bottom: 1px solid #dee2e6
-			}
-			.coolbg2,.coolbt2,.maintable {
-				border: 1px solid #dee2e6
-			}
-			.fa {
-				color: #545b62
-			}
-		</style>
+		<style>td,th{padding:.45rem}.bline2,.nbline{border-bottom:1px solid #eee}.coolbg2,.coolbt2,.maintable{border:1px solid #dee2e6}.fa{color:#545b62}</style>
 		<script>
 			function LoadSuns(ctid, tid) {
 				if ($DE(ctid).innerHTML.length < 10) {
@@ -54,53 +40,43 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="maintable mt-3 mb-3">
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="maintable mt-3 mb-3">
 			<tr>
-				<td style="background:#f8f8f8;border-bottom:1px solid #dee2e6">
-					<table width="100%" cellspacing="0" cellpadding="0">
-						<tr>
-							<td><?php echo Lang('site_catalog_main');?></td>
-							<td align="right">
-								<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm"><?php echo Lang('catalog_top_add');?></a>
-								<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm"><?php echo Lang('catalog_quick_add');?></a>
-								<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm"><?php echo Lang('catalog_update_cache');?></a>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<table width="100%" cellspacing="0" cellpadding="0">
-						<tr>
-							<td>
-								<?php if (!isset($exallct)) {?>
-								<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm"><?php echo Lang('catalog_exall');?></a>
+		      	<td bgcolor="#f8f8f8" style="border-bottom:1px solid #dee2e6">
+		        	<table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
+		          		<tr>
+		            		<td width="30%">网站栏目管理</td>
+		            		<td width="70%" align="right">
+								<a href="catalog_add.php?listtype=all" class="btn btn-success btn-sm">增加顶级栏目</a>
+								<a href="catalog_add.php?dopost=quick" class="btn btn-success btn-sm">批量增加栏目</a>
+								<a href="catalog_do.php?dopost=upcatcache" class="btn btn-success btn-sm">更新栏目缓存</a>
+								<?php if(!isset($exallct)) {?>
+								<a href="catalog_main.php?exallct=all" class="btn btn-success btn-sm">展开栏目</a>
 								<?php } else {?>
-								<a href="catalog_main.php" class="btn btn-success btn-sm"><?php echo Lang('catalog_disexall');?></a>
+								<a href="catalog_main.php" class="btn btn-success btn-sm">收缩栏目</a>
 								<?php }?>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
+		            		</td>
+		          		</tr>
+		        	</table>
+		      	</td>
+		    </tr>
 			<form name="form1" method="post" action="catalog_do.php?dopost=upRankAll">
 				<tr>
 					<td>
 						<?php
-						if (empty($opendir)) $opendir=-1;
-						if ($userChannel>0) $opendir=$userChannel;
-						$tu = new DedeBIZ\TypeLink\TypeUnitAdmin();
+						if(empty($opendir)) $opendir=-1;
+						if($userChannel>0) $opendir=$userChannel;
+						$tu = new TypeUnit();
 						$tu->ListAllType($userChannel,$opendir);
 						?>
 					</td>
 				</tr>
 			</form>
 			<tr>
-				<td align="right" class="py-2" style="padding-right:10px;background:#f8f8f8;border-top:1px solid #dee2e6">
-					<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';"><?php echo Lang('makehtml_list');?></button>
-					<button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';"><?php echo Lang('makehtml_archives');?></button>
-					<button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();"><?php echo Lang('catalog_update_sortrank');?></button>
+				<td bgcolor="#f8f8f8" align="right" class="py-2" style="border-top:1px solid #dee2e6">
+					<button type="button" name="sb2" class="btn btn-success btn-sm" onClick="location='makehtml_list.php';">更新栏目</button>
+					<button type="button" name="sb3" class="btn btn-success btn-sm" onClick="location='makehtml_archives.php';">更新文档</button>
+					<button type="button" name="sb1" class="btn btn-success btn-sm" onClick="document.form1.submit();">更新排序</button>
 				</td>
 			</tr>
 		</table>

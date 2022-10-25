@@ -2,7 +2,7 @@
 /**
  * 列表对应函数
  *
- * @version        $Id: inc_list_functions.php 2022-07-01 tianya $
+ * @version        $Id: inc_list_functions.php 1 10:32 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
@@ -23,7 +23,7 @@ function GetTypename($tid)
             return base64_decode($cfg_Cs[$tid][3]);
         }
     } else {
-        $row = $dsql->GetOne("SELECT typename FROM `#@__arctype` WHERE id = '{$tid}'");
+        $row = $dsql->GetOne("SELECT typename FROM #@__arctype WHERE id = '{$tid}'");
         unset($dsql);
         unset($cfg_Cs);
         return isset($row['typename']) ? $row['typename'] : '';
@@ -70,18 +70,18 @@ function CheckPic($picname)
     if ($picname != "") {
         return $picname;
     } else {
-        return "/static/web/img/thumbnail.jpg";
+        return "/static/web/img/defaultpic.jpg";
     }
 }
 //判断内容是否生成网页
 function IsHtmlArchives($ismake)
 {
     if ($ismake == 1) {
-        return Lang("ismake_1");
+        return "已生成";
     } else if ($ismake == -1) {
-        return Lang("ismake_-1");
+        return "仅动态";
     } else {
-        return "<span class='text-danger'>".Lang('ismake_0')."</span>";
+        return "<span class='text-danger'>未生成</span>";
     }
 }
 //获得内容的限定级别名称
@@ -89,7 +89,7 @@ function GetRankName($arcrank)
 {
     global $arcArray, $dsql;
     if (!is_array($arcArray)) {
-        $dsql->SetQuery("SELECT * FROM `#@__arcrank`");
+        $dsql->SetQuery("SELECT * FROM `#@__arcrank` ");
         $dsql->Execute();
         while ($row = $dsql->GetObject()) {
             $arcArray[$row->rank] = $row->membername;
@@ -98,14 +98,14 @@ function GetRankName($arcrank)
     if (isset($arcArray[$arcrank])) {
         return $arcArray[$arcrank];
     } else {
-        return Lang("unlimited");
+        return "不限";
     }
 }
 //判断内容是否为图片文档
 function IsPicArchives($picname)
 {
     if ($picname != '') {
-        return "<span class='text-danger'>[".Lang('img')."]</span>";
+        return "<span class='text-danger'>[图]</span>";
     } else {
         return '';
     }

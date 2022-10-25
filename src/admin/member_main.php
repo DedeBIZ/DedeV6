@@ -8,10 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('member_List');
+CheckPurview('member_List');
+require_once(DEDEINC."/datalistcp.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 if (!isset($sex)) $sex = '';
 if (!isset($mtype)) $mtype = '';
@@ -22,24 +21,24 @@ else $keyword = trim(FilterSearch($keyword));
 $mtypeform = empty($mtype) ? "<option value=''>类型</option>\r\n" : "<option value='$mtype'>$mtype</option>\r\n";
 $sexform = empty($sex) ? "<option value=''>性别</option>\r\n" : "<option value='$sex'>$sex</option>\r\n";
 $sortkey = empty($sortkey) ? 'mid' : preg_replace("#[^a-z]#i", '', $sortkey);
-$staArr = array(-2 => Lang('member_sta_-2'), -1 => Lang('member_sta_-1'), 0 => Lang('member_sta_0'), 1 => Lang('member_sta_1'), 2 => Lang('member_sta_2'));
-$staArrmatt = array(1 => Lang('member_matt_1'), 0 => Lang('member_matt_0'));
+$staArr = array(-2 => '限制用户(禁言)', -1 => '未通过审核', 0 => '审核通过，提示填写完整信息', 1 => '没填写详细资料', 2 => '正常使用状态');
+$staArrmatt = array(1 => '被推荐', 0 => '非普通 ');
 $MemberTypes = array();
-$dsql->SetQuery("SELECT `rank`,membername FROM `#@__arcrank` WHERE `rank`>0");
+$dsql->SetQuery("SELECT `rank`,membername From `#@__arcrank` where `rank`>0 ");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
     $MemberTypes[$row->rank] = $row->membername;
 }
 if ($sortkey == 'mid') {
-    $sortform = "<option value='mid'>mid/".Lang('member_regtime')."</option>\r\n";
+    $sortform = "<option value='mid'>mid/注册时间</option>\r\n";
 } else if ($sortkey == 'rank') {
-    $sortform = "<option value='rank'>".Lang('member_rank')."</option>\r\n";
+    $sortform = "<option value='rank'>会员等级</option>\r\n";
 } else if ($sortkey == 'money') {
-    $sortform = "<option value='money'>".Lang('member_money')."</option>\r\n";
+    $sortform = "<option value='money'>会员金币</option>\r\n";
 } else if ($sortkey == 'scores') {
-    $sortform = "<option value='scores'>".Lang('member_scores')."</option>\r\n";
+    $sortform = "<option value='scores'>会员积分</option>\r\n";
 } else {
-    $sortform = "<option value='logintime'>".Lang('member_logintime')."</option>\r\n";
+    $sortform = "<option value='logintime'>登录时间</option>\r\n";
 }
 $wheres[] = " (userid LIKE '%$keyword%' OR uname LIKE '%$keyword%' OR email LIKE '%$keyword%') ";
 if ($sex   != '') {
@@ -58,7 +57,7 @@ $whereSql = join(' AND ', $wheres);
 if ($whereSql != '') {
     $whereSql = ' WHERE '.$whereSql;
 }
-$sql  = "SELECT * FROM `#@__member` $whereSql ORDER BY $sortkey DESC";
+$sql  = "SELECT * FROM `#@__member` $whereSql ORDER BY $sortkey DESC ";
 $dlist = new DataListCP();
 $dlist->SetParameter('sex', $sex);
 $dlist->SetParameter('spacesta', $spacesta);
@@ -73,7 +72,7 @@ function GetMemberName($rank, $mt)
 {
     global $MemberTypes;
     if (isset($MemberTypes[$rank])) {
-        if ($mt == 'ut') return " <span class='text-danger'>".Lang('member_wupdate')."：".$MemberTypes[$rank]."</span>";
+        if ($mt == 'ut') return " <span class='text-danger'>待升级：".$MemberTypes[$rank]."</span>";
         else return $MemberTypes[$rank];
     } else {
         if ($mt == 'ut') return '';
@@ -83,7 +82,7 @@ function GetMemberName($rank, $mt)
 function GetMAtt($m)
 {
     if ($m < 1) return '';
-    else if ($m == 10) return " <span class='text-danger'>[".Lang('member_mattr')."]</span>";
-    else return " <i class=\"fa fa-user-o\" aria-hidden=\"true\"></i> <span class='text-danger'>[".Lang('recommend2')."]</span>";
+    else if ($m == 10) return " <span class='text-danger'>[管理员]</span>";
+    else return " <i class=\"fa fa-user-o\" aria-hidden=\"true\"></i> <span class='text-danger'>[荐]</span>";
 }
 ?>

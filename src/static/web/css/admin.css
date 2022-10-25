@@ -390,7 +390,7 @@ span.page-link {
 	color:#545b62
 }
 .table td,.table th {
-	padding:.6rem;
+	padding:.65rem;
 	vertical-align:middle
 }
 .form-control {
@@ -401,6 +401,20 @@ span.page-link {
 .biz-win {
 	background:#f8f8f8;
 	border:1px solid #dee2e6
+}
+.biz-win-iframe {
+	width:100%;
+	height:360px
+}
+.biz-updates {
+	display:inline-block;
+	position:absolute;
+	top:10px;
+	right:8px;
+	height:6px;
+	width:6px;
+	background:#dc3545;
+	border-radius:50%
 }
 .biz-border {
 	border:1px solid #dee2e6

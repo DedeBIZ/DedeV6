@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('content_list_main');?></title>
+  <title>所有文档管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="../static/web/js/webajax.js"></script>
@@ -15,79 +15,73 @@
   <script src="js/list.js"></script>
 </head>
 <body>
-	<table width="98%" align="center" cellspacing="0" cellpadding="0" class="table maintable mt-3 mb-3">
+	<table width="98%" cellspacing="0" cellpadding="0" align="center" class="table maintable mt-3 mb-3">
 		<tr>
 			<td>
-				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';"><?php echo Lang('content_add');?></button>
+				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_do.php?channelid={dede:global.channelid/}&cid={dede:global.cid/}&dopost=addArchives';">添加文档</button>
 				{dede:if $adminid==$mid}
-				<button type="button" class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=0';"><?php echo Lang('content_all');?></button>
+				<button type="button" class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=0';">全部文档</button>
 				{else}
-				<button type="button" class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=<?php echo $cUserLogin->getUserID();?>';"><?php echo Lang('content_my');?></button>
+				<button type="button" class="btn btn-success btn-sm" onClick="location='content_list.php?cid={dede:global.cid/}&mid=<?php echo $cuserLogin->getUserID();?>';">我的文档</button>
 				{/dede:if}
 				{dede:global.CheckUserSend/}
-				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_main.php';"><?php echo Lang('catalog_main');?></button>
-				<button type="button" class="btn btn-success btn-sm" name="bb1" onClick="location='makehtml_list.php?cid={dede:global.cid/}';"><?php echo Lang('makehtml_list');?></button>
-				<button type="button" class="btn btn-success btn-sm" name="bb2" onClick="location='makehtml_archives.php?cid={dede:global.cid/}';"><?php echo Lang('makehtml_archives');?></button>
-				<button type="button" class="btn btn-success btn-sm" name="bb1" onClick="location='recycling.php?cid={dede:global.cid/}';"><?php echo Lang('content_recycling');?></button>
+				<button type="button" class="btn btn-success btn-sm" onClick="location='catalog_main.php';">栏目管理</button>
+				<button type="button" class="btn btn-success btn-sm" name="bb1" onClick="location='makehtml_list.php?cid={dede:global.cid/}';">更新列表</button>
+				<button type="button" class="btn btn-success btn-sm" name="bb2" onClick="location='makehtml_archives.php?cid={dede:global.cid/}';">更新文档</button>
+				<button type="button" class="btn btn-success btn-sm" name="bb1" onClick="location='recycling.php?cid={dede:global.cid/}';">文档回收站</button>
 			</td>
 		</tr>
 	</table>
 	<form name="form3" action="content_list.php" method="get">
 		<input type="hidden" name="dopost" value="listArchives">
-		<table width="98%" align="center" cellpadding="1" cellspacing="1" class="mt-3 mb-3 biz-border">
-			<tr>
-				<td height="36" bgcolor="#f8f8f8">
-					<table cellpadding="0" cellspacing="0">
-						<tr>
-							<td width="180" align="center">
-								<select name="cid" style="width:160px">
-									<option value="0"><?php echo Lang('catalog_select');?></option>
-									{dede:global.optionarr/}
-								</select>
-							</td>
-							<td width="270"><input type="text" name="keyword" placeholder="<?php echo Lang('input_keywords_tip');?>" value="{dede:global.keyword/}" style="width:260px"></td>
-							<td width="170">
-								<select name="orderby" style="width:160px">
-									<option value="id"><?php echo Lang('content_orderby_select');?></option>
-									<option value="pubdate"><?php echo Lang('content_orderby_pubdate');?></option>
-									<option value="sortrank"><?php echo Lang('content_orderby_sortrank');?></option>
-									<option value="click"><?php echo Lang('content_orderby_click');?></option>
-									<option value="scores"><?php echo Lang('content_orderby_scores');?></option>
-									<option value="lastpost"><?php echo Lang('content_orderby_lastpost');?></option>
-								</select>
-							</td>
-							<td width="170">
-								<select name="flag" style="width:160px">
-									<option value=""><?php echo Lang('content_flag_select');?></option>
-									{dede:global.flagsArr/}
-								</select>
-							</td>
-							<td><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('search');?></button></td>
-						</tr>
-					</table>
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+			<tr bgcolor="#f8f8f8">
+				<td width="180" align="center">
+					<select name="cid" style="width:160px">
+						<option value="0">选择栏目</option>
+						{dede:global.optionarr/}
+					</select>
 				</td>
+				<td width="270"><input type="text" name="keyword" placeholder="请输入关键词" value="{dede:global.keyword/}" style="width:260px"></td>
+				<td width="170">
+					<select name="orderby" style="width:160px">
+						<option value="id">选择排序</option>
+						<option value="pubdate">更新时间</option>
+						<option value="sortrank">置顶权值</option>
+						<option value="click">点击量</option>
+						<option value="scores">评论积分</option>
+						<option value="lastpost">最后评论</option>
+					</select>
+				</td>
+				<td width="170">
+					<select name="flag" style="width:160px">
+						<option value="">选择属性</option>
+						{dede:global.flagsArr/}
+					</select>
+				</td>
+				<td><button type="submit" class="btn btn-success btn-sm">搜索</button></td>
 			</tr>
 		</table>
 	</form>
 	<form name="form2">
-		<table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mb-3">
+		<table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mb-3">
 			<tr>
-				<td colspan="10" style="background:#f8f8f8">{dede:global.positionname/}<?php echo Lang('content_list2');?></td>
+				<td colspan="10" style="background:#f8f8f8">{dede:global.positionname/}文档列表</td>
 			</tr>
-			<tr align="center" bgcolor="#f8fcf2">
+			<tr bgcolor="#fbfce2" align="center">
 				<td width="6%">id</td>
-				<td width="6%"><?php echo Lang('select');?></td>
-				<td width="30%"><?php echo Lang('content_title');?></td>
-				<td width="10%"><?php echo Lang('senddate');?></td>
-				<td width="14%"><?php echo Lang('catalog');?></td>
-				<td width="6%"><?php echo Lang('click');?></td>
+				<td width="6%">选择</td>
+				<td width="30%">文档标题</td>
+				<td width="10%">更新时间</td>
+				<td width="14%">类目</td>
+				<td width="6%">点击</td>
 				<td width="6%">HTML</td>
-				<td width="6%"><?php echo Lang('arcrank');?></td>
-				<td width="6%"><?php echo Lang('content_admin');?></td>
-				<td width="10%"><?php echo Lang('operation');?></td>
+				<td width="6%">权限</td>
+				<td width="6%">发布人</td>
+				<td width="10%">操作</td>
 			</tr>
-			{dede:datalist empty='<tr><td colspan="10"><center>~lang:none_result~</center></td></tr>'}
-			<tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
+			{dede:datalist empty='<tr><td colspan="10"><center>暂无内容</center></td></tr>'}
+			<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
 				<td>{dede:field.id/}</td>
 				<td><input type="checkbox" name="arcID" id="arcID" value="{dede:field.id/}"></td>
 				<td align="left"><span id="arc{dede:field.id/}"><a href="archives_do.php?aid={dede:field.id/}&dopost=editArchives">{dede:field.title/}</a></span>{dede:field.flag function='IsCommendArchives(@me)'/}</td>
@@ -98,28 +92,28 @@
 				<td>{dede:field.arcrank function="GetRankName(@me)"/}</td>
 				<td>{dede:field.mid function=GetMemberName(@me)/}</td>
 				<td>
-					<a href="javascript:;" title="<?php echo Lang('attribute');?>" class="btn btn-success btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-cogs"></i></a>
-					<a href="javascript:;" title="<?php echo Lang('edit');?>" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-code"></i></a>
-					<a href="javascript:;" title="<?php echo Lang('view');?>" class="btn btn-success btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-globe"></i></a>
+					<a href="javascript:;" title="属性" class="btn btn-success btn-sm" onClick="QuickEdit('{dede:field.id/}',event,this);"><i class="fa fa-cogs"></i></a>
+					<a href="javascript:;" title="编辑" class="btn btn-success btn-sm" onClick="editArc({dede:field.id/});"><i class="fa fa-pencil-square-o"></i></a>
+					<a href="javascript:;" title="预览" class="btn btn-success btn-sm" onClick="viewArc({dede:field.id/});"><i class="fa fa-globe"></i></a>
 				</td>
 			</tr>
 			{/dede:datalist}
 			<tr>
 				<td colspan="10" class="py-2" style="margin-left:10px">
-					<a href="javascript:selAll()" class="btn btn-success btn-sm"><?php echo Lang('select_all');?></a>
-					<a href="javascript:noSelAll()" class="btn btn-success btn-sm"><?php echo Lang('cancel');?></a>
-					<a href="javascript:updateArc(0)" class="btn btn-success btn-sm"><?php echo Lang('update');?></a>
-					<a href="javascript:checkArc(0)" class="btn btn-success btn-sm"><?php echo Lang('auditing');?></a>
-					<a href="javascript:adArc(0)" class="btn btn-success btn-sm"><?php echo Lang('recommend');?></a>
-					<a href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid)?0:$channelid);?>)" class="btn btn-success btn-sm"><?php echo Lang('move');?></a>
-					<a href="javascript:delArc(0)" class="btn btn-danger btn-sm"><?php echo Lang('delete');?></a>
-					<?php if ($channelid==1) echo "<a href='javascript:kwArc(0)' class='btn btn-success btn-sm'>".Lang('content_auto_keyword')."</a>";?>
-					<a href="javascript:;" onClick="cAtts('attsAdd',event,this)" class="btn btn-success btn-sm"><?php echo Lang('content_atts_add');?></a>
-					<a href="javascript:;" onClick="cAtts('attsDel',event,this)" class="btn btn-danger btn-sm"><?php echo Lang('content_atts_delete');?></a>
+					<a href="javascript:selAll()" class="btn btn-success btn-sm">全选</a>
+					<a href="javascript:noSelAll()" class="btn btn-success btn-sm">取消</a>
+					<a href="javascript:updateArc(0)" class="btn btn-success btn-sm">更新</a>
+					<a href="javascript:checkArc(0)" class="btn btn-success btn-sm">审核</a>
+					<a href="javascript:adArc(0)" class="btn btn-success btn-sm">推荐</a>
+					<a href="javascript:;" onClick="moveArc(event,this,<?php echo (empty($channelid)?0:$channelid);?>)" class="btn btn-success btn-sm">移动</a>
+					<a href="javascript:delArc(0)" class="btn btn-danger btn-sm">删除</a>
+					<?php if($channelid==1) echo "<a href='javascript:kwArc(0)' class='btn btn-success btn-sm'>自动关键词</a>";?>
+					<a href="javascript:;" onClick="cAtts('attsAdd',event,this)" class="btn btn-success btn-sm">增加属性</a>
+					<a href="javascript:;" onClick="cAtts('attsDel',event,this)" class="btn btn-danger btn-sm">删除属性</a>
 				</td>
 			</tr>
 			<tr>
-				<td bgcolor="#f8f8f8" height="36" colspan="10" align="center">{dede:pagelist listsize='6'/}</td>
+				<td colspan="10" align="center" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</form>

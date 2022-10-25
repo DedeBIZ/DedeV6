@@ -8,16 +8,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('member_Scores');
+CheckPurview('member_Scores');
 if (!isset($action)) $action = '';
 if ($action == 'save') {
     if (!empty($add_integral) && !empty($add_icon) && !empty($add_titles)) {
         $integral = preg_replace("#[^0-9]#", "", $add_integral);
         $add_icon = preg_replace("#[^0-9]#", "", $add_icon);
         $add_titles = cn_substr($add_titles, 15);
-        $dsql->ExecuteNoneQuery("INSERT INTO `#@__scores`(integral,icon,titles,isdefault) VALUES ('$integral','$add_icon','$add_titles','$add_isdefault')");
+        $dsql->ExecuteNoneQuery("INSERT INTO `#@__scores` (integral,icon,titles,isdefault) VALUES ('$integral','$add_icon','$add_titles','$add_isdefault')");
     }
     foreach ($_POST as $rk => $rv) {
         if (preg_match("#-#", $rk)) {

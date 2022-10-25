@@ -8,26 +8,26 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
-UserLogin::CheckPurview('temp_Other');
+CheckPurview('temp_Other');
+require_once(DEDEINC."/typelink/typelink.class.php");
 if (empty($dopost)) $dopost = "";
 if ($dopost == "save") {
     CheckCSRF();
     $tagname = trim($tagname);
     $row = $dsql->GetOne("SELECT typeid FROM `#@__mytag` WHERE typeid='$typeid' AND tagname LIKE '$tagname'");
     if (is_array($row)) {
-        ShowMsg(Lang("mytag_add_err_same"), "-1");
+        ShowMsg("在相同栏目下已经存在同名的标记", "-1");
         exit();
     }
     $starttime = GetMkTime($starttime);
     $endtime = GetMkTime($endtime);
-    $inQuery = "INSERT INTO `#@__mytag`(typeid,tagname,timeset,starttime,endtime,normbody,expbody) VALUES ('$typeid','$tagname','$timeset','$starttime','$endtime','$normbody','$expbody');";
+    $inQuery = "INSERT INTO `#@__mytag` (typeid,tagname,timeset,starttime,endtime,normbody,expbody) VALUES ('$typeid','$tagname','$timeset','$starttime','$endtime','$normbody','$expbody'); ";
     $dsql->ExecuteNoneQuery($inQuery);
-    ShowMsg(Lang("mytag_add_success"), "mytag_main.php");
+    ShowMsg("成功增加一个自定义标记", "mytag_main.php");
     exit();
 }
 $startDay = time();

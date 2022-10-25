@@ -8,11 +8,12 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_ArcBatch');
+CheckPurview('sys_ArcBatch');
+require_once(DEDEINC."/typelink/typelink.class.php");
 require_once(DEDEADMIN."/inc/inc_batchup.php");
 @set_time_limit(0);
+//获取id条件
 if (empty($startid)) $startid = 0;
 if (empty($endid)) $endid = 0;
 if (empty($seltime)) $seltime = 0;
@@ -26,6 +27,7 @@ if ($action == "makehtml") {
     header("Location: $jumpurl");
     exit();
 }
+
 $gwhere = " WHERE 1 ";
 if ($startid > 0) $gwhere .= " AND id>= $startid ";
 if ($endid > $startid) $gwhere .= " AND id<= $endid ";
@@ -40,7 +42,7 @@ if ($seltime == 1) {
     $gwhere .= " AND (senddate >= $t1 AND senddate <= $t2) ";
 }
 if (!empty($userid)) {
-    $row = $dsql->GetOne("SELECT `mid` FROM `#@__member` WHERE `userid` LIKE '$userid'");
+    $row = $dsql->GetOne("SELECT `mid` FROM #@__member WHERE `userid` LIKE '$userid'");
     if (is_array($row)) {
         $gwhere .= " AND mid = {$row['mid']} ";
     }
@@ -50,7 +52,7 @@ if (!empty($heightdone)) $action = $heightdone;
 //指量审核
 if ($action == 'check') {
     if (empty($startid) || empty($endid) || $endid < $startid) {
-        ShowMsg(Lang('content_error_id_check'), 'javascript:;');
+        ShowMsg('该操作必须指定起始id', 'javascript:;');
         exit();
     }
     $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
@@ -64,13 +66,13 @@ if ($action == 'check') {
             $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET arcrank=0 WHERE id='{$row->id}'");
         }
     }
-    ShowMsg(Lang("content_batch_check_success"), $jumpurl);
+    ShowMsg("完成数据库的审核处理，准备更新HTML", $jumpurl);
     exit();
 }
 //批量删除
 else if ($action == 'del') {
     if (empty($startid) || empty($endid) || $endid < $startid) {
-        ShowMsg(Lang('content_error_id_check'), 'javascript:;');
+        ShowMsg('该操作必须指定起始id', 'javascript:;');
         exit();
     }
     $dsql->SetQuery("SELECT id FROM `#@__archives` $gwhere");
@@ -79,60 +81,62 @@ else if ($action == 'del') {
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg(Lang('content_batch_delete_success',array('tdd'=>$tdd)), "javascript:;");
+    ShowMsg("成功删除 $tdd 条记录", "javascript:;");
     exit();
 }
 //删除空标题文档
 else if ($action == 'delnulltitle') {
-    $dsql->SetQuery("SELECT id FROM `#@__archives` WHERE trim(title)=''");
+    $dsql->SetQuery("SELECT id FROM `#@__archives` WHERE trim(title)='' ");
     $dsql->Execute('x');
     $tdd = 0;
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg(Lang('content_batch_delete_success',array('tdd'=>$tdd)), "javascript:;");
+    ShowMsg("成功删除 $tdd 条记录", "javascript:;");
     exit();
 }
 //删除空内容文档
 else if ($action == 'delnullbody') {
-    $dsql->SetQuery("SELECT aid FROM `#@__addonarticle` WHERE LENGTH(body) < 10");
+    $dsql->SetQuery("SELECT aid FROM `#@__addonarticle` WHERE LENGTH(body) < 10 ");
     $dsql->Execute('x');
     $tdd = 0;
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->aid)) $tdd++;
     }
-    ShowMsg(Lang('content_batch_delete_success',array('tdd'=>$tdd)), "javascript:;");
+    ShowMsg("成功删除 $tdd 条记录", "javascript:;");
     exit();
 }
 //修正缩略图错误
 else if ($action == 'modddpic') {
-    $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET litpic='' WHERE trim(litpic)='litpic'");
-    ShowMsg(Lang("content_batch_modddpic_success"), "javascript:;");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET litpic='' WHERE trim(litpic)='litpic' ");
+    ShowMsg("成功修正缩略图错误", "javascript:;");
     exit();
 }
 //批量移动
 else if ($action == 'move') {
     if (empty($typeid)) {
-        ShowMsg(Lang('content_batch_err_typeid_isempty'), 'javascript:;');
+        ShowMsg('该操作必须指定栏目', 'javascript:;');
         exit();
     }
-    $typeold = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$typeid';");
-    $typenew = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$newtypeid';");
+    $typeold = $dsql->GetOne("SELECT * FROM #@__arctype WHERE id='$typeid'; ");
+    $typenew = $dsql->GetOne("SELECT * FROM #@__arctype WHERE id='$newtypeid'; ");
     if (!is_array($typenew)) {
-        ShowMsg(Lang("content_batch_err_typenew"), "javascript:;");
+        ShowMsg("无法检测移动到的新栏目的信息，不能完成操作", "javascript:;");
         exit();
     }
     if ($typenew['ispart'] != 0) {
-        ShowMsg(Lang("content_batch_err_ispart"), "javascript:;");
+        ShowMsg("您不能把数据移动到非最终列表的栏目", "javascript:;");
         exit();
     }
     if ($typenew['channeltype'] != $typeold['channeltype']) {
-        ShowMsg(Lang("content_batch_err_channeltype"), "javascript:;");
+        ShowMsg("不能把数据移动到内容类型不同的栏目", "javascript:;");
         exit();
     }
     $gwhere .= " And channel='".$typenew['channeltype']."' And title like '%$keyword%'";
-    $ch = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id={$typenew['channeltype']}");
+
+    $ch = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id={$typenew['channeltype']} ");
     $addtable = $ch['addtable'];
+
     $dsql->SetQuery("SELECT id FROM `#@__archives` $gwhere");
     $dsql->Execute('m');
     $tdd = 0;
@@ -140,7 +144,7 @@ else if ($action == 'move') {
         $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__arctiny` SET typeid='$newtypeid' WHERE id='{$row->id}'");
         $rs = $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET typeid='$newtypeid' WHERE id='{$row->id}'");
         if ($addtable != '') {
-            $dsql->ExecuteNoneQuery("UPDATE `$addtable` SET typeid='$newtypeid' WHERE aid='{$row->id}'");
+            $dsql->ExecuteNoneQuery("UPDATE `$addtable` SET typeid='$newtypeid' WHERE aid='{$row->id}' ");
         }
         if ($rs) $tdd++;
         //DelArc($row->id,true);
@@ -149,20 +153,26 @@ else if ($action == 'move') {
         $jumpurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid";
         $jumpurl .= "&typeid=$newtypeid&pagesize=20&seltime=$seltime";
         $jumpurl .= "&stime=".urlencode($starttime)."&etime=".urlencode($endtime);
-        ShowMsg(Lang('content_batch_move_success',array('tdd'=>$tdd )), $jumpurl);
+        ShowMsg("成功移动 $tdd 条记录，准备重新生成网页", $jumpurl);
     } else {
-        ShowMsg(Lang("content_batch_finish_move_success"), "javascript:;");
+        ShowMsg("完成操作，没移动任何数据", "javascript:;");
     }
 }
 //删除空标题内容
 else if ($action == 'delnulltitle') {
-    $dsql->SetQuery("SELECT id FROM `#@__archives` WHERE trim(title)=''");
+    $dsql->SetQuery("SELECT id FROM #@__archives WHERE trim(title)='' ");
     $dsql->Execute('x');
     $tdd = 0;
     while ($row = $dsql->GetObject('x')) {
         if (DelArc($row->id)) $tdd++;
     }
-    ShowMsg(Lang('content_batch_delete_success',array('tdd'=>$tdd)), "javascript:;");
+    ShowMsg("成功删除 $tdd 条记录", "javascript:;");
+    exit();
+}
+//修正缩略图错误
+else if ($action == 'modddpic') {
+    $dsql->ExecuteNoneQuery("UPDATE #@__archives SET litpic='' WHERE trim(litpic)='litpic' ");
+    ShowMsg("成功修正缩略图错误", "javascript:;");
     exit();
 }
 ?>

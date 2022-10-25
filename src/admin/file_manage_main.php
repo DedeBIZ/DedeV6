@@ -8,15 +8,14 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('plus_文件管理器');
+CheckPurview('plus_文件管理器');
 if (!isset($activepath)) $activepath = DEDEBIZ_SAFE_MODE? $cfg_medias_dir : $cfg_cmspath;
 $inpath = "";
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if (DEDEBIZ_SAFE_MODE && !preg_match("#^/static#",$activepath)) {
-    ShowMsg(Lang("file_safemode_static"), -1);
+    ShowMsg("安全模式下仅允许查看编辑static目录内容", -1);
     exit;
 }
 if ($activepath == "/") $activepath = "";

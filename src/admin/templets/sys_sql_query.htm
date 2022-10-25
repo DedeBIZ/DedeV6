@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang('sys_sql_query');?></title>
+		<title>SQL命令行工具</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<link rel="stylesheet" href="css/codemirror.css">
 		<script src="js/codemirror.js"></script>
 		<script src="js/mode/sql/sql.js"></script>
 	</head>
 	<body>
-		<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr>
 				<td bgcolor="#f8f8f8">
 					<table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
 						<tr>
-							<td width="30%"><?php echo Lang('sys_sql_query');?></td>
+							<td width="30%">SQL命令行工具</td>
 							<td width="70%" align="right">
-								<a href="sys_data.php" class="btn btn-success btn-sm"><?php echo Lang('sys_data');?></a>
-								<a href="sys_data_revert.php" class="btn btn-success btn-sm"><?php echo Lang('sys_data_revert');?></a>
+								<a href="sys_data.php" class="btn btn-success btn-sm">数据备份</a>
+								<a href="sys_data_revert.php" class="btn btn-success btn-sm">数据还原</a>
 							</td>
 						</tr>
 					</table>
@@ -33,44 +33,37 @@
 							<input type="hidden" name="dopost" value="viewinfo">
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<tr>
-								<td width="260"><?php echo Lang('sys_sql_query_stable_info');?>：</td>
+								<td width="280">
+									<select name="tablename" id="tablename" style="width:260px">
+										<?php
+										if ($cfg_dbtype=="sqlite") {
+											$query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
+										} else {
+											$query = "SHOW TABLES FROM {$GLOBALS['cfg_dbname']} ";
+											}
+											$dsql->SetQuery($query);
+											$dsql->Execute('t');
+											while($row = $dsql->GetArray('t',MYSQL_BOTH))
+											{
+												$dsql->SetQuery("Select count(*) From ".$row[0]);
+												$dsql->Execute('n');
+												$row2 = $dsql->GetArray('n',MYSQL_BOTH);
+												$dd = $row2[0];
+												echo "<option value='".$row[0]."'>".$row[0]."(".$dd.")</option>";
+											}
+										?>
+									</select>
+								</td>
 								<td>
-									<table width="100%" cellspacing="0" cellpadding="0">
-										<tr>
-											<td width="30%">
-												<select name="tablename" id="tablename" style="width:100%">
-													<?php
-													if ($cfg_dbtype=="sqlite") {
-														$query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
-													} else {
-														$query = "SHOW TABLES FROM {$GLOBALS['cfg_dbname']} ";
-														}
-														$dsql->SetQuery($query);
-														$dsql->Execute('t');
-														while($row = $dsql->GetArray('t',PDO::FETCH_BOTH))
-														{
-															$dsql->SetQuery("Select count(*) From ".$row[0]);
-															$dsql->Execute('n');
-															$row2 = $dsql->GetArray('n',PDO::FETCH_BOTH);
-															$dd = $row2[0];
-															echo "<option value='".$row[0]."'>".$row[0]."(".$dd.")</option>";
-														}
-													?>
-												</select>
-											</td>
-											<td width="70%">
-												<button type="Submit" name="Submit1" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimize';"><?php echo Lang('sys_sql_query_opimize');?></button>
-												<button type="Submit" name="Submit2" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repair';"><?php echo Lang('sys_sql_query_repair');?></button>
-												<button type="Submit" name="Submit3" class="btn btn-success btn-sm" onClick="this.form.dopost.value='viewinfo';"><?php echo Lang('sys_sql_query_viewinfo');?></button>
-												<button type="Submit" name="Submit5" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimizeAll';"><?php echo Lang('sys_sql_query_opimize_all');?></button>
-												<button type="Submit" name="Submit6" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repairAll';"><?php echo Lang('sys_sql_query_repaire_all');?></button>
-											</td>
-										</tr>
-									</table>
+									<button type="Submit" name="Submit1" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimize';">优化选中表</button>
+									<button type="Submit" name="Submit2" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repair';">修复选中表</button>
+									<button type="Submit" name="Submit3" class="btn btn-success btn-sm" onClick="this.form.dopost.value='viewinfo';">查看表结构</button>
+									<button type="Submit" name="Submit5" class="btn btn-success btn-sm" onClick="this.form.dopost.value='opimizeAll';">优化全部表</button>
+									<button type="Submit" name="Submit6" class="btn btn-success btn-sm" onClick="this.form.dopost.value='repairAll';">修复全部表</button>
 								</td>
 							</tr>
 							<tr>
-								<td height="120"><?php echo Lang('sys_sql_query_stafrm');?>：</td>
+								<td>返回信息：</td>
 								<td><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
 							</tr>
 						</form>
@@ -78,16 +71,16 @@
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<input type="hidden" name="dopost" value="query">
 							<tr>
-								<td colspan="2"><?php echo Lang('sys_sql_query_querytype');?>：
-									<label><input type="radio" name="querytype" value="0"> <?php echo Lang('sys_sql_query_querytype_0');?></label>
-									<label><input type="radio" name="querytype" value="2" checked> <?php echo Lang('sys_sql_query_querytype_2');?></label>
+								<td colspan="2">运行SQL命令行：
+									<label><input type="radio" name="querytype" value="0"> 单行命令（支持简单查询）</label>
+									<label><input type="radio" name="querytype" value="2" checked> 多行命令</label>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2"><textarea id="sqlquery" name="sqlquery" cols="10" rows="5" id="sqlquery" style="width:90%"></textarea></td>
+								<td colspan="2"><textarea name="sqlquery" id="sqlquery"></textarea></td>
 							</tr>
 							<tr>
-								<td align="center" colspan="2" class="py-2"><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></td>
+								<td colspan="2" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
 							</tr>
 						</form>
 					</table>

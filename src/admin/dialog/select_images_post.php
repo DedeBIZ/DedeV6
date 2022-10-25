@@ -2,15 +2,14 @@
 /**
  * 图片选择
  *
- * @version        $Id: select_images_post.php 2022-07-01 tianya $
+ * @version        $Id: select_images_post.php 1 9:43 2010年7月8日Z tianya $
  * @package        DedeBIZ.Dialog
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-helper('image');
+require_once(DEDEINC."/image.func.php");
 if (empty($activepath)) {
     $activepath = '';
     $activepath = str_replace('.', '', $activepath);
@@ -23,21 +22,21 @@ if (empty($imgfile)) {
     $imgfile = '';
 }
 if (!is_uploaded_file($imgfile)) {
-    ShowMsg(Lang("friendlink_err_imglogo_empty",array('file'=>$imgfile)), "-1");
+    ShowMsg("您没有选择上传的文件".$imgfile, "-1");
     exit();
 }
 $CKEditorFuncNum = (isset($CKEditorFuncNum)) ? $CKEditorFuncNum : 1;
 $imgfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $imgfile_name));
 
 if (!preg_match("#\.(".$cfg_imgtype.")#i", $imgfile_name)) {
-    ShowMsg(Lang("dialog_err_imagetype"), "-1");
+    ShowMsg("您所上传的图片类型不在许可列表，请修改系统对扩展名限定的配置", "-1");
     exit();
 }
 $nowtme = time();
 $sparr = array("image/pjpeg", "image/jpeg", "image/gif", "image/png", "image/xpng", "image/wbmp", "image/webp");
 $imgfile_type = strtolower(trim($imgfile_type));
 if (!in_array($imgfile_type, $sparr)) {
-    ShowMsg(Lang("dialog_err_imageformat"), "-1");
+    ShowMsg("上传的图片格式错误，请使用JPEG、GIF、PNG、WBMP格式的其中一种", "-1");
     exit();
 }
 $mdir = MyDate($cfg_addon_savetype, $nowtme);
@@ -45,7 +44,7 @@ if (!is_dir($cfg_basedir.$activepath."/$mdir")) {
     MkdirAll($cfg_basedir.$activepath."/$mdir", $cfg_dir_purview);
     CloseFtp();
 }
-$filename_name = $cUserLogin->getUserID().'-'.dd2char(MyDate("ymdHis", $nowtme).mt_rand(100, 999));
+$filename_name = $cuserLogin->getUserID().'-'.dd2char(MyDate("ymdHis", $nowtme).mt_rand(100, 999));
 $filename = $mdir.'/'.$filename_name;
 $fs = explode('.', $imgfile_name);
 $filename = $filename.'.'.$fs[count($fs) - 1];
@@ -53,14 +52,14 @@ $filename_name = $filename_name.'.'.$fs[count($fs) - 1];
 $fullfilename = $cfg_basedir.$activepath."/".$filename;
 $mime = get_mime_type($imgfile);
 if (preg_match("#^unknow#", $mime)) {
-    ShowMsg(Lang("media_no_fileinfo"), -1);
+    ShowMsg("系统不支持fileinfo组件，建议php.ini中开启", -1);
     exit;
 }
 if (!preg_match("#^(image|video|audio|application)#i", $mime)) {
-    ShowMsg(Lang("media_only_media"), -1);
+    ShowMsg("仅支持媒体文件及应用程序上传", -1);
     exit;
 }
-move_uploaded_file($imgfile, $fullfilename) or die(Lang('media_err_upload',array('filename'=>$fullfilename)));
+move_uploaded_file($imgfile, $fullfilename) or die("上传文件到 $fullfilename 失败");
 @unlink($imgfile);
 if (empty($resize)) {
     $resize = 0;
@@ -81,10 +80,10 @@ $sizes = getimagesize($fullfilename, $info);
 $imgwidthValue = $sizes[0];
 $imgheightValue = $sizes[1];
 $imgsize = filesize($fullfilename);
-$inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','".$activepath."/".$filename."','1','$imgwidthValue','$imgheightValue','0','{$imgsize}','{$nowtme}','".$cUserLogin->getUserID()."');";
+$inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','".$activepath."/".$filename."','1','$imgwidthValue','$imgheightValue','0','{$imgsize}','{$nowtme}','".$cuserLogin->getUserID()."'); ";
 $dsql->ExecuteNoneQuery($inquery);
 $fid = $dsql->GetLastID();
-UserLogin::AddMyAddon($fid, $activepath.'/'.$filename);
+AddMyAddon($fid, $activepath.'/'.$filename);
 $CKUpload = isset($CKUpload) ? $CKUpload : FALSE;
 if ($GLOBALS['cfg_html_editor'] == 'ckeditor' && $CKUpload) {
     $fileurl = $activepath.'/'.$filename;
@@ -93,9 +92,9 @@ if ($GLOBALS['cfg_html_editor'] == 'ckeditor' && $CKUpload) {
     exit;
 }
 if (!empty($noeditor)) {
-    ShowMsg(Lang("dialog_success_uploadimage"), "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&noeditor=yes&activepath=".urlencode($activepath)."/$mdir&d=".time());
+    ShowMsg("成功上传一幅图片", "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&noeditor=yes&activepath=".urlencode($activepath)."/$mdir&d=".time());
 } else {
-    ShowMsg(Lang("dialog_success_uploadimage"), "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."/$mdir&d=".time());
+    ShowMsg("成功上传一幅图片", "select_images.php?imgstick=$imgstick&comeback=".urlencode($filename_name)."&v=$v&f=$f&CKEditorFuncNum=$CKEditorFuncNum&activepath=".urlencode($activepath)."/$mdir&d=".time());
 }
 exit();
 ?>

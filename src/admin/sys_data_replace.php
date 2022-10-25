@@ -8,58 +8,59 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
-}
-if ($cfg_dbtype == 'pgsql') {
-    showMsg( Lang('sys_data_pgsql_tip',array('cfg_dbname'=>$cfg_dbname)), 'javascript:;');
-    exit();
-}
-UserLogin::CheckPurview('sys_Data');
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
+  }
+CheckPurview('sys_Data');
 if (empty($action)) $action = '';
 if (empty($action)) {
     require_once(DEDEADMIN."/templets/sys_data_replace.htm");
     exit();
 }
+/*-------------------------------
 //列出数据库表里的字段
+function __getfields()
+--------------------------------*/
 else if ($action == 'getfields') {
     AjaxHead();
-    $it = $dsql->GetTableFields($exptable);
-    echo "<div style='margin-top:10px;padding:10px;background-color:#f8f8f8;border:1px solid #dee2e6'>";
-    echo Lang('sys_data_getfields',array('exptable'=>$exptable));
-    foreach ($it as $row) {
+    $dsql->GetTableFields($exptable);
+    echo "<div style='border:1px solid #ababab;background-color:#FEFFF0;margin-top:6px;padding:6px;line-height:160%'>";
+    echo "表(".$exptable.")含有的字段：<br>";
+    while ($row = $dsql->GetFieldObject()) {
         echo "<a href=\"javascript:pf('{$row->name}')\">".$row->name."</a>\r\n";
     }
     echo "</div>";
     exit();
 }
+/*-------------------------------
 //保存用户设置，清空会员数据
+function __Apply()
+--------------------------------*/
 else if ($action == 'apply') {
     $validate = empty($validate) ? '' : strtolower($validate);
     $svali = GetCkVdValue();
     if ($validate == "" || $validate != $svali) {
-        ShowMsg(Lang("incorrect_verification_code"), "javascript:;");
+        ShowMsg("安全确认码不正确!", "javascript:;");
         exit();
     }
     if ($exptable == '' || $rpfield == '') {
-        ShowMsg(Lang("sys_data_err_exptable"), "javascript:;");
+        ShowMsg("请指定数据表和字段", "javascript:;");
         exit();
     }
     if ($rpstring == '') {
-        ShowMsg(Lang("sys_data_err_rpstring"), "javascript:;");
+        ShowMsg("请指定被替换内容", "javascript:;");
         exit();
     }
     if ($rptype == 'replace') {
         $condition = empty($condition) ? '' : " WHERE $condition ";
-        $rs = $dsql->ExecuteNoneQuery("UPDATE $exptable SET $rpfield=REPLACE($rpfield,'$rpstring','$tostring') $condition");
+        $rs = $dsql->ExecuteNoneQuery("UPDATE $exptable SET $rpfield=REPLACE($rpfield,'$rpstring','$tostring') $condition ");
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
         if ($rs) {
-            ShowMsg(Lang("sys_data_replace_success"), "javascript:;");
+            ShowMsg("成功完成数据替换", "javascript:;");
             exit();
         } else {
-            ShowMsg(Lang("sys_data_err_replace"), "javascript:;");
+            ShowMsg("数据替换失败", "javascript:;");
             exit();
         }
     } else {
@@ -67,24 +68,24 @@ else if ($action == 'apply') {
         $rpstring = stripslashes($rpstring);
         $rpstring2 = str_replace("\\", "\\\\", $rpstring);
         $rpstring2 = str_replace("'", "\\'", $rpstring2);
-        $dsql->SetQuery("SELECT $keyfield,$rpfield FROM $exptable WHERE $rpfield REGEXP '$rpstring2' $condition");
+        $dsql->SetQuery("SELECT $keyfield,$rpfield FROM $exptable WHERE $rpfield REGEXP '$rpstring2'  $condition ");
         $dsql->Execute();
         $tt = $dsql->GetTotalRow();
         if ($tt == 0) {
-            ShowMsg(Lang("sys_data_err_none"), "javascript:;");
+            ShowMsg("根据您指定的正则，找不到任何东西", "javascript:;");
             exit();
         }
         $oo = 0;
         while ($row = $dsql->GetArray()) {
             $kid = $row[$keyfield];
             $rpf = preg_replace("#".$rpstring."#i", $tostring, $row[$rpfield]);
-            $rs = $dsql->ExecuteNoneQuery("UPDATE $exptable SET $rpfield='$rpf' WHERE $keyfield='$kid'");
+            $rs = $dsql->ExecuteNoneQuery("UPDATE $exptable SET $rpfield='$rpf' WHERE $keyfield='$kid' ");
             if ($rs) {
                 $oo++;
             }
         }
         $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$exptable`");
-        ShowMsg(Lang('sys_data_replace_success_rs',array('tt'=>$tt,'oo'=>$oo)), "javascript:;");
+        ShowMsg("共找到 $tt 条记录，成功替换了 $oo 条", "javascript:;");
         exit();
     }
 }

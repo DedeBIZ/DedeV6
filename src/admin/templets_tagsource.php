@@ -8,12 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
-UserLogin::CheckPurview('plus_文件管理器');
+CheckPurview('plus_文件管理器');
 $libdir = DEDEINC.'/taglib';
 $helpdir = DEDEINC.'/taglib/help';
 //获取默认文件说明信息
@@ -22,7 +21,7 @@ function GetHelpInfo($tagname)
     global $helpdir;
     $helpfile = $helpdir.'/'.$tagname.'.txt';
     if (!file_exists($helpfile)) {
-        return Lang('tag_err_helpinfo');
+        return '该标签没帮助信息';
     }
     $fp = fopen($helpfile, 'r');
     $helpinfo = fgets($fp, 64);

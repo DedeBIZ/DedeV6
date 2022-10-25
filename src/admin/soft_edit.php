@@ -8,30 +8,29 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeWin;
-use DedeBIZ\Login\UserLogin;
-use DedeBIZ\Template\DedeTagParse;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
+CheckPurview('a_Edit,a_AccEdit,a_MyEdit');
+require_once(DEDEINC."/customfields.func.php");
 require_once(DEDEADMIN."/inc/inc_archives_functions.php");
 if (empty($dopost)) $dopost = '';
 if ($dopost != 'save') {
     require_once(DEDEADMIN."/inc/inc_catalog_options.php");
-    UserLogin::ClearMyAddon();
+    require_once(DEDEINC."/dedetag.class.php");
+    ClearMyAddon();
     $aid = preg_replace("#[^0-9]#", '', $aid);
     $channelid = "3";
     //读取归档信息
-    $arcQuery = "SELECT `#@__channeltype`.typename as channelname,`#@__arcrank`.membername as rankname,`#@__archives`.* FROM `#@__archives` LEFT JOIN `#@__channeltype` ON `#@__channeltype`.id=`#@__archives`.channel LEFT JOIN `#@__arcrank` ON `#@__arcrank`.`rank`=`#@__archives`.arcrank WHERE `#@__archives`.id='$aid'";
+    $arcQuery = "SELECT `#@__channeltype`.typename as channelname, `#@__arcrank`.membername as rankname, `#@__archives`.* FROM `#@__archives` LEFT JOIN `#@__channeltype` ON `#@__channeltype`.id=`#@__archives`.channel LEFT JOIN `#@__arcrank` ON `#@__arcrank`.`rank`=`#@__archives`.arcrank WHERE `#@__archives`.id='$aid'";
     $dsql->SetQuery($arcQuery);
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg(Lang("content_err_archive"), "-1");
+        ShowMsg("读取档案基本信息出错!", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg(Lang("content_err_channel"), "javascript:;");
+        ShowMsg("读取频道配置信息出错!", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -48,9 +47,9 @@ if ($dopost != 'save') {
             foreach ($dtp->CTags as $ctag) {
                 if ($ctag->GetName() == 'link') {
                     $islocal = $ctag->GetAtt('islocal');
-                    if ($islocal != 1) $needmsg = "<label><input type='checkbox' name='del{$newRowStart}' value='1'> ".Lang('delete')."</label>";
+                    if ($islocal != 1) $needmsg = "<label><input type='checkbox' name='del{$newRowStart}' value='1'> 删除</label>";
                     else $needmsg = '<button name="sel1" class="btn btn-success btn-sm" type="button" id="sel1" onClick="SelectSoft(\'form1.softurl'.$newRowStart.'\')">选取</button>';
-                    $nForm .= "<div style='line-height:36px'>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' style='width:260px'> 服务器名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' style='width:160px'>
+                    $nForm .= "<div>软件地址{$newRowStart}：<input type='text' name='softurl{$newRowStart}' value='".trim($ctag->GetInnerText())."' style='width:260px'> 服务器名称：<input type='text' name='servermsg{$newRowStart}' value='".$ctag->GetAtt("text")."' style='width:160px'>
                     <input type='hidden' name='islocal{$newRowStart}' value='{$islocal}'>
                     $needmsg
                     </div>\r\n";
@@ -67,8 +66,12 @@ if ($dopost != 'save') {
     include DedeInclude("templets/soft_edit.htm");
     exit();
 }
+/*--------------------------------
+function __save(){  }
+-------------------------------*/
 else if ($dopost == 'save') {
-    helper('image');
+    require_once(DEDEINC.'/image.func.php');
+    require_once(DEDEINC.'/libraries/oxwindow.class.php');
     $flag = isset($flags) ? join(',', $flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1 : 0;
     if (empty($typeid2)) $typeid2 = 0;
@@ -77,22 +80,22 @@ else if ($dopost == 'save') {
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
     if ($typeid == 0) {
-        ShowMsg(Lang('content_error_typeid_isempty'), "-1");
+        ShowMsg("请指定文档的栏目", "-1");
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg(Lang('content_error_channelid_isempty'), "-1");
+        ShowMsg("文档为非指定的类型，请检查您发布内容的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
-        ShowMsg(Lang('content_error_channelid_check_failed'), "-1");
+        ShowMsg("您所选择的栏目与当前模型不相符，请选择白色的选项", "-1");
         exit();
     }
-    if (!UserLogin::TestPurview('a_Edit')) {
-        if (UserLogin::TestPurview('a_AccEdit')) {
-            UserLogin::CheckCatalog($typeid, Lang('content_error_channelid_check_failed',array('typeid'=>$typeid)));
+    if (!TestPurview('a_Edit')) {
+        if (TestPurview('a_AccEdit')) {
+            CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的文档权限");
         } else {
-            CheckArcAdmin($id, $cUserLogin->getUserID());
+            CheckArcAdmin($id, $cuserLogin->getUserID());
         }
     }
     //对保存的内容进行处理
@@ -112,11 +115,12 @@ else if ($dopost == 'save') {
     $description = cn_substrR($description, $cfg_auot_description);
     $keywords = cn_substrR($keywords, 60);
     $filename = trim(cn_substrR($filename, 40));
+    $isremote  = 0;
     $serviterm = empty($serviterm) ? "" : $serviterm;
-    if (!UserLogin::TestPurview('a_Check,a_AccCheck,a_MyCheck')) {
+    if (!TestPurview('a_Check,a_AccCheck,a_MyCheck')) {
         $arcrank = -1;
     }
-    $adminid = $cUserLogin->getUserID();
+    $adminid = $cuserLogin->getUserID();
     //处理上传的缩略图
     if (empty($ddisremote)) {
         $ddisremote = 0;
@@ -135,7 +139,7 @@ else if ($dopost == 'save') {
                     continue;
                 }
                 $vs = explode(',', $v);
-                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //网页文本特殊处理
+                if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //HTML文本特殊处理
                 {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $litpic, $keywords, $vs[1]);
                 } else {
@@ -158,9 +162,9 @@ else if ($dopost == 'save') {
     //跳转网址的文档强制为动态
     if (preg_match('#j#', $flag)) $ismake = -1;
     //修改主档案表
-    $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',`money`='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id';";
+    $inQuery = "UPDATE `#@__archives` SETtypeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',`money`='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg(Lang('content_err_update_archive'), "-1");
+        ShowMsg("更新数据库archives表时出错，请检查", "-1");
         exit();
     }
     //软件链接列表
@@ -172,7 +176,7 @@ else if ($dopost == 'save') {
             $servermsg = str_replace("'", '', stripslashes(${'servermsg'.$i}));
             $softurl = stripslashes(${'softurl'.$i});
             if ($servermsg == '') {
-                $servermsg = Lang('download_url').$i;
+                $servermsg = '下载地址'.$i;
             }
             if ($softurl != 'http://') {
                 if ($islocal == 1) $urls .= "{dede:link islocal='$islocal' text='{$servermsg}'} $softurl {/dede:link}\r\n";
@@ -183,38 +187,42 @@ else if ($dopost == 'save') {
     }
     $urls = addslashes($urls);
     //更新附加表
-    $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid'");
+    $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
     $addtable = trim($cts['addtable']);
     if ($addtable != '') {
         $useip = GetIP();
-        $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl='$officialUrl',officialDemo='$officialDemo',softsize='$softsize',softlinks='$urls',redirecturl='$redirecturl',userip='$useip',daccess='$daccess',needmoney='$needmoney',introduce='$body' {$inadd_f} WHERE aid='$id';";
+        $inQuery = "UPDATE `$addtable` SET typeid='$typeid',filetype='$filetype',language='$language',softtype='$softtype',accredit='$accredit',os='$os',softrank='$softrank',officialUrl ='$officialUrl',officialDemo ='$officialDemo',softsize='$softsize',softlinks='$urls',redirecturl='$redirecturl',userip='$useip',daccess='$daccess',needmoney='$needmoney',introduce='$body' {$inadd_f} WHERE aid='$id';";
         if (!$dsql->ExecuteNoneQuery($inQuery)) {
-            ShowMsg(Lang('content_err_update_addon',array('addtable'=>'addonsoft')), "-1");
+            ShowMsg("更新数据库附加表 addonsoft 时出错，请检查原因", "-1");
             exit();
         }
     }
     //生成网页
     UpIndexKey($id, $arcrank, $typeid, $sortrank, $tags);
-    $arcUrl = MakeArt($id, TRUE, TRUE);
+    $arcUrl = MakeArt($id, TRUE, TRUE, $isremote);
     if ($arcUrl == "") {
         $arcUrl = $cfg_phpurl."/view.php?aid=$id";
     }
-    UserLogin::ClearMyAddon($id, $title);
+    ClearMyAddon($id, $title);
     //自动更新关联内容
-    if (isset($automake) && is_array($automake)) {
+    if (is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {
                 $ids = explode(",", ${$key});
                 foreach ($ids as $id) {
-                    MakeArt($id, true, true);
+                    MakeArt($id, true, true, $isremote);
                 }
             }
         }
     }
     //返回成功信息
-    $msg = Lang('more_actions')."：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>".Lang('content_continue_publish')."</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>".Lang('content_view')."</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>".Lang('content_published_main')."</a><a href='catalog_main.php' class='btn btn-success btn-sm'>".Lang('catalog_main')."</a>";
-    $wintitle = Lang("content_success_edit");
-    $wecome_info = Lang('content_main')."::".Lang('content_edit');
-    DedeWin::Instance()->AddTitle(Lang("content_success_edit")."：")->AddMsgItem($msg)->GetWindow("hand", "&nbsp;", FALSE)->Display();
+    $msg = "请选择您的后续操作：<a href='soft_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新软件</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改软件</a><a href='$arcUrl' target='_blank' class='btn btn-success btn-sm'>查看软件</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>已发布软件管理</a><a href='catalog_main.php' class='btn btn-success btn-sm'>网站栏目管理</a>";
+    $wintitle = "成功修改一个软件";
+    $wecome_info = "文档管理::修改软件";
+    $win = new OxWindow();
+    $win->AddTitle("成功修改软件：");
+    $win->AddMsgItem($msg);
+    $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
+    $win->Display();
 }
 ?>

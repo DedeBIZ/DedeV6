@@ -9,6 +9,7 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
-$userChannel = $cUserLogin->getUserChannel();
+require_once(DEDEINC."/typelink/typeunit.class.admin.php");
+$userChannel = $cuserLogin->getUserChannel();
 include DedeInclude('templets/catalog_main.htm');
 ?>

@@ -8,11 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DataListCP;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
+require_once(DEDEINC.'/datalistcp.class.php');
 require_once(DEDEINC.'/common.func.php');
-UserLogin::CheckPurview('plus_广告管理');
 setcookie('ENV_GOBACK_URL', $dedeNowurl, time() + 3600, '/');
 $clsid = isset($clsid) ? intval($clsid) : 0;
 $keyword = isset($keyword) ? addslashes($keyword) : '';
@@ -28,7 +26,7 @@ while ($arr = $dsql->GetArray('dd')) {
 $where_sql = ' 1=1';
 if ($clsid != 0) $where_sql .= " AND clsid = $clsid";
 if ($keyword != '') $where_sql .= " AND (ad.adname like '%$keyword%') ";
-$sql = "SELECT ad.aid,ad.clsid,ad.tagname,tp.typename as typename,ad.adname,ad.timeset,ad.endtime,ap.typename as clsname FROM `#@__myad` ad LEFT JOIN `#@__arctype` tp on tp.id=ad.typeid LEFT JOIN `#@__myadtype` ap on ap.id=ad.clsid WHERE $where_sql ORDER BY ad.aid DESC";
+$sql = "SELECT ad.aid,ad.clsid,ad.tagname,tp.typename as typename,ad.adname,ad.timeset,ad.endtime,ap.typename as clsname FROM `#@__myad` ad LEFT JOIN `#@__arctype` tp on tp.id=ad.typeid LEFT JOIN `#@__myadtype` ap on ap.id=ad.clsid WHERE $where_sql ORDER BY ad.aid desc";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/ad_main.htm");
 $dlist->SetSource($sql);
@@ -36,7 +34,7 @@ $dlist->display();
 function TestType($tname, $type = "")
 {
     if ($tname == "") {
-        return ($type == 1) ? Lang("ad_main_testtype_1") : Lang("ad_main_testtype_0");
+        return ($type == 1) ? "默认分类" : "所有栏目";
     } else {
         return $tname;
     }
@@ -44,9 +42,9 @@ function TestType($tname, $type = "")
 function TimeSetValue($ts)
 {
     if ($ts == 0) {
-        return Lang("ad_main_timeset_0");
+        return "不限时间";
     } else {
-        return Lang("ad_main_timeset_1");
+        return "限时标记";
     }
 }
 ?>

@@ -16,7 +16,7 @@
 				<h3>商品购买</h3>
 			</div>
 			<div class="buycar">
-				<?php if(!$cfg_ml->IsLogin()){ ?>
+				<?php if(!$cfg_ml->IsLogin()){?>
 				<table cellpadding="0" cellspacing="0" class="table">
 					<tr>
 						<td class="btn-danger">欢迎来到本网站，请 <a href="../user/login.php?gourl=<?php echo urlencode(GetCurUrl());?>">登录</a> 或 <a href="../user/index_do.php?fmdo=user&dopost=regnew">注册</a></td>

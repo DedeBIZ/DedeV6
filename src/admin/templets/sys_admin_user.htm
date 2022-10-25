@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('sys_admin_user');?></title>
+  <title>管理员帐号</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
   <table width="98%" align="center" cellpadding="2" cellspacing="1" class="table maintable mt-3 mb-3">
@@ -15,11 +15,11 @@
       <td bgcolor="#f8f8f8" colspan="5">
         <table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
           <tr>
-            <td width="30%"><?php echo Lang('sys_admin_user');?></td>
+            <td width="30%">管理员帐号</td>
             <td width="70%" align="right">
-              <a href="sys_admin_user_tj.php" class="btn btn-success btn-sm"><?php echo Lang('sys_admin_user_tj');?></a>
-              <a href="sys_admin_user_add.php" class="btn btn-success btn-sm"><?php echo Lang('sys_admin_user_add');?></a>
-              <a href="sys_group.php" class="btn btn-success btn-sm"><?php echo Lang('sys_group');?></a>
+              <a href="sys_admin_user_tj.php" class="btn btn-success btn-sm">编辑绩效统计</a>
+              <a href="sys_admin_user_add.php" class="btn btn-success btn-sm">增加管理员</a>
+              <a href="sys_group.php" class="btn btn-success btn-sm">用户组管理</a>
             </td>
           </tr>
         </table>
@@ -27,31 +27,37 @@
     </tr>
     <tr>
       <td colspan="5">
-        <div class="alert alert-info mb-0"><?php echo Lang('sys_admin_user_tip');?></div>
+        <div class="alert alert-info mb-0">为了防止错误操作，系统不允许在管理界面删除超级管理员，如果确定要删除，请自行在数据表biz_admin中删除</div>
       </td>
     </tr>
-    <tr align="center" bgcolor="#f8fcf2">
-      <td width="10%">id</td>
-      <td width="10%"><?php echo Lang('uname');?></td>
-      <td width="40%"><?php echo Lang('usertype');?></td>
-      <td width="20%"><?php echo Lang('channel');?></td>
-      <td align="left"><?php echo Lang('operation');?></td>
+    <tr bgcolor="#fbfce2">
+      <td width="18%" align="center">id</td>
+      <td width="13%" align="center">笔名</td>
+      <td width="22%" align="center">级别</td>
+      <td width="22%" align="center">频道</td>
+      <td width="23%" align="center">管理项</td>
     </tr>
-    {dede:datalist empty='<tr><td colspan="5"><center>~lang:none_result~</center></td></tr>'}
+    {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
     <tr align="center">
-      <td>{dede:field.userid/}</td>
-      <td>{dede:field.uname/}<br> </td>
-      <td>{dede:field.usertype function="GetUserType(@me)"/}/<?php echo Lang('logintime');?>：{dede:field.logintime function="GetDateTimeMk(@me)"/}/IP：{dede:field.loginip/}</td>
-      <td>{dede:field.typeid function="GetChannel(@me)"/}</td>
-      <td align="left">
-        <a href="sys_admin_user_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-success btn-sm"><?php echo Lang('edit');?></a>
-        <a href="sys_admin_user_edit.php?id={dede:field.id/}&userid={dede:field.userid/}&dopost=delete" class="btn btn-success btn-sm"><?php echo Lang('delete');?></a>
-        <a href="content_list.php?mid={dede:field.id/}" class="btn btn-success btn-sm"><?php echo Lang('documents');?></a>　
+      <td rowspan="2">{dede:field.userid/}</td>
+      <td rowspan="2">{dede:field.uname/}<br> </td>
+      <td>{dede:field.usertype function="GetUserType(@me)"/}</td>
+      <td>{dede:field.typename function="GetChannel(@me)"/}</td>
+      <td rowspan="2">
+        <a href="sys_admin_user_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-success btn-sm">修改</a>
+        <a href="sys_admin_user_edit.php?id={dede:field.id/}&userid={dede:field.userid/}&dopost=delete" class="btn btn-success btn-sm">删除</a>
+        <a href="content_list.php?mid={dede:field.id/}" class="btn btn-success btn-sm">文档</a>　
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        登录时间：{dede:field.logintime function="GetDateTimeMk(@me)"/}
+        登录IP：{dede:field.loginip/}
       </td>
     </tr>
     {/dede:datalist}
     <tr>
-      <td align="center" colspan="5" bgcolor="f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
+      <td colspan="5" bgcolor="f8f8f8" align="center" class="py-2">{dede:pagelist listsize='6'/}</td>
     </tr>
   </table>
 </body>

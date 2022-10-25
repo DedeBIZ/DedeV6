@@ -8,12 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
-UserLogin::CheckPurview('temp_Other');
+CheckPurview('temp_Other');
 //根据条件生成标记
 $attlist = "";
 $attlist .= " row='".$row."'";
@@ -43,7 +42,7 @@ $innertext
 if ($dopost == 'savetag') {
     $fulltag = addslashes($fulltag);
     $tagname = "auto";
-    $inQuery = "INSERT INTO `#@__mytag`(typeid,tagname,timeset,starttime,endtime,normbody,expbody) VALUES ('0','$tagname','0','0','0','$fulltag','');";
+    $inQuery = "INSERT INTO `#@__mytag` (typeid,tagname,timeset,starttime,endtime,normbody,expbody) VALUES ('0','$tagname','0','0','0','$fulltag','');";
     $dsql->ExecuteNoneQuery($inQuery);
     $id = $dsql->GetLastID();
     $dsql->ExecuteNoneQuery("UPDATE `#@__mytag` SET tagname='{$tagname}_{$id}' WHERE aid='$id'");

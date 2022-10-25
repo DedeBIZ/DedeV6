@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('mytag_add2');?></title>
+  <title>增加自定义标记</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="../static/web/js/moment.min.js"></script>
@@ -17,7 +16,7 @@
   <script>
     function checkSubmit() {
       if (document.form1.tagname.value == "") {
-        ShowMsg("<?php echo Lang('mytag_err_title_isempty');?>");
+        ShowMsg("标记名称不能为空");
         document.form1.tagname.focus();
         return false;
       }
@@ -33,18 +32,18 @@
         //"timePickerSeconds": true,
         "showCustomRangeLabel": false,
         ranges: {
-          '<?php echo Lang("today");?>': [moment(), moment()],
-          '<?php echo Lang("yestoday");?>': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          '<?php echo Lang("this_month");?>': [moment().startOf('month'), moment().startOf('month')],
-          '<?php echo Lang("last_month");?>': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
+          '今日': [moment(), moment()],
+          '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          '本月': [moment().startOf('month'), moment().startOf('month')],
+          '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').startOf('month')]
         },
         "locale": {
-          format: 'YYYY-MM-DD HH:mm:ss',
-          applyLabel: '<?php echo Lang("ok");?>',
-          cancelLabel: '<?php echo Lang("cancel");?>',
-          daysOfWeek: ['<?php echo Lang("sun");?>','<?php echo Lang("mon");?>','<?php echo Lang("tues");?>','<?php echo Lang("wed");?>','<?php echo Lang("thur");?>','<?php echo Lang("fri");?>','<?php echo Lang("sat");?>'],
-          monthNames: ['<?php echo Lang("jan");?>','<?php echo Lang("feb");?>','<?php echo Lang("mar");?>','<?php echo Lang("apr");?>','<?php echo Lang("may");?>','<?php echo Lang("jun");?>',
-            '<?php echo Lang("jul");?>','<?php echo Lang("aug");?>','<?php echo Lang("sept");?>','<?php echo Lang("oct");?>','<?php echo Lang("nov");?>','<?php echo Lang("dec");?>'],
+          format: 'YYYY-MM-DD HH:mm',
+          applyLabel: '确定',
+          cancelLabel: '取消',
+          daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+          monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+            '七月', '八月', '九月', '十月', '十一月', '十二月'],
           firstDay: 1
         }
       }, function (start) {
@@ -54,9 +53,9 @@
   </script>
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
-      <td bgcolor="#f8f8f8"><a href="mytag_main.php"><?php echo Lang('mytag_main');?></a> &gt; <?php echo Lang('mytag_add2');?></td>
+      <td bgcolor="#f8f8f8"><a href="mytag_main.php">自定义标记管理</a> &gt; 增加新标记</td>
     </tr>
     <tr>
       <td>
@@ -65,54 +64,56 @@
             <input type="hidden" name="dopost" value="save">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <tr>
-              <td colspan="3"><?php echo Lang('mytag_add_tip');?><br>
-                <?php echo Lang('mytag_add_tip_detail');?>
-                </td>
+              <td colspan="3">自定义标记的调用方法：<br>
+                {dede:mytag name='标记名称' ismake='是否含板块代码（yes 或 no）' typeid='栏目id'/}<br>
+                1、name 标记名称，该项是必须的属性，以下 2、3是可选属性；<br>
+                2、ismake 默认是 no 表示设定的纯HTML代码， yes 表示含板块标记的代码；<br>
+                3、typeid 表示所属栏目的ID，默认为 0 ，表示所有栏目通用的显示内容，在列表和文档模板中，typeid默认是这个列表或文档本身的栏目id</td>
             </tr>
             <tr>
-              <td width="15%" align="center"><?php echo Lang('catalog_select');?>：</td>
+              <td width="15%" align="center">所属栏目：</td>
               <td colspan="2">
                 <?php
-               	$tl = new DedeBIZ\TypeLink\TypeLink(0);
+               	$tl = new TypeLink(0);
                	$typeOptions = $tl->GetOptionArray(0,0,0);
                 echo "<select name='typeid' style='width:260px'>";
-                echo "<option value='0' selected>".Lang('mytag_typeid_0')."</option>";
+                echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
                 echo $typeOptions;
                 echo "</select>";
     			      ?>
               </td>
             </tr>
             <tr>
-              <td align="center"><?php echo Lang('mytag_tagname');?>：</td>
+              <td align="center">标记名称：</td>
               <td colspan="2"><input type="text" name="tagname" id="tagname"></td>
             </tr>
             <tr>
-              <td align="center"><?php echo Lang('mytag_timeset');?>：</td>
+              <td align="center">时间限制：</td>
               <td colspan="2">
-                <label><input type="radio" name="timeset" value="0" checked="1"> <?php echo Lang('mytag_timeset_0');?></label>
-                <label><input type="radio" name="timeset" value="1"> <?php echo Lang('mytag_timeset_1');?></label>
+                <label><input type="radio" name="timeset" value="0" checked="1"> 永不过期</label>
+                <label><input type="radio" name="timeset" value="1"> 在设内时间内有效</label>
               </td>
             </tr>
             <tr>
-              <td align="center"><?php echo Lang('startdate');?>：</td>
+              <td align="center">开始时间：</td>
               <td colspan="2"><input type="text" name="starttime" id="starttime" value="<?php echo $startDay?>" class="datepicker"></td>
             </tr>
             <tr>
-              <td align="center"><?php echo Lang('enddate');?>：</td>
+              <td align="center">结束时间：</td>
               <td colspan="2"><input type="text" name="endtime" id="endtime" value="<?php echo $endDay?>" class="datepicker"></td>
             </tr>
             <tr>
-              <td height="80" align="center"><?php echo Lang('mytag_normbody');?>：</td>
+              <td height="80" align="center">正常显示内容：</td>
               <td width="70%"><textarea name="normbody" id="normbody" style="width:80%;height:100px"></textarea></td>
               <td width="9%"></td>
             </tr>
             <tr>
-              <td height="80" align="center"><?php echo Lang('mytag_expbody');?>：</td>
+              <td height="80" align="center">过期显示内容：</td>
               <td><textarea name="expbody" id="expbody" style="width:80%;height:100px"></textarea></td>
               <td></td>
             </tr>
             <tr>
-              <td align="center" colspan="3" class="py-2"><button type="submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button></td>
+              <td colspan="3" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
             </tr>
           </form>
         </table>

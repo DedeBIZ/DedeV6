@@ -14,20 +14,20 @@ header("Expires:0");
 if ($t == 'source') {
     $m_file = DEDEDATA."/admin/source.txt";
     $allsources = file($m_file);
-    echo "<div class='coolbg4 p-2'><a href=\"javascript:OpenMyWin('article_source_edit.php');ClearDivCt('mysource');\" class='btn btn-success btn-sm'>".Lang('setting')."</a>";
-    echo "<a href='javascript:;' onclick='javascript:HideObj(\"mysource\");ChangeFullDiv(\"hide\");' class='btn btn-success btn-sm'>".Lang('close')."</a></div><div class='wsselect'>";
+    echo "<div class='coolbg4'>[<a href=\"javascript:OpenMyWin('article_source_edit.php');ClearDivCt('mysource');\">设置</a>]";
+    echo "[<a href='javascript:;' onclick='javascript:HideObj(\"mysource\");ChangeFullDiv(\"hide\");'>关闭</a>]</div>\r\n<div class='wsselect'>\r\n";
     foreach ($allsources as $v) {
         $v = trim($v);
         if ($v != "") {
-            echo "<a href='javascript:;' onclick='javascript:PutSource(\"$v\")'>$v</a> | ";
+            echo "<a href='javascript:;' onclick='javascript:PutSource(\"$v\")'>$v</a> | \r\n";
         }
     }
     echo "</div><div class='coolbg5'> </div>";
 } else {
     //作者列表
     $m_file = DEDEDATA."/admin/writer.txt";
-    echo "<div class='coolbg4 p-2'><a href=\"javascript:OpenMyWin('article_writer_edit.php');ClearDivCt('mywriter');\" class='btn btn-success btn-sm'>".Lang('setting')."</a>";
-    echo "<a href='javascript:;' onclick='javascript:HideObj(\"mywriter\");ChangeFullDiv(\"hide\");' class='btn btn-success btn-sm'>".Lang('close')."</a></div><div class='wsselect'>";
+    echo "<div class='coolbg4'>[<a href=\"javascript:OpenMyWin('article_writer_edit.php');ClearDivCt('mywriter');\">设置</a>]";
+    echo "[<a href='javascript:;' onclick='javascript:HideObj(\"mywriter\");ChangeFullDiv(\"hide\");'>关闭</a>]</div>\r\n<div class='wsselect'>\r\n";
     if (filesize($m_file) > 0) {
         $fp = fopen($m_file, 'r');
         $str = fread($fp, filesize($m_file));
@@ -40,6 +40,6 @@ if ($t == 'source') {
             }
         }
     }
-    echo "</div>";
+    echo "</div><div class='coolbg5'> </div>\r\n";
 }
 ?>

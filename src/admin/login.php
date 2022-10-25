@@ -8,16 +8,15 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
-define('LANGSECTION', 'admin');
 require_once(dirname(__FILE__).'/../system/common.inc.php');
+require_once(DEDEINC.'/userlogin.class.php');
 if (empty($dopost)) $dopost = '';
 if (empty($gotopage)) $gotopage = '';
 $gotopage = RemoveXSS($gotopage);
 //检测安装目录安全性
 if (is_dir(dirname(__FILE__).'/../install')) {
     if (!file_exists(dirname(__FILE__).'/../install/install_lock.txt')) {
-        $fp = fopen(dirname(__FILE__).'/../install/install_lock.txt', 'w') or DedeAlert(Lang('installed_not_writeable'), ALERT_DANGER);
+        $fp = fopen(dirname(__FILE__).'/../install/install_lock.txt', 'w') or die('安装目录无写入权限，无法进行写入锁定文件，请安装完毕删除安装目录');
         fwrite($fp, 'ok');
         fclose($fp);
     }
@@ -31,7 +30,7 @@ if (is_dir(dirname(__FILE__).'/../install')) {
 //检测后台目录是否更名
 $cururl = GetCurUrl();
 if (preg_match('/admin\/login/i', $cururl)) {
-    $redmsg = '<div class="alert alert-warning"><div class="safe-tips">'.Lang('admin_path_suggest').'</div></div>';
+    $redmsg = '<div class="alert alert-warning"><div class="safe-tips">您的管理目录的名称中包含默认名称admin，建议把它修改为其它名称，那样会更安全</div></div>';
 } else {
     $redmsg = '';
 }
@@ -43,38 +42,38 @@ if ($dopost == 'login') {
     $svali = strtolower(GetCkVdValue());
     if ($validate == '' || $validate != $svali) {
         ResetVdValue();
-        ShowMsg(Lang('incorrect_verification_code'), 'login.php', 0, 1000);
+        ShowMsg('验证码不正确', 'login.php', 0, 1000);
         exit;
     } else {
-        $cUserLogin = new UserLogin($admindir);
+        $cuserLogin = new userLogin($admindir);
         if (!empty($userid) && !empty($pwd)) {
-            $res = $cUserLogin->checkUser($userid, $pwd);
+            $res = $cuserLogin->checkUser($userid, $pwd);
             //success
             if ($res == 1) {
-                $cUserLogin->keepUser();
+                $cuserLogin->keepUser();
                 if (!empty($gotopage)) {
-                    ShowMsg(Lang('login_success'), $gotopage);
+                    ShowMsg('成功登录，正在转向管理管理主页', $gotopage);
                     exit();
                 } else {
-                    ShowMsg(Lang('login_success'), 'index.php');
+                    ShowMsg('成功登录，正在转向管理管理主页', 'index.php');
                     exit();
                 }
             }
             //error
             else if ($res == -1) {
                 ResetVdValue();
-                ShowMsg(Lang('username_not_exists'), 'login.php', 0, 1000);
+                ShowMsg('您的用户名不存在', 'login.php', 0, 1000);
                 exit;
             } else {
                 ResetVdValue();
-                ShowMsg(Lang('password_incorrect'), 'login.php', 0, 1000);
+                ShowMsg('您的密码错误', 'login.php', 0, 1000);
                 exit;
             }
         }
         //password empty
         else {
             ResetVdValue();
-            ShowMsg(Lang('username_password_incorrect'), 'login.php', 0, 1000);
+            ShowMsg('用户和密码没填写完整', 'login.php', 0, 1000);
             exit;
         }
     }

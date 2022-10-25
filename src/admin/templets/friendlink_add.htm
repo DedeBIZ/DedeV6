@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('friendlink_main');?></title>
+  <title>友情链接管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script>
   function CheckSubmit()
   {
-  	if (document.form1.url.value=="http://"||document.form1.url.value=="")
+  	if(document.form1.url.value=="http://"||document.form1.url.value=="")
   	{
      		document.form1.url.focus();
      		ShowMsg("网址不能为空");
      		return false;
   	}
-  	if (document.form1.webname.value=="")
+  	if(document.form1.webname.value=="")
   	{
      		document.form1.webname.focus();
      		ShowMsg("网站名称不能为空");
@@ -31,9 +30,9 @@
   </script>
 </head>
 <body>
-<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
-    <td bgcolor="#f8f8f8"><a href="friendlink_main.php"><?php echo Lang('friendlink_main');?></a> &gt; <?php echo Lang('friendlink_add');?></td>
+    <td bgcolor="#f8f8f8"><a href="friendlink_main.php">友情链接管理</a> &gt; 增加链接</td>
 </tr>
 <tr>
   <td>
@@ -41,39 +40,39 @@
       <input type="hidden" name="dopost" value="add">
       <table width="98%" cellspacing="1" cellpadding="3" class="table table-borderless">
   	    <tr>
-          <td width="260"><?php echo Lang('friendlink_url');?>：</td>
+          <td width="260">网址：</td>
           <td><input type="text" name="url" id="url" value="http://" class='pubinputs' style="width:260px"></td>
         </tr>
         <tr>
-          <td><?php echo Lang('friendlink_webname');?>：</td>
+          <td>网站名称：</td>
           <td><input type="text" name="webname" id="webname" size="30" class='pubinputs' style="width:260px"></td>
         </tr>
         <tr>
-          <td><?php echo Lang('friendlink_sortrank');?>：</td>
-          <td><input type="text" name="sortrank" id="sortrank" value="1" class='pubinputs' style='width:60px'><?php echo Lang('friendlink_sortrank_tip');?></td>
+          <td>排列位置：</td>
+          <td><input type="text" name="sortrank" id="sortrank" value="1" class='pubinputs' style='width:60px'>（由小到大排列）</td>
         </tr>
         <tr>
-          <td><?php echo Lang('friendlink_logo');?>：</td>
-          <td><input type="text" name="logo" id="logo" size="30" class='pubinputs' style="width:260px"><?php echo Lang('friendlink_logo_tip');?></td>
+          <td>网站Logo：</td>
+          <td><input type="text" name="logo" id="logo" size="30" class='pubinputs' style="width:260px">（88*31 gif或jpg）</td>
         </tr>
         <tr>
-          <td><?php echo Lang('friendlink_logoimg');?>：</td>
+          <td>上传Logo：</td>
           <td><input type="text" name="logoimg" type="file" id="logoimg" style="width:260px"></td>
         </tr>
         <tr>
-          <td><?php echo Lang('friendlink_msg');?>：</td>
+          <td>网站简况：</td>
           <td><textarea name="msg" id="msg" style="width:360px;height:50px"></textarea></td>
         </tr>
         <tr>
-          <td><?php echo Lang('friendlink_email');?>：</td>
+          <td>站长Email：</td>
           <td><input type="text" name="email" id="email" class='pubinputs' style="width:260px"></td>
         </tr>
         <tr>
-          <td><?php echo Lang('friendlink_typeid');?>：</td>
+          <td>网站类型：</td>
           <td>
           <select name="typeid" id="typeid" style="width:160px">
           <?php
-          $dsql->SetQuery("SELECT * FROM `#@__flinktype`");
+          $dsql->SetQuery("select * from #@__flinktype");
           $dsql->Execute();
           while($row=$dsql->GetObject())
           {
@@ -84,16 +83,16 @@
           </td>
         </tr>
         <tr>
-          <td><?php echo Lang('friendlink_ischeck');?>：</td>
+          <td>链接位置：</td>
           <td>
-          <label><input type="radio" name="ischeck" value="1" checked="1"> <?php echo Lang('friendlink_ischeck_1');?></label>
-          <label><input type="radio" name="ischeck" value="2"> <?php echo Lang('friendlink_ischeck_2');?></label>
+          <label><input type="radio" name="ischeck" value="1" checked="1"> 内页</label>
+          <label><input type="radio" name="ischeck" value="2"> 首页</label>
           </td>
         </tr>
         <tr>
-          <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
-            <button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('submit');?></button>
-            <button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';" class="btn btn-success btn-sm"><?php echo Lang('back');?></button>
+          <td colspan="2" align="center" class="py-2">
+            <button type="submit" name="Submit" class="btn btn-success btn-sm">提交</button>
+            <button type="reset" name="Submit" onClick="location.href='<?php echo $ENV_GOBACK_URL?>';" class="btn btn-success btn-sm">返回</button>
           </td>
         </tr>
       </table>

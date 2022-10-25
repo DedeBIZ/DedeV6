@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang("module_make");?></title>
+  <title>模块打包</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/webajax.js"></script>
   <script>
   function ShowHideField(cbox,vid,nid)
   {
   	var cboxobj = document.getElementById(cbox);
-  	if (cboxobj.checked)
+  	if(cboxobj.checked)
   	{
   		document.getElementById(nid).style.display = 'block';
   		document.getElementById(vid).style.display = 'none';
@@ -24,7 +24,7 @@
   function ShowHideMb(rbox1,nid)
   {
   	var rboxobj = document.getElementById(rbox1);
-  	if (rboxobj.checked)
+  	if(rboxobj.checked)
   	{
   		document.getElementById(nid).style.display = 'none';
   	} else {
@@ -34,69 +34,70 @@
   </script>
 </head>
 <body>
-<table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <form action="module_make.php" method="post" enctype="multipart/form-data" name="form1">
    <input type="hidden" name="action" value="edit">
    <input type="hidden" name="dev_id" value="<?php echo $dev_id;?>">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="2"><a href="module_main.php"><?php echo Lang("module_main");?></a> &gt; <?php echo Lang("module_edit");?></td>
+      <td bgcolor="#f8f8f8" colspan="2"><a href="module_main.php">模块管理</a> &gt; 模块修改</td>
     </tr>
     <tr>
-      <td width="260"><?php echo Lang("module_name");?>：</td>
+      <td width="260">模块名称：</td>
       <td><input type="text" name="modulname" id="modulname" style="width:160px" value="<?php echo $name;?>"></td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_dev_id");?>：</td>
-      <td><input type="text" name="dev_id2" id="dev_id2" style="width:160px" value="<?php echo $dev_id;?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success"><?php echo Lang('module_howto_get_devid');?></a></td>
+      <td>开发者ID：</td>
+      <td><input type="text" name="dev_id2" id="dev_id2" style="width:160px" value="<?php echo $dev_id;?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_lang");?>：</td>
+      <td>语言编码：</td>
       <td><?php echo $lang;?></td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_moduletype");?>：</td>
+      <td>封装类型：</td>
       <td>
-      	<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if ($moduletype=='soft') echo 'checked="1"';?>> <?php echo Lang('module_soft');?></label>
-      	<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if ($moduletype=='templets') echo 'checked="1"';?>> <?php echo Lang('template');?></label>
-      	<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if ($moduletype=='plus') echo 'checked="1"';?>> <?php echo Lang('module_plus');?></label>
-      	<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if ($moduletype=='patch') echo 'checked="1"';?>> <?php echo Lang('module_patch');?></label>
+      	<label><input type="radio" name="moduletype" id="moduletype1" value="soft" <?php if($moduletype=='soft') echo "checked='1'";?>> 模块</label>
+      	<label><input type="radio" name="moduletype" id="moduletype2" value="templets" <?php if($moduletype=='templets') echo "checked='1'";?>> 模板</label>
+      	<label><input type="radio" name="moduletype" id="moduletype3" value="plus" <?php if($moduletype=='plus') echo "checked='1'";?>> 小插件</label>
+      	<label><input type="radio" name="moduletype" id="moduletype4" value="patch" <?php if($moduletype=='patch') echo "checked='1'";?>> 补丁</label>
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_hash");?>：</td>
+      <td>模块识别码：</td>
       <td>
         <input type="hidden" name="hash" value="<?php echo $hash;?>">
-        <input type="text" name="hashv" value="<?php echo $hash;?>" style="width:260px" disabled><?php echo Lang("module_hash_tip");?>
+        <input type="text" name="hashv" value="<?php echo $hash;?>" style="width:260px" disabled>（不可改）
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_time");?>：</td>
+      <td>发布时间：</td>
       <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo $time;?>"></td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_ismember");?>：</td>
+      <td>是否涉及会员系统：</td>
       <td>
-        <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='1') echo 'checked="1"';?>> <?php echo Lang("yes");?></label>
-        <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='0') echo 'checked="1"';?>> <?php echo Lang("no");?></label>
+        <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='1') echo "checked='1'";?>> 涉及</label>
+        <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if($ismember=='0') echo "checked='1'";?>> 不涉及</label>
         <div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block');?>">
-          <?php echo Lang("module_indexname");?>：<input type="text" name="indexname" id="indexname" style="width:160px" value="<?php echo $indexname;?>"><br>
-          <?php echo Lang("module_indexurl");?>：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="<?php echo $indexurl;?>"><?php echo Lang("module_indexurl_tip");?>
+          导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value="<?php echo $indexname;?>"><br>
+          导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="<?php echo $indexurl;?>">（用相对于会员中心的网址，如：../ask）
         </div>
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_menustring");?>：</td>
+      <td>后台管理菜单：</td>
       <td>
       	<textarea name="menustring" id="menustring" style="width:98%;height:160px"><?php echo $menustring;?></textarea><br>
-      	<?php echo Lang("module_menustring_tip");?>
+      	（普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php）
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_autoreadme");?>：</td>
+      <td>使用说明文件：</td>
       <td>
       	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
-            <td bgcolor="#f8fcf2"> <?php echo Lang("module_autoreadme_tip");?></td>
+            <td bgcolor="#fbfce2">使用协议或说明：<br>
+              如果需要带HTML格式，请编译后点击修改时使用HTML</td>
           </tr>
           <tr>
             <td><textarea name="readmetxt" id="readmetxt" style="width:98%;height:160px"><?php echo $readmetxt;?></textarea></td>
@@ -105,15 +106,17 @@
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_autosetup");?>：</td>
+      <td>程序安装：</td>
       <td>
-        <label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')" <?php if (isset($autosetup) && $autosetup==1) echo 'checked="1"';?>> <?php echo Lang("module_dmake");?></label><br>
-        <div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input name="setup" type="file" id="setup" style="width:360px"></div>
-       <div style="margin:5px 0px 5px 5px;display:<?php if (isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
+        <label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if(isset($autosetup) && $autosetup==1) echo "checked='1'";?>> 自动生成（由系统自动处理安装）</label><br>
+        <div style="display:<?php if(!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input name="setup" type="file" id="setup" style="width:360px"></div>
+       <div style="margin:5px 0px 5px 5px;display:<?php if(isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
         	<table width="100%" cellpadding="5" cellspacing="1">
             <tr>
-              <td bgcolor="#f8fcf2">
-              	<?php echo Lang("module_autosetup_tip");?>
+              <td bgcolor="#fbfce2">
+              	请使用MySQL4.0版本格式的SQL语句:<br>
+              	MySQL4.1/5.x版本请把创建表语句 ENGINE=MyISAM DEFAULT CHARSET=* ，改为 TYPE=MyISAM ，SQL语句允许换行，但必须用 ";换行" 表示一条SQL语句结束<br>
+              	如果SQL中包含有模块网址的，用 _ROOTURL_ 表示，如：_ROOTURL_/ask/index.php
               </td>
             </tr>
             <tr>
@@ -124,15 +127,16 @@
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_autodel");?>：</td>
+      <td>删除程序：</td>
       <td>
-        <label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if (isset($autodel) && $autodel==1) echo 'checked="1"';?>> <?php echo Lang("module_autodel_input");?></label>
+        <label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if(isset($autodel) && $autodel==1) echo "checked='1'";?>> 自动生成（由系统自动处理卸载）</label>
       	<br>
-      	<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
-      	<div style='margin:5px 0px 5px 5px;display:<?php if (isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>' id='autodelct'>
+      	<div style="display:<?php if(!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
+      	<div style='margin:5px 0px 5px 5px;display:<?php if(isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>' id='autodelct'>
       	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
-            <td bgcolor="#f8fcf2"><?php echo Lang("module_autodel_tip");?></td>
+            <td bgcolor="#fbfce2">卸载时执行的SQL语句：<br>
+            （SQL允许换行，但必须用 ";换行" 表示一条SQL语句结束）</td>
           </tr>
           <tr>
             <td><textarea name="delsql" id="delsql" style="width:98%;height:160px"><?php echo $delsql;?></textarea></td>
@@ -142,28 +146,30 @@
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_rebuild");?>：</td>
+      <td>模块文件选项：</td>
       <td>
-      	<label><input type="radio" name="rebuild" value="yes" checked="1"> <?php echo Lang("module_rebuild_yes");?></label>
-      	<label><input type="radio" name="rebuild" value="no"> <?php echo Lang("module_rebuild_no");?></label>
+      	<label><input type="radio" name="rebuild" value="yes" checked="1"> 重新编译所有文件</label>
+      	<label><input type="radio" name="rebuild" value="no"> 不对[文件列表]内文件重编译</label>
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_filelist3");?>：</td>
-      <td><?php echo Lang("module_filelist3_tip");?> <br>
+      <td>文件列表：</td>
+      <td>每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
+        如：如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录，<br>
+        对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中 <br>
         <textarea name="filelist" id="filelist" style="width:98%;height:160px"><?php echo $filelist;?></textarea>
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang("module_priv");?>：</td>
-      <td><?php echo Lang("module_priv_tip");?><br>
+      <td>开发者私钥：</td>
+      <td>开发者认证后获取的私钥<br>
         <textarea name="priv" id="priv" style="width:98%;height:160px"></textarea>
       </td>
     </tr>
     <tr>
-      <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
-        <button name="imageField" type="submit" class="btn btn-success btn-sm"><?php echo Lang("submit");?></button>
-        <button type="button" id="button" onClick="location='module_main.php';" class="btn btn-success btn-sm"><?php echo Lang("back");?></button>
+      <td colspan="2" align="center" class="py-2">
+        <button name="imageField" type="submit" class="btn btn-success btn-sm">提交</button>
+        <button type="button" id="button" onClick="location='module_main.php';" class="btn btn-success btn-sm">返回</button>
       </td>
     </tr>
   </form>

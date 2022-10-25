@@ -20,7 +20,7 @@ function DedeCopyToClipboard(text) {
     } else {
         var textarea = document.createElement('textarea');
         document.body.appendChild(textarea);
-        //隐藏此输入框
+        // 隐藏此输入框
         textarea.style.position = 'fixed';
         textarea.style.clip = 'rect(0 0 0 0)';
         textarea.style.top = '10px';
@@ -43,32 +43,33 @@ $(function () {
         }
     });
 });
-function copy(){
+function copyFn(){
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
-    document.execCommand ("copy");
+    document.execCommand ("Copy");
     //alert("成功复制系统信息");
 }
 //Dedebiz info
 var dedebizInfo;
 function ViewDedeBIZ() {
+    console.log(dedebizInfo);
     ShowMsg(`
     <table width="100%" class="table table-borderless">
         <tbody>
             <tr>
-                <td style="width:50%">版本号：</td>
+                <td width="160">版本号：</td>
                 <td>V${dedebizInfo.result.server_version}</td>
             </tr>
             <tr>
-                <td style="width:50%">运行时间：</td>
+                <td width="160">运行时间：</td>
                 <td>${dedebizInfo.result.server_run_time}</td>
             </tr>
             <tr>
-                <td style="width:50%">服务器系统：</td>
+                <td width="160">服务器系统：</td>
                 <td>${dedebizInfo.result.server_goos}（${dedebizInfo.result.server_goarch}）</td>
             </tr>
             <tr>
-                <td style="width:50%">内存占用：</td>
+                <td width="160">内存占用：</td>
                 <td>${dedebizInfo.result.server_memory_usage}%</td>
             </tr>
         </tbody>
@@ -83,32 +84,24 @@ function LoadServer() {
             if (typeof rsp.result.domain !== "undefined") {
                 infoStr += `
                 <tr>
-                    <td style="width:50%">`+dedeLang('admin_auth_domain')+`</td>
-                    <td>${rsp.result.domain} <a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}" class="btn btn-success btn-sm">证书</a></td>
+                    <td width="160">授权域名：</td>
+                    <td>${rsp.result.domain}</td>
                 </tr>
                 `;
             }
             if (typeof rsp.result.title !== "undefined") {
                 infoStr += `
                 <tr>
-                    <td style="width:50%">`+dedeLang('admin_auth_sitename')+`</td>
-                    <td>${rsp.result.title}</td>
-                </tr>
-                `;
-            }
-            if (typeof rsp.result.stype !== "undefined") {
-                infoStr += `
-                <tr>
-                    <td style="width:50%">`+dedeLang('admin_auth_sitetype')+`</td>
-                    <td>${rsp.result.stype}</td>
+                    <td width="160">站点名称：</td>
+                    <td><a href="${cfg_biz_dedebizUrl}/auth/?domain=${rsp.result.domain}">${rsp.result.title}（${rsp.result.stype}）</a></td>
                 </tr>
                 `;
             }
             if (typeof rsp.result.auth_version !== "undefined" && typeof rsp.result.auth_at !== "undefined") {
                 infoStr += `
                 <tr>
-                    <td style="width:50%">`+dedeLang('admin_auth_version')+`</td>
-                    <td>V${rsp.result.auth_version}.x.x（`+dedeLang('time')+`：${rsp.result.auth_at}）</td>
+                    <td width="160">授权版本：</td>
+                    <td>${rsp.result.auth_version}.x.x（时间：${rsp.result.auth_at}）</td>
                 </tr>
                 `;
             }
@@ -116,16 +109,16 @@ function LoadServer() {
                 //下面是DedeBIZ Core组件信息
                 infoStr += `
                 <tr>
-                    <td style="width:50%">`+dedeLang('admin_auth_corever')+`</td>
-                    <td><a href="${cfg_biz_dedebizUrl}/start?code=-1008" target="_blank" class="btn btn-danger btn-sm">`+dedeLang('admin_auth_enable_core')+`</a></td>
+                    <td width="160">版本组件：</td>
+                    <td><a href="${cfg_biz_dedebizUrl}/start?code=-1008" target="_blank" class="btn btn-warning btn-sm">启动组件</a></td>
                 </tr>
                 `;
             } else {
                 dedebizInfo = JSON.parse(rsp.result.core.data);
                 infoStr += `
                 <tr>
-                    <td style="width:50%">`+dedeLang('admin_auth_corever')+`</td>
-                    <td><a href="javascript:ViewDedeBIZ()" class="btn btn-success btn-sm">`+dedeLang('admin_auth_core_info')+`</a></td>
+                    <td width="160">版本组件：</td>
+                    <td><a href="javascript:ViewDedeBIZ()" class="btn btn-success btn-sm">组件信息</a></td>
                 </tr>
                 `;
             }
@@ -133,13 +126,13 @@ function LoadServer() {
             $("#system-info").html(infoStr);
         } else {
             $("#system-info").html(`
-            <table class="table table-borderless">
+            <table width="100%" class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td>`+dedeLang('admin_auth_no_bizcore')+`，${rsp.msg}</td>
+                        <td>当前站点为社区版，${rsp.msg}</td>
                     </tr>
                     <tr>
-                        <td>`+dedeLang('admin_auth_noauth_msg')+`</td>
+                        <td>如果您已购买商业版授权，可以在我们的授权中心查询到相信关授权信息，如果查询结果与实际授权不符，则说明您可能购买了非法商业授权，请及时与我们取得联系。</td>
                     </tr>
                 </tbody>
             </table>
@@ -258,7 +251,7 @@ async function LoadStatChart() {
                     borderWidth: 1
                 }
                 , {
-                    label: dedeLang('admin_stat_view'),
+                    label: 'VV',
                     data: vvs,
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',

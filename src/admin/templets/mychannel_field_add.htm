@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('mychannel_field_add');?></title>
+  <title>增加字段</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
@@ -37,7 +36,7 @@
   	var enums = document.getElementsByName('dtype');
   	for(i=0;i<enums.length;i++)
   	{
-  		if (enums[i].checked) dtype = enums[i].value;
+  		if(enums[i].checked) dtype = enums[i].value;
   	}
   	var isnull = theform.isnull.value;
   	var vdefault = theform.vdefault.value;
@@ -49,29 +48,29 @@
   	var islist = (theform.islist.checked ? 1 : 0);
     var notsend = (theform.notsend.checked ? 1 : 0);
     var automake = theform.relation_automake.checked ? 1 : 0;
-  	if (itemname=="")
+  	if(itemname=="")
   	{
-  		ShowMsg("<?php echo Lang('mychannel_err_itemname_isempty');?>");
+  		ShowMsg("表单提示名称不能为空");
   		theform.itemname.focus();
   		return false;
   	}
-  	if (fieldname=="") 
+  	if(fieldname=="") 
   	{
-  		ShowMsg("<?php echo Lang('mychannel_err_fieldname_isempty');?>");
+  		ShowMsg("字段名称不能为空");
   		theform.fieldname.focus();
   		return false;
   	}
-  	if (notAllow.indexOf(" "+fieldname+" ") >-1 ) 
+  	if(notAllow.indexOf(" "+fieldname+" ") >-1 ) 
   	{
-  		ShowMsg("<?php echo Lang('mychannel_err_fieldname_not_allow');?>\n"+notAllow);
+  		ShowMsg("字段名称不合法，如下字段名已经存在，建议在名称后加上数字以区分：\n"+notAllow);
   		return false;
   	}
-  	if ((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
+  	if((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
   	{
-  		ShowMsg("<?php echo Lang('mychannel_err_fieldname_dtype');?>");
+  		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）");
   		return false;
   	}
-    if (spage=="no") spage = "";
+    if(spage=="no") spage = "";
     relstr = "";
     if (dtype==="relation") {
       relstr = " automake=\""+automake+"\" channel=\""+$("#channeltype").val()+"\"";
@@ -98,15 +97,15 @@
 <input type="hidden" name="action" value="save">
 <input type="hidden" name="id" value="<?php echo $id?>">
 <input type="hidden" name="fieldstring" value="">
-<table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr> 
       <td bgcolor="#f8f8f8" colspan="2">
         <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
           <tr> 
-            <td width="30%"><a href="mychannel_main.php"><?php echo Lang('mychannel_main');?></a> &gt; <?php echo Lang('mychannel_field_add');?></td>
+            <td width="30%"><a href="mychannel_main.php">频道管理</a> &gt; 增加新字段</td>
             <td width="70%" align="right">
-							<button type="button" name="ss1" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';" class="btn btn-success btn-sm"><?php echo Lang('mychannel_current_channel');?></button>
-							<button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm"><?php echo Lang('mychannel_main');?></button>
+							<button type="button" name="ss1" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';" class="btn btn-success btn-sm">当前模型信息</button>
+							<button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">内容模型管理</button>
 						</td>
           </tr>
         </table>
@@ -114,71 +113,71 @@
     </tr>
     <tr>
       <td colspan="2">
-        <div class="alert alert-danger mb-0"><?php echo Lang('mychannel_current_channel_tip');?></div>
+        <div class="alert alert-danger mb-0">所有填写的内容不允许包含双引号[&quot;]，否则配置将无法写入</div>
       </td>
     </tr>
     <tr> 
-      <td width="30%"><?php echo Lang('mychannel_itemname');?>：<br>
-        <span class="style2"><?php echo Lang('mychannel_itemname_tip');?></span></td>
+      <td width="30%">表单提示文字：<br>
+        <span class="style2">发布内容时显示的提示文字</span></td>
         <td><input type="text" name="itemname" id="itemname" class="pubinputs"> *</td>
     </tr>
     <tr> 
-      <td><?php echo Lang('mychannel_fieldname');?>：<br>
-        <span class="style2"><?php echo Lang('mychannel_itemname_tip',array('link'=>"<a href='stepselect_main.php' target='_blank'>[组名称]</a>"));?></span></td>
-      <td><input type="text" name="fieldname" id="fieldname" class="pubinputs"></td>
+      <td>字段名称：<br>
+        <span class="style2">只能用英文字母或数字，数据表的真实字段名，如果数据类型是联动类型，该项应该填写联动类型的<a href='stepselect_main.php' target='_blank'>[组名称]</a></span></td>
+      <td><input type="text" name="fieldname" id="fieldname" class="pubinputs"> *</td>
     </tr>
     <tr>
-      <td><?php echo Lang('mychannel_autofield');?>：</td>
+      <td>字段类型：</td>
       <td>
-	      <label><input type="radio" name="autofield" value="1" checked="checked"> <?php echo Lang('mychannel_autofield_1_tip');?></label>
-        <label><input type="radio" name="autofield" value="0"> <?php echo Lang('mychannel_autofield_0_tip');?></label>
+	      <label><input type="radio" name="autofield" value="1" checked="checked"> 系统自动生成表单字段</label>
+        <label><input type="radio" name="autofield" value="0"> 已经固化在发布表单中字段</label>
       </td>
     </tr>
     <tr>
-      <td><?php echo Lang('mychannel_foreground_parameters');?>：</td>
+      <td>前台参数：</td>
       <td>
-        <label><input type="checkbox" name="islist" id="islist" value="1"> <?php echo Lang('mychannel_field_islist');?></label><br>
-        <label><input type="checkbox" name="notsend" id="notsend" value="1"> <?php echo Lang('mychannel_field_notsend');?></label>
+        <label><input type="checkbox" name="islist" id="islist" value="1"> 使字段可以在列表的底层模板中获得(自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择)</label><br>
+        <label><input type="checkbox" name="notsend" id="notsend" value="1"> 前台投稿及采集规则禁用本字段</label>
      </td>
     </tr>
     <tr> 
-      <td><?php echo Lang('mychannel_field_spage');?>：<br>
-        <span class="style2"><?php echo Lang('mychannel_field_spage_tip');?></span></td>
+      <td>内容是否需要分页符：<br>
+        <span class="style2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td>
       	<input type="hidden" name="isnull" value="1">
-        <label><input type="radio" name="spage" value="split"> <?php echo Lang('yes');?></label>
-        <label><input type="radio" name="spage" value="no" checked="1"> <?php echo Lang('no');?></label>
+        <label><input type="radio" name="spage" value="split"> 是</label>
+        <label><input type="radio" name="spage" value="no" checked="1"> 否</label>
      </td>
     </tr>
     <tr> 
-      <td><?php echo Lang('mychannel_datatype');?>：</td>
+      <td>数据类型：</td>
       <td id="dataType">
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype1" value="text" checked='1'> <?php echo Lang('mychannel_fieldtype_text');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype2" value="textchar"> <?php echo Lang('mychannel_fieldtype_textchar');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype3" value="multitext"> <?php echo Lang('mychannel_fieldtype_multitext');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype4" value="htmltext"> <?php echo Lang('mychannel_fieldtype_htmltext');?></label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype1" value="text" checked='1'> 单行文本(varchar)</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype2" value="textchar"> 单行文本(char)</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype3" value="multitext"> 多行文本</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype4" value="htmltext"> HTML文本</label></div>
         <br class="cls">
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype5" value="textdata"> <?php echo Lang('mychannel_fieldtype_textdata');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype6" value="int"> <?php echo Lang('mychannel_fieldtype_int');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype7" value="float"> <?php echo Lang('mychannel_fieldtype_float');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype8" value="datetime"> <?php echo Lang('mychannel_fieldtype_datetime');?></label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype5" value="textdata"> 文本保存HTML数据</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype6" value="int"> 整数类型</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype7" value="float"> 小数类型</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype8" value="datetime"> 时间类型</label></div>
         <br class="cls">
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype9" value="img"> <?php echo Lang('mychannel_fieldtype_img');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype10" value="imgfile"> <?php echo Lang('mychannel_fieldtype_imgfile');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype11" value="media"> <?php echo Lang('mychannel_fieldtype_media');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype12" value="addon"> <?php echo Lang('mychannel_fieldtype_addon');?></label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype9" value="img"> 图片</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype10" value="imgfile"> 图片(仅网址)</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype11" value="media"> 多媒体文件</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype12" value="addon"> 附件类型</label></div>
         <br class="cls">
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype13" value="select"> <?php echo Lang('mychannel_fieldtype_select');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype14" value="radio"> <?php echo Lang('mychannel_fieldtype_radio');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype15" value="checkbox"> <?php echo Lang('mychannel_fieldtype_checkbox');?></label></div>
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype16" value="stepselect"> <?php echo Lang('mychannel_fieldtype_stepselect');?></label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype13" value="select"> 使用option下拉框</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype14" value="radio"> 使用radio选项卡</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype15" value="checkbox"> checkbox多选框</label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype16" value="stepselect"> 联动类型</label></div>
         <br class="cls">
-        <div class="nw"><label><input type="radio" name="dtype" id="dtype16" value="relation"> <?php echo Lang('mychannel_fieldtype_relation');?></label></div>
+        <div class="nw"><label><input type="radio" name="dtype" id="dtype16" value="relation"> 关联内容</label></div>
        </td>
     </tr>
     <tr id="_relation" style="display:none"> 
-      <td><?php echo Lang('mychannel');?>：<br>
-        <span class="style2"><?php echo Lang('mychannel_select');?></span>
+      <td>内容模型：<br>
+        <span class="style2">选择关联内容对应的内容模型</span>
       </td>
       <td> 
         <select name="channeltype" id="channeltype" style="width:260px">
@@ -186,7 +185,7 @@
             $channelid = 1;
             foreach($channelArray as $k=>$arr)
             {
-              if ($k==$channelid) {
+              if($k==$channelid) {
                   $nid = $arr['nid'];
                   echo "<option value='{$k}' selected>{$arr['typename']}|{$arr['nid']}</option>";
               } else {
@@ -195,31 +194,31 @@
             }
           ?>
         </select>
-        <label><input type="checkbox" name="relation_automake" id="relation_automake" value="1"> <?php echo Lang('mychannel_field_relation_tip');?></label>
+        <label><input type="checkbox" name="relation_automake" id="relation_automake" value="1"> 发布时候自动更新关联内容HTML</label>
       </td>
     </tr>
     <tr> 
-      <td><?php echo Lang('mychannel_field_vdefault');?>：<br>
-        <span class="style2"><?php echo Lang('mychannel_field_vdefault_tip');?></span></td>
+      <td>默认值：<br>
+        <span class="style2">如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（用“,”分开，如“男,女,人妖”）</span></td>
       <td><textarea name="vdefault" id="vdefault" style="width:70%;height:60px"></textarea></td>
     </tr>
     <tr> 
-      <td><?php echo Lang('mychannel_field_maxlength');?>：<br>
-        <span class="style2"><?php echo Lang('mychannel_field_maxlength_tip');?></span></td>
+      <td>最大长度：<br>
+        <span class="style2">文本数据必须填写，大于255为text类型</span></td>
       <td><input type="text" name="maxlength" id="maxlength" class="pubinputs" value="250" style="width:80px"></td>
     </tr>
     <tr>
-      <td><?php echo Lang('mychannel_field_vinnertext');?>：</td>
-      <td><?php echo Lang('mychannel_field_vinnertext_tip');?></td>
+      <td>自定义表单HTML：</td>
+      <td>自定义表单HTML模板中用~name~表示提示文字，~form~表示表单元素</td>
     </tr>
     <tr> 
-      <td></td>
+      <td align="center"></td>
       <td><textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%;height:120px"></textarea></td>
     </tr>
     <tr> 
-      <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
-        <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
-        <button type="reset" name="button2" id="button2" class="btn btn-success btn-sm"><?php echo Lang('reset');?></button>
+      <td colspan="2" align="center" class="py-2">
+        <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
+        <button type="reset" name="button2" id="button2" class="btn btn-success btn-sm">重置</button>
       </td>
     </tr>
   </table>

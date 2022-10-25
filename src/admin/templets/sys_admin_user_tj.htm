@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('sys_admin_user_tj');?></title>
+  <title>绩效统计</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/webajax.js"></script>
 	<style>
 	.userct {
@@ -24,7 +24,7 @@
 			if (resp.ok) {
 				return resp.text()
 			}
-			throw new Error('<?php echo Lang("loading_failed");?>');
+			throw new Error('载入失败');
 		}).then((d)=>{
 			ajaxdiv.innerHTML = d;
 		}).catch((error) => {
@@ -35,19 +35,19 @@
 </head>
 <body>
 <div id="loaddiv" style="display:none">
-	<p class="text-center"><img src="../static/web/img/load.gif"><?php echo Lang('loading');?></p>
+	<p style="text-align:center"><img src="../static/web/img/loadinglit.gif">正在加载</p>
 </div>
-<table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
   <tr>
-    <td bgcolor="#f8f8f8"><a href="sys_admin_user.php"><?php echo Lang('sys_admin_user');?></a> &gt; <?php echo Lang('sys_admin_user_tj');?></td>
+    <td bgcolor="#f8f8f8"><a href="sys_admin_user.php">管理员帐号</a> &gt; 编辑绩效统计</td>
   </tr>
   <tr>
     <td>
     <?php
-    $dsql->Execute('me', 'SELECT * FROM `#@__admin` ORDER BY id ASC');
+    $dsql->Execute('me', 'Select * From `#@__admin` order by id asc');
     while( $arr = $dsql->GetArray('me') )
     {
-  	  echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/load.gif'><?php echo Lang('loading');?></p></div><script>LoadUser({$arr['id']});</script>";
+  	  echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/loadinglit.gif'>正在加载</p></div><script>LoadUser({$arr['id']});</script>";
     }
     ?>
     </td>

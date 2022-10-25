@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang("module_main");?></title>
+		<title>模块管理</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 		<script src="../static/web/js/webajax.js"></script>
 		<script>
 			function getmodule(action, hash) {
-				$DE('status_' + hash).innerHTML = '<img src=\'../static/web/img/load.gif\'>';
+				$DE('status_' + hash).innerHTML = '<img src=\'../static/web/img/loadinglit.gif\'>';
 				fetch('module_main.php?action=download&hash=' + hash).then(resp => resp.text()).then((d) => {
 					$DE('status_' + hash).innerHTML = d;
 				});
@@ -21,65 +21,65 @@
 		</script>
 	</head>
 	<body>
-		<div class="alert alert-info maintable" style="margin:1rem auto"><?php echo Lang('module_main_tip',array('link'=>$cfg_biz_dedebizUrl.'/license_developer'));?></div>
-		<table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mb-3">
+		<div class="alert alert-info maintable" style="margin:1rem auto">DedeBIZV6开始启动<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">DedeBIZ商业开发者计划</a>，为了保障系统及技术服务安全，请认准DedeBIZ商业认证开发者</div>
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
 			<form name="form1" action="plus_add.php" method="post">
 				<input type="hidden" name="dopost" value="save">
 				<tr>
 					<td bgcolor="#f8f8f8" colspan="6">
-						<span class="float-left py-2"><a href="module_main.php"><?php echo Lang("module_main");?></a> &gt; <?php echo Lang("module_list");?></span>
+						<span class="float-left py-2"><a href="module_main.php">模块管理</a> &gt; 模块列表</span>
 						<span class="float-right mr-2">
-							<a class="btn btn-success btn-sm" href="module_main.php"><?php echo Lang("all");?></a>
-							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=soft"><?php echo Lang("module_soft");?></a>
-							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=templets"><?php echo Lang("template");?></a>
-							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=plus"><?php echo Lang("module_plus");?></a>
-							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=patch"><?php echo Lang("module_patch");?></a>
+							<a class="btn btn-success btn-sm" href="module_main.php">全部</a>
+							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=soft">模块</a>
+							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=templets">模板</a>
+							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=plus">小插件</a>
+							<a class="btn btn-success btn-sm" href="module_main.php?moduletype=patch">补丁</a>
 						</div>
 					</td>
 				</tr>
-				<tr bgcolor="#f8fcf2">
-					<td align="center" width="16%"><?php echo Lang("module_name");?></td>
-					<td align="center" width="12%"><?php echo Lang("module_time");?></td>
-					<td align="center" width="10%"><?php echo Lang('module_lang');?></td>
-					<td align="center" width="10%"><?php echo Lang('type');?></td>
-					<td align="center" width="12%"><?php echo Lang('status');?></td>
-					<td align="center" width="26%"><?php echo Lang('operation');?></td>
+				<tr bgcolor="#fbfce2">
+					<td align="center" width="16%">模块名称</td>
+					<td align="center" width="12%">发布时间</td>
+					<td align="center" width="10%">编码</td>
+					<td align="center" width="10%">类型</td>
+					<td align="center" width="12%">模块状态</td>
+					<td align="center" width="26%">管理</td>
 				</tr>
 				<?php
-				if (count($modules)>0)
+				if(count($modules)>0)
 				foreach($modules as $k=>$v)
 				{
 				?>
-				<tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
+				<tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
 					<td><?php echo $v['name'];?></td>
 					<td><?php echo $v['time'];?></td>
 					<td>
 						<?php
-						if ('utf-8' != $v['lang']) echo "<span class='text-danger'>".$v['lang']."</span>";
-						else echo $v['lang'];
+						if($cfg_soft_lang != $v['lang']) echo "<span class='text-danger'>".$v['lang']."</span>";
+						else  echo $v['lang'];
 						?>
 					</td>
 					<td><?php echo $types[$v['moduletype']];?></td>
 					<td>
 						<?php
 						$file = DEDEDATA."/module/{$v['hash']}.xml";
-						if (file_exists($file)) {
-							if (file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
-								echo Lang('module_installed')." <a class='text-danger' href='module_main.php?action=uninstall&hash={$v['hash']}'>".Lang('module_uninstall')."</a>";
+						if(file_exists($file)) {
+							if(file_exists(DEDEDATA."/module/{$v['hash']}-readme.php")){
+								echo "已安装 <a href='module_main.php?action=uninstall&hash={$v['hash']}' class='btn btn-outline-danger btn-sm'>卸载</a>";
 							} else {
-								echo Lang('module_uninstalled')." <a class='text-success' href='module_main.php?action=setup&hash={$v['hash']}'>".Lang('module_setup')."</a>";
+								echo "未安装 <a href='module_main.php?action=setup&hash={$v['hash']}' class='btn btn-outline-success btn-sm'>安装</a>";
 							}
 						} else {
-							echo "<div id=\"status_{$v['hash']}\"><a class=\"text-danger\" href=\"javascript:getmodule('download','{$v['hash']}')\">".Lang('module_download')."</a></div>";
+							echo "<div id=\"status_{$v['hash']}\"><a class=\"text-danger\" href=\"javascript:getmodule('download','{$v['hash']}')\">下载</a></div>";
 						}
 						?>
 					</td>
 					<td>
-						<div id='manager_<?php echo $v['hash'];?>' <?php if (!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none"'?>>
-							<a class="btn btn-success btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>"><?php echo Lang('module_dev');?></a>
-							<a class="btn btn-success btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>"><?php echo Lang('detail');?></a>
-							<a class="btn btn-success btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>"><?php echo Lang('edit');?></a>
-							<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash'];?>"><?php echo Lang('delete');?></a>
+						<div id='manager_<?php echo $v['hash'];?>' <?php if(!file_exists(DEDEDATA."/module/{$v['hash']}.xml")) echo 'style="display:none"'?>>
+							<a class="btn btn-success btn-sm" href="module_main.php?action=view_developoer&hash=<?php echo $v['hash'];?>">开发者</a>
+							<a class="btn btn-success btn-sm" href="module_main.php?action=view&hash=<?php echo $v['hash'];?>">详情</a>
+							<a class="btn btn-success btn-sm" href="module_main.php?action=edit&hash=<?php echo $v['hash'];?>">修改</a>
+							<a class="btn btn-danger btn-sm" href="module_main.php?action=del&hash=<?php echo $v['hash'];?>">删除</a>
 						</div>
 					</td>
 				</tr>

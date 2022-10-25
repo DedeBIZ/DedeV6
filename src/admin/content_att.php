@@ -8,9 +8,8 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-UserLogin::CheckPurview('sys_Att');
+CheckPurview('sys_Att');
 if (empty($dopost)) $dopost = '';
 //保存修改
 if ($dopost == "save") {
@@ -20,10 +19,10 @@ if ($dopost == "save") {
         $att = ${'att_'.$startID};
         $attname = ${'attname_'.$startID};
         $sortid = ${'sortid_'.$startID};
-        $query = "UPDATE `#@__arcatt` SET `attname`='$attname',`sortid`='$sortid' WHERE att='$att'";
+        $query = "UPDATE `#@__arcatt` SET `attname`='$attname',`sortid`='$sortid' WHERE att='$att' ";
         $dsql->ExecuteNoneQuery($query);
     }
-    echo "<script> alert('".Lang('content_att_success')."'); </script>";
+    echo "<script> alert('成功更新自定文档义属性表'); </script>";
 }
 include DedeInclude('templets/content_att.htm');
 ?>

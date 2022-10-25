@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <title><?php echo $diy->name;?></title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 	<script>
 	function selAll(){
     	var a = document.getElementsByTagName("input");
@@ -25,51 +25,51 @@
 <body>
 	<form action="diy_list.php" method="post">
 		<input type="hidden" name="diyid" value="<?php echo $diyid;?>">
-		<table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr>
 				<td bgcolor="#f8f8f8" colspan="3">
-					<span class="float-left py-2"><a href="diy_main.php"><?php echo Lang('diy_main');?></a> &gt; <?php echo $diy->name;?></span>
-					<span class="float-right mr-2"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank"><i class="fa fa-globe" title="<?php echo Lang('diy_view');?>"></i> <?php echo Lang('diy_view');?></a></span>
+					<span class="float-left py-2"><a href="diy_main.php">自定义表单管理</a> &gt; <?php echo $diy->name;?></span>
+					<span class="float-right mr-2"><a href="/apps/diy.php?action=list&diyid=<?php echo $diy->diyid;?>" target="_blank"><i class="fa fa-globe" title="前台预览"></i> 前台预览</a></span>
 				</td>
 			</tr>
 			{dede:datalist}
 			<?php 
-			if (!empty($fields))
+			if(!empty($fields))
 			{
 				$allowhtml = array('htmltext');
-				$fields['sta'] = $fields['ifcheck'] == 1 ? Lang('reviewed'):Lang('not_approved');
-				echo '<tr bgcolor="#f8fcf2"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><i class="btn btn-sm fa fa-code" title="'.Lang('edit').'"></i></a></td></tr>';
+				$fields['sta'] = $fields['ifcheck'] == 1 ? '已审核':'未审核';
+				echo '<tr bgcolor="#fbfce2"><td width="18%"><input type="checkbox" name="id[]" value="'.$fields['id'].'"></td><td><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'">'.$fields['id'].'</a> '.$fields['sta'].'</td><td width="12%" align="center"><a href="diy_list.php?action=edit&diyid='.$diy->diyid.'&id='.$fields['id'].'"><i class="btn btn-sm fa fa-pencil-square-o" title="修改"></i></a></td></tr>';
 				foreach($fieldlist as $field=>$fielddata)
 				{
-					if ($fields[$field]=='') continue;
-					if ($fielddata[1]=='img'){
-					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><i class='fa fa-picture-o'></i> ".Lang('diy_addon_img')."</a>";
+					if($fields[$field]=='') continue;
+					if($fielddata[1]=='img'){
+					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><i class='fa fa-picture-o'></i> 图片附件</a>";
 					}
-					else if ($fielddata[1]=='addon'){
-					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><i class='fa fa-file-text-o'></i> ".Lang('diy_addon_other')."</a>";
+					else if($fielddata[1]=='addon'){
+					$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><i class='fa fa-file-text-o'></i> 其它附件</a>";
 					} else {
-						if (!in_array($fielddata[1],$allowhtml)){
+						if(!in_array($fielddata[1],$allowhtml)){
 							$fields[$field] = dede_htmlspecialchars($fields[$field]);
 						}
 					}
 					echo '<tr><td bgcolor="#fff">'.$fielddata[0].'</td><td bgcolor="#fff" colspan="2">'.$fields[$field].'</td></tr>';
 				}
 			} else {
-				echo '<tr><td bgcolor="#fff">'.Lang('none_result').'</td></tr>';
+				echo '<tr><td bgcolor="#fff">暂无记录</td></tr>';
 			}
 			?>
 			{/dede:datalist}
 			<tr>
-				<td colspan="3" bgcolor="#fff">{dede:pagelist listsize='6'/}</td>
+				<td colspan="3" class="py-2">
+					<input type="button" name="select" onClick="selAll()" class="btn btn-success btn-sm" value="全选">
+					<input type="button" name="select" onClick="noSelAll()" class="btn btn-success btn-sm" value="取消">
+					<label class="mr-2 ml-2"><input type="radio" name="action" value="check"> 审核</label>
+					<label class="mr-2 ml-2"><input type="radio" name="action" value="delete"> 删除</label>
+					<button type="submit" name="submit" class="btn btn-success btn-sm">提交</button>
+				</td>
 			</tr>
 			<tr>
-				<td colspan="3" bgcolor="#f8f8f8" class="py-2">
-					<input type="button" name="select" onClick="selAll()" class="btn btn-success btn-sm" value="<?php echo Lang('select_all');?>">
-					<input type="button" name="select" onClick="noSelAll()" class="btn btn-success btn-sm" value="<?php echo Lang('cancel');?>">
-					<label><input type="radio" name="action" value="check"> <?php echo Lang('auditing');?></label>
-					<label><input type="radio" name="action" value="delete"> <?php echo Lang('delete');?></label>
-					<input type="submit" name="submit" class="btn btn-success btn-sm" value="<?php echo Lang('submit');?>">
-				</td>
+				<td colspan="3" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
 			</tr>
 		</table>
 	</form>

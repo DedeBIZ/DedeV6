@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="robots" content="noindex,nofollow">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo $cfg_webname;?><?php echo Lang('admin');?></title>
+		<title><?php echo $cfg_webname;?>后台管理</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/top.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
+		<link rel="stylesheet" href="css/menu.css">
 		<script src="../static/web/js/jquery.min.js"></script>
-		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body class="showmenu">
 		<?php if (preg_match('/MSIE/i',$_SERVER['HTTP_USER_AGENT']) || preg_match('/Trident/i',$_SERVER['HTTP_USER_AGENT'])){?>
 		<div id="browsehappy">
-			<span><?php echo Lang('browsehappy');?></span>
+			<span>您正在使用一个过时的浏览器，请您<a href="https://www.dedebiz.com/browsehappy" target="_blank">升级浏览器</a>，以提高您对后台体验</span>
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
 		</div>
 		<?php }?>
@@ -24,75 +24,65 @@
 				<div class="top-logo">
 					<span class="top-dedebiz"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
 					<span class="top-version">V<?php echo $cfg_version_detail;?></span>
-					<?php if (DEDEBIZ_SAFE_MODE){?>
-					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-sm"><?php echo Lang('safe_mode');?></a>
+					<?php if(DEDEBIZ_SAFE_MODE){?>
+					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs">安全</a>
 					<?php } else {?>
-					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-sm"><?php echo Lang('unsafe_mode');?></a>
+					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs">开发</a>
 					<?php }?>
 				</div>
 				<div class="top-item">
 					<ul class="mb-0">
-						<li class="pl-0"><a href="javascript:;" id="togglemenu" title="<?php echo Lang('toggle_menu');?>"><i class="fa fa-dedent"></i></a></li>
-						<?php if ($cUserLogin->getUserType()>=10){?>
-						<li><a href="sys_info.php" target="main" title="<?php echo Lang('sys_info');?>"><i class="fa fa-cog"></i></a></li>
-						<li><a href="catalog_main.php" target="main" title="<?php echo Lang('catalog_main');?>"><i class="fa fa-bars"></i></a></li>
-						<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="<?php echo Lang('file_manage');?>"><i class="fa fa-folder"></i></a></li>
+						<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
+						<?php if($cuserLogin->getUserType()>=10){?>
+						<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i></a></li>
+						<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
+						<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
 						<?php }?>
-						<?php if (!DEDEBIZ_SAFE_MODE){?><li><a href="templets_main.php" target="main" title="<?php echo Lang('templets_main');?>"><i class="fa fa-cube"></i></a></li><?php }?>
-						<li><a href="makehtml_all.php" target="main" title="<?php echo Lang('makehtml_all');?>"><i class="fa fa-repeat"></i></a></li>
-						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="'.Lang('user_center').'"><i class="fa fa-user-circle"></i></a></li>':'';?>
-						<li><a href="../" target="_blank" title="<?php echo Lang('preview_home');?>"><i class="fa fa-eye"></i></a></li>
+						<?php if(!DEDEBIZ_SAFE_MODE){?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i></a></li><?php }?>
+						<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
+						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
+						<li><a href="../" target="_blank" title="预览主页"><i class="fa fa-eye"></i></a></li>
 						<li>
-							<form action="action_search.php" method="post" target="main" class="form-search">
-								<input type="text" name="keyword" placeholder="<?php echo Lang('action_search');?>" class="input-search">
-								<button type="submit" class="btn-search"><i class="fa fa-search"></i></button>
+							<form action="action_search.php" method="post" target="main">
+								<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
+								<button type="submit" class="search"><i class="fa fa-search"></i> </button>
 							</form>
 						</li>
 					</ul>
 				</div>
 				<div class="top-admin">
 					<ul class="mb-0">
-						<li><a href="sys_admin_user_edit.php?id=<?php echo $cUserLogin->getUserID();?>&dopost=edit" target="main"><img src="../static/web/img/avatar.png" title="<?php echo $cUserLogin->getUserName();?>"><?php echo $cUserLogin->getUserName();?><?php if ($cUserLogin->getUserType()==10){echo Lang('admin_user_10');} else if ($cUserLogin->getUserType()==5) {echo Lang('admin_user_5');} else {echo Lang('admin_user_other');}?></a></li>
-			            <li>
-				            <div class="btn-group">
-				              	<button type="button" id="btnAction" class="btn dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo Lang('lang');?></button>
-				              	<div class="dropdown-menu" aria-labelledby="btnAction">
-									<?php foreach($dlang->GetEnabledLang() as $k => $v){?>
-					                <a href="?lang=<?php echo $k ;?>" class="dropdown-item"><?php echo $v;?></a>
-									<?php }?>
-				            	</div>
-				            </div>
-			        	</li>
-						<li><a href="exit.php" title="<?php echo Lang('exit');?>"><?php echo Lang('logout');?></a></li>
+						<li><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName();?>"><?php echo $cuserLogin->getUserName();?><?php if($cuserLogin->getUserType()==10){echo "管理员";} else if($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a></li>
+						<li><a href="exit.php" title="退出系统">退了</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div class="index-menu">
+		<div class="body-left">
 			<div class="menu" id="menu">
 				<iframe src="index_menu.php" id="menufra" name="menu" frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="index-body">
+		<div class="body-right">
 			<div class="main">
 				<iframe src="index_body.php" id="main" name="main" frameborder="0"></iframe>
 			</div>
 		</div>
 		<script>
+		$(function () {
+			LeftMenuToggle();
+		});
 		function LeftMenuToggle() {
 			$("#togglemenu").click(function () {
 				if ($("body").attr("class") == "showmenu") {
 					$("body").attr("class", "hidemenu");
-					$(this).html('<i class="fa fa-indent"></i>');
+					$(this).html('<i class="fa fa-indent"></i> ');
 				} else {
 					$("body").attr("class", "showmenu");
-					$(this).html('<i class="fa fa-dedent"></i>');
+					$(this).html('<i class="fa fa-dedent"></i> ');
 				}
 			});
-		};
-		$(function () {
-			LeftMenuToggle();
-		});
+		}
 		</script>
 	</body>
 </html>

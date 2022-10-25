@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="<?php echo $cfg_soft_lang;?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	<title><?php echo Lang('freelist_main');?></title>
+	<title>自由列表管理</title>
 	<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../static/web/css/admin.min.css">
+	<link rel="stylesheet" href="../static/web/css/admin.css">
 	<script src="../static/web/js/jquery.min.js"></script>
 	<script src="../static/web/js/webajax.js"></script>
 	<script src="js/main.js"></script>
@@ -37,18 +37,18 @@
 		function EditNote(nid) {
 			location.href = 'freelist_edit.php?aid=' + nid;
 		}
-		//更新网页
+		//更新HTML
 		function CreateNote(nid) {
 			location.href = 'makehtml_freelist.php?aid=' + nid;
 		}
 		//删除
 		function DelNote(nid) {
-			if (!window.confirm("<?php echo Lang('diy_delete_confirm');?>")) { return false; }
+			if (!window.confirm("您确认要删除这条记录吗")) { return false; }
 			var listArea = $Obj('rslist');
 			totalrow = totalrow - 1;
 			var pagenum = Math.ceil(totalrow / pagesize);
 			if (pagenum <= pageno) pageno = pagenum;
-			var errMsg = "<?php echo Lang('search_keywords_err_msg1');?><br>[<a href=\"javascript:LoadPage('" + pageno + "')\"><?php echo Lang('search_keywords_err_msg2');?></a>]";
+			var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
 			fetch("freelist_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno).then(resp=>{
 				if (resp.ok) {
 					return resp.text()
@@ -70,9 +70,9 @@
 			var ahtml = "<ul class='pagination justify-content-center'>";
 			var startloop = 1;
 			var endnum = 0;
-			ahtml += "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>" + pagenum + "<?php echo Lang('page');?>" + totalrow + "<?php echo Lang('record_number');?></span></li>";
-			if (pageno > 1 && pageno != 1) ahtml += "<li class='page-item d-none d-sm-block disabled'><a href='javascript:;' class='page-link' onclick='LoadPage(1)'><?php echo Lang('index_page');?></a></li>";
-			if (pageno > 1) ahtml += "<li class='page-item d-none d-sm-block'><a href='javascript:;' class='page-link' onclick='LoadPage(" + (pageno - 1) + ")'><?php echo Lang('pre_page');?></a></li> ";
+			ahtml += "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>" + pagenum + "页" + totalrow + "篇</span></li>";
+			if (pageno > 1 && pageno != 1) ahtml += "<li class='page-item d-none d-sm-block disabled'><a href='javascript:;' class='page-link' onclick='LoadPage(1)'>首页</a></li>";
+			if (pageno > 1) ahtml += "<li class='page-item d-none d-sm-block'><a href='javascript:;' class='page-link' onclick='LoadPage(" + (pageno - 1) + ")'>上页</a></li> ";
 			if (startnum >= pagenum - listsize) {
 				startloop = pagenum - (listsize * 2);
 				if (startloop < 1) startloop = 1;
@@ -97,38 +97,37 @@
 					else ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + i + ")'>[" + i + "]</a></li>";
 				}
 			}
-			if (pageno < pagenum) ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + (pageno + 1) + ")'><?php echo Lang('next_page');?></a></li>";
-			if (pageno != pagenum && pagenum > 1) ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + pagenum + ")'><?php echo Lang('end_page');?></a></li>";
+			if (pageno < pagenum) ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + (pageno + 1) + ")'>下页</a></li>";
+			if (pageno != pagenum && pagenum > 1) ahtml += "<li class='page-item d-none d-sm-block'><a class='page-link' href='javascript:;' onclick='LoadPage(" + pagenum + ")'>末页</a></li>";
 			ListArea.innerHTML = ahtml+"</ul>";
 		}
 	</script>
 </head>
 <body>
-	<table width="98%" align="center" cellpadding="5" cellspacing="1" class="mt-3 mb-3 biz-border">
-		<tr>
-			<td height="36" bgcolor="#f8f8f8">
-				<table cellpadding="0" cellspacing="0">
-					<form action="freelist_main.php" name="form1" id="form1">
-						<tr>
-							<td width="170" align="center">
-								<input type="text" name="keyword" id="keyword" placeholder="<?php echo Lang('input_keywords_tip');?>" value="<?php echo $keyword?>" style="width:160px">
-							</td>
-							<td>
-								<button type="submit" name="Submit2" class="btn btn-success btn-sm"><?php echo Lang('search');?></button>
-								<button type="button" name="bt1" onclick="location='freelist_add.php';" class="btn btn-success btn-sm"><?php echo Lang('freelist_add');?></button>
-								<button type="button" name="bt2" onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm"><?php echo Lang('freelist_make');?></button>
-							</td>
-						</tr>
-					</form>
-				</table>
+	<table width="98%" cellpadding="5" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+		<tr bgcolor="#f8f8f8">
+			<td width="170" align="center">
+				<input type="text" name="keyword" id="keyword" value="<?php echo $keyword?>" style="width:160px">
+			</td>
+			<td>
+				<button type="submit" name="Submit2" class="btn btn-success btn-sm">搜索</button>
+				<button type="button" name="bt1" onclick="location='freelist_add.php';" class="btn btn-success btn-sm">增加列表</button>
+				<button type="button" name="bt2" onclick="location='makehtml_freelist.php';" class="btn btn-success btn-sm">更新所有列表</button>
 			</td>
 		</tr>
 	</table>
-	<div id="rslist">
-	<?php GetTagList($dsql,$pageno,$pagesize,$orderby);?>
-	</div>
-	<div id="pagelist" class="mb-3">
-		<script>ReloadPageNum(1);</script>
-	</div>
+	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable">
+		<tr>
+			<td colspan="6" bgcolor="#f8f8f8">自由列表管理<span></td>
+		</tr>
+		<div id="rslist"><?php GetTagList($dsql,$pageno,$pagesize,$orderby);?></div>
+		<tr>
+			<td colspan="6" bgcolor="#f8f8f8" class="py-2">
+				<div id="pagelist">
+					<script>ReloadPageNum(1);</script>
+				</div>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>

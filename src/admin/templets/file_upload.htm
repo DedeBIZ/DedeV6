@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('file_upload');?></title>
+  <title>文件上传</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
+  <script>
+  var i=1;
+  function make_upload()
+  {
+    i++;
+    myob = document.getElementById("upfield");
+    myob.innerHTML+="<p>文件"+i+"：<input type='file' name='upfile"+i+"' style='width:390px'></p>";
+  }
+  function reset_upload()
+  { 
+    myob = document.getElementById("upfield");
+    myob.innerHTML="<p>文件1：<input type='file' name='upfile1' style='width:390px'></p>";
+  }
+  </script>
 </head>
 <body>
   <table width="98%" align="center" cellpadding="0" cellspacing="0">
     <tr> 
       <td align="center">
-        <script>
-        var i=1;
-        function make_upload()
-        {
-          i++;
-          myob = document.getElementById("upfield");
-          myob.innerHTML+="<p><?php echo Lang('file');?>" + i + "：<input type='file' name='upfile" + i + "' style='width:390px'></p>";
-        }
-        function reset_upload()
-        { 
-          myob = document.getElementById("upfield");
-          myob.innerHTML="<p><?php echo Lang('file');?>1：<input type='file' name='upfile1' style='width:390px'></p>";
-        }
-        </script>
         <form method="POST" enctype="multipart/form-data" action="file_manage_control.php" name="form1">
           <input type="hidden" name="activepath" value="{dede:global name='activepath'/}">
           <input type="hidden" name="fmdo" value="upload">
-          <table cellpadding="0" cellspacing="0" width="100%" class="mt-3">
+          <table cellpadding="0" cellspacing="0" width="100%" class="mt-3 mb-3">
           <tr>
-            <td class="mb-3">
+            <td style="padding-bottom:1rem">
               <input type="button" class="btn btn-success btn-sm" value="增加上传框" name="bbb" class="bt1" onClick="make_upload();">
-              <a class="btn btn-success btn-sm" href="file_manage_main.php?activepath={dede:global name='activepath'/}"><?php echo Lang('file_backdir');?>{dede:global name='activepath'/}</a>
+              <a class="btn btn-success btn-sm" href="file_manage_main.php?activepath={dede:global name='activepath'/}">返回目录{dede:global name='activepath'/}</a>
             </td>
           </tr>
           <tr>
             <td>
               <div id="upfield">
-                <p><?php echo Lang('file');?>1：<input type="file" name="upfile1" style="width:390px"></p>
+                <p>文件1：<input type="file" name="upfile1" style="width:390px"></p>
               </div>
             </td>
           </tr>
           <tr>
-            <td height="36">
-              <input type="submit" class="btn btn-success btn-sm" value="<?php echo Lang('file_upload');?>" name="B1">
-              <input type="button" class="btn btn-success btn-sm" value="<?php echo Lang('file_reset');?>" name="B12" onClick="reset_upload();">
+            <td>
+              <input type="submit" class="btn btn-success btn-sm" value="上传文件" name="B1">
+              <input type="button" class="btn btn-success btn-sm" value="重设表单" name="B12" onClick="reset_upload();">
             </td>
           </tr>
         </table>

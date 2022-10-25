@@ -8,24 +8,23 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeModule;
-use DedeBIZ\libraries\DedeWin;
-use DedeBIZ\libraries\zip;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
-UserLogin::CheckPurview('sys_module');
+CheckPurview('sys_module');
+require_once(DEDEINC."/dedemodule.class.php");
+require_once(DEDEINC."/libraries/oxwindow.class.php");
 if (empty($action)) $action = '';
 $mdir = DEDEDATA.'/module';
 if ($action == 'upload') {
     if (!is_uploaded_file($upfile)) {
-        ShowMsg(Lang("tpl_upload_empty"), "javascript:;");
+        ShowMsg("您什么都没有上传", "javascript:;");
         exit();
     } else {
+        include_once(DEDEINC."/libraries/zip.class.php");
         $tmpfilename = $mdir.'/'.ExecTime().mt_rand(10000, 50000).'.tmp';
-        move_uploaded_file($upfile, $tmpfilename) or die(Lang('module_upload_err_file',array('tmpfilename'=>$tmpfilename,'mdir'=>$mdir)));
+        move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到 {$tmpfilename} 时失败，请检查 {$mdir} 目录是否有写入权限");
         //ZIP格式的文件
         if ($filetype == 1) {
             $z = new zip();
@@ -43,7 +42,7 @@ if ($action == 'upload') {
             }
             if ($dedefileindex == -1) {
                 unlink($tmpfilename);
-                ShowMsg(Lang("module_upload_err_index"), "javascript:;");
+                ShowMsg("对不起，您上传的压缩包中不存在dede模块文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
                 exit();
             }
             $ziptmp = $mdir.'/ziptmp';
@@ -56,7 +55,7 @@ if ($action == 'upload') {
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg(Lang("module_upload_err_mfile"), "javascript:;");
+            ShowMsg("对不起，您上传的文件可能不是织梦模块的标准格式文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {
@@ -66,41 +65,43 @@ if ($action == 'upload') {
         if ($dm->HasModule($infos['hash']) && empty($delhas)) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg(Lang("module_upload_err_exists"), "javascript:;");
+            ShowMsg("对不起，您上传的模块已经存在<br>如果要覆盖请先删除原来版本或选择强制删除的选项<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         @unlink($okfile);
         copy($tmpfilename, $okfile);
         @unlink($tmpfilename);
         $dm->Clear();
-        ShowMsg(Lang("module_upload_success"), "module_main.php?action=view&hash={$infos['hash']}");
+        ShowMsg("成功上传一个新的模块", "module_main.php?action=view&hash={$infos['hash']}");
         exit();
     }
 } else {
-    $wecome_info = "<a href='module_main.php'>".Lang("module_main")."</a> &gt; ".Lang('module_upload');
+    $win = new OxWindow();
+    $win->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data");
+    $win->mainTitle = "模块管理";
+    $wecome_info = "<a href='module_main.php'>模块管理</a> &gt; 上传模块";
+    $win->AddTitle('请选择要上传的文件：');
+    $win->AddHidden("action", 'upload');
     $msg = "<table width='900' cellspacing='0' cellpadding='0'>
   <tr>
-    <td width='260'>".Lang('module_upload_filetype')."</td>
+    <td width='260'>文件格式：</td>
     <td>
-      <label><input type='radio' name='filetype' value='0' checked='checked'> ".Lang('module_upload_filetype_0')."</label>
-      <label><input type='radio' name='filetype' value='1'> ".Lang('module_upload_filetype_1')."</label>
+      <label><input type='radio' name='filetype' value='0' checked='checked'> 正常的模块包</label>
+      <label><input type='radio' name='filetype' value='1'> 经过zip压缩的模块包</label>
     </td>
   </tr>
   <tr>
-    <td>".Lang('module_upload_delhas')."</td>
-    <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> ".Lang('module_upload_delhas_tip')."</label></td>
+    <td>已有模块：</td>
+    <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label></td>
   </tr>
   <tr>
-    <td>".Lang('module_upload_upfile')."</td>
+    <td>请选择文件：</td>
     <td><input name='upfile' type='file' id='upfile' style='width:390px'></td>
   </tr>
  </table>";
-    DedeWin::Instance()->Init("module_upload.php", "js/blank.js", "POST' enctype='multipart/form-data")
-    ->AddTitle(Lang('module_upload_title'))
-    ->AddHidden("action", 'upload')
-    ->AddMsgItem("<div>$msg</div>")
-    ->GetWindow('ok', '')
-    ->Display();
+    $win->AddMsgItem("<div>$msg</div>");
+    $winform = $win->GetWindow('ok', '');
+    $win->Display();
     exit();
 }//ClearAllLink();
 ?>

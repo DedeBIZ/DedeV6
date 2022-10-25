@@ -9,5 +9,6 @@
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/config.php");
+require_once(DEDEINC."/typelink/typelink.class.php");
 include DedeInclude('templets/makehtml_list.htm');
 ?>

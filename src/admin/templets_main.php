@@ -8,12 +8,11 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
-UserLogin::CheckPurview('plus_文件管理器');
+CheckPurview('plus_文件管理器');
 if (empty($acdir)) $acdir = $cfg_df_style;
 $templetdir = $cfg_basedir.$cfg_templets_dir;
 $templetdird = $templetdir.'/'.$acdir;
@@ -38,7 +37,7 @@ function GetInfoArray($filename)
 }
 $dirlists  = GetInfoArray($templetdir.'/templet-dirlist.inc');
 $filelists = GetInfoArray($templetdir.'/templet-filelist.inc');
-$pluslists = GetInfoArray($templetdir.'/templet-appslist.inc');
-$fileinfos = ($acdir == 'apps' ? $pluslists : $filelists);
+$pluslists = GetInfoArray($templetdir.'/templet-pluslist.inc');
+$fileinfos = ($acdir == 'plus' ? $pluslists : $filelists);
 include DedeInclude('templets/templets_default.htm');
 ?>

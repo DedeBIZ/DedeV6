@@ -8,10 +8,9 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\libraries\DedeWin;
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__).'/config.php');
-UserLogin::CheckPurview('sys_StringMix');
+require_once(DEDEINC.'/libraries/oxwindow.class.php');
+CheckPurview('sys_StringMix');
 if (empty($dopost)) $dopost = '';
 if (empty($allsource)) $allsource = '';
 else $allsource = stripslashes($allsource);
@@ -23,7 +22,7 @@ if ($dopost == "save") {
     flock($fp, 3);
     fwrite($fp, $allsource);
     fclose($fp);
-    echo "<script>alert('".Lang('operation_successful')."');</script>";
+    echo "<script>alert('Save OK!');</script>";
 }
 //读出
 if (empty($allsource) && filesize($m_file) > 0) {
@@ -32,12 +31,14 @@ if (empty($allsource) && filesize($m_file) > 0) {
     fclose($fp);
 }
 make_hash();
-$wintitle = Lang("article_string_mix");
-$wecome_info = Lang("article_string_mix");
-DedeWin::Instance()->Init('article_string_mix.php', 'js/blank.js', 'POST')
-->AddHidden('dopost', 'save')
-->AddHidden('token', $_SESSION['token'])
-->AddTitle(Lang("article_string_mix_title"))
-->AddMsgItem("<textarea name='allsource' id='allsource' style='width:100%;height:300px'>$allsource</textarea>")
-->GetWindow('ok')->Display();
+$wintitle = "防采集混淆字符串管理";
+$wecome_info = "防采集混淆字符串管理";
+$win = new OxWindow();
+$win->Init('article_string_mix.php', 'js/blank.js', 'POST');
+$win->AddHidden('dopost', 'save');
+$win->AddHidden('token', $_SESSION['token']);
+$win->AddTitle("如果您要启用字符串混淆来防采集，请在文档模板需要的字段加上 function='RndString(@me)' 属性，如：{dede:field name='body' function='RndString(@me)'/}");
+$win->AddMsgItem("<textarea name='allsource' id='allsource' style='width:100%;height:300px'>$allsource</textarea>");
+$winform = $win->GetWindow('ok');
+$win->Display();
 ?>

@@ -2,61 +2,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('templets_one');?></title>
+  <title>单独页面管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-   <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
-      <tr>
-         <td bgcolor="#f8f8f8" colspan="6">
-            <form action="templets_one.php" name="sss">
-                  <input type="text" name="keyword" value="<?php if (!empty($keyword)) $keyword = '';?>" placeholder="<?php echo Lang('input_keywords_tip');?>" style="width:260px">
-                     <?php
-                       $likeid = (!isset($likeid) ? '' : $likeid);
-                       echo "<select name='likeid' id='likeid' style='width:160px'>";
-                       $dsql->Execute("s","SELECT likeid FROM `#@__sgpage` GROUP BY likeid");
-                       echo "<option value=''>".Lang('unlimited')."</option>";
-                       while($arr = $dsql->GetArray('s'))
-                       {
-                          if ($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
-                          else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
-                       }
-                       echo "</select>";
-                     ?>
-                  <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm"><?php echo Lang('search');?></button>
-               </ul>
-            </form>
-         </td>
-      </tr> 
-   </table>
-   <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mb-3">
-      <tr>
-         <td bgcolor="#f8f8f8" colspan="7">
-            <span class="float-left py-2"><?php echo Lang('templets_one');?></span>
-            <span class="float-right mr-2">
-               <a href="templets_one_add.php" class="btn btn-success btn-sm"><?php echo Lang('templets_one_add');?></a>
-               <a href="javascript:;" onClick="document.form1.submit();" class="btn btn-success btn-sm"><?php echo Lang('templets_one_make');?></a>
-               <a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm"><?php echo Lang('templets_one_makeall');?></a>
-            </span>
-         </td>
+   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+      <tr bgcolor="#f8f8f8">
+         <form action="templets_one.php" name="sss">
+            <td width="170" align="center"><input type="text" name="keyword" value="<?php if(!empty($keyword)) $keyword = '';?>" placeholder="请输入关键词" style="width:260px"></td>
+            <td width="170">
+               <?php
+                 $likeid = (!isset($likeid) ? '' : $likeid);
+                 echo "<select name='likeid' id='likeid' style='width:160px'>";
+                 $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
+                 echo "<option value=''>不限</option>";
+                 while($arr = $dsql->GetArray('s'))
+                 {
+                    if($likeid==$arr['likeid']) echo "<option value='{$arr['likeid']}' selected>{$arr['likeid']}</option>";
+                    else echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+                 }
+                 echo "</select>";
+               ?>
+            </td>
+            <td>
+               <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">搜索</button>
+               <a href="templets_one_add.php" class="btn btn-success btn-sm">增加一个页面</a>
+               <a href="javascript:;" onClick="document.form1.submit();" class="btn btn-success btn-sm">更新选中页面</a>
+               <a href="templets_one_edit.php?dopost=mkall" class="btn btn-success btn-sm">更新所有页面</a>
+            </td>
+         </form>
       </tr>
-      <tr align="center" bgcolor="#f8fcf2">
-         <td width="6%"><?php echo Lang('select');?></td>
+   </table>
+   <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
+      <tr>
+         <td bgcolor="#f8f8f8" colspan="7">单独页面管理</td>
+      </tr>
+      <tr bgcolor="#fbfce2" align="center">
+         <td width="6%">选择</td>
          <td width="6%">id</td>
-         <td width="30%"><?php echo Lang('title');?></td>
-         <td width="11%"><?php echo Lang('ismake');?></td>
-         <td width="10%"><?php echo Lang('identification');?></td>
-         <td width="12%"><?php echo Lang('update_time');?></td>
-         <td width="21%"><?php echo Lang('operation');?></td>
+         <td width="30%">页面名称</td>
+         <td width="11%">需编译</td>
+         <td width="10%">标识</td>
+         <td width="12%">修改时间</td>
+         <td width="21%">管理</td>
       </tr>
       <form name="form1" action="templets_one_edit.php">
          <input type="hidden" name="dopost" value="mksel">
-         {dede:datalist empty='<tr><td colspan="7"><center>~lang:none_result~</center></td></tr>'}
-         <tr align="center" onmousemove="javascript:this.bgColor='#f8fcf2';" onmouseout="javascript:this.bgColor='#ffffff';">
+         {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
+         <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
             <td><input type="checkbox" name="ids[]" value="{dede:field.aid/}"></td>
             <td>{dede:field.aid/}</td>
             <td><a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit">{dede:field.title/}</a></td>
@@ -64,15 +61,15 @@
             <td>{dede:field.likeid/}</td>
             <td>{dede:field.uptime function='GetDateMk(@me)'/}</td>
             <td>
-               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-code"></i> <?php echo Lang('edit');?></a>
-               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=view" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> <?php echo Lang('view');?></a>
-               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> <?php echo Lang('delete');?></a>
+               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=edit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 修改</a>
+               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=view" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-globe"></i> 预览</a>
+               <a href="templets_one_edit.php?aid={dede:field.aid/}&dopost=delete" class="btn btn-success btn-sm"><i class="fa fa-trash"></i> 删除</a>
             </td>
          </tr>
          {/dede:datalist}
       </form>
-      <tr>
-         <td align="center" colspan="7" bgcolor="#f8f8f8" class="py-2">{dede:pagelist listsize='6'/}</td>
+      <tr bgcolor="#f8f8f8" align="center" class="py-2">
+         <td colspan="7">{dede:pagelist listsize='6'/}</td>
       </tr>
    </table>
 </body>

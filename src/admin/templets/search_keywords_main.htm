@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('search_keywords_main');?></title>
+  <title>搜索关键词管理</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
-  <?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/key.js"></script>
@@ -25,7 +24,7 @@
     function ReloadPage(ordertype) {
         orderby = ordertype;
         var listArea = $Obj('rslist');
-        var errMsg = "<?php echo Lang('search_keywords_err_msg1');?><br>[<a href=\"javascript:ReloadPage('" + ordertype + "')\"><?php echo Lang('search_keywords_err_msg2');?></a>]";
+        var errMsg = "网络通信出错<br>[<a href=\"javascript:ReloadPage('" + ordertype + "')\">点击此重新加载列表</a>]";
         fetch("search_keywords_main.php?dopost=getlist&pageno=" + pageno + "&orderby=" + ordertype).then(resp=>{
             if (resp.ok) {
                 return resp.text()
@@ -49,7 +48,10 @@
         var kw = $Obj('keyword' + nid).value;
         var kws = $Obj('spwords' + nid).value;
         var ct = $Obj('count' + nid).value;
-        var errMsg = "<?php echo Lang('search_keywords_err_msg1');?><br>[<a href=\"javascript:LoadPage('" + pageno + "')\"><?php echo Lang('search_keywords_err_msg2');?></a>]";
+        var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
+        <?php
+        if (strtolower(substr($cfg_soft_lang, 0, 3)) == 'utf') {
+        ?>
         const formData = new FormData()
         formData.append('dopost', 'update');
         formData.append('aid', nid);
@@ -73,7 +75,8 @@
         }).catch((error) => {
             $DE('edsta').innerHTML = errMsg;
         });
-        ShowMsg('<?php echo Lang("search_keywords_success_update");?>');
+        <?php }?>
+        ShowMsg('成功更新关键词');
         //myajax.SendGet("search_keywords_main.php?dopost=update&aid="+nid+"&keyword="+kw+"&spwords="+kws+"&count="+ct+"&pageno="+pageno);
     }
     //删除关键词
@@ -82,7 +85,7 @@
         totalrow = totalrow - 1;
         var pagenum = Math.ceil(totalrow / pagesize);
         if (pagenum <= pageno) pageno = pagenum;
-        var errMsg = "<?php echo Lang('search_keywords_err_msg1');?><br>[<a href=\"javascript:LoadPage('" + pageno + "')\"><?php echo Lang('search_keywords_err_msg2');?></a>]";
+        var errMsg = "网络通信出错<br>[<a href=\"javascript:LoadPage('" + pageno + "')\">点击此重新加载列表</a>]";
         fetch("search_keywords_main.php?dopost=del&aid=" + nid + "&pageno=" + pageno + "&orderby=" + orderby).then(resp=>{
             if (resp.ok) {
                 return resp.text()
@@ -103,8 +106,8 @@
         var ahtml = "";
         var startloop = 1;
         var endnum = 0;
-        ahtml += "<?php echo Lang('total');?>" + totalrow + "<?php echo Lang('record_number');?>" + pagenum + "<?php echo Lang('page');?>";
-        if (pageno > 1) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno - 1) + ")'><?php echo Lang('pre_page');?></a> ";
+        ahtml += "共" + totalrow + "条" + pagenum + "页";
+        if (pageno > 1) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno - 1) + ")'>上页</a> ";
         if (startnum >= pagenum - listsize) {
             startloop = pagenum - (listsize * 2);
             if (startloop < 1) startloop = 1;
@@ -128,32 +131,23 @@
                 else ahtml += "<a href='javascript:;' onclick='LoadPage(" + i + ")'>[" + i + "]</a> ";
             }
         }
-        if (pageno < pagenum) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno + 1) + ")'><?php echo Lang('next_page');?></a> ";
+        if (pageno < pagenum) ahtml += "<a href='javascript:;' onclick='LoadPage(" + (pageno + 1) + ")'>下页</a> ";
           ListArea.innerHTML = ahtml;
     }
     </script>
 </head>
 <body>
-    <div class="main" align="center">
-        <table width="98%" cellpadding="1" cellspacing="1" bgcolor="#f8f8f8" class="table maintable mt-3 mb-3">
-            <tr>
-                <td width="30%"><?php echo Lang('search_keywords_main');?></td>
-                <td width="70%" align="right"><button type="button" name="n1" id="n1" class="btn btn-success btn-sm" onClick="location='article_keywords_main.php';"><?php echo Lang('article_keywords_main');?></button></td>
-            </tr>
-        </table>
-        <span id="rslist">
-        <?php
-        GetKeywordList($dsql,$pageno,$pagesize,$orderby);
-        ?>
-        </span>
-        <table width="98%" cellpadding="1" cellspacing="1" bgcolor="#f8f8f8" class="table maintable mt-3 mb-3">
-            <tr>
-                <td align="center" colspan="5" bgcolor="#f8f8f8" class="py-2">
-                    <span id="pagelist"></span>
-                    <script>ReloadPageNum(1);</script>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3">
+        <tr>
+            <td colspan="8" bgcolor="#f8f8f8">搜索关键词维护</td>
+        </tr>
+        <div id="rslist"><?php GetKeywordList($dsql,$pageno,$pagesize,$orderby);?></div>
+        <tr>
+            <td colspan="8" bgcolor="#f8f8f8" align="center" class="py-2">
+                <span id="pagelist"></span>
+                <script>ReloadPageNum(1);</script>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

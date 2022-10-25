@@ -8,18 +8,16 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require_once(dirname(__FILE__)."/config.php");
-$dlang->extendLang('grouplist'); //加载用户权限语言包
-UserLogin::CheckPurview('sys_Group');
+CheckPurview('sys_Group');
 if (!empty($dopost)) {
     $row = $dsql->GetOne("SELECT * FROM `#@__admintype` WHERE `rank`='".$rankid."'");
     if (is_array($row)) {
-        ShowMsg(Lang('sys_group_add_err_noneresult'), '-1');
+        ShowMsg('您所创建的组别的级别值已存在，不允许重复!', '-1');
         exit();
     }
     if ($rankid > 10) {
-        ShowMsg(Lang('sys_group_add_err_rank'), '-1');
+        ShowMsg('组级别值不能大于10， 否则一切权限设置均无效!', '-1');
         exit();
     }
     $AllPurviews = '';
@@ -29,8 +27,8 @@ if (!empty($dopost)) {
         }
         $AllPurviews = trim($AllPurviews);
     }
-    $dsql->ExecuteNoneQuery("INSERT INTO `#@__admintype` (`rank`,typename,`system`,purviews) VALUES ('$rankid','$groupname',0,'$AllPurviews');");
-    ShowMsg(Lang("sys_group_add_success"), "sys_group.php");
+    $dsql->ExecuteNoneQuery("INSERT INTO `#@__admintype` (`rank`,typename,`system`,purviews) VALUES ('$rankid','$groupname', 0, '$AllPurviews');");
+    ShowMsg("成功创建一个新的用户组", "sys_group.php");
     exit();
 }
 include DedeInclude('templets/sys_group_add.htm');

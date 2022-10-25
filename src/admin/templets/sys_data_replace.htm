@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-		<title><?php echo Lang('sys_data_replace');?></title>
-		<?php include_once(DEDEADMIN.'/templets/_widget_lang.htm');?>
+		<title>数据批量替换</title>
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../static/web/css/admin.min.css">
+		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 		<script src="../static/web/js/bootstrap.bundle.min.js"></script>
 		<script src="js/main.js"></script>
@@ -29,11 +28,11 @@
 			}
 			function CheckSubmit() {
 				if ($DE('rpfield').value == "") {
-					ShowMsg("<?php echo Lang('sys_data_err_rpfield');?>");
+					ShowMsg("您选择的操作为手工指定字段，但您并没指定");
 					return false;
 				}
 				if ($DE('rpstring').value == "") {
-					ShowMsg("<?php echo Lang('sys_data_err_rpstring');?>");
+					ShowMsg("您没指定要替换的字符串");
 					return false;
 				}
 				return true;
@@ -44,35 +43,35 @@
 		</script>
 	</head>
 	<body>
-		<table width="98%" align="center" cellpadding="1" cellspacing="1" class="table maintable mt-3 mb-3">
+		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<form action="sys_data_replace.php" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
 				<input type="hidden" name="action" value="apply">
 				<tr>
-					<td bgcolor="#f8f8f8"><?php echo Lang('sys_data_replace');?></td>
+					<td bgcolor="#f8f8f8">数据库内容替换</td>
 				</tr>
 				<tr>
 					<td>
 						<table width="100%" cellpadding="2" cellspacing="2" class="table table-borderless">
 							<tr>
 								<td colspan="2">
-									<div class="alert alert-info mb-0"><?php echo Lang('sys_data_replace_tip');?></div>
+									<div class="alert alert-info mb-0">程序用于批量替换数据库中某字段的内容，此操作极为危险，请小心使用</div>
 								</td>
 							</tr>
-							<tr id="datasel">
-								<td width="260px"><?php echo Lang('sys_data_datasel');?>：</td>
-								<td class="p-0">
+							<tr id='datasel'>
+								<td width="15%" height="60">选择数据表与字段：</td>
+								<td>
 									<table width="98%" cellspacing="0" cellpadding="0">
 										<tr>
 											<td id="tables">
 												<?php
 												$dsql->SetQuery("Show Tables");
 												$dsql->Execute('t');
-												if ($dsql->GetError()!=''){
-													echo "<span class='text-danger'>".Lang('sys_data_err_noneexists')." $dbname</span><br>";
+												if($dsql->GetError()!=''){
+													echo "<span class='text-danger'>找不到您所指定的数据库 $dbname</span><br>";
 													echo $qbutton;
 												}
-												echo "<select name='exptable' id='exptable' style='width:60%' onchange='ShowFields()'>";
-												while($row = $dsql->GetArray('t',PDO::FETCH_BOTH)){
+												echo "<select name='exptable' id='exptable' size='10' style='width:60%;height:220px' onchange='ShowFields()'>";
+												while($row = $dsql->GetArray('t',MYSQL_BOTH)){
 													echo "<option value='{$row[0]}'>{$row[0]}</option>";
 												}
 												echo "</select>";
@@ -81,36 +80,36 @@
 											</td>
 										</tr>
 										<tr>
-											<td id="fields"></td>
+											<td id='fields'></td>
 										</tr>
 										<tr>
-											<td><?php echo Lang('sys_data_rpfield');?>：<input type="text" name="rpfield" id="rpfield"></td>
+											<td>要替换的字段：<input type="text" name="rpfield" id="rpfield"></td>
 										</tr>
 									</table>
 								</td>
 							</tr>
-							<tr bgcolor="#f8fcf2">
-								<td><?php echo Lang('sys_data_rptype');?>：</td>
+							<tr bgcolor="#fbfce2">
+								<td>替换方式：</td>
 								<td>
-									<label><input type="radio" name="rptype" id="ot1" value="replace" checked="1"> <?php echo Lang('sys_data_rptype_replace');?></label>
-									<label><input type="radio" name="rptype" id="ot2" value="regex"> <?php echo Lang('sys_data_rptype_regex');?></label>
-									<?php echo Lang('sys_data_keyfield');?>：<input type="text" name="keyfield" id="keyfield" style="width:60px"> <?php echo Lang('sys_data_keyfield_tip');?>
+									<label><input type="radio" name="rptype" id="ot1" value="replace" checked="1"> 普通替换</label>
+									<label><input type="radio" name="rptype" id="ot2" value="regex"> 正则表达式</label>
+									主键字段：<input type="text" name="keyfield" id="keyfield" size="12">（正则模式必须指定）
 								</td>
 							</tr>
 							<tr>
-								<td><?php echo Lang('sys_data_rpstring');?>：</td>
+								<td>被替换内容：</td>
 								<td><textarea name="rpstring" id="rpstring" style="width:60%;height:50px"></textarea></td>
 							</tr>
 							<tr>
-								<td><?php echo Lang('sys_data_tostring');?>：</td>
+								<td>替换为：</td>
 								<td><textarea name="tostring" id="tostring" style="width:60%;height:50px"></textarea></td>
 							</tr>
 							<tr>
-								<td><?php echo Lang('sys_data_condition');?>：</td>
-								<td><input type="text" name="condition" id="condition" style="width:60%"><?php echo Lang('sys_data_condition_tip');?></td>
+								<td>替换条件：</td>
+								<td><input type="text" name="condition" id="condition" style="width:60%">（空完全替换）</td>
 							</tr>
 							<tr>
-								<td><?php echo Lang('validate');?>：</td>
+								<td>安全确认码：</td>
 								<td>
 									<input type="text" name="validate" style="width:80px;text-transform:uppercase">
 									<img src="../apps/vdimgck.php" style="vertical-align:middle;cursor:pointer" onClick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
@@ -120,8 +119,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="center" bgcolor="#f8fcf2" class="py-2">
-						<button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('sys_data_start');?></button>
+					<td bgcolor="#fbfce2" align="center" class="py-2">
+						<button type="submit" name="Submit" class="btn btn-success btn-sm">开始替换数据</button>
 					</td>
 				</tr>
 			</form>
@@ -129,15 +128,24 @@
 				<td>
 					<table width="100%" class="table table-borderless">
 						<tr>
-							<td width="30%"><?php echo Lang('result');?>：</td>
-							<td width="70%" align="right"></td>
+							<td width="30%">结果：</td>
+							<td width="70%" align="right">
+								<script>
+									function ResizeDiv(obj, ty) {
+										if (ty == "+") document.all[obj].style.pixelHeight += 50;
+										else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+									}
+								</script>
+								<a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
+								<a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
+							</td>
 						</tr>
 					</table>
 				</td>
 			</tr>
 			<tr>
 				<td id="mtd">
-					<div id="mdv" style="width:100%;height:360px"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
+					<div id="mdv" class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

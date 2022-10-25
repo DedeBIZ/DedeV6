@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('sys_admin_user_edit');?></title>
+  <title>修改帐号</title>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable mt-3 mb-3">
+  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr>
       <td bgcolor="#f8f8f8">
         <table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
           <tr>
-            <td width="30%"><?php echo Lang('sys_admin_user_edit');?></td>
-            <td width="70%" align="right"><a href="sys_admin_user.php" class="btn btn-success btn-sm"><?php echo Lang('sys_admin_user');?></a></td>
+            <td width="30%">修改帐号</td>
+            <td width="70%" align="right"><a href="sys_admin_user.php" class="btn btn-success btn-sm">管理帐号</a></td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td class="p-0">
+      <td align="center">
         <form name="form1" action="sys_admin_user_edit.php" method="post">
           <input type="hidden" name="dopost" value="saveedit">
           <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
           <input type="hidden" name="id" value="<?php echo $row['id']?>">
-          <table width="98%" cellspacing="1" cellpadding="1" class="table">
+          <table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
-              <td width="260" class="border-top-0"><?php echo Lang('userid');?>：</td>
-              <td class="border-top-0"><?php echo $row['userid']?></td>
+              <td width="260"   class="bline">用户登录ID：</td>
+              <td><?php echo $row['userid']?></td>
             </tr>
             <tr>
-              <td><?php echo Lang('uname');?>：</td>
-              <td><input type="text" name="uname" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px"> <?php echo Lang('sys_admin_user_uname_tip');?></td>
+              <td class="bline">用户笔名：</td>
+              <td class="bline"><input type="text" name="uname" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文档后显示责任编辑的名字）</td>
             </tr>
             <tr>
-              <td><?php echo Lang('password');?>：</td>
-              <td><input type="text" name="pwd" id="pwd" size="16" style="width:260px"> <?php echo Lang('sys_admin_user_password_tip');?></td>
+              <td class="bline">用户密码：</td>
+              <td class="bline"><input type="text" name="pwd" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
             </tr>
             <tr>
-              <td><?php echo Lang('usertype');?>：</td>
-              <td>
+              <td class="bline">用户类型：</td>
+              <td class="bline">
                 <select name="usertype" style="width:160px">
                 <?php
-                $dsql->SetQuery("SELECT * FROM `#@__admintype` ORDER BY `rank` ASC");
+                $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
                 $dsql->Execute("ut");
                 while($myrow = $dsql->GetObject("ut"))
                 {
-                  if ($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
+                  if($row['usertype']==$myrow->rank) echo "<option value='".$myrow->rank."' selected='1'>".$myrow->typename."</option>";
                   else echo "<option value='".$myrow->rank."'>".$myrow->typename."</option>";
                 }
                 ?>
@@ -56,33 +56,33 @@
               </td>
             </tr>
             <tr>
-              <td><?php echo Lang('sys_admin_user_typeids');?>：</td>
-              <td>
+              <td class="bline">负责频道：</td>
+              <td class="bline">
                 <select name="typeids[]" id="typeid" size="10" style="width:260px;height:200px" multiple="true">
-                  <option value="0" class="alltype"><?php echo Lang('catalog_all');?></option>
+                  <option value="0" class="alltype">所有频道</option>
                   <?php echo $typeOptions?>
-                </select> <?php echo Lang('sys_admin_catalog_all_tip');?>
+                </select>（按Ctrl可以进行多选）
               </td>
             </tr>
             <tr>
-              <td><?php echo Lang('tname');?>：</td>
-              <td><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" style="width:260px"></td>
+              <td class="bline">真实姓名：</td>
+              <td class="bline"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td><?php echo Lang('email');?>：</td>
-              <td><input type="text" name="email" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
+              <td class="bline">电子邮箱：</td>
+              <td class="bline"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td><?php echo Lang('safecode');?>：</td>
-              <td>
+              <td class="bline">验证安全码：</td>
+              <td class="bline">
                 <input type="text" name="safecode" id="safecode" style="width:260px">
-                <input type="hidden" name="randcode" value="<?php echo $randcode;?>">（<?php echo Lang('safecode');?>：<span class='text-danger'><?php echo $safecode;  ?></span>）
+                <input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class='text-danger'><?php echo $safecode;  ?></span>）
               </td>
             </tr>
             <tr>
-              <td align="center" colspan="2" bgcolor="#f8f8f8" class="py-2">
-                <button type="submit" name="Submit" class="btn btn-success btn-sm"><?php echo Lang('save');?></button>
-                <button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm"><?php echo Lang('back');?></button>
+              <td colspan="2" align="center" class="py-2">
+                <button type="submit" name="Submit" class="btn btn-success btn-sm">保存</button>
+                <button type="button" onclick="javascript:history.go(-1);" class="btn btn-success btn-sm">返回</button>
               </td>
             </tr>
           </table>

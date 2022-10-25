@@ -8,26 +8,21 @@
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-use DedeBIZ\Login\UserLogin;
 require(dirname(__FILE__)."/config.php");
 if (DEDEBIZ_SAFE_MODE) {
-    die(DedeAlert(Lang("err_safemode_check"),ALERT_DANGER));
+    die(DedeAlert("系统已启用安全模式，无法使用当前功能",ALERT_DANGER));
 }
-if ($cfg_dbtype == 'pgsql') {
-    showMsg( Lang('sys_data_pgsql_tip',array('cfg_dbname'=>$cfg_dbname)), 'javascript:;');
-    exit();
-}
-UserLogin::CheckPurview('sys_Data');
+CheckPurview('sys_Data');
 if (empty($dopost)) $dopost = "";
 //查看表结构
 if ($dopost == "viewinfo") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo Lang("sys_data_err_table");
+        echo "没有指定表名";
     } else {
         $dsql->SetQuery("SHOW CREATE TABLE ".$dsql->dbName.".".$tablename);
         $dsql->Execute('me');
-        $row2 = $dsql->GetArray('me', PDO::FETCH_BOTH);
+        $row2 = $dsql->GetArray('me', MYSQL_BOTH);
         $ctinfo = $row2[1];
         echo "<xmp>".trim($ctinfo)."</xmp>";
     }
@@ -37,11 +32,11 @@ if ($dopost == "viewinfo") {
 else if ($dopost == "opimize") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo Lang("sys_data_err_table");
+        echo "没有指定表名";
     } else {
-        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename`");
-        if ($rs) echo Lang('sys_data_opimize_ok',array('tablename'=>$tablename));
-        else echo Lang('sys_data_opimize_err',array('tablename'=>$tablename,'err'=>$dsql->GetError()));
+        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `$tablename` ");
+        if ($rs)  echo "执行优化表：$tablename  OK";
+        else echo "执行优化表：$tablename  失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -50,12 +45,12 @@ else if ($dopost == "opimizeAll") {
     CheckCSRF();
     $dsql->SetQuery("SHOW TABLES");
     $dsql->Execute('t');
-    while ($row = $dsql->GetArray('t', PDO::FETCH_BOTH)) {
-        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `{$row[0]}`");
+    while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
+        $rs = $dsql->ExecuteNoneQuery("OPTIMIZE TABLE `{$row[0]}` ");
         if ($rs) {
-            echo Lang('sys_data_opimize_ok',array('tablename'=>$row[0]))."<br>\r\n";
+            echo "优化表: {$row[0]} ok!<br>\r\n";
         } else {
-            echo Lang('sys_data_opimize_err',array('tablename'=>$row[0],'err'=>$dsql->GetError()))."<br>\r\n";
+            echo "优化表: {$row[0]} 失败! 原因是: ".$dsql->GetError()."<br>\r\n";
         }
     }
     exit();
@@ -64,11 +59,11 @@ else if ($dopost == "opimizeAll") {
 else if ($dopost == "repair") {
     CheckCSRF();
     if (empty($tablename)) {
-        echo Lang("sys_data_err_table");
+        echo "没有指定表名";
     } else {
-        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename`");
-        if ($rs) echo Lang('sys_data_repair_ok',array('tablename'=>$tablename));
-        else echo Lang('sys_data_repair_err',array('tablename'=>$tablename,'err'=>$dsql->GetError()));
+        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `$tablename` ");
+        if ($rs) echo "修复表：$tablename  OK";
+        else echo "修复表：$tablename 失败，原因是：".$dsql->GetError();
     }
     exit();
 }
@@ -77,12 +72,12 @@ else if ($dopost == "repairAll") {
     CheckCSRF();
     $dsql->SetQuery("Show Tables");
     $dsql->Execute('t');
-    while ($row = $dsql->GetArray('t', PDO::FETCH_BOTH)) {
-        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `{$row[0]}`");
+    while ($row = $dsql->GetArray('t', MYSQL_BOTH)) {
+        $rs = $dsql->ExecuteNoneQuery("REPAIR TABLE `{$row[0]}` ");
         if ($rs) {
-            echo Lang('sys_data_repair_ok',array('tablename'=>$row[0]))."<br>\r\n";
+            echo "修复表: {$row[0]} ok!<br>\r\n";
         } else {
-            echo Lang('sys_data_repair_err',array('tablename'=>$row[0],'err'=>$dsql->GetError()))."<br>\r\n";
+            echo "修复表: {$row[0]} 失败，原因是: ".$dsql->GetError()."<br>\r\n";
         }
     }
     exit();
@@ -92,7 +87,7 @@ else if ($dopost == "query") {
     CheckCSRF();
     $sqlquery = trim(stripslashes($sqlquery));
     if (preg_match("#drop(.*)table#i", $sqlquery) || preg_match("#drop(.*)database#", $sqlquery)) {
-        echo Lang("sys_sql_query_err_drop");
+        echo "<span>删除数据表或数据库的语句不允许在这里执行</span>";
         exit();
     }
     //运行查询语句
@@ -100,9 +95,9 @@ else if ($dopost == "query") {
         $dsql->SetQuery($sqlquery);
         $dsql->Execute();
         if ($dsql->GetTotalRow() <= 0) {
-            echo Lang("sys_sql_query_success_none",array('sqlquery'=>$sqlquery));
+            echo "运行SQL：{$sqlquery}，无返回记录";
         } else {
-            echo Lang('sys_sql_query_success_num',array('sqlquery'=>$sqlquery,'num'=>$dsql->GetTotalRow()));
+            echo "运行SQL：{$sqlquery}，共有".$dsql->GetTotalRow()."条记录，最大返回100条";
         }
         $j = 0;
         while ($row = $dsql->GetArray()) {
@@ -111,7 +106,7 @@ else if ($dopost == "query") {
                 break;
             }
             echo "<hr size=1 width='100%'/>";
-            echo Lang('record')."：$j";
+            echo "记录：$j";
             echo "<hr size=1 width='100%'/>";
             foreach ($row as $k => $v) {
                 echo "<span class='text-danger'>{$k}：</span>{$v}<br>\r\n";
@@ -135,15 +130,15 @@ else if ($dopost == "query") {
             if ($errCode == "") {
                 $i++;
             } else {
-                $nerrCode .= Lang('query')."：<span style='color:#007bff'>$q</span> ".Lang('sys_sql_query_err_info')."：<span class='text-danger'>".$errCode."</span><br>";
+                $nerrCode .= "执行：<span style='color:#007bff'>$q</span> 出错，错误提示：<span class='text-danger'>".$errCode."</span><br>";
             }
         }
-        echo Lang('sys_sql_query_success_query',array('i'=>$i));
+        echo "成功执行{$i}个SQL语句<br><br>";
         echo $nerrCode;
     } else {
         $dsql->ExecuteNoneQuery($sqlquery);
         $nerrCode = trim($dsql->GetError());
-        echo Lang('sys_sql_query_success_query',array('i'=>1));
+        echo "成功执行1个SQL语句<br><br>";
         echo $nerrCode;
     }
     exit();

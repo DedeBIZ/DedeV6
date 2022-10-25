@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title><?php echo Lang('mytag_tag_guide');?></title>
-  <link rel="stylesheet" href="../static/web/css/admin.min.css">
+  <title>智能标记向导</title>
+  <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
 <body>
 <table width="98%" cellspacing="0" cellpadding="0">
@@ -13,7 +13,7 @@
   <tr> 
     <td align="center"> 
       <textarea name="partcode" cols="60" rows="6" id="partcode" style="width:90%;height:120"><?php echo $fulltag?></textarea> 
-      <input type="submit" name="Submit" value="<?php echo Lang('view');?>">
+      <input type="submit" name="Submit" value="预览">
     </td>
   </tr>
   </form>
