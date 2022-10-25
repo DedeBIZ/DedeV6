@@ -45,7 +45,7 @@ if ($ctagid == 0 && $allfinish) {
     $dlist->SetTagsDir($tagsdir);
     $dlist->MakeHtml(1, 10);
     $reurl = '..'.$tagsdir;
-    ShowMsg("更新完成TAG，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
+    ShowMsg("更新标签，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
     exit;
 }
 $tag = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE id='$ctagid' LIMIT 0,1;");
@@ -75,12 +75,12 @@ if (is_array($tag) && count($tag) > 0) {
         $dlist->MakeHtml(1, 10);
         $reurl = '..'.$tagsdir;
         if ($upall == 1) {
-            ShowMsg("完成TAG更新<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
+            ShowMsg("更新标签完成，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
         } else {
             $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
             $dsql->ExecuteNoneQuery($query);
             $reurl .= '/'.$ctagid;
-            ShowMsg("更新完成TAG：".$tag['tag']."，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
+            ShowMsg("更新标签：".$tag['tag']."，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
         }
         exit();
     } else {

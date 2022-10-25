@@ -7,7 +7,7 @@ imgwidth='' imgheight='' listtype='' orderby='' keyword='' limit='0,1'}
 >>dede>>
 col='' 分多少列显示（默认为单列）
 row='10' 返回文档列表总数
-typeid='' 栏目id,在列表模板和档案模板中一般不需要指定，在封面模板中允许用","分开表示多个栏目；
+typeid='' 栏目id,在列表模板和文档模板中一般不需要指定，在封面模板中允许用","分开表示多个栏目；
 titlelen = '30' 标题长度 等同于titlelength
 infolen='160' 表示内容简介长度 等同于infolength
 imgwidth='120' 缩略图宽度

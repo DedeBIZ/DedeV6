@@ -15,7 +15,7 @@ $flag = '';
 $typeid = isset($typeid) && is_numeric($typeid) ? $typeid : 0;
 $userip = GetIP();
 if ($typeid == 0) {
-    ShowMsg('请指定文档隶属的栏目', '-1');
+    ShowMsg('请指定文档所属栏目', '-1');
     exit();
 }
 //校验CSRF

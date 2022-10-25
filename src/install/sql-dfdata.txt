@@ -4088,7 +4088,7 @@ INSERT INTO `#@__sysconfig` VALUES ('1','cfg_basehost','站点网址','1','strin
 ('146', 'cfg_bizcore_port', 'DedeBIZ Core端口', 1, 'number', '8181'),
 ('147', 'cfg_bizcore_appid', 'DedeBIZ Core应用ID', 1, 'string', ''),
 ('148', 'cfg_bizcore_key', 'DedeBIZ Core通信密钥', 1, 'string', ''),
-('149', 'cfg_tags_dir', 'TAGS生成目录', 7, 'string', '{cmspath}/a/tags');
+('149', 'cfg_tags_dir', '标签生成目录', 7, 'string', '{cmspath}/a/tags');
 
 INSERT INTO `#@__sys_module` VALUES(1, '1f35620fb42d452fa2bdc1dee1690f92', '文件管理器', '', '', 0, ''),
 (2, 'b437d85a7a7bc778c9c79b5ec36ab9aa', '友情链接', '', '', 0, ''),

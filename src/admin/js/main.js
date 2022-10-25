@@ -587,7 +587,7 @@ var optCropper = {
 	aspectRatio: 4 / 3,
 	//拖动截取缩略图后，截取的缩略图更新到imageItems中
 	cropend: function (data) {
-		//这里的ID要单独取出来
+		//这里的id要单独取出来
 		var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
 		litpicImg = dataUrl;
 		$("#litPic").attr("src", litpicImg);

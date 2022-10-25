@@ -54,7 +54,6 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
             if (!preg_match("#\.(gif|jpg|png)#i", $itype)) $itype = ".jpg";
             $rndFileName = $imgPath."/".$milliSecond.$key.$itype;
             $iurl = $imgUrl."/".$milliSecond.$key.$itype;
-
             //下载并保存文件
             //$rs = $htd->SaveToBin($rndFileName);
             $rs = DownImageKeep($value, $rfurl, $rndFileName, '', 0, 30);
@@ -233,7 +232,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
     echo "<input type=\"hidden\" name=\"_csrf_token\" value=\"".$GLOBALS['csrf_token']."\" />";
 }
 /**
- *  创建指定ID的文档
+ *  创建指定id的文档
  *
  * @param     int  $aid
  * @param     bool  $ismakesign

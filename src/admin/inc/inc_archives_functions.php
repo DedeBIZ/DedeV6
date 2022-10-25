@@ -235,7 +235,7 @@ function CheckChannel($typeid, $channelid)
     else return TRUE;
 }
 /**
- *  检测档案权限
+ *  检测文档权限
  *
  * @access    public
  * @param     int  $aid  文档AID
@@ -301,7 +301,7 @@ function SpLongBody($mybody, $spsize, $sptag)
     return addslashes($mybody);
 }
 /**
- *  创建指定ID的文档
+ *  创建指定id的文档
  *
  * @access    public
  * @param     string  $aid  文档id
@@ -740,7 +740,7 @@ function UploadOneImage($upname, $handurl = '', $isremote = 1, $ntitle = '')
     if (is_file($imgfile) && $isrm_up && $filename != '') {
         $info = "";
         $imginfos = GetImageSize($imgfile, $info);
-        //把新上传的图片信息保存到媒体文档管理档案中
+        //把新上传的图片信息保存到媒体文档管理文档中
         $inquery = "INSERT INTO `#@__uploads` (title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$title','$filename','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".time()."','".$cuserLogin->getUserID()."');";
         $dsql->ExecuteNoneQuery($inquery);
     }

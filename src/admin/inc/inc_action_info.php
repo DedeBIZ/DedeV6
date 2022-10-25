@@ -14,7 +14,7 @@ $cuserLogin = new userLogin();
 $actionSearch[0] = array(
     'toptitle' => '运维',
     'title'  => '常规操作',
-    'description' => '站点档案常规功能操作',
+    'description' => '站点文档常规功能操作',
     'soniterm' =>  array(
         0  =>  array(
             'title' => '网站栏目管理',
@@ -23,7 +23,7 @@ $actionSearch[0] = array(
             'linkurl' => 'catalog_main.php'
         ),
         1  =>  array(
-            'title' => '等审核的档案',
+            'title' => '等审核的文档',
             'description' => '所有内容模型发表的未经审核内容列表',
             'purview' => 'a_Check,a_AccCheck',
             'linkurl' => 'content_list.php?arcrank=-1'

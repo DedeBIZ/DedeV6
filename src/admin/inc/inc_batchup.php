@@ -35,7 +35,7 @@ function DelArc($aid, $type = 'ON', $onlyfile = FALSE, $recycle = 0)
     $maintable = (trim($row['maintable']) == '' ? '#@__archives' : trim($row['maintable']));
     $addtable = trim($row['addtable']);
     $issystem = $row['issystem'];
-    //查询档案信息
+    //查询文档信息
     if ($issystem == -1) {
         $arcQuery = "SELECT arc.*,tp.* FROM `$addtable` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id WHERE arc.aid='$aid' ";
     } else {

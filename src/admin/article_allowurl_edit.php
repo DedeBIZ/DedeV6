@@ -35,7 +35,7 @@ $win = new OxWindow();
 $win->Init('article_allowurl_edit.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
 $win->AddTitle("每行保存一个超链接：");
-$win->AddMsgItem("<textarea name='allurls' id='allurls'class='biz-textarea'>$allurls</textarea>");
+$win->AddMsgItem("<textarea name='allurls' id='allurls' class='biz-textarea'>$allurls</textarea>");
 $winform = $win->GetWindow('ok');
 $win->Display();
 ?>

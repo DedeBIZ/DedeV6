@@ -155,7 +155,7 @@ else if ($dopost == 'save') {
                     $info = '';
                     $imginfos = GetImageSize($imgfile, $info);
                     $imgurls .= "{dede:img ddimg='$litpicname' text='' width='".$imginfos[0]."' height='".$imginfos[1]."'} $iurl {/dede:img}\r\n";
-                    //把图片信息保存到媒体文档管理档案中
+                    //把图片信息保存到媒体文档管理文档中
                     $inquery = "INSERT INTO `#@__uploads` (title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('{$title}','{$iurl}','1','".$imginfos[0]."','".$imginfos[1]."','0','".filesize($imgfile)."','".$ntime."','$adminid');";
                     $dsql->ExecuteNoneQuery($inquery);
                     $fid = $dsql->GetLastID();
@@ -247,7 +247,7 @@ else if ($dopost == 'save') {
     }
     //跳转网址的文档强制为动态
     if (preg_match("#j#", $flag)) $ismake = -1;
-    //加入主档案表
+    //加入主文档表
     $query = "INSERT INTO `#@__archives` (id,typeid,typeid2,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,notpost,description,keywords,filename,dutyadmin,weight) VALUES ('$arcID','$typeid','$typeid2','$sortrank','$flag','$ismake','$channelid','$arcrank','$click','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$adminid','$notpost','$description','$keywords','$filename','$adminid','$weight'); ";
     if (!$dsql->ExecuteNoneQuery($query)) {
         $gerr = $dsql->GetError();

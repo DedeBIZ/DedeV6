@@ -12,7 +12,7 @@ ALTER TABLE `#@__admin` ADD COLUMN `pwd_new` varchar(120) NOT NULL DEFAULT '' AF
 ALTER TABLE `#@__member` ADD COLUMN `pwd_new` varchar(120) NOT NULL DEFAULT '' AFTER `pwd`;
 
 -- 6.1.8
-INSERT INTO `#@__sysconfig` VALUES ('151', 'cfg_tags_dir', 'TAGS生成目录', 7, 'string', '{cmspath}/a/tags');
+INSERT INTO `#@__sysconfig` VALUES ('151', 'cfg_tags_dir', '标签生成目录', 7, 'string', '{cmspath}/a/tags');
 ALTER TABLE `#@__tagindex` DROP COLUMN `tag_pinyin`;
 
 -- 6.1.7

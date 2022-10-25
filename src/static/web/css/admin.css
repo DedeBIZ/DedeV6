@@ -249,6 +249,7 @@ select:focus,input:focus,textarea:focus {
 	z-index:10001
 }
 .dlgws div {
+	padding:.5rem;
 	width:100%
 }
 .dlgTesttitle {

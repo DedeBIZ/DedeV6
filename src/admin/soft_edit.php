@@ -161,7 +161,7 @@ else if ($dopost == 'save') {
     }
     //跳转网址的文档强制为动态
     if (preg_match('#j#', $flag)) $ismake = -1;
-    //修改主档案表
+    //修改主文档表
     $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',`money`='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         ShowMsg("数据保存到数据库主表`#@__archives`时出错，请检查数据库字段", "-1");

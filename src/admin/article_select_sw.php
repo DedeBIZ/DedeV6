@@ -22,7 +22,7 @@ if ($t == 'source') {
             echo "<a href='javascript:;' onclick='javascript:PutSource(\"$v\")'>$v</a> | \r\n";
         }
     }
-    echo "</div><div class='coolbg5'> </div>";
+    echo "</div>";
 } else {
     //作者列表
     $m_file = DEDEDATA."/admin/writer.txt";
@@ -40,6 +40,6 @@ if ($t == 'source') {
             }
         }
     }
-    echo "</div><div class='coolbg5'> </div>\r\n";
+    echo "</div>";
 }
 ?>

@@ -26,7 +26,7 @@ $flag = '';
 $autokey = $remote = $dellink = $autolitpic = 0;
 $userip = GetIP();
 if ($typeid == 0) {
-    ShowMsg('请指定文档隶属的栏目', '-1');
+    ShowMsg('请指定文档所属栏目', '-1');
     exit();
 }
 $query = "SELECT tp.ispart,tp.channeltype,tp.issend,ch.issend as cissend,ch.sendrank,ch.arcsta,ch.addtable,ch.fieldset,ch.usertype FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$typeid' ";

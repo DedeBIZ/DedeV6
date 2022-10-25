@@ -42,7 +42,7 @@ else if ($gotype == 'mkall') {
     $idArray = array();
     if (file_exists($mkcachefile)) require_once($mkcachefile);
 }
-//当前更新栏目的ID
+//当前更新栏目的id
 $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
     $tid = $idArray[$pageno];
@@ -63,7 +63,7 @@ $reurl = '';
 //更新数组所记录的栏目
 if (!empty($tid)) {
     if (!isset($cfg_Cs[$tid])) {
-        ShowMsg('没有该栏目数据, 可能缓存文件(/data/cache/inc_catalog_base.inc)没有更新, 请检查是否有写入权限', 'javascript:;');
+        ShowMsg('没有该栏目数据, 可能缓存文件没有更新, 请检查是否有写入权限', 'javascript:;');
         exit();
     }
     if ($cfg_Cs[$tid][1] > 0) {

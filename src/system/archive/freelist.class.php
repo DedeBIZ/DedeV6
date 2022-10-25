@@ -794,7 +794,7 @@ class FreeList
         return $plist;
     }
     /**
-     *  获得一个指定档案的链接
+     *  获得一个指定文档的链接
      *
      * @access    public
      * @param     int  $aid  文档id

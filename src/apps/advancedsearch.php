@@ -187,7 +187,7 @@ if (file_exists(DEDEROOT."/theme/templets/$template")) {
 $dlist->SetTemplate($templatefile);
 $dlist->SetSource($query);
 require_once(DEDEINC."/channelunit.class.php");
-//获得一个指定档案的链接
+//获得一个指定文档的链接
 function GetArcUrl($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $artdir = '', $money = 0)
 {
     return GetFileUrl($aid, $typeid, $timetag, $title, $ismake, $rank, $namerule, $artdir, $money);

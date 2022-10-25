@@ -364,7 +364,7 @@ class userLogin
         return $this->getUserType();
     }
     /**
-     *  获得用户的ID
+     *  获得用户的id
      *
      * @access    public
      * @return    int

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * DedeBIZ模板类
+ * 模板类
  *
  * @version        $Id: dedetag.class.php 1 10:33 2010年7月6日Z tianya $
  * @package        DedeBIZ.Libraries
@@ -75,7 +75,7 @@ class DedeTag
     }
 }
 /**
- * DedeTagParse Dede织梦模板类
+ * DedeTagParse 模板类
  * function c____DedeTagParse();
  *
  * @package          DedeTagParse
@@ -370,7 +370,7 @@ class DedeTagParse
         $this->LoadSource($str);
     }
     /**
-     *  获得指定名称的Tag的ID(如果有多个同名的Tag,则取没有被取代为内容的第一个Tag)
+     *  获得指定名称的Tag的id，如果有多个同名的Tag，则取没有被取代为内容的第一个Tag
      *
      * @access    public
      * @param     string  $str  字符串

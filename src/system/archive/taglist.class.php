@@ -628,7 +628,7 @@ class TagList
         return GetTypeUrl($typeid, MfTypedir($typedir), $isdefault, $defaultname, $ispart, $namerule2, $siteurl);
     }
     /**
-     *  获得一个指定档案的链接
+     *  获得一个指定文档的链接
      *
      * @access    private
      * @param     int  $aid  文档id
