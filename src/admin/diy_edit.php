@@ -51,7 +51,7 @@ else if ($dopost == "delete") {
     else if ($job == "yes") {
         $row = $dsql->GetOne("SELECT `table` FROM `#@__diyforms` WHERE diyid='$diyid'", MYSQL_ASSOC);
         if (!is_array($row)) {
-            ShowMsg("您所指定的自定义表单信息不存在!", "-1");
+            ShowMsg("您所指定的自定义表单信息不存在", "-1");
             exit();
         }
         //删除表

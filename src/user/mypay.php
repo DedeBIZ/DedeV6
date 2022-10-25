@@ -26,7 +26,7 @@ if ($dopost == '') {
     $ids = preg_replace("#[^0-9,]#", "", $ids);
     $query = "DELETE FROM `#@__member_operation` WHERE aid in($ids) And mid='{$cfg_ml->M_ID}' And product='archive'";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功删除指定的交易记录!", "mypay.php");
+    ShowMsg("成功删除指定的交易记录", "mypay.php");
     exit();
 }
 ?>

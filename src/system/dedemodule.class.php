@@ -527,7 +527,7 @@ class DedeModule
         else $this->fileListNames[$f] = 1;
         $fileList = '';
         if (!file_exists($filename)) {
-            ShowMsg("文件或文件夹: {$filename} 不存在，无法进行编译!", "-1");
+            ShowMsg("文件或文件夹: {$filename} 不存在，无法进行编译", "-1");
             exit();
         }
         if (is_dir($filename)) {

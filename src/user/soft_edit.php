@@ -26,7 +26,7 @@ if (empty($dopost)) {
     $dsql->SetQuery($arcQuery);
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
-        ShowMsg("读取档案基本信息出错!", "-1");
+        ShowMsg("读取文档基本信息出错", "-1");
         exit();
     } else if ($row['arcrank'] >= 0) {
         $dtime = time();
@@ -132,7 +132,7 @@ else if ($dopost == 'save') {
     //修改主档案表
     $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',litpic='$litpic',description='$description',keywords='$keywords',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
-        ShowMsg("更新数据库archives表时出错，请检查", "-1");
+        ShowMsg("更新数据库 archives 表时出错，请检查", "-1");
         exit();
     }
     //软件链接列表

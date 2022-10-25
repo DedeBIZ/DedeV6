@@ -22,7 +22,7 @@ if ($dopost != 'save') {
     $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取档案基本信息出错!", "-1");
+        ShowMsg("读取文档基本信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
@@ -124,7 +124,7 @@ else if ($dopost == 'save') {
     $query = "
     UPDATE `#@__archives` SET typeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($query)) {
-        ShowMsg("更新数据库archives表时出错，请检查".$dsql->GetError(), "javascript:;");
+        ShowMsg("更新数据库 archives 表时出错，请检查".$dsql->GetError(), "javascript:;");
         exit();
     }
     $imgurls = "{dede:pagestyle maxwidth='$maxwidth' pagepicnum='$pagepicnum' ddmaxwidth='$ddmaxwidth' row='$row' col='$col' value='$pagestyle'/}\r\n";

@@ -46,7 +46,7 @@ else if ($dopost == "addArc") {
     } else {
         $row = $dsql->GetOne("SELECT useraddcon FROM `#@__channeltype` WHERE id='$channelid' ");
         if (!is_array($row)) {
-            ShowMsg("模型参数错误!", "-1");
+            ShowMsg("模型参数错误", "-1");
             exit();
         }
         $addcon = $row['useraddcon'];
@@ -73,7 +73,7 @@ else if ($dopost == "edit") {
     } else {
         $row = $dsql->GetOne("SELECT usereditcon FROM `#@__channeltype` WHERE id='$channelid' ");
         if (!is_array($row)) {
-            ShowMsg("参数错误!", "-1");
+            ShowMsg("参数错误", "-1");
             exit();
         }
         $edit = $row['usereditcon'];

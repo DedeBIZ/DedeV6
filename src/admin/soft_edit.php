@@ -24,13 +24,13 @@ if ($dopost != 'save') {
     $dsql->SetQuery($arcQuery);
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取档案基本信息出错!", "-1");
+        ShowMsg("读取文档基本信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取频道配置信息出错!", "javascript:;");
+        ShowMsg("读取频道配置信息出错", "javascript:;");
         exit();
     }
     $addtable = $cInfos['addtable'];
@@ -164,7 +164,7 @@ else if ($dopost == 'save') {
     //修改主档案表
     $inQuery = "UPDATE `#@__archives` SETtypeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',`money`='$money',title='$title',color='$color',source='$source',writer='$writer',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库archives表时出错，请检查", "-1");
+        ShowMsg("更新数据库 archives 表时出错，请检查", "-1");
         exit();
     }
     //软件链接列表

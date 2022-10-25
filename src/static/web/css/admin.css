@@ -180,7 +180,7 @@ select:focus,input:focus,textarea:focus {
 	text-align:right
 }
 .wsselect {
-	padding:10px 0;
+	padding:.5rem 0;
 	background:#fff;
 	overflow:auto
 }
@@ -197,7 +197,7 @@ select:focus,input:focus,textarea:focus {
 	z-index:8888
 }
 .pubdlg .title {
-	padding-left:.25rem;
+	padding-left:.5rem;
 	line-height:30px;
 	font-weight:600;
 	color:#545b62;
@@ -223,7 +223,7 @@ select:focus,input:focus,textarea:focus {
 	z-index:10005
 }
 .quickselfoot {
-	padding:10px 0;
+	padding:.5rem 0;
 	border-top:1px solid #dee2e6
 }
 .quickselItem {
@@ -231,15 +231,15 @@ select:focus,input:focus,textarea:focus {
 	line-height:28px
 }
 .quickselItem .topcat {
-	padding-left:10px;
+	padding:0 10px;
 	background:#f8fcf2;
 	clear:both
 }
 .quickselItem .soncat {
-	display:inline-block;
-	padding-left:10px
+	padding:0 10px
 }
 .quickselItem .item {
+	display:inline-block;
 	padding-left:10px
 }
 .mysource,.mywriter {
@@ -427,9 +427,11 @@ span.page-link {
 	background:#f8f8f8;
 	border-radius:.2rem .2rem 0 0
 }
-.thumbnail {
-	max-width:160px;
-	max-height:120px
+.file-icon,svg {
+	margin-right:10px;
+	width:22px;
+	height:22px;
+	border-radius:.2rem
 }
 #text {
 	font-size:0
@@ -447,9 +449,7 @@ span.page-link {
 	border-radius:.2rem;
 	text-align:center
 }
-.file-icon,svg {
-	margin-right:10px;
-	width:22px;
-	height:22px;
-	border-radius:.2rem
+.thumbnail {
+	max-width:160px;
+	max-height:120px
 }

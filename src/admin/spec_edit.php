@@ -23,13 +23,13 @@ if ($dopost != 'save') {
     $arcQuery = "SELECT ch.typename as channelname,ar.membername as rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($arcQuery);
     if (!is_array($arcRow)) {
-        ShowMsg("读取档案基本信息出错!", "-1");
+        ShowMsg("读取文档基本信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='-1'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取频道配置信息出错!", "javascript:;");
+        ShowMsg("读取频道配置信息出错", "javascript:;");
         exit();
     }
     $addRow = $dsql->GetOne("SELECT * FROM `#@__addonspec` WHERE aid='$aid'");
@@ -107,7 +107,7 @@ else if ($dopost == 'save') {
     }
     $inQuery = "UPDATE `#@__archives` SET typeid='$typeid',sortrank='$sortrank',flag='$flag',ismake='$ismake',arcrank='$arcrank',click='$click',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename' WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
-        ShowMsg("更新数据库archives表时出错，请检查", "-1");
+        ShowMsg("更新数据库 archives 表时出错，请检查", "-1");
         exit();
     }
     //专题节点列表

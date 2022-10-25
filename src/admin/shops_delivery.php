@@ -25,7 +25,7 @@ if ($do == 'add') {
     $InQuery = "INSERT INTO `#@__shops_delivery` (`dname`,`price`,`des`) VALUES ('$dname','$price','$des');";
     $result = $dsql->ExecuteNoneQuery($InQuery);
     if ($result) {
-        ShowMsg("成功添加一个配送方式!", "shops_delivery.php");
+        ShowMsg("成功添加一个配送方式", "shops_delivery.php");
     } else {
         ShowMsg("添加配送方式时发生SQL错误", "-1");
     }

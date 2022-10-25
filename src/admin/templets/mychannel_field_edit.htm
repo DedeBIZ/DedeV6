@@ -10,21 +10,7 @@
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <style>
-    .style1 {
-      color: #FF3300
-    }
-    .style2 {
-      color: #545b62
-    }
-    .nw {
-      float: left;
-      width: 150px;
-    }
-    .cls {
-      clear: both;
-    }
-  </style>
+  <style>.style1{color:#FF3300}.style2{color:#545b62}.nw{float:left;width:150px}.cls{clear:both}</style>
   <script>
     function GetFields() {
       var theform = document.form1;
@@ -210,15 +196,9 @@
         <td><textarea name="vinnertext" cols="45" rows="5" id="vinnertext" style="width:70%;height:120px"><?php echo $ctag->GetInnerText();?></textarea></td>
       </tr>
       <tr>
-        <td colspan="2" bgcolor="#f8f8f8">
-          <table width="100%" cellspacing="0" cellpadding="0" class="table table-borderless">
-            <tr>
-               <td align="center" class="py-2">
-                <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
-                <button type="reset" name="button3" id="button3" class="btn btn-success btn-sm">重置</button>
-              </td>
-            </tr>
-          </table>
+        <td colspan="2" bgcolor="#f8f8f8" align="center" class="py-2">
+          <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
+          <button type="reset" name="button3" id="button3" class="btn btn-success btn-sm">重置</button>
         </td>
       </tr>
     </form>

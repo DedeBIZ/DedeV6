@@ -34,7 +34,7 @@ if (empty($dopost)) {
     $arcQuery = "SELECT arc.*,ch.addtable,ch.fieldset,ch.arcsta FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' AND arc.mid='".$cfg_ml->M_ID."'; ";
     $row = $dsql->GetOne($arcQuery);
     if (!is_array($row)) {
-        ShowMsg("读取文档信息出错!", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     } else if ($row['arcrank'] >= 0) {
         $dtime = time();

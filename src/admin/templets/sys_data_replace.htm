@@ -50,15 +50,15 @@
 					<td bgcolor="#f8f8f8">数据库内容替换</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="p-0">
 						<table width="100%" cellpadding="2" cellspacing="2" class="table table-borderless">
 							<tr>
 								<td colspan="2">
 									<div class="alert alert-info mb-0">程序用于批量替换数据库中某字段的内容，此操作极为危险，请小心使用</div>
 								</td>
 							</tr>
-							<tr id='datasel'>
-								<td width="15%" height="60">选择数据表与字段：</td>
+							<tr id="datasel">
+								<td width="260">选择数据表与字段：</td>
 								<td>
 									<table width="98%" cellspacing="0" cellpadding="0">
 										<tr>
@@ -70,7 +70,7 @@
 													echo "<span class='text-danger'>找不到您所指定的数据库 $dbname</span><br>";
 													echo $qbutton;
 												}
-												echo "<select name='exptable' id='exptable' size='10' style='width:60%;height:220px' onchange='ShowFields()'>";
+												echo "<select name='exptable' id='exptable' onchange='ShowFields()' style='width:260px'>";
 												while($row = $dsql->GetArray('t',MYSQL_BOTH)){
 													echo "<option value='{$row[0]}'>{$row[0]}</option>";
 												}
@@ -83,12 +83,12 @@
 											<td id='fields'></td>
 										</tr>
 										<tr>
-											<td>要替换的字段：<input type="text" name="rpfield" id="rpfield"></td>
+											<td><input type="text" name="rpfield" id="rpfield" style="width:260px">（选择替换字段）</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
-							<tr bgcolor="#fbfce2">
+							<tr>
 								<td>替换方式：</td>
 								<td>
 									<label><input type="radio" name="rptype" id="ot1" value="replace" checked="1"> 普通替换</label>
@@ -118,6 +118,7 @@
 						</table>
 					</td>
 				</tr>
+
 				<tr>
 					<td bgcolor="#fbfce2" align="center" class="py-2">
 						<button type="submit" name="Submit" class="btn btn-success btn-sm">开始替换数据</button>

@@ -57,7 +57,7 @@ if ($action == 'save') {
     if ($dtype == 'stepselect') {
         $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='$fname' ");
         if (!is_array($arr)) {
-            ShowMsg("您设定了字段为联动类型，但系统中没找到与您定义的字段名相同的联动组名!", "-1");
+            ShowMsg("您设定了字段为联动类型，但系统中没找到与您定义的字段名相同的联动组名", "-1");
             exit();
         }
     }

@@ -34,7 +34,7 @@ else if ($action == 'make') {
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
     if (($devInfo['auth_at'] + 60 * 60 * 24 * 365) < time()) {
-        ShowMsg("您的开发者账号已经过期,请登录www.dedebiz.com重新申请!", "-1");
+        ShowMsg("您的开发者账号已经过期，请登录www.dedebiz.com重新申请", "-1");
         exit();
     }
     $filelist = str_replace("\r", "\n", trim($filelist));
@@ -194,7 +194,7 @@ else if ($action == 'edit') {
     $devContent = $dhd->GetHtml();
     $devInfo = (array)json_decode($devContent);
     if (($devInfo['auth_at'] + 60 * 60 * 24 * 365) < time()) {
-        ShowMsg("您的开发者账号已经过期,请登录www.dedebiz.com重新申请!", "-1");
+        ShowMsg("您的开发者账号已经过期，请登录www.dedebiz.com重新申请", "-1");
         exit();
     }
     if (strlen($modulname) > 150) {

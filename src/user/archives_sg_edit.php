@@ -26,7 +26,7 @@ if (empty($dopost)) {
     $arcQuery = "SELECT ch.*,arc.* FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ";
     $cInfos = $dsql->GetOne($arcQuery);
     if (!is_array($cInfos)) {
-        ShowMsg("读取文档信息出错!", "-1");
+        ShowMsg("读取文档信息出错", "-1");
         exit();
     }
     $addRow = $dsql->GetOne("SELECT * FROM `{$cInfos['addtable']}` WHERE aid='$aid'; ");

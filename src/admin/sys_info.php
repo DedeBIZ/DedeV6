@@ -60,7 +60,7 @@ if ($dopost == "save") {
 else if ($dopost == 'add') {
     CheckCSRF();
     if ($vartype == 'bool' && ($nvarvalue != 'Y' && $nvarvalue != 'N')) {
-        ShowMsg("布尔变量值必须为'Y'或'N'!", "-1");
+        ShowMsg("布尔变量值必须为'Y'或'N'", "-1");
         exit();
     }
     if (trim($nvarname) == '' || preg_match("#[^a-z_]#i", $nvarname)) {

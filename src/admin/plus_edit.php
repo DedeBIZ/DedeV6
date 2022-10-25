@@ -39,7 +39,7 @@ if ($dopost == "show") {
     } else if ($job == "yes") //操作
     {
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__plus` WHERE aid='$aid';");
-        ShowMsg("成功删除一个插件,请刷新导航菜单!", "plus_main.php");
+        ShowMsg("成功删除一个插件，请刷侧边菜单", "plus_main.php");
         exit();
     }
 } else if ($dopost == "saveedit") //保存修改

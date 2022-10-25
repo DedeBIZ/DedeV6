@@ -25,7 +25,7 @@ if ($dopost != 'save') {
     $query = "SELECT ch.typename AS channelname,ar.membername AS rankname,arc.* FROM `#@__archives` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel LEFT JOIN `#@__arcrank` ar ON ar.`rank`=arc.arcrank WHERE arc.id='$aid' ";
     $arcRow = $dsql->GetOne($query);
     if (!is_array($arcRow)) {
-        ShowMsg("读取档案基本信息出错", "-1");
+        ShowMsg("读取文档基本信息出错", "-1");
         exit();
     }
     $query = "SELECT * FROM `#@__channeltype` WHERE id='".$arcRow['channel']."'";
@@ -141,7 +141,7 @@ else if ($dopost == 'save') {
     //更新数据库的SQL语句
     $query = "UPDATE `#@__archives` SETtypeid='$typeid',typeid2='$typeid2',sortrank='$sortrank',flag='$flag',click='$click',ismake='$ismake',arcrank='$arcrank',money='$money',title='$title',color='$color',writer='$writer',source='$source',litpic='$litpic',pubdate='$pubdate',notpost='$notpost',description='$description',keywords='$keywords',shorttitle='$shorttitle',filename='$filename',dutyadmin='$adminid',weight='$weight'WHERE id='$id'; ";
     if (!$dsql->ExecuteNoneQuery($query)) {
-        ShowMsg('更新数据库archives表时出错，请检查', -1);
+        ShowMsg('更新数据库 archives 表时出错，请检查', -1);
         exit();
     }
     $cts = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
@@ -173,7 +173,6 @@ else if ($dopost == 'save') {
             }
         }
     }
-
     //返回成功信息
     $msg = "请选择您的后续操作：<a href='article_add.php?cid=$typeid' class='btn btn-success btn-sm'>发布新文档</a><a href='archives_do.php?aid=".$id."&dopost=editArchives' class='btn btn-success btn-sm'>修改文档</a><a href='$artUrl' target='_blank' class='btn btn-success btn-sm'>查看文档</a><a href='catalog_do.php?cid=$typeid&dopost=listArchives' class='btn btn-success btn-sm'>管理文档</a>$backurl";
     $wintitle = "成功修改文档";

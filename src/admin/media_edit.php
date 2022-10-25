@@ -157,7 +157,7 @@ else if ($dopost == 'save') {
     ShowMsg('成功修改一则附件数据', 'media_edit.php?aid='.$aid);
     exit();
 }
-//读取档案信息
+//读取文档信息
 $myrow = $dsql->GetOne("SELECT * FROM `#@__uploads` WHERE aid='".$aid."'");
 if (!is_array($myrow)) {
     ShowMsg('错误，找不到此编号的档案', 'javascript:;');

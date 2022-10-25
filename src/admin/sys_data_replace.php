@@ -41,7 +41,7 @@ else if ($action == 'apply') {
     $validate = empty($validate) ? '' : strtolower($validate);
     $svali = GetCkVdValue();
     if ($validate == "" || $validate != $svali) {
-        ShowMsg("安全确认码不正确!", "javascript:;");
+        ShowMsg("安全确认码不正确", "javascript:;");
         exit();
     }
     if ($exptable == '' || $rpfield == '') {

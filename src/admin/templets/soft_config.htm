@@ -24,17 +24,10 @@
     <form name="form1" action="soft_config.php" method="post">
       <input type="hidden" name="dopost" value="save">
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2">
-          <table width="98%" cellpadding="0" cellspacing="0" class="table table-borderless">
-            <tr>
-              <td width="30%">软件频道设置</td>
-              <td width="70%" align="right"></td>
-            </tr>
-          </table>
-        </td>
+        <td bgcolor="#f8f8f8" colspan="2">软件频道设置</td>
       </tr>
       <tr>
-        <td width="200">链接显示方式：</td>
+        <td width="260">链接显示方式：</td>
         <td>
           <label><input type="radio" name="downtype" value="0" <?php if($row['downtype']==0) echo " checked='checked' ";?>> 直接显示地址列表</label>
           <label><input type="radio" name="downtype" value="1" <?php if($row['downtype']==1) echo " checked='checked' ";?>> 要求进入下载地址列表页</label>
@@ -69,7 +62,7 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2">不管是全局，还是具体某软件设置了下面的参数，附件下载方式都必须链接到中转页，否则无效</td>
+        <td colspan="2">不管是全局，还是具体某软件设置了下面的参数，附件下载方式都必须链接到中转页，否则无效</td>
       </tr>
       <tr>
         <td>下载默认等级：</td>
@@ -101,10 +94,8 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2">镜像服务器列表：</td>
-      </tr>
-      <tr>
-        <td colspan="2">
+        <td>镜像服务器列表：</td>
+        <td>
           服务器网址：<input type="text" name="serverurl" id="serverurl" value="http://">
           服务器名称：<input type="text" name="servername" id="servername">
           服务器类型：<input type="text" name="servertype" id="servertype" value="默认">
@@ -115,7 +106,7 @@
         <td colspan="2"><textarea name="sites" id="sites" style="width:98%;height:150px"><?php echo $row['sites'];?></textarea></td>
       </tr>
       <tr>
-        <td bgcolor="#f8f8f8" colspan="2">下载说明：</td>
+        <td colspan="2">下载说明：</td>
       </tr>
       <tr>
         <td colspan="2"><?php GetEditor('downmsg',$row['downmsg'],250);?></td>

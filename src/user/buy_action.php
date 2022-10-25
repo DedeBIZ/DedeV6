@@ -39,7 +39,7 @@ if (isset($pd_encode) && isset($pd_verify) && md5("payment".$pd_encode.$cfg_cook
     }
 }
 if (empty($product)) {
-    ShowMsg("请选择一个产品!", 'javascript:;');
+    ShowMsg("请选择一个产品", 'javascript:;');
     exit();
 }
 $pid = isset($pid) && is_numeric($pid) ? $pid : 0;

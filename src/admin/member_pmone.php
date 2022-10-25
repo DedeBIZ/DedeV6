@@ -49,7 +49,7 @@ if ($action == "post") {
     $floginid = $cuserLogin->getUserName();
     $fromid = $cuserLogin->getUserID();
     if ($subject == '') {
-        ShowMsg("请填写信息标题!", "-1");
+        ShowMsg("请填写信息标题", "-1");
         exit();
     }
     $msg = CheckUserID($msgtoid, "用户名", false);
@@ -59,7 +59,7 @@ if ($action == "post") {
     }
     $row = $dsql->GetOne("Select * From `#@__member` where userid like '$msgtoid' ");
     if (!is_array($row)) {
-        ShowMsg("您指定的用户不存在,不能发送信息!", "-1");
+        ShowMsg("您指定的用户不存在，不能发送信息", "-1");
         exit();
     }
     $subject = cn_substrR(HtmlReplace($subject, 1), 60);

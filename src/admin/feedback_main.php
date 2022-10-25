@@ -48,7 +48,7 @@ function UpdateReplycount($id)
 if ($job == 'del') {
     $query = "DELETE FROM `#@__feedback` WHERE id IN($ids) ";
     $dsql->ExecuteNoneQuery($query);
-    ShowMsg("成功删除指定的评论!", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg("成功删除指定的评论", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
     exit();
 }
 //删除相同IP的所有评论
@@ -63,7 +63,7 @@ else if ($job == 'delall') {
         $query = "DELETE FROM `#@__feedback` WHERE $ips ";
         $dsql->ExecuteNoneQuery($query);
     }
-    ShowMsg("成功删除指定相同IP的所有评论!", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg("删除所有相同地址评论", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
     exit();
 }
 //审核评论
@@ -78,7 +78,7 @@ else if ($job == 'check') {
     while ($row = $dsql->GetArray()) {
         UpdateReplycount($row['fid']);
     }
-    ShowMsg("成功审核指定评论!", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
+    ShowMsg("成功审核指定评论", $_COOKIE['ENV_GOBACK_URL'], 0, 500);
     exit();
 }
 //浏览评论
