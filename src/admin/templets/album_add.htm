@@ -138,12 +138,12 @@
             <tr>
               <td width="90"> 缩略图：</td>
               <td>
-                  <input type="text" name="picname" id="picname" style="width:300px">
-                  <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
-                  <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
-                  <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
-                  <button type="button" id="btnClearAll" class="btn btn-sm btn-success delete">清空</button>
-                  <label><input type="checkbox" name="ddisfirst" value="1"> 使用图集的第一幅图</label>
+                <input type="text" name="picname" id="picname" style="width:300px">
+                <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
+                <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
+                <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
+                <button type="button" id="btnClearAll" class="btn btn-sm btn-success delete">清空</button>
+                <label><input type="checkbox" name="ddisfirst" value="1"> 使用图集的第一幅图</label>
               </td>
               <td align="center"><img id="litPic" src="../static/web/img/defaultpic.jpg" class="thumbnail"></td>
             </tr>
@@ -232,7 +232,7 @@
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 描述：</td>
-              <td><textarea name="description" id="description" style="width:360px;height:50px"></textarea></td>
+              <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
             </tr>
           </table>
         </td>
@@ -354,7 +354,7 @@
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 图集内容：</td>
-              <td><?php GetEditor("body","",450,"Diy");?></td>
+              <td><?php GetEditor("body","",400,"Diy");?></td>
             </tr>
           </table>
         </td>

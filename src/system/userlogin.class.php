@@ -378,7 +378,7 @@ class userLogin
         }
     }
     /**
-     *  获得用户的笔名
+     *  获得用户的名称
      *
      * @access    public
      * @return    string

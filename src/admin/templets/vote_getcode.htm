@@ -15,50 +15,41 @@
     </tr>
     <tr>
       <td>
-        <table width="98%" cellspacing="2" cellpadding="2">
-          <tr>
-            <td width="100%" bgcolor="#f8f8f8">在封面或主页模板中使用的标记：</td>
-          </tr>
-          <tr>
-            <td>
-              <table width="100%" cellspacing="0" cellpadding="0">
-                <form name="form1" action="tag_test_action.php" target="stafrm" method="post">
-                  <input type="hidden" name="showsource" value="no">
-                  <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-                  <tr>
-                    <td><textarea name="partcode" cols="45" rows="6" id="partcode">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
-                    <td rowspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
-                  </tr>
-                  <tr>
-                    <td align="center" class="py-2">
-                      <button type="submit" name="Submit" class="btn btn-success btn-sm">提交测试</button>
-                    </td>
-                  </tr>
-                </form>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td bgcolor="#f8f8f8">在封面或主页模板中使用的JS：</td>
-          </tr>
-          <tr>
-            <td><textarea name="htmlf" cols="60" rows="5" id="htmlf"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
-          </tr>
-          <tr>
-            <td bgcolor="#f8f8f8">默认生成的表单HTML：</td>
-          </tr>
-          <tr>
-            <td>
-              <textarea name="htmlf" cols="60" rows="10" id="htmlf">
-              <?php
-              $vt = new DedeVote($aid);
-			        echo $vt->GetVoteForm();
-			        $vt->Close();
-			        ?>  
-              </textarea>
-            </td>
-          </tr>
+        <table width="100%" cellspacing="0" cellpadding="0">
+          <form name="form1" action="tag_test_action.php" target="stafrm" method="post">
+            <input type="hidden" name="showsource" value="no">
+            <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+            <tr>
+              <td><textarea name="partcode" id="partcode" class="biz-textarea">{dede:vote id='<?php echo $aid?>'}{/dede:vote}</textarea></td>
+              <td rowspan="2"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></td>
+            </tr>
+            <tr>
+              <td align="center" class="py-2">
+                <button type="submit" name="Submit" class="btn btn-success btn-sm">提交测试</button>
+              </td>
+            </tr>
+          </form>
         </table>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#f8f8f8">在封面或主页模板中使用的JS：</td>
+    </tr>
+    <tr>
+      <td><textarea name="htmlf" id="htmlf" class="biz-textarea"><script src="<?php echo $cfg_basehost.'/data/vote/vote_'.$aid.'.js' ?>"></script></textarea></td>
+    </tr>
+    <tr>
+      <td bgcolor="#f8f8f8">默认生成的表单HTML：</td>
+    </tr>
+    <tr>
+      <td>
+        <textarea name="htmlf" id="htmlf" class="biz-textarea">
+        <?php
+        $vt = new DedeVote($aid);
+        echo $vt->GetVoteForm();
+        $vt->Close();
+        ?>  
+        </textarea>
       </td>
     </tr>
   </table>

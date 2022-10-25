@@ -402,7 +402,7 @@ span.page-link {
 .biz-updates {
 	display:inline-block;
 	position:absolute;
-	top:10px;
+	top:12px;
 	right:8px;
 	height:6px;
 	width:6px;
@@ -423,6 +423,10 @@ span.page-link {
 .biz-textarea {
 	width:98%;
 	height:90px
+}
+.biz-textarea-sm {
+	width:360px;
+	height:50px
 }
 .biz-itemnote1 {
 	background:#f8fcf2;

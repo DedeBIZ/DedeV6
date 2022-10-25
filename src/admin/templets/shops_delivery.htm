@@ -8,14 +8,7 @@
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
 </head>
-<style>
-  .fontOrange {
-    COLOR: #ff4e00
-  }
-  .npvar {
-    width: 90%
-  }
-</style>
+<style>.fontOrange{color:#ff4e00}.npvar{width:90%}</style>
 <body>
   <center>
     <form action="shops_delivery.php" method="post" name="form1">
@@ -34,7 +27,7 @@
         </tr>
         <tr align="center">
           <td width="10%" align="right">简要说明：</td>
-          <td align="left"><textarea name="des" id="des" style="width:360px;height:50px"></textarea></td>
+          <td align="left"><textarea name="des" id="des" class="biz-textarea-sm"></textarea></td>
         </tr>
         <tr>
           <td height="50" colspan="2" align="center">
@@ -68,7 +61,7 @@
                 </td>
                 <td width="70%" align="left">
                   <span>手续费：<input type="text" name="m_price<?php echo $rs['pid'];?>" id="m_price<?php echo $rs['pid'];?>" value="<?php echo $rs['price'];?>" style="width:60px"> 元</span>
-                  <textarea name="m_des<?php echo $rs['pid'];?>" id="m_des<?php echo $rs['pid'];?>" style="width:360px;height:50px"><?php echo $rs['des'];?></textarea>
+                  <textarea name="m_des<?php echo $rs['pid'];?>" id="m_des<?php echo $rs['pid'];?>" class="biz-textarea-sm"><?php echo $rs['des'];?></textarea>
                 </td>
               </tr>
               <?php }?>

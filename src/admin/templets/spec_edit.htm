@@ -215,7 +215,7 @@
           <table width="900" cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 专题说明：</td>
-              <td><textarea name="description" id="textarea" style="width:360px;height:50px"><?php echo $arcRow['description']?></textarea></td>
+              <td><textarea name="description" id="textarea" class="biz-textarea-sm"><?php echo $arcRow['description']?></textarea></td>
             </tr>
           </table>
         </td>
@@ -336,7 +336,7 @@
             </tr>
             <tr>
               <td>节点文档列表：</td>
-              <td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" style="width:90%"><?php echo $idlist?></textarea></td>
+              <td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" class="biz-textarea"><?php echo $idlist?></textarea></td>
               <td><button type="button" class="btn btn-success btn-sm"  name="selarc<?php echo $i?>" id="selarc<?php echo $i?>2" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
             </tr>
             <tr>
@@ -360,7 +360,7 @@
               </td>
             </tr>
             <tr>
-              <td>单条记录的模板：<br><textarea name="listtmp<?php echo $i?>" rows="3" id="listtmp<?php echo $i?>" style="width:60%"><?php echo $temp?></textarea></td>
+              <td>单条记录的模板：<br><textarea name="listtmp<?php echo $i?>" rows="3" id="listtmp<?php echo $i?>" class="biz-textarea"><?php echo $temp?></textarea></td>
             </tr>
             <?php
       	    $i++;
@@ -383,7 +383,7 @@
             </tr>
             <tr>
               <td>节点文档列表：</td>
-              <td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" style="width:90%"></textarea></td>
+              <td><textarea name="arcid<?php echo $i?>" rows="3" onblur="CheckVal(<?php echo $i ?>)" id="arcid<?php echo $i?>" class="biz-textarea"></textarea></td>
               <td><button name="selarc<?php echo $i?>" type="button" id="selarc<?php echo $i?>2" class="btn btn-success btn-sm" onClick="SelectArcList('form1.arcid<?php echo $i?>');">选择节点文档</button></td>
             </tr>
             <tr>
@@ -406,7 +406,7 @@
               </td>
             </tr>
             <tr>
-              <td>单条记录的模板：<br><textarea name="listtmp<?php echo $i?>" rows="3" id="listtmp<?php echo $i?>" style="width:60%"><?php echo $speclisttmp?></textarea></td>
+              <td>单条记录的模板：<br><textarea name="listtmp<?php echo $i?>" rows="3" id="listtmp<?php echo $i?>" class="biz-textarea"><?php echo $speclisttmp?></textarea></td>
             </tr>
             <?php
 		        }

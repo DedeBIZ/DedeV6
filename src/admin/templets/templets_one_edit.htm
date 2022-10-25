@@ -49,7 +49,7 @@
           </tr>
           <tr>
             <td>页面摘要信息：</td>
-            <td><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $row['description'];?></textarea>（100字左右）</td>
+            <td><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $row['description'];?></textarea>（100字左右）</td>
           </tr>
           <tr>
             <td>关联标识：</td>
@@ -92,7 +92,7 @@
             </td>
           </tr>
           <tr> 
-            <td height="80" colspan="2"> <?php GetEditor("body",$row['body'],"450","Default","print","false");?></td>
+            <td height="80" colspan="2"> <?php GetEditor("body",$row['body'],"400","Default","print","false");?></td>
           </tr>
           <tr> 
             <td colspan="2" align="center" class="py-2">

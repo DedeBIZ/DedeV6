@@ -19,43 +19,41 @@
 			<a onclick="document.getElementById('browsehappy').style.display='none';" class="browsehappy-close">×</a>
 		</div>
 		<?php }?>
-		<div class="head">
-			<div class="top">
-				<div class="top-logo">
-					<span class="top-dedebiz"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
-					<span class="top-version">V<?php echo $cfg_version_detail;?></span>
-					<?php if (DEDEBIZ_SAFE_MODE){?>
-					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs">安全</a>
-					<?php } else {?>
-					<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs">开发</a>
+		<div class="head">			
+			<div class="top-logo">
+				<span class="top-name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
+				<span class="top-version">V<?php echo $cfg_version_detail;?></span>
+				<?php if (DEDEBIZ_SAFE_MODE){?>
+				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs">安全</a>
+				<?php } else {?>
+				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs">开发</a>
+				<?php }?>
+			</div>
+			<div class="top-item">
+				<ul class="mb-0">
+					<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
+					<?php if ($cuserLogin->getUserType()>=10){?>
+					<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i></a></li>
+					<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
+					<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
 					<?php }?>
-				</div>
-				<div class="top-item">
-					<ul class="mb-0">
-						<li class="pl-0"><a href="javascript:;" id="togglemenu" title="侧边伸缩"><i class="fa fa-dedent"></i></a></li>
-						<?php if ($cuserLogin->getUserType()>=10){?>
-						<li><a href="sys_info.php" target="main" title="系统配置"><i class="fa fa-cog"></i></a></li>
-						<li><a href="catalog_main.php" target="main" title="栏目管理"><i class="fa fa-bars"></i></a></li>
-						<li><a href="file_manage_main.php<?php echo DEDEBIZ_SAFE_MODE?'?activepath='.$cfg_medias_dir:'';?>" target="main" title="文件管理"><i class="fa fa-folder"></i></a></li>
-						<?php }?>
-						<?php if (!DEDEBIZ_SAFE_MODE){?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i></a></li><?php }?>
-						<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
-						<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
-						<li><a href="../" target="_blank" title="预览主页"><i class="fa fa-eye"></i></a></li>
-						<li>
-							<form action="action_search.php" method="post" target="main">
-								<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
-								<button type="submit" class="search"><i class="fa fa-search"></i> </button>
-							</form>
-						</li>
-					</ul>
-				</div>
-				<div class="top-admin">
-					<ul class="mb-0">
-						<li><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType()==10){echo "管理员";} else if ($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a></li>
-						<li><a href="exit.php" title="退出系统">退了</a></li>
-					</ul>
-				</div>
+					<?php if (!DEDEBIZ_SAFE_MODE){?><li><a href="templets_main.php" target="main" title="模板管理"><i class="fa fa-cube"></i></a></li><?php }?>
+					<li><a href="makehtml_all.php" target="main" title="更新整站"><i class="fa fa-repeat"></i></a></li>
+					<?php echo ($cfg_mb_open=='Y')?'<li><a href="../user" target="_blank" title="会员中心"><i class="fa fa-user-circle"></i></a></li>':'';?>
+					<li><a href="../" target="_blank" title="预览主页"><i class="fa fa-eye"></i></a></li>
+					<li>
+						<form action="action_search.php" method="post" target="main">
+							<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
+							<button type="submit" class="search"><i class="fa fa-search"></i> </button>
+						</form>
+					</li>
+				</ul>
+			</div>
+			<div class="top-admin">
+				<ul class="mb-0">
+					<li><a href="sys_admin_user_edit.php?id=<?php echo $cuserLogin->getUserID();?>&dopost=edit" target="main"><img src="../static/web/img/avatar.png" title="<?php echo $cuserLogin->getUserName();?>"><?php echo $cuserLogin->getUserName();?><?php if ($cuserLogin->getUserType()==10){echo "管理员";} else if ($cuserLogin->getUserType()==5) {echo "频道员";} else {echo "信息员";}?></a></li>
+					<li><a href="exit.php" title="退出系统">退了</a></li>
+				</ul>
 			</div>
 		</div>
 		<div class="body-left">

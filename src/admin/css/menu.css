@@ -62,13 +62,6 @@ input[type=text]:focus {
 	z-index:20
 }
 .head {
-	position:relative;
-	width:100%;
-	height:60px;
-	overflow:hidden;
-	z-index:8
-}
-.top {
 	width:100%;
 	height:60px;
 	background:linear-gradient(45deg,#008e38,#57960f 50%);
@@ -79,7 +72,7 @@ input[type=text]:focus {
 	float:left;
 	width:200px
 }
-.top-dedebiz a {
+.top-name a {
 	float:left;
 	height:60px;
 	line-height:60px;
@@ -87,7 +80,7 @@ input[type=text]:focus {
 	font-weight:600;
 	color:#fff
 }
-.top-dedebiz a  img {
+.top-name a  img {
 	width:90px
 }
 .top-version a {

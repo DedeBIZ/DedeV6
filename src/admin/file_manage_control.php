@@ -135,7 +135,7 @@ else if ($fmdo == "space") {
     }
     $titleinfo = "目录[<a href='file_manage_main.php?activepath=$activepath'>$ecpath</a>]空间使用状况：<br>";
     $wintitle = "文件管理";
-    $wecome_info = "文件管理::空间大小检查 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::空间大小检查";
     $activepath = $cfg_basedir.$activepath;
     $space = new SpaceUse;
     $space->checksize($activepath);

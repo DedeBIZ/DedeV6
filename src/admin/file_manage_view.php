@@ -22,7 +22,7 @@ if ($fmdo == "rename") {
     if ($activepath == "") $ndirstring = "根目录";
     $ndirstring = $activepath;
     $wintitle = "文件管理";
-    $wecome_info = "文件管理::修改文件名 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::修改文件名";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "js/blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
@@ -39,7 +39,7 @@ else if ($fmdo == "newdir") {
     if ($activepath == "") $activepathname = "根目录";
     else $activepathname = $activepath;
     $wintitle = "文件管理";
-    $wecome_info = "文件管理::新建目录 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::新建目录";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "js/blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
@@ -53,7 +53,7 @@ else if ($fmdo == "newdir") {
 //移动文件
 else if ($fmdo == "move") {
     $wintitle = "文件管理";
-    $wecome_info = "文件管理::移动文件 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::移动文件</a>";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "js/blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
@@ -69,7 +69,7 @@ else if ($fmdo == "move") {
 //删除文件
 else if ($fmdo == "del") {
     $wintitle = "文件管理";
-    $wecome_info = "文件管理::删除文件 [<a href='file_manage_main.php?activepath=$activepath'>文件浏览器</a>]</a>";
+    $wecome_info = "<a href='file_manage_main.php?activepath=$activepath'>文件管理</a>::删除文件";
     $win = new OxWindow();
     $win->Init("file_manage_control.php", "js/blank.js", "POST");
     $win->AddHidden("fmdo", $fmdo);
@@ -100,7 +100,7 @@ else if ($fmdo == "edit") {
         fclose($fp);
         $content = dede_htmlspecialchars($content);
     }
-    $contentView = "<textarea name='str' id='str' style='width:98%;height:300px;background:#ffffff;'>$content</textarea>\r\n";
+    $contentView = "<textarea name='str' id='str' class='biz-textarea'>$content</textarea>\r\n";
     $GLOBALS['filename'] = $filename;
     $path_parts  = pathinfo($filename);
     if ($path_parts['extension'] == 'php') {
@@ -121,7 +121,7 @@ else if ($fmdo == "newfile") {
     $content = "";
     $GLOBALS['filename'] = "newfile.txt";
     $GLOBALS['extension'] = 'text/html';
-    $contentView = "<textarea id='str' name='str' style='width:98%;height:400'></textarea>\r\n";
+    $contentView = "<textarea id='str' name='str' class='biz-textarea'></textarea>\r\n";
     $GLOBALS['token'] = make_hash();
     $ctp = new DedeTagParse();
     $ctp->LoadTemplate(DEDEADMIN."/templets/file_edit.htm");

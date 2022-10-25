@@ -148,14 +148,14 @@
               </tr>
               <tr>
                 <td>提取特定文档：<button  type="button"class="btn btn-success btn-sm" id="selarc" onClick="SelectArcList('form1.arcid');">选择节点文档</button>
-                  <textarea name="arcid" rows="3" id="arcid" style="width:90%" class="mt-3 mb-3"></textarea>
+                  <textarea name="arcid" id="arcid" class="biz-textarea mt-3 mb-3"></textarea>
                 </td>
               </tr>
               <tr>
                 <td>单条记录样式(InnerText)：</td>
               </tr>
               <tr>
-                <td><textarea name="innertext" cols="80" rows="6" id="myinnertext">·[field:textlink/]([field:pubdate function=MyDate('m-d',@me)/])<br></textarea></td>
+                <td><textarea name="innertext" id="myinnertext"  class="biz-textarea">·[field:textlink/]([field:pubdate function=MyDate('m-d',@me)/])<br></textarea></td>
               </tr>
               <tr>
                 <td>支持字段：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示·Pubdate发布时间的调用参数[field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</td>

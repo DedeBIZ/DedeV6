@@ -404,11 +404,11 @@
             </tr>
             <tr>
               <td height="60">关键词：</td>
-              <td><textarea name="keywords" cid="keywords" style="width:360px;height:50px"><?php echo $myrow['keywords']?></textarea></td>
+              <td><textarea name="keywords" cid="keywords" class="biz-textarea-sm"><?php echo $myrow['keywords']?></textarea></td>
             </tr>
             <tr>
               <td height="60">栏目描述：</td>
-              <td height="60"><textarea name="description" id="description" style="width:360px;height:50px"><?php echo $myrow['description']?></textarea></td>
+              <td height="60"><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $myrow['description']?></textarea></td>
             </tr>
             <tr>
               <td>继承选项：</td>
@@ -422,7 +422,7 @@
               <td>说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</td>
             </tr>
             <tr>
-              <td><?php GetEditor("content",$myrow['content'],"450","Default","print","false");?></td>
+              <td><?php GetEditor("content",$myrow['content'],"400","Default","print","false");?></td>
             </tr>
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#f8f8f8" class="biz-border border-top-0 mb-3">

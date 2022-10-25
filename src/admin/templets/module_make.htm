@@ -37,6 +37,11 @@
         <td bgcolor="#f8f8f8" colspan="2"><a href="module_main.php">模块管理</a> &gt; 模块打包</td>
       </tr>
       <tr>
+        <td colspan="2">
+          <div class="alert alert-info mb-0">制作模块即表示您同意<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">《DedeBIZ开发者协议》</a></div>
+        </td>
+      </tr>
+      <tr>
         <td width="260">模块名称：</td>
         <td><input type="text" name="modulname" id="modulname" style="width:160px"> </td>
       </tr>
@@ -76,7 +81,7 @@
       <tr>
         <td>后台管理菜单：</td>
         <td>
-          <textarea name="menustring" id="menustring" style="width:98%;height:160px"></textarea><br>
+          <textarea name="menustring" id="menustring" class="biz-textarea"></textarea><br>
           （普通插件或模板、补丁类不要填写，模块菜单格式请参考inc/inc_menu_module.php）
         </td>
       </tr>
@@ -96,7 +101,7 @@
                   如果需要带HTML格式，请编译后点击修改时使用HTML</td>
               </tr>
               <tr>
-                <td><textarea name="readmetxt" id="readmetxt" style="width:98%;height:160px"></textarea></td>
+                <td><textarea name="readmetxt" id="readmetxt" class="biz-textarea"></textarea></td>
               </tr>
             </table>
           </div>
@@ -120,7 +125,7 @@
                 </td>
               </tr>
               <tr>
-                <td><textarea name="setupsql40" id="setupsql40" style="width:98%;height:160px"></textarea></td>
+                <td><textarea name="setupsql40" id="setupsql40" class="biz-textarea"></textarea></td>
               </tr>
             </table>
           </div>
@@ -140,7 +145,7 @@
                 </td>
               </tr>
               <tr>
-                <td><textarea name="delsql" id="delsql" style="width:98%;height:160px"></textarea></td>
+                <td><textarea name="delsql" id="delsql" class="biz-textarea"></textarea></td>
               </tr>
             </table>
           </div>
@@ -153,19 +158,18 @@
             每行指定一个文件或目录，路径为相对于本目录，本目录的文件则直接用文件名即可，对于整个打包的目录，不需要指定子目录里的文件<br>
             如：如果已经指定了：../book 则不需要再指定目录里的 ../book/index.php 等文件或目录，系统会自动索引整个目录<br>
             对于不需要索引整个目录的，请不要指定这个目录，否则可能会把不必要的文件也放进模块中<br>
-            <textarea name="filelist" id="filelist" style="width:98%;height:160px"></textarea>
+            <textarea name="filelist" id="filelist" class="biz-textarea"></textarea>
           </p>
         </td>
       </tr>
       <tr>
         <td>开发者私钥：</td>
         <td>开发者认证后获取的私钥<br>
-          <textarea name="priv" id="priv" style="width:98%;height:160px"></textarea>
+          <textarea name="priv" id="priv" class="biz-textarea"></textarea>
         </td>
       </tr>
       <tr>
-        <td colspan="2" align="center" class="py-2">
-          <div class="alert alert-info">制作模块即表示您同意<a href="<?php echo $cfg_biz_dedebizUrl;?>/license_developer" target="_blank">《DedeBIZ开发者协议》</a></div>
+        <td colspan="2" bgcolor="#f8f8f8" align="center" class="py-2">
           <button name="imageField" type="submit" class="btn btn-success btn-sm">提交</button>
           <button type="button" name="button" id="button" onClick="location='module_main.php';" class="btn btn-success btn-sm">返回</button>
         </td>

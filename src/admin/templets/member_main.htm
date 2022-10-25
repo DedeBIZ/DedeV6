@@ -64,11 +64,11 @@
       <tr bgcolor="#fbfce2" align="center">
         <td width="6%">选择</td>
         <td width="6%">mid</td>
-        <td width="10%">登录名</td>
-        <td width="16%">email/昵称</td>
+        <td width="16%">登录名</td>
+        <td width="18%">邮箱</td>
         <td width="6%">性别</td>
-        <td width="8%">会员等级</td>
-        <td width="15%">会员属性</td>
+        <td width="6%">会员等级</td>
+        <td width="16%">会员属性</td>
         <td width="10%">最后登录</td>
         <td>操作</td>
       </tr>
@@ -83,15 +83,13 @@
           if ($fields['spacesta']==-2) echo "<span class='text-danger'>[禁言]</span>";
           if ($fields['spacesta']==-1) echo "<span class='text-danger'>[未审核]</span>";
           ?>
+          {dede:field.matt function="GetMAtt(@me)"/}
         </td>
-        <td>{dede:field.email/}<br>
-          昵称：{dede:field.uname/}</td>
+        <td>邮箱：{dede:field.email/} 昵称：{dede:field.uname/}</td>
         <td>{dede:field.sex/}</td>
         <td><a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a></td>
-        <td>{dede:field.mtype/} 用户 {dede:field.matt function="GetMAtt(@me)"/}<br>
-          金币：{dede:field.money/} 积分：{dede:field.scores/}</td>
-        <td>{dede:field.logintime function="MyDate('y-m-d H:i',@me)"/}<br>
-          {dede:field.loginip/}</td>
+        <td>{dede:field.mtype/}用户 金币：{dede:field.money/} 积分：{dede:field.scores/}</td>
+        <td>{dede:field.logintime function="MyDate('y-m-d H:i',@me)"/} {dede:field.loginip/}</td>
         <td align="center">
           <a href="member_view.php?id={dede:field.mid/}" class="btn btn-success btn-sm">修改</a>
           <a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-success btn-sm">删除</a>
@@ -104,7 +102,7 @@
         <td colspan="9">
           <button type="button" onClick="selAll();" class="btn btn-success btn-sm">全选</button>
           <button type="button" onClick="noSelAll();" class="btn btn-success btn-sm">取消</button>
-          <button type="button" onClick="delArc(0);" class="btn btn-danger btn-sm">删除</button>（如果已经整合了论坛的用户请不要使用批量删除功能）
+          <button type="button" onClick="delArc(0);" class="btn btn-danger btn-sm">删除</button>
         </td>
       </tr>
       <tr>

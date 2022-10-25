@@ -90,7 +90,7 @@ else if ($action == 'editload') {
       </tr>
       <tr>
         <td height="90"></td>
-        <td colspan="2"><textarea name="rule" style="width:300px;height:80px"><?php echo $row['rule'];?></textarea></td>
+        <td colspan="2"><textarea name="rule" class="biz-textarea"><?php echo $row['rule'];?></textarea></td>
       </tr>
       <tr>
         <td></td>

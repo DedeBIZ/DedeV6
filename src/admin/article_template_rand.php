@@ -100,7 +100,7 @@ function DoRand(jobname)
     </td>
 </tr>
 <tr>
-    <td><textarea name='templates' id='templates' style='width:100%;height:250px'>$templates</textarea></td>
+    <td><textarea name='templates' id='templates' class='biz-textarea'>$templates</textarea></td>
 </tr>
 </table>";
 $win = new OxWindow();

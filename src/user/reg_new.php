@@ -34,7 +34,7 @@ if ($step == 1) {
             exit();
         }
         if (strlen($userid) > 20 || strlen($uname) > 36) {
-            ShowMsg('您的用户名或用户笔名过长，不允许注册', '-1');
+            ShowMsg('您的用户名或用户名称过长，不允许注册', '-1');
             exit();
         }
         if (strlen($userid) < $cfg_mb_idmin || strlen($pwd) < $cfg_mb_pwdmin) {
