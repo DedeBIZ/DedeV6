@@ -417,6 +417,14 @@ span.page-link {
 	width:100%;
 	height:360px
 }
+.biz-itemnote1 {
+	background:#f8fcf2;
+	border-radius:.2rem .2rem 0 0
+}
+.biz-itemnote2 {
+	background:#f8f8f8;
+	border-radius:.2rem .2rem 0 0
+}
 .biz-border {
 	border:1px solid #dee2e6
 }
@@ -427,14 +435,6 @@ span.page-link {
 .biz-textarea-sm {
 	width:360px;
 	height:50px
-}
-.biz-itemnote1 {
-	background:#f8fcf2;
-	border-radius:.2rem .2rem 0 0
-}
-.biz-itemnote2 {
-	background:#f8f8f8;
-	border-radius:.2rem .2rem 0 0
 }
 .file-icon,svg {
 	margin-right:10px;
