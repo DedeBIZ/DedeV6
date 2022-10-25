@@ -55,14 +55,7 @@
         <input type="hidden" name="dopost" value="save">
         <input type="hidden" name="aid" value="<?php echo $row['aid']?>">
         <tr>
-          <td bgcolor="#f8f8f8">
-            <table width="98%" cellpadding="0" cellspacing="0" class="table-borderless">
-              <tr>
-                <td width="30%"><a href="freelist_main.php">自由列表管理</a> &gt; 修改自由列表</td>
-                <td width="70%" align="right"></td>
-              </tr>
-            </table>
-          </td>
+          <td bgcolor="#f8f8f8"><a href="freelist_main.php" class="ml-2">自由列表管理</a> &gt; 增加一个列表</td>
         </tr>
         <tr>
           <td class="p-0">
@@ -230,15 +223,15 @@
                 </td>
               </tr>
               <tr>
-                <td>循环内的单行记录样式(InnerText)：[<a href='javascript:ShowHide("innervar");'><i class="fa fa-question-circle" title="帮助"></i> 底层变量field参考</a>]</td>
-              </tr>
-              <tr>
-                <td><textarea name="innertext" cols="80" rows="6" id="myinnertext" style="width:80%;height:120px"><?php echo $ctag->GetInnerText()?></textarea></td>
+                <td>循环内的单行记录样式(InnerText)：<a href='javascript:ShowHide("innervar");'><i class="fa fa-question-circle" title="帮助"></i> 底层变量field参考</a></td>
               </tr>
               <tr>
                 <td id="innervar" style="display:none">
                   <span><i class="fa fa-question-circle" title="帮助"></i> 支持字段（底层变量[field:varname/])：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,<br>stime(pubdate 的&quot;0000-00-00&quot;格式）,textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示<br>·Pubdate发布时间的调用参数 [field:pubdate function=MyDate('Y--%d H:i:s',@me)/]</span>
                 </td>
+              </tr>
+              <tr>
+                <td><textarea name="innertext" id="myinnertext" class="biz-textarea"><?php echo $ctag->GetInnerText()?></textarea></td>
               </tr>
               <tr>
                 <td align="center" class="py-2"><button name="Submit2" type="submit" id="Submit2" class="btn btn-success btn-sm">保存</button></td>
