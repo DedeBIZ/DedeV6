@@ -36,13 +36,12 @@ main.login-from {
 }
 .member .member-logo {
 	border-radius:50%;
-	max-width:72px;
-	min-height:72px
+	max-width:60px;
+	min-height:60px
 }
 .member-actions a {
-	color:#868686;
 	margin-left:1rem;
-	line-height:64px
+	line-height:40px
 }
 .member .member-rank a {
 	color:white
@@ -84,24 +83,6 @@ main.login-from {
 .member .pannel-main .nav-link.active {
 	font-weight:bold
 }
-option.option2 {
-	background-color:#DDD
-}
-@media only screen and (max-width:576px) {
-	.login-area {
-	float:none;
-	margin:auto
-}
-}.btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
-}
-.fa {
-	font-size:14px!important;
-	color:inherit
-}
-.table {
-	color:#545b62
-}
 .user-meter i {
 	font-size:24px!important
 }
@@ -111,4 +92,10 @@ option.option2 {
 	height:30px;
 	border-radius:50%;
 	border:1px solid #dee2e6
+}
+@media only screen and (max-width:576px) {
+	.login-area {
+	float:none;
+	margin:auto
+}
 }

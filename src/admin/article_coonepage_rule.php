@@ -89,7 +89,7 @@ else if ($action == 'editload') {
         <td colspan="2">仅针对文档内容，格式：前面HTML{@body}后面HMTL</td>
       </tr>
       <tr>
-        <td height="90"></td>
+        <td></td>
         <td colspan="2"><textarea name="rule" class="biz-textarea"><?php echo $row['rule'];?></textarea></td>
       </tr>
       <tr>

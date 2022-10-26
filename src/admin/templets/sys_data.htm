@@ -184,7 +184,7 @@
 				}
 				?>
 				<tr>
-					<td colspan="8">
+					<td bgcolor="#fbfce2" colspan="8">
 						分卷大小：<input name="fsize" type="text" id="fsize" value="2048" style="width:60px"> K
 						<label><input type="checkbox" name="isstruct" id="isstruct" value="1" checked="1"> 备份结构</label>
 						<?php if (@function_exists('gzcompress') && false) {?>
@@ -201,8 +201,8 @@
 				<td colspan="8">结果：</td>
 			</tr>
 			<tr>
-				<td height="360" colspan="8">
-					<iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+				<td colspan="8">
+					<div class="biz-win-iframe"><iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe></div>
 				</td>
 			</tr>
 		</table>

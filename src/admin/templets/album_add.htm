@@ -58,18 +58,12 @@
     <input type="hidden" name="dopost" value="save">
     <input type="hidden" name="maxwidth" id="maxwidth" size="10" value="<?php echo $cfg_album_width;?>">
     <input type="hidden" id="albums" name="albums" value="">
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
-      <tr>
-        <td width="70%"><i class="fa fa-map"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">图集列表</a> &gt; 发布图集</td>
-        <td width="30%" align="right"><?php echo $backurl;?><a class="btn btn-success btn-sm" href="catalog_main.php">栏目管理</a></td>
-      </tr>
-    </table>
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
+    <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1" class="mt-3">
       <tr>
         <td>
           <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="80" height="28" align="center" bgcolor="#fbfce2">常规内容</td>
+              <td width="80" height="28" align="center" class="biz-itemnote1">常规内容</td>
             </tr>
           </table>
         </td>
@@ -78,7 +72,7 @@
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 图集标题：</td>
               <td width="400"><input type="text" name="title" id="title" value="" style="width:390px"></td>
@@ -90,7 +84,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
               <td>
@@ -112,7 +106,7 @@
       </tr>
       <tr id="redirecturltr" style="display:none">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
               <td><input type="text" name="redirecturl" id="redirecturl" value="" style="width:300px"></td>
@@ -122,7 +116,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
               <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
@@ -134,7 +128,7 @@
       </tr>
       <tr id="pictable">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
               <td>
@@ -152,7 +146,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 来源：</td>
               <td width="260">
@@ -170,7 +164,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布栏目：</td>
               <td width="360">
@@ -199,7 +193,7 @@
       </tr>
       <tr id="typeid2tr" style="display:none">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 副栏目：</td>
               <td>
@@ -213,10 +207,10 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
-              <td>
+              <td width="410">
                 <input type="text" name="keywords" id="keywords" value="" style="width:360px">
                 <button type="button" name="Submit" onClick="SelectKeywords('form1.keywords');" class="btn btn-success btn-sm">浏览</button>
               </td>
@@ -229,7 +223,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 描述：</td>
               <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
@@ -239,7 +233,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 表现方式：</td>
               <td>
@@ -253,7 +247,7 @@
       </tr>
       <tr id="cfgmulist" style="display:none">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 多列式参数：</td>
               <td>
@@ -271,7 +265,7 @@
       </tr>
       <tr id="spagelist" style="display:none">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 每页图片数：</td>
               <td><input type="text" name="pagepicnum" id="pagpicnum" size="10" value="<?php echo $cfg_album_pagesize;?>"> 单页多图显示需要设置此参数，这种模式下系统不会为每张图单独生成缩略图</td>
@@ -281,7 +275,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 上传方式：</td>
               <td>
@@ -297,7 +291,7 @@
       </tr>
       <tr id="zipff" style="display:none">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0" height="100">
+          <table cellspacing="0" cellpadding="0" height="100">
             <tr>
               <td width="90"> 压缩包文件：</td>
               <td>
@@ -311,7 +305,7 @@
       </tr>
       <tr id="htmlfield" style="display:none">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 网上复制：</td>
               <td>
@@ -329,7 +323,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" class="py-2"> 手工上传：</td>
               <td><span class="btn btn-success btn-sm fileinput-button"><i class="glyphicon glyphicon-plus"></i> 选择本地图片（支持多选）<input type="file" name="files[]" id="iptAlbumImages" multiple></span></td>
@@ -351,7 +345,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 图集内容：</td>
               <td><?php GetEditor("body","",400,"Diy");?></td>
@@ -361,9 +355,9 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"  width="260"> 评论选项：</td>
+              <td width="90"> 评论选项：</td>
               <td width="260">
                 <label><input type="radio" name="notpost" value="0" <?php if ($cfg_feedback_forbid=='N') echo "checked='1'";?>> 允许评论</label>
                 <label><input type="radio" name="notpost" value="1" <?php if ($cfg_feedback_forbid=='Y') echo "checked='1'";?>> 禁止评论</label>
@@ -379,7 +373,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 图集排序：</td>
               <td width="260"> <select name="sortup" id="sortup" style="width:160px">
@@ -401,7 +395,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 阅读权限：</td>
               <td width="260"><select name="arcrank" id="arcrank" style="width:160px">
@@ -424,7 +418,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布时间：</td>
               <td width="260">

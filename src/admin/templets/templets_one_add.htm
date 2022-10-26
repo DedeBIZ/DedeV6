@@ -26,79 +26,70 @@
   </script>
 </head>
 <body>
-  <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
-    <tr>
-      <td bgcolor="#f8f8f8"><a href="templets_one.php">单独页面管理</a> &gt; 增加自定义页面</td>
-    </tr>
-    <tr>
-      <td>
-        <table width="100%" cellspacing="4" cellpadding="2" class="table table-borderless">
-          <form action="templets_one_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
-            <input type="hidden" name="dopost" value="save">
-            <tr>
-              <td colspan="2">单独页面管理仅适用于页面较少的情况（建议小于500个页面）大量文档的用文档模型进行管理</td>
-            </tr>
-            <tr>
-              <td width="260">页面标题：</td>
-              <td><input type="text" name="title" id="title" style="width:260px"></td>
-            </tr>
-            <tr>
-              <td>页面关键词：</td>
-              <td><input type="text" name="keywords" id="keywords" style="width:260px">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
-            </tr>
-            <tr>
-              <td>页面摘要信息：</td>
-              <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea>（100字左右{dede:field name='description'/}）</td>
-            </tr>
-            <tr>
-              <td>关联标识：</td>
-              <td>
-                <input type="text" name="likeid" id="likeid" value="" style="width:260px">
-                <?php
-              	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
-              	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
-              	echo "<option value='default'>default</option>";
-              	while($arr = $dsql->GetArray('s'))
-              	{
-              		echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
-              	}
-              	echo "</select>";
-              	?>（通过这个标识来识别类同页面，模板中用{dede:likesgpage id='标识'/}调用有相同标识的页面）
-              </td>
-            </tr>
-            <tr>
-              <td>文件名：</td>
-              <td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/newfile{$nowid}.html';?>" style="width:260px">（相对于CMS安装目录）</td>
-            </tr>
-            <tr>
-              <td>模板文件名：</td>
-              <td><input type="text" name="template" id="template" value="{style}/singlepage.htm" style="width:260px"></td>
-            </tr>
-            <tr>
-              <td>是否编译内容：</td>
-              <td>
-                <?php if (!DEDEBIZ_SAFE_MODE) {?><label><input type="radio" name="ismake" value="1"> 含模板标记，要编译</label><?php }?>
-                <label><input type="radio" name="ismake" value="0" checked> 不含模板标记，不需要编译</label>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <div class="alert alert-warning mb-0">内容：模板里用{dede:field name='body'/}来获得</div>
-              </td>
-            </tr>
-            <tr> 
-              <td colspan="2"><?php GetEditor("body","","400","Default","print","false");?></td>
-            </tr>
-            <tr>
-              <td colspan="2" align="center" class="py-2">
-                <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
-                <button type="button" onClick="document.form1.reset();" class="btn btn-success btn-sm">重置</button>
-              </td>
-            </tr>
-          </form>
-        </table>
-      </td>
-    </tr>
-  </table>
+  <form action="templets_one_add.php" method="post" name="form1" onSubmit="return checkSubmit()">
+    <input type="hidden" name="dopost" value="save">
+    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+      <tr>
+        <td bgcolor="#f8f8f8" colspan="2"><a href="templets_one.php">单独页面管理</a> &gt; 增加自定义页面</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="alert alert-warning mb-0">单独页面管理仅适用于页面较少的情况（建议小于500个页面）大量文档的用文档模型进行管理，内容模板里用{dede:field name='body'/}来获得</div>
+        </td>
+      </tr>
+      <tr>
+        <td width="260">页面标题：</td>
+        <td><input type="text" name="title" id="title" style="width:260px"></td>
+      </tr>
+      <tr>
+        <td>页面关键词：</td>
+        <td><input type="text" name="keywords" id="keywords" style="width:260px">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
+      </tr>
+      <tr>
+        <td>页面摘要信息：</td>
+        <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea>（100字左右{dede:field name='description'/}）</td>
+      </tr>
+      <tr>
+        <td>关联标识：</td>
+        <td>
+          <input type="text" name="likeid" id="likeid" value="" style="width:260px">
+          <?php
+        	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
+        	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
+        	echo "<option value='default'>default</option>";
+        	while($arr = $dsql->GetArray('s'))
+        	{
+        		echo "<option value='{$arr['likeid']}'>{$arr['likeid']}</option>";
+        	}
+        	echo "</select>";
+        	?>（通过这个标识来识别类同页面，模板中用{dede:likesgpage id='标识'/}调用有相同标识的页面）
+        </td>
+      </tr>
+      <tr>
+        <td>保存位置：</td>
+        <td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/diy.html';?>" style="width:260px">（填写路径文件夹）</td>
+      </tr>
+      <tr>
+        <td>模板文件名：</td>
+        <td><input type="text" name="template" id="template" value="{style}/index_article.htm" style="width:260px">（填写模板名称）</td>
+      </tr>
+      <tr>
+        <td>是否编译内容：</td>
+        <td>
+          <?php if (!DEDEBIZ_SAFE_MODE) {?><label><input type="radio" name="ismake" value="1"> 含模板标记，要编译</label><?php }?>
+          <label><input type="radio" name="ismake" value="0" checked> 不含模板标记，不需要编译</label>
+        </td>
+      </tr>
+      <tr> 
+        <td colspan="2"><?php GetEditor("body","","400","Default","print","false");?></td>
+      </tr>
+      <tr>
+        <td colspan="2" bgcolor="#f8f8f8" align="center" class="py-2">
+          <button type="submit" name="button1" id="button1" class="btn btn-success btn-sm">保存</button>
+          <button type="button" onClick="document.form1.reset();" class="btn btn-success btn-sm">重置</button>
+        </td>
+      </tr>
+    </table>
+  </form>
 </body>
 </html>

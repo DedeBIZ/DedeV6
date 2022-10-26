@@ -4,11 +4,10 @@
 			<div class="col-12 col-sm-6 logo"><a href="<?php echo $cfg_cmsurl;?>/"><img src="<?php echo $cfg_cmsurl;?>/static/web/img/logo.png" alt="<?php echo $cfg_webname;?>"></a>
 			</div>
 			<div class="col-12 col-sm-6 d-flex justify-content-end member-actions">
-				<a href="<?php echo $cfg_memberurl;?>shops_orders.php" class="cart" title="订单管理"><i class="fa fa-shopping-cart"></i></a>
-				<a href="<?php echo $cfg_memberurl;?>pm.php" title="消息管理" class="message">消息 <span class="badge badge-danger"><?php echo $pms['nums'];?></span>
-				</a>
-				<a><?php echo $cfg_ml->M_LoginID;?></a>
-				<a href="<?php echo $cfg_cmsurl;?>/user/index_do.php?fmdo=login&dopost=exit#" title="退出"><i class="fa fa-sign-out"></i></a>
+				<a href="edit_baseinfo.php"><span class="btn btn-sm"><?php echo $cfg_ml->M_LoginID;?></span></a>
+				<a href="<?php echo $cfg_memberurl;?>/shops_orders.php" title="订单"><span class="btn btn-info btn-sm"><i class="fa fa-shopping-cart"></i></span></a>
+				<a href="<?php echo $cfg_memberurl;?>/pm.php" title="消息"><span class="btn btn-primary btn-sm"><i class="fa fa-bullhorn mr-2"></i><?php echo $pms['nums'];?></span></a>
+				<a href="<?php echo $cfg_cmsurl;?>/user/index_do.php?fmdo=login&dopost=exit#" title="退出"><span class="btn btn-success btn-sm"><i class="fa fa-sign-out"></i></span></a>
 			</div>
 		</div>
 	</header>

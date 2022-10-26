@@ -53,17 +53,13 @@
 				<td><?php echo $fileinfo;?></td>
 				<td align="center"><?php echo $filetime;?></td>
 				<td align="center">
-					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" title="编辑" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i></a>
-					<?php
-					if (!isset($fileinfos[$filename])){
-					?>
-					<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename;?>');" title="删除"><i class="fa fa-trash"></i></a>
+					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a>
+					<?php if (!isset($fileinfos[$filename])){?>
+					<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename;?>');" ><i class="fa fa-trash"></i> 删除</a>
 					<?php }?>
 				</td>
 			</tr>
-			<?php
-			}
-			?>
+			<?php }?>
 			<tr>
 				<td bgcolor="#f8f8f8" align="center" colspan="4" class="py-2">
 					<a class="btn btn-success btn-sm" href="tpl.php?action=newfile&acdir=<?php echo $acdir;?>">新建模板</a>

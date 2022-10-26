@@ -47,18 +47,12 @@
     <input type="hidden" name="dopost" value="save">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
     <input type="hidden" name="id" value="<?php echo $aid?>">
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
-      <tr>
-        <td width="70%"><i class="fa fa-map"></i> <a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&dopost=listArchives"></a><a href="catalog_do.php?cid=<?php echo $arcRow['typeid']?>&dopost=listArchives">软件列表</a> &gt; 修改软件</td>
-        <td width="30%" align="right"><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a></td>
-      </tr>
-    </table>
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
+    <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1" class="mt-3">
       <tr>
         <td>
           <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="80" height="28" align="center" bgcolor="#fbfce2">常规参数</td>
+              <td width="80" height="28" align="center" class="biz-itemnote1">常规内容</td>
             </tr>
           </table>
         </td>
@@ -67,7 +61,7 @@
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文档标题：</td>
               <td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" style="width:390px"></td>
@@ -79,7 +73,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
               <td>
@@ -103,7 +97,7 @@
       </tr>
       <tr>
         <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
               <td><input type="text" name="redirecturl" id="redirecturl" value="<?php echo $addRow['redirecturl']?>" style="width:300px"></td>
@@ -113,7 +107,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
               <td><input type="text" name="tags" id="tags" value="<?php echo $tags;?>" style="width:300px">（','号分开，单个标签小于12字节）</td>
@@ -125,7 +119,7 @@
       </tr>
       <tr id="pictable">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90" height="80"> 缩略图：</td>
               <td width="560">
@@ -133,7 +127,7 @@
                 <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
-                <button type="button" id="btnClearAll" class="btn btn-success btn-smete">清空</button>
+                <button type="button" id="btnClearAll" class="btn btn-success btn-sm">清空</button>
               </td>
               <td align="center"><img src="<?php if ($arcRow['litpic']!='') echo $arcRow['litpic']; else echo '../static/web/img/defaultpic.jpg';?>" id="litPic" class="thumbnail"></td>
             </tr>
@@ -142,7 +136,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 来源：</td>
               <td width="260">
@@ -160,7 +154,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布栏目：</td>
               <td width="360">
@@ -182,7 +176,7 @@
       <?php if ($cfg_need_typeid2=='Y') {?>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 副栏目：</td>
               <td>
@@ -196,7 +190,7 @@
       <?php }?>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
               <td><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords']?>" style="width:360px"></td>
@@ -206,7 +200,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 描述：</td>
               <td><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $arcRow['description']?></textarea></td>
@@ -287,7 +281,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 运行环境：</td>
               <td><input type="text" name="os" value="<?php echo $addRow['os']?>" style="width:260px"></td>
@@ -297,7 +291,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 官方网址：</td>
               <td width="310"><input type="text" name="officialUrl" id="officialUrl" value="<?php echo $addRow['officialUrl']?>" style="width:260px"></td>
@@ -309,7 +303,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 软件大小：</td>
               <td width="310"><input name="softsize" type="text" id="softsize" value="<?php echo $addRow['softsize']?>" style="width:260px"></td>
@@ -338,7 +332,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 其它地址：</td>
               <td>
@@ -362,7 +356,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 附加选项：</td>
               <td>
@@ -378,7 +372,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
@@ -396,7 +390,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文档排序：</td>
               <td width="260">
@@ -423,7 +417,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 阅读权限：</td>
               <td width="260">
@@ -441,7 +435,7 @@
       </tr>
       <tr>
         <td height="70" class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 更新时间：</td>
               <td width="260">

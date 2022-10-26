@@ -38,13 +38,6 @@ h3,h4 {
 h5,h6 {
 	font-size:16px
 }
-.flink,.flink a,.copyright,.copyright a {
-	color:white
-}
-.copyright {
-	padding:.5rem;
-	background:#12451F
-}
 form.search {
 	display:flex;
 	width:100%
@@ -488,14 +481,8 @@ nav.location .dede li.active .nav-link {
 .article-main .body table {
 	width:100%!important
 }
-.site-nav {
+.site-nav,.btn {
 	font-size:14px
-}
-.site-nav .title b {
-	color:#ff8400
-}
-.site-nav .user a {
-	color:#28a745
 }
 #body-pic img {
 	max-width:40%!important
@@ -634,9 +621,26 @@ nav.navbar.dede .navbar-brand {
 .carousel-item img {
 	max-width:100%!important
 }
+.logo img {
+	height:40px
+}
+.flink,.flink a,.copyright,.copyright a {
+	color:white
+}
+.copyright {
+	padding:.5rem;
+	background:#12451F
+}
+.btn+.btn,.btn-text+.btn-text {
+	margin-left:1rem
+}
+.fa {
+	font-size:14px!important;
+	color:inherit
+}
+.table {
+	color:#545b62
+}
 .form-control {
 	font-size:14px
-}
-.input-group-append {
-	margin-left:-30px
 }

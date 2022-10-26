@@ -33,18 +33,12 @@
   </script>
 </head>
 <body>
-  <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mt-3 mb-3">
-    <tr>
-      <td width="70%"><i class="fa fa-map"></i> <a href="catalog_do.php?cid=<?php echo $cid?>&channelid=<?php echo $channelid?>&dopost=listArchives">文档列表</a> &gt; 发布商品</td>
-      <td width="30%" align="right"><?php echo $backurl;?><a href="catalog_main.php" class="btn btn-success btn-sm">栏目管理</a></td>
-    </tr>
-  </table>
-  <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1">
+  <table width="98%" align="center" cellpadding="0" cellspacing="0" id="head1" class="mt-3">
     <tr>
       <td>
         <table cellpadding="0" cellspacing="0">
           <tr>
-            <td width="80" height="28" align="center" bgcolor="#fbfce2">常规信息</td>
+            <td width="80" height="28" align="center" class="biz-itemnote1">常规内容</td>
           </tr>
         </table>
       </td>
@@ -57,7 +51,7 @@
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> <?php echo $cInfos['titlename'];?>：</td>
               <td width="400"><input type="text" name="title" id="title" value="" style="width:390px"></td>
@@ -69,7 +63,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
               <td>
@@ -91,7 +85,7 @@
       </tr>
       <tr>
         <td class="bline" id="redirecturltr" style="display:none">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
               <td><input type="text" name="redirecturl" id="redirecturl" value="" style="width:300px"></td>
@@ -101,7 +95,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
               <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
@@ -113,7 +107,7 @@
       </tr>
       <tr id="pictable" style='<?php if ($cInfos['needpic']==0) echo 'display:none';?>'>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
               <td>
@@ -130,7 +124,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 来源：</td>
               <td width="260">
@@ -155,7 +149,7 @@
       ?>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布栏目：</td>
               <td width="360">
@@ -184,7 +178,7 @@
       </tr>
       <tr id="typeid2tr" style="display:none">
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 副栏目：</td>
               <td>
@@ -198,10 +192,10 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
-              <td>
+              <td width="410">
                 <input type="text" name="keywords" id="keywords" value="" style="width:360px">
                 <button type="button" name="Submit" value="" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
@@ -214,7 +208,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 描述：</td>
               <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
@@ -225,7 +219,7 @@
       <?php }?>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 附加选项：</td>
               <td>
@@ -243,7 +237,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
               <td width="260">
@@ -261,7 +255,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文档排序：</td>
               <td width="260">
@@ -284,7 +278,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 阅读权限：</td>
               <td width="260"><select name="arcrank" id="arcrank" style="width:160px">
@@ -306,7 +300,7 @@
       </tr>
       <tr>
         <td class="bline">
-          <table width="900" cellspacing="0" cellpadding="0">
+          <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布时间：</td>
               <td width="260">

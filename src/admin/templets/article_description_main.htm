@@ -15,7 +15,7 @@
         <td bgcolor="#f8f8f8">自动摘要分页</td>
       </tr>
       <tr>
-        <td>用于自动更新您系统没有填写摘要的文档的摘要信息或更新没分页的文档的自动分页标识（文档使用了自动分页后会降低HTML生成速度，并且在没人工干扰的情况下可能导致分页内容的HTML错误，请小心使用此功能）</td>
+        <td>用于自动更新您系统没有填写摘要的文档的摘要信息或更新没分页的文档的自动分页标识（文档使用了自动分页后会降低网页生成速度，并且在没人工干扰的情况下可能导致分页内容的HTML错误，请小心使用此功能）</td>
       </tr>
       <tr>
         <td>
@@ -50,29 +50,11 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#fbfce2" align="center">
-          <button type="submit" name="Submit" class="btn btn-success btn-sm">开始执行分析</button>
-        </td>
+        <td bgcolor="#fbfce2" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">执行分析</button></td>
       </tr>
     </form>
     <tr>
-      <td>
-        <table width="100%" class="table table-borderless">
-          <tr>
-            <td width="30%">结果：</td>
-            <td width="70%" align="right">
-              <script>
-              function ResizeDiv(obj, ty) {
-                if (ty == "+") document.all[obj].style.pixelHeight += 50;
-                else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-              }
-              </script>
-              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
-              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
-            </td>
-          </tr>
-        </table>
-      </td>
+      <td>结果：</td>
     </tr>
     <tr>
       <td id="mtd">

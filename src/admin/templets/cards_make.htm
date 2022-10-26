@@ -65,29 +65,11 @@
         </td>
       </tr>
       <tr>
-        <td bgcolor="#fbfce2" align="center">
-          <button type="submit" name="Submit" class="btn btn-success btn-sm">开始生成点卡</button>
-        </td>
+        <td bgcolor="#fbfce2" align="center"><button type="submit" name="Submit" class="btn btn-success btn-sm">生成点卡</button></td>
       </tr>
     </form>
     <tr>
-      <td>
-        <table width="100%" class="table table-borderless">
-          <tr>
-            <td width="30%">结果：</td>
-            <td width="70%" align="right">
-              <script>
-              function ResizeDiv(obj, ty) {
-                if (ty == "+") document.all[obj].style.pixelHeight += 50;
-                else if (document.all[obj].style.pixelHeight > 80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
-              }
-              </script>
-              <a href="javascript:;" onClick="ResizeDiv('mdv','+');" class="btn btn-success btn-sm">增大</a>
-              <a href="javascript:;" onClick="ResizeDiv('mdv','-');" class="btn btn-success btn-sm">缩小</a>
-            </td>
-          </tr>
-        </table>
-      </td>
+      <td>结果：</td>
     </tr>
     <tr>
       <td id="mtd">
