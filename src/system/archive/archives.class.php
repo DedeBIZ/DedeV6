@@ -232,7 +232,7 @@ class Archives
         //处理默认缩略图等
         if (isset($this->Fields['litpic'])) {
             if ($this->Fields['litpic'] == '-' || $this->Fields['litpic'] == '') {
-                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/defaultpic.jpg';
+                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
             }
             if (!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                 $this->Fields['litpic'] = $GLOBALS['cfg_mainsite'].$this->Fields['litpic'];
@@ -699,7 +699,7 @@ class Archives
                     $preRow['sitepath']
                 );
                 //二次开发上一篇属性
-                $preRow['litpic'] = (empty($preRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/defaultpic.jpg' : $preRow['litpic'];
+                $preRow['litpic'] = (empty($preRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg' : $preRow['litpic'];
                 $this->PreNext['diy']['pre']['id'] = $preRow['id'];
                 $this->PreNext['diy']['pre']['arcurl'] = $mlink;
                 $this->PreNext['diy']['pre']['title'] = $preRow['title'];
@@ -728,7 +728,7 @@ class Archives
                     $nextRow['sitepath']
                 );
                 //二次开发下一篇属性
-                $nextRow['litpic'] = (empty($nextRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/defaultpic.jpg' : $nextRow['litpic'];
+                $nextRow['litpic'] = (empty($nextRow['litpic'])) ? $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg' : $nextRow['litpic'];
                 $this->PreNext['diy']['next']['id'] = $nextRow['id'];
                 $this->PreNext['diy']['next']['arcurl'] = $mlink;
                 $this->PreNext['diy']['next']['title'] = $nextRow['title'];

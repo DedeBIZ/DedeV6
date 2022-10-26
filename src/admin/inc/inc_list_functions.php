@@ -70,7 +70,7 @@ function CheckPic($picname)
     if ($picname != "") {
         return $picname;
     } else {
-        return "/static/web/img/defaultpic.jpg";
+        return "/static/web/img/thumbnail.jpg";
     }
 }
 //判断内容是否生成网页

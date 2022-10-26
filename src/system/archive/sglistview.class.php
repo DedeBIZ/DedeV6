@@ -615,7 +615,7 @@ class SgListView
                         $row['sitepath']
                     );
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/defaultpic.jpg';
+                        $row['litpic'] = $GLOBALS['cfg_cmspath'].'/static/web/img/thumbnail.jpg';
                     }
                     if (!preg_match("/^http:\/\//", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
                         $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
