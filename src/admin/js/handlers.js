@@ -14,7 +14,7 @@ function addImage(src, pid) {
 	albImg++;
 	if (pid != 0) {
 		albImg = 'ok' + pid;
-		delstr = '<a href="javascript:delAlbPic(' + pid + ')" class="btn btn-success btn-sm">删除</a>';
+		delstr = '<a href="javascript:delAlbPic(' + pid + ')" class="btn btn-danger btn-sm">删除</a>';
 	} else {
 		albImg = 'err' + albImg;
 	}
