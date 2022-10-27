@@ -35,9 +35,7 @@
         <td width="23%" align="center" bgcolor="#fbfce2">级别头衔</td>
         <td width="30%" align="center" bgcolor="#fbfce2">是否默认</td>
       </tr>
-      <?php
-		  foreach($Scores as $v){	
-		  ?>
+      <?php foreach($Scores as $v){	?>
       <tr onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td align="center"><input type="checkbox" name="Ids-<?php echo $v['id']?>" id="Ids-<?php echo $v['id']?>" value="1"></td>
         <td align="center"><input type="text" name="integral-<?php echo $v['id']?>" id="integral-<?php echo $v['id']?>" value="<?php echo $v['integral']?>" style="width:160px"></td>

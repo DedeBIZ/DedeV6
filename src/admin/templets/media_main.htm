@@ -7,16 +7,7 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <style>
-    .napisdiv {
-      left: 10;
-      top: 0;
-      width: 150px;
-      height: 100px;
-      position: absolute;
-      z-index: 3
-    }
-  </style>
+  <style>.napisdiv{left:10;top:0;width:150px;height:100px;position:absolute;z-index:3}</style>
   <script>
     //获得选中文件的文件名
     function getCheckboxItem() {
@@ -112,9 +103,9 @@
       {/dede:datalist}
       <tr>
         <td colspan="7">
-          <button type="button" name="b4" class="btn btn-success btn-sm" onClick="AllSel();">全选</button>
-          <button type="button" name="b5" class="btn btn-success btn-sm" onClick="NoneSel();">取消</button>
-          <button type="button" name="b6" class="btn btn-success btn-sm" onClick="DelSel();">删除</button>
+          <button type="button" name="b4" onClick="AllSel();" class="btn btn-success btn-sm">全选</button>
+          <button type="button" name="b5" onClick="NoneSel();" class="btn btn-success btn-sm">取消</button>
+          <button type="button" name="b6" onClick="DelSel();" class="btn btn-danger btn-sm">删除</button>
         </td>
       </tr>
       <tr bgcolor="#f8f8f8" class="py-2">

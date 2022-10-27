@@ -87,9 +87,7 @@ function DoRand(jobname)
     });
 }
 </script>
-<div id='loading' style='position:absolute;top:160;display:none;z-index:3000'>
-    <img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中
-</div>
+<div id='loading' style='display:none;text-align:center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中</div>
 <table width='100%' align='center'>
 <tr>
     <td>
@@ -107,7 +105,7 @@ $win = new OxWindow();
 $win->Init('article_template_rand.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
 $win->AddHidden('token', $_SESSION['token']);
-$win->AddTitle("本设置仅适用于系统默认的文档模型，设置后发布文档时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可");
+$win->AddTitle("<div class='alert alert-info mb-0'>本设置仅适用于系统默认的文档模型，设置后发布文档时会自动按指定的模板随机获取一个，如果不想使用此功能，把它设置为空即可</div");
 $win->AddMsgItem($msg);
 $winform = $win->GetWindow('ok');
 $win->Display();

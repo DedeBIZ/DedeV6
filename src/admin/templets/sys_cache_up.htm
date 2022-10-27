@@ -16,9 +16,10 @@
 					<td bgcolor="#f8f8f8">更新系统缓存</td>
 				</tr>
 				<tr>
-					<td>本程序作默认会执行下面的操作：1.更新栏目缓存 2.更新枚举缓存 3.清理arclist调用缓存 4.清理过期会员访问历史 5.删除过期短信<br>
-						<label><input type="checkbox" name="uparc" value="1"> 检测并清理错误文档</label>（该项操作很占资源，如果没有出现页码不正确、无法解析文档等情况，不要执行本操作）
-					</td>
+					<td><div class="alert alert-info mb-0">本程序作默认会执行下面的操作：1、更新栏目缓存 2、更新枚举缓存 3、清理arclist调用缓存 4、清理过期会员访问历史 5、删除过期短信</div></td>
+				</tr>
+				<tr>
+					<td>该项操作很占资源，如果没有出现页码不正确、无法解析文档等情况，不要执行本操作：<label><input type="checkbox" name="uparc" value="1"> 清理错误文档</label></td>
 				</tr>
 				<tr>
 					<td bgcolor="#fbfce2" align="center"><button type="button" name="b112" class="btn btn-success btn-sm" value="" onClick="document.form1.submit();">开始执行</button></td>

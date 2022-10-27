@@ -37,7 +37,7 @@ $win = new OxWindow();
 $win->Init('article_string_mix.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
 $win->AddHidden('token', $_SESSION['token']);
-$win->AddTitle("如果您要启用字符串混淆来防采集，请在文档模板需要的字段加上 function='RndString(@me)' 属性，如：{dede:field name='body' function='RndString(@me)'/}");
+$win->AddTitle("<div class='alert alert-info mb-0'>如果您要启用字符串混淆来防采集，请在文档模板需要的字段加上：function='RndString(@me)'属性，如：{dede:field name='body' function='RndString(@me)'/}</div>");
 $win->AddMsgItem("<textarea name='allsource' id='allsource' class='biz-textarea'>$allsource</textarea>");
 $winform = $win->GetWindow('ok');
 $win->Display();

@@ -44,7 +44,7 @@ else if ($action == 'make') {
         exit();
     }
     if (empty($dev_id)) {
-        ShowMsg("开发者ID不能为空", "-1");
+        ShowMsg("开发者id不能为空", "-1");
         exit();
     }
     if (empty($priv)) {
@@ -180,7 +180,7 @@ else if ($action == 'edit') {
         exit();
     }
     if (empty($dev_id)) {
-        ShowMsg("开发者ID不能为空", "-1");
+        ShowMsg("开发者id不能为空", "-1");
         exit();
     }
     if (empty($priv)) {

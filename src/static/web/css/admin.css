@@ -370,6 +370,10 @@ span.page-link {
 	color:#fff;
 	background:#28a745
 }
+.fa {
+	font-size:14px!important;
+	color:inherit
+}
 .btn-xs {
 	padding:2px;
 	line-height:12px;
@@ -378,14 +382,6 @@ span.page-link {
 .btn+.btn,.btn-text+.btn-text {
 	margin-left:1rem
 }
-.fa {
-	font-size:14px!important;
-	color:inherit
-}
-.maintable {
-	width:98%!important;
-	border:1px solid #dee2e6!important
-}
 .table {
 	margin-bottom:0;
 	color:#545b62
@@ -393,6 +389,10 @@ span.page-link {
 .table td,.table th {
 	padding:.65rem;
 	vertical-align:middle
+}
+.maintable {
+	width:98%!important;
+	border:1px solid #dee2e6!important
 }
 .form-control {
 	display:inline-block;
@@ -436,10 +436,10 @@ span.page-link {
 	width:360px;
 	height:50px
 }
-.file-icon,svg {
+.icon img {
 	margin-right:10px;
-	width:22px;
-	height:22px;
+	width:20px;
+	height:20px;
 	border-radius:.2rem
 }
 #text {

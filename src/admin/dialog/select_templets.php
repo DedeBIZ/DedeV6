@@ -57,7 +57,7 @@ html{background:#f8f8f8}
         window.close();
     }
     </script>
-    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
+    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless icon">
         <tr>
             <td colspan="3">
                 <form action="select_templets_post.php" method="POST" enctype="multipart/form-data" name="myform">
@@ -73,7 +73,7 @@ html{background:#f8f8f8}
         <tr>
             <td width="50%" class="linerow">选择文件</td>
             <td width="20%" class="linerow">文件大小</td>
-            <td width="30%" class="linerow">修改时间</td>
+            <td class="linerow">修改时间</td>
         </tr>
         <?php
         $dh = scandir($inpath);
@@ -115,73 +115,91 @@ html{background:#f8f8f8}
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(htm|html)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " class='text-danger' ";
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
                     $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                     $line = "<tr>
-                    <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/htm.gif'>$file</a></td>
+                    <td class='linerow'>
+                        <img src='../../static/web/img/htm.gif'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
                     <td class='linerow'>$filesize KB</td>
                     <td class='linerow'>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(css)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " class='text-danger' ";
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
                     $reurl = preg_replace("#".$templetdir."/#", "", $reurl);
                     $line = "<tr>
-                    <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/css.gif'>$file</a></td>
+                    <td class='linerow'>
+                        <img src='../../static/web/img/css.gif'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
                     <td class='linerow'>$filesize KB</td>
                     <td class='linerow'>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(js)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " class='text-danger' ";
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
                     $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                     $line = "<tr>
-                    <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/js.gif'>$file</a></td>
+                    <td class='linerow'>
+                        <img src='../../static/web/img/js.gif'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
                     <td class='linerow'>$filesize KB</td>
                     <td class='linerow'>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(jpg)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " class='text-danger' ";
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
                     $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                     $line = "<tr>
-                    <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/jpg.gif'>$file</a></td>
+                    <td class='linerow'>
+                        <img src='$reurl'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
                     <td class='linerow'>$filesize KB</td>
                     <td class='linerow'>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(gif|png)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " class='text-danger' ";
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
                     $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                     $line = "<tr>
-                    <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/gif.gif'>$file</a></td>
+                    <td class='linerow'>
+                        <img src='$reurl'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
                     <td class='linerow'>$filesize KB</td>
                     <td class='linerow'>$filetime</td>
                     </tr>";
                     echo "$line";
                 } else if (preg_match("#\.(txt)#i", $file)) {
-                    if ($file == $comeback) $lstyle = " class='text-danger' ";
+                    if ($file == $comeback) $lstyle = "class='text-danger'";
                     else  $lstyle = "";
                     $reurl = "$activeurl/$file";
                     $reurl = preg_replace("#\.\.#", "", $reurl);
                     $reurl = preg_replace("#".$templetdir."\/#", "", $reurl);
                     $line = "<tr>
-                    <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/txt.gif'>$file</a></td>
+                    <td class='linerow'>
+                        <img src='../../static/web/img/txt.gif'>
+                        <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                    </td>
                     <td class='linerow'>$filesize KB</td>
                     <td class='linerow'>$filetime</td></tr>";
                     echo "$line";

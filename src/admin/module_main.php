@@ -96,7 +96,7 @@ else if ($action == 'view_developoer') {
         $devInfo['dev_name'] = $info['team']."<span style='display:inline-block;margin-left:10px;padding:.25rem .5rem;line-height:1.5;font-size:12px;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem'>未认证</span>";
         $authAt = "未知";
     }
-    ShowMsg("<p>开发者名称：{$devInfo['dev_name']}</p><p>开发者ID：{$devInfo['dev_id']}</p><span>认证于：{$authAt}</span>", "-1");
+    ShowMsg("<p>开发者名称：{$devInfo['dev_name']}</p><p>开发者id：{$devInfo['dev_id']}</p><span>认证于：{$authAt}</span>", "-1");
     exit;
 }
 /*--------------
@@ -179,7 +179,7 @@ else if ($action == 'setup') {
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td class='dtb'>开发者ID：</td>
+    <td class='dtb'>开发者id：</td>
     <td class='dtb'>{$infos['dev_id']} <a href='{$cfg_biz_dedebizUrl}/developer?dev_id={$infos['dev_id']}' target='_blank' class='btn btn-success btn-sm'>{$s}</a></td>
   </tr>
   <tr>
@@ -311,7 +311,7 @@ else if ($action == 'del') {
       <td class='dtb'>{$infos['filesize']}</td>
     </tr>
     <tr>
-      <td class='dtb'>开发者ID：</td>
+      <td class='dtb'>开发者id：</td>
       <td class='dtb'>{$dev_id}</td>
     </tr>
     <tr>
@@ -376,7 +376,7 @@ else if ($action == 'uninstall') {
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td class='dtb'>开发者ID：</td>
+    <td class='dtb'>开发者id：</td>
     <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>
@@ -517,7 +517,7 @@ else if ($action == 'view') {
     <td class='dtb'>{$infos['filesize']}</td>
   </tr>
   <tr>
-    <td class='dtb'>开发者ID：</td>
+    <td class='dtb'>开发者id：</td>
     <td class='dtb'>{$dev_id}</td>
   </tr>
   <tr>

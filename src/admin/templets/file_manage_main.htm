@@ -7,15 +7,10 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <style>
-    .linerow {
-      border-bottom:1px solid #CBD8AC;
-      height:26px
-    }
-  </style>
+  <style>.linerow{border-bottom:1px solid #CBD8AC}</style>
 </head>
 <body>
-  <table width="98%" cellspacing="1" cellpadding="2" align="center" class="table maintable mt-3 mb-3">
+  <table width="98%" cellspacing="1" cellpadding="2" align="center" class="table maintable icon mt-3 mb-3">
     <tr align="center">
       <td width="36%" bgcolor="#f8f8f8">文件名称</td>
       <td width="12%" bgcolor="#f8f8f8">文件大小</td>
@@ -56,11 +51,9 @@
     		}
     		$tmp = preg_replace("#[\/][^\/]*$#i","",$activepath);
     		$line = "\n<tr>
-      <td>
-      <a href='file_manage_main.php?activepath=".urlencode($tmp)."'><img src='../static/web/img/dir2.gif'>上级目录</a>
-      </td>
-      <td colspan='3'>当前目录：$activepath</td>
-      </tr>";
+          <td><a href='file_manage_main.php?activepath=".urlencode($tmp)."'><img src='../static/web/img/dir2.gif'>上级目录</a></td>
+          <td colspan='3'>当前目录：$activepath</td>
+        </tr>";
     		$dirs[] = $line;
     	}
     	else if (is_dir("$inpath/$file"))
@@ -68,234 +61,220 @@
     		if (preg_match("#^_(.*)$#i",$file)) continue;
     		if (preg_match("#^\.(.*)$#i",$file)) continue;
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-        <a href='file_manage_main.php?activepath=".urlencode("$activepath/$file")."'><img src='../static/web/img/dir.gif'>$file</a></td>
-       <td></td>
-       <td></td>
-       <td>
-       <a href='file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&fmdo=rename' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&type=dir&fmdo=del' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       </td>
-       </td>
-       </tr>";
+          <td><a href='file_manage_main.php?activepath=".urlencode("$activepath/$file")."'><img src='../static/web/img/dir.gif'>$file</a></td>
+          <td></td>
+          <td></td>
+          <td>
+            <a href='file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&fmdo=rename' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?filename=".urlencode($file)."&activepath=".urlencode($activepath)."&type=dir&fmdo=del' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+          </td>
+          </td>
+        </tr>";
     		$dirs[] = $line;
     	}
     	else if (preg_match("#\.(gif|png)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/gif.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='$activeurl/$file'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(jpg)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/jpg.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center' class='linerow'>$filetime</td>
-       <td>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='$activeurl/$file'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center' class='linerow'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(swf|fla|fly)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/flash.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/flash.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(zip|rar|tar.gz)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/zip.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/zip.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(exe)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/exe.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/exe.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(mp3|wma)#i",$file))
     	{
     		$line = "\n<tr   onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/mp3.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/mp3.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(wmv|api)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/wmv.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/wmv.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(rm|rmvb)#i",$file))
     	{
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/rm.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center' class='linerow'>$filetime</td>
-       <td>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/rm.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center' class='linerow'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(txt|inc|pl|cgi|asp|xml|xsl|aspx|cfm)#",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/txt.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/txt.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(htm|html)#i",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#F9FBF0';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/htm.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/htm.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(php)#i",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/php.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/php.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(js)#i",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/js.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
-    	 $files[] = $line;
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/js.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
+    	  $files[] = $line;
     	}
     	else if (preg_match("#\.(css)#i",$file))
     	{
     		$edurl = "file_manage_view.php?fmdo=edit&filename=".urlencode($file)."&activepath=".urlencode($activepath);
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-       <td>
-       <a href='$activeurl/$file' target='_blank'><img src='../static/web/img/css.gif'>$file</a></td>
-       <td>$filesize KB</td>
-       <td align='center'>$filetime</td>
-       <td>
-       <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
-       <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-       <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
-       <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-       </td>
-       </tr>";
+          <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/css.gif'>$file</a></td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='$edurl' class='btn btn-success btn-sm'><i class='fa fa-pencil-square-o'></i> 编辑</a>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
+        </tr>";
     	 $files[] = $line;
     	} else {
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
-        <td><a href='$activeurl/$file' target='_blank'>$file</td>
-        <td>$filesize KB</td>
-        <td align='center'>$filetime</td>
-        <td>
-        <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
-        <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
-        <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
-        </td>
+          <td><a href='$activeurl/$file' target='_blank'>$file</td>
+          <td>$filesize KB</td>
+          <td align='center'>$filetime</td>
+          <td>
+            <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
+            <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>
+            <a href='file_manage_view.php?fmdo=move&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-share-square'></i> 移动</a>
+          </td>
         </tr>";
-    	 $files[] = $line;
+    	  $files[] = $line;
     	  }
       }
       foreach ($dirs as $dir)
@@ -306,7 +285,7 @@
       {
       	echo $file;
       }
-      ?>
+    ?>
     <tr>
       <td colspan="4" bgcolor="#f8f8f8">
         <?php if (!DEDEBIZ_SAFE_MODE) {?><a href="file_manage_main.php" class="btn btn-success btn-sm">根目录</a><?php }?>

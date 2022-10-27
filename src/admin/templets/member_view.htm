@@ -33,10 +33,10 @@
   <tr>
     <td bgcolor="#f8f8f8"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 查看会员</td>
   </tr>
-<tr>
-<td align="center">
-	<?php	if ($row['matt']==10) echo "<span class='text-danger'>当前用户是网站管理员关连的帐号，请小心操作</span>";?>
-	<table width="98%" cellspacing="0" cellpadding="6" class="table table-borderless">
+  <tr>
+    <td>
+    	<?php if ($row['matt']==10) echo '<div class="alert alert-info mb-0">当前用户是网站管理员关连的帐号，请小心操作</div>';?>
+    	<table width="98%" cellspacing="0" cellpadding="6" class="table table-borderless">
         <form name="form2" action="member_do.php" method="post" onSubmit="return checkSubmit();">
           <input type="hidden" name="dopost" value="edituser">
           <input type="hidden" name="id" value="<?php echo $id?>">
@@ -57,14 +57,14 @@
             <td class="bline">注册时间：</td>
             <td class="bline">
               <?php echo GetDateTimeMk($row['jointime'])?>
-              IP：<?php echo $row['joinip']?>
+              ip：<?php echo $row['joinip']?>
             </td>
           </tr>
           <tr> 
             <td class="bline">最近登录时间：</td>
             <td class="bline"> 
               <?php echo GetDateTimeMk($row['logintime'])?>
-              IP：<?php echo $row['loginip']?>
+              ip：<?php echo $row['loginip']?>
             </td>
           </tr>
           <tr> 
@@ -103,17 +103,17 @@
               $dsql->Execute('n');
               $MemberTypes[0] = "限制会员";
               while($nrow = $dsql->GetObject('n')){
-	              $MemberTypes[$nrow->rank] = $nrow->membername;
+                $MemberTypes[$nrow->rank] = $nrow->membername;
               }
               $options = "<select name='rank' style='width:160px'>";
               foreach($MemberTypes as $k=>$v)
               {
-  	            if ($k!=$row['rank']) $options .= "<option value='$k'>$v</option>";
-  	            else $options .= "<option value='$k' selected>$v</option>";
+                if ($k!=$row['rank']) $options .= "<option value='$k'>$v</option>";
+                else $options .= "<option value='$k' selected>$v</option>";
               }
               $options .= "</select>";
-			        echo $options;
-			        ?>
+    	        echo $options;
+    	        ?>
             </td>
           </tr>
           <tr> 

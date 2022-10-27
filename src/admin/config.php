@@ -147,7 +147,7 @@ function DedeInclude($filename, $isabs = FALSE)
  *  根据用户mid获取用户名称
  *
  * @access    public
- * @param     int  $mid   用户ID
+ * @param     int  $mid   用户id
  * @return    string
  */
 if (!function_exists('GetMemberName')) {

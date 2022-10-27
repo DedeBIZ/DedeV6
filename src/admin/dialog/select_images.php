@@ -135,9 +135,9 @@ html{background:#f6f6f6}
         window.close();
     }
     </script>
-    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
+    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless icon">
         <tr>
-            <td colspan="4" height="26">
+            <td colspan="4">
                 <form action="select_images_post.php" method="POST" enctype="multipart/form-data" name="myform">
                     <?php $noeditor = !empty($noeditor) ? "<input type='hidden' name='noeditor' value='yes'>" : ''; echo $noeditor;?>
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
@@ -149,20 +149,20 @@ html{background:#f6f6f6}
                     上传：<input type="file" name="imgfile" style="width:50%;border:none">
                     <label><input type="checkbox" name="needwatermark" value="1" class="np" <?php if ($photo_markup == '1') echo "checked";?> /> 水印 </label>
                     <label><input type="checkbox" name="resize" value="1" class="np"> 缩小 </label>
-                    宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:46px">
-                    高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" style="width:46px">
+                    宽：<input type="text" name="iwidth" value="<?php echo $cfg_ddimg_width ?>" style="width:50px">
+                    高：<input type="text" name="iheight" value="<?php echo $cfg_ddimg_height ?>" style="width:50px">
                     <button type="submit" name="sb1" class="btn btn-success btn-sm">上传</button>
                 </form>
             </td>
         </tr>
         <tr>
-            <td width="8%" class="linerow">预览</td>
-            <td width="40%" class="linerow">选择图片</td>
-            <td width="22%" class="linerow">文件大小</td>
-            <td width="30%" class="linerow">修改时间</td>
+            <td class="linerow" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
         </tr>
         <tr>
-            <td class="linerow" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
+            <td width="8%" class="linerow">预览</td>
+            <td width="42%" class="linerow">选择图片</td>
+            <td width="20%" class="linerow">文件大小</td>
+            <td class="linerow">修改时间</td>
         </tr>
         <?php
         $dh = scandir($inpath);
@@ -189,8 +189,7 @@ html{background:#f6f6f6}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td class='linerow' colspan='2'>
-                <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
+                <td colspan='2' class='linerow'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
                 <td colspan='2' class='linerow'>当前目录：$activepath</td>
                 </tr>";
                 echo $line;
@@ -198,8 +197,7 @@ html{background:#f6f6f6}
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td class='linerow' colspan='2'>
-                <a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/dir.gif'>$file</a></td>
+                <td colspan='2' class='linerow'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/dir.gif'>$file</a></td>
                 <td class='linerow'></td>
                 <td class='linerow'></td>
                 </tr>";
@@ -208,11 +206,13 @@ html{background:#f6f6f6}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " class='text-danger' ";
+                if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='../../static/web/img/picviewnone.gif'></a></td>
-                <td class='linerow'><a href=# onclick=\"ReturnImg('$reurl');\" $lstyle><img src='../../static/web/img/gif.gif'>$file</a></td>
+                <td colspan='2' class='linerow'>
+                    <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
+                    <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+                </td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow'>$filetime</td>
                 </tr>";
@@ -221,11 +221,13 @@ html{background:#f6f6f6}
                 $reurl = "$activeurl/$file";
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
-                if ($file == $comeback) $lstyle = " class='text-danger' ";
+                if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td class='linerow'><a href=\"#\" onClick=\"ChangeImage('$reurl');\"><img src='../../static/web/img/picviewnone.gif'></a></td>
-                <td class='linerow'><a href=# onclick=\"ReturnImg('$reurl');\" $lstyle><img src='../../static/web/img/jpg.gif'>$file</a></td>
+                <td colspan='2' class='linerow'>
+                    <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
+                    <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
+                </td>
                 <td class='linerow'>$filesize KB</td>
                 <td class='linerow'>$filetime</td>
                 </tr>";

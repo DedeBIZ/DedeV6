@@ -80,9 +80,7 @@
       </tr>
       <?php if ($row['issystem']==1){?>
       <tr>
-        <td colspan="2">
-          <span class="style1">您当前操作的字段属于系统模型字段：修改系统模型有风险，请不要随便改动系统模型的字段相关的属性</span>
-        </td>
+        <td colspan="2"><div class="alert alert-danger mb-0">您当前操作的字段属于系统模型字段：修改系统模型有风险，请不要随便改动系统模型的字段相关的属性</div></td>
       </tr>
       <?php }?>
       <tr>

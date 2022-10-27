@@ -83,7 +83,7 @@ if (!function_exists('TestAdminPWD')) {
 	{
 		global $dsql;
 		//查询栏目表确定栏目所在的目录
-		$sql = "SELECT usertype,userid,pwd FROM #@__admin WHERE `userid`='admin'";
+		$sql = "SELECT usertype,userid,pwd FROM `#@__admin` WHERE `userid`='admin'";
 		$row = $dsql->GetOne($sql);
 		if (is_array($row)) {
 			if ($row['pwd'] == 'f297a57a5a743894a0e4') {
@@ -159,7 +159,7 @@ if (count($safeMsg) > 0) {
 		$i = 1;
 		foreach ($safeMsg as $key => $val) {
 		?>
-		<div class="py-1"><?php echo $i;?>.<?php echo $val;?></div>
+		<div><?php echo $i;?>、<?php echo $val;?></div>
 		<?php
 		$i++;
 		}

@@ -76,10 +76,10 @@ html{background:#f8f8f8}
         window.close();
     }
     </script>
-    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless">
+    <table width="100%" cellpadding="0" cellspacing="1" align="center" class="table table-borderless icon">
         <tr>
             <td colspan="3">
-                <form action="select_soft_post.php" method="POST" enctype="multipart/form-data" name='myform'>
+                <form action="select_soft_post.php" method="POST" enctype="multipart/form-data" name="myform">
                     <input type="hidden" name="activepath" value="<?php echo $activepath ?>">
                     <input type="hidden" name="f" value="<?php echo $f ?>">
                     <input type="hidden" name="job" value="upload">
@@ -90,84 +90,84 @@ html{background:#f8f8f8}
             </td>
         </tr>
         <tr>
-            <td colspan="3">
-                <table width="100%" cellspacing="0" cellpadding="2">
-                    <tr>
-                        <td width="45%" class="linerow">选择文件</td>
-                        <td width="25%" class="linerow">文件大小</td>
-                        <td width="30%" class="linerow">修改时间</td>
-                    </tr>
-                    <?php
-					$dh = scandir($inpath);
-					$ty1 = $ty2 = "";
-					foreach ($dh as $file) {
-                        //计算文件大小和创建时间
-                        if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
-                            $filesize = filesize("$inpath/$file");
-                            $filesize = $filesize / 1024;
-                            if ($filesize != "")
-                                if ($filesize < 0.1) {
-                                    @list($ty1, $ty2) = split("\.", $filesize);
-                                    $filesize = $ty1.".".substr($ty2, 0, 2);
-                                } else {
-                                    @list($ty1, $ty2) = split("\.", $filesize);
-                                    $filesize = $ty1.".".substr($ty2, 0, 1);
-                                }
-                            $filetime = filemtime("$inpath/$file");
-                            $filetime = MyDate("Y-m-d H:i", $filetime);
-                        }
-                        //判断文件类型并作处理
-                        if ($file == ".") continue;
-                        else if ($file == "..") {
-                            if ($activepath == "") continue;
-                            $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
-                            $line = "<tr>
-                            <td class='linerow'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
-                            <td colspan='2' class='linerow'>当前目录：$activepath</td>
-                            </tr>\r\n";
-                            echo $line;
-                        } else if (is_dir("$inpath/$file")) {
-                            if (preg_match("#^_(.*)$#i", $file)) continue;
-                            if (preg_match("#^\.(.*)$#i", $file)) continue;
-                            $line = "<tr>
-                            <td class='linerow'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/dir.gif'>$file</a></td>
-                            <td class='linerow'></td>
-                            <td class='linerow'></td>
-                            </tr>";
-                            echo "$line";
-                        } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
-                            if ($file == $comeback) $lstyle = " class='text-danger' ";
-                            else  $lstyle = "";
-                            $reurl = "$activeurl/$file";
-                            $reurl = preg_replace("#^\.\.#", "", $reurl);
-                            $reurl = $reurl;
-                            $line = "<tr>
-                            <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/zip.gif'>$file</a></td>
-                            <td class='linerow'>$filesize KB</td>
-                            <td class='linerow'>$filetime</td>
-                            </tr>";
-                            echo "$line";
-                        } else {
-                            if ($file == $comeback) $lstyle = " class='text-danger' ";
-                            else  $lstyle = '';
-                            $reurl = "$activeurl/$file";
-                            $reurl = preg_replace("#^\.\.#", "", $reurl);
-                            $reurl = $reurl;
-                            $line = "<tr>
-                            <td class='linerow'><a href=\"javascript:ReturnValue('$reurl');\" $lstyle><img src='../../static/web/img/exe.gif'>$file</a></td>
-                            <td class='linerow'>$filesize KB</td>
-                            <td class='linerow'>$filetime</td>
-                            </tr>";
-                            echo "$line";
-                        }
-                    }//End Loop
-                    ?>
-                </table>
-            </td>
+            <td colspan="3" class="linerow">点击选择的文件，红色字样的为刚上传的文件</td>
         </tr>
         <tr>
-            <td colspan="3">点击选择的文件，红色字样的为刚上传的文件</td>
+            <td width="50%" class="linerow">选择文件</td>
+            <td width="20%" class="linerow">文件大小</td>
+            <td class="linerow">修改时间</td>
         </tr>
+        <?php
+		$dh = scandir($inpath);
+		$ty1 = $ty2 = "";
+		foreach ($dh as $file) {
+            //计算文件大小和创建时间
+            if ($file != "." && $file != ".." && !is_dir("$inpath/$file")) {
+                $filesize = filesize("$inpath/$file");
+                $filesize = $filesize / 1024;
+                if ($filesize != "")
+                    if ($filesize < 0.1) {
+                        @list($ty1, $ty2) = split("\.", $filesize);
+                        $filesize = $ty1.".".substr($ty2, 0, 2);
+                    } else {
+                        @list($ty1, $ty2) = split("\.", $filesize);
+                        $filesize = $ty1.".".substr($ty2, 0, 1);
+                    }
+                $filetime = filemtime("$inpath/$file");
+                $filetime = MyDate("Y-m-d H:i", $filetime);
+            }
+            //判断文件类型并作处理
+            if ($file == ".") continue;
+            else if ($file == "..") {
+                if ($activepath == "") continue;
+                $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
+                $line = "<tr>
+                <td class='linerow'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
+                <td colspan='2' class='linerow'>当前目录：$activepath</td>
+                </tr>\r\n";
+                echo $line;
+            } else if (is_dir("$inpath/$file")) {
+                if (preg_match("#^_(.*)$#i", $file)) continue;
+                if (preg_match("#^\.(.*)$#i", $file)) continue;
+                $line = "<tr>
+                <td class='linerow'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/dir.gif'>$file</a></td>
+                <td class='linerow'></td>
+                <td class='linerow'></td>
+                </tr>";
+                echo "$line";
+            } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
+                if ($file == $comeback) $lstyle = "class='text-danger'";
+                else  $lstyle = "";
+                $reurl = "$activeurl/$file";
+                $reurl = preg_replace("#^\.\.#", "", $reurl);
+                $reurl = $reurl;
+                $line = "<tr>
+                <td class='linerow'>
+                    <img src='../../static/web/img/zip.gif'>
+                    <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                </td>
+                <td class='linerow'>$filesize KB</td>
+                <td class='linerow'>$filetime</td>
+                </tr>";
+                echo "$line";
+            } else {
+                if ($file == $comeback) $lstyle = "class='text-danger'";
+                else  $lstyle = '';
+                $reurl = "$activeurl/$file";
+                $reurl = preg_replace("#^\.\.#", "", $reurl);
+                $reurl = $reurl;
+                $line = "<tr>
+                <td class='linerow'>
+                    <img src='../../static/web/img/exe.gif'>
+                    <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
+                </td>
+                <td class='linerow'>$filesize KB</td>
+                <td class='linerow'>$filetime</td>
+                </tr>";
+                echo "$line";
+            }
+        }//End Loop
+        ?>
     </table>
 </body>
 </html>

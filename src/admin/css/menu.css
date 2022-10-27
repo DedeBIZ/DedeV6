@@ -109,6 +109,7 @@ input[type=text]:focus {
 	line-height:60px
 }
 .top-item ul li a,.top-admin ul li a {
+	font-size:14px;
 	color:#fff
 }
 .top-item ul li a:hover,.top-admin ul li a:hover {

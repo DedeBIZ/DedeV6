@@ -3,7 +3,7 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>修改频道</title>
+  <title>自定义搜索管理</title>
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="js/main.js"></script>
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
@@ -28,7 +28,7 @@
       <input type="hidden" name="dopost" value="modifysearch">
       <tr>
         <td bgcolor="#f8f8f8" colspan="2">
-          <a href="mychannel_main.php">内容模型管理</a> &gt; 自定义搜索管理（自定义搜索在方便搜索的同时在一定程度上降低了效率，请根据需求定义搜索）
+          <a href="mychannel_main.php">内容模型管理</a> &gt; 自定义搜索管理
           <span class="float-right mr-2"><a href="mychannel_edit.php?dopost=del&mid=<?php echo $mid;?>">删除自定义搜索</a></span>
         </td>
       </tr>
@@ -60,7 +60,7 @@
         <td><input type="text" name="template" value="<?php echo $template;?>" style="width:260px"></td>
       </tr>
       <tr>
-        <td align="center" colspan="2" class="py-2">
+        <td align="center" bgcolor="#fbfce2" colspan="2" class="py-2">
           <button type="submit" class="btn btn-success btn-sm">保存</button>
           <button type="button" onclick="location='mychannel_main.php';" class="btn btn-success btn-sm">返回</button>
         </td>

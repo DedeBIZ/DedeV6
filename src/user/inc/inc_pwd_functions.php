@@ -66,7 +66,7 @@ function sendmail($email, $mailtitle, $mailbody, $headers)
  *  发送邮件；type为INSERT新建验证码，UPDATE修改验证码；
  *
  * @param     int  $mid  会员ID
- * @param     int  $userid  用户ID
+ * @param     int  $userid  用户id
  * @param     string  $mailto  发送到
  * @param     string  $type  类型
  * @param     string  $send  发送到
@@ -113,7 +113,7 @@ function newmail($mid, $userid, $mailto, $type, $send)
  *  查询会员信息mail用户输入邮箱地址；userid用户名
  *
  * @param     string  $mail  邮件
- * @param     string  $userid  用户ID
+ * @param     string  $userid  用户id
  * @return    string
  */
 function member($mail, $userid)
@@ -121,7 +121,7 @@ function member($mail, $userid)
     global $db;
     $sql = "SELECT mid,email,safequestion FROM `#@__member` WHERE email='$mail' AND userid = '$userid'";
     $row = $db->GetOne($sql);
-    if (!is_array($row)) return ShowMsg("对不起，用户ID输入错误", "-1");
+    if (!is_array($row)) return ShowMsg("对不起，用户id输入错误", "-1");
     else return $row;
 }
 /**

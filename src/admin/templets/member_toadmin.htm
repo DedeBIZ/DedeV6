@@ -31,11 +31,11 @@
       <td bgcolor="#f8f8f8"><a href="<?php echo $ENV_GOBACK_URL;?>">会员管理</a> &gt; 提升为管理员</td>
     </tr>
     <tr>
-      <td align="center">
+      <td>
         <?php
         if ($row['matt']==10) 
         {
-          echo "<span class='text-danger'>已经是管理员了，不要再提升了</span>";
+          echo '<div class="alert alert-info mb-0">已经是管理员了，不要再提升了</div>';
         } else {
         ?>
         <table width="98%" cellspacing="0" cellpadding="6" class="table table-borderless">

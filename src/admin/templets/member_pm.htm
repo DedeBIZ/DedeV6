@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <style>
-  .current{border:1px solid #dee2e6;padding:6px;background:#FFFEF4;color:#dc3545}
-  </style>
 </head>
 <body>
   <form action="member_pm.php" name="form1" method="get">
@@ -30,7 +27,11 @@
   </form>
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
     <tr>
-      <td bgcolor="#f8f8f8" colspan="7"><span class="current" id="cate_1">短信列表</span> <a href="member_pmall.php">群发短信</a> <a href="member_pmone.php">单独短信</a></td>
+      <td bgcolor="#f8f8f8" colspan="7">
+        <span id="cate_1" class="btn btn-success btn-sm">短信列表</span>
+        <a href="member_pmall.php" class="btn btn-outline-success btn-sm">群发短信</a>
+        <a href="member_pmone.php" class="btn btn-outline-success btn-sm">单独短信</a>
+      </td>
     </tr>
     <tr bgcolor="#fbfce2">
       <td width="10%" align="center">发送时间</td>

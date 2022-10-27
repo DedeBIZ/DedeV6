@@ -20,15 +20,12 @@
           <td align="center">
             <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
               <tr>
-                <td width="10%">组名称：</td>
-                <td width="90%"><input type="text" name="typename" id="typename" value="<?php echo $groupSet['typename']?>" style="width:260px"></td>
+                <td width="260">组名称：</td>
+                <td><input type="text" name="typename" id="typename" value="<?php echo $groupSet['typename']?>" style="width:160px"></td>
               </tr>
               <tr>
-                <td width="10%">级别值：</td>
-                <td width="90%">
-                  <input type="hidden" name="rank" id="rank" value="<?php echo $groupSet['rank']?>">
-                  <?php echo $groupSet['rank']?>
-                </td>
+                <td>级别值：</td>
+                <td><input type="hidden" name="rank" id="rank" value="<?php echo $groupSet['rank']?>" style="width:160px"> <?php echo $groupSet['rank']?></td>
               </tr>
               <?php
               $start = 0;

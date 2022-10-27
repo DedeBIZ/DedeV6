@@ -28,16 +28,13 @@
 					<td bgcolor="#f8f8f8" colspan="2">更新首页</td>
 				</tr>
 				<tr>
+					<td colspan="2"><div class="alert alert-info mb-0">默认的情况下，生成的首页文件放在CMS的安装目录，如果您的CMS不是安装在网站根目录的，又想把首页创建到网站根目录，那么请用相对路径来表示“首页位置”，例：您的CMS安装在 http://www.abc.com/DedeBIZ/ 目录，您想生成的首页为http://www.abc.com/index.html，那吗首页位置就应该用：“../index.html”</div></td>
+				</tr>
+				<tr>
 					<td width="260">选择首页模板：</td>
 					<td>
 						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" style="width:260px">
 						<button type="button" name="set4" value="" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						默认的情况下，生成的首页文件放在CMS的安装目录，如果您的CMS不是安装在网站根目录的，又想把首页创建到网站根目录，那么请用相对路径来表示“首页位置”<br>
-						例：您的CMS安装在 http://www.abc.com/DedeBIZ/ 目录，您想生成的首页为http://www.abc.com/index.html，那吗首页位置就应该用：“../index.html”
 					</td>
 				</tr>
 				<tr>
