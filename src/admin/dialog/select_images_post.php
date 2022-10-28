@@ -27,7 +27,6 @@ if (!is_uploaded_file($imgfile)) {
 }
 $CKEditorFuncNum = (isset($CKEditorFuncNum)) ? $CKEditorFuncNum : 1;
 $imgfile_name = trim(preg_replace("#[ \r\n\t\*\%\\\/\?><\|\":]{1,}#", '', $imgfile_name));
-
 if (!preg_match("#\.(".$cfg_imgtype.")#i", $imgfile_name)) {
     ShowMsg("您所上传的图片类型不在许可列表，请修改系统对扩展名限定的配置", "-1");
     exit();
@@ -80,7 +79,7 @@ $sizes = getimagesize($fullfilename, $info);
 $imgwidthValue = $sizes[0];
 $imgheightValue = $sizes[1];
 $imgsize = filesize($fullfilename);
-$inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','".$activepath."/".$filename."','1','$imgwidthValue','$imgheightValue','0','{$imgsize}','{$nowtme}','".$cuserLogin->getUserID()."'); ";
+$inquery = "INSERT INTO `#@__uploads` (arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','".$activepath."/".$filename."','1','$imgwidthValue','$imgheightValue','0','{$imgsize}','{$nowtme}','".$cuserLogin->getUserID()."'); ";
 $dsql->ExecuteNoneQuery($inquery);
 $fid = $dsql->GetLastID();
 AddMyAddon($fid, $activepath.'/'.$filename);

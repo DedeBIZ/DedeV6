@@ -65,7 +65,7 @@
 					<div class="card">
 						<div class="card-header">
 							<a href="javascript:copyFn()"><i class="fa fa-gear"></i> 系统信息</a>
-							<span id="text">V:<?php echo $cfg_version_detail;?>|操作系统:<?php echo PHP_OS;?>|Web服务器:<?php echo $_SERVER['SERVER_SOFTWARE'];?>|PHP版本:<?php echo @phpversion();?>|数据库版本:<?php echo $dsql->GetVersion();?></span>
+							<span id="text">软件：<?php echo $cfg_version_detail;?>|操作系统：<?php echo PHP_OS;?>|Web服务器：<?php echo $_SERVER['SERVER_SOFTWARE'];?>|PHP：<?php echo @phpversion();?>|数据库：<?php echo $dsql->GetVersion();?></span>
 						</div>
 						<div class="card-body">
 							<table class="table table-borderless">

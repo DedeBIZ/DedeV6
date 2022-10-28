@@ -80,7 +80,7 @@ if ($uploadfile_type == 'application/x-shockwave-flash') {
 } else {
     $mediatype = 4;
 }
-$inquery = "INSERT INTO `#@__uploads`(arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','$fullfileurl','$mediatype','0','0','0','{$uploadfile_size}','{$nowtme}','".$cuserLogin->getUserID()."'); ";
+$inquery = "INSERT INTO `#@__uploads` (arcid,title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('0','$filename','$fullfileurl','$mediatype','0','0','0','{$uploadfile_size}','{$nowtme}','".$cuserLogin->getUserID()."'); ";
 $dsql->ExecuteNoneQuery($inquery);
 $fid = $dsql->GetLastID();
 AddMyAddon($fid, $fullfileurl);
