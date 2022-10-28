@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <link rel="stylesheet" href="css/albumupload.css">
+  <link rel="stylesheet" href="css/albumupload.min.css">
   <link rel="stylesheet" href="../static/web/css/daterangepicker.css">
   <link rel="stylesheet" href="../static/web/css/cropper.min.css">
   <link rel="stylesheet" href="../static/web/css/jquery.fileupload.css">
@@ -70,7 +70,7 @@
   </table>
   <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 图集标题：</td>
@@ -82,7 +82,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 自定义属性：</td>
@@ -105,7 +105,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
+      <td class="biz-td" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 跳转网址：</td>
@@ -115,7 +115,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> Tag标签：</td>
@@ -127,7 +127,7 @@
       </td>
     </tr>
     <tr id="pictable">
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 缩略图：</td>
@@ -144,7 +144,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 来源：</td>
@@ -162,7 +162,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 发布栏目：</td>
@@ -186,7 +186,7 @@
     if ($cfg_need_typeid2=='Y') {
     ?>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 副栏目：</td>
@@ -200,7 +200,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 关键词：</td>
@@ -210,7 +210,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 描述：</td>
@@ -224,7 +224,7 @@
       <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 表现方式：</td>
@@ -238,7 +238,7 @@
       </td>
     </tr>
     <tr id="cfgmulist" style="<?php if ($pagestyle!=3) echo 'display:none';?>">
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 多列式参数：</td>
@@ -256,7 +256,7 @@
       </td>
     </tr>
     <tr id="spagelist" style="<?php if ($pagestyle!=1) echo 'display:none';?>">
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 每页图片数：</td>
@@ -266,7 +266,7 @@
       </td>
     </tr>
     <tr style="display:none">
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 限制宽度：</td>
@@ -276,7 +276,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 上传方式：</td>
@@ -290,7 +290,7 @@
       </td>
     </tr>
     <tr id="zipff" style="display:none">
-      <td class="bline"><table cellspacing="0" cellpadding="0" height="100">
+      <td class="biz-td"><table cellspacing="0" cellpadding="0" height="100">
           <tr>
             <td width="90"> 压缩包文件：</td>
             <td>
@@ -303,7 +303,7 @@
       </td>
     </tr>
     <tr id="htmlfield" style="display:none">
-      <td class="bline"><table cellspacing="0" cellpadding="0">
+      <td class="biz-td"><table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 网上复制：</td>
             <td>
@@ -317,7 +317,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table width="100%">
           <tr>
             <td>
@@ -363,7 +363,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 增加新图片：</td>
@@ -373,7 +373,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table width="100%">
           <tr>
             <td>
@@ -385,7 +385,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 图集内容：</td>
@@ -395,7 +395,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
       <table cellspacing="0" cellpadding="0">
         <tr>
           <td width="90"> 评论选项：</td>
@@ -412,7 +412,7 @@
       </table>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 文档排序：</td>
@@ -439,7 +439,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 阅读权限：</td>
@@ -463,7 +463,7 @@
       </td>
     </tr>
     <tr>
-      <td class="bline">
+      <td class="biz-td">
         <table cellspacing="0" cellpadding="0">
           <tr>
             <td width="90"> 发布时间：</td>

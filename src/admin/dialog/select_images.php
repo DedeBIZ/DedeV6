@@ -63,7 +63,7 @@ if (!empty($iseditor)) {
 html{background:#f6f6f6}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
 .napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}
-.linerow{border-bottom:1px solid #eee!important}
+.biz-td{border-bottom:1px solid #eee!important}
     </style>
     <script>
     function nullLink() {
@@ -156,13 +156,13 @@ html{background:#f6f6f6}
             </td>
         </tr>
         <tr>
-            <td class="linerow" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
+            <td class="biz-td" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
         </tr>
         <tr>
-            <td width="8%" class="linerow">预览</td>
-            <td width="42%" class="linerow">选择图片</td>
-            <td width="20%" class="linerow">文件大小</td>
-            <td class="linerow">修改时间</td>
+            <td width="8%" class="biz-td">预览</td>
+            <td width="42%" class="biz-td">选择图片</td>
+            <td width="20%" class="biz-td">文件大小</td>
+            <td class="biz-td">修改时间</td>
         </tr>
         <?php
         $dh = scandir($inpath);
@@ -189,17 +189,17 @@ html{background:#f6f6f6}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td colspan='2' class='linerow'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
-                <td colspan='2' class='linerow'>当前目录：$activepath</td>
+                <td colspan='2' class='biz-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
+                <td colspan='2' class='biz-td'>当前目录：$activepath</td>
                 </tr>";
                 echo $line;
             } else if (is_dir("$inpath/$file")) {
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td colspan='2' class='linerow'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/dir.gif'>$file</a></td>
-                <td class='linerow'></td>
-                <td class='linerow'></td>
+                <td colspan='2' class='biz-td'><a href='select_images.php?imgstick=$imgstick&v=$v&f=$f&activepath=".urlencode("$activepath/$file").$addparm."'><img src='../../static/web/img/dir.gif'>$file</a></td>
+                <td class='biz-td'></td>
+                <td class='biz-td'></td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(".$cfg_imgtype.")#i", $file)) {
@@ -209,12 +209,12 @@ html{background:#f6f6f6}
                 if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td colspan='2' class='linerow'>
+                <td colspan='2' class='biz-td'>
                     <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
                     <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='linerow'>$filesize KB</td>
-                <td class='linerow'>$filetime</td>
+                <td class='biz-td'>$filesize KB</td>
+                <td class='biz-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(jpg)#i", $file)) {
@@ -224,12 +224,12 @@ html{background:#f6f6f6}
                 if ($file == $comeback) $lstyle = "class='text-danger'";
                 else  $lstyle = "";
                 $line = "<tr>
-                <td colspan='2' class='linerow'>
+                <td colspan='2' class='biz-td'>
                     <a href=\"javascript:;\" onClick=\"ChangeImage('$reurl');\"><img src='$reurl'></a>
                     <a href=\"javascript:;\" onclick=\"ReturnImg('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='linerow'>$filesize KB</td>
-                <td class='linerow'>$filetime</td>
+                <td class='biz-td'>$filesize KB</td>
+                <td class='biz-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             }

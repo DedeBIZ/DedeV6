@@ -10,62 +10,60 @@
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="main mceneter">
-			<?php pasterTempletDiy('header.htm');?>
-			<div class="container">
-				<div class="ctitle">
-					<nav class="navbar navbar-expand-lg">
-						<ul class="navbar-nav mr-auto mt-2">
-							<li class="nav-item">
-								<h3><?php echo $diy->name;?>内容列表</h3>
-							</li>
-						</ul>
-						<span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
-					</nav>
-				</div>
-				<div class="cbox mceneter">
-					<div class="maplist">
-						{dede:datalist}
-						<table class="table" cellspacing="1">
-							<?php
-							if (!empty($fields))
+		<?php pasterTempletDiy('header.htm');?>
+		<div class="container py-3">
+			<div class="ctitle">
+				<nav class="navbar navbar-expand-lg">
+					<ul class="navbar-nav mr-auto mt-2">
+						<li class="nav-item">
+							<h3><?php echo $diy->name;?>内容列表</h3>
+						</li>
+					</ul>
+					<span class="navbar-text"><a href="diy.php?action=post&diyid=<?php echo $diy->diyid;?>" class="btn btn-success btn-sm">发布信息</a></span>
+				</nav>
+			</div>
+			<div class="cbox mceneter">
+				<div class="maplist">
+					{dede:datalist}
+					<table class="table" cellspacing="1">
+						<?php
+						if (!empty($fields))
+						{
+							echo '<tbody>';
+							echo '<tr><td bgcolor="#eeeeee" width="20%">id</td>';
+							echo '<td bgcolor="#eeeeee"><div class="left">'.$fields['id'].'</div><div class="right"><a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank">详细</a></div></td></tr>';
+							foreach($fieldlist as $field=>$fielddata)
 							{
-								echo '<tbody>';
-								echo '<tr><td bgcolor="#eeeeee" width="20%">id</td>';
-								echo '<td bgcolor="#eeeeee"><div class="left">'.$fields['id'].'</div><div class="right"><a href="diy.php?action=view&diyid='.$diy->diyid.'&id='.$fields['id'].'" target="_blank">详细</a></div></td></tr>';
-								foreach($fieldlist as $field=>$fielddata)
+								if ($fields[$field]=='') continue;
+								if ($fielddata[1]=='img')
 								{
-									if ($fields[$field]=='') continue;
-									if ($fielddata[1]=='img')
-									{
-										$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif'> 图片附件</a>";
-									}
-									else if ($fielddata[1]=='addon')
-									{
-										$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif'> 其它附件</a>";
-									} else {
-										if ($fielddata[1]=='htmltext') $fields[$field] = html2text($fields[$field]);
-										else $fields[$field] = dede_htmlspecialchars($fields[$field]);
-										if ( strlen($fields[$field]) > 250 )
-										{
-											$fields[$field] = cn_substr( $fields[$field], 250).'';
-										}
-									}
-									echo "<tr><td>{$fielddata[0]}</td><td>{$fields[$field]}</td></tr>";
+									$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif'> 图片附件</a>";
 								}
-								echo '</tbody>';
-							} else {
-								echo "<tr><td>暂无记录</td></tr>";
+								else if ($fielddata[1]=='addon')
+								{
+									$fields[$field] = "<a href='{$fields[$field]}' target='_blank'><img src='img/addon.gif'> 其它附件</a>";
+								} else {
+									if ($fielddata[1]=='htmltext') $fields[$field] = html2text($fields[$field]);
+									else $fields[$field] = dede_htmlspecialchars($fields[$field]);
+									if ( strlen($fields[$field]) > 250 )
+									{
+										$fields[$field] = cn_substr( $fields[$field], 250).'';
+									}
+								}
+								echo "<tr><td>{$fielddata[0]}</td><td>{$fields[$field]}</td></tr>";
 							}
-							?>
-						</table>
-						{/dede:datalist}
-						<table class="listtable" cellspacing="2">
-							<tr>
-								<td>{dede:pagelist listsize='6'/}</td>
-							</tr>
-						</table>
-					</div>
+							echo '</tbody>';
+						} else {
+							echo "<tr><td>暂无记录</td></tr>";
+						}
+						?>
+					</table>
+					{/dede:datalist}
+					<table class="listtable" cellspacing="2">
+						<tr>
+							<td>{dede:pagelist listsize='6'/}</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>

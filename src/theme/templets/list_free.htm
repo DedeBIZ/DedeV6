@@ -14,34 +14,38 @@
 	</head>
 	<body>
 		{dede:include filename='header.htm'/}
-		<div class="container">
-			<div class="position">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb mt-3">
-						<li class="breadcrumb-item">当前位置</li>
-						{dede:field name='position'/}
-					</ol>
-				</nav>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="position rounded">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">当前位置</li>
+								{dede:field name='position'/}
+							</ol>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
-		<main class="container">
+		<main class="container py-3">
 			<div class="row">
 				<div class="col-md-8 list-main">
 					<ul class="list-unstyled items">
 						{dede:freelist/}
 					</ul>
 					<nav>
-						<ul class="pagination justify-content-center py-2">
+						<ul class="pagination justify-content-center py-3">
 							{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
 						</ul>
 					</nav>
 				</div>
-				<aside class="col-md-4 article-sidebar">
+				<div class="col-md-4">
 					{dede:include comment='栏目列表' filename='widget_channels.htm'/}
 					{dede:include comment='推荐内容' filename='widget_recommend.htm'/}
 					{dede:include comment='热点内容' filename='widget_hot.htm'/}
 					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
-				</aside>
+				</div>
 			</div>
 		</main>
 		{dede:include filename='footer.htm'/}

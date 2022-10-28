@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
-		<link rel="stylesheet" href="css/menu.css">
+		<link rel="stylesheet" href="css/menu.min.css">
 		<script src="../static/web/js/jquery.min.js"></script>
 	</head>
 	<body class="showmenu">
@@ -24,9 +24,9 @@
 				<span class="top-name"><a href="index_body.php" target="main"><?php echo cn_substr($cfg_webname,8);?></a></span>
 				<span class="top-version">V<?php echo $cfg_version_detail;?></span>
 				<?php if (DEDEBIZ_SAFE_MODE){?>
-				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs">安全</a>
+				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-primary btn-xs btn-version">安全</a>
 				<?php } else {?>
-				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs">开发</a>
+				<a href="index_body.php?dopost=safe_mode" target="main" class="btn btn-warning btn-xs btn-version">开发</a>
 				<?php }?>
 			</div>
 			<div class="top-item">
@@ -43,7 +43,7 @@
 					<li><a href="../" target="_blank" title="预览主页"><i class="fa fa-eye"></i></a></li>
 					<li>
 						<form action="action_search.php" method="post" target="main">
-							<input type="text" name="keyword" placeholder="功能搜索" class="allsearch">
+							<input type="text" name="keyword" placeholder="功能搜索" class="search-input">
 							<button type="submit" class="search"><i class="fa fa-search"></i> </button>
 						</form>
 					</li>

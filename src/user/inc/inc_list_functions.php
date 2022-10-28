@@ -39,9 +39,9 @@ function IsCommendArchives($iscommend)
 function GetCommendTitle($title, $iscommend)
 {
     if (preg_match('/c/', $iscommend)) {
-        $title = "$title<span class='text-danger'>(推荐)</span>";
+        $title = "$title <span class=\"btn btn-outline-success btn-xs\">推荐</span>";
     }
-    return "$title";
+    return '$title';
 }
 $GLOBALS['RndTrunID'] = 1;
 /**
@@ -71,7 +71,7 @@ function CheckPic($picname)
     if ($picname != "") {
         return $picname;
     } else {
-        return "images/dfpic.gif";
+        return "/static/web/img/thumbnail.jpg";
     }
 }
 /**
@@ -83,11 +83,11 @@ function CheckPic($picname)
 function IsHtmlArchives($ismake)
 {
     if ($ismake == 1) {
-        return "已生成";
+        return " <span class=\"btn btn-outline-warning btn-xs\">已生成</span>";
     } else if ($ismake == -1) {
-        return "仅动态";
+        return " <span class=\"btn btn-outline-warning btn-xs\">仅动态</span>";
     } else {
-        return "<span class='text-danger'>未生成</span>";
+        return " <span class=\"btn btn-outline-danger btn-xs\">未生成</span>";
     }
 }
 /**
@@ -100,7 +100,7 @@ function GetRankName($arcrank)
 {
     global $arcArray;
     if (!is_array($arcArray)) {
-        $dsql->SetQuery("SELECT * FROM #@__arcrank");
+        $dsql->SetQuery("SELECT * FROM `#@__arcrank`");
         $dsql->Execute();
         while ($row = $dsql->GetObject()) {
             $arcArray[$row->rank] = $row->membername;
@@ -121,8 +121,8 @@ function GetRankName($arcrank)
 function IsPicArchives($picname)
 {
     if ($picname != "") {
-        return "<span class='text-danger'>[图]</span>";
+        return " <span class=\"btn btn-outline-warning btn-xs\">图片</span>";
     } else {
-        return "";
+        return '';
     }
 }

@@ -68,34 +68,38 @@
 	</head>
 	<body>
 		{dede:include filename='header.htm'/}
-		<div class="container">
-			<div class="position">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb mt-3">
-						<li class="breadcrumb-item">当前位置</li>
-						{dede:field name='position'/}
-					</ol>
-				</nav>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="position rounded">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">当前位置</li>
+								{dede:field name='position'/}
+							</ol>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
-		<main class="container">
+		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-8 article-main">
-					<h2 class="mt-0 mb-3 zixue">{dede:field.title/}</h2>
+				<div class="col-md-9 article-main">
+					<h2>{dede:field.title/}</h2>
 					<div class="article-meta">
-						<small>时间：</small>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}
-						<small>来源：</small>{dede:field.source/}
-						<small>作者：</small>{dede:field.writer/}
-						<small>点击：</small><span id="_count">...</span>次
+						<span>时间：{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
+						<span>来源：{dede:field.source/}</span>
+						<span>作者：{dede:field.writer/}</span>
+						<span>点击：<i id="_count">...</i>次</span>
 					</div>
-					<div class="picbox">
+					<div class="picbox py-3">
 						{dede:field name='pagestyle' alt='根据不同的页面风格输出不同的头信息' runphp='yes'}
 						if (@me==3) {
 						@me = '<ul class="e8">';
 							}
 							else if (@me==2) {
 							@me = "
-							<div class='mt-3 mb-3 text-center'>
+							<div class='text-center mb-3'>
 								<a href='javascript:dPlayBig();' class='btn btn-success btn-sm'>原始图片</a>
 								<a href='javascript:dPlayPre();' class='btn btn-success btn-sm'>上一张</a>
 								<a href='javascript:dPlayNext();' class='btn btn-success btn-sm'>下一张</a>
@@ -109,12 +113,8 @@
 							<!-- 如果使用的是多页单图模式幻灯，把href里的链接改为 javascript:dPlayNext(); 表示点击看下一页 -->
 							{dede:field name='imgurls' alt='图片输出区'}
 								[field:pagestyle runphp='yes'] @me= (@me==3 ? '<li>' : '');[/field:pagestyle]
-								<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ] @me=(@me==3 ? 'class="pic"' : '' ); [/field:pagestyle]>
-									<img src='[field:imgsrc/]' id='bigimg' [field:imgwidth/] alt='[field:alttext/]'>
-								</a>
-								<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ]@me=(@me==3 ? 'class="title"' : '' );[/field:pagestyle]>
-									[field:title/]
-								</a>
+								<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ] @me=(@me==3 ? 'class="pic"' : '' ); [/field:pagestyle]><img src='[field:imgsrc/]' id='bigimg' [field:imgwidth/] alt='[field:alttext/]'></a>
+								<a href='[field:linkurl/]' [field:pagestyle runphp='yes' ]@me=(@me==3 ? 'class="title"' : '' );[/field:pagestyle]>[field:title/]</a>
 								[field:pagestyle runphp='yes'] @me = (@me==3 ? '</li>' : ''); [/field:pagestyle]
 							{/dede:field}
 							{dede:field name='pagestyle' alt='根据不同的风格输出不同的结尾信息' runphp='yes'}
@@ -132,44 +132,33 @@
 						}
 						{/dede:field}
 					</div>
-					<div class="body py-3">{dede:field.body/}（责任编辑：{dede:adminname/}）</div>
+					<div class="py-3">{dede:field.body/}</div>
+					<div class="py-3">责任编辑：{dede:adminname/}</div>
 					<div class="clearfix"></div>
-					{dede:include comment='文档顶踩模块' filename='widget_article_digg.htm'/}
 					<div class="row">
-						<div class="col-md-4 prenext pt-2">
-							<div class="pagination-previous">{dede:prenext get='pre'/}</div>
-							<div class="pagination-next mt-2">{dede:prenext get='next'/}</div>
+						<div class="col-md-4 prenext">
+							<div class="pagination-previous mb-3">{dede:prenext get='pre'/}</div>
+							<div class="pagination-next">{dede:prenext get='next'/}</div>
 						</div>
 						<div class="col-md-8">
 							<div class="row actbox">
 								<ul>
-									<li>
-										<i class="fa fa-star-o"></i>
-										<a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a>
-									</li>
-									<li>
-										<i class="fa fa-bug"></i>
-										<a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a>
-									</li>
-									<li>
-										<i class="fa fa-thumbs-o-up"></i>
-										<a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a>
-									</li>
-									<li>
-										<i class="fa fa-print"></i>
-										<a href="javascript:;" onClick="window.print();">打印</a>
-									</li>
+									<li><i class="fa fa-star-o"></i><a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
+									<li><i class="fa fa-bug"></i><a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a></li>
+									<li><i class="fa fa-thumbs-o-up"></i><a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
+									<li><i class="fa fa-print"></i><a href="javascript:;" onClick="window.print();">打印</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
+					{dede:include comment='文档顶踩模块' filename='widget_article_digg.htm'/}
 					{dede:include comment='文档评论模块' file='widget_article_feedback.htm'/}
 				</div>
-				<aside class="col-md-4 article-sidebar">
+				<div class="col-md-3">
 					{dede:include comment='推荐内容' filename='widget_recommend.htm'/}
 					{dede:include comment='热点内容' filename='widget_hot.htm'/}
 					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
-				</aside>
+				</div>
 			</div>
 		</main>
 		{dede:include filename='footer.htm'/}

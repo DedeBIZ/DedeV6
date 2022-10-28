@@ -102,15 +102,15 @@
               <td bgcolor="#f8f8f8"></td>
             </tr>
             <tr>
-              <td width="260" class="bline">是否支持投稿：</td>
-              <td class="bline">
+              <td width="260" class="biz-td">是否支持投稿：</td>
+              <td class="biz-td">
                 <label><input type="radio" name="issend" value="1" checked="1"> 支持</label>
                 <label><input type="radio" name="issend" value="0"> 不支持</label>
               </td>
             </tr>
             <tr>
-              <td class="bline">目录保存位置：</td>
-              <td class="bline">
+              <td class="biz-td">目录保存位置：</td>
+              <td class="biz-td">
                 <label><input type="radio" name="referpath" value="parent" checked="1"> 默认HMTL目录（
                 <?php
                 $pardir = '{cmspath}'.$cfg_arcdir;
@@ -124,8 +124,8 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">所属栏目：</td>
-              <td class="bline">
+              <td class="biz-td">所属栏目：</td>
+              <td class="biz-td">
                 <select name="reid" onchange="showSeltype(this)" style="width:160px">
                   <option value="0">选择所属目录</option>
                   <?php echo $typeOptions;?>
@@ -133,8 +133,8 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">内容模型：</td>
-              <td class="bline"><select name="channeltype" id="channeltype" onChange="ParTemplet(this)" style="width:160px">
+              <td class="biz-td">内容模型：</td>
+              <td class="biz-td"><select name="channeltype" id="channeltype" onChange="ParTemplet(this)" style="width:160px">
                 <?php
                 foreach($channelArray as $k=>$arr)
                 {
@@ -146,16 +146,16 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">栏目列表选项：</td>
-              <td class="bline">
+              <td class="biz-td">栏目列表选项：</td>
+              <td class="biz-td">
                 <label><input type="radio" name="isdefault" value="1" checked="1"> 链接到默认页</label>
                 <label><input type="radio" name="isdefault" value="0"> 链接到列表第一页</label>
                 <label><input type="radio" name="isdefault" value="-1"> 使用动态页</label>
               </td>
             </tr>
             <tr>
-              <td class="bline">默认页的名称：</td>
-              <td class="bline"><input type="text" name="defaultname" value="index.html" class="pubinputs" style="width:260px"></td>
+              <td class="biz-td">默认页的名称：</td>
+              <td class="biz-td"><input type="text" name="defaultname" value="index.html" class="pubinputs" style="width:260px"></td>
             </tr>
             <tr id="helpvar2" style="display:none">
               <td bgcolor="#f8f8f8">支持变量：</td>
@@ -169,8 +169,8 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">文档命名规则：</td>
-              <td class="bline">
+              <td class="biz-td">文档命名规则：</td>
+              <td class="biz-td">
                 <input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" style="width:260px">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')" style="cursor:pointer"></i> 
               </td>

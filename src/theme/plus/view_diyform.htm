@@ -10,41 +10,39 @@
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="main mceneter">
-			<?php pasterTempletDiy('header.htm');?>
-			<div class="container">
-				<div class="ctitle">
-					<h3><?php echo $diy->name;?>详细内容</h3>
-				</div>
-				<div class="cbox mceneter">
-					<div class="maplist">
-						<table cellspacing="1" class="table">
-							<?php
-							echo '<tbody>';
-							echo '<tr><td bgcolor="#f8f8f8" width="20%">id</td><td bgcolor="#f8f8f8">'.$row['id'].'</td></tr>';
-							$allowhtml = array('htmltext');
-							foreach($fieldlist as $field=>$fielddata)
+		<?php pasterTempletDiy('header.htm');?>
+		<div class="container py-3">
+			<div class="ctitle">
+				<h3><?php echo $diy->name;?>详细内容</h3>
+			</div>
+			<div class="cbox mceneter">
+				<div class="maplist">
+					<table cellspacing="1" class="table">
+						<?php
+						echo '<tbody>';
+						echo '<tr><td bgcolor="#f8f8f8" width="20%">id</td><td bgcolor="#f8f8f8">'.$row['id'].'</td></tr>';
+						$allowhtml = array('htmltext');
+						foreach($fieldlist as $field=>$fielddata)
+						{
+							if ($row[$field]=='') continue;
+							if ($fielddata[1]=='img')
 							{
-								if ($row[$field]=='') continue;
-								if ($fielddata[1]=='img')
-								{
-									$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='{$row[$field]}'/></a>";
-									}
-									else if ($fielddata[1]=='addon')
-									{
-										$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='img/addon.gif'> 相关附件</a>";
-									} else {
-										if (!in_array($fielddata[1], $allowhtml))
-										{
-											$row[$field] = htmlspecialchars($row[$field]);
-										}
-									}
-									echo '<tr><td>'.$fielddata[0].'</td><td>'.$row[$field].'</td></tr>';
+								$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='{$row[$field]}'/></a>";
 								}
-								echo '</tbody>';
-							?>
-						</table>
-					</div>
+								else if ($fielddata[1]=='addon')
+								{
+									$row[$field] = "<a href='{$row[$field]}' target='_blank'><img src='img/addon.gif'> 相关附件</a>";
+								} else {
+									if (!in_array($fielddata[1], $allowhtml))
+									{
+										$row[$field] = htmlspecialchars($row[$field]);
+									}
+								}
+								echo '<tr><td>'.$fielddata[0].'</td><td>'.$row[$field].'</td></tr>';
+							}
+							echo '</tbody>';
+						?>
+					</table>
 				</div>
 			</div>
 		</div>

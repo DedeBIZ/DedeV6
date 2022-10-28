@@ -282,12 +282,12 @@ else if ($dopost == 'moveArchives') {
         echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
         ?>
         <tr>
-            <td width="90" class="bline"> 目标栏目：</td>
-            <td class="bline"><?php echo $typeOptions;?></td>
+            <td width="90" class="biz-td"> 目标栏目：</td>
+            <td class="biz-td"><?php echo $typeOptions;?></td>
         </tr>
         <tr>
-            <td width="90" class="bline"> 文档id：</td>
-            <td class="bline">
+            <td width="90" class="biz-td"> 文档id：</td>
+            <td class="biz-td">
                 <input type="text" name="tmpids" value="<?php echo $qstr;?>" style="width:320px;overflow:hidden"><br>
                 移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
             </td>
@@ -521,8 +521,8 @@ else if ($dopost == 'quickEdit') {
     echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
     ?>
     <tr>
-        <td width="90" class="bline"> 所属栏目：</td>
-        <td class="bline">
+        <td width="90" class="biz-td"> 所属栏目：</td>
+        <td class="biz-td">
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
             echo "<select name='typeid' style='width:320px'>";
@@ -533,8 +533,8 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline"> 属性：</td>
-        <td class="bline">
+        <td width="90" class="biz-td"> 属性：</td>
+        <td class="biz-td">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -550,16 +550,16 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline"> 标题：</td>
-        <td class="bline"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" style="width:320px"></td>
+        <td width="90" class="biz-td"> 标题：</td>
+        <td class="biz-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" style="width:320px"></td>
     </tr>
     <tr>
-        <td width="90" class="bline"> 简略标题：</td>
-        <td class="bline"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" style="width:320px"></td>
+        <td width="90" class="biz-td"> 简略标题：</td>
+        <td class="biz-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" style="width:320px"></td>
     </tr>
     <tr>
-        <td width="90" class="bline"> 阅读权限：</td>
-        <td class="bline">
+        <td width="90" class="biz-td"> 阅读权限：</td>
+        <td class="biz-td">
             <select name="arcrank" id="arcrank" style="width:100px">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>
                 <?php echo $arcRow["rankname"] ?> </option>
@@ -576,8 +576,8 @@ else if ($dopost == 'quickEdit') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline"> 关键词：</td>
-        <td class="bline"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" style="width:320px"></td>
+        <td width="90" class="biz-td"> 关键词：</td>
+        <td class="biz-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" style="width:320px"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">
@@ -820,8 +820,8 @@ else if ($dopost == 'attsDlg') {
     echo "<table width='100%' style='display:inline-block;padding:2px;z-index:9000'>";
 ?>
     <tr>
-        <td width="90" class="bline"> 属性：</td>
-        <td class="bline">
+        <td width="90" class="biz-td"> 属性：</td>
+        <td class="biz-td">
             <input type="hidden" name="oldflag" value="<?php echo $arcRow['flag'];?>">
             <?php
             $dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
@@ -834,8 +834,8 @@ else if ($dopost == 'attsDlg') {
         </td>
     </tr>
     <tr>
-        <td width="90" class="bline"> 文档id：</td>
-        <td class="bline"><input type="text" name="tmpids" value="<?php echo $qstr;?>" style="width:320px;overflow:hidden"></td>
+        <td width="90" class="biz-td"> 文档id：</td>
+        <td class="biz-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>" style="width:320px;overflow:hidden"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">

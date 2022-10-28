@@ -15,13 +15,13 @@
 		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
 		<main class="member">
 			<div class="pannel">
-				<div class="container">
+				<div class="container py-3">
 					<div class="row">
 						<div class="pannel-main col-md-12 mt-3 mb-3">
 							<div class="pannel-main-container">
 								<nav class="navbar navbar-expand-lg pr-0 pl-0">
 									<ol class="breadcrumb mb-0 mr-auto">
-										<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>">会员中心</a></li>
+										<li class="breadcrumb-item"><a href="<?php echo $cfg_memberurl;?>/">会员中心</a></li>
 										<li class="breadcrumb-item">修改<?php echo $row['title']?></li></li>
 									</ol>
 									<span class="navbar-text">
@@ -116,7 +116,7 @@
 												<tr>
 													<td>本地上传：<input type="text" name="imgfile<?php echo $j;?>" style="width:200px" maxlength="100" class="intxt"></td>
 													<td rowspan="3" align="center">
-														<div id="divpicview<?php echo $j;?>" class="divpre" style="height:5px"></div>
+														<div id="divpicview<?php echo $j;?>" class="divpre"></div>
 														<img src="<?php echo trim($ctag->GetInnerText());?>" id="picview<?php echo $j;?>" name="picview<?php echo $j;?>" style="width:128px;height:128px">
 													</td>
 												</tr>

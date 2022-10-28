@@ -51,7 +51,7 @@ if (!empty($noeditor)) {
     <style>
 html{background:#f8f8f8}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
-.linerow{border-bottom:1px solid #eee!important}
+.biz-td{border-bottom:1px solid #eee!important}
     </style>
 </head>
 <body class="bg">
@@ -90,12 +90,12 @@ html{background:#f8f8f8}
             </td>
         </tr>
         <tr>
-            <td colspan="3" class="linerow">点击选择的文件，红色字样的为刚上传的文件</td>
+            <td colspan="3" class="biz-td">点击选择的文件，红色字样的为刚上传的文件</td>
         </tr>
         <tr>
-            <td width="50%" class="linerow">选择文件</td>
-            <td width="20%" class="linerow">文件大小</td>
-            <td class="linerow">修改时间</td>
+            <td width="50%" class="biz-td">选择文件</td>
+            <td width="20%" class="biz-td">文件大小</td>
+            <td class="biz-td">修改时间</td>
         </tr>
         <?php
 		$dh = scandir($inpath);
@@ -122,17 +122,17 @@ html{background:#f8f8f8}
                 if ($activepath == "") continue;
                 $tmp = preg_replace("#[\/][^\/]*$#i", "", $activepath);
                 $line = "<tr>
-                <td class='linerow'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
-                <td colspan='2' class='linerow'>当前目录：$activepath</td>
+                <td class='biz-td'><a href='select_soft.php?f=$f&activepath=".urlencode($tmp).$addparm."'><img src='../../static/web/img/dir2.gif'>上级目录</a></td>
+                <td colspan='2' class='biz-td'>当前目录：$activepath</td>
                 </tr>\r\n";
                 echo $line;
             } else if (is_dir("$inpath/$file")) {
                 if (preg_match("#^_(.*)$#i", $file)) continue;
                 if (preg_match("#^\.(.*)$#i", $file)) continue;
                 $line = "<tr>
-                <td class='linerow'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/dir.gif'>$file</a></td>
-                <td class='linerow'></td>
-                <td class='linerow'></td>
+                <td class='biz-td'><a href=select_soft.php?f=$f&activepath=".urlencode("$activepath/$file").$addparm."><img src='../../static/web/img/dir.gif'>$file</a></td>
+                <td class='biz-td'></td>
+                <td class='biz-td'></td>
                 </tr>";
                 echo "$line";
             } else if (preg_match("#\.(zip|rar|tgr.gz)#i", $file)) {
@@ -142,12 +142,12 @@ html{background:#f8f8f8}
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
                 $line = "<tr>
-                <td class='linerow'>
+                <td class='biz-td'>
                     <img src='../../static/web/img/zip.gif'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='linerow'>$filesize KB</td>
-                <td class='linerow'>$filetime</td>
+                <td class='biz-td'>$filesize KB</td>
+                <td class='biz-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             } else {
@@ -157,12 +157,12 @@ html{background:#f8f8f8}
                 $reurl = preg_replace("#^\.\.#", "", $reurl);
                 $reurl = $reurl;
                 $line = "<tr>
-                <td class='linerow'>
+                <td class='biz-td'>
                     <img src='../../static/web/img/exe.gif'>
                     <a href=\"javascript:ReturnValue('$reurl');\" $lstyle>$file</a>
                 </td>
-                <td class='linerow'>$filesize KB</td>
-                <td class='linerow'>$filetime</td>
+                <td class='biz-td'>$filesize KB</td>
+                <td class='biz-td'>$filetime</td>
                 </tr>";
                 echo "$line";
             }

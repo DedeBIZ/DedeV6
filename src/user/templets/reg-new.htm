@@ -11,12 +11,11 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top.htm");?>
 		<?php include(DEDEMEMBER."/templets/header.htm");?>
 		<main class="login-from">
-			<div class="container">
+			<div class="container py-3">
 				<div class="login-area">
-					<h4 class="text-center py-2">会员注册</h4>
+					<h2 class="text-center mb-3">会员注册</h2>
 					<form method="post" action="reg_new.php" id="regUser" name="form2" onsubmit="return CheckSubmit();">
 						<input type="hidden" value="regbase" name="dopost">
 						<input type="hidden" value="1" name="step">
@@ -45,7 +44,7 @@
 							<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《用户注册条款》</a>、<a href="">《隐私保护条例》</a></label>
 						</div>
 						<button type="submit" class="btn btn-success btnLogin btn-sm">注册</button>
-						<a href="<?php echo $cfg_memberurl;?>login.php" class="btn btn-outline-success btnLogin mt-2 btn-sm">登录</a>
+						<a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btnLogin mt-2 btn-sm">登录</a>
 					</form>
 				</div>
 			</div>

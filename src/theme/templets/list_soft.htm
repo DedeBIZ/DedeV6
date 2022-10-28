@@ -14,52 +14,50 @@
 	</head>
 	<body>
 		{dede:include filename='header.htm'/}
-		<div class="container">
-			<div class="position">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb mt-3">
-						<li class="breadcrumb-item">当前位置</li>
-						{dede:field name='position'/}
-					</ol>
-				</nav>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="position rounded">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">当前位置</li>
+								{dede:field name='position'/}
+							</ol>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
-		<main class="container">
+		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-8 list-main">
+				<div class="col-md-9 list-main">
 					<ul class="list-unstyled items">
 						{dede:list pagesize='10'}
-						<li class="media border-bottom-dashed mt-2 py-2">
-							<a href="[field:arcurl/]"><img src="[field:litpic/]" class="mr-2" alt="[field:title/]"></a>
+						<li class="media border-bottom-dashed py-3">
+							<a href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]" class="mr-3"></a>
 							<div class="media-body row">
-								<div class="col-12 title">
-									<a href="[field:arcurl/]">
-										<h4 class="mt-0 mb-3">[field:title/]</h4>
-									</a>
+								<div class="col-md-12 title">
+									<a href="[field:arcurl/]"><h4 class="title">[field:title/]</h4></a>
 								</div>
-								<div class="col-12 description py-2">
+								<div class="col-md-12 description">
 									<a href="[field:arcurl/]">[field:description/]...</a>
 								</div>
-								<div class="col-12 addinfo">
-									上传日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 推荐级别：[field:softrank
-									function='GetRankStar(@me)'/] 软件语言：[field:language/]
-								</div>
+								<div class="col-md-12 addinfo">上传日期：[field:pubdate function="MyDate('Y-m-d', @me)"/] 推荐级别：[field:softrank
+									function='GetRankStar(@me)'/] 软件语言：[field:language/]</div>
 							</div>
 						</li>
 						{/dede:list}
 					</ul>
-					<nav>
-						<ul class="pagination justify-content-center py-2">
-							{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
-						</ul>
-					</nav>
+					<ul class="pagination justify-content-center py-3">
+						{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
+					</ul>
 				</div>
-				<aside class="col-md-4 article-sidebar">
+				<div class="col-md-3">
 					{dede:include comment='栏目列表' filename='widget_channels.htm'/}
 					{dede:include comment='推荐内容' filename='widget_recommend.htm'/}
 					{dede:include comment='热点内容' filename='widget_hot.htm'/}
 					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
-				</aside>
+				</div>
 			</div>
 		</main>
 		{dede:include filename='footer.htm'/}

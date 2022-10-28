@@ -16,7 +16,7 @@ require_once(DEDEINC."/typelink/typelink.class.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
 function IsCheck($st)
 {
-    return $st == 1 ? "[已审核]" : "<span class='text-danger'>[未审核]</span>";
+    return $st == 1 ? "<span class=\"btn btn-outline-success btn-xs\">已审核</span>" : "<span class=\"btn btn-outline-danger btn-xs\">未审核</span>";
 }
 function jsTrimjajx($str, $len)
 {
@@ -68,10 +68,8 @@ else if ($job == 'delall') {
 }
 //审核评论
 else if ($job == 'check') {
-
     $query = "UPDATE `#@__feedback` SET ischeck=1 WHERE id IN($ids) ";
     $dsql->ExecuteNoneQuery($query);
-
     $dquery = "SELECT * FROM `#@__feedback` WHERE id IN($ids)";
     $dsql->SetQuery($dquery);
     $dsql->Execute();
@@ -98,7 +96,6 @@ else {
         $addsql .= " AND fid={$fid} ";
     }
     $querystring = "SELECT * FROM `#@__feedback` WHERE msg LIKE '%$keyword%' $addsql ORDER BY dtime DESC";
-
     $dlist = new DataListCP();
     $dlist->pagesize = 30;
     $dlist->SetParameter('aid', $aid);

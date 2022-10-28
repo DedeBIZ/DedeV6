@@ -11,12 +11,11 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top.htm");?>
 		<?php include(DEDEMEMBER."/templets/header.htm");?>
 		<main class="login-from">
-			<div class="container">
+			<div class="container py-3">
 				<div class="login-area">
-					<h4 class="text-center py-2">欢迎登录</h4>
+					<h2 class="text-center mb-3">欢迎登录</h2>
 					<form name='form1' method='POST' action='<?php echo $cfg_memberurl;?>/index_do.php'>
 						<input type="hidden" name="fmdo" value="login">
 						<input type="hidden" name="dopost" value="login">
@@ -38,7 +37,7 @@
 						</div>
 						<button type="submit" class="btn btn-success btnLogin btn-sm">登录</button>
 						<a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success btnLogin mt-2 btn-sm">注册</a>
-						<a href="<?php echo $cfg_memberurl;?>resetpassword.php" class="text-dark">忘记密码</a>
+						<a href="<?php echo $cfg_memberurl;?>/resetpassword.php" class="text-dark">忘记密码</a>
 					</form>
 				</div>
 			</div>

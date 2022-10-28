@@ -65,7 +65,7 @@
 					<td hieght="26" colspan="2">
 					<?php
 					foreach ($helps as $key => $help) {
-						echo '<div class="coolbg np selbt" title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"> '.$key.' </a></div>'."";
+						echo '<div title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"  class="btn btn-success btn-sm">'.$key.'</a></div>'."";
 					}
 					?>
 					</td>

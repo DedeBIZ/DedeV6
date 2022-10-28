@@ -1,20 +1,20 @@
 main.login-from {
+	padding-top:5rem;
+	height:600px;
 	background-image:url(../img/member_bg.jpg);
 	background-repeat:no-repeat;
-	background-position:top center;
-	height:620px;
-	padding-top:5rem
+	background-position:top center
 }
 .login-area {
-	background-color:white;
-	max-width:500px;
+	float:right;
 	padding:1rem;
-	float:right
+	width:430px;
+	background:#fff
 }
 .login-area .btnLogin {
-	width:100%;
+	margin-left:0!important;
 	padding:.5rem;
-	margin-left:0!important
+	width:100%
 }
 .login-area small.des {
 	color:#B5B5B5
@@ -23,65 +23,50 @@ main.login-from {
 	color:#28a745
 }
 .copyright.light {
-	background-color:white
+	background:#fff
 }
 .flink,.flink a,.copyright.light,.copyright.light a {
 	color:#545b62
 }
-.member a {
-	color:#28a745
-}
-.member .member-actions {
-	font-size:16px
+.member-actions {
+	line-height:40px;
+	text-align:right
 }
 .member .member-logo {
-	border-radius:50%;
 	max-width:60px;
-	min-height:60px
-}
-.member-actions a {
-	margin-left:1rem;
-	line-height:40px
-}
-.member .member-rank a {
-	color:white
-}
-.member .member-info {
-	padding-top:3.5rem
+	min-height:60px;
+	border-radius:50%
 }
 .member .member-type span {
-	padding:.6rem;
 	position:relative;
+	padding:.6rem;
 	top:-12px
 }
 .member .pannel {
-	background-color:#F3F3F3
-}
-.member a.btn-success {
-	color:white
+	background:#f8f8f8
 }
 .member .pannel .dropdown {
 	display:inline-block;
 	margin-left:.25rem;
-	vertical-align:.25rem;
 	content:"";
 	border-top:.3em solid;
 	border-right:.3em solid transparent;
 	border-bottom:0;
-	border-left:.3em solid transparent
+	border-left:.3em solid transparent;
+	vertical-align:.25rem
 }
 .member .pannel .pannel-main .pannel-main-container {
 	padding:1rem;
-	background-color:white
+	background:#fff
 }
 .member .list-group-item.active a {
-	color:white
+	color:#fff
 }
 .member .member-menu .list-group-flush>.list-group-item {
 	cursor:pointer
 }
 .member .pannel-main .nav-link.active {
-	font-weight:bold
+	font-weight:600
 }
 .user-meter i {
 	font-size:24px!important
@@ -93,9 +78,10 @@ main.login-from {
 	border-radius:50%;
 	border:1px solid #dee2e6
 }
-@media only screen and (max-width:576px) {
+@media (max-width:576px) {
 	.login-area {
 	float:none;
-	margin:auto
+	margin:auto;
+	width:100%
 }
 }

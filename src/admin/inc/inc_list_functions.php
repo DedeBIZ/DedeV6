@@ -46,7 +46,7 @@ function IsCommendArchives($iscommend)
     }
     $sn = trim($sn);
     if ($sn == '') return '';
-    else return "<span class='text-danger'>[$sn]</span>";
+    else return " <span class=\"btn btn-outline-success btn-xs\">$sn</span>";
 }
 //获得推荐的标题
 function GetCommendTitle($title, $iscommend)
@@ -70,18 +70,18 @@ function CheckPic($picname)
     if ($picname != "") {
         return $picname;
     } else {
-        return "/static/web/img/thumbnail.jpg";
+        return '/static/web/img/thumbnail.jpg';
     }
 }
 //判断内容是否生成网页
 function IsHtmlArchives($ismake)
 {
     if ($ismake == 1) {
-        return "已生成";
+        return " <span class=\"btn btn-outline-warning btn-xs\">已生成</span>";
     } else if ($ismake == -1) {
-        return "仅动态";
+        return " <span class=\"btn btn-outline-warning btn-xs\">仅动态</span>";
     } else {
-        return "<span class='text-danger'>未生成</span>";
+        return " <span class=\"btn btn-outline-danger btn-xs\">未生成</span>";
     }
 }
 //获得内容的限定级别名称
@@ -89,7 +89,7 @@ function GetRankName($arcrank)
 {
     global $arcArray, $dsql;
     if (!is_array($arcArray)) {
-        $dsql->SetQuery("SELECT * FROM `#@__arcrank` ");
+        $dsql->SetQuery("SELECT * FROM `#@__arcrank`");
         $dsql->Execute();
         while ($row = $dsql->GetObject()) {
             $arcArray[$row->rank] = $row->membername;
@@ -105,7 +105,7 @@ function GetRankName($arcrank)
 function IsPicArchives($picname)
 {
     if ($picname != '') {
-        return "<span class='text-danger'>[图]</span>";
+        return " <span class=\"btn btn-outline-warning btn-xs\">图片</span>";
     } else {
         return '';
     }

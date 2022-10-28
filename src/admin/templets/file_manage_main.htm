@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <style>.linerow{border-bottom:1px solid #CBD8AC}</style>
+  <style>.biz-td{border-bottom:1px solid #CBD8AC}</style>
 </head>
 <body>
   <table width="98%" cellspacing="1" cellpadding="2" align="center" class="table maintable icon mt-3 mb-3">
@@ -91,7 +91,7 @@
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
           <td><a href='$activeurl/$file' target='_blank'><img src='$activeurl/$file'>$file</a></td>
           <td>$filesize KB</td>
-          <td align='center' class='linerow'>$filetime</td>
+          <td align='center' class='biz-td'>$filetime</td>
           <td>
             <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
             <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-trash'></i> 删除</a>
@@ -175,7 +175,7 @@
     		$line = "\n<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
           <td><a href='$activeurl/$file' target='_blank'><img src='../static/web/img/rm.gif'>$file</a></td>
           <td>$filesize KB</td>
-          <td align='center' class='linerow'>$filetime</td>
+          <td align='center' class='biz-td'>$filetime</td>
           <td>
             <a href='file_manage_view.php?fmdo=rename&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'><i class='fa fa-address-card-o'></i> 改名</a>
             <a href='file_manage_view.php?fmdo=del&filename=".urlencode($file)."&activepath=".urlencode($activepath)."' class='btn btn-success btn-sm'>  <i class='fa fa-trash'></i> 删除</a>

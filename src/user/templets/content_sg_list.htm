@@ -25,13 +25,13 @@
 		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
 		<main class="member">
 			<div class="pannel">
-				<div class="container">
+				<div class="container py-3">
 					<div class="row">
 						<?php
 						$_menu_conex = true;
 						?>
 						<?php include(DEDEMEMBER."/templets/menu.htm");?>
-						<div class="pannel-main col-md-9 mt-3 mb-3">
+						<div class="pannel-main col-md-9 mb-3">
 							<div class="pannel-main-container">
 								<nav class="navbar navbar-expand-lg pr-0 pl-0">
 									<ul class="navbar-nav mr-auto mt-2">
@@ -71,9 +71,9 @@
 												<td><?php echo $fields['typename'];?></td>
 												<td>
 													<?php
-													if ($fields['arcrank']>=0) echo "已审核";
+													if ($fields['arcrank']>=0) echo "<span class=\"btn btn-outline-success btn-xs\">已审核</span>";
 													else if ($fields['arcrank']==-2) echo "<span style='color:#007bff'>审核失败</span>";
-													else echo "<span class='text-danger'>未审核</span>";
+													else echo "<span class=\"btn btn-outline-danger btn-xs\">未审核</span>";
 													?>
 												</td>
 												<td><?php echo $fields['click'];?></td>

@@ -14,9 +14,9 @@
 	</head>
 	<body>
 		{dede:include filename='header.htm'/}
-		<main class="container mt-3">
+		<div class="container py-3">
 			<div class="row">
-				<div class="col-12 col-lg-9 litpics mb-3">
+				<div class="col-md-9 litpics">
 					<div class="row">
 						<div id="carouselIndex" class="col-12 carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
@@ -42,40 +42,42 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-12 col-lg-3 toutiao mb-3">
+				<div class="col-md-3 toutiao">
 					<div class="row">
-						<div class="col-12 card ddcard-normal">
-							<div class="card-header">
-								<div class="col-8 caption"><span>推荐头条</span></div>
-							
+				        <div class="col-md-12">
+							<div class="card ddcard-normal">
+								<div class="card-header">
+									<div class="row">
+										<div class="col-md-12 caption">
+											<span>推荐头条</span>
+										</div>
+									</div>
+								</div>
+								<ul class="list-group list-group-flush">
+									{dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
+									<li><i class="fa fa-bookmark-o mr-3"></i><a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>
+									{/dede:arclist}
+								</ul>
 							</div>
-							<ul class="list-group list-group-flush">
-								{dede:arclist flag='h' titlelen='100' row='7' orderby='pubdate'}
-								<li>
-									<i class="fa fa-bookmark-o"></i>
-									<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
-								</li>
-								{/dede:arclist}
-							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="col-12 col-lg-9">
+			</div>
+		</div>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-9">
 					<div class="row spec">
-						<div class="col-md-12">
-							<div class="dede-title mb-3">
-								<h4 class="dede">图文资讯</h4>
-							</div>
-						</div>
 						<div class="col-md-12 mb-3">
+							<h4 class="biz-title">图文资讯</h4>
+						</div>
+						<div class="col-md-12">
 							<div class="row row-cols-2 row-cols-md-4">
 								{dede:arclist row='4' orderby='pubdate' type='image.'}
 								<div class="col">
 									<div class="card border-0 image-item">
 										<a href="[field:arcurl/]" title="[field:fulltitle/]" class="text-body stretched-link"><img src="[field:litpic/]" class="card-img-top" alt="[field:fulltitle/]">
-											<div class="card-body">
-												<h6 class="card-title">[field:title/]</h6>
-											</div>
+											<div class="card-body"><h6 class="card-title">[field:title/]</h6></div>
 										</a>
 									</div>
 								</div>
@@ -89,20 +91,15 @@
 							<div class="card ddcard-normal">
 								<div class="card-header">
 									<div class="row">
-										<div class="col-6 caption">
+										<div class="col-md-6 caption">
 											<span><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></span>
 										</div>
-										<div class="col-6 d-flex justify-content-end more">
-											<a href="{dede:field name='typeurl'/}">更多</a>
-										</div>
+										<div class="col-md-6 d-flex justify-content-end more"><a href="{dede:field name='typeurl'/}">更多</a></div>
 									</div>
 								</div>
 								<ul class="list-group list-group-flush">
 									{dede:arclist titlelen='60' row='8'}
-									<li>
-										<i class="fa fa-bookmark-o"></i>
-										<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
-									</li>
+									<li><i class="fa fa-bookmark-o mr-3"></i><a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>
 									{/dede:arclist}
 								</ul>
 							</div>
@@ -110,14 +107,14 @@
 						{/dede:channelartlist}
 					</div>
 				</div>
-				<aside class="col-12 col-lg-3">
+				<div class="col-md-3">
 					{dede:include comment='推荐内容' filename='widget_recommend.htm'/}
 					{dede:include comment='热点内容' filename='widget_hot.htm'/}
 					{dede:include comment='投票' filename='widget_vote.htm'/}
 					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
-				</aside>
+				</div>
 			</div>
-		</main>
+		</div>
 		{dede:include filename='footer.htm'/}
 	</body>
 </html>

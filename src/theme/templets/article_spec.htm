@@ -16,34 +16,41 @@
 	</head>
 	<body>
 		{dede:include filename='header.htm'/}
-		<div class="container">
-			<div class="position">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb mt-3">
-						<li class="breadcrumb-item">当前位置</li>
-						{dede:field name='position'/}
-					</ol>
-				</nav>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="position rounded">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">当前位置</li>
+								{dede:field name='position'/}
+							</ol>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
-		<main class="container">
+		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-8 article-main">
-					<h2 class="mt-0 mb-3 zixue">{dede:field.title/}</h2>
+				<div class="col-md-9 article-main">
+					<h2 >{dede:field.title/}</h2>
 					<div class="article-meta">
-						<small>时间：</small>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}
-						<small>来源：</small>{dede:field.source/}
-						<small>作者：</small>{dede:field.writer/}
+						<span>时间：{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
+						<span>来源：{dede:field.source/}</span>
+						<span>作者：{dede:field.writer/}</span>
+						<span>点击：<i id="_count">...</i>次</span>
+						<div class="alert alert-success mt-3">{dede:softmsg/}</div>
 					</div>
-					<div class="speciallist row pt-2">{dede:field.note/}</div>
-					<div class="body py-3">{dede:field.body/}（责任编辑：{dede:adminname/}）</div>
+					<div class="speciallist row py-3">{dede:field.note/}</div>
+					<div class="py-3">{dede:field.body/}</div>
+					<div class="py-3">责任编辑：{dede:adminname/}</div>
 					<div class="clearfix"></div>
 				</div>
-				<aside class="col-md-4 article-sidebar">
+				<div class="col-md-3">
 					{dede:include comment='推荐内容' filename='widget_recommend.htm'/}
 					{dede:include comment='热点内容' filename='widget_hot.htm'/}
 					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
-				</aside>
+				</div>
 			</div>
 		</main>
 		{dede:include filename='footer.htm'/}

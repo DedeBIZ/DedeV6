@@ -14,44 +14,46 @@
 	</head>
 	<body>
 		{dede:include filename='header.htm'/}
-		<div class="container">
-			<div class="position">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb mt-3">
-						<li class="breadcrumb-item">当前位置</li>
-						<li class="breadcrumb-item"><a href="{dede:global.cfg_cmsurl/}/">主页</a></li>
-						<li class="breadcrumb-item">搜索 {dede:global name='keyword' function='RemoveXSS(@me)'/} 的结果</li>
-					</ol>
-				</nav>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="position rounded">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">当前位置</li>
+								<li class="breadcrumb-item"><a href="{dede:global.cfg_cmsurl/}/">主页</a></li>
+								<li class="breadcrumb-item">搜索{dede:global name='keyword' function='RemoveXSS(@me)'/}的结果</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
-		<main class="container">
+		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-8 list-main">
+				<div class="col-md-9 list-main">
 					<ul class="list-unstyled items">
 						{dede:list pagesize='10'}
 						<li class="media border-bottom-dashed">
-							<div class="media-body row mt-2 py-2">
-								<div class="col-12 caption">
-									<a href="[field:arcurl/]">
-										<h4 class="title">[field:code/] [field:title/]</h4>
-									</a>
+							<div class="media-body row py-3">
+								<div class="col-md-12 caption">
+									<a href="[field:arcurl/]"><h4 class="title">[field:code/] [field:title/]</h4></a>
 								</div>
-								<div class="col-12 description">
+								<div class="col-md-12 description">
 									<a href="[field:arcurl/]">[field:description/]...</a>
 								</div>
 							</div>
 						</li>
 						{/dede:list}
 					</ul>
-					<nav>
+					<ul class="pagination justify-content-center py-3">
 						{dede:pagelist listitem='info,index,end,pre,next,pageno' listsize='1'/}
-					</nav>
+					</ul>
 				</div>
-				<aside class="col-md-4 article-sidebar">
+				<div class="col-md-3">
 					{dede:include comment='推荐内容' filename='widget_recommend.htm'/}
 					{dede:include comment='热点内容' filename='widget_hot.htm'/}
-				</aside>
+				</div>
 			</div>
 		</main>
 		{dede:include filename='footer.htm'/}

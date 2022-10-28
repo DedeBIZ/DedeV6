@@ -1,44 +1,40 @@
-<div class="site-nav bg-light py-2">
+<div class="site-nav bg-white shadow-sm rounded py-3">
     <div class="container">
         <div class="row">
-            <div class="col-12 d-flex justify-content-end user" id="_login">
+            <div class="col-4 logo"><a href="/"><img src="/static/web/img/logo.png" alt="{dede:global.cfg_webname/}"></a></div>
+            <div class="col-8 text-right user-login" id="_login">
                 <a href="{dede:global.cfg_memberurl/}/login.php" class="btn btn-primary btn-sm">登录</a>
                 <a href="{dede:global.cfg_memberurl/}/index_do.php?fmdo=user&dopost=regnew" class="btn btn-success btn-sm ml-2">注册</a>
             </div>
         </div>
     </div>
 </div>
-<header class="container py-3">
-    <div class="row">  
-        <div class="col-12 col-sm-8 logo"><a href="{dede:global.cfg_cmsurl/}/"><img src="{dede:global.cfg_cmsurl/}/static/web/img/logo.png" alt="{dede:global.cfg_webname/}"></a></div>
-        <div class="col-12 col-sm-4 d-flex justify-content-end">
-            <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">                    
-                <input type="hidden" name="kwtype" value="0">
-                <input name="q" type="text" class="form-control" placeholder="输入搜索关键词">
-                <button type="submit" class="btn btn-sm"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </div>
-</header>
-<nav class="navbar navbar-expand-md navbar-dark bg-success zixue">
-    <div class="container">
-        <div class="row">
-            <a class="navbar-brand" href="javascript:;"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="展开导航">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbars">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{dede:global.cfg_cmsurl/}/">首页</a>
-                    </li>
-                    {dede:channel type='top' row='10' currentstyle="<li class='nav-item'><a class='nav-link active' href='~typelink~' ~rel~><span>~typename~</span></a></li>"}
-                    <li class="nav-item">
-                        <a class="nav-link" href="[field:typeurl/]">[field:typename/]</a>
-                    </li>
-                    {/dede:channel}
-                </ul>
+<div class="container py-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="navbar navbar-expand-md navbar-dark bg-success shadow-sm rounded">
+                <div class="col-md-9">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="展开导航">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbars">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"><a class="nav-link" href="{dede:global.cfg_cmsurl/}/">首页</a></li>
+                            {dede:channel type='top' row='10' currentstyle="<li class='nav-item'><a class='nav-link active' href='~typelink~' ~rel~><span>~typename~</span></a></li>"}
+                            <li class="nav-item"><a class="nav-link" href="[field:typeurl/]">[field:typename/]</a></li>
+                            {/dede:channel}
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <form class="search" name="formsearch" action="{dede:global.cfg_cmsurl/}/apps/search.php">
+                        <input type="hidden" name="kwtype" value="0">
+                        <input name="q" type="text" class="form-control" placeholder="输入搜索关键词">
+                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</nav>
+</div>

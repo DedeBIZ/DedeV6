@@ -57,8 +57,8 @@
             <input type="hidden" name="dopost" value="upload">
             <input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
             <tr>
-              <td width="260" class="bline">媒体类型：</td>
-              <td class="bline">
+              <td width="260" class="biz-td">媒体类型：</td>
+              <td class="biz-td">
                 <label><input type="radio" name="mediatype" value="1" checked="1"> 图片</label>
                 <label><input type="radio" name="mediatype" value="2"> FLASH</label>
                 <label><input type="radio" name="mediatype" value="3"> 视频音频</label>
@@ -66,24 +66,24 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">说明标题：</td>
-              <td class="bline"><input type="text" name="title" id="title" size="30" style="width:300px"></td>
+              <td class="biz-td">说明标题：</td>
+              <td class="biz-td"><input type="text" name="title" id="title" size="30" style="width:300px"></td>
             </tr>
             <tr>
-              <td class="bline">参数说明：</td>
-              <td class="bline" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
+              <td class="biz-td">参数说明：</td>
+              <td class="biz-td" colspan="2">图片不需要指定“宽”、“高”，其它附加参数仅方便多媒体文件管理，没其它含义</td>
             </tr>
             <tr>
-              <td class="bline">附加参数：</td>
-              <td class="bline">
+              <td class="biz-td">附加参数：</td>
+              <td class="biz-td">
                 宽：<input type="text" name="mediawidth" id="mediawidth" style="width:60px">（像素）
                 高：<input type="text" name="mediaheight" id="mediaheight" style="width:60px">（像素）
                 播放时间：<input type="text" name="playtime" id="mediawidth3" style="width:60px">（分钟）
               </td>
             </tr>
             <tr>
-              <td class="bline">上传文件：</td>
-              <td class="bline">
+              <td class="biz-td">上传文件：</td>
+              <td class="biz-td">
                 数量：<input type="text" name="picnum" id="picnum" value="5" style="width:60px">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="MakeUpload()">增加</button>
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="ResetUpload()">恢复</button>

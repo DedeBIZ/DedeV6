@@ -14,25 +14,27 @@
 	</head>
 	<body class="articleview">
 		{dede:include filename='header.htm'/}
-		<div class="container">
-			<div class="position">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb mt-3">
-						<li class="breadcrumb-item">当前位置</li>
-						<li class="breadcrumb-item"><a href="{dede:global.cfg_cmsurl/}/">主页</a></li>
-						<li class="breadcrumb-item">{dede:field name='title'/}</li>
-					</ol>
-				</nav>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="position rounded">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">当前位置</li>
+								<li class="breadcrumb-item"><a href="{dede:global.cfg_cmsurl/}/">主页</a></li>
+								<li class="breadcrumb-item">{dede:field name='title'/}</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
-		<main class="container">
+		<main class="container py-3">
 			<div class="row">
 				<div class="col-12 article-main">
-					<h2 class="mt-0 mb-3 zixue">{dede:field.title/}</h2>
-					<div class="body py-3">{dede:field.body/}</div>
-					<nav>
-						<ul class="pagination justify-content-center py-2">{dede:pagebreak/}</ul>
-					</nav>
+					<h2>{dede:field.title/}</h2>
+					<div class="py-3">{dede:field.body/}</div>
+					<ul class="pagination justify-content-center py-3">{dede:pagebreak/}</ul>
 					<div class="clearfix"></div>
 				</div>
 			</div>

@@ -28,20 +28,20 @@
           <input type="hidden" name="id" value="<?php echo $row['id']?>">
           <table width="98%" cellspacing="1" cellpadding="1" class="table table-borderless">
             <tr>
-              <td width="260"   class="bline">用户登录id：</td>
+              <td width="260"   class="biz-td">用户登录id：</td>
               <td><?php echo $row['userid']?></td>
             </tr>
             <tr>
-              <td class="bline">用户名称：</td>
-              <td class="bline"><input type="text" name="uname" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文档后显示责任编辑的名字）</td>
+              <td class="biz-td">用户名称：</td>
+              <td class="biz-td"><input type="text" name="uname" id="uname" size="16" value="<?php echo $row['uname']?>" style="width:260px">（发布文档后显示责任编辑的名字）</td>
             </tr>
             <tr>
-              <td class="bline">用户密码：</td>
-              <td class="bline"><input type="text" name="pwd" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
+              <td class="biz-td">用户密码：</td>
+              <td class="biz-td"><input type="text" name="pwd" id="pwd" size="16" style="width:260px">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
             </tr>
             <tr>
-              <td class="bline">用户类型：</td>
-              <td class="bline">
+              <td class="biz-td">用户类型：</td>
+              <td class="biz-td">
                 <select name="usertype" style="width:160px">
                 <?php
                 $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
@@ -56,8 +56,8 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">负责频道：</td>
-              <td class="bline">
+              <td class="biz-td">负责频道：</td>
+              <td class="biz-td">
                 <select name="typeids[]" id="typeid" size="10" style="width:260px;height:200px" multiple="true">
                   <option value="0" class="alltype">所有频道</option>
                   <?php echo $typeOptions?>
@@ -65,16 +65,16 @@
               </td>
             </tr>
             <tr>
-              <td class="bline">真实姓名：</td>
-              <td class="bline"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" style="width:260px"></td>
+              <td class="biz-td">真实姓名：</td>
+              <td class="biz-td"><input type="text" name="tname" id="tname" value="<?php echo $row['tname']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td class="bline">电子邮箱：</td>
-              <td class="bline"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
+              <td class="biz-td">电子邮箱：</td>
+              <td class="biz-td"><input type="text" name="email" id="email" value="<?php echo $row['email']?>" style="width:260px"></td>
             </tr>
             <tr>
-              <td class="bline">验证安全码：</td>
-              <td class="bline">
+              <td class="biz-td">验证安全码：</td>
+              <td class="biz-td">
                 <input type="text" name="safecode" id="safecode" style="width:260px">
                 <input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class='text-danger'><?php echo $safecode;  ?></span>）
               </td>

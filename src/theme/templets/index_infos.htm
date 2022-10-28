@@ -14,19 +14,23 @@
 	</head>
 	<body>
 		{dede:include filename='header.htm'/}
-		<div class="container">
-			<div class="position">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb mt-3">
-						<li class="breadcrumb-item">当前位置</li>
-						{dede:field name='position'/}
-					</ol>
-				</nav>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="position rounded">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">当前位置</li>
+								{dede:field name='position'/}
+							</ol>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
-		<main class="container">
+		<main class="container py-3">
 			<div class="row">
-				<div class="col-12 col-lg-9 index-left">
+				<div class="col-md-9">
 					<div class="row">
 						{dede:channelartlist}
 						<div class="col-md-6 mb-3">
@@ -43,10 +47,7 @@
 								</div>
 								<ul class="list-group list-group-flush">
 									{dede:arclistsg titlelen='60' row='8'}
-									<li>
-										<i class="fa fa-bookmark-o"></i>
-										<a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a>
-									</li>
+									<li><i class="fa fa-bookmark-o mr-3"></i><a title="[field:fulltitle/]" href="[field:arcurl/]">[field:title/]</a></li>
 									{/dede:arclistsg}
 								</ul>
 							</div>
@@ -54,11 +55,11 @@
 						{/dede:channelartlist}
 					</div>
 				</div>
-				<aside class="col-12 col-lg-3">
+				<div class="col-md-3">
 					{dede:include comment='推荐内容' filename='widget_recommend_sg.htm'/}
 					{dede:include comment='热点内容' filename='widget_hot_sg.htm'/}
 					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
-				</aside>
+				</div>
 			</div>
 		</main>
 		{dede:include filename='footer.htm'/}

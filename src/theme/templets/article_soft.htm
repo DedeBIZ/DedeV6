@@ -15,41 +15,48 @@
 	</head>
 	<body>
 		{dede:include filename='header.htm'/}
-		<div class="container">
-			<div class="position">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb mt-3">
-						<li class="breadcrumb-item">当前位置</li>
-						{dede:field name='position'/}
-					</ol>
-				</nav>
+		<div class="container py-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="position rounded">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">当前位置</li>
+								{dede:field name='position'/}
+							</ol>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
-		<main class="container">
+		<main class="container py-3">
 			<div class="row">
-				<div class="col-md-8 article-main">
-					<h2 class="mt-0 mb-3 zixue">{dede:field.title/}</h2>
-					<div class="body py-3">
-						<div class="float-right">{dede:field name='image'/}</div>
-						<p><small>软件类型：</small><span>{dede:field.softtype/}</span></p>
-						<p><small>授权方式：</small><span>{dede:field.accredit/}</span></p>
-						<p><small>界面语言：</small><span>{dede:field.language/}</span></p>
-						<p><small>软件大小：</small><span>{dede:field.softsize/}</span></p>
-						<p><small>文件类型：</small><span>{dede:field.filetype/}</span></p>
-						<p><small>运行环境：</small><span>{dede:field.os/}</span></p>
-						<p><small>软件等级：</small><span>{dede:field.softrank function='GetRankStar(@me)'/}</span></p>
-						<p><small>发布时间：</small><span>{dede:field.pubdate function="GetDateMk('@me')"/}</span></p>
-						<p><small>官方网址：</small><span>{dede:field.officialurl/}</span></p>
-						<p><small>演示网址：</small><span>{dede:field.officialdemo/}</span></p>
-						<p><small>下载次数：</small>
-							<span>
-								<script src="{dede:field.phpurl/}/disdls.php?aid={dede:field.id/}"></script>
-							</span>
-						</p>
-						<p><small>详细介绍：</small><span>{dede:field.introduce/}</span></p>
-						<p>下载说明</p>
-						<div class="alert alert-success">{dede:softmsg/}</div>
-						<p>下载地址</p>
+				<div class="col-md-9 article-main">
+					<h2 >{dede:field.title/}</h2>
+					<div class="article-meta">
+						<span>时间：{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
+						<span>来源：{dede:field.source/}</span>
+						<span>作者：{dede:field.writer/}</span>
+						<span>点击：<i id="_count">...</i>次</span>
+						<div class="alert alert-success mt-3">{dede:softmsg/}</div>
+					</div>
+					<div class="py-3">{dede:field name='image'/}</div>
+					<div class="py-3">
+						<p>软件类型：{dede:field.softtype/}</p>
+						<p>授权方式：{dede:field.accredit/}</p>
+						<p>界面语言：{dede:field.language/}</p>
+						<p>软件大小：{dede:field.softsize/}</p>
+						<p>文件类型：{dede:field.filetype/}</p>
+						<p>运行环境：{dede:field.os/}</p>
+						<p>软件等级：{dede:field.softrank function='GetRankStar(@me)'/}</p>
+						<p>发布时间：{dede:field.pubdate function="GetDateMk('@me')"/}</p>
+						<p>官方网址：{dede:field.officialurl/}</p>
+						<p>演示网址：{dede:field.officialdemo/}</p>
+						<p>下载次数：<script src="{dede:field.phpurl/}/disdls.php?aid={dede:field.id/}"></script></p>
+					</div>
+					<div class="py-3">{dede:field name='introduce'/}</div>
+					<div class="py-3">
+						<h4>下载地址</h4>
 						<ul class="downurllist">
 							{dede:field name='softlinks'/}
 						</ul>
@@ -57,40 +64,28 @@
 					<div class="clearfix"></div>
 					{dede:include comment='文档顶踩模块' filename='widget_article_digg.htm'/}
 					<div class="row">
-						<div class="col-md-4 prenext pt-2">
-							<div class="pagination-previous">{dede:prenext get='pre'/}</div>
-							<div class="pagination-next mt-2">{dede:prenext get='next'/}</div>
+						<div class="col-md-4 prenext">
+							<div class="pagination-previous mb-3">{dede:prenext get='pre'/}</div>
+							<div class="pagination-next">{dede:prenext get='next'/}</div>
 						</div>
 						<div class="col-md-8">
 							<div class="row actbox">
 								<ul>
-									<li>
-										<i class="fa fa-star-o"></i>
-										<a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a>
-									</li>
-									<li>
-										<i class="fa fa-bug"></i>
-										<a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a>
-									</li>
-									<li>
-										<i class="fa fa-thumbs-o-up"></i>
-										<a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a>
-									</li>
-									<li>
-										<i class="fa fa-print"></i>
-										<a href="javascript:;" onClick="window.print();">打印</a>
-									</li>
+									<li><i class="fa fa-star-o"></i><a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
+									<li><i class="fa fa-bug"></i><a href="javascript:ErrorAddSave({dede:field.id/}, '{dede:field.title/}');">挑错</a></li>
+									<li><i class="fa fa-thumbs-o-up"></i><a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
+									<li><i class="fa fa-print"></i><a href="javascript:;" onClick="window.print();">打印</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					{dede:include comment='文档评论模块' file='widget_article_feedback.htm'/}
 				</div>
-				<aside class="col-md-4 article-sidebar">
+				<div class="col-md-3">
 					{dede:include comment='推荐内容' filename='widget_recommend.htm'/}
 					{dede:include comment='热点内容' filename='widget_hot.htm'/}
 					{dede:include comment='QR二维码' filename='widget_qrcode.htm'/}
-				</aside>
+				</div>
 			</div>
 		</main>
 		{dede:include filename='footer.htm'/}

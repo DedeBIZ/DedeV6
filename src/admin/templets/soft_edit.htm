@@ -60,7 +60,7 @@
     </table>
     <table width="98%" align="center" cellpadding="2" cellspacing="2" id="needset" class="biz-border">
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文档标题：</td>
@@ -72,7 +72,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 自定义属性：</td>
@@ -96,7 +96,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
+        <td class="biz-td" id="redirecturltr" style="display:<?php echo (empty($addRow['redirecturl']) ? 'none' : 'block');?>">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
@@ -106,7 +106,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
@@ -118,7 +118,7 @@
         </td>
       </tr>
       <tr id="pictable">
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
@@ -135,7 +135,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 来源：</td>
@@ -153,7 +153,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 发布栏目：</td>
@@ -175,7 +175,7 @@
       </tr>
       <?php if ($cfg_need_typeid2=='Y') {?>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 副栏目：</td>
@@ -189,7 +189,7 @@
       </tr>
       <?php }?>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
@@ -199,7 +199,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 描述：</td>
@@ -209,7 +209,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文件类型：</td>
@@ -280,7 +280,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 运行环境：</td>
@@ -290,7 +290,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 官方网址：</td>
@@ -302,7 +302,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 软件大小：</td>
@@ -331,7 +331,7 @@
         <td><?php PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']),$addRow,'autofield');?></td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 其它地址：</td>
@@ -345,7 +345,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <?php
           echo $nForm;
 	        ?>
@@ -355,7 +355,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 附加选项：</td>
@@ -368,10 +368,10 @@
         </td>
       </tr>
       <tr>
-        <td class="bline"><?php GetEditor("body",$addRow["introduce"],400,"Small");?></td>
+        <td class="biz-td"><?php GetEditor("body",$addRow["introduce"],400,"Small");?></td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"  width="260"> 评论选项：</td>
@@ -389,7 +389,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 文档排序：</td>
@@ -416,7 +416,7 @@
         </td>
       </tr>
       <tr>
-        <td class="bline">
+        <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 阅读权限：</td>
@@ -434,7 +434,7 @@
         </td>
       </tr>
       <tr>
-        <td height="70" class="bline">
+        <td height="70" class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 更新时间：</td>
