@@ -47,7 +47,7 @@ function copyFn(){
     var val = document.getElementById('text');
     window.getSelection().selectAllChildren(val);
     document.execCommand ("Copy");
-    //alert("成功复制系统信息");
+    alert("成功复制软件配置信息");
 }
 //Dedebiz info
 var dedebizInfo;
