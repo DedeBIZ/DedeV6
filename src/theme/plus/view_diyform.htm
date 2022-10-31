@@ -12,11 +12,9 @@
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
 		<div class="container py-3">
-			<div class="ctitle">
-				<h3><?php echo $diy->name;?>详细内容</h3>
-			</div>
-			<div class="cbox mceneter">
-				<div class="maplist">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="mb-3"><?php echo $diy->name;?>详细内容</h3>
 					<table cellspacing="1" class="table">
 						<?php
 						echo '<tbody>';

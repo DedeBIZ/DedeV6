@@ -96,7 +96,7 @@
               </td>
             </tr>
           </table>
-          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="biz-border table">
+          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table biz-border">
             <tr>
               <td bgcolor="#f8f8f8">公用参数：</td>
               <td bgcolor="#f8f8f8"></td>
@@ -155,7 +155,7 @@
             </tr>
             <tr>
               <td class="biz-td">默认页的名称：</td>
-              <td class="biz-td"><input type="text" name="defaultname" value="index.html" class="pubinputs" class="biz-input-md"></td>
+              <td class="biz-td"><input type="text" name="defaultname" value="index.html" class="biz-input-md"></td>
             </tr>
             <tr id="helpvar2" style="display:none">
               <td bgcolor="#f8f8f8">支持变量：</td>
@@ -171,7 +171,7 @@
             <tr>
               <td class="biz-td">文档命名规则：</td>
               <td class="biz-td">
-                <input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="pubinputs" class="biz-input-md">
+                <input type="text" name="namerule" id="namerule" value="{typedir}/{aid}.html" class="biz-input-md">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar2')"></i> 
               </td>
             </tr>
@@ -182,7 +182,7 @@
             <tr>
               <td>列表命名规则：</td>
               <td>
-                <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="pubinputs" class="biz-input-md">
+                <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="biz-input-md">
                 <i class="fa fa-question-circle" title="帮助" onClick="ShowHide('helpvar3')"></i> 
               </td>
             </tr>
@@ -202,21 +202,21 @@
                     </tr>
                     <tr align="center">
                       <td class="rank">
-                        <input type="hidden" name="posttype" value="" class="pubinputs">
-                        <input type="text" name="rank" id="rank" value="1" class="pubinputs" class="biz-input-sm">
+                        <input type="hidden" name="posttype" value="">
+                        <input type="text" name="rank" id="rank" value="1" class="biz-input-sm">
                       </td>
-                      <td align="center"><input type="text" name="toptype" id="toptype" class="pubinputs" class="biz-input-sm"></td>
-                      <td><input type="text" name="sontype" id="sontype" class="pubinputs" style="width:100%"></td>
+                      <td align="center"><input type="text" name="toptype" id="toptype" class="biz-input-sm"></td>
+                      <td><input type="text" name="sontype" id="sontype" style="width:100%"></td>
                       <td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) {?>
                     <tr  class="repeat" align="center">
                       <td class="rank">
                         <input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-                        <input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs" class="biz-input-sm">
+                        <input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="biz-input-sm">
                       </td>
-                      <td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="pubinputs" class="biz-input-sm"></td>
-                      <td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" class="pubinputs" style="width:100%"></td>
+                      <td><input type="text" name="toptype<?php echo $i;?>" id="toptype<?php echo $i;?>" class="biz-input-sm"></td>
+                      <td><input type="text" name="sontype<?php echo $i;?>" id="sontype<?php echo $i;?>" style="width:100%"></td>
                       <td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
                     </tr>
                     <?php }?>
@@ -231,19 +231,19 @@
                     </tr>
                     <tr align="center">
                       <td class="rank">
-                        <input type="hidden" name="posttype" value="" class="pubinputs">
-                        <input type="text" name="rank" id="rank" value="1" class="pubinputs" class="biz-input-sm">
+                        <input type="hidden" name="posttype" value="">
+                        <input type="text" name="rank" id="rank" value="1" class="biz-input-sm">
                       </td>
-                      <td><input type="text" name="reltype" id="reltype" class="pubinputs" class="biz-input-sm"></td>
+                      <td><input type="text" name="reltype" id="reltype" class="biz-input-sm"></td>
                       <td align="center"><button type="button" name="" id="add" class="btn btn-danger btn-sm">删除</button></td>
                     </tr>
                     <?php for($i=2;$i<=10;$i++) {?>
                     <tr  class="repeat" align="center">
                       <td class="rank">
                         <input type="hidden" name="posttype<?php echo $i;?>" value="<?php echo $i;?>">
-                        <input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="pubinputs" class="biz-input-sm">
+                        <input type="text" name="rank<?php echo $i;?>" id="rank<?php echo $i;?>" value="<?php echo $i;?>" class="biz-input-sm">
                       </td>
-                      <td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="pubinputs" class="biz-input-sm"></td>
+                      <td><input type="text" name="reltype<?php echo $i;?>" id="reltype<?php echo $i;?>" class="biz-input-sm"></td>
                       <td align="center"><button type="button" id="add" class="btn btn-danger btn-sm">删除</button></td>
                     </tr>
                     <?php }?>

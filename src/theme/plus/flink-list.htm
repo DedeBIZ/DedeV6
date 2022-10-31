@@ -12,41 +12,41 @@
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
 		<div class="container py-3">
-			<div class="sp-title">
-				<nav class="navbar navbar-expand-lg">
-					<ul class="navbar-nav mr-auto mt-2">
-						<li class="nav-item">
-							<h3>友情链接</h3>
-						</li>
-					</ul>
-					<span class="navbar-text">
-						<a href="flink.php?dopost=add" class="btn btn-success">申请链接</a>
-					</span>
-				</nav>
-			</div>
-			<div class="flinkbox">
-				<ul class="list-group list-group-horizontal">
-				<?php
-				$row = 180;
-				$titlelen = 50;
-				$dsql->SetQuery("Select * from `#@__flink` where ischeck>0 order by sortrank asc");
-				$dsql->Execute();
-				$revalue = "";
-				for($i=1;$i<=$row;$i++)
-				{
-					if ($dbrow=$dsql->GetObject())
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-expand-lg mb-3">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<h3>友情链接</h3>
+							</li>
+						</ul>
+						<span class="navbar-text">
+							<a href="flink.php?dopost=add" class="btn btn-success">申请链接</a>
+						</span>
+					</nav>
+					<ul class="list-group list-group-horizontal">
+					<?php
+					$row = 180;
+					$titlelen = 50;
+					$dsql->SetQuery("Select * from `#@__flink` where ischeck>0 order by sortrank asc");
+					$dsql->Execute();
+					$revalue = "";
+					for($i=1;$i<=$row;$i++)
 					{
-						$wtitle = cn_substr($dbrow->webname,$titlelen);
-						if ($dbrow->logo=="")
-						$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'>$wtitle</a></li>";
-					else
-						$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' alt='$wtitle' style='max-width:60px;max-height:60px'></a></li>";
+						if ($dbrow=$dsql->GetObject())
+						{
+							$wtitle = cn_substr($dbrow->webname,$titlelen);
+							if ($dbrow->logo=="")
+							$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'>$wtitle</a></li>";
+						else
+							$revalue.= "<li class='list-group-item'><a href='".$dbrow->url."' target='_blank'><img src='".$dbrow->logo."' alt='$wtitle' style='max-width:60px;max-height:60px'></a></li>";
+						}
+						if (!$dbrow) break;
 					}
-					if (!$dbrow) break;
-				}
-				echo  $revalue;
-				?>
-				</ul>
+					echo  $revalue;
+					?>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>

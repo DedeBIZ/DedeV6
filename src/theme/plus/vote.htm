@@ -12,18 +12,18 @@
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
 		<div class="container py-3">
-			<div class="sp-title">
-				<h3><?php echo $voname?></h3>
-				<p>
-					<span class="more">
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="mb-3"><?php echo $voname?></h4>
+					<div>
 						投票开始时间：<?php echo $starttime;?><br>
 						投票结束时间:<?php echo $endtime;?><br>
 						投票人数：<?php echo $totalcount;?>
-					</span>
-				</p>
+					</div>
+					<div><?php echo $rsmsg;?></div>
+					<div><?php echo $votelist;?></div>
+				</div>
 			</div>
-			<div class="formbox"><?php echo $rsmsg;?></div>
-			<div class="formbox"><?php echo $votelist;?></div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>
 	</body>

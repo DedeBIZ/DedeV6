@@ -31,9 +31,9 @@
     	?>
       <input type="hidden" name="ID_<?php echo $k?>" value="<?php echo $row->tid?>">
       <tr align="center">
-        <td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" class="pubinputs" style="width:90%"></td>
-        <td><input type="text" name="num_<?php echo $k?>" value="<?php echo $row->num?>" id="num_<?php echo $k?>" class="pubinputs" style="width:80%"></td>
-        <td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" class="pubinputs" style="width:80%">（元）</td>
+        <td><input type="text" name="pname_<?php echo $k?>" value="<?php echo $row->pname?>" id="pname_<?php echo $k?>" style="width:90%"></td>
+        <td><input type="text" name="num_<?php echo $k?>" value="<?php echo $row->num?>" id="num_<?php echo $k?>" style="width:80%"></td>
+        <td><input type="text" name="money_<?php echo $k?>" value="<?php echo $row->money?>" id="money_<?php echo $k?>" style="width:80%">（元）</td>
         <td><input type="checkbox" name="check_<?php echo $k?>" id="check_<?php echo $k?>" value="1" checked="1"> 保留</td>
       </tr>
       <?php }?>
@@ -42,9 +42,9 @@
         <td colspan="4" bgcolor="#f8f8f8">新增一个点卡产品类型：</td>
       </tr>
       <tr align="center">
-        <td><input type="text" name="pname_new" id="pname_new" class="pubinputs" style="width:90%"></td>
-        <td><input type="text" name="num_new" id="num_new" class="pubinputs" style="width:80%" value="100"></td>
-        <td><input type="text" name="money_new" id="money_new" class="pubinputs" style="width:80%" value="30">（元）</td>
+        <td><input type="text" name="pname_new" id="pname_new" style="width:90%"></td>
+        <td><input type="text" name="num_new" id="num_new" style="width:80%" value="100"></td>
+        <td><input type="text" name="money_new" id="money_new" style="width:80%" value="30">（元）</td>
         <td align="center"><input type="checkbox" name="check_new" id="check_new" value="1" checked="1"> 新增</td>
       </tr>
       <tr>

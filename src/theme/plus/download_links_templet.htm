@@ -8,30 +8,25 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
-		<style>
-			.formbox li {
-				list-style: url(none) none;
-			}
-		</style>
+		<style>.formbox li{list-style:url(none) none}</style>
 	</head>
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
 		<div class="container py-3">
-			<div class="sp-title">
-				<h2>文件：<a href="<?php echo $arcurl;?>"><?php echo $title;?></a></h2>
-			</div>
-			<div class="formbox">
-				<table width="100%" align="center" cellspacing="2" class="table">
-					<tr>
-						<td bgcolor="#F2F7E6">下载地址列表：</td>
-					</tr>
-					<tr>
-						<td><?php echo $downlinks;?></td>
-					</tr>
-				</table>
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="mb-3">文件：<a href="<?php echo $arcurl;?>"><?php echo $title;?></a></h4>
+					<table width="100%" align="center" cellspacing="2" class="table">
+						<tr>
+							<td bgcolor="#F2F7E6">下载地址列表：</td>
+						</tr>
+						<tr>
+							<td><?php echo $downlinks;?></td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
-		<div class="advancedsearch"></div>
 		<?php pasterTempletDiy('foot.htm');?>
 	</body>
 </html>

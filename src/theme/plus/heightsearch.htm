@@ -11,94 +11,95 @@
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
 		<div class="container py-3">
-			<div class="formbox">
-				<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#cccccc" class='table'>
-					<form name="form1" action="search.php" method="get">
-						<tr>
-							<td align="center" width="20%">网站栏目：</td>
-							<td>
-								<?php
-								$tl = new TypeLink(0);
-								$typeOptions = $tl->GetOptionArray(0,0,0);
-								echo "<select name='typeid' class='biz-input-md' class='form-control'>";
-								echo "<option value='0' selected>不限栏目</option>";
-								echo $typeOptions;
-								echo "</select>";
-								?>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">关 键 字：</td>
-							<td width="490" ><input name="q" type="text" id="q" class="form-control"></td>
-						</tr>
-						<tr>
-							<td align="center">发布时间：</td>
-							<td>
-								<select name="starttime" id="starttime">
-									<option value="-1" selected>不限</option>
-									<option value="7">一周以内</option>
-									<option value="30">一个月内</option>
-									<option value="90">三个月内</option>
-									<option value="180">半年以内</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">内容类型：</td>
-							<td>
-								<select name="channeltype" id="channeltype" class="form-control">
-									<option value="0" selected>不限</option>
+			<div class="row">
+				<div class="col-md-12">
+					<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#cccccc" class='table'>
+						<form name="form1" action="search.php" method="get">
+							<tr>
+								<td align="center" width="20%">网站栏目：</td>
+								<td>
 									<?php
-									$dsql->SetQuery("Select id,typename From #@__channeltype order by id desc");
-									$dsql->Execute();
-									while($row = $dsql->GetObject())
-									{
-										echo "<option value='".$row->id."'>".$row->typename."</option>";
-									}
+									$tl = new TypeLink(0);
+									$typeOptions = $tl->GetOptionArray(0,0,0);
+									echo "<select name='typeid' class='biz-input-md' class='form-control'>";
+									echo "<option value='0' selected>不限栏目</option>";
+									echo $typeOptions;
+									echo "</select>";
 									?>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">排序方式：</td>
-							<td>
-								<select name="orderby" id="orderby" class="form-control">
-									<option value="sortrank" selected>默认</option>
-									<option value="senddate">收录时间</option>
-									<option value="pubdate">发布时间</option>
-									<option value="id">文档id</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">显示条数：</td>
-							<td><input name="pagesize" type="text" id="pagesize" value="10" size="4" class="form-control"></td>
-						</tr>
-						<tr>
-							<td align="center">关键词模式：</td>
-							<td>
-								<label><input type="radio" name="kwtype" value="1" checked> 或</label>
-								<label><input type="radio" name="kwtype" value="0"> 与</label>
-							</td>
-						</tr>
-						<tr>
-							<td align="center">搜索内容：</td>
-							<td>
-								<select name="searchtype" id="searchtype" class="form-control">
-									<option value="titlekeyword" selected>默认搜索</option>
-									<option value="title">仅搜索标题</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td height="30" bgcolor="#F4FCE4" colspan="2" align="center">
-								<button type="submit" class="btn btn-success">搜索</button>
-								<button type="reset" class="btn btn-outline-success">重置</button>
-							</td>
-						</tr>
-					</form>
-				</table>
-				<br>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">关 键 字：</td>
+								<td width="490" ><input name="q" type="text" id="q" class="form-control"></td>
+							</tr>
+							<tr>
+								<td align="center">发布时间：</td>
+								<td>
+									<select name="starttime" id="starttime">
+										<option value="-1" selected>不限</option>
+										<option value="7">一周以内</option>
+										<option value="30">一个月内</option>
+										<option value="90">三个月内</option>
+										<option value="180">半年以内</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">内容类型：</td>
+								<td>
+									<select name="channeltype" id="channeltype" class="form-control">
+										<option value="0" selected>不限</option>
+										<?php
+										$dsql->SetQuery("Select id,typename From #@__channeltype order by id desc");
+										$dsql->Execute();
+										while($row = $dsql->GetObject())
+										{
+											echo "<option value='".$row->id."'>".$row->typename."</option>";
+										}
+										?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">排序方式：</td>
+								<td>
+									<select name="orderby" id="orderby" class="form-control">
+										<option value="sortrank" selected>默认</option>
+										<option value="senddate">收录时间</option>
+										<option value="pubdate">发布时间</option>
+										<option value="id">文档id</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">显示条数：</td>
+								<td><input name="pagesize" type="text" id="pagesize" value="10" size="4" class="form-control"></td>
+							</tr>
+							<tr>
+								<td align="center">关键词模式：</td>
+								<td>
+									<label><input type="radio" name="kwtype" value="1" checked> 或</label>
+									<label><input type="radio" name="kwtype" value="0"> 与</label>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">搜索内容：</td>
+								<td>
+									<select name="searchtype" id="searchtype" class="form-control">
+										<option value="titlekeyword" selected>默认搜索</option>
+										<option value="title">仅搜索标题</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td height="30" bgcolor="#F4FCE4" colspan="2" align="center">
+									<button type="submit" class="btn btn-success">搜索</button>
+									<button type="reset" class="btn btn-outline-success">重置</button>
+								</td>
+							</tr>
+						</form>
+					</table>
+				</div>
 			</div>
 		</div>
 		<?php pasterTempletDiy('foot.htm');?>

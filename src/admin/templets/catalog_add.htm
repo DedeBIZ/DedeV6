@@ -165,7 +165,7 @@
               </td>
             </tr>
           </table>
-          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="biz-border table">
+          <table width="100%" id="needset" cellspacing="0" cellpadding="0" class="table biz-border">
             <tr>
               <td width="260" class="biz-td">是否支持投稿：</td>
               <td class="biz-td">
@@ -230,7 +230,7 @@
             </tr>
             <tr>
               <td class="biz-td">排列顺序：</td>
-              <td class="biz-td"><input type="text" name="sortrank" class="pubinputs" class="biz-input-sm">（由低 &gt; 高）</td>
+              <td class="biz-td"><input type="text" name="sortrank" class="biz-input-sm">（由低 &gt; 高）</td>
             </tr>
             <tr>
               <td class="biz-td">浏览权限：</td>
@@ -269,7 +269,7 @@
               <td class="p-0">
                 <table cellspacing="1" cellpadding="1" class="table-borderless">
                   <tr>
-                    <td><input type="text" name="typedir" id="typedir" class="pubinputs" class="biz-input-md"></td>
+                    <td><input type="text" name="typedir" id="typedir" class="biz-input-md"></td>
                     <td><label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onClick="CheckTypeDir()"> 拼音</label></td>
                   </tr>
                 </table>
@@ -346,7 +346,7 @@
               </td>
             </tr>
           </table>
-          <table width="100%" cellspacing="0" cellpadding="0" id="adset" class="biz-border table" style="display:none">
+          <table width="100%" cellspacing="0" cellpadding="0" id="adset" class="table biz-border" style="display:none">
             <?php if ($id==0){?>
             <tr>
               <td width="260" class="biz-td">多站点支持：</td>
@@ -381,7 +381,7 @@
                 }
                 ?>）<br>
                 模板文件的默认位置是放在模板目录"cms安装目录<?php echo $cfg_templets_dir ?>"内
-                <input type="hidden" value="{style}" name="dfstyle" class="pubinputs">
+                <input type="hidden" value="{style}" name="dfstyle">
               </td>
             </tr>
             <tr>
@@ -449,7 +449,7 @@
               <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
             </tr>
           </table>
-          <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="biz-border table" style="display:none">
+          <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
             <tr>
               <td><div class="alert alert-info mb-0">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</div></td>
             </tr>
