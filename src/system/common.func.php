@@ -412,6 +412,51 @@ function IsSSL()
     }
     return false;
 }
+//用户名称标签{dede:field.mid function="GetMemberInfos('uname',@me)"/}和[field:mid function="GetMemberInfos('uname',@me)"/]
+function GetMemberInfos($fields, $mid)
+{
+    global $dsql;
+    if ($mid <= 0) {
+        $revalue = "Error";
+    } else {
+        $row=$dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='{$mid}'");
+        if (!is_array($row)) {
+            $revalue = "Not user";
+        } else {
+            $revalue = $row[$fields];
+        }
+    }
+    return $revalue;
+}
+//用户头像标签{dede:field.mid function='face(@me)'/}和[field:mid function='face(@me)'/]
+function face($mid)
+{
+    global $dsql;
+    if ($mid <> 0) {
+        $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$mid'");
+        if ($row['face'] == "") {
+            $face = "/static/web/img/avatar.png";
+        } else {
+            $face = $row['face'];
+            $face = "$face";
+        }
+    }
+    return $face;
+}
+//Tag数量标签[field:id function='GetMyTags(@me,2)'/]2表示输出2个文档
+if (!function_exists('GetMyTags')) {
+    function GetMyTags($aid, $num=3) {
+        global $dsql,$cfg_cmspath;
+        $tags = '';
+        $query = "SELECT * FROM `#@__taglist` WHERE aid='$aid' LIMIT $num";
+        $dsql->Execute('tag',$query);
+        while($row = $dsql->GetArray('tag')) {
+            $link = $cfg_cmspath."/apps/tags.php?/{$row['tid']}";
+            $tags.= ($tags==''?"<a href='{$link}'>{$row['tag']}</a>" : "<a href='{$link}'>{$row['tag']}</a>");
+        }
+        return $tags;
+    }
+}
 /*调用前台主题模板<?php pasterTempletDiy('header.htm');?>*/
 if (!function_exists('pasterTempletDiy')) {
     function pasterTempletDiy($path) {
@@ -422,13 +467,13 @@ if (!function_exists('pasterTempletDiy')) {
         $dtp->Display();
     }
 }
-//多选联动筛选功能{dede:php}AddFilter(模型id,类型,"字段1,字段2,字段3");{/dede:php}
+//多选联动筛选标签{dede:php}AddFilter(模型id,类型,"字段1,字段2");{/dede:php}
 function litimgurls($imgid = 0)
 {
     global $lit_imglist, $dsql;
-    $row = $dsql->GetOne("SELECT c.addtable FROM `#@__archives` AS a LEFT JOIN `#@__channeltype` AS c ON a.channel=c.id where a.id='$imgid'");
+    $row = $dsql->GetOne("SELECT c.addtable FROM `#@__archives` AS a LEFT JOIN `#@__channeltype` AS c ON a.channel=c.id WHERE a.id='$imgid'");
     $addtable = trim($row['addtable']);
-    $row = $dsql->GetOne("Select imgurls From `$addtable` where aid='$imgid'");
+    $row = $dsql->GetOne("SELECT imgurls FROM `$addtable` WHERE aid='$imgid'");
     $ChannelUnit = new ChannelUnit(2, $imgid);
     $lit_imglist = $ChannelUnit->GetlitImgLinks($row['imgurls']);
     return $lit_imglist;
