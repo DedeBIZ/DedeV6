@@ -25,7 +25,7 @@
       var endNum = Number(document.form1.picnum.value) + startNum;
       if (endNum > 40) endNum = 40;
       for (startNum; startNum <= endNum; startNum++) {
-        upfield.innerHTML += "<input type='file' name='upfile" + startNum + "' class='biz-input-md' size='30' class='pubinputs'><br>";
+        upfield.innerHTML += "<input type='file' name='upfile" + startNum + "' class='biz-input-md'><br>";
       }
     }
     function ResetUpload() {
@@ -101,13 +101,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2">
-                <table width="100%" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
-                  </tr>
-                </table>
-              </td>
+              <td colspan="2" align="center" class="py-2"><button type="submit" class="btn btn-success btn-sm">保存</button></td>
             </tr>
           </form>
         </table>

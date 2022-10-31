@@ -2,17 +2,17 @@
 <div class="comment py-3">
 	<h4>发表评论</h4>
 	<div id="feedback-alert"></div>
-	<div class="content">
+	<div class="content mb-3">
 		<textarea cols="60" id="iptMsg" name="msg" rows="5" class="form-control" placeholder="说点什吗吧"></textarea>
 	</div>
-	<div class="post">
+	<div class="post mb-3">
 		<div class="dcmp-userinfo" id="_ajax_feedback">
-			<div class="form-row mt-3">
-				<div class="col-md-6 mb-3">
+			<div class="form-group form-row">
+				<div class="col-md-6">
 					<label for="iptUsername">用户名</label>
 					<input type="text" class="form-control" id="iptUsername">
 				</div>
-				<div class="col-md-6 mb-3 areaValidate" style="display:none">
+				<div class="col-md-6areaValidate" style="display:none">
 					<label for="iptValidate">验证码</label>
 					<div class="input-group">
 						<input type="text" class="form-control text-uppercase" id="iptValidate">
@@ -56,43 +56,7 @@
 		{/dede:feedback}
 	</div>
 </div>
-<style>
-	.feedbacks .face {
-		width: 36px;
-		height: 36px;
-		border-radius: 50%;
-		border: solid 1px #DDD;
-	}
-	.feedbacks .media {
-		border-bottom: solid 1px #DDD;
-		padding-top: 10px;
-	}
-	.feedbacks .feedback_replies .media {
-		border-top: solid 1px #DDD;
-		border-bottom:0;
-	}
-	.feedbacks .media-body {
-		padding: 0 1rem 1rem 1rem;
-	}
-	.feedbacks .media-body small{
-		color: #999;
-	}
-	.feedbacks .feedback-action {
-		float: right;
-	}
-	.feedbacks .feedback-basic a,.feedbacks .feedback-action a {
-		color: #F1813F;
-		font-size: 14px;
-	}
-	.feedbacks ._feedback_reply .alert {
-		margin-bottom: 0;
-	}
-	@media only screen and (max-width: 576px) {
-		.feedbacks .feedback-action {
-			float: none;
-		}
-	}
-</style>
+<style>.feedbacks .face{width:36px;height:36px;border-radius:50%;border:solid 1px #DDD}.feedbacks .media{border-bottom:solid 1px #DDD;padding-top:10px}.feedbacks .feedback_replies .media{border-top:solid 1px #DDD;border-bottom:0}.feedbacks .media-body{padding:0 1rem 1rem 1rem}.feedbacks .media-body small{color:#999}.feedbacks .feedback-action{float:right}.feedbacks .feedback-basic a,.feedbacks .feedback-action a{color:#F1813F;font-size:14px}.feedbacks ._feedback_reply .alert{margin-bottom:0}@media only screen and (max-width:576px){.feedbacks .feedback-action{float:none}}</style>
 <script async>
 	//发表评论
 	function SendFeedback() {
