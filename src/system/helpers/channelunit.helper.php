@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文档小助手
  *
- * @version        $Id: channelunit.helper.php 1 16:49 2010年7月6日Z tianya $
+ * @version        $Id: channelunit.helper.php 1 16:49 2010年7月6日 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

@@ -2,7 +2,7 @@
 /**
  * 软件发布
  *
- * @version        $Id: soft_add.php 1 16:09 2010年7月20日Z tianya $
+ * @version        $Id: soft_add.php 1 16:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

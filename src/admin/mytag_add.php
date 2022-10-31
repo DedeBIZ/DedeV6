@@ -2,7 +2,7 @@
 /**
  * 增加自定义标记
  *
- * @version        $Id: mytag_add.php 1 15:35 2010年7月20日Z tianya $
+ * @version        $Id: mytag_add.php 1 15:35 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

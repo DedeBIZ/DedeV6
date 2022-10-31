@@ -2,7 +2,7 @@
 /**
  * 自定义模型字段添加
  *
- * @version        $Id: mychannel_field_add.php 1 15:07 2010年7月20日Z tianya $
+ * @version        $Id: mychannel_field_add.php 1 15:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

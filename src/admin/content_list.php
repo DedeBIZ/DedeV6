@@ -4,7 +4,7 @@
  * content_s_list.php、content_i_list.php、content_select_list.php
  * 均使用本文件作为实际处理代码，只是使用的模板不同，如有相关变动，只需改本文件及相关模板即可
  *
- * @version        $Id: content_list.php 1 14:31 2010年7月12日Z tianya $
+ * @version        $Id: content_list.php 1 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

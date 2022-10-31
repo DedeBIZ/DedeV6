@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文件处理小助手
  *
- * @version        $Id: file.helper.php 1 2010-07-05 11:43:09Z tianya $
+ * @version        $Id: file.helper.php 1 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

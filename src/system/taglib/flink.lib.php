@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 友情链接
  *
- * @version        $Id: flink.lib.php 1 9:29 2010年7月6日Z tianya $
+ * @version        $Id: flink.lib.php 1 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 织梦模块类
  *
- * @version        $Id: dedemodule.class.php 1 10:31 2010年7月6日Z tianya $
+ * @version        $Id: dedemodule.class.php 1 10:31 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

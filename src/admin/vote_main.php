@@ -2,7 +2,7 @@
 /**
  * 投票管理
  *
- * @version        $Id: vote_main.php 1 23:54 2010年7月20日Z tianya $
+ * @version        $Id: vote_main.php 1 23:54 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

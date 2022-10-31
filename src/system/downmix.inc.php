@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 防采集混淆字符串
  *
- * @version        $Id: downmix.inc.php 1 9:14 2010年7月6日Z tianya $
+ * @version        $Id: downmix.inc.php 1 9:14 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

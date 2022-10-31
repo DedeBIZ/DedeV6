@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 投票类
  *
- * @version        $Id: dedevote.class.php 1 10:31 2010年7月6日Z tianya $
+ * @version        $Id: dedevote.class.php 1 10:31 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

@@ -2,7 +2,7 @@
 /**
  * 软件发送
  *
- * @version        $Id: select_soft_post.php 1 9:43 2010年7月8日Z tianya $
+ * @version        $Id: select_soft_post.php 1 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

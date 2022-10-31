@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * DedeBIZV6中用到的字符编码转换的小助手函数
  *
- * @version        $Id: charset.helper.php 1 2010-07-05 11:43:09Z tianya $
+ * @version        $Id: charset.helper.php 1 2010-07-05 11:43:09 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

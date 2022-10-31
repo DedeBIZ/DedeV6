@@ -5,7 +5,7 @@ require_once(DEDEINC."/libraries/agent.class.php");
  * 流量统计
  * 一个轻量级流量统计功能
  *
- * @version        $Id: statistics.class.php 1 11:42 2022年03月26日Z tianya $
+ * @version        $Id: statistics.class.php 1 11:42 2022年03月26日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

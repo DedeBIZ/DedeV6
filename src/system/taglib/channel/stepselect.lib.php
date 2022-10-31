@@ -7,7 +7,7 @@ function ch_stepselect($fvalue, &$arcTag, &$refObj, $fname = '')
 /**
  * 获取二级枚举的值
  *
- * @version        $Id: stepselect.lib.php 16:24 2010年7月26日Z tianya $
+ * @version        $Id: stepselect.lib.php 16:24 2010年7月26日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

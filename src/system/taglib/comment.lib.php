@@ -2,7 +2,7 @@
 /**
  * 用于注释的标签
  *
- * @version        $Id: comment.lib.php 1 9:29 2020年9月2日Z tianya $
+ * @version        $Id: comment.lib.php 1 9:29 2020年9月2日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

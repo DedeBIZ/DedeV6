@@ -1,6 +1,6 @@
 <?php
 /**
-* @version        $Id: index_do.php 1 8:24 2010年7月9日Z tianya $
+* @version        $Id: index_do.php 1 8:24 2010年7月9日 tianya $
 * @package        DedeBIZ.User
 * @copyright      Copyright (c) 2022, DedeBIZ.COM
 * @license        https://www.dedebiz.com/license

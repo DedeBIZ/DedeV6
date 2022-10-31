@@ -2,7 +2,7 @@
 /**
  * 模块上传
  *
- * @version        $Id: module_upload.php 1 14:43 2010年7月20日Z tianya $
+ * @version        $Id: module_upload.php 1 14:43 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

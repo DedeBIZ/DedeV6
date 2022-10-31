@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 搜索视图类
  *
- * @version        $Id: searchview.class.php 1 15:26 2010年7月7日Z tianya $
+ * @version        $Id: searchview.class.php 1 15:26 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

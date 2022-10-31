@@ -1,6 +1,6 @@
 <?php
 /**
- * @version        $Id: article_select_sw.php 1 8:26 2010年7月12日Z tianya $
+ * @version        $Id: article_select_sw.php 1 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

@@ -2,7 +2,7 @@
 /**
  * 生成自由列表操作
  *
- * @version        $Id: makehtml_freelist_action.php 1 9:11 2010年7月19日Z tianya $
+ * @version        $Id: makehtml_freelist_action.php 1 9:11 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

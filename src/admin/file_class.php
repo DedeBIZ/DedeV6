@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文件管理逻辑类
  *
- * @version        $Id: file_class.php 1 19:09 2010年7月12日Z tianya $
+ * @version        $Id: file_class.php 1 19:09 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

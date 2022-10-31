@@ -2,7 +2,7 @@
 /**
  * 获取栏目列表标签
  *
- * @version        $Id: channel.lib.php 1 9:29 2010年7月6日Z tianya $
+ * @version        $Id: channel.lib.php 1 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

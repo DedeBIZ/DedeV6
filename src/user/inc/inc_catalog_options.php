@@ -2,7 +2,7 @@
 /**
  * 单表模型发布器
  * 
- * @version        $Id: archives_sg_add.php 1 13:52 2010年7月9日Z tianya $
+ * @version        $Id: archives_sg_add.php 1 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

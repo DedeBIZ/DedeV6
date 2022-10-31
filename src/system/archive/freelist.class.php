@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 自由列表类
  *
- * @version        $Id: freelist.class.php 3 15:15 2010年7月7日Z tianya $
+ * @version        $Id: freelist.class.php 3 15:15 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

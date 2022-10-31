@@ -2,7 +2,7 @@
 /**
  * 文档处理函数
  * 
- * @version        $Id: inc_archives_functions.php 1 13:52 2010年7月9日Z tianya $
+ * @version        $Id: inc_archives_functions.php 1 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

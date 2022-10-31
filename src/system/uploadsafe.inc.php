@@ -2,7 +2,7 @@
 /**
  * 文件上传安全校验方法
  *
- * @version        $Id: uploadsafe.inc.php 1 15:59 2020年8月19日Z tianya $
+ * @version        $Id: uploadsafe.inc.php 1 15:59 2020年8月19日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

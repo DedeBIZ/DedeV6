@@ -2,7 +2,7 @@
 /**
  * 回收站
  *
- * @version        $Id: recycling.php 1 15:46 2010年7月20日Z tianya $
+ * @version        $Id: recycling.php 1 15:46 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

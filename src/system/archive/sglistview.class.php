@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 单表模型列表视图类
  *
- * @version        $Id: sglistview.class.php 1 15:48 2010年7月7日Z tianya $
+ * @version        $Id: sglistview.class.php 1 15:48 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

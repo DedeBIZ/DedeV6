@@ -2,7 +2,7 @@
 /**
  * 文档来源编辑
  *
- * @version        $Id: archives_add.php 1 14:30 2010年7月12日Z tianya $
+ * @version        $Id: archives_add.php 1 14:30 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

@@ -2,7 +2,7 @@
 /**
  * 管理目录配置文件
  *
- * @version        $Id: config.php 1 14:31 2010年7月12日Z tianya $
+ * @version        $Id: config.php 1 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

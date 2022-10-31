@@ -2,7 +2,7 @@
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 频道模型单元类
- * @version        $Id: channelunit.class.php 2 17:32 2010年7月6日Z tianya $
+ * @version        $Id: channelunit.class.php 2 17:32 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

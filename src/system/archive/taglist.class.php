@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * Tag列表类
  *
- * @version        $Id: taglist.class.php 1 18:17 2010年7月7日Z tianya $
+ * @version        $Id: taglist.class.php 1 18:17 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

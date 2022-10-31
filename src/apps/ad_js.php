@@ -2,7 +2,7 @@
 /**
  * 广告js调用方式
  *
- * @version        $Id: ad_js.php 1 20:30 2010年7月8日Z tianya $
+ * @version        $Id: ad_js.php 1 20:30 2010年7月8日 tianya $
  * @package        DedeBIZ.Site
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

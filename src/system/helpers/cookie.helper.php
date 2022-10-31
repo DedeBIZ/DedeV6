@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * Cookie处理小助手
  *
- * @version        $Id: file.helper.php 1 13:58 2010年7月5日Z tianya $
+ * @version        $Id: file.helper.php 1 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

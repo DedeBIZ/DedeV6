@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 会员登录类
  *
- * @version        $Id: userlogin.class.php 1 15:59 2010年7月5日Z tianya $
+ * @version        $Id: userlogin.class.php 1 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

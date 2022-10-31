@@ -2,7 +2,7 @@
 /**
  * 纠错管理
  *
- * @version        $Id: erraddsave.php 1 19:09 2010年7月12日Z tianya $
+ * @version        $Id: erraddsave.php 1 19:09 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

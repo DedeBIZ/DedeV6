@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 专题主题调用标签
  *
- * @version        $Id: arclist.lib.php 2 8:29 2010年7月8日Z tianya $
+ * @version        $Id: arclist.lib.php 2 8:29 2010年7月8日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

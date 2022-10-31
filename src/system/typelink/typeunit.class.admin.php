@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 栏目单元,主要用户管理后台管理处
  *
- * @version        $Id: typeunit.class.admin.php 1 15:21 2010年7月5日Z tianya $
+ * @version        $Id: typeunit.class.admin.php 1 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

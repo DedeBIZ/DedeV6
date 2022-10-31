@@ -2,7 +2,7 @@
 /**
  * 管理一个模板
  *
- * @version        $Id: templets_one.php 1 23:07 2010年7月20日Z tianya $
+ * @version        $Id: templets_one.php 1 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

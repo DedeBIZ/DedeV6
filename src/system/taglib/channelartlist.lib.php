@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 获取当前频道的下级栏目的内容列表标签
  *
- * @version        $Id: channelartlist.lib.php 1 9:29 2010年7月6日Z tianya $
+ * @version        $Id: channelartlist.lib.php 1 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

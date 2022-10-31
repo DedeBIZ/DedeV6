@@ -2,7 +2,7 @@
 /**
  * 生成所有页面
  *
- * @version        $Id: makehtml_all.php 1 8:48 2010年7月13日Z tianya $
+ * @version        $Id: makehtml_all.php 1 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

@@ -2,7 +2,7 @@
 /**
  * 允许的站内链接
  *
- * @version        $Id: article_allowurl_edit.php 1 11:36 2010年10月8日Z tianya $
+ * @version        $Id: article_allowurl_edit.php 1 11:36 2010年10月8日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

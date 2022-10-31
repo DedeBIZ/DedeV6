@@ -2,7 +2,7 @@
 /**
  * 自定义表单列表管理
  *
- * @version        $Id: diy_main.php 1 18:31 2010年7月12日Z tianya $
+ * @version        $Id: diy_main.php 1 18:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

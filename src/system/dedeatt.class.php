@@ -2,7 +2,7 @@
 /**
  * 属性的数据描述
  *
- * @version        $Id: dedeatt.class.php 1 13:50 2010年7月6日Z tianya $
+ * @version        $Id: dedeatt.class.php 1 13:50 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license

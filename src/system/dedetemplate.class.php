@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 模板引擎文件
  *
- * @version        $Id: dedetemplate.class.php 3 15:44 2010年7月6日Z tianya $
+ * @version        $Id: dedetemplate.class.php 3 15:44 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
