@@ -229,10 +229,7 @@ if (!function_exists('CheckSql')) {
 }
 /**
  *  载入小助手,系统默认载入小助手
- *  在/data/helper.inc.php中进行默认小助手初始化的设置
- *  使用示例:
- *      在开发中,首先需要创建一个小助手函数,目录在\include\helpers中
- *  例如,我们创建一个示例为test.helper.php,文件基本内容如下:
+ *  在/data/helper.inc.php中进行默认小助手初始化的设置，创建一个示例为test.helper.php文件基本内容如下：
  *  <code>
  *  if ( ! function_exists('HelloDede'))
  *  {
@@ -242,8 +239,7 @@ if (!function_exists('CheckSql')) {
  *      }
  *  }
  *  </code>
- *  则我们在开发中使用这个小助手的时候直接使用函数helper('test');初始化它
- *  然后在文件中就可以直接使用:HelloDede();来进行调用.
+ *  则我们在开发中使用这个小助手的时候直接使用函数helper('test');初始化它，然后在文件中就可以直接使用:HelloDede();来进行调用
  *
  * @access    public
  * @param     mix   $helpers  小助手名称,可以是数组,可以是单个字符串
@@ -279,7 +275,7 @@ function dede_htmlspecialchars($str)
     else return htmlspecialchars($str);
 }
 /**
- *  载入小助手,这里用户可能载入用helps载入多个小助手
+ *  载入小助手，这里用户可能载入用helps载入多个小助手
  *
  * @access    public
  * @param     string
@@ -316,7 +312,7 @@ function UpdateStat()
 $arrs1 = array();
 $arrs2 = array();
 /**
- *  短消息函数,可以在某个动作处理后友好的提示信息
+ *  短消息函数，可以在某个动作处理后友好的提示信息
  *
  * @param     string  $msg       消息提示信息
  * @param     string  $gourl     跳转地址
@@ -340,7 +336,7 @@ function ShowMsg($msg, $gourl, $onlymsg = 0, $limittime = 0)
     if ($gourl == '' || $onlymsg == 1) {
         $msg = "<script>alert(\"".str_replace("\"", "“", $msg)."\");</script>";
     } else {
-        //当网址为:close::objname 时, 关闭父框架的id=objname元素
+        //当网址为:close::objname时，关闭父框架的id=objname元素
         if (preg_match('/close::/', $gourl)) {
             $tgobj = trim(preg_replace('/close::/', '', $gourl));
             $gourl = 'javascript:;';
