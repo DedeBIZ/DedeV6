@@ -5,7 +5,8 @@ body {
 	letter-spacing:.6px
 }
 a {
-	color:#545b62
+	color:#545b62;
+	text-decoration:none
 }
 a:hover {
 	color:#ec982c;
