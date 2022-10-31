@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(DEDEINC."/dedetag.class.php");
-$headTemplet = "<dl class='bitem' id='sunitems~cc~'><dt onClick='showHide(\"items~cc~\",this)'><b><i class='fa fa-angle-down'></i>~channelname~</b></dt><dd style='display:~display~' class='sitem' id='items~cc~'><ul class='sitemu'>";
+$headTemplet = "<dl id='sunitems~cc~' class='bitem'><dt onClick='showHide(\"items~cc~\",this)'><b><i class='fa fa-angle-down'></i>~channelname~</b></dt><dd id='items~cc~' class='sitem' style='display:~display~'><ul class='sitemu'>";
 $footTemplet = "</ul></dd></dl>";
 $itemTemplet = "<li>~link~</li>";
 function GetMenus($userrank, $topos = 'main')
@@ -62,10 +62,7 @@ function GetMenus($userrank, $topos = 'main')
                         } else {
                             $addico = 'fa-plus-circle';
                         }
-                        $link = "<div class='items'>
-                        <div class='fllct'>$link</div>
-                        <div class='flrct'><a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><i class='fa $addico' title='$addalt'></i></a></div>
-                        </div>";
+                        $link = "<div class='items'><div class='fllct'>$link</div><div class='flrct'><a href='".$ctag2->GetAtt('linkadd')."' target='".$ctag2->GetAtt('target')."'><i class='fa $addico' title='$addalt'></i></a></div></div>";
                     } else {
                         $link .= "";
                     }
