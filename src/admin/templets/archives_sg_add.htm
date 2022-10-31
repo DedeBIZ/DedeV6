@@ -55,7 +55,7 @@
         	<table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> <?php echo $cInfos['titlename'];?>：</td>
-              <td><input type="text" name="title" id="title" value="" style="width:390px"></td>
+              <td><input type="text" name="title" id="title" value="" class="biz-input-lg"></td>
             </tr>
           </table>
         </td>
@@ -84,8 +84,8 @@
         	<table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
-              <td width="560">
-                <input type="text" name="picname" id="picname" style="width:300px">
+              <td width="620">
+                <input type="text" name="picname" id="picname" class="biz-input-md">
                 <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onclick="SelectImage('form1.picname','small');" class="btn btn-success btn-sm">选择图片</button>
@@ -110,7 +110,7 @@
               <span id="typeidct">
               <?php
               $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
-              echo "<select name='typeid' id='typeid' style='width:160px'>";
+              echo "<select name='typeid' id='typeid' class='biz-input-sm'>";
               echo "<option value='0'>请选择栏目</option>";
               echo $typeOptions;
               echo "</select>";
@@ -128,7 +128,7 @@
             <tr>
               <td width="90"> 浏览权限：</td>
               <td>
-              	<select name="arcrank" id="arcrank" style="width:160px">
+              	<select name="arcrank" id="arcrank" class="biz-input-sm">
                 <?php
                 $urank = $cuserLogin->getUserRank();
                 $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank'");

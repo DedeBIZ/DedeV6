@@ -134,16 +134,16 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="biz-td" align="center">栏目名称：</td>
-            <td class="biz-td"><input type="text" name="typename" value="<?php echo $myrow['typename'] ?>" style="width:260px"></td>
+            <td class="biz-td"><input type="text" name="typename" value="<?php echo $myrow['typename'] ?>" class="biz-input-md"></td>
         </tr>
         <tr>
             <td class="biz-td" align="center"> 排列顺序：</td>
-            <td class="biz-td"> <input type="text" name="sortrank" value="<?php echo $myrow['sortrank'] ?>" style="width:100px">（由低 &gt; 高）</td>
+            <td class="biz-td"> <input type="text" name="sortrank" value="<?php echo $myrow['sortrank'] ?>" class="biz-input-sm">（由低 &gt; 高）</td>
         </tr>
         <tr>
             <td class="biz-td" align="center">浏览权限：</td>
             <td class="biz-td">
-                <select name="corank" id="corank" style="width:100px">
+                <select name="corank" id="corank" class="biz-input-sm">
                 <?php
                 $dsql->SetQuery("SELECT * FROM `#@__arcrank` WHERE `rank` >= 0");
                 $dsql->Execute();
@@ -159,7 +159,7 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="biz-td" align="center">文件保存目录：</td>
-            <td class="biz-td"><input type="text" name="typedir" value="<?php echo $myrow['typedir'] ?>" style="width:260px"></td>
+            <td class="biz-td"><input type="text" name="typedir" value="<?php echo $myrow['typedir'] ?>" class="biz-input-md"></td>
         </tr>
         <tr>
             <td align="center" class="biz-td">栏目列表选项：</td>
@@ -171,7 +171,7 @@ if ($dopost == 'time') {
         </tr>
         <tr>
             <td class="biz-td" align="center">默认页的名称：</td>
-            <td class="biz-td"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname'] ?>" style="width:260px"></td>
+            <td class="biz-td"><input type="text" name="defaultname" value="<?php echo $myrow['defaultname'] ?>" class="biz-input-md"></td>
         </tr>
         <tr>
             <td class="biz-td" align="center">栏目属性：</td>

@@ -43,11 +43,11 @@
     </tr>
     <tr>
       <td width="260">模块名称：</td>
-      <td><input type="text" name="modulname" id="modulname" style="width:160px" value="<?php echo $name;?>"></td>
+      <td><input type="text" name="modulname" id="modulname" class="biz-input-sm" value="<?php echo $name;?>"></td>
     </tr>
     <tr>
       <td>开发者id：</td>
-      <td><input type="text" name="dev_id2" id="dev_id2" style="width:160px" value="<?php echo $dev_id;?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
+      <td><input type="text" name="dev_id2" id="dev_id2" class="biz-input-sm" value="<?php echo $dev_id;?>" disabled> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
     </tr>
     <tr>
       <td>语言编码：</td>
@@ -66,12 +66,12 @@
       <td>模块识别码：</td>
       <td>
         <input type="hidden" name="hash" value="<?php echo $hash;?>">
-        <input type="text" name="hashv" value="<?php echo $hash;?>" style="width:260px" disabled>（不可改）
+        <input type="text" name="hashv" value="<?php echo $hash;?>" class="biz-input-md" disabled>（不可改）
       </td>
     </tr>
     <tr>
       <td>发布时间：</td>
-      <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo $time;?>"></td>
+      <td><input type="text" name="mtime" id="mtime" class="biz-input-sm" value="<?php echo $time;?>"></td>
     </tr>
     <tr>
       <td>是否涉及会员系统：</td>
@@ -79,8 +79,8 @@
         <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='1') echo "checked='1'";?>> 涉及</label>
         <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" <?php if ($ismember=='0') echo "checked='1'";?>> 不涉及</label>
         <div id="rboxct" style="display:<?php echo ($ismember=='0' ? 'none' : 'block');?>">
-          导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value="<?php echo $indexname;?>"><br>
-          导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="<?php echo $indexurl;?>">（用相对于会员中心的网址，如：../ask）
+          导航使用名称：<input type="text" name="indexname" id="indexname" class="biz-input-sm" value="<?php echo $indexname;?>"><br>
+          导航使用网址：<input type="text" name="indexurl" id="indexurl" class="biz-input-sm" value="<?php echo $indexurl;?>">（用相对于会员中心的网址，如：../ask）
         </div>
       </td>
     </tr>
@@ -109,8 +109,8 @@
       <td>程序安装：</td>
       <td>
         <label><input type="checkbox" name="autosetup" id="autosetup" value="1" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"<?php if (isset($autosetup) && $autosetup==1) echo "checked='1'";?>> 自动生成（由系统自动处理安装）</label><br>
-        <div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input name="setup" type="file" id="setup" style="width:360px"></div>
-       <div style="margin:5px 0px 5px 5px;display:<?php if (isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
+        <div style="display:<?php if (!isset($autosetup) || $autosetup==0) echo 'block'; else echo 'none';?>" id="autosetupinput"><input name="setup" type="file" id="setup" class="biz-input-md"></div>
+       <div style="display:<?php if (isset($autosetup) && $autosetup==1) echo 'block'; else echo 'none';?>" id="autosetupct">
         	<table width="100%" cellpadding="5" cellspacing="1">
             <tr>
               <td bgcolor="#fbfce2">
@@ -131,8 +131,8 @@
       <td>
         <label><input type="checkbox" name="autodel" id="autodel" value="1" onclick="ShowHideField('autodel','autodelinput','autodelct')" <?php if (isset($autodel) && $autodel==1) echo "checked='1'";?>> 自动生成（由系统自动处理卸载）</label>
       	<br>
-      	<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
-      	<div style='margin:5px 0px 5px 5px;display:<?php if (isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>' id='autodelct'>
+      	<div style="display:<?php if (!isset($autodel) || $autodel==0) echo 'block'; else echo 'none';?>" id="autodelinput"><input name="uninstall" type="file" id="uninstall" class="biz-input-md"></div>
+      	<div style='display:<?php if (isset($autodel) && $autodel==1) echo 'block'; else echo 'none';?>' id='autodelct'>
       	<table width="100%" cellpadding="5" cellspacing="1">
           <tr>
             <td bgcolor="#fbfce2">卸载时执行的SQL语句：<br>

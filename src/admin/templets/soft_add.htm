@@ -37,7 +37,7 @@
       var endNum = parseInt(document.form1.picnum.value) + startNum - 1;
       if (endNum > 30) endNum = 30;
       for (startNum; startNum <= endNum; startNum++) {
-        upfield.innerHTML += "<div>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' style='width:260px'> 服务器名称：<input type='text' name='servermsg" + startNum + "' style='width:160px'></div>";
+        upfield.innerHTML += "<div>软件地址" + startNum + "：<input type='text' name='softurl" + startNum + "' value='http://' class='biz-input-md'> 服务器名称：<input type='text' name='servermsg" + startNum + "' class='biz-input-sm'></div>";
       }
     }
     function ShowHideAddr() {
@@ -69,9 +69,9 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 软件名称：</td>
-              <td width="400"><input type="text" name="title" id="title" style="width:390px"></td>
+              <td width="400"><input type="text" name="title" id="title" class="biz-input-lg"></td>
               <td width="90"> 简略标题：</td>
-              <td><input type="text" name="shorttitle" id="shorttitle" style="width:160px"></td>
+              <td><input type="text" name="shorttitle" id="shorttitle" class="biz-input-sm"></td>
             </tr>
           </table>
         </td>
@@ -101,7 +101,7 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 跳转网址：</td>
-              <td><input type="text" name="redirecturl" id="redirecturl" value="" style="width:300px"></td>
+              <td><input type="text" name="redirecturl" id="redirecturl" value="" class="biz-input-md"></td>
             </tr>
           </table>
         </td>
@@ -111,9 +111,9 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> Tag标签：</td>
-              <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" style="width:300px">（','号分开，单个标签小于12字节）</td>
+              <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" class="biz-input-md">（','号分开，单个标签小于12字节）</td>
               <td width="60">权重：</td>
-              <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc'];?>" style="width:60px">（越小越靠前）</td>
+              <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc'];?>" class="biz-input-sm">（越小越靠前）</td>
             </tr>
           </table>
         </td>
@@ -123,8 +123,8 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
-              <td width="560">
-                <input type="text" name="picname" id="picname" style="width:300px">
+              <td width="620">
+                <input type="text" name="picname" id="picname" class="biz-input-md">
                 <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit2" onClick="SelectImage('form1.picname','small');" class='btn btn-success btn-sm'>选择图片</button>
@@ -141,12 +141,12 @@
             <tr>
               <td width="90"> 来源：</td>
               <td width="260">
-                <input type="text" name="source" id="source" style="width:160px">
+                <input type="text" name="source" id="source" class="biz-input-sm">
                 <button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
               </td>
               <td width="60">作者：</td>
               <td>
-                <input type="text" name="writer" id="writer" style="width:160px">
+                <input type="text" name="writer" id="writer" class="biz-input-sm">
                 <button type="button" name="selwriter" id="selwriter" class="btn btn-success btn-sm">选择</button>
               </td>
             </tr>
@@ -162,7 +162,7 @@
                 <span id="typeidct">
                 <?php
                 $typeOptions = GetOptionList($cid,$cuserLogin->getUserChannel(),$channelid);
-                echo "<select name='typeid' id='typeid' style='width:160px'>";
+                echo "<select name='typeid' id='typeid' class='biz-input-sm'>";
                 echo "<option value='0'>请选择栏目</option>";
                 echo $typeOptions;
                 echo "</select>";
@@ -177,7 +177,7 @@
                 ?>
               </td>
               <td width="90" align="center">消费金币：</td>
-              <td><input type="text" name="needmoney" id="needmoney" value="<?php echo $softconfig['dfywboy'];?>" style="width:160px"></td>
+              <td><input type="text" name="needmoney" id="needmoney" value="<?php echo $softconfig['dfywboy'];?>" class="biz-input-sm"></td>
             </tr>
           </table>
         </td>
@@ -189,7 +189,7 @@
               <td width="90"> 副栏目：</td>
               <td>
                 <span id="typeid2ct"></span>
-                <input type="text" name="typeid2" id="typeid2" value="" style="width:260px">
+                <input type="text" name="typeid2" id="typeid2" value="" class="biz-input-md">
                 <i class="btn btn-sm fa fa-search"  onClick="ShowCatMap(event, this, <?php echo $channelid;?>, 'typeid2')" title='选择副栏目' style='cursor:pointer'></i> 
               </td>
             </tr>
@@ -202,7 +202,7 @@
             <tr>
               <td width="90"> 关键词：</td>
               <td width="410">
-                <input type="text" name="keywords" id="keywords" value="" style="width:360px">
+                <input type="text" name="keywords" id="keywords" value="" class="biz-input-md">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
               </td>
               <td>
@@ -228,7 +228,7 @@
             <tr>
               <td width="90"> 文件类型：</td>
               <td width="170">
-                <select name="filetype" id="filetype" style="width:160px">
+                <select name="filetype" id="filetype" class="biz-input-sm">
                   <option value=".exe" selected>.exe</option>
                   <option value=".zip">.zip</option>
                   <option value=".rar">.rar</option>
@@ -239,7 +239,7 @@
               </td>
               <td width="90">软件等级：</td>
               <td width="170">
-                <select name="softrank" id="softrank" style="width:160px">
+                <select name="softrank" id="softrank" class="biz-input-sm">
                   <option value="1">一星</option>
                   <option value="2">二星</option>
                   <option value="3" selected>三星 </option>
@@ -249,7 +249,7 @@
               </td>
               <td width="90">软件属性：</td>
               <td width="170">
-                <select name="softtype" id="softtype" style="width:160px">
+                <select name="softtype" id="softtype" class="biz-input-sm">
                   <option value="国产软件" selected>国产软件</option>
                   <option value="国外软件">国外软件</option>
                   <option value="汉化补丁">汉化补丁</option>
@@ -257,7 +257,7 @@
               </td width="170">
               <td width="90">界面语言：</td>
               <td width="170">
-                <select name="language" id="language" style="width:160px">
+                <select name="language" id="language" class="biz-input-sm">
                   <option value="简体中文" selected>简体中文</option>
                   <option value="英文软件">英文软件</option>
                   <option value="繁体中文">繁体中文</option>
@@ -266,7 +266,7 @@
               </td>
               <td width="90">授权方式：</td>
               <td>
-                <select name="accredit" id="accredit" style="width:160px">
+                <select name="accredit" id="accredit" class="biz-input-sm">
                   <option value="共享软件" selected>共享软件</option>
                   <option value="免费软件">免费软件</option>
                   <option value="开源软件">开源软件</option>
@@ -284,7 +284,7 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 运行环境：</td>
-              <td><input type="text" name="os" value="Win2003,WinXP,Win2000,Win9X" style="width:260px"></td>
+              <td><input type="text" name="os" value="Win2003,WinXP,Win2000,Win9X" class="biz-input-md"></td>
             </tr>
           </table>
         </td>
@@ -294,9 +294,9 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 官方网址：</td>
-              <td width="310"><input type="text" name="officialUrl" id="officialUrl" value="http://" style="width:260px"></td>
+              <td width="310"><input type="text" name="officialUrl" id="officialUrl" value="http://" class="biz-input-md"></td>
               <td width="90">演示地址：</td>
-              <td><input type="text" name="officialDemo" id="officialDemo" value="http://" style="width:260px"></td>
+              <td><input type="text" name="officialDemo" id="officialDemo" value="http://" class="biz-input-md"></td>
             </tr>
           </table>
         </td>
@@ -307,7 +307,7 @@
             <tr>
               <td width="90"> 软件大小：</td>
               <td width="310">
-                <input type="text" name="softsize" id="softsize" style="width:160px">
+                <input type="text" name="softsize" id="softsize" class="biz-input-sm">
                 <select name="unit" id="unit">
                   <option value="MB" selected>MB</option>
                   <option value="KB">KB</option>
@@ -317,7 +317,7 @@
               </td>
               <td width="90">需会员权限：</td>
               <td align="left">
-                <select name="daccess" id="daccess" style="width:160px">
+                <select name="daccess" id="daccess" class="biz-input-sm">
                 <?php
                 $dsql->SetQuery("Select * from `#@__arcrank` where `rank`>=0 ");
                 $dsql->Execute();
@@ -344,11 +344,11 @@
             <tr>
               <td width="90"> 本地地址：</td>
               <td>
-                <input type="text" name="softurl1" id="softurl1" style="width:260px">
+                <input type="text" name="softurl1" id="softurl1" class="biz-input-md">
                 <button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm" onClick="SelectSoft('form1.softurl1')">选取</button>
               </td>
               <td width="90">服务器名称：</td>
-              <td><input type="text" name="servermsg1" id="servermsg1" value="本地下载" style="width:160px"></td>
+              <td><input type="text" name="servermsg1" id="servermsg1" value="本地下载" class="biz-input-sm"></td>
             </tr>
           </table>
         </td>
@@ -372,9 +372,9 @@
           ?>
           <?php echo $sitename;?>：
           <input type='hidden' name='forconfig<?php echo $startNum;?>' value='1'>
-          <input type='text' name='softurlfirst<?php echo $startNum;?>' style='width:260px' value='<?php echo $siteurl;?>'> +
-          <input type='text' name='softurl<?php echo $startNum;?>' style='width:160px' value=''> =
-          <input type='text' name='servermsg<?php echo $startNum;?>' style='width:160px' value='<?php echo $sitename;?>'>
+          <input type='text' name='softurlfirst<?php echo $startNum;?>' class='biz-input-md' value='<?php echo $siteurl;?>'> +
+          <input type='text' name='softurl<?php echo $startNum;?>' class='biz-input-sm' value=''> =
+          <input type='text' name='servermsg<?php echo $startNum;?>' class='biz-input-sm' value='<?php echo $sitename;?>'>
           <label><input type='checkbox' name='need<?php echo $startNum;?>' value='1' checked> 启用</label>
           <br>
           <?php
@@ -391,14 +391,14 @@
             <tr>
               <td width="90"> 其它地址：</td>
               <td>
-                <input type="text" name="picnum" id="picnum" value="5" style="width:60px">
+                <input type="text" name="picnum" id="picnum" value="5" class="biz-input-sm">
                 <button type="button" name="kkkup" class="btn btn-success btn-sm" id="kkkup2" onClick="MakeUpload();">增加地址</button>
                 <button type="button" class="btn btn-success btn-sm" name="Submit3" id="btsh3" onClick="ShowHideAddr();">隐藏地址</button>（最多为30个链接）
               </td>
             </tr>
           </table>
           <div id="morelink" style="display:block">
-            <div id="uploadfield" style="width:800px"></div>
+            <div id="uploadfield"></div>
           </div>
         </td>
       </tr>
@@ -444,7 +444,7 @@
             <tr>
               <td width="90"> 文档排序：</td>
               <td width="260">
-                <select name="sortup" id="sortup" style="width:160px">
+                <select name="sortup" id="sortup" class="biz-input-sm">
                   <option value="0" selected>默认排序</option>
                   <option value="7">置顶一周</option>
                   <option value="30">置顶一个月</option>
@@ -455,7 +455,7 @@
               </td>
               <td width="90">标题颜色：</td>
               <td>
-                <input type="text" name="color" id="color" style="width:160px">
+                <input type="text" name="color" id="color" class="biz-input-sm">
                 <button type="button" name="modcolor" id="modcolor" class="btn btn-success btn-sm" onClick="ShowColor(event,this)">选取</button>
               </td>
             </tr>
@@ -468,13 +468,13 @@
             <tr>
               <td width="90"> 阅读权限：</td>
               <td width="260">
-                <select name="arcrank" id="arcrank" style="width:160px">
+                <select name="arcrank" id="arcrank" class="biz-input-sm">
                   <option value="0">已审核状态</option>
                   <option value="-1">未审核状态</option>
                 </select>
               </td>
               <td width="90">文件名称：</td>
-              <td><input type="text" name="filename" id="filename" style="width:160px">（不包括后缀名如.html等）</td>
+              <td><input type="text" name="filename" id="filename" class="biz-input-sm">（不包括后缀名如.html等）</td>
             </tr>
           </table>
         </td>
@@ -487,11 +487,11 @@
               <td width="260">
                 <?php
                 $nowtime = GetDateTimeMk(time());
-                echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker' style='width:160px'>";
+                echo "<input type='text' name='pubdate' value='$nowtime' id='pubdate' class='datepicker' class='biz-input-sm'>";
 			          ?>
               </td>
               <td width="90">浏览次数：</td>
-              <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click);?>" style="width:160px"></td>
+              <td><input type="text" name="click" value="<?php echo ($cfg_arc_click=='-1' ? mt_rand(50,200):$cfg_arc_click);?>" class="biz-input-sm"></td>
             </tr>
           </table>
         </td>

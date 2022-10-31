@@ -269,7 +269,7 @@ else if ($dopost == 'moveArchives') {
         $channelid = empty($channelid) ? 0 : $channelid;
         $tl = new TypeLink($aid);
         $typeOptions = $tl->GetOptionArray(0, $admin_catalogs, $channelid);
-        $typeOptions = "<select name='totype' style='width:320px'>
+        $typeOptions = "<select name='totype' class='biz-input-sm'>
         <option value='0'>请选择移动位置</option>
         $typeOptions
         </select>";
@@ -288,7 +288,7 @@ else if ($dopost == 'moveArchives') {
         <tr>
             <td width="90" class="biz-td"> 文档id：</td>
             <td class="biz-td">
-                <input type="text" name="tmpids" value="<?php echo $qstr;?>" style="width:320px;overflow:hidden"><br>
+                <input type="text" name="tmpids" value="<?php echo $qstr;?>"><br>
                 移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
             </td>
         </tr>
@@ -525,7 +525,7 @@ else if ($dopost == 'quickEdit') {
         <td class="biz-td">
             <?php
             $typeOptions = GetOptionList($arcRow['typeid'], $cuserLogin->getUserChannel(), $arcRow['channel']);
-            echo "<select name='typeid' style='width:320px'>";
+            echo "<select name='typeid' class='biz-input-sm'>";
             if ($arcRow["typeid"] == "0") echo "<option value='0' selected>请选择栏目</option>";
             echo $typeOptions;
             echo "</select>";
@@ -551,16 +551,16 @@ else if ($dopost == 'quickEdit') {
     </tr>
     <tr>
         <td width="90" class="biz-td"> 标题：</td>
-        <td class="biz-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" style="width:320px"></td>
+        <td class="biz-td"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="biz-input-md"></td>
     </tr>
     <tr>
         <td width="90" class="biz-td"> 简略标题：</td>
-        <td class="biz-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" style="width:320px"></td>
+        <td class="biz-td"><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="biz-input-md"></td>
     </tr>
     <tr>
         <td width="90" class="biz-td"> 阅读权限：</td>
         <td class="biz-td">
-            <select name="arcrank" id="arcrank" style="width:100px">
+            <select name="arcrank" id="arcrank" class="biz-input-sm">
                 <option value='<?php echo $arcRow["arcrank"] ?>'>
                 <?php echo $arcRow["rankname"] ?> </option>
                 <?php
@@ -572,12 +572,12 @@ else if ($dopost == 'quickEdit') {
                 }
                 ?>
             </select>
-            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" style="width:100px">
+            需要金币：<input type="text" name="money" id="money" value="<?php echo $arcRow["money"];?>" class="biz-input-xs">
         </td>
     </tr>
     <tr>
         <td width="90" class="biz-td"> 关键词：</td>
-        <td class="biz-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" style="width:320px"></td>
+        <td class="biz-td"><input type="text" name="keywords" id="keywords" value="<?php echo $arcRow['keywords'];?>" class="biz-input-md"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">
@@ -835,7 +835,7 @@ else if ($dopost == 'attsDlg') {
     </tr>
     <tr>
         <td width="90" class="biz-td"> 文档id：</td>
-        <td class="biz-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>" style="width:320px;overflow:hidden"></td>
+        <td class="biz-td"><input type="text" name="tmpids" value="<?php echo $qstr;?>"></td>
     </tr>
     <tr>
         <td colspan="2" align="center" class="py-2">

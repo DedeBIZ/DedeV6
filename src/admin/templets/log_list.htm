@@ -46,14 +46,14 @@
     <table width="98%" cellpadding="2" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr bgcolor="#f8f8f8">
         <td width="180" align="center">
-          <select name="adminid" id="adminid" style="width:160px">
+          <select name="adminid" id="adminid" class="biz-input-sm">
             <option value="0" selected>全部</option>
             <?php echo $adminlist?>
           </select>
         </td>
-        <td width="170"><input type="text" name="cip" id="cip" placeholder="请输入ip地址" style="width:160px"></td>
+        <td width="170"><input type="text" name="cip" id="cip" placeholder="请输入ip地址" class="biz-input-sm"></td>
         <td width="170">
-          <select name="dtime" id="dtime" style="width:160px">
+          <select name="dtime" id="dtime" class="biz-input-sm">
             <option value="0" selected>全部</option>
             <option value="7">一周内</option>
             <option value="15">15天内</option>
@@ -83,11 +83,11 @@
       <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type="checkbox" name="logs" id="logs" value="{dede:field.lid/}"></td>
         <td>{dede:field.userid/}</td>
-        <td><input type="text" value="{dede:field.filename/}" name="t0" style="width:100px"></td>
+        <td><input type="text" value="{dede:field.filename/}" name="t0" class="biz-input-sm"></td>
         <td>{dede:field.method/}</td>
         <td>{dede:field.cip/}</td>
         <td>{dede:field.dtime function="MyDate('y/m/d H:i:s',@me)"/}</td>
-        <td><input type="text" value="{dede:field.query/}" name="t1" style="width:280px"></td>
+        <td><input type="text" value="{dede:field.query/}" name="t1" class="biz-input-md"></td>
       </tr>
       {/dede:datalist}
     </form>

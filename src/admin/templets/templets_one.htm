@@ -13,11 +13,11 @@
    <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
       <tr bgcolor="#f8f8f8">
          <form action="templets_one.php" name="sss">
-            <td width="170" align="center"><input type="text" name="keyword" value="<?php if (!empty($keyword)) $keyword = '';?>" placeholder="请输入关键词" style="width:260px"></td>
+            <td width="170" align="center"><input type="text" name="keyword" value="<?php if (!empty($keyword)) $keyword = '';?>" placeholder="请输入关键词" class="biz-input-md"></td>
             <td width="170">
                <?php
                  $likeid = (!isset($likeid) ? '' : $likeid);
-                 echo "<select name='likeid' id='likeid' style='width:160px'>";
+                 echo "<select name='likeid' id='likeid' class='biz-input-sm'>";
                  $dsql->Execute("s","Select likeid From `#@__sgpage` group by likeid ");
                  echo "<option value=''>不限</option>";
                  while($arr = $dsql->GetArray('s'))

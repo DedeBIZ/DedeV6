@@ -67,15 +67,15 @@ else if ($dopost == "copystart") {
         </tr>
         <tr>
         <td align='center'>新频道名称：</td>
-        <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' style='width:260px' /></td>
+        <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' class='biz-input-md' /></td>
         </tr>
         <tr>
         <td align='center'>新频道标识：</td>
-        <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' style='width:260px' /></td>
+        <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' class='biz-input-md' /></td>
         </tr>
         <tr>
         <td align='center'>新附加表：</td>
-        <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' style='width:260px' /></td>
+        <td><input name='newaddtable' type='text' id='newaddtable' value='{$row['addtable']}{$idname}' class='biz-input-md' /></td>
         </tr>
         <tr>
         <td align='center'>复制模板：</td>
@@ -472,7 +472,7 @@ else if ($dopost == 'modifysearch') {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' style='width:260px'>\r\n";
+                    $forms .= "<br>栏目：<select name='typeid' class='biz-input-md'>\r\n";
                     $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";
@@ -498,7 +498,7 @@ else if ($dopost == 'modifysearch') {
                     require_once(DEDEINC."/typelink/typelink.class.php");
                     $tl = new TypeLink(0);
                     $typeOptions = $tl->GetOptionArray(0, 0, $mid);
-                    $forms .= "<br>栏目：<select name='typeid' style='width:260px'>\r\n";
+                    $forms .= "<br>栏目：<select name='typeid' class='biz-input-md'>\r\n";
                     $forms .= "<option value='0' selected>不限栏目</option>\r\n";
                     $forms .= $typeOptions;
                     $forms .= "</select>";

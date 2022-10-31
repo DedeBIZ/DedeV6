@@ -103,7 +103,7 @@
                   <?php
                   $tl = new TypeLink(0);
                   $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-                  echo "<select name='typeid' style='width:160px'>";
+                  echo "<select name='typeid' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限栏目</option>";
                   echo $typeOptions;
                   echo "</select>";
@@ -113,7 +113,7 @@
               <tr>
                 <td>限定频道：
                   <?php
-                  echo "<select name='channel' style='width:160px'>";
+                  echo "<select name='channel' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限频道</option>";
                   $tl->dsql->SetQuery("Select id,typename From #@__channeltype where id>0");
               	  $tl->dsql->Execute();
@@ -125,7 +125,7 @@
               		?>
                   附加属性：
                   <?php
-                  echo "<select name='att' style='width:160px'>";
+                  echo "<select name='att' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限</option>";
                   $tl->dsql->SetQuery("Select * From #@__arcatt");
             	    $tl->dsql->Execute();
@@ -154,7 +154,7 @@
               </tr>
               <tr>
                 <td>排列顺序：
-                  <select name="orderby" id="orderby" style="width:160px">
+                  <select name="orderby" id="orderby" class="biz-input-sm">
                     <option value="sortrank">置顶权限值</option>
                     <option value="pubdate" selected>发布时间</option>
                     <option value="senddate">录入时间</option>

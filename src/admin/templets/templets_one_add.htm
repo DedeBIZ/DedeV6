@@ -37,11 +37,11 @@
       </tr>
       <tr>
         <td width="260">页面标题：</td>
-        <td><input type="text" name="title" id="title" style="width:260px"></td>
+        <td><input type="text" name="title" id="title" class="biz-input-md"></td>
       </tr>
       <tr>
         <td>页面关键词：</td>
-        <td><input type="text" name="keywords" id="keywords" style="width:260px">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
+        <td><input type="text" name="keywords" id="keywords" class="biz-input-md">（用&quot;,&quot;分开{dede:field name='keywords'/}）</td>
       </tr>
       <tr>
         <td>页面摘要信息：</td>
@@ -50,9 +50,9 @@
       <tr>
         <td>关联标识：</td>
         <td>
-          <input type="text" name="likeid" id="likeid" value="" style="width:260px">
+          <input type="text" name="likeid" id="likeid" value="" class="biz-input-md">
           <?php
-        	echo "<select name='likeidsel' id='likeidsel' style='width:160px'>";
+        	echo "<select name='likeidsel' id='likeidsel' class='biz-input-sm'>";
         	$dsql->Execute('s',"Select likeid From `#@__sgpage` group  by likeid ");
         	echo "<option value='default'>default</option>";
         	while($arr = $dsql->GetArray('s'))
@@ -65,11 +65,11 @@
       </tr>
       <tr>
         <td>保存位置：</td>
-        <td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/diy.html';?>" style="width:260px">（填写路径文件夹）</td>
+        <td><input type="text" name="nfilename" id="nfilename" value="<?php echo $cfg_arcdir.'/diy.html';?>" class="biz-input-md">（填写路径文件夹）</td>
       </tr>
       <tr>
         <td>模板文件名：</td>
-        <td><input type="text" name="template" id="template" value="{style}/index_article.htm" style="width:260px">（填写模板名称）</td>
+        <td><input type="text" name="template" id="template" value="{style}/index_article.htm" class="biz-input-md">（填写模板名称）</td>
       </tr>
       <tr>
         <td>是否编译内容：</td>

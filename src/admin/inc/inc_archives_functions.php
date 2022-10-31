@@ -219,11 +219,11 @@ function GetRemoteImage($url, $uid = 0)
     return ($ok ? $revalues : '');
 }
 /**
- *  检测频道ID
+ *  检测频道id
  *
  * @access    public
  * @param     int  $typeid  栏目id
- * @param     int  $channelid  频道ID
+ * @param     int  $channelid  频道id
  * @return    bool
  */
 function CheckChannel($typeid, $channelid)

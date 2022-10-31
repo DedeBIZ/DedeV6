@@ -41,23 +41,23 @@
       <table width="98%" cellspacing="1" cellpadding="3" class="table table-borderless">
   	    <tr>
           <td width="260">网址：</td>
-          <td><input type="text" name="url" id="url" value="http://" class='pubinputs' style="width:260px"></td>
+          <td><input type="text" name="url" id="url" value="http://" class='pubinputs' class="biz-input-md"></td>
         </tr>
         <tr>
           <td>网站名称：</td>
-          <td><input type="text" name="webname" id="webname" size="30" class='pubinputs' style="width:260px"></td>
+          <td><input type="text" name="webname" id="webname" size="30" class='pubinputs' class="biz-input-md"></td>
         </tr>
         <tr>
           <td>排列位置：</td>
-          <td><input type="text" name="sortrank" id="sortrank" value="1" class='pubinputs' style='width:60px'>（由小到大排列）</td>
+          <td><input type="text" name="sortrank" id="sortrank" value="1" class='pubinputs' class='biz-input-xs'>（由小到大排列）</td>
         </tr>
         <tr>
           <td>网站Logo：</td>
-          <td><input type="text" name="logo" id="logo" size="30" class='pubinputs' style="width:260px">（88*31 gif或jpg）</td>
+          <td><input type="text" name="logo" id="logo" size="30" class='pubinputs' class="biz-input-md">（88*31 gif或jpg）</td>
         </tr>
         <tr>
           <td>上传Logo：</td>
-          <td><input type="text" name="logoimg" type="file" id="logoimg" style="width:260px"></td>
+          <td><input type="text" name="logoimg" type="file" id="logoimg" class="biz-input-md"></td>
         </tr>
         <tr>
           <td>网站简况：</td>
@@ -65,12 +65,12 @@
         </tr>
         <tr>
           <td>站长Email：</td>
-          <td><input type="text" name="email" id="email" class='pubinputs' style="width:260px"></td>
+          <td><input type="text" name="email" id="email" class='pubinputs' class="biz-input-md"></td>
         </tr>
         <tr>
           <td>网站类型：</td>
           <td>
-          <select name="typeid" id="typeid" style="width:160px">
+          <select name="typeid" id="typeid" class="biz-input-sm">
           <?php
           $dsql->SetQuery("select * from #@__flinktype");
           $dsql->Execute();

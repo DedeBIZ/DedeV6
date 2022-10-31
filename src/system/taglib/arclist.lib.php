@@ -95,7 +95,7 @@ function lib_arclist(&$ctag, &$refObj)
  * @param     string  $innertext  底层模板
  * @param     int  $arcid  文档id
  * @param     string  $idlist  ID列表
- * @param     int  $channelid  频道ID
+ * @param     int  $channelid  频道id
  * @param     string  $limit  限制
  * @param     string  $att  属性
  * @param     string  $order  排序类型
@@ -212,7 +212,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
                 else $orwheres[] = ' arc.typeid IN ('.GetSonIds($typeid).','.$CrossID.')';
             }
         }
-        //频道ID
+        //频道id
         if (preg_match('#spec#i', $listtype)) $channelid == -1;
         if (!empty($channelid)) $orwheres[] = " And arc.channel = '$channelid' ";
         if (!empty($noflag)) {
@@ -472,7 +472,7 @@ function GetArclistCache($md5hash)
     }
 }
 /**
- *  获取自动频道ID
+ *  获取自动频道id
  *
  * @access    public
  * @param     string  $sortid 

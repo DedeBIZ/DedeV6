@@ -84,33 +84,33 @@
                     </tr>
                     <tr>
                       <td width="260">自由列表标题：</td>
-                      <td><input type="text" name="title" id="title" style="width:260px"></td>
+                      <td><input type="text" name="title" id="title" class="biz-input-md"></td>
                     </tr>
                     <tr>
                       <td>列表HTML存放目录：</td>
-                      <td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" style="width:260px"> {listdir}变量的值</td>
+                      <td><input type="text" name="listdir" id="listdir" value="{cmspath}/a/freelist/" class="biz-input-md"> {listdir}变量的值</td>
                     </tr>
                     <tr>
                       <td>目录默认页名称：</td>
                       <td>
-                        <input type="text" name="defaultpage" id="defaultpage" value="index.html" style="width:260px">
+                        <input type="text" name="defaultpage" id="defaultpage" value="index.html" class="biz-input-md">
                         <label><input type="checkbox" name="nodefault" id="nodefault" value="1"> 不使用目录默认主页</label>
                       </td>
                     </tr>
                     <tr>
                       <td>命名规则：</td>
-                      <td><input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" style="width:260px"></td>
+                      <td><input type="text" name="namerule" id="namerule" value="{listdir}/index_{listid}_{page}.html" class="biz-input-md"></td>
                     </tr>
                     <tr>
                       <td>列表模板：</td>
                       <td>
-                        <input type="text" name="templet" id="templet" value="{style}/list_free.htm" style="width:260px">
+                        <input type="text" name="templet" id="templet" value="{style}/list_free.htm" class="biz-input-md">
                         <button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
                       </td>
                     </tr>
                     <tr>
                       <td>最大列出页数：</td>
-                      <td><input type="text" name="maxpage" id="maxpage" value="100" style="width:60px"></td>
+                      <td><input type="text" name="maxpage" id="maxpage" value="100" class="biz-input-sm"></td>
                     </tr>
                     <tr>
                       <td></td>
@@ -118,7 +118,7 @@
                     </tr>
                     <tr>
                       <td>关键词：</td>
-                      <td><input type="text" name="keywords" id="keywords" style="width:260px"></td>
+                      <td><input type="text" name="keywords" id="keywords" class="biz-input-md"></td>
                     </tr>
                     <tr>
                       <td>列表描述：</td>
@@ -153,7 +153,7 @@
               <tr>
                 <td>限定栏目：
                   <?php
-                  echo "<select name='typeid' style='width:160px'>";
+                  echo "<select name='typeid' class='biz-input-sm'>";
                   echo "<option value='0'>不限栏目</option>";
                   $dsql->SetQuery("Select ID,typename, channeltype From #@__arctype");
                   $dsql->Execute();
@@ -172,7 +172,7 @@
               <tr>
                 <td>限定频道：
                   <?php
-                  echo "<select name='channel' style='width:160px'>";
+                  echo "<select name='channel' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限</option>";
                   $dsql->SetQuery("Select ID,typename From #@__channeltype where ID>0");
             	    $dsql->Execute();
@@ -187,7 +187,7 @@
               <tr>
                 <td>附加属性：
                   <?php
-                  echo "<select name='att' style='width:160px'>";
+                  echo "<select name='att' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限</option>";
                   $dsql->SetQuery("Select * From #@__arcatt");
           	      $dsql->Execute();
@@ -197,14 +197,14 @@
           	      }
                   echo "</select>";
           		    ?>
-                  文档发布时间：<input type="text" name="subday" id="subday2" value="0" style="width:60px"> 天以内（0表示不限）
+                  文档发布时间：<input type="text" name="subday" id="subday2" value="0" class="biz-input-sm"> 天以内（0表示不限）
                 </td>
               </tr>
               <tr>
                 <td>
-                  每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" style="width:60px">
-                  显示列数： <input type="text" name="col" id="col3" value="1" style="width:60px">
-                  标题长度：<input type="text" name="titlelen" id="titlelen" value="60" style="width:60px">（1字节 = 0.5个中文字）
+                  每页记录数：<input type="text" name="pagesize" id="pagesize" value="30" class="biz-input-sm">
+                  显示列数： <input type="text" name="col" id="col3" value="1" class="biz-input-sm">
+                  标题长度：<input type="text" name="titlelen" id="titlelen" value="60" class="biz-input-sm">（1字节 = 0.5个中文字）
                 </td>
               </tr>
               <tr>
@@ -217,7 +217,7 @@
               </tr>
               <tr>
                 <td>排列顺序：
-                  <select name="orderby" id="orderby" style="width:160px">
+                  <select name="orderby" id="orderby" class="biz-input-sm">
                     <option value="sortrank">置顶权限值</option>
                     <option value="pubdate" selected>发布时间</option>
                     <option value="senddate">录入时间</option>

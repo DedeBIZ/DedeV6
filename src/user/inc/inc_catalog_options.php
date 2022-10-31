@@ -82,7 +82,7 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
  *
  * @param     int  $mid  会员ID
  * @param     int  $mtypeid  自定义类别ID
- * @param     int  $channelid  频道ID
+ * @param     int  $channelid  频道id
  * @return    string
  */
 function classification($mid, $mtypeid = 0, $channelid = 1)

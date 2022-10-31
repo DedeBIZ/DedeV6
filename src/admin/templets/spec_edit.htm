@@ -90,9 +90,9 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 专题名称：</td>
-              <td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" style="width:390px"></td>
+              <td width="400"><input type="text" name="title" id="title" value="<?php echo $arcRow['title'];?>" class="biz-input-lg"></td>
               <td width="90"> 简略标题：</td>
-              <td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" style="width:160px"></td>
+              <td><input type="text" name="shorttitle" id="shorttitle" value="<?php echo $arcRow['shorttitle'];?>" class="biz-input-sm"></td>
             </tr>
           </table>
         </td>
@@ -125,8 +125,8 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 缩略图：</td>
-              <td width="560">
-                <input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" style="width:300px">
+              <td width="620">
+                <input type="text" name="picname" id="picname" value="<?php echo $arcRow['litpic']?>" class="biz-input-md">
                 <label><input type="checkbox" name="ddisremote" value='1'> 远程</label>
                 <span class="btn btn-success btn-sm fileinput-button">上传图片<input type="file" name="files[]" id="iptAddImages"></span>
                 <button type="button" name="Submit" onClick="SelectImage('form1.picname','');" class="btn btn-success btn-sm">选择图片</button>
@@ -142,7 +142,7 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 责任编辑：</td>
-              <td><input type="text" name="writer" id="writer" value="<?php echo $arcRow['writer']?>" style="width:160px"></td>
+              <td><input type="text" name="writer" id="writer" value="<?php echo $arcRow['writer']?>" class="biz-input-sm"></td>
             </tr>
           </table>
         </td>
@@ -153,7 +153,7 @@
             <tr>
               <td width="90"> 内容排序：</td>
               <td width="260">
-                <select name="sortup" id="sortup" style="width:160px">
+                <select name="sortup" id="sortup" class="biz-input-sm">
                   <?php
                   $subday = SubDay($arcRow["sortrank"],$arcRow["senddate"]);
                   echo "<option value='0'>正常排序</option>";
@@ -168,7 +168,7 @@
               </td>
               <td width="90">标题颜色：</td>
               <td>
-                <input type="text" name="color" id="color" style="width:160px" value="<?php echo $arcRow['color']?>">
+                <input type="text" name="color" id="color" class="biz-input-sm" value="<?php echo $arcRow['color']?>">
                 <button type="button" name="modcolor" id="modcolor" value="" onClick="ShowColor(event,this)" class="btn btn-success btn-sm">选取</button>
               </td>
             </tr>
@@ -183,7 +183,7 @@
               <td>
                 <?php
               	$typeOptions = GetOptionList($arcRow["typeid"],$cuserLogin->getUserChannel(),0);
-           	    echo "<select name='typeid' style='width:160px'>";
+           	    echo "<select name='typeid' class='biz-input-sm'>";
                 if ($arcRow["typeid"]=="0") echo "<option value='0' selected='1'>请选择主分类</option>";
                 echo $typeOptions;
                 echo "</select>";
@@ -199,7 +199,7 @@
           <table cellspacing="0" cellpadding="0">
             <tr>
               <td width="90"> 关键词：</td>
-              <td><label><input type="text" name="keywords" rows="3" id="keywords" value="<?php echo $arcRow['keywords']?>" style="width:360px"></label></td>
+              <td><label><input type="text" name="keywords" rows="3" id="keywords" value="<?php echo $arcRow['keywords']?>" class="biz-input-md"></label></td>
             </tr>
           </table>
         </td>
@@ -237,11 +237,11 @@
             <tr>
               <td width="90"> 专题模板：</td>
               <td width="260">
-                <input type="text" name="templet" id="templet" value="<?php echo $addRow['templet']?>" style="width:160px">
+                <input type="text" name="templet" id="templet" value="<?php echo $addRow['templet']?>" class="biz-input-sm">
                 <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
               </td>
               <td width="90"> 文件名称：</td>
-              <td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" style="width:160px">（不包括后缀名如.html等）</td>
+              <td><input type="text" name="filename" id="filename" value="<?php echo $arcRow['filename']?>" class="biz-input-sm">（不包括后缀名如.html等）</td>
             </tr>
           </table>
         </td>
@@ -254,7 +254,7 @@
               <td>
               <?php
 			        $addtime = GetDateTimeMk($arcRow["senddate"]);
-			        echo "$addtime (标准排序和生成网页名称的依据时间) <input type='hidden' name='senddate' value='".$arcRow["senddate"]."' style='width:160px'>";
+			        echo "$addtime (标准排序和生成网页名称的依据时间) <input type='hidden' name='senddate' value='".$arcRow["senddate"]."' class='biz-input-sm'>";
 			        ?>
               </td>
             </tr>
@@ -269,11 +269,11 @@
               <td width="260">
               <?php
 			        $nowtime = GetDateTimeMk($arcRow["pubdate"]);
-			        echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker' style='width:160px'>";
+			        echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker' class='biz-input-sm'>";
 		          ?>
               </td>
               <td width="90">浏览次数：</td>
-              <td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" style="width:160px"></td>
+              <td><input type="text" name="click" value="<?php echo $arcRow['click'];?>" class="biz-input-sm"></td>
             </tr>
           </table>
         </td>
@@ -321,9 +321,9 @@
               <td>
                 <table cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="310"><input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" style="width:300px" value="<?php echo $notename?>"></td>
+                    <td width="310"><input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" class="biz-input-md" value="<?php echo $notename?>"></td>
                     <td width="90">节点标识：</td>
-                    <td><input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" value="<?php echo $noteid?>" style="width:160px"></td>
+                    <td><input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" value="<?php echo $noteid?>" class="biz-input-sm"></td>
                   </tr>
                 </table>
               </td>
@@ -368,9 +368,9 @@
               <td>
                 <table cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="310"><input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" style="width:300px"></td>
+                    <td width="310"><input type="text" name="notename<?php echo $i?>" id="notename<?php echo $i?>" class="biz-input-md"></td>
                     <td width="90">节点标识：</td>
-                    <td><input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" style="width:100px"></td>
+                    <td><input type="text" name="noteid<?php echo $i?>" id="noteid<?php echo $i?>" class="biz-input-sm"></td>
                   </tr>
                 </table>
               </td>

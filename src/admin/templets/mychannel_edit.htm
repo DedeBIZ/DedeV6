@@ -109,7 +109,7 @@
         </td>
       </tr>
       <tr>
-        <td width="30%">频道ID<br>
+        <td width="30%">频道id<br>
           <span class="style2" id='help1'>数字，创建后不可修改，并具有唯一性</span></td>
         <td width="70%"><?php echo $row['id'];?></td>
       </tr>
@@ -137,7 +137,7 @@
       <tr>
         <td>会员许可投稿级别</td>
         <td>
-          <select name="sendrank" id="sendrank" style="width:160px">
+          <select name="sendrank" id="sendrank" class="biz-input-sm">
             <option value="0">游客</option>
             <?php
             $urank = $cuserLogin->getUserRank();
@@ -224,7 +224,7 @@
       </tr>
       <tr>
         <td>默认栏目id<br><span class="style2" id="help8">与投稿是唯一性结合可以用模型设计自定义表单</span></td>
-        <td><input type="text" name="dfcid" id="dfcid" value="<?php echo $row['dfcid'];?>" class="pubinputs" style="width:160px"></td>
+        <td><input type="text" name="dfcid" id="dfcid" value="<?php echo $row['dfcid'];?>" class="pubinputs" class="biz-input-sm"></td>
       </tr>
       <tr>
         <td>投稿具有唯一性<br>

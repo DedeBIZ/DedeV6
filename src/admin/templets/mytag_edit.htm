@@ -25,7 +25,7 @@
 		      <?php
          	$tl = new TypeLink(0);
          	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
-          echo "<select name='typeid' style='width:260px'>";
+          echo "<select name='typeid' class='biz-input-md'>";
           echo "<option value='0' selected>显示在没有继承本标记的所有栏目</option>";
           echo $typeOptions;
           echo "</select>";

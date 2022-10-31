@@ -109,7 +109,7 @@
       <tr>
         <td>数据类型：</td>
         <td>
-          <select name="dtype" id="type" style="width:260px">
+          <select name="dtype" id="type" class="biz-input-md">
             <?php 
             $dtype = $ctag->GetAtt('type');
             if ($dtype!='' && isset($fieldtypes[$dtype]))
@@ -148,7 +148,7 @@
         <td>内容模型：<br>
           <span class="style2">选择关联内容对应的内容模型</span></td>
         <td> 
-          <select name="channeltype" id="channeltype" style="width:260px">
+          <select name="channeltype" id="channeltype" class="biz-input-md">
             <?php
               $channelid = $ctag->GetAtt('channel') == "" ? 1 : $ctag->GetAtt('channel');
               
@@ -183,7 +183,7 @@
       <tr>
         <td>最大长度：<br>
           <span class="style2"> 文本数据必须填写，大于255为text类型 </span></td>
-        <td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" style="width:80px"></td>
+        <td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" class="biz-input-xs"></td>
       </tr>
       <tr>
         <td>自定义表单HTML：</td>

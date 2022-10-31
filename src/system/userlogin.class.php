@@ -407,7 +407,7 @@ class userLogin
  *
  * @access    public
  * @param     int   $id  栏目id
- * @param     int   $channel  频道ID
+ * @param     int   $channel  频道id
  * @param     int   $addthis  是否加入当前这个栏目
  * @return    string
  */
@@ -428,7 +428,7 @@ function GetSonIdsUL($id, $channel = 0, $addthis = TRUE)
  * @access    public
  * @param     int  $id  栏目id
  * @param     array  $sArr  缓存数组
- * @param     int   $channel  频道ID
+ * @param     int   $channel  频道id
  * @param     int   $addthis  是否加入当前这个栏目
  * @return    string
  */

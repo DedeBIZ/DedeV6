@@ -314,7 +314,7 @@ function LoadQuickDiv(e, surl, oname, w, h) {
 	}
 	if (posTop > 500) posTop = 500;
 	if (posLeft < 50) posLeft = 50;
-	newobj.style.minWidth = "460px";
+	newobj.style.minWidth = "480px";
 	newobj.style.top = posTop + "px";
 	newobj.style.left = posLeft + "px";
 	newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
@@ -579,8 +579,7 @@ var optCropper = {
 	crop: function (e) {
 		$("#cropWidth").text(Math.round(e.detail.height));
 		$("#cropHeight").text(Math.round(e.detail.width));
-		var dataUrl = $(this).cropper("getCroppedCanvas")
-			.toDataURL();
+		var dataUrl = $(this).cropper("getCroppedCanvas").toDataURL();
 		litpicImg = dataUrl;
 		$("#litPic").attr("src", litpicImg);
 	},
@@ -684,9 +683,7 @@ $(document).ready(function () {
 			  </select>
 			</div></p>`;
 		mdlCropperID = ShowMsg(
-			'<div><div class="float-left" style="width:300px;"><img id="cropImg~modalID~" src="' +
-			srcURL +
-			'"0><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:150px;height:100px;overflow:hidden;"></div></div>', {
+			'<div><div class="float-left" style="width:300px"><img id="cropImg~modalID~" src="' + srcURL + '"><p>宽度：<span id="cropWidth"></span>px，高度：<span id="cropHeight"></span>px</p>' + optButton + '</div><div class="pv float-right" style="width:150px;height:100px;overflow:hidden"></div></div>', {
 			footer: footer,
 			noClose: false,
 			title: '缩略图裁剪',

@@ -24,7 +24,7 @@
 						if (empty($cid)) $cid="0";
 						$tl = new TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0);
-						echo "<select name='typeid' style='width:260px'>";
+						echo "<select name='typeid' class='biz-input-md'>";
 						if ($cid=="0") echo "<option value='0' selected>更新所有文档</option>";
 						echo $typeOptions;
 						echo "</select>";
@@ -33,15 +33,15 @@
 				</tr>
 				<tr>
 					<td>起始id：</td>
-					<td><input type="text" name="startid" id="startid" style="width:60px">（空或0表示从头开始）</td>
+					<td><input type="text" name="startid" id="startid" class="biz-input-sm">（空或0表示从头开始）</td>
 				</tr>
 				<tr>
 					<td>结束ID：</td>
-					<td><input type="text" name="endid" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
+					<td><input type="text" name="endid" id="endid" class="biz-input-sm">（空或0表示直到结束ID）</td>
 				</tr>
 				<tr>
 					<td>每页生成：</td>
-					<td> <input type="text" name="pagesize" id="pagesize" value="20" style="width:60px"> 个文件</td>
+					<td> <input type="text" name="pagesize" id="pagesize" value="20" class="biz-input-sm"> 个文件</td>
 				</tr>
 				<tr>
 					<td bgcolor="#fbfce2" colspan="2" align="center">

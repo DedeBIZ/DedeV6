@@ -39,20 +39,20 @@
 				?>
 				<tr>
 					<td width="260">起始id：</td>
-					<td><input type="text" name="startid" id="startid" style="width:60px">（空或0表示从头开始）</td>
+					<td><input type="text" name="startid" id="startid" class="biz-input-sm">（空或0表示从头开始）</td>
 				</tr>
 				<tr>
 					<td>结束ID：</td>
-					<td><input type="text" name="endid" id="endid" style="width:60px">（空或0表示直到结束ID）</td>
+					<td><input type="text" name="endid" id="endid" class="biz-input-sm">（空或0表示直到结束ID）</td>
 				</tr>
 				<?php }?>
 				<tr>
 					<td>生成位置：</td>
-					<td><input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" style="width:260px" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“标签生成目录”项进行调整</td>
+					<td><input type="text" name="tagsdir" id="tagsdir" value="<?php echo $cfg_tags_dir;?>" class="biz-input-md" disabled> <a href="sys_info.php">系统设置</a>-其他选项中“标签生成目录”项进行调整</td>
 				</tr>
 				<tr>
 					<td>每次最大创建页数：</td>
-					<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" style="width:60px"> 个文件</td>
+					<td><input type="text" name="maxpagesize" id="maxpagesize" value="50" class="biz-input-sm"> 个文件</td>
 				</tr>
 				<tr>
 					<td bgcolor="#fbfce2" colspan="2" align="center"><button type="button" name="b112" class="btn btn-success btn-sm" onClick="document.form1.action='makehtml_taglist_action.php';onTagSubmit();">生成标签</button></td>

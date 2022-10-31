@@ -68,7 +68,7 @@
 													echo "<span class='text-danger'>找不到您所指定的数据库 $dbname</span><br>";
 													echo $qbutton;
 												}
-												echo "<select name='exptable' id='exptable' onchange='ShowFields()' style='width:260px'>";
+												echo "<select name='exptable' id='exptable' onchange='ShowFields()' class='biz-input-md'>";
 												while($row = $dsql->GetArray('t',MYSQL_BOTH)){
 													echo "<option value='{$row[0]}'>{$row[0]}</option>";
 												}
@@ -81,7 +81,7 @@
 											<td id='fields'></td>
 										</tr>
 										<tr>
-											<td><input type="text" name="rpfield" id="rpfield" style="width:260px">（选择替换字段）</td>
+											<td><input type="text" name="rpfield" id="rpfield" class="biz-input-md">（选择替换字段）</td>
 										</tr>
 									</table>
 								</td>

@@ -12,10 +12,10 @@
 <form action="member_pm.php" name="form1" method="get">
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
     <tr bgcolor="#f8f8f8">
-      <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" style="width:260px"></td>
-      <td width="270"><input type="text" name="username" id="username" placeholder="请输入用户名" style="width:260px"></td>
+      <td width="280" align="center"><input type="text" name="keyword" id="keyword" placeholder="请输入关键词" class="biz-input-md"></td>
+      <td width="270"><input type="text" name="username" id="username" placeholder="请输入用户名" class="biz-input-md"></td>
       <td width="170">
-        <select name="folder" id="folder" style="width:160px">
+        <select name="folder" id="folder" class="biz-input-sm">
           <option value="inbox">收件箱</option>
           <option value="outbox">发件箱</option>
         </select>
@@ -39,11 +39,11 @@
         <table width="100%" cellpadding="1" cellspacing="1">
           <tr>
             <td width="260">标题：</td>
-            <td><input type="text" name="subject" id="subject" class="company_manage_form_label" style="width:260px">（标题少于70个字符内）</td>
+            <td><input type="text" name="subject" id="subject" class="company_manage_form_label" class="biz-input-md">（标题少于70个字符内）</td>
           </tr>
           <tr>
             <td><label for="pm_textarea">内容：</label></td>
-            <td><textarea name="message" id="message" class="company_manage_form_label1" style="width:360px;height:100px"></textarea>（1000个字符以内）</td>
+            <td><textarea name="message" id="message" class="company_manage_form_label1" class="biz-textarea-sm"></textarea>（1000个字符以内）</td>
           </tr>
           <tr>
             <td colspan="2" align="center" class="py-2"><input type="submit" value="提交" class="btn btn-success btn-sm"></td>

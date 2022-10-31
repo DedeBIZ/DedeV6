@@ -48,7 +48,7 @@
         <td bgcolor="#f8f8f8" colspan="2"><a href="mychannel_main.php">内容模型管理</a> &gt; 新增内容模型</td>
       </tr>
       <tr>
-        <td width="30%">频道ID<br>
+        <td width="30%">频道id<br>
           <span class="style2" id='help1'>数字，创建后不可修改，并具有唯一性</span></td>
         <td width="70%"><input type="text" name="id" id="id" size="10" value="<?php echo $newid;?>" class="pubinputs"> *</td>
       </tr>
@@ -89,7 +89,7 @@
       <tr>
         <td>会员许可投稿级别</td>
         <td>
-          <select name="sendrank" id="sendrank" style="width:160px">
+          <select name="sendrank" id="sendrank" class="biz-input-sm">
             <option value="0">游客</option>
             <?php
               $urank = $cuserLogin->getUserRank();

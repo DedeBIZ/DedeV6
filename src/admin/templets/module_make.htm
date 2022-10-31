@@ -41,7 +41,7 @@
       </tr>
       <tr>
         <td width="260">模块名称：</td>
-        <td><input type="text" name="modulname" id="modulname" style="width:160px"> </td>
+        <td><input type="text" name="modulname" id="modulname" class="biz-input-sm"> </td>
       </tr>
       <tr>
         <td>语言编码：</td>
@@ -58,11 +58,11 @@
       </tr>
       <tr>
         <td>开发者id：</td>
-        <td><input type="text" name="dev_id" id="dev_id" style="width:160px"> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
+        <td><input type="text" name="dev_id" id="dev_id" class="biz-input-sm"> <a href="<?php echo $cfg_biz_dedebizUrl;?>/developer" target="_blank" class="text-success">如何获取开发者id</a></td>
       </tr>
       <tr>
         <td>发布时间：</td>
-        <td><input type="text" name="mtime" id="mtime" style="width:160px" value="<?php echo GetDateMk(time());?>"> </td>
+        <td><input type="text" name="mtime" id="mtime" class="biz-input-sm" value="<?php echo GetDateMk(time());?>"> </td>
       </tr>
       <tr>
         <td>是否涉及会员系统：</td>
@@ -70,8 +70,8 @@
           <label><input type="radio" name="ismember" id="ismember1" value="1" onclick="ShowHideMb('ismember0','rboxct')"> 涉及</label>
           <label><input type="radio" name="ismember" id="ismember0" value="0" onclick="ShowHideMb('ismember0','rboxct')" checked="checked"> 不涉及</label>
           <div id="rboxct" style="display:none">
-            导航使用名称：<input type="text" name="indexname" id="indexname" style="width:160px" value=""><br>
-            导航使用网址：<input type="text" name="indexurl" id="indexurl" style="width:160px" value="">
+            导航使用名称：<input type="text" name="indexname" id="indexname" class="biz-input-sm" value=""><br>
+            导航使用网址：<input type="text" name="indexurl" id="indexurl" class="biz-input-sm" value="">
             （用相对于会员中心的网址，如：../ask）
           </div>
         </td>
@@ -89,9 +89,9 @@
           <label><input type="checkbox" name="autoreadme" value='1' id="autoreadme" onclick="ShowHideField('autoreadme','autoreadmeinput','autoreadmect')"> 直接填写</label>
           <br>
           <div style="display:block" id="autoreadmeinput">
-            <input name="readme" type="file" id="readme" style="width:360px">
+            <input name="readme" type="file" id="readme" class="biz-input-md">
           </div>
-          <div style="margin:5px 0px 5px 5px;display:none" id="autoreadmect">
+          <div style="display:none" id="autoreadmect">
             <table width="100%" cellpadding="5" cellspacing="1">
               <tr>
                 <td bgcolor="#fbfce2">
@@ -111,9 +111,9 @@
           <label><input type="checkbox" name="autosetup" value='1' id="autosetup" onclick="ShowHideField('autosetup','autosetupinput','autosetupct')"> 自动生成（由系统自动处理安装）</label>
           <br>
           <div style="display:block" id="autosetupinput">
-            <input name="setup" type="file" id="setup" style="width:360px">
+            <input name="setup" type="file" id="setup" class="biz-input-md">
           </div>
-          <div style="margin:5px 0px 5px 5px;display:none" id="autosetupct">
+          <div style="display:none" id="autosetupct">
             <table width="100%" cellpadding="5" cellspacing="1">
               <tr>
                 <td bgcolor="#fbfce2">
@@ -134,8 +134,8 @@
         <td>
           <label><input type="checkbox" name="autodel" value='1' id="autodel" onclick="ShowHideField('autodel','autodelinput','autodelct')"> 自动生成（由系统自动处理卸载）</label>
           <br>
-          <div style="display:block" id="autodelinput"><input name="uninstall" type="file" id="uninstall" style="width:360px"></div>
-          <div style="margin:5px 0px 5px 5px;display:none" id="autodelct">
+          <div style="display:block" id="autodelinput"><input name="uninstall" type="file" id="uninstall" class="biz-input-md"></div>
+          <div style="display:none" id="autodelct">
             <table width="100%" cellpadding="5" cellspacing="1">
               <tr>
                 <td bgcolor="#fbfce2">卸载时执行的SQL语句：<br>

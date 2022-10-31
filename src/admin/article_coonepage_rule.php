@@ -57,7 +57,7 @@ else if ($action == 'editload') {
     <table width="430" cellspacing="0" cellpadding="0">
       <tr>
         <td width="90">网站名称：</td>
-        <td width="270"><input type="text" name="title" id="title" style="width:260px" value="<?php echo $row['title'];?>"></td>
+        <td width="270"><input type="text" name="title" id="title" class="biz-input-md" value="<?php echo $row['title'];?>"></td>
       </tr>
       <tr>
         <td>原内容编码：</td>
@@ -75,7 +75,7 @@ else if ($action == 'editload') {
       </tr>
       <tr>
         <td>网站网址：</td>
-        <td colspan="2"><input type="text" name="url" id="url" value="<?php echo $row['url'];?>" style="width:260px"></td>
+        <td colspan="2"><input type="text" name="url" id="url" value="<?php echo $row['url'];?>" class="biz-input-md"></td>
       </tr>
       <tr>
         <td></td>

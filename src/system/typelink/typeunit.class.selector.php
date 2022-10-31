@@ -39,7 +39,7 @@ class TypeUnitSelector
      *  列出某一频道下的所有栏目
      *
      * @access    public
-     * @param     string  $channel  频道ID
+     * @param     string  $channel  频道id
      * @return    void
      */
     function ListAllType($channel = 0)
@@ -94,7 +94,7 @@ class TypeUnitSelector
      *
      * @access    public
      * @param     int   $id  栏目id
-     * @param     int   $channel  频道ID
+     * @param     int   $channel  频道id
      * @param     int   $soncat  子级分类
      * @return    string
      */

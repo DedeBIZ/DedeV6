@@ -10,12 +10,7 @@
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <style>
-  .style1 {color: #FF3300}
-  .style2 {color: #545b62}
-  .nw { float:left; width:150px; }
-  .cls { clear:both; }
-  </style>
+  <style>.style1{color:#FF3300}.style2{color:#545b62}.nw{float:left;width:150px}.cls{clear:both}</style>
   <script>
   function GetFields()
   {
@@ -80,7 +75,7 @@
     <tr> 
       <td>数据类型：</td>
       <td>
-      	<select name="dtype" id="type" style="width:260px">
+      	<select name="dtype" id="type" class="biz-input-md">
           <?php 
           $dtype = $ctag->GetAtt('type');
           if ($dtype!='' && isset($fieldtypes[$dtype]))

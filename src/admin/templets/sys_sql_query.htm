@@ -34,7 +34,7 @@
 							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
 							<tr>
 								<td width="280">
-									<select name="tablename" id="tablename" style="width:260px">
+									<select name="tablename" id="tablename" class="biz-input-md">
 										<?php
 										if ($cfg_dbtype=="sqlite") {
 											$query = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";

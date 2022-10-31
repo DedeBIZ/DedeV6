@@ -57,7 +57,7 @@ class TypeUnit
      *  读出所有分类，在类目管理页(list_type)中使用
      *
      * @access    public
-     * @param     int   $channel  频道ID
+     * @param     int   $channel  频道id
      * @param     int   $nowdir  当前操作ID
      * @return    string
      */

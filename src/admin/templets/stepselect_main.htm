@@ -146,7 +146,7 @@
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
         <tr bgcolor="#f8f8f8">
             <td width="270">
-                <select name="egroup1" id="egroup1" onChange="ChangePage(this)" style="width:260px">
+                <select name="egroup1" id="egroup1" onChange="ChangePage(this)" class="biz-input-md">
                     <option value='0'>所有组</option>
                     <?php
                     $selgroup = '';
@@ -215,12 +215,12 @@
                     <input type="hidden" name="issign" value="<?php echo $arr['issign'];?>">
                     <input type="hidden" name="egroup" value="<?php echo $arr['egroup'];?>">
                     <span class="float-left ml-2">隶属分类：
-                        <select name="topvalue" onChange="ChangePage2(this)" style="width:160px">
+                        <select name="topvalue" onChange="ChangePage2(this)" class="biz-input-sm">
                             <option value="0"><?php echo $selgroup;?></option>
                             <?php echo $options;?>
                         </select>
                     </span>
-                    <span class="float-left ml-2">分类名称：<input type="text" name="ename" style="width:260px"></span>
+                    <span class="float-left ml-2">分类名称：<input type="text" name="ename" class="biz-input-md"></span>
                     <span class="float-left ml-2"><button type="submit" name="sb2" class="btn btn-success btn-sm">增加分类</button></span>
                 </form>
             </td>

@@ -183,7 +183,7 @@
             <tr>
               <td class="biz-td">内容模型：</td>
               <td class="biz-td">
-                <select name="channeltype" id="channeltype" style="width:160px" onChange="ParTemplet(this)">
+                <select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="biz-input-sm">
                   <?php
                   foreach($channelArray as $k=>$arr)
                   {
@@ -200,42 +200,42 @@
             </tr>
             <tr>
               <td class="biz-td">中文名称：</td>
-              <td class="biz-td"><input type="text" name="typename" style="width:260px"></td>
+              <td class="biz-td"><input type="text" name="typename" class="biz-input-md"></td>
             </tr>
             <tr>
               <td class="biz-td">中文概述：</td>
-              <td class="biz-td"><input type="text" name="cnoverview" style="width:260px"></td>
+              <td class="biz-td"><input type="text" name="cnoverview" class="biz-input-md"></td>
             </tr>
             <tr>
               <td class="biz-td">英文名称：</td>
-              <td class="biz-td"><input type="text" name="enname" style="width:260px"></td>
+              <td class="biz-td"><input type="text" name="enname" class="biz-input-md"></td>
             </tr>
             <tr>
               <td class="biz-td">英文概述：</td>
-              <td class="biz-td"><input type="text" name="enoverview" style="width:260px"></td>
+              <td class="biz-td"><input type="text" name="enoverview" class="biz-input-md"></td>
             </tr>
             <tr>
               <td class="biz-td">栏目大图：</td>
               <td>
-                <input type="text" name="bigpic" style="width:260px">
+                <input type="text" name="bigpic" class="biz-input-md">
                 <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.bigpic');">
               </td>
             </tr>
             <tr>
               <td class="biz-td">栏目小图：</td>
               <td>
-                <input type="text" name="litimg" style="width:260px">
+                <input type="text" name="litimg" class="biz-input-md">
                 <input type="button" class="btn btn-success btn-sm" value="浏览" onClick="SelectImage('form1.litimg');">
               </td>
             </tr>
             <tr>
               <td class="biz-td">排列顺序：</td>
-              <td class="biz-td"><input type="text" name="sortrank" class="pubinputs" style="width:60px">（由低 &gt; 高）</td>
+              <td class="biz-td"><input type="text" name="sortrank" class="pubinputs" class="biz-input-sm">（由低 &gt; 高）</td>
             </tr>
             <tr>
               <td class="biz-td">浏览权限：</td>
               <td class="biz-td">
-                <select name="corank" id="corank" style="width:160px">
+                <select name="corank" id="corank" class="biz-input-sm">
                   <?php
                   $dsql->SetQuery("Select * from `#@__arcrank` where `rank` >= 0");
                   $dsql->Execute('cc');
@@ -269,7 +269,7 @@
               <td class="p-0">
                 <table cellspacing="1" cellpadding="1" class="table-borderless">
                   <tr>
-                    <td><input type="text" name="typedir" id="typedir" class="pubinputs" style="width:260px"></td>
+                    <td><input type="text" name="typedir" id="typedir" class="pubinputs" class="biz-input-md"></td>
                     <td><label for="upinyin"><input type="checkbox" name="upinyin" id="upinyin" value="1" onClick="CheckTypeDir()"> 拼音</label></td>
                   </tr>
                 </table>
@@ -297,7 +297,7 @@
             </tr>
             <tr>
               <td class="biz-td">默认页的名称：</td>
-              <td class="biz-td"><input type="text" name="defaultname" value="index.html" style="width:260px"></td>
+              <td class="biz-td"><input type="text" name="defaultname" value="index.html" class="biz-input-md"></td>
             </tr>
             <tr>
               <td class="biz-td">栏目属性：</td>
@@ -358,13 +358,13 @@
             </tr>
             <tr>
               <td class="biz-td">绑定域名：</td>
-              <td class="biz-td"><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" style="width:260px">（需加 http://，一级或二级域名的根网址）</td>
+              <td class="biz-td"><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="biz-input-md">（需加 http://，一级或二级域名的根网址）</td>
             </tr>
             <?php }?>
             <tr>
               <td>封面模板：</td>
               <td>
-                <input type="text" name="tempindex" value="{style}/index_<?php echo $nid?>.htm" style="width:260px">
+                <input type="text" name="tempindex" value="{style}/index_<?php echo $nid?>.htm" class="biz-input-md">
                 <button type="button" name="set1" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.tempindex')">浏览</button>
                 <i onClick="ShowHide('helpvar1')" class="fa fa-question-circle" title="帮助"></i> 
               </td>
@@ -387,21 +387,21 @@
             <tr>
               <td>列表模板：</td>
               <td>
-                <input type="text" name="templist" value="{style}/list_<?php echo $nid?>.htm" style="width:260px">
+                <input type="text" name="templist" value="{style}/list_<?php echo $nid?>.htm" class="biz-input-md">
                 <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templist')">浏览</button>
               </td>
             </tr>
             <tr>
               <td>文档模板：</td>
               <td>
-                <input type="text" name="temparticle" value="{style}/article_<?php echo $nid?>.htm" style="width:260px">
+                <input type="text" name="temparticle" value="{style}/article_<?php echo $nid?>.htm" class="biz-input-md">
                 <button type="button" name="set4" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.temparticle')">浏览</button>
               </td>
             </tr>
             <tr>
               <td>文档命名规则：</td>
               <td>
-                <input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule;?>" style="width:260px">
+                <input type="text" name="namerule" tid="namerule" value="<?php echo $cfg_df_namerule;?>" class="biz-input-md">
                 <i onClick="ShowHide('helpvar2')" class="fa fa-question-circle"  title="帮助"></i> 
               </td>
             </tr>
@@ -423,7 +423,7 @@
             <tr>
               <td>列表命名规则：</td>
               <td>
-                <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" style="width:260px">
+                <input type="text" name="namerule2" id="namerule2" value="{typedir}/{tid}-{page}.html" class="biz-input-md">
                 <i onClick="ShowHide('helpvar3')" class="fa fa-question-circle"  title="帮助"></i> 
               </td>
             </tr>
@@ -438,7 +438,7 @@
             </tr>
             <tr>
               <td>SEO标题：</td>
-              <td><input type="text" name="seotitle" id="seotitle" style="width:260px">（栏目模板里用{dede:field.seotitle/}调用）</td>
+              <td><input type="text" name="seotitle" id="seotitle" class="biz-input-md">（栏目模板里用{dede:field.seotitle/}调用）</td>
             </tr>
             <tr>
               <td>关键词：</td>

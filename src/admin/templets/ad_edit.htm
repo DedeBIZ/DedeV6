@@ -63,7 +63,7 @@
             <tr>
               <td>广告分类：</td>
               <td colspan="2">
-                <select name="clsid" id="clsid" style="width:160px">
+                <select name="clsid" id="clsid" class="biz-input-sm">
                   <option value="0">默认分类</option>
                   <?php echo $option;?>
                 </select>
@@ -75,7 +75,7 @@
                 <?php
                	$tl = new TypeLink(0);
                	$typeOptions = $tl->GetOptionArray($row['typeid'],0,0);
-                echo "<select name='typeid' style='width:260px'>";
+                echo "<select name='typeid' class='biz-input-md'>";
                 echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>";
                 echo $typeOptions;
                 echo "</select>";
@@ -84,7 +84,7 @@
             </tr>
             <tr>
               <td>广告位名称：</td>
-              <td colspan="2"><input type="text" name="adname" id="adname" value="<?php echo $row['adname']?>" style="width:260px"></td>
+              <td colspan="2"><input type="text" name="adname" id="adname" value="<?php echo $row['adname']?>" class="biz-input-md"></td>
             </tr>
             <tr>
               <td>时间限制：</td>
@@ -96,8 +96,8 @@
             <tr>
               <td>投放时间：</td>
               <td colspan="2">
-                从：<input type="text" name="starttime" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" style="width:160px">
-                到：<input type="text" name="endtime" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" style="width:160px">
+                从：<input type="text" name="starttime" id="starttime" value="<?php echo GetDateTimeMk($row['starttime'])?>" class="biz-input-sm">
+                到：<input type="text" name="endtime" id="endtime" value="<?php echo GetDateTimeMk($row['endtime'])?>" class="biz-input-sm">
               </td>
             </tr>
             <tr>

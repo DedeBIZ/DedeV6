@@ -33,13 +33,13 @@
 				<tr>
 					<td width="260">选择首页模板：</td>
 					<td>
-						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" style="width:260px">
+						<input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="biz-input-md">
 						<button type="button" name="set4" value="" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
 					</td>
 				</tr>
 				<tr>
 					<td>首页位置：</td>
-					<td><input type="text" name="position" id="position" value="<?php echo $row['position']?>" style="width:260px"></td>
+					<td><input type="text" name="position" id="position" value="<?php echo $row['position']?>" class="biz-input-md"></td>
 				</tr>
 				<tr>
 					<td>相关选项：</td>
@@ -74,18 +74,18 @@
 				?>
 				<tr>
 					<td>设置操作密码：</td>
-					<td><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" style="width:260px">设定后所有的DedeBIZ涉及安全操作输入当前操作密码</td>
+					<td><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" class="biz-input-md">设定后所有的DedeBIZ涉及安全操作输入当前操作密码</td>
 				</tr>
 				<tr>
 					<td>重复操作密码：</td>
-					<td><input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" style="width:260px"></td>
+					<td><input name="re_dedebiz_admin" type="password" id="re_dedebiz_admin" value="" class="biz-input-md"></td>
 				</tr>
 				<?php
 				} else {
 				?>
 				<tr>
 					<td>操作密码：</td>
-					<td><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" style="width:260px"></td>
+					<td><input name="dedebiz_admin" type="password" id="dedebiz_admin" value="" class="biz-input-md"></td>
 				</tr>
 				<tr>
 					<td>首页状态：</td>

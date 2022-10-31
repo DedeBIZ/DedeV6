@@ -25,7 +25,7 @@
       var endNum = Number(document.form1.picnum.value) + startNum;
       if (endNum > 40) endNum = 40;
       for (startNum; startNum <= endNum; startNum++) {
-        upfield.innerHTML += "<input type='file' name='upfile" + startNum + "' style='width:260px' size='30' class='pubinputs'><br>";
+        upfield.innerHTML += "<input type='file' name='upfile" + startNum + "' class='biz-input-md' size='30' class='pubinputs'><br>";
       }
     }
     function ResetUpload() {
@@ -67,7 +67,7 @@
             </tr>
             <tr>
               <td class="biz-td">说明标题：</td>
-              <td class="biz-td"><input type="text" name="title" id="title" size="30" style="width:300px"></td>
+              <td class="biz-td"><input type="text" name="title" id="title" size="30" class="biz-input-md"></td>
             </tr>
             <tr>
               <td class="biz-td">参数说明：</td>
@@ -76,15 +76,15 @@
             <tr>
               <td class="biz-td">附加参数：</td>
               <td class="biz-td">
-                宽：<input type="text" name="mediawidth" id="mediawidth" style="width:60px">（像素）
-                高：<input type="text" name="mediaheight" id="mediaheight" style="width:60px">（像素）
-                播放时间：<input type="text" name="playtime" id="mediawidth3" style="width:60px">（分钟）
+                宽：<input type="text" name="mediawidth" id="mediawidth" class="biz-input-sm">（像素）
+                高：<input type="text" name="mediaheight" id="mediaheight" class="biz-input-sm">（像素）
+                播放时间：<input type="text" name="playtime" id="mediawidth3" class="biz-input-sm">（分钟）
               </td>
             </tr>
             <tr>
               <td class="biz-td">上传文件：</td>
               <td class="biz-td">
-                数量：<input type="text" name="picnum" id="picnum" value="5" style="width:60px">
+                数量：<input type="text" name="picnum" id="picnum" value="5" class="biz-input-sm">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="MakeUpload()">增加</button>
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="ResetUpload()">恢复</button>
               </td>
@@ -92,11 +92,11 @@
             <tr>
               <td></td>
               <td>
-                <input name="upfile1" type="file" id="upfile1" class="pubinputs" style="width:260px"><br>
-                <input name="upfile2" type="file" id="upfile2" class="pubinputs" style="width:260px"><br>
-                <input name="upfile3" type="file" id="upfile3" class="pubinputs" style="width:260px"><br>
-                <input name="upfile4" type="file" id="upfile4" class="pubinputs" style="width:260px"><br>
-                <input name="upfile5" type="file" id="upfile5" class="pubinputs" style="width:260px"><br>
+                <input name="upfile1" type="file" id="upfile1" class="pubinputs" class="biz-input-md"><br>
+                <input name="upfile2" type="file" id="upfile2" class="pubinputs" class="biz-input-md"><br>
+                <input name="upfile3" type="file" id="upfile3" class="pubinputs" class="biz-input-md"><br>
+                <input name="upfile4" type="file" id="upfile4" class="pubinputs" class="biz-input-md"><br>
+                <input name="upfile5" type="file" id="upfile5" class="pubinputs" class="biz-input-md"><br>
                 <span id="uploadfield"></span>
               </td>
             </tr>

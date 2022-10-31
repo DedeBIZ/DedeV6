@@ -55,17 +55,17 @@
 					<td bgcolor="#f8f8f8" colspan="2">修改新建模板</td>
 				</tr>
 				<tr>
-					<td hieght="26">文件名称</td>
-					<td hieght="26"><input name=filename value="<?php echo $filename;?>" style="width:260px">（不允许用“..”形式的路径）</td>
+					<td>文件名称</td>
+					<td><input name=filename value="<?php echo $filename;?>" class="biz-input-md">（不允许用“..”形式的路径）</td>
 				</tr>
 				<tr>
-					<td hieght="26" colspan="2">参考标签：</td>
+					<td colspan="2">参考标签：</td>
 				</tr>
 				<tr>
-					<td hieght="26" colspan="2">
+					<td colspan="2">
 					<?php
 					foreach ($helps as $key => $help) {
-						echo '<div title="'.trim($help[0]).'"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"  class="btn btn-success btn-sm">'.$key.'</a></div>'."";
+						echo '<div title="'.trim($help[0]).'" class="selbt"><a href="javascript:;" onclick="showdiv(\''.$key.'\');"  class="btn btn-success btn-sm">'.$key.'</a></div>'."";
 					}
 					?>
 					</td>

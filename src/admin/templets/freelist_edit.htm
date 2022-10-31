@@ -68,33 +68,33 @@
                     </tr>
                     <tr>
                       <td width="260">自由列表标题：</td>
-                      <td><input type="text" name="title" id="title" value="<?php echo $row['title']?>" style="width:260px"></td>
+                      <td><input type="text" name="title" id="title" value="<?php echo $row['title']?>" class="biz-input-md"></td>
                     </tr>
                     <tr>
                       <td>列表HTML存放目录：</td>
-                      <td><input type="text" name="listdir" id="listdir" value="<?php echo $row['listdir']?>" style="width:260px"> {listdir}变量的值</td>
+                      <td><input type="text" name="listdir" id="listdir" value="<?php echo $row['listdir']?>" class="biz-input-md"> {listdir}变量的值</td>
                     </tr>
                     <tr>
                       <td>目录默认页名称：</td>
                       <td>
-                        <input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" style="width:260px">
+                        <input type="text" name="defaultpage" id="defaultpage" value="<?php echo $row['defaultpage']?>" class="biz-input-md">
                         <label><input type="checkbox" name="nodefault" id="nodefault" value="1" <?php if ($row['nodefault']==1) echo "checked";?>> 不使用目录默认主页</label>
                       </td>
                     </tr>
                     <tr>
                       <td>命名规则：</td>
-                      <td><input type="text" name="namerule" id="namerule" value="<?php echo $row['namerule']?>" style="width:260px"></td>
+                      <td><input type="text" name="namerule" id="namerule" value="<?php echo $row['namerule']?>" class="biz-input-md"></td>
                     </tr>
                     <tr>
                       <td>列表模板：</td>
                       <td>
-                        <input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" style="width:260px">
+                        <input type="text" name="templet" id="templet" value="<?php echo $row['templet']?>" class="biz-input-md">
                         <button type="button" name="set4" onClick="SelectTemplets('form1.templet');" class="btn btn-success btn-sm">浏览</button>
                       </td>
                     </tr>
                     <tr>
                       <td>最大列出页数：</td>
-                      <td><input type="text" name="maxpage" id="maxpage" value="<?php echo $row['maxpage'];?>" style="width:60px"></td>
+                      <td><input type="text" name="maxpage" id="maxpage" value="<?php echo $row['maxpage'];?>" class="biz-input-sm"></td>
                     </tr>
                     <tr>
                       <td></td>
@@ -102,7 +102,7 @@
                     </tr>
                     <tr>
                       <td>关键词：</td>
-                      <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" style="width:260px"></td>
+                      <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="biz-input-md"></td>
                     </tr>
                     <tr>
                       <td>列表描述：</td>
@@ -118,7 +118,7 @@
                 <td>限定栏目：
                   <?php
                   $typeid = $ctag->GetAtt('typeid');
-                  echo "<select name='typeid' style='width:160px'>";
+                  echo "<select name='typeid' class='biz-input-sm'>";
                   echo "<option value='0'>不限栏目</option>";
                   $dsql->SetQuery("Select id,typename, channeltype From #@__arctype");
                   $dsql->Execute();
@@ -139,7 +139,7 @@
                 <td>限定频道：
                   <?php
                   $channel  = $ctag->GetAtt('channel');
-                  echo "<select name='channel' style='width:160px'><option value='0'>不限</option>";
+                  echo "<select name='channel' class='biz-input-sm'><option value='0'>不限</option>";
                   $dsql->SetQuery("Select id,typename From #@__channeltype where id>0");
                   $dsql->Execute();
                   while($nrow = $dsql->GetObject())
@@ -155,7 +155,7 @@
                 <td>附加属性：
                   <?php
                   $att  = $ctag->GetAtt('att');
-                  echo "<select name='att' style='width:160px'>";
+                  echo "<select name='att' class='biz-input-sm'>";
                   echo "<option value='0'>不限</option>";
                   $dsql->SetQuery("Select * From #@__arcatt");
                   $dsql->Execute();
@@ -206,7 +206,7 @@
                   	$sortarrs[$vs[0]] = $vs[1];
                   }
                   ?>
-                  <select name="orderby" id="orderby" style="width:160px">
+                  <select name="orderby" id="orderby" class="biz-input-sm">
                     <?php
                   	echo "<option value=\"$orderby\" selected>{$sortarrs[$orderby]}</option>";
                   	?>

@@ -157,9 +157,6 @@ ul.items > li .source {
 	font-size:18px;
 	font-weight:600
 }
-.ddcard-normal > .card-header .caption a {
-	color:#28a745
-}
 .ddcard-normal > .card-header .caption::before {
 	margin-right:10px;
 	padding:6px;
@@ -394,14 +391,14 @@ ul.items > li .source {
 	padding:10px 12px;
 	right:1rem;
 	bottom:1rem;
-	z-index:99;
-	font-size:18px;
+	z-index:9998;
+	font-size:16px;
 	color:#fff;
 	cursor:pointer;
 	border:none;
 	background:#ec982c;
 	border-radius:.25rem;
-	outline:none
+	outline:0
 }
 #btnScrollTop:hover {
 	background:#e77817

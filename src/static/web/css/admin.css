@@ -311,6 +311,7 @@ body.hidemenu .body-right {
 	line-height:30px;
 	font-weight:600;
 	color:#545b62;
+	background-color:#f8f8f8;
 	border-bottom:1px solid #dee2e6;
 	cursor:move
 }
@@ -474,6 +475,18 @@ span.page-link {
 .biz-textarea-sm {
 	width:360px;
 	height:50px
+}
+.biz-input-lg {
+	width:380px
+}
+.biz-input-md {
+	width:360px
+}
+.biz-input-sm {
+	width:170px
+}
+.biz-input-xs {
+	width:60px
 }
 .user-img {
 	margin-right:10px;
