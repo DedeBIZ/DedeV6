@@ -92,9 +92,9 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 专题名称：</td>
+              <td width="90">专题名称：</td>
               <td width="400"><input type="text" name="title" id="title" value="" class="biz-input-lg"></td>
-              <td width="90"> 简略标题：</td>
+              <td width="90">简略标题：</td>
               <td><input type="text" name="shorttitle" id="shorttitle" class="biz-input-sm"></td>
             </tr>
           </table>
@@ -104,7 +104,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 自定义属性：</td>
+              <td width="90">自定义属性：</td>
               <td><?php
             	$dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
             	$dsql->Execute();
@@ -124,7 +124,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 缩略图：</td>
+              <td width="90">缩略图：</td>
               <td width="620">
                 <input type="text" name="picname" id="picname" class="biz-input-md">
                 <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
@@ -141,7 +141,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 责任编辑：</td>
+              <td width="90">责任编辑：</td>
               <td><input type="text" name="writer" id="writer" class="biz-input-sm"></td>
             </tr>
           </table>
@@ -151,7 +151,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 内容排序：</td>
+              <td width="90">内容排序：</td>
               <td width="260">
                 <select name="sortup" id="sortup" class="biz-input-sm">
                   <option value="0" selected>默认排序</option>
@@ -175,7 +175,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 主分类：</td>
+              <td width="90">主分类：</td>
               <td>
                 <?php
                 $typeOptions = GetOptionList($cid, $cuserLogin->getUserChannel(), 0);
@@ -194,7 +194,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 关键词：</td>
+              <td width="90">关键词：</td>
               <td width="410">
                 <input type="text" name="keywords" id="keywords" value="" class="biz-input-md">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
@@ -208,7 +208,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 专题简介：</td>
+              <td width="90">专题简介：</td>
               <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
             </tr>
           </table>
@@ -236,7 +236,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 专题模板：</td>
+              <td width="90">专题模板：</td>
               <td width="260">
                 <input type="text" name="templet" id="templet" value="<?php echo $cfg_df_style?>/article_spec.htm" class="biz-input-sm">
                 <button type="button" name="set3" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.templet');">浏览</button>
@@ -251,7 +251,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 发布时间：</td>
+              <td width="90">发布时间：</td>
               <td width="260"><?php
               $nowtime = GetDateTimeMk(time());
               echo "<input name='pubdate' value='$nowtime' type='text' id='pubdate' class='datepicker' class='biz-input-sm'>";
@@ -339,9 +339,7 @@
                 <button type="button" name="selno<?php echo $i?>" class="btn btn-success btn-sm" onClick="SelectTemplets('form1.notetemplet<?php echo $i?>');">浏览</button>
               </td>
             </tr>
-            <?php
-            }
-		        ?>
+            <?php }?>
           </table>
         </td>
       </tr>

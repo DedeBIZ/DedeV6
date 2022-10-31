@@ -68,9 +68,9 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 软件名称：</td>
+              <td width="90">软件名称：</td>
               <td width="400"><input type="text" name="title" id="title" class="biz-input-lg"></td>
-              <td width="90"> 简略标题：</td>
+              <td width="90">简略标题：</td>
               <td><input type="text" name="shorttitle" id="shorttitle" class="biz-input-sm"></td>
             </tr>
           </table>
@@ -80,7 +80,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 自定义属性：</td>
+              <td width="90">自定义属性：</td>
               <td><?php
               $dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
               $dsql->Execute();
@@ -100,7 +100,7 @@
         <td class="biz-td" id="redirecturltr" style="display:none">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 跳转网址：</td>
+              <td width="90">跳转网址：</td>
               <td><input type="text" name="redirecturl" id="redirecturl" value="" class="biz-input-md"></td>
             </tr>
           </table>
@@ -110,7 +110,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> Tag标签：</td>
+              <td width="90">Tag标签：</td>
               <td><input type="text" name="tags" id="tags" value="" onChange="$Obj('keywords').value=this.value;" class="biz-input-md">（','号分开，单个标签小于12字节）</td>
               <td width="60">权重：</td>
               <td><input type="text" name="weight" id="weight" value="<?php echo $maxWright['cc'];?>" class="biz-input-sm">（越小越靠前）</td>
@@ -122,7 +122,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 缩略图：</td>
+              <td width="90">缩略图：</td>
               <td width="620">
                 <input type="text" name="picname" id="picname" class="biz-input-md">
                 <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
@@ -139,7 +139,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 来源：</td>
+              <td width="90">来源：</td>
               <td width="260">
                 <input type="text" name="source" id="source" class="biz-input-sm">
                 <button type="button" name="selsource" id="selsource" class="btn btn-success btn-sm">选择</button>
@@ -157,7 +157,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 发布栏目：</td>
+              <td width="90">发布栏目：</td>
               <td width="360">
                 <span id="typeidct">
                 <?php
@@ -186,7 +186,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 副栏目：</td>
+              <td width="90">副栏目：</td>
               <td>
                 <span id="typeid2ct"></span>
                 <input type="text" name="typeid2" id="typeid2" value="" class="biz-input-md">
@@ -200,7 +200,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 关键词：</td>
+              <td width="90">关键词：</td>
               <td width="410">
                 <input type="text" name="keywords" id="keywords" value="" class="biz-input-md">
                 <button type="button" name="Submit" class="btn btn-success btn-sm" onClick="SelectKeywords('form1.keywords');">浏览</button>
@@ -216,7 +216,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 描述：</td>
+              <td width="90">描述：</td>
               <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
             </tr>
           </table>
@@ -226,7 +226,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 文件类型：</td>
+              <td width="90">文件类型：</td>
               <td width="170">
                 <select name="filetype" id="filetype" class="biz-input-sm">
                   <option value=".exe" selected>.exe</option>
@@ -283,7 +283,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 运行环境：</td>
+              <td width="90">运行环境：</td>
               <td><input type="text" name="os" value="Win2003,WinXP,Win2000,Win9X" class="biz-input-md"></td>
             </tr>
           </table>
@@ -293,7 +293,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 官方网址：</td>
+              <td width="90">官方网址：</td>
               <td width="310"><input type="text" name="officialUrl" id="officialUrl" value="http://" class="biz-input-md"></td>
               <td width="90">演示地址：</td>
               <td><input type="text" name="officialDemo" id="officialDemo" value="http://" class="biz-input-md"></td>
@@ -305,7 +305,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 软件大小：</td>
+              <td width="90">软件大小：</td>
               <td width="310">
                 <input type="text" name="softsize" id="softsize" class="biz-input-sm">
                 <select name="unit" id="unit">
@@ -342,7 +342,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 本地地址：</td>
+              <td width="90">本地地址：</td>
               <td>
                 <input type="text" name="softurl1" id="softurl1" class="biz-input-md">
                 <button type="button" name="sel1" id="sel1" class="btn btn-success btn-sm" onClick="SelectSoft('form1.softurl1')">选取</button>
@@ -389,7 +389,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0" class="biz-td">
             <tr>
-              <td width="90"> 其它地址：</td>
+              <td width="90">其它地址：</td>
               <td>
                 <input type="text" name="picnum" id="picnum" value="5" class="biz-input-sm">
                 <button type="button" name="kkkup" class="btn btn-success btn-sm" id="kkkup2" onClick="MakeUpload();">增加地址</button>
@@ -406,7 +406,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 附加选项：</td>
+              <td width="90">附加选项：</td>
               <td>
                 <label><input type="checkbox" name="remote" id="remote" value="1" <?php if ($cfg_rm_remote=='Y') echo ' checked';?>> 下载远程图片和资源</label>
                 <label><input type="checkbox" name="dellink" id="dellink" value="1" <?php if ($cfg_arc_dellink=='Y') echo ' checked';?>> 删除非站内链接</label>
@@ -442,7 +442,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 文档排序：</td>
+              <td width="90">文档排序：</td>
               <td width="260">
                 <select name="sortup" id="sortup" class="biz-input-sm">
                   <option value="0" selected>默认排序</option>
@@ -466,7 +466,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 阅读权限：</td>
+              <td width="90">阅读权限：</td>
               <td width="260">
                 <select name="arcrank" id="arcrank" class="biz-input-sm">
                   <option value="0">已审核状态</option>
@@ -483,7 +483,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 发布时间：</td>
+              <td width="90">发布时间：</td>
               <td width="260">
                 <?php
                 $nowtime = GetDateTimeMk(time());

@@ -52,7 +52,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> <?php echo $cInfos['titlename'];?>：</td>
+              <td width="90"><?php echo $cInfos['titlename'];?>：</td>
               <td><input type="text" name="title" id="title" value="<?php echo $addRow['title'];?>" class="biz-input-lg"></td>
             </tr>
           </table>
@@ -62,7 +62,7 @@
         <td class="biz-td">
         	<table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 自定义属性：</td>
+              <td width="90">自定义属性：</td>
               <td>
                 <?php
                 $dsql->SetQuery("SELECT * FROM `#@__arcatt` WHERE att<>'j' AND att<>'p' ORDER BY sortid ASC");
@@ -84,7 +84,7 @@
         <td class="biz-td">
         	<table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 缩略图：</td>
+              <td width="90">缩略图：</td>
               <td width="620">
                 <input type="text" name="picname" id="picname" class="biz-input-md" value="<?php echo $addRow['litpic']?>">
                 <label><input type="checkbox" name="ddisremote" value="1" id="ddisremote"> 远程</label>
@@ -106,7 +106,7 @@
         <td class="biz-td">
           <table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 发布栏目：</td>
+              <td width="90">发布栏目：</td>
               <td>
               <?php
               $typeOptions = GetOptionList($addRow['typeid'],$cuserLogin->getUserChannel(),$channelid);
@@ -125,7 +125,7 @@
         <td class="biz-td">
         	<table cellspacing="0" cellpadding="0">
             <tr>
-              <td width="90"> 浏览权限：</td>
+              <td width="90">浏览权限：</td>
               <td>
                 <select name="arcrank" id="arcrank" class="biz-input-sm">
                 <option value='<?php echo $addRow["arcrank"];?>'><?php echo $addRow["rankname"];?></option>
