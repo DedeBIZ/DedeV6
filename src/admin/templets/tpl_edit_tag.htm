@@ -37,23 +37,18 @@
 			<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 				<tr>
 					<td bgcolor="#f8f8f8" colspan="2">
-						<span><?php echo $title;?>（修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份）</span>
+						<span><?php echo $title;?></span>
 					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><div class="alert alert-info mb-0">修改源码如果出现语法错误，可能导致标签无法使用，请修改前先作好数据备份。标签文件名为：标签名.lib.php接口函数定义为：function lib_标签名(&$ctag,&$refObj)，返回值是结果字符串，修改标签时为了防止出错，您也可以修改它的名称(同时修改文件名和函数名)，这样等同继承了原来标签的代码建立一个新的标签</div></td>
 				</tr>
 				<tr>
 					<td>文件名称</td>
 					<td><input name="filename" value="<?php echo $filename;?>" class="biz-input-md">（不允许用“..”形式的路径）</td>
 				</tr>
 				<tr>
-					<td>标签格式说明 </td>
-					<td>
-						标签文件名为：标签名.lib.php <br>
-						接口函数定义为：function lib_标签名(&$ctag,&$refObj)，返回值是结果字符串<br>
-						修改标签时为了防止出错，您也可以修改它的名称(同时修改文件名和函数名)，这样等同继承了原来标签的代码建立一个新的标签
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2"><textarea id="content" name="content" class="biz-textarea"><?php echo $democode;?></textarea></td>
+					<td colspan="2" class="p-0"><textarea id="content" name="content" class="biz-textarea"><?php echo $democode;?></textarea></td>
 				</tr>
 				<tr>
 					<td bgcolor="#f8f8f8" colspan="2" align="center" class="py-2">
