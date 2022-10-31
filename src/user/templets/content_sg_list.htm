@@ -22,7 +22,7 @@
 		</script>
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
+		<?php pasterTempletDiy('top.htm');?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container py-3">
@@ -49,7 +49,7 @@
 										</li>
 									</ul>
 									<span class="navbar-text">
-										<a class="btn btn-success btn-sm" href="archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>">发布</a>
+										<a class="btn btn-success" href="archives_do.php?dopost=addArc&channelid=<?php echo $channelid;?>">发布</a>
 									</span>
 								</nav>
 								<div class="table-responsive">
@@ -79,9 +79,9 @@
 												<td><?php echo $fields['click'];?></td>
 												<td><?php echo GetDateMk($fields['senddate']);?></td>
 												<td align="center" class="doPost">
-													<a href="javascript:editArc(<?php echo $fields['aid']?>,<?php echo $fields['channel']?>);" class="btn btn-success btn-sm">修改</a>
-													<a href="javascript:delArc(<?php echo $fields['aid']?>);" class="btn btn-danger btn-sm">删除</a>
-													<a href="javascript:viewArc(<?php echo $fields['aid'];?>);" class="btn btn-success btn-sm">预览</a>
+													<a href="javascript:editArc(<?php echo $fields['aid']?>,<?php echo $fields['channel']?>);" class="btn btn-success">修改</a>
+													<a href="javascript:delArc(<?php echo $fields['aid']?>);" class="btn btn-danger">删除</a>
+													<a href="javascript:viewArc(<?php echo $fields['aid'];?>);" class="btn btn-success">预览</a>
 												</td>
 											</tr>
 											{/dede:datalist}
@@ -95,6 +95,6 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm");?>
+		<?php pasterTempletDiy('foot.htm');?>
 	</body>
 </html>

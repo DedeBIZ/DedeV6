@@ -11,13 +11,8 @@ main.login-from {
 	width:430px;
 	background:#fff
 }
-.login-area .btnLogin {
-	margin-left:0!important;
-	padding:.5rem;
-	width:100%
-}
 .login-area small.des {
-	color:#B5B5B5
+	color:#b5b5b5
 }
 .login-area .licence a {
 	color:#28a745

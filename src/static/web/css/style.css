@@ -361,7 +361,7 @@ ul.items > li .source {
 	font-size:14px
 }
 .nav-link {
-	padding:0;
+	padding:0 10px;
 	height:36px;
 	line-height:36px
 }

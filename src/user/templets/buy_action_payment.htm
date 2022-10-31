@@ -11,12 +11,12 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
+		<?php pasterTempletDiy('top.htm');?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container py-3">
 					<div class="row">
-						<div class="pannel-main col-md-12 mt-3 mb-3">
+						<div class="pannel-main col-md-12">
 							<div class="pannel-main-container">
 								<nav class="navbar navbar-expand-lg pr-0 pl-0">
 									<ol class="breadcrumb mb-0 mr-auto">
@@ -25,7 +25,7 @@
 										<li class="breadcrumb-item">确认订单</li></li>
 									</ol>
 									<span class="navbar-text">
-										<a href="javascript:history.back(-1);" class="btn btn-success btn-sm">返回</a>
+										<a href="javascript:history.back(-1);" class="btn btn-success">返回</a>
 									</span>
 								</nav>
 								<div id="mainCp">
@@ -77,8 +77,8 @@
 													</tr>
 													<tr>
 														<td colspan="2" align="center">
-															<button type="submit" class="btn btn-success btn-sm">购买并支付</button>
-															<button type="button" class="btn btn-secondary btn-sm" onclick="location='buy.php'">返回</button>
+															<button type="submit" class="btn btn-success">购买并支付</button>
+															<button type="button" class="btn btn-secondary" onclick="location='buy.php'">返回</button>
 														</td>
 													</tr>
 												</tbody>
@@ -92,6 +92,6 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm");?>
+		<?php pasterTempletDiy('foot.htm');?>
 	</body>
 </html>

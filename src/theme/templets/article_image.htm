@@ -67,7 +67,8 @@
 		</script>
 	</head>
 	<body>
-		{dede:include filename='header.htm'/}
+		{dede:include filename='top.htm'/}
+		{dede:include filename='head.htm'/}
 		<div class="container py-3">
 			<div class="row">
 				<div class="col-md-12">
@@ -100,10 +101,10 @@
 							else if (@me==2) {
 							@me = "
 							<div class='text-center mb-3'>
-								<a href='javascript:dPlayBig();' class='btn btn-success btn-sm'>原始图片</a>
-								<a href='javascript:dPlayPre();' class='btn btn-success btn-sm'>上一张</a>
-								<a href='javascript:dPlayNext();' class='btn btn-success btn-sm'>下一张</a>
-								<a href='javascript:dStopPlay();' class='btn btn-success btn-sm'>自动 / 暂停播放</a>
+								<a href='javascript:dPlayBig();' class='btn btn-success'>原始图片</a>
+								<a href='javascript:dPlayPre();' class='btn btn-success'>上一张</a>
+								<a href='javascript:dPlayNext();' class='btn btn-success'>下一张</a>
+								<a href='javascript:dStopPlay();' class='btn btn-success'>自动 / 暂停播放</a>
 							</div>
 							";
 							} else {
@@ -161,7 +162,7 @@
 				</div>
 			</div>
 		</main>
-		{dede:include filename='footer.htm'/}
+		{dede:include filename='foot.htm'/}
 		<script>
 			//页面加载触发
 			$(document).ready(function() {

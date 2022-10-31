@@ -1,5 +1,5 @@
-header.htm,列表页头部模板
-footer.htm,列表页底部模板
+head.htm,列表页头部模板
+foot.htm,列表页底部模板
 index.htm,主页模板
 ajaxfeedback.htm,评论模板
 article_article.htm,文档内容页模板

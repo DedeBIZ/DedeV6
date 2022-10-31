@@ -11,12 +11,12 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
+		<?php pasterTempletDiy('top.htm');?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container py-3">
 					<div class="row">
-						<div class="pannel-main col-md-12 mt-3 mb-3">
+						<div class="pannel-main col-md-12">
 							<div class="pannel-main-container">
 								<nav class="navbar navbar-expand-lg pr-0 pl-0">
 									<ol class="breadcrumb mb-0 mr-auto">
@@ -24,7 +24,7 @@
 										<li class="breadcrumb-item">修改<?php echo $cInfos['typename'];?></li></li>
 									</ol>
 									<span class="navbar-text">
-										<a href="javascript:history.back(-1);" class="btn btn-success btn-sm">返回</a>
+										<a href="javascript:history.back(-1);" class="btn btn-success">返回</a>
 									</span>
 								</nav>
 								<form name="addcontent" action="archives_sg_edit.php?aid=<?php echo $aid;?>" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
@@ -65,11 +65,9 @@
 										//自定义字段
 										PrintAutoFieldsEdit(stripslashes($cInfos['fieldset']), $addRow, 'autofield');
 										?>
-										<div class="contentShow postForm">
-											<p class="mt-3">
-												<button type="submit" class="btn btn-success btn-sm">提交</button>
-												<button type="reset" class="btn btn-secondary btn-sm" onclick="location.reload();">重置</button>
-											</p>
+										<div class="text-center">
+											<button type="submit" class="btn btn-success">提交</button>
+											<button type="reset" class="btn btn-secondary" onclick="location.reload();">重置</button>
 										</div>
 									</div>
 								</form>
@@ -79,7 +77,7 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm");?>
+		<?php pasterTempletDiy('foot.htm');?>
 		<script>
 			function checkSubmit() {
 				if (document.addcontent.title.value == "") {

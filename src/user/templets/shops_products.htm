@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
+		<?php pasterTempletDiy('top.htm');?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container py-3">
@@ -122,8 +122,8 @@
 												{/dede:datalist}
 												<tr>
 													<td colspan="6">
-														<button id="checkedClick" type="button" class="btn btn-success btn-sm">全选</button>
-														<button type="button" onclick="DoSubmit()" class="btn btn-danger btn-sm">删除</button>
+														<button id="checkedClick" type="button" class="btn btn-success">全选</button>
+														<button type="button" onclick="DoSubmit()" class="btn btn-danger">删除</button>
 													</td>
 												</tr>
 											</tbody>
@@ -137,7 +137,7 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm");?>
+		<?php pasterTempletDiy('foot.htm');?>
 		<script>
 			//获得选中文件的文件名
 			function GetCheckfolderItem() {

@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/header.htm");?>
+		<?php pasterTempletDiy('top.htm');?>
 		<main class="login-from">
 			<div class="container py-3">
 				<div class="login-area">
@@ -20,36 +20,26 @@
 						<input type="hidden" value="regbase" name="dopost">
 						<input type="hidden" value="1" name="step">
 						<input type="hidden" value="个人" name="mtype">
-						<div class="input-group mb-3">
-							<input id="iptUserid" name="userid" type="text" class="form-control" placeholder="输入用户名">
-						</div>
+						<div class="form-group"><input id="iptUserid" name="userid" type="text" class="form-control" placeholder="输入用户名"></div>
+						<div class="form-group"><input name="userpwd" type="password" class="form-control" id="iptUserpwd" placeholder="登录密码"></div>
+						<div class="form-group"><input name="userpwdok" type="password" class="form-control" id="iptUserpwdok" placeholder="确认密码"></div>
 						<div class="form-group">
 							<div class="input-group">
-								<input name="vdcode" placeholder="请输入验证码" type="text" class="form-control" id="iptValidate">
-								<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onClick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" alt="验证码" style="cursor:pointer">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<input placeholder="登录密码" name="userpwd" type="password" class="form-control" id="iptUserpwd">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<input placeholder="确认密码" name="userpwdok" type="password" class="form-control" id="iptUserpwdok">
+								<input name="vdcode" type="text" class="form-control text-uppercase" id="iptValidate" placeholder="请输入验证码">
+								<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onClick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 							</div>
 						</div>
 						<div class="form-group form-check">
 							<input type="checkbox" class="form-check-input" id="iptLicence">
 							<label class="form-check-label licence" for="iptLicence">我已阅读并接受<a href="">《用户注册条款》</a>、<a href="">《隐私保护条例》</a></label>
 						</div>
-						<button type="submit" class="btn btn-success btnLogin btn-sm">注册</button>
-						<a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success btnLogin mt-2 btn-sm">登录</a>
+						<div class="form-group"><button type="submit" class="btn btn-success w-100">注册</button></div>
+						<div><a href="<?php echo $cfg_memberurl;?>/login.php" class="btn btn-outline-success w-100">登录</a></div>
 					</form>
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm");?>
+		<?php pasterTempletDiy('foot.htm');?>
 		<script>
 			//CheckSubmit 校验注册提交表单
 			function CheckSubmit() {

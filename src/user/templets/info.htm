@@ -1,14 +1,14 @@
 <div class="container py-3">
 	<div class="text-center member-info">
 		<a href="<?php echo $cfg_memberurl;?>/">
-			<img class="member-logo" src="<?php echo $cfg_ml->fields['face'];?>" alt="<?php echo $cfg_ml->M_MbType;?>">
+			<img class="member-logo" src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_MbType;?>">
 		</a>
 		<div class="member-type"><span class="badge badge-success"><?php echo $cfg_ml->M_MbType;?>用户</span></div>
 		<div>
 			<h4><?php echo $cfg_ml->M_LoginID;?></h4>
 		</div>
 		<div class="member-rank text-danger">积分：<?php echo $cfg_ml->M_Scores;?>
-			金币：<?php echo $cfg_ml->M_Money;?> <a href="buy.php" class="btn btn-danger btn-sm">充值</a>
+			金币：<?php echo $cfg_ml->M_Money;?> <a href="buy.php" class="btn btn-danger">充值</a>
 		</div>
 		<ul class="nav justify-content-center">
 			<li class="nav-item">

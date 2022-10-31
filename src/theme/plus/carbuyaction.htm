@@ -10,7 +10,7 @@
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
 	<body>
-		<?php pasterTempletDiy('header.htm');?>
+		<?php pasterTempletDiy('top.htm');?>
 		<div class="container py-3">
 			<div class="sp-title">
 				<h3>商品购买</h3>
@@ -160,21 +160,21 @@
 							<tr>
 								<td width="180" class="td1">验证码</td>
 								<td>
-									<input name="validate" type="text" id="vdcode2" size="10">
-									<img src="../apps/vdimgck.php" style="cursor:pointer" onclick="this.src=this.src+'?'" title="验证码" alt="验证码">
+									<input name="validate" type="text" id="vdcode2" size="10" class="text-uppercase">
+									<img src="../apps/vdimgck.php" onclick="this.src=this.src+'?'" title="验证码">
 								</td>
 							</tr>
 						</tbody>
 						<tfoot>
 							<tr>
-								<td colspan="2"><button type="submit" class="btn btn-success btn-sm">确认下单</button></td>
+								<td colspan="2"><button type="submit" class="btn btn-success">确认下单</button></td>
 							</tr>
 						</tfoot>
 					</table>
 				</form>
 			</div>
 		</div>
-		<?php pasterTempletDiy('footer.htm');?>
+		<?php pasterTempletDiy('foot.htm');?>
 		<script>
 			function vdimgck() {
 				document.getElementById("vdimgck_img").src = '../apps/vdimgck.php?' + Math.random();

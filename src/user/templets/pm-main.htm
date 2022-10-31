@@ -31,7 +31,7 @@
 		</script>
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/top_login.htm");?>
+		<?php pasterTempletDiy('top.htm');?>
 		<main class="member">
 			<div class="pannel">
 				<div class="container py-3">
@@ -108,7 +108,7 @@
 									</form>
 								</div>
 								<nav>
-									<button type="button" onclick="DoSubmit('<?php echo $folder;?>')" class="btn btn-danger btn-sm">删除</button>
+									<button type="button" onclick="DoSubmit('<?php echo $folder;?>')" class="btn btn-danger">删除</button>
 									{dede:pagelist listsize='6'/}
 								</nav>
 							</div>
@@ -117,7 +117,7 @@
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm");?>
+		<?php pasterTempletDiy('foot.htm');?>
 		<script>
 			//获得选中文件的文件名
 			function GetCheckfolderItem() {

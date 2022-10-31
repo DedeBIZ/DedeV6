@@ -14,7 +14,8 @@
 		<style>.dedeinfolink a{color:#28a745;margin-right:10px;}.info-search .info-guide{line-height:32px;}</style>
 	</head>
 	<body>
-		{dede:include filename='header.htm'/}
+		{dede:include filename='top.htm'/}
+		{dede:include filename='head.htm'/}
 		<div class="container py-3">
 			<div class="row">
 				<div class="col-md-12">
@@ -88,8 +89,8 @@
 									<label for="iptKeyword">关键词</label>
 									<input type="text" name="keyword" id="iptKeyword" class="form-control">
 								</div>
-								<button type="submit" class="btn btn-warning btn-sm">搜索信息</button>
-								<button type="button" class="btn btn-warning btn-sm" onclick="location='/user/archives_sg_add.php?channelid=-8';">发布信息</button>
+								<button type="submit" class="btn btn-warning">搜索信息</button>
+								<button type="button" class="btn btn-warning" onclick="location='/user/archives_sg_add.php?channelid=-8';">发布信息</button>
 							</form>
 							{/dede:infoguide}
 						</div>
@@ -100,6 +101,6 @@
 				</div>
 			</div>
 		</main>
-		{dede:include filename='footer.htm'/}
+		{dede:include filename='foot.htm'/}
 	</body>
 </html>

@@ -4,14 +4,14 @@
 		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title><?php echo $cfg_webname;?>-会员登录</title>
-		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/font/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
+		<script src="<?php echo $cfg_cmsurl;?>/static/web/js/jquery.min.js"></script>
 	</head>
 	<body>
-		<?php include(DEDEMEMBER."/templets/header.htm");?>
+		<?php pasterTempletDiy('top.htm');?>
 		<main class="login-from">
 			<div class="container py-3">
 				<div class="login-area">
@@ -21,27 +21,21 @@
 						<input type="hidden" name="dopost" value="login">
 						<input type="hidden" name="keeptime" value="604800">
 						<input type="hidden" name="gourl" value="<?php if (!empty($gourl)) echo $gourl;?>">
-						<div class="input-group mb-3">
-							<input name="userid" type="text" class="form-control" placeholder="输入用户名">
-						</div>
+						<div class="form-group"><input name="userid" type="text" class="form-control" placeholder="输入用户名"></div>
+						<div class="form-group"><input name="pwd" type="password" class="form-control" id="iptPwd" placeholder="输入密码"></div>
 						<div class="form-group">
 							<div class="input-group">
-								<input placeholder="输入密码" name="pwd" type="password" class="form-control" id="iptPwd">
+								<input name="vdcode" type="text" class="form-control text-uppercase" id="iptValidate" placeholder="请输入验证码">
+								<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码">
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<input name="vdcode" placeholder="请输入验证码" type="text" class="form-control" id="iptValidate">
-								<img src="<?php echo $cfg_cmsurl;?>/apps/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src='<?php echo $cfg_cmsurl;?>/apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" alt="验证码">
-							</div>
-						</div>
-						<button type="submit" class="btn btn-success btnLogin btn-sm">登录</button>
-						<a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success btnLogin mt-2 btn-sm">注册</a>
-						<a href="<?php echo $cfg_memberurl;?>/resetpassword.php" class="text-dark">忘记密码</a>
+						<div class="form-group"><button type="submit" class="btn btn-success w-100">登录</button></div>
+						<div class="form-group"><a href="<?php echo $cfg_memberurl;?>/index_do.php?fmdo=user&dopost=regnew" class="btn btn-outline-success w-100">注册</a></div>
+						<div><a href="<?php echo $cfg_memberurl;?>/resetpassword.php" class="text-dark">忘记密码</a></div>
 					</form>
 				</div>
 			</div>
 		</main>
-		<?php include(DEDEMEMBER."/templets/footer.htm");?>
+		<?php pasterTempletDiy('foot.htm');?>
 	</body>
 </html>

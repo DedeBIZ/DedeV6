@@ -10,7 +10,7 @@
 		<script src="{dede:global.cfg_cmsurl/}/static/web/js/jquery.min.js"></script>
 	</head>
 	<body>
-		<?php pasterTempletDiy('header.htm');?>
+		<?php pasterTempletDiy('top.htm');?>
 		<div class="container py-3">
 			<div class="sp-title">
 				<h2>购物车</h2>
@@ -56,11 +56,11 @@
 									<div style="float:left">共 <span class="text-danger">{dede:var.carts.cart_count/}</span> 件商品，合计: <span class='text-danger'>{dede:var.carts.price_count/}</span> 元</div>
 									<div style="float:right">
 										<!--<input type="button" value="打印购物车" class="btn-2" onclick="printPage(1)"/>-->
-										<input type="button" value="更新订单号" class="btn btn-success btn-sm" onClick="makeCarId()">
-										<input type="button" value="删除已选定" class="btn btn-success btn-sm" onClick="DelPost()">
-										<input type="button" value="清空" onClick="if (confirm('确定清空购物车中的商品吗')){ location='posttocar.php?do=clear' }" class="btn btn-success btn-sm">
-										<input onclick="ChangePost()" type="button" value="更新数量" class="btn btn-success btn-sm">
-										<input type="button" value="下一步" onclick="location='carbuyaction.php'" class="btn btn-success btn-sm">
+										<input type="button" value="更新订单号" class="btn btn-success" onClick="makeCarId()">
+										<input type="button" value="删除已选定" class="btn btn-success" onClick="DelPost()">
+										<input type="button" value="清空" onClick="if (confirm('确定清空购物车中的商品吗')){ location='posttocar.php?do=clear' }" class="btn btn-success">
+										<input onclick="ChangePost()" type="button" value="更新数量" class="btn btn-success">
+										<input type="button" value="下一步" onclick="location='carbuyaction.php'" class="btn btn-success">
 									</div>
 								</td>
 							</tr>
@@ -69,7 +69,7 @@
 				</form>
 			</div>
 		</div>
-		<?php pasterTempletDiy('footer.htm');?>
+		<?php pasterTempletDiy('foot.htm');?>
 		<!--购物车列表操作javascript请不要随意改动-->
 		<script>
 			//遍历checkbox使之全选中,或反选
