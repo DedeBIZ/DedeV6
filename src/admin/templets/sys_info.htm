@@ -110,9 +110,9 @@
 								<td width="90">变量名称</td>
 								<td width="270"><input type="text" name="nvarname" id="nvarname" class="npvar" class="biz-input-md"></td>
 								<td width="90">所属组</td>
-								<td>
+								<td width="170">
 									<?php
-									echo "<select name='vargroup' class='npvar' style='margin-right:10px;width:160px'>";
+									echo "<select name='vargroup' class='biz-input-sm'>";
 									foreach($ds as $dl){
 										$dl = trim($dl);
 										if (empty($dl)) continue;

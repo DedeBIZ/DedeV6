@@ -130,7 +130,7 @@ else if ($dopost == "query") {
             if ($errCode == "") {
                 $i++;
             } else {
-                $nerrCode .= "执行：<span style='color:#007bff'>$q</span> 出错，错误提示：<span class='text-danger'>".$errCode."</span><br>";
+                $nerrCode .= "执行：<span>$q</span>出错，错误提示：<span class='text-danger'>".$errCode."</span><br>";
             }
         }
         echo "成功执行{$i}个SQL语句<br><br>";

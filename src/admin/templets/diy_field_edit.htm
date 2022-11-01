@@ -112,8 +112,8 @@
         <span class="style2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td>
       	<input type="hidden" name="isnull" value="1">
-        <label><input type="radio" name="spage" value="split"<?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
-        <label><input type="radio" name="spage" value="no"<?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
+        <label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
+        <label><input type="radio" name="spage" value="no" <?php if ($ctag->GetAtt('page')=='no'||$ctag->GetAtt('page')=='') echo "checked='1'";?>> 否</label>
       </td>
     </tr>
     <tr> 
@@ -124,7 +124,7 @@
     <tr> 
       <td>最大长度：<br>
         <span class="style2"> 文本数据必须填写，大于255为text类型 </span></td>
-      <td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" style="width:80px;padding-top:6px"></td>
+      <td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>"></td>
     </tr>
     <tr>
       <td>自定义表单HTML：</td>

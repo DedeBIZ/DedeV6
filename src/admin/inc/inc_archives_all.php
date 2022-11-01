@@ -72,13 +72,13 @@ function GetFormItem($ctag)
         $formitem .= "</td></tr></table>\r\n";
         return $formitem;
     } else if ($ctag->GetAtt("type") == "multitext") {
-        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:100%;height:80px'></textarea>\r\n";
+        $innertext = "<textarea name='$fieldname' id='$fieldname' class='biz-textarea-sm'></textarea>\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "datetime") {
         $nowtime = GetDateTimeMk(time());
-        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:200px\">";
+        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" class=\"biz-input-md\">";
         $innertext .= "<input name=\"selPubtime\" type=\"button\" id=\"selkeyword\" value=\"选择\" onClick=\"showCalendar('$fieldname', 'Y-m-d H:i:00', '24');\">";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
@@ -104,7 +104,7 @@ function GetFormItem($ctag)
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "relation") {
-        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:100%;height:80px'></textarea>\r\n";
+        $innertext = "<textarea name='$fieldname' id='$fieldname' class='biz-textarea-sm'></textarea>\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
@@ -289,13 +289,13 @@ function GetFormItemValue($ctag, $fvalue)
         $formitem .= "</tr></table>\r\n";
         return $formitem;
     } else if ($ctag->GetAtt("type") == "multitext") {
-        $innertext = "<textarea name='$fieldname' id='$fieldname' style='width:100%;height:80px'>$fvalue</textarea>\r\n";
+        $innertext = "<textarea name='$fieldname' id='$fieldname' class='biz-textarea-sm'>$fvalue</textarea>\r\n";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
         return $formitem;
     } else if ($ctag->GetAtt("type") == "datetime") {
         $nowtime = GetDateTimeMk($fvalue);
-        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" style=\"width:200px\">";
+        $innertext = "<input name=\"$fieldname\" value=\"$nowtime\" type=\"text\" id=\"$fieldname\" class=\"biz-input-md\">";
         $innertext .= "<input name=\"selPubtime\" type=\"button\" id=\"selkeyword\" value=\"选择\" onClick=\"showCalendar('$fieldname', 'Y-m-d H:i:00', '24');\">";
         $formitem = str_replace("~name~", $ctag->GetAtt('itemname'), $formitem);
         $formitem = str_replace("~form~", $innertext, $formitem);
