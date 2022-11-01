@@ -231,7 +231,7 @@ if (!function_exists('CheckSql')) {
  *  载入小助手,系统默认载入小助手
  *  在/data/helper.inc.php中进行默认小助手初始化的设置，创建一个示例为test.helper.php文件基本内容如下：
  *  <code>
- *  if ( ! function_exists('HelloDede'))
+ *  if (!function_exists('HelloDede'))
  *  {
  *      function HelloDede()
  *      {
@@ -248,7 +248,7 @@ if (!function_exists('CheckSql')) {
 $_helpers = array();
 function helper($helpers)
 {
-    //如果是数组,则进行递归操作
+    //如果是数组，则进行递归操作
     if (is_array($helpers)) {
         foreach ($helpers as $dede) {
             helper($dede);
@@ -504,8 +504,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
 {
     global $tid, $dsql, $id, $aid;
     $tid = $defaulttid ? $defaulttid : $tid;
-    if ($id!="" || $aid!="")
-    {
+    if ($id!="" || $aid!="") {
         $arcid = $id!="" ? $id : $aid;
         $tidsq = $dsql->GetOne("SELECT * FROM `#@__archives` WHERE id='$arcid'");
         $tid = $toptid==0 ? $tidsq["typeid"] : $tidsq["topid"];
@@ -515,27 +514,25 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'");
     $fieldset=$cInfos['fieldset'];
     $dtp = new DedeTagParse();
-    $dtp->SetNameSpace('field','<','>');
+    $dtp->SetNameSpace('field', '<', '>');
     $dtp->LoadSource($fieldset);
     $dede_addonfields = '';
-    if(is_array($dtp->CTags))
-    {
+    if(is_array($dtp->CTags)) {
         foreach($dtp->CTags as $tida=>$ctag)
         {
             $fieldsname = $fieldsnamef ? explode(",", $fieldsnamef) : explode(",", $ctag->GetName());
-            if(($loadtype!='autofield' || ($loadtype=='autofield' && $ctag->GetAtt('autofield')==1)) && in_array($ctag->GetName(), $fieldsname) )
-            {
+            if(($loadtype!='autofield' || ($loadtype=='autofield' && $ctag->GetAtt('autofield')==1)) && in_array($ctag->GetName(), $fieldsname) ) {
                 $href1 = explode($ctag->GetName().'=', $filterarr);
                 $href2 = explode('&', $href1[1]);
                 $fields_value = $href2[0];
                 switch ($type) {
                     case 1:
-                    $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'">全部</a>' : '<a class="current" href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'">全部</a>');
+                    $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'">全部</a>' : '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" class="btn btn-success btn-sm">全部</a>');
                     $addonfields_items = explode(",",$ctag->GetAtt('default'));
                     for ($i=0; $i<count($addonfields_items); $i++)
                     {
                         $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
-                        $dede_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'">'.$addonfields_items[$i].'</a>' : '<a class="current" href="'.$href.'">'.$addonfields_items[$i].'</a>');
+                        $dede_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'">'.$addonfields_items[$i].'</a>' : '<a href="'.$href.'" class="btn btn-success btn-sm">'.$addonfields_items[$i].'</a>');
                     }
                     break;
                     case 2:
