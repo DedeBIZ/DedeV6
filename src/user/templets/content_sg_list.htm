@@ -56,11 +56,11 @@
 									<table width="100%" cellpadding="0" cellspacing="0" class="table">
 										<thead>
 											<tr>
-												<th width="30%">文档标题</th>
-												<th width="12%">类目</th>
-												<th width="10%">状态</th>
+												<th width="28%">文档标题</th>
+												<th width="10%">类目</th>
+												<th width="12%">状态</th>
 												<th width="10%">点击</th>
-												<th width="12%">时间</th>
+												<th width="14%">时间</th>
 												<th align="center">操作</th>
 											</tr>
 										</thead>
@@ -71,17 +71,17 @@
 												<td><?php echo $fields['typename'];?></td>
 												<td>
 													<?php
-													if ($fields['arcrank']>=0) echo "<span class=\"btn btn-outline-success btn-xs\">已审核</span>";
+													if ($fields['arcrank']>=0) echo "<span class=\"btn btn-outline-success btn-sm\">已审核</span>";
 													else if ($fields['arcrank']==-2) echo "<span style='color:#007bff'>审核失败</span>";
-													else echo "<span class=\"btn btn-outline-danger btn-xs\">未审核</span>";
+													else echo "<span class=\"btn btn-outline-danger btn-sm\">未审核</span>";
 													?>
 												</td>
 												<td><?php echo $fields['click'];?></td>
 												<td><?php echo GetDateMk($fields['senddate']);?></td>
 												<td align="center" class="doPost">
-													<a href="javascript:editArc(<?php echo $fields['aid']?>,<?php echo $fields['channel']?>);" class="btn btn-success">修改</a>
-													<a href="javascript:delArc(<?php echo $fields['aid']?>);" class="btn btn-danger">删除</a>
-													<a href="javascript:viewArc(<?php echo $fields['aid'];?>);" class="btn btn-success">预览</a>
+													<a href="javascript:editArc(<?php echo $fields['aid']?>,<?php echo $fields['channel']?>);" class="btn btn-success btn-sm">修改</a>
+													<a href="javascript:delArc(<?php echo $fields['aid']?>);" class="btn btn-danger btn-sm">删除</a>
+													<a href="javascript:viewArc(<?php echo $fields['aid'];?>);" class="btn btn-success btn-sm">预览</a>
 												</td>
 											</tr>
 											{/dede:datalist}

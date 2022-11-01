@@ -52,7 +52,7 @@ $dlist->Display();
 function MediaType($tid, $nurl)
 {
     if ($tid == 1) {
-        return "图片<a href=\"$nurl\" target=\"_blank\"><i class='fa fa-picture-o' name='picview' title='预览'></i></a>";
+        return "<a href=\"$nurl\" target=\"_blank\">图片</a>";
     } else if ($tid == 2) {
         return "FLASH";
     } else if ($tid == 3) {

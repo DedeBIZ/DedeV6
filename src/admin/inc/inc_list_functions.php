@@ -46,7 +46,7 @@ function IsCommendArchives($iscommend)
     }
     $sn = trim($sn);
     if ($sn == '') return '';
-    else return " <span class=\"btn btn-outline-success btn-xs\">$sn</span>";
+    else return " <span class=\"btn btn-outline-success btn-sm\">$sn</span>";
 }
 //获得推荐的标题
 function GetCommendTitle($title, $iscommend)
@@ -77,11 +77,11 @@ function CheckPic($picname)
 function IsHtmlArchives($ismake)
 {
     if ($ismake == 1) {
-        return " <span class=\"btn btn-outline-warning btn-xs\">已生成</span>";
+        return " <span class=\"btn btn-outline-warning btn-sm\">已生成</span>";
     } else if ($ismake == -1) {
-        return " <span class=\"btn btn-outline-warning btn-xs\">仅动态</span>";
+        return " <span class=\"btn btn-outline-warning btn-sm\">仅动态</span>";
     } else {
-        return " <span class=\"btn btn-outline-danger btn-xs\">未生成</span>";
+        return " <span class=\"btn btn-outline-danger btn-sm\">未生成</span>";
     }
 }
 //获得内容的限定级别名称
@@ -105,7 +105,7 @@ function GetRankName($arcrank)
 function IsPicArchives($picname)
 {
     if ($picname != '') {
-        return " <span class=\"btn btn-outline-warning btn-xs\">图片</span>";
+        return " <span class=\"btn btn-outline-warning btn-sm\">图片</span>";
     } else {
         return '';
     }

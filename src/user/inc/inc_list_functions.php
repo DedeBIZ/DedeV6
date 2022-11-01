@@ -39,7 +39,7 @@ function IsCommendArchives($iscommend)
 function GetCommendTitle($title, $iscommend)
 {
     if (preg_match('/c/', $iscommend)) {
-        $title = "$title <span class=\"btn btn-outline-success btn-xs\">推荐</span>";
+        $title = "$title <span class=\"btn btn-outline-success btn-sm\">推荐</span>";
     }
     return '$title';
 }
@@ -83,11 +83,11 @@ function CheckPic($picname)
 function IsHtmlArchives($ismake)
 {
     if ($ismake == 1) {
-        return " <span class=\"btn btn-outline-warning btn-xs\">已生成</span>";
+        return " <span class=\"btn btn-outline-warning btn-sm\">已生成</span>";
     } else if ($ismake == -1) {
-        return " <span class=\"btn btn-outline-warning btn-xs\">仅动态</span>";
+        return " <span class=\"btn btn-outline-warning btn-sm\">仅动态</span>";
     } else {
-        return " <span class=\"btn btn-outline-danger btn-xs\">未生成</span>";
+        return " <span class=\"btn btn-outline-danger btn-sm\">未生成</span>";
     }
 }
 /**
@@ -121,7 +121,7 @@ function GetRankName($arcrank)
 function IsPicArchives($picname)
 {
     if ($picname != "") {
-        return " <span class=\"btn btn-outline-warning btn-xs\">图片</span>";
+        return " <span class=\"btn btn-outline-warning btn-sm\">图片</span>";
     } else {
         return '';
     }

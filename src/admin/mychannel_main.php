@@ -20,9 +20,9 @@ $dlist->display();
 function GetSta($sta, $id)
 {
     if ($sta == 1) {
-        return ($id != -1 ? "已启用 <a href='mychannel_edit.php?dopost=hide&id=$id' class='btn btn-outline-danger btn-sm'>禁用</a>" : "固定项目");
+        return ($id != -1 ? "<span class='btn btn-outline-success btn-sm'>已启用</span><a href='mychannel_edit.php?dopost=hide&id=$id' class='btn btn-outline-danger btn-sm'>禁用</a>" : "<span class='btn btn-outline-success btn-sm'>固定项目</span>");
     } else {
-        return "已禁用 <a href='mychannel_edit.php?dopost=show&id=$id' class='btn btn-outline-success btn-sm'>启用</a>";
+        return "<span class='btn btn-outline-danger btn-sm'>已禁用</span><a href='mychannel_edit.php?dopost=show&id=$id' class='btn btn-outline-success btn-sm'>启用</a>";
     }
 }
 function IsSystem($s)

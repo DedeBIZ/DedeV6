@@ -194,7 +194,7 @@ elseif ($action == 'excel') {
         {
             echo "<td>".$arr[$key]."</td>";
         }
-    $status = $arr['ifcheck'] == 1 ? '<span class=\"btn btn-outline-success btn-xs\">已审核</span>' : '<span class=\"btn btn-outline-danger btn-xs\">未审核</span>';
+    $status = $arr['ifcheck'] == 1 ? '<span class=\"btn btn-outline-success btn-sm\">已审核</span>' : '<span class=\"btn btn-outline-danger btn-sm\">未审核</span>';
     echo "<td>".$status."</td>";
     echo "</tr>";
     }
