@@ -75,9 +75,8 @@ class ListView
             $this->Fields['id'] = $typeid;
             $this->Fields['position'] = $this->TypeLink->GetPositionLink(true);
             $this->Fields['title'] = preg_replace("/[<>]/", " / ", $this->TypeLink->GetPositionLink(false));
-            //添加联动多筛选
-            if (isset($_REQUEST['tid']))
-            {
+            //添加联动单筛选
+            if (isset($_REQUEST['tid'])) {
                 foreach($_GET as $key => $value) {
                     if ($key!="tid" && $key!="TotalResult" && $key!="PageNo") {
                         $this->Fields[string_filter($key)] = string_filter(urldecode($value));
@@ -131,11 +130,9 @@ class ListView
     {
         global $cfg_list_son,$cfg_need_typeid2,$cfg_cross_sectypeid;
         if (empty($cfg_need_typeid2)) $cfg_need_typeid2 = 'N';
-        //获得附加表的相关信息
-        $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
-        $filtersql = '';
-        if ($addtable!="")
-        {
+        //获得附加表的相关信息，联动单筛选
+        $addtable = $this->ChannelUnit->ChannelInfos['addtable'];
+        if ($addtable!="") {
             $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
             $addField = '';
             $fields = explode(',',$this->ChannelUnit->ChannelInfos['listfields']);
@@ -143,29 +140,21 @@ class ListView
             {
                 $nfields[$v] = $k;
             }
-            if (is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields))
-            {
+            if (is_array($this->ChannelUnit->ChannelFields) && !empty($this->ChannelUnit->ChannelFields)) {
                 foreach($this->ChannelUnit->ChannelFields as $k=>$arr)
                 {
-                    if (isset($nfields[$k]))
-                    {
+                    if (isset($nfields[$k])) {
                         if (!empty($arr['rename'])) {
                             $addField .= ','.$addtable.'.'.$k.' as '.$arr['rename'];
-                        }
-                        else {
+                        } else {
                             $addField .= ','.$addtable.'.'.$k;
                         }
                     }
                 }
             }
-            if (isset($_REQUEST['tid']))
-            {
-                foreach($_GET as $key => $value) {
-                    $value1 = explode("|", $value);
-                    foreach ($value1 as $valuea)
-                    {
-                        $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND find_in_set('".string_filter(urldecode($valuea))."', ".$addtable.".".string_filter($key).")" : '';
-                    }
+            if (isset($_REQUEST['tid'])) {
+                foreach ($_GET as $key => $value) {
+                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
                 }
             }
         } else {
@@ -218,8 +207,8 @@ class ListView
                 }
             }
         }
-        if ($this->TotalResult==-1)
-        {
+        if ($this->TotalResult==-1) {
+            //添加联动单筛选
             $cquery = "SELECT COUNT(*) AS dd FROM `#@__arctiny` arc $addJoin WHERE ".$this->addSql.$filtersql;
             $row = $this->dsql->GetOne($cquery);
             if (is_array($row)) {
@@ -632,9 +621,8 @@ class ListView
         } else {
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }
-        $filtersql = '';
         //获得附加表的相关信息
-        $addtable  = $this->ChannelUnit->ChannelInfos['addtable'];
+        $addtable = $this->ChannelUnit->ChannelInfos['addtable'];
         if ($addtable!="")
         {
             $addJoin = " LEFT JOIN `$addtable` ON arc.id = ".$addtable.'.aid ';
@@ -659,14 +647,11 @@ class ListView
                     }
                 }
             }
-            if (isset($_REQUEST['tid']))
-            {
-                foreach($_GET as $key => $value) {
-                    $value1 = explode("|", $value);
-                    foreach ($value1 as $valuea)
-                    {
-                        $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND find_in_set('".string_filter(urldecode($valuea))."', ".$addtable.".".string_filter($key).")" : '';
-                    }
+            //添加联动单筛选
+            if (isset($_REQUEST['tid'])) {
+                foreach($_GET as $key => $value) 
+                {
+                    $filtersql .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? " AND $addtable.".string_filter($key)." = '".string_filter(urldecode($value))."'" : '';
                 }
             }
         } else {
@@ -681,7 +666,7 @@ class ListView
         else {
             $t1 = ExecTime();
             $ids = array();
-            $query = "SELECT id FROM `#@__arctiny` arc $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row ";
+            $query = "SELECT id FROM `#@__arctiny` arc $addJoin WHERE {$this->addSql} $filtersql $ordersql LIMIT $limitstart,$row";
             $this->dsql->SetQuery($query);
             $this->dsql->Execute();
             while ($arr = $this->dsql->GetArray()) {
@@ -875,9 +860,7 @@ class ListView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                //$listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
-                $listdd .= "<li class='page-item'><a class='page-link' href='".$typedir."'>'.$j.'</a></li>\r\n";
-
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
             } else {
                 $listdd .= "<li class='page-item'><a class='page-link' href='".str_replace("{page}", $j, $tnamerule)."'>".$j."</a></li>\r\n";
             }
@@ -927,20 +910,22 @@ class ListView
         $geturl = "tid=".$this->TypeID."&TotalResult=".$this->TotalResult."&";
         $purl .= '?'.$geturl;
         $optionlist = '';
-        //$hidenform = "<input type='hidden' name='tid' value='".$this->TypeID."'>\r\n";
-        //$hidenform .= "<input type='hidden' name='TotalResult' value='".$this->TotalResult."'>\r\n";
+        //添加联动单筛选
+        foreach($_GET as $key => $value) {
+            $pageaddurl .= ($key!="tid" && $key!="TotalResult" && $key!="PageNo") ? "&".string_filter($key)."=".string_filter($value) : '';
+        }
         //获得上一页和下一页的链接
         if ($this->PageNo != 1) {
-            $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum' class='page-link'>上一页</a></li>\r\n";
-            $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1' class='page-link'>首页</a></li>\r\n";
+            $prepage .= "<li class='page-item'><a href='".$purl."PageNo=$prepagenum".$pageaddurl."' class='page-link'>上一页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><a href='".$purl."PageNo=1".$pageaddurl."' class='page-link'>首页</a></li>\r\n";
         } else {
-            $indexpage = "<li class='page-item'><a class='page-link'>首页</a></li>\r\n";
+            $indexpage = "<li class='page-item'><span class='page-link'>首页</span></li>\r\n";
         }
         if ($this->PageNo != $totalpage && $totalpage > 1) {
-            $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum' class='page-link'>下一页</a></li>\r\n";
-            $endpage = "<li class='page-item'><a href='".$purl."PageNo=$totalpage' class='page-link'>末页</a></li>\r\n";
+            $nextpage .= "<li class='page-item'><a href='".$purl."PageNo=$nextpagenum".$pageaddurl."' class='page-link'>下一页</a></li>\r\n";
+            $endpage = "<li class='page-item'><a href='".$purl."PageNo=$totalpage".$pageaddurl."' class='page-link'>末页</a></li>\r\n";
         } else {
-            $endpage = "<li class='page-item'><a class='page-link'>末页</a></li>\r\n";
+            $endpage = "<li class='page-item'><span class='page-link'>末页</span></li>\r\n";
         }
         //获得数字链接
         $listdd = "";
@@ -959,9 +944,9 @@ class ListView
         }
         for ($j; $j <= $total_list; $j++) {
             if ($j == $this->PageNo) {
-                $listdd .= "<li class='page-item active'><a class='page-link'>$j</a></li>\r\n";
+                $listdd .= "<li class='page-item active'><span class='page-link'>$j</span></li>\r\n";
             } else {
-                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j' class='page-link'>".$j."</a></li>\r\n";
+                $listdd .= "<li class='page-item'><a href='".$purl."PageNo=$j".$pageaddurl."' class='page-link'>".$j."</a></li>\r\n";
             }
         }
         $plist = "";

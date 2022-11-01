@@ -364,8 +364,8 @@ function FillUrl($refurl, $surl)
  * @access    public
  * @param     string  $regxurl  正则地址
  * @param     string  $handurl  操作地址
- * @param     string  $startid  开始ID
- * @param     string  $endid  结束ID
+ * @param     string  $startid  开始id
+ * @param     string  $endid  结束id
  * @param     string  $addv  增值
  * @param     string  $usemore  使用更多
  * @param     string  $batchrule  列表规则

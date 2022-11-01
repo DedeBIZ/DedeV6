@@ -20,42 +20,42 @@
 		<div class="d-flex flex-md-row align-items-center shadow-sm biz-head mb-5">
 			<div class="container">
 				<div class="row">
-					<div class="col-6 text-left">
-						<div class="logo"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
-					</div>
-					<div class="col-6 text-right d-flex justify-content-end biz-nav">
-						<a href="/" target="_blank" class="biz-nav-a"><i class="fa fa-home"></i> 网站首页</a>
-					</div>
+					<div class="col-6 col-md-4 text-left"><img src="../static/web/img/logo.png" title="<?php echo $cfg_soft_enname;?>" class="logo"></div>
+					<div class="col-6 col-md-8 text-right d-flex justify-content-end biz-nav"><a href="/" target="_blank" class="biz-nav-a"><i class="fa fa-home"></i> 网站首页</a></div>
 				</div>
 			</div>
 		</div>
 		<div class="container">
-			<div class="login-from">
-				<?php echo $redmsg;?>
-				<div class="login-area shadow-sm">
-					<h2 class="mb-4 text-center">后台登录</h2>
-					<form name="form1" method="post" action="login.php">
-						<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
-						<input type="hidden" name="dopost" value="login">
-						<input type="hidden" name="adminstyle" value="newDedeBIZ">
-						<div class="form-group">
-							<label for="iptUserid">用户名</label>
-							<input type="text" name="userid" id="iptUserid" class="form-control">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="login-from">
+						<?php echo $redmsg;?>
+						<div class="login-area shadow-sm">
+							<h2 class="text-center mb-3">后台登录</h2>
+							<form name="form1" method="post" action="login.php">
+								<input type="hidden" name="gotopage" value="<?php if (!empty($gotopage)) echo RemoveXSS($gotopage);?>">
+								<input type="hidden" name="dopost" value="login">
+								<input type="hidden" name="adminstyle" value="newDedeBIZ">
+								<div class="form-group">
+									<label for="iptUserid">用户名</label>
+									<input type="text" name="userid" id="iptUserid" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptPassword">密码</label>
+									<input type="password" name="pwd" id="iptPassword" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="iptValidate">验证码</label>
+									<div class="input-group">
+										<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase">
+										<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
+									</div>
+								</div>
+								<div><button type="submit" class="btn btn-success w-100">登录</button></div>
+								<div class="login-power"><?php echo $cfg_powerby;?></div>
+							</form>
 						</div>
-						<div class="form-group">
-							<label for="iptPassword">密码</label>
-							<input type="password" name="pwd" id="iptPassword" class="form-control">
-						</div>
-						<div class="form-group">
-							<label for="iptValidate">验证码</label>
-							<div class="input-group">
-								<input type="text" name="validate" id="iptValidate" class="form-control text-uppercase">
-								<img src="../apps/vdimgck.php" onclick="this.src='../apps/vdimgck.php?'+new Date().getTime()+Math.round(Math.random() * 10000)" title="验证码" id="validateimg">
-							</div>
-						</div>
-						<div><button type="submit" class="btn btn-success w-100">登录</button></div>
-						<div class="login-power"><?php echo $cfg_powerby;?></div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>

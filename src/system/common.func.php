@@ -467,7 +467,7 @@ if (!function_exists('pasterTempletDiy')) {
         $dtp->Display();
     }
 }
-//多选联动筛选标签{dede:php}AddFilter(模型id,类型,"字段1,字段2");{/dede:php}
+//联动单筛选标签{dede:php}AddFilter(模型id,类型,'字段1,字段2');{/dede:php}
 function litimgurls($imgid = 0)
 {
     global $lit_imglist, $dsql;
@@ -499,72 +499,66 @@ function string_filter($str, $stype = "inject")
     }
     return $str;
 }
-//联动筛选载入自定义表单发布
-function AddFilter($channelid, $type = 1, $fieldsnamef = "", $defaulttid = 0, $loadtype = 'autofield')
+//联动单筛选自定义表单发布
+function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $toptid=0, $loadtype='autofield')
 {
-    global $tid, $dsql, $id;
+    global $tid, $dsql, $id, $aid;
     $tid = $defaulttid ? $defaulttid : $tid;
-    $id = intval($id);
-    $tid = intval($tid);
-    $channelid = intval($channelid);
-    if ($id != "") {
-        $tidsq = $dsql->GetOne("SELECT typeid FROM `#@__archives` WHERE id='$id'");
-        $tid = $tidsq["typeid"];
+    if ($id!="" || $aid!="")
+    {
+        $arcid = $id!="" ? $id : $aid;
+        $tidsq = $dsql->GetOne("SELECT * FROM `#@__archives` WHERE id='$arcid'");
+        $tid = $toptid==0 ? $tidsq["typeid"] : $tidsq["topid"];
     }
-    $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".(int)$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".(int)$_REQUEST['PageNo'] : '');
-    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/apps/list.php?tid=".$tid);
+    $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".$_REQUEST['PageNo'] : '');
+    $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/plus/list.php?tid=".$tid);
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'");
-    $fieldset = stripslashes($cInfos['fieldset']);
+    $fieldset=$cInfos['fieldset'];
     $dtp = new DedeTagParse();
-    $dtp->SetNameSpace('field', '<', '>');
+    $dtp->SetNameSpace('field','<','>');
     $dtp->LoadSource($fieldset);
     $dede_addonfields = '';
-    if (is_array($dtp->CTags)) {
-        foreach ($dtp->CTags as $tida => $ctag) {
+    if(is_array($dtp->CTags))
+    {
+        foreach($dtp->CTags as $tida=>$ctag)
+        {
             $fieldsname = $fieldsnamef ? explode(",", $fieldsnamef) : explode(",", $ctag->GetName());
-            if (($loadtype != 'autofield' || ($loadtype == 'autofield' && $ctag->GetAtt('autofield') == 1)) && in_array($ctag->GetName(), $fieldsname)) {
+            if(($loadtype!='autofield' || ($loadtype=='autofield' && $ctag->GetAtt('autofield')==1)) && in_array($ctag->GetName(), $fieldsname) )
+            {
                 $href1 = explode($ctag->GetName().'=', $filterarr);
                 $href2 = explode('&', $href1[1]);
                 $fields_value = $href2[0];
-                $fields_value1 = explode('|', $fields_value);
-                $dede_addonfields .= ''.$ctag->GetAtt('itemname').'：';
                 switch ($type) {
                     case 1:
-                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is", $filterarr, $regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value, "", $filterarr).'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#1eb867;border-color:#1eb867;border-radius:.2rem">全部</a>' : '<span style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">全部</span>').'&nbsp;';
-                        $addonfields_items = explode(",", $ctag->GetAtt('default'));
-                        for ($i = 0; $i < count($addonfields_items); $i++) {
-                            $href = stripos($filterarr, $ctag->GetName().'=') ? str_replace("=".$fields_value, "=".$fields_value."|".urlencode($addonfields_items[$i]), $filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
-                            $is_select = in_array(urlencode($addonfields_items[$i]), $fields_value1) ? 1 : 0;
-                            $fields_value2 = "";
-                            for ($j = 0; $j < count($fields_value1); $j++) {
-                                $fields_value2 .= $fields_value1[$j] != urlencode($addonfields_items[$i]) ? $fields_value1[$j].($j < count($fields_value1) - 1 ? "|" : "") : "";
-                            }
-                            $fields_value2 = rtrim($fields_value2, "|");
-                            $href3 = str_replace(array("&".$ctag->GetName()."=".$fields_value, $ctag->GetName()."=".$fields_value, "&".$ctag->GetName()."=&"), array("&".$ctag->GetName()."=".$fields_value2, $ctag->GetName()."=".$fields_value2, "&"), $filterarr);
-                            $href3 = !end(explode("=", $href3)) ? str_replace("&".end(explode("&", $href3)), "", $href3) : $href3;
-
-                            $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#1eb867;border-color:#1eb867;border-radius:.2rem">'.$addonfields_items[$i].'</a>' : '<a title="'.$addonfields_items[$i].'" href="'.$href3.'" style="display:inline-block;padding:.25rem .5rem;line-height:1.5;color:#fff;background:#dc3545;border-color:#dc3545;border-radius:.2rem">'.$addonfields_items[$i].'<span style="margin-left:6px;color:#fff">×</span></a>')."&nbsp;";
-                        }
-                        $dede_addonfields .= '<br>';
-                        break;
+                    $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'">全部</a>' : '<a class="current" href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'">全部</a>');
+                    $addonfields_items = explode(",",$ctag->GetAtt('default'));
+                    for ($i=0; $i<count($addonfields_items); $i++)
+                    {
+                        $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
+                        $dede_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'">'.$addonfields_items[$i].'</a>' : '<a class="current" href="'.$href.'">'.$addonfields_items[$i].'</a>');
+                    }
+                    break;
                     case 2:
-                        $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is", $filterarr, $regm) ? '<a href="'.str_replace("&".$ctag->GetName()."=".$fields_value, "", $filterarr).'">全部</a>' : '<span>全部</span>').'&nbsp;';
-                        $addonfields_items = explode(",", $ctag->GetAtt('default'));
-                        for ($i = 0; $i < count($addonfields_items); $i++) {
-                            $href = stripos($filterarr, $ctag->GetName().'=') ? str_replace("=".$fields_value, "=".$fields_value."|".urlencode($addonfields_items[$i]), $filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
-                            $is_select = in_array(urlencode($addonfields_items[$i]), $fields_value1) ? 1 : 0;
-                            $fields_value2 = "";
-                            for ($j = 0; $j < count($fields_value1); $j++) {
-                                $fields_value2 .= $fields_value1[$j] != urlencode($addonfields_items[$i]) ? $fields_value1[$j].($j < count($fields_value1) - 1 ? "|" : "") : "";
-                            }
-                            $fields_value2 = rtrim($fields_value2, "|");
-                            $href3 = str_replace(array("&".$ctag->GetName()."=".$fields_value, $ctag->GetName()."=".$fields_value, "&".$ctag->GetName()."=&"), array("&".$ctag->GetName()."=".$fields_value2, $ctag->GetName()."=".$fields_value2, "&"), $filterarr);
-                            $href3 = !end(explode("=", $href3)) ? str_replace("&".end(explode("&", $href3)), "", $href3) : $href3;
-
-                            $dede_addonfields .= ($fields_value != urlencode($addonfields_items[$i]) && $is_select != 1 ? '<input type="checkbox" title="'.$addonfields_items[$i].'" value="'.$href.'" onclick="window.location=this.value"> <a title="'.$addonfields_items[$i].'" href="'.$href.'">'.$addonfields_items[$i].'</a>' : '<input type="checkbox" checked="checked" title="'.$addonfields_items[$i].'" value="'.$href3.'" onclick="window.location=this.value"> <a title="'.$addonfields_items[$i].'" href="'.$href3.'" class="cur">'.$addonfields_items[$i].'</a>')."&nbsp;";
-                        }
-                        $dede_addonfields .= '<br>';
-                        break;
+                    $dede_addonfields .= '<select name="filter'.$ctag->GetName().'" onchange="window.location=this.options[this.selectedIndex].value">
+                        '.'<option value="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'">全部</option>';
+                    $addonfields_items = explode(",",$ctag->GetAtt('default'));
+                    for ($i=0; $i<count($addonfields_items); $i++)
+                    {
+                        $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
+                        $dede_addonfields .= '<option value="'.$href.'"'.($fields_value==urlencode($addonfields_items[$i]) ? ' selected="selected"' : '').'>'.$addonfields_items[$i].'</option>
+                        ';
+                    }
+                    $dede_addonfields .= '</select>';
+                    break;
+                    case 3:
+                    $dede_addonfields .= (preg_match("/&".$ctag->GetName()."=/is",$filterarr,$regm) ? '<a title="全部" href="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.str_replace("&".$ctag->GetName()."=".$fields_value,"",$filterarr).'" onclick="window.location=this.value">全部</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked="checked">全部</span>');
+                    $addonfields_items = explode(",",$ctag->GetAtt('default'));
+                    for ($i=0; $i<count($addonfields_items); $i++)
+                    {
+                        $href = stripos($filterarr,$ctag->GetName().'=') ? str_replace("=".$fields_value,"=".urlencode($addonfields_items[$i]),$filterarr) : $filterarr.'&'.$ctag->GetName().'='.urlencode($addonfields_items[$i]);
+                        $dede_addonfields .= ($fields_value!=urlencode($addonfields_items[$i]) ? '<a title="'.$addonfields_items[$i].'" href="'.$href.'"><input type="radio" name="filter'.$ctag->GetName().'" value="'.$href.'" onclick="window.location=this.value">'.$addonfields_items[$i].'</a>' : '<span><input type="radio" name="filter'.$ctag->GetName().'" checked="checked">'.$addonfields_items[$i].'</span>');
+                    }
+                    break;
                 }
             }
         }

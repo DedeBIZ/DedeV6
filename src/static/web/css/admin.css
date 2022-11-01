@@ -514,3 +514,8 @@ span.page-link {
 	height:20px;
 	border-radius:.2rem
 }
+@media (min-width:576px) {
+	.modal-dialog {
+	max-width:520px
+}
+}

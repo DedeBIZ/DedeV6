@@ -12,15 +12,15 @@
 		<script src="../static/web/js/style.js"></script>
 		<style>.col-form-label{padding-top:0}</style>
 		<script>
-			function checkall(form, prefix, checkall) {
-				var checkall = checkall ? checkall : 'all';
-				for (var i = 0; i < form.elements.length; i++) {
-					var e = form.elements[i];
-					if (e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix)))) {
-						e.checked = form.elements[checkall].checked;
-					}
-				}
-			}
+		    function CheckAll(form, prefix, checkall) {
+		    	var checkall = checkall ? checkall : 'chkall';
+		    	for (var i = 0; i < form.elements.length; i++) {
+		    		var e = form.elements[i];
+		    		if (e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix)))) {
+		    			e.checked = form.elements[checkall].checked;
+		    		}
+		    	}
+		    }
 			function UpdateOne(tid) {
 				location = "tags_main.php?action=update&count=" + document.getElementById('count' + tid).value + "&tid=" + tid;
 			}
@@ -78,8 +78,8 @@
 		<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
 			<tr bgcolor="#f8f8f8">
 				<form name="form1" action="tags_main.php?action=fetch" method="post">
-					<td width="180"><input type="text" name="startaid" placeholder="请输入开始ID" class="biz-input-sm"></td>
-					<td width="170"><input type="text" name="endaid" placeholder="请输入结束ID" class="biz-input-sm"></td>
+					<td width="180"><input type="text" name="startaid" placeholder="请输入开始id" class="biz-input-sm"></td>
+					<td width="170"><input type="text" name="endaid" placeholder="请输入结束id" class="biz-input-sm"></td>
 					<td>
 						<button name="submit" type="submit" class="btn btn-success btn-sm">获取标签</button>
 						<a href="makehtml_taglist.php" name="sb" class="btn btn-success btn-sm">生成</a>
@@ -91,17 +91,17 @@
 			<tr>
 				<td colspan="8" bgcolor="#f8f8f8">标签管理</td>
 			</tr>
-			<tr align="center" bgcolor="#fbfce2">
-				<td width="8%">选择</td>
-				<td width="5%">id</td>
-				<td width="30%">标签</td>
-				<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=count&orderway=<?php echo $neworderway;?>">点击</a></td>
-				<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=total&orderway=<?php echo $neworderway;?>">文档数</a></td>
-				<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=addtime&orderway=<?php echo $neworderway;?>">添加时间</a></td>
-				<td width="10%">更新时间</td>
-				<td width="22%">操作</td>
-			</tr>
 			<form name="form3" action="tags_main.php?action=delete" method="post">
+				<tr align="center" bgcolor="#fbfce2">
+					<td width="6%"><input type="checkbox" name="chkall" id="chkall" onClick="CheckAll(this.form)"> 全选</td>
+					<td width="6%">id</td>
+					<td width="30%">标签</td>
+					<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=count&orderway=<?php echo $neworderway;?>">点击</a></td>
+					<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=total&orderway=<?php echo $neworderway;?>">文档数</a></td>
+					<td width="10%"><a href="tags_main.php?tag=<?php echo $tag;?>&orderby=addtime&orderway=<?php echo $neworderway;?>">添加时间</a></td>
+					<td width="10%">更新时间</td>
+					<td>操作</td>
+				</tr>
 				{dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
 				<?php
 				$fields['addtime'] = GetDateMk($fields['addtime']);
@@ -125,10 +125,7 @@
 				</tr>
 				{/dede:datalist}
 				<tr>
-					<td colspan="8">
-						<label class="mr-2"><input type="checkbox" onclick="checkall(this.form,'ids')" name="all"> 全选</label>
-						<button type="button" onclick="document.form3.submit()" class="btn btn-danger btn-sm">删除</button>
-					</td>
+					<td colspan="8"><button type="button" onclick="document.form3.submit()" class="btn btn-danger btn-sm">删除</button></td>
 				</tr>
 				<tr>
 					<td colspan="8" bgcolor="#f8f8f8" align="center" class="py-2">{dede:pagelist/}</td>

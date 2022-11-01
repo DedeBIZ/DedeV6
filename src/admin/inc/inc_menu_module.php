@@ -2,22 +2,13 @@
 /**
  * 模块菜单
  *
- * @version        $Id: inc_menu_module.php 1 10:32 2010年7月21日 tianya $
+ * @version        $Id: inc_menu_module.php 1 10:32 2010年7月21日Z tianya $
  * @package        DedeBIZ.Administrator
  * @copyright      Copyright (c) 2022, DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
 require_once(dirname(__FILE__)."/../config.php");
-/*
-模块菜单一般在不要直接改此文件，直接保存在#@__sys_module表即可，格式为
-<m:top name='问答模块管理' c='6,' display='block' rank=''>
-<m:item name='问答栏目管理' link='ask_type.php' rank='' target='main' />
-<m:item name='问答问题管理' link='ask_admin.php' rank='' target='main' />
-<m:item name='问答答案管理' link='ask_answer.php' rank='' target='main' />
-</m:top>
-这个菜单可在生成模块时指定
-*/
 //载入模块菜单
 $moduleset = '';
 $dsql->SetQuery("SELECT * FROM `#@__sys_module` ORDER BY id DESC");
@@ -35,7 +26,7 @@ while ($row = $dsql->GetObject()) {
 }
 $adminMenu = '';
 if ($cuserLogin->getUserType() >= 10) {
-    $adminMenu = DEDEBIZ_SAFE_MODE? "" : "<m:top name='模块管理' c='6,' display='block'>
+    $adminMenu =  DEDEBIZ_SAFE_MODE? "" : "<m:top name='模块管理' c='6,' icon='fa-database'>
     <m:item name='模块管理' link='module_main.php' rank='sys_module' target='main' />
     <m:item name='上传新模块' link='module_upload.php' rank='sys_module' target='main' />
     <m:item name='模块打包' link='module_make.php' rank='sys_module' target='main' />
@@ -43,10 +34,9 @@ if ($cuserLogin->getUserType() >= 10) {
 }
 $menusMoudle = "
 $adminMenu
-<m:top item='7' name='辅助插件' display='block'>
+<m:top item='7' name='辅助插件' icon='fa-plug'>
     <m:item name='插件管理器' link='plus_main.php' rank='10' target='main' />
     $plusset
 </m:top>
 $moduleset
 ";
-?>
