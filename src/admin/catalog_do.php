@@ -175,7 +175,7 @@ function GetSunListsMenu();
 -----------*/
 else if ($dopost == "GetSunListsMenu") {
     $userChannel = $cuserLogin->getUserChannel();
-    require_once(DEDEINC."/typeunit/typeunit.class.menu.php");
+    require_once(DEDEINC."/typelink/typeunit.class.menu.php");
     AjaxHead();
     PutCookie('lastCidMenu', $cid, 3600 * 24, "/");
     $tu = new TypeUnit($userChannel);
