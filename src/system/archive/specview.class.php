@@ -117,7 +117,7 @@ class SpecView
             } else {
                 $timesql = "";
             }
-            $row = $this->dsql->GetOne("SELECT count(*) AS dd FROM #@__archives WHERE #@__archives.arcrank > -1 AND channel=-1 $timesql");
+            $row = $this->dsql->GetOne("SELECT count(*) AS dd FROM `#@__archives` WHERE `#@__archives`.arcrank > -1 AND channel=-1 $timesql");
             if (is_array($row)) {
                 $this->TotalResult = $row['dd'];
             } else {

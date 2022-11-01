@@ -514,6 +514,19 @@ span.page-link {
 	height:20px;
 	border-radius:.2rem
 }
+#browsehappy {
+	padding:20px 30px;
+	font-size:14px;
+	line-height:16px;
+	color:#856404;
+	background:#fff3cd;
+	border-radius:.25rem;
+	border:0
+}
+.browsehappy-close {
+	float:right;
+	cursor:pointer
+}
 @media (min-width:576px) {
 	.modal-dialog {
 	max-width:520px

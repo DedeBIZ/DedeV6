@@ -512,7 +512,7 @@ else if ($dopost == 'modifysearch') {
             }
         }
         if (is_array($addonfields) && !empty($addonfields)) {
-            $query = "SELECT * FROM #@__channeltype WHERE id='$mid'";
+            $query = "SELECT * FROM `#@__channeltype` WHERE id='$mid'";
             $channel = $dsql->GetOne($query);
             $dtp = new DedeTagParse();
             $dtp->SetNameSpace("field", "<", ">");
@@ -576,7 +576,7 @@ else if ($dopost == 'modifysearch') {
         }
         $forms .= '<input type="submit" name="submit" value="开始搜索" /></form>';
         $formssql = addslashes($forms);
-        $query = "REPLACE INTO #@__advancedsearch(mid, maintable, mainfields, addontable, addonfields, forms, template) VALUES ('$mid','$maintable','$mainstring','$addontable','$addonstring','$formssql', '$template')";
+        $query = "REPLACE INTO `#@__advancedsearch` (mid, maintable, mainfields, addontable, addonfields, forms, template) VALUES ('$mid','$maintable','$mainstring','$addontable','$addonstring','$formssql', '$template')";
         $dsql->ExecuteNoneQuery($query);
         $formshtml = dede_htmlspecialchars($forms);
         echo '<meta http-equiv="Content-Type" content="text/html; charset='.$cfg_soft_lang.'">';

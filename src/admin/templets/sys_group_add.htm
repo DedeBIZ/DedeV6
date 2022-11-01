@@ -65,7 +65,7 @@
               <td colspan="2">
               <?php
               $l = 0;
-              $dsql->SetQuery('Select plusname From #@__plus');
+              $dsql->SetQuery('Select plusname From `#@__plus`');
               $dsql->Execute();
               while($row=$dsql->GetObject()){
                	echo " <label><input name='purviews[]' type='checkbox' id='purviews$k' value='plus_{$row->plusname}'> {$row->plusname}</label> ";

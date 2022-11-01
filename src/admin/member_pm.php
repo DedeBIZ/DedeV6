@@ -18,7 +18,7 @@ if (!isset($keyword)) $keyword = '';
 if (isset($dopost)) {
     $ID = preg_replace("#[^0-9]#", "", $ID);
     if ($dopost == "del" && !empty($ID)) {
-        $dsql->ExecuteNoneQuery("DELETE FROM #@__member_pms WHERE id='$ID'");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_pms` WHERE id='$ID'");
     }
 }
 $whereSql = '';
@@ -31,7 +31,7 @@ if (!empty($keyword)) {
 if (!empty($username)) {
     $whereSql .= " AND floginid like '%".$username."%'";
 }
-$sql = "SELECT * FROM #@__member_pms $whereSql ORDER BY sendtime desc";
+$sql = "SELECT * FROM `#@__member_pms` $whereSql ORDER BY sendtime desc";
 $dlist = new DataListCP();
 $dlist->pagesize = 30;
 $dlist->SetParameter("folder", $folder);

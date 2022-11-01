@@ -49,10 +49,10 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
             $admin_catalogs = array_unique($admin_catalogs);
             $admin_catalog = join(',', $admin_catalogs);
             $admin_catalog = preg_replace("#,$#", '', $admin_catalog);
-            $query = "Select id,typename,ispart,channeltype From `#@__arctype` where id in($admin_catalog) And reid=0";
+            $query = "SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE id in($admin_catalog) And reid=0";
         }
     } else {
-        $query = "Select id,typename,ispart,channeltype From `#@__arctype` where reid=0 order by sortrank asc";
+        $query = "SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE reid=0 ORDER BY sortrank ASC";
     }
     $dsql->SetQuery($query);
     $dsql->Execute('cc');

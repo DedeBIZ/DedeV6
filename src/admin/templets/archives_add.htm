@@ -68,7 +68,7 @@
               <td width="90">自定义属性：</td>
               <td>
               <?php
-            	$dsql->SetQuery("Select * From `#@__arcatt` order by sortid asc");
+            	$dsql->SetQuery("SELECT * FROM `#@__arcatt` order by sortid asc");
             	$dsql->Execute();
             	while($trow = $dsql->GetObject())
             	{
@@ -284,7 +284,7 @@
               <td width="260"><select name="arcrank" id="arcrank" class="biz-input-sm">
               <?php
               $urank = $cuserLogin->getUserRank();
-              $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank'");
+              $dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank'");
               $dsql->Execute();
               while($row = $dsql->GetObject())
               {

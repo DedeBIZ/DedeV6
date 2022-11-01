@@ -14,9 +14,9 @@ if (empty($dopost)) $dopost = '';
 if ($dopost == '') include(DEDEADMIN."/templets/cards_make.htm");
 //生成点卡
 elseif ($dopost == 'make') {
-    $row = $dsql->GetOne("SELECT * FROM #@__moneycard_record ORDER BY aid DESC");
+    $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_record` ORDER BY aid DESC");
     !is_array($row) ? $startid = 100000 : $startid = $row['aid'] + 100000;
-    $row = $dsql->GetOne("SELECT * FROM #@__moneycard_type WHERE tid='$cardtype'");
+    $row = $dsql->GetOne("SELECT * FROM `#@__moneycard_type` WHERE tid='$cardtype'");
     $money = $row['money'];
     $num = $row['num'];
     $mtime = time();

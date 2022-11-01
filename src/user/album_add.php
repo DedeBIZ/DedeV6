@@ -56,7 +56,7 @@ function _SaveArticle(){  }
 ------------------------------*/
 else if ($dopost == 'save') {
     include(DEDEMEMBER.'/inc/archives_check.php');
-    $cInfos = $dsql->GetOne("Select * From `#@__channeltype` WHERE id='$channelid'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
     $maxwidth = isset($maxwidth) && is_numeric($maxwidth) ? $maxwidth : 800;
     $pagepicnum = isset($pagepicnum) && is_numeric($pagepicnum) ? $pagepicnum : 12;
     $ddmaxwidth = isset($ddmaxwidth) && is_numeric($ddmaxwidth) ? $ddmaxwidth : 200;

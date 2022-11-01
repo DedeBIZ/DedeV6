@@ -26,7 +26,7 @@ if ($dopost == "save" && $isarc == 0) {
             $voteitems .= "<v:note id=\\'$j\\' count=\\'0\\'>".${"voteitem".$i}."</v:note>\r\n";
         }
     }
-    $inQuery = "INSERT INTO `#@__vote`(votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable'); ";
+    $inQuery = "INSERT INTO `#@__vote` (votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         ShowMsg("增加投票失败，请检查数据是否非法", "-1");
         exit();
@@ -51,7 +51,7 @@ if ($dopost == "save" && $isarc == 0) {
             $voteitems .= "<v:note id=\\'$j\\' count=\\'0\\'>".${"voteitem".$i}."</v:note>\r\n";
         }
     }
-    $inQuery = "INSERT INTO `#@__vote`(votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable'); ";
+    $inQuery = "INSERT INTO `#@__vote` (votename,starttime,endtime,totalcount,ismore,votenote,isallow,view,spec,isenable) VALUES ('$votename','$starttime','$endtime','0','$ismore','$voteitems','$isallow','$view','$spec','$isenable'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         ShowMsg("增加投票失败，请检查数据是否非法", "-1");
         exit();

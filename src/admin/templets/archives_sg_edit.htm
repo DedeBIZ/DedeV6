@@ -131,7 +131,7 @@
                 <option value='<?php echo $addRow["arcrank"];?>'><?php echo $addRow["rankname"];?></option>
                 <?php
                 $urank = $cuserLogin->getUserRank();
-                $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank' And `rank`<>'{$addRow["arcrank"]}' ");
+                $dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' And `rank`<>'{$addRow["arcrank"]}' ");
                 $dsql->Execute();
                 while($row = $dsql->GetObject()) {
                 	echo "<option value='".$row->rank."'>".$row->membername."</option>";

@@ -66,7 +66,7 @@ class TagList
         foreach ($GLOBALS['PubFields'] as $k => $v) $this->Fields[$k] = $v;
         //读取Tag信息
         if (!empty($this->Tag)) {
-            $this->TagInfos = $this->dsql->GetOne("Select * From `#@__tagindex` where id = '{$this->Tag}' ");
+            $this->TagInfos = $this->dsql->GetOne("SELECT * FROM `#@__tagindex` where id = '{$this->Tag}' ");
             if (!is_array($this->TagInfos)) {
                 $msg = "系统无此标签，可能已经移除";
                 ShowMsg($msg, "-1");

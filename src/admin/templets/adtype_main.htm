@@ -20,7 +20,7 @@
       <td width="36%" align="center">状态</td>
     </tr>
     <?php
-  	$dsql->SetQuery("Select * From #@__myadtype");
+  	$dsql->SetQuery("SELECT * FROM `#@__myadtype`");
   	$dsql->Execute();
   	$k=0;
   	while($row = $dsql->GetObject())

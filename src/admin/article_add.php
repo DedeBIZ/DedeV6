@@ -40,7 +40,7 @@ if ($dopost != 'save') {
         }
     }
     //获得频道模型信息
-    $cInfos = $dsql->GetOne("SELECT * From `#@__channeltype` where id='$channelid' ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` where id='$channelid' ");
     //获取文档最大id+1以确定当前权重
     $maxWright = $dsql->GetOne("SELECT id+1 AS cc FROM `#@__archives` ORDER BY id DESC LIMIT 1");
     $maxWright = empty($maxWright)? array('cc'=>1) : $maxWright;

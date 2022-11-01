@@ -28,7 +28,7 @@
 					<?php
 					$row = 180;
 					$titlelen = 50;
-					$dsql->SetQuery("Select * from `#@__flink` where ischeck>0 order by sortrank asc");
+					$dsql->SetQuery("SELECT * FROM `#@__flink` where ischeck>0 order by sortrank asc");
 					$dsql->Execute();
 					$revalue = "";
 					for($i=1;$i<=$row;$i++)

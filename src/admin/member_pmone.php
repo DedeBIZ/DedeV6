@@ -57,7 +57,7 @@ if ($action == "post") {
         ShowMsg($msg, "-1");
         exit();
     }
-    $row = $dsql->GetOne("Select * From `#@__member` where userid like '$msgtoid' ");
+    $row = $dsql->GetOne("SELECT * FROM `#@__member` where userid like '$msgtoid' ");
     if (!is_array($row)) {
         ShowMsg("您指定的用户不存在，不能发送信息", "-1");
         exit();

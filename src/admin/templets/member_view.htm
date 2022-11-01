@@ -155,7 +155,7 @@
             <td>空间信息：</td>
             <td class="biz-td">
             <?php
-            $nrow = $dsql->GetOne("Select * From `#@__member_tj` where mid='{$row['mid']}' ");
+            $nrow = $dsql->GetOne("SELECT * FROM `#@__member_tj` where mid='{$row['mid']}' ");
             echo "文档：{$nrow['article']} 图集：{$nrow['album']} 文档：{$nrow['archives']} 收藏：{$nrow['stow']}";
             echo "<br>空间访问：{$nrow['homecount']} 页面访问：{$nrow['pagecount']} 留言：{$nrow['feedback']} 好友：{$nrow['friend']} ";
             ?>

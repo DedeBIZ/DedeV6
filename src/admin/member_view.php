@@ -12,7 +12,7 @@ require(dirname(__FILE__)."/config.php");
 CheckPurview('member_Edit');
 $ENV_GOBACK_URL = isset($_COOKIE['ENV_GOBACK_URL']) ? "member_main.php" : '';
 $id = preg_replace("#[^0-9]#", "", $id);
-$row = $dsql->GetOne("SELECT * from #@__member where mid='$id'");
+$row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='$id'");
 $staArr = array(
     -10 => '等待验证邮件',
     -2 => '限制用户(禁言)',

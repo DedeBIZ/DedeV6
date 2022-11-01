@@ -61,7 +61,7 @@
                 <select name="typeid" id="typeid" class="biz-input-sm">
                   <?php
                   echo " <option value='".$myLink['typeid']."'>".$myLink['typename']."</option>";
-                  $dsql->SetQuery("select * from #@__flinktype where id<>'".$myLink['typeid']."'");
+                  $dsql->SetQuery("SELECT * FROM `#@__flinktype` where id<>'".$myLink['typeid']."'");
                   $dsql->Execute();
                   while($row=$dsql->GetObject()){
                   	echo " <option value='".$row->id."'>".$row->typename."</option>";

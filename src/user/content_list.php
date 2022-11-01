@@ -37,7 +37,7 @@ if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
     exit();
 }
 if ($cid == 0) {
-    $row = $tl->dsql->GetOne("Select typename From #@__channeltype where id='$channelid'");
+    $row = $tl->dsql->GetOne("SELECT typename FROM `#@__channeltype` WHERE id='$channelid'");
     if (is_array($row)) {
         $positionname = $row['typename'];
     }

@@ -103,7 +103,7 @@
 			//Print Page
 			function printPage(oper) {
 				if (oper < 10) {
-					bdhtml = window.document.body.innerHTML; //获取当前页的html代码
+					bdhtml = window.document.body.innerHTML; //获取当前页的网页代码
 					sprnstr = "<!--startprint" + oper + "-->"; //设置打印开始区域
 					eprnstr = "<!--endprint" + oper + "-->"; //设置打印结束区域
 					prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 18); //从开始代码向后取html

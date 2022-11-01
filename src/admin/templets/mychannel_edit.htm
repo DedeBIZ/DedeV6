@@ -141,7 +141,7 @@
             <option value="0">游客</option>
             <?php
             $urank = $cuserLogin->getUserRank();
-            $dsql->SetQuery("Select * from `#@__arcrank` where adminrank<='$urank' And `rank`>=10");
+            $dsql->SetQuery("SELECT * FROM `#@__arcrank` where adminrank<='$urank' And `rank`>=10");
             $dsql->Execute();
             while($row2 = $dsql->GetObject())
             {
@@ -156,7 +156,7 @@
         <td>许可投稿会员组</td>
         <td>
         <?php
-        $dsql->SetQuery("Select * from `#@__member_model`");
+        $dsql->SetQuery("SELECT * FROM `#@__member_model`");
         $dsql->Execute();
         while($row3 = $dsql->GetObject())
         {

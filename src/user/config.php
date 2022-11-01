@@ -209,9 +209,9 @@ function countArchives($channelid)
         } else {
             $_field = 'articles';
         }
-        $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM #@__archives WHERE channel='$id' AND mid='".$cfg_ml->M_ID."'");
+        $row = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__archives` WHERE channel='$id' AND mid='".$cfg_ml->M_ID."'");
 
-        $dsql->ExecuteNoneQuery("UPDATE #@__member_tj SET ".$_field."='".$row['nums']."' WHERE mid='".$cfg_ml->M_ID."'");
+        $dsql->ExecuteNoneQuery("UPDATE `#@__member_tj` SET ".$_field."='".$row['nums']."' WHERE mid='".$cfg_ml->M_ID."'");
     } else {
         return FALSE;
     }

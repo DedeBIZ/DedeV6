@@ -70,7 +70,7 @@
           <select name="dfrank" id="dfrank" class="biz-input-sm">
             <?php
               $urank = $cuserLogin->getUserRank();
-              $dsql->SetQuery("Select * from `#@__arcrank` where `rank`>=0 ");
+              $dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank`>=0 ");
               $dsql->Execute();
               while($nrow = $dsql->GetArray())
               {

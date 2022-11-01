@@ -23,7 +23,7 @@ function GetTypename($tid)
             return base64_decode($cfg_Cs[$tid][3]);
         }
     } else {
-        $row = $dsql->GetOne("SELECT typename FROM #@__arctype WHERE id = '{$tid}'");
+        $row = $dsql->GetOne("SELECT typename FROM `#@__arctype` WHERE id = '{$tid}'");
         unset($dsql);
         unset($cfg_Cs);
         return isset($row['typename']) ? $row['typename'] : '';

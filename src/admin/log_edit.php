@@ -16,7 +16,7 @@ if (empty($dopost)) {
 }
 //清空所有日志
 if ($dopost == "clear") {
-    $dsql->ExecuteNoneQuery("DELETE FROM #@__log");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__log`");
     ShowMsg("成功清空所有日志", "log_list.php");
     exit();
 } else if ($dopost == "del") {
@@ -31,7 +31,7 @@ if ($dopost == "clear") {
         }
     }
     if ($dquery != "") $dquery = " where ".$dquery;
-    $dsql->ExecuteNoneQuery("DELETE FROM #@__log $dquery");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__log` $dquery");
     ShowMsg("成功删除指定的日志", $bkurl);
     exit();
 } else {

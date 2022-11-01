@@ -35,7 +35,7 @@ if ($action == 'post') {
                 exit();
             }
         }
-        $diyform = $dsql->getOne("SELECT * from `#@__diyforms` WHERE diyid='$diyid' ");
+        $diyform = $dsql->getOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' ");
         if (!is_array($diyform)) {
             showmsg('自定义表单不存在', '-1');
             exit();

@@ -33,7 +33,7 @@
         <td width="16%" align="center">状态</td>
       </tr>
       <?php
-      $dsql->SetQuery("Select * From #@__member_type");
+      $dsql->SetQuery("SELECT * FROM `#@__member_type`");
       $dsql->Execute();
       $k=0;
       while($row = $dsql->GetObject())

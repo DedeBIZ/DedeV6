@@ -50,7 +50,7 @@
 									<select name="channeltype" id="channeltype" class="form-control">
 										<option value="0" selected>不限</option>
 										<?php
-										$dsql->SetQuery("Select id,typename From #@__channeltype order by id desc");
+										$dsql->SetQuery("Select id,typename From `#@__channeltype` order by id desc");
 										$dsql->Execute();
 										while($row = $dsql->GetObject())
 										{

@@ -22,7 +22,7 @@
         <td width="17%" align="center">状态</td>
       </tr>
       <?php
-    	$dsql->SetQuery("Select * From #@__moneycard_type");
+    	$dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
     	$dsql->Execute();
     	$k=0;
     	while($row = $dsql->GetObject())

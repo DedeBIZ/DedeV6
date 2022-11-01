@@ -13,7 +13,7 @@ CheckPurview('c_List');
 require_once(DEDEINC."/datalistcp.class.php");
 require_once(DEDEINC."/common.func.php");
 setcookie("ENV_GOBACK_URL", $dedeNowurl, time() + 3600, "/");
-$sql = "Select `diyid`,`name`,`table` From #@__diyforms order by diyid asc";
+$sql = "SELECT `diyid`,`name`,`table` FROM `#@__diyforms` ORDER BY diyid ASC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/diy_main.htm");
 $dlist->SetSource($sql);

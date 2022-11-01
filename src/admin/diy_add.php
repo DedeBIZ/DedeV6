@@ -14,13 +14,13 @@ $mysql_version = $dsql->GetVersion();
 $mysql_versions = explode(".", trim($mysql_version));
 $mysql_version = $mysql_versions[0].".".$mysql_versions[1];
 if (empty($action)) {
-    $row = $dsql->GetOne("SELECT diyid FROM #@__diyforms ORDER BY diyid DESC LIMIT 0,1 ");
+    $row = $dsql->GetOne("SELECT diyid FROM `#@__diyforms` ORDER BY diyid DESC LIMIT 0,1");
     if (is_array($row)) $newdiyid = $row['diyid'] + 1;
     else $newdiyid = 1;
     include(DEDEADMIN."/templets/diy_add.htm");
 } else {
     if (preg_match("#[^0-9-]#", $diyid) || empty($diyid)) {
-        ShowMsg("<span class='text-danger'>'自定义表单diyid'</span>必须为数字", "-1");
+        ShowMsg("<span class='text-danger'>'自定义表单id'</span>必须为数字", "-1");
         exit();
     }
     if ($table == "") {
@@ -29,7 +29,7 @@ if (empty($action)) {
     }
     $public = isset($public) && is_numeric($public) ? $public : 0;
     $name = dede_htmlspecialchars($name);
-    $row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' OR `table` LIKE '$table' OR name LIKE '$name' ");
+    $row = $dsql->GetOne("SELECT * FROM `#@__diyforms` WHERE diyid='$diyid' OR `table` LIKE '$table' OR name LIKE '$name'");
     if (is_array($row)) {
         ShowMsg("可能自定义表单的‘diyid’、‘名称’在数据库中已存在，不能重复使用", "-1");
         exit();

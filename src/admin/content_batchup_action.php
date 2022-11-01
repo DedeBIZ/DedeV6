@@ -42,7 +42,7 @@ if ($seltime == 1) {
     $gwhere .= " AND (senddate >= $t1 AND senddate <= $t2) ";
 }
 if (!empty($userid)) {
-    $row = $dsql->GetOne("SELECT `mid` FROM #@__member WHERE `userid` LIKE '$userid'");
+    $row = $dsql->GetOne("SELECT `mid` FROM `#@__member` WHERE `userid` LIKE '$userid'");
     if (is_array($row)) {
         $gwhere .= " AND mid = {$row['mid']} ";
     }
@@ -118,8 +118,8 @@ else if ($action == 'move') {
         ShowMsg('该操作必须指定栏目', 'javascript:;');
         exit();
     }
-    $typeold = $dsql->GetOne("SELECT * FROM #@__arctype WHERE id='$typeid'; ");
-    $typenew = $dsql->GetOne("SELECT * FROM #@__arctype WHERE id='$newtypeid'; ");
+    $typeold = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$typeid'; ");
+    $typenew = $dsql->GetOne("SELECT * FROM `#@__arctype` WHERE id='$newtypeid'; ");
     if (!is_array($typenew)) {
         ShowMsg("无法检测移动到的新栏目的信息，不能完成操作", "javascript:;");
         exit();
@@ -160,7 +160,7 @@ else if ($action == 'move') {
 }
 //删除空标题内容
 else if ($action == 'delnulltitle') {
-    $dsql->SetQuery("SELECT id FROM #@__archives WHERE trim(title)='' ");
+    $dsql->SetQuery("SELECT id FROM `#@__archives` WHERE trim(title)='' ");
     $dsql->Execute('x');
     $tdd = 0;
     while ($row = $dsql->GetObject('x')) {
@@ -171,7 +171,7 @@ else if ($action == 'delnulltitle') {
 }
 //修正缩略图错误
 else if ($action == 'modddpic') {
-    $dsql->ExecuteNoneQuery("UPDATE #@__archives SET litpic='' WHERE trim(litpic)='litpic' ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__archives` SET litpic='' WHERE trim(litpic)='litpic' ");
     ShowMsg("成功修正缩略图错误", "javascript:;");
     exit();
 }

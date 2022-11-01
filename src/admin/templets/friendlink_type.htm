@@ -21,7 +21,7 @@
         <td width="34%" align="center">状态</td>
       </tr>
       <?php
-    	$dsql->SetQuery("Select * From #@__flinktype");
+    	$dsql->SetQuery("SELECT * FROM `#@__flinktype`");
     	$dsql->Execute();
     	$k=0;
     	while($row = $dsql->GetObject())

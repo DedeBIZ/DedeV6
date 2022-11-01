@@ -73,7 +73,7 @@ if ($action == 'save') {
 /*----------------------
 function ShowPage()
 ---------------------*/
-$row = $dsql->GetOne("SELECT `table` FROM #@__diyforms WHERE diyid='$diyid'");
+$row = $dsql->GetOne("SELECT `table` FROM `#@__diyforms` WHERE diyid='$diyid'");
 $trueTable = $row['table'];
 $tabsql = "CREATE TABLE IF NOT EXISTS  `$trueTable`(
 `id` int(10) unsigned NOT NULL auto_increment,

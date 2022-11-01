@@ -237,7 +237,7 @@
               <td class="biz-td">
                 <select name="corank" id="corank" class="biz-input-sm">
                   <?php
-                  $dsql->SetQuery("Select * from `#@__arcrank` where `rank` >= 0");
+                  $dsql->SetQuery("SELECT * FROM `#@__arcrank` where `rank` >= 0");
                   $dsql->Execute('cc');
                   while($row = $dsql->GetObject('cc')){
                     if ($corank==$row->rank) echo "<option value='".$row->rank."' selected>".$row->membername."</option>";

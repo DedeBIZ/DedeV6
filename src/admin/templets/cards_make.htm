@@ -33,7 +33,7 @@
               <td>
                 <select name="cardtype" class="biz-input-sm">
                   <?php
-                  $dsql->SetQuery("Select * From #@__moneycard_type");
+                  $dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
                   $dsql->Execute();
                   while($row=$dsql->GetArray()){
                     echo "  <option value='{$row['tid']}'>{$row['pname']}</option>";

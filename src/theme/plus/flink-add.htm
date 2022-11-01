@@ -52,7 +52,7 @@
 								<td>
 									<select name="typeid" id="typeid">
 									<?php
-									$dsql->SetQuery("select * from #@__flinktype");
+									$dsql->SetQuery("SELECT * FROM `#@__flinktype`");
 									$dsql->Execute();
 									while($row=$dsql->GetObject())
 									{

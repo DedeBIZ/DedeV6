@@ -279,7 +279,7 @@
                 <option value='<?php echo $arcRow["arcrank"]?>'><?php echo $arcRow["rankname"]?></option>
                 <?php
                 $urank = $cuserLogin->getUserRank();
-                $dsql->SetQuery("Select * from #@__arcrank where adminrank<='$urank'");
+                $dsql->SetQuery("SELECT * FROM #@__arcrank where adminrank<='$urank'");
                 $dsql->Execute();
                 while($row = $dsql->GetObject()){
                 	echo "<option value='".$row->rank."'>".$row->membername."</option>";

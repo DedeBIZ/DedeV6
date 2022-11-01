@@ -74,16 +74,7 @@ else if ($dopost == 'save') {
     $body = AnalyseHtmlBody($body, $description);
     $body = HtmlReplace($body, -1);
     //更新数据库的SQL语句
-    $upQuery = "UPDATE `#@__archives` SET
-             ismake='$ismake',
-             arcrank='$arcrank',
-             typeid='$typeid',
-             title='$title',
-             description='$description',
-             mtype = '$mtypesid',
-             keywords='$keywords',            
-             flag='$flag'
-     WHERE id='$aid' AND mid='$mid'; ";
+    $upQuery = "UPDATE `#@__archives` SET ismake='$ismake',arcrank='$arcrank',typeid='$typeid',title='$title',description='$description',mtype='$mtypesid',keywords='$keywords',flag='$flag' WHERE id='$aid' AND mid='$mid'; ";
     if (!$dsql->ExecuteNoneQuery($upQuery)) {
         ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员".$dsql->GetError(), "-1");
         exit();

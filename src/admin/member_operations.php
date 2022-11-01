@@ -21,7 +21,7 @@ $dlist = new DataListCP();
 $dlist->pagesize = 30;
 $dlist->SetParameter("buyid", $buyid);
 if (isset($sta)) $dlist->SetParameter("sta", $sta);
-$dlist->dsql->SetQuery("SELECT * FROM #@__moneycard_type ");
+$dlist->dsql->SetQuery("SELECT * FROM `#@__moneycard_type`");
 $dlist->dsql->Execute('ts');
 while ($rw = $dlist->dsql->GetArray('ts')) {
     $TypeNames[$rw['tid']] = $rw['pname'];
@@ -37,7 +37,7 @@ function GetMemberID($mid)
     if ($mid == 0) {
         return '0';
     }
-    $row = $dsql->GetOne("SELECT userid FROM #@__member WHERE mid='$mid' ");
+    $row = $dsql->GetOne("SELECT userid FROM `#@__member` WHERE mid='$mid' ");
     if (is_array($row)) {
         return "<a href='member_view.php?id={$mid}'>".$row['userid']."</a>";
     } else {

@@ -31,7 +31,7 @@
         <td width="35%">管理</td>
       </tr>
       <?php
-    	$dsql->SetQuery("Select `rank`,typename,`system` From #@__admintype");
+    	$dsql->SetQuery("Select `rank`,typename,`system` From `#@__admintype`");
     	$dsql->Execute();
     	while($row = $dsql->GetObject())
     	{

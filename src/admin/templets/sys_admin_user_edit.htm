@@ -44,7 +44,7 @@
               <td class="biz-td">
                 <select name="usertype" class="biz-input-sm">
                 <?php
-                $dsql->SetQuery("Select * from `#@__admintype` order by `rank` asc");
+                $dsql->SetQuery("SELECT * FROM `#@__admintype` order by `rank` asc");
                 $dsql->Execute("ut");
                 while($myrow = $dsql->GetObject("ut"))
                 {

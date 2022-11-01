@@ -24,7 +24,7 @@ if ($dopost == 'ok') {
     ShowMsg("成功删除一个栏目", "catalog_main.php");
     exit();
 }
-$dsql->SetQuery("SELECT typename,typedir FROM #@__arctype WHERE id=".$id);
+$dsql->SetQuery("SELECT typename,typedir FROM `#@__arctype` WHERE id=".$id);
 $row = $dsql->GetOne();
 $wintitle = "删除栏目确认";
 $wecome_info = "<a href='catalog_main.php'>栏目管理</a> &gt; 删除栏目确认";
@@ -32,7 +32,7 @@ $win = new OxWindow();
 $win->Init('catalog_del.php', 'js/blank.js', 'POST');
 $win->AddHidden('id', $id);
 $win->AddHidden('dopost', 'ok');
-$win->AddTitle("您要确定要删除栏目：[{$row['typename']}] 吗");
+$win->AddTitle("您要确定要删除栏目：[{$row['typename']}]吗");
 $win->AddItem('栏目的文件保存目录：', $row['typedir']);
 $win->AddItem('是否删除文件：', "<label><input type='radio' name='delfile' value='no' checked='1'> 否</label> <label><input type='radio' name='delfile' value='yes'> 是</label>");
 $winform = $win->GetWindow('ok');

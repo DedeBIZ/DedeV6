@@ -22,7 +22,7 @@ $menutype = 'content';
 function _ShowForm(){  }
 --------------*/
 if (empty($dopost)) {
-    $cInfos = $dsql->GetOne("Select * From `#@__channeltype` WHERE id='$channelid'; ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'; ");
     if (!is_array($cInfos)) {
         ShowMsg('模型不存在', '-1');
         exit();

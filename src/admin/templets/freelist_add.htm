@@ -155,7 +155,7 @@
                   <?php
                   echo "<select name='typeid' class='biz-input-sm'>";
                   echo "<option value='0'>不限栏目</option>";
-                  $dsql->SetQuery("Select ID,typename, channeltype From #@__arctype");
+                  $dsql->SetQuery("Select ID,typename, channeltype From `#@__arctype`");
                   $dsql->Execute();
                   while($lrow = $dsql->GetObject()){
                  	$disable = '';
@@ -174,7 +174,7 @@
                   <?php
                   echo "<select name='channel' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限</option>";
-                  $dsql->SetQuery("Select ID,typename From #@__channeltype where ID>0");
+                  $dsql->SetQuery("Select ID,typename From `#@__channeltype` where ID>0");
             	    $dsql->Execute();
             	    while($row = $dsql->GetObject())
             	    {
@@ -189,7 +189,7 @@
                   <?php
                   echo "<select name='att' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限</option>";
-                  $dsql->SetQuery("Select * From #@__arcatt");
+                  $dsql->SetQuery("SELECT * FROM `#@__arcatt`");
           	      $dsql->Execute();
           	      while($row = $dsql->GetObject())
           	      {
