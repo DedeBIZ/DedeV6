@@ -455,15 +455,6 @@ body.hidemenu .body-right {
 	border:2px solid #28a745;
 	z-index:10005
 }
-option.alltype {
-	padding:2px 0 4px 0px
-}
-option.btype {
-	padding:2px 0 4px 10px
-}
-option.stype {
-	padding:2px 0 4px 20px
-}
 span.page-link {
 	color:#fff;
 	background:#28a745

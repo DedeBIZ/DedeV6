@@ -184,7 +184,7 @@
         {
             if (!preg_match("#\.#", $row1['evalue']))
             {
-                $row1['ename'] = ($row1['evalue'] % 500 == 0)? $row1['ename'] : '└─'.$row1['ename'];
+                $row1['ename'] = ($row1['evalue'] % 500 == 0)? $row1['ename'] : '└─ '.$row1['ename'];
                 if ($topvalue != $row1['evalue']) $options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
                 else $options .= "<option value='{$row1['evalue']}' selected='selected'>{$row1['ename']}</option>";
             }
@@ -258,9 +258,9 @@
                     <?php 
                     if (!preg_match("#\.#", $fields['evalue']))
                     {
-                        if ($fields['evalue']>500 && $fields['evalue']%500 != 0)  $fields['ename'] = " └─".$fields['ename'];
+                        if ($fields['evalue']>500 && $fields['evalue']%500 != 0)  $fields['ename'] = "└─ ".$fields['ename'];
                     } else {
-                        $fields['ename'] = " └───".$fields['ename'];
+                        $fields['ename'] = "└─── ".$fields['ename'];
                     }
                     ?>
                     <input type='text' id='ename{dede:field.id/}' value='{dede:field.ename/}' class='abt'>

@@ -68,7 +68,7 @@ if ($dopost == 'saveedit') {
         $win->AddHidden("id", $id);
         $win->AddTitle("系统提示");
         $win->AddMsgItem("您确定要删除用户：$userid 吗", "50");
-        $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='biz-input-md'>（安全码：<span class='text-danger'>$safecode</span>）", "30");
+        $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='biz-input-md'>（安全码：<span class='text-success'>$safecode</span>）", "30");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -98,11 +98,11 @@ $typeids = explode(',', $row['typeid']);
 $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid=0 AND (ispart=0 OR ispart=1)");
 $dsql->Execute('op');
 while ($nrow = $dsql->GetObject('op')) {
-    $typeOptions .= "<option value='{$nrow->id}' class='btype'".(in_array($nrow->id, $typeids) ? ' selected' : '').">—{$nrow->typename}</option>\r\n";
+    $typeOptions .= "<option value='{$nrow->id}' ".(in_array($nrow->id, $typeids) ? ' selected' : '').">└─ {$nrow->typename}</option>\r\n";
     $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid={$nrow->id} AND (ispart=0 OR ispart=1)");
     $dsql->Execute('s');
     while ($nrow = $dsql->GetObject('s')) {
-        $typeOptions .= "<option value='{$nrow->id}' class='stype'".(in_array($nrow->id, $typeids) ? ' selected' : '').">—{$nrow->typename}</option>\r\n";
+        $typeOptions .= "<option value='{$nrow->id}' ".(in_array($nrow->id, $typeids) ? ' selected' : '').">└─── {$nrow->typename}</option>\r\n";
     }
 }
 make_hash();

@@ -67,9 +67,9 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
             $OptionArrayList .= $sonCats;
         } else {
             if ($row->ispart == 0 && (!empty($channeltype) && $row->channeltype == $channeltype)) {
-                $OptionArrayList .= "<option value='".$row->id."' class='option3'>".$row->typename."</option>";
+                $OptionArrayList .= "<option value='".$row->id."' class='option3'>└─ ".$row->typename."</option>";
             } else if ($row->ispart == 0 && empty($channeltype)) {
-                $OptionArrayList .= "<option value='".$row->id."' class='option3'>".$row->typename."</option>";
+                $OptionArrayList .= "<option value='".$row->id."' class='option3'>└─ ".$row->typename."</option>";
             }
         }
     }
@@ -78,16 +78,16 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
 function LogicGetOptionArray($id, $step, $channeltype, &$dsql, &$sonCats)
 {
     global $OptionArrayList, $channels, $cfg_admin_channel, $admin_catalogs;
-    $dsql->SetQuery("Select id,typename,ispart,channeltype From `#@__arctype` where reid='".$id."' order by sortrank asc");
+    $dsql->SetQuery("SELECT id,typename,ispart,channeltype FROM `#@__arctype` WHERE reid='".$id."' ORDER BY sortrank ASC");
     $dsql->Execute($id);
     while ($row = $dsql->GetObject($id)) {
         if ($cfg_admin_channel != 'all' && !in_array($row->id, $admin_catalogs)) {
             continue;
         }
         if ($row->channeltype == $channeltype && $row->ispart == 1) {
-            $sonCats .= "<option value='".$row->id."' class='option1'>$step".$row->typename."</option>";
+            $sonCats .= "<option value='".$row->id."' class='option1'>└─$step ".$row->typename."</option>";
         } else if (($row->channeltype == $channeltype && $row->ispart == 0) || empty($channeltype)) {
-            $sonCats .= "<option value='".$row->id."' class='option3'>$step".$row->typename."</option>";
+            $sonCats .= "<option value='".$row->id."' class='option3'>└─$step ".$row->typename."</option>";
         }
         LogicGetOptionArray($row->id, $step.'─', $channeltype, $dsql, $sonCats);
     }

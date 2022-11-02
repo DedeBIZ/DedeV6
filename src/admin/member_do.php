@@ -69,8 +69,8 @@ if ($dopost == "delmember") {
     $win->AddHidden("id", $id);
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
-    $win->AddTitle("您确定要删除会员ID:".$id." 吗");
-    $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='biz-input-md'>（安全码：<span class='text-danger'>$safecode</span>）", "30");
+    $win->AddTitle("您确定要删除会员id:".$id." 吗");
+    $win->AddMsgItem("验证安全码：<input name='safecode' type='text' id='safecode' class='biz-input-md'>（安全码：<span class='text-success'>$safecode</span>）", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 } else if ($dopost == "delmembers") {
@@ -117,7 +117,7 @@ if ($dopost == "delmember") {
     $win->AddHidden("randcode", $randcode);
     $win->AddHidden("safecode", $safecode);
     $win->AddTitle("您确定要删除(ID:".$id.")这个会员?");
-    $win->AddMsgItem(" 验证安全码：<input name='safecode' type='text' id='safecode' size='16' class='biz-input-md' /> (安全码：<span class='text-danger'>$safecode</span>)", "30");
+    $win->AddMsgItem(" 验证安全码：<input name='safecode' type='text' id='safecode' size='16' class='biz-input-md' /> (安全码：<span class='text-success'>$safecode</span>)", "30");
     $winform = $win->GetWindow("ok");
     $win->Display();
 }

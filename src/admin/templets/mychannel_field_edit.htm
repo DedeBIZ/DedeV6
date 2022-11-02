@@ -96,14 +96,14 @@
       <tr>
         <td>字段类型：</td>
         <td>
-          <label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");  ?>> 系统自动生成表单字段</label>
-          <label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");  ?>> 已经固化在发布表单中字段</label></td>
+          <label><input type="radio" name="autofield" value="1" checked="checked" <?php echo ($ctag->GetAtt('autofield')==1 ? " checked":"");?>> 系统自动生成表单字段</label>
+          <label><input type="radio" name="autofield" value="0" <?php echo ( ($ctag->GetAtt('autofield')==''||$ctag->GetAtt('autofield')=='0') ? " checked":"");?>> 已经固化在发布表单中字段</label></td>
       </tr>
       <tr>
         <td>前台参数：</td>
         <td>
-          <label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");  ?>> 使字段可以在列表的底层模板中获得（自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择）</label><br>
-          <label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");  ?> /> 前台投稿及采集规则禁用本字段</label>
+          <label><input type="checkbox" name="islist" id="islist" value="1" <?php echo ($ctag->GetAtt('islist')==1 ? " checked":"");?>> 使字段可以在列表的底层模板中获得（自定义字段默认仅能在文档模板显示，启用此选项将使列表查询变慢，如无必要请不要选择）</label><br>
+          <label><input type="checkbox" name="notsend" id="notsend" value="1" <?php echo ($ctag->GetAtt('notsend')==1 ? " checked":"");?> /> 前台投稿及采集规则禁用本字段</label>
         </td>
       </tr>
       <tr>
@@ -182,7 +182,7 @@
       </tr>
       <tr>
         <td>最大长度：<br>
-          <span class="style2"> 文本数据必须填写，大于255为text类型 </span></td>
+          <span class="style2">文本数据必须填写，大于255为text类型</span></td>
         <td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>" class="biz-input-xs"></td>
       </tr>
       <tr>

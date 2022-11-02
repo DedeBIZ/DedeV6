@@ -246,9 +246,9 @@ class TypeLink
                 if (!in_array($row->id, $oper)) continue;
             }
             if ($row->ispart == 1) {
-                $this->OptionArrayList .= "<option value='".$row->id."' style='background-color:#EFEFEF;color:#545b62'>$step".$row->typename."</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row->id."' style='background-color:#efefef;color:#545b62'>$step ".$row->typename."</option>\r\n";
             } else {
-                $this->OptionArrayList .= "<option value='".$row->id."'>$step".$row->typename."</option>\r\n";
+                $this->OptionArrayList .= "<option value='".$row->id."'>$step ".$row->typename."</option>\r\n";
             }
             $this->LogicGetOptionArray($row->id, $step."─", $oper);
         }

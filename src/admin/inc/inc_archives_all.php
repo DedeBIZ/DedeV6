@@ -18,8 +18,7 @@
 function GetFormItem($ctag)
 {
     $fieldname = $ctag->GetName();
-    $formitem = "
-        <table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+    $formitem = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
        <tr>
         <td width=\"80\">~name~</td>
         <td width=\"720\">~form~</td>
@@ -215,8 +214,7 @@ function GetFieldValue($dvalue, $dtype, $aid = 0, $job = 'add', $addvar = '')
 function GetFormItemValue($ctag, $fvalue)
 {
     $fieldname = $ctag->GetName();
-    $formitem = "
-        <table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+    $formitem = "<table width=\"800\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
        <tr>
         <td width=\"80\">~name~</td>
         <td width=\"720\">~form~</td>

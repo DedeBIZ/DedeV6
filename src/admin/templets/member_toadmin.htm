@@ -56,11 +56,11 @@
             </tr>
             <tr>
               <td class="biz-td">用户名称：</td>
-              <td class="biz-td"><input type="text" name="uname" id="uname" size="16" value="<?php echo $row['uname']?>" class="biz-input-md">（发布文档后显示责任编辑的名字）</td>
+              <td class="biz-td"><input type="text" name="uname" id="uname" value="<?php echo $row['uname']?>" class="biz-input-sm">（发布文档后显示责任编辑的名字）</td>
             </tr>
             <tr>
               <td class="biz-td">用户密码：</td>
-              <td class="biz-td"><input type="text" name="pwd" id="pwd" size="16" class="biz-input-md">（留空则不修改，只能用'0-9a-zA-Z.@_-!'以内范围的字符）</td>
+              <td class="biz-td"><input type="text" name="pwd" id="pwd" class="biz-input-md">（留空则不修改，只能用[0-9a-zA-Z_@!.-]以内范围的字符）</td>
             </tr>
             <tr>
               <td class="biz-td">用户类型：</td>
@@ -81,7 +81,7 @@
             <tr>
               <td class="biz-td">负责频道：</td>
               <td class="biz-td">
-                <select name="typeids[]" id="typeid" multiple="true" style="width:260px;height:200px">
+                <select name="typeids[]" id="typeid" multiple="true" class="biz-input-md" style="height:200px">
                   <option value="0" class='alltype'>所有频道</option>
                   <?php echo $typeOptions?>
                 </select>（按Ctrl可以进行多选）
@@ -89,17 +89,17 @@
             </tr>
             <tr>
               <td class="biz-td">真实姓名：</td>
-              <td class="biz-td"><input type="text" name="tname" id="tname" size="16" class="biz-input-md" value=""></td>
+              <td class="biz-td"><input type="text" name="tname" id="tname" class="biz-input-md" value=""></td>
             </tr>
             <tr>
               <td class="biz-td">电子邮箱：</td>
-              <td class="biz-td"><input type="text" name="email" id="email" size="16" class="biz-input-md" value="<?php echo $row['email']?>"></td>
+              <td class="biz-td"><input type="text" name="email" id="email" class="biz-input-md" value="<?php echo $row['email']?>"></td>
             </tr>
             <tr>
               <td class="biz-td">验证安全码：</td>
               <td class="biz-td">
-                <input type="text" name="safecode" id="safecode" size="16" class="biz-input-md"> 
-                <input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class='text-danger'><?php echo $safecode;?></span>）</td>
+                <input type="text" name="safecode" id="safecode" class="biz-input-md"> 
+                <input type="hidden" name="randcode" value="<?php echo $randcode;?>">（安全码：<span class="text-success"><?php echo $safecode;?></span>）</td>
             </tr>
             <tr>
               <td colspan="2" align="center" class="py-2">

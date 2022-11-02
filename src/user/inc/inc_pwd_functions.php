@@ -65,7 +65,7 @@ function sendmail($email, $mailtitle, $mailbody, $headers)
 /**
  *  发送邮件；type为INSERT新建验证码，UPDATE修改验证码；
  *
- * @param     int  $mid  会员ID
+ * @param     int  $mid  会员id
  * @param     int  $userid  用户id
  * @param     string  $mailto  发送到
  * @param     string  $type  类型
@@ -127,7 +127,7 @@ function member($mail, $userid)
 /**
  *  查询是否发送过验证码
  *
- * @param     string  $mid  会员ID
+ * @param     string  $mid  会员id
  * @param     string  $userid  用户名称
  * @param     string  $mailto  发送邮件地址
  * @param     string  $send  为Y发送邮件,为N不发送邮件默认为Y

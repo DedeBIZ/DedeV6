@@ -80,7 +80,7 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
 /**
  *  自定义类型
  *
- * @param     int  $mid  会员ID
+ * @param     int  $mid  会员id
  * @param     int  $mtypeid  自定义类别ID
  * @param     int  $channelid  频道id
  * @return    string
