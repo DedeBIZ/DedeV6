@@ -65,9 +65,9 @@ if ($arr['issign']==0)
   {
   	if ($row1['evalue']%500==0 || $arr['issign']==1)
   	{
-  		$options .= "<option value='{$row1['evalue']}'>{$row1['ename']}</option>";
-  	} else {
   		$options .= "<option value='{$row1['evalue']}'>└─ {$row1['ename']}</option>";
+  	} else {
+  		$options .= "<option value='{$row1['evalue']}'>└─── {$row1['ename']}</option>";
   	}
   }
 ?>

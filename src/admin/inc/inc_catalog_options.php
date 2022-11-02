@@ -60,10 +60,10 @@ function GetOptionList($selid = 0, $userCatalog = 0, $channeltype = 0)
         $sonCats = '';
         LogicGetOptionArray($row->id, '─', $channeltype, $dsql, $sonCats);
         if ($sonCats != '') {
-            if ($row->ispart == 1) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."-封面频道</option>";
-            else if ($row->ispart == 2) $OptionArrayList .= "<option value='".$row->id."' class='option1'>".$row->typename."-外部连接</option>";
-            else if (empty($channeltype) && $row->ispart != 0) $OptionArrayList .= "<option value='".$row->id."' class='option2'>".$row->typename."(".$channels[$row->channeltype].")</option>";
-            else $OptionArrayList .= "<option value='".$row->id."' class='option3'>".$row->typename."</option>";
+            if ($row->ispart == 1) $OptionArrayList .= "<option value='".$row->id."' class='option1'>└─ ".$row->typename."(封面频道)</option>";
+            else if ($row->ispart == 2) $OptionArrayList .= "<option value='".$row->id."' class='option1'>└─ ".$row->typename."(外部连接)</option>";
+            else if (empty($channeltype) && $row->ispart != 0) $OptionArrayList .= "<option value='".$row->id."' class='option2'>└─ ".$row->typename."(".$channels[$row->channeltype].")</option>";
+            else $OptionArrayList .= "<option value='".$row->id."' class='option3'>└─ ".$row->typename."</option>";
             $OptionArrayList .= $sonCats;
         } else {
             if ($row->ispart == 0 && (!empty($channeltype) && $row->channeltype == $channeltype)) {

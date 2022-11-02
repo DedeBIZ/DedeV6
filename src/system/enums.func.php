@@ -91,8 +91,7 @@ function GetEnumsForm($egroup, $evalue = 0, $formid = '', $seltitle = '')
     $forms .= "\t<option value='0' selected='selected'>请选择{$seltitle}</option>\r\n";
     foreach (${'em_'.$egroup.'s'} as $v => $n) {
         $prefix = ($v > 500 && $v % 500 != 0) ? '└─ ' : '';
-        if (preg_match("#\.#", $v)) $prefix = ' &nbsp;&nbsp;└── ';
-
+        if (preg_match("#\.#", $v)) $prefix = '└─── ';
         if ($v == $evalue) {
             $forms .= "\t<option value='$v' selected='selected'>$prefix$n</option>\r\n";
         } else {
