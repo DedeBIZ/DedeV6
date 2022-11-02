@@ -2,9 +2,9 @@
 /**
  * 防采集混淆字符串管理
  *
- * @version        $Id: article_string_mix.php 1 14:31 2010年7月12日 tianya $
+ * @version        $id:article_string_mix.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

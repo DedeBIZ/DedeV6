@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文档小助手
  *
- * @version        $Id: channelunit.helper.php 1 16:49 2010年7月6日 tianya $
+ * @version        $id:channelunit.helper.php 16:49 2010年7月6日 tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -332,7 +332,7 @@ if (!function_exists('GetTopid')) {
  *  获得某id的所有下级id
  *
  * @param     string  $id  栏目id
- * @param     string  $channel  模型ID
+ * @param     string  $channel  模型id
  * @param     string  $addthis  是否包含本身
  * @return    string
  */

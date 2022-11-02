@@ -2,9 +2,9 @@
 /**
  * 检索操作
  *
- * @version        $Id: action_search.php 1 8:26 2010年7月12日 tianya $
+ * @version        $id:action_search.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

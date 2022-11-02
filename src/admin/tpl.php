@@ -2,9 +2,9 @@
 /**
  * 文件管理器
  *
- * @version        $Id: tpl.php 1 23:44 2010年7月20日 tianya $
+ * @version        $id:tpl.php 23:44 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

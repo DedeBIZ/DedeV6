@@ -2,9 +2,9 @@
 /**
  * 生成Tag操作
  *
- * @version        $Id: makehtml_taglist_action.php 1 11:17 2020年8月19日 tianya $
+ * @version        $id:makehtml_taglist_action.php 11:17 2020年8月19日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

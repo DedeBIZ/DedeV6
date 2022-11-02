@@ -2,9 +2,9 @@
 /**
  * 文档编辑器
  * 
- * @version        $Id: archives_edit.php 1 13:52 2010年7月9日 tianya $
+ * @version        $id:archives_edit.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

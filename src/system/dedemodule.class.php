@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 模块类
  *
- * @version        $Id: dedemodule.class.php 1 10:31 2010年7月6日 tianya $
+ * @version        $id:dedemodule.class.php 10:31 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

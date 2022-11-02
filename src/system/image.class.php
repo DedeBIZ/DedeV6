@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 图像处理类
  *
- * @version        $Id: image.class.php 1 18:10 2010年7月5日 tianya $
+ * @version        $id:image.class.php 18:10 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -1,8 +1,8 @@
 <?php
 /**
- * @version        $Id: sys_data_revert.php 1 22:28 2010年7月20日 tianya $
+ * @version        $id:sys_data_revert.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -2,9 +2,9 @@
 /**
  * 内容列表
  *
- * @version        $Id: content_i_list.php 1 14:31 2010年7月12日 tianya $
+ * @version        $id:content_i_list.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

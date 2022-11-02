@@ -2,9 +2,9 @@
 /**
  * 商品支付点数
  * 
- * @version        $Id:shops_point.php 1 8:38 2010年7月9日 tianya $
+ * @version        $id:shops_point.php 8:38 2010年7月9日 tianya $
  * @package        DedeBIZ.User
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

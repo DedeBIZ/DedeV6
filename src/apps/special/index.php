@@ -1,8 +1,8 @@
 <?php
 /**
- * @version        $Id: index.php 1 2010-06-30 11:43:09 tianya $
+ * @version        $id:index.php 2010-06-30 11:43:09 tianya $
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

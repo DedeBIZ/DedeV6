@@ -2,9 +2,9 @@
 /**
  * 栏目选项函数
  *
- * @version        $Id: inc_catalog_options.php 1 10:32 2010年7月21日 tianya $
+ * @version        $id:inc_catalog_options.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -12,7 +12,7 @@
  *  获取选项列表
  *
  * @access    public
- * @param     string  $selid  选择ID
+ * @param     string  $selid  选择id
  * @param     string  $userCatalog  用户类目
  * @param     string  $channeltype  频道类型
  * @return    string

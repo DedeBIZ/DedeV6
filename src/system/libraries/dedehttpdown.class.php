@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * HTTP下载类
  *
- * @version        $Id: dedehttpdown.class.php 1 11:42 2010年7月6日 tianya $
+ * @version        $id:dedehttpdown.class.php 11:42 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

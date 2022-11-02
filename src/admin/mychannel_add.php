@@ -2,9 +2,9 @@
 /**
  * 自定义频道
  *
- * @version        $Id: mychannel_add.php 1 14:46 2010年7月20日 tianya $
+ * @version        $id:mychannel_add.php 14:46 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

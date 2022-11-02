@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 密码函数
  * 
- * @version        $Id: inc_pwd_functions.php 1 15:18 2010年7月9日 tianya $
+ * @version        $id:inc_pwd_functions.php 15:18 2010年7月9日 tianya $
  * @package        DedeBIZ.User
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

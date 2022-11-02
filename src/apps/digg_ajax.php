@@ -2,9 +2,9 @@
 /**
  * 文档digg处理ajax文件
  *
- * @version        $Id: digg_ajax.php$
+ * @version        $id:digg_ajax.php$
  * @package        DedeBIZ.Plus
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -19,7 +19,7 @@ if ($id < 1) {
 }
 $idtype = 'id';
 $maintable = '#@__archives';
-//获得频道模型ID
+//获得频道模型id
 if ($cid < 0) {
 	$row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$cid' AND issystem='-1';");
 	$maintable = empty($row['addtable']) ? '' : $row['addtable'];

@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  
  *
- * @version        $Id: arcpagelist.lib.php 1 9:29 2010年7月6日 tianya $
+ * @version        $id:arcpagelist.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

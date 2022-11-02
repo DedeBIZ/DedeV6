@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 验证小助手
  *
- * @version        $Id: validate.helper.php 2 13:56 2010年7月5日 tianya $
+ * @version        $id:validate.helper.php 2 13:56 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -2,9 +2,9 @@
 /**
  * 模型解析相关函数
  *
- * @version        $Id: inc_archives_all.php 1 9:56 2010年7月21日 tianya $
+ * @version        $id:inc_archives_all.php 9:56 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

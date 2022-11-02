@@ -2,9 +2,9 @@
 /**
  * 列表对应函数
  *
- * @version        $Id: inc_list_functions.php 1 10:32 2010年7月21日 tianya $
+ * @version        $id:inc_list_functions.php 10:32 2010年7月21日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

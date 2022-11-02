@@ -2,9 +2,9 @@
 /**
  * 自定义表单
  *
- * @version        $Id: diy.php$
+ * @version        $id:diy.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

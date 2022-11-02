@@ -2,9 +2,9 @@
 /**
  * 增加自由列表
  *
- * @version        $Id: freelist_add.php 1 8:48 2010年7月13日 tianya $
+ * @version        $id:freelist_add.php 8:48 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

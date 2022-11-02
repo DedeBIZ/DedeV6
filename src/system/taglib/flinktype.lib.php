@@ -4,9 +4,9 @@ require_once(DEDEINC."/taglib/flink.lib.php");
 /**
  * 友情链接
  *
- * @version        $Id: flinktype.lib.php 1 15:57 2011年2月18日Z niap $
+ * @version        $id:flinktype.lib.php 15:57 2011年2月18日Z niap $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

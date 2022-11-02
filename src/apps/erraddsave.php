@@ -2,9 +2,9 @@
 /**
  * 错误提交
  *
- * @version        $Id: erraddsave.php$
+ * @version        $id:erraddsave.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -5,9 +5,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
  *
  * 9:19 2010年7月13日:修正对isweight属性的支持
  *
- * @version        $Id: arclist.lib.php 3 9:19 2010年7月13日 tianya $
+ * @version        $id:arclist.lib.php 3 9:19 2010年7月13日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

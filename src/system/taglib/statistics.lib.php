@@ -4,9 +4,9 @@ require_once(DEDEINC."/libraries/statistics.class.php");
 /**
  * 统计标签
  *
- * @version        $Id: statistics.lib.php 1 9:29 2022年3月26日 tianya $
+ * @version        $id:statistics.lib.php 9:29 2022年3月26日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

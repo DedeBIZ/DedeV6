@@ -3,7 +3,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 提示窗口对话框类
  *
- * @version        $Id: oxwindow.class.php 2 13:53 2010-11-11 tianya $
+ * @version        $id:oxwindow.class.php 2 13:53 2010-11-11 tianya $
  * @package        .Libraries
  * @copyright      Copyright (c) 2022, .COM
  * @license        https://www..com/license

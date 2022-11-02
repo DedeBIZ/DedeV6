@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 扩展小助手
  *
- * @version        $Id: extend.helper.php 1 13:58 2010年7月5日 tianya $
+ * @version        $id:extend.helper.php 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

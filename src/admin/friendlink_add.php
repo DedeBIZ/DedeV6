@@ -2,9 +2,9 @@
 /**
  * 友情链接添加
  *
- * @version        $Id: friendlink_add.php 1 10:59 2010年7月13日 tianya $
+ * @version        $id:friendlink_add.php 10:59 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

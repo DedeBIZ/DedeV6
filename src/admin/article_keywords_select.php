@@ -2,9 +2,9 @@
 /**
  * 文档关键词选择
  *
- * @version        $Id: article_keywords_select.php$
+ * @version        $id:article_keywords_select.php$
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

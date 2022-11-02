@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 联动菜单类
  *
- * @version        $Id: enums.func.php 2 13:19 2011-3-24 tianya $
+ * @version        $id:enums.func.php 2 13:19 2011-3-24 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

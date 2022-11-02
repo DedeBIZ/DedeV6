@@ -2,9 +2,9 @@
 /**
  * 统计程序
  *
- * @version        $Id: statistics.php$
+ * @version        $id:statistics.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

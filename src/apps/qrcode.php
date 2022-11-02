@@ -2,9 +2,9 @@
 /**
  * 二维码生成
  *
- * @version        $Id: qrcode.php$
+ * @version        $id:qrcode.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

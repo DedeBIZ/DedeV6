@@ -9,9 +9,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * $GLOBALS['cfg_dbname'];
  * $GLOBALS['cfg_dbprefix'];
  *
- * @version        $Id: dedesqli.class.php 1 15:00 2011-1-21 tianya $
+ * @version        $id:dedesqli.class.php 15:00 2011-1-21 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

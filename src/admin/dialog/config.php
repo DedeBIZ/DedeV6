@@ -2,9 +2,9 @@
 /**
  * 该页仅用于检测用户登录的情况，如要手工修改系统配置，请修改common.inc.php
  *
- * @version        $Id: config.php 1 9:43 2010年7月8日 tianya $
+ * @version        $id:config.php 9:43 2010年7月8日 tianya $
  * @package        DedeBIZ.Dialog
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * RSS视图类
  *
- * @version        $Id: rssview.class.php 1 15:21 2010年7月7日 tianya $
+ * @version        $id:rssview.class.php 15:21 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

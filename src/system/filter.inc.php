@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 过滤核心处理文件
  *
- * @version        $Id: filter.inc.php 1 15:59 2010年7月5日 tianya $
+ * @version        $id:filter.inc.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

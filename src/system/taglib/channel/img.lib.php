@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 图像标签
  *
- * @version        $Id:img.lib.php 1 9:33 2010年7月8日 tianya $
+ * @version        $id:img.lib.php 9:33 2010年7月8日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文档内容调用标签
  *
- * @version        $Id: arccontent.lib.php 2020年9月14日 tianya $
+ * @version        $id:arccontent.lib.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

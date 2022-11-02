@@ -2,9 +2,9 @@
 /**
  * 文档发布
  *
- * @version        $Id: article_add.php 2020年9月14日 tianya $
+ * @version        $id:article_add.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -30,7 +30,7 @@ if ($dopost != 'save') {
         $redatas = CoOnePage($geturl);
         extract((array)$redatas);
     }
-    //获得频道模型ID
+    //获得频道模型id
     if ($cid > 0 && $channelid == 0) {
         $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid'; ");
         $channelid = $row['channeltype'];

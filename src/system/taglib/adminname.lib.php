@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 获得责任编辑名称
  *
- * @version        $Id: adminname.lib.php 2 8:48 2010年7月8日 tianya $
+ * @version        $id:adminname.lib.php 2 8:48 2010年7月8日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -1,8 +1,8 @@
 <?php
 /**
- * @version        $Id: edit_email.php 2020/12/18 tianya $
+ * @version        $id:edit_email.php 2020/12/18 tianya $
  * @package        DedeBIZ.User
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

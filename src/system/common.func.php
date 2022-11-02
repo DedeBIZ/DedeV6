@@ -30,9 +30,9 @@ function DedeAlert($content, $type = ALERT_PRIMARY)
 }
 /**
  * 系统核心函数存放文件
- * @version        $Id: common.func.php 4 16:39 2010年7月6日 tianya $
+ * @version        $id:common.func.php 4 16:39 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

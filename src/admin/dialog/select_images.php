@@ -2,9 +2,9 @@
 /**
  * 图片选择
  *
- * @version        $Id: select_images.php 2022-07-01 tianya $
+ * @version        $id:select_images.php 2022-07-01 tianya $
  * @package        DedeBIZ.Dialog
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

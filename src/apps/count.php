@@ -7,9 +7,9 @@
  * 普通计数器为
  * <script src="{dede:field name='phpurl'/}/count.php?aid={dede:field name='id'/}&mid={dede:field name='mid'/}"></script>
  *
- * @version        $Id: count.php$
+ * @version        $id:count.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -21,7 +21,7 @@ $format = isset($format) ? $format : "";
 $maintable = '#@__archives';
 $idtype = 'id';
 if ($aid == 0) exit();
-//获得频道模型ID
+//获得频道模型id
 if ($cid < 0) {
     $row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$cid' AND issystem='-1';");
     $maintable = empty($row['addtable']) ? '' : $row['addtable'];

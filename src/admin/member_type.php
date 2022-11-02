@@ -2,9 +2,9 @@
 /**
  * 会员类型
  *
- * @version        $Id: member_type.php 1 14:14 2010年7月20日 tianya $
+ * @version        $id:member_type.php 14:14 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

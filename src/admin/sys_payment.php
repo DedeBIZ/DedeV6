@@ -2,9 +2,9 @@
 /**
  * 支付接口
  *
- * @version        $Id: sys_info_mark.php 1 22:28 2010年7月20日 tianya $
+ * @version        $id:sys_info_mark.php 22:28 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

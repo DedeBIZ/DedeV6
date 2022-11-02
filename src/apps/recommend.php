@@ -2,9 +2,9 @@
 /**
  * 信息推荐
  *
- * @version        $Id: recommend.php$
+ * @version        $id:recommend.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

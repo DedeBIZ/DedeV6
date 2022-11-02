@@ -2,9 +2,9 @@
 /**
  * 附件添加
  *
- * @version        $Id: media_add.php 2 15:25 2011-6-2 tianya $
+ * @version        $id:media_add.php 2 15:25 2011-6-2 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

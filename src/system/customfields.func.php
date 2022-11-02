@@ -2,9 +2,9 @@
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 系统核心函数存放文件
- * @version        $Id: customfields.func.php 2 20:50 2010年7月7日 tianya $
+ * @version        $id:customfields.func.php 2 20:50 2010年7月7日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

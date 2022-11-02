@@ -2,9 +2,9 @@
 /**
  * 高级搜索
  *
- * @version        $Id: advancedsearch.php 1 15:38 2010年7月8日 tianya $
+ * @version        $id:advancedsearch.php 15:38 2010年7月8日 tianya $
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

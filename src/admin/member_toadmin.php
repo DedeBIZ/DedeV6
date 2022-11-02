@@ -2,9 +2,9 @@
 /**
  * 升级为管理员
  *
- * @version        $Id: member_toadmin.php 1 14:09 2010年7月20日 tianya $
+ * @version        $id:member_toadmin.php 14:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

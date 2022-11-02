@@ -2,9 +2,9 @@
 /**
  * 数据库备份还原 
  *
- * @version        $Id: sys_data.php 1 17:19 2010年7月20日 tianya $
+ * @version        $id:sys_data.php 17:19 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

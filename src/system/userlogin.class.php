@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 管理员登录类
  *
- * @version        $Id: userlogin.class.php 1 15:59 2010年7月5日 tianya $
+ * @version        $id:userlogin.class.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

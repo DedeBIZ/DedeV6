@@ -2,9 +2,9 @@
 /**
  * 验证图片
  *
- * @version        $Id: vdimgck.php$
+ * @version        $id:vdimgck.php$
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

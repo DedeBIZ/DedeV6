@@ -2,9 +2,9 @@
 /**
  * 任务操作
  *
- * @version        $Id: task_do.php 1 23:07 2010年7月20日 tianya $
+ * @version        $id:task_do.php 23:07 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

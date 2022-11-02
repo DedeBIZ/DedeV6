@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 获取当前频道的下级栏目的内容列表标签
  *
- * @version        $Id: channelartlist.lib.php 1 9:29 2010年7月6日 tianya $
+ * @version        $id:channelartlist.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -31,7 +31,7 @@ function lib_channelartlist(&$ctag, &$refObj)
     if ($innertext == '') $innertext = GetSysTemplets('part_channelartlist.htm');
     $totalnum = $row;
     if (empty($totalnum)) $totalnum = 20;
-    //获得类别ID总数的信息
+    //获得类别id总数的信息
     $typeids = array();
     if ($typeid==0 || $typeid=='top') {
         $tpsql = " reid=0 AND channeltype>0 AND ishidden<>1 ";

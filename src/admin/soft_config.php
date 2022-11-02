@@ -2,9 +2,9 @@
 /**
  * 软件配置
  *
- * @version        $Id: soft_config.php 1 16:09 2010年7月20日 tianya $
+ * @version        $id:soft_config.php 16:09 2010年7月20日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

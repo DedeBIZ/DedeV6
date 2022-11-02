@@ -2,9 +2,9 @@
 /**
  * 管理后台首页
  *
- * @version        $Id: index.php 1 11:06 2010年7月13日 tianya $
+ * @version        $id:index.php 11:06 2010年7月13日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

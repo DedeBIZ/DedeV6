@@ -2,9 +2,9 @@
 /**
  * 软件编辑
  * 
- * @version        $Id: soft_edit.php 2 14:16 2010-11-11 tianya $
+ * @version        $id:soft_edit.php 2 14:16 2010-11-11 tianya $
  * @package        DedeBIZ.User
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

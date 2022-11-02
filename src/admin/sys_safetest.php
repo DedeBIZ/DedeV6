@@ -2,9 +2,9 @@
 /**
  * 安全检测
  *
- * @version        $Id: sys_safetest.php 2 9:25 2010-11-12 tianya $
+ * @version        $id:sys_safetest.php 2 9:25 2010-11-12 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

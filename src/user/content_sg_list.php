@@ -2,9 +2,9 @@
 /**
  * 单表模型内容列表
  * 
- * @version        $Id: content_sg_list.php 1 13:52 2010年7月9日 tianya $
+ * @version        $id:content_sg_list.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

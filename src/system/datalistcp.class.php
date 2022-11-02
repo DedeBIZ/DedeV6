@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 动态分页类
  *
- * @version        $Id: datalistcp.class.php 3 17:02 2010年7月9日 tianya $
+ * @version        $id:datalistcp.class.php 3 17:02 2010年7月9日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

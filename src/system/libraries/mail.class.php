@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * SMTP邮件操作类
  *
- * @version        $Id: mail.class.php 1 15:59 2010年7月5日 tianya $
+ * @version        $id:mail.class.php 15:59 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

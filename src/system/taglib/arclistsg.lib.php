@@ -2,9 +2,9 @@
 /**
  * 单表模型的文档列表调用标记
  *
- * @version        $Id: arclistsg.lib.php 1 9:29 2010年7月6日 tianya $
+ * @version        $id:arclistsg.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -1,8 +1,8 @@
 <?php
 /**
- * @version        $Id: index.php 2022-01-03 tianya $
+ * @version        $id:index.php 2022-01-03 tianya $
  * @package        DedeBIZ.Install
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -2,9 +2,9 @@
 /**
  * 显示图片
  *
- * @version        $Id: showphoto.php$
+ * @version        $id:showphoto.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

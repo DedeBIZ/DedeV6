@@ -2,9 +2,9 @@
 /**
  * 单表模型列表
  *
- * @version        $Id: content_sg_list.php 1 14:31 2010年7月12日 tianya $
+ * @version        $id:content_sg_list.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -15,7 +15,7 @@ $mid = isset($mid) ? intval($mid) : 0;
 if (!isset($keyword)) $keyword = '';
 if (!isset($arcrank)) $arcrank = '';
 if (empty($cid) && empty($channelid)) {
-    ShowMsg("该页面必须指定栏目id或内容模型ID才能浏览", "javascript:;");
+    ShowMsg("该页面必须指定栏目id或内容模型id才能浏览", "javascript:;");
     exit();
 }
 //检查权限许可，总权限

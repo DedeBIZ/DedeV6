@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 缓存小助手,支持文件和dedebiz cache
  *
- * @version        $Id: cache.helper.php 1 10:46 2011-3-2 tianya $
+ * @version        $id:cache.helper.php 10:46 2011-3-2 tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

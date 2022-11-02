@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 这仅是一个演示标签
  *
- * @version        $Id: demotag.lib.php 1 9:29 2010年7月6日 tianya $
+ * @version        $id:demotag.lib.php 9:29 2010年7月6日 tianya $
  * @package        DedeBIZ.Taglib
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

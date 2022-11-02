@@ -3,9 +3,9 @@
  * 关于文档权限设置的说明
  * 文档权限设置限制形式：如果指定了会员等级，那么必须到达这个等级才能浏览，如果指定了金币，浏览时会扣指点的点数，并保存记录到用户业务记录中，如果两者同时指定，那么必须同时满足两个条件
  *
- * @version        $Id: view.php$
+ * @version        $id:view.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

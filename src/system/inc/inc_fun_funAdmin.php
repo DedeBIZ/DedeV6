@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 管理员后台基本函数
  *
- * @version        $Id:inc_fun_funAdmin.php 1 13:58 2010年7月5日 tianya $
+ * @version        $id:inc_fun_funAdmin.php 13:58 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

@@ -2,9 +2,9 @@
 /**
  * 图集发布
  *
- * @version        $Id: album_add.php 1 8:26 2010年7月12日 tianya $
+ * @version        $id:album_add.php 8:26 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -19,7 +19,7 @@ if ($dopost != 'save') {
     ClearMyAddon();
     $channelid = empty($channelid) ? 0 : intval($channelid);
     $cid = empty($cid) ? 0 : intval($cid);
-    //获得频道模型ID
+    //获得频道模型id
     if ($cid > 0 && $channelid == 0) {
         $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid'; ");
         $channelid = $row['channeltype'];

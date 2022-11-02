@@ -2,9 +2,9 @@
 /**
  * 单表模型发布器
  * 
- * @version        $Id: archives_sg_add.php 1 13:52 2010年7月9日 tianya $
+ * @version        $id:archives_sg_add.php 13:52 2010年7月9日 tianya $
  * @package        DedeBIZ.User
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -12,7 +12,7 @@ if (!defined('DEDEMEMBER')) exit('dedebiz');
 /**
  *  获取选项列表
  *
- * @param     string  $selid  当前选择ID
+ * @param     string  $selid  当前选择id
  * @param     string  $channeltype  频道类型
  * @return    string
  */
@@ -81,7 +81,7 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
  *  自定义类型
  *
  * @param     int  $mid  会员id
- * @param     int  $mtypeid  自定义类别ID
+ * @param     int  $mtypeid  自定义类别id
  * @param     int  $channelid  频道id
  * @return    string
  */

@@ -2,9 +2,9 @@
 /**
  * 自定义标签js调用方式
  *
- * @version        $Id: mytag_js.php$
+ * @version        $id:mytag_js.php$
  * @package        DedeBIZ.Site
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */

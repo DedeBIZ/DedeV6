@@ -3,9 +3,9 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 文档小助手
  *
- * @version        $Id: archive.helper.php 2 23:00 2010年7月5日 tianya $
+ * @version        $id:archive.helper.php 2 23:00 2010年7月5日 tianya $
  * @package        DedeBIZ.Helpers
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
+ * @copyright      Copyright (c) 2022 DedeBIZ.COM
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
@@ -22,16 +22,16 @@ if (!function_exists('GetOneArchive')) {
         include_once(DEDEINC."/channelunit.func.php");
         $aid = trim(preg_replace('/[^0-9]/', '', $aid));
         $reArr = array();
-        $chRow = $dsql->GetOne("SELECT arc.*,ch.maintable,ch.addtable,ch.issystem FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid' ");
+        $chRow = $dsql->GetOne("SELECT arc.*,ch.maintable,ch.addtable,ch.issystem FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch ON ch.id=arc.channel WHERE arc.id='$aid'");
         if (!is_array($chRow)) {
             return $reArr;
         } else {
             if (empty($chRow['maintable'])) $chRow['maintable'] = '#@__archives';
         }
         if ($chRow['issystem'] != -1) {
-            $nquery = " SELECT arc.*,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `{$chRow['maintable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.id='$aid' ";
+            $nquery = "SELECT arc.*,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `{$chRow['maintable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.id='$aid'";
         } else {
-            $nquery = " SELECT arc.*,1 AS ismake,0 AS money,'' AS filename,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `{$chRow['addtable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.aid='$aid' ";
+            $nquery = "SELECT arc.*,1 AS ismake,0 AS money,'' AS filename,tp.typedir,tp.topid,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `{$chRow['addtable']}` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.aid='$aid'";
         }
         $arcRow = $dsql->GetOne($nquery);
         if (!is_array($arcRow)) {
@@ -74,7 +74,7 @@ if (!function_exists('GetOneArchive')) {
 /**
  *  获取模型的表信息
  *
- * @param     int   $id  模型ID
+ * @param     int   $id  模型id
  * @param     string   $formtype  表单类型
  * @return    array
  */
@@ -118,8 +118,8 @@ if (!function_exists('GetTags')) {
  * @access    public
  * @param     string  $arcrank  权限值
  * @param     int  $typeid  栏目id
- * @param     int  $sortrank  排序ID
- * @param     int  $channelid  模型ID
+ * @param     int  $sortrank  排序id
+ * @param     int  $channelid  模型id
  * @param     int  $senddate  发布日期
  * @param     int  $mid  会员id
  * @return    int
@@ -146,7 +146,7 @@ if (!function_exists('GetIndexKey')) {
  * @param     int  $id  文档id
  * @param     string  $arcrank  权限值
  * @param     int  $typeid  栏目id
- * @param     int  $sortrank  排序ID
+ * @param     int  $sortrank  排序id
  * @param     string  $tags  tag标签
  * @return    string
  */

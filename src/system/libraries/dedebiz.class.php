@@ -2,7 +2,7 @@
 if (!defined('DEDEINC')) exit('dedebiz');
 //Copyright 2020 The DedeBiz Authors. All rights reserved.
 //license that can be found in the LICENSE file.
-//@copyright      Copyright (c) 2022, DedeBIZ.COM
+//@copyright      Copyright (c) 2022 DedeBIZ.COM
 //@license        https://www.dedebiz.com/license
 //@link           https://www.dedebiz.com
 //本文件为DedeBIZ商业组件(www.dedebiz.com)PHP SDK，弥补系统性能和安全方面的不足，提供更多功能
