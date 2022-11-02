@@ -32,91 +32,80 @@
 	</head>
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
-		<main class="member">
-			<div class="pannel">
-				<div class="container py-3">
-					<div class="row">
-						<?php
-						$_menu_pmex = true;
-						$_menu_pmstate = $state;
-						?>
-						<?php include(DEDEMEMBER."/templets/menu.htm");?>
-						<div class="pannel-main col-md-9 mb-3">
-							<div class="pannel-main-container">
-								<ul class="nav mt-2">
-									<li class="nav-item">
-										<a class="nav-link<?php if ($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link<?php if ($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link<?php if ($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a>
-									</li>
-								</ul>
-								<div class="table-responsive">
-									<form action="pm.php" method="post" name="form1">
-										<input type='hidden' name='dopost' value='del'>
-										<div id="feedback-alert">
-										</div>
-										<table class="table">
-											<thead>
-												<tr>
-													<th scope="col"></th>
-													<th scope="col">标题</th>
-													<th scope="col">
-														<?php
-														if ($folder == "inbox") echo "发件人";
-														else echo "收件人";
-														?>
-													</th>
-													<th scope="col">状态</th>
-													<th scope="col">发布时间</th>
-												</tr>
-											</thead>
-											<tbody>
-												{dede:datalist}
-												<tr>
-													<td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}"></td>
-													<td>
-														<?php
-														if ($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
-														else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
-														?>
-													</td>
-													<td>
-														<?php 
-														if ($folder == "inbox") { 
-														echo $fields['floginid']; 
-														} else {  
-															echo $fields['tologinid']; 
-														}?>
-													</td>
-													<td>
-														<div class="pm-read-status" for="<?php echo $fields['id'];?>">
-														<?php
-														$readmsg = ($fields['hasview']==0 ? "<span class='text-danger'>未阅读</span>" : '已阅读');
-														echo $readmsg;
-														?>
-														</div>
-													</td>
-													<td><?php echo MyDate('Y-m-d H:i:s',$fields['sendtime']);?></td>
-												</tr>
-												{/dede:datalist}
-											</tbody>
-										</table>
-									</form>
-								</div>
-								<nav>
-									<button type="button" onclick="DoSubmit('<?php echo $folder;?>')" class="btn btn-danger">删除</button>
-									{dede:pagelist listsize='6'/}
-								</nav>
-							</div>
+		<div class="container py-3">
+			<div class="row">
+				<?php
+				$_menu_pmex = true;
+				$_menu_pmstate = $state;
+				?>
+				<?php include(DEDEMEMBER."/templets/menu.htm");?>
+				<div class="pannel-main col-md-9 mb-3">
+					<div class="pannel-main-container shadow-sm rounded">
+						<ul class="nav mt-2">
+							<li class="nav-item"><a class="nav-link<?php if ($state === 0) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>">全部</a></li>
+							<li class="nav-item"><a class="nav-link<?php if ($state === 1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=1">已阅读</a></li>
+							<li class="nav-item"><a class="nav-link<?php if ($state === -1) echo ' active';?>" href="pm.php?folder=<?php echo $folder;?>&state=-1">未阅读</a></li>
+						</ul>
+						<div class="table-responsive">
+							<form action="pm.php" method="post" name="form1">
+								<input type="hidden" name="dopost" value="del">
+								<div id="feedback-alert"></div>
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col"></th>
+											<th scope="col">标题</th>
+											<th scope="col">
+												<?php
+												if ($folder == "inbox") echo "发件人";
+												else echo "收件人";
+												?>
+											</th>
+											<th scope="col">状态</th>
+											<th scope="col">发布时间</th>
+										</tr>
+									</thead>
+									<tbody>
+										{dede:datalist}
+										<tr>
+											<td scope="row"><input type="checkbox" name="deleteid" value="{dede:field.id/}"></td>
+											<td>
+												<?php
+												if ($fields['hasview']==0) echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
+												else echo "<a href='javascript:ReadMsg({$fields['id']})'>{$fields['subject']}</a>";
+												?>
+											</td>
+											<td>
+												<?php 
+												if ($folder == "inbox") { 
+												echo $fields['floginid']; 
+												} else {  
+													echo $fields['tologinid']; 
+												}?>
+											</td>
+											<td>
+												<div class="pm-read-status" for="<?php echo $fields['id'];?>">
+												<?php
+												$readmsg = ($fields['hasview']==0 ? "<span class='text-danger'>未阅读</span>" : '已阅读');
+												echo $readmsg;
+												?>
+												</div>
+											</td>
+											<td><?php echo MyDate('Y-m-d H:i:s',$fields['sendtime']);?></td>
+										</tr>
+										{/dede:datalist}
+									</tbody>
+								</table>
+							</form>
 						</div>
+						<nav>
+							<button type="button" onclick="DoSubmit('<?php echo $folder;?>')" class="btn btn-danger">删除</button>
+							{dede:pagelist listsize='6'/}
+						</nav>
 					</div>
 				</div>
 			</div>
-		</main>
+		</div>
 		<?php pasterTempletDiy('foot.htm');?>
 		<script>
 			//获得选中文件的文件名

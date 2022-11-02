@@ -1,11 +1,3 @@
-/**
- * 
- * @version        $Id: ieemu.js 1 22:28 2010年7月20日 tianya $
- * @package        DedeBIZ.Administrator
- * @copyright      Copyright (c) 2022, DedeBIZ.COM
- * @license        https://www.dedebiz.com/license
- * @link           https://www.dedebiz.com
- */
 var ie = document.all != null;
 var moz = !ie && document.getElementById != null && document.layers == null;
 /*

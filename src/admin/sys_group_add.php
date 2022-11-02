@@ -17,7 +17,7 @@ if (!empty($dopost)) {
         exit();
     }
     if ($rankid > 10) {
-        ShowMsg('组级别值不能大于10， 否则一切权限设置均无效!', '-1');
+        ShowMsg('组级别值不能大于10，否则一切权限设置均无效!', '-1');
         exit();
     }
     $AllPurviews = '';

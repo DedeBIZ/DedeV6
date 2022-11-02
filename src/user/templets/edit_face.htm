@@ -12,51 +12,39 @@
 	</head>
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
-		<main class="member">
-			<div class="pannel">
-				<div class="container py-3">
-					<div class="row">
-						<?php
-						$_menu_edtex = true;
-						$_menu_edtitem = 'face';
-						?>
-						<?php include(DEDEMEMBER."/templets/menu.htm");?>
-						<div class="pannel-main col-md-9 mb-3">
-							<div class="pannel-main-container">
-								<ul class="nav nav-tabs">
-									<li class="nav-item">
-										<a class="nav-link" href="edit_baseinfo.php">账号安全</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link active" href="edit_face.php">头像设置</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="edit_email.php">验证邮箱</a>
-									</li>
-								</ul>
-								<form action="edit_face.php" method="post" enctype="multipart/form-data" name="form1" class="mt-3">
-									<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
-									<input type="hidden" name="dopost" value="save">
-									<div class="form-group row">
-										<label for="iptUname" class="col-sm-2 col-form-label">手工填写网址</label>
-										<div class="col-sm-10">
-											<input name="faceurl" type="text" id="faceurl" size="35" class="form-control" value="<?php echo $face;?>">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label for="iptValidate" class="col-sm-2 col-form-label">原来头像</label>
-										<div class="col-sm-10"><?php if ($face!='') echo " <img src='$face' class='user-img'>";?></div>
-									</div>
-									<div class="form-group row">
-										<div class="col-sm-10"><button type="submit" class="btn btn-success">保存</button></div>
-									</div>
-								</form>
+		<div class="container py-3">
+			<div class="row">
+				<?php
+				$_menu_edtex = true;
+				$_menu_edtitem = 'face';
+				?>
+				<?php include(DEDEMEMBER."/templets/menu.htm");?>
+				<div class="pannel-main col-md-9 mb-3">
+					<div class="pannel-main-container shadow-sm rounded">
+						<ul class="nav nav-tabs">
+							<li class="nav-item"><a class="nav-link" href="edit_baseinfo.php">账号安全</a></li>
+							<li class="nav-item"><a class="nav-link active" href="edit_face.php">头像设置</a></li>
+							<li class="nav-item"><a class="nav-link" href="edit_email.php">验证邮箱</a></li>
+						</ul>
+						<form action="edit_face.php" method="post" enctype="multipart/form-data" name="form1" class="mt-3">
+							<input type="hidden" name="_csrf_token" value="<?php echo $GLOBALS['csrf_token'];?>">
+							<input type="hidden" name="dopost" value="save">
+							<div class="form-group row">
+								<label for="iptUname" class="col-sm-2 col-form-label">手工填写网址</label>
+								<div class="col-sm-10"><input name="faceurl" type="text" id="faceurl" size="35" class="form-control" value="<?php echo $face;?>"></div>
 							</div>
-						</div>
+							<div class="form-group row">
+								<label for="iptValidate" class="col-sm-2 col-form-label">原来头像</label>
+								<div class="col-sm-10"><?php if ($face!='') echo " <img src='$face' class='user-img'>";?></div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-10"><button type="submit" class="btn btn-success">保存</button></div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
-		</main>
+		</div>
 		<?php pasterTempletDiy('foot.htm');?>
 	</body>
 </html>

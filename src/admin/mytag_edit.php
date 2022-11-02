@@ -34,8 +34,8 @@ if ($dopost == 'delete') {
     $jscode = "<script src='{$cfg_phpurl}/mytag_js.php?aid=$aid'></script>";
     $showhtml = "<xmp style='color:#333333;background-color:#ffffff'>\r\n\r\n$jscode\r\n\r\n</xmp>";
     $showhtml .= "预览：<iframe name='testfrm' frameborder='0' src='mytag_edit.php?aid={$aid}&dopost=testjs' id='testfrm' width='100%' height='250'></iframe>";
-    $wintitle = "宏标记定义-获取JS";
-    $wecome_info = "<a href='mytag_main.php'>宏标记定义</a>::获取JS";
+    $wintitle = "宏标记定义-获取js";
+    $wecome_info = "<a href='mytag_main.php'>宏标记定义</a>::获取js";
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle('以下为选定宏标记的js调用代码：');

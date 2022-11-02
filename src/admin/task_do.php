@@ -14,7 +14,7 @@ $dopost = (!isset($dopost) ? '' : $dopost);
 返回到下一任务的URL
 特殊变量，除非知道作用，否则不能在任务传递中占用
 f 临时，仅为了方便网址结构
-dopost 当前任务(指向下一个任务)， 由用户自行处理或在 nextdo 中自动获得
+dopost 当前任务(指向下一个任务)，由用户自行处理或在 nextdo 中自动获得
 del 上一次任务删除的变量
 morejob ，设定后，表示当前任务需请求多次，会把 dopost 和 nextdo 处理后转为 doposttmp, nextdotmp，然后由用户自行处理
  ******************************/
@@ -31,7 +31,7 @@ function GetNextUrl($notallowArr = array('dopost', 'f', 'del'))
                     $nextdo .= ($nextdo == '' ? $nextdos[$i] : ','.$nextdos[$i]);
                 }
             }
-            //如果系统有多重任务， 把下一任务和任务列表参数提交给程序处理
+            //如果系统有多重任务，把下一任务和任务列表参数提交给程序处理
             if (in_array('morejob', $notallowArr)) {
                 $reurl .= "&doposttmp=".$nextdos[0];
                 if ($nextdo != '') $reurl .= "&nextdotmp=$nextdo";

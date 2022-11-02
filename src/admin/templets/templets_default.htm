@@ -4,8 +4,8 @@
 		<meta charset="<?php echo $cfg_soft_lang;?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<title>模板管理器</title>
-		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<style>.biz-td{border-bottom:1px solid #CBD8AC}</style>
 		<script>
@@ -55,7 +55,7 @@
 				<td align="center">
 					<a href="tpl.php?action=edit&acdir=<?php echo $acdir;?>&filename=<?php echo $filename;?>" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑</a>
 					<?php if (!isset($fileinfos[$filename])){?>
-					<a href="javascript:;" class="btn btn-success btn-sm" onClick="javascript:DelTpl('<?php echo $filename;?>');" ><i class="fa fa-trash"></i> 删除</a>
+					<a href="javascript:;" onClick="javascript:DelTpl('<?php echo $filename;?>');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> 删除</a>
 					<?php }?>
 				</td>
 			</tr>

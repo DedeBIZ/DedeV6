@@ -162,7 +162,7 @@ else if ($dopost == "upcatcache") {
     exit();
 }
 /*---------------------
-获取JS文件
+获取js文件
 function GetJs
 ----------------------*/
 else if ($dopost == "GetJs") {

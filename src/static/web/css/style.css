@@ -331,44 +331,6 @@ ul.items > li .source {
 .spec .card-body {
 	padding:.25rem
 }
-.flink,.flink a,.copyright,.copyright a {
-	color:#fff
-}
-.copyright {
-	padding:.5rem;
-	background:#12451F
-}
-.btn-xs {
-	padding:2px;
-	line-height:12px;
-	font-size:12px
-}
-.btn+.btn,.btn-text+.btn-text {
-	margin-left:1rem
-}
-.fa {
-	font-size:14px!important;
-	color:inherit
-}
-.table {
-	color:#545b62
-}
-.form-control {
-	height:36px;
-	line-height:36px;
-	font-size:14px
-}
-.nav-link {
-	padding:0 10px;
-	height:36px;
-	line-height:36px
-}
-.logo img {
-	height:40px
-}
-.user-login {
-	line-height:40px
-}
 .biz-title::before {
 	content:" ";
 	background:#28a745;
@@ -385,6 +347,40 @@ ul.items > li .source {
 }
 .article-meta span {
 	margin-right:1rem
+}
+.copyright {
+	padding:.5rem;
+	background:#12451F
+}
+.flink,.flink a,.copyright,.copyright a {
+	color:#fff
+}
+.btn+.btn,.btn-text+.btn-text {
+	margin-left:1rem
+}
+.table {
+	color:#545b62
+}
+.form-control,.btn,.fa {
+	font-size:14px!important
+}
+.nav-link {
+	padding:0 10px;
+	height:36px;
+	line-height:36px
+}
+.logo img {
+	height:40px
+}
+.user-login {
+	line-height:40px
+}
+.user-admin img {
+	margin-right:10px;
+	width:30px;
+	height:30px;
+	border-radius:50%;
+	border-bottom:1px solid #eee
 }
 #btnScrollTop {
 	display:none;

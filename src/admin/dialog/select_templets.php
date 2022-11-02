@@ -43,7 +43,6 @@ if (empty($comeback)) {
     <style>
 html{background:#f8f8f8}
 .bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
-.biz-td{border-bottom:1px solid #eee!important}
     </style>
 </head>
 <body class="bg">

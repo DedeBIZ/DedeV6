@@ -18,7 +18,7 @@ function lib_flinktype(&$ctag, &$refObj)
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     $totalrow = $row;
     $revalue = '';
-    $equery = "SELECT * FROM `#@__flinktype` order by id asc limit 0,$totalrow";
+    $equery = "SELECT * FROM `#@__flinktype` ORDER BY id ASC LIMIT 0,$totalrow";
     if (trim($ctag->GetInnerText()) == '') $innertext = "<li>[field:typename/]</li>";
     else $innertext = $ctag->GetInnerText();
     if (!isset($type)) $type = '';

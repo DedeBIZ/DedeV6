@@ -1,16 +1,16 @@
-if(moz) {
+if (moz) {
 	extendEventObject();
 	extendElementModel();
 	emulateAttachEvent();
 }
 function viewArc(aid){
-	if(aid==0) aid = getOneItem();
+	if (aid==0) aid = getOneItem();
 	window.open("archives_do.php?aid="+aid+"&dopost=viewArchives");
 }
 function kwArc(aid){
 	var qstr=getCheckboxItem();
-	if(aid==0) aid = getOneItem();
-	if(qstr=='')
+	if (aid==0) aid = getOneItem();
+	if (qstr=='')
 	{
 		ShowMsg('必须选择一个或多个文档');
 		return;
@@ -18,22 +18,22 @@ function kwArc(aid){
 	location="archives_do.php?aid="+aid+"&dopost=makekw&qstr="+qstr;
 }
 function editArc(aid){
-	if(aid==0) aid = getOneItem();
+	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=editArchives";
 }
 function updateArc(aid){
 	var qstr=getCheckboxItem();
-	if(aid==0) aid = getOneItem();
+	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=makeArchives&qstr="+qstr;
 }
 function checkArc(aid){
 	var qstr=getCheckboxItem();
-	if(aid==0) aid = getOneItem();
+	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=checkArchives&qstr="+qstr;
 }
 function moveArc(e, obj, cid){
 	var qstr=getCheckboxItem();
-	if(qstr=='')
+	if (qstr=='')
 	{
 		ShowMsg('必须选择一个或多个文档');
 		return;
@@ -43,14 +43,14 @@ function moveArc(e, obj, cid){
 }
 function adArc(aid){
 	var qstr=getCheckboxItem();
-	if(aid==0) aid = getOneItem();
+	if (aid==0) aid = getOneItem();
 	location="archives_do.php?aid="+aid+"&dopost=commendArchives&qstr="+qstr;
 }
 function cAtts(jname, e, obj)
 {
 	var qstr=getCheckboxItem();
     var screeheight = document.body.clientHeight + 20;
-	if(qstr=='')
+	if (qstr=='')
 	{
 		ShowMsg('必须选择一个或多个文档');
 		return;
@@ -60,7 +60,7 @@ function cAtts(jname, e, obj)
 }
 function delArc(aid){
 	var qstr=getCheckboxItem();
-	if(aid==0) aid = getOneItem();
+	if (aid==0) aid = getOneItem();
 	location="archives_do.php?qstr="+qstr+"&aid="+aid+"&dopost=delArchives";
 }
 function QuickEdit(aid, e, obj)
@@ -72,12 +72,12 @@ function QuickEdit(aid, e, obj)
 function getCheckboxItem()
 {
 	var allSel="";
-	if(document.form2.arcID.value) return document.form2.arcID.value;
+	if (document.form2.arcID.value) return document.form2.arcID.value;
 	for(i=0;i<document.form2.arcID.length;i++)
 	{
-		if(document.form2.arcID[i].checked)
+		if (document.form2.arcID[i].checked)
 		{
-			if(allSel=="")
+			if (allSel=="")
 				allSel=document.form2.arcID[i].value;
 			else
 				allSel=allSel+"`"+document.form2.arcID[i].value;
@@ -89,10 +89,10 @@ function getCheckboxItem()
 function getOneItem()
 {
 	var allSel="";
-	if(document.form2.arcID.value) return document.form2.arcID.value;
+	if (document.form2.arcID.value) return document.form2.arcID.value;
 	for(i=0;i<document.form2.arcID.length;i++)
 	{
-		if(document.form2.arcID[i].checked)
+		if (document.form2.arcID[i].checked)
 		{
 				allSel = document.form2.arcID[i].value;
 				break;
@@ -107,7 +107,7 @@ function selAll()
 	}
 	for(i=0;i<document.form2.arcID.length;i++)
 	{
-		if(!document.form2.arcID[i].checked)
+		if (!document.form2.arcID[i].checked)
 		{
 			document.form2.arcID[i].checked=true;
 		}
@@ -120,7 +120,7 @@ function noSelAll()
 	}
 	for(i=0;i<document.form2.arcID.length;i++)
 	{
-		if(document.form2.arcID[i].checked)
+		if (document.form2.arcID[i].checked)
 		{
 			document.form2.arcID[i].checked=false;
 		}

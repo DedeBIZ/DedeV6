@@ -12,104 +12,96 @@
 	</head>
 	<body>
 		<?php pasterTempletDiy('top.htm');?>
-		<main class="member">
-			<div class="pannel">
-				<div class="container py-3">
-					<div class="row">
-						<?php
-						$_menu_home = true;
-						?>
-						<?php include(DEDEMEMBER."/templets/menu.htm");?>
-						<div class="pannel-main col-md-9 mb-3">
-							<div class="pannel-main-container mb-3">
-								<div class="media-body row">
-									<div class="col-12 col-md-3 text-center">
-										<a href="<?php echo $cfg_memberurl;?>/"><img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="member-logo"></a>
-										<div class="member-type"><span class="badge badge-success"><?php echo $cfg_ml->M_MbType;?></span></div>
-									</div>
-									<div class="col-12 col-md-9 title">
-										<h2><?php echo $cfg_ml->M_LoginID;?></h2>
-										<p>积分：<span class="text-danger"><?php echo $cfg_ml->M_Scores;?></span> 金币：<span class="text-danger"><?php echo $cfg_ml->M_Money;?></span> <a href="<?php echo $cfg_memberurl;?>/buy.php" class="btn btn-danger">充值</a></p>
-									</div>
-								</div>
+		<div class="container py-3">
+			<div class="row">
+				<?php
+				$_menu_home = true;
+				?>
+				<?php include(DEDEMEMBER."/templets/menu.htm");?>
+				<div class="pannel-main col-md-9 mb-3">
+					<div class="pannel-main-container shadow-sm rounded mb-3">
+						<div class="media-body row">
+							<div class="col-12 col-md-4 text-center">
+								<a href="<?php echo $cfg_memberurl;?>/"><img src="<?php echo $cfg_ml->fields['face'];?>" title="<?php echo $cfg_ml->M_LoginID;?>" class="member-logo"></a>
+								<div class="member-type"><span class="badge badge-success"><?php echo $cfg_ml->M_LoginID;?></span></div>
 							</div>
-							<div class="pannel-main-container mb-3">
-								<div class="media-body py-3">
-									<ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 mb-0 list-unstyled">
-										<li class="col" data-tags="alarm clock">
-											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1">
-												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
-													<i class="fa fa-list"></i>
-												</div>
-												<div class="text-muted text-center">内容管理</div>
-											</a>
-										</li>
-										<li class="col" data-tags="alarm clock">
-											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">
-												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
-													<i class="fa fa-commenting-o"></i>
-												</div>
-												<div class="text-muted text-center">消息管理</div>
-											</a>
-										</li>
-										<li class="col" data-tags="alarm clock">
-											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/buy.php">
-												<div class="p-4 mb-3 bg-light text-center  rounded">
-													<i class="fa fa-credit-card-alt"></i>
-												</div>
-												<div class="text-muted text-center">钱包积分</div>
-											</a>
-										</li>
-										<li class="col" data-tags="space align distribute">
-											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/shops_orders.php">
-												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
-													<i class="fa fa-shopping-cart"></i>
-												</div>
-												<div class="text-muted text-center">订单管理</div>
-											</a>
-										</li>
-										<li class="col" data-tags="space align distribute">
-											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/mystow.php">
-												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="text-muted text-center">我的收藏</div>
-											</a>
-										</li>
-										<li class="col" data-tags="space align distribute">
-											<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">
-												<div class="p-4 mb-3 bg-light text-center user-meter rounded">
-													<i class="fa fa-cog"></i>
-												</div>
-												<div class="text-muted text-center">账号安全</div>
-											</a>
-										</li>
-									</ul>
-								</div>
+							<div class="col-12 col-md-8">
+								<p><?php echo $cfg_ml->M_MbType;?>积分：<span class="text-danger"><?php echo $cfg_ml->M_Scores;?></span> 金币：<span class="text-danger"><?php echo $cfg_ml->M_Money;?></span></p>
+								<div><a href="<?php echo $cfg_memberurl;?>/buy.php" class="btn btn-danger">充值</a></div>
 							</div>
-							<div class="pannel-main-container">
-								<div class="media-body row">
-									<div class="col-12 py-3">
-										<h5>最新内容</h5>
-										<div class="card ddcard">
-											<ul class="list-group list-group-flush">
-												<?php
-												foreach ($archives as $archive)
-												{
-												?>
-												<li><a href="<?php echo $archive['htmlurl'];?>" title="<?php echo $archive['title'];?>"><?php echo $archive['title'];?></a></li>
-												<?php }?>
-											</ul>
+						</div>
+					</div>
+					<div class="pannel-main-container shadow-sm rounded mb-3">
+						<div class="media-body">
+							<ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 mb-0 list-unstyled">
+								<li class="col" data-tags="alarm clock">
+									<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/content_list.php?channelid=1">
+										<div class="bg-light text-center user-meter rounded p-3 mb-3">
+											<i class="fa fa-list"></i>
 										</div>
-									</div>
+										<div class="text-muted text-center">内容管理</div>
+									</a>
+								</li>
+								<li class="col" data-tags="alarm clock">
+									<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/pm.php?folder=inbox">
+										<div class="bg-light text-center user-meter rounded p-3 mb-3">
+											<i class="fa fa-commenting-o"></i>
+										</div>
+										<div class="text-muted text-center">消息管理</div>
+									</a>
+								</li>
+								<li class="col" data-tags="alarm clock">
+									<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/buy.php">
+										<div class="p-4 mb-3 bg-light text-center  rounded">
+											<i class="fa fa-credit-card-alt"></i>
+										</div>
+										<div class="text-muted text-center">钱包积分</div>
+									</a>
+								</li>
+								<li class="col" data-tags="space align distribute">
+									<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/shops_orders.php">
+										<div class="bg-light text-center user-meter rounded p-3 mb-3">
+											<i class="fa fa-shopping-cart"></i>
+										</div>
+										<div class="text-muted text-center">订单管理</div>
+									</a>
+								</li>
+								<li class="col" data-tags="space align distribute">
+									<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/mystow.php">
+										<div class="bg-light text-center user-meter rounded p-3 mb-3">
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="text-muted text-center">我的收藏</div>
+									</a>
+								</li>
+								<li class="col" data-tags="space align distribute">
+									<a class="d-block text-dark" href="<?php echo $cfg_memberurl;?>/edit_baseinfo.php">
+										<div class="bg-light text-center user-meter rounded p-3 mb-3">
+											<i class="fa fa-cog"></i>
+										</div>
+										<div class="text-muted text-center">账号安全</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="pannel-main-container shadow-sm rounded">
+						<div class="media-body py-3">
+							<div class="col-12">
+								<h4>最新内容</h4>
+								<div class="card ddcard">
+									<ul class="list-group list-group-flush">
+										<?php foreach ($archives as $archive){?>
+										<li><a href="<?php echo $archive['htmlurl'];?>" title="<?php echo $archive['title'];?>"><?php echo $archive['title'];?></a></li>
+										<?php }?>
+									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
-		</main>
+		</div>
 		<?php pasterTempletDiy('foot.htm');?>
 	</body>
 </html>

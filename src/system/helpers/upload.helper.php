@@ -18,7 +18,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @param     string  $rnddd  后缀数字
  * @param     bool  $watermark  是否水印
  * @param     string  $filetype  image、media、addon
- *      $file_type='' 对于swfupload上传的文件， 因为没有filetype，所以需指定，并且有些特殊之处不同
+ *      $file_type='' 对于swfupload上传的文件，因为没有filetype，所以需指定，并且有些特殊之处不同
  * @return    int   -1 没选定上传文件，0 文件类型不允许, -2 保存失败，其它：返回上传后的文件名
  */
 if (!function_exists('AdminUpload')) {

@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 栏目连接
+ * 当前位置面包屑
  *
  * @version        $Id: typelink.class.php 1 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC."/channelunit.func.php");
 /**
- * 栏目连接类
+ * 当前位置面包屑
  *
  * @package          TypeLink
  * @subpackage       DedeBIZ.Libraries
@@ -46,7 +46,7 @@ class TypeLink
         $this->typeDir = '';
         $this->OptionArrayList = '';
         //载入类目信息
-        $query = "SELECT tp.*,ch.typename as ctypename,ch.addtable,ch.issystem FROM `#@__arctype` tp left join `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$typeid' ";
+        $query = "SELECT tp.*,ch.typename as ctypename,ch.addtable,ch.issystem FROM `#@__arctype` tp LEFT JOIN `#@__channeltype` ch on ch.id=tp.channeltype WHERE tp.id='$typeid' ";
         if ($typeid > 0) {
             $this->TypeInfos = $this->dsql->GetOne($query);
             if (is_array($this->TypeInfos)) {
@@ -75,7 +75,7 @@ class TypeLink
         $this->typeDir = "";
         $this->OptionArrayList = "";
         //载入类目信息
-        $query = " SELECT `#@__arctype`.*,`#@__channeltype`.typename as ctypename FROM `#@__arctype` LEFT JOIN `#@__channeltype` on `#@__channeltype`.id=`#@__arctype`.channeltype WHERE `#@__arctype`.id='$typeid' ";
+        $query = "SELECT `#@__arctype`.*,`#@__channeltype`.typename as ctypename FROM `#@__arctype` LEFT JOIN `#@__channeltype` on `#@__channeltype`.id=`#@__arctype`.channeltype WHERE `#@__arctype`.id='$typeid'";
         $this->dsql->SetQuery($query);
         $this->TypeInfos = $this->dsql->GetOne();
     }
@@ -166,9 +166,9 @@ class TypeLink
         );
     }
     //获得类别列表
-    //hid 是指默认选中类目，0 表示“请选择类目”或“不限类目”
-    //oper 是用户允许管理的类目，0 表示所有类目
-    //channeltype 是指类目的内容类型，0 表示不限频道
+    //hid是指默认选中类目，0表示“请选择类目”或“不限类目”
+    //oper是用户允许管理的类目，0表示所有类目
+    //channeltype是指类目的内容类型，0表示不限频道
     function GetOptionArray($hid = 0, $oper = 0, $channeltype = 0, $usersg = 0)
     {
         return $this->GetOptionList($hid, $oper, $channeltype, $usersg);
@@ -255,7 +255,7 @@ class TypeLink
     }
     /**
      *  获得与该类相关的类目，本函数应用于模板标记{dede:channel}{/dede:channel}中
-     *  $typetype 的值为：sun 下级分类 self 同级分类 top 顶级分类
+     *  $typetype 的值为：sun下级分类 self同级分类 top顶级分类
      *
      * @access    public
      * @param     int   $typeid   栏目id

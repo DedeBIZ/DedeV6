@@ -20,9 +20,9 @@ $dlist->display();
 function GetSta($sta, $id, $title)
 {
     if ($sta == 1) {
-        return "<span class='btn btn-outline-success btn-sm'>已启用</span><a href='plus_edit.php?dopost=hide&aid=$id' class='btn btn-outline-danger btn-sm'>禁用</a><a href='plus_edit.php?dopost=edit&aid=$id' class='btn btn-outline-success btn-sm'>修改</a><a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."' class='btn btn-outline-danger btn-sm'>删除</a>";
+        return "<span class='btn btn-outline-success btn-sm'>已启用</span><a href='plus_edit.php?dopost=hide&aid=$id' class='btn btn-outline-danger btn-sm'>禁用</a><a href='plus_edit.php?dopost=edit&aid=$id' class='btn btn-outline-warning btn-sm'>修改</a><a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."' class='btn btn-outline-danger btn-sm'>删除</a>";
     } else {
-        return "<span class='btn btn-outline-danger btn-sm'>已禁用</span><a href='plus_edit.php?dopost=show&aid=$id' class='btn btn-outline-success btn-sm'>启用</a><a href='plus_edit.php?aid=$id' class='btn btn-outline-success btn-sm' class='btn btn-outline-success btn-sm'>修改</a><a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."' class='btn btn-outline-danger btn-sm'>册除</a>";
+        return "<span class='btn btn-outline-danger btn-sm'>已禁用</span><a href='plus_edit.php?dopost=show&aid=$id' class='btn btn-outline-success btn-sm'>启用</a><a href='plus_edit.php?aid=$id' class='btn btn-outline-success btn-sm' class='btn btn-outline-warning btn-sm'>修改</a><a href='plus_edit.php?dopost=delete&aid=$id&title=".urlencode($title)."' class='btn btn-outline-danger btn-sm'>册除</a>";
     }
 }
 ?>

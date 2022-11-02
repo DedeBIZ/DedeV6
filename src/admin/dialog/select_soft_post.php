@@ -39,7 +39,7 @@ if ($activepath == $cfg_soft_dir) {
         CloseFtp();
     }
 }
-//文件名（前为手工指定， 后者自动处理）
+//文件名（前为手工指定，后者自动处理）
 if (!empty($newname)) {
     $filename = $newname;
     if (!preg_match("#\.#", $filename)) $fs = explode('.', $uploadfile_name);

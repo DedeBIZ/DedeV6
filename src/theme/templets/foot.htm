@@ -1,4 +1,4 @@
-<footer class="bg-success">
+<footer class="bg-success shadow-sm">
     <div class="copyright py-4">
         <p class="text-center">{dede:global.cfg_powerby/} Powered by <a href="https://www.dedebiz.com" target="_blank">DedeBIZ开发团队</a></p>
         <p class="text-center mb-0">友情连接：{dede:flink row='20'/}</p>
@@ -16,7 +16,7 @@
         $.get("{dede:global.cfg_cmsurl/}/user/ajax_loginsta.php?format=json",function(data) {
             let result = JSON.parse(data);
             if (result.code === 200) {
-                $("#_login").html(`<span class="btn btn-sm">${result.data.username}</span><a href="/user/" class="btn btn-primary btn-sm"><i class="fa fa-user-circle"></i></a><a href="/user/pm.php" class="btn btn-primary btn-sm"><i class="fa fa-bullhorn"></i></a><a href="/user/index_do.php?fmdo=login&dopost=exit" class="btn btn-success btn-sm"><i class="fa fa-sign-out"></i></a>`);
+                $("#_login").html(`<a href="/user/edit_baseinfo.php"class="user-admin mr-3"><img src="${result.data.facepic}" alt="${result.data.username}" title="${result.data.username}">${result.data.username}</a><a href="/user" class="btn btn-primary btn-sm"><i class="fa fa-user-circle"></i></a><a href="/user/pm.php" class="btn btn-primary btn-sm"><i class="fa fa-bullhorn"></i></a><a href="/user/index_do.php?fmdo=login&dopost=exit" class="btn btn-success btn-sm"><i class="fa fa-sign-out"></i></a>`);
                 $("#iptUsername").val(result.data.username);
                 $("#iptUsername").attr("disabled", "disabled");
                 $(".areaValidate").hide();

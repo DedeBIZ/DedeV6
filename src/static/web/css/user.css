@@ -1,6 +1,8 @@
-main.login-from {
-	padding-top:5rem;
-	height:600px;
+body {
+	background:#f8f8f8
+}
+.login-bg {
+	padding:6rem 0;
 	background-image:url(../img/member_bg.jpg);
 	background-repeat:no-repeat;
 	background-position:top center
@@ -27,20 +29,19 @@ main.login-from {
 	line-height:40px;
 	text-align:right
 }
-.member .member-logo {
+.member-logo {
 	max-width:60px;
 	min-height:60px;
 	border-radius:50%
 }
-.member .member-type span {
+.member-type span {
 	position:relative;
-	padding:.6rem;
-	top:-12px
+	padding:.3rem;
+	font-size:14px;
+	font-weight:400;
+	top:-10px
 }
-.member .pannel {
-	background:#f8f8f8
-}
-.member .pannel .dropdown {
+.dropdown {
 	display:inline-block;
 	margin-left:.25rem;
 	content:"";
@@ -50,17 +51,17 @@ main.login-from {
 	border-left:.3em solid transparent;
 	vertical-align:.25rem
 }
-.member .pannel .pannel-main .pannel-main-container {
+.pannel-main .pannel-main-container {
 	padding:1rem;
 	background:#fff
 }
-.member .list-group-item.active a {
+.list-group-item.active a {
 	color:#fff
 }
-.member .member-menu .list-group-flush>.list-group-item {
+.member-menu .list-group-flush>.list-group-item {
 	cursor:pointer
 }
-.member .pannel-main .nav-link.active {
+.pannel-main .nav-link.active {
 	font-weight:600
 }
 .user-meter i {

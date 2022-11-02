@@ -142,7 +142,7 @@ else if ($dopost == 'save') {
         //有上传文件的情况
         if (isset(${'imgfile'.$i}) && is_uploaded_file(${'imgfile'.$i})) {
             $tmpFile = ${'imgfile'.$i};
-            //检测上传的图片， 如果类型不对，保留原来图片
+            //检测上传的图片，如果类型不对，保留原来图片
             $imginfos = @GetImageSize($tmpFile, $info);
             if (!is_array($imginfos)) {
                 $imginfos = @GetImageSize($imgfile, $info);

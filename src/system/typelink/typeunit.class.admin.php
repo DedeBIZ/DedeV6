@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 栏目单元,主要用户管理后台管理处
+ * 后台栏目管理选择框
  *
  * @version        $Id: typeunit.class.admin.php 1 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEINC."/channelunit.func.php");
 /**
- * 栏目单元,主要用户管理后台管理处
+ * 后台栏目管理选择框
  *
  * @package          TypeUnit
  * @subpackage       DedeBIZ.Libraries
@@ -151,7 +151,7 @@ class TypeUnit
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
                 echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
             }
-            echo "<tr><td colspan='2' id='suns".$id."'>";
+            echo "<tr><td colspan='2' id='suns".$id."' class='p-0'>";
             $lastid = GetCookie('lastCid');
             if ($channel == $id || $lastid == $id || isset($GLOBALS['exallct']) || $cfg_admin_channel == 'array') {
                 echo "<table width='100%' cellspacing='0' cellpadding='0'>";
@@ -192,7 +192,7 @@ class TypeUnit
                 }
                 $rank = $row->sortrank;
                 if ($row->ishidden == '1') {
-                    $nss = "<span class='btn btn-secondary btn-xs'>[隐藏]</span>";
+                    $nss = "<span class='btn btn-secondary btn-xs'>隐藏</span>";
                 } else {
                     $nss = '';
                 }

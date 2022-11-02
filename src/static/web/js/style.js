@@ -1,6 +1,4 @@
-/* Copyright 2020 The DedeBIZ.COM Authors. All rights reserved.
-license that can be found in the LICENSE file. */
-// 滚动到页面顶部
+//滚动到页面顶部
 function gotop() {
     $('html, body').animate({ scrollTop: 0 }, 'slow');
 }
@@ -24,19 +22,14 @@ function SetCookie(c_name, value, expiredays) {
     exdate.setDate(exdate.getDate() + expiredays);
     document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()); //使设置的有效时间正确。增加toGMTString()
 }
-//-------------------------------------------------------------------------------------------
-// 全局消息提示框
-//-------------------------------------------------------------------------------------------
-//生成一个随机ID
+//全局消息提示框，生成一个随机id
 function guid() {
     function S4() {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     }
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-//函数会返回一个modalID，通过这个ID可自已定义一些方法
-//这里用到了一个展开语法
-//https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+//函数会返回一个modalID，通过这个id可自已定义一些方法，这里用到了一个展开语法：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 function ShowMsg(content, ...args) {
     title = "系统提示";
     if (typeof content == "undefined") content = "";
@@ -44,7 +37,7 @@ function ShowMsg(content, ...args) {
     var footer = `<button type="button" class="btn btn-outline-success btn-sm" onClick="CloseModal(\'DedeModal${modalID}\')">确定</button>`;
     var noClose = false;
     if (args.length == 1) {
-        // 存在args参数
+        //存在args参数
         if (typeof args[0].title !== 'undefined' && args[0].title != "") {
             title = args[0].title;
         }
@@ -100,10 +93,7 @@ function ShowAlert(ele, content, type, showtime = 3000) {
         $(ele).html("");
     }, showtime);
 }
-//-------------------------------------------------------------------------------------------
-// 纠错扩展
-//-------------------------------------------------------------------------------------------
-// 提交纠错信息
+//提交纠错信息
 function ErrAddSaveDo(modalID) {
     let aid = $("#iptID").val();
     let title = $("#iptTitle").val();
@@ -172,7 +162,7 @@ function ErrorAddSave(id, title) {
         'footer': footer,
     });
 }
-// 页面加载触发
+//页面加载触发
 $(document).ready(function () {
     window.onscroll = function () { scrollFunction() };
     function scrollFunction() {

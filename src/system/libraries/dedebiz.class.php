@@ -5,8 +5,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 //@copyright      Copyright (c) 2022, DedeBIZ.COM
 //@license        https://www.dedebiz.com/license
 //@link           https://www.dedebiz.com
-//本文件为DedeBIZ商业组件(www.dedebiz.com)PHP SDK
-//目的是弥补织梦内容管理系统性能和安全方面的不足，提供更多功能
+//本文件为DedeBIZ商业组件(www.dedebiz.com)PHP SDK，弥补系统性能和安全方面的不足，提供更多功能
 define("DEDEBIZ", true);
 //本文件用于和DedeBIZ商业组件进行通信，以获取更多额外的扩展功能
 class DedeBizClient

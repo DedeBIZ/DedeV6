@@ -30,7 +30,7 @@ if ($action == 'upload') {
             $z = new zip();
             $files = $z->get_List($tmpfilename);
             $dedefileindex = -1;
-            //为了节省资源，系统仅以.xml作为扩展名识别ZIP包里了dede模块格式文件
+            //为了节省资源，系统仅以.xml作为扩展名识别ZIP包里了模块格式文件
             if (is_array($files)) {
                 for ($i = 0; $i < count($files); $i++) {
                     if (preg_match("#\.xml#i", $files[$i]['filename'])) {
@@ -42,7 +42,7 @@ if ($action == 'upload') {
             }
             if ($dedefileindex == -1) {
                 unlink($tmpfilename);
-                ShowMsg("对不起，您上传的压缩包中不存在dede模块文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+                ShowMsg("对不起，您上传的压缩包中不存在模块文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
                 exit();
             }
             $ziptmp = $mdir.'/ziptmp';
@@ -55,7 +55,7 @@ if ($action == 'upload') {
         if (empty($infos['hash'])) {
             unlink($tmpfilename);
             $dm->Clear();
-            ShowMsg("对不起，您上传的文件可能不是织梦模块的标准格式文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
+            ShowMsg("对不起，您上传的文件可能不是模块的标准格式文件<br><a href='javascript:history.go(-1);'>重新上传</a>", "javascript:;");
             exit();
         }
         if (preg_match("#[^0-9a-zA-Z]#", $infos['hash'])) {

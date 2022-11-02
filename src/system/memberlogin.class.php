@@ -63,7 +63,7 @@ function CheckUserID($uid, $msgtitle = '用户名', $ckhas = TRUE)
  */
 function CheckNotAllow()
 {
-    global $dsql, $cfg_ml, $cfg_mb_spacesta;
+    global $cfg_ml;
     if (empty($cfg_ml->M_ID)) return;
     if ($cfg_ml->M_Spacesta == -2) {
         ShowMsg("您已经被禁言，请与管理员联系", "-1");
@@ -458,12 +458,24 @@ class MemberLogin
             $sta .= "您目前的身份是：".$row['membername'];
             $rs = $dsql->GetOne("Select id From `#@__admin` where userid='".$this->M_LoginID."'");
             if (!is_array($rs)) {
-                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余天数: <span class='text-danger'>".$this->M_HasDay."</span>  天 ";
+                if ($this->M_Rank > 10 && $this->M_HasDay > 0) $sta .= " 剩余天数：<span class='text-danger'>".$this->M_HasDay."</span>天";
                 elseif ($this->M_Rank > 10) $sta .= " <span class='text-danger'>会员升级已经到期</span> ";
             }
         }
-        $sta .= " 拥有金币：{$this->M_Money} 个， 积分：{$this->M_Scores} 分";
+        $sta .= " 拥有金币：{$this->M_Money} 个，积分：{$this->M_Scores}分";
         return $sta;
+    }
+    //获取能够发布内容的频道
+    public static function GetEnabledChannels() {
+        global $dsql;
+        $result = array();
+        $dsql->SetQuery("SELECT channeltype FROM `#@__arctype` GROUP BY channeltype");
+        $dsql->Execute();
+        $candoChannel = '';
+        while ($row = $dsql->GetObject()) {
+            $result[] = $row->channeltype;
+        }
+        return $result;
     }
 }//End Class
 ?>

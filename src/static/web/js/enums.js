@@ -1,4 +1,4 @@
-//选择地区的二级分类(非通用调用)
+//选择地区的二级分类
 function selNext(oj, v)
 {
     var newobj = oj.options;

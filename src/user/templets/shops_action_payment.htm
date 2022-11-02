@@ -10,59 +10,61 @@
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/style.css">
 		<link rel="stylesheet" href="<?php echo $cfg_cmsurl;?>/static/web/css/user.css">
 	</head>
-	<body class="buycarpage">
+	<body>
 		<?php pasterTempletDiy('top.htm');?>
 		<div class="container py-3">
-			<div class="sp-title">商品购买</div>
-			<div class="buycar">
-				<table cellpadding="0" cellspacing="0" class="table">
-					<tr>
-						<td>下单购买</td>
-						<td class="thisclass">买家付款</td>
-						<td>确认收货</td>
-						<td>交易结束</td>
-					</tr>
-				</table>
-				<table width="100%" cellpadding="0" cellspacing="0" class="dede_table">
-					<thead>
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="mb-3">商品购买</h4>
+					<table cellpadding="0" cellspacing="0" class="table">
 						<tr>
-							<td colspan="6">确认订单并付款</td>
+							<td>下单购买</td>
+							<td class="thisclass">买家付款</td>
+							<td>确认收货</td>
+							<td>交易结束</td>
 						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td width="180" class="td1">订单编号:</td>
-							<td>{dede:var.carts.orders_id/}</td>
-						</tr>
-						<tr>
-							<td width="180" class="td1">商品总数:</td>
-							<td>{dede:var.carts.cart_count/}件</td>
-						</tr>
-						<tr>
-							<td width="180" class="td1">商品名称:</td>
-							<td>{dede:var.pay_name/}</td>
-						</tr>
-						<tr>
-							<td width="180" class="td1">订单价格:</td>
-							<td><strong class="fc-f60" id="priceCount">{dede:var.carts.price_count/} 元</td>
-						</tr>
-						<tr>
-							<td width="180" class="td1">支付方式:</td>
-							<td>{dede:var.pay_way/}</td>
-						</tr>
-						<tr>
-							<td width="180" class="td1">支付信息:</td>
-							<td>{dede:var.description/}</td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="2">
-								{dede:var.button/}
-							</td>
-						</tr>
-					</tfoot>
-				</table>
+					</table>
+					<table width="100%" cellpadding="0" cellspacing="0" class="dede_table">
+						<thead>
+							<tr>
+								<td colspan="6">确认订单并付款</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td width="180" class="td1">订单编号:</td>
+								<td>{dede:var.carts.orders_id/}</td>
+							</tr>
+							<tr>
+								<td width="180" class="td1">商品总数:</td>
+								<td>{dede:var.carts.cart_count/}件</td>
+							</tr>
+							<tr>
+								<td width="180" class="td1">商品名称:</td>
+								<td>{dede:var.pay_name/}</td>
+							</tr>
+							<tr>
+								<td width="180" class="td1">订单价格:</td>
+								<td><strong id="priceCount">{dede:var.carts.price_count/}</strong> 元</td>
+							</tr>
+							<tr>
+								<td width="180" class="td1">支付方式:</td>
+								<td>{dede:var.pay_way/}</td>
+							</tr>
+							<tr>
+								<td width="180" class="td1">支付信息:</td>
+								<td>{dede:var.description/}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="2">
+									{dede:var.button/}
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
 			</div>
 		</div>
 	</body>

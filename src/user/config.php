@@ -241,4 +241,5 @@ function GetSafequestion($selid=0,$formname='safequestion')
 	$safequestions_form .= "</select>\r\n";
 	return $safequestions_form;
 }
+$enabledChannels = MemberLogin::GetEnabledChannels();
 ?>

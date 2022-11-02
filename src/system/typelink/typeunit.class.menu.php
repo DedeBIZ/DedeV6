@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 栏目单元，主要用户管理后台管理菜单处
+ * 后台栏目管理选择框
  *
  * @version        $Id: typeunit.class.menu.php 1 15:21 2010年7月5日 tianya $
  * @package        DedeBIZ.Libraries
@@ -11,7 +11,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  */
 require_once(DEDEDATA."/cache/inc_catalog_base.inc");
 /**
- * 栏目单元，主要用户管理后台管理菜单处
+ * 后台栏目管理选择框
  *
  * @package          TypeUnit
  * @subpackage       DedeBIZ.Libraries
@@ -33,7 +33,7 @@ class TypeUnit
             $this->aChannels = explode(',', $catlogs);
             foreach ($this->aChannels as $cid) {
                 if ($cfg_Cs[$cid][0] == 0) {
-                    $this->dsql->SetQuery("Select id,ispart From `#@__arctype` where reid=$cid");
+                    $this->dsql->SetQuery("SELECT id,ispart FROM `#@__arctype` WHERE reid=$cid");
                     $this->dsql->Execute();
                     while ($row = $this->dsql->GetObject()) {
                         //if ($row->ispart==1)
@@ -104,11 +104,11 @@ class TypeUnit
             else {
                 continue;
             }
-            echo "<dl class='topcc'>\r\n";
-            echo "<dd class='dlf'><img style='cursor:pointer' onClick=\"LoadSuns('suns{$id}',{$id});\" src='/static/web/img/tree_explode.gif'></dd>\r\n";
-            echo "<dd class='dlr'><a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></dd>\r\n";
+            echo "<dl>\r\n";
+            echo "<dd><img onClick=\"LoadSuns('suns{$id}',{$id});\" style='cursor:pointer'></dd>\r\n";
+            echo "<dd><a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></dd>\r\n";
             echo "</dl>\r\n";
-            echo "<div id='suns".$id."' class='sunct'>";
+            echo "<div id='suns".$id."'>";
             if ($lastid == $id || $cfg_admin_channel == 'array') {
                 $this->LogicListAllSunType($id, "　");
             }
@@ -161,7 +161,7 @@ class TypeUnit
                     else {
                         continue;
                     }
-                    echo "<table class='sunlist'>\r\n";
+                    echo "<table>\r\n";
                     echo "<tr>\r\n";
                     echo "<td align='left'>".$step.$timg."<a href='catalog_do.php?cid=".$id."&dopost=listArchives'{$smenu}>".$typeName."</a></td>\r\n";
                     echo "</tr>\r\n";
