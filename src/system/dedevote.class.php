@@ -94,7 +94,7 @@ class DedeVote
      * @param     string   $itembgcolor  项目背景
      * @return    string
      */
-    function GetVoteForm($lineheight = 30, $tablewidth = "100%", $titlebgcolor = "#EDEDE2", $titlebackgroup = "", $tablebg = "#ffffff", $itembgcolor = "#ffffff")
+    function GetVoteForm($lineheight = 30, $tablewidth = "100%", $titlebgcolor = "#edede2", $titlebackgroup = "", $tablebg = "#ffffff", $itembgcolor = "#ffffff")
     {
         //省略参数
         if ($lineheight == "") {

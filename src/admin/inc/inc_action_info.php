@@ -12,7 +12,6 @@ require_once(dirname(__FILE__)."/../config.php");
 $cuserLogin = new userLogin();
 //后台功能操作配置项
 $actionSearch[0] = array(
-    'toptitle' => '运维',
     'title'  => '常规操作',
     'description' => '站点文档常规功能操作',
     'soniterm' =>  array(
@@ -32,7 +31,7 @@ $actionSearch[0] = array(
             'title' => '我发布的文档',
             'description' => '现在登录的管理员所发表的所有内容模型中的文档',
             'purview' => 'a_List,a_AccList,a_MyList',
-            'linkurl' => 'content_list.php?mid='.$cuserLogin->userID
+            'linkurl' => 'content_list.php?mid=$cuserLogin->userID'
         ),
         3  =>  array(
             'title' => '评论管理',
@@ -49,7 +48,6 @@ $actionSearch[0] = array(
     )
 );
 $actionSearch[1] = array(
-    'toptitle' => '运维',
     'title' => '内容管理',
     'description' => '网站对应内容模型的文档管理',
     'soniterm' => array(
@@ -62,24 +60,23 @@ $actionSearch[1] = array(
     )
 );
 $actionSearch[2] = array(
-    'toptitle' => '运维',
     'title' => '附件管理',
     'description' => '所有上传的附件管理',
     'soniterm' => array(
         0  =>  array(
-            'title' => '上传新文件 ',
+            'title' => '上传新文件',
             'description' => '通过这可以上传图片、FLASH、视频音频、附件其它等附件',
             'purview' => '',
             'linkurl' => 'media_add.php'
         ),
         1  =>  array(
-            'title' => '附件数据管理 ',
+            'title' => '附件数据管理',
             'description' => '列出所有上传的附件',
             'purview' => 'sys_Upload,sys_MyUpload',
             'linkurl' => 'media_main.php'
         ),
         2  =>  array(
-            'title' => '文件式管理器 ',
+            'title' => '文件式管理器',
             'description' => '应用文件浏览的模式进行附件的管理',
             'purview' => 'plus_文件管理器',
             'linkurl' => 'media_main.php?dopost=filemanager'
@@ -87,36 +84,35 @@ $actionSearch[2] = array(
     )
 );
 $actionSearch[3] = array(
-    'toptitle' => '运维',
     'title' => '频道模型',
     'description' => '所有上传的附件管理',
     'soniterm' => array(
         0  =>  array(
-            'title' => '内容模型管理 ',
+            'title' => '内容模型管理',
             'description' => '可以对现有商品、软件、图片集、普通文档、专题、分类信息等模型就行管理，也可以创建新的内容模型',
             'purview' => 'c_List',
             'linkurl' => 'mychannel_main.php'
         ),
         1  =>  array(
-            'title' => '单页文档管理 ',
+            'title' => '单页文档管理',
             'description' => '创建和管理单页面',
             'purview' => 'temp_One',
             'linkurl' => 'templets_one.php'
         ),
         2  =>  array(
-            'title' => '联动类别管理 ',
+            'title' => '联动类别管理',
             'description' => '创建和管理所有的联动',
             'purview' => 'c_Stepseclect',
             'linkurl' => 'stepselect_main.php?dopost=filemanager'
         ),
         3  =>  array(
-            'title' => '自由列表管理 ',
+            'title' => '自由列表管理',
             'description' => '创建不同的列表形式',
             'purview' => 'c_List',
             'linkurl' => 'freelist_main.php'
         ),
         4  =>  array(
-            'title' => '自定义表单 ',
+            'title' => '自定义表单',
             'description' => '创建和管理自定义表单',
             'purview' => 'c_List',
             'linkurl' => 'diy_main.php'
@@ -124,54 +120,53 @@ $actionSearch[3] = array(
     )
 );
 $actionSearch[4] = array(
-    'toptitle' => '运维',
     'title' => '批量维护',
     'description' => '对一些东西进行批量的删除，添加等等',
     'soniterm' => array(
         0  =>  array(
-            'title' => '更新系统缓存 ',
-            'description' => '更新栏目缓存、更新枚举缓存 、清理arclist调用缓存 、清理过期会员访问历史 、删除过期短信',
+            'title' => '更新系统缓存',
+            'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员访问历史、删除过期短信',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_cache_up.php'
         ),
         1  =>  array(
-            'title' => '文档批量维护 ',
+            'title' => '文档批量维护',
             'description' => '批量的对某个栏目或者全部栏目的内容进行审核文档、更新网页、移动文档、删除文档',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'content_batch_up.php'
         ),
         2  =>  array(
-            'title' => '搜索关键词维护 ',
+            'title' => '搜索关键词维护',
             'description' => '对已经进行的所有所搜的关键词进行管理',
             'purview' => 'sys_Keyword',
             'linkurl' => 'search_keywords_main.php?dopost=filemanager'
         ),
         3  =>  array(
-            'title' => '文档关键词维护 ',
+            'title' => '文档关键词维护',
             'description' => '对文档中的关键词进行批量的维护',
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_keywords_main.php'
         ),
         4  =>  array(
-            'title' => '重复文档检测 ',
+            'title' => '重复文档检测',
             'description' => '可以对网站中出现的重复标题的文档进行处理',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'article_test_same.php'
         ),
         5  =>  array(
-            'title' => '自动摘要|分页 ',
+            'title' => '自动摘要|分页',
             'description' => '用于自动更新您系统没有填写摘要的文档的摘要信息或更新没分页的文档的自动分页标识',
             'purview' => 'sys_Keyword',
             'linkurl' => 'article_description_main.php'
         ),
         6  =>  array(
-            'title' => 'Tag标签管理 ',
+            'title' => 'Tag标签管理',
             'description' => '对整个网站的tag进行批量的维护',
             'purview' => 'sys_Keyword',
             'linkurl' => 'tags_main.php'
         ),
         7  =>  array(
-            'title' => '数据库内容替换 ',
+            'title' => '数据库内容替换',
             'description' => '可以对数据库中的某张表中的字段进行内容的批量替换',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_data_replace.php'
@@ -179,7 +174,6 @@ $actionSearch[4] = array(
     )
 );
 $actionSearch[5] = array(
-    'toptitle' => '会员',
     'title' => '会员管理',
     'description' => '注册会员及积分等配置管理',
     'soniterm' => array(
@@ -210,7 +204,6 @@ $actionSearch[5] = array(
     )
 );
 $actionSearch[6] = array(
-    'toptitle' => '会员',
     'title' => '支付工具',
     'description' => '站点财务相关设置，包含点卡，商店订单等操作',
     'soniterm' => array(
@@ -256,16 +249,9 @@ $actionSearch[6] = array(
             'purview' => 'sys_Data',
             'linkurl' => 'shops_delivery.php'
         ),
-        7  =>  array(
-            'title' => '汇款账号设置',
-            'description' => '银行付款的账号设置，用户可以查看到您的银行付款账号方便支付',
-            'purview' => 'sys_Data',
-            'linkurl' => 'shops_bank.php'
-        ),
     )
 );
 $actionSearch[7] = array(
-    'toptitle' => '生成',
     'title' => '更新任务',
     'description' => '一键生成静态管理',
     'soniterm' => array(
@@ -308,18 +294,17 @@ $actionSearch[7] = array(
     )
 );
 $actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
-    'toptitle' => '模板',
     'title' => '模板管理',
     'description' => '针对主页、栏目、文档、专题等等进行更新',
     'soniterm' => array(
         0  => array(
-            'title' => '默认模板管理 ',
+            'title' => '默认模板管理',
             'description' => '对网站正在采用的模板文件进行管理',
             'purview' => 'temp_All',
             'linkurl' => 'templets_main.php'
         ),
         1  => array(
-            'title' => '标签源码管理 ',
+            'title' => '标签源码管理',
             'description' => '对现有的标签文件进行修改添加',
             'purview' => 'temp_All',
             'linkurl' => 'templets_tagsource.php'
@@ -337,7 +322,7 @@ $actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
             'linkurl' => 'mytag_tag_guide.php'
         ),
         4  =>  array(
-            'title' => '全局标记测试 ',
+            'title' => '全局标记测试',
             'description' => '可以对全局的标签调用进行测试',
             'purview' => 'temp_Test',
             'linkurl' => 'tag_test.php'
@@ -345,13 +330,12 @@ $actionSearch[8] = DEDEBIZ_SAFE_MODE? null : array(
     )
 );
 $actionSearch[9] = array(
-    'toptitle' => '系统',
     'title' => '系统设置',
     'description' => '对网站的一些基本信息和配置进行管理',
     'soniterm' => array(
         0  =>  array(
             'title' => '系统配置变量',
-            'description' => '包含站点设置、核心设置 、附件设置、会员设置、互动设置、性能选项、其它选项、添加新变量等分类，其中有网站基本信息和网站的基本设置选项',
+            'description' => '包含站点设置、核心设置、附件设置、会员设置、互动设置、性能选项、其它选项、添加新变量等分类，其中有网站基本信息和网站的基本设置选项',
             'purview' => 'sys_Edit',
             'linkurl' => 'sys_info.php'
         ),
@@ -381,7 +365,7 @@ $actionSearch[9] = array(
         ),
         6  =>  array(
             'title' => '自定义文档属性',
-            'description' => '在以往的版本中，网站主页、频道封面的设计，都只能单调的用 arclist 标记把某栏目最新或按特定排序方式的文档无选择的读出来，这样做法存在很大的不足，在发布的时候对适合的文档选择专门的属性，那么使用arclist的地方就会按您的意愿显示指定的文档',
+            'description' => '在以往的版本中，网站主页、频道封面的设计，都只能单调的用arclist标记把某栏目最新或按特定排序方式的文档无选择的读出来，这样做法存在很大的不足，在发布的时候对适合的文档选择专门的属性，那么使用arclist的地方就会按您的意愿显示指定的文档',
             'purview' => 'sys_Att',
             'linkurl' => 'content_att.php'
         ),
