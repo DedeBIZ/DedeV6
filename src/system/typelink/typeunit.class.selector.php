@@ -129,9 +129,8 @@ class TypeUnitSelector
                 $soncat .= "<div class='item'><label>".$chackRadio .' '. $typeName."</label></div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
             } else {
-                $soncat .= "<br style='clear:both'><div class='item'>".$typeName."</div>\r\n";
+                $soncat .= "<div class='item'>".$typeName."</div>\r\n";
                 $this->LogicListAllSunType($id, $channel, $soncat);
-                $soncat .= "<br style='clear:both'>";
             }
         }
     }
