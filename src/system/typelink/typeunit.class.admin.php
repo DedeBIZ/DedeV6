@@ -97,7 +97,7 @@ class TypeUnit
             $admin_catalogs = explode(',', $admin_catalog);
             $admin_catalogs = array_unique($admin_catalogs);
         }
-        $this->dsql->SetQuery("SELECT id,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid=0 GROUP BY sortrank");
+        $this->dsql->SetQuery("SELECT id,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid=0 ORDER BY sortrank");
         $this->dsql->Execute(0);
         while ($row = $this->dsql->GetObject(0)) {
             if ($cfg_admin_channel == 'array' && !in_array($row->id, $admin_catalogs)) {
@@ -173,7 +173,7 @@ class TypeUnit
     {
         global $cfg_admin_channel, $admin_catalogs;
         $fid = $id;
-        $this->dsql->SetQuery("SELECT id,reid,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid='".$id."' GROUP BY sortrank");
+        $this->dsql->SetQuery("SELECT id,reid,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid='".$id."' ORDER BY sortrank");
         $this->dsql->Execute($fid);
         if ($this->dsql->GetTotalRow($fid) > 0) {
             while ($row = $this->dsql->GetObject($fid)) {
