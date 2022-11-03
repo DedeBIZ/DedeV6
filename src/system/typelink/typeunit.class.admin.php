@@ -47,7 +47,7 @@ class TypeUnit
     //获取所有栏目的文档id数
     function UpdateCatalogNum()
     {
-        $this->dsql->SetQuery("SELECT typeid,count(typeid) as dd FROM `#@__arctiny` WHERE arcrank <>-3 group by typeid");
+        $this->dsql->SetQuery("SELECT typeid,count(typeid) as dd FROM `#@__arctiny` WHERE arcrank <>-3 GROUP BY typeid");
         $this->dsql->Execute();
         while ($row = $this->dsql->GetArray()) {
             $this->CatalogNums[$row['typeid']] = $row['dd'];
@@ -86,7 +86,7 @@ class TypeUnit
         //检测用户有权限的顶级栏目
         if ($cfg_admin_channel == 'array') {
             $admin_catalog = join(',', $admin_catalogs);
-            $this->dsql->SetQuery("SELECT reid FROM `#@__arctype` WHERE id in($admin_catalog) group by reid ");
+            $this->dsql->SetQuery("SELECT reid FROM `#@__arctype` WHERE id in($admin_catalog) GROUP BY reid ");
             $this->dsql->Execute();
             $topidstr = '';
             while ($row = $this->dsql->GetObject()) {
@@ -97,7 +97,7 @@ class TypeUnit
             $admin_catalogs = explode(',', $admin_catalog);
             $admin_catalogs = array_unique($admin_catalogs);
         }
-        $this->dsql->SetQuery("SELECT id,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid=0 order by sortrank");
+        $this->dsql->SetQuery("SELECT id,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid=0 GROUP BY sortrank");
         $this->dsql->Execute(0);
         while ($row = $this->dsql->GetObject(0)) {
             if ($cfg_admin_channel == 'array' && !in_array($row->id, $admin_catalogs)) {
@@ -117,7 +117,7 @@ class TypeUnit
             //普通列表
             if ($ispart == 0) {
                 echo "<tr>";
-                echo "<td class='biz-td' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                echo "<td class='biz-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-success btn-xs'>列表</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]（文档数：".$this->GetTotalArc($id)."）<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
@@ -130,7 +130,7 @@ class TypeUnit
             //带封面的频道
             else if ($ispart == 1) {
                 echo "<tr>";
-                echo "<td class='biz-td' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                echo "<td class='biz-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$GLOBALS['cfg_phpurl']}/list.php?tid={$id}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                 echo "<a href='catalog_do.php?cid={$id}&dopost=listArchives' title='内容'><i class='btn btn-sm fa fa-bars'></i></a>";
@@ -143,7 +143,7 @@ class TypeUnit
             //独立页面
             else if ($ispart == 2) {
                 echo "<tr>";
-                echo "<td class='biz-td' bgcolor='#fbfce2'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
+                echo "<td class='biz-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-primary btn-xs'>外部</span>{$nss}<a href='catalog_edit.php?id=".$id."'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
                 echo "</td><td align='right'>";
                 echo "<a href='{$typeDir}' target='_blank' title='预览'><i class='btn btn-sm fa fa-globe'></i></a>";
                 echo "<a href='catalog_edit.php?id={$id}' title='修改'><i class='btn btn-sm fa fa-pencil-square-o'></i></a>";
@@ -173,7 +173,7 @@ class TypeUnit
     {
         global $cfg_admin_channel, $admin_catalogs;
         $fid = $id;
-        $this->dsql->SetQuery("SELECT id,reid,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid='".$id."' order by sortrank");
+        $this->dsql->SetQuery("SELECT id,reid,typedir,typename,ispart,sortrank,ishidden FROM `#@__arctype` WHERE reid='".$id."' GROUP BY sortrank");
         $this->dsql->Execute($fid);
         if ($this->dsql->GetTotalRow($fid) > 0) {
             while ($row = $this->dsql->GetObject($fid)) {
