@@ -1,6 +1,6 @@
 <?php
 if ($action=='edit') {
-$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` where id='$id' ");
+$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
 $sbjs = " onsubmit=\"alert('该分类是系统内置枚举，不允许修改'); return false;\" ";
 if ($arr['issystem']==0) $sbjs = '';
 ?>
@@ -30,7 +30,7 @@ if ($arr['issystem']==0) $sbjs = '';
 </form>
 <?php
 } else if ($action=='addenum') {
-$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` where id='$id' ");
+$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
 $dsql->Execute('out',"Select evalue,ename from `#@__sys_enum` where egroup='{$arr['egroup']}' And (evalue mod 500)=0  order by disorder asc,evalue asc");
 $options = '';
 if ($arr['issign']==0)
@@ -58,7 +58,7 @@ if ($arr['issign']==0)
 </form>
 <?php
 } else if ($action=='view') {
-	$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` where id='$id' ");
+	$arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
 	$dsql->Execute('out',"SELECT * FROM `#@__sys_enum` where egroup like '{$arr['egroup']}' order by disorder asc, evalue asc");
 	$options = '';
   while($row1 = $dsql->GetArray('out')) 
@@ -67,7 +67,7 @@ if ($arr['issign']==0)
   	{
   		$options .= "<option value='{$row1['evalue']}'>└─ {$row1['ename']}</option>";
   	} else {
-  		$options .= "<option value='{$row1['evalue']}'>└─── {$row1['ename']}</option>";
+  		$options .= "<option value='{$row1['evalue']}'>└── {$row1['ename']}</option>";
   	}
   }
 ?>

@@ -103,11 +103,11 @@ if ($dopost == 'save') {
         ShowMsg('请选择正常的性别', '-1');
         exit();
     }
-    $query1 = "UPDATE `#@__member` SET $pp='$pwd',sex='$sex'{$addupquery} where mid='".$cfg_ml->M_ID."' ";
+    $query1 = "UPDATE `#@__member` SET $pp='$pwd',sex='$sex'{$addupquery} WHERE mid='".$cfg_ml->M_ID."' ";
     $dsql->ExecuteNoneQuery($query1);
     //如果是管理员，修改其后台密码
     if ($cfg_ml->fields['matt'] == 10 && $pwd2 != "") {
-        $query2 = "UPDATE `#@__admin` SET $pp='$pwd2'{$admaddupquery} where id='".$cfg_ml->M_ID."' ";
+        $query2 = "UPDATE `#@__admin` SET $pp='$pwd2'{$admaddupquery} WHERE id='".$cfg_ml->M_ID."' ";
         $dsql->ExecuteNoneQuery($query2);
     }
     //清除会员缓存

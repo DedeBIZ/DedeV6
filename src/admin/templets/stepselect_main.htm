@@ -134,9 +134,8 @@
         }
     </script>
     <style>
-.abt{width:90%;border:1px #ffffff solid}
-#edsta{position:absolute;top:70px;left:110px;width:280px;height:200px;background:#f8f8f8;border:1px solid #dedede;display:none;padding:6px}
-#edsta div{margin:6px}
+.abt{width:90%;border:1px solid #fff}
+#edsta{display:none;position:absolute;top:70px;left:110px;width:280px;height:200px;background:#f8f8f8;border:1px solid #dedede}
     </style>
 </head>
 <body>
@@ -147,7 +146,7 @@
         <tr bgcolor="#f8f8f8">
             <td width="270">
                 <select name="egroup1" id="egroup1" onChange="ChangePage(this)" class="biz-input-md">
-                    <option value='0'>所有组</option>
+                    <option value="0">所有组</option>
                     <?php
                     $selgroup = '';
                     foreach($etypes as $arr)
@@ -260,7 +259,7 @@
                     {
                         if ($fields['evalue']>500 && $fields['evalue']%500 != 0)  $fields['ename'] = "└─ ".$fields['ename'];
                     } else {
-                        $fields['ename'] = "└─── ".$fields['ename'];
+                        $fields['ename'] = "└── ".$fields['ename'];
                     }
                     ?>
                     <input type='text' id='ename{dede:field.id/}' value='{dede:field.ename/}' class='abt'>

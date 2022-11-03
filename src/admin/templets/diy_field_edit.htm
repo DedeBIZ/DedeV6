@@ -10,7 +10,7 @@
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <style>.style1{color:#FF3300}.style2{color:#545b62}.nw{float:left;width:150px}.cls{clear:both}</style>
+  <style>.nw{float:left;width:160px}.cls{clear:both}</style>
   <script>
   function GetFields()
   {
@@ -64,12 +64,12 @@
     </tr>
     <tr> 
       <td>表单提示文字：<br>
-        <span class="style2">发布内容时显示的提示文字</span></td>
+        <span>发布内容时显示的提示文字</span></td>
       <td><input type="text" name="itemname" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>"> *（发布内容时显示的项名字）</td>
     </tr>
     <tr> 
       <td width="28%">字段名称：<br>
-        <span class="style2">只能用英文字母或数字，数据表的真实字段名</span></td>
+        <span>只能用英文字母或数字，数据表的真实字段名</span></td>
       <td width="72%" style="table-layout:fixed;word-break:break-all"><?php echo $fname?></td>
     </tr>
     <tr> 
@@ -109,7 +109,7 @@
     </tr>
     <tr> 
       <td>内容是否需要分页符：<br>
-        <span class="style2">如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
+        <span>如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td>
       	<input type="hidden" name="isnull" value="1">
         <label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>
@@ -118,12 +118,12 @@
     </tr>
     <tr> 
       <td>默认值：<br>
-        <span class="style2"> 如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（用“,”分开，如“男,女,人妖”）如果为联动选框，这里填写联动选框项目名称</span></td>
+        <span> 如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（用“,”分开，如“男,女,人妖”）如果为联动选框，这里填写联动选框项目名称</span></td>
       <td><textarea name="vdefault" id="vdefault" class="biz-textarea"><?php echo $ctag->GetAtt('default');?></textarea></td>
     </tr>
     <tr> 
       <td>最大长度：<br>
-        <span class="style2"> 文本数据必须填写，大于255为text类型 </span></td>
+        <span> 文本数据必须填写，大于255为text类型 </span></td>
       <td><input type="text" name="maxlength" id="maxlength" value="<?php echo $ctag->GetAtt('maxlength')?>"></td>
     </tr>
     <tr>

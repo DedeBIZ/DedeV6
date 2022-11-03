@@ -74,7 +74,7 @@ while ($row = $dsql->GetObject('op')) {
     $dsql->SetQuery("SELECT id,typename FROM `#@__arctype` WHERE reid={$row->id} AND (ispart=0 OR ispart=1) ");
     $dsql->Execute('s');
     while ($row = $dsql->GetObject('s')) {
-        $typeOptions .= "<option value='{$row->id}'>└─── {$row->typename}</option>\r\n";
+        $typeOptions .= "<option value='{$row->id}'>└── {$row->typename}</option>\r\n";
     }
 }
 make_hash();

@@ -331,11 +331,11 @@
                   while($arr = $dsql->GetArray('s'))
                   {
                     if ($arr['evalue']%500==0) {
-                      echo "<option value='{$arr['evalue']}'>{$arr['ename']}</option>";
+                      echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
                     }
                     else if (preg_match("#\.#", $arr['evalue']))
                     {
-                      echo "<option value='{$arr['evalue']}'>└─── {$arr['ename']}</option>";
+                      echo "<option value='{$arr['evalue']}'>└── {$arr['ename']}</option>";
                     } else {
                       echo "<option value='{$arr['evalue']}'>└─ {$arr['ename']}</option>";
                     }

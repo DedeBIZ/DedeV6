@@ -11,7 +11,6 @@
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/diy.js"></script>
-  <style>.style1{color:#dc3545}.style2{color:#545b62;display:none}</style>
   <script>
     function checkSubmit() {
       if (document.form1.typename.value == '') {
@@ -36,7 +35,7 @@
         <td bgcolor="#f8f8f8" colspan="2"><a href="diy_main.php">自定义表单管理</a> &gt; 修改自定义表单</td>
       </tr>
       <tr>
-        <td width="260">自定义表单 diyid：<span class="style2" id="help1">数字，创建后不可修改，并具有唯一性</span></td>
+        <td width="260">自定义表单 diyid：<span id="help1">数字，创建后不可修改，并具有唯一性</span></td>
         <td>
           <?php echo $diyid;?>
           <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help1')"></i> 
@@ -44,14 +43,14 @@
       </tr>
       <tr>
         <td>自定义表单名称：修改表名不会创建新表，如果您不懂手工处理这些表，请不要修改<br>
-          <span class="style2" id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
+          <span id="help3">自定义表单的中文名称，在后台管理，前台发布等均使用此名字</span></td>
         <td>
           <input type="text" name="name" id="name" value="<?php echo $row['name']?>" class="biz-input-sm"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help3')"></i> 
         </td>
       </tr>
       <tr>
         <td>数据表：<br>
-          <span class="style2" id="help5">自定义表单数据表创建后不可修改表名</span></td>
+          <span id="help5">自定义表单数据表创建后不可修改表名</span></td>
         <td>
           <input type="text" name="table" id="table" value="<?php echo $row['table'];?>" disabled="1" class="biz-input-sm"> * <i class="fa fa-question-circle" title="帮助" onClick="showHide2('help5')"></i> 
         </td>

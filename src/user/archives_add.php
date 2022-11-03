@@ -94,29 +94,29 @@ else if ($dopost == 'save') {
     $inQuery = "INSERT INTO `#@__archives` (id,typeid,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,color,writer,source,litpic,pubdate,senddate,mid,description,keywords,mtype) VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','0','$money','$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate','$mid','$description','$keywords','$mtypesid'); ";
     if (!$dsql->ExecuteNoneQuery($inQuery)) {
         $gerr = $dsql->GetError();
-        $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID' ");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID' ");
         ShowMsg("数据保存到数据库主表`#@__archives`时出错，请联系管理员", "javascript:;");
         exit();
     }
     //保存到附加表
     $addtable = trim($cInfos['addtable']);
     if (empty($addtable)) {
-        $dsql->ExecuteNoneQuery("Delete From `#@__archives` where id='$arcID'");
-        $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID'");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         ShowMsg("没找到当前模型[{$channelid}]的主表信息，无法完成操作", "javascript:;");
         exit();
     } else {
         $inquery = "INSERT INTO `{$addtable}` (aid,typeid,userip,redirecturl,templet{$inadd_f}) VALUES ('$arcID','$typeid','$userip','',''{$inadd_v})";
         if (!$dsql->ExecuteNoneQuery($inquery)) {
             $gerr = $dsql->GetError();
-            $dsql->ExecuteNoneQuery("Delete From `#@__archives` where id='$arcID'");
-            $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID'");
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
+            $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
             ShowMsg("数据保存到数据库附加表时出错，请联系管理员<br>error:{$gerr}", "javascript:;");
             exit();
         }
     }
     //增加积分
-    $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} where mid='".$cfg_ml->M_ID."' ; ");
+    $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores+{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' ; ");
     //更新统计
     countArchives($channelid);
     //生成网页

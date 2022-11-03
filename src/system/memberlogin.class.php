@@ -146,7 +146,7 @@ class MemberLogin
             if (is_array($this->fields)) {
                 //间隔一小时更新一次用户登录时间
                 if (time() - $this->M_LoginTime > 3600) {
-                    $dsql->ExecuteNoneQuery("update `#@__member` set logintime='".time()."',loginip='".GetIP()."' where mid='".$this->fields['mid']."';");
+                    $dsql->ExecuteNoneQuery("update `#@__member` set logintime='".time()."',loginip='".GetIP()."' WHERE mid='".$this->fields['mid']."';");
                     PutCookie("DedeLoginTime", time(), $this->M_KeepTime);
                 }
                 $this->M_LoginID = $this->fields['userid'];
@@ -265,7 +265,7 @@ class MemberLogin
     {
         global $dsql;
         $mid = $this->M_ID;
-        $arr = $dsql->GetOne("Select * `#@__member_tj` where mid='$mid' ");
+        $arr = $dsql->GetOne("Select * `#@__member_tj` WHERE mid='$mid' ");
         if (!is_array($arr)) {
             $arr = array('article' => 0, 'album' => 0, 'archives' => 0, 'homecount' => 0, 'pagecount' => 0, 'feedback' => 0, 'friend' => 0, 'stow' => 0);
         }
@@ -278,7 +278,7 @@ class MemberLogin
             }
         }
         $inquery = "INSERT INTO `#@__member_tj` (`mid`,`article`,`album`,`archives`,`homecount`,`pagecount`,`feedback`,`friend`,`stow`) VALUES ('$mid','$article','$album','$archives','$homecount','$pagecount','$feedback','$friend','$stow'); ";
-        $dsql->ExecuteNoneQuery("Delete From `#@__member_tj` where mid='$mid' ");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_tj` WHERE mid='$mid' ");
         $dsql->ExecuteNoneQuery($inquery);
     }
     /**
@@ -426,7 +426,7 @@ class MemberLogin
         global $cfg_login_adds, $dsql;
         //登录增加积分(上一次登录时间必须大于两小时)
         if (time() - $logintime > 7200 && $cfg_login_adds > 0) {
-            $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=`scores`+{$cfg_login_adds} where mid='$uid' ");
+            $dsql->ExecuteNoneQuery("UPDATE `#@__member` SET `scores`=`scores`+{$cfg_login_adds} WHERE mid='$uid' ");
         }
         $this->M_ID = $uid;
         $this->M_LoginTime = time();

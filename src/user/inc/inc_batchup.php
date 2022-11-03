@@ -73,12 +73,12 @@ function DelArc($aid)
                 }
             }
         }
-        $dsql->ExecuteNoneQuery("DELETE FROM `".$arcRow['addtable']."` where aid='$aid' ");
+        $dsql->ExecuteNoneQuery("DELETE FROM `".$arcRow['addtable']."` WHERE aid='$aid' ");
     }
-    $dsql->ExecuteNoneQuery(" DELETE FROM `#@__archives` where id='$aid' ");
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` where aid='$aid'");
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` where aid='$aid'");
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` where aid='$aid'");
+    $dsql->ExecuteNoneQuery(" DELETE FROM `#@__archives` WHERE id='$aid' ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE aid='$aid'");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE aid='$aid'");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` WHERE aid='$aid'");
     //删除HTML
     if ($arcRow['ismake'] == -1 || $arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0 || $arcRow['money'] > 0) {
         return TRUE;
@@ -134,11 +134,11 @@ function DelArcSg($aid)
         return FALSE;
     }
     //删除数据库的内容
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` where id='$aid' ");
-    $dsql->ExecuteNoneQuery("DELETE FROM `".$arcRow['addtable']."` where aid='$aid' ");
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` where aid='$aid'");
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` where aid='$aid'");
-    $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` where aid='$aid'");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$aid' ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `".$arcRow['addtable']."` WHERE aid='$aid' ");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE aid='$aid'");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__member_stow` WHERE aid='$aid'");
+    $dsql->ExecuteNoneQuery("DELETE FROM `#@__taglist ` WHERE aid='$aid'");
     //删除HTML
     if ($arcRow['arcrank'] != 0 || $arcRow['typeid'] == 0) {
         return TRUE;

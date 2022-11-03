@@ -63,7 +63,7 @@ class FreeList
             showmsg('必须指定频道','-1');exit();
         } else {
             $channelid = intval($channelid);
-            $channelinfo = $this->dsql->getone("select maintable from #@__channeltype where id='$channelid'");
+            $channelinfo = $this->dsql->getone("select maintable from #@__channeltype WHERE id='$channelid'");
             $this->maintable = $channelinfo['maintable'];
         }
         */

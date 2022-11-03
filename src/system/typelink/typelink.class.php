@@ -217,7 +217,7 @@ class TypeLink
         while ($row = $this->dsql->GetObject()) {
             if ($row->id != $hid) {
                 if ($row->ispart == 1) {
-                    $this->OptionArrayList .= "<option value='".$row->id."' style='background-color:#EFEFEF;color:#545b62'>".$row->typename."</option>\r\n";
+                    $this->OptionArrayList .= "<option value='".$row->id."' style='background:#efefef;color:#545b62'>".$row->typename."</option>\r\n";
                 } else {
                     $this->OptionArrayList .= "<option value='".$row->id."'>".$row->typename."</option>\r\n";
                 }

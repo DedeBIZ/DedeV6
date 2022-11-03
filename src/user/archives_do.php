@@ -135,7 +135,7 @@ else if ($dopost == "delArc") {
         //更新用户记录
         countArchives($channelid);
         //扣除积分
-        $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores-{$cfg_sendarc_scores} where mid='".$cfg_ml->M_ID."' And (scores-{$cfg_sendarc_scores}) > 0; ");
+        $dsql->ExecuteNoneQuery("Update `#@__member` set scores=scores-{$cfg_sendarc_scores} WHERE mid='".$cfg_ml->M_ID."' And (scores-{$cfg_sendarc_scores}) > 0; ");
         ShowMsg("成功删除一篇文档", $ENV_GOBACK_URL);
         exit();
     } else {

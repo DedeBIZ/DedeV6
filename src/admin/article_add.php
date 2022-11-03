@@ -40,7 +40,7 @@ if ($dopost != 'save') {
         }
     }
     //获得频道模型信息
-    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` where id='$channelid' ");
+    $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid' ");
     //获取文档最大id+1以确定当前权重
     $maxWright = $dsql->GetOne("SELECT id+1 AS cc FROM `#@__archives` ORDER BY id DESC LIMIT 1");
     $maxWright = empty($maxWright)? array('cc'=>1) : $maxWright;
@@ -170,8 +170,8 @@ else if ($dopost == 'save') {
     $query = "INSERT INTO `{$addtable}` (aid,typeid,redirecturl,templet,userip,body{$inadd_f}) VALUES ('$arcID','$typeid','$redirecturl','$templet','$useip','$body'{$inadd_v})";
     if (!$dsql->ExecuteNoneQuery($query)) {
         $gerr = $dsql->GetError();
-        $dsql->ExecuteNoneQuery("Delete From `#@__archives` where id='$arcID'");
-        $dsql->ExecuteNoneQuery("Delete From `#@__arctiny` where id='$arcID'");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__archives` WHERE id='$arcID'");
+        $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$arcID'");
         ShowMsg("数据保存到数据库附加表时出错，请检查数据库字段".str_replace('"', '', $gerr), "javascript:;");
         exit();
     }

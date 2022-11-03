@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
-  <style>.style1{color:#dc3545}.style2{color:#545b62}</style>
 </head>
 <body>
   <table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
@@ -38,18 +37,18 @@
       ?>
       <tr>
         <td>主表可供自定义搜索的字段<br>
-          <span class="style2" id="help2">标题、关键词、摘要为默认选项，不用选择</span></td>
+          <span id="help2">标题、关键词、摘要为默认选项，不用选择</span></td>
         <td><?php echo $mainfields;?></td>
       </tr>
       <?php }?>
       <tr>
         <td>附件表可供自定义搜索的字段：<br>
-          <span class="style2" id="help4">这里的字段是程序依据字段类型自动选择生成的</span></td>
+          <span id="help4">这里的字段是程序依据字段类型自动选择生成的</span></td>
         <td><?php echo $addonfields;?></td>
       </tr>
       <tr>
         <td>自定义搜索结果页模板<br>
-          <span class="style2" id="help5" style="display:none">只填写文件名，且文件必须在templets/default目录中</span></td>
+          <span id="help5" style="display:none">只填写文件名，且文件必须在templets/default目录中</span></td>
         <td><input type="text" name="template" value="<?php echo $template;?>" class="biz-input-md"></td>
       </tr>
       <tr>
