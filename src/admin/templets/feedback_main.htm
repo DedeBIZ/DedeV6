@@ -88,7 +88,7 @@
 			</tr>
 			{dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
 			<tr>
-				<td width="8%">选择 <input type="checkbox" name="fid" id="fid" value="{dede:field.id/}"></td>
+				<td width="6%">选择 <input type="checkbox" name="fid" id="fid" value="{dede:field.id/}"></td>
 				<td width="10%">用户：{dede:field.username/} {dede:field.ischeck function="IsCheck(@me)"/}</td>
 				<td width="30%">
 					<span>文档：<a href='feedback_main.php?aid={dede:field.aid/}'>{dede:field.arctitle function="RemoveXSS(@me)"/}</a></span>

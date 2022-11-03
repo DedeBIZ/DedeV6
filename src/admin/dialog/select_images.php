@@ -158,7 +158,7 @@ html{background:#f6f6f6}
             <td class="biz-td" colspan="4">点击图片预览，点击图片名选择图片，显示图片后点击该图片关闭预览</td>
         </tr>
         <tr>
-            <td width="8%" class="biz-td">预览</td>
+            <td width="6%" class="biz-td">预览</td>
             <td width="42%" class="biz-td">选择图片</td>
             <td width="20%" class="biz-td">文件大小</td>
             <td class="biz-td">修改时间</td>

@@ -60,25 +60,24 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
     $start = ($pageno - 1) * $pagesize;
     $printhead = "<form name='form3' action=\"search_keywords_main.php\" method=\"post\">
     <input name=\"dopost\" type=\"hidden\" value=\"\">
+    <table width='98%' align='center' cellpadding='1' cellspacing='1' class='table maintable'>
     <tr align='center' bgcolor='#fbfce2'>
-      <td width='5%'>选择</td>
+      <td width='6%'>选择</td>
       <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('aid')\">id</a></td>
       <td width='20%'>关键词</td>
       <td width='30%'>分词结果</td>
       <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('count')\">频率</a></td>
       <td width='6%'><a href='javascript:;' onclick=\"ReloadPage('result')\">结果</a></td>
-      <td width='15%'><a href='javascript:;' onclick=\"ReloadPage('lasttime')\">最后搜索时间</a></td>
+      <td width='12%'><a href='javascript:;' onclick=\"ReloadPage('lasttime')\">最后搜索时间</a></td>
       <td>管理</td>
-    </tr>\r\n
-    ";
+    </tr>";
     echo $printhead;
     if ($orderby == 'result') $orderby = $orderby." ASC";
     else $orderby = $orderby." DESC";
     $dsql->SetQuery("SELECT * FROM `#@__search_keywords` ORDER BY $orderby LIMIT $start,$pagesize ");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
-        $line = "
-      <tr align='center' onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
+        $line = "<tr align='center' onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">
       <td><input name=\"aids[]\" type=\"checkbox\" class=\"np\" value=\"{$row['aid']}\" /></td>
       <td>{$row['aid']}</td>
       <td><input name='keyword' type='text' id='keyword{$row['aid']}' value='{$row['keyword']}' style='width:93%;'></td>
@@ -90,17 +89,15 @@ function GetKeywordList($dsql, $pageno, $pagesize, $orderby = 'aid')
         <a href='javascript:;' onclick='UpdateNote({$row['aid']})' class='btn btn-success btn-sm'>更新</a>
         <a href='javascript:;' onclick='DelNote({$row['aid']})' class='btn btn-success btn-sm'>删除</a>
       </td>
-    </tr>
-    ";
+    </tr>";
         echo $line;
     }
-    echo "<tr align='left'>
+    echo "<tr>
             <td colspan='8'>
             <a href='javascript:selAll()' class='btn btn-success btn-sm'>反选</a>
             <a href='javascript:noselAll()' class='btn btn-success btn-sm'>取消</a>
             <a href='javascript:delall()' class='btn btn-success btn-sm'>删除</a>
            </td>
-           </tr>\r\n";
-    echo "</form>\r\n";
+        </tr>";
+    echo "</table></form>";
 }
-?>

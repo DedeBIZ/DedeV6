@@ -237,12 +237,12 @@ class DataListCP
         //echo " {$totalpage}=={$this->totalResult}=={$this->pagesize}";
         //无结果或只有一页的情况
         if ($totalpage <= 1 && $this->totalResult > 0) {
-            return "<ul class='pagination justify-content-center'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$lang_total}1{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
+            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>{$lang_total}1{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
         if ($this->totalResult == 0) {
-            return "<ul class='pagination justify-content-center'><li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$lang_total}0{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
+            return "<ul class='pagination justify-content-center'><li class='page-item disabled'><span class='page-link'>{$lang_total}0{$lang_page}".$this->totalResult.$lang_record_number."</span></li></ul>";
         }
-        $infos = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>{$lang_total}{$totalpage}{$lang_page}/{$this->totalResult}{$lang_record_number}</span></li>";
+        $infos = "<li class='page-item disabled'><span class='page-link'>{$lang_total}{$totalpage}{$lang_page}/{$this->totalResult}{$lang_record_number}</span></li>";
         if ($this->totalResult != 0) {
             $this->getValues['totalresult'] = $this->totalResult;
         }
@@ -259,13 +259,13 @@ class DataListCP
             $prepage .= "<li class='page-item'><a class='page-link' href='".$purl."pageno=$prepagenum'>$lang_pre_page</a></li> \n";
             $indexpage = "<li class='page-item'><a class='page-link' href='".$purl."pageno=1'>$lang_index_page</a></li> \n";
         } else {
-            $indexpage = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>"."$lang_index_page \n"."</span></li>";
+            $indexpage = "<li class='page-item disabled'><span class='page-link'>"."$lang_index_page \n"."</span></li>";
         }
         if ($this->pageNO != $totalpage && $totalpage > 1) {
             $nextpage .= "<li class='page-item'><a class='page-link' href='".$purl."pageno=$nextpagenum'>$lang_next_page</a></li> \n";
             $endpage = "<li class='page-item'><a class='page-link' href='".$purl."pageno=$totalpage'>$lang_end_page</a></li> \n";
         } else {
-            $endpage = " <li class='page-item d-none d-sm-block disabled'><span class='page-link'>$lang_end_page</span></li> \n";
+            $endpage = " <li class='page-item disabled'><span class='page-link'>$lang_end_page</span></li> \n";
         }
         //获得数字链接
         $listdd = "";

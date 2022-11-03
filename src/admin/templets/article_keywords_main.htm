@@ -35,11 +35,11 @@
 				<td bgcolor="#f8f8f8" colspan="5">文档关键词维护</td>
 			</tr>
 			<tr bgcolor="#fbfce2" align="center">
-				<td width="8%">选择</td>
+				<td width="6%">选择</td>
 				<td width="25%">关键词</td>
 				<td width="35%">链接网址</td>
 				<td width="10%">频率</td>
-				<td width="22%">管理</td>
+				<td>管理</td>
 			</tr>
 			<form name="form3" action="article_keywords_main.php" method="post">
 				<input type="hidden" name="dopost" value="saveall">
@@ -49,9 +49,9 @@
 					<td><input type="hidden" value="{dede:field.keyword/}" name="keyword_{dede:field.aid/}"> {dede:field.keyword/}</td>
 					<td>
 						<input type="hidden" value="{dede:field.rpurl/}" name="rpurlold_{dede:field.aid/}">
-						<input type="text" style="width:90%" class="nnpp" value="{dede:field.rpurl/}" name="rpurl_{dede:field.aid/}">
+						<input type="text" class="nnpp" value="{dede:field.rpurl/}" name="rpurl_{dede:field.aid/}">
 					</td>
-					<td><input type="text" size="6" class="nnpp" value="{dede:field.rank/}" name="rank_{dede:field.aid/}"></td>
+					<td><input type="text" class="nnpp" value="{dede:field.rank/}" name="rank_{dede:field.aid/}"></td>
 					<td>
 						<input type="hidden" name="staold_{dede:field.aid/}" value="{dede:field.sta/}">
 						<label><input type="checkbox" name="isnouse_{dede:field.aid/}" value="1" {dede:field.sta function="GetSta(@me)"/}> 禁用</label>

@@ -775,11 +775,11 @@ class Archives
         if ($totalPage == 1) {
             return "";
         }
-        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>".$totalPage."页</span></li>";
+        $PageList = "<li class='page-item disabled'><span class='page-link'>".$totalPage."页</span></li>";
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
-            $PageList .= "<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
+            $PageList .= "<li class='page-item disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
         } else {
             if ($nPage == 1) {
                 $PageList .= "<li class='page-item'><a class='page-link' href='view.php?aid=$aid'>上一页</a></li>";
@@ -842,11 +842,11 @@ class Archives
         if ($totalPage == 1) {
             return "";
         }
-        $PageList = "<li class='page-item d-none d-sm-block disabled'><span class='page-link'>".$totalPage."页:</span></li>";
+        $PageList = "<li class='page-item disabled'><span class='page-link'>".$totalPage."页:</span></li>";
         $nPage = $nowPage - 1;
         $lPage = $nowPage + 1;
         if ($nowPage == 1) {
-            $PageList .= "<li class='page-item d-none d-sm-block disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
+            $PageList .= "<li class='page-item disabled'><a class='page-link' href='javascript:;'>上一页</a></li>";
         } else {
             if ($nPage == 1) {
                 $PageList .= "<li class='page-item'><a class='page-link' href='".$this->NameFirst.".".$this->ShortName."'>上一页</a></li>";
