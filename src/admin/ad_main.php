@@ -26,7 +26,7 @@ while ($arr = $dsql->GetArray('dd')) {
 $where_sql = ' 1=1';
 if ($clsid != 0) $where_sql .= " AND clsid = $clsid";
 if ($keyword != '') $where_sql .= " AND (ad.adname like '%$keyword%') ";
-$sql = "SELECT ad.aid,ad.clsid,ad.tagname,tp.typename as typename,ad.adname,ad.timeset,ad.endtime,ap.typename as clsname FROM `#@__myad` ad LEFT JOIN `#@__arctype` tp on tp.id=ad.typeid LEFT JOIN `#@__myadtype` ap on ap.id=ad.clsid WHERE $where_sql ORDER BY ad.aid desc";
+$sql = "SELECT ad.aid,ad.clsid,ad.tagname,tp.typename as typename,ad.adname,ad.timeset,ad.endtime,ap.typename as clsname FROM `#@__myad` ad LEFT JOIN `#@__arctype` tp on tp.id=ad.typeid LEFT JOIN `#@__myadtype` ap on ap.id=ad.clsid WHERE $where_sql ORDER BY ad.aid DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/ad_main.htm");
 $dlist->SetSource($sql);

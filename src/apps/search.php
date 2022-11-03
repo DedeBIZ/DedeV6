@@ -31,7 +31,7 @@ if (empty($typeid)) {
     if (!file_exists($typenameCacheFile) || filemtime($typenameCacheFile) < time() - (3600 * 24)) {
         $fp = fopen(DEDEDATA.'/cache/typename.inc', 'w');
         fwrite($fp, "<"."?php\r\n");
-        $dsql->SetQuery("Select id,typename,channeltype From `#@__arctype`");
+        $dsql->SetQuery("SELECT id,typename,channeltype FROM `#@__arctype`");
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
             fwrite($fp, "\$typeArr[{$row['id']}] = '{$row['typename']}';\r\n");
@@ -72,7 +72,7 @@ if (is_array($row)) {
         ShowMsg('管理员设定搜索时间间隔为'.$cfg_search_time.'秒，请稍后再试', '-1');
         exit;
     }
-    $dsql->ExecuteNoneQuery("UPDATE `#@__search_limits` SET `searchtime`='{$now}' WHERE  `ip`='{$ip}';");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__search_limits` SET `searchtime`='{$now}' WHERE `ip`='{$ip}';");
 } else {
     $dsql->ExecuteNoneQuery("INSERT INTO `#@__search_limits` (`ip`, `searchtime`) VALUES ('{$ip}', '{$now}');");
 }

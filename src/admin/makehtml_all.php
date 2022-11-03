@@ -72,9 +72,9 @@ else if ($step == 4) {
             exit();
         } else {
             if ($uptype == 'time') {
-                $query = "SELECT  DISTINCT typeid From `#@__arctiny` WHERE senddate >=".GetMkTime($mkvalue)." AND arcrank>-1";
+                $query = "SELECT DISTINCT typeid FROM `#@__arctiny` WHERE senddate >=".GetMkTime($mkvalue)." AND arcrank>-1";
             } else {
-                $query = "SELECT DISTINCT typeid From `#@__arctiny` WHERE id>=$mkvalue AND arcrank>-1";
+                $query = "SELECT DISTINCT typeid FROM `#@__arctiny` WHERE id>=$mkvalue AND arcrank>-1";
             }
             $dsql->SetQuery($query);
             $dsql->Execute();

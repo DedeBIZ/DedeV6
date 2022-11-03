@@ -31,7 +31,7 @@ if (!empty($keyword)) {
 if (!empty($username)) {
     $whereSql .= " AND floginid like '%".$username."%'";
 }
-$sql = "SELECT * FROM `#@__member_pms` $whereSql ORDER BY sendtime desc";
+$sql = "SELECT * FROM `#@__member_pms` $whereSql ORDER BY sendtime DESC";
 $dlist = new DataListCP();
 $dlist->pagesize = 30;
 $dlist->SetParameter("folder", $folder);

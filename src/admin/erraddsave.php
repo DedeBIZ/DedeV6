@@ -85,7 +85,7 @@ if ($dopost == "delete") {
     }
     exit();
 }
-$sql = "SELECT * FROM `#@__erradd` ORDER BY id desc";
+$sql = "SELECT * FROM `#@__erradd` ORDER BY id DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/erradd.htm");
 $dlist->SetSource($sql);

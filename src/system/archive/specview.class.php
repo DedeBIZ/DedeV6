@@ -327,7 +327,7 @@ class SpecView
         } else if ($orderby == 'pubdate') {
             $ordersql = " ORDER BY arc.pubdate desc";
         } else if ($orderby == 'id') {
-            $ordersql = "  ORDER BY arc.id desc";
+            $ordersql = " ORDER BY arc.id desc";
         } else {
             $ordersql = " ORDER BY arc.sortrank desc";
         }

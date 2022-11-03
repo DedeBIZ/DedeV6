@@ -17,7 +17,7 @@ if ($aid == 0) die("dedebiz");
 $arctitle = '';
 $arcurl = '';
 $topid = 0;
-$arcRow = $dsql->GetOne("SELECT arc.title,arc.senddate,arc.arcrank,arc.ismake,arc.money,arc.typeid,tp.topid,tp.typedir,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc  LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.id='$aid'");
+$arcRow = $dsql->GetOne("SELECT arc.title,arc.senddate,arc.arcrank,arc.ismake,arc.money,arc.typeid,tp.topid,tp.typedir,tp.namerule,tp.moresite,tp.siteurl,tp.sitepath FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON tp.id=arc.typeid WHERE arc.id='$aid'");
 if (is_array($arcRow)) {
     $arctitle = $arcRow['title'];
     $topid = $arcRow['topid'];

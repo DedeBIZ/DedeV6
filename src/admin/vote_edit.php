@@ -38,7 +38,7 @@ if ($dopost == "delete") {
         view='$view',
         spec='$spec',
         isenable='$isenable'
-       WHERE aid='$aid'";
+      WHERE aid='$aid'";
     if ($dsql->ExecuteNoneQuery($query)) {
         $vt = new DedeVote($aid);
         $vote_file = DEDEDATA."/vote/vote_".$aid.".js";

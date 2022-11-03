@@ -360,7 +360,7 @@ else if ($dopost == "delete") {
         }
         //检查频道的表是否独占数据表
         $addtable = str_replace($cfg_dbprefix, '', str_replace('#@__', $cfg_dbprefix, $myrow['addtable']));
-        $row = $dsql->GetOne("SELECT COUNT(id) AS dd FROM `#@__channeltype` WHERE  addtable like '{$cfg_dbprefix}{$addtable}' OR addtable LIKE CONCAT('#','@','__','$addtable') ; ");
+        $row = $dsql->GetOne("SELECT COUNT(id) AS dd FROM `#@__channeltype` WHERE addtable like '{$cfg_dbprefix}{$addtable}' OR addtable LIKE CONCAT('#','@','__','$addtable') ; ");
         $isExclusive2 = ($row['dd'] > 1 ? 0 : 1);
         //获取与频道关连的所有栏目id
         $tids = '';

@@ -38,7 +38,7 @@
   <tr>
     <td>
     <?php
-    $dsql->Execute('me', 'SELECT * FROM `#@__admin` order by id asc');
+    $dsql->Execute('me', 'SELECT * FROM `#@__admin` ORDER BY id ASC');
     while( $arr = $dsql->GetArray('me') )
     {
   	  echo "<div id='userct{$arr['id']}' class='userct'><p align='center'><img src='../static/web/img/loadinglit.gif'>正在加载</p></div><script>LoadUser({$arr['id']});</script>";

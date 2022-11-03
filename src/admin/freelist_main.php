@@ -70,7 +70,7 @@ function GetTagList($dsql,$pageno,$pagesize,$orderby='aid')
             <td>管理</td>
         </tr>\r\n";
     echo $printhead;
-    $dsql->SetQuery("SELECT aid,title,templet,click,edtime,namerule,listdir,defaultpage,nodefault From `#@__freelist` $addsql order by $orderby desc limit $start,$pagesize ");
+    $dsql->SetQuery("SELECT aid,title,templet,click,edtime,namerule,listdir,defaultpage,nodefault FROM `#@__freelist` $addsql ORDER BY $orderby DESC LIMIT $start,$pagesize");
     $dsql->Execute();
     while($row = $dsql->GetArray())
     {

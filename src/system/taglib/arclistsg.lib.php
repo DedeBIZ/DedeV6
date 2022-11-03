@@ -112,9 +112,9 @@ function lib_arclistsg(&$ctag, &$refObj)
     //文档排序的方式
     $ordersql = '';
     if ($orderby == 'hot' || $orderby == 'click') $ordersql = " ORDER BY arc.click $orderway";
-    else if ($orderby == 'id') $ordersql = "  ORDER BY arc.aid $orderway";
+    else if ($orderby == 'id') $ordersql = " ORDER BY arc.aid $orderway";
     else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - ".$arcid.")";
-    else if ($orderby == 'rand') $ordersql = "  ORDER BY rand()";
+    else if ($orderby == 'rand') $ordersql = " ORDER BY rand()";
     else $ordersql = " ORDER BY arc.aid $orderway";
     //limit条件
     $limit = trim(preg_replace('#limit#i', '', $limit));
@@ -248,7 +248,7 @@ function lib_GetAutoChannelID2($sortid, $topid)
     global $dsql;
     if (empty($sortid)) $sortid = 1;
     $getstart = $sortid - 1;
-    $row = $dsql->GetOne("SELECT id,typename From `#@__arctype` WHERE reid='{$topid}' AND ispart<2 AND ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
+    $row = $dsql->GetOne("SELECT id,typename From `#@__arctype` WHERE reid='{$topid}' AND ispart<2 AND ishidden<>'1' ORDER BY sortrank ASC LIMIT $getstart,1");
     if (!is_array($row)) return 0;
     else return $row['id'];
 }

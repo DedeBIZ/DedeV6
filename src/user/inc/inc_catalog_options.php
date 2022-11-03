@@ -26,7 +26,7 @@ function GetOptionList($selid = 0, $channeltype = 0)
         $channels[$row->id] = $row->typename;
     }
     $OptionArrayList = "";
-    $query = "SELECT id,typename,ispart,channeltype,issend FROM `#@__arctype` WHERE ispart<2 AND reid=0 ORDER BY sortrank ASC ";
+    $query = "SELECT id,typename,ispart,channeltype,issend FROM `#@__arctype` WHERE ispart<2 AND reid=0 ORDER BY sortrank ASC";
     $dsql->SetQuery($query);
     $dsql->Execute();
     $selected = '';
@@ -60,7 +60,7 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
 {
     global $OptionArrayList, $channels, $dsql;
     $selected = '';
-    $dsql->SetQuery("Select id,typename,ispart,channeltype,issend From `#@__arctype` where reid='".$id."' And ispart<2 order by sortrank asc");
+    $dsql->SetQuery("SELECT id,typename,ispart,channeltype,issend FROM `#@__arctype` WHERE reid='".$id."' AND ispart<2 ORDER BY sortrank ASC");
     $dsql->Execute($id);
     while ($row = $dsql->GetObject($id)) {
         if ($selid == $row->id) {

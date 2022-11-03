@@ -23,12 +23,11 @@ function lib_autochannel(&$ctag, &$refObj)
     }
     if (empty($sortid)) $sortid = 1;
     $getstart = $sortid - 1;
-    $row = $dsql->GetOne("SELECT id,typename FROM `#@__arctype` WHERE reid='{$topid}' AND ispart<2 AND ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
+    $row = $dsql->GetOne("SELECT id,typename FROM `#@__arctype` WHERE reid='{$topid}' AND ispart<2 AND ishidden<>'1' ORDER BY sortrank ASC LIMIT $getstart,1");
     if (!is_array($row)) return '';
     else $typeid = $row['id'];
     if (trim($innertext) == '') $innertext = GetSysTemplets('part_autochannel.htm');
-    $row = $dsql->GetOne("SELECT id,typedir,isdefault,defaultname,ispart,namerule2,typename,moresite,siteurl,sitepath 
-       FROM `#@__arctype` WHERE id='$typeid' ");
+    $row = $dsql->GetOne("SELECT id,typedir,isdefault,defaultname,ispart,namerule2,typename,moresite,siteurl,sitepath FROM `#@__arctype` WHERE id='$typeid' ");
     if (!is_array($row)) return '';
     $dtp = new DedeTagParse();
     $dtp->SetNameSpace('field', '[', ']');

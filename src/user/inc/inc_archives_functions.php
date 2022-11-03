@@ -126,12 +126,10 @@ function SaveUploadInfo($title, $filename, $medaitype = 1, $addinfos = '')
     $row = $dsql->GetOne("SELECT aid,title,url FROM `#@__uploads` WHERE url LIKE '$filename' AND mid='".$cfg_ml->M_ID."'; ");
     $uptime = time();
     if (is_array($row)) {
-        $query = "UPDATE `#@__uploads` SET title='$title',mediatype='$medaitype',width='{$addinfos[0]}',height='{$addinfos[1]}',filesize='{$addinfos[2]}',uptime='$uptime'
-           WHERE aid='{$row['aid']}'; ";
+        $query = "UPDATE `#@__uploads` SET title='$title',mediatype='$medaitype',width='{$addinfos[0]}',height='{$addinfos[1]}',filesize='{$addinfos[2]}',uptime='$uptime' WHERE aid='{$row['aid']}';";
         $dsql->ExecuteNoneQuery($query);
     } else {
-        $inquery = "INSERT INTO `#@__uploads`(title,url,mediatype,width,height,playtime,filesize,uptime,mid)
-           VALUES ('$title','$filename','$medaitype','".$addinfos[0]."','".$addinfos[1]."','0','".$addinfos[2]."','$uptime','".$cfg_ml->M_ID."'); ";
+        $inquery = "INSERT INTO `#@__uploads` (title,url,mediatype,width,height,playtime,filesize,uptime,mid) VALUES ('$title','$filename','$medaitype','".$addinfos[0]."','".$addinfos[1]."','0','".$addinfos[2]."','$uptime','".$cfg_ml->M_ID."');";
         $dsql->ExecuteNoneQuery($inquery);
     }
     $fid = $dsql->GetLastID();
@@ -247,8 +245,8 @@ function MakeArt($aid, $ismakesign = FALSE)
     $arc = new Archives($aid);
     $reurl = $arc->MakeHtml();
     if (isset($typeid)) {
-        $preRow =  $arc->dsql->GetOne("SELECT id FROM `#@__arctiny` WHERE id<$aid AND arcrank>-1 AND typeid='$typeid' order by id desc");
-        $nextRow = $arc->dsql->GetOne("SELECT id FROM `#@__arctiny` WHERE id>$aid AND arcrank>-1 AND typeid='$typeid' order by id asc");
+        $preRow =  $arc->dsql->GetOne("SELECT id FROM `#@__arctiny` WHERE id<$aid AND arcrank>-1 AND typeid='$typeid' ORDER BY id DESC");
+        $nextRow = $arc->dsql->GetOne("SELECT id FROM `#@__arctiny` WHERE id>$aid AND arcrank>-1 AND typeid='$typeid' ORDER BY id ASC");
         if (is_array($preRow)) {
             $arc = new Archives($preRow['id']);
             $arc->MakeHtml();

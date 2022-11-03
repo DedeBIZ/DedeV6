@@ -617,7 +617,7 @@ class ListView
         } else if ($orderby == "hot" || $orderby == "click") {
             $ordersql = " ORDER BY arc.click $orderWay";
         } else if ($orderby == "lastpost") {
-            $ordersql = "  ORDER BY arc.lastpost $orderWay";
+            $ordersql = " ORDER BY arc.lastpost $orderWay";
         } else {
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }

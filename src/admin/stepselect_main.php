@@ -185,7 +185,7 @@ else if ($action == 'addenum_save') {
     if ($issign == 1 || $topvalue == 0) {
         $enames = explode(',', $ename);
         foreach ($enames as $ename) {
-            $arr = $dsql->GetOne("SELECT * FROM `#@__sys_enum` WHERE egroup='$egroup' AND (evalue MOD 500)=0 ORDER BY disorder DESC ");
+            $arr = $dsql->GetOne("SELECT * FROM `#@__sys_enum` WHERE egroup='$egroup' AND (evalue MOD 500)=0 ORDER BY disorder DESC");
             if (!is_array($arr)) $disorder = $evalue = ($issign == 1 ? 1 : 500);
             else $disorder = $evalue = $arr['disorder'] + ($issign == 1 ? 1 : 500);
             $dsql->ExecuteNoneQuery("INSERT INTO `#@__sys_enum` (`ename`,`evalue`,`egroup`,`disorder`,`issign`) 
@@ -199,7 +199,7 @@ else if ($action == 'addenum_save') {
         $maxnum = 500; //三级子类最多500个
         $enames = explode(',', $ename);
         foreach ($enames as $ename) {
-            $arr = $dsql->GetOne("SELECT * FROM `#@__sys_enum` WHERE egroup='$egroup' AND evalue LIKE '$topvalue.%%%' ORDER BY evalue DESC ");
+            $arr = $dsql->GetOne("SELECT * FROM `#@__sys_enum` WHERE egroup='$egroup' AND evalue LIKE '$topvalue.%%%' ORDER BY evalue DESC");
             if (!is_array($arr)) {
                 $disorder = $minid;
                 $evalue = $minid.'.001';
@@ -224,7 +224,7 @@ else if ($action == 'addenum_save') {
         $maxid = $topvalue + 500;
         $enames = explode(',', $ename);
         foreach ($enames as $ename) {
-            $arr = $dsql->GetOne("SELECT * FROM `#@__sys_enum` WHERE egroup='$egroup' AND evalue>$minid AND evalue<$maxid ORDER BY evalue DESC ");
+            $arr = $dsql->GetOne("SELECT * FROM `#@__sys_enum` WHERE egroup='$egroup' AND evalue>$minid AND evalue<$maxid ORDER BY evalue DESC");
             if (!is_array($arr)) {
                 $disorder = $evalue = $minid + 1;
             } else {
@@ -247,7 +247,7 @@ else if ($action == 'upenum') {
     $ename = trim(preg_replace("# └─(─){1,}#", '', $ename));
     $row = $dsql->GetOne("SELECT egroup FROM `#@__sys_enum` WHERE id = '$aid' ");
     WriteEnumsCache($row['egroup']);
-    $dsql->ExecuteNoneQuery("UPDATE `#@__sys_enum` SET `ename`='$ename',`disorder`='$disorder' WHERE id='$aid'; ");
+    $dsql->ExecuteNoneQuery("UPDATE `#@__sys_enum` SET `ename`='$ename',`disorder`='$disorder' WHERE id='$aid';");
     ShowMsg("成功修改一个枚举", $ENV_GOBACK_URL);
     exit();
 }

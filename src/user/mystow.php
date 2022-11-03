@@ -17,10 +17,10 @@ $tpl = '';
 $menutype = 'mydede';
 $rank = empty($rank) ? "" : $rank;
 if ($rank == 'top') {
-    $sql = "SELECT s.*,COUNT(s.aid) AS num,t.* FROM `#@__member_stow` AS s LEFT JOIN `#@__member_stowtype` AS t on t.stowname=s.type group by s.aid order by num desc";
+    $sql = "SELECT s.*,COUNT(s.aid) AS num,t.* FROM `#@__member_stow` AS s LEFT JOIN `#@__member_stowtype` AS t on t.stowname=s.type GROUP BY s.aid ORDER BY num DESC";
     $tpl = 'mystowtop';
 } else {
-    $sql = "SELECT s.*,t.* FROM `#@__member_stow` AS s left join `#@__member_stowtype` AS t on t.stowname=s.type WHERE s.mid='".$cfg_ml->M_ID."' order by s.id desc";
+    $sql = "SELECT s.*,t.* FROM `#@__member_stow` AS s LEFT JOIN `#@__member_stowtype` AS t on t.stowname=s.type WHERE s.mid='".$cfg_ml->M_ID."' ORDER BY s.id DESC";
     $tpl = 'mystow';
 }
 $dsql->Execute('nn', 'SELECT indexname,stowname FROM `#@__member_stowtype`');

@@ -24,7 +24,7 @@
         <td width="70%">属性名称</td>
       </tr>
       <?php
-    	$dsql->SetQuery("SELECT * FROM `#@__arcatt` order by sortid asc ");
+    	$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
     	$dsql->Execute();
     	$k=0;
     	while($row = $dsql->GetObject())

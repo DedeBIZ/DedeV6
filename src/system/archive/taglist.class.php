@@ -301,7 +301,7 @@ class TagList
         $orwhere = " se.id IN($idlists) ";
         //排序方式
         if ($orderby == "sortrank") {
-            $ordersql = "  ORDER BY se.sortrank $orderWay";
+            $ordersql = " ORDER BY se.sortrank $orderWay";
         } else {
             $ordersql = " ORDER BY se.id $orderWay";
         }

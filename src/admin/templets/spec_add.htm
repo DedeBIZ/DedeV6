@@ -106,7 +106,7 @@
             <tr>
               <td width="90">自定义属性：</td>
               <td><?php
-            	$dsql->SetQuery("SELECT * FROM `#@__arcatt` order by sortid asc");
+            	$dsql->SetQuery("SELECT * FROM `#@__arcatt` ORDER BY sortid ASC");
             	$dsql->Execute();
             	while($trow = $dsql->GetObject())
             	{

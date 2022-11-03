@@ -31,7 +31,7 @@ if ($arr['issystem']==0) $sbjs = '';
 <?php
 } else if ($action=='addenum') {
 $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE id='$id' ");
-$dsql->Execute('out',"Select evalue,ename from `#@__sys_enum` where egroup='{$arr['egroup']}' And (evalue mod 500)=0  order by disorder asc,evalue asc");
+$dsql->Execute('out',"SELECT evalue,ename FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}' AND (evalue mod 500)=0 ORDER BY disorder ASC,evalue ASC");
 $options = '';
 if ($arr['issign']==0)
 {

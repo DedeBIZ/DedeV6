@@ -49,13 +49,13 @@ function lib_channel(&$ctag, &$refObj)
     if ($type == '' || $type == 'sun') $type = 'son';
     if ($innertext == '') $innertext = GetSysTemplets("channel_list.htm");
     if ($type == 'top') {
-        $sql = "SELECT * FROM `#@__arctype` WHERE reid=0 And ishidden<>1 order by sortrank asc limit 0, $line ";
+        $sql = "SELECT * FROM `#@__arctype` WHERE reid=0 AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line";
     } else if ($type == 'son') {
         if ($typeid == 0) return '';
-        $sql = "SELECT * FROM `#@__arctype` WHERE reid='$typeid' And ishidden<>1 order by sortrank asc limit 0, $line ";
+        $sql = "SELECT * FROM `#@__arctype` WHERE reid='$typeid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line";
     } else if ($type == 'self') {
         if ($reid == 0) return '';
-        $sql = "SELECT * FROM `#@__arctype` WHERE reid='$reid' And ishidden<>1 order by sortrank asc limit 0, $line ";
+        $sql = "SELECT * FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line";
     }
     $needRel = false;
     $dtp2 = new DedeTagParse();
@@ -69,7 +69,7 @@ function lib_channel(&$ctag, &$refObj)
     $totalRow = $dsql->GetTotalRow();
     //如果用子栏目模式，当没有子栏目时显示同级栏目
     if ($type == 'son' && $reid != 0 && $totalRow == 0) {
-        $sql = "SELECT * FROM `#@__arctype` WHERE reid='$reid' And ishidden<>1 order by sortrank asc limit 0, $line ";
+        $sql = "SELECT * FROM `#@__arctype` WHERE reid='$reid' AND ishidden<>1 ORDER BY sortrank ASC LIMIT 0, $line";
         $dsql->SetQuery($sql);
         $dsql->Execute();
     }

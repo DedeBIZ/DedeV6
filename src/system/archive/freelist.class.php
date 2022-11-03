@@ -457,15 +457,15 @@ class FreeList
         } else if ($orderby == "pubdate") {
             $ordersql = " ORDER BY arc.pubdate $orderWay";
         } else if ($orderby == "id") {
-            $ordersql = "  ORDER BY arc.id $orderWay";
+            $ordersql = " ORDER BY arc.id $orderWay";
         } else if ($orderby == "hot" || $orderby == "click") {
             $ordersql = " ORDER BY arc.click $orderWay";
         } else if ($orderby == "lastpost") {
-            $ordersql = "  ORDER BY arc.lastpost $orderWay";
+            $ordersql = " ORDER BY arc.lastpost $orderWay";
         } else if ($orderby == "scores") {
-            $ordersql = "  ORDER BY arc.scores $orderWay";
+            $ordersql = " ORDER BY arc.scores $orderWay";
         } else if ($orderby == "rand") {
-            $ordersql = "  ORDER BY rand()";
+            $ordersql = " ORDER BY rand()";
         } else {
             $ordersql = " ORDER BY arc.sortrank $orderWay";
         }

@@ -23,7 +23,7 @@ function ReWriteConfig()
     $fp = fopen($configfile, 'w');
     flock($fp, 3);
     fwrite($fp, "<"."?php\r\n");
-    $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC ");
+    $dsql->SetQuery("SELECT `varname`,`type`,`value`,`groupid` FROM `#@__sysconfig` ORDER BY aid ASC");
     $dsql->Execute();
     while ($row = $dsql->GetArray()) {
         if ($row['type'] == 'number') {
@@ -72,7 +72,7 @@ else if ($dopost == 'add') {
         ShowMsg("该变量名称已经存在", "-1");
         exit();
     }
-    $row = $dsql->GetOne("SELECT aid FROM `#@__sysconfig` ORDER BY aid DESC ");
+    $row = $dsql->GetOne("SELECT aid FROM `#@__sysconfig` ORDER BY aid DESC");
     $aid = $row['aid'] + 1;
     $inquery = "INSERT INTO `#@__sysconfig` (`aid`,`varname`,`info`,`value`,`type`,`groupid`) VALUES ('$aid','$nvarname','$varmsg','$nvarvalue','$vartype','$vargroup')";
     $rs = $dsql->ExecuteNoneQuery($inquery);
@@ -104,7 +104,7 @@ else if ($dopost == 'search') {
 EOT;
     echo $configstr;
     if ($keywords) {
-        $dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE info LIKE '%$keywords%' OR varname LIKE '%$keywords%' order by aid asc");
+        $dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE info LIKE '%$keywords%' OR varname LIKE '%$keywords%' ORDER BY aid ASC");
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
             $bgcolor = ($i++ % 2 == 0) ? "#f8f8f8" : "#ffffff";

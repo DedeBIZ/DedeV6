@@ -19,7 +19,7 @@ if ($cid != 0) {
     require_once(DEDEINC.'/channelunit.func.php');
     $whereSql = " AND arc.typeid IN (".GetSonIds($cid).")";
 }
-$query = "SELECT arc.*,tp.typename FROM `#@__archives` AS arc LEFT JOIN `#@__arctype` AS tp ON arc.typeid = tp.id WHERE arc.arcrank = '-2' $whereSql order by arc.id desc";
+$query = "SELECT arc.*,tp.typename FROM `#@__archives` AS arc LEFT JOIN `#@__arctype` AS tp ON arc.typeid = tp.id WHERE arc.arcrank = '-2' $whereSql ORDER BY arc.id DESC";
 $dlist = new DataListCP();
 $dlist->SetTemplet(DEDEADMIN."/templets/recycling.htm");
 $dlist->SetSource($query);
