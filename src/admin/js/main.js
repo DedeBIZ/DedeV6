@@ -177,7 +177,6 @@ function PutVote(str) {
 		parent.document.form1.voteid.value = str;
 		tb_remove(true);
 	}
-
 }
 function ClearDivCt(objname) {
 	if (!$Obj(objname)) return;
