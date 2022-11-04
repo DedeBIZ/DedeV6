@@ -24,7 +24,7 @@ if ($action == 'upload') {
     } else {
         include_once(DEDEINC."/libraries/zip.class.php");
         $tmpfilename = $mdir.'/'.ExecTime().mt_rand(10000, 50000).'.tmp';
-        move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到 {$tmpfilename} 时失败，请检查 {$mdir} 目录是否有写入权限");
+        move_uploaded_file($upfile, $tmpfilename) or die("把上传的文件移动到{$tmpfilename}时失败，请检查{$mdir}目录是否有写入权限");
         //ZIP格式的文件
         if ($filetype == 1) {
             $z = new zip();
@@ -92,7 +92,7 @@ if ($action == 'upload') {
   </tr>
   <tr>
     <td>已有模块：</td>
-    <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 强制删除同名模块(这可能导致已经安装的模块无法卸载)</label></td>
+    <td><label><input type='checkbox' name='delhas' id='delhas' value='1'> 强制删除同名模块，这可能导致已经安装的模块无法卸载</label></td>
   </tr>
   <tr>
     <td>请选择文件：</td>
