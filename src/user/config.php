@@ -128,6 +128,21 @@ if ($cfg_mb_open == 'N') {
 }
 $keeptime = isset($keeptime) && is_numeric($keeptime) ? $keeptime : -1;
 $cfg_ml = new MemberLogin($keeptime);
+
+// 检查收件箱
+function PmRead(){
+    global $dsql,$cfg_ml;
+    $query = "SELECT * FROM `#@__member_pms` WHERE folder LIKE 'outbox' AND isadmin='1'";
+    $dsql->SetQuery($query);
+    $dsql->Execute();
+    while ($row = $dsql->GetArray()) {
+        $row2 = $dsql->GetOne("SELECT * FROM `#@__member_pms` WHERE fromid = '$row[id]' AND toid='{$cfg_ml->M_ID}'");
+        if (!is_array($row2)) {
+            $row3 = "INSERT INTO `#@__member_pms` (`floginid`,`fromid`,`toid`,`tologinid`,`folder`,`subject`,`sendtime`,`writetime`,`hasview`,`isadmin`,`message`) VALUES ('admin','{$row['id']}','{$cfg_ml->M_ID}','{$cfg_ml->M_LoginID}','inbox','{$row['subject']}','{$row['sendtime']}','{$row['writetime']}','{$row['hasview']}','{$row['isadmin']}','{$row['message']}')";
+            $dsql->ExecuteNoneQuery($row3);
+        }
+    }
+}
 //判断用户是否登录
 $myurl = '';
 if ($cfg_ml->IsLogin()) {
@@ -136,6 +151,7 @@ if ($cfg_ml->IsLogin()) {
     if ($cfg_ml->fields['face'] == "") {
         $cfg_ml->fields['face'] = $cfg_cmsurl."../static/web/img/avatar.png";
     }
+    PmRead();
 }
 //有没新短信
 $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_pms` WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");

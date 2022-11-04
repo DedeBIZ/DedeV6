@@ -47,8 +47,6 @@ if ($uid == '') {
         while ($arr = $dsql->GetArray('fl')) {
             $favorites[] = $arr;
         }
-        //有没新短信
-        $pms = $dsql->GetOne("SELECT COUNT(*) AS nums FROM `#@__member_pms` WHERE toid='{$cfg_ml->M_ID}' AND `hasview`=0 AND folder = 'inbox'");
         $dpl = new DedeTemplate();
         $tpl = dirname(__FILE__)."/templets/index.htm";
         $dpl->LoadTemplate($tpl);

@@ -28,7 +28,7 @@ if ($action == "post") {
         exit();
     }
     $rs = $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_pms` (floginid,fromid,toid,tologinid,folder,hasview,subject,sendtime,writetime,message,isadmin) VALUES ('$floginid','$fromid','$toid','$tologinid','outbox','0','$subject','$sendtime','$writetime','$message','1');");
-    ShowMsg('短信已成功发送', '-1');
+    ShowMsg('短信已成功发送', 'member_pm.php');
     exit();
 }
 require_once(DEDEADMIN."/templets/member_pmall.htm");

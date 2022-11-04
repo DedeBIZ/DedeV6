@@ -62,16 +62,6 @@ else {
         $wsql = " `fromid`='{$cfg_ml->M_ID}' AND folder LIKE 'outbox' ";
         $tname = "发件箱";
     } elseif ($folder == 'inbox') {
-        $query = "SELECT * FROM `#@__member_pms` WHERE folder LIKE 'outbox' AND isadmin='1'";
-        $dsql->SetQuery($query);
-        $dsql->Execute();
-        while ($row = $dsql->GetArray()) {
-            $row2 = $dsql->GetOne("SELECT * FROM `#@__member_pms` WHERE fromid = '$row[id]' AND toid='{$cfg_ml->M_ID}'");
-            if (!is_array($row2)) {
-                $row3 = "INSERT INTO `#@__member_pms` (`floginid`,`fromid`,`toid`,`tologinid`,`folder`,`subject`,`sendtime`,`writetime`,`hasview`,`isadmin`,`message`) VALUES ('admin','{$row['id']}','{$cfg_ml->M_ID}','{$cfg_ml->M_LoginID}','inbox','{$row['subject']}','{$row['sendtime']}','{$row['writetime']}','{$row['hasview']}','{$row['isadmin']}','{$row['message']}')";
-                $dsql->ExecuteNoneQuery($row3);
-            }
-        }
         if ($state === 1) {
             $wsql = " toid='{$cfg_ml->M_ID}' AND folder='inbox' AND writetime!='' and hasview=1";
             $tname = "收件箱";
