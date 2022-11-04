@@ -103,7 +103,7 @@
 	</script>
 </head>
 <body>
-	<table width="98%" cellpadding="5" cellspacing="1" align="center" class="table maintable mt-3 mb-3">
+	<table width="98%" cellpadding="5" cellspacing="1" align="center" class="table maintable my-3">
 		<tr bgcolor="#f8f8f8">
 			<td width="170" align="center">
 				<input type="text" name="keyword" id="keyword" value="<?php echo $keyword?>" class="biz-input-md">
@@ -115,13 +115,8 @@
 			</td>
 		</tr>
 	</table>
-	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable">
-		<tr>
-			<td colspan="6" bgcolor="#f8f8f8">自由列表管理</td>
-		</tr>
-	</table>
 	<div id="rslist"><?php GetTagList($dsql,$pageno,$pagesize,$orderby);?></div>
-	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable">
+	<table width="98%" cellpadding="1" cellspacing="1" align="center" class="table maintable mb-3">
 		<tr>
 			<td bgcolor="#f8f8f8" class="py-2">
 				<div id="pagelist">
