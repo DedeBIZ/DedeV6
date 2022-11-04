@@ -11,7 +11,7 @@ foot.htm,底部模板
 head.htm,头部模板
 index.htm,主页模板
 index_article.htm,文档封面模板
-index_default.htm,频道封面模板
+index_default.htm,封面栏目模板
 index_default_sg.htm,频道表单封面模板
 index_image.htm,图片封面模板
 index_infos.htm,分类信息封面模板

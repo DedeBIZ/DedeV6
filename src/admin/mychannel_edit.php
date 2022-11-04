@@ -317,7 +317,7 @@ else if ($dopost == "gettemplets") {
         列表模板：{$defaulttemplate}/list_{$row['nid']}.htm
         <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=list_{$row['nid']}.htm'>[修改]</a>
         <br>
-        频道封面模板：{$defaulttemplate}/index_{$row['nid']}.htm
+        封面栏目模板：{$defaulttemplate}/index_{$row['nid']}.htm
         <a href='tpl.php?acdir={$cfg_df_style}&action=edit&filename=index_{$row['nid']}.htm'>[修改]</a>
     ";
     $win->AddMsgItem("<div>$msg</div>");
