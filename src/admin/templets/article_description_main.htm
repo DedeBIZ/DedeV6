@@ -33,18 +33,15 @@
               <td>每批处理：<input type="text" name="pagesize" id="pagesize" value="100" class="biz-input-md">条记录</td>
             </tr>
             <tr>
-              <td>
-                开始id：<input type="text" name="sid" id="sid" class="biz-input-sm">
-                结束id：<input type="text" name="eid" id="eid" class="biz-input-sm">
-              </td>
-              <td></td>
+              <td>开始id：<input type="text" name="sid" id="sid" class="biz-input-sm"></td>
+              <td>结束id：<input type="text" name="eid" id="eid" class="biz-input-sm"></td>
             </tr>
             <tr>
               <td>操作：
                 <label><input type="radio" name="dojob" value="des" checked> 自动摘要</label>
                 <label><input type="radio" name="dojob" value="page"> 自动分页</label>
               </td>
-              <td>自动分页大小：<?php echo $cfg_arcautosp_size?> K，<a href='sys_info.php' class="btn btn-success btn-sm">修改系统参数</a></td>
+              <td>自动分页大小：<?php echo $cfg_arcautosp_size?> K <a href='sys_info.php' class="btn btn-success btn-sm">修改系统参数</a></td>
             </tr>
           </table>
         </td>
