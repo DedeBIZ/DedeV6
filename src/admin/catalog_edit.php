@@ -176,7 +176,7 @@ if ($dopost == 'time') {
         <tr>
             <td class="biz-td" align="center">栏目属性：</td>
             <td class="biz-td">
-                <label><input name="ispart" type="radio" value="0" <?php if ($myrow['ispart'] == 0) echo "checked='1'";?>> 最终列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
+                <label><input name="ispart" type="radio" value="0" <?php if ($myrow['ispart'] == 0) echo "checked='1'";?>> 列表栏目（允许在本栏目发布文档，并生成文档列表）</label><br>
                 <label><input name="ispart" type="radio" value="1" <?php if ($myrow['ispart'] == 1) echo "checked='1'";?>> 封面栏目（栏目本身不允许发布文档）</label><br>
                 <label><input name="ispart" type="radio" value="2" <?php if ($myrow['ispart'] == 2) echo "checked='1'";?>> 外部栏目（在"文件保存目录"处填写网址）</label>
             </td>

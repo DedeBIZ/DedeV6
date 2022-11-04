@@ -311,7 +311,7 @@ else if ($dopost == 'moveArchives') {
             exit();
         }
         if ($typeInfos['ispart'] != 0) {
-            ShowMsg('文档保存栏目必须为最终列表栏目', '-1');
+            ShowMsg('文档保存栏目必须为列表栏目', '-1');
             exit();
         }
         if (empty($typeInfos['addtable'])) {
