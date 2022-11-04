@@ -59,9 +59,9 @@
 										<td><?php echo $fields['typename'];?></td>
 										<td>
 											<?php
-											if ($fields['arcrank']>=0) echo "<span class=\"btn btn-outline-success btn-sm\">已审核</span>";
-											else if ($fields['arcrank']==-2) echo "<span style='color:#007bff'>审核失败</span>";
-											else echo "<span class=\"btn btn-outline-danger btn-sm\">未审核</span>";
+											if ($fields['arcrank']>=0) echo '<span class="btn btn-outline-success btn-sm">已审核</span>';
+											else if ($fields['arcrank']==-2) echo '<span class="text-danger">审核失败</span>';
+											else echo '<span class="btn btn-outline-danger btn-sm">未审核</span>';
 											?>
 										</td>
 										<td><?php echo $fields['click'];?></td>
