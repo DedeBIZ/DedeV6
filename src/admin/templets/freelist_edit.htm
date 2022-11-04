@@ -7,41 +7,10 @@
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
+  <link rel="stylesheet" href="css/codemirror.css">
   <script src="../static/web/js/jquery.min.js"></script>
   <script src="../static/web/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    function ChangeListStyle() {
-      var itxt = document.getElementById("myinnertext");
-      var myems = document.getElementsByName("liststyle");
-      if (myems[0].checked) itxt.value = document.getElementById("list1").innerHTML;
-      else if (myems[1].checked) itxt.value = document.getElementById("list2").innerHTML;
-      else if (myems[2].checked) itxt.value = document.getElementById("list3").innerHTML;
-      else if (myems[3].checked) itxt.value = document.getElementById("list4").innerHTML;
-      itxt.value = itxt.value.replace("<br>", "<br>");
-      itxt.value = itxt.value.toLowerCase();
-    }
-    function ShowHide(objname) {
-      var obj = document.getElementById(objname);
-      if (obj.style.display == "block" || obj.style.display == "")
-        obj.style.display = "none";
-      else
-        obj.style.display = "block";
-    }
-    function SelectTemplets(fname) {
-      var pos = GetWinPos(800,600);
-      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-    }
-    function CheckSubmit() {
-      if (document.form1.title.value == "") {
-        ShowMsg("自由列表标题标题不能为空");
-        document.form1.title.focus();
-        return false;
-      }
-      return true;
-    }
-  </script>
-  <link rel="stylesheet" href="css/codemirror.css">
   <script src="js/codemirror.js"></script>
   <script src="js/mode/xml/xml.js"></script>
   <script src="js/mode/javascript/javascript.js"></script>
@@ -242,6 +211,37 @@
       </form>
     </table>
   </center>
+  <script>
+    function ChangeListStyle() {
+      var itxt = document.getElementById("myinnertext");
+      var myems = document.getElementsByName("liststyle");
+      if (myems[0].checked) itxt.value = document.getElementById("list1").innerHTML;
+      else if (myems[1].checked) itxt.value = document.getElementById("list2").innerHTML;
+      else if (myems[2].checked) itxt.value = document.getElementById("list3").innerHTML;
+      else if (myems[3].checked) itxt.value = document.getElementById("list4").innerHTML;
+      itxt.value = itxt.value.replace("<br>", "<br>");
+      itxt.value = itxt.value.toLowerCase();
+    }
+    function ShowHide(objname) {
+      var obj = document.getElementById(objname);
+      if (obj.style.display == "block" || obj.style.display == "")
+        obj.style.display = "none";
+      else
+        obj.style.display = "block";
+    }
+    function SelectTemplets(fname) {
+      var pos = GetWinPos(800,600);
+      window.open("./dialog/select_templets.php?&activepath=<?php echo urlencode($cfg_templets_dir)?>&f=" + fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+    }
+    function CheckSubmit() {
+      if (document.form1.title.value == "") {
+        ShowMsg("自由列表标题标题不能为空");
+        document.form1.title.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
   <script>
     var editor = CodeMirror.fromTextArea(document.getElementById('myinnertext'), {
       lineNumbers: true,

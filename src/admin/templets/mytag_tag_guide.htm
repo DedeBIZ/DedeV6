@@ -15,37 +15,12 @@
   <script src="js/mode/javascript/javascript.js"></script>
   <script src="js/mode/css/css.js"></script>
   <script src="js/mode/htmlmixed/htmlmixed.js"></script>
-  <script>
-    var editor = CodeMirror.fromTextArea(document.getElementById('myinnertext'), {
-      lineNumbers: true,
-      lineWrapping: true,
-      mode: 'text/html'
-    });
-    function ChangeListStyle() {
-      var itxt = document.getElementById("myinnertext");
-      var myems = document.getElementsByName("liststyle");
-      if (myems[0].checked) editor.setValue(document.getElementById("list1").innerHTML);
-      else if (myems[1].checked) editor.setValue(document.getElementById("list2").innerHTML);
-      else if (myems[2].checked) editor.setValue(document.getElementById("list3").innerHTML);
-      else if (myems[3].checked) editor.setValue(document.getElementById("list4").innerHTML);
-      itxt.value = itxt.value.replace("<BR>", "<br>");
-      itxt.value = itxt.value.toLowerCase();
-    }
-    function DoSubmit(j) {
-      document.form1.dopost.value = j;
-      document.form1.submit();
-    }
-    function SelectArcList(fname) {
-      var pos = GetWinPos(800,600);
-      window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
-    }
-  </script>
 </head>
 <body>
   <center>
-    <span style="display:none" id="list1">·[field:textlink/]（[field:pubdate function=MyDate('m-d',@me)/]）</span>
-    <span style="display:none" id="list2">·[field:typelink/] [field:textlink/]</span>
-    <span style="display:none" id="list3">
+    <span id="list1" style="display:none">[field:textlink/]（[field:pubdate function=MyDate('m-d',@me)/]）</span>
+    <span id="list2" style="display:none">[field:typelink/] [field:textlink/]</span>
+    <span id="list3" style="display:none">
       <table width="98%" cellspacing="2" cellpadding="0">
         <tr>
           <td align="center">[field:imglink/]</td>
@@ -107,7 +82,7 @@
                   echo "<option value='0' selected>不限栏目</option>";
                   echo $typeOptions;
                   echo "</select>";
-            		  ?>
+                  ?>
                 </td>
               </tr>
               <tr>
@@ -116,25 +91,25 @@
                   echo "<select name='channel' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限频道</option>";
                   $tl->dsql->SetQuery("Select id,typename From `#@__channeltype` where id>0");
-              	  $tl->dsql->Execute();
-              	  while($row = $tl->dsql->GetObject())
-              	  {
-              	    echo "<option value='{$row->id}'>{$row->typename}</option>";
-              	  }
+                  $tl->dsql->Execute();
+                  while($row = $tl->dsql->GetObject())
+                  {
+                    echo "<option value='{$row->id}'>{$row->typename}</option>";
+                  }
                     echo "</select>";
-              		?>
+                  ?>
                   附加属性：
                   <?php
                   echo "<select name='att' class='biz-input-sm'>";
                   echo "<option value='0' selected>不限</option>";
                   $tl->dsql->SetQuery("SELECT * FROM `#@__arcatt`");
-            	    $tl->dsql->Execute();
-            	    while($row = $tl->dsql->GetObject())
-            	    {
-            	      echo "<option value='{$row->att}'>{$row->attname}</option>";
-            	    }
+                  $tl->dsql->Execute();
+                  while($row = $tl->dsql->GetObject())
+                  {
+                    echo "<option value='{$row->att}'>{$row->attname}</option>";
+                  }
                   echo "</select>";
-            		  ?>
+                  ?>
                 </td>
               </tr>
               <tr>
@@ -180,10 +155,10 @@
                 <td>单条记录样式(InnerText)：</td>
               </tr>
               <tr>
-                <td><textarea name="innertext" id="myinnertext"  class="biz-textarea">·[field:textlink/]([field:pubdate function=MyDate('m-d',@me)/])<br></textarea></td>
+                <td><textarea name="innertext" id="myinnertext"  class="biz-textarea">[field:textlink/]([field:pubdate function=MyDate('m-d',@me)/])<br></textarea></td>
               </tr>
               <tr>
-                <td>支持字段：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示·Pubdate发布时间的调用参数[field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</td>
+                <td>支持字段：id,title,color,typeid,ismake,description,pubdate,senddate,arcrank,click,litpic,typedir,typename,arcurl,typeurl,stime(pubdate 的&quot;0000-00-00&quot;格式),textlink,typelink,imglink,image普通字段直接用[field:字段名/]表示Pubdate发布时间的调用参数[field:pubdate function=MyDate('Y-m-d H:i:s',@me)/]</td>
               </tr>
               <tr>
                 <td>
@@ -205,5 +180,30 @@
       </tr>
     </table>
   </center>
+  <script>
+    var editor = CodeMirror.fromTextArea(document.getElementById('myinnertext'), {
+      lineNumbers: true,
+      lineWrapping: true,
+      mode: 'text/html'
+    });
+    function ChangeListStyle() {
+      var itxt = document.getElementById("myinnertext");
+      var myems = document.getElementsByName("liststyle");
+      if (myems[0].checked) editor.setValue(document.getElementById("list1").innerHTML);
+      else if (myems[1].checked) editor.setValue(document.getElementById("list2").innerHTML);
+      else if (myems[2].checked) editor.setValue(document.getElementById("list3").innerHTML);
+      else if (myems[3].checked) editor.setValue(document.getElementById("list4").innerHTML);
+      itxt.value = itxt.value.replace("<BR>", "<br>");
+      itxt.value = itxt.value.toLowerCase();
+    }
+    function DoSubmit(j) {
+      document.form1.dopost.value = j;
+      document.form1.submit();
+    }
+    function SelectArcList(fname) {
+      var pos = GetWinPos(800,600);
+      window.open("content_select_list.php?f=" + fname, "selArcList", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left=" + pos.left + ", top=" + pos.top);
+    }
+  </script>
 </body>
 </html>

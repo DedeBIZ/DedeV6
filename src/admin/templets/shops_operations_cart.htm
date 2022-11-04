@@ -72,8 +72,9 @@
 {/dede:datalist}
   <tr>
     <td colspan="2" align="right">
-      <span class="float-left py-2"><button type="button" name="ss12" onClick="window.close();" class="btn btn-success btn-sm">关闭窗口</button></span>
-      <span class="float-right mr-2">订单总计：<span class="text-danger">{dede:field.priceCount/}</span>元 {dede:pagelist listsize='6'/}<span>
+      <button type="button" name="ss12" onClick="window.close();" class="btn btn-success btn-sm">关闭窗口</button>
+      <span class="text-danger">订单总计：{dede:field.priceCount/}</span>元
+      {dede:pagelist listsize='6'/}
     </td>
   </tr>
 </table>

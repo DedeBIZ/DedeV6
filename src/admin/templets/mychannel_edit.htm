@@ -13,53 +13,6 @@
   <script src="js/mode/javascript/javascript.js"></script>
   <script src="js/mode/css/css.js"></script>
   <script src="js/mode/htmlmixed/htmlmixed.js"></script>
-  <script>
-    function Nav() {
-      if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
-      else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
-      else return "OT";
-    }
-    function $Obj(objname) {
-      return document.getElementById(objname);
-    }
-    function ShowHide2(objname) {
-      var obj = $Obj(objname);
-      if (obj.style.display != 'block') { obj.style.display = 'block' }
-      else { obj.style.display = 'none'; }
-    }
-    //删除
-    function DelNote(gourl) {
-      if (!window.confirm("您确认要删除这个字段吗")) { return false; }
-      location.href = gourl;
-    }
-    function ShowObj(objname) {
-      var obj = document.getElementById(objname);
-      if (Nav() == 'IE') { obj.style.display = "block"; obj.style.display = "block"; }
-      else obj.style.display = "table";
-    }
-    function HideObj(objname) {
-      var obj = document.getElementById(objname);
-      obj.style.display = "none";
-    }
-    function ShowItem1() {
-      ShowObj('head1'); ShowObj('needset');
-      HideObj('head2'); HideObj('adset');
-    }
-    var editor = null;
-    function ShowItem2() {
-      setTimeout(() => {
-        if (!editor) {
-          editor = CodeMirror.fromTextArea(document.getElementById('fieldset'), {
-          lineNumbers: true,
-          lineWrapping: true,
-          mode: 'text/html'
-        });
-        }
-      }, 100);
-      ShowObj('head2'); ShowObj('adset');
-      HideObj('head1'); HideObj('needset');
-    }
-  </script>
 </head>
 <body>
   <form name="form1" action="mychannel_edit.php" method="post">
@@ -342,11 +295,58 @@
       </tr>
     </table>
   </form>
-<?php
-if (!empty($openfield))
-{
-	echo "<script>ShowItem2();</script>";
-}
-?>
+  <script>
+    function Nav() {
+      if (window.navigator.userAgent.indexOf("MSIE") >= 1) return 'IE';
+      else if (window.navigator.userAgent.indexOf("Firefox") >= 1) return 'FF';
+      else return "OT";
+    }
+    function $Obj(objname) {
+      return document.getElementById(objname);
+    }
+    function ShowHide2(objname) {
+      var obj = $Obj(objname);
+      if (obj.style.display != 'block') { obj.style.display = 'block' }
+      else { obj.style.display = 'none'; }
+    }
+    //删除
+    function DelNote(gourl) {
+      if (!window.confirm("您确认要删除这个字段吗")) { return false; }
+      location.href = gourl;
+    }
+    function ShowObj(objname) {
+      var obj = document.getElementById(objname);
+      if (Nav() == 'IE') { obj.style.display = "block"; obj.style.display = "block"; }
+      else obj.style.display = "table";
+    }
+    function HideObj(objname) {
+      var obj = document.getElementById(objname);
+      obj.style.display = "none";
+    }
+    function ShowItem1() {
+      ShowObj('head1'); ShowObj('needset');
+      HideObj('head2'); HideObj('adset');
+    }
+    var editor = null;
+    function ShowItem2() {
+      setTimeout(() => {
+        if (!editor) {
+          editor = CodeMirror.fromTextArea(document.getElementById('fieldset'), {
+          lineNumbers: true,
+          lineWrapping: true,
+          mode: 'text/html'
+        });
+        }
+      }, 100);
+      ShowObj('head2'); ShowObj('adset');
+      HideObj('head1'); HideObj('needset');
+    }
+  </script>
+  <?php
+  if (!empty($openfield))
+  {
+  	echo "<script>ShowItem2();</script>";
+  }
+  ?>
 </body>
 </html>
