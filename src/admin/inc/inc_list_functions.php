@@ -46,7 +46,7 @@ function IsCommendArchives($iscommend)
     }
     $sn = trim($sn);
     if ($sn == '') return '';
-    else return ' <span class="btn btn-outline-success btn-sm">$sn</span>';
+    else return " <span class='btn btn-outline-success btn-sm'>$sn</span>";
 }
 //获得推荐的标题
 function GetCommendTitle($title, $iscommend)
