@@ -358,7 +358,7 @@
             </tr>
             <tr>
               <td class="biz-td">绑定域名：</td>
-              <td class="biz-td"><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="biz-input-md">（需加 http://，一级或二级域名的根网址）</td>
+              <td class="biz-td"><input type="text" name="siteurl" id="siteurl" onChange="CheckPathSet();" class="biz-input-md">（需要加http开头的链接）</td>
             </tr>
             <?php }?>
             <tr>
@@ -438,20 +438,20 @@
             </tr>
             <tr>
               <td>SEO标题：</td>
-              <td><input type="text" name="seotitle" id="seotitle" class="biz-input-md">（栏目模板里用{dede:field.seotitle/}调用）</td>
+              <td><input type="text" name="seotitle" id="seotitle" class="biz-input-md">（标签{dede:field.seotitle/}标签调用）</td>
             </tr>
             <tr>
               <td>关键词：</td>
-              <td><textarea name="keywords" id="keywords" class="biz-textarea-sm"></textarea></td>
+              <td><textarea name="keywords" id="keywords" class="biz-textarea-sm"></textarea>（标签{dede:field.keywords/}标签调用）</td>
             </tr>
             <tr>
               <td>栏目描述：</td>
-              <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea></td>
+              <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea>（标签{dede:field.description/}标签调用）</td>
             </tr>
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
             <tr>
-              <td><div class="alert alert-info mb-0">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用{dede:field.content/}调用，通常用于企业简介之类的用途</div></td>
+              <td><div class="alert alert-info mb-0">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签{dede:field.content/}调用</div></td>
             </tr>
             <tr>
               <td><?php GetEditor("content","","400","Default","print","false");?></td>
