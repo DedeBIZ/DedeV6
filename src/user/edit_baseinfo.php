@@ -14,14 +14,8 @@ $pwd2 = (empty($pwd2)) ? "" : $pwd2;
 $row = $dsql->GetOne("SELECT * FROM `#@__member` WHERE mid='".$cfg_ml->M_ID."'");
 $face = $row['face'];
 if ($dopost == 'save') {
-    $svali = GetCkVdValue();
     //校验CSRF
     CheckCSRF();
-    if (strtolower($vdcode) != $svali || $svali == '') {
-        ReSETVdValue();
-        ShowMsg('验证码错误', '-1');
-        exit();
-    }
     if (function_exists('password_hash') && !empty($row['pwd_new'])) {
         if (!is_array($row) || !password_verify($oldpwd, $row['pwd_new'])) {
             ShowMsg('您输入的旧密码错误或没填写，不允许修改资料', '-1');
