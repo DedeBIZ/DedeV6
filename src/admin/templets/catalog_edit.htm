@@ -257,7 +257,7 @@
               <td class="biz-td">
                 <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
                 <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目内容</label>
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用逗号分开）</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
                 <br>
                 <textarea name="crossid" id="crossid" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
               </td>

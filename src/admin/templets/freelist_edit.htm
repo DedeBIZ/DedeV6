@@ -159,7 +159,7 @@
                   <label><input type="checkbox" name="types[]" id="type1" value="image" <?php if (preg_match("#image#i",$setype)) echo ' checked';?>> 带缩略图</label>
                   <label><input type="checkbox" name="types[]" id="type2" value="commend" <?php if (preg_match("#commend#i", $setype)) echo ' checked';?>> 推荐</label>
                   <label><input type="checkbox" name="types[]" id="type3" value="spec" class="inputbut" <?php if (preg_match("#spec#i", $setype)) echo ' checked';?>> 专题</label>
-                  关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（&quot;,&quot;逗号分开）
+                  关键词：<input type="text" name="keywordarc" id="keywordarc" value="<?php echo $ctag->GetAtt('keyword')?>">（英文逗号分开）
                 </td>
               </tr>
               <tr>

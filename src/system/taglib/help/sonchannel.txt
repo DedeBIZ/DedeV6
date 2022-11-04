@@ -4,5 +4,5 @@
 <a href='[field:typeurl/]'>[field:typename/]</a>
 {/dede:sonchannel}
 >>dede>>
-row ='100' 返回数目
-col = '1'  默认单列显示
+row='100' 返回数目
+col='1'  默认单列显示

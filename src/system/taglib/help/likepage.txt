@@ -2,5 +2,5 @@
 >>dede>>
 {dede:likepage likeid='' row=''/}
 >>dede>>
-row = '' 调用条数
-likeid = '' 标识名
+row='' 调用条数
+likeid='' 标识名

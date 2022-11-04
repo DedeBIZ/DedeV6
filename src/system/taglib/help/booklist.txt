@@ -9,4 +9,4 @@ row='12' 调用记录条数
 booktype='-1' 图书类型，0 图书、1 漫画，默认全部
 orderby='lastpost' 排序类型，当按排序类型为 commend 表示推荐图书
 author=''  作者
-keyword='' 关键词（用 , 分开多个关键词）
+keyword='' 关键词（用英文逗号分开多个关键词）

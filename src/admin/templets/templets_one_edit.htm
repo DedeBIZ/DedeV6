@@ -37,7 +37,7 @@
         <td bgcolor="#f8f8f8" colspan="2"><a href="templets_one.php">单独页面管理</a> &gt; 修改自定义页面</td>
       </tr>
       <tr>
-        <td colspan="2"><div class="alert alert-warning mb-0">单独页面管理仅适用于页面较少的情况（建议小于500个页面）大量文档的用文档模型进行管理，内容模板里用{dede:field name='body'/}来获得</div></td>
+        <td colspan="2"><div class="alert alert-warning mb-0">单独页面管理仅适用于页面较少的情况（建议小于500个页面）大量文档的用文档模型进行管理，内容模板里用“{dede:field name='body'/}”来获得</div></td>
       </tr>
       <tr> 
         <td width="260">页面标题：</td>
@@ -45,11 +45,11 @@
       </tr>
       <tr> 
         <td>页面关键词：</td>
-        <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="biz-input-md">（用&quot;,&quot;分开）</td>
+        <td><input type="text" name="keywords" id="keywords" value="<?php echo $row['keywords'];?>" class="biz-input-md"></td>
       </tr>
       <tr>
         <td>页面摘要信息：</td>
-        <td><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $row['description'];?></textarea>（100字左右）</td>
+        <td><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $row['description'];?></textarea></td>
       </tr>
       <tr>
         <td>关联标识：</td>

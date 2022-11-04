@@ -5,5 +5,5 @@
 <span>{dede:field.scores/}</span>
 {/dede:memberlist}
 >>dede>>
-orderby = 'scores' 按积分排序
-row = '6' 调用数目
+orderby='scores' 按积分排序
+row='6' 调用数目

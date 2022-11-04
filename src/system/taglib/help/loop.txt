@@ -4,7 +4,7 @@
 <a href='[field:arcurl/]'>[field:title/]</a>
 {/dede:loop}
 >>dede>>
-table = '' 查询表名
-sort = '' 用于排序的字段
-row = ''  返回结果的条数
-if = '' 查询的条件
+table='' 查询表名
+sort='' 用于排序的字段
+row=''  返回结果的条数
+if='' 查询的条件

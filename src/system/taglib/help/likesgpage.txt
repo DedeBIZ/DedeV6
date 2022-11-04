@@ -2,4 +2,4 @@
 >>dede>>
 {dede:likespage row=''/}
 >>dede>>
-row = '' 调用条数
+row='' 调用条数

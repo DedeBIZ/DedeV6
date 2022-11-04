@@ -49,7 +49,7 @@
   	}
   	if ((dtype=="radio" || dtype=="select" || dtype=="checkbox") && vdefault=="")
   	{
-  		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用逗号[,]分开）");
+  		ShowMsg("您选择的select或radio、checkbox类型，必须默认值设置选择的项目（用英文逗号）");
   		return false;
   	}
   	if (spage=="no") spage = "";
@@ -119,7 +119,7 @@
     </tr>
     <tr> 
       <td>默认值：<br>
-        <span>如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（英文小写逗号隔开，如“天涯,叙述”）</span></td>
+        <span>如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目（英文逗号分开，如“天涯,叙述”）</span></td>
       <td><textarea name="vdefault" id="vdefault" class="biz-textarea"></textarea></td>
     </tr>
     <tr> 
