@@ -43,7 +43,6 @@ while ($channel = $dsql->GetArray('addmod')) {
             <div id="collapseOrder" class="collapse mt-3<?php echo (isset($_menu_order) && $_menu_order===true)? ' show' : '';?>">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_orderstate) && $_menu_orderstate === 0) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/mypay.php">购买内容</a></li>
-                    <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_orderstate) && $_menu_orderstate === 1) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/shops_orders.php">购买商品</a></li>
                     <li class="list-group-item justify-content-between align-items-center rounded <?php if (isset($_menu_orderstate) && $_menu_orderstate === 2) echo 'active';?>"><a href="<?php echo $cfg_memberurl;?>/operation.php">金币订单</a></li>
                 </ul>
             </div>

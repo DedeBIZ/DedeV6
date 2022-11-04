@@ -231,23 +231,11 @@ $actionSearch[6] = array(
             'purview' => 'sys_Data',
             'linkurl' => 'member_operations.php'
         ),
-        4  =>  array(
-            'title' => '商店订单记录',
-            'description' => '前台会员商店提交的订单记录，这里可以对这些订单进行一个统一的管理',
-            'purview' => 'sys_Data',
-            'linkurl' => 'shops_operations.php'
-        ),
         5  =>  array(
             'title' => '支付接口设置',
             'description' => '商店以及会员产品付款用到的在线付款方式需要设置的支付接口，这里含有常用的接口',
             'purview' => 'sys_Data',
             'linkurl' => 'sys_payment.php'
-        ),
-        6  =>  array(
-            'title' => '配货方式设置',
-            'description' => '网站在线商城的送货方式，这里可以对其进行编辑管理',
-            'purview' => 'sys_Data',
-            'linkurl' => 'shops_delivery.php'
         ),
     )
 );

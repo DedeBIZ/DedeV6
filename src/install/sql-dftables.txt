@@ -864,61 +864,6 @@ CREATE TABLE `#@__sgpage` (
   KEY `likeid` (`likeid`)
 ) TYPE=MyISAM;
 
-DROP TABLE IF EXISTS `#@__shops_delivery`;
-CREATE TABLE `#@__shops_delivery` (
-  `pid` int(10) unsigned NOT NULL auto_increment,
-  `dname` char(80) NOT NULL,
-  `price` float(13,2) NOT NULL default '0.00',
-  `des` char(255) default NULL,
-  `orders` int(10) NOT NULL default '0',
-  PRIMARY KEY  (`pid`),
-  KEY `orders` (`orders`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__shops_orders`;
-CREATE TABLE `#@__shops_orders` (
-  `oid` varchar(80) NOT NULL,
-  `userid` int(10) NOT NULL,
-  `pid` int(10) NOT NULL default '0',
-  `paytype` tinyint(2) NOT NULL default '1',
-  `cartcount` int(10) NOT NULL default '0',
-  `dprice` float(13,2) NOT NULL default '0.00',
-  `price` float(13,2) NOT NULL default '0.00',
-  `priceCount` float(13,2) NOT NULL,
-  `state` tinyint(1) NOT NULL default '0',
-  `ip` char(46) NOT NULL default '',
-  `stime` int(10) NOT NULL default '0',
-  KEY `stime` (`stime`),
-  KEY `userid` (`userid`),
-  KEY `oid` (`oid`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__shops_products`;
-CREATE TABLE `#@__shops_products` (
-  `aid` mediumint(8) NOT NULL default '0',
-  `oid` varchar(80) NOT NULL default '',
-  `userid` int(10) NOT NULL,
-  `title` varchar(80) NOT NULL default '',
-  `price` float(13,2) NOT NULL default '0.00',
-  `buynum` int(10) NOT NULL default '9',
-  KEY `oid` (`oid`),
-  KEY `userid` (`userid`)
-) TYPE=MyISAM;
-
-DROP TABLE IF EXISTS `#@__shops_userinfo`;
-CREATE TABLE `#@__shops_userinfo` (
-  `userid` int(10) NOT NULL,
-  `oid` varchar(80) NOT NULL default '',
-  `consignee` char(15) NOT NULL default '',
-  `address` varchar(255) NOT NULL default '',
-  `zip` int(10) NOT NULL default '0',
-  `tel` varchar(255) NOT NULL default '',
-  `email` varchar(255) NOT NULL default '',
-  `des` varchar(255) NOT NULL default '',
-  KEY `oid` (`oid`),
-  KEY `userid` (`userid`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `#@__softconfig`;
 CREATE TABLE `#@__softconfig` (
   `downtype` smallint(6) NOT NULL default '0',

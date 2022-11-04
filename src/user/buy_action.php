@@ -96,43 +96,6 @@ if (!isset($paytype)) {
     $tpl = new DedeTemplate();
     $tpl->LoadTemplate(DEDEMEMBER.'/templets/buy_action_payment.htm');
     $tpl->Display();
-} else {
-    $rs = $dsql->GetOne("SELECT * FROM `#@__payment` WHERE id='$paytype' ");
-    $rs['code'] = preg_replace("#[^0-9a-z]#i", "", $rs['code']);
-    if (!file_exists(DEDEINC.'/payment/'.$rs['code'].'.php')) {
-        ShowMsg("未发现支付接口文件，请到后台配置", 'javascript:;');
-        exit();
-    }
-    require_once DEDEINC.'/payment/'.$rs['code'].'.php';
-    $pay = new $rs['code'];
-    $payment = "";
-    if ($rs['code'] == "cod" || $rs['code'] == "bank") {
-        $order = $buyid;
-        $payment = "member";
-    } else {
-        $order = array(
-            'out_trade_no' => $buyid,
-            'price' => sprintf("%01.2f", $price)
-        );
-        require_once DEDEDATA.'/payment/'.$rs['code'].'.php';
-    }
-    $button = $pay->GetCode($order, $payment);
-    $dtp = new DedeTemplate();
-    $carts = array(
-        'orders_id' => $buyid,
-        'cart_count' => '1',
-        'price_count' => sprintf("%01.2f", $price)
-    );
-    $row = $dsql->GetOne("SELECT pname,money FROM `#@__member_operation` WHERE buyid='{$buyid}'");
-    $dtp->SetVar('pay_name', $row['pname']);
-    $dtp->SetVar('price', $row['money']);
-    $dtp->SetVar('pay_way', $rs['name']);
-    $dtp->SetVar('description', $rs['description']);
-    $dtp->SetVar('button', $button);
-    $dtp->Assign('carts', $carts);
-    $dtp->LoadTemplate(DEDEMEMBER.'/templets/shops_action_payment.htm');
-    $dtp->Display();
-    exit();
 }
 /**
  *  加密函数
