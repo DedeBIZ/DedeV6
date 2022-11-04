@@ -38,7 +38,7 @@ else if ($action == 'update') {
     $tid = (empty($tid) ? 0 : intval($tid));
     $count = (empty($count) ? 0 : intval($count));
     if (empty($tid)) {
-        ShowMsg('没有选择要删除的tag', '-1');
+        ShowMsg('没有选择要删除的标签', '-1');
         exit();
     }
     $query = "UPDATE `#@__tagindex` SET `count`='$count' WHERE id='$tid' ";
@@ -55,7 +55,7 @@ else if ($action == 'delete') {
     } else if (!empty($ids)) {
         $stringids = $ids;
     } else {
-        ShowMsg('没有选择要删除的tag', '-1');
+        ShowMsg('没有选择要删除的标签', '-1');
         exit();
     }
     $query = "DELETE FROM `#@__tagindex` WHERE id IN ($stringids)";
