@@ -16,7 +16,7 @@ $dopost = (!isset($dopost) ? '' : $dopost);
 f 临时，仅为了方便网址结构
 dopost 当前任务(指向下一个任务)，由用户自行处理或在 nextdo 中自动获得
 del 上一次任务删除的变量
-morejob ，设定后，表示当前任务需请求多次，会把 dopost 和 nextdo 处理后转为 doposttmp, nextdotmp，然后由用户自行处理
+morejob，设定后，表示当前任务需请求多次，会把 dopost 和 nextdo 处理后转为 doposttmp, nextdotmp，然后由用户自行处理
  ******************************/
 function GetNextUrl($notallowArr = array('dopost', 'f', 'del'))
 {

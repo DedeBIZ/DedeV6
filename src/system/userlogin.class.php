@@ -245,7 +245,7 @@ class userLogin
      *  保持用户的会话状态
      *
      * @access    public
-     * @return    int    成功返回 1 ，失败返回 -1
+     * @return    int    成功返回 1，失败返回 -1
      */
     function keepUser()
     {

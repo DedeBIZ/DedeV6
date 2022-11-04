@@ -24,7 +24,7 @@ class SplitWord
     //输入和输出的字符编码（只允许 utf-8、gbk/gb2312/gb18030、big5 三种类型）  
     var $sourceCharSet = 'utf-8';
     var $targetCharSet = 'utf-8';
-    //生成的分词结果数据类型 1 为全部， 2为 词典词汇及单个中日韩简繁字符及英文， 3 为词典词汇及英文
+    //生成的分词结果数据类型 1 为全部，2为 词典词汇及单个中日韩简繁字符及英文，3 为词典词汇及英文
     var $resultType = 1;
     //句子长度小于这个数值时不拆分，notSplitLen = n(个汉字) * 2 + 1
     var $notSplitLen = 5;
@@ -186,7 +186,7 @@ class SplitWord
     }
     /**
      * 设置结果类型(只在获取finallyResult才有效)
-     * @param $rstype 1 为全部， 2去除特殊符号
+     * @param $rstype 1 为全部，2去除特殊符号
      *
      * @return void
      */
@@ -477,7 +477,7 @@ class SplitWord
     /**
      * 深入分词
      * @parem $str
-     * @parem $ctype (2 英文类， 3 中/韩/日文类)
+     * @parem $ctype (2 英文类，3 中/韩/日文类)
      * @parem $spos   当前粗分结果游标
      * @return bool
      */
@@ -549,7 +549,7 @@ class SplitWord
         $quote1 = chr(0x20).chr(0x1C);
         $tmparr = array();
         $hasw = 0;
-        //如果前一个词为 “ ， 并且字符串小于3个字符当成一个词处理
+        //如果前一个词为“，并且字符串小于3个字符当成一个词处理
         if ( $spos > 0 && $slen < 11 && $this->simpleResult[$spos-1]['w']==$quote1 )
         {
             $tmparr[] = $str;

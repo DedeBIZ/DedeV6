@@ -329,7 +329,7 @@
                   echo "{$arr['typename']}({$arr['nid']})、";
                 }
                 ?>）<br>
-                模板文件的默认位置是放在模板目录"cms安装目录<?php echo $cfg_templets_dir ?>"内
+                模板文件的默认位置是放在模板目录“安装目录<?php echo $cfg_templets_dir ?>”内
                 <input type="hidden" value="{style}" name="dfstyle">
               </td>
             </tr>
@@ -387,15 +387,15 @@
             </tr>
             <tr>
               <td>SEO标题：</td>
-              <td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="biz-input-md">（标签{dede:field.seotitle/}标签调用）</td>
+              <td><input type="text" name="seotitle" id="seotitle" value="<?php echo $myrow['seotitle']?>" class="biz-input-md">（标签“{dede:field.seotitle/}”标签调用）</td>
             </tr>
             <tr>
               <td>关键词：</td>
-              <td><textarea name="keywords" cid="keywords" class="biz-textarea-sm"><?php echo $myrow['keywords']?></textarea>（标签{dede:field.keywords/}标签调用）</td>
+              <td><textarea name="keywords" cid="keywords" class="biz-textarea-sm"><?php echo $myrow['keywords']?></textarea>（标签“{dede:field.keywords/}”标签调用）</td>
             </tr>
             <tr>
               <td>栏目描述：</td>
-              <td><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $myrow['description']?></textarea>（标签{dede:field.description/}标签调用）</td>
+              <td><textarea name="description" id="description" class="biz-textarea-sm"><?php echo $myrow['description']?></textarea>（标签“{dede:field.description/}”标签调用）</td>
             </tr>
             <tr>
               <td>继承选项：</td>
@@ -406,7 +406,7 @@
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
             <tr>
-              <td><div class="alert alert-info mb-0">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签{dede:field.content/}调用</div></td>
+              <td><div class="alert alert-info mb-0">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div></td>
             </tr>
             <tr>
               <td><?php GetEditor("content",$myrow['content'],"400","Default","print","false");?></td>

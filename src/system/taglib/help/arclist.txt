@@ -30,5 +30,5 @@ channelid 频道id
 limit='' 起始,结束 表示限定的记录范围（如：limit='1,2'）
 flag = 'h' 自定义属性值：头条[h]推荐[c]图片[p]幻灯[f]滚动[s]跳转[j]图文[a]加粗[b] 
 noflag = '' 同flag，但这里是表示不包含这些属性
-orderway='desc' 值为 desc 或 asc ，指定排序方式是降序还是顺向排序，默认为降序
+orderway='desc' 值为 desc 或 asc，指定排序方式是降序还是顺向排序，默认为降序
 subday='天数' 表示在多少天以内的文档

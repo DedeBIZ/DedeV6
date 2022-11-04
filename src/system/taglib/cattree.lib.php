@@ -13,8 +13,8 @@ function lib_cattree(&$ctag, &$refObj)
 {
     global $dsql;
     //属性处理
-    //属性 showall 在空或不存在时，强制用产品模型id；如果是 yes 刚显示整个语言区栏目树；为其它数字则是这个数字的模型的id
-    //typeid 指定顶级树 id ，指定后，前一个属性将无效
+    //属性showall在空或不存在时，强制用产品模型id；如果是yes刚显示整个语言区栏目树；为其它数字则是这个数字的模型的id
+    //typeid指定顶级树id，指定后，前一个属性将无效
     $attlist = "showall|,catid|0";
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);

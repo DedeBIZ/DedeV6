@@ -192,7 +192,7 @@ else if ($action == 'setup') {
   </tr>
   <tr>
     <td class='dtb' colspan='2'>
-    <div class='alert alert-danger mb-0'>注意事项：安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“后台管理目录/templets”目录也必须暂时设置可写入权限</div>
+    <div class='alert alert-danger mb-0'>注意事项：安装时请确保文件列表中涉及的目录前可写入权限，此外“后台管理目录”、“templets”目录也必须暂时设置可写入权限</div>
     </td>
   </tr>
   <tr>

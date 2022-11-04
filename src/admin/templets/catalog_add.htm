@@ -282,7 +282,7 @@
                 <?php
                 if ($moresite==0){
                 ?>
-                <label><input type="radio" name="referpath" value="cmspath"> CMS根目录</label>
+                <label><input type="radio" name="referpath" value="cmspath"> 系统根目录</label>
                 <label><input type="radio" name="referpath" value="basepath"> 站点根目录</label>
                 <?php }?>
               </td>
@@ -438,20 +438,20 @@
             </tr>
             <tr>
               <td>SEO标题：</td>
-              <td><input type="text" name="seotitle" id="seotitle" class="biz-input-md">（标签{dede:field.seotitle/}标签调用）</td>
+              <td><input type="text" name="seotitle" id="seotitle" class="biz-input-md">（标签“{dede:field.seotitle/}”标签调用）</td>
             </tr>
             <tr>
               <td>关键词：</td>
-              <td><textarea name="keywords" id="keywords" class="biz-textarea-sm"></textarea>（标签{dede:field.keywords/}标签调用）</td>
+              <td><textarea name="keywords" id="keywords" class="biz-textarea-sm"></textarea>（标签“{dede:field.keywords/}”标签调用）</td>
             </tr>
             <tr>
               <td>栏目描述：</td>
-              <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea>（标签{dede:field.description/}标签调用）</td>
+              <td><textarea name="description" id="description" class="biz-textarea-sm"></textarea>（标签“{dede:field.description/}”标签调用）</td>
             </tr>
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
             <tr>
-              <td><div class="alert alert-info mb-0">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签{dede:field.content/}调用</div></td>
+              <td><div class="alert alert-info mb-0">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div></td>
             </tr>
             <tr>
               <td><?php GetEditor("content","","400","Default","print","false");?></td>
