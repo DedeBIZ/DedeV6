@@ -21,7 +21,7 @@
 						if (empty($cid)) $cid=0;
 						$tl = new TypeLink($cid);
 						$typeOptions = $tl->GetOptionArray($cid,$admin_catalogs,0,1);
-						echo "<select name='typeid' class='biz-input-md'>";
+						echo "<select name='typeid' class='biz-input-sm'>";
 						if ($cid=='0') echo "<option value='0' selected='1'>更新所有栏目</option>";
 						echo $typeOptions;
 						echo "</select>";

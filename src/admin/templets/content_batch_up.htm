@@ -69,7 +69,7 @@
           <?php
           $tl = new TypeLink(0);
           $typeOptions = $tl->GetOptionArray(0,$admin_catalogs,0,1);
-          echo "<select name='typeid' class='biz-input-md'>";
+          echo "<select name='typeid' class='biz-input-sm'>";
           echo "<option value='0' selected>不限栏目</option>";
           echo $typeOptions;
           echo "</select>";
@@ -79,8 +79,8 @@
       <tr>
         <td>起始id：</td>
         <td>
-          开始：<input name="startid" type="text" id="startid" size="10">
-          结束：<input name="endid" type="text" id="endid" size="10">
+          开始：<input name="startid" type="text" id="startid" class="biz-input-xs">
+          结束：<input name="endid" type="text" id="endid" class="biz-input-xs">
         </td>
       </tr>
       <tr>
@@ -105,7 +105,7 @@
       </tr>
       <tr>
         <td>用户的登录id：</td>
-        <td><input name="userid" type="text" id="userid" size="20">（网址uid=后面跟的id）</td>
+        <td><input name="userid" type="text" id="userid" class="biz-input-xs">（网址uid=后面跟的id）</td>
       </tr>
       <tr>
         <td>操作：</td>

@@ -204,7 +204,7 @@ else if ($action == 'setup') {
     <td></td>
   </tr>
   <tr>
-    <td height='160' colspan='2'><textarea name='filelists' id='filelists' class='biz-textarea'>{$filelist}</textarea></td>
+    <td height='160' colspan='2'><textarea name='filelists' id='filelists' class='biz-textarea-xl'>{$filelist}</textarea></td>
   </tr>
   <tr>
     <td>对于已存在文件处理方法：</td>
@@ -393,7 +393,7 @@ else if ($action == 'uninstall') {
   </tr>
   <tr>
     <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' class='biz-textarea'>{$filelist}</textarea>
+     <textarea name='filelists' id='filelists' class='biz-textarea-xl'>{$filelist}</textarea>
     </td>
   </tr>
   <tr>
@@ -534,7 +534,7 @@ else if ($action == 'view') {
   </tr>
   <tr>
     <td height='160' colspan='2'>
-     <textarea name='filelists' id='filelists' class='biz-textarea'>{$filelist}</textarea>
+     <textarea name='filelists' id='filelists' class='biz-textarea-xl'>{$filelist}</textarea>
     </td>
   </tr>
 </table>";
