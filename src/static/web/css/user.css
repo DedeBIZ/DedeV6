@@ -1,5 +1,5 @@
 body {
-	background:#f8f8f8
+	background:#f5f5f5
 }
 .login-bg {
 	padding:6rem 0;
@@ -58,7 +58,7 @@ body {
 .list-group-item.active a {
 	color:#fff
 }
-.member-menu .list-group-flush>.list-group-item {
+.list-group-flush>.list-group-item {
 	cursor:pointer
 }
 .pannel-main .nav-link.active {
@@ -74,8 +74,11 @@ body {
 	border-radius:50%;
 	border:1px solid #dee2e6
 }
-@media (max-width:576px) {
-	.login-area {
+@media (max-width:480px) {
+	.m-pb-2 {
+	padding-bottom:2rem
+}
+.login-area {
 	float:none;
 	margin:auto;
 	width:100%

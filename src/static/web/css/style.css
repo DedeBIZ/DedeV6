@@ -139,7 +139,7 @@ ul.items > li .source {
 }
 .ddcard-normal {
 	padding:.25rem;
-	box-shadow:1px 0px 5px 5px #f8f8f8
+	box-shadow:1px 0px 5px 5px #f5f5f5
 }
 .ddcard-normal ul {
 	padding:.5rem
@@ -267,7 +267,7 @@ ul.items > li .source {
 .digg .comment-container {
 	width:200px;
 	padding:10px 20px;
-	border:1px solid #f8f8f8;
+	border:1px solid #f5f5f5;
 	border-radius:30px;
 	margin:0 6px;
 	cursor:pointer

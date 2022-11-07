@@ -61,7 +61,7 @@ if (!empty($iseditor)) {
     <link rel="stylesheet" href="../../static/web/css/admin.css">
     <style>
 html{background:#f6f6f6}
-.bg{margin:10px;border-radius:.2rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+.bg{margin:10px;border-radius:.2rem;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)}
 .napisdiv{left:10;top:10;width:150px;height:100px;position:absolute;z-index:3;display:none}
     </style>
     <script>
