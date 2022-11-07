@@ -13,7 +13,7 @@ function AlertMsg(title, id) {
 	msgbg = "#fff";//内容背景
 	msgcolor = "#545b62";//内容颜色
 	titlecolor = "#254015";//标题颜色
-	titlebg = "#f8f8f8";
+	titlebg = "#f5f5f5";
 	//遮罩背景设置
 	content = "<div id=show_news>载入失败</div>";
 	var sWidth, sHeight;

@@ -107,7 +107,7 @@ EOT;
         $dsql->SetQuery("SELECT * FROM `#@__sysconfig` WHERE info LIKE '%$keywords%' OR varname LIKE '%$keywords%' ORDER BY aid ASC");
         $dsql->Execute();
         while ($row = $dsql->GetArray()) {
-            $bgcolor = ($i++ % 2 == 0) ? "#f8f8f8" : "#ffffff";
+            $bgcolor = ($i++ % 2 == 0) ? "#f5f5f5" : "#ffffff";
             $row['info'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['info']);
             $row['varname'] = preg_replace("#{$keywords}#", '<span class="text-danger">'.$keywords.'</span>', $row['varname']);
     ?>
@@ -140,7 +140,7 @@ EOT;
     exit;
     }
     if ($i == 1) {
-        echo '<tr bgcolor="#f8f8f8" align="center"><td colspan="3">没有找到搜索的内容</td></tr></table>';
+        echo '<tr bgcolor="#f5f5f5" align="center"><td colspan="3">没有找到搜索的内容</td></tr></table>';
     }
 exit;
 } else if ($dopost == 'make_encode') {

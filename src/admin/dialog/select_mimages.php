@@ -26,7 +26,7 @@ button+button{margin-left:10px}
 #file_list:empty:after{content:'可以直接拖拽文件到这里'}
 #file_list li{position:relative;display:block;vertical-align:top;padding:10px;border-radius:.25rem}
 #file_list li.up-now:after{content:'';position:absolute;top:0;left:0;display:block;width:100%;height:100%;background:rgba(255,255,255,0.8) url(loading.gif) center center no-repeat;border-radius:.25rem;z-index:999}
-#file_list li:hover{background:#f8f8f8}
+#file_list li:hover{background:#f5f5f5}
 #file_list li .picbox{display:flex;flex:0 0 auto;justify-content:center;overflow:hidden;position:relative;width:100%;padding-top:90%;align-items:center}
 #file_list li .picbox img{display:block;max-width:100%;max-height:100%;position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);border-radius:.25rem}
 #file_list li .namebox{padding:10px;display:flex;justify-content:center;align-items:flex-start}

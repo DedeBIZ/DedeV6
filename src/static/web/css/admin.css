@@ -304,7 +304,7 @@ body.hidemenu .body-right {
 }
 .coolbg {
 	padding:.25rem .5rem;
-	background:#f8f8f8;
+	background:#f5f5f5;
 	border-bottom:1px solid #dee2e6;
 	border-radius:.2rem;
 	border:0;
@@ -374,7 +374,7 @@ body.hidemenu .body-right {
 	line-height:30px;
 	font-weight:600;
 	color:#545b62;
-	background-color:#f8f8f8;
+	background:#f5f5f5;
 	border-bottom:1px solid #dee2e6;
 	cursor:move
 }
@@ -507,11 +507,11 @@ span.page-link {
 	border-radius:.2rem .2rem 0 0
 }
 .biz-itemnote2 {
-	background:#f8f8f8;
+	background:#f5f5f5;
 	border-radius:.2rem .2rem 0 0
 }
 .biz-win {
-	background:#f8f8f8;
+	background:#f5f5f5;
 	border:1px solid #dee2e6
 }
 .biz-border {
@@ -551,7 +551,7 @@ span.page-link {
 }
 .web-info {
 	padding:10px;
-	background:#f8f8f8;
+	background:#f5f5f5;
 	border-radius:.2rem;
 	text-align:center
 }
