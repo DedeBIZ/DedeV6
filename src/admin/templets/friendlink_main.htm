@@ -27,7 +27,7 @@
         }
       }
       if (str == '') {
-        ShowMsg('您没选择任何内容');
+        ShowMsg('您没选择任何文档');
         return false;
       } else {
         location = "friendlink_edit.php?aids=" + str + "&dopost=delall";
@@ -77,7 +77,7 @@
         <td width="6%">顺序</td>
         <td>管理</td>
       </tr>
-      {dede:datalist empty='<tr><td colspan="8"><center>暂无内容</center></td></tr>'}
+      {dede:datalist empty='<tr><td colspan="8"><center>暂无文档</center></td></tr>'}
       <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type='checkbox' name='aids' value='{dede:field.id/}'></td>
         <td>{dede:field.webname function='dede_htmlspecialchars(@me)'/}<br><i>地址：{dede:field.url/}</i></td>

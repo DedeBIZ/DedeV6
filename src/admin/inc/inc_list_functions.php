@@ -73,7 +73,7 @@ function CheckPic($picname)
         return '/static/web/img/thumbnail.jpg';
     }
 }
-//判断内容是否生成网页
+//判断文档是否生成网页
 function IsHtmlArchives($ismake)
 {
     if ($ismake == 1) {
@@ -84,7 +84,7 @@ function IsHtmlArchives($ismake)
         return ' <span class="btn btn-outline-danger btn-sm">未生成</span>';
     }
 }
-//获得内容的限定级别名称
+//获得文档的限定级别名称
 function GetRankName($arcrank)
 {
     global $arcArray, $dsql;
@@ -101,7 +101,7 @@ function GetRankName($arcrank)
         return '不限';
     }
 }
-//判断内容是否为图片文档
+//判断文档是否为图片文档
 function IsPicArchives($picname)
 {
     if ($picname != '') {

@@ -114,7 +114,7 @@
                   <tr>
                     <td width="80" height="28" align="center" class="biz-itemnote1">常规选项</td>
                     <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</a></td>
-                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目内容</a></td>
+                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
                   </tr>
                 </table>
               </td>
@@ -127,7 +127,7 @@
                   <tr>
                     <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
                     <td width="80" height="28" align="center" class="biz-itemnote1">高级选项</td>
-                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目内容</a></td>
+                    <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem3()">栏目文档</a></td>
                   </tr>
                 </table>
               </td>
@@ -140,7 +140,7 @@
                   <tr>
                     <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem1()">常规选项</a></td>
                     <td width="80" height="28" align="center" class="biz-itemnote2"><a href="javascript:;" onClick="ShowItem2()">高级选项</td>
-                    <td width="80" height="28" align="center" class="biz-itemnote1">栏目内容</td>
+                    <td width="80" height="28" align="center" class="biz-itemnote1">栏目文档</td>
                   </tr>
                 </table>
               </td>
@@ -162,7 +162,7 @@
               </td>
             </tr>
             <tr>
-              <td class="biz-td">内容模型：</td>
+              <td class="biz-td">文档模型：</td>
               <td class="biz-td">
                 <select name="channeltype" id="channeltype" onChange="ParTemplet(this)" class="biz-input-sm">
                 <?php    
@@ -256,7 +256,7 @@
               <td>栏目交叉：<i onClick="ShowHide('helpvarco')" class="fa fa-question-circle" title="帮助"></i> 仅适用列表栏目</td>
               <td class="biz-td">
                 <label><input type="radio" name="cross" onClick="CheckCross()" value="0" <?php if ($myrow['cross']==0) echo "checked='1'";?>> 不交叉</label>
-                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目内容</label>
+                <label><input type="radio" name="cross" onClick="CheckCross()" value="1" <?php if ($myrow['cross']==1) echo "checked='1'";?>> 自动获取同名栏目文档</label>
                 <label><input type="radio" name="cross" onClick="CheckCross()" value="2" <?php if ($myrow['cross']==2) echo "checked='1'";?>> 手工指定交叉栏目id（用英文逗号）</label>
                 <br>
                 <textarea name="crossid" id="crossid" style="<?php if ($myrow['cross']!=2) echo'display:none';?>"><?php echo $myrow['crossid'];?></textarea>
@@ -264,7 +264,7 @@
             </tr>
             <tr id="helpvarco" style="display:none">
               <td bgcolor="#f5f5f5">栏目交叉说明：</td>
-              <td bgcolor="#f5f5f5">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>注：会自动索引交叉栏目的内容，但不会索引交叉栏目下级栏目的内容，这种应用也适用于按地区划分资讯的站点</td>
+              <td bgcolor="#f5f5f5">交叉栏目是指一个大栏目与另一个非下级的子栏目出现交叉的情况，相当于系统原来的副栏目功能，不过现在改在栏目里预先设置好<br>注：会自动索引交叉栏目的文档，但不会索引交叉栏目下级栏目的文档，这种应用也适用于按地区划分资讯的站点</td>
             </tr>
             <tr id="smclass" style="<?php echo ($channelid<0 ? '' : 'display:none');?>">
               <td class="biz-td">绑定小分类：仅适用分类模型</td>
@@ -400,13 +400,13 @@
             <tr>
               <td>继承选项：</td>
               <td>
-                <label><input type="checkbox" name="upnext" id="upnext" value="1"> 同时继承下级栏目浏览权限、内容类型、模板风格、命名规则等通用属性</label>
+                <label><input type="checkbox" name="upnext" id="upnext" value="1"> 同时继承下级栏目浏览权限、文档类型、模板风格、命名规则等通用属性</label>
               </td>
             </tr>
           </table>
           <table width="100%" cellspacing="0" cellpadding="0" id="ctset" class="table biz-border" style="display:none">
             <tr>
-              <td><div class="alert alert-info mb-0">说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div></td>
+              <td><div class="alert alert-info mb-0">说明：栏目文档是替代原来栏目单独页的更灵活的一种方式，常用于企业简介之类的用途，标签“{dede:field.content/}”调用</div></td>
             </tr>
             <tr>
               <td><?php GetEditor("content",$myrow['content'],"400","Default","print","false");?></td>

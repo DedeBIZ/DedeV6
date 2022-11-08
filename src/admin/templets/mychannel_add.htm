@@ -3,7 +3,7 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>新增内容模型</title>
+  <title>新增文档模型</title>
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -40,7 +40,7 @@
     <form name="form1" action="mychannel_add.php" method="post">
       <input type="hidden" name="action" value="add">
       <tr>
-        <td bgcolor="#f5f5f5" colspan="2"><a href="mychannel_main.php">内容模型管理</a> &gt; 新增内容模型</td>
+        <td bgcolor="#f5f5f5" colspan="2"><a href="mychannel_main.php">文档模型管理</a> &gt; 新增文档模型</td>
       </tr>
       <tr>
         <td width="30%">栏目id<br>
@@ -67,7 +67,7 @@
       </tr>
       <tr>
         <td>模型性质<br>
-          <span id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid,typeid,senddate,title,mid,channel，独立模型的文档内容必须点击栏目进入列表才能管理</span></td>
+          <span id="help5">如果为系统模型将禁止删除，此选项不可修改，对于独立模型，系统强制创建字段aid,typeid,senddate,title,mid,channel，独立模型的文档文档必须点击栏目进入列表才能管理</span></td>
         <td>
           <label><input type="radio" name="issystem" id="is1" value="0" onClick="PublicDefault()" checked="1"> 自动模型</label>
           <label><input type="radio" name="issystem" id="is2" value="1" onClick="PublicDefault()"> 系统模型</label>

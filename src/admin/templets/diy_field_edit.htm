@@ -64,8 +64,8 @@
     </tr>
     <tr> 
       <td>表单提示文字：<br>
-        <span>发布内容时显示的提示文字</span></td>
-      <td><input type="text" name="itemname" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>"> *（发布内容时显示的项名字）</td>
+        <span>发布文档时显示的提示文字</span></td>
+      <td><input type="text" name="itemname" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>"> *（发布文档时显示的项名字）</td>
     </tr>
     <tr> 
       <td width="28%">字段名称：<br>
@@ -108,8 +108,8 @@
       </td>
     </tr>
     <tr> 
-      <td>内容是否需要分页符：<br>
-        <span>如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
+      <td>文档是否需要分页符：<br>
+        <span>如果文档需要分页符，不论何种文档，都可以用#P#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段!</span></td>
       <td>
       	<input type="hidden" name="isnull" value="1">
         <label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>

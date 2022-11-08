@@ -37,9 +37,9 @@ CREATE TABLE `#@__statistics_detail` (
   `device` varchar(50) DEFAULT NULL COMMENT '设备',
   `device_type` varchar(10) DEFAULT NULL COMMENT '设备类型',
   `os` varchar(20) DEFAULT NULL COMMENT '操作系统',
-  `url_type` tinyint DEFAULT NULL COMMENT '访问地址类型：0:未知 1:列表 2:内容 3:搜索 4:TAG',
+  `url_type` tinyint DEFAULT NULL COMMENT '访问地址类型：0:未知 1:列表 2:文档 3:搜索 4:TAG',
   `typeid` int DEFAULT NULL COMMENT '栏目id',
-  `aid` int DEFAULT NULL COMMENT '内容ID',
+  `aid` int DEFAULT NULL COMMENT '文档ID',
   `value` varchar(50) DEFAULT NULL COMMENT '值',
   PRIMARY KEY (`id`),
   KEY `idx_created_date_dduuid` (`created_date`,`dduuid`),
@@ -77,7 +77,7 @@ ALTER TABLE `#@__feedback`
   ADD COLUMN `fid` INT UNSIGNED NOT NULL DEFAULT 0 AFTER `aid`;
 ALTER TABLE `#@__feedback`
   ADD COLUMN `replycount` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `dtime`;
-INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_feedback_msglen', '评论内容字数限定', 5, 'number', '200');
+INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_feedback_msglen', '评论文档字数限定', 5, 'number', '200');
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_auth_code', '商业版授权码', 1, 'string', '');
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_hostname', 'DedeBIZ Core地址', 1, 'string', '127.0.0.1');
 INSERT INTO `#@__sysconfig` (`varname`, `info`, `groupid`, `type`, `value`) VALUES ( 'cfg_bizcore_port', 'DedeBIZ Core端口', 1, 'number', '8181');

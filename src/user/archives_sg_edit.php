@@ -69,7 +69,7 @@ else if ($dopost == 'save') {
     } else {
         $arcrank = -1;
     }
-    //对保存的内容进行处理
+    //对保存的文档进行处理
     $title = cn_substrR(HtmlReplace($title, 1), $cfg_title_maxlen);
     $mid = $cfg_ml->M_ID;
     //分析处理附加表数据
@@ -112,11 +112,11 @@ else if ($dopost == 'save') {
     $artUrl = MakeArt($aid, true);
     if ($artUrl == '') $artUrl = $cfg_phpurl."/view.php?aid=$aid";
     //返回成功信息
-    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success'>发布新内容</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success'>查看修改</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看内容</a><a href='content_sg_list.php?channelid=$channelid' class='btn btn-success'>管理内容</a>";
-    $wintitle = "成功修改内容";
-    $wecome_info = "内容管理::修改内容";
+    $msg = "请选择您的后续操作：<a href='archives_sg_add.php?cid=$typeid' class='btn btn-success'>发布新文档</a><a href='archives_do.php?channelid=$channelid&aid=".$aid."&dopost=edit' class='btn btn-success'>查看修改</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看文档</a><a href='content_sg_list.php?channelid=$channelid' class='btn btn-success'>管理文档</a>";
+    $wintitle = "成功修改文档";
+    $wecome_info = "文档管理::修改文档";
     $win = new OxWindow();
-    $win->AddTitle("成功修改内容");
+    $win->AddTitle("成功修改文档");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

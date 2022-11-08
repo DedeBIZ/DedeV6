@@ -15,7 +15,7 @@ if ($action == '') {
     require_once(DEDEADMIN."/templets/makehtml_all.htm");
     exit();
 } else if ($action == 'make') {
-    //step = 1 更新主页、step = 2 更新内容、step = 3 更新栏目
+    //step = 1 更新主页、step = 2 更新文档、step = 3 更新栏目
     if (empty($step)) $step = 1;
     //更新文档前优化数据
     /*-------------------

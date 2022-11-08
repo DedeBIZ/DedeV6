@@ -232,7 +232,7 @@ class DedeTagParse
         //引入缓冲数组
         include($this->CacheFile);
         $errmsg = '';
-        //把缓冲数组内容读入类
+        //把缓冲数组文档读入类
         if (isset($z) && is_array($z)) {
             foreach ($z as $k => $v) {
                 $this->Count++;
@@ -370,7 +370,7 @@ class DedeTagParse
         $this->LoadSource($str);
     }
     /**
-     *  获得指定名称的Tag的id，如果有多个同名的Tag，则取没有被取代为内容的第一个Tag
+     *  获得指定名称的Tag的id，如果有多个同名的Tag，则取没有被取代为文档的第一个Tag
      *
      * @access    public
      * @param     string  $str  字符串
@@ -393,7 +393,7 @@ class DedeTagParse
         return -1;
     }
     /**
-     *  获得指定名称的CTag数据类(如果有多个同名的Tag,则取没有被分配内容的第一个Tag)
+     *  获得指定名称的CTag数据类(如果有多个同名的Tag,则取没有被分配文档的第一个Tag)
      *
      * @access    public
      * @param     string  $str  字符串

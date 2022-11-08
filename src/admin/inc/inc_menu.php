@@ -12,7 +12,7 @@ require_once(dirname(__FILE__)."/../config.php");
 require_once(dirname(__FILE__)."/inc_menu_module.php");
 //载入可发布栏目
 $addset = '';
-//检测可用的内容模型
+//检测可用的文档模型
 if ($cfg_admin_channel = 'array' && count($admin_catalogs) > 0) {
     $admin_catalog = join(',', $admin_catalogs);
     $dsql->SetQuery("SELECT channeltype FROM `#@__arctype` WHERE id IN({$admin_catalog}) GROUP BY channeltype ");
@@ -42,8 +42,8 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='智能标记向导' link='mytag_tag_guide.php' rank='temp_Other' target='main' />
     <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main' />
 </m:top>")."
-<m:top item='1_7_' name='栏目模型' rank='t_List,t_AccList,c_List,temp_One' icon='fa-area-chart'>
-    <m:item name='内容模型管理' link='mychannel_main.php' rank='c_List' target='main' />
+<m:top item='1_7_' name='文档模型' rank='t_List,t_AccList,c_List,temp_One' icon='fa-area-chart'>
+    <m:item name='文档模型管理' link='mychannel_main.php' rank='c_List' target='main' />
     <m:item name='单页文档管理' link='templets_one.php' rank='temp_One' target='main' />
     <m:item name='联动类别管理' link='stepselect_main.php' rank='c_Stepseclect' target='main' />
     <m:item name='自由列表管理' link='freelist_main.php' rank='c_List' target='main' />
@@ -80,7 +80,7 @@ $menusMain = "<m:top item='1_' name='常用操作' icon='fa-desktop'>
     <m:item name='评论管理' link='feedback_main.php' rank='sys_Feedback' target='main' />
     <m:item name='文档回收站' link='recycling.php' ischannel='1' addalt='清空回收站' addico='fa-minus-circle' linkadd='archives_do.php?dopost=clear&aid=no&recycle=1' rank='a_List,a_AccList,a_MyList' target='main' />
 </m:top>
-<m:top item='1_' name='内容管理' icon='fa-file-text'>
+<m:top item='1_' name='文档管理' icon='fa-file-text'>
     $addset
     <m:item name='专题管理' ischannel='1' link='content_s_list.php' linkadd='spec_add.php' channelid='-1' rank='spec_New' target='main' />
 </m:top>
@@ -97,7 +97,7 @@ $adminMenu1
     <m:item name='重复文档检测' link='article_test_same.php' rank='sys_ArcBatch' target='main' />
     <m:item name='自动摘要分页' link='article_description_main.php' rank='sys_Keyword' target='main' />
     <m:item name='标签管理' link='tags_main.php' rank='sys_Keyword' target='main' />
-    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据库内容替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
+    ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据库文档替换' link='sys_data_replace.php' rank='sys_ArcBatch' target='main' />")."
 </m:top>
 {$GLOBALS['menusMoudle']}
 <m:top item='5_' name='更新任务' rank='sys_MakeHtml' icon='fa-repeat'>

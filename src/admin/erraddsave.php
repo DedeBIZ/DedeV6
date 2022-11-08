@@ -43,10 +43,10 @@ function typename($me)
             return $me = "产品与图片不符";
             break;
         case $me == 5:
-            return $me = "事实年代以及内容错误";
+            return $me = "事实年代以及文档错误";
             break;
         case $me == 6:
-            return $me = "事实年代以及内容错误";
+            return $me = "事实年代以及文档错误";
             break;
         case $me == 7:
             return $me = "其他错误";

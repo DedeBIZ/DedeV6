@@ -147,7 +147,7 @@ if (!function_exists('CreateDir')) {
  *
  * @access    public
  * @param     string  $file  文件名
- * @param     string  $content  内容
+ * @param     string  $content  文档
  * @param     int  $flag   标识
  * @return    string
  */

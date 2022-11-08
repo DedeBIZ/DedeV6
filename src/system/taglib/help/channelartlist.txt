@@ -1,6 +1,6 @@
-获取当前栏目的下级栏目的内容列表标签
+获取当前栏目的下级栏目的文档列表标签
 >>dede>>
-{dede:channelartlist row=6}
+{dede:channelartlist typeid='' notypeid='' row='6'}
 <dl>
     <dt><a href='{dede:field name='typeurl'/}'>{dede:field name='typename'/}</a></dt>
     <dd>
@@ -15,7 +15,8 @@
 {/dede:channelartlist}
 >>dede>>
 typeid='' 调用栏目id，用英文逗号分开表示多个栏目
+notypeid='' 不调用栏目id，用英文逗号分开表示多个栏目
 row='20' 获取的栏目返回值
 其他说明：
 除了宏标记外，channelArtlist 是唯一一个可以直接嵌套其它标记的标记，不过仅限于嵌套 
-{dede:type}{/dede:type} 和 {dede:arclist}{/dede:arclist} 两个标记
+{dede:type}{/dede:type}和{dede:arclist}{/dede:arclist}两个标记

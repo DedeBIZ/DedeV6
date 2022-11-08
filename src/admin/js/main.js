@@ -167,7 +167,7 @@ function PutWriter(str) {
 	$Obj('mywriter').style.display = 'none';
 	ChangeFullDiv('hide');
 }
-//增加选择投票内容
+//增加选择投票文档
 function PutVote(str) {
 	var ovote = $Obj('voteid');
 	if (ovote) {
@@ -345,7 +345,7 @@ function getEvent() {
 //模拟ondrop事件相关代码
 /*----------------------------
 leftLeaning = 300;
-如果对象内容固定，用onmousedown=DropStart去除底下的DropStop
+如果对象文档固定，用onmousedown=DropStart去除底下的DropStop
 newobj.ondblclick =  DropStart;
 newobj.onmousemove = DropMove;
 newobj.onmousedown = DropStop;
@@ -398,10 +398,10 @@ function DropMoveHand(objid, mleftLeaning) {
 	obj.style.top = posTop + "px";
 	obj.style.left = posLeft - mleftLeaning + "px";
 }
-//复制内容到剪切板
+//复制文档到剪切板
 function copyToClipboard(txt) {
 	if (txt == null || txt == '') {
-		alert("没有选择任何内容!");
+		alert("没有选择任何文档");
 		return;
 	}
 	if (window.clipboardData) {

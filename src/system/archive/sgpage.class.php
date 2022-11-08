@@ -29,7 +29,7 @@ class sgpage
      *  php5构造函数
      *
      * @access    public
-     * @param     int  $aid  内容ID
+     * @param     int  $aid  文档ID
      * @return    string
      */
     function __construct($aid)
@@ -60,7 +60,7 @@ class sgpage
         $this->__construct($aid);
     }
     /**
-     *  显示内容
+     *  显示文档
      *
      * @access    public
      * @return    void
@@ -70,7 +70,7 @@ class sgpage
         $this->dtp->Display();
     }
     /**
-     *  获取内容
+     *  获取文档
      *
      * @access    public
      * @return    void

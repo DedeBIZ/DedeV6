@@ -20,7 +20,7 @@ if ($tagid !='')
     $limitsql = " LIMIT $strnum,{$row['pagesize']} ";
     if ($mtype == 0)
     {
-      //处理列表内容项
+      //处理列表文档项
         $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath {$row['addfieldsSql']} FROM `#@__archives` arc LEFT JOIN `#@__arctype` tp ON arc.typeid=tp.id {$row['addfieldsSqlJoin']} WHERE arc.id IN({$row['arcids']}) {$row['ordersql']} $limitsql";
         $dsql->SetQuery($query);
         $dsql->Execute('al');

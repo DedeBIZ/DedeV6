@@ -245,7 +245,7 @@ class SpecView
         MakeOneTag($this->dtp, $this);
     }
     /**
-     *  获取内容列表
+     *  获取文档列表
      *
      * @access    public
      * @param     int  $limitstart  限制开始  

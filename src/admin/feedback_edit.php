@@ -33,7 +33,7 @@ if ($dopost == 'edit') {
     $query = "SELECT * FROM `#@__feedback` WHERE id=$id";
     $row = $dsql->GetOne($query);
     MakeArt($row['aid']);
-    ShowMsg("成功更新评论所在的文档内容", $ENV_GOBACK_URL);
+    ShowMsg("成功更新评论所在的文档文档", $ENV_GOBACK_URL);
     exit();
 }
 $query = "SELECT * FROM `#@__feedback` WHERE id=$id";

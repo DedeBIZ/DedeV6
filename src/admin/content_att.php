@@ -1,6 +1,6 @@
 <?php
 /**
- * 内容属性
+ * 文档属性
  *
  * @version        $id:content_att.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

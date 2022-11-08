@@ -1,6 +1,6 @@
 <?php
 /**
- * 内容统计
+ * 文档统计
  *
  * @version        $id:content_tj.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

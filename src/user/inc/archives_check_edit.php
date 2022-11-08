@@ -39,7 +39,7 @@ if ($cInfos['arcsta'] == 0) {
     $ismake = 0;
     $arcrank = -1;
 }
-//对保存的内容进行处理
+//对保存的文档进行处理
 $title = cn_substrR(HtmlReplace($title, 1), $cfg_title_maxlen);
 $writer =  cn_substrR(HtmlReplace($writer, 1), 20);
 if (empty($description)) $description = '';

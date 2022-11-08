@@ -591,7 +591,7 @@ else if ($dopost == 'quickEdit') {
 //AJAX窗体结束
 }
 /*-----------------------------
-//保存快速编辑内容
+//保存快速编辑文档
 function quickEditSave(){ }
 ------------------------------*/
 else if ($dopost == 'quickEditSave') {
@@ -653,7 +653,7 @@ else if ($dopost == "makekw") {
         $client->appid = $cfg_bizcore_appid;
         $client->key = $cfg_bizcore_key;
         while ($row = $dsql->GetArray()) {
-            //跳过已经有关键词内容
+            //跳过已经有关键词文档
             if (trim($row['keywords']) != '') continue;
             $aid = $row['id'];
             $keywords = '';
@@ -676,7 +676,7 @@ else if ($dopost == "makekw") {
         include_once(DEDEINC.'/libraries/splitword.class.php');
         $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
         while ($row = $dsql->GetArray()) {
-            //跳过已经有关键词内容
+            //跳过已经有关键词文档
             if (trim($row['keywords']) != '') continue;
             $aid = $row['id'];
             $keywords = '';

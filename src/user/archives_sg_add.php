@@ -93,7 +93,7 @@ else if ($dopost == 'save') {
     } else {
         $arcrank = -1;
     }
-    //对保存的内容进行处理
+    //对保存的文档进行处理
     $sortrank = $senddate = $pubdate = time();
     $title = cn_substrR(HtmlReplace($title, 1), $cfg_title_maxlen);
     $mid = $cfg_ml->M_ID;
@@ -159,7 +159,7 @@ else if ($dopost == 'save') {
     //返回成功信息
     $msg = "请选择您的后续操作：<a href='archives_sg_add.php?channelid=$channelid' class='btn btn-success'>继续发布文档</a><a href='$artUrl' target='_blank' class='btn btn-success'>查看文档</a><a href='archives_sg_edit.php?channelid=$channelid&aid=$arcID' class='btn btn-success'>修改文档</a><a href='content_sg_list.php?channelid={$channelid}' class='btn btn-success'>已发布文档管理</a>";
     $wintitle = "成功发布文档";
-    $wecome_info = "内容管理::发布文档";
+    $wecome_info = "文档管理::发布文档";
     $win = new OxWindow();
     $win->AddTitle("成功发布文档");
     $win->AddMsgItem($msg);

@@ -12,7 +12,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 /**
  * 浏览器友好的变量输出,便于调试时候使用
  *
- * @param     mixed   $var       要输出查看的内容
+ * @param     mixed   $var       要输出查看的文档
  * @param     bool    $echo      是否直接输出
  * @param     string  $label     加上说明标签,如果有,这显示"标签名:"这种形式
  * @param     bool    $strict    是否严格过滤
@@ -47,7 +47,7 @@ if (!function_exists('Dump')) {
 }
 /**
  *  获取执行时间
- *  例如$t1 = ExecTime();在一段内容处理之后$t2 = ExecTime();
+ *  例如$t1 = ExecTime();在一段文档处理之后$t2 = ExecTime();
  *  我们可以将2个时间的差值输出:echo $t2-$t1;
  *
  *  @return    int

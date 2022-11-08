@@ -139,7 +139,7 @@ class DedeVote
     }
     /**
      * 保存投票数据
-     * 请不要在输出任何内容之前使用SaveVote()方法!
+     * 请不要在输出任何文档之前使用SaveVote()方法!
      *
      * @access    public
      * @param     string   $voteitem  投票项目

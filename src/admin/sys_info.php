@@ -140,7 +140,7 @@ EOT;
     exit;
     }
     if ($i == 1) {
-        echo '<tr bgcolor="#f5f5f5" align="center"><td colspan="3">没有找到搜索的内容</td></tr></table>';
+        echo '<tr bgcolor="#f5f5f5" align="center"><td colspan="3">没有找到搜索的文档</td></tr></table>';
     }
 exit;
 } else if ($dopost == 'make_encode') {

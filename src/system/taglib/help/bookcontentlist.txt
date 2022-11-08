@@ -1,4 +1,4 @@
-连载图书最新内容调用
+连载图书最新文档调用
 >>dede>>
 {dede:bookcontentlist row='12' booktype='-1' orderby='lastpost' author='' keyword=''}
 <table width="100%" cellspacing="2" cellpadding="2">

@@ -137,7 +137,7 @@ if ($action == 'post') {
     if (is_array($id) && is_all_numeric($id)) {
         $ids = implode(',', $id);
     } else {
-        showmsg('未选中要操作的内容', '-1');
+        showmsg('未选中要操作的文档', '-1');
         exit();
     }
     $query = "UPDATE `$diy->table` SET ifcheck=1 WHERE id IN ($ids)";
@@ -151,7 +151,7 @@ if ($action == 'post') {
         if (is_array($id)) {
             $ids = implode(',', $id);
         } else {
-            showmsg('未选中要操作的内容', '-1');
+            showmsg('未选中要操作的文档', '-1');
             exit();
         }
         $query = "DELETE FROM `$diy->table` WHERE id IN ($ids)";

@@ -63,7 +63,7 @@ else if ($dopost == 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布内容的表单是否合法", "-1");
+        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -77,7 +77,7 @@ else if ($dopost == 'save') {
             CheckArcAdmin($id, $cuserLogin->getUserID());
         }
     }
-    //对保存的内容进行处理
+    //对保存的文档进行处理
     $pubdate = GetMkTime($pubdate);
     $sortrank = AddDay($pubdate, $sortup);
     $ismake = $ishtml == 0 ? -1 : 0;
@@ -101,7 +101,7 @@ else if ($dopost == 'save') {
         $ddisremote = 0;
     }
     $litpic = GetDDImage('none', $picname, $ddisremote);
-    //分析body里的内容
+    //分析body里的文档
     $body = AnalyseHtmlBody($body, $description, $litpic, $keywords, 'htmltext');
     //分析处理附加表数据
     $inadd_f = '';
@@ -162,7 +162,7 @@ else if ($dopost == 'save') {
         $artUrl = $cfg_phpurl."/view.php?aid=$id";
     }
     ClearMyAddon($id, $title);
-    //自动更新关联内容
+    //自动更新关联文档
     if (is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {

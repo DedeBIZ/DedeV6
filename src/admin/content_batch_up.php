@@ -1,6 +1,6 @@
 <?php
 /**
- * 内容处理函数
+ * 文档处理函数
  *
  * @version        $id:content_batch_up.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator

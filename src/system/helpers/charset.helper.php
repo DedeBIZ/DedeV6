@@ -112,7 +112,7 @@ if (!function_exists('gb2utf8')) {
  *  Unicode转utf8
  *
  * @access    public
- * @param     string  $c  Unicode的字符串内容
+ * @param     string  $c  Unicode的字符串文档
  * @return    string
  */
 if (!function_exists('u2utf8')) {
@@ -174,7 +174,7 @@ if (!function_exists('utf82u')) {
  *  Big5码转换成GB码
  *
  * @access    public
- * @param     string   $Text  字符串内容
+ * @param     string   $Text  字符串文档
  * @return    string
  */
 if (!function_exists('big52gb')) {
@@ -213,7 +213,7 @@ if (!function_exists('big52gb')) {
  *  GB码转换成Big5码
  *
  * @access    public
- * @param     string  $Text 字符串内容
+ * @param     string  $Text 字符串文档
  * @return    string
  */
 if (!function_exists('gb2big5')) {
@@ -252,7 +252,7 @@ if (!function_exists('gb2big5')) {
  *  unicode url编码转gbk编码函数
  *
  * @access    public
- * @param     string  $str  转换的内容
+ * @param     string  $str  转换的文档
  * @return    string
  */
 if (!function_exists('UnicodeUrl2Gbk')) {
@@ -294,7 +294,7 @@ if (!function_exists('UnicodeUrl2Gbk')) {
  *  自动转换字符集 支持数组转换
  *
  * @access    public
- * @param     string  $str  转换的内容
+ * @param     string  $str  转换的文档
  * @return    string
  */
 if (!function_exists('AutoCharset')) {

@@ -122,7 +122,7 @@ if ($dopost == 'time') {
             </td>
         </tr>
         <tr>
-            <td class="biz-td" align="center">内容模型：</td>
+            <td class="biz-td" align="center">文档模型：</td>
             <td class="biz-td">
                 <?php
                 foreach ($channelArray as $k => $arr) {

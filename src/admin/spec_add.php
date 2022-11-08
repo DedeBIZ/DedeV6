@@ -41,7 +41,7 @@ else if ($dopost == 'save') {
     if (!isset($remote)) $remote = 0;
     if (!isset($dellink)) $dellink = 0;
     if (!isset($autolitpic)) $autolitpic = 0;
-    //对保存的内容进行处理
+    //对保存的文档进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();
     if (empty($source)) $source = '未知';
     $pubdate = GetMkTime($pubdate);
@@ -173,7 +173,7 @@ else if ($dopost == 'save') {
         $artUrl = $cfg_phpurl."/view.php?aid=$arcID";
     }
     ClearMyAddon($arcID, $title);
-    //自动更新关联内容
+    //自动更新关联文档
     if (is_array($automake)) {
         foreach ($automake as $key => $value) {
             if (isset(${$key}) && !empty(${$key})) {

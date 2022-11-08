@@ -175,7 +175,7 @@ class DedeHttpDown
         if (preg_match("/^2/", $this->GetHead("http-state")) && preg_match("/text|xml/i", $this->GetHead("content-type"))) {
             return TRUE;
         } else {
-            $this->m_error .= "内容为非文本类型或网址重定向<br>";
+            $this->m_error .= "文档为非文本类型或网址重定向<br>";
             return FALSE;
         }
     }
@@ -183,7 +183,7 @@ class DedeHttpDown
      *  判断返回的网页是否是特定的类型
      *
      * @access    public
-     * @param     string   $ctype   内容类型
+     * @param     string   $ctype   文档类型
      * @return    string
      */
     function IsContentType($ctype)
@@ -227,7 +227,7 @@ class DedeHttpDown
         return TRUE;
     }
     /**
-     *  保存网页内容为Text文件
+     *  保存网页文档为Text文件
      *
      * @access    public
      * @param     string    $savefilename  保存文件名称
@@ -246,7 +246,7 @@ class DedeHttpDown
         return $this->SaveBinFile($filename);
     }
     /**
-     *  用Http协议获得一个网页的内容
+     *  用Http协议获得一个网页的文档
      *
      * @access    public
      * @return    string

@@ -35,7 +35,7 @@ class smtp
      * @param     string $webname 站点名称
      * @param     string $from 来自
      * @param     string $subject 主题
-     * @param     string $body 邮件内容
+     * @param     string $body 邮件文档
      * @param     string $mailtype 邮件类型
      * @return    string
      */
@@ -101,7 +101,7 @@ class smtp
      * @param     string $from 来自
      * @param     string $to 到
      * @param     string $header 头部信息
-     * @param     string $body 内容主体
+     * @param     string $body 文档主体
      * @return    string
      */
     function smtp_send($helo, $from, $to, $header, $body = "")

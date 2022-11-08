@@ -309,7 +309,7 @@ class DedeTemplate
             //模板解析时间
             //echo ExecTime() - $t1;
         } else {
-            //如果存在config文件，则载入此文件，该文件用于保存 $this->tpCfgs的内容，以供扩展用途
+            //如果存在config文件，则载入此文件，该文件用于保存 $this->tpCfgs的文档，以供扩展用途
             //模板中用“{tag:config name='' value=''/}”来设定该值
             if (file_exists($this->configFile)) {
                 include($this->configFile);
@@ -344,7 +344,7 @@ class DedeTemplate
         return $this->cacheFile;
     }
     /**
-     *  显示内容，由于函数中会重新解压一次$GLOBALS变量，所以在动态页中，应该尽量少用本方法，
+     *  显示文档，由于函数中会重新解压一次$GLOBALS变量，所以在动态页中，应该尽量少用本方法，
      *  取代之是直接在程序中 include $tpl->CacheFile()，不过include $tpl->CacheFile()这种方式不能在类或函数内使用
      *
      * @access    public

@@ -39,7 +39,7 @@ if (empty($typeid)) {
         fwrite($fp, '?'.'>');
         fclose($fp);
     }
-    //引入栏目缓存并看关键词是否有相关栏目内容
+    //引入栏目缓存并看关键词是否有相关栏目文档
     require_once($typenameCacheFile);
     if (isset($typeArr) && is_array($typeArr)) {
         foreach ($typeArr as $id => $typename) {
@@ -56,7 +56,7 @@ if (empty($typeid)) {
 $keyword = addslashes(cn_substr($keyword, 30));
 $typeid = intval($typeid);
 if ($cfg_notallowstr != '' && preg_match("#".$cfg_notallowstr."#i", $keyword)) {
-    ShowMsg("您的搜索关键词中存在非法内容，被系统禁止", "-1");
+    ShowMsg("您的搜索关键词中存在非法文档，被系统禁止", "-1");
     exit();
 }
 if (($keyword == '' || strlen($keyword) < 2) && empty($typeid)) {

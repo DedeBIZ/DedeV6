@@ -157,7 +157,7 @@ class DedeBizClient
         );
         return $this->request($req);
     }
-    //获取缓存内容
+    //获取缓存文档
     //$key:键
     function CacheGet($key)
     {
@@ -169,7 +169,7 @@ class DedeBizClient
         );
         return $this->request($req);
     }
-    //删除缓存内容
+    //删除缓存文档
     //$key:键
     function CacheDel($key)
     {
@@ -194,7 +194,7 @@ class DedeBizClient
         return $this->request($req);
     }
     //获取分词结果
-    //$body:内容 $sep:分隔符
+    //$body:文档 $sep:分隔符
     function Pinyin($body, $sep)
     {
         $req = array(

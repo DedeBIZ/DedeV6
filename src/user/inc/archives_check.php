@@ -57,7 +57,7 @@ if ($cInfos['arcsta'] == 0) {
     $ismake = 0;
     $arcrank = -1;
 }
-//对保存的内容进行处理
+//对保存的文档进行处理
 $money = 0;
 $flag = $shorttitle = $color = $source = '';
 $sortrank = $senddate = $pubdate = time();

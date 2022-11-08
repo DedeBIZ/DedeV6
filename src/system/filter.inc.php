@@ -10,7 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 /**
- *  过滤不相关内容
+ *  过滤不相关文档
  *
  * @access    public
  * @param     string  $fk 过滤键

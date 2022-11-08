@@ -79,7 +79,7 @@
                 echo "<option value='0' selected>投放在没有同名标识的所有栏目</option>";
                 echo $typeOptions;
                 echo "</select>";
-          			?>（如果在所选栏目找不到指定标识的广告内容，系统会自动搜索父栏目）
+          			?>（如果在所选栏目找不到指定标识的广告文档，系统会自动搜索父栏目）
               </td>
             </tr>
             <tr>
@@ -101,13 +101,13 @@
               </td>
             </tr>
             <tr>
-              <td>正常显示内容：</td>
+              <td>正常显示文档：</td>
               <td width="70%"><textarea name="normbody" id="normbody" class="biz-textarea-xl"><?php echo dede_htmlspecialchars(stripslashes($row['normbody']))?></textarea>
               </td>
               <td width="10%"></td>
             </tr>
             <tr>
-              <td>过期显示内容：</td>
+              <td>过期显示文档：</td>
               <td><textarea name="expbody" id="expbody" class="biz-textarea-xl"><?php echo dede_htmlspecialchars($row['expbody'])?></textarea></td>
               <td></td>
             </tr>

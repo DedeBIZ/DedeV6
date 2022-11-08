@@ -20,7 +20,7 @@ if (!isset($_NOT_ARCHIVES)) {
  * 获得HTML里的外部资源，针对图集
  *
  * @access    public
- * @param     string  $body  文档内容
+ * @param     string  $body  文档文档
  * @param     string  $rfurl  来源地址
  * @param     string  $firstdd  开始标记
  * @return    string
@@ -90,7 +90,7 @@ function GetCurContentAlbum($body, $rfurl, &$firstdd)
  * 获得文档body里的外部资源
  *
  * @access    public
- * @param     string  $body  文档内容
+ * @param     string  $body  文档文档
  * @return    string
  */
 function GetCurContent($body)
@@ -253,7 +253,7 @@ function CheckArcAdmin($aid, $adminid)
  *  文档自动分页
  *
  * @access    public
- * @param     string  $mybody  内容
+ * @param     string  $mybody  文档
  * @param     string  $spsize  分页大小
  * @param     string  $sptag  分页标记
  * @return    string
@@ -322,7 +322,7 @@ function MakeArt($aid, $mkindex = FALSE, $ismakesign = FALSE, $isremote = 0)
  *  取第一个图片为缩略图
  *
  * @access    public
- * @param     string  $body  文档内容
+ * @param     string  $body  文档文档
  * @return    string
  */
 function GetDDImgFromBody(&$body)
@@ -510,7 +510,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
  * 删除非站外链接、自动摘要、自动获取缩略图
  *
  * @access    public
- * @param     string  $body  内容
+ * @param     string  $body  文档
  * @param     string  $description  描述
  * @param     string  $litpic  缩略图
  * @param     string  $keywords  关键词
@@ -598,7 +598,7 @@ function AnalyseHtmlBody($body, &$description, &$litpic, &$keywords, $dtype = ''
  *  删除非站内链接
  *
  * @access    public
- * @param     string  $body  内容
+ * @param     string  $body  文档
  * @param     array  $allow_urls  允许的超链接
  * @return    string
  */
@@ -762,7 +762,7 @@ function GetUpdateTest()
         if ($cfg_make_andcat == 'Y') $dolist .= empty($dolist) ? 'makeparenttype' : ',makeparenttype';
         $dolists = explode(',', $dolist);
         $jumpUrl = "task_do.php?typeid={$typeid}&aid={$arcID}&dopost={$dolists[0]}&nextdo=".preg_replace("#".$dolists[0]."[,]{0,1}#", '', $dolist);
-        $revalue = "<table width='80%' style='border:1px dashed #cdcdcd;margin-left:20px;margin-bottom:15px' id='tgtable' align='left'><tr><td bgcolor='#EBF5C9'>正在进行相关内容更新，请完成前不要进行其它操作：\r\n</td></tr>\r\n";
+        $revalue = "<table width='80%' style='border:1px dashed #cdcdcd;margin-left:20px;margin-bottom:15px' id='tgtable' align='left'><tr><td bgcolor='#EBF5C9'>正在进行相关文档更新，请完成前不要进行其它操作：\r\n</td></tr>\r\n";
         $revalue .= "<tr><td>\r\n<iframe name='stafrm' frameborder='0' id='stafrm' width='100%' height='200px' src='$jumpUrl'></iframe>\r\n</td></tr>\r\n";
         $revalue .= "</table>";
     } else {

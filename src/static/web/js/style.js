@@ -140,13 +140,13 @@ function ErrorAddSave(id, title) {
             <option value="2">成语运用不当</option>
             <option value="3">专业术语写法不规则</option>
             <option value="4">产品与图片不符</option>
-            <option value="5">事实年代以及内容错误</option>
+            <option value="5">事实年代以及文档错误</option>
             <option value="6">技术参数错误</option>
             <option value="7">其他</option>
     </select>
     </div>
     <div class="form-group">
-    <label for="message-text" class="col-form-label">错误内容：</label>
+    <label for="message-text" class="col-form-label">错误文档：</label>
     <textarea name="iptErr" class="form-control" id="iptErr"></textarea>
     </div>
     <div class="form-group">

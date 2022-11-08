@@ -98,7 +98,7 @@ else if ($dopost == 'save') {
     //返回成功信息
     $msg = "请选择您的后续操作：<a href='archives_add.php?cid=$typeid&channelid=$channelid' class='btn btn-success'>发布新文档</a><a href='archives_edit.php?channelid=$channelid&aid=".$aid."' class='btn btn-success'>修改文档</a><a href='$artUrl' target='_blank'>查看文档</a><a href='content_list.php?channelid=$channelid' class='btn btn-success'>管理文档</a>";
     $wintitle = "成功修改文档";
-    $wecome_info = "内容管理::修改文档";
+    $wecome_info = "文档管理::修改文档";
     $win = new OxWindow();
     $win->AddTitle("成功修改文档");
     $win->AddMsgItem($msg);

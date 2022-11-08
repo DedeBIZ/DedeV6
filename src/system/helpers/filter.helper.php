@@ -10,7 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 /**
- *  去除html中不规则内容字符
+ *  去除html中不规则文档字符
  *
  * @access    public
  * @param     string  $str  需要处理的字符串
@@ -47,7 +47,7 @@ if (!function_exists('HtmlReplace')) {
 /**
  *  修复浏览器XSS hack的函数
  *
- * @param     string   $val  需要处理的内容
+ * @param     string   $val  需要处理的文档
  * @return    string
  */
 if (!function_exists('RemoveXSS')) {
@@ -92,10 +92,10 @@ if (!function_exists('RemoveXSS')) {
     }
 }
 /**
- *  处理禁用HTML但允许换行的内容
+ *  处理禁用HTML但允许换行的文档
  *
  * @access    public
- * @param     string  $msg  需要过滤的内容
+ * @param     string  $msg  需要过滤的文档
  * @return    string
  */
 if (!function_exists('TrimMsg')) {

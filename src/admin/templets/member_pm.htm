@@ -38,11 +38,11 @@
       <td width="20%" align="center">标题</td>
       <td width="5%" align="center">已读</td>
       <td width="10%" align="center">{dede:global name='postuser'/}</td>
-      <td width="35%" align="center">内容</td>
+      <td width="35%" align="center">文档</td>
       <td width="10%" align="center">文件夹</td>
       <td width="10%" align="center">操作</td>
     </tr>
-    {dede:datalist empty='<tr><td colspan="7"><center>暂无内容</center></td></tr>'}
+    {dede:datalist empty='<tr><td colspan="7"><center>暂无文档</center></td></tr>'}
     <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
       <td>{dede:field.sendtime function='GetDateMk(@me)'/}</td>
       <td>{dede:field.subject function='dede_htmlspecialchars(@me)'/}</td>

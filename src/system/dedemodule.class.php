@@ -222,7 +222,7 @@ class DedeModule
         return $filexml;
     }
     /**
-     *  获得系统文件的内容
+     *  获得系统文件的文档
      *  指安装、删除、协议文件
      *
      * @access    public
@@ -300,7 +300,7 @@ class DedeModule
         else  return FALSE;
     }
     /**
-     *  读取文件，返回编码后的文件内容
+     *  读取文件，返回编码后的文件文档
      *
      * @access    public
      * @param     string   $filename  文件名

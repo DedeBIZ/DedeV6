@@ -107,8 +107,8 @@ else if ($dopost == "export") {
         if ($k == 'fieldset') $v = "\r\n$v\r\n";
         $channelconfig .= "<channel:{$k}>$v</channel:{$k}>\r\n";
     }
-    $wintitle = "导出内容模型规则";
-    $wecome_info = "<a href='mychannel_main.php'>内容模型管理</a>::导出内容模型规则";
+    $wintitle = "导出文档模型规则";
+    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::导出文档模型规则";
     $win = new OxWindow();
     $win->Init();
     $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友");
@@ -120,12 +120,12 @@ else if ($dopost == "export") {
 function __ExportIn()
 -----------------*/
 else if ($dopost == "exportin") {
-    $wintitle = "导入内容模型规则";
-    $wecome_info = "<a href='mychannel_main.php'>内容模型管理</a>::导入内容模型规则";
+    $wintitle = "导入文档模型规则";
+    $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::导入文档模型规则";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
     $win->AddHidden("dopost", "exportinok");
-    $win->AddTitle("输入规则内容：导入模型会和原有模型冲突，不过可以在导入后修改");
+    $win->AddTitle("输入规则文档：导入模型会和原有模型冲突，不过可以在导入后修改");
     $win->AddMsgItem("<textarea name='exconfig' style='width:98%;height:300px;word-wrap: break-word;word-break:break-all;'></textarea>");
     $winform = $win->GetWindow("ok");
     $win->Display();
@@ -139,8 +139,8 @@ else if ($dopost == "exportinok") {
     function GotoStaMsg($msg)
     {
         global $wintitle, $wecome_info, $winform;
-        $wintitle = "导入内容模型规则";
-        $wecome_info = "<a href='mychannel_main.php'>内容模型管理</a>::导入内容模型规则";
+        $wintitle = "导入文档模型规则";
+        $wecome_info = "<a href='mychannel_main.php'>文档模型管理</a>::导入文档模型规则";
         $win = new OxWindow();
         $win->Init();
         $win->AddTitle("操作状态提示");

@@ -83,7 +83,7 @@ class Array2form
         }
         return $reval_form;
     }
-    //获取所有的表单内容
+    //获取所有的表单文档
     function GetAll()
     {
         $reval = empty($reval) ? '' : $reval;

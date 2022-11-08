@@ -36,7 +36,7 @@ if ($action == 'edit' || $action == 'newfile') {
     if (!file_exists($templetdird.'/'.$filename)  && $action == 'edit') {
         $action = 'newfile';
     }
-    //读取文件内容
+    //读取文件文档
     //$content = dede_htmlspecialchars(trim(file_get_contents($truePath.$filename)));
     if ($action == 'edit') {
         $fp = fopen($templetdird.'/'.$filename, 'r');

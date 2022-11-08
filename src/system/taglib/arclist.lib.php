@@ -17,7 +17,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @access    public
  * @param     object  $ctag  解析标签
  * @param     object  $refObj  引用对象
- * @return    string  成功后返回解析后的标签内容
+ * @return    string  成功后返回解析后的标签文档
  */
 function lib_arclist(&$ctag, &$refObj)
 {
@@ -26,7 +26,7 @@ function lib_arclist(&$ctag, &$refObj)
     $tagid = '';
     $tagname = $ctag->GetTagName();
     $channelid = $ctag->GetAtt('channelid');
-    //增加对分页内容的处理
+    //增加对分页文档的处理
     $pagesize = $ctag->GetAtt('pagesize');
     if ($pagesize == '') {
         $multi = 0;
@@ -103,7 +103,7 @@ function lib_arclist(&$ctag, &$refObj)
  * @param     string  $noflag  属性标记
  * @param     string  $tagid  标签id
  * @param     string  $pagesize  显示条数
- * @param     string  $isweight  是否需要对检索出来的内容按照weight排序
+ * @param     string  $isweight  是否需要对检索出来的文档按照weight排序
  * @return    string
  */
 function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen=30, $infolen=160, $imgwidth=120, $imgheight=90, $listtype='all', $orderby='default', $keyword='', $innertext='', $arcid=0, $idlist='', $channelid=0, $limit='', $att='', $order='desc', $subday=0, $noflag='',$tagid='', $pagesize=0, $isweight='N',$notypeid=0)
@@ -288,7 +288,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
         if ($idlist != '') {
             $needSaveCache = false;
         }
-        //如果使用的是内容缓存，直接返回结果
+        //如果使用的是文档缓存，直接返回结果
         if ($cfg_cache_type == 'content' && $idlist != '') {
             $idlist = ($idlist == 0 ? '' : $idlist);
             return $idlist;
@@ -402,7 +402,7 @@ function lib_arclistDone (&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlele
             else {
                 $artlist .= '';
             }
-            //进行判断,如果启用排序则内容输出为重新排序后的内容
+            //进行判断,如果启用排序则文档输出为重新排序后的文档
             //var_dump($isweight=='y' && count($orderWeight) == $line);
             $isweight = strtolower($isweight);
             if ($isweight == 'y') {

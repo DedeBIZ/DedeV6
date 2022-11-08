@@ -1,6 +1,6 @@
 <?php
 /**
- * 内容处理函数
+ * 文档处理函数
  *
  * @version        $id:content_batch_up.php 14:31 2010年7月12日 tianya $
  * @package        DedeBIZ.Administrator
@@ -95,7 +95,7 @@ else if ($action == 'delnulltitle') {
     ShowMsg("成功删除 $tdd 条记录", "javascript:;");
     exit();
 }
-//删除空内容文档
+//删除空文档文档
 else if ($action == 'delnullbody') {
     $dsql->SetQuery("SELECT aid FROM `#@__addonarticle` WHERE LENGTH(body) < 10 ");
     $dsql->Execute('x');
@@ -129,7 +129,7 @@ else if ($action == 'move') {
         exit();
     }
     if ($typenew['channeltype'] != $typeold['channeltype']) {
-        ShowMsg("不能把数据移动到内容类型不同的栏目", "javascript:;");
+        ShowMsg("不能把数据移动到文档类型不同的栏目", "javascript:;");
         exit();
     }
     $gwhere .= " And channel='".$typenew['channeltype']."' And title like '%$keyword%'";
@@ -158,7 +158,7 @@ else if ($action == 'move') {
         ShowMsg("完成操作，没移动任何数据", "javascript:;");
     }
 }
-//删除空标题内容
+//删除空标题文档
 else if ($action == 'delnulltitle') {
     $dsql->SetQuery("SELECT id FROM `#@__archives` WHERE trim(title)='' ");
     $dsql->Execute('x');

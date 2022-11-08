@@ -555,7 +555,7 @@ function GetBookUrl($bid, $title, $gdir = 0)
 /**
  *  根据ID生成目录
  *
- * @param     string  $aid  内容ID
+ * @param     string  $aid  文档ID
  * @return    int
  */
 function DedeID2Dir($aid)

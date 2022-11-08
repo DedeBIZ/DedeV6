@@ -125,7 +125,7 @@ class PartView
         $this->ParseTemplet();
     }
     /**
-     *  显示内容
+     *  显示文档
      *
      * @access    public
      * @return    void
@@ -135,7 +135,7 @@ class PartView
         $this->dtp->Display();
     }
     /**
-     *  获取内容
+     *  获取文档
      *
      * @access    public
      * @return    string

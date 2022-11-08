@@ -26,7 +26,7 @@ if ($dopost == 'analyse') {
     include DedeInclude('templets/article_result_same.htm');
     exit();
 }
-//删除选中的内容（只保留一条）
+//删除选中的文档（只保留一条）
 else if ($dopost == 'delsel') {
     require_once(DEDEINC."/typelink/typelink.class.php");
     require_once(dirname(__FILE__)."/inc/inc_batchup.php");

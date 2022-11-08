@@ -10,8 +10,8 @@ function AlertMsg(title, id) {
 	var msgw, msgh, msgbg, msgcolor, titlecolor, titlebg, content;
 	//弹出窗口设置
 	msgw = 600;//窗口宽度 
-	msgbg = "#fff";//内容背景
-	msgcolor = "#545b62";//内容颜色
+	msgbg = "#fff";//文档背景
+	msgcolor = "#545b62";//文档颜色
 	titlecolor = "#254015";//标题颜色
 	titlebg = "#f5f5f5";
 	//遮罩背景设置
@@ -59,7 +59,7 @@ function AlertMsg(title, id) {
 	thObj.style.background = titlebg;
 	var titleStr = "<a class='close' onclick='CloseMsg()'>关闭</a>" + "<span>" + title + "</span>";
 	thObj.innerHTML = titleStr;
-	//创建内容
+	//创建文档
 	var bodyObj = document.createElement("div");
 	bodyObj.setAttribute("id", "msgbody");
 	bodyObj.style.padding = "0px";

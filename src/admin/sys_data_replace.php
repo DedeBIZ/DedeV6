@@ -49,7 +49,7 @@ else if ($action == 'apply') {
         exit();
     }
     if ($rpstring == '') {
-        ShowMsg("请指定被替换内容", "javascript:;");
+        ShowMsg("请指定被替换文档", "javascript:;");
         exit();
     }
     if ($rptype == 'replace') {

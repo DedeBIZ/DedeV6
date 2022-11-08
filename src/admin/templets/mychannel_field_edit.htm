@@ -3,7 +3,7 @@
 <head>
   <meta charset="<?php echo $cfg_soft_lang;?>">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <title>内容模型修改字段</title>
+  <title>文档模型修改字段</title>
   <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -69,10 +69,10 @@
         <td bgcolor="#f5f5f5" colspan="2">
           <table width="98%" cellspacing="0" cellpadding="0" class="table table-borderless">
             <tr>
-              <td width="30%"><a href="mychannel_main.php">内容模型管理</a> &gt; 查看修改字段</td>
+              <td width="30%"><a href="mychannel_main.php">文档模型管理</a> &gt; 查看修改字段</td>
               <td width="70%" align="right">
                 <button type="button" name="ss1" class="btn btn-success btn-sm" onClick="location='mychannel_edit.php?id=<?php echo $id?>&dopost=edit';">当前模型信息</button>
-                <button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">内容模型管理</button>
+                <button type="button" name="ss12" onClick="location='mychannel_main.php';" class="btn btn-success btn-sm">文档模型管理</button>
               </td>
             </tr>
           </table>
@@ -85,8 +85,8 @@
       <?php }?>
       <tr>
         <td>表单提示文字：<br>
-          <span>发布内容时显示的提示文字</span></td>
-        <td><input type="text" name="itemname" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>"> *（发布内容时显示的项名字）</td>
+          <span>发布文档时显示的提示文字</span></td>
+        <td><input type="text" name="itemname" id="itemname" value="<?php echo $ctag->GetAtt('itemname')?>"> *（发布文档时显示的项名字）</td>
       </tr>
       <tr>
         <td width="30%">字段名称：<br>
@@ -139,14 +139,14 @@
             <option value="radio">使用radio选项卡</option>
             <option value="checkbox">checkbox多选框</option>
             <option value="stepselect">联动类型</option>
-            <option value="relation">关联内容</option>
+            <option value="relation">关联文档</option>
             <?php }?>
           </select>
         </td>
       </tr>
       <tr id="_relation" <?php echo $dtype=="relation"? '' : 'style="display:none"';?>> 
-        <td>内容模型：<br>
-          <span>选择关联内容对应的内容模型</span></td>
+        <td>文档模型：<br>
+          <span>选择关联文档对应的文档模型</span></td>
         <td> 
           <select name="channeltype" id="channeltype" class="biz-input-md">
             <?php
@@ -163,12 +163,12 @@
               }
             ?>
           </select>
-          <label><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时候自动更新关联网页内容</label>
+          <label><input type="checkbox" name="relation_automake" id="relation_automake" value="1" <?php echo $ctag->GetAtt('automake')==1? "checked" : "";?>> 发布时候自动更新关联网页文档</label>
         </td>
       </tr>
       <tr>
-        <td>内容是否需要分页符：<br>
-          <span>如果内容需要分页符，不论何种内容，都可以用#P#副标题#e#作为分页符号实现内容分页，但一个模型里仅允许一个这样的字段!</span></td>
+        <td>文档是否需要分页符：<br>
+          <span>如果文档需要分页符，不论何种文档，都可以用#P#副标题#e#作为分页符号实现文档分页，但一个模型里仅允许一个这样的字段!</span></td>
         <td>
           <input name="isnull" type="hidden" value="1">
           <label><input type="radio" name="spage" value="split" <?php if ($ctag->GetAtt('page')=='split') echo "checked='1'";?>> 是</label>

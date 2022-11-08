@@ -75,7 +75,7 @@ function CheckPic($picname)
     }
 }
 /**
- *  判断内容是否生成网页
+ *  判断文档是否生成网页
  *
  * @param     int  $ismake  是否生成
  * @return    string
@@ -91,7 +91,7 @@ function IsHtmlArchives($ismake)
     }
 }
 /**
- *  获得内容的限定级别名称
+ *  获得文档的限定级别名称
  *
  * @param     string  $arcrank  级别名称
  * @return    string
@@ -113,7 +113,7 @@ function GetRankName($arcrank)
     }
 }
 /**
- *  判断内容是否为图片文档
+ *  判断文档是否为图片文档
  *
  * @param     string  $picname  图片名称
  * @return    string

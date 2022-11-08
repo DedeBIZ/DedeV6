@@ -46,22 +46,22 @@
 		}
 		function delFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容");
+			if (qstr == "") ShowMsg("您没选中任何文档");
 			else if (window.confirm('您确定要删除这些评论吗')) location.href = "feedback_main.php?job=del&fid=" + qstr;
 		}
 		function delFeedbackIP() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容");
+			if (qstr == "") ShowMsg("您没选中任何文档");
 			else if (window.confirm('您确定要删除这些评论吗')) location.href = "feedback_main.php?job=delall&fid=" + qstr;
 		}
 		function checkFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容");
+			if (qstr == "") ShowMsg("您没选中任何文档");
 			else location.href = "feedback_main.php?job=check&fid=" + qstr;
 		}
 		function editFeedback() {
 			var qstr = getCheckboxItem();
-			if (qstr == "") ShowMsg("您没选中任何内容");
+			if (qstr == "") ShowMsg("您没选中任何文档");
 			else location.href = "feedback_edit.php?job=edit&fid=" + qstr;
 		}
 	</script>
@@ -86,7 +86,7 @@
 			<tr>
 				<td colspan="6" bgcolor="#f5f5f5">评论管理</td>
 			</tr>
-			{dede:datalist empty='<tr><td colspan="6"><center>暂无内容</center></td></tr>'}
+			{dede:datalist empty='<tr><td colspan="6"><center>暂无文档</center></td></tr>'}
 			<tr>
 				<td width="6%">选择 <input type="checkbox" name="fid" id="fid" value="{dede:field.id/}"></td>
 				<td width="10%">用户：{dede:field.username/} {dede:field.ischeck function="IsCheck(@me)"/}</td>

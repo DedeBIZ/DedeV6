@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 关联内容标签
+ * 关联文档标签
  *
  * @version        $id:relation.lib.php 9:29 2020年9月23日 tianya $
  * @package        DedeBIZ.Taglib
@@ -9,7 +9,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @license        https://www.dedebiz.com/license
  * @link           https://www.dedebiz.com
  */
-//关联内容
+//关联文档
 function lib_relation(&$ctag, &$refObj)
 {
     global $dsql;
@@ -18,13 +18,13 @@ function lib_relation(&$ctag, &$refObj)
     FillAttsDefault($ctag->CAttribute->Items, $attlist);
     extract($ctag->CAttribute->Items, EXTR_SKIP);
     if (get_class($refObj) != "Archives") {
-        return "暂无相关内容";
+        return "暂无相关文档";
     }
     if (empty($refObj->Fields[$name])) {
-        return "暂无相关内容";
+        return "暂无相关文档";
     }
     if (!isset($refObj->ChannelUnit->ChannelFields[$name])) {
-        return "暂无相关内容";
+        return "暂无相关文档";
     }
     if (empty($tablewidth)) $tablewidth = 100;
     if (empty($col)) $col = 1;

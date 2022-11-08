@@ -64,7 +64,7 @@ function CoOnePage($gurl)
         if (isset($inarr[1])) {
             $redatas['description'] = cn_substr(html2text($inarr[1]), $cfg_auot_description);
         }
-        //获取内容
+        //获取文档
         if ($s != '' && $e != '') {
             $redatas['body'] = GetHtmlAreaA($s, $e, $body);
             if ($redatas['body'] != '' && $redatas['description'] == '') {

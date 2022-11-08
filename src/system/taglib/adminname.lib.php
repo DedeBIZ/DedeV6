@@ -15,7 +15,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @access    public
  * @param     object  $ctag  解析标签
  * @param     object  $refObj  引用对象
- * @return    string  成功后返回解析后的标签内容
+ * @return    string  成功后返回解析后的标签文档
  */
 function lib_adminname(&$ctag, &$refObj)
 {

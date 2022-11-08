@@ -2,11 +2,11 @@ download_links_templet.htm,下载地址列表
 flink-add.htm,增加友情链接
 flink-list.htm,友情链接列表
 heightsearch.htm,高级搜索
-list_diyform.htm,自定义表单内容列表
-post_diyform.htm,自定义表单发送内容
+list_diyform.htm,自定义表单文档列表
+post_diyform.htm,自定义表单发送文档
 recommend.htm,文档推荐
 showphoto.htm,图集图片展示页
-view_diyform.htm,自定义表单内容查看
+view_diyform.htm,自定义表单文档查看
 view_msg.htm,权限文档提示信息
 vote.htm,投票模板
 win_templet.htm,通用窗口

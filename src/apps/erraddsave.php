@@ -32,7 +32,7 @@ if ($dopost == "saveedit") {
         echo json_encode(array(
             "code" => -1,
             "data" => null,
-            "msg" => "错误内容或建议不能为空",
+            "msg" => "错误文档或建议不能为空",
         ));
         exit;
     }

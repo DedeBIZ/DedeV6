@@ -321,7 +321,7 @@ class FreeList
         MakeOneTag($this->dtp, $this);
     }
     /**
-     *  解析模板，对内容里的变动进行赋值
+     *  解析模板，对文档里的变动进行赋值
      *
      * @access    public
      * @param     string  $PageNo  页码

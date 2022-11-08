@@ -13,7 +13,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
 $pinyins = array();
 /**
  *  中文截取2，单字节截取模式
- *  如果是request的内容，必须使用这个函数
+ *  如果是request的文档，必须使用这个函数
  *
  * @access    public
  * @param     string  $str  需要截取的字符串
@@ -117,7 +117,7 @@ if (!function_exists('cn_substr_utf8')) {
  *  HTML转换为文本
  *
  * @param    string  $str 需要转换的字符串
- * @param    string  $r   如果$r=0直接返回内容,否则需要使用反斜线引用字符串
+ * @param    string  $r   如果$r=0直接返回文档,否则需要使用反斜线引用字符串
  * @return   string
  */
 if (!function_exists('Html2Text')) {
@@ -137,7 +137,7 @@ if (!function_exists('Html2Text')) {
 /**
  *  文本转HTML
  *
- * @param    string  $txt 需要转换的文本内容
+ * @param    string  $txt 需要转换的文本文档
  * @return   string
  */
 if (!function_exists('Text2Html')) {

@@ -23,13 +23,13 @@ $actionSearch[0] = array(
         ),
         1  =>  array(
             'title' => '等审核的文档',
-            'description' => '所有内容模型发表的未经审核内容列表',
+            'description' => '所有文档模型发表的未经审核文档列表',
             'purview' => 'a_Check,a_AccCheck',
             'linkurl' => 'content_list.php?arcrank=-1'
         ),
         2  =>  array(
             'title' => '我发布的文档',
-            'description' => '现在登录的管理员所发表的所有内容模型中的文档',
+            'description' => '现在登录的管理员所发表的所有文档模型中的文档',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'content_list.php?mid=$cuserLogin->userID'
         ),
@@ -40,7 +40,7 @@ $actionSearch[0] = array(
             'linkurl' => 'feedback_main.php'
         ),
         4  =>  array(
-            'title' => '内容回收站',
+            'title' => '文档回收站',
             'description' => '如果在"系统配置变量"的"核心设置"中开启了"文档回收站是否开启功能"，后台删除的文档将会存放在此处',
             'purview' => 'a_List,a_AccList,a_MyList',
             'linkurl' => 'recycling.php'
@@ -48,12 +48,12 @@ $actionSearch[0] = array(
     )
 );
 $actionSearch[1] = array(
-    'title' => '内容管理',
-    'description' => '网站对应内容模型的文档管理',
+    'title' => '文档管理',
+    'description' => '网站对应文档模型的文档管理',
     'soniterm' => array(
         0  =>  array(
             'title' => '专题管理',
-            'description' => '所有专题内容的管理',
+            'description' => '所有专题文档的管理',
             'purview' => 'spec_New',
             'linkurl' => 'content_s_list.php'
         ),
@@ -84,12 +84,12 @@ $actionSearch[2] = array(
     )
 );
 $actionSearch[3] = array(
-    'title' => '栏目模型',
+    'title' => '文档模型',
     'description' => '所有上传的附件管理',
     'soniterm' => array(
         0  =>  array(
-            'title' => '内容模型管理',
-            'description' => '可以对现有商品、软件、图片集、普通文档、专题、分类信息等模型就行管理，也可以创建新的内容模型',
+            'title' => '文档模型管理',
+            'description' => '可以对现有商品、软件、图片集、普通文档、专题、分类信息等模型就行管理，也可以创建新的文档模型',
             'purview' => 'c_List',
             'linkurl' => 'mychannel_main.php'
         ),
@@ -131,7 +131,7 @@ $actionSearch[4] = array(
         ),
         1  =>  array(
             'title' => '文档批量维护',
-            'description' => '批量的对某个栏目或者全部栏目的内容进行审核文档、更新网页、移动文档、删除文档',
+            'description' => '批量的对某个栏目或者全部栏目的文档进行审核文档、更新网页、移动文档、删除文档',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'content_batch_up.php'
         ),
@@ -166,8 +166,8 @@ $actionSearch[4] = array(
             'linkurl' => 'tags_main.php'
         ),
         7  =>  array(
-            'title' => '数据库内容替换',
-            'description' => '可以对数据库中的某张表中的字段进行内容的批量替换',
+            'title' => '数据库文档替换',
+            'description' => '可以对数据库中的某张表中的字段进行文档的批量替换',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_data_replace.php'
         ),

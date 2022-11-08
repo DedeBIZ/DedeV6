@@ -43,7 +43,7 @@ if ($dopost == "delete") {
         $vt = new DedeVote($aid);
         $vote_file = DEDEDATA."/vote/vote_".$aid.".js";
         $vote_content = $vt->GetVoteForm();
-        $vote_content = preg_replace(array("#/#", "#([\r\n])[\s]+#"), array("\/", " "), $vote_content);        //取出内容中的空白字符并进行转义
+        $vote_content = preg_replace(array("#/#", "#([\r\n])[\s]+#"), array("\/", " "), $vote_content);        //取出文档中的空白字符并进行转义
         $vote_content = 'document.write("'.$vote_content.'");';
         file_put_contents($vote_file, $vote_content);
         ShowMsg('成功修改一组投票!', $ENV_GOBACK_URL);

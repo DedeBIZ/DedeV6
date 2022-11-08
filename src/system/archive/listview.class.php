@@ -472,7 +472,7 @@ class ListView
         MakeOneTag($this->dtp, $this);
     }
     /**
-     *  解析模板，对内容里的变动进行赋值
+     *  解析模板，对文档里的变动进行赋值
      *
      * @access    public
      * @param     int  $PageNo  页数
@@ -481,7 +481,7 @@ class ListView
      */
     function ParseDMFields($PageNo, $ismake = 1)
     {
-        //替换第二页后的内容
+        //替换第二页后的文档
         if (($PageNo > 1 || strlen($this->Fields['content']) < 10) && !$this->IsReplace) {
             $this->dtp->SourceString = str_replace('[cmsreplace]', 'display:none', $this->dtp->SourceString);
             $this->IsReplace = true;

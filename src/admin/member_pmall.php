@@ -24,7 +24,7 @@ if ($action == "post") {
         ShowMsg('短信标题不能为空!', '-1');
         exit();
     } else if (!isset($message) || empty($message)) {
-        ShowMsg('请填写短信内容!', '-1');
+        ShowMsg('请填写短信文档!', '-1');
         exit();
     }
     $rs = $dsql->ExecuteNoneQuery("INSERT INTO `#@__member_pms` (floginid,fromid,toid,tologinid,folder,hasview,subject,sendtime,writetime,message,isadmin) VALUES ('$floginid','$fromid','$toid','$tologinid','outbox','0','$subject','$sendtime','$writetime','$message','1');");

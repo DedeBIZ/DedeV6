@@ -9,10 +9,10 @@
  * @link           https://www.dedebiz.com
  */
 /**
- *  混淆字符串内容
+ *  混淆字符串文档
  *
  * @access    public
- * @param     string  $body  内容
+ * @param     string  $body  文档
  * @return    string
  */
 if (!function_exists('RndString')) {

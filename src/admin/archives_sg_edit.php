@@ -43,7 +43,7 @@ else if ($dopost == 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布内容的表单是否合法", "-1");
+        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -57,7 +57,7 @@ else if ($dopost == 'save') {
             CheckArcAdmin($id, $cuserLogin->getUserID());
         }
     }
-    //对保存的内容进行处理
+    //对保存的文档进行处理
     if (empty($flags)) $flag = '';
     else $flag = join(',', $flags);
     $title = cn_substrR($title, $cfg_title_maxlen);

@@ -131,7 +131,7 @@ function jsScript($js)
  * @access    public
  * @param     string  $fname 表单名称
  * @param     string  $fvalue 表单值
- * @param     string  $nheight 内容高度
+ * @param     string  $nheight 文档高度
  * @param     string  $etype 编辑器类型
  * @param     string  $gtype 获取值类型
  * @param     string  $isfullpage 是否全屏

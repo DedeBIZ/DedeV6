@@ -170,7 +170,7 @@ else if ($dopost == "GetJs") {
     exit();
 }
 /*-----------
-获得子类的内容
+获得子类的文档
 function GetSunListsMenu();
 -----------*/
 else if ($dopost == "GetSunListsMenu") {
@@ -182,7 +182,7 @@ else if ($dopost == "GetSunListsMenu") {
     $tu->LogicListAllSunType($cid, "　");
 }
 /*-----------
-获得子类的内容
+获得子类的文档
 function GetSunLists();
 -----------*/
 else if ($dopost == "GetSunLists") {

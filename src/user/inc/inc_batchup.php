@@ -29,7 +29,7 @@ function DelArc($aid)
     if (!is_array($arcRow)) {
         return false;
     }
-    //删除数据库的内容
+    //删除数据库的文档
     $dsql->ExecuteNoneQuery(" DELETE FROM `#@__arctiny` WHERE id='$aid' ");
     if ($arcRow['addtable'] != '') {
         //判断删除文档附件变量是否开启；
@@ -115,7 +115,7 @@ function DelArc($aid)
     return TRUE;
 }
 /**
- *  删除不带主表内容模型的数据
+ *  删除不带主表文档模型的数据
  *
  * @access    public
  * @param     int  $aid  文档id
@@ -133,7 +133,7 @@ function DelArcSg($aid)
     if (!is_array($arcRow)) {
         return FALSE;
     }
-    //删除数据库的内容
+    //删除数据库的文档
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__arctiny` WHERE id='$aid' ");
     $dsql->ExecuteNoneQuery("DELETE FROM `".$arcRow['addtable']."` WHERE aid='$aid' ");
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__feedback` WHERE aid='$aid'");

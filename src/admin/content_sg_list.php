@@ -15,7 +15,7 @@ $mid = isset($mid) ? intval($mid) : 0;
 if (!isset($keyword)) $keyword = '';
 if (!isset($arcrank)) $arcrank = '';
 if (empty($cid) && empty($channelid)) {
-    ShowMsg("该页面必须指定栏目id或内容模型id才能浏览", "javascript:;");
+    ShowMsg("该页面必须指定栏目id或文档模型id才能浏览", "javascript:;");
     exit();
 }
 //检查权限许可，总权限
@@ -26,7 +26,7 @@ if (TestPurview('a_List')) {
     if ($cid == 0) {
         $ucid = $cid = $cuserLogin->getUserChannel();
     } else {
-        CheckCatalog($cid, "您无权浏览非指定栏目的内容");
+        CheckCatalog($cid, "您无权浏览非指定栏目的文档");
     }
 }
 $adminid = $cuserLogin->getUserID();

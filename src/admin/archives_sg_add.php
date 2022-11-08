@@ -46,7 +46,7 @@ else if ($dopost == 'save') {
         exit();
     }
     if (empty($channelid)) {
-        ShowMsg("文档为非指定的类型，请检查您发布内容的表单是否合法", "-1");
+        ShowMsg("文档为非指定的类型，请检查您发布文档的表单是否合法", "-1");
         exit();
     }
     if (!CheckChannel($typeid, $channelid)) {
@@ -56,7 +56,7 @@ else if ($dopost == 'save') {
     if (!TestPurview('a_New')) {
         CheckCatalog($typeid, "对不起，您没有操作栏目 {$typeid} 的权限");
     }
-    //对保存的内容进行处理
+    //对保存的文档进行处理
     if (empty($writer)) $writer = $cuserLogin->getUserName();
     if (empty($source)) $source = '未知';
     if (empty($flags)) $flag = '';

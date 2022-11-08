@@ -111,7 +111,7 @@ if ($dopost == 'bak') {
             $j++;
         }
         $fsd = $j - 1;
-        //读取表的内容
+        //读取表的文档
         $dsql->SetQuery("SELECT * FROM `$nowtable` ");
         $dsql->Execute();
         $m = 0;

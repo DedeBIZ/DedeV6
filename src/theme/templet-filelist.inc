@@ -1,12 +1,12 @@
 advancedsearch.htm,高级搜索模板
-article_article.htm,文档内容模板
-article_default.htm,自定义文档内容模板
-article_default_sg.htm,自定义表单文档内容模板
-article_image.htm,图片集内容模板
-article_infos.htm,分类信息内容模板
-article_shop.htm,商品内容模板
-article_soft.htm,软件内容模板
-article_spec.htm,专题内容模板
+article_article.htm,文档文档模板
+article_default.htm,自定义文档文档模板
+article_default_sg.htm,自定义表单文档文档模板
+article_image.htm,图片集文档模板
+article_infos.htm,分类信息文档模板
+article_shop.htm,商品文档模板
+article_soft.htm,软件文档模板
+article_spec.htm,专题文档模板
 foot.htm,底部模板
 head.htm,头部模板
 index.htm,主页模板
@@ -29,5 +29,5 @@ list_shop.htm,商城列表模板
 search.htm,普通搜索模板
 singlepage.htm,单独页面模板
 tag.htm,标签首页模板
-taglist.htm,特定标签内容列表模板
+taglist.htm,特定标签文档列表模板
 top.htm,顶部模板

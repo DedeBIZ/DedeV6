@@ -108,7 +108,7 @@ class Archives
                 $query = "SELECT * FROM `{$this->ChannelUnit->ChannelInfos['addtable']}` WHERE `aid` = '$aid'";
                 $this->addTableRow = $this->dsql->GetOne($query);
             }
-            //issystem==-1 表示单表模型，单表模型不支持redirecturl这类参数，因此限定内容普通模型才进行下面查询
+            //issystem==-1 表示单表模型，单表模型不支持redirecturl这类参数，因此限定文档普通模型才进行下面查询
             if ($this->ChannelUnit->ChannelInfos['addtable'] != '' && $this->ChannelUnit->ChannelInfos['issystem'] != -1) {
                 if (is_array($this->addTableRow)) {
                     $this->Fields['redirecturl'] = $this->addTableRow['redirecturl'];
@@ -129,7 +129,7 @@ class Archives
         $this->__construct($aid);
     }
     /**
-     *  解析附加表的内容
+     *  解析附加表的文档
      *
      * @access    public
      * @return    void
@@ -490,7 +490,7 @@ class Archives
             if ($GLOBALS['cfg_jump_once'] == 'N') {
                 $pageHtml = "<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$GLOBALS['cfg_soft_lang']."\">\r\n<title>".$this->Fields['title']."</title>\r\n";
                 $pageHtml .= "<meta http-equiv=\"refresh\" content=\"3;URL=".$this->Fields['redirecturl']."\">\r\n</head>\r\n<body>\r\n";
-                $pageHtml .= "现在正在转向：".$this->Fields['title']."，请稍候<br><br>\r\n转向内容简介：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
+                $pageHtml .= "现在正在转向：".$this->Fields['title']."，请稍候<br><br>\r\n转向文档简介：".$this->Fields['description']."\r\n</body>\r\n</html>\r\n";
                 echo $pageHtml;
             } else {
                 header("location:{$this->Fields['redirecturl']}");
@@ -553,7 +553,7 @@ class Archives
         MakeOneTag($this->dtp, $this, 'N');
     }
     /**
-     *  解析模板，对内容里的变动进行赋值
+     *  解析模板，对文档里的变动进行赋值
      *
      * @access    public
      * @param     string  $pageNo  页码数

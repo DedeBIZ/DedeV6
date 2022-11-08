@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 文档内容调用标签
+ * 文档文档调用标签
  *
  * @version        $id:arccontent.lib.php 2020年9月14日 tianya $
  * @package        DedeBIZ.Taglib
@@ -10,7 +10,7 @@ if (!defined('DEDEINC')) exit('dedebiz');
  * @link           https://www.dedebiz.com
  */
 require_once(DEDEINC."/channelunit.class.php");
-//这是一个用来调用文档内容的标签，只是提供一种方法，不建议太多地方调用，毕竟比较损耗性能
+//这是一个用来调用文档文档的标签，只是提供一种方法，不建议太多地方调用，毕竟比较损耗性能
 /*
 用法：
 {dede:arccontent type='pre|next'}
@@ -24,7 +24,7 @@ function lib_arccontent(&$ctag, &$refObj)
     $type = $ctag->GetAtt('type');
     $revalue = "";
     if (in_array($type, array("pre", "next")) &&  get_class($refObj) === "Archives") {
-        //在内容页面获取上一篇下一篇内容
+        //在文档页面获取上一篇下一篇文档
         $asql = "WHERE id<{$refObj->Fields['id']}";
         if ($type === "next") {
             $asql = "WHERE id>{$refObj->Fields['id']}";
@@ -34,7 +34,7 @@ function lib_arccontent(&$ctag, &$refObj)
         $fields = $dsql->GetOne("SELECT * FROM `{$channel->ChannelInfos['addtable']}` WHERE aid = {$row['id']}");
     }
     if (!empty($aid)) {
-        //指定ID获取内容
+        //指定ID获取文档
         $row =  $dsql->GetOne("SELECT id,channel FROM `#@__arctiny` WHERE id={$aid} AND arcrank>-1");
         $channel = new ChannelUnit($row['channel'], $aid);
         $fields = $dsql->GetOne("SELECT * FROM `{$channel->ChannelInfos['addtable']}` WHERE aid = {$row['id']}");

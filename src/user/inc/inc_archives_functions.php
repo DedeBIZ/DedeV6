@@ -16,7 +16,7 @@ CheckNotAllow();
 /**
  *  获得HTML里的外部资源，针对图集
  *
- * @param     string  $body  内容
+ * @param     string  $body  文档
  * @param     string  $rfurl  地址
  * @param     string  $firstdd  第一个缩略图
  * @return    string 
@@ -262,7 +262,7 @@ function MakeArt($aid, $ismakesign = FALSE)
  *  处理网页文本、自动摘要、自动获取缩略图等
  *
  * @access    public
- * @param     string  $body  文档内容
+ * @param     string  $body  文档文档
  * @param     string  $description  描述
  * @param     string  $dtype  类型
  * @return    string
@@ -289,7 +289,7 @@ function AnalyseHtmlBody($body, &$description, $dtype = '')
  *  获得文档body里的外部资源
  *
  * @access    public
- * @param     string  $body  内容
+ * @param     string  $body  文档
  * @return    string
  */
 function GetCurContent(&$body)

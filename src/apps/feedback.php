@@ -177,7 +177,7 @@ else if ($action == 'send') {
     if (empty($feedbacktype) || !in_array($feedbacktype, array('good', 'bad'))) {
         $feedbacktype = 'feedback';
     }
-    //保存评论内容
+    //保存评论文档
     if ($comtype == 'comments' || $comtype == 'reply') {
         $arctitle = empty($title) ? "" : addslashes($title);
         $typeid = intval($typeid);

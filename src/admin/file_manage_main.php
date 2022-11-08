@@ -15,7 +15,7 @@ $inpath = "";
 $activepath = str_replace("..", "", $activepath);
 $activepath = preg_replace("#^\/{1,}#", "/", $activepath);
 if (DEDEBIZ_SAFE_MODE && !preg_match("#^/static#",$activepath)) {
-    ShowMsg("安全模式下仅允许查看编辑static目录内容", -1);
+    ShowMsg("安全模式下仅允许查看编辑static目录文档", -1);
     exit;
 }
 if ($activepath == "/") $activepath = "";

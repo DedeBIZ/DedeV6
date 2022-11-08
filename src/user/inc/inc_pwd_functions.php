@@ -36,7 +36,7 @@ function random($length, $numeric = 0)
  *
  * @param     string  $email  E-mail地址
  * @param     string  $mailtitle  E-mail标题
- * @param     string  $mailbody  E-mail内容
+ * @param     string  $mailbody  E-mail文档
  * @param     string  $headers 头信息
  * @return    void
  */

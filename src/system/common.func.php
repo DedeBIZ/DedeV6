@@ -20,7 +20,7 @@ define('ALERT_COLORS', array(
     ALERT_DARK => array('#d3d3d4','#bcbebf','#141619'),
 ));
 define("ALERT_TPL", '<div class="alert alert-danger mb-0">~content~</div>');
-//$content:内容 $type:alert类型
+//$content:文档 $type:alert类型
 function DedeAlert($content, $type = ALERT_PRIMARY)
 {
     $content = htmlspecialchars($content);
@@ -229,7 +229,7 @@ if (!function_exists('CheckSql')) {
 }
 /**
  *  载入小助手,系统默认载入小助手
- *  在/data/helper.inc.php中进行默认小助手初始化的设置，创建一个示例为test.helper.php文件基本内容如下：
+ *  在/data/helper.inc.php中进行默认小助手初始化的设置，创建一个示例为test.helper.php文件基本文档如下：
  *  <code>
  *  if (!function_exists('HelloDede'))
  *  {
