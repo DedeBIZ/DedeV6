@@ -27,22 +27,22 @@
 	</script>
 </head>
 <body>
-<div id="loaddiv" class="d-none text-center"><img src="../static/web/img/loadinglit.gif"></div>
-<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
-  <tr>
-    <td bgcolor="#f5f5f5"><a href="sys_admin_user.php">管理员帐号</a> &gt; 绩效统计</td>
-  </tr>
-  <tr>
-    <td class="p-0 border-top-0">
-    <?php
-    $dsql->Execute('me', 'SELECT * FROM `#@__admin` ORDER BY id ASC');
-    while( $arr = $dsql->GetArray('me') )
-    {
-  	  echo "<div id='userct{$arr['id']}' class='d-none text-center'><img src='../static/web/img/loadinglit.gif'></div><script>LoadUser({$arr['id']});</script>";
-    }
-    ?>
-    </td>
-  </tr>
-</table>
+	<div id="loaddiv" style="display:none"><center><img src="../static/web/img/loadinglit.gif"></center></div>
+	<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
+	  <tr>
+	    <td bgcolor="#f5f5f5"><a href="sys_admin_user.php">管理员帐号</a> &gt; 绩效统计</td>
+	  </tr>
+	  <tr>
+	    <td class="p-0 border-top-0">
+	    <?php
+	    $dsql->Execute('me', 'SELECT * FROM `#@__admin` ORDER BY id ASC');
+	    while( $arr = $dsql->GetArray('me') )
+	    {
+	  	  echo "<div id='userct{$arr['id']}'></div><script>LoadUser({$arr['id']});</script>";
+	    }
+	    ?>
+	    </td>
+	  </tr>
+	</table>
 </body>
 </html>
