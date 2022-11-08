@@ -127,23 +127,20 @@ body.hidemenu .body-right {
 	top:60px;
 	left:0;
 	bottom:0;
-	width:230px;
-	z-index:7
+	width:230px
 }
 .body-right {
 	position:absolute;
 	right:0;
 	top:60px;
-	bottom:0;
-	z-index:7
+	bottom:0
 }
 .main,.menu {
 	height:100%
 }
 .main iframe,.menu iframe {
 	width:100%;
-	height:100%;
-	z-index:20
+	height:99%
 }
 .head {
 	width:100%;
