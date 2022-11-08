@@ -60,7 +60,7 @@ if (is_array($tag) && count($tag) > 0) {
 
     if ($ntotalpage <= $maxpagesize) {
         $dlist->MakeHtml();
-        $finishType = TRUE; //生成一个TAG完成
+        $finishType = TRUE; //生成一个标签完成
     } else {
         $reurl = $dlist->MakeHtml($mkpage, $maxpagesize);
         $finishType = FALSE;
@@ -75,12 +75,12 @@ if (is_array($tag) && count($tag) > 0) {
         $dlist->MakeHtml(1, 10);
         $reurl = '..'.$tagsdir;
         if ($upall == 1) {
-            ShowMsg("更新标签完成，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
+            ShowMsg("完成所有标签更新，<a href='$reurl' target='_blank'>浏览标签页</a>", "javascript:;");
         } else {
             $query = "UPDATE `#@__tagindex` SET mktime=uptime WHERE id='$ctagid' ";
             $dsql->ExecuteNoneQuery($query);
             $reurl .= '/'.$ctagid;
-            ShowMsg("更新标签：".$tag['tag']."，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
+            ShowMsg("更新标签".$tag['tag']."，<a href='$reurl' target='_blank'>浏览标签</a>", "javascript:;");
         }
         exit();
     } else {
@@ -93,12 +93,12 @@ if (is_array($tag) && count($tag) > 0) {
                 $nextpage = 0;
             }
             $gourl = "makehtml_taglist_action.php?maxpagesize=$maxpagesize&tagid=$tagid&pageno=$nextpage&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
-            ShowMsg("成功生成标签：".$tag['tag']."，继续执行任务", $gourl, 0, 100);
+            ShowMsg("更新标签".$tag['tag']."，继续执行任务", $gourl, 0, 100);
             exit();
         } else {
             //继续当前这个
             $gourl = "makehtml_taglist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&tagid=$tagid&pageno=$pageno&upall=$upall&ctagid=$ctagid&startid=$startid&endid=$endid&mktime=$mktime";
-            ShowMsg("成功生成标签：".$tag['tag']."，继续执行任务", $gourl, 0, 100);
+            ShowMsg("更新标签".$tag['tag']."，继续执行任务", $gourl, 0, 100);
             exit();
         }
     }

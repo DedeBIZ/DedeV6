@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成自由列表操作
+ * 更新自由列表操作
  *
  * @version        $id:makehtml_freelist_action.php 9:11 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
@@ -28,7 +28,7 @@ $totalpage = count($idArray);
 if (isset($idArray[$pageno])) {
     $lid = $idArray[$pageno];
 } else {
-    ShowMsg("完成所有文件创建", 'javascript:;');
+    ShowMsg("完成所有文件更新", 'javascript:;');
     exit();
 }
 $lv = new FreeList($lid);
@@ -50,14 +50,14 @@ if ($ntotalpage <= $maxpagesize) {
 $lv->Close();
 $nextpage = $pageno + 1;
 if ($nextpage == $totalpage) {
-    ShowMsg("完成所有文件创建", 'javascript:;');
+    ShowMsg("完成所有文件更新", 'javascript:;');
 } else {
     if ($finishType) {
         $gourl = "makehtml_freelist_action.php?maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$nextpage";
-        ShowMsg("创建列表：".$tid."，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新列表".$tid."，继续执行任务", $gourl, 0, 100);
     } else {
         $gourl = "makehtml_freelist_action.php?mkpage=$mkpage&maxpagesize=$maxpagesize&startid=$startid&endid=$endid&pageno=$pageno";
-        ShowMsg("创建列表：".$tid."，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新列表".$tid."，继续执行任务", $gourl, 0, 100);
     }
 }
 $dsql->ExecuteNoneQuery("UPDATE `#@__freelist` SET nodefault='1' where aid='$startid';");

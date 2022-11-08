@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成列表栏目操作
+ * 更新列表栏目操作
  *
  * @version        $id:makehtml_list_action.php 11:09 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
@@ -21,7 +21,7 @@ if (!isset($uppage)) $uppage = 0;
 if (empty($maxpagesize)) $maxpagesize = 30;
 $adminID = $cuserLogin->getUserID();
 //检测获取所有栏目id
-//普通生成或一键更新时更新所有栏目
+//普通更新或一键更新时更新所有栏目
 if ($gotype == '' || $gotype == 'mkallct') {
     if ($upnext == 1 || $typeid == 0) {
         if ($typeid > 0) {
@@ -48,10 +48,10 @@ if (isset($idArray[$pageno])) {
     $tid = $idArray[$pageno];
 } else {
     if ($gotype == '') {
-        ShowMsg("完成所有列表更新", "javascript:;");
+        ShowMsg("完成所有栏目更新", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg("完成所有栏目列表更新，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目更新，最后数据优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 }
@@ -63,7 +63,7 @@ $reurl = '';
 //更新数组所记录的栏目
 if (!empty($tid)) {
     if (!isset($cfg_Cs[$tid])) {
-        ShowMsg('没有该栏目数据, 可能缓存文件没有更新, 请检查是否有写入权限', 'javascript:;');
+        ShowMsg('没有该栏目数据，可能缓存文件没有更新，请检查是否有写入权限', 'javascript:;');
         exit();
     }
     if ($cfg_Cs[$tid][1] > 0) {
@@ -95,20 +95,20 @@ if ($nextpage >= $totalpage && $finishType) {
         if (empty($reurl)) {
             $reurl = '../apps/list.php?tid='.$tid;
         }
-        ShowMsg("完成所有栏目列表更新，<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
+        ShowMsg("完成所有栏目更新，<a href='$reurl' target='_blank'>浏览栏目</a>", "javascript:;");
         exit();
     } else if ($gotype == 'mkall' || $gotype == 'mkallct') {
-        ShowMsg("完成所有栏目列表更新，现在作最后数据优化", "makehtml_all.php?action=make&step=10");
+        ShowMsg("完成所有栏目更新，最后数据优化", "makehtml_all.php?action=make&step=10");
         exit();
     }
 } else {
     if ($finishType) {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$nextpage";
-        ShowMsg("创建栏目：".$tid."，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新栏目".$tid."，继续执行任务", $gourl, 0, 100);
         exit();
     } else {
         $gourl = "makehtml_list_action.php?gotype={$gotype}&uppage=$uppage&mkpage=$mkpage&maxpagesize=$maxpagesize&typeid=$typeid&pageno=$pageno";
-        ShowMsg("创建栏目：".$tid."，继续执行任务", $gourl, 0, 100);
+        ShowMsg("更新栏目".$tid."，继续执行任务", $gourl, 0, 100);
         exit();
     }
 }

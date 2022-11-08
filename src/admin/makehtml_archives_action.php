@@ -1,6 +1,6 @@
 <?php
 /**
- * 生成文档操作
+ * 更新文档操作
  *
  * @version        $id:makehtml_archives_action.php 9:11 2010年7月19日 tianya $
  * @package        DedeBIZ.Administrator
@@ -53,7 +53,7 @@ if ($totalnum == 0) {
     //清空缓存
     $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` ");
 }
-//获取记录，并生成网页
+//获取记录，并更新网页
 if ($totalnum > $startdd + $pagesize) {
     $limitSql = " LIMIT $startdd,$pagesize";
 } else {
@@ -61,7 +61,7 @@ if ($totalnum > $startdd + $pagesize) {
 }
 $tjnum = $startdd;
 if (empty($sstime)) $sstime = time();
-//如果生成数量大于500，并且没选栏目，按栏目排序生成
+//如果更新数量大于500，并且没选栏目，按栏目排序更新
 if ($totalnum > 500 && empty($typeid)) {
     $dsql->Execute('out', "SELECT id FROM `#@__arctiny` $idsql ORDER BY typeid ASC $limitSql");
 } else {
@@ -80,7 +80,7 @@ $ttime = number_format(($ttime / 60), 2);
 //返回提示信息
 $tjlen = $totalnum > 0 ? ceil(($tjnum / $totalnum) * 100) : 100;
 $tjsta = "<div style='width:260px;height:16px;text-align:left;border:1px solid #1eb867;border-radius:.2rem'><div style='max-width:260px;width:$tjlen%;height:16px;background:#1eb867'></div></div>";
-$tjsta .= "<br>到达位置：".($startdd + $pagesize)."，用时：$ttime 分钟<br>完成更新文档总数 $tjlen %";
+$tjsta .= "<br>到达位置".($startdd + $pagesize)."，用时{$ttime}分钟<br>完成更新文档总数$tjlen%";
 //速度测试
 if ($tjnum < $totalnum) {
     $nurl  = "makehtml_archives_action.php?endid=$endid&startid=$startid&typeid=$typeid";
@@ -90,12 +90,12 @@ if ($tjnum < $totalnum) {
     exit();
 } else {
     if ($typeid != '') {
-        ShowMsg("更新文档：$totalnum，用时：{$ttime} 分钟，现转向当前栏目更新", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
+        ShowMsg("更新文档$totalnum，用时{$ttime}分钟，开始更新栏目", "makehtml_list_action.php?typeid=$typeid&uptype=all&maxpagesize=50&upnext=1");
     } else {
         if ($uptype == '') {
-            ShowMsg("更新文档：$totalnum，用时：{$ttime} 分钟，完成所有所有任务", "javascript:;");
+            ShowMsg("更新文档$totalnum，用时{$ttime}分钟，完成所有文档更新", "javascript:;");
         } else {
-            ShowMsg("完成更新文档任务，现在开始进行主页更新", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
+            ShowMsg("完成所有文档更新，开始更新主页", "makehtml_all.php?action=make&step=3&uptype=$uptype&mkvalue=$mkvalue");
         }
     }
 }
