@@ -147,7 +147,7 @@ if (!function_exists('GetIndexKey')) {
  * @param     string  $arcrank  权限值
  * @param     int  $typeid  栏目id
  * @param     int  $sortrank  排序id
- * @param     string  $tags  tag标签
+ * @param     string  $tags  标签
  * @return    string
  */
 if (!function_exists('UpIndexKey')) {
@@ -187,7 +187,7 @@ if (!function_exists('UpIndexKey')) {
  *  插入Tags
  *
  * @access    public
- * @param     string  $tag  tag标签
+ * @param     string  $tag  标签
  * @param     int  $aid  文档AID
  * @return    void
  */

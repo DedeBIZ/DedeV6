@@ -1,7 +1,7 @@
 text,单行文本(varchar)
 textchar,单行文本(char)
 multitext,多行文本
-htmltext,HTML文本
+htmltext,网页文本
 textdata,HTML形式保存数据
 int,整数类型
 float,小数类型

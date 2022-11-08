@@ -506,7 +506,7 @@ function PrintAutoFieldsEdit(&$fieldset, &$fieldValues, $loadtype = 'all')
     echo "<input type='hidden' name='dede_addonfields' value=\"".$dede_addonfields."\">\r\n";
 }
 /**
- * 处理HTML文本
+ * 处理网页文本
  * 删除非站外链接、自动摘要、自动获取缩略图
  *
  * @access    public

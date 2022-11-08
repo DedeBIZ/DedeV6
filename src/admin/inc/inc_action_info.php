@@ -160,7 +160,7 @@ $actionSearch[4] = array(
             'linkurl' => 'article_description_main.php'
         ),
         6  =>  array(
-            'title' => 'Tag标签管理',
+            'title' => '标签管理',
             'description' => '对整个网站的tag进行批量的维护',
             'purview' => 'sys_Keyword',
             'linkurl' => 'tags_main.php'

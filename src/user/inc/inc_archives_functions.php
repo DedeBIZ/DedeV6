@@ -259,7 +259,7 @@ function MakeArt($aid, $ismakesign = FALSE)
     return $reurl;
 }
 /**
- *  处理HTML文本、自动摘要、自动获取缩略图等
+ *  处理网页文本、自动摘要、自动获取缩略图等
  *
  * @access    public
  * @param     string  $body  文档内容

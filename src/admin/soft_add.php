@@ -118,7 +118,7 @@ else if ($dopost == 'save') {
                 $vs = explode(',', $v);
                 if (!isset(${$vs[0]})) {
                     ${$vs[0]} = '';
-                } else if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //HTML文本特殊处理
+                } else if ($vs[1] == 'htmltext' || $vs[1] == 'textdata') //网页文本特殊处理
                 {
                     ${$vs[0]} = AnalyseHtmlBody(${$vs[0]}, $description, $litpic, $keywords, $vs[1]);
                 } else {
