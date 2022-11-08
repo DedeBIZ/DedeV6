@@ -75,7 +75,7 @@ class TypeUnit
      *  读出所有分类,在类目管理页(list_type)中使用
      *
      * @access    public
-     * @param     int   $channel  频道id
+     * @param     int   $channel  栏目id
      * @param     int   $nowdir  当前操作ID
      * @return    string
      */
@@ -127,7 +127,7 @@ class TypeUnit
                 echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
                 echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
             }
-            //带封面的频道
+            //带封面的栏目
             else if ($ispart == 1) {
                 echo "<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">";
                 echo "<td class='biz-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'><i id='img".$id."' onClick=\"LoadSuns('suns".$id."',$id);\" class='fa fa-plus-square-o'></i><input type='checkbox' name='tids[]' value='{$id}' class='mr-3 ml-3'><span class='btn btn-warning btn-xs'>封面</span>{$nss}<a href='catalog_do.php?cid=".$id."&dopost=listArchives'><span class='mr-3 ml-3'>".$typeName."</span></a>[id：".$id."]<a onclick=\"AlertMsg('快捷编辑窗口','$id');\" href=\"javascript:;\"><i class='fa fa-pencil-square-o'></i></a>";
@@ -210,7 +210,7 @@ class TypeUnit
                     echo "<a href='catalog_del.php?id={$id}&typeoldname=".urlencode($typeName)."' title='删除'><i class='btn btn-sm fa fa-trash'></i></a>";
                     echo "<input type='text' name='sortrank{$id}' value='{$rank}' style='width:30px;text-align:center'></td></tr></table></td></tr>";
                 }
-                //封面频道
+                //封面栏目
                 else if ($ispart == 1) {
                     echo "<tr onMouseMove=\"javascript:this.bgColor='#fbfce2';\" onMouseOut=\"javascript:this.bgColor='#ffffff';\">";
                     echo "<td class='nbiz-td'><table width='98%' cellspacing='0' cellpadding='0'><tr><td width='50%'>";
@@ -247,7 +247,7 @@ class TypeUnit
      *
      * @access    public
      * @param     int   $id  栏目id
-     * @param     int   $channel  频道id
+     * @param     int   $channel  栏目id
      * @return    array
      */
     function GetSunTypes($id, $channel = 0)

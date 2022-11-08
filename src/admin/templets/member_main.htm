@@ -64,32 +64,32 @@
       <tr bgcolor="#fbfce2" align="center">
         <td width="6%">选择</td>
         <td width="6%">mid</td>
-        <td width="16%">登录名</td>
-        <td width="18%">邮箱</td>
+        <td width="16%">用户</td>
+        <td width="18%">名称邮箱</td>
         <td width="6%">性别</td>
         <td width="6%">会员等级</td>
         <td width="14%">会员属性</td>
-        <td width="14%">最后登录</td>
+        <td width="14%">地址时间</td>
         <td>操作</td>
       </tr>
       {dede:datalist empty='<tr><td colspan="9"><center>暂无内容</center></td></tr>'}
       <tr align="center" onmousemove="javascript:this.bgColor='#fbfce2';" onmouseout="javascript:this.bgColor='#ffffff';">
         <td><input type="checkbox" name="mid" id="mid" value="{dede:field.mid/}"></td>
         <td>{dede:field.mid/}</td>
-        <td>
+        <td align="left">
           <?php
           if (!empty($fields['face'])) {echo "<img src='{$fields['face']}' class='user-img'>";};
           echo ''.$fields['userid'].'';
-          if ($fields['spacesta']==-2) echo "<span class='text-danger'>[禁言]</span>";
-          if ($fields['spacesta']==-1) echo "<span class='text-danger'>[未审核]</span>";
+          if ($fields['spacesta']==-2) echo " <span class='text-danger'>[禁言]</span>";
+          if ($fields['spacesta']==-1) echo " <span class='text-danger'>[未审核]</span>";
           ?>
           {dede:field.matt function="GetMAtt(@me)"/}
         </td>
-        <td>邮箱：{dede:field.email/} 昵称：{dede:field.uname/}</td>
+        <td>{dede:field.uname/}丨{dede:field.email/}</td>
         <td>{dede:field.sex/}</td>
         <td><a href="member_main.php?rank={dede:field.rank/}">{dede:field.rank function="GetMemberName(@me,'限制会员')"/}</a></td>
-        <td>{dede:field.mtype/}用户 金币：{dede:field.money/} 积分：{dede:field.scores/}</td>
-        <td>{dede:field.logintime function="MyDate('y-m-d H:i',@me)"/} {dede:field.loginip/}</td>
+        <td>{dede:field.mtype/}用户丨金币{dede:field.money/}丨积分{dede:field.scores/}</td>
+        <td>{dede:field.loginip/}丨{dede:field.logintime function="MyDate('y-m-d H:i',@me)"/}</td>
         <td align="center">
           <a href="member_view.php?id={dede:field.mid/}" class="btn btn-success btn-sm">修改</a>
           <a href="member_do.php?id={dede:field.mid/}&dopost=delmember" class="btn btn-danger btn-sm">删除</a>

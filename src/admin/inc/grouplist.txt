@@ -2,12 +2,12 @@
 
 >admin_AllowAll>可以进行任意操作
 
->>频道管理
+>>栏目管理
 
->c_List>列出频道
->c_New>新建频道
->c_Edit>修改频道
->c_Del>删除频道
+>c_List>列出栏目
+>c_New>新建栏目
+>c_Edit>修改栏目
+>c_Del>删除栏目
 >c_Stepselect>联动类别管理
 
 >>栏目管理
@@ -73,7 +73,7 @@
 >sys_ArcTj>文档信息统计
 >sys_Source>新闻来源
 >sys_Writer>作者管理
->sys_SoftConfig>软件频道参数
+>sys_SoftConfig>软件栏目参数
 >sys_Keyword>关键词管理
 >sys_MakeHtml>更新网页
 >sys_Feedback>评论管理

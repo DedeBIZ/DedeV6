@@ -43,23 +43,23 @@
         <td bgcolor="#f5f5f5" colspan="2"><a href="mychannel_main.php">内容模型管理</a> &gt; 新增内容模型</td>
       </tr>
       <tr>
-        <td width="30%">频道id<br>
+        <td width="30%">栏目id<br>
           <span id='help1'>数字，创建后不可修改，并具有唯一性</span></td>
         <td width="70%"><input type="text" name="id" id="id" size="10" value="<?php echo $newid;?>"> *</td>
       </tr>
       <tr>
         <td>名字标识<br>
-          <span id="help2">与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，频道默认文档模板是“default/article_名字标识.htm”，列表模板、封面模板类推 </span></td>
+          <span id="help2">与文档的模板相关连，建议由英文、数字或下划线组成，因为部份Unix系统无法识别中文文件，栏目默认文档模板是“default/article_名字标识.htm”，列表模板、封面模板类推 </span></td>
         <td><input type="text" name="nid" id="nid" value="ch<?php echo $newid;?>"> *</td>
       </tr>
       <tr>
-        <td>频道名称<br>
-          <span id="help3">频道的中文名称，在后台管理，前台发布等均使用此名字</span></td>
-        <td><input type="text" name="typename" id="typename" value="频道<?php echo $newid;?>"> *</td>
+        <td>栏目名称<br>
+          <span id="help3">栏目的中文名称，在后台管理，前台发布等均使用此名字</span></td>
+        <td><input type="text" name="typename" id="typename" value="栏目<?php echo $newid;?>"> *</td>
       </tr>
       <tr>
         <td>附加表<br>
-          <span id="help4">频道除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性(推荐、会员权限等)，也可以使用完全以附加表作为存储数据</span></td>
+          <span id="help4">栏目除主表以外其它自定义类型数据存放数据的表，如果您不使用主表关连的各种特性(推荐、会员权限等)，也可以使用完全以附加表作为存储数据</span></td>
         <td>
           <input type="text" name="addtable" id="addtable" value="<?php echo $cfg_dbprefix,'addon',$newid;?>"> 必须由英文、数字、下划线组成 *
           <label><input type="checkbox" name="isdel" id="isdel" value="1"> 删除已有表</label>

@@ -29,7 +29,7 @@ if ($dopost != 'save') {
     $query = "SELECT * FROM `#@__channeltype` WHERE id='-1'";
     $cInfos = $dsql->GetOne($query);
     if (!is_array($cInfos)) {
-        ShowMsg("读取频道配置信息出错", "javascript:;");
+        ShowMsg("读取栏目配置信息出错", "javascript:;");
         exit();
     }
     $addRow = $dsql->GetOne("SELECT * FROM `#@__addonspec` WHERE aid='$aid'");

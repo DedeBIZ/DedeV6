@@ -32,7 +32,7 @@ function GetUserType($trank)
 }
 function GetChannel($c)
 {
-    if ($c == "" || $c == 0) return "所有频道";
+    if ($c == "" || $c == 0) return "所有栏目";
     else return $c;
 }
 ?>

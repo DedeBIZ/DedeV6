@@ -21,7 +21,7 @@ if (empty($dopost)) {
     $ntype = '';
     $edtime = time();
     if (empty($channel)) {
-        showmsg('频道类型不能为空', '-1');
+        showmsg('栏目类型不能为空', '-1');
         exit();
     }
     if (is_array($types)) {

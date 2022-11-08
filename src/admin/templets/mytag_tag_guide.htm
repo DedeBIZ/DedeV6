@@ -86,10 +86,10 @@
                 </td>
               </tr>
               <tr>
-                <td>限定频道：
+                <td>限定栏目：
                   <?php
                   echo "<select name='channel' class='biz-input-sm'>";
-                  echo "<option value='0' selected>不限频道</option>";
+                  echo "<option value='0' selected>不限栏目</option>";
                   $tl->dsql->SetQuery("Select id,typename From `#@__channeltype` where id>0");
                   $tl->dsql->Execute();
                   while($row = $tl->dsql->GetObject())

@@ -56,7 +56,7 @@ else if ($dopost == "delete") {
         }
         //删除表
         $dsql->ExecuteNoneQuery("DROP TABLE IF EXISTS `{$row['table']}`;");
-        //删除频道配置信息
+        //删除栏目配置信息
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__diyforms` WHERE diyid='$diyid'");
         ShowMsg("成功删除一个自定义表单", "diy_main.php");
         exit();

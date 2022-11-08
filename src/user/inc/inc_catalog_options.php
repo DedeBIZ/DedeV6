@@ -13,7 +13,7 @@ if (!defined('DEDEMEMBER')) exit('dedebiz');
  *  获取选项列表
  *
  * @param     string  $selid  当前选择id
- * @param     string  $channeltype  频道类型
+ * @param     string  $channeltype  栏目类型
  * @return    string
  */
 function GetOptionList($selid = 0, $channeltype = 0)
@@ -82,7 +82,7 @@ function LogicGetOptionArray($id, $step, $channeltype, $selid = 0)
  *
  * @param     int  $mid  会员id
  * @param     int  $mtypeid  自定义类别id
- * @param     int  $channelid  频道id
+ * @param     int  $channelid  栏目id
  * @return    string
  */
 function classification($mid, $mtypeid = 0, $channelid = 1)

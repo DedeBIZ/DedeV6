@@ -57,7 +57,7 @@ class SearchView
      * @param     int  $typeid  栏目id
      * @param     string  $keyword  关键词
      * @param     string  $orderby  排序
-     * @param     string  $achanneltype  频道类型
+     * @param     string  $achanneltype  栏目类型
      * @param     string  $searchtype  搜索类型
      * @param     string  $starttime  开始时间
      * @param     string  $upagesize  页数
@@ -448,7 +448,7 @@ class SearchView
                     $this->dtp->Assign($tagid, "");
                 }
             } else if ($tagname == "channel") {
-                //下级频道列表
+                //下级栏目列表
                 if ($this->TypeID > 0) {
                     $typeid = $this->TypeID;
                     $reid = $this->TypeLink->TypeInfos['reid'];

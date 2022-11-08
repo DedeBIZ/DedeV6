@@ -31,7 +31,7 @@ if ($dopost == "save") {
     if ($ispart != 0) $cross = 0;
     $upquery = "UPDATE `#@__arctype` SET issend='$issend',sortrank='$sortrank',typename='$typename',cnoverview='$cnoverview',enname='$enname',enoverview='$enoverview',bigpic='$bigpic',litimg='$litimg',typedir='$typedir',isdefault='$isdefault',defaultname='$defaultname',issend='$issend',ishidden='$ishidden',channeltype='$channeltype',tempindex='$tempindex',templist='$templist',temparticle='$temparticle',namerule='$namerule',namerule2='$namerule2',ispart='$ispart',corank='$corank',description='$description',keywords='$keywords',seotitle='$seotitle',moresite='$moresite',`cross`='$cross',`content`='$content',`crossid`='$crossid',`smalltypes`='$smalltypes'$uptopsql WHERE id='$id' ";
     if (!$dsql->ExecuteNoneQuery($upquery)) {
-        ShowMsg("保存当前栏目修改时失败，请检查您的输入资料是否存在问题", "-1");
+        ShowMsg("保存栏目失败，请您检查栏目字段是否存在问题", "-1");
         exit();
     }
     //如果选择子栏目可投稿，更新顶级栏目为可投稿
@@ -48,12 +48,12 @@ if ($dopost == "save") {
     if (!empty($upnext)) {
     $upquery = "UPDATE `#@__arctype` SETissend='$issend',defaultname='$defaultname',channeltype='$channeltype',tempindex='$tempindex',templist='$templist',temparticle='$temparticle',namerule='$namerule',namerule2='$namerule2',ishidden='$ishidden' WHERE 1=1 AND $slinks";
         if (!$dsql->ExecuteNoneQuery($upquery)) {
-            ShowMsg("修改当前栏目成功，但修改下级栏目属性时失败", "-1");
+            ShowMsg("修改栏目成功，但修改下级栏目属性时失败", "-1");
             exit();
         }
     }
     UpDateCatCache();
-    ShowMsg("成功修改一个分类", "catalog_main.php");
+    ShowMsg("成功修改一个栏目", "catalog_main.php");
     exit();
 } //End Save Action
 else if ($dopost == "savetime") {
@@ -74,11 +74,11 @@ else if ($dopost == "savetime") {
     }
     $upquery = "UPDATE `#@__arctype` SET issend='$issend',sortrank='$sortrank',typedir='$typedir',typename='$typename',isdefault='$isdefault',defaultname='$defaultname',ispart='$ispart',corank='$corank' $uptopsql WHERE id='$id' ";
     if (!$dsql->ExecuteNoneQuery($upquery)) {
-        ShowMsg("保存当前栏目修改时失败，请检查您的输入资料是否存在问题", "-1");
+        ShowMsg("保存栏目失败，请您检查栏目字段是否存在输入问题", "-1");
         exit();
     }
     UpDateCatCache();
-    ShowMsg("成功修改一个分类", "catalog_main.php");
+    ShowMsg("成功修改一个栏目", "catalog_main.php");
     exit();
 }
 //读取栏目信息
@@ -94,7 +94,7 @@ if ($topid > 0) {
     }
 }
 $myrow['content'] = empty($myrow['content']) ? "&nbsp;" : $myrow['content'];
-//读取频道模型信息
+//读取栏目模型信息
 $channelid = $myrow['channeltype'];
 $dsql->SetQuery("SELECT id,typename,nid FROM `#@__channeltype` WHERE id<>-1 AND isshow=1 ORDER BY id");
 $dsql->Execute();

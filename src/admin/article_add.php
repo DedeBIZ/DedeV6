@@ -30,7 +30,7 @@ if ($dopost != 'save') {
         $redatas = CoOnePage($geturl);
         extract((array)$redatas);
     }
-    //获得频道模型id
+    //获得栏目模型id
     if ($cid > 0 && $channelid == 0) {
         $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid'; ");
         $channelid = $row['channeltype'];
@@ -39,7 +39,7 @@ if ($dopost != 'save') {
             $channelid = 1;
         }
     }
-    //获得频道模型信息
+    //获得栏目模型信息
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid' ");
     //获取文档最大id+1以确定当前权重
     $maxWright = $dsql->GetOne("SELECT id+1 AS cc FROM `#@__archives` ORDER BY id DESC LIMIT 1");

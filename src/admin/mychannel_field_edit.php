@@ -31,7 +31,7 @@ foreach ($ds as $d) {
     $dds = explode(',', trim($d));
     $fieldtypes[$dds[0]] = $dds[1];
 }
-//获取频道模型
+//获取栏目模型
 $dsql->SetQuery("SELECT id,typename,nid FROM `#@__channeltype` WHERE id<>-1 AND isshow=1 ORDER BY id");
 $dsql->Execute();
 while ($crow = $dsql->GetObject()) {

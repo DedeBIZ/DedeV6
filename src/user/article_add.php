@@ -28,11 +28,11 @@ if (empty($dopost)) {
     //检查会员等级和类型限制
     if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
         $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
-        ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$row['membername']."]才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个频道发布文档", "-1", "0", 5000);
+        ShowMsg("对不起，需要[".$cInfos['usertype']."帐号]才能在这个栏目发布文档", "-1", "0", 5000);
         exit();
     }
     include(DEDEMEMBER."/templets/article_add.htm");

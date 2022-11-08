@@ -2,8 +2,8 @@
 >>dede>>
 {dede:feedback}
 <ul>
-<li class='fbtitle'>[field:username function="(@me=='guest' ? '游客' : @me)"/] 对 [field:title/] 的评论：</li>
-<li class='fbmsg'> &nbsp;<a href="apps/feedback.php?aid=[field:aid/]" class='fbmsg'>[field:msg/]</a></li>
+	<li class='fbtitle'>[field:username function="(@me=='guest' ? '游客' : @me)"/]对[field:title/]的评论：</li>
+	<li class='fbmsg'><a href="apps/feedback.php?aid=[field:aid/]">[field:msg/]</a></li>
 </ul>
 {/dede:feedback}
 >>dede>>

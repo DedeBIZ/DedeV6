@@ -465,7 +465,7 @@ class MemberLogin
         $sta .= " 拥有金币：{$this->M_Money} 个，积分：{$this->M_Scores}分";
         return $sta;
     }
-    //获取能够发布内容的频道
+    //获取能够发布内容的栏目
     public static function GetEnabledChannels() {
         global $dsql;
         $result = array();

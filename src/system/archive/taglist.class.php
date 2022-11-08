@@ -611,7 +611,7 @@ class TagList
         }
     }
     /**
-     *  获得一个指定的频道的链接
+     *  获得一个指定的栏目的链接
      *
      * @access    private
      * @param     int  $typeid  栏目id

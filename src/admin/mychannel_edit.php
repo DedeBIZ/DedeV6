@@ -51,26 +51,26 @@ else if ($dopost == "copystart") {
         $idname = 'w'.($newid * -1);
     }
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
-    $wintitle = "频道管理-模型复制";
-    $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::模型复制";
+    $wintitle = "栏目管理-模型复制";
+    $wecome_info = "<a href='mychannel_main.php'>栏目管理</a>::模型复制";
     $win = new OxWindow();
     $win->Init("mychannel_edit.php", "js/blank.js", "post");
-    $win->AddTitle("被复制频道：[<span class='text-danger'>".$row['typename']."</span>]");
+    $win->AddTitle("被复制栏目：[<span class='text-danger'>".$row['typename']."</span>]");
     $win->AddHidden("cid", $id);
     $win->AddHidden("id", $id);
     $win->AddHidden("dopost", 'copysave');
     $msg = "
         <table width='460' cellspacing='0' cellpadding='0'>
         <tr>
-        <td width='170' align='center'>新频道id：</td>
+        <td width='170' align='center'>新栏目id：</td>
         <td width='230'><input name='newid' type='text' id='newid' size='6' value='{$newid}' /></td>
         </tr>
         <tr>
-        <td align='center'>新频道名称：</td>
+        <td align='center'>新栏目名称：</td>
         <td><input name='newtypename' type='text' id='newtypename' value='{$row['typename']}{$idname}' class='biz-input-md' /></td>
         </tr>
         <tr>
-        <td align='center'>新频道标识：</td>
+        <td align='center'>新栏目标识：</td>
         <td><input name='newnid' type='text' id='newnid' value='{$row['nid']}{$idname}' class='biz-input-md' /></td>
         </tr>
         <tr>
@@ -305,11 +305,11 @@ function __GetTemplate()
 else if ($dopost == "gettemplets") {
     require_once(DEDEINC."/libraries/oxwindow.class.php");
     $row = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$id'");
-    $wintitle = "频道管理-查看模板";
-    $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::查看模板";
+    $wintitle = "栏目管理-查看模板";
+    $wecome_info = "<a href='mychannel_main.php'>栏目管理</a>::查看模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
-    $win->AddTitle("频道[".$row['typename']."]默认模板文件说明：");
+    $win->AddTitle("栏目[".$row['typename']."]默认模板文件说明：");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "
         文档模板：{$defaulttemplate}/article_{$row['nid']}.htm
@@ -339,14 +339,14 @@ else if ($dopost == "delete") {
     if ($job == "") //确认提示
     {
         require_once(DEDEINC."/libraries/oxwindow.class.php");
-        $wintitle = "频道管理-删除模型";
-        $wecome_info = "<a href='mychannel_main.php'>频道管理</a>::删除模型";
+        $wintitle = "栏目管理-删除模型";
+        $wecome_info = "<a href='mychannel_main.php'>栏目管理</a>::删除模型";
         $win = new OxWindow();
         $win->Init("mychannel_edit.php", "js/blank.js", "POST");
         $win->AddHidden("job", "yes");
         $win->AddHidden("dopost", $dopost);
         $win->AddHidden("id", $id);
-        $win->AddTitle("您确定要删除 (".$row['typename'].") 这个频道");
+        $win->AddTitle("您确定要删除 (".$row['typename'].") 这个栏目");
         $winform = $win->GetWindow("ok");
         $win->Display();
         exit();
@@ -355,14 +355,14 @@ else if ($dopost == "delete") {
         require_once(DEDEINC."/typelink/typeunit.class.admin.php");
         $myrow = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$id'", MYSQL_ASSOC);
         if (!is_array($myrow)) {
-            ShowMsg('您所指定的频道信息不存在!', '-1');
+            ShowMsg('您所指定的栏目信息不存在!', '-1');
             exit();
         }
-        //检查频道的表是否独占数据表
+        //检查栏目的表是否独占数据表
         $addtable = str_replace($cfg_dbprefix, '', str_replace('#@__', $cfg_dbprefix, $myrow['addtable']));
         $row = $dsql->GetOne("SELECT COUNT(id) AS dd FROM `#@__channeltype` WHERE addtable like '{$cfg_dbprefix}{$addtable}' OR addtable LIKE CONCAT('#','@','__','$addtable') ; ");
         $isExclusive2 = ($row['dd'] > 1 ? 0 : 1);
-        //获取与频道关连的所有栏目id
+        //获取与栏目关连的所有栏目id
         $tids = '';
         $dsql->Execute('qm', "SELECT id FROM `#@__arctype` WHERE channeltype='$id'");
         while ($row = $dsql->GetArray('qm')) {
@@ -384,7 +384,7 @@ else if ($dopost == "delete") {
                 $dsql->ExecuteNoneQuery("DELETE FROM `{$myrow['addtable']}` WHERE typeid IN ($tids); ");
             }
         }
-        //删除频道配置信息
+        //删除栏目配置信息
         $dsql->ExecuteNoneQuery("DELETE FROM `#@__channeltype` WHERE id='$id' ");
         //更新栏目缓存
         UpDateCatCache($dsql);

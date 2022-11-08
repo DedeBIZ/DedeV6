@@ -7,7 +7,7 @@
 </dd>
 {/dede:ask}
 >>dede>>
-row='6'  调用条数
-qtype='new'  排序类型 commend 推荐、ok 表示已解决问题、high 高分问题 、new 最新问题
-tid='0'  栏目id，默认是全部
-titlelen='24'  标题长度
+row='6' 调用条数
+qtype='new' 排序类型commend推荐、ok表示已解决问题、high高分问题 、new最新问题
+tid='0' 栏目id，默认是全部
+titlelen='24' 标题长度

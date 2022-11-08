@@ -105,7 +105,7 @@
                 </td>
               </tr>
               <tr>
-                <td>限定频道：
+                <td>限定栏目：
                   <?php
                   $channel  = $ctag->GetAtt('channel');
                   echo "<select name='channel' class='biz-input-sm'><option value='0'>不限</option>";
@@ -117,7 +117,7 @@
                   	else echo "<option value='{$nrow->id}'>{$nrow->typename}</option>";
                   }
                   echo "</select>";
-                  ?>（如果限定了频道内容模型，则允许使用附加表指定的列表字段作为底层变量）
+                  ?>（如果限定了栏目内容模型，则允许使用附加表指定的列表字段作为底层变量）
                 </td>
               </tr>
               <tr>

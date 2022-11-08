@@ -84,7 +84,7 @@ if ($cfg_dede_log == 'Y') {
 if (file_exists(DEDEDATA."/downmix.data.php")) {
     rename(DEDEDATA."/downmix.data.php",DEDEDATA."/downmix.data.inc");
 }
-//管理缓存管理员频道缓存
+//管理缓存管理员栏目缓存
 $cache1 = DEDEDATA.'/cache/inc_catalog_base.inc';
 if (!file_exists($cache1)) UpDateCatCache();
 $cacheFile = DEDEDATA.'/cache/admincat_'.$cuserLogin->userID.'.inc';

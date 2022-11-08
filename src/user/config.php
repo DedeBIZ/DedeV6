@@ -211,7 +211,7 @@ function CheckRank($rank = 0, $money = 0)
  *  更新文档统计
  *
  * @access    public
- * @param     int  $channelid  频道模型id
+ * @param     int  $channelid  栏目模型id
  * @return    string
  */
 function countArchives($channelid)

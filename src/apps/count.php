@@ -21,7 +21,7 @@ $format = isset($format) ? $format : "";
 $maintable = '#@__archives';
 $idtype = 'id';
 if ($aid == 0) exit();
-//获得频道模型id
+//获得栏目模型id
 if ($cid < 0) {
     $row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$cid' AND issystem='-1';");
     $maintable = empty($row['addtable']) ? '' : $row['addtable'];

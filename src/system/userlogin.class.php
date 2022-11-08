@@ -79,7 +79,7 @@ $DedeUserCatalogs = array();
  *  检测用户是否有权限操作某栏目
  *
  * @access    public
- * @param     int   $cid  频道id
+ * @param     int   $cid  栏目id
  * @param     string   $msg  返回消息
  * @return    string
  */
@@ -273,7 +273,7 @@ class userLogin
         }
     }
     /**
-     *  重写用户权限频道
+     *  重写用户权限栏目
      *
      * @access    public
      * @return    void
@@ -282,7 +282,7 @@ class userLogin
     {
         //$this->userChannel
         $cacheFile = DEDEDATA.'/cache/admincat_'.$this->userID.'.inc';
-        //管理员管理的频道列表
+        //管理员管理的栏目列表
         $typeid = trim($this->userChannel);
         if (empty($typeid) || $this->getUserType() >= 10) {
             $firstConfig = "\$cfg_admin_channel = 'all';\r\n\$admin_catalogs = array();\r\n";
@@ -326,7 +326,7 @@ class userLogin
         $_SESSION = array();
     }
     /**
-     *  获得用户管理频道的值
+     *  获得用户管理栏目的值
      *
      * @access    public
      * @return    array
@@ -407,7 +407,7 @@ class userLogin
  *
  * @access    public
  * @param     int   $id  栏目id
- * @param     int   $channel  频道id
+ * @param     int   $channel  栏目id
  * @param     int   $addthis  是否加入当前这个栏目
  * @return    string
  */
@@ -428,7 +428,7 @@ function GetSonIdsUL($id, $channel = 0, $addthis = TRUE)
  * @access    public
  * @param     int  $id  栏目id
  * @param     array  $sArr  缓存数组
- * @param     int   $channel  频道id
+ * @param     int   $channel  栏目id
  * @param     int   $addthis  是否加入当前这个栏目
  * @return    string
  */

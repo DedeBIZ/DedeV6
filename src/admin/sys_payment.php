@@ -13,31 +13,6 @@ require_once(DEDEINC.'/datalistcp.class.php');
 CheckPurview('sys_Data');
 $dopost = (empty($dopost)) ? '' : $dopost;
 $pid = (empty($pid)) ? 0 : intval($pid);
-//一个简单的[数组<->表单]解析类
-/*数组结构应该为:
-  array(
-    [name]=>array(
-        [title]=>'当前表单项的名称',
-        [type]=>'text|select',
-        [description]=>'表单内容的介绍说明'
-        [iterm]=>'1:使用标准双接口,使用担保交易接口', //如果含有":",则前面为value值,后面为显示内容
-        [value]=>'使用担保交易接口',
-    ),
-    
-  )
-  使用方法:
-  将上述的格式传入到数组中去,然后进行解析:
-  1.声明类,并创建数组
-  $af = new Array2form($config);
-  2.设置一个表单模板(可选,如果不设置载入默认)
-  $af->SetDefaultTpl($templets); $templets:为一个底册模板文件
-  表单模板格式为:
-  <p>~title~:~form~<small>~description~</small></p>
-  3.获取特定项目表单
-  $af->GetIterm('alipay', 1) //1.表示获取一个默认模板下的完整表单,2.仅获取一个表单项
-  4.获取所有表单内容
-  $af->GetAll() //获取表单所有解析后的内容
-*/
 class Array2form
 {
     var $FormArray = array();
@@ -82,13 +57,13 @@ class Array2form
             case 'text':
                 //生成文本编辑框
                 $valstr = (empty($formarry['value'])) ? "value=''" : "value='{$formarry['value']}'";
-                $reval_form = "<input type='text' name='{$key}' id='{$key}' class='biz-input-md' class='text'{$valstr}>";
+                $reval_form = "<input type='text' name='{$key}' id='{$key}' class='biz-input-md' {$valstr}>";
                 break;
             case 'select':
                 //生成选择框
                 $reval_title = $formarry['title'];
                 $items = explode(',', $formarry['iterm']);
-                $reval_form = "<select name='{$key}' class='text'>";
+                $reval_form = "<select name='{$key}' class='biz-input-xs'>";
                 if (is_array($items)) {
                     foreach ($items as $v) {
                         $v = trim($v);

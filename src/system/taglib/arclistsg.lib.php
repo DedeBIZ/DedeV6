@@ -104,7 +104,7 @@ function lib_arclistsg(&$ctag, &$refObj)
                 else $orwheres[] = ' typeid IN ('.GetSonIds($typeid).','.$CrossID.')';
             }
         }
-        //频道id
+        //栏目id
         if (!empty($channelid)) $orwheres[] = " AND arc.channel = '$channelid' ";
         //由于这个条件会导致缓存功能失去意义，因此取消
         //if ($arcid!=0) $orwheres[] = " arc.id<>'$arcid' ";

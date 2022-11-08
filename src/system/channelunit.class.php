@@ -1,7 +1,7 @@
 <?php
 if (!defined('DEDEINC')) exit('dedebiz');
 /**
- * 频道模型单元类
+ * 栏目模型单元类
  * @version        $id:channelunit.class.php 2 17:32 2010年7月6日 tianya $
  * @package        DedeBIZ.Libraries
  * @copyright      Copyright (c) 2022 DedeBIZ.COM
@@ -35,7 +35,7 @@ class ChannelUnit
         $sql = " SELECT * FROM `#@__channeltype` WHERE id='$cid' ";
         $this->ChannelInfos = $this->dsql->GetOne($sql);
         if (!is_array($this->ChannelInfos)) {
-            echo '读取频道信息失败，无法进行后续操作';
+            echo '读取栏目信息失败，无法进行后续操作';
             exit();
         }
         $dtp = new DedeTagParse();

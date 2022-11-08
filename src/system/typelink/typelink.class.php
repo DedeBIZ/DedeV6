@@ -168,7 +168,7 @@ class TypeLink
     //获得类别列表
     //hid是指默认选中类目，0表示“请选择类目”或“不限类目”
     //oper是用户允许管理的类目，0表示所有类目
-    //channeltype是指类目的内容类型，0表示不限频道
+    //channeltype是指类目的内容类型，0表示不限栏目
     function GetOptionArray($hid = 0, $oper = 0, $channeltype = 0, $usersg = 0)
     {
         return $this->GetOptionList($hid, $oper, $channeltype, $usersg);

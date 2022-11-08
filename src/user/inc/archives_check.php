@@ -36,14 +36,14 @@ if ($cInfos['issend'] != 1 || $cInfos['ispart'] != 0  || $cInfos['channeltype'] 
     ShowMsg("您所选择的栏目不支持投稿", "-1");
     exit();
 }
-//检查频道设定的投稿许可权限
+//检查栏目设定的投稿许可权限
 if ($cInfos['sendrank'] > $cfg_ml->M_Rank) {
     $row = $dsql->GetOne("SELECT membername FROM `#@__arcrank` WHERE `rank`='".$cInfos['sendrank']."' ");
-    ShowMsg("对不起，需要[".$row['membername']."]才能在这个频道发布文档", "-1", "0", 5000);
+    ShowMsg("对不起，需要[".$row['membername']."]才能在这个栏目发布文档", "-1", "0", 5000);
     exit();
 }
 if ($cInfos['usertype'] != '' && $cInfos['usertype'] != $cfg_ml->M_MbType) {
-    ShowMsg("对不起，需要[".$cInfos['usertype']."]才能在这个频道发布文档", "-1", "0", 5000);
+    ShowMsg("对不起，需要[".$cInfos['usertype']."]才能在这个栏目发布文档", "-1", "0", 5000);
     exit();
 }
 //文档的默认状态

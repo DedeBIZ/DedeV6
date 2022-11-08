@@ -60,7 +60,7 @@ class FreeList
         /*
         if (empty($channelid))
         {
-            showmsg('必须指定频道','-1');exit();
+            showmsg('必须指定栏目','-1');exit();
         } else {
             $channelid = intval($channelid);
             $channelinfo = $this->dsql->getone("select maintable from #@__channeltype WHERE id='$channelid'");
@@ -144,7 +144,7 @@ class FreeList
                 $flags = explode(',', $att);
                 for ($i = 0; isset($flags[$i]); $i++) $addSql .= " AND FIND_IN_SET('{$flags[$i]}',flag)>0 ";
             }
-            //文档的频道模型
+            //文档的栏目模型
             if ($channelid > 0 && !preg_match("#spec#i", $listtype)) {
                 $addSql .= " AND channel = '$channelid' ";
             }
@@ -425,7 +425,7 @@ class FreeList
             $flags = explode(',', $att);
             for ($i = 0; isset($flags[$i]); $i++) $orwhere .= " AND FIND_IN_SET('{$flags[$i]}',flag)>0 ";
         }
-        //文档的频道模型
+        //文档的栏目模型
         if ($channelid > 0 && !preg_match("#spec#i", $listtype)) {
             $orwhere .= " AND arc.channel = '$channelid' ";
         }

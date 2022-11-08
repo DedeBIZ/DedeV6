@@ -84,7 +84,7 @@ $actionSearch[2] = array(
     )
 );
 $actionSearch[3] = array(
-    'title' => '频道模型',
+    'title' => '栏目模型',
     'description' => '所有上传的附件管理',
     'soniterm' => array(
         0  =>  array(
@@ -358,7 +358,7 @@ $actionSearch[9] = array(
             'linkurl' => 'content_att.php'
         ),
         7  =>  array(
-            'title' => '软件频道设置',
+            'title' => '软件栏目设置',
             'description' => '可以对软件下载时的连接显示方式，下载方式，镜像服务器等等进行配置',
             'purview' => 'sys_SoftConfig',
             'linkurl' => 'soft_config.php'

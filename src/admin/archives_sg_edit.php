@@ -22,7 +22,7 @@ if ($dopost != 'save') {
     $arcQuery = "SELECT ch.*,arc.* FROM `#@__arctiny` arc LEFT JOIN `#@__channeltype` ch on ch.id=arc.channel WHERE arc.id='$aid' ";
     $cInfos = $dsql->GetOne($arcQuery);
     if (!is_array($cInfos)) {
-        ShowMsg("读频道模型信息出错", "-1");
+        ShowMsg("读栏目模型信息出错", "-1");
         exit();
     }
     $addtable = $cInfos['addtable'];

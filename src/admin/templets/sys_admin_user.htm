@@ -31,15 +31,15 @@
     <tr bgcolor="#fbfce2">
       <td width="6%" align="center">id</td>
       <td width="20%" align="center">名称</td>
-      <td width="30%" align="center">时间</td>
-      <td width="20%" align="center">频道</td>
+      <td width="30%" align="center">地址时间</td>
+      <td width="20%" align="center">栏目</td>
       <td align="center">管理项</td>
     </tr>
     {dede:datalist empty='<tr><td colspan="5"><center>暂无内容</center></td></tr>'}
     <tr align="center">
       <td>{dede:field.userid/}</td>
       <td>{dede:field.uname/}{dede:field.usertype function="GetUserType(@me)"/}</td>
-      <td>登录时间：{dede:field.logintime function="GetDateTimeMk(@me)"/} 登录ip：{dede:field.loginip/}</td>
+      <td>{dede:field.loginip/}丨{dede:field.logintime function="GetDateTimeMk(@me)"/}</td>
       <td>{dede:field.typename function="GetChannel(@me)"/}</td>
       <td>
         <a href="sys_admin_user_edit.php?id={dede:field.id/}&dopost=edit" class="btn btn-success btn-sm">修改</a>

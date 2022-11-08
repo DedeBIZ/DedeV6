@@ -41,32 +41,11 @@
         <table cellpadding="0" cellspacing="0">
           <tr>
             <td width="80" height="28" align="center" class="biz-itemnote1">常规内容</td>
-            <td><a href="javascript:;" class="btn btn-success btn-sm" onClick="ShowHide('getone')">单页采集</a></td>
           </tr>
         </table>
       </td>
     </tr>
   </table>
-  <form name="getonepage" action="article_add.php" method="get">
-    <table width="98%" align="center" cellpadding="0" cellspacing="0" id="getone" class="table table-borderless" style="<?php if (empty($geturl)) echo 'display:none';?>">
-      <input type="hidden" name="channelid" value="<?php echo $channelid;?>">
-      <input type="hidden" name="cid" value="<?php echo $cid;?>">
-      <tr>
-        <td>
-          <table cellpadding="0" cellspacing="0">
-            <tr>
-              <td width="90">采集单页：</td>
-              <td width="270" align="center"><input type="text" name="geturl" id="geturl" value="<?php echo $geturl;?>" class="biz-input-md"></td>
-              <td>
-                <button type="submit" class="btn btn-success btn-sm" name="Submit3">抓取</button>
-                <button type="button" class="btn btn-success btn-sm" name="setrule" onClick="OpenMyWinCoOne('article_coonepage_rule.php')">规则管理</button>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </form>
   <form name="form1" action="article_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit()">
     <input type="hidden" name="channelid" value="<?php echo $channelid?>">
     <input type="hidden" name="dopost" value="save">

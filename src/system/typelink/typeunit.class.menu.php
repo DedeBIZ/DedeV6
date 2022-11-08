@@ -57,7 +57,7 @@ class TypeUnit
      *  读出所有分类，在类目管理页(list_type)中使用
      *
      * @access    public
-     * @param     int   $channel  频道id
+     * @param     int   $channel  栏目id
      * @param     int   $nowdir  当前操作ID
      * @return    string
      */
@@ -94,7 +94,7 @@ class TypeUnit
             //普通栏目
             if ($ispart == 0) {
             }
-            //封面频道
+            //封面栏目
             else if ($ispart == 1) {
             }
             //独立页面
@@ -151,7 +151,7 @@ class TypeUnit
                     //普通列表
                     if ($ispart == 0 || empty($ispart)) {
                     }
-                    //封面频道
+                    //封面栏目
                     else if ($ispart == 1) {
                     }
                     //独立页面

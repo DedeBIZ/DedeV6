@@ -10,7 +10,7 @@
  */
 require_once(dirname(__FILE__)."/../config.php");
 require_once(dirname(__FILE__)."/inc_menu_module.php");
-//载入可发布频道
+//载入可发布栏目
 $addset = '';
 //检测可用的内容模型
 if ($cfg_admin_channel = 'array' && count($admin_catalogs) > 0) {
@@ -42,7 +42,7 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='智能标记向导' link='mytag_tag_guide.php' rank='temp_Other' target='main' />
     <m:item name='全局标记测试' link='tag_test.php' rank='temp_Test' target='main' />
 </m:top>")."
-<m:top item='1_7_' name='频道模型' rank='t_List,t_AccList,c_List,temp_One' icon='fa-area-chart'>
+<m:top item='1_7_' name='栏目模型' rank='t_List,t_AccList,c_List,temp_One' icon='fa-area-chart'>
     <m:item name='内容模型管理' link='mychannel_main.php' rank='c_List' target='main' />
     <m:item name='单页文档管理' link='templets_one.php' rank='temp_One' target='main' />
     <m:item name='联动类别管理' link='stepselect_main.php' rank='c_Stepseclect' target='main' />
@@ -63,7 +63,7 @@ if ($cuserLogin->getUserType() >= 10) {
     <m:item name='系统日志管理' link='log_list.php' rank='sys_Log' target='main' />
     <m:item name='图片水印设置' link='sys_info_mark.php' rank='sys_Edit' target='main' />
     <m:item name='自定义文档属性' link='content_att.php' rank='sys_Att' target='main' />
-    <m:item name='软件频道设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
+    <m:item name='软件栏目设置' link='soft_config.php' rank='sys_SoftConfig' target='main' />
     <m:item name='防采集串混淆' link='article_string_mix.php' rank='sys_StringMix' target='main' />
     <m:item name='随机模板设置' link='article_template_rand.php' rank='sys_StringMix' target='main' />
     ".(DEDEBIZ_SAFE_MODE? "" : "<m:item name='数据备份还原' link='sys_data.php' rank='sys_Data' target='main' />")."

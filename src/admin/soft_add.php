@@ -19,7 +19,7 @@ if ($dopost != 'save') {
     ClearMyAddon();
     $channelid = empty($channelid) ? 0 : intval($channelid);
     $cid = empty($cid) ? 0 : intval($cid);
-    //获得频道模型id
+    //获得栏目模型id
     if ($cid > 0 && $channelid == 0) {
         $row = $dsql->GetOne("SELECT channeltype FROM `#@__arctype` WHERE id='$cid'; ");
         $channelid = $row['channeltype'];
@@ -27,7 +27,7 @@ if ($dopost != 'save') {
         if ($channelid == 0) $channelid = 1;
     }
     $softconfig = $dsql->GetOne("SELECT * FROM `#@__softconfig` ");
-    //获得频道模型信息
+    //获得栏目模型信息
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid' ");
     $channelid = $cInfos['id'];
     //获取文档最大id+1以确定当前权重

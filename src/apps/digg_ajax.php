@@ -19,7 +19,7 @@ if ($id < 1) {
 }
 $idtype = 'id';
 $maintable = '#@__archives';
-//获得频道模型id
+//获得栏目模型id
 if ($cid < 0) {
 	$row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$cid' AND issystem='-1';");
 	$maintable = empty($row['addtable']) ? '' : $row['addtable'];

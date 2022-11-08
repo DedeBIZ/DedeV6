@@ -289,7 +289,7 @@ else if ($dopost == 'moveArchives') {
             <td width="90" class="biz-td">文档id：</td>
             <td class="biz-td">
                 <input type="text" name="tmpids" class="biz-input-md" value="<?php echo $qstr;?>"><br>
-                移动到目标栏目必须和选定文档频道类型一致，否则程序会自动勿略不符合文档
+                移动到目标栏目必须和选定文档栏目类型一致，否则程序会自动勿略不符合文档
             </td>
         </tr>
         <tr>

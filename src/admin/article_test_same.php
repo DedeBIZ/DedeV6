@@ -17,7 +17,7 @@ if ($dopost == 'analyse') {
     if (is_array($arr)) {
         $maintable = $arr['maintable'];
     } else {
-        showmsg('频道id不正确，无法处理', 'javascript:;');
+        showmsg('栏目id不正确，无法处理', 'javascript:;');
         exit();
     }
     $dsql->SetQuery("SELECT COUNT(title) AS dd,title FROM `$maintable` WHERE channel='$channelid' GROUP BY title ORDER BY dd DESC LIMIT 0, $pagesize");

@@ -116,7 +116,7 @@ $f = '';
 foreach ($fields as $k => $v) {
     $f .= ($f == '' ? $k : ' '.$k);
 }
-//获取频道模型
+//获取栏目模型
 $dsql->SetQuery("SELECT id,typename,nid FROM `#@__channeltype` WHERE id<>-1 AND isshow=1 ORDER BY id");
 $dsql->Execute();
 while ($row = $dsql->GetObject()) {
