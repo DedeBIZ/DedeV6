@@ -509,6 +509,7 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
         $tidsq = $dsql->GetOne("SELECT * FROM `#@__archives` WHERE id='$arcid'");
         $tid = $toptid==0 ? $tidsq["typeid"] : $tidsq["topid"];
     }
+    $fieldsnamef = count($fieldsnamef) > 0 ? implode(",", $fieldsnamef) : $fieldsnamef;
     $nofilter = (isset($_REQUEST['TotalResult']) ? "&TotalResult=".$_REQUEST['TotalResult'] : '').(isset($_REQUEST['PageNo']) ? "&PageNo=".$_REQUEST['PageNo'] : '');
     $filterarr = string_filter(stripos($_SERVER['REQUEST_URI'], "list.php?tid=") ? str_replace($nofilter, '', $_SERVER['REQUEST_URI']) : $GLOBALS['cfg_cmsurl']."/plus/list.php?tid=".$tid);
     $cInfos = $dsql->GetOne("SELECT * FROM `#@__channeltype` WHERE id='$channelid'");
@@ -561,6 +562,24 @@ function AddFilter($channelid, $type=1, $fieldsnamef=array(), $defaulttid=0, $to
         }
     }
     echo $dede_addonfields;
+}
+
+/**
+ * 用于检测Dede版本
+ *
+ * @return string
+ */
+function CheckDedeVer()
+{
+    global $dsql;
+    $ver = '1.0.0';
+    $dsql->GetTableFields('#@__tagindex');
+    while ($fields = $dsql->GetFieldObject()) {
+        if ($fields->name === 'tag_pinyin') {
+            $ver = '6.0.2';
+        }
+    }
+    return $ver;
 }
 //自定义函数接口
 if (file_exists(DEDEINC.'/extend.func.php')) {
