@@ -459,7 +459,7 @@ else if ($action == 'showreadme') {
     $win = new OxWindow();
     $win->Init("module_main.php", "js/blank.js", "post");
     $wecome_info = "模块管理";
-    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 使用说明：");
+    $win->AddTitle("<a href='module_main.php'>模块管理</a> &gt; 使用说明");
     $win->AddMsgItem("<div>$msg</div>");
     $winform = $win->GetWindow("hand");
     $win->Display();

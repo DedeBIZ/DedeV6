@@ -334,7 +334,7 @@ else if ($dopost == 'save') {
     $wintitle = "成功修改图集";
     $wecome_info = "文档管理::修改图集";
     $win = new OxWindow();
-    $win->AddTitle("成功修改一个图集：");
+    $win->AddTitle("成功修改一个图集");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();

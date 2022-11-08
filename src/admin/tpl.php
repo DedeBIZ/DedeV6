@@ -154,7 +154,7 @@ else if ($action == 'uploadok') {
         exit();
     } else {
         if (!preg_match("#\.(htm|html)$#", $upfile_name)) {
-            ShowMsg("DedeBIZ模板只能用 .htm 或 .html扩展名", "-1");
+            ShowMsg("DedeBIZ模板只能用 .htm或.html扩展名", "-1");
             exit();
         }
         if (preg_match("#[\\\\\/]#", $upfile_name)) {
@@ -233,10 +233,10 @@ else if ($action == 'savetagfile') {
         <button type='submit' name='B1' class='btn btn-success btn-sm'>确定</button>
     </form>
     ";
-    $wintitle = "成功修改/创建文件";
-    $wecome_info = "<a href='templets_tagsource.php'>标签源码碎片管理</a> &gt; 修改/新建标签";
+    $wintitle = "成功操作文件";
+    $wecome_info = "<a href='templets_tagsource.php'>标签源码碎片管理</a> &gt; 新建修改标签";
     $win = new OxWindow();
-    $win->AddTitle("修改/新建标签：");
+    $win->AddTitle("新建修改标签");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();

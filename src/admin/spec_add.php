@@ -189,7 +189,7 @@ else if ($dopost == 'save') {
     $wintitle = "成功创建专题";
     $wecome_info = "文档管理::发布专题";
     $win = new OxWindow();
-    $win->AddTitle("成功创建专题：");
+    $win->AddTitle("成功创建专题");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
     $win->Display();

@@ -34,7 +34,7 @@ $wecome_info = "文档来源管理";
 $win = new OxWindow();
 $win->Init('article_source_edit.php', 'js/blank.js', 'POST');
 $win->AddHidden('dopost', 'save');
-$win->AddTitle("每行保存一个来源：");
+$win->AddTitle("每行保存一个来源");
 $win->AddMsgItem("<textarea name='allsource' id='allsource' class='biz-textarea-xl'>$allsource</textarea>");
 $winform = $win->GetWindow('ok');
 $win->Display();

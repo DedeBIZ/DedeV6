@@ -111,7 +111,7 @@ else if ($dopost == "export") {
     $wecome_info = "<a href='mychannel_main.php'>内容模型管理</a>::导出内容模型规则";
     $win = new OxWindow();
     $win->Init();
-    $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友：");
+    $win->AddTitle("以下为规则 [{$row['typename']}] 的模型规则，您可以共享给您的朋友");
     $winform = $win->GetWindow("hand", "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/codemirror.css\"><script type=\"text/javascript\" src=\"js/codemirror.js\"></script><script type=\"text/javascript\" src=\"js/mode/xml/xml.js\"></script><script type=\"text/javascript\" src=\"js/mode/javascript/javascript.js\"></script><script type=\"text/javascript\" src=\"js/mode/css/css.js\"></script><script type=\"text/javascript\" src=\"js/mode/htmlmixed/htmlmixed.js\"></script><textarea name='config' id='content' style='width:98%;height:300px;word-wrap: break-word;word-break:break-all;'>".$channelconfig."</textarea><script type=\"text/javascript\">var editor = CodeMirror.fromTextArea(document.getElementById('content'), {lineNumbers: true,lineWrapping: true,mode: 'text/html'});</script>");
     $win->Display();
     exit();
@@ -143,7 +143,7 @@ else if ($dopost == "exportinok") {
         $wecome_info = "<a href='mychannel_main.php'>内容模型管理</a>::导入内容模型规则";
         $win = new OxWindow();
         $win->Init();
-        $win->AddTitle("操作状态提示：");
+        $win->AddTitle("操作状态提示");
         $win->AddMsgItem($msg);
         $winform = $win->GetWindow("hand");
         $win->Display();
@@ -309,7 +309,7 @@ else if ($dopost == "gettemplets") {
     $wecome_info = "<a href='mychannel_main.php'>栏目管理</a>::查看模板";
     $win = new OxWindow();
     $win->Init("", "js/blank.js", "");
-    $win->AddTitle("栏目[".$row['typename']."]默认模板文件说明：");
+    $win->AddTitle("栏目[".$row['typename']."]默认模板文件说明");
     $defaulttemplate = $cfg_templets_dir.'/'.$cfg_df_style;
     $msg = "
         文档模板：{$defaulttemplate}/article_{$row['nid']}.htm

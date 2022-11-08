@@ -159,7 +159,7 @@ else if ($dopost == 'save') {
     $wintitle = "成功发布图集";
     $wecome_info = "图集管理::发布图集";
     $win = new OxWindow();
-    $win->AddTitle("成功发布图集：");
+    $win->AddTitle("成功发布图集");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display(DEDEMEMBER."/templets/win_templet.htm");

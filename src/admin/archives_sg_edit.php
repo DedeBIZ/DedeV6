@@ -117,7 +117,7 @@ else if ($dopost == 'save') {
     $wintitle = "成功修改分类";
     $wecome_info = "文档管理::修改分类";
     $win = new OxWindow();
-    $win->AddTitle("成功修改分类：");
+    $win->AddTitle("成功修改分类");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();

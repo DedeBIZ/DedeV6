@@ -174,7 +174,7 @@ else if ($dopost == 'save') {
     $wintitle = "成功修改软件";
     $wecome_info = "软件管理::修改软件";
     $win = new OxWindow();
-    $win->AddTitle("成功修改软件：");
+    $win->AddTitle("成功修改软件");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
     $win->Display();

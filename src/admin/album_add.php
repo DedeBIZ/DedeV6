@@ -297,7 +297,7 @@ else if ($dopost == 'save') {
     $wintitle = "成功发布一个图集";
     $wecome_info = "文档管理::发布图集";
     $win = new OxWindow();
-    $win->AddTitle("成功发布一个图集：");
+    $win->AddTitle("成功发布一个图集");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", FALSE);
     $win->Display();

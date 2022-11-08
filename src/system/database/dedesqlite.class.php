@@ -20,7 +20,7 @@ if (!extension_loaded("sqlite3")) {
     ShowMsg("尚未发现开启sqlite3模块，请在php.ini中启用`extension=sqlite3`","javasctipt:;",-1) ;
     exit;
 }
-//在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql 或 $db 进行操作
+//在工程所有文件中均不需要单独初始化这个类，可直接用 $dsql或$db进行操作
 //为了防止错误，操作完后不必关闭数据库
 $dsql = $dsqlitete = $db = new DedeSqlite(FALSE);
 /**

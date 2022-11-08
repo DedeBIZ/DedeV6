@@ -130,7 +130,7 @@ else if ($dopost == 'save') {
     $wintitle = "成功发布分类";
     $wecome_info = "文档管理::发布分类";
     $win = new OxWindow();
-    $win->AddTitle("成功发布分类：");
+    $win->AddTitle("成功发布分类");
     $win->AddMsgItem($msg);
     $winform = $win->GetWindow("hand", "&nbsp;", false);
     $win->Display();

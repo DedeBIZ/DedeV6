@@ -33,10 +33,10 @@ if ($dopost == 'delete') {
     $win = new OxWindow();
     $win->Init();
     $winform = $win->GetWindow("hand", $info);
-    $win->AddTitle("织梦标签调用代码：");
+    $win->AddTitle("标签调用代码");
     $winform = $win->GetWindow("hand", $showtag);
     $win->myWinItem = '';
-    $win->AddTitle("以下为选定广告的js调用代码：");
+    $win->AddTitle("以下为选定广告的js调用代码");
     $winform = $win->GetWindow("hand", $showhtml);
     $win->Display();
     exit();
