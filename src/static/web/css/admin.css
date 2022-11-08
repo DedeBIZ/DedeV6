@@ -136,11 +136,13 @@ body.hidemenu .body-right {
 	bottom:0
 }
 .main,.menu {
+	width:100%;
 	height:100%
 }
 .main iframe,.menu iframe {
 	width:100%;
-	height:99%
+	height:98%;
+	border:0
 }
 .head {
 	width:100%;
