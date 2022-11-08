@@ -107,23 +107,23 @@ function GetFormItem($ctag, $admintype = 'admin')
         if ($admintype == 'diy') {
             $innertext = "<input type='file' name='$fieldname' id='$fieldname' class='biz-input-md' />";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='biz-input-md' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='biz-input-md' /> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />";
         }
     } else if ($fieldType == 'media') {
         if ($admintype == 'diy') {
             $innertext = "<input type='hidden' name='$fieldname' id='$fieldname' value='' /> 不支持的类型";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='biz-input-md' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览' onClick=\"SelectMedia('form1.$fieldname')\" />";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='biz-input-md' /> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectMedia('form1.$fieldname')\" />";
         }
     } else if ($fieldType == 'addon') {
         if ($admintype == 'diy') {
             $innertext = "<input type='file' name='$fieldname' id='$fieldname' class='biz-input-md' />";
         } else {
-            $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='biz-input-md' /> <input name='".$fieldname."_bt' type='button' class='inputbut' value='浏览' onClick=\"SelectSoft('form1.$fieldname')\" />";
+            $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='biz-input-md' /> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectSoft('form1.$fieldname')\" />";
         }
     } else if ($fieldType == 'int' || $fieldType == 'float') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '0');
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control biz-input-xs' value='$dfvalue' />（填写数值）";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control biz-input-xs' value='$dfvalue' />";
     } else if ($fieldType == 'relation') {
         $dfvalue = ($ctag->GetAtt('default') != '' ? $ctag->GetAtt('default') : '');
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
@@ -416,15 +416,15 @@ function GetFormItemValue($ctag, $fvalue, $admintype = 'admin', $fieldname = '')
             $ntag = $ndtp->GetTag("img");
             $fvalue = trim($ntag->GetInnerText());
         }
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control biz-input-md' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control biz-input-md' /> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />";
     } else if ($ftype == "imgfile") {
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control biz-input-md' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control biz-input-md' /> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectImage('form1.$fieldname','big')\" />";
     } else if ($ftype == "media") {
-        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control biz-input-md' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览' onClick=\"SelectMedia('form1.$fieldname')\" />";
+        $innertext = "<input type='text' name='$fieldname' value='$fvalue' id='$fieldname' class='form-control biz-input-md' /> <input type='button'  name='".$fieldname."_bt' class='btn btn-success btn-sm'value='浏览' onClick=\"SelectMedia('form1.$fieldname')\" />";
     } else if ($ftype == "addon") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control biz-input-md' /> <input name='".$fieldname."_bt' class='inputbut' type='button' value='浏览' onClick=\"SelectSoft('form1.$fieldname')\" />";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' value='$fvalue' class='form-control biz-input-md' /> <input type='button' name='".$fieldname."_bt' class='btn btn-success btn-sm' value='浏览' onClick=\"SelectSoft('form1.$fieldname')\" />";
     } else if ($ftype == "int" || $ftype == "float") {
-        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control biz-input-xs' value='$fvalue' />（填写数值）";
+        $innertext = "<input type='text' name='$fieldname' id='$fieldname' class='form-control biz-input-xs' value='$fvalue' />";
     } else if ($ftype == "relation") {
         $channel = ($ctag->GetAtt('channel') == "") ? "1" : $ctag->GetAtt('channel');
         $innertext = "<textarea name='$fieldname' id='$fieldname' class='form-control biz-textarea-sm'>$fvalue</textarea><br>
