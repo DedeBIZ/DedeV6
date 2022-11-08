@@ -15,7 +15,7 @@ if (empty($dopost)) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='index_body.php'>系统主页</a> &gt; 系统错误修复工具";
+    $wecome_info = "<a href='index_body.php'>系统主页</a> &gt; 系统错误修复";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table>
@@ -23,7 +23,7 @@ if (empty($dopost)) {
             <td>
                 由于手动升级时用户没运行指定的SQL语句，或自动升级的遗漏处理或处理出错，可能会导致一些错误，使用本工具会自动检测并处理，本工具目前主要执行下面动作：<br>
                 1、修复/优化数据表；<br>
-                2、更新系统缓存；<br>
+                2、更新缓存；<br>
                 3、检测系统变量一致性<br>
                 4、检测微表与主表数据一致性<br>
                 <br><a href='sys_repair.php?dopost=1' class='btn btn-danger btn-sm'>常规检测</a>
@@ -44,7 +44,7 @@ else if ($dopost == 1) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt; 检测数据结构";
+    $wecome_info = "<a href='sys_repair.php'>系统错误修复</a> &gt; 检测数据结构";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table>
@@ -121,7 +121,7 @@ else if ($dopost == 2) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data' ");
     $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt; 检测微表正确性";
+    $wecome_info = "<a href='sys_repair.php'>系统错误修复</a> &gt; 检测微表正确性";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table>
@@ -175,7 +175,7 @@ else if ($dopost == 3) {
     $win = new OxWindow();
     $win->Init("sys_repair.php", "js/blank.js", "POST' enctype='multipart/form-data'");
     $win->mainTitle = "系统修复工具";
-    $wecome_info = "<a href='sys_repair.php'>系统错误修复工具</a> &gt; 高级综合检测修复";
+    $wecome_info = "<a href='sys_repair.php'>系统错误修复</a> &gt; 高级综合检测修复";
     $win->AddTitle('本工具用于检测和修复您的系统可能存在的错误');
     $msg = "
     <table>

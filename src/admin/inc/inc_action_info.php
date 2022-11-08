@@ -94,7 +94,7 @@ $actionSearch[3] = array(
             'linkurl' => 'mychannel_main.php'
         ),
         1  =>  array(
-            'title' => '单页文档管理',
+            'title' => '文档单页管理',
             'description' => '创建和管理单页面',
             'purview' => 'temp_One',
             'linkurl' => 'templets_one.php'
@@ -124,7 +124,7 @@ $actionSearch[4] = array(
     'description' => '对一些东西进行批量的删除，添加等等',
     'soniterm' => array(
         0  =>  array(
-            'title' => '更新系统缓存',
+            'title' => '更新缓存',
             'description' => '更新栏目缓存、更新枚举缓存、清理arclist调用缓存、清理过期会员访问历史、删除过期短信',
             'purview' => 'sys_ArcBatch',
             'linkurl' => 'sys_cache_up.php'
@@ -365,7 +365,7 @@ $actionSearch[9] = array(
         ),
         8  =>  array(
             'title' => '防采集串混淆',
-            'description' => '防采集混淆字符串管理',
+            'description' => '防采集串混淆',
             'purview' => 'sys_StringMix',
             'linkurl' => 'article_string_mix.php'
         ),

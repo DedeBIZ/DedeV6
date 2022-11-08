@@ -73,7 +73,7 @@ if (!isset($paytype)) {
         echo "无法识别您的订单";
         exit();
     }
-    //获取支付接口列表
+    //获取支付接口设置
     $payment_list = array();
     $dsql->SetQuery("SELECT * FROM `#@__payment` WHERE enabled='1' ORDER BY `rank` ASC");
     $dsql->Execute();

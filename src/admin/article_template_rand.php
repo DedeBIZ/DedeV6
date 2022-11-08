@@ -68,8 +68,8 @@ if (empty($templates) && filesize($m_file) > 0) {
     $templates = fread($fp, filesize($m_file));
     fclose($fp);
 }
-$wintitle = "随机模板防采集设置";
-$wecome_info = "随机模板防采集设置";
+$wintitle = "随机模板设置";
+$wecome_info = "随机模板设置";
 make_hash();
 $msg = "
 <link rel='stylesheet' href='../static/web/css/admin.css'>
@@ -87,7 +87,7 @@ function DoRand(jobname)
     });
 }
 </script>
-<div id='loading' style='display:none;text-align:center'><img src='../static/web/img/loadinglit.gif'>请稍后，正在操作中</div>
+<div id='loaddiv' class='d-none text-center'><img src='../static/web/img/loadinglit.gif'></div>
 <table width='100%' align='center'>
 <tr>
     <td>

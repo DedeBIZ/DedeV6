@@ -102,7 +102,7 @@ function SeePicNew(f, imgdid, frname, hpos, acname) {
 		newobj.style.left = 100;
 		newobj.style.display = 'block';
 		document.body.appendChild(newobj);
-		newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif" alit="" />上传中...';
+		newobj.innerHTML = '<img src="../../static/web/img/loadinglit.gif">';
 	}
 	newobj.style.display = 'block';
 	//提交后还原form的action等参数

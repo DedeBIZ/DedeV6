@@ -4,7 +4,7 @@
 <head>
 	<meta charset="<?php echo $cfg_soft_lang;?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>联动枚举管理</title>
+    <title>联动类别管理</title>
     <link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/web/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/web/css/admin.css">
@@ -13,7 +13,7 @@
     <script src="../static/web/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-        var loadhtml = "<center><img src='../static/web/img/loadinglit.gif' style='padding:30px'></center>";
+        var loadhtml = "<center><img src='../static/web/img/loadinglit.gif'></center>";
         function updateItem(aid) {
             var upenumf = document.getElementById('upenumf');
             upenumf.ename.value = $DE('ename' + aid).value;
@@ -174,8 +174,7 @@
         </tr>
     </table>
     <?php
-    if (!empty($egroup))
-    {
+    if (!empty($egroup)) {
         $arr = $dsql->GetOne("SELECT * FROM `#@__stepselect` WHERE egroup='{$egroup}' ");
         $dsql->Execute('out',"SELECT evalue,ename FROM `#@__sys_enum` WHERE egroup='{$arr['egroup']}' ORDER BY disorder ASC,evalue ASC");
         $options = '';
@@ -228,7 +227,7 @@
     <table width="98%" align="center" cellpadding="3" cellspacing="1" class="table maintable">
         <tr>
             <td bgcolor="#f5f5f5" colspan="8">
-                <span class="float-left"><a href="stepselect_main.php">枚举组列表</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> &gt; 子分类列表</span>
+                <span class="float-left"><a href="stepselect_main.php">联动类别管理</a> &gt; <a href="stepselect_main.php?egroup=<?php echo $egroup;?>"><?php echo $selgroup;?></a> &gt; 子分类列表</span>
             </td>
         </tr>
         <tr bgcolor="#fbfce2" align="center">
@@ -310,7 +309,7 @@
     <table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable mb-3">
         <tr>
             <td bgcolor="#f5f5f5" colspan="7">
-                <span class="float-left"><a href="stepselect_main.php">枚举组列表</a></span>
+                <span class="float-left"><a href="stepselect_main.php">联动类别管理</a></span>
             </td>
         </tr>
         <tr bgcolor="#fbfce2" align="center">
