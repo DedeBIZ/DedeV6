@@ -130,8 +130,8 @@ else if ($dopost == 'setskin') {
     ));
     exit;
 } elseif ($dopost == 'safe_mode') {
-    $safemsg = "系统运行模式为：安全模式，“模板管理”、“标签管理”、“数据库管理”、“模块管理”等功能暂停，如果您需要这些功能，在/system/common.inc.php文件大约第10行代码`DEDEBIZ_SAFE_MODE`后面值TRUE修改为FALSE恢复使用";
-    $unsafemsg = "系统运行模式为：开发模式，“模板管理”、“标签管理”、“数据库管理”、“模块管理”等功能恢复，如果您不需要这些功能，在/system/common.inc.php文件大约第10行代码`DEDEBIZ_SAFE_MODE`后面值FALSE修改为TRUE暂停使用";
+    $safemsg = "系统运行模式为：安全模式，模板管理、标签管理、数据库管理、模块管理等功能已暂停，如果您需要这些功能，在/system/common.inc.php文件大约第10行代码找到DEDEBIZ_SAFE_MODE后面值TRUE修改为FALSE恢复使用";
+    $unsafemsg = "系统运行模式为：开发模式，模板管理、标签管理、数据库管理、模块管理等功能已恢复，如果您不需要这些功能，在/system/common.inc.php文件大约第10行代码找到DEDEBIZ_SAFE_MODE后面值FALSE修改为TRUE暂停使用";
     $modeStr = DEDEBIZ_SAFE_MODE? $safemsg : $unsafemsg;
     ShowMsg($modeStr, "javascript:;");
     exit;
