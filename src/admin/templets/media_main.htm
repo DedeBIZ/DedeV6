@@ -8,40 +8,40 @@
 		<link rel="stylesheet" href="../static/web/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../static/web/css/admin.css">
 		<style>.napisdiv{position:absolute;left:10;top:0;width:150px;height:100px;z-index:3}</style>
-		<script>
-			//获得选中文件的文件名
-			function getCheckboxItem() {
-				var allSel = "";
-				if (document.form1.aids.value) return document.form1.aids.value;
-				for (i = 0; i < document.form1.aids.length; i++) {
-					if (document.form1.aids[i].checked) {
-						if (allSel == "")
-							allSel = document.form1.aids[i].value;
-						else
-							allSel = allSel + "," + document.form1.aids[i].value;
-					}
-				}
-				return allSel;
-			}
-			function AllSel() {
-				for (i = 0; i < document.form1.aids.length; i++) {
-					.form1.aids[i].checked = true;
-				}
-			}
-			function NoneSel() {
-				for (i = 0; i < document.form1.aids.length; i++) {
-					document.form1.aids[i].checked = false;
-				}
-			}
-			function DelSel() {
-				var nid = getCheckboxItem();
-				if (nid == "") {
-					alert("请选择项目");
-					return;
-				}
-				location.href = "media_edit.php?dopost=del&ids=" + nid;
-			}
-		</script>
+		 <script>
+		    //获得选中文件的文件名
+		    function getCheckboxItem() {
+		      	var allSel = "";
+		      	if (document.form1.aids.value) return document.form1.aids.value;
+		      	for (i = 0; i < document.form1.aids.length; i++) {
+		        if (document.form1.aids[i].checked) {
+		          	if (allSel == "")
+		            	allSel = document.form1.aids[i].value;
+		         	else
+		            	allSel = allSel + "," + document.form1.aids[i].value;
+		        	}
+		      	}
+		      	return allSel;
+		    }
+		    function AllSel() {
+		      	for (i = 0; i < document.form1.aids.length; i++) {
+		        	document.form1.aids[i].checked = true;
+		      	}
+		    }
+		    function NoneSel() {
+		      	for (i = 0; i < document.form1.aids.length; i++) {
+		        	document.form1.aids[i].checked = false;
+		      	}
+		    }
+		    function DelSel() {
+		      	var nid = getCheckboxItem();
+		      	if (nid == "") {
+		        	alert("请选择项目");
+		        	return;
+		      	}
+		      	location.href = "media_edit.php?dopost=del&ids=" + nid;
+		    }
+		  </script>
 	</head>
 	<body>
 		<table width="98%" cellpadding="3" cellspacing="1" align="center" class="table maintable my-3">
